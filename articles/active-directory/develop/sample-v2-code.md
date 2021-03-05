@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 43a019c8bd3544b769a6b4346d8986bc8e01a4a1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b839df7abe6552506456ed6d0485405f43ea4639
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560135"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198361"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)
 
@@ -36,7 +36,7 @@ Du kan också bidra till exemplen på GitHub. Mer information finns i [Microsoft
 
 De här exemplen visar hur du skriver ett program med en enda sida som skyddas med Microsoft Identity Platform. I de här exemplen används en varianter av MSAL.js.
 
-| Plattform | Description | Länk |
+| Plattform | Beskrivning | Länk |
 | -------- | --------------------- | -------- |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-anrop Microsoft Graph |[Java Script-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA-anrop Microsoft Graph att använda auth Code Flow med PKCE |[Java Script-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -61,6 +61,7 @@ Följande exempel illustrerar webb program som loggar in användare. Några exem
 | ![Den här bilden visar ASP.NET Core logo typ](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Själv studie kurs om ASP.NET Core WebApp-loggar – användare](https://aka.ms/aspnetcore-webapp-sign-in) | Samma exempel i [ASP.net Core webbappens anrop Microsoft Graph-](https://aka.ms/aspnetcore-webapp-call-msgraph) fasen</p>Avancerat exempel [som använder den inloggade användarens token-cache från huvudappar, API: er och tjänster](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) |
 | ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS till Spelbok för Azure AD-programmigrering för utvecklare](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) för att lära sig att säkert och säkert migrera dina program som är integrerade med Active Directory Federation Services (AD FS) (AD FS) till Azure Active Directory (Azure AD) | |
 | ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Snabb start för ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotNet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotNet-admin-restricted-scope – v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – utbildning – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java servlet Web App-kapitel 1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication)| [Själv studie kurs om Java servlet Web App – kapitel 2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication) |
 | ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  | [MS-Identity-B2C-Java-servlet-webapp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Den här bilden visar Node.js logo typ](media/sample-v2-code/logo_nodejs.png)</p>Node.js (MSAL Node) | [Användar handbok för Express Web App-inloggningar](https://github.com/Azure-Samples/ms-identity-node) | |
@@ -117,7 +118,7 @@ I följande exempel visas ett offentligt klient program som körs på en enhet u
 
 Följande exempel visar hur du konfigurerar programmet så att det accepterar inloggningar från valfri Azure Active Directory (Azure AD)-klient. Att konfigurera ditt program så att det blir *flera klienter* innebär att du kan erbjuda ett SaaS-program ( **program vara som en tjänst** ) till många organisationer, så att användarna kan logga in till ditt program efter att de har gett sitt medgivande.
 
-| Plattform | Description | Länk |
+| Plattform | Beskrivning | Länk |
 | -------- | --------------------- | -------- |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop för flera innehavare Graph API |[MS-Identity-JavaScript-vinkel-Spa-ASPNET-ASPNET-WebAPI-flera innehavare](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop för flera innehavare med anpassat webb-API |[MS-Identity-JavaScript-vinkel-Spa-ASPNET-ASPNET-WebAPI-flera innehavare](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

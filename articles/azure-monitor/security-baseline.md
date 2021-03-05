@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: eba05ce7e7575ec773a4796d87bdd82168fe5b1d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39dff9b48fb292d8a1c145ae3e592786ddb027a4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725660"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198837"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azures säkerhets bas linje för Azure Monitor
 
@@ -431,9 +431,9 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure CLI för att fråga och identifiera Azure Monitor resurser i dina prenumerationer. Se till att du har rätt (Läs) behörigheter i din klient organisation och räkna upp alla Azure-prenumerationer samt resurser i dina prenumerationer.
 
-- [Azure Monitor CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest&amp;preserve-view=true)
+- [Azure Monitor CLI](https://docs.microsoft.com/cli/azure/monitor)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 43a568149ccf85579b4f8190974fff872d6e09ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803977"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199653"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Certifiera IoT Plug and Play-enheter
 
@@ -51,13 +51,13 @@ För att uppfylla certifierings kraven måste enheten:
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Testa med Azure IoT Extension CLI
 
-Med [Azure IoT CLI-tillägget](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) kan du verifiera att enhets implementeringen matchar modellen innan du skickar in enheten för certifiering via Azure-certifierad enhets Portal.
+Med [Azure IoT CLI-tillägget](/cli/azure/ext/azure-iot/iot/product) kan du verifiera att enhets implementeringen matchar modellen innan du skickar in enheten för certifiering via Azure-certifierad enhets Portal.
 
 Följande steg visar hur du förbereder och kör certifierings test med hjälp av CLI:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Installera Azure IoT-tillägget för Azure CLI
 
-Se installations anvisningarna för att konfigurera [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) i din miljö.
+Se installations anvisningarna för att konfigurera [Azure CLI](/cli/azure) i din miljö.
 
 Kör följande kommando för att installera Azure IoT-tillägget:
 
@@ -65,7 +65,7 @@ Kör följande kommando för att installera Azure IoT-tillägget:
 az extension add --name azure-iot
 ```
 
-Mer information finns i [Azure CLI för Azure IoT](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest).
+Mer information finns i [Azure CLI för Azure IoT](/cli/azure/azure-cli-reference-for-iot).
 
 ### <a name="create-a-new-product-test"></a>Skapa ett nytt produkt test
 
@@ -79,7 +79,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> Du måste [Logga in i](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) din prenumeration när du använder cli.
+> Du måste [Logga in i](/cli/azure/authenticate-azure-cli) din prenumeration när du använder cli.
 
 JSON-utdata från kommandot innehåller `primaryKey` , `registrationId` och `scopeID` används när du ansluter enheten.
 

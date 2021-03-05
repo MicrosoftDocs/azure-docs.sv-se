@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844462"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199500"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Skicka meddelanden från moln till enhet från en IoT-hubb
 
@@ -97,7 +97,7 @@ Texten är en JSON-serialiserad matris med poster, var och en med följande egen
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | En tidsstämpel som visar när resultatet av meddelandet har inträffat (till exempel när hubben fick feedback-meddelandet eller att det ursprungliga meddelandet upphör att gälla) |
 | OriginalMessageId  | *Messageid* för det meddelande från molnet till enheten som den här feedback-informationen avser |
-| StatusCode         | En obligatorisk sträng som används i feedback-meddelanden som genereras av IoT Hub: <br/> *Resultatet* <br/> *Upphört* <br/> *DeliveryCountExceeded* <br/> *Avslagen* <br/> *Rensas* |
+| StatusCode         | En obligatorisk sträng som används i feedback-meddelanden som genereras av IoT Hub: <br/> *Klart* <br/> *Upphört* <br/> *DeliveryCountExceeded* <br/> *Avslagen* <br/> *Rensas* |
 | Beskrivning        | Sträng värden för *StatusCode* |
 | DeviceId           | *DeviceID* för mål enheten för det meddelande från molnet till enheten som den här återkopplingen avser |
 | DeviceGenerationId | *DeviceGenerationId* för mål enheten för det moln-till-enhet-meddelande som den här återkopplingen avser |
@@ -147,7 +147,7 @@ Du kan ställa in konfigurations alternativen på något av följande sätt:
 
     ![Ange konfigurations alternativ för meddelanden från molnet till enheten i portalen](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: Använd [uppdaterings kommandot för AZ IoT Hub](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) :
+* **Azure CLI**: Använd [uppdaterings kommandot för AZ IoT Hub](/cli/azure/iot/hub#az-iot-hub-update) :
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

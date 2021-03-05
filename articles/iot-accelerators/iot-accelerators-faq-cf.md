@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995972"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198990"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Vanliga frågor och svar om ansluten fabriks lösnings Accelerator
 
@@ -125,7 +125,7 @@ Du kan också logga in på den virtuella datorn via SSH och kontrol lera loggfil
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hur kan jag kontrol lera om simuleringen skickar data till molnet?
 
-Med [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) eller [Azure IoT CLI-tillägget Monitor-Events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) kan du granska data som skickas till IoT Hub från vissa enheter. Om du vill använda dessa verktyg måste du känna till anslutnings strängen för IoT-hubben i distributionen. Se [Hur gör jag för att ta reda på anslutnings strängen för IoT Hub som används av min lösning?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Med [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) eller [Azure IoT CLI-tillägget Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) kan du granska data som skickas till IoT Hub från vissa enheter. Om du vill använda dessa verktyg måste du känna till anslutnings strängen för IoT-hubben i distributionen. Se [Hur gör jag för att ta reda på anslutnings strängen för IoT Hub som används av min lösning?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Granska data som skickats av en av utgivar enheterna:
 
@@ -194,6 +194,5 @@ Skicka telemetridata från icke-OPC UA-enheter till ansluten fabrik:
 
 Du kan även utforska andra funktioner och möjligheter i IoT-lösningsacceleratorerna:
 
-* [Översikt över lösningsacceleratorn Förutsägande underhåll](./iot-accelerators-predictive-walkthrough.md)
 * [Distribuera lösnings Accelerator för ansluten fabrik](quickstart-connected-factory-deploy.md)
 * [IoT-säkerhet från grunden](../iot-fundamentals/iot-security-ground-up.md)

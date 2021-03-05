@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: aded49b5b9509a75e61612e44ffa19ff377d1712
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148321"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199534"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Använd IoT-tillägget för Azure CLI för Azure IoT Hub enhets hantering
 
@@ -23,7 +23,7 @@ ms.locfileid: "92148321"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[IoT-tillägget för Azure CLI](https://github.com/Azure/azure-iot-cli-extension) är ett IoT-tillägg med öppen källkod som lägger till funktionerna i [Azure CLI](/cli/azure/overview?view=azure-cli-latest). Azure CLI innehåller kommandon för att interagera med Azure Resource Manager-och hanterings slut punkter. Du kan till exempel använda Azure CLI för att skapa en virtuell Azure-dator eller en IoT-hubb. Ett CLI-tillägg gör det möjligt för en Azure-tjänst att förstärka Azure CLI och ger dig till gång till ytterligare tjänstspecifika funktioner. IoT-tillägget ger IoT-utvecklare kommando rads åtkomst till alla IoT Hub, IoT Edge och IoT Hub Device Provisioning Service funktioner.
+[IoT-tillägget för Azure CLI](https://github.com/Azure/azure-iot-cli-extension) är ett IoT-tillägg med öppen källkod som lägger till funktionerna i [Azure CLI](/cli/azure/overview). Azure CLI innehåller kommandon för att interagera med Azure Resource Manager-och hanterings slut punkter. Du kan till exempel använda Azure CLI för att skapa en virtuell Azure-dator eller en IoT-hubb. Ett CLI-tillägg gör det möjligt för en Azure-tjänst att förstärka Azure CLI och ger dig till gång till ytterligare tjänstspecifika funktioner. IoT-tillägget ger IoT-utvecklare kommando rads åtkomst till alla IoT Hub, IoT Edge och IoT Hub Device Provisioning Service funktioner.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -61,7 +61,7 @@ Kör Azure CLI och IoT-tillägget för Azure CLI med olika hanterings alternativ
 
 * [Python 2.7 x eller python 3. x](https://www.python.org/downloads/)
 
-* Azure CLI. Om du behöver installera det kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Som minst måste din Azure CLI-version vara 2.0.70 eller högre. Validera med `az –version`.
+* Azure CLI. Om du behöver installera det kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli). Som minst måste din Azure CLI-version vara 2.0.70 eller högre. Validera med `az –version`.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

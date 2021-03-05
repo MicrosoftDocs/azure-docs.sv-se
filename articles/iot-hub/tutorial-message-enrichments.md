@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624063"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199789"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Självstudie: Använd Azure IoT Hub meddelande-anrikning
 
@@ -77,7 +77,7 @@ Om du inte redan har gjort det öppnar du ett Azure [Cloud Shell-fönster](https
 
 Här följer resurserna som skapats av skriptet. *Förrikat* innebär att resursen är för meddelanden med anrikninger. *Original* innebär att resursen avser meddelanden som inte är berikade.
 
-| Name | Värde |
+| Namn | Värde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container namn | originalspråket  |
@@ -297,7 +297,7 @@ Du kan använda en Resource Manager-mall för att skapa och konfigurera resurser
 
    Här är de resurser som skapas genom att läsa in mallen. **Förrikat** innebär att resursen är för meddelanden med anrikninger. **Original** innebär att resursen avser meddelanden som inte är berikade. Detta är samma värden som används i Azure CLI-skriptet.
 
-   | Name | Värde |
+   | Namn | Värde |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container namn | originalspråket  |
@@ -386,7 +386,7 @@ Ta bort resurs gruppen om du vill ta bort alla resurser som du skapade i den hä
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Rensa resurser med hjälp av Azure CLI
 
-Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). Återkallande som `$resourceGroup` ställdes in på **ContosoResourcesMsgEn** i början av den här självstudien.
+Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group#az-group-delete). Återkallande som `$resourceGroup` ställdes in på **ContosoResourcesMsgEn** i början av den här självstudien.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

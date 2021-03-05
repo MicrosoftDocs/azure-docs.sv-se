@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 20e7998b4d0ec5a36f8fb8f1ddb04d591c54542b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624277"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199806"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och övervaka den med Azure CLI
 
@@ -55,7 +55,7 @@ I det här avsnittet förbereder du två Azure CLI-sessioner. Om du använder Cl
 
 Azure CLI kräver att du är inloggad på ditt Azure-konto. All kommunikation mellan Azure CLI-sessionen och din IoT Hub autentiseras och krypteras. Därför behöver inte den här snabb starten ytterligare autentisering som du använder med en riktig enhet, till exempel en anslutnings sträng.
 
-*  Kör kommandot [AZ Extension Add](/cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true) för att lägga till Microsoft Azure IoT-tillägget för Azure CLI till CLI-gränssnittet. IOT-tillägget lägger till IoT Hub-, IoT Edge-och IoT Device Provisioning-tjänst (DPS)-kommandon i Azure CLI.
+*  Kör kommandot [AZ Extension Add](/cli/azure/extension#az-extension-add) för att lägga till Microsoft Azure IoT-tillägget för Azure CLI till CLI-gränssnittet. IOT-tillägget lägger till IoT Hub-, IoT Edge-och IoT Device Provisioning-tjänst (DPS)-kommandon i Azure CLI.
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ I det här avsnittet använder du Azure CLI för att skapa en resurs grupp och e
 > [!TIP]
 > Du kan också skapa en Azure-resurs grupp, en IoT Hub och andra resurser med hjälp av [Azure Portal](iot-hub-create-through-portal.md), [Visual Studio Code](iot-hub-create-use-iot-toolkit.md)eller andra programmerings metoder.  
 
-1. Kör kommandot [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) för att skapa en resurs grupp. Följande kommando skapar en resurs grupp med namnet *MyResourceGroup* på den *östra* platsen. 
+1. Kör kommandot [AZ Group Create](/cli/azure/group#az-group-create) för att skapa en resurs grupp. Följande kommando skapar en resurs grupp med namnet *MyResourceGroup* på den *östra* platsen. 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Kör kommandot [AZ IoT Hub Create](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create&preserve-view=true) för att skapa en IoT-hubb. Det kan ta några minuter att skapa en IoT-hubb. 
+1. Kör kommandot [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) för att skapa en IoT-hubb. Det kan ta några minuter att skapa en IoT-hubb. 
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. Ett IoT Hub-namn måste vara globalt unikt i Azure. Den här plats hållaren används i resten av den här snabb starten för att representera namnet på din IoT-hubb.
 
@@ -94,7 +94,7 @@ I det här avsnittet använder du Azure CLI för att skapa en resurs grupp och e
 I det här avsnittet skapar du en simulerad enhet i den första CLI-sessionen. Den simulerade enheten skickar telemetri till IoT-hubben. I den andra CLI-sessionen övervakar du händelser och telemetri och skickar ett meddelande från moln till enhet till den simulerade enheten.
 
 Skapa och starta en simulerad enhet:
-1. Kör kommandot [AZ IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create&preserve-view=true) i den första CLI-sessionen. Detta skapar den simulerade enhets identiteten. 
+1. Kör kommandot [AZ IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) i den första CLI-sessionen. Detta skapar den simulerade enhets identiteten. 
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -104,7 +104,7 @@ Skapa och starta en simulerad enhet:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. Kör kommandot [AZ IoT Device simulering](/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate&preserve-view=true) i den första CLI-sessionen.  Detta startar den simulerade enheten. Enheten skickar telemetri till din IoT-hubb och tar emot meddelanden från den.  
+1. Kör kommandot [AZ IoT Device simulering](/cli/azure/ext/azure-iot/iot/device#ext-azure-iot-az-iot-device-simulate) i den första CLI-sessionen.  Detta startar den simulerade enheten. Enheten skickar telemetri till din IoT-hubb och tar emot meddelanden från den.  
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -113,7 +113,7 @@ Skapa och starta en simulerad enhet:
     ```
 
 Övervaka en enhet:
-1. I den andra CLI-sessionen kör du kommandot [AZ IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) . Detta börjar övervaka den simulerade enheten. Utdata visar telemetri som den simulerade enheten skickar till IoT-hubben.
+1. I den andra CLI-sessionen kör du kommandot [AZ IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) . Detta börjar övervaka den simulerade enheten. Utdata visar telemetri som den simulerade enheten skickar till IoT-hubben.
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -136,7 +136,7 @@ I det här avsnittet använder du den andra CLI-sessionen för att skicka ett me
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. I den andra CLI-sessionen kör du kommandot [AZ IoT Device C2D-Message Send](/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send&preserve-view=true) . Detta skickar ett meddelande från moln till enhet från IoT-hubben till den simulerade enheten. Meddelandet innehåller en sträng och två nyckel/värde-par.  
+1. I den andra CLI-sessionen kör du kommandot [AZ IoT Device C2D-Message Send](/cli/azure/ext/azure-iot/iot/device/c2d-message#ext-azure-iot-az-iot-device-c2d-message-send) . Detta skickar ett meddelande från moln till enhet från IoT-hubben till den simulerade enheten. Meddelandet innehåller en sträng och två nyckel/värde-par.  
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -184,12 +184,12 @@ Om du fortsätter till nästa rekommenderade artikel kan du behålla de resurser
 > Att ta bort en resursgrupp kan inte ångras. Resursgruppen och alla resurser som ingår i den tas bort permanent. Kontrollera att du inte av misstag tar bort fel resursgrupp eller resurser. 
 
 Ta bort en resursgrupp med namnet:
-1. Kör kommandot [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) . Detta tar bort resurs gruppen, IoT Hub och den enhets registrering som du skapade.
+1. Kör kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) . Detta tar bort resurs gruppen, IoT Hub och den enhets registrering som du skapade.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Kör kommandot [AZ Group List](/cli/azure/group?view=azure-cli-latest#az-group-list&preserve-view=true) för att bekräfta att resurs gruppen har tagits bort.  
+1. Kör kommandot [AZ Group List](/cli/azure/group#az-group-list) för att bekräfta att resurs gruppen har tagits bort.  
 
     ```azurecli
     az group list

@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593646"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199347"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Reagera på plugin-programmet för Application Insights JavaScript SDK
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Konfiguration
 
-| Name    | Standardvärde | Description                                                                                                    |
+| Namn    | Standardvärde | Beskrivning                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | historik | null    | Reagerar på routerkonfiguration. Mer information finns i [paket dokumentationen för reakta router](https://reactrouter.com/web/api/history). Information om hur du kommer åt historik-objektet utanför komponenterna finns i [vanliga frågor och svar om att reagera på routern](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -161,7 +161,11 @@ Den fungerar som den högre beställnings komponenten, men svarar på hookar av 
 
 ### `useTrackEvent`
 
-`useTrackEvent`Kroken används för att spåra eventuella anpassade händelser som ett program kan behöva spåra, till exempel en knapp eller något annat API-anrop. Det tar två argument, det första är Application Insights-instansen (som kan hämtas från `useAppInsightsContext` hooken) och ett namn för händelsen.
+`useTrackEvent`Kroken används för att spåra eventuella anpassade händelser som ett program kan behöva spåra, till exempel en knapp eller något annat API-anrop. Det tar fyra argument:
+-   Application Insights instans (som kan hämtas från `useAppInsightsContext` hooken).
+-   Namn för händelsen.
+-   Händelse data objekt som kapslar in de ändringar som ska spåras.
+-   skipFirstRun (valfritt) för att hoppa över anrop av `trackEvent` anrop vid initiering. Standardvärdet är inställt på `true`.
 
 ```javascript
 import React, { useState, useEffect } from "react";

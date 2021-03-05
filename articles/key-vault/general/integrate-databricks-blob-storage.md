@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285660"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198922"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Självstudie: få åtkomst till Azure Blob Storage med Azure Databricks och Azure Key Vault
 
@@ -29,11 +29,11 @@ I den här guiden får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-Innan du börjar den här självstudien installerar du [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+Innan du börjar den här självstudien installerar du [Azure CLI](/cli/azure/install-azure-cli-windows).
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Skapa ett lagrings konto och en BLOB-behållare med Azure CLI
 
-Du måste först skapa ett allmänt lagrings konto för att kunna använda blobbar. Om du inte har en [resurs grupp](/cli/azure/group?view=azure-cli-latest#az-group-create)skapar du en innan du kör kommandot. Följande kommando skapar och visar lagrings behållarens metadata. Kopiera ned **ID: t**.
+Du måste först skapa ett allmänt lagrings konto för att kunna använda blobbar. Om du inte har en [resurs grupp](/cli/azure/group#az-group-create)skapar du en innan du kör kommandot. Följande kommando skapar och visar lagrings behållarens metadata. Kopiera ned **ID: t**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob

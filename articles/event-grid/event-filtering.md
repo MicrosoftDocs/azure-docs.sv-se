@@ -2,13 +2,13 @@
 title: Händelse filtrering för Azure Event Grid
 description: Beskriver hur du filtrerar händelser när du skapar en Azure Event Grid-prenumeration.
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721964"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197783"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Förstå händelse filtrering för Event Grid prenumerationer
 
@@ -58,13 +58,27 @@ Använd alternativet avancerad filtrering för att filtrera efter värden i data
 * värden – värdet eller värdena som ska jämföras med nyckeln.
 
 ## <a name="key"></a>Nyckel
-Key är fältet i de händelse data som du använder för filtrering. Det kan vara ett tal, en boolesk sträng eller en matris. För händelser i **Event Grid-schemat** använder du följande värden för nyckeln:,,,, `ID` `Topic` `Subject` `EventType` `DataVersion` eller händelse data (t `data.key1` . ex.).
+Key är fältet i de händelse data som du använder för filtrering. Det kan vara en av följande typer:
+
+- Antal
+- Boolesk
+- Sträng
+- Lagringsmatriser. Du måste ange `enableAdvancedFilteringOnArrays` egenskapen till true för att använda den här funktionen. För närvarande har Azure Portal inte stöd för att aktivera den här funktionen. 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+För händelser i **Event Grid-schemat** använder du följande värden för nyckeln:,,,, `ID` `Topic` `Subject` `EventType` `DataVersion` eller händelse data (t `data.key1` . ex.).
 
 För händelser i **Cloud Events-schemat** använder du följande värden för nyckeln: `eventid` , `source` , `eventtype` , `eventtypeversion` eller händelse data (t `data.key1` . ex.).
 
-Använd händelse data fält (som) för **anpassade indata-schema** `data.key1` .
-
-Om du vill komma åt fält i data avsnittet använder du `.` (punkt) notation. Till exempel, `data.sitename` för `data.appEventTypeDetail.action` att komma åt `sitename` eller `action` för följande exempel händelse.
+Använd händelse data fält (som) för **anpassade indata-schema** `data.key1` . Om du vill komma åt fält i data avsnittet använder du `.` (punkt) notation. Till exempel, `data.sitename` för `data.appEventTypeDetail.action` att komma åt `sitename` eller `action` för följande exempel händelse.
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ Om du vill komma åt fält i data avsnittet använder du `.` (punkt) notation. T
     },
 ```
 
-
 ## <a name="values"></a>Värden
 Värdena kan vara: Number, String, Boolean eller array
-
 
 ## <a name="operators"></a>Operatorer
 

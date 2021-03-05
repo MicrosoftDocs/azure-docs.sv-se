@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: dd622f0d55be000e2318c53f200bebf49c373724
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e1e44f5aa4250d63c2addafd2661b09bae2b38e3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624328"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199925"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Snabbstart: Skicka IoT-telemetri från en Android-enhet
 
@@ -100,7 +100,7 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Läs telemetrin från din hubb
 
-I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) för att övervaka de enhetsmeddelanden som skickas av Android-enheten.
+I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget](/cli/azure/ext/azure-iot/iot) för att övervaka de enhetsmeddelanden som skickas av Android-enheten.
 
 1. Med Azure Cloud Shell kör du följande kommando för att ansluta och läsa meddelanden från IoT-hubben:
 

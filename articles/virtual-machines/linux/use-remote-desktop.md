@@ -7,21 +7,23 @@ ms.service: virtual-machines-linux
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/01/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0fecf9f16cd1069b140e61a019a43510b59e76e8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695183"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199176"
 ---
-# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Installera och konfigurera xrdp för att använda fjärr skrivbord med en virtuell Linux-dator
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Installera och konfigurera xrdp för att använda fjärr skrivbord med Ubuntu
 
-Virtuella Linux-datorer (VM: ar) i Azure hanteras vanligt vis från kommando raden med hjälp av en SSH-anslutning (Secure Shell). När du har använt New to Linux eller för snabb fel söknings scenarier kan det vara enklare att använda fjärr skrivbord. Den här artikeln beskriver hur du installerar och konfigurerar en Skriv bords miljö ([xfce](https://www.xfce.org)) och fjärr skrivbord ([xrdp](http://xrdp.org)) för din virtuella Linux-dator med hjälp av distributions modellen för Resource Manager.
+Virtuella Linux-datorer (VM: ar) i Azure hanteras vanligt vis från kommando raden med hjälp av en SSH-anslutning (Secure Shell). När du har använt New to Linux eller för snabb fel söknings scenarier kan det vara enklare att använda fjärr skrivbord. Den här artikeln beskriver hur du installerar och konfigurerar en Skriv bords miljö ([xfce](https://www.xfce.org)) och fjärr skrivbord ([xrdp](http://xrdp.org)) för din virtuella Linux-dator som kör Ubuntu.
 
+Artikeln har Skriv och testats med en Ubuntu 18,04 VM. 
 
 ## <a name="prerequisites"></a>Förutsättningar
+
 Den här artikeln kräver en befintlig Ubuntu 18,04 LTS-VM i Azure. Om du behöver skapa en virtuell dator kan du använda någon av följande metoder:
 
 - [Azure CLI](quick-create-cli.md)

@@ -38,6 +38,8 @@
       items:
         - name: Lägga till röstsamtal i din app
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Lägg till video som anropar din app (Java Script)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: Använda klientbiblioteket för samtal
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Anslut din samtalsapp till ett Teams-möte

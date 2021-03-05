@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Lär dig hur du felsöker och löser vanliga problem när du aktiverar och använder Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes service, Containers, Helm, service nät, service nät-routning, kubectl, K8s '
-ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 14ced0c66b42b6f18c946d0c75091be1af5598f5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548876"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197800"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Fel sökning av Azure dev Spaces
 
@@ -26,7 +26,7 @@ För att felsöka problem på ett effektivare sätt kan det hjälpa att skapa me
 
 För Visual Studio ställer du in `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` miljö variabeln på 1. Se till att starta om Visual Studio för att miljö variabeln ska börja gälla. När den är aktive rad skrivs detaljerade loggar till din `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` katalog.
 
-I CLI kan du skriva ut mer information under kommando körningen med hjälp av `--verbose` växeln. Du kan också bläddra i mer detaljerade loggar i `%TEMP%\Azure Dev Spaces` . I en Mac kan du hitta *Temp* -katalogen genom att köra `echo $TMPDIR` från ett terminalfönster. På en Linux-dator är *Temp* -katalogen vanligt vis `/tmp` . Kontrol lera också att loggning är aktiverat i [konfigurations filen för Azure CLI](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
+I CLI kan du skriva ut mer information under kommando körningen med hjälp av `--verbose` växeln. Du kan också bläddra i mer detaljerade loggar i `%TEMP%\Azure Dev Spaces` . I en Mac kan du hitta *Temp* -katalogen genom att köra `echo $TMPDIR` från ett terminalfönster. På en Linux-dator är *Temp* -katalogen vanligt vis `/tmp` . Kontrol lera också att loggning är aktiverat i [konfigurations filen för Azure CLI](/cli/azure/azure-cli-configuration#cli-configuration-values-and-environment-variables).
 
 Azure dev Spaces fungerar också bäst vid fel sökning av en enskild instans eller pod. `azds.yaml`Filen innehåller en inställning, *replicaCount*, som anger antalet poddar som Kubernetes körs för tjänsten. Om du ändrar *replicaCount* för att konfigurera programmet så att det kör flera poddar för en specifik tjänst, bifogas fel söknings programmet till de första pod, i alfabetisk ordning. Fel söknings programmet ansluts till en annan Pod när den ursprungliga Pod återanvänds, vilket kan resultera i ett oväntat beteende.
 
@@ -91,7 +91,7 @@ azure-cli                         2.0.60 *
 
 Trots att fel meddelandet körs `az aks use-dev-spaces` med en version av Azure CLI före 2.0.63, lyckas installationen. Du kan fortsätta att använda `azds` utan problem.
 
-Åtgärda problemet genom att uppdatera installationen av [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) till 2.0.63 eller senare. Den här uppdateringen löser det fel meddelande som visas när du kör `az aks use-dev-spaces` . Alternativt kan du fortsätta att använda din aktuella version av Azure CLI och Azure dev Spaces CLI.
+Åtgärda problemet genom att uppdatera installationen av [Azure CLI](/cli/azure/install-azure-cli) till 2.0.63 eller senare. Den här uppdateringen löser det fel meddelande som visas när du kör `az aks use-dev-spaces` . Alternativt kan du fortsätta att använda din aktuella version av Azure CLI och Azure dev Spaces CLI.
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Fel "Det gick inte att komma åt Kube-apiserver"
 
@@ -406,7 +406,7 @@ Du ser det här felet i Visual Studio Code om du har en nyare version av VS Code
 Försök att hämta och installera den senaste versionen av Azure dev Spaces CLI:
 
 * [Windows](https://aka.ms/get-azds-windows)
-* [Mac](https://aka.ms/get-azds-mac)
+* [OS](https://aka.ms/get-azds-mac)
 * [Linux](https://aka.ms/get-azds-linux)
 
 ### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Fel: "Det gick inte att hitta fel söknings tillägg för typ: coreclr"

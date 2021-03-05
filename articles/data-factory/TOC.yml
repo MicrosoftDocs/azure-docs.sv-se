@@ -13,7 +13,7 @@
   items:
     - name: Skapa datafabrik – användargränssnitt
       href: quickstart-create-data-factory-portal.md
-    - name: Skapa datafabrik – verktyget för att kopiera data
+    - name: Skapa data fabrik – verktyget för att kopiera data
       href: quickstart-create-data-factory-copy-data-tool.md
     - name: Skapa datafabrik – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -26,8 +26,6 @@
     - name: Skapa datafabrik – ARM-mall
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Säkerhet – aktivera kundhanterad nyckelkryptering
-      href: enable-customer-managed-key.md
     - name: Skapa ett dataflöde
       href: data-flow-create.md
 - name: Självstudier
@@ -36,7 +34,7 @@
       items:
         - name: Från Azure Blob Storage till Azure SQL Database
           items:
-            - name: Kopiera data-verktyg
+            - name: Verktyget kopiera data
               href: tutorial-copy-data-tool.md
             - name: Användargränssnitt
               href: tutorial-copy-data-portal.md
@@ -44,7 +42,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: Från en SQL Server-databas till Azure Blob Storage
           items:
-            - name: Kopiera data-verktyg
+            - name: Verktyget kopiera data
               href: tutorial-hybrid-copy-data-tool.md
             - name: Användargränssnitt
               href: tutorial-hybrid-copy-portal.md
@@ -173,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integration runtime
       href: concepts-integration-runtime.md
-    - name: Säkerhet
-      items:
-        - name: Säkerhetsbaslinje
-          href: security-baseline.md
     - name: Dataflöden
       items:
         - name: Omvandla data genom att mappa dataflöden
@@ -433,13 +427,13 @@
           href: connector-zoho.md
     - name: Flytta data
       items:
-        - name: Kopiera data med Kopiera aktivitet
+        - name: Kopiera data med kopierings aktivitet
           href: copy-activity-overview.md
         - name: Övervaka kopieringsaktivitet
           href: copy-activity-monitoring.md
-        - name: Ta bort filer med hjälp av Ta bort aktivitet
+        - name: Ta bort filer med hjälp av ta bort aktivitet
           href: delete-activity.md
-        - name: Kopiera data-verktyg
+        - name: Verktyget kopiera data
           href: copy-data-tool.md
         - name: Stöd för format och komprimering
           href: supported-file-formats-and-compression-codecs.md
@@ -466,7 +460,7 @@
     - name: Omvandla data
       href: transform-data.md
       items:
-        - name: Köra aktiviteter för Dataflöde
+        - name: Kör data flödes aktivitet
           href: control-flow-execute-data-flow-activity.md
         - name: Kör Power Query aktivitet
           href: control-flow-power-query-activity.md
@@ -474,13 +468,13 @@
           href: control-flow-azure-function-activity.md
         - name: Anpassad aktivitet
           href: transform-data-using-dotnet-custom-activity.md
-        - name: Databricks Jar-aktivitet
+        - name: Databricks jar-aktivitet
           href: transform-data-databricks-jar.md
-        - name: Databricks-anteckningsboksaktivitet
+        - name: Databricks Notebook-aktivitet
           href: transform-data-databricks-notebook.md
-        - name: Databricks Python-aktivitet
+        - name: Databricks python-aktivitet
           href: transform-data-databricks-python.md
-        - name: Data Explorer-kommandoaktivitet
+        - name: Datautforskaren kommando aktivitet
           href: /azure/data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
         - name: Data Lake U-SQL-aktivitet
           href: transform-data-using-data-lake-analytics.md
@@ -488,49 +482,49 @@
           href: transform-data-using-hadoop-hive.md
         - name: HDInsight MapReduce-aktivitet
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight-piggningsåtgärd
+        - name: HDInsight gris-aktivitet
           href: transform-data-using-hadoop-pig.md
-        - name: HDInsight Apache Spark-aktivitet
+        - name: HDInsight Spark-aktivitet
           href: transform-data-using-spark.md
-        - name: HDInsight-strömningsaktivitet
+        - name: Aktivitet för HDInsight-direktuppspelning
           href: transform-data-using-hadoop-streaming.md
-        - name: Aktiviteten Kör pipeline i Machine Learning
+        - name: Machine Learning kör pipeline-aktivitet
           href: transform-data-machine-learning-service.md
-        - name: Batch-körningsaktivitet i Machine Learning Studio (klassisk)
+        - name: Machine Learning Studio (klassisk) batch execution Activity
           href: transform-data-using-machine-learning.md
-        - name: Uppdateringsresursaktivitet i Machine Learning Studio (klassisk)
+        - name: Machine Learning Studio (klassisk) uppdatera resurs aktivitet
           href: update-machine-learning-models.md
-        - name: Lagrad proceduraktivitet
+        - name: Lagrad procedur aktivitet
           href: transform-data-using-stored-procedure.md
         - name: Länkade tjänster för Compute
           href: compute-linked-services.md
     - name: Kontrollflöde
       items:
-        - name: Lägga till variabelaktivitet
+        - name: Lägg till variabel aktivitet
           href: control-flow-append-variable-activity.md
-        - name: Köra pipelineaktivitet
+        - name: Kör pipeline-aktivitet
           href: control-flow-execute-pipeline-activity.md
-        - name: Filteraktivitet
+        - name: Filtrera aktivitet
           href: control-flow-filter-activity.md
         - name: För varje aktivitet
           href: control-flow-for-each-activity.md
-        - name: Hämta metadataaktivitet
+        - name: Hämta metadata-aktivitet
           href: control-flow-get-metadata-activity.md
-        - name: If-villkorsaktivitet
+        - name: Om villkors aktivitet
           href: control-flow-if-condition-activity.md
-        - name: Sökningsaktivitet
+        - name: Söknings aktivitet
           href: control-flow-lookup-activity.md
-        - name: Ange variabelaktivitet
+        - name: Ange variabel aktivitet
           href: control-flow-set-variable-activity.md
-        - name: Växlingsaktivitet
+        - name: Växel aktivitet
           href: control-flow-switch-activity.md
         - name: Tills-aktivitet
           href: control-flow-until-activity.md
-        - name: Verifieringsaktivitet
+        - name: Validerings aktivitet
           href: control-flow-validation-activity.md
-        - name: Vänteaktivitet
+        - name: Vänta-aktivitet
           href: control-flow-wait-activity.md
-        - name: Webbaktivitet
+        - name: Webb aktivitet
           href: control-flow-web-activity.md
         - name: Webhook-aktivitet
           href: control-flow-webhook-activity.md
@@ -598,7 +592,7 @@
           href: data-movement-security-considerations.md
         - name: Dataåtkomststrategier
           href: data-access-strategies.md
-        - name: IP-adresser i Azure Integration Runtime
+        - name: IP-adresser för Azure integration runtime
           href: azure-integration-runtime-ip-addresses.md
         - name: Spara autentiseringsuppgifter i Azure Key Vault
           href: store-credentials-in-key-vault.md
@@ -608,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Hanterad identitet för Data Factory
           href: data-factory-service-identity.md
-        - name: Kryptering av kundhanterad nyckel
+        - name: Kryptera data Factory med kundhanterad nyckel
           href: enable-customer-managed-key.md
-        - name: Hanterat Virtual Network
+        - name: Hanterat virtuellt nätverk
           href: managed-virtual-network-private-endpoint.md
-        - name: Azure Private Link för Data Factory
+        - name: Azure privat länk för Data Factory
           href: data-factory-private-link.md
+        - name: Säkerhetsbaslinje för Azure
+          href: security-baseline.md
     - name: Övervaka och hantera
       items:
         - name: Övervaka visuellt

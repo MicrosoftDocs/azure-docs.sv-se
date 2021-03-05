@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994508"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199194"
 ---
 # <a name="upload-and-index-your-videos"></a>Ladda upp och indexera dina videor  
 
@@ -83,18 +83,22 @@ Med den här parametern kan du ange ett ID som ska associeras med videon. ID:t k
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-Använd den här parametern om RAW-inspelningar eller externa inspelningar innehåller bakgrundsljud. Den här parametern används för att konfigurera indexeringsprocessen. Du kan ange följande värden:
+Använd den här parametern för att definiera det AI-paket som du vill använda på ljud-eller video filen. Den här parametern används för att konfigurera indexeringsprocessen. Du kan ange följande värden:
 
-- `AudioOnly` – Indexera och extrahera insikter med hjälp av endast ljud (video ignoreras)
-- `VideoOnly` – Indexera och extrahera insikter med endast video (ignorerar ljud)
-- `Default` – Indexera och extrahera insikter med hjälp av både ljud och video
-- `DefaultWithNoiseReduction` – Indexera och extrahera insikter från både ljud och video, samtidigt som algoritmer för brusreducering tillämpas på ljudströmmen
+- `AudioOnly` – Indexera och extrahera insikter enbart med ljud (ignorerar video).
+- `VideoOnly` – Indexera och extrahera insikter med endast video (ignorerar ljud).
+- `Default` – Indexera och extrahera insikter med både ljud och video.
+- `DefaultWithNoiseReduction` – Indexera och extrahera insikter från både ljud och video, samtidigt som du använder algoritmer för brus reducering i ljud strömmen.
+
+    `DefaultWithNoiseReduction`Värdet är nu mappat till standard för inställning (inaktuellt).
+- `BasicAudio` – Indexera och extrahera insikter enbart med ljud (ignorerar video), inklusive endast grundläggande ljud funktioner (avskrift, översättning, formatera utdata och under texter).
+ - `AdvancedAudio` – Indexera och extrahera insikter med enbart ljud (ignorerar video), inklusive avancerade ljud funktioner (ljud händelse identifiering) förutom standard ljud analys.
 
 > [!NOTE]
 > Video Indexer täcker upp till två ljud spår. Om det finns fler ljud spår i filen kommer de att behandlas som ett spår.<br/>
 Om du vill indexera spåren separat måste du extrahera den relevanta ljud filen och indexera den som `AudioOnly` .
 
-Priset beror på det valda indexeringsalternativet.  
+Priset beror på det valda indexeringsalternativet. Mer information hittar du i [Media Services prissättning](https://azure.microsoft.com/pricing/details/media-services/).
 
 #### <a name="priority"></a>prioritet
 
@@ -317,7 +321,7 @@ public class AccountContractSlim
 
 De statuskoder som visas i följande tabell kan returneras av uppladdingsåtgärden.
 
-|Statuskod|ErrorType (i svarstexten)|Description|
+|Statuskod|ErrorType (i svarstexten)|Beskrivning|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Samma video håller redan på att bearbetas i det angivna kontot.|
 |400|VIDEO_ALREADY_FAILED|Samma video misslyckades med att bearbetas i det angivna kontot för mindre än 2 timmar sedan. API-klienter ska vänta minst 2 timmar innan en video laddas upp på nytt.|

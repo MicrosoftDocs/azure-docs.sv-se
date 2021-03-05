@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120597"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198446"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +109,7 @@ I följande exempel visas en förlitande part med [UserInfo-slutpunkten](userinf
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney`Elementet anger en referens till identifieraren för den användar resa som vanligt vis definieras i bas-eller tilläggs principen. I följande exempel visas den användar resa för registrering eller inloggning som anges i **RelyingParty** -elementet:
+`DefaultUserJourney`Elementet anger en referens till identifieraren för den användar resa som definieras i bas-eller tilläggs principen. I följande exempel visas den användar resa för registrering eller inloggning som anges i **RelyingParty** -elementet:
 
 *B2C_1A_signup_signin* princip:
 
@@ -219,6 +219,21 @@ Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med h
 | --------- | -------- | ----------- |
 | Namn | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden: `OpenIdConnect` eller `SAML2` . `OpenIdConnect`Värdet representerar OpenID Connect 1,0-protokoll standard som per OpenID Foundation-specifikation. `SAML2`Representerar SAML 2,0-protokoll standarden enligt Oasis-specifikationen. |
 
+### <a name="metadata"></a>Metadata
+
+När protokollet är `SAML` , innehåller ett metadataelement följande element. Mer information finns i [alternativ för att registrera ett SAML-program i Azure AD B2C](saml-service-provider-options.md).
+
+| Attribut | Krävs | Beskrivning |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | Inga | Anger om flödet som initieras av IDP stöds. Möjliga värden: `true` eller `false` (standard). | 
+| XmlSignatureAlgorithm | Inga | Metoden som Azure AD B2C använder för att signera SAML-svaret. Möjliga värden: `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Se till att du konfigurerar signeringsalgoritmen på båda sidor med samma värde. Använd bara den algoritm som ditt certifikat stöder. Information om hur du konfigurerar SAML-kontroll finns i [metadata för SAML Issuer Technical Profile](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Inga | Anger den metod som Azure AD B2C använder för att kryptera data med hjälp av algoritmen Advanced Encryption Standard (AES). Metadata styr värdet för `<EncryptedData>` elementet i SAML-svaret. Möjliga värden: `Aes256` (standard), `Aes192` , `Sha512` , eller ` Aes128` . |
+| KeyEncryptionMethod| Inga | Anger den metod som Azure AD B2C använder för att kryptera kopian av nyckeln som användes för att kryptera data. Metadata styr värdet för  `<EncryptedKey>` elementet i SAML-svaret. Möjliga värden: ` Rsa15` (standard)-RSA (Public Key Cryptography Standard) Version 1,5 algorithm, ` RsaOaep` -RSA optimal OAEP-krypteringsalgoritm (Asymmetric Encryption Encryption utfyllnad). |
+| UseDetachedKeys | Inga |  Möjliga värden: `true` , eller `false` (standard). När värdet är inställt på `true` Azure AD B2C ändrar formatet för de krypterade förändringarna. Om du använder frånkopplade nycklar läggs den krypterade försäkran som underordnad till EncrytedAssertion i stället för EncryptedData. |
+| WantsSignedResponses| Inga | Anger om Azure AD B2C signerar `Response` avsnittet i SAML-svaret. Möjliga värden: `true` (standard) eller `false` .  |
+| RemoveMillisecondsFromDateTime| Inga | Anger om millisekunderna ska tas bort från datetime-värden inom SAML-svaret (bland annat IssueInstant, NotBefore, NotOnOrAfter och AuthnInstant). Möjliga värden: `false` (standard) eller `true` .  |
+
+
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** -elementet innehåller följande element:
@@ -238,8 +253,9 @@ Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med h
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Med **SubjectNameingInfo** -elementet kan du styra värdet för token-ämnet:
+
 - **JWT-token** – `sub` anspråket. Detta är ett huvud konto som används för att kontrollera information, t. ex. användare av ett program. Värdet är oföränderligt och kan inte tilldelas om eller återanvändas. Den kan användas för att utföra säkra verifierings kontroller, till exempel när token används för att få åtkomst till en resurs. Som standard fylls ämnes anspråket med objekt-ID: t för användaren i katalogen. Mer information finns i [konfiguration av token, session och enkel inloggning](session-behavior.md).
-- **SAML-token** – det `<Subject><NameID>` element som identifierar ämnes elementet. NameId-formatet kan ändras.
+- **SAML-token** – `<Subject><NameID>` elementet som identifierar ämnes elementet. NameId-formatet kan ändras.
 
 **SubjectNamingInfo** -elementet innehåller följande attribut:
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651067"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198531"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurera inställningar för Azure AD-Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ Konfigurera utelåsnings inställningarna för kontot genom att utföra följand
 
 ## <a name="block-and-unblock-users"></a>Blockera och avblockera användare
 
-Om en användares enhet har tappats bort eller blivit stulen kan du blockera Azure AD Multi-Factor Authentication-försök för det associerade kontot. Alla Azure AD Multi-Factor Authentication-försök för blockerade användare nekas automatiskt. Användarna är blockerade i 90 dagar från blockeringens starttid.
+Om en användares enhet har tappats bort eller blivit stulen kan du blockera Azure AD Multi-Factor Authentication-försök för det associerade kontot. Alla Azure AD Multi-Factor Authentication-försök för blockerade användare nekas automatiskt. Användarna är blockerade i 90 dagar från blockeringens starttid. Vi har publicerat en video om [hur du blockerar och avblockerar användare i din klient organisation](https://www.youtube.com/watch?v=WdeE1On4S1o) för att visa hur du gör detta.
 
 ### <a name="block-a-user"></a>Blockera en användare
 

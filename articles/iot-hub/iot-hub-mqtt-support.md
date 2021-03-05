@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: df706a83c4892c15140e5d5c827a248156b66069
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 728014c53ab019f25bdc9b097c8b493411833aaa
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095690"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198854"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunicera med IoT-hubben med MQTT-protokollet
 
@@ -81,11 +81,11 @@ För att säkerställa att en klient-IoT Hub anslutning förblir aktiv skickar b
 
 |Språk  |Standard intervall för Keep-Alive  |Konfigurerbar  |
 |---------|---------|---------|
-|Node.js     |   180 sekunder      |     No    |
-|Java     |    230 sekunder     |     No    |
+|Node.js     |   180 sekunder      |     Inga    |
+|Java     |    230 sekunder     |     Inga    |
 |C     | 240 sekunder |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekunder |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 sekunder |  No   |
+|Python   | 60 sekunder |  Inga   |
 
 I [MQTT-specifikationen](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)är IoT Hub Keep-Alive-pingverktyget 1,5 gånger klienten Keep-Alive-värde. IoT Hub begränsar dock den maximala tids gränsen på Server sidan till 29,45 minuter (1767 sekunder) eftersom alla Azure-tjänster är kopplade till Azure Load Balancer TCP timeout för inaktivitet, som är 29,45 minuter. 
 
@@ -160,7 +160,7 @@ Om en enhet inte kan använda enhets-SDK: erna kan den fortfarande ansluta till 
 
   Mer information om hur du genererar SAS-token finns i enhets avsnittet i [använda IoT Hub säkerhetstoken](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  När du testar kan du också använda plattforms oberoende [Azure IoT-verktyg för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) eller CLI-tillägg kommandot [AZ IoT Hub generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token&preserve-view=true) för att snabbt skapa en SAS-token som du kan kopiera och klistra in i din egen kod.
+  När du testar kan du också använda plattforms oberoende [Azure IoT-verktyg för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) eller CLI-tillägg kommandot [AZ IoT Hub generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) för att snabbt skapa en SAS-token som du kan kopiera och klistra in i din egen kod.
 
 ### <a name="for-azure-iot-tools"></a>För Azure IoT-verktyg
 
@@ -317,7 +317,7 @@ IoT Hub levererar meddelanden med **ämnes namnet** `devices/{device_id}/message
 
 I meddelanden från moln till enhet visas värdena i egenskaps uppsättningen som i följande tabell:
 
-| Egenskaps värde | Bilden | Description |
+| Egenskaps värde | Bilden | Beskrivning |
 |----|----|----|
 | `null` | `key` | Endast nyckeln visas i egenskaps uppsättningen |
 | tom sträng | `key=` | Nyckeln följt av ett likhets tecken utan värde |

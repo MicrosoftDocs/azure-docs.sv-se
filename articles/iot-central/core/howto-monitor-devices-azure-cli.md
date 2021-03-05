@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122968"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199314"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Övervaka enhetsanslutningar med Azure CLI
 
@@ -22,7 +22,7 @@ ms.locfileid: "92122968"
 
 Använd Azure CLI IoT-tillägget för att se meddelanden som dina enheter skickar till IoT Central och observera ändringar på enheten. Du kan använda det här verktyget för att felsöka och kontrol lera enhets anslutningen och diagnostisera problem med enhets meddelanden som inte når molnet eller enheter som inte svarar på dubbla ändringar.
 
-[Mer information finns i referensen för Azure CLI-tillägg](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[Mer information finns i referensen för Azure CLI-tillägg](/cli/azure/ext/azure-iot/iot/central)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -62,7 +62,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>Hämta program-ID för din IoT Central-app
-Kopiera **program-ID**i **Administration/program inställningar**. Du använder det här värdet i senare steg.
+Kopiera **program-ID** i **Administration/program inställningar**. Du använder det här värdet i senare steg.
 
 ### <a name="monitor-messages"></a>Övervaka meddelanden
 Övervaka meddelanden som skickas till din IoT Central-app från dina enheter. Utdata innehåller alla rubriker och anteckningar.

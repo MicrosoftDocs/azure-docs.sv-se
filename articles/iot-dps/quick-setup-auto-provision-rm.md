@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928935"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198633"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Snabb start: Konfigurera IoT Hub Device Provisioning Service (DPS) med en ARM-mall
 
@@ -136,13 +136,13 @@ Logga in på ditt Azure-konto och välj din prenumeration.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
-1. Verifiera distributionen genom att köra följande [kommando för att visa en lista över resurser](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) och leta efter den nya etablerings tjänsten och IoT Hub i utdata:
+1. Verifiera distributionen genom att köra följande [kommando för att visa en lista över resurser](/cli/azure/resource#az-resource-list) och leta efter den nya etablerings tjänsten och IoT Hub i utdata:
 
     ```azurecli
      az resource list -g "${projectName}rg"
     ```
 
-2. Kontrol lera att navet redan är länkat till DPS-resursen genom att köra följande [kommando för DPS-tillägget show](/cli/azure/iot/dps?view=azure-cli-latest#az_iot_dps_show&preserve-view=true).
+2. Kontrol lera att navet redan är länkat till DPS-resursen genom att köra följande [kommando för DPS-tillägget show](/cli/azure/iot/dps#az_iot_dps_show).
 
     ```azurecli
      az iot dps show --name <Your provisioningServiceName>

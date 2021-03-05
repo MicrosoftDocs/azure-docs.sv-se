@@ -3,12 +3,12 @@ title: Aktivera hanterad identitet i behållar gruppen
 description: Lär dig hur du aktiverar en hanterad identitet i Azure Container Instances som kan autentiseras med andra Azure-tjänster
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 67ef17b77a9db92e539dd860a3083760fe1160db
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a0d029e39122ca7bb858103f4d7f88e2536850d5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558954"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198327"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Använda hanterade identiteter med Azure Container Instances
 
@@ -53,13 +53,13 @@ Om du vill använda en hanterad identitet måste identiteten beviljas åtkomst t
 
 I exemplen i den här artikeln används en hanterad identitet i Azure Container Instances för att få åtkomst till en Azure Key Vault-hemlighet. 
 
-Skapa först en resursgrupp med namnet *myResourceGroup* på platsen *eastus* med följande [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)-kommando:
+Skapa först en resursgrupp med namnet *myResourceGroup* på platsen *eastus* med följande [az group create](/cli/azure/group#az-group-create)-kommando:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Använd kommandot [AZ-valv](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) för att skapa ett nyckel valv. Se till att ange ett unikt nyckel valvs namn. 
+Använd kommandot [AZ-valv](/cli/azure/keyvault#az-keyvault-create) för att skapa ett nyckel valv. Se till att ange ett unikt nyckel valvs namn. 
 
 ```azurecli-interactive
 az keyvault create \
@@ -68,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-Lagra en exempel hemlighet i nyckel valvet med kommandot [AZ Key Vault Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) :
+Lagra en exempel hemlighet i nyckel valvet med kommandot [AZ Key Vault Secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) :
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -83,7 +83,7 @@ Fortsätt med följande exempel för att komma åt nyckel valvet med antingen en
 
 ### <a name="create-an-identity"></a>Skapa en identitet
 
-Skapa först en identitet i din prenumeration med kommandot [AZ Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) . Du kan använda samma resurs grupp som användes för att skapa nyckel valvet eller använda en annan.
+Skapa först en identitet i din prenumeration med kommandot [AZ Identity Create](/cli/azure/identity#az-identity-create) . Du kan använda samma resurs grupp som användes för att skapa nyckel valvet eller använda en annan.
 
 ```azurecli-interactive
 az identity create \
@@ -91,7 +91,7 @@ az identity create \
   --name myACIId
 ```
 
-Om du vill använda identiteten i följande steg använder du kommandot [AZ Identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) för att lagra identitetens huvud namn-ID och resurs-ID i variabler.
+Om du vill använda identiteten i följande steg använder du kommandot [AZ Identity show](/cli/azure/identity#az-identity-show) för att lagra identitetens huvud namn-ID och resurs-ID i variabler.
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
@@ -109,7 +109,7 @@ resourceID=$(az identity show \
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Bevilja användare tilldelad identitets åtkomst till nyckel valvet
 
-Kör följande [AZ-nyckel valv set-princip](/cli/azure/keyvault?view=azure-cli-latest) kommando för att ange en åtkomst princip i nyckel valvet. I följande exempel tillåts den användare-tilldelade identiteten att hämta hemligheter från nyckel valvet:
+Kör följande [AZ-nyckel valv set-princip](/cli/azure/keyvault) kommando för att ange en åtkomst princip i nyckel valvet. I följande exempel tillåts den användare-tilldelade identiteten att hämta hemligheter från nyckel valvet:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -121,7 +121,7 @@ Kör följande [AZ-nyckel valv set-princip](/cli/azure/keyvault?view=azure-cli-l
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>Aktivera användardefinierad identitet i en behållar grupp
 
-Kör följande kommando för [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) för att skapa en behållar instans baserad på Microsofts `azure-cli` avbildning. I det här exemplet finns en grupp med en behållare som du kan använda interaktivt för att köra Azure CLI för att få åtkomst till andra Azure-tjänster. I det här avsnittet används endast det grundläggande operativ systemet. Ett exempel på hur du använder Azure CLI i behållaren finns i [Aktivera systemtilldelad identitet i en behållar grupp](#enable-system-assigned-identity-on-a-container-group). 
+Kör följande kommando för [AZ container Create](/cli/azure/container#az-container-create) för att skapa en behållar instans baserad på Microsofts `azure-cli` avbildning. I det här exemplet finns en grupp med en behållare som du kan använda interaktivt för att köra Azure CLI för att få åtkomst till andra Azure-tjänster. I det här avsnittet används endast det grundläggande operativ systemet. Ett exempel på hur du använder Azure CLI i behållaren finns i [Aktivera systemtilldelad identitet i en behållar grupp](#enable-system-assigned-identity-on-a-container-group). 
 
 `--assign-identity`Parametern skickar din användarspecifika hanterade identitet till gruppen. Kommandot med lång körning håller behållaren igång. I det här exemplet används samma resurs grupp som användes för att skapa nyckel valvet, men du kan ange ett annat.
 
@@ -134,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Inom några sekunder bör du få ett svar från Azure CLI om att distributionen har slutförts. Kontrol lera statusen med kommandot [AZ container show](/cli/azure/container?view=azure-cli-latest#az-container-show) .
+Inom några sekunder bör du få ett svar från Azure CLI om att distributionen har slutförts. Kontrol lera statusen med kommandot [AZ container show](/cli/azure/container#az-container-show) .
 
 ```azurecli-interactive
 az container show \
@@ -206,7 +206,7 @@ Svaret ser ut ungefär så här, vilket visar hemligheten. I din kod kan du pars
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>Aktivera systemtilldelad identitet i en behållar grupp
 
-Kör följande kommando för [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) för att skapa en behållar instans baserad på Microsofts `azure-cli` avbildning. I det här exemplet finns en grupp med en behållare som du kan använda interaktivt för att köra Azure CLI för att få åtkomst till andra Azure-tjänster. 
+Kör följande kommando för [AZ container Create](/cli/azure/container#az-container-create) för att skapa en behållar instans baserad på Microsofts `azure-cli` avbildning. I det här exemplet finns en grupp med en behållare som du kan använda interaktivt för att köra Azure CLI för att få åtkomst till andra Azure-tjänster. 
 
 `--assign-identity`Parametern utan ytterligare värde aktiverar en systemtilldelad hanterad identitet i gruppen. Identiteten är begränsad till resurs gruppen för behållar gruppen. Kommandot med lång körning håller behållaren igång. I det här exemplet används samma resurs grupp som användes för att skapa nyckel valvet, vilket är i identitets omfånget.
 
@@ -255,7 +255,7 @@ spID=$(az container show \
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Bevilja åtkomst till behållar gruppen till nyckel valvet
 
-Kör följande [AZ-nyckel valv set-princip](/cli/azure/keyvault?view=azure-cli-latest) kommando för att ange en åtkomst princip i nyckel valvet. I följande exempel kan Systemhanterad identitet Hämta hemligheter från nyckel valvet:
+Kör följande [AZ-nyckel valv set-princip](/cli/azure/keyvault) kommando för att ange en åtkomst princip i nyckel valvet. I följande exempel kan Systemhanterad identitet Hämta hemligheter från nyckel valvet:
 
 ```azurecli-interactive
  az keyvault set-policy \

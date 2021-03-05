@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715708"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199670"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Så här använder du Postman för att skicka förfrågningar till Azure Digitals dubbla API: er
 
@@ -21,7 +21,7 @@ ms.locfileid: "101715708"
 
 Den här artikeln beskriver hur du konfigurerar [Postman rest-klienten](https://www.getpostman.com/) så att den interagerar med Azure Digitals dubbla API: er med hjälp av följande steg:
 
-1. Använd [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) för att hämta en Bearer-token som du ska använda för att skapa API-begäranden i Postman.
+1. Använd [Azure CLI](/cli/azure/install-azure-cli) för att hämta en Bearer-token som du ska använda för att skapa API-begäranden i Postman.
 1. Konfigurera en Postman-samling och konfigurera Postman REST-klienten så att den använder din Bearer-token för att autentisera.
 1. Använd den konfigurerade Postman för att skapa och skicka en begäran till Azure Digitals dubbla API: er.
 
@@ -41,9 +41,9 @@ Sedan hämtar du Skriv bords versionen av Postman-klienten. Gå till [*www.getpo
 
 Nu när du har konfigurerat Postman och din Azure Digital-instansen måste du skaffa en Bearer-token som Postman-begäranden kan använda för att auktorisera mot Azure Digitals dubbla API: er.
 
-Det finns flera möjliga sätt att hämta denna token. I den här artikeln används [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) för att logga in på ditt Azure-konto och få en token på detta sätt.
+Det finns flera möjliga sätt att hämta denna token. I den här artikeln används [Azure CLI](/cli/azure/install-azure-cli) för att logga in på ditt Azure-konto och få en token på detta sätt.
 
-Om du har ett Azure CLI [installerat lokalt](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)kan du starta en kommando tolk på datorn för att köra följande kommandon.
+Om du har ett Azure CLI [installerat lokalt](/cli/azure/install-azure-cli)kan du starta en kommando tolk på datorn för att köra följande kommandon.
 Annars kan du öppna ett [Azure Cloud Shell](https://shell.azure.com) -fönster i webbläsaren och köra kommandona där.
 
 1. Kontrol lera först att du är inloggad i Azure med rätt autentiseringsuppgifter genom att köra det här kommandot:
@@ -52,7 +52,7 @@ Annars kan du öppna ett [Azure Cloud Shell](https://shell.azure.com) -fönster 
     az login
     ```
 
-1. Sedan använder du kommandot [AZ Account get-Access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) för att hämta en Bearer-token med åtkomst till tjänsten Azure Digitals dubbla.
+1. Sedan använder du kommandot [AZ Account get-Access-token](/cli/azure/account#az_account_get_access_token) för att hämta en Bearer-token med åtkomst till tjänsten Azure Digitals dubbla.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

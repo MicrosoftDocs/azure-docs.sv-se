@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: 6e0264bc0d1bea91a6094f90c4cb41f071e17dfc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 97fcff4706d6da968c93426f85569fed9af95aac
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712591"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197817"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Snabb start: skicka telemetri från en enhet till en IoT Hub (Node.js)
 
@@ -73,7 +73,7 @@ I det här avsnittet ska du använda Node.js SDK för att skicka meddelanden fr�
     export DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
 
-1. I ditt öppna CLI-gränssnitt kör du kommandot [AZ IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelse meddelanden skrivs ut i terminalen när de tas emot.
+1. I ditt öppna CLI-gränssnitt kör du kommandot [AZ IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelse meddelanden skrivs ut i terminalen när de tas emot.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -191,12 +191,12 @@ Om du inte längre behöver de Azure-resurser som skapats i den här snabb start
 > Att ta bort en resursgrupp kan inte ångras. Resursgruppen och alla resurser som ingår i den tas bort permanent. Kontrollera att du inte av misstag tar bort fel resursgrupp eller resurser. 
 
 Ta bort en resursgrupp med namnet:
-1. Kör kommandot [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) . Det här kommandot tar bort resurs gruppen, IoT Hub och den enhets registrering som du skapade.
+1. Kör kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) . Det här kommandot tar bort resurs gruppen, IoT Hub och den enhets registrering som du skapade.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Kör kommandot [AZ Group List](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-list) för att bekräfta att resurs gruppen har tagits bort.  
+1. Kör kommandot [AZ Group List](/cli/azure/group#az-group-list) för att bekräfta att resurs gruppen har tagits bort.  
 
     ```azurecli
     az group list

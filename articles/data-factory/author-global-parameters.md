@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393827"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197910"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globala parametrar i Azure Data Factory
 
@@ -21,7 +21,7 @@ Globala parametrar är konstanter över en data fabrik som kan användas av en p
 
 ## <a name="creating-global-parameters"></a>Globala parametrar skapas
 
-Om du vill skapa en global parameter går du till fliken *globala parametrar* i avsnittet *Hantera* . Välj **ny** för att öppna sidan för skapande av sidan – navigering.
+Om du vill skapa en global parameter går du till fliken *globala parametrar* i avsnittet **Hantera** . Välj **ny** för att öppna sidan för skapande av sidan – navigering.
 
 ![Skärm bild som visar knappen nytt som du väljer för att skapa globala parametrar.](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -46,7 +46,10 @@ Det finns två sätt att integrera globala parametrar i den kontinuerliga integr
 * Inkludera globala parametrar i ARM-mallen
 * Distribuera globala parametrar via ett PowerShell-skript
 
-I de flesta användnings fall rekommenderar vi att du inkluderar globala parametrar i ARM-mallen. Detta integreras internt med den lösning som beskrivs i [CI/CD-dokumentet](continuous-integration-deployment.md). Globala parametrar läggs till som en ARM-mallparameter som standard eftersom de ofta ändras från miljö till miljö. Du kan aktivera inkludering av globala parametrar i ARM-mallen från hanterings hubben.
+I de flesta användnings fall rekommenderar vi att du inkluderar globala parametrar i ARM-mallen. Detta integreras internt med den lösning som beskrivs i [CI/CD-dokumentet](continuous-integration-deployment.md). Globala parametrar läggs till som en ARM-mallparameter som standard eftersom de ofta ändras från miljö till miljö. Du kan aktivera inkludering av globala parametrar i ARM-mallen från **Hantera** hubben.
+
+> [!NOTE]
+> Konfigurationen **inkludera i arm-mallen** är bara tillgänglig i git-läge. För närvarande är den inaktive rad i läget "Live mode" eller "Data Factory".
 
 ![Ta med i ARM-mallen](media/author-global-parameters/include-arm-template.png)
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071706"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198548"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (API: er och CLI)
 
@@ -48,7 +48,7 @@ I det här avsnittet beskrivs hur du skapar dessa slut punkter med hjälp av Azu
 
 ### <a name="create-the-endpoint"></a>Skapa slut punkten
 
-När du har skapat slut punkts resurserna kan du använda dem för en Azure digital-slutpunkt. I följande exempel visas hur du skapar slut punkter med hjälp av kommandot [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) för [Azure Digitals flätat CLI](how-to-use-cli.md). Ersätt plats hållarna i kommandona med information om dina egna resurser.
+När du har skapat slut punkts resurserna kan du använda dem för en Azure digital-slutpunkt. I följande exempel visas hur du skapar slut punkter med hjälp av kommandot [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) för [Azure Digitals flätat CLI](how-to-use-cli.md). Ersätt plats hållarna i kommandona med information om dina egna resurser.
 
 Så här skapar du en Event Grid slut punkt:
 
@@ -119,7 +119,7 @@ Följ stegen nedan för att konfigurera de här lagrings resurserna på ditt Azu
     
 #### <a name="create-the-dead-letter-endpoint"></a>Skapa slut punkten för obeställbara meddelanden
 
-Om du vill skapa en slut punkt där obeställbara meddelanden har Aktiver ATS lägger du till följande död bokstavs parameter i kommandot [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) för [Azure Digitals CLI](how-to-use-cli.md).
+Om du vill skapa en slut punkt där obeställbara meddelanden har Aktiver ATS lägger du till följande död bokstavs parameter i kommandot [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) för [Azure Digitals CLI](how-to-use-cli.md).
 
 Värdet för parametern är den SAS- **URI för obeställbara meddelanden** som skapats av det lagrings konto namn, behållare namn och SAS-token som du samlade in i [föregående avsnitt](#set-up-storage-resources). Den här parametern skapar slut punkten med nyckelbaserad autentisering.
 
@@ -204,7 +204,7 @@ Om det inte finns något väg namn dirigeras inga meddelanden utanför Azures di
 
 En väg bör tillåta att flera meddelanden och händelse typer väljs. 
 
-Händelse vägar kan skapas med Azure Digitals dubbla [ **EventRoutes** data Plans-API: er](/rest/api/digital-twins/dataplane/eventroutes) eller [ **AZ DT Route** CLI-kommandon](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true). Resten av det här avsnittet beskriver hur du skapar processen.
+Händelse vägar kan skapas med Azure Digitals dubbla [ **EventRoutes** data Plans-API: er](/rest/api/digital-twins/dataplane/eventroutes) eller [ **AZ DT Route** CLI-kommandon](/cli/azure/ext/azure-iot/dt/route). Resten av det här avsnittet beskriver hur du skapar processen.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Skapa vägar med API: er och C# SDK
 
@@ -225,7 +225,7 @@ Följande exempel metod visar hur du skapar, visar och tar bort en händelse vä
 
 ### <a name="create-routes-with-the-cli"></a>Skapa vägar med CLI
 
-Vägar kan också hanteras med [AZ DT Route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) -kommandon för Azure Digitals flätat-cli. 
+Vägar kan också hanteras med [AZ DT Route](/cli/azure/ext/azure-iot/dt/route) -kommandon för Azure Digitals flätat-cli. 
 
 Mer information om hur du använder CLI och vilka kommandon som är tillgängliga finns i [*How-to: använda Azure Digitals flätade CLI*](how-to-use-cli.md).
 

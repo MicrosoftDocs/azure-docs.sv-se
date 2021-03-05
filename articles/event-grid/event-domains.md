@@ -3,12 +3,12 @@ title: Händelse domäner i Azure Event Grid
 description: Den här artikeln beskriver hur du använder händelse domäner för att hantera flödet av anpassade händelser till olika affärs organisationer, kunder eller program.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328835"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198684"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Förstå händelse domäner för att hantera Event Grid ämnen
 
@@ -25,15 +25,8 @@ En händelse domän är ett hanterings verktyg för ett stort antal Event Grid �
 
 Händelse domäner är tillgängliga för dig samma arkitektur som används av Azure-tjänster (t. ex. lagring och IoT Hub) för att publicera sina händelser. De gör att du kan publicera händelser till tusentals ämnen. Domäner ger dig också auktoriserings-och verifierings kontroll över varje ämne så att du kan partitionera dina klienter.
 
-### <a name="example-use-case"></a>Exempel på användningsfall
-
-Händelse domäner förklaras enklast med ett exempel. Anta att du kör Contosos konstruktions maskiner, där du tillverkar traktorer, utforska-utrustning och andra tunga maskiner. Som en del av att köra verksamheten kan du skicka real tids information till kunder om utrustnings underhåll, system hälsa och kontrakt uppdateringar. All den här informationen går till olika slut punkter, inklusive din app, kund slut punkter och annan infrastruktur som kunderna har konfigurerat.
-
-Med händelse domäner kan du modellera Contosos konstruktions maskiner som en enskild händelse enhet. Var och en av dina kunder visas som ett ämne i domänen. Autentisering och auktorisering hanteras med hjälp av Azure Active Directory. Var och en av dina kunder kan prenumerera på sitt ämne och få sina händelser levererade till dem. Hanterad åtkomst via händelse domänen säkerställer att de endast kan komma åt sina ämnen.
-
-Du får också en enda slut punkt, som du kan publicera alla kund händelser till. Event Grid bör vara noga med att se till att varje ämne bara känner till de händelser som omfattas av klienten.
-
-![Exempel på Contoso-konstruktion](./media/event-domains/contoso-construction-example.png)
+## <a name="example-use-case"></a>Exempel på användningsfall
+[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>Åtkomsthantering
 
@@ -107,6 +100,8 @@ Om dessa begränsningar inte passar dig kan du kontakta produkt teamet genom att
 Händelse domäner använder samma [Operations-prissättning](https://azure.microsoft.com/pricing/details/event-grid/) som alla andra funktioner i Event Grid använda.
 
 Åtgärder fungerar på samma sätt i händelse domäner som i anpassade ämnen. Varje ingress av en händelse till en händelse domän är en åtgärd, och varje leverans försök för en händelse är en åtgärd.
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

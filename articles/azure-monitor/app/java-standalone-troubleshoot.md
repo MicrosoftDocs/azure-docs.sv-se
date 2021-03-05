@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737065"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199619"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -45,7 +45,7 @@ Loggning registreras endast om det stämmer överens med det konfigurerade trös
 
 Det bästa sättet att veta om ett visst loggnings uttryck uppfyller det konfigurerade tröskelvärdet för loggnings ramverk är att bekräfta att det visas i din normala program logg (t. ex. fil eller konsol).
 
-Observera också att om ett undantag skickas till loggen visas logg meddelandet (och undantaget) i Azure Portal under `exceptions` tabellen i stället för `traces` tabellen.
+Observera också att om ett undantags objekt skickas till loggen visas logg meddelandet (och undantags objekt information) i Azure Portal under `exceptions` tabellen i stället för `traces` tabellen.
 
 Se den [automatiskt insamlade loggnings konfigurationen](./java-standalone-config.md#auto-collected-logging) för mer information.
 

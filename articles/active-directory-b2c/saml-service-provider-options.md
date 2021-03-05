@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b9a491b639cd1b960ffe3b7164a0940770792148
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107779"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198480"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Alternativ för att registrera ett SAML-program i Azure AD B2C
 
@@ -36,7 +36,7 @@ I den här artikeln beskrivs de konfigurations alternativ som är tillgängliga 
 
 ## <a name="encrypted-saml-assertions"></a>Krypterade SAML-kontroller
 
-När ditt program förväntar sig att SAML-intyg ska vara i krypterat format måste du kontrol lera att kryptering är aktiverat i Azure AD B2C principen.
+När ditt program förväntar sig att SAML-intyg ska vara i krypterat format måste du se till att kryptering är aktiverat i principen för Azure AD B2C.
 
 Azure AD B2C använder tjänst leverantörens offentliga nyckel certifikat för att kryptera SAML-kontrollen. Den offentliga nyckeln måste finnas i SAML-programmets metadata-slutpunkt med nyckel beskrivningen "use" inställd på "kryptering", vilket visas i följande exempel:
 
@@ -60,6 +60,54 @@ Om du vill aktivera Azure AD B2C skicka krypterade intyg anger du **WantsEncrypt
     <Protocol Name="SAML2"/>
     <Metadata>
       <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+### <a name="encryption-method"></a>Krypteringsmetod
+
+Om du vill konfigurera krypterings metoden som används för att kryptera SAML Assertion-data, ställer du in `DataEncryptionMethod` metadata-nyckeln inom den förlitande parten. Möjliga värden är `Aes256` (standard), `Aes192` , `Sha512` eller `Aes128` . Metadata styr värdet för `<EncryptedData>` elementet i SAML-svaret.
+
+Om du vill konfigurera krypterings metoden som används för att kryptera kopian av nyckeln, som användes för att kryptera SAML Assertion-data, ställer du in `KeyEncryptionMethod` metadata-nyckeln inom den förlitande parten. Möjliga värden är `Rsa15` (standard)-RSA-algoritmen (Public Key Cryptography Standard) (PKCS) Version 1,5 och `RsaOaep` -RSA optimal OAEP-krypteringsalgoritm (asymmetrisk kryptering).  Metadata styr värdet för  `<EncryptedKey>` elementet i SAML-svaret.
+
+I följande exempel visas `EncryptedAssertion` avsnittet i en SAML-kontroll. Metoden krypterade data är `Aes128` och den krypterade nyckel metoden `Rsa15` .
+
+```xml
+<saml:EncryptedAssertion>
+  <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+    <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+    <dsig:KeyInfo>
+      <xenc:EncryptedKey>
+        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+        <xenc:CipherData>
+          <xenc:CipherValue>...</xenc:CipherValue>
+        </xenc:CipherData>
+      </xenc:EncryptedKey>
+    </dsig:KeyInfo>
+    <xenc:CipherData>
+      <xenc:CipherValue>...</xenc:CipherValue>
+    </xenc:CipherData>
+  </xenc:EncryptedData>
+</saml:EncryptedAssertion>
+```
+
+Du kan ändra formatet på krypterade kontroller. Konfigurera krypterings formatet genom att ange `UseDetachedKeys` metadata-nyckeln inom den förlitande parten. Möjliga värden: `true` , eller `false` (standard). När värdet är inställt på `true` , lägger de frånkopplade nycklarna till den krypterade försäkran som underordnad till i `EncrytedAssertion` stället för `EncryptedData` .
+
+Konfigurera krypterings metoden och-formatet, Använd metadata-nycklarna i den [förlitande partens tekniska profil](relyingparty.md#technicalprofile):
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="DataEncryptionMethod">Aes128</Item>
+      <Item Key="KeyEncryptionMethod">Rsa15</Item>
+      <Item Key="UseDetachedKeys">false</Item>
     </Metadata>
    ..
   </TechnicalProfile>
@@ -114,7 +162,7 @@ Vi tillhandahåller en komplett exempel princip som du kan använda för testnin
 
 Du kan konfigurera signeringsalgoritmen som används för att signera SAML-försäkran. Möjliga värden är `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Kontrol lera att den tekniska profilen och programmet använder samma signaturalgoritm. Använd bara den algoritm som ditt certifikat stöder.
 
-Konfigurera signeringsalgoritmen med hjälp av `XmlSignatureAlgorithm` nyckeln metadata i noden RelyingParty metadata.
+Konfigurera signeringsalgoritmen med hjälp av `XmlSignatureAlgorithm` metadata-nyckeln inom den förlitande partens metadata-element.
 
 ```xml
 <RelyingParty>
@@ -132,7 +180,7 @@ Konfigurera signeringsalgoritmen med hjälp av `XmlSignatureAlgorithm` nyckeln m
 
 ## <a name="saml-response-lifetime"></a>Svars tid för SAML-svar
 
-Du kan konfigurera hur lång tid som SAML-svaret ska vara giltigt. Ange livs längden med `TokenLifeTimeInSeconds` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. Det här värdet är antalet sekunder som kan förflyta från `NotBefore` tidsstämpeln som beräknas vid tidpunkten för utfärdande av token. Den tid som har valts för detta är den aktuella tiden. Standard livs längden är 300 sekunder (5 minuter).
+Du kan konfigurera hur lång tid som SAML-svaret ska vara giltigt. Ange livs längden med `TokenLifeTimeInSeconds` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. Det här värdet är antalet sekunder som kan förflyta från `NotBefore` tidsstämpeln som beräknas vid tidpunkten för utfärdande av token. Standard livs längden är 300 sekunder (5 minuter).
 
 ```xml
 <ClaimsProvider>
@@ -170,6 +218,26 @@ Till exempel när `TokenNotBeforeSkewInSeconds` är inställt på `120` sekunder
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <Item Key="TokenNotBeforeSkewInSeconds">120</Item>
+      </Metadata>
+      ...
+    </TechnicalProfile>
+```
+
+## <a name="remove-milliseconds-from-date-and-time"></a>Ta bort millisekunder från datum och tid
+
+Du kan ange om millisekunderna ska tas bort från datetime-värden inom SAML-svaret (bland annat IssueInstant, NotBefore, NotOnOrAfter och AuthnInstant). Om du vill ta bort millisekunderna ställer du in `RemoveMillisecondsFromDateTime
+` metadata-nyckeln inom den förlitande parten. Möjliga värden: `false` (standard) eller `true` .
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+      <Metadata>
+        <Item Key="RemoveMillisecondsFromDateTime">true</Item>
       </Metadata>
       ...
     </TechnicalProfile>

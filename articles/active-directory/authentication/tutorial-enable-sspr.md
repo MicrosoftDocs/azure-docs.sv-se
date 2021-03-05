@@ -10,16 +10,16 @@ ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 924ff6091e7eb6633d36f75fd6d53745139454d7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741073"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198497"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Självstudie: gör det möjligt för användare att låsa upp kontot eller återställa lösen ord med hjälp av Azure Active Directory självbetjäning för återställning av lösen ord
 
-Azure Active Directory (Azure AD) självbetjäning för återställning av lösen ord (SSPR) ger användare möjlighet att ändra eller återställa sitt lösen ord, utan någon administratör eller support vid inblandning. Om ett användar konto är låst eller om det glömmer sitt lösen ord, kan de följa prompter för att avblockera sig själva och komma tillbaka till arbetet. Detta minskar risken för support och produktivitets förlust när en användare inte kan logga in på sin enhet eller ett program.
+Azure Active Directory (Azure AD) självbetjäning för återställning av lösen ord (SSPR) ger användare möjlighet att ändra eller återställa sitt lösen ord, utan någon administratör eller support vid inblandning. Om ett användar konto är låst eller om det glömmer sitt lösen ord, kan de följa prompter för att avblockera sig själva och komma tillbaka till arbetet. Detta minskar risken för support och produktivitets förlust när en användare inte kan logga in på sin enhet eller ett program. Här är en video om [hur du konfigurerar och aktiverar lösen ords återställning via självbetjäning i din klient](https://www.youtube.com/watch?v=rA8TvhNcCvQ) (**rekommenderas**). Vi har också en video för IT-administratörer för [att lösa de sex vanligaste slut användar fel meddelandena med SSPR](https://www.youtube.com/watch?v=9RPrNVLzT8I).
 
 > [!IMPORTANT]
 > I den här självstudien visas en administratör för att aktivera återställning av lösen ord för självbetjäning. Om du är en slutanvändare som redan är registrerad för lösen ords återställning via självbetjäning och behöver gå tillbaka till ditt konto, går du till https://aka.ms/sspr .

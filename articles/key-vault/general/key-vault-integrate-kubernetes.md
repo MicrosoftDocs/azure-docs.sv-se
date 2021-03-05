@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: defe546c008f741040c78e639d5bc4b9c6e02fb8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd40ad41bda50d93943a514cd9cc3aeeab4ac948
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741454"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198888"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Självstudie: Konfigurera och kör Azure Key Vault-providern för hemligheter Store CSI-drivrutinen på Kubernetes
 
@@ -35,7 +35,7 @@ I den här guiden får du lära dig att:
 
 * Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-* Innan du börjar den här självstudien installerar du [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+* Innan du börjar den här självstudien installerar du [Azure CLI](/cli/azure/install-azure-cli-windows).
 
 Den här självstudien förutsätter att du kör Azure Kubernetes-tjänsten på Linux-noder.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278129"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198871"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Självstudie: Konfigurera en regel motor
 
@@ -51,14 +51,14 @@ I den här guiden får du lära dig att:
 
 1. När du har skapat en eller flera regler trycker du på **Spara**. Den här åtgärden skapar en regel motor konfiguration.
 
-1. När du har skapat en eller flera konfigurationer associerar du en regel motor konfiguration med en väg regel. Även om en enskild konfiguration kan tillämpas på många väg regler får en väg regel bara innehålla en regel motor konfiguration. Om du vill skapa en Association går du **Front Door designer**till  >  **Dirigerings reglerna**för din front dörr design. Välj den flödes regel som du vill lägga till regel motor konfigurationen till, gå till **flödes information**  >  **regel motor konfiguration**och välj den konfiguration som du vill koppla.
+1. När du har skapat en eller flera konfigurationer associerar du en regel motor konfiguration med en väg regel. Även om en enskild konfiguration kan tillämpas på många väg regler får en väg regel bara innehålla en regel motor konfiguration. Om du vill skapa en Association går du till  >  **Dirigerings reglerna** för din front dörr design. Välj den flödes regel som du vill lägga till regel motor konfigurationen till, gå till **flödes information**  >  **regel motor konfiguration** och välj den konfiguration som du vill koppla.
 
     ![Konfigurera till en regel för routning](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurera regel motor i Azure CLI
 
-1. Installera [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)om du inte redan gjort det. Lägg till tillägget "frontend-dörr":-AZ Extension Add--Name front-dörr. Logga sedan in och växla till prenumerationen AZ Account set--Subscription <name_or_Id>.
+1. Installera [Azure CLI](/cli/azure/install-azure-cli)om du inte redan gjort det. Lägg till tillägget "frontend-dörr":-AZ Extension Add--Name front-dörr. Logga sedan in och växla till prenumerationen AZ Account set--Subscription <name_or_Id>.
 
 1. Börja med att skapa en regel motor – det här exemplet visar en regel med en rubrik-baserad åtgärd och ett matchnings villkor. 
 
@@ -96,7 +96,7 @@ I den här guiden får du lära dig att:
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-För mer information, finns en fullständig lista över AFD-regler för motor kommandon som du hittar [här](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest).   
+För mer information, finns en fullständig lista över AFD-regler för motor kommandon som du hittar [här](/cli/azure/ext/front-door/network/front-door/rules-engine).   
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -108,11 +108,11 @@ I föregående steg konfigurerade du och associerade regel motor konfigurationen
 
 1. Avmarkera alla routningsregler som den här regel motor konfigurationen är kopplad till och klicka på Spara.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Koppla routningsregler":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Regel koppling för routning":::
 
 1. Nu kan du ta bort regel motor konfigurationen från din front dörr.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Koppla routningsregler":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Ta bort regel motor konfiguration":::
 
 ## <a name="next-steps"></a>Nästa steg
 

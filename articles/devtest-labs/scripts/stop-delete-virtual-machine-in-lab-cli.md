@@ -4,12 +4,12 @@ description: Den här artikeln innehåller ett Azure CLI-skript som stoppar och 
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 45d5b3453e29571760d47d52a1a21288be31ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3802837685281339f0ca355c677e1a0ceac067
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136140"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198226"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Använd Azure CLI för att stoppa och ta bort en virtuell dator i ett labb i Azure DevTest Labs
 
@@ -27,10 +27,10 @@ Det här Azure CLI-skriptet stoppar och tar bort en virtuell dator i ett labb.
 
 I det här skriptet används följande kommandon:
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
-| [az lab vm stop](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-stop) | Stoppar en virtuell dator i ett labb. Den här åtgärden tar ett tag att slutföra. |
-| [az lab vm delete](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-delete) | Tar bort en virtuell dator i ett labb. Den här åtgärden tar ett tag att slutföra. |
+| [az lab vm stop](/cli/azure/lab/vm#az-lab-vm-stop) | Stoppar en virtuell dator i ett labb. Den här åtgärden tar ett tag att slutföra. |
+| [az lab vm delete](/cli/azure/lab/vm#az-lab-vm-delete) | Tar bort en virtuell dator i ett labb. Den här åtgärden tar ett tag att slutföra. |
 
 
 ## <a name="next-steps"></a>Nästa steg
