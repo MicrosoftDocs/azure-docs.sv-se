@@ -10,18 +10,20 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ebe0ac1151f3a1f43072f2832e2f433182ccc82d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634370"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215365"
 ---
-# <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Vad är Azure IoT Edge för Linux på Windows (för hands version)
+# <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Vad är Azure IoT Edge for Linux on Windows (förhandsversion)
 
 Med Azure IoT Edge för Linux i Windows kan du köra Linux-arbetsbelastningar i behållare tillsammans med Windows-program i Windows IoT-distributioner. Företag som är beroende av Windows IoT för att driva sina gräns enheter kan nu dra nytta av de molnbaserade analys lösningarna som skapats i Linux.
 
 IoT Edge för Linux i Windows fungerar genom att köra en virtuell Linux-dator på en Windows-enhet. Den virtuella Linux-datorn kommer att vara förinstallerad med IoT Edge Runtime. Alla IoT Edge moduler som distribueras till enheten körs i den virtuella datorn. Under tiden kan Windows-program som körs på Windows-värd enheten kommunicera med moduler som körs i den virtuella Linux-datorn.
+
+[Kom igång](how-to-install-iot-edge-on-windows.md) med för hands versionen idag.
 
 >[!NOTE]
 >Överväg att ta med vår [produkt undersökning](https://aka.ms/AzEFLOW-Registration) för att hjälpa oss att förbättra Azure IoT Edge för Linux på Windows baserat på din IoT Edge bakgrund och mål. Du kan också använda den här undersökningen för att registrera dig för framtida Azure IoT Edge för Linux på Windows-meddelanden.

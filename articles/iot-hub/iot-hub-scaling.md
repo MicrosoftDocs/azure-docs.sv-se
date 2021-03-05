@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e786a323cfb1ebacdf7e6693e3ca4299f10aadb3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538467"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216045"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Välja rätt IoT Hub-nivå för din lösning
 
@@ -77,27 +77,27 @@ Skillnaden mellan de funktioner som stöds mellan nivåerna Basic och standard i
 
 | API | Basic-nivå | Kostnads fri/standard-nivå |
 | --- | ---------- | ------------- |
-| [Ta bort enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Ja | Ja |
+| [Ta bort enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Ja | Ja |
 | [Hämta enhet](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Ja | Ja |
 | [Ta bort modul](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Ja | Ja |
-| [Hämta modul](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) | Ja | Ja |
-| [Hämta register statistik](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | Ja | Ja |
-| [Hämta tjänste statistik](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | Ja | Ja |
-| [Skapa eller uppdatera enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) | Ja | Ja |
-| [Skapa eller uppdatera modul](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Ja | Ja |
+| [Hämta modul](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule) | Ja | Ja |
+| [Hämta register statistik](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getdevicestatistics-msrest-requestoptionsbase-) | Ja | Ja |
+| [Hämta tjänste statistik](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getservicestatistics-msrest-requestoptionsbase-) | Ja | Ja |
+| [Skapa eller uppdatera enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatedevice-string--device--servicecallback-device--) | Ja | Ja |
+| [Skapa eller uppdatera modul](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Ja | Ja |
 | [Fråga IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | Ja | Ja |
 | [Skapa SAS-URI för fil uppladdning](/rest/api/iothub/device/createfileuploadsasuri) | Ja | Ja |
 | [Ta emot meddelande om enhets bindning](/rest/api/iothub/device/receivedeviceboundnotification) | Ja | Ja |
 | [Skicka enhets händelse](/rest/api/iothub/device/senddeviceevent) | Ja | Ja |
 | Händelse för att skicka modul | Endast AMQP och MQTT | Endast AMQP och MQTT |
 | [Uppdatera fil överförings status](/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
-| [Åtgärd för Mass enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ja, förutom IoT Edge funktioner | Yes |
+| [Åtgärd för Mass enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ja, förutom IoT Edge funktioner | Yes |
 | [Avbryt import av export jobb](/rest/api/iothub/service/jobs/cancelimportexportjob) | Ja | Ja |
 | [Skapa import export jobb](/rest/api/iothub/service/jobs/createimportexportjob) | Ja | Ja |
 | [Hämta import export jobb](/rest/api/iothub/service/jobs/getimportexportjob) | Ja | Ja |
 | [Hämta import export jobb](/rest/api/iothub/service/jobs/getimportexportjobs) | Ja | Ja |
-| [Rensa kommando kön](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
-| [Hämta enhetens dubbla](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Yes |
+| [Rensa kommando kön](/javascript/api/azure-iot-digitaltwins-service/registrymanager#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
+| [Hämta enhetens dubbla](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) |   | Yes |
 | [Hämta modul, dubbla](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
 | [Anropa enhets metod](./iot-hub-devguide-direct-methods.md) |   | Yes |
 | [Uppdatera enhet, dubbla](./iot-hub-devguide-device-twins.md) |   | Yes |
@@ -106,8 +106,8 @@ Skillnaden mellan de funktioner som stöds mellan nivåerna Basic och standard i
 | [Slutför meddelande om enhets bindning](/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
 | [Avbryt jobb](/rest/api/media/jobs/canceljob) |   | Yes |
 | [Skapa jobb](/rest/api/media/jobs/create) |   | Yes |
-| [Hämta jobb](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Yes |
-| [Fråga efter jobb](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
+| [Hämta jobb](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob) |   | Yes |
+| [Fråga efter jobb](/javascript/api/azure-iot-digitaltwins-service/jobclient#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
 
 ## <a name="message-throughput"></a>Meddelande data flöde
 

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 36092e0bb7d0249837d2eaa7898e9231ecb5f5a9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3e98cfc2d8c7fb8d40c8565a1c620f123ce171ff
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146990"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217847"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Schema-och sändnings jobb (Java)
 
@@ -54,7 +54,7 @@ I slutet av den här självstudien har du en app för Java-konsolen och en Java-
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Java se Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Se till att du väljer **Java 8** under **långsiktigt stöd** för att hämta hämtningar för JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Se till att du väljer **Java 8** under **långsiktigt stöd** för att hämta hämtningar för JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -88,7 +88,7 @@ I det här avsnittet skapar du en Java-konsol-app som använder jobb för att:
 
 Så här skapar du appen:
 
-1. Skapa en tom mapp med namnet **IoT-Java-Schedule-Jobs**på din utvecklings dator.
+1. Skapa en tom mapp med namnet **IoT-Java-Schedule-Jobs** på din utvecklings dator.
 
 2. I mappen **IoT-Java-Schedule-Jobs** skapar du ett Maven-projekt med namnet **schema-Jobs** med hjälp av följande kommando i kommando tolken. Observera att detta är ett enda långt kommando:
 
@@ -130,7 +130,7 @@ Så här skapar du appen:
     </build>
     ```
 
-6. Spara och Stäng **pom.xmls ** filen.
+6. Spara och Stäng **pom.xmls** filen.
 
 7. Öppna **Schedule-jobs\src\main\java\com\mycompany\app\App.java** -filen med hjälp av en text redigerare.
 
@@ -355,7 +355,7 @@ I det här avsnittet ska du skapa en Java-konsol-app som hanterar önskade egens
     </build>
     ```
 
-6. Spara och Stäng **pom.xmls ** filen.
+6. Spara och Stäng **pom.xmls** filen.
 
 7. Öppna **Simulated-device\src\main\java\com\mycompany\app\App.java** -filen med hjälp av en text redigerare.
 

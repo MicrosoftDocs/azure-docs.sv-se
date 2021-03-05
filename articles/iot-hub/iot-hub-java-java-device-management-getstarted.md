@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 28b82c87442257124f286a5e7c949afe7f001019
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f05e1a458bc83fe4042c4b6cf35d9aa2095868ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146932"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217966"
 ---
 # <a name="get-started-with-device-management-java"></a>Kom igång med enhets hantering (Java)
 
@@ -54,7 +54,7 @@ I slutet av den här självstudien har du två Java-konsol program:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Java se Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Se till att du väljer **Java 8** under **långsiktigt stöd** för att hämta hämtningar för JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Se till att du väljer **Java 8** under **långsiktigt stöd** för att hämta hämtningar för JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -130,7 +130,7 @@ Den här konsolen ansluter till IoT Hub för att anropa den direkta metoden och 
     </build>
     ```
 
-6. Spara och Stäng **pom.xmls ** filen.
+6. Spara och Stäng **pom.xmls** filen.
 
 7. Öppna käll filen **trigger-reboot\src\main\java\com\mycompany\app\App.java** i en text redigerare.
 
@@ -290,7 +290,7 @@ I det här avsnittet ska du skapa en Java-konsol som simulerar en enhet. Appen l
     </build>
     ```
 
-6. Spara och Stäng **pom.xmls ** filen.
+6. Spara och Stäng **pom.xmls** filen.
 
 7. Öppna käll filen **Simulated-device\src\main\java\com\mycompany\app\App.java** i en text redigerare.
 
@@ -415,7 +415,7 @@ I det här avsnittet ska du skapa en Java-konsol som simulerar en enhet. Appen l
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-16. Om du vill instansiera en **DeviceClient**ersätter du koden i **main** -metoden med följande kod:
+16. Om du vill instansiera en **DeviceClient** ersätter du koden i **main** -metoden med följande kod:
 
     ```java
     System.out.println("Starting device client sample...");

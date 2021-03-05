@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 7f101097945e5f345bae351ef5ca2a23a3e14be6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8408cdada40bd3595f9bf7cf2c6a2de90040ec0b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091182"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217269"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK för SQL API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,8 +40,8 @@ ms.locfileid: "93091182"
 |Resurs  |Länk  |
 |---------|---------|
 |Hämta SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API-dokumentation  |  [Referens dokumentation för Java Script SDK](/javascript/api/%40azure/cosmos/?preserve-view=true&view=azure-node-latest)
-|Instruktioner för SDK-installation  |  [Installationsinstruktioner](https://github.com/Azure/azure-sdk-for-js)
+|API-dokumentation  |  [Referens dokumentation för Java Script SDK](/javascript/api/%40azure/cosmos/)
+|Instruktioner för SDK-installation  |  [Installationsanvisningar](https://github.com/Azure/azure-sdk-for-js)
 |Bidra till SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Exempel | [Node.js kod exempel](sql-api-nodejs-samples.md)
 | Vägledning för att komma igång | [Kom igång med Java Script SDK](sql-api-nodejs-get-started.md)
@@ -237,7 +237,7 @@ Inte alltid de mest synliga ändringarna, men de hjälper vårt team att leverer
 * Åtgärda fel i executeNext ()-typ signatur
 * Skrivfel
 
-### <a name="211"></a><a name="2.1.1"></a>punkt
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Bygg om omstrukturering. Gör det möjligt att hämta SDK-versionen vid Bygg tiden.
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -428,7 +428,7 @@ Microsoft tillhandahåller ett meddelande minst **12 månader** i förväg för 
 | [2.1.4](#2.1.4) |15 mars 2019 |--- |
 | [2.1.3](#2.1.3) |8 mars 2019 |--- |
 | [2.1.2](#2.1.2) |28 januari 2019 |--- |
-| [punkt](#2.1.1) |5 december 2018 |--- |
+| [2.1.1](#2.1.1) |5 december 2018 |--- |
 | [2.1.0](#2.1.0) |4 december 2018 |--- |
 | [2.0.5](#2.0.5) |7 november 2018 |--- |
 | [2.0.4](#2.0.4) |30 oktober 2018 |--- |

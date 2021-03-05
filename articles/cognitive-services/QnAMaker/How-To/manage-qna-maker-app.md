@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987934"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217337"
 ---
 # <a name="manage-qna-maker-app"></a>Hantera QnA Maker app
 
@@ -29,7 +29,7 @@ Du kan inte dela en viss kunskaps bas i en QnA Maker-tjänst. Om du vill ha mer 
 
 ### <a name="add-a-user-account-to-the-qna-maker-resource"></a>Lägg till ett användar konto i QnA Maker resursen
 
-Följande steg använder rollen medarbetare men någon av [rollerna](../reference-role-based-access-control.md) kan läggas till med hjälp av de här stegen
+Följande steg använder rollen medarbetare men någon av rollerna kan läggas till med hjälp av de här stegen
 
 1. Logga in på [Azure](https://portal.azure.com/) Portal och gå till din QNA Maker-resurs.
 

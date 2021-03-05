@@ -10,24 +10,27 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d780ce6362e34c801b4da25332bff90f0b7515
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4ba8a6b530f3f3650959eac90bba5b05e3ac0643
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659281"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215416"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummer typer i Azure Communication Services
 
-[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> Tillgänglighet för telefonnummer är för närvarande begränsat till Azure-prenumerationer som har en fakturerings adress i USA. Mer information finns i avsnittet om [prenumerations kvalifikationer](#azure-subscriptions-eligibility) i det här dokumentet.
 
 Azure Communication Services gör att du kan använda telefonnummer för att ringa röst samtal och skicka SMS-meddelanden med det offentliga telefonnätet. I det här dokumentet granskar vi telefonnummer typer, konfigurations alternativ och regions tillgänglighet för att planera din telefoni-och SMS-lösning med hjälp av kommunikations tjänster.
 
 ## <a name="number-types-and-features"></a>Tal typer och funktioner
-Kommunikations tjänsterna erbjuder två typer av telefonnummer: **lokalt** och **avgiftsfritt**.
+Kommunikations tjänsterna erbjuder två typer av telefonnummer: **lokalt** och **avgiftsfritt**. 
 
 ### <a name="local-numbers"></a>Lokala nummer
-Lokala (geografiska) nummer är 10-siffriga telefonnummer som består av de lokala rikt numren i USA. Är till exempel `+1 (206) XXX-XXXX` ett lokalt nummer med ett rikt nummer för `206` . Det här rikt numret tilldelas staden Seattle. Dessa telefonnummer används vanligt vis av enskilda personer och lokala företag. Azure Communication Services erbjuder lokala nummer i USA. Dessa siffror kan användas för att ringa telefonsamtal, men inte för att skicka SMS-meddelanden.
+Lokala (geografiska) nummer är 10-siffriga telefonnummer som består av de lokala rikt numren i USA. Är till exempel `+1 (206) XXX-XXXX` ett lokalt nummer med ett rikt nummer för `206` . Det här rikt numret tilldelas staden Seattle. Dessa telefonnummer används vanligt vis av enskilda personer och lokala företag. Azure Communication Services erbjuder lokala nummer i USA. Dessa siffror kan användas för att ringa telefonsamtal, men inte för att skicka SMS-meddelanden. 
 
 ### <a name="toll-free-numbers"></a>Avgiftsfritt nummer
 Avgiftsfritt nummer är 10-siffriga telefonnummer med distinkta rikt nummer som kan anropas från ett telefonnummer kostnads fritt. Till exempel `+1 (800) XXX-XXXX` är ett avgiftsfritt nummer i Nordamerika regionen. Dessa telefonnummer används vanligt vis för kund tjänst. Azure Communication Services erbjuder avgiftsfria nummer i USA. De här numren kan användas för att ringa telefonsamtal och skicka SMS-meddelanden. Avgiftsfritt nummer kan inte användas av personer och kan bara tilldelas till program.
@@ -36,9 +39,9 @@ Avgiftsfritt nummer är 10-siffriga telefonnummer med distinkta rikt nummer som 
 
 Om ditt telefonnummer ska användas av ett program (till exempel för att ringa eller skicka meddelanden åt din tjänst), kan du välja ett avgiftsfritt eller lokalt (geografiskt) nummer. Du kan välja ett avgiftsfritt nummer om ditt program skickar SMS-meddelanden och/eller gör anrop.
 
-Om ditt telefonnummer används av en person (till exempel en användare av ditt anrops program), måste det lokala (geografiska) telefonnumret användas.
+Om ditt telefonnummer används av en person (till exempel en användare av ditt anrops program), måste det lokala (geografiska) telefonnumret användas. 
 
-I tabellen nedan sammanfattas dessa telefonnummer typer:
+I tabellen nedan sammanfattas dessa telefonnummer typer: 
 
 | Typ av telefonnummer | Exempel                              | Lands tillgänglighet    | Telefon funktion |Vanligt användnings fall                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
@@ -46,7 +49,7 @@ I tabellen nedan sammanfattas dessa telefonnummer typer:
 | Toll-Free         | + 1 (avgiftsfrit rikt *nummer*) xxx xx xx | USA                      | Anrop (utgående), SMS (inkommande/utgående)| Tilldela telefonnummer till IVR-system/robotar-system (Interactive Voice Response), SMS-program                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services
+### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -54,7 +57,7 @@ För de flesta telefonnummer ger vi dig möjlighet att konfigurera en "a la cart
 
 Vilka funktioner som är tillgängliga beror på vilket land du arbetar i, ditt användnings fall och vilken typ av telefonnummer som du har valt. De här funktionerna varierar beroende på vilket land som är på grund av myndighets krav. Azure Communication Services erbjuder följande telefonnummer funktioner:
 
-- **Envägs utgående SMS** Med det här alternativet kan du skicka SMS-meddelanden till dina användare. Detta kan vara användbart i meddelande-och tvåfaktorautentisering.
+- **Envägs utgående SMS** Med det här alternativet kan du skicka SMS-meddelanden till dina användare. Detta kan vara användbart i meddelande-och tvåfaktorautentisering. 
 - **Tvåvägs inkommande och utgående SMS** Med det här alternativet kan du skicka och ta emot meddelanden från dina användare med hjälp av telefonnummer. Detta kan vara användbart i kund tjänst scenarier.
 - **Envägs utgående telefon samtal** Med det här alternativet kan du ringa till dina användare och konfigurera uppringnings-ID för utgående samtal som har placerats av tjänsten. Detta kan vara användbart i scenarier för kund tjänst och röst meddelanden.
 
@@ -71,7 +74,7 @@ I följande tabell visas var du kan hämta olika typer av telefonnummer tillsamm
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure-prenumerationer berättigar
 
-För att skaffa ett telefonnummer måste du vara på en betald Azure-prenumeration. Det går inte att hämta telefonnummer för utvärderings konton eller kostnads fria Azure-krediter.
+För att skaffa ett telefonnummer måste du vara på en betald Azure-prenumeration. Det går inte att hämta telefonnummer för utvärderings konton eller kostnads fria Azure-krediter. 
 
 För närvarande är telefonnumret för tillgänglighet begränsat till Azure-prenumerationer som har en fakturerings adress i USA.
 

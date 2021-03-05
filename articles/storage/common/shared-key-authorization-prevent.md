@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591543"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215586"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Förhindra auktorisering av delad nyckel för ett Azure Storage konto (förhands granskning)
 
@@ -22,12 +22,8 @@ Varje säker begäran till ett Azure Storage konto måste vara auktoriserad. Som
 
 Om du inte tillåter autentisering med delad nyckel för ett lagrings konto, Azure Storage neka alla efterföljande begär anden till det kontot som har behörighet till kontots åtkomst nycklar. Endast säkra begär Anden som har auktoriserats med Azure AD kommer att lyckas. Mer information om hur du använder Azure AD finns i [bevilja åtkomst till blobbar och köer med hjälp av Azure Active Directory](storage-auth-aad.md).
 
-> [!WARNING]
-> Azure Storage stöder endast Azure AD-auktorisering för förfrågningar till blob-och Queue-lagring. Om du inte tillåter auktorisering med delad nyckel för ett lagrings konto kommer förfrågningar till Azure Files eller tabell lagring som använder autentisering med delad nyckel att Miss Miss förväntas. Eftersom Azure Portal alltid använder autentisering med delad nyckel för att komma åt fil-och tabell data, och om du inte tillåter auktorisering med delad nyckel för lagrings kontot, kommer du inte att kunna komma åt fil-eller tabell data i Azure Portal.
->
-> Microsoft rekommenderar att du antingen migrerar Azure Files-eller tabell lagrings data till ett separat lagrings konto innan du tillåter åtkomst till kontot via den delade nyckeln, eller att du inte tillämpar den här inställningen på lagrings konton som stöder Azure Files-eller tabell lagrings arbets belastningar.
->
-> Att neka åtkomst till delade nycklar för ett lagrings konto påverkar inte SMB-anslutningar till Azure Files.
+> [!IMPORTANT]
+> Otillåten auktorisering av delad nyckel är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
 
 Den här artikeln beskriver hur du identifierar begär Anden som skickas med autentisering med delad nyckel och hur du kan åtgärda autentisering av delade nycklar för ditt lagrings konto. Information om hur du registrerar för för hands versionen finns i [om för hands versionen](#about-the-preview).
 
@@ -133,11 +129,23 @@ Följ de här stegen för att förhindra autentisering av delad nyckel för ett 
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Skärm bild som visar hur du tillåter åtkomst till delade nycklar för kontot":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Om du inte vill tillåta autentisering med delad nyckel för ett lagrings konto med PowerShell installerar du [AZ. Storage PowerShell-modulen](https://www.powershellgallery.com/packages/Az.Storage), version 3.4.0 eller senare. Konfigurera sedan egenskapen **AllowSharedKeyAccess** för ett nytt eller befintligt lagrings konto.
+
+I följande exempel visas hur du tillåter åtkomst med delad nyckel för ett befintligt lagrings konto med PowerShell. Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Om du inte vill tillåta autentisering med delad nyckel för ett lagrings konto med Azure CLI installerar du Azure CLI version 2.9.1 eller senare. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli). Konfigurera sedan egenskapen **allowSharedKeyAccess** för ett nytt eller befintligt lagrings konto.
 
-I följande exempel visas hur du ställer in egenskapen **allowSharedKeyAccess** med Azure CLI. Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden:
+I följande exempel visas hur du tillåter åtkomst med delad nyckel för ett befintligt lagrings konto med Azure CLI. Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden:
 
 ```azurecli-interactive
 $storage_account_id=$(az resource show \
@@ -236,12 +244,17 @@ Vissa Azure-verktyg ger dig möjlighet att använda Azure AD-auktorisering för 
 | Azure IoT Hub | Stöds. Mer information finns i [IoT Hub stöd för virtuella nätverk](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell är ett integrerat gränssnitt i Azure Portal. Azure Cloud Shell Hosts-filer för persistence i en Azure-filresurs i ett lagrings konto. De här filerna blir otillgängliga om inte auktorisering av den delade nyckeln är tillåtet för det lagrings kontot. Mer information finns i [Anslut lagringen för Microsoft Azure filer](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Om du vill köra kommandon i Azure Cloud Shell för att hantera lagrings konton för vilka åtkomst till den delade nyckeln är otillåten, kontrol lera först att du har beviljats de behörigheter som krävs för dessa konton via Azure RBAC. Mer information finns i [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
+## <a name="transition-azure-files-and-table-storage-workloads"></a>Över gång Azure Files-och tabell lagrings arbets belastningar
+
+Azure Storage stöder endast Azure AD-auktorisering för förfrågningar till blob-och Queue-lagring. Om du inte tillåter auktorisering med delad nyckel för ett lagrings konto kommer förfrågningar till Azure Files eller tabell lagring som använder autentisering med delad nyckel att Miss Miss förväntas. Eftersom Azure Portal alltid använder autentisering med delad nyckel för att komma åt fil-och tabell data, och om du inte tillåter auktorisering med delad nyckel för lagrings kontot, kommer du inte att kunna komma åt fil-eller tabell data i Azure Portal.
+
+Microsoft rekommenderar att du antingen migrerar Azure Files-eller tabell lagrings data till ett separat lagrings konto innan du tillåter åtkomst till kontot via den delade nyckeln, eller att du inte tillämpar den här inställningen på lagrings konton som stöder Azure Files-eller tabell lagrings arbets belastningar.
+
+Att neka åtkomst till delade nycklar för ett lagrings konto påverkar inte SMB-anslutningar till Azure Files.
+
 ## <a name="about-the-preview"></a>Om för hands versionen
 
 För hands versionen för att tillåta autentisering av delad nyckel är tillgänglig i det offentliga Azure-molnet. Det finns stöd för lagrings konton som endast använder Azure Resource Manager distributions modell. Information om vilka lagrings konton som använder Azure Resource Manager distributions modell finns i [typer av lagrings konton](storage-account-overview.md#types-of-storage-accounts).
-
-> [!IMPORTANT]
-> Den här för hands versionen är endast avsedd för användning utan produktion.
 
 Förhands granskningen innehåller de begränsningar som beskrivs i följande avsnitt.
 

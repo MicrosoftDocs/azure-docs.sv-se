@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934393"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215739"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Instrumentpanelen för användning i Commersial Marketplace-analys
 
@@ -154,9 +154,9 @@ _**Tabell 1: ord lista med data termer**_
 | NormalizedUsage | Normaliserad användning | Totalt antal normaliserade användnings enheter som används av till gången som distribueras av kunden.<br>Normaliserad användnings tid definieras som de användnings timmar som normaliseras för antalet virtuella dator kärnor ([antal VM-kärnor] x [timmar RAW Usage]). Virtuella datorer som anges som "SHAREDCORE" använder 1/6 (eller 0,1666) som [antal VM-kärnor] multiplikatorn. |
 | MeteredUsage | Mätnings användning | Totalt antal användnings enheter som förbrukas av de mätare som är konfigurerade med erbjudandet som distribueras av kunden. |
 | RawUsage | Rå användning | Det totala antalet obearbetade användnings enheter som används av till gången som distribueras av kunden.<br>Rå användnings timmar definieras som mängden tid som virtuella datorer har körts i användnings enheter. |
-| Uppskattad utökad avgift (CC) | Uppskattad utökad avgift i kund valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av pris (CC) och förbruknings antal. |
-| Uppskattad utökad avgift (PC) | Uppskattad utökad avgift i utbetalnings valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av uppskattat pris (PC) och förbruknings antal. |
-||||
+| Uppskattad utökad avgift (CC) | Uppskattad utökad avgift i kund valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av pris (CC) och RAW-användning. |
+| Uppskattad utökad avgift (PC) | Uppskattad utökad avgift i utbetalnings valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av uppskattat pris (PC) och rå Usage. |
+|
 
 ### <a name="usage-page-filters"></a>Användnings sid filter
 

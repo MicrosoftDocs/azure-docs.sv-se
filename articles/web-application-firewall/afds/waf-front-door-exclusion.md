@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: c2c84b508ee86ebdd82dbcc7040106142187c506
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1b94a3d8675461779fa9d543bf0153b165ab4fb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563468"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217592"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Brand vägg för webbaserade program (WAF) med undantags listor för front dörr tjänsten 
 
-Ibland kan brand vägg för webbaserade program (WAF) blockera en begäran som du vill tillåta för ditt program. Active Directory infogar till exempel tokens som används för autentisering. Dessa tokens kan innehålla specialtecken som kan utlösa ett falskt positivt värde från WAF-reglerna. Med undantags listor för WAF kan du utelämna vissa begär ande attribut från en WAF-utvärdering.  En undantags lista kan konfigureras med  [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)eller Azure Portal. I följande exempel visas Azure Portal-konfigurationen. 
+Ibland kan brand vägg för webbaserade program (WAF) blockera en begäran som du vill tillåta för ditt program. Active Directory infogar till exempel tokens som används för autentisering. Dessa tokens kan innehålla specialtecken som kan utlösa ett falskt positivt värde från WAF-reglerna. Med undantags listor för WAF kan du utelämna vissa begär ande attribut från en WAF-utvärdering.  En undantags lista kan konfigureras med  [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)eller Azure Portal. I följande exempel visas Azure Portal-konfigurationen. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Konfigurera undantags listor med hjälp av Azure Portal
 **Hantera undantag** är tillgängligt från WAF-portalen under **hanterade regler**
 
@@ -36,11 +36,11 @@ Följande attribut kan läggas till i undantags listor efter namn. Värdena för
 
 Du kan ange en exakt matchning av rubrik, brödtext, cookie eller frågesträng för begäran.  Du kan också ange partiella matchningar om du vill. Följande operatorer är de matchnings villkor som stöds:
 
-- **Är lika med** : den här operatorn används för en exakt matchning. Om du till exempel vill välja ett sidhuvud med namnet **bearerToken** använder du operatorn Equals med Selector Set as **bearerToken**.
-- **Börjar med** : den här operatorn matchar alla fält som börjar med det angivna värdet för väljaren.
-- **Slutar med** : den här operatorn matchar alla begär ande fält som slutar med det angivna väljar värdet.
-- **Contains** : den här operatorn matchar alla begär ande fält som innehåller det angivna värdet för väljaren.
-- **Lika med alla** : den här operatorn matchar alla begär ande fält. * är väljar värde.
+- **Är lika med**: den här operatorn används för en exakt matchning. Om du till exempel vill välja ett sidhuvud med namnet **bearerToken** använder du operatorn Equals med Selector Set as **bearerToken**.
+- **Börjar med**: den här operatorn matchar alla fält som börjar med det angivna värdet för väljaren.
+- **Slutar med**: den här operatorn matchar alla begär ande fält som slutar med det angivna väljar värdet.
+- **Contains**: den här operatorn matchar alla begär ande fält som innehåller det angivna värdet för väljaren.
+- **Lika med alla**: den här operatorn matchar alla begär ande fält. * är väljar värde.
 
 Rubrik-och cookie-namn är Skift läges känsliga.
 
@@ -58,7 +58,7 @@ Om ett rubrik värde, värde för cookie-värde, post argument eller fråge argu
 Vi stöder för närvarande endast regel undantag för ovanstående matchVariableNames i sina WAF-loggar. För alla andra matchVariableNames måste du antingen inaktivera regler som ger falska positiva identifieringar eller skapa en anpassad regel som uttryckligen tillåter dessa förfrågningar. I synnerhet när matchVariableName är CookieName, huvud, PostParamName eller QueryParamName, innebär det att själva namnet utlöser regeln. Regel undantag har inget stöd för dessa matchVariableNames för tillfället.
 
 
-Om du undantar en begär ande brödtext post argument som heter *foo* , ska ingen regel Visa POSTPARAMVALUE: foo som matchVariableName i dina WAF-loggar. Du kan dock fortfarande se en regel med matchVariableName-InitialBodyContents som matchar värdet för post-param FOO eftersom post-param-värden är en del av InitialBodyContents.
+Om du undantar en begär ande brödtext post argument som heter *foo*, ska ingen regel Visa POSTPARAMVALUE: foo som matchVariableName i dina WAF-loggar. Du kan dock fortfarande se en regel med matchVariableName-InitialBodyContents som matchar värdet för post-param FOO eftersom post-param-värden är en del av InitialBodyContents.
 
 Du kan använda undantags listor för alla regler i den hanterade regel uppsättningen, för regler för en viss regel grupp eller till en enskild regel som visas i föregående exempel.
 

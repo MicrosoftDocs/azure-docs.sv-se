@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 96640e55d1ad71bc0e448976b2c9f1fa85b2ab62
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696275"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216606"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK för SQL API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,7 +50,7 @@ Det här är den ursprungliga Azure Cosmos DB synkronisera Java SDK v2 för SQL 
 |**Bidra till SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Komma igång**|[Kom igång med Java SDK](./create-sql-api-java.md)|
 |**Själv studie kurs om webbapp**|[Utveckling av webb program med Azure Cosmos DB](sql-api-java-application.md)|
-|**Lägsta körnings tid som stöds**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|**Lägsta körnings tid som stöds**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>Viktig information
 
@@ -109,7 +109,7 @@ Det här är den ursprungliga Azure Cosmos DB synkronisera Java SDK v2 för SQL 
 * Åtgärdat fel i global slut punkts hanterare för att framtvinga uppdatering.
 * Fast bugg för upsertar med för-villkor i direkt läge.
 
-### <a name="211"></a><a name="2.1.1"></a>punkt
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Fast bugg i Gateway-diskcachen.
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -294,7 +294,7 @@ Microsoft meddelar kunder minst **12 månader** innan en SDK-version dras tillb
 | [2.2.0](#2.2.0) |Mar 27, 2019 |--- |
 | [2.1.3](#2.1.3) |Mar 13, 2019 |--- |
 | [2.1.2](#2.1.2) |Mar 09, 2019 |--- |
-| [punkt](#2.1.1) |Dec 13, 2018 |--- |
+| [2.1.1](#2.1.1) |Dec 13, 2018 |--- |
 | [2.1.0](#2.1.0) |Nov 20, 2018 |--- |
 | [2.0.0](#2.0.0) |21 september 2018 |--- |
 | [1.16.4](#1.16.4) |10 september 2018 |30 maj 2020 |

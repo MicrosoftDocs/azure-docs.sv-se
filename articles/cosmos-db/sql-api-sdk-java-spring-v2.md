@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d5c85095e767c0e92c22410054ac4f8fc5267660
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1f78d7185415b66445c78f3b4cdb54ed0d63cb0a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097149"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216623"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB v2 för Core (SQL) API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +55,7 @@ Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://az
 > * [Fjädra data Gremlin med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Vill du komma igång snabbt?
-> 1. Installera den [lägsta stödda Java Runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), så att du kan använda SDK: n.
+> 1. Installera den [lägsta stödda Java Runtime, JDK 8](/java/azure/jdk/), så att du kan använda SDK: n.
 > 2. Skapa en våren data Azure Cosmos DB-appen genom att använda [Start](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)programmet. Det är enkelt!
 > 3. Arbeta via [vår Data Azure Cosmos DB Developer ' s guide](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), som guidar genom grundläggande Azure Cosmos DB förfrågningar.
 >
@@ -201,7 +201,7 @@ Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://az
 #### <a name="key-bug-fixes"></a>Viktiga fel korrigeringar
 * Fel korrigering och defekt minskning.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Nästa steg

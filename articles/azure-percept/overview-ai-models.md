@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098374"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218170"
 ---
 # <a name="azure-percept-ai-models"></a>Azure percept AI-modeller
 
@@ -29,9 +29,9 @@ Azure percept Studio innehåller exempel modeller för följande program:
 
 För förtränade modeller krävs ingen kod eller inlärnings data insamling. Distribuera bara din önskade modell till din Azure percept DK från portalen och öppna din devkits video ström för att se modell inferencing i praktiken. Inferencing telemetri för modell kan också nås via [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) -verktyget.
 
-## <a name="pre-built-solutions"></a>Färdiga lösningar
+## <a name="reference-solutions"></a>Referenslösningar
 
-En [förskapad lösning för avstånds analys för identifiering av personer](https://github.com/george-moore/Santa-Cruz-AI-App) är också tillgänglig. Den förskapade lösningen är ett AI-program med öppen källkod som ger gräns-baserade personer som räknar med användardefinierade zon ingångs-eller avslutnings händelser. Video-och AI-utdata från den lokala Edge-enheten utsätts till [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/), med användar gränssnittet som körs som en Azure-webbplats. AI-inferencing tillhandahålls av en AI-modell med öppen källkod för identifiering av personer.
+Det finns också en [inventerings referens lösning för människor](https://github.com/microsoft/Azure-Percept-Reference-Solutions/tree/main/people-detection-app) . Den här referens lösningen är ett AI-program med öppen källkod som ger gräns-baserade personer som räknar med användardefinierade zon ingångs-eller avslutnings händelser. Video-och AI-utdata från den lokala Edge-enheten utsätts till [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/), med användar gränssnittet som körs som en Azure-webbplats. AI-inferencing tillhandahålls av en AI-modell med öppen källkod för identifiering av personer.
 
 :::image type="content" source="./media/overview-ai-models/people-detector.gif" alt-text="GIF-GIF med fördefinierad lösning för spatial analys":::
 

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 6edfa1beb568bb05bd0f3f1ef9e7792ac3c3cbe2
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515752"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215960"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kryptera OS och anslutna data diskar i en skalnings uppsättning för virtuella datorer med Azure CLI
 
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 Det kan ta en minut eller två innan krypterings processen startas.
 
-Eftersom skalnings uppsättningen är uppgraderings princip på den skalnings uppsättning som skapades i ett tidigare steg är inställd på *Automatisk* , startar automatiskt krypterings processen i VM-instanserna. Starta krypterings principen på de virtuella dator instanserna med [AZ VMSS Update-instances](/cli/azure/vmss#az-vmss-update-instances)i skalnings uppsättningar där uppgraderings principen är manuell.
+Eftersom skalnings uppsättningen är uppgraderings princip på den skalnings uppsättning som skapades i ett tidigare steg är inställd på *Automatisk*, startar automatiskt krypterings processen i VM-instanserna. Starta krypterings principen på de virtuella dator instanserna med [AZ VMSS Update-instances](/cli/azure/vmss#az-vmss-update-instances)i skalnings uppsättningar där uppgraderings principen är manuell.
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Aktivera kryptering med KEK för att omsluta nyckeln
 
@@ -137,7 +137,7 @@ Om du vill kontrol lera statusen för disk kryptering använder du [AZ VMSS Encr
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-När de virtuella dator instanserna krypteras rapporterar status koden *EncryptionState/krypterad* , som visas i följande exempel på utdata:
+När de virtuella dator instanserna krypteras rapporterar status koden *EncryptionState/krypterad*, som visas i följande exempel på utdata:
 
 ```console
 [
@@ -166,7 +166,7 @@ När de virtuella dator instanserna krypteras rapporterar status koden *Encrypti
 
 ## <a name="disable-encryption"></a>Inaktivera kryptering
 
-Om du inte längre vill använda diskar med krypterade virtuella dator instanser kan du inaktivera kryptering med [AZ VMSS-kryptering inaktivera](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) enligt följande:
+Om du inte längre vill använda diskar med krypterade virtuella dator instanser kan du inaktivera kryptering med [AZ VMSS-kryptering inaktivera](/cli/azure/vmss/encryption#az-vmss-encryption-disable) enligt följande:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

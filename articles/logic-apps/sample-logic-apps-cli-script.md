@@ -7,25 +7,25 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740724"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218051"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Skript exempel för Azure CLI – skapa en logisk app
 
-Det här skriptet skapar en exempel-Logic-app via [Azure CLI Logic Apps-tillägget](/cli/azure/ext/logic/logic?view=azure-cli-latest)( `az logic` ). En detaljerad guide för att skapa och hantera Logi Kap par via Azure CLI finns i [Logic Apps snabb start för Azure CLI](quickstart-logic-apps-azure-cli.md).
+Det här skriptet skapar en exempel-Logic-app via [Azure CLI Logic Apps-tillägget](/cli/azure/ext/logic/logic)( `az logic` ). En detaljerad guide för att skapa och hantera Logi Kap par via Azure CLI finns i [Logic Apps snabb start för Azure CLI](quickstart-logic-apps-azure-cli.md).
 
 > [!WARNING]
-> Azure CLI Logic Apps-tillägget är för närvarande *experimentellt* och *omfattas inte av kund support* . Använd det här CLI-tillägget med försiktighet, särskilt om du väljer att använda tillägget i produktions miljöer.
+> Azure CLI Logic Apps-tillägget är för närvarande *experimentellt* och *omfattas inte av kund support*. Använd det här CLI-tillägget med försiktighet, särskilt om du väljer att använda tillägget i produktions miljöer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) installerat på den lokala datorn.
-* [Logic Apps Azure CLI-tillägget](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) installerat på datorn. Använd följande kommando för att installera det här tillägget: `az extension add --name logic`
+* [Azure CLI](/cli/azure/install-azure-cli) installerat på den lokala datorn.
+* [Logic Apps Azure CLI-tillägget](/cli/azure/azure-cli-extensions-list) installerat på datorn. Använd följande kommando för att installera det här tillägget: `az extension add --name logic`
 * En [arbets flödes definition](quickstart-logic-apps-azure-cli.md#workflow-definition) för din Logic app. Den här JSON-filen måste följa [språk schemat för arbets flödes definitionen](logic-apps-workflow-definition-language.md).
 * En API-anslutning till ett e-postkonto via en [Logic Apps](../connectors/apis-list.md) -anslutning som stöds i samma resurs grupp som din Logic app. I det här exemplet används [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) Connector, men du kan också använda andra anslutningar som [Outlook.com](../connectors/connectors-create-api-outlook.md).
 
@@ -35,9 +35,9 @@ Verifiera din miljö innan du börjar:
 
 * Logga in på Azure Portal och kontrol lera att din prenumeration är aktiv genom att köra `az login` .
 
-* Kontrol lera din version av Azure CLI i ett terminalfönster eller kommando fönster genom att köra `az --version` . Den senaste versionen finns i den senaste versions [informationen](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest).
+* Kontrol lera din version av Azure CLI i ett terminalfönster eller kommando fönster genom att köra `az --version` . Den senaste versionen finns i den senaste versions [informationen](/cli/azure/release-notes-azure-cli).
 
-  * Om du inte har den senaste versionen uppdaterar du installationen genom att följa [installations guiden för ditt operativ system eller din plattform](/cli/azure/install-azure-cli?view=azure-cli-latest).
+  * Om du inte har den senaste versionen uppdaterar du installationen genom att följa [installations guiden för ditt operativ system eller din plattform](/cli/azure/install-azure-cli).
 
 ### <a name="sample-workflow-explanation"></a>Exempel på arbets flödes förklaring
 
@@ -197,12 +197,12 @@ Det här exempel skriptet använder följande kommandon för att skapa en ny res
 
 | Kommando | Kommentarer |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Skapar en resurs grupp där din Logic Apps-resurser lagras. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | Skapar en logisk app baserat på det arbets flöde som definierats i parametern `--definition` . |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | Tar bort en resurs grupp och alla dess kapslade resurser. |
+| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resurs grupp där din Logic Apps-resurser lagras. |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Skapar en logisk app baserat på det arbets flöde som definierats i parametern `--definition` . |
+| [`az group delete`](/cli/azure/vm/extension) | Tar bort en resurs grupp och alla dess kapslade resurser. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure/?view=azure-cli-latest).
+Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure/).
 
 Du hittar ytterligare Logic Apps CLI-skript exempel i [Microsofts webbläsare för kod exempel](/samples/browse/?products=azure-logic-apps).

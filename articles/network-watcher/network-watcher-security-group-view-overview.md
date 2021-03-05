@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: d172ba7353b7ac4c490584cd7c84871c6244f214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ac1550e34c09429eb9778a5256972fcb60861950
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961829"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217711"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Introduktion till vyn gällande säkerhets regler i Azure Network Watcher
 
@@ -37,7 +37,7 @@ Regler kan väljas och ett nytt blad öppnas upp för att Visa nätverks säkerh
 Du kan också använda funktionen *gällande säkerhets grupper* genom att använda andra metoder i listan nedan:
 * [REST-API](/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
 * [PowerShell](/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
-* [Azure CLI](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
+* [Azure CLI](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
 
 Lär dig hur du granskar inställningarna för nätverks säkerhets gruppen genom att gå till [granskning nätverks säkerhets grupp inställningar med PowerShell](network-watcher-nsg-auditing-powershell.md)
 

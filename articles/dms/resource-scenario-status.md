@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183989"
+ms.locfileid: "102215348"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status för migrerings scenarier som stöds av Azure Database Migration Service
 
@@ -83,9 +83,12 @@ I följande tabell visas Azure Database Migration Service stöd för online-migr
 | **Azure DB för PostgreSQL – enskild server** | PostgreSQL | ✔ | Allmän tillgänglighet (GA) |
 |   | Azure DB för PostgreSQL – enskild server | ✔ | Allmän tillgänglighet (GA) |
 |   | RDS-PostgreSQL | ✔ | Allmän tillgänglighet (GA) |
-|   | Oracle | ✔ | Offentlig för hands version |
+|   | Oracle | ✔ | Offentlig för hands version (för att bli föråldrad efter den 1 maj 2021) |
 | **Azure DB för PostgreSQL – storskalig (citus)** | PostgreSQL | ✔ | Allmän tillgänglighet (GA) |
 |   | RDS-PostgreSQL | ✔ | Allmän tillgänglighet (GA) |
+
+> [!IMPORTANT]
+> "Oracle to Azure Database for PostgreSQL"-scenario för migrering (för närvarande i för hands version) kommer inte längre att vara tillgängligt efter den 1 maj 2021. Vi kommer att fortsätta att tillhandahålla support via alternativa verktyg (till exempel Ora2pg) och tillhandahålla bästa migrering för Oracle till PostgreSQL-migreringar. Metod tips för migrering finns i [Oracle to Azure Database for PostgreSQL migration Guide] ( https://aka.ms/OracletoPGguide) .
 
 
 ## <a name="next-steps"></a>Nästa steg

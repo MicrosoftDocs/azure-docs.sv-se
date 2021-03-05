@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e7f38e4bbc95e04bf54f8f7a2dd80e21891e8df
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625006"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215501"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Självstudie: hitta och Visa vägar för olika färd sätt med hjälp av Azure Maps
 
-I den här självstudien får du lära dig hur du använder Azure Maps [Route service](/rest/api/maps/route) och [kart kontroll](./how-to-use-map-control.md) för att Visa väg riktningarna för både privata fordon och nytto Last bilar med `USHazmatClass2` Last typ. Dessutom vägleder vi dig genom hur du visualiserar trafik data i real tid på en karta. I de här självstudierna får du lära dig att
+I den här självstudien får du lära dig hur du använder Azure Maps [Route service](/rest/api/maps/route) och [kart kontroll](./how-to-use-map-control.md) för att Visa väg riktningarna för både privata fordon och nytto Last bilar med `USHazmatClass2` Last typ. Dessutom vägleder vi dig genom hur du visualiserar trafik data i real tid på en karta. I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa och Visa kart kontrollen på en webb sida
@@ -117,7 +117,7 @@ Följande steg visar hur du skapar och visar kart kontrollen på en webb sida.
     });
     ```
 
-    I kartans `ready` händelse hanterare anges trafik flödes inställningen på kartan `relative` , vilket är hastigheten på vägen i förhållande till det fria flödet. Mer trafik alternativ finns i [TrafficOptions-gränssnittet](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest).
+    I kartans `ready` händelse hanterare anges trafik flödes inställningen på kartan `relative` , vilket är hastigheten på vägen i förhållande till det fria flödet. Mer trafik alternativ finns i [TrafficOptions-gränssnittet](/javascript/api/azure-maps-control/atlas.trafficoptions).
 
 2. Spara filen **MapTruckRoute.html** och uppdatera sidan i webbläsaren. Om du zoomar in i någon stad, t. ex. Los Angeles, ser du att gator visas med aktuella trafikflödes data.
 
@@ -193,7 +193,7 @@ I den här självstudien beräknas och renderas två vägar på kartan. Den för
 
     Den här koden skapar två [objekt av punkt-JSON-plats](https://en.wikipedia.org/wiki/GeoJSON) som representerar start-och slut punkter, som sedan läggs till i data källan.
 
-    Det sista blocket i kod ställer in kameravy med latitud och longitud för start-och slut punkterna. Start- och slutpunkterna läggs till i datakällan. Avgränsningsfältet för start- och slutpunkterna beräknas med hjälp av funktionen `atlas.data.BoundingBox.fromData`. Den här markerings rutan används för att ställa in kart kameror för visning över hela vägen med hjälp av `map.setCamera` funktionen. Utfyllnad läggs till för att kompensera pixel måtten för symbol ikonerna. Mer information om kart kontrollens egenskap setCamera finns i [setCamera (CameraOptions | Egenskapen CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) .
+    Det sista blocket i kod ställer in kameravy med latitud och longitud för start-och slut punkterna. Start- och slutpunkterna läggs till i datakällan. Avgränsningsfältet för start- och slutpunkterna beräknas med hjälp av funktionen `atlas.data.BoundingBox.fromData`. Den här markerings rutan används för att ställa in kart kameror för visning över hela vägen med hjälp av `map.setCamera` funktionen. Utfyllnad läggs till för att kompensera pixel måtten för symbol ikonerna. Mer information om kart kontrollens egenskap setCamera finns i [setCamera (CameraOptions | Egenskapen CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) .
 
 3. Spara **TruckRoute.html** och uppdatera webbläsaren. Kartan centreras nu över Seattle. Den blå Teardrop-PIN-koden markerar start punkten. Den runda blå PIN-koden markerar slut punkten.
 

@@ -3,12 +3,12 @@ title: Konfigurera Azure Active Directory för klientautentisering
 description: Lär dig hur du konfigurerar Azure Active Directory (Azure AD) för att autentisera klienter för Service Fabric kluster.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258768"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215977"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurera Azure Active Directory för klientautentisering
 
@@ -26,7 +26,7 @@ Service Fabric-kluster erbjuder flera startpunkter för dess hanteringsfunktione
 
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 I den här artikeln förutsätter vi att du redan har skapat en klientorganisation. Om du inte har gjort det börjar du med att läsa avsnittet om [hur du skaffar en Azure Active Directory-klientorganisation][active-directory-howto-tenant].
 
 Vi har skapat en uppsättning Windows PowerShell-skript för att förenkla vissa av de steg som används för att konfigurera Azure AD med Service Fabric-kluster.
@@ -81,7 +81,7 @@ När du har loggat in på Azure AD i Service Fabric Explorer återgår webbläsa
 
 ![Dialog rutan SFX-certifikat][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Orsak
+#### <a name="reason"></a>Anledning
 Användaren har inte tilldelats någon roll i Azure AD-klustret. Azure AD-autentisering Miss lyckas därför på Service Fabric klustret. Service Fabric Explorer hamnar tillbaka till certifikatautentisering.
 
 #### <a name="solution"></a>Lösning
@@ -100,11 +100,11 @@ När du försöker logga in på Azure AD i Service Fabric Explorer returnerar si
 
 ![Svars adressen för SFX matchar inte][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Orsak
+#### <a name="reason"></a>Anledning
 Kluster (webb) som representerar Service Fabric Explorer försöker autentisera mot Azure AD, och som en del av begäran tillhandahåller URL: en för omdirigerings RETUR. Men URL: en visas inte i listan Azure AD Application **svars-URL** .
 
 #### <a name="solution"></a>Lösning
-På registrerings sidan för Azure AD-appen för klustret väljer du **autentisering**och under avsnittet **omdirigerings-URI** lägger du till Service Fabric Explorer URL i listan. Spara ändringen.
+På registrerings sidan för Azure AD-appen för klustret väljer du **autentisering** och under avsnittet **omdirigerings-URI** lägger du till Service Fabric Explorer URL i listan. Spara ändringen.
 
 ![Webb program svars-URL][web-application-reply-url]
 
@@ -112,7 +112,7 @@ På registrerings sidan för Azure AD-appen för klustret väljer du **autentise
 #### <a name="problem"></a>Problem
 När du försöker ansluta till ett Service Fabric kluster med hjälp av Azure AD via PowerShell returnerar inloggnings sidan ett fel: "AADSTS50011: svars-URL: en som anges i begäran matchar inte de svars-URL: er som har kon figurer ATS för programmet: &lt; GUID &gt; ."
 
-#### <a name="reason"></a>Orsak
+#### <a name="reason"></a>Anledning
 I likhet med föregående problem försöker PowerShell autentisera mot Azure AD, vilket ger en omdirigerings-URL som inte visas i listan med **URL: er** för Azure AD-programsvar.  
 
 #### <a name="solution"></a>Lösning
@@ -138,7 +138,7 @@ När du har konfigurerat Azure Active Directory program och ställt in roller f�
 
 
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

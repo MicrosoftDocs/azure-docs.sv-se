@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 68908b7d62b8211c202262112831d5d2b523f594
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146963"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217864"
 ---
 # <a name="get-started-with-device-twins-java"></a>Kom igång med enhets dubbla (Java)
 
@@ -31,7 +31,7 @@ I den här självstudien skapar du två Java-konsol program:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Java se Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Se till att du väljer **Java 8** under **långsiktigt stöd** för att hämta hämtningar för JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Se till att du väljer **Java 8** under **långsiktigt stöd** för att hämta hämtningar för JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -57,7 +57,7 @@ I den här självstudien skapar du två Java-konsol program:
 
 I det här avsnittet ska du skapa en Java-app som lägger till platsens metadata som en tagg på enheten i IoT Hub som är associerade med **myDeviceId**. Appen skickar först frågor till IoT Hub för enheter som finns i USA och sedan för enheter som rapporterar en mobil nätverks anslutning.
 
-1. Skapa en tom mapp med namnet **IoT-Java-getstarted**på din utvecklings dator.
+1. Skapa en tom mapp med namnet **IoT-Java-getstarted** på din utvecklings dator.
 
 2. I mappen **IoT-Java-getstarted** , skapar du ett Maven-projekt med namnet **Add-Tags-Query** med hjälp av följande kommando i kommando tolken:
 
@@ -99,7 +99,7 @@ I det här avsnittet ska du skapa en Java-app som lägger till platsens metadata
     </build>
     ```
 
-6. Spara och Stäng **pom.xmls ** filen.
+6. Spara och Stäng **pom.xmls** filen.
 
 7. Öppna **Add-Tags-query\src\main\java\com\mycompany\app\App.java** -filen med hjälp av en text redigerare.
 
@@ -269,7 +269,7 @@ I det här avsnittet skapar du en Java-konsol-app som anger ett rapporterat egen
     </build>
     ```
 
-6. Spara och Stäng **pom.xmls ** filen.
+6. Spara och Stäng **pom.xmls** filen.
 
 7. Öppna **Simulated-device\src\main\java\com\mycompany\app\App.java** -filen med hjälp av en text redigerare.
 

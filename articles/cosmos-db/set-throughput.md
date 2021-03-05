@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: 74addd691e3a6c42f48100292542cfd3563b5c3a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d39ade2536b96bf5e665ecfc01e81232f2fec075
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797591"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217949"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Introduktion till etablerade data flöden i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Följande bild visar hur en fysisk partition är värd för en eller flera logis
 
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fysisk partition som är värd för en eller flera logiska partitioner i en behållare" border="false":::
 
-## <a name="set-throughput-on-a-database"></a>Ange data flöde för en databas
+## <a name="set-throughput-on-a-database"></a>Ange dataflöde för en databas
 
 När du etablerar data flöde i en Azure Cosmos-databas delas data flödet över alla behållare (kallas delade databas behållare) i databasen. Ett undantag är om du har angett ett etablerat dataflöde för specifika containrar i databasen. Att dela databas nivåns etablerade data flöde bland dess behållare är detsamma som att vara värd för en databas på ett kluster med datorer. Eftersom alla behållare i en databas delar resurserna som är tillgängliga på en dator, kan du naturligt inte få förutsägbara prestanda för en viss behållare. Information om hur du konfigurerar tillhandahållet data flöde på en databas finns i [Konfigurera etablerade data flöde i en Azure Cosmos-databas](how-to-provision-database-throughput.md). Information om hur du konfigurerar autoskalning av data flödet i en databas finns i [etablera autoskalning genom strömning](how-to-provision-autoscale-throughput.md).
 
@@ -69,7 +69,7 @@ Containrar i en databas med delat dataflöde delar på dataflödet (RU/s) som al
 
 > [!NOTE]
 > I februari 2020 införde vi en ändring som gör att du kan ha högst 25 behållare i en delad data flödes databas, vilket bättre möjliggör data flödes delning över behållarna. Efter de första 25 behållarna kan du bara lägga till fler behållare i databasen om de är [etablerade med dedikerat data flöde](#set-throughput-on-a-database-and-a-container), som är åtskilda från det delade data flödet i databasen.<br>
-Om ditt Azure Cosmos DB-konto redan innehåller en delad data flödes databas med >= 25 behållare, är kontot och alla andra konton i samma Azure-prenumeration undantagna från den här ändringen. [Kontakta produkt supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om du har feedback eller frågor. 
+Men om ditt Azure Cosmos DB-konto redan innehåller en databas med delat dataflöde med >=25 containrar gäller inte den här ändringen för kontot eller andra konton i samma Azure-prenumeration. [Kontakta produkt supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om du har feedback eller frågor. 
 
 Om arbets belastningarna innebär att du tar bort och återskapar alla samlingar i en databas, rekommenderar vi att du släpper den tomma databasen och återskapar en ny databas innan du skapar samlingen. Följande bild visar hur en fysisk partition kan vara värd för en eller flera logiska partitioner som tillhör olika behållare i en databas:
 
@@ -99,12 +99,12 @@ När du har skapat en Azure Cosmos-behållare eller en databas kan du uppdatera 
 Du kan hämta det etablerade data flödet för en behållare eller en databas i Azure Portal eller genom att använda SDK: erna:
 
 * [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) på .NET SDK.
-* [CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) i Java SDK.
+* [CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput) i Java SDK.
 
 Svaret på dessa metoder innehåller också det [lägsta allokerade data flödet](concepts-limits.md#storage-and-database-operations) för behållaren eller databasen:
 
 * [ThroughputResponse. MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) på .NET SDK.
-* [ThroughputResponse. getMinThroughput ()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) i Java SDK.
+* [ThroughputResponse. getMinThroughput ()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput) i Java SDK.
 
 Det faktiska antalet RU/s kan variera beroende på din konto konfiguration. Men vanligt vis är det högst:
 
@@ -117,7 +117,7 @@ Det faktiska antalet RU/s kan variera beroende på din konto konfiguration. Men 
 Du kan skala det etablerade data flödet för en behållare eller en databas via Azure Portal eller genom att använda SDK: erna:
 
 * [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) på .NET SDK.
-* [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) i Java SDK.
+* [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput) i Java SDK.
 
 Om du **minskar det etablerade data flödet** kommer du att kunna göra det till ett [minimum](#current-provisioned-throughput).
 
@@ -129,7 +129,7 @@ Om du **ökar det etablerade data flödet**, är det mesta av tiden att göra en
 Du kan kontrol lera skalnings förloppet program mässigt genom att läsa det [aktuella etablerade data flödet](#current-provisioned-throughput) och använda:
 
 * [ThroughputResponse. IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) på .NET SDK.
-* [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) i Java SDK.
+* [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending) i Java SDK.
 
 Du kan använda [Azure Monitor mått](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) för att visa historiken över det etablerade data flödet (ru/s) och lagrings utrymme på en resurs.
 

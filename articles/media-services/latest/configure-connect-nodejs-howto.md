@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724633"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216436"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Ansluta till Media Services v3 API – Node.js
 
@@ -224,13 +224,13 @@ Följande exempel är tillgängliga i [lagrings platsen](https://github.com/Azur
 
 ## <a name="see-also"></a>Se även
 
-- [Referens dokumentation för Azure Media Services-moduler för Node.js](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
-- [Azure för Java Script & Node.js-utvecklare](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Referens dokumentation för Azure Media Services-moduler för Node.js](/javascript/api/overview/azure/media-services)
+- [Azure för Java Script & Node.js-utvecklare](/azure/developer/javascript/)
 - [Media Services käll kod i @azure/azure-sdk-for-js git Hub-lagrings platsen](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Dokumentation om Azure-paket för Node.js utvecklare](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+- [Dokumentation om Azure-paket för Node.js utvecklare](/javascript/api/overview/azure/)
 - [Media Services begrepp](concepts-overview.md)
 - [NPM-installation @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [Azure för Java Script & Node.js-utvecklare](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure för Java Script & Node.js-utvecklare](/azure/developer/javascript/)
 - [Media Services käll kod i @azure/azure-sdk-for-js lagrings platsen](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>Nästa steg

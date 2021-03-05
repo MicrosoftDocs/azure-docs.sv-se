@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2396973170762bf98be63b998a87c8a47ce3226d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737502"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217660"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -248,7 +248,7 @@ Följande har ändrats i augusti 2020:
 
 - Azure Advisor är nu en del av det virtuella Windows-skrivbordet. När du ansluter till virtuella Windows-datorer via Azure Portal kan du se rekommendationer för att optimera din Windows-miljö för virtuella skriv bord. Läs mer på [Azure Advisor](azure-advisor.md).
 
-- Azure CLI stöder nu Windows Virtual Desktop ( `az desktopvirtualization` ) för att hjälpa dig att automatisera dina Windows-distributioner av virtuella datorer. Ta en titt på [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true) för en lista över tilläggs kommandon.
+- Azure CLI stöder nu Windows Virtual Desktop ( `az desktopvirtualization` ) för att hjälpa dig att automatisera dina Windows-distributioner av virtuella datorer. Ta en titt på [desktopvirtualization](/cli/azure/ext/desktopvirtualization/) för en lista över tilläggs kommandon.
 
 - Vi har uppdaterat våra mallar för att göra dem fullständigt kompatibla med Windows Virtual Desktop Azure Resource Manager-gränssnitt. Du kan hitta mallarna på [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 

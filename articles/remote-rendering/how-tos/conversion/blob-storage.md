@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762772"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215552"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Använda Azure-Blob Storage för modellkonvertering
 
@@ -28,7 +28,7 @@ ms.locfileid: "98762772"
 Att skapa lagrings kontot och blob-behållarna kan göras med något av följande verktyg:
 
 - [Azure-portalen](https://portal.azure.com)
-- [AZ kommando rad](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [AZ kommando rad](/cli/azure/install-azure-cli)
 - [Azure Lagringsutforskaren](https://azure.microsoft.com/features/storage-explorer/)
 - SDK: er (C#, python...)
 
@@ -52,7 +52,7 @@ En SAS-URI kan genereras med hjälp av en av:
 
 - AZ PowerShell-modul
   - Se [PowerShell-skripten](../../samples/powershell-example-scripts.md)
-- [AZ kommando rad](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [AZ kommando rad](/cli/azure/install-azure-cli)
 - [Azure Lagringsutforskaren](https://azure.microsoft.com/features/storage-explorer/)
   - Högerklicka på container "Get Shared Access Signature" (Läs, lista åtkomst för inmatnings behållare, skriv åtkomst för behållaren utdata)
 - SDK: er (C#, python...)
