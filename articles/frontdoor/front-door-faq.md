@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741862"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124065"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Vanliga frågor och svar om Azures front dörr
 
@@ -99,7 +99,7 @@ Om du vill låsa ditt program för att endast acceptera trafik från din specifi
 
 - Leta efter `Front Door ID` värdet under översikts avsnittet från den främre dörr Portal sidan. Du kan sedan filtrera på det inkommande huvudet "**X-Azure-FDID**" som skickas av front dörren till Server delen med det värdet för att säkerställa att endast din egen specifika instans av front dörren tillåts (eftersom IP-intervallen ovan delas med andra instanser av andra instanser av andra kunder).
 
-- Använd regel filtrering på backend-webbservern för att begränsa trafik baserat på det resulterande "X-Azure-FDID"-huvudets värde. Observera att vissa tjänster som Azure App Service ger denna [rubrikbaserade filtrerings](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) kapacitet utan att behöva ändra ditt program eller din värd.
+- Använd regel filtrering på backend-webbservern för att begränsa trafik baserat på det resulterande "X-Azure-FDID"-huvudets värde. Observera att vissa tjänster som Azure App Service ger denna [rubrikbaserade filtrerings](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) kapacitet utan att behöva ändra ditt program eller din värd.
 
   Här är ett exempel på [Microsoft Internet Information Services (IIS)](https://www.iis.net/):
 

@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565780"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122161"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Utnyttjar innehålls typ för att lagra JSON-nyckel värden i app-konfiguration
 
@@ -25,9 +25,9 @@ Data lagras i appens konfiguration som nyckel värden, där värden behandlas so
 ## <a name="overview"></a>Översikt
 
 I app-konfigurationen kan du använda JSON-medietyp som innehålls typ för dina nyckel värden till att utnyttja fördelarna som:
-- **Enklare data hantering** : att hantera nyckel värden, som matriser, blir mycket enklare i Azure Portal.
-- **Förbättrad data export** : primitiva typer, matriser och JSON-objekt kommer att bevaras under data exporten.
-- **Inbyggt stöd med app Configuration Provider** : nyckel värden med JSON Content-Type fungerar bra när de förbrukas av apparnas konfigurations leverantörs bibliotek i dina program.
+- **Enklare data hantering**: att hantera nyckel värden, som matriser, blir mycket enklare i Azure Portal.
+- **Förbättrad data export**: primitiva typer, matriser och JSON-objekt kommer att bevaras under data exporten.
+- **Inbyggt stöd med app Configuration Provider**: nyckel värden med JSON Content-Type fungerar bra när de förbrukas av apparnas konfigurations leverantörs bibliotek i dina program.
 
 #### <a name="valid-json-content-type"></a>Giltig JSON-innehålls typ
 
@@ -175,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>Använda JSON-nyckel värden i program
 
-Det enklaste sättet att använda JSON-nyckel-värden i ditt program är via bibliotek för Provider för app-konfiguration. Med Provider-biblioteken behöver du inte implementera särskild hantering av JSON-nyckel värden i ditt program. De är alltid deserialiserade för ditt program på samma sätt som andra JSON-Konfigurationsprovider. 
+Det enklaste sättet att använda JSON-nyckel-värden i ditt program är via bibliotek för Provider för app-konfiguration. Med Provider-biblioteken behöver du inte implementera särskild hantering av JSON-nyckel värden i ditt program. De kommer att tolkas och konverteras så att de matchar programmets interna konfiguration.
+
+Om du till exempel har följande nyckel-värde i appens konfiguration:
+
+| Tangent | Värde | Innehållstyp |
+|---|---|---|
+| Inställningar | {"FontSize": 24, "UseDefaultRouting": false} | application/json |
+
+.NET-program konfigurationen kommer att ha följande nyckel värden:
+
+| Tangent | Värde |
+|---|---|
+| Inställningar: FontSize | 24 |
+| Inställningar: UseDefaultRouting | falskt |
+
+Du kan komma åt de nya nycklarna direkt eller så kan du välja att [binda konfigurations värden till instanser av .net-objekt](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern).
+
 
 > [!Important]
 > Inbyggt stöd för JSON-nyckel-värden finns i .NET-Konfigurationsprovider version 4.0.0 (eller senare). Mer information finns i avsnittet [*Nästa steg*](#next-steps) .
 
-Om du använder SDK eller REST API för att läsa nyckel värden från App-konfigurationen, baserat på innehålls typ, ansvarar programmet för deserialisering av värdet för JSON-nyckel-värde med valfri standard-JSON-deserialisering.
+Om du använder SDK eller REST API för att läsa nyckel värden från App-konfigurationen, baserat på innehålls typ, är ditt program ansvarigt för att parsa värdet för JSON-nyckel-värde.
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser

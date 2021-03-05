@@ -3,12 +3,12 @@ title: Kubernetes övervakning med container Insights | Microsoft Docs
 description: Den här artikeln beskriver hur du kan visa och analysera prestanda för ett Kubernetes-kluster med behållar insikter.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711356"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124320"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Övervaka Kubernetes-klustrets prestanda med behållar insikter
 
@@ -20,7 +20,7 @@ Information om hur du aktiverar container Insights finns i avsnittet om [inbyggd
 
 Azure Monitor ger en vy med flera kluster som visar hälso status för alla övervakade Kubernetes-kluster som kör Linux och Windows Server 2019 som har distribuerats över resurs grupper i dina prenumerationer. Den visar kluster som identifierats i alla miljöer som inte övervakas av lösningen. Du kan omedelbart förstå kluster hälsa och härifrån kan du gå nedåt till sidan prestanda för nod och kontrollant eller gå till Visa prestanda diagram för klustret. För AKS-kluster som har identifierats och identifierats som oövervakade kan du aktivera övervakning när som helst.
 
-De största skillnaderna vid övervakning av ett Windows Server-kluster med behållar insikter jämfört med ett Linux-kluster beskrivs [här](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) i översikts artikeln.
+De största skillnaderna vid övervakning av ett Windows Server-kluster med behållar insikter jämfört med ett Linux-kluster beskrivs [här](container-insights-overview.md#what-does-container-insights-provide) i översikts artikeln.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 

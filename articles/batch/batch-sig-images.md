@@ -2,14 +2,14 @@
 title: Använd det delade avbildnings galleriet för att skapa en anpassad avbildnings-pool
 description: Anpassade bildpooler är ett effektivt sätt att konfigurera datornoder för att köra batch-arbetsbelastningar.
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731369"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124252"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Använd det delade avbildnings galleriet för att skapa en anpassad avbildnings-pool
 
@@ -33,7 +33,7 @@ Att använda en delad avbildning som kon figurer ATS för ditt scenario kan ge f
 - **Bättre prestanda än att bara använda en hanterad avbildning som en anpassad avbildning.** För en anpassad avbildning av en delad avbildning, är tiden för att uppnå stabilt tillstånd upp till 25% snabbare och den inaktiva fördröjningen för den virtuella datorn är upp till 30% kortare.
 - **Avbildnings version och gruppering för enklare hantering.** Definitionen för avbildnings gruppering innehåller information om varför avbildningen skapades, vilket operativ system den är för och information om hur du använder avbildningen. Gruppering av avbildningar möjliggör enklare bild hantering. Mer information finns i [bild definitioner](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!NOTE]
 > Du måste autentisera med hjälp av Azure AD. Om du använder Shared Key auth får du ett autentiseringsfel.  
@@ -69,12 +69,15 @@ Om du skapar en ny virtuell dator för avbildningen använder du en Azure Market
 > [!NOTE]
 > Du kan inte använda en avbildning från tredje part som har ytterligare licens-och inköps villkor som bas avbildning. Information om dessa Marketplace-avbildningar finns i rikt linjerna för virtuella [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) -eller [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) -datorer.
 
+Följ dessa rikt linjer när du skapar virtuella datorer:
+
 - Se till att den virtuella datorn har skapats med en hanterad disk. Det här är standard lagrings inställningen när du skapar en virtuell dator.
 - Installera inte Azure-tillägg, till exempel tillägget för anpassat skript, på den virtuella datorn. Om avbildningen innehåller ett förinstallerat tillägg kan Azure drabbas av problem när du distribuerar batch-poolen.
 - När du använder anslutna data diskar måste du montera och Formatera diskarna inifrån en virtuell dator för att använda dem.
 - Kontrol lera att den grundläggande OS-avbildningen som du anger använder standard-Temp-enheten. Batch Node-agenten förväntar sig för närvarande standard-Temp-enheten.
 - Kontrol lera att operativ system disken inte är krypterad.
-- När den virtuella datorn är igång ansluter du till den via RDP (för Windows) eller SSH (för Linux). Installera nödvändig program vara eller kopiera önskade data.  
+- När den virtuella datorn är igång ansluter du till den via RDP (för Windows) eller SSH (för Linux). Installera nödvändig program vara eller kopiera önskade data.
+- För snabbare etablering av pooler använder du [inställningen readwrite-diskcachen](../virtual-machines/premium-storage-performance.md#disk-caching) för den virtuella DATORns OS-disk.
 
 ### <a name="create-a-vm-snapshot"></a>Skapa en ögonblicks bild av en virtuell dator
 

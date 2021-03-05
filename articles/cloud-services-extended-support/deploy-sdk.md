@@ -1,6 +1,6 @@
 ---
-title: Distribuera en moln tjänst (utökad support) – SDK
-description: Distribuera en moln tjänst (utökad support) med Azure SDK
+title: Distribuera Cloud Services (utökad support) – SDK
+description: Distribuera Cloud Services (utökad support) med Azure SDK
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,26 +8,26 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf8d2696732c2947ce86b9509720898fd63c1e16
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887383"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123045"
 ---
-# <a name="deploy-a-cloud-services-extended-support-using-sdk"></a>Distribuera en Cloud Services (utökad support) med SDK
+# <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Distribuera Cloud Services (utökad support) med Azure SDK
 
-Den här artikeln visar hur du använder [Azure SDK](https://azure.microsoft.com/downloads/) för att distribuera Cloud Services (utökad support) som har flera roller (webrole och WorkerRole) och tillägget fjärr skrivbord. 
+Den här artikeln visar hur du använder [Azure SDK](https://azure.microsoft.com/downloads/) för att distribuera en Cloud Services-instans (utökad support) som har flera roller (webb roll och arbets roll) och tillägget fjärr skrivbord. Cloud Services (utökad support) är en distributions modell av Azure-Cloud Services som baseras på Azure Resource Manager.
 
 > [!IMPORTANT]
-> Cloud Services (utökad support) är för närvarande en offentlig för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Cloud Services (utökad support) är för närvarande en offentlig för hands version. Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar den inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support) och skapa associerade resurser.
 
-## <a name="deploy-a-cloud-services-extended-support"></a>Distribuera en Cloud Services (utökad support)
-1. Installera [Azure Compute SDK NuGet-paketet](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview) och initiera klienten med en standardmekanism för autentisering.
+## <a name="deploy-cloud-services-extended-support"></a>Distribuera Cloud Services (utökad support)
+1. Installera [Azure Compute SDK NuGet-paketet](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview) och initiera klienten med hjälp av en standardmekanism för autentisering.
 
     ```csharp
         public class CustomLoginCredentials : ServiceClientCredentials
@@ -73,7 +73,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     resourceGroup = await resourceGroups.CreateOrUpdateAsync(resourceGroupName, resourceGroup);
     ```
 
-3. Skapa ett lagrings konto och en behållare som ska användas för att lagra moln tjänst paketets (. cspkg) och tjänst konfigurations filen (. cscfg). Installera [Azure Storage NuGet-paketet](https://www.nuget.org/packages/Azure.Storage.Common/). Det här steget är valfritt om du använder ett befintligt lagrings konto. Lagrings kontots namn måste vara unikt.
+3. Skapa ett lagrings konto och en behållare där du lagrar Service Pack-filerna (. cspkg) och tjänst konfigurations filen (. cscfg). Installera [Azure Storage NuGet-paketet](https://www.nuget.org/packages/Azure.Storage.Common/). Det här steget är valfritt om du använder ett befintligt lagrings konto. Lagrings kontots namn måste vara unikt.
 
     ```csharp
     string storageAccountName = “ContosoSAS”
@@ -109,7 +109,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write;
     ```
 
-4. Ladda upp Cloud Service Pack-filen (. cspkg) till lagrings kontot. Paket-URL: en kan vara en SAS-URI (signatur för delad åtkomst) från valfritt lagrings konto.
+4. Ladda upp Service Pack-filen (. cspkg) till lagrings kontot. Paket-URL: en kan vara en SAS-URI (signatur för delad åtkomst) från valfritt lagrings konto.
 
     ```csharp
     CloudBlockBlob cspkgblockBlob = container.GetBlockBlobReference(“ContosoApp.cspkg”);
@@ -122,7 +122,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     string cspkgSASUrl = cspkgblockBlob.Uri + cspkgsasContainerToken;
     ```
 
-5. Överför din moln tjänst konfiguration (. cscfg) till lagrings kontot. Tjänst konfigurationen kan anges antingen som sträng-XML eller URL-format.
+5. Överför tjänst konfigurations filen (. cscfg) till lagrings kontot. Ange tjänst konfiguration som antingen sträng XML eller URL-format.
 
     ```csharp
     CloudBlockBlob cscfgblockBlob = container.GetBlockBlobReference(“ContosoApp.cscfg”);
@@ -156,7 +156,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Skapa en offentlig IP-adress och (valfritt) ange egenskapen DNS-etikett för den offentliga IP-adressen. Om du använder en statisk IP-adress måste den refereras till som en Reserverad IP i tjänst konfigurations filen.
+7. Skapa en offentlig IP-adress och (valfritt) ange egenskapen DNS-etikett för den offentliga IP-adressen. Om du använder en statisk IP-adress måste den refereras som en reserverad IP-adress i tjänst konfigurations filen.
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +171,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Skapa objektet nätverks profil och associera den offentliga IP-adressen till klient delen för den plattform som har skapat belastningsutjämnaren.
+8. Skapa ett nätverks profil objekt och associera en offentlig IP-adress med klient delen av den plattforms belastningsutjämnaren.
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 
@@ -206,32 +206,32 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     
     ```
 
-9. Skapa ett nyckelvalv. Den här Key Vault kommer att användas för att lagra certifikat som är associerade med moln tjänsten (utökade stöd) roller. Key Vault måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+9. Skapa ett nyckelvalv. Det här nyckel valvet används för att lagra certifikat som är associerade med Cloud Services-roller (utökade stöd). Nyckel valvet måste finnas i samma region och prenumeration som Cloud Services-instansen (utökad support) och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US”
     ```
 
-10. Uppdatera Key Vault åtkomst princip och bevilja certifikat behörigheter till ditt användar konto.
+10. Uppdatera nyckel valvets åtkomst princip och bevilja certifikat behörigheter till ditt användar konto.
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg'      -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete
     ```
 
-    Du kan också ange åtkomst princip via ObjectId (som kan hämtas genom att köra Get-AzADUser)
+    Du kan också ange åtkomst principen via objekt-ID (som du kan hämta genom att köra `Get-AzADUser` ).
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -     ObjectId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -PermissionsToCertificates          create,get,list,delete
     ```
 
-11. I det här exemplet ska vi lägga till ett självsignerat certifikat till en Key Vault. Tumavtryck för certifikatet måste läggas till i filen för moln tjänst konfiguration (. cscfg) för distribution i moln tjänst roller.
+11. I det här exemplet ska vi lägga till ett självsignerat certifikat i ett nyckel valv. Certifikatets tumavtryck måste läggas till i tjänst konfigurations filen (. cscfg) för distribution på Cloud Services-roller (utökad support).
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -       SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -      CertificatePolicy $Policy
     ```
 
-12. Skapa ett operativ system profil objekt. OS-profil anger de certifikat som är kopplade till moln tjänst roller. Detta är samma certifikat som skapades i föregående steg.
+12. Skapa ett operativ system profil objekt. OS-profilen anger de certifikat som är associerade med Cloud Services-roller (utökade stöd). Här är det samma certifikat som vi skapade i föregående steg.
 
     ```csharp
     CloudServiceOsProfile cloudServiceOsProfile = 
@@ -247,7 +247,9 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
            };
     ```
 
-13. Skapa ett roll profil objekt. Roll profilen definierar en roll-SKU-/regionsspecifika egenskaper, till exempel namn, kapacitet och nivå. I det här exemplet har vi definierat två roller: frontendRole och backendRole. Roll profil informationen bör överensstämma med roll konfigurationen som definierats i konfigurations filen (cscfg) och tjänst definitions filen (csdef).
+13. Skapa ett roll profil objekt. En roll profil definierar rollspecifika egenskaper för en SKU, till exempel namn, kapacitet och nivå. 
+
+    I det här exemplet definierar vi två roller: ContosoFrontend och ContosoBackend. Roll profil informationen bör matcha den roll konfiguration som definierats i tjänst konfigurations filen (. cscfg) och tjänst definitions filen (. csdef).
 
     ```csharp
     CloudServiceRoleProfile cloudServiceRoleProfile = new CloudServiceRoleProfile()
@@ -281,7 +283,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
                     }
     ```
 
-14. Valfritt Skapa ett tilläggs profil objekt som du vill lägga till i din moln tjänst. I det här exemplet ska vi lägga till RDP-tillägg.
+14. Valfritt Skapa ett tilläggs profil objekt som du vill lägga till i din Cloud Services (utökad support) instans. I det här exemplet lägger vi till ett RDP-tillägg.
 
     ```csharp
     string rdpExtensionPublicConfig = "<PublicConfig>" +
@@ -313,7 +315,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
         };
     ```
 
-15. Skapa moln tjänst distribution.
+15. Skapa distributionen av Cloud Services-instansen (utökad support).
 
     ```csharp
     CloudService cloudService = new CloudService
@@ -322,7 +324,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
                 {
                     RoleProfile = cloudServiceRoleProfile
                     Configuration = < Add Cscfg xml content here>,
-                    // ConfigurationUrl = <Add you configuration URL here>,
+                    // ConfigurationUrl = <Add your configuration URL here>,
                     PackageUrl = <Add cspkg SAS url here>,
                     ExtensionProfile = cloudServiceExtensionProfile,
                     OsProfile= cloudServiceOsProfile,
@@ -337,5 +339,5 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
 
 ## <a name="next-steps"></a>Nästa steg
 - Läs igenom [vanliga frågor och svar](faq.md) om Cloud Services (utökad support).
-- Distribuera en moln tjänst (utökad support) med hjälp av [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [mall](deploy-template.md) eller [Visual Studio](deploy-visual-studio.md).
-- Besök den [Cloud Services (utökad support) exempel lagrings plats](https://github.com/Azure-Samples/cloud-services-extended-support)
+- Distribuera Cloud Services (utökad support) med hjälp av [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), en [mall](deploy-template.md)eller [Visual Studio](deploy-visual-studio.md).
+- Besök [exempel lagrings platsen för Cloud Services (utökad support)](https://github.com/Azure-Samples/cloud-services-extended-support)

@@ -3,18 +3,18 @@ title: Utdata i mallar
 description: Beskriver hur du definierar utdataparametrar i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2b6a6afa127bf43102103baadae576233843f00d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703842"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123419"
 ---
 # <a name="outputs-in-arm-templates"></a>Utdata i ARM-mallar
 
 I den här artikeln beskrivs hur du definierar utdataparametrar i din Azure Resource Manager-mall (ARM-mall) och bicep-fil. Du använder utdata när du behöver returnera värden från de distribuerade resurserna.
 
-Formatet för varje utmatnings värde måste matcha en av [data typerna](template-syntax.md#data-types).
+Formatet för varje utmatnings värde måste matcha en av [data typerna](data-types.md).
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

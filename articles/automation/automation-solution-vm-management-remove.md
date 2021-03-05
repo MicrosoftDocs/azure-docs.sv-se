@@ -3,14 +3,14 @@ title: Ta bort Azure Automation Starta/stoppa virtuella datorer när de inte anv
 description: I den här artikeln beskrivs hur du tar bort Starta/stoppa virtuella datorer när de inte används-funktionen och avlänkar ett Automation-konto från arbets ytan Log Analytics.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723851"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122093"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Ta bort Starta/stoppa virtuella datorer när de inte används från Automation-konto
 
@@ -24,21 +24,7 @@ Om du tar bort den här funktionen tas endast de tillhör ande Runbooks bort, de
 
 ## <a name="delete-the-dedicated-resource-group"></a>Ta bort den dedikerade resurs gruppen
 
-1. Logga in på Azure på [https://portal.azure.com](https://portal.azure.com) .
-
-2. Gå till ditt Automation-konto och välj **länkad arbets yta** under **relaterade resurser**.
-
-3. Välj **gå till arbets yta**.
-
-4. Klicka på **lösningar** under **Allmänt**.
-
-5. På sidan lösningar väljer du **Start-Stop-VM [arbets yta]**.
-
-6. På sidan **VMManagementSolution [Workspace]** väljer du **ta bort** på menyn.
-
-    ![Ta bort hanterings funktion för virtuell dator](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. Om du vill ta bort resurs gruppen som skapats för att endast stödja Starta/stoppa virtuella datorer när de inte används följer du stegen som beskrivs i artikeln [Azure Resource Manager resurs grupp och resurs borttagning](../azure-resource-manager/management/delete-resource-group.md) .
+Om du vill ta bort resurs gruppen följer du stegen som beskrivs i artikeln [Azure Resource Manager resurs grupp och resurs borttagning](../azure-resource-manager/management/delete-resource-group.md) .
 
 ## <a name="delete-the-automation-account"></a>Ta bort Automation-kontot
 

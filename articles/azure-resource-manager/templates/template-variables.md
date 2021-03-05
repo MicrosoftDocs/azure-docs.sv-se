@@ -3,12 +3,12 @@ title: Variabler i mallar
 description: Beskriver hur du definierar variabler i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3ab14c9acfcc2d6c9edd23fb3bc4d876cd5ac756
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700345"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123385"
 ---
 # <a name="variables-in-arm-templates"></a>Variabler i ARM-mallar
 
@@ -20,7 +20,7 @@ Resource Manager löser variabler innan distributions åtgärderna påbörjas. O
 
 ## <a name="define-variable"></a>Definiera variabel
 
-När du definierar en variabel anger du inte en [datatyp](template-syntax.md#data-types) för variabeln. Ange i stället ett värde-eller mall-uttryck. Variabel typen härleds från det matchade värdet. I följande exempel anges en variabel till en sträng.
+När du definierar en variabel anger du inte en [datatyp](data-types.md) för variabeln. Ange i stället ett värde-eller mall-uttryck. Variabel typen härleds från det matchade värdet. I följande exempel anges en variabel till en sträng.
 
 # <a name="json"></a>[JSON](#tab/json)
 

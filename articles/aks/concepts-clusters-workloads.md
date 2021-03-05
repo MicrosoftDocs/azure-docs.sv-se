@@ -4,12 +4,12 @@ description: Lär dig mer om de grundläggande kluster-och arbets belastnings ko
 services: container-service
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a1718d906ab5f51ea71be9b304028576c9fffa0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373240"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122450"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes Core-koncept för Azure Kubernetes service (AKS)
 
@@ -61,7 +61,7 @@ Om du vill köra program och stöd tjänster behöver du en Kubernetes- *nod*. E
 
 - `kubelet`Är Kubernetes-agenten som bearbetar Orchestration-begärandena från kontroll planet och schemaläggning av att köra de begärda behållarna.
 - Virtuella nätverk hanteras av *Kube-proxy* på varje nod. Proxyservern dirigerar nätverks trafik och hanterar IP-adresser för tjänster och poddar.
-- *Container runtime* är den komponent som gör det möjligt för program i behållare att köra och interagera med ytterligare resurser, till exempel det virtuella nätverket och lagringen. I AKS används Moby som container Runtime.
+- *Container runtime* är den komponent som gör det möjligt för program i behållare att köra och interagera med ytterligare resurser, till exempel det virtuella nätverket och lagringen. AKS-kluster med Kubernetes version 1,19 och större användning `containerd` som behållar körning. AKS-kluster som använder Kubernetes före v 1.19 för Node-pooler använder [Moby](https://mobyproject.org/) (överordnad Docker) som dess behållar körning.
 
 ![Virtuell Azure-dator och stöd resurser för en Kubernetes-nod](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -69,7 +69,7 @@ Storleken på virtuella Azure-datorer för dina noder definierar hur många proc
 
 I AKS baseras den virtuella dator avbildningen för noderna i klustret för närvarande på Ubuntu Linux eller Windows Server 2019. När du skapar ett AKS-kluster eller skalar ut antalet noder, skapar Azure-plattformen det begärda antalet virtuella datorer och konfigurerar dem. Det finns ingen manuell konfiguration som du kan utföra. Agent-noder faktureras som standard virtuella datorer så att eventuella rabatter som du har på den virtuella dator storleken som du använder (inklusive [Azure-reservationer][reservation-discounts]) används automatiskt.
 
-Om du behöver använda ett annat värd operativ system, container runtime eller inkludera anpassade paket kan du distribuera ditt eget Kubernetes-kluster med [AKS-Engine][aks-engine]. De överordnade versions `aks-engine` funktionerna och innehåller konfigurations alternativ innan de stöds officiellt i AKS-kluster. Om du till exempel vill använda en annan behållar körning än Moby kan du använda `aks-engine` för att konfigurera och distribuera ett Kubernetes-kluster som uppfyller dina aktuella behov.
+Om du behöver använda ett annat värd operativ system, container runtime eller inkludera anpassade paket kan du distribuera ditt eget Kubernetes-kluster med [AKS-Engine][aks-engine]. De överordnade versions `aks-engine` funktionerna och innehåller konfigurations alternativ innan de stöds officiellt i AKS-kluster. Om du till exempel vill använda en behållar körning som inte `containerd` är eller Moby kan du använda `aks-engine` för att konfigurera och distribuera ett Kubernetes-kluster som uppfyller dina aktuella behov.
 
 ### <a name="resource-reservations"></a>Resurs reservationer
 

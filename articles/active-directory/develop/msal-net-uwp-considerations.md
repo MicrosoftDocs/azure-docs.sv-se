@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 03/03/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063458"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122484"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Att tänka på när du använder Universell Windows-plattform med MSAL.NET
 Utvecklare av program som använder Universell Windows-plattform (UWP) med MSAL.NET bör tänka på de begrepp som den här artikeln visar.
 
 ## <a name="the-usecorporatenetwork-property"></a>Egenskapen UseCorporateNetwork
-På Windows Runtime-plattformen (WinRT) `PublicClientApplication` har egenskapen Boolean `UseCorporateNetwork` . Den här egenskapen gör att Windows 8,1-program och UWP-program kan dra nytta av integrerad Windows-autentisering (IWA) om användaren är inloggad på ett konto som har en federerad Azure Active Directory-klient (Azure AD). Användare som är inloggade på operativ systemet kan också använda enkel inloggning (SSO). När du anger `UseCorporateNetwork` egenskapen använder MSAL.net en Web Authentication Broker (WAB).
+På Windows Runtime-plattformen (WinRT) `PublicClientApplication` har egenskapen Boolean `UseCorporateNetwork` . Den här egenskapen gör att Windows 10-program och UWP-program kan dra nytta av integrerad Windows-autentisering (IWA) om användaren är inloggad på ett konto som har en federerad Azure Active Directory-klient (Azure AD). Användare som är inloggade på operativ systemet kan också använda enkel inloggning (SSO). När du anger `UseCorporateNetwork` egenskapen använder MSAL.net en Web Authentication Broker (WAB).
 
 > [!IMPORTANT]
 > Om du ställer in `UseCorporateNetwork` egenskapen på True förutsätts att programutvecklaren har aktiverat IWA i programmet. Så här aktiverar du IWA:

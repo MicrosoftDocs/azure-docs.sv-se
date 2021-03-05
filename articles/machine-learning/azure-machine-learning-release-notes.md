@@ -9,18 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661111"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124014"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
 
 __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopiera och klistra in följande webbadress i feed-läsaren: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-28"></a>2021-02-28
+### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Notebooks Experience (februari Update)
++ **Nya funktioner**
+  + [Ursprunglig Terminal (ga)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den integrerade terminalen.
+  + [Antecknings kods tycken (för hands version)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Vanliga utdrag för Azure ML-kod är nu tillgängliga. Navigera till panelen kodfragment, som är tillgänglig via verktygsfältet eller aktivera menyn infragmentets kod avsnitt med Ctrl + blank steg.  
+  + [Kortkommandon.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys) Fullständig paritet med kortkommandon som är tillgängliga i Jupyter. 
+  + Ange cell parametrar. Visar att användare med cell i en antecknings bok är parameter cell och kan köra parameterstyrda antecknings böcker via [Papermill](https://github.com/nteract/papermill) på beräknings instansen.
+  + Terminal-och kernel-sessionshanteraren: användare kommer att kunna hantera alla kärnor och Terminal-sessioner som körs på din beräkning.
+  + Delnings knapp. Användarna kan nu dela en fil i anteckningsbok-Utforskaren genom att högerklicka på filen och använda knappen Dela.
+
+
++ **Fel korrigeringar och förbättringar**
+  + Förbättrade sid inläsnings tider
+  + Förbättrade prestanda 
+  + Förbättrad hastighet och kernel-tillförlitlighet
+  + Lagt till snurrande hjul för att visa förloppet för alla pågående [beräknings instans åtgärder](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators).
+  + Högerklicka på Utforskaren. Om du högerklickar på en fil öppnas fil åtgärder nu. 
 
 ## <a name="2021-02-16"></a>2021-02-16
 

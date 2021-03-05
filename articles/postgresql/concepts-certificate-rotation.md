@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: c9bc6e3822ac6c014b9ff00e9cd81bbe707628fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6dc687879eb646b4abd081b40bce292d20ff3186
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736074"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123997"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure Database for PostgreSQL enskild server
 
@@ -83,7 +83,7 @@ Våra rekommendationer till användare är, Använd de ovannämnda stegen för a
 
 ## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Vad händer om vi har tagit bort BaltimoreCyberTrustRoot-certifikatet?
 
-Du kommer att påbörjar anslutnings fel när du ansluter till din Azure Database for PostgreSQL-Server. Du måste [Konfigurera SSL](howto-configure-ssl.md) med [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -certifikatet igen för att upprätthålla anslutningen.
+Du kommer att påbörjar anslutnings fel när du ansluter till din Azure Database for PostgreSQL-Server. Du måste konfigurera SSL med [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -certifikatet igen för att upprätthålla anslutningen.
 
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar

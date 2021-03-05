@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ea2224020e6fa6c5dae135dc575cc77510efd5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499296"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123946"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>För hands version: Använd Kundhanterade nycklar för att kryptera avbildningar
 
@@ -27,7 +27,7 @@ Kryptering på Server sidan via Kundhanterade nycklar använder Azure Key Vault.
 
 Den här artikeln kräver att du redan har en disk krypterings uppsättning i varje region där du vill replikera avbildningen:
 
-- Om du bara vill använda en kundhanterad nyckel läser du artiklarna om hur du aktiverar Kundhanterade nycklar med kryptering på Server sidan med hjälp av [Azure Portal](./disks-enable-customer-managed-keys-portal.md) eller [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+- Om du bara vill använda en kundhanterad nyckel läser du artiklarna om hur du aktiverar Kundhanterade nycklar med kryptering på Server sidan med hjälp av [Azure Portal](./disks-enable-customer-managed-keys-portal.md) eller [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation).
 
 - Om du vill använda både plattforms-hanterade och Kundhanterade nycklar (för dubbel kryptering) kan du läsa artiklarna om hur du aktiverar dubbel kryptering i vila med hjälp av [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) eller [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
 
@@ -202,7 +202,7 @@ az sig image-version create \
 Du kan skapa en virtuell dator från ett delat avbildnings galleri och använda Kundhanterade nycklar för att kryptera diskarna. Syntaxen är densamma som att skapa en [generaliserad](vm-generalized-image-version-cli.md) eller [specialiserad](vm-specialized-image-version-cli.md) virtuell dator från en avbildning. Lägg bara till `--os-disk-encryption-set` parametern med ID: t för krypterings uppsättningen. För data diskar lägger du till `--data-disk-encryption-sets` med en blankstegsavgränsad lista över disk krypterings uppsättningar för data diskarna.
 
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 När du skapar din avbildnings version i portalen kan du använda fliken **kryptering** för att tillämpa dina lagrings krypterings uppsättningar.
 

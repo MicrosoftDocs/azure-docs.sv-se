@@ -4,15 +4,15 @@ description: Lär dig hur du konfigurerar principer för IP-åtkomstkontroll fö
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4e01375388f12b828d9adcb1e2ed8851061a0bf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560737"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122722"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurera IP-brandvägg i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Du kan skydda data som lagras i Azure Cosmos DB-kontot med hjälp av IP-brandvä
 
 Om du vill ange princip för IP-åtkomstkontroll i Azure Portal går du till sidan Azure Cosmos DB konto och väljer **brand vägg och virtuella nätverk** på navigerings menyn. Ändra värdet **Tillåt åtkomst från** värde till **valda nätverk** och välj sedan **Spara**.
 
-:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Skärm bild som visar hur du öppnar brand Väggs sidan i Azure Portal":::
+![Skärm bild som visar hur du öppnar brand Väggs sidan i Azure Portal](./media/how-to-configure-firewall/azure-portal-firewall.png)
 
 När kontroll av IP-åtkomst har Aktiver ATS ger Azure Portal möjlighet att ange IP-adresser, IP-adressintervall och växlar. Växlar ger åtkomst till andra Azure-tjänster och Azure Portal. I följande avsnitt finns information om dessa växlar.
 
@@ -57,13 +57,13 @@ När du aktiverar en princip för IP-åtkomstkontroll program mässigt måste du
 
 Du kan aktivera begär Anden om åtkomst till Azure Portal genom att välja alternativet **Tillåt åtkomst från Azure Portal** , som du ser i följande skärm bild:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Skärm bild som visar hur du aktiverar Azure Portal-åtkomst":::
+![Skärm bild som visar hur du aktiverar Azure Portal-åtkomst](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Tillåt förfrågningar från globala Azure-datacenter eller andra källor i Azure
 
 Om du har åtkomst till ditt Azure Cosmos DB-konto från tjänster som inte har en statisk IP-adress (till exempel Azure Stream Analytics och Azure Functions) kan du fortfarande använda IP-brandväggen för att begränsa åtkomsten. Du kan aktivera åtkomst från andra källor i Azure genom att markera alternativet **Godkänn anslutningar från Azure-datacenter** , som du ser i följande skärm bild:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Skärm bild som visar hur du accepterar anslutningar från Azure-datacenter":::
+![Skärm bild som visar hur du accepterar anslutningar från Azure-datacenter](./media/how-to-configure-firewall/enable-azure-services.png)
 
 När du aktiverar det här alternativet läggs IP-adressen `0.0.0.0` till i listan över tillåtna IP-adresser. `0.0.0.0`IP-adressen begränsar begär anden till ditt Azure Cosmos DB konto från Azure datacenters IP-intervall. Den här inställningen tillåter inte åtkomst för några andra IP-intervall till ditt Azure Cosmos DB-konto.
 
@@ -103,6 +103,12 @@ När du lägger till instanser av virtuella datorer i gruppen får de automatisk
 ### <a name="requests-from-the-internet"></a>Begär Anden från Internet
 
 När du ansluter till ditt Azure Cosmos DB-konto från en dator på Internet måste klientens IP-adress eller IP-adressintervall läggas till i listan över tillåtna IP-adresser för ditt konto.
+
+### <a name="add-outbound-rules-to-the-firewall"></a>Lägg till utgående regler i brand väggen
+
+Om du vill få åtkomst till en aktuell lista över utgående IP-intervall som ska läggas till i brand Väggs inställningarna läser du [Hämta Azure IP-intervall och service märken](https://www.microsoft.com/download/details.aspx?id=56519).
+
+Information om hur du automatiserar listan finns i [använda service tag Discovery API (offentlig för hands version)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview).
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurera en IP-brandvägg med en Resource Manager-mall
 

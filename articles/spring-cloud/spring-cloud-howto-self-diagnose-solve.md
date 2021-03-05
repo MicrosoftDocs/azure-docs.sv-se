@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904294"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122875"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Så här identifierar och löser du problem i Azure våren Cloud
 
 **Den här artikeln gäller för:** ✔️ Java ✔️ C #
 
-Azure våren Cloud Diagnostics är en interaktiv upplevelse som hjälper dig att felsöka din app. Ingen konfiguration krävs. När du hittar problem pekar Azure våren Cloud Diagnostics upp vad som är fel och vägleder dig till information som hjälper dig att felsöka och lösa problemet.
+Azure våren Cloud Diagnostics är en interaktiv upplevelse för fel sökning av appen utan konfiguration. Azure våren Cloud Diagnostics identifierar problem och vägleder dig till information som hjälper dig att felsöka och lösa problem.
 
 ## <a name="prerequisites"></a>Förutsättningar
 För att slutföra den här kursen behöver du:
@@ -28,9 +28,9 @@ För att slutföra den här kursen behöver du:
 * Minst ett program som redan har skapats i din tjänst instans.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Gå till sidan diagnostik
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 2. Gå till **översikts** sidan för Azure våren-molnet.
-3. Öppna **diagnostisera och lös problem** på menyn på vänster sida av sidan.
+3. Välj **diagnostisera och lös problem** i det vänstra navigerings fönstret.
 
  ![Diagnostisera, lös dialog](media/spring-cloud-diagnose/diagnose-solve-dialog.png)
 
@@ -39,7 +39,7 @@ För att hitta ett problem kan du antingen söka genom att skriva ett nyckelord 
 
  ![Sökningsproblem](media/spring-cloud-diagnose/search-detectors.png)
 
-Val av **konfigurations serverns hälso kontroll**, **konfigurations serverns hälso status**eller **uppdaterings historiken för konfigurations servern** visar olika resultat.
+Val av **konfigurations serverns hälso kontroll**, **konfigurations serverns hälso status** eller **uppdaterings historiken för konfigurations servern** visar olika resultat.
 
 ![Problem alternativ](media/spring-cloud-diagnose/detectors-options.png)
 

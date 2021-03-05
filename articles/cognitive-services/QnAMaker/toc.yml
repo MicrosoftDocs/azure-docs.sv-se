@@ -50,6 +50,8 @@
     - name: Hantera Azure-resurser
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Nätverks isolering för Azure-resurser
+      href: How-To/network-isolation.md
     - name: Hantera QnA Maker resurs åtkomst
       href: How-To/manage-qna-maker-app.md
     - name: Hantera kunskapsbas

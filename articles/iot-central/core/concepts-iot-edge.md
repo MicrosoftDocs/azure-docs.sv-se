@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733025"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123283"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Ansluta Azure IoT Edge-enheter till ett Azure IoT Central-program
 
@@ -87,6 +87,20 @@ IoT Central använder [enhets mallar](concepts-device-templates.md) för att def
 * De kommandon som en enhet svarar på så att IoT Central kan visa ett användar gränssnitt för en operator som används för att anropa kommandona.
 
 En IoT Edge enhet kan skicka telemetri, synkronisera egenskaps värden och svara på kommandon på samma sätt som en standard enhet. En IoT Edge enhet behöver därför en enhets mal len i IoT Central.
+
+### <a name="iot-edge-device-templates"></a>IoT Edge mallar för enheter
+
+IoT Central Device templates använder modeller för att beskriva enhetens funktioner. Följande diagram visar modell strukturen för en IoT Edge enhet:
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="Modell struktur för IoT Edge enhet som är ansluten till IoT Central" border="false":::
+
+IoT Central modeller en IoT Edge-enhet på följande sätt:
+
+* Varje IoT Edge enhets mal len har en kapacitets modell.
+* För varje anpassad modul som anges i distributions manifestet genereras en moduls funktions modell.
+* En relation upprättas mellan varje moduls funktions modell och en enhets modell.
+* En modul kapacitets modell implementerar ett eller flera modul gränssnitt.
+* Varje modul gränssnitt innehåller telemetri, egenskaper och kommandon.
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge distributions manifest och IoT Central mallar för enheter
 

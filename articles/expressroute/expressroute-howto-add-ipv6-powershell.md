@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c0d153ff8125a6ef16a69aec72a27dd4b234eab5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 253fce7d47d694c03d470fefdf81318a6bff77b3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100057"
+ms.locfileid: "102123062"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Lägg till stöd för IPv6 för privat peering med Azure PowerShell (för hands version)
 
@@ -165,7 +165,7 @@ Följ stegen nedan om du planerar att ansluta till en ny uppsättning Azure-resu
 
 2. [Skapa Gateway-undernätet med dubbla stackar](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
 
-3. [Skapa den virtuella Nätverksgatewayen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ.
+3. [Skapa den virtuella Nätverksgatewayen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ (Observera att detta endast är tillgängligt för kretsar som använder ExpressRoute Direct).
 
 4. [Länka ditt virtuella nätverk till din ExpressRoute-krets](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm).
 
@@ -176,6 +176,8 @@ Följ stegen nedan om du planerar att ansluta till en ny uppsättning Azure-resu
 * Anslutningar till distributioner i icke-AZ regioner
 * Global Reach anslutningar mellan ExpressRoute-kretsar
 * Användning av ExpressRoute med virtuellt WAN
+* FastPath med icke-ExpressRoute Direct-kretsar
+* Samexistens med VPN Gateway
 
 ## <a name="next-steps"></a>Nästa steg
 

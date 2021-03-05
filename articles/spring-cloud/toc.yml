@@ -147,6 +147,8 @@
       items:
         - name: Diagnostisera och lösa problem på egen hand
           href: spring-cloud-howto-self-diagnose-solve.md
+        - name: Själv diagnostisering som körs i VNET
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: Felsökningsguide
           href: spring-cloud-troubleshoot.md
     - name: Migrera

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696022"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123572"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Registrera och skanna Azure flera källor
 
@@ -95,12 +95,12 @@ Om du vill skapa och köra en ny genomsökning gör du följande:
     1. Du kan välja en **autentiseringsuppgift på den överordnade nivån** som MSI eller en viss typ av autentiseringsuppgifter för tjänstens huvud namn, som du kan välja att använda för alla resurs typer under prenumerationen eller resurs gruppen
     1. Du kan också **välja resurs typ och använda olika autentiseringsuppgifter** för den resurs typen
     1. Varje autentiseringsuppgift betraktas som autentiseringsmetod för alla resurser under en viss typ
-    1. Du måste ange de valda autentiseringsuppgifterna för resurserna för att kunna söka igenom dem enligt beskrivningen i det här [avsnittet](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) ovan
+    1. Du måste ange de valda autentiseringsuppgifterna för resurserna för att kunna söka igenom dem enligt beskrivningen i det här [avsnittet](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) ovan
 1. Inom varje typ kan du välja att antingen söka igenom alla resurser eller en delmängd av dem efter namn.
     1. Om du lämnar alternativet som **alla** kommer framtida resurser av den typen också att genomsökas i framtida skannings körningar
     1. Om du väljer ett specifikt lagrings konto eller SQL-databaser inkluderas inte framtida resurser som skapats av den typen i den här prenumerationen eller resurs gruppen för genomsökningar, om inte genomsökningen redige ras i framtiden
  
-1.  Fortsätt genom att klicka på **Fortsätt** . Vi kommer att testa åtkomsten för att kontrol lera om du har tillämpat avdelningens kontroll MSI som läsare för prenumerationen eller resurs gruppen. Om ett fel meddelande genereras följer du anvisningarna [här](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)
+1.  Fortsätt genom att klicka på **Fortsätt** . Vi kommer att testa åtkomsten för att kontrol lera om du har tillämpat avdelningens kontroll MSI som läsare för prenumerationen eller resurs gruppen. Om ett fel meddelande genereras följer du anvisningarna [här](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)
 
 1.  Välj **skannings regel uppsättningar** för varje resurs typ som valts i föregående steg. Du kan också skapa skannings regel uppsättningar infogade.
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Val av regel uppsättning för Azure Multiple Scan":::

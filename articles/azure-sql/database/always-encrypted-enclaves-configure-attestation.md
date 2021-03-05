@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555666"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122586"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurera Azure-attestering för din logiska Azure SQL-Server
 
@@ -66,10 +66,14 @@ authorizationrules
 
 Principen ovan verifierar:
 
-- Enklaven i Azure SQL Database stöder inte fel sökning (vilket skulle minska den skydds nivå som enklaven tillhandahåller).
-- Produkt-ID: t för biblioteket i enklaven är det produkt-ID som tilldelats Always Encrypted med säker enclaves (4639).
-- Bibliotekets versions-ID (SVN) är större än 0.
+- Enklaven i Azure SQL Database stöder inte fel sökning. 
+  > Enclaves kan läsas in med fel sökning inaktiverat eller aktiverat. Stöd för fel sökning är utformat för att låta utvecklare felsöka koden som körs i en enklaven. I ett produktions system kan fel sökning göra det möjligt för en administratör att undersöka innehållet i enklaven, vilket skulle minska den skydds nivå som enklaven tillhandahåller. Den rekommenderade principen inaktiverar fel sökning för att säkerställa att om en obehörig administratör försöker aktivera fel söknings stöd genom att ta över enklaven-datorn kommer attesteringen att Miss lyckas. 
+- Produkt-ID: t för enklaven matchar det produkt-ID som tilldelats Always Encrypted med säker enclaves.
+  > Varje enklaven har ett unikt produkt-ID som särskiljer enklaven från andra enclaves. Produkt-ID: t som tilldelats Always Encrypted enklaven är 4639. 
+- Bibliotekets säkerhets versions nummer (SVN) är större än 0.
+  > SVN gör att Microsoft kan svara på potentiella säkerhets fel som identifieras i enklaven-koden. Om ett säkerhets problem är dicovered och åtgärdat, kommer Microsoft att distribuera en ny version av enklaven med en ny (öka) SVN. Ovanstående rekommenderade princip kommer att uppdateras för att avspegla den nya SVN-filen. Genom att uppdatera principen så att den matchar den rekommenderade principen kan du se till att om en obehörig administratör försöker läsa in en äldre och osäker enklaven, kommer attesteringen att Miss.
 - Biblioteket i enklaven har signerats med Microsofts signerings nyckel (värdet för x-MS-SGX-mrsigner-anspråket är hashen för signerings nyckeln).
+  > Ett av huvud målen för attestering är att övertyga klienter om att den binärfil som körs i enklaven är den binärfil som ska köras. Attesterings principer ger två mekanismer för detta ändamål. Det ena är **mrenclave** -anspråket som är hashen för den binärfil som ska köras i en enklaven. Problemet med **mrenclave** är att den binära hashen ändras även med enkla ändringar av koden, vilket gör det svårt att reva koden som körs i enklaven. Därför rekommenderar vi användningen av **mrsigner**, som är en hash för en nyckel som används för att signera enklaven-binärfilen. När Microsoft revs enklaven är **mrsigner** kvar så länge signerings nyckeln inte ändras. På så sätt är det möjligt att distribuera uppdaterade binärfiler utan att behöva bryta kundernas program. 
 
 > [!IMPORTANT]
 > En attesterings leverantör skapas med standard principen för Intel SGX-enclaves, som inte validerar koden som körs inuti enklaven. Microsoft rekommenderar att du ställer in den rekommenderade principen ovan och inte använder standard principen för Always Encrypted med säker enclaves.

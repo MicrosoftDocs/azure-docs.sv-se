@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2419761c195258c60561e284abf0227b915ed4f6
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050009"
+ms.locfileid: "102123640"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -86,7 +86,7 @@ dotnet add package Azure.Core.Pipeline
 
 Du kommer nu att deklarera variabler på klass nivå och lägga till en kod som gör det möjligt att komma åt Azure Digitals dubbla. Du lägger till följande i din funktion i _Function1.cs_ -filen.
 
-* Kod för att läsa URL: en för Azure Digitals dubblare-tjänst som en miljö variabel. Det är en bra idé att läsa tjänste-URL: en från en miljö variabel, i stället för att hårdkoda den i-funktionen.
+* Kod för att läsa URL: en för Azure Digitals dubblare-tjänst som en **miljö variabel**. Det är en bra idé att läsa tjänste-URL: en från en miljö variabel, i stället för att hårdkoda den i-funktionen. Du anger värdet för den här miljövariabeln [senare i den här artikeln](#set-up-security-access-for-the-function-app). Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -134,7 +134,7 @@ Använd _principalId_-värdet i följande kommando för att tilldela funktionsap
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
-Slutligen kan du göra webb adressen till din Azure Digital-instansen tillgänglig för din funktion genom att ange en miljö variabel. Mer information om hur du ställer in miljövariabler finns i [*miljövariabler*](/sandbox/functions-recipes/environment-variables). 
+Slutligen kan du göra webb adressen till din Azure Digital-instansen tillgänglig för din funktion genom att ange en **miljö variabel** för den. Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 > [!TIP]
 > URL: en för Azure Digitals dubbla instanser görs genom att lägga till *https://* i början av *värd namnet* för Azure Digital-instansen. Om du vill se värd namnet, tillsammans med alla egenskaper för din instans, kan du köra `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -183,7 +183,7 @@ Spara sedan informationen genom att trycka på knappen _Spara_ .
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Konfigurera program inställningar med Azure Portal
 
-Du kan göra webb adressen till din Azure Digital-instansen tillgänglig för din funktion genom att ange en miljö variabel. Mer information finns i [*miljövariabler*](/sandbox/functions-recipes/environment-variables). Program inställningarna visas som miljövariabler för att få åtkomst till den digitala dubbla instansen. 
+Om du vill göra webb adressen till din Azure Digital-instansen tillgänglig för din funktion kan du ange en **miljö variabel** för den. Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). Program inställningarna visas som miljövariabler för att komma åt Azure Digitals-instansen. 
 
 Om du vill ange en miljö variabel med URL: en för din instans, hämtar du först URL: en genom att hitta värd namnet för Azure Digital-instansen. Sök efter din instans i [Azure Portal](https://portal.azure.com) Sök fältet. Välj sedan _Översikt_ i det vänstra navigerings fältet för att visa _värd namnet_. Kopiera det här värdet.
 

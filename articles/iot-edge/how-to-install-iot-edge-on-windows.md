@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736516"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123198"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -174,7 +174,7 @@ Installera IoT Edge för Linux på Windows på mål enheten om du inte redan har
    ```
 
    > [!NOTE]
-   > Du kan köra det här kommandot utan parametrar eller anpassa distributionen med parametrar om du vill. Du kan referera till [referensen IoT Edge för Linux på Windows PowerShell-skript](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) för att se deras betydelser.
+   > Du kan köra det här kommandot utan parametrar eller anpassa distributionen med parametrar om du vill. Du kan referera till [referensen IoT Edge för Linux på Windows PowerShell-skript](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) för att se deras betydelser.
 
 1. Ange "Y" om du vill acceptera licens villkoren.
 
@@ -340,8 +340,6 @@ Kontrol lera att IoT Edge för Linux på Windows har installerats och kon figure
        ```bash
        sudo iotedge check
        ```
-
----
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

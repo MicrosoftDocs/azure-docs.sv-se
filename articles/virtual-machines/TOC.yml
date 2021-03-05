@@ -1346,7 +1346,7 @@
             - name: Vanliga frågor och svar om allmän tillgänglighet
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: VANLIGA FRÅGOR OCH SVAR
-              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+              href: ../azure-monitor/faq.md
             - name: Aktivera övervakning
               items:
                 - name: Aktivera övervakningsöversikt

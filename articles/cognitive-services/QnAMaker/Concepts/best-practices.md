@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733439"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123317"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Metod tips för en QnA Maker kunskaps bas
 
@@ -43,7 +43,7 @@ Användaren kan ange frågor med antingen ett samtals format `How do I add a ton
 
 De bästa svaren är enkla svar, men inte för enkla. Använd inte svar som `yes` och `no` . Om ditt svar ska länkas till andra källor eller ger en omfattande upplevelse med medier och länkar, använder du [metadata-märkning](../how-to/edit-knowledge-base.md#add-metadata) för att skilja mellan svar och [skickar sedan frågan](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) med metadata-Taggar i `strictFilters` egenskapen för att få rätt svars version.
 
-|Svar|Follup-prompter|
+|Svar|Uppföljnings anvisningarna|
 |--|--|
 |Stäng av arbets ytans bärbara dator med strömbrytaren på tangent bordet.|* Viktiga kombinationer av ström spar läge, avstängning och omstart.<br>* Så här kan du starta en bärbar dator på en Surface<br>* Ändra BIOS för en Surface-dator<br>* Skillnader mellan ström spar läge, Stäng av och starta om|
 |Kund tjänst är tillgänglig via telefon, Skype och textmeddelande dygnet runt, 24 timmar per dag.|* Kontakt information för försäljning.<br> * Kontor och lagrings platser och timmar för ett personligt besök.<br> * Tillbehör för en Surface-dator.|

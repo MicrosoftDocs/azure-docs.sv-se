@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 62787bfb586f2847d984499cf966708749184ee1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096351"
+ms.locfileid: "102124422"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Självstudie: analysera direktsänd video genom att använda Intel Open™ DL-dataströmmar – Edge AI-tillägg 
 
@@ -327,7 +327,8 @@ Om du vill använda en annan modell måste du ändra distributions mal len. Om d
 "PIPELINE_VERSION=vehicle_attributes_recognition"
 ],
 ```
-> [!TIP] Kopiera mallen och lagra den under ett nytt namn för varje möjlig pipeline. På så sätt kan du växla mellan modeller genom att skapa en ny distribution baserat på en av dessa mallar.
+> [!TIP]
+> Kopiera mallen och lagra den under ett nytt namn för varje möjlig pipeline. På så sätt kan du växla mellan modeller genom att skapa en ny distribution baserat på en av dessa mallar.
 
 När du har ändrat variablerna kan du distribuera mallen igen till enheten. Nu kan du upprepa stegen ovan för att köra exempel programmet igen, med den nya pipelinen. Utöknings resultatet är liknande (i schema) men visar mer eller mindre information beroende på den pipeline-modell som du har valt.
 

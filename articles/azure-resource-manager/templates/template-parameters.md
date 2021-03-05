@@ -3,12 +3,12 @@ title: Parametrar i mallar
 description: Beskriver hur du definierar parametrar i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: b23417766524204e490450568bb80b8c49e2d328
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043940"
+ms.locfileid: "102123402"
 ---
 # <a name="parameters-in-arm-templates"></a>Parametrar i ARM-mallar
 
@@ -16,7 +16,7 @@ Den här artikeln beskriver hur du definierar och använder parametrar i din Azu
 
 Resource Manager matchar parameter värden innan distributions åtgärderna startas. Oavsett var parametern används i mallen ersätter Resource Manager den med det matchade värdet.
 
-Varje parameter måste anges till en av [data typerna](template-syntax.md#data-types).
+Varje parameter måste anges till en av [data typerna](data-types.md).
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
