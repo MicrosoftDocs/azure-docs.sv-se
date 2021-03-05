@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c89427f83600d3b8091d5293b1757fa6f1a15ef1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784905"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202492"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Skapa och distribuera IoT Plug and Play-bryggan
 
@@ -84,7 +84,7 @@ När bryggan körs som en IoT Edge modul i en IoT Edge körning, skickas konfigu
 | Windows |  Ja |
 | Linux | Ja |
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra det här avsnittet måste du installera följande program vara på den lokala datorn:
 
@@ -206,7 +206,7 @@ Debug\pnpbridge_bin.exe
 | Windows |  Nej |
 | Linux | Ja |
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra det här avsnittet behöver du en kostnads fri Azure IoT-hubb på nivån standard eller standard. Information om hur du skapar en IoT Hub finns i [skapa en IoT-hubb](../iot-hub/iot-hub-create-through-portal.md).
 
@@ -227,7 +227,7 @@ Stegen i det här avsnittet förutsätter att du har följande utvecklings milj�
   sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
   ```
 
-- [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest&preserve-view=true) installerat i din Wsl 2-miljö för att hantera dina Azure-resurser.
+- [Azure CLI](/cli/azure/install-azure-cli-apt) installerat i din Wsl 2-miljö för att hantera dina Azure-resurser.
 
   > [!TIP]
   > Om du vill kan du köra `az` kommandona i [Azure Cloud Shell](https://shell.azure.com/) där CLI är förinstallerat.

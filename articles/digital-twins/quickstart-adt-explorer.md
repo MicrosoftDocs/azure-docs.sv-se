@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: cb501dd8e548ea2f6ce8b63fbffb1c4b2403c9a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8c6e584a4bdb1953d7ceac4e3d612b329738f646
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035967"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203988"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Snabb start – utforska ett Azure-exempel med Azure Digitals dubblare med Azure Digitals Internet Explorer
 
@@ -57,13 +57,13 @@ Resten av det här avsnittet vägleder dig genom de här stegen.
 
 Azure Digitals Internet Explorer-appen använder [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (del av `Azure.Identity` biblioteket) för att autentisera användare med Azure Digitals-instansen när du kör den på din lokala dator. Mer information om olika sätt som en klient-app kan autentisera med Azure Digitals dubbla finns i [Write app authentication code](how-to-authenticate-client.md).
 
-Med den här typen av autentisering söker Azure Digitals Internet Explorer efter autentiseringsuppgifter i din lokala miljö, t. ex. en Azure-inloggning i ett lokalt [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) eller i Visual Studio eller Visual Studio Code. Av den anledningen bör du *Logga in på Azure lokalt* via någon av dessa metoder för att ställa in autentiseringsuppgifter för appen Azure Digital-appens Utforskare.
+Med den här typen av autentisering söker Azure Digitals Internet Explorer efter autentiseringsuppgifter i din lokala miljö, t. ex. en Azure-inloggning i ett lokalt [Azure CLI](/cli/azure/install-azure-cli) eller i Visual Studio eller Visual Studio Code. Av den anledningen bör du *Logga in på Azure lokalt* via någon av dessa metoder för att ställa in autentiseringsuppgifter för appen Azure Digital-appens Utforskare.
 
 Om du redan är inloggad på Azure på något av följande sätt kan du gå vidare till [Nästa avsnitt](#run-and-configure-azure-digital-twins-explorer).
 
 Annars kan du installera den lokala Azure CLI med följande steg:
 
-1. Följ processen på [den här installations länken](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) för att slutföra installationen som matchar ditt operativ system.
+1. Följ processen på [den här installations länken](/cli/azure/install-azure-cli) för att slutföra installationen som matchar ditt operativ system.
 1. Öppna ett konsol fönster på din dator.
 1. Kör `az login` och följ de begärda autentiseringarna för att logga in på ditt Azure-konto.
 1. Möjligt sista steget: om du använder flera Azure-prenumerationer under det här kontot anger du autentiserings kontexten till den Azure-prenumeration som innehåller din Azure Digital-instansen genom att köra `az account set --subscription "<your-subscription-name-or-ID>"` (antingen namnet eller ID-värdet för prenumerationen fungerar).

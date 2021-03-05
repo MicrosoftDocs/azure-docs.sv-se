@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbaa83b38482203655f7de98cd5bbfec3ef7a870
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418279"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202951"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Aktivera privat åtkomst med privat länk (för hands version): Azure CLI
 
@@ -41,7 +41,7 @@ När du använder [Azure CLI](/cli/azure/what-is-azure-cli)kan du konfigurera pr
 
 ### <a name="add-a-private-endpoint-to-an-existing-instance"></a>Lägg till en privat slut punkt i en befintlig instans
 
-Om du vill skapa en privat slut punkt och länka den till en Azure Digitals-instans använder du kommandot [**AZ Network Private-Endpoint Create**](/cli/azure/network/private-endpoint?view=azure-cli-latest&preserve-view=true#az_network_private_endpoint_create) . Identifiera den digitala Azure-instansen genom att använda dess fullständigt kvalificerade ID i `--private-connection-resource-id` parametern.
+Om du vill skapa en privat slut punkt och länka den till en Azure Digitals-instans använder du kommandot [**AZ Network Private-Endpoint Create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) . Identifiera den digitala Azure-instansen genom att använda dess fullständigt kvalificerade ID i `--private-connection-resource-id` parametern.
 
 Här är ett exempel som använder kommandot för att skapa en privat slut punkt, med endast de parametrar som krävs.
 
@@ -49,25 +49,25 @@ Här är ett exempel som använder kommandot för att skapa en privat slut punkt
 az network private-endpoint create --connection-name {private_link_service_connection} -n {name_for_private_endpoint} -g {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
 ```
 
-En fullständig lista över obligatoriska och valfria parametrar, samt fler exempel på hur du skapar privata slut punkter finns i [ **AZ Network Private-Endpoint Create** Reference documentation](/cli/azure/network/private-endpoint?view=azure-cli-latest&preserve-view=true#az_network_private_endpoint_create).
+En fullständig lista över obligatoriska och valfria parametrar, samt fler exempel på hur du skapar privata slut punkter finns i [ **AZ Network Private-Endpoint Create** Reference documentation](/cli/azure/network/private-endpoint#az_network_private_endpoint_create).
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>Hantera privata slut punkts anslutningar på instansen
 
-När en privat slut punkt har skapats för din Azure Digital-instansen kan du använda anslutnings kommandona [**AZ DT Network Private-Endpoint**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection?view=azure-cli-latest&preserve-view=true) för att fortsätta hantera privata slut punkts **anslutningar** med avseende på instansen. Åtgärderna omfattar:
+När en privat slut punkt har skapats för din Azure Digital-instansen kan du använda anslutnings kommandona [**AZ DT Network Private-Endpoint**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) för att fortsätta hantera privata slut punkts **anslutningar** med avseende på instansen. Åtgärderna omfattar:
 * Visa en privat slut punkts anslutning
 * Ange tillstånd för anslutning till privat slutpunkt
 * Ta bort anslutningen till en privat slutpunkt
 * Visa en lista över alla anslutningar för privata slut punkter för en instans
 
-Mer information och exempel finns i [referens dokumentationen för **AZ DT Network-den privata slut punkten**](/cli/azure/ext/azure-iot/dt/network/private-endpoint?view=azure-cli-latest&preserve-view=true).
+Mer information och exempel finns i [referens dokumentationen för **AZ DT Network-den privata slut punkten**](/cli/azure/ext/azure-iot/dt/network/private-endpoint).
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Hantera annan privat länk information på en digital Azure-instans
 
-Du kan få ytterligare information om status för privata Länkar för din instans med kommandona [**AZ DT Network Private-Link**](/cli/azure/ext/azure-iot/dt/network/private-link?view=azure-cli-latest&preserve-view=true) . Åtgärderna omfattar:
+Du kan få ytterligare information om status för privata Länkar för din instans med kommandona [**AZ DT Network Private-Link**](/cli/azure/ext/azure-iot/dt/network/private-link) . Åtgärderna omfattar:
 * Lista privata länkar som är associerade med en digital Azure-instans
 * Visa en privat länk som är associerad med instansen
 
-Mer information och exempel finns i [ **AZ DT Network-Link** Reference Document](/cli/azure/ext/azure-iot/dt/network/private-link?view=azure-cli-latest&preserve-view=true).
+Mer information och exempel finns i [ **AZ DT Network-Link** Reference Document](/cli/azure/ext/azure-iot/dt/network/private-link).
 
 ## <a name="disable--enable-public-network-access-flags"></a>Inaktivera/aktivera offentliga nätverks åtkomst flaggor
 
@@ -79,7 +79,7 @@ Den här artikeln visar hur du uppdaterar värdet för nätverks flaggan med hj�
 
 ### <a name="use-the-azure-cli"></a>Använda Azure CLI
 
-I Azure CLI kan du inaktivera eller aktivera offentlig nätverks åtkomst genom att lägga till en `--public-network-access` parameter till `az dt create` kommandot. Även om det här kommandot kan användas för att skapa en ny instans kan du använda det för att redigera egenskaperna för en befintlig instans genom att ange namnet på en instans som redan finns. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_create) eller de [allmänna anvisningarna för att konfigurera en digital Azure-instans](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)).
+I Azure CLI kan du inaktivera eller aktivera offentlig nätverks åtkomst genom att lägga till en `--public-network-access` parameter till `az dt create` kommandot. Även om det här kommandot kan användas för att skapa en ny instans kan du använda det för att redigera egenskaperna för en befintlig instans genom att ange namnet på en instans som redan finns. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) eller de [allmänna anvisningarna för att konfigurera en digital Azure-instans](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)).
 
 Om du vill **inaktivera** offentlig nätverks åtkomst för en Azure Digital-instansen använder du `--public-network-access` parametern så här:
 

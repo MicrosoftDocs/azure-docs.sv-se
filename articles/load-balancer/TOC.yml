@@ -39,6 +39,8 @@
           href: tutorial-cross-region-portal.md
         - name: Skapa en belastningsutjämnare för flera regioner – PowerShell
           href: tutorial-cross-region-powershell.md
+        - name: Skapa en belastningsutjämnare för flera regioner – Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: Exempel
   items:
     - name: Azure CLI

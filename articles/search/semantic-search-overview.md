@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680351"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203240"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantisk sökning i Azure Kognitiv sökning
 
@@ -27,7 +27,7 @@ Den underliggande tekniken utnyttjar investeringarna från Bing och Microsoft Re
 
 Offentliga för hands versions funktioner är:
 
-+ Algoritm för semantisk rangordning som hämtar relevanta dokument baserat på kontext eller semantisk innebörd av Sök frågornas villkor
++ Semantisk rangordnings modell som utvärderar resultat baserat på kontext eller semantisk innebörd av Sök frågornas villkor
 + Semantiska bild texter som markerar relevanta passager
 + Semantiska svar på frågan, som också formuleras från resultat
 + Stavnings kontroll som korrigerar skrivfel innan villkoren når sökmotorn
@@ -44,7 +44,9 @@ För att skapa under texter och svar använder den språk representations modell
 
 ## <a name="availability-and-pricing"></a>Tillgänglighet och priser
 
-Semantisk rangordning är tillgängligt via [registrerings registrering](https://aka.ms/SemanticSearchPreviewSignup), på search Services som skapats på en standard nivå (S1, S2, S3), som finns i någon av dessa regioner: Norra centrala USA, västra USA, västra USA 2, östra USA 2, norra Europa, västra Europa. Stavnings korrigering är tillgänglig i samma regioner, men saknar nivå begränsningar. Om du har en befintlig tjänst som uppfyller villkoret för nivån och regionen krävs bara registrering.
+Semantisk rangordning är tillgängligt via [registrerings registrering](https://aka.ms/SemanticSearchPreviewSignup), på search Services som skapats på en standard nivå (S1, S2, S3), som finns i någon av dessa regioner: Norra centrala USA, västra USA, västra USA 2, östra USA 2, norra Europa, västra Europa. En befintlig Sök tjänst på S1 eller högre i de angivna regionerna uppfyller kraven för för hands versionen (inget behov av att skapa en ny tjänst).
+
+Stavnings korrigering är tillgänglig i samma regioner, men har inga nivå begränsningar och inget krav på registrering. 
 
 Mellan för hands versions lansering den 2 mars till och med den 1 april erbjuds stavnings korrigering och semantisk rangordning utan kostnad. Efter den 1 april blir beräknings kostnaden för att köra den här funktionen en fakturerbar händelse. Den förväntade kostnaden är cirka USD $500/månad för 250 000 frågor. Du hittar detaljerad kostnads information som beskrivs på [sidan kognitiv sökning prissättning](https://azure.microsoft.com/pricing/details/search/) och i [Beräkna och hantera kostnader](search-sku-manage-costs.md).
 

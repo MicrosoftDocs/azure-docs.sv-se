@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624885"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102206001"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -302,3 +302,8 @@ Nej. Det virtuella WAN-nätverket lagrar ingen kund information.
 ### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Finns det några leverantörer av hanterade tjänster som kan hantera virtuella WAN-nätverk för användare som en tjänst?
 
 Ja. En lista över MSP-lösningar (Managed Service Provider) som är aktiverade via Azure Marketplace finns i [Azure Marketplace-erbjudanden från Azure Network MSP-partner](../articles/networking/networking-partners-msp.md#msp).
+
+### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Hur skiljer sig den virtuella WAN Hub-routningen från Azure Route server i ett virtuellt nätverk?
+
+Azure Route Server tillhandahåller en Border Gateway Protocol (BGP) peering-tjänst som kan användas av NVA (virtuell nätverks installation) för att lära sig vägar från väg servern i ett gör det själv Hub VNet. Virtuell WAN-routning ger flera funktioner, inklusive VNET till VNET-överföring, anpassad routning, anpassad väg Association och-spridning och en helt nät mask med anslutning utan anslutning samt anslutnings tjänster för ExpressRoute, plats-VPN, fjärran vändare/storskaliga P2S VPN-och Secure Hub-funktioner (Azure Firewall). När du etablerar en Border Gateway Protocol (BGP) peering mellan din NVA och Azure router Server kan du annonsera IP-adresser från din NVA till ditt virtuella nätverk. För alla avancerade routningsfunktioner, till exempel transit routning, anpassad routning osv., kan du använda virtuell WAN-routning.
+

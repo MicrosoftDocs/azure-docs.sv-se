@@ -212,6 +212,10 @@
           href: diagnostic-logs.md
         - name: Mått
           href: metrics.md
+    - name: Användningsfall
+      items:
+        - name: Användnings fall för domäner
+          href: event-domains-use-cases.md
 - name: Anvisningar
   items:
     - name: 'Skapa, visa och hantera systemämnen'

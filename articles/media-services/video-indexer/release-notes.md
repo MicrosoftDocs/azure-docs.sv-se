@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715164"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203733"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -29,6 +29,12 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 * Kända problem
 * Felkorrigeringar
 * Föråldrade funktioner
+
+## <a name="march-2021"></a>Mars 2021
+
+Ljud analys är tillgängligt nu i ytterligare nya paket med ljud funktioner i olika pris punkter. Den nya **grundläggande ljud** analys inställningen ger en låg kostnads möjlighet att bara extrahera tal avskrifter, översättning och formatering av utdata och under texter. Den **grundläggande ljud** för inställningen kommer att producera två separata mätare på din faktura, inklusive en linje för avskrift och en separat rad för bildtext och under text format. Mer information om prissättningen finns på sidan [Media Services prissättning](https://azure.microsoft.com/pricing/details/media-services/) .
+
+Det nya paketet är tillgängligt vid indexering eller Omindexering av filen genom att välja alternativet **Avancerad alternativ för avancerad**  ->  **ljud** (under List rutan **video + ljud indexering** ).
 
 ## <a name="february-2021"></a>Februari 2021
 

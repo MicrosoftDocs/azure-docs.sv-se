@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879990"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202696"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrera från Linux till en hybrid moln distribution med Azure File Sync
 
@@ -39,7 +39,7 @@ Om du inte kör Samba på Linux-servern och hellre vill migrera mappar till en h
 * Skapa en Windows Server 2019-instans som en virtuell dator eller fysisk server. Windows Server 2012 R2 är minimi kravet. Det finns också stöd för ett Windows Server-redundanskluster.
 * Etablera eller Lägg till direktansluten lagring (DAS). NAS (Network Attached Storage) stöds inte.
 
-  Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din lokala Linux-server, om du använder funktionen Azure File Sync [moln nivåer](storage-sync-cloud-tiering.md) . Men när du kopierar dina filer från det större Linux-Samba server utrymmet till den mindre Windows Server-volymen i en senare fas måste du arbeta i batchar:
+  Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din lokala Linux-server, om du använder funktionen Azure File Sync [moln nivåer](storage-sync-cloud-tiering-overview.md) . Men när du kopierar dina filer från det större Linux-Samba server utrymmet till den mindre Windows Server-volymen i en senare fas måste du arbeta i batchar:
 
   1. Flytta en uppsättning filer som passar på disken.
   2. Låt filsynkronisering och moln nivåer engagera.
@@ -98,7 +98,7 @@ Kör den första lokala kopian till din Windows Server-målmapp:
 
 Följande Robocopy-kommando kommer att kopiera filer från din servers lagring för Linux-Samba till din Windows Server-målmapp. Windows Server synkroniserar det med Azure-filresurserna. 
 
-Om du har allokerat mindre lagrings utrymme på Windows Server-instansen än vad filerna tar upp på den Samba-servern för Linux, har du konfigurerat moln nivåer. När den lokala Windows Server-volymen blir full startar [moln skiktning](storage-sync-cloud-tiering.md) och filer på nivån som redan har synkroniserats. Moln skiktet genererar tillräckligt med utrymme för att kunna fortsätta med kopian från den Samba-server som används av Linux. Moln nivåer utförs en gång i timmen för att se vad som har synkroniserats och för att frigöra disk utrymme för att uppnå principen på 99 procent ledigt utrymme för en volym.
+Om du har allokerat mindre lagrings utrymme på Windows Server-instansen än vad filerna tar upp på den Samba-servern för Linux, har du konfigurerat moln nivåer. När den lokala Windows Server-volymen blir full startar [moln skiktning](storage-sync-cloud-tiering-overview.md) och filer på nivån som redan har synkroniserats. Moln skiktet genererar tillräckligt med utrymme för att kunna fortsätta med kopian från den Samba-server som används av Linux. Moln nivåer utförs en gång i timmen för att se vad som har synkroniserats och för att frigöra disk utrymme för att uppnå principen på 99 procent ledigt utrymme för en volym.
 
 Det är möjligt att Robocopy flyttar filer snabbare än att du kan synkronisera till molnet och nivån lokalt, vilket gör att du får slut på det lokala disk utrymmet. Robocopy kommer sedan att Miss sen. Vi rekommenderar att du arbetar genom resurserna i en sekvens som förhindrar problemet. Överväg till exempel att inte starta Robocopy-jobb för alla resurser på samma gång. Eller Överväg att flytta resurser som passar på den aktuella mängden ledigt utrymme på Windows Server-instansen. Om ditt Robocopy-jobb Miss Miss kan du alltid köra kommandot igen så länge du använder följande alternativ för spegling/rensning:
 

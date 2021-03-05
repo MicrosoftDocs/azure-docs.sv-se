@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576773"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202509"
 ---
 # <a name="monitor-azure-file-sync"></a>Övervaka Azure File Sync
 
@@ -42,7 +42,7 @@ Mått för Azure File Sync är aktiverade som standard och skickas till Azure Mo
 
 Följande mått för Azure File Sync är tillgängliga i Azure Monitor:
 
-| Måttnamn | Description |
+| Måttnamn | Beskrivning |
 |-|-|
 | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning).<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
 | Återkalla moln nivå | Storlek på data som har återkallats.<br><br>**Obs!** det här måttet tas bort i framtiden. Använd storleks måttet återkalla storlek på moln nivå för att övervaka storleken på data som återkallas.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: Server namn |
@@ -111,14 +111,14 @@ Om du vill visa hälso tillståndet för en **Server slut punkt** i portalen gå
 
 - **Server slut punktens hälso** -och **synkroniserings aktivitet** i portalen baseras på de synkroniserings händelser som loggas i händelse loggen för TELEMETRI på servern (ID 9102 och 9302). Om en Sync-session Miss lyckas på grund av ett tillfälligt fel, till exempel fel som avbrutits, visas Server slut punkten fortfarande som **felfri** i portalen så länge den aktuella synkroniseringen gör förlopp (filer tillämpas). Händelse-ID 9302 är synkroniseringens förlopps händelse och händelse-ID 9102 loggas när en Sync-session har slutförts.  Mer information finns i [synkronisering av hälso tillstånd](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) och [synkronisering](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Om Server slut punkt hälsan visar ett **fel** eller **Ingen aktivitet**, se [fel söknings dokumentationen](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors) för vägledning.
 - **Filerna som inte synkroniserar** antalet i portalen baseras på händelse-ID 9121 som har loggats i händelse loggen för telemetri på servern. Den här händelsen loggas för varje per objekt-fel när synkroniseringstjänsten har slutförts. Information om hur du löser fel per objekt finns i [Hur gör jag för att se om det finns specifika filer eller mappar som inte synkroniseras?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
-- Om du vill visa **moln nivå effektiviteten** i portalen går du till **serverns slut punkts egenskaper** och navigerar till avsnittet **moln nivå** . De data som tillhandahålls för att effektivisera moln nivån baseras på händelse-ID 9071 som loggas i händelse loggen för telemetri på servern. Mer information finns i [Översikt över moln nivåer](./storage-sync-cloud-tiering.md).
+- Om du vill visa **moln nivå effektiviteten** i portalen går du till **serverns slut punkts egenskaper** och navigerar till avsnittet **moln nivå** . De data som tillhandahålls för att effektivisera moln nivån baseras på händelse-ID 9071 som loggas i händelse loggen för telemetri på servern. Mer information finns i [övervaka moln nivåer](./storage-sync-monitor-cloud-tiering.md).
 - Om du vill visa **filer som inte** är på nivå av och **återkalla fel** i portalen går du till **serverns slut punkts egenskaper** och navigerar till avsnittet **moln nivå** . **Filer som inte skiktas** baseras på händelse-ID 9003 som loggas i händelse loggen för telemetri på servern och **återställnings fel** baseras på händelse-ID 9006. Information om hur du undersöker filer som inte går att gå till nivån eller återkalla finns i [Felsöka filer som inte är på nivå](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) och [fel sökning av filer som inte kan återkallas](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
 
 ### <a name="metric-charts"></a>Mått diagram
 
 - Följande mått diagram visas i Storage Sync service portal:
 
-  | Måttnamn | Description | Blad namn |
+  | Måttnamn | Beskrivning | Blad namn |
   |-|-|-|
   | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning) | Synkronisera grupp, Server slut punkt |
   | Återkalla moln nivå | Storlek på data som återkallas | Registrerade servrar |
@@ -178,7 +178,7 @@ Använd Azure File Sync prestanda räknare på servern för att övervaka synkro
 
 Följande prestanda räknare för Azure File Sync är tillgängliga i prestanda övervakaren:
 
-| Object\Counter-namn för prestanda | Description |
+| Object\Counter-namn för prestanda | Beskrivning |
 |-|-|
 | AFS-byte Transferred\Downloaded byte/s | Antal hämtade byte per sekund. |
 | AFS-byte Transferred\Uploaded byte/s | Antal överförda byte per sekund. |

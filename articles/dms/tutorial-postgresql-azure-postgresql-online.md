@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 87b3ecd9b77fcf07e6c41bce0a38ef4f99da1006
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740944"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203563"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Självstudie: Migrera PostgreSQL till Azure DB för PostgreSQL online med DMS via Azure CLI
 
@@ -71,7 +71,7 @@ För att slutföra den här kursen behöver du:
 
   * Installera och kör CLI lokalt. CLI 2.0 är kommandoradsverktyget för att hantera Azure-resurser.
 
-       Hämta CLI enligt instruktionerna i artikeln [Installera Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest). Artikeln visas även de plattformar som har stöd för CLI 2.0.
+       Hämta CLI enligt instruktionerna i artikeln [Installera Azure CLI 2.0](/cli/azure/install-azure-cli). Artikeln visas även de plattformar som har stöd för CLI 2.0.
 
        Om du vill konfigurera Windows-undersystem för Linux (WSL), följer du anvisningarna i [Installationsguide för Windows 10](/windows/wsl/install-win10)
 

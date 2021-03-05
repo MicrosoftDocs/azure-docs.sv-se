@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a512151dce336de42da78232ca30845dae754db3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366326"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202730"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 och 8600-migrering till Azure File Sync
 
@@ -637,6 +637,6 @@ Migreringen är klar.
 ## <a name="next-steps"></a>Nästa steg
 
 * Bekanta dig med [Azure File Sync: aka.MS/AFS](./storage-sync-files-planning.md).
-* Förstå flexibiliteten i principer för [moln nivåer](storage-sync-cloud-tiering.md) .
+* Förstå flexibiliteten i principer för [moln nivåer](storage-sync-cloud-tiering-overview.md) .
 * [Aktivera Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) på dina Azure-filresurser för att schemalägga ögonblicks bilder och definiera scheman för kvarhållning av säkerhets kopior.
 * Om du ser i Azure Portal att vissa filer inte synkroniseras permanent kan du läsa [fel söknings guiden](storage-sync-files-troubleshoot.md) för steg för att lösa problemen.

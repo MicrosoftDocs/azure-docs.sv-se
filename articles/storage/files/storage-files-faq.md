@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737621"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202645"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Vanliga frågor och svar om Azure Files
 [Azure Files](storage-files-introduction.md) erbjuder fullständigt hanterade fil resurser i molnet som är tillgängliga via [SMB-protokollet (Server Message Block](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ) som är bransch standard och [NFS-protokollet (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (för hands version). Du kan montera Azure-filresurser samtidigt i molnet eller lokala distributioner av Windows, Linux och macOS. Du kan också cachelagra Azure-filresurser på Windows Server-datorer med hjälp av Azure File Sync för snabb åtkomst nära var data används.
@@ -119,26 +119,38 @@ I den här artikeln besvaras vanliga frågor om Azure Files funktioner och funkt
 
 * <a id="sizeondisk-versus-size"></a>
   **Varför stämmer inte *storleken på disk* egenskapen för en fil med egenskapen *size* efter att du använt Azure File Sync?**  
-  Se [förstå moln nivåer](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
+  Se [förstå Azure File Sync moln nivåer](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior).
 
 * <a id="is-my-file-tiered"></a>
   **Hur kan jag se om en fil har flyttats på nivå?**  
-  Se [förstå moln nivåer](storage-sync-cloud-tiering.md#is-my-file-tiered).
+  Se [hantera Azure File Sync skiktade filer](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
 
 * <a id="afs-recall-file"></a>**En fil som jag vill använda har flera nivåer. Hur kan jag återkalla filen till disk för att använda den lokalt?**  
-  Se [förstå moln nivåer](storage-sync-cloud-tiering.md#afs-recall-file).
+  Se [hantera Azure File Sync skiktade filer](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
 * <a id="afs-force-tiering"></a>
   **Hur gör jag för att tvinga en fil eller katalog att vara i nivå av?**  
-  Se [förstå moln nivåer](storage-sync-cloud-tiering.md#afs-force-tiering).
+  Se [hantera Azure File Sync skiktade filer](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
 
 * <a id="afs-effective-vfs"></a>
   **Hur tolkas det *lediga volym utrymmet* när jag har flera Server slut punkter på en volym?**  
-  Se [förstå moln nivåer](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  Se [välj Azure File Sync principer för moln nivåer](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Jag har inaktiverat moln nivå, varför finns det filer på Server slut punkten?**  
-  Se [förstå moln nivåer](storage-sync-cloud-tiering.md#afs-tiering-disabled).
+    Det finns två orsaker till varför skiktade filer kan finnas på Server slut punkts platsen:
+
+    - När du lägger till en ny server slut punkt i en befintlig synkroniseringskoppling, och om du väljer antingen alternativet återkalla namn område för första alternativet eller återkalla namn område endast för inledande hämtnings läge, visas filer som en nivå tills de laddas ned lokalt. Undvik detta genom att välja alternativet Undvik nivåbaserade filer för inledande nedladdnings läge. Om du vill återkalla filer manuellt använder du cmdleten [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) .
+
+    - Om moln skiktning har Aktiver ATS på Server slut punkten och sedan inaktiverats, kommer filer att fortsätta att vara i nivå tills de nås.
+
+* <a id="afs-tiered-files-not-showing-thumbnails"></a>
+  **Varför visas inte de filer som är i nivå med miniatyrer eller för hands versioner i Utforskaren?**  
+    För nivåbaserade filer visas inte miniatyrer och för hands versioner på din server slut punkt. Det här beteendet förväntas eftersom funktionen för miniatyr-cache i Windows avsiktligt hoppar över läsning av filer med attributet offline. När moln nivån är aktive rad kan läsning genom nivåer av filer leda till att de hämtas (återkallas).
+
+    Det här beteendet är inte bara för Azure File Sync, Windows Explorer visar ett "grått X" för alla filer som har offline-attributet inställt. X-ikonen visas vid åtkomst till filer över SMB. En detaljerad förklaring av det här problemet finns i [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+    Frågor om hur du hanterar filer på nivå av filer finns i [hantera filer på nivå](storage-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Vilka filer eller mappar undantas automatiskt av Azure File Sync?**  
@@ -274,7 +286,7 @@ I den här artikeln besvaras vanliga frågor om Azure Files funktioner och funkt
     2.  Öppna konsolen Active Directory domäner och förtroenden
     3.  Högerklicka på den domän som du vill komma åt fil resursen och klicka sedan på fliken "förtroenden" och välj skog B-domän från utgående förtroenden. Om du inte konfigurerar förtroende mellan de två skogarna måste du konfigurera förtroendet först
     4.  Klicka på "egenskaper..." sedan "routning av namnsuffix"
-    5.  Kontrol lera att surffix "*. file.core.windows.net" visas. Annars klickar du på uppdatera
+    5.  Kontrol lera om suffixet "*. file.core.windows.net" visas. Annars klickar du på uppdatera
     6.  Välj "*. file.core.windows.net" och klicka på "Aktivera" och "tillämpa"
 
 * <a id=""></a>

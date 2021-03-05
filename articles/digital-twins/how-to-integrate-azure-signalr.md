@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041509"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203903"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrera Azure Digitals dubbla med Azure SignalR-tjänsten
 
@@ -88,7 +88,7 @@ Konfigurera sedan funktionerna för att kommunicera med Azure SignalR-instansen.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Skärm bild av Azure Portal som visar sidan nycklar för signal instansen. Ikonen Kopiera till Urklipp bredvid den primära ANSLUTNINGS STRÄNGEN är markerad." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. Slutligen lägger du till **anslutnings strängen** för Azure SignalR i funktionens appinställningar med följande Azure CLI-kommando. Ersätt också plats hållarna med resurs gruppen och App Service/Function-appens namn från [självstudien som krävs](how-to-integrate-azure-signalr.md#prerequisites). Kommandot kan köras i [Azure Cloud Shell](https://shell.azure.com)eller lokalt om du har Azure CLI [installerat på datorn](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true):
+1. Slutligen lägger du till **anslutnings strängen** för Azure SignalR i funktionens appinställningar med följande Azure CLI-kommando. Ersätt också plats hållarna med resurs gruppen och App Service/Function-appens namn från [självstudien som krävs](how-to-integrate-azure-signalr.md#prerequisites). Kommandot kan köras i [Azure Cloud Shell](https://shell.azure.com)eller lokalt om du har Azure CLI [installerat på datorn](/cli/azure/install-azure-cli):
  
     ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -189,7 +189,7 @@ Då öppnas ett webbläsarfönster som kör exempel appen, som visar en visuell 
 
 Om du inte längre behöver resurserna som skapats i den här artikeln följer du stegen nedan för att ta bort dem. 
 
-Med hjälp av Azure Cloud Shell eller lokalt Azure CLI kan du ta bort alla Azure-resurser i en resurs grupp med kommandot [AZ Group Delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) . Borttagning av resurs gruppen tas också bort...
+Med hjälp av Azure Cloud Shell eller lokalt Azure CLI kan du ta bort alla Azure-resurser i en resurs grupp med kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) . Borttagning av resurs gruppen tas också bort...
 * Azure Digitals dubbla instansen (från slut punkt till slut punkt)
 * IoT-hubben och nav enhets registreringen (från slut punkt till slut punkt)
 * Event Grid-ämnet och associerade prenumerationer

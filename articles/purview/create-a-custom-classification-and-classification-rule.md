@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988373"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202765"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Anpassade klassificeringar i Azure avdelningens kontroll 
 
@@ -91,24 +91,50 @@ Så här skapar du en anpassad klassificerings regel:
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="Lägg till ny klassificerings regel" border="true":::
 
-5. Dialog rutan **ny klassificerings regel** öppnas. Fyll i konfigurations informationen för den nya regeln.
+5. Dialog rutan **ny klassificerings regel** öppnas. Fyll i fälten och bestäm om du vill skapa en **regel för reguljära uttryck** eller en **ord lista**.
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="Skapa ny klassificerings regel" border="true":::
+    |Fält     |Beskrivning  |
+    |---------|---------|
+    |Namn   |    Krävs. Det maximala värdet är 100 tecken.    |
+    |Beskrivning      |Valfritt. Det maximala värdet är 256 tecken.    |
+    |Klassificerings namn    | Krävs. Välj namnet på klassificeringen i list rutan för att be skannern att tillämpa den om en matchning hittas.        |
+    |Stat   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
 
-|Fält     |Beskrivning  |
-|---------|---------|
-|Namn   |    Krävs. Det maximala värdet är 100 tecken.    |
-|Description      |Valfritt. Det maximala värdet är 256 tecken.    |
-|Klassificerings namn    | Krävs. Välj namnet på klassificeringen i list rutan för att be skannern att tillämpa den om en matchning hittas.        |
-|Stat   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
-|Data mönster    |Valfritt. Ett reguljärt uttryck som representerar de data som lagras i data fältet. Gränsen är mycket stor. I det föregående exemplet testar data mönstren för ett anställnings-ID som är ett ord `Employee{GUID}` .  |
-|Kolumn mönster    |Valfritt. Ett reguljärt uttryck som representerar de kolumn namn som du vill matcha. Gränsen är mycket stor.          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="Skapa ny klassificerings regel" border="true":::
 
-Under **data mönster** finns det två alternativ:
+### <a name="creating-a-regular-expression-rule"></a>Skapa en regel för reguljära uttryck
 
-- **Distinkt matchnings tröskel**: det totala antalet distinkta data värden som måste hittas i en kolumn innan skannern kör data mönstret på den. Det föreslagna värdet är 8. Det här värdet kan justeras manuellt i ett intervall från 2 till 32. Systemet måste ha det här värdet för att se till att kolumnen innehåller tillräckligt med data för skannern för att kunna klassificera den korrekt. En kolumn som innehåller flera rader som innehåller värdet 1 klassificeras till exempel inte. Kolumner som innehåller en rad med ett värde och resten av raderna har null-värden får inte heller klassificeras. Om du anger flera mönster gäller det här värdet för var och en av dem.
+1. Om du skapar en regel för reguljära uttryck visas följande skärm bild. Du kan eventuellt ladda upp en fil som ska användas för att **generera föreslagna regex-mönster** för din regel.
 
-- **Tröskelvärde för minsta matchning**: du kan använda den här inställningen för att ange den minsta procent andelen data värdes matchningar i en kolumn som måste hittas av skannern för att klassificeringen ska tillämpas. Det föreslagna värdet är 60%. Du måste vara försiktig med den här inställningen. Om du minskar nivån under 60% kan du införa falska positiva klassificeringar i katalogen. Om du anger flera data mönster inaktive ras den här inställningen och värdet fastställs till 60%.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Skapa ny regex-regel" border="true":::
+
+1. Om du vill generera ett föreslaget regex-mönster när du har laddat upp en fil väljer du ett av de föreslagna mönstren och klickar på **Lägg till i mönster** för att använda de föreslagna data-och kolumn mönstren. Du kan justera de föreslagna mönstren eller också kan du ange egna mönster utan att ladda upp en fil.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Generera föreslaget regex" border="true":::
+
+    |Fält     |Beskrivning  |
+    |---------|---------|
+    |Data mönster    |Valfritt. Ett reguljärt uttryck som representerar de data som lagras i data fältet. Gränsen är mycket stor. I det föregående exemplet testar data mönstren för ett anställnings-ID som är ett ord `Employee{GUID}` .  |
+    |Kolumn mönster    |Valfritt. Ett reguljärt uttryck som representerar de kolumn namn som du vill matcha. Gränsen är mycket stor.          |
+
+1. Under **data mönster** kan du ange två tröskelvärden:
+
+    - **Distinkt matchnings tröskel**: det totala antalet distinkta data värden som måste hittas i en kolumn innan skannern kör data mönstret på den. Det föreslagna värdet är 8. Det här värdet kan justeras manuellt i ett intervall från 2 till 32. Systemet måste ha det här värdet för att se till att kolumnen innehåller tillräckligt med data för skannern för att kunna klassificera den korrekt. En kolumn som innehåller flera rader som innehåller värdet 1 klassificeras till exempel inte. Kolumner som innehåller en rad med ett värde och resten av raderna har null-värden får inte heller klassificeras. Om du anger flera mönster gäller det här värdet för var och en av dem.
+
+    - **Tröskelvärde för minsta matchning**: du kan använda den här inställningen för att ange den minsta procent andelen av distinkta data värdes matchningar i en kolumn som måste hittas av skannern för att klassificeringen ska tillämpas. Det föreslagna värdet är 60%. Du måste vara försiktig med den här inställningen. Om du minskar nivån under 60% kan du införa falska positiva klassificeringar i katalogen. Om du anger flera data mönster inaktive ras den här inställningen och värdet fastställs till 60%.
+
+1. Nu kan du verifiera din regel och **skapa** den.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Verifiera regel innan du skapar" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>Skapa en ord lista regel
+
+1.  Om du skapar en ord lista regel visas följande skärm bild. Ladda upp en fil som innehåller alla möjliga värden för den klassificering som du skapar i en enda kolumn.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="Skapa ord lista regel" border="true":::
+
+1.  När ord listan har genererats kan du justera de distinkta Matchnings-och minimi matchnings trösklarna och skicka regeln.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Skapa ord lista regel" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

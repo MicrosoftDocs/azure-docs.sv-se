@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f52686f991e3d14a8cde82c602b182874305f27d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184108"
+ms.locfileid: "102203699"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Använda Apache Spark (drivs av Azure Synapse Analytics) i din Machine Learning pipeline (för hands version)
 
@@ -90,8 +90,6 @@ Det första steget är att konfigurera `SynapseCompute` . `linked_service`Argume
 När konfigurationen har skapats skapar du en maskin inlärning `ComputeTarget` genom att skicka in `Workspace` , `ComputeTargetAttachConfiguration` och det namn som du vill referera till i beräkningen i Machine Learning-arbetsytan. Anropet till `ComputeTarget.attach()` är asynkront, så exempel blocken tills anropet har slutförts.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>Skapa en `SynapseSparkStep` som använder den länkade Apache Spark poolen
-
-Exempel jobbet för notebook [Spark på Apache Spark-poolen](https://github.com/azure/machinelearningnotebooks) definierar en enkel Machine Learning-pipeline. Först definierar antecknings boken ett data förberedelse steg som drivs av den som `synapse_compute` definierades i föregående steg. Antecknings boken definierar sedan ett utbildnings steg som drivs av ett beräknings mål som passar bättre för träning. I exempel antecknings boken används Titanic överlevnads databas för att demonstrera indata och utdata. den rensar egentligen inte data eller skapar en förutsägelse modell. Eftersom det inte finns någon verklig utbildning i det här exemplet använder inlärnings steget en billig, PROCESSORbaserade beräknings resurs.
 
 Data flödar till en Machine Learning-pipeline med hjälp av `DatasetConsumptionConfig` objekt, som kan innehålla tabell data eller uppsättningar av filer. Data kommer ofta från filer i Blob Storage i data lagret för en arbets yta. Följande kod visar en typisk kod för att skapa indatatyper för en Machine Learning-pipeline:
 
@@ -228,7 +226,7 @@ Koden ovan skapar den nya beräknings resursen om det behövs. Sedan `step1_outp
 
 När du har definierat alla steg kan du skapa och köra din pipeline. 
 
-```
+```python
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])

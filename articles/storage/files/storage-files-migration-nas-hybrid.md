@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882271"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202679"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrera från nätverksansluten lagring (NAS) till en hybrid moln distribution med Azure File Sync
 
@@ -45,7 +45,7 @@ Som vi nämnt i [artikeln Azure Files migrerings översikt](storage-files-migrat
 * Skapa en Windows Server 2019 – minst 2012R2 – som en virtuell dator eller fysisk server. Ett kluster för växling vid fel i Windows Server stöds också.
 * Etablera eller Lägg till direktansluten lagring (DAS jämfört med NAS, vilket inte stöds).
 
-    Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din NAS-enhet om du använder funktionen för [moln nivåer](storage-sync-cloud-tiering.md) i Azure File Sync.
+    Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din NAS-enhet om du använder funktionen för [moln nivåer](storage-sync-cloud-tiering-overview.md) i Azure File Sync.
     Men när du kopierar dina filer från det större NAS-utrymmet till den mindre Windows Server-volymen i en senare fas måste du arbeta i batchar:
 
     1. Flytta en uppsättning filer som passar på disken
@@ -105,7 +105,7 @@ Kör den första lokala kopian till din Windows Server-målmapp:
 
 Följande RoboCopy-kommando kommer att kopiera filer från NAS-lagringen till din Windows Server-målmapp. Windows Server synkroniserar den med Azure-filresursen (erna). 
 
-Om du har allokerat mindre lagrings utrymme på Windows Server än vad filerna tar upp på NAS-enheten har du konfigurerat moln nivå. När den lokala Windows Server-volymen är full, kommer [moln nivån](storage-sync-cloud-tiering.md) att sätta igång och på filer som redan har synkroniserats. Moln skiktet genererar tillräckligt med utrymme för att kunna fortsätta med kopian från NAS-enheten. Moln nivåer utförs en gång i timmen för att se vad som har synkroniserats och för att frigöra disk utrymme för att uppnå det lediga utrymmet på 99%-volymen.
+Om du har allokerat mindre lagrings utrymme på Windows Server än vad filerna tar upp på NAS-enheten har du konfigurerat moln nivå. När den lokala Windows Server-volymen är full, kommer [moln nivån](storage-sync-cloud-tiering-overview.md) att sätta igång och på filer som redan har synkroniserats. Moln skiktet genererar tillräckligt med utrymme för att kunna fortsätta med kopian från NAS-enheten. Moln nivåer utförs en gång i timmen för att se vad som har synkroniserats och för att frigöra disk utrymme för att uppnå det lediga utrymmet på 99%-volymen.
 Det är möjligt att RoboCopy flyttar filer snabbare än att du kan synkronisera till molnet och nivån lokalt, så att det lokala disk utrymmet börjar ta slut. RoboCopy kommer inte att fungera. Vi rekommenderar att du arbetar genom resurserna i en följd som förhindrar detta. Du kan till exempel inte starta RoboCopy-jobb för alla resurser på samma gång, eller bara flytta resurser som passar på den aktuella mängden ledigt utrymme på Windows Server, så att du kan nämna några.
 
 ```console
@@ -208,13 +208,13 @@ Du har avslutat migreringen av en resurs/grupp av resurser till en gemensam rot 
 Du kan försöka att köra några av dessa kopior parallellt. Vi rekommenderar att du bearbetar omfånget för en Azure-filresurs i taget.
 
 > [!WARNING]
-> När du har flyttat alla data från NAS till Windows Server, och migreringen är slutförd: återgå till ***alla** _ synkronisera grupper i Azure Portal och justera moln skiktet volym utrymme för ledigt utrymme i procent till något som passar bättre för användningen av cacheminnet, t. ex. 20%. 
+> När du har flyttat alla data från NAS till Windows Server, och migreringen är slutförd: gå tillbaka till ***alla***  Sync-grupper i Azure Portal och justera moln skiktet volym ledigt utrymme i procent till något som passar bättre för användningen av cacheminnet, t. ex. 20%. 
 
 Lagrings principen för ledigt utrymme i molnet fungerar på en volym nivå med eventuellt flera Server slut punkter som synkroniseras från den. Om du glömmer att justera det lediga utrymmet på en server slut punkt fortsätter synkroniseringen att tillämpa den mest restriktiva regeln och försöker behålla 99% ledigt disk utrymme, vilket gör att den lokala cachen inte fungerar som förväntat. Om det inte är målet att bara ha namn området för en volym som bara innehåller data som används sällan, och du reserverar resten av lagrings utrymmet för ett annat scenario.
 
 ## <a name="troubleshoot"></a>Felsöka
 
-Det mest sannolika problemet som du kan köra i är att RoboCopy-kommandot Miss lyckas med _ "Volume full" * på Windows Server-sidan. Moln nivåer fungerar en gång per timme för att evakuera innehåll från den lokala Windows Server-disken som har synkroniserats. Målet är att uppnå det lediga utrymmet på 99% på volymen.
+Det mest sannolika problemet som du kan köra i är att kommandot RoboCopy Miss lyckas med *"Volume full"* på Windows Server-sidan. Moln nivåer fungerar en gång per timme för att evakuera innehåll från den lokala Windows Server-disken som har synkroniserats. Målet är att uppnå det lediga utrymmet på 99% på volymen.
 
 Låt synkroniseringen fortskrida och moln nivån frigör disk utrymme. Du kan titta på det i Utforskaren på Windows-servern.
 

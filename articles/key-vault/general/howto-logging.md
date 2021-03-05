@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108746"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204022"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Så här aktiverar du Key Vault loggning
 
@@ -34,7 +34,7 @@ De här guide kommandona är formaterade för [Cloud Shell](https://shell.azure.
 
 Det första steget när du ställer in nyckel loggningen är att ansluta till prenumerationen som innehåller ditt nyckel valv. Detta är särskilt viktigt om du har flera prenumerationer som är kopplade till ditt konto.
 
-Med Azure CLI kan du Visa alla dina prenumerationer med kommandot [AZ Account List](/cli/azure/account?view=azure-cli-latest#az_account_list) och sedan ansluta till en med [AZ-konto uppsättning](/cli/azure/account?view=azure-cli-latest#az_account_set):
+Med Azure CLI kan du Visa alla dina prenumerationer med kommandot [AZ Account List](/cli/azure/account#az_account_list) och sedan ansluta till en med [AZ-konto uppsättning](/cli/azure/account#az_account_set):
 
 ```azurecli-interactive
 az account list
@@ -58,7 +58,7 @@ För ytterligare enkel hantering kommer vi också att använda samma resurs grup
 
 Vi kommer också att behöva ange ett lagrings konto namn. Lagrings konto namn måste vara unika, vara mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener.  Slutligen kommer vi att skapa ett lagrings konto för SKU: n "Standard_LRS".
 
-Med Azure CLI använder du kommandot [AZ Storage Account Create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) .
+Med Azure CLI använder du kommandot [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) .
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -84,9 +84,9 @@ $sa.id
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Hämta ditt Key Vault-resurs-ID
 
-I snabb starten för [CLI](quick-create-cli.md) och [PowerShell](quick-create-powershell.md)skapade du en nyckel med ett unikt namn.  Använd det namnet igen i stegen nedan.  Om du inte kommer ihåg namnet på ditt nyckel valv kan du använda kommandot Azure CLI [AZ Key Vault List](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_list) eller cmdleten Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) för att lista dem.
+I snabb starten för [CLI](quick-create-cli.md) och [PowerShell](quick-create-powershell.md)skapade du en nyckel med ett unikt namn.  Använd det namnet igen i stegen nedan.  Om du inte kommer ihåg namnet på ditt nyckel valv kan du använda kommandot Azure CLI [AZ Key Vault List](/cli/azure/keyvault#az_keyvault_list) eller cmdleten Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) för att lista dem.
 
-Använd namnet på ditt nyckel valv för att hitta dess resurs-ID.  Med Azure CLI använder du kommandot [AZ Command Vault show](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_show) .
+Använd namnet på ditt nyckel valv för att hitta dess resurs-ID.  Med Azure CLI använder du kommandot [AZ Command Vault show](/cli/azure/keyvault#az_keyvault_show) .
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -102,7 +102,7 @@ Resurs-ID för nyckel valvet kommer att vara i formatet "/Subscriptions/<Your-Su
 
 ## <a name="enable-logging-using-azure-powershell"></a>Aktivera loggning med Azure PowerShell
 
-Om du vill aktivera loggning för Key Vault använder vi Azure CLI [-AZ övervaka diagnostiskt-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest) eller cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) tillsammans med lagrings konto-ID: t och Key Vault-resurs-ID: t.
+Om du vill aktivera loggning för Key Vault använder vi Azure CLI [-AZ övervaka diagnostiskt-Settings Create](/cli/azure/monitor/diagnostic-settings) eller cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) tillsammans med lagrings konto-ID: t och Key Vault-resurs-ID: t.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 Du kan också ange en bevarande princip för loggarna så att äldre loggar tas bort automatiskt efter en viss tid. Du kan till exempel ställa in ange bevarande princip som automatiskt tar bort loggar som är äldre än 90 dagar.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_update) command. 
+<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
 
 ```azurecli-interactive
 az monitor diagnostic-settings update 
@@ -143,7 +143,7 @@ Vad loggas:
 
 Key Vault loggar lagras i behållaren "Insights-logs-auditevent" i det lagrings konto som du har angett. Om du vill visa loggarna måste du ladda ned blobbar.
 
-Först visar lista alla blobar i behållaren.  Med Azure CLI använder du kommandot [AZ Storage BLOB List](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_list) .
+Först visar lista alla blobar i behållaren.  Med Azure CLI använder du kommandot [AZ Storage BLOB List](/cli/azure/storage/blob#az_storage_blob_list) .
 
 ```azurecli-interactive
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
@@ -159,7 +159,7 @@ Som du ser från utdata från ett Azure CLI-kommando eller en Azure PowerShell-c
 
 Eftersom du kan använda samma lagrings konto för att samla in loggar för flera resurser, är det fullständiga resurs-ID: t i BLOB-namnet användbart för att få åtkomst till eller hämta bara de blobbar som du behöver. Men innan vi gör det ska vi titta på hur du hämtar alla blobbar.
 
-Med Azure CLI använder du kommandot [AZ Storage BLOB Download](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_download) , skickar det till namnet på Blobbarna och sökvägen till filen där du vill spara resultatet.
+Med Azure CLI använder du kommandot [AZ Storage BLOB Download](/cli/azure/storage/blob#az_storage_blob_download) , skickar det till namnet på Blobbarna och sökvägen till filen där du vill spara resultatet.
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
@@ -173,7 +173,7 @@ $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Co
 
 När du kör den här andra cmdleten i PowerShell **/** skapar avgränsaren i BLOB-namnen en fullständig mappstruktur under målmappen. Du använder den här strukturen för att ladda ned och lagra Blobbarna som filer.
 
-Om du vill ladda ned blobbarna selektivt använder du jokertecken. Till exempel:
+Om du vill ladda ned blobbarna selektivt använder du jokertecken. Exempel:
 
 * Om du har flera nyckelvalv och bara vill hämta loggar för ett av dem, mer specifikt nyckelvalvet CONTOSOKEYVAULT3:
 

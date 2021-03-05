@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545691"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203155"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Kända problem i Azure Digitals, dubbla
 
@@ -24,7 +24,7 @@ Problembeskrivning **:** Kommandon i Cloud Shell som körs på *https://shell.az
 
 | Påverkar detta mig mig? | Orsak | Lösning |
 | --- | --- | --- |
-| I &nbsp; Azure &nbsp; Digitals &nbsp; , påverkar detta följande kommando grupper:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Detta är resultatet av ett känt problem i Cloud Shell: [*hämtning av token från Cloud Shell Miss lyckas tillfälligt med 400-klient fel: felaktig begäran*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Detta ger ett problem med Azure Digitals-token Authentication auth-token och Cloud Shell standard- [hanterad identitets](../active-directory/managed-identities-azure-resources/overview.md) baserad autentisering. <br><br>Detta påverkar inte Azure Digitals dubbla kommandon från `az dt` `az dt endpoint` kommando grupperna eller, eftersom de använder en annan typ av autentiseringstoken (baserat på Azure Resource Manager), som inte har ett problem med Cloud Shells hanterade identitetsautentisering. | Ett sätt att lösa detta är att köra `az login` kommandot igen i Cloud Shell och slutföra de efterföljande inloggnings stegen. Detta växlar sessionen från hanterad identitetsautentisering, vilket undviker rot problemet. Därefter ska du kunna köra kommandot igen.<br><br>Du kan också öppna fönstret Cloud Shell i Azure Portal och slutföra din Cloud Shell arbete därifrån.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Bild av ikonen Cloud Shell i Azure Portal ikon fältet" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Slutligen är en annan lösning att [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) på datorn så att du kan köra Azure CLI-kommandon lokalt. Den lokala CLI: en drabbas inte av det här problemet. |
+| I &nbsp; Azure &nbsp; Digitals &nbsp; , påverkar detta följande kommando grupper:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Detta är resultatet av ett känt problem i Cloud Shell: [*hämtning av token från Cloud Shell Miss lyckas tillfälligt med 400-klient fel: felaktig begäran*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Detta ger ett problem med Azure Digitals-token Authentication auth-token och Cloud Shell standard- [hanterad identitets](../active-directory/managed-identities-azure-resources/overview.md) baserad autentisering. <br><br>Detta påverkar inte Azure Digitals dubbla kommandon från `az dt` `az dt endpoint` kommando grupperna eller, eftersom de använder en annan typ av autentiseringstoken (baserat på Azure Resource Manager), som inte har ett problem med Cloud Shells hanterade identitetsautentisering. | Ett sätt att lösa detta är att köra `az login` kommandot igen i Cloud Shell och slutföra de efterföljande inloggnings stegen. Detta växlar sessionen från hanterad identitetsautentisering, vilket undviker rot problemet. Därefter ska du kunna köra kommandot igen.<br><br>Du kan också öppna fönstret Cloud Shell i Azure Portal och slutföra din Cloud Shell arbete därifrån.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Bild av ikonen Cloud Shell i Azure Portal ikon fältet" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Slutligen är en annan lösning att [Installera Azure CLI](/cli/azure/install-azure-cli) på datorn så att du kan köra Azure CLI-kommandon lokalt. Den lokala CLI: en drabbas inte av det här problemet. |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Roll tilldelning saknas efter skriptad installation

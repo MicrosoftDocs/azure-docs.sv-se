@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0f03cd536d329a94ec80ef884c380c79b5687289
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 7137b26dcf951f98473f0fcc139f563438ce8878
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096618"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203478"
 ---
 # <a name="manage-qna-maker-resources"></a>Hantera QnA Maker resurser
 
@@ -92,69 +92,6 @@ Den här proceduren skapar de Azure-resurser som krävs för att hantera innehå
     ![Resursen skapade en ny QnA Maker hanterad tjänst (för hands version)](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
     Resursen med _Cognitive Services_ typen har dina _prenumerations_ nycklar.
-    
----
-
-## <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
-
-1. Skydda kognitiva tjänst resurser från offentlig åtkomst genom [att konfigurera det virtuella nätverket](../../cognitive-services-virtual-networks.md?tabs=portal).
-2. Skydda App Service (QnA Runtime) från offentlig åtkomst.
-
-   ##### <a name="add-ips-to-app-service-allowlist"></a>Lägg till IP-adresser i App Service tillåten
-
-    * Tillåt enbart trafik från kognitiva tjänst-IP: er. Dessa ingår redan i Service Tag-numret `CognitiveServicesManagement` . Detta krävs för att skapa API: er (Skapa/uppdatera KB) för att anropa app service och uppdatera Azure Search-tjänsten enligt detta. Läs [Mer information om service märken.](../../../virtual-network/service-tags-overview.md)
-    * Se till att du även tillåter andra start punkter som bot service, QnA Maker portal (kan vara ditt företags nätverket) osv. för förutsägelse "GenerateAnswer" API-åtkomst.
-    * Följ dessa steg om du vill lägga till IP-adressintervall till en tillåten:
-
-      * Hämta [IP-intervall för alla tjänst Taggar](https://www.microsoft.com/download/details.aspx?id=56519).
-      * Välj IP-adresserna för "CognitiveServicesManagement".
-      * Gå till avsnittet nätverk i App Service resursen och klicka på alternativet för att konfigurera åtkomst begränsning för att lägga till IP-adresser i en tillåten.
-
-    ![inkommande port undantag](../media/inbound-ports.png)    
-
-    Vi har också ett automatiserat skript som gör samma sak för din App Service. Du kan hitta [PowerShell-skriptet för att konfigurera en tillåten](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) på GitHub. Du måste skriva in prenumerations-ID, resurs grupp och faktiskt App Service namn som skript parametrar. Om du kör skriptet läggs IP-adresserna automatiskt till App Service tillåten.
-
-    ##### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurera App Service-miljön som värd QnA Maker App Service
-    App Service-miljön (ASE) kan användas för att vara värd för QnA Maker app service. Följ stegen nedan:
-
-    1. Skapa en App Service-miljön och markera den som "extern". Följ [själv studie kursen](../../../app-service/environment/create-external-ase.md) om du vill ha mer information.
-    2.  Skapa en app service i App Service-miljön.
-        * Kontrol lera konfigurationen för app service och Lägg till "PrimaryEndpointKey" som en program inställning. Värdet för ' PrimaryEndpointKey ' ska vara inställt på " \<app-name\> -PrimaryEndpointKey". Appens namn definieras i App Service-URL: en. Om App Service-URL: en till exempel är "mywebsite.myase.p.azurewebsite.net" är App-Name "min webbplats". I det här fallet ska värdet för ' PrimaryEndpointKey ' anges till "Website-PrimaryEndpointKey".
-        * Skapa en Azure Search-tjänst.
-        * Se till att Azure Search-och appinställningar har kon figurer ATS korrekt. 
-          Följ den här [självstudien](../reference-app-service.md?tabs=v1#app-service).
-    3.  Uppdatera nätverks säkerhets gruppen som är kopplad till App Service-miljön
-        * Uppdatera i förväg skapade inkommande säkerhets regler enligt dina krav.
-        * Lägg till en ny inkommande säkerhets regel med källan som service tag och käll tjänst tag gen som ' CognitiveServicesManagement '.
-    4.  Skapa en QnA Maker kognitiv tjänst instans (Microsoft. CognitiveServices/Accounts) med Azure Resource Manager där QnA Maker-slutpunkten ska ställas in på App Service slut punkten som skapades ovan (https://mywebsite.myase.p.azurewebsite.net).
-    
-3. Konfigurera Kognitiv sökning som en privat slut punkt i ett VNET
-
-    När en Sök instans skapas när en QnA Maker resurs skapas kan du tvinga Kognitiv sökning till att stödja en privat slut punkts konfiguration som skapats helt i en kunds VNet.
-
-    Alla resurser måste skapas i samma region för att en privat slut punkt ska kunna användas.
-
-    * QnA Maker resurs
-    * ny Kognitiv sökning resurs
-    * ny Virtual Network resurs
-
-    Utför följande steg i [Azure Portal](https://portal.azure.com):
-
-    1. Skapa en [QNA Maker-resurs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker).
-    1. Skapa en ny Kognitiv sökning resurs med slut punkts anslutning (data) inställt på _privat_. Skapa resursen i samma region som QnA Maker resursen som skapades i steg 1. Lär dig mer om att [skapa en kognitiv sökning resurs](../../../search/search-create-service-portal.md)och Använd sedan den här länken för att gå direkt till [sidan Skapa i resursen](https://ms.portal.azure.com/#create/Microsoft.Search).
-    1. Skapa en ny [Virtual Network-resurs](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM).
-    1. Konfigurera VNET på App Service-resursen som skapades i steg 1 i den här proceduren.
-        1. Skapa en ny DNS-post i VNET för ny Kognitiv sökning-resurs som skapades i steg 2. till Kognitiv sökning IP-adress.
-    1. [Koppla app service till den nya kognitiv sökning-resurs som](#configure-qna-maker-to-use-different-cognitive-search-resource) skapades i steg 2. Sedan kan du ta bort den ursprungliga Kognitiv sökning-resursen som skapades i steg 1.
-
-    Skapa din första kunskaps bas i [QNA Maker-portalen](https://www.qnamaker.ai/).
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
-
-1. Skydda kognitiva tjänst resurser från offentlig åtkomst genom [att konfigurera det virtuella nätverket](../../cognitive-services-virtual-networks.md?tabs=portal).
-2. [Skapa privata slut punkter](../reference-private-endpoint.md) till Azure Search resursen.
 
 ---
 
