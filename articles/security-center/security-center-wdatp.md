@@ -1,23 +1,18 @@
 ---
 title: Använda Microsoft Defender för slut punkts licens som ingår i Azure Security Center
 description: Lär dig mer om Microsoft Defender för slut punkt och att distribuera den från Azure Security Center.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 475c7671636d3aac036e3da1392fc2da9b0a001f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099088"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176475"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -43,10 +38,10 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 | Versions tillstånd:                  | Allmänt tillgänglig (GA)                                                                                                                                                                                                                                                                                      |
 | Priset                        | Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | Plattformar som stöds:            |  • Azure-datorer som kör Windows<br> • Azure Arc-datorer som kör Windows|
-| Versioner av Windows som stöds:  |   • **Allmän tillgänglighet (ga) –** identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • För **hands versions** identifiering på windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)och [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)<br>Övervakning av Server slut punkt med hjälp av dessa integreringar har inaktiverats för Office 365 GCC-kunder|
+| Versioner av Windows som stöds:  |  • **Allmän tillgänglighet (ga) –** identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • För **hands versions** identifiering på windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)och [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)<br>Övervakning av Server slut punkt med hjälp av dessa integreringar har inaktiverats för Office 365 GCC-kunder|
 | Operativ system som inte stöds:  |  • Windows 10 (annat än EVD eller WVD)<br> • Linux|
 | Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
-| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov<br>![Inga](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
+| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Microsoft Defender för slut punkts funktioner i Security Center

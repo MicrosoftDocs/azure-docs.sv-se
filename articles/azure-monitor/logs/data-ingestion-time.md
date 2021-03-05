@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3bba9dbf40fe6893a06c21d7f6b5475cfa8552cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030893"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176662"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Inmatningstid för loggdata i Azure Monitor
 Azure Monitor är en hög skalbar data tjänst som tjänar tusentals kunder som skickar terabyte data varje månad i en växande takt. Det finns ofta frågor om hur lång tid det tar för loggdata att bli tillgängliga när de har samlats in. I den här artikeln beskrivs de olika faktorer som påverkar den här svars tiden.
 
 ## <a name="typical-latency"></a>Typisk svars tid
-Svars tiden avser den tid då data skapas i det övervakade systemet och den tid som det kommer att vara tillgängligt för analys i Azure Monitor. Den vanliga svars tiden för inmatning av loggdata är mellan 2 och 5 minuter. Den specifika svars tiden för alla specifika data varierar beroende på en mängd olika faktorer som beskrivs nedan.
+Svars tiden avser den tid då data skapas i det övervakade systemet och den tid som det kommer att vara tillgängligt för analys i Azure Monitor. Den vanliga svars tiden för inmatning av loggdata är mellan 20 och 3 minuter. Den specifika svars tiden för alla specifika data kan dock variera beroende på en mängd olika faktorer som beskrivs nedan.
 
 
 ## <a name="factors-affecting-latency"></a>Faktorer som påverkar svars tiden
 Den totala inmatnings tiden för en viss uppsättning data kan delas upp i följande hög nivå områden. 
 
-- Agent tid – tid att upptäcka en händelse, samla in den och sedan skicka den till Azure Monitor inmatnings platsen som en loggpost. I de flesta fall hanteras den här processen av en agent.
+- Agent tid – tid för att identifiera en händelse, samla in den och sedan skicka den till Azure Monitor loggar inmatnings platsen som en logg post. I de flesta fall hanteras den här processen av en agent. Ytterligare svars tid kan införas i nätverket.
 - Pipeline-tid – Den tid det tar inmatnings-pipelinen att bearbeta loggposten. Detta innefattar att parsa egenskaperna för händelsen och eventuellt lägga till Beräknad information.
 - Indexerings tid – tids åtgången för att mata in en loggpost i Azure Monitor Big data Store.
 
@@ -36,16 +36,17 @@ Agenter och hanterings lösningar använder olika strategier för att samla in d
 - Active Directory Replication utför utvärderingen var femte dag, medan Active Directory-utvärdering-lösningen utför en veckovis utvärdering av din Active Directory-infrastruktur. Agenten samlar endast in dessa loggar när utvärderingen är klar.
 
 ### <a name="agent-upload-frequency"></a>Frekvens för agentuppladdning
-För att säkerställa att Log Analytics-agenten är låg, buffrar agenten loggar och överför dem regelbundet till Azure Monitor. Uppladdnings frekvensen varierar mellan 30 sekunder och 2 minuter beroende på vilken typ av data du har. De flesta data laddas upp under 1 minut. Nätverks förhållandena kan påverka svars tiden för dessa data negativt för att uppnå Azure Monitor inmatnings punkt.
+För att säkerställa att Log Analytics-agenten är låg, buffrar agenten loggar och överför dem regelbundet till Azure Monitor. Uppladdnings frekvensen varierar mellan 30 sekunder och 2 minuter beroende på vilken typ av data du har. De flesta data laddas upp under 1 minut. 
+
+### <a name="network"></a>Nätverk
+Nätverks förhållandena kan påverka svars tiden för dessa data negativt för att uppnå Azure Monitor loggar inmatnings punkt.
 
 ### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure aktivitets loggar, resurs loggar och mått
-Azure Data lägger till ytterligare tid för att bli tillgänglig vid Log Analytics inmatnings punkt för bearbetning:
+Azure Data lägger till ytterligare tid för att bli tillgänglig vid Azure Monitor loggar inmatnings punkt för bearbetning:
 
-- Data från resurs loggar tar 2-15 minuter, beroende på Azure-tjänsten. Se [frågan nedan](#checking-ingestion-time) för att undersöka den här svars tiden i din miljö
-- Azures plattforms mått tar 3 minuter att skickas till Log Analytics inmatnings platsen.
-- Aktivitets logg data tar cirka 10-15 minuter att skickas till Log Analytics inmatnings plats.
-
-När det är tillgängligt vid inmatnings punkten tar data ytterligare 2-5 minuter att bli tillgängliga för frågor.
+- Resurs loggar lägger normalt till 30-90 sekunder, beroende på Azure-tjänsten. Vissa Azure-tjänster (specifikt Azure SQL Database och Azure Virtual Network) rapporterar sina loggar med 5 minuters intervall. Arbetet pågår för att förbättra detta ytterligare. Se [frågan nedan](#checking-ingestion-time) för att undersöka den här svars tiden i din miljö
+- Azures plattforms mått tar ytterligare tre minuter att exporteras till Azure Monitor loggar inmatnings punkt.
+- Aktivitets logg data kan ta ytterligare 10-15 minuter, om äldre integrering används. Vi rekommenderar att du använder diagnostiska inställningar på prenumerations nivå för att mata in aktivitets loggar i Azure Monitor loggar, vilket innebär ytterligare svars tid på cirka 30 sekunder.
 
 ### <a name="management-solutions-collection"></a>Samling med hanterings lösningar
 Vissa lösningar samlar inte in data från en agent och kan använda en samlings metod som inför ytterligare svars tid. Vissa lösningar samlar in data med jämna mellanrum utan att försöka använda real tids insamling. Vissa exempel är följande:
@@ -56,6 +57,9 @@ Vissa lösningar samlar inte in data från en agent och kan använda en samlings
 Se dokumentationen för varje lösning för att fastställa dess samlings frekvens.
 
 ### <a name="pipeline-process-time"></a>Pipeline-process tid
+
+När det är tillgängligt vid inmatnings punkten tar data ytterligare 30-60 sekunder att bli tillgängliga för frågor.
+
 När logg poster matas in i Azure Monitor pipelinen (som identifieras i egenskapen [_TimeReceived](./log-standard-columns.md#_timereceived) ), skrivs de till temporär lagring för att säkerställa klient isoleringen och se till att data inte förloras. Den här processen lägger normalt till 5-15 sekunder. Vissa hanterings lösningar implementerar tyngre algoritmer för att samla in data och härleda insikter när data strömmas i. Exempel: övervakning av nätverks prestanda sammanställer inkommande data över 3 minuters intervall, vilket effektivt lägger till en fördröjning på 3 minuter. En annan process som lägger till latens är den process som hanterar anpassade loggar. I vissa fall kan den här processen lägga till några minuters svars tid på loggar som samlas in från filer av agenten.
 
 ### <a name="new-custom-data-types-provisioning"></a>Ny anpassad data typs etablering

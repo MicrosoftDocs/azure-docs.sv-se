@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123096"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176424"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hantera bibliotek för Apache Spark i Azure Synapse Analytics
 Bibliotek ger återanvändbar kod som du kanske vill inkludera i dina program eller projekt. 
@@ -61,10 +61,14 @@ När du utför interaktiv data analys eller maskin inlärning kan du ofta se att
 
 Med session-omfångs paket kan användare definiera paket beroenden i början av sessionen. När du installerar ett paket som omfattas av en session har endast den aktuella sessionen åtkomst till de angivna paketen. Detta innebär att de här sessionens omfångs paket inte påverkar andra sessioner eller jobb med samma Apache Spark pool. Dessutom installeras dessa bibliotek ovanpå bas körnings-och Poolnivå-paketen. 
 
+Dessa paket läggs automatiskt till i python-miljön. Paketen får inte anges i *requirements.txts* filen.
+
+Observera att den här metoden för närvarande endast Suports `*.whl` filer. Lägg inte till några `*.tar.gz` filer i behållaren.
+
 Mer information om hur du hanterar sessionsbaserade paket finns i följande instruktions guider:
 
 - [Python-sessionsobjekt (för hands version):](./apache-spark-manage-python-packages.md) I början av en session anger du en Conda- *miljö. yml* för att installera ytterligare python-paket från populära databaser. 
-- [Scala/Java-sessionsobjekt: ](./apache-spark-manage-scala-packages.md) I början av sessionen anger du en lista över jar-filer att installera med ```%%configure``` .
+- [Scala/Java-sessionsobjekt: ](./apache-spark-manage-scala-packages.md) I början av sessionen anger du en lista över jar-filer att installera med `%%configure` .
 
 ## <a name="next-steps"></a>Nästa steg
 - Visa standard biblioteken: [Apache Spark versions stöd](apache-spark-version-support.md)

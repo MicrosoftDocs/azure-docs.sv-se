@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125877"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172808"
 ---
 # <a name="http-application-routing"></a>Routning av HTTP-program
 
@@ -26,8 +26,8 @@ När tillägget har Aktiver ATS skapas en DNS-zon i din prenumeration. Mer infor
 
 Tillägget distribuerar två komponenter: en [Kubernetes ingress-styrenhet][ingress] och en [extern DNS-][external-dns] styrenhet.
 
-- **Ingress Controller** : ingångs styrenheten exponeras för Internet med hjälp av en Kubernetes-tjänst av typen Loadbalancer. Ingångs kontrollen bevakar och implementerar [Kubernetes ingress-resurser][ingress-resource]som skapar vägar till program slut punkter.
-- **Extern DNS-styrenhet** : söker efter Kubernetes ingress-resurser och skapar DNS A-poster i den KLUSTERbaserade DNS-zonen.
+- **Ingress Controller**: ingångs styrenheten exponeras för Internet med hjälp av en Kubernetes-tjänst av typen Loadbalancer. Ingångs kontrollen bevakar och implementerar [Kubernetes ingress-resurser][ingress-resource]som skapar vägar till program slut punkter.
+- **Extern DNS-styrenhet**: söker efter Kubernetes ingress-resurser och skapar DNS A-poster i den KLUSTERbaserade DNS-zonen.
 
 ## <a name="deploy-http-routing-cli"></a>Distribuera HTTP-Routning: CLI
 
@@ -78,7 +78,7 @@ Om du använder Azure Cloud Shell är `kubectl` redan installerat. Du kan även 
 az aks install-cli
 ```
 
-För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials][]. I följande exempel hämtas autentiseringsuppgifter för AKS-klustret med namnet *MyAKSCluster* i *MyResourceGroup* :
+För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials][]. I följande exempel hämtas autentiseringsuppgifter för AKS-klustret med namnet *MyAKSCluster* i *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-Öppna en webbläsare till *AKS – HelloWorld \<CLUSTER_SPECIFIC_DNS_ZONE\> .* , till exempel *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* och kontrol lera att du ser demonstrations programmet. Det kan ta några minuter innan programmet visas.
+Öppna en webbläsare till *AKS – HelloWorld \<CLUSTER_SPECIFIC_DNS_ZONE\> .*, till exempel *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* och kontrol lera att du ser demonstrations programmet. Det kan ta några minuter innan programmet visas.
 
 ## <a name="remove-http-routing"></a>Ta bort HTTP-routning
 
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 Information om hur du installerar en HTTPS-skyddad ingångs styrenhet i AKS finns i https-ingångar [på Azure Kubernetes service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

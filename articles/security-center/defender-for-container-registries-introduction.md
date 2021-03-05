@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100720"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176645"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Introduktion till Azure Defender för containerregister
 
@@ -68,9 +68,9 @@ Nedan visas ett diagram med höga nivåer av komponenterna och fördelarna med a
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Vanliga frågor och svar om Azure Container Registry avbildnings genomsökning
 
 ### <a name="how-does-security-center-scan-an-image"></a>Hur skannar Security Center en avbildning?
-Avbildningen hämtas från registret. Den körs sedan i en isolerad sandbox med Qualys-skannern som extraherar en lista över kända sårbarheter.
+Security Center hämtar avbildningen från registret och kör den i en isolerad sandbox med Qualys-skannern. Skannern extraherar en lista över kända sårbarheter.
 
-Security Center filtrerar och klassificerar resultat från skannern. När en bild är felfri, Security Center Markera den som sådan. Security Center skapar endast säkerhets rekommendationer för avbildningar som har problem att lösa. Genom att meddela om det uppstår problem kan Security Center minska risken för oönskade informations aviseringar.
+Security Center filtrerar och klassificerar resultat från skannern. När en bild är felfri, Security Center Markera den som sådan. Security Center skapar endast säkerhets rekommendationer för avbildningar som har problem att lösa. Genom att bara meddela dig när det uppstår problem kan Security Center minska risken för oönskade informations aviseringar.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Kan jag få Sök resultatet via REST API?
 Ja. Resultaten finns i [REST API för underutvärderingar](/rest/api/securitycenter/subassessments/list/). Du kan också använda Azure Resource Graph (ARG), Kusto API för alla resurser: en fråga kan hämta en speciell sökning.
@@ -78,7 +78,7 @@ Ja. Resultaten finns i [REST API för underutvärderingar](/rest/api/securitycen
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Vilka register typer genomsöks? Vilka typer faktureras?
 En lista över de typer av behållar register som stöds av Azure Defender för behållar register finns i [tillgänglighet](#availability).
 
-Om du ansluter register som inte stöds till din Azure-prenumeration genomsöks de inte och du debiteras inte för dem.
+Om du ansluter register som inte stöds till din Azure-prenumeration genomsöker inte Azure Defender dem och debiteras inte för dem.
 
 ### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Kan jag anpassa undersöknings resultaten från sårbarhets skannern?
 Ja. Om du har ett organisations behov av att ignorera en sökning i, i stället för att åtgärda det, kan du inaktivera det. Inaktiverade resultat påverkar inte din säkra poäng eller genererar oönskad brus.

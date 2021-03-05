@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677619"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176628"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Självstudie: skapa Apache Spark jobb definition i Synapse Studio
 
@@ -34,7 +34,7 @@ Innan du börjar med den här självstudien måste du uppfylla följande krav:
 
 * En Azure Synapse Analytics-arbetsyta. Instruktioner finns i [skapa en Azure Synapse Analytics-arbetsyta](../../machine-learning/how-to-manage-workspace.md).
 * En server lös Apache Spark pool.
-* Ett ADLS Gen2 lagrings konto. Du måste vara ägare till **Storage BLOB-data** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
+* Ett ADLS Gen2 lagrings konto. Du måste vara **data deltagare i Storage BLOB-data** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
 * Om du inte vill använda arbets ytans standard lagring länkar du det obligatoriska ADLS Gen2 lagrings kontot i Synapse Studio. 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Skapa en Apache Spark jobb definition för PySpark (python)
@@ -162,7 +162,7 @@ I det här avsnittet skapar du en Apache Spark jobb definition för .NET Spark (
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Skicka in en Apache Spark jobb definition som ett batch-jobb
 
-När du har skapat en Apache Spark jobb definition kan du skicka den till en Apache Spark-pool. Se till att du är **ägare till Storage BLOB-data** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
+När du har skapat en Apache Spark jobb definition kan du skicka den till en Apache Spark-pool. Se till att du är **lagrings BLOB-Datadeltagaren** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>Scenario 1: skicka Apache Spark jobb definition
  1. Öppna fönstret Apache Spark jobb definition genom att markera det.

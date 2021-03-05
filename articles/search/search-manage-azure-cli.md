@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-skript med hjälp av AZ search module
+title: Azure CLI-skript med hjälp av sökmodulen AZ
 titleSuffix: Azure Cognitive Search
 description: Skapa och konfigurera en Azure Kognitiv sökning-tjänst med Azure CLI. Du kan skala upp eller ned en tjänst, hantera administratörs-och fråge-API-nycklar och fråga efter system information.
 manager: luisca
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6b0e1b745e86c72843af88c0f6d17f91512e15
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032525"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176764"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Hantera Azure Kognitiv sökning-tjänsten med Azure CLI
 > [!div class="op_single_selector"]
@@ -41,48 +41,7 @@ Ibland tillfrågas frågor om uppgifter som *inte* finns i listan ovan. För nä
 
 I en tjänst är skapandet och hanteringen av innehåll via [Search Service REST API](/rest/api/searchservice/) eller [.NET SDK](/dotnet/api/overview/azure/search.documents-readme). Det finns inga dedikerade PowerShell-kommandon för innehåll, men du kan skriva skript som anropar REST-eller .NET-API: er för att skapa och läsa in index.
 
-<a name="check-versions-and-load"></a>
-
-## <a name="check-versions-and-upgrade"></a>Kontrol lera versioner och uppgradering
-
-Exemplen i den här artikeln är interaktiva och kräver förhöjd behörighet. Azure CLI måste vara installerat. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
-
-Nu kan du köra Azure CLI med `az` kommandot från antingen Windows kommando tolk, PowerShell eller [Azure Cloud Shell](../cloud-shell/overview.md). PowerShell erbjuder vissa funktioner för tabbifyllning som inte är tillgängliga från Windows-kommandotolken. 
-
-### <a name="check-the-azure-cli-version"></a>Kontrol lera Azure CLI-versionen
-
-Om du inte är säker på om Azure CLI har installerats kör du följande kommando som ett verifierings steg. 
-
-```azurecli-interactive
-az --version
-```
-Om kommandot inte fungerar kan du läsa [Installera Azure](/cli/azure/install-azure-cli) CLI för att få Azure CLI installerat.
-
-Om du har version 2.11.0 eller senare kan du köra `az upgrade` kommandot för att uppdatera CLI till den senaste versionen.
-
-```azurecli-interactive
-az upgrade
-```
-
-### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>Ansluta till Azure med en webbläsares inloggnings-token
-
-Du kan använda dina inloggnings uppgifter för din portal för att ansluta till en prenumeration i Azure CLI. Alternativt kan du [autentisera icke-interaktivt med ett huvud namn för tjänsten](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal).
-
-```azurecli-interactive
-az login
-```
-
-Om du har flera Azure-prenumerationer ställer du in din Azure-prenumeration. Kör det här kommandot om du vill se en lista över dina aktuella prenumerationer.
-
-```azurecli-interactive
-az account list --output table
-```
-
-Kör följande kommando för att ange prenumerationen. I följande exempel är prenumerations namnet `ContosoSubscription` .
-
-```azurecli-interactive
-az account set --subscription "ContosoSubscription"
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 <a name="list-search-services"></a>
 
@@ -262,7 +221,7 @@ az network vnet subnet update \
 id=$(az search service show \
     --resource-group <resource-group-name> \
     --name <service-name> \
-    --query [id]' \
+    --query [id] \
     --output tsv)
 
 # Create the private endpoint

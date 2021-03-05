@@ -3,12 +3,12 @@ title: Durable Functions publicering till Azure Event Grid (förhands granskning
 description: Lär dig hur du konfigurerar automatisk Azure Event Grid publicering för Durable Functions.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081754"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175965"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publicering till Azure Event Grid (förhands granskning)
 
@@ -26,7 +26,7 @@ Här följer några scenarier där den här funktionen är användbar:
 
 * Installera [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) i ditt Durable Functions-projekt.
 * Installera [Azure Storage emulator](../../storage/common/storage-use-emulator.md) (endast Windows) eller Använd ett befintligt Azure Storage-konto.
-* Installera [Azure CLI](/cli/azure/?view=azure-cli-latest) eller Använd [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Installera [Azure CLI](/cli/azure/) eller Använd [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Skapa ett anpassat Event Grid-ämne
 
@@ -126,17 +126,17 @@ Med hjälp av Azure Portal skapar du en annan Function-app för att lyssna efter
 
 ### <a name="create-an-event-grid-trigger-function"></a>Skapa en Event Grid trigger-funktion
 
-1. I din Function-app väljer du **Functions**och väljer sedan **+ Lägg till** 
+1. I din Function-app väljer du **Functions** och väljer sedan **+ Lägg till** 
 
    :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Lägg till en funktion i Azure Portal." border="true":::
 
-1. Sök efter **Event Grid**och välj sedan mallen **Azure Event Grid utlösare** . 
+1. Sök efter **Event Grid** och välj sedan mallen **Azure Event Grid utlösare** . 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Lägg till en funktion i Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Välj händelse rutnätets utlösare mall i Azure Portal." border="true":::
 
 1. Ge den nya utlösaren ett namn och välj sedan **skapa funktion**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Lägg till en funktion i Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Namnge Event Grid-utlösaren i Azure Portal." border="true":::
 
 
     En funktion med följande kod skapas:
@@ -172,11 +172,11 @@ Nu kan du lägga till en Event Grid-prenumeration för Event Grid avsnittet som 
 
 1. I den nya funktionen väljer du **integration** och väljer sedan **Event Grid utlösare (eventGridEvent)**. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Lägg till en funktion i Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Välj länken Event Grid utlösare." border="true":::
 
 1. Välj **skapa Event Grid Beskrivning**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Lägg till en funktion i Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Skapa Event Grid prenumerationen." border="true":::
 
 1. Namnge din händelse prenumeration och välj ämnes typen **Event Grid ämnen** . 
 
@@ -184,7 +184,7 @@ Nu kan du lägga till en Event Grid-prenumeration för Event Grid avsnittet som 
 
 1. Välj **Skapa**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Lägg till en funktion i Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Skapa en Event Grid-prenumeration." border="true":::
 
 Nu är du redo att ta emot livs cykel händelser.
 

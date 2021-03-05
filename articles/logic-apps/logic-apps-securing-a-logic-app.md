@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/22/2021
+ms.openlocfilehash: 21edde3eba76b565332acb9c67225f3bbb0fe803
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702563"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177291"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Säker åtkomst och data i Azure Logic Apps
 
@@ -203,20 +203,24 @@ Lägg till en eller flera auktoriseringsprinciper i din Logic app i [Azure Porta
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
    | **Principnamn** | Ja | Det namn som du vill använda för auktoriseringsprincipen |
-   | **Anspråk** | Ja | De anspråks typer och värden som din Logic app accepterar från inkommande samtal. Anspråks värdet är begränsat till ett [maximalt antal tecken](logic-apps-limits-and-config.md#authentication-limits). Här följer tillgängliga anspråks typer: <p><p>- **Utfärdare** <br>- **Filmen** <br>- **Motiv** <br>- **JWT-ID** (JSON Web token-ID) <p><p>Som minst måste **anspråks** listan innehålla **utfärdarens** anspråk, som har ett värde som börjar med `https://sts.windows.net/` eller `https://login.microsoftonline.com/` som ID för Azure AD-utfärdaren. Mer information om dessa anspråks typer finns i [anspråk i Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)-säkerhetstoken. Du kan också ange en egen typ och värde för anspråk. |
+   | **Anspråk** | Ja | De anspråks typer och värden som din Logic app accepterar från inkommande samtal. Anspråks värdet är begränsat till ett [maximalt antal tecken](logic-apps-limits-and-config.md#authentication-limits). Här följer tillgängliga anspråks typer: <p><p>- **Utfärdare** <br>- **Filmen** <br>- **Motiv** <br>- **JWT-ID** (JSON Web token identifierare) <p><p>Som minst måste **anspråks** listan innehålla **utfärdarens** anspråk, som har ett värde som börjar med `https://sts.windows.net/` eller `https://login.microsoftonline.com/` som ID för Azure AD-utfärdaren. Mer information om dessa anspråks typer finns i [anspråk i Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)-säkerhetstoken. Du kan också ange en egen typ och värde för anspråk. |
    |||
 
 1. Om du vill lägga till ett annat anspråk väljer du bland följande alternativ:
 
    * Om du vill lägga till en annan anspråks typ väljer du **Lägg till standard anspråk**, väljer anspråks typ och anger anspråks värde.
 
-   * Om du vill lägga till ett eget anspråk väljer du **Lägg till anpassat anspråk** och anger det anpassade anspråks värdet.
+   * Om du vill lägga till ett eget anspråk väljer du **Lägg till anpassat anspråk**. Mer information finns i [så här anger du valfria anspråk för din app](../active-directory/develop/active-directory-optional-claims.md). Ditt anpassade anspråk lagras sedan som en del av ditt JWT-ID; till exempel `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"` . 
 
 1. Om du vill lägga till en annan auktoriseringsprincip väljer du **Lägg till princip**. Upprepa föregående steg för att konfigurera principen.
 
 1. När du är klar väljer du **Spara**.
 
 1. Om du vill inkludera `Authorization` rubriken från åtkomsttoken i utlösare för begärd utlösare, se [inkludera "Authorization"-huvud i utlösare utdata](#include-auth-header).
+
+
+Arbets flödes egenskaper som principer visas inte i din Logic Apps kodvyn i Azure Portal. För att komma åt dina principer program mässigt anropar du följande API via Azure Resource Manager (ARM): `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820` . Se till att ersätta plats hållarnas värden för ditt Azure-prenumerations-ID, resurs grupp namn och arbets flödes namn.
+
 
 <a name="define-authorization-policy-template"></a>
 

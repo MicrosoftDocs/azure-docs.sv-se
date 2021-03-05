@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b356d5dff453b598eeb773af1a56fc50193e9e16
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746668"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176798"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Styra åtkomsten för externa användare i hantering av Azure AD-rättigheter
 
@@ -84,7 +84,7 @@ För att säkerställa att personer utanför organisationen kan begära åtkomst
 - Genom att tillåta gäster att bjuda in andra gäster till katalogen innebär det att gäst inbjudningar kan ske utanför hantering av rättigheter. Vi rekommenderar att du ställer in **gäster kan bjuda in** till **Nej** för att endast tillåta korrekt reglerade inbjudningar.
 - Om du använder listan B2B-Tillåt måste du kontrol lera att alla domäner som du vill använda som partner med hjälp av hantering av rättigheter läggs till i listan. Alternativt, om du använder listan B2B-neka, måste du se till att alla domäner som du vill partner med inte läggs till i listan.
 - Om du skapar en rättighets hanterings princip för **alla användare** (alla anslutna organisationer och alla nya externa användare) och en användare inte tillhör en ansluten organisation i din katalog, skapas en ansluten organisation automatiskt för dem när de begär paketet. Alla inställningar för B2B-tillåta eller neka lista som du har prioriteras. Se därför till att inkludera de domäner som du vill inkludera i den här principen i listan över tillåtna om du använder en, och exkluderar dem från listan över nekade om du använder en neka-lista.
-- Om du vill skapa en princip för hantering av rättigheter som innehåller **alla användare** (alla anslutna organisationer och nya externa användare) måste du först aktivera e-postautentisering med eng ång slö sen ord för din katalog. Mer information finns i [e-mail Authentication eng ång slö sen ord (för hands version)](../external-identities/one-time-passcode.md).
+- Om du vill skapa en princip för hantering av rättigheter som innehåller **alla användare** (alla anslutna organisationer och nya externa användare) måste du först aktivera e-postautentisering med eng ång slö sen ord för din katalog. Mer information finns i [e-mail Authentication eng ång slö sen ord](../external-identities/one-time-passcode.md).
 - Mer information om inställningar för externa samarbets funktioner i Azure AD B2B finns i [Aktivera externt samarbete i B2B och hantera vem som kan bjuda in gäster](../external-identities/delegate-invitations.md).
 
     ![Externa samarbets inställningar för Azure AD](./media/entitlement-management-external-users/collaboration-settings.png)

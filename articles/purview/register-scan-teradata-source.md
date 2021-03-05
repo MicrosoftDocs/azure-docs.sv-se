@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 0885870497ef3488d78fe899c96ee2a82a5b84fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696202"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175074"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Registrera och Genomsök Teradata-källa (för hands version)
 
@@ -94,13 +94,13 @@ Om du vill skapa och köra en ny genomsökning gör du följande:
 
 6.  **Schema**: lista över en delmängd av scheman som ska importeras uttrycks som en semikolonavgränsad lista. t. ex. Schema1; schema2. Alla användar scheman importeras om listan är tom. Alla system scheman (till exempel SysAdmin) och objekt ignoreras som standard. När listan är tom importeras alla tillgängliga scheman.
 
-        Acceptable schema name patterns using SQL LIKE expressions syntax include using %, e.g. A%; %B; %C%; D
-        - start with A or    
-        - end with B or    
-        - contain C or    
-        - equal D
+    Acceptabla schema namn mönster med SQL LIKE-uttryck inkluderar att använda%, t. ex. en%; T % C%; Styr
+    - börja med en eller    
+    - sluta med B eller    
+    - innehåller C eller    
+    - lika med D
 
-        Usage of NOT and special characters are not acceptable
+    Användning av icke-och specialtecken är inte acceptabelt
 
 7.  **Driv rutins plats**: Ange sökvägen till JDBC-drivrutinen på den virtuella datorn där integration runtime med egen värd körs. Detta bör vara sökvägen till giltig plats för JAR-mappen.
 

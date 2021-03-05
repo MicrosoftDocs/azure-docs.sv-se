@@ -11,17 +11,16 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 083d750db0db050265c93cc658d4f3b6556b850d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029540"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176220"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Skydda en Azure Machine Learning arbets yta med virtuella nätverk
 
 I den här artikeln får du lära dig hur du skyddar en Azure Machine Learning arbets yta och dess tillhör ande resurser i ett virtuellt nätverk.
-
 
 Den här artikeln är del två i en serie med fem delar som vägleder dig genom att skydda ett Azure Machine Learning-arbetsflöde. Vi rekommenderar starkt att du läser igenom [del ett: VNet-översikt](how-to-network-security-overview.md) för att förstå den övergripande arkitekturen först. 
 
@@ -296,7 +295,7 @@ När dessa krav är uppfyllda använder du följande steg för att aktivera Azur
 
 ## <a name="next-steps"></a>Nästa steg
 
-Den här artikeln är en del av en serie virtuella nätverks serier i fyra delar. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
+Den här artikeln är del två i en serie virtuella nätverks serier i fem delar. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
 
 * [Del 1: översikt över virtuella nätverk](how-to-network-security-overview.md)
 * [Del 3: skydda tränings miljön](how-to-secure-training-vnet.md)

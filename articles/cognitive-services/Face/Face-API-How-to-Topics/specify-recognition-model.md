@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58e910a721bea95e74a004ae306f1bbc3ade62f2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706834"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174163"
 ---
 # <a name="specify-a-face-recognition-model"></a>Ange en ansiktsigenkänningsmodell
 
@@ -24,11 +24,11 @@ Den här guiden visar hur du anger en ansikts igenkännings modell för ansikts 
 
 Ansikts tjänsten använder maskin inlärnings modeller för att utföra åtgärder på mänskliga ansikten i bilder. Vi fortsätter att förbättra noggrannheten i våra modeller baserat på kundfeedback och framsteg i forskningen, och vi levererar dessa förbättringar som modell uppdateringar. Utvecklare har möjlighet att ange vilken version av ansikts igenkännings modellen som de vill använda. de kan välja den modell som passar bäst för deras användnings fall.
 
-Azure Face service har tre igenkännings modeller tillgängliga. Modellerna _recognition_01_ (publicerat 2017) och _recognition_02_ (publicerad 2019) stöds kontinuerligt för att säkerställa bakåtkompatibilitet för kunder som använder FaceLists eller **PersonGroup** s som skapats med dessa modeller. En **FaceList** eller **persongroup** använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till. Detta kan inte ändras efter att kunderna har skapats och kunder måste använda motsvarande igenkännings modell med motsvarande **FaceList** eller **PersonGroup**.
+Azure Face service har fyra igenkännings modeller tillgängliga. Modellerna _recognition_01_ (publicerad 2017), _recognition_02_ (publicerad 2019) och _recognition_03_ (publicerad 2020) stöds kontinuerligt för att säkerställa bakåtkompatibilitet för kunder som använder FaceLists eller **PersonGroup** s som skapats med dessa modeller. En **FaceList** eller **persongroup** använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till. Detta kan inte ändras efter att kunderna har skapats och kunder måste använda motsvarande igenkännings modell med motsvarande **FaceList** eller **PersonGroup**.
 
 Du kan flytta till senare igenkännings modeller i din egen bekvämlighet. Du måste dock skapa nya FaceLists och PersonGroups med den igenkännings modell som du väljer.
 
-_Recognition_03_ modellen (publicerad 2020) är den mest exakta modellen som är tillgänglig just nu. Om du är en ny kund rekommenderar vi att du använder den här modellen. _Recognition_03_ ger bättre precision för både likhets jämförelser och jämförelser med person matchningar. Observera att varje modell fungerar oberoende av de andra och att en förtroende tröskel som har angetts för en modell inte är avsedd att jämföras i andra igenkännings modeller.
+_Recognition_04_ modellen (publicerad 2021) är den mest exakta modellen som är tillgänglig just nu. Om du är en ny kund rekommenderar vi att du använder den här modellen. _Recognition_04_ ger bättre precision för både likhets jämförelser och jämförelser med person matchningar. _Recognition_04_ förbättrar igenkänningen för registrerade användare som använder ansikte (kirurgiska masker, N95-masker, duk-masker). Nu kan du skapa säkra och sömlösa användar upplevelser som använder den senaste _detection_03_ modellen för att identifiera om en registrerad användare använder ett ansikts skydd och sedan identifiera vem de är med den senaste _recognition_04s_ modellen. Observera att varje modell fungerar oberoende av de andra och att en förtroende tröskel som har angetts för en modell inte är avsedd att jämföras i andra igenkännings modeller.
 
 Läs vidare om du vill veta hur du anger en vald modell i olika ansikts operationer samtidigt som du undviker modell konflikter. Om du är en avancerad användare och vill bestämma om du ska växla till den senaste modellen går du till avsnittet [utvärdera olika modeller](#evaluate-different-models) för att utvärdera den nya modellen och jämför resultat med den aktuella data uppsättningen.
 
@@ -51,6 +51,7 @@ När du använder API: et för [ansikts igenkänning] tilldelar du modell versio
 * recognition_01
 * recognition_02
 * recognition_03
+* recognition_04
 
 
 Alternativt kan du ange parametern _returnRecognitionModel_ (standard **falskt**) för att ange om _recognitionModel_ ska returneras som svar. En fråge-URL för [ansikts igenkännings] REST API ser därför ut så här:
@@ -91,10 +92,10 @@ Du kan också ange en igenkännings modell för sökning efter likheter. Du kan 
 Se följande kod exempel för .NET-klient biblioteket.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Den här koden skapar en ansikts lista `My face collection` med namnet med hjälp av _recognition_03s_ modellen för funktions extrahering. När du söker i den här ansikts listan efter liknande ansikten till en ny identifierad ansikte, måste det ansikte ha identifierats ([upptäcka]) med _recognition_03_ modellen. Som i föregående avsnitt måste modellen vara konsekvent.
+Den här koden skapar en ansikts lista `My face collection` med namnet med hjälp av _recognition_04s_ modellen för funktions extrahering. När du söker i den här ansikts listan efter liknande ansikten till en ny identifierad ansikte, måste det ansikte ha identifierats ([upptäcka]) med _recognition_04_ modellen. Som i föregående avsnitt måste modellen vara konsekvent.
 
 Det finns ingen ändring i [FACET-identifiera liknande] API; du anger bara modell versionen som ska identifieras.
 
@@ -105,10 +106,10 @@ API för [ansikts verifiering] kontrollerar om två ansikten tillhör samma pers
 ## <a name="evaluate-different-models"></a>Utvärdera olika modeller
 
 Om du vill jämföra prestanda för olika igenkännings modeller på dina egna data måste du:
-1. Skapa tre PersonGroups med _recognition_01_, _recognition_02_ respektive _recognition_03_ .
-1. Använd dina bilddata för att identifiera ansikten och registrera dem för **personer** i dessa tre **PersonGroup** s. 
+1. Skapa fyra PersonGroups med _recognition_01_, _recognition_02_, _recognition_03_ respektive _recognition_04_ .
+1. Använd dina avbildnings data för att identifiera ansikten och registrera dem på **personens** inom fyra **PersonGroup** s. 
 1. Träna din PersonGroups med hjälp av PersonGroup-träna API.
-1. Testa med ansikte – identifiera på alla tre **PersonGroup** s och jämför resultaten.
+1. Testa med ansikte – identifiera för alla fyra **PersonGroup** s och jämför resultaten.
 
 
 Om du vanligt vis anger ett konfidens tröskelvärde (ett värde mellan noll och ett som avgör hur trygg modellen måste vara att identifiera en ansikts) kan du behöva använda olika tröskelvärden för olika modeller. Ett tröskelvärde för en modell är inte avsett att delas till en annan och kommer inte nödvändigt vis att ge samma resultat.

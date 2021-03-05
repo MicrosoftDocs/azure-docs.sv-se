@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3b51a07281c7d6d9307cc802dfc9f149442e88b7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527827"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177495"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Vad är Azure API för FHIR &reg; ?
 
@@ -22,7 +22,7 @@ Med Azure API för FHIR kan du snabbt utbyta data genom att använda API: er fö
 - Hanterad FHIR-tjänst, etablerad i molnet på några minuter 
 - Företags klass, FHIR®-baserad slut punkt i Azure för data åtkomst och lagring i FHIR®-format
 - Hög prestanda, låg latens
-- Säker hantering av skyddade hälso data (PHI) i en kompatibel moln miljö
+- Säker hantering av skyddad hälso information (PHI) i en kompatibel moln miljö
 - SMART på FHIR för mobil-och webb implementeringar
 - Kontrol lera dina egna data i skala med rollbaserad åtkomst kontroll (RBAC)
 - Gransknings logg spårning för åtkomst, skapande, ändring och läsningar i varje data lager

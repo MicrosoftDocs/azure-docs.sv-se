@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 54dae3341910bf863de7e2a2cef832ae670ca09a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7bbb3a88bbc3011ec5dd917cdb0c1e49f7556aab
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097575"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177172"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Data blad för Azure percept vision
 
@@ -26,7 +26,7 @@ Specifikationerna nedan gäller för den Azure percept vision-enhet som ingår i
 |Program vara och tjänster som stöds |[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX Runtime](https://www.onnxruntime.ai/) <br> [Openprodukt](https://docs.openvinotoolkit.org/latest/index.html) <br> Uppdatering av Azure-enhet |
 |AI-acceleration                 |Intel Movidius myriaden X (MA2085) vision Processing Unit () med Intel Camera Internet-integrering, 0,7 överordnad |
 |Sensorer och visuella indikatorer   |Sony IMX219-kamera sensor med 6P-lins<br>Lösning: 8MP vid 30FPS, avstånd: 50cm-oändlighet<br>FoV: 120 grader diagonal, färg: brett dynamiskt intervall, fast fokus rullande slutarhastighet|
-|Kamera support                  |RGB (för närvarande) och IR (i framtiden) <br> 2 kameror kan köras samtidigt |
+|Kamera support                  |BALANS <br> 2 kameror kan köras samtidigt |
 |Säkerhets Crypto-Controller      |ST-Micro STM32L462CE      |
 |Komponenten versions hantering/ID       |64 kB EEPROM |
 |Minne                          |LPDDR4 2 GB     |

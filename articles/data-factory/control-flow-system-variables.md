@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: cb19b7e8c5271e1106e69c98d5bd17a1bcb822bf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3da450ce1130b693fa346b4a6f4b42f6a0fd60a3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385293"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174214"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systemvariabler som stöds av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,6 +20,7 @@ ms.locfileid: "100385293"
 I den här artikeln beskrivs systemvariabler som stöds av Azure Data Factory. Du kan använda dessa variabler i uttryck när du definierar Data Factory entiteter.
 
 ## <a name="pipeline-scope"></a>Pipeline-omfång
+
 Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 
 | Variabelnamn | Beskrivning |
@@ -36,6 +37,7 @@ Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 >Utlös ande datum/tid system variabler (i både pipeliner och utlösnings omfång) returnera UTC-datum i ISO 8601-format, till exempel `2017-06-01T22:20:00.4061448Z` .
 
 ## <a name="schedule-trigger-scope"></a>Intervall för schema utlösare
+
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
 | Variabelnamn | Beskrivning |
@@ -44,6 +46,7 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 | @trigger(). StartTime |Tiden då utlösaren **faktiskt** startade för att anropa pipeline-körningen. Detta kan skilja sig något från den schemalagda tiden för utlösaren. |
 
 ## <a name="tumbling-window-trigger-scope"></a>Utlösare för rullande fönster
+
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
 | Variabelnamn | Beskrivning |
@@ -53,7 +56,8 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 | @trigger().scheduledTime |Tiden då utlösaren schemalades för att anropa pipeline-körningen. |
 | @trigger(). StartTime |Tiden då utlösaren **faktiskt** startade för att anropa pipeline-körningen. Detta kan skilja sig något från den schemalagda tiden för utlösaren. |
 
-## <a name="event-based-trigger-scope"></a>Händelsebaserade utlösnings omfång
+## <a name="storage-event-trigger-scope"></a>Utlösnings omfång för lagrings händelse
+
 Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
 
 | Variabelnamn | Beskrivning |
@@ -63,4 +67,5 @@ Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare
 | @trigger(). StartTime |Tiden då utlösaren startade för att anropa pipeline-körningen. |
 
 ## <a name="next-steps"></a>Nästa steg
+
 Information om hur dessa variabler används i uttryck finns i [Expression language & Functions](control-flow-expression-language-functions.md).

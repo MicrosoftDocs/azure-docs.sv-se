@@ -16,12 +16,12 @@ ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e31b9ce115ebe0723a9d082aaddd8056e486ed27
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176985"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Slutför en åtkomst granskning av grupper och program i åtkomst granskningar för Azure AD
 
@@ -59,7 +59,7 @@ Du kan följa förloppet när granskarna har slutfört granskningarna.
     ![Granska gäst åtkomst över Microsoft 365 grupper](./media/complete-access-review/all-company-group-results.png)
 
 
-    Om du visar en åtkomst granskning som granskar gäst åtkomst över Microsoft 365 grupper (för hands version), visar översikts bladet varje grupp i granskningen. 
+    Om du visar en åtkomst granskning som granskar gäst åtkomst över Microsoft 365 grupper, visar översikts bladet varje grupp i granskningen. 
    
     ![granska gäst åtkomst över Microsoft 365 grupper](./media/complete-access-review/review-guest-access-across-365-groups.png)
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b16a2fc9f107a8420fb7d05667807a869fa3e00a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791655"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172765"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Funktioner för flera modeller i Azure SQL Database & SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -87,7 +87,7 @@ Mer information finns i [så här arbetar du med JSON-data](database/json-featur
 
 Dokument modeller kan användas i stället för Relations modeller i vissa olika scenarier:
 
-- Hög normalisering av schemat ger inte några betydande fördelar eftersom du får åtkomst till alla fält för objekt på en gång, eller om du aldrig uppdaterar normaliserade delar av objekten. Den normaliserade modellen ökar dock komplexiteten för dina frågor på grund av det stora antalet tabeller som du måste koppla för att hämta data.
+- Hög normalisering av schema ger inte avsevärda fördelar eftersom du har åtkomst till alla fält i objekten samtidigt, eller om du aldrig uppdaterar normaliserade delar av objekten. Den normaliserade modellen ökar dock komplexiteten för dina frågor på grund av det stora antalet tabeller som du måste koppla för att hämta data.
 - Du arbetar med de program som ursprungligen använder JSON-dokument är kommunikations-eller data modeller, och du vill inte införa fler lager som transformerar Relations data till JSON och vice versa.
 - Du behöver förenkla din data modell genom att normalisera de underordnade tabellerna eller entitetens objekt värde mönster.
 - Du måste läsa in eller exportera data som lagras i JSON-format utan ytterligare verktyg som analyserar data.
@@ -124,7 +124,7 @@ Den SQL Server databas motorn är en kraftfull plattform för att utveckla rika 
 
 Dokument modeller kan användas i stället för Relations modeller i vissa olika scenarier:
 
-- Hög normalisering av schemat ger inte några betydande fördelar eftersom du får åtkomst till alla fält för objekt på en gång, eller om du aldrig uppdaterar normaliserade delar av objekten. Den normaliserade modellen ökar dock komplexiteten för dina frågor på grund av det stora antalet tabeller som du måste koppla för att hämta data.
+- Hög normalisering av schema ger inte avsevärda fördelar eftersom du har åtkomst till alla fält i objekten samtidigt, eller om du aldrig uppdaterar normaliserade delar av objekten. Den normaliserade modellen ökar dock komplexiteten för dina frågor på grund av det stora antalet tabeller som du måste koppla för att hämta data.
 - Du arbetar med de program som ursprungligen använder XML-dokument är kommunikations-eller data modeller, och du vill inte införa fler lager som transformerar Relations data till XML och vice versa.
 - Du behöver förenkla din data modell genom att normalisera de underordnade tabellerna eller entitetens objekt värde mönster.
 - Du måste läsa in eller exportera data som lagras i XML-format utan ytterligare verktyg som analyserar data.

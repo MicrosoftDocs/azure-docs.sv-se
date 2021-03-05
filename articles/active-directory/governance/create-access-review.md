@@ -2,7 +2,7 @@
 title: Skapa en åtkomst granskning av grupper & program – Azure AD
 description: Lär dig hur du skapar en åtkomst granskning av grupp medlemmar eller program åtkomst i Azure Active Directory åtkomst granskningar.
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
-ms.author: barclayn
+ms.date: 3/3/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12eb95a7840bdbb902701fc644eee30ffe9900f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778597"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176883"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Skapa en åtkomst granskning av grupper och program i åtkomst granskningar för Azure AD
 
@@ -80,7 +80,7 @@ Mer information finns i [licens krav](access-reviews-overview.md#license-require
     - **Grupp ägare (er)** (endast tillgängligt när du utför en granskning på ett team eller en grupp)
     - **Valda användare eller grupper**
     - **Användare granskar egen åtkomst**
-    - **Förhandsgranskningsvyn Användares chefer.**
+    - **Användares chefer.**
     Om du väljer antingen **Administratörer av användare** eller **grupp ägare**  kan du också välja att ange en återställnings granskare. Återställnings granskare uppmanas att göra en granskning när användaren inte har angett någon ansvarig i katalogen eller om gruppen inte har någon ägare.
 
     ![ny åtkomst granskning](./media/create-access-review/new-access-review.png)

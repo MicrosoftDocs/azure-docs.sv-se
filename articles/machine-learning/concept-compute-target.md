@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: bd83ccc4f834d6b52e1c2db15000eb695be85f30
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791180"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177206"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Vad är beräkningsmål i Azure Machine Learning?
 
@@ -101,15 +101,21 @@ I följande tabell finns mer information om vilka serier och begränsningar som 
 | **VM-serien som stöds**  | **Begränsningar** |
 |------------|------------|
 | D | Inga. |
+| DDSv4 | Inga. |
 | Dv2 | Inga. |  
 | Dv3 | Inga.|
 | DSv2 | Inga. | 
 | DSv3 | Inga.|
+| EAv4 | Inga. |
+| Ev3 | Inga. |
 | FSv2 | Inga. | 
+| H | Inga. |
+| HB | Kräver godkännande. |
 | HBv2 | Kräver godkännande. |  
 | HCS UPPDATERINGSKLIENTEN | Kräver godkännande. |  
 | M | Kräver godkännande. |
-| NC | Inga. |    
+| NC | Inga. |  
+| NC-kampanj | Inga. |
 | NCsv2 | Kräver godkännande. |
 | NCsv3 | Kräver godkännande. |  
 | NDs | Kräver godkännande. |

@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 77a1c02c1ec59778521104e57f3bf3de8e52fa44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738998"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177427"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Använd Azure import/export-tjänsten för att importera data till Azure Blob Storage
 
@@ -104,46 +104,57 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
 1. Logga in på https://portal.azure.com/ .
 2. Sök efter **import/export-jobb**.
 
-    ![Sök på import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
+   ![Sök på import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. Välj **+ Ny**.
 
-    ![Välj nytt om du vill skapa en ny ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+   ![Välj nytt om du vill skapa en ny ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gör så här i **Grundläggande**:
 
-   * Välj **Importera till Azure**.
-   * Ange ett beskrivande namn för import jobbet. Använd namnet för att följa förloppet för dina jobb.
-       * Namnet får bara innehålla gemena bokstäver, siffror och bindestreck.
-       * Namnet måste börja med en bokstav och får inte innehålla blank steg.
-   * Välj en prenumeration.
-   * Ange eller Välj en resurs grupp.
+   1. Välj en prenumeration.
+   1. Välj en resurs grupp eller Välj **Skapa ny** och skapa en ny.
+   1. Ange ett beskrivande namn för import jobbet. Använd namnet för att följa förloppet för dina jobb.
+      * Namnet får bara innehålla gemena bokstäver, siffror och bindestreck.
+      * Namnet måste börja med en bokstav och får inte innehålla blank steg.
 
-     ![Skapa import jobb – steg 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+   1. Välj **Importera till Azure**.
+
+    ![Skapa import jobb – steg 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+
+    Välj **Nästa: jobb information >** för att gå vidare.
 
 5. I **jobb information**:
 
-   * Ladda upp filerna för enhets journaler som du fick under steget förberedelse av enhet. Om `waimportexport.exe version1` användes överför du en fil för varje enhet som du har för berett. Om journal filens storlek överskrider 2 MB kan du använda den som `<Journal file name>_DriveInfo_<Drive serial ID>.xml` skapats med journal filen.
-   * Välj det mål lagrings konto där data ska finnas.
-   * DropOff-platsen fylls i automatiskt baserat på den region där det valda lagrings kontot finns.
+   1. Ladda upp de Journal-filer som du skapade under föregående [steg 1: Förbered enheterna](#step-1-prepare-the-drives). Om `waimportexport.exe version1` användes överför du en fil för varje enhet som du har för berett. Om journal filens storlek överskrider 2 MB kan du använda den som `<Journal file name>_DriveInfo_<Drive serial ID>.xml` skapats med journal filen.
+   1. Välj mål Azure-region för ordern.
+   1. Välj lagrings kontot för importen.
+      
+      DropOff-platsen fylls i automatiskt baserat på den region där det valda lagrings kontot finns.
+   1. Om du inte vill spara en utförlig logg rensar du **Spara utförlig logg i alternativet ' waimportexport ' BLOB container** .
 
-   ![Skapa import jobb – steg 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+   ![Skapa import jobb – steg 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-6. I **information om retur leverans**:
+   Välj **Nästa: leverera >** för att gå vidare.
 
-   * Välj operatören i list rutan. Om du vill använda en annan operatör än FedEx/DHL väljer du ett befintligt alternativ i list rutan. Kontakta Azure Data Box drifts teamet på `adbops@microsoft.com`  med information om den operatör som du planerar att använda.
-   * Ange ett giltigt transportföretags konto nummer som du har skapat med transport företaget. Microsoft använder det här kontot för att skicka tillbaka enheterna till dig när ditt import jobb har slutförts. Om du inte har ett konto nummer skapar du ett [FedEx](https://www.fedex.com/us/oadr/) -eller [DHL](https://www.dhl.com/) -konto.
-   * Ange ett fullständigt och giltigt kontakt namn, telefon, e-postadress, gatuadress, ort, post, region och land/region.
+6. I **leverans**:
+
+   1. Välj operatören i list rutan. Om du vill använda en annan operatör än FedEx/DHL väljer du ett befintligt alternativ i list rutan. Kontakta Azure Data Box drifts teamet på `adbops@microsoft.com`  med information om den operatör som du planerar att använda.
+   1. Ange ett giltigt transportföretags konto nummer som du har skapat med transport företaget. Microsoft använder det här kontot för att skicka tillbaka enheterna till dig när ditt import jobb har slutförts. Om du inte har ett konto nummer skapar du ett [FedEx](https://www.fedex.com/us/oadr/) -eller [DHL](https://www.dhl.com/) -konto.
+   1.  Ange ett fullständigt och giltigt kontakt namn, telefon, e-postadress, gatuadress, ort, post, delstat/provins och land/region.
 
        > [!TIP]
        > Ange en grupp-e-postadress i stället för att ange en e-postadress för en enskild användare. Detta säkerställer att du får meddelanden även om en administratör lämnar.
 
-     ![Skapa import jobb – steg 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
+   ![Skapa import jobb – steg 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
-7. I **sammanfattningen**:
+   Välj **Granska + skapa** för att fortsätta.
 
-   * Granska jobb informationen som visas i sammanfattningen. Anteckna jobb namnet och leverans adressen till Azure-datacenter för att leverera diskar tillbaka till Azure. Den här informationen används senare på frakt etiketten.
-   * Skapa import jobbet genom att klicka på **OK** .
+7. I order sammanfattningen:
+
+   1. Granska **villkoren** och välj sedan "Jag bekräftar att all information som anges är korrekt och samtycker till de allmänna villkoren". Verifieringen utförs sedan.
+   1. Granska jobb informationen som visas i sammanfattningen. Anteckna jobb namnet och leverans adressen till Azure-datacenter för att leverera diskar tillbaka till Azure. Den här informationen används senare på frakt etiketten.
+   1. Välj **Skapa**.
 
      ![Skapa import jobb – steg 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727965"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175880"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Felsök problem med CI-CD, Azure DevOps och GitHub i ADF 
 
@@ -168,7 +168,7 @@ CI/CD-processen har förbättrats. Funktionen **automatiserad publicering** tar,
 
 #### <a name="issue"></a>Problem
 
-Du kan inte distribuera eftersom du träffar Azure Resource Manager gränsen på 4 MB Total storlek. Du behöver en lösning för att distribuera när gränsen har passerats. 
+Det går inte att distribuera eftersom du träffar Azure Resource Manager gränsen på 4 MB Total storlek. Du behöver en lösning för att distribuera när gränsen har passerats. 
 
 #### <a name="cause"></a>Orsak
 
@@ -190,7 +190,7 @@ Du har inte konfigurerat OAuth för ADF. URL: en är felkonfigurerad.
 
 ##### <a name="resolution"></a>Lösning
 
-Du beviljar OAuth-åtkomst till ADF först. Sedan måste du använda rätt URL för att ansluta till GIT Enterprise. Konfigurationen måste vara inställd på kundens organisation (er) eftersom den första försöket med ADF-tjänsten körs... https://hostname/api/v3/search/repositories?q=user%3 <customer credential> . och fungerar inte. Sedan kommer den att försöka https://hostname/api/v3/orgs/ <vaorg> / <repo> och lyckas. 
+Du beviljar OAuth-åtkomst till ADF först. Sedan måste du använda rätt URL för att ansluta till GIT Enterprise. Konfigurationen måste anges till kundens organisation (er). Till exempel så försöker ADF först *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ..* . och Miss Missing. Sedan kommer det att försöka *https://hostname/api/v3/orgs/ <org> / <repo> ...* och lyckas. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Återställa från en borttagen data fabrik
 
@@ -203,7 +203,8 @@ Det går bara att återställa Data Factory om kunden har en käll kontroll som 
 
 Om det inte finns någon käll kontroll är det inte möjligt att återställa en borttagen Data Factory från Server delen eftersom när tjänsten tar emot borttagna kommando, raderas instansen och ingen säkerhets kopia har lagrats.
 
-#### <a name="resoloution"></a>Resoloution
+#### <a name="resolution"></a>Lösning
+
 För att återställa den borttagna Data Factory som har käll kontroll, se stegen nedan:
 
  * Skapa en ny Azure Data Factory.

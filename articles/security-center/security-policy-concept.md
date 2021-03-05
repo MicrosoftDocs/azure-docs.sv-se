@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/28/2021
-ms.openlocfilehash: a5aae4013067ba37334e3e85a9e7ef882efd1dd2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/04/2021
+ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107933"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176441"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Vad är säkerhets principer, initiativ och rekommendationer?
 
@@ -25,6 +25,7 @@ En Azure policy-definition, som skapats i Azure Policy, är en regel om vissa s�
 
 Om du vill implementera dessa princip definitioner (oavsett om de är inbyggda eller anpassade) måste du tilldela dem. Du kan tilldela de här principerna via Azure-portalen, PowerShell eller Azure CLI.
 
+Det finns olika typer av principer i Azure Policy. Security Center använder främst principer för granskning som kontrollerar vissa villkor och konfigurationer och rapporterar om kompatibilitet. Det finns också tvingande principer som kan användas för att tillämpa säkra inställningar.
 
 ## <a name="what-is-a-security-initiative"></a>Vad är ett säkerhets initiativ?
 
@@ -38,7 +39,7 @@ Standard initiativet som tilldelas automatiskt till varje prenumeration i Azure 
 
 Security Center erbjuder följande alternativ för att arbeta med säkerhets initiativ och principer:
 
-- **Visa och redigera det inbyggda standard initiativet** – när du aktiverar Security Center tilldelas initiativet med namnet "Azure Security benchmark" automatiskt till alla Security Center registrerade prenumerationer. Du kan anpassa det här initiativet genom att aktivera eller inaktivera enskilda principer i den. Se listan över [inbyggda säkerhets principer](./policy-reference.md) för att förstå alternativen som är tillgängliga direkt.
+- **Visa och redigera det inbyggda standard initiativet** – när du aktiverar Security Center tilldelas initiativet med namnet "Azure Security benchmark" automatiskt till alla Security Center registrerade prenumerationer. Du kan anpassa det här initiativet genom att aktivera eller inaktivera enskilda principer i den genom att redigera en princips parametrar. Se listan över [inbyggda säkerhets principer](./policy-reference.md) för att förstå alternativen som är tillgängliga direkt.
 
 - **Lägg till egna anpassade initiativ** – om du vill anpassa de säkerhets initiativ som tillämpas på din prenumeration kan du göra det i Security Center. Du får sedan rekommendationer om datorerna inte följer de principer som du skapar. Anvisningar om hur du skapar och tilldelar anpassade principer finns i [använda anpassade säkerhets initiativ och principer](custom-security-policies.md).
 
@@ -46,9 +47,9 @@ Security Center erbjuder följande alternativ för att arbeta med säkerhets ini
 
 ## <a name="what-is-a-security-recommendation"></a>Vad är en säkerhets rekommendation?
 
-Azure Security Center analyserar regelbundet säkerhets status för dina Azure-resurser för att identifiera potentiella säkerhets risker. Därefter får du rekommendationer om hur du åtgärdar problemen. En rekommendation är resultatet av att utvärdera resurserna mot de relevanta principerna och identifiera resurser som inte uppfyller dina definierade krav.
+Med hjälp av principerna analyserar Security Center regelbundet dina resursers kompatibilitetsstatus för att identifiera potentiella säkerhets inställningar och svagheter. Därefter får du rekommendationer om hur du kan åtgärda problemen. Rekommendationerna är resultatet av att utvärdera resurserna mot de relevanta principerna och identifiera resurser som inte uppfyller dina definierade krav.
 
-Azure Security Center gör säkerhets rekommendationerna baserade på dina valda initiativ. 
+Security Center gör säkerhets rekommendationerna baserade på dina valda initiativ. När en princip från ditt initiativ jämförs med dina resurser och hittar en eller flera som inte är kompatibla presenteras de som en rekommendation i Security Center.
 
 Rekommendationer är åtgärder som du kan vidta för att skydda och skärp dina resurser. Varje rekommendation innehåller följande information:
 

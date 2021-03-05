@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8ccc7b641e2bfcb4ea8733b9d4f793229c430bc0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652921"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177588"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Använda Azure Import/Export-tjänsten till att exportera data från Azure Blob Storage
 
@@ -53,38 +53,56 @@ Utför följande steg för att skapa ett export jobb i Azure Portal.
 
 4. Gör så här i **Grundläggande**:
 
-    - Välj **exportera från Azure**.
-    - Ange ett beskrivande namn på export jobbet. Använd det namn du väljer för att följa förloppet för dina jobb.
-        - Namnet får bara innehålla gemena bokstäver, siffror, bindestreck och under streck.
-        - Namnet måste börja med en bokstav och får inte innehålla blank steg.
-    - Välj en prenumeration.
-    - Ange eller Välj en resurs grupp.
+   1. Välj en prenumeration.
+   1. Välj en resurs grupp eller Välj **Skapa ny** och skapa en ny.
+   1. Ange ett beskrivande namn för import jobbet. Använd namnet för att följa förloppet för dina jobb.
+       * Namnet får bara innehålla gemena bokstäver, siffror och bindestreck.
+       * Namnet måste börja med en bokstav och får inte innehålla blank steg.
 
-        ![Grunder](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+   1. Välj **exportera från Azure**.
+
+    ![Grundläggande alternativ för en export ordning](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+    Välj **Nästa: jobb information >** för att gå vidare.
 
 5. I **jobb information**:
 
-    - Välj det lagrings konto där de data som ska exporteras finns. Använd ett lagrings konto nära den plats där du befinner dig.
-    - DropOff-platsen fylls i automatiskt baserat på den region där det valda lagrings kontot finns.
-    - Ange de BLOB-data som du vill exportera från ditt lagrings konto till din tomma enhet eller dina enheter.
-    - Välj att **Exportera alla** BLOB-data i lagrings kontot.
+   1. Välj den Azure-region där dina data finns.
+   1. Välj det lagrings konto som du vill exportera data från. Använd ett lagrings konto nära din plats.
 
-         ![Exportera alla](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+      Den nedrullningsbara platsen fylls i automatiskt baserat på den region där det valda lagrings kontot finns.
 
-    - Du kan ange vilka behållare och blobbar som ska exporteras.
-        - **Ange en blob som ska exporteras**: Använd **lika** med-väljaren. Ange den relativa sökvägen till blobben som börjar med behållar namnet. Använd *$root* för att ange rot containern.
-        - **För att ange alla blobbar som börjar med ett prefix**: Använd Start **med** -väljaren. Ange prefixet som börjar med ett snedstreck (/). Prefixet kan vara prefixet för behållar namnet, det fullständiga behållar namnet eller det fullständiga behållar namnet följt av prefixet för BLOB-namnet. Du måste ange BLOB-sökvägar i giltigt format för att undvika fel under bearbetningen, som du ser i den här skärm bilden. Mer information finns i [exempel på giltiga BLOB-sökvägar](#examples-of-valid-blob-paths).
+   1. Ange BLOB-data som ska exporteras från ditt lagrings konto till din tomma enhet eller dina enheter. Välj en av de tre följande metoderna.
 
-           ![Exportera valda behållare och blobbar](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+      - Välj att **Exportera alla** BLOB-data i lagrings kontot.
 
-    - Du kan exportera från BLOB list filen.
+        ![Exportera alla](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
-        ![Exportera från BLOB list filen](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+      - Välj **valda behållare och blobbar** och ange behållare och blobbar som ska exporteras. Du kan använda fler än en av urvals metoderna. Om du väljer alternativet **Lägg till** öppnas en panel till höger där du kan lägga till dina urvals strängar.
+
+        |Alternativ|Beskrivning|
+        |------|-----------|      
+        |**Lägg till behållare**|Exportera alla blobbar i en behållare.<br>Välj **Lägg till behållare** och ange varje behållar namn.|
+        |**Lägg till blobbar**|Ange enskilda blobbar som ska exporteras.<br>Välj **Lägg till blobbar**. Ange sedan den relativa sökvägen till blobben och börja med behållarens namn. Använd *$root* för att ange rot containern.<br>Du måste ange BLOB-sökvägar i giltigt format för att undvika fel under bearbetningen, som du ser i den här skärm bilden. Mer information finns i [exempel på giltiga BLOB-sökvägar](#examples-of-valid-blob-paths).|
+        |**Lägg till prefix**|Använd ett prefix för att välja en uppsättning med liknande namngivna behållare eller liknande namngivna blobbar i en behållare. Prefixet kan vara prefixet för behållar namnet, det fullständiga behållar namnet eller ett fullständigt behållar namn följt av prefixet för BLOB-namnet. |
+
+        ![Exportera valda behållare och blobbar](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - Välj **exportera från BLOB list-filen (XML-format)** och välj en XML-fil som innehåller en lista över sökvägar och prefix för de blobbar som ska exporteras från lagrings kontot. Du måste skapa XML-filen och lagra den i en behållare för lagrings kontot. Filen får inte vara tom.
+
+      > [!IMPORTANT]
+      > Om du använder en XML-fil för att välja de blobbar som ska exporteras kontrollerar du att XML innehåller giltiga sökvägar och/eller prefix. Om filen är ogiltig eller inga data matchar de angivna Sök vägarna, avslutas ordningen med ofullständiga data eller så har inga data exporter ATS.
+
+       Information om hur du lägger till en XML-fil i en behållare finns i [Exportera order med XML-fil](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file).
+
+      ![Exportera från BLOB list filen](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
-   > Om blobben som ska exporteras används under data kopieringen tar Azure import/export-tjänsten en ögonblicks bild av blobben och kopierar ögonblicks bilden.
+   > Om en blob som ska exporteras används under data kopieringen tar Azure import/export-tjänsten en ögonblicks bild av blobben och kopierar ögonblicks bilden.
 
-6. I **information om retur leverans**:
+   Välj **Nästa: leverera >** för att gå vidare.
+
+6. I **leverans**:
 
     - Välj operatören i list rutan. Om du vill använda en annan operatör än FedEx/DHL väljer du ett befintligt alternativ i list rutan. Kontakta Azure Data Box drifts teamet på `adbops@microsoft.com`  med information om den operatör som du planerar att använda.
     - Ange ett giltigt transportföretags konto nummer som du har skapat med transport företaget. Microsoft använder det här kontot för att skicka tillbaka enheterna till dig när ditt export jobb är klart.
@@ -93,15 +111,76 @@ Utför följande steg för att skapa ett export jobb i Azure Portal.
         > [!TIP]
         > Ange en grupp-e-postadress i stället för att ange en e-postadress för en enskild användare. Detta säkerställer att du får meddelanden även om en administratör lämnar.
 
-7. **Sammanfattning**:
+    Välj **Granska + skapa** för att fortsätta.
 
-    - Granska informationen om jobbet.
-    - Anteckna jobb namnet och tillhandahåll leverans adressen för Azure Data Center för att leverera diskar till Azure.
+7. I **Granska + skapa**:
+
+   1. Granska informationen om jobbet.
+   1. Anteckna jobb namnet och tillhandahåll leverans adressen för Azure Data Center för att leverera diskar till Azure.
+
+      > [!NOTE]
+      > Skicka alltid diskarna till data centret som anges i Azure Portal. Om diskarna levereras till fel Data Center kommer jobbet inte att bearbetas.
+
+   1. Granska **villkoren** för din beställning av sekretess och käll data borttagning. Om du godkänner villkoren markerar du kryss rutan under villkoren. Valideringen av ordern börjar.
+
+   ![Granska och skapa din export ordning](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
+
+ 1. När verifieringen har godkänts väljer du **skapa**.
+
+<!--Replaced text: Steps 4 - end of "Create an export job." Wizard design changes required both screen and text updates.
+
+4. In **Basics**:
+
+    - Select **Export from Azure**.
+    - Enter a descriptive name for the export job. Use the name you choose to track the progress of your jobs.
+        - The name may contain only lowercase letters, numbers, hyphens, and underscores.
+        - The name must start with a letter, and may not contain spaces.
+    - Select a subscription.
+    - Enter or select a resource group.
+
+        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+5. In **Job details**:
+
+    - Select the storage account where the data to be exported resides. Use a storage account close to where you are located.
+    - The dropoff location is automatically populated based on the region of the storage account selected.
+    - Specify the blob data you wish to export from your storage account to your blank drive or drives.
+    - Choose to **Export all** blob data in the storage account.
+
+         ![Export all](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+
+    - You can specify which containers and blobs to export.
+        - **To specify a blob to export**: Use the **Equal To** selector. Specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
+        - **To specify all blobs starting with a prefix**: Use the **Starts With** selector. Specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name. You must provide the blob paths in valid format to avoid errors during processing, as shown in this screenshot. For more information, see [Examples of valid blob paths](#examples-of-valid-blob-paths).
+
+           ![Export selected containers and blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - You can export from  the blob list file.
+
+        ![Export from blob list file](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+
+   > [!NOTE]
+   > If the blob to be exported is in use during data copy, Azure Import/Export service takes a snapshot of the blob and copies the snapshot.
+
+6. In **Return shipping info**:
+
+    - Select the carrier from the dropdown list. If you want to use a carrier other than FedEx/DHL, choose an existing option from the dropdown. Contact Azure Data Box Operations team at `adbops@microsoft.com`  with the information regarding the carrier you plan to use.
+    - Enter a valid carrier account number that you have created with that carrier. Microsoft uses this account to ship the drives back to you once your export job is complete.
+    - Provide a complete and valid contact name, phone, email, street address, city, zip, state/province, and country/region.
+
+        > [!TIP]
+        > Instead of specifying an email address for a single user, provide a group email. This ensures that you receive notifications even if an admin leaves.
+
+7. In **Summary**:
+
+    - Review the details of the job.
+    - Make a note of the job name and provided Azure datacenter shipping address for shipping disks to Azure.
 
         > [!NOTE]
-        > Skicka alltid diskarna till data centret som anges i Azure Portal. Om diskarna levereras till fel Data Center kommer jobbet inte att bearbetas.
+        > Always send the disks to the datacenter noted in the Azure portal. If the disks are shipped to the wrong datacenter, the job will not be processed.
 
-    - Klicka på **OK** för att slutföra genereringen av export jobb.
+    - Click **OK** to complete export job creation.
+-->
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -320,14 +399,14 @@ Det här *valfria* steget hjälper dig att avgöra hur många enheter som krävs
 
     Parametrarna beskrivs i följande tabell:
 
-    |Kommando rads parameter|Description|
+    |Kommando rads parameter|Beskrivning|
     |--------------------------|-----------------|
     |**/logdir:**|Valfritt. Logg katalogen. Utförliga loggfiler skrivs till den här katalogen. Om detta inte anges används den aktuella katalogen som logg katalog.|
     |**SN**|Krävs. Namnet på lagrings kontot för export jobbet.|
     |**sk**|Krävs endast om en behållar-SÄKERHETSASSOCIATIONER inte har angetts. Konto nyckeln för lagrings kontot för export jobbet.|
     |**/csas:**|Krävs endast om en lagrings konto nyckel inte har angetts. Behållar SAS för att lista de blobbar som ska exporteras i export jobbet.|
     |**/ExportBlobListFile:**|Krävs. Sökväg till XML-filen som innehåller en lista över BLOB-sökvägar eller prefix för BLOB-sökvägar för de blobbar som ska exporteras. Fil formatet som används i `BlobListBlobPath` -elementet i åtgärden [](/rest/api/storageimportexport/jobs) för att importera/exportera REST API.|
-    |**/DriveSize:**|Krävs. Storleken på de enheter som ska användas för ett export jobb, *t. ex.* 500 GB, 1,5 TB.|
+    |**/DriveSize:**|Krävs. Storleken på de enheter som ska användas för ett export jobb, *till exempel* 500 GB, 1,5 TB.|
 
     Se ett [exempel på PreviewExport-kommandot](#example-of-previewexport-command).
 
@@ -374,7 +453,7 @@ Number of drives needed:        3
 
 I följande tabell visas exempel på giltiga BLOB-sökvägar:
 
-   | Väljare | BLOB-sökväg | Description |
+   | Väljare | BLOB-sökväg | Beskrivning |
    | --- | --- | --- |
    | Börjar med |/ |Exporterar alla blobar i lagrings kontot |
    | Börjar med |/$root/ |Exporterar alla blobbar i rot behållaren |

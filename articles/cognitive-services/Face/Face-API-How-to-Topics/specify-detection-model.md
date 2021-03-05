@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 04699890af2cfe835ecca6ee983808d7d8d002c8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913491"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174197"
 ---
 # <a name="specify-a-face-detection-model"></a>Ange en ansiktsavkänningsmodell
 
@@ -43,6 +43,7 @@ När du använder API: t för [ansikts igenkänning] kan du tilldela modell vers
 
 * `detection_01`
 * `detection_02`
+* `detection_03`
 
 En fråge-URL för [ansikts igenkännings] REST API ser ut så här:
 
@@ -52,7 +53,7 @@ Om du använder klient biblioteket kan du tilldela värdet för `detectionModel`
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_04", detectionModel: "detection_03");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Lägg till ansikte till person med angiven modell
@@ -62,17 +63,17 @@ Ansikts tjänsten kan extrahera ansikts data från en avbildning och koppla den 
 Se följande kod exempel för .NET-klient biblioteket.
 
 ```csharp
-// Create a PersonGroup and add a person with face detected by "detection_02" model
+// Create a PersonGroup and add a person with face detected by "detection_03" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_04");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
+await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_03");
 ```
 
-Den här koden skapar en **PersonGroup** med ID `mypersongroupid` och lägger till en **person** till den. Sedan lägger den till en ansikte till den här **personen** med hjälp av `detection_02` modellen. Om du inte anger parametern *detectionModel* använder API: n standard modellen `detection_01` .
+Den här koden skapar en **PersonGroup** med ID `mypersongroupid` och lägger till en **person** till den. Sedan lägger den till en ansikte till den här **personen** med hjälp av `detection_03` modellen. Om du inte anger parametern *detectionModel* använder API: n standard modellen `detection_01` .
 
 > [!NOTE]
 > Du behöver inte använda samma identifierings modell för alla ansikten i ett **person** objekt, och du behöver inte använda samma identifierings modell när du identifierar nya ytor som ska jämföras med ett **person** objekt (till exempel i API: t för [ansikts] igenkänning).
@@ -82,13 +83,13 @@ Den här koden skapar en **PersonGroup** med ID `mypersongroupid` och lägger ti
 Du kan också ange en identifierings modell när du lägger till ett ansikte i ett befintligt **FaceList** -objekt. Se följande kod exempel för .NET-klient biblioteket.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
+await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_03");
 ```
 
-Den här koden skapar en **FaceList** som anropas `My face collection` och lägger till en ansikte till den med `detection_02` modellen. Om du inte anger parametern *detectionModel* använder API: n standard modellen `detection_01` .
+Den här koden skapar en **FaceList** som anropas `My face collection` och lägger till en ansikte till den med `detection_03` modellen. Om du inte anger parametern *detectionModel* använder API: n standard modellen `detection_01` .
 
 > [!NOTE]
 > Du behöver inte använda samma identifierings modell för alla ansikten i ett **FaceList** -objekt, och du behöver inte använda samma identifierings modell när du identifierar nya ytor som ska jämföras med ett **FaceList** -objekt.
@@ -97,14 +98,14 @@ Den här koden skapar en **FaceList** som anropas `My face collection` och lägg
 
 Olika ansikts identifierings modeller är optimerade för olika uppgifter. I följande tabell visas en översikt över skillnaderna.
 
-|**detection_01**  |**detection_02**  |
-|---------|---------|
-|Standard val för alla ansikts identifierings åtgärder. | Släpps i maj 2019 och tillgängligt eventuellt i alla ansikts identifierings åtgärder.
-|Inte optimerat för små, sido visning eller suddiga ansikten.  | Förbättrad noggrannhet för små, sido visning och suddiga ansikten. |
-|Returnerar ansikts attribut (Head-attityd, ålder, känslo och så vidare) om de anges i identifiera anropet. |  Returnerar inte ansikts-attribut.     |
-|Returnerar ansikts landmärken om de anges i identifiera anropet.   | Returnerar inte ansikts landmärken.  |
+|**detection_01**  |**detection_02**  |**detection_03** 
+|---------|---------|---|
+|Standard val för alla ansikts identifierings åtgärder. | Släpps i maj 2019 och tillgängligt eventuellt i alla ansikts identifierings åtgärder. |  Släpps i februari 2021 och tillgängligt eventuellt i alla ansikts identifierings åtgärder.
+|Inte optimerat för små, sido visning eller suddiga ansikten.  | Förbättrad noggrannhet för små, sido visning och suddiga ansikten. | Ytterligare bättre precision, inklusive på mindre ansikten (64x64 bild punkter) och roterade ansikts orienteringar.
+|Returnerar huvudfacet-attribut (Head-attityd, ålder, känslo och så vidare) om de anges i identifiera anropet. |  Returnerar inte ansikts-attribut.     | Returnerar attributen "faceMask" och "noseAndMouthCovered" om de anges i identifiera anropet.
+|Returnerar ansikts landmärken om de anges i identifiera anropet.   | Returnerar inte ansikts landmärken.  | Returnerar inte ansikts landmärken.
 
-Det bästa sättet att jämföra prestanda för- `detection_01` och- `detection_02` modeller är att använda dem i en exempel data uppsättning. Vi rekommenderar att du anropar API: t för [ansikts igenkänning] på olika avbildningar, särskilt bilder av många ansikten eller ansikten som är svåra att se, med varje identifierings modell. Var uppmärksam på antalet ansikten som varje modell returnerar.
+Det bästa sättet att jämföra prestandan för identifierings modeller är att använda dem i en exempel data uppsättning. Vi rekommenderar att du anropar API: t för [ansikts igenkänning] på olika avbildningar, särskilt bilder av många ansikten eller ansikten som är svåra att se, med varje identifierings modell. Var uppmärksam på antalet ansikten som varje modell returnerar.
 
 ## <a name="next-steps"></a>Nästa steg
 

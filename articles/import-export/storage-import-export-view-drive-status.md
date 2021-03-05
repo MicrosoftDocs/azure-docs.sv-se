@@ -5,25 +5,36 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8333745b802f41b5a1b3dc07663870299800e3f6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706681"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176155"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Visa status för Import/Export-jobb i Azure
 
 Den här artikeln innehåller information om hur du visar enhets-och jobb status för Azure import/export-jobb. Azure import/export-tjänsten används för att på ett säkert sätt överföra stora mängder data till Azure-blobbar och Azure Files. Tjänsten används också för att exportera data från Azure Blob Storage.  
 
 ## <a name="view-job-and-drive-status"></a>Visa jobb-och enhets status
-Du kan spåra statusen för dina import-eller export jobb från Azure Portal genom att välja fliken **Importera/exportera** . En lista över dina jobb visas på sidan.
+Du kan spåra statusen för dina import-eller export jobb på fliken **import/export** i Azure Portal.
+1. Logga in på https://portal.azure.com/ .
+2. Sök efter **import/export-jobb**.
 
-![Visa jobb status](./media/storage-import-export-service/jobstate.png)
+    ![Sök på import/export-jobb](./media/storage-import-export-view-drive-status/open-import-export-tab.png)
 
+ 3. En lista över dina import/export-jobb visas på sidan.
+
+    ![Visa jobb status](./media/storage-import-export-view-drive-status/job-state.png)
+
+4. Välj och klicka på ett jobb för att visa jobb information.
+
+   ![Visa detaljerad jobb status](./media/storage-import-export-view-drive-status/job-detail.png)
+  
 ## <a name="view-job-status"></a>Visa jobbstatus
 
 Du ser något av följande jobb statusar beroende på var enheten finns i processen.
@@ -56,13 +67,13 @@ I följande tabell beskrivs varje tillstånd som varje enhet i ett jobb kan pass
 
 Den här bilden från Azure Portal visar enhets status för ett exempel jobb:
 
-![Visa enhets status](./media/storage-import-export-service/drivestate.png)
+![Visa enhets status](./media/storage-import-export-view-drive-status/drive-state.png)
 
 I följande tabell beskrivs enhets felen och de åtgärder som vidtas för varje tillstånd.
 
 | Enhets tillstånd | Händelse | Lösning/nästa steg |
 |:--- |:--- |:--- |
-| NeverReceived | En enhet som marker ATS som **NeverReceived** (eftersom den inte togs emot som en del av jobbets försändelse) kommer in i en annan försändelse. | Drift teamet flyttar enheten till **mottagen**. |
+| Aldrig mottaget | En enhet som marker ATS som **NeverReceived** (eftersom den inte togs emot som en del av jobbets försändelse) kommer in i en annan försändelse. | Drift teamet flyttar enheten till **mottagen**. |
 | Ej tillämpligt | En enhet som inte är en del av något jobb kommer till data centret som en del av ett annat jobb. | Enheten är markerad som en extra enhet. Den returneras till dig när jobbet som är associerat med det ursprungliga paketet har slutförts. |
 
 ## <a name="time-to-process-job"></a>Tid för att bearbeta jobb

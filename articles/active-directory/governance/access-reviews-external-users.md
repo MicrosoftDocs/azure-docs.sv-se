@@ -3,7 +3,7 @@ title: Använd Azure AD Identity Governance för att granska och ta bort externa
 description: Använd åtkomst granskningar för att utöka borttagning av åtkomst från medlemmar i partner organisationer
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
-ms.author: barclayn
-ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: ajburnle
+ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677321"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176968"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Använd Azure Active Directory (Azure AD) identitets styrning för att granska och ta bort externa användare som inte längre har resurs åtkomst
 
@@ -65,14 +65,15 @@ Användare som inte längre har åtkomst till resurser i din klient organisation
 
 När granskningen är klar visas en översikt över svaret som anges av varje extern identitet i **resultat** sidan. Du kan välja att tillämpa resultatet automatiskt och låta åtkomst granskarna inaktivera och ta bort dem. Du kan också titta igenom svaren och bestämma om du vill ta bort en användares åtkomst eller följa upp dem och få ytterligare information innan du fattar ett beslut. Om vissa användare fortfarande har åtkomst till resurser som du ännu inte har granskat, kan du använda granskningen som en del av identifieringen och utöka nästa gransknings-och attesterings cykel.
 
-## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Inaktivera och ta bort externa identiteter med åtkomst granskningar för Azure AD (för hands version)
+## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews"></a>Inaktivera och ta bort externa identiteter med åtkomst granskningar för Azure AD
 
-Förutom alternativet att ta bort oönskade externa identiteter från resurser som grupper eller program, kan åtkomst granskningar i Azure AD blockera externa identiteter från att logga in till klienten och ta bort externa identiteter från din klient organisation efter 30 dagar. När du **har valt blockera användare från att logga in i 30 dagar tar du bort användaren från klienten** , granskningen förblir i läget "tillämpar" i 30 dagar. Under den här perioden går det inte att visa eller konfigurera inställningar, resultat, granskare eller gransknings loggar under den aktuella granskningen. 
+Förutom alternativet att ta bort oönskade externa identiteter från resurser som grupper eller program, kan åtkomst granskningar i Azure AD blockera externa identiteter från att logga in till klienten och ta bort externa identiteter från din klient organisation efter 30 dagar. När du **har valt blockera användare från att logga in i 30 dagar tar du bort användaren från klienten**, granskningen förblir i läget "tillämpar" i 30 dagar. Under den här perioden går det inte att visa eller konfigurera inställningar, resultat, granskare eller gransknings loggar under den aktuella granskningen. 
 
 ![vid slut för ande inställningar](media/access-reviews-external-users/upon-completion-settings.png)
 
-När du skapar en ny åtkomst granskning, i avsnittet "vid slut för ande inställningar", för **åtgärd som ska gälla för nekade användare** kan du definiera **Blockera användare från inloggning i 30 dagar och sedan ta bort användare från klienten** .
-Den här inställningen, som för närvarande finns i för hands version, gör att du kan identifiera, blockera och ta bort externa identiteter från din Azure AD-klient. Externa identiteter som granskas och nekas fortsatt åtkomst av granskaren kommer att blockeras och tas bort, oavsett resurs åtkomst eller grupp medlemskap. Den här inställningen används bäst som ett sista steg när du har verifierat att de externa användarna i granskning inte längre har resurs åtkomst och kan tas bort från din klient organisation eller om du vill se till att de tas bort, oavsett deras ständiga åtkomst. Funktionen "inaktivera och ta bort" blockerar den externa användaren först, vilket gör att du kan logga in på din klient organisation och få åtkomst till resurser. Resurs åtkomsten återkallas inte i det här steget, och om du vill skapa en instans av den externa användaren kan du konfigurera om möjligheten att logga in. Vid inga ytterligare åtgärder tas en blockerad extern identitet bort från katalogen efter 30 dagar, vilket tar bort kontot och deras åtkomst.
+När du skapar en ny åtkomst granskning, i avsnittet "vid slut för ande inställningar", för **åtgärd som ska gälla för nekade användare** kan du definiera **Blockera användare från inloggning i 30 dagar och sedan ta bort användare från klienten**.
+
+Med den här inställningen kan du identifiera, blockera och ta bort externa identiteter från din Azure AD-klient. Externa identiteter som granskas och nekas fortsatt åtkomst av granskaren kommer att blockeras och tas bort, oavsett resurs åtkomst eller grupp medlemskap. Den här inställningen används bäst som ett sista steg när du har verifierat att de externa användarna i granskning inte längre har resurs åtkomst och kan tas bort från din klient organisation eller om du vill se till att de tas bort, oavsett deras ständiga åtkomst. Funktionen "inaktivera och ta bort" blockerar den externa användaren först, vilket gör att du kan logga in på din klient organisation och få åtkomst till resurser. Resurs åtkomsten återkallas inte i det här steget, och om du vill skapa en instans av den externa användaren kan du konfigurera om möjligheten att logga in. Vid inga ytterligare åtgärder tas en blockerad extern identitet bort från katalogen efter 30 dagar, vilket tar bort kontot och deras åtkomst.
 
 ## <a name="next-steps"></a>Nästa steg
 

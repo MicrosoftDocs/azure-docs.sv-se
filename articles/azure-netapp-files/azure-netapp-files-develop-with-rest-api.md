@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 4599f4e3ca291c312c99e938b237d1eb9cd9d407
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c5993dc1dc645319e272ab310a97bc3ff8ac495d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929288"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174248"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Utveckla för Azure NetApp Files med REST-API 
 
@@ -34,7 +34,7 @@ REST APIs specifikationen för Azure NetApp Files publiceras via [GitHub](https:
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Få åtkomst till Azure NetApp Files REST API  
 
-1. [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) om du inte redan har gjort det.
+1. [Installera Azure CLI](/cli/azure/install-azure-cli) om du inte redan har gjort det.
 2. Skapa ett huvud namn för tjänsten i din Azure Active Directory (Azure AD):
    1. Kontrol lera att du har [tillräcklig behörighet](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 

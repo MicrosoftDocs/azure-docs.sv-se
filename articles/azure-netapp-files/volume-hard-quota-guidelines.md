@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: b25d312e6710a07f523c4acdb0fd4b970ce4a2d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740094"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175999"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Det innebär att du kan ändra volymens hård kvot för din Azure NetApp Files-tjänst
 
@@ -185,8 +185,8 @@ I vissa fall har poolen för värd kapacitet inte tillräckligt med kapacitet f�
 
 Du kan använda [Azure NETAPP Files CLI-verktyg](azure-netapp-files-sdk-cli.md#cli-tools), inklusive Azure CLI och Azure PowerShell, för att manuellt ändra storlek på volymen eller kapacitets gruppen.  Följande två kommandon kan användas för att hantera Azure NetApp Files volym-och pool resurser:  
 
-* [`az netappfiles pool`](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest)
-* [`az netappfiles volume`](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest)
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume)
 
 Om du vill hantera Azure NetApp Files-resurser med Azure CLI kan du öppna Azure Portal och välja Azure **Cloud Shell** -länken överst på Meny raden: 
 
@@ -196,13 +196,13 @@ Den här åtgärden öppnar Azure Cloud Shell:
 
 [![Skärm bild som visar Cloud Shell fönstret. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-I följande exempel används kommandon för att [Visa](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-show) och [Uppdatera](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-update) storleken på en volym:
+I följande exempel används kommandon för att [Visa](/cli/azure/netappfiles/volume#az-netappfiles-volume-show) och [Uppdatera](/cli/azure/netappfiles/volume#az-netappfiles-volume-update) storleken på en volym:
  
 [![Skärm bild som visar hur volym storleken visas med PowerShell. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [![Skärm bild som visar hur du uppdaterar volym storleken med PowerShell. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-I följande exempel används kommandona för att [Visa](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-show) och [Uppdatera](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-update) storleken på en kapacitets grupp:
+I följande exempel används kommandona för att [Visa](/cli/azure/netappfiles/pool#az-netappfiles-pool-show) och [Uppdatera](/cli/azure/netappfiles/pool#az-netappfiles-pool-update) storleken på en kapacitets grupp:
 
 [![Skärm bild som visar hur du använder PowerShell för att visa storleken på kapacitets gruppen. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 
