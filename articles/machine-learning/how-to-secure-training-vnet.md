@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cb034c42ceee870ed7be72eb5ff7d29c42b72f36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655963"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183598"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning utbildnings miljö med virtuella nätverk
 
@@ -321,7 +321,7 @@ Anslut den virtuella datorn eller HDInsight-klustret till din Azure Machine Lear
 
 ## <a name="next-steps"></a>Nästa steg
 
-Den här artikeln är del tre i en serie med fyra delar av virtuella nätverk. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
+Den här artikeln är del tre i en serie virtuella nätverks serier i fem delar. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
 
 * [Del 1: översikt över virtuella nätverk](how-to-network-security-overview.md)
 * [Del 2: skydda arbets ytans resurser](how-to-secure-workspace-vnet.md)

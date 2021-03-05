@@ -4,12 +4,12 @@ description: Den här snabb starten visar hur du använder Azure Portal för att
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1234a932a732cdb6fda1c412a423ae0b1ea089e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106485"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184023"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snabbstart: Kör ditt första Batch-jobb på Azure-portalen
 
@@ -69,7 +69,7 @@ Efter några minuter ändras tilldelnings statusen till **stadigt** och noderna 
 
 ## <a name="create-a-job"></a>Skapa ett jobb
 
-Nu när du har en pool ska du skapa ett jobb att köra på den. Ett Batch-jobb är en logisk grupp för en eller flera aktiviteter. Ett jobb omfattar inställningar som är gemensamma för aktiviteter, till exempel prioritet och vilken pool som aktiviteterna ska köras på. Från början har jobbet inga uppgifter.
+Nu när du har en pool ska du skapa ett jobb att köra på den. Ett batch-jobb är en logisk grupp med en eller flera aktiviteter. Ett jobb omfattar inställningar som är gemensamma för aktiviteter, till exempel prioritet och vilken pool som aktiviteterna ska köras på. Från början har jobbet inga uppgifter.
 
 1. I vyn batch-konto väljer du **jobb**  >  **Lägg till**.
 

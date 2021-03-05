@@ -2,34 +2,34 @@
 title: Lagring av container avbildning
 description: Information om hur behållar avbildningar och andra artefakter lagras i Azure Container Registry, inklusive säkerhet, redundans och kapacitet.
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4bdffd111273e00b796e45f4e09bfac9ba6713e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036018"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183275"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Lagrings avbildnings lagring i Azure Container Registry
 
-Alla fördelar med Azure Container Registry för [Basic, standard och Premium](container-registry-skus.md) från avancerade Azure Storage-funktioner som kryptering i vila för avbildnings data säkerhet och GEO-redundans för avbildnings data skydd. I följande avsnitt beskrivs både funktionerna och gränserna för avbildnings lagring i Azure Container Registry (ACR).
+Alla fördelar med Azure Container Registry för [Basic, standard och Premium](container-registry-skus.md) från avancerade Azure Storage-funktioner, inklusive kryptering vid vila. I följande avsnitt beskrivs funktionerna och gränserna för avbildnings lagring i Azure Container Registry (ACR).
 
 ## <a name="encryption-at-rest"></a>Kryptering vid vila
 
 Alla behållar avbildningar och andra artefakter i registret är krypterade i vila. Azure krypterar automatiskt en avbildning innan den lagras och dekrypterar den direkt när du eller dina program och tjänster hämtar avbildningen. Du kan också använda ett extra krypterings lager med en [kundhanterad nyckel](container-registry-customer-managed-keys.md).
 
-## <a name="geo-redundant-storage"></a>Geo-redundant lagring
+## <a name="regional-storage"></a>Regional lagring
 
-För behållar register som distribueras i de flesta regioner använder Azure ett Geo-redundant lagrings schema för att skydda mot förlust av behållar avbildningar och andra artefakter. Azure Container Registry replikerar behållar avbildningarna automatiskt till flera geografiskt avlägsna Data Center, vilket förhindrar förlust om ett regionalt lagrings fel inträffar.
+Azure Container Registry lagrar data i den region där registret skapas, för att hjälpa kunderna att uppfylla kraven på data placering och efterlevnad.
 
-> [!IMPORTANT]
-> * Om det uppstår ett regionalt lagrings fel kan register data bara återställas genom att kontakta Azure-supporten. 
-> * På grund av krav på data placering i Brasilien, och Sydostasien, lagras Azure Container Registry data i dessa regioner [endast lokalt geo](https://azure.microsoft.com/global-infrastructure/geographies/). För Sydostasien lagras alla data i Singapore. För södra Brasilien lagras alla data i Brasilien. När regionen förloras på grund av en betydande katastrof kommer Microsoft inte att kunna återställa dina Azure Container Registry data.
+För att skydda dig mot data Center avbrott erbjuder vissa regioner [zon redundans](zone-redundancy.md), där data replikeras över flera data Center i en viss region.
+
+Kunder som vill ha sina data lagrade i flera regioner för bättre prestanda i olika geografiska områden eller som vill ha återhämtning i händelse av ett regionalt avbrott bör aktivera [geo-replikering](container-registry-geo-replication.md).
 
 ## <a name="geo-replication"></a>Geo-replikering
 
-För scenarier som kräver ännu mer hög tillgänglighets säkerhet kan du överväga att använda funktionen för [geo-replikering](container-registry-geo-replication.md) i Premium register. Geo-replikering hjälper till att förlora åtkomsten till registret i händelse av ett *totalt* regionalt haveri, inte bara ett lagrings haveri. Geo-replikering ger även andra fördelar, t. ex. nätverks nära avbildnings lagring för snabbare push-meddelanden och hämtningar i distribuerade utvecklings-eller distributions scenarier.
+För scenarier som kräver hög tillgänglighets säkerhet kan du överväga att använda funktionen för [geo-replikering](container-registry-geo-replication.md) i Premium register. Geo-replikering hjälper till att förlora åtkomsten till registret i händelse av ett regionalt haveri. Geo-replikering ger även andra fördelar, t. ex. nätverks nära avbildnings lagring för snabbare push-meddelanden och hämtningar i distribuerade utvecklings-eller distributions scenarier.
 
 ## <a name="zone-redundancy"></a>Zonredundans
 

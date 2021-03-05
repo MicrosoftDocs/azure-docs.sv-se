@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734240"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183632"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Distribuera en maskin inlärnings modell till Azure Functions med Azure cache för Redis 
 
@@ -26,7 +26,7 @@ Azure cache för Redis är mycket presterande och skalbart – när de kombinera
 ## <a name="prerequisites"></a>Förutsättningar
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/).
 * En Azure Machine Learning-arbetsyta. Mer information finns i artikeln [skapa en arbets yta](../machine-learning/how-to-manage-workspace.md) .
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Azure CLI](/cli/azure/install-azure-cli).
 * En utbildad Machine Learning-modell som registrerats i din arbets yta. Om du inte har någon modell använder du [själv studie kursen om bild klassificering: träna modell](../machine-learning/tutorial-train-models-with-aml.md) att träna och registrera en.
 
 > [!IMPORTANT]

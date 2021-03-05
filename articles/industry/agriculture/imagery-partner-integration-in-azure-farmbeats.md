@@ -4,14 +4,14 @@ description: I den här artikeln beskrivs integrering av bilder-partner.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675945"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183802"
 ---
 # <a name="imagery-partner-integration"></a>Bildpartnerintegration
 
@@ -33,7 +33,7 @@ Drönare-partner måste göra det möjligt för kunder att koppla sitt kund kont
 Du måste använda följande autentiseringsuppgifter i drönare-partner program för att länka FarmBeats:
 
 - API-slutpunkt
-- Klientorganisations-ID
+- Klient-ID:t
 - Klient-ID
 - Klienthemlighet
 
@@ -51,7 +51,7 @@ FarmBeats Datahub använder Bearer-autentisering, som behöver följande autenti
 
 - Klient-ID
 - Klienthemlighet
-- Klientorganisations-ID
+- Klient-ID:t
 
 Med hjälp av de tidigare autentiseringsuppgifterna kan anroparen begära en åtkomsttoken som måste skickas i efterföljande API-begäranden i avsnittet rubrik enligt följande:
 
@@ -89,7 +89,7 @@ access_token = token_response.get('access_token')
 
 Här är de vanligaste begärandehuvuden som måste anges när du gör ett API-anrop till FarmBeats Datahub.
 
-**Sidfot** | **Beskrivning och exempel**
+**Huvud** | **Beskrivning och exempel**
 --- | ---
 Content-Type  | Formatet för begäran (Content-Type: Application/ <format> ). För FarmBeats Datahub-API: er är formatet JSON. Innehålls typ: Application/JSON
 Auktorisering | Anger den åtkomsttoken som krävs för att göra ett API-anrop. Auktorisering: Bearer <Access-Token>
@@ -138,10 +138,10 @@ När partnern har autentiseringsuppgifter för att ansluta till FarmBeats-Datahu
 
 1.  Skapa en ny utökad typ för följande fält, i enlighet med den typ av bilder som ska överföras:
 
-    - **Scen källa** : till exempel drone_partner_name
-    - **Scen typ** : till exempel drönare
-    - **Scen fil typ** : till exempel Chlorophyll index
-    - **Scen fil innehålls typ** : till exempel bild/TIFF
+    - **Scen källa**: till exempel drone_partner_name
+    - **Scen typ**: till exempel drönare
+    - **Scen fil typ**: till exempel Chlorophyll index
+    - **Scen fil innehålls typ**: till exempel bild/TIFF
 
 2.  Anropa/Farms-API: et för att hämta listan över Server grupper i Azure FarmBeats-systemet.
 3.  Ge kunden möjlighet att välja en enda server grupp i listan över Server grupper.

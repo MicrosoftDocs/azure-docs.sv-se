@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581165"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183836"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Hantera en manuell QoS-kapacitetspool
 
@@ -44,7 +44,7 @@ Funktionen för manuell QoS-typ är för närvarande en för hands version. Om d
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-Du kan också använda [Azure CLI-kommandon](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
+Du kan också använda [Azure CLI-kommandon](/cli/azure/feature) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Konfigurera en ny pool för manuell QoS-kapacitet 
 

@@ -3,12 +3,12 @@ title: Ansluta hybrid datorer till Azure från Azure Portal
 description: I den här artikeln får du lära dig hur du installerar agenten och ansluter datorer till Azure med hjälp av Azure Arc-aktiverade servrar från Azure Portal.
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 97962f7fd9816e398f017555d7043cf65db00ed8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584952"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183156"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Ansluta hybrid datorer till Azure från Azure Portal
 
@@ -22,7 +22,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>Generera installations skriptet från Azure Portal
 
-Skriptet för att automatisera nedladdningen och installationen, och för att upprätta anslutningen till Azure Arc, är tillgängligt från Azure Portal. Slutför processen genom att göra följande:
+Skriptet för att automatisera nedladdningen och installationen, och för att upprätta anslutningen till Azure Arc, är tillgängligt från Azure Portal. Slutför processen genom att utföra följande steg:
 
 1. Gå till [Azure Portal](https://portal.azure.com)i webbläsaren.
 
@@ -38,7 +38,7 @@ Skriptet för att automatisera nedladdningen och installationen, och för att up
 
     1. I list rutan **resurs grupp** väljer du den resurs grupp som datorn ska hanteras från.
     1. I list rutan **region** väljer du den Azure-region där du vill lagra metadata för servrarna.
-    1. I list rutan **operativ system** väljer du det operativ system som skriptet ska konfigureras för att köras på.
+    1. I list rutan **operativ system** väljer du det operativ system som skriptet är konfigurerat för att köras på.
     1. Om datorn kommunicerar via en proxyserver för att ansluta till Internet anger du IP-adressen för proxyservern eller det namn och port nummer som datorn ska använda för att kommunicera med proxyservern. Ange värdet i formatet `http://<proxyURL>:<proxyport>` .
     1. Välj **Nästa: Taggar**.
 
@@ -164,8 +164,8 @@ När du har installerat agenten och konfigurerat den för att ansluta till Azure
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Felsöknings information finns i [fel söknings guide för anslutna datorer](troubleshoot-agent-onboard.md).
+- Felsöknings information finns i [fel söknings guide för anslutna datorer](troubleshoot-agent-onboard.md).
 
-* Lär dig hur du hanterar din dator med hjälp av [Azure policy](../../governance/policy/overview.md), till exempel för [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md)av virtuella datorer, verifiera att datorn rapporterar till den förväntade Log Analytics arbets ytan, aktivera övervakning med [Azure monitor med virtuella datorer](../../azure-monitor/vm/vminsights-enable-policy.md)och mycket mer.
+- Lär dig hur du hanterar din dator med hjälp av [Azure policy](../../governance/policy/overview.md), för t. ex. [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md)för virtuella datorer, kontrol lera att datorn rapporterar till den förväntade Log Analytics arbets ytan, aktivera övervakning med [Azure monitor med virtuella datorer](../../azure-monitor/vm/vminsights-enable-policy.md)och mycket mer.
 
-* Läs mer om den [Log Analytics agenten](../../azure-monitor/agents/log-analytics-agent.md). Log Analytics agent för Windows och Linux krävs om du vill samla in operativ system och data för övervakning av arbets belastning, hantera dem med hjälp av Automation-runbooks eller funktioner som Uppdateringshantering eller använda andra Azure-tjänster som [Azure Security Center](../../security-center/security-center-introduction.md).
+- Läs mer om den [Log Analytics agenten](../../azure-monitor/agents/log-analytics-agent.md). Log Analytics agent för Windows och Linux krävs om du vill samla in operativ system och data för arbets belastnings övervakning med Azure Monitor for VMs, hantera den med hjälp av Automation-runbooks eller funktioner som Uppdateringshantering, eller använda andra Azure-tjänster som [Azure Security Center](../../security-center/security-center-introduction.md).

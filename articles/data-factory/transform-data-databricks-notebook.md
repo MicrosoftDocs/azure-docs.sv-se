@@ -6,12 +6,12 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 486dc2ab3a14917e8c7bdddf8b5b9c6f9da1a1dc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374005"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183496"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformera data genom att köra en Databricks Notebook
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,10 +114,10 @@ I vissa fall kan du behöva skicka tillbaka vissa värden från antecknings boke
 
 1. I din antecknings bok kan du anropa [dbutils. Notebook. Exit ("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) och motsvarande "returnValue" kommer att returneras till Data Factory.
 
-2. Du kan använda utdata i Data Factory genom att använda uttryck som `'@activity('databricks notebook activity name').output.runOutput'` .
+2. Du kan använda utdata i Data Factory genom att använda uttryck som `@{activity('databricks notebook activity name').output.runOutput}` . 
 
    > [!IMPORTANT]
-   > Om du skickar JSON-objekt kan du hämta värden genom att lägga till egenskaps namn. Exempel: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > Om du skickar JSON-objekt kan du hämta värden genom att lägga till egenskaps namn. Exempel: `@{activity('databricks notebook activity name').output.runOutput.PropertyName}`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Ladda upp ett bibliotek i Databricks
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 756bf1cd7a7e9435130a3ad2d3b530b7f2e5b1b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621247"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183887"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Skapa och hantera Active Directory anslutningar för Azure NetApp Files
 
@@ -183,7 +183,7 @@ Den här inställningen konfigureras i **Active Directory anslutningar** under *
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        Du kan också använda [Azure CLI-kommandon](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
+        Du kan också använda [Azure CLI-kommandon](/cli/azure/feature) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
 
     * **LDAP-signering**   
         Markera den här kryss rutan om du vill aktivera LDAP-signering. Den här funktionen möjliggör säker LDAP-sökning mellan Azure NetApp Files tjänsten och de användardefinierade [Active Directory Domain Services domän kontrol Lanterna](/windows/win32/ad/active-directory-domain-services). Mer information finns i [ADV190023 | Microsofts vägledning för att aktivera bindning av LDAP-kanaler och LDAP-signering](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
@@ -205,7 +205,7 @@ Den här inställningen konfigureras i **Active Directory anslutningar** under *
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        Du kan också använda [Azure CLI-kommandon](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
+        Du kan också använda [Azure CLI-kommandon](/cli/azure/feature) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
 
      * **Användare av säkerhets kopierings princip**  
         Du kan inkludera ytterligare konton som kräver förhöjd behörighet för det dator konto som skapas för användning med Azure NetApp Files. De angivna kontona kommer att kunna ändra NTFS-behörigheter på fil-eller mappnivå. Du kan till exempel ange ett icke-privilegierat tjänst konto som används för att migrera data till en SMB-filresurs i Azure NetApp Files.  
@@ -227,7 +227,7 @@ Den här inställningen konfigureras i **Active Directory anslutningar** under *
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Du kan också använda [Azure CLI-kommandon](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
+        Du kan också använda [Azure CLI-kommandon](/cli/azure/feature) `az feature register` och `az feature show` Registrera funktionen och Visa registrerings status. 
 
     * Autentiseringsuppgifter, inklusive ditt **användar namn** och **lösen ord**
 

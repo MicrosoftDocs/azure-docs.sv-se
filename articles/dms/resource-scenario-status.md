@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319912"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183989"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status för migrerings scenarier som stöds av Azure Database Migration Service
 
@@ -69,11 +69,11 @@ I följande tabell visas Azure Database Migration Service stöd för online-migr
 
 | Mål  | Källa | Support | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL-databas** | SQL Server | ✔ | Allmän tillgänglighet (GA) |
-|   | RDS-SQL | ✔ | Allmän tillgänglighet (GA) |
+| **Azure SQL-databas** | SQL Server | X | Allmän tillgänglighet (GA) |
+|   | RDS-SQL | X | Allmän tillgänglighet (GA) |
 |   | Oracle | X |  |
 | **Azure SQL DB-MI** | SQL Server | ✔ | Allmän tillgänglighet (GA) |
-|   | RDS-SQL | ✔ | Allmän tillgänglighet (GA) |
+|   | RDS-SQL | X | Allmän tillgänglighet (GA) |
 |   | Oracle | X |  |
 | **Virtuell Azure SQL-dator** | SQL Server | X |   |
 |   | Oracle  | X |  |

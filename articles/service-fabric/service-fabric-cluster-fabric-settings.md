@@ -3,12 +3,12 @@ title: Ändra kluster inställningar för Azure Service Fabric
 description: I den här artikeln beskrivs de infrastruktur inställningar och de uppgraderings principer för infrastruktur resurser som du kan anpassa.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919790"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183411"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassa Service Fabric-klusterinställningar
 I den här artikeln beskrivs de olika infrastruktur inställningarna för ditt Service Fabric-kluster som du kan anpassa. För kluster som finns i Azure kan du anpassa inställningarna via [Azure Portal](https://portal.azure.com) eller genom att använda en Azure Resource Manager mall. Mer information finns i [Uppgradera konfigurationen av ett Azure-kluster](service-fabric-cluster-config-upgrade-azure.md). För fristående kluster anpassar du inställningarna genom att uppdatera *ClusterConfig.jspå* filen och utföra en konfigurations uppgradering i klustret. Mer information finns i [Uppgradera konfigurationen av ett fristående kluster](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -130,7 +130,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |EnableTelemetry |Bool, standard är sant | Dynamisk |Detta kommer att aktivera eller Inaktivera telemetri. |
 |FailuresOnlyHttpTelemetry | Bool, standard är falskt | Dynamisk | Om insamling av HTTP-telemetri är aktiverat. fånga endast misslyckade förfrågningar. Detta är att hjälpa till att minska antalet händelser som har genererats för telemetri. |
 |HttpTelemetryCapturePercentage | int, standard är 50 | Dynamisk | Om insamling av HTTP-telemetri är aktiverat. fånga endast en slumpmässig procent andel begär Anden. Detta är att hjälpa till att minska antalet händelser som har genererats för telemetri. |
-|MaxDiskQuotaInMB |Int, standard är 65536 | Dynamisk |Disk kvot i MB för Windows Fabric loggfiler. |
+|MaxDiskQuotaInMB |Int, standard är 65536 | Dynamisk |Disk kvot i MB för Windows-och Linux Fabric-loggfiler. |
 |ProducerInstances |Sträng | Dynamisk |Listan över DCA producent instanser. |
 
 ## <a name="dnsservice"></a>DNS service
@@ -321,7 +321,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |MaxPercentDeltaUnhealthyNodes|int, standard är 10|Statisk|Hälso utvärderings princip för kluster uppgradering: maximalt antal felaktiga noder i procent tillåts för att klustret ska vara felfritt |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, standard är 15|Statisk|Hälso utvärderings princip för kluster uppgradering: högsta procent andel av antal felaktiga noder i en uppgraderings domän som tillåts för att klustret ska vara felfritt |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Värd
 
 | **Parameter** | **Tillåtna värden** | **Uppgradera princip** | **Vägledning eller kort beskrivning** |
 | --- | --- | --- | --- |

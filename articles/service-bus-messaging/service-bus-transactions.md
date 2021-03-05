@@ -2,14 +2,14 @@
 title: Översikt över transaktions bearbetning i Azure Service Bus
 description: Den här artikeln innehåller en översikt över transaktions bearbetning och funktionen Skicka via i Azure Service Bus.
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684799"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183751"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Översikt över Service Bus transaktions bearbetning
 
@@ -43,9 +43,11 @@ Om du vill aktivera transaktions överlämnande av data från en kö eller ett �
 
 Kraften i denna transaktions funktion blir tydlig när överförings kön eller själva ämnet är källan till avsändarens indatameddelande. Med andra ord kan Service Bus överföra meddelandet till målkön eller avsnittet "via" överförings kön eller ämnet, samtidigt som du utför en fullständig (eller överskjutande eller obeställbara meddelanden) i Indataporten, allt i en atomisk åtgärd. 
 
+Om du behöver ta emot från en ämnes prenumeration och sedan skicka till en kö eller ett ämne i samma transaktion, måste överförings enheten vara ett ämne. I det här scenariot startar du transaktions omfånget i ämnet, tar emot från prenumerationen med i transaktions omfånget och skickar via överförings avsnittet till en kö eller ett ämnes mål. 
+
 ### <a name="see-it-in-code"></a>Se det i kod
 
-Om du vill konfigurera sådana överföringar skapar du en meddelande avsändare som är riktad mot målkön via överförings kön. Du har också en mottagare som hämtar meddelanden från samma kö. Till exempel:
+Om du vill konfigurera sådana överföringar skapar du en meddelande avsändare som är riktad mot målkön via överförings kön. Du har också en mottagare som hämtar meddelanden från samma kö. Exempel:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);

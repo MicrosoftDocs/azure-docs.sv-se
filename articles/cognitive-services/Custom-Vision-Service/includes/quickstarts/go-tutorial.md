@@ -2,25 +2,41 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: 49b920ede2b0af306af00875a3368cffd853f89b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/25/2021
+ms.openlocfilehash: c2333b019d716b70ed995846f58b021e49371ae0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948679"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184283"
 ---
 Den här guiden innehåller instruktioner och exempel kod som hjälper dig att komma igång med Custom Vision klient biblioteket för Go för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
 > [!NOTE]
 > Om du vill skapa och träna en klassificerings modell _utan att_ skriva kod, se den [webbläsarbaserade vägledningen](../../getting-started-build-a-classifier.md) i stället.
 
+Använd Custom Vision klient bibliotek för att gå till:
+
+* Skapa ett nytt Custom Vision-projekt
+* Lägg till taggar i projektet
+* Ladda upp och tagga bilder
+* Träna projektet
+* Publicera den aktuella iterationen
+* Testa förutsägelse slut punkten
+
+Referens dokumentation [(utbildning)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training) [(förutsägelse)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)| Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/customvision/training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.1/customvision/prediction) 
+
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Go 1.8+](https://golang.org/doc/install)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
+* [Go 1.8+](https://golang.org/doc/install)
+* När du har en Azure-prenumeration skapar du <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" en Custom vision resurs "  target="_blank"> skapa en Custom vision resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att skapa en utbildnings-och förutsägelse resurs och hämta nycklar och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
+    * Du behöver nyckeln och slut punkten från de resurser som du skapar för att ansluta ditt program till Custom Vision. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
+    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
-## <a name="install-the-custom-vision-client-library"></a>Installera klient biblioteket för Custom Vision
+## <a name="setting-up"></a>Konfigurera
+
+### <a name="install-the-custom-vision-client-library"></a>Installera klient biblioteket för Custom Vision
 
 Om du vill skriva en app Analysis-app med Custom Vision för Go behöver du Custom Vision-tjänstens klient bibliotek. Kör följande kommando i PowerShell:
 
@@ -33,15 +49,13 @@ eller om du använder `dep` i din lagrings platsen kör du:
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
 
 [!INCLUDE [python-get-images](../../includes/python-get-images.md)]
 
-## <a name="add-the-code"></a>Lägga till koden
-
-Skapa en ny fil med namnet *sample.go* i den projektkatalog som du vill använda.
 
 ## <a name="create-the-custom-vision-project"></a>Skapa Custom Vision-projektet
+
+Skapa en ny fil med namnet *Sample. gå* till önskad projekt katalog och öppna den i önskad kod redigerare.
 
 Lägg till följande kod i skriptet för att skapa ett nytt Custom Vision Service-projekt. Infoga dina prenumerationsnycklar i lämpliga definitioner. Hämta även slut punkts-URL: en från sidan Inställningar på webbplatsen för Custom Vision.
 

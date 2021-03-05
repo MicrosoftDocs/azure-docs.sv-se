@@ -10,16 +10,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 49d8eeaa8d1160659a456f147a6a5e27f923af33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733473"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183326"
 ---
 # <a name="whats-new-in-face-service"></a>Vad är nytt i tjänsten Ansiktsigenkänning?
 
 Azure Face service uppdateras regelbundet. Använd den här artikeln för att hålla dig uppdaterad med funktions förbättringar, korrigeringar och dokumentations uppdateringar.
+
+## <a name="february-2021"></a>Februari 2021
+
+* Ny Ansikts-API identifierings modell: den nya identifierings modellen är den mest exakta identifierings modellen som är tillgänglig för närvarande. Om du är en ny kund rekommenderar vi att du använder den här modellen. Identifiering 03 förbättrar både återkallande och precision på mindre ytor som finns i bilder (64x64 bild punkter). Ytterligare förbättringar är en övergripande minskning av falska positiva identifieringar och förbättrad identifiering på roterade ansikts orienteringar. Att kombinera identifiering 03 med den nya igenkänningen 04 ger också bättre precisions igenkänning. Mer information finns i [Ange en ansikts identifierings modell](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) .
+* Attribut för ansikts mask: attributet ansikts mask är tillgängligt med den senaste identifierande 03-modellen, tillsammans med det ytterligare attribut `"noseAndMouthCovered"` som identifierar om ansikts masken används som avsedd, som täcker både näsan och munnen. Om du vill använda den senaste mask identifierings funktionen måste användarna ange identifierings modellen i API-begäran: tilldela modell versionen med parametern _detectionModel_ till `detection_03` . Mer information finns i [Ange en ansikts identifierings modell](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) .
+* Ny Ansikts-API igenkännings modell: den nya igenkännings modellen för igenkänning är den mest exakta igenkännings modellen som är tillgänglig för närvarande. Om du är en ny kund rekommenderar vi att du använder den här modellen för verifiering och identifiering. Det förbättrar noggrannheten i igenkänning 03, inklusive förbättrad igenkänning för registrerade användare som använder ansikte (kirurgiska maskar, N95-masker, duk-masker). Nu kan kunderna skapa säkra och sömlösa användar upplevelser som identifierar om en registrerad användare använder ett ansikte-hölje med den senaste identifierings modellen och identifiera vem de har med den senaste igenkännings modellen. Mer information finns i [Ange en ansikts igenkännings modell](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model) .
+
 
 ## <a name="january-2021"></a>Januari 2021
 * Minska svars tiden när du använder Ansikts-API: ansikts teamet publicerade en ny artikel med information om möjliga orsaker till svars tider när tjänsten och eventuella lösningar för möjlig minskning används. Se [minska svars tiden när du använder ansikts tjänsten](./face-api-how-to-topics/how-to-mitigate-latency.md).

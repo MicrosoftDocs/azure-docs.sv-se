@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 48d4fe254f51dde932f04ef791e1109a0ced07ff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fb7d49459b4eae8c3c7b3b1e6ad5bc5d44a089d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701628"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183360"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Vad är Azure Web Application-brandvägg på Azure Application Gateway?
 
@@ -173,7 +173,7 @@ Med den inbyggda arbets boken för Azure WAF Firewall-händelser kan du få en �
 
 #### <a name="azure-monitor-workbook-for-waf"></a>Azure Monitor arbets bok för WAF
 
-Den här arbets boken möjliggör anpassad visualisering av säkerhets relevanta WAF-händelser över flera filter bara paneler. Det fungerar med alla WAF-typer, inklusive Application Gateway, front dörren och CDN, och kan filtreras baserat på WAF-typ eller en speciell WAF-instans. Importera via ARM-mallen eller Galleri mal len. Information om hur du distribuerar den här arbets boken finns i [WAF-arbetsbok](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Workbook%20-%20Azure%20Firewall%20Monitor%20Workbook).
+Den här arbets boken möjliggör anpassad visualisering av säkerhets relevanta WAF-händelser över flera filter bara paneler. Det fungerar med alla WAF-typer, inklusive Application Gateway, front dörren och CDN, och kan filtreras baserat på WAF-typ eller en speciell WAF-instans. Importera via ARM-mallen eller Galleri mal len. Information om hur du distribuerar den här arbets boken finns i [WAF-arbetsbok](https://aka.ms/AzWAFworkbook).
 
 #### <a name="logging"></a>Loggning
 

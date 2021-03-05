@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ca25bbb72ff853f819f3e8ce4e0092ddb762b156
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503958"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183819"
 ---
 # <a name="use-purview-studio"></a>Använda Purview Studio
 
 Den här artikeln ger en översikt över några av de viktigaste funktionerna i Azure dataavdelningens kontrolls.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett aktivt avdelningens kontroll-konto har redan skapats i Azure Portal och användaren har åtkomst behörighet till avdelningens kontroll Studio.
 
@@ -38,7 +38,7 @@ Den här artikeln ger en översikt över några av de viktigaste funktionerna i 
 
 I följande lista sammanfattas huvud funktionerna på **Start sidan**. Varje nummer i listan motsvarar ett markerat tal i föregående skärm bild.
 
-1. Katalogens eget namn. Du kan ange katalog namn i **hanterings Center** > **konto information*.
+1. Katalogens eget namn. Du kan ange katalog namn i konto information för **hanterings Center**  >  .
 
 2. Katalog analys visar antalet:
     - Användare, grupper och program

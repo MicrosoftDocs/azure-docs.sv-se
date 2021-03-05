@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327091"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183938"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Översikt över Azure Key Vault nycklar, hemligheter och certifikat
 
@@ -44,7 +44,7 @@ Program vara – skyddade nycklar|/keys|Stöds|Stöds inte
 **Andra objekt typer**||
 Hemligheter|/secrets|Stöds|Stöds inte
 Certifikat|/certificates|Stöds|Stöds inte
-Lagringskontonycklar|/storageaccount|Stöds|Stöds inte
+Lagringskontonycklar|/storage|Stöds|Stöds inte
 |||
 - **Kryptografiska nycklar**: stöder flera nyckel typer och algoritmer och möjliggör användning av program skyddade och HSM-skyddade nycklar. Mer information finns i [om nycklar](../keys/about-keys.md).
 - **Hemligheter**: ger säker lagring av hemligheter, t. ex. lösen ord och databas anslutnings strängar. Mer information finns i [om hemligheter](../secrets/about-secrets.md).

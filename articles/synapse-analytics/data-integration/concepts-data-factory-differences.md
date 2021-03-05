@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387623"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183649"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Data integrering i Azure Synapse Analytics kontra Azure Data Factory
 
@@ -36,6 +36,7 @@ Sök efter tillgänglighet för funktioner i tabellen nedan:
 | **Integrering av GIT-databasen** | GIT-integrering | ✓ | ✓ |
 | **Övervakning**           | Övervakning av Spark-jobb för data flöde | ✗ | ✓<br><small>*Utnyttja Synapse Spark-pooler* |
 |                          | Integrering med Azure Monitor | ✓ | ✗ |
+| **Ursprung** | Stöder publicering av pipeline härkomst-data till avdelningens kontroll  | ✓ | ✗ |  
 
 > [!Note]
 > **Time to Live** är en Azure integration runtime-inställning som gör det möjligt för Spark-klustret att *hålla sig varm* under en viss tids period efter att data flödet körts.

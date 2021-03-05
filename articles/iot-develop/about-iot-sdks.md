@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e85cc9cdbb14c419e4bddb5ee659aa657b49a8c1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702682"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183547"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Översikt över SDK: er för Azure IoT-enheter
 
@@ -60,7 +60,7 @@ Dina alternativ för att komma igång beror på vilken typ av enhet du har:
 Dessa SDK: er är specialiserade för att köras på enheter med begränsade beräknings-eller minnes resurser. Mer information om vanliga enhets typer finns i [Översikt över enhets typer för Azure IoT](concepts-iot-device-types.md).
 
 #### <a name="embedded-c-sdk"></a>Embedded C SDK
-* [GitHub-lagringsplats](https://github.com/Azure/azure-sdk-for-c/tree/1.0.0/sdk/docs/iot)
+* [GitHub-lagringsplats](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)
 * [Exempel](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/README.md)
 * [Referensdokumentation](https://azure.github.io/azure-sdk-for-c/)
 * [Så här skapar du den inbäddade C SDK: n](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
@@ -68,7 +68,7 @@ Dessa SDK: er är specialiserade för att köras på enheter med begränsade ber
 
 #### <a name="azure-rtos-middleware"></a>Azure återställnings tider mellanprogram
 
-* [GitHub-lagringsplats](https://github.com/azure-rtos/threadx)
+* [GitHub-lagringsplats](https://github.com/azure-rtos/netxduo/tree/master/addons/azure_iot)
 * [Komma igång guider](https://github.com/azure-rtos/getting-started) och [fler exempel](https://github.com/azure-rtos/samples)
 * [Referensdokumentation](/azure/rtos/threadx/)
 

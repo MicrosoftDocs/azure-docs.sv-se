@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 3a1e1cdb7706cb284da57e10e35afe3420deaf75
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e4f5fc7290b45f65067f6711f70476e13a010223
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375314"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183394"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Använda kommando rads verktyget Redis med Azure cache för Redis
 
@@ -27,7 +27,7 @@ Om du vill köra kommando rads verktyget på en annan plattform laddar du ned Az
 
 Du kan samla in den information som behövs för att komma åt cachen med tre metoder:
 
-1. Azure CLI med [AZ Redis List-Keys](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
+1. Azure CLI med [AZ Redis List-Keys](/cli/azure/redis#az-redis-list-keys)
 2. Azure PowerShell att använda [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. Använda Azure-portalen.
 

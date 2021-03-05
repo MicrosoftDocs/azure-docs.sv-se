@@ -3,12 +3,12 @@ title: Noder och pooler i Azure Batch
 description: Lär dig mer om Compute-noder och pooler och hur de används i ett Azure Batch arbets flöde från en utvecklings synpunkt.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741782"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183666"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Noder och pooler i Azure Batch
 
@@ -74,6 +74,9 @@ Konfigurationen av den **virtuella datorn** anger att poolen består av virtuell
 [Batch Node agent](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) är ett program som körs på varje nod i poolen och tillhandahåller kommando-och-Control-gränssnittet mellan noden och batch-tjänsten. Det finns olika implementeringar av Node-agenten, som kallas SKU: er, för olika operativ system. När du skapar en pool med noder i en konfiguration av en virtuell dator måste du inte bara ange storleken på noderna och källan för avbildningarna som användes för att skapa dem, utan även **referensen till avbildningen av den virtuella datorn** och Batch-**nodagentens SKU** som ska installeras på noderna. Mer information om hur du anger dessa poolegenskaper finns i [Etablera Linux-beräkningsnoder i Azure Batch-pooler](batch-linux-nodes.md). Om du vill kan du koppla en eller flera tomma datadiskar till en pool med virtuella datorer som skapats av Microsoft Azure Marketplace-avbildningar. Alternativt kan du inkludera datadiskar i de anpassade avbildningar som används för att skapa de virtuella datorerna. När du inkluderar data diskar måste du montera och Formatera diskarna inifrån en virtuell dator för att använda dem.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services konfiguration
+
+> [!WARNING]
+> Konfigurations pooler för moln tjänster är inaktuella. Använd konfigurations pooler för virtuella datorer i stället.
 
 **Cloud Services-konfigurationen** anger att poolen består av Azure Cloud Services-noder. Cloud Services tillhandahåller endast Windows Compute-noder.
 
