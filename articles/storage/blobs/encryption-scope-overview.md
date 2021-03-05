@@ -4,17 +4,17 @@ description: Krypterings omfång ger möjlighet att hantera kryptering på nivå
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/22/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35395a30f7d58b9edb3aa7622a35e8c4a62dc76f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017397"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211370"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Krypterings omfång för Blob Storage (för hands version)
 
@@ -26,15 +26,14 @@ Du kan välja att använda antingen Microsoft-hanterade nycklar eller Kundhanter
 
 När du har skapat ett krypterings omfång kan du ange att krypterings omfång på en begäran om att skapa en behållare eller en blob. Mer information om hur du skapar en krypterings omfattning finns i [skapa och hantera krypterings omfattningar (för hands version)](encryption-scope-manage.md).
 
-> [!NOTE]
+> [!IMPORTANT]
+> Krypterings omfång är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+>
+> Undvik oväntade kostnader genom att inaktivera eventuella krypterings omfattningar som du inte behöver.
+>
 > Krypterings omfång stöds inte med Read-Access Geo-redundant lagring (RA-GRS) eller GZRS-konton (Read-Access geo-Zone-redundant Storage) under för hands versionen.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> För hands versionen av krypterings området är endast avsedd för användning utan produktion. Service nivå avtal (service avtal) för produktions tjänster är inte tillgängliga för närvarande.
->
-> Undvik oväntade kostnader genom att inaktivera eventuella krypterings omfattningar som du inte behöver.
 
 ## <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Skapa en behållare eller BLOB med en krypterings omfattning
 

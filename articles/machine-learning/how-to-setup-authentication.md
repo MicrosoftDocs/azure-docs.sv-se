@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027262"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210826"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Konfigurera autentisering för Azure Machine Learning-resurser och -arbetsflöden
 
@@ -54,7 +54,7 @@ Om du vill använda ett huvud namn för tjänsten (SP) måste du först skapa SP
 >
 > Skälet till att bevilja den lägsta åtkomsten är att tjänstens huvud namn använder ett lösen ord för att autentisera, och lösen ordet kan lagras som en del av ett Automation-skript. Om lösen ordet läcker, minimeras den skadliga användningen av SP för en speciell uppgift.
 
-Det enklaste sättet att skapa en SP-och bevilja åtkomst till din arbets yta är genom att använda [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest). Använd följande steg för att skapa ett huvud namn för tjänsten och ge det åtkomst till din arbets yta:
+Det enklaste sättet att skapa en SP-och bevilja åtkomst till din arbets yta är genom att använda [Azure CLI](/cli/azure/install-azure-cli). Använd följande steg för att skapa ett huvud namn för tjänsten och ge det åtkomst till din arbets yta:
 
 > [!NOTE]
 > Du måste vara administratör för prenumerationen för att utföra alla de här stegen.
@@ -67,9 +67,9 @@ Det enklaste sättet att skapa en SP-och bevilja åtkomst till din arbets yta ä
 
     Om CLI kan öppna din standardwebbläsare så sker det och en inloggningssida läses in. Annars måste du öppna en webbläsare och följa anvisningarna på kommando raden. Anvisningarna omfattar att bläddra till [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och ange en auktoriseringskod.
 
-    Om du har flera Azure-prenumerationer kan du använda `az account set -s <subscription name or ID>` kommandot för att ställa in prenumerationen. Mer information finns i [använda flera Azure-prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Om du har flera Azure-prenumerationer kan du använda `az account set -s <subscription name or ID>` kommandot för att ställa in prenumerationen. Mer information finns i [använda flera Azure-prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli).
 
-    För andra metoder för autentisering, se [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
+    För andra metoder för autentisering, se [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Installera Azure Machine Learning-tillägget:
 
@@ -236,7 +236,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Använda ett huvud namn för tjänsten från Azure CLI
 
-Du kan använda ett tjänst huvud namn för Azure CLI-kommandon. Mer information finns i [Logga in med ett huvud namn för tjänsten](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
+Du kan använda ett tjänst huvud namn för Azure CLI-kommandon. Mer information finns i [Logga in med ett huvud namn för tjänsten](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Använd ett huvud namn för tjänsten med REST API (för hands version)
 

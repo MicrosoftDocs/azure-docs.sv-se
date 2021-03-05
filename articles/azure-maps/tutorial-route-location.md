@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624990"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210588"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Självstudie: så här visar du väg riktningar med Azure Maps Route service och kart kontroll
 
@@ -170,7 +170,7 @@ I den här självstudien återger vi vägen med ett linje lager. Start-och slut 
 
     Den här koden skapar två [objekt av punkt-JSON-plats](https://en.wikipedia.org/wiki/GeoJSON) som representerar start-och slut punkter, som sedan läggs till i data källan. 
 
-    Det sista blocket i kod ställer in kameravy med latitud och longitud för start-och slut punkterna. Start- och slutpunkterna läggs till i datakällan. Avgränsningsfältet för start- och slutpunkterna beräknas med hjälp av funktionen `atlas.data.BoundingBox.fromData`. Den här markerings rutan används för att ställa in kart kameror för visning över hela vägen med hjälp av `map.setCamera` funktionen. Utfyllnad läggs till för att kompensera pixel måtten för symbol ikonerna. Mer information om kart kontrollens egenskap setCamera finns i [setCamera (CameraOptions | Egenskapen CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) .
+    Det sista blocket i kod ställer in kameravy med latitud och longitud för start-och slut punkterna. Start- och slutpunkterna läggs till i datakällan. Avgränsningsfältet för start- och slutpunkterna beräknas med hjälp av funktionen `atlas.data.BoundingBox.fromData`. Den här markerings rutan används för att ställa in kart kameror för visning över hela vägen med hjälp av `map.setCamera` funktionen. Utfyllnad läggs till för att kompensera pixel måtten för symbol ikonerna. Mer information om kart kontrollens egenskap setCamera finns i [setCamera (CameraOptions | Egenskapen CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) .
 
 3. Spara **MapRoute.html** och uppdatera webbläsaren. Kartan centreras nu över Seattle. Den blå Teardrop-PIN-koden markerar start punkten. Den runda blå PIN-koden markerar slut punkten.
 

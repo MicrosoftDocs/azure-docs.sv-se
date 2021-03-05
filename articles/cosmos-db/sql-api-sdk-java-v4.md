@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a70892a1900902cdf033434fe7edfed4c56f3b74
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e23a1ed348f2a627181e0e4e4c20477ee9ba1ff8
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097115"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210554"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinerar ett asynkront API och ett 
 > Den här viktig information gäller endast Azure Cosmos DB Java SDK v4. Om du använder en äldre version än v4 kan du läsa om hur du uppgraderar till v4 i [Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -guide.
 >
 > Här är tre steg för att komma igång snabbt!
-> 1. Installera den [lägsta Java-körningen som stöds, JDK 8,](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) så att du kan använda SDK: n.
+> 1. Installera den [lägsta Java-körningen som stöds, JDK 8,](/java/azure/jdk/) så att du kan använda SDK: n.
 > 2. Arbeta via [snabb starts guiden för Azure Cosmos DB Java SDK v4 som ger](./create-sql-api-java.md) dig till gång till maven-artefakten och går igenom grundläggande Azure Cosmos DB förfrågningar.
 > 3. Läs [prestanda tipsen](performance-tips-java-sdk-v4-sql.md) för Azure Cosmos DB Java SDK v4 och [fel söknings](troubleshoot-java-sdk-v4-sql.md) guider för att optimera SDK för ditt program.
 >
@@ -55,7 +55,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinerar ett asynkront API och ett 
 | Innehåll | Länk |
 |---|---|
 |**SDK-nedladdning**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API-dokumentation** | [Referens dokumentation för Java API](/java/api/overview/azure/cosmosdb/client?preserve-view=true&view=azure-java-stable) |
+|**API-dokumentation** | [Referens dokumentation för Java API](/java/api/overview/azure/cosmosdb/client) |
 |**Bidra till SDK** | [Azure SDK för Java Central lagrings platsen på GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
 |**Komma igång** | [Snabb start: bygga en Java-app för att hantera Azure Cosmos DB SQL API-data](./create-sql-api-java.md) <br> [GitHub lagrings platsen med snabb starts kod](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Grundläggande kod exempel** | [Azure Cosmos DB: Java-exempel för SQL API](sql-api-java-sdk-samples.md) <br> [GitHub lagrings platsen med exempel kod](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
@@ -64,12 +64,12 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinerar ett asynkront API och ett 
 | **Prestandatips**| [Prestandatips för Java SDK v4](performance-tips-java-sdk-v4-sql.md)| 
 | **Felsökning** | [Felsöka Java-SDK v4](troubleshoot-java-sdk-v4-sql.md) |
 | **Migrera till v4 från en äldre SDK** | [Migrera till Java V4-SDK](migrate-java-v4-sdk.md) |
-| **Lägsta körnings tid som stöds**|[JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) | 
+| **Lägsta körnings tid som stöds**|[JDK 8](/java/azure/jdk/) | 
 | **Azure Cosmos DB workshops och labb** |[Start sida för Cosmos DB workshops](https://aka.ms/cosmosworkshop)
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)] 
 
 ## <a name="next-steps"></a>Nästa steg

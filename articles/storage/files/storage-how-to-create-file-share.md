@@ -9,12 +9,12 @@ ms.date: 1/20/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 5a27f38e92955c0aa240f6be394aacd187c3a8b8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370911"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211030"
 ---
 # <a name="create-an-azure-file-share"></a>Skapa en Azure-filresurs
 Om du vill skapa en Azure-filresurs måste du svara på tre frågor om hur du ska använda den:
@@ -35,7 +35,7 @@ Mer information om dessa tre alternativ finns i [Planera för en Azure Files dis
 ## <a name="prerequisites"></a>Förutsättningar
 - Den här artikeln förutsätter att du redan har skapat en Azure-prenumeration. Om du inte redan har en prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - Om du tänker använda Azure PowerShell [installerar du den senaste versionen](/powershell/azure/install-az-ps).
-- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 Azure-filresurser distribueras till *lagrings konton* som är toppnivå objekt som representerar en delad lagringspool. Den här lagringspoolen kan användas för att distribuera flera fil resurser. 
@@ -51,7 +51,7 @@ Om du vill skapa ett lagrings konto via Azure Portal väljer du **+ skapa en res
 
 ![En skärm bild av alternativet för snabb skapande av lagrings konto i en webbläsare](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="basics"></a>Grunder
+#### <a name="basics"></a>Grundläggande inställningar
 Det första avsnittet att slutföra för att skapa ett lagrings konto är märkta med **grunderna**. Innehåller alla obligatoriska fält för att skapa ett lagrings konto. Om du vill skapa ett GPv2 lagrings konto ser du till att alternativet **prestanda** är inställt på *standard* och list rutan **Kontotyp** är markerad till *StorageV2 (generell användning v2)*.
 
 ![En skärm bild av alternativ knappen prestanda med standard vald och konto typ med StorageV2 valt](media/storage-how-to-create-file-share/create-storage-account-1.png)
@@ -213,7 +213,7 @@ New-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Du kan skapa en Azure-filresurs med [`az storage share-rm create`](/cli/azure/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) kommandot. Följande Azure CLI-kommandon förutsätter att du har angett variablerna `$resourceGroupName` och `$storageAccountName` enligt definitionen ovan i avsnittet Skapa ett lagrings konto med Azure CLI.
+Du kan skapa en Azure-filresurs med [`az storage share-rm create`](/cli/azure/storage/share-rm#az_storage_share_rm_create) kommandot. Följande Azure CLI-kommandon förutsätter att du har angett variablerna `$resourceGroupName` och `$storageAccountName` enligt definitionen ovan i avsnittet Skapa ett lagrings konto med Azure CLI.
 
 > [!Important]  
 > För Premium-filresurser `--quota` refererar parametern till den allokerade storleken på fil resursen. Den allokerade storleken på fil resursen är den mängd som du debiteras för, oavsett användning. Standard fil resurser faktureras baserat på användning i stället för en etablerad storlek.

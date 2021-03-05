@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdf74a6d8b6798de8aba33baea5afdf987ce1c34
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 7c2a1f6de4e006cbb1b8566504fd16280c129f23
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582493"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210809"
 ---
 # <a name="protected-web-api-code-configuration"></a>Skyddat webb-API: kod konfiguration
 
@@ -175,7 +175,7 @@ services.AddControllers();
 > - `$"api://{ClientId}` i alla andra fall (för v 1.0- [åtkomsttoken](access-tokens.md)).
 > Mer information finns i Microsoft. Identity. Web [Source Code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Föregående kodfragment extraheras från den [ASP.net Core stegvisa självstudien för webb-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Informationen om **AddMicrosoftIdentityWebApiAuthentication** finns i [Microsoft. Identity. Web](microsoft-identity-web.md). Den här metoden anropar [AddMicrosoftIdentityWebAPI](/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?preserve-view=true&view=azure-dotnet-preview), som i sin tur instruerar mellanprogram för att validera token.
+Föregående kodfragment extraheras från den [ASP.net Core stegvisa självstudien för webb-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Informationen om **AddMicrosoftIdentityWebApiAuthentication** finns i [Microsoft. Identity. Web](microsoft-identity-web.md). Den här metoden anropar [AddMicrosoftIdentityWebAPI](/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi), som i sin tur instruerar mellanprogram för att validera token.
 
 ## <a name="token-validation"></a>Verifiering av token
 

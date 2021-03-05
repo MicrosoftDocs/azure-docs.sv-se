@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6f25c4172b384abd487d2084f31981d16e73ee93
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742693"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209891"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Snabb start: etablera Azure våren Cloud service
 
@@ -24,7 +24,7 @@ I den här snabb starten använder du Azure CLI för att etablera en instans av 
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Azure våren Cloud Service stöder .NET Core 3,1 och senare versioner.
-* [Azure CLI-versionen 2.0.67 eller högre](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Azure CLI-versionen 2.0.67 eller högre](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Installera Azure CLI-tillägg
@@ -90,9 +90,9 @@ az extension add --name spring-cloud
 Du kan skapa ett Azure våren-moln med hjälp av Azure Portal eller Azure CLI.  Båda metoderna beskrivs i följande procedurer.
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Installera JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [Installera JDK 8](/java/azure/jdk/)
 * [Registrera dig för en Azure-prenumeration](https://azure.microsoft.com/free/)
-* Valfritt [Installera Azure CLI-versionen 2.0.67 eller högre](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) och installera Azure våren Cloud-tillägget med kommandot: `az extension add --name spring-cloud`
+* Valfritt [Installera Azure CLI-versionen 2.0.67 eller högre](/cli/azure/install-azure-cli) och installera Azure våren Cloud-tillägget med kommandot: `az extension add --name spring-cloud`
 * Valfritt [Installera Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) och [inloggning](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Etablera en instans av Azure våren Cloud
@@ -109,19 +109,19 @@ Följande procedur skapar en instans av Azure våren Cloud med hjälp av Azure P
 
     ![ASC-ikon start](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. På sidan Azure våren Cloud klickar du på **+ Lägg till** .
+4. På sidan Azure våren Cloud klickar du på **+ Lägg till**.
 
     ![ASC-ikon Lägg till](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Fyll i formuläret på sidan Azure våren Cloud **create** .  Beakta följande rikt linjer:
-    - **Prenumeration** : Välj den prenumeration som du vill fakturera för den här resursen.
-    - **Resurs grupp** : skapa nya resurs grupper för nya resurser är en bra metod. Observera att detta kommer att användas i senare steg som **\<resource group name\>** .
-    - **Tjänst information/namn** : ange **\<service instance name\>** .  Namnet måste vara mellan 4 och 32 tecken långt och får bara innehålla gemena bokstäver, siffror och bindestreck.  Det första tecknet i tjänst namnet måste vara en bokstav och det sista tecknet måste vara en bokstav eller en siffra.
-    - **Plats** : Välj platsen för din tjänst instans.
+5. Fyll i formuläret på sidan Azure våren Cloud **create** .  Läs igenom följande riktlinjer:
+    - **Prenumeration**: Välj den prenumeration som du vill fakturera för den här resursen.
+    - **Resurs grupp**: skapa nya resurs grupper för nya resurser är en bra metod. Observera att detta kommer att användas i senare steg som **\<resource group name\>** .
+    - **Tjänst information/namn**: ange **\<service instance name\>** .  Namnet måste vara mellan 4 och 32 tecken långt och får bara innehålla gemena bokstäver, siffror och bindestreck.  Det första tecknet i tjänst namnet måste vara en bokstav och det sista tecknet måste vara en bokstav eller en siffra.
+    - **Plats**: Välj platsen för din tjänst instans.
 
     ![ASC-portalen börjar](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klicka på **Granska och skapa** .
+6. Klicka på **Granska och skapa**.
 
 > [!div class="nextstepaction"]
 > [Jag stötte på ett problem](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

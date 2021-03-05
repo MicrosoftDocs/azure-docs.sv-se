@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da76dab360e0e17afc9e2024358d4a935c6b7336
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653048"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209823"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Självstudie: skapa ett Azure Red Hat OpenShift 4-kluster
 
@@ -23,7 +23,7 @@ I den här självstudien, som är del ett av tre, förbereder du din miljö för
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 För att kunna skapa och köra ett OpenShift-kluster krävs minst 40 kärnor i Azure Red Hat OpenShift. Standard kvoten för Azure-resurser för en ny Azure-prenumeration uppfyller inte det här kravet. Om du vill begära en ökning av resurs gränsen, se [standard kvot: öka gränserna efter VM-serien](../azure-portal/supportability/per-vm-quota-requests.md).
 
@@ -106,7 +106,7 @@ Härnäst ska du skapa ett virtuellt nätverk som innehåller två tomma undern�
 
 2. **Skapa en resurs grupp.**
 
-   En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. När du skapar en resursgrupp uppmanas du att ange en plats. Den här platsen är den plats där resurs gruppens metadata lagras, och det är också var dina resurser körs i Azure om du inte anger någon annan region när du skapar en resurs. Skapa en resursgrupp med hjälp av kommandot [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create).
+   En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. När du skapar en resursgrupp uppmanas du att ange en plats. Den här platsen är den plats där resurs gruppens metadata lagras, och det är också var dina resurser körs i Azure om du inte anger någon annan region när du skapar en resurs. Skapa en resursgrupp med hjälp av kommandot [az group create](/cli/azure/group#az-group-create).
     
    > [!NOTE] 
    > Det går inte att skapa en Azure-resurs grupp i Azure Red Hat OpenShift i alla regioner. Se [tillgängliga regioner](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) för information om var Azure Red Hat OpenShift stöds.

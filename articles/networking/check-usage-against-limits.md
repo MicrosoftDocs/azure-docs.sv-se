@@ -12,18 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233363"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210656"
 ---
 # <a name="check-resource-usage-against-limits"></a>Kontrollera och jämföra resursanvändningen mot gränser
 
 I den här artikeln får du lära dig hur du visar antalet nätverks resurs typer som du har distribuerat i din prenumeration och vilka [prenumerations begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) som finns. Möjligheten att Visa resursanvändningen mot gränser är användbart för att spåra aktuell användning och planera för framtida användning. Du kan använda [Azure Portal](#azure-portal), [POWERSHELL](#powershell)eller [Azure CLI](#azure-cli) för att spåra användningen.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på Azure- [portalen](https://portal.azure.com).
 2. I det övre vänstra hörnet av Azure Portal väljer du **alla tjänster**.
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Om du använder kommando rads kommandon i Azure för att slutföra uppgifter i den här artikeln kan du antingen köra kommandona i [Azure Cloud Shell](https://shell.azure.com/bash)eller genom att köra CLI från datorn. Den här artikeln kräver Azure CLI version 2.0.32 eller senare. Kör `az --version` för att hitta den installerade versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli). Om du kör Azure CLI lokalt måste du också köra `az login` för att logga in på Azure.
 
-Visa din användning mot gränser med [AZ Network List-usages](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). I följande exempel hämtas användningen av resurser på platsen USA, östra:
+Visa din användning mot gränser med [AZ Network List-usages](/cli/azure/network#az-network-list-usages). I följande exempel hämtas användningen av resurser på platsen USA, östra:
 
 ```azurecli-interactive
 az network list-usages \

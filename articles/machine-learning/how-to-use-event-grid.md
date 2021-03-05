@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc7c0a476f57048c7caefb6001918d314c991ee
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655725"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209704"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Utlös program, processer eller CI/CD-arbetsflöden baserat på Azure Machine Learning händelser (förhands granskning)
 
@@ -59,7 +59,7 @@ Dessa händelser publiceras via Azure Event Grid. Med hjälp av Azure Portal, Po
 
 När du konfigurerar dina händelser kan du använda filter för att endast utlösa för vissa händelse data. I exemplet nedan kan du filtrera efter körnings status ändrade händelser med körnings typer. Händelsen utlöses endast när villkoret är uppfyllt. Se det [Azure Machine Learning Event Grid-schemat](../event-grid/event-schema-machine-learning.md) för att lära dig mer om händelse data som du kan filtrera efter. 
 
-Prenumerationer för Azure Machine Learning händelser skyddas av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Endast [deltagare eller ägare](how-to-assign-roles.md#default-roles) av en arbets yta kan skapa, uppdatera och ta bort händelse prenumerationer.  Filter kan tillämpas på händelse prenumerationer antingen under [skapandet](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) av händelse prenumerationen eller vid ett senare tillfälle. 
+Prenumerationer för Azure Machine Learning händelser skyddas av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Endast [deltagare eller ägare](how-to-assign-roles.md#default-roles) av en arbets yta kan skapa, uppdatera och ta bort händelse prenumerationer.  Filter kan tillämpas på händelse prenumerationer antingen under [skapandet](/cli/azure/eventgrid/event-subscription) av händelse prenumerationen eller vid ett senare tillfälle. 
 
 
 1. Gå till Azure Portal, Välj en ny prenumeration eller en befintlig. 
@@ -130,7 +130,7 @@ När du har bekräftat ditt val klickar du på __skapa__. Efter konfigurationen 
 
 ### <a name="set-up-with-the-cli"></a>Konfigurera med CLI
 
-Du kan antingen installera den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)eller använda Azure Cloud Shell som tillhandahålls som en del av din Azure-prenumeration.
+Du kan antingen installera den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli)eller använda Azure Cloud Shell som tillhandahålls som en del av din Azure-prenumeration.
 
 Om du vill installera Event Grid-tillägget använder du följande kommando från CLI:
 

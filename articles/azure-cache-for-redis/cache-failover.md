@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093093"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210741"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Redundans och korrigering för Azure cache för Redis
 
@@ -72,6 +72,10 @@ De flesta klient bibliotek försöker återansluta till cachen om de är konfigu
 Eftersom du inte kan undvika redundans helt kan du skriva dina klient program för återhämtning till anslutnings avbrott och misslyckade förfrågningar. Även om de flesta klient bibliotek automatiskt återansluter till cache-slutpunkten så försöker några av dem att försöka utföra misslyckade förfrågningar igen. Beroende på program scenariot kan det vara klokt att använda omprövnings logik med backoff.
 
 Om du vill testa ett klient programs återhämtning använder du en [omstart](cache-administration.md#reboot) som en manuell utlösare för anslutnings avbrott. Dessutom rekommenderar vi att du [schemalägger uppdateringar](cache-administration.md#schedule-updates) på en cache. Be hanterings tjänsten att tillämpa Redis runtime-korrigeringsfiler under angivna vecko Visa fönster. Dessa fönster är vanligt vis perioder när klient program trafiken är låg, för att undvika potentiella incidenter.
+
+### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Kan jag få ett meddelande i förväg om ett planerat underhåll?
+
+Azure cache för Redis publicerar nu meddelanden på en publicera/prenumerera-kanal som heter [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) cirka 30 sekunder innan planerade uppdateringar. Detta är körnings meddelanden, och de är särskilt utformade för program som kan använda krets brytare för att kringgå cache-eller buffer-kommandon, till exempel under planerade uppdateringar. Det är inte en mekanism som kan meddela dig om dagar eller timmar i förväg.
 
 ### <a name="client-network-configuration-changes"></a>Klient nätverk – konfigurations ändringar
 

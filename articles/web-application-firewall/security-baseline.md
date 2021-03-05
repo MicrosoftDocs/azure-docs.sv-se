@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ae6b4f38772cd6c6755ece78fb5c47834a616204
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737417"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211642"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azures säkerhets bas linje för Azure Web Application-brandvägg
 
@@ -81,9 +81,9 @@ Konfigurera Azure-WAF att köras i förebyggande läge när bas linje nätverks 
 
 Tillämpa regler och regel grupper i WAF-principer (Azure Web Application Firewall) baserat på de metadata som används för taggar.
 
-- [WAF princip på Application Gateway](/cli/azure/network/application-gateway/waf-policy?view=azure-cli-latest) 
+- [WAF princip på Application Gateway](/cli/azure/network/application-gateway/waf-policy) 
 
-- [WAF-princip på front dörren](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest)
+- [WAF-princip på front dörren](/cli/azure/ext/front-door/network/front-door/waf-policy)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

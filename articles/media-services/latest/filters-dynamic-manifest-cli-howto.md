@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 54e99c645b93bfcb3aee4e81cef3b2b5d6589d95
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093433"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211472"
 ---
 # <a name="creating-filters-with-cli"></a>Skapa filter med CLI
 
@@ -29,7 +29,7 @@ När du levererar ditt innehåll till kunder (strömma live-händelser eller vid
 
 Detaljerad beskrivning av den här funktionen och scenarier där den används finns i [dynamiska manifest](filters-dynamic-manifest-overview.md) och [filter](filters-concept.md).
 
-Det här avsnittet visar hur du konfigurerar ett filter för en video på begäran-till gång och använder CLI för Media Services v3 för att skapa [konto filter](/cli/azure/ams/account-filter?view=azure-cli-latest) och [filter för till gångar](/cli/azure/ams/asset-filter?view=azure-cli-latest).
+Det här avsnittet visar hur du konfigurerar ett filter för en video på begäran-till gång och använder CLI för Media Services v3 för att skapa [konto filter](/cli/azure/ams/account-filter) och [filter för till gångar](/cli/azure/ams/asset-filter).
 
 > [!NOTE]
 > Se till att granska [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -80,7 +80,7 @@ I följande exempel definieras villkoren för spåra val som läggs till i det s
 
 ## <a name="create-account-filters"></a>Skapa konto filter
 
-Följande [AZ AMS Account-filter-](/cli/azure/ams/account-filter?view=azure-cli-latest) kommando skapar ett konto filter med val av filter spårning som [definierades tidigare](#define-a-filter).
+Följande [AZ AMS Account-filter-](/cli/azure/ams/account-filter) kommando skapar ett konto filter med val av filter spårning som [definierades tidigare](#define-a-filter).
 
 Med kommandot kan du skicka en valfri `--tracks` parameter som innehåller JSON som representerar spår valen.  Använd @ {File} för att läsa in JSON från en fil. Om du använder Azure CLI lokalt anger du hela fil Sök vägen:
 
@@ -92,7 +92,7 @@ Se även [JSON-exempel för filter](/rest/api/media/accountfilters/createorupdat
 
 ## <a name="create-asset-filters"></a>Skapa till gångs filter
 
-Följande [AZ AMS Asset Asset filter-](/cli/azure/ams/asset-filter?view=azure-cli-latest) kommando skapar ett till gångs filter med val av filter spårning som [definierades tidigare](#define-a-filter). 
+Följande [AZ AMS Asset Asset filter-](/cli/azure/ams/asset-filter) kommando skapar ett till gångs filter med val av filter spårning som [definierades tidigare](#define-a-filter). 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -132,4 +132,4 @@ I följande tabell visas några exempel på URL: er med filter:
 
 ## <a name="see-also"></a>Se även
 
-[Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8c2ea69d38f354455b7957ddc7b6ff41da30100b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381502"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210775"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-utlösare för Azure Functions
 
@@ -351,7 +351,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `QueueTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas| Måste anges till `queueTrigger` . Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position**| saknas | Endast i *function.jsendast på* fil. Måste anges till `in` . Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
@@ -407,7 +407,7 @@ Exempel som använder de här typerna finns i [GitHub-lagringsplatsen för till�
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) -anteckningen ger dig åtkomst till det Queue meddelande som utlöste funktionen.
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger) -anteckningen ger dig åtkomst till det Queue meddelande som utlöste funktionen.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -427,7 +427,7 @@ Få åtkomst till Queue-meddelandet via parametern som anges som [QueueMessage](
 
 Utlösaren för kön innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. Egenskaperna är medlemmar i klassen [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Egenskap|Typ|Beskrivning|
+|Egenskap|Typ|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Köns nytto Last (om en giltig sträng). Om nytto lasten i kön är en sträng, `QueueTrigger` har samma värde som variabeln som namnges av `name` egenskapen i *function.jspå*.|
 |`DequeueCount`|`int`|Antal gånger som det här meddelandet har tagits ur kö.|

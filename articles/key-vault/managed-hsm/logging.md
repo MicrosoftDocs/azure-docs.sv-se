@@ -9,28 +9,28 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000790"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211812"
 ---
 # <a name="managed-hsm-logging"></a>Hanterad HSM-loggning 
 
 När du har skapat en eller flera hanterade HSM: er vill du förmodligen övervaka hur och när dina HSMss används, och av vem. Du kan göra detta genom att aktivera loggning, som sparar information i ett Azure Storage-konto som du anger. En ny behållare med namnet **Insights-logs-auditevent** skapas automatiskt för det angivna lagrings kontot. Du kan använda samma lagrings konto för att samla in loggar för flera hanterade HSM: er.
 
-Du kan komma åt loggnings informationen 10 minuter (högst) efter den hanterade HSM-åtgärden. Oftast är informationen dock tillgänglig snabbare än så.  Det är upp till dig att hantera loggarna i ditt lagringskonto:
+Du kan komma åt loggnings informationen 10 minuter (högst) efter den hanterade HSM-åtgärden. Oftast är informationen dock tillgänglig snabbare än så.  Det är upp till dig att hantera loggarna på ditt lagringskonto:
 
-* Använd standardåtkomstmetoder i Azure för att skydda loggarna genom att begränsa vem som kan komma åt dem.
-* Ta bort loggar som du inte vill behålla i ditt lagringskonto.
+* Använd åtkomstkontrollsmetoder för Azure av standardtyp för att skydda loggarna genom att begränsa vem som kan komma åt dem.
+* Ta bort loggar som du inte längre vill behålla på ditt lagringskonto.
 
 Använd den här självstudien för att komma igång med hanterad HSM-loggning. Du skapar ett lagrings konto, aktiverar loggning och tolkar insamlad logg information.  
 
 > [!NOTE]
 > Den här själv studie kursen innehåller inte instruktioner för hur du skapar hanterade HSM: er eller nycklar. Den här artikeln innehåller Azure CLI-instruktioner för uppdatering av diagnostisk loggning.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen i den här artikeln, måste du ha följande objekt:
 
@@ -48,7 +48,7 @@ Det första steget när du ställer in nyckel loggning är att peka Azure CLI ti
 az login
 ```
 
-Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli)
 
 Du kanske måste ange den prenumeration som du använde för att skapa en hanterad HSM. Ange följande kommando för att se prenumerationerna för ditt konto:
 
@@ -65,7 +65,7 @@ Om du vill aktivera loggning för hanterad HSM använder du kommandot **AZ Monit
 
 Det här resultatet bekräftar att loggning nu har Aktiver ATS för din hanterade HSM och sparar information till ditt lagrings konto.
 
-Du kan också ange en bevarande princip för dina loggar, så att äldre loggar tas bort automatiskt. Ange till exempel princip för bevarande genom att ange flaggan **-RetentionEnabled** till **$True**och ange parametern **-RetentionInDays** till **90** så att loggar som är äldre än 90 dagar tas bort automatiskt.
+Du kan också ange en bevarande princip för dina loggar, så att äldre loggar tas bort automatiskt. Ange till exempel princip för bevarande genom att ange flaggan **-RetentionEnabled** till **$True** och ange parametern **-RetentionInDays** till **90** så att loggar som är äldre än 90 dagar tas bort automatiskt.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource $hsmresource --logs '[{"category": "AuditEvent","enabled": true}]' --storage-account $storageresource
@@ -123,10 +123,10 @@ Enskilda blobbar lagras som text, formaterade som JSON. Nu ska vi titta på en e
 
 I följande tabell visas fält namn och beskrivningar:
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TenantId** | Azure Active Directory klient-ID för prenumeration där hanterad HSM skapas |
-| **time** |Datum och tid i UTC. |
+| **tid** |Datum och tid i UTC. |
 | **resourceId** |Azure Resource Manager resurs-ID. För hanterade HSM-loggar är detta alltid det hanterade HSM-resurs-ID: t. |
 | **operationName** |Namnet på åtgärden, som beskrivs i nästa tabell. |
 | **operationVersion** |REST API version som begärs av klienten. |

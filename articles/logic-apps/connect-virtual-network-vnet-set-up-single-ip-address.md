@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e88c4bf05d88007a6e19b568f1bc1085e24b0325
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049719"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211064"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Konfigurera en enskild IP-adress för en eller flera integrerings tjänst miljöer i Azure Logic Apps
 
@@ -53,7 +53,7 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
    |----------|-------|-------------|
    | **Vägnamn** | <*unikt flöde-namn*> | Ett unikt namn för vägen i routningstabellen |
    | **Adressprefix** | <*mål adress*> | Adressprefixet för ditt mål system där du vill att utgående trafik ska gå. Se till att du använder [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) för den här adressen. I det här exemplet är detta adressprefix för en SFTP-server, som beskrivs i avsnittet [Konfigurera nätverks regel](#set-up-network-rule). |
-   | **Nästa hopp typ** | **Virtuell installation** | [Hopp typen](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) som används av utgående trafik |
+   | **Nästa hopptyp** | **Virtuell installation** | [Hopp typen](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) som används av utgående trafik |
    | **Nexthop-adress** | <*brand vägg – privat IP-adress*> | Den privata IP-adressen för din brand vägg |
    |||
 
@@ -97,7 +97,7 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
    * [Regelbearbetningslogik för Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Vanliga frågor och svar om Azure Firewall](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: AZ Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure CLI: AZ Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>Nästa steg
 

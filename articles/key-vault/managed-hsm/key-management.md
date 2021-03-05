@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521041"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212050"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Hantera en hanterad HSM med Azure CLI
 
@@ -22,7 +22,7 @@ ms.locfileid: "92521041"
 
 En översikt över hanterad HSM finns i [Vad är hanterad HSM?](overview.md)
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -42,7 +42,7 @@ Du kan logga in i Azure via CLI genom att skriva:
 az login
 ```
 
-Mer information om inloggnings alternativ via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+Mer information om inloggnings alternativ via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli)
 
 > [!NOTE]
 > I alla kommandon nedan visas två användnings metoder. Ett med parametrarna **--HSM-Name** och **--Name** (för nyckel namn) och en annan med parametern **--ID** där du kan ange hel URL, inklusive nyckel namn där det är lämpligt. Den sistnämnda metoden är användbar när anroparen (en användare eller ett program) inte har Läs behörighet på kontroll planet och endast begränsad åtkomst till data planet.

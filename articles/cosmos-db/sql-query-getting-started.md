@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 9e6777a082dcda76c7c7df6bd1b55611cf5cdf84
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: dfa6b8eaa5f4ce8b2ebfb24a280e048ed3b19dda
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493167"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211524"
 ---
 # <a name="getting-started-with-sql-queries"></a>Komma igång med SQL-frågor
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,8 +24,8 @@ I Azure Cosmos DB SQL API-konton finns det två sätt att läsa data:
 Här följer några exempel på hur du gör **punkt läsningar** med varje SDK:
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
-- [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
-- [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
+- [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](/javascript/api/@azure/cosmos/item#read-requestoptions-)
 - [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
 **SQL-frågor** – du kan fråga efter data genom att skriva frågor med hjälp av STRUCTURED Query Language (SQL) som ett JSON-frågespråk. Frågor kostar alltid att vara minst 2,3 enheter för programbegäran och i allmänhet har de en högre och mer varierande svars tid än punkt läsningar. Frågor kan returnera många objekt.

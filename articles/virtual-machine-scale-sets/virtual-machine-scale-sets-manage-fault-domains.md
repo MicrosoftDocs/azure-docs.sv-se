@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 4df340fa80ac4b9c4ff2a5e560580e09e01237e1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5a71a6bce6d0e1a41201e0d7395110a6ac64db8c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745923"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209755"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Välja rätt antal feldomäner för skaluppsättningar för den virtuella datorn
 Skalnings uppsättningar för virtuella datorer skapas med fem fel domäner som standard i Azure-regioner utan zoner. För regioner som stöder zonindelade-distribution av skalnings uppsättningar för virtuella datorer och det här alternativet har valts är standardvärdet för antal fel domäner 1 för var och en av zonerna. FD = 1 i det här fallet innebär det att de virtuella dator instanserna som hör till skalnings uppsättningen kommer att spridas över flera rack på bästa möjliga sätt.
@@ -25,7 +25,7 @@ Du kan också överväga att justera antalet fel domäner för skalnings uppsät
 Du kan ange egenskapen `properties.platformFaultDomainCount` till 1, 2 eller 3 (Standardvärdet är 3 om inget anges). Läs dokumentationen för REST API [här](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 ## <a name="azure-cli"></a>Azure CLI
-Du kan ange parametern `--platform-fault-domain-count` till 1, 2 eller 3 (Standardvärdet är 3 om inget anges). Se dokumentationen för Azure CLI [här](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
+Du kan ange parametern `--platform-fault-domain-count` till 1, 2 eller 3 (Standardvärdet är 3 om inget anges). Se dokumentationen för Azure CLI [här](/cli/azure/vmss#az-vmss-create).
 
 ```azurecli-interactive
 az vmss create \

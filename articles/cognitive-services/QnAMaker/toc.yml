@@ -50,6 +50,8 @@
     - name: Hantera Azure-resurser
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Konfigurera QnA Maker resurser
+      href: How-To/configure-QnA-Maker-resources.md
     - name: Nätverks isolering för Azure-resurser
       href: How-To/network-isolation.md
     - name: Hantera QnA Maker resurs åtkomst
@@ -140,7 +142,7 @@
         - name: JavaScript
           items:
             - name: Referensdokumentation
-              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index
             - name: NPM – redigering
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM – frågekörning

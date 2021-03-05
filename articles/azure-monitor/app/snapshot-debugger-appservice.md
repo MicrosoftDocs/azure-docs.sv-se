@@ -6,18 +6,19 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 291f06bea0744c991c71640272ee341b7273472b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729002"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211625"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivera Snapshot Debugger för .NET-appar i Azure App Service
 
 Snapshot Debugger stöder för närvarande ASP.NET och ASP.NET Core appar som körs på Azure App Service i Windows Service-planer.
 
-Vi rekommenderar att du kör programmet på den grundläggande tjänst nivån eller högre när du använder fel sökning av ögonblicks bilder.
+Vi rekommenderar att du kör programmet på den grundläggande tjänst nivån eller senare när du använder fel sökning av ögonblicks bilder.
+
 För de flesta program har inte de kostnads fria och delade tjänst nivåerna tillräckligt med minne eller disk utrymme för att spara ögonblicks bilder.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivera Snapshot Debugger
@@ -52,6 +53,16 @@ När du har distribuerat en app följer du stegen nedan för att aktivera fel s�
 4. Snapshot Debugger har nu Aktiver ATS med en inställning för App Services app.
 
     ![App-inställning för Snapshot Debugger][snapshot-debugger-app-setting]
+
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>Aktivera Snapshot Debugger för andra moln
+
+För närvarande är de enda regionerna som kräver slut punkts ändringar [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) och [Azure Kina](https://docs.microsoft.com/azure/china/resources-developer-guide) genom Application Insights anslutnings sträng.
+
+|Egenskap för anslutnings sträng    | Moln för amerikanska myndigheter | Kina, moln |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Mer information om andra åsidosättningar av anslutningar finns i [Application Insights-dokumentationen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 ## <a name="disable-snapshot-debugger"></a>Inaktivera Snapshot Debugger
 

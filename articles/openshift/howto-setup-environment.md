@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-redhat-openshift
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9654711a1399c2708ce8c9150b79eefa73387c03
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c253c6bf81305b9b336525c20980cf9599463648
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635034"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209874"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Konfigurera Azure Red Hat OpenShift-utvecklingsmiljön
 
@@ -43,7 +43,7 @@ az --version
 
 Den första raden med utdata kommer att ha CLI-versionen, till exempel `azure-cli (2.0.65)` .
 
-Här följer instruktioner för hur du [installerar Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) om du behöver en ny installation eller en uppgradering.
+Här följer instruktioner för hur du [installerar Azure CLI](/cli/azure/install-azure-cli) om du behöver en ny installation eller en uppgradering.
 
 Alternativt kan du använda [Azure Cloud Shell](../cloud-shell/overview.md). När du använder Azure Cloud Shell bör du välja **bash** -miljön om du planerar att följa tillsammans med själv studie serien [skapa och hantera en Azure Red Hat OpenShift-kluster](tutorial-create-cluster.md) .
 

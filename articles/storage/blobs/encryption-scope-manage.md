@@ -4,23 +4,28 @@ description: Lär dig hur du skapar en krypterings omfattning för att isolera B
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017414"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209599"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Skapa och hantera krypterings omfång (förhands granskning)
 
 Krypterings omfång (för hands version) gör att du kan hantera kryptering på nivån för en enskild BLOB eller behållare. En krypteringsomfattning isolerar blob-data i en säker enklav i ett lagringskonto. Du kan använda krypterings omfång för att skapa säkra gränser mellan data som finns i samma lagrings konto men som tillhör olika kunder. Mer information om krypterings omfång finns i [krypterings omfång för Blob Storage (för hands version)](encryption-scope-overview.md).
 
 Den här artikeln visar hur du skapar en krypterings omfattning. Det visar också hur du anger ett krypterings omfång när du skapar en BLOB eller behållare.
+
+> [!IMPORTANT]
+> Krypterings omfång är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+>
+> Undvik oväntade kostnader genom att inaktivera eventuella krypterings omfattningar som du inte behöver.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

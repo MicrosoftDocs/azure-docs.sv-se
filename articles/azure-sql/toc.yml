@@ -1230,6 +1230,8 @@
               href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
             - name: Konfigurera tillgänglighetsgruppslyssnare för SQL Server på virtuella RHEL-datorer i Azure
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+            - name: Konfigurera alltid tillgänglighets grupp med DH2i DxEnterprise
+              href: virtual-machines/linux/dh2i-high-availability-tutorial.md
         - name: Resurser
           items:
             - name: VANLIGA FRÅGOR OCH SVAR

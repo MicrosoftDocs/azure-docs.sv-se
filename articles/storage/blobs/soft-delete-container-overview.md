@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390189"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211149"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Mjuk borttagning för behållare (förhands granskning)
 
@@ -27,8 +27,8 @@ För slut punkt till slut punkts skydd för dina BLOB-data rekommenderar Microso
 - BLOB-versioner för att automatiskt underhålla tidigare versioner av en blob. När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort. Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
 - BLOB-mjuk borttagning, för att återställa en BLOB eller version som har tagits bort. Information om hur du aktiverar mjuk borttagning av BLOB finns i [Aktivera och hantera mjuk borttagning för blobbar](soft-delete-blob-enable.md).
 
-> [!WARNING]
-> Det går inte att ångra borttagningen av ett lagrings konto. Mjuk borttagning av behållare skyddar inte borttagningen av ett lagrings konto, utan endast mot borttagning av behållare i det kontot. Om du vill skydda ett lagrings konto från borttagning konfigurerar du ett lås på lagrings konto resursen. Mer information om hur du låser Azure Resource Manager-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+> [!IMPORTANT]
+> Mjuk borttagning av behållare är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
 
 ## <a name="how-container-soft-delete-works"></a>Så här fungerar mjuk borttagning av behållare
 
@@ -46,14 +46,14 @@ När kvarhållningsperioden har gått ut tas behållaren bort permanent från Az
 
 Att inaktivera mjuk borttagning av behållare resulterar inte i permanent borttagning av behållare som tidigare varit borttagna. Alla mjuka, borttagna behållare tas bort permanent tills den kvarhållningsperiod som gällde vid den tidpunkt då behållaren togs bort.
 
+> [!IMPORTANT]
+> Mjuk borttagning av behållare skyddar inte borttagningen av ett lagrings konto, utan endast mot borttagning av behållare i det kontot. Om du vill skydda ett lagrings konto från borttagning konfigurerar du ett lås på lagrings konto resursen. Mer information om hur du låser Azure Resource Manager-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+
 ## <a name="about-the-preview"></a>Om för hands versionen
 
 Mjuk borttagning av behållare är tillgänglig i för hands versionen i alla Azure-regioner.
 
-> [!IMPORTANT]
-> Förhands granskningen av behållarens mjuka borttagning är endast avsedd för användning utan produktion. Service nivå avtal (service avtal) för produktions tjänster är inte tillgängliga för närvarande.
-
-Version 2019-12-12 och högre av Azure Storage REST API stöder mjuk borttagning av behållare.
+Version 2019-12-12 eller senare av Azure Storage REST API stöder mjuk borttagning av behållare.
 
 ### <a name="storage-account-support"></a>Stöd för lagrings konto
 

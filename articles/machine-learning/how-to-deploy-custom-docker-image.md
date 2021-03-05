@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695358"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209485"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Distribuera en modell med en anpassad Docker-bas avbildning
 
@@ -43,7 +43,7 @@ Det här dokumentet är uppdelat i två delar:
 
 * En Azure Machine Learning-arbetsyta. Mer information finns i artikeln [skapa en arbets yta](how-to-manage-workspace.md) .
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Azure CLI](/cli/azure/install-azure-cli).
 * [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * En [Azure Container Registry](../container-registry/index.yml) eller ett annat Docker-register som är tillgängligt på Internet.
 * Stegen i det här dokumentet förutsätter att du är van vid att skapa och använda ett __konfigurations objekt för konfigurations__ objekt som en del av modell distributionen. Mer information finns i [var du distribuerar och hur](how-to-deploy-and-where.md).
@@ -86,7 +86,7 @@ För GPU-avbildningar erbjuder Azure ML för närvarande både cuda9 och cuda10 
 | MPI | intelmpi = = 2018.3.222 |openmpi = = 3.1.2 |intelmpi = = 2018.3.222| openmpi = = 3.1.2 |
 | CUDA | - | - | 9.0/10.0 | 9.0/10.0/10.1 |
 | cudnn | - | - | 7.4/7.5 | 7.4/7.5 |
-| nccl | - | - | 2,4 | 2,4 |
+| nccl | - | - | 2.4 | 2.4 |
 | git | 2.7.4 | 2.7.4 | 2.7.4 | 2.7.4 |
 
 CPU-avbildningarna skapas från Ubuntu 16.04. GPU-avbildningarna för cuda9 är byggda från NVIDIA/CUDA: 9.0-cudnn7-devel-Ubuntu 16.04. GPU-avbildningarna för cuda10 är byggda från NVIDIA/CUDA: 10.0-cudnn7-devel-Ubuntu 16.04.
@@ -207,7 +207,7 @@ Om du vill använda en anpassad avbildning behöver du följande information:
 
 * Om avbildningen finns i ett __privat lager__ behöver du följande information:
 
-    * Register __adressen__. Exempelvis `myregistry.azureecr.io`.
+    * Register __adressen__. Till exempel `myregistry.azureecr.io`.
     * Ett __användar namn__ och __lösen ord__ för tjänstens huvud namn som har Läs behörighet till registret.
 
     Om du inte har den här informationen kan du prata med administratören för den Azure Container Registry som innehåller din avbildning.
@@ -216,7 +216,7 @@ Om du vill använda en anpassad avbildning behöver du följande information:
 
 Microsoft tillhandahåller flera Docker-avbildningar på en offentligt tillgänglig lagrings plats som kan användas med stegen i det här avsnittet:
 
-| Bild | Beskrivning |
+| Bild | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Kärn avbildning för Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Innehåller ONNX runtime för CPU inferencing |

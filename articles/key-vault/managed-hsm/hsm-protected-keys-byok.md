@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: dd5b38a858ceba12f5d48f1782da5b85228c4b06
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212118"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importera HSM-skyddade nycklar till hanterad HSM (BYOK)
 
@@ -56,7 +56,7 @@ Du kan logga in i Azure via CLI genom att skriva:
 az login
 ```
 
-Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli)
 
 ## <a name="supported-hsms"></a>HSM: er som stöds
 
@@ -76,7 +76,7 @@ Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure C
 
 ## <a name="supported-key-types"></a>Nyckeltyper som stöds
 
-|Nyckelnamn|Nyckeltyp|Nyckel storlek/kurva|Ursprung|Beskrivning|
+|Nyckelnamn|Nyckeltyp|Nyckel storlek/kurva|Ursprung|Description|
 |---|---|---|---|---|
 |Nyckel utbytes nyckel (KEK)|RSA| 2 048-bitars<br />3 072-bitars<br />4 096-bitars|Managed HSM|Ett HSM-backat RSA-nyckelpar genererat i hanterad HSM|
 |Mål nyckel|
@@ -105,7 +105,7 @@ KEK måste vara:
 > [!NOTE]
 > KEK måste ha ' import ' som den enda tillåtna nyckel åtgärden. import är ömsesidigt uteslutande med alla andra nyckel åtgärder.
 
-Använd kommandot [AZ Key Vault Key Create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) för att skapa en KEK som har nyckel åtgärder inställt på `import` . Registrera nyckel identifieraren ( `kid` ) som returneras från följande kommando. (Du kommer att använda `kid` värdet i [steg 3](#step-3-generate-and-prepare-your-key-for-transfer).)
+Använd kommandot [AZ Key Vault Key Create](/cli/azure/keyvault/key#az-keyvault-key-create) för att skapa en KEK som har nyckel åtgärder inställt på `import` . Registrera nyckel identifieraren ( `kid` ) som returneras från följande kommando. (Du kommer att använda `kid` värdet i [steg 3](#step-3-generate-and-prepare-your-key-for-transfer).)
 
 ```azurecli-interactive
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --hsm-name ContosoKeyVaultHSM
@@ -115,7 +115,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>Steg 2: Ladda ned den offentliga nyckeln KEK
 
-Använd [AZ Key Vault Key Download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) för att hämta den offentliga KEK-nyckeln till en. PEM-fil. Mål nyckeln som du importerar krypteras med hjälp av den offentliga nyckeln KEK.
+Använd [AZ Key Vault Key Download](/cli/azure/keyvault/key#az-keyvault-key-download) för att hämta den offentliga KEK-nyckeln till en. PEM-fil. Mål nyckeln som du importerar krypteras med hjälp av den offentliga nyckeln KEK.
 
 ```azurecli-interactive
 az keyvault key download --name KEKforBYOK --hsm-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -137,7 +137,7 @@ Se din HSM-leverantörs dokumentation för att ladda ned och installera BYOK-ver
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>Steg 4: överför din nyckel till hanterad HSM
 
-Slutför nyckel importen genom att överföra nyckel överförings paketet (en BYOK-fil) från den frånkopplade datorn till den Internet-anslutna datorn. Använd kommandot [AZ Key Vault Key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) för att överföra BYOK-filen till den hanterade HSM: en.
+Slutför nyckel importen genom att överföra nyckel överförings paketet (en BYOK-fil) från den frånkopplade datorn till den Internet-anslutna datorn. Använd kommandot [AZ Key Vault Key import](/cli/azure/keyvault/key#az-keyvault-key-import) för att överföra BYOK-filen till den hanterade HSM: en.
 
 ```azurecli-interactive
 az keyvault key import --hsm-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok

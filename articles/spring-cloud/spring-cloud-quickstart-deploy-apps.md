@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035143"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210316"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Snabb start: bygga och distribuera appar till Azure våren Cloud
 
@@ -187,9 +187,9 @@ Innan du distribuerar med Azure CLI eller Maven ska du slutföra exemplen som [e
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Installera JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [Installera JDK 8](/java/azure/jdk/)
 * [Registrera dig för en Azure-prenumeration](https://azure.microsoft.com/free/)
-* Valfritt [Installera Azure CLI-versionen 2.0.67 eller högre](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) och installera Azure våren Cloud-tillägget med kommandot: `az extension add --name spring-cloud`
+* Valfritt [Installera Azure CLI-versionen 2.0.67 eller högre](/cli/azure/install-azure-cli) och installera Azure våren Cloud-tillägget med kommandot: `az extension add --name spring-cloud`
 * Valfritt [Installera Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) och [Logga](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) in
 
 ## <a name="deployment-procedures"></a>Distributions procedurer

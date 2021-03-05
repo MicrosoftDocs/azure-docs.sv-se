@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26a9e931c42822218e7935f50c1f222ac33c34f2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015392"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210111"
 ---
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -21,7 +21,7 @@ ms.locfileid: "96015392"
 
 En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. 
 
-Skapa en resurs grupp med hjälp av [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI Command, kommandot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell eller från [Azure Portal](https://portal.azure.com).
+Skapa en resurs grupp med hjälp av [AZ Group Create](/cli/azure/group#az-group-create) Azure CLI Command, kommandot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell eller från [Azure Portal](https://portal.azure.com).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *Om du redan har ett nyckel valv kan du gå vidare till [Ange avancerade åtkomst principer för Key Vault](#set-key-vault-advanced-access-policies).*
 
-Skapa ett nyckel valv med hjälp [av AZ](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) -kommandot för att skapa Azure CLI, kommandot [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure PowerShell, [Azure Portal](https://portal.azure.com)eller en [Resource Manager-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+Skapa ett nyckel valv med hjälp [av AZ](/cli/azure/keyvault#az-keyvault-create) -kommandot för att skapa Azure CLI, kommandot [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure PowerShell, [Azure Portal](https://portal.azure.com)eller en [Resource Manager-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
 > Ditt nyckel valv och virtuella datorer måste finnas i samma prenumeration. För att säkerställa att krypterings hemligheter inte korsar regionala gränser, kräver Azure Disk Encryption att Key Vault och de virtuella datorerna samplaceras i samma region. Skapa och Använd en Key Vault som finns i samma prenumeration och region som de virtuella datorer som ska krypteras. 
@@ -129,7 +129,7 @@ Använd [AZ-uppdateringen](/cli/azure/keyvault#az-keyvault-update) för att akti
 
 Om du vill använda en nyckel krypterings nyckel (KEK) för ett extra säkerhets lager för krypterings nycklar lägger du till en KEK i nyckel valvet. När en nyckel krypterings nyckel anges använder Azure Disk Encryption den nyckeln för att omsluta krypterings hemligheter innan du skriver till Key Vault.
 
-Du kan generera en ny KEK med hjälp av kommandot för att skapa en Azure CLI- [AZ](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) , Azure PowerShell [Add-AzKeyVaultKey-](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet eller [Azure Portal](https://portal.azure.com/). Du måste generera en RSA-nyckel typ. Azure Disk Encryption har ännu inte stöd för att använda Elliptic kurv nycklar.
+Du kan generera en ny KEK med hjälp av kommandot för att skapa en Azure CLI- [AZ](/cli/azure/keyvault/key#az-keyvault-key-create) , Azure PowerShell [Add-AzKeyVaultKey-](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet eller [Azure Portal](https://portal.azure.com/). Du måste generera en RSA-nyckel typ. Azure Disk Encryption har ännu inte stöd för att använda Elliptic kurv nycklar.
 
 Du kan istället importera en KEK från din lokala nyckel hanterings HSM. Mer information finns i [Key Vault-dokumentationen](../articles/key-vault/keys/hsm-protected-keys.md).
 
@@ -145,15 +145,15 @@ Azure Disk Encryption har inte stöd för att ange port nummer som en del av Key
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Använd Azure CLI- [AZ](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) för att skapa en ny KEK och lagra den i ditt nyckel valv.
+Använd Azure CLI- [AZ](/cli/azure/keyvault/key#az-keyvault-key-create) för att skapa en ny KEK och lagra den i ditt nyckel valv.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-Du kan istället importera en privat nyckel med hjälp av Azure CLI- [AZ för nyckel import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) :
+Du kan istället importera en privat nyckel med hjälp av Azure CLI- [AZ för nyckel import](/cli/azure/keyvault/key#az-keyvault-key-import) :
 
-I båda fallen anger du namnet på din KEK till Azure CLI- [AZ VM-kryptering Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-Encryption-Key-parameter. 
+I båda fallen anger du namnet på din KEK till Azure CLI- [AZ VM-kryptering Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) --Key-Encryption-Key-parameter. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -167,7 +167,7 @@ Använd cmdleten Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyv
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-Du kan istället importera en privat nyckel med hjälp av kommandot Azure PowerShell [AZ Key Vault Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) .
+Du kan istället importera en privat nyckel med hjälp av kommandot Azure PowerShell [AZ Key Vault Key import](/cli/azure/keyvault/key#az-keyvault-key-import) .
 
 I båda fallen ska du ange ID: t för ditt KEK Key Vault och URL: en för din KEK till parametrarna Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId och-KeyEncryptionKeyUrl. Observera att det här exemplet förutsätter att du använder samma nyckel valv för både disk krypterings nyckeln och KEK.
 

@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449968"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211659"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Inställningar för ändrings begär Anden för ett Access-paket i hantering av Azure AD-berättigande
 
@@ -93,7 +93,7 @@ Följ dessa steg om du vill tillåta att användare i katalogen kan begära det 
 
     Gäst användare refererar till externa användare som har bjudits in till din katalog med [Azure AD B2B](../external-identities/what-is-b2b.md). Mer information om skillnaderna mellan medlems användare och gäst användare finns i [Vad är standard användar behörigheter i Azure Active Directory?](../fundamentals/users-default-permissions.md).
 
-1. Om du har valt **vissa användare och grupper**klickar du på **Lägg till användare och grupper**.
+1. Om du har valt **vissa användare och grupper** klickar du på **Lägg till användare och grupper**.
 
 1. I fönstret Välj användare och grupper väljer du de användare och grupper som du vill lägga till.
 
@@ -130,7 +130,7 @@ Följ de här stegen om du vill tillåta att användare som inte tillhör din ka
 
     En ansluten organisation är en extern Azure AD-katalog eller domän som du har en relation med.
 
-1. Om du har valt **vissa anslutna organisationer**klickar du på **Lägg till kataloger** för att välja från en lista över anslutna organisationer som administratören har lagt till tidigare.
+1. Om du har valt **vissa anslutna organisationer** klickar du på **Lägg till kataloger** för att välja från en lista över anslutna organisationer som administratören har lagt till tidigare.
 
 1. Skriv namnet eller domän namnet för att söka efter en tidigare ansluten organisation.
 
@@ -192,13 +192,11 @@ Om du vill ändra inställningarna för begär ande och godkännande för ett Ac
 
     Du kan alltid aktivera det i framtiden när du är klar med att skapa åtkomst paketet.
 
-    Om du har valt **Ingen (endast administratörers direkta tilldelningar)** och du anger Tillåt till **Nej**kan administratörer inte tilldela det här åtkomst paketet direkt.
+    Om du har valt **Ingen (endast administratörers direkta tilldelningar)** och du anger Tillåt till **Nej** kan administratörer inte tilldela det här åtkomst paketet direkt.
 
     ![Åtkomst paket-princip-aktivera princip inställning](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. Klicka på **Nästa**.
-
-1. Om du vill kräva att beställare tillhandahåller ytterligare information när du begär åtkomst till ett Access-paket, använder du stegen i []() för att konfigurera information om beställaren (för hands version).
 
 1. Konfigurera livs cykel inställningar.
 

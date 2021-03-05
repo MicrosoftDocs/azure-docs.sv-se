@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033803"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209687"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Data bindningar för Azure Table Storage för Azure Functions
 
@@ -390,7 +390,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `Table` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste anges till `table` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal.|
 |**position** | saknas | Måste anges till `out` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal. |
@@ -418,7 +418,7 @@ Du kan också använda en `CloudTable` metod parameter för att skriva till tabe
 
 # <a name="java"></a>[Java](#tab/java)
 
-Det finns två alternativ för att lägga till en tabell lagrings rad från en funktion med hjälp av [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) -anteckningen:
+Det finns två alternativ för att lägga till en tabell lagrings rad från en funktion med hjälp av [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput) -anteckningen:
 
 - **RETUR värde**: genom att använda anteckningen i själva funktionen sparas returvärdet för funktionen som en tabell lagrings rad.
 
@@ -446,7 +446,7 @@ Det finns två alternativ för att placera ett rad meddelande för tabell lagrin
 
 | Bindning | Referens |
 |---|---|
-| Tabeller | [Tabell fel koder](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Tabell | [Tabell fel koder](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tabell, kö | [Lagrings fel koder](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB, tabell, kö | [Felsökning](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
