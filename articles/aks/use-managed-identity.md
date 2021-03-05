@@ -4,12 +4,12 @@ description: Lär dig hur du använder hanterade identiteter i Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: e991f7313bae5aa67478043b4f9306dbc274e1e7
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98659996"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176101"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Använda hanterade identiteter i Azure Kubernetes-tjänsten
 
@@ -33,20 +33,20 @@ Du måste ha följande resurs installerad:
 
 AKS använder flera hanterade identiteter för inbyggda tjänster och tillägg.
 
-| Identitet                       | Name    | Användningsfall | Standard behörigheter | Ta med din egen identitet
+| Identitet                       | Namn    | Användningsfall | Standard behörigheter | Ta med din egen identitet
 |----------------------------|-----------|----------|
 | Kontrollplan | inte synlig | Används av AKS Control plan-komponenter för att hantera kluster resurser, inklusive belastnings utjämning och AKS-hanterade offentliga IP-adresser och åtgärder för automatisk skalnings åtgärd i klustret | Deltagar roll för nod resurs grupp | stöds
 | Kubelet | AKS-kluster namn – agentpoolegenskap | Autentisering med Azure Container Registry (ACR) | NA (för Kubernetes v 1.15 +) | Stöds för närvarande inte
-| Tillägg | AzureNPM | Ingen identitet krävs | NA | No
-| Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | No
-| Tillägg | Azure-policy (Gatekeeper) | Ingen identitet krävs | NA | No
-| Tillägg | Azure-princip | Ingen identitet krävs | NA | No
-| Tillägg | Calico | Ingen identitet krävs | NA | No
-| Tillägg | Instrumentpanel | Ingen identitet krävs | NA | No
-| Tillägg | HTTPApplicationRouting | Hanterar nödvändiga nätverks resurser | Läsar roll för nod resurs grupp, deltagar roll för DNS-zon | No
-| Tillägg | Ingress Application Gateway | Hanterar nödvändiga nätverks resurser| Deltagar roll för nod resurs grupp | No
-| Tillägg | omsagent | Används för att skicka AKS-mått till Azure Monitor | Övervaknings mått utgivar rollen | No
-| Tillägg | Virtual-Node (ACIConnector) | Hanterar nödvändiga nätverks resurser för Azure Container Instances (ACI) | Deltagar roll för nod resurs grupp | No
+| Tillägg | AzureNPM | Ingen identitet krävs | NA | Inga
+| Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | Inga
+| Tillägg | Azure-policy (Gatekeeper) | Ingen identitet krävs | NA | Inga
+| Tillägg | Azure-princip | Ingen identitet krävs | NA | Inga
+| Tillägg | Calico | Ingen identitet krävs | NA | Inga
+| Tillägg | Instrumentpanel | Ingen identitet krävs | NA | Inga
+| Tillägg | HTTPApplicationRouting | Hanterar nödvändiga nätverks resurser | Läsar roll för nod resurs grupp, deltagar roll för DNS-zon | Inga
+| Tillägg | Ingress Application Gateway | Hanterar nödvändiga nätverks resurser| Deltagar roll för nod resurs grupp | Inga
+| Tillägg | omsagent | Används för att skicka AKS-mått till Azure Monitor | Övervaknings mått utgivar rollen | Inga
+| Tillägg | Virtual-Node (ACIConnector) | Hanterar nödvändiga nätverks resurser för Azure Container Instances (ACI) | Deltagar roll för nod resurs grupp | Inga
 | OSS-projekt | AAD-Pod – identitet | Gör det möjligt för program att komma åt moln resurser på ett säkert sätt med Azure Active Directory (AAD) | NA | Steg för att bevilja behörighet på https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Skapa ett AKS-kluster med hanterade identiteter
@@ -205,5 +205,5 @@ Ett lyckat kluster skapas med dina egna hanterade identiteter som innehåller de
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create&preserve-view=true
-[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list&preserve-view=true
+[az-identity-create]: /cli/azure/identity#az-identity-create
+[az-identity-list]: /cli/azure/identity#az-identity-list

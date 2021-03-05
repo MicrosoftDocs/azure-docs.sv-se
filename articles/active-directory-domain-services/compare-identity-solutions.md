@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: justinha
-ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620196"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174639"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Jämför självhanterade Active Directory Domain Services, Azure Active Directory och hanterade Azure Active Directory Domain Services
 
@@ -78,7 +78,7 @@ I följande tabell beskrivs några av de funktioner som du kan behöva för din 
 | **Säkert LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP-läsning**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP-skrivning**                                    | **&#x2713;** (inom den hanterade domänen) | **&#x2713;** |
-| **Geo-distribuerade distributioner**                   | **&#x2715;** | **&#x2713;** |
+| **Geo-distribuerade distributioner**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS och Azure AD
 
@@ -96,7 +96,7 @@ Azure AD-anslutna enheter ger dig följande fördelar:
 
 Enheter kan anslutas till Azure AD med eller utan en hybrid distribution som innehåller en lokal AD DS-miljö. I följande tabell beskrivs vanliga modeller för enhets ägarskap och hur de normalt skulle vara anslutna till en domän:
 
-| **Typ av enhet**                                        | **Enhetsplattformar**             | **Tillhandahållande**          |
+| **Typ av enhet**                                        | **Enhetsplattformar**             | **Mekanism**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
 | Personliga enheter                                          | Windows 10, iOS, Android, macOS | Azure AD-registrerad    |
 | Den företagsägda enheten är inte ansluten till en lokal AD DS | Windows 10                       | Azure AD-ansluten        |

@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175376"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Webb läsar stöd för FIDO2-lösenordsbaserad autentisering
 
@@ -26,12 +26,14 @@ Azure Active Directory tillåter att [FIDO2-säkerhetsnycklar](./concept-authent
 
 I den här tabellen visas stöd för att autentisera Azure Active Directory (Azure AD) och Microsoft-konton (MSA). Microsoft-konton skapas av konsumenter för tjänster som Xbox, Skype eller Outlook.com. Enhets typer som stöds är **USB**, kommunikation i nära fält (**NFC**) och Bluetooth låg energi (**Bell**).
 
-|  | Chrome |  |  | Edge |  |  | Firefox |  |  |
+| Operativsystem | Chrome | Chrome  | Chrome | Edge | Edge | Edge | Firefox | Firefox | Firefox |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | | USB | NFC | A | USB | NFC | A | USB | NFC | A |
 | **Windows**  | ![Chrome stöder USB på Windows för AAD-konton.][y] | ![Chrome stöder NFC på Windows för AAD-konton.][y] | ![Chrome stöder tabell i Windows för AAD-konton.][y] | ![Edge stöder USB på Windows för AAD-konton.][y] | ![Edge stöder NFC på Windows för AAD-konton.][y] | ![Edge stöder Bell på Windows för AAD-konton.][y] | ![Firefox stöder USB på Windows för AAD-konton.][y] | ![Firefox stöder NFC på Windows för AAD-konton.][y] | ![Firefox stöder Bell på Windows för AAD-konton.][y] |
 | **macOS**  | ![Chrome har stöd för USB på macOS för AAD-konton.][y] | ![Chrome stöder inte NFC på macOS för AAD-konton.][n] | ![Chrome stöder inte Bell på macOS för AAD-konton.][n] | ![Edge har stöd för USB på macOS för AAD-konton.][y] | ![Edge stöder inte NFC på macOS för AAD-konton.][n] | ![Edge stöder inte Bell på macOS för AAD-konton.][n] | ![Firefox stöder inte USB på macOS för AAD-konton.][n] | ![Firefox stöder inte NFC på macOS för AAD-konton.][n] | ![Firefox har inte stöd för Bell på macOS för AAD-konton.][n] |
 | **Linux**  | ![Chrome stöder USB på Linux för AAD-konton.][y] | ![Chrome stöder inte NFC på Linux för AAD-konton.][n] | ![Chrome stöder inte Bell på Linux för AAD-konton.][n] | ![Edge stöder inte USB på Linux för AAD-konton.][n] | ![Edge stöder inte NFC på Linux för AAD-konton.][n] | ![Edge stöder inte Bell på Linux för AAD-konton.][n] | ![Firefox stöder inte USB på Linux för AAD-konton.][n] | ![Firefox stöder inte NFC på Linux för AAD-konton.][n] | ![Firefox har inte stöd för Bell på Linux för AAD-konton.][n] |
+
+
 
 ## <a name="unsupported-browsers"></a>Webbläsare som inte stöds
 

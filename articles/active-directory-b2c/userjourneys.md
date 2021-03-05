@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120750"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174673"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -119,18 +119,23 @@ Elementet **villkor** innehåller följande element:
 
 #### <a name="precondition"></a>Villkor
 
+Orchestration-steg kan utföras villkorligt, baserat på de villkor som definieras i Orchestration-steget. Det finns två typer av förutsättningar:
+ 
+- **Anspråk finns** – anger att åtgärderna ska utföras om angivna anspråk finns i användarens aktuella anspråks uppsättning.
+- **Anspråk är lika med** -anger att åtgärderna ska utföras om det angivna anspråket finns och dess värde är lika med det angivna värdet. Kontrollen utför en Skift läges känslig tal jämförelse. När du kontrollerar boolesk typ av anspråk, använder `True` eller `False` .
+
 **Villkors** elementet innehåller följande attribut:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Typ av kontroll eller fråga som ska utföras för det här villkoret. Värdet kan vara **ClaimsExist**, som anger att åtgärderna ska utföras om de angivna anspråken finns i användarens aktuella anspråks uppsättning eller **ClaimEquals**, vilket anger att åtgärderna ska utföras om det angivna anspråket finns och dess värde är lika med det angivna värdet. |
-| `ExecuteActionsIf` | Ja | Använd ett sant-eller falskt-test för att avgöra om åtgärderna i villkoret ska utföras. |
+| `ExecuteActionsIf` | Ja | Använd ett `true` eller- `false` test för att avgöra om åtgärderna i villkoret ska utföras. |
 
 **Villkors** elementen innehåller följande element:
 
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
-| Värde | 1: n | En ClaimTypeReferenceId som ska frågas efter. Ett annat värde element innehåller det värde som ska kontrol leras.</li></ul>|
+| Värde | 1:2 | Identifieraren för en anspråks typ. Anspråket har redan definierats i avsnittet anspråks schema i princip filen, eller överordnad princip fil. När villkoret är typ av `ClaimEquals` innehåller ett andra `Value` element det värde som ska kontrol leras. |
 | Action | 1:1 | Den åtgärd som ska utföras om villkors kontrollen i ett Orchestration-steg är sann. Om värdet för `Action` är inställt på `SkipThisOrchestrationStep` , ska den associerade `OrchestrationStep` inte utföras. |
 
 #### <a name="preconditions-examples"></a>Exempel på villkor
@@ -189,7 +194,7 @@ Villkor kan kontrol lera flera villkor. I följande exempel kontrol leras om "ob
 </OrchestrationStep>
 ```
 
-## <a name="identity-provider-selection"></a>Val av identitetsprovider
+## <a name="claims-provider-selection"></a>Val av anspråks leverantör
 
 Med val av identitetsprovider kan användarna välja en åtgärd från en lista med alternativ. Valet av identitetsprovider består av två Dirigerings steg: 
 
@@ -215,7 +220,7 @@ Med val av identitetsprovider kan användarna välja en åtgärd från en lista 
 | TargetClaimsExchangeId | Inga | Identifieraren för anspråks utbytet, som körs i nästa Dirigerings steg för valet av anspråks leverantör. Det här attributet eller attributet ValidationClaimsExchangeId måste anges, men inte båda. |
 | ValidationClaimsExchangeId | Inga | ID för anspråk utbytet, som körs i det aktuella Orchestration-steget för att verifiera valet av anspråks leverantör. Det här attributet eller attributet TargetClaimsExchangeId måste anges, men inte båda. |
 
-### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection-exempel
+### <a name="claims-provider-selection-example"></a>Exempel på anspråks leverantörs val
 
 I följande Orchestration-steg kan användaren välja att logga in med Facebook, LinkedIn, Twitter, Google eller ett lokalt konto. Om användaren väljer en av sociala identitets leverantörer körs det andra Orchestration-steget med det valda anspråks utbytet som anges i `TargetClaimsExchangeId` attributet. Det andra Orchestration-steget omdirigerar användaren till den sociala identitets leverantören för att slutföra inloggnings processen. Om användaren väljer att logga in med det lokala kontot Azure AD B2C stanna kvar på samma Dirigerings steg (samma registrerings sida eller inloggnings sida) och hoppar över det andra Orchestration-steget.
 

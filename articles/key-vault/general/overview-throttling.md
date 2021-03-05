@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289676"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175761"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Riktlinjer för begränsning i Azure Key Vault
 
@@ -24,7 +24,7 @@ Begränsnings gränserna varierar beroende på scenariot. Om du till exempel utf
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Hur hanterar Key Vault sina gränser?
 
-Tjänst begränsningar i Key Vault förhindra missbruk av resurser och garantera tjänst kvalitet för alla Key Vault klienter. När ett tröskelvärde för tjänsten överskrids, Key Vault begränsar alla ytterligare begär Anden från klienten under en viss tids period, returnerar HTTP-statuskod 429 (för många begär Anden) och begäran Miss lyckas. Misslyckade förfrågningar som returnerar ett 429-antal mot de begränsnings gränser som spåras av Key Vault. 
+Tjänst begränsningar i Key Vault förhindra missbruk av resurser och garantera tjänst kvalitet för alla Key Vault klienter. När ett tröskelvärde för tjänsten överskrids, Key Vault begränsar alla ytterligare begär Anden från klienten under en viss tids period, returnerar HTTP-statuskod 429 (för många begär Anden) och begäran Miss lyckas. Misslyckade förfrågningar som returnerar en 429 räknas inte mot begränsnings gränserna som spåras av Key Vault. 
 
 Key Vault har ursprungligen utformats för att användas för att lagra och hämta dina hemligheter vid distributions tillfället.  Världen har utvecklats och Key Vault används vid körning för att lagra och hämta hemligheter och ofta appar och tjänster vill använda Key Vault som en databas.  Aktuella gränser stöder inte höga data flödes hastigheter.
 
@@ -41,14 +41,14 @@ Om du upptäcker att ovanstående fortfarande inte uppfyller dina behov kan du f
 
 | Valvnamn | Valv region | Objekt typ (hemligt, nyckel eller certifikat) | Åtgärd (er) * | Nyckel typ | Nyckel längd eller kurva | HSM-nyckel?| RPS för stabilt tillstånd krävs | Topp-RPS krävs |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Tangent | Tecken | EC | P-256 | Nej | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Nyckel | Tecken | EC | P-256 | Inga | 200 | 1000 |
 
 \* En fullständig lista över möjliga värden finns i [Azure Key Vault åtgärder](/rest/api/keyvault/key-operations).
 
 Om ytterligare kapacitet godkänns bör du tänka på följande när kapaciteten ökar:
 1. Modell ändringar för data konsekvens. När ett valv har tillåtts med ytterligare data flödes kapacitet ändras den Key Vault tjänstens data konsekvens ändringar (krävs för att uppfylla högre volym-RPS eftersom den underliggande Azure Storage-tjänsten inte kan fortsätta).  I en kortfattat så Jenkins:
-  1. **Utan att tillåta registrering** : Key Vault tjänsten visar resultatet av en Skriv åtgärd (t. ex. SecretSet, CreateKey) omedelbart i efterföljande anrop (t. ex. SecretGet, inloggning).
-  1. **Med Tillåt-lista** : Key Vault tjänsten visar resultatet av en Skriv åtgärd (t. ex. SecretSet, CreateKey) inom 60 sekunder i efterföljande anrop (t. ex. SecretGet, inloggning).
+  1. **Utan att tillåta registrering**: Key Vault tjänsten visar resultatet av en Skriv åtgärd (t. ex. SecretSet, CreateKey) omedelbart i efterföljande anrop (t. ex. SecretGet, inloggning).
+  1. **Med Tillåt-lista**: Key Vault tjänsten visar resultatet av en Skriv åtgärd (t. ex. SecretSet, CreateKey) inom 60 sekunder i efterföljande anrop (t. ex. SecretGet, inloggning).
 1. Klient koden måste uppfylla en princip för säkerhets kopiering för 429-försök. Klient koden som anropar tjänsten Key Vault får inte omedelbart försöka igen Key Vault begär anden när en 429-svarskod tas emot.  Vägledningen för Azure Key Vault begränsning som publiceras här rekommenderar att du använder exponentiell backoff när du tar emot en 429 HTTP-svarskod.
 
 Om du har ett giltigt affärs ärende för högre begränsnings gränser kan du kontakta oss.

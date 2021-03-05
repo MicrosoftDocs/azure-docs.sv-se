@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256549"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174737"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Självstudie: Konfigurera säker LDAP för en Azure Active Directory Domain Services hanterad domän
 
@@ -110,7 +110,7 @@ Om du vill använda säker LDAP krypteras nätverks trafiken med PKI (Public Key
 * En **privat** nyckel tillämpas på den hanterade domänen.
     * Den privata nyckeln används för att *dekryptera* den säkra LDAP-trafiken. Den privata nyckeln bör endast tillämpas på den hanterade domänen och inte distribueras till klient datorer.
     * Ett certifikat som innehåller den privata nyckeln använder *. PFX* -filformat.
-    * Krypteringsalgoritmen för certifikatet måste vara *TripleDES-SHA1*.
+    * När du exporterar certifikatet måste du ange *TripleDES-SHA1-* krypteringsalgoritmen. Detta gäller endast för. pfx-filen och påverkar inte den algoritm som används av själva certifikatet. Observera att alternativet *TripleDES-SHA1* bara är tillgängligt från och med Windows Server 2016.
 * En **offentlig** nyckel tillämpas på klient datorerna.
     * Den här offentliga nyckeln används för att *kryptera* den säkra LDAP-trafiken. Den offentliga nyckeln kan distribueras till klient datorer.
     * Certifikat utan privat nyckel använder *. CER* -filformat.
@@ -151,6 +151,11 @@ Innan du kan använda det digitala certifikatet som skapades i föregående steg
 1. Eftersom det här certifikatet används för att dekryptera data bör du kontrol lera åtkomsten noggrant. Ett lösen ord kan användas för att skydda användningen av certifikatet. Utan rätt lösen ord kan certifikatet inte tillämpas på en tjänst.
 
     På sidan **säkerhet** väljer du alternativet för **lösen ord** för att skydda *. PFX* -certifikatfil. Krypteringsalgoritmen måste vara *TripleDES-SHA1*. Ange och bekräfta ett lösen ord och välj sedan **Nästa**. Det här lösen ordet används i nästa avsnitt för att aktivera säker LDAP för din hanterade domän.
+
+    Om du exporterar med [PowerShell-cmdleten export-pfxcertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)måste du skicka flaggan *-CryptoAlgorithmOption* med hjälp av TripleDES_SHA1.
+
+    ![Skärm bild av hur du krypterar lösen ordet](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. På sidan **fil som ska exporteras** anger du det fil namn och den plats där du vill exportera certifikatet, till exempel *C:\Users\accountname\azure-AD-DS.pfx*. Anteckna lösen ordet och platsen för *. PFX* -fil som denna information krävs i nästa steg.
 1. På sidan Granska väljer du **Slutför** för att exportera certifikatet till en *. PFX* -certifikatfil. En bekräftelse dialog ruta visas när certifikatet har exporter ATS.
 1. Lämna MMC öppet för användning i följande avsnitt.
@@ -240,7 +245,7 @@ Nu ska vi skapa en regel för att tillåta inkommande säker LDAP-åtkomst via T
     | Protokoll                          | TCP          |
     | Åtgärd                            | Tillåt        |
     | Prioritet                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Namn                              | AllowLDAPS   |
 
 1. När du är klar väljer du **Lägg till** för att spara och tillämpa regeln.
 

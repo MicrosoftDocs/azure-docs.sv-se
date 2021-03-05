@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755916"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175396"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform ID-token
 
@@ -55,7 +55,7 @@ Visa denna v 2.0-exempel-token i [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV
 |-----|--------|-------------|
 |`typ` | Sträng-Always-JWT | Anger att token är en JWT-token.|
 |`alg` | Sträng | Anger algoritmen som användes för att signera token. Exempel: "RS256" |
-|`kid` | Sträng | Tumavtryck för den offentliga nyckel som används för att signera denna token. Genereras i både v 1.0 och v 2.0 `id_tokens` . |
+|`kid` | Sträng | Tumavtryck för den offentliga nyckel som används för att verifiera denna token. Genereras i både v 1.0 och v 2.0 `id_tokens` . |
 |`x5t` | Sträng | Samma (används och värdet) som `kid` . Detta är dock ett äldre anspråk som endast har genererats i v 1.0 `id_tokens` för kompatibilitet. |
 
 ### <a name="payload-claims"></a>Nytto Last anspråk

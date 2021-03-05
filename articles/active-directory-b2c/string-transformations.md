@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/03/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994850"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175098"
 ---
 # <a name="string-claims-transformations"></a>Transformeringar av sträng anspråk
 
@@ -149,6 +149,42 @@ Använd den här anspråks omvandlingen för att ange ett sträng värde för Cl
     - **värde**: contoso-villkor för tjänsten...
 - Utgående anspråk:
     - **createdClaim**: TOS-claimType innehåller "användar villkoren för contoso..." värde.
+
+## <a name="copyclaimifpredicatematch"></a>CopyClaimIfPredicateMatch
+
+Kopiera värdet för ett anspråk till ett annat om värdet för indata-anspråket matchar predikatet utgående anspråk. 
+
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | sträng | Anspråks typen, som ska kopieras. |
+| OutputClaim | outputClaim | sträng | Anspråks typen som skapas efter att den här anspråks omvandlingen har anropats. Värdet för det inmatade anspråket kontrol leras mot detta Claim-predikat. |
+
+I följande exempel kopieras värdet för signInName-anspråk till anspråket telefonnummer, endast om signInName är ett telefonnummer. För det fullständiga exemplet, se [telefonnummer eller inloggnings](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml) start paket princip för e-post.
+
+```xml
+<ClaimsTransformation Id="SetPhoneNumberIfPredicateMatch" TransformationMethod="CopyClaimIfPredicateMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="signInName" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example-1"></a>Exempel 1
+
+- Inmatade anspråk:
+    - **inputClaim**: bob@contoso.com
+- Utgående anspråk:
+    - **outputClaim**: utgående anspråk ändras inte från det ursprungliga värdet.
+
+### <a name="example-2"></a>Exempel 2
+
+- Inmatade anspråk:
+    - **inputClaim**: + 11234567890
+- Utgående anspråk:
+    - **outputClaim**: + 11234567890
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -518,7 +554,7 @@ I följande exempel söker du efter domän namnet i en av indataparametrar-samli
 - Utgående anspråk:
     - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
 
-När `errorOnFailedLookup` Indataparametern är inställt `true` på, **LookupValue** utförs omvandlingen av sökanspråk alltid från en [teknisk verifierings profil](validation-technical-profile.md) som anropas av en [självkontrollerad teknisk profil](self-asserted-technical-profile.md)eller en [DisplayConrtol](display-controls.md). `LookupNotFound`Metadata för en självkontrollerad teknisk profil styr det fel meddelande som visas för användaren.
+När `errorOnFailedLookup` Indataparametern är inställt `true` på,  utförs omvandlingen av sökanspråk alltid från en [teknisk verifierings profil](validation-technical-profile.md) som anropas av en [självkontrollerad teknisk profil](self-asserted-technical-profile.md)eller en [DisplayConrtol](display-controls.md). `LookupNotFound`Metadata för en självkontrollerad teknisk profil styr det fel meddelande som visas för användaren.
 
 ![AssertStringClaimsAreEqual-körning](./media/string-transformations/assert-execution.png)
 

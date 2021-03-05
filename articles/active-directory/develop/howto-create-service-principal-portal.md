@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 5dd960dde72b879515bd948c4731ead135bef4b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6adc3a8af90f6f05f640de97b8fa74c8d40e0329
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035058"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175557"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Anvisningar: Använd portalen för att skapa ett Azure AD-program och huvudnamn för tjänsten som kan komma åt resurser
 
@@ -84,6 +84,9 @@ Nu ska vi gå direkt till att skapa identiteten. Om du stöter på ett problem k
    ![Ange ett namn för ditt program](./media/howto-create-service-principal-portal/create-app.png)
 
 Du har skapat ditt Azure AD-program och tjänstens huvud namn.
+
+> [!NOTE]
+> Du kan registrera flera program med samma namn i Azure AD, men programmen måste ha olika program-ID: n (klient).
 
 ## <a name="assign-a-role-to-the-application"></a>Tilldela en roll till programmet
 

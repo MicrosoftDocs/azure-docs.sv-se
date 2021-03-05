@@ -90,6 +90,8 @@
           href: vision-solution-troubleshooting.md
         - name: Fel sökning av Azure percept-ljud
           href: troubleshoot-audio-accessory-speech-module.md
+        - name: Kända problem
+          href: known-issues.md
 - name: Referens
   items:
     - name: Data blad för Azure percept-enheter

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe69967d84777091aec0bbbf1626b98f5018d0e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693300"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175319"
 ---
 # <a name="authentication-methods-activity"></a>Aktiviteter i autentiseringsmetoder 
 
@@ -26,10 +26,17 @@ Med den nya autentiseringsmetoden aktivitets instrument panel kan administratör
 
 ## <a name="permissions-and-licenses"></a>Behörigheter och licenser
 
-Följande roller kan komma åt användning och insikter:
+Inbyggda och anpassade roller med följande behörigheter kan komma åt aktivitets bladet för autentiseringsmetoder och API: er:
+
+- Microsoft. Directory/auditLogs/allProperties/Read
+- Microsoft. Directory/signInReports/allProperties/Read
+
+Följande roller har de behörigheter som krävs:
 
 - Rapportläsare
 - Säkerhetsläsare
+- Global läsare
+- Säkerhetsoperatör
 - Säkerhetsadministratör
 - Global administratör
 
@@ -122,11 +129,12 @@ Rapporten registrerings information visar följande information för varje anvä
 - Status (lyckades, misslyckades)
 - Orsak till startfel (förklaring)
 
-  ![Skärm bild av sidan användning](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
+  ![Skärm bild av registrerings-och återställnings händelser](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
 
 ## <a name="limitations"></a>Begränsningar
 
-Registreringar av tillfälliga åtkomst pass (KNACKNING) visas inte på fliken registrering i rapporten eftersom de bara är giltiga under en kort tids period.
+- Data i rapporten uppdateras inte i real tid och kan avspegla en fördröjning på upp till några timmar.
+- Tillfälliga åtkomst pass-registreringar visas inte på fliken registrering i rapporten eftersom de bara är giltiga under kort tids period.
 
 ## <a name="next-steps"></a>Nästa steg
 

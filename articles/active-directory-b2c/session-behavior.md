@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2d64e85576b35caa2262ad1d635fc72fc7e2d2b8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120631"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175115"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurera sessionsbeteende i Azure Active Directory B2C
 
@@ -194,7 +194,7 @@ För att lägga till KMSI avgör-rutan på sidan för registrering och inloggnin
 
 ### <a name="configure-a-relying-party-file"></a>Konfigurera en förlitande parts fil
 
-Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
+Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat. Med parametern keepAliveInDays kan du konfigurera hur länge sessions-cookien för att förbli inloggad (KMSI avgör) ska vara kvar. Om du till exempel ställer in värdet på 30 sparas KMSI avgör sessions-cookie i 30 dagar. Intervallet för värdet är mellan 1 och 90 dagar.
 
 1. Öppna din anpassade princip fil. Till exempel *SignUpOrSignin.xml*.
 1. Lägg till en `<UserJourneyBehaviors>` underordnad nod till noden om den inte redan finns `<RelyingParty>` . Den måste finnas omedelbart efter `<DefaultUserJourney ReferenceId="User journey Id" />` , till exempel: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .

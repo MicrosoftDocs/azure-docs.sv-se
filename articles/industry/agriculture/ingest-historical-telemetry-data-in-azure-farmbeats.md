@@ -4,14 +4,14 @@ description: I den här artikeln beskrivs hur du matar in historiska telemetrida
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656792"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173757"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Mata in historiska telemetridata
 
@@ -28,7 +28,7 @@ Innan du fortsätter med den här artikeln måste du kontrol lera att du har ins
 Du måste aktivera partner integrering till din Azure FarmBeats-instans. Det här steget skapar en klient som har åtkomst till din Azure FarmBeats-instans som din enhets partner och ger dig följande värden som krävs i följande steg:
 
 - API-slut punkt: Detta är Datahub-URL, till exempel https:// \<datahub> . azurewebsites.net
-- Klientorganisations-ID
+- Klient-ID:t
 - Klient-ID
 - Klienthemlighet
 - EventHub-anslutningssträng
@@ -114,7 +114,7 @@ Gör så här:
 | DeviceModelId | ID för associerad enhets modell. |
 | HardwareId | Unikt ID för enheten, till exempel MAC-adressen. |
 | ReportingInterval | Rapport intervall i sekunder. |
-| Plats | Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
+| Location | Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
 | ParentDeviceId | ID för den överordnade enhet som enheten är ansluten till. Till exempel en nod som är ansluten till en gateway. En nod har parentDeviceId som gateway. |
 | Namn | Ett namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på partner sidan. Om partner enhetens namn är användardefinierad, ska samma användardefinierade namn spridas till FarmBeats. |
 | Beskrivning | Ange en meningsfull beskrivning. |
@@ -134,7 +134,7 @@ Gör så här:
 | **Mäta** |  |
 | HardwareId | Unikt ID för sensorn som anges av tillverkaren. |
 | SensorModelId | ID för associerad sensor modell. |
-| Plats | Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
+| Location | Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
 | Port > namn | Namn och typ för den port som sensorn är ansluten till på enheten. Det måste vara samma namn som det definieras i enhets modellen. |
 | DeviceID | ID för den enhet som sensorn är ansluten till. |
 | Namn | Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod. |
@@ -153,7 +153,7 @@ FarmBeats Datahub använder Bearer-autentisering, som behöver följande autenti
 
 - Klient-ID
 - Klienthemlighet
-- Klientorganisations-ID
+- Klient-ID:t
 
 Med dessa autentiseringsuppgifter kan anroparen begära en åtkomsttoken. Token måste skickas i efterföljande API-begäranden i avsnittet rubrik enligt följande:
 

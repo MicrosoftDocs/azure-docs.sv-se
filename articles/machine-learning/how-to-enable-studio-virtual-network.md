@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559547"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171557"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Använda Azure Machine Learning Studio i ett virtuellt Azure-nätverk
 
@@ -38,7 +38,6 @@ Se de andra artiklarna i den här serien:
 
 > [!IMPORTANT]
 > Om din arbets yta är i ett __suveränt moln__, till exempel Azure Government eller Azure Kina 21Vianet, stöder integrerade notebook-datorer _inte_ användningen av lagring i ett virtuellt nätverk. Då kan du i stället använda Jupyter-notebook-filer från en beräkningsinstans. Mer information finns i avsnittet [åtkomst data i en Compute instance-anteckningsbok](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
-
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -107,7 +106,6 @@ I följande tabell beskrivs varför du måste aktivera hanterad identitetsautent
 >
 > Lös problemet genom att ta bort filestore-kontot från det virtuella nätverket och sedan lägga till det i det virtuella nätverket igen.
 
-
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Bevilja hantering av hanterad identitets __läsare__ åtkomst till lagrings privat länk
 
 Om ditt Azure Storage-konto använder en privat slut punkt måste du bevilja åtkomst till den privata länken till den arbets yta som hanteras av identitets **läsaren** . Mer information finns i den inbyggda rollen [läsare](../role-based-access-control/built-in-roles.md#reader) . 
@@ -162,7 +160,7 @@ Du bör också [Aktivera hanterad identitets autentisering](#configure-datastore
 
 ## <a name="next-steps"></a>Nästa steg
 
-Den här artikeln är en valfri del av en serie virtuella nätverks serier i fyra delar. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
+Den här artikeln är del fem i en serie virtuella nätverks serier i fem delar. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
 
 * [Del 1: översikt över virtuella nätverk](how-to-network-security-overview.md)
 * [Del 2: skydda arbets ytans resurser](how-to-secure-workspace-vnet.md)

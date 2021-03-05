@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 78c5d2d03ebca45bcf1602b35453914d033db5c8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098255"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175829"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Konfigurera Azure percept DK och distribuera din första AI-modell
 
@@ -182,7 +182,7 @@ Följ [dessa steg](https://docs.microsoft.com/azure/cost-management-billing/mana
 
 ## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Visa din enhet i Azure percept Studio och distribuera vanliga färdiga exempel appar
 
-1. Visa din lista över enheter från översikts sidan för Azure-percept. Översikts sidan för Azure percept är din start punkt för att komma åt många olika arbets flöden för både start och avancerad AI Edge-modell och utveckling av lösningar
+1. Visa listan över enheter från översikts sidan för [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) . Översikts sidan för Azure percept är din start punkt för att komma åt många olika arbets flöden för både start och avancerad AI Edge-modell och utveckling av lösningar
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Visa din lista över enheter.":::
     

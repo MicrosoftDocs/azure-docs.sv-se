@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647446"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175438"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snabb start: registrera ett program med Microsoft Identity Platform
 
@@ -40,7 +40,8 @@ Följ de här stegen för att skapa appens registrering:
 1. Om du har åtkomst till flera klienter går du till den översta menyn och använder filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
-1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet. Du kan ändra den senare.
+1. Ange ett visnings **namn** för ditt program. Användare av programmet kan se visnings namnet när de använder appen, till exempel vid inloggning.
+    Du kan när som helst ändra visnings namnet och flera registrerings program kan dela samma namn. App-registreringens automatiskt genererade program-ID (klient), inte dess visnings namn, identifierar din app unikt i identitets plattformen.
 1. Ange vem som kan använda programmet, ibland kallat *inloggnings mål gruppen*.
 
     | Kontotyper som stöds | Beskrivning |

@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: 11e47e83da09699d60ada11539dbb2f000f075db
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1f37ee36710211e95bcc5d99a095de4303c85281
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788680"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172400"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>Snabb start: skapa en python-app med Azure App Service på Linux
 
@@ -230,7 +230,7 @@ Har du problem? Se först i [fel söknings guiden](configure-language-python.md#
 
 Du kan komma åt konsol loggarna som genereras inifrån appen och den behållare där den körs. Loggar innehåller alla utdata som genereras med hjälp av `print` instruktioner.
 
-Om du vill strömma loggar kör du kommandot [AZ webapp log pilslut](/cli/azure/webapp/log?view=azure-cli-latest&preserve-view=true#az_webapp_log_tail) :
+Om du vill strömma loggar kör du kommandot [AZ webapp log pilslut](/cli/azure/webapp/log#az_webapp_log_tail) :
 
 ```azurecli
 az webapp log tail

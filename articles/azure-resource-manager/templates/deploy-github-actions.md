@@ -4,12 +4,12 @@ description: Beskriver hur du distribuerar Azure Resource Manager-mallar (ARM-ma
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 67d4ac51e3e1f84f6a9acd0fc94d5818355d3954
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 243316b32d5b0cf62f03ae77d8a9fb919743ace1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762082"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172838"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Distribuera ARM-mallar med hjälp av GitHub-åtgärder
 
@@ -17,7 +17,7 @@ ms.locfileid: "98762082"
 
 Använd [åtgärden distribuera Azure Resource Manager mall](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) för att automatisera distributionen av en Azure Resource Manager-mall (arm-mall) till Azure.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).
@@ -38,7 +38,7 @@ Filen har två avsnitt:
 ## <a name="generate-deployment-credentials"></a>Generera autentiseringsuppgifter för distribution
 
 
-Du kan skapa ett [huvud namn för tjänsten](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
+Du kan skapa ett [huvud namn för tjänsten](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
 
 Skapa en resurs grupp om du inte redan har en.
 

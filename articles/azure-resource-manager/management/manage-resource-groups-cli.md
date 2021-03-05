@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: e28b66844eaa0b73c2654175dea2e31d3cd75f5d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900288"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172104"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Hantera Azure Resource Manager resurs grupper med hjälp av Azure CLI
 
@@ -125,7 +125,7 @@ När du har konfigurerat resurs gruppen kanske du vill visa Resource Manager-mal
 - Automatisera framtida distributioner av lösningen eftersom mallen innehåller all fullständig infrastruktur.
 - Lär dig mer om mallens syntax genom att titta på den JavaScript Object Notation (JSON) som representerar din lösning.
 
-Om du vill exportera alla resurser i en resurs grupp använder du [AZ Group export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) och anger resurs gruppens namn.
+Om du vill exportera alla resurser i en resurs grupp använder du [AZ Group export](/cli/azure/group#az_group_export) och anger resurs gruppens namn.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&

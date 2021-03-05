@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 87d7d4676c604ca7219b7580eb3ce585282a7f11
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172417"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions distributions platser
 
@@ -127,7 +127,7 @@ Alla platser skalas till samma antal anställda som produktions platsen.
 
 ## <a name="add-a-slot"></a>Lägga till ett fack
 
-Du kan lägga till en plats via [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) eller via portalen. Följande steg visar hur du skapar en ny plats i portalen:
+Du kan lägga till en plats via [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) eller via portalen. Följande steg visar hur du skapar en ny plats i portalen:
 
 1. Navigera till din Function-app.
 
@@ -141,7 +141,7 @@ Du kan lägga till en plats via [CLI](/cli/azure/functionapp/deployment/slot?vie
 
 ## <a name="swap-slots"></a>Växla platser
 
-Du kan växla mellan platser via [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) eller via portalen. Följande steg visar hur du byter platser i portalen:
+Du kan växla mellan platser via [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) eller via portalen. Följande steg visar hur du byter platser i portalen:
 
 1. Navigera till Function-appen.
 1. Välj **distributions platser** och välj sedan **Växla**.
@@ -160,7 +160,7 @@ Om en växling resulterar i ett fel eller om du bara vill "ångra" en växling k
 
 ## <a name="remove-a-slot"></a>Ta bort en plats
 
-Du kan ta bort en plats via [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) eller via portalen. Följande steg visar hur du tar bort en plats i portalen:
+Du kan ta bort en plats via [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) eller via portalen. Följande steg visar hur du tar bort en plats i portalen:
 
 1. Gå till **distributions fack** i Function-appen och välj plats namnet.
 
@@ -180,13 +180,13 @@ Du kan ta bort en plats via [CLI](/cli/azure/functionapp/deployment/slot?view=az
 
 ## <a name="automate-slot-management"></a>Automatisera plats hantering
 
-Med [Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)kan du automatisera följande åtgärder för en plats:
+Med [Azure CLI](/cli/azure/functionapp/deployment/slot)kan du automatisera följande åtgärder för en plats:
 
-- [fram](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [ta bort](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [lista](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [skärm](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [automatisk växling](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [fram](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
+- [lista](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
+- [skärm](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
+- [automatisk växling](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Ändra App Service plan
 

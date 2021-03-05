@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752650"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174588"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Autentiseringsuppgifter för Microsoft Identity Platform och OAuth 2,0-resurs ägar lösen ord
 
@@ -34,6 +34,7 @@ Microsoft Identity Platform stöder [OAuth 2,0-ROPC (Resource Owner Password Cre
 > * Konton som inte har lösen ord kan inte logga in via ROPC. I det här scenariot rekommenderar vi att du använder ett annat flöde för appen i stället.
 > * Om användarna behöver använda [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) för att logga in i programmet kommer de att blockeras i stället.
 > * ROPC stöds inte i scenarier med [hybrid identitets Federation](../hybrid/whatis-fed.md) (till exempel Azure AD och ADFS som används för att autentisera lokala konton). Om användarna är fulla omdirigerade till en lokal identitets leverantör kan inte Azure AD testa användar namn och lösen ord mot identitets leverantören. [Direktautentisering](../hybrid/how-to-connect-pta.md) stöds med ROPC, men.
+> * Ett undantag till ett hybrid identitets Federations scenario skulle vara följande: identifierings principen för hemsfär med AllowCloudPasswordValidation inställt på TRUE kommer att aktivera ROPC-flödet för federerade användare när det lokala lösen ordet synkroniseras till molnet. Mer information finns i [Aktivera direkt ROPC-autentisering av federerade användare för äldre program](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
 
 ## <a name="protocol-diagram"></a>Protokoll diagram
 

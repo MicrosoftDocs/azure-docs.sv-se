@@ -4,13 +4,13 @@ description: Beskriver hur du kan generera jord fukt termisk karta i Azure FarmB
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165561"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173791"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generera jord fukt termisk karta
 
@@ -51,7 +51,7 @@ När du har angett dina autentiseringsuppgifter och väljer **Skicka** i partner
 När du har länkat ditt sensor konto till Azure FarmBeats måste du tilldela jord vatten bruks sensorer till intresse gruppen.
 
 1.  På sidan start väljer du **Server grupper** på menyn, sidan **Server** grupps lista visas.
-2.  Välj **grupp**för att  >  **lägga till enheter**.
+2.  Välj **grupp** för att  >  **lägga till enheter**.
 3.  Fönstret **Lägg till enheter** visas. Välj en enhet som är länkad till jord fuktens sensorer för din server grupp.
 
     ![Skärm bild som visar skärmen Lägg till enheter.](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
@@ -65,10 +65,10 @@ Det här steget är att skapa ett jobb eller en tids krävande åtgärd som komm
 1.  På Start sidan går du till **Server grupper** på den vänstra navigerings menyn för att visa sidan grupper.
 2.  Välj **Server grupp**.
 3.  På sidan **Server grupps information** väljer du **generera precisions karta**.
-4.  Välj **jord fukt**på den nedrullningsbara menyn.
+4.  Välj **jord fukt** på den nedrullningsbara menyn.
 5.  I fönstret **jord fukt** väljer du **den här veckan**.
 6.  Ange det mått som du vill använda för kartan i **måttet** **Välj jord fuktighets** sensor.
-    Om du vill hitta sensor måttet i **sensorer**väljer du en jord fuktighets sensor. I **sensor egenskaper**använder du **måttets namn** värde.
+    Om du vill hitta sensor måttet i **sensorer** väljer du en jord fuktighets sensor. I **sensor egenskaper** använder du **måttets namn** värde.
 
     ![Skärm bild som visar jord fukt skärmen.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
@@ -84,7 +84,7 @@ Det här steget är att skapa ett jobb eller en tids krävande åtgärd som komm
 Gör så här:
 
 1. På sidan **jobb** kontrollerar du **jobb status** för det jobb som du skapade i den senaste proceduren.
-2. När jobb **statusen visas väljer**du **Maps** på menyn.
+2. När jobb **statusen visas väljer** du **Maps** på menyn.
 3. Sök efter kartan efter den dag då den skapades i formatet <jord-moisture_MyFarm_YYYY-MM-DD>.
 4. Välj en karta i kolumnen **namn** . ett popup-fönster visas med förhands granskningen för den valda kartan.
 5. Välj **Hämta**. Kartan laddas ned och lagras i den lokala mappen på datorn.
@@ -93,4 +93,4 @@ Gör så här:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har skapat en jord-fukt termisk karta kan du läsa om hur du [genererar sensor placering](generate-maps-in-azure-farmbeats.md#sensor-placement-map) och matar in [historiska telemetridata](ingest-historical-telemetry-data-in-azure-farmbeats.md). 
+Nu när du har skapat en jord-fukt termisk karta kan du läsa om hur du [genererar sensor placering](generate-maps-in-azure-farmbeats.md#sensor-placement-map) och matar in [historiska telemetridata](ingest-historical-telemetry-data-in-azure-farmbeats.md). 

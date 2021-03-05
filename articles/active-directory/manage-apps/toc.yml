@@ -34,7 +34,13 @@
       href: application-proxy-add-on-premises-application.md
 - name: Exempel
   items:
-    - name: Azure PowerShell-exempel för Application Proxy
+    - name: PowerShell-exempel för app Management
+      items:
+        - name: Översikt över exempel på App Management
+          href: app-management-powershell-samples.md
+        - name: 'Exportera alla program registreringar, hemligheter och certifikat'
+          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+    - name: PowerShell-exempel för App proxy
       href: application-proxy-powershell-samples.md
 - name: Begrepp
   expanded: true

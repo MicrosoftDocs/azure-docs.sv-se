@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661212"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174843"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definiera anpassade attribut i Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "98661212"
 
 I artikeln [Lägg till anspråk och anpassa användarindata med hjälp av anpassade principer](configure-user-input.md) får du lära dig hur du använder inbyggda [användar profil attribut](user-profile-attributes.md). I den här artikeln aktiverar du ett anpassat attribut i Azure Active Directory B2C-katalogen (Azure AD B2C). Senare kan du använda det nya attributet som ett anpassat anspråk i [användar flöden](user-flow-overview.md) eller [anpassade principer](custom-policy-get-started.md) samtidigt.
 
-Din Azure AD B2C katalog levereras med en [inbyggd uppsättning attribut](user-profile-attributes.md). Du behöver dock ofta skapa egna attribut för att hantera ditt specifika scenario, till exempel när:
+Din Azure AD B2C-katalog levereras med en [inbyggd uppsättning attribut](user-profile-attributes.md). Du behöver dock ofta skapa egna attribut för att hantera ditt specifika scenario, till exempel när:
 
 * Ett kundriktat program måste spara ett **LoyaltyId** -attribut.
 * En identitets leverantör har en unik användar identifierare, **uniqueUserGUID**, som måste vara bestående.
@@ -83,7 +83,7 @@ Villkors *tilläggets egenskap*, *anpassade attribut* och *anpassat anspråk* re
 
 ## <a name="using-custom-attribute-with-ms-graph-api"></a>Använda anpassat attribut med MS Graph API
 
-Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_attributename` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet. Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Till exempel:
+Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_attributename` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet. Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Exempel:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -97,22 +97,27 @@ Om du vill aktivera anpassade attribut i principen anger du **program-ID** och p
 
 1. Öppna tilläggs filen för principen. Till exempel <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Hitta ClaimsProviders-elementet. Lägg till en ny ClaimsProvider i ClaimsProviders-elementet.
-1. Ersätt `ApplicationObjectId` med det objekt-ID som du tidigare har spelat in. Ersätt sedan `ClientId` med det program-ID som du tidigare spelat in i avsnittet nedan.
+1. Infoga det **program-ID** som du tidigare har spelat in mellan öppnings- `<Item Key="ClientId">` och stängnings `</Item>` elementen.
+1. Infoga det **program-ObjectID** som du tidigare har spelat in mellan öppnings- `<Item Key="ApplicationObjectId">` och stängnings `</Item>` elementen.
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Azure Active Directory</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="AAD-Common">
-          <Metadata>
-            <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
-            <Item Key="ClientId"></Item>
-            <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
-            <Item Key="ApplicationObjectId"></Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles> 
-    </ClaimsProvider>
+    <!-- 
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="AAD-Common">
+            <Metadata>
+              <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
+              <Item Key="ClientId"></Item>
+              <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
+              <Item Key="ApplicationObjectId"></Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles> 
+      </ClaimsProvider>
+    <!-- 
+    </ClaimsProviders> -->
     ```
 
 ## <a name="upload-your-custom-policy"></a>Ladda upp en anpassad princip
@@ -132,7 +137,7 @@ Samma attribut för tillägg delas mellan inbyggda och anpassade principer. När
 
 Du kan skapa de här attributen med hjälp av portalens användar gränssnitt innan du använder dem i dina anpassade principer. När du skapar ett attribut **loyaltyId** i portalen måste du referera till det enligt följande:
 
-|Name     |Används i |
+|Namn     |Används i |
 |---------|---------|
 |`extension_loyaltyId`  | Anpassad princip|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|

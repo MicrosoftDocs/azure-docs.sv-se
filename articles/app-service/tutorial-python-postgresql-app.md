@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 6112247a99c519aad8aadf7946c7707480b3b491
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558419"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175166"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Själv studie kurs: Distribuera en django-webbapp med PostgreSQL i Azure App Service
 
@@ -231,7 +231,7 @@ Django Database-migreringar ser till att schemat i PostgreSQL i Azure Database m
 
     Ersätt `<app-name>` med det namn som användes tidigare i `az webapp up` kommandot.
 
-    Du kan också ansluta till en SSH-session med [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) kommandot. I Windows kräver det här kommandot Azure CLI-2.18.0 eller högre.
+    Du kan också ansluta till en SSH-session med [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) kommandot. I Windows kräver det här kommandot Azure CLI-2.18.0 eller högre.
 
     Om du inte kan ansluta till SSH-sessionen har själva appen inte startats. Mer information [finns i diagnostikloggar](#6-stream-diagnostic-logs) . Om du till exempel inte har skapat de nödvändiga inställningarna för appen i föregående avsnitt, visar loggarna `KeyError: 'DBNAME'` .
 

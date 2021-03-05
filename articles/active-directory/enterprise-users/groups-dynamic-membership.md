@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 02/18/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ca000e105f70f1a4940e7fc9a0292061e94b5ea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648653"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174537"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regler för dynamiskt medlemskap för grupper i Azure Active Directory
 
@@ -386,8 +386,8 @@ Följande enhets egenskaper kan användas.
  ----- | ----- | ----------------
  accountEnabled | Sant falskt | (Device. accountEnabled-EQ true)
  displayName | valfritt sträng värde |(Device. displayName-EQ "Anders iPhone")
- deviceOSType | valfritt sträng värde | (Device. deviceOSType-EQ "iPad")-eller (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-innehåller "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | valfritt sträng värde | (Device. deviceOSVersion-EQ "9,1")
+ deviceOSType | valfritt sträng värde | (Device. deviceOSType-EQ "iPad")-eller (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-innehåller "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")<br>(Device. deviceOSType-EQ "Windows")
+ deviceOSVersion | valfritt sträng värde | (Device. deviceOSVersion-EQ "9,1")<br>(Device. deviceOSVersion-EQ "10.0.17763.0")
  deviceCategory | ett giltigt namn på enhets kategori | (Device. deviceCategory-EQ "BYOD")
  deviceManufacturer | valfritt sträng värde | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | valfritt sträng värde | (Device. deviceModel-EQ "iPad Air")

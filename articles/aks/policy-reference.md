@@ -4,12 +4,12 @@ description: Visar Azure Policy inbyggda princip definitioner för Azure Kuberne
 ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 749ceb1c6388607bb854548278522092c39881e5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: d7e25069c373592168e5482f79567b29665251b0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096046"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175268"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy inbyggda definitioner för Azure Kubernetes-tjänsten
 
@@ -17,11 +17,17 @@ Den här sidan är ett index över [Azure policy](../governance/policy/overview.
 
 Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
 
-## <a name="microsoftcontainerservice"></a>Microsoft. container service
+## <a name="initiatives"></a>Initiativ
+
+[!INCLUDE [azure-policy-reference-policysets-kubernetes](../../includes/policy/reference/bycat/policysets-kubernetes.md)]
+
+## <a name="policy-definitions"></a>Principdefinitioner
+
+### <a name="microsoftcontainerservice"></a>Microsoft. container service
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 
-## <a name="aks-engine"></a>AKS-motor
+### <a name="aks-engine"></a>AKS-motor
 
 [!INCLUDE [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)]
 

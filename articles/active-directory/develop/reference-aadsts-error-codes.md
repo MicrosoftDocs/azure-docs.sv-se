@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649231"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175353"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Felkoder för Azure AD-autentisering och -auktorisering
 
@@ -187,6 +187,7 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp – appen som används är inte en godkänd app för villkorlig åtkomst. Användaren måste använda en av apparna från listan över godkända appar som ska användas för att få åtkomst. |
 | AADSTS53003 | BlockedByConditionalAccess – åtkomst har blockerats av principer för villkorlig åtkomst. Åtkomst principen tillåter inte utfärdande av token. |
 | AADSTS53004 | ProofUpBlockedDueToRisk-användaren måste slutföra registreringen av Multi-Factor Authentication innan det går att komma åt det här innehållet. Användaren bör registrera sig för multifaktorautentisering. |
+| AADSTS53011 | Användaren blockerades på grund av risk på hem klient organisationen. |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – användaren eller administratören har inte samtyckt till att använda programmet med ID X. skicka en interaktiv auktoriseringsbegäran för den här användaren och resursen. |
 | AADSTS65004 | UserDeclinedConsent – användaren avböjde ett medgivande till att få åtkomst till appen. Låt användaren logga in igen och ge samtycke till appen|

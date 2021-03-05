@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: gistefan
 ms.reviewer: mikben
-ms.openlocfilehash: 7e8d9b56077819fc404d6c2bdc39f9f697224136
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ee691d4809a68a0ba60f60a2240b76a1e53104bc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692189"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171581"
 ---
 # <a name="use-managed-identities-net"></a>Använda hanterade identiteter (.NET)
 
@@ -83,7 +83,7 @@ Exemplen nedan använder [DefaultAzureCredential](/dotnet/api/azure.identity.def
 I följande kod exempel visas hur du skapar ett tjänst klient objekt med Azure Active Directory tokens, och sedan använder klienten för att utfärda en token för en ny användare:
 
 ```csharp
-     public async Task<Response<CommunicationUserToken>> CreateIdentityAndIssueTokenAsync(Uri resourceEdnpoint) 
+     public async Task<Response<CommunicationUserToken>> CreateIdentityAndIssueTokenAsync(Uri resourceEndpoint) 
      {
           TokenCredential credential = new DefaultAzureCredential();
      

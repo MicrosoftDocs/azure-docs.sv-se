@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9e315812f7e281cf281cad9e052ab4546bde05f9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da12955606062e6cfc0e6bf17eeedcaed0aac1ff
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645858"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171710"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurera inloggning för en speciell Azure Active Directory organisation i Azure Active Directory B2C
 
@@ -90,7 +90,7 @@ Om du vill hämta `family_name` och `given_name` anspråk från Azure AD kan du 
 
 1. För **klient-ID** anger du det program-ID som du tidigare har registrerat.
 1. För **klient hemlighet** anger du den klient hemlighet som du tidigare har registrerat.
-1. För **scopet** anger du `openid profile` .
+1. För **omfång** anger du `openid profile` .
 1. Lämna standardvärdena för **svars typ** och **svars läge**.
 1. Valfritt I **domän tipset** anger du `contoso.com` . Mer information finns i [Konfigurera direkt inloggning med Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
 1. Under **identitets leverantör anspråks mappning** väljer du följande anspråk:

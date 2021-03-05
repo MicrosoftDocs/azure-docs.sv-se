@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733848"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175659"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
 
@@ -141,7 +141,7 @@ Information om egenskaps värde:
 - `azPowerShellVersion`/`azCliVersion`: Ange den version av modulen som ska användas. Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
-  > Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Om en version som inte stöds används visas de versioner som stöds i fel meddelandet.
+  > Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli). Om en version som inte stöds används visas de versioner som stöds i fel meddelandet.
 
 - `arguments`: Ange parameter värden. Värdena avgränsas med blank steg.
 
@@ -149,7 +149,7 @@ Information om egenskaps värde:
 
   Om argumenten innehåller Escaped tecken, använder du [JsonEscaper](https://www.jsonescaper.com/) för att dubbla escape-tecknen. Klistra in den ursprungliga undantagna strängen i verktyget och välj sedan **Escape**.  Verktyget matar ut en dubbelt undantagen sträng. Till exempel är argumentet i föregående exempel-mall `-name \"John Dole\"` . Den undantagna strängen är `-name \\\"John Dole\\\"` .
 
-  För att skicka en ARM-mallparameter av typen Object som ett argument, konvertera objektet till en sträng med hjälp av funktionen [String ()](./template-functions-string.md#string) och Använd sedan funktionen [replace ()](./template-functions-string.md#replace) för att ersätta någon `\"` i `\\\"` . Ett exempel:
+  För att skicka en ARM-mallparameter av typen Object som ett argument, konvertera objektet till en sträng med hjälp av funktionen [String ()](./template-functions-string.md#string) och Använd sedan funktionen [replace ()](./template-functions-string.md#replace) för att ersätta någon `\"` i `\\\"` . Exempel:
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
@@ -204,7 +204,7 @@ Utdata ser ut så här:
 
 ## <a name="use-external-scripts"></a>Använd externa skript
 
-Förutom infogade skript kan du också använda externa skriptfiler. Endast primära PowerShell-skript med fil namns tillägget _ps1_ stöds. För CLI-skript kan primära skript ha alla tillägg (eller utan tillägg), så länge skripten är giltiga bash-skript. Om du vill använda externa skriptfiler ersätter du `scriptContent` med `primaryScriptUri` . Ett exempel:
+Förutom infogade skript kan du också använda externa skriptfiler. Endast primära PowerShell-skript med fil namns tillägget _ps1_ stöds. För CLI-skript kan primära skript ha alla tillägg (eller utan tillägg), så länge skripten är giltiga bash-skript. Om du vill använda externa skriptfiler ersätter du `scriptContent` med `primaryScriptUri` . Exempel:
 
 ```json
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -290,7 +290,7 @@ Om du vill ange ett befintligt lagrings konto lägger du till följande JSON til
 ```
 
 - `storageAccountName`: Ange namnet på lagrings kontot.
-- `storageAccountKey`: Ange en av lagrings konto nycklarna. Du kan använda funktionen [listnycklar ()](./template-functions-resource.md#listkeys) för att hämta nyckeln. Ett exempel:
+- `storageAccountKey`: Ange en av lagrings konto nycklarna. Du kan använda funktionen [listnycklar ()](./template-functions-resource.md#listkeys) för att hämta nyckeln. Exempel:
 
     ```json
     "storageAccountSettings": {
@@ -377,10 +377,10 @@ Timeout             : PT1H
 
 Med Azure CLI kan du hantera distributions skript på prenumerations-eller resurs grupps omfång:
 
-- [AZ distribution-skript ta bort](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete): ta bort ett distributions skript.
-- [AZ distribution – skript lista](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list): visar alla distributions skript.
-- [AZ distribution – skript Visa](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show): Hämta ett distributions skript.
-- [AZ distribution – skript Visa-logg](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log): Visa distributions skript loggar.
+- [AZ distribution-skript ta bort](/cli/azure/deployment-scripts#az-deployment-scripts-delete): ta bort ett distributions skript.
+- [AZ distribution – skript lista](/cli/azure/deployment-scripts#az-deployment-scripts-list): visar alla distributions skript.
+- [AZ distribution – skript Visa](/cli/azure/deployment-scripts#az-deployment-scripts-show): Hämta ett distributions skript.
+- [AZ distribution – skript Visa-logg](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): Visa distributions skript loggar.
 
 Utdata för list kommandot liknar:
 

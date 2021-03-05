@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5ffc655cebb19b755b990171ab662576ac541793
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659315"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174299"
 ---
 # <a name="call-flow-topologies"></a>Topologier för anrops flöden
 Den här artikeln beskriver topologier för Azure Communication Services-anrops flöden. Det här är en bra artikel för att se om du är företags kund som integrerar kommunikations tjänster i ett nätverk som du hanterar. En introduktion till kommunikations tjänstens samtals flöden finns i [konceptuell dokumentation om samtals flöden](./call-flows.md).
@@ -152,7 +152,7 @@ Signalering mellan VPN-nätverket och kund nätverket använder Flow 2 *. Signal
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>VPN-användare till intern användare (direkt Media)
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Ett till ett samtals flöde med ett VPN med direkt Media":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Ett till ett samtals flöde (intern användare) med ett VPN med direkt Media":::
 
 *Bild 6 – VPN-användare till intern användare (direkt Media)*
 
@@ -162,7 +162,7 @@ Denna medie överföring är dubbelriktad. Riktningen för Flow 2 till fjärran 
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>VPN-användare till extern användare (direkt Media)
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Ett till ett samtals flöde med ett VPN med direkt Media":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Ett till ett samtals flöde (extern användare) med ett VPN med direkt Media":::
 
 *Bild 7 – VPN-användare till extern användare (direkt Media)*
 

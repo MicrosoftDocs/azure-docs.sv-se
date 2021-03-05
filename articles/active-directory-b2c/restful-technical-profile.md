@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386858"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174979"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en RESTful teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -225,6 +225,9 @@ Om autentiseringstypen har angetts till `ApiKeyHeader` innehåller **Cryptograph
 | --------- | -------- | ----------- |
 | Namnet på HTTP-huvudet, till exempel `x-functions-key` eller `x-api-key` . | Ja | Den nyckel som används för att autentisera. |
 
+> [!NOTE]
+> För tillfället stöder Azure AD B2C bara ett HTTP-huvud för autentisering. Om ditt RESTful-anrop kräver flera huvuden, t. ex. ett klient-ID och klient hemlighet, måste du proxy-begäran på något sätt.
+
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -290,4 +293,3 @@ I följande artiklar finns exempel på hur du använder en RESTful teknisk profi
 - [Genom gång: integrera REST API Claims-utbyten i Azure AD B2C användar resa som validering av användarindata](custom-policy-rest-api-claims-validation.md)
 - [Genom gång: Lägg till REST API Claims-utbyten till anpassade principer i Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
 - [Skydda dina REST API-tjänster](secure-rest-api.md)
-
