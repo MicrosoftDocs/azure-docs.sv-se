@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429253"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178719"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Snabb start: Konfigurera Azure-attestering med Azure CLI
 
-Kom igång med [Azure-attestering med hjälp av Azure CLI](/cli/azure/ext/attestation/attestation?view=azure-cli-latest).
+Kom igång med [Azure-attestering med hjälp av Azure CLI](/cli/azure/ext/attestation/attestation).
 
 ## <a name="prerequisites"></a>Krav
 
@@ -69,13 +69,13 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 Här är kommandon som du kan använda för att skapa och hantera attesterings-providern:
 
-1. Kör kommandot [AZ attestering Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) för att skapa en attesterings leverantör utan krav på princip signering:
+1. Kör kommandot [AZ attestering Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) för att skapa en attesterings leverantör utan krav på princip signering:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. Kör kommandot [AZ attestering show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) för att hämta egenskaper för attesterings leverantör, till exempel status och AttestURI:
+1. Kör kommandot [AZ attestering show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) för att hämta egenskaper för attesterings leverantör, till exempel status och AttestURI:
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ Här är kommandon som du kan använda för att skapa och hantera attesterings-p
    TagsTable:
    ```
 
-Du kan ta bort en attesterings leverantör med kommandot [AZ attestering](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) :
+Du kan ta bort en attesterings leverantör med kommandot [AZ attestering](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) :
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 Använd de kommandon som beskrivs här för att tillhandahålla princip hantering för en attesterings leverantör, en attesterings typ i taget.
 
-Kommandot [AZ attestering policy show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) returnerar den aktuella principen för den angivna tee:
+Kommandot [AZ attestering policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) returnerar den aktuella principen för den angivna tee:
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ Följande typer av TEE stöds:
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-Använd kommandot [AZ attestering policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) för att ange en ny princip för den angivna attesterings typen.
+Använd kommandot [AZ attestering policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) för att ange en ny princip för den angivna attesterings typen.
 
 Ange en princip i text format för en viss typ av attestering med hjälp av fil Sök väg:
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654803"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178124"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bästa praxis för Azure Cache for Redis 
 Genom att följa dessa rekommendationer kan du maximera prestanda och kostnads effektiv användning av Azure-cachen för Redis-instansen.
@@ -51,7 +51,7 @@ Det finns flera saker som rör minnes användningen i Redis-serverinstansen som 
 ## <a name="client-library-specific-guidance"></a>Vägledning för klient biblioteks information
  * [StackExchange. Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java-vilken klient ska jag använda?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Sallat (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Sallat (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -73,6 +73,8 @@ Om du vill testa hur koden fungerar under fel tillstånd, kan du överväga att 
  * Den virtuella klient datorn som används för testning ska finnas **i samma region** som din Redis-cache-instans.
  * **Vi rekommenderar att du använder Dv2 VM-serien** för din klient eftersom de har bättre maskin vara och ger bästa möjliga resultat.
  * Kontrol lera att den virtuella klient datorn som du använder har * minst *lika mycket data bearbetning och bandbredd* som det cacheminne som testas. 
+ * **Testa under växlings villkor** i cacheminnet. Det är viktigt att se till att du inte testar ditt cacheminne enbart under stabila tillstånds villkor. Testa också under failover-villkor och mät belastningen på CPU/server i cacheminnet under den tiden. Du kan initiera en redundansväxling genom [att starta om den primära noden](cache-administration.md#reboot). På så sätt kan du se hur programmet beter sig med avseende på data flöde och svars tid under redundansväxlingen (sker under uppdateringar och kan ske under en oplanerad händelse). Vi rekommenderar att du vill se belastningen på CPU/Server-belastningen till mer än 80% även under en redundansväxling, eftersom detta kan påverka prestandan.
+ * **Premium P2 och ovan** finns på virtuella datorer med 4 eller fler kärnor. Detta är användbart för att distribuera arbets belastningen TLS-kryptering/dekryptering över flera kärnor för att öka den totala processor användningen.  [Här finns mer information kring VM-storlekar och kärnor](cache-planning-faq.md#azure-cache-for-redis-performance)
  * **Aktivera VRSS** på klient datorn om du använder Windows.  [Mer information finns här](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Exempel på PowerShell-skript:
      >PowerShell – ExecutionPolicy obegränsad Enable-NetAdapterRSS-namn (Get-netadapter). Namn 
 

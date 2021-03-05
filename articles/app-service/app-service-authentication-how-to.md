@@ -4,12 +4,12 @@ description: Lär dig att anpassa funktionen för autentisering och auktoriserin
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630335"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180878"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Avancerad användning av autentisering och auktorisering i Azure App Service
 
@@ -34,7 +34,7 @@ På sidan **autentisering/auktorisering** i Azure Portal konfigurerar du först 
 
 I **åtgärd som ska vidtas när begäran inte autentiseras** väljer du **Tillåt anonyma begär Anden (ingen åtgärd)**.
 
-På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Till exempel:
+På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Exempel:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -57,7 +57,7 @@ Om du vill omdirigera användaren efter inloggning till en anpassad URL, använd
 
 I en klient-riktad inloggning loggar programmet in användaren till providern manuellt och skickar sedan autentiseringstoken till App Service för verifiering (se [Authentication Flow](overview-authentication-authorization.md#authentication-flow)). Den här verifieringen ger i själva verket ingen åtkomst till de resurser som behövs, men en lyckad verifiering ger dig en sessionstoken som du kan använda för att få åtkomst till program resurser. 
 
-För att verifiera providerns token måste App Service-appen först konfigureras med önskad Provider. När du har hämtat autentiseringstoken från providern efter att du har hämtat token, kan du ställa in token `/.auth/login/<provider>` för verifiering. Till exempel: 
+För att verifiera providerns token måste App Service-appen först konfigureras med önskad Provider. När du har hämtat autentiseringstoken från providern efter att du har hämtat token, kan du ställa in token `/.auth/login/<provider>` för verifiering. Exempel: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -88,7 +88,7 @@ Om providerns token verifieras, returnerar API: t med en `authenticationToken` i
 }
 ```
 
-När du har denna sessionstoken kan du komma åt skyddade app-resurser genom att lägga till `X-ZUMO-AUTH` rubriken till dina HTTP-begäranden. Till exempel: 
+När du har denna sessionstoken kan du komma åt skyddade app-resurser genom att lägga till `X-ZUMO-AUTH` rubriken till dina HTTP-begäranden. Exempel: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -109,7 +109,7 @@ Här är en enkel utloggningslänk på en webbsida:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Som standard omdirigerar en lyckad utloggning klienten till URL: en `/.auth/logout/done` . Du kan ändra omdirigerings sidan efter utloggning genom att lägga till `post_logout_redirect_uri` Frågeparametern. Till exempel:
+Som standard omdirigerar en lyckad utloggning klienten till URL: en `/.auth/logout/done` . Du kan ändra omdirigerings sidan efter utloggning genom att lägga till `post_logout_redirect_uri` Frågeparametern. Exempel:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -271,7 +271,7 @@ För alla Windows-appar kan du definiera behörighets beteendet för IIS-webbser
 
 ### <a name="identity-provider-level"></a>Identitets leverantörs nivå
 
-Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Till exempel:
+Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Exempel:
 
 - För [Azure App Service](configure-authentication-provider-aad.md)kan du [Hantera åtkomst på företags nivå](../active-directory/manage-apps/what-is-access-management.md) direkt i Azure AD. Instruktioner finns i [så här tar du bort en användares åtkomst till ett program](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Google [-API](configure-authentication-provider-google.md)-projekt som tillhör en [organisation](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) kan konfigureras så att de endast tillåter åtkomst till användare i din organisation (se [Google ' **Setting Up The OAuth 2,0** support Page](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -648,7 +648,7 @@ Du kan visa den aktuella versionen av plattforms oberoende mellanprogram, anting
 
 ##### <a name="from-the-azure-cli"></a>Från Azure CLI
 
-Använd Azure CLI för att visa den aktuella mellan versionen med kommandot [AZ webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) .
+Använd Azure CLI för att visa den aktuella mellan versionen med kommandot [AZ webapp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) .
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -679,7 +679,7 @@ Du kan också trycka på/.auth/version-slutpunkten i en app för att visa den ak
 
 #### <a name="update-the-current-runtime-version"></a>Uppdatera den aktuella körnings versionen
 
-Med Azure CLI kan du uppdatera `runtimeVersion` inställningen i appen med kommandot [AZ webapp auth Update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) .
+Med Azure CLI kan du uppdatera `runtimeVersion` inställningen i appen med kommandot [AZ webapp auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) .
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

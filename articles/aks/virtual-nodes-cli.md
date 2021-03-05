@@ -6,23 +6,24 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348482"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180946"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Skapa och konfigurera ett Azure Kubernetes Services-kluster (AKS) för att använda virtuella noder med Azure CLI
 
 Den här artikeln visar hur du använder Azure CLI för att skapa och konfigurera virtuella nätverks resurser och AKS-kluster och sedan Aktivera virtuella noder.
 
-> [!NOTE]
-> [Den här artikeln](virtual-nodes.md) ger en översikt över regionens tillgänglighet och begränsningar med hjälp av virtuella noder.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Virtuella noder möjliggör nätverkskommunikation mellan poddar som körs i Azure Container Instances (ACI) och AKS-klustret. För att tillhandahålla den här kommunikationen skapas ett virtuellt nätverks under nät och delegerade behörigheter tilldelas. Virtuella noder fungerar bara med AKS-kluster som skapats med *Advanced* Networking (Azure cni). Som standard skapas AKS-kluster med *Basic* Networking (Kubernetes). Den här artikeln visar hur du skapar ett virtuellt nätverk och undernät och sedan distribuerar ett AKS-kluster som använder avancerade nätverk.
+
+> [!IMPORTANT]
+> Innan du använder virtuella noder med AKS granskar du båda [begränsningarna för virtuella AKS-noder][virtual-nodes-aks] och de [virtuella nätverks begränsningarna i Aci][virtual-nodes-networking-aci]. Dessa begränsningar påverkar plats, nätverks konfiguration och annan konfigurations information för både ditt AKS-kluster och de virtuella noderna.
 
 Om du inte tidigare har använt ACI registrerar du tjänst leverantören med din prenumeration. Du kan kontrol lera statusen för registreringen av ACI-providern med kommandot [AZ Provider List][az-provider-list] , som du ser i följande exempel:
 
@@ -30,7 +31,7 @@ Om du inte tidigare har använt ACI registrerar du tjänst leverantören med din
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft. ContainerInstance* -providern ska rapportera som *registrerad* , vilket visas i följande exempel på utdata:
+*Microsoft. ContainerInstance* -providern ska rapportera som *registrerad*, vilket visas i följande exempel på utdata:
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -48,7 +49,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell är ett interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto.
 
-Om du vill öppna Cloud Shell väljer du **testa den** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsare-flik genom att gå till [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kopiera kodblocket genom att välja **Kopiera** , klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
+Om du vill öppna Cloud Shell väljer du **testa den** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsare-flik genom att gå till [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
 
 Om du föredrar att installera och använda CLI lokalt kräver den här artikeln Azure CLI version 2.0.49 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -62,7 +63,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
-Skapa ett virtuellt nätverk med hjälp av kommandot [AZ Network VNet Create][az-network-vnet-create] . I följande exempel skapas ett virtuellt nätverks namn *myVnet* med adressprefixet *10.0.0.0/8* och ett undernät med namnet *myAKSSubnet*. Adressprefixet för det här under nätet är som standard *10.240.0.0/16* :
+Skapa ett virtuellt nätverk med hjälp av kommandot [AZ Network VNet Create][az-network-vnet-create] . I följande exempel skapas ett virtuellt nätverks namn *myVnet* med adressprefixet *10.0.0.0/8* och ett undernät med namnet *myAKSSubnet*. Adressprefixet för det här under nätet är som standard *10.240.0.0/16*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -175,7 +176,7 @@ Du kan kontrollera anslutningen till klustret genom att köra kommandot [kubectl
 kubectl get nodes
 ```
 
-Följande exempel på utdata visar att den enskilda VM-noden har skapats och sedan den virtuella noden för Linux, *virtuell-Node-ACI-Linux* :
+Följande exempel på utdata visar att den enskilda VM-noden har skapats och sedan den virtuella noden för Linux, *virtuell-Node-ACI-Linux*:
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -352,3 +353,5 @@ Virtuella noder är ofta en komponent i en skalnings lösning i AKS. Mer informa
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[virtual-nodes-aks]: virtual-nodes.md
+[virtual-nodes-networking-aci]: ../container-instances/container-instances-virtual-network-concepts.md

@@ -8,12 +8,12 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e7beae6c1398525faa267e2cec6d9fb7134b6297
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 538d414ce606b944fcea7adbb1c817386e13090e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703593"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178583"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Skapa en statisk HTML-webbapp i Azure
 
@@ -67,7 +67,7 @@ Det kan ta några minuter att slutföra kommandot.
 <ul>
 <li>Skapa en standardresursgrupp.</li>
 <li>Skapa en standard App Service plan.</li>
-<li><a href="/cli/azure/webapp?view=azure-cli-latest#az-webapp-create">Skapa en app service-app</a> med det angivna namnet.</li>
+<li><a href="/cli/azure/webapp#az-webapp-create">Skapa en app service-app</a> med det angivna namnet.</li>
 <li><a href="/azure/app-service/deploy-zip">Zip-distribuera</a> filer från den aktuella arbetskatalogen till appen.</li>
 <li>Under körningen innehåller den meddelanden om att skapa, logga och ZIP-distribution.</li>
 </ul>

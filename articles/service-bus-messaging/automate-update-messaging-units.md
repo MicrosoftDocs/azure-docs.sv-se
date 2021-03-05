@@ -2,13 +2,13 @@
 title: Azure Service Bus – uppdatera meddelande enheter automatiskt
 description: Den här artikeln visar hur du kan använda automatisk uppdatering av meddelande enheter i ett Service Bus namn område.
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720604"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177963"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Uppdatera meddelande enheter automatiskt i ett Azure Service Bus namn område 
 Med autoskalning kan du använda rätt mängd resurser för att hantera belastningen på ditt program. Det gör att du kan lägga till resurser för att hantera ökad belastning och även spara pengar genom att ta bort resurser som är inaktiva. I [Översikt över autoskalning i Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) kan du läsa mer om funktionen för autoskalning i Azure Monitor. 
@@ -136,8 +136,14 @@ I föregående avsnitt visas hur du lägger till ett standard villkor för inst�
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="skala till vissa meddelande enheter – upprepa vissa dagar":::
 
-> [!IMPORTANT]
-> Om du vill veta mer om hur inställningarna för autoskalning fungerar, särskilt hur de väljer en profil eller ett villkor och utvärderar flera regler, se [förstå inställningarna för autoskalning](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+    
+    Om du vill veta mer om hur inställningarna för autoskalning fungerar, särskilt hur de väljer en profil eller ett villkor och utvärderar flera regler, se [förstå inställningarna för autoskalning](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+
+    > [!NOTE]
+    > - Måtten som du granskar för att fatta beslut om automatisk skalning kan vara 5-10 minuter gamla. När du hanterar toppar i arbets belastningar rekommenderar vi att du har kortare varaktigheter för att skala upp och längre tid för att skala ned (> 10 minuter) för att säkerställa att det finns tillräckligt många meddelande enheter för att bearbeta toppar i arbets belastningar. 
+    > 
+    > - Om du ser felen på grund av bristande kapacitet (inga meddelande enheter är tillgängliga) kan du generera ett support ärende med oss.  
+
 
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om meddelande enheter i [Premium Messaging](service-bus-premium-messaging.md)

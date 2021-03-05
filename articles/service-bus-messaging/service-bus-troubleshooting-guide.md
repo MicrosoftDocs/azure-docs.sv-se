@@ -2,13 +2,13 @@
 title: Fel söknings guide för Azure Service Bus | Microsoft Docs
 description: Lär dig mer om fel söknings tips och rekommendationer för några problem som kan uppstå när du använder Azure Service Bus.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/03/2021
+ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881222"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179705"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Fel söknings guide för Azure Service Bus
 Den här artikeln innehåller fel söknings tips och rekommendationer för några problem som kan uppstå när du använder Azure Service Bus. 
@@ -52,6 +52,8 @@ Följande steg kan hjälpa dig med fel sökning av problem med anslutning/certif
     ```
     Du kan använda motsvarande kommandon om du använder andra verktyg som `tnc` , `ping` och så vidare. 
 - Få en nätverks spårning om föregående steg inte hjälper och analyseras med verktyg som [wireshark](https://www.wireshark.org/). Kontakta [Microsoft Support](https://support.microsoft.com/) om det behövs. 
+- Om du vill hitta rätt IP-adresser som ska läggas till i listan över tillåtna anslutningar, se [vilka IP-adresser som jag behöver lägga till i listan över tillåtna](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problem som kan uppstå med tjänst uppgraderingar/omstarter
 

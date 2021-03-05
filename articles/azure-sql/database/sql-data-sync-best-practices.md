@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791451"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180249"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Metodtips för Azure SQL Data Sync 
 
@@ -41,16 +41,20 @@ En översikt över SQL Data Sync finns i [Synkronisera data i flera moln och lok
 
 ### <a name="database-accounts-with-least-required-privileges"></a>Databas konton med minst behörighet som krävs
 
--   **För Sync-installation** . Skapa/ändra tabell; Ändra databas; Skapa procedur; Välj/Ändra schema; Skapa User-Defined typ.
+-   **För Sync-installation**. Skapa/ändra tabell; Ändra databas; Skapa procedur; Välj/Ändra schema; Skapa User-Defined typ.
 
--   **För pågående synkronisering** . Välj/Infoga/uppdatera/ta bort i tabeller som väljs för synkronisering och vid synkronisering av metadata och spårning av tabeller; Kör behörighet för lagrade procedurer som skapats av tjänsten. Kör behörighet för användardefinierade tabell typer.
+-   **För pågående synkronisering**. Välj/Infoga/uppdatera/ta bort i tabeller som väljs för synkronisering och vid synkronisering av metadata och spårning av tabeller; Kör behörighet för lagrade procedurer som skapats av tjänsten. Kör behörighet för användardefinierade tabell typer.
 
--   **För avetablering** . Ändra i tabeller del av synkronisering; Välj/Ta bort i metadata tabeller för synkronisering; Kontroll över synkronisering av spårnings tabeller, lagrade procedurer och användardefinierade typer.
+-   **För avetablering**. Ändra i tabeller del av synkronisering; Välj/Ta bort i metadata tabeller för synkronisering; Kontroll över synkronisering av spårnings tabeller, lagrade procedurer och användardefinierade typer.
 
 Azure SQL Database stöder endast en uppsättning autentiseringsuppgifter. Överväg följande alternativ för att utföra dessa uppgifter i den här begränsningen:
 
 -   Ändra autentiseringsuppgifterna för olika faser (till exempel *credentials1* för installation och *credentials2* för pågående).  
 -   Ändra behörigheten för autentiseringsuppgifterna (det vill säga ändra behörighet när synkroniseringen har kon figurer ATS).
+
+### <a name="auditing"></a>Granskning
+
+Vi rekommenderar att du aktiverar granskning på nivån för databaserna i Sync-grupperna. 
 
 ## <a name="setup"></a>Installation
 
@@ -168,7 +172,7 @@ Se till att du undviker synkroniseringsfel, eftersom de orsakar prestanda förs�
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Undvik inaktuella databaser och synkronisera grupper
 
-En Sync-grupp eller en databas i en Sync-grupp kan bli inaktuell. När en synkroniseringsstatus-status är **inaktuell** , slutar den att fungera. När en Databass status är **inaktuell** kan data gå förlorade. Det är bäst att undvika det här scenariot i stället för att försöka återställa från det.
+En Sync-grupp eller en databas i en Sync-grupp kan bli inaktuell. När en synkroniseringsstatus-status är **inaktuell**, slutar den att fungera. När en Databass status är **inaktuell** kan data gå förlorade. Det är bäst att undvika det här scenariot i stället för att försöka återställa från det.
 
 #### <a name="avoid-out-of-date-databases"></a>Undvik inaktuella databaser
 

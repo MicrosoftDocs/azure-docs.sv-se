@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682404"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178086"
 ---
 I det här steget skapar du en [logisk SQL-Server](../database/logical-servers.md) och en [enkel databas](../database/single-database-overview.md) som använder AdventureWorksLT exempel data. Du kan skapa databasen med hjälp av Azure Portal menyer och skärmar, eller genom att använda ett Azure CLI-eller PowerShell-skript i Azure Cloud Shell.
 
@@ -151,11 +151,11 @@ I föregående kod används följande Azure CLI-kommandon:
 
 | Kommando | Beskrivning |
 |---|---|
-| [AZ-konto uppsättning](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Anger att en prenumeration är den aktuella aktiva prenumerationen. |
+| [AZ-konto uppsättning](/cli/azure/account#az-account-set) | Anger att en prenumeration är den aktuella aktiva prenumerationen. |
 | [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Skapar en server som är värd för databaser och elastiska pooler. |
 | [AZ SQL Server-brandvägg-regel skapa](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Skapar en brand Väggs regel på server nivå. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | Skapar en databas. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Skapar en databas. |
 
 Mer Azure SQL Database Azure CLI-exempel finns i [Azure CLI-exempel](../database/az-cli-script-samples-content-guide.md).
 

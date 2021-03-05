@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, Hämta uppdatering, senaste, tillgänglig, installera
-ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 591fcba4c887e298cf667c5d95c19184bc213ffe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505485"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179637"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Ladda ned Azure Kinect sensor SDK
 
@@ -41,18 +41,23 @@ För närvarande är den enda distribution som stöds Ubuntu 18,04. Information 
 
 Först måste du konfigurera [Microsofts paket lagrings plats](https://packages.microsoft.com/)genom att följa anvisningarna [här](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
-Nu kan du installera de nödvändiga paketen. `k4a-tools`Paketet innehåller [Azure Kinect Viewer](azure-kinect-viewer.md), [Azure Kinect-inspelaren](record-sensor-streams-file.md)och verktyget för [inbyggd Azure Kinect-programvara](azure-kinect-firmware-tool.md). Kör för att installera den
+Nu kan du installera de nödvändiga paketen. `k4a-tools`Paketet innehåller [Azure Kinect Viewer](azure-kinect-viewer.md), [Azure Kinect-inspelaren](record-sensor-streams-file.md)och verktyget för [inbyggd Azure Kinect-programvara](azure-kinect-firmware-tool.md). Installera paketet genom att köra:
 
- `sudo apt install k4a-tools`
+`sudo apt install k4a-tools`
+ 
+Det här kommandot installerar de beroende paket som krävs för att verktygen ska fungera korrekt, inklusive den senaste versionen av `libk4a<major>.<minor>` . Du måste lägga till udev-regler för att få åtkomst till Azure Kinect DK utan att vara rot användaren. Instruktioner finns i [installations programmet för Linux-enheter](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md#linux-device-setup). Alternativt kan du starta program som använder enheten som rot.
 
- `libk4a<major>.<minor>-dev`Paketet innehåller de huvuden-och cmake-filer som ska byggas `libk4a` .
-`libk4a<major>.<minor>`Paketet innehåller de delade objekt som krävs för att köra körbara filer som är beroende av `libk4a` .
+`libk4a<major>.<minor>-dev`Paketet innehåller sidhuvudena och cmake-filerna för att bygga program/körbara filer mot `libk4a` .
 
- De grundläggande självstudierna kräver `libk4a<major>.<minor>-dev` paketet. Kör för att installera den
+`libk4a<major>.<minor>`Paketet innehåller de delade objekt som krävs för att köra program/körbara filer som är beroende av `libk4a` .
 
- `sudo apt install libk4a1.1-dev`
+De grundläggande självstudierna kräver `libk4a<major>.<minor>-dev` paketet. Installera paketet genom att köra:
+
+`sudo apt install libk4a<major>.<minor>-dev` 
 
 Om kommandot lyckas är SDK klart för användning.
+
+Se till att installera den matchande versionen av `libk4a<major>.<minor>` med `libk4a<major>.<minor>-dev` . Om du till exempel installerar `libk4a4.1-dev` paketet installerar du motsvarande `libk4a4.1` paket som innehåller den matchande versionen av delade objekt-filer. Den senaste versionen av `libk4a` finns i länkarna i nästa avsnitt.
 
 ## <a name="change-log-and-older-versions"></a>Ändrings logg och äldre versioner
 

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 190f44e95c96a2aee60e1b28f8817a74d3e06e3f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981314"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178668"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning inferencing-miljö med virtuella nätverk
 
@@ -34,7 +34,6 @@ I den här artikeln får du lära dig att skydda följande inferencing-resurser 
 > - Privat AKS-kluster
 > - AKS-kluster med privat länk
 > - Azure Container Instances (ACI)
-
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -58,7 +57,6 @@ Om du vill använda ett AKS-kluster i ett virtuellt nätverk måste följande n�
 > [!div class="checklist"]
 > * Följ kraven i [Konfigurera Advanced Networking i Azure Kubernetes service (AKS)](../aks/configure-azure-cni.md#prerequisites).
 > * AKS-instansen och det virtuella nätverket måste finnas i samma region. Om du skyddar de Azure Storage-konton som används av arbets ytan i ett virtuellt nätverk måste de finnas i samma virtuella nätverk som AKS-instansen.
-
 
 Använd följande steg för att lägga till AKS i ett virtuellt nätverk till din arbets yta:
 
@@ -274,7 +272,7 @@ Om du inte vill använda de utgående standard reglerna och du vill begränsa de
 
 ## <a name="next-steps"></a>Nästa steg
 
-Den här artikeln är del tre i en serie med fyra delar av virtuella nätverk. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
+Den här artikeln är del fyra av en serie virtuella nätverks serier i fem delar. Se resten av artiklarna för att lära dig hur du skyddar ett virtuellt nätverk:
 
 * [Del 1: översikt över virtuella nätverk](how-to-network-security-overview.md)
 * [Del 2: skydda arbets ytans resurser](how-to-secure-workspace-vnet.md)

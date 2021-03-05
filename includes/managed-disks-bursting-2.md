@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749912"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178395"
 ---
 ## <a name="disk-level-bursting"></a>Burst-överföring på disk nivå
 
@@ -63,15 +63,14 @@ På [sidan för Managed disks priser](https://azure.microsoft.com/pricing/detail
 
 Kreditbaserade burst-överföring är tillgängligt för disk storlekar P20 och mindre i alla regioner i molnet offentliga Azure, myndigheter och Kina. Som standard aktive ras disk-burst på alla nya och befintliga distributioner av disk storlekar som stöds. Burst-överföring på virtuell dator använder endast krediterad burst-överföring.
 
-### <a name="virtual-machine-level-bursting"></a>Burst-överföring på virtuell dator
-Stöd för burst-överföring på virtuell dator har Aktiver ATS i alla regioner i det offentliga molnet med de storlekar som stöds: 
-- [Lsv2-serien](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>Burst-överföring på virtuell dator
 
-Bursting på VM-nivå är också tillgängligt i västra centrala USA för följande storlekar som stöds:
+Burst-överföring på virtuell dator använder bara den kreditbaserade modellen för bursting, den är aktive rad som standard för alla virtuella datorer som har stöd för det.
+
+Burst-överföring på virtuell dator har Aktiver ATS i alla regioner i det offentliga Azure-molnet med de storlekar som stöds: 
+- [Lsv2-serien](../articles/virtual-machines/lsv2-series.md)
 - [Dv3- och Dsv3-serien](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3- och Esv3-serien](../articles/virtual-machines/ev3-esv3-series.md)
-
-Som standard är burst-överföring aktiverat för virtuella datorer som har stöd för det.
 
 ## <a name="bursting-flow"></a>Flödes flöde
 

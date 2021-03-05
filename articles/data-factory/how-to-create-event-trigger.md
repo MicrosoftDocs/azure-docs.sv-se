@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727795"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177799"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Skapa en utlösare som kör en pipeline som svar på en lagrings händelse
 
@@ -26,7 +26,6 @@ En introduktion till tio minuter och demonstration av den här funktionen finns 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > Den integrering som beskrivs i den här artikeln är beroende av [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Se till att din prenumeration är registrerad hos Event Grid Resource Provider. Mer information finns i [resurs leverantörer och typer](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Du måste kunna utföra åtgärden *Microsoft. EventGrid/eventSubscriptions/**. Den här åtgärden är en del av den inbyggda rollen EventGrid EventSubscription Contributor.
 
@@ -34,11 +33,11 @@ En introduktion till tio minuter och demonstration av den här funktionen finns 
 
 I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i Azure Data Factory användar gränssnitt.
 
-1. Gå till **redigerings arbets ytan**
+1. Växla till fliken **Redigera** , som visas med en Penn symbol. 
 
-1. I det nedre vänstra hörnet klickar du på knappen **utlösare**
+1. Välj **utlösare** på menyn och välj sedan **ny/redigera**. 
 
-1. Klicka på **+ ny** för att öppna sidan Skapa utlösare i navigerings fönstret
+1. På sidan **Lägg till utlösare** väljer du **Välj utlösare...** och väljer sedan **+ ny**. 
 
 1. Välj **lagrings händelse** för Utlös ande typ
 
@@ -107,4 +106,5 @@ Det här avsnittet innehåller exempel på Inställningar för utlösare av lagr
 
 ## <a name="next-steps"></a>Nästa steg
 
-Detaljerad information om utlösare finns i [pipeline-körning och utlösare](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Detaljerad information om utlösare finns i [pipeline-körning och utlösare](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Lär dig hur du refererar till Utlös ande metadata i pipelinen finns i [referens utlösare metadata i pipeline-körningar](how-to-use-trigger-parameterization.md)

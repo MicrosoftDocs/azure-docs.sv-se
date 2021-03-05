@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 6e0368abcca5f0c38a7b143386d666e7908f30b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749076"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179093"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Snabb start: skapa App Service app med en ARM-mall
 
@@ -133,7 +133,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <ul>
 <li>Skapa en standard <abbr title="En logisk behållare för relaterade Azure-resurser som du kan hantera som en enhet.">Resursgrupp</abbr>.</li>
 <li>Skapa en standard <abbr title="Den plan som anger plats, storlek och funktioner i webb server gruppen som är värd för din app.">App Service-plan</abbr>.</li>
-<li><a href="/cli/azure/webapp?view=azure-cli-latest#az-webapp-create">Skapa en <abbr title="En representation av din webbapp, som innehåller din app-kod, DNS-värdnamn, certifikat och relaterade resurser. "> App Service app</abbr></a> med det angivna namnet.</li>
+<li><a href="/cli/azure/webapp#az-webapp-create">Skapa en <abbr title="En representation av din webbapp, som innehåller din app-kod, DNS-värdnamn, certifikat och relaterade resurser. "> App Service app</abbr></a> med det angivna namnet.</li>
 </ul>
 </details>
 

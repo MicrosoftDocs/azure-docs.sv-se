@@ -7,14 +7,15 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/25/2020
-ms.openlocfilehash: f5bc9951229c61dd988f44b06b8fcd40881226ae
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b961939516ac4848da00a3cd01c754c90da805cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393708"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177733"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Skapa en utlösare som kör en pipeline på ett rullande fönster
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln innehåller steg för att skapa, starta och övervaka en utlösare för rullande fönster. Allmän information om utlösare och de typer som stöds finns i [pipeline-körning och utlösare](concepts-pipeline-execution-triggers.md).
@@ -220,7 +221,7 @@ Det här avsnittet visar hur du använder Azure PowerShell för att skapa, start
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
-    
+
 3. Bekräfta att statusen för utlösaren har **stoppats** med cmdleten **Get-AzDataFactoryV2Trigger** :
 
     ```powershell
@@ -244,10 +245,11 @@ Det här avsnittet visar hur du använder Azure PowerShell för att skapa, start
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
-    
+
 Om du vill övervaka utlösarens körningar och pipelines körs i Azure Portal, se [övervaka pipelines körs](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Detaljerad information om utlösare finns i [pipeline-körning och utlösare](concepts-pipeline-execution-triggers.md#trigger-execution).
-* [Skapa ett beroende för utlösare för rullande fönster](tumbling-window-trigger-dependency.md)
+* [Skapa ett utlösnings beroende för rullande Window](tumbling-window-trigger-dependency.md).
+* Lär dig hur du refererar till Utlös ande metadata i pipelinen finns i [referens utlösare metadata i pipeline-körningar](how-to-use-trigger-parameterization.md)

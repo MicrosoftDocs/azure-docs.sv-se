@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: e6ced30e8c8c5eb60eea3806d9c8080df7c2a12d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5424b776b977d8a6939bbb28c5d4c9c428cac444
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979597"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179620"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Använda hanterade identiteter för Azure App konfiguration
 
@@ -106,5 +106,5 @@ En systemtilldelad identitet kan tas bort genom att inaktivera funktionen med hj
 > [!div class="nextstepaction"]
 > [Skapa en ASP.NET Core-app med Azure App Configuration](quickstart-aspnet-core-app.md)
 
-[AZ appconfig-identitet tilldela]: /cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-assign
+[AZ appconfig-identitet tilldela]: /cli/azure/appconfig/identity#az-appconfig-identity-assign
 [az login]: /cli/azure/reference-index#az-login

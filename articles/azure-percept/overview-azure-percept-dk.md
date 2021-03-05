@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098340"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179382"
 ---
 # <a name="azure-percept-dk-overview"></a>Översikt över Azure percept DK
 
@@ -24,7 +24,7 @@ Azure percept DK är ett Edge AI och IoT Development Kit som utformats för att 
 
 - **Möjligheten att köra AI på gränsen**. Med inbyggd maskin varu acceleration kan den köra vision AI-modeller utan anslutning till molnet.
 - **Inbyggd förtroende säkerhet i maskin varu roten**. Mer information finns i den här översikten över [Azure percept Security](./overview-percept-security.md) .
-- **Sömlös integrering med [Azure percept Studio](./overview-azure-percept-studio.md)** och andra Azure-tjänster. Till exempel Azure IoT Hub, Azure Cognitive Services och [live video analys](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Sömlös integrering med [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)** och andra Azure-tjänster. Till exempel Azure IoT Hub, Azure Cognitive Services och [live video analys](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
 - **Sömlös integrering med valfritt [Azure percept-ljud](./overview-azure-percept-audio.md)**
 - **Stöd för de viktigaste AI-plattformarna**. Till exempel ONNX och TensorFlow.
 - **Integrering med 80/20-järnvägs systemet**. Gör det enklare att skapa prototyper i produktions miljöer. Läs mer om [80/20-integrering](./overview-8020-integration.md).

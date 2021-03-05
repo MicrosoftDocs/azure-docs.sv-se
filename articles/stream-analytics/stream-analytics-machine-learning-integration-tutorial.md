@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics integration med Azure Machine Learning Studio (klassisk)
 description: Den här artikeln beskriver hur du snabbt skapar ett enkelt Azure Stream Analytics jobb som integrerar Azure Machine Learning Studio (klassisk) med hjälp av en användardefinierad funktion.
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 89b1b91270d1fe30ffcb5ae0caa5f319aa616683
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015308"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178532"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Gör sentiment-analys med Azure Stream Analytics och Azure Machine Learning Studio (klassisk)
 
@@ -51,7 +51,7 @@ I det här steget laddar du upp en CSV-fil till din lagrings behållare.
    |Prenumeration|Välj din prenumeration.|
    |Resursgrupp|Välj din resurs grupp.|
    |Lagringskontonamn|Ange ett namn för lagringskontot. Namnet måste vara unikt i Azure.|
-   |Plats|Välj en plats. Alla resurser bör använda samma plats.|
+   |Location|Välj en plats. Alla resurser bör använda samma plats.|
    |Typ av konto|BlobStorage|
 
    ![Ange information om lagrings konto](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)

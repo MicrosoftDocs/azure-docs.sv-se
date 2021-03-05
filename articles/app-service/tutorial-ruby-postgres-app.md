@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: f501fb6b5bca5b19e15eb03d9639d08b848ad02f
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968610"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178481"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Skapa en Ruby- och Postgres-app i Azure App Service på Linux
 
@@ -30,7 +30,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -255,7 +255,7 @@ I det här steget, distribuerar du ditt Postgres-anslutna Rails-program till Azu
 
 ### <a name="configure-database-settings"></a>Konfigurera databasinställningarna
 
-I App Service ställer du in miljövariabler som _appinställningar_ med kommandot [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) i Cloud Shell.
+I App Service ställer du in miljövariabler som _appinställningar_ med kommandot [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i Cloud Shell.
 
 Följande Cloud Shell-kommando konfigurerar appinställningarna `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` och `DB_PASSWORD`. Ersätt plats hållarna _&lt; APPNAME>_ och _&lt; postgres-Server-Name>_.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582345"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179144"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor för Azure Datautforskaren (för hands version)
 
@@ -103,10 +103,10 @@ På fliken **viktiga mått** visas en enhetlig vy över några av klustrets måt
 
 På fliken **användning** kan användare djupgående att gå in på prestandan för klustrets kommandon och frågor. På den här sidan kan du:
  
- - Se vilka användare och program som skickar de flesta frågor eller konsumerar mest processor kraft och minne (så att du kan förstå vilka användare som skickar de tyngsta frågorna för klustret till process).
- - Identifiera de flesta användare och program efter misslyckade frågor.
- - Identifiera de senaste ändringarna i antalet frågor, jämfört med det historiska dagliga genomsnittet (under de senaste 16 dagarna), av användare och program.
- - Identifiera trender och toppar i antalet frågor, minne och processor förbrukning per användare, program och kommando typ.
+ - Se vilka arbets belastnings grupper, användare och program som skickar de flesta frågor eller använder mest processor kraft och minne (så att du kan förstå vilka arbets belastningar som skickar de tyngsta frågorna för klustret att bearbeta).
+ - Identifiera de vanligaste arbets belastnings grupperna, användare och program efter misslyckade frågor.
+ - Identifiera de senaste ändringarna i antalet frågor, jämfört med det historiska dagliga genomsnittet (under de senaste 16 dagarna), efter arbets belastnings grupp, användare och program.
+ - Identifiera trender och toppar i antalet frågor, minne och processor förbrukning per arbets belastnings grupp, användare, program och kommando typ.
 
 [![Skärm bild av vyn vyer med ring diagram med högsta användning av kommando-och antal frågor, främsta huvud konton med kommando-och antal frågor och främsta kommandon efter kommando typer](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

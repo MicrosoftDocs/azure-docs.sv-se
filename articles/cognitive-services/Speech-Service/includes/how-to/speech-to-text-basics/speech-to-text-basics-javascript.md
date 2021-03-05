@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: a27fba6e426b72d72160a9a238f68cf8cef5c73b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947113"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180065"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna igen mänskligt tal (kallas ofta tal till text). I den här snabb starten får du lära dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativt tal-till-text-konvertering.
 
@@ -18,40 +18,23 @@ En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna ige
 
 Om du vill hoppa över direkt till exempel kod kan du läsa [snabb starts exemplen för Java Script](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) på GitHub.
 
+Du kan också se mer [information om hur](https://github.com/Azure-Samples/AzureSpeechReactSample) du använder tal-SDK i en webbläsarbaserad miljö.
+
 ## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du har ett Azure-konto och en röst tjänst prenumeration. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Installera Speech SDK
 
-Innan du kan göra något måste du installera <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Speech SDK för Java Script <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Använd följande instruktioner, beroende på plattform:
+Innan du kan göra något måste du installera talet SDK för Node.js. Om du bara vill att paket namnet ska installeras kör du `npm install microsoft-cognitiveservices-speech-sdk` . Anvisningar för Guidad installation finns i artikeln [Kom igång](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript) .
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webbläsare <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-
-Beroende på mål miljön använder du dessutom något av följande:
-
-# <a name="script"></a>[skript](#tab/script)
-
-Hämta och extrahera <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">talet SDK för Java Script <span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* -filen och placera den i en mapp som är tillgänglig för HTML-filen.
-
-```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
-```
-
-> [!TIP]
-> Om du använder en webbläsare och använder- `<script>` taggen `sdk` behövs inte prefixet vid referens av klasser. `sdk`Prefixet är ett alias som används för att namnge `require` modulen.
-
-# <a name="require"></a>[innebära](#tab/require)
+Använd följande `require` instruktion för att importera SDK: n.
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Mer information om `require` finns i <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">Vad kräver <span class="docon docon-navigate-external x-hidden-focus"></span> ? </a>.
-
----
+Mer information finns i `require` dokumentationen om att [kräva](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
 
 ## <a name="create-a-speech-configuration"></a>Skapa en tal konfiguration
 
@@ -72,52 +55,14 @@ Det finns några andra sätt som du kan initiera [`SpeechConfig`](/javascript/ap
 
 ## <a name="recognize-from-microphone-browser-only"></a>Identifiera från mikrofon (endast webbläsare)
 
-Skapa en med hjälp av om du vill känna igen tal med din enhets mikrofon `AudioConfig` `fromDefaultMicrophoneInput()` . Initiera sedan en [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) , och skicka in `speechConfig` och `audioConfig` .
+Att känna igen tal från en mikrofon **stöds inte i Node.js** och stöds bara i en webbläsarbaserad JavaScript-miljö. Se [exemplet](https://github.com/Azure-Samples/AzureSpeechReactSample) på GitHub för att se [tal-till-text från mikrofon implementeringen](https://github.com/Azure-Samples/AzureSpeechReactSample/blob/main/src/App.js#L29).
 
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromMic() {
-    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    console.log('Speak into your microphone.');
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromMic();
-```
-
-Om du vill använda en *speciell* enhet för ljud inspelning måste du ange enhets-ID i `AudioConfig` . Lär dig [hur du hämtar enhets-ID](../../../how-to-select-audio-input-devices.md) : t för din enhet för ljud inspelning.
+> [!NOTE]
+> Om du vill använda en *speciell* enhet för ljud inspelning måste du ange enhets-ID i `AudioConfig` . Lär dig [hur du hämtar enhets-ID](../../../how-to-select-audio-input-devices.md) : t för din enhet för ljud inspelning.
 
 ## <a name="recognize-from-file"></a>Identifiera från fil 
 
-# <a name="browser"></a>[Webbläsare](#tab/browser)
-
-Om du vill känna igen tal från en ljudfil i en webbläsarbaserad JavaScript-miljö använder du `fromWavFileInput()` funktionen för att skapa en [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) . Funktionen `fromWavFileInput()` förväntar sig ett JavaScript- [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) objekt som en parameter.
-
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromFile() {
-    // wavByteContent should be a byte array of the raw wav content
-    let file = new File([wavByteContent]);
-    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromFile();
-```
-
-# <a name="nodejs"></a>[Node.js](#tab/node)
-
-Om du vill känna igen tal från en ljudfil i Node.js, måste ett alternativt design mönster som använder en push-dataström användas, eftersom JavaScript- [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) objektet inte kan användas i en Node.js Runtime. Följande kod:
+Om du vill känna igen tal från en ljudfil i Node.js, måste ett alternativt design mönster som använder en push-dataström användas, eftersom JavaScript- `File` objektet inte kan användas i en Node.js Runtime. Följande kod:
 
 * Skapar en push-ström med `createPushStream()`
 * Öppnar `.wav` filen genom att skapa en Läs ström och skriver den till push-strömmen
@@ -149,8 +94,6 @@ fromFile();
 
 Om du använder en push-dataström som indata förutsätter vi att ljuddata är en RAW PCM, t. ex. om du hoppar över rubriker.
 API fungerar fortfarande i vissa fall om huvudet inte har hoppats över, men för bästa resultat bör du överväga att implementera logiken för att läsa upp rubrikerna så att `fs` börjar i *början av ljuddata*.
-
----
 
 ## <a name="error-handling"></a>Felhantering
 
@@ -190,7 +133,7 @@ Kontinuerlig igenkänning används däremot när du vill **styra** när du vill 
 Börja med att definiera indatamängden och initiera en [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) :
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 Prenumerera sedan på de händelser som skickas från [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) .

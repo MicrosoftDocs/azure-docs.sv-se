@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aeabd74117f99c7cac9bde0eda02b9627caf0804
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385616"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177800"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Förgrunds aktiviteter i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -483,12 +483,13 @@ Här följer några begränsningar för den förgrunds aktiviteten och föreslag
 |---|---|
 | Du kan inte kapsla en förgrunds slinga i en annan förgrunds slinga (eller en until-slinga). | Utforma en pipeline på två nivåer där den yttre pipelinen med den yttre slingan upprepas över en inre pipeline med den kapslade slingan. |
 | Förgrunds aktiviteten har högst `batchCount` 50 för parallell bearbetning och högst 100 000 objekt. | Utforma en pipeline på två nivåer där den yttre pipelinen med förgrunds aktiviteten upprepas över en inre pipeline. |
+| SetVariable kan inte användas i en förgrunds aktivitet som körs parallellt eftersom variablerna är globala för hela pipelinen, de är inte begränsade till en eller flera aktiviteter. | Överväg att använda sekventiella eller använda en pipeline i förloppet (variabel/parameter som hanteras i den underordnade pipelinen).|
 | | |
 
 ## <a name="next-steps"></a>Nästa steg
 Se andra kontroll flödes aktiviteter som stöds av Data Factory: 
 
-- [Köra pipelineaktivitet](control-flow-execute-pipeline-activity.md)
+- [Kör pipeline-aktivitet](control-flow-execute-pipeline-activity.md)
 - [Hämta metadataaktivitet](control-flow-get-metadata-activity.md)
 - [Sökningsaktivitet](control-flow-lookup-activity.md)
 - [Webbaktivitet](control-flow-web-activity.md)

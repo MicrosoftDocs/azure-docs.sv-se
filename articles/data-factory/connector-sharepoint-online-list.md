@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393436"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177869"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopiera data från SharePoint Online-listan med Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -232,6 +232,9 @@ Du kan kopiera filen från SharePoint Online genom att använda **webb aktivitet
         - **Metod för begäran**: Hämta
         - **Ytterligare rubrik**: Använd följande uttryck `@{concat('Authorization: Bearer ', activity('<Web-activity-name>').output.access_token)}` som använder den Bearer-token som genereras av den överordnade webb aktiviteten som Authorization-huvud. Ersätt webb aktivitetens namn.
     - Konfigurera kopierings aktivitets sinken som vanligt.
+
+> [!NOTE]
+> Även om ett Azure AD-program har `FullControl` behörigheter för SharePoint Online kan du inte kopiera filer från dokument bibliotek med IRM aktiverat.
 
 ## <a name="lookup-activity-properties"></a>Egenskaper för Sök aktivitet
 

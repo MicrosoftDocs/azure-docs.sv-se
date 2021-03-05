@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8884663b3f0e861e62f48c3aab680f0f31e74428
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8f84fb6bf37a3d3b61f4cad2c89745447aa88a36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098391"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179399"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Introduktion till Azure percept-ljud
 
@@ -65,7 +65,7 @@ Azure Percept Audio passes the audio input to the Azure Percept DK carrier board
 
 ## <a name="build-a-no-code-prototype"></a>Skapa en prototyp utan kod
 
-Bygg en [tal igenkännings lösning](./tutorial-no-code-speech.md) med Azure percept Voice Assistant för service, hälso vårds-, inventerings-och bil scenarier.
+Bygg en [icke-kodad tal lösning](./tutorial-no-code-speech.md) i [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) med hjälp av Azure percept Voice Assistant-mallar för service, sjukvård, inventering och bil scenarier.
 
 ### <a name="manage-your-no-code-speech-solution"></a>Hantera din tal lösning med ingen kod
 

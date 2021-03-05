@@ -4,13 +4,13 @@ description: I den här artikeln beskrivs integrering av sensor partner.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.author: v-ummehabiba
+ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001600"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179756"
 ---
 # <a name="sensor-partner-integration"></a>Sensorpartnerintegration
 
@@ -23,7 +23,7 @@ Med den här komponenten kan partners integrera med FarmBeats med hjälp av Farm
 För att utveckla Translator-komponenten behöver du följande autentiseringsuppgifter som ger åtkomst till FarmBeats-API: erna.
 
 - API-slutpunkt
-- Klientorganisations-ID
+- Klient-ID:t
 - Klient-ID
 - Client Secret (Klienthemlighet)
 - EventHub-anslutningssträng
@@ -53,7 +53,7 @@ Mer information finns i [Azure Active Directory](../../app-service/overview-auth
 FarmBeats Datahub använder Bearer-autentisering, som behöver följande autentiseringsuppgifter:
    - Klient-ID
    - Klienthemlighet
-   - Klientorganisations-ID
+   - Klient-ID:t
 
 Med dessa autentiseringsuppgifter kan anroparen begära en åtkomsttoken. Token måste skickas i efterföljande API-begäranden i avsnittet rubrik enligt följande:
 
@@ -131,23 +131,23 @@ FarmBeats Datahub har följande API: er som gör det möjligt för enhets partne
 - /**SensorModel**: SensorModel motsvarar sensorns metadata, till exempel tillverkaren, typen av sensor, som är antingen analog eller digital och sensor måttet, till exempel omgivnings temperatur och tryck.
 - /**Sensor**: sensorn motsvarar en fysisk sensor som registrerar värden. En sensor är vanligt vis ansluten till en enhet med ett enhets-ID.
 
-  DeviceModel | Description |
+  DeviceModel | Beskrivning |
   --- | ---
   Typ (nod, Gateway)  | Typ av enhet-nod eller gateway |
   Tillverkare  | Tillverkarens namn |
   ProductCode  | Enhetens produkt kod eller modell namn eller nummer. Till exempel EnviroMonitor # 6800. |
   Portar  | Port namn och-typ, som är digital eller analog.  |
-  Name  | Namn för att identifiera resursen. Till exempel modell namn eller produkt namn. |
-  Description  | Ange en meningsfull beskrivning av modellen. |
+  Namn  | Namn för att identifiera resursen. Till exempel modell namn eller produkt namn. |
+  Beskrivning  | Ange en meningsfull beskrivning av modellen. |
   Egenskaper  | Ytterligare egenskaper från tillverkaren. |
   **Enhet** | **Beskrivning** |
   DeviceModelId  |ID för associerad enhets modell. |
   HardwareId   |Unikt ID för enheten, till exempel en MAC-adress.  |
   ReportingInterval |Rapport intervall i sekunder. |
-  Plats    |Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
+  Location    |Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
   ParentDeviceId | ID för den överordnade enhet som enheten är ansluten till. Om en nod till exempel är ansluten till en gateway har noden parentDeviceID som gateway. |
-  Name  | Namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på enhets partner sidan. Om enhetens namn är användardefinierat på enhets partner sidan, ska samma användardefinierade namn spridas till FarmBeats.  |
-  Description  | Ange en meningsfull beskrivning.  |
+  Namn  | Namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på enhets partner sidan. Om enhetens namn är användardefinierat på enhets partner sidan, ska samma användardefinierade namn spridas till FarmBeats.  |
+  Beskrivning  | Ange en meningsfull beskrivning.  |
   Egenskaper  |Ytterligare egenskaper från tillverkaren.  |
   **SensorModel** | **Beskrivning** |
   Typ (analog, digital)  |Nämna analog eller digital sensor.|
@@ -160,17 +160,17 @@ FarmBeats Datahub har följande API: er som gör det möjligt för enhets partne
   SensorMeasures > AggregationType  | Antingen ingen, genomsnitt, högsta, lägsta eller StandardDeviation.
   SensorMeasures > djup  | Sensorns djup i centimeter. Till exempel mätningen av fukt 10 cm under marken.
   Beskrivning av SensorMeasures->  | Ge en meningsfull beskrivning av måttet.
-  Name  | Namn för att identifiera resursen. Till exempel modell namnet eller produkt namnet.
-  Description  | Ange en meningsfull beskrivning av modellen.
+  Namn  | Namn för att identifiera resursen. Till exempel modell namnet eller produkt namnet.
+  Beskrivning  | Ange en meningsfull beskrivning av modellen.
   Egenskaper  | Ytterligare egenskaper från tillverkaren.
   **Mäta**  | **Beskrivning** |
   HardwareId  | Unikt ID för sensorn som anges av tillverkaren.
   SensorModelId  | ID för associerad sensor modell.
-  Plats  | Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter).
+  Location  | Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter).
   Port > namn  |Namn och typ för den port som sensorn är ansluten till på enheten. Det måste vara samma namn som definieras i enhets modellen.
   DeviceId  | ID för den enhet som sensorn är ansluten till.
-  Name  | Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod.
-  Description  | Ange en meningsfull beskrivning.
+  Namn  | Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod.
+  Beskrivning  | Ange en meningsfull beskrivning.
   Egenskaper  | Ytterligare egenskaper från tillverkaren.
 
  Information om varje objekt och deras egenskaper finns i [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
@@ -298,7 +298,7 @@ När kunderna har köpt och distribuerat enheter eller sensorer kan de komma åt
 
    - Visnings namn (ett valfritt fält där användare kan definiera ett namn för den här integrationen)
    - API-slutpunkt
-   - Klientorganisations-ID
+   - Klient-ID:t
    - Klient-ID
    - Klienthemlighet
    - EventHub-anslutningssträng

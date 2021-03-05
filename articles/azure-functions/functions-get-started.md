@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364723"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179263"
 ---
 # <a name="getting-started-with-azure-functions"></a>Komma igång med Azure Functions
 
@@ -46,7 +46,7 @@ Använd följande resurser för att komma igång.
 ::: zone pivot="programming-language-javascript"
 | Action | Resurser |
 | --- | --- |
-| **Skapa din första funktion** | Använd något av följande verktyg:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js Terminal/kommando-prompt](./create-first-function-cli-java.md) |
+| **Skapa din första funktion** | Använd något av följande verktyg:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js Terminal/kommando-prompt](./create-first-function-cli-node.md) |
 | **Se en funktion som kör** | <li>[Azure samples-webbläsare](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure community-bibliotek](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **Utforska en interaktiv självstudie** | <li>[Välj den bästa serverlösa teknikerna i Azure för ditt företagsscenario](/learn/modules/serverless-fundamentals/)<li>[Väl utformat ramverk – prestanda effektivitet](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Skapa serverlösa API:er med Azure Functions](/learn/modules/build-api-azure-functions/)<li>[Skapa serverfri logik med Azure Functions](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[Omstrukturera Node.js Express-API:er till serverlösa API:er med Azure Functions](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>Se Microsoft Learn för en [fullständig lista över interaktiva självstudier](/learn/browse/?expanded=azure&products=azure-functions).|
 | **Granska metodtips** |<li>[Prestanda och tillförlitlighet](./functions-best-practices.md)<li>[Hantera anslutningar](./manage-connections.md)<li>[Fel hantering och funktions försök](./functions-bindings-error-pages.md?tabs=javascript)<li>[Säkerhet](./security-concepts.md)|

@@ -6,18 +6,18 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810723"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179671"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Självstudie: Uppdatera lagret med Azure-portalen och ämnen/prenumerationer
 
 Azure Service Bus är en meddelandetjänst i molnet för flera klienter som skickar information mellan program och tjänst. Asynkrona åtgärder ger dig en flexibel, asynkron meddelandetjänst med funktioner för strukturerade meddelanden enligt FIFO-metoden (först-in-först-ut) och funktioner för publicering/prenumeration. Den här kursen visar hur du använder Service Bus-ämnen och prenumerationer i ett scenario med butikslager, med publicera/prenumerera kanaler med Azure-portalen och .NET.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Skapa ett Service Bus-ämne och en eller flera prenumerationer på det ämnet med Azure-portalen
 > * Lägg till ämnesfilter med .NET-kod
@@ -97,7 +97,7 @@ Om du vill köra koden gör du följande:
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När det inte längre behövs, tar du bort namnområdet och kön. Om du vill göra det, väljer du resurserna i portalen och klickar på **Ta bort**.
+Ta bort namn området och ämnet när de inte längre behövs. Om du vill göra det, väljer du resurserna i portalen och klickar på **Ta bort**.
 
 ## <a name="understand-the-sample-code"></a>Förstå exempelkoden
 

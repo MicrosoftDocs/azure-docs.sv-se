@@ -4,12 +4,12 @@ description: Batch stöder Azure AD för autentisering från batch-tjänsten. L�
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95252648"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180028"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Autentisera batch service-lösningar med Active Directory
 
@@ -41,7 +41,7 @@ Om du vill autentisera med Azure AD använder du den här slut punkten tillsamma
 >
 > Den klient-/regionsspecifika slut punkten är valfri när du autentiserar med integrerad autentisering, men rekommenderas. Du kan dock också använda den vanliga Azure AD-slutpunkten. Den gemensamma slut punkten ger ett allmänt gränssnitt för insamling av autentiseringsuppgifter när en enskild klient inte har angetts. Den gemensamma slut punkten är `https://login.microsoftonline.com/common` .
 
-Mer information om Azure AD-slutpunkter finns i [autentisering kontra auktorisering]()... /active-directory/develop/authentication-vs-authorization.md).
+Mer information om Azure AD-slutpunkter finns i [autentisering kontra auktorisering](../active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Slut punkt för batch-resurs
 
@@ -110,7 +110,7 @@ Följ dessa steg i Azure-portalen:
 
 ### <a name="assign-azure-rbac-to-your-application"></a>Tilldela Azure RBAC till ditt program
 
-Om du vill autentisera med ett huvud namn för tjänsten måste du tilldela Azure RBAC till ditt program. Följ de här stegen:
+Om du vill autentisera med ett huvud namn för tjänsten måste du tilldela Azure RBAC till ditt program. Gör så här:
 
 1. I Azure Portal navigerar du till det batch-konto som används av ditt program.
 1. I avsnittet **Inställningar** i batch-kontot väljer du **Access Control (IAM)**.

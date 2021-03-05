@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c9479fca538c36f4f5eb430c4befb76e39370e6
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900014"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178838"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Hantera system-nodkonfigurationer i Azure Kubernetes service (AKS)
 
-I Azure Kubernetes service (AKS) grupperas noderna i samma konfiguration tillsammans i *noder i pooler* . Node-pooler innehåller de underliggande virtuella datorer som kör dina program. System-nodkonfigurationer och användar-Node-pooler är två olika lägen för resurspooler för dina AKS-kluster. System Node-pooler fungerar som ett primärt syfte att vara värd för kritiska system poddar, till exempel `CoreDNS` och `metrics-server` . Pooler för användar-noder fungerar som ett primärt syfte att vara värd för din applikations poddar. Programpoddar kan dock schemaläggas på system-nodkonfigurationer om du bara vill ha en pool i ditt AKS-kluster. Varje AKS-kluster måste innehålla minst en adresspool för system med minst en nod.
+I Azure Kubernetes service (AKS) grupperas noderna i samma konfiguration tillsammans i *noder i pooler*. Node-pooler innehåller de underliggande virtuella datorer som kör dina program. System-nodkonfigurationer och användar-Node-pooler är två olika lägen för resurspooler för dina AKS-kluster. System Node-pooler fungerar som ett primärt syfte att vara värd för kritiska system poddar, till exempel `CoreDNS` och `metrics-server` . Pooler för användar-noder fungerar som ett primärt syfte att vara värd för din applikations poddar. Programpoddar kan dock schemaläggas på system-nodkonfigurationer om du bara vill ha en pool i ditt AKS-kluster. Varje AKS-kluster måste innehålla minst en adresspool för system med minst en nod.
 
 > [!Important]
 > Om du kör en pool med en enda pool för AKS-klustret i en produktions miljö rekommenderar vi att du använder minst tre noder för Node-poolen.
@@ -197,12 +197,12 @@ I den här artikeln har du lärt dig hur du skapar och hanterar system-nodkonfig
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create

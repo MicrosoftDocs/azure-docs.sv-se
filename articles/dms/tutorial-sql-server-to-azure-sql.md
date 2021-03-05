@@ -1,5 +1,5 @@
 ---
-title: 'Självstudie: Migrera SQL Server offline till en enkel SQL-databas'
+title: 'Självstudie: Migrera SQL Server offline till Azure SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Lär dig att migrera från SQL Server till Azure SQL Database offline genom att använda Azure Database Migration Service.
 services: dms
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: b02572f8f6f6531afba9e24af1d2eab53f5cb6ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742117"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180792"
 ---
-# <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Självstudie: Migrera SQL Server till Azure SQL Database offline med hjälp av DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Självstudie: Migrera SQL Server till Azure SQL Database med DMS
 
-Du kan använda Azure Database Migration Service för att migrera databaserna från en SQL Server instans till [Azure SQL Database](/azure/sql-database/). I den här självstudien migrerar du [Adventureworks2016](/sql/samples/adventureworks-install-configure?tabs=ssms&view=sql-server-ver15#download-backup-files) -databasen som återställs till en lokal instans av SQL Server 2016 (eller senare) till en databas eller en databas i pooler i Azure SQL Database genom att använda Azure Database migration service.
+Du kan använda Azure Database Migration Service för att migrera databaserna från en SQL Server instans till [Azure SQL Database](/azure/sql-database/). I den här självstudien migrerar du [Adventureworks2016](/sql/samples/adventureworks-install-configure#download-backup-files) -databasen som återställs till en lokal instans av SQL Server 2016 (eller senare) till en databas eller en databas i pooler i Azure SQL Database genom att använda Azure Database migration service.
 
 Du lär dig hur du:
 > [!div class="checklist"]
@@ -33,6 +33,7 @@ Du lär dig hur du:
 > - Skapa ett migreringsjobb med hjälp av Azure Database Migration Service.
 > - Köra migreringen.
 > - Övervaka migreringen.
+
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -147,7 +148,7 @@ Gör så här om du vill migrera **Adventureworks2016** -schemat till en databas
 
 1. Logga in på Azure-portalen. Sök efter och välj **prenumerationer**.
 
-   ![Visa portalprenumerationer](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
+   ![Visa portalprenumerationer](media/tutorial-sql-server-to-azure-sql/portal-select-subscription-1.png)
 
 2. Välj den prenumeration där du vill skapa instansen av Azure Database Migration Service och välj sedan **resurs leverantörer**.
 
@@ -165,7 +166,7 @@ Gör så här om du vill migrera **Adventureworks2016** -schemat till en databas
 
 2. På sidan **Azure Database Migration Service** väljer du **Skapa**.
 
-    ![Skapa Azure Database Migration Service-instans](media/tutorial-sql-server-to-azure-sql/dms-create1.png)
+    ![Skapa Azure Database Migration Service-instans](media/tutorial-sql-server-to-azure-sql/dms-create-1.png)
   
 3. På skärmen för att **skapa Migreringsverktyg för tjänsten** :
 
@@ -176,7 +177,7 @@ Gör så här om du vill migrera **Adventureworks2016** -schemat till en databas
      - Välj **Azure** som tjänst läge.
      - Välj en prisnivå. Mer information om kostnader och prisnivåer finns på [sidan med priser](https://aka.ms/dms-pricing).
 
-    ![Konfigurera inställningar för grundläggande Azure Database Migration Service-instans](media/tutorial-sql-server-to-azure-sql/dms-settings2.png)
+    ![Konfigurera inställningar för grundläggande Azure Database Migration Service-instans](media/tutorial-sql-server-to-azure-sql/dms-settings-2.png)
 
      - Välj **Nästa: Nätverk**.
 
@@ -184,7 +185,7 @@ Gör så här om du vill migrera **Adventureworks2016** -schemat till en databas
 
     - Välj ett befintligt virtuellt nätverk eller skapa ett nytt. Det virtuella nätverket ger Azure Database Migration Service åtkomst till käll SQL Server och mål Azure SQL Database instansen. Mer information om hur du skapar ett virtuellt nätverk i Azure Portal finns i artikeln [skapa ett virtuellt nätverk med hjälp av Azure Portal](../virtual-network/quick-create-portal.md).
 
-    ![Konfigurera Azure Database Migration Service instans nätverks inställningar](media/tutorial-sql-server-to-azure-sql/dms-settings3.png)
+    ![Konfigurera Azure Database Migration Service instans nätverks inställningar](media/tutorial-sql-server-to-azure-sql/dms-settings-3.png)
 
     - Välj **Granska + skapa** för att skapa tjänsten.
 
@@ -202,9 +203,9 @@ När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och
 
      ![Hitta din instans av Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
 
-4. På sidan **Nytt migreringsprojekt** anger du namnet på projektet, I textrutan **Typ av källserver** väljer du **SQL Server**, i textrutan **Målservertyp** väljer du **Azure SQL Database** och sedan för **Välj typ av aktivitet** väljer du **Offline-datamigrering**.
+4. På skärmen **ny migrerings projekt** anger du ett namn för projektet i text rutan **käll Server typ** , väljer **SQL Server**, i text rutan **mål server typ** , väljer **Azure SQL Database** och klickar sedan på * * Välj typ av migrering av aktivitet * *, väljer **datamigrering**.
 
-    ![Skapa Database Migration Service-projekt](media/tutorial-sql-server-to-azure-sql/dms-create-project2.png)
+    ![Skapa Database Migration Service-projekt](media/tutorial-sql-server-to-azure-sql/dms-create-project-2.png)
 
 5. Välj **Skapa och kör aktivitet** för att skapa projektet och köra migreringsaktiviteten.
 
@@ -224,34 +225,42 @@ När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och
     > [!IMPORTANT]
     > Om du använder SSIS stöder DMS för närvarande inte migrering av käll-SSISDB, men du kan distribuera om ditt SSIS-projekt/-paket till SSISDB-målet med Azure SQL Database. Mer information om migrera SSIS-paket finns i artikeln [Migrate SQL Server Integration Services packages to Azure](./how-to-migrate-ssis-packages.md) (Migrera SQL Server Integration Services-paket till Azure).
 
-   ![Källinformation](media/tutorial-sql-server-to-azure-sql/dms-source-details2.png)
+   ![Källinformation](media/tutorial-sql-server-to-azure-sql/dms-source-details-2.png)
+   
+3. Välj **Nästa: Välj databaser**.
 
-3. Välj **Nästa: Välj mål**.
+## <a name="select-databases-for-migration"></a>Välj databaser för migrering
+
+Välj antingen alla databaser eller vissa databaser som du vill migrera till Azure SQL Database. DMS ger den förväntade migrerings tiden för valda databaser. Om avbrotts tiden för migreringen är acceptabel fortsätter du med migreringen. Om migreringens stillestånds tid inte är acceptabel kan du migrera till [SQL-hanterad instans med nästan noll stillestånd](tutorial-sql-server-managed-instance-online.md) eller kontakta [DMS-teamet](mailto:DMSFeedback@microsoft.com) för andra alternativ. 
+
+1. Välj de databaser som du vill migrera från listan över tillgängliga databaser. 
+1. Granska den förväntade stillestånds tiden. Om den är acceptabel väljer du **Nästa: Välj mål >>**
+
+   ![Käll databaser](media/tutorial-sql-server-to-azure-sql/select-database.png)
+
+
 
 ## <a name="specify-target-details"></a>Ange målinformation
 
-1. På skärmen **Välj mål** anger du anslutnings information för mål Azure SQL Database, vilket är den företablerade Azure SQL Database som **Adventureworks2016** -schemat har distribuerats till med hjälp av data migration assistant.
+1. På skärmen **Välj mål** anger du autentiseringsinställningar för Azure SQL Database. 
 
-    ![Välja mål](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
-    
-    > [!NOTE]
-    > Anslutningar för privata slut punkter till mål Azure SQL Database stöds av Azure Database Migration Service, förutom när du använder ett anpassat DNS-namn. 
+   ![Välja mål](media/tutorial-sql-server-to-azure-sql/select-target.png)
 
-2. Välj **Nästa: mappa till mål databaser** -skärmen, mappa källan och mål databasen för migrering.
+1. Välj **Nästa: mappa till mål databaser** -skärmen, mappa källan och mål databasen för migrering.
 
     Om mål databasen innehåller samma databas namn som käll databasen Azure Database Migration Service väljer mål databasen som standard.
 
-    ![Mappa till måldatabaser](media/tutorial-sql-server-to-azure-sql/dms-map-targets-activity2.png)
+    ![Mappa till måldatabaser](media/tutorial-sql-server-to-azure-sql/dms-map-targets-activity-2.png)
 
-3. Välj **Nästa: inställningar för migrering av konfiguration**, expandera tabell listan och granska sedan listan över berörda fält.
+1. Välj **Nästa: inställningar för migrering av konfiguration**, expandera tabell listan och granska sedan listan över berörda fält.
 
     Azure Database Migration Service väljer automatiskt alla tomma käll tabeller som finns på mål Azure SQL Databases instansen. Om du vill migrera tabeller på nytt som redan innehåller data måste du uttryckligen välja tabellerna på det här bladet.
 
-    ![Välj tabeller](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
+    ![Välj tabeller](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity-2.png)
 
-4. Välj **Nästa: Sammanfattning**, granska konfigurationen av migreringen och ange ett namn för migreringen i text rutan **namn på aktivitet** .
+1. Välj **Nästa: Sammanfattning**, granska konfigurationen av migreringen och ange ett namn för migreringen i text rutan **namn på aktivitet** .
 
-    ![Välja verifieringsalternativ](media/tutorial-sql-server-to-azure-sql/dms-configuration2.png)
+    ![Välja verifieringsalternativ](media/tutorial-sql-server-to-azure-sql/dms-configuration-2.png)
 
 ## <a name="run-the-migration"></a>Köra migreringen
 
@@ -259,13 +268,13 @@ När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och
 
     Migreringsaktivitetsfönstret visas och **Status** för aktiviteten är **Väntande**.
 
-    ![Aktivitetsstatus](media/tutorial-sql-server-to-azure-sql/dms-activity-status1.png)
+    ![Aktivitetsstatus](media/tutorial-sql-server-to-azure-sql/dms-activity-status-1.png)
 
 ## <a name="monitor-the-migration"></a>Övervaka migreringen
 
 1. På migreringsaktivitetssidan väljer du **Uppdatera** för att uppdatera visningen tills **Status** för migreringen är **Slutförd**.
 
-    ![Aktivitetsstatus Slutförd](media/tutorial-sql-server-to-azure-sql/dms-completed-activity1.png)
+    ![Aktivitetsstatus Slutförd](media/tutorial-sql-server-to-azure-sql/dms-completed-activity-1.png)
 
 2. Verifiera mål databaserna på mål **Azure SQL Database**.
 

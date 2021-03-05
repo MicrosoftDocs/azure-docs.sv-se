@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178089"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Självstudie: lägga till en Azure SQL Database i en grupp för automatisk redundans
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ Kontrol lera att du har följande objekt för att slutföra självstudien:
 Kontrol lera att du har följande objekt för att slutföra självstudien:
 
 - En Azure-prenumeration. [Skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) om du inte redan har ett.
-- Den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli).
 
 ---
 
@@ -75,21 +75,21 @@ Skapa din grupp för redundans och Lägg till din databas i den med hjälp av Az
 
    ![Lägg till ny redundans grupp](./media/failover-group-add-single-database-tutorial/sqldb-add-new-failover-group.png)
 
-1. På sidan **redundans** anger eller väljer du följande värden och väljer sedan **skapa** :
+1. På sidan **redundans** anger eller väljer du följande värden och väljer sedan **skapa**:
 
-   - **Namn på redundans grupp** : Ange ett unikt namn på redundans grupp, till exempel `failovergrouptutorial` .
-   - **Sekundär server** : Välj alternativet för att *Konfigurera nödvändiga inställningar* och välj sedan att **skapa en ny server**. Alternativt kan du välja en redan befintlig server som den sekundära servern. När du har angett följande värden väljer du **Välj**.
-      - **Server namn** : Ange ett unikt namn på den sekundära servern, till exempel `mysqlsecondary` .
-      - **Inloggning för Server administratör** : typ `azureuser`
-      - **Lösen ord** : Ange ett komplext lösen ord som uppfyller lösen ords kraven.
-      - **Plats** : Välj en plats i list rutan, till exempel `East US` . Den här platsen kan inte vara samma plats som din primära server.
+   - **Namn på redundans grupp**: Ange ett unikt namn på redundans grupp, till exempel `failovergrouptutorial` .
+   - **Sekundär server**: Välj alternativet för att *Konfigurera nödvändiga inställningar* och välj sedan att **skapa en ny server**. Alternativt kan du välja en redan befintlig server som den sekundära servern. När du har angett följande värden väljer du **Välj**.
+      - **Server namn**: Ange ett unikt namn på den sekundära servern, till exempel `mysqlsecondary` .
+      - **Inloggning för Server administratör**: typ `azureuser`
+      - **Lösen ord**: Ange ett komplext lösen ord som uppfyller lösen ords kraven.
+      - **Plats**: Välj en plats i list rutan, till exempel `East US` . Den här platsen kan inte vara samma plats som din primära server.
 
      > [!NOTE]
      > Inställningarna för Server inloggning och brand vägg måste matcha den primära servern.
 
      ![Skapa en sekundär server för redundans gruppen](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **Databaser i gruppen** : när du har valt en sekundär server blir det här alternativet olåst. Välj den för att **välja databaser som ska läggas till** och välj sedan den databas som du skapade i avsnitt 1. Om du lägger till databasen i gruppen för växling vid fel startas automatiskt processen för geo-replikering.
+   - **Databaser i gruppen**: när du har valt en sekundär server blir det här alternativet olåst. Välj den för att **välja databaser som ska läggas till** och välj sedan den databas som du skapade i avsnitt 1. Om du lägger till databasen i gruppen för växling vid fel startas automatiskt processen för geo-replikering.
 
    ![Lägg till SQL Database i gruppen redundans](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -199,7 +199,7 @@ Den här delen av självstudien använder följande Azure CLI-cmdletar:
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Skapar en server som är värd för databaser och elastiska pooler. |
 | [AZ SQL Server-brandvägg-regel skapa](/cli/azure/sql/server/firewall-rule) | Skapar en servers brand Väggs regler. |
-| [AZ SQL-redundans – grupp skapa](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Skapar en grupp för redundans. |
+| [AZ SQL-redundans – grupp skapa](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Skapar en grupp för redundans. |
 
 ---
 
@@ -322,8 +322,8 @@ Den här delen av självstudien använder följande Azure CLI-cmdletar:
 
 | Kommando | Kommentarer |
 |---|---|
-| [AZ SQL-redundans – grupp lista](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Visar en lista över failover-grupper på en server. |
-| [AZ SQL-redundans – grupp uppsättning – primär](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Ange den primära gruppen för redundans genom att redundansväxla alla databaser från den aktuella primära servern. |
+| [AZ SQL-redundans – grupp lista](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Visar en lista över failover-grupper på en server. |
+| [AZ SQL-redundans – grupp uppsättning – primär](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Ange den primära gruppen för redundans genom att redundansväxla alla databaser från den aktuella primära servern. |
 
 ---
 
@@ -409,14 +409,14 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [AZ-konto uppsättning](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Anger att en prenumeration är den aktuella aktiva prenumerationen. |
+| [AZ-konto uppsättning](/cli/azure/account#az-account-set) | Anger att en prenumeration är den aktuella aktiva prenumerationen. |
 | [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Skapar en server som är värd för enskilda databaser och elastiska pooler i Azure SQL Database. |
 | [AZ SQL Server-brandvägg-regel skapa](/cli/azure/sql/server/firewall-rule) | Skapar regler för IP-brandvägg på server nivå i Azure SQL Database. |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | Skapar en databas i Azure SQL Database. |
-| [AZ SQL-redundans – grupp skapa](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Skapar en failover-grupp i Azure SQL Database. |
-| [AZ SQL-redundans – grupp lista](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Visar en lista över failover-grupper på en server i Azure SQL Database. |
-| [AZ SQL-redundans – grupp uppsättning – primär](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Ange den primära gruppen för redundans genom att redundansväxla alla databaser från den aktuella primära servern. |
+| [az sql db create](/cli/azure/sql/db) | Skapar en databas i Azure SQL Database. |
+| [AZ SQL-redundans – grupp skapa](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Skapar en failover-grupp i Azure SQL Database. |
+| [AZ SQL-redundans – grupp lista](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Visar en lista över failover-grupper på en server i Azure SQL Database. |
+| [AZ SQL-redundans – grupp uppsättning – primär](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Ange den primära gruppen för redundans genom att redundansväxla alla databaser från den aktuella primära servern. |
 | [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
 
 # <a name="the-portal"></a>[Portalen](#tab/azure-portal)

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3b09253d779679e5a0c4ccd11b4cbd98ee386adc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098204"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179297"
 ---
 # <a name="introduction-to-azure-percept"></a>Introduktion till Azure percept
 
@@ -38,7 +38,7 @@ Huvud komponenterna i Azure-percept är:
 
 3. Tjänster och arbets flöden för att påskynda utvecklingen av AI-modellen och lösningen.
 
-    - Utvecklings arbets flöden och färdiga modeller som är tillgängliga från Azure percept Studio.
+    - Utvecklings arbets flöden och färdiga modeller som är tillgängliga från [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).
     - Utvecklings tjänster för modeller.
     - Enhets hanterings tjänster för skalning.
     - Säkerhet från slut punkt till slut punkt.

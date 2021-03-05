@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 588ebde85b6012ddbfb88ca8305fc735b7a0ba41
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098000"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179280"
 ---
 # <a name="azure-percept-audio-setup"></a>Installation av Azure percept-ljud
 
@@ -42,4 +42,4 @@ Azure percept-ljudet fungerar direkt med Azure percept DK. Ingen unik installati
 
 ## <a name="next-steps"></a>Nästa steg
 
-Skapa en [tal lösning utan kod](./tutorial-no-code-speech.md).
+Skapa en [tal lösning utan kod](./tutorial-no-code-speech.md) i [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).

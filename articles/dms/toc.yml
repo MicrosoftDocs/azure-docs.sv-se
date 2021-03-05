@@ -43,10 +43,6 @@
           href: tutorial-sql-server-to-managed-instance.md
         - name: till Azure SQL-hanterad instans (online)
           href: tutorial-sql-server-managed-instance-online.md
-    - name: Migrera RDS SQL Server
-      items:
-        - name: till Azure SQL Database eller SQL-hanterad instans
-          href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: Migrera MySQL
       items:
         - name: till Azure Database for MySQL
@@ -137,8 +133,6 @@
               href: known-issues-dms-hybrid-mode.md
         - name: Kända migreringsproblem
           items:
-            - name: SQL Database
-              href: known-issues-azure-sql-online.md
             - name: SQL-hanterad instans
               href: known-issues-azure-sql-db-managed-instance-online.md
             - name: Azure DB för MySQL

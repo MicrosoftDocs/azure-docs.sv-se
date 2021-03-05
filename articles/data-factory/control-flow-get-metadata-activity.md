@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 151f4352ce7c845050c899792fd7285c97f844bc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049992"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178549"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Hämta metadata-aktivitet i Azure Data Factory
 
@@ -83,8 +83,14 @@ Du kan ange följande typer av metadata i listan Hämta metadata aktivitet fält
 | Antal | Antalet kolumner i filen eller Relations tabellen. |
 | finns| Om en fil, mapp eller tabell finns. Om `exists` anges i fält listan Hämta metadata, kommer aktiviteten inte att kunna köras även om filen, mappen eller tabellen inte finns. I stället `exists: false` returneras i utdata. |
 
->[!TIP]
->När du vill kontrol lera att det finns en fil, mapp eller tabell, anger `exists` du i fält listan Hämta metadata-aktivitet. Sedan kan du kontrol lera `exists: true/false` resultatet i aktivitetens utdata. Om `exists` inte anges i fält listan, kommer get metadata-aktiviteten inte att fungera om objektet inte hittas.
+> [!TIP]
+> När du vill kontrol lera att det finns en fil, mapp eller tabell, anger `exists` du i fält listan Hämta metadata-aktivitet. Sedan kan du kontrol lera `exists: true/false` resultatet i aktivitetens utdata. Om `exists` inte anges i fält listan, kommer get metadata-aktiviteten inte att fungera om objektet inte hittas.
+
+> [!NOTE]
+> När du hämtar metadata från fil Arkiv och konfigurerar `modifiedDatetimeStart` eller `modifiedDatetimeEnd` , `childItems` innehåller i utdata endast filer på den angivna sökvägen som har en senaste ändrings tid inom det angivna intervallet. Objekt i undermappar ingår inte.
+
+> [!NOTE]
+> För att **struktur** fält listan ska tillhandahålla den faktiska data strukturen för avgränsade text-och Excel-datauppsättningar, måste du aktivera `First Row as Header` egenskapen som bara stöds för dessa data källor.
 
 ## <a name="syntax"></a>Syntax
 
