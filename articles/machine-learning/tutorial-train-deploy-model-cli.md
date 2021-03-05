@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 77df97eaecc59bc9160bcf63ae5d3904cd79ec79
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796252"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215195"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Självstudie: träna och distribuera en modell från CLI
 
@@ -39,7 +39,7 @@ Läs hur du vidtar följande åtgärder:
 
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 
-* Om du vill använda CLI-kommandona i det här dokumentet från din **lokala miljö** behöver du [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* Om du vill använda CLI-kommandona i det här dokumentet från din **lokala miljö** behöver du [Azure CLI](/cli/azure/install-azure-cli).
 
     Om du använder [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)kan CLI nås via webbläsaren och finns i molnet.
 
@@ -128,7 +128,7 @@ Svaret från det här kommandot liknar följande JSON:
 }
 ```
 
-Mer information om hur du arbetar med resurs grupper finns i [AZ Group](/cli/azure/group?preserve-view=true&view=azure-cli-latest).
+Mer information om hur du arbetar med resurs grupper finns i [AZ Group](/cli/azure/group).
 
 ## <a name="create-a-workspace"></a>Skapa en arbetsyta
 

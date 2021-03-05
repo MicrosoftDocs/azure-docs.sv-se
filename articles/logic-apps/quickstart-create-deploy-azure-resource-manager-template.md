@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739337"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214005"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Snabb start: skapa och distribuera ett Logic app-arbetsflöde med en ARM-mall
 
@@ -20,7 +20,7 @@ ms.locfileid: "92739337"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
@@ -49,7 +49,7 @@ Följ det alternativ som du vill använda för att distribuera snabb starts mal 
 | Alternativ | Beskrivning |
 |--------|-------------|
 | [Azure-portalen](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Om din Azure-miljö uppfyller förutsättningarna och du är van att använda ARM-mallar, kan du använda de här stegen för att logga in direkt till Azure och öppna snabb starts mal len i Azure Portal. Mer information finns i [distribuera resurser med ARM-mallar och Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azures kommando rads gränssnitt (Azure CLI) är en uppsättning kommandon för att skapa och hantera Azure-resurser. Om du vill köra de här kommandona behöver du Azure CLI version 2,6 eller senare. Om du vill kontrol lera CLI-versionen skriver du `az --version` . Mer information finns i de här ämnena: <p><p>- [Vad är Azure CLI](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Kom igång med Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azures kommando rads gränssnitt (Azure CLI) är en uppsättning kommandon för att skapa och hantera Azure-resurser. Om du vill köra de här kommandona behöver du Azure CLI version 2,6 eller senare. Om du vill kontrol lera CLI-versionen skriver du `az --version` . Mer information finns i de här ämnena: <p><p>- [Vad är Azure CLI](/cli/azure/what-is-azure-cli) <br>- [Kom igång med Azure CLI](/cli/azure/get-started-with-azure-cli) |
 | [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell tillhandahåller en uppsättning cmdletar som använder Azure Resource Manager-modellen för att hantera dina Azure-resurser. Mer information finns i de här ämnena: <p><p>- [Översikt över Azure PowerShell](/powershell/azure/azurerm/overview) <br>- [Introduktion till modulen Azure PowerShell AZ](/powershell/azure/new-azureps-module-az) <br>- [Kom igång med Azure PowerShell](/powershell/azure/get-started-azureps) |
 | [Azure Resource Management-REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure tillhandahåller en REST-API (Representational State Transfer) som är tjänst slut punkter som stöder HTTP-åtgärder (metoder) som du använder för att skapa, Hämta, uppdatera eller ta bort åtkomst till tjänst resurser. Mer information finns i [Kom igång med Azure REST API](/rest/api/azure/). |
 |||
@@ -67,9 +67,9 @@ Följ det alternativ som du vill använda för att distribuera snabb starts mal 
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
    | **Prenumeration** | <*Azure-prenumeration-namn*> | Namnet på den Azure-prenumeration som ska användas |
-   | **Resursgrupp** | <*Azure-resurs-grupp-namn*> | Namnet på en ny eller befintlig Azure-resurs grupp. I det här exemplet används `Check-Azure-Status-RG` . |
-   | **Region** | <*Azure-region*> | Azure Data Center-regionen att använda din Logic app. I det här exemplet används `West US` . |
-   | **Namn på Logic app** | <*Logic – App-Name*> | Namnet som ska användas för din Logic app. I det här exemplet används `Check-Azure-Status-LA` . |
+   | **Resursgrupp** | <*Azure-resurs-grupp-namn*> | Namnet på en ny eller befintlig Azure-resurs grupp. I det här exemplet används `Check-Azure-Status-RG`. |
+   | **Region** | <*Azure-region*> | Azure Data Center-regionen att använda din Logic app. I det här exemplet används `West US`. |
+   | **Namn på Logic app** | <*Logic – App-Name*> | Namnet som ska användas för din Logic app. I det här exemplet används `Check-Azure-Status-LA`. |
    | **Test-URI** | <*test-URI*> | URI för tjänsten som ska anropas baserat på ett angivet schema. Det här exemplet använder `https://status.azure.com/en-us/status/` , vilket är sidan Azure-status. |
    | **Plats** |  <*Azure-region – för-alla-resurser*> | Den Azure-region som ska användas för alla resurser, om den skiljer sig från standardvärdet. I det här exemplet används standardvärdet, `[resourceGroup().location]` som är resurs gruppens plats. |
    ||||
@@ -78,7 +78,7 @@ Följ det alternativ som du vill använda för att distribuera snabb starts mal 
 
    ![Ange information för snabb starts mall](./media/quickstart-create-deploy-azure-resource-manager-template/create-logic-app-template-portal.png)
 
-1. När du är klar väljer du **Granska + skapa** .
+1. När du är klar väljer du **Granska + skapa**.
 
 1. Fortsätt med stegen i [Granska distribuerade resurser](#review-deployed-resources).
 
@@ -132,7 +132,7 @@ Mer information finns i de här ämnena:
    | Värde | Beskrivning |
    |-------|-------------|
    | `subscriptionId`| GUID för den Azure-prenumeration som du vill använda |
-   | `resourceGroupName` | Namnet på den Azure-resurs grupp som ska skapas. I det här exemplet används `Check-Azure-Status-RG` . |
+   | `resourceGroupName` | Namnet på den Azure-resurs grupp som ska skapas. I det här exemplet används `Check-Azure-Status-RG`. |
    |||
 
    Exempel:
@@ -155,8 +155,8 @@ Mer information finns i de här ämnena:
    | Värde | Beskrivning |
    |-------|-------------|
    | `subscriptionId`| GUID för den Azure-prenumeration som du vill använda |
-   | `resourceGroupName` | Namnet på den Azure-resurs grupp som ska användas. I det här exemplet används `Check-Azure-Status-RG` . |
-   | `deploymentName` | Namnet som ska användas för din distribution. I det här exemplet används `Check-Azure-Status-LA` . |
+   | `resourceGroupName` | Namnet på den Azure-resurs grupp som ska användas. I det här exemplet används `Check-Azure-Status-RG`. |
+   | `deploymentName` | Namnet som ska användas för din distribution. I det här exemplet används `Check-Azure-Status-LA`. |
    |||
 
    Exempel:
@@ -188,7 +188,7 @@ Mer information finns i de här ämnena:
 
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
-   | `location`| <*Azure-region*> | Den Azure-region som ska användas för distribution. I det här exemplet används `West US` . |
+   | `location`| <*Azure-region*> | Den Azure-region som ska användas för distribution. I det här exemplet används `West US`. |
    | `templateLink` : `uri` | <*snabb start – mall-URL*> | URL-platsen för snabb starts mal len som ska användas för distribution: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*snabb start – mall-parameter-File-URL*> | URL-platsen för snabb starts mal len parameter fil som ska användas för distribution: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Mer information om parameter filen för Resource Manager finns i följande avsnitt: <p><p>- [Skapa parameter fil för Resource Manager](../azure-resource-manager/templates/parameter-files.md) <br>- [Självstudie: använda parameter-filer för att distribuera ARM-mallen](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
    | `mode` | <*distributions läge*> | Kör antingen en stegvis uppdatering eller fullständig uppdatering. Det här exemplet använder `Incremental` , vilket är standardvärdet. Mer information finns i [Azure Resource Manager distributions lägen](../azure-resource-manager/templates/deployment-modes.md). |
@@ -234,7 +234,7 @@ Om du vill visa Logic-appen kan du använda Azure Portal, köra ett skript som d
 
 1. När Logic App Designer öppnas granskar du den Logic-app som skapats av snabb starts mal len.
 
-1. Om du vill testa Logic-appen går du till verktygsfältet i designern och väljer **Kör** .
+1. Om du vill testa Logic-appen går du till verktygsfältet i designern och väljer **Kör**.
 
 ### <a name="cli"></a>[CLI](#tab/azure-cli)
 
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Mer information finns i [Azure CLI: AZ Logic Workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
+Mer information finns i [Azure CLI: AZ Logic Workflow show](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -266,8 +266,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | Värde | Beskrivning |
 |-------|-------------|
 | `subscriptionId`| GUID för den Azure-prenumeration där du distribuerade snabb starts mal len. |
-| `resourceGroupName` | Namnet på den Azure-resurs grupp där du distribuerade snabb starts mal len. I det här exemplet används `Check-Azure-Status-RG` . |
-| `workflowName` | Namnet på den Logic-app som du har distribuerat. I det här exemplet används `Check-Azure-Status-LA` . |
+| `resourceGroupName` | Namnet på den Azure-resurs grupp där du distribuerade snabb starts mal len. I det här exemplet används `Check-Azure-Status-RG`. |
+| `workflowName` | Namnet på den Logic-app som du har distribuerat. I det här exemplet används `Check-Azure-Status-LA`. |
 |||
 
 Exempel:
@@ -288,7 +288,7 @@ Om du planerar att fortsätta arbeta med efterföljande snabb starter och själv
 
 1. I Azure Portal letar du reda på och väljer den resurs grupp som du vill ta bort, vilket är `Check-Azure-Status-RG` i det här exemplet.
 
-1. Välj **Översikt** på menyn resurs grupp om det inte redan är markerat. På sidan Översikt väljer du **ta bort resurs grupp** .
+1. Välj **Översikt** på menyn resurs grupp om det inte redan är markerat. På sidan Översikt väljer du **ta bort resurs grupp**.
 
 1. Bekräfta genom att ange namnet på resurs gruppen.
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Mer information finns i [Azure CLI: AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Mer information finns i [Azure CLI: AZ Group Delete](/cli/azure/group#az-group-delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -324,7 +324,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 | Värde | Beskrivning |
 |-------|-------------|
 | `subscriptionId`| GUID för den Azure-prenumeration där du distribuerade snabb starts mal len. |
-| `resourceGroupName` | Namnet på den Azure-resurs grupp där du distribuerade snabb starts mal len. I det här exemplet används `Check-Azure-Status-RG` . |
+| `resourceGroupName` | Namnet på den Azure-resurs grupp där du distribuerade snabb starts mal len. I det här exemplet används `Check-Azure-Status-RG`. |
 |||
 
 Exempel:

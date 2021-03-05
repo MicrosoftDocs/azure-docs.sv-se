@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831760"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213274"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Snabb start: skapa en Key Vault hanterad HSM med en Azure Resource Manager-mall
 
@@ -43,7 +43,7 @@ Du kan logga in i Azure via CLI genom att skriva:
 az login
 ```
 
-Mer information om inloggnings alternativ via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+Mer information om inloggnings alternativ via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-manage-hsm"></a>Skapa en hantera HSM
 
@@ -55,13 +55,13 @@ Den Azure-resurs som definierats i mallen:
 
 Fler Azure Key Vault mall-exempel finns [här](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
 
-För mallen krävs det objekt-ID som är kopplat till ditt konto. Du hittar det genom att använda Azure CLI- [AZ AD User show](/cli/azure/ad/user?view=azure-cli-latest&preserve-view=true#az_ad_user_show) -kommandot och skicka din e-postadress till `--id` parametern. Du kan begränsa utdata till objekt-ID: t med `--query` parametern.
+För mallen krävs det objekt-ID som är kopplat till ditt konto. Du hittar det genom att använda Azure CLI- [AZ AD User show](/cli/azure/ad/user#az_ad_user_show) -kommandot och skicka din e-postadress till `--id` parametern. Du kan begränsa utdata till objekt-ID: t med `--query` parametern.
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-Du kan också behöva ditt klient-ID. För att hitta det använder du kommandot Azure CLI [AZ AD User show](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_show) . Du kan begränsa utdata till klient-ID: t med `--query` parametern.
+Du kan också behöva ditt klient-ID. För att hitta det använder du kommandot Azure CLI [AZ AD User show](/cli/azure/account#az_account_show) . Du kan begränsa utdata till klient-ID: t med `--query` parametern.
 
  ```azurecli-interactive
  az account show --query "tenantId"

@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, Java-part, mikroprofil, öppen-frihet, WebSphere-frihet, Aro, OpenShift, Red Hat
-ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633894"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213002"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Distribuera ett Java-program med öppen frihet/WebSphere-frihet på ett Azure Red Hat OpenShift 4-kluster
 
@@ -31,7 +31,7 @@ Slutför följande krav för att kunna gå igenom den här guiden.
 1. Installera en Java SE-implementering (till exempel [AdoptOpenJDK openjdk 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
 1. Installera [maven](https://maven.apache.org/download.cgi) 3.5.0 eller högre.
 1. Installera [Docker](https://docs.docker.com/get-docker/) för ditt operativ system.
-1. Installera [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 eller senare.
+1. Installera [Azure CLI](/cli/azure/install-azure-cli) 2.0.75 eller senare.
 1. Kontrol lera och installera [`envsubst`](https://command-not-found.com/envsubst) om det inte redan är förinstallerat i operativ systemet.
 1. Klona koden för det här exemplet i det lokala systemet. Exemplet finns på [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro).
 1. Följ instruktionerna i [skapa ett Azure Red Hat OpenShift 4-kluster](./tutorial-create-cluster.md).
@@ -40,7 +40,7 @@ Slutför följande krav för att kunna gå igenom den här guiden.
 
    Om du planerar att köra minnes intensiva program i klustret anger du rätt storlek på den virtuella datorn för arbetsnoderna med hjälp av `--worker-vm-size` parametern. Till exempel `Standard_E4s_v3` är den minsta storleken på virtuella datorer för att installera ElasticSearch-operatören på ett kluster. Mer information finns i:
 
-   * [Azure CLI för att skapa ett kluster](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Azure CLI för att skapa ett kluster](/cli/azure/aro#az-aro-create)
    * [Virtuella dator storlekar som stöds för minnesoptimerade](./support-policies-v4.md#memory-optimized)
    * [Krav för att installera ElasticSearch-operatören](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

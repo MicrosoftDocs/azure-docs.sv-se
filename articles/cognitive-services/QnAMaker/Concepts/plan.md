@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987988"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214753"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planera QnA Maker-appen
 
@@ -177,7 +177,7 @@ Det finns en [svars rangordning i två faser](query-knowledge-base.md#how-qna-ma
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
 
-Använd de [senaste körnings uppdateringarna](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) för att hantera tjänst uppdateringar automatiskt.
+Använd de [senaste körnings uppdateringarna](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) för att hantera tjänst uppdateringar automatiskt.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 
@@ -187,7 +187,7 @@ I QnA Maker hanterad (för hands version) hanteras körningen av själva QnA Mak
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skalning, data flöde och återhämtning
 
-Skalning, data flöde och återhämtning bestäms av Azure- [resurser](../how-to/set-up-qnamaker-service-azure.md), deras pris nivåer och alla omgivande arkitektur, till exempel [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager).
+Skalning, data flöde och återhämtning bestäms av Azure- [resurser](../how-to/set-up-qnamaker-service-azure.md), deras pris nivåer och alla omgivande arkitektur, till exempel [Traffic Manager](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager).
 
 ### <a name="analytics-with-application-insights"></a>Analys med Application Insights
 

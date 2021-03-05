@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 0a536781f3218807c36f6eefe738b9a375de8d4b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824605"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213138"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Distribuera din befintliga modell med Azure Machine Learning
 
@@ -34,7 +34,7 @@ Mer information om begreppen och termerna i den här artikeln finns i [Hantera, 
 
 * [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -och [Machine Learning CLI-tillägget](reference-azure-machine-learning-cli.md).
+* [Azure CLI](/cli/azure/install-azure-cli) -och [Machine Learning CLI-tillägget](reference-azure-machine-learning-cli.md).
 
 * En utbildad modell. Modellen måste vara bestående av en eller flera filer i utvecklings miljön. <br><br>För att demonstrera registrering av en modell som är utbildad använder exempel koden i den här artikeln modeller från [Paolo Ripamontis projekt för Twitter-sentiment](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
 
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > Du kan också ställa in Lägg till `tags` och `properties` Dictionary-objekt i den registrerade modellen. Dessa värden kan användas senare för att identifiera en speciell modell. Till exempel ramverket som används, utbildnings parametrar osv.
 
-Mer information finns i register referens för [AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) .
+Mer information finns i register referens för [AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) .
 
 
 Mer information om modell registrering i allmänhet finns i [Hantera, distribuera och övervaka Machine Learning-modeller](concept-model-management-and-deployment.md).
@@ -268,7 +268,7 @@ Använd följande kommando för att distribuera modellen från CLI. Det här kom
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Mer information finns i [distributions referens för AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+Mer information finns i [distributions referens för AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
 
 Mer information om distribution finns i [hur och var modeller ska distribueras](how-to-deploy-and-where.md).
 

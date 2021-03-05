@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729240"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215161"
 ---
 # <a name="azure-functions-networking-options"></a>Nätverksalternativ för Azure Functions
 
@@ -87,7 +87,7 @@ Mer information finns i [tjänst slut punkter för virtuella nätverk](../virtua
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Begränsa ditt lagrings konto till ett virtuellt nätverk 
 
-När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring.  Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt.  Den här funktionen fungerar för närvarande endast för alla virtuella nätverk som stöds av virtuella nätverk som innehåller standard och Premium, förutom för på de Flex-stämplar där VNet endast är tillgängligt för Premium SKU. Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
+När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt. Den här funktionen fungerar för närvarande för alla virtuella nätverk som stöds SKU: er, som innehåller standard och Premium, förutom på de Flex-stämplar där virtuella nätverk endast är tillgängliga för Premium SKU. Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
 
 1. Skapa en funktion med ett lagrings konto där tjänstens slut punkter inte är aktiverade.
 1. Konfigurera funktionen för att ansluta till ditt virtuella nätverk.
@@ -96,7 +96,7 @@ När du skapar en Function-app måste du skapa eller länka till ett allmänt Az
 1. Aktivera tjänstens slut punkter eller privata slut punkter för lagrings kontot.  
     * Om du använder privata slut punkts anslutningar behöver lagrings kontot en privat slut punkt för-och-under `file` `blob` resurserna.  Om du använder vissa funktioner som Durable Functions, behöver du också `queue` och `table` kan nås via en privat slut punkt anslutning.
     * Om du använder tjänst slut punkter aktiverar du det undernät som är dedikerat för dina funktions program för lagrings konton.
-1. Valfritt Kopiera filen och blob-innehållet från funktionen app Storage-kontot till det skyddade lagrings kontot och fil resursen.
+1. Kopiera filen och blob-innehållet från funktionen app Storage-kontot till det skyddade lagrings kontot och fil resursen.
 1. Kopiera anslutnings strängen för det här lagrings kontot.
 1. Uppdatera **program inställningarna** under **konfigurationen** för Function-appen till följande:
     - `AzureWebJobsStorage` till anslutnings strängen för det skyddade lagrings kontot.

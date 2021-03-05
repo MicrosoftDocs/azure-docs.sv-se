@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 03/03/2021
 ms.author: victorh
-ms.openlocfilehash: 5d662efc927235711c4dd5e8a424d8775279c30b
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f631100003a4ea6e191a5bdc13a11eb9aa327268
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048053"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212556"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Självstudie: skydda ditt virtuella hubb nätverk med hjälp av Azure Firewall Manager
 
@@ -79,22 +79,24 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 1. Välj din prenumeration och för resurs grupp väljer du **Skapa ny** och skapa en resurs grupp med namnet **VB-hybrid-test**.
 2. För princip namnet skriver du **pol-Net01**.
 3. För region väljer du **östra USA**.
-4. Välj **Nästa: regler**.
-5. Välj **Lägg till en regel samling**.
-6. I **namn** skriver du **RCNet01**.
-7. För **regel samlings typ** väljer du **nätverk**.
-8. För **prioritet**, Skriv **100**.
-9. I fältet **Åtgärd** väljer du **Tillåt**.
-10. Under **regler** anger du **AllowWeb** som **namn**.
-11. För **käll adresser** skriver du **192.168.1.0/24**.
-12. I fältet **Protokoll** väljer du **TCP**.
-13. För **mål portar** skriver du **80**.
-14. För **måltyp** väljer du **IP-adress**.
-15. För **mål** skriver du **10.6.0.0/16**.
-16. Ange följande information på raden nästa regel:
+1. Välj **Nästa: DNS-inställningar**.
+1. Välj **Nästa: TLS-kontroll (för hands version)**
+1. Välj **Nästa: regler**.
+1. Välj **Lägg till en regel samling**.
+1. I **namn** skriver du **RCNet01**.
+1. För **regel samlings typ** väljer du **nätverk**.
+1. För **prioritet**, Skriv **100**.
+1. I fältet **Åtgärd** väljer du **Tillåt**.
+1. Under **regler** anger du **AllowWeb** som **namn**.
+1. För **källa** skriver du **192.168.1.0/24**.
+1. I fältet **Protokoll** väljer du **TCP**.
+1. För **mål portar** skriver du **80**.
+1. För **måltyp** väljer du **IP-adress**.
+1. För **mål** skriver du **10.6.0.0/16**.
+1. Ange följande information på raden nästa regel:
  
     Namn: Skriv **AllowRDP**<br>
-    Käll-IP-adress: Skriv **192.168.1.0/24**.<br>
+    Källa: Skriv **192.168.1.0/24**.<br>
     Protokoll väljer du **TCP**<br>
     Mål portar, typ **3389**<br>
     Typ av mål, Välj **IP-adress**<br>
@@ -110,61 +112,67 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 > Storleken på AzureFirewallSubnet-undernätet är/26. Mer information om under näts storleken finns i [vanliga frågor och svar om Azure Firewall](../firewall/firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 1. På Start sidan Azure Portal väljer du **skapa en resurs**.
-2. Välj **virtuellt nätverk** under **nätverk**.
-4. I **namn** skriver du **VNet-Hub**.
-5. Skriv **10.5.0.0/16** för **adress utrymme**.
-6. I fältet **Prenumeration** väljer du din prenumeration.
-7. För **resurs grupp** väljer du **VB-hybrid-test**.
-8. För **plats** väljer du **östra USA**.
-9. Under **Undernät**, i fältet **Namn**, skriver du **AzureFirewallSubnet**. Brandväggen kommer att ligga i det här undernätet, och namnet på undernätet **måste** vara AzureFirewallSubnet.
-10. För **adress intervall** skriver du **10.5.0.0/26**. 
-11. Godkänn de andra standardinställningarna och välj sedan **skapa**.
+2. Sök efter **virtuellt nätverk** och välj sedan **virtuellt nätverk**.
+1. Välj **Skapa**.
+1. I fältet **Prenumeration** väljer du din prenumeration.
+1. För **resurs grupp** väljer du **VB-hybrid-test**.
+1. I **namn** skriver du **VNet-Hub**.
+1. För **region** väljer du **östra USA**.
+1. Välj **Nästa: IP-adresser**.
+
+1. För **IPv4-adress utrymme** skriver du **10.5.0.0/16**.
+1. Under **undernäts namn** väljer du **standard**.
+1.  Ändra **under näts namnet** till **AzureFirewallSubnet**. Brand väggen finns i det här under nätet och under nätets namn **måste** vara AzureFirewallSubnet.
+1. Skriv **10.5.0.0/26** för **under nätets adress intervall**. 
+1. Godkänn de andra standardinställningarna och välj sedan **Spara**.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
 
 ## <a name="create-the-spoke-virtual-network"></a>Skapa det virtuella ekernätverket
 
 1. På Start sidan Azure Portal väljer du **skapa en resurs**.
-2. Välj **virtuellt nätverk** under **nätverk**.
-4. För **namn** skriver du **VNet-eker**.
-5. Skriv **10.6.0.0/16** för **adress utrymme**.
-6. I fältet **Prenumeration** väljer du din prenumeration.
-7. För **resurs grupp** väljer du **VB-hybrid-test**.
-8. Välj samma plats som tidigare i fältet **Plats**.
-9. Under **Undernät**, i fältet **Namn** anger du **SN-Workload**.
-10. För **adress intervall** skriver du **10.6.0.0/24**.
-11. Godkänn de andra standardinställningarna och välj sedan **skapa**.
+2. Sök efter **virtuellt nätverk** och välj sedan **virtuellt nätverk**.
+1. Välj **Skapa**.
+1. I fältet **Prenumeration** väljer du din prenumeration.
+1. För **resurs grupp** väljer du **VB-hybrid-test**.
+1. För **namn** skriver du **VNet-eker**.
+1. För **region** väljer du **östra USA**.
+1. Välj **Nästa: IP-adresser**.
+
+1. För **IPv4-adress utrymme** skriver du **10.6.0.0/16**.
+1. Under **undernäts namn** väljer du **standard**.
+1. Ändra **under näts namnet** till **SN-arbets belastning**.
+1. Skriv **10.6.0.0/24** för **under nätets adress intervall**. 
+1. Godkänn de andra standardinställningarna och välj sedan **Spara**.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
+
 
 ## <a name="create-the-on-premises-virtual-network"></a>Skapa det lokala virtuella nätverket
 
 1. På Start sidan Azure Portal väljer du **skapa en resurs**.
-2. Välj **virtuellt nätverk** under **nätverk**.
-4. För **namn** skriver du **VNet-OnPrem**.
-5. I fältet **Adressutrymme** skriver du **192.168.0.0/16**.
-6. I fältet **Prenumeration** väljer du din prenumeration.
-7. För **resurs grupp** väljer du **VB-hybrid-test**.
-8. Välj samma plats som tidigare i fältet **Plats**.
-9. Under **undernät**, för **namn** Skriv **SN-Corp**.
-10. I fältet **Adressintervall** skriver du **192.168.1.0/24**.
-11. Godkänn de andra standardinställningarna och välj sedan **skapa**.
+2. Sök efter **virtuellt nätverk** och välj sedan **virtuellt nätverk**.
+1. Välj **Skapa**.
+1. I fältet **Prenumeration** väljer du din prenumeration.
+1. För **resurs grupp** väljer du **VB-hybrid-test**.
+1. För **namn** skriver du **VNet-OnPrem**.
+1. För **region** väljer du **östra USA**.
+1. Välj **Nästa: IP-adresser**.
 
-När det virtuella nätverket har distribuerats skapar du ett andra undernät för gatewayen.
+1. För **IPv4-adress utrymme** skriver du **192.168.0.0/16**.
+1. Under **undernäts namn** väljer du **standard**.
+1. Ändra **namnet på under nätet** till **SN-Corp**.
+1. Skriv **192.168.1.0/24** för **under nätets adress intervall**. 
+1. Godkänn de andra standardinställningarna och välj sedan **Spara**.
+2. Välj **Lägg till undernät**.
+3. För **under näts namn** skriver du **GatewaySubnet**.
+4. För **under nätets adress intervall** skriver du **192.168.2.0/24**.
+5. Välj **Lägg till**.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
 
-1. På sidan **VNet-OnPrem** väljer du **undernät**.
-2. Välj **+ undernät**.
-3. I **namn** skriver du **GatewaySubnet**.
-4. För **adress intervall (CIDR-block)** skriver du **192.168.2.0/24**.
-5. Välj **OK**.
 
-### <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
 
-Detta är den offentliga IP-adress som används för den lokala gatewayen.
-
-1. På Start sidan Azure Portal väljer du **skapa en resurs**.
-2. Skriv den **offentliga IP-adressen** i Sök text rutan och tryck på **RETUR**.
-3. Välj **offentlig IP-adress** och välj sedan **skapa**.
-4. Som namn skriver du **VNet-OnPrem-GW-pip**.
-5. För resurs gruppen skriver du **VB-hybrid-test**.
-6. För **plats** väljer du Välj **USA, östra**.
-7. Godkänn de andra standardinställningarna och välj sedan **skapa**.
 
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurera och distribuera brandväggen
 
@@ -174,11 +182,11 @@ Konvertera det virtuella nätverket i **VNet-hubben** till ett *virtuellt hubb n
 
 1. Skriv **Firewall Manager** i Azure Portal Sök fältet och tryck på **RETUR**.
 3. På sidan Azure Firewall Manager, under **Lägg till säkerhet i virtuella nätverk**, väljer du **Visa virtuella nätverk i hubben**.
-4. Välj **konvertera virtuella nätverk**.
-5. Välj **VNet-hubb** och välj sedan **Nästa: Azure-brandvägg**.
-6. För **brand Väggs principen** väljer du **pol-Net01**.
-7. Välj **Nästa "granska och bekräfta**
-8. Granska informationen och välj sedan **Bekräfta**.
+1. Under **virtuella nätverk** markerar du kryss rutan för **VNet-hubb**.
+1. Välj **Hantera säkerhet** och välj sedan **distribuera en brand vägg med brand Väggs princip**.
+1. Markera kryss rutan för **pol-Net01** under **brand Väggs princip** på sidan **konvertera virtuella nätverk** .
+1. Välj **Nästa: granska och bekräfta**
+1. Granska informationen och välj sedan **Bekräfta**.
 
 
    Det tar några minuter att distribuera.
@@ -219,7 +227,7 @@ Skapa nu VPN-gatewayen för det lokala virtuella nätverket. Nätverk-till-nätv
 7. För **VPN-typ** väljer du **Route-based**.
 8. För **SKU** väljer du **Basic**.
 9. För **virtuellt nätverk** väljer du **VNet-OnPrem**.
-10. För **offentlig IP-adress** väljer du **Använd befintlig* och väljer **VNet-OnPrem-GW-pip** som namn.
+10. För **offentlig IP-adress** väljer du **Skapa ny** och skriver **VNet-OnPrem-GW-pip** som namn.
 11. Acceptera återstående standardvärden och välj sedan **Granska + skapa**.
 12. Granska konfigurationen och välj sedan **skapa**.
 
@@ -227,12 +235,12 @@ Skapa nu VPN-gatewayen för det lokala virtuella nätverket. Nätverk-till-nätv
 
 Nu kan du skapa VPN-anslutningarna mellan hubben och lokala gatewayer.
 
-I det här steget skapar du anslutningen från det virtuella hubbnätverket till det lokala virtuella nätverket. Du ser en delad nyckel som refereras i exemplen. Du kan använda egna värden för den delade nyckeln. Det är viktigt att den delade nyckeln matchar båda anslutningarna. Att skapa en anslutning kan ta en stund att slutföra.
+I det här steget skapar du anslutningen från det virtuella hubbnätverket till det lokala virtuella nätverket. Du ser en delad nyckel som refereras i exemplen. Du kan använda egna värden för den delade nyckeln. Det är viktigt att den delade nyckeln matchar båda anslutningarna. Det tar lite tid att skapa anslutningen.
 
 1. Öppna resurs gruppen **VB-hybrid-test** och välj **GW-hubb-** gatewayen.
 2. Välj **anslutningar** i den vänstra kolumnen.
 3. Välj **Lägg till**.
-4. Anslutnings namnet, Skriv **hubb-till-OnPrem**.
+4. Skriv **hubb-till-OnPrem** som anslutnings namn.
 5. Välj **VNet-till-VNet** som **Anslutnings typ**.
 6. För den **andra virtuella Nätverksgatewayen** väljer du **GW-OnPrem**.
 7. För **delad nyckel (PSK)** skriver du **AzureA1b2C3**.
@@ -263,21 +271,31 @@ Peera nu de virtuella hubb- och ekernätverken.
 1. Öppna resurs gruppen **VB-hybrid-test** och välj det virtuella nätverk för **VNet-hubb** .
 2. Välj **peering** i den vänstra kolumnen.
 3. Välj **Lägg till**.
-4. I **namn** skriver du **HubtoSpoke**.
-5. För det **virtuella nätverket** väljer du **VNet-eker**
-6. Som namn på peer koppling från VNetSpoke till VNet-hubb, skriver du **SpoketoHub**.
-7. Välj **Tillåt Gateway-överföring**.
-8. Välj **OK**.
+4. Under **det här virtuella nätverket**:
+ 
+   
+   |Inställningsnamn  |Värde  |
+   |---------|---------|
+   |Namn på peering-länk| HubtoSpoke|
+   |Trafik till fjärranslutet virtuellt nätverk|   Tillåt (standard)      |
+   |Trafik vidarebefordrad från fjärran slutet virtuellt nätverk    |   Tillåt (standard)      |
+   |Virtuell nätverksgateway eller Dirigerings Server    |  Använd det här virtuella nätverkets gateway       |
+    
+5. Under **fjärran slutet virtuellt nätverk**:
 
-### <a name="configure-additional-settings-for-the-spoketohub-peering"></a>Konfigurera ytterligare inställningar för SpoketoHub-peering
+   |Inställningsnamn  |Värde  |
+   |---------|---------|
+   |Namn på peering-länk | SpoketoHub|
+   |Distributions modell för virtuellt nätverk| Resource Manager|
+   |Prenumeration|\<your subscription\>|
+   |Virtuellt nätverk| VNet-Spoke
+   |Trafik till fjärranslutet virtuellt nätverk     |   Tillåt (standard)      |
+   |Trafik vidarebefordrad från fjärran slutet virtuellt nätverk    |   Tillåt (standard)      |
+   |Virtuell nätverksgateway     |  Använda det virtuella fjärrnätverkets Gateway       |
 
-Du måste aktivera den **Tillåt vidarebefordrade trafiken** på SpoketoHub-peering.
+5. Välj **Lägg till**.
 
-1. Öppna resurs gruppen **VB-hybrid-test** och välj det virtuella nätverket för **VNet-ekrar** .
-2. Välj **peering** i den vänstra kolumnen.
-3. Välj **SpoketoHub** -peering.
-4. Under **Tillåt vidarebefordrad trafik från VNet-hubb till VNet-eker** väljer du **aktive rad**.
-5. Välj **Spara**.
+   :::image type="content" source="media/secure-hybrid-network/firewall-peering.png" alt-text="VNet-peering":::
 
 ## <a name="create-the-routes"></a>Skapa vägarna
 
@@ -290,18 +308,19 @@ Därefter skapar du några vägar:
 2. Skriv **routningstabell** i text rutan och tryck på **RETUR**.
 3. Välj **routningstabell**.
 4. Välj **Skapa**.
-5. Skriv **UDR-Hub-eker** som namn.
-6. Välj mappen **VB-hybrid-test** för resurs gruppen.
-8. För **plats** väljer du **(US) USA, östra)**.
-9. Välj **Skapa**.
-10. När du har skapat routningstabellen väljer du den för att öppna sidan väg tabell.
-11. Välj **vägar** i den vänstra kolumnen.
-12. Välj **Lägg till**.
-13. Skriv **ToSpoke** som väg namn.
-14. För adressprefixet skriver du **10.6.0.0/16**.
-15. För nästa hopp typ väljer du **virtuell** installation.
-16. För nästa hopp adress skriver du brand väggens privata IP-adress som du noterade tidigare.
-17. Välj **OK**.
+1. Välj mappen **VB-hybrid-test** för resurs gruppen.
+1. För **region** väljer du **östra USA**.
+1. Skriv **UDR-Hub-eker** som namn.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
+1. När du har skapat routningstabellen väljer du den för att öppna sidan väg tabell.
+1. Välj **vägar** i den vänstra kolumnen.
+1. Välj **Lägg till**.
+1. Skriv **ToSpoke** som väg namn.
+1. För adressprefixet skriver du **10.6.0.0/16**.
+1. För nästa hopp typ väljer du **virtuell** installation.
+1. För nästa hopp adress skriver du brand väggens privata IP-adress som du noterade tidigare.
+1. Välj **OK**.
 
 Koppla nu vägen till under nätet.
 
@@ -317,19 +336,20 @@ Skapa nu standard vägen från eker-undernätet.
 2. Skriv **routningstabell** i text rutan och tryck på **RETUR**.
 3. Välj **routningstabell**.
 5. Välj **Skapa**.
-6. Skriv **UDR-GD** som namn.
 7. Välj mappen **VB-hybrid-test** för resurs gruppen.
-8. För **plats** väljer du **(US) USA, östra)**.
-4. För **väg spridning för virtuell nätverksgateway** väljer du **inaktive rad**.
+8. För **region** väljer du **östra USA**.
+1. Skriv **UDR-GD** som namn.
+4. För **spridning av Gateway-vägar** väljer du **Nej**.
+1. Välj **Granska + skapa**.
 1. Välj **Skapa**.
-2. När du har skapat routningstabellen väljer du den för att öppna sidan väg tabell.
-3. Välj **vägar** i den vänstra kolumnen.
-4. Välj **Lägg till**.
-5. Skriv **ToHub** som väg namn.
-6. För adressprefixet skriver du **0.0.0.0/0**.
-7. För nästa hopp typ väljer du **virtuell** installation.
-8. För nästa hopp adress skriver du brand väggens privata IP-adress som du noterade tidigare.
-9. Välj **OK**.
+1. När du har skapat routningstabellen väljer du den för att öppna sidan väg tabell.
+1. Välj **vägar** i den vänstra kolumnen.
+1. Välj **Lägg till**.
+1. Skriv **ToHub** som väg namn.
+1. För adressprefixet skriver du **0.0.0.0/0**.
+1. För nästa hopp typ väljer du **virtuell** installation.
+1. För nästa hopp adress skriver du brand väggens privata IP-adress som du noterade tidigare.
+1. Välj **OK**.
 
 Koppla nu vägen till under nätet.
 
@@ -350,20 +370,19 @@ Skapa en virtuell dator i det virtuella eker-nätverket som kör IIS, utan offen
 1. På Start sidan Azure Portal väljer du **skapa en resurs**.
 2. Under **populär** väljer du **Windows Server 2016 Data Center**.
 3. Ange följande värden för den virtuella datorn:
-    - **Resurs grupp** – Välj **VB-hybrid-test**.
-    - **Namn på virtuell dator**: *VM-eker-01*.
-    - **Region**  -  *(USA) USA, östra)*.
-    - **Användar namn**: *azureuser*.
-    - **Lösen ord**: Ange lösen ordet
+    - **Resurs grupp** – Välj **VB-hybrid-test**
+    - **Namn på virtuell dator**: *VM-eker-01*
+    - **Region**  -  *(USA) USA, östra*
+    - **Användar namn**: Ange ett användar namn
+    - **Lösen ord**: Ange ett lösen ord
 
 4. Välj **Nästa:Diskar**.
 5. Acceptera standardvärdena och välj **Nästa: nätverk**.
 6. Välj **VNet-eker** för det virtuella nätverket och under nätet är **SN – arbets belastning**.
-7. För **offentlig IP-adress** väljer du **ingen**.
 8. För **offentliga inkommande portar** väljer du **Tillåt valda portar** och väljer sedan **http (80)** och **RDP (3389)**
-9. Välj **Nästa: hantering**.
-10. För **startdiagnostik** väljer du **av**.
-11. Välj **Granska + skapa**, granska inställningarna på sidan Sammanfattning och välj sedan **skapa**.
+1. Välj **Nästa: hantering**.
+1. För **startdiagnostik** väljer du **inaktivera**.
+1. Välj **Granska + skapa**, granska inställningarna på sidan Sammanfattning och välj sedan **skapa**.
 
 ### <a name="install-iis"></a>Installera IIS
 
@@ -389,18 +408,18 @@ Det här är en virtuell dator som du använder för att ansluta via fjärr skri
 1. På Start sidan Azure Portal väljer du **skapa en resurs**.
 2. Under **populär** väljer du **Windows Server 2016 Data Center**.
 3. Ange följande värden för den virtuella datorn:
-    - **Resurs grupp** – Välj befintlig och välj sedan **VB-hybrid-test**.
-    - **Namn på**  -  virtuell dator *VM-OnPrem*.
-    - **Region**  -  *(USA) USA, östra)*.
-    - **Användar namn**: *azureuser*.
-    - **Lösen ord**: Ange lösen ordet.
+    - **Resurs grupp** – Välj befintlig och välj sedan **VB-hybrid-test**
+    - **Namn på**  -  virtuell dator *VM – OnPrem*
+    - **Region**  -  *(USA) USA, östra*
+    - **Användar namn**: Ange ett användar namn
+    - **Lösen ord**: Ange lösen ordet
 
 4. Välj **Nästa:Diskar**.
 5. Acceptera standardvärdena och välj **Nästa: nätverk**.
 6. Välj **VNet-OnPrem** för virtuellt nätverk och kontrol lera att under nätet är **SN-Corp**.
 7. För **offentliga inkommande portar** väljer du **Tillåt valda portar** och väljer sedan **RDP (3389)**
 8. Välj **Nästa: hantering**.
-9. För **startdiagnostik** väljer du **av**.
+9. För **startdiagnostik** väljer du **inaktivera**.
 10. Välj **Granska + skapa**, granska inställningarna på sidan Sammanfattning och välj sedan **skapa**.
 
 ## <a name="test-the-firewall"></a>testa brandväggen.
@@ -428,16 +447,16 @@ Nu har du verifierat att brand Väggs reglerna fungerar:
 Ändra sedan brandväggsnätverksregelns insamlingsåtgärd till **Neka** för att verifiera att brandväggsreglerna fungerar som förväntat.
 
 1. Öppna resurs gruppen **VB-hybrid-test** och välj **Net01** brand Väggs princip.
-2. Under **Inställningar** väljer du **regler**.
-3. Välj regel samlingen **RCNet01** under **nätverks regler**, Välj ellipserna (...) och välj **Redigera**.
-4. För **regel samlings åtgärd** väljer du **neka**.
-5. Välj **Spara**.
+2. Välj **regel samlingar** under **Inställningar**.
+1. Välj regel samlingen **RCNet01** .
+1. För **regel samlings åtgärd** väljer du **neka**.
+1. Välj **Spara**.
 
-Stäng befintliga fjärr skrivbord och webbläsare på **VM-OnPrem** innan du testar de ändrade reglerna. När uppdateringen av regel samlingen har slutförts kör du testerna igen. De bör alla misslyckas den här gången.
+Stäng befintliga fjärr skrivbord och webbläsare på **VM-OnPrem** innan du testar de ändrade reglerna. När uppdateringen av regel samlingen har slutförts kör du testerna igen. De bör alla inte kunna ansluta den här gången.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Du kan behålla dina brandväggsresurser för nästa självstudie eller, om de inte längre behövs, så tar du bort resursgruppen **FW-Hybrid-Test** för att ta bort alla brandväggsrelaterade resurser.
+Du kan behålla brand Väggs resurserna för ytterligare undersökning eller om du inte längre behöver ta bort resurs gruppen **VB-hybrid-test** för att ta bort alla brand Väggs resurser.
 
 ## <a name="next-steps"></a>Nästa steg
 

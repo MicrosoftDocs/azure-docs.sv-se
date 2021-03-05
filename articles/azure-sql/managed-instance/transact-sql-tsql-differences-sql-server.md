@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/5/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691203"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212730"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ Vissa fil egenskaper kan inte ställas in eller ändras:
 Följande alternativ är inställda som standard och kan inte ändras:
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 Följande alternativ kan inte ändras:
@@ -471,6 +471,10 @@ Service Broker för överinstans stöds inte:
 - `sys.routes`: Som krav måste du välja adressen från sys. routes. Adressen måste vara lokal på varje väg. Se [sys. routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
 - `CREATE ROUTE`: Du kan inte använda `CREATE ROUTE` med `ADDRESS` andra än `LOCAL` . Se [skapa väg](/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE`: Du kan inte använda `ALTER ROUTE` med `ADDRESS` andra än `LOCAL` . Se [Alter Route](/sql/t-sql/statements/alter-route-transact-sql). 
+
+Service Broker är aktiverat som standard och kan inte inaktive ras. Följande ALTER databasen-alternativ stöds inte:
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Lagrade procedurer, funktioner och utlösare
 

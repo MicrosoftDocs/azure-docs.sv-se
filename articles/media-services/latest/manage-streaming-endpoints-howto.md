@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: d656ce23cf68a1eec23421b769d5847f9b661bb4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8cdfc9e1243de831364bc6a8a11fe25453cc4931
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955910"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213869"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Hantera slut punkter för direkt uppspelning med Media Services v3
 
@@ -73,7 +73,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-Mer information finns i [AZ AMS streaming-Endpoint start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
+Mer information finns i [AZ AMS streaming-Endpoint start](/cli/azure/ams/streaming-endpoint#az-ams-streaming-endpoint-start).
 
 ## <a name="use-sdks"></a>Använda SDK:er
 

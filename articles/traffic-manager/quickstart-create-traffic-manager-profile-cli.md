@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07fadd7b3129b3ca3351e0416c8aa6f49de82212
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 9a19e9c66967f36c3bdc4124fb9e60f7b7d2b36d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201237"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213444"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Snabb start: skapa en Traffic Manager profil för ett webb program med hög tillgänglighet med hjälp av Azure CLI
 
@@ -47,7 +47,7 @@ I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på plat
 
 ## <a name="create-a-traffic-manager-profile"></a>Skapa en Traffic Manager-profil
 
-Skapa en Traffic Manager profil med [AZ Network Traffic-Manager profil Create](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) som dirigerar användar trafik baserat på slut punkts prioritet.
+Skapa en Traffic Manager profil med [AZ Network Traffic-Manager profil Create](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) som dirigerar användar trafik baserat på slut punkts prioritet.
 
 I följande exempel ersätter du **<profile_name>** med ett unikt Traffic Manager profil namn.
 
@@ -70,7 +70,7 @@ az network traffic-manager profile create \
 För den här snabbstarten behöver du två instanser av en webbapp som distribuerats i två olika Azure-regioner (*USA, östra* och *Europa, västra*). Var och en av dessa kommer att fungera som primär- och redundansslutpunkter för Traffic Manager.
 
 ### <a name="create-web-app-service-plans"></a>Skapa Service planer för webb program
-Skapa webb program tjänst planer med [AZ AppService-plan skapa](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) för de två instanser av webb programmet som du ska distribuera i två olika Azure-regioner.
+Skapa webb program tjänst planer med [AZ AppService-plan skapa](/cli/azure/appservice/plan#az-appservice-plan-create) för de två instanser av webb programmet som du ska distribuera i två olika Azure-regioner.
 
 I följande exempel ersätter du **<appspname_eastus>** och **<appspname_westeurope>** med ett unikt app Services plan namn
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ```
 
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Skapa en webbapp i App Service-planen
-Skapa två instanser webb programmet med [AZ webapp skapa](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) i App Service-planer i Azure-regionerna *USA, östra* *och Västeuropa.*
+Skapa två instanser webb programmet med [AZ webapp skapa](/cli/azure/webapp#az-webapp-create) i App Service-planer i Azure-regionerna *USA, östra* *och Västeuropa.*
 
 I följande exempel ersätter du **<app1name_eastus>** och **<app2name_westeurope>** med ett unikt namn på appen och ersätter **<appspname_eastus**>och<**appspname_westeurope>med** det namn som användes för att skapa app Services planer i föregående avsnitt.
 
@@ -110,7 +110,7 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Lägga till Traffic Manager-slutpunkter
-Lägg till de två Web Apps som Traffic Manager slut punkter med [AZ Network Traffic-Manager-slutpunkt skapa](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) till Traffic Manager-profilen enligt följande:
+Lägg till de två Web Apps som Traffic Manager slut punkter med [AZ Network Traffic-Manager-slutpunkt skapa](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) till Traffic Manager-profilen enligt följande:
 
 - Fastställ webb program-ID: t och Lägg till webbappen i Azure-regionen *USA, östra* som den primära slut punkten för att dirigera all användar trafik. 
 - Fastställ webbappens ID och Lägg till webbappen som finns i Azure-regionen *Västeuropa, västra* som redundansväxling. 
@@ -178,7 +178,7 @@ I följande exempel ersätter du **<app1name_eastus>** och **<app2name_westeurop
 
 ### <a name="determine-the-dns-name"></a>Bestämma DNS-namnet
 
-Ta reda på DNS-namnet för den Traffic Manager profilen med [AZ Network Traffic-Manager profil show](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show).
+Ta reda på DNS-namnet för den Traffic Manager profilen med [AZ Network Traffic-Manager profil show](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show).
 
 ```azurecli-interactive
 
@@ -196,7 +196,7 @@ Kopiera värdet **RelativeDnsName** . DNS-namnet på din Traffic Manager-profil 
 
     > [!NOTE]
     > I det här snabbstartsscenariot dirigeras alla begäranden till den primära slutpunkten. Den är inställd på **Prioritet 1**.
-2. Om du vill visa Traffic Manager redundans i praktiken inaktiverar du den primära platsen med [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
+2. Om du vill visa Traffic Manager redundans i praktiken inaktiverar du den primära platsen med [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update).
 
    ```azurecli-interactive
 
@@ -214,7 +214,7 @@ Kopiera värdet **RelativeDnsName** . DNS-namnet på din Traffic Manager-profil 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar tar du bort resurs grupper, webb program och alla relaterade resurser med [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
+När du är klar tar du bort resurs grupper, webb program och alla relaterade resurser med [AZ Group Delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive
 

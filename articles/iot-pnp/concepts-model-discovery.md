@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 7e0d93d3fd179d672b49967c575bbfb9c0fc5de0
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495295"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213699"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Använda IoT Plug and Play-modeller i en IoT-lösning
 
@@ -40,10 +40,10 @@ En lösning kan hämta modell-ID: t för IoT Plug and Play-enheten genom att anv
 
 ### <a name="get-device-twin-api"></a>Hämta enhetens dubbla API
 
-Lösningen kan använda [enhetens dubbla](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) API för att hämta modell-ID för IoT plug and Play-enheten.
+Lösningen kan använda [enhetens dubbla](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) API för att hämta modell-ID för IoT plug and Play-enheten.
 
 > [!TIP]
-> För moduler och IoT Edge moduler använder du [ModuleClient. getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable).
+> För moduler och IoT Edge moduler använder du [ModuleClient. getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin).
 
 I följande enhet med dubbla svars kodfragment `modelId` innehåller modell-ID: t för en IoT plug and Play-enhet:
 

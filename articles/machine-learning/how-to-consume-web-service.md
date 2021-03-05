@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: dddecb3dba6d707e16241731a25df3b3749be103
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d23d6cb5a43de4ccf0d10287b8cf8f597797b893
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825413"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214991"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Använda en Azure Machine Learning modell som distribueras som en webb tjänst
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Konsumera en Azure Machine Learning-modell som distribuerats som en webbtjänst
 
 
 Om du distribuerar en Azure Machine Learning-modell som en webbtjänst skapas en REST API-slutpunkt. Du kan skicka data till den här slutpunkten så returnerar modellen förutsägelsen. I det här dokumentet får du lära dig hur du skapar klienter för webb tjänsten med hjälp av C#, go, Java och python.
@@ -77,7 +77,7 @@ Det finns flera sätt att hämta den här informationen för distribuerade webb 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du känner till namnet på den distribuerade tjänsten använder du kommandot [AZ ml-tjänst show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) :
+Om du känner till namnet på den distribuerade tjänsten använder du kommandot [AZ ml-tjänst show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) :
 
 ```azurecli
 az ml service show -n <service-name>
@@ -677,7 +677,7 @@ Power BI stöder användning av Azure Machine Learning webb tjänster för att u
 
 Om du vill generera en webb tjänst som stöds för användning i Power BI måste schemat ha stöd för det format som krävs av Power BI. [Lär dig hur du skapar ett schema som stöds av Power BI](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-När webbtjänsten har distribuerats kan den förbrukas från Power BI-dataflöden. [Lär dig hur du använder en Azure Machine Learning-webb tjänst från Power BI](/power-bi/service-machine-learning-integration).
+När webbtjänsten har distribuerats kan den förbrukas från Power BI-dataflöden. [Lär dig hur du använder en Azure Machine Learning-webbtjänst från Power BI](/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fcea6a44f5379ff3da5b348ae45486be6c2516a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 295228e9eaa3529b05055869bd46f9aefc938a6f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831322"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212781"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Använd arbets ytan bakom en brand vägg för Azure Machine Learning
 
@@ -41,7 +41,7 @@ Använd någon av följande metoder för att hämta en lista över IP-adresser f
 
 * Hämta [Azure IP-intervall och service märken](https://www.microsoft.com/download/details.aspx?id=56519) och Sök efter `BatchNodeManagement.<region>` och `AzureMachineLearning.<region>` , där `<region>` är din Azure-region.
 
-* Använd [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) för att hämta informationen. I följande exempel hämtas IP-adressinformation och filtreras bort informationen för regionen USA, östra 2 (primär) och USA, centrala (sekundär):
+* Använd [Azure CLI](/cli/azure/install-azure-cli) för att hämta informationen. I följande exempel hämtas IP-adressinformation och filtreras bort informationen för regionen USA, östra 2 (primär) och USA, centrala (sekundär):
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"

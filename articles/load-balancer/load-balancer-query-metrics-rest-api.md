@@ -10,12 +10,12 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: fbf21ba359ae7914acd2d812ec9e12f9f3ee557a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 391be596d890e05e6a8fdaf35d2cade371e468d6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511951"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213191"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Hämta användnings statistik för Load Balancer med hjälp av REST API
 
@@ -42,9 +42,9 @@ Följande huvuden krävs:
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | :--- | :---------- |
-| subscriptionId | Det prenumerations-ID som identifierar en Azure-prenumeration. Om du har flera prenumerationer kan du läsa mer i [arbeta med flera prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | Det prenumerations-ID som identifierar en Azure-prenumeration. Om du har flera prenumerationer kan du läsa mer i [arbeta med flera prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli). |
 | resourceGroupName | Namnet på den resurs grupp som innehåller resursen. Du kan hämta det här värdet från Azure Resource Manager API, CLI eller portalen. |
 | loadBalancerName | Namnet på Azure Load Balancer. |
 | mått namn | Kommaavgränsad lista över giltiga  [load BALANCERS mått](./load-balancer-standard-diagnostics.md). |

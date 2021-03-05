@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 118c08c8ede369eecd86fe8e6db24473b67ff306
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629231"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214447"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Aktivera och skapa stora fil resurser
 
@@ -22,7 +22,7 @@ När du aktiverar stora fil resurser på ditt lagrings konto kan fil resurserna 
 ## <a name="prerequisites"></a>Krav
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
-- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli).
 - Om du tänker använda Azure PowerShell-modulen [installerar du den senaste versionen](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Begränsningar
@@ -65,7 +65,7 @@ Att aktivera stora fil resurser på ett konto är en oåterkallelig process. Nä
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Installera först [den senaste versionen av Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) så att du kan aktivera stora fil resurser.
+Installera först [den senaste versionen av Azure CLI](/cli/azure/install-azure-cli) så att du kan aktivera stora fil resurser.
 
 Om du vill skapa ett lagrings konto med stora fil resurser aktiverade använder du följande kommando. Ersätt `<yourStorageAccountName>` , `<yourResourceGroup>` och `<yourDesiredRegion>` med din information.
 

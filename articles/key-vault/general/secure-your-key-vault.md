@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534710"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212475"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Säker åtkomst till ett nyckelvalv
 
@@ -36,7 +36,7 @@ Ett säkerhets objekt är ett objekt som representerar en användare, grupp, tj�
 
 * En **grupp** säkerhets objekt identifierar en uppsättning användare som skapats i Azure Active Directory. Alla roller eller behörigheter som tilldelas gruppen beviljas till alla användare i gruppen.
 
-* Ett **huvud namn för tjänsten** är en typ av säkerhets objekt som identiteter ett program eller en tjänst, vilket är att säga en kod del i stället för en användare eller grupp. Ett objekt-ID för tjänstens huvud namn kallas för **klient-ID** och fungerar som sitt användar namn. Tjänstens huvud namn är **klient hemlighet** eller **certifikat** som fungerar som sitt lösen ord. Många Azure-tjänster stöder tilldelning av [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) med automatisk hantering av **klient-ID** och **certifikat**. Hanterad identitet är det säkraste och rekommenderade alternativet för autentisering i Azure.
+* Ett **huvud namn för tjänsten** är en typ av säkerhets objekt som identifierar ett program eller en tjänst, vilket är att säga en kod del i stället för en användare eller grupp. Ett objekt-ID för tjänstens huvud namn kallas för **klient-ID** och fungerar som sitt användar namn. Tjänstens huvud namn är **klient hemlighet** eller **certifikat** som fungerar som sitt lösen ord. Många Azure-tjänster stöder tilldelning av [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) med automatisk hantering av **klient-ID** och **certifikat**. Hanterad identitet är det säkraste och rekommenderade alternativet för autentisering i Azure.
 
 Mer information om autentisering till Key Vault finns i [autentisera till Azure Key Vault](authentication.md)
 

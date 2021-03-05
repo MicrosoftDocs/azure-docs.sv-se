@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fcfc70f7bfb9e2bb1b1a0edbffdc1282056e5fa7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346383"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214056"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Förtroende poängen för ett svar
 När en användar fråga matchas mot en kunskaps bas, returnerar QnA Maker relevanta svar, tillsammans med en förtroende poäng. Den här poängen indikerar att svaret är den rätta matchningen för den aktuella användar frågan.
@@ -53,7 +53,7 @@ När du väljer ditt tröskelvärde bör du tänka på balansen mellan precision
 - Om **täckning** (eller återkallande) är mer viktigt – och du vill besvara så många frågor som möjligt, även om det bara finns en partiell relation till användarens fråga – och sedan sänka tröskelvärdet. Det innebär att det kan finnas flera fall där svaret inte svarar på användarens faktiska fråga, men ger något annat särskilt besvarat svar. *Exempel:* om du gör tröskelvärdet **30** kan du ge svar på frågor som "var kan jag redigera mitt KB?".
 
 > [!NOTE]
-> Nyare versioner av QnA Maker innehåller förbättringar av bedömnings logik och kan påverka din tröskel. När som helst kan du uppdatera tjänsten, se till att testa och justera tröskelvärdet om det behövs. Du kan kontrol lera din QnA-version [här](https://www.qnamaker.ai/UserSettings)och se hur du hämtar de senaste uppdateringarna [här](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+> Nyare versioner av QnA Maker innehåller förbättringar av bedömnings logik och kan påverka din tröskel. När som helst kan du uppdatera tjänsten, se till att testa och justera tröskelvärdet om det behövs. Du kan kontrol lera din QnA-version [här](https://www.qnamaker.ai/UserSettings)och se hur du hämtar de senaste uppdateringarna [här](../How-To/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates).
 
 ## <a name="set-threshold"></a>Ange tröskelvärde
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 342ae2f590f4bf4ce88f64d6d545defff358ad72
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831743"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215229"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Distribuera en modell till ett Azure Kubernetes service-kluster
 
@@ -92,7 +92,7 @@ Azureml – FE skalar upp (lodrätt) för att använda fler kärnor och ut (våg
 
 Vid skalning och i används CPU-användning. Om tröskelvärdet för processor användning är uppfyllt, kommer först klient delen att skalas ned. Om CPU-användningen sjunker till skalnings tröskeln sker en skalnings åtgärd. Att skala upp och ut sker bara om det finns tillräckligt många tillgängliga kluster resurser.
 
-## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Förstå anslutnings kraven för AKS inferencing-kluster
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Förstå anslutningskraven för slutsatsdragningskluster i AKS
 
 När Azure Machine Learning skapar eller kopplar ett AKS-kluster, distribueras AKS-klustret med någon av följande två nätverks modeller:
 * Kubernetes-nätverk – nätverks resurserna skapas och konfigureras vanligt vis när AKS-klustret distribueras.
@@ -184,7 +184,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Mer information finns i [distributions referens för AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+Mer information finns i [distributions referens för AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft rekommenderar starkt att du skapar din Azure Machine Learning arbets yta i samma region som ditt Azure Kubernetes service-kluster. För att autentisera med en token kommer webb tjänsten att ringa till den region där din Azure Machine Learning arbets yta skapas. Om arbets ytans region inte är tillgänglig kan du inte hämta en token för din webb tjänst även om klustret finns i en annan region än din arbets yta. Detta leder till att tokenbaserad autentisering inte är tillgängligt förrän arbets ytans region är tillgänglig igen. Dessutom ökar avståndet mellan klustrets region och arbets ytans region, desto längre tid tar det att hämta en token.
 >
-> Om du vill hämta en token måste du använda kommandot Azure Machine Learning SDK eller [AZ ml-tjänsten get-Access-token](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) .
+> Om du vill hämta en token måste du använda kommandot Azure Machine Learning SDK eller [AZ ml-tjänsten get-Access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) .
 
 
 ### <a name="vulnerability-scanning"></a>Sårbarhetsgenomsökning

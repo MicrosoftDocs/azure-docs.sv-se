@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033076"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212798"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Distribuera ML-modeller till Field-programmerbara grind mat ris (FPGAs) med Azure Machine Learning 
 
@@ -68,7 +68,7 @@ I det här exemplet skapar du en TensorFlow-graf för att Förbearbeta indatabil
  
 - Paketet med maskin varu accelererade modeller:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 - FPGA-kvot. Skicka en [begäran om kvot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)eller kör detta CLI-kommando för att kontrol lera kvoten: 
 

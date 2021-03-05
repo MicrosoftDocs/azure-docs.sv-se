@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656813"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215059"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) tillhandahåller kommandot [AZ ml arbets yta skapa](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create) . Följande parametrar för det här kommandot kan användas för att skapa en arbets yta med ett privat nätverk, men det krävs ett befintligt virtuellt nätverk:
+[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) tillhandahåller kommandot [AZ ml arbets yta skapa](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) . Följande parametrar för det här kommandot kan användas för att skapa en arbets yta med ett privat nätverk, men det krävs ett befintligt virtuellt nätverk:
 
 * `--pe-name`: Namnet på den privata slut punkt som skapas.
 * `--pe-auto-approval`: Om de privata slut punkts anslutningarna till arbets ytan automatiskt ska godkännas.
@@ -116,7 +116,7 @@ Mer information om de klasser och metoder som används i det här exemplet finns
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) ger [AZ ml-arbetsytans tillägg för privat slut punkt](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
+[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) ger [AZ ml-arbetsytans tillägg för privat slut punkt](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) ger [AZ ml-arbetsytans borttagnings kommando för ta bort slut punkt](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
+[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) ger [AZ ml-arbetsytans borttagnings kommando för ta bort slut punkt](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) tillhandahåller [uppdaterings kommandot för AZ ml-arbetsytan](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) . Lägg till parametern om du vill aktivera offentlig åtkomst till arbets ytan `--allow-public-access true` .
+[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) tillhandahåller [uppdaterings kommandot för AZ ml-arbetsytan](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) . Lägg till parametern om du vill aktivera offentlig åtkomst till arbets ytan `--allow-public-access true` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

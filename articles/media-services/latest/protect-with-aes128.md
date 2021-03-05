@@ -10,7 +10,7 @@ MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. d
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> Även om självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -exempel är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
+> Även om självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -exempel är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
 Du kan använda Media Services för att leverera HTTP Live Streaming (HLS), MPEG-streck och Smooth Streaming krypterat med AES genom att använda 128-bitars krypterings nycklar. Media Services tillhandahåller också den nyckel leverans tjänst som levererar krypterings nycklar till behöriga användare. Om du vill att Media Services dynamiskt ska kryptera din video, associerar du krypterings nyckeln med en strömmande lokaliserare och konfigurerar även innehålls nyckel principen. När en data ström begärs av en spelare, använder Media Services den angivna nyckeln för att dynamiskt Kryptera ditt innehåll med AES-128. Om spelaren vill dekryptera dataströmmen begär hon eller han nyckeln från nyckelleveranstjänsten. För att avgöra om användaren är behörig för nyckeln utvärderas den innehållsnyckelprincip som du angav för nyckeln.
 

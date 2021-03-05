@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4e2e34d73bc3048c587d7c0505f4978dd638370a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180283"
+ms.locfileid: "102214243"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Snabb start: skapa en ASP.NET Core webbapp i Azure
 
@@ -31,10 +31,12 @@ När du är klar har du en Azure <abbr title="En logisk behållare för relatera
 
 <details>
 <summary>Har du redan Visual Studio 2019?</summary>
-  Om du redan har installerat Visual Studio 2019:
+Om du redan har installerat Visual Studio 2019:
 
-  - **Installera de senaste uppdateringarna** i Visual Studio genom att välja **Hjälp**  >  **sökning efter uppdateringar**. De senaste uppdateringarna innehåller .NET 5,0 SDK.
-  - **Lägg till arbets belastningen** genom att välja **verktyg**  >  **Hämta verktyg och funktioner**.
+<ul>
+<li><strong>Installera de senaste uppdateringarna</strong> i Visual Studio genom att välja <strong>Hjälp</strong> &gt; <strong>sökning efter uppdateringar</strong>. De senaste uppdateringarna innehåller .NET 5,0 SDK.</li>
+<li><strong>Lägg till arbets belastningen</strong> genom att välja <strong>verktyg</strong> &gt; <strong>Hämta verktyg och funktioner</strong>.</li>
+</ul>
 </details>
 
 <hr/> 
@@ -314,19 +316,19 @@ http://<app_name>.azurewebsites.net
 
 1. **Kör** `az webapp up` för att distribuera om:
 
-```azurecli
-az webapp up --os-type linux
-```
-
-<details>
-<summary>Vad <code>az webapp up</code> gör den här gången?</summary>
-Första gången du körde kommandot sparades appens namn, resurs grupp och App Service plan i <i>Azure/config</i> -filen från projekt roten. När du kör det igen från projekt roten används värdena som sparats i <i>. Azure/config</i>, identifierar att de App Service resurserna redan finns och utför zip-distribution igen.
-</details>
-
+    ```azurecli
+    az webapp up --os-type linux
+    ```
+    
+    <details>
+    <summary>Vad <code>az webapp up</code> gör den här gången?</summary>
+    Första gången du körde kommandot sparades appens namn, resurs grupp och App Service plan i <i>Azure/config</i> -filen från projekt roten. När du kör det igen från projekt roten används värdena som sparats i <i>. Azure/config</i>, identifierar att de App Service resurserna redan finns och utför zip-distribution igen.
+    </details>
+    
 1. När distributionen är klar klickar du på **Uppdatera** i webbläsarfönstret som du öppnade tidigare.
 
-![Uppdaterad exempelapp som körs i Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
-
+    ![Uppdaterad exempelapp som körs i Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
+    
 [Har du problem? Berätta för oss.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 <hr/> 
@@ -341,8 +343,8 @@ Första gången du körde kommandot sparades appens namn, resurs grupp och App S
 
 1. På sidan Översikt kan du utföra grundläggande hanterings uppgifter som att bläddra, stoppa, starta, starta om och ta bort. Menyn till vänster innehåller olika sidor för att konfigurera appen. 
 
-![App Service-sidan på Azure Portal](media/quickstart-dotnetcore/portal-app-overview-up.png)
-
+    ![App Service-sidan på Azure Portal](media/quickstart-dotnetcore/portal-app-overview-up.png)
+    
 <hr/> 
 
 ## <a name="9-clean-up-resources"></a>9. Rensa resurser

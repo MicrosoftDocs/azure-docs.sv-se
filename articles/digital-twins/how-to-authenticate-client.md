@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6a0676418e951b84c9b973bd93c2750e410392d1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556140"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212831"
 ---
 # <a name="write-client-app-authentication-code"></a>Skriv kod för klientautentisering för klient program
 
@@ -33,8 +33,8 @@ Om du vill fortsätta måste du ha ett klient-app-projekt där du skriver koden.
 `Azure.Identity` är ett klient bibliotek som tillhandahåller flera olika autentiseringsuppgifter för att hämta metoder som du kan använda för att hämta en Bearer-token och autentisera med ditt SDK. Även om den här artikeln innehåller exempel i C#, kan du Visa `Azure.Identity` för flera språk, inklusive...
 
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
-* [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
-* [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
+* [Java](/java/api/overview/azure/identity-readme)
+* [JavaScript](/javascript/api/overview/azure/identity-readme)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Tre vanliga autentiseringsuppgifter för att hämta metoder i `Azure.Identity` är:

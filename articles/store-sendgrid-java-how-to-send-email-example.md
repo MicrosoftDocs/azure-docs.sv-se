@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519072"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214362"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Skicka e-post med SendGrid från java i en Azure-distribution
 I följande exempel visas hur du kan använda SendGrid för att skicka e-postmeddelanden från en webb sida som finns i Azure. Det resulterande programmet kommer att uppmana användaren att ange e-postvärden, som visas i följande skärm bild.
@@ -40,7 +40,7 @@ Du måste göra följande för att använda koden i det här avsnittet:
 
 Du måste också ha ditt eget SendGrid-användarnamn och-lösen ord för att kunna skicka e-postmeddelandet. Information om hur du kommer igång med SendGrid finns i [så här skickar du e-post med SendGrid från Java](store-sendgrid-java-how-to-send-email.md).
 
-Dessutom rekommenderar vi att du [skapar ett Hello World-program för Azure i Sol förmörkelse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)eller med andra tekniker som är värdar för Java-program i Azure om du inte använder Sol förmörkelse.
+Dessutom rekommenderar vi att du [skapar ett Hello World-program för Azure i Sol förmörkelse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)eller med andra tekniker som är värdar för Java-program i Azure om du inte använder Sol förmörkelse.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Skapa ett webb formulär för att skicka e-post
 Följande kod visar hur du skapar ett webb formulär för att hämta användar data för att skicka e-post. I syfte med det här innehållet heter JSP-filen **emailform.jsp**.

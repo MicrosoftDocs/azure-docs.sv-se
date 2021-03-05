@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 054fb2ffc65b44d5436282eab5327f0facf39c06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ce3f56530a7bad6eecd4c2edd3b21debe8c75a24
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671185"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214158"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Distribuera OpenShift container Platform 3,11 i Azure
 
@@ -308,7 +308,7 @@ Olika versioner kan ha olika parametrar för att kontrol lera de nödvändiga pa
 ### <a name="deploy-using-azure-cli"></a>Distribuera med Azure CLI
 
 > [!NOTE] 
-> Följande kommando kräver Azure CLI 2.0.8 eller senare. Du kan kontrol lera CLI-versionen med `az --version` kommandot. Information om hur du uppdaterar CLI-versionen finns i [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Följande kommando kräver Azure CLI 2.0.8 eller senare. Du kan kontrol lera CLI-versionen med `az --version` kommandot. Information om hur du uppdaterar CLI-versionen finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 I följande exempel distribueras OpenShift-klustret och alla relaterade resurser till en resurs grupp med namnet openshiftrg, med ett distributions namn på myOpenShiftCluster. Mallen refereras direkt från GitHub-lagrings platsen och en lokal parameter fil med namnet azuredeploy.parameters.jsi filen används.
 

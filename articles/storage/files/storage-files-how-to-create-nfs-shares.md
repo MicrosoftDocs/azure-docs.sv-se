@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2ff669d0ff3bde791de9bc7773e13d880762f898
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382131"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214430"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Så här skapar du en NFS-resurs
 Azure-filresurser är fullständigt hanterade fil resurser som bor i molnet. Den här artikeln beskriver hur du skapar en fil resurs som använder NFS-protokollet. Mer information om båda protokollen finns i [Azure File Share-protokoll](storage-files-compare-protocols.md).
@@ -31,7 +31,7 @@ Azure-filresurser är fullständigt hanterade fil resurser som bor i molnet. Den
     - [Konfigurera en plats-till-plats-VPN för användning med Azure Files](storage-files-configure-s2s-vpn.md).
     - Konfigurera [ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli).
 
 ## <a name="register-the-nfs-41-protocol"></a>Registrera NFS 4,1-protokollet
 Om du använder Azure PowerShell-modulen eller Azure CLI registrerar du din funktion med följande kommandon:
