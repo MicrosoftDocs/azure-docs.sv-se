@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684567"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124694"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Tillfälliga OS-diskar för virtuella Azure-datorer
 
@@ -40,7 +40,7 @@ Viktiga skillnader mellan beständiga och tillfälliga OS-diskar:
 | **Stöd för regioner**              | Alla regioner                                                                                  | Alla regioner                              |
 | **Data persistens**            | Operativ system disk data som skrivs till OS-disken lagras i Azure Storage                                  | Data som skrivs till OS-disken lagras på den lokala VM-lagringen och är inte kvar att Azure Storage. |
 | **Stopp-frigjord tillstånd**      | De virtuella datorerna och skalnings uppsättnings instanserna kan stoppas och startas om från det stoppade avallokerade läget | Virtuella datorer och skalnings uppsättnings instanser kan inte stoppas eller avallokeras                                  |
-| **Stöd för specialiserade OS-diskar** | Ja                                                                                          | Nej                                                                                 |
+| **Stöd för specialiserade OS-diskar** | Ja                                                                                          | Inga                                                                                 |
 | **Storleks ändring av OS-disk**              | Stöds under skapande av virtuell dator och när den virtuella datorn har stoppats                                | Stöds endast när en virtuell dator skapas                                                  |
 | **Ändra storlek till en ny VM-storlek**   | OS-disk data bevaras                                                                    | Data på OS-disken tas bort, OS har allokerats på nytt       
 | **Placering av växlings fil**   | För Windows lagras växlings filen på resurs disken                                              | För Windows lagras växlings filen på OS-disken   |
@@ -86,7 +86,7 @@ az vm create \
 
 För skalnings uppsättningar använder du samma `--ephemeral-os-disk true` parameter för [AZ-VMSS-Create](/cli/azure/vmss#az-vmss-create) och anger `--os-disk-caching` parametern till `ReadOnly` .
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 I Azure Portal kan du välja att använda tillfälliga diskar när du distribuerar en virtuell dator genom att öppna avsnittet **Avancerat** på fliken **diskar** . Välj **Ja** om du vill **använda en tillfällig OS-disk** .
 
@@ -244,6 +244,11 @@ A: tillfälliga diskar stöder inte:
 - Azure Backup
 - Azure Site Recovery  
 - OS-disk växling 
+
+> [!NOTE]
+> 
+> Den tillfälliga disken går inte att komma åt via portalen. Du kan få fel meddelandet "Det gick inte att hitta resursen" eller "404" vid åtkomst till den tillfälliga disken.
+> 
  
 ## <a name="next-steps"></a>Nästa steg
 Du kan skapa en virtuell dator med en tillfällig OS-disk med hjälp av [Azure CLI](/cli/azure/vm#az-vm-create).

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694129"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124660"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Distribuera en virtuell dator med Trusted Launch Enabled (för hands version)
 
@@ -140,7 +140,7 @@ För att få vTPM och säkra start rekommendationer för betrodda virtuella dato
 
 I vissa fall kan du behöva signera saker för UEFI säker start.  Du kan till exempel behöva gå igenom [hur du ska logga in saker för säker start](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) för Ubuntu. I dessa fall måste du ange MOK-verktyget registrera nycklar för den virtuella datorn. För att göra detta måste du använda Azures serie konsol för att få åtkomst till MOK-verktyget.
 
-1. Aktivera Azures serie konsol för Linux. Mer information finns i [serie konsol för Linux](serial-console-linux.md).
+1. Aktivera Azures serie konsol för Linux.
 1. Logga in på [Azure Portal](https://portal.azure.com).
 1. Sök efter **virtuella datorer** och välj den virtuella datorn i listan.
 1. I den vänstra menyn, under **support + fel sökning**, väljer du **seriell konsol**. En sida öppnas till höger med serie konsolen.

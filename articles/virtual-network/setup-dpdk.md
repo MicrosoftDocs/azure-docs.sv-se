@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704426"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124677"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurera DPDK i en virtuell Linux-dator
 
@@ -58,7 +58,7 @@ Alla Azure-regioner stöder DPDK.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Accelererat nätverk måste vara aktiverat på en virtuell Linux-dator. Den virtuella datorn måste ha minst två nätverks gränssnitt, med ett gränssnitt för hantering. Lär dig hur du [skapar en virtuell Linux-dator med accelererat nätverk aktiverat](create-vm-accelerated-networking-cli.md).
+Accelererat nätverk måste vara aktiverat på en virtuell Linux-dator. Den virtuella datorn måste ha minst två nätverks gränssnitt, med ett gränssnitt för hantering. Det rekommenderas inte att aktivera accelererat nätverk i hanterings gränssnittet. Lär dig hur du [skapar en virtuell Linux-dator med accelererat nätverk aktiverat](create-vm-accelerated-networking-cli.md).
 
 ## <a name="install-dpdk-dependencies"></a>Installera DPDK-beroenden
 
