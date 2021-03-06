@@ -4,12 +4,12 @@ description: Lär dig hur du skapar och hanterar flera Node-pooler för ett klus
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182867"
+ms.locfileid: "102218493"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Skapa och hantera flera nodpooler för ett kluster i Azure Kubernetes Service (AKS)
 
@@ -130,9 +130,11 @@ En arbets belastning kan kräva delning av ett klusters noder i separata pooler 
 #### <a name="limitations"></a>Begränsningar
 
 * Alla undernät som tilldelats nodepools måste tillhöra samma virtuella nätverk.
-* Systemets poddar måste ha åtkomst till alla noder i klustret för att kunna tillhandahålla kritiska funktioner som DNS-matchning via coreDNS.
-* Tilldelningen av ett unikt undernät per Node-pool är begränsad till Azure-CNI under för hands versionen.
-* Det går inte att använda nätverks principer med ett unikt undernät per Node-pool under för hands versionen.
+* System-poddar måste ha åtkomst till alla noder/poddar i klustret för att tillhandahålla kritiska funktioner som DNS-matchning och Tunneling kubectl-loggar/exec/Port-Forward proxy.
+* Om du expanderar ditt VNET när du har skapat klustret måste du uppdatera klustret (utför alla hanterade clster-åtgärder, men noder i noden räknas inte) innan du lägger till ett undernät utanför den ursprungliga CIDR. AKS kommer att tas bort från agenten Lägg till nu, trots att vi ursprungligen tillät den. Om du inte vet hur du ska stämma av kluster filen med ett support ärende. 
+* Calico nätverks princip stöds inte. 
+* Azure-nätverks principen stöds inte.
+* Kube-proxy förväntar sig en enda kontinuerlig CIDR och använder den för tre optmizations. Se det här [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) och--cluster-CIDR [här](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) för mer information. I Azure cni kommer din första nod i ett undernät att ges till Kube-proxy. 
 
 Om du vill skapa en Node-pool med ett dedikerat undernät skickar du under nätets resurs-ID som en extra parameter när du skapar en Node-pool.
 

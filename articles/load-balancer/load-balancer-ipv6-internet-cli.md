@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696871"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218901"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Skapa en offentlig belastningsutjämnare med IPv6 med Azure CLI
 
@@ -58,7 +58,7 @@ Om du vill distribuera en belastningsutjämnare skapar och konfigurerar du följ
 
 I det här exemplet kör du Azure CLI-verktygen i ett PowerShell-kommando fönster. För att förbättra läsbarheten och återanvändandet kan du använda PowerShell: s skript funktioner, inte Azure PowerShell-cmdlet: ar.
 
-1. [Installera och konfigurera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) genom att följa stegen i den länkade artikeln och logga in på ditt Azure-konto.
+1. [Installera och konfigurera Azure CLI](/cli/azure/install-azure-cli) genom att följa stegen i den länkade artikeln och logga in på ditt Azure-konto.
 
 2. Konfigurera PowerShell-variabler för användning med Azure CLI-kommandon:
 

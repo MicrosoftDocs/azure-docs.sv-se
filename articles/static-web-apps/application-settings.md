@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-js
+ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844820"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219190"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurera program inställningar för för hands versionen av Azure statisk Web Apps
 
@@ -34,7 +34,7 @@ Program inställningarna kallas ibland miljövariabler.
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett statiskt Azure Web Apps-program
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="types-of-application-settings"></a>Typer av program inställningar
 
@@ -90,7 +90,7 @@ I allmänhet görs det sällan att ladda upp dina inställningar och det krävs 
 
 Du kan konfigurera program inställningar via Azure Portal eller med Azure CLI.
 
-### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 Azure Portal tillhandahåller ett gränssnitt för att skapa, uppdatera och ta bort program inställningar.
 

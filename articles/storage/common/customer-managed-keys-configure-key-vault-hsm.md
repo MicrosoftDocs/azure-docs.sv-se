@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2f57e801720c6b546a58b216422629d192e8d2e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843323"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218646"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (förhands granskning)
 
@@ -24,7 +24,10 @@ Azure Storage krypterar alla data i ett lagrings konto i vila. Som standard kryp
 
 Den här artikeln visar hur du konfigurerar kryptering med Kundhanterade nycklar som lagras i en hanterad HSM med hjälp av Azure CLI. Information om hur du konfigurerar kryptering med Kundhanterade nycklar som lagras i ett nyckel valv finns i [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault](customer-managed-keys-configure-key-vault.md).
 
-> [!NOTE]
+> [!IMPORTANT]
+>
+> Kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+>
 > Azure Key Vault och Azure Key Vault Managed HSM stöder samma API: er och hanterings gränssnitt för konfiguration.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Tilldela lagrings kontot en identitet

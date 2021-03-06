@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 97ccbd0858a7b85c4b5d1e460f67416d8139e49a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201608"
+ms.locfileid: "102218612"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurera nätverksslutpunkter i Azure File Sync
 Azure Files och Azure File Sync ger två huvud typer av slut punkter för åtkomst till Azure-fil resurser: 
@@ -34,7 +34,7 @@ Den här artikeln förutsätter att:
 
 Dessutom:
 - Om du tänker använda Azure PowerShell [installerar du den senaste versionen](/powershell/azure/install-az-ps).
-- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli).
 
 ## <a name="create-the-private-endpoints"></a>Skapa de privata slut punkterna
 När du skapar en privat slut punkt för en Azure-resurs distribueras följande resurser:

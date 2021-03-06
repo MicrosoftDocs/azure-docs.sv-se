@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652182"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218850"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Högpresterande tjänster med Triton-Härlednings Server (för hands version) 
 
@@ -36,7 +36,7 @@ Triton är ett ramverk som är *optimerat för en härledning*. Den ger bättre 
 
 * En **Azure-prenumeration**. Om du inte har en sådan kan du prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 * Bekanta dig med [hur och var du distribuerar en modell](how-to-deploy-and-where.md) med Azure Machine Learning.
-* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/?view=azure-ml-py) **eller** [Azure CLI](/cli/azure/?view=azure-cli-latest) och [Machine Learning-tillägget](reference-azure-machine-learning-cli.md).
+* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/?view=azure-ml-py) **eller** [Azure CLI](/cli/azure/) och [Machine Learning-tillägget](reference-azure-machine-learning-cli.md).
 * En fungerande installation av Docker för lokal testning. Information om hur du installerar och validerar Docker finns i [orientering och konfiguration](https://docs.docker.com/get-started/) i Docker-dokumentationen.
 
 ## <a name="architectural-overview"></a>Översikt över arkitekturen
@@ -331,7 +331,7 @@ print(local_service.scoring_uri)
 
 ---
 
-När distributionen är klar visas bedömnings-URI: n. För den här lokala distributionen är det `http://localhost:6789/score` . Om du distribuerar till molnet kan du använda kommandot [AZ ml-tjänsten show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI för att hämta bedömnings-URI: n.
+När distributionen är klar visas bedömnings-URI: n. För den här lokala distributionen är det `http://localhost:6789/score` . Om du distribuerar till molnet kan du använda kommandot [AZ ml-tjänsten show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI för att hämta bedömnings-URI: n.
 
 Information om hur du skapar en klient som skickar en uppräknings förfrågan till bedömnings-URI finns i [använda en modell som distribueras som en webb tjänst](how-to-consume-web-service.md).
 

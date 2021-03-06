@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445327"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218408"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Säker åtkomst till din hanterade HSM: er
 
@@ -22,7 +22,7 @@ Azure Key Vault hanterad HSM är en moln tjänst som skyddar krypterings nycklar
 
 Den här självstudien vägleder dig genom ett enkelt exempel som visar hur du kan uppnå separering av uppgifter och åtkomst kontroll med Azure RBAC och hanterad HSM lokal RBAC. Se [hanterad HSM-åtkomstkontroll](access-control.md) om du vill lära dig mer om HANTERAd HSM-åtkomst kontroll modell.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen i den här artikeln, måste du ha följande objekt:
 
@@ -40,7 +40,7 @@ Du kan logga in i Azure via CLI genom att skriva:
 az login
 ```
 
-Mer information om inloggnings alternativ via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)
+Mer information om inloggnings alternativ via CLI finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli)
 
 ## <a name="example"></a>Exempel
 
@@ -48,9 +48,9 @@ I det här exemplet ska vi utveckla ett program som använder en RSA 2 048-bitar
 
 Vi har identifierat följande roller som hanterar, distribuerar och granskar vårt program:
 
-- **Säkerhets team** : IT-personal från byråns skydds chef (säkerhets tjänsteman) eller liknande bidrags givare. Säkerhets teamet ansvarar för korrekt förvaring av nycklar. Nycklarna RSA eller EG-nycklar för signering, RSA-eller AES-nycklar för data kryptering.
-- **Utvecklare och operatörer** : personal som utvecklar programmet och distribuerar det i Azure. Medlemmarna i det här teamet är inte en del av säkerhets personalen. De bör inte ha till gång till känsliga data som RSA-nycklar. Endast det program som de distribuerar bör ha åtkomst till dessa känsliga data.
-- **Granskare** : den här rollen är för deltagare som inte är medlemmar i utvecklings-eller allmän IT-personal. De granskar användningen och underhållet av certifikat, nycklar och hemligheter för att säkerställa efterlevnaden av säkerhets standarder.
+- **Säkerhets team**: IT-personal från byråns skydds chef (säkerhets tjänsteman) eller liknande bidrags givare. Säkerhets teamet ansvarar för korrekt förvaring av nycklar. Nycklarna RSA eller EG-nycklar för signering, RSA-eller AES-nycklar för data kryptering.
+- **Utvecklare och operatörer**: personal som utvecklar programmet och distribuerar det i Azure. Medlemmarna i det här teamet är inte en del av säkerhets personalen. De bör inte ha till gång till känsliga data som RSA-nycklar. Endast det program som de distribuerar bör ha åtkomst till dessa känsliga data.
+- **Granskare**: den här rollen är för deltagare som inte är medlemmar i utvecklings-eller allmän IT-personal. De granskar användningen och underhållet av certifikat, nycklar och hemligheter för att säkerställa efterlevnaden av säkerhets standarder.
 
 Det finns en annan roll som ligger utanför omfånget för programmet: prenumerationen (eller resurs gruppens) administratör. Prenumerations administratören konfigurerar inledande åtkomst behörighet för säkerhets teamet. De ger åtkomst till säkerhets teamet genom att använda en resurs grupp som har de resurser som krävs av programmet.
 

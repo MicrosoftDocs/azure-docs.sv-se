@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147664"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218374"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-frågespråk för enhet och modultvillingar, jobb och meddelanderedigering
 
@@ -160,7 +160,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Modul, dubbla frågor
 
-Fråga om modulernas dubblare liknar fråga på enheten, men med en annan samling/namnrymd; i stället för från **enheter**frågar du från **enheter. modules**:
+Fråga om modulernas dubblare liknar fråga på enheten, men med en annan samling/namnrymd; i stället för från **enheter** frågar du från **enheter. modules**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -234,7 +234,7 @@ Objektet fråga visar flera **Nästa** värden, beroende på vilket avserialiser
 ### <a name="limitations"></a>Begränsningar
 
 > [!IMPORTANT]
-> Frågeresultaten kan ha några minuters fördröjning i förhållande till de senaste värdena i enheten är dubbla. Om en fråga om en enskild enhet är uppflätad med ID, använder du funktionen [Hämta dubbla REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Detta API returnerar alltid de senaste värdena och har högre begränsnings gränser. Du kan utfärda REST API direkt eller använda motsvarande funktioner i en av [Azure IoT Hub service SDK: erna](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> Frågeresultaten kan ha några minuters fördröjning i förhållande till de senaste värdena i enheten är dubbla. Om en fråga om en enskild enhet är uppflätad med ID, använder du funktionen [Hämta dubbla REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin). Detta API returnerar alltid de senaste värdena och har högre begränsnings gränser. Du kan utfärda REST API direkt eller använda motsvarande funktioner i en av [Azure IoT Hub service SDK: erna](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 För närvarande stöds jämförelser bara mellan primitiva typer (inga objekt), till exempel `... WHERE properties.desired.config = properties.reported.config` endast om dessa egenskaper har primitiva värden.
 
@@ -316,7 +316,7 @@ För närvarande stöder inte frågor på **Devices.Jobs** :
 
 ## <a name="basics-of-an-iot-hub-query"></a>Grunderna i en IoT Hub fråga
 
-Varje IoT Hub fråga består av SELECT-och FROM-satser, med valfria WHERE-och GROUP BY-satser. Varje fråga körs på en samling JSON-dokument, t. ex. enheten. FROM-satsen anger den dokument samling som ska upprepas på (**enheter**, **enheter. moduler**eller **Devices.Jobs**). Sedan används filtret i WHERE-satsen. Med agg regeringar grupperas resultatet av det här steget som anges i GROUP BY-satsen. För varje grupp genereras en rad som anges i SELECT-satsen.
+Varje IoT Hub fråga består av SELECT-och FROM-satser, med valfria WHERE-och GROUP BY-satser. Varje fråga körs på en samling JSON-dokument, t. ex. enheten. FROM-satsen anger den dokument samling som ska upprepas på (**enheter**, **enheter. moduler** eller **Devices.Jobs**). Sedan används filtret i WHERE-satsen. Med agg regeringar grupperas resultatet av det här steget som anges i GROUP BY-satsen. För varje grupp genereras en rad som anges i SELECT-satsen.
 
 ```sql
 SELECT <select_list>
@@ -398,7 +398,7 @@ GROUP BY-satsen stöds för närvarande bara när du frågar enheten.
 
 ## <a name="expressions-and-conditions"></a>Uttryck och villkor
 
-Ett *uttryck*på hög nivå:
+Ett *uttryck* på hög nivå:
 
 * Utvärderar till en instans av en JSON-typ (till exempel boolesk, siffra, sträng, matris eller objekt).
 * Definieras genom att ändra data som kommer från enhets-JSON-dokumentet och konstanter med inbyggda operatorer och funktioner.
@@ -451,10 +451,10 @@ Följande operatorer stöds:
 | Familj | Operatorer |
 | --- | --- |
 | Aritmetisk |+, -, *, /, % |
-| Logisk |AND, OR, NOT (och, eller, inte) |
+| Logiskt |AND, OR, NOT (och, eller, inte) |
 | Jämförelse |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Funktioner
+### <a name="functions"></a>Functions
 
 Vid frågor om dubbla och jobb är den enda funktioner som stöds:
 

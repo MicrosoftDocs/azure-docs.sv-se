@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838678"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219207"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Så här administrerar du Azure cache för Redis
 I det här avsnittet beskrivs hur du utför administrations åtgärder som att [Starta](#reboot) om och [schemalägga uppdateringar](#schedule-updates) för Azure cache för Redis-instanser.
@@ -57,6 +57,8 @@ Ja, om du startar om cacheminnet rensas alla klient anslutningar. Det kan vara a
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Kommer jag att förlora data från mitt cacheminne om jag gör en omstart?
 Om du startar om både **huvud** -och **replik** -noderna kan alla data i cachen (eller i den Shard om du använder en Premium-cache med klustring aktive rad) gå förlorade, men detta garanterar inte något. Om du har konfigurerat [data beständighet](cache-how-to-premium-persistence.md)återställs den senaste säkerhets kopian när cachen är online igen, men alla cache-skrivningar som har inträffat efter att säkerhets kopieringen gjordes går förlorade.
 
@@ -69,8 +71,9 @@ Ja, för PowerShell-instruktioner, se [så här startar du om en Azure-cache fö
 På bladet **schema uppdateringar** kan du ange ett underhålls fönster för din cache-instans. Med en underhålls period kan du kontrol lera dagar och tidpunkter för en vecka under vilken de virtuella datorerna som är värdar för din cache kan uppdateras. Azure cache för Redis hjälper dig att starta och slutföra uppdateringen av Redis-serverprogrammet inom den angivna tids perioden som du definierar.
 
 > [!NOTE] 
-> Underhålls perioden gäller endast för redis server-uppdateringar och inte för Azure-uppdateringar eller uppdateringar av operativ systemet på de virtuella datorer som är värdar för cachen.
+> Underhålls perioden gäller för redis server-uppdateringar och uppdateringar av operativ systemet för de virtuella datorer som är värdar för cachen. Underhålls perioden gäller inte för värdar för OS-uppdateringar till värdarna som är värdar för cache-VM: ar eller andra Azure nätverks komponenter. I sällsynta fall, där cacheminnen finns i äldre modeller (du kan kontrol lera om cacheminnet finns på en äldre modell om DNS-namnet på cachen matchar suffixet "cloudapp.net", "chinacloudapp.cn", "usgovcloudapi.net" eller "cloudapi.de"), gäller inte underhålls perioden för gäst operativ system uppdateringar.
 >
+
 
 ![Schemauppdateringar](./media/cache-administration/redis-schedule-updates.png)
 
