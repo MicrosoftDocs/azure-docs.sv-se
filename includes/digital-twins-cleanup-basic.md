@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
-ms.openlocfilehash: c3c1b814b357a2e4b724590261657e485852f99c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575701"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244760"
 ---
-* **Om du inte behöver någon av de resurser som du skapade i den här självstudien** kan du ta bort Azure Digitals-instansen och alla andra resurser från den här artikeln med kommandot [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) . Detta tar bort alla Azure-resurser i en resurs grupp och själva resurs gruppen.
+* **Om du inte behöver någon av de resurser som du skapade i den här självstudien** kan du ta bort Azure Digitals-instansen och alla andra resurser från den här artikeln med kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) . Detta tar bort alla Azure-resurser i en resurs grupp och själva resurs gruppen.
     
     > [!IMPORTANT]
     > Att ta bort en resursgrupp kan inte ångras. Resursgruppen och alla resurser som ingår i den tas bort permanent. Var noga så att du inte tar bort fel resursgrupp eller resurser av misstag.

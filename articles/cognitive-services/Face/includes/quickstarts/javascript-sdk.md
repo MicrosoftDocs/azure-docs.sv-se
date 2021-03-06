@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 16797a5bdb5ef5f2b5660a33e1788b8824f1ad8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722573"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244821"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Snabb start: ansikts klient bibliotek för Java Script
 
@@ -27,7 +27,7 @@ Använd ansikts klient bibliotek för Java Script för att:
 * [Skapa en person grupp](#create-a-person-group)
 * [Identifiera ett ansikte](#identify-a-face)
 
-[Referens dokumentation](/javascript/api/@azure/cognitiveservices-face/?view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Exempel](/samples/browse/?products=azure&term=face&languages=javascript)
+[Referens dokumentation](/javascript/api/@azure/cognitiveservices-face/)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Exempel](/samples/browse/?products=azure&term=face&languages=javascript)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -90,14 +90,14 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i klient biblioteket Face .NET:
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest) | Den här klassen representerar ditt tillstånd att använda ansikts tjänsten och du behöver den för alla ansikts funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser. |
-|[Ansiktsigenkänning](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest)|Den här klassen hanterar de grundläggande identifierings-och igenkännings aktiviteter som du kan göra med människo ansikten. |
-|[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)|Den här klassen representerar alla data som upptäcktes från ett enskilt ansikte i en bild. Du kan använda den för att hämta detaljerad information om FACET.|
-|[FaceList](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/facelist?view=azure-node-latest)|Den här klassen hanterar molnbaserade **FaceList** -konstruktioner, som lagrar en stor uppsättning ansikten. |
-|[PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest)| Den här klassen hanterar molnbaserade **person** konstruktioner, som lagrar en uppsättning ansikten som tillhör en enda person.|
-|[PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)| Den här klassen hanterar de **PersonGroup** -konstruktioner i molnet som lagrar en uppsättning med utvalda **person** objekt. |
+|[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient) | Den här klassen representerar ditt tillstånd att använda ansikts tjänsten och du behöver den för alla ansikts funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser. |
+|[Ansiktsigenkänning](/javascript/api/@azure/cognitiveservices-face/face)|Den här klassen hanterar de grundläggande identifierings-och igenkännings aktiviteter som du kan göra med människo ansikten. |
+|[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)|Den här klassen representerar alla data som upptäcktes från ett enskilt ansikte i en bild. Du kan använda den för att hämta detaljerad information om FACET.|
+|[FaceList](/javascript/api/@azure/cognitiveservices-face/facelist)|Den här klassen hanterar molnbaserade **FaceList** -konstruktioner, som lagrar en stor uppsättning ansikten. |
+|[PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson)| Den här klassen hanterar molnbaserade **person** konstruktioner, som lagrar en uppsättning ansikten som tillhör en enda person.|
+|[PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)| Den här klassen hanterar de **PersonGroup** -konstruktioner i molnet som lagrar en uppsättning med utvalda **person** objekt. |
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -114,7 +114,7 @@ Kodfragmenten nedan visar hur du gör följande uppgifter med ansikts klient bib
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera en klient med din slut punkt och nyckel. Skapa ett **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest)** -objekt med din nyckel och Använd den med slut punkten för att skapa ett **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest)** -objekt.
+Instansiera en klient med din slut punkt och nyckel. Skapa ett **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** -objekt med din nyckel och Använd den med slut punkten för att skapa ett **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** -objekt.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -134,14 +134,14 @@ Du ska använda följande funktion för att vänta på att PersonGroup-utbildnin
 
 ### <a name="get-detected-face-objects"></a>Hämta identifierade ansikts objekt
 
-Skapa en ny metod för att identifiera ansikten. `DetectFaceExtract`Metoden bearbetar tre av avbildningarna på den angivna URL: en och skapar en lista över **[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)** -objekt i program minnet. Listan med **[FaceAttributeType](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** -värden anger vilka funktioner som ska extraheras. 
+Skapa en ny metod för att identifiera ansikten. `DetectFaceExtract`Metoden bearbetar tre av avbildningarna på den angivna URL: en och skapar en lista över **[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)** -objekt i program minnet. Listan med **[FaceAttributeType](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** -värden anger vilka funktioner som ska extraheras. 
 
-`DetectFaceExtract`Metoden tolkar och skriver ut attributets data för varje identifierad ansikte. Varje attribut måste anges separat i det ursprungliga API-anropet för ansikts igenkänning (i **[FaceAttributeType](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** -listan). Följande kod bearbetar alla attribut, men du behöver troligen bara använda ett eller några få.
+`DetectFaceExtract`Metoden tolkar och skriver ut attributets data för varje identifierad ansikte. Varje attribut måste anges separat i det ursprungliga API-anropet för ansikts igenkänning (i **[FaceAttributeType](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** -listan). Följande kod bearbetar alla attribut, men du behöver troligen bara använda ett eller några få.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="detect":::
 
 > [!TIP]
-> Du kan också identifiera ansikten i en lokal bild. Se [ansikts](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest) metoder som [DetectWithStreamAsync](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
+> Du kan också identifiera ansikten i en lokal bild. Se [ansikts](/javascript/api/@azure/cognitiveservices-face/face) metoder som [DetectWithStreamAsync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
 
 ## <a name="find-similar-faces"></a>Hitta liknande ansikten
 
@@ -161,11 +161,11 @@ Följande metod identifierar ansikten i en uppsättning mål bilder och i en end
 
 ## <a name="identify-a-face"></a>Identifiera ett ansikte
 
-[Identifiera](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) -åtgärden tar en bild av en person (eller flera personer) och söker efter identiteten för varje ansikte i bilden (ansikts igenkännings sökning). Den jämför alla identifierade ansikte till en [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest), en databas med olika [person](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/person?view=azure-node-latest) objekt vars ansikts funktioner är kända. Du måste först skapa och träna en [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)för att kunna identifiera åtgärden.
+[Identifiera](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) -åtgärden tar en bild av en person (eller flera personer) och söker efter identiteten för varje ansikte i bilden (ansikts igenkännings sökning). Den jämför alla identifierade ansikte till en [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup), en databas med olika [person](/javascript/api/@azure/cognitiveservices-face/person) objekt vars ansikts funktioner är kända. Du måste först skapa och träna en [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)för att kunna identifiera åtgärden.
 
 ### <a name="add-faces-to-person-group"></a>Lägg till ansikten i person gruppen
 
-Skapa följande funktion för att lägga till ansikten i [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest).
+Skapa följande funktion för att lägga till ansikten i [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
@@ -178,7 +178,7 @@ Skapa följande hjälp funktion för att vänta på att person gruppen Slutför 
 ### <a name="create-a-person-group"></a>Skapa en person grupp
 
 Följande kod:
-- Skapar en [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)
+- Skapar en [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)
 - Lägger till ansikten i person gruppen genom att anropa `AddFacesToPersonGroup` , som du definierade tidigare.
 - Tågen person gruppen.
 - Identifierar ansikten i person gruppen.
@@ -188,7 +188,7 @@ Den här **person** gruppen och dess associerade **person** objekt är nu redo a
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 
 > [!TIP]
-> Du kan också skapa en **PersonGroup** från lokala avbildningar. Se [PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest) -metoderna, till exempel [AddFaceFromStream](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
+> Du kan också skapa en **PersonGroup** från lokala avbildningar. Se [PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson) -metoderna, till exempel [AddFaceFromStream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
 
 ## <a name="main"></a>Huvudtillg
 

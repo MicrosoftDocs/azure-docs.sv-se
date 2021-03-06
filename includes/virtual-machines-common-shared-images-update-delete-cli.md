@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: fe37b0c9dbc16520a0dcb0993236db2797da6b68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4392e7f146f13e581f722b94f13038ad8abff0ba
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244588"
 ---
 ## <a name="update-resources"></a>Uppdatera resurser
 
 Det finns vissa begränsningar för vad som kan uppdateras. Följande objekt kan uppdateras: 
 
 Galleri för delad avbildning:
-- Beskrivning
+- Description
 
 Bild definition:
 - Rekommenderad virtuella processorer
 - Rekommenderat minne
-- Beskrivning
+- Description
 - Datum för slut på livs längd
 
 Avbildnings version:
@@ -36,7 +36,7 @@ Avbildnings version:
 
 Om du planerar att lägga till replik regioner ska du inte ta bort den hanterade käll avbildningen. Den käll hanterade avbildningen krävs för att replikera avbildnings versionen till ytterligare regioner. 
 
-Uppdatera beskrivningen av ett galleri med hjälp av ([AZ sig-uppdatera](/cli/azure/sig?view=azure-cli-latest#az-sig-update). 
+Uppdatera beskrivningen av ett galleri med hjälp av ([AZ sig-uppdatera](/cli/azure/sig#az-sig-update). 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-Uppdatera beskrivningen av en avbildnings definition med hjälp av [AZ sig-avbildnings definitions uppdatering](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update).
+Uppdatera beskrivningen av en avbildnings definition med hjälp av [AZ sig-avbildnings definitions uppdatering](/cli/azure/sig/image-definition#az-sig-image-definition-update).
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-Uppdatera en avbildnings version för att lägga till en region att replikera till med hjälp av [AZ sig-avbildning-version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update). Den här ändringen tar en stund medan avbildningen replikeras till den nya regionen.
+Uppdatera en avbildnings version för att lägga till en region att replikera till med hjälp av [AZ sig-avbildning-version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update). Den här ändringen tar en stund medan avbildningen replikeras till den nya regionen.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,7 +67,7 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
-Det här exemplet illustrerar hur du använder [AZ sig-avbildning – versions uppdatering](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) för att utesluta den här avbildnings versionen från att användas som den *senaste* avbildningen.
+Det här exemplet illustrerar hur du använder [AZ sig-avbildning – versions uppdatering](/cli/azure/sig/image-definition#az-sig-image-definition-update) för att utesluta den här avbildnings versionen från att användas som den *senaste* avbildningen.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -78,7 +78,7 @@ az sig image-version update \
    --set publishingProfile.excludeFromLatest=true
 ```
 
-I det här exemplet visas hur du använder [AZ sig-avbildning – versions uppdatering](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) för att inkludera den här avbildnings versionen i den *senaste* avbildningen.
+I det här exemplet visas hur du använder [AZ sig-avbildning – versions uppdatering](/cli/azure/sig/image-definition#az-sig-image-definition-update) för att inkludera den här avbildnings versionen i den *senaste* avbildningen.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -93,7 +93,7 @@ az sig image-version update \
 
 Du måste ta bort resurser i omvänd ordning genom att först ta bort avbildnings versionen. När du har tagit bort alla avbildnings versioner kan du ta bort avbildnings definitionen. När du har tagit bort alla avbildnings definitioner kan du ta bort galleriet. 
 
-Ta bort en avbildnings version med hjälp av [AZ sig sig-version Delete](/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete).
+Ta bort en avbildnings version med hjälp av [AZ sig sig-version Delete](/cli/azure/sig/image-version#az-sig-image-version-delete).
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -103,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-Ta bort en avbildnings definition med hjälp av [AZ sig sig](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete).
+Ta bort en avbildnings definition med hjälp av [AZ sig sig](/cli/azure/sig/image-definition#az-sig-image-definition-delete).
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -113,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-Ta bort ett bild galleri med [AZ sig-Delete](/cli/azure/sig?view=azure-cli-latest#az-sig-delete).
+Ta bort ett bild galleri med [AZ sig-Delete](/cli/azure/sig#az-sig-delete).
 
 ```azurecli-interactive
 az sig delete \

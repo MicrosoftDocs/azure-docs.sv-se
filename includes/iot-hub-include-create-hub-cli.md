@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: ab17b12913630774c4fe6d99a4830080de02e541
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712594"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244877"
 ---
 I följande avsnitt ställer du in en Terminal och använder Azure CLI för att skapa en IoT-hubb. Om du vill konfigurera en Terminal som kör Azure CLI-kommandon kan du antingen använda den webbläsarbaserade Azure Cloud Shell eller använda en lokal Terminal.
 * Om du vill använda Cloud Shell går du till nästa avsnitt: [starta Cloud Shell](#launch-the-cloud-shell). 
@@ -41,7 +41,7 @@ Så här startar du Cloud Shell:
 Om du väljer att använda en lokal Terminal i stället för att Cloud Shell, fyller du i det här avsnittet.  
 
 1. Öppna en lokal Terminal.
-1. Kör kommandot [AZ login](/cli/azure/reference-index?preserve-view=true&view=azure-cli-latest#az_login) :
+1. Kör kommandot [AZ login](/cli/azure/reference-index#az_login) :
 
    ```azurecli
    az login
@@ -65,7 +65,7 @@ I det här avsnittet installerar du Microsoft Azure IoT-tillägget för Azure CL
 > [!IMPORTANT]
 > Terminal-kommandona i resten av den här snabb starten fungerar på samma plats i Cloud Shell eller i en lokal Terminal. Om du vill köra ett kommando väljer du **Kopiera** för att kopiera ett kodblock i den här snabb starten. Klistra sedan in den i CLI-gränssnittet och kör den.
 
-Kör kommandot [AZ Extension Add](/cli/azure/extension?preserve-view=true&view=azure-cli-latest#az-extension-add) . 
+Kör kommandot [AZ Extension Add](/cli/azure/extension#az-extension-add) . 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ I det här avsnittet använder du Azure CLI för att skapa en IoT-hubb och en re
 
 Så här skapar du en IoT-hubb och en resurs grupp:
 
-1. Kör kommandot [AZ Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create) för att skapa en resurs grupp. Följande kommando skapar en resurs grupp med namnet *MyResourceGroup* på den *östra* platsen. 
+1. Kör kommandot [AZ Group Create](/cli/azure/group#az-group-create) för att skapa en resurs grupp. Följande kommando skapar en resurs grupp med namnet *MyResourceGroup* på den *östra* platsen. 
     >[!NOTE]
     > Du kan också ange en alternativ plats. Kör om du vill se tillgängliga platser `az account list-locations` . I den här självstudien används *öster* som du ser i exempel kommandot. 
 
@@ -85,7 +85,7 @@ Så här skapar du en IoT-hubb och en resurs grupp:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Kör kommandot [AZ IoT Hub Create](/cli/azure/iot/hub?preserve-view=true&view=azure-cli-latest#az-iot-hub-create) för att skapa en IoT-hubb. Det kan ta några minuter att skapa en IoT-hubb. 
+1. Kör kommandot [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) för att skapa en IoT-hubb. Det kan ta några minuter att skapa en IoT-hubb. 
 
     *YourIotHubName*. Ersätt den här plats hållaren och de omgivande klamrarna i följande kommando med det namn som du valde för din IoT-hubb. Ett IoT Hub-namn måste vara globalt unikt i Azure. Använd ditt IoT Hub-namn i resten av den här snabb starten där du ser plats hållaren.
 
@@ -97,7 +97,7 @@ Så här skapar du en IoT-hubb och en resurs grupp:
 I det här avsnittet skapar du en simulerad IoT-enhet som är ansluten till din IoT-hubb. 
 
 Så här skapar du en simulerad enhet:
-1. Kör kommandot [AZ IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) i CLI-gränssnittet. Detta skapar den simulerade enhets identiteten. 
+1. Kör kommandot [AZ IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) i CLI-gränssnittet. Detta skapar den simulerade enhets identiteten. 
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -107,7 +107,7 @@ Så här skapar du en simulerad enhet:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  Kör kommandot [AZ IoT Hub Device-Identity Connection-sträng show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?preserve-view=true&view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) . 
+1.  Kör kommandot [AZ IoT Hub Device-Identity Connection-sträng show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) . 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

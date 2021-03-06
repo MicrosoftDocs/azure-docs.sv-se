@@ -4,16 +4,16 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 7bf32de017a5f8ad19eb044ae7dbcdc2eaa96ca5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dfeeb451912dd32770a6ae92d73de83851d9d8f6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521431"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244828"
 ---
 Följande resurser är också tillgängliga:
 
-- [ Dokumentation omNode.js SDK-referens](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest)
+- [ Dokumentation omNode.js SDK-referens](/javascript/api/azure-iothub)
 - [Tjänst klient exempel](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)
 - [Digitala dubbla exempel](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js)
 
