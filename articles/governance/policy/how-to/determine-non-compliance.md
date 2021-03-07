@@ -3,12 +3,12 @@ title: Fastställa orsaker till icke-kompatibilitet
 description: När en resurs är icke-kompatibel finns det många möjliga orsaker. Lär dig hur du tar reda på vad som orsakade bristande efterlevnad.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8168bf22aceaf5cbdec4b1346801aa62b7aa4ee
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541279"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439841"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Fastställa orsaker till icke-kompatibilitet
 
@@ -30,7 +30,7 @@ Om en resurs är icke-kompatibel, är kompatibilitetsinformation för resursen t
 
 Följ dessa steg om du vill visa kompatibilitetsinformation:
 
-1. Starta tjänsten Azure Policy i Azure Portal genom att välja **alla tjänster**och sedan söka efter och välja **princip**.
+1. Starta tjänsten Azure Policy i Azure Portal genom att välja **alla tjänster** och sedan söka efter och välja **princip**.
 
 1. På sidan **Översikt** eller **efterlevnad** väljer du en princip i ett **kompatibilitetstillstånd** som _inte är kompatibelt_.
 
@@ -40,7 +40,7 @@ Följ dessa steg om du vill visa kompatibilitetsinformation:
 
 1. I fönstret **kompatibilitetsinformation** visas information från den senaste utvärderings versionen av resursen till den aktuella princip tilldelningen. I det här exemplet finns fältet **Microsoft. SQL/Servers/version** som _12,0_ medan princip definitionen förväntar sig _14,0_. Om resursen inte är kompatibel av flera orsaker visas varje lista i det här fönstret.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Skärm bild av fönstret kompatibilitetsinformation och orsakerna till att det aktuella värdet är 12 och målvärdet är fjorton." border="false":::
 
    För en **auditIfNotExists** -eller **deployIfNotExists** -princip definition innehåller informationen **information. Type** -egenskapen och eventuella valfria egenskaper. En lista finns i [auditIfNotExists egenskaper](../concepts/effects.md#auditifnotexists-properties) och [deployIfNotExists egenskaper](../concepts/effects.md#deployifnotexists-properties). Den **senaste utvärderade resursen** är en relaterad resurs från avsnittet **information** i definitionen.
 
@@ -69,7 +69,7 @@ Följ dessa steg om du vill visa kompatibilitetsinformation:
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Skärm bild av fönstret efterlevnadsprincip för ifNotExists, inklusive utvärderat resurs antal." border="false":::
 
 > [!NOTE]
 > Om ett egenskaps värde är _hemligt_ för att skydda data visas asterisker i det aktuella värdet.
@@ -80,7 +80,7 @@ Informationen förklarar varför en resurs för närvarande inte är kompatibel,
 
 Följande matris mappar varje tänkbar _orsak_ till det ansvariga [villkoret](../concepts/definition-structure.md#conditions) i princip definitionen:
 
-|Orsak | Condition (Väderförhållanden) |
+|Anledning | Villkor |
 |-|-|
 |Det aktuella värdet måste innehålla målvärdet som en nyckel. |containsKey eller **inte** notContainsKey |
 |Det aktuella värdet måste innehålla målvärdet. |innehåller eller **inte** notContains |
@@ -108,7 +108,7 @@ Följande matris mappar varje tänkbar _orsak_ till det ansvariga [villkoret](..
 
 För tilldelningar med ett [resurs leverantörs läge](../concepts/definition-structure.md#resource-manager-modes)väljer du den _icke-kompatibla_ resursen för att öppna en djupare vy. Under fliken **komponent efterlevnad** finns ytterligare information som är speciell för resurs leverantörens läge på den tilldelade principen som visar den _icke-kompatibla_ **komponenten** och **komponent-ID: t**.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Skärm bild av fliken efterlevnad för komponenter och efterlevnad för en resurs leverantörs läge tilldelning." border="false":::
 
 ## <a name="compliance-details-for-guest-configuration"></a>Efterlevnadsinformation för gästkonfiguration
 
@@ -122,82 +122,17 @@ Börja med att följa samma steg i avsnittet ovan för att visa information om e
 
 I fönstret kompatibilitetsinformation väljer du länken **senast utvärderade resursen**.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Skärm bild av visning av auditIfNotExists definitions information om definitioner." border="false":::
 
 På sidan **gäst tilldelning** visas all tillgänglig information om kompatibilitet. Varje rad i vyn representerar en utvärdering som utförts i datorn. I kolumnen **orsak** visas en fras som beskriver varför gäst tilldelningen _inte är kompatibel_. Om du till exempel granskar lösen ords principer visar kolumnen **orsak** att texten innehåller det aktuella värdet för varje inställning.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-Du kan också visa information om efterlevnad från Azure PowerShell. Kontrol lera först att du har modulen gäst konfiguration installerad.
-
-```azurepowershell-interactive
-Install-Module Az.GuestConfiguration
-```
-
-Du kan visa den aktuella statusen för alla gäst tilldelningar för en virtuell dator med hjälp av följande kommando:
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
-```
-
-```output
-PolicyDisplayName                                                         ComplianceReasons
------------------                                                         -----------------
-Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
-Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
-```
-
-Om du bara vill visa _orsaken_ till varför den virtuella datorn är _icke-kompatibel_, returnerar du endast den underordnade egenskapen orsak.
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
-```
-
-```output
-The following applications are not installed: '<name>'.
-```
-
-Du kan också skriva ut en efterlevnadsprincip för gäst tilldelningar i omfånget för datorn. Utdata från det här kommandot innehåller information om varje rapport för den virtuella datorn.
-
-> [!NOTE]
-> Utdata kan returnera en stor mängd data. Vi rekommenderar att du lagrar utdata i en variabel.
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
-<truncated>
-```
-
-Använd parametern **ShowChanged** för att förenkla den här vyn. Utdata från det här kommandot innehåller bara rapporter som följde en ändring av kompatibilitetsstatus.
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
-Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
-```
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Skärm bild av kompatibilitets information för gäst tilldelning." border="false":::
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Ändrings historik (förhands granskning)
 
-Som en del av en ny **offentlig för hands version**är de 14 senaste dagarna i ändrings historiken tillgängliga för alla Azure-resurser som stöder [borttagning av fullständigt läge](../../../azure-resource-manager/templates/complete-mode-deletion.md). Ändrings historiken innehåller information om när en ändring upptäcktes och en _visuell skillnad_ för varje ändring. En ändrings identifiering utlöses när Azure Resource Manager egenskaper läggs till, tas bort eller ändras.
+Som en del av en ny **offentlig för hands version** är de 14 senaste dagarna i ändrings historiken tillgängliga för alla Azure-resurser som stöder [borttagning av fullständigt läge](../../../azure-resource-manager/templates/complete-mode-deletion.md). Ändrings historiken innehåller information om när en ändring upptäcktes och en _visuell skillnad_ för varje ändring. En ändrings identifiering utlöses när Azure Resource Manager egenskaper läggs till, tas bort eller ändras.
 
-1. Starta tjänsten Azure Policy i Azure Portal genom att välja **alla tjänster**och sedan söka efter och välja **princip**.
+1. Starta tjänsten Azure Policy i Azure Portal genom att välja **alla tjänster** och sedan söka efter och välja **princip**.
 
 1. På sidan **Översikt** eller **efterlevnad** väljer du en princip i valfritt **kompatibilitetstillstånd**.
 
@@ -205,11 +140,11 @@ Som en del av en ny **offentlig för hands version**är de 14 senaste dagarna i 
 
 1. Välj fliken **ändrings historik (förhands granskning)** på sidan **resurs efterlevnad** . En lista över identifierade ändringar, om sådana finns, visas.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Skärm bild av fliken ändrings historik och identifierade ändrings tider på sidan resurs efterlevnad." border="false":::
 
 1. Välj en av de identifierade ändringarna. Den _visuella differensen_ för resursen visas på sidan **Ändra historik** .
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Skärm bild av länken Visa Kompatibilitetsrapport på fliken resurs efterlevnad." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Skärm bild av visuell skillnad i ändrings historiken för egenskaperna före och efter för egenskaperna på sidan Ändra historik." border="false":::
 
 Den _visuella diff_ -aides för att identifiera ändringar av en resurs. De ändringar som upptäcktes kanske inte är relaterade till resursens aktuella kompatibilitetstillstånd.
 

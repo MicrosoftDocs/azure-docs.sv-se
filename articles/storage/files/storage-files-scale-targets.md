@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6ef255d78d3dd3ff6fcc5eba7aad522018185299
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518903"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440317"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalbarhet för Azure Files och prestandamål
 [Azure Files](storage-files-introduction.md) erbjuder fullständigt hanterade fil resurser i molnet som är tillgängliga via PROTOKOLLen SMB-och NFS-filsystem. I den här artikeln beskrivs skalbarhets-och prestanda mål för Azure Files och Azure File Sync.
@@ -83,17 +83,17 @@ Följande tabell visar gränserna för Microsofts testning och indikerar även v
 
 | Resurs | Mål | Hård gräns |
 |----------|--------------|------------|
-| Tjänster för synkronisering av lagring per region | 100 lagrings tjänster för synkronisering | Ja |
-| Synkronisera grupper per tjänst för synkronisering av lagring | 200 Sync-grupper | Ja |
-| Registrerade servrar per tjänst för synkronisering av lagring | 99-servrar | Ja |
-| Moln slut punkter per Sync-grupp | 1 moln slut punkt | Ja |
-| Server slut punkter per Sync-grupp | 100 Server slut punkter | Ja |
-| Server slut punkter per server | 30 Server slut punkter | Ja |
-| Fil system objekt (kataloger och filer) per Sync-grupp | 100 000 000 objekt | Inga |
-| Maximalt antal fil system objekt (kataloger och filer) i en katalog | 5 000 000 objekt | Ja |
-| Säkerhets beskrivnings storlek för maximalt objekt (kataloger och filer) | 64 KiB | Ja |
-| Filstorlek | 100 GiB | Inga |
-| Minsta fil storlek för en fil i nivå | V9 och nyare: baserat på fil systemets kluster storlek (kluster storlek för dubbla fil system). Om fil systemets kluster storlek till exempel är 4 KiB, kommer den minsta fil storleken att vara 8 KiB.<br> V8 och äldre: 64 KiB  | Ja |
+| Tjänster för synkronisering av lagring per region | 100 lagrings tjänster för synkronisering | Yes |
+| Synkronisera grupper per tjänst för synkronisering av lagring | 200 Sync-grupper | Yes |
+| Registrerade servrar per tjänst för synkronisering av lagring | 99-servrar | Yes |
+| Moln slut punkter per Sync-grupp | 1 moln slut punkt | Yes |
+| Server slut punkter per Sync-grupp | 100 Server slut punkter | Yes |
+| Server slut punkter per server | 30 Server slut punkter | Yes |
+| Fil system objekt (kataloger och filer) per Sync-grupp | 100 000 000 objekt | No |
+| Maximalt antal fil system objekt (kataloger och filer) i en katalog | 5 000 000 objekt | Yes |
+| Säkerhets beskrivnings storlek för maximalt objekt (kataloger och filer) | 64 KiB | Yes |
+| Filstorlek | 100 GiB | No |
+| Minsta fil storlek för en fil i nivå | V9 och nyare: baserat på fil systemets kluster storlek (kluster storlek för dubbla fil system). Om fil systemets kluster storlek till exempel är 4 KiB, kommer den minsta fil storleken att vara 8 KiB.<br> V8 och äldre: 64 KiB  | Yes |
 
 > [!Note]  
 > En Azure File Sync-slutpunkt kan skala upp till storleken på en Azure-filresurs. Om storleks gränsen för Azure-filresursen uppnås går det inte att använda synkroniseringen.
@@ -126,10 +126,21 @@ För att hjälpa dig att planera distributionen för var och en av stegen nedan 
 | Hämta data område | 400 objekt per sekund |
 
 ### <a name="initial-one-time-provisioning"></a>Första engångs etablering
+
 Första **moln ändrings uppräkning**: när en ny synkroniseringsresurs skapas är den första omräkningen av moln ändringar det första steget som ska utföras. I den här processen kommer systemet att räkna upp alla objekt i Azure-filresursen. Under den här processen kommer det inte att finnas någon Sync-aktivitet, d.v.s. inga objekt hämtas från moln slut punkten till Server slut punkten och inga objekt överförs från Server slut punkten till moln slut punkten. Synkroniseringen återupptas när den första uppräkningen av moln ändringar slutförs.
 Prestanda frekvensen är 20 objekt per sekund. Kunder kan uppskatta hur lång tid det tar att slutföra den inledande moln ändrings uppräkningen genom att fastställa antalet objekt i moln resursen och använda följande formel för att hämta tiden i dagar. 
 
    **Tid (i dagar) för inledande moln uppräkning = (antal objekt i moln slut punkt)/(20 * 60 * 60 * 24)**
+
+**Inledande synkronisering av data från Windows Server till Azure-fil resurs**: många Azure File Sync distributioner börjar med en tom Azure-filresurs eftersom alla data finns på Windows Server. I dessa fall är den första uppräkningen av moln ändringar snabb och hur lång tid som används för att synkronisera ändringar från Windows Server till Azure-filresursen. 
+
+Vid synkronisering överförs data till Azure-filresursen, det finns ingen stillestånds tid på den lokala fil servern och administratörer kan [Konfigurera nätverks gränser](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits) för att begränsa den mängd bandbredd som används för uppladdning av bakgrunds data.
+
+Den första synkroniseringen begränsas vanligt vis av den inledande överförings hastigheten på 20 filer per sekund per synkroniseringsresurs. Kunder kan uppskatta hur lång tid det tar att ladda upp data till Azure med hjälp av följande formel för att få tid i dagar:  
+
+   **Tid (i dagar) för att ladda upp filer till en Sync-grupp = (antal objekt i moln slut punkt)/(20 * 60 * 60 * 24)**
+
+Att dela upp data i flera Server slut punkter och synkronisera grupper kan påskynda den här inledande data överföringen, eftersom överföringen kan göras parallellt för flera Sync-grupper med en hastighet av 20 objekt per sekund. Därför skulle två Sync-grupper köras med en sammanlagd hastighet på 40 objekt per sekund. Den totala tiden som ska slutföras är tids uppskattningen för Sync-gruppen med de flesta filer som ska synkroniseras
 
 **Hämta data område** När en ny server slut punkt läggs till i en befintlig Sync-grupp, laddas inte Azure File Sync-agenten ned något av fil innehållet från moln slut punkten. Den synkroniserar först det fullständiga namn området och utlöser sedan bakgrunden återkallande för att ladda ned filerna, antingen i sin helhet eller, om moln nivåer är aktiverade, till den moln nivå princip som angetts på Server slut punkten.
 

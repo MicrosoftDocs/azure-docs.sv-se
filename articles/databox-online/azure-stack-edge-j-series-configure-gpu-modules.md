@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dfae1a9b02db7e7b9577acdb47a1ba089f1609e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935568"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439059"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurera och köra en modul på GPU på Azure Stack Edge Pro-enhet
 
-Din Azure Stack Edge Pro-enhet innehåller en eller flera GPU: er (Graphics Processing Unit). GPU: er är ett populärt alternativ för AI-beräkningar när de erbjuder parallella bearbetnings möjligheter och är snabbare vid bild åter givning än CPU: er (Central bearbetnings enheter). Om du vill ha mer information om GPU: n som finns i din Azure Stack Edge Pro-enhet går du till [Azure Stack tekniska specifikationer för Edge Pro-enhet](azure-stack-edge-gpu-technical-specifications-compliance.md).
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
+
+Din Azure Stack Edge Pro-enhet innehåller en eller flera GPU: er (Graphics Processing Unit). GPU:er är ett populärt alternativ för AI-beräkningar som erbjuder parallell bearbetning och snabbare bildåtergivning än processorer (CPU:er). Om du vill ha mer information om GPU: n som finns i din Azure Stack Edge Pro-enhet går du till [Azure Stack tekniska specifikationer för Edge Pro-enhet](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
 Den här artikeln beskriver hur du konfigurerar och kör en modul på GPU: n på din Azure Stack Edge Pro-enhet. I den här artikeln ska du använda en offentligt tillgänglig **siffra** för container som skrivits för NVIDIA T4-GPU: er. Den här proceduren kan användas för att konfigurera andra moduler som publiceras av NVIDIA för dessa GPU: er.
 
@@ -49,7 +51,7 @@ Konfigurera en modul så att den använder GPU: n på din Azure Stack Edge Pro-e
    |Prenumeration      | Prenumeration som används av Azure Stack Edge-resursen. |
    |Resursgrupp    | Resurs grupp som används av Azure Stack Edge-resursen. |
    |IoT Hub           | Välj från **Skapa ny** eller **Använd befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
-   |Namn              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
+   |Name              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
 
    När du är klar med inställningarna väljer du **Granska + skapa**. Granska inställningarna för din IoT Hub resurs och välj **skapa**.
 

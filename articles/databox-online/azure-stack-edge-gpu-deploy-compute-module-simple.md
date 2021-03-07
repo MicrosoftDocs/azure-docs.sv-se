@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 44265efd4d125bb2701742a490fc883c48f1877b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550999"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440147"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>Självstudie: köra en beräknings arbets belastning med IoT Edge modul på Azure Stack Edge Pro GPU
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 I den här självstudien beskrivs hur du kör en beräknings arbets belastning med hjälp av en IoT Edge modul på din Azure Stack Edge Pro GPU-enhet. När du har konfigurerat beräkningen kommer enheten att transformera data innan de skickas till Azure.
 
@@ -75,7 +75,7 @@ För den enkla distributionen i den här självstudien behöver du två resurser
 
     `rsync <source file path> < destination file path>`
 
-    Mer information om `rsync` kommandot finns i [rsync-dokumentationen](https://www.computerhope.com/unix/rsync.htm).
+    Mer information om `rsync` kommandot finns i [ `Rsync` dokumentationen](https://www.computerhope.com/unix/rsync.htm).
  
 3. Gå till **Cloud Storage gateway >-resurser** för att se den uppdaterade listan över resurser.
 

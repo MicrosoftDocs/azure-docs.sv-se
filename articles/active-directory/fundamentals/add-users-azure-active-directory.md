@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996703"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426832"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Lägga till eller ta bort användare med hjälp av Azure Active Directory
 
@@ -42,7 +42,7 @@ Följ dessa steg om du vill lägga till en ny användare:
 
    - **Namn**. Krävs. Det första och sista namnet på den nya användaren. Till exempel *Mary parker*.
 
-   - **Användar namn**. Krävs. Den nya användarens användar namn. Exempelvis `mary@contoso.com`.
+   - **Användar namn**. Krävs. Den nya användarens användar namn. Till exempel `mary@contoso.com`.
 
      Domän delen av användar namnet måste antingen använda det inledande standard domän namnet, *\<yourdomainname> . onmicrosoft.com* eller ett anpassat domän namn, till exempel *contoso.com*. Mer information om hur du skapar ett anpassat domän namn finns i [lägga till ditt anpassade domän namn med hjälp av Azure Active Directory portalen](add-custom-domain.md).
 
@@ -74,6 +74,9 @@ Om du har en miljö med både Azure Active Directory (moln) och Windows Server A
 
 Du kan ta bort en befintlig användare med hjälp av Azure Active Directory Portal.
 
+>[!Note]
+>Du måste ha roll tilldelningen global administratör eller användar administratör för att kunna ta bort användare i din organisation. Globala administratörer kan ta bort alla användare, inklusive andra administratörer. Användar administratörer kan ta bort alla användare som inte är administratörer, administratörer för administratörer och andra användar administratörer. Mer information finns i [Administratörs roll behörigheter i Azure AD](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+
 Följ dessa steg om du vill ta bort en användare:
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) med ett användar administratörs konto för organisationen.
@@ -91,7 +94,7 @@ Användaren tas bort och visas inte längre på sidan **användare – alla anv�
 När en användare tas bort görs alla licenser som används av användaren tillgängliga för andra användare.
 
 >[!Note]
->Du måste använda Windows Server Active Directory för att uppdatera identitet, kontakt information eller jobb information för användare vars auktoritets källa är Windows Server Active Directory. När du har slutfört uppdateringen måste du vänta tills nästa synkronisering har slutförts innan du kan se ändringarna.
+>Om du vill uppdatera identitet, kontakt information eller jobb information för användare vars auktoritets källa är Windows Server Active Directory måste du använda Windows Server Active Directory. När du har slutfört uppdateringen måste du vänta tills nästa synkronisering har slutförts innan du kan se ändringarna.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a9ef3fb009cfb91b20ac7492be193286e2f0410
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965904"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432544"
 ---
 # <a name="call-the-computer-vision-api"></a>Anropa API:et för visuellt innehåll
 
@@ -38,7 +38,7 @@ Funktionerna erbjuder följande alternativ:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
-* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
+* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Visuellt innehåll-tjänsten. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
     * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 * En bild-URL eller en sökväg till en lokalt lagrad avbildning
@@ -182,7 +182,7 @@ Fält | Typ | Innehåll
 Taggar  | `object` | Objektet på den översta nivån för en matris med taggar.
 tags[].Name | `string`    | Nyckelordet från taggarnas klassificerare.
 tags[].Score    | `number`    | Förtroende poängen, mellan 0 och 1.
-description     | `object`    | Objektet på den översta nivån för en beskrivning.
+beskrivning     | `object`    | Objektet på den översta nivån för en beskrivning.
 description.tags[] |    `string`    | Listan med taggar.  Om det inte finns tillräckligt med förtroende för möjligheten att skapa en bildtext kan taggarna vara den enda information som är tillgänglig för anroparen.
 description.captions[].text    | `string`    | En mening som beskriver bilden.
 description.captions[].confidence    | `number`    | Förtroende poängen för frasen.

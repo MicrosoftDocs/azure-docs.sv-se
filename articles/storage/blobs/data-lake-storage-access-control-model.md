@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650396"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439297"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Åtkomst kontroll modell i Azure Data Lake Storage Gen2
 
@@ -106,7 +106,7 @@ I följande tabell visas hur du kombinerar Azure-roller och ACL-poster så att e
 
 
 > [!NOTE] 
-> Om du vill visa innehållet i en behållare i Azure Storage Explorer måste säkerhets objekt [Logga in på Storage Explorer med hjälp av Azure AD](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad)och (minst) ha Läs åtkomst (R--) till rotmappen ( `\` ) i en behållare. Den här behörighets nivån ger dem möjlighet att visa innehållet i rotmappen. Om du inte vill att innehållet i rotmappen ska visas kan du tilldela dem rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) . Med den rollen kan de lista behållarna i kontot, men inte container innehåll. Sedan kan du bevilja åtkomst till vissa kataloger och filer med hjälp av ACL: er.   
+> Om du vill visa innehållet i en behållare i Azure Storage Explorer måste säkerhets objekt [Logga in på Storage Explorer med hjälp av Azure AD](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource)och (minst) ha Läs åtkomst (R--) till rotmappen ( `\` ) i en behållare. Den här behörighets nivån ger dem möjlighet att visa innehållet i rotmappen. Om du inte vill att innehållet i rotmappen ska visas kan du tilldela dem rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) . Med den rollen kan de lista behållarna i kontot, men inte container innehåll. Sedan kan du bevilja åtkomst till vissa kataloger och filer med hjälp av ACL: er.   
 
 ## <a name="security-groups"></a>Säkerhetsgrupper
 

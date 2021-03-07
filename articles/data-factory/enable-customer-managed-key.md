@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 4e30ac2e6836b40ab0c0c2915eae48266cb4845c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199224"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443900"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Kryptera Azure Data Factory med Kundhanterade nycklar
 
@@ -102,9 +102,9 @@ Mer information om användardefinierad hanterad identitet finns i [hanterade ide
 1. Se till att den användarspecifika hanterade identiteten (UA-MI) har _Get_-, _upwrap-nyckel_ och omslutna _nyckel_ behörigheter för att Key Vault
 
 1. Under fliken __Avancerat__ markerar du kryss rutan _Aktivera kryptering med en kundhanterad nyckel_ 
-   :::image type="content" source="media/enable-customer-managed-key/06-uami-cmk.png" alt-text="skärm bild av fliken Avancerat för att skapa Data Factory i Azure Portal.":::
+   :::image type="content" source="media/enable-customer-managed-key/06-user-assigned-managed-identity.png" alt-text="skärm bild av fliken Avancerat för att skapa Data Factory i Azure Portal.":::
 
-1. Ange URL: en för Key Vault
+1. Ange URL: en för den kund hanterade nyckeln som lagras i Key Vault
 
 1. Välj en lämplig användare som tilldelats hanterad identitet för att autentisera med Key Vault
 

@@ -3,18 +3,18 @@ title: Hantera och hitta Azure blob-data med blobb index Taggar (för hands vers
 description: Lär dig hur du använder BLOB-taggar för att kategorisera, hantera och fråga efter BLOB-objekt.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523288"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431762"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Hantera och hitta Azure blob-data med blobb index Taggar (för hands version)
 
@@ -29,6 +29,9 @@ Med blobb index taggar kan du:
 
 Tänk dig ett scenario där du har miljon tals blobbar i ditt lagrings konto, som används av många olika program. Du vill hitta alla relaterade data från ett enda projekt. Du är inte säker på vad som är inom ramen för att data kan spridas över flera behållare med olika namngivnings konventioner. Programmen laddar dock upp alla data med Taggar baserat på deras projekt. I stället för att söka igenom miljon tals blobbar och jämföra namn och egenskaper kan du använda `Project = Contoso` som identifierings villkor. BLOB-index filtrerar alla behållare över hela lagrings kontot för att snabbt hitta och returnera bara uppsättningen av 50 blobbar från `Project = Contoso` .
 
+> [!IMPORTANT]
+> Blobb index taggar är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+
 Information om hur du kommer igång med exempel på hur du använder BLOB-index finns i [använda BLOB-taggar för att hantera och söka efter data](storage-blob-index-how-to.md).
 
 ## <a name="blob-index-tags-and-data-management"></a>BLOB-index Taggar och data hantering
@@ -42,7 +45,6 @@ Prefix för behållare och blob-namn är tvådimensionella kategoriseringar. BLO
 - *foton/bannerphoto.png*
 - *Arkiv/slutfört/2019review.pdf*
 - *loggar/2020/01/01/logfile.txt*
-
 
 Dessa blobbar separeras med hjälp av ett prefix för *behållare/virtuell mapp/BLOB-namn*. Du kan ange ett index tag-attribut för `Project = Contoso` på dessa fem blobbar för att kategorisera dem tillsammans samtidigt som du behåller sin aktuella prefix organisation. Att lägga till index Taggar eliminerar behovet av att flytta data genom att exponera möjligheten att filtrera och söka efter data med hjälp av indexet.
 
@@ -334,7 +336,7 @@ I det här avsnittet beskrivs kända problem och villkor i den offentliga för h
 - `Copy Blob` (Asynkron kopia) från ett annat lagrings konto med tillämpade taggar på mål-bloben gör att BLOB-index motorn inte returnerar blobben och dess Taggar i filter uppsättningen. Använd `Copy Blob` från URL (synkronisera kopia).
 - Taggarna sparas när ögonblicks bilder skapas. Att befordra en ögonblicks bild stöds dock inte och kan resultera i en tom tag-uppsättning.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Kan du använda BLOB-index för att filtrera och fråga efter innehåll i mina blobbar?**
 

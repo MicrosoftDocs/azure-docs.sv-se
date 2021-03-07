@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203155"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434108"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Kända problem i Azure Digitals, dubbla
 
@@ -37,7 +37,7 @@ Problembeskrivning **:** Vissa användare kan uppleva problem med roll tilldelni
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Problem med interaktiv Browser-autentisering på Azure. Identity 1.2.0
 
-Problembeskrivning **:** När du skriver authentication code i dina Azure Digital-program med version **1.2.0** av **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -biblioteket** kan det uppstå problem med [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) -metoden. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException" när du försöker autentisera i ett webbläsarfönster. Det kan hända att det inte går att starta webbläsarfönstret helt eller visas för att autentisera användaren, medan klient programmet fortfarande Miss lyckas med felet.
+Problembeskrivning **:** När du skriver authentication code i dina Azure Digital-program med version **1.2.0** av **[Azure. Identity](/dotnet/api/azure.identity) -biblioteket** kan det uppstå problem med [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) -metoden. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException" när du försöker autentisera i ett webbläsarfönster. Det kan hända att det inte går att starta webbläsarfönstret helt eller visas för att autentisera användaren, medan klient programmet fortfarande Miss lyckas med felet.
 
 | Påverkar detta mig mig? | Orsak | Lösning |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ Problembeskrivning **:** När du skriver authentication code i dina Azure Digita
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Problem med Azure Credential Authentication-autentisering på Azure. Identity 1.3.0
 
-Problembeskrivning **:** När du skriver en autentiseringsmetod med **1.3.0** av **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -biblioteket**, har vissa användare drabbats av problem med [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) -metoden som används i många exempel i de här Azure Digitals-dokumenten. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential-Autentiseringen misslyckades" när koden försöker autentisera sig.
+Problembeskrivning **:** När du skriver en autentiseringsmetod med **1.3.0** av **[Azure. Identity](/dotnet/api/azure.identity) -biblioteket**, har vissa användare drabbats av problem med [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) -metoden som används i många exempel i de här Azure Digitals-dokumenten. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential-Autentiseringen misslyckades" när koden försöker autentisera sig.
 
 | Påverkar detta mig mig? | Orsak | Lösning |
 | --- | --- | --- |

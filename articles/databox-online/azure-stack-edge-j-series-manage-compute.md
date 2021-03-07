@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99068a68c5d35bc6a501c5860d0bbc9ea3e3f368
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733422"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436997"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Hantera beräkning på Azure Stack Edge Pro GPU
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 I den här artikeln beskrivs hur du hanterar Compute via IoT Edge-tjänsten på din Azure Stack Edge Pro GPU-enhet. Du kan hantera beräkningen via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att hantera moduler, utlösare och IoT Edge konfiguration och det lokala webb gränssnittet för att hantera beräknings nätverks inställningar.
 
@@ -37,7 +37,7 @@ Utför följande steg i Azure Portal för att skapa en utlösare.
 
 1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **IoT Edge**. Gå till **utlösare** och välj **+ Lägg till utlösare** i kommando fältet.
 
-    ![Välj Lägg till utlösare](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
+    ![Välj Lägg till utlösare](media/azure-stack-edge-j-series-manage-compute/add-trigger-1-m.png)
 
 2. Ange ett unikt namn för utlösaren i bladet **Lägg till utlösare** .
     

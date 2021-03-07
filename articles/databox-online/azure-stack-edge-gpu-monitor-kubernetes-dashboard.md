@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320837"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443054"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Använd Kubernetes-instrumentpanelen för att övervaka din Azure Stack Edge Pro GPU-enhet
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Den här artikeln beskriver hur du kommer åt och använder Kubernetes-instrumentpanelen för att övervaka din Azure Stack Edge Pro GPU-enhet. Om du vill övervaka din enhet kan du använda diagram i Azure Portal, Visa Kubernetes-instrumentpanelen eller köra `kubectl` kommandon via enhetens PowerShell-gränssnitt. 
 
@@ -33,7 +35,7 @@ I den här artikeln kan du se hur du:
 
 ## <a name="about-kubernetes-dashboard"></a>Om Kubernetes-instrumentpanel
 
-Kubernetes-instrumentpanelen är ett webbaserat användar gränssnitt som du kan använda för att felsöka dina program i behållare. Kubernetes-instrumentpanelen är ett UI-baserat alternativ till Kubernetes- `kubectl` kommandoraden. Mer information finns i [Kubernetes-instrumentpanelen](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
+Kubernetes Dashboard är ett webbaserat användargränssnitt som du kan använda till att felsöka dina containerbaserade program. Kubernetes-instrumentpanelen är ett UI-baserat alternativ till Kubernetes- `kubectl` kommandoraden. Mer information finns i [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
 På din Azure Stack Edge Pro-enhet kan du använda Kubernetes-instrumentpanelen i *skrivskyddat* läge för att få en översikt över de program som körs på din Azure Stack Edge Pro-enhet, Visa status för Kubernetes kluster resurser och se eventuella fel som har inträffat på enheten.
 
@@ -64,7 +66,7 @@ Compute-moduler är behållare som har en affärs logik implementerad. Du kan an
 
 Om du vill visa status för modulen följer du de här stegen på instrument panelen:
 
-1. Gå till **namn område**i det vänstra fönstret på instrument panelen. Filtrera efter namn området där IoT Edge moduler visas, i det här fallet **iotedge**.
+1. Gå till **namn område** i det vänstra fönstret på instrument panelen. Filtrera efter namn området där IoT Edge moduler visas, i det här fallet **iotedge**.
 1. I den vänstra rutan går du till **arbets belastningar > distributioner**.
 1. I den högra rutan visas alla moduler som har distribuerats på enheten. I det här fallet distribuerades en GettingStartedWithGPU-modul på Azure Stack Edge Pro. Du kan se att modulen har distribuerats.
 
@@ -79,7 +81,7 @@ Du tilldelar IP-intervallet för de här externa tjänsterna via det lokala webb
 
 Följ dessa steg på instrument panelen för att hämta IP-adressen:
 
-1. Gå till **namn område**i det vänstra fönstret på instrument panelen. Filtrera efter det namn område där en extern tjänst distribueras, i det här fallet **iotedge**.
+1. Gå till **namn område** i det vänstra fönstret på instrument panelen. Filtrera efter det namn område där en extern tjänst distribueras, i det här fallet **iotedge**.
 1. I den vänstra rutan går du till **identifiering och belastnings utjämning > tjänster**.
 1. I den högra rutan visas alla tjänster som körs i `iotedge` namn området på din Azure Stack Edge Pro-enhet.
 
@@ -91,9 +93,9 @@ Det finns instanser där du behöver Visa behållar loggarna. Du kan använda in
 
 Följ de här stegen på instrument panelen för att Visa behållar loggarna:
 
-1. Gå till **namn område**i det vänstra fönstret på instrument panelen. Filtrera efter det namn område där IoT Edge moduler distribueras, i det här fallet **iotedge**.
+1. Gå till **namn område** i det vänstra fönstret på instrument panelen. Filtrera efter det namn område där IoT Edge moduler distribueras, i det här fallet **iotedge**.
 1. I den vänstra rutan går du till **arbets belastningar > poddar**.
-1. I den högra rutan visas alla poddar som körs på enheten. Identifiera Pod som kör den modul som du vill visa loggarna för. Välj den lodräta ellipsen för den Pod som du har identifierat och välj **loggar**på snabb menyn.
+1. I den högra rutan visas alla poddar som körs på enheten. Identifiera Pod som kör den modul som du vill visa loggarna för. Välj den lodräta ellipsen för den Pod som du har identifierat och välj **loggar** på snabb menyn.
 
     ![Visa behållar loggar 1](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
 

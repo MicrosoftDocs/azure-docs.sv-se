@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211659"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426968"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Inställningar för ändrings begär Anden för ett Access-paket i hantering av Azure AD-berättigande
 
@@ -197,6 +197,8 @@ Om du vill ändra inställningarna för begär ande och godkännande för ett Ac
     ![Åtkomst paket-princip-aktivera princip inställning](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. Klicka på **Nästa**.
+
+1. Om du vill kräva att beställare tillhandahåller ytterligare information när du begär åtkomst till ett Access-paket kan du använda stegen i [ändra godkännande-och beställarens information (för hands version) inställningar för ett Access-paket i Azure AD-hantering](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview) för att konfigurera information om beställaren (för hands version).
 
 1. Konfigurera livs cykel inställningar.
 

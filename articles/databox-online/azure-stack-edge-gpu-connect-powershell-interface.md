@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896197"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437765"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Hantera en Azure Stack Edge Pro GPU-enhet via Windows PowerShell
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Med Azure Stack Edge Pro-lösningen kan du bearbeta data och skicka dem via nätverket till Azure. I den här artikeln beskrivs några konfigurations-och hanterings uppgifter för din Azure Stack Edge Pro-enhet. Du kan använda Azure Portal, det lokala webb gränssnittet eller Windows PowerShell-gränssnittet för att hantera enheten.
 
@@ -121,7 +123,7 @@ Om Compute-rollen har kon figurer ATS på din enhet kan du också hämta beräkn
     - `FullLogCollection`: Den här parametern säkerställer att logg paketet innehåller alla beräknings loggar. Som standard innehåller logg paketet bara en delmängd av loggarna.
 
 
-## <a name="change-kubernetes-pod-and-service-subnets"></a>Ändra Kubernetes-Pod och tjänst under nät
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Ändra Kubernetes-pod och -tjänstundernät
 
 Som standard använder Kubernetes på din Azure Stack Edge-enhet undernät 172.27.0.0/16 och 172.28.0.0/16 för Pod respektive tjänst. Om dessa undernät redan används i nätverket kan du köra `Set-HcsKubeClusterNetworkInfo` cmdleten för att ändra dessa undernät.
 
