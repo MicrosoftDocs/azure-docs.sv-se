@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 13598925702aeca4a06135a910e3be540083a2b6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8a65619d65e1a3655d3ef8a295749a705e6a79e1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211761"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431286"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Förstå och använda SDK:er för Azure IoT Hub
 
@@ -51,8 +51,8 @@ Azure IoT Hub Device SDK för .NET:
 
 * Ladda ned från [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/).  Namn området är Microsoft. Azure. devices. clients, som innehåller IoT Hub enhets klienter (DeviceClient, ModuleClient).
 * [Källkod](https://github.com/Azure/azure-iot-sdk-csharp)
-* [API-referens](/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true)
-* [Modulreferens](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet&preserve-view=true)
+* [API-referens](/dotnet/api/microsoft.azure.devices)
+* [Modulreferens](/dotnet/api/microsoft.azure.devices.client.moduleclient)
 
 
 Azure IoT Hub Device SDK för Embedded C (ANSI C-C99):
@@ -153,7 +153,7 @@ Azure-etablering av enhets-och tjänst-SDK: er för C#:
 
 * Ladda ned från [Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) och [service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) från NuGet.
 * [Källkod](https://github.com/Azure/azure-iot-sdk-csharp/)
-* [API-referens](/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet&preserve-view=true)
+* [API-referens](/dotnet/api/microsoft.azure.devices.provisioning.client)
 
 Azure-etablering av enhets-och tjänst-SDK: er för C:
 

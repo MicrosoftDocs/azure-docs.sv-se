@@ -4,17 +4,17 @@ description: Lär dig hur du diagnostiserar och åtgärdar timeout-undantag för
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/06/2020
+ms.date: 03/05/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c8d35f7c666562022f503b2777f30f84193d0231
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340506"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440011"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Diagnostisera och Felsök Azure Cosmos DB timeout-undantag för .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,8 +39,24 @@ Alla asynkrona åtgärder i SDK har en valfri CancellationToken-parameter. Denna
 ## <a name="troubleshooting-steps"></a>Felsökningsanvisningar
 Följande lista innehåller kända orsaker och lösningar för timeout-undantag för begäran.
 
-### <a name="high-cpu-utilization"></a>Hög processor användning
+### <a name="high-cpu-utilization"></a>Hög CPU-belastning
 Hög processor användning är det vanligaste fallet. För optimal latens bör CPU-användningen vara ungefär 40 procent. Använd 10 sekunder som intervall för att övervaka maximal processor belastning (inte Genomsnittligt). CPU-toppar är vanligare med frågor över flera partitioner där det kan göra flera anslutningar för en enda fråga.
+
+Om felet innehåller `TransportException` information kan det även innehålla `CPU History` :
+
+```
+CPU history: 
+(2020-08-28T00:40:09.1769900Z 0.114), 
+(2020-08-28T00:40:19.1763818Z 1.732), 
+(2020-08-28T00:40:29.1759235Z 0.000), 
+(2020-08-28T00:40:39.1763208Z 0.063), 
+(2020-08-28T00:40:49.1767057Z 0.648), 
+(2020-08-28T00:40:59.1689401Z 0.137), 
+CPU count: 8)
+```
+
+* Om CPU-mätningarna är över 70% är tids gränsen troligt vis orsakad av processor belastningen. I det här fallet är lösningen att undersöka källan till hög processoranvändning och minska den, eller skala datorn till en större resursstorlek.
+* Om CPU-mätningarna inte sker var tionde sekund (t. ex. luckor eller mätningstider indikerar längre tid mellan måtten) är orsaken trådsvält. I det här fallet är lösningen att undersöka orsaken till trådsvälten (potentiellt låsta trådar) eller skala datorn/datorerna till en större resursstorlek.
 
 #### <a name="solution"></a>Lösning:
 Klient programmet som använder SDK bör skalas upp eller ut.
