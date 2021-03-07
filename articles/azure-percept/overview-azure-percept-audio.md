@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8f84fb6bf37a3d3b61f4cad2c89745447aa88a36
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179399"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426356"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Introduktion till Azure percept-ljud
 
@@ -36,26 +36,13 @@ Azure percept-ljud skickar ljud indata via tal stacken som körs på transport �
 
 Bearbetningen görs på följande sätt: 
 
-- Azure percept-ljud: utför balkning och eko som avbryter och bearbetar det inkommande ljudet för att optimera för tal och skicka till DK.  
+- Azure percept-ljud: fångar och konverterar ljudet och skickar det till DK-och audio-uttaget.
 
-- Azure percept DK: tal stacken utför nyckelordet upptäcka.  
+- Azure percept DK: tal stacken utför ljuset och avbryter och bearbetar det inkommande ljudet för att optimera för tal. Sedan utförs nyckelordet upptäcka.
 
 - Cloud: bearbetar naturliga språk kommandon och-fraser, nyckelords verifiering och omträning. 
 
 - Offline: om enheten är offline identifierar den nyckelorden och fångar telemetri för Internet anslutnings status. En ökad false-acceptans för nyckelordet upptäcka kan observeras eftersom nyckelords verifiering i molnet inte kan utföras. 
-
-<!---
-
-## How it works
-
-Azure Percept Audio passes the audio input to the Azure Percept DK carrier board in a hybrid edge-cloud manner. Specifically,
-
-- The Azure Percept Audio device: processes the incoming speech input to the clearest format by executing beam forming and echo cancellation befor sending the input to the Azure Percept DK. 
-- The Azure Percept DK uses edge processing to perform keyword spotting and then sends the relevant inputs to Azure speech services.
-- Cloud: Processing of natural language commands and phrases, in addition to keyword verification and retraining.
-- Offline: If the device is offline it will detect the keyword and capture telemetry that there is no internet connection at the time of the command. It will not be able to weed out false accepts since it cannot perform keyword verification.
-
--->
 
 ## <a name="getting-started"></a>Komma igång
 

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.author: chrande
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b31cb33e09158de5912132d0fb7bd31a62131181
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 15e94dac02770bf28aae4cbfc4e337cb68b8be40
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360521"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425333"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Använda Graph-utförar .NET-bibliotek för att utföra Mass åtgärder i Azure Cosmos DB Gremlin API
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -25,12 +25,12 @@ Till skillnad från när du skickar Gremlin-frågor till en databas, där komman
 
 ## <a name="bulk-operations-with-graph-data"></a>Massåtgärder med diagramdata
 
-[Bulk utförar-biblioteket](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet) innehåller ett `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` namn område för att tillhandahålla funktioner för att skapa och importera diagram objekt. 
+[Bulk utförar-biblioteket](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph) innehåller ett `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` namn område för att tillhandahålla funktioner för att skapa och importera diagram objekt. 
 
 Följande process beskriver hur datamigrering kan användas för en Gremlin API-container:
 1. Hämta poster från datakällan.
 2. Konstruera `GremlinVertex`- och `GremlinEdge`-objekt från de erhållna posterna och lägg till dem i en `IEnumerable`-datastruktur. I den här delen av programmet bör logik för att identifiera och lägga till relationer implementeras, om datakällan inte är en diagramdatabas.
-3. Använd [Graph BulkImportAsync-metoden](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?preserve-view=true&view=azure-dotnet) för att infoga diagramobjekt i samlingen.
+3. Använd [Graph BulkImportAsync-metoden](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync) för att infoga diagramobjekt i samlingen.
 
 Den här mekanismen förbättrar effektiviteten för datamigrering jämfört med att använda en Gremlin-klient. Den här förbättringen uppstår eftersom infogande av data med Gremlin kräver att programmet skickar en fråga åt gången som måste verifieras, utvärderas och sedan köras för att skapa data. Bulk utförar-biblioteket hanterar verifieringen i programmet och skickar flera graf-objekt i taget för varje nätverks förfrågan.
 
@@ -79,7 +79,7 @@ Mer information om parametrarna i bulk utförar-biblioteket finns i [avsnittet B
 
 Nyttolasten behöver instansieras till `GremlinVertex`- och `GremlinEdge`-objekt. Så här kan dessa objekt skapas:
 
-**Hörn** :
+**Hörn**:
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -93,7 +93,7 @@ v.AddProperty("customProperty", "value");
 v.AddProperty("partitioningKey", "value");
 ```
 
-**Kanter** :
+**Kanter**:
 ```csharp
 // Creating an edge
 GremlinEdge e = new GremlinEdge(
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Den här lagringsplatsen innehåller GraphBulkExecutor-exemplet med följande filer:
 
-Fil|Beskrivning
+Fil|Description
 ---|---
 `App.config`|Det här är där program- och databasspecifika parametrar anges. Den här filen ska först ändras för att ansluta till måldatabasen och -samlingarna.
 `Program.cs`| Den här filen innehåller logiken bakom skapandet av `DocumentClient` samlingen, hantering av rensningar och sändning av Mass utförar-begäranden.
@@ -160,4 +160,4 @@ Inställning|Beskrivning
 
 * Information om NuGet-paket och viktig information om utförar .NET-bibliotek finns i [UTFÖRAR SDK-information](sql-api-sdk-bulk-executor-dot-net.md). 
 * Kolla in [prestanda tipsen](./bulk-executor-dot-net.md#performance-tips) för att ytterligare optimera användningen av Mass utförar.
-* Läs [referensartikeln om BulkExecutor.Graph](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?preserve-view=true&view=azure-dotnet) för mer information om de klasser och metoder som definieras i den här namnrymden.
+* Läs [referensartikeln om BulkExecutor.Graph](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph) för mer information om de klasser och metoder som definieras i den här namnrymden.

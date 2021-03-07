@@ -4,18 +4,30 @@ description: Lär dig hur du implementerar en status övervakare med Durable Fun
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 8ef32ecfb6f69b71d29578d3b8314f568fd9386a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028428"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431082"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Övervaka scenario i Durable Functions – väder vakts exempel
 
 Övervaknings mönstret avser en flexibel *återkommande* process i ett arbets flöde – till exempel avsökningen tills vissa villkor är uppfyllda. I den här artikeln beskrivs ett exempel som använder [Durable Functions](durable-functions-overview.md) för att implementera övervakning.
 
-[!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
+## <a name="prerequisites"></a>Förutsättningar
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+* [Slutför snabb starts artikeln](durable-functions-create-first-csharp.md)
+* [Klona eller hämta exempel projektet från GitHub](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [Slutför snabb starts artikeln](quickstart-js-vscode.md)
+* [Klona eller hämta exempel projektet från GitHub](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/javascript)
+
+---
 
 ## <a name="scenario-overview"></a>Översikt över scenario
 
@@ -72,9 +84,6 @@ Här är den kod som implementerar funktionen:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Vi har en annan självstudie för övervaknings mönstret på python, se den [här](durable-functions-monitor-python.md).
-
 ---
 
 Den här Orchestrator-funktionen utför följande åtgärder:
@@ -105,9 +114,6 @@ Här är implementeringen.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Vi har en annan självstudie för övervaknings mönstret på python, se den [här](durable-functions-monitor-python.md).
-
 ---
 
 ### <a name="e3_sendgoodweatheralert-activity-function"></a>Funktionen E3_SendGoodWeatherAlert aktivitet
@@ -130,9 +136,6 @@ Dess *function.jspå* är enkelt:
 Här är koden som skickar SMS-meddelandet:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
-
-# <a name="python"></a>[Python](#tab/python)
-Vi har en annan självstudie för övervaknings mönstret på python, se den [här](durable-functions-monitor-python.md).
 
 ---
 

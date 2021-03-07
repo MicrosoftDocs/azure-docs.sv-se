@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690540"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430198"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database trafikmigrering till nyare gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,18 @@ Den senaste informationen kommer att behållas i tabellen [Azure SQL Database Ga
 ## <a name="status-updates"></a>Status uppdateringar
 
 # <a name="in-progress"></a>[Pågår](#tab/in-progress-ip)
+
+## <a name="april-2021"></a>April 2021
+Nya SQL-gatewayer läggs till i följande regioner:
+- Norge, öst: 51.120.96.33
+- Asien, sydöstra: 13.67.16.193
+- Södra Afrika: 102.133.152.32
+- Republiken Korea: 52.231.151.96
+- Norra centrala USA: US 52.162.105.9
+- Sydöstra Australien: 13.77.49.32 
+
+Dessa SQL-gatewayer ska börja acceptera kund trafik den 5 april 2021.
+
 ## <a name="march-2021"></a>Mars 2021
 Följande SQL-gatewayer i flera regioner håller på att inaktive ras:
 

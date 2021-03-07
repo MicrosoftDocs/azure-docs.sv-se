@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: e7714dcc3e14e3659ca1943507d55d20dfb28fa6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4a4705647b90d29f47e37b88531f3432c6a2f448
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99213989"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434554"
 ---
 När du utvecklar för macOS finns det tre tal-SDK: er tillgängliga.
 
@@ -18,7 +18,7 @@ När du utvecklar för macOS finns det tre tal-SDK: er tillgängliga.
 - Python Speech SDK är tillgänglig som en PyPI-modul
 
 > [!TIP]
-> Mer information om hur du använder mål-C tal-SDK med Swift finns i <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Importera mål- <span class="docon docon-navigate-external x-hidden-focus"></span> c till SWIFT </a>.
+> Mer information om hur du använder mål-C tal-SDK med Swift finns i <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Importera mål-c till SWIFT </a>.
 
 ### <a name="system-requirements"></a>Systemkrav
 
@@ -28,7 +28,7 @@ När du utvecklar för macOS finns det tre tal-SDK: er tillgängliga.
 
 :::row:::
     :::column span="3":::
-        MacOS CocoaPod-paketet finns tillgängligt för hämtning och användning med <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode-9.4.1 (eller senare) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Integrated Development Environment (IDE). Börja <a href="https://aka.ms/csspeech/macosbinary" target="_blank">med att hämta binärfilen <span class="docon docon-navigate-external x-hidden-focus"></span> CocoaPod </a>. Extrahera Pod i samma katalog för den avsedda användningen, skapa en *Podfile* och lista `pod` som `target` .
+        MacOS CocoaPod-paketet finns tillgängligt för hämtning och användning med <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode-9.4.1 (eller senare) </a> Integrated Development Environment (IDE). Börja <a href="https://aka.ms/csspeech/macosbinary" target="_blank">med att hämta binärfilen CocoaPod </a>. Extrahera Pod i samma katalog för den avsedda användningen, skapa en *Podfile* och lista `pod` som `target` .
     :::column-end:::
     :::column:::
         <br>
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin. Mac visar hela macOS SDK för .NET-utvecklare för att bygga inbyggda Mac-program med C#. Mer information finns i <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+        Xamarin. Mac visar hela macOS SDK för .NET-utvecklare för att bygga inbyggda Mac-program med C#. Mer information finns i <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -71,5 +71,5 @@ end
 
 #### <a name="additional-resources"></a>Ytterligare resurser
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS tal SDK snabb start mål – C källkod <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS tal SDK snabb starts källa kod <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS tal SDK snabb start mål – C källkod </a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS tal SDK snabb starts källa kod </a>

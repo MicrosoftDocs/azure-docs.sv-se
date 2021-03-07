@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: c3023c32f2a31235f5a733639a548c190197b413
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2ac8633e48c98b9e1d778ac1d07835683e00e1c0
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981127"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424486"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Bild taggar för Azure Cognitive Services container och viktig information
 
@@ -154,21 +154,26 @@ Du hittar en behållar avbildning från [Custom Speech till text][sp-cstt] i `mc
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
-Versions anmärkning för `2.9.0-amd64` :
+Versions anmärkning för `2.10.0-amd64` :
 
 **Funktion**
-* Mer fel information om problem vid hämtning av anpassade modeller efter ID.
-* Hypotes stöds som standard i konversations resultat.
+* Uppgradera till de senaste modellerna.
 
 Observera att på grund av listan över inkluderade fraser har storleken på behållar avbildningen ökat.
 
 | Bildtaggar                    | Kommentarer | Sammandrag                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:bb1707cadba7add464a86df46d7d340c699692fe8df8d2222816189f06447a1b`|
-| `2.9.0-amd64`                 |       | `sha256:bb1707cadba7add464a86df46d7d340c699692fe8df8d2222816189f06447a1b`|
+| `latest`                      |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
+| `2.10.0-amd64`                |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
 
 
 # <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
+Versions anmärkning för `2.9.0-amd64` :
+
+**Funktion**
+* Mer fel information om problem vid hämtning av anpassade modeller efter ID.
+* Hypotes stöds som standard i konversations resultat.
 
 Versions anmärkning för `2.7.0-amd64` :
 
@@ -209,6 +214,7 @@ Versions anmärkning för `2.5.0-amd64` :
 
 | Bildtaggar                    | Kommentarer               |
 |-------------------------------|:--------------------|
+| `2.9.0-amd64`                 |                     |
 | `2.7.0-amd64`                 |                     |
 | `2.6.0-amd64`                 |                     |
 | `2.5.0-amd64`                 |   första GA-versionen    |
@@ -222,18 +228,23 @@ Du hittar den [anpassade text till tal-][sp-ctts] behållar avbildningen i `mcr.
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
+Versions anmärkning för `1.12.0-amd64` :
+
+**Funktion**
+* Uppgradera till de senaste modellerna.
+
+| Bildtaggar                    | Kommentarer | Sammandrag                                                                   |
+|-------------------------------|:------|:-------------------------------------------------------------------------|
+| `latest`                      |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
+| `1.12.0-amd64`                |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
+
+
+# <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
 Versions anmärkning för `1.11.0-amd64` :
 
 **Funktion**
 * Mer fel information om problem vid hämtning av anpassade modeller efter ID.
-
-| Bildtaggar                    | Kommentarer | Sammandrag                                                                   |
-|-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:a4a5758a368bc56590eb1c1552fa2bda54f27be9cb0f491468388b9f90cb9110` |
-| `1.11.0-amd64`                |       | `sha256:a4a5758a368bc56590eb1c1552fa2bda54f27be9cb0f491468388b9f90cb9110` |
-
-
-# <a name="previous-version"></a>[Tidigare version](#tab/previous)
 
 Versions anmärkning för `1.9.0-amd64` :
 
@@ -251,6 +262,7 @@ Versions anmärkning för `1.7.0-amd64` :
 
 | Bildtaggar                    | Kommentarer               |
 |-------------------------------|:--------------------|
+| `1.11.0-amd64`                |                     |
 | `1.9.0-amd64`                 |                     |
 | `1.8.0-amd64`                 |                     |
 | `1.7.0-amd64`                 |   första GA-versionen    |
@@ -265,18 +277,173 @@ Eftersom tal-till-text v-2.5.0 stöds stöds bilder i regionen *USA, amerikanska
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
-Versions anmärkning för `2.9.0-amd64-<locale>` :
+Versions anmärkning för `2.10.0-amd64-<locale>` :
 
 **Funktion**
-* Mer fel information om problem vid hämtning av anpassade modeller efter ID.
-* Hypotes stöds som standard i konversations resultat.
+* Uppgradera till de senaste modellerna.
 
 Observera att på grund av listan över inkluderade fraser har storleken på behållar avbildningen ökat. 
 
 | Bildtaggar                    | Kommentarer                                                                                                |
 |-------------------------------|:-----------------------------------------------------------------------------------------------------|
 | `latest`                      | Behållar avbildning med `en-US` språkvarianten.                                                             |
-| `2.9.0-amd64-<locale>`        | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.9.0-amd64-en-us`. |
+| `2.10.0-amd64-<locale>`       | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.10.0-amd64-en-us`.|
+
+Den här behållaren har följande tillgängliga språk.
+
+| Språk för v-2.10.0          | Kommentarer                                    | Sammandrag                                                                    |
+|-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
+| `ar-ae`                     | Behållar avbildning med `ar-AE` språkvarianten. | `sha256:f81f6c53e8ca9c3ae10c335ad45054cea571eca2f4ab32e44e13445936ce3f17` |
+| `ar-bh`                     | Behållar avbildning med `ar-BH` språkvarianten. | `sha256:da276dc1b481c002a9b3d2944e190af799175b5a2eabafab87153e22529bdab1` |
+| `ar-eg`                     | Behållar avbildning med `ar-EG` språkvarianten. | `sha256:c2ae166526cb0c5d481b537daa3accd379c4b1bf51fce6d85ac20591e7e0b4c0` |
+| `ar-iq`                     | Behållar avbildning med `ar-IQ` språkvarianten. | `sha256:7d4a6cb1d9d66f6bd62f90b82000ef811f8a3dd58b03641b6c51ad6f0f4fd4dc` |
+| `ar-jo`                     | Behållar avbildning med `ar-JO` språkvarianten. | `sha256:7489a0ed06fdf1da1d25e3211f5a66abe420babee148961a2ffe8cdbd82564a7` |
+| `ar-kw`                     | Behållar avbildning med `ar-KW` språkvarianten. | `sha256:f81f6c53e8ca9c3ae10c335ad45054cea571eca2f4ab32e44e13445936ce3f17` |
+| `ar-lb`                     | Behållar avbildning med `ar-LB` språkvarianten. | `sha256:478e4575073660e9153811f58e74815f62395ee2ebd868d448fbc3a5e16442be` |
+| `ar-om`                     | Behållar avbildning med `ar-OM` språkvarianten. | `sha256:025dcbd6a7d1912812b2556ffd7a16ad2158be6c3746e2822f2b97f460aa685b` |
+| `ar-qa`                     | Behållar avbildning med `ar-QA` språkvarianten. | `sha256:f81f6c53e8ca9c3ae10c335ad45054cea571eca2f4ab32e44e13445936ce3f17` |
+| `ar-sa`                     | Behållar avbildning med `ar-SA` språkvarianten. | `sha256:f81f6c53e8ca9c3ae10c335ad45054cea571eca2f4ab32e44e13445936ce3f17` |
+| `ar-sy`                     | Behållar avbildning med `ar-SY` språkvarianten. | `sha256:5af93722e70e445b3a4102bf621e6d5bb5854bcc99f60d4590e23fc24e50297e` |
+| `bg-bg`                     | Behållar avbildning med `bg-BG` språkvarianten. | `sha256:a9402f03b02150288d51e03ec97b8efb98ad6c444df3ab50a3b4ce1129d02d86` |
+| `ca-es`                     | Behållar avbildning med `ca-ES` språkvarianten. | `sha256:122df16df46a84a14b28e4ff406a047947fdc10a65b40482438beee55579f687` |
+| `cs-cz`                     | Behållar avbildning med `cs-CZ` språkvarianten. | `sha256:7b7d7ef798a0210b8c33a3a201ba149e1264cc7ac6ddaf986721d86e91e5e444` |
+| `da-dk`                     | Behållar avbildning med `da-DK` språkvarianten. | `sha256:ba8dd6564939eda7b81b1a4c13ad31672927528dd146698fce10c12d21f647a9` |
+| `de-de`                     | Behållar avbildning med `de-DE` språkvarianten. | `sha256:d0fa9bc409238ebdab0a15174b3169c99cbad42323087ea589bb7812a0550149` |
+| `el-gr`                     | Behållar avbildning med `el-GR` språkvarianten. | `sha256:4c4a115ae8daf53e344c1c4f838ebc68c3de2dae4d1f1aceb021425807d96ac0` |
+| `en-au`                     | Behållar avbildning med `en-AU` språkvarianten. | `sha256:f18c31f2bc9e655b93f71049b40dae2213c7417169f7a4e42f603d5891857b2a` |
+| `en-ca`                     | Behållar avbildning med `en-CA` språkvarianten. | `sha256:67f02cdb2285c2891aff8ff8d35ee20bad11f2d1cc1d67c461185466edefa5d6` |
+| `en-gb`                     | Behållar avbildning med `en-GB` språkvarianten. | `sha256:ed606155b5f9b6c6dd68c0c1f5e48a0735bc4a5ded872655c0ef7de2bf084312` |
+| `en-hk`                     | Behållar avbildning med `en-HK` språkvarianten. | `sha256:2fb6a64aaea5efdb2cac8bda2c7d437638fca93aa24268a45f2a395285e022df` |
+| `en-ie`                     | Behållar avbildning med `en-IE` språkvarianten. | `sha256:9ddb64e481cec6449dfc48091092247fa401fcd48ab1d955c5186565f903bd34` |
+| `en-in`                     | Behållar avbildning med `en-IN` språkvarianten. | `sha256:060a87ae817a82486966a4f10d1e872d30370ea58e297ca4c2018d0e034bfbe5` |
+| `en-nz`                     | Behållar avbildning med `en-NZ` språkvarianten. | `sha256:ece4299bd7f02fe4403b53320cf55bb2e3ab65da3d94bfea09124c14955a3de3` |
+| `en-ph`                     | Behållar avbildning med `en-PH` språkvarianten. | `sha256:6b47286a882122de8114942d426cbb8b4f1aded318032317b03a6b68237372e0` |
+| `en-sg`                     | Behållar avbildning med `en-SG` språkvarianten. | `sha256:41fa2caec6a732736f75b682e0410b89ba5e12307cd6e2652986a2676a5dd560` |
+| `en-us`                     | Behållar avbildning med `en-US` språkvarianten. | `sha256:80ae57602d8e66c6ed0366327a87c0ed5717b44c596b981a2b5be09c7f5a4c8a` |
+| `en-za`                     | Behållar avbildning med `en-ZA` språkvarianten. | `sha256:705c125e5105b6eed37d745e2092d55ca8b6ccff22f4eeac9c2df958f36c72e9` |
+| `es-ar`                     | Behållar avbildning med `es-AR` språkvarianten. | `sha256:67f794f16fdac457f0e0a84192e588611adb43777635b14706754c19fd90b130` |
+| `es-bo`                     | Behållar avbildning med `es-BO` språkvarianten. | `sha256:94f755e70043dbe011424a0f756970f1d01ec51cb95a469531e3a6b0aa84aed1` |
+| `es-cl`                     | Behållar avbildning med `es-CL` språkvarianten. | `sha256:c42eb56cbb48e0957f73793f83435c705ed0f857579acb020394025abdd760e2` |
+| `es-co`                     | Behållar avbildning med `es-CO` språkvarianten. | `sha256:7cfacb01fdb80bd1b5e68d16f9e2741237ae4ec1a41a9121aed1be2622fc9f3f` |
+| `es-cr`                     | Behållar avbildning med `es-CR` språkvarianten. | `sha256:7dbe5becdf4f3264764eb596d61781a2b2ee54bf9552bbb8f4db5e7fcf75d8f8` |
+| `es-cu`                     | Behållar avbildning med `es-CU` språkvarianten. | `sha256:a1064b4498b7c5972a8a79ea84b78c2e1e7698c039eab49fd08963d11798ac61` |
+| `es-do`                     | Behållar avbildning med `es-DO` språkvarianten. | `sha256:03cd0f0bae11df645dff52b15746e31493522db5399a18878df765b6aace0a80` |
+| `es-ec`                     | Behållar avbildning med `es-EC` språkvarianten. | `sha256:3dc8d3f0842089edde4703abe8df3a219fb177afd5ac370c5b04c85abae4ca15` |
+| `es-es`                     | Behållar avbildning med `es-ES` språkvarianten. | `sha256:7b0927c3b60bf38e995c57a27843680d9062d88611c49378dda8f71a4602f7a4` |
+| `es-gt`                     | Behållar avbildning med `es-GT` språkvarianten. | `sha256:72e51683124c76255ec9280cd0641d6e44633199bda769ddb31336362f6e641d` |
+| `es-hn`                     | Behållar avbildning med `es-HN` språkvarianten. | `sha256:a948970cd11e2597ba150291b2dcc72f2d59ad4f693933ef1f72c210f19fb663` |
+| `es-mx`                     | Behållar avbildning med `es-MX` språkvarianten. | `sha256:b773cd7bbb5eba548bc468c2f6d50732e2553c5f8ba4b955404140def4c3f3fd` |
+| `es-ni`                     | Behållar avbildning med `es-NI` språkvarianten. | `sha256:db73492bd83597c1fa47e7c4ab5eedbc1afa7662088fb03df2aaa5b737b5f837` |
+| `es-pa`                     | Behållar avbildning med `es-PA` språkvarianten. | `sha256:d3a86e840438eb2278d0bbfdf1fc98a48fd744fb8c92118f6d3d6298c45a2b96` |
+| `es-pe`                     | Behållar avbildning med `es-PE` språkvarianten. | `sha256:b60dae65bf1fe20e698ce32811373473d811bc363d4db093b643238f71461d4c` |
+| `es-pr`                     | Behållar avbildning med `es-PR` språkvarianten. | `sha256:2a81a9d1b32c546ec03caeeaeddb1b26e5e00747c691f5be62f9d23c5ba84377` |
+| `es-py`                     | Behållar avbildning med `es-PY` språkvarianten. | `sha256:c4b91cd5e017060a82a34f83d3f62a16b856313c02fea048d300abf149aadf67` |
+| `es-sv`                     | Behållar avbildning med `es-SV` språkvarianten. | `sha256:2a5bddc5355d6eb0b101423c733d6cf067bafd0e152b63bf6c4dcd943ff561f3` |
+| `es-us`                     | Behållar avbildning med `es-US` språkvarianten. | `sha256:f60037ad8dd2b40f588608a5eace8b0b9f3171d05d39a02c2dd1afe98ea7e18d` |
+| `es-uy`                     | Behållar avbildning med `es-UY` språkvarianten. | `sha256:e302da84ee0264221f0e663470f579348664ddef37050bc0fe57c620264bae06` |
+| `es-ve`                     | Behållar avbildning med `es-VE` språkvarianten. | `sha256:b6a79de315c73ec3301aa0cfa7ed920abbf8b6f80fd3d42637b785ee97a85584` |
+| `et-ee`                     | Behållar avbildning med `et-EE` språkvarianten. | `sha256:2de931f1e6f38cdc2f54a08bc1e64a13876326d57784f0ad1c50384381790b05` |
+| `fi-fi`                     | Behållar avbildning med `fi-FI` språkvarianten. | `sha256:47c1b3cceb8a6f0b2ea16160ba8c503d39ac77f44c254dc880b5e17d2aba4a4c` |
+| `fr-ca`                     | Behållar avbildning med `fr-CA` språkvarianten. | `sha256:bf40fbfce8241e14656df47178d7b57f19022cc6b2598de5b337c6710eba99b6` |
+| `fr-fr`                     | Behållar avbildning med `fr-FR` språkvarianten. | `sha256:93e0d58ed07d637c3e394ce80ee93524697063cb693da2aed9013660b2543702` |
+| `ga-ie`                     | Behållar avbildning med `ga-IE` språkvarianten. | `sha256:1d239549ecf7f6bef5f9d258f5fd34f81fb0e5fff89c66dfec769e912b1cbf7b` |
+| `gu-in`                     | Behållar avbildning med `gu-IN` språkvarianten. | `sha256:596f42a366a61d1cf05dedb81a4f373cfae2dc04e8bec3479bfec121417dd4fb` |
+| `hi-in`                     | Behållar avbildning med `hi-IN` språkvarianten. | `sha256:fcdad9382db8fc7ff0a7ad59fa9fd4cd319ca258edff869b66d76031bcfee640` |
+| `hr-hr`                     | Behållar avbildning med `hr-HR` språkvarianten. | `sha256:533a6420a4a98d4a2c947d26511e90651fc341c96b90a02615b38ce2a799f058` |
+| `hu-hu`                     | Behållar avbildning med `hu-HU` språkvarianten. | `sha256:ec6b95c03d9d5030457c4a9e1fd8e07fbae24ec50b0bb3b2a95eadcd81a1d136` |
+| `it-it`                     | Behållar avbildning med `it-IT` språkvarianten. | `sha256:67cc80b8159122c530913505fed0f7bc4edfd3d77b25bc34b6c6157d57178728` |
+| `ja-jp`                     | Behållar avbildning med `ja-JP` språkvarianten. | `sha256:2b1f3b4220f8a7a44c8339e4c6a4b9a55f7583b5540f045997c9cab8364facb2` |
+| `ko-kr`                     | Behållar avbildning med `ko-KR` språkvarianten. | `sha256:4703fd5e1c5020d5c58b1adde30e5209b1e6f21d0636bac11013dcf8da9340d3` |
+| `lt-lt`                     | Behållar avbildning med `lt-LT` språkvarianten. | `sha256:58c2bb9cf2ead05fc77b3962ee7cef0e0eec33e32697757f65ae8925d55f87b8` |
+| `lv-lv`                     | Behållar avbildning med `lv-LV` språkvarianten. | `sha256:dcdeed91559fb7e1b7d2ea70215ec373a59afa6b67468d13316af109314ca384` |
+| `mr-in`                     | Behållar avbildning med `mr-IN` språkvarianten. | `sha256:06745d241654571428c219c38cd43b56e92b97eeb5aa6656ac726da79460afc1` |
+| `mt-mt`                     | Behållar avbildning med `mt-MT` språkvarianten. | `sha256:3c85f1057b5942c5d2094055e7b9ecc6ef995905bbdabfad48bfefb805f436cf` |
+| `nb-no`                     | Behållar avbildning med `nb-NO` språkvarianten. | `sha256:313f2fb20b8c2a18bd6ce5e7877899310575d390a2c3c54cd2519d0538393201` |
+| `nl-nl`                     | Behållar avbildning med `nl-NL` språkvarianten. | `sha256:7c897fdb38661eb60f576c0a1a9d69bab9e44e7a70e8136fa3d12531cde0e4d7` |
+| `pl-pl`                     | Behållar avbildning med `pl-PL` språkvarianten. | `sha256:9bf17aa5d4c577a440c770b6a63b66037a201cbea0202af4856257fde0548f0e` |
+| `pt-br`                     | Behållar avbildning med `pt-BR` språkvarianten. | `sha256:08f0bb7f1454c5d6c740d218013f47c54bed17701e05c239364f5b2eba07692e` |
+| `pt-pt`                     | Behållar avbildning med `pt-PT` språkvarianten. | `sha256:0643e1c342cf6d526620a46b3435c130702b9320a6075ede1351810956ed6ae9` |
+| `ro-ro`                     | Behållar avbildning med `ro-RO` språkvarianten. | `sha256:139f83900395a0d1af99dc90e661238ca2fa0bc06c74cbac28631ba0399345bf` |
+| `ru-ru`                     | Behållar avbildning med `ru-RU` språkvarianten. | `sha256:1c38423ccd1b8042d43eabe013f5b6989556610ada803b4367848b58c4832a76` |
+| `sk-sk`                     | Behållar avbildning med `sk-SK` språkvarianten. | `sha256:2b33e5d5ae0cc46bd9a4ae860fe22f088903d4978b287df4eff6ae63b91566f3` |
+| `sl-si`                     | Behållar avbildning med `sl-SI` språkvarianten. | `sha256:40a667412882bfe8073abf376fe94378d7c364e7b22aee410d7b6e99d65e55be` |
+| `sv-se`                     | Behållar avbildning med `sv-SE` språkvarianten. | `sha256:d55464b46585fcfd86c420a30d11b10f3b5c9c0d70390b75f40fe9dbbeeefa99` |
+| `ta-in`                     | Behållar avbildning med `ta-IN` språkvarianten. | `sha256:06f3f986ff92f16e963771da485695ec9e1da482b10f35babb2d54e260da23e7` |
+| `te-in`                     | Behållar avbildning med `te-IN` språkvarianten. | `sha256:0566062d116cb06c3eb365dce6e86d9c46ce37293b11ef71c4e219c3a11ca559` |
+| `th-th`                     | Behållar avbildning med `th-TH` språkvarianten. | `sha256:0fa6da985d839919fedb503625383dcda04de6bd39558f2f72b64410675b8f85` |
+| `tr-tr`                     | Behållar avbildning med `tr-TR` språkvarianten. | `sha256:88418775c8a8df79aa52de03091b938b7a4efc708907556dfbe3e1d686050e81` |
+| `zh-cn`                     | Behållar avbildning med `zh-CN` språkvarianten. | `sha256:9087a08cc455772515f5775a788cdde35d7f5bbe3aa3ba34ae99573fd87b29a1` |
+| `zh-hk`                     | Behållar avbildning med `zh-HK` språkvarianten. | `sha256:372e1c256520e9ee84c4c400eae935c1d6b1d59adb2be4c4dbc56439db069ba0` |
+| `zh-tw`                     | Behållar avbildning med `zh-TW` språkvarianten. | `sha256:8406a3be34530c7d654d1dfa1c593dd51b8946b480fe80a100e599e86385dc2b` |
+
+
+# <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
+Versions anmärkning för `2.9.0-amd64-<locale>` :
+
+**Funktion**
+* Mer fel information om problem vid hämtning av anpassade modeller efter ID.
+* Hypotes stöds som standard i konversations resultat.
+
+Versions anmärkning för `2.7.0-amd64-<locale>` :
+
+**Funktioner**
+* Stöd för följande nya språk:
+    * ar-BH, ar-sweetiq, ar-Jo, ar-LB, ar-om, ar-sy
+    * bg-bg
+    * el-gr
+    * en-hk, en-IE, en-pH, en-TG, en-za
+    * ES-p.a., es-es, ES-cl, es-co, ES-CR, ES-Cu, ES--, ES-EG, ES-gt, ES-, ES-, ES-, ES-uy, ES-sa, ES-US, ES-PR, ES-sa, ES-USA, ES-, ES-ve
+    * et-ee
+    * ga-ie
+    * hr-hr
+    * hu-hu
+    * lt-lt
+    * lv-lv
+    * MT-MT
+    * ro-ro
+    * sk-sk
+    * SL-SL
+* Interpunktion är aktiverat som standard.
+
+Observera att på grund av listan över inkluderade fraser har storleken på behållar avbildningen ökat. 
+
+Versions anmärkning för `2.6.0-amd64-<locale>` :
+
+**Funktioner**
+* Uppgraderas till de senaste modellerna och migreras fullständigt till .NET 3,1
+* Stöd för phraselist v2
+* Fras listorna stöds i följande språk:
+    * en – au
+    * en-ca
+    * en-GB
+    * en-in
+    * sv-se
+    * zh-cn
+* Stöd för nya nationella inställningar `cs-CZ` 
+    * Versaler och skiljetecken stöds inte för närvarande.
+
+**Fixe**
+* Åtgärdar ett problem där Tillförlitlighets poängen alltid är 1 i Diarization-läge
+* Migrerad Använd TextAnalytics 3,0-API: et
+
+Observera att på grund av listan över inkluderade fraser har storleken på behållar avbildningen ökat. 
+
+Versions anmärkning för `2.5.0-amd64-<locale>` :
+
+**Funktioner**
+* Stöd för Azures moln för amerikanska myndigheter
+
+**Fixe**
+* Åtgärdar ett problem med att köra som en icke-rot användare i Diarization-läge
+
+| Bildtaggar                  | Kommentarer                                    |
+|-----------------------------|:-----------------------------------------|
+| `2.9.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.9.0-amd64-en-us`. |
+| `2.7.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.7.0-amd64-en-us`. |
+| `2.6.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.6.0-amd64-en-us`. |
+| `2.5.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.5.0-amd64-en-us`. |
+
 
 Den här behållaren har följande tillgängliga språk.
 
@@ -364,70 +531,6 @@ Den här behållaren har följande tillgängliga språk.
 | `zh-cn`                     | Behållar avbildning med `zh-CN` språkvarianten. | `sha256:49eeee500e07ffd3056ba8aab314d6c8458399a8c0d6d44ce1d9aebf50ddca06` |
 | `zh-hk`                     | Behållar avbildning med `zh-HK` språkvarianten. | `sha256:5a3251ad6df9565d44dd422de4fa0d83a9b50c8a80ec15213403482940d2b2fc` |
 | `zh-tw`                     | Behållar avbildning med `zh-TW` språkvarianten. | `sha256:2c45dd90b0c19d7f12b1be44d3e85fe2603cea2389c2877b79d6de351839cf6a` |
-
-
-# <a name="previous-version"></a>[Tidigare version](#tab/previous)
-
-Versions anmärkning för `2.7.0-amd64-<locale>` :
-
-**Funktioner**
-* Stöd för följande nya språk:
-    * ar-BH, ar-sweetiq, ar-Jo, ar-LB, ar-om, ar-sy
-    * bg-bg
-    * el-gr
-    * en-hk, en-IE, en-pH, en-TG, en-za
-    * ES-p.a., es-es, ES-cl, es-co, ES-CR, ES-Cu, ES--, ES-EG, ES-gt, ES-, ES-, ES-, ES-uy, ES-sa, ES-US, ES-PR, ES-sa, ES-USA, ES-, ES-ve
-    * et-ee
-    * ga-ie
-    * hr-hr
-    * hu-hu
-    * lt-lt
-    * lv-lv
-    * MT-MT
-    * ro-ro
-    * sk-sk
-    * SL-SL
-* Interpunktion är aktiverat som standard.
-
-Observera att på grund av listan över inkluderade fraser har storleken på behållar avbildningen ökat. 
-
-Versions anmärkning för `2.6.0-amd64-<locale>` :
-
-**Funktioner**
-* Uppgraderas till de senaste modellerna och migreras fullständigt till .NET 3,1
-* Stöd för phraselist v2
-* Fras listorna stöds i följande språk:
-    * en – au
-    * en-ca
-    * en-GB
-    * en-in
-    * sv-se
-    * zh-cn
-* Stöd för nya nationella inställningar `cs-CZ` 
-    * Versaler och skiljetecken stöds inte för närvarande.
-
-**Fixe**
-* Åtgärdar ett problem där Tillförlitlighets poängen alltid är 1 i Diarization-läge
-* Migrerad Använd TextAnalytics 3,0-API: et
-
-Observera att på grund av listan över inkluderade fraser har storleken på behållar avbildningen ökat. 
-
-Versions anmärkning för `2.5.0-amd64-<locale>` :
-
-**Funktioner**
-* Stöd för Azures moln för amerikanska myndigheter
-
-**Fixe**
-* Åtgärdar ett problem med att köra som en icke-rot användare i Diarization-läge
-
-| Bildtaggar                  | Kommentarer                                    |
-|-----------------------------|:-----------------------------------------|
-| `2.7.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.7.0-amd64-en-us`. |
-| `2.6.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.6.0-amd64-en-us`. |
-| `2.5.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `2.5.0-amd64-en-us`. |
-
-
-Den här behållaren har följande tillgängliga språk.
 
 | Språk för v-2.7.0           | Kommentarer                                    | Sammandrag                                                                   |
 |-----------------------------|:-----------------------------------------|:-------------------------------------------------------------------------|
@@ -610,15 +713,130 @@ Den här behållar avbildningen har följande Taggar tillgängliga. Du kan ocks�
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
+Versions anmärkning för `1.12.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+* Uppgradera till de senaste modellerna.
+
+| Bildtaggar                                  | Kommentarer                                                                                                         |
+|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
+| `latest`                                    | Behållar avbildning med `en-US` språket och `en-US-AriaRUS` rösten.                                            | 
+| `1.12.0-amd64-<locale-and-voice>`           | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.12.0-amd64-en-us-ariarus`. |
+
+| Språk för v-1.12.0                         | Kommentarer                                                                      | Sammandrag                         |
+|---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
+| `ar-eg-hoda`                                | Behållar avbildning med `ar-EG` språket och `ar-EG-Hoda` rösten.            | `sha256:987e6b3e9e13570eb29117e87829a4905b35c712a0f36429dd6404793af31627` |
+| `ar-sa-naayf`                               | Behållar avbildning med `ar-SA` språket och `ar-SA-Naayf` rösten.           | `sha256:7d1d3c337b7e3bdc6ae2b3e074828ffc3c64ffc0ab94abcb89896e623148d963` |
+| `bg-bg-ivan`                                | Behållar avbildning med `bg-BG` språket och `bg-BG-Ivan` rösten.            | `sha256:cf01bea4f1f6b7112871da84fd82fb7e6de106c11cc933f21131385173f1da09` |
+| `ca-es-herenarus`                           | Behållar avbildning med `ca-ES` språket och `ca-ES-HerenaRUS` rösten.       | `sha256:d6060a1e16cbe40990677b3c46f14dc619ee6887d39a4af1cac51fba2baca9a9` |
+| `cs-cz-jakub`                               | Behållar avbildning med `cs-CZ` språket och `cs-CZ-Jakub` rösten.           | `sha256:5033185bd60257033989fc4ff124c69b1dd02d5b99b79ff5c52ae84572095693` |
+| `da-dk-hellerus`                            | Behållar avbildning med `da-DK` språket och `da-DK-HelleRUS` rösten.        | `sha256:ac9655166f8181db2d0e6684cc3a5b6e089da788f17c78067af2cf061c8db660` |
+| `de-at-michael`                             | Behållar avbildning med `de-AT` språket och `de-AT-Michael` rösten.         | `sha256:90d222aa43c3efac04b9bc3e746b9ebea446cc16c3bdbb471b81065edfbc3023` |
+| `de-ch-karsten`                             | Behållar avbildning med `de-CH` språket och `de-CH-Karsten` rösten.         | `sha256:0c08c10f559c97eda9a0a3f8527f8b05810a53e8a3fd2b8e9f2ab35f587d6c46` |
+| `de-de-heddarus`                            | Behållar avbildning med `de-DE` språket och `de-DE-Hedda` rösten.           | `sha256:bf54713a1691f2378cf701a1f68ed0f4d32adeab25b2cbd9493f753d56d13e39` |
+| `de-de-hedda`                               | Behållar avbildning med `de-DE` språket och `de-DE-Hedda` rösten.           | `sha256:bf54713a1691f2378cf701a1f68ed0f4d32adeab25b2cbd9493f753d56d13e39` |
+| `de-de-stefan-apollo`                       | Behållar avbildning med `de-DE` språket och `de-DE-Stefan-Apollo` rösten.   | `sha256:b94c79ace4b33bad944f88259da4dab5f52da7e78af85a8b6eee0e99ed05a387` |
+| `el-gr-stefanos`                            | Behållar avbildning med `el-GR` språket och `el-GR-Stefanos` rösten.        | `sha256:3b331be0a6eb32b12d5c6244691bd51ee1d6b218bd3dc066c0f9cb5b78864e14` |
+| `en-au-catherine`                           | Behållar avbildning med `en-AU` språket och `en-AU-Catherine` rösten.       | `sha256:1bbbd1214119d2e02539f7bef8eeba48e86f17b968f2532a7d96e96ef40ecbe3` |
+| `en-au-hayleyrus`                           | Behållar avbildning med `en-AU` språket och `en-AU-HayleyRUS` rösten.       | `sha256:aa0a38fd20cabcf33baa97b3a88f354d01055f57ed9376bf98b7ea0993333ffa` |
+| `en-ca-heatherrus`                          | Behållar avbildning med `en-CA` språket och `en-CA-HeatherRUS` rösten.      | `sha256:57966c65522862572e07ba474fba7e2c6038091cc1b8a35861645dffc2fc5f5b` |
+| `en-ca-linda`                               | Behållar avbildning med `en-CA` språket och `en-CA-Linda` rösten.           | `sha256:57c6ff08057f199a8eb75668f8ddce26b92c87a7e01e9003b74339b98ea438c4` |
+| `en-gb-george-apollo`                       | Behållar avbildning med `en-GB` språket och `en-GB-George-Apollo` rösten.   | `sha256:89a8b8b8e900e6dbda665d245fd8a911d6e3286ee16a92e46f1993dc3667b631` |
+| `en-gb-hazelrus`                            | Behållar avbildning med `en-GB` språket och `en-GB-HazelRUS` rösten.        | `sha256:18347ce1c4e4e21180f64c27bb4bcbebbf52597e25db7e24dbeb57edcea56109` |
+| `en-gb-susan-apollo`                        | Behållar avbildning med `en-GB` språket och `en-GB-Susan-Apollo` rösten.    | `sha256:015905bd42f8fb4ec575d971ff2d710ac5f904da2b84909270d3a7e51f5e3029` |
+| `en-ie-sean`                                | Behållar avbildning med `en-IE` språket och `en-IE-Sean` rösten.            | `sha256:4a490dcc6be935178761f14edbdd0c6e4036626046dbfeda002336d871c36fdc` |
+| `en-in-heera-apollo`                        | Behållar avbildning med `en-IN` språket och `en-IN-Heera-Apollo` rösten.    | `sha256:f26fb9b32ca82aa00c40f8824ed5d3d95ba1be5a10343e8649946d9468f9f74f` |
+| `en-in-priyarus`                            | Behållar avbildning med `en-IN` språket och `en-IN-PriyaRUS` rösten.        | `sha256:43f5fffad77d3446bc08922df36e244115ecf6090e7c48c42281c2fa62d23b90` |
+| `en-in-ravi-apollo`                         | Behållar avbildning med `en-IN` språket och `en-IN-Ravi-Apollo` rösten.     | `sha256:0ca4a07585a61a6e15c7fd951b77bab6b5cf8934ecff65fe4ca6cfe8e47f351b` |
+| `en-us-aria24krus`                          | Behållar avbildning med `en-US` språket och `en-US-Aria24kRUS` rösten.      | `sha256:00857cb570528dee93f7c9c7f96bb2e11763ff6aa9cc7405a05bcbad3d85b08d` |
+| `en-us-ariarus`                             | Behållar avbildning med `en-US` språket och `en-US-AriaRUS` rösten.         | `sha256:00857cb570528dee93f7c9c7f96bb2e11763ff6aa9cc7405a05bcbad3d85b08d` |
+| `en-us-benjaminrus`                         | Behållar avbildning med `en-US` språket och `en-US-BenjaminRUS` rösten.     | `sha256:3d7c911788bda58225a7100ba1a9afbb61e0a9f8b7633b383fe6e9faa48471d0` |
+| `en-us-guy24krus`                           | Behållar avbildning med `en-US` språket och `en-US-Guy24kRUS` rösten.       | `sha256:251841a8399bd168644460e3ebf6d92f093dc8ea60f9defdc663a7e1f60515fa` |
+| `en-us-zirarus`                             | Behållar avbildning med `en-US` språket och `en-US-ZiraRUS` rösten.         | `sha256:dbc6bb44b283902755907d9cee5694f880c95c6cf939f328059d826fefe53dfa` |
+| `es-es-helenarus`                           | Behållar avbildning med `es-ES` språket och `es-ES-HelenaRUS` rösten.       | `sha256:9f11111e24b554d907d36516d130324d64a477b512cbd7faffa0b7d3895aa538` |
+| `es-es-laura-apollo`                        | Behållar avbildning med `es-ES` språket och `es-ES-Laura-Apollo` rösten.    | `sha256:04add8f669539cb2522237a1b01d263b30ed609332cd2ff6dcf2c88fcd24764a` |
+| `es-es-pablo-apollo`                        | Behållar avbildning med `es-ES` språket och `es-ES-Pablo-Apollo` rösten.    | `sha256:d375f7eea3592e041943a56ba18bec9ebc4bba1c99dea4d583f2012aee31cff7` |
+| `es-mx-hildarus`                            | Behållar avbildning med `es-MX` språket och `es-MX-HildaRUS` rösten.        | `sha256:437e38d9cb97d2cee27890529eccc1d0b96622749c83844b89c50dc119176b61` |
+| `es-mx-raul-apollo`                         | Behållar avbildning med `es-MX` språket och `es-MX-Raul-Apollo` rösten.     | `sha256:b6c0937fddd2e4d39a7cd96628a3d7d6004936f356cb553942e4f7dd48824b52` |
+| `fi-fi-heidirus`                            | Behållar avbildning med `fi-FI` språket och `fi-FI-HeidiRUS` rösten.        | `sha256:5a359ab047d811996cccb9f3f95a59a7e023ee5be72ff0f509e7ebfeb0d3a07a` |
+| `fr-ca-caroline`                            | Behållar avbildning med `fr-CA` språket och `fr-CA-Caroline` rösten.        | `sha256:439bab9f2933c73e52e78f1683a027e81a251c32fb8aa49b6cd8e7c9b2451f15` |
+| `fr-ca-harmonierus`                         | Behållar avbildning med `fr-CA` språket och `fr-CA-HarmonieRUS` rösten.     | `sha256:ca798c5d25454b60cafca44f7f7e32896146966a8de94d00cced06235e38bf00` |
+| `fr-ch-guillaume`                           | Behållar avbildning med `fr-CH` språket och `fr-CH-Guillaume` rösten.       | `sha256:e696a65a7c40209a8dd8d9ff59ca5334811e993f5b454f6d741ce0fc59258e07` |
+| `fr-fr-hortenserus`                         | Behållar avbildning med `fr-FR` språket och `fr-FR-HortenseRUS` rösten.     | `sha256:ab6e7c023ee6cef95f8dc4eeb3c804ea1b8af937cadb17efcc12e5b18adcfc69` |
+| `fr-fr-julie-apollo`                        | Behållar avbildning med `fr-FR` språket och `fr-FR-Julie-Apollo` rösten.    | `sha256:cb8f51f75a0b93baf6efb1624d7d01cd736926769922d61a63773eb3a1097399` |
+| `fr-fr-paul-apollo`                         | Behållar avbildning med `fr-FR` språket och `fr-FR-Paul-Apollo` rösten.     | `sha256:482aa2eb44f41294780cf299e6105a1a3105a2d8065233b34ef1837879f95b7f` |
+| `he-il-asaf`                                | Behållar avbildning med `he-IL` språket och `he-IL-Asaf` rösten.            | `sha256:2f24ef0e620eeec3ea14262302d22cbb539a8afa85d356ffa446ca9cfd723b31` |
+| `hi-in-hemant`                              | Behållar avbildning med `hi-IN` språket och `hi-IN-Hemant` rösten.          | `sha256:0338f8e24eddb819c45909ec3a92c430b1d5ec1567a71495cc19c9a74382b224` |
+| `hi-in-kalpana-apollo`                      | Behållar avbildning med `hi-IN` språket och `hi-IN-Kalpana-Apollo` rösten.  | `sha256:5d7e10ab0fd18d1d163c31341765b6f65bb198048424aa622b854172e845726d` |
+| `hi-in-kalpana`                             | Behållar avbildning med `hi-IN` språket och `hi-IN-Kalpana` rösten.         | `sha256:5d7e10ab0fd18d1d163c31341765b6f65bb198048424aa622b854172e845726d` |
+| `hr-hr-matej`                               | Behållar avbildning med `hr-HR` språket och `hr-HR-Matej` rösten.           | `sha256:08d606969abd0165a798a8e0061e6439d4a33ad6af71aa58a1228e98018e7da9` |
+| `hu-hu-szabolcs`                            | Behållar avbildning med `hu-HU` språket och `hu-HU-Szabolcs` rösten.        | `sha256:9613dbf91878054e2ab79d5d9c8f3686d5fe80b16c40d38db9aec3a2c3816555` |
+| `id-id-andika`                              | Behållar avbildning med `id-ID` språket och `id-ID-Andika` rösten.          | `sha256:037ca355d8dcf9bff5fda9b9a4a9c2a54a03f3a48c378693c11437a36a245836` |
+| `it-it-cosimo-apollo`                       | Behållar avbildning med `it-IT` språket och `it-IT-Cosimo-Apollo` rösten.   | `sha256:647b92d1591501ed032d67cf2cfd719e95c24ffb624143d301c2b6dc5eed7397` |
+| `it-it-luciarus`                            | Behållar avbildning med `it-IT` språket och `it-IT-LuciaRUS` rösten.        | `sha256:c35e40ffe1352870b9f177dcf70c1cd9eec9f22f92d35080fb5baa1fa65eac8d` |
+| `ja-jp-ayumi-apollo`                        | Behållar avbildning med `ja-JP` språket och `ja-JP-Ayumi-Apollo` rösten.    | `sha256:4fa1436d83439cc9672fe82e35f57a366d2c1a6eb1df1f9f9175d3a588b09610` |
+| `ja-jp-harukarus`                           | Behållar avbildning med `ja-JP` språket och `ja-JP-HarukaRUS` rösten.       | `sha256:82f13a16e7812857143d311b5443cecfd7c199a88235728f437ba03e7cd92342` |
+| `ja-jp-ichiro-apollo`                       | Behållar avbildning med `ja-JP` språket och `ja-JP-Ichiro-Apollo` rösten.   | `sha256:565bfa8bab3a11608fd5fecae1a0cd655b4508404c354d5574af0e88ff1aec76` |
+| `ko-kr-heamirus`                            | Behållar avbildning med `ko-KR` språket och `ko-KR-HeamiRUS` rösten.        | `sha256:2b9ab2e9d946e152b46a634ae291fedd220c76a7ba133346e80b4b19bcaa1422` |
+| `ms-my-rizwan`                              | Behållar avbildning med `ms-MY` språket och `ms-MY-Rizwan` rösten.          | `sha256:3a05e09241b43c149132b42079f486f0a076d493d4e4c7e4a56b8a030c5b55c7` |
+| `nb-no-huldarus`                            | Behållar avbildning med `nb-NO` språket och `nb-NO-HuldaRUS` rösten.        | `sha256:bb018c3c7d65c825c1755c510aca7f73f058ac4dce236dc114131c5699a1cb61` |
+| `nl-nl-hannarus`                            | Behållar avbildning med `nl-NL` språket och `nl-NL-HannaRUS` rösten.        | `sha256:eb2f7dc4db0981717b5fdd16c290ecb8135bd5ae409e0b569e3de34a9fb9f071` |
+| `pl-pl-paulinarus`                          | Behållar avbildning med `pl-PL` språket och `pl-PL-PaulinaRUS` rösten.      | `sha256:098fabd9284caabafd4af526d52d5fa70ccbd0dc0e0c658753d7c644ab3bf813` |
+| `pt-br-daniel-apollo`                       | Behållar avbildning med `pt-BR` språket och `pt-BR-Daniel-Apollo` rösten.   | `sha256:c7c033ef39c3da6c82ed1870e6796f501654403605268bcc8136cedd37c5ad1f` |
+| `pt-br-heloisarus`                          | Behållar avbildning med `pt-BR` språket och `pt-BR-HeloisaRUS` rösten.      | `sha256:2da1e4c972b47efd82a28b4a8324637d878b100bc730f90e9c9d16a6ccec75e9` |
+| `pt-pt-heliarus`                            | Behållar avbildning med `pt-PT` språket och `pt-PT-HeliaRUS` rösten.        | `sha256:2f0ba437a2f7fbce9923a4da986aec53ec0ad3d52858e6aa12a7464cfa190240` |
+| `ro-ro-andrei`                              | Behållar avbildning med `ro-RO` språket och `ro-RO-Andrei` rösten.          | `sha256:847e60ea915697dd038319a071757e095229ca0001bf05f1d922d4c52ff4b22a` |
+| `ru-ru-ekaterinarus`                        | Behållar avbildning med `ru-RU` språket och `ru-RU-EkaterinaRUS` rösten.    | `sha256:37914d4ed1a12d3999385592d5dc0c0ed11148f71f09e11a1bb4c9394691e3b7` |
+| `ru-ru-irina-apollo`                        | Behållar avbildning med `ru-RU` språket och `ru-RU-Irina-Apollo` rösten.    | `sha256:3a800cee6d1520a1c0502d9b682a7e0f98ef01de58bb39ea31573a9711ef1271` |
+| `ru-ru-pavel-apollo`                        | Behållar avbildning med `ru-RU` språket och `ru-RU-Pavel-Apollo` rösten.    | `sha256:70ad01c5cf6da459e0938c1da17348624e38d94b3ce4f22e181b9516262e961c` |
+| `sk-sk-filip`                               | Behållar avbildning med `sk-SK` språket och `sk-SK-Filip` rösten.           | `sha256:8920e7acd70d6d550b66eb3c23878d070dc98219bd59fa8fce1abaf622da4c2f` |
+| `sl-si-lado`                                | Behållar avbildning med `sl-SI` språket och `sl-SI-Lado` rösten.            | `sha256:c17313ddab7e7d9c2777d4a19df65b34da4e30e52b4a21f81e5c59bacdfce979` |
+| `sv-se-hedvigrus`                           | Behållar avbildning med `sv-SE` språket och `sv-SE-HedvigRUS` rösten.       | `sha256:91315b4a62bbf69e117cdb4ef88facb02d3ee3d436a1e313af94ba6cb0b8608d` |
+| `ta-in-valluvar`                            | Behållar avbildning med `ta-IN` språket och `ta-IN-Valluvar` rösten.        | `sha256:d04761de48003062617397de4c4c5f448cd9b4bf57262587d245277d4e408431` |
+| `te-in-chitra`                              | Behållar avbildning med `te-IN` språket och `te-IN-Chitra` rösten.          | `sha256:e41002cf7f56d948d2737adc23c0750b430d553d78abb2ac53c42427de971299` |
+| `th-th-pattara`                             | Behållar avbildning med `th-TH` språket och `th-TH-Pattara` rösten.         | `sha256:5f556a0c113750d8780c09be8af7db28bc29784056d22389aec61c256ab9cbcb` |
+| `tr-tr-sedarus`                             | Behållar avbildning med `tr-TR` språket och `tr-TR-SedaRUS` rösten.         | `sha256:c893b27edd98c0760b7e510c365018e333aa0976ef742f7714ad59c92950a8e2` |
+| `vi-vn-an`                                  | Behållar avbildning med `vi-VN` språket och `vi-VN-An` rösten.              | `sha256:bc34adc094183bbbc461e0350d7aa8e5140ece5e89cd9e77c60f2c96276037b2` |
+| `zh-cn-huihuirus`                           | Behållar avbildning med `zh-CN` språket och `zh-CN-HuihuiRUS` rösten.       | `sha256:20b23d368f83d4b2926b6d8529d23c4dd84727bb063593d549fb959ce3ace8d2` |
+| `zh-cn-kangkang-apollo`                     | Behållar avbildning med `zh-CN` språket och `zh-CN-Kangkang-Apollo` rösten. | `sha256:cb638e72c8966204ab9142810b94cf4c2da54f3fd5917ae0e12a11d28a4253bb` |
+| `zh-cn-yaoyao-apollo`                       | Behållar avbildning med `zh-CN` språket och `zh-CN-Yaoyao-Apollo` rösten.   | `sha256:041a22b054b0acf494ff3085cdb2cd2eb4faeb7b692027f1723d27c341a8ee33` |
+| `zh-hk-danny-apollo`                        | Behållar avbildning med `zh-HK` språket och `zh-HK-Danny-Apollo` rösten.    | `sha256:7d9d2766713507b04c0bf3332367e867524ff392b693f4eb8a8c003a4dfc3bac` |
+| `zh-hk-tracy-apollo`                        | Behållar avbildning med `zh-HK` språket och `zh-HK-Tracy-Apollo` rösten.    | `sha256:b6dfbdbc5ef0d91812d96c88393c0ae4835eea42dbba4c3d36ab9c5e806bb772` |
+| `zh-hk-tracyrus`                            | Behållar avbildning med `zh-HK` språket och `zh-HK-TracyRUS` rösten.        | `sha256:b6dfbdbc5ef0d91812d96c88393c0ae4835eea42dbba4c3d36ab9c5e806bb772` |
+| `zh-tw-hanhanrus`                           | Behållar avbildning med `zh-TW` språket och `zh-TW-HanHanRUS` rösten.       | `sha256:9802fc4a9656063cb9f215ca757db5289960d323244272ce280db0395ddd46ac` |
+| `zh-tw-yating-apollo`                       | Behållar avbildning med `zh-TW` språket och `zh-TW-Yating-Apollo` rösten.   | `sha256:05f50dffbeb17e4215a5a53cc0791d825b63bc1e2b007b00797e5d0e1b1d6d1e` |
+| `zh-tw-zhiwei-apollo`                       | Behållar avbildning med `zh-TW` språket och `zh-TW-Zhiwei-Apollo` rösten.   | `sha256:e96f4aecba6e3c0741218f3e1aec35e53147b12543be9fdcd76ff98d4c34cf84` |
+
+
+# <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
 Versions anmärkning för `1.11.0-amd64-<locale-and-voice>` :
 
 **Funktion**
 * Mer fel information om problem vid hämtning av anpassade modeller efter ID.
 
+Versions anmärkning för `1.9.0-amd64-<locale-and-voice>` :
+
+* Vanlig månatlig utgåva
+
+Versions anmärkning för `1.8.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+
+* Fullständigt migrerat till .NET 3,1
+
+Versions anmärkning för `1.7.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+
+* Uppgraderade komponenter till .NET 3,1
+
 | Bildtaggar                                  | Kommentarer                                                                                                         |
 |---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `latest`                                    | Behållar avbildning med `en-US` språket och `en-US-AriaRUS` rösten.                                            | 
 | `1.11.0-amd64-<locale-and-voice>`           | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.11.0-amd64-en-us-ariarus`. |
+| `1.9.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.9.0-amd64-en-us-ariarus`.  |
+| `1.8.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.8.0-amd64-en-us-ariarus`.  |
+| `1.7.0-amd64-<locale-and-voice>`            | första GA-versionen. Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.7.0-amd64-en-us-ariarus`.  |
 
 | Språk för v-1.11.0                         | Kommentarer                                                                      | Sammandrag                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -703,31 +921,6 @@ Versions anmärkning för `1.11.0-amd64-<locale-and-voice>` :
 | `zh-tw-hanhanrus`                           | Behållar avbildning med `zh-TW` språket och `zh-TW-HanHanRUS` rösten.       | `sha256:263153fd6e05970e04af9a9bd95fb13591f0138ac030a632a6a78d95936afa4b` |
 | `zh-tw-yating-apollo`                       | Behållar avbildning med `zh-TW` språket och `zh-TW-Yating-Apollo` rösten.   | `sha256:b8289bb550b9328d83d6a7ec93bdf9524087222f537a55db0b2eb5402c2bf663` |
 | `zh-tw-zhiwei-apollo`                       | Behållar avbildning med `zh-TW` språket och `zh-TW-Zhiwei-Apollo` rösten.   | `sha256:af4bc0ef2211f69a92541bb14596341375e1003aef541aefcea7843192046b4c` |
-
-
-# <a name="previous-version"></a>[Tidigare version](#tab/previous)
-
-Versions anmärkning för `1.9.0-amd64-<locale-and-voice>` :
-
-* Vanlig månatlig utgåva
-
-Versions anmärkning för `1.8.0-amd64-<locale-and-voice>` :
-
-**Funktion**
-
-* Fullständigt migrerat till .NET 3,1
-
-Versions anmärkning för `1.7.0-amd64-<locale-and-voice>` :
-
-**Funktion**
-
-* Uppgraderade komponenter till .NET 3,1
-
-| Bildtaggar                                  | Kommentarer                                                                                                         |
-|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `1.9.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.9.0-amd64-en-us-ariarus`.  |
-| `1.8.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.8.0-amd64-en-us-ariarus`.  |
-| `1.7.0-amd64-<locale-and-voice>`            | första GA-versionen. Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.7.0-amd64-en-us-ariarus`.  |
 
 | Språk för v-1.9.0                          | Kommentarer                                                                      | Sammandrag                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -992,17 +1185,19 @@ Den här behållar avbildningen har följande Taggar tillgängliga. Du kan ocks�
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
-Viktig information för `v1.3.0` :
-* Neurala-behållaren för text till tal är nu allmänt tillgänglig. 
+Viktig information för `v1.4.0` :
+* Uppgradera till de senaste modellerna. 
+* CPU-kostnaden och fördröjningen minskades.
+* Bättre stöd för prosody-justering med SSML-tagg (t. ex. kon tur profil).
 
 | Bildtaggar                                  | Kommentarer                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Behållar avbildning med `en-US` språket och `en-US-AriaNeural` rösten.      |
-| `1.3.0-amd64-<locale-and-voice>`    | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.3.0-amd64-en-us-arianeural`. |
+| `1.4.0-amd64-<locale-and-voice>`    | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.4.0-amd64-en-us-arianeural`. |
 
 
-| v 1.3.0-språkområden och röster           | Kommentarer                                                                      |
-|---------------------------------------------|:---------------------------------------------------------------------------|
+| v 1.4.0-språkområden och röster           | Kommentarer                                                                      |
+|-------------------------------------|:---------------------------------------------------------------------------|
 | `de-de-katjaneural`                 | Behållar avbildning med `de-DE` språket och `de-DE-KatjaNeural` rösten.     |
 | `en-au-natashaneural`               | Behållar avbildning med `en-AU` språket och `en-AU-NatashaNeural` rösten.   |
 | `en-ca-claraneural`                 | Behållar avbildning med `en-CA` språket och `en-CA-ClaraNeural` rösten.     |
@@ -1010,23 +1205,52 @@ Viktig information för `v1.3.0` :
 | `en-gb-mianeural`                   | Behållar avbildning med `en-GB` språket och `en-GB-MiaNeural` rösten.       |
 | `en-us-arianeural`                  | Behållar avbildning med `en-US` språket och `en-US-AriaNeural` rösten.      |
 | `en-us-guyneural`                   | Behållar avbildning med `en-US` språket och `en-US-GuyNeural` rösten.       |
+| `en-us-jennyneural`                 | Behållar avbildning med `en-US` språket och `en-US-JennyNeural` rösten.     |
 | `es-es-elviraneural`                | Behållar avbildning med `es-ES` språket och `es-ES-ElviraNeural` rösten.    |
 | `es-mx-dalianeural`                 | Behållar avbildning med `es-MX` språket och `es-MX-DaliaNeural` rösten.     |
 | `fr-ca-sylvieneural`                | Behållar avbildning med `fr-CA` språket och `fr-CA-SylvieNeural` rösten.    |
 | `fr-fr-deniseneural`                | Behållar avbildning med `fr-FR` språket och `fr-FR-DeniseNeural` rösten.    |
+| `hi-in-swaracpuneural`              | Behållar avbildning med `hi-IN` språket och `hi-IN-Swaraneural` rösten.     |
 | `it-it-elsaneural`                  | Behållar avbildning med `it-IT` språket och `it-IT-ElsaNeural` rösten.      |
 | `ja-jp-nanamineural`                | Behållar avbildning med `ja-JP` språket och `ja-JP-NanamiNeural` rösten.    |
 | `ko-kr-sunhineural`                 | Behållar avbildning med `ko-KR` språket och `ko-KR-SunHiNeural` rösten.     |
 | `pt-br-franciscaneural`             | Behållar avbildning med `pt-BR` språket och `pt-BR-FranciscaNeural` rösten. |
 | `zh-cn-xiaoxiaoneural`              | Behållar avbildning med `zh-CN` språket och `zh-CN-XiaoxiaoNeural` rösten.  |
+| `zh-cn-xiaoyouneural`               | Behållar avbildning med `zh-CN` språket och `zh-CN-XiaoYouNeural` rösten.   |
+| `zh-cn-yunyangneural`               | Behållar avbildning med `zh-CN` språket och `zh-CN-YunYangNeural` rösten.   |
+| `zh-cn-yunyeneural`                 | Behållar avbildning med `zh-CN` språket och `zh-CN-YunYeNeural` rösten.     |
 
 # <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
+Viktig information för `v1.3.0` :
+* Neurala-behållaren för text till tal är nu allmänt tillgänglig. 
 
 | Bildtaggar                                  | Kommentarer                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Behållar avbildning med `en-US` språket och `en-US-AriaNeural` rösten.      |
+| `1.3.0-amd64-<locale-and-voice>-preview`    | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.3.0-amd64-en-us-arianeural-preview`. |
 | `1.2.0-amd64-<locale-and-voice>-preview`    | Ersätt `<locale>` med något av de tillgängliga språken i listan nedan. Till exempel `1.2.0-amd64-en-us-arianeural-preview`. |
 
+| v 1.3.0-språkområden och röster           | Kommentarer                                                                      |
+|-------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-katjaneural`                 | Behållar avbildning med `de-DE` språket och `de-DE-KatjaNeural` rösten.     |
+| `en-au-natashaneural`               | Behållar avbildning med `en-AU` språket och `en-AU-NatashaNeural` rösten.   |
+| `en-ca-claraneural`                 | Behållar avbildning med `en-CA` språket och `en-CA-ClaraNeural` rösten.     |
+| `en-gb-libbyneural`                 | Behållar avbildning med `en-GB` språket och `en-GB-LibbyNeural` rösten.     |
+| `en-gb-mianeural`                   | Behållar avbildning med `en-GB` språket och `en-GB-MiaNeural` rösten.       |
+| `en-us-arianeural`                  | Behållar avbildning med `en-US` språket och `en-US-AriaNeural` rösten.      |
+| `en-us-guyneural`                   | Behållar avbildning med `en-US` språket och `en-US-GuyNeural` rösten.       |
+| `en-us-jennyneural`                 | Behållar avbildning med `en-US` språket och `en-US-JennyNeural` rösten.     |
+| `es-es-elviraneural`                | Behållar avbildning med `es-ES` språket och `es-ES-ElviraNeural` rösten.    |
+| `es-mx-dalianeural`                 | Behållar avbildning med `es-MX` språket och `es-MX-DaliaNeural` rösten.     |
+| `fr-ca-sylvieneural`                | Behållar avbildning med `fr-CA` språket och `fr-CA-SylvieNeural` rösten.    |
+| `fr-fr-deniseneural`                | Behållar avbildning med `fr-FR` språket och `fr-FR-DeniseNeural` rösten.    |
+| `hi-in/swaracpuneural`              | Behållar avbildning med `hi-IN` språket och `hi-IN-Swaraneural` rösten.     |
+| `it-it-elsaneural`                  | Behållar avbildning med `it-IT` språket och `it-IT-ElsaNeural` rösten.      |
+| `ja-jp-nanamineural`                | Behållar avbildning med `ja-JP` språket och `ja-JP-NanamiNeural` rösten.    |
+| `ko-kr-sunhineural`                 | Behållar avbildning med `ko-KR` språket och `ko-KR-SunHiNeural` rösten.     |
+| `pt-br-franciscaneural`             | Behållar avbildning med `pt-BR` språket och `pt-BR-FranciscaNeural` rösten. |
+| `zh-cn-xiaoxiaoneural`              | Behållar avbildning med `zh-CN` språket och `zh-CN-XiaoxiaoNeural` rösten.  |
 
 | v-1.2.0 för hands versioner och röster           | Kommentarer                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|

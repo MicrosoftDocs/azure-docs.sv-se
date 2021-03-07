@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693653"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432952"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Skapa en semantisk fråga i Kognitiv sökning
 
@@ -21,6 +21,8 @@ ms.locfileid: "101693653"
 > Typen av semantisk fråga finns i en offentlig för hands version, som är tillgänglig via REST API och Azure Portal för för hands versionen. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vid den första förhands granskningen är det ingen kostnad för semantisk sökning. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
 I den här artikeln får du lära dig att formulera en sökbegäran som använder semantisk rangordning och ger semantiska beskrivningar och svar.
+
+Semantiska frågor brukar fungera bäst på Sök index som har skapats av text – tungt innehåll, till exempel PDF-filer eller dokument med stora text mängder.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -38,7 +40,7 @@ I den här artikeln får du lära dig att formulera en sökbegäran som använde
 
 ## <a name="whats-a-semantic-query"></a>Vad är en semantisk fråga?
 
-I Kognitiv sökning är en fråga en parametriserad begäran som avgör bearbetning av frågor och svars form. En *semantisk fråga* lägger till parametrar som anropar algoritmen för semantisk omrangering som kan bedöma kontexten och innebörden av matchande resultat och höja upp fler relevanta matchningar till toppen.
+I Kognitiv sökning är en fråga en parametriserad begäran som avgör bearbetning av frågor och svars form. En *semantisk fråga* lägger till parametrar som anropar den semantiska ranknings modellen som kan bedöma kontexten och betydelsen av matchnings resultat, höja mer relevanta matchningar till toppen och returnera semantiska svar och bild texter.
 
 Följande begäran är representativ för en grundläggande semantisk fråga (utan svar).
 
@@ -48,7 +50,7 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
     "search": " Where was Alan Turing born?",    
     "queryType": "semantic",  
     "searchFields": "title,url,body",  
-    "queryLanguage": "en-us",  
+    "queryLanguage": "en-us"  
 }
 ```
 
@@ -60,7 +62,7 @@ Endast de översta 50-matchningarna från de första resultaten kan semantiskt r
 
 Du hittar den fullständiga specifikationen för REST API i [sökdokument (rest-förhands granskning)](/rest/api/searchservice/preview-api/search-documents).
 
-Semantiska frågor är avsedda för öppna frågor som "What ' The Best planta for pollinators" eller "How to Fry a ägg". Om du vill att svaret ska innehålla svar kan du lägga till en valfri **`answer`** parameter i begäran.
+Semantiska frågor tillhandahåller under texter och markeringar automatiskt. Om du vill att svaret ska innehålla svar kan du lägga till en valfri **`answer`** parameter i begäran. Den här parametern plus konstruktion av frågesträngen skapar ett svar i svaret.
 
 I följande exempel används hotell-Sample-indexet för att skapa en semantisk förfrågan med semantiska svar och bild texter:
 
@@ -82,37 +84,66 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>Formulera begäran
 
-1. Ange **`"queryType"`** till "semantisk" och **`"queryLanguage"`** till "en-US". Båda parametrarna måste anges.
+I det här avsnittet beskrivs de frågeparametrar som krävs för semantisk sökning.
 
-   QueryLanguage måste vara konsekvent med alla [språk analys](index-add-language-analyzers.md) verktyg som har tilldelats fält definitioner i index schemat. Om queryLanguage är "en-US" måste alla språk analyser också vara en engelsk variant ("en. Microsoft" eller "en. Lucene"). Alla språk oberoende analyser, till exempel nyckelord eller enkla, har ingen konflikt med queryLanguage-värden.
+#### <a name="step-1-set-querytype-and-querylanguage"></a>Steg 1: Ange frågetyp och queryLanguage
 
-   Om du också använder [stavnings korrigering](speller-how-to-add.md)i en förfrågan, gäller den queryLanguage som du anger lika med stavning, svar och bild texter. Det finns ingen åsidosättning för enskilda delar. 
+Lägg till följande parametrar i resten. Båda parametrarna måste anges.
 
-   Även om innehåll i ett Sök index kan bestå av flera språk, är frågans Indatatyp mest troligt i ett. Sökmotorn kontrollerar inte kompatibiliteten för queryLanguage, språk analys och det språk som innehållet består av, så se till att omfattnings frågorna inte genererar felaktiga resultat.
+```json
+"queryType": "semantic",
+"queryLanguage": "en-us",
+```
+
+QueryLanguage måste vara konsekvent med alla [språk analys](index-add-language-analyzers.md) verktyg som har tilldelats fält definitioner i index schemat. Om queryLanguage är "en-US" måste alla språk analyser också vara en engelsk variant ("en. Microsoft" eller "en. Lucene"). Alla språk oberoende analyser, till exempel nyckelord eller enkla, har ingen konflikt med queryLanguage-värden.
+
+Om du också använder [stavnings korrigering](speller-how-to-add.md)i en förfrågan, gäller den queryLanguage som du anger lika med stavning, svar och bild texter. Det finns ingen åsidosättning för enskilda delar. 
+
+Även om innehåll i ett Sök index kan bestå av flera språk, är frågans Indatatyp mest troligt i ett. Sökmotorn kontrollerar inte kompatibiliteten för queryLanguage, språk analys och det språk som innehållet består av, så se till att omfattnings frågorna inte genererar felaktiga resultat.
 
 <a name="searchfields"></a>
 
-1. Ange **`"searchFields"`** (valfritt, men rekommenderas).
+#### <a name="step-2-set-searchfields"></a>Steg 2: Ange searchFields
 
-   I en semantisk fråga återspeglar ordningen på fälten i "searchFields" den prioritet eller relativa prioriteten för fältet i semantisk rangordning. Endast sträng fält på översta nivån (fristående eller i en samling) används. Eftersom searchFields har andra beteenden i enkla och fullständiga Lucene-frågor (där det inte finns någon underförstådd prioritetsordning), resulterar det inte i ett fel i alla icke-sträng fält och under fält, men de används inte heller i semantisk rangordning.
+Den här parametern är valfri i att det inte finns något fel om du lämnar den, men om du anger en ordnad lista med fält rekommenderar vi att både bild texter och svar används.
 
-   Följ dessa rikt linjer när du anger searchFields:
+Parametern searchFields används för att identifiera passager som ska utvärderas för "semantisk likhet" i frågan. För för hands versionen rekommenderar vi inte att du lämnar searchFields tomt eftersom modellen kräver ett tips för vilka fält som är viktigast att bearbeta.
 
-   + Koncisa fält, till exempel HotelName eller en rubrik, bör föregå utförliga fält som beskrivning.
+SearchFields-ordningen är kritisk. Om du redan använder searchFields i befintliga enkla eller fullständiga Lucene-frågor, se till att du återanvänder den här parametern när du växlar till en semantisk frågetyp.
 
-   + Om ditt index har ett URL-fält som är text (som kan läsas av människa, t. ex., `www.domain.com/name-of-the-document-and-other-details` och inte maskin fokuserat som `www.domain.com/?id=23463&param=eis` ), så Lägg det andra i listan (Lägg det först om det inte finns något koncist rubrik fält).
+Följ dessa rikt linjer för att säkerställa optimala resultat när två eller fler searchFields har angetts:
 
-   + Om det bara finns ett fält angivet, betraktas det som ett beskrivande fält för semantisk rangordning av dokument.  
++ Inkludera endast sträng fält och toppnivå sträng fält i samlingar. Om du råkar ta med fält som inte är strängar eller fält på lägre nivåer i en samling, finns det inga fel, men dessa fält används inte i semantisk rangordning.
 
-   + Om det inte finns några fält angivna, kommer alla sökbara fält att beaktas för semantisk rangordning av dokument. Detta rekommenderas dock inte eftersom det kanske inte ger flest optimala resultat från Sök indexet.
++ Det första fältet måste alltid vara koncist (till exempel titel eller namn), helst under 25 ord.
 
-1. Ta bort **`"orderBy"`** satser, om de finns i en befintlig begäran. Det semantiska resultatet används för att beställa resultat, och om du inkluderar explicit sorterings logik returneras ett HTTP 400-fel.
++ Om indexet har ett URL-fält som är text (som kan läsas av människa, t. ex., `www.domain.com/name-of-the-document-and-other-details` och inte maskin fokuserat som `www.domain.com/?id=23463&param=eis` ), placerar du det andra i listan (eller första om det inte finns något koncist rubrik fält).
 
-1. Du kan också lägga till **`"answers"`** set till "extraktion" och ange antalet svar om du vill ha mer än 1.
++ Följ dessa fält genom beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument.
 
-1. Du kan också anpassa markerings formatet som tillämpas på under texter. Under texter används Markera formatering framför nyckel passager i det dokument som sammanfattar svaret. Standardvärdet är `<em>`. Om du vill ange typ av formatering (till exempel gul bakgrund) kan du ange highlightPreTag och highlightPostTag.
+Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. Välj ett fält som tillhandahåller tillräckligt med innehåll.
 
-1. Ange andra parametrar som du vill ha i begäran. Parametrar som [stavfel](speller-how-to-add.md), [Select](search-query-odata-select.md)och Count förbättrar kvaliteten på begäran och läsningen av svaret.
+#### <a name="step-3-remove-orderby-clauses"></a>Steg 3: ta bort orderBy-satser
+
+Ta bort eventuella orderBy-satser, om de finns i en befintlig begäran. Det semantiska resultatet används för att beställa resultat, och om du inkluderar explicit sorterings logik returneras ett HTTP 400-fel.
+
+#### <a name="step-4-add-answers"></a>Steg 4: Lägg till svar
+
+Du kan också lägga till "svar" om du vill inkludera ytterligare bearbetning som ger ett svar. Svar (och under texter) formuleras från passager som finns i fält som anges i searchFields. Se till att inkludera innehålls rika fält i searchFields för att få bästa svar och beskrivningar i ett svar.
+
+Det finns uttryckliga och implicita villkor som ger svar. 
+
++ Explicita villkor är att lägga till "svar = extraktion". Om du vill ange antalet svar som returneras i det övergripande svaret lägger du dessutom till "count" följt av ett tal: `"answers=extractive|count=3"` .  Standardvärdet är ett. Maximalt fem.
+
++ I implicita villkor ingår en fråga om frågesträng som lånar sig till ett svar. En fråga som består av "vad hotell har det gröna rummet" är mer sannolikt "besvarat" än en fråga som består av en instruktion som "hotell med avancerad insida". Frågan kan förväntas, men den kan inte anges eller null.
+
+Den viktiga punkten att ta bort är att om frågan inte ser ut som en fråga hoppas svars bearbetningen över, även om parametern "svar" anges.
+
+#### <a name="step-5-add-other-parameters"></a>Steg 5: Lägg till andra parametrar
+
+Ange andra parametrar som du vill ha i begäran. Parametrar som [stavfel](speller-how-to-add.md), [Select](search-query-odata-select.md)och Count förbättrar kvaliteten på begäran och läsningen av svaret.
+
+Du kan också anpassa markerings formatet som används för under texter. Under texter används Markera formatering framför nyckel passager i det dokument som sammanfattar svaret. Standardvärdet är `<em>`. Om du vill ange typ av formatering (till exempel gul bakgrund) kan du ange highlightPreTag och highlightPostTag.
 
 ### <a name="review-the-response"></a>Granska svaret
 
@@ -141,7 +172,7 @@ Svar för ovanstående fråga returnerar följande matchning som den översta pl
 
 I följande tabell sammanfattas frågeparametrar som används i en semantisk fråga så att du kan se dem holistiskt. En lista över alla parametrar finns i [Sök efter dokument (rest-förhands granskning)](/rest/api/searchservice/preview-api/search-documents)
 
-| Parameter | Typ | Beskrivning |
+| Parameter | Typ | Description |
 |-----------|-------|-------------|
 | queryType | Sträng | Giltiga värden är enkel, fullständig och semantisk. Värdet "semantisk" krävs för semantiska frågor. |
 | queryLanguage | Sträng | Krävs för semantiska frågor. För närvarande är endast "en-US" implementerad. |

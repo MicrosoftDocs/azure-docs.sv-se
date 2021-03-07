@@ -6,20 +6,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 03/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: a31b3718eb1baa32aef39474383924efe8cf93b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6fbee31f015953bd7e65648ea273e3ca84686115
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746932"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431248"
 ---
 # <a name="configure-nat-rules-for-your-virtual-wan-vpn-gateway---preview"></a>Konfigurera NAT-regler för din virtuella WAN-Gateway – för hands version
 
 > [!IMPORTANT]
 > NAT-regler finns för närvarande i offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Den här för hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Du kan konfigurera din virtuella WAN-Gateway med statiska en-till-ett NAT-regler. En NAT-regel ger en mekanism för att ställa in en-till-en-översättning av IP-adresser. NAT kan användas för att koppla samman två IP-nätverk som har inkompatibla eller överlappande IP-adresser. Ett typiskt scenario är grenar med överlappande IP-adresser som vill komma åt Azure VNet-resurser.
@@ -28,7 +28,7 @@ Den här konfigurationen använder en Flow-tabell för att dirigera trafik från
 
    :::image type="content" source="./media/nat-rules-vpn-gateway/diagram.png" alt-text="Diagram som visar arkitektur.":::
 
-## <a name="configure-and-view-rules"></a><a name="view"></a>Konfigurera och Visa regler
+## <a name="configure-nat-rules"></a><a name="rules"></a>Konfigurera NAT-regler
 
 Du kan konfigurera och Visa NAT-regler på dina VPN Gateway-inställningar när som helst.
 
@@ -48,10 +48,90 @@ Du kan konfigurera och Visa NAT-regler på dina VPN Gateway-inställningar när 
    * **ExternalMapping:** Ett adressprefix som är ett mål-IP-adressintervall för det externa nätverket som Källans IP-adresser mappas till. Med andra ord är ditt adressprefix för efter NAT.
    * **Länk anslutning:** Anslutnings resurs som i stort sett ansluter en VPN-plats till Azure Hub-VPN-gatewayen för plats-till-plats.
 
-### <a name="configuration-considerations"></a>Konfigurations överväganden
+### <a name="configuration-considerations"></a><a name="considerations"></a>Konfigurations överväganden
 
 * Under näts storleken för både intern och extern mappning måste vara samma för statisk 1-till-en NAT.
 * Se till att redigera VPN-platsen i Azure Portal för att lägga till **ExternalMapping** -prefix i fältet "privat adress utrymme". För närvarande måste platser som har BGP aktiverat se till att den lokala BGP-tillkännageren (enhetens BGP-inställningar) innehåller en post för de externa mappnings-prefixen.
+
+## <a name="examples-and-verification"></a><a name="examples"></a>Exempel och verifiering
+
+### <a name="ingress-mode-nat"></a>NAT för ingress-läge
+
+Ingångs läge NAT-regler tillämpas på paket som anger Azure via den virtuella WAN-gatewayen för plats-till-plats-VPN. I det här scenariot vill du ansluta två grenar för plats-till-plats-VPN till Azure. VPN-plats 1 ansluter via link1 och VPN-plats 2 ansluter via länk 2. Varje plats har adress utrymmet 192.169.1.0/24.
+
+Följande diagram visar resultatet av den planerade slut resultatet:
+
+:::image type="content" source="./media/nat-rules-vpn-gateway/ingress.png" alt-text="Diagram som visar inkommande NAT-läge.":::
+
+1. Ange en NAT-regel.
+
+   Ange en NAT-regel för att säkerställa att plats-till-plats-VPN-gatewayen kan skilja mellan de två grenarna med överlappande adress utrymmen (t. ex. 192.168.1.0/24). I det här exemplet fokuserar vi på link1 för VPN-plats 1.
+
+   Följande NAT-regel kan konfigureras och kopplas till länk 1 i en av grenarna. Eftersom det här är en statisk NAT-regel innehåller adress utrymmena för InternalMapping och ExternalMapping samma antal IP-adresser.
+
+   * **Namn:** IngressRule01
+   * **Typ:** Oföränderlig
+   * **Läge:** IngressSnat
+   * **InternalMapping:** 192.168.1.0/24
+   * **ExternalMapping:** 10.1.1.0/24
+   * **Länk anslutning:** Länk 1
+
+1. Annonsera rätt ExternalMapping.
+
+   I det här steget kontrollerar du att din plats-till-plats-VPN-gateway meddelar rätt ExternalMapping-adress utrymme till resten av dina Azure-resurser. Det finns olika instruktioner, beroende på om BGP är aktiverat eller inte.
+
+   **Exempel 1: BGP har Aktiver ATS**
+
+   * Se till att den lokala BGP-högtalaren på VPN-plats 1 har kon figurer ATS för annonsering av 10.1.1.0/24-adressutrymmet.
+   * Under den här för hands versionen måste platser som har BGP aktiverat se till att den lokala BGP-enheten (enhetens BGP-inställningar) inkluderar en post för externa mappnings-prefix.
+
+   **Exempel 2: BGP är inte aktiverat**
+
+   * Navigera till den virtuella Hub-resurs som innehåller plats-till-plats-VPN-gatewayen. På sidan virtuellt nav väljer du **VPN (plats-till-plats)** under **anslutning**.
+   * Välj VPN-platsen som är ansluten till den virtuella WAN-hubben via länk 1. Välj **Redigera webbplats** och indata 10.1.1.0/24 som det privata adress utrymmet för VPN-platsen.
+
+     :::image type="content" source="./media/nat-rules-vpn-gateway/edit-site.png" alt-text="Skärm bild som visar sidan Redigera VPN-webbplats.":::
+
+### <a name="packet-flow"></a>Paket flöde
+
+I det här exemplet vill en lokal enhet komma åt ett eker-virtuellt nätverk. Paket flödet är enligt följande, med NAT-översättningar i fetstil.
+
+1. Trafik från lokal plats initieras.
+   * Käll-IP-adress: **192.168.1.1**
+   * Mål-IP-adress: 30.0.0.1
+1. Trafiken anger plats-till-plats-gatewayen och översätts med hjälp av NAT-regeln och skickas sedan till ekern.
+   * Källans IP-adress: **10.1.1.1**
+   * Mål-IP-adress: 30.0.0.1
+1. Svar från eker initieras.
+   * Käll-IP-adress: 30.0.0.1
+   * Mål-IP-adress: **10.1.1.1**
+1. Trafiken anger plats-till-plats-VPN-gatewayen och översättningen återförs och skickas till lokalt.
+   * Käll-IP-adress: 30.0.0.1
+   * Mål-IP-adress: **192.168.1.1**
+
+### <a name="verification-checks"></a>Verifierings kontroller
+
+I det här avsnittet visas kontroller för att kontrol lera att konfigurationen är korrekt konfigurerad.
+
+#### <a name="validate-defaultroutetable-rules-and-routes"></a>Verifiera DefaultRouteTable, regler och vägar
+
+Grenar i det virtuella WAN-nätverket associeras med **DefaultRouteTable**, vilket innebär att alla förgrenings anslutningar lär sig vägar som är ifyllda i DefaultRouteTable. NAT-regeln visas med det externa mappnings-prefixet i de effektiva vägarna för DefaultRouteTable.
+
+Exempel:
+
+* **Prefix:** 10.1.1.0/24  
+* **Typ av nästa hopp:** VPN_S2S_Gateway
+* **Nästa hopp:** VPN_S2S_Gateway resurs
+
+#### <a name="validate-address-prefixes"></a>Verifiera adressprefix
+
+Det här exemplet gäller för resurser i virtuella nätverk som är kopplade till DefaultRouteTable.
+
+De **effektiva vägarna** på nätverkskorten (NIC) för virtuella datorer som finns i ett eker-virtuellt nätverk som är anslutna till den virtuella WAN-hubben bör också innehålla de adressprefix som finns i NAT-reglerna **ExternalMapping**.
+
+#### <a name="validate-bgp-advertisements"></a>Verifiera BGP-annonser
+
+Om du har konfigurerat BGP på VPN-platsens anslutning, kontrollerar du den lokala BGP-högtalaren för att se till att den annonserar en post för externa mappnings-prefix.
 
 ## <a name="next-steps"></a>Nästa steg
 

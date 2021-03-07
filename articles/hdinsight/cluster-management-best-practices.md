@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d326dfe3a44e5d9e9b55a888762f3878cd418850
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7ab113a9c7ab03a477f387c5599b55d67c99c6fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210962"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433904"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Metod tips för HDInsight-kluster hantering
 
@@ -28,7 +28,7 @@ Lär dig metod tips för att hantera HDInsight-kluster.
 | Azure CLI | [Skapa HDInsight-kluster med Azure CLI](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Skapa Linux-baserade kluster i HDInsight med hjälp av Azure PowerShell](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Skapa Apache Hadoop kluster med Azure-REST API](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDK: er (.NET, python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight), [Go](./hdinsight-go-sdk-overview.md) |
+| SDK: er (.NET, python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight), [python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Om du skapar ett kluster och återanvänder kluster namnet från ett tidigare skapat kluster väntar du tills föregående kluster borttagning har slutförts innan du skapar klustret.

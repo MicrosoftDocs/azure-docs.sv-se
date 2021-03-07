@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3395dc3010f7ae3aabadda8105c1765a9c300988
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201268"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424588"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -48,7 +48,7 @@ Om du vill arbeta igenom scenariot interagerar du med komponenterna i den förde
 
 Här följer de komponenter som implementeras av *AdtSampleApp* -exempel appen för bygg scenariot:
 * Enhetsautentisering 
-* Användnings exempel för [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (hittades i *CommandLoop.cs*)
+* Användnings exempel för [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (hittades i *CommandLoop.cs*)
 * Konsol gränssnitt för att anropa Azure Digitals dubbla API: er
 * *SampleClientApp* – ett exempel på Azure Digitals dubbla lösningar
 * *SampleFunctionsApp* – en Azure Functions app som uppdaterar ditt Azure Digitals-diagram till följd av telemetri från IoT Hub och Azures digitala dubbla händelser

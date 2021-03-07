@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808270"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427172"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Säkerhetskopiera och återställa formulär igenkännings modeller
 
@@ -28,7 +28,7 @@ Om din app eller ditt företag är beroende av användningen av en anpassad mode
 
 ##  <a name="prerequisites"></a>Förutsättningar
 
-1. Två formulär igenkännings Azure-resurser i olika Azure-regioner. Om du inte har dem går du till Azure Portal och <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" skapar en ny formulär igenkännings resurs " target="_blank"> skapa en ny formulär igenkännings resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+1. Två formulär igenkännings Azure-resurser i olika Azure-regioner. Om du inte har dem går du till Azure Portal och <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" skapar en ny formulär igenkännings resurs " target="_blank"> skapa en ny formulär igenkännings resurs </a> .
 1. Prenumerations nyckel, slut punkts-URL och prenumerations-ID för formulärets tolknings resurs. Du hittar dessa värden på resurs-fliken **Översikt** på Azure Portal.
 
 

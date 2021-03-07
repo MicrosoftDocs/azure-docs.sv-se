@@ -3,18 +3,18 @@ title: Fakturor för Azure Enterprise-registrering
 description: Den här artikeln förklarar hur du hanterar och använder din Azure Enterprise-faktura.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598076"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430822"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Fakturor för Azure Enterprise-registrering
 
@@ -98,29 +98,41 @@ Azure Enterprise-portalen filtrerar bort inaktiva registreringar från vyn. Du b
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Ändra ett IO-nummer för en kommande överförbrukningsfaktura
 
-Azure Enterprise-portalen genererar automatiskt ett standardmässigt inköpsordernummer (IO) såvida inte företagsadministratören anger ett före fakturadatumet. Företagsadministratörer kan uppdatera inköpsordernumret upp till sju dagar från och med att det automatiska fakturameddelandet tagits emot via e-post.
+Azure Enterprise-portalen genererar automatiskt ett standardmässigt inköpsordernummer (IO) såvida inte företagsadministratören anger ett före fakturadatumet. Företagsadministratörer kan uppdatera inköpsordernumret upp till sju dagar från och med att det automatiska fakturameddelandet tagits emot via e-post. 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>Så här uppdaterar du inköpsordernumret för Azure-tjänster:
+För att förhindra automatisk generering av IO-nummer varje månad kan du låsa inköps order numret. Se [Lås inköps order nummer](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles).
+
+### <a name="update-the-azure-services-purchase-order-number"></a>Uppdatera inköps order numret för Azure-tjänster
 
 1. I Azure Enterprise-portalen väljer du **Rapport** > **Användningssammanfattning**.
 1. Välj **Redigera IO-nummer** i det övre högra hörnet.
 1. Välj alternativknappen **Azure-tjänster**.
 1. Välj en **fakturaperiod** i listrutan med datumintervall.
-
    Du kan redigera ett inköpsordernummer inom sju dagar efter att du fått ett fakturameddelande, men det måste vara innan du betalar fakturan.
 1. Ange ett nytt IO-nummer i fältet **IO-nummer**.
 1. Välj **Spara** för att spara ändringen.
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Så här uppdaterar du inköpsordernumret för Azure Marketplace:
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>Uppdatera inköps order numret för Azure Marketplace
 
 1. I Azure Enterprise-portalen väljer du **Rapport** > **Användningssammanfattning**.
 1. Välj **Redigera IO-nummer** i det övre högra hörnet.
 1. Välj alternativknappen **Marketplace**.
-1. Välj en **fakturaperiod** i listrutan med datumintervall.
-
-   Du kan redigera ett inköpsordernummer inom sju dagar efter att du fått ett fakturameddelande, men det måste vara innan du betalar fakturan.
+1. Välj en **fakturaperiod** i listrutan med datumintervall.  
+    Du kan redigera ett inköpsordernummer inom sju dagar efter att du fått ett fakturameddelande, men det måste vara innan du betalar fakturan.
 1. Ange ett nytt IO-nummer i fältet **IO-nummer**.
 1. Välj **Spara** för att spara ändringen.
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>Lås IO-nummer för att förhindra automatisk uppdatering i kommande fakturerings cykler
+
+När du har låst inköps order numret förblir det låst för alla nya fakturor och du behöver inte uppdatera inköps order numret.
+
+1.  I Azure Enterprise Portal väljer du **rapport**  >  **användnings Sammanfattning**.
+2.  Välj **Redigera IO-nummer** i det övre högra hörnet.
+3.  Ange ett nytt inköps order nummer i fältet **inköps nummer** .
+4.  Välj rutan **Lås IO-nummer** .
+5.  Välj **Spara** för att spara ändringen.  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="Skärm bild som visar rutan Visa/redigera IO-nummer." lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Faktureringsfrekvens för Azure Enterprise
 

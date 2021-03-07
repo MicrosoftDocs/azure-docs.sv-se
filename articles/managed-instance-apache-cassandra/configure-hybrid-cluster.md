@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: dac59fb5262cc55acfbabedd304913fc7ac57751
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11daa548e90aa1906ba87e081fa1e0be6fe6aff8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749013"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430776"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Snabb start: Konfigurera ett hybrid kluster med en Azure-hanterad instans för Apache Cassandra (för hands version)
 
@@ -39,20 +39,14 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
    :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Lägg till ett nytt undernät till din Virtual Network." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
-1. Nu ska vi tillämpa vissa särskilda behörigheter för det virtuella nätverket och under nätet som Cassandra-hanterade instanser kräver, med hjälp av Azure CLI. Först måste vi identifiera `Resource ID` för ditt befintliga VNet. Kopiera värde resultatet från det här kommandot för senare, det här är `Resource ID` .
+1. Nu ska vi tillämpa vissa särskilda behörigheter för det virtuella nätverket och under nätet som Cassandra-hanterade instanser kräver, med hjälp av Azure CLI. Använd `az role assignment create` kommandot, Ersätt `<subscription ID>` ,, `<resource group name>` `<VNet name>` och `<subnet name>` med lämpliga värden:
 
    ```azurecli-interactive
-    # discover the vnet id
-    az network vnet show -n <your VNet name> -g <Resource Group Name> --query "id" --output tsv
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
-1. Nu ska vi tillämpa de särskilda behörigheterna och skicka utdata från föregående kommando som omfattnings parameter:
-
-   ```azurecli-interactive
-    az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
-   ```
-    > [!NOTE]
-    > `assignee`Värdena och `role` ovan är fasta tjänst principer respektive roll-ID. 
+   > [!NOTE]
+   > `assignee`Värdena och `role` i föregående kommando är fasta tjänst principer respektive roll identifierare.
 
 1. Nu ska vi konfigurera resurser för vårt hybrid kluster. Eftersom du redan har ett kluster, är kluster namnet här bara en logisk resurs för att identifiera namnet på ditt befintliga kluster. Se till att använda namnet på ditt befintliga kluster när du definierar `clusterName` och `clusterNameOverride` variabler i följande skript.
 

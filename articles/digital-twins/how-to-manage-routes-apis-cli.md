@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198548"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433309"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (API: er och CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "102198548"
 
 I Azure Digitals dubbla, kan du dirigera [händelse meddelanden](how-to-interpret-event-data.md) till underordnade tjänster eller anslutna beräknings resurser. Det gör du genom att först konfigurera **slutpunkter** som kan ta emot händelserna. Du kan sedan skapa  [**händelse vägar**](concepts-route-events.md) som anger vilka händelser som genereras av digitala Digital-meddelanden i Azure som levereras till vilka slut punkter.
 
-Den här artikeln vägleder dig genom processen för att skapa slut punkter och vägar med [REST-API: er](/rest/api/azure-digitaltwins/), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)och [Azure Digitals flätat CLI](how-to-use-cli.md).
+Den här artikeln vägleder dig genom processen för att skapa slut punkter och vägar med [REST-API: er](/rest/api/azure-digitaltwins/), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)och [Azure Digitals flätat CLI](how-to-use-cli.md).
 
 Du kan också hantera slut punkter och vägar med [Azure Portal](https://portal.azure.com). En version av den här artikeln som använder portalen i stället finns i [*så här gör du: hantera slut punkter och vägar (portal)*](how-to-manage-routes-portal.md).
 
@@ -208,7 +208,7 @@ Händelse vägar kan skapas med Azure Digitals dubbla [ **EventRoutes** data Pla
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Skapa vägar med API: er och C# SDK
 
-Ett sätt att definiera händelse vägar är med [API: er för data planet](how-to-use-apis-sdks.md#overview-data-plane-apis). I exemplen i det här avsnittet används [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+Ett sätt att definiera händelse vägar är med [API: er för data planet](how-to-use-apis-sdks.md#overview-data-plane-apis). I exemplen i det här avsnittet används [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client).
 
 `CreateOrReplaceEventRouteAsync` är SDK-anropet som används för att lägga till en händelse väg. Här är ett exempel på användningen:
 

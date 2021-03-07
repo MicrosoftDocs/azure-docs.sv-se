@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539102"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433802"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Skapa Sök index i Azure Kognitiv sökning
 
@@ -61,7 +61,7 @@ Andra element komprimeras för det kortfattat, men följande länkar kan ge info
 
 ## <a name="choose-a-client"></a>Välj en klient
 
-Det finns flera metoder för att skapa ett sökindex. Vi rekommenderar Azure Portal-eller REST-API: er för tidig utveckling och koncept validerings testning.
+Det finns flera sätt att skapa ett sökindex. Vi rekommenderar Azure Portal eller SDK: er för att utveckla och testa koncept tidigt.
 
 Under utvecklingen bör du planera om frekventa återuppbyggnadar. Eftersom fysiska strukturer skapas i tjänsten är det nödvändigt att [släppa och återskapa index](search-howto-reindex.md) för de flesta ändringar i en befintlig fält definition. Du kan överväga att arbeta med en delmängd av dina data för att göra återskapandet snabbare.
 
@@ -110,7 +110,7 @@ För Kognitiv sökning implementerar Azure SDK: er allmänt tillgängliga funkti
 
 Ett Sök dokument definieras av `fields` samlingen. Du behöver fält för frågor och nycklar. Du behöver förmodligen också fält för att stödja filter, ansikte och sortering. Du kanske också behöver fält för data som en användare aldrig ser, till exempel om du vill ha fält för vinst marginaler eller marknadsförings kampanjer som du kan använda för att ändra Sök rangordning.
 
-Ett fält av typen EDM. String måste anges som dokument nyckel. Den används för att unikt identifiera varje sökdokument. Du kan hämta ett dokument efter dess nyckel för att fylla i en informations sida.  
+Ett fält av typen EDM. String måste anges som dokument nyckel. Den används för att unikt identifiera varje sökdokument och är Skift läges känsligt. Du kan hämta ett dokument efter dess nyckel för att fylla i en informations sida.
 
 Om inkommande data är hierarkiska kan du tilldela data typen [komplex typ](search-howto-complex-data-types.md) som representerar de kapslade strukturerna. Den inbyggda exempel data uppsättningen, hotell, visar komplexa typer som använder en adress (innehåller flera delfält) som har en 1-till-en-relation med varje hotell, och en komplex samling för rum där flera rum är associerade med varje hotell. 
 

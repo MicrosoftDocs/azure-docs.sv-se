@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: text till tal
-ms.openlocfilehash: c3f1db836ce028b6881efe0b2fa90e9ac19caac8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058241"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428240"
 ---
 # <a name="get-started-with-text-to-speech"></a>Komma igång med text till tal
 
@@ -53,6 +53,20 @@ ms.locfileid: "92058241"
 ::: zone pivot="programmer-tool-spx"
 [!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
+
+## <a name="get-position-information"></a>Hämta positions information
+
+Ditt projekt kan behöva känna till när ett ord läses upp av tal-till-text så att det kan ta en speciell åtgärd baserat på den tiden. Om du till exempel vill markera ord som de var talade måste du veta vad du ska markera, när du ska markera det och hur länge du vill markera det.
+
+Du kan göra detta med hjälp av `WordBoundary` händelsen som är tillgänglig i `SpeechSynthesizer` . Den här händelsen inträffar i början av varje nytt talade ord och ger en tids förskjutning i den talade data strömmen samt en text förskjutning i indata-prompten.
+
+* `AudioOffset` rapporterar hur lång tid det tar att mata ut ljudet mellan början av syntesen och början av nästa ord. Detta mäts i hundra-nanosekunder-enheter (HNS) med 10 000 HNS motsvarande 1 millisekunder.
+* `WordOffset` rapporterar tecken positionen i Indatasträngen (ursprunglig text eller [SSML](speech-synthesis-markup.md)) omedelbart före det ord som ska läsas.
+
+> [!NOTE]
+> `WordBoundary` händelser aktive ras när ljud data för utdata blir tillgängliga, vilket är snabbare än uppspelning till en utdataenhet. Synkronisering av ström-timing måste utföras av anroparen på lämpligt sätt.
+
+Du hittar exempel på hur du kan använda `WordBoundary` i [text till tal-exempel](https://aka.ms/csspeech/samples) på GitHub.
 
 ## <a name="next-steps"></a>Nästa steg
 

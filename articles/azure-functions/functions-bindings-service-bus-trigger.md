@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788561"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435162"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus utlösare för Azure Functions
 
@@ -323,7 +323,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `ServiceBusTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste vara inställd på "serviceBusTrigger". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position** | saknas | Måste vara inställt på "in". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
@@ -346,8 +346,8 @@ Följande parameter typer är tillgängliga för kön eller ämnes meddelandet:
 * `string` – Om meddelandet är text.
 * `byte[]` – Användbart för binära data.
 * En anpassad typ – om meddelandet innehåller JSON Azure Functions försöker deserialisera JSON-data.
-* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) .
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) – Används för att ta emot och bekräfta meddelanden från meddelande behållaren (krävs när [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) har angetts till `false` )
+* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) – Används för att ta emot och bekräfta meddelanden från meddelande behållaren (krävs när [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) har angetts till `false` )
 
 Dessa parameter typer är för Azure Functions version 1. x. för 2. x och högre använder du [`Message`](/dotnet/api/microsoft.azure.servicebus.message) i stället för `BrokeredMessage` .
 
@@ -358,7 +358,7 @@ Följande parameter typer är tillgängliga för kön eller ämnes meddelandet:
 * `string` – Om meddelandet är text.
 * `byte[]` – Användbart för binära data.
 * En anpassad typ – om meddelandet innehåller JSON Azure Functions försöker deserialisera JSON-data.
-* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) .
+* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
 Dessa parametrar är för Azure Functions version 1. x. för 2. x och högre använder du [`Message`](/dotnet/api/microsoft.azure.servicebus.message) i stället för `BrokeredMessage` .
 
@@ -390,13 +390,13 @@ Hantering av skadligt meddelande kan inte styras eller konfigureras i Azure Func
 
 Functions-körningen tar emot ett meddelande i [PeekLock-läge](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Det anropar `Complete` meddelandet om funktionen har slutförts eller anropas `Abandon` om funktionen Miss lyckas. Om funktionen körs längre än `PeekLock` tids gränsen förnyas låset automatiskt så länge funktionen körs.
 
-`maxAutoRenewDuration`Kan konfigureras i *host.jspå*, som mappar till [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true). Det högsta tillåtna värdet för den här inställningen är 5 minuter enligt Service Bus-dokumentationen, men du kan öka tids gränsen för funktioner från standardvärdet 5 minuter till 10 minuter. För Service Bus funktioner vill du inte göra det eftersom du skulle överskrida den Service Bus förnyelse gränsen.
+`maxAutoRenewDuration`Kan konfigureras i *host.jspå*, som mappar till [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration). Det högsta tillåtna värdet för den här inställningen är 5 minuter enligt Service Bus-dokumentationen, men du kan öka tids gränsen för funktioner från standardvärdet 5 minuter till 10 minuter. För Service Bus funktioner vill du inte göra det eftersom du skulle överskrida den Service Bus förnyelse gränsen.
 
 ## <a name="message-metadata"></a>Metadata för meddelande
 
-Service Bus utlösaren innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. De här egenskaperna är medlemmar i [meddelande](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true) klassen.
+Service Bus utlösaren innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. De här egenskaperna är medlemmar i [meddelande](/dotnet/api/microsoft.azure.servicebus.message) klassen.
 
-|Egenskap|Typ|Beskrivning|
+|Egenskap|Typ|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|En innehålls typ identifierare som används av avsändaren och mottagaren för programspecifik logik.|
 |`CorrelationId`|`string`|Korrelations-ID: t.|

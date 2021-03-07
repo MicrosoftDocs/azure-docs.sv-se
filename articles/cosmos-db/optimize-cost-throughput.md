@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 0c95fc9e416399b5c8fe032e0d3af0c3b7f9cf6e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296547"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433581"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimera kostnaden för etablerat dataflöde i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Som du ser i följande tabell, beroende på valet av API, kan du etablera data f
 
 Genom att tillhandahålla data flöde på olika nivåer kan du optimera dina kostnader baserat på arbets Belastningens egenskaper. Som tidigare nämnts kan du program mässigt och när som helst öka eller minska ditt etablerade data flöde för antingen enskilda behållare eller kollektivt i en uppsättning behållare. Genom att elastiskt skala data flöde när din arbets belastning ändras betalar du bara för det data flöde som du har konfigurerat. Om din behållare eller en uppsättning behållare distribueras över flera regioner, garanteras det data flöde som du konfigurerar på behållaren eller en uppsättning behållare som görs tillgängliga i alla regioner.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>Optimera med Rate-begränsa dina begär Anden
+## <a name="optimize-with-rate-limiting-your-requests"></a>Optimera genom att hastighetsbegränsa dina förfrågningar
 
 För arbets belastningar som inte är känsliga för svars tider kan du etablera mindre genom strömning och låta program hantera begränsningen när det faktiska data flödet överskrider det etablerade data flödet. Servern kommer att förebyggande syfte avsluta begäran med `RequestRateTooLarge` (HTTP-statuskod 429) och returnera `x-ms-retry-after-ms` rubriken som visar hur lång tid i millisekunder som användaren måste vänta innan begäran försöker igen. 
 
@@ -81,7 +81,7 @@ De ursprungliga SDK: erna (.NET/.NET Core, Java, Node.js och python) fångar imp
 
 Om du har mer än en klient ackumulerad på ett konsekvent sätt över begär ande frekvensen, kanske standard antalet nya försök, som för närvarande är 9, inte räcker. I sådana fall genererar klienten en `RequestRateTooLargeException` med status kod 429 till programmet. Standard antalet återförsök kan ändras genom att ställa in `RetryOptions` på ConnectionPolicy-instansen. Som standard `RequestRateTooLargeException` returneras med status kod 429 efter en ackumulerad vänte tid på 30 sekunder om begäran fortsätter att köras över begär ande frekvensen. Detta inträffar även om det aktuella antalet återförsök är mindre än max antalet försök, måste det vara standardvärdet 9 eller ett användardefinierat värde. 
 
-[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) är inställt på 3, så i det här fallet, om en begär ande åtgärd är begränsad genom att överskrida det reserverade data flödet för behållaren, försöker åtgärden tre gånger innan undantaget utlöses till programmet. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) är inställt på 60, så i det här fallet om den ackumulerade återförsöks tiden i sekunder sedan den första begäran överskrider 60 sekunder, genereras undantaget.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests) är inställt på 3, så i det här fallet, om en begär ande åtgärd är begränsad genom att överskrida det reserverade data flödet för behållaren, försöker åtgärden tre gånger innan undantaget utlöses till programmet. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) är inställt på 60, så i det här fallet om den ackumulerade återförsöks tiden i sekunder sedan den första begäran överskrider 60 sekunder, genereras undantaget.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -99,7 +99,7 @@ En bra partitionerings strategi är viktig för att optimera kostnader i Azure C
 
 * Välj en partitionsnyckel som har en mängd olika värden. 
 
-Den grundläggande idén är att sprida data och aktiviteten i din behållare över en uppsättning logiska partitioner, så att resurser för data lagring och data flöde kan distribueras mellan de logiska partitionerna. Kandidater för partitionsalternativ kan innehålla de egenskaper som visas ofta som ett filter i dina frågor. Frågor kan effektivt dirigeras genom att inkludera partitionsnyckel i filtrets predikat. Med en sådan partitionerings strategi är det mycket enklare att optimera det etablerade data flödet. 
+Den grundläggande idén är att sprida data och aktiviteten i din behållare över en uppsättning logiska partitioner, så att resurser för data lagring och data flöde kan distribueras mellan de logiska partitionerna. Kandidater för partitionsalternativ kan innehålla de egenskaper som visas ofta som ett filter i dina frågor. Frågor kan dirigeras effektivt genom att du tar med partitionsnyckeln i filterpredikatet. Med en sådan partitionerings strategi är det mycket enklare att optimera det etablerade data flödet. 
 
 ### <a name="design-smaller-items-for-higher-throughput"></a>Utforma mindre objekt för högre data flöde 
 
