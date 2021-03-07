@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0da5721c577957b101ac8a2d9346c0536f0a88
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094870"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424146"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Åtkomstkontroll i Azure Data Lake Storage Gen1
 
@@ -286,7 +286,11 @@ På Azure Portal går du till **Azure Active Directory-> företags program** och
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Stöder Data Lake Storage Gen1 arv av ACL: er?
 
-Nej, men standard-ACL:er kan användas för att ange ACL:er för underordnade filer och mappar som nyligen skapats under den överordnade mappen.  
+Nej, men standard-ACL:er kan användas för att ange ACL:er för underordnade filer och mappar som nyligen skapats under den överordnade mappen.
+
+### <a name="what-are-the-limits-for-acl-entries-on-files-and-folders"></a>Vilka är gränserna för ACL-poster på filer och mappar?
+
+32 ACL: er kan anges per fil och per katalog. Åtkomst-och standard-ACL: er har sin egen begränsning för 32 ACL-poster. Använd säkerhets grupper för ACL-tilldelningar om möjligt. Genom att använda grupper kan du minska det maximala antalet ACL-poster per fil eller katalog.
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Var hittar jag mer information om POSIX-modellen för åtkomstkontroll?
 

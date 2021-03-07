@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d3378b08ace73b2bc9a10286abf5a48f3063ba7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ea8709af33510b1848d0c031d513e4af7a352d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743513"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436557"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Använd Azure Portal för att hantera Edge Storage-konton på din Azure Stack Edge Pro
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Använda Azure-portalen till att hantera Edge-lagringskonton i Azure Stack Edge Pro
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Den här artikeln beskriver hur du hanterar Edge Storage-konton på Azure Stack Edge Pro. Du kan hantera Azure Stack Edge Pro via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att lägga till eller ta bort gräns lagrings konton på enheten.
 
@@ -91,7 +91,7 @@ Utför följande steg för att synkronisera lagrings kontots åtkomst nyckel:
 
     ![Välj synkronisera lagrings nyckel](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-1.png)
 
-2. Välj **Ja**när du uppmanas att bekräfta.
+2. Välj **Ja** när du uppmanas att bekräfta.
 
     ![Välj Sync Storage-nyckel 2](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 

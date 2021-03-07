@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/07/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 25db4e7f3e4e1f7056979c4c40c6ffc61f340439
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: dd72865e35318c7ff43dc17b7c92b9cc2f3e9790
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345379"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436863"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>Viktig information om Azure Stack Edge Pro med GPU Preview
+
+[!INCLUDE [applies-to-Pro-GPU-sku](../../includes/azure-stack-edge-applies-to-gpu-sku.md)]
 
 I följande versions information identifieras kritiska öppna problem och lösta problem för 2008 Preview-versionen för dina Azure Stack Edge Pro-enheter med GPU.
 
 Viktig information uppdateras kontinuerligt och eftersom kritiska problem som kräver en lösning upptäcks, läggs de till. Läs igenom informationen i viktig information innan du distribuerar din Azure Stack Edge Pro-enhet.
 
-Den här artikeln gäller för följande program varu version – **Azure Stack Edge Pro 2008**. 
+Den här artikeln gäller för följande program varu version – **Azure Stack Edge Pro 2008**.
 
 <!--- **2.1.1328.1904**-->
 
@@ -51,7 +53,7 @@ Följande tabell innehåller en sammanfattning av kända problem för Azure Stac
 |**10.**|Kubernetes |Port 31000 är reserverad för Kubernetes-instrumentpanelen. På samma sätt är IP-adresserna 172.28.0.1 och 172.28.0.10 reserverade för Kubernetes tjänst och kärn-DNS-tjänst i standard konfigurationen.|Använd inte reserverade IP-adresser.|
 |**11.3.**|Kubernetes |Kubernetes tillåter för närvarande inte Multi-Protocol LoadBalancer-tjänster. Till exempel en DNS-tjänst som måste lyssna på både TCP och UDP. |För att undvika den här begränsningen av Kubernetes med MetalLB kan två tjänster (en för TCP, en för UDP) skapas på samma Pod-selektor. Dessa tjänster använder samma delnings nyckel och spec. loadBalancerIP för att dela samma IP-adress. IP-adresser kan också delas om du har fler tjänster än tillgängliga IP-adresser. <br> Mer information finns i [IP-adress delning](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**12.5.**|Kubernetes-kluster|Befintliga Azure IoT Edge Marketplace-moduler kan inte köras på Kubernetes-klustret som värd plattform för IoT Edge på Azure Stack Edge-enhet.|Modulerna måste ändras innan de distribueras på Azure Stack Edge-enheten. Mer information finns i ändra Azure IoT Edge moduler från Marketplace till att köra på Azure Stack Edge-enhet.<!-- insert link-->|
-|**13.4.**|Kubernetes |Filbaserade bind-monteringar stöds inte med Azure IoT Edge på Kubernetes på Azure Stack Edge-enhet.|IoT Edge använder ett översättnings lager för att översätta `ContainerCreate` alternativ till Kubernetes-konstruktioner. Att skapa `Binds` kartor till hostpath-katalogen eller skapa och därmed kan filbaserade bindnings monteringar inte vara bundna till sökvägar i IoT Edge behållare.|
+|**13.4.**|Kubernetes |Filbaserade bind-monteringar stöds inte med Azure IoT Edge på Kubernetes på Azure Stack Edge-enhet.|IoT Edge använder ett översättnings lager för att översätta `ContainerCreate` alternativ till Kubernetes-konstruktioner. Att skapa `Binds` kartor till `hostpath` katalogen eller skapa och därmed kan filbaserade bindnings-monteringar inte bindas till sökvägar i IoT Edge behållare.|
 |**längre.**|Kubernetes |Om du tar med dina egna certifikat för IoT Edge och lägger till dem på din Azure Stack Edge-enhet, hämtas inte de nya certifikaten som en del av Helm-diagrammets uppdatering.|Du kan lösa det här problemet genom att [ansluta till enhetens PowerShell-gränssnitt](azure-stack-edge-gpu-connect-powershell-interface.md). Starta om `iotedged` och `edgehub` poddar.|
 |**15.4.**|Certifikat |I vissa fall kan det ta flera sekunder att uppdatera certifikat tillstånd i det lokala användar gränssnittet. |Följande scenarier i det lokala användar gränssnittet kan påverkas.<ul><li>**Status** kolumn på sidan **certifikat** .</li><li>**Säkerhets** panel på sidan **Kom igång** .</li><li>**Konfigurations** panelen på **översikts** sidan.</li></ul>  |
 

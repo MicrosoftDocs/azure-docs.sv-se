@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: aceb26604d67f42cdbbe1395e3a4b08675d70ea1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4c552e6ac195555990cdbbab44f16be32b7930c8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078534"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425336"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Snabb start: Bygg en .NET-konsol-app för att hantera Azure Cosmos DB SQL API-resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ Azure Cosmos DB är Microsofts snabba NoSQL-databas med öppna API: er för alla
 * Fråga efter data 
 * Ta bort databasen
 
-[API-referens dokumentation](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet&preserve-view=true)  |  [Biblioteks käll kod](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[API-referens dokumentation](/dotnet/api/microsoft.azure.cosmos)  |  [Biblioteks käll kod](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -50,7 +50,7 @@ Det här avsnittet beskriver hur du skapar ett Azure Cosmos-konto och konfigurer
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Skapa ett Azure Cosmos-konto
 
-Om du använder alternativet [prova Azure Cosmos dB för kostnads fri](https://azure.microsoft.com/try/cosmosdb/) för att skapa ett Azure Cosmos-konto måste du skapa ett Azure Cosmos DB konto av typen **SQL API** . Ett Azure Cosmos DB test konto har redan skapats åt dig. Du behöver inte skapa kontot explicit, så du kan hoppa över det här avsnittet och gå vidare till nästa avsnitt.
+Om du använder alternativet [prova Azure Cosmos dB för kostnads fri](https://azure.microsoft.com/try/cosmosdb/) för att skapa ett Azure Cosmos-konto måste du skapa ett Azure Cosmos DB konto av typen **SQL API**. Ett Azure Cosmos DB test konto har redan skapats åt dig. Du behöver inte skapa kontot explicit, så du kan hoppa över det här avsnittet och gå vidare till nästa avsnitt.
 
 Om du har en egen Azure-prenumeration eller skapat en prenumeration kostnads fritt bör du skapa ett Azure Cosmos-konto explicit. Följande kod skapar ett Azure Cosmos-konto med konsekvens i sessionen. Kontot replikeras i `South Central US` och `North Central US` .  
 
@@ -163,23 +163,23 @@ Innan du börjar skapa programmet ska vi titta närmare på hierarkin över resu
 
 * Azure Cosmos-konto 
 * Databaser 
-* Containrar 
+* Containers 
 * Poster
 
 Mer information om hierarkin för olika entiteter finns i [arbeta med databaser, behållare och objekt i Azure Cosmos DB](account-databases-containers-items.md) artikel. Du kommer att använda följande .NET-klasser för att interagera med dessa resurser:
 
-* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient?preserve-view=true&view=azure-dotnet) – den här klassen tillhandahåller en logisk representation på klient sidan för Azure Cosmos DBS tjänsten. Klient objekt används för att konfigurera och köra begär Anden mot tjänsten.
+* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) – den här klassen tillhandahåller en logisk representation på klient sidan för Azure Cosmos DBS tjänsten. Klient objekt används för att konfigurera och köra begär Anden mot tjänsten.
 
-* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet&preserve-view=true) – den här metoden skapar (om den inte finns) eller hämtar (om redan finns) en databas resurs som en asynkron åtgärd. 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) – den här metoden skapar (om den inte finns) eller hämtar (om redan finns) en databas resurs som en asynkron åtgärd. 
 
-* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true)– den här metoden skapar (om den inte finns) eller hämtar (om den finns redan) en behållare som en asynkron åtgärd. Du kan kontrol lera status koden från svaret för att avgöra om behållaren nyligen skapades (201) eller om en befintlig behållare returnerades (200). 
-* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true) – den här metoden skapar ett objekt i behållaren. 
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync)– den här metoden skapar (om den inte finns) eller hämtar (om den finns redan) en behållare som en asynkron åtgärd. Du kan kontrol lera status koden från svaret för att avgöra om behållaren nyligen skapades (201) eller om en befintlig behållare returnerades (200). 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync) – den här metoden skapar ett objekt i behållaren. 
 
-* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet&preserve-view=true) – den här metoden skapar ett objekt i behållaren om det inte redan finns eller ersätter objektet om det redan finns. 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync) – den här metoden skapar ett objekt i behållaren om det inte redan finns eller ersätter objektet om det redan finns. 
 
-* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet&preserve-view=true) – den här metoden skapar en fråga för objekt under en behållare i en Azure Cosmos-databas med hjälp av ett SQL-uttryck med parametriserade värden. 
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator) – den här metoden skapar en fråga för objekt under en behållare i en Azure Cosmos-databas med hjälp av ett SQL-uttryck med parametriserade värden. 
 
-* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet&preserve-view=true) – tar bort den angivna databasen från ditt Azure Cosmos-konto. `DeleteAsync` metoden tar bara bort databasen. Avslaget av `Cosmosclient` instansen ska ske separat (vilket sker i DeleteDatabaseAndCleanupAsync-metoden. 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync) – tar bort den angivna databasen från ditt Azure Cosmos-konto. `DeleteAsync` metoden tar bara bort databasen. Avslaget av `Cosmosclient` instansen ska ske separat (vilket sker i DeleteDatabaseAndCleanupAsync-metoden. 
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Kodexempel
 

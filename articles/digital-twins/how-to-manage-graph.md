@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050944"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433326"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Hantera en graf med digitala dubbla med relationer
 
 Hjärtat i Azure Digitals flätas är det [dubbla diagrammet](concepts-twins-graph.md) som representerar hela miljön. Det dubbla grafen består av enskilda digitala dubbla anslutningar via **relationer**. 
 
-När du har en fungerande [Azure Digital-instansen](how-to-set-up-instance-portal.md) och har konfigurerat [autentiserings](how-to-authenticate-client.md) kod i din klient app, kan du använda [**DigitalTwins-API: er**](/rest/api/digital-twins/dataplane/twins) för att skapa, ändra och ta bort digitala dubbla och deras relationer i en digital Azure-instans. Du kan också använda [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)eller [Azure Digitals flätat CLI](how-to-use-cli.md).
+När du har en fungerande [Azure Digital-instansen](how-to-set-up-instance-portal.md) och har konfigurerat [autentiserings](how-to-authenticate-client.md) kod i din klient app, kan du använda [**DigitalTwins-API: er**](/rest/api/digital-twins/dataplane/twins) för att skapa, ändra och ta bort digitala dubbla och deras relationer i en digital Azure-instans. Du kan också använda [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)eller [Azure Digitals flätat CLI](how-to-use-cli.md).
 
 Den här artikeln fokuserar på att hantera relationer och diagrammet som helhet. information om hur du arbetar med enskilda digitala dubbla, finns i [*så här gör du: hantera digitala dubbla*](how-to-manage-twin.md).
 
@@ -97,7 +97,7 @@ Du kan använda de hämtade relationerna för att navigera till andra dubbla i g
 Azure Digitals dubbla är också ett API för att hitta alla **inkommande** relationer till en specifik kontakt. Detta är ofta användbart för omvänd navigering, eller när du tar bort en dubbel.
 
 >[!NOTE]
-> `IncomingRelationship` anrop returnerar inte hela bröd texten i relationen. Mer information om `IncomingRelationship` klassen finns i [referens dokumentationen](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true).
+> `IncomingRelationship` anrop returnerar inte hela bröd texten i relationen. Mer information om `IncomingRelationship` klassen finns i [referens dokumentationen](/dotnet/api/azure.digitaltwins.core.incomingrelationship).
 
 Kod exemplet i föregående avsnitt fokuserade på att söka efter utgående relationer från en dubbel. Följande exempel är strukturerat på samma sätt, men hittar *inkommande* relationer till den dubbla i stället. I det här exemplet används även SDK-anropet (markerat) i en anpassad metod som kan visas i ett större programs kontext.
 
@@ -157,7 +157,7 @@ Kodfragmentet använder [*Room.jspå*](https://github.com/Azure-Samples/digital-
 Innan du kör exemplet gör du följande:
 1. Ladda ned modell filerna, placera dem i projektet och Ersätt `<path-to>` plats hållarna i koden nedan för att tala om för programmet var de finns.
 2. Ersätt plats hållaren `<your-instance-hostname>` med din Azure Digital-instansen värdnamn.
-3. Lägg till två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
+3. Lägg till två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

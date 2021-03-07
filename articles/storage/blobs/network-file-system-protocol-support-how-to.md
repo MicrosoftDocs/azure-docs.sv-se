@@ -9,16 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878586"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428651"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Montera Blob Storage med hjälp av Network File System (NFS) 3,0-protokollet (för hands version)
 
-Du kan montera en behållare i Blob Storage från en Windows-eller Linux-baserad virtuell Azure-dator (VM) eller ett Windows-eller Linux-system som körs lokalt med hjälp av NFS 3,0-protokollet. Den här artikeln innehåller steg-för-steg-anvisningar. Om du vill veta mer om NFS 3,0 protokoll stöd i Blob Storage, se [Network File System (NFS) stöd för 3,0-protokoll i Azure Blob Storage (för hands version)](network-file-system-protocol-support.md).
+Du kan montera en behållare i Blob Storage från en Linux-baserad virtuell dator i Azure eller ett Linux-system som körs lokalt med hjälp av NFS 3,0-protokollet. Den här artikeln innehåller steg-för-steg-anvisningar. Om du vill veta mer om NFS 3,0 protokoll stöd i Blob Storage, se [Network File System (NFS) stöd för 3,0-protokoll i Azure Blob Storage (för hands version)](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Steg 1: registrera NFS 3,0-protokoll funktionen med din prenumeration
 
@@ -107,9 +107,7 @@ Skapa en behållare i ditt lagrings konto genom att använda något av dessa ver
 
 ## <a name="step-7-mount-the-container"></a>Steg 7: montera behållaren
 
-Skapa en katalog på ditt Windows-eller Linux-system och montera sedan en behållare i lagrings kontot.
-
-### <a name="linux"></a>[Linux](#tab/linux)
+Skapa en katalog på Linux-systemet och montera sedan en behållare i lagrings kontot.
 
 1. Skapa en katalog på ett Linux-system.
 
@@ -126,32 +124,6 @@ Skapa en katalog på ditt Windows-eller Linux-system och montera sedan en behål
    - Ersätt `<storage-account-name>` plats hållaren som visas i det här kommandot med namnet på ditt lagrings konto.  
 
    - Ersätt `<container-name>` plats hållaren med namnet på din behållare.
-
-
-### <a name="windows"></a>[Windows](#tab/windows)
-
-1. Öppna dialog rutan **Windows-funktioner** och aktivera sedan funktionen **klient för NFS** . 
-
-   ![Funktionen klient för Network File System](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
-
-2. Öppna ett **kommando tolks** fönster (cmd.exe). Montera sedan en behållare med hjälp av [monterings](/windows-server/administration/windows-commands/mount) kommandot.
-
-   ```
-   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
-   ```
-
-   - Ersätt `<storage-account-name>` plats hållaren som visas i det här kommandot med namnet på ditt lagrings konto.  
-
-   - Ersätt `<container-name>` plats hållaren med namnet på din behållare.
-
-3. Om du behöver Skriv behörighet kan du behöva ändra standard-UID och GID som Windows använder för att ansluta till resursen. Det gör du genom att köra följande PowerShell-kommandon som administratör:
-
-   ```
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
-   ```
-   
-   - Starta om NFS-klienttjänsten eller starta om servern när du har gjort den här ändringen.
 
 ---
 

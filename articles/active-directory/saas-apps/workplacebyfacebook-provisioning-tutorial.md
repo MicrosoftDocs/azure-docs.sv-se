@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: e690a761efcd16428f9da8fe53e5dd8d26e9ff79
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 98a151c9f740c3ab2f1471f98c7fab83cc848a28
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181296"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438412"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Självstudie: Konfigurera arbets ytan efter Facebook för automatisk användar etablering
 
@@ -40,6 +40,9 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 > [!NOTE]
 > Vi rekommenderar att du inte använder en produktionsmiljö för att testa stegen i den här självstudien.
+
+> [!NOTE]
+> Den här integreringen är också tillgänglig för användning från Azure AD amerikanska myndigheters moln miljö. Du hittar det här programmet i Cloud App-galleriet för Azure AD amerikanska myndigheter och konfigurerar det på samma sätt som du gör från det offentliga molnet.
 
 Du bör följa de här rekommendationerna när du testar stegen i självstudien:
 
@@ -133,7 +136,7 @@ Med Azure AD-etableringstjänsten kan du bestämma vem som ska etableras, basera
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Sträng|
    |urn: scim: schemas: tillägg: Facebook: auth_method: 1.0: auth_method|Sträng|
    |urn: scim: schemas: tillägg: Facebook: Frontline: 1.0.is_frontline|Boolesk|
-   |urn: scim: schemas: tillägg: Facebook: starttermdates: 1.0. StartDate|Heltal|
+   |urn: scim: schemas: tillägg: Facebook: starttermdates: 1.0. StartDate|Integer|
 
 
 10. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 388be1b13f89a50bed003731c01c6ab6287faaf9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491072"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438802"
 ---
 # <a name="monitor-your-azure-stack-edge-pro"></a>Övervaka Azure Stack Edge Pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-mini-r-and-fpga-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
 Den här artikeln beskriver hur du övervakar Azure Stack Edge Pro. Du kan övervaka din enhet genom att använda Azure Portal eller det lokala webb gränssnittet. Använd Azure Portal för att Visa enhets händelser, konfigurera och hantera aviseringar och visa mått. Använd det lokala webb gränssnittet på din fysiska enhet för att Visa maskin varu status för de olika enhets komponenterna.
 
@@ -56,12 +58,12 @@ I det här avsnittet beskrivs övervaknings måtten på enheten. Måtten kan var
 
 En fullständig lista över måtten visas i följande tabell:
 
-|Kapacitetsmått                     |Beskrivning  |
+|Kapacitetsmått                     |Description  |
 |-------------------------------------|-------------|
 |**Tillgänglig kapacitet**               | Avser storleken på de data som kan skrivas till enheten. Detta mått är med andra ord den kapacitet som kan göras tillgänglig på enheten. <br></br>Du kan frigöra enhets kapaciteten genom att ta bort den lokala kopian av filer som har en kopia på både enheten och molnet.        |
 |**Total kapacitet**                   | Avser det totala antalet byte på enheten för att skriva data till, vilket även kallas för den totala storleken på det lokala cacheminnet. <br></br> Du kan nu öka kapaciteten för en befintlig virtuell enhet genom att lägga till en datadisk. Lägg till en datadisk via hypervisor-hantering för den virtuella datorn och starta sedan om den virtuella datorn. Den lokala lagringspoolen för gateway-enheten kommer att utökas för att hantera den nyligen tillagda data disken. <br></br>Mer information finns i lägga till [en hård disk för virtuell Hyper-V-dator](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
 
-|Transaktionsmått              | Beskrivning         |
+|Transaktionsmått              | Description         |
 |-------------------------------------|---------|
 |**Överförda moln byte (enhet)**    | Summan av alla byte som laddats upp över alla resurser på enheten        |
 |**Överförda moln byte (resurs)**     | Överförda byte per resurs. Detta mått kan vara: <br></br> AVG, som är (summan av alla byte som överförs per resurs/antal resurser),  <br></br>Max, vilket är det maximala antalet byte som överförs från en resurs <br></br>Min, som är det minsta antalet byte som överförs från en resurs      |
@@ -72,7 +74,7 @@ En fullständig lista över måtten visas i följande tabell:
 |**Läs data flöde (nätverk)**           | Innehåller systemets nätverks data flöde för alla byte som läses från molnet. Den här vyn kan innehålla data som inte är begränsade till resurser. <br></br>Vid delning visas trafiken över alla nätverkskort på enheten, inklusive kort som inte är anslutna eller aktiverade.      |
 |**Skriv data flöde (nätverk)**       | Innehåller systemets nätverks data flöde för alla byte som skrivs till molnet. Den här vyn kan innehålla data som inte är begränsade till resurser. <br></br>Vid delning visas trafiken över alla nätverkskort på enheten, inklusive kort som inte är anslutna eller aktiverade.          |
 
-| Kant beräknings mått              | Beskrivning         |
+| Kant beräknings mått              | Description         |
 |-------------------------------------|---------|
 |**Edge Compute-minnes användning**      |           |
 |**Edge Compute-procent CPU**    |         |

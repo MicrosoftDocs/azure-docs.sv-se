@@ -5,18 +5,22 @@ author: davidmrdavid
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 9083821fa03c09949daaf3166367489248a4d7d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 62b3c9bb1c6fd53d9f11227a9d7e774d56859d04
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029219"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434771"
 ---
 # <a name="monitor-scenario-in-durable-functions---github-issue-monitoring-sample"></a>Övervaka scenario i Durable Functions GitHub ärende övervaknings exempel
 
 Övervaknings mönstret avser en flexibel återkommande process i ett arbets flöde – till exempel avsökningen tills vissa villkor är uppfyllda. I den här artikeln beskrivs ett exempel som använder Durable Functions för att implementera övervakning.
 
-[! TA med varaktiga funktioner-krav]
+## <a name="prerequisites"></a>Förutsättningar
+
+* [Slutför snabb starts artikeln](quickstart-python-vscode.md)
+* [Klona eller hämta exempel projektet från GitHub](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
+
 
 ## <a name="scenario-overview"></a>Översikt över scenario
 
@@ -45,7 +49,6 @@ I den här artikeln beskrivs följande funktioner i exempel appen:
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator-funktion
 
-# <a name="python"></a>[Python](#tab/python)
 
 Funktionen **E3_Monitor** använder standard *function.jspå* för Orchestrator-funktioner.
 
@@ -55,7 +58,6 @@ Här är den kod som implementerar funktionen:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_Monitor/\_\_init\_\_.py)]
 
----
 
 Den här Orchestrator-funktionen utför följande åtgärder:
 
@@ -73,7 +75,6 @@ Flera Orchestrator-instanser kan köras samtidigt genom att anropa Orchestrator-
 
 Som med andra exempel är hjälp aktivitetens funktioner vanliga funktioner som använder sig av `activityTrigger` trigger-bindningen. Funktionen **E3_TooManyOpenIssues** hämtar en lista över problem som är öppna för tillfället på lagrings platsen och avgör om det finns för många av dem: mer än 3 som per exempel.
 
-# <a name="python"></a>[Python](#tab/python)
 
 *function.jspå* definieras enligt följande:
 
@@ -83,13 +84,11 @@ Här är implementeringen.
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_TooManyOpenIssues/\_\_init\_\_.py)]
 
----
 
 ### <a name="e3_sendalert-activity-function"></a>Funktionen E3_SendAlert aktivitet
 
 Funktionen **E3_SendAlert** använder bindningen Twilio för att skicka ett SMS-meddelande som meddelar slutanvändaren att det finns minst tre öppna problem som avvaktar en lösning.
 
-# <a name="python"></a>[Python](#tab/python)
 
 Dess *function.jspå* är enkelt:
 
@@ -99,7 +98,6 @@ Här är koden som skickar SMS-meddelandet:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_SendAlert/\_\_init\_\_.py)]
 
----
 
 ## <a name="run-the-sample"></a>Kör exemplet
 

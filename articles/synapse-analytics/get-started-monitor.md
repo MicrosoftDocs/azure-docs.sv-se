@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209822"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426048"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Övervaka din Synapse-arbetsyta
 
@@ -30,7 +30,7 @@ I den här självstudien får du lära dig hur du övervakar aktiviteter i din S
 
 ## <a name="integration"></a>Integrering
 
-1. Gå till **pipeline för Integration >**. I den här vyn kan du se varje gång en pipeline har körts i din arbets yta. 
+1. Gå till **Integration > pipeline-körningar**. I den här vyn kan du se varje gång en pipeline har körts i din arbets yta. 
 1. Hitta den pipeline som du körde i föregående steg och klicka på dess **pipelines namn** för att visa information.
 1. Klicka på **navigerings fältet** längst upp i Synapse Studio, klicka på **alla pipelines körs** för att återgå till den föregående vyn.
 
@@ -45,8 +45,7 @@ I den här självstudien får du lära dig hur du övervakar aktiviteter i din S
 1. Navigera till **aktiviteter > SQL-begäranden**.
 1. I den här vyn kan du se SQL-begäranden.
 1. Välj en **pool** som ska övervakas från **pool** filtret. Nu kan du se alla SQL-begäranden som körs eller har körts i din arbets yta i den poolen.
-1. Hitta en speciell SQL-begäran och hovra musen över det objektet. När du har hovrat ser du att en SQL-skript ikon visas.
-1. Klicka på SQL-skriptfilen för att se all text i SQL-begäran.
+1. Hitta en SQL-begäran och klicka på länken **mer** om du vill se hela texten i SQL-begäran.
 
     > [!NOTE] 
     > SQL-begäranden som skickats via Synapse Studio i en dedikerad arbets yta som är aktiverade dedikerad SQL-pool (tidigare SQL DW) kan visas i Monitor Hub. För alla andra övervaknings aktiviteter kan du gå till Azure Portal dedikerad SQL-pool (tidigare SQL DW) övervakning.

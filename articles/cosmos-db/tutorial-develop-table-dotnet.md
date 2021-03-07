@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a890185fcd69967fd2a035c27e1cf92798f04
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c641e24a498a6263d6a7c2325eed099b75a82caa
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548162"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426441"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Kom igång med tabell-API för Azure Cosmos DB och Azure Table Storage med .NET SDK
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -27,7 +27,7 @@ Du kan använda Azure Cosmos DB Tabell-API eller Azure Table Storage för att la
 
 I den här självstudien beskrivs ett exempel som visar hur du använder [Microsoft Azure Cosmos DB tabell bibliotek för .net](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) med Azure Cosmos DB tabell-API och Azure Table Storage-scenarier. Du måste använda den anslutning som är speciell för Azure-tjänsten. De här scenarierna är bekanta med C#-exempel som illustrerar hur du skapar tabeller, infogar/uppdaterar data, frågedata och tar bort tabeller.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att kunna följa med i det här exemplet:
 
@@ -121,7 +121,7 @@ Den här koden definierar en entitets klass som använder kundens förnamn som r
 
 ## <a name="insert-or-merge-an-entity"></a>Infoga eller sammanfoga en entitet
 
-Följande kod exempel skapar ett entitet-objekt och lägger till det i tabellen. Metoden InsertOrMerge i klassen [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) används för att infoga eller slå samman en entitet. Metoden [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) anropas för att utföra åtgärden. 
+Följande kod exempel skapar ett entitet-objekt och lägger till det i tabellen. Metoden InsertOrMerge i klassen [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) används för att infoga eller slå samman en entitet. Metoden [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync) anropas för att utföra åtgärden. 
 
 Högerklicka på din Project- **CosmosTableSamples**. Välj **Lägg till**, **nytt objekt** och Lägg till en klass med namnet **SamplesUtils.cs**. Den här klassen lagrar all kod som krävs för att utföra CRUD-åtgärder på entiteterna. 
 

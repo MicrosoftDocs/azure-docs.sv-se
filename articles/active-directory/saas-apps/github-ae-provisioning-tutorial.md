@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651594"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427019"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Självstudie: Konfigurera GitHub AE för automatisk användar etablering
 
@@ -32,6 +32,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både GitHub AE 
 > * Skapa användare i GitHub AE
 > * Ta bort användare i GitHub AE när de inte behöver åtkomst längre
 > * Behåll användarattribut synkroniserade mellan Azure AD och GitHub AE
+> * Etablera grupper och grupp medlemskap i GitHub AE
 > * Enkel inloggning till [GITHUB AE](./github-ae-tutorial.md) (rekommenderas)
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -59,7 +60,7 @@ Lägg till GitHub AE från Azure AD-programgalleriet för att börja hantera eta
 
 Med Azure AD Provisioning-tjänsten kan du definiera omfång som ska tillhandahållas baserat på tilldelning till programmet och eller baserat på attribut för användaren och/eller gruppen. Om du väljer att omfånget som ska tillhandahållas till din app baserat på tilldelning kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och/eller grupper till programmet. Om du väljer att omfånget som endast ska tillhandahållas baserat på attribut för användaren och/eller gruppen kan du använda ett omfångs filter enligt beskrivningen [här](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* När du tilldelar användare till GitHub AE måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](../develop/howto-add-app-roles-in-azure-ad-apps.md) och lägga till fler roller. 
+* När du tilldelar användare och grupper till GitHub AE måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](../develop/howto-add-app-roles-in-azure-ad-apps.md) och lägga till fler roller. 
 
 * Starta i liten skala. Testa med en liten uppsättning användare och/eller grupper innan de distribueras till alla. När omfång för etablering har angetts till tilldelade användare och/eller grupper kan du styra detta genom att tilldela en eller två användare och/eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attributbaserat omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 

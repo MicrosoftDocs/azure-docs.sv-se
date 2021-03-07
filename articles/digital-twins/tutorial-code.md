@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576269"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424469"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Självstudie: koda med Azure Digitals dubbla API: er
 
-Det är vanligt för utvecklare som arbetar med Azure Digitals dubblare att skriva ett klient program för att interagera med sin instans av Azure Digitals dubbla tjänster. Den här själv studie kursen om utvecklare är en introduktion till programmering mot Azure Digitals-tjänsten med [Azure Digitals-SDK för .net (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Den vägleder dig genom att skriva en C#-konsol klient program steg för steg, som börjar från grunden.
+Det är vanligt för utvecklare som arbetar med Azure Digitals dubblare att skriva ett klient program för att interagera med sin instans av Azure Digitals dubbla tjänster. Den här själv studie kursen om utvecklare är en introduktion till programmering mot Azure Digitals-tjänsten med [Azure Digitals-SDK för .net (C#)](/dotnet/api/overview/azure/digitaltwins/client). Den vägleder dig genom att skriva en C#-konsol klient program steg för steg, som börjar från grunden.
 
 > [!div class="checklist"]
 > * Konfigurera projekt
@@ -57,7 +57,7 @@ Detta skapar flera filer i katalogen, inklusive en som kallas *program.cs* där 
 
 Se till att kommando fönstret är öppet, eftersom du fortsätter att använda det i självstudien.
 
-Lägg sedan **till två beroenden i projektet** som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
+Lägg sedan **till två beroenden i projektet** som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core

@@ -6,16 +6,18 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 585343137a4a8fd8a1fb591c640e1183d71c0fd3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699690"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443105"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Hantera aviseringar om enhets händelser på Azure Stack Edge Pro-resurser
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Den här artikeln beskriver hur du skapar åtgärds regler i Azure Portal för att utlösa eller ignorera aviseringar om enhets händelser som inträffar i en resurs grupp, en Azure-prenumeration eller en enskild Azure Stack Edge-resurs. Den här artikeln gäller för alla modeller av Azure Stack Edge.  
 

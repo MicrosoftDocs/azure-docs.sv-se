@@ -5,12 +5,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4b4b893b222a62619a36d59c2cf042f1aa5590bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708636"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428736"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics-tilläggsprogram schema
 Azure-diagnostik tillägget är en agent i Azure Monitor som samlar in övervaknings data från gäst operativ systemet och arbets belastningar i Azure Compute-resurser. Den här artikeln beskriver det schema som används för konfiguration av Diagnostics-tillägget på virtuella Windows-datorer och andra beräknings resurser.
@@ -42,7 +42,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**PublicConfig**|Krävs. Se beskrivningen på en annan plats på den här sidan.|  
 |**PrivateConfig**|Valfritt. Se beskrivningen på en annan plats på den här sidan.|  
@@ -53,7 +53,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Beskriver konfigurationen för den offentliga diagnostiken.  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**WadCfg**|Krävs. Se beskrivningen på en annan plats på den här sidan.|  
 |**StorageAccount**|Namnet på det Azure Storage konto som data ska lagras i. Kan också anges som en parameter när du kör Set-AzureServiceDiagnosticsExtension-cmdleten.|  
@@ -71,7 +71,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Obligatorisk
 
-|Attribut|Beskrivning|  
+|Attribut|Description|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Den maximala mängd lokalt disk utrymme som kan användas av de olika typerna av diagnostikdata som samlas in av Azure-diagnostik. Standardvärdet är 4096 MB.<br />
 |**useProxyServer** | Konfigurera Azure-diagnostik att använda inställningarna för proxyservern som anges i IE-inställningar.|
@@ -80,7 +80,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
 <br /> <br />
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**CrashDumps**|Se beskrivningen på en annan plats på den här sidan.|  
 |**DiagnosticInfrastructureLogs**|Aktivera samling av loggar som genereras av Azure-diagnostik. De diagnostiska infrastruktur loggarna är användbara för att felsöka själva diagnostik systemet. Valfria attribut är:<br /><br /> - **scheduledTransferLogLevelFilter** – konfigurerar den lägsta allvarlighets graden för loggarna som samlas in.<br /><br /> - **scheduledTransferPeriod** – intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [data typ för XML-varaktighet.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -98,13 +98,13 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Aktivera samlingen av krasch dum par.  
 
-|Attribut|Beskrivning|  
+|Attribut|Description|  
 |----------------|-----------------|  
 |**containerName**|Valfritt. Namnet på BLOB-behållaren i Azure Storage kontot som ska användas för att lagra krasch dum par.|  
 |**crashDumpType**|Valfritt.  Konfigurerar Azure-diagnostik att samla in mini-eller fullständiga krasch dum par.|  
 |**directoryQuotaPercentage**|Valfritt.  Konfigurerar procent andelen av **overallQuotaInMB** som ska reserveras för krasch dum par på den virtuella datorn.|  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Krävs. Definierar konfigurations värden för varje process.<br /><br /> Följande attribut krävs också:<br /><br /> **processName** – namnet på den process som du vill Azure-diagnostik för att samla in en kraschdump för.|  
 
@@ -115,7 +115,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Valfritt **scheduledTransferPeriod** -attribut. Se förklaring tidigare.  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**IISLogs**|Genom att inkludera det här elementet i konfigurationen möjliggörs insamling av IIS-loggar:<br /><br /> **containerName** – namnet på BLOB-behållaren i Azure Storage-kontot som ska användas för att lagra IIS-loggarna.|   
 |**FailedRequestLogs**|Genom att inkludera det här elementet i konfigurationen kan du samla in loggar över misslyckade förfrågningar till en IIS-webbplats eller ett program. Du måste också aktivera spårnings alternativ under **system. -Webbserver** i **Web.config**.|  
@@ -129,7 +129,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  En lista över kataloger som ska övervakas.  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|Krävs. Nödvändigt attribut:<br /><br /> **containerName** – namnet på BLOB-behållaren i Azure Storage-kontot som ska användas för att lagra loggfilerna.|  
 
@@ -142,7 +142,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Kan innehålla antingen det **absoluta** eller **LocalResource** -elementet, men inte båda.  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**Absolut**|Den absoluta sökvägen till den katalog som ska övervakas. Följande attribut krävs:<br /><br /> - **Sökväg** – den absoluta sökvägen till den katalog som ska övervakas.<br /><br /> - **expandEnvironment** – konfigurerar om miljövariabler i sökvägen ska expanderas.|  
 |**LocalResource**|Sökvägen i förhållande till en lokal resurs som ska övervakas. Obligatoriska attribut är:<br /><br /> - **Namn** – den lokala resurs som innehåller den katalog som ska övervakas<br /><br /> - **relativePath** – sökvägen är relativ till det namn som innehåller den katalog som ska övervakas|  
@@ -154,7 +154,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Konfigurerar insamling av ETW-händelser från EventSource och/eller ETW-manifest baserade providers.  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|Konfigurerar insamling av händelser som genereras från [EventSource-klassen](/dotnet/api/system.diagnostics.tracing.eventsource). Nödvändigt attribut:<br /><br /> **Provider** – klass namnet för EventSource-händelsen.<br /><br /> Valfria attribut är:<br /><br /> - **scheduledTransferLogLevelFilter** – den minsta allvarlighets grad som ska överföras till ditt lagrings konto.<br /><br /> - **scheduledTransferPeriod** – intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [data typ för XML-varaktighet.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Nödvändigt attribut:<br /><br /> **Provider** – GUID för händelse leverantören<br /><br /> Valfria attribut är:<br /><br /> - **scheduledTransferLogLevelFilter** – den minsta allvarlighets grad som ska överföras till ditt lagrings konto.<br /><br /> - **scheduledTransferPeriod** – intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [data typ för XML-varaktighet.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -166,7 +166,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Konfigurerar insamling av händelser som genereras från [EventSource-klassen](/dotnet/api/system.diagnostics.tracing.eventsource).  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Valfritt attribut:<br/><br/> **eventDestination** – namnet på den tabell där händelserna ska lagras|  
 |**Händelse**|Nödvändigt attribut:<br /><br /> **ID** – händelsens ID.<br /><br /> Valfritt attribut:<br /><br /> **eventDestination** – namnet på den tabell där händelserna ska lagras|  
@@ -176,7 +176,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration-element  
  *Träd: rot-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Valfritt attribut:<br /><br /> **eventDestination** – namnet på den tabell där händelserna ska lagras|  
 |**Händelse**|Nödvändigt attribut:<br /><br /> **ID** – händelsens ID.<br /><br /> Valfritt attribut:<br /><br /> **eventDestination** – namnet på den tabell där händelserna ska lagras|  
@@ -190,7 +190,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Attributet **resourceId** måste anges.  Resurs-ID för den virtuella datorn eller skalnings uppsättningen för den virtuella datorn som du distribuerar Azure-diagnostik till. Hämta **resourceID** från [Azure Portal](https://portal.azure.com). Välj **Bläddra**  ->  **resurs grupper**  ->  **<namn \>**. Klicka på panelen **Egenskaper** och kopiera värdet från fältet **ID** .  Den här egenskapen resourceID används för att både skicka anpassade mått och för att lägga till en resourceID-egenskap till data som skickas till Event Hubs. Observera att du måste lägga till egenskapen *resourceId* under *mått* elementet om du vill att händelser som laddats upp till Event Hubs har ett resurs-ID.
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**MetricAggregation**|Nödvändigt attribut:<br /><br /> **scheduledTransferPeriod** – intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [data typ för XML-varaktighet.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
@@ -205,7 +205,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Valfritt **scheduledTransferPeriod** -attribut. Se förklaring tidigare.
 
-|Underordnat element|Beskrivning|  
+|Underordnat element|Description|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Följande attribut krävs:<br /><br /> - **counterSpecifier** – namnet på prestanda räknaren. Till exempel `\Processor(_Total)\% Processor Time`. Om du vill hämta en lista över prestanda räknare på värden kör du kommandot `typeperf` .<br /><br /> - **sampleRate** – hur ofta räknaren ska samplas.<br /><br /> Valfritt attribut:<br /><br /> **enhet** – enhets måttet för räknaren. Värdena är tillgängliga i [UnitType-klassen](/dotnet/api/microsoft.azure.management.sql.models.unittype) |
 |**mottagare** | Tillagt i 1,5. Valfritt. Pekar på en mottagar plats för att även skicka diagnostikdata. Till exempel Azure Monitor eller Event Hubs. Observera att du måste lägga till egenskapen *resourceId* under *mått* elementet om du vill att händelser som laddats upp till Event Hubs har ett resurs-ID.|    
@@ -220,7 +220,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Valfritt **scheduledTransferPeriod** -attribut. Se förklaring tidigare.  
 
-|Underordnat element|Beskrivning|  
+|Underordnat element|Description|  
 |-------------------|-----------------|  
 |**Datakälla**|Händelse loggarna i Windows som ska samlas in. Nödvändigt attribut:<br /><br /> **namn** – XPath-frågan som beskriver de Windows-händelser som ska samlas in. Exempel:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Om du vill samla in alla händelser anger du "*" |
 |**mottagare** | Tillagt i 1,5. Valfritt. Pekar på en mottagar plats för att även skicka diagnostikdata för alla underordnade element som stöder mottagare. Sink-exemplet är Application Insights eller Event Hubs.|  
@@ -233,7 +233,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Definierar buffertens konfiguration för grundläggande Azure-loggar.  
 
-|Attribut|Typ|Beskrivning|  
+|Attribut|Typ|Description|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Valfritt. Anger den maximala mängden fil system lagring som är tillgänglig för angivna data.<br /><br /> Standardvärdet är 0.|  
 |**scheduledTransferLogLevelFilter**|**nollängd**|Valfritt. Anger den lägsta allvarlighets graden för logg poster som överförs. Standardvärdet är **odefinierat**, vilket överför alla loggar. Andra möjliga värden (i högst minst information) är **utförlig**, **information**, **Varning**, **fel** och **kritisk**.|  
@@ -245,7 +245,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Tillagt i 1,9.
 
-|Elementnamn|Beskrivning|  
+|Elementnamn|Description|  
 |------------------|-----------------|  
 |**Spelarna**|Instruerar systemet att samla in statistik för Docker-behållare|  
 
@@ -254,7 +254,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  En lista med platser för att skicka diagnostikdata till och konfigurationen som är kopplad till dessa platser.  
 
-|Elementnamn|Beskrivning|  
+|Elementnamn|Description|  
 |------------------|-----------------|  
 |**Kanalmottagare**|Se beskrivningen på en annan plats på den här sidan.|  
 
@@ -265,11 +265,11 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Definierar platser för att skicka diagnostikdata till. Till exempel tjänsten Application Insights.  
 
-|Attribut|Typ|Beskrivning|  
+|Attribut|Typ|Description|  
 |---------------|----------|-----------------|  
 |**Namn**|sträng|En sträng som identifierar sinkname.|  
 
-|Element|Typ|Beskrivning|  
+|Element|Typ|Description|  
 |-------------|----------|-----------------|  
 |**Application Insights**|sträng|Används endast när du skickar data till Application Insights. Innehåller Instrumentation-nyckeln för ett aktivt Application Insights-konto som du har åtkomst till.|  
 |**Kanaler**|sträng|En för varje ytterligare filtrering som strömmar som du|  
@@ -281,7 +281,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Definierar filter för data strömmar av loggdata som passerar genom en mottagare.  
 
-|Element|Typ|Beskrivning|  
+|Element|Typ|Description|  
 |-------------|----------|-----------------|  
 |**Kanal**|sträng|Se beskrivningen på en annan plats på den här sidan.|  
 
@@ -292,7 +292,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Definierar platser för att skicka diagnostikdata till. Till exempel tjänsten Application Insights.  
 
-|Attribut|Typ|Beskrivning|  
+|Attribut|Typ|Description|  
 |----------------|----------|-----------------|  
 |**logLevel**|**sträng**|Anger den lägsta allvarlighets graden för logg poster som överförs. Standardvärdet är **odefinierat**, vilket överför alla loggar. Andra möjliga värden (i högst minst information) är **utförlig**, **information**, **Varning**, **fel** och **kritisk**.|  
 |**Namn**|**sträng**|Ett unikt namn på den kanal som ska referera till|  
@@ -307,7 +307,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
 
  Lagrar privat information om lagrings kontot (namn, nyckel och slut punkt). Den här informationen skickas till den virtuella datorn, men kan inte hämtas från den.  
 
-|Underordnade element|Beskrivning|  
+|Underordnade element|Description|  
 |--------------------|-----------------|  
 |**StorageAccount**|Det lagrings konto som ska användas. Följande attribut krävs<br /><br /> - **namn** – namnet på lagrings kontot.<br /><br /> - **nyckel** – nyckeln till lagrings kontot.<br /><br /> - **slut punkt** – slut punkten för åtkomst till lagrings kontot. <br /><br /> -**sasToken** (Tillagd 1.8.1) – du kan ange en SAS-token i stället för en lagrings konto nyckel i den privata konfigurationen. Om det här alternativet anges ignoreras lagrings konto nyckeln. <br />Krav för SAS-token: <br />– Stöder endast SAS-token för konto <br />- *b*, *t* . ex. krävs tjänst typer. <br /> - *a*, *c*, *u*, *w* behörigheter krävs. <br /> - *c*, *o* resurs typer krävs. <br /> -Stöder endast HTTPS-protokollet <br /> -Start-och utgångs tid måste vara giltiga.|  
 
@@ -556,7 +556,7 @@ Elementet på den översta nivån i konfigurations filen för diagnostik.
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: df88bd9a1d4901b348fbec47ea9e2946542a08e3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122620"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440096"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurera ExpressRoute-och plats-till-plats-sambefintliga anslutningar med hjälp av PowerShell
 > [!div class="op_single_selector"]
@@ -36,17 +36,18 @@ Stegen för att konfigurera båda scenarierna beskrivs i den här artikeln. Den 
 >
 
 ## <a name="limits-and-limitations"></a>Gränser och begränsningar
-* **Transit-routing stöds inte.** Du kan inte routa (via Azure) mellan ditt lokala nätverk som ansluter via plats-till-plats-VPN och ditt lokala nätverk som ansluter via ExpressRoute.
-* **Basic-SKU-gatewayen stöds inte.** Du måste använda en icke-Basic SKU-gateway för både [ExpressRoute-gatewayen](expressroute-about-virtual-network-gateways.md) och [VPN-gatewayen](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * **Enbart routebaserad VPN-gateway stöds.** Du måste använda en Route-baserad [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). Du kan också använda en Route-baserad VPN-gateway med en VPN-anslutning som kon figurer ATS för "principbaserade trafik väljare" enligt beskrivningen i [Anslut till flera principbaserade VPN-enheter](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
-* **Statiska vägar ska konfigureras för din VPN-gateway.** Om ditt lokala nätverk är anslutet både till ExpressRoute och en plats-till-plats-VPN så måste du ha konfigurerat en statisk väg i ditt lokala nätverk för att routa plats-till-plats-VPN-anslutningen till det offentliga Internet.
-* **VPN Gateway som standard i ASN 65515 om inget värde anges.** Azure VPN Gateway stöder BGP-routningsprotokollet. Du kan ange ASN (AS Number) för ett virtuellt nätverk genom att lägga till-ASN-växeln. Om du inte anger den här parametern är standardvärdet som antal 65515. Du kan använda valfritt ASN för konfigurationen, men om du väljer något annat än 65515 måste du återställa gatewayen för att inställningen ska börja gälla.
+* **ASN för Azure VPN Gateway måste anges till 65515.** Azure VPN Gateway stöder BGP-routningsprotokollet. För att ExpressRoute och Azure VPN ska fungera tillsammans måste du behålla det autonoma system numret för din Azure VPN-gateway med standardvärdet 65515. Om du tidigare valde ett annat ASN-nätverk än 65515 och du ändrar inställningen till 65515 måste du återställa VPN-gatewayen för att inställningen ska börja gälla.
 * **Gateway-undernätet måste vara/27 eller ett kortare prefix**(till exempel/26,/25) eller så visas ett fel meddelande när du lägger till ExpressRoute-gatewayen för virtuella nätverk.
 * **Samexistens i ett virtuellt nätverk med dubbla stackar stöds inte.** Om du använder ExpressRoute IPv6-stöd och en ExpressRoute-Gateway med dubbla stackar går det inte att använda VPN Gateway.
 
 ## <a name="configuration-designs"></a>Konfigurationsdesign
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurera en VPN för plats till plats som en redundanssökväg för ExpressRoute
 Du kan konfigurera en VPN-anslutning för plats till plats som en säkerhetskopia av ExpressRoute. Den här anslutningen gäller endast virtuella nätverk som är länkade till Azures privata peering-sökväg. Det finns ingen VPN-baserad redundanslösning för tjänster som är tillgängliga via Azure Microsoft-peering. ExpressRoute-kretsen är alltid den primära länken. Data flödar endast via plats-till-plats-VPN-sökvägen om ExpressRoute-kretsen misslyckas. För att undvika asymmetrisk routning bör din lokala nätverkskonfiguration också prioritera ExpressRoute-kretsen framför VPN för plats till plats. Du kan prioritera ExpressRoute-sökvägen genom att ange högre lokala inställningar för vägarna som tas emot för ExpressRoute. 
+
+>[!NOTE]
+> Om du har ExpressRoute Microsoft-peering aktiverat kan du ta emot den offentliga IP-adressen för din Azure VPN-gateway på ExpressRoute-anslutningen. Om du vill konfigurera en plats-till-plats-VPN-anslutning som en säkerhets kopia måste du konfigurera ditt lokala nätverk så att VPN-anslutningen dirigeras till Internet.
+>
 
 > [!NOTE]
 > Medan ExpressRoute-kretsen är prioriterad över plats-till-plats-VPN när bägge vägarna är samma, kommer Azure att använda den längsta prefixmatchning för att välja väg till paketets mål.
@@ -261,6 +262,9 @@ Du kan följa stegen nedan för att lägga till punkt-till-plats-konfiguration t
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>Så här aktiverar du transit routning mellan ExpressRoute och Azure VPN
+Om du vill aktivera anslutning mellan ett lokalt nätverk som är anslutet till ExpressRoute och ett annat lokalt nätverk som är anslutet till en plats-till-plats-VPN-anslutning måste du konfigurera [Azure Route Server](../route-server/expressroute-vpn-support.md).
 
 Mer information om punkt-till-plats-VPN finns i [Konfigurera en punkt-till-plats-anslutning](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Stöd för Network File System 3,0 i Azure Blob Storage (för hands version) | Microsoft Docs
-description: Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet gör att Windows-och Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en dator som körs lokalt.
+description: Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet gör att Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en dator som kör lokalt.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718507"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428447"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage (för hands version)
 
-Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet ger kompatibilitet med Linux-filsystem vid objekt lagrings skala och priser och gör att Windows-eller Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. 
+Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet ger kompatibilitet med Linux-filsystem vid objekt lagrings skala och priser och gör att Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. 
 
 > [!NOTE]
 > NFS 3,0 protokoll stöd i Azure Blob Storage finns i offentlig för hands version. Det stöder GPV2-lagrings konton med standard-nivå prestanda i följande regioner: östra Australien, Korea Central och södra centrala USA. För hands versionen stöder också Block-Blob med Premium prestanda nivå i alla offentliga regioner.
@@ -46,7 +46,7 @@ När programmet gör en begäran med hjälp av NFS 3,0-protokollet, översätts 
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Allmänt arbets flöde: montera en lagrings konto behållare
 
-Dina Windows-eller Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. För att montera en lagrings konto behållare måste du göra detta.
+Linux-klienterna kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. För att montera en lagrings konto behållare måste du göra detta.
 
 1. Registrera NFS 3,0-protokoll funktion med din prenumeration.
 

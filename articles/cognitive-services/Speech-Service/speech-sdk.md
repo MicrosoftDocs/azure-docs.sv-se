@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601823"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434518"
 ---
 # <a name="about-the-speech-sdk"></a>Om Speech SDK
 
@@ -58,13 +58,14 @@ Tal-SDK: n visar många funktioner från tal tjänsten, men inte alla. Funktione
 
 ### <a name="voice-assistants"></a>Röstassistenter
 
-[Röst assistenter](voice-assistants.md) som använder tal-SDK gör det möjligt för utvecklare att skapa naturliga, mänskliga konversations gränssnitt för sina program och upplevelser. Röst assistents tjänsten ger snabb och tillförlitlig interaktion mellan en enhet och en assistent. I implementeringen används bot Framework: s direkta rad tal kanal eller den integrerade anpassade kommando tjänsten för att slutföra uppgiften. Dessutom kan röst assistenter använda anpassade röster som skapats i den [anpassade röst portalen](https://aka.ms/customvoice) för att lägga till en unik röst utmatnings upplevelse.
+[Röst assistenter](voice-assistants.md) med hjälp av tal-SDK gör det möjligt att skapa naturliga, mänskliga konversations gränssnitt för dina program och upplevelser. Tal-SDK ger snabb och tillförlitlig interaktion som innehåller tal-till-text, text till tal och konversations data på en enda anslutning. Din implementering kan använda bot Frameworks direkta rad tal kanal eller den integrerade anpassade kommando tjänsten för att slutföra uppgiften. Dessutom kan röst assistenter använda anpassade röster som skapats i den [anpassade röst portalen](https://aka.ms/customvoice) för att lägga till en unik röst utmatnings upplevelse.
 
-**Röst assistenter** är tillgängliga på följande plattformar:
+**Röst assistentens** support är tillgängligt på följande plattformar:
 
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (tal enheter SDK)
+  - Go
 
 #### <a name="keyword-spotting"></a>Nyckelord upptäcka
 
@@ -113,7 +114,7 @@ Tal-SDK: n kan användas för att skriva över samtals Center scenarier där tel
 
 ### <a name="codec-compressed-audio-input"></a>Codec-komprimerad ljud inspelning
 
-Flera av programmeringsspråken för tal-SDK stöder codec-komprimerade ljud inspelnings strömmar. Mer information finns i <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">använda komprimerade ljud inspelnings <span class="docon docon-navigate-external x-hidden-focus"></span> format </a>.
+Flera av programmeringsspråken för tal-SDK stöder codec-komprimerade ljud inspelnings strömmar. Mer information finns i <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">använda komprimerade ljud inspelnings format </a>.
 
 **Codec-komprimerade ljud indata** är tillgängliga på följande plattformar:
 

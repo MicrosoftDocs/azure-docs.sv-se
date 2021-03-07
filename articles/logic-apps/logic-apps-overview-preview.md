@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715215"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442748"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
 
@@ -118,9 +118,13 @@ Den här tabellen anger beteendet för det underordnade arbets flödet baserat p
 
 Azure Logic Apps för hands versionen innehåller många aktuella och ytterligare funktioner, till exempel:
 
-* Skapa Logi Kap par och deras arbets flöden från [390 + kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors) för SaaS-appar (program vara som en tjänst) och PaaS (Platform-as-a-Service) och-tjänster plus anslutningar för lokala system.
+* Skapa Logi Kap par och deras arbets flöden från [400 + kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors) för SaaS-appar (program vara som en tjänst) och PaaS (Platform-as-a-Service) och-tjänster plus anslutningar för lokala system.
 
-  * Vissa hanterade anslutningar, till exempel Azure Service Bus, Azure Event Hubs och SQL Server köra på samma sätt som de inbyggda utlösarna och åtgärder som är inbyggda i Azure Logic Apps för hands versions körning, t. ex. begär ande utlösare och HTTP-åtgärd. Mer information finns i [Azure Logic Apps som körs var som helst – inbyggd anslutnings barhet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
+  * Vissa hanterade anslutningar, till exempel Azure Service Bus, Azure Event Hubs, SQL Server och MQ, körs på samma sätt som de inbyggda utlösarna och åtgärder som är inbyggda i Azure Logic Apps för hands versions körning, t. ex. begär ande utlösare och HTTP-åtgärd.
+
+  * Skapa dina egna inbyggda anslutnings program för alla tjänster du behöver med hjälp av för [hands versionens utöknings ramverk](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). På liknande sätt som med inbyggda anslutnings program, till exempel Azure Service Bus och SQL Server, men till skillnad från [anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) som inte stöds för för hands versioner, ger dessa anslutningar högre data flöde, kort svars tid, lokal anslutning och körs internt i samma process som för hands versions körningen.
+
+    Redigerings funktionen är för närvarande endast tillgänglig i Visual Studio Code, men är inte aktive rad som standard. Om du vill skapa de här kopplingarna [byter du ditt projekt från Extensions buntbaserade (Node.js) till NuGet-paket-baserad (.net)](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). Mer information finns i [Azure Logic Apps som körs var som helst – inbyggd anslutnings barhet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
   * Du kan använda B2B-åtgärder för flytande åtgärder och XML-åtgärder utan ett integrations konto. Om du vill använda dessa åtgärder måste du ha flytande kartor, XML-mappningar eller XML-scheman som du kan överföra via respektive åtgärder i Azure Portal eller lägga till i Visual Studio Code-projektets **artefakter** -mapp med hjälp av mapparna **kartor** och **scheman** .
 
@@ -148,7 +152,7 @@ Azure Logic Apps för hands versionen innehåller många aktuella och ytterligar
 * Återskapa åtkomst nycklar för hanterade anslutningar som används av enskilda arbets flöden i en **Logic app-resurs (för hands version)** . För den här uppgiften [följer du samma steg för **Logic Apps** resursen, men på den enskilda arbets flödes nivån](logic-apps-securing-a-logic-app.md#regenerate-access-keys), inte på resurs nivån för Logic app.
 
 * Lägg till parallella grenar i den nya designern genom att följa samma steg som för hands designern.
- 
+
 Mer information finns i avsnittet om [ändrade, begränsade, otillgängliga och ej stödda](#limited-unavailable-unsupported) på sidan med [kända problem med Logic Apps offentliga för hands versioner i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
@@ -193,8 +197,6 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
 
     * [Lokala datagateway- *utlösare*](../connectors/apis-list.md#on-premises-connectors) är inte tillgängliga, men Gateway-åtgärder *är* tillgängliga.
 
-    * [Anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) är inte tillgängliga.
-
     * Den inbyggda åtgärden [Azure Functions – välja en Azure-funktion](logic-apps-azure-functions.md) är nu **Azure Functions-anropa en Azure-funktion**. Den här åtgärden fungerar för närvarande endast för funktioner som skapas från mallen för **http-utlösare** .
 
       I Azure Portal kan du välja en funktion för HTTP-utlösare där du har åtkomst genom att skapa en anslutning via användar upplevelsen. Om du inspekterar funktions åtgärdens JSON-definition i kodvyn eller **workflow.js** filen, refererar åtgärden till funktionen med hjälp av en `connectionName` referens. Den här versionen sammanfattar funktionens information som en anslutning, som du hittar i projektets **connections.jspå** fil, som är tillgänglig när du har skapat en anslutning.
@@ -217,6 +219,8 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
     * Några [inbyggda B2B-utlösare och åtgärder för integrations konton](../connectors/apis-list.md#integration-account-connectors) är inte tillgängliga, till exempel den **flata fil** kodningen och avkodnings åtgärder.
 
     * Den inbyggda åtgärden [Azure Logic Apps – Välj ett Logic app-arbetsflöde](logic-apps-http-endpoint.md) är nu arbets flödes **åtgärder – anropa ett arbets flöde i den här arbets flödes appen**.
+
+* [Anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) stöds för närvarande inte för för hands version.
 
 * **Tillgänglighet för värd plan**: om du skapar en ny resurs typ för **Logic app (förhands granskning)** i Azure Portal eller distribuerar från Visual Studio Code, kan du bara använda Premium-eller App Service hosting-planen i Azure. Förbruknings värd planer är inte tillgängliga och stöds inte för distribution av den här resurs typen. Du kan distribuera från Visual Studio Code till en Docker-behållare, men inte till en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 

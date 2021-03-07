@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d3fd0b1ffb87a84772000702b958c52ed1cc47c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680441"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438736"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure avdelningens kontroll-anslutning för Amazon S3
 
@@ -61,8 +61,8 @@ I följande tabell mappas de regioner där du lagrar data i den region där det 
 | Asien och stillahavsområdet (Sydney)           | Europa (Frankfurt)                    |
 | Asien och stillahavsområdet (Tokyo)            | Europa (Frankfurt)                    |
 | Kanada (Central)                | Östra USA (Ohio)                        |
-| Kina (Beijing)                 | Europa (Frankfurt)                    |
-| Kina (NingXia)                 | Europa (Frankfurt)                    |
+| Kina (Beijing)                 | Stöds inte                    |
+| Kina (NingXia)                 | Stöds inte                   |
 | Europa (Frankfurt)              | Europa (Frankfurt)                    |
 | Europa (Irland)                | Europa (Frankfurt)                    |
 | Europa (London)                 | Europa (Frankfurt)                    |
@@ -351,7 +351,7 @@ När du har lagt till Bucket som avdelningens kontroll-datakällor kan du konfig
 
     Om du väljer att skapa en ny anpassad skannings regel uppsättning använder du guiden för att definiera följande inställningar:
 
-    |Fönster  |Beskrivning  |
+    |Fönster  |Description  |
     |---------|---------|
     |**Ny skannings regel uppsättning** /<br>**Beskrivning av genomsöknings regel**    |   Ange ett meningsfullt namn och en valfri beskrivning av regel uppsättningen      |
     |**Välj filtyper**     | Välj alla filtyper som du vill ta med i genomsökningen och välj sedan **Fortsätt**.<br><br>Om du vill lägga till en ny filtyp väljer du **ny filtyp** och definierar följande: <br>– Det fil namns tillägg som du vill lägga till <br>– En valfri beskrivning  <br>– Om fil innehållet har en anpassad avgränsare eller är en system fil typ. Ange sedan din anpassade avgränsare eller Välj system fil typ. <br><br>Välj **skapa** för att skapa din anpassade filtyp.     |

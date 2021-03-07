@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000b91529b3b02f2c7d03b50ddc841c68625dada
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644811"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426798"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Förhandskrav för Azure AD Connect
 I den här artikeln beskrivs kraven och maskin varu kraven för Azure Active Directory (Azure AD) Connect.
@@ -102,6 +102,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 
 ### <a name="connectivity"></a>Anslutning
 * Den Azure AD Connect servern behöver DNS-matchning för både intranätet och Internet. DNS-servern måste kunna matcha namn både till din lokala Active Directory och Azure AD-slutpunkter.
+* Azure AD Connect kräver nätverks anslutning till alla konfigurerade domäner
 * Om du har brand väggar i intranätet och du behöver öppna portar mellan Azure AD Connect-servrar och domän kontrol Lanterna, se [Azure AD Connect portar](reference-connect-ports.md) för mer information.
 * Om din proxy eller brand vägg begränsar vilka URL: er som kan nås, måste URL: erna som dokumenteras i [Office 365-URL: er och IP-adressintervall](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) öppnas. Se även [Safelist Azure Portal URL: er på brand väggen eller proxyservern](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
   * Om du använder Microsoft-molnet i Tyskland eller Microsoft Azure Government molnet kan du läsa om [Azure AD Connect Sync service-instanser](reference-connect-instances.md) för URL: er.

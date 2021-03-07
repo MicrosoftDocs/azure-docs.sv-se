@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182493"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423721"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysera med Apache Spark
 
@@ -38,7 +38,7 @@ I den här självstudien får du lära dig de grundläggande stegen för att lä
     display(df.limit(10))
     ```
 1. I antecknings boken, på menyn **Anslut till** , väljer du den **Spark1** -server som vi skapade tidigare.
-1. Välj **Kör** i cellen
+1. Välj **Kör** i cellen. Synapse kommer att starta en ny Spark-session för att köra den här cellen om det behövs. Om en ny Spark-session behövs, tar intially det att ta ungefär två sekunder att skapa. 
 1. Om du bara vill se schemat för dataframe kör du en cell med följande kod:
     ```
 

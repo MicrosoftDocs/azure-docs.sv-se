@@ -6,17 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944961"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436540"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet via Azure Portal
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Du kan skapa och hantera virtuella datorer på en Azure Stack Edge-enhet med Azure Portal, mallar, Azure PowerShell-cmdletar och via Azure CLI/Python-skript. Den här artikeln beskriver hur du skapar och hanterar en virtuell dator på din Azure Stack Edge-enhet med hjälp av Azure Portal. 
 

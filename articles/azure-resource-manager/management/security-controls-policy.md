@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Resource Manager
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Resource Manager. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: cf0aa204c2f0428e881c1d244d7bcb76e6e9a7bd
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: bb35a53b85f20b2621b831e20cbf7fed140cccf6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092285"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441930"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>Azure Policy kontroll av efterlevnad för Azure Resource Manager
 

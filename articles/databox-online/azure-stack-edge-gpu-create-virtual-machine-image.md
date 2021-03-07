@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ee0587063c0fac67068869c58471ada58354fab7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806684"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437680"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Skapa anpassade VM-avbildningar för din Azure Stack Edge Pro-enhet
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 För att distribuera virtuella datorer på din Azure Stack Edge Pro-enhet måste du kunna skapa anpassade VM-avbildningar som du kan använda för att skapa virtuella datorer. I den här artikeln beskrivs de steg som krävs för att skapa anpassade Linux-eller Windows VM-avbildningar som du kan använda för att distribuera virtuella datorer på din Azure Stack Edge Pro-enhet.
 
