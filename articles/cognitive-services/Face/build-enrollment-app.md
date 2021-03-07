@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350372"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428277"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Bygg en registrerings app för Android med reagera
 
@@ -37,9 +37,9 @@ Appen för exempel registrering skrivs med Java Script och den reagera inbyggda 
 ## <a name="set-up-the-development-environment"></a>Konfigurera utvecklingsmiljön
 
 1. Klona git-lagringsplatsen för [appen för exempel registrering](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
-1. Om du vill konfigurera din utvecklings miljö följer du anvisningarna för att svara på den inbyggda dokumentationen <a href="https://reactnative.dev/docs/environment-setup"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Välj **reagerar inbyggd CLI-snabb start** som ditt utvecklings operativ system och välj **Android** som mål operativ system. Slutför avsnitten som **installerar beroenden** och **Android utvecklings miljö**.
+1. Om du vill konfigurera din utvecklings miljö följer du anvisningarna för att svara på den inbyggda dokumentationen <a href="https://reactnative.dev/docs/environment-setup"  title=" "  target="_blank"> </a> . Välj **reagerar inbyggd CLI-snabb start** som ditt utvecklings operativ system och välj **Android** som mål operativ system. Slutför avsnitten som **installerar beroenden** och **Android utvecklings miljö**.
 1. Öppna filen env.jsi din önskade text redigerare, t. ex. [Visual Studio Code](https://code.visualstudio.com/), och Lägg till din slut punkt och nyckel. Du kan hämta din slut punkt och nyckel i Azure Portal under fliken **Översikt** för din resurs. Det här steget gäller bara för lokala testnings ändamål &mdash; kontrol lera inte din ansikts-API nyckel till din fjärrlagringsplats.
-1. Kör appen med antingen den virtuella Android-hälsoenhetens emulator från Android Studio eller din egen Android-enhet. Om du vill testa din app på en fysisk enhet följer du relevant dokumentation om att reagera på den <a href="https://reactnative.dev/docs/running-on-device"  title=" "  target="_blank"> interna dokumentationen <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .  
+1. Kör appen med antingen den virtuella Android-hälsoenhetens emulator från Android Studio eller din egen Android-enhet. Om du vill testa din app på en fysisk enhet följer du relevant dokumentation om att reagera på den <a href="https://reactnative.dev/docs/running-on-device"  title=" "  target="_blank"> interna dokumentationen </a> .  
 
 
 ## <a name="create-an-enrollment-experience"></a>Skapa en registrerings upplevelse  
@@ -78,9 +78,9 @@ Kontrol lera först att appen är redo för produktions distribution: ta bort al
 
 När du är redo att publicera din app för produktion genererar du en APK-fil för klar ande paket, vilket är paket fil formatet för Android-appar. Den här APK-filen måste vara signerad med en privat nyckel. Med den här versionen av versionen kan du börja distribuera appen till dina enheter direkt. 
 
-Följ anvisningarna för att förbereda inför lanseringen <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> för <span class="docon docon-navigate-external x-hidden-focus"></span> </a> att lära dig hur du skapar en privat nyckel, signerar ditt program och genererar en versions APK.  
+Följ anvisningarna för att förbereda inför lanseringen <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> för </a> att lära dig hur du skapar en privat nyckel, signerar ditt program och genererar en versions APK.  
 
-När du har skapat en signerad APK går du <a href="https://developer.android.com/studio/publish"  title=" till publicera appen "  target="_blank"> publicera din app- <span class="docon docon-navigate-external x-hidden-focus"></span> </a> dokumentation för att lära dig mer om hur du släpper appen.
+När du har skapat en signerad APK går du <a href="https://developer.android.com/studio/publish"  title=" till publicera appen "  target="_blank"> publicera din app- </a> dokumentation för att lära dig mer om hur du släpper appen.
 
 ## <a name="next-steps"></a>Nästa steg  
 

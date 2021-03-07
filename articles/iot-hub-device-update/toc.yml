@@ -32,7 +32,7 @@
       href: device-update-agent-overview.md
     - name: Konfigurations fil för enhets uppdatering
       href: device-update-configuration-file.md
-    - name: Enhets uppdaterings manifest
+    - name: Uppdatera manifest
       href: update-manifest.md
     - name: Hur enhets uppdatering skyddas
       href: device-update-security.md

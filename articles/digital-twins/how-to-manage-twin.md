@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbab73a2fb3aecaacdfc92950c0d0b86edf775af
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653354"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433275"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
-Entiteter i din miljö representeras av [digitala dubbla](concepts-twins-graph.md). Att hantera digitala dubbla, kan vara att skapa, ändra och ta bort. Om du vill utföra dessa åtgärder kan du använda [**DigitalTwins-API: er**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)eller [Azure Digitals flätade CLI](how-to-use-cli.md).
+Entiteter i din miljö representeras av [digitala dubbla](concepts-twins-graph.md). Att hantera digitala dubbla, kan vara att skapa, ändra och ta bort. Om du vill utföra dessa åtgärder kan du använda [**DigitalTwins-API: er**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)eller [Azure Digitals flätade CLI](how-to-use-cli.md).
 
 Den här artikeln fokuserar på att hantera digitala dubbla, information om hur du arbetar med relationer och det [dubbla diagrammet](concepts-twins-graph.md) som helhet finns i [*instruktion: hantera den dubbla grafen med relationer*](how-to-manage-graph.md).
 
@@ -160,7 +160,7 @@ Här är ett exempel på en JSON-patch-kod. Det här dokumentet ersätter *Mass*
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Du kan skapa uppdateringar med hjälp av Azure .NET SDK: s [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true). Här är ett exempel.
+Du kan skapa uppdateringar med hjälp av Azure .NET SDK: s [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument). Här är ett exempel.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -227,7 +227,7 @@ Kodfragmentet använder [Room.jspå](https://github.com/Azure-Samples/digital-tw
 Innan du kör exemplet gör du följande:
 1. Ladda ned modell filen, placera den i projektet och Ersätt `<path-to>` plats hållaren i koden nedan för att tala om för programmet var du hittar det.
 2. Ersätt plats hållaren `<your-instance-hostname>` med din Azure Digital-instansen värdnamn.
-3. Lägg till två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
+3. Lägg till två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

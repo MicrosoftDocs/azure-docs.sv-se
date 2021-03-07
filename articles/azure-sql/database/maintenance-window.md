@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/04/2021
-ms.openlocfilehash: cf3404f364a7beee67cfa7dc523b9fd4b7b9985a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/05/2021
+ms.openlocfilehash: b658fa9f2df6e8a88df89f9e8ccc1cf6b68cec39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201319"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426067"
 ---
 # <a name="maintenance-window-preview"></a>Underhålls period (för hands version)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ Med funktionen underhålls fönster kan du konfigurera ett underhålls schema f�
 
 Azure utför regelbundet [planerat underhåll](planned-maintenance.md) av SQL Database-och SQL-hanterade instans resurser. Under Azure SQL Maintenance-händelsen är databaser helt tillgängliga, men de kan vara underkastade korta redundans i respektive tillgänglighets service avtal för [SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) -och [SQL-hanterad instans](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance), eftersom omkonfiguration av resurser krävs i vissa fall.
 
-Underhålls perioden är avsedd för produktions arbets belastningar som inte är elastiska för databas-eller instans växlingar och inte kan absorbera korta anslutnings avbrott som orsakas av planerade underhålls händelser. Genom att välja önskad underhålls period kan du minimera effekten av planerat underhåll eftersom det sker utanför arbets tiden. Elastiska arbets belastningar och icke-produktions arbets belastningar kan förlita sig på Azure SQLs standard underhålls princip.
+Underhålls perioden är avsedd för produktions arbets belastningar som inte är elastiska för databas-eller instans växlingar och inte kan absorbera korta anslutnings avbrott som orsakas av planerade underhålls händelser. Genom att välja ett underhålls fönster som du föredrar kan du minimera effekten av planerat underhåll eftersom det sker utanför arbets tiden. Elastiska arbets belastningar och icke-produktions arbets belastningar kan förlita sig på Azure SQLs standard underhålls princip.
 
 Underhålls perioden kan konfigureras vid skapande eller för befintliga Azure SQL-resurser. Den kan konfigureras med hjälp av API: et för Azure Portal, PowerShell, CLI eller Azure.
 
@@ -38,9 +38,11 @@ Underhålls perioden kan konfigureras vid skapande eller för befintliga Azure S
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Få mer förutsägbart med underhålls perioden
 
-Som standard blockerar Azure SQL Maintenance-principen påverkan på uppdateringar under perioden 8.00 till 17 lokal tid varje dag för att undvika eventuella avbrott under perioder med normal arbets tid. Lokal tid bestäms av den [Azure-region](https://azure.microsoft.com/global-infrastructure/geographies/) som är värd för resursen. Med andra ord tillåter _standard underhålls perioden_ underhåll mellan 17 och 8.00 nästa dag, varje dag. Du kan ändra underhålls uppdateringar ytterligare till en tid som är lämplig för dina Azure SQL-resurser genom att välja mellan två ytterligare underhålls fönster platser:
+Som standard blockerar Azure SQL Maintenance-principen påverkan på uppdateringar under perioden **8.00 till 17 lokal tid varje dag** för att undvika eventuella avbrott under perioder med normal arbets tid. Lokal tid bestäms av platsen för den [Azure-region](https://azure.microsoft.com/global-infrastructure/geographies/) som är värd för resursen och kan observera sommar tid i enlighet med den lokala tids zons definitionen. 
+
+Du kan ändra underhålls uppdateringar ytterligare till en tid som är lämplig för dina Azure SQL-resurser genom att välja mellan två ytterligare underhålls fönster platser:
  
-* Vardags fönstret, 10PM till 06:00 lokal tid måndag – torsdag
+* Vardags fönstret, 10PM till 06:00 lokal tid måndag-torsdag
 * Helg fönstret, 10PM till 06:00 Local Time fredag – söndag
 
 När du har valt underhålls perioden och slutfört tjänst konfigurationen sker planerat underhåll endast under det fönster du väljer.   
@@ -53,7 +55,7 @@ När du har valt underhålls perioden och slutfört tjänst konfigurationen sker
 Att konfigurera och använda underhålls perioden är kostnads fritt för alla [typer](https://azure.microsoft.com/support/legal/offer-details/)av berättigade erbjudanden: betala per användning, CSP (Cloud Solution Provider), Microsoft Enterprise-avtal eller Microsofts kund avtal.
 
 > [!Note]
-> Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Till exempel är en prenumeration med [priser enligt principen betala per](https://azure.microsoft.com/offers/ms-azr-0003p/)användning, [Azure i Open](https://azure.microsoft.com/en-us/offers/ms-azr-0111p/)och [Visual Studio Enterprise](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) alla Azure-erbjudanden. Varje erbjudande eller plan har olika villkor och fördelar. Ditt erbjudande eller din plan visas i prenumerationens översikt. Mer information om hur du byter prenumeration på ett annat erbjudande finns i [ändra din Azure-prenumeration till ett annat erbjudande](/azure/cost-management-billing/manage/switch-azure-offer).
+> Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Till exempel är en prenumeration med [priser enligt principen betala per](https://azure.microsoft.com/offers/ms-azr-0003p/)användning, [Azure i Open](https://azure.microsoft.com/offers/ms-azr-0111p/)och [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) alla Azure-erbjudanden. Varje erbjudande eller plan har olika villkor och fördelar. Ditt erbjudande eller din plan visas i prenumerationens översikt. Mer information om hur du byter prenumeration på ett annat erbjudande finns i [ändra din Azure-prenumeration till ett annat erbjudande](/azure/cost-management-billing/manage/switch-azure-offer).
 
 ## <a name="advance-notifications"></a>Avancerade aviseringar
 
@@ -103,19 +105,19 @@ Mer information om klient anslutnings principen i Azure SQL Database finns [Azur
 
 Mer information om klient anslutnings principen i Azure SQL-hanterad instans finns i [anslutnings typer för Azure SQL-hanterad instans](../../azure-sql/managed-instance/connection-types-overview.md).
 
-## <a name="considering-specifics-of-azure-sql-managed-instance"></a>Som beaktar information om en hanterad Azure SQL-instans
+## <a name="considerations-for-azure-sql-managed-instance"></a>Överväganden för Azure SQL-hanterad instans
 
-Azure SQL-hanterad instans består av tjänst komponenter som finns på en dedikerad uppsättning isolerade virtuella datorer som körs i kundens virtuella nätverk under nät. De här virtuella datorerna utgör ett [eller flera virtuella kluster](https://docs.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture) som kan vara värdar för flera hanterade instanser. Underhålls fönstret som kon figurer ATS på instanser av ett undernät kan påverka antalet virtuella kluster i under nätet och distributionen av instanser mellan virtuella kluster. Detta kan kräva en bedömning av få effekter.
+Azure SQL-hanterad instans består av tjänst komponenter som finns på en dedikerad uppsättning isolerade virtuella datorer som körs i kundens virtuella nätverk under nät. De här virtuella datorerna utgör ett [eller flera virtuella kluster](/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture) som kan vara värdar för flera hanterade instanser. Underhålls fönstret som kon figurer ATS på instanser av ett undernät kan påverka antalet virtuella kluster i under nätet och distributionen av instanser mellan virtuella kluster. Detta kan kräva en bedömning av få effekter.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>Underhålls periodens konfiguration är tids krävande åtgärd 
 Alla instanser som finns i ett virtuellt kluster delar underhålls perioden. Som standard finns alla hanterade instanser i det virtuella klustret med standard underhålls perioden. Om du anger ett annat underhålls fönster för en hanterad instans under skapandet eller efteråt, innebär det att det måste placeras i det virtuella klustret med motsvarande underhålls period. Om det inte finns något sådant virtuellt kluster i under nätet måste du först skapa ett nytt för att rymma instansen. Om du tar emot ytterligare instanser i det befintliga virtuella klustret kan du behöva ändra storlek på klustret. Båda åtgärderna bidrar till att konfigurera underhålls periodens varaktighet för en hanterad instans.
-Förväntad varaktighet för konfigurering av underhålls perioden på den hanterade instansen kan beräknas med [Beräknad varaktighet för instans hanterings åtgärder](https://docs.microsoft.com/azure/azure-sql/managed-instance/management-operations-overview#duration).
+Förväntad varaktighet för konfigurering av underhålls perioden på den hanterade instansen kan beräknas med [Beräknad varaktighet för instans hanterings åtgärder](/azure/azure-sql/managed-instance/management-operations-overview#duration).
 
 > [!Important]
-> En kort redundansväxling sker i slutet av åtgärden och tar vanligt vis upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du utföra åtgärden utanför det högsta antalet timmar.
+> En kort redundansväxling sker i slutet av underhålls åtgärden och tar vanligt vis upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du schemalägga åtgärden utanför det högsta antalet timmar.
 
 ### <a name="ip-address-space-requirements"></a>Krav för IP-adressutrymme
-Varje nytt virtuellt kluster i under nätet kräver ytterligare IP-adresser enligt [tilldelningen av virtuella kluster-IP](https://docs.microsoft.com/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)-adresser. Att ändra underhålls period för befintlig hanterad instans kräver också [tillfällig ytterligare IP-kapacitet](https://docs.microsoft.com/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) som vid skalning av virtuella kärnor-scenariot för motsvarande tjänst nivå.
+Varje nytt virtuellt kluster i under nätet kräver ytterligare IP-adresser enligt [tilldelningen av virtuella kluster-IP](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)-adresser. Att ändra underhålls period för befintlig hanterad instans kräver också [tillfällig ytterligare IP-kapacitet](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) som vid skalning av virtuella kärnor-scenariot för motsvarande tjänst nivå.
 
 ### <a name="ip-address-change"></a>Ändring av IP-adress
 När du konfigurerar och ändrar underhålls fönstret ändras instansens IP-adress inom under nätets IP-adressintervall.
@@ -134,6 +136,7 @@ När du konfigurerar och ändrar underhålls fönstret ändras instansens IP-adr
 * [Azure SQL Database](sql-database-paas-overview.md) 
 * [SQL-hanterad instans](../managed-instance/sql-managed-instance-paas-overview.md)
 * [Planera för Azures underhålls händelser i Azure SQL Database och Azure SQL-hanterad instans](planned-maintenance.md)
+
 
 
 

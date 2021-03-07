@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cb6d5fafa8d956c296124c5a20f8a087160961da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109246"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431745"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Fil Systems åtgärder på Data Lake Storage Gen1 med hjälp av .NET SDK
 
@@ -28,7 +28,7 @@ I den här artikeln får du lära dig hur du utför fil Systems åtgärder på D
 
 Instruktioner för hur du utför konto hanterings åtgärder på Data Lake Storage Gen1 med hjälp av .NET SDK finns i [konto hanterings åtgärder på data Lake Storage gen1 med .NET SDK](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **Visual Studio 2013 eller senare**. Anvisningarna i den här artikeln använder Visual Studio 2019.
 
@@ -40,9 +40,9 @@ Instruktioner för hur du utför konto hanterings åtgärder på Data Lake Stora
 
 Kodavsnittet som finns tillgängligt [på GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) ger dig en genomgång av processen att skapa filer i arkivet, sammanfoga filer, hämta en fil och ta bort några filer i arkivet. Det här avsnittet av artikeln går igenom de viktigaste delarna av koden.
 
-1. I Visual Studio väljer du **Arkiv** -menyn, **nytt**och sedan **projekt**.
+1. I Visual Studio väljer du **Arkiv** -menyn, **nytt** och sedan **projekt**.
 1. Välj **konsol program (.NET Framework)** och välj sedan **Nästa**.
-1. I **projekt namn**anger du `CreateADLApplication` och väljer sedan **skapa**.
+1. I **projekt namn** anger du `CreateADLApplication` och väljer sedan **skapa**.
 1. Lägg till NuGet-paketen i projektet.
 
    1. Högerklicka på projektnamnet i Solution Explorer och klicka på **Hantera NuGet-paket**.
@@ -202,7 +202,7 @@ Här följer några exempel som visar hur du använder SDK för Data Lake Storag
 ## <a name="see-also"></a>Se även
 
 * [Konto hanterings åtgärder på Data Lake Storage Gen1 med .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK-referens](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 .NET SDK-referens](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>Nästa steg
 

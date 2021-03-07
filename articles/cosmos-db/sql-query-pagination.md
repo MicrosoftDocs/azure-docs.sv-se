@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: c49fee169b7bd01ee7cf8a6d539c2125cf6568b3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5faff410fa18c5161d93f739f77eeb9c85d581a8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545323"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430963"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Sid brytning i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,7 +59,7 @@ Om frågan returnerar en fortsättnings-token finns det ytterligare frågeresult
 
 I Azure Cosmos DB REST API kan du hantera fortsättnings-token med `x-ms-continuation` sidhuvudet. Som vid frågor med .NET eller Java SDK, om `x-ms-continuation` svars huvudet inte är tomt, innebär det att frågan har ytterligare resultat.
 
-Så länge du använder samma SDK-version upphör aldrig fortsättnings-token. Du kan också [begränsa storleken på en fortsättnings-token](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Oavsett mängden data eller antalet fysiska partitioner i din behållare returnerar frågor en enda fortsättnings-token.
+Så länge du använder samma SDK-version upphör aldrig fortsättnings-token. Du kan också [begränsa storleken på en fortsättnings-token](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Oavsett mängden data eller antalet fysiska partitioner i din behållare returnerar frågor en enda fortsättnings-token.
 
 Du kan inte använda tilläggs-token för frågor med [Group by](sql-query-group-by.md) eller [DISTINCT](sql-query-keywords.md#distinct) eftersom dessa frågor kräver lagring av en stor mängd tillstånd. För frågor med `DISTINCT` kan du använda tilläggs-token om du lägger till `ORDER BY` frågan.
 

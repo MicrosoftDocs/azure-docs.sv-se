@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368788"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425302"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-säkerhet
 
@@ -29,13 +29,13 @@ Alla Cognitive Services slut punkter som exponeras via HTTP genomdriver TLS 1,2.
 * Det språk (och den plattform) som används för att göra HTTP-anropet måste ange TLS 1,2 som en del av begäran
   * Beroende på språk och plattform, är det möjligt att ange TLS antingen implicit eller explicit
 
-För .NET-användare bör du överväga <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security bästa <span class="docon docon-navigate-external x-hidden-focus"></span> praxis </a>.
+För .NET-användare bör du överväga <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security bästa praxis </a>.
 
 ## <a name="authentication"></a>Autentisering
 
-När du diskuterar autentisering finns det flera vanliga felbegrepp. Autentisering och auktorisering är ofta förvirrande för varandra. Identitet är också en viktig komponent i säkerheten. En identitet är en samling information om ett <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">huvud konto <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Identitets leverantörer (IdP) tillhandahåller identiteter för Authentication Services. Autentisering handlar om att verifiera en användares identitet. Auktorisering är specifikationen av åtkomst rättigheter och behörigheter för resurser för en specifik identitet. Flera av de Cognitive Services erbjudandena, inklusive Azure rollbaserad åtkomst kontroll (Azure RBAC). Azure RBAC kan användas för att förenkla vissa av ceremonin som arbetar med att hantera huvud konton manuellt. Mer information finns i [Azure-rollbaserad åtkomst kontroll för Azure-resurser](../role-based-access-control/overview.md).
+När du diskuterar autentisering finns det flera vanliga felbegrepp. Autentisering och auktorisering är ofta förvirrande för varandra. Identitet är också en viktig komponent i säkerheten. En identitet är en samling information om ett <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">huvud konto </a>. Identitets leverantörer (IdP) tillhandahåller identiteter för Authentication Services. Autentisering handlar om att verifiera en användares identitet. Auktorisering är specifikationen av åtkomst rättigheter och behörigheter för resurser för en specifik identitet. Flera av de Cognitive Services erbjudandena, inklusive Azure rollbaserad åtkomst kontroll (Azure RBAC). Azure RBAC kan användas för att förenkla vissa av ceremonin som arbetar med att hantera huvud konton manuellt. Mer information finns i [Azure-rollbaserad åtkomst kontroll för Azure-resurser](../role-based-access-control/overview.md).
 
-Mer information om autentisering med prenumerations nycklar, åtkomsttoken och Azure Active Directory (AAD) finns i <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">autentisera begär anden till Azure Cognitive Services <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Mer information om autentisering med prenumerations nycklar, åtkomsttoken och Azure Active Directory (AAD) finns i <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">autentisera begär anden till Azure Cognitive Services</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Miljövariabler och program konfiguration
 
@@ -113,7 +113,7 @@ Om du vill hämta en miljö variabel måste den läsas i minnet. Beroende på vi
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Mer information finns i <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Mer information finns i <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Mer information finns i <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Mer information finns i <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Mer information finns i <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Mer information finns i <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` </a>.
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Mer information finns i <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Mer information finns i <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` </a>.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-Mer information finns i <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Mer information finns i <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` </a>.
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Mer information finns i <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Mer information finns i <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` </a>.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5b2364328fc4e0103b969f94a4c877a388edb7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2c4ed092604e9511023a7025a69dc7a78652ea56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103619"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430487"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Konto hanterings åtgärder på Azure Data Lake Storage Gen1 med .NET SDK
 > [!div class="op_single_selector"]
@@ -26,15 +26,15 @@ I den här artikeln får du lära dig hur du utför konto hanterings åtgärder 
 
 Instruktioner för hur du utför data hanterings åtgärder på Data Lake Storage Gen1 med .NET SDK finns i avsnittet [om fil Systems åtgärder på data Lake Storage gen1 med .NET SDK](data-lake-store-data-operations-net-sdk.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * **Visual Studio 2013 eller senare**. Anvisningarna nedan använder Visual Studio 2019.
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-net-application"></a>Skapa ett .NET-program
-1. I Visual Studio väljer du **Arkiv** -menyn, **nytt**och sedan **projekt**.
+1. I Visual Studio väljer du **Arkiv** -menyn, **nytt** och sedan **projekt**.
 2. Välj **konsol program (.NET Framework)** och välj sedan **Nästa**.
-3. I **projekt namn**anger du `CreateADLApplication` och väljer sedan **skapa**.
+3. I **projekt namn** anger du `CreateADLApplication` och väljer sedan **skapa**.
 
 4. Lägg till NuGet-paketen i projektet.
 
@@ -144,7 +144,7 @@ _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>Se även
 * [Fil Systems åtgärder på Data Lake Storage Gen1 med .NET SDK](data-lake-store-data-operations-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK-referens](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 .NET SDK-referens](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>Nästa steg
 * [Skydda data i Data Lake Storage Gen1](data-lake-store-secure-data.md)

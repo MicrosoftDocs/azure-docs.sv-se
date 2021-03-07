@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7836e791f8515c2df89228c81419738adf27e47f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952207"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438923"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Utveckla en C# IoT Edge-modul för att flytta filer på Azure Stack Edge Pro
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Den här artikeln beskriver hur du skapar en IoT Edge-modul för distribution med din Azure Stack Edge Pro-enhet. Azure Stack Edge Pro är en lagrings lösning som gör att du kan bearbeta data och skicka dem över nätverket till Azure.
 
@@ -126,7 +126,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
 ### <a name="update-the-module-with-custom-code"></a>Uppdatera modulen med anpassad kod
 
 1. I VS Code-Utforskaren öppnar du **moduler > FileCopyModule > program.cs**.
-2. Längst upp i FileCopyModule- **namnområdet**lägger du till följande using-instruktioner för typer som används senare. **Microsoft. Azure. devices. client. transport. MQTT** är ett protokoll för att skicka meddelanden till IoT Edge Hub.
+2. Längst upp i FileCopyModule- **namnområdet** lägger du till följande using-instruktioner för typer som används senare. **Microsoft. Azure. devices. client. transport. MQTT** är ett protokoll för att skicka meddelanden till IoT Edge Hub.
 
     ```
     namespace FileCopyModule
@@ -160,7 +160,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     }
     ```
 
-5. I **init-metoden**skapar och konfigurerar koden ett **ModuleClient** -objekt. Med det här objektet kan modulen ansluta till den lokala Azure IoT Edge runtime med hjälp av MQTT-protokollet för att skicka och ta emot meddelanden. Anslutningssträngen som används i Init-metoden skickas till modulen av IoT Edge-körningen. Koden registrerar ett FileCopy-återanrop för att ta emot meddelanden från en IoT Edge hubb via **INPUT1** -slutpunkten. Ersätt **init-metoden** med följande kod.
+5. I **init-metoden** skapar och konfigurerar koden ett **ModuleClient** -objekt. Med det här objektet kan modulen ansluta till den lokala Azure IoT Edge runtime med hjälp av MQTT-protokollet för att skicka och ta emot meddelanden. Anslutningssträngen som används i Init-metoden skickas till modulen av IoT Edge-körningen. Koden registrerar ett FileCopy-återanrop för att ta emot meddelanden från en IoT Edge hubb via **INPUT1** -slutpunkten. Ersätt **init-metoden** med följande kod.
 
     ```
     /// <summary>
@@ -182,7 +182,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     }
     ```
 
-6. Ta bort koden för **metoden PipeMessage** och infoga koden för **FileCopy**i dess ställe.
+6. Ta bort koden för **metoden PipeMessage** och infoga koden för **FileCopy** i dess ställe.
 
     ```
         /// <summary>
@@ -239,7 +239,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
         }
     ```
 
-7. Spara filen.
+7. Spara den här filen.
 8. Du kan också [Hämta ett befintligt kod exempel](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) för det här projektet. Du kan sedan validera filen som du sparade mot filen **program.cs** i det här exemplet.
 
 ## <a name="build-your-iot-edge-solution"></a>Skapa din IoT Edge-lösning

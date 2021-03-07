@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fe3f2328bb1ec9e7bb2ef79c09a821412ce7f7e1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171474"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423993"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
@@ -195,7 +195,7 @@ En cell är i kommando läge när ingen text markör visas som anger att du skri
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Notebook-cell i kommando läge ":::
 
-| Genvägar                      | Beskrivning                          |
+| Genvägar                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Ange                         | Växla till redigeringsläge             |        
 | Skift + Retur                 | Kör cell, Välj nedan         |     
@@ -239,7 +239,7 @@ Redigerings läget anges av en text markör där du ombeds ange redigerings ytan
 
 Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Machine Learning antecknings böcker i redigerings läge.
 
-| Genvägar                      | Beskrivning|                                     
+| Genvägar                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Escape                        | Ange kommando läge|  
 | Kontroll/kommando + blank steg       | Aktivera IntelliSense |
@@ -273,7 +273,7 @@ Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Machine
 
 * Om du inte kan ansluta till en bärbar dator kontrollerar du att WebSocket-kommunikation **inte** är inaktiverat. För att Compute instance Jupyter-funktionen ska fungera måste WebSocket-kommunikationen vara aktive rad. Kontrol lera att nätverket tillåter WebSocket-anslutningar till *. instances.azureml.net och *. instances.azureml.ms. 
 
-* När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås [från det virtuella nätverket](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för <instans-namn>. <region> . instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md?tabs=azure-cli) artikeln.
+* När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås [från det virtuella nätverket](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för < instans-namn >. < region >. instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md?tabs=azure-cli) artikeln.
     
 ## <a name="next-steps"></a>Nästa steg
 

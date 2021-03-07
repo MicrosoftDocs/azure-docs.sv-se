@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799846"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442765"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Använda Azure Active Directory för autentisering med MySQL
 
@@ -35,8 +35,6 @@ Endast en Azure AD admin-användare kan skapa/Aktivera användare för Azure AD-
 > När du anger administratören läggs en ny användare till i Azure Database for MySQL-servern med fullständig administratörs behörighet.
 
 Det går bara att skapa en Azure AD-administratör per MySQL-server och valet av en annan för att skriva över den befintliga Azure AD-administratören som kon figurer ATS för servern.
-
-I en framtida version kommer vi att ha stöd för att ange en Azure AD-grupp i stället för en enskild användare som har flera administratörer, men detta stöds inte ännu.
 
 När du har konfigurerat administratören kan du nu logga in:
 

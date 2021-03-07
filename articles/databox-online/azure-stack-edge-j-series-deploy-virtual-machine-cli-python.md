@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 8917758b4d7644cab3281e7d69698768d316f026
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808061"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436148"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet med hjälp av Azure CLI och python
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
@@ -281,7 +281,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     | Värde | Beskrivning | Exempel |
     | --- | --- | --- |
     | Miljönamn | Namnet på den miljö som du försöker ansluta till | Ange ett namn, till exempel `aze-environ` |
-    | Resource Manager-slutpunkt | URL: en är `https://Management.<appliancename><dnsdomain>` . <br> Om du vill hämta den här URL: en går du till sidan **enheter** i enhetens lokala webb gränssnitt. |Ett exempel är `https://management.team3device.teatraining1.com`.  |
+    | Resource Manager-slutpunkt | URL: en är `https://Management.<appliancename><dnsdomain>` . <br> Om du vill hämta den här URL: en går du till sidan **enheter** i enhetens lokala webb gränssnitt. |Till exempel `https://management.team3device.teatraining1.com`.  |
     
     ```powershell
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.<appliance name>.<DNS domain>"

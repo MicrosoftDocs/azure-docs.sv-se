@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737978"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433224"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Skicka frågor till Azure Digitals dubbla grafer
 
@@ -220,11 +220,11 @@ När du har bestämt dig för en frågesträng kör du den genom att anropa API:
 
 Du kan anropa API: et direkt eller använda någon av [SDK: erna](how-to-use-apis-sdks.md#overview-data-plane-apis) som är tillgängliga för Azure Digitals dubbla.
 
-Följande kodfragment illustrerar [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) anropet från en klient app:
+Följande kodfragment illustrerar [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client) anropet från en klient app:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Frågan som används i det här anropet returnerar en lista över digitala dubbla, som exemplet ovan representerar med [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) -objekt. Retur typen för dina data för varje fråga beror på vilka villkor som du anger med `SELECT` instruktionen:
+Frågan som används i det här anropet returnerar en lista över digitala dubbla, som exemplet ovan representerar med [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) -objekt. Retur typen för dina data för varje fråga beror på vilka villkor som du anger med `SELECT` instruktionen:
 * Frågor som börjar med `SELECT * FROM ...` returnerar en lista över digitala dubbla objekt (som kan serialiseras som `BasicDigitalTwin` objekt eller andra anpassade digitala, dubbla typer som du kan ha skapat).
 * Frågor som börjar i formatet `SELECT <A>, <B>, <C> FROM ...` returnerar en ord lista med nycklar `<A>` , `<B>` och `<C>` .
 * Andra `SELECT` uttrycks format kan användas för att returnera anpassade data. Du kan överväga att skapa egna klasser för att hantera mycket anpassade resultat uppsättningar. 

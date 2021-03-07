@@ -4,18 +4,18 @@ description: Azure Storage Inventory är ett verktyg som hjälper dig att få en
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 12/03/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257819"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435128"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Använd Azure Storage BLOB Inventory för att hantera BLOB-data (för hands version)
 
@@ -24,6 +24,9 @@ Funktionen Azure Storage BLOB Inventory ger en översikt över dina BLOB-data i 
 ## <a name="availability"></a>Tillgänglighet
 
 BLOB-inventering stöds för både generell användnings version 2 (GPv2) och Premium Block Blob Storage-konton. Den här funktionen stöds med eller utan funktionen [hierarkiskt namn område](data-lake-storage-namespace.md) aktive rad.
+
+> [!IMPORTANT]
+> Bob Inventory Inventory är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
 
 ### <a name="preview-regions"></a>Förhandsgranska regioner
 
@@ -89,9 +92,9 @@ Visa JSON för en inventerings princip genom att välja fliken **kodvy** i avsni
 
 | Parameternamn | Parametertyp        | Kommentarer | Obligatoriskt? |
 |----------------|-----------------------|-------|-----------|
-| mål    | Sträng                | Mål behållaren där alla Inventory Files kommer att skapas. Mål containern måste redan finnas. | Ja |
-| enabled        | Boolesk               | Används för att inaktivera hela principen. När det är inställt på **Sant** åsidosätter det aktiverade fältet för regel nivå den här parametern. När det är inaktiverat inaktive ras inventering för alla regler. | Ja |
-| regler          | Matris med regel objekt | Minst en regel krävs i en princip. Det finns stöd för upp till 10 regler. | Ja |
+| mål    | Sträng                | Mål behållaren där alla Inventory Files kommer att skapas. Mål containern måste redan finnas. | Yes |
+| enabled        | Boolesk               | Används för att inaktivera hela principen. När det är inställt på **Sant** åsidosätter det aktiverade fältet för regel nivå den här parametern. När det är inaktiverat inaktive ras inventering för alla regler. | Yes |
+| regler          | Matris med regel objekt | Minst en regel krävs i en princip. Det finns stöd för upp till 10 regler. | Yes |
 
 ## <a name="inventory-rules"></a>Inventerings regler
 
@@ -101,9 +104,9 @@ Varje regel i principen har flera parametrar:
 
 | Parameternamn | Parametertyp                 | Kommentarer | Obligatoriskt? |
 |----------------|--------------------------------|-------|-----------|
-| name           | Sträng                         | Ett regel namn kan innehålla upp till 256 Skift läges känsliga alfanumeriska tecken. Namnet måste vara unikt inom en princip. | Ja |
-| enabled        | Boolesk                        | En flagga som tillåter att en regel aktive ras eller inaktive ras. Standardvärdet är **True**. | Ja |
-| definition     | Inventerings regel definition för JSON | Varje definition består av en regel filter uppsättning. | Ja |
+| name           | Sträng                         | Ett regel namn kan innehålla upp till 256 Skift läges känsliga alfanumeriska tecken. Namnet måste vara unikt inom en princip. | Yes |
+| enabled        | Boolesk                        | En flagga som tillåter att en regel aktive ras eller inaktive ras. Standardvärdet är **True**. | Yes |
+| definition     | Inventerings regel definition för JSON | Varje definition består av en regel filter uppsättning. | Yes |
 
 Flaggan global **BLOB Inventory Enabled** har företräde framför den *aktiverade* parametern i en regel.
 
@@ -113,10 +116,10 @@ Det finns flera filter för att anpassa en BLOB Inventory-rapport:
 
 | Filternamn         | Filtertyp                     | Kommentarer | Obligatoriskt? |
 |---------------------|---------------------------------|-------|-----------|
-| blobTypes           | Matris med fördefinierade uppräknings värden | Giltiga värden är `blockBlob` och `appendBlob` för hierarkiskt namn områdes aktiverade konton, och `blockBlob` ,, `appendBlob` och `pageBlob` för andra konton. | Ja |
-| prefixMatch         | Matris med upp till 10 strängar för prefix som ska matchas. Ett prefix måste börja med ett behållar namn, till exempel "container1/foo" | Om du inte definierar *prefixMatch* eller anger ett tomt prefix gäller regeln för alla blobar i lagrings kontot. | Inga |
-| includeSnapshots    | Boolesk                         | Anger om lagret ska innehålla ögonblicks bilder. Standardvärdet är **false**. | Inga |
-| includeBlobVersions | Boolesk                         | Anger om inventeringen ska inkludera BLOB-versioner. Standardvärdet är **false**. | Inga |
+| blobTypes           | Matris med fördefinierade uppräknings värden | Giltiga värden är `blockBlob` och `appendBlob` för hierarkiskt namn områdes aktiverade konton, och `blockBlob` ,, `appendBlob` och `pageBlob` för andra konton. | Yes |
+| prefixMatch         | Matris med upp till 10 strängar för prefix som ska matchas. Ett prefix måste börja med ett behållar namn, till exempel "container1/foo" | Om du inte definierar *prefixMatch* eller anger ett tomt prefix gäller regeln för alla blobar i lagrings kontot. | No |
+| includeSnapshots    | Boolesk                         | Anger om lagret ska innehålla ögonblicks bilder. Standardvärdet är **false**. | No |
+| includeBlobVersions | Boolesk                         | Anger om inventeringen ska inkludera BLOB-versioner. Standardvärdet är **false**. | No |
 
 Visa JSON för inventerings regler genom att välja fliken **kodvy** i avsnittet **BLOB inventory** i Azure Portal. Filter anges i en regel definition.
 

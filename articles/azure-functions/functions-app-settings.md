@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040353"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425710"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -159,11 +159,11 @@ Avgör om redigering i Azure Portal är aktive rad. Giltiga värden är "readwri
 
 ## <a name="functions_extension_version"></a>FUNKTIONS \_ tilläggs \_ version
 
-Den version av Functions runtime som ska användas i den här Function-appen. Ett tilde med huvud version innebär att använda den senaste versionen av den högre versionen (till exempel "~ 2"). När nya versioner av samma huvud version är tillgängliga installeras de automatiskt i Function-appen. Använd det fullständiga versions numret (till exempel "2.0.12345") för att fästa appen till en angiven version. Standardvärdet är "~ 2". Ett värde för `~1` PIN-modulen till version 1. x av körnings miljön.
+Den version av Functions-körningen som är värd för din Function-app. En tilde ( `~` ) med huvud version innebär att använda den senaste versionen av den högre versionen (till exempel "~ 3"). När nya versioner av samma huvud version är tillgängliga installeras de automatiskt i Function-appen. Använd det fullständiga versions numret (till exempel "3.0.12345") för att fästa appen till en angiven version. Standardvärdet är "~ 3". Ett värde för `~1` PIN-modulen till version 1. x av körnings miljön. Mer information finns i [Översikt över Azure Functions körnings versioner](functions-versions.md).
 
 |Nyckel|Exempelvärde|
 |---|------------|
-|FUNKTIONS \_ tilläggs \_ version|~ 2|
+|FUNKTIONS \_ tilläggs \_ version|~ 3|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONs \_ v2- \_ kompatibilitetsläge \_
 

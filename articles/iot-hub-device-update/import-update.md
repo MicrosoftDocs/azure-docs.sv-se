@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030740"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442952"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
-Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub.
+Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub. Om du inte redan har gjort det, måste du bekanta dig med de grundläggande [import begreppen](import-concepts.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -59,9 +59,9 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
     | --------- | ----------- |
     | deviceManufacturer | Enhetens tillverkare som uppdateringen är kompatibel med, till exempel contoso
     | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster
-    | updateProvider | Leverantörs del av uppdaterings identitet, till exempel Fabrikam
-    | updateName | Namn del av uppdaterings identitet, till exempel ImageUpdate
-    | updateVersion | Uppdaterings version, till exempel 2,0
+    | updateProvider | Entitet som skapar eller är direkt ansvarig för uppdateringen. Det är ofta ett företags namn.
+    | updateName | Identifierare för en klass med uppdateringar. Den här klassen kan vara allt du väljer. Det är ofta en enhet eller ett modell namn.
+    | updateVersion | Versions nummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Kanske inte matchar en version av en enskild program varu komponent på enheten.
     | Uppdateringstyp | <ul><li>Ange `microsoft/swupdate:1` för avbildnings uppdatering</li><li>Ange `microsoft/apt:1` för paket uppdatering</li></ul>
     | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdaterings typ</li><li>Ange Rekommenderat värde för `microsoft/apt:1` uppdaterings typen.
     | updateFilePath (s) | Sökväg till uppdaterings filen (-erna) på datorn

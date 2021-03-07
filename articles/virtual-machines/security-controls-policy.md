@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Virtual Machines
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Virtual Machines. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6e2d995ad7fae80c46ae5dd3075ebc4d84249417
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: acc1ed598058be0c64eb6aada0446b8aa5792eb2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098949"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442117"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-machines"></a>Azure Policy kontroll av efterlevnad för Azure Virtual Machines 
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788578"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425591"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus utgående bindning för Azure Functions
 
@@ -317,7 +317,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `ServiceBus` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste vara inställd på "Service Bus". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position** | saknas | Måste anges till "out". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
@@ -425,11 +425,11 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 
 Om du har `isSessionsEnabled` ställt in till `true` , `sessionHandlerOptions` kommer att användas.  Om du har `isSessionsEnabled` ställt in till `false` , `messageHandlerOptions` kommer att användas.
 
-|Egenskap  |Standardvärde | Beskrivning |
+|Egenskap  |Standardvärde | Description |
 |---------|---------|---------|
 |prefetchCount|0|Hämtar eller anger antalet meddelanden som meddelande mottagaren samtidigt kan begära.|
 |maxAutoRenewDuration|00:05:00|Den längsta tid som meddelande låset ska förnyas automatiskt.|
-|Automatisk|true|Anger om utlösaren ska anropa Complete efter bearbetning eller om funktions koden ska anropas manuellt.<br><br>Inställningen till `false` stöds bara i C#.<br><br>Om detta är inställt på `true` , slutför utlösaren meddelandet automatiskt om funktions körningen slutförs utan problem, och överger meddelandet annars.<br><br>När det är inställt på `false` , ansvarar du för att anropa [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) -metoder för att slutföra, överge eller obeställbara meddelanden kön meddelandet. Om ett undantag genereras (och ingen av `MessageReceiver` metoderna anropas), kommer låset att fortsätta. När låset har gått ut placeras meddelandet i kö igen `DeliveryCount` och låset förnyas automatiskt.<br><br>I icke-C #-funktioner resulterar undantag i funktionen i körnings anropen `abandonAsync` i bakgrunden. Om inget undantag inträffar, `completeAsync` anropas sedan i bakgrunden. |
+|Automatisk|true|Anger om utlösaren ska anropa Complete efter bearbetning eller om funktions koden ska anropas manuellt.<br><br>Inställningen till `false` stöds bara i C#.<br><br>Om detta är inställt på `true` , slutför utlösaren meddelandet automatiskt om funktions körningen slutförs utan problem, och överger meddelandet annars.<br><br>När det är inställt på `false` , ansvarar du för att anropa [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) -metoder för att slutföra, överge eller obeställbara meddelanden kön meddelandet. Om ett undantag genereras (och ingen av `MessageReceiver` metoderna anropas), kommer låset att fortsätta. När låset har gått ut placeras meddelandet i kö igen `DeliveryCount` och låset förnyas automatiskt.<br><br>I icke-C #-funktioner resulterar undantag i funktionen i körnings anropen `abandonAsync` i bakgrunden. Om inget undantag inträffar, `completeAsync` anropas sedan i bakgrunden. |
 |maxConcurrentCalls|16|Det maximala antalet samtidiga anrop till motringningen som meddelande pumpen ska initiera per skalad instans. Som standard bearbetar Functions-körningen flera meddelanden samtidigt.|
 |maxConcurrentSessions|2000|Maximalt antal sessioner som kan hanteras samtidigt per skalad instans.|
 

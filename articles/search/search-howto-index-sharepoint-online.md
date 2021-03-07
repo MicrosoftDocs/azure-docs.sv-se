@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 558df115043d76acf865f19611e8c4cd322e00a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22adccfc4adbb7f8b1c72d8b5705ec8fcdb9a375
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680211"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441099"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Så här konfigurerar du SharePoint online-indexering i Kognitiv sökning (för hands version)
 
@@ -23,6 +23,9 @@ ms.locfileid: "101680211"
 > För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
 > Den [REST API version 2020-06-30 – för hands version](search-api-preview.md) innehåller den här funktionen. Det finns för närvarande inget stöd för Portal eller SDK.
+
+> [!NOTE]
+> SharePoint Online stöder en detaljerad auktoriserings modell som avgör åtkomsten per användare på dokument nivå. SharePoint Online-indexeraren hämtar inte dessa behörigheter till sökindexet och Kognitiv sökning har inte stöd för auktorisering på dokument nivå. När ett dokument indexeras från SharePoint Online till en Sök tjänst är innehållet tillgängligt för alla som har Läs behörighet till indexet. Om du behöver behörigheter på dokument nivå bör du undersöka säkerhets filter för att trimma resultaten av obehörigt innehåll. Mer information finns i [säkerhets trimning med Active Directory identiteter](search-security-trimming-for-azure-search-with-aad.md).
 
 Den här artikeln beskriver hur du använder Azure Kognitiv sökning för att indexera dokument (t. ex. PDF-filer, Microsoft Office dokument och flera andra vanliga format) som lagras i SharePoint Online-dokumentbibliotek till ett Azure Kognitiv sökning-index. Först förklarar det grunderna för att konfigurera och konfigurera indexeraren. Sedan ger den en djupare utforskning av beteenden och scenarier som du sannolikt kommer att stöta på.
 
@@ -251,7 +254,7 @@ Om du har ställt in indexeraren att indexera dokumentets metadata är följande
 > [!NOTE]
 > Anpassade metadata ingår inte i den aktuella versionen av förhands granskningen.
 
-| Identifierare | Typ | Beskrivning | 
+| Identifierare | Typ | Description | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | Kombinations nyckeln för plats-ID, biblioteks-ID och objekt-ID som unikt identifierar ett objekt i ett dokument bibliotek för en plats. |
 | metadata_spo_site_id | Edm.String | ID för SharePoint Online-webbplatsen. |
@@ -272,7 +275,7 @@ SharePoint Online-indexeraren stöder också metadata som är speciella för var
 ## <a name="controlling-which-documents-are-indexed"></a>Styra vilka dokument som indexeras
 En enskild SharePoint Online-indexerare kan indexera innehåll från ett eller flera dokument bibliotek. Använd *container* parametern när du skapar data källan för att ange de dokument bibliotek som du vill indexera. Data källans *behållare* har två egenskaper: *namn* och *fråga*. 
 
-### <a name="name"></a>Namn
+### <a name="name"></a>Name
 Egenskapen *namn* är obligatorisk och måste vara ett av tre värden:
 + *defaultSiteLibrary*
     + Indexera allt innehåll från platsens standard dokument bibliotek.

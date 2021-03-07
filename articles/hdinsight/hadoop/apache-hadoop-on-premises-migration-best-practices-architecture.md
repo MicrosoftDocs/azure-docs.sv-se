@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 519dc53f6373ae1a9c8853d3fa90d137e9fa934b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946439"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435417"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrera lokala Apache Hadoop kluster till Azure HDInsight-arkitektur metod tips
 
@@ -34,14 +34,14 @@ Azure HDInsight-kluster har utformats för en speciell typ av beräknings använ
 
 I följande tabell visas de olika metoder som kan användas för att skapa ett HDInsight-kluster.
 
-|Verktyg|Webbläsare baserad|Kommandorad|REST API|SDK|
+|Verktyg|Webbläsare baserad|Kommandorad|REST-API|SDK|
 |---|---|---|---|---|
 |[Azure-portalen](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[Klammerparentes](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight)||||X|
 |[Python SDK](/python/api/overview/azure/hdinsight)||||X|
 |[Java SDK](/java/api/overview/azure/hdinsight)||||X|
 |[Azure Resource Manager-mallar](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
@@ -101,7 +101,7 @@ Några HDInsight-Hive-metaarkiv bästa praxis är följande:
 - Säkerhetskopiera de anpassade metaarkiv med jämna mellanrum.
 - Behåll metaarkiv-och HDInsight-klustret i samma region.
 - Övervaka metaarkiv för prestanda och tillgänglighet med hjälp av Azure SQL Database övervaknings verktyg som Azure Portal eller Azure Monitor loggar.
-- Kör `ANALYZE TABLE` kommandot som krävs för att generera statistik för tabeller och kolumner. Ett exempel är `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Kör `ANALYZE TABLE` kommandot som krävs för att generera statistik för tabeller och kolumner. Till exempel `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Metod tips för olika arbets belastningar
 

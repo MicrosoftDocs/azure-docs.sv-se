@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 895632e4a65f942b61389ffd6ebc8a49d79b5244
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804891"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440028"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Använda kubectl för att köra ett Kubernetes tillstånds känsligt program med en PersistentVolume på din Azure Stack Edge Pro-enhet
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Den här artikeln visar hur du distribuerar ett tillstånds känsligt program med en instans i Kubernetes med en PersistentVolume (PV) och en distribution. Distributionen använder `kubectl` kommandon i ett befintligt Kubernetes-kluster och distribuerar MySQL-programmet. 
 
@@ -343,7 +345,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```
 
-NUVÄRDEt är inte längre kopplat till PVC: n eftersom den har tagits bort. När PV etablerades när resursen skapades måste du ta bort resursen. Följ de här stegen:
+NUVÄRDEt är inte längre kopplat till PVC: n eftersom den har tagits bort. När PV etablerades när resursen skapades måste du ta bort resursen. Gör så här:
 
 1. Demontera resursen. I Azure Portal går du till **Azure Stack Edge-resurs > resurser** och väljer och klickar på den resurs som du vill demontera. Välj **demontera** och bekräfta åtgärden. Vänta tills resursen har demonterats. Demonteringen frigör resursen (och därmed tillhör ande PersistentVolume) från Kubernetes-klustret. 
 
