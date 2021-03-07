@@ -8,14 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 064af116112f0b530ac0cc9b5755dcec2cf0bd07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722080"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443020"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Proaktiv logg insamling på din Azure Stack Edge-enhet
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Proaktiv logg samling samlar in system hälso indikatorer på din Azure Stack Edge-enhet så att du effektivt kan felsöka eventuella problem med enheten. Proaktiv logg insamling är aktiverat som standard. I den här artikeln beskrivs vad som loggas, hur Microsoft hanterar data och hur du inaktiverar eller aktiverar proaktiv logg insamling. 
 
@@ -58,7 +60,7 @@ Proaktiv logg insamling är aktiverat som standard. Du kan inaktivera proaktiv l
 När den proaktiv logg samlingen har Aktiver ATS laddas loggarna upp automatiskt när någon av följande händelser identifieras på enheten:  
 
 
-|Varning/fel/villkor  |Beskrivning  |
+|Varning/fel/villkor  |Description  |
 |---------|---------|
 |AcsUnhealthyCondition     |Azures konsekventa tjänster är inte felfria.         |
 |IOTEdgeAgentNotRunningCondition      |IoT Edge Agent körs inte.         |

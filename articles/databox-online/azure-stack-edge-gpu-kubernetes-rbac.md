@@ -6,17 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 1b38a9807e05385a378fa6103710fb6b393c7b1f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635848"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443156"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-rollbaserad åtkomst kontroll på din Azure Stack Edge Pro GPU-enhet
 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 När du konfigurerar Compute-rollen på din Azure Stack Edge Pro-enhet skapas ett Kubernetes-kluster. Du kan använda Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC) om du vill begränsa åtkomsten till kluster resurserna på enheten.
 
@@ -39,13 +40,13 @@ Din Azure Stack Edge Pro-enhet har följande namn rymder:
 - **System namn område** – det här namn området är där kärn resurser finns, till exempel nätverks funktioner som DNS och proxy eller Kubernetes-instrumentpanelen. Du distribuerar vanligt vis inte dina egna program till det här namn området. Använd det här namn området för att felsöka problem med Kubernetes-kluster. 
 
     Det finns flera system namn rymder på enheten och namnen som motsvarar dessa system namn rymder är reserverade. Här är en lista över reserverade system namn rymder: 
-    - Kube-system
+    - kube-system
     - metallb-system
     - DBE – namnrymd
     - standard
     - Kubernetes-instrument panel
     - Kube-nod-Lease
-    - Kube – offentlig
+    - kube-public
 
 
     Se till att inte använda reserverade namn för användar namn rymder som du skapar. 
@@ -61,15 +62,15 @@ Din Azure Stack Edge Pro-enhet har följande namn rymder:
 
 I den verkliga världen är det viktigt att dela upp klustret i flera namn områden. 
 
-- **Flera användare** : om du har flera användare kommer flera namn områden att tillåta dessa användare att distribuera sina program och tjänster i sina egna namn rymder i isoleringen från varandra. 
-- **Enskild användare** : även om det finns en enskild användare, tillåter flera namn områden att användaren kör flera versioner av programmen i samma Kubernetes-kluster.
+- **Flera användare**: om du har flera användare kommer flera namn områden att tillåta dessa användare att distribuera sina program och tjänster i sina egna namn rymder i isoleringen från varandra. 
+- **Enskild användare**: även om det finns en enskild användare, tillåter flera namn områden att användaren kör flera versioner av programmen i samma Kubernetes-kluster.
 
 ### <a name="roles-and-rolebindings"></a>Roller och RoleBindings
 
 Kubernetes har begreppet roll-och roll bindning som gör att du kan ge behörigheter till användare eller resurser på en namn områdes nivå och på kluster nivå. 
 
-- **Roller** : du kan definiera behörigheter till användare som en **roll** och sedan använda **roller** för att bevilja behörigheter inom ett namn område. 
-- **RoleBindings** : när du har definierat rollerna kan du använda **RoleBindings** för att tilldela roller för en viss namnrymd. 
+- **Roller**: du kan definiera behörigheter till användare som en **roll** och sedan använda **roller** för att bevilja behörigheter inom ett namn område. 
+- **RoleBindings**: när du har definierat rollerna kan du använda **RoleBindings** för att tilldela roller för en viss namnrymd. 
 
 Med den här metoden kan du logiskt särskilja ett enda Kubernetes-kluster, där användare bara kan komma åt program resurserna i sitt tilldelade namn område. 
 

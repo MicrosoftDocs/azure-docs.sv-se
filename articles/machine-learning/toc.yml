@@ -454,6 +454,8 @@
           href: how-to-understand-automated-ml.md
         - name: Använda ONNX-modellen i .NET-program
           href: how-to-use-automl-onnx-model-dotnet.md
+        - name: Felsök automatisk ML
+          href: how-to-troubleshoot-auto-ml.md
     - name: Distribuera och hantera modeller
       items:
         - name: Var och hur du distribuerar

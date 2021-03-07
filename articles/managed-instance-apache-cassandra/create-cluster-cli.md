@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 510fcf48091266af255c15aced80651619133aab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748941"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424707"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Snabb start: skapa en Azure-hanterad instans för Apache Cassandra-kluster med hjälp av Azure CLI (för hands version)
 
@@ -30,9 +30,8 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att skapa
 
 * [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) med anslutning till din egen värd eller lokala miljö. Mer information om hur du ansluter lokala miljöer till Azure finns i artikeln [ansluta ett lokalt nätverk till Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) .
 
-## <a name="prerequisites"></a>Krav
+* Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Skapa ett hanterat instans kluster
 
@@ -50,16 +49,10 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
 
-1. Använd vissa särskilda behörigheter för Virtual Network och under nätet som krävs av den hanterade instansen. För att göra det måste du hämta resurs-ID: t för din befintliga Virtual Network. Kör följande kommando och kopiera värdet för `Resource ID` parametern:
+1. Använd vissa särskilda behörigheter för Virtual Network och under nätet som krävs av den hanterade instansen. Använd `az role assignment create` kommandot, Ersätt `<subscription ID>` ,, `<resource group name>` `<VNet name>` och `<subnet name>` med lämpliga värden:
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Use the `Resource ID` parameter from the output of previous command to the `scope` parameter:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]

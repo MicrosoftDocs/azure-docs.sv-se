@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102484"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426626"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Självstudie: skapa en ExpressRoute-Association med Azure Virtual WAN
 
 Den här självstudien visar hur du använder Virtual WAN för att ansluta till dina resurser i Azure över en ExpressRoute-krets. Mer information om virtuella WAN-och virtuella WAN-resurser finns i [Översikt över virtuella WAN-nätverk](virtual-wan-about.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa ett virtuellt WAN
@@ -30,7 +30,7 @@ I de här självstudierna får du lära dig att
 > * Ändra en gateway-storlek
 > * Annonsera en standard väg
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrollera att du har uppfyllt följande villkor innan du påbörjar konfigurationen:
 
@@ -79,14 +79,14 @@ Skapa en ny virtuell hubb. När du har skapat en hubb debiteras du för hubben, 
 Du kan också skapa en gateway i ett befintligt nav genom att redigera den.
 
 1. Navigera till det virtuella hubb som du vill redigera och markera det.
-2. Markera kryss rutan **Inkludera ExpressRoute Gateway**på sidan **Redigera virtuellt nav** .
+2. Markera kryss rutan **Inkludera ExpressRoute Gateway** på sidan **Redigera virtuellt nav** .
 3. Välj **Bekräfta** för att bekräfta ändringarna. Det tar cirka 30 minuter för nav-och nav resurserna att helt skapa.
 
    ![befintlig hubb](./media/virtual-wan-expressroute-portal/edithub.png "Redigera en hubb")
 
 ### <a name="to-view-a-gateway"></a>Så här visar du en gateway
 
-När du har skapat en ExpressRoute-Gateway kan du Visa information om gatewayen. Navigera till hubben, Välj **ExpressRoute**och Visa gatewayen.
+När du har skapat en ExpressRoute-Gateway kan du Visa information om gatewayen. Navigera till hubben, Välj **ExpressRoute** och Visa gatewayen.
 
 ![Visa Gateway](./media/virtual-wan-expressroute-portal/viewgw.png "Visa Gateway")
 
@@ -155,11 +155,9 @@ Om du vill att den virtuella Azure-hubben ska annonsera standard vägen 0.0.0.0/
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Rensa resurser
 
-Du kan använda [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) för att ta bort resursgruppen och alla resurser den innehåller när du inte längre behöver dem. Ersätt myResourceGroup med namnet på resursgruppen och kör följande PowerShell-kommando:
+När du inte längre behöver de resurser som du har skapat tar du bort dem. Några av de virtuella WAN-resurserna måste tas bort i en viss ordning på grund av beroenden. Borttagningen kan ta ungefär 30 minuter att slutföra.
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219545"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426169"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysera data med dedikerade SQL-pooler
 
@@ -77,11 +77,12 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Utforska NYC taxi-data i den dedikerade SQL-poolen
 
 1. Gå till **datahubben** i Synapse Studio.
+1. Du bör se en databas med namnet **SQLPOOL1**. Om du inte ser det klickar du på **Uppdatera**.
 1. Gå till **SQLPOOL1**-  >  **tabeller**. 
-1. Högerklicka på **dbo. Rese** tabell och välj **nytt SQL-skript**  >  **Markera de 100 översta raderna**.
-1. Vänta medan ett nytt SQL-skript skapas och körs.
-1. Observera att överst i SQL-skriptet **Connect to** anges automatiskt till SQL-poolen med namnet **SQLPOOL1**.
-1. Ersätt texten i SQL-skriptet med den här koden och kör den.
+3. Högerklicka på **dbo. Rese** tabell och välj **nytt SQL-skript**  >  **Markera de 100 översta raderna**.
+4. Vänta medan ett nytt SQL-skript skapas och körs.
+5. Observera att överst i SQL-skriptet **Connect to** anges automatiskt till SQL-poolen med namnet **SQLPOOL1**.
+6. Ersätt texten i SQL-skriptet med den här koden och kör den.
 
     ```sql
     SELECT PassengerCount,

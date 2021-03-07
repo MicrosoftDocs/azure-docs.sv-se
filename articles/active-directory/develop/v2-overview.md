@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752580"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426849"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Vad är Microsofts identitetsplattform?
 
@@ -38,6 +38,8 @@ Det finns flera komponenter som utgör Microsofts identitets plattform:
 För utvecklare erbjuder Microsoft Identity Platform integrering av moderna innovationer i identitets-och säkerhets utrymmet som lösenordsbaserad autentisering, stegvis autentisering och villkorlig åtkomst. Du behöver inte implementera sådana funktioner själv: program som är integrerade med Microsofts identitets plattform har internt möjlighet att utnyttja sådana innovationer.
 
 Med Microsoft Identity Platform kan du skriva kod en gång och komma åt alla användare. Du kan bygga en app en gång och låta den fungera på flera plattformar, eller bygga en app som fungerar som en klient samt ett resurs program (API).
+
+En video översikt över plattformen och en demonstration av autentiserings upplevelsen finns i [Vad är Microsoft Identity Platform för utvecklare?](https://youtu.be/uDU1QTSw7Ps).
 
 ## <a name="getting-started"></a>Komma igång
 

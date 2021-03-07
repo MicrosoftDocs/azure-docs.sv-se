@@ -4,12 +4,12 @@ description: Lär dig hur du använder C# för att utveckla och publicera kod so
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 748b4a2a6af1c0183e28af8da732bc90531bee29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041203"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428421"
 ---
 # <a name="develop-c-functions-using-azure-functions"></a>Utveckla C#-funktioner med hjälp av Azure Functions
 
@@ -23,24 +23,40 @@ Den här artikeln är en introduktion till att utveckla Azure Functions med hjä
 Som C#-utvecklare kanske du också är intresse rad av någon av följande artiklar:
 
 | Komma igång | Begrepp| Guidad inlärning/exempel |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[Använda Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Använda Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Använda kommando rads verktyg](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Värdalternativ](functions-scale.md)</li><li>[Prestanda &nbsp; överväganden](functions-best-practices.md)</li><li>[Visual Studio-utveckling](functions-develop-vs.md)</li><li>[Beroendeinmatning](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Skapa serverlösa program](/learn/paths/create-serverless-applications/)</li><li>[C#-exempel](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions stöder C#-och C#-skript programmeringsspråk. Om du vill ha vägledning om hur du [använder c# i Azure Portal](functions-create-function-app-portal.md), se [c#-skript (. CSX) som utvecklar referens](functions-reference-csharp.md).
 
 ## <a name="supported-versions"></a>Versioner som stöds
 
-Versioner av Functions runtime fungerar med vissa versioner av .NET. I följande tabell visas den högsta nivån av .NET Core och .NET Framework och .NET Core som kan användas med en speciell version av Functions i projektet. 
+Versioner av Functions runtime fungerar med vissa versioner av .NET. Mer information om funktions versioner finns i [Översikt över Azure Functions körnings versioner](functions-versions.md)
+
+I följande tabell visas den högsta nivån av .NET Core eller .NET Framework som kan användas med en speciell version av functions. 
 
 | Functions runtime-version | Högsta .NET-version |
 | ---- | ---- |
-| Functions 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
-| Functions 2.x | .NET Core 2.2 |
+| Functions 3. x | .NET Core 3.1<br/>.NET 5,0<sup>1</sup> |
+| Functions 2.x | .NET Core 2,2<sup>2</sup> |
 | Functions 1.x | .NET Framework 4,7 |
 
-<sup>*</sup> Måste köras [utanför processen](dotnet-isolated-process-guide.md).
+<sup>1</sup> måste köras [utanför processen](dotnet-isolated-process-guide.md).  
+<sup>2</sup> mer information finns i [åtgärder v2. x överväganden](#functions-v2x-considerations).   
 
-Mer information finns i [Översikt över Azure Functions körnings versioner](functions-versions.md)
+För de senaste nyheterna om Azure Functions-versioner, inklusive borttagning av vissa äldre versioner, övervaka [Azure App Service meddelanden](https://github.com/Azure/app-service-announcements/issues).
+
+### <a name="functions-v2x-considerations"></a>Åtgärder v2. x överväganden
+
+Function-appar som riktar sig mot de senaste 2. x-versionerna ( `~2` ) uppgraderas automatiskt till att köras i .net Core 3,1. På grund av större ändringar mellan .NET Core-versioner kan inte alla appar som har utvecklats och kompileras mot .NET Core 2,2 uppgraderas på ett säkert sätt till .NET Core 3,1. Du kan avanmäla den här uppgraderingen genom att fästa din Function-app till `~2.0` . Funktioner identifierar även inkompatibla API: er och kan fästa din app för `~2.0` att förhindra felaktig körning på .net Core 3,1. 
+
+>[!NOTE]
+>Om din Function-app är fäst på `~2.0` och du ändrar den här versions målet till `~2` , kan funktions programmet brytas. Om du distribuerar med ARM-mallar kontrollerar du versionen i dina mallar. Om detta inträffar ändrar du din version tillbaka till målet `~2.0` och löser kompatibilitetsproblem. 
+
+Function-appar som mål `~2.0` fortsätter att köras på .net Core 2,2. Den här versionen av .NET Core tar inte längre emot säkerhet och andra underhålls uppdateringar. Mer information finns på [den här meddelande sidan](https://github.com/Azure/app-service-announcements/issues/266). 
+
+Du bör arbeta för att göra dina funktioner kompatibla med .NET Core 3,1 så snart som möjligt. När du har löst problemen ändrar du tillbaka din version till `~2` eller uppgraderar till `~3` . Mer information om mål versioner av Functions-körningarna finns i [så här fungerar Azure Functions runtime-versioner](set-runtime-version.md).
+
+När du kör på Linux i en Premium-eller dedikerad plan (App Service), fäster du din version genom att i stället rikta in dig på en särskild avbildning genom att ange `linuxFxVersion` plats konfigurations inställningen till `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` för att lära dig mer om hur du konfigurerar `linuxFxVersion` , se [manuella versions uppdateringar i Linux](set-runtime-version.md#manual-version-updates-on-linux).
 
 ## <a name="functions-class-library-project"></a>Funktions klass biblioteks projekt
 
@@ -90,7 +106,7 @@ Attributet trigger anger utlösarens typ och binder indata till en metod paramet
 
 ## <a name="method-signature-parameters"></a>Parametrar för metodsignatur
 
-Metodsignaturen kan innehålla andra parametrar än den som används med Utlösar-attributet. Här följer några av de ytterligare parametrar som du kan inkludera:
+Metodsignaturen kan innehålla andra parametrar än den som används med Utlösar-attributet. Här följer några andra parametrar som du kan inkludera:
 
 * [In-och utdata-bindningar](functions-triggers-bindings.md) som marker ATS som sådana genom att dekorera dem med attribut.  
 * En `ILogger` eller `TraceWriter` ([version 1. x-](functions-versions.md#creating-1x-apps)parameter) för [loggning](#logging).
@@ -147,7 +163,7 @@ public static class BindingExpressionsExample
 
 Build-processen skapar en *function.jspå* en fil i en Function-mapp i build-mappen. Som tidigare nämnts är den här filen inte avsedd att redige ras direkt. Du kan inte ändra bindnings konfigurationen eller inaktivera funktionen genom att redigera den här filen. 
 
-Syftet med den här filen är att tillhandahålla information till den skalnings styrenhet som ska användas för att [skala beslut i förbruknings planen](event-driven-scaling.md). Därför har filen bara utlösarens information, inte indata eller utdata-bindningar.
+Syftet med den här filen är att tillhandahålla information till den skalnings styrenhet som ska användas för att [skala beslut i förbruknings planen](event-driven-scaling.md). Därför har filen bara utlösarens information, inte in-/utdata-bindningar.
 
 Den genererade *function.jsi* filen innehåller en `configurationSource` egenskap som instruerar körningen att använda .net-attribut för bindningar i stället för att *function.jsi* konfigurationen. Här är ett exempel:
 
@@ -172,7 +188,7 @@ Den genererade *function.jsi* filen innehåller en `configurationSource` egenska
 
 *function.js* av filgenerering utförs av NuGet-paketet [Microsoft \. net \. SDK \. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Samma paket används för både version 1. x och 2. x i functions-körningen. Mål ramverket är det som skiljer ett 1. x-projekt från ett 2. x-projekt. Här följer de relevanta delarna av *. CSPROJ* -filer som visar olika mål ramverk och samma `Sdk` paket:
+Samma paket används för både version 1. x och 2. x i functions-körningen. Mål ramverket är det som skiljer ett 1. x-projekt från ett 2. x-projekt. Här följer de relevanta delarna av *. CSPROJ* -filer som visar olika mål ramverk med samma `Sdk` paket:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -625,7 +641,7 @@ public static class IBinderExample
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definierar [lagrings-BLOB](functions-bindings-storage-blob.md) -indata eller utdata-bindningen och [TextWriter](/dotnet/api/system.io.textwriter) är en typ av utgående bindning som stöds.
 
-### <a name="multiple-attribute-example"></a>Exempel på flera attribut
+### <a name="multiple-attributes-example"></a>Exempel på flera attribut
 
 I föregående exempel hämtas app-inställningen för funktions programmets huvud anslutnings sträng för lagrings konto (som är `AzureWebJobsStorage` ). Du kan ange en anpassad app-inställning som ska användas för lagrings kontot genom att lägga till [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) och skicka attributhierarkin till `BindAsync<T>()` . Använd en `Binder` parameter, inte `IBinder` .  Exempel:
 

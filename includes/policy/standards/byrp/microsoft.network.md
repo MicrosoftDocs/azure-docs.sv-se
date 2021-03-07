@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a4f16067fa8837fa0f1062ba4cc8c2c1daf5d22b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: bc6da7a2db3fcdf9ef5a2ea9f58ba4220066ad0c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091303"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436947"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -49,7 +49,7 @@ Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tj
 |Nätverkssäkerhet |1.4 |Neka kommunikation med kända skadliga IP-adresser |[Azure DDoS Protection standard ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
 |Nätverkssäkerhet |1.5 |Registrera nätverks paket och flödes loggar |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
-## <a name="cis-microsoft-azure-foundations-benchmark"></a>CIS Microsoft Azure Foundations Benchmark
+## <a name="cis-microsoft-azure-foundations-benchmark-110"></a>CIS Microsoft Azure Foundations Benchmark 1.1.0
 
 Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för regelefterlevnad-CIS Microsoft Azure grunderna för benchmark-1.1.0](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md).
 Mer information om den här standarden för efterlevnad finns i [CIS Microsoft Azure Stiftelses benchmark](https://www.cisecurity.org/benchmark/azure/).
@@ -57,6 +57,17 @@ Mer information om den här standarden för efterlevnad finns i [CIS Microsoft A
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
 |Security Center |2.9 |Se till att ASC-standardprincip inställningen "Aktivera nästa generations brand vägg (NGFW) övervakning" inte är inaktive rad " |[Undernät ska associeras med en nätverks säkerhets grupp](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe71308d3-144b-4262-b144-efdc3cc90517) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnSubnets_Audit.json) |
+|Nätverk |6.1 |Se till att RDP-åtkomsten är begränsad från Internet |[RDP-åtkomst från Internet ska blockeras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe372f825-a257-4fb8-9175-797a8a8627d6) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_RDPAccess_Audit.json) |
+|Nätverk |6,2 |Se till att SSH-åtkomsten är begränsad från Internet |[SSH-åtkomst från Internet ska blockeras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
+|Nätverk |6.5 |Se till att Network Watcher är aktive rad |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+
+## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>1.3.0 för Microsoft Azure CIS-prestandatest
+
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för regelefterlevnad-CIS Microsoft Azure grunderna för benchmark-1.3.0](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md).
+Mer information om den här standarden för efterlevnad finns i [CIS Microsoft Azure Stiftelses benchmark](https://www.cisecurity.org/benchmark/azure/).
+
+|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
 |Nätverk |6.1 |Se till att RDP-åtkomsten är begränsad från Internet |[RDP-åtkomst från Internet ska blockeras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe372f825-a257-4fb8-9175-797a8a8627d6) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_RDPAccess_Audit.json) |
 |Nätverk |6,2 |Se till att SSH-åtkomsten är begränsad från Internet |[SSH-åtkomst från Internet ska blockeras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
 |Nätverk |6.5 |Se till att Network Watcher är aktive rad |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
@@ -148,10 +159,10 @@ Mer information om den här standarden för efterlevnad finns i [HIPAA HITRUST 9
 |Säkerhet för Network Services |0886.09 n2Organizational. 4-09. n |Organisationen använder och dokument i ett formellt avtal eller annat dokument, antingen i) Tillåt-alla, neka-by-Exception eller, II) neka-alla, Tillåt-by-Exception (prioriterad), princip för att tillåta att vissa informations system ansluter till externa informations system. |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Säkerhet för Network Services |0888.09 n2Organizational. 6-09. n |I kontraktet med den externa/utkontrakterade tjänste leverantören ingår den specifikation som tjänste leverantören ansvarar för att skydda skyddad information som delas. |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
-## <a name="new-zealand-ism"></a>Nya Zeeland ISM
+## <a name="new-zealand-ism-restricted"></a>Nya Zeeland ISM-begränsad
 
-Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regelefterlevnad – nya Zeeland information Security manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
-Mer information om den här standarden för efterlevnad finns i [ny Zeelands information säkerhets hand bok](https://www.nzism.gcsb.govt.nz/).
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regelefterlevnad – nya Zeeland ISM-begränsade](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Mer information om den här standarden för efterlevnad finns i [New Zeelands ISM restricted](https://www.nzism.gcsb.govt.nz/).
 
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|

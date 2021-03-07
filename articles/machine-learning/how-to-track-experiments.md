@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 0130af66152d4f70db47191ae2f271630a59e179
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625085"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441082"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>Aktivera loggning i ML utbildning körs
 
@@ -38,6 +38,37 @@ Med loggarna kan du diagnostisera fel och varningar, eller spåra prestandamått
 ## <a name="data-types"></a>Datatyper
 
 Du kan logga flera datatyper, inklusive skalära värden, listor, tabeller, bilder, kataloger med mera. Mer information och Python-kodexempel för olika datatyper finns på [referenssidan Körningsklass](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py).
+
+### <a name="logging-run-metrics"></a>Loggning av körnings mått 
+
+Använd följande metoder i loggnings-API: erna för att påverka mått visualiseringarna. Observera [tjänst begränsningarna](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) för dessa loggade mått. 
+
+|Loggat värde|Exempelkod| Format i portalen|
+|----|----|----|
+|Logga en matris med numeriska värden| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|linje diagram med en variabel|
+|Logga ett enkelt numeriskt värde med samma mått namn som används upprepade gånger (som i en for-slinga)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Linje diagram med en variabel|
+|Logga en rad med två numeriska kolumner upprepade gånger|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Linje diagram med två variabler|
+|Logg tabell med 2 numeriska kolumner|`run.log_table(name='Sine Wave', value=sines)`|Linje diagram med två variabler|
+|Logg bild|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|Använd den här metoden för att logga en bildfil eller en matplotlib-rityta till körningen. De här bilderna visas och är jämförbara i körnings posten|
+
+### <a name="logging-with-mlflow"></a>Logga med MLflow
+Använd MLFlowLogger för att logga mått.
+
+```python
+from azureml.core import Run
+# connect to the workspace from within your running code
+run = Run.get_context()
+ws = run.experiment.workspace
+
+# workspace has associated ml-flow-tracking-uri
+mlflow_url = ws.get_mlflow_tracking_uri()
+
+#Example: PyTorch Lightning
+from pytorch_lightning.loggers import MLFlowLogger
+
+mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
+mlf_logger._run_id = run.id
+```
 
 ## <a name="interactive-logging-session"></a>Interaktiv loggningssession
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875744"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439467"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Felsökningsguide för Azure Storage Explorer
 
@@ -58,14 +58,22 @@ Om du inte har en roll som beviljar behörigheter för hanterings lager kan Stor
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Vad händer om jag inte kan hämta de behörigheter för hanterings skikt jag behöver från min administratör?
 
-Om du vill komma åt BLOB-behållare eller köer kan du koppla dem till dessa resurser med dina Azure-autentiseringsuppgifter.
+Om du vill komma åt BLOB-behållare, ADLS Gen2 behållare eller kataloger, eller köer, kan du koppla till dessa resurser med dina Azure-autentiseringsuppgifter.
 
 1. Öppna dialog rutan Anslut.
-2. Välj Lägg till en resurs via Azure Active Directory (Azure AD). Välj Nästa.
-3. Välj det användar konto och den klient organisation som är associerad med resursen som du ansluter till. Välj Nästa.
-4. Välj resurs typ, ange URL: en till resursen och ange ett unikt visnings namn för anslutningen. Välj nästa och sedan Anslut.
+1. Välj den resurs typ som du vill ansluta till.
+1. Välj **Logga in med Azure Active Directory (Azure AD)**. Välj **Nästa**.
+1. Välj det användar konto och den klient organisation som är associerad med resursen som du ansluter till. Välj **Nästa**.
+1. Ange URL: en till resursen och ange ett unikt visnings namn för anslutningen. Välj **Nästa** och sedan **Anslut**.
 
-För andra resurs typer har vi för närvarande ingen Azure RBAC-relaterad lösning. Som en lösning kan du begära en SAS-URI för att [ansluta till din resurs](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
+För andra resurs typer har vi för närvarande ingen Azure RBAC-relaterad lösning. Som en lösning kan du begära en SAS-URL och sedan ansluta till din resurs genom att följa dessa steg:
+
+1. Öppna dialog rutan Anslut.
+1. Välj den resurs typ som du vill ansluta till.
+1. Välj **signatur för delad åtkomst (SAS)**. Välj **Nästa**.
+1. Ange SAS-URL: en som du har tagit emot och ange ett unikt visnings namn för anslutningen. Välj **Nästa** och sedan **Anslut**.
+ 
+Mer information om hur du ansluter till resurser finns i [bifoga till en enskild resurs](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource).
 
 ### <a name="recommended-azure-built-in-roles"></a>Rekommenderade inbyggda Azure-roller
 

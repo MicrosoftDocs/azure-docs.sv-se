@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 10/30/2020
-ms.openlocfilehash: 7f053b1984a2d838deb14bacd10cdc071e19d8a1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b112506acead01e8dc2bbe72b0d52f47ada326a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035146"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440419"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopiera en transaktions konsekvent kopia av en databas i Azure SQL Database
 
@@ -194,7 +194,7 @@ AS COPY OF source_server_name.source_database_name
 > [!IMPORTANT]
 > Om du behöver skapa en kopia med ett betydligt mindre tjänst mål än källan, kanske mål databasen inte har tillräckligt med resurser för att slutföra initierings processen och det kan leda till att kopieringen Miss lyckas. I det här scenariot använder du en geo-Restore-begäran för att skapa en kopia på en annan server och/eller en annan region. Mer information finns i [återställa en Azure SQL Database med hjälp av databas säkerhets kopior](recovery-using-backups.md#geo-restore) .
 
-## <a name="azure-roles-to-manage-database-copy"></a>Azure-roller för att hantera databas kopiering
+## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>Azure RBAC-roller och behörigheter för att hantera databas kopiering
 
 Om du vill skapa en databas kopia måste du ha följande roller
 

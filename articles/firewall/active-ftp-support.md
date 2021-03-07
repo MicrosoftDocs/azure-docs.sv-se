@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: victorh
-ms.openlocfilehash: 47bced3c3c4f01212af6919d51adc5dfc2e6e1b5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: aa543b32efcd1897eb0ee7d8b477742705095ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200077"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430742"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Firewall Active FTP-stöd
 
@@ -20,8 +20,6 @@ Med Active FTP initierar FTP-servern data anslutningen till den angivna data por
 
 Som standard är Active FTP-stöd inaktiverat i Azure-brandväggen för att skydda mot FTP-attacker med FTP- `PORT` kommandot. Du kan dock aktivera aktiv FTP när du distribuerar med Azure PowerShell, Azure CLI eller en Azure ARM-mall.
 
-> [!NOTE]
-> För närvarande stöds endast Active FTP för brand väggar som distribueras i ett virtuellt nätverk. Virtual WAN-stöd kommer att läggas till senare.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

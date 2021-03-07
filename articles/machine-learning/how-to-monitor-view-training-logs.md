@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661026"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443581"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Övervaka och Visa ML körnings loggar och mått
 
@@ -78,20 +78,23 @@ När du använder **ScriptRunConfig** kan du använda ```run.wait_for_completion
 
 <a id="queryrunmetrics"></a>
 
-### <a name="logging-run-metrics"></a>Loggning av körnings mått 
+## <a name="view-run-metrics"></a>Visa körnings mått
 
-Använd följande metoder i loggnings-API: erna för att påverka mått visualiseringarna. Observera [tjänst begränsningarna](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) för dessa loggade mått. 
+## <a name="via-the-sdk"></a>Via SDK
+Du kan visa måtten för en utbildad modell med ```run.get_metrics()``` . Se exemplet nedan. 
 
-|Loggat värde|Exempelkod| Format i portalen|
-|----|----|----|
-|Logga en matris med numeriska värden| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|linje diagram med en variabel|
-|Logga ett enkelt numeriskt värde med samma mått namn som används upprepade gånger (som i en for-slinga)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Linje diagram med en variabel|
-|Logga en rad med två numeriska kolumner upprepade gånger|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Linje diagram med två variabler|
-|Logg tabell med 2 numeriska kolumner|`run.log_table(name='Sine Wave', value=sines)`|Linje diagram med två variabler|
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
 
-## <a name="query-run-metrics"></a>Kör mått för fråga
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
 
-Du kan visa måtten för en utbildad modell med ```run.get_metrics()``` . Du kan till exempel använda detta med exemplet ovan för att fastställa den bästa modellen genom att leta efter modellen med det lägsta värdet för det lägsta medelvärdet (MSE).
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 
@@ -124,7 +127,7 @@ Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det hä
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` projektbevakningsmappen
 
-|Fil  |Beskrivning  |
+|Fil  |Description  |
 |---------|---------|
 |20_image_build_log.txt     | Logg för Docker-avbildnings skapande för tränings miljön, valfritt, en per körning. Gäller endast när du uppdaterar din miljö. Annars återanvänds den cachelagrade avbildningen i AML. Om det lyckas innehåller avbildnings register information för motsvarande avbildning.         |
 |55_azureml-körning-<node_id # C1.txt     | STDOUT/stderr logg över värd verktyget, ett per nod. Hämtar bild till beräknings mål. OBS! den här loggen visas bara när du har skyddat beräknings resurser.         |
@@ -137,7 +140,7 @@ Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det hä
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` projektbevakningsmappen
 
-|Fil  |Beskrivning  |
+|Fil  |Description  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   system logg för jobb förberedelse        |
@@ -147,7 +150,7 @@ Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det hä
 
 När sidvagn är aktiverat körs jobb förberedelse-och jobb publicerings skripten i en sidvagn-behållare.  Det finns en mapp för varje nod. 
 
-|Fil  |Beskrivning  |
+|Fil  |Description  |
 |---------|---------|
 |start_cms.txt     |  Logg för processen som startar när den sidvagn-behållaren startar       |
 |prep_cmd.txt      |   Logg för ContextManagers som anges när körs `job_prep.py` (en del av detta kommer att strömmas till `azureml-logs/65-job_prep` )       |

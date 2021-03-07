@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 2d2e7d403ab3e9cc7e8e17de53b6e821ec24caa1
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804862"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438020"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Distribuera anpassat skript tillägg på virtuella datorer som körs på din Azure Stack Edge Pro-enhet
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Det anpassade skript tillägget laddar ned och kör skript eller kommandon på virtuella datorer som körs på dina Azure Stack Edge Pro-enheter. Den här artikeln beskriver hur du installerar och kör det anpassade skript tillägget med hjälp av en Azure Resource Manager-mall. 
 

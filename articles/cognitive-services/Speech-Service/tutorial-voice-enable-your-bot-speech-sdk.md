@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943442"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426271"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Självstudie: röst – aktivera din robot med tal-SDK
 
@@ -69,7 +69,7 @@ Det här är vad du behöver för att slutföra den här kursen:
 
 Klient programmet som du skapar i den här självstudien använder en fåtal av Azure-tjänster. Om du vill minska svars tiden för svar från din robot bör du se till att dessa tjänster finns i samma Azure-region. I det här avsnittet ska du skapa en resurs grupp i regionen **USA, västra** . Den här resurs gruppen används när du skapar enskilda resurser för bot Framework, direkt linje tal kanalen och tal tjänsten.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Skapa en resurs grupp <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Skapa en resurs grupp </a>
 1. Du uppmanas att ange viss information:
    * Ställ in **prenumeration** på **kostnads fri utvärderings version** (du kan också använda en befintlig prenumeration).
    * Ange ett namn för **resurs gruppen**. Vi rekommenderar **SpeechEchoBotTutorial-ResourceGroup**.
@@ -95,7 +95,7 @@ Nu när du har en resurs grupp i en region som stöds, är nästa steg att skapa
 
 Följ de här anvisningarna för att skapa en tal resurs:
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Skapa en tjänst resurs för tal <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Skapa en tjänst resurs för tal </a>
 4. Du uppmanas att ange viss information:
    * Ge din resurs ett **namn**. Vi rekommenderar **SpeechEchoBotTutorial-tal**
    * För **prenumeration** kontrollerar du att den **kostnads fria utvärderings versionen** har valts.
@@ -115,7 +115,7 @@ I det här läget kontrollerar du att resurs gruppen (**SpeechEchoBotTutorial-Re
 
 Nästa steg är att skapa en App Service-plan. En App Service-plan definierar en uppsättning beräkningsresurser som en webbapp ska köra.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Skapa en Azure App Service plan <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Skapa en Azure App Service plan </a>
 4. Du uppmanas att ange viss information:
    * Ställ in **prenumeration** på **kostnads fri utvärderings version** (du kan också använda en befintlig prenumeration).
    * För **resurs grupp** väljer du **SpeechEchoBotTutorial-ResourceGroup**.
@@ -236,7 +236,7 @@ Du måste göra en liten konfigurations ändring så att din robot kan kommunice
 
 Nu när du har skapat en Azure App Service som värd för din robot, är nästa steg att skapa en **robot Channel-registrering**. Att skapa en kanal registrering är ett krav för att registrera din robot med bot Framework-kanaler, inklusive direkt linje tal kanal. Om du vill veta mer om hur robotar använder kanaler kan du läsa [Anslut en robot till kanaler](/azure/bot-service/bot-service-manage-channels).
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Skapa en Azure bot Channel-registrering <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Skapa en Azure bot Channel-registrering </a>
 2. Du uppmanas att ange viss information:
    * För **bot-handtag** anger du **SpeechEchoBotTutorial-BotRegistration-# # # #** och ersätter **####** med du är ett valfritt antal. Observera att robot-referensen måste vara globalt unik. Om du anger ett robot handtag, men får ett fel meddelande om _att det begärda bot-ID: t inte är tillgängligt_, väljer du ett annat nummer. I exemplen nedan användes 8726
    * För **prenumeration** väljer du **kostnads fri utvärdering**.

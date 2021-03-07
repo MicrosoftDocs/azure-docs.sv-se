@@ -13,6 +13,9 @@
         - name: All-till-valfri routning
           displayName: Resource Manager Any-to-any routing
           href: quickstart-any-to-any-template.md
+        - name: Dirigera till delade tjänster virtuella nätverk
+          displayName: Resource Manager route to shared services VNets
+          href: quickstart-route-shared-services-vnet-template.md
 - name: Självstudier
   expanded: true
   items:

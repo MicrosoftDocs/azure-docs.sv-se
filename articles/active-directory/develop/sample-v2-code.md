@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b839df7abe6552506456ed6d0485405f43ea4639
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198361"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436506"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)
 
@@ -36,7 +36,7 @@ Du kan också bidra till exemplen på GitHub. Mer information finns i [Microsoft
 
 De här exemplen visar hur du skriver ett program med en enda sida som skyddas med Microsoft Identity Platform. I de här exemplen används en varianter av MSAL.js.
 
-| Plattform | Beskrivning | Länk |
+| Plattform | Description | Länk |
 | -------- | --------------------- | -------- |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-anrop Microsoft Graph |[Java Script-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA-anrop Microsoft Graph att använda auth Code Flow med PKCE |[Java Script-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -61,13 +61,24 @@ Följande exempel illustrerar webb program som loggar in användare. Några exem
 | ![Den här bilden visar ASP.NET Core logo typ](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Själv studie kurs om ASP.NET Core WebApp-loggar – användare](https://aka.ms/aspnetcore-webapp-sign-in) | Samma exempel i [ASP.net Core webbappens anrop Microsoft Graph-](https://aka.ms/aspnetcore-webapp-call-msgraph) fasen</p>Avancerat exempel [som använder den inloggade användarens token-cache från huvudappar, API: er och tjänster](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) |
 | ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS till Spelbok för Azure AD-programmigrering för utvecklare](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) för att lära sig att säkert och säkert migrera dina program som är integrerade med Active Directory Federation Services (AD FS) (AD FS) till Azure Active Directory (Azure AD) | |
 | ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Snabb start för ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotNet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotNet-admin-restricted-scope – v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – utbildning – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java servlet Web App-kapitel 1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication)| [Själv studie kurs om Java servlet Web App – kapitel 2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication) |
-| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java-servlet – kapitel 1,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med AAD| |
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java-servlet – kapitel 1,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med B2C |
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  | | [Själv studie kurs om Java-servlet – kapitel 2,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med AAD och ring diagram|
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java-servlet – kapitel 3,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med AAD och kontrol lera åtkomst med roll anspråk| |
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  | | [Själv studie kurs om Java-servlet – kapitel 3,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med AAD och kontrol lera åtkomst med grupp anspråk|
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png) | |[Själv studie kurs om Java-servlet – kapitel 4,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Distribuera till Azure App Service|
+| ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  | | [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  | [MS-Identity-B2C-Java-servlet-webapp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Den här bilden visar Node.js logo typ](media/sample-v2-code/logo_nodejs.png)</p>Node.js (MSAL Node) | [Användar handbok för Express Web App-inloggningar](https://github.com/Azure-Samples/ms-identity-node) | |
-| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | [MS-Identity-python-kolv-webapp-Authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [MS-Identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
-| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | Själv studie kurs om python flaska – Användar handbok för [webb program](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) loggar                   | Självstudie för [webb program](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) loggar för python-flaska – användare och samtals diagram |
-| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | [Python flaska](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md) – inloggnings användare med B2C                    |  |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | [Självstudie om python-mätkolv – kapitel 1,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Logga in med AAD  |  |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | [Självstudie om python-mätkolv – kapitel 1,2](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Logga in med B2C                    |  |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | | [Självstudie om python-mätkolv – kapitel 2,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Logga in med AAD och ring diagram |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | |[Självstudie om python-mätkolv – kapitel 3,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Distribuera till Azure App Service  |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | [Självstudie om python-django – kapitel 1,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)   Logga in med AAD  | |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | [Självstudie om python-django – kapitel 1,2](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Logga in med B2C                    |  |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | | [Självstudie om python-django – kapitel 2,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)  Logga in med AAD och ring diagram|
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | | [Självstudie om python-django – kapitel 3,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Distribuera till Azure App Service                    |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)  | | [Python Flask-webbapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![Den här bilden visar ruby-logotypen](media/sample-v2-code/logo_ruby.png) |                   | [msgraph – utbildning – rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 | ![Den här bilden visar den snabba logo typen](media/sample-v2-code/logo-blazor.png)</p>Blazor Server | [Själv studie kurs om hur du loggar in med programmet för blixt](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [Program anrop till programmet för blixt Server Microsoft Graph](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>Själv studie kurs [om Chapterwise: programmet för att logga in användare och anropa API: er med Azure Active Directory](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 
@@ -118,7 +129,7 @@ I följande exempel visas ett offentligt klient program som körs på en enhet u
 
 Följande exempel visar hur du konfigurerar programmet så att det accepterar inloggningar från valfri Azure Active Directory (Azure AD)-klient. Att konfigurera ditt program så att det blir *flera klienter* innebär att du kan erbjuda ett SaaS-program ( **program vara som en tjänst** ) till många organisationer, så att användarna kan logga in till ditt program efter att de har gett sitt medgivande.
 
-| Plattform | Beskrivning | Länk |
+| Plattform | Description | Länk |
 | -------- | --------------------- | -------- |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop för flera innehavare Graph API |[MS-Identity-JavaScript-vinkel-Spa-ASPNET-ASPNET-WebAPI-flera innehavare](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop för flera innehavare med anpassat webb-API |[MS-Identity-JavaScript-vinkel-Spa-ASPNET-ASPNET-WebAPI-flera innehavare](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

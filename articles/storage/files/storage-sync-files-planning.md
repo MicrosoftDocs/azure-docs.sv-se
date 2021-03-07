@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 171e858ef06228f2bf5ef5dea662de00143a0567
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202390"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441949"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -242,6 +242,16 @@ Om moln skiktning är aktiverat på en server slut punkt hoppas filer som skikta
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Andra HSM-lösningar (hierarkisk lagrings hantering)
 Inga andra HSM-lösningar ska användas med Azure File Sync.
+
+## <a name="performance-and-scalability"></a>Prestanda och skalbarhet
+
+Eftersom Azure File Sync-agenten körs på en Windows Server-dator som ansluter till Azure-filresurser, beror den effektiva synkroniseringen på ett antal faktorer i infrastrukturen: Windows Server och den underliggande disk konfigurationen, nätverks bandbredden mellan servern och Azure-lagring, fil storlek, total data uppsättnings storlek och aktivitet i data uppsättningen. Eftersom Azure File Sync fungerar på filnivå, mäts prestanda egenskaperna för en Azure File Sync-baserad lösning bättre i antalet objekt (filer och kataloger) som bearbetas per sekund.
+
+Ändringar som görs i Azure-filresursen med hjälp av Azure Portal eller SMB identifieras inte omedelbart och replikeras som ändringar i Server slut punkten. Azure Files har ännu inte ändrings aviseringar eller journaler, så det finns inget sätt att automatiskt initiera en Sync-session när filerna ändras. På Windows Server använder Azure File Sync [Windows USN-journalering](https://docs.microsoft.com/windows/win32/fileio/change-journals) för att automatiskt initiera en Sync-session när filer ändras
+
+För att kunna identifiera ändringar i Azure-filresursen har Azure File Sync ett schemalagt jobb som kallas ändrings identifierings jobb. Ett ändrings identifierings jobb räknar upp varje fil i fil resursen och jämför det sedan med Sync-versionen av filen. När ändringen av ändrings identifieringen avgör att filerna har ändrats initierar Azure File Sync en Sync-session. Ändrings identifierings jobbet initieras var 24: e timme. Eftersom ändrings identifierings jobbet fungerar genom att räkna upp varje fil i Azure-filresursen tar ändrings identifieringen längre upp i större namn områden än i mindre namn områden. För stora namn rymder kan det ta längre tid än en gång var 24: e timme att avgöra vilka filer som har ändrats.
+
+Mer information finns i [Azure File Sync prestanda mått](storage-files-scale-targets.md#azure-file-sync-performance-metrics) och [Azure File Sync skala mål](storage-files-scale-targets.md#azure-file-sync-scale-targets)
 
 ## <a name="identity"></a>Identitet
 Azure File Sync fungerar med din standard-AD-baserade identitet utan särskilda inställningar utöver att konfigurera synkronisering. När du använder Azure File Sync är den allmänna förväntan att de flesta åtkomst går igenom Azure File Sync caching-servrar i stället för via Azure-filresursen. Eftersom Server slut punkterna finns på Windows Server, och Windows Server har stöd för AD-och Windows-ACL: er under en längre tid, behövs ingenting utöver att se till att de Windows-filservrar som är registrerade hos synkroniseringstjänsten för lagring är domänanslutna. Azure File Sync kommer att lagra ACL: er på filerna i Azure-filresursen och replikera dem till alla Server slut punkter.

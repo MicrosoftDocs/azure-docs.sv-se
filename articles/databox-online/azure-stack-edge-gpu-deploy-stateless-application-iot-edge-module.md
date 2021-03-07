@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899517"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438071"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>Använd IoT Edge modul för att köra ett Kubernetes tillstånds löst program på din Azure Stack Edge Pro GPU-enhet
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 I den här artikeln beskrivs hur du kan använda en IoT Edge-modul för att distribuera ett tillstånds lösa program på din Azure Stack Edge Pro-enhet.
 
@@ -47,7 +49,7 @@ Utför följande steg för att lägga till en modul för webserver-app på din A
 
     ![Välj IoT Edge enhet](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 
-1. Välj **Ange moduler**. I **Ange moduler på enhet**väljer du **+ Lägg till** och väljer sedan **IoT Edge modul**.
+1. Välj **Ange moduler**. I **Ange moduler på enhet** väljer du **+ Lägg till** och väljer sedan **IoT Edge modul**.
 
     ![Välj IoT Edge modul](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-module-1.png)
 
@@ -82,7 +84,7 @@ Utför följande steg för att lägga till en modul för webserver-app på din A
 
 ## <a name="verify-module-access"></a>Verifiera åtkomst till modulen
 
-1. Kontrol lera att modulen har distribuerats och att den körs. Körnings status för modulen ska **köras**på fliken **moduler** .  
+1. Kontrol lera att modulen har distribuerats och att den körs. Körnings status för modulen ska **köras** på fliken **moduler** .  
 
     ![Verifiera att modulens status körs](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 

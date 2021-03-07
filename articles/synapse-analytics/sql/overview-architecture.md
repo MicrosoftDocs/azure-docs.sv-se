@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 28940272d39a08d790fe2cd913df808b02e7f426
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679626"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441898"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-arkitektur 
 
@@ -49,7 +49,7 @@ När du använder Synapse SQL kan du med fristående lagrings utrymme och data b
 
 Synapse SQL utnyttjar Azure Storage för att skydda dina användar data. Eftersom dina data lagras och hanteras av Azure Storage, finns det en separat avgift för lagrings användningen. 
 
-Med Server lös SQL-poolen kan du söka i filer i data Lake på skrivskyddat sätt, medan SQL-poolen låter dig mata in data. När data matas in i en dedikerad SQL-pool, är data shardade i **distributioner** för att optimera systemets prestanda. Du kan välja vilket mönster för horisontell partitionering som ska användas för att distribuera data när du definierar tabellen. Dessa horisontell partitionering-mönster stöds:
+Med Server lös SQL-poolen kan du fråga dina data Lake-filer, medan en dedikerad SQL-pool gör det möjligt att fråga efter och mata in data från dina data Lake-filer. När data matas in i en dedikerad SQL-pool, är data shardade i **distributioner** för att optimera systemets prestanda. Du kan välja vilket mönster för horisontell partitionering som ska användas för att distribuera data när du definierar tabellen. Dessa horisontell partitionering-mönster stöds:
 
 * Hash
 * Resursallokering (round robin)
@@ -107,7 +107,7 @@ En distribuerad tabell med resursallokering distribuerar data jämnt i tabellen 
 ## <a name="replicated-tables"></a>Replikerade tabeller
 En replikerad tabell ger snabbaste frågeprestanda för små tabeller.
 
-En tabell som replikeras cachelagrar en fullständig kopia av tabellen på varje Compute-nod. Därför behöver du, när du replikerar en tabell, inte överföra data till beräkningsnoder innan en koppling eller aggregering. Replikerade tabeller används bäst med små tabeller. Extra lagring krävs och det finns ytterligare kostnader som uppstår när du skriver data, vilket gör stora tabeller opraktiska. 
+En tabell som replikeras cachelagrar en fullständig kopia av tabellen på varje Compute-nod. Därför tar replikerade tabeller bort behovet av att överföra data mellan datornoder före en koppling eller agg regering. Replikerade tabeller används bäst med små tabeller. Extra lagring krävs och det finns ytterligare kostnader som uppstår när du skriver data, vilket gör stora tabeller opraktiska. 
 
 Diagrammet nedan visar en replikerad tabell som cachelagras på den första distributionen på varje Compute-nod. 
 
@@ -115,4 +115,4 @@ Diagrammet nedan visar en replikerad tabell som cachelagras på den första dist
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du vet lite om Synapse SQL, lär dig hur du snabbt [skapar en dedikerad SQL-pool](../quickstart-create-sql-pool-portal.md) och [läser in exempel data](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-load-Sample-databases.MD). Eller så börjar du [använda SQL-poolen utan server](../quickstart-sql-on-demand.md). Om du inte har erfarenhet av Azure kan [Azure-ordlistan](../../azure-glossary-cloud-terminology.md) vara till hjälp om du stöter på ny terminologi. 
+Nu när du vet lite om Synapse SQL, lär dig hur du snabbt [skapar en dedikerad SQL-pool](../quickstart-create-sql-pool-portal.md) och [läser in exempel data](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-load-Sample-databases.MD). Eller börja [använda SQL-pool utan server](../quickstart-sql-on-demand.md). Om du inte har erfarenhet av Azure kan [Azure-ordlistan](../../azure-glossary-cloud-terminology.md) vara till hjälp om du stöter på ny terminologi. 

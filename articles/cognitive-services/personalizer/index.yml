@@ -12,12 +12,12 @@ metadata:
   title: Dokumentation om Personanpassning
   titleSuffix: Azure Cognitive Services
   description: Personanpassning i Azure är en molnbaserad API-tjänst som gör det möjligt att välja det bästa alternativet att visa användarna och drar lärdom av beteende i realtid.
-  ms.openlocfilehash: f4d263e551360b326fbe849e4cb62347e8125849
-  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-  ms.translationtype: HT
+  ms.openlocfilehash: 51d86faac37ad4131adad395d0fb52a23870e2ea
+  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/08/2020
-  ms.locfileid: "94368142"
+  ms.lasthandoff: 03/07/2021
+  ms.locfileid: "102433717"
 landingContent:
 - title: Om Personanpassning
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
     - text: NuGet-paket
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet-referensdokumentation
-      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&preserve-view=true
   - linkListType: get-started
     links:
     - text: Utveckla en loop för personanpassning med .Node.js

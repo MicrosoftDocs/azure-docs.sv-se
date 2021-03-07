@@ -40,7 +40,9 @@
       href: connected-cache-disconnected-device-update.md
     - name: Konfigurera Microsoft Connected cache för enhets uppdatering för IoT Hub
       href: connected-cache-configure.md
-    - name: Importera-relaterat schema och annan information
+    - name: Importera enhets uppdateringar
+      href: import-concepts.md
+    - name: Importera-relaterat schema
       href: import-schema.md
 - name: Anvisningar
   items:

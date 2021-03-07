@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a30768f4904c9e5be2edc020f12260cf3a54c889
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555823"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425897"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrera till detaljerad rollbaserad åtkomst för klusterkonfigurationer
 
@@ -111,11 +111,11 @@ Uppdatera till [version 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Ma
 
 Uppdatera till [version 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) eller senare av HDInsight SDK för .net. Minimala kod ändringar kan krävas om du använder en metod som påverkas av dessa ändringar:
 
-- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) kommer **inte längre att returnera känsliga parametrar** som lagrings nycklar (Core-site) eller http-autentiseringsuppgifter (Gateway).
-    - Om du vill hämta alla konfigurationer, inklusive känsliga parametrar, använder du [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) framåt.Observera att användare med rollen läsare inte kommer att kunna använda den här metoden. Detta ger detaljerad kontroll över vilka användare som kan komma åt känslig information för ett kluster. 
-    - Använd för att hämta bara HTTP Gateway-autentiseringsuppgifter [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) . 
-- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) är nu föråldrad och har ersatts av [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) . 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) och [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) är nu föråldrade. HTTP är nu alltid aktiverat, så dessa metoder behövs inte längre.
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get) kommer **inte längre att returnera känsliga parametrar** som lagrings nycklar (Core-site) eller http-autentiseringsuppgifter (Gateway).
+    - Om du vill hämta alla konfigurationer, inklusive känsliga parametrar, använder du [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list) framåt.Observera att användare med rollen läsare inte kommer att kunna använda den här metoden. Detta ger detaljerad kontroll över vilka användare som kan komma åt känslig information för ett kluster. 
+    - Använd för att hämta bara HTTP Gateway-autentiseringsuppgifter [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings) . 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update) är nu föråldrad och har ersatts av [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings) . 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp) och [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp) är nu föråldrade. HTTP är nu alltid aktiverat, så dessa metoder behövs inte längre.
 
 ### <a name="sdk-for-python"></a>SDK för Python
 

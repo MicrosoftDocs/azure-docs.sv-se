@@ -1,5 +1,5 @@
 ---
-title: Återställa AdventureWorks-exempel databasen till Azure Arc Enabled PostgreSQL-skalning
+title: Importera AdventureWorks-exempel databasen till Azure Arc Enabled PostgreSQL-skalning
 description: Återställa AdventureWorks-exempel databasen till Azure Arc Enabled PostgreSQL-skalning
 services: azure-arc
 ms.service: azure-arc
@@ -9,14 +9,14 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b1ee779be118fcafd0efa2bd2718ece1c34c50d1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: a9efa17fb782d5a913493907b66973272e4e0356
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954336"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441796"
 ---
-# <a name="restore-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>Återställa AdventureWorks-exempel databasen till Azure Arc Enabled PostgreSQL-skalning
+# <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>Importera AdventureWorks-exempel databasen till Azure Arc Enabled PostgreSQL-skalning
 
 [AdventureWorks](/sql/samples/adventureworks-install-configure) är en exempel databas som innehåller en OLTP-databas som används i självstudier och exempel. Den tillhandahålls och underhålls av Microsoft som en del av [SQL Server-GitHub-lagringsplatsen](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases).
 
@@ -24,7 +24,7 @@ Ett projekt med öppen källkod har konverterat AdventureWorks-databasen så att
 - [Ursprungligt projekt](https://github.com/lorint/AdventureWorks-for-Postgres)
 - [Följ på Project som förkonverterar CSV-filerna så att de är kompatibla med PostgreSQL](https://github.com/NorfolkDataSci/adventure-works-postgres)
 
-Det här dokumentet beskriver en enkel process för att hämta AdventureWorks-exempel databasen som återställs till din PostgreSQL-Server grupp för storskalig skalning.
+Det här dokumentet beskriver en enkel process för att hämta AdventureWorks-exempel databasen som importeras till din PostgreSQL-Server grupp för storskalig skalning.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -38,7 +38,7 @@ Kör ett kommando som detta för att ladda ned filerna Ersätt värdet för Pod 
 >  Din behållare måste ha Internet anslutning över 443 för att kunna hämta filen från GitHub.
 
 > [!NOTE]
->  Använd Pod namn för koordinator-noden i postgres-ProScale Server-gruppen. Namnet är <server group name> -0.  Om du inte är säker på pod-namnet kör du kommandot `kubectl get pod`
+>  Använd Pod namn för koordinator-noden i postgres-ProScale Server-gruppen. Namnet är <server group name> c-0 (till exempel postgres01c-0, där c står för noden koordinator).  Om du inte är säker på pod-namnet kör du kommandot `kubectl get pod`
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"
@@ -47,7 +47,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash
 #kubectl exec postgres02-0 -n arc -c postgres -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"
 ```
 
-## <a name="step-2-restore-the-adventureworks-database"></a>Steg 2: återställa AdventureWorks-databasen
+## <a name="step-2-import-the-adventureworks-database"></a>Steg 2: importera AdventureWorks-databasen
 
 På samma sätt kan du köra ett kubectl exec-kommando för att använda psql CLI-verktyget som ingår i PostgreSQL för Server grupp behållare för för att skapa och läsa in databasen.
 
@@ -60,7 +60,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 #kubectl exec postgres02-0 -n arc -c postgres -- psql --username postgres -c 'CREATE DATABASE "adventureworks";'
 ```
 
-Kör sedan ett kommando som detta för att återställa databasen som ersätter värdet för Pod-namnet och namn områdets namn innan du kör det.
+Kör sedan ett kommando som detta för att importera databasen som ersätter värdet för Pod-namnet och namn områdets namn innan du kör det.
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --username postgres -d adventureworks -f /tmp/AdventureWorks.sql

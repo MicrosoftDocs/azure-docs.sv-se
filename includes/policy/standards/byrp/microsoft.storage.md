@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bdfa47c5453981856b4a9074cbabcc61314e0be5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 966ea68c3e3c5f102ea9c57dfe9bca05388821c6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105492"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443376"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -43,7 +43,7 @@ Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tj
 |Dataskydd |4.4 |Kryptera all känslig information i överföring |[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
 |Inventerings- och tillgångshantering |6,9 |Använd endast godkända Azure-tjänster |[Lagrings konton ska migreras till nya Azure Resource Manager resurser](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json) |
 
-## <a name="cis-microsoft-azure-foundations-benchmark"></a>CIS Microsoft Azure Foundations Benchmark
+## <a name="cis-microsoft-azure-foundations-benchmark-110"></a>CIS Microsoft Azure Foundations Benchmark 1.1.0
 
 Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för regelefterlevnad-CIS Microsoft Azure grunderna för benchmark-1.1.0](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md).
 Mer information om den här standarden för efterlevnad finns i [CIS Microsoft Azure Stiftelses benchmark](https://www.cisecurity.org/benchmark/azure/).
@@ -56,6 +56,22 @@ Mer information om den här standarden för efterlevnad finns i [CIS Microsoft A
 |Lagringskonton |3,8 |Se till att betrodda Microsoft-tjänster är aktiverat för åtkomst till lagrings kontot |[Lagrings konton ska tillåta åtkomst från betrodda Microsoft-tjänster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json) |
 |Loggning och övervakning |5.1.5 |Se till att lagrings behållaren som lagrar aktivitets loggarna inte är offentligt tillgänglig |[Lagrings kontots offentliga åtkomst ska inte tillåtas](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |[2.0.1-för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 |Loggning och övervakning |5.1.6 |Se till att lagrings kontot som innehåller behållaren med aktivitets loggar är krypterat med BYOK (Använd din egen nyckel) |[Lagrings kontot som innehåller behållaren med aktivitets loggar måste vara krypterat med BYOK](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
+
+## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>1.3.0 för Microsoft Azure CIS-prestandatest
+
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för regelefterlevnad-CIS Microsoft Azure grunderna för benchmark-1.3.0](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md).
+Mer information om den här standarden för efterlevnad finns i [CIS Microsoft Azure Stiftelses benchmark](https://www.cisecurity.org/benchmark/azure/).
+
+|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Lagringskonton |3.1 |Se till att "säker överföring krävs" är inställt på "Enabled" |[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
+|Lagringskonton |3.5 |Se till att "offentlig åtkomst nivå" är inställt på privat för BLOB-behållare |[Lagrings kontots offentliga åtkomst ska inte tillåtas](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |[2.0.1-för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|Lagringskonton |3,6 |Se till att standard regeln för nätverks åtkomst för lagrings konton är inställd på neka |[Lagrings konton bör begränsa nätverks åtkomsten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
+|Lagringskonton |3,6 |Se till att standard regeln för nätverks åtkomst för lagrings konton är inställd på neka |[Lagrings konton bör begränsa nätverks åtkomsten med hjälp av regler för virtuella nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a1a9cdf-e04d-429a-8416-3bfb72a1b26f) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountOnlyVnetRulesEnabled_Audit.json) |
+|Lagringskonton |3.7 |Se till att betrodda Microsoft-tjänster är aktiverat för åtkomst till lagrings kontot |[Lagrings konton ska tillåta åtkomst från betrodda Microsoft-tjänster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json) |
+|Lagringskonton |3.9 |Kontrol lera att lagringen för viktiga data är krypterad med kundhanterad nyckel |[Lagrings konton ska använda kundhanterad nyckel för kryptering](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fac406b-40ca-413b-bf8e-0bf964659c25) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountCustomerManagedKeyEnabled_Audit.json) |
+|Loggning och övervakning |5.1.3 |Se till att lagrings behållaren som lagrar aktivitets loggarna inte är offentligt tillgänglig |[Lagrings kontots offentliga åtkomst ska inte tillåtas](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |[2.0.1-för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|Loggning och övervakning |5.1.4 |Se till att lagrings kontot som innehåller behållaren med aktivitets loggar är krypterat med BYOK (Använd din egen nyckel) |[Lagrings kontot som innehåller behållaren med aktivitets loggar måste vara krypterat med BYOK](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 
 ## <a name="cmmc-level-3"></a>CMMC nivå 3
 
@@ -123,10 +139,10 @@ Mer information om den här standarden för efterlevnad finns i [ISO 27001:2013]
 |Kommunikations säkerhet |13.1.1 |Nätverkskontroller |[Lagrings konton bör begränsa nätverks åtkomsten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 |Kommunikations säkerhet |13.2.1 |Information överförings principer och procedurer |[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
 
-## <a name="new-zealand-ism"></a>Nya Zeeland ISM
+## <a name="new-zealand-ism-restricted"></a>Nya Zeeland ISM-begränsad
 
-Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regelefterlevnad – nya Zeeland information Security manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
-Mer information om den här standarden för efterlevnad finns i [ny Zeelands information säkerhets hand bok](https://www.nzism.gcsb.govt.nz/).
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regelefterlevnad – nya Zeeland ISM-begränsade](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Mer information om den här standarden för efterlevnad finns i [New Zeelands ISM restricted](https://www.nzism.gcsb.govt.nz/).
 
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|

@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039843"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437169"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Vad är Azure Route Server (för hands version)? 
 
@@ -37,7 +37,7 @@ Azure Route Server fören klar konfiguration, hantering och distribution av dina
 
 * Du behöver inte längre uppdatera [användardefinierade vägar](../virtual-network/virtual-networks-udr-overview.md) manuellt när din NVA meddelar nya vägar eller drar tillbaka gamla. 
 
-* Du behöver inte längre konfigurera en belastningsutjämnare framför din NVA i återhämtnings-eller prestanda syfte. När du peer-koppla flera instanser av din NVA med Azure Route Server kan du konfigurera BGP-attributen i din NVA. Dessa BGP-attribut gör att Azure Route server som NVA-instansen ska vara aktiv eller passiv. 
+* Du kan peer-koppla flera instanser av din NVA med Azure Route Server. Du kan konfigurera BGP-attributen i din NVA och, beroende på din design (t. ex. Active-Active för prestanda eller aktiv-passiv för återhämtning), ge Azure Route Server veta vilken NVA-instans som är aktiv eller som en passiv. 
 
 * Gränssnittet mellan NVA och Azure Route Server baseras på ett vanligt standard protokoll. Så länge din NVA har stöd för BGP kan du använda peer-servern med Azure Route Server. Mer information finns i [routningsprotokoll för Route-servrar som stöds](route-server-faq.md#protocol).
 
