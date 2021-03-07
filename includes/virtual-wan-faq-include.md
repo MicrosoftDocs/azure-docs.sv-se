@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206001"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431553"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -93,7 +93,7 @@ Det finns två alternativ för att lägga till DNS-servrar för P2S-klienter. De
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>För användar-VPN (punkt-till-plats) – hur många klienter stöds?
 
-Varje användares VPN-P2S Gateway har två instanser och varje instans har stöd för upp till vissa användare när skalnings enheten ändras. Skalnings enhet 1-3 har stöd för 500 anslutningar, skalnings enhet 4-6 har stöd för 1000 anslutningar, skalnings enhet 7-12 har stöd för 5000-anslutningar och skalnings enhet 13-18 har stöd för upp till 10 000
+Varje användares VPN-P2S Gateway har två instanser. Varje instans har stöd för upp till ett visst antal anslutningar allteftersom skalnings enheten ändras. Skalnings enhet 1-3 har stöd för 500-anslutningar, skalnings enhet 4-6 har stöd för 1000 anslutningar, skalnings enhet 7-12 har stöd för 5000-anslutningar och skalnings enhet 13-18 har stöd för upp till 10 000
 
 Anta till exempel att användaren väljer 1 skalnings enhet. Varje skalnings enhet innebär att en aktiv-aktiv Gateway distribueras och var och en av instanserna (i det här fallet 2) har stöd för upp till 500 anslutningar. Eftersom du kan få 500 anslutningar * 2 per Gateway, innebär det inte att du planerar för 1000 i stället för 500 för den här skalnings enheten. Instanser kan behöva servas under vilken anslutningen för den extra 500 kan avbrytas om du överskrider det rekommenderade antalet anslutningar. Se också till att planera för stillestånds tid om du vill skala upp eller ned i skalnings enheten eller ändra plats-till-plats-konfigurationen på VPN-gatewayen.
 
@@ -125,7 +125,7 @@ Nej. Du kan använda valfri VPN-kompatibel enhet som följer Azure-kraven för I
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Hur automatiserar Virtual WAN-partner anslutningsmöjligheter med Azure Virtual WAN?
 
-Programvarudefinierade anslutningslösningar hanterar vanligtvis gren-enheter med hjälp av en kontrollant eller ett enhetsetableringscenter. Kontrollanten kan automatisera anslutningar till Azure Virtual WAN med hjälp av Azure API:er. Automation inkluderar överföring av gren information, hämtning av Azure-konfiguration, konfiguration av IPSec-tunnlar i virtuella Azure-nav och automatisk inställning av anslutning från gren enheten till Azure Virtual WAN. När du har hundratals grenar är det enkelt att ansluta med hjälp av virtuella WAN-partners för att skapa, konfigurera och hantera storskalig IPsec-anslutning. Mer information finns i den [virtuella WAN-partner automatisering](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
+Programvarudefinierade anslutningslösningar hanterar vanligtvis gren-enheter med hjälp av en kontrollant eller ett enhetsetableringscenter. Kontrollanten kan automatisera anslutningar till Azure Virtual WAN med hjälp av Azure API:er. Automation inkluderar överföring av gren information, hämtning av Azure-konfiguration, konfiguration av IPsec-tunnlar i virtuella Azure-nav och automatisk inställning av anslutning från gren enheten till Azure Virtual WAN. När du har hundratals grenar är det enkelt att ansluta med hjälp av virtuella WAN-partners för att skapa, konfigurera och hantera storskalig IPsec-anslutning. Mer information finns i den [virtuella WAN-partner automatisering](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Vad händer om en enhet jag använder inte finns med i listan över virtuella WAN-partner? Kan jag fortfarande använda den för att ansluta till Azure Virtual WAN VPN?
 
@@ -133,7 +133,7 @@ Ja så länge enheten stöder IPsec IKEv1 eller IKEv2. Virtuella WAN-partner aut
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hur registreras nya partner som inte visas i startpartnerlistan?
 
-Alla virtuella WAN-API: er är öppna API. Du kan gå igenom dokumentationen [virtuell WAN-partner automatisering](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) för att utvärdera teknisk genomförbarhet. En perfekt partner är en partner som har en enhet som kan etableras för IKEv1 eller IKEv2 IPSec-anslutning. När företaget har slutfört automatiserings arbetet för deras CPE-enhet baserat på de rikt linjer som anges ovan, kan du kontaktas för att azurevirtualwan@microsoft.com visas i listan här, [via partner]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Om du är en kund som vill att en viss företags lösning ska listas som en virtuell WAN-partner måste företaget kontakta det virtuella WAN-nätverket genom att skicka ett e-postmeddelande till azurevirtualwan@microsoft.com .
+Alla virtuella WAN-API: er är öppna API. Du kan gå igenom dokumentationen [virtuell WAN-partner automatisering](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) för att utvärdera teknisk genomförbarhet. En perfekt partner är en partner som har en enhet som kan etableras för IKEv1 eller IKEv2 IPSec-anslutning. När företaget har slutfört automatiserings arbetet för deras CPE-enhet baserat på de rikt linjer som anges ovan, kan du kontaktas för att azurevirtualwan@microsoft.com visas i listan här, [via partner]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Om du är en kund som vill att en viss företags lösning ska listas som en virtuell WAN-partner, måste företaget kontakta det virtuella WAN-nätverket genom att skicka ett e-postmeddelande till azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hur fungerar virtuella WAN-enheter som stöder SD-WAN-enheter?
 
@@ -149,7 +149,7 @@ En anslutning från en gren eller VPN-enhet till Azure Virtual WAN är en VPN-an
 
 ### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>Vad händer om den lokala VPN-enheten bara har 1 tunnel till en virtuell WAN-gateway i Azure?
 
-En virtuell WAN-anslutning i Azure består av två tunnlar. En virtuell WAN-Gateway distribueras i en virtuell hubb i aktivt-aktivt läge, vilket innebär att det finns separata tunnlar från lokala enheter som avslutas på separata instanser. Detta är rekommendationen för alla användare. Men om användaren väljer att bara ha 1 tunnel till en av de virtuella WAN-Gateway-instanserna, om det av någon anledning (underhåll, korrigeringar osv.) som gateway-instansen skulle vara frånkopplad, kommer tunneln att flyttas till den sekundära aktiva instansen och användaren kan uppleva en åter anslutning. BGP-sessioner kommer inte att flyttas mellan instanser.
+En virtuell WAN-anslutning i Azure består av två tunnlar. En virtuell WAN-Gateway distribueras i en virtuell hubb i aktivt-aktivt läge, vilket innebär att det finns separata tunnlar från lokala enheter som avslutas på separata instanser. Detta är rekommendationen för alla användare. Men om användaren väljer att bara ha 1 tunnel till en av de virtuella WAN-Gateway-instanserna, om det av någon anledning (underhåll, korrigeringar osv.) är offline, kommer tunneln att flyttas till den sekundära aktiva instansen och användaren kan uppleva en åter anslutning. BGP-sessioner kommer inte att flyttas mellan instanser.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Kan den lokala VPN-enheten ansluta till flera hubbar?
 
@@ -213,7 +213,7 @@ Det totala VPN-dataflödet för en hubb är upp till 20 Gbit/s baserat på den v
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kan jag använda NAT-T på mina VPN-anslutningar?
 
-Ja, NAT Traversal (NAT-T) stöds. Den virtuella WAN-VPN-gatewayen utför inga NAT-liknande funktioner på de inre paketen till/från IPsec-tunnlarna. I den här konfigurationen kontrollerar du att den lokala enheten initierar IPSec-tunneln.
+Ja, NAT Traversal (NAT-T) stöds. Den virtuella WAN-VPN-gatewayen utför inga NAT-liknande funktioner på de inre paketen till/från IPsec-tunnlarna. I den här konfigurationen kontrollerar du att den lokala enheten initierar IPsec-tunneln.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Jag ser inte inställningen 20 Gbit/s för den virtuella hubben i portalen. Hur gör jag för att konfigurera?
 
@@ -305,5 +305,4 @@ Ja. En lista över MSP-lösningar (Managed Service Provider) som är aktiverade 
 
 ### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Hur skiljer sig den virtuella WAN Hub-routningen från Azure Route server i ett virtuellt nätverk?
 
-Azure Route Server tillhandahåller en Border Gateway Protocol (BGP) peering-tjänst som kan användas av NVA (virtuell nätverks installation) för att lära sig vägar från väg servern i ett gör det själv Hub VNet. Virtuell WAN-routning ger flera funktioner, inklusive VNET till VNET-överföring, anpassad routning, anpassad väg Association och-spridning och en helt nät mask med anslutning utan anslutning samt anslutnings tjänster för ExpressRoute, plats-VPN, fjärran vändare/storskaliga P2S VPN-och Secure Hub-funktioner (Azure Firewall). När du etablerar en Border Gateway Protocol (BGP) peering mellan din NVA och Azure router Server kan du annonsera IP-adresser från din NVA till ditt virtuella nätverk. För alla avancerade routningsfunktioner, till exempel transit routning, anpassad routning osv., kan du använda virtuell WAN-routning.
-
+Azure Route Server tillhandahåller en Border Gateway Protocol (BGP) peering-tjänst som kan användas av NVA (virtuell nätverks installation) för att lära sig vägar från väg servern i ett gör det själv Hub VNet. Virtuell WAN-routning ger till gång till flera funktioner, bland annat VNet-till-VNet-överföring, anpassad routning, anpassad väg Association och-spridning, och en helt nätbaserad nav-tjänst utan touch, tillsammans med anslutnings tjänster för ExpressRoute, plats-VPN, fjärran vändare/storskalig P2S VPN och säker hubb (Azure Firewall). När du upprättar en BGP-peering mellan din NVA och Azure Route Server kan du annonsera IP-adresser från din NVA till ditt virtuella nätverk. För alla avancerade routningsfunktioner, till exempel transit routning, anpassad routning osv., kan du använda virtuell WAN-routning.

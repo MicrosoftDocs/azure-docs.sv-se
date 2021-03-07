@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f02874a54332519cbad53c74fafa61bcc71f7d08
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: de3f234d6698efb51e0f86fdab7983de5368fd05
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090938"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424945"
 ---
-|Namn<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[ASC privat förhands granskning \] distribuera – konfigurera systemtilldelad hanterad identitet för att aktivera Azure Monitor tilldelningar på virtuella datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC privat förhands granskning] Konfigurera systemtilldelad hanterad identitet till virtuella datorer som finns i Azure och som stöds av Azure Monitor som inte har en systemtilldelad hanterad identitet. En systemtilldelad hanterad identitet är en förutsättning för alla Azure Monitor tilldelningar och måste läggas till i datorer innan du använder ett Azure Monitor-tillägg. Virtuella mål datorer måste finnas på en plats som stöds. |modify |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[\[För hands version \] : granska Log Analytics agent distribution-VM avbildning (OS) har inte listats](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Rapporterar virtuella datorer som icke-kompatibla om VM-avbildningen (OS) inte finns i listan och agenten inte är installerad. Listan över OS-avbildningar uppdateras med tiden då supporten uppdateras. |auditIfNotExists |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |

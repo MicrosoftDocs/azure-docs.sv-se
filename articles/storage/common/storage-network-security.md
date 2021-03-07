@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/05/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e395ce996bf7e6889a27fcb04b0e643cf63c58b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714756"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430895"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -136,7 +136,7 @@ När du planerar för haveri beredskap under ett regionalt avbrott bör du skapa
 
 ### <a name="required-permissions"></a>Behörigheter som krävs
 
-Om du vill tillämpa en virtuell nätverks regel på ett lagrings konto måste användaren ha rätt behörighet för de undernät som läggs till. Den behörighet som krävs är *Anslut till ett undernät* och ingår i den inbyggda rollen *lagrings konto deltagare* . Den kan också läggas till i anpassade roll definitioner.
+Om du vill tillämpa en virtuell nätverks regel på ett lagrings konto måste användaren ha rätt behörighet för de undernät som läggs till. Att tillämpa en regel kan utföras av en [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor) eller en användare som har fått behörighet till `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [Azure Resource Provider-åtgärden](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) via en anpassad Azure-roll.
 
 Lagrings kontot och de virtuella nätverk som beviljats åtkomst kan finnas i olika prenumerationer, inklusive prenumerationer som ingår i en annan Azure AD-klient.
 

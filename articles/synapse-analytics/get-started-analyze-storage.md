@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 71ba3d99ceee89464dafdf5bf4c16e70df146bef
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209380"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426084"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Analysera data i ett lagrings konto
 
@@ -45,7 +45,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 Du kan analysera data i arbets ytans standard ADLS Gen2 konto eller så kan du länka ett ADLS Gen2-eller Blob Storage-konto till din arbets yta via "**Hantera**" >**länkade tjänster**">"**nytt**"(stegen nedan refererar till det primära ADLS Gen2 kontot).
 
 1. I Synapse Studio går du till **data** hubben och väljer sedan **länkad**.
-1. Gå till **Storage Accounts**-  >  **arbetsytan (Primary-contosolake)**.
+1. Gå till **Azure Data Lake Storage Gen2** min  >  **arbets yta (Primary-contosolake)**.
 1. Välj **användare (primär)**. Du bör se mappen **NYCTaxi** . Inuti bör du se två mappar som heter **PassengerCountStats_csvformat** och **PassengerCountStats_parquetformat**.
 1. Öppna mappen **PassengerCountStats_parquetformat** . Inuti ser du en Parquet-fil med ett namn som `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
 1. Högerklicka på **. Parquet**, välj sedan **ny antecknings bok** och välj sedan **load till DataFrame**. En ny antecknings bok skapas med en cell som den här:

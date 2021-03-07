@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8e0d05d2cb960e760809ab35a8f9e4ca04acf250
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461472"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442969"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scenario: dirigera till delade tjänster virtuella nätverk
 
@@ -30,9 +30,9 @@ Vi kan använda en anslutnings mat ris för att sammanfatta kraven i det här sc
 
 | Från             | Till:   |*Isolerade virtuella nätverk*|*Delat VNet*|*Grenar*|
 |---|---|---|---|---|
-|**Isolerade virtuella nätverk**|&#8594;|        | Direct | Direct |
-|**Delade virtuella nätverk**  |&#8594;| Direct | Direct | Direct |
-|**Grenar**      |&#8594;| Direct | Direct | Direct |
+|**Isolerade virtuella nätverk**| ->|        | Direct | Direct |
+|**Delade virtuella nätverk**  |->| Direct | Direct | Direct |
+|**Grenar**      |->| Direct | Direct | Direct |
 
 Var och en av cellerna i föregående tabell beskriver om en virtuell WAN-anslutning ("från"-sidan i flödet, rad rubrikerna) kommunicerar med ett mål ("till"-sidan av flödet, kolumn rubrikerna i kursiv stil). I det här scenariot finns det inga brand väggar eller virtuella nätverks enheter, så kommunikationen flödar direkt över det virtuella WAN-nätverket (och därför ordet "Direct" i tabellen).
 
@@ -65,17 +65,17 @@ Tänk på följande när du konfigurerar scenariot:
 2. Skapa en anpassad routningstabell. I exemplet refererar vi till routningstabellen som **RT_SHARED**. Anvisningar för hur du skapar en routningstabell finns i [så här konfigurerar du routning av virtuell hubb](how-to-virtual-hub-routing.md). Använd följande värden som en rikt linje:
 
    * **Föreningar**
-     * För **virtuella nätverk *utom* de delade tjänsterna VNet**väljer du den virtuella nätverk som ska isoleras. Detta innebär att alla dessa virtuella nätverk (förutom det virtuella nätverket för delade tjänster) kan komma åt målet baserat på vägar i RT_SHARED Route-tabellen.
+     * För **virtuella nätverk *utom* de delade tjänsterna VNet** väljer du den virtuella nätverk som ska isoleras. Detta innebär att alla dessa virtuella nätverk (förutom det virtuella nätverket för delade tjänster) kan komma åt målet baserat på vägar i RT_SHARED Route-tabellen.
 
    * **Spridning**
-      * För **grenar**sprider du vägar till den här routningstabellen, förutom andra routningstabeller som du kanske redan har valt. På grund av det här steget kommer RT_SHARED Route-tabellen att lära sig vägar från alla förgrenings anslutningar (VPN/ER/användare VPN).
-      * För **virtuella nätverk**väljer du **delade tjänster VNet**. På grund av det här steget kommer RT_SHARED Route-tabellen att lära sig vägar från VNet-anslutningen för delade tjänster.
+      * För **grenar** sprider du vägar till den här routningstabellen, förutom andra routningstabeller som du kanske redan har valt. På grund av det här steget kommer RT_SHARED Route-tabellen att lära sig vägar från alla förgrenings anslutningar (VPN/ER/användare VPN).
+      * För **virtuella nätverk** väljer du **delade tjänster VNet**. På grund av det här steget kommer RT_SHARED Route-tabellen att lära sig vägar från VNet-anslutningen för delade tjänster.
 
 Detta leder till att konfigurationen för routning visas i följande figur:
 
-   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="VNet för delade tjänster" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
+   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Diagram för delade tjänster VNet." lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om virtuellt WAN finns i [vanliga frågor och svar](virtual-wan-faq.md).
+* Information om hur du konfigurerar med en ARM-mall finns i [snabb start: dirigera till delade tjänster virtuella nätverk med en arm-mall](quickstart-route-shared-services-vnet-template.md).
 * Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-virtual-hub-routing.md).

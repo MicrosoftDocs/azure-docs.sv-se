@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/05/2021
+ms.openlocfilehash: 941d866fbdea0efc5775bccd08e0235b1629fae0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050247"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440997"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
 
@@ -280,6 +280,7 @@ Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan 
    1. Ersätt `AzureWebJobsStorage` egenskap svärdet med lagrings kontots anslutnings sträng som du sparade tidigare, till exempel:
 
       Innan:
+
       ```json
       {
          "IsEncrypted": false,
@@ -291,6 +292,7 @@ Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan 
       ```
 
       Efter:
+
       ```json
       {
          "IsEncrypted": false,
@@ -302,6 +304,22 @@ Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan 
       ```
 
    1. När du är klar kontrollerar du att du sparar ändringarna.
+
+<a name="enable-built-in-connector-authoring"></a>
+
+## <a name="enable-built-in-connector-authoring"></a>Aktivera inbyggd koppling av koppling
+
+Du kan skapa egna inbyggda anslutningar för alla tjänster du behöver med hjälp av för [hands versions ramverket för för hands versionen](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). På samma sätt som för inbyggda anslutnings program, till exempel Azure Service Bus och SQL Server, ger dessa anslutningar högre data flöde, låg latens, lokal anslutning och körs internt i samma process som för hands versions körningen.
+
+Redigerings funktionen är för närvarande endast tillgänglig i Visual Studio Code, men är inte aktive rad som standard. Om du vill skapa de här kopplingarna måste du först konvertera ditt projekt från Extension-paketbaserade (Node.js) till NuGet-paket-baserad (.NET).
+
+1. I fönstret Utforskaren, i projektets rot, flyttar du mus pekaren över ett tomt utrymme under alla andra filer och mappar, öppnar snabb menyn och väljer **konvertera till NuGet-baserat Logic app-projekt**.
+
+   ![Skärm bild som visar fönstret Utforskaren med projektets snabb meny som öppnas från ett tomt utrymme i projekt fönstret.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+
+1. När meddelandet visas bekräftar du projekt konverteringen.
+
+1. Fortsätt genom att granska och följa stegen i artikeln, [Azure Logic Apps som körs var som helst – inbyggd anslutnings barhet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -441,9 +459,9 @@ Arbets flödet i det här exemplet använder utlösaren och följande åtgärder
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Till** | Ja | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
-   | **Ämne** | Ja | `An email from your example workflow` | E-postmeddelandets ämne |
-   | **Brödtext** | Ja | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
+   | **Till** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
+   | **Ämne** | Yes | `An email from your example workflow` | E-postmeddelandets ämne |
+   | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
 
    > [!NOTE]
@@ -629,7 +647,7 @@ Testa din Logi Kap par genom att följa de här stegen för att starta en felsö
 
    ![Skärm bild som visar sidan för arbets flödets översikt med körnings status och historik](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Körnings status | Beskrivning |
+   | Körnings status | Description |
    |------------|-------------|
    | **Avbruten** | Körningen stoppades eller slutfördes inte på grund av externa problem, till exempel ett system avbrott eller en upphörde Azure-prenumeration. |
    | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
@@ -653,7 +671,7 @@ Testa din Logi Kap par genom att följa de här stegen för att starta en felsö
 
    Här är möjliga statusar som varje steg i arbets flödet kan ha:
 
-   | Åtgärds status | Ikon | Beskrivning |
+   | Åtgärds status | Ikon | Description |
    |---------------|------|-------------|
    | **Avbruten** | ![Ikon för status för avbrutna åtgärder][aborted-icon] | Åtgärden stoppades eller avslutades inte på grund av externa problem, till exempel ett system avbrott eller en upphördende Azure-prenumeration. |
    | **Avbröts** | ![Ikon för status för avbrutna åtgärder][cancelled-icon] | Åtgärden kördes men tog emot en begäran att avbryta. |
@@ -1348,6 +1366,7 @@ När du försöker starta en felsökningssession får du ett fel meddelande om a
 1. I följande uppgift tar du bort raden, `"dependsOn: "generateDebugSymbols"` tillsammans med det kommatecken som avslutar föregående rad, till exempel:
 
    Innan:
+
    ```json
     {
       "type": "func",
@@ -1359,6 +1378,7 @@ När du försöker starta en felsökningssession får du ett fel meddelande om a
    ```
 
    Efter:
+
    ```json
     {
       "type": "func",

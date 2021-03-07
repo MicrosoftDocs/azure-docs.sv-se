@@ -1,7 +1,6 @@
 ---
 title: Skapa anpassade säkerhets principer i Azure Security Center | Microsoft Docs
 description: Azures anpassade princip definitioner övervakas av Azure Security Center.
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -9,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100873"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441065"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Skapa anpassade säkerhets initiativ och principer
 
@@ -23,6 +22,9 @@ Azure Security Center skapar säkerhets rekommendationer för att skydda dina sy
 Med den här funktionen kan du lägga till egna *anpassade* initiativ. Du får sedan rekommendationer om din miljö inte följer de principer som du skapar. Alla anpassade initiativ som du skapar visas tillsammans med de inbyggda initiativen på instrument panelen för kontroll av efterlevnad, enligt beskrivningen i självstudien [förbättra din efterlevnad](security-center-compliance-dashboard.md).
 
 Som beskrivs i [Azure policy-dokumentationen](../governance/policy/concepts/definition-structure.md#definition-location), och när du anger en plats för ditt eget initiativ, måste det vara en hanterings grupp eller en prenumeration. 
+
+> [!TIP]
+> En översikt över viktiga begrepp på den här sidan finns i [Vad är säkerhets principer, initiativ och rekommendationer?](security-policy-concept.md).
 
 ::: zone pivot="azure-portal"
 

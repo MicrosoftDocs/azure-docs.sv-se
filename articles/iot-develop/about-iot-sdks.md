@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: fc30515f4b5ca0a763bf9f40de6a03356b88e500
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4ac675d0b6c2ce1e735a8ad530bc004f993a1833
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214617"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435502"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Översikt över SDK: er för Azure IoT-enheter
 
@@ -91,8 +91,8 @@ Dessa SDK: er kan köras på alla enheter som har stöd för en språk körning 
 * [GitHub-lagringsplats](https://github.com/Azure/azure-iot-sdk-csharp)
 * [Exempel](https://github.com/Azure/azure-iot-sdk-csharp#samples)
 * [Paket](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)
-* [Referensdokumentation](/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true)
-* [Referens dokumentation för Edge-modul](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet&preserve-view=true)
+* [Referensdokumentation](/dotnet/api/microsoft.azure.devices)
+* [Referens dokumentation för Edge-modul](/dotnet/api/microsoft.azure.devices.client.moduleclient)
 
 #### <a name="java-device-sdk"></a>Java-enhets-SDK
 
@@ -141,7 +141,7 @@ Azure Digitals är ett PaaS-erbjudande (Platform as a Service) som gör det möj
 
 [**Lär dig mer om digitala Azure-dubbla**](https://azure.microsoft.com/services/digital-twins/)  |  [ **Koda ett ADT-program**](../digital-twins/tutorial-code.md)
 
-**C# ADT service SDK**: [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-  |  [paket](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [referens dokumentation](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)
+**C# ADT service SDK**: [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-  |  [paket](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [referens dokumentation](/dotnet/api/overview/azure/digitaltwins/client)
 
 **Java ADT service SDK**: [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)-  |  [paket](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)  |  [exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core/src/samples)  |  [referens dokumentation](/java/api/overview/azure/digitaltwins/client)
 
@@ -155,7 +155,7 @@ IoT Hub Device Provisioning Service (DPS) är en hjälp tjänst för IoT Hub som
 
 [**Läs mer om enhets etablerings tjänsten**](../iot-dps/index.yml)  |  [ **Försök att skapa en grupp registrering för X. 509-enheter**](../iot-dps/quick-enroll-device-x509-csharp.md)
 
-**C# Device Provisioning service SDK**: dokumentation om [GitHub lagrings](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [paket](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [exempel](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [referens](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true)
+**C# Device Provisioning service SDK**: dokumentation om [GitHub lagrings](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [paket](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [exempel](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [referens](/dotnet/api/microsoft.azure.devices.provisioning.service)
 
 **Java Device Provisioning service SDK**: dokumentation om [GitHub lagrings](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-service-client/src)  |  [paket](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client)  |  [exempel](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client)  |  [referens](/java/api/com.microsoft.azure.sdk.iot.provisioning.service)
 

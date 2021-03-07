@@ -7,15 +7,17 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 02/14/2021
-ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: e72e312e932e71d4dac8532983c2c96ba105ba3b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099111"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439484"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center kostnads fri vs Azure Defender aktiverat
 Azure Defender är kostnads fritt under de första 30 dagarna. Om du väljer att fortsätta använda tjänsten i slutet av 30 dagar börjar vi automatiskt att debitera för användning.
+
+Du kan uppgradera från sidan **priser & inställningar** , enligt beskrivningen i [snabb start: Aktivera Azure Defender](enable-azure-defender.md). Information om priser i din valuta och enligt din region finns [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Vilka är fördelarna med att aktivera Azure Defender?
 
@@ -70,14 +72,14 @@ Security Center har två erbjudanden:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Hur aktiverar jag Azure Defender för min prenumeration? 
 Du kan använda något av följande sätt för att aktivera Azure Defender för din prenumeration: 
 
-|Metod  |Instruktioner  |
-|---------|---------|
-|Azure Security Center sidor i Azure Portal|[Aktivera Azure Defender](enable-azure-defender.md)|
-|REST-API|[Prissättnings-API](/rest/api/securitycenter/pricings)|
-|Azure CLI|[AZ Security-prissättning](/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure Policy|[Paket priser](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
-|||
+| Metod                                          | Instruktioner                                                                                                                                       |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Security Center sidor i Azure Portal | [Aktivera Azure Defender](enable-azure-defender.md)                                                                                                  |
+| REST-API                                        | [Prissättnings-API](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI                                       | [AZ Security-prissättning](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure Policy                                    | [Paket priser](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?
 Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration kommer alla servrar i prenumerationen att skyddas av Azure Defender. 

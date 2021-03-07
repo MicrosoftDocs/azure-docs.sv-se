@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs hur du konfigurerar privata slut punkt
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f8e0cfc0a850ae15ea6d03ff6ca8b90003adbfc9
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: f8a9ac46596b1c2611ce9df387ac995e8149e7b9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916986"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425353"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurera privata slut punkter för Azure Event Grid ämnen eller domäner
 Du kan använda [privata slut punkter](../private-link/private-endpoint-overview.md) för att tillåta ingress av händelser direkt från ditt virtuella nätverk till dina ämnen och domäner på ett säkert sätt över en [privat länk](../private-link/private-link-overview.md) utan att gå via det offentliga Internet. Den privata slut punkten använder en IP-adress från VNet-adressutrymmet för ditt ämne eller din domän. Mer konceptuell information finns i [nätverks säkerhet](network-security.md).
@@ -26,7 +26,7 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa en privat 
 2. Växla till fliken **nätverk** på din ämnes sida. Välj **+ privat slut punkt** i verktygsfältet.
 
     ![Lägg till privat slut punkt](./media/configure-private-endpoints/add-button.png)
-2. Följ de här stegen för en sida med **grundläggande** information: 
+2. Följ de här stegen på sidan **grundläggande** : 
     1. Välj en **Azure-prenumeration** där du vill skapa den privata slut punkten. 
     2. Välj en **Azure-resurs grupp** för den privata slut punkten. 
     3. Ange ett **namn** för slut punkten. 
@@ -44,7 +44,7 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa en privat 
 
             ![Skärm bild som visar sidan "skapa en privat slut punkt-resurs".](./media/configure-private-endpoints/resource-page.png)
     2. Om du väljer **Anslut till en resurs med ett resurs-ID eller ett alias** följer du dessa steg:
-        1. Ange resursens ID. Till exempel: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
+        1. Ange resursens ID. Exempel: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. För **resurs** anger du **ämne** eller **domän**. 
         3. valfritt Lägg till ett meddelande om begäran. 
         4. Välj **Nästa: konfiguration >s** knappen längst ned på sidan. 

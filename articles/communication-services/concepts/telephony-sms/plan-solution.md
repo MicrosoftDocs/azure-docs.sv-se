@@ -10,21 +10,31 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ba8a6b530f3f3650959eac90bba5b05e3ac0643
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8a811a033a2d6e2229c83899e237f996ccddd7b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215416"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430419"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummer typer i Azure Communication Services
+
+
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
-> Tillgänglighet för telefonnummer är för närvarande begränsat till Azure-prenumerationer som har en fakturerings adress i USA. Mer information finns i avsnittet om [prenumerations kvalifikationer](#azure-subscriptions-eligibility) i det här dokumentet.
+> Telefonnumret för telefonnummer är för närvarande begränsat till betalda Azure-prenumerationer som har en fakturerings adress i USA-och kommunikations tjänster resurser som har en data plats för oss. Det går inte att hämta telefonnummer för utvärderings konton eller med Azures kostnads fria krediter. Mer information finns i avsnittet om [prenumerations kvalifikationer](#azure-subscriptions-eligibility) i det här dokumentet.
+
 
 Azure Communication Services gör att du kan använda telefonnummer för att ringa röst samtal och skicka SMS-meddelanden med det offentliga telefonnätet. I det här dokumentet granskar vi telefonnummer typer, konfigurations alternativ och regions tillgänglighet för att planera din telefoni-och SMS-lösning med hjälp av kommunikations tjänster.
+
+## <a name="azure-subscriptions-eligibility"></a>Azure-prenumerationer berättigar
+
+För att skaffa ett telefonnummer måste du vara på en betald Azure-prenumeration. Det går inte att hämta telefonnummer för utvärderings konton eller kostnads fria Azure-krediter. 
+
+Telefonnumret för telefonnummer är för närvarande begränsat till Azure-prenumerationer som har en fakturerings adress i USA-och kommunikations tjänster resurser som har en data plats för oss.
+
 
 ## <a name="number-types-and-features"></a>Tal typer och funktioner
 Kommunikations tjänsterna erbjuder två typer av telefonnummer: **lokalt** och **avgiftsfritt**. 
@@ -72,11 +82,6 @@ I följande tabell visas var du kan hämta olika typer av telefonnummer tillsamm
 
 * Mer information om samtals destinationer och priser finns på sidan med [priser](../pricing.md).
 
-## <a name="azure-subscriptions-eligibility"></a>Azure-prenumerationer berättigar
-
-För att skaffa ett telefonnummer måste du vara på en betald Azure-prenumeration. Det går inte att hämta telefonnummer för utvärderings konton eller kostnads fria Azure-krediter. 
-
-För närvarande är telefonnumret för tillgänglighet begränsat till Azure-prenumerationer som har en fakturerings adress i USA.
 
 ## <a name="next-steps"></a>Nästa steg
 

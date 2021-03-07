@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 40736764cf9cec6f652e0147eb25d83f15c5bee2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024950"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426477"
 ---
 # <a name="what-is-custom-commands"></a>Vad är anpassade kommandon?
 
@@ -36,7 +36,7 @@ Bra kandidater för anpassade kommandon har en fast ord lista med väldefinierad
 
 ## <a name="getting-started-with-custom-commands"></a>Komma igång med anpassade kommandon
 
-Vårt mål med anpassade kommandon är att minska din kognitiva belastning för att lära dig om alla olika tekniker och fokusera på att skapa din app för röst kommandon. Första steget för att använda anpassade kommandon för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">skapa en Azure <span class="docon docon-navigate-external x-hidden-focus"></span> tal-resurs </a>. Du kan redigera appen anpassade kommandon i tal Studio och publicera den, och sedan kan ett program på enheten kommunicera med det med hjälp av tal-SDK.
+Vårt mål med anpassade kommandon är att minska din kognitiva belastning för att lära dig om alla olika tekniker och fokusera på att skapa din app för röst kommandon. Första steget för att använda anpassade kommandon för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">skapa en Azure tal-resurs </a>. Du kan redigera appen anpassade kommandon i tal Studio och publicera den, och sedan kan ett program på enheten kommunicera med det med hjälp av tal-SDK.
 
 #### <a name="authoring-flow-for-custom-commands"></a>Redigerings flöde för anpassade kommandon
    ![Redigerings flöde för anpassade kommandon](media/voice-assistants/custom-commands-flow.png "De anpassade kommandona som redigerar flödet")

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 03/03/2021
-ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a080a3b536cb6e11a254f15d745334fbf17531e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049516"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439569"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-flexibel Server
 
@@ -90,7 +90,7 @@ Den flexibla Server tjänsten är utrustad med inbyggda funktioner för prestand
 
 En av fördelarna med att köra din arbets belastning i Azure är den globala räckvidden. Den flexibla servern är tillgänglig idag i följande Azure-regioner:
 
-| Region | Tillgänglighet | Zonens redundanta HA | 
+| Region | Tillgänglighet | Zon-redundant HA | 
 | --- | --- | --- |
 | Europa, västra | :heavy_check_mark: | :heavy_check_mark: |
 | Europa, norra | :heavy_check_mark: | :heavy_check_mark: |
@@ -102,7 +102,7 @@ En av fördelarna med att köra din arbets belastning i Azure är den globala r�
 | Sydostasien | :heavy_check_mark: | :heavy_check_mark: |
 | Japan, östra | :heavy_check_mark: | :heavy_check_mark: | 
 
-Vi fortsätter att lägga till nya regioner. 
+Vi fortsätter att lägga till fler regioner för flexibel Server.
 
 ## <a name="migration"></a>Migrering
 
@@ -110,6 +110,16 @@ Tjänsten kör community-versionen av PostgreSQL. Detta möjliggör fullständig
 
 - **Dumpa och Återställ** – för offline-migrering där användarna kan ge viss nedtid, dumpa och återställa med hjälp av community-verktyg som pg_dump och pg_restore kan ge ett snabbast sätt att migrera. Mer information finns i [migrera med dump och Restore](../howto-migrate-using-dump-and-restore.md) .
 - **Azure Database migration service** – för sömlösa och förenklade migreringar till flexibel server med minimal stillestånds tid kan Azure Database migration service utnyttjas. Se [DMS via portal](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) och [DMS via CLI](../../dms/tutorial-postgresql-azure-postgresql-online.md). Du kan migrera från din Azure Database for PostgreSQL-enskild server till flexibel Server. Mer information finns i den här [DMS-artikeln](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
+
+## <a name="contacts"></a>Kontakter
+Om du har frågor eller förslag som du kan ha på Azure Database for PostgreSQL flexibel Server kan du skicka ett e-postmeddelande till Azure Database for PostgreSQL-teamet ([ @Ask Azure dB för postgresql](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Observera att den här e-postadressen inte är ett alias för teknisk support.
+
+Tänk dessutom på följande kontaktpunkter efter behov:
+
+- Kontakta Azure Support genom att [skicka in ett supportärende från Azure-portalen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Om du vill åtgärda ett problem med ditt konto, skickar du in ett [supportärende](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) i Azure-portalen.
+- Om du vill ge feedback eller begära nya funktioner, skapar du ett inlägg via [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+  
 
 ## <a name="next-steps"></a>Nästa steg
 

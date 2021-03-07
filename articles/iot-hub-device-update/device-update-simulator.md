@@ -1,17 +1,17 @@
 ---
 title: Uppdatering av enhets uppdateringar för Azure IoT Hub med hjälp av Ubuntu (18,04 x64) Simulator referens agent | Microsoft Docs
 description: Kom igång med enhets uppdatering för Azure IoT Hub med hjälp av Ubuntu (18,04 x64) Simulator referens agent.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8ca9d03fbeadfaaca06dac49acc7a08f0dd0566d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665335"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443819"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Uppdatering av enhets uppdateringar för Azure IoT Hub med hjälp av Ubuntu (18,04 x64) Simulator referens agent
 
@@ -163,29 +163,30 @@ Agent running. [main]
 
 ## <a name="import-update"></a>Importera uppdatering
 
-1. Välj alternativet enhets uppdateringar under automatisk enhets hantering från det vänstra navigerings fältet.
+1. Skapa ett import manifest genom att följa dessa [anvisningar](import-update.md).
+2. Välj alternativet enhets uppdateringar under automatisk enhets hantering från det vänstra navigerings fältet.
 
-2. Välj fliken uppdateringar.
+3. Välj fliken uppdateringar.
 
-3. Välj "+ Importera ny uppdatering".
+4. Välj "+ Importera ny uppdatering".
 
-4. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj det import manifest som du laddade ned tidigare. Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj den apt manifest uppdaterings fil som du laddade ned tidigare.
-   
+5. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj det import manifest som du skapade ovan.  Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj den Ubuntu-uppdaterings avbildning som du laddade ned tidigare. 
+
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Skärm bild som visar val av uppdaterings fil." lightbox="media/import-update/select-update-files.png":::
 
-5. Välj mappikonen eller text rutan under "Välj en lagrings behållare". Välj sedan lämpligt lagrings konto.
+6. Välj mappikonen eller text rutan under "Välj en lagrings behållare". Välj sedan lämpligt lagrings konto.
 
-6. Om du redan har skapat en behållare kan du återanvända den. (Annars väljer du "+ behållare" för att skapa en ny lagrings behållare för uppdateringar.).  Välj den behållare som du vill använda och klicka på Välj.
+7. Om du redan har skapat en behållare kan du återanvända den. (Annars väljer du "+ behållare" för att skapa en ny lagrings behållare för uppdateringar.).  Välj den behållare som du vill använda och klicka på Välj.
   
   :::image type="content" source="media/import-update/container.png" alt-text="Skärm bild som visar val av behållare." lightbox="media/import-update/container.png":::
 
-7. Välj "Skicka" för att starta import processen.
+8. Välj "Skicka" för att starta import processen.
 
-8. Import processen påbörjas och skärmen ändras till avsnittet "import historik". Välj Uppdatera om du vill visa förloppet tills importen är klar. Beroende på Uppdateringens storlek kan detta slutföras på några minuter, men det kan ta längre tid.
+9. Import processen påbörjas och skärmen ändras till avsnittet "import historik". Välj Uppdatera om du vill visa förloppet tills importen är klar. Beroende på Uppdateringens storlek kan detta slutföras på några minuter, men det kan ta längre tid.
    
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Skärm bild som visar import ordningen för uppdateringar." lightbox="media/import-update/update-publishing-sequence-2.png":::
 
-9. När kolumnen status visar att importen har slutförts väljer du rubriken "klar att distribuera". Du bör se den importerade uppdateringen i listan nu.
+10. När kolumnen status visar att importen har slutförts väljer du rubriken "klar att distribuera". Du bör se den importerade uppdateringen i listan nu.
 
 [Läs mer](import-update.md) om att importera uppdateringar.
 

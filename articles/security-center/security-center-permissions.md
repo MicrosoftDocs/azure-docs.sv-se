@@ -1,24 +1,18 @@
 ---
 title: Behörigheter i Azure Security Center | Microsoft Docs
 description: I den här artikeln förklaras hur Azure Security Center använder rollbaserad åtkomst kontroll för att tilldela behörigheter till användare och för att identifiera tillåtna åtgärder för varje roll.
-services: security-center
-cloud: na
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099190"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443768"
 ---
 # <a name="permissions-in-azure-security-center"></a>Behörigheter i Azure Security Center
 
@@ -39,15 +33,15 @@ Förutom dessa roller finns två specifika roller i Security Center:
 
 I följande tabell visas roller och tillåtna åtgärder i Security Center.
 
-|Action|Säkerhets läsare/ <br> Läsare |Säkerhetsadministratör  |Resurs grupps deltagare/ <br> Resurs grupp ägare  |Prenumerations deltagare  |Prenumerations ägare  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|Redigera säkerhets princip|-|✔|-|-|✔|
-|Lägg till/tilldela initiativ (inklusive) regler för regelefterlevnad)|-|-|-|-|✔|
-|Aktivera/inaktivera Azure Defender|-|✔|-|-|✔|
-|Aktivera/inaktivera automatisk etablering|-|✔|-|✔|✔|
-|Tillämpa säkerhets rekommendationer för en resurs</br> (och Använd [snabb korrigering!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
-|Ignorera aviseringar|-|✔|-|✔|✔|
-|Visa aviseringar och rekommendationer|✔|✔|✔|✔|✔|
+| Action                                                                                                                                        | Säkerhets läsare/ <br> Läsare | Säkerhetsadministratör | Resurs grupps deltagare/ <br> Resurs grupp ägare | Prenumerations deltagare | Prenumerations ägare |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| Redigera säkerhets princip                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Lägg till/tilldela initiativ (inklusive) regler för regelefterlevnad)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| Aktivera/inaktivera Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Aktivera/inaktivera automatisk etablering                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Tillämpa säkerhets rekommendationer för en resurs</br> (och Använd [snabb korrigering!](security-center-remediate-recommendations.md#quick-fix-remediation)) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| Ignorera aviseringar                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Visa aviseringar och rekommendationer                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > Vi rekommenderar att du ger användarna den roll som precis ger dem den behörighet de behöver för att kunna utföra sina arbetsuppgifter. Du kan till exempel tilldela rollen läsare till användare som bara behöver visa information om säkerhets hälso tillståndet för en resurs men inte vidta åtgärder, till exempel att tillämpa rekommendationer eller redigera principer.

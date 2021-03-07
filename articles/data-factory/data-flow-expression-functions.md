@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/04/2021
-ms.openlocfilehash: 8b63565457498663250eb6ab5dc1361e43bbffaf
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 03/04/2021
+ms.openlocfilehash: ec1ea7d727278076944b8cc11f47a1af587e6591
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585015"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440164"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Data omvandlings uttryck i data flöde för mappning
 
@@ -1196,7 +1196,74 @@ ___
 
 ## <a name="conversion-functions"></a>Konverteringsfunktioner
 
-Konverterings funktioner används för att konvertera data och data typer
+Konverterings funktioner används för att konvertera data och testa data typer
+
+<code>isBoolean</code>
+<code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
+Kontrollerar om strängvärdet är ett booleskt värde enligt reglerna för ``toBoolean()``
+* ``isBoolean('true') -> true``
+* ``isBoolean('no') -> true``
+* ``isBoolean('microsoft') -> false``
+
+<code>isByte</code>
+<code><b>isByte(<value1> : string) => boolean</b></code><br/><br/>
+Kontrollerar om strängvärdet är ett byte-värde med ett valfritt format enligt reglerna för ``toByte()``
+* ``isByte('123') -> true``
+* ``isByte('chocolate') -> false``
+
+<code>isDate</code>
+<code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrollerar om datum strängen för indata är ett datum med ett valfritt datum format för indata. Se Java-SimpleDateFormat för tillgängliga format. Om datum formatet för indata utelämnas är standardformat ``yyyy-[M]M-[d]d`` . Godkända format är ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
+* ``isDate('2012-8-18') -> true``
+* ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
+
+<code>isShort</code>
+<code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroll av sträng värde är ett kort värde som har ett valfritt format enligt reglerna i ``toShort()``
+* ``isShort('123') -> true``
+* ``isShort('$123' -> '$###') -> true``
+* ``isShort('microsoft') -> false``
+
+<code>isInteger</code>
+<code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroll av strängvärdet är ett heltals värde som har fått ett valfritt format enligt reglerna i ``toInteger()``
+* ``isInteger('123') -> true``
+* ``isInteger('$123' -> '$###') -> true``
+* ``isInteger('microsoft') -> false``
+
+<code>isLong</code>
+<code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroll av strängvärdet är ett långt värde med ett valfritt format enligt reglerna i ``toLong()``
+* ``isLong('123') -> true``
+* ``isLong('$123' -> '$###') -> true``
+* ``isLong('gunchus') -> false``
+
+<code>isFloat</code>
+<code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroll av strängvärdet är ett flyt värde med ett valfritt format enligt reglerna i ``toFloat()``
+* ``isFloat('123') -> true``
+* ``isFloat('$123.45' -> '$###.00') -> true``
+* ``isFloat('icecream') -> false``
+
+<code>isDouble</code>
+<code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroll av strängvärdet är ett dubbelt värde med ett valfritt format enligt reglerna för ``toDouble()``
+* ``isDouble('123') -> true``
+* ``isDouble('$123.45' -> '$###.00') -> true``
+* ``isDouble('icecream') -> false``
+
+<code>isDecimal</code>
+<code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
+Kontroll av strängvärdet är ett Decimal värde som har fått ett valfritt format enligt reglerna i ``toDecimal()``
+* ``isDecimal('123.45') -> true``
+* ``isDecimal('12/12/2000') -> false``
+
+<code>isTimestamp</code>
+<code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrollerar om datum strängen för indata är en tidsstämpel med valfritt format för indata-tidsstämpel. Se Java-SimpleDateFormat för tillgängliga format. Om tidsstämpeln utelämnas används standard mönstret ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` . Du kan skicka en valfri tidszon i formatet "GMT", "PST", "UTC", "America/Cayman". Tidsstämpeln stöder upp till millisekunder-precision med värdet 999 referera till Java-SimpleDateFormat för tillgängliga format.
+* ``isTimestamp('2016-12-31 00:12:00') -> true``
+* ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
+* ``isTimestamp('2012-8222.18') -> false``
 
 ### <code>toBase64</code>
 <code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>

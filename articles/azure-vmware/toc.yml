@@ -4,6 +4,8 @@
   items:
     - name: Om Azure VMware Solution
       href: introduction.md
+    - name: Plattforms uppdateringar
+      href: azure-vmware-solution-platform-updates.md
 - name: Snabbstart
   items:
     - name: 0 – Planera distributionen

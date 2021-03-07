@@ -3,14 +3,14 @@ title: Azure App Service som Event Grid källa
 description: I den här artikeln beskrivs hur du använder Azure App Service som en Event Grid händelse källa. Det innehåller schemat och länkar till självstudier och instruktions artiklar.
 author: jasonfreeberg
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/06/2021
 ms.author: jafreebe
-ms.openlocfilehash: 224cb44ef7293f47855b5b418830a7fc4bf5ecd1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 404fac634a628da49dee72b10b52785820fe1bf6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366661"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443785"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service som en Event Grid källa
 
@@ -20,7 +20,7 @@ Den här artikeln innehåller egenskaper och schema för Azure App Service händ
 
 Azure App Service avger följande händelse typer
 
-|    Händelsetyp                                             |    Beskrivning                                                     |
+|    Händelsetyp                                             |    Description                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/Sites. BackupOperationStarted             |    Utlöses när en säkerhets kopiering har påbörjats                             |
 |    Microsoft. Web/Sites. BackupOperationCompleted           |    Utlöses när en säkerhets kopiering har slutförts                           |
@@ -89,7 +89,7 @@ Det här avsnittet innehåller ett exempel på hur data ska se ut för varje hä
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -113,7 +113,7 @@ Det här avsnittet innehåller ett exempel på hur data ska se ut för varje hä
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -128,7 +128,7 @@ Det här avsnittet innehåller ett exempel på hur data ska se ut för varje hä
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
+|    Egenskap                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                  |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -154,7 +154,7 @@ Data-objektet innehåller följande egenskaper:
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -179,7 +179,7 @@ Data-objektet innehåller följande egenskaper:
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -194,7 +194,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
+|    Egenskap                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                  |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -218,7 +218,7 @@ Data-objektet innehåller följande egenskaper:
     "eventTime": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -243,7 +243,7 @@ Data-objektet innehåller följande egenskaper:
     "time": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -260,7 +260,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
+|    Egenskap                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                 |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -285,7 +285,7 @@ Data-objektet innehåller följande egenskaper:
     "eventTime": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -310,7 +310,7 @@ Data-objektet innehåller följande egenskaper:
     "time": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -327,7 +327,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet innehåller följande egenskaper:
 
-|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
+|    Egenskap                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                 |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -353,7 +353,7 @@ Data-objektet innehåller följande egenskaper:
         "appEventTypeDetail": {
             "action": "Stopped"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "64a5e0aa-7cee-4ff1-9093-b9197b820014",
         "correlationRequestId": "25bb36a5-8f6c-4f04-b615-e9a0ee045756",
         "requestId": "f2e8eb3f-b190-42de-b99e-6acefe587374",
@@ -378,7 +378,7 @@ Data-objektet innehåller följande egenskaper:
         "appEventTypeDetail": {
             "action": "Stopped"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "64a5e0aa-7cee-4ff1-9093-b9197b820014",
         "correlationRequestId": "25bb36a5-8f6c-4f04-b615-e9a0ee045756",
         "requestId": "f2e8eb3f-b190-42de-b99e-6acefe587374",
@@ -393,7 +393,7 @@ Data-objektet innehåller följande egenskaper:
 
 Data-objektet har följande egenskaper:
 
-|    Egenskap                |    Typ      |    Beskrivning                                                                                                       |
+|    Egenskap                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    objekt    |    Detaljerad information om appens åtgärd                                                                                       |
 |    `action`                  |    sträng    |    Åtgärds typ för åtgärden                                                                                   |
@@ -477,7 +477,7 @@ Data-objektet har följande egenskaper:
 
 Data-objektet har följande egenskaper:
 
-|    Egenskap                         |    Typ      |    Beskrivning                                                                                                       |
+|    Egenskap                         |    Typ      |    Description                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appServicePlanEventTypeDetail`    |    objekt    |    Information om åtgärder i App Service-planen                                                                          |
 |    `stampKind`                        |    sträng    |    Typ av miljö där App Service-plan är                                                                     |

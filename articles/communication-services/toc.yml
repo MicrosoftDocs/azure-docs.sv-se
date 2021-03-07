@@ -88,40 +88,40 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Begrepp inom röst- och videosamtal
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Samtalsflöden
+          href: concepts/call-flows.md
+        - name: Topologier för anrops flöden
+          href: concepts/detailed-call-flows.md
     - name: GRÄNSSNITTs ramverk
       items:
         - name: Översikt över UI Framework
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Funktioner i UI Framework
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Samverkan mellan team
-      href: concepts/teams-interop.md
+    - name: Data och åtgärder
+      items:
+        - name: Tjänst händelser (EventGrid)
+          href: concepts/event-handling.md
+        - name: Loggning och diagnostik
+          href: concepts/logging-and-diagnostics.md
+        - name: Mått
+          href: concepts/metrics.md
+        - name: Felsökning
+          href: concepts/troubleshooting-info.md
+    - name: 'SDK: er och REST API: er'
+      href: concepts/sdk-options.md
     - name: Klient- och serverarkitektur
       href: concepts/client-and-server-architecture.md
-    - name: Samtalsflöden
-      href: concepts/call-flows.md
-    - name: Topologier för anrops flöden
-      href: concepts/detailed-call-flows.md
-    - name: 'Klientbibliotek och REST-API:er'
-      href: concepts/sdk-options.md
-    - name: Prismodell
-      href: concepts/pricing.md
-    - name: Sekretess
-      href: concepts/privacy.md
     - name: Identitetsmodell
       href: concepts/identity-model.md
     - name: Autentisering
       href: concepts/authentication.md
-    - name: Händelsehantering
-      href: concepts/event-handling.md
-    - name: Meddelanden
+    - name: Sekretess
+      href: concepts/privacy.md
+    - name: Push-meddelanden
       href: concepts/notifications.md
-    - name: Loggning och diagnostik
-      href: concepts/logging-and-diagnostics.md
-    - name: Mått
-      href: concepts/metrics.md
-    - name: Felsökning
-      href: concepts/troubleshooting-info.md
+    - name: Samverkan mellan team
+      href: concepts/teams-interop.md
     - name: Kända problem
       href: concepts/known-issues.md
 - name: Exempel

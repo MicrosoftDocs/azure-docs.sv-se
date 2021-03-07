@@ -3,12 +3,12 @@ title: Hur du utformar din Application Insights-distribution – en vs många re
 description: Dirigera telemetri till olika resurser för utveckling, testning och produktions märken.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589537"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424673"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hur många Application Insights-resurser ska jag distribuera
 
@@ -32,6 +32,9 @@ Varje Application Insights resurs levereras med mått som är tillgängliga dire
 -   Om du inte behöver hantera fakturering/kvoter på ett annat sätt mellan komponenterna.
 -   Om det är OK att ha en API-nyckel har samma åtkomst till data från alla komponenter. Och 10 API-nycklar är tillräckliga för behoven i alla.
 -   Om det är bra att använda samma inställningar för smart identifiering och arbets objekts integrering i alla roller.
+
+> [!NOTE]
+> Om du vill konsolidera flera Application Insights-resurser kan du peka dina befintliga program komponenter till en ny, konsol IDE rad Application Insights resurs. Telemetri som lagras i den gamla resursen överförs inte till den nya resursen, så ta bara bort den gamla resursen när du har tillräckligt med telemetri i den nya resursen för affärs kontinuitet.
 
 ### <a name="other-things-to-keep-in-mind"></a>Andra saker att tänka på
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: d0c95312e1794e2f78bbbef217ef5530a993146d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040914"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423904"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Självstudie: extrahera formulär data i bulk genom att använda Azure Data Factory
 
@@ -43,10 +43,11 @@ I den här guiden får du lära dig att:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/cognitive-services/).
-* När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När resursen har distribuerats väljer du **Gå till resurs**.
+* När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När resursen har distribuerats väljer du **Gå till resurs**.
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du ska klistra in nyckeln och slut punkten i koden senare i den här snabb starten.
     * Du kan använda den kostnads fria pris nivån (F0) för att testa tjänsten. Du kan sedan uppgradera senare till en betald nivå för produktion.
 * En uppsättning minst fem formulär av samma typ. Det bästa är att det här arbets flödet är avsett att stödja stora uppsättningar dokument. Se [utveckla en data uppsättning för utbildning](./build-training-data-set.md) för tips och alternativ för att sätta samman din utbildnings data uppsättning. I den här självstudien kan du använda filerna i mappen träna i [exempel data uppsättningen](https://go.microsoft.com/fwlink/?linkid=2128080).
+
 
 ## <a name="project-architecture"></a>Projekt arkitektur 
 

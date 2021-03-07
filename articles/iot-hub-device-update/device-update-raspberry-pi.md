@@ -1,17 +1,17 @@
 ---
 title: Uppdatering av enhets uppdateringar för Azure IoT Hub med hjälp av Raspberry Pi 3 B + Reference yocto-avbildning | Microsoft Docs
 description: Kom igång med enhets uppdatering för Azure IoT Hub med hjälp av Raspberry Pi 3 B + Reference yocto avbildning.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665148"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443462"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Enhets uppdatering för Azure IoT Hub själv studie kurs med Raspberry Pi 3 B + referens avbildning
 
@@ -143,13 +143,11 @@ Använd det versions numret i steget importera uppdatering nedan.
 
 ## <a name="import-update"></a>Importera uppdatering
 
-1. Välj alternativet enhets uppdateringar under automatisk enhets hantering från det vänstra navigerings fältet.
-
-2. Välj fliken uppdateringar.
-
-3. Välj "+ Importera ny uppdatering".
-
-4. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj det import manifest som du laddade ned tidigare. Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj den apt manifest uppdaterings fil som du laddade ned tidigare.
+1. Skapa ett import manifest genom att följa dessa [anvisningar](import-update.md).
+2. Välj alternativet enhets uppdateringar under automatisk enhets hantering från det vänstra navigerings fältet.
+3. Välj fliken uppdateringar.
+4. Välj "+ Importera ny uppdatering".
+5. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj det import manifest som du skapade ovan.  Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj den uppdaterings fil som du vill distribuera till dina IoT-enheter.
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Skärm bild som visar val av uppdaterings fil." lightbox="media/import-update/select-update-files.png":::
 
