@@ -3,25 +3,27 @@ title: Använd BLOB-taggar för att hantera och hitta data på Azure Blob Storag
 description: Se exempel på hur du använder BLOB-taggar för att kategorisera, hantera och fråga efter BLOB-objekt.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 32bb51751430dcd0208849f798d21f2b25e6b82b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95541257"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430878"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Använd BLOB-Taggar (för hands version) för att hantera och hitta data på Azure Blob Storage
 
 BLOB index-Taggar kategoriserar data i ditt lagrings konto med hjälp av attribut för nyckel värdes kod. Taggarna indexeras automatiskt och exponeras som ett sökbart flerdimensionellt index för att enkelt hitta data. Den här artikeln visar hur du ställer in, hämtar och hittar data med hjälp av BLOB-taggar.
 
-> [!NOTE]
-> BLOB-indexet finns i en offentlig för hands version och är tillgängligt i regionerna **Kanada**, **östra**, Australien, **centrala** och **Frankrike, södra** . Mer information om den här funktionen tillsammans med kända problem och begränsningar finns i [Hantera och hitta Azure blob-data med BLOB-Taggar (för hands version)](storage-manage-find-blobs.md).
+> [!IMPORTANT]
+> BLOB index-taggar finns för närvarande i för **hands version** och är tillgängliga i regionerna **Kanada**, **östra**, Australien, **centrala** och **Frankrike, södra** . Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+
+Mer information om den här funktionen tillsammans med kända problem och begränsningar finns i [Hantera och hitta Azure blob-data med BLOB-Taggar (för hands version)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

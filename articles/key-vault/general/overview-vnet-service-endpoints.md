@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4f615ed44594379c79f179a467888652c597e286
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 36a94f780fa5c196e28730c051e161633ed3ee3d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217184"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431065"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault
 
@@ -27,7 +27,7 @@ Det finns ett viktigt undantag för den här begränsningen. Om en användare ha
 Du kan konfigurera [Key Vault brand väggar och virtuella nätverk](network-security.md) för att neka åtkomst till trafik från alla nätverk (inklusive Internet trafik) som standard. Du kan bevilja åtkomst till trafik från specifika virtuella Azure-nätverk och offentliga Internet IP-adressintervall, så att du kan bygga en säker nätverks gränser för dina program.
 
 > [!NOTE]
-> Key Vault brand väggar och regler för virtuella nätverk gäller endast för Key Vaultens [data plan](secure-your-key-vault.md#data-plane-access-control) . Key Vault kontroll Plans åtgärder (t. ex. skapa, ta bort och ändra åtgärder, inställning av åtkomst principer, inställning av brand väggar och virtuella nätverks regler) påverkas inte av brand väggar och virtuella nätverks regler.
+> Key Vault brand väggar och regler för virtuella nätverk gäller endast för Key Vaultens [data plan](secure-your-key-vault.md#data-plane-access-control) . Key Vault kontroll Plans åtgärder (till exempel skapa, ta bort och ändra åtgärder, ange åtkomst principer, ange brand väggar och regler för virtuella nätverk och distribution av hemligheter eller nycklar med ARM-mallar) påverkas inte av brand väggar och virtuella nätverks regler.
 
 Här följer några exempel på hur du kan använda tjänst slut punkter:
 
