@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Skapa anpassade säkerhets initiativ och principer
           href: custom-security-policies.md
-    - name: Skydda dina datorer med Defender för servrar
+    - name: Skydda dina datorer
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Översikt över Azure Defender för servrar

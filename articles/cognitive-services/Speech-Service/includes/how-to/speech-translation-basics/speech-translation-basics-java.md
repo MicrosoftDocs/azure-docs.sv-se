@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 9c0178ab1361d6a683aef606ccf1e3cac85620e4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 891276f7a37bfb2397101388f430a297bdca0a21
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99245009"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445506"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att identifiera mänskligt tal och översätta den till andra språk. I den här snabb starten lär du dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativ tal översättning. Den här snabb starten behandlar ämnen, inklusive:
 
@@ -28,7 +28,7 @@ Den här artikeln förutsätter att du har ett Azure-konto och en röst tjänst 
 
 ## <a name="install-the-speech-sdk"></a>Installera Speech SDK
 
-Innan du kan göra något måste du installera talet SDK. Beroende på din plattform följer du anvisningarna under Hämta avsnittet om <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">tal-SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> i artikeln _om tal SDK_ .
+Innan du kan göra något måste du installera talet SDK. Beroende på din plattform följer du anvisningarna under Hämta avsnittet om <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">tal-SDK</a> i artikeln _om tal SDK_ .
 
 ## <a name="import-dependencies"></a>Importera beroenden
 

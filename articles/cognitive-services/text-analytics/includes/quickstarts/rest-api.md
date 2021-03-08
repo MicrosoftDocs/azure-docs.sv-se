@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 12/01/2020
 ms.author: aahi
-ms.openlocfilehash: 31ad1c9c8429becf57358cb14683e69ab2b3d236
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 17c24e19068c3d084da8a3c888729c2f78185c17
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505824"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445132"
 ---
 # <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
 
@@ -27,10 +27,10 @@ ms.locfileid: "97505824"
 
 ---
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Den aktuella versionen av [sväng](https://curl.haxx.se/).
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" skapar du en textanalys resurs "  target="_blank"> skapa en textanalys resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
+* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" skapar du en textanalys resurs "  target="_blank"> skapa en textanalys resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API för textanalys. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
     * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
@@ -41,7 +41,7 @@ ms.locfileid: "97505824"
 Om du vill anropa API för textanalys behöver du följande information:
 
 
-|parameter  |Beskrivning  |
+|parameter  |Description  |
 |---------|---------|
 |`-X POST <endpoint>`     | Anger slut punkten för åtkomst till API: et.        |
 |`-H Content-Type: application/json`     | Innehålls typen för att skicka JSON-data.          |

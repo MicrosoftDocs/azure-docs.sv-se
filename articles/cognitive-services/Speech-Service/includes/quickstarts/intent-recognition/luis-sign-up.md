@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 42dc7eb1a74bf2e376f834ee3198ad6a492226e9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81422008"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444220"
 ---
 För att slutföra snabb starten för avsikts igenkänning måste du skapa ett LUIS-konto och ett projekt med hjälp av LUIS Preview Portal. Den här snabb starten kräver bara en LUIS-prenumeration. En röst tjänst prenumeration krävs *inte* .
 
@@ -18,7 +18,7 @@ Det första du behöver göra är att skapa ett LUIS-konto och en app med hjälp
 
 Följ de här anvisningarna för att skapa en LUIS-app:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Snabb start: skapa en fördefinierad domän-app <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Snabb start: skapa en fördefinierad domän-app </a>
 
 När du är klar behöver du fyra saker:
 
@@ -39,7 +39,7 @@ Här kan du hitta den här informationen i [Luis Preview Portal](https://preview
     > [!div class="mx-imgBorder"]
     > ![Publicera LUIS till slut punkten](../../../media/luis/publish-app-popup.png)
 
-3. Välj **Hantera**på Luis Preview-portalen och välj sedan **Azure-resurser**. På den här sidan hittar du din LUIS-nyckel och plats (kallas ibland _region_).
+3. Välj **Hantera** på Luis Preview-portalen och välj sedan **Azure-resurser**. På den här sidan hittar du din LUIS-nyckel och plats (kallas ibland _region_).
 
    > [!div class="mx-imgBorder"]
    > ![LUIS nyckel och plats](../../../media/luis/luis-key-region.png)

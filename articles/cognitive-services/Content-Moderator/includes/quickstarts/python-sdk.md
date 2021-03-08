@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 1cb1d25dbd1f956cb87411a82e8910c4138eb188
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 07828e7faff61086ea982b8017bc3c590e386be1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102193641"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445198"
 ---
 Kom igång med Azure Content Moderator-klient biblioteket för python. Följ dessa steg om du vill installera PiPy-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -37,7 +37,7 @@ Använd Content Moderator klient bibliotek för python för att:
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
   * Din python-installation ska innehålla [pip](https://pip.pypa.io/en/stable/). Du kan kontrol lera om du har pip installerat genom `pip --version` att köra på kommando raden. Hämta pip genom att installera den senaste versionen av python.
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" skapar du en Content moderator resurs "  target="_blank"> skapa en Content moderator resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
+* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" skapar du en Content moderator resurs "  target="_blank"> skapa en Content moderator resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Content Moderator. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
     * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
@@ -74,7 +74,7 @@ Skapa sedan variabler för resursens slut punkts plats och nyckel.
 
 Följande klasser hanterar några av de viktigaste funktionerna i Content Moderator python-klient biblioteket.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
 |[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|

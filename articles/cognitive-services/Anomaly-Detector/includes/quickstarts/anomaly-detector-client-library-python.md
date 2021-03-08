@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: f6206ad2f88983396fa7d0be323daad327e4d235
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 216c45bf097718f6a696e64c8bd9c8718fc0185e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948126"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445386"
 ---
 Kom igång med klient biblioteket för avvikelse detektor för python. Följ de här stegen för att installera paket starten med hjälp av algoritmerna som tillhandahålls av tjänsten. Med tjänsten avvikelse detektor kan du hitta avvikelser i dina Time Series-data genom att automatiskt använda de bästa passnings modellerna, oavsett bransch, scenario eller data volym.
 
@@ -30,7 +30,7 @@ Dokumentation om biblioteks [referens](https://go.microsoft.com/fwlink/?linkid=2
 * [Python 3.x](https://www.python.org/)
 * [Pandas data analys bibliotek](https://pandas.pydata.org/)
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" skapar du en avvikelse detektor resurs "  target="_blank"> skapa en avvikelse <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i den Azure Portal för att hämta nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
+* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" skapar du en avvikelse detektor resurs "  target="_blank"> skapa en avvikelse </a> i den Azure Portal för att hämta nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API: t för avvikelse identifiering. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
     Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
@@ -52,7 +52,7 @@ from azure.core.credentials import AzureKeyCredential
 import pandas as pd
 ```
 
-Skapa variabler för din nyckel som en miljö variabel, sökvägen till en tids serie data fil och Azure-platsen för din prenumeration. Ett exempel är `westus2`.
+Skapa variabler för din nyckel som en miljö variabel, sökvägen till en tids serie data fil och Azure-platsen för din prenumeration. Till exempel `westus2`.
 
 ```python
 SUBSCRIPTION_KEY = os.environ["ANOMALY_DETECTOR_KEY"]
@@ -112,7 +112,7 @@ for index, row in data_file.iterrows():
     series.append(TimeSeriesPoint(timestamp=row[0], value=row[1]))
 ```
 
-Skapa ett `DetectRequest` objekt med din tids serie och `TimeGranularity` (eller periodicitet) för dess data punkter. Ett exempel är `TimeGranularity.daily`.
+Skapa ett `DetectRequest` objekt med din tids serie och `TimeGranularity` (eller periodicitet) för dess data punkter. Till exempel `TimeGranularity.daily`.
 
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)

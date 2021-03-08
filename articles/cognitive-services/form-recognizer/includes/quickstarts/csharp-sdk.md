@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 02/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 1054bec0daee55bac8892869a5f928b600e84d1e
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101102894"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444670"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -27,7 +27,7 @@ ms.locfileid: "101102894"
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller aktuell version av [.net Core](https://dotnet.microsoft.com/download/dotnet-core).
 * En Azure Storage-blob som innehåller en uppsättning tränings data. Se [skapa en tränings data uppsättning för en anpassad modell](../../build-training-data-set.md) för tips och alternativ för att sätta samman din tränings data uppsättning. I den här snabb starten kan du använda filerna under mappen **träna** i [exempel data uppsättningen](https://go.microsoft.com/fwlink/?linkid=2090451) (Hämta och extrahera *sample_data.zip*).
-* När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
+* När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
   * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
   * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
@@ -258,7 +258,7 @@ Använd metoden för att analysera fakturor från en URL `StartRecognizeInvoices
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) -metoderna, till exempel **StartRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **StartRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje faktura i det dokument som skickas. Följande kod bearbetar fakturan vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 
@@ -491,7 +491,7 @@ Använd-metoden för att analysera kvitton från en URL `StartRecognizeReceiptsF
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) -metoderna, till exempel **StartRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **StartRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling `RecognizedReceipt` objekt: ett för varje sida i det dokument som skickas. Följande kod bearbetar kvittot vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 
@@ -557,7 +557,7 @@ Använd-metoden för att analysera visitkort från en URL `StartRecognizeBusines
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
 
 > [!TIP]
-> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) -metoderna, till exempel **StartRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **StartRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje kort i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 

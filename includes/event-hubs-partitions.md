@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: f6bd0c13d5cbad802613e2bdea8fd6002f4deea2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955660"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444409"
 ---
 Händelsehubben ordnar sekvenser av händelser till en eller flera partitioner. När nya händelser anländer läggs de till i slutet av den här sekvensen. En partition kan betraktas som en ”genomförandelogg”.
 
@@ -57,4 +57,3 @@ Att ställa in antalet partitioner på det högsta tillåtna värdet är frestan
 
 Partitioner kan skickas direkt, men det rekommenderas inte. I stället kan du använda konstruktioner på högre nivå som introduceras i avsnittet [händelse utfärdare](../articles/event-hubs/event-hubs-features.md#event-publishers) . 
 
-Mer information om partitioner och avvägningen mellan tillgänglighet och tillförlitlighet finns i [Programmeringsguide för Event Hubs](../articles/event-hubs/event-hubs-programming-guide.md#partition-key) och i artikeln om [tillgänglighet och konsekvens i Event Hubs](../articles/event-hubs/event-hubs-availability-and-consistency.md).

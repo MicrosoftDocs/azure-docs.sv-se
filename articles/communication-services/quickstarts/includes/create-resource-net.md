@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886132"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444930"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/dotnet/).
 - Den senaste versionen av [klient biblioteket för .net Core](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
-- Hämta den senaste versionen av [klient biblioteket för .NET-identitet](/dotnet/api/azure.identity?view=azure-dotnet).
+- Hämta den senaste versionen av [klient biblioteket för .NET-identitet](/dotnet/api/azure.identity).
 - Hämta den senaste versionen av [klient biblioteket för .net-hantering](../../concepts/sdk-options.md).
 
 ## <a name="installing-the-client-library"></a>Installera klient biblioteket
@@ -84,7 +84,7 @@ I stället för att använda en hanterad identitet kanske du vill autentisera ti
 När du har skapat ditt huvud namn för tjänsten måste du samla in följande information om den från Azure Portal:
 
 - **Klient-ID**
-- **Client Secret (Klienthemlighet)**
+- **Klient hemlighet**
 - **Klientorganisations-ID**
 
 Lagra värdena i miljövariabler med namnet `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` `AZURE_TENANT_ID` respektive. Du kan sedan skapa en kommunikations tjänst hanterings klient så här:
