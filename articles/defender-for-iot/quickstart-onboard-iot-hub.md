@@ -1,6 +1,6 @@
 ---
-title: Publicera Defender för IoT till en agent-baserad lösning
-description: Lär dig hur du integrerar och aktiverar tjänsten Defender för IoT-säkerhet i Azure-IoT Hub.
+title: 'Snabb start: publicera Defender för IoT till en agent-baserad lösning'
+description: I den här snabb starten får du lära dig hur du integrerar och aktiverar tjänsten Defender för IoT-säkerhet i Azure-IoT Hub.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 62ea7b95609f9e1f896852da5c10244d1bd16ce1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d30a03aa7b7715a8792e7b70a0571270c6ad7b37
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049955"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449687"
 ---
-# <a name="onboard-defender-for-iot-to-an-agent-based-solution"></a>Publicera Defender för IoT till en agent-baserad lösning
+# <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Snabb start: publicera Defender för IoT till en agent-baserad lösning
 
 I den här artikeln förklaras hur du aktiverar tjänsten Defender för IoT på din befintliga IoT Hub. Om du för närvarande inte har en IoT Hub kan du läsa [skapa ett IoT Hub med hjälp av Azure Portal](../iot-hub/iot-hub-create-through-portal.md) för att komma igång.
 
@@ -34,6 +34,10 @@ Du kan hantera din IoT-säkerhet via IoT Hub i Defender för IoT. Hanterings por
 
 > [!NOTE]
 > Defender for IoT stöder för närvarande bara IoT-hubbar på standard nivå.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+Inget
 
 ## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>Publicera Defender för IoT till en IoT Hub
 

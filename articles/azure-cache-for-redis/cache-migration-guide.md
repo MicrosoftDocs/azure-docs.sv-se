@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 5de4e1b465cfc3ced59f8fe34a7f397324b4a225
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d63cafb32dc1db0a901ed3e6004446b450db10c7
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537634"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451531"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrera till Azure Cache for Redis
 Den här artikeln beskriver ett antal metoder för att migrera en befintlig Redis-cache som körs lokalt eller i en annan moln tjänst till Azure cache för Redis.
@@ -64,12 +64,12 @@ Allmänna steg för att implementera det här alternativet är:
 2. Spara en ögonblicks bild av den befintliga Redis-cachen. Du kan [Konfigurera Redis för att spara ögonblicks bilder](https://redis.io/topics/persistence) regelbundet eller köra processen manuellt med hjälp av [Spara](https://redis.io/commands/save) -eller [BGSAVE](https://redis.io/commands/bgsave) -kommandona. RDB-filen heter "dump. RDB" som standard och kommer att finnas på den sökväg som anges i konfigurations filen *Redis. conf* .
 
     > [!NOTE]
-    > Om du migrerar data i Azure cache för Redis kan du läsa [följande instruktioner om hur du exporterar en RDB-fil](cache-how-to-import-export-data.md) eller använder [PowerShell Export-cmdleten](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) i stället.
+    > Om du migrerar data i Azure cache för Redis kan du läsa [följande instruktioner om hur du exporterar en RDB-fil](cache-how-to-import-export-data.md) eller använder [PowerShell Export-cmdleten](/powershell/module/azurerm.rediscache/export-azurermrediscache) i stället.
     >
 
 3. Kopiera RDB-filen till ett Azure Storage-konto i den region där det nya cacheminnet finns. Du kan använda AzCopy för den här uppgiften.
 
-4. Importera RDB-filen till den nya cachen med hjälp av [import instruktionerna](cache-how-to-import-export-data.md) eller [PowerShell-import-cmdleten](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0).
+4. Importera RDB-filen till den nya cachen med hjälp av [import instruktionerna](cache-how-to-import-export-data.md) eller [PowerShell-import-cmdleten](/powershell/module/azurerm.rediscache/import-azurermrediscache).
 
 5. Uppdatera programmet så att det använder den nya cache-instansen.
 

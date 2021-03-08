@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: c12a171faaf069cc81aa5f467642dba6616a866f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033732"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453129"
 ---
 # <a name="localization-element"></a>Lokaliserings element
 
@@ -147,7 +147,7 @@ I följande exempel visas användningen av **LocalizedCollections** -elementet. 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ElementType | Ja | Möjliga värden: [ClaimsProvider](#claimsprovider), [claimType](#claimtype), [errormessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [predikat](#predicate), [InputValidation](#inputvalidation)eller [UxElement](#uxelement).   | 
+| ElementType | Ja | Möjliga värden: [ClaimsProvider](#claimsprovider), [claimType](#claimtype), [errormessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [FormatLocalizedStringTransformationClaimType](#formatlocalizedstringtransformationclaimtype), [predikat](#predicate), [InputValidation](#inputvalidation)eller [UxElement](#uxelement).   | 
 | ElementId | Ja | Om **ElementType** är inställt på `ClaimType` , `Predicate` eller `InputValidation` , innehåller det här elementet en referens till en anspråks typ som redan har definierats i avsnittet ClaimsSchema. |
 | StringId | Ja | Om **ElementType** är inställt på `ClaimType` , innehåller det här elementet en referens till ett attribut för en anspråks typ. Möjliga värden: `DisplayName` , `AdminHelpText` , eller `PatternHelpText` . `DisplayName`Värdet används för att ange visnings namn för anspråket. `AdminHelpText`Värdet används för att ange hjälp text namnet för anspråks användaren. `PatternHelpText`Värdet används för att ange hjälp texten för anspråks mönstret. Om **ElementType** är inställt på `UxElement` , innehåller det här elementet en referens till ett attribut i ett användar gränssnitts element. Om **ElementType** är inställt på `ErrorMessage` , anger det här elementet identifieraren för ett fel meddelande. Se [lokaliserings Strängs-ID: n](localization-string-ids.md) för en fullständig lista över `UxElement` identifierare.|
 
@@ -232,6 +232,31 @@ I följande exempel visas hur du kan lokalisera UserMessageIfClaimsPrincipalAlre
 
 ```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="formatlocalizedstringtransformationclaimtype"></a>FormatLocalizedStringTransformationClaimType
+
+FormatLocalizedStringTransformationClaimType-värdet används för att formatera anspråk till en lokaliserad sträng. Mer information finns i [FormatLocalizedString Claims-transformering](string-transformations.md#formatlocalizedstring)
+
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+I följande exempel visas hur du lokaliserar sträng formatet för FormatLocalizedStringTransformationClaimType-anspråks omvandlingen.
+
+```xml
+<LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
 ```
 
 ### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType

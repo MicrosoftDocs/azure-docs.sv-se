@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 02/14/2021
-ms.openlocfilehash: e72e312e932e71d4dac8532983c2c96ba105ba3b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/08/2021
+ms.openlocfilehash: d45dae8b0b3725555bd83a05032339671a9595be
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439484"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454372"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center kostnads fri vs Azure Defender aktiverat
 Azure Defender är kostnads fritt under de första 30 dagarna. Om du väljer att fortsätta använda tjänsten i slutet av 30 dagar börjar vi automatiskt att debitera för användning.
@@ -38,20 +38,16 @@ Security Center erbjuds i två lägen:
 
 ## <a name="faq---pricing-and-billing"></a>Vanliga frågor och svar – priser och fakturering 
 
-- [Azure Security Center kostnads fri vs Azure Defender aktiverat](#azure-security-center-free-vs-azure-defender-enabled)
-  - [Vilka är fördelarna med att aktivera Azure Defender?](#what-are-the-benefits-of-enabling-azure-defender)
-  - [Vanliga frågor och svar – priser och fakturering](#faq---pricing-and-billing)
-    - [Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
-    - [Vilka är de planer som erbjuds av Security Center?](#what-are-the-plans-offered-by-security-center)
-    - [Hur aktiverar jag Azure Defender för min prenumeration?](#how-do-i-enable-azure-defender-for-my-subscription)
-    - [Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
-    - [Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
-    - [Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
-    - [Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
-    - [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
-    - [Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
-    - [Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
-  - [Nästa steg](#next-steps)
+- [Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Vilka är de planer som erbjuds av Security Center?](#what-are-the-plans-offered-by-security-center)
+- [Hur aktiverar jag Azure Defender för min prenumeration?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?
 Azure-prenumerationer kan ha flera administratörer som har behörighet att ändra pris inställningarna. Om du vill ta reda på vilken användare som har gjort en ändring använder du Azure-aktivitets loggen.

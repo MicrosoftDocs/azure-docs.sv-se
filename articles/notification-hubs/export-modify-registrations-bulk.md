@@ -14,12 +14,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0771864229c8a3918da076de48fb6e033d2cf5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73c19b72c75d9638213f3c813a708a272cbe2a1b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018186"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452347"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Exportera och importera Azure Notification Hubs-registreringar i bulk
 
@@ -127,7 +127,7 @@ Förutom URL: erna för indata och utdata skapar det här exemplet ett `Notifica
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-När anropet har slutförts fortsätter jobbet av Notification Hub och du kan kontrol lera dess status med anropet till [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
+När anropet har slutförts fortsätter jobbet av Notification Hub och du kan kontrol lera dess status med anropet till [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync).
 
 När jobbet har slutförts kan du kontrol lera resultatet genom att titta på följande filer i utmatnings katalogen:
 

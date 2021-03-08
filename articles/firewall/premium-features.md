@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/08/2021
 ms.author: victorh
-ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715572"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453435"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>För hands versions funktioner för Azure Firewall Premium
 
@@ -39,9 +39,8 @@ I för hands versionen av Azure Firewall Premium ingår följande funktioner:
 - **URL-filtrering** – utökar Azure-brandväggens funktioner för FQDN-filtrering för att överväga en hel URL. Till exempel i `www.contoso.com/a/c` stället för `www.contoso.com` .
 - **Webb kategorier** – administratörer kan tillåta eller neka användar åtkomst till webbplats kategorier som spel webbplatser, sociala media webbplatser och andra.
 
-## <a name="features"></a>Funktioner
 
-### <a name="tls-inspection"></a>TLS-kontroll
+## <a name="tls-inspection"></a>TLS-kontroll
 
 Azure Firewall Premium avslutar utgående och östra-väst TLS-anslutningar. Kontrollen av inkommande TLS stöds med [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) som tillåter kryptering från slut punkt till slut punkt. Azure-brandväggen gör de nödvändiga säkerhetsfunktionerna för mervärde och krypterar om trafiken som skickas till det ursprungliga målet.
 
@@ -50,23 +49,30 @@ Azure Firewall Premium avslutar utgående och östra-väst TLS-anslutningar. Kon
 
 Läs mer om den mellanliggande certifikat UTFÄRDARens mellanliggande certifikat krav för Azure Firewall Premium i [Azure Firewall Premium Preview-certifikat](premium-certificates.md).
 
-### <a name="idps"></a>IDP: er
+## <a name="idps"></a>IDP: er
 
 Med ett system för identifiering och skydd av nätverks intrång (IDP: er) kan du övervaka nätverket för skadlig aktivitet, Logga information om den här aktiviteten, rapportera den och eventuellt försöka blockera den. 
 
 I för hands versionen av Azure Firewall Premium finns en IDP: er som möjliggör snabb identifiering av attacker genom att söka efter vissa mönster, till exempel byte sekvenser i nätverks trafik eller kända skadliga Instruction-sekvenser som används av skadlig kod. IDP: er-signaturer är fullständigt hanterade och uppdateras kontinuerligt.
 
+Azure Firewall-signaturer/rulesets inkluderar:
+- En tonvikt på finger avtryck av faktiskt skadlig kod, kommando och kontroll, sårbarhets paket och i den vilda skadliga aktivitet som missas av traditionella förebyggande metoder.
+- Över 35 000-regler i över 50-kategorier.
+    - Kategorierna inkluderar skadlig kod, kommando och kontroll, DoS-attacker, botnät, informations händelser, sårbarheter, sårbarheter, SCADA nätverks protokoll, sårbarhets pakets aktivitet med mera.
+- 20 till 40 + nya regler frigörs varje dag.
+- Låg falsk positiv klassificering med hjälp av tillstånds-till-art-Sandbox och global sensor för att få feedback från andra användare.
+
 Med IDP: er kan du identifiera attacker i alla portar och protokoll för icke-krypterad trafik. Men när HTTPS-trafiken behöver kontrol leras kan Azure-brandväggen använda sin TLS-kontroll för att dekryptera trafiken och identifiera skadlig aktivitet bättre.  
 
-Med IDP: er bypass-listan kan du inte filtrera trafik till någon av IP-adresserna, intervallen och under näten som anges i listan över undantag.  
+Med IDP: er bypass-listan kan du inte filtrera trafik till någon av IP-adresserna, intervallen och under näten som anges i listan över undantag. 
 
-### <a name="url-filtering"></a>URL-filtrering
+## <a name="url-filtering"></a>URL-filtrering
 
 URL-filtrering utökar Azure firewalls FQDN-filtrerings funktion för att överväga en hel URL. Till exempel i `www.contoso.com/a/c` stället för `www.contoso.com` .  
 
 URL-filtrering kan tillämpas både på HTTP-och HTTPS-trafik. När HTTPS-trafik inspekteras kan Azure Firewall Premium Preview använda sin TLS-kontroll för att dekryptera trafiken och extrahera mål-URL: en för att kontrol lera om åtkomst tillåts. TLS-kontrollen kräver att du anmäler dig på program regel nivå. När den är aktive rad kan du använda URL: er för filtrering med HTTPS. 
 
-### <a name="web-categories"></a>Webb kategorier
+## <a name="web-categories"></a>Webb kategorier
 
 Med webb kategorier kan administratörer tillåta eller neka användar åtkomst till webbplats kategorier som spel webbplatser, webbplatser för sociala medier och andra. Webb kategorier kommer också att ingå i Azure Firewall standard, men det är mer finjusterat i Azure Firewall Premium Preview. Till skillnad från webb kategori funktionen i standard-SKU: n som matchar kategorin baserat på ett FQDN, matchar Premium-SKU: n kategorin enligt hela URL: en för både HTTP-och HTTPS-trafik. 
 
@@ -78,11 +84,11 @@ Om till exempel Azure-brandväggen fångar upp en HTTPS-begäran för `www.googl
 
 Kategorierna organiseras baserat på allvarlighets grad under **ansvar**, **hög bandbredd**, **företags användning**, **produktivitets förlust**, **allmän surfning** och **Okategoriserade**.
 
-#### <a name="category-exceptions"></a>Kategori undantag
+### <a name="category-exceptions"></a>Kategori undantag
 
 Du kan skapa undantag för dina webb kategori regler. Skapa en separat regel samling för Tillåt eller neka med en högre prioritet inom regel samlings gruppen. Du kan till exempel konfigurera en regel samling som tillåter `www.linkedin.com` med prioritet 100 med en regel samling som nekar **sociala nätverk** med prioritet 200. Detta skapar undantaget för den fördefinierade webb kategorin för **sociala nätverk** .
 
-#### <a name="categorization-change"></a>Ändring av kategorisering
+### <a name="categorization-change"></a>Ändring av kategorisering
 
 Du kan begära en kategoriserings ändring om du:
 

@@ -1,7 +1,6 @@
 ---
 title: Azure Defender för SQL
 description: Lär dig mer om funktioner för att hantera dina databas sårbarheter och identifiera avvikande aktiviteter som kan tyda på ett hot mot databasen i Azure SQL Database, Azure SQL-hanterad instans eller Azure-Synapse.
-services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
 ms.devlang: ''
@@ -10,15 +9,16 @@ ms.topic: conceptual
 ms.author: memildin
 manager: rkarlin
 author: memildin
-ms.date: 02/02/2021
-ms.openlocfilehash: 48df96373554f6e474c3835bf81e38a9aea5450c
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 03/08/2021
+ms.openlocfilehash: 27f17b3d1060e8b693c2a34cdb4643840f1bfd13
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508819"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452325"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender för SQL
+
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure Defender för SQL är ett enhetligt paket för avancerade SQL-säkerhetsfunktioner. Azure Defender är tillgängligt för Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics. Det innefattar funktioner för att identifiera och klassificera känsliga data, lyfta fram och åtgärda potentiella säkerhetsrisker i databasen och identifiera avvikande aktiviteter som kan indikera ett hot mot databasen. Det ger en samlad plats för aktivering och hantering av dessa funktioner.
@@ -33,20 +33,56 @@ Du kan aktivera alla de här funktionerna genom att aktivera Azure Defender for 
 
 Mer information om priser för Azure Defender för SQL finns på [sidan med Azure Security Center priser](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="enable-azure-defender"></a>Aktivera Azure Defender
+## <a name="enable-azure-defender"></a>Aktivera Azure Defender 
+Det finns flera sätt att aktivera Azure Defender-planer. Du kan aktivera den på prenumerations nivån (**rekommenderas**) från:
 
-Azure Defender kan nås via [Azure Portal](https://portal.azure.com). Aktivera Azure Defender genom att navigera till **Security Center** under **säkerhets** rubriken för servern eller den hanterade instansen.
+- [Azure Security Center](#enable-azure-defender-for-azure-sql-database-at-the-subscription-level-from-azure-security-center)
+- [Program mässigt med REST API, Azure CLI, PowerShell eller Azure Policy](#enable-azure-defender-plans-programatically)
+
+Alternativt kan du aktivera den på resurs nivå enligt beskrivningen i [Aktivera Azure Defender för Azure SQL Database på resurs nivå](#enable-azure-defender-for-azure-sql-database-at-the-resource-level)
+
+### <a name="enable-azure-defender-for-azure-sql-database-at-the-subscription-level-from-azure-security-center"></a>Aktivera Azure Defender för Azure SQL Database på prenumerations nivå från Azure Security Center
+Om du vill aktivera Azure Defender för Azure SQL Database på prenumerations nivån inifrån Azure Security Center:
+
+1. Öppna **Security Center** från [Azure Portal](https://portal.azure.com).
+1. Från Security Center menyn väljer du **priser och inställningar**.
+1. Välj relevant prenumeration.
+1. Ändra plan inställningen till **på**.
+
+    :::image type="content" source="media/azure-defender-for-sql/enable-azure-defender-sql-subscription-level.png" alt-text="Aktivera Azure Defender för Azure SQL Database på prenumerations nivån.":::
+
+1. Välj **Spara**.
+
+
+### <a name="enable-azure-defender-plans-programatically"></a>Aktivera Azure Defender-planer program mässigt 
+
+Flexibiliteten i Azure ger ett antal programmerings metoder för att aktivera Azure Defender-planer. 
+
+Använd något av följande verktyg för att aktivera Azure Defender för din prenumeration: 
+
+| Metod       | Instruktioner                                                                                                                                       |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| REST-API     | [Prissättnings-API](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI    | [AZ Security-prissättning](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell   | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure Policy | [Paket priser](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|              |                                                                                                                                                    |
+
+### <a name="enable-azure-defender-for-azure-sql-database-at-the-resource-level"></a>Aktivera Azure Defender för Azure SQL Database på resurs nivå
+
+Vi rekommenderar att du aktiverar Azure Defender-planer på prenumerations nivån och kan hjälpa dig att skapa oskyddade resurser. Men om du har en organisations orsak för att aktivera Azure Defender på server nivå, så gör du så här:
+
+1. Öppna servern eller den hanterade instansen från [Azure Portal](https://portal.azure.com).
+1. Under **säkerhets** rubriken väljer du **Security Center**.
+1. Välj **Aktivera Azure Defender för SQL**.
+
+    :::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Aktivera Azure Defender för SQL inifrån Azure SQL-databaser.":::
 
 > [!NOTE]
 > Ett lagrings konto skapas och konfigureras automatiskt för att lagra dina genomsöknings resultat för **sårbarhets bedömning** . Om du redan har aktiverat Azure Defender för en annan server i samma resurs grupp och region används det befintliga lagrings kontot.
 >
 > Kostnaden för Azure Defender är anpassad till Azure Security Center standard pris per nod, där en nod är hela servern eller en hanterad instans. Du betalar därför bara en gång för att skydda alla databaser på servern eller den hanterade instansen med Azure Defender. Du kan prova Azure Defender ut från början med en kostnads fri utvärderings version.
 
-:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Aktivera Azure Defender för SQL inifrån Azure SQL-databaser":::
-
-## <a name="track-vulnerabilities-and-investigate-threat-alerts"></a>Spåra sårbarheter och undersök hot aviseringar
-
-Klicka på kortet för **sårbarhets bedömning** för att visa och hantera sårbarhets genomsökningar och rapporter och för att spåra din säkerhets datasekretesstandarder. Om säkerhets aviseringar har mottagits klickar du på kortet **Avancerat skydd** för att visa information om aviseringarna och visa en konsol IDE rad rapport om alla aviseringar i din Azure-prenumeration via sidan Azure Security Center säkerhets aviseringar.
 
 ## <a name="manage-azure-defender-settings"></a>Hantera Azure Defender-inställningar
 
@@ -56,11 +92,11 @@ Visa och hantera Azure Defender-inställningar:
 
     På den här sidan ser du status för Azure Defender för SQL:
 
-    :::image type="content" source="media/azure-defender-for-sql/status-of-defender-for-sql.png" alt-text="Kontrol lera status för Azure Defender för SQL i Azure SQL-databaser":::
+    :::image type="content" source="media/azure-defender-for-sql/status-of-defender-for-sql.png" alt-text="Kontrollerar status för Azure Defender för SQL i Azure SQL-databaser.":::
 
 1. Om Azure Defender för SQL är aktiverat visas en **Konfigurera** -länk som visas i föregående bild. Om du vill redigera inställningarna för Azure Defender för SQL väljer du **Konfigurera**.
 
-    :::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="säkerhets Server inställningar":::
+    :::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="Inställningar för Azure Defender för SQL.":::
 
 1. Gör nödvändiga ändringar och välj **Spara**.
 

@@ -3,19 +3,19 @@ title: Använd Azure Lab Services för Hackathon
 description: I den här artikeln beskrivs hur du använder Azure Lab Services för att skapa labb som du kan använda för att köra Hackathon kickar.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602588"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452738"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Använd Azure Lab Services för nästa Hackathon
 Azure Lab Services är utformad för att vara lätt att använda så att du snabbt kan skapa ett nytt labb av virtuella datorer (VM) för din Hackathon.  Använd följande check lista för att se till att din Hackathon går så smidigt som möjligt. Den här check listan bör utföras av IT-avdelningen eller fakulteten som ansvarar för att skapa och hantera ditt Hackathon-labb. 
 
 Om du vill använda labb tjänster för din Hackathon, se till att både labb kontot och labbet skapas minst några dagar innan du börjar med din Hackathon. Följ också anvisningarna nedan:
 
-## <a name="guidance"></a>Riktlinjer
+## <a name="guidance"></a>Vägledning
 
 - **Skapa labbet i en region eller plats som är närmast deltagarna**. 
 
@@ -83,7 +83,7 @@ Det här avsnittet beskriver stegen för att slutföra dagen för din Hackathon.
     - Autentiseringsuppgifter som ska användas för att ansluta till datorn. Det här steget gäller bara om ditt labb använder en Windows-baserad avbildning och du har konfigurerat alla virtuella datorer för att använda samma lösen ord.
     - Instruktioner om hur deltagarna SSH-och/eller RDP till sina datorer.
 
-        Mer information finns i [instruktions guiden om att skicka inbjudningar till användare](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) och [ansluta till virtuella Linux-datorer](how-to-use-remote-desktop-linux-student.md?branch=master). 
+        Mer information finns i [instruktions guiden om att skicka inbjudningar till användare](how-to-configure-student-usage.md#send-invitations-to-users) och [ansluta till virtuella Linux-datorer](how-to-use-remote-desktop-linux-student.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 Börja med att skapa ett labb konto i labbet genom att följa anvisningarna i artikeln: [Självstudier: Konfigurera ett labb konto med Azure Lab Services](tutorial-setup-lab-account.md).

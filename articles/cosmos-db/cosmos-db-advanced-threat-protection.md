@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334420"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455622"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Avancerat skydd för Azure Cosmos DB (för hands version)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Avancerat skydd för Azure Cosmos DB ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja Azure Cosmos DB-konton. Det här skydds lagret gör att du kan åtgärda hot, även utan att vara säkerhets expert, och integrera dem med centrala säkerhets övervaknings system.
 
-Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa säkerhets aviseringar är integrerade med  [Azure Security Center](https://azure.microsoft.com/services/security-center/)och skickas också via e-post till prenumerations administratörer med information om den misstänkta aktiviteten och rekommendationer om hur du undersöker och åtgärdar hoten.
+Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. Dessa säkerhets aviseringar är integrerade med  [Azure Security Center](https://azure.microsoft.com/services/security-center/)och skickas också via e-post till prenumerations administratörer med information om den misstänkta aktiviteten och rekommendationer om hur du undersöker och åtgärdar hoten.
 
 > [!NOTE]
 >
@@ -34,9 +34,9 @@ För en fullständig utredning av säkerhets aviseringar rekommenderar vi att du
 
 Avancerat skydd för Azure Cosmos DB identifierar avvikande aktiviteter som visar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja databaser. Den kan för närvarande utlösa följande aviseringar:
 
-- **Åtkomst från ovanliga platser** : den här aviseringen utlöses när åtkomst mönstret i ett Azure Cosmos-konto ändras, där någon har anslutit till Azure Cosmos DB slut punkten från en ovanlig geografisk plats. I vissa fall identifierar aviseringen en legitim åtgärd, vilket innebär ett nytt program eller en utvecklares underhålls åtgärd. I andra fall identifierar aviseringen en skadlig åtgärd från en tidigare anställd, extern angripare osv.
+- **Åtkomst från ovanliga platser**: den här aviseringen utlöses när åtkomst mönstret i ett Azure Cosmos-konto ändras, där någon har anslutit till Azure Cosmos DB slut punkten från en ovanlig geografisk plats. I vissa fall identifierar aviseringen en legitim åtgärd, vilket innebär ett nytt program eller en utvecklares underhålls åtgärd. I andra fall identifierar aviseringen en skadlig åtgärd från en tidigare anställd, extern angripare osv.
 
-- **Ovanlig data extrahering** : den här aviseringen utlöses när en klient extraherar en ovanlig mängd data från ett Azure Cosmos DB-konto. Detta kan vara symptom på vissa data exfiltrering som utförs för att överföra alla data som lagras i kontot till ett externt data lager.
+- **Ovanlig data extrahering**: den här aviseringen utlöses när en klient extraherar en ovanlig mängd data från ett Azure Cosmos DB-konto. Detta kan vara symptom på vissa data exfiltrering som utförs för att överföra alla data som lagras i kontot till ett externt data lager.
 
 
 
@@ -68,9 +68,9 @@ Använd REST API-kommandon för att skapa, uppdatera eller Hämta inställningen
 
 Använd följande PowerShell-cmdletar:
 
-* [Aktivera Advanced Threat Protection](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Hämta Avancerat skydd](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Inaktivera Avancerat skydd](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Aktivera Advanced Threat Protection](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Hämta Avancerat skydd](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Inaktivera Avancerat skydd](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ### <a name="arm-template"></a>[ARM-mall](#tab/arm-template)
 

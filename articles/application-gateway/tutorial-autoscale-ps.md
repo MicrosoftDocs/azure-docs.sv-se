@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 03/08/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5731b65892877e5c363220d84a0bddeb5f958cee
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a756313a4659dfc531289c2c86890371f700367
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396880"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452296"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Självstudie: skapa en Programgateway som förbättrar åtkomsten till webb program
 
@@ -36,7 +36,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Den här självstudien kräver att du kör Azure PowerShell lokalt. Du måste ha Azure PowerShell-modul version 1.0.0 eller senare installerad. Kör `Get-Module -ListAvailable Az` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). När du har verifierat PowerShell-versionen kör du `Connect-AzAccount` för att skapa en anslutning till Azure.
+I den här självstudien krävs att du kör en administrativ Azure PowerShell-session lokalt. Du måste ha Azure PowerShell-modul version 1.0.0 eller senare installerad. Kör `Get-Module -ListAvailable Az` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). När du har verifierat PowerShell-versionen kör du `Connect-AzAccount` för att skapa en anslutning till Azure.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -76,16 +76,17 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Använd tumavtrycket till att skapa pfx-filen:
+Använd tumavtrycket för att skapa PFX-filen. Ersätt *\<password>* med ett valfritt lösen ord:
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText
 
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
   -Password $pwd
 ```
+
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
@@ -106,7 +107,7 @@ Ange allokeringsmetoden för PublicIPAddress som **Statisk**. En virtuell IP-adr
 ```azurepowershell
 #Create static public IP
 $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
-       -location $location -AllocationMethod Static -Sku Standard
+       -location $location -AllocationMethod Static -Sku Standard -Zone 1,2,3
 ```
 
 ## <a name="retrieve-details"></a>Hämta information
@@ -114,21 +115,33 @@ $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 Hämta information för resursgruppen, undernätet och IP-adressen i ett lokalt objekt för att skapa informationen om programgatewayens IP-konfiguration.
 
 ```azurepowershell
-$resourceGroup = Get-AzResourceGroup -Name $rg
 $publicip = Get-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP"
 $vnet = Get-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork $vnet
+```
+
+## <a name="create-web-apps"></a>Skapa webb program
+
+Konfigurera två webbappar för backend-poolen. Ersätt *\<site1-name>* och *\<site-2-name>* med unika namn i `azurewebsites.net` domänen.
+
+```azurepowershell
+New-AzAppServicePlan -ResourceGroupName $rg -Name "ASP-01"  -Location $location -Tier Basic `
+   -NumberofWorkers 2 -WorkerSize Small
+New-AzWebApp -ResourceGroupName $rg -Name <site1-name> -Location $location -AppServicePlan ASP-01
+New-AzWebApp -ResourceGroupName $rg -Name <site2-name> -Location $location -AppServicePlan ASP-01
 ```
 
 ## <a name="configure-the-infrastructure"></a>Konfigurera infrastrukturen
 
 Konfigurera IP-konfigurationen, IP-konfigurationen för klientsidan, serverdelspoolen, HTTP-inställningarna, certifikatet, porten, lyssnaren och regeln i samma format som den befintliga standardprogramgatewayen. Den nya SKU:n följer samma objektmodell som standard-SKU:n.
 
+Ersätt dina två FQDN-namn för webbappen (till exempel: `mywebapp.azurewebsites.net` ) i variabel definitionen $pool.
+
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
 $fip = New-AzApplicationGatewayFrontendIPConfig -Name "FrontendIPCOnfig" -PublicIPAddress $publicip
 $pool = New-AzApplicationGatewayBackendAddressPool -Name "Pool1" `
-       -BackendIPAddresses testbackend1.westus.cloudapp.azure.com, testbackend2.westus.cloudapp.azure.com
+       -BackendIPAddresses <your first web app FQDN>, <your second web app FQDN>
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "SSLPort" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "HTTPPort" -Port 80
 
@@ -141,7 +154,7 @@ $listener02 = New-AzApplicationGatewayHttpListener -Name "HTTPListener" `
              -Protocol Http -FrontendIPConfiguration $fip -FrontendPort $fp02
 
 $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting1" `
-          -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+          -Port 80 -Protocol Http -CookieBasedAffinity Disabled -PickHostNameFromBackendAddress
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType basic `
          -BackendHttpSettings $setting -HttpListener $listener01 -BackendAddressPool $pool
 $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleType basic `
@@ -150,20 +163,13 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleType bas
 
 ## <a name="specify-autoscale"></a>Ange automatisk skalning
 
-Nu kan du ange konfigurationen för automatisk skalning för programgatewayen. Två typer av konfiguration för automatisk skalning stöds:
-
-* **Läget för bestämd kapacitet**. I det här läget skalas inte programgatewayen automatiskt och körs med en fast skalningsenhetskapacitet.
-
-   ```azurepowershell
-   $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
-   ```
-
-* **Läget för automatisk skalning**. I det här läget skalas programgatewayen automatiskt baserat på programmets trafikmönster.
+Nu kan du ange konfigurationen för automatisk skalning för programgatewayen. 
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
    ```
+I det här läget skalas programgatewayen automatiskt baserat på programmets trafikmönster.
 
 ## <a name="create-the-application-gateway"></a>Skapa programgatewayen
 
@@ -182,7 +188,11 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 Använd Get-AzPublicIPAddress för att hämta den offentliga IP-adressen för programgatewayen. Kopiera den offentliga IP-adressen eller DNS-namnet och klistra in det i webbläsarens adressfält.
 
-`Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
+```azurepowershell
+$pip = Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
+$pip.IpAddress
+```
+
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

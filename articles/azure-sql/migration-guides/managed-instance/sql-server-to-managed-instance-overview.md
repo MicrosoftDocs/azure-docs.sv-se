@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690421"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455237"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Några allmänna rikt linjer som hjälper dig att välja rätt tjänst nivå och
 Du kan välja beräknings-och lagrings resurser under distributionen och sedan ändra dem när du har använt [Azure Portal](../../database/scale-resources.md) utan att det har uppstått avbrott i programmet. 
 
 > [!IMPORTANT]
-> Eventuella skillnader i kraven för det [virtuella nätverket för den hanterade instansen](../../managed-instance/connectivity-architecture-overview.md#network-requirements) kan hindra dig från att skapa nya instanser eller använda befintliga. Lär dig mer om att [skapa nya](../../managed-instance/virtual-network-subnet-create-arm-template.md)   och [Konfigurera befintliga](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   nätverk. 
+> Eventuella skillnader i kraven för det [virtuella nätverket för den hanterade instansen](../../managed-instance/connectivity-architecture-overview.md#network-requirements) kan hindra dig från att skapa nya instanser eller använda befintliga. Lär dig mer om att [skapa nya](../../managed-instance/virtual-network-subnet-create-arm-template.md)   och [Konfigurera befintliga](../../managed-instance/vnet-existing-add-subnet.md)   nätverk. 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternativ
 

@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 2820fe9d885187071924386ef71eb12fd42bbf01
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426458"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454234"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -30,7 +30,7 @@ I den här artikeln förklaras hur du kan komma åt dina SAP-resurser från Logi
 
     * Om du kör din Logi Kap par i Azure med flera klienter kan du läsa mer i [kraven för flera klient organisationer](#multi-tenant-azure-prerequisites).
 
-    * Om du kör din Logic-app i en Premium-[ miljö (Premium service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)på Premium-nivå, se [kraven för ISE](#ise-prerequisites).
+    * Om du kör din Logic-app i en Premium- [miljö (Premium service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)på Premium-nivå, se [kraven för ISE](#ise-prerequisites).
 
 * En [SAP-Programserver](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) eller en [SAP-MSMQ-server](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) som du vill komma åt från Logic Apps. Information om vilka SAP-servrar och SAP-åtgärder som du kan använda med anslutnings tjänsten finns i [SAP-kompatibilitet](#sap-compatibility).
 
@@ -633,6 +633,14 @@ Om du vill skicka IDocs från SAP till din Logic app behöver du följande minst
     * Ange ett namn för ditt **RFC-mål**.
     
     * På fliken **tekniska inställningar** väljer du **registrerade Server program** för **aktiverings typ**. Ange ett värde för ditt **program-ID**. I SAP registreras din Logic Apps-utlösare genom att använda den här identifieraren.
+
+    > [!IMPORTANT]
+    > ID för SAP- **program** är Skift läges känsligt. Se till att du konsekvent använder samma fall format för ditt **program-ID** när du konfigurerar din Logic app och SAP-server. Annars kan du få följande fel i tRFC-övervakaren (T-Code SM58) när du försöker skicka en IDoc till SAP:
+    >
+    > * **Det gick inte att hitta funktionen IDOC_INBOUND_ASYNCHRONOUS**
+    > * **Icke-ABAP RFC-klient (partner typ) stöds inte**
+    >
+    > Mer information från SAP finns i följande anmärkningar (inloggning krävs) <https://launchpad.support.sap.com/#/notes/2399329> och <https://launchpad.support.sap.com/#/notes/353597> .
     
     * På fliken **Unicode** , för **kommunikations typ med mål system**, väljer du **Unicode**.
 
@@ -745,6 +753,14 @@ Du kan konfigurera SAP för att [Skicka idocs i paket](https://help.sap.com/view
 Här är ett exempel som visar hur du extraherar enskilda IDocs från ett paket med hjälp av [ `xpath()` funktionen](./workflow-definition-language-functions-reference.md#xpath):
 
 1. Innan du börjar måste du ha en Logic-app med en SAP-utlösare. Om du inte redan har den här Logic-appen följer du de föregående stegen i det här avsnittet för att [Konfigurera en Logic app med en SAP-utlösare](#receive-message-from-sap).
+
+    > [!IMPORTANT]
+    > ID för SAP- **program** är Skift läges känsligt. Se till att du konsekvent använder samma fall format för ditt **program-ID** när du konfigurerar din Logic app och SAP-server. Annars kan du få följande fel i tRFC-övervakaren (T-Code SM58) när du försöker skicka en IDoc till SAP:
+    >
+    > * **Det gick inte att hitta funktionen IDOC_INBOUND_ASYNCHRONOUS**
+    > * **Icke-ABAP RFC-klient (partner typ) stöds inte**
+    >
+    > Mer information från SAP finns i följande anmärkningar (inloggning krävs) <https://launchpad.support.sap.com/#/notes/2399329> och <https://launchpad.support.sap.com/#/notes/353597> .
 
    Exempel:
 
@@ -1313,11 +1329,18 @@ Om det uppstår ett problem med att duplicera IDocs skickas till SAP från din L
 
 ## <a name="known-issues-and-limitations"></a>Kända problem och begränsningar
 
-Här följer de kända problemen och begränsningarna för den hanterade SAP-anslutningen (ej-ISE):
+Här följer de kända problemen och begränsningarna för den hanterade SAP-anslutningen (ej-ISE): 
 
-* SAP-utlösaren stöder inte data Gateway-kluster. I vissa fall kan datagateway-noden som kommunicerar med SAP-systemet skilja sig från den aktiva noden, vilket resulterar i ett oväntat beteende. För sändnings scenarier stöds data Gateway-kluster.
+* I allmänhet stöder inte SAP-utlösaren data Gateway-kluster. I vissa fall kan datagateway-noden som kommunicerar med SAP-systemet skilja sig från den aktiva noden, vilket resulterar i ett oväntat beteende.
+
+  * För sändnings scenarier stöds data Gateway-kluster i redundansväxlingen. 
+
+  * Data Gateway-kluster i belastnings Utjämnings läge stöds inte av tillstånds känsliga SAP-åtgärder. Dessa åtgärder omfattar **skapa tillstånds känslig session**, **commit BAPI-transaktion**, **återställa BAPI-transaktion**, **stänga tillstånds känslig session** och alla åtgärder som anger ett **sessions-ID-** värde. Tillstånds känslig kommunikation måste finnas på samma datagateway-klusternod. 
+
+  * För tillstånds känsliga SAP-åtgärder använder du datagatewayen antingen i icke-kluster läge eller i ett kluster som har kon figurer ATS för redundans.
 
 * SAP-anslutaren stöder för närvarande inte SAP-router-strängar. Den lokala datagatewayen måste finnas i samma lokala nätverk som det SAP-system som du vill ansluta till.
+
 
 ## <a name="connector-reference"></a>Referens för anslutningsapp
 

@@ -14,19 +14,19 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: af6933ecadb4d008ad45c284f5182158dda68877
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: eeb41967ac7e2b73bfb32933f7f019a5722fdc9b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211115"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454440"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Självstudie: använda DRM dynamisk kryptering och licens leverans tjänst
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> Även om den här självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -exemplen är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
+> Även om den här självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) -exemplen är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
 Du kan använda Azure Media Services till att leverera strömmar som krypterats med Microsoft PlayReady, Google Widevine eller Apple FairPlay-licenser. För djupgående förklaringar, se [innehålls skydd med dynamisk kryptering](content-protection-overview.md).
 

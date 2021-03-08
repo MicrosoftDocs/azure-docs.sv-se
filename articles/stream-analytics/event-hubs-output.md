@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: c2bde64c17520f4cf66ddecd9fc55a9bdd9edc37
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 02abdd752528ce28642b6228648062ed961d5ae3
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020595"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452398"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Event Hubs utdata från Azure Stream Analytics
 
@@ -37,7 +37,7 @@ Följande tabell innehåller de parametrar som krävs för att konfigurera data 
 
 ## <a name="partitioning"></a>Partitionering
 
-Partitionering varierar beroende på partitionens justering. När partitionsnyckel för Event Hub-utdata är jämnt justerad med föregående steg i frågan, är antalet skrivare samma som antalet partitioner i Event Hub-utdata. Varje skrivare använder [klassen EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true) för att skicka händelser till den angivna partitionen. När partitionsnyckel för utdata i Event Hub inte är justerad till föregående steg i frågan, är antalet skrivare samma som antalet partitioner i det föregående steget. Varje skrivare använder [klassen SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true) i **EventHubClient** för att skicka händelser till alla utdata-partitioner. 
+Partitionering varierar beroende på partitionens justering. När partitionsnyckel för Event Hub-utdata är jämnt justerad med föregående steg i frågan, är antalet skrivare samma som antalet partitioner i Event Hub-utdata. Varje skrivare använder [klassen EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender) för att skicka händelser till den angivna partitionen. När partitionsnyckel för utdata i Event Hub inte är justerad till föregående steg i frågan, är antalet skrivare samma som antalet partitioner i det föregående steget. Varje skrivare använder [klassen SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync) i **EventHubClient** för att skicka händelser till alla utdata-partitioner. 
 
 ## <a name="output-batch-size"></a>Batchstorlek för utdata
 

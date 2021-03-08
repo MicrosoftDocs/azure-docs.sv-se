@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f02edf8e192f4d32f8bd2583d46bbb17c86d2049
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258073"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454812"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Så här skapar du en virtuell nätverks installation i Azure Virtual WAN Hub (för hands version)
 
@@ -22,6 +22,8 @@ Den här artikeln visar hur du använder Virtual WAN för att ansluta till dina 
 Stegen i den här artikeln hjälper dig att skapa en virtuell **Barracuda CLOUDGEN WAN** -nätverk i den virtuella WAN-hubben. För att slutföra den här övningen måste du ha en Barracuda-lokal enhet (CPE) och en licens för Barracuda CloudGen WAN-installationen som du distribuerar till hubben innan du börjar.
 
 Distributions dokumentation för **Cisco SD-WAN** i Azure Virtual WAN finns i [Cisco Cloud bearbetar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). 
+
+Distributions dokumentation för **VMware SD-WAN** i Azure Virtual WAN finns i [distributions guide för VMware SD-WAN i Virtual WAN Hub](https://kb.vmware.com/s/article/82746)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -48,7 +50,7 @@ En hubb är ett virtuellt nätverk som kan innehålla gatewayer för plats-till-
 1. Leta upp det virtuella WAN-nätverket som du har skapat. På sidan **virtuellt WAN** , under avsnittet **anslutning** , väljer du **hubbar**.
 1. På sidan **hubbar** väljer du + ny hubb för att öppna sidan **Skapa virtuell hubb** .
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Grunder":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Grundläggande inställningar":::
 1. Fyll i följande fält på fliken **grundläggande grunder** på sidan **Skapa virtuell hubb** :
 
    **Projektinformation**

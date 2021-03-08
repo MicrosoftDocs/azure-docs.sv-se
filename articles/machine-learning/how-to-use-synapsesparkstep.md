@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.custom: how-to, synapse-azureml
+ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203699"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455067"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Använda Apache Spark (drivs av Azure Synapse Analytics) i din Machine Learning pipeline (för hands version)
 
@@ -31,7 +31,7 @@ I den här artikeln får du lära dig hur du använder Apache Spark pooler som d
 
 ## <a name="link-your-azure-machine-learning-workspace-and-azure-synapse-analytics-workspace"></a>Länka din Azure Machine Learning arbets yta och Azure Synapse Analytics-arbetsytan 
 
-Du skapar och administrerar Apache Spark pooler i en Azure Synapse Analytics-arbetsyta. Om du vill integrera en Apache Spark pool med en Azure Machine Learning arbets yta måste du länka till Azure Synapse Analytics-arbetsytan. 
+Du skapar och administrerar Apache Spark pooler i en Azure Synapse Analytics-arbetsyta. Om du vill integrera en Apache Spark pool med en Azure Machine Learning arbets yta måste du [Länka till Azure Synapse Analytics-arbetsytan](how-to-link-synapse-ml-workspaces.md). 
 
 Du kan ansluta en Apache Spark pool via användar gränssnittet för Azure Machine Learning Studio med hjälp av sidan **länkade tjänster** . Du kan också göra det via **beräknings** sidan med alternativet **bifoga beräkning** .
 

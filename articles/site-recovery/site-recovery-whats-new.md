@@ -3,12 +3,12 @@ title: Vad är nytt i Azure Site Recovery
 description: Innehåller en sammanfattning av nya funktioner och de senaste uppdateringarna i Azure Site Recoverys tjänsten.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 51d54ca4d46af3b9e0746f36114fadc47edd5b1f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 423fbc563878d0cc2a63a5366d2226281a204e87
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805055"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454607"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nyheter i Site Recovery
 
@@ -22,6 +22,7 @@ För Site Recovery-komponenter stöder vi N-4-versioner, där N är den senaste 
 
 **Uppdatera** |  **Enhetlig installation** | **Konfigurations Server för ägg** | **Mobilitets tjänst agent** | **Site Recovery Provider** | **Recovery Services agent**
 --- | --- | --- | --- | --- | ---
+[Samlad uppdatering 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [Samlad uppdatering 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [Samlad uppdatering 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [Samlad uppdatering 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
@@ -30,6 +31,21 @@ För Site Recovery-komponenter stöder vi N-4-versioner, där N är den senaste 
 
 
 [Läs mer](service-updates-how-to.md) om installation och stöd för uppdateringar.
+
+## <a name="updates-february-2021"></a>Uppdateringar (februari 2021)
+
+### <a name="update-rollup-54"></a>Samlad uppdatering 54
+
+Samlad [uppdatering 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) innehåller följande uppdateringar:
+
+**Uppdatera** | **Information**
+--- | ---
+**Leverantörer och agenter** | Uppdateringar till Site Recovery agenter och leverantörer enligt beskrivningen i den samlade uppdateringen.
+**Problem korrigeringar/förbättringar** | Ett antal korrigeringar och förbättringar som beskrivs i den samlade uppdateringen. 
+**Haveri beredskap för Azure VM** | Zon till zon haveri beredskap med Azure Site Recovery är nu GA i fyra regioner – Europa, östra, USA, centrala, USA och västra USA 2.<br/>
+**VMware VM/fysisk haveri beredskap till Azure** | Uppdateringen innehåller Portal stöd för att välja närhets grupper för VMware/fysiska datorer när du har aktiverat replikering.<br/><br/> Att skydda VMware-datorer med data disk storlek upp till 32 TB ISS stöds nu.
+**Katastrof återställning för Hyper-V till Azure** | Uppdateringen innehåller Portal stöd för att välja närhets grupper för Hyper-V-datorer när du har aktiverat replikering.
+
 
 ## <a name="updates-january-2021"></a>Uppdateringar (januari 2021)
 

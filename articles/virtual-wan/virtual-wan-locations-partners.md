@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: references_regions
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 1e8a8aa632d4c91cdfc6753d988a439d2de8938e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d1f05e76768ffc8ce930d97573c7729b8e4afafe
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040555"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452755"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuella WAN-partner och platser för virtuella hubbar
 
@@ -61,7 +61,8 @@ Dessa partner har **hanterade program** erbjudanden som nu är tillgängliga fö
 |Partner|Guide för konfiguration/anvisningar/distribution|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Distributions guide för Barracuda CloudGen WAN](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[VWAN för Cisco Cloud Service router (CSR)](https://aka.ms/ciscoMarketPlaceOffer)| Under den offentliga för hands versionen av Cisco Cloud Services (CSR) WAN till VWAN Hub kräver Cisco att kunden registrerar sig som en Cisco EFT-kund (tidig fält utvärdering) genom att skicka ett e-postmeddelande till vwan_public_preview@external.cisco.com och begära distributions guiden för vManage. |
+|[VWAN för Cisco Cloud Service router (CSR)](https://aka.ms/ciscoMarketPlaceOffer)| Under den offentliga för hands versionen av Cisco Cloud Services (CSR) WAN till VWAN Hub kräver Cisco att kunden registrerar sig som en Cisco EFT-kund (tidig fält utvärdering) genom att skicka ett e-postmeddelande till vwan_public_preview@external.cisco.com och begära distributions guiden för vManage. 
+|[VMware SD-WAN i Virtual WAN Hub](https://kb.vmware.com/s/article/82746) | Under den offentliga för hands versionen av VMware SD-WAN till VWAN Hub kräver VMware att kunden registrerar sig genom att skicka ett e-postmeddelande till vhubsupport@vmware.com . [VMware SD-WAN i Virtual WAN Hub distributions guide](https://kb.vmware.com/s/article/82746)|
 
 Följande partner är planerad för att ta NVA i den virtuella hubben i en snar framtid: Aviatrix, Citrix, VeloCloud och versa-nätverk.
 

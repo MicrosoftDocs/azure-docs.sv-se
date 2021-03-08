@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787272"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452381"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azures säkerhets bas linje för Azure Stack Edge
 
@@ -308,7 +308,7 @@ Observera att ytterligare behörigheter kan krävas för att få insyn i arbets 
 
 **Vägledning**: du kan ta med dina egna program att köra på alla lokalt skapade virtuella datorer. Använd PowerShell-skript för att skapa lokala virtuella Compute-datorer på din stack Edge-enhet. Vi rekommenderar starkt att du endast använder betrodda program för att köra på de lokala virtuella datorerna. 
 
-- [Så här styr du körning av PowerShell-skript i Windows-miljön](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
+- [Så här styr du körning av PowerShell-skript i Windows-miljön](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

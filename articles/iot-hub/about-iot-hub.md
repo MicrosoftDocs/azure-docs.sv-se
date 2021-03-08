@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095266"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454778"
 ---
 # <a name="what-is-azure-iot-hub"></a>Vad är Azure IoT Hub?
 
@@ -30,7 +30,7 @@ IoT Hubs funktioner hjälper dig att skapa skalbara kompletta IoT-lösningar, so
 
 ## <a name="scale-your-solution"></a>Skala din lösning
 
-IoT Hub kan skalas till flera miljoner samtidiga anslutna enheter och flera miljoner händelser per sekund och därigenom stödja dina IoT-arbetsbelastningar. Mer information om hur du skalar IoT Hub finns i [IoT Hub skalning](iot-hub-scaling.md?branch=release-iotbasic). Om du vill veta mer om flera nivåer av tjänster som erbjuds av IoT Hub och hur du bäst passar dina skalbarhets behov kan du titta på [sidan med priser](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub kan skalas till flera miljoner samtidiga anslutna enheter och flera miljoner händelser per sekund och därigenom stödja dina IoT-arbetsbelastningar. Mer information om hur du skalar IoT Hub finns i [IoT Hub skalning](iot-hub-scaling.md). Om du vill veta mer om flera nivåer av tjänster som erbjuds av IoT Hub och hur du bäst passar dina skalbarhets behov kan du titta på [sidan med priser](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Skydda din kommunikation
 

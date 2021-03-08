@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577856"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453044"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Arkivera loggar och rapportera om hantering av Azure AD-berättigande i Azure Monitor
 
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Du kan autentisera och associera PowerShell-sessionen med den prenumerationen med hjälp av ett kommando som `Connect-AzAccount –Subscription $subs[0].id` . Mer information om hur du autentiserar till Azure från PowerShell, inklusive icke-interaktivt, finns i [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-).
+Du kan autentisera och associera PowerShell-sessionen med den prenumerationen med hjälp av ett kommando som `Connect-AzAccount –Subscription $subs[0].id` . Mer information om hur du autentiserar till Azure från PowerShell, inklusive icke-interaktivt, finns i [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 Om du har flera Log Analytics arbets ytor i den prenumerationen returnerar cmdleten [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) listan över arbets ytor. Sedan kan du hitta den som har Azure AD-loggarna. `CustomerId`Fältet som returneras av denna cmdlet är detsamma som värdet för "arbetsyte-ID" som visas i Azure Portal i Översikt över arbets ytan Log Analytics.
  

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/03/2021
-ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049380"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449619"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -123,12 +123,12 @@ Integrationen mellan Data Factory och avdelningens kontroll har endast stöd fö
 | Azure SQL Database \* | Ja | 
 | Azure SQL-hanterad instans \* | Ja | 
 | Azure Synapse-analys \* | Ja | 
-| Azure-Table Storage \* | Ja |
-| SQL Server \* | Ja | 
+| Azure Table Storage | Ja |
 | Amazon S3 | Ja | 
 | Rot \* | Ja | 
 | SAP ECC \* | Ja |
-| SAP-tabell \* | Ja |
+| SAP-tabell | Ja |
+| SQL Server \* | Ja | 
 | Teradata \* | Ja |
 
 *\* Azure avdelningens kontroll stöder för närvarande inte frågor eller lagrade procedurer för härkomst eller genomsökning. Härkomst är begränsat till tabell-och visnings källor.*
@@ -144,6 +144,7 @@ Om du använder följande funktioner för kopierings aktivitet stöds inte härk
 - Kopiera data till Azure Synapse Analytics med PolyBase-eller COPY-instruktion.
 - Komprimerings inställning för binär, avgränsad text, Excel, JSON och XML-filer.
 - Alternativ för käll partition för Azure SQL Database, Azure SQL-hanterad instans, Azure Synapse Analytics, SQL Server och SAP Table.
+- Alternativ för identifiering av källbild för filbaserade butiker.
 - Kopiera data till filbaserad Sink med inställningen Maximalt antal rader per fil.
 - Lägg till ytterligare kolumner under kopieringen.
 

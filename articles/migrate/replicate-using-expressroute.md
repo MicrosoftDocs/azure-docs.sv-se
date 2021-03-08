@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: b52d61c2828ddf5c04ab943d73964d236c9017c1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098850"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448836"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replikera data över ExpressRoute med Azure Migrate: Server-migrering
 
@@ -72,6 +72,7 @@ Skapa och hitta lagrings kontot:
 ![Vyn resurs grupp](./media/replicate-using-expressroute/storage-account-name.png)
 
 > [!Tip]
+>  
 > Om du har fler än ett lagrings konto med prefixet **"LSA"** i resurs gruppen kan du kontrol lera lagrings kontot genom att gå till menyn replikeringsinställningar och mål konfiguration för någon av de replikerade virtuella datorerna i projektet. <br/> 
 > ![Översikt över replikeringsinställningar](./media/replicate-using-expressroute/storage-account.png)
 
@@ -125,8 +126,9 @@ Om du inte valde alternativet att integrera med en privat DNS-zon när den priva
 
     ![createprivatedns](./media/replicate-using-expressroute/create-private-dns.png)
 
-    a.  På sidan **privat DNS zoner** väljer du knappen **+ Lägg** till för att börja skapa en ny zon.  
-    b.  Fyll i den information som krävs på sidan **skapa privat DNS-zon** . Ange namnet på den privata DNS-zonen som _privatelink_. blob.Core.Windows.net. c. Fortsätt till fliken **Granska + skapa** för att granska och skapa DNS-zonen.
+    a. På sidan **privat DNS zoner** väljer du knappen **+ Lägg** till för att börja skapa en ny zon.  
+    b. Fyll i den information som krävs på sidan **skapa privat DNS-zon** . Ange namnet på den privata DNS-zonen som _privatelink_. blob.Core.Windows.net.  
+    c. Fortsätt till fliken **Granska + skapa** för att granska och skapa DNS-zonen.   
 
 2. Länka den privata DNS-zonen till det virtuella nätverket.  
 

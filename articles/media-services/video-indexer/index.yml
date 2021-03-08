@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-  ms.translationtype: HT
+  ms.openlocfilehash: 0c568b6c5c6303c5add3e888dee897ccadc07edf
+  ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "77485122"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102449670"
 landingContent:
 - title: Om Azure Media Services Video Indexer
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: Vanliga frågor och svar
       url: faq.md
     - text: Röstanvändare
-      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+      url: https://aka.ms/UserVoiceVI
   - linkListType: whats-new
     links:
     - text: Vad är nytt i Video Indexer?

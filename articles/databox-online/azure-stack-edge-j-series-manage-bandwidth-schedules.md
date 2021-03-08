@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b3ae2986b49cf6854e0d9a6b99aabdfc2dd6b713
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 29ac6976b6248f066f18f0ffcc8e03061ee74f77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436659"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454423"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Använd Azure Portal för att hantera bandbredds scheman på Azure Stack Edge Pro GPU 
 
@@ -44,7 +44,7 @@ Lägg till ett schema genom att utföra följande steg i Azure Portal.
 
    1. Ange **Start dag**, **slut dag**, **Start tid** och **slut tid** för schemat.
    2. Markera alternativet **alla dagar** om schemat ska köras hela dagen.
-   3. **Bandbredds hastighet** är den bandbredd i megabit per sekund (Mbit/s) som används av enheten i åtgärder som involverar molnet (både uppladdning och nedladdning). Ange ett tal mellan 20 och 2 147 483 647 för det här fältet.
+   3. **Bandbredds hastighet** är den bandbredd i megabit per sekund (Mbit/s) som används av enheten i åtgärder som involverar molnet (både uppladdning och nedladdning). Ange ett tal mellan 64 och 2 147 483 647 för det här fältet.
    4. Välj **obegränsad bandbredd** om du inte vill begränsa överföringen och hämtningen av datum.
    5. Välj **Lägg till**.
 

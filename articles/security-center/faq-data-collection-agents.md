@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: dc277d71f8f39b342095d0ac14b592eb866984d5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 4ef01045d1ca16d0101cdd9ccfcd118231cd28de
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100533"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456121"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Vanliga frågor och svar om data insamling, agenter och arbets ytor
 
@@ -111,7 +111,7 @@ Så här väljer du en befintlig Log Analytics arbets yta:
 
 1. Från Security Center menyn väljer du **pris & inställningar**.
 1. Välj relevant prenumeration.
-1. Öppna sidan för **Automatisk etablering** , s
+1. Öppna sidan **Automatisk etablering** .
 1. För Log Analytics agent väljer du **Redigera konfiguration**. 
 
     :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="Konfigurationen för den Log Analytics agent som ska användas när automatisk distribution används" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::

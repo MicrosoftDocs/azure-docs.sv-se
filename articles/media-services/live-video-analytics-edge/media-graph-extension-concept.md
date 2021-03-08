@@ -3,12 +3,12 @@ title: Vad är media Graph-tillägget – Azure
 description: Med live video analys på IoT Edge kan du utöka medie diagrammets bearbetnings funktioner via en nod i diagram tillägget.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401125"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455847"
 ---
 # <a name="media-graph-extension"></a>Mediegraftillägg
 
@@ -19,11 +19,11 @@ Live video analys har stöd för två typer av medie diagrams tilläggs processo
 * [Processor för HTTP-tillägg](media-graph-concept.md#http-extension-processor)
 * [gRPC förlängnings processor](media-graph-concept.md#grpc-extension-processor)
 
-Graph-tillägget förväntar sig ett analys tilläggs-plugin-program för att returnera resultaten i JSON-format. Vi rekommenderar att resultaten följer [schemat objekt modell för data härlednings metadata](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update).
+Graph-tillägget förväntar sig ett analys tilläggs-plugin-program för att returnera resultaten i JSON-format. Vi rekommenderar att resultaten följer [schemat objekt modell för data härlednings metadata](/azure/media-services/live-video-analytics-edge/inference-metadata-schema).
 
 ## <a name="http-extension-processor"></a>Processor för HTTP-tillägg
 
-HTTP-tilläggsbegäranden möjliggör utöknings bara scenarier med [http-protokollet](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update), där prestanda och/eller optimal resursutnyttjande inte är det viktigaste. Du kan exponera din egen AI till ett medie diagram via en HTTP-REST-slutpunkt. 
+HTTP-tilläggsbegäranden möjliggör utöknings bara scenarier med [http-protokollet](/azure/media-services/live-video-analytics-edge/http-extension-protocol), där prestanda och/eller optimal resursutnyttjande inte är det viktigaste. Du kan exponera din egen AI till ett medie diagram via en HTTP-REST-slutpunkt. 
 
 Använd noden processor för HTTP-tillägg när:
 
@@ -33,7 +33,7 @@ Använd noden processor för HTTP-tillägg när:
 
 ## <a name="grpc-extension-processor"></a>gRPC förlängnings processor
 
-gRPC Extensions-processorn möjliggör utöknings bara scenarier med gRPC-baserat, högpresterande [strukturerat protokoll](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update). Det är idealiskt för scenarier där prestanda och/eller optimal resursutnyttjande är en prioritet. Med gRPC Extension processor kan du få fullständig nytta av de strukturerade data definitionerna. gRPC erbjuder hög innehålls överförings prestanda med:
+gRPC Extensions-processorn möjliggör utöknings bara scenarier med gRPC-baserat, högpresterande [strukturerat protokoll](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol). Det är idealiskt för scenarier där prestanda och/eller optimal resursutnyttjande är en prioritet. Med gRPC Extension processor kan du få fullständig nytta av de strukturerade data definitionerna. gRPC erbjuder hög innehålls överförings prestanda med:
 
 * [i rutan delat minne](https://en.wikipedia.org/wiki/Shared_memory) eller 
 * bädda in innehållet direkt i bröd texten i gRPC-meddelanden. 
@@ -57,7 +57,7 @@ Diagrammet nedan visar data flödet på hög nivå:
 
 ## <a name="samples"></a>Exempel
 
-Du kan komma igång med en av våra snabb starter som illustrerar real tids analys med en fördefinierad tilläggs tjänst med låg bilds taxa med [http-tilläggs processor](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) eller med höga bild hastigheter med [gRPC förlängnings processor](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp)
+Du kan komma igång med en av våra snabb starter som illustrerar real tids analys med en fördefinierad tilläggs tjänst med låg bilds taxa med [http-tilläggs processor](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp) eller med höga bild hastigheter med [gRPC förlängnings processor](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp)
 
 För avancerade användare kan du kolla in några av våra [Jupyter Notebook](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) -exempel för live video analys. De här antecknings böckerna innehåller stegvisa instruktioner för **Media Graph-tilläggen** på:
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047095"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454355"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Konfigurera katastrof återställning i skala för virtuella VMware-datorer/fysiska servrar
 
@@ -85,7 +85,7 @@ Vi vill se till att tillgängliga kvoter i mål prenumerationen räcker för att
 
 **Uppgift** | **Information** | **Åtgärd**
 --- | --- | ---
-**Kontrol lera kärnor** | Om kärnor i den tillgängliga kvoten inte är lika med eller överskrider det totala antalet mål vid tidpunkten för redundansväxlingen, kommer redundans att Miss Don. | För virtuella VMware-datorer kontrollerar du att det finns tillräckligt många kärnor i mål prenumerationen för att uppfylla distributions Planerarens kärn rekommendation.<br/><br/> För fysiska servrar kontrollerar du att Azure-kärnor uppfyller dina manuella uppskattningar.<br/><br/> Om du vill kontrol lera kvoterna klickar du på **användning + kvoter**i Azure Portal >- **prenumerationen**.<br/><br/> [Läs mer](../azure-portal/supportability/resource-manager-core-quotas-request.md) om att öka kvoterna.
+**Kontrol lera kärnor** | Om kärnor i den tillgängliga kvoten inte är lika med eller överskrider det totala antalet mål vid tidpunkten för redundansväxlingen, kommer redundans att Miss Don. | För virtuella VMware-datorer kontrollerar du att det finns tillräckligt många kärnor i mål prenumerationen för att uppfylla distributions Planerarens kärn rekommendation.<br/><br/> För fysiska servrar kontrollerar du att Azure-kärnor uppfyller dina manuella uppskattningar.<br/><br/> Om du vill kontrol lera kvoterna klickar du på **användning + kvoter** i Azure Portal >- **prenumerationen**.<br/><br/> [Läs mer](../azure-portal/supportability/resource-manager-core-quotas-request.md) om att öka kvoterna.
 **Kontrol lera begränsningar för redundans** | Antalet redundanser får inte överskrider gränsen för Site Recovery redundans. |  Om redundans överskrider gränserna kan du lägga till prenumerationer och redundansväxla till flera prenumerationer eller öka kvoten för en prenumeration. 
 
 
@@ -214,7 +214,7 @@ Vi rekommenderar följande för att köra en storskalig redundans:
     - [Läs mer](recovery-plan-overview.md) om återställnings planer.
 2. Lägg till Azure Automation Runbook-skript i återställnings planer för att automatisera eventuella manuella uppgifter i Azure. Vanliga uppgifter är konfiguration av belastningsutjämnare, uppdatering av DNS osv. [Läs mer](site-recovery-runbook-automation.md)
 2. Förbered Windows-datorer så att de följer Azure-miljön före redundansväxlingen. [Växlings gränserna](#plan-azure-subscriptions-and-quotas) är högre för datorer som uppfyller kraven. [Läs mer](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) om Runbooks.
-4.  Utlös redundans med PowerShell [-cmdleten Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) tillsammans med en återställnings plan.
+4.  Utlös redundans med PowerShell [-cmdleten Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob) tillsammans med en återställnings plan.
 
 
 

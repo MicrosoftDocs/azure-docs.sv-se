@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 778424cbb81f8fe51a57dd41d94aa9015ffad94e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d94625e3eb121e556b28038cf59626be1332966
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381519"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455813"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Utgående bindningar för Azure Queue Storage för Azure Functions
 
@@ -480,7 +480,7 @@ Det finns två alternativ för att placera ett Queue-meddelande från en funktio
 
 - **RETUR värde**: ange `name` egenskapen i *function.jspå* till `$return` . Med den här konfigurationen sparas funktionens retur värde som ett kö lagrings meddelande.
 
-- **Tvingande**: Skicka ett värde till [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) -metoden för den parameter som deklarerats som [Utdatatyp.](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) Värdet som skickas till `set` behålls som ett kö lagrings meddelande.
+- **Tvingande**: Skicka ett värde till [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) -metoden för den parameter som deklarerats som [Utdatatyp.](/python/api/azure-functions/azure.functions.out) Värdet som skickas till `set` behålls som ett kö lagrings meddelande.
 
 ---
 

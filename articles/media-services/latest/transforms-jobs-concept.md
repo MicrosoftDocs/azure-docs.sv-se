@@ -45,7 +45,7 @@ Använd **transformeringar** för att konfigurera vanliga aktiviteter för kodni
 
 ### <a name="viewing-schema"></a>Visa schema
 
-I Media Services v3 är för inställningar starkt skrivna entiteter i själva API: et. Du hittar definitionen "schema" för dessa objekt i [Open API-specifikationen (eller Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Du kan också Visa förinställda definitioner (som **StandardEncoderPreset**) i [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)eller någon annan Media Services v3 SDK referens dokumentation.
+I Media Services v3 är för inställningar starkt skrivna entiteter i själva API: et. Du hittar definitionen "schema" för dessa objekt i [Open API-specifikationen (eller Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Du kan också Visa förinställda definitioner (som **StandardEncoderPreset**) i [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset)eller någon annan Media Services v3 SDK referens dokumentation.
 
 ### <a name="creating-transforms"></a>Skapar transformeringar
 

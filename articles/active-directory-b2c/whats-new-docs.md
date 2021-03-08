@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory Business-to-kund (B2C)
 description: Ny och uppdaterad dokumentation för Azure Active Directory B2C (Business-to-Customer).
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,28 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: c4561780a20bb2dfdef39269a49ebf8cb2a29fff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593018"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454625"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Vad är nytt
 
 Välkommen till nyheter i Azure Active Directory B2C-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med B2C-tjänsten finns i [Nyheter i Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Skydda telefonbaserad Multi-Factor Authentication (MFA)](phone-based-mfa.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Azure Active Directory B2C-kodexempel](code-samples.md)
+- [Spåra användar beteende i Azure AD B2C med Application Insights](analytics-with-application-insights.md)
+- [Konfigurera sessionsbeteende i Azure Active Directory B2C](session-behavior.md)
 
 ## <a name="january-2021"></a>Januari 2021
 

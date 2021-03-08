@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8c2b97d1848450ecda2e83d5ba12469d7c61d8f9
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f6e932cb6a6086e4cea6f474f296ca086e48c75e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952746"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448467"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurera inloggning för Azure Active Directory för flera innehavare med anpassade principer i Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Om du vill aktivera inloggning för användare med ett Azure AD-konto i Azure Ac
 1. Kontrol lera att du använder den katalog som innehåller din organisations Azure AD-klient (till exempel contoso.com). Välj **filtret katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller din klient.
 1. Välj **alla tjänster** i det övre vänstra hörnet av Azure Portal och Sök sedan efter och välj **Appregistreringar**.
 1. Välj **ny registrering**.
-1. Ange ett **namn** för ditt program. Ett exempel är `Azure AD B2C App`.
+1. Ange ett **namn** för ditt program. Till exempel `Azure AD B2C App`.
 1. Välj **konton i valfri organisations katalog (alla Azure AD-kataloger – flera innehavare)** för det här programmet.
 1. För **omdirigerings-URI: n**, godkänn värdet för **webb** och ange följande URL i gemener, där `your-B2C-tenant-name` ersätts med namnet på din Azure AD B2C-klient.
 
@@ -55,7 +55,7 @@ Om du vill aktivera inloggning för användare med ett Azure AD-konto i Azure Ac
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Ett exempel är `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
+    Till exempel `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
 
 1. Välj **Register** (Registrera). Registrera **program-ID: t (Client)** för användning i ett senare steg.
 1. Välj **certifikat & hemligheter** och välj sedan **ny klient hemlighet**.
@@ -83,7 +83,7 @@ Du måste lagra den program nyckel som du skapade i Azure AD B2C klient organisa
 1. Under **principer** väljer du **Identity Experience Framework**.
 1. Välj **princip nycklar** och välj sedan **Lägg till**.
 1. För **alternativ** väljer du `Manual` .
-1. Ange ett **namn** för princip nyckeln. Ett exempel är `AADAppSecret`.  Prefixet `B2C_1A_` läggs automatiskt till namnet på nyckeln när det skapas, så referensen i XML i följande avsnitt är att *B2C_1A_AADAppSecret*.
+1. Ange ett **namn** för princip nyckeln. Till exempel `AADAppSecret`.  Prefixet `B2C_1A_` läggs automatiskt till namnet på nyckeln när det skapas, så referensen i XML i följande avsnitt är att *B2C_1A_AADAppSecret*.
 1. I **hemlighet** anger du din klient hemlighet som du registrerade tidigare.
 1. För **nyckel användning** väljer du `Signature` .
 1. Välj **Skapa**.
@@ -149,7 +149,7 @@ Du kan definiera Azure AD som en anspråks leverantör genom att lägga till Azu
 1. Under elementet **ClaimsProvider** uppdaterar du värdet för **domän** till ett unikt värde som kan användas för att skilja den från andra identitets leverantörer.
 1. Uppdatera värdet för **DisplayName** under **TechnicalProfile** -elementet, till exempel `Contoso Employee` . Det här värdet visas på inloggnings knappen på inloggnings sidan.
 1. Ange **client_id** till program-ID: t för Azure AD-programmet för flera klient organisationer som du registrerade tidigare.
-1. Under **CryptographicKeys** uppdaterar du värdet för **StorageReferenceId** till namnet på den princip nyckel som skapades tidigare. Ett exempel är `B2C_1A_AADAppSecret`.
+1. Under **CryptographicKeys** uppdaterar du värdet för **StorageReferenceId** till namnet på den princip nyckel som skapades tidigare. Till exempel `B2C_1A_AADAppSecret`.
 
 ### <a name="restrict-access"></a>Begränsa åtkomst
 
@@ -186,9 +186,16 @@ Utför de här stegen för varje Azure AD-klient som ska användas för att logg
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
+
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **gemensamt AAD** för att logga in med Azure AD-konto.
 
 Testa inloggnings funktionen för flera innehavare genom att utföra de senaste två stegen med autentiseringsuppgifterna för en användare som finns i en annan Azure AD-klient. Kopiera **Kör nu-slutpunkten** och öppna den i ett privat webbläsarfönster, till exempel Incognito läge i Google Chrome eller ett InPrivate-fönster i Microsoft Edge. Genom att öppna ett privat webbläsarfönster kan du testa hela användar resan genom att inte använda några cachelagrade autentiseringsuppgifter för Azure AD.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ## <a name="next-steps"></a>Nästa steg
 

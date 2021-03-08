@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 1186715003abef387343bb2b6cb71d56490c519d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667835"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455830"
 ---
 # <a name="virtual-network-service-tags"></a>Tjänst taggar för virtuellt nätverk
 <a name="network-service-tags"></a>
@@ -131,7 +131,7 @@ Du kan hämta aktuell service tag-information och intervall information som ska 
 Du kan hämta den aktuella listan över service märken program mässigt tillsammans med information om IP-adressintervall:
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2)
+- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
@@ -153,7 +153,7 @@ IP-adressintervallet i de här filerna finns i CIDR-format.
 
 ### <a name="tips"></a>Tips 
 - Du kan identifiera uppdateringar från en publikation till nästa genom att notera ökade *changeNumber* -värden i JSON-filen. Varje underavsnitt (till exempel **lagring. väst**) har en egen *changeNumber* som ökar när ändringar sker. Den översta nivån i filens *changeNumber* ökar när något av underavsnitten ändras.
-- Exempel på hur du kan parsa service tag-informationen (till exempel hämta alla adress intervall för lagring i väster) finns i dokumentationen för [service tag Discovery API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) .
+- Exempel på hur du kan parsa service tag-informationen (till exempel hämta alla adress intervall för lagring i väster) finns i dokumentationen för [service tag Discovery API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag) .
 - När nya IP-adresser läggs till i tjänst taggar, kommer de inte att användas i Azure i minst en vecka. Det ger dig tid att uppdatera alla system som kan behöva spåra IP-adresserna som är associerade med tjänst taggar.
 
 ## <a name="next-steps"></a>Nästa steg
