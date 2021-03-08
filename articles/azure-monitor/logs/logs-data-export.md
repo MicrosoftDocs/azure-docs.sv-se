@@ -1,17 +1,18 @@
 ---
 title: Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 description: Med Log Analytics data export kan du kontinuerligt exportera data för markerade tabeller från din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in.
+ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: f0bbe02576323342376ad155878d575c6403cf70
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048819"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449500"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -75,7 +76,7 @@ Log Analytics data export kan skriva till att lägga till blobar till oförände
 Data skickas till händelsehubben i nära real tid när den når Azure Monitor. En Event Hub skapas för varje datatyp som du exporterar med namnet *am –* följt av namnet på tabellen. Tabellen *SecurityEvent* skulle till exempel skickas till en Event Hub med namnet ' *am-SecurityEvent*'. Om du vill att exporterade data ska uppnå en viss händelsehubben, eller om du har en tabell med ett namn som överskrider tecken gränsen på 47, kan du ange ett eget namn på händelsehubben och exportera alla data för definierade tabeller till den.
 
 > [!IMPORTANT]
-> [Antalet Event Hub som stöds per namnrymd är 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Om du exporterar fler än 10 tabeller anger du ett eget namn på händelsehubben för att exportera alla tabeller till den händelsehubben. 
+> [Antalet Event Hub som stöds per namnrymd är 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Om du exporterar fler än 10 tabeller anger du ett eget namn på händelsehubben för att exportera alla tabeller till den händelsehubben.
 
 Överväganden:
 1. Den grundläggande Event Hub-SKU: n stöder lägre storleks [gräns](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) för händelser och vissa loggar på din arbets yta kan överstiga den och tas bort. Vi rekommenderar att du använder "standard" eller "dedikerad" händelsehubben som export mål.
@@ -113,10 +114,14 @@ Om du har konfigurerat ditt lagrings konto för att tillåta åtkomst från vald
 
 [![Lagrings kontots brand väggar och virtuella nätverk](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
-
 ### <a name="create-or-update-data-export-rule"></a>Skapa eller uppdatera data export regel
-En data export regel definierar data som ska exporteras för en uppsättning tabeller till ett enda mål. Du kan skapa en enskild regel för varje mål.
+En data export regel definierar de tabeller för vilka data exporteras och målet. Du kan skapa en enskild regel för varje mål för närvarande.
 
+Om du behöver en lista med tabeller i din workapce för att exportera regler, kör du den här frågan i din arbets yta.
+
+```kusto
+find where TimeGenerated > ago(24h) | distinct Type
+```
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
@@ -127,12 +132,6 @@ Ej tillämpligt
 Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Använd följande CLI-kommando för att visa tabeller i din arbets yta. Den kan hjälpa dig att kopiera de tabeller som du vill ha och ta med i data export regeln.
-
-```azurecli
-az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
-```
 
 Använd följande kommando för att skapa en data export regel till ett lagrings konto med hjälp av CLI.
 

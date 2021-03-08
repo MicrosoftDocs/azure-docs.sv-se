@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108679"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448652"
 ---
 # <a name="localization-string-ids"></a>Sträng-ID för lokalisering
 
@@ -170,7 +170,7 @@ Följande är ID: n för en innehålls definition med ID för `api.localaccounts
 | **ver_incorrect_format** | Felaktigt format. |
 | **ver_but_edit** | Ändra e-post |
 | **ver_but_verify** | Verifiera koden |
-| **alert_no** | Nej |
+| **alert_no** | Inga |
 | **ver_info_msg** | Verifierings koden har skickats till din inkorg. Kopiera den till inmatade rutan nedan. |
 | **dagen** | Dag |
 | **ver_fail_throttled** | Det finns för många begär Anden att verifiera den här e-postadressen. Vänta en stund och försök sedan igen. |
@@ -357,7 +357,7 @@ Följande är ID: n för en [verifierings visnings kontroll](display-control-ver
 | ID | Standardvärde |
 | -- | ------------- |
 |intro_msg| Verifiering är nödvändig. Klicka på knappen Skicka.|
-|success_send_code_msg | Verifierings koden har skickats till din inkorg. Kopiera den till inmatade rutan nedan.|
+|success_send_code_msg | Verifierings koden har skickats. Kopiera den till inmatade rutan nedan.|
 |failure_send_code_msg | Vi har problem med att verifiera din e-postadress. Ange en giltig e-postadress och försök igen.|
 |success_verify_code_msg | E-postadress verifierad. Nu kan du fortsätta.|
 |failure_verify_code_msg | Vi har problem med att verifiera din e-postadress. Försök igen.|

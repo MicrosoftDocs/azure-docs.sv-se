@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: baf02c6da2b3c54b5a459ec6a5dbcb5dd939f2af
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 39896d88aeab4c592c74ded2d6edddfb46d2d203
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952604"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448293"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett ID.me-konto med hjälp av Azure Active Directory B2C
 
@@ -59,7 +59,7 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Manual` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `IdMeSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `IdMeSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 8. I **hemlighet** anger du din klient hemlighet som du tidigare har spelat in.
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
@@ -163,7 +163,13 @@ Sedan behöver du en anspråks omvandling för att skapa ett displayName-ansprå
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **ID.me** för att logga in med ID.me-kontot.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end

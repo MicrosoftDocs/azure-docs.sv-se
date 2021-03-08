@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/08/2019
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388280"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448344"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med OpenID Connect med Azure Active Directory B2C
 
@@ -27,7 +27,8 @@ ms.locfileid: "85388280"
 1. Logga in på [Azure Portal](https://portal.azure.com/) som global administratör för Azure AD B2C-klientorganisationen.
 1. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C klient genom att klicka på filtret **katalog + prenumeration** på den översta menyn och välja den katalog som innehåller din klient.
 1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
-1. Välj **identitets leverantörer**och välj sedan **ny OpenID Connect-Provider**.
+1. Välj **identitets leverantörer** och välj sedan **ny OpenID Connect-Provider**.
+1. Ange ett **namn**. Ange till exempel *contoso*.
 
 ## <a name="configure-the-identity-provider"></a>Konfigurera identitets leverantören
 
@@ -69,5 +70,18 @@ När den anpassade identitets leverantören skickar tillbaka en ID-token till Az
 * **Användar-ID**: Ange anspråket som tillhandahåller den *unika identifieraren* för den inloggade användaren.
 * **Visnings namn**: Ange det anspråk som innehåller *visnings namnet* eller det *fullständiga namnet* för användaren.
 * **Tilldelat namn**: Ange det anspråk som innehåller användarens *förnamn* .
-* Efter **Namn: Ange**det anspråk som innehåller användarens *efter namn* .
+* Efter **Namn: Ange** det anspråk som innehåller användarens *efter namn* .
 * **E-post**: Ange det anspråk som tillhandahåller användarens *e-postadress* .
+
+## <a name="add-the-identity-provider-to-a-user-flow"></a>Lägga till identitets leverantören i ett användar flöde 
+
+1. Välj **användar flöden** i Azure AD B2C klient.
+1. Klicka på det användar flöde som du vill lägga till identitets leverantören för. 
+1. Under **providern för sociala identiteter** väljer du den identitetsprovider som du har lagt till. Till exempel *contoso*.
+1. Välj **Spara**.
+1. Om du vill testa principen väljer du **Kör användar flöde**.
+1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör användar flöde** .
+1. På sidan registrering eller inloggning väljer du den identitetsprovider som du vill logga in. Till exempel *contoso*.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 22548703b456eb28a30c2d210d21f810d7b3ae6e
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952706"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448378"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett GitHub-konto med hjälp av Azure Active Directory B2C
 
@@ -68,7 +68,10 @@ Om du vill aktivera inloggning med ett GitHub-konto i Azure Active Directory B2C
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
 1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
+1. Välj knappen **Kör användar flöde** .
+1. På sidan registrering eller inloggning väljer du **GitHub** för att logga in med GitHub-kontot.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 
@@ -84,7 +87,7 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 1. På sidan Översikt väljer du **ID för identitets miljö**.
 1. Välj **princip nycklar** och välj sedan **Lägg till**.
 1. För **alternativ** väljer du `Manual` .
-1. Ange ett **namn** för princip nyckeln. Ett exempel är `GitHubSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+1. Ange ett **namn** för princip nyckeln. Till exempel `GitHubSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 1. I **hemlighet** anger du din klient hemlighet som du tidigare har spelat in.
 1. För **nyckel användning** väljer du `Signature` .
 1. Klicka på **Skapa**.
@@ -199,6 +202,13 @@ GitHub tekniska profil kräver att **CreateIssuerUserId** -postomvandlingar läg
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
+
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **GitHub** för att logga in med GitHub-kontot.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end

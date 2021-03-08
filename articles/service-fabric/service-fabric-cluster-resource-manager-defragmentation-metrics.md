@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dee9a845df305b06153d99c2bafe6d74524a139
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75563368"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449211"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentering av mått och belastning i Service Fabric
 Den Service Fabric kluster resurs hanterarens standard strategi för att hantera inläsnings mått i klustret är att distribuera belastningen. Att se till att noderna används jämnt och förhindrar frekventa och kalla fläckar som leder till både konkurrens och slöseri med resurser. Att distribuera arbets belastningar i klustret är också det säkraste när det gäller kvarvarande fel eftersom det garanterar att ett fel inte tar ut en stor del av en viss arbets belastning. 
@@ -89,7 +89,7 @@ via ClusterConfig.jspå för fristående distributioner eller Template.jspå fö
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Kluster resurs hanteraren har olika alternativ för att beskriva klustret. Läs mer om dem i den här artikeln om hur du [beskriver ett Service Fabric-kluster](service-fabric-cluster-resource-manager-cluster-description.md)
+- Kluster resurs hanteraren har många alternativ för att beskriva klustret. Läs mer om dem i den här artikeln om hur du [beskriver ett Service Fabric-kluster](service-fabric-cluster-resource-manager-cluster-description.md)
 - Mått är hur Service Fabric Cluster Resource Manager hanterar förbrukning och kapacitet i klustret. Mer information om mått och hur du konfigurerar dem finns i [den här artikeln](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

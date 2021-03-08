@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ce9c00cb58253e2cca9a7d60c4cce9b77709688
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953860"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448276"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett LinkedIn-konto med hjälp av Azure Active Directory B2C
 
@@ -69,7 +69,10 @@ Om du vill aktivera inloggning för användare med ett LinkedIn-konto i Azure Ac
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
 1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
+1. Välj knappen **Kör användar flöde** .
+1. Från registrerings-eller inloggnings sidan väljer du **LinkedIn** för att logga in med LinkedIn-konto.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 
@@ -85,7 +88,7 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Manual` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `LinkedInSecret`. Prefixet *B2C_1A_* läggs automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `LinkedInSecret`. Prefixet *B2C_1A_* läggs automatiskt till namnet på din nyckel.
 8. I **hemlighet** anger du den klient hemlighet som du tidigare har registrerat.
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
@@ -96,8 +99,8 @@ Om du vill att användarna ska kunna logga in med ett LinkedIn-konto måste du d
 
 Definiera ett LinkedIn-konto som en anspråks leverantör genom att lägga till det i **ClaimsProviders** -elementet i principens tilläggs fil.
 
-1. Öppna filen * SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ i redigeraren. Den här filen finns i det [Start paket för anpassad princip][starter-pack] som du laddade ned som en del av en av kraven.
-1. Hitta elementet _ *ClaimsProviders**. Om den inte finns lägger du till den under rot elementet.
+1. Öppna filen *SocialAndLocalAccounts/* * TrustFrameworkExtensions.xml** * i redigeraren. Den här filen finns i det [Start paket för anpassad princip][starter-pack] som du laddade ned som en del av en av kraven.
+1. Hitta **ClaimsProviders** -elementet. Om den inte finns lägger du till den under rot elementet.
 1. Lägg till en ny **ClaimsProvider** enligt följande:
 
     ```xml
@@ -213,7 +216,14 @@ Lägg till elementet **BuildingBlocks** längst upp i *TrustFrameworkExtensions.
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
+
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. Från registrerings-eller inloggnings sidan väljer du **LinkedIn** för att logga in med LinkedIn-konto.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ## <a name="migration-from-v10-to-v20"></a>Migrering från v 1.0 till v 2.0
 

@@ -6,18 +6,20 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 9ad2566188256dd23b0f479c2576636750e33b02
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23fa3e93565066ce4b897bffe63164486efc179e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715113"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449891"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure Database for MySQL enskild server
 
 Azure Database for MySQL en enda server slutförde rot certifikats ändringen den **15 februari 2021 (02/15/2021)** som en del av standard underhåll och säkerhets metoder. Den här artikeln innehåller mer information om ändringarna, de resurser som påverkas och de steg som krävs för att säkerställa att programmet upprätthåller anslutningen till databas servern.
 
 > [!NOTE]
+> Den här artikeln gäller endast för [Azure Database for MySQL-enskild server](single-server-overview.md) . För [Azure Database for MySQL-flexibel Server](flexible-server/overview.md)är det certifikat som krävs för att kommunicera via SSL [DigiCert global rot certifikat utfärdare](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)
+> 
 > Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 >
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: da76dab360e0e17afc9e2024358d4a935c6b7336
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 55c1b6f6c6690f0c8f00a8a2469834781f35fb3c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209823"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449806"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Självstudie: skapa ett Azure Red Hat OpenShift 4-kluster
 
@@ -59,6 +59,12 @@ Du behöver också tillräckliga Azure Active Directory-behörigheter för att k
 
     ```azurecli-interactive
     az provider register -n Microsoft.Storage --wait
+    ```
+    
+1. Registrera `Microsoft.Authorization` resurs leverantören:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Authorization --wait
     ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Hämta en Red Hat pull-hemlighet (valfritt)

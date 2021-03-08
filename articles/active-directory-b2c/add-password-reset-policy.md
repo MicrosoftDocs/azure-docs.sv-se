@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171662"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447936"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Konfigurera ett flöde för återställning av lösen ord i Azure Active Directory B2C
 
@@ -203,6 +203,24 @@ I din användar resa kan du representera det glömt lösen ordet under resan som
     ```xml
     <ClaimsExchange Id="ForgotPasswordExchange" TechnicalProfileReferenceId="ForgotPassword" />
     ```
+    
+1. Lägg till följande Orchestration-steg mellan det aktuella steget och nästa steg. Det nya Orchestration-steget som du lägger till kontrollerar om det `isForgotPassword` finns ett anspråk. Om anspråket finns anropas [under resan för lösen ords återställning](#add-the-password-reset-sub-journey). 
+
+    ```xml
+    <OrchestrationStep Order="3" Type="InvokeSubJourney">
+      <Preconditions>
+        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+          <Value>isForgotPassword</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <JourneyList>
+        <Candidate SubJourneyReferenceId="PasswordReset" />
+      </JourneyList>
+    </OrchestrationStep>
+    ```
+    
+1. När du har lagt till det nya Orchestration-steget, numrera om stegen sekventiellt utan att hoppa över heltal från 1 till N.
 
 ### <a name="set-the-user-journey-to-be-executed"></a>Ange att användar resan ska köras
 
@@ -262,7 +280,7 @@ I följande diagram:
 1. Användaren väljer länken **glömt ditt lösen ord?** . Azure AD B2C returnerar fel koden för AADB2C90118 till programmet.
 1. Programmet hanterar felkoden och initierar en ny begäran om auktorisering. Auktoriseringsbegäran anger namnet på principen för lösen ords återställning, t. ex. **B2C_1_pwd_reset**.
 
-![Flöde för lösen ords återställning](./media/add-password-reset-policy/password-reset-flow-legacy.png)
+![Användar flöde för återställning av äldre lösen ord](./media/add-password-reset-policy/password-reset-flow-legacy.png)
 
 Om du vill se ett exempel kan du titta på ett [enkelt ASP.net-exempel](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)som visar hur användar flöden länkas.
 

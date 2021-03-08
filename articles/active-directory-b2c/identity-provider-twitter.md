@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050455"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448157"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Twitter-konto med hjälp av Azure Active Directory B2C
 
@@ -45,8 +45,8 @@ Om du vill aktivera inloggning för användare med ett Twitter-konto i Azure AD 
 1. Under **autentiseringsinställningar** väljer du **Redigera**
     1. Markera kryss rutan **Aktivera 3-ledade OAuth** .
     1. Kryss rutan Markera **begär e-postadress från användare** .
-    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Ett exempel är `b2c_1a_signup_signin_twitter`. Använd gemener när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
-    1. För **webbplats-URL: en** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Ett exempel är `https://contosob2c.b2clogin.com`.
+    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Till exempel `b2c_1a_signup_signin_twitter`. Använd gemener när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
+    1. För **webbplats-URL: en** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Till exempel `https://contosob2c.b2clogin.com`.
     1. Ange en URL för **tjänst villkoren**, till exempel `http://www.contoso.com/tos` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla villkor för ditt program.
     1. Ange en URL för **Sekretess policyn**, till exempel `http://www.contoso.com/privacy` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla sekretess information för ditt program.
     1. Välj **Spara**.
@@ -72,7 +72,10 @@ Om du vill aktivera inloggning för användare med ett Twitter-konto i Azure AD 
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
 1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
+1. Välj knappen **Kör användar flöde** .
+1. På sidan registrering eller inloggning väljer du **Twitter** för att logga in med Twitter-konto.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 
@@ -88,7 +91,7 @@ Du måste lagra den hemliga nyckeln som du tidigare har registrerat i Azure AD B
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Manual` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `TwitterSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `TwitterSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 8. I **hemlighet** anger du din klient hemlighet som du tidigare har spelat in.
 9. För **nyckel användning** väljer du `Encryption` .
 10. Klicka på **Skapa**.
@@ -167,7 +170,13 @@ Du kan definiera ett Twitter-konto som en anspråks leverantör genom att lägga
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **Twitter** för att logga in med Twitter-konto.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end

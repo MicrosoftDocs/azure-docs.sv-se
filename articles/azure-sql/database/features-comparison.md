@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691917"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447494"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Jämförelse av funktioner: Azure SQL Database och Azure SQL-hanterad instans
 
@@ -30,7 +30,11 @@ Azure SQL Database och SQL-hanterad instans delar en gemensam kodbas med den sen
 - Säkerhetsfunktioner – [program roller](/sql/relational-databases/security/authentication-access/application-roles), [dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking) ([se komma igång-guide](dynamic-data-masking-overview.md)), [säkerhet på radnivå](/sql/relational-databases/security/row-level-security)och hot identifiering – se komma igång guider för [SQL Database](threat-detection-configure.md) och [SQL-hanterad instans](../managed-instance/threat-detection-configure.md).
 - Funktioner för flera modeller – [diagram bearbetning](/sql/relational-databases/graphs/sql-graph-overview), [JSON-data](/sql/relational-databases/json/json-data-sql-server) ([se komma igång-guide](json-features.md)), [OpenXML](/sql/t-sql/functions/openxml-transact-sql), [spatialdata](/sql/relational-databases/spatial/spatial-data-sql-server), [openjson](/sql/t-sql/functions/openjson-transact-sql)och [XML-index](/sql/t-sql/statements/create-xml-index-transact-sql).
 
-Azure hanterar dina databaser och garanterar deras hög tillgänglighet. Vissa funktioner som kan påverka hög tillgänglighet eller som inte kan användas i PaaS World har begränsade funktioner i SQL Database-och SQL-hanterade instanser. Dessa funktioner beskrivs i tabellerna nedan. Om du behöver mer information om skillnaderna kan du hitta dem på de separata sidorna för [Azure SQL Database](../managed-instance/transact-sql-tsql-differences-sql-server.md) eller [Azure SQL-hanterad instans](../managed-instance/transact-sql-tsql-differences-sql-server.md).
+Azure hanterar dina databaser och garanterar deras hög tillgänglighet. Vissa funktioner som kan påverka hög tillgänglighet eller som inte kan användas i PaaS World har begränsade funktioner i SQL Database-och SQL-hanterade instanser. Dessa funktioner beskrivs i tabellerna nedan.
+
+Om du behöver mer information om skillnaderna kan du hitta dem på separata sidor:
+- [Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
+- [Hanterad Azure SQL-instans](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>Funktioner i SQL Database-och SQL-hanterad instans
 

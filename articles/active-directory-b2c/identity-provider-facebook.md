@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a43551adf8dbe1a03ac7f7b22d58d63aa8c2c503
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952682"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448429"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Facebook-konto med hjälp av Azure Active Directory B2C
 
@@ -79,7 +79,11 @@ Om du vill aktivera inloggning för användare med ett Facebook-konto i Azure Ac
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
 1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
+1. Välj knappen **Kör användar flöde** .
+1. På sidan registrering eller inloggning väljer du **Facebook** för att logga in med Facebook-kontot.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
+
 
 ::: zone-end
 
@@ -95,7 +99,7 @@ Du måste lagra appens hemlighet som du tidigare har spelat in i Azure AD B2C-kl
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Manual` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `FacebookSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `FacebookSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 8. I **hemlighet** anger du appens hemlighet som du tidigare har spelat in.
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
@@ -118,7 +122,10 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 1. Ladda upp *TrustFrameworkExtensions.xml* -filen till din klient organisation.
 1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.
 1. För **Välj program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Välj **Kör nu** och välj Facebook för att logga in med Facebook och testa den anpassade principen.
+1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **Facebook** för att logga in med Facebook-kontot.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 

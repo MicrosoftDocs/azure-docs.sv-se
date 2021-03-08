@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016770"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449636"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Övervaka, skapa och hantera SFTP-filer med hjälp av SSH och Azure Logic Apps
 
@@ -51,12 +51,12 @@ Mer skillnader mellan SFTP-SSH-anslutningsprogrammet och SFTP-anslutningen finns
 
   Segment storleken är associerad med en anslutning, vilket innebär att du kan använda samma anslutning för åtgärder som stöder segment och sedan för åtgärder som inte stöder segment koppling. I det här fallet är segment storleken för åtgärder som inte stöder segment intervall mellan 5 MB och 50 MB. Den här tabellen visar vilka SFTP-SSH-åtgärder som stöder segment:
 
-  | Åtgärd | Segment stöd | Åsidosätt stöd för segment storlek |
+  | Action | Segment stöd | Åsidosätt stöd för segment storlek |
   |--------|------------------|-----------------------------|
   | **Kopiera fil** | Inga | Inte tillämpligt |
   | **Skapa fil** | Ja | Ja |
   | **Skapa mapp** | Inte tillämpligt | Inte tillämpligt |
-  | **Ta bort panel** | Inte tillämpligt | Inte tillämpligt |
+  | **Ta bort fil** | Inte tillämpligt | Inte tillämpligt |
   | **Extrahera arkiv till mapp** | Inte tillämpligt | Inte tillämpligt |
   | **Hämta fil innehåll** | Ja | Ja |
   | **Hämta fil innehåll med hjälp av sökväg** | Ja | Ja |
@@ -103,10 +103,10 @@ Här följer några andra viktiga skillnader mellan SFTP-SSH-anslutningen och SF
   >
   > * **Finger avtryck**: MD5
   >
-  > När du har lagt till den SFTP-SSH-utlösare eller åtgärd som du vill använda i din Logic-app måste du ange anslutnings information för din SFTP-server. När du anger din privata SSH-nyckel för den här anslutningen kan du *_inte ange eller redigera nyckeln _ manuellt_*, vilket kan leda till att anslutningen Miss fungerar. Kontrol lera i stället att du _*_kopierar nyckeln_*_ från filen med din privata SSH-nyckel och _*_klistrar in_*_ nyckeln i anslutnings informationen. 
+  > När du har lagt till den SFTP-SSH-utlösare eller åtgärd som du vill använda i din Logic-app måste du ange anslutnings information för din SFTP-server. När du anger din privata SSH-nyckel för den här anslutningen kan du ***inte manuellt ange eller redigera nyckeln***, vilket kan leda till att anslutningen Miss fungerar. Kontrol lera i stället att du ***kopierar nyckeln*** från filen med din privata SSH-nyckel och ***klistrar in*** nyckeln i anslutnings informationen. 
   > Mer information finns i avsnittet [ansluta till SFTP med SSH](#connect) senare i den här artikeln.
 
-_ Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Den Logic app där du vill komma åt ditt SFTP-konto. [Skapa en tom Logic-app](../logic-apps/quickstart-create-first-logic-app-workflow.md)för att starta med en SFTP-SSH-utlösare. Om du vill använda en SFTP-SSH-åtgärd startar du din Logic-app med en annan utlösare, till exempel utlösaren **upprepning** .
 
@@ -118,7 +118,7 @@ _ Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickst
 
 SFTP – SSH-utlösare avsöker SFTP-filsystemet och letar efter alla filer som har ändrats sedan den senaste avsökningen. Med vissa verktyg kan du bevara tidsstämpeln när filerna ändras. I dessa fall måste du inaktivera den här funktionen så att utlösaren kan fungera. Här följer några vanliga inställningar:
 
-| SFTP-klient | Åtgärd |
+| SFTP-klient | Action |
 |-------------|--------|
 | WinSCP | Gå till **alternativ**  >  **Inställningar**  >  **överför**  >  **Redigera**  >  **bevara tidsstämpel**  >  **inaktivera** |
 | FileZilla | Gå till **överför**  >  **bevara tidsstämplar för överförda filer**  >  **inaktivera** |
@@ -148,7 +148,7 @@ Om den privata nyckeln är i formatet SparaTillFil, som använder fil namns till
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Ett exempel:
+   Exempel:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -170,7 +170,15 @@ Om den privata nyckeln är i formatet SparaTillFil, som använder fil namns till
 
 ## <a name="considerations"></a>Överväganden
 
-I det här avsnittet beskrivs vad du bör tänka på vid granskningen av kopplingens utlösare och åtgärder.
+I det här avsnittet beskrivs vad du bör tänka på när du använder den här kopplingens utlösare och åtgärder.
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>Använd olika SFTP-mappar för fil överföring och bearbetning
+
+På din SFTP-server kontrollerar du att du använder separata mappar där du lagrar överförda filer och var utlösaren övervakar filerna för bearbetning, vilket innebär att du behöver ett sätt att flytta filer mellan mapparna. Annars utlöses inte utlösaren och fungerar oförutsägbart, till exempel att hoppa över ett slumpmässigt antal filer som utlösarna bearbetar.
+
+Om det här problemet uppstår tar du bort filerna från mappen som utlösaren övervakar och använder en annan mapp för att lagra de överförda filerna.
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ Om du vill skapa en fil på din SFTP-server kan du använda åtgärden SFTP-SSH 
 
    1. Välj **Redigera**  >  **kopia**.
 
-   1. I SFTP-SSH-utlösare eller åtgärd som du har lagt till klistrar du in den *fullständiga* nyckeln som du kopierade i egenskapen **SSH Private Key** , som stöder flera rader.  **_Se till att klistra in_* _ Key. _*_Ange eller redigera inte nyckeln manuellt_*_.
+   1. I SFTP-SSH-utlösare eller åtgärd som du har lagt till klistrar du in den *fullständiga* nyckeln som du kopierade i egenskapen **SSH Private Key** , som stöder flera rader.  **_Se till att klistra in_*_ Key. _*_Ange eller redigera inte nyckeln manuellt_**.
 
-1. När du har angett anslutnings informationen väljer du _ * skapa * *.
+1. När du har angett anslutnings informationen väljer du **skapa**.
 
 1. Ange den information som krävs för den valda utlösaren eller åtgärden och fortsätt att skapa din Logic app-arbetsflöde.
 

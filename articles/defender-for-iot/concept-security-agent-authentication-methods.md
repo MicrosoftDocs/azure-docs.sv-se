@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521653"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449177"
 ---
 # <a name="security-agent-authentication-methods"></a>Autentiseringsmetoder för säkerhets agent
 
@@ -26,9 +26,8 @@ I den här artikeln beskrivs de olika autentiseringsmetoderna som du kan använd
 
 För varje enhet som har publicerats till Defender för IoT i IoT Hub krävs en säkerhetsmodul. För att autentisera enheten kan Defender för IoT använda en av två metoder. Välj den metod som passar bäst för din befintliga IoT-lösning.
 
-> [!div class="checklist"]
-> * Alternativet SecurityModule
-> * Enhets alternativ
+- Alternativet SecurityModule
+- Enhets alternativ
 
 ## <a name="authentication-methods"></a>Autentiseringsmetoder
 
@@ -101,7 +100,8 @@ Redigera _LocalConfiguration.js_ med följande parametrar:
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>Nästa steg
+
+## <a name="see-also"></a>Se även
 
 - [Översikt över säkerhets agenter](security-agent-architecture.md)
 - [Distribuera säkerhets agent](how-to-deploy-agent.md)

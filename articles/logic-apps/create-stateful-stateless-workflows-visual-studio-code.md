@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 941d866fbdea0efc5775bccd08e0235b1629fae0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440997"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449738"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
 
@@ -313,6 +313,9 @@ Du kan skapa egna inbyggda anslutningar för alla tjänster du behöver med hjä
 
 Redigerings funktionen är för närvarande endast tillgänglig i Visual Studio Code, men är inte aktive rad som standard. Om du vill skapa de här kopplingarna måste du först konvertera ditt projekt från Extension-paketbaserade (Node.js) till NuGet-paket-baserad (.NET).
 
+> [!IMPORTANT]
+> Den här åtgärden är en enkelriktad åtgärd som du inte kan ångra.
+
 1. I fönstret Utforskaren, i projektets rot, flyttar du mus pekaren över ett tomt utrymme under alla andra filer och mappar, öppnar snabb menyn och väljer **konvertera till NuGet-baserat Logic app-projekt**.
 
    ![Skärm bild som visar fönstret Utforskaren med projektets snabb meny som öppnas från ett tomt utrymme i projekt fönstret.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
@@ -459,9 +462,9 @@ Arbets flödet i det här exemplet använder utlösaren och följande åtgärder
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Till** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
-   | **Ämne** | Yes | `An email from your example workflow` | E-postmeddelandets ämne |
-   | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
+   | **Till** | Ja | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
+   | **Ämne** | Ja | `An email from your example workflow` | E-postmeddelandets ämne |
+   | **Brödtext** | Ja | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
 
    > [!NOTE]
@@ -647,7 +650,7 @@ Testa din Logi Kap par genom att följa de här stegen för att starta en felsö
 
    ![Skärm bild som visar sidan för arbets flödets översikt med körnings status och historik](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Körnings status | Description |
+   | Körnings status | Beskrivning |
    |------------|-------------|
    | **Avbruten** | Körningen stoppades eller slutfördes inte på grund av externa problem, till exempel ett system avbrott eller en upphörde Azure-prenumeration. |
    | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
@@ -671,7 +674,7 @@ Testa din Logi Kap par genom att följa de här stegen för att starta en felsö
 
    Här är möjliga statusar som varje steg i arbets flödet kan ha:
 
-   | Åtgärds status | Ikon | Description |
+   | Åtgärds status | Ikon | Beskrivning |
    |---------------|------|-------------|
    | **Avbruten** | ![Ikon för status för avbrutna åtgärder][aborted-icon] | Åtgärden stoppades eller avslutades inte på grund av externa problem, till exempel ett system avbrott eller en upphördende Azure-prenumeration. |
    | **Avbröts** | ![Ikon för status för avbrutna åtgärder][cancelled-icon] | Åtgärden kördes men tog emot en begäran att avbryta. |

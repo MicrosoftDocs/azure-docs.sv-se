@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0981687b03344daf7a447cc4d9e50f0923341340
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 578a248de3ee6aacc0db7c5116b66031b404c9ae
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952299"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448174"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Salesforce-konto med hjälp av Azure Active Directory B2C
 
@@ -94,7 +94,10 @@ Om du vill aktivera inloggning för användare med ett Salesforce-konto i Azure 
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
 1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
+1. Välj knappen **Kör användar flöde** .
+1. På sidan registrering eller inloggning väljer du **Salesforce** för att logga in med Salesforce-konto.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 
@@ -110,7 +113,7 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Manual` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `SalesforceSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `SalesforceSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 8. I **hemlighet** anger du din klient hemlighet som du tidigare har spelat in.
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
@@ -192,7 +195,15 @@ Du kan definiera ett Salesforce-konto som en anspråks leverantör genom att lä
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
+
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **Salesforce** för att logga in med Salesforce-konto.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
+
 
 ::: zone-end
 

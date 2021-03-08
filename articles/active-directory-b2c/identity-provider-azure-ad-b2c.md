@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c9a20305f05b285b29d4a5eaf75116c862f3a6d4
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953928"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448497"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Konfigurera registrering och inloggning med ett Azure AD B2C konto från en annan Azure AD B2C klient
 
@@ -62,7 +62,7 @@ För att skapa ett program.
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Ett exempel är `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+    Till exempel `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
 1. Under Behörigheter markerar du kryss rutan **bevilja administratörs medgivande till OpenID och offline_access behörighet** .
 1. Välj **Register** (Registrera).
@@ -90,7 +90,7 @@ För att skapa ett program.
     https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration
     ```
 
-    Ett exempel är `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.
+    Till exempel `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.
 
 1. För **klient-ID** anger du det program-ID som du tidigare har registrerat.
 1. För **klient hemlighet** anger du den klient hemlighet som du tidigare har registrerat.
@@ -115,8 +115,10 @@ För att skapa ett program.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
 1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
-1. Från registrerings-eller inloggnings sidan väljer du *Fabrikam* för att logga in med den andra Azure AD B2C klienten.
+1. Välj knappen **Kör användar flöde** .
+1. Från registrerings-eller inloggnings sidan väljer du **Fabrikam** för att logga in med den andra Azure AD B2C klienten.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 
@@ -131,7 +133,7 @@ Du måste lagra program nyckeln som du skapade tidigare i Azure AD B2C-klienten.
 1. Under **principer** väljer du **Identity Experience Framework**.
 1. Välj **princip nycklar** och välj sedan **Lägg till**.
 1. För **alternativ** väljer du `Manual` .
-1. Ange ett **namn** för princip nyckeln. Ett exempel är `FabrikamAppSecret`.  Prefixet `B2C_1A_` läggs automatiskt till namnet på nyckeln när det skapas, så referensen i XML i följande avsnitt är att *B2C_1A_FabrikamAppSecret*.
+1. Ange ett **namn** för princip nyckeln. Till exempel `FabrikamAppSecret`.  Prefixet `B2C_1A_` läggs automatiskt till namnet på nyckeln när det skapas, så referensen i XML i följande avsnitt är att *B2C_1A_FabrikamAppSecret*.
 1. I **hemlighet** anger du din klient hemlighet som du registrerade tidigare.
 1. För **nyckel användning** väljer du `Signature` .
 1. Välj **Skapa**.
@@ -195,8 +197,8 @@ Du kan definiera Azure AD B2C som anspråks leverantör genom att lägga till Az
     |ClaimsProvider\Domain  | Domän namnet som används för [direkt inloggning](direct-signin.md?pivots=b2c-custom-policy#redirect-sign-in-to-a-social-provider). Ange det domän namn som du vill använda i direkt inloggningen. Till exempel *fabrikam.com*. |
     |TechnicalProfile\DisplayName|Det här värdet kommer att visas på inloggnings knappen på inloggnings skärmen. Till exempel *Fabrikam*. |
     |Metadata \ client_id|Program identifieraren för identitets leverantören. Uppdatera klient-ID: t med det program-ID som du skapade tidigare i den andra Azure AD B2C klienten.|
-    |Metadata\METADATA|En URL som pekar på ett konfigurations dokument för OpenID Connect Identity Provider, som även kallas OpenID-känd konfigurations slut punkt. Ange följande URL som ersätter `{tenant}` med domän namnet för den andra Azure AD B2C klienten (Fabrikam). Ersätt `{tenant}` med namnet på principen som du konfigurerar i den andra klienten och `{policy]` med princip namnet: `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` . Ett exempel är `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.|
-    |CryptographicKeys| Uppdatera värdet för **StorageReferenceId** till namnet på den princip nyckel som du skapade tidigare. Ett exempel är `B2C_1A_FabrikamAppSecret`.| 
+    |Metadata\METADATA|En URL som pekar på ett konfigurations dokument för OpenID Connect Identity Provider, som även kallas OpenID-känd konfigurations slut punkt. Ange följande URL som ersätter `{tenant}` med domän namnet för den andra Azure AD B2C klienten (Fabrikam). Ersätt `{tenant}` med namnet på principen som du konfigurerar i den andra klienten och `{policy]` med princip namnet: `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` . Till exempel `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.|
+    |CryptographicKeys| Uppdatera värdet för **StorageReferenceId** till namnet på den princip nyckel som du skapade tidigare. Till exempel `B2C_1A_FabrikamAppSecret`.| 
     
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
@@ -221,7 +223,15 @@ Du kan definiera Azure AD B2C som anspråks leverantör genom att lägga till Az
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
+
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. Från registrerings-eller inloggnings sidan väljer du **Fabrikam** för att logga in med den andra Azure AD B2C klienten.
+
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 
 ::: zone-end
 

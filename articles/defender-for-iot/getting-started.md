@@ -1,6 +1,6 @@
 ---
-title: Komma igång
-description: Kom igång med att förstå det grundläggande arbets flödet för Defender för IoT-distribution.
+title: 'Snabb start: komma igång'
+description: I den här snabb starten får du lära dig hur du kommer igång med att förstå Basic-arbetsflödet för Defender för IoT-distribution.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -8,25 +8,29 @@ author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/18/2021
 ms.author: shhazam
-ms.openlocfilehash: c224dc3f919471e769717f308aff9ae58630d421
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 487f9be432c908bf8ee1da858a9e45a18adffb8c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712767"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447715"
 ---
-# <a name="get-started-with-defender-for-iot"></a>Kom igång med Defender för IoT
+# <a name="quickstart-get-started-with-defender-for-iot"></a>Snabb start: kom igång med Defender för IoT
 
 Den här artikeln innehåller en översikt över de steg du ska vidta för att konfigurera Azure Defender för IoT. Processen kräver att du:
 
 - Registrera din prenumeration och sensorer på Azure Defender för IoT-portalen.
 - Installera sensor-och program varan för den lokala hanterings konsolen.
 - Utför inledande aktivering av sensor-och hanterings konsolen.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+Inget
 
 ## <a name="permission-requirements"></a>Behörighets krav
 
@@ -43,7 +47,7 @@ I följande tabell beskrivs användar behörighet för Azure Defender för IoT P
 | Uppdatera prissättning  |  |  ✓ | ✓ | ✓ |
 | Återställ lösen ord  | ✓  |  ✓ | ✓ | ✓ |
 
-## <a name="1-identify-the-solution-infrastructure"></a>1. identifiera lösnings infrastrukturen
+## <a name="identify-the-solution-infrastructure"></a>Identifiera lösningens infrastruktur
 
 **Klargör dina nätverks konfigurations behov**
 
@@ -55,7 +59,7 @@ Azure Defender för IoT stöder både fysiska och virtuella distributioner. För
 
 Vi rekommenderar att du beräknar det ungefärliga antalet enheter som ska övervakas. När du senare registrerar din Azure-prenumeration på portalen uppmanas du att ange det här numret. Siffror kan läggas till i intervall om 1 000 sekunder. Antalet övervakade enheter kallas *allokerade enheter*.
 
-## <a name="2-register-with-azure-defender-for-iot"></a>2. registrera dig med Azure Defender för IoT
+## <a name="register-with-azure-defender-for-iot"></a>Registrera dig för Azure Defender för IoT
 
 Registreringen omfattar:
 
@@ -72,7 +76,7 @@ Så här registrerar du dig:
 
 Information om hur du avpublicera en prenumeration finns i [avpublicera a-prenumeration](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription).
 
-## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. Installera och konfigurera den lokala hanterings konsolen
+## <a name="install-and-set-up-the-on-premises-management-console"></a>Installera och konfigurera den lokala hanterings konsolen
 
 När du har skaffat din lokala hanterings konsol enhet:
 
@@ -88,7 +92,7 @@ Installera och konfigurera:
 1. Installera program varan för den lokala hanterings konsolen. Mer information finns i [Defender för IoT-installation](how-to-install-software.md).
 1. Aktivera och konfigurera hanterings konsolen. Mer information finns i [Aktivera och konfigurera den lokala hanterings konsolen](how-to-activate-and-set-up-your-on-premises-management-console.md).
 
-## <a name="4-onboard-a-sensor"></a>4. publicera en sensor
+## <a name="onboard-a-sensor"></a>Publicera en sensor
 
 Publicera en sensor genom att registrera den med Azure Defender för IoT och hämta en sensor aktiverings fil:
 
@@ -103,7 +107,7 @@ Publicera en sensor genom att registrera den med Azure Defender för IoT och hä
 
 Mer information finns i [publicera och hantera sensorer i Defender för IoT-portalen](how-to-manage-sensors-on-the-cloud.md).
 
-## <a name="5-install-and-set-up-the-sensor"></a>5. Installera och konfigurera sensorn
+## <a name="install-and-set-up-the-sensor"></a>Installera och konfigurera sensorn
 
 Hämta ISO-paketet från Azure Defender för IoT-portalen, installera program varan och konfigurera sensorn.
 
@@ -113,7 +117,7 @@ Hämta ISO-paketet från Azure Defender för IoT-portalen, installera program va
 1. Installera sensorprogram varan. Mer information finns i [Defender för IoT-installation](how-to-install-software.md).
 1. Aktivera och konfigurera sensorn. Mer information finns i [Logga in och aktivera en sensor](how-to-activate-and-set-up-your-sensor.md).
 
-## <a name="6-connect-sensors-to-an-on-premises-management-console"></a>6. Anslut sensorer till en lokal hanterings konsol
+## <a name="connect-sensors-to-an-on-premises-management-console"></a>Ansluta sensorer till en lokal hanterings konsol
 
 Anslut sensorer till hanterings konsolen för att säkerställa att:
 
@@ -125,12 +129,12 @@ Vi rekommenderar att du grupperar flera sensorer som övervakar samma nätverk i
 
 Mer information finns i [ansluta sensorer till den lokala hanterings konsolen](how-to-activate-and-set-up-your-on-premises-management-console.md#connect-sensors-to-the-on-premises-management-console).
 
-## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. Fyll i Azure Sentinel med varnings information (valfritt)
+## <a name="populate-azure-sentinel-with-alert-information-optional"></a>Fylla i Azure Sentinel med aviserings information (valfritt)
 
 Skicka aviserings information till Azure Sentinel genom att konfigurera Azure Sentinel. Se [Anslut dina data från Defender för IoT till Azure Sentinel](how-to-configure-with-sentinel.md).
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
-- [Välkommen till Azure Defender för IoT](overview.md)
-
-- [Azure Defender för IoT-arkitektur](architecture.md)
+> [!div class="nextstepaction"]
+> [Välkommen till Azure Defender för IoT](overview.md) 
+>  [Azure Defender för IoT-arkitektur](architecture.md)

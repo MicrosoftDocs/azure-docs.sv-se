@@ -1,5 +1,5 @@
 ---
-title: Lägg till Azure-resurser i din IoT-lösning
+title: 'Snabb start: lägga till Azure-resurser i din IoT-lösning'
 description: I den här snabb starten får du lära dig hur du konfigurerar din IoT-lösning från slut punkt till slut punkt med hjälp av Azure Defender för IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: afe62e5cf255df28ea395405fc894ec5c15bb18c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809047"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449721"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Snabb start: Konfigurera din Azure Defender för IoT-lösning
 
 Den här artikeln innehåller en förklaring av hur du utför inledande konfiguration av din IoT-säkerhetslösning med hjälp av Defender för IoT.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+Inget
 
 ## <a name="what-is-defender-for-iot"></a>Vad är Defender för IoT?
 

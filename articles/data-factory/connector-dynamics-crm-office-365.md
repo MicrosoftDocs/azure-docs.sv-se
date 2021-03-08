@@ -1,20 +1,20 @@
 ---
 title: Kopiera data i Dynamics (Common Data Service)
-description: Lär dig hur du kopierar data från Microsoft Dynamics CRM eller Microsoft Dynamics 365 (Common Data Service) till mottagar data lager eller från käll data lager som stöds till Dynamics CRM eller Dynamics 365 genom att använda en kopierings aktivitet i en Data Factory-pipeline.
+description: Lär dig hur du kopierar data från Microsoft Dynamics CRM eller Microsoft Dynamics 365 (Common Data Service/Microsoft Dataverse) till mottagar data lager eller från käll data lager som stöds till Dynamics CRM eller Dynamics 365 genom att använda en kopierings aktivitet i en Data Factory-pipeline.
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/08/2021
+ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381009"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447460"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiera data från och till Dynamics 365 (Common Data Service) eller Dynamics CRM genom att använda Azure Data Factory
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiera data från och till Dynamics 365 (Common Data Service/Microsoft Dataverse) eller Dynamics CRM genom att använda Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ Den här anslutningen stöds för följande aktiviteter:
 - [Kopiera aktivitet](copy-activity-overview.md) med [käll-och mottagar mat ris som stöds](copy-activity-overview.md)
 - [Söknings aktivitet](control-flow-lookup-activity.md)
 
-Du kan kopiera data från Dynamics 365 (Common Data Service) eller Dynamics CRM till alla mottagar data lager som stöds. Du kan också kopiera data från alla käll data lager som stöds till Dynamics 365 (Common Data Service) eller Dynamics CRM. En lista över data lager som en kopierings aktivitet stöder som källor och mottagare finns i tabellen [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
+Du kan kopiera data från Dynamics 365 (Common Data Service/Microsoft Dataverse) eller Dynamics CRM till alla mottagar data lager som stöds. Du kan också kopiera data från alla käll data lager som stöds till Dynamics 365 (Common Data Service) eller Dynamics CRM. En lista över data lager som en kopierings aktivitet stöder som källor och mottagare finns i tabellen [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Den här Dynamics Connector stöder Dynamics version 7 till 9 för både online och lokalt. Mer specifikt:
 
@@ -363,6 +363,32 @@ Den optimala kombinationen av **writeBatchSize** och **parallelCopies** är bero
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>Hämta data från vyer
+
+Om du vill hämta data från Dynamics views måste du hämta den sparade frågan för vyn och använda frågan för att hämta data.
+
+Det finns två entiteter som lagrar olika typer av vyer: "sparad fråga" lagrar systemvyer och "användar fråga" lagrar användar visning. Om du vill hämta information om vyerna läser du följande FetchXML-fråga och ersätter "TARGETENTITY" med `savedquery` eller `userquery` . Varje entitetstyp har fler tillgängliga attribut som du kan lägga till i frågan utifrån dina behov. Lär dig mer om [entiteten entitet](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) och [UserQuery](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)i savedquery.
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+Du kan också lägga till filter för att filtrera vyerna. Lägg till exempel till följande filter för att få en vy med namnet "Mina aktiva konton" i entiteten Account.
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Data typs mappning för Dynamics

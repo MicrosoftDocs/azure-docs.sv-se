@@ -1,5 +1,5 @@
 ---
-title: Skapa en säkerhetsmodul med dubbla
+title: 'Snabb start: skapa en säkerhetsmodul med dubbla'
 description: I den här snabb starten får du lära dig hur du skapar en Defender för IoT-modul med dubbla för användning med Azure Defender för IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 68d137caeed91e9dea2dbf3883929d85c25382aa
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523268"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449704"
 ---
-# <a name="create-an-azureiotsecurity-module-twin"></a>Skapa en azureiotsecurity-modul med dubbla
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Snabb start: skapa en azureiotsecurity-modul med dubbla
 
 I den här snabb starten beskrivs hur du skapar en enskild _azureiotsecurity_ -modul för nya enheter, eller om du skapar en modul med flera enheter i en IoT Hub.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+Inget
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>Att förstå azureiotsecurity-modulen är dubbla
 

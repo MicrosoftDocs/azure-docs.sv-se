@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095739"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448599"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Lägg till AD FS som en SAML Identity-Provider med anpassade principer i Azure Active Directory B2C
 
@@ -71,10 +71,10 @@ Du kan definiera ett AD FS-konto som en anspråks leverantör genom att lägga t
     ```xml
     <ClaimsProvider>
       <Domain>contoso.com</Domain>
-      <DisplayName>Contoso AD FS</DisplayName>
+      <DisplayName>Contoso</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Contoso-SAML2">
-          <DisplayName>Contoso AD FS</DisplayName>
+          <DisplayName>Contoso</DisplayName>
           <Description>Login with your AD FS account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
@@ -199,8 +199,10 @@ Ersätt följande värden:
 1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
 1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
+1. På sidan registrering eller inloggning väljer du **contoso-AD FS** för att logga in med contoso AD FS Identity Provider.
 
 Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
+
 ## <a name="troubleshooting-ad-fs-service"></a>Felsöka AD FS tjänsten  
 
 AD FS har kon figurer ATS för att använda Windows program logg. Om du upplever utmaningar med att konfigurera AD FS som en SAML-identitetsprovider som använder anpassade principer i Azure AD B2C, vill du kanske kontrol lera AD FS händelse loggen:
