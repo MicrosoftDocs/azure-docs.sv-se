@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201183"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455652"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Självstudie: använda Azure Key Vault med en virtuell dator i .NET
 
@@ -145,7 +145,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
 
-Lägg till dessa rader och uppdatera URI: n för att avspegla `vaultUri` ditt nyckel valv. I koden nedan används  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) för autentisering till Key Vault, som använder token från Programhanterad identitet för att autentisera. Den använder också exponentiell backoff för återförsök om nyckel valvet begränsas.
+Lägg till dessa rader och uppdatera URI: n för att avspegla `vaultUri` ditt nyckel valv. I koden nedan används  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential) för autentisering till Key Vault, som använder token från Programhanterad identitet för att autentisera. Den använder också exponentiell backoff för återförsök om nyckel valvet begränsas.
 
 ```csharp
   class Program

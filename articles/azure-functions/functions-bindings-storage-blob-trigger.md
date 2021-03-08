@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381619"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455930"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-utlösare för Azure Functions
 
@@ -351,7 +351,7 @@ Få åtkomst till BLOB-data via en parameter som matchar namnet som anges av bin
 
 # <a name="python"></a>[Python](#tab/python)
 
-Få åtkomst till BLOB-data via parametern som anges som [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true). Mer information finns i [utlösnings exemplet](#example) .
+Få åtkomst till BLOB-data via parametern som anges som [InputStream](/python/api/azure-functions/azure.functions.inputstream). Mer information finns i [utlösnings exemplet](#example) .
 
 ---
 

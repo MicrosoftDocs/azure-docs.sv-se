@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5a00ba8000f33e8e50b1a5d01f40a68a7fe2442d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 187c1e60d97e0bebb3b6216b0055ddffe6e6cb4c
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956199"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454389"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Licenskrav för och konfiguration av Apple FairPlay
 
@@ -86,7 +86,7 @@ Du kan använda Media Services API för att konfigurera FairPlay-licenser. När 
 > [!NOTE]
 > Vanligt vis vill du bara konfigurera FairPlay-principinställningar en gång, eftersom du bara kommer att ha en uppsättning certifiering och en fråga.
 
-I följande exempel används [Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) för att konfigurera licensen.
+I följande exempel används [Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models) för att konfigurera licensen.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()
