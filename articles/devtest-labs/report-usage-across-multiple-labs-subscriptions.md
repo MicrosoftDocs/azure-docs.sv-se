@@ -3,12 +3,12 @@ title: Azure DevTest Labs användning över flera labb och prenumerationer
 description: Lär dig hur du rapporterar Azure DevTest Labs användning över flera labb och prenumerationer.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789946"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452653"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Rapportera Azure DevTest Labs användning över flera labb och prenumerationer
 
@@ -25,7 +25,7 @@ I det här avsnittet beskrivs hur du exporterar resursanvändning för ett enda 
 Innan du kan exportera resursanvändningen för DevTest Labs måste du konfigurera ett Azure Storage-konto så att de olika filer som innehåller de användnings data som ska lagras. Det finns två vanliga sätt att köra exporten av data:
 
 * [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell-AZ. Resource-modulen [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) med åtgärden `exportResourceUsage` , Lab-resurs-ID: t och de nödvändiga parametrarna. 
+* PowerShell-AZ. Resource-modulen [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) med åtgärden `exportResourceUsage` , Lab-resurs-ID: t och de nödvändiga parametrarna. 
 
     Artikeln [Exportera eller ta bort personliga data](personal-data-delete-export.md) innehåller ett exempel på ett PowerShell-skript med detaljerad information om de data som exporteras. 
 
@@ -75,7 +75,7 @@ Du kan använda [Azure Data Factory](https://azure.microsoft.com/services/data-f
 
 ## <a name="next-steps"></a>Nästa steg
 
-När systemet har kon figurer ATS och data flyttas till långsiktig lagring, är nästa steg att följa de frågor som data behöver för att besvara. Ett exempel: 
+När systemet har kon figurer ATS och data flyttas till långsiktig lagring, är nästa steg att följa de frågor som data behöver för att besvara. Exempel: 
 
 -   Vilken storlek används för virtuella datorer?
 

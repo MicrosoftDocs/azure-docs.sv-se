@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en JavaScript-funktion från kommando raden 
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937254"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447324"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Snabb start: skapa en JavaScript-funktion i Azure från kommando raden
 
@@ -96,7 +96,7 @@ Om du vill kan du hoppa över att [köra funktionen lokalt](#run-the-function-lo
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-För en HTTP-utlösare tar funktionen emot begär ande data i variabeln `req` enligt definitionen i *function.jspå*. Returvärdet, som definieras som `$return` i *function.jspå*, är svaret. Läs mer i [Azure Functions HTTP-utlösare och bindningar](./functions-bindings-http-webhook.md?tabs=javascript).
+För en HTTP-utlösare tar funktionen emot begär ande data i variabeln `req` enligt definitionen i *function.jspå*. Svaret definieras som `res` i *function.jspå* och kan nås med hjälp av `context.res` . Läs mer i [Azure Functions HTTP-utlösare och bindningar](./functions-bindings-http-webhook.md?tabs=javascript).
 
 #### <a name="functionjson"></a>function.json
 

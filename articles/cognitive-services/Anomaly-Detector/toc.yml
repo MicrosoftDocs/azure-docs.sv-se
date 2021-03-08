@@ -16,8 +16,6 @@
   items:
     - name: Visualisera avvikelser som en batch med hjälp av Power BI
       href: tutorials/batch-anomaly-detection-powerbi.md
-    - name: Avvikelseidentifiering på strömmade data med hjälp av Azure Databricks
-      href: tutorials/anomaly-detection-streaming-databricks.md
 - name: Anvisningar
   items:
     - name: Identifiera avvikelser i dina data

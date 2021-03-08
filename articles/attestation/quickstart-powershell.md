@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ebc12982bcc05c2d07f91fbc4d85afc170adf075
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429100"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453401"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Snabb start: Konfigurera Azure-attestering med Azure PowerShell
 
-Följ stegen nedan för att skapa och konfigurera en attesterings-Provider med hjälp av Azure PowerShell. Se [Översikt över Azure PowerShell](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0) för information om hur du installerar och kör Azure PowerShell.
+Följ stegen nedan för att skapa och konfigurera en attesterings-Provider med hjälp av Azure PowerShell. Se [Översikt över Azure PowerShell](/powershell/azure/) för information om hur du installerar och kör Azure PowerShell.
 
 Observera att PowerShell-galleriet har föråldrade Transport Layer Security (TLS) version 1,0 och 1,1. TLS 1,2 eller en senare version rekommenderas. Därför kan följande fel uppstå:
 

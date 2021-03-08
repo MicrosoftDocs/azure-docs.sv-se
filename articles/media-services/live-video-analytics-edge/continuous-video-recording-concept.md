@@ -3,12 +3,12 @@ title: Kontinuerlig video inspelning – Azure
 description: Kontinuerlig videoinspelning (CVR) avser processen att kontinuerligt spela in videon från en video källa. I det här avsnittet beskrivs vad CVR är.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566710"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453758"
 ---
 # <a name="continuous-video-recording"></a>Kontinuerlig videoinspelning  
 
@@ -19,7 +19,7 @@ ms.locfileid: "89566710"
 
 ## <a name="overview"></a>Översikt
 
-Kontinuerlig videoinspelning (CVR) avser processen att kontinuerligt spela in videon från en video källa. Video analys på IoT Edge har stöd för att spela in video kontinuerligt, dygnet runt, från en CCTV-kamera via ett [medie diagram](media-graph-concept.md) som består av en RTSP-källmapp och en nod för till gångs mottagare. Diagrammet nedan visar en grafisk representation av ett sådant medie diagram. JSON-representationen av [diagram sto pol Ogin](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) för ett sådant medie diagram finns [här](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
+Kontinuerlig videoinspelning (CVR) avser processen att kontinuerligt spela in videon från en video källa. Video analys på IoT Edge har stöd för att spela in video kontinuerligt, dygnet runt, från en CCTV-kamera via ett [medie diagram](media-graph-concept.md) som består av en RTSP-källmapp och en nod för till gångs mottagare. Diagrammet nedan visar en grafisk representation av ett sådant medie diagram. JSON-representationen av [diagram sto pol Ogin](media-graph-concept.md#media-graph-topologies-and-instances) för ett sådant medie diagram finns [här](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Kontinuerlig videoinspelning":::

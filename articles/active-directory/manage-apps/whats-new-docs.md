@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory program hantering
 description: Ny och uppdaterad dokumentation för Azure Active Directory program hantering.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 9de518f53a6054a47a72e40ebe546a32dd48aabe
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647280"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452058"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
 Välkommen till nyheter i Azure Active Directory program hanterings dokumentation. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt i program hanterings tjänsten finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Integrera med SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Migrera programautentisering till Azure Active Directory](migrate-application-authentication-to-azure-active-directory.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Integrera med SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Bevilja administratörsmedgivande för hela klientorganisationen till ett program](grant-admin-consent.md)
+- [Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning](application-sign-in-problem-federated-sso-gallery.md)
+- [Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Januari 2021
 

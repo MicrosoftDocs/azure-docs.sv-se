@@ -2,13 +2,13 @@
 title: Översikt över mallar
 description: Beskriver fördelarna med Azure Resource Manager mallar (ARM-mallar) för att distribuera resurser.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046388"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455743"
 ---
 # <a name="what-are-arm-templates"></a>Vad är ARM-mallar?
 
@@ -111,6 +111,15 @@ REQUEST BODY
 ```
 
 Observera att **API version** som du anger i mallen för resursen används som API-version för rest-åtgärden. Du kan distribuera mallen flera gånger och vara säker på att den fortsätter att fungera. Genom att använda samma API-version behöver du inte bekymra dig om att bryta ändringar som kan införas i senare versioner.
+
+Använd något av följande alternativ om du vill distribuera en mall:
+
+* [Azure-portalen](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST-API](deploy-rest.md)
+* [Knapp i GitHub-lagringsplatsen](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>Mall design
 

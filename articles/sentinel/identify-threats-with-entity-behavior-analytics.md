@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807571"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455509"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifiera avancerade hot med användar-och enhets beteende analys (UEBA) i Azure Sentinel
 
@@ -68,41 +68,9 @@ Varje aktivitet får poäng enligt "bedömnings prioritet Poäng", som avgör sa
 
 Se hur beteende analys används i [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) för ett exempel på hur det fungerar.
 
-## <a name="entities-in-azure-sentinel"></a>Entiteter i Azure Sentinel
+## <a name="entity-pages"></a>Enhets sidor
 
-### <a name="entity-identifiers"></a>Enhets identifierare
-
-När aviseringar skickas till Azure Sentinel innehåller de data element som Azure Sentinel identifierar och klassificerar som entiteter, till exempel användar konton, värdar, IP-adresser och andra. Vid detta tillfälle kan denna identifiering vara en utmaning, om aviseringen inte innehåller tillräckligt med information om entiteten.
-
-Användar konton kan till exempel identifieras på fler än ett sätt: med hjälp av ett Azure AD-kontos numeriska identifierare (GUID) eller dess UPN-värde (User Principal Name) eller alternativt kan du använda en kombination av sitt användar namn och dess NT-domännamn. Olika data källor kan identifiera samma användare på olika sätt. Det innebär att när så är möjligt sammanfogar Azure Sentinel dessa identifierare till en enda entitet, så att den kan identifieras korrekt.
-
-Det kan hända att en av dina resurs leverantörer skapar en avisering i vilken en entitet inte är tillräckligt identifierad, till exempel ett användar namn utan domän namns kontext. I sådana fall kan entiteten användare inte slås samman med andra instanser av samma användar konto, som skulle identifieras som en separat entitet, och dessa två entiteter förblir separata i stället för Unified.
-
-För att minimera risken för detta händer bör du kontrol lera att alla dina aviserings leverantörer identifierar enheterna korrekt i de aviseringar som de skapar. Dessutom kan synkronisering av entiteter för användar konton med Azure Active Directory skapa en enhetlig katalog som kan slå samman entiteter för användar konton.
-
-Följande typer av entiteter identifieras för närvarande i Azure Sentinel:
-
-- Användar konto (konto)
-- Värd
-- IP-adress (IP)
-- Skadlig kod
-- Fil
-- Process
-- Moln program (CloudApplication)
-- Domän namn (DNS)
-- Azure-resurs
-- Fil (FileHash)
-- Registernyckel
-- Registervärde
-- Säkerhets grupp
-- URL
-- IoT-enhet
-- Mailbox
-- E-postkluster
-- E-postmeddelande
-- Skicka e-post
-
-### <a name="entity-pages"></a>Enhets sidor
+Lär dig mer om [entiteter i Azure Sentinel](entities-in-azure-sentinel.md) och se den fullständiga listan över [enheter som stöds och identifierare](entities-reference.md).
 
 När du stöter på en entitet (som för närvarande är begränsad till användare och värdar) i en sökning, en avisering eller en undersökning, kan du välja entiteten och gå till en **entitet**, ett datablad som är fullt värdefullt information om entiteten. De typer av information som du hittar på den här sidan är grundläggande fakta om entiteten, en tids linje för viktiga händelser som är relaterade till den här entiteten och insikter om entitetens beteende.
  
@@ -131,20 +99,23 @@ Följande typer av objekt ingår i tids linjen:
  
 ### <a name="entity-insights"></a>Entitets Insights
  
-Entitet Insights är frågor som definieras av Microsofts säkerhets forskare för att hjälpa dina analyser att undersöka mer effektivt och effektivt. Insikterna presenteras som en del av sidan entitet och ger värdefull säkerhets information om värdar och användare i form av tabell data och diagram. Informationen här innebär att du inte behöver avLog Analytics. Insikterna innehåller data om inloggningar, grupp tillägg, avvikande händelser och mer, och innehåller avancerade ML-algoritmer för att identifiera avvikande beteende. Insikterna baseras på följande data typer:
-- Syslog
-- SecurityEvent
-- Granskningsloggar
-- Inloggnings loggar
-- Office-aktivitet
-- BehaviorAnalytics (UEBA) 
- 
+Entitet Insights är frågor som definieras av Microsofts säkerhets forskare för att hjälpa dina analyser att undersöka mer effektivt och effektivt. Insikterna presenteras som en del av sidan entitet och ger värdefull säkerhets information om värdar och användare i form av tabell data och diagram. Informationen här innebär att du inte behöver avLog Analytics. Insikterna innehåller data om inloggningar, grupp tillägg, avvikande händelser och mer, och innehåller avancerade ML-algoritmer för att identifiera avvikande beteende. 
+
+Insikterna baseras på följande data Källor:
+- Syslog (Linux)
+- SecurityEvent (Windows)
+- AuditLogs (Azure AD)
+- SigninLogs (Azure AD)
+- OfficeActivity (Office 365)
+- BehaviorAnalytics (Azure Sentinel UEBA)
+- Pulsslag (Azure Monitor Agent)
+- CommonSecurityLog (Azure Sentinel)
+
 ### <a name="how-to-use-entity-pages"></a>Använda enhets sidor
 
 Entitetsformulär är utformade för att ingå i flera användnings scenarier och kan nås från incident hantering, undersöknings grafen, bok märken eller direkt från Sök sidan entitet under **enhets beteende analyser** på huvud menyn i Azure Sentinel.
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Användnings fall för entitets sida":::
-
 
 ## <a name="data-schema"></a>Data schema
 

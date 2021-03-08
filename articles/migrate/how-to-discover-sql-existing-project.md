@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 3dc9b178b9aa22991230f4cc6a9d54b44cf09b4e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ca0052eebd8d3c8e80943ca8c0e0346216436800
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098816"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452772"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>Identifiera SQL Server instanser i ett befintligt projekt 
 
@@ -20,7 +20,7 @@ Den här artikeln beskriver hur du identifierar SQL Server instanser och databas
 Identifiering av SQL Server instanser och databaser som körs på lokala datorer hjälper till att identifiera och skräddarsy en migrerings Sök väg till Azure SQL. Azure Migrate-installationen utför den här identifieringen med hjälp av domänautentiseringsuppgifter eller SQL Server autentiseringsuppgifter som har åtkomst till de SQL Server instanser och databaser som körs på mål servrarna. Den här identifierings processen är agent lös, d.v.s. inget är installerat på mål servrarna.
 
 > [!Note]
-> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen måste du kontrol lera att du har slutfört [**kraven**](how-to-discover-sql-existing-project.md) i den här artikeln.
+> Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Om du redan har ett projekt i östra Australien och vill testa den här funktionen måste du kontrol lera att du har slutfört [**kraven**](how-to-discover-sql-existing-project.md) i den här artikeln.
 
 ## <a name="before-you-start"></a>Innan du börjar
 
@@ -44,7 +44,7 @@ Identifiering av SQL Server instanser och databaser som körs på lokala datorer
     - Kontrol lera att de tjänster som körs på installationen har uppdaterats till de senaste versionerna. Det gör du genom att starta Konfigurations hanteraren för installationen från din installations Server och välja Visa utrustnings tjänster från panelen Konfigurera krav.
         - Enheten och dess komponenter uppdateras automatiskt :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="kontrol lera version":::
     - I panelen Hantera autentiseringsuppgifter och identifierings källor i Konfigurations hanteraren för installationen lägger du till domän-eller SQL Server autentiseringsuppgifter för autentisering som har sysadmin-åtkomst på SQL Server-instansen och databaser som ska identifieras. 
-    Du kan använda antingen funktionen för mappning av automatiska autentiseringsuppgifter i enheten eller manuellt mappa autentiseringsuppgifterna till respektive server som marker ATS [här](https://review.docs.microsoft.com/azure/migrate/tutorial-discover-vmware?branch=release-migrate-sql-scenario#start-continuous-discovery).
+    Du kan använda antingen funktionen för mappning av automatiska autentiseringsuppgifter i enheten eller manuellt mappa autentiseringsuppgifterna till respektive server som marker ATS [här](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery).
         
     Några saker att tänka på:
     - Kontrol lera att program varu inventeringen redan är aktive rad eller ange domän-eller icke-domänautentiseringsuppgifter för att aktivera samma. Program varu inventering måste utföras för att identifiera SQL Server instanser.

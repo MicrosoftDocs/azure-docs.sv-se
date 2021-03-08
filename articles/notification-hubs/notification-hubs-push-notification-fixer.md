@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b5139f75084eb0646db2fc8b05b04aaf3ddb2a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 787cf922fcee0ee613fc0874a490830da9adf38a
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010791"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455033"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostisera ignorerade aviseringar i Azure Notification Hubs
 
@@ -147,7 +147,7 @@ I Visual Studio kan du ansluta till Azure via Server Explorer för att visa och 
 
 Du kan visa och hantera alla registreringar i hubben. Registreringarna kan kategoriseras efter plattform, intern eller postmall registrering, tagg, Push Notification Service-identifierare, registrerings-ID och förfallo datum. Du kan också redigera en registrering på den här sidan. Det är särskilt användbart för att redigera taggar.
 
-Högerklicka på din Notification Hub i **Server Explorer**och välj **diagnostisera**. 
+Högerklicka på din Notification Hub i **Server Explorer** och välj **diagnostisera**. 
 
 ![Visual Studio-Server Explorer: diagnosticera menyn](./media/notification-hubs-push-notification-fixer/diagnose-menu.png)
 
@@ -174,7 +174,7 @@ Många kunder använder [Service Bus Explorer](https://github.com/paolosalvatori
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Om du vill skicka ett test meddelande till dina klienter utan att ha en tjänst Server del igång, går du till **support + fel sökning**och väljer **testa skicka**.
+Om du vill skicka ett test meddelande till dina klienter utan att ha en tjänst Server del igång, går du till **support + fel sökning** och väljer **testa skicka**.
 
 ![Testa sändnings funktionen i Azure][7]
 
@@ -261,7 +261,7 @@ I portalen kan du få en snabb överblick över all aktivitet i Notification Hub
 
    ![Azure Portal aktivitets logg][6]
 
-3. Börja med att granska **inkommande meddelanden**, **registrerings åtgärder**och **lyckade aviseringar**. Gå sedan till fliken per plattform för att granska fel som är specifika för Push Notification Service.
+3. Börja med att granska **inkommande meddelanden**, **registrerings åtgärder** och **lyckade aviseringar**. Gå sedan till fliken per plattform för att granska fel som är specifika för Push Notification Service.
 
 4. Om autentiseringsinställningarna för Notification Hub är felaktiga visas meddelandet **PNS autentiseringsfel** . Det är en korrekt uppgift att kontrol lera autentiseringsuppgifterna för Push Notification Service.
 
@@ -297,5 +297,5 @@ Mer information om programmerings åtkomst finns i [program mässig åtkomst](/p
 [View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Djupgående spel: Visual Studio 2013 uppdatering 2 RC och Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Vi presenterar lanseringen av Visual Studio 2013 Update 3 och Azure SDK 2,4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend
 [Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

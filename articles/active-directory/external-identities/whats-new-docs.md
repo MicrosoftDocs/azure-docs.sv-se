@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory externa identiteter
 description: Ny och uppdaterad dokumentation för Azure Active Directory externa identiteter.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: e0daa5b1c8d3fcc749f10e48e453ca8f92607643
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591709"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453675"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externa identiteter: Nyheter
 
 Välkommen till nyheter i Azure Active Directory external Identities-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med tjänsten externa identiteter finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Återställ inlösen status för en gäst användare](reset-redemption-status.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Metod tips för Azure Active Directory B2B](b2b-fundamentals.md)
+- [Aktivera externt B2B-samarbete och hantera vilka som kan bjuda in gäster](delegate-invitations.md)
+- [Vanliga frågor och svar om Azure Active Directory B2B-samarbete](faq.md)
+- [E-postautentisering med eng ång slö sen ord](one-time-passcode.md)
+- [Inlösen av inbjudan till Azure Active Directory B2B-samarbete](redemption-experience.md)
+- [Felsöka Azure Active Directory B2B-samarbete](troubleshoot.md)
+- [Egenskaper för en Azure Active Directory B2B-samarbets användare](user-properties.md)
+- [Vad är gästanvändaråtkomst i Azure Active Directory B2B?](what-is-b2b.md)
+- [Azure Active Directory externa identiteter: Nyheter](whats-new-docs.md)
+- [Tillåt eller blockera inbjudningar till B2B-användare från specifika organisationer](allow-deny-list.md)
+- [API för Azure Active Directory B2B-samarbete och anpassning](customize-invitation-api.md)
+- [Bjud in interna användare till B2B-samarbete](invite-internal-users.md)
+- [Microsoft 365 extern delning och Azure Active Directory (Azure AD) B2B-samarbete](o365-external-user.md)
+- [Direkt Federation med AD FS och tredje parts leverantörer för gäst användare (för hands version)](direct-federation.md)
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -33,7 +56,7 @@ Välkommen till nyheter i Azure Active Directory external Identities-dokumentati
 - [Vanliga frågor och svar om Azure Active Directory B2B-samarbete](faq.md)
 - [Lägg till Google som en identitets leverantör för B2B-gäst användare](google-federation.md)
 - [Identitets leverantörer för externa identiteter](identity-providers.md)
-- [Azure Active Directory B2B-samarbete för inbjudan](redemption-experience.md)
+- [Inlösen av inbjudan till Azure Active Directory B2B-samarbete](redemption-experience.md)
 - [Lägga till en API-anslutning till ett användar flöde](self-service-sign-up-add-api-connector.md)
 - [Lägg till ett anpassat godkännande arbets flöde till självbetjänings registrering](self-service-sign-up-add-approvals.md)
 - [Felsöka Azure Active Directory B2B-samarbete](troubleshoot.md)
@@ -58,7 +81,7 @@ Välkommen till nyheter i Azure Active Directory external Identities-dokumentati
 - [Tillåt eller blockera inbjudningar till B2B-användare från specifika organisationer](allow-deny-list.md)
 - [Vanliga frågor och svar om Azure Active Directory B2B-samarbete](faq.md)
 - [Dokumentation om externa identiteter](index.yml)
-- [Azure Active Directory B2B-samarbete för inbjudan](redemption-experience.md)
+- [Inlösen av inbjudan till Azure Active Directory B2B-samarbete](redemption-experience.md)
 - [Lägg till ett anpassat godkännande arbets flöde till självbetjänings registrering](self-service-sign-up-add-approvals.md)
 - [Vad är externa identiteter i Azure Active Directory?](compare-with-b2c.md)
 - [Lägga till en API-anslutning till ett användar flöde](self-service-sign-up-add-api-connector.md)

@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095505"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454251"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Säkerhetskopiera konfigurations Arkiv för appar automatiskt
 
@@ -137,7 +137,7 @@ För att göra det enklare för dig att börja säkerhetskopiera dina data har v
 
 Om den exempel kod som angavs tidigare inte uppfyller dina krav kan du också skapa en egen funktion. Funktionen måste kunna utföra följande aktiviteter för att kunna slutföra säkerhets kopieringen:
 - Läs innehållet i din kö med jämna mellanrum för att se om det innehåller några meddelanden från Event Grid. Se SDK för [lagrings kön](../storage/queues/storage-quickstart-queues-dotnet.md) för implementerings information.
-- Om kön innehåller [händelse meddelanden från Event Grid](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)extrahera all unik `<key, label>` information från händelse meddelanden. Kombinationen av nyckel och etikett är den unika identifieraren för nyckel värdes ändringar i det primära lagret.
+- Om kön innehåller [händelse meddelanden från Event Grid](./concept-app-configuration-event.md#event-schema)extrahera all unik `<key, label>` information från händelse meddelanden. Kombinationen av nyckel och etikett är den unika identifieraren för nyckel värdes ändringar i det primära lagret.
 - Läs alla inställningar från det primära lagret. Uppdatera endast de inställningar i den sekundära lagringen som har en motsvarande händelse i kön. Ta bort alla inställningar från den sekundära lagrings platsen som fanns i kön men inte i den primära lagringen. Du kan använda [app Configuration SDK](https://github.com/Azure/AppConfiguration#sdks) för att få åtkomst till dina konfigurations lager program mässigt.
 - Ta bort meddelanden från kön om det inte fanns några undantag under bearbetningen.
 - Implementera fel hantering enligt dina behov. Se föregående kod exempel för att se några vanliga undantag som du kanske vill hantera.

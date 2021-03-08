@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048190"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453809"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -32,9 +32,26 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 
 ## <a name="february-2021"></a>Februari 2021
 
+- [Arbets bok för cybersäkerhet mognads modell certifiering (CMMC)](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Data anslutningar från tredje part](#third-party-data-connectors)
 - [UEBA insikter på sidan entitet](#ueba-insights-in-the-entity-page)
 - [Förbättrad incident sökning](#improved-incident-search)
+
+### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Arbets bok för cybersäkerhet mognads modell certifiering (CMMC)
+
+Azure Sentinel CMMC-arbetsboken innehåller en mekanism för att Visa logg frågor justerade mot CMMC-kontroller i Microsoft-portföljen, inklusive Microsofts säkerhets erbjudanden, Office 365, teams, Intune, Windows Virtual Desktop och många fler.
+
+CMMC-arbetsboken gör det möjligt för säkerhets arkitekter, tekniker, säkerhets åtgärder analytiker, chefer och IT-proffs att få insyn i situationen för säkerhets position av moln arbets belastningar. Det finns även rekommendationer för att välja, utforma, distribuera och konfigurera Microsoft-erbjudanden för anpassning till respektive CMMC krav och praxis.
+
+Även om du inte är tvungen att följa CMMC, är CMMC-arbetsboken användbar för att skapa säkerhets drifts Center, utveckla aviseringar, visualisera hot och ge en situations medvetenhet om arbets belastningar.
+
+Öppna arbets boken CMMC i avsnittet Azure Sentinel- **arbetsböcker** . Välj **mall** och Sök sedan efter **CMMC**.
+
+Mer information finns i:
+
+- [Arbets bok för Azure Sentinel cybersäkerhet förfallo modell certifiering (CMMC)](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
+- [Självstudie: Visualisera och övervaka dina data](tutorial-monitor-your-data.md)
+
 
 ### <a name="third-party-data-connectors"></a>Data anslutningar från tredje part
 

@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: f4e6d5fb41769544b7be0f689447364988d0380d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c6b038297945ca900508a822460e1358a2524d23
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95998859"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455926"
 ---
-BLOB-utlösaren innehåller flera egenskaper för metadata. Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. Dessa värden har samma semantik som [CloudBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) -typen.
+BLOB-utlösaren innehåller flera egenskaper för metadata. Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. Dessa värden har samma semantik som [CloudBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblob) -typen.
 
-|Egenskap  |Typ  |Description  |
+|Egenskap  |Typ  |Beskrivning  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Sökvägen till den Utlös ande blobben.|
 |`Uri`|`System.Uri`|Blobens URI för den primära platsen.|

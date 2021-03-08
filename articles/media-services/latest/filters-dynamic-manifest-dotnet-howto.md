@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093421"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455220"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Skapa filter med Media Services .NET SDK
 
@@ -29,7 +29,7 @@ När du levererar ditt innehåll till kunder (strömma live-händelser eller vid
 
 Detaljerad beskrivning av den här funktionen och scenarier där den används finns i [dynamiska manifest](filters-dynamic-manifest-overview.md) och [filter](filters-concept.md).
 
-Det här avsnittet visar hur du använder Media Services .NET SDK för att definiera ett filter för en video på begäran till gång och skapa [konto filter](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) och [till gångs filter](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
+Det här avsnittet visar hur du använder Media Services .NET SDK för att definiera ett filter för en video på begäran till gång och skapa [konto filter](/dotnet/api/microsoft.azure.management.media.models.accountfilter) och [till gångs filter](/dotnet/api/microsoft.azure.management.media.models.assetfilter). 
 
 > [!NOTE]
 > Se till att granska [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -43,7 +43,7 @@ Det här avsnittet visar hur du använder Media Services .NET SDK för att defin
 
 ## <a name="define-a-filter"></a>Definiera ett filter  
 
-I .NET konfigurerar du spåra val med [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) -och [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) -klasser. 
+I .NET konfigurerar du spåra val med [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) -och [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition) -klasser. 
 
 Följande kod definierar ett filter som innehåller ljud spår som är EG-3 och alla video spår som har bit hastighet i intervallet 0-1000000.
 

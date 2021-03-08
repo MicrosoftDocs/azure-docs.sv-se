@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: afa782df8666413356fa334bf4e9dcb989b87c2f
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441477"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452789"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Använd runbooks och moduler i PowerShell-galleriet
 
@@ -51,11 +51,11 @@ Listan nedan innehåller några Runbooks som stöder vanliga scenarier. En fulls
 1. Välj **Källa: PowerShell-galleriet**. Visar en lista över tillgängliga Runbooks som du kan bläddra i.
 1. Du kan använda sökrutan ovanför listan för att begränsa listan, eller så kan du använda filtren för att begränsa visningen efter utgivare, typ och sortering. Leta upp det Galleri objekt som du vill använda och markera det för att visa dess information.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Bläddra i Runbook-galleriet" lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Bläddra i Runbook-galleriet." lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
 
 1. Om du vill importera ett objekt klickar du på **Importera** på bladet information.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Visa information om ett objekt i Runbook-galleriet" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Visa information om ett objekt i Runbook-galleriet." lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
 
 1. Du kan också ändra namnet på runbooken och sedan klicka på **OK** för att importera runbooken.
 1. Runbooken visas på fliken **Runbooks** för Automation-kontot.
@@ -67,11 +67,11 @@ Listan nedan innehåller några Runbooks som stöder vanliga scenarier. En fulls
 1. Välj **Källa: GitHub**.
 1. Du kan använda filtren ovanför listan för att begränsa visningen efter utgivare, typ och sortering. Leta upp det Galleri objekt som du vill använda och markera det för att visa dess information.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Bläddra i GitHub-galleriet" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Bläddra i GitHub-galleriet." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
 
 1. Om du vill importera ett objekt klickar du på **Importera** på bladet information.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Detaljerad vy av en Runbook från GitHub-galleriet" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Detaljerad vy av en Runbook från GitHub-galleriet." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
 
 1. Du kan också ändra namnet på runbooken och sedan klicka på **OK** för att importera runbooken.
 1. Runbooken visas på fliken **Runbooks** för Automation-kontot.
@@ -86,7 +86,7 @@ Microsoft uppmuntrar dig att lägga till Runbooks i de PowerShell-galleriet som 
 1. Välj **moduler** under **delade resurser** för att öppna listan över moduler.
 1. Klicka på **Bläddra i galleriet** överst på sidan.
 
-      :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Vy över modulens Galleri" lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
+      :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Vy över modulens Galleri." lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
 1. På sidan bläddra i galleriet kan du söka efter matchningar i något av följande fält med hjälp av sökrutan:
 
@@ -99,7 +99,7 @@ Microsoft uppmuntrar dig att lägga till Runbooks i de PowerShell-galleriet som 
 
    När du ökar detalj nivån i en speciell modul kan du Visa mer information. Den här informationen innehåller en länk tillbaka till PowerShell-galleriet, eventuella nödvändiga beroenden och alla cmdletar eller DSC-resurser som modulen innehåller.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Detaljerad vy av en modul från galleriet" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Detaljerad vy av en modul från galleriet." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
 
 1. Klicka på **Importera** för att installera modulen direkt i Azure Automation.
 1. I fönstret Importera kan du se namnet på den modul som ska importeras. Om alla beroenden är installerade aktive ras knappen **OK** . Om du saknar beroenden måste du importera dessa beroenden innan du kan importera den här modulen.

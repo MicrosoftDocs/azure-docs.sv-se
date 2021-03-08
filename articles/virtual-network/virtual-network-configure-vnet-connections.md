@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943660"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452109"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurera och verifiera virtuella nätverk eller VPN-anslutningar
 
@@ -248,7 +248,7 @@ BGP kan också aktivera överförings dirigering mellan flera nätverk genom att
 
 Information om hur du konfigurerar en VPN-anslutning som använder BGP finns i [så här konfigurerar du BGP på Azure VPN-gatewayer med hjälp av PowerShell](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Aktivera BGP på den virtuella Nätverksgatewayen genom att skapa ett autonomt system (AS)-nummer för det. Basic gateways stöder inte BGP. Om du vill kontrol lera SKU för gatewayen går du till avsnittet **Översikt** på bladet **VPN gateway** i Azure Portal. Om SKU: n är **Basic** måste du ändra SKU: n (se ändra [storlek på gatewayen](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) till **VpnGw1**. 
+Aktivera BGP på den virtuella Nätverksgatewayen genom att skapa ett autonomt system (AS)-nummer för det. Basic gateways stöder inte BGP. Om du vill kontrol lera SKU för gatewayen går du till avsnittet **Översikt** på bladet **VPN gateway** i Azure Portal. Om SKU: n är **Basic** måste du ändra SKU: n (se ändra [storlek på gatewayen](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)) till **VpnGw1**. 
 
 Att kontrol lera SKU: n kommer att orsaka 20 till 30 minuters stillestånds tid. Så snart gatewayen har rätt SKU kan du lägga till AS-numret med hjälp av PowerShell-kommandot för [set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) . När du har konfigurerat AS-numret kommer en BGP peer-IP för gatewayen att tillhandahållas automatiskt.
 

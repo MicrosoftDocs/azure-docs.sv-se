@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ad5bb90a0df68cc6c1c230c234c1f695312da3d8
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014220"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451787"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus köer utdata från Azure Stream Analytics
 
@@ -69,9 +69,9 @@ Följande bild visar förväntade egenskaper för utmatnings meddelande som insp
 
 ## <a name="system-properties"></a>Systemegenskaper
 
-Du kan koppla frågenoder som [system egenskaper](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) till den utgående Service Bus-kön eller ämnes meddelanden.
+Du kan koppla frågenoder som [system egenskaper](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) till den utgående Service Bus-kön eller ämnes meddelanden.
 
-De här kolumnerna hamnar inte i nytto lasten i stället för motsvarande BrokeredMessage [system egenskap](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) fylls med värdena i kolumnen fråga.
+De här kolumnerna hamnar inte i nytto lasten i stället för motsvarande BrokeredMessage [system egenskap](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) fylls med värdena i kolumnen fråga.
 Dessa system egenskaper stöds – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Sträng värden för de här kolumnerna tolkas som motsvarande typ av system egenskaps värde och eventuella tolknings fel behandlas som data fel.

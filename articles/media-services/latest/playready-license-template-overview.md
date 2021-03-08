@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 23b0f92a4beca6e1c986993a42cc8ac66e619177
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955196"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455441"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 med PlayReady-licens mal len
 
@@ -65,7 +65,7 @@ XML-koden överensstämmer med den PlayReady-licensserver som definierats i XML 
 
 Media Services tillhandahåller typer som du kan använda för att konfigurera en PlayReady-licens mal len. 
 
-Kodfragmentet som följer använder Media Services .NET-klasser för att konfigurera PlayReady-licens mal len. Klasserna definieras i namn området [Microsoft. Azure. Management. Media. Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) . Kodfragmentet konfigurerar PlayRight för PlayReady-licensen. PlayRight ger användaren möjlighet att spela upp innehåll som omfattas av begränsningar som kon figurer ATS i licensen och på själva PlayRight (för uppspelnings princip). En stor del av principen på en PlayRight avser utmatnings begränsning som styr vilka typer av utdata som innehållet kan spelas upp över. Den innehåller också alla begränsningar som måste placeras på plats när en specifik utmatning används. Om DigitalVideoOnlyContentRestriction till exempel är aktive rad tillåter DRM-körningen bara att videon visas över digitala utdata. (Analoga video utmatningar är inte tillåtna för att skicka innehållet.)
+Kodfragmentet som följer använder Media Services .NET-klasser för att konfigurera PlayReady-licens mal len. Klasserna definieras i namn området [Microsoft. Azure. Management. Media. Models](/dotnet/api/microsoft.azure.management.media.models) . Kodfragmentet konfigurerar PlayRight för PlayReady-licensen. PlayRight ger användaren möjlighet att spela upp innehåll som omfattas av begränsningar som kon figurer ATS i licensen och på själva PlayRight (för uppspelnings princip). En stor del av principen på en PlayRight avser utmatnings begränsning som styr vilka typer av utdata som innehållet kan spelas upp över. Den innehåller också alla begränsningar som måste placeras på plats när en specifik utmatning används. Om DigitalVideoOnlyContentRestriction till exempel är aktive rad tillåter DRM-körningen bara att videon visas över digitala utdata. (Analoga video utmatningar är inte tillåtna för att skicka innehållet.)
 
 > [!IMPORTANT]
 > PlayReady-licensen har kraftfulla begränsningar. Om utdatafilerna är för begränsade kan det hända att innehållet inte kan spelas upp på vissa klienter. Mer information finns i reglerna för [PlayReady-efterlevnad](https://www.microsoft.com/playready/licensing/compliance/).

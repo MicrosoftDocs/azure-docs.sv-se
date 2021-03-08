@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789355"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449874"
 ---
 # <a name="expressroute-faq"></a>Vanliga frågor och svar för ExpressRoute
 
@@ -40,9 +40,9 @@ Se [pris](https://azure.microsoft.com/pricing/details/expressroute/) information
 
 Ja, ExpressRoute-kretsens bandbredd är duplex. Om du till exempel köper en 200 Mbit/s ExpressRoute-krets, ska du köpa 200 Mbit/s för ingress trafik och 200 Mbit/s för utgående trafik.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Om jag betalar för en ExpressRoute-krets för en specifik bandbredd, måste VPN-anslutningen jag köper från min nätverks leverantör ha samma hastighet?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-private-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Om jag betalar för en ExpressRoute-krets med en specifik bandbredd, måste den privata anslutningen jag köper från min nätverks leverantör ha samma hastighet?
 
-Nej. Du kan köpa en VPN-anslutning för valfri hastighet från din tjänst leverantör. Anslutningen till Azure är dock begränsad till den ExpressRoute krets bandbredd som du köper.
+Nej. Du kan köpa en privat anslutning till valfri hastighet från din tjänst leverantör. Anslutningen till Azure är dock begränsad till den ExpressRoute krets bandbredd som du köper.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Har jag möjlighet att använda mer än min upphandlade bandbredd om jag betalar för en ExpressRoute-krets för en specifik bandbredd?
 
@@ -258,9 +258,13 @@ Om du annonserar standard vägar tvingar vi trafik till tjänster som erbjuds vi
 
 Ja. Virtuella datorer som distribueras i virtuella nätverk som är anslutna till samma ExpressRoute-krets kan kommunicera med varandra. Vi rekommenderar att du konfigurerar [peering för virtuella nätverk](../virtual-network/virtual-network-peering-overview.md) för att under lätta kommunikationen.
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Kan jag använda plats-till-plats-anslutning för virtuella nätverk tillsammans med ExpressRoute?
+### <a name="can-i-set-up-a-site-to-site-vpn-connection-to-my-virtual-network-in-conjunction-with-expressroute"></a>Kan jag konfigurera en VPN-anslutning från plats till plats till mitt virtuella nätverk tillsammans med ExpressRoute?
 
 Ja. ExpressRoute kan samverka med plats-till-plats-VPN. Se [Konfigurera ExpressRoute-och plats-till-plats-sambefintliga anslutningar](expressroute-howto-coexist-resource-manager.md).
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Hur gör jag för att aktivera routning mellan min plats-till-plats-VPN-anslutning och min ExpressRoute?
+
+Om du vill aktivera routning mellan din gren som är ansluten till Expressoute och din gren är ansluten till en plats-till-plats-VPN-anslutning måste du konfigurera [Azure Route Server](../route-server/expressroute-vpn-support.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Varför finns det en offentlig IP-adress som är associerad med ExpressRoute-gatewayen på ett virtuellt nätverk?
 

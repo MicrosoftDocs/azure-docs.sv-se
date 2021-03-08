@@ -4,12 +4,12 @@ description: Vanliga frågor och svar om Service Fabric, inklusive funktioner, a
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e03ccf432852a5fc9ee700ba0e39dfe2e64fcc9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292855"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456104"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Vanliga frågor och svar om Service Fabric
 
@@ -22,7 +22,7 @@ Det finns många vanliga frågor om vad Service Fabric kan göra och hur det ska
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hur gör jag för att återställa min Service Fabric kluster certifikat?
 
-Att återställa all uppgradering till programmet kräver identifiering av hälso tillstånd innan ditt Service Fabric-klusterkvorum genomför ändringen. genomförda ändringar kan bara vidarebefordras. Det kan vara nödvändigt att återställa klustret med hjälp av kund support tjänster, om en oövervakad ändring av certifikatet har introducerats.  [Service Fabric programmets program uppgradering](./service-fabric-application-upgrade.md?branch=master) tillämpar [parametrarna för program uppgradering](./service-fabric-application-upgrade-parameters.md?branch=master)och ger noll avbrotts löfte.  Efter den rekommenderade program uppgraderingens övervakade läge baseras automatisk förloppet via uppdaterings domäner på hälso kontroller som passerar, och återställs automatiskt om det inte går att uppdatera en standard tjänst.
+Att återställa all uppgradering till programmet kräver identifiering av hälso tillstånd innan ditt Service Fabric-klusterkvorum genomför ändringen. genomförda ändringar kan bara vidarebefordras. Det kan vara nödvändigt att återställa klustret med hjälp av kund support tjänster, om en oövervakad ändring av certifikatet har introducerats.  [Service Fabric programmets program uppgradering](./service-fabric-application-upgrade.md) tillämpar [parametrarna för program uppgradering](./service-fabric-application-upgrade-parameters.md)och ger noll avbrotts löfte.  Efter den rekommenderade program uppgraderingens övervakade läge baseras automatisk förloppet via uppdaterings domäner på hälso kontroller som passerar, och återställs automatiskt om det inte går att uppdatera en standard tjänst.
  
 Om klustret fortfarande använder den klassiska certifikatets tumavtryck-egenskap i din Resource Manager-mall, rekommenderar vi att du [ändrar klustret från certifikatets tumavtryck till ett eget namn](./service-fabric-cluster-change-cert-thumbprint-to-cn.md), för att utnyttja moderna hemligheter-hanterings funktioner.
 

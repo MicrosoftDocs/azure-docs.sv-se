@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175098"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452245"
 ---
 # <a name="string-claims-transformations"></a>Transformeringar av sträng anspråk
 
@@ -326,6 +326,77 @@ I följande exempel genereras ett heltals slump värde mellan 0 och 1000. Värde
     - **outputClaim**: OTP_853
 
 
+## <a name="formatlocalizedstring"></a>FormatLocalizedString
+
+Formatera flera anspråk enligt en angiven lokaliserad format sträng. Den här omvandlingen använder C#- `String.Format` metoden.
+
+
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaims |  |sträng | Insamlingen av ingångs anspråk som fungerar som sträng format {0} , {1} {2} parametrar. |
+| InputParameter | stringFormatId | sträng |  `StringId`För en [lokaliserad sträng](localization.md).   |
+| OutputClaim | outputClaim | sträng | Den ClaimType som skapas efter att den här anspråks omvandlingen har anropats. |
+
+> [!NOTE]
+> Den största tillåtna storleken för sträng format är 4000.
+
+Så här använder du omvandling av FormatLocalizedString-anspråk:
+
+1. Definiera en [lokaliserings sträng](localization.md)och koppla den till en [självkontrollerad teknisk profil](self-asserted-technical-profile.md).
+1. `ElementType`För `LocalizedString` elementet måste anges till `FormatLocalizedStringTransformationClaimType` .
+1. `StringId`Är en unik identifierare som du definierar och använder den senare i din anspråks omvandling `stringFormatId` .
+1. I omvandling för anspråk anger du listan över anspråk som ska ställas in med den lokaliserade strängen. Ange sedan `stringFormatId` till `StringId` för det lokaliserade sträng elementet. 
+1. I en [självkontrollerad teknisk profil](self-asserted-technical-profile.md), eller en transformering av [visnings kontroll](display-controls.md) indata eller utgående anspråk, gör du en referens till din anspråks omvandling.
+
+
+I följande exempel genereras ett fel meddelande när ett konto redan finns i katalogen. Exemplet definierar lokaliserade strängar för engelska (standard) och spanska.
+
+```xml
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
+      </LocalizedStrings>
+    </LocalizedResources>
+  <LocalizedResources Id="api.localaccountsignup.es">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">Este correo electrónico "{0}" ya es una cuenta de esta organización. Haga clic en Siguiente para iniciar sesión con esa cuenta.</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+Transformationen Claims skapar ett svars meddelande baserat på den lokaliserade strängen. Meddelandet innehåller användarens e-postadress som är inbäddad i den lokaliserade STING- *ResponseMessge_EmailExists*.
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Exempel
+
+- Inmatade anspråk:
+    - **inputClaim**: sarah@contoso.com
+- Indataparametrar:
+    - **stringFormat**: ResponseMessge_EmailExists
+- Utgående anspråk:
+  - **outputClaim**: e-postmeddelandet sarah@contoso.com är redan ett konto i den här organisationen. Klicka på Nästa för att logga in med det kontot.
+
+
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
 Formatera ett anspråk enligt den angivna format strängen. Den här omvandlingen använder C#- `String.Format` metoden.
@@ -335,6 +406,9 @@ Formatera ett anspråk enligt den angivna format strängen. Den här omvandlinge
 | InputClaim | inputClaim |sträng |Den ClaimType som fungerar som sträng format {0} parameter. |
 | InputParameter | stringFormat | sträng | Sträng formatet, inklusive {0}  parametern. Den här Indataparametern stöder [omvandlings uttryck för sträng anspråk](string-transformations.md#string-claim-transformations-expressions).  |
 | OutputClaim | outputClaim | sträng | Den ClaimType som skapas efter att den här anspråks omvandlingen har anropats. |
+
+> [!NOTE]
+> Den största tillåtna storleken för sträng format är 4000.
 
 Använd den här anspråks omvandlingen för att formatera en sträng med en parameter {0} . I följande exempel skapas ett **userPrincipalName**. Alla tekniska profiler för sociala identitets leverantörer, till exempel `Facebook-OAUTH` anropar **CreateUserPrincipalName** för att generera ett **userPrincipalName**.
 
@@ -371,6 +445,9 @@ Formatera två anspråk enligt den angivna format strängen. Den här omvandling
 | InputClaim | inputClaim | sträng | Den ClaimType som fungerar som sträng format {1} parameter. |
 | InputParameter | stringFormat | sträng | Sträng formatet, inklusive {0} {1} parametrarna och. Den här Indataparametern stöder [omvandlings uttryck för sträng anspråk](string-transformations.md#string-claim-transformations-expressions).   |
 | OutputClaim | outputClaim | sträng | Den ClaimType som skapas efter att den här anspråks omvandlingen har anropats. |
+
+> [!NOTE]
+> Den största tillåtna storleken för sträng format är 4000.
 
 Använd den här anspråks omvandlingen för att formatera en sträng med två parametrar {0} och {1} . I följande exempel skapas ett **DisplayName** med det angivna formatet:
 

@@ -4,12 +4,12 @@ description: Förstå hur du utvecklar funktioner med python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044263"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455424"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Guide för Azure Functions python-utvecklare
 
@@ -51,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Använd python-anteckningarna som ingår i [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) -paketet för att binda indata och utdata till dina metoder.
+Använd python-anteckningarna som ingår i [Azure. functions. *](/python/api/azure-functions/azure.functions) -paketet för att binda indata och utdata till dina metoder.
 
 ## <a name="alternate-entry-point"></a>Alternativ Start punkt
 
@@ -199,7 +199,7 @@ Utdata kan uttryckas både i retur värde och utdataparametrar. Om det bara finn
 
 Om du vill använda returvärdet för en funktion som värde för en utgående bindning `name` ska egenskapen för bindningen anges till `$return` i `function.json` .
 
-Om du vill skapa flera utdata använder du `set()` metoden som tillhandahålls av [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) gränssnittet för att tilldela ett värde till bindningen. Följande funktion kan till exempel skicka ett meddelande till en kö och även returnera ett HTTP-svar.
+Om du vill skapa flera utdata använder du `set()` metoden som tillhandahålls av [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out) gränssnittet för att tilldela ett värde till bindningen. Följande funktion kan till exempel skicka ett meddelande till en kö och även returnera ett HTTP-svar.
 
 ```json
 {
@@ -306,7 +306,7 @@ För skalnings-och prestanda metod tips för python Function-appar, se [artikeln
 
 ## <a name="context"></a>Kontext
 
-Om du vill hämta anrops kontexten för en funktion under körningen ska du inkludera [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) argumentet i signaturen.
+Om du vill hämta anrops kontexten för en funktion under körningen ska du inkludera [`context`](/python/api/azure-functions/azure.functions.context) argumentet i signaturen.
 
 Exempel:
 
@@ -319,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**Kontext**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) klassen har följande String-attribut:
+[**Kontext**](/python/api/azure-functions/azure.functions.context) klassen har följande String-attribut:
 
 `function_directory` Katalogen där funktionen körs.
 
@@ -640,7 +640,7 @@ Alla kända problem och funktions begär Anden spåras med hjälp av listan med 
 
 Mer information finns i följande resurser:
 
-* [Dokumentation om Azure Functions Package API](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
+* [Dokumentation om Azure Functions Package API](/python/api/azure-functions/azure.functions)
 * [Metodtips för Azure Functions](functions-best-practices.md)
 * [Azure Functions utlösare och bindningar](functions-triggers-bindings.md)
 * [Blob Storage-bindningar](functions-bindings-storage-blob.md)
@@ -651,5 +651,5 @@ Mer information finns i följande resurser:
 [Har du problem? Berätta för oss.](https://aka.ms/python-functions-ref-survey)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse

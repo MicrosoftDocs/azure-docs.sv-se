@@ -3,16 +3,16 @@ title: gRPC Extension Protocol – Azure
 description: I den här artikeln får du lära dig mer om att använda gRPC-tilläggsprogram för att skicka meddelanden mellan Live Video Analytics-modulen och ditt AI eller ka anpassade tillägg.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401635"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455864"
 ---
 # <a name="grpc-extension-protocol"></a>Protokoll för gRPC-tillägg
 
-Med live video analys på IoT Edge kan du utöka medie diagrammets bearbetnings funktioner via en [nod i diagram tillägget](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update). Om du använder gRPC Extension-processorn som tilläggsprovider är kommunikationen mellan Live Video Analytics-modulen och din AI-eller ka-modul över gRPC-baserade, högpresterande strukturerat protokoll.
+Med live video analys på IoT Edge kan du utöka medie diagrammets bearbetnings funktioner via en [nod i diagram tillägget](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept). Om du använder gRPC Extension-processorn som tilläggsprovider är kommunikationen mellan Live Video Analytics-modulen och din AI-eller ka-modul över gRPC-baserade, högpresterande strukturerat protokoll.
 
 I den här artikeln får du lära dig mer om att använda gRPC-tilläggsprogram för att skicka meddelanden mellan Live Video Analytics-modulen och ditt AI eller ka anpassade tillägg.
 
@@ -25,7 +25,7 @@ En gRPC-session är en enskild anslutning från gRPC-klienten till gRPC-servern 
 
 I en enda session: klienten skickar en Media Stream-Beskrivning följt av video bild rutor till servern som ett [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) -meddelande över gRPC Stream-sessionen. Servern verifierar Stream-beskrivningen, analyserar video ramen och returnerar utöknings resultat som ett protobuf-meddelande. 
 
-Vi rekommenderar starkt att svaren returneras med giltiga JSON-dokument efter det företablerade schemat som definierats enligt [schema objekt modellen för härledning av metadata](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update). Detta säkerställer bättre samverkan med andra komponenter och möjliga framtida funktioner som läggs till i modulen för video analys i real tid.
+Vi rekommenderar starkt att svaren returneras med giltiga JSON-dokument efter det företablerade schemat som definierats enligt [schema objekt modellen för härledning av metadata](/azure/media-services/live-video-analytics-edge/inference-metadata-schema). Detta säkerställer bättre samverkan med andra komponenter och möjliga framtida funktioner som läggs till i modulen för video analys i real tid.
 
 ![kontrakt för gRPC-tillägg](./media/grpc-extension-protocol/grpc.png)
 

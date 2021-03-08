@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: 7e0fe85007aae69bf79557e0f094e275f538d280
-  ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
-  ms.translationtype: HT
+  ms.openlocfilehash: ccf8dd232bdfa703400a949c8dd948fe9ba21f54
+  ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97683424"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102454931"
 landingContent:
 - title: Om API:et för avvikelseidentifiering
   linkLists:
@@ -58,8 +58,6 @@ landingContent:
     links:
     - text: Visualisera avvikelser med batchidentifiering och Power BI
       url: tutorials/batch-anomaly-detection-powerbi.md
-    - text: Identifiera avvikelser i strömmade data med hjälp av Azure Databricks
-      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: Avvikelseidentifiering på strömmade data med hjälp av Azure Databricks

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522962"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449228"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Felsöknings guide för säkerhetsagent (Linux)
 
@@ -28,10 +28,9 @@ Azure Defender för IoT-agenten startar direkt efter installationen. Agentens st
 
 I den här fel söknings guiden får du lära dig att:
 
-> [!div class="checklist"]
-> * Verifiera om säkerhets agenten körs
-> * Hämta säkerhets agent fel
-> * Förstå och åtgärda säkerhets agent fel
+- Verifiera om säkerhets agenten körs
+- Hämta säkerhets agent fel
+- Förstå och åtgärda säkerhets agent fel
 
 ## <a name="validate-if-the-security-agent-is-running"></a>Verifiera om säkerhets agenten körs
 
@@ -108,4 +107,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs [översikten över](overview.md) Defender for IoT-tjänsten Läs mer om Defender för IoT- [arkitektur](architecture.md) aktivera Defender för IoT [-tjänsten](quickstart-onboard-iot-hub.md) Läs [vanliga frågor och svar](resources-frequently-asked-questions.md) om Defender för IoT-tjänsten Läs mer om hur du kommer åt [rå säkerhets data](how-to-security-data-access.md) förstå [rekommendationer](concept-recommendations.md) förstå säkerhets [aviseringar](concept-security-alerts.md)
+- Läs [översikten över](overview.md) Defender for IoT-tjänsten
+- Läs mer om Defender för IoT- [arkitektur](architecture.md)
+- Aktivera [tjänsten](quickstart-onboard-iot-hub.md) Defender för IoT
+- Läs [vanliga frågor och svar](resources-frequently-asked-questions.md) om Defender för IoT-tjänsten
+- Lär dig hur du kommer åt [rå säkerhets data](how-to-security-data-access.md)
+- Förstå [rekommendationer](concept-recommendations.md)
+- Förstå säkerhets [aviseringar](concept-security-alerts.md)

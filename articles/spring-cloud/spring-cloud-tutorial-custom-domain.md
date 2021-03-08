@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6b2134ffd414aed3ed6561fb34544094eb52baa0
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844735"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452483"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mappa en befintlig anpassad domän till Azure våren Cloud
 
@@ -104,7 +104,7 @@ Du måste ge Azure våren Cloud åtkomst till ditt nyckel valv innan du importer
 
 | Hemlig behörighet | Certifikat behörighet | Välj huvud konto |
 |--|--|--|
-| Hämta, lista | Hämta, lista | Azure våren Cloud Domain-Management |
+| Hämta, Lista | Hämta, Lista | Azure våren Cloud Domain-Management |
 
 ![Importera certifikat 2](./media/custom-dns-tutorial/import-certificate-b.png)
 
@@ -156,7 +156,7 @@ Gå till DNS-providern och Lägg till en CNAME-post för att mappa din domän ti
 ![Sida för DNS-poster](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Mappa din anpassade domän till Azure våren Cloud-appen
-Om du inte har ett program i Azure våren-molnet följer du anvisningarna i [snabb start: starta ett befintligt Azure våren Cloud-program med hjälp av Azure Portal](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master).
+Om du inte har ett program i Azure våren-molnet följer du anvisningarna i [snabb start: starta ett befintligt Azure våren Cloud-program med hjälp av Azure Portal](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal).
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Gå till program sidan.

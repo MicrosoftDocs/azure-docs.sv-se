@@ -2,14 +2,14 @@
 title: Välj VM-storlekar och avbildningar för pooler
 description: Hur du väljer mellan tillgängliga VM-storlekar och OS-versioner för datornoderna i Azure Batch pooler
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576709"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455203"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Välj en VM-storlek och avbildning för Compute-noder i en Azure Batch pool
 
@@ -35,13 +35,11 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | DC | Stöds inte |
 | Dv2, DSv2 | Alla storlekar |
 | Dv3, Dsv3 | Alla storlekar |
-| Dav4 | Alla storlekar |
-| Dasv4 | Alla storlekar |
+| Dav4, Dasv4 | Alla storlekar |
 | Ddv4, Ddsv4 |  Alla storlekar |
 | Dv4, Dsv4 | Stöds inte |
 | Ev3, Esv3 | Alla storlekar, förutom E64is_v3 |
-| Eav4 | Alla storlekar |
-| Easv4 | Alla storlekar |
+| Eav4, Easv4 | Alla storlekar |
 | Edv4, Edsv4 |  Alla storlekar |
 | Ev4, Esv4 | Stöds inte |
 | F, FS | Alla storlekar |
@@ -58,7 +56,7 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | NC | Alla storlekar |
 | NCv2 | Alla storlekar |
 | NCv3 | Alla storlekar |
-| NCasT4_v3 | Ingen – ännu inte tillgänglig |
+| NCasT4_v3 | Alla storlekar |
 | ND | Alla storlekar |
 | NDv2 | Ingen – ännu inte tillgänglig |
 | NV | Alla storlekar |

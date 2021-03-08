@@ -258,6 +258,8 @@
         - name: Använda Resource Manager-mallar
           displayName: arm
           href: how-to-create-workspace-template.md
+        - name: Länka till Azure Synapse Analytics-arbetsyta
+          href: how-to-link-synapse-ml-workspaces.md
     - name: Skapa och hantera beräkningsresurser
       items:
         - name: Beräkninsinstans

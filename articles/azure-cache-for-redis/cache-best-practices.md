@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178124"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454744"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bästa praxis för Azure Cache for Redis 
 Genom att följa dessa rekommendationer kan du maximera prestanda och kostnads effektiv användning av Azure-cachen för Redis-instansen.
@@ -74,7 +74,7 @@ Om du vill testa hur koden fungerar under fel tillstånd, kan du överväga att 
  * **Vi rekommenderar att du använder Dv2 VM-serien** för din klient eftersom de har bättre maskin vara och ger bästa möjliga resultat.
  * Kontrol lera att den virtuella klient datorn som du använder har * minst *lika mycket data bearbetning och bandbredd* som det cacheminne som testas. 
  * **Testa under växlings villkor** i cacheminnet. Det är viktigt att se till att du inte testar ditt cacheminne enbart under stabila tillstånds villkor. Testa också under failover-villkor och mät belastningen på CPU/server i cacheminnet under den tiden. Du kan initiera en redundansväxling genom [att starta om den primära noden](cache-administration.md#reboot). På så sätt kan du se hur programmet beter sig med avseende på data flöde och svars tid under redundansväxlingen (sker under uppdateringar och kan ske under en oplanerad händelse). Vi rekommenderar att du vill se belastningen på CPU/Server-belastningen till mer än 80% även under en redundansväxling, eftersom detta kan påverka prestandan.
- * **Premium P2 och ovan** finns på virtuella datorer med 4 eller fler kärnor. Detta är användbart för att distribuera arbets belastningen TLS-kryptering/dekryptering över flera kärnor för att öka den totala processor användningen.  [Här finns mer information kring VM-storlekar och kärnor](cache-planning-faq.md#azure-cache-for-redis-performance)
+ * **Vissa cache-storlekar** finns på virtuella datorer med 4 eller fler kärnor. Detta är användbart för att distribuera TLS-kryptering/dekryptering samt TLS-anslutning/från kopplings arbets belastningar över flera kärnor för att öka den totala processor användningen på virtuella cache-datorer.  [Här finns mer information kring VM-storlekar och kärnor](cache-planning-faq.md#azure-cache-for-redis-performance)
  * **Aktivera VRSS** på klient datorn om du använder Windows.  [Mer information finns här](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Exempel på PowerShell-skript:
      >PowerShell – ExecutionPolicy obegränsad Enable-NetAdapterRSS-namn (Get-netadapter). Namn 
 

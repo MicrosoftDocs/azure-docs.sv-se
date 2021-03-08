@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
 - name: Begrepp
   items:
+    - name: Klassificera data med hjälp av entiteter
+      href: entities-in-azure-sentinel.md
     - name: Hantera åtkomst
       items:
         - name: Behörigheter i Azure Sentinel
@@ -33,18 +35,20 @@
           href: resource-context-rbac.md
     - name: Avancerad attackidentifiering i flera faser
       href: fusion.md
-    - name: Ta med en egen maskininlärningsmodell
-      href: bring-your-own-ml.md
-    - name: Utöka Azure Sentinel för arbetsytor och klientorganisationer
-      href: extend-sentinel-across-workspaces-tenants.md
     - name: Identifiera avancerade hot med UEBA
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Importera hotinformation till Azure Sentinel
       href: import-threat-intelligence.md
+    - name: Ta med en egen maskininlärningsmodell
+      href: bring-your-own-ml.md
     - name: Integrera Microsoft 365 Defender med Azure Sentinel
       href: microsoft-365-defender-sentinel-integration.md
     - name: Använda externa data med visningslistor
       href: watchlists.md
+    - name: Tilldela behörigheter med hjälp av roller
+      href: roles.md
+    - name: Utöka Azure Sentinel för arbetsytor och klientorganisationer
+      href: extend-sentinel-across-workspaces-tenants.md
     - name: Normalisera data i tabeller
       href: normalization.md
     - name: Säkerhet
@@ -84,7 +88,7 @@
               href: connect-office-365-advanced-threat-protection.md
             - name: Azure Defender-aviseringar från ASC
               href: connect-azure-security-center.md
-            - name: Azure Defender (tidigare ASC) för IoT
+            - name: Defender för IoT (tidigare ASC för IoT)
               href: connect-asc-iot.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
@@ -242,12 +246,16 @@
           href: monitor-data-connector-health.md
     - name: Aktivera användar-och enhets beteende analys
       href: enable-entity-behavior-analytics.md
+    - name: Mappa data fält till entiteter
+      href: map-data-fields-to-entities.md
     - name: Hantera flera klientorganisationer (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Arbeta med incidenter på flera arbetsytor
       href: multiple-workspace-view.md
     - name: Konfigurera kundhanterade nycklar (CMK)
       href: customer-managed-keys.md
+    - name: Anpassad information om ytan i aviseringar
+      href: surface-custom-details-in-alerts.md
     - name: Skapa incidenter från aviseringar
       href: create-incidents-from-alerts.md
     - name: Hantera SOC bättre med incidentmått
@@ -265,10 +273,10 @@
           href: livestream.md
     - name: Ta bort Azure Sentinel
       href: offboard.md
-    - name: Implementera avancerad RBAC
-      items: null
 - name: Referens
   items:
+    - name: Bästa Azure Sentinel-arbetsböcker
+      href: top-workbooks.md
     - name: Azure RBAC-roller
       items:
         - name: Alla Azure-roller
@@ -285,6 +293,8 @@
           href: watchlist-with-rest-api.md
     - name: Logic Apps-anslutningsappen i Azure Sentinel
       href: /connectors/azuresentinel/
+    - name: Entitetsreferens
+      href: entities-reference.md
     - name: Schema för nätverksnormalisering
       href: normalization-schema.md
     - name: Schema referens för data Källa
