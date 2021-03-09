@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a4eb22320a15cc76a7543c25583003d57ea4e538
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98225209"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473898"
 ---
 Genom att använda regional VNet-integrering kan din app komma åt:
 
@@ -38,6 +38,8 @@ Som standard dirigerar din app endast RFC1918 trafik till ditt VNet. Om du vill 
 
 > [!NOTE]
 > Om du dirigerar all utgående trafik till ditt VNet, omfattas den av NSG: er och UDR som tillämpas på ditt integrations undernät. När du dirigerar all utgående trafik till ditt VNet, är dina utgående adresser fortfarande de utgående adresser som visas i dina app-egenskaper, om du inte tillhandahåller vägar för att skicka trafiken någon annan stans.
+> 
+> Regional VNet-integrering kan inte använda port 25.
 
 Det finns vissa begränsningar med att använda VNet-integrering med virtuella nätverk i samma region:
 

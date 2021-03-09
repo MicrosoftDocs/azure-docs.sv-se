@@ -2,20 +2,36 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f93f4d4e3295a0f08ac2e9f3e5826d3c8e6f6e4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5c1ac3f79ab5db2622dafd3229b39bbe19bce41e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561608"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473669"
 ---
 Beroende på klientens operativ system är procedurerna för fjärr anslutning till enheten olika.
 
 ### <a name="remotely-connect-from-a-windows-client"></a>Fjärrans luta från en Windows-klient
 
-Innan du börjar kontrollerar du att Windows-klienten kör Windows PowerShell 5,0 eller senare.
+
+#### <a name="prerequisites"></a>Krav
+
+Innan du börjar ska du kontrollera att:
+
+- Windows-klienten kör Windows PowerShell 5,0 eller senare.
+- Din Windows-klient har den signerings kedja (rot certifikat) som motsvarar det nod-certifikat som är installerat på enheten. Detaljerade anvisningar finns i [Installera certifikat på Windows-klienten](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- `hosts`Filen som finns på `C:\Windows\System32\drivers\etc` för din Windows-klient har en post som motsvarar nodens certifikat i följande format:
+
+    `<Device IP>    <Node serial number>.<DNS domain of the device>`
+
+    Här är ett exempel på en post för `hosts` filen:
+ 
+    `10.100.10.10    1HXQG13.wdshcsso.com`
+  
+
+#### <a name="detailed-steps"></a>Detaljerade steg
 
 Följ de här stegen för att fjärrans luta från en Windows-klient.
 
@@ -23,6 +39,8 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
 2. Kontrol lera att tjänsten Windows Remote Management körs på klienten. Skriv följande i kommandotolken:
 
     `winrm quickconfig`
+
+    Mer information finns i [installation och konfiguration för Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
 3. Tilldela en variabel till enhetens IP-adress.
 
@@ -36,7 +54,12 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
 
 5. Starta en Windows PowerShell-session på enheten:
 
-    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
+    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL`
+
+    Om du ser ett fel som är relaterat till förtroende relationen kontrollerar du om signerings kedjan för det Node-certifikat som har överförts till enheten också installeras på klienten som har åtkomst till enheten.
+
+    > [!NOTE] 
+    > När du använder `-UseSSL` alternativet är du fjärr kommunikation via PowerShell över *https*. Vi rekommenderar att du alltid använder *https* för fjärr anslutning via PowerShell. Även om en *http-* session inte är den säkraste anslutnings metoden, är den acceptabel för betrodda nätverk.
 
 6. Ange lösen ordet när du uppmanas till det. Använd samma lösen ord som används för att logga in på det lokala webb gränssnittet. Standard lösen ordet för lokalt webb gränssnitt är *Password1*. När du ansluter till enheten via fjärr-PowerShell visas följande exempel på utdata:  
 
@@ -48,7 +71,7 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
     WinRM service is already running on this machine.
     PS C:\WINDOWS\system32> $ip = "10.100.10.10"
     PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force
-    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL
 
     WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
     [10.100.10.10]: PS>
@@ -58,11 +81,11 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
 
 På den Linux-klient som du ska använda för att ansluta:
 
-- [Installera den senaste PowerShell Core för Linux](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) från GitHub för att hämta SSH-funktionen för fjärr kommunikation. 
+- [Installera den senaste PowerShell Core för Linux](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6&preserve-view=true) från GitHub för att hämta SSH-funktionen för fjärr kommunikation. 
 - [Installera endast `gss-ntlmssp` paketet från NTLM-modulen](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). För Ubuntu-klienter använder du följande kommando:
     - `sudo apt-get install gss-ntlmssp`
 
-Mer information finns i PowerShell- [fjärrkommunikation via SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Mer information finns i PowerShell- [fjärrkommunikation via SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6&preserve-view=true).
 
 Följ de här stegen för att fjärrans luta från en NFS-klient.
 
@@ -72,7 +95,7 @@ Följ de här stegen för att fjärrans luta från en NFS-klient.
  
 2. För att ansluta med fjärran sluten klient skriver du:
 
-    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
+    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser -UseSSL`
 
     Ange det lösen ord som används för att logga in på enheten när du uppmanas till det.
  

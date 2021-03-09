@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 11/11/2020
 ms.author: baanders
-ms.openlocfilehash: 887d185249f96b5d3be4aab6a96aa3c6c4a85690
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02f6c59a76a3fdb7bd4360570b29d7b40a1aff8d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96231420"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473847"
 ---
-I den här artikeln beskrivs hur du slutför olika hanterings åtgärder med [Azure Digitals .net- **SDK**(C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true). Du kan också använda samma hanterings samtal med de andra språk-SDK: erna som beskrivs i [*anvisningar: använda Azures digitala dubbla API: er och SDK: er*](../articles/digital-twins/how-to-use-apis-sdks.md).
+I den här artikeln beskrivs hur du slutför olika hanterings åtgärder med [Azure Digitals .net- **SDK**(C#)](/dotnet/api/overview/azure/digitaltwins/management). Du kan också använda samma hanterings samtal med de andra språk-SDK: erna som beskrivs i [*anvisningar: använda Azures digitala dubbla API: er och SDK: er*](../articles/digital-twins/how-to-use-apis-sdks.md).
 
 > [!TIP] 
 > Kom ihåg att alla SDK-metoder ingår i synkrona och asynkrona versioner. För växlings anrop returneras asynkrona metoder `AsyncPageable<T>` när de synkrona versionerna returneras `Pageable<T>` .
