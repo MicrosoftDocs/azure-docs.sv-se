@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443581"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518746"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Övervaka och Visa ML körnings loggar och mått
 
@@ -39,7 +39,7 @@ Allmän information om hur du hanterar dina experiment finns i [starta, övervak
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Övervaka körningar med hjälp av widgeten Jupyter Notebook
 
-När du använder **ScriptRunConfig** -metoden för att skicka körningar kan du se förloppet för körningen med hjälp av [Jupyter-widgeten](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Precis som körningsöverföringen är widgeten asynkron och tillhandahåller liveuppdateringar var 10:e till var 15:e sekund tills jobbet har slutförts.
+När du använder **ScriptRunConfig** -metoden för att skicka körningar kan du se förloppet för körningen med hjälp av [Jupyter-widgeten](/python/api/azureml-widgets/azureml.widgets). Precis som körningsöverföringen är widgeten asynkron och tillhandahåller liveuppdateringar var 10:e till var 15:e sekund tills jobbet har slutförts.
 
 Visa widgeten Jupyter i väntan på att körningen ska slutföras.
     
@@ -127,7 +127,7 @@ Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det hä
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` projektbevakningsmappen
 
-|Fil  |Description  |
+|Fil  |Beskrivning  |
 |---------|---------|
 |20_image_build_log.txt     | Logg för Docker-avbildnings skapande för tränings miljön, valfritt, en per körning. Gäller endast när du uppdaterar din miljö. Annars återanvänds den cachelagrade avbildningen i AML. Om det lyckas innehåller avbildnings register information för motsvarande avbildning.         |
 |55_azureml-körning-<node_id # C1.txt     | STDOUT/stderr logg över värd verktyget, ett per nod. Hämtar bild till beräknings mål. OBS! den här loggen visas bara när du har skyddat beräknings resurser.         |
@@ -140,7 +140,7 @@ Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det hä
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` projektbevakningsmappen
 
-|Fil  |Description  |
+|Fil  |Beskrivning  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   system logg för jobb förberedelse        |
@@ -150,7 +150,7 @@ Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det hä
 
 När sidvagn är aktiverat körs jobb förberedelse-och jobb publicerings skripten i en sidvagn-behållare.  Det finns en mapp för varje nod. 
 
-|Fil  |Description  |
+|Fil  |Beskrivning  |
 |---------|---------|
 |start_cms.txt     |  Logg för processen som startar när den sidvagn-behållaren startar       |
 |prep_cmd.txt      |   Logg för ContextManagers som anges när körs `job_prep.py` (en del av detta kommer att strömmas till `azureml-logs/65-job_prep` )       |

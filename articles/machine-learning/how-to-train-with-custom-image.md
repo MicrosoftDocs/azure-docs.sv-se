@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601348"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521178"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Träna en modell med hjälp av en anpassad Docker-avbildning
 
@@ -32,7 +32,7 @@ Kör koden i någon av följande miljöer:
   * Leta upp en slutförd antecknings bok i Azure Machine Learning [exempel lagrings plats](https://github.com/Azure/azureml-examples)genom att gå till **antecknings böckerna**  >  **fastai**  >  **Train-sällskaps-resnet34. ipynb** Directory. 
 * Din egen Jupyter Notebook Server:
   * Skapa en [konfigurations fil för arbets ytor](how-to-configure-environment.md#workspace).
-  * Installera [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+  * Installera [Azure Machine Learning SDK](/python/api/overview/azure/ml/install). 
   * Skapa ett [Azure Container Registry](../container-registry/index.yml) eller andra Docker-register som är tillgängligt på Internet.
 
 ## <a name="set-up-a-training-experiment"></a>Konfigurera ett utbildnings experiment
@@ -41,7 +41,7 @@ I det här avsnittet ställer du in ditt utbildnings experiment genom att initie
 
 ### <a name="initialize-a-workspace"></a>Initiera en arbets yta
 
-[Azure Machine Learning-arbetsytan](concept-workspace.md) är resursen på den översta nivån för tjänsten. Det ger dig en central plats för att arbeta med alla artefakter som du skapar. I python SDK har du åtkomst till arbets ytans artefakter genom att skapa ett [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) objekt.
+[Azure Machine Learning-arbetsytan](concept-workspace.md) är resursen på den översta nivån för tjänsten. Det ger dig en central plats för att arbeta med alla artefakter som du skapar. I python SDK har du åtkomst till arbets ytans artefakter genom att skapa ett [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) objekt.
 
 Skapa ett `Workspace` objekt från config.jspå filen som du skapade som en [förutsättning](#prerequisites).
 
@@ -169,7 +169,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning kör utbildnings skript genom att kopiera hela käll katalogen. Om du har känsliga data som du inte vill överföra använder du en [. IGNORE-fil](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) eller inkluderar den inte i käll katalogen. I stället kan du komma åt dina data med hjälp av ett data [lager](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).
+> Azure Machine Learning kör utbildnings skript genom att kopiera hela käll katalogen. Om du har känsliga data som du inte vill överföra använder du en [. IGNORE-fil](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) eller inkluderar den inte i käll katalogen. I stället kan du komma åt dina data med hjälp av ett data [lager](/python/api/azureml-core/azureml.data).
 
 ## <a name="next-steps"></a>Nästa steg
 I den här artikeln har du tränat en modell med hjälp av en anpassad Docker-avbildning. Mer information om Azure Machine Learning finns i dessa artiklar:

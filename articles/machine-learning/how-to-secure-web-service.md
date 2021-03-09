@@ -10,12 +10,12 @@ author: aashishb
 ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 68163f7ca8cc1b37bda4e1224330f966265554c2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e0e25a804ac66ca33715906ce4d397b80887037d
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980481"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518559"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Använda TLS för att skydda en webbtjänst via Azure Machine Learning
 
@@ -82,9 +82,9 @@ För ACI-distribution kan du Aktivera TLS-avslutning vid modell distributions ti
 ### <a name="deploy-on-azure-kubernetes-service"></a>Distribuera på Azure Kubernetes service
 
   > [!NOTE]
-  > Informationen i det här avsnittet gäller även när du distribuerar en säker webb tjänst för designern. Om du inte är bekant med att använda python SDK, se [Vad är Azure Machine Learning SDK för python?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+  > Informationen i det här avsnittet gäller även när du distribuerar en säker webb tjänst för designern. Om du inte är bekant med att använda python SDK, se [Vad är Azure Machine Learning SDK för python?](/python/api/overview/azure/ml/intro).
 
-När du [skapar eller ansluter ett AKS-kluster](how-to-create-attach-kubernetes.md) i AML-arbetsytan kan du Aktivera TLS-avslutning med **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** och **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurations objekt. Båda metoderna returnerar ett konfigurations objekt som har en **enable_ssl** -Metod och du kan använda **enable_ssl** -metoden för att aktivera TLS.
+När du [skapar eller ansluter ett AKS-kluster](how-to-create-attach-kubernetes.md) i AML-arbetsytan kan du Aktivera TLS-avslutning med **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** och **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurations objekt. Båda metoderna returnerar ett konfigurations objekt som har en **enable_ssl** -Metod och du kan använda **enable_ssl** -metoden för att aktivera TLS.
 
 Du kan aktivera TLS antingen med Microsoft-certifikat eller ett anpassat certifikat som har köpts från CA. 
 
@@ -134,7 +134,7 @@ Du kan aktivera TLS antingen med Microsoft-certifikat eller ett anpassat certifi
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-Mer information om *enable_ssl* finns i [AksProvisioningConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) och [AksAttachConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
+Mer information om *enable_ssl* finns i [AksProvisioningConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) och [AksAttachConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
 ### <a name="deploy-on-azure-container-instances"></a>Distribuera på Azure Container Instances
 
@@ -199,8 +199,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 Mer information finns i följande referens dokument:
 
-* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
-* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration)
 
 ### <a name="update-custom-certificate"></a>Uppdatera anpassat certifikat
 
@@ -239,8 +239,8 @@ Om certifikatet ursprungligen genererades av en certifikat utfärdare kan du anv
 
 Mer information finns i följande referens dokument:
 
-* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
-* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration)
 
 ## <a name="disable-tls"></a>Inaktivera TLS
 

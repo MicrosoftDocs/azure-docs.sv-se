@@ -12,16 +12,16 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e3aa5d5b97342d81562b3296b71a5a58a3ffadf5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218243"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520344"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starta, övervaka och avbryta inlärnings körningar i python
 
-[Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning Studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och hantera dina körningar för utbildning och experimentering.
+[Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning Studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och hantera dina körningar för utbildning och experimentering.
 
 Den här artikeln innehåller exempel på följande uppgifter:
 
@@ -42,7 +42,7 @@ Du behöver följande objekt:
 
 * En [Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
-* Azure Machine Learning SDK för python (version 1.0.21 eller senare). Information om hur du installerar eller uppdaterar till den senaste versionen av SDK finns i [Installera eller uppdatera SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* Azure Machine Learning SDK för python (version 1.0.21 eller senare). Information om hur du installerar eller uppdaterar till den senaste versionen av SDK finns i [Installera eller uppdatera SDK](/python/api/overview/azure/ml/install).
 
     Använd följande kod för att kontrol lera din version av Azure Machine Learning SDK:
 
@@ -58,7 +58,7 @@ Du behöver följande objekt:
 
     # <a name="python"></a>[Python](#tab/python)
     
-    1. Konfigurera experimentet genom att importera [arbets ytan](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py), [experimentet](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py), [körnings](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)-och [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) -klasserna från [azureml. Core](/python/api/azureml-core/azureml.core?preserve-view=true&view=azure-ml-py) -paketet.
+    1. Konfigurera experimentet genom att importera [arbets ytan](/python/api/azureml-core/azureml.core.workspace.workspace), [experimentet](/python/api/azureml-core/azureml.core.experiment.experiment), [körnings](/python/api/azureml-core/azureml.core.run%28class%29)-och [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) -klasserna från [azureml. Core](/python/api/azureml-core/azureml.core) -paketet.
     
         ```python
         import azureml.core
@@ -69,7 +69,7 @@ Du behöver följande objekt:
         exp = Experiment(workspace=ws, name="explore-runs")
         ```
     
-    1. Starta en körning och dess loggnings process med- [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) metoden.
+    1. Starta en körning och dess loggnings process med- [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) metoden.
     
         ```python
         notebook_run = exp.start_logging()
@@ -107,7 +107,7 @@ Du behöver följande objekt:
         > [!TIP]
         > `az ml folder attach`Kommandot skapade en `.azureml` under katalog, som innehåller två exempel runconfig-filer.
         >
-        > Om du har ett Python-skript som skapar ett kör konfigurations objekt program mässigt kan du använda [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) för att spara det som en RunConfig-fil.
+        > Om du har ett Python-skript som skapar ett kör konfigurations objekt program mässigt kan du använda [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) för att spara det som en RunConfig-fil.
         >
         > Fler exempel på runconfig-filer finns i [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
@@ -123,19 +123,19 @@ Du behöver följande objekt:
 
     # <a name="python"></a>[Python](#tab/python)
     
-    * Hämta status för en körning med- [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-status--) metoden.
+    * Hämta status för en körning med- [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29#get-status--) metoden.
     
         ```python
         print(notebook_run.get_status())
         ```
     
-    * Använd-metoden för att hämta körnings-ID, körnings tid och ytterligare information om körningen [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) .
+    * Använd-metoden för att hämta körnings-ID, körnings tid och ytterligare information om körningen [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) .
     
         ```python
         print(notebook_run.get_details())
         ```
     
-    * När körningen har slutförts använder du [`complete()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) metoden för att markera den som slutförd.
+    * När körningen har slutförts använder du [`complete()`](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) metoden för att markera den som slutförd.
     
         ```python
         notebook_run.complete()
@@ -209,7 +209,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
 
     # <a name="python"></a>[Python](#tab/python)
     
-    Om du vill lägga till sökbara metadata i dina körningar använder du- [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metoden. Följande kod lägger till exempel till `"author"` egenskapen i kör:
+    Om du vill lägga till sökbara metadata i dina körningar använder du- [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29#add-properties-properties-) metoden. Följande kod lägger till exempel till `"author"` egenskapen i kör:
     
     ```Python
     local_run.add_properties({"author":"azureml-user"})
@@ -225,7 +225,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
         print(e)
     ```
     
-    Till skillnad från egenskaper är taggarna föränderligt. Använd-metoden för att lägga till sökbar och meningsfull information för användare av experimentet [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) .
+    Till skillnad från egenskaper är taggarna föränderligt. Använd-metoden för att lägga till sökbar och meningsfull information för användare av experimentet [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29#tag-key--value-none-) .
     
     ```Python
     local_run.tag("quality", "great run")
@@ -304,7 +304,7 @@ Om du ser ett fel eller om körningen tar för lång tid att slutföra, kan du a
 
 # <a name="python"></a>[Python](#tab/python)
 
-Om du vill avbryta en körning med hjälp av SDK använder du [`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecancel--) metoden:
+Om du vill avbryta en körning med hjälp av SDK använder du [`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29#cancel--) metoden:
 
 ```python
 src = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -352,7 +352,7 @@ Skapa underordnade körningar för att gruppera relaterade körningar, t. ex. f�
 > [!NOTE]
 > Underordnade körningar kan bara skapas med SDK: n.
 
-I det här kod exemplet används `hello_with_children.py` skriptet för att skapa en grupp med fem underordnade körningar från en skickad körning med hjälp av [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truechild-run-name-none--run-id-none--outputs-none-) metoden:
+I det här kod exemplet används `hello_with_children.py` skriptet för att skapa en grupp med fem underordnade körningar från en skickad körning med hjälp av [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29#child-run-name-none--run-id-none--outputs-none-) metoden:
 
 ```python
 !more hello_with_children.py
@@ -371,7 +371,7 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > När de flyttas utanför omfånget markeras underordnade körningar automatiskt som slutförda.
 
-Använd metoden för att skapa många underordnade körningar effektivt [`create_children()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) . Eftersom varje skapande resulterar i ett nätverks anrop är det mer effektivt att skapa en batch med körningar än att skapa en i taget.
+Använd metoden för att skapa många underordnade körningar effektivt [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) . Eftersom varje skapande resulterar i ett nätverks anrop är det mer effektivt att skapa en batch med körningar än att skapa en i taget.
 
 ### <a name="submit-child-runs"></a>Skicka underordnade körningar
 
@@ -407,7 +407,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Använd metoden för att skapa många underordnade körningar med identiska konfigurationer, argument och indata [`create_children()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) . Eftersom varje skapande resulterar i ett nätverks anrop är det mer effektivt att skapa en batch med körningar än att skapa en i taget.
+Använd metoden för att skapa många underordnade körningar med identiska konfigurationer, argument och indata [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) . Eftersom varje skapande resulterar i ett nätverks anrop är det mer effektivt att skapa en batch med körningar än att skapa en i taget.
 
 I en underordnad körning kan du Visa överordnad körnings-ID:
 
@@ -419,7 +419,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Frågans underordnade körningar
 
-Använd metoden för att fråga de underordnade körningarna av en speciell överordnad [`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . Med ``recursive = True`` argumentet kan du fråga ett kapslat träd med underordnade och Grandchildren.
+Använd metoden för att fråga de underordnade körningarna av en speciell överordnad [`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . Med ``recursive = True`` argumentet kan du fråga ett kapslat träd med underordnade och Grandchildren.
 
 ```python
 print(parent_run.get_children())

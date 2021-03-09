@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: dbfb4ea729b8360c7065d75cb3efbaf42b82c0da
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663907"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520021"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>Ansluta till lagring med Identity-baserad data åtkomst (för hands version)
 
 >[!IMPORTANT]
-> De funktioner som presenteras i den här artikeln är i för hands version och bör [betraktas som en för hands version](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) som kan ändras när som helst.
+> De funktioner som presenteras i den här artikeln är i för hands version och bör [betraktas som en för hands version](/python/api/overview/azure/ml/#stable-vs-experimental) som kan ändras när som helst.
 
-I den här artikeln får du lära dig hur du ansluter till lagrings tjänster i Azure med identitetsbaserade data åtkomst och Azure Machine Learning data lager via [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).  
+I den här artikeln får du lära dig hur du ansluter till lagrings tjänster i Azure med identitetsbaserade data åtkomst och Azure Machine Learning data lager via [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro).  
 
 Normalt använder data lager för autentiseringsuppgifter för att kontrol lera att du har behörighet att komma åt lagrings tjänsten. De håller anslutnings information, t. ex. prenumerations-ID och token-auktorisering, i [Key Vault](https://azure.microsoft.com/services/key-vault/) som är kopplad till arbets ytan. När du skapar ett data lager som använder identitetsbaserade data åtkomst, används Azure-inloggningen ([Azure Active Directory token](../active-directory/fundamentals/active-directory-whatis.md)) för att bekräfta att du har behörighet att komma åt lagrings tjänsten. I det här scenariot sparas inga autentiseringsuppgifter för autentisering och endast lagrings konto informationen lagras i data lagret. 
 
@@ -67,7 +67,7 @@ Vissa Machine Learning-scenarier omfattar utbildnings modeller med privata data.
     - [Azure Data Lake gen 2](../storage/blobs/data-lake-storage-introduction.md)
     - [Azure SQL-databas](../azure-sql/database/sql-database-paas-overview.md)
 
-- [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+- [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/install).
 
 - En Azure Machine Learning-arbetsyta.
   
@@ -105,7 +105,7 @@ I följande kod noterar du frånvaron av autentiseringsmetoder, till exempel, `s
 
 ### <a name="azure-blob-container"></a>Azure Blob-behållare
 
-Använd för att registrera en Azure Blob-behållare som ett data lager [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Använd för att registrera en Azure Blob-behållare som ett data lager [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Följande kod skapar och registrerar `credentialless_blob` data lagret på `ws` arbets ytan och tilldelar det till variabeln `blob_datastore` . Detta data lager har åtkomst till `my_container_name` BLOB-behållaren på `my-account-name` lagrings kontot.
 
@@ -119,7 +119,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-1"></a>Azure Data Lake Storage generation 1
 
-Använd [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) för att registrera ett data lager som ansluter till en Azure DataLake generation 1-lagring för en Azure Data Lake Storage generation 1 (ADLS gen 1) data lager.
+Använd [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) för att registrera ett data lager som ansluter till en Azure DataLake generation 1-lagring för en Azure Data Lake Storage generation 1 (ADLS gen 1) data lager.
 
 Följande kod skapar och registrerar `credentialless_adls1` data lagret på `workspace` arbets ytan och tilldelar det till variabeln `adls_dstore` . Detta data lager har åtkomst till `adls_storage` Azure Data Lake Store lagrings konto.
 
@@ -133,7 +133,7 @@ adls_dstore = Datastore.register_azure_data_lake(workspace = workspace,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generation 2
 
-För en Azure Data Lake Storage generation 2 (ADLS gen 2) data lager använder du [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) för att registrera ett data lager som ansluter till en Azure DataLake gen 2-lagring.
+För en Azure Data Lake Storage generation 2 (ADLS gen 2) data lager använder du [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) för att registrera ett data lager som ansluter till en Azure DataLake gen 2-lagring.
 
 Följande kod skapar och registrerar `credentialless_adls2` data lagret på `ws` arbets ytan och tilldelar det till variabeln `adls2_dstore` . Detta data lager har åtkomst till fil systemet `tabular` i `myadls2` lagrings kontot.  
 

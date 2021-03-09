@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f8b7162787e870337918794f353ab8dc94c1965
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694962"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518253"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Skapa ett virtuellt nätverk peering – Resource Manager, olika prenumerationer och Azure Active Directory klienter
 
@@ -276,7 +276,7 @@ I den här självstudien används olika konton för varje prenumeration. Om du a
    }
    ```
 
-3. Logga in på Azure som användare a och distribuera mallen med hjälp av [portalen](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)eller [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file). Ange fil namnet som du sparade exempel-JSON-texten i steg 2 till.
+3. Logga in på Azure som användare a och distribuera mallen med hjälp av [portalen](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file)eller [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file). Ange fil namnet som du sparade exempel-JSON-texten i steg 2 till.
 4. Kopiera exempel-JSON från steg 2 till en fil på datorn och ändra de rader som börjar med:
    - **namn**: ändra *myVnetA/myVnetAToMyVnetB* till *myVnetB/myVnetBToMyVnetA*.
    - **ID**: Ersätt `<subscription ID>` med användare B prenumerations-ID och ändra *myVnetB* till *myVnetA*.

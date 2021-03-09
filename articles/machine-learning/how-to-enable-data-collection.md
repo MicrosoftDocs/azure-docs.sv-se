@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680966"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521908"
 ---
 # <a name="collect-data-from-models-in-production"></a>Samla in data från modeller i produktion
 
@@ -65,11 +65,11 @@ Sökvägen till utdata i bloben följer den här syntaxen:
 
 - Du behöver ett AKS-kluster. Information om hur du skapar en och distribuerar till den finns i [distribuera och var](how-to-deploy-and-where.md).
 
-- [Konfigurera din miljö](how-to-configure-environment.md) och installera [Azure Machine Learning övervaknings-SDK: n](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+- [Konfigurera din miljö](how-to-configure-environment.md) och installera [Azure Machine Learning övervaknings-SDK: n](/python/api/overview/azure/ml/install).
 
 ## <a name="enable-data-collection"></a>Aktivera datainsamling
 
-Du kan aktivera [data insamling](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) oavsett vilken modell du distribuerar via Azure Machine Learning eller andra verktyg.
+Du kan aktivera [data insamling](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector) oavsett vilken modell du distribuerar via Azure Machine Learning eller andra verktyg.
 
 Om du vill aktivera data insamling måste du:
 

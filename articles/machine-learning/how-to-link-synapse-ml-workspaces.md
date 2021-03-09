@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 8941a7f7a27f6ffe58cda3f0bf2c6833ec226783
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456331"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520004"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Länka Azure Synapse Analytics och Azure Machine Learning-arbetsytor (för hands version)
 
@@ -29,7 +29,7 @@ Du kan länka din ML-arbets yta och Synapse-arbetsytan via [python SDK](#link-sd
 Du kan också länka arbets ytor och koppla en Synapse Spark-pool med en enda [Azure Resource Manager-mall (arm)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json).
 
 >[!IMPORTANT]
-> Azure Machine Learning-och Azure Synapse-integrering finns i en offentlig för hands version. De `azureml-synapse` funktioner som presenteras från paketet är [experimentella](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) för hands versions funktioner och kan ändras när som helst.
+> Azure Machine Learning-och Azure Synapse-integrering finns i en offentlig för hands version. De `azureml-synapse` funktioner som presenteras från paketet är [experimentella](/python/api/overview/azure/ml/#stable-vs-experimental) för hands versions funktioner och kan ändras när som helst.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -39,7 +39,7 @@ Du kan också länka arbets ytor och koppla en Synapse Spark-pool med en enda [A
 
 * [Skapa Apache Spark pool med Azure Portal, webb verktyg eller Synapse Studio](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* Installera [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+* Installera [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro)
 
 * Åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
 
@@ -51,7 +51,7 @@ Du kan också länka arbets ytor och koppla en Synapse Spark-pool med en enda [A
 >
 > Om du inte är **ägare** och bara är **deltagare** i Synapse-arbetsytan kan du bara använda befintliga länkade tjänster. Se hur du kan hämta [och använda en befintlig länkad tjänst](how-to-data-prep-synapse-spark-pool.md#get-an-existing-linked-service).
 
-Följande kod använder [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) klasserna och för,
+Följande kod använder [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice) [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration) klasserna och för,
 
 * Länka din Machine Learning-arbetsyta `ws` med din Azure Synapse-arbetsyta.
 * Registrera din Synapse-arbetsyta med Azure Machine Learning som en länkad tjänst.

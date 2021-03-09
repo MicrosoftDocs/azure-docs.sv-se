@@ -3,12 +3,12 @@ title: Automatisera tillägg av en labb användare i Azure DevTest Labs | Micros
 description: Den här artikeln visar hur du automatiserar hur du lägger till en användare i ett labb i Azure DevTest Labs att använda Azure Resource Manager mallar, PowerShell och CLI.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6dddf06289da79e16cbd7e64869fa77f0a40dd22
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508834"
+ms.locfileid: "102519409"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisera tillägg av en labb användare i ett labb i Azure DevTest Labs
 Azure DevTest Labs gör att du snabbt kan skapa självbetjänings utvecklings-och test miljöer med hjälp av Azure Portal. Men om du har flera team och flera DevTest Labs-instanser kan du spara tid genom att automatisera skapandet av processen. Med [Azure Resource Manager mallar](https://github.com/Azure/azure-devtestlab/tree/master/Environments) kan du skapa labb, virtuella labb datorer, anpassade bilder, formler och lägga till användare på ett automatiserat sätt. Den här artikeln fokuserar särskilt på att lägga till användare till en DevTest Labs-instans.
@@ -161,7 +161,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 
 Det är viktigt att Observera att grupp distributions namnet och roll tilldelningens GUID måste vara unikt. Om du försöker distribuera en resurs tilldelning med ett GUID som inte är unikt får du ett `RoleAssignmentUpdateNotPermitted` fel meddelande.
 
-Om du planerar att använda mallen flera gånger för att lägga till flera Active Directory objekt i användar rollen DevTest Labs för ditt labb, bör du överväga att använda dynamiska objekt i PowerShell-kommandot. I följande exempel används cmdleten [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) för att ange distributions namn och roll tilldelnings-GUID dynamiskt för resurs gruppen.
+Om du planerar att använda mallen flera gånger för att lägga till flera Active Directory objekt i användar rollen DevTest Labs för ditt labb, bör du överväga att använda dynamiska objekt i PowerShell-kommandot. I följande exempel används cmdleten [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid) för att ange distributions namn och roll tilldelnings-GUID dynamiskt för resurs gruppen.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"

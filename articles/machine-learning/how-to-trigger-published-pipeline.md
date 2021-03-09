@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 56a3183e259a0b1c661dfe84d5e47c4c221e5d48
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 3ecf4458b052f4fdc0eb2e6e697b0468c71ce9c2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584878"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519664"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>Utlös ande maskin inlärnings pipeliner
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Skapa ett tidsbaserat schema
 
-`ScheduleRecurrence`Konstruktorn har ett obligatoriskt `frequency` argument som måste vara en av följande strängar: "minut", "Hour", "Day", "Week" eller "Month". Det kräver också ett heltals `interval` argument som anger hur många av `frequency` enheterna som ska förflyta mellan schema startar. Valfria argument ger dig mer information om start tider, enligt beskrivningen i [SCHEDULERECURRENCE SDK-dokument](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py).
+`ScheduleRecurrence`Konstruktorn har ett obligatoriskt `frequency` argument som måste vara en av följande strängar: "minut", "Hour", "Day", "Week" eller "Month". Det kräver också ett heltals `interval` argument som anger hur många av `frequency` enheterna som ska förflyta mellan schema startar. Valfria argument ger dig mer information om start tider, enligt beskrivningen i [SCHEDULERECURRENCE SDK-dokument](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence).
 
 Skapa en `Schedule` som börjar köras var 15: e minut:
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Pipelines som utlöses av fil ändringar kan vara mer effektiva än tidsbaserade scheman. När du vill göra något innan en fil ändras eller när en ny fil läggs till i en data katalog kan du Förbearbeta filen. Du kan övervaka ändringar i ett data lager eller ändringar i en angiven katalog i data lagret. Om du övervakar en angiven katalog kommer ändringar i under kataloger i den katalogen _inte_ att utlösa någon körning.
 
-Om du vill skapa en fil som `Schedule` är aktive rad måste du ange `datastore` parametern i anropet till [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Om du vill övervaka en mapp anger du `path_on_datastore` argumentet.
+Om du vill skapa en fil som `Schedule` är aktive rad måste du ange `datastore` parametern i anropet till [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Om du vill övervaka en mapp anger du `path_on_datastore` argumentet.
 
 Med `polling_interval` argumentet kan du ange, i minuter, den frekvens som data lagret är markerat för ändringar.
 
-Om pipelinen har konstruerats med en [Datapath](/python/api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) - [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py)kan du ange variabeln till namnet på den ändrade filen genom att ange `data_path_parameter_name` argumentet.
+Om pipelinen har konstruerats med en [Datapath](/python/api/azureml-core/azureml.data.datapath.datapath) - [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter)kan du ange variabeln till namnet på den ändrade filen genom att ange `data_path_parameter_name` argumentet.
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")

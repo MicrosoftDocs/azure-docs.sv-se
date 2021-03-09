@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661009"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518389"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Träna PyTorch-modeller i skala med Azure Machine Learning
 
@@ -36,7 +36,7 @@ Kör den här koden i någon av följande miljöer:
     - I mappen exempel djup inlärning på Notebook-servern hittar du en slutförd och utökad antecknings bok genom att gå till den här katalogen: **How-to-use-azureml > ml-framework > pytorch > träna--parameter-Tune-Deploy-with-pytorch** -mappen. 
  
  - Din egen Jupyter Notebook Server
-    - [Installera Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0).
+    - [Installera Azure Machine Learning SDK](/python/api/overview/azure/ml/install) (>= 1.15.0).
     - [Skapa en konfigurations fil för arbets ytor](how-to-configure-environment.md#workspace).
     - [Hämta exempel skript filen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -64,7 +64,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Initiera en arbets yta
 
-[Azure Machine Learning-arbetsytan](concept-workspace.md) är resursen på den översta nivån för tjänsten. Det ger dig en central plats för att arbeta med alla artefakter som du skapar. I python SDK har du åtkomst till arbets ytans artefakter genom att skapa ett [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) objekt.
+[Azure Machine Learning-arbetsytan](concept-workspace.md) är resursen på den översta nivån för tjänsten. Det ger dig en central plats för att arbeta med alla artefakter som du skapar. I python SDK har du åtkomst till arbets ytans artefakter genom att skapa ett [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) objekt.
 
 Skapa ett objekt för arbets ytan från `config.json` filen som skapats i [avsnittet krav](#prerequisites).
 
@@ -181,7 +181,7 @@ Mer information om hur du skapar och använder miljöer finns [i skapa och anvä
 
 ### <a name="create-a-scriptrunconfig"></a>Skapa en ScriptRunConfig
 
-Skapa ett [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) -objekt om du vill ange konfigurations information för ditt utbildnings jobb, inklusive ditt utbildnings skript, vilken miljö som ska användas och vilket beräknings mål som ska köras. Alla argument till ditt utbildnings skript skickas via kommando raden om de anges i `arguments` parametern. 
+Skapa ett [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) -objekt om du vill ange konfigurations information för ditt utbildnings jobb, inklusive ditt utbildnings skript, vilken miljö som ska användas och vilket beräknings mål som ska köras. Alla argument till ditt utbildnings skript skickas via kommando raden om de anges i `arguments` parametern. 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -203,7 +203,7 @@ Mer information om hur du konfigurerar jobb med ScriptRunConfig finns i [Konfigu
 
 ## <a name="submit-your-run"></a>Skicka in din körning
 
-[Kör-objektet](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) tillhandahåller gränssnittet till körnings historiken medan jobbet körs och när det har slutförts.
+[Kör-objektet](/python/api/azureml-core/azureml.core.run%28class%29) tillhandahåller gränssnittet till körnings historiken medan jobbet körs och när det har slutförts.
 
 ```Python
 run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
@@ -267,7 +267,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-För att kunna köra ett distribuerat jobb med MPI/Horovod på Azure ML måste du ange en [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) till- `distributed_job_config` parametern för ScriptRunConfig-konstruktorn. I koden nedan kan du konfigurera ett distribuerat jobb med två noder som kör en process per nod. Om du också vill köra flera processer per nod (dvs. om klustrets SKU har flera GPU: er) anger du även `process_count_per_node` parametern i MpiConfiguration (Standardvärdet är `1` ).
+För att kunna köra ett distribuerat jobb med MPI/Horovod på Azure ML måste du ange en [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) till- `distributed_job_config` parametern för ScriptRunConfig-konstruktorn. I koden nedan kan du konfigurera ett distribuerat jobb med två noder som kör en process per nod. Om du också vill köra flera processer per nod (dvs. om klustrets SKU har flera GPU: er) anger du även `process_count_per_node` parametern i MpiConfiguration (Standardvärdet är `1` ).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -294,7 +294,7 @@ Det finns inga grundläggande skillnader mellan de här start alternativen. den 
 #### <a name="per-process-launch"></a>Starta per process
 Om du vill använda det här alternativet för att köra ett distribuerat PyTorch-jobb gör du följande:
 1. Ange utbildnings skript och-argument
-2. Skapa en [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) och ange `process_count` både och `node_count` . `process_count`Motsvarar det totala antalet processer som du vill köra för jobbet. Detta bör normalt vara lika med antalet GPU: er per nod multiplicerat med antalet noder. Om `process_count` inte anges startar Azure ml som standard en process per nod.
+2. Skapa en [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) och ange `process_count` både och `node_count` . `process_count`Motsvarar det totala antalet processer som du vill köra för jobbet. Detta bör normalt vara lika med antalet GPU: er per nod multiplicerat med antalet noder. Om `process_count` inte anges startar Azure ml som standard en process per nod.
 
 Azure ML kommer att ange följande miljövariabler:
 * `MASTER_ADDR` -IP-adressen för den dator som ska vara värd för processen med rang 0.

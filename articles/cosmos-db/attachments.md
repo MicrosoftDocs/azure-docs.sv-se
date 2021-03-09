@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 455fdc7615e0909189f311755571d02a9acca24e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501999"
+ms.locfileid: "102521228"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB bilagor
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
@@ -42,9 +42,9 @@ Azure Cosmos DBs hanterade bifogade filer skiljer sig från dess stöd för stan
 - Hanterade bilagor är inte kompatibla med Azure Cosmos DB global distribution och de replikeras inte över flera regioner.
 
 > [!NOTE]
-> Azure Cosmos DB-API för MongoDB-version 3,2 använder hanterade bilagor för GridFS, vilket innebär att samma begränsningar används som Azure Cosmos DBs hanterade bifogade filer.
+> Azure Cosmos DB API för MongoDB version 3,2 använder hanterade bilagor för GridFS och omfattas av samma begränsningar.
 >
-> Vi rekommenderar utvecklare som använder funktionen MongoDB GridFS att uppgradera till Azure Cosmos DB API för MongoDB version 3,6 eller högre, som är frikopplad från bilagor och ger en starkare och stabilare upplevelse. Utvecklare som använder funktions uppsättningen MongoDB GridFS bör också överväga att använda Azure Blob Storage – vilket är syftet med att lagra BLOB-innehåll och erbjuder utökade funktioner till lägre kostnad jämfört med GridFS.
+> Vi rekommenderar utvecklare som använder funktionen MongoDB GridFS för att uppgradera till Azure Cosmos DB API för MongoDB version 3,6 eller högre, som är frikopplad från bilagor och ger en bättre upplevelse. Utvecklare som använder funktions uppsättningen MongoDB GridFS bör också överväga att använda Azure Blob Storage – vilket är syftet med att lagra BLOB-innehåll och erbjuder utökade funktioner till lägre kostnad jämfört med GridFS.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Migrera bilagor till Azure Blob Storage
 

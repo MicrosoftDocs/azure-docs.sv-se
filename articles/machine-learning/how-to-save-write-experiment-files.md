@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630336"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518610"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Var du ska spara och skriva filer för Azure Machine Learning experiment
 
@@ -30,13 +30,13 @@ När du startar utbildning körs på ett [beräknings mål](concept-compute-targ
 
 Innan du kan påbörja ett experiment på ett beräknings mål eller på den lokala datorn måste du se till att de nödvändiga filerna är tillgängliga för det beräknings målet, till exempel beroende filer och datafiler som din kod måste köra.
 
-Azure Machine Learning kör utbildnings skript genom att kopiera hela käll katalogen. Om du har känsliga data som du inte vill överföra använder du en [. IGNORE-fil](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) eller inkluderar den inte i käll katalogen. I stället kan du komma åt dina data med hjälp av ett data [lager](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).
+Azure Machine Learning kör utbildnings skript genom att kopiera hela käll katalogen. Om du har känsliga data som du inte vill överföra använder du en [. IGNORE-fil](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) eller inkluderar den inte i käll katalogen. I stället kan du komma åt dina data med hjälp av ett data [lager](/python/api/azureml-core/azureml.data).
 
 Lagringsgränsen för experimentögonblicksbilder är 300 MB och/eller 2 000 filer.
 
 Därför rekommenderar vi följande:
 
-* **Lagra filerna i ett Azure Machine Learning [data lager](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).** Detta förhindrar problem med experiment latens och har fördelarna med att komma åt data från ett fjärrberäknings mål, vilket innebär att autentisering och montering hanteras av Azure Machine Learning. Läs mer om hur du anger ett data lager som käll katalog och laddar upp filer till ditt data lager i artikeln [åtkomst data från dina data lager](how-to-access-data.md) .
+* **Lagra filerna i ett Azure Machine Learning [data lager](/python/api/azureml-core/azureml.data).** Detta förhindrar problem med experiment latens och har fördelarna med att komma åt data från ett fjärrberäknings mål, vilket innebär att autentisering och montering hanteras av Azure Machine Learning. Läs mer om hur du anger ett data lager som käll katalog och laddar upp filer till ditt data lager i artikeln [åtkomst data från dina data lager](how-to-access-data.md) .
 
 * **Om du bara behöver ett par datafiler och beroende skript och inte kan använda ett data lager,** placerar du filerna i samma katalog katalog som ditt utbildnings skript. Ange den här mappen som din `source_directory` direkt i utbildnings skriptet eller i koden som anropar ditt utbildnings skript.
 
@@ -69,7 +69,7 @@ När du skriver ändringar rekommenderar vi att du skriver filer till ett Azure 
 Om du inte behöver ett data lager, skriver du filer till `./outputs` mappen och/eller `./logs` .
 
 >[!Important]
-> Två mappar, *utdata* och *loggar* , tar emot särskild behandling av Azure Machine Learning. När du skriver filer till och mappar under träning överförs `./outputs` `./logs` filerna automatiskt till din körnings historik, så att du har åtkomst till dem när körningen är färdig.
+> Två mappar, *utdata* och *loggar*, tar emot särskild behandling av Azure Machine Learning. När du skriver filer till och mappar under träning överförs `./outputs` `./logs` filerna automatiskt till din körnings historik, så att du har åtkomst till dem när körningen är färdig.
 
 * **För utdata, t. ex. status meddelanden eller resultat,** kan du skriva filer till `./outputs` mappen så att de är beständiga som artefakter i körnings historiken. Var mindful av antalet och storleken på filer som skrivs till den här mappen, eftersom svars tiden kan uppstå när innehållet laddas upp till körnings historiken. Om det är ett problem med fördröjningen rekommenderas att skriva filer till ett data lager.
 

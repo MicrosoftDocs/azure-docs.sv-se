@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 71ddb1217be7fe3e1254e0d49e1f40c43a55a3f0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502424"
+ms.locfileid: "102521755"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>För hands version: Orchestration-lägen för skalnings uppsättningar för virtuella datorer i Azure 
 
@@ -128,7 +128,7 @@ I följande tabell jämförs det flexibla Orchestration-läget, ett enhetligt Or
 |         Azure-aviseringar  |            Inga  |            Ja  |            Ja  |
 |         VM-insikter  |            Inga  |            Ja  |            Ja  |
 |         Azure Backup  |            Ja  |            Ja  |            Ja  |
-|         Azure Site Recovery  |            Ja, endast PowerShell  |            Ja  |            Ja  |
+|         Azure Site Recovery  |            Inga  |            Inga  |            Ja  |
 |         Lägg till/ta bort befintlig virtuell dator i gruppen  |            Inga  |            Inga  |            Inga  | 
 
 

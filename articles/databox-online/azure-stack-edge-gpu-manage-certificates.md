@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 4193e58c28b481297df38bca8f18d2ea766ce886
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 534870e6bd67b7aa5273289f3154a794a2b9bd22
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443139"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519018"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Använda certifikat med Azure Stack Edge Pro GPU-enhet
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-I den här artikeln beskrivs vilka typer av certifikat som kan installeras på din Azure Stack Edge Pro-enhet. Artikeln innehåller också information om varje certifikat typ tillsammans med proceduren för att installera och identifiera förfallo datumet. 
+I den här artikeln beskrivs vilka typer av certifikat som kan installeras på din Azure Stack Edge Pro-enhet. Artikeln innehåller också information om varje certifikat typ tillsammans med proceduren för att installera och identifiera förfallo datumet.  
 
 ## <a name="about-certificates"></a>Om certifikat
 
@@ -400,7 +400,7 @@ Säkerhets kopian av. pfx-filen sparas nu på den plats som du har valt och är 
 
 ## <a name="supported-certificate-algorithms"></a>Algoritmer som stöds
 
- Endast Rivest – Shamir – Adleman-certifikat (RSA) stöds med din Azure Stack Edge Pro-enhet. Om Elliptic Curve-ECDSA (Digital Signature Algorithm) används är enhets beteendet obestämd.
+ Endast Rivest – Shamir – Adleman-certifikat (RSA) stöds med din Azure Stack Edge Pro-enhet. ECDSA-certifikat (Elliptic Curve Digital Signature Algorithm) stöds inte.
 
  Certifikat som innehåller en offentlig RSA-nyckel kallas RSA-certifikat. Certifikat som innehåller en offentlig nyckel för Elliptic Curve-kryptografiska (ECC) kallas ECDSA (Elliptic Curve Digital Signature Algorithm). 
 

@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739594"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518933"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Skapa och hantera Azure Machine Learning arbets ytor 
 
-I den här artikeln skapar du, visar och tar bort [**Azure Machine Learning arbets ytor**](concept-workspace.md) för [Azure Machine Learning](overview-what-is-azure-ml.md)med hjälp av Azure Portal eller [SDK för python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)
+I den här artikeln skapar du, visar och tar bort [**Azure Machine Learning arbets ytor**](concept-workspace.md) för [Azure Machine Learning](overview-what-is-azure-ml.md)med hjälp av Azure Portal eller [SDK för python](/python/api/overview/azure/ml/)
 
 När du behöver ändra eller krav på Automation-höjning kan du också skapa och ta bort arbets ytor [med hjälp av CLI](reference-azure-machine-learning-cli.md), eller [via vs Code-tillägget](tutorial-setup-vscode-extension.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
-* Om du använder python SDK [installerar du SDK: n](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* Om du använder python SDK [installerar du SDK: n](/python/api/overview/azure/ml/install).
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -111,7 +111,7 @@ När du skapar en arbets yta skapas också en Azure Container Registry (ACR) som
                              exist_ok=False)
    ```
 
-Mer information finns i [SDK-referens för arbets yta](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
+Mer information finns i [SDK-referens för arbets yta](/python/api/azureml-core/azureml.core.workspace.workspace).
 
 Om du har problem med att komma åt din prenumeration kan du läsa [Konfigurera autentisering för Azure Machine Learning resurser och arbets flöden](how-to-setup-authentication.md)samt [autentiseringen i Azure Machine Learning](https://aka.ms/aml-notebook-auth) Notebook.
 
@@ -167,7 +167,7 @@ Om du har problem med att komma åt din prenumeration kan du läsa [Konfigurera 
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning python SDK tillhandahåller klassen [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) , som kan användas med [arbets ytan. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) för att skapa en arbets yta med en privat slut punkt. Den här klassen kräver ett befintligt virtuellt nätverk.
+Azure Machine Learning python SDK tillhandahåller klassen [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) , som kan användas med [arbets ytan. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) för att skapa en arbets yta med en privat slut punkt. Den här klassen kräver ett befintligt virtuellt nätverk.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -363,7 +363,7 @@ Standard åtgärden är inte att ta bort resurser som är associerade med arbets
 
 I [Azure Portal](https://portal.azure.com/)väljer du **ta bort**  överst i arbets ytan som du vill ta bort.
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Ta bort arbets yta":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Ta bort arbetsyta":::
 
 ---
 

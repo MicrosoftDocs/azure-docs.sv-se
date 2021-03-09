@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: aaa7dbf2ae7c8acb3b3beeb3e9098c5058af26a7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918320"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517488"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>Distribuera MLflow-modeller som Azure-webbtjänster (för hands version)
 
@@ -39,19 +39,19 @@ Följande diagram visar att med MLflow distributions-API och Azure Machine Learn
 >[!NOTE]
 > Som ett bibliotek med öppen källkod ändras MLflow ofta. De funktioner som gjorts tillgängliga via Azure Machine Learning-och MLflow-integreringen bör därför betraktas som en för hands version och stöds inte fullt ut av Microsoft.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Machine Learning-modell. Om du inte har en tränad modell hittar du det exempel på bärbara datorer som bäst passar ditt beräknings scenario i [lagrings platsen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) och följer anvisningarna. 
 * [Konfigurera MLflow tracking URI för att ansluta Azure Machine Learning](how-to-use-mlflow.md#track-local-runs).
 * Installera paketet `azureml-mlflow`. 
-    * Det här paketet kommer automatiskt in i `azureml-core` [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), som ger anslutningen för MLflow åtkomst till din arbets yta.
+    * Det här paketet kommer automatiskt in i `azureml-core` [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install), som ger anslutningen för MLflow åtkomst till din arbets yta.
 * Se vilka [åtkomst behörigheter du behöver för att utföra dina MLflow-åtgärder med din arbets yta](how-to-assign-roles.md#mlflow-operations). 
 
 ## <a name="deploy-to-azure-container-instance-aci"></a>Distribuera till Azure Container Instance (ACI)
 
 För att distribuera MLflow-modellen till en Azure Machine Learning-webbtjänst måste din modell konfigureras med [MLflow-spårnings-URI för att ansluta till Azure Machine Learning](how-to-use-mlflow.md). 
 
-Konfigurera distributions konfigurationen med metoden [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Du kan också lägga till taggar och beskrivningar för att hålla reda på din webb tjänst.
+Konfigurera distributions konfigurationen med metoden [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Du kan också lägga till taggar och beskrivningar för att hålla reda på din webb tjänst.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -84,7 +84,7 @@ webservice.wait_for_deployment(show_output=True)
 
 För att distribuera MLflow-modellen till en Azure Machine Learning-webbtjänst måste din modell konfigureras med [MLflow-spårnings-URI för att ansluta till Azure Machine Learning](how-to-use-mlflow.md). 
 
-Om du vill distribuera till AKS måste du först skapa ett AKS-kluster. Skapa ett AKS-kluster med metoden [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) . Det kan ta 20-25 minuter att skapa ett nytt kluster.
+Om du vill distribuera till AKS måste du först skapa ett AKS-kluster. Skapa ett AKS-kluster med metoden [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget#create-workspace--name--provisioning-configuration-) . Det kan ta 20-25 minuter att skapa ett nytt kluster.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -104,7 +104,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Konfigurera distributions konfigurationen med metoden [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Du kan också lägga till taggar och beskrivningar för att hålla reda på din webb tjänst.
+Konfigurera distributions konfigurationen med metoden [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Du kan också lägga till taggar och beskrivningar för att hålla reda på din webb tjänst.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -139,7 +139,7 @@ Tjänste distributionen kan ta flera minuter.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte planerar att använda den distribuerade webb tjänsten använder `service.delete()` du för att ta bort den från din bärbara dator.  Mer information finns i dokumentationen för [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
+Om du inte planerar att använda den distribuerade webb tjänsten använder `service.delete()` du för att ta bort den från din bärbara dator.  Mer information finns i dokumentationen för [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--).
 
 ## <a name="example-notebooks"></a>Exempelnotebook-filer
 

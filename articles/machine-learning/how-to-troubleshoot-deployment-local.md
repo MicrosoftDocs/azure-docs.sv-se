@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215756"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519630"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Fel sökning med en lokal modell distribution
 
@@ -28,7 +28,7 @@ Testa en lokal modell distribution som ett första steg i fel sökning av distri
 * Alternativ A (**rekommenderas**) – Felsök lokalt på Azure Machine Learning beräknings instans
    * En Azure Machine Learning-arbetsyta med [beräknings instans](how-to-deploy-local-container-notebook-vm.md) som körs
 * Alternativ B – Felsök lokalt i din beräkning
-   * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+   * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
    * [Azure CLI](/cli/azure/install-azure-cli).
    * [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
    * Ha en fungerande Docker-installation på det lokala systemet. 
@@ -98,7 +98,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Skriptet läses in på nytt från den plats som anges av det `InferenceConfig` objekt som används av tjänsten.
 
-Om du vill ändra modellen, Conda-beroenden eller distributions konfigurationen använder du [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-). I följande exempel uppdateras modellen som används av tjänsten:
+Om du vill ändra modellen, Conda-beroenden eller distributions konfigurationen använder du [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29#update--args-). I följande exempel uppdateras modellen som används av tjänsten:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -106,7 +106,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Ta bort tjänsten
 
-Om du vill ta bort tjänsten använder du [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
+Om du vill ta bort tjänsten använder du [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--).
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Granska Docker-loggen
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 7819aaa1af588b0a74bb960cf47ea1feeeff8b3b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449874"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522299"
 ---
 # <a name="expressroute-faq"></a>Vanliga frågor och svar för ExpressRoute
 
@@ -60,7 +60,7 @@ ExpressRoute-gatewayen annonserar *adress utrymmet* för det virtuella Azure-nä
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Hur många prefix kan annonseras från ett VNet till lokalt på ExpressRoute privata peering?
 
-Det finns högst 200 prefix som annonseras på en enskild ExpressRoute-anslutning eller via VNet-peering med hjälp av Gateway-överföring. Om du till exempel har 199 adress utrymmen på ett enskilt VNet som är anslutet till en ExpressRoute-krets, annonseras alla 199 av dessa prefix till lokalt. Alternativt, om du har ett VNet aktiverat för att tillåta Gateway-överföring med 1 adress utrymme och 150 ekrar som är aktiverade med alternativet "Tillåt fjärran sluten Gateway", kommer det virtuella nätverk som distribueras med gatewayen att annonsera 151-prefix till lokalt.
+Det finns högst 1000 prefix som annonseras på en enskild ExpressRoute-anslutning eller via VNet-peering med hjälp av Gateway-överföring. Om du till exempel har 199 adress utrymmen på ett enskilt VNet som är anslutet till en ExpressRoute-krets, annonseras alla 199 av dessa prefix till lokalt. Alternativt, om du har ett VNet aktiverat för att tillåta Gateway-överföring med 1 adress utrymme och 150 ekrar som är aktiverade med alternativet "Tillåt fjärran sluten Gateway", kommer det virtuella nätverk som distribueras med gatewayen att annonsera 151-prefix till lokalt.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Vad händer om jag överskrider prefixlängden för en ExpressRoute-anslutning?
 

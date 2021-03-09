@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 155df45d975a30991edc80d587445d699a8d2695
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103234"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517744"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Skriv bords app som anropar webb-API: registrera appar
 
@@ -43,7 +43,7 @@ De omdirigerings-URI: er som ska användas i ett Skriv bords program beror på d
 - Om du använder interaktiv autentisering eller enhets kod flöde använder du `https://login.microsoftonline.com/common/oauth2/nativeclient` . Välj motsvarande URL i avsnittet **autentisering** för ditt program för att uppnå den här konfigurationen.
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Att använda som omdirigerings-URI rekommenderas som bästa säkerhets praxis.  Om ingen omdirigerings-URI anges används MSAL.NET som `urn:ietf:wg:oauth:2.0:oob` standard som inte är rekommenderade.  Det här standardvärdet kommer att uppdateras som en viktig ändring i nästa större version.
+  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Att använda som omdirigerings-URI rekommenderas som bästa säkerhets praxis.  Om ingen omdirigerings-URI anges används MSAL.NET som `urn:ietf:wg:oauth:2.0:oob` standard, vilket inte rekommenderas.  Det här standardvärdet kommer att uppdateras som en viktig ändring i nästa större version.
 
 - Om du skapar en ursprunglig mål-C-eller Swift-app för macOS registrerar du omdirigerings-URI: n baserat på programmets paket identifierare i följande format: `msauth.<your.app.bundle.id>://auth` . Ersätt `<your.app.bundle.id>` med programmets paket-ID.
 - Om din app endast använder integrerad Windows-autentisering eller ett användar namn och ett lösen ord, behöver du inte registrera en omdirigerings-URI för programmet. Dessa flöden gör en tur och retur till Microsoft Identity Platform v 2.0-slutpunkten. Programmet kommer inte att anropas igen på någon specifik URI.

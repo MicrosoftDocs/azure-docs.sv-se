@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378015"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522367"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Självstudie: Använd dina egna data (del 4 av 4)
 
@@ -200,7 +200,7 @@ Kontroll skriptet liknar det som finns i [del 3 i den här serien](tutorial-1st-
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      En [data uppsättning](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) används för att referera till de data som du överförde till Azure Blob Storage. Data uppsättningar är ett abstraktions lager ovanpå dina data som är utformade för att förbättra tillförlitligheten och tillförlitligheten.
+      En [data uppsättning](/python/api/azureml-core/azureml.core.dataset.dataset) används för att referera till de data som du överförde till Azure Blob Storage. Data uppsättningar är ett abstraktions lager ovanpå dina data som är utformade för att förbättra tillförlitligheten och tillförlitligheten.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ Kontroll skriptet liknar det som finns i [del 3 i den här serien](tutorial-1st-
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) har ändrats för att innehålla en lista över argument som ska skickas till `train.py` . `dataset.as_named_input('input').as_mount()`Argumentet innebär att den angivna katalogen kommer att _monteras_ på beräknings målet.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) har ändrats för att innehålla en lista över argument som ska skickas till `train.py` . `dataset.as_named_input('input').as_mount()`Argumentet innebär att den angivna katalogen kommer att _monteras_ på beräknings målet.
    :::column-end:::
 :::row-end:::
 

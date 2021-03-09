@@ -237,7 +237,7 @@
         - name: Konfigurera villkorlig åtkomst
           href: conditional-access-user-flow.md
     - name: Konfigurera åldershantering
-      href: basic-age-gating.md
+      href: age-gating.md
     - name: API-anslutningsprogram (förhandsversion)
       items:
         - name: Översikt

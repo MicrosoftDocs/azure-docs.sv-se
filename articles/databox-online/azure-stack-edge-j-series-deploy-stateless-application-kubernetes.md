@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: bc8d14f3d4621a41c2d2845802313033d0809b4b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 40065189f3c1dd52f462985aef344e9cbeb12f0b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442136"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522384"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Distribuera ett program med Kubernetes tillstånd via kubectl på din Azure Stack Edge Pro GPU-enhet
 
@@ -27,7 +27,7 @@ Innan du kan skapa ett Kubernetes-kluster och använda `kubectl` kommando rads v
 
 - Du har inloggnings uppgifter till en 1-nod Azure Stack Edge Pro-enhet.
 
-- Windows PowerShell 5,0 eller senare är installerat på ett Windows-klientsystem för att få åtkomst till Azure Stack Edge Pro-enheten. Du kan också ha andra klienter med ett operativ system som stöds. Den här artikeln beskriver proceduren när du använder en Windows-klient. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
+- Windows PowerShell 5,0 eller senare är installerat på ett Windows-klientsystem för att få åtkomst till Azure Stack Edge Pro-enheten. Du kan också ha andra klienter med ett operativ system som stöds. Den här artikeln beskriver proceduren när du använder en Windows-klient. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell).
 
 - Compute är aktiverat på den Azure Stack Edge Pro-enheten. Om du vill aktivera beräkning går du till **beräknings** sidan i enhetens lokala användar gränssnitt. Välj sedan ett nätverks gränssnitt som du vill aktivera för beräkning. Välj **Aktivera**. Genom att aktivera beräknings resultatet skapas en virtuell växel på enheten i nätverks gränssnittet. Mer information finns i [Aktivera Compute Network på Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 

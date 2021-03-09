@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605606"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521551"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Använda hanterade identiteter i Azure API Management
 
@@ -263,6 +263,19 @@ I följande exempel visas en Azure Resource Manager mall som innehåller följan
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Autentisera till Server delen med hjälp av en API Management identitet
 
 Du kan använda den systemtilldelade identiteten för att autentisera till Server delen via principen för [autentisering som hanteras av identitet](api-management-authentication-policies.md#ManagedIdentity) .
+
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Ansluta till Azure-resurser bakom IP-brandvägg med systemtilldelad hanterad identitet
+
+
+API Management är en betrodd Microsoft-tjänst till följande resurser. Detta gör att tjänsten kan ansluta till följande resurser bakom en brand vägg. När du uttryckligen tilldelar rätt Azure-roll till den [systemtilldelade hanterade identiteten](../active-directory/managed-identities-azure-resources/overview.md) för den resurs instansen motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
+
+
+|Azure-tjänst | Länk|
+|---|---|
+|Azure Storage | [Betrodd – åtkomst till Azure-lagring](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure Service Bus | [Betrodd – åtkomst till Azure-Service-Bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Trused – åtkomst till Azure – Event-hubb](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Skapa en användartilldelad hanterad identitet
 

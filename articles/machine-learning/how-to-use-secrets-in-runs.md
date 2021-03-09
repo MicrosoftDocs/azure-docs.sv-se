@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ce47041d888b8a7786f0f87f54e725919638e7f7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b93da1e252357830578783c8f3ab5ca02f5a3e5b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349026"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520752"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Använd hemligheter för autentisering av autentiseringsuppgifter i Azure Machine Learning utbildnings körningar
 
@@ -33,7 +33,7 @@ Standard flödet för att använda hemligheter är:
 
 ## <a name="set-secrets"></a>Ange hemligheter
 
-I Azure Machine Learning innehåller klassen för nyckel [valv](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py) metoder för att ställa in hemligheter. I din lokala python-session får du först en referens till din arbets yta Key Vault och använder sedan [`set_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-secret-name--value-) metoden för att ange en hemlighet efter namn och värde. Metoden __set_secret__ uppdaterar det hemliga värdet om namnet redan finns.
+I Azure Machine Learning innehåller klassen för nyckel [valv](/python/api/azureml-core/azureml.core.keyvault.keyvault) metoder för att ställa in hemligheter. I din lokala python-session får du först en referens till din arbets yta Key Vault och använder sedan [`set_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secret-name--value-) metoden för att ange en hemlighet efter namn och värde. Metoden __set_secret__ uppdaterar det hemliga värdet om namnet redan finns.
 
 ```python
 from azureml.core import Workspace
@@ -49,13 +49,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Placera inte det hemliga värdet i python-koden eftersom det är osäkert att lagra det i filen som klartext. Hämta i stället det hemliga värdet från en miljö variabel, till exempel Azure DevOps build Secret eller från interaktiva användarindata.
 
-Du kan lista hemliga namn med hjälp av [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=truelist-secrets--) -metoden och det finns också en batch-version[set_secrets ()](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-secrets-secrets-batch-) som gör att du kan ange flera hemligheter i taget.
+Du kan lista hemliga namn med hjälp av [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#list-secrets--) -metoden och det finns också en batch-version[set_secrets ()](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secrets-secrets-batch-) som gör att du kan ange flera hemligheter i taget.
 
 ## <a name="get-secrets"></a>Hämta hemligheter
 
-I din lokala kod kan du använda- [`get_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secret-name-) metoden för att hämta det hemliga värdet efter namn.
+I din lokala kod kan du använda- [`get_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#get-secret-name-) metoden för att hämta det hemliga värdet efter namn.
 
-För körningar som skickats [`Experiment.submit`](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)  använder du- [`get_secret()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secret-name-) metoden med- [`Run`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) klassen. Eftersom en skickad körning är medveten om dess arbets yta, tar den här metoden genvägar till instansiering av arbets ytan och returnerar det hemliga värdet direkt.
+För körningar som skickats [`Experiment.submit`](/python/api/azureml-core/azureml.core.experiment.experiment#submit-config--tags-none----kwargs-)  använder du- [`get_secret()`](/python/api/azureml-core/azureml.core.run.run#get-secret-name-) metoden med- [`Run`](/python/api/azureml-core/azureml.core.run%28class%29) klassen. Eftersom en skickad körning är medveten om dess arbets yta, tar den här metoden genvägar till instansiering av arbets ytan och returnerar det hemliga värdet direkt.
 
 ```python
 # Code in submitted run
@@ -67,7 +67,7 @@ secret_value = run.get_secret(name="mysecret")
 
 Var noga med att inte exponera det hemliga värdet genom att skriva eller skriva ut det.
 
-Det finns också en batch-version [get_secrets ()](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secrets-secrets-) för åtkomst till flera hemligheter samtidigt.
+Det finns också en batch-version [get_secrets ()](/python/api/azureml-core/azureml.core.run.run#get-secrets-secrets-) för åtkomst till flera hemligheter samtidigt.
 
 ## <a name="next-steps"></a>Nästa steg
 

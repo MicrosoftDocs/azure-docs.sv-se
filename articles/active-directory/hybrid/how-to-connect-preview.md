@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d48cd8f95ecaf3e537a5221d766af150a51aa31
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657098"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517692"
 ---
 # <a name="more-details-about-features-in-preview"></a>Mer information om funktioner i förhands granskning
 I det här avsnittet beskrivs hur du använder funktioner som för hands version.
 
-## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (offentlig för hands version) 
+## <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Slutpunkts-API för Azure AD Connect-synkronisering v2
 
-Vi har distribuerat en ny slut punkt (API) för Azure AD Connect som förbättrar prestandan för synkroniseringstjänsten i Azure Active Directory. Genom att använda den nya v2-slutpunkten får du märkbara prestanda vinster vid export och import till Azure AD. Den nya slut punkten stöder också synkronisering av grupper med upp till 250 000 medlemmar. Med den här slut punkten kan du också skriva tillbaka Microsoft 365 enhetliga grupper, utan högsta medlemskaps gräns, till din lokala Active Directory när tillbakaskrivning av grupp är aktive rad. Mer information finns i [Azure AD Connect Sync v2 Endpoint API (offentlig för hands version)](how-to-connect-sync-endpoint-api-v2.md).
+Vi har distribuerat en ny slut punkt (API) för Azure AD Connect som förbättrar prestandan för synkroniseringstjänsten i Azure Active Directory. Genom att använda den nya v2-slutpunkten får du märkbara prestanda vinster vid export och import till Azure AD. Den nya slut punkten stöder också synkronisering av grupper med upp till 250 000 medlemmar. Med den här slut punkten kan du också skriva tillbaka Microsoft 365 enhetliga grupper, utan högsta medlemskaps gräns, till din lokala Active Directory när tillbakaskrivning av grupp är aktive rad. Mer information finns i [Azure AD Connect Sync v2 Endpoint API](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Tillbakaskrivning av användare
 > [!IMPORTANT]

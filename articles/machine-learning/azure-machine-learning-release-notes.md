@@ -9,18 +9,49 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502356"
+ms.locfileid: "102521211"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro) -referens.
 
 __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopiera och klistra in följande webbadress i feed-läsaren: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-03-08"></a>2021-03-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK för python v-1.24.0
++ **Nya funktioner**
+  + **azureml-automl-core**
+    + Bakåtkompatibla importer har tagits bort från `azureml.automl.core.shared` . Modulen hittades inte fel i `azureml.automl.core.shared` namn området kan lösas genom att importera från `azureml.automl.runtime.shared` .
+  + **azureml-contrib-automl-DNN-vision**
+    + Yolo modell med exponerad objekt identifiering.
+  + **azureml-contrib-dataset**
+    + Tillagda funktioner för att filtrera tabell data uppsättningar efter kolumn värden och fil data uppsättningar efter metadata.
+  + **azureml-contrib-fairness**
+    + Ta med JSON-schema i hjul för `azureml-contrib-fairness`
+  + **azureml-contrib-K8s**
+    + Måste nu tillhandahålla resource_id för att bifoga i stället för resurs grupp och kluster namn.
+  + **azureml-contrib-Mir**
+    + Om du anger show_output till sant när du distribuerar modeller, kommer konfiguration av konfiguration och distribution att spelas upp innan begäran skickas till servern.
+  + **azureml-core**
+    + Tillagda funktioner för att filtrera tabell data uppsättningar efter kolumn värden och fil data uppsättningar efter metadata.
+    + Tidigare var det möjligt för användare att skapa etablerings inställningar för ComputeTarget som inte uppfyller lösen ords styrke kraven för `admin_user_password` fältet (dvs. det måste innehålla minst tre av följande: 1 gemen bokstav, 1 versal bokstav, 1 siffra och 1 specialtecken från följande uppsättning: ``\`~!@#$%^&*()=+_[]{}|;:./'",<>?`` ). Om användaren har skapat en konfiguration med ett svagt lösen ord och kört ett jobb med den konfigurationen, kunde inte jobbet köras vid körning. Anropet till kommer nu att skicka `AmlCompute.provisioning_configuration` ett `ComputeTargetException` meddelande med ett fel meddelande som förklarar kraven på lösen ords säkerhet. 
+    + Dessutom var det också möjligt att ange en konfiguration med ett negativt antal maximalt antal noder. Det är inte längre möjligt att göra detta. Nu `AmlCompute.provisioning_configuration` kommer att utlösa ett `ComputeTargetException` om `max_nodes` argumentet är ett negativt heltal.
+    + Med inställningen show_output till sant när du distribuerar modeller visas konfigurations konfiguration och distributions konfiguration.
+    + Om du anger show_output true när du ska slutföra modell distributionen visas förloppet för distributions åtgärden.
+    + Tillåt Kunden angiven AzureML auth config Directory via miljö variabeln: AZUREML_AUTH_CONFIG_DIR
+    + Tidigare var det möjligt att skapa en etablerings konfiguration med minsta antal noder som är mindre än det maximala antalet noder. Jobbet kördes men fungerar inte vid körning. Den här buggen har nu åtgärd ATS. Om du nu försöker skapa en etablerings konfiguration med `min_nodes < max_nodes` SDK: n kommer att generera en `ComputeTargetException` .
+  + **azureml-interpret**
+    + korrigera förklarings instrument panel visar inte mängd funktions prioriteter för sparse-utformade förklaringar
+    + optimerad minnes användning för ExplanationClient i azureml-tolknings paket
+  + **azureml-train-automl-client**
+    +  Fixed show_output = false för att returnera kontroll till användaren vid körning med Spark.
 
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Notebooks Experience (februari Update)
@@ -39,6 +70,7 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
   + Förbättrad hastighet och kernel-tillförlitlighet
   + Lagt till snurrande hjul för att visa förloppet för alla pågående [beräknings instans åtgärder](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators).
   + Högerklicka på Utforskaren. Om du högerklickar på en fil öppnas fil åtgärder nu. 
+
 
 ## <a name="2021-02-16"></a>2021-02-16
 

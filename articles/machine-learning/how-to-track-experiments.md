@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0130af66152d4f70db47191ae2f271630a59e179
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 3d970193bd8d73baeac89fb45da4c8a3d81cbde4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441082"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518407"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>Aktivera loggning i ML utbildning körs
 
@@ -37,7 +37,7 @@ Med loggarna kan du diagnostisera fel och varningar, eller spåra prestandamått
 
 ## <a name="data-types"></a>Datatyper
 
-Du kan logga flera datatyper, inklusive skalära värden, listor, tabeller, bilder, kataloger med mera. Mer information och Python-kodexempel för olika datatyper finns på [referenssidan Körningsklass](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py).
+Du kan logga flera datatyper, inklusive skalära värden, listor, tabeller, bilder, kataloger med mera. Mer information och Python-kodexempel för olika datatyper finns på [referenssidan Körningsklass](/python/api/azureml-core/azureml.core.run%28class%29).
 
 ### <a name="logging-run-metrics"></a>Loggning av körnings mått 
 
@@ -72,13 +72,13 @@ mlf_logger._run_id = run.id
 
 ## <a name="interactive-logging-session"></a>Interaktiv loggningssession
 
-Interaktiva loggningssessioner används vanligtvis i miljöer med notebook-filer. Metoden [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) startar en interaktiv loggningssession. Alla mått som loggas under sessionen läggs till i körningsposten i experimentet. Metoden [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) avslutar sessionerna och markerar körningen som slutförd.
+Interaktiva loggningssessioner används vanligtvis i miljöer med notebook-filer. Metoden [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) startar en interaktiv loggningssession. Alla mått som loggas under sessionen läggs till i körningsposten i experimentet. Metoden [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) avslutar sessionerna och markerar körningen som slutförd.
 
 ## <a name="scriptrun-logs"></a>ScriptRun-loggar
 
-I det här avsnittet lär du dig att lägga till loggningskod i körningar som skapas vid konfiguration med ScriptRunConfig. Du kan använda [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)-klassen till att kapsla in skript och miljöer för upprepningsbara körningar. Du kan också använda det här alternativet till att visa widgeten för Jupyter Notebooks vid övervakning.
+I det här avsnittet lär du dig att lägga till loggningskod i körningar som skapas vid konfiguration med ScriptRunConfig. Du kan använda [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig)-klassen till att kapsla in skript och miljöer för upprepningsbara körningar. Du kan också använda det här alternativet till att visa widgeten för Jupyter Notebooks vid övervakning.
 
-I det här exemplet utförs en parameterrensning av alfavärden och resultaten samlas in med hjälp av metoden [run.log()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelog-name--value--description----).
+I det här exemplet utförs en parameterrensning av alfavärden och resultaten samlas in med hjälp av metoden [run.log()](/python/api/azureml-core/azureml.core.run%28class%29#log-name--value--description----).
 
 1. Skapa ett träningsskript som innehåller loggningslogiken `train.py`.
 
