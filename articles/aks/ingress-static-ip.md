@@ -5,12 +5,12 @@ description: Lär dig hur du installerar och konfigurerar en NGINX ingress Contr
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 58cda3f2bfc76f00deaa85347c059040e39f9ef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fa6572ddc694cb892f48cb3e618c176f087524f6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729021"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506573"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Skapa en ingångs kontroll enhet med en statisk offentlig IP-adress i Azure Kubernetes service (AKS)
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Kommandona ovan skapar en IP-adress som tas bort om du tar bort ditt AKS-kluster. Du kan också skapa en IP-adress i en annan resurs grupp som kan hanteras separat från ditt AKS-kluster. Om du skapar en IP-adress i en annan resurs grupp ser du till att tjänstens huvud namn som används av AKS-klustret har delegerade behörigheter till den andra resurs gruppen, t. ex. *nätverks deltagare*. Mer information finns i [använda en statisk offentlig IP-adress och en DNS-etikett med AKS-belastningsutjämnaren][aks-static-ip].
+> Kommandona ovan skapar en IP-adress som tas bort om du tar bort ditt AKS-kluster. Du kan också skapa en IP-adress i en annan resurs grupp som kan hanteras separat från ditt AKS-kluster. Om du skapar en IP-adress i en annan resurs grupp ser du till att den kluster identitet som används av AKS-klustret har delegerade behörigheter till den andra resurs gruppen, t. ex. *nätverks deltagare*. Mer information finns i [använda en statisk offentlig IP-adress och en DNS-etikett med AKS-belastningsutjämnaren][aks-static-ip].
 
 Distribuera nu *nginx-ingress-* diagrammet med Helm. För ytterligare redundans distribueras två repliker av NGINX-ingresskontrollanterna med parametern `--set controller.replicaCount`. Se till att det finns fler än en nod i ditt AKS-kluster för att få full nytta av att köra repliker av ingångs styrenheten.
 

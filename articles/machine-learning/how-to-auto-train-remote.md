@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: d6d21acc685ba840b585ada43e59230fdd73787f
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 402af581e0ca6de9936b78106840a4fe273069d8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796388"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503461"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Träna modeller med automatiserad maskininlärning i molnet
 
@@ -43,7 +43,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Skapa resurs
 
-Skapa [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) målet på din arbets yta ( `ws` ) om det inte redan finns.
+Skapa [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29) målet på din arbets yta ( `ws` ) om det inte redan finns.
 
 **Tids uppskattning**: skapandet av AmlCompute-målet tar cirka 5 minuter.
 
@@ -90,7 +90,7 @@ Kluster namns begränsningarna är:
 
 ## <a name="access-data-using-tabulardataset-function"></a>Åtkomst till data med funktionen TabularDataset
 
-Definierat training_data som [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) och etiketten, som skickas till automatiserad ml i [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) . `TabularDataset`Metoden `from_delimited_files` anger som standard `infer_column_types` true, vilket kommer att härleda kolumn typen automatiskt. 
+Definierat training_data som [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset) och etiketten, som skickas till automatiserad ml i [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) . `TabularDataset`Metoden `from_delimited_files` anger som standard `infer_column_types` true, vilket kommer att härleda kolumn typen automatiskt. 
 
 Om du vill ange kolumn typerna manuellt kan du ange `set_column_types` argumentet för att manuellt ange typ för varje kolumn. I följande kod exempel kommer data från sklearn-paketet.
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>Utforska resultat
 
-Du kan använda samma [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) som visas i [övnings självstudien](tutorial-auto-train-models.md#explore-the-results) för att se ett diagram och en tabell med resultat.
+Du kan använda samma [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets) som visas i [övnings självstudien](tutorial-auto-train-models.md#explore-the-results) för att se ett diagram och en tabell med resultat.
 
 ```python
 from azureml.widgets import RunDetails

@@ -3,12 +3,12 @@ title: Använd kommando rads verktyg för att starta och stoppa virtuella datore
 description: Lär dig hur du använder kommando rads verktyg för att starta och stoppa virtuella datorer i Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201200"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499551"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Använd kommando rads verktyg för att starta och stoppa Azure DevTest Labs virtuella datorer
 Den här artikeln visar hur du använder Azure PowerShell eller Azure CLI för att starta eller stoppa virtuella datorer i ett labb i Azure DevTest Labs. Du kan skapa PowerShell/CLI-skript för att automatisera dessa åtgärder. 
@@ -29,7 +29,7 @@ I vissa fall kan du dock vilja automatisera start och stopp av virtuella datorer
 > [!NOTE]
 > Följande skript använder modulen Azure PowerShell AZ. 
 
-Följande PowerShell-skript startar en virtuell dator i ett labb. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) är den primära fokus för det här skriptet. Parametern **ResourceID** är det fullständigt kvalificerade resurs-ID: t för den virtuella datorn i labbet. **Åtgärds** parametern är den plats där **Start** -eller **stopp** alternativen anges, beroende på vad som behövs.
+Följande PowerShell-skript startar en virtuell dator i ett labb. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) är den primära fokus för det här skriptet. Parametern **ResourceID** är det fullständigt kvalificerade resurs-ID: t för den virtuella datorn i labbet. **Åtgärds** parametern är den plats där **Start** -eller **stopp** alternativen anges, beroende på vad som behövs.
 
 ```powershell
 # The id of the subscription

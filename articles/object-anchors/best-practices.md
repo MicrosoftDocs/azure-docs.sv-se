@@ -6,12 +6,12 @@ ms.author: crtreasu
 ms.date: 02/17/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5b84bfae4a338a15b75e4f61114869aab1e94f87
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747132"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503053"
 ---
 # <a name="best-practices"></a>Bästa praxis
 
@@ -28,6 +28,8 @@ Vi rekommenderar att du testar några av de här stegen för att få bästa möj
 - Vår modell konverterings tjänst kan ta lång tid att bearbeta en stor, hög LOD-modell (Level-on-detail). För att på grund av effektiviteten kan du Förbearbeta 3D-modellen för att ta bort de inre ansikten.
 
 ## <a name="detection"></a>Identifiering
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - Den tillhandahållna körnings-SDK: n kräver en användar Sök region för att söka efter och identifiera fysiska objekt. Sök området kan vara en avgränsnings ruta, en sfär, en vy Frustum eller en kombination av dem. För att undvika en falsk identifiering, är det bättre att ange en Sök region som är tillräckligt stor för att kunna lägga till objektet. När du använder de tillhandahållna exempel apparna kan du stå på en sida av objektet om 2 meter bort från den närmaste ytan och starta appen.
 - Innan du startar appen objekt ankare på en HoloLens 2-enhet tar du bort Hologramen i närheten av din arbets plats via dina enheters huvud inställningar via ***Inställningar->system->hologram***

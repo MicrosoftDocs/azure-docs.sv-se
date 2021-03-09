@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e8320c0b482daa6371736588250ad0bd8d9b7491
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 31e06777a2f2e26f6ef546e60fd0bf4428d272c2
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435383"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503818"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>Microsoft SDK: er för IoT Plug and Play
 
@@ -26,7 +26,7 @@ IoT Plug and Play-bibliotek och SDK: er gör det möjligt för utvecklare att sk
 | C-enhet | [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md) | [GitHub](https://github.com/Azure/azure-iot-sdk-c) | [Exempel](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp) | [Ansluta till IoT Hub](quickstart-connect-device.md) | [Referens](/azure/iot-hub/iot-c-sdk-ref/) |
 | .NET-enhet | [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/) | [Exempel](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples) | [Ansluta till IoT Hub](quickstart-connect-device.md) | [Referens](/dotnet/api/microsoft.azure.devices.client) |
 | Java-enhet | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [Exempel](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [Ansluta till IoT Hub](quickstart-connect-device.md) | [Referens](/java/api/com.microsoft.azure.sdk.iot.device) |
-| Python-enhet | [pip 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [Exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [Ansluta till IoT Hub](quickstart-connect-device.md) | [Referens](/python/api/azure-iot-device/azure.iot.device?preserve-view=true&view=azure-python) |
+| Python-enhet | [pip 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [Exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [Ansluta till IoT Hub](quickstart-connect-device.md) | [Referens](/python/api/azure-iot-device/azure.iot.device) |
 | Nod-enhet | [NPM 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [Exempel](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [Ansluta till IoT Hub](quickstart-connect-device.md) | [Referens](/javascript/api/azure-iot-device/) |
 | Inbäddad C-enhet | Ej tillämpligt | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [Exempel](howto-use-embedded-c.md#samples) | [Använda Embedded C](howto-use-embedded-c.md) | Ej tillämpligt
 

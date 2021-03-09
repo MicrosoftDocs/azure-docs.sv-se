@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 610f0a9692c18afbd7bb446959b09bac14d6f629
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461845"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507627"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell och Azure CLI: Aktivera transparent datakryptering med kundhanterad nyckel från Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -37,8 +37,8 @@ Den här artikeln beskriver hur du använder en nyckel från Azure Key Vault fö
     - Nyckel valvet måste ha följande egenskap för att kunna användas för TDE:
   - [mjukt borttagnings-](../../key-vault/general/soft-delete-overview.md) och rensnings skydd
 - Nyckeln måste ha följande attribut för att kunna användas för TDE:
-  - Inget förfallo datum
-  - Inte inaktiverat
+  - Inget förfallodatum
+  - Inte aktiverat
   - Kan utföra *Get*-, *wrap*-och *unwrap Key* -åtgärder
 - **(För hands version)** Om du vill använda en hanterad HSM-nyckel följer du anvisningarna för att [skapa och aktivera en hanterad HSM med Azure CLI](../../key-vault/managed-hsm/quick-create-cli.md)
 
@@ -79,7 +79,7 @@ Om du vill lägga till behörigheter till servern på en hanterad HSM lägger du
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Lägg till Key Vault-nyckeln till servern och ange TDE-skyddet
 
-- Använd cmdleten [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) för att hämta nyckel-ID: t från Key Vault
+- Använd cmdleten [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) för att hämta nyckel-ID: t från Key Vault
 - Använd cmdleten [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) för att lägga till nyckeln från Key Vault på servern.
 - Använd cmdleten [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) för att ange nyckeln som TDE-skydd för alla server resurser.
 - Använd cmdleten [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) för att bekräfta att TDE-skyddet har kon figurer ATS som avsett.

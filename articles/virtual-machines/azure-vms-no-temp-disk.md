@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dd078205989872179b0b2474974a29cf6b88dad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665318"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507848"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM-storlekar utan lokal temporär disk 
 Den här artikeln innehåller svar på vanliga frågor och svar om Azure VM-storlekar som inte har en lokal temporär disk (dvs. ingen lokal temporär disk). Mer information om de här VM-storlekarna finns i [specifikationer för DV4 och Dsv4-serien (generell användning arbets belastningar)](dv4-dsv4-series.md) eller [specifikationer för Ev4 och Esv4-serien (minnesoptimerade arbets belastningar)](ev4-esv4-series.md).
@@ -40,8 +40,22 @@ Nej. De enda kombinationer som tillåts för storleks ändring är:
 1. Virtuell dator (med lokal temporär disk) – > virtuell dator (med lokal temporär disk); särskilt 
 2. Virtuell dator (utan lokal temporär disk) – > virtuell dator (utan lokal temporär disk). 
 
+Om du är intresse rad av ett arbete runt, se nästa fråga.
+
 > [!NOTE]
 > Om en avbildning är beroende av resurs disken, eller om det finns en växlings fil eller en swapfile på den lokala Temp-disken, fungerar inte diskbaserade avbildningar. Använd till exempel alternativet med disk. 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Hur gör jag för att migrera från en VM-storlek med en lokal temporär disk till en VM-storlek utan en lokal temporär disk?  
+Du kan migrera genom att följa dessa steg: 
+
+1. Anslut till den virtuella datorn som har en lokal temporär disk (till exempel en D: Drive) som lokal administratör.
+2. Följ rikt linjerna i avsnittet "tillfälligt flytta pagefile.sys till C-enhet" i [Använd D: enheten som en data enhet på en virtuell Windows-dator](./windows/change-drive-letter.md) för att flytta växlings filen från den lokala tillfälliga disken (D: Drive) till enheten C:.
+
+   > [!NOTE]
+   > Följ rikt linjerna i avsnittet "tillfälligt flytta pagefile.sys till C-enhet" i Använd D: enheten som en data enhet på en virtuell Windows-dator för att flytta växlings filen från den lokala tillfälliga disken (D: Drive) till C: Drive. **Avvikelser från de steg som beskrivs leder till fel meddelandet – "det går inte att ändra storlek på den virtuella datorn eftersom det inte går att ändra storlek på resurs disk till icke-resursens VM-storlek och vice versa är inte tillåtet.**
+
+3. Ta en ögonblicks bild av den virtuella datorn genom att följa stegen som beskrivs i [skapa en ögonblicks bild med hjälp av portalen eller Azure CLI](./linux/snapshot-copy-managed-disk.md). 
+4. Använd ögonblicks bild för att skapa en ny disk lös virtuell dator (till exempel DV4, Dsv4, Ev4, Esv4-serien) genom att följa stegen som beskrivs i [skapa en virtuell dator från en ögonblicks bild med CLI](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md). 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Stöder de här VM-storlekarna både Linux-och Windows-operativsystem (OS)?
 Ja.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a15517c7c34d39dfb1de237d19e84c40bf834ea
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498888"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500112"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Säkerhets kontroll: inventering och till gångs hantering
 
@@ -30,7 +30,7 @@ Använd Azure Resource Graph för att fråga/identifiera alla resurser (t. ex. d
 
 - [Så här skapar du frågor med Azure Resource Graph](../../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription)
 
 - [Förstå Azure RBAC](../../role-based-access-control/overview.md)
 

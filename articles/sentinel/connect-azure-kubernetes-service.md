@@ -8,14 +8,14 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
-ms.openlocfilehash: b85c280f99dc1bb4837169c2167b8b2ffb902b7d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c3a4593aa92acededf9784974b2a1e2dd3cfb319
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491323"
+ms.locfileid: "102507185"
 ---
-# <a name="connect-azure-kubernetes-service-diagnostics-and-auditing-logs"></a>Anslut Azure Kubernetes service Diagnostics och gransknings loggar
+# <a name="connect-azure-kubernetes-service-diagnostics-logs"></a>Anslut Azure Kubernetes service-diagnostikloggar
 
 Azure Kubernetes service (AKS) är en fullständigt hanterad behållar Dirigerings tjänst med öppen källkod som gör att du kan distribuera, skala och hantera Docker-behållare och containerbaserade program i en kluster miljö.
 

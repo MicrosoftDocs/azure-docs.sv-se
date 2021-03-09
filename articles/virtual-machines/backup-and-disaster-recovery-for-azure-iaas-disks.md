@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969712"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507914"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Säkerhets kopiering och haveri beredskap för Azure IaaS-diskar
 
@@ -48,7 +48,7 @@ På grund av den här arkitekturen har Azure ständigt levererat tålighet i fö
 
 Lokaliserade maskin varu fel på beräknings värden eller i lagrings plattformen kan ibland leda till att den virtuella datorn inte är tillgänglig som omfattas av [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) för VM-tillgänglighet. Azure tillhandahåller också ett branschledande service avtal för enskilda VM-instanser som använder Azure Premium-SSD.
 
-Kunder kan använda [tillgänglighets uppsättningar](./manage-availability.md)för att skydda program arbets belastningar från stillestånds tid på grund av att en disk eller virtuell dator är tillfälligt otillgänglig. Minst två virtuella datorer i en tillgänglighets uppsättning ger dig redundans för programmet. Azure skapar sedan de här virtuella datorerna och diskarna i separata fel domäner med olika strömförsörjnings-, nätverks-och Server komponenter.
+Kunder kan använda [tillgänglighets uppsättningar](./availability.md)för att skydda program arbets belastningar från stillestånds tid på grund av att en disk eller virtuell dator är tillfälligt otillgänglig. Minst två virtuella datorer i en tillgänglighets uppsättning ger dig redundans för programmet. Azure skapar sedan de här virtuella datorerna och diskarna i separata fel domäner med olika strömförsörjnings-, nätverks-och Server komponenter.
 
 På grund av dessa separata fel domäner påverkar inte lokaliserade maskin varu fel flera virtuella datorer i uppsättningen samtidigt. Att ha separata fel domäner ger hög tillgänglighet för ditt program. Det anses vara en bra idé att använda tillgänglighets uppsättningar när hög tillgänglighet krävs. I nästa avsnitt beskrivs Disaster Recovery-aspekten.
 
@@ -62,7 +62,7 @@ För att skydda dina IaaS-arbetsbelastningar från avbrott bör du planera för 
 
 Dina DR-överväganden kan innehålla följande aspekter:
 
-- Hög tillgänglighet: appens möjlighet att fortsätta att köras i felfritt tillstånd, utan betydande stillestånds tid. I *felfritt tillstånd*innebär det här tillståndet att programmet svarar och att användarna kan ansluta till programmet och interagera med det. Vissa verksamhets kritiska program och databaser kan krävas för att alltid vara tillgängliga, även om det finns problem på plattformen. För dessa arbets belastningar kan du behöva planera redundans för programmet, samt data.
+- Hög tillgänglighet: appens möjlighet att fortsätta att köras i felfritt tillstånd, utan betydande stillestånds tid. I *felfritt tillstånd* innebär det här tillståndet att programmet svarar och att användarna kan ansluta till programmet och interagera med det. Vissa verksamhets kritiska program och databaser kan krävas för att alltid vara tillgängliga, även om det finns problem på plattformen. För dessa arbets belastningar kan du behöva planera redundans för programmet, samt data.
 
 - Data hållbarhet: i vissa fall säkerställer den främsta övervägandeheten att data bevaras om en katastrof inträffar. Därför kan du behöva en säkerhets kopia av dina data på en annan plats. För sådana arbets belastningar kanske du inte behöver fullständig redundans för programmet, men endast en regelbunden säkerhets kopiering av diskarna.
 

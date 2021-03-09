@@ -4,12 +4,12 @@ description: Ta med dina egna nycklar (BYOK) för att kryptera AKS OS-och data d
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728143"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499211"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ta med dina egna nycklar (BYOK) med Azure-diskar i Azure Kubernetes service (AKS)
 
@@ -19,7 +19,7 @@ Azure Storage krypterar alla data i ett lagrings konto i vila. Som standard kryp
 * Stöd för data disk kryptering är begränsat till AKS-kluster som kör Kubernetes version 1,17 och senare.
 * Det går bara att aktivera kryptering av operativ system och data diskar med Kundhanterade nycklar när du skapar ett AKS-kluster.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * Du måste aktivera mjuk borttagning och tömning av skydd för *Azure Key Vault* när du använder Key Vault för att kryptera hanterade diskar.
 * Du behöver Azure CLI-version 2.11.1 eller senare.
 
@@ -93,7 +93,7 @@ När nya noder läggs till i klustret som skapats ovan används den Kundhanterad
 Krypterings nyckeln för operativ system disken används för att kryptera data disken om nyckeln inte tillhandahålls för datadisk från v-1.17.2 och du kan också kryptera AKS-datadiskarna med dina andra nycklar.
 
 > [!IMPORTANT]
-> Se till att du har rätt AKS-autentiseringsuppgifter. Tjänstens huvud namn måste ha deltagar åtkomst till den resurs grupp där diskencryptionset har distribuerats. Annars får du ett fel meddelande som anger att tjänstens huvud namn inte har behörighet.
+> Se till att du har rätt AKS-autentiseringsuppgifter. Den hanterade identiteten måste ha deltagar åtkomst till den resurs grupp där diskencryptionset har distribuerats. Annars visas ett fel som tyder på att den hanterade identiteten inte har behörighet.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below

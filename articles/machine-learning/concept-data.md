@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659723"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503597"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Skydda data åtkomst i Azure Machine Learning
 
@@ -67,7 +67,7 @@ Molnbaserade lagrings tjänster som stöds i Azure och som kan registreras som d
 + Azure Database for MySQL
 
 >[!TIP]
-> De allmänt tillgängliga funktionerna för att skapa data lager kräver autentisering baserad autentisering för åtkomst till lagrings tjänster, t. ex. tjänstens huvud namn eller SAS-token (signatur för delad åtkomst). De här autentiseringsuppgifterna kan användas av användare som har *Läs* behörighet till arbets ytan. <br><br>Om detta är ett problem kan du  [skapa ett data lager som använder identitetsbaserade data åtkomst till lagrings tjänster (för hands version)](how-to-identity-based-data-access.md). Den här funktionen är en [experimentell](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) förhands gransknings funktion och kan ändras när som helst.
+> De allmänt tillgängliga funktionerna för att skapa data lager kräver autentisering baserad autentisering för åtkomst till lagrings tjänster, t. ex. tjänstens huvud namn eller SAS-token (signatur för delad åtkomst). De här autentiseringsuppgifterna kan användas av användare som har *Läs* behörighet till arbets ytan. <br><br>Om detta är ett problem kan du  [skapa ett data lager som använder identitetsbaserade data åtkomst till lagrings tjänster (för hands version)](how-to-identity-based-data-access.md). Den här funktionen är en [experimentell](/python/api/overview/azure/ml/#stable-vs-experimental) förhands gransknings funktion och kan ändras när som helst.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Referens data i lagring med data uppsättningar
@@ -86,9 +86,9 @@ Data uppsättningar kan skapas från lokala filer, offentliga URL: er, [öppna d
 
 Det finns två typer av data uppsättningar: 
 
-+ En [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) refererar till en eller flera filer i dina data lager eller offentliga URL: er. Om dina data redan har rensats och är redo att användas i övnings experiment, kan du [Hämta eller montera filer](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) som FileDatasets till ditt beräknings mål.
++ En [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset) refererar till en eller flera filer i dina data lager eller offentliga URL: er. Om dina data redan har rensats och är redo att användas i övnings experiment, kan du [Hämta eller montera filer](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) som FileDatasets till ditt beräknings mål.
 
-+ En [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) representerar data i tabell format genom att parsa den angivna filen eller listan med filer. Du kan läsa in en TabularDataset i en Pandas eller Spark-DataFrame för ytterligare manipulering och rengöring. En fullständig lista över data format som du kan skapa TabularDatasets från finns i [TabularDatasetFactory-klassen](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory).
++ En [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) representerar data i tabell format genom att parsa den angivna filen eller listan med filer. Du kan läsa in en TabularDataset i en Pandas eller Spark-DataFrame för ytterligare manipulering och rengöring. En fullständig lista över data format som du kan skapa TabularDatasets från finns i [TabularDatasetFactory-klassen](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory).
 
 Ytterligare data uppsättnings funktioner finns i följande dokumentation:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 26a9e931c42822218e7935f50c1f222ac33c34f2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 6f8cfc314c75221a88b58095cc71ea685280ac49
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210111"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501028"
 ---
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -161,7 +161,7 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 
 ###  <a name="azure-powershell"></a>Azure PowerShell 
 
-Använd cmdleten Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) för att generera en ny KEK och lagra den i ditt nyckel valv.
+Använd cmdleten Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) för att generera en ny KEK och lagra den i ditt nyckel valv.
 
  ```powershell-interactive
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
@@ -169,7 +169,7 @@ Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destin
 
 Du kan istället importera en privat nyckel med hjälp av kommandot Azure PowerShell [AZ Key Vault Key import](/cli/azure/keyvault/key#az-keyvault-key-import) .
 
-I båda fallen ska du ange ID: t för ditt KEK Key Vault och URL: en för din KEK till parametrarna Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId och-KeyEncryptionKeyUrl. Observera att det här exemplet förutsätter att du använder samma nyckel valv för både disk krypterings nyckeln och KEK.
+I båda fallen ska du ange ID: t för ditt KEK Key Vault och URL: en för din KEK till parametrarna Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) -KeyEncryptionKeyVaultId och-KeyEncryptionKeyUrl. Observera att det här exemplet förutsätter att du använder samma nyckel valv för både disk krypterings nyckeln och KEK.
 
  ```powershell-interactive
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup"

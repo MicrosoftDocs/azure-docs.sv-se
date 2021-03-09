@@ -5,12 +5,12 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 4d0c03e0035f6b71a23891ac1691f5421c1bdb76
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653857"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502526"
 ---
 # <a name="manage-an-azure-support-request"></a>Hantera en Azure-supportbegäran
 
@@ -88,34 +88,34 @@ Följ dessa rikt linjer när du använder fil överförings alternativet:
 * Filerna får inte vara större än 4 MB.
 * Alla filer måste ha ett fil namns tillägg, till exempel *. docx* eller *. xlsx*. I följande tabell visas de fil namns tillägg som tillåts för uppladdning.
 
-| 0-9, A-C     | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
+| 0-9, A-C    | D-G   | H-N         | O-Q   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | . dat  | . har        | . ODX  | . rar     | .tdb       | .xlam   |
-| . a          | . db   | .hwl        | . oft  | . RDL     | .tdf       | .xlr    |
-| . ABC        | . TAKT  | . ICS        | . Old  | .rdlc    | . text      | .xls    |
-| . adm        | .do_  | . ini        | . One  | .re_     | .thmx      | .xlsb   |
-| . aspx       | .doc  | .java       | . OSD  | . reg     | .tif       | .xlsm   |
-| . ATF        | .docm | .jpg        | . GENOMFÖR  | . ta bort  | . TRC       | .xlsx   |
-| . b          | .docx | . LDF        | . P1   | . ren     | . TDD       | .xlt    |
-| .ba_        | .dotm | . brevhuvuden | .pcap | . Byt namn  | .tx_       | .xltx   |
-| . bak        | .dotx | . lnk        | . pdb  | .rft     | .txt       | .xml    |
-| .bat        | .dtsx | .lo_        | .pdf  | . rpt     | .uccapilog | . XMLA   |
-| . blg        | . EDS  | . log        | .piz  | . RTE     | .uccplog   | .xps    |
-| .CA_        | . EMF  | .lpk        | .pmls | .rtf     | .udcx      | . xsd    |
-| . FÖRA        | . eml  | . manifest   | .png  | . kör     | .vb_       | . xsn    |
-| . Cap        | .emz  | . Master     | .potx | .saz     | .vbs_      | . xxx    |
-| .catx       | . err  | .mdmp       | .ppt  | .sql     | . vcf       | .z_     |
-| . KONFIGURATION        | . etl  | . MOF        | .pptm | .sqlplan | . vsd       | .z01    |
-| . komprimerad | . evt  | .mp3        | .pptx | .stp     | .wdb       | .z02    |
-| . Konfigurationsfil     | . evtx | .mpg        | . prn  | .svclog  | . WKS       | . Zi     |
-| .cpk        | . PRISET   | .ms_        | . polyesterstapelfibrer  | -        | .wma       | .zi_    |
-| . cpp        | .ex_  | . msg        | . pst  | -        | .wmv       | .zip    |
-| .cs         | .ex0  | .msi        | . pub  | -        | . wmz       | .zip_   |
-| . SKV        | . FRD  | . mso        | -     | -        | . WPS       | .zipp   |
-| .cvr        | .gif  | . msu        | -     | -        | .wpt       | . zippa |
-| -           | . GUID | . NFO        | -     | -        | . WSDL      | .zippy  |
-| -           | . gz   | -           | -     | -        | . wsp       | .zipx   |
-| -           | -     | -           | -     | -        | .wtl       | .zit    |
+| .7z         | . dat  | . har        | . ODX  | . rar     | .uccapilog | .xlam   |
+| . a          | . db   | .hwl        | . oft  | . RDL     | .uccplog   | .xlr    |
+| . ABC        | . TAKT  | . ICS        | . Old  | .rdlc    | .udcx      | .xls    |
+| . adm        | .do_  | . ini        | . One  | .re_     | .vb_       | .xlsb   |
+| . aspx       | .doc  | .java       | . OSD  | . ta bort  | .vbs_      | .xlsm   |
+| . ATF        | .docm | .jpg        | . GENOMFÖR  | . ren     | . vcf       | .xlsx   |
+| . b          | .docx | . LDF        | . P1   | . Byt namn  | . vsd       | .xlt    |
+| .ba_        | .dotm | . brevhuvuden | .pcap | .rft     | .wdb       | .xltx   |
+| . bak        | .dotx | .lo_        | . pdb  | . rpt     | . WKS       | .xml    |
+| . blg        | .dtsx | . log        | .pdf  | . RTE     | .wma       | . XMLA   |
+| .CA_        | . EDS  | .lpk        | .piz  | .rtf     | .wmv       | .xps    |
+| . FÖRA        | . EMF  | . manifest   | .pmls | . kör     | . wmz       | . xsd    |
+| . Cap        | . eml  | . Master     | .png  | .saz     | . WPS       | . xsn    |
+| .catx       | .emz  | .mdmp       | .potx | .sql     | .wpt       | . xxx    |
+| . KONFIGURATION        | . err  | . MOF        | .ppt  | .sqlplan | . WSDL      | .z_     |
+| . komprimerad | . etl  | .mp3        | .pptm | .stp     | . wsp       | .z01    |
+| . Konfigurationsfil     | . evt  | .mpg        | .pptx | .svclog  | .wtl       | .z02    |
+| .cpk        | . evtx | .ms_        | . prn  | .tdb     | -          | . Zi     |
+| . cpp        | . PRISET   | . msg        | . polyesterstapelfibrer  | .tdf     | -          | .zi_    |
+| .cs         | .ex_  | . mso        | . pst  | . text    | -          | .zip    |
+| . SKV        | .ex0  | . msu        | . pub  | .thmx    | -          | .zip_   |
+| .cvr        | . FRD  | . NFO        | -     | .tif     | -          | .zipp   |
+| -           | .gif  | -           | -     | . TRC     | -          | . zippa |
+| -           | . GUID | -           | -     | . TDD     | -          | .zippy  |
+| -           | . gz   | -           | -     | .tx_     | -          | .zipx   |
+| -           | -     | -           | -     | .txt     | -          | .zit    |
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | . zzz    |
 

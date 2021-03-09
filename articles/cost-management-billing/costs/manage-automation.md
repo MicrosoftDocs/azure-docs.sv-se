@@ -3,17 +3,17 @@ title: Hantera Azure-kostnader med automatisering
 description: Den här artikeln beskriver hur du kan hantera Azure-kostnader med automatisering.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051793"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499687"
 ---
 # <a name="manage-costs-with-automation"></a>Hantera kostnader med automatisering
 
@@ -46,6 +46,8 @@ Du kanske inte behöver analysera data dagligen. I så fall kan du använda [exp
 ## <a name="automate-retrieval-with-usage-details-api"></a>Automatisera hämtning med API:et för användningsinformation
 
 Med [API:et för användningsinformation](/rest/api/consumption/usageDetails) kan du enkelt hämta råa, icke-aggregerade kostnadsdata som motsvarar din Azure-faktura. API:et är användbart när din organisation behöver en lösning för att hämta data programmatiskt. Överväg att använda API:et om du vill analysera mindre mängder kostnadsdata. Du bör dock använda andra lösningar som nämnts tidigare om du har större datamängder. Användningsinformationen tillhandahålls per mätare per dag. Den används för beräkning av din månadsfaktura. Versionen för allmän tillgänglighet för API:erna är `2019-10-01`. Använd `2019-04-01-preview` för att komma åt förhandsversionen för reservation och Azure Marketplace-köp med API:erna.
+
+Om du vill få stora mängder exporterade data regelbundet kan du läsa mer i [Hämta stora kostnads data uppsättningar med export](ingest-azure-usage-at-scale.md).
 
 ### <a name="usage-details-api-suggestions"></a>Förslag för API:et för användningsinformation
 
@@ -101,81 +103,19 @@ Om du behöver de faktiska kostnaderna för att visa inköp när de påförs kan
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>Hämta stora mängder data regelbundet med exportfunktionen
-
-Du kan regelbundet exportera stora mängder data med exporter från Cost Management. Att exportera är det rekommenderade sättet att hämta icke sammansatta kostnadsdata. Det gäller särskilt när användningsfilerna är för stora för att kunna anropas och laddas ned på ett pålitligt sätt med hjälp av API:et för användningsinformation. Exporterade data placeras i det Azure Storage-konto som du väljer. Därifrån kan du läsa in data i dina egna system och analysera dem efter behov. Information om hur du konfigurerar exporter i Azure-portalen finns i [Exportera data](tutorial-export-acm-data.md).
-
-Om du vill automatisera exporter i olika omfång är exempel-API:ets begäran i nästa avsnitt en bra utgångspunkt. Du kan använda export-API:et för att skapa automatiska exporter som en del av din allmänna miljökonfiguration. Med automatiska exporter ser du till att du har de data du behöver. Du kan använda dem i din organisations system när du utökar användningen av Azure.
-
-### <a name="common-export-configurations"></a>Vanliga exportkonfigurationer
-
-Innan du skapar din första export bör du ta hänsyn till ditt scenario och de konfigurationsalternativ som är nödvändiga för det. Ta följande exportalternativ som exempel:
-
-- **Upprepning** – Bestäm hur ofta exportjobbet ska köras och när en fil ska placeras i ditt Azure Storage-konto. Välj mellan varje dag, varje vecka och varje månad. Försök att konfigurera upprepningen så att den matchar de dataimportjobb som används av organisationens interna system.
-- **Upprepningsperiod** – Bestäm hur länge exporten ska vara giltig. Filerna exporteras endast under upprepningsperioden.
-- **Tidsram** – Bestäm mängden data som ska genereras av exporten vid en specifik körning. Vanliga alternativ är MonthToDate och WeekToDate.
-- **StartDate** – Konfigurera när du vill att exportschemat ska börja. En export skapas på StartDate och därefter baserat på din upprepning.
-- **Typ** – Det finns tre exporttyper:
-  - ActualCost – Visar den totala användningen och kostnaderna för den angivna perioden, allt eftersom de ackumuleras och visas på fakturan.
-  - AmortizedCost – Visar den totala användningen och kostnaderna för den angivna perioden, med amortering tillämpad på de reservationsinköpskostnader som gäller.
-  - Användning – Alla exporter som skapats före 20 juli 2020 är av typen Användning. Uppdatera alla schemalagda exporter som antingen ActualCost eller AmortizedCost.
-- **Kolumner** – Definierar de datafält som du vill ska ingå i exportfilen. De motsvarar de fält som är tillgängliga i API:et för användningsinformation. Mer information finns i [API för användningsinformation](/rest/api/consumption/usagedetails/list).
-
-### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>Skapa en daglig export för perioden hittills under månaden för en prenumeration
-
-URL för begäran: `PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
-
-```json
-{
-  "properties": {
-    "schedule": {
-      "status": "Active",
-      "recurrence": "Daily",
-      "recurrencePeriod": {
-        "from": "2020-06-01T00:00:00Z",
-        "to": "2020-10-31T00:00:00Z"
-      }
-    },
-    "format": "Csv",
-    "deliveryInfo": {
-      "destination": {
-        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
-        "container": "{yourContainer}",
-        "rootFolderPath": "{yourDirectory}"
-      }
-    },
-    "definition": {
-      "type": "ActualCost",
-      "timeframe": "MonthToDate",
-      "dataSet": {
-        "granularity": "Daily",
-        "configuration": {
-          "columns": [
-            "Date",
-            "MeterId",
-            "ResourceId",
-            "ResourceLocation",
-            "Quantity"
-          ]
-        }
-      }
-    }
-}
-```
-
-### <a name="automate-alerts-and-actions-with-budgets"></a>Automatisera aviseringar och åtgärder med budgetar
+## <a name="automate-alerts-and-actions-with-budgets"></a>Automatisera aviseringar och åtgärder med budgetar
 
 Det finns två viktiga komponenter om du ska kunna få ut mesta möjliga av dina investeringar i molnet. En är automatiskt skapande av budget. Den andra är konfiguration av kostnadsbaserad orkestrering som svar på budgetaviseringar. Det finns olika sätt att automatisera skapandet av en Azure-budget. Olika aviseringssvar sker när de konfigurerade tröskelvärdena för aviseringar överskrids.
 
 Följande avsnitt beskriver tillgängliga alternativ och ger exempel på API-begäranden för att komma igång med budgetautomatisering.
 
-#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Så här utvärderas kostnader mot din budgettröskel
+### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Så här utvärderas kostnader mot din budgettröskel
 
 Dina kostnader utvärderas mot din budgettröskel en gång per dag. När du skapar en ny budget eller på din budgetåterställningsdag blir kostnaderna jämfört med tröskelvärdet noll/null eftersom utvärderingen kanske inte har inträffat.
 
 När Azure upptäcker att kostnaderna har överskridit tröskelvärdet utlöses en avisering inom en timme från den tid då den identifierades.
 
-#### <a name="view-your-current-cost"></a>Visa din aktuella kostnad
+### <a name="view-your-current-cost"></a>Visa din aktuella kostnad
 
 Om du vill visa dina aktuella kostnader måste du göra ett GET-anrop med hjälp av [fråge-API:et](/rest/api/cost-management/query).
 
@@ -185,7 +125,7 @@ Ett GET-anrop till budget-API:et returnerar inte de aktuella kostnader som visas
 
 Du kan automatisera skapandet av budgeten med hjälp av [budget-API:et](/rest/api/consumption/budgets). Du kan också skapa en budget med en [budgetmall](quick-create-budget-template.md). Mallar är ett enkelt sätt att standardisera Azure-distributioner samtidigt som du säkerställer att kostnadskontrollen är korrekt konfigurerad och framtvingas.
 
-#### <a name="supported-locales-for-budget-alert-emails"></a>Nationella inställningar som stöds för budgetavisering via e-post
+### <a name="supported-locales-for-budget-alert-emails"></a>Nationella inställningar som stöds för budgetavisering via e-post
 
 När du använder budgetar får du en avisering om kostnaderna överskrider ett angivet tröskelvärde. Du kan konfigurera upp till fem e-postmottagare per budget. Mottagarna får en e-postavisering inom 24 timmar efter att budgettröskeln har överskridits. Men en mottagare kan dock vilja få sina e-postmeddelanden på ett annat språk. Du kan använda följande språk/kulturkoder med API:erna för budgetar. Ange kulturkoden med parametern `locale`, som i följande exempel.
 
@@ -249,7 +189,7 @@ Språk som stöds med en kulturkod:
 | pt-pt | Portugisiska (Portugal) |
 | sv-se | Svenska (Sverige) |
 
-#### <a name="common-budgets-api-configurations"></a>Vanliga budget API-konfigurationer
+### <a name="common-budgets-api-configurations"></a>Vanliga budget API-konfigurationer
 
 Det finns många sätt att konfigurera en budget i din Azure-miljö. Överväg ditt scenario först och identifiera sedan de konfigurationsalternativ som möjliggör det. Granska följande alternativ:
 

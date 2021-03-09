@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571340"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499364"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Säkerhets rekommendationer för virtuella datorer i Azure
 
@@ -33,7 +33,7 @@ Allmän information om Azure Security Center finns i [Azure Security Center?](..
 | När du skapar anpassade VM-avbildningar ska du använda de senaste uppdateringarna. | Innan du skapar avbildningar installerar du de senaste uppdateringarna för operativ systemet och för alla program som ska ingå i din avbildning.  | - |
 | Se till att dina virtuella datorer är aktuella. | Du kan använda [uppdateringshantering](../automation/update-management/overview.md) lösning i Azure Automation för att hantera operativ system uppdateringar för dina Windows-och Linux-datorer i Azure. | [Ja](../security-center/asset-inventory.md) |
 | Säkerhetskopiera dina virtuella datorer. | [Azure Backup](../backup/backup-overview.md) hjälper till att skydda dina program data och har minimala drifts kostnader. Program fel kan skada dina data och mänskliga fel kan leda till buggar i dina program. Azure Backup skyddar dina virtuella datorer som kör Windows och Linux. | - |
-| Använd flera virtuella datorer för större återhämtning och tillgänglighet. | Om din virtuella dator kör program som måste ha hög tillgänglighet kan du använda flera virtuella datorer eller [tillgänglighets uppsättningar](./manage-availability.md). | - |
+| Använd flera virtuella datorer för större återhämtning och tillgänglighet. | Om din virtuella dator kör program som måste ha hög tillgänglighet kan du använda flera virtuella datorer eller [tillgänglighets uppsättningar](./availability.md). | - |
 | Anta en strategi för affärs kontinuitet och haveri beredskap (BCDR). | Med Azure Site Recovery kan du välja mellan olika alternativ som har utformats för att stödja affärs kontinuitet. Det stöder olika scenarier för replikering och redundans. Mer information finns i  [About Site Recovery](../site-recovery/site-recovery-overview.md). | - |
 
 ## <a name="data-security"></a>Datasäkerhet

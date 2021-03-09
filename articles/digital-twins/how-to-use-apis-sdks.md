@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d2d3d04bdb8066db263c608bb1d42acca303a656
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433836"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507236"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Använda Azure Digital Twins-API:er och -SDK:er
 
@@ -68,7 +68,7 @@ Använda data Plans-API: er:
    - du hittar SDK-källan i GitHub: [Azure Azures digitala dubbla klient bibliotek för Java Script](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * Du kan använda **python SDK**. Använda python SDK...
    - Du kan visa och installera paketet från PyPi: [Azure Azure Digitals sammanflätade kärn klient bibliotek för python](https://pypi.org/project/azure-digitaltwins-core/).
-   - Du kan visa [SDK Reference-dokumentationen](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
+   - Du kan visa [SDK Reference-dokumentationen](/python/api/azure-digitaltwins-core/azure.digitaltwins.core).
    - du hittar SDK-källan i GitHub: [Azure Azure Digitals sammanflätade kärn klient bibliotek för python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Du kan skapa ett SDK för ett annat språk med hjälp av AutoRest. Följ instruktionerna i [*instruktion: skapa anpassade SDK: er för Azure Digitals med AutoRest*](how-to-create-custom-sdks.md).
 

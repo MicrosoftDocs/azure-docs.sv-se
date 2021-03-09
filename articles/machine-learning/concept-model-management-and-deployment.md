@@ -10,12 +10,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071229"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508018"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: modell hantering, distribution och övervakning med Azure Machine Learning
 
@@ -160,7 +160,7 @@ Azure ML ger dig möjlighet att spåra gransknings historiken från slut punkt t
 > [!TIP]
 > Även om information om modeller och data uppsättningar samlas in automatiskt, kan du lägga till ytterligare information med hjälp av __taggar__. När du letar efter registrerade modeller och data uppsättningar i din arbets yta kan du använda taggar som ett filter.
 >
-> Ett valfritt steg är att associera en data uppsättning med en registrerad modell. Information om hur du refererar till en data uppsättning när du registrerar en modell finns i referens för [modell](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) klass.
+> Ett valfritt steg är att associera en data uppsättning med en registrerad modell. Information om hur du refererar till en data uppsättning när du registrerar en modell finns i referens för [modell](/python/api/azureml-core/azureml.core.model%28class%29) klass.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meddela, automatisera och Avisera händelser i ML-livscykel

@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Använda Azure Portal
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: Använda Azure Monitor
+        - name: Använda Azure Monitor loggar
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Rapporter
       items:
@@ -374,10 +374,14 @@
           items:
             - name: Konfigurera Azure Backup-rapporter
               href: configure-reports.md
+            - name: E-Azure Backup rapporter
+              href: backup-reports-email.md
         - name: Konfigurera diagnostikhändelser för Recovery Services-valv
           items:
             - name: Använda diagnostikinställningar för Recovery Services-valv
               href: backup-azure-diagnostic-events.md
+            - name: Använda system funktioner
+              href: backup-reports-system-functions.md
             - name: Log Analytics-datamodell för resursspecifika diagnostikhändelser
               href: backup-azure-reports-data-model.md
             - name: Log Analytics-datamodell för Azure Backup (Azure Diagnostics-läge)

@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6d8402f5e8a1a9af1f84ff6beff7324d1675e441
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3abca397186572cabb4f7ae99edae8688ea4d9a6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214413"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499517"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivera Azure Active Directory Domain Services autentisering på Azure Files
 
@@ -99,7 +99,7 @@ Följande bild visar hur du aktiverar Azure AD DS-autentisering över SMB för d
 
 Om du vill aktivera Azure AD DS-autentisering över SMB med Azure PowerShell installerar du den senaste AZ-modulen (2,4 eller senare) eller modulen AZ. Storage (1,5 eller senare). Mer information om hur du installerar PowerShell finns i [installera Azure PowerShell på Windows med PowerShellGet](/powershell/azure/install-Az-ps).
 
-Om du vill skapa ett nytt lagrings konto anropar du [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)och anger sedan parametern **EnableAzureActiveDirectoryDomainServicesForFile** till **True**. I följande exempel ska du komma ihåg att ersätta plats hållarnas värden med dina egna värden. (Om du använde föregående Preview-modul är parametern för att aktivera funktionen **EnableAzureFilesAadIntegrationForSMB**.)
+Om du vill skapa ett nytt lagrings konto anropar du [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)och anger sedan parametern **EnableAzureActiveDirectoryDomainServicesForFile** till **True**. I följande exempel ska du komma ihåg att ersätta plats hållarnas värden med dina egna värden. (Om du använde föregående Preview-modul är parametern för att aktivera funktionen **EnableAzureFilesAadIntegrationForSMB**.)
 
 ```powershell
 # Create a new storage account

@@ -1,22 +1,22 @@
 ---
-title: Självstudie – hög tillgänglighet för virtuella Windows-datorer i Azure
-description: I den här självstudiekursen lär du dig hur du använder Azure PowerShell för att distribuera virtuella datorer med hög tillgänglighet i tillgänglighetsuppsättningar
+title: Distribuera virtuella datorer i en tillgänglighets uppsättning med hjälp av Azure PowerShell
+description: Lär dig hur du använder Azure PowerShell för att distribuera virtuella datorer med hög tillgänglighet i tillgänglighets uppsättningar
 services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 90f57e48ef8cd2f71eea7a5c2b98fda83f282203
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736659"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509106"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Självstudier: Skapa och distribuera virtuella datorer med hög tillgänglighet med Azure PowerShell
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Skapa och distribuera virtuella datorer i en tillgänglighets uppsättning med hjälp av Azure PowerShell
 
 I den här självstudien lär du dig att öka tillgängligheten och tillförlitligheten för dina virtuella datorer (VM) med hjälp av tillgänglighetsuppsättningar. Tillgänglighetsuppsättningarna ser till att de virtuella datorer som du distribuerar i Azure distribueras över flera isolerade maskinvarunoder i ett kluster. 
 
@@ -28,14 +28,6 @@ I den här guiden får du lära dig att:
 > * Kontrollera tillgängliga VM-storlekar
 > * Kontrollera Azure Advisor
 
-
-## <a name="availability-set-overview"></a>Översikt över tillgänglighetsuppsättning
-
-En tillgänglighets uppsättning är en logisk grupperings funktion för att isolera VM-resurser från varandra när de distribueras. Azure ser till att de virtuella datorer som du placerar i en tillgänglighetsuppsättning körs över flera fysiska servrar, datarack, lagringsenheter och nätverksswitchar. Om ett maskinvaru- eller programvarufel inträffar påverkas endast en delmängd av dina virtuella datorer. Den övergripande lösningen fortsätter att fungera. Tillgänglighetsuppsättningar är viktiga för skapandet av tillförlitliga molnlösningar.
-
-Nu ska vi titta en typisk VM-baserad lösning där du kan ha fyra klientdelswebbservrar och två virtuella serverdelsdatorer. Med Azure bör du definiera två tillgänglighetsuppsättningar innan du distribuerar dina virtuella datorer: en för webbnivån och en för serverdelsnivån. När du skapar en ny virtuell dator anger du tillgänglighetsuppsättningen som en parameter. Azure ser till att de virtuella datorerna isoleras över flera fysiska maskinvaruresurser. Om det uppstår ett problem på den fysiska maskinvara som dina servrar körs på fortsätter de andra instanserna av servrarna att köras eftersom de finns på annan maskinvara.
-
-Använd tillgänglighetsuppsättningar när du vill distribuera tillförlitliga VM-baserade lösningar i Azure.
 
 ## <a name="launch-azure-cloud-shell"></a>Starta Azure Cloud Shell
 

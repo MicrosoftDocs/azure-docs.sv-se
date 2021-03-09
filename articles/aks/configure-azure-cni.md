@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6c0cc1c8da6fddfad6d3f70c88860ddcdd35a11a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182425"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504260"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurera Azure CNI Networking i Azure Kubernetes service (AKS)
 
@@ -24,10 +24,9 @@ Den här artikeln visar hur du använder *Azure cni* Networking för att skapa o
 
 * Det virtuella nätverket för AKS-klustret måste tillåta utgående Internet anslutning.
 * AKS-kluster får inte använda `169.254.0.0/16` , `172.30.0.0/16` , `172.31.0.0/16` eller `192.0.2.0/24` för Kubernetes-tjänstens adress intervall, Pod-adressintervall eller adress intervall för virtuella kluster nätverk.
-* Tjänstens huvud namn som används av AKS-klustret måste ha minst [nätverks deltagar](../role-based-access-control/built-in-roles.md#network-contributor) behörighet för under nätet i det virtuella nätverket. Om du vill definiera en [anpassad roll](../role-based-access-control/custom-roles.md) i stället för att använda den inbyggda rollen nätverks deltagare, krävs följande behörigheter:
+* Den kluster identitet som används av AKS-klustret måste ha minst [nätverks deltagar](../role-based-access-control/built-in-roles.md#network-contributor) behörighet för under nätet i det virtuella nätverket. Om du vill definiera en [anpassad roll](../role-based-access-control/custom-roles.md) i stället för att använda den inbyggda rollen nätverks deltagare, krävs följande behörigheter:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* I stället för ett huvud namn för tjänsten kan du använda systemtilldelad hanterad identitet för behörigheter. Mer information finns i [använda hanterade identiteter](use-managed-identity.md).
 * Under nätet som tilldelats till AKS-noden kan inte vara ett [delegerat undernät](../virtual-network/subnet-delegation-overview.md).
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planera IP-adresser för klustret

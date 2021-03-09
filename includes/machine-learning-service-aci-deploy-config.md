@@ -4,16 +4,16 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 190da8fc98f3a03499188ab173f058d15cd2dafe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4983c1e1e7f235fa7a5b748a0ce5b1c79176c849
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027559"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510912"
 ---
-Posterna i `deploymentconfig.json` dokument översikten till parametrarna för [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). I följande tabell beskrivs mappningen mellan entiteterna i JSON-dokumentet och parametrarna för-metoden:
+Posterna i `deploymentconfig.json` dokument översikten till parametrarna för [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration). I följande tabell beskrivs mappningen mellan entiteterna i JSON-dokumentet och parametrarna för-metoden:
 
-| JSON-entitet | Metod parameter | Description |
+| JSON-entitet | Metod parameter | Beskrivning |
 | ----- | ----- | ----- |
 | `computeType` | NA | Beräkningsmålet. För ACI måste värdet vara `ACI` . |
 | `containerResourceRequirements` | NA | Behållare för processor-och minnes enheterna. |

@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: bcfe26bc6f637dd140776df98f8267c4c43684ba
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/09/2021
+ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049564"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502454"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -114,6 +114,14 @@ Exempel:
 När du har utökat etiketter till till gångar i Azure avdelningens kontroll kan du välja de etiketter som du vill göra tillgängliga i avdelningens kontroll. Mer information finns i [skapa nya känslighets etiketter eller ändra befintliga etiketter](#creating-new-sensitivity-labels-or-modifying-existing-labels).
 ### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>Skapa nya känslighets etiketter eller ändra befintliga etiketter
 
+När du använder känslighets etiketter för Office-appar på Windows, macOS, iOS och Android, ser användarna nya etiketter inom fyra timmar och inom en timme för Office på webben. Men det kan vara upp till 24 timmar innan ändringarna replikeras till alla appar och tjänster.
+
+> [!IMPORTANT]
+> Ta inte bort en etikett om du inte förstår konsekvenserna för dina användare. Mer information finns i [ta bort och ta bort etiketter](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) i Microsoft 365-dokumentationen.
+>
+
+**Skapa nya känslighets etiketter eller ändra befintliga etiketter**:
+
 1. Öppna [Microsoft 365 Security och Compliance Center](https://protection.office.com/homepage). 
 
 1. Under **lösningar** väljer du **informations skydd** och väljer sedan **skapa en etikett**. 
@@ -152,10 +160,6 @@ När du har utökat etiketter till till gångar i Azure avdelningens kontroll ka
 
     Mer information finns i [etikett prioritet (sorterings frågor)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters) i Microsoft 365-dokumentationen.
 
-> [!IMPORTANT]
-> Ta inte bort en etikett om du inte förstår konsekvenserna för dina användare. 
->
-> Mer information finns i [ta bort och ta bort etiketter](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) i Microsoft 365-dokumentationen.
 
 Fortsätt genom [att genomsöka dina data för att tillämpa etiketter automatiskt](#scan-your-data-to-apply-labels-automatically)och sedan:
 

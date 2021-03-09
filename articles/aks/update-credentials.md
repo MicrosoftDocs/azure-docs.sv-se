@@ -5,16 +5,16 @@ description: Läs om hur du uppdaterar eller återställer autentiseringsuppgift
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389016"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501183"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Uppdatera eller rotera autentiseringsuppgifterna för Azure Kubernetes service (AKS)
 
-Som standard skapas AKS-kluster med ett huvud namn för tjänsten som har ett års förfallo tid. När du nära förfallo datumet kan du återställa autentiseringsuppgifterna för att utöka tjänstens huvud namn under ytterligare en tids period. Du kanske också vill uppdatera eller rotera autentiseringsuppgifterna som en del av en definierad säkerhets princip. Den här artikeln beskriver hur du uppdaterar autentiseringsuppgifterna för ett AKS-kluster.
+AKS-kluster som skapats med ett huvud namn för tjänsten har en giltighets tid på ett år. När du nära förfallo datumet kan du återställa autentiseringsuppgifterna för att utöka tjänstens huvud namn under ytterligare en tids period. Du kanske också vill uppdatera eller rotera autentiseringsuppgifterna som en del av en definierad säkerhets princip. Den här artikeln beskriver hur du uppdaterar autentiseringsuppgifterna för ett AKS-kluster.
 
 Du kan också ha [integrerat ditt AKS-kluster med Azure Active Directory][aad-integration]och använda det som autentiseringsprovider för klustret. I så fall kommer du att ha två fler identiteter som skapats för klustret, AAD-serverprogrammet och AAD-klientprogramvaran. du kan också återställa dessa autentiseringsuppgifter.
 

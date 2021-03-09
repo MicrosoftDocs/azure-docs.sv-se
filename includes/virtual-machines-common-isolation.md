@@ -2,18 +2,18 @@
 title: ta med fil
 description: ta med fil
 services: virtual-machines
-author: styli365
+author: rishabv90
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/05/2020
-ms.author: sttsinar
+ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: 3d78441e56e23cf49b09073fdf88bef4b3434da9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102473770"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510654"
 ---
 Azure Compute erbjuder storlekar för virtuella datorer som är isolerade till en viss maskin varu typ och som är dedikerad till en enda kund. De isolerade storlekarna är aktiva och fungerar på en speciell maskin varu generation och kommer att bli föråldrade när maskin varu genereringen dras tillbaka.
 
@@ -42,12 +42,12 @@ Isolerade VM-storlekar har en maskinvaru begränsad livs längd. Azure utfärdar
 
 | Storlek | Datum för isolerings Pension | 
 | --- | --- |
-| Standard_DS15_v2 | 15 maj, 2020 |
-| Standard_D15_v2  | 15 maj, 2020 |
-| Standard_G5  | 15 februari 2021 |
-| Standard_GS5  | 15 februari 2021 |
-| Standard_E64i_v3  | 15 februari 2021 |
-| Standard_E64is_v3  | 15 februari 2021 |
+| Standard_DS15_v2 | 15 maj, 2021 |
+| Standard_D15_v2  | 15 maj, 2021 |
+| Standard_G5  | 15 februari 2022 |
+| Standard_GS5  | 15 februari 2022 |
+| Standard_E64i_v3  | 15 februari 2022 |
+| Standard_E64is_v3  | 15 februari 2022 |
 
 
 ## <a name="faq"></a>Vanliga frågor
@@ -71,8 +71,8 @@ S **: vi** kommer att tillhandahålla påminnelser 12 månader före den officie
  
 | Datum | Action |
 |---|---| 
-| 15 maj, 2019<sup>1</sup> | D/DS15_v2 överdragnings meddelande vid isolering| 
-| 15 maj, 2020 | D/DS15_v2 isolerings garanti borttagen| 
+| 15 maj, 2020<sup>1</sup> | D/DS15_v2 överdragnings meddelande vid isolering| 
+| 15 maj, 2021 | D/DS15_v2 isolerings garanti borttagen| 
 
 <sup>1</sup> befintlig kund som använder dessa storlekar får ett meddelande via e-post med detaljerade anvisningar om nästa steg.  
 
@@ -81,8 +81,8 @@ S **: vi** kommer att tillhandahålla påminnelser 12 månader före den officie
  
 | Datum | Action |
 |---|---|
-| Feb 15, 2020<sup>1</sup> | Meddelande om borttagning av G5/GS5/E64i_v3/E64is_v3 isolering |
-| Feb 15, 2021 | G5/GS5/E64i_v3/E64is_v3 isolerings garanti tas bort |
+| Feb 15, 2021<sup>1</sup> | Meddelande om borttagning av G5/GS5/E64i_v3/E64is_v3 isolering |
+| Feb 15, 2022 | G5/GS5/E64i_v3/E64is_v3 isolerings garanti tas bort |
 
 <sup>1</sup> befintlig kund som använder dessa storlekar får ett meddelande via e-post med detaljerade anvisningar om nästa steg.  
 

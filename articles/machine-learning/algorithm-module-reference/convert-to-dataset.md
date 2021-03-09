@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3ba69a6ddf38083e5665e20081f5f909b7100024
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420877"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508494"
 ---
 # <a name="convert-to-dataset"></a>Konvertera till datamängd
 
@@ -35,18 +35,18 @@ Vi rekommenderar att du använder modulen [Redigera metadata](edit-metadata.md) 
 
 2. Anslut den till en modul som matar ut en data uppsättning.   
 
-    Så länge data är [tabell](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py), kan du konvertera dem till en data uppsättning. Detta inkluderar data som läses in genom att [Importera data](import-data.md), data som skapats genom att [ange data manuellt](enter-data-manually.md)eller data uppsättningar omvandlas via [tillämpa omvandling](apply-transformation.md).
+    Så länge data är [tabell](/python/api/azureml-core/azureml.data.tabulardataset), kan du konvertera dem till en data uppsättning. Detta inkluderar data som läses in genom att [Importera data](import-data.md), data som skapats genom att [ange data manuellt](enter-data-manually.md)eller data uppsättningar omvandlas via [tillämpa omvandling](apply-transformation.md).
 
 3.  I list rutan **åtgärd** anger du om du vill göra några rensningar av data innan du sparar data uppsättningen:  
   
-    - **Ingen** : Använd datan som de är.  
+    - **Ingen**: Använd datan som de är.  
   
-    - **SetMissingValue** : Ange ett värde för ett värde som saknas i data uppsättningen. Standard plats hållaren är frågetecknet (?), men du kan använda alternativet  **anpassat värde som saknas** för att ange ett annat värde. Om du till exempel anger **taxi** för **anpassat saknat värde** , kommer alla instanser av **taxin** i data uppsättningen att ändras till det saknade värdet.
+    - **SetMissingValue**: Ange ett värde för ett värde som saknas i data uppsättningen. Standard plats hållaren är frågetecknet (?), men du kan använda alternativet  **anpassat värde som saknas** för att ange ett annat värde. Om du till exempel anger **taxi** för **anpassat saknat värde**, kommer alla instanser av **taxin** i data uppsättningen att ändras till det saknade värdet.
   
-    - **ReplaceValues** : Använd det här alternativet för att ange ett enda exakt värde som ska ersättas med andra exakta värden. Du kan ersätta saknade värden eller anpassade värden genom att ange **ersättnings** metoden:
+    - **ReplaceValues**: Använd det här alternativet för att ange ett enda exakt värde som ska ersättas med andra exakta värden. Du kan ersätta saknade värden eller anpassade värden genom att ange **ersättnings** metoden:
 
-      - **Saknas** : Välj det här alternativet om du vill ersätta saknade värden i indata-datauppsättningen. För **nytt värde** anger du det värde som du vill ersätta de saknade värdena med.
-      - **Anpassad** : Välj det här alternativet om du vill ersätta anpassade värden i indata-datauppsättningen. För **anpassat värde** anger du det värde som du vill söka efter. Om dina data t. ex. innehåller den sträng `obs` som används som plats hållare för värden som saknas, anger du `obs` . För **nytt värde** anger du det nya värdet som ersätter den ursprungliga strängen med.
+      - **Saknas**: Välj det här alternativet om du vill ersätta saknade värden i indata-datauppsättningen. För **nytt värde** anger du det värde som du vill ersätta de saknade värdena med.
+      - **Anpassad**: Välj det här alternativet om du vill ersätta anpassade värden i indata-datauppsättningen. För **anpassat värde** anger du det värde som du vill söka efter. Om dina data t. ex. innehåller den sträng `obs` som används som plats hållare för värden som saknas, anger du `obs` . För **nytt värde** anger du det nya värdet som ersätter den ursprungliga strängen med.
   
     Observera att **ReplaceValues** -åtgärden endast gäller för exakta matchningar. Dessa strängar påverkas till exempel inte: `obs.` , `obsolete` .  
  

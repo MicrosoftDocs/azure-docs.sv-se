@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453044"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501710"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Arkivera loggar och rapportera om hantering av Azure AD-berättigande i Azure Monitor
 
@@ -130,7 +130,7 @@ Gör så här för att ange roll tilldelningen och skapa en fråga:
 
 ### <a name="install-azure-powershell-module"></a>Installera Azure PowerShell modul
 
-När du har en lämplig roll tilldelning startar du PowerShell och [installerar Azure PowerShell-modulen](/powershell/azure/install-az-ps?view=azps-3.3.0) (om du inte redan har gjort det) genom att skriva:
+När du har en lämplig roll tilldelning startar du PowerShell och [installerar Azure PowerShell-modulen](/powershell/azure/install-az-ps) (om du inte redan har gjort det) genom att skriva:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -168,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Skicka frågan till arbets ytan Log Analytics
-När du har identifierat en arbets yta kan du slutligen använda [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) för att skicka en Kusto-fråga till arbets ytan. Dessa frågor skrivs i [Kusto-frågespråk](/azure/kusto/query/).
+När du har identifierat en arbets yta kan du slutligen använda [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) för att skicka en Kusto-fråga till arbets ytan. Dessa frågor skrivs i [Kusto-frågespråk](/azure/kusto/query/).
  
 Du kan till exempel hämta datum intervallet för gransknings händelse posterna från arbets ytan Log Analytics, med PowerShell-cmdletar för att skicka en fråga som:
  

@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 55d110501d5e0273ebf8cbc666920cacb87cf5cf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 455fdc7615e0909189f311755571d02a9acca24e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434992"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501999"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB bilagor
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB bilagor är särskilda objekt som innehåller referenser till en associerad metadata med en extern BLOB-eller mediafil.
 
@@ -40,6 +40,11 @@ Azure Cosmos DBs hanterade bifogade filer skiljer sig från dess stöd för stan
 - Bilagor stöds inte i alla versioner av Azure Cosmos DB SDK: er.
 - Hanterade bilagor är begränsade till 2 GB lagrings utrymme per databas konto.
 - Hanterade bilagor är inte kompatibla med Azure Cosmos DB global distribution och de replikeras inte över flera regioner.
+
+> [!NOTE]
+> Azure Cosmos DB-API för MongoDB-version 3,2 använder hanterade bilagor för GridFS, vilket innebär att samma begränsningar används som Azure Cosmos DBs hanterade bifogade filer.
+>
+> Vi rekommenderar utvecklare som använder funktionen MongoDB GridFS att uppgradera till Azure Cosmos DB API för MongoDB version 3,6 eller högre, som är frikopplad från bilagor och ger en starkare och stabilare upplevelse. Utvecklare som använder funktions uppsättningen MongoDB GridFS bör också överväga att använda Azure Blob Storage – vilket är syftet med att lagra BLOB-innehåll och erbjuder utökade funktioner till lägre kostnad jämfört med GridFS.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Migrera bilagor till Azure Blob Storage
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139318"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501149"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Ladda upp filer från enheten till molnet med IoT Hub (python)
 
@@ -109,7 +109,7 @@ I det här avsnittet skapar du Device-appen för att ladda upp en fil till IoT H
             return (False, ex)
     ```
 
-    Den här funktionen tolkar *blob_infos* strukturen som har skickats till den för att skapa en URL som används för att initiera en [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python). Sedan laddar den upp din fil till Azure Blob Storage med hjälp av den här klienten.
+    Den här funktionen tolkar *blob_infos* strukturen som har skickats till den för att skapa en URL som används för att initiera en [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient). Sedan laddar den upp din fil till Azure Blob Storage med hjälp av den här klienten.
 
 1. Lägg till följande kod för att ansluta klienten och ladda upp filen:
 
@@ -211,4 +211,4 @@ Lär dig mer om Azure Blob Storage med följande länkar:
 
 * [Dokumentation om Azure Blob Storage](../storage/blobs/index.yml)
 
-* [Dokumentation om Azure Blob Storage for python API](/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Dokumentation om Azure Blob Storage for python API](/python/api/overview/azure/storage-blob-readme)

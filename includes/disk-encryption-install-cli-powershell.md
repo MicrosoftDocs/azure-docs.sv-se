@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: be6de283ed230a6e6a6b4986abb0a36386e36925
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4c168738c0396b83412f9ed8c27fe3b2db9918d7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211999"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511085"
 ---
 Azure Disk Encryption kan aktive ras och hanteras via [Azure CLI](/cli/azure) och [Azure PowerShell](/powershell/azure/new-azureps-module-az). Om du vill göra det måste du installera verktygen lokalt och ansluta till din Azure-prenumeration.
 
@@ -47,13 +47,13 @@ Mer information finns i [Kom igång med Azure CLI 2,0](/cli/azure/get-started-wi
 
 Om du redan har installerat det lokalt kontrollerar du att du använder den senaste versionen av Azure PowerShell SDK-versionen för att konfigurera Azure Disk Encryption. Ladda ned den senaste versionen av [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)-versionen.
 
-Om du vill [Logga in på ditt Azure-konto med Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)använder du cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) .
+Om du vill [Logga in på ditt Azure-konto med Azure PowerShell](/powershell/azure/authenticate-azureps)använder du cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 ```powershell
 Connect-AzAccount
 ```
 
-Om du har flera prenumerationer och vill ange en använder du cmdleten [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) för att lista dem, följt av cmdleten [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) :
+Om du har flera prenumerationer och vill ange en använder du cmdleten [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) för att lista dem, följt av cmdleten [set-AzContext](/powershell/module/az.accounts/set-azcontext) :
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>

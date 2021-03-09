@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661043"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501590"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurera datadelningar och korsvalidering vid automatiserad maskininlärning
 
@@ -24,7 +24,7 @@ I den här artikeln lär du dig de olika alternativen för att konfigurera trän
 
 När du använder automatisk ML för att skapa flera ML-modeller i Azure Machine Learning måste varje underordnad körning verifiera den relaterade modellen genom att beräkna kvalitets måtten för modellen, till exempel precision eller AUC viktad. Dessa mått beräknas genom att jämföra förutsägelserna som gjorts med varje modell med verkliga etiketter från tidigare observationer i verifierings data. [Lär dig mer om hur mått beräknas baserat på validerings typ](#metric-calculation-for-cross-validation-in-machine-learning). 
 
-Automatiserade ML-experiment utför automatisk modell validering. I följande avsnitt beskrivs hur du kan anpassa verifierings inställningarna ytterligare med [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
+Automatiserade ML-experiment utför automatisk modell validering. I följande avsnitt beskrivs hur du kan anpassa verifierings inställningarna ytterligare med [Azure Machine Learning python SDK](/python/api/overview/azure/ml/). 
 
 En låg kod eller ingen kod får [du i skapa dina automatiserade Machine Learning-experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
 
@@ -47,7 +47,7 @@ För den här artikeln behöver du
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Standard data delningar och kors validering i Machine Learning
 
-Använd [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) -objektet för att definiera dina experiment-och utbildnings inställningar. Observera att endast de parametrar som krävs har definierats i följande kodfragment, det vill säga parametrarna för `n_cross_validation` eller `validation_ data` **inte** ingår.
+Använd [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) -objektet för att definiera dina experiment-och utbildnings inställningar. Observera att endast de parametrar som krävs har definierats i följande kodfragment, det vill säga parametrarna för `n_cross_validation` eller `validation_ data` **inte** ingår.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

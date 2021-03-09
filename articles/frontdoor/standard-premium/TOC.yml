@@ -11,6 +11,10 @@
   items:
     - name: Skapa en standard/Premium-Portal för front dörren
       href: create-front-door-portal.md
+- name: Exempel
+  items:
+    - name: Mallar för Resurshanteraren
+      href: resource-manager-template-samples.md
 - name: Begrepp
   items:
     - name: Vanliga frågor och svar om Front Door

@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: bfc7a851442d6dd70d55c9f00e6d2f18d37e56bf
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 72d046cde70d1224eb1fd47f527c9e49c6b002f6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203410"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500469"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrera äldre Azure DNS privata zoner till ny resurs modell
 
@@ -109,7 +109,7 @@ Det här steget tar bort de äldre DNS-zonerna och ska endast köras när du har
 Om du använder Automation, inklusive mallar, PowerShell-skript eller anpassad kod som har utvecklats med SDK, måste du uppdatera automatiseringen så att den använder den nya resurs modellen för privata DNS-zoner. Nedan visas länkar till en ny privat DNS CLI/PS/SDK-dokumentation.
 * [Azure DNS privata zoner REST API](/rest/api/dns/privatedns/privatezones)
 * [Azure DNS privata zoner CLI](/cli/azure/ext/privatedns/network/private-dns)
-* [Azure DNS privata zoner PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS privata zoner PowerShell](/powershell/module/az.privatedns/)
 * [Azure DNS privata zoner SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>Behöver ytterligare hjälp
