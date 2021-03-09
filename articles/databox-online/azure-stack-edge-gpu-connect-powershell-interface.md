@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437765"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102517587"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Hantera en Azure Stack Edge Pro GPU-enhet via Windows PowerShell
 
@@ -26,30 +26,12 @@ Den här artikeln fokuserar på hur du kan ansluta till PowerShell-gränssnittet
 
 ## <a name="connect-to-the-powershell-interface"></a>Ansluta till PowerShell-gränssnittet
 
-[!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
+[!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 ## <a name="create-a-support-package"></a>Skapa ett support paket
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-<!--## Upload certificate
-
-[!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
-
-You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
-
-- Root CA certificate or the owner CA
-- Device CA certificate
-- Device key certificate
-
-The following example shows the usage of this cmdlet to install IoT Edge certificates:
-
-```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
-```
-When you run this cmdlet, you will be prompted to provide the password for the network share.
-
-For more information on certificates, go to [Azure IoT Edge certificates](../iot-edge/iot-edge-certs.md) or [Install certificates on a gateway](../iot-edge/how-to-create-transparent-gateway.md).-->
 
 ## <a name="view-device-information"></a>Visa enhets information
  
@@ -88,17 +70,8 @@ Om Compute-rollen har kon figurer ATS på din enhet kan du också hämta informa
 
 En multi-process service (MPS) på NVIDIA GPU: er tillhandahåller en mekanism där GPU: er kan delas av flera jobb, där varje jobb har allokerat en viss procent andel av GPU-resurserna. MPS är en förhands gransknings funktion på din Azure Stack Edge Pro GPU-enhet. Följ dessa steg om du vill aktivera MPS på enheten:
 
-1. Innan du börjar ska du kontrol lera att: 
+[!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-    1. Du har konfigurerat och [aktiverat din Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-deploy-activate.md) med en Azure Stack Edge pro/data Box gateway-resurs i Azure.
-    1. Du har [konfigurerat Compute på den här enheten i Azure Portal](azure-stack-edge-deploy-configure-compute.md#configure-compute).
-    
-1. [Anslut till PowerShell-gränssnittet](#connect-to-the-powershell-interface).
-1. Använd följande kommando för att aktivera MPS på enheten.
-
-    ```powershell
-    Start-HcsGpuMPS
-    ```
 
 ## <a name="reset-your-device"></a>Återställa din enhet
 
@@ -150,46 +123,14 @@ Id                                   PodSubnet    ServiceSubnet
 [10.100.10.10]: PS>
 ```
 
-
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>Felsöka Kubernetes problem som rör IoT Edge
 
-<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
+Innan du börjar måste du ha:
 
-<!--### Create config file for system namespace
-
-To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
-
-Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
-
-Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
-
-```PowerShell
-[10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01EVXhNekl4TkRRME5sb1hEVE13TURVeE1USXhORFEwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS0M1CjlJbzRSU2hudG90QUdxdjNTYmRjOVd4UmJDYlRzWXU5S0RQeU9xanVoZE1UUE9PcmROOGNoa0x4NEFyZkZaU1AKZithUmhpdWZqSE56bWhucnkvZlprRGdqQzQzRmV5UHZzcTZXeVVDV0FEK2JBdi9wSkJDbkg2MldoWGNLZ1BVMApqU1k0ZkpXenNFbzBaREhoeUszSGN3MkxkbmdmaEpEanBQRFJBNkRWb2pIaktPb29OT1J1dURvUHpiOTg2dGhUCkZaQXJMZjRvZXRzTEk1ZzFYRTNzZzM1YVhyU0g3N2JPYVVsTGpYTzFYSnpFZlZWZ3BMWE5xR1ZqTXhBMVU2b1MKMXVJL0d1K1ArY
-===========CUT=========================================CUT===================
-    server: https://compute.myasegpu1.wdshcsso.com:6443
-    name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aseuser
-    name: aseuser@kubernetes
-current-context: aseuser@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: aseuser
-    user:
-    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMwRENDQWJpZ0F3SUJBZ0lJY1hOTXRPU2VwbG93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TURBMU1UTXlNVFEwTkRaYUZ3MHlNVEExTVRNeU1UVXhNVEphTUJJeApFREFPQmdOVkJBTVRCMkZ6WlhWelpYSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCCkFRRHVjQ1pKdm9qNFIrc0U3a1EyYmVjNEJkTXdpUEhmU2R2WnNDVVY0aTRRZGY1Yzd0dkE3OVRSZkRLQTY1d08Kd0h0QWdlK3lLK0hIQ1Qyd09RbWtNek1RNjZwVFEzUlE0eVdtRDZHR1cWZWMExBR1hFUUxWWHRuTUdGCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
-
-[10.100.10.10]: PS>
-```
--->
-
-På en Azure Stack Edge Pro-enhet där beräknings rollen har kon figurer ATS kan du felsöka eller övervaka enheten med hjälp av två olika kommando uppsättningar.
+- Compute-nätverket har kon figurer ATS. Se [självstudie: Konfigurera nätverk för Azure Stack Edge Pro med GPU](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Compute-rollen har kon figurer ATS på enheten.
+    
+På en Azure Stack Edge Pro-enhet där beräknings rollen har kon figurer ATS kan du felsöka eller övervaka enheten med två olika kommando uppsättningar.
 
 - Använda `iotedge` kommandon. De här kommandona är tillgängliga för grundläggande åtgärder för din enhet.
 - Använda `kubectl` kommandon. De här kommandona är tillgängliga för en omfattande uppsättning åtgärder för din enhet.
@@ -214,7 +155,7 @@ Commands:
 
 Följande tabell innehåller en kort beskrivning av de kommandon som är tillgängliga för `iotedge` :
 
-|command  |Description |
+|command  |Beskrivning |
 |---------|---------|
 |`list`     | Lista med moduler         |
 |`logs`     | Hämta loggarna för en modul        |
@@ -274,7 +215,7 @@ En fullständig lista över `kubectl` kommandona finns på [ `kubectl` fusklapp]
 
 #### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Så här hämtar du IP-adress eller modul som exponeras utanför Kubernetes-kluster
 
-Om du vill hämta IP-adressen för en belastnings Utjämnings tjänst eller moduler som exponeras utanför Kubernetes kör du följande kommando:
+Kör följande kommando för att hämta IP-adressen för en belastnings Utjämnings tjänst eller moduler som exponeras utanför Kubernetes:
 
 `kubectl get svc -n iotedge`
 
@@ -403,7 +344,7 @@ Hämta loggarna för en modul genom att köra följande kommando från PowerShel
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
-Eftersom `all-containers` flagga kommer att dumpa alla loggar för alla behållare, är ett bra sätt att se de senaste felen är att använda alternativet `--tail 10` .
+Eftersom `all-containers` flagga dumpar alla loggar för alla behållare, är ett bra sätt att se de senaste felen att använda alternativet `--tail 10` .
 
 Följande är ett exempel på utdata. 
 
@@ -534,8 +475,8 @@ Följ dessa rikt linjer när du ändrar minnes-och processor användning.
 
 - Standard minnet är 25% av enhets specifikationen.
 - Standard antalet processorer är 30% av enhets specifikationen.
-- När du ändrar värdena för minne och antal processorer rekommenderar vi att du varierar värdena mellan 15% och 65% av enhets minnet och antalet processorer. 
-- Vi rekommenderar en övre gräns på 65% så att det finns tillräckligt med resurser för system komponenter. 
+- När du ändrar värdena för minne och antal processorer rekommenderar vi att du varierar värdena mellan 15% och 60% av enhets minnet och antalet processorer. 
+- Vi rekommenderar en övre gräns på 60% så att det finns tillräckligt med resurser för system komponenter. 
 
 ## <a name="connect-to-bmc"></a>Anslut till BMC
 

@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526246"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518057"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Kom igång med anpassade principer i Azure Active Directory B2C
 
@@ -30,6 +30,10 @@ ms.locfileid: "100526246"
 - Om du inte redan har en, [skapar du en Azure AD B2C klient](tutorial-create-tenant.md) som är länkad till din Azure-prenumeration.
 - [Registrera ditt program](tutorial-register-applications.md) i klient organisationen som du skapade så att den kan kommunicera med Azure AD B2C.
 - Slutför stegen i Konfigurera [registrering och inloggning med ett Facebook-konto](identity-provider-facebook.md) för att konfigurera ett Facebook-program. Även om ett Facebook-program inte krävs för att använda anpassade principer, används det i den här genom gången för att demonstrera aktivering av sociala inloggningar i en anpassad princip.
+
+> [!TIP]
+> Den här artikeln förklarar hur du konfigurerar din klient organisation manuellt. Du kan automatisera hela processen från den här artikeln. Automatiserad distribution av Azure AD B2C [SocialAndLocalAccountsWithMFA startpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack), som ger registrering och inloggning, lösen ords återställning och profil redigerings körningar. Om du vill automatisera genom gången nedan går du till installations programmet för [IEF](https://aka.ms/iefsetup) och följer anvisningarna.
+
 
 ## <a name="add-signing-and-encryption-keys"></a>Lägg till signerings-och krypterings nycklar
 

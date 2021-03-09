@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8d246f06db9fc9f4e6916ea69ec49ddaf8cf0667
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040173"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519783"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: importera en BACPAC-fil till en databas i Azure SQL Database eller Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,13 +52,13 @@ Om du vill migrera en databas till en [Azure SQL-hanterad instans](../managed-in
 
    ![Databas import2](./media/database-import/sql-server-import-database-settings.png)
 
-1. Klicka på **OK** .
+1. Klicka på **OK**.
 
-1. Om du vill övervaka en import status öppnar du sidan Server för databasen och väljer **import/export-historik** under **Inställningar** . När det är klart har importen statusen **slutförd** .
+1. Om du vill övervaka en import status öppnar du sidan Server för databasen och väljer **import/export-historik** under **Inställningar**. När det är klart har importen statusen **slutförd** .
 
    ![Import status för databas](./media/database-import/sql-server-import-database-history.png)
 
-1. Kontrol lera att databasen är Live på servern genom att välja **SQL-databaser** och kontrol lera att den nya databasen är **online** .
+1. Kontrol lera att databasen är Live på servern genom att välja **SQL-databaser** och kontrol lera att den nya databasen är **online**.
 
 ## <a name="using-sqlpackage"></a>Använda SqlPackage
 
@@ -68,7 +68,7 @@ För skalning och prestanda rekommenderar vi att du använder SqlPackage i de fl
 
 DTU-baserad etablerings modell stöder Select Database maximum size-värden för varje nivå. [Använd något av de värden som stöds](/sql/t-sql/statements/create-database-transact-sql)när du importerar en databas. 
 
-Följande SqlPackage-kommando importerar **AdventureWorks2008R2** -databasen från lokal lagring till en logisk SQL-Server med namnet **mynewserver20170403** . Den skapar en ny databas med namnet **myMigratedDatabase** med en **Premium** service-nivå och ett **P6** -tjänst mål. Ändra värdena efter behov för din miljö.
+Följande SqlPackage-kommando importerar **AdventureWorks2008R2** -databasen från lokal lagring till en logisk SQL-Server med namnet **mynewserver20170403**. Den skapar en ny databas med namnet **myMigratedDatabase** med en **Premium** service-nivå och ett **P6** -tjänst mål. Ändra värdena efter behov för din miljö.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -144,6 +144,15 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 > [!TIP]
 > Ett annat skript exempel finns i [Importera en databas från en BACPAC-fil](scripts/import-from-bacpac-powershell.md).
+
+## <a name="cancel-the-import-request"></a>Avbryt import förfrågan
+
+Använd [databas åtgärderna-Cancel-API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) eller kommandot PowerShell [Stop-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity?view=azps-5.5.0), här ett exempel på PowerShell-kommando.
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
+```
+
 
 ## <a name="limitations"></a>Begränsningar
 

@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9336dbd4d5615a93bbc029ba51b561b18f5a1c15
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305927"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521993"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Distribuera en modell för användning med Cognitive Search
 
@@ -25,7 +25,7 @@ Den här artikeln lär dig hur du använder Azure Machine Learning för att dist
 
 Kognitiv sökning utför innehålls bearbetning över heterogena-innehåll, så att den kan frågas av människor eller program. Den här processen kan utökas med hjälp av en modell som distribueras från Azure Machine Learning.
 
-Azure Machine Learning kan distribuera en utbildad modell som en webb tjänst. Webb tjänsten är sedan inbäddad i en Kognitiv sökning- _kunskap_ , som blir en del av bearbetnings pipelinen.
+Azure Machine Learning kan distribuera en utbildad modell som en webb tjänst. Webb tjänsten är sedan inbäddad i en Kognitiv sökning- _kunskap_, som blir en del av bearbetnings pipelinen.
 
 > [!IMPORTANT]
 > Informationen i den här artikeln är speciell för distributionen av modellen. Den innehåller information om de distributions konfigurationer som stöds och som tillåter att modellen används av Kognitiv sökning.
@@ -46,7 +46,7 @@ När du distribuerar en modell för användning med Azure Kognitiv sökning mås
 
 * En Azure Machine Learning-arbetsyta. Mer information finns i [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
-* En python-utvecklings miljö med Azure Machine Learning SDK installerat. Mer information finns i [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
+* En python-utvecklings miljö med Azure Machine Learning SDK installerat. Mer information finns i [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).  
 
 * En registrerad modell. Om du inte har någon modell använder du exempel antecknings boken på [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) .
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>Skapa ett Kubernetes-kluster
 
-**Tids uppskattning** : cirka 20 minuter.
+**Tids uppskattning**: cirka 20 minuter.
 
 Ett Kubernetes-kluster är en uppsättning instanser av virtuella datorer (kallas noder) som används för att köra program i behållare.
 
@@ -241,7 +241,7 @@ aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
                                                        max_request_wait_time=5000)
 ```
 
-Mer information finns i referens dokumentationen för [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
+Mer information finns i referens dokumentationen för [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-).
 
 ## <a name="define-the-inference-configuration"></a>Definiera konfigurationen för konfigurations störningar
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-Mer information finns i referens dokumentationen för [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py).
+Mer information finns i referens dokumentationen för [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig).
 
 ## <a name="deploy-the-model"></a>Distribuera modellen
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-Mer information finns i referens dokumentationen för- [modellen](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
+Mer information finns i referens dokumentationen för- [modellen](/python/api/azureml-core/azureml.core.model.model).
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Skicka en exempel fråga till din tjänst
 

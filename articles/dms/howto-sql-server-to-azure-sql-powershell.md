@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962764"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520667"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Migrera en SQL Server databas till Azure SQL Database med Azure PowerShell
 
@@ -31,7 +31,7 @@ I den här artikeln kan du se hur du:
 > * Skapa ett migreringsjobb i en Azure Database Migration Service-instans.
 > * Köra migreringen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att slutföra de här stegen:
 
@@ -42,7 +42,7 @@ Du behöver följande för att slutföra de här stegen:
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 eller senare.
 * För att skapa en Microsoft Azure Virtual Network med hjälp av Azure Resource Manager distributions modell, som förser Azure Database Migration Service med plats-till-plats-anslutning till dina lokala käll servrar genom att använda antingen [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * För att slutföra utvärderingen av din lokala databas och schema migrering med hjälp av Data Migration Assistant som beskrivs i artikeln [utföra en utvärdering av SQL Server migrering](/sql/dma/dma-assesssqlonprem)
-* Hämta och installera modulen AZ. data migration från PowerShell-galleriet med hjälp av [PowerShell-cmdleten Install-module](/powershell/module/powershellget/Install-Module?view=powershell-5.1); Se till att öppna PowerShell-Kommandotolken med kör som administratör.
+* Hämta och installera modulen AZ. data migration från PowerShell-galleriet med hjälp av [PowerShell-cmdleten Install-module](/powershell/module/powershellget/Install-Module); Se till att öppna PowerShell-Kommandotolken med kör som administratör.
 * För att säkerställa att autentiseringsuppgifterna som används för att ansluta till käll SQL Servers instansen har behörigheten [kontroll Server](/sql/t-sql/statements/grant-server-permissions-transact-sql) .
 * För att säkerställa att de autentiseringsuppgifter som används för att ansluta till målet för Azure SQL DB-instansen har kontroll databasen behörighet för mål Azure SQL Database-databaser.
 * En Azure-prenumeration. Om du inte har ett konto kan du skapa ett [kostnads fritt](https://azure.microsoft.com/free/) konto innan du börjar.

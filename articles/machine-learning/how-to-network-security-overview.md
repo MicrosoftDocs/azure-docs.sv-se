@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1309ad1b3e3f6bd6f9b543959220bf71c569f083
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175013"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518693"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Översikt över virtuella nätverks isolering och sekretess
 
@@ -69,9 +69,14 @@ Följande fem avsnitt visar hur du skyddar nätverks scenariot som beskrivs ovan
 Använd följande steg för att skydda arbets ytan och associerade resurser. De här stegen gör att tjänsterna kan kommunicera i det virtuella nätverket.
 
 1. Skapa en [privat länk aktive rad arbets yta](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) för att aktivera kommunikation mellan ditt VNet och din arbets yta.
-1. Lägg till Azure Key Vault i det virtuella nätverket med en [tjänst slut punkt](../key-vault/general/overview-vnet-service-endpoints.md) eller en [privat slut punkt](../key-vault/general/private-link-service.md). Ange Key Vault till ["Tillåt att betrodda Microsoft-tjänster kringgår den här brand väggen"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
-1. Lägg till Azure Storage-kontot i det virtuella nätverket med en [tjänst slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) eller en [privat slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
-1. [Konfigurera Azure Container Registry att använda en privat slut punkt](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+1. Lägg till följande tjänster i det virtuella nätverket med hjälp av _antingen_ en __tjänst slut punkt__ eller en __privat slut punkt__. Du måste också tillåta att betrodda Microsoft-tjänster har åtkomst till dessa tjänster:
+    
+    | Tjänst | Slut punkts information | Tillåt betrodd information |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [Tjänst slut punkt](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privat slut punkt](../key-vault/general/private-link-service.md) | [Tillåt att betrodda Microsoft-tjänster kringgår den här brand väggen](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Azure Storage konto__ | [Tjänst slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[Privat slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [Bevilja åtkomst till betrodda Azure-tjänster](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Tjänst slut punkt](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[Privat slut punkt](../container-registry/container-registry-private-link.md) | [Tillåt betrodda tjänster](../container-registry/allow-access-trusted-services.md) |
+
 
 ![Arkitektur diagram som visar hur arbets ytan och de associerade resurserna kommunicerar med varandra över tjänst slut punkter eller privata slut punkter i ett virtuellt nätverk](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

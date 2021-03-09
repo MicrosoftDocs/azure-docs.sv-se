@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 84a6bba390b0f6b101bd8243cf47b79af9618999
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454744"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521653"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bästa praxis för Azure Cache for Redis 
 Genom att följa dessa rekommendationer kan du maximera prestanda och kostnads effektiv användning av Azure-cachen för Redis-instansen.
@@ -30,6 +30,8 @@ Genom att följa dessa rekommendationer kan du maximera prestanda och kostnads e
  * **Leta upp din cache-instans och ditt program i samma region.**  Om du ansluter till en cache i en annan region kan latensen öka och tillförlitligheten minska avsevärt.  Även om du kan ansluta från utanför Azure rekommenderas du inte *särskilt när du använder Redis som cache*.  Om du använder Redis som ett nyckel/värde-lager, är det inte säkert att fördröjningen är den primära. 
 
  * **Återanvänd anslutningar.**  Att skapa nya anslutningar är dyrt och ökar svars tiden, så Återanvänd anslutningar så mycket som möjligt. Om du väljer att skapa nya anslutningar ser du till att stänga de gamla anslutningarna innan du släpper dem (även i hanterade minnes språk som .NET eller Java).
+
+* **Använd pipelinering.**  Försök att välja en Redis-klient som stöder [Redis-pipelinen](https://redis.io/topics/pipelining) för att göra den mest effektiva användningen av nätverket för att få bästa möjliga data flöde.
 
  * **Konfigurera klient biblioteket för att använda en *anslutnings-timeout* på minst 15 sekunder**, vilket ger system tiden att ansluta även under högre CPU-förhållanden.  Ett timeout-värde för små anslutningar garanterar inte att anslutningen upprättas inom den tids perioden.  Om något går fel (hög klient processor, hög server processor och så vidare), kommer ett kort tids gräns värde för anslutningen orsaka att anslutnings försöket Miss lyckas. Det här beteendet gör ofta en dålig situation sämre.  I stället för att hjälpa, förvärrar kortare timeout-problem genom att tvinga systemet att starta om processen att försöka återansluta, vilket kan leda till en *anslutnings > fel-> försök igen* . Vi rekommenderar vanligt vis att du lämnar tids gränsen för anslutningen till 15 sekunder eller högre. Det är bättre att låta ditt anslutnings försök utföras efter 15 eller 20 sekunder än att det inte går att utföra det snabbt. En sådan slinga för återförsök kan orsaka att ditt avbrott blir längre än om du låter systemet ta längre tid.  
      > [!NOTE]

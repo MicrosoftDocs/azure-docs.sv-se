@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bee2b31f215758bf5cf73ff5393058fb915cdf25
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369073"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522350"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Självstudie: träna din första Machine Learning-modell (del 3 av 4)
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning ger en [miljö](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) som kan representera en reproducerbar, version av python-miljö för att köra experiment. Det är enkelt att skapa en miljö från en lokal Conda eller pip-miljö.
+      Azure Machine Learning ger en [miljö](/python/api/azureml-core/azureml.core.environment.environment) som kan representera en reproducerbar, version av python-miljö för att köra experiment. Det är enkelt att skapa en miljö från en lokal Conda eller pip-miljö.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -140,7 +140,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      Lägger till miljön i [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+      Lägger till miljön i [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
    :::column-end:::
 :::row-end:::
 
@@ -262,7 +262,7 @@ När du besöker Studio går du till fliken **mått** där du nu kan se live-upp
 
 I den här sessionen har du uppgraderat från en grundläggande "Hello World!" skript till ett mer realistiskt utbildnings skript som kräver att en speciell python-miljö körs. Du såg hur du tar en lokal Conda-miljö till molnet med Azure Machine Learning miljöer. Slutligen såg du hur du på några rader kod kan logga mått till Azure Machine Learning.
 
-Det finns andra sätt att skapa Azure Machine Learning miljöer, inklusive [från en pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-) -fil eller [från en befintlig lokal Conda-miljö](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-).
+Det finns andra sätt att skapa Azure Machine Learning miljöer, inklusive [från en pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) -fil eller [från en befintlig lokal Conda-miljö](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-).
 
 I nästa session får du se hur du arbetar med data i Azure Machine Learning genom att ladda upp data uppsättningen CIFAR10 till Azure.
 

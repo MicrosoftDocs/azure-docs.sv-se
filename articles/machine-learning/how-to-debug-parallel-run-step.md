@@ -11,16 +11,16 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690285"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522163"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Felsökning av ParallelRunStep
 
-I den här artikeln får du lära dig hur du felsöker när du får fel med klassen [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) från [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+I den här artikeln får du lära dig hur du felsöker när du får fel med klassen [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) från [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro).
 
 Allmänna tips om hur du felsöker en pipeline finns i [Felsöka maskin inlärnings pipeliner](how-to-debug-pipelines.md).
 
@@ -212,7 +212,7 @@ def run(mini_batch):
 
 Användaren kan skicka referens data till skript med hjälp av side_inputs parametern ParalleRunStep. Alla data uppsättningar som tillhandahålls som side_inputs kommer att monteras på varje arbetsnod. Användaren kan hämta platsen för montering genom att skicka argumentet.
 
-Skapa en [data uppsättning](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) som innehåller referens data och registrera den med din arbets yta. Skicka den till- `side_inputs` parametern för din `ParallelRunStep` . Dessutom kan du lägga till dess sökväg i `arguments` avsnittet för att enkelt få åtkomst till dess monterade sökväg:
+Skapa en [data uppsättning](/python/api/azureml-core/azureml.core.dataset.dataset) som innehåller referens data och registrera den med din arbets yta. Skicka den till- `side_inputs` parametern för din `ParallelRunStep` . Dessutom kan du lägga till dess sökväg i `arguments` avsnittet för att enkelt få åtkomst till dess monterade sökväg:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -262,6 +262,6 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 
 * Se dessa [Jupyter-anteckningsböcker som demonstrerar Azure Machine Learning pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
-* Se SDK-referensen för hjälp med paketet [azureml-pipeline-steg](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) . Visa referens [dokumentation](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) för ParallelRunStep-klassen.
+* Se SDK-referensen för hjälp med paketet [azureml-pipeline-steg](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) . Visa referens [dokumentation](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) för ParallelRunStep-klassen.
 
 * Följ den [avancerade självstudien](tutorial-pipeline-batch-scoring-classification.md) om hur du använder pipelines med ParallelRunStep. I självstudien visas hur du skickar en annan fil som indata.

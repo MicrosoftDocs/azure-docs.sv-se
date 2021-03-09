@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174945"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518712"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Flytta data till och mellan olika steg i ML-pipelinen (Python)
 
@@ -36,7 +36,7 @@ Du behöver:
 
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
-- [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)eller åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
+- [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro)eller åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
 
 - En Azure Machine Learning-arbetsyta.
   
@@ -55,7 +55,7 @@ Du behöver:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>Använd `Dataset` objekt för tidigare befintliga data 
 
-Det bästa sättet att mata in data i en pipeline är att använda ett [data mängds](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) objekt. `Dataset` objekt representerar beständiga data som är tillgängliga i en arbets yta.
+Det bästa sättet att mata in data i en pipeline är att använda ett [data mängds](/python/api/azureml-core/azureml.core.dataset%28class%29) objekt. `Dataset` objekt representerar beständiga data som är tillgängliga i en arbets yta.
 
 Det finns många sätt att skapa och registrera `Dataset` objekt. Tabell data uppsättningar är för avgränsade data tillgängliga i en eller flera filer. Fil data uppsättningar är för binära data (till exempel bilder) eller för data som du ska parsa. De enklaste sätten att skapa `Dataset` objekt är att använda befintliga blobbar i lagrings utrymmen för arbets ytor eller offentliga URL: er:
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Använd `OutputFileDatasetConfig` för mellanliggande data
 
-`Dataset`Objekt som endast representerar beständiga data [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) kan användas för tillfälliga data utdata från pipeline-steg **och** beständiga utdata. `OutputFileDatasetConfig` har stöd för skrivning av data till Blob Storage, fileshare, adlsgen1 eller adlsgen2. Det stöder både monterings läge och överförings läge. I monterings läge lagras filer som skrivs till den monterade katalogen permanent när filen stängs. I överförings läge överförs filer som skrivs till utdatakatalogen i slutet av jobbet. Om jobbet Miss lyckas eller avbryts laddas inte utdata-katalogen.
+`Dataset`Objekt som endast representerar beständiga data [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) kan användas för tillfälliga data utdata från pipeline-steg **och** beständiga utdata. `OutputFileDatasetConfig` har stöd för skrivning av data till Blob Storage, fileshare, adlsgen1 eller adlsgen2. Det stöder både monterings läge och överförings läge. I monterings läge lagras filer som skrivs till den monterade katalogen permanent när filen stängs. I överförings läge överförs filer som skrivs till utdatakatalogen i slutet av jobbet. Om jobbet Miss lyckas eller avbryts laddas inte utdata-katalogen.
 
  `OutputFileDatasetConfig` objektets standard beteende är att skriva till arbets ytans standard data lager. Skicka dina `OutputFileDatasetConfig` objekt till `PythonScriptStep` med- `arguments` parametern.
 

@@ -2,17 +2,17 @@
 title: Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar
 description: Konfigurera WSFC (Windows Server failover Cluster) i Azure VMware-lösningen och dra nytta av lösningar som kräver WSFC-funktioner.
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 84bb846cd3fb6dd1b138308670db7ccf122b2187
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/09/2021
+ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491331"
+ms.locfileid: "102519001"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar
 
-I den här artikeln går vi igenom hur du konfigurerar Windows Server-redundanskluster på Azure VMware-lösning. Implementeringen i den här artikeln är avsedd för koncept bevis och pilot syfte.
+I den här artikeln går vi igenom hur du konfigurerar Windows Server-redundanskluster på Azure VMware-lösning. Implementeringen i den här artikeln är avsedd för koncept bevis och pilot syfte. Vi rekommenderar att du använder en konfiguration för kluster i en ruta (CIB) tills placerings principerna är tillgängliga.
 
 Windows Server failover Cluster (WSFC), som tidigare kallades Microsoft Service Cluster service (MSCS), är en funktion i operativ systemet Windows Server (OS). WSFC är en verksamhets kritisk funktion och för många program krävs. Till exempel krävs WSFC för följande konfigurationer:
 
@@ -143,7 +143,7 @@ Följande aktiviteter stöds inte och kan orsaka redundans av WSFC-noder:
         
       - **Verifiera nätverkskommunikation**. Kluster verifierings testet genererar en varning om att endast ett nätverks gränssnitt per klusternod är tillgängligt. Du kan ignorera den här varningen. Azure VMware-lösningen ger nödvändig tillgänglighet och prestanda, eftersom noderna är anslutna till något av NSX-T-segmenten. Tänk dock på att det här objektet ingår i kluster verifierings testet, eftersom det validerar andra aspekter av nätverkskommunikation.
 
-16. Skapa en DRS-regel för att avgränsa noderna för virtuella WSFC-datorer mellan Azure VMware-lösningar. Använd följande regler: en värd-till-VM-tillhörighet och en skydds regel för VM-till-VM-tillhörighet. Det här sättet för klusternoder körs inte på samma Azure VMware-lösnings värd.
+16. Skapa en DRS-regel för att placera de virtuella WSFC-datorerna på samma Azure VMware-lösningar noder. Om du vill göra det behöver du en regel för tillhörighet mellan värdar och virtuell dator. På så sätt kommer klusternoderna att köras på samma Azure VMware-lösnings värd. Återigen är detta för pilot syfte tills placerings principer är tillgängliga.
 
     >[!NOTE]
     > För detta måste du skapa ett support ärende. Vår support organisation för Azure kan hjälpa dig med detta.

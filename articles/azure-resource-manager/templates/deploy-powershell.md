@@ -1,18 +1,20 @@
 ---
 title: Distribuera resurser med PowerShell och mall
-description: Använd Azure Resource Manager och Azure PowerShell för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall.
+description: Använd Azure Resource Manager och Azure PowerShell för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall eller en bicep-fil.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/04/2021
+ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881273"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521636"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Distribuera resurser med ARM-mallar och Azure PowerShell
 
-Den här artikeln förklarar hur du använder Azure PowerShell med Azure Resource Manager mallar (ARM-mallar) för att distribuera dina resurser till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure-lösningar kan du läsa [Översikt över mall-distribution](overview.md).
+Den här artikeln förklarar hur du använder Azure PowerShell med Azure Resource Manager mallar (ARM-mallar) eller bicep-filer för att distribuera dina resurser till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure-lösningar kan du läsa [Översikt över mall-distribution](overview.md) eller [bicep översikt](bicep-overview.md).
+
+Om du vill distribuera bicep-filer behöver du [Azure PowerShell version 5.6.0 eller senare](/powershell/azure/install-az-ps).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -32,13 +34,13 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 - Använd [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)för att distribuera till en **resurs grupp**:
 
   ```azurepowershell
-  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template-or-bicep>
   ```
 
 - Om du vill distribuera till en **prenumeration** använder du [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) som är ett alias för `New-AzDeployment` cmdleten:
 
   ```azurepowershell
-  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Mer information om distributioner på prenumerations nivå finns i [skapa resurs grupper och resurser på prenumerations nivå](deploy-to-subscription.md).
@@ -46,7 +48,7 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 - Använd [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)för att distribuera till en **hanterings grupp**.
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Mer information om distributioner på hanterings grupp nivå finns i [Skapa resurser på hanterings grupps nivå](deploy-to-management-group.md).
@@ -54,7 +56,7 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 - Om du vill distribuera till en **klient** använder du [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
 
   ```azurepowershell
-  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Mer information om distributioner på klient nivå finns i [Skapa resurser på klient nivå](deploy-to-tenant.md).
@@ -89,7 +91,7 @@ När du anger ett unikt namn för varje distribution kan du köra dem samtidigt 
 
 För att undvika konflikter med samtidiga distributioner och för att säkerställa unika poster i distributions historiken ger du varje distribution ett unikt namn.
 
-## <a name="deploy-local-template"></a>Distribuera en lokal mall
+## <a name="deploy-local-template-or-bicep-file"></a>Distribuera lokal mall eller bicep-fil
 
 Du kan distribuera en mall från den lokala datorn eller en som lagras externt. I det här avsnittet beskrivs hur du distribuerar en lokal mall.
 
@@ -99,18 +101,21 @@ Om du distribuerar till en resurs grupp som inte finns skapar du resurs gruppen.
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-Om du vill distribuera en lokal mall använder du `-TemplateFile` parametern i distributions kommandot. I följande exempel visas hur du anger ett parameter värde som kommer från mallen.
+Om du vill distribuera en lokal mall eller en bicep-fil använder du `-TemplateFile` parametern i distributions kommandot. I följande exempel visas hur du anger ett parameter värde som kommer från mallen.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
+  -TemplateFile <path-to-template-or-bicep>
 ```
 
 Det kan ta flera minuter att slutföra distributionen.
 
 ## <a name="deploy-remote-template"></a>Distribuera fjärran sluten mall
+
+> [!NOTE]
+> För närvarande stöder Azure PowerShell inte distribution av fjärranslutna bicep-filer. Om du vill distribuera en bicep-fil använder du CLI-bicep för att kompilera bicep-filen till en JSON-mall först.
 
 I stället för att lagra ARM-mallar på den lokala datorn kanske du föredrar att lagra dem på en extern plats. Du kan lagra mallar på en lagringsplats för versionskontroll (till exempel GitHub). Eller så kan du lagra dem i ett Azure Storage-konto för delad åtkomst i din organisation.
 
@@ -145,6 +150,8 @@ Mer information finns i [Använd relativ sökväg för länkade mallar](./linked
 
 ## <a name="deploy-template-spec"></a>Specifikation för att distribuera mall
 
+> [!NOTE]
+> För närvarande stöder Azure PowerShell inte att skapa specifikationer för mallar genom att tillhandahålla bicep-filer. Du kan dock skapa en bicep-fil med resursen [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) för att distribuera en mall-specifikation. Här är ett [exempel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 I stället för att distribuera en lokal mall eller en fjärran sluten mall kan du skapa en [mall-specifikation](template-specs.md). Mallen specifikation är en resurs i din Azure-prenumeration som innehåller en ARM-mall. Det gör det enkelt att på ett säkert sätt dela mallen med användare i din organisation. Du använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att ge åtkomst till mallen specifikation. Den här funktionen är för närvarande en för hands version.
 
 I följande exempel visas hur du skapar och distribuerar en mall-specifikation.
@@ -187,7 +194,7 @@ Om du vill skicka infogade parametrar anger du namnet på parametern med `New-Az
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString "inline string" `
   -exampleArray $arrayParam
 ```
@@ -197,7 +204,7 @@ Du kan också hämta innehållet i filen och ange innehållet som en infogad par
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
 ```
@@ -211,13 +218,13 @@ $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
 $hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
 $subnetArray = $hash1, $hash2
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleArray $subnetArray
 ```
 
 ### <a name="parameter-files"></a>Parameter-filer
 
-I stället för att skicka parametrar som infogade värden i skriptet, kan det vara lättare att använda en JSON-fil som innehåller parametervärdena. Parameter filen kan vara en lokal fil eller en extern fil med en tillgänglig URI.
+I stället för att skicka parametrar som infogade värden i skriptet, kan det vara lättare att använda en JSON-fil som innehåller parametervärdena. Parameter filen kan vara en lokal fil eller en extern fil med en tillgänglig URI. Både ARM-mall och bicep-fil använder JSON-parameter-filer.
 
 Mer information om parameterfilen finns i [Skapa en parameterfil för Resource Manager](parameter-files.md).
 
@@ -225,7 +232,7 @@ Om du vill skicka en lokal parameter fil använder du `TemplateParameterFile` pa
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 

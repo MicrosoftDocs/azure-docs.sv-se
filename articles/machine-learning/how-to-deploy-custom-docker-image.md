@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 749ef16139bbab2742c43a81e985fb0a49e9393b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209485"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519341"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Distribuera en modell med en anpassad Docker-bas avbildning
 
@@ -42,7 +42,7 @@ Det här dokumentet är uppdelat i två delar:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure Machine Learning-arbetsyta. Mer information finns i artikeln [skapa en arbets yta](how-to-manage-workspace.md) .
-* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install). 
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * En [Azure Container Registry](../container-registry/index.yml) eller ett annat Docker-register som är tillgängligt på Internet.
@@ -216,7 +216,7 @@ Om du vill använda en anpassad avbildning behöver du följande information:
 
 Microsoft tillhandahåller flera Docker-avbildningar på en offentligt tillgänglig lagrings plats som kan användas med stegen i det här avsnittet:
 
-| Bild | Description |
+| Bild | Beskrivning |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Kärn avbildning för Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Innehåller ONNX runtime för CPU inferencing |
@@ -234,7 +234,7 @@ Mer information finns i [Azure Machine Learning containers](https://github.com/A
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Använd en avbildning med Azure Machine Learning SDK
 
-Om du vill använda en avbildning som lagras i **Azure Container Registry för din arbets yta**, eller ett **behållar register som är offentligt tillgängligt**, anger [du följande](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) miljöattribut:
+Om du vill använda en avbildning som lagras i **Azure Container Registry för din arbets yta**, eller ett **behållar register som är offentligt tillgängligt**, anger [du följande](/python/api/azureml-core/azureml.core.environment.environment) miljöattribut:
 
 + `docker.enabled=True`
 + `docker.base_image`: Ange till registret och sökvägen till avbildningen.
@@ -268,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Du måste lägga till azureml-default med version >= 1.0.45 som ett pip-beroende. Det här paketet innehåller de funktioner som krävs för att vara värd för modellen som en webb tjänst. Du måste också ange inferencing_stack_version egenskapen för miljön till "senaste", så installeras vissa apt-paket som krävs av webb tjänsten. 
 
-När du har definierat miljön använder du den med ett [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) -objekt för att definiera den miljö för miljön och webb tjänsten som ska köras.
+När du har definierat miljön använder du den med ett [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) -objekt för att definiera den miljö för miljön och webb tjänsten som ska köras.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -297,7 +297,7 @@ Mer information om hur du anpassar din python-miljö finns i [skapa och hantera 
 > [!IMPORTANT]
 > För närvarande kan Machine Learning CLI använda bilder från Azure Container Registry för din arbets yta eller offentligt tillgängliga databaser. Det går inte att använda bilder från fristående privata register.
 
-Innan du distribuerar en modell med hjälp av Machine Learning CLI skapar du en [miljö](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) som använder den anpassade avbildningen. Skapa sedan en konfigurations fil för härledning som hänvisar till miljön. Du kan också definiera miljön direkt i konfigurations filen för konfigurations filen. Följande JSON-dokument visar hur du refererar till en avbildning i ett offentligt behållar register. I det här exemplet definieras miljön som infogad:
+Innan du distribuerar en modell med hjälp av Machine Learning CLI skapar du en [miljö](/python/api/azureml-core/azureml.core.environment.environment) som använder den anpassade avbildningen. Skapa sedan en konfigurations fil för härledning som hänvisar till miljön. Du kan också definiera miljön direkt i konfigurations filen för konfigurations filen. Följande JSON-dokument visar hur du refererar till en avbildning i ett offentligt behållar register. I det här exemplet definieras miljön som infogad:
 
 ```json
 {

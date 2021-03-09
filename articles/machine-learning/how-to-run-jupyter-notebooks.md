@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe3f2328bb1ec9e7bb2ef79c09a821412ce7f7e1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423993"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518729"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
@@ -115,7 +115,7 @@ Endast du kan se och använda de beräknings instanser som du skapar.  Dina **an
 
 ### <a name="view-logs-and-output"></a>Visa loggar och utdata
 
-Använd [Notebook-widgetar](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) för att visa förloppet för körningen och loggarna. En widget är asynkron och innehåller uppdateringar tills inlärningen är klar. Azure Machine Learning-widgetar stöds också i Jupyter och JupterLab.
+Använd [Notebook-widgetar](/python/api/azureml-widgets/azureml.widgets) för att visa förloppet för körningen och loggarna. En widget är asynkron och innehåller uppdateringar tills inlärningen är klar. Azure Machine Learning-widgetar stöds också i Jupyter och JupterLab.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Skärm bild: widgeten Jupyter Notebook ":::
 
@@ -195,7 +195,7 @@ En cell är i kommando läge när ingen text markör visas som anger att du skri
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Notebook-cell i kommando läge ":::
 
-| Genvägar                      | Description                          |
+| Genvägar                      | Beskrivning                          |
 | ----------------------------- | ------------------------------------|
 | Ange                         | Växla till redigeringsläge             |        
 | Skift + Retur                 | Kör cell, Välj nedan         |     
@@ -239,7 +239,7 @@ Redigerings läget anges av en text markör där du ombeds ange redigerings ytan
 
 Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Machine Learning antecknings böcker i redigerings läge.
 
-| Genvägar                      | Description|                                     
+| Genvägar                      | Beskrivning|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Escape                        | Ange kommando läge|  
 | Kontroll/kommando + blank steg       | Aktivera IntelliSense |

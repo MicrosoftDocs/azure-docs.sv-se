@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032695"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519647"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Inställning av en modell med Azure Machine Learning
 
-Automatisera effektiv inställning av HyperDrive med hjälp av Azure Machine Learning [-paket](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py). Lär dig hur du utför de steg som krävs för att justera de båda parametrarna med [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py):
+Automatisera effektiv inställning av HyperDrive med hjälp av Azure Machine Learning [-paket](/python/api/azureml-train-core/azureml.train.hyperdrive). Lär dig hur du utför de steg som krävs för att justera de båda parametrarna med [Azure Machine Learning SDK](/python/api/overview/azure/ml/):
 
 1. Definiera parameter Sök utrymmet
 1. Ange ett primärt mått som ska optimeras  
@@ -43,7 +43,7 @@ Med Azure Machine Learning kan du automatisera inställningen för att justera o
 
 Justera disponeringsparametrarna genom att utforska intervallet av de värden som definierats för varje-parameter.
 
-Disponeringsparametrarna kan vara diskreta eller kontinuerliga och har en fördelning av värden som beskrivs av ett [parameter uttryck](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py).
+Disponeringsparametrarna kan vara diskreta eller kontinuerliga och har en fördelning av värden som beskrivs av ett [parameter uttryck](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions).
 
 ### <a name="discrete-hyperparameters"></a>Diskreta egenskaper
 
@@ -100,7 +100,7 @@ Ange parameter samplings metoden som ska användas över området för den här 
 
 #### <a name="random-sampling"></a>Slumpmässig provtagning
 
-[Slumpmässig sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py) stöder diskreta och kontinuerliga disponeringsparametrarna. Det har stöd för tidig avslutning av låga prestanda körningar. Vissa användare utför en inledande sökning med slumpmässig sampling och förfina sedan Sök utrymmet för att förbättra resultaten.
+[Slumpmässig sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling) stöder diskreta och kontinuerliga disponeringsparametrarna. Det har stöd för tidig avslutning av låga prestanda körningar. Vissa användare utför en inledande sökning med slumpmässig sampling och förfina sedan Sök utrymmet för att förbättra resultaten.
 
 I slumpmässig sampling väljs värdena för båda parametrarna slumpmässigt från det definierade Sök utrymmet. 
 
@@ -117,7 +117,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Rutnäts sampling
 
-[Rutnäts sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) stöder diskreta egenskaper. Använd rutnäts sampling om du kan budgetera till en fullständig sökning över Sök utrymmet. Har stöd för tidig avslutning av låga prestanda körningar.
+[Rutnäts sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling) stöder diskreta egenskaper. Använd rutnäts sampling om du kan budgetera till en fullständig sökning över Sök utrymmet. Har stöd för tidig avslutning av låga prestanda körningar.
 
 Rutnäts sampling gör en enkel rutnäts sökning över alla möjliga värden. Det går bara att använda rutnäts sampling med `choice` disponeringsparametrarna. Följande utrymme har exempelvis sex exempel:
 
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayesiansk sampling
 
-[Bayesian-sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) baseras på algoritmen för Bayesian-optimering. Det väljer exempel baserat på hur tidigare exempel var, så att nya exempel förbättrar det primära måttet.
+[Bayesian-sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling) baseras på algoritmen för Bayesian-optimering. Det väljer exempel baserat på hur tidigare exempel var, så att nya exempel förbättrar det primära måttet.
 
 Bayesian-sampling rekommenderas om du har tillräckligt med budget för att utforska området för den här parametern. För bästa resultat rekommenderar vi ett maximalt antal körningar som är större än eller lika med 20 gånger antalet egenskaper som är justerade. 
 
@@ -155,7 +155,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Ange primärt mått
 
-Ange det [primära mått](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?preserve-view=true&view=azure-ml-py) som du vill att inställningen för min parameter ska optimera. Varje tränings körning utvärderas för det primära måttet. Principen för tidig avslutning använder det primära måttet för att identifiera prestanda körningar.
+Ange det [primära mått](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal) som du vill att inställningen för min parameter ska optimera. Varje tränings körning utvärderas för det primära måttet. Principen för tidig avslutning använder det primära måttet för att identifiera prestanda körningar.
 
 Ange följande attribut för ditt primära mått:
 
@@ -203,7 +203,7 @@ Azure Machine Learning stöder följande tidiga avslutnings principer:
 
 ### <a name="bandit-policy"></a>Bandit-princip
 
-[Bandit-principen](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) baseras på slack-eller slack och utvärderings intervall. Bandit slutar köras när det primära måttet inte ligger inom den angivna slack-faktorn/slack-mängden för den mest lyckade körningen.
+[Bandit-principen](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy#definition) baseras på slack-eller slack och utvärderings intervall. Bandit slutar köras när det primära måttet inte ligger inom den angivna slack-faktorn/slack-mängden för den mest lyckade körningen.
 
 > [!NOTE]
 > Bayesian-sampling stöder inte tidig uppsägning. När du använder Bayesian-sampling anger du `early_termination_policy = None` .
@@ -226,7 +226,7 @@ I det här exemplet tillämpas principen för tidig avslutning vid varje interva
 
 ### <a name="median-stopping-policy"></a>Median stoppar princip
 
-[Median stopp](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) är en princip för tidig avslutning som baseras på löpande medelvärden av primära mått som rapporteras av körningarna. Den här principen beräknar löpande medelvärden för alla utbildnings körningar och stoppar körningar vars primära mått är sämre än median värdet i genomsnitt.
+[Median stopp](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy) är en princip för tidig avslutning som baseras på löpande medelvärden av primära mått som rapporteras av körningarna. Den här principen beräknar löpande medelvärden för alla utbildnings körningar och stoppar körningar vars primära mått är sämre än median värdet i genomsnitt.
 
 Den här principen använder följande konfigurations parametrar:
 * `evaluation_interval`: frekvensen för att tillämpa principen (valfri parameter).
@@ -242,7 +242,7 @@ I det här exemplet tillämpas principen för tidig avslutning vid varje interva
 
 ### <a name="truncation-selection-policy"></a>Princip för att välja trunkering
 
-[Avtrunkering av markering](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?preserve-view=true&view=azure-ml-py) avbryter en procent andel av de lägsta körnings körningarna i varje utvärderings intervall. Körningarna jämförs med det primära måttet. 
+[Avtrunkering av markering](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy) avbryter en procent andel av de lägsta körnings körningarna i varje utvärderings intervall. Körningarna jämförs med det primära måttet. 
 
 Den här principen använder följande konfigurations parametrar:
 
@@ -297,7 +297,7 @@ Den här koden konfigurerar experimentet för inställning av parameter till att
 
 ## <a name="configure-hyperparameter-tuning-experiment"></a>Konfigurera ett experiment med inställning av parameter
 
-Ange följande om du vill [Konfigurera ett experiment för inställning av en parameter](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) :
+Ange följande om du vill [Konfigurera ett experiment för inställning av en parameter](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig) :
 * Det definierade Sök utrymmet för den här ytan
 * Principen för tidig avslutning
 * Primärt mått
@@ -364,7 +364,7 @@ def main():
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Skicka inställnings experiment för för-parameter
 
-När du har definierat konfigurationen för konfiguration av den egna parametern, [skicka in experimentet](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
+När du har definierat konfigurationen för konfiguration av den egna parametern, [skicka in experimentet](/python/api/azureml-core/azureml.core.experiment%28class%29#submit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -444,7 +444,7 @@ Du kan visualisera alla dina inställnings justeringar för din parameter i [Azu
 
 ### <a name="notebook-widget"></a>Anteckningsbok-widget
 
-Använd [widgeten Notebook](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) för att visualisera förloppet för din utbildning. Följande kodfragment visualiserar alla dina för inställnings justeringar på en plats i en Jupyter Notebook:
+Använd [widgeten Notebook](/python/api/azureml-widgets/azureml.widgets.rundetails) för att visualisera förloppet för din utbildning. Följande kodfragment visualiserar alla dina för inställnings justeringar på en plats i en Jupyter Notebook:
 
 ```Python
 from azureml.widgets import RunDetails

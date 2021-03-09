@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 31948d5e98ea3024c838bf0fa4b05609a5662ec5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485528"
+ms.locfileid: "102520293"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>För hands versions certifikat för Azure Firewall Premium 
 
@@ -96,7 +96,7 @@ Om du vill konfigurera ett CA-certifikat i brand Väggs Premium principen välje
 För att hjälpa dig att testa och verifiera TLS-inspektion kan du använda följande skript för att skapa din egen självsignerade rot certifikat utfärdare och mellanliggande certifikat utfärdare.
 
 > [!IMPORTANT]
-> För produktion bör du använda företagets PKI för att skapa ett mellanliggande CA-certifikat. En företags-PKI utnyttjar den befintliga infrastrukturen och hanterar rot certifikat utfärdarens distribution till alla slut punkts datorer.
+> För produktion bör du använda företagets PKI för att skapa ett mellanliggande CA-certifikat. En företags-PKI utnyttjar den befintliga infrastrukturen och hanterar rot certifikat utfärdarens distribution till alla slut punkts datorer. Mer information finns i [distribuera och konfigurera Enterprise CA-certifikat för för hands versionen av Azure Firewall](premium-deploy-certificates-enterprise-ca.md).
 
 Det finns två versioner av det här skriptet:
 - ett bash-skript `cert.sh` 

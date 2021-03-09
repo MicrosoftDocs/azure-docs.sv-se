@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 18f76480d1327d6ab41c475395a689f8024d7b25
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f2b01b7a04958c4bd1f97332b54a1ff4fc32356
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369040"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522333"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Självstudie: kör en "Hello World!" Python-skript (del 2 av 4)
 
@@ -92,7 +92,7 @@ Här är en beskrivning av hur kontroll skriptet fungerar:
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Arbets ytan](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) ansluter till din Azure Machine Learning-arbetsyta så att du kan kommunicera med dina Azure Machine Learning-resurser.
+      [Arbets ytan](/python/api/azureml-core/azureml.core.workspace.workspace) ansluter till din Azure Machine Learning-arbetsyta så att du kan kommunicera med dina Azure Machine Learning-resurser.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -100,7 +100,7 @@ Här är en beskrivning av hur kontroll skriptet fungerar:
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) är ett enkelt sätt att organisera flera körningar under ett enda namn. Senare kan du se hur experiment gör det enkelt att jämföra måtten mellan dussin tals körningar.
+      [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment) är ett enkelt sätt att organisera flera körningar under ett enda namn. Senare kan du se hur experiment gör det enkelt att jämföra måtten mellan dussin tals körningar.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -108,7 +108,7 @@ Här är en beskrivning av hur kontroll skriptet fungerar:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) radbryter `hello.py` koden och skickar den till din arbets yta. Som namnet antyder kan du använda den här klassen för att _Konfigurera_ hur du vill att _skriptet_ ska _köras_ i Azure Machine Learning. Det anger också vilka beräknings mål som skriptet ska köras på. I den här koden är målet det beräknings kluster som du skapade i [installations guiden](tutorial-1st-experiment-sdk-setup-local.md)för.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) radbryter `hello.py` koden och skickar den till din arbets yta. Som namnet antyder kan du använda den här klassen för att _Konfigurera_ hur du vill att _skriptet_ ska _köras_ i Azure Machine Learning. Det anger också vilka beräknings mål som skriptet ska köras på. I den här koden är målet det beräknings kluster som du skapade i [installations guiden](tutorial-1st-experiment-sdk-setup-local.md)för.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -116,7 +116,7 @@ Här är en beskrivning av hur kontroll skriptet fungerar:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Skickar ditt skript. Den här sändningen kallas för en [körning](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py). En körning kapslar in en enskild körning av koden. Använd en körning för att övervaka skript förloppet, avbilda utdata, analysera resultaten, visualisera mått med mera.
+       Skickar ditt skript. Den här sändningen kallas för en [körning](/python/api/azureml-core/azureml.core.run%28class%29). En körning kapslar in en enskild körning av koden. Använd en körning för att övervaka skript förloppet, avbilda utdata, analysera resultaten, visualisera mått med mera.
    :::column-end:::
 :::row-end:::
 :::row:::

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937631"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517709"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Smidig enkel inloggning i Azure Active Directory
 
@@ -37,7 +37,7 @@ Sömlös SSO kan kombineras med antingen [lösen ordets hash-synkronisering](how
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>SSO via primär uppdateringstoken jämfört med sömlös SSO
 
-För Windows 10 rekommenderar vi att du använder SSO via Primary Refresh token (PRT). För Windows 7 och 8,1 rekommenderar vi att du använder sömlös SSO.
+För Windows 10, Windows Server 2016 och senare versioner rekommenderar vi att du använder SSO via Primary Refresh token (PRT). För Windows 7 och 8,1 rekommenderar vi att du använder sömlös SSO.
 Sömlös SSO måste användarens enhet vara domänansluten, men den används inte på Windows 10 [Azure AD-anslutna enheter](../devices/concept-azure-ad-join.md) eller [hybrid Azure AD-anslutna enheter](../devices/concept-azure-ad-join-hybrid.md). SSO på Azure AD-ansluten, hybrid Azure AD-ansluten och registrerade Azure AD-enheter fungerar baserat på den [primära uppdateringstoken (PRT)](../devices/concept-primary-refresh-token.md)
 
 SSO via PRT fungerar när enheter har registrerats med Azure AD för Hybrid Azure AD-anslutna, Azure AD-anslutna eller personliga registrerade enheter via Lägg till arbets-eller skol konto. Mer information om hur SSO fungerar med Windows 10 med hjälp av PRT finns i: [primär uppdateringstoken (PRT) och Azure AD](../devices/concept-primary-refresh-token.md)

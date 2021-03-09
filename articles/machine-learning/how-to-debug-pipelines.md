@@ -10,16 +10,16 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 0f27688e31f772cc8d784371aa570d55c41f5695
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131822"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522095"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Felsöka maskin inlärnings pipeliner
 
-I den här artikeln får du lära dig att felsöka när du får fel när du kör en [maskin inlärnings pipeline](concept-ml-pipelines.md) i [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) och [Azure Machine Learning designer](./concept-designer.md). 
+I den här artikeln får du lära dig att felsöka när du får fel när du kör en [maskin inlärnings pipeline](concept-ml-pipelines.md) i [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) och [Azure Machine Learning designer](./concept-designer.md). 
 
 ## <a name="troubleshooting-tips"></a>Felsökningstips
 
@@ -192,7 +192,7 @@ Tabellen nedan innehåller information om olika fel söknings alternativ för pi
 
 | Bibliotek                    | Typ   | Exempel                                                          | Mål                                  | Resurser                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portalens användar gränssnitt             | [Spåra experiment](how-to-track-experiments.md)<br>[azureml. Core. Run-klass](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
+| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portalens användar gränssnitt             | [Spåra experiment](how-to-track-experiments.md)<br>[azureml. Core. Run-klass](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Python-utskrift/-loggning    | Loggas    | `print(val)`<br>`logging.info(message)`                          | Driv rutins loggar, Azure Machine Learning designer | [Spåra experiment](how-to-track-experiments.md)<br><br>[Python-loggning](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Loggas    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-spår                | [Felsöka pipelines i Application Insights.](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor-exportörer](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Cookbook för python-loggning](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -244,7 +244,7 @@ När du skickar en pipeline-körning och stannar på sidan redigering kan du hit
 1. I den högra rutan i modulen går du till fliken  **utdata + loggar** .
 1. Expandera den högra rutan och välj **70_driver_log.txt** för att visa filen i webbläsaren. Du kan också hämta loggar lokalt.
 
-    ![Fönster för utökad utdata i designern](./media/how-to-debug-pipelines/designer-logs.png)? View = Azure-ml-py&bevara-Visa = sant)? Visa = Azure-ml-py&bevara-Visa = sant)
+    ![Fönster för utökad utdata i designern](./media/how-to-debug-pipelines/designer-logs.png)
 
 ### <a name="get-logs-from-pipeline-runs"></a>Hämta loggar från pipeline-körningar
 
@@ -274,6 +274,6 @@ I vissa fall kan du behöva interaktivt felsöka python-koden som används i ML-
 
 * Ett fullständigt exempel som visar Automatisk maskin inlärning i ML pipelines finns i [använda automatisk ml i en Azure Machine Learning pipeline i python](how-to-use-automlstep-in-pipelines.md).
 
-* Se SDK-referensen för hjälp med [azureml-pipeline – Core-](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) paketet och [azureml-pipeline-steg-](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) paketet.
+* Se SDK-referensen för hjälp med [azureml-pipeline – Core-](/python/api/azureml-pipeline-core/) paketet och [azureml-pipeline-steg-](/python/api/azureml-pipeline-steps/) paketet.
 
 * Se listan över [designers undantag och felkoder](algorithm-module-reference/designer-error-codes.md).

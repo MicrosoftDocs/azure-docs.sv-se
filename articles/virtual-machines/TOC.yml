@@ -823,8 +823,8 @@
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
     - name: Förstå omstarter av virtuella datorer
       href: understand-vm-reboots.md
-    - name: Tillstånd och livscykel
-      href: states-lifecycle.md
+    - name: Tillstånd och fakturering
+      href: states-billing.md
     - name: Azure-regioner
       href: regions.md
 - name: Diskar
@@ -1355,7 +1355,7 @@
             - name: Vanliga frågor och svar om allmän tillgänglighet
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: VANLIGA FRÅGOR OCH SVAR
-              href: ../azure-monitor/faq.md
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
             - name: Aktivera övervakning
               items:
                 - name: Aktivera övervakningsöversikt

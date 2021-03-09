@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201897"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522401"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Självstudie: Beställa Azure Data Box
 
@@ -164,7 +164,7 @@ Du ser följande utdata:
     WSManStackVersion              3.0
 ```
 
-Om din version är lägre än 6.2.4 måste du uppgradera din version av Windows PowerShell. Information om hur du installerar den senaste versionen av Windows PowerShell finns i [installera Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
+Om din version är lägre än 6.2.4 måste du uppgradera din version av Windows PowerShell. Information om hur du installerar den senaste versionen av Windows PowerShell finns i [installera Azure PowerShell](/powershell/scripting/install/installing-powershell).
 
 **Installera Azure PowerShell-och Data Box-enhet-moduler**
 
@@ -355,22 +355,34 @@ Utför följande steg i Azure Portal för att beställa en enhet.
     ![Utöka alternativen för att ta med egna lösen ord för en Data Box-enhet import ordning](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - Om du vill använda ditt eget lösen ord för den nya enheten väljer du **Använd ditt eget lösen ord** i **Ange inställningar för enhetens lösen** ord och anger ett lösen ord som uppfyller säkerhets kraven.
+     
+     Lösen ordet måste vara alfanumeriskt och innehålla mellan 12 och 15 tecken, med minst en versal bokstav, en gemen bokstav, ett specialtecken och en siffra. 
+
+     - Tillåtna specialtecken: @ #-$% ^! + = ; : _ ( )
+     - Tecken tillåts inte: I L o O 0
    
      ![Alternativ för att använda ditt eget enhets lösen ord på säkerhets skärmen för en Data Box-enhet import ordning](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - Så här använder du egna lösen ord för resurser:
 
-   - Genom att **Ange inställningar för dela lösen ord** väljer **du Använd dina egna lösen ord** och **väljer sedan lösen ord för resurserna**.
+   1. Genom att **Ange inställningar för dela lösen ord** väljer **du Använd dina egna lösen ord** och **väljer sedan lösen ord för resurserna**.
      
-        ![Alternativ för att använda egna delnings lösen ord på säkerhets skärmen för en Data Box-enhet import ordning](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Alternativ för att använda egna delnings lösen ord på säkerhets skärmen för en Data Box-enhet import ordning](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - Ange ett lösen ord för varje lagrings konto i ordern. Lösen ordet kommer att användas på alla resurser för lagrings kontot.
-     
-        Om du vill använda samma lösen ord för alla lagrings konton väljer **du kopiera till alla**. När du är klar väljer du **Spara**.
-     
-        ![Skärm för att ange resurs lösen ord för en Data Box-enhet import ordning](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. Ange ett lösen ord för varje lagrings konto i ordern. Lösen ordet kommer att användas på alla resurser för lagrings kontot.
+    
+       Lösen ordet måste vara alfanumeriskt och innehålla mellan 12 och 64 tecken, med minst en versal bokstav, en gemen bokstav, ett specialtecken och en siffra.
 
-       På **säkerhets** skärmen kan du använda **Visa eller ändra lösen ord** för att ändra lösen ord.
+       - Tillåtna specialtecken: @ #-$% ^! + = ; : _ ( )
+       - Tecken tillåts inte: I L o O 0
+     
+    1. Om du vill använda samma lösen ord för alla lagrings konton väljer **du kopiera till alla**. 
+
+    1. När du är klar väljer du **Spara**.
+     
+       ![Skärm för att ange resurs lösen ord för en Data Box-enhet import ordning](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    På **säkerhets** skärmen kan du använda **Visa eller ändra lösen ord** för att ändra lösen ord.
 
 16. I **säkerhet**, om du vill aktivera programvarubaserad dubbel kryptering, expanderar du **Double-Encryption (för hög säkra miljöer)** och väljer **Aktivera dubbel kryptering för beställningen**.
 

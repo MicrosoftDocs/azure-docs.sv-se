@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: acce282dcaac971716a97d7722543d78e28b7a34
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584221"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517675"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Felsöka verifiering av utgivare
 Om du inte kan slutföra processen eller har oväntad funktion med [utgivar verifieringen](publisher-verification-overview.md), bör du börja med att göra följande om du får fel eller om du får oväntade beteenden: 
@@ -241,7 +241,7 @@ När en begäran om att lägga till en verifierad utgivare görs, används ett a
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du har granskat all föregående information och fortfarande får ett fel från Microsoft Graph, kan du samla in så mycket av följande information som möjligt som är relaterad till den misslyckade begäran och [kontakta Microsoft Support](developer-support-help-options.md#open-a-support-request).
+Om du har granskat all föregående information och fortfarande får ett fel från Microsoft Graph, kan du samla in så mycket av följande information som möjligt som är relaterad till den misslyckade begäran och [kontakta Microsoft Support](developer-support-help-options.md#create-an-azure-support-request).
 
 - Timestamp 
 - CorrelationId 

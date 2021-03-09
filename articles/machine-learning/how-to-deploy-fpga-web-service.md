@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212798"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519324"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Distribuera ML-modeller till Field-programmerbara grind mat ris (FPGAs) med Azure Machine Learning 
 
-I den här artikeln får du lära dig mer om FPGAs och hur du distribuerar dina ML-modeller till en Azure-FPGA med hjälp av [python-paketet för maskin accelererade modeller](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) från [Azure Machine Learning](overview-what-is-azure-ml.md).
+I den här artikeln får du lära dig mer om FPGAs och hur du distribuerar dina ML-modeller till en Azure-FPGA med hjälp av [python-paketet för maskin accelererade modeller](/python/api/azureml-accel-models/azureml.accel) från [Azure Machine Learning](overview-what-is-azure-ml.md).
 
 ## <a name="what-are-fpgas"></a>Vad är FPGAs?
 En FPGA innehåller en matris med programmerbara logiska block och en hierarki med omkonfigurerbara anslutningar. Med samkopplingarna kan dessa block konfigureras på olika sätt efter tillverkningen. Jämfört med andra kretsar ger FPGAs en kombination av programmering och prestanda. 
@@ -31,7 +31,7 @@ Du kan konfigurera om FPGAs för olika typer av Machine Learning-modeller. Den h
 
 ![Diagram över Azure Machine Learning FPGA-jämförelse](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processor| Förkortning |Description|
+|Processor| Förkortning |Beskrivning|
 |---|:-------:|------|
 |Programspecifika integrerade kretsar|ASICs|Anpassade kretsar, till exempel Googles beskrivare processor enheter (TPU), ger högsta möjliga effektivitet. De kan inte konfigureras om när dina behov ändras.|
 |Fält-programmerbara grind mat ris|FPGA:er|FPGAs, till exempel de som är tillgängliga på Azure, ger prestanda nära ASICs. De är också flexibla och Omkonfigurerade över tid, för att implementera ny logik.|
@@ -56,7 +56,7 @@ För att optimera svars tid och data flöde bör klienten som skickar data till 
 
 ## <a name="deploy-models-on-fpgas"></a>Distribuera modeller på FPGAs
 
-Du kan distribuera en modell som en webb tjänst på FPGAs med [Azure Machine Learning maskinvaruaccelererade modeller](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py). Om du använder FPGAs får du en utgångs punkt för extremt låg latens, även med en enda batchstorlek. 
+Du kan distribuera en modell som en webb tjänst på FPGAs med [Azure Machine Learning maskinvaruaccelererade modeller](/python/api/azureml-accel-models/azureml.accel). Om du använder FPGAs får du en utgångs punkt för extremt låg latens, även med en enda batchstorlek. 
 
 I det här exemplet skapar du en TensorFlow-graf för att Förbearbeta indatabilden, gör den till en upplärda med ResNet 50 på en FPGA och kör sedan funktionerna via en klassificerare som har tränats på ImageNet data uppsättningen. Sedan distribueras modellen till ett AKS-kluster.
 
@@ -80,7 +80,7 @@ I det här exemplet skapar du en TensorFlow-graf för att Förbearbeta indatabil
 
 ### <a name="define-the-tensorflow-model"></a>Definiera TensorFlow-modellen
 
-Börja med att använda [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) för att skapa en tjänst definition. En tjänst definition är en fil som beskriver en pipeline med grafer (indata, upplärda och klassificerare) baserat på TensorFlow. Kommandot Deployment komprimerar definitionen och graferna till en ZIP-fil och överför ZIP till Azure Blob Storage. DNN har redan distribuerats för att köras på FPGA.
+Börja med att använda [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro) för att skapa en tjänst definition. En tjänst definition är en fil som beskriver en pipeline med grafer (indata, upplärda och klassificerare) baserat på TensorFlow. Kommandot Deployment komprimerar definitionen och graferna till en ZIP-fil och överför ZIP till Azure Blob Storage. DNN har redan distribuerats för att köras på FPGA.
 
 1. Läs in Azure Machine Learning arbets yta
 

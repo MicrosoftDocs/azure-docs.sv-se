@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: Beskriver CloudSimple-tjänstens process för schemalagt underhåll och uppdateringar
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 03/04/2021
+ms.date: 03/09/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 1cbd708f6c1f5159655099d5d72900ab0c608147
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120716"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522316"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Underhåll och uppdateringar av CloudSimple
 
@@ -102,7 +102,7 @@ Program uppdateringar omfattar:
 
 CloudSimple testar en kritisk säkerhets korrigering så snart den blir tillgänglig från VMware. 
 
-CloudSimple tillhandahåller kvartals Visa uppdateringar av VMware-programkomponenter. När en ny huvud version av VMware-programvaran är tillgänglig fungerar CloudSimple med kunder för att samordna en lämplig underhålls period för uppgradering.
+Dokumenterade VMware-lösningar kommer att implementeras i stället för att installera en motsvarande uppdatering tills nästa schemalagda uppdatering har distribuerats. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218850"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519205"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Högpresterande tjänster med Triton-Härlednings Server (för hands version) 
 
@@ -36,7 +36,7 @@ Triton är ett ramverk som är *optimerat för en härledning*. Den ger bättre 
 
 * En **Azure-prenumeration**. Om du inte har en sådan kan du prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 * Bekanta dig med [hur och var du distribuerar en modell](how-to-deploy-and-where.md) med Azure Machine Learning.
-* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/?view=azure-ml-py) **eller** [Azure CLI](/cli/azure/) och [Machine Learning-tillägget](reference-azure-machine-learning-cli.md).
+* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/) **eller** [Azure CLI](/cli/azure/) och [Machine Learning-tillägget](reference-azure-machine-learning-cli.md).
 * En fungerande installation av Docker för lokal testning. Information om hur du installerar och validerar Docker finns i [orientering och konfiguration](https://docs.docker.com/get-started/) i Docker-dokumentationen.
 
 ## <a name="architectural-overview"></a>Översikt över arkitekturen
@@ -134,7 +134,7 @@ model = Model.register(
 )
 
 ```
-Mer information finns i dokumentationen för [modell klassen](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
+Mer information finns i dokumentationen för [modell klassen](/python/api/azureml-core/azureml.core.model.model).
 
 ---
 
@@ -276,7 +276,7 @@ Med en konfiguration för konfigurations störningar kan du använda ett Entry-s
 > [!IMPORTANT]
 > Du måste ange den `AzureML-Triton` [granskade miljön](./resource-curated-environments.md).
 >
-> Python-kod exemplet klonas `AzureML-Triton` i en annan miljö som kallas `My-Triton` . Azure CLI-koden använder också den här miljön. Mer information om kloning av en miljö finns i referens för [Environment. clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) .
+> Python-kod exemplet klonas `AzureML-Triton` i en annan miljö som kallas `My-Triton` . Azure CLI-koden använder också den här miljön. Mer information om kloning av en miljö finns i referens för [Environment. clone ()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -337,7 +337,7 @@ Information om hur du skapar en klient som skickar en uppräknings förfrågan t
 
 ### <a name="setting-the-number-of-workers"></a>Ange antalet arbetare
 
-Ställ in miljövariabeln för att ange antalet arbetare i distributionen `WORKER_COUNT` . Med tanke på att du har ett [miljö](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) objekt `env` som kallas kan du göra följande:
+Ställ in miljövariabeln för att ange antalet arbetare i distributionen `WORKER_COUNT` . Med tanke på att du har ett [miljö](/python/api/azureml-core/azureml.core.environment.environment) objekt `env` som kallas kan du göra följande:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

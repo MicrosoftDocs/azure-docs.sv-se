@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587368"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521687"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights agent (tidigare namngiven Statusövervakare v2): detaljerade anvisningar
 
@@ -29,7 +29,7 @@ Du behöver en Instrumentation-nyckel för att komma igång. Mer information fin
 PowerShell behöver behörigheter på administratörs nivå för att göra ändringar i datorn.
 ### <a name="execution-policy"></a>Körnings princip
 - Beskrivning: som standard är körning av PowerShell-skript inaktiverat. Vi rekommenderar att du endast tillåter RemoteSigned-skript för det aktuella omfånget.
-- Referens: [om körnings principer](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) och [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6).
+- Referens: [om körnings principer](/powershell/module/microsoft.powershell.core/about/about_execution_policies) och [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy).
 - Kommando: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - Valfri parameter:
     - `-Force`. Åsidosätter bekräftelse meddelandet.
@@ -71,14 +71,14 @@ Dessa instruktioner har skrivits och testats på en dator som kör Windows 10 oc
 De här stegen förbereder servern för att ladda ned moduler från PowerShell-galleriet.
 
 > [!NOTE] 
-> PowerShell-galleriet stöds i Windows 10, Windows Server 2016 och PowerShell 6.
+> PowerShell-galleriet stöds i Windows 10, Windows Server 2016 och PowerShell 6 +.
 > Information om tidigare versioner finns i avsnittet om att [Installera PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
 
 1. Kör PowerShell som administratör med en förhöjd körnings princip.
 2. Installera NuGet-paket leverantören.
     - Beskrivning: du behöver den här providern för att interagera med NuGet-baserade databaser som PowerShell-galleriet.
-    - Referens: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Referens: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider).
     - Kommando: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - Valfria parametrar:
         - `-Proxy`. Anger en proxyserver för begäran.
@@ -98,7 +98,7 @@ De här stegen förbereder servern för att ladda ned moduler från PowerShell-g
 
 3. Konfigurera PowerShell-galleriet som ett betrott lager.
     - Beskrivning: som standard är PowerShell-galleriet ett ej betrott lager.
-    - Referens: [set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Referens: [set-PSRepository](/powershell/module/powershellget/set-psrepository).
     - Kommando: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - Valfri parameter:
         - `-Proxy`. Anger en proxyserver för begäran.
@@ -144,7 +144,7 @@ De här stegen hämtar modulen AZ. ApplicationMonitor från PowerShell-galleriet
 1. Se till att alla nödvändiga komponenter för PowerShell-galleriet är uppfyllda.
 2. Kör PowerShell som administratör med en förhöjd körnings princip.
 3. Installera modulen AZ. ApplicationMonitor.
-    - Referens: [installera-modul](/powershell/module/powershellget/install-module?view=powershell-6).
+    - Referens: [installera-modul](/powershell/module/powershellget/install-module).
     - Kommando: `Install-Module -Name Az.ApplicationMonitor` .
     - Valfria parametrar:
         - `-Proxy`. Anger en proxyserver för begäran.
@@ -170,7 +170,7 @@ Mer information finns i [installera en PowerShell-modul](/powershell/scripting/d
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Zippa upp nupkg som en zip-fil med hjälp av Expand-Archive (v 1.0.1.0)
 
 - Beskrivning: bas versionen av Microsoft. PowerShell. Archive (v 1.0.1.0) kan inte zippa upp nupkg-filer. Byt namn på filen med fil namns tillägget. zip.
-- Referens: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Referens: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive).
 - Kommandoprompt
 
     ```console
@@ -184,7 +184,7 @@ Mer information finns i [installera en PowerShell-modul](/powershell/scripting/d
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Zippa upp nupkg med hjälp av Expand-Archive (v 1.1.0.0)
 
 - Beskrivning: Använd en aktuell version av Expand-Archive för att zippa upp nupkg-filer utan att ändra tillägget.
-- Referens: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) och [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Referens: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive) och [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Kommandoprompt
 
     ```console
@@ -197,7 +197,7 @@ Mer information finns i [installera en PowerShell-modul](/powershell/scripting/d
 Installera den manuellt hämtade PowerShell-modulen i en PowerShell-katalog så att den kan identifieras av PowerShell-sessioner.
 Mer information finns i [installera en PowerShell-modul](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Om du installerar modulen i en annan katalog importerar du modulen manuellt med hjälp av [import-module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
+Om du installerar modulen i en annan katalog importerar du modulen manuellt med hjälp av [import-module](/powershell/module/microsoft.powershell.core/import-module).
 
 > [!IMPORTANT] 
 > DLL-filer kommer att installeras via relativa sökvägar.

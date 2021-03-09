@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251122"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518508"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurera och skicka träningskörningar
 
@@ -29,12 +29,12 @@ Allt du behöver göra är att definiera miljön för varje beräknings mål i e
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag
-* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
+* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * En [Azure Machine Learning arbets yta](how-to-manage-workspace.md), `ws`
 * Ett beräknings mål, `my_compute_target` .  [Skapa ett beräknings mål](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Vad är en skript körnings konfiguration?
-En [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) används för att konfigurera den information som krävs för att skicka in en utbildning som en del av ett experiment.
+En [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) används för att konfigurera den information som krävs för att skicka in en utbildning som en del av ett experiment.
 
 Du skickar in ditt utbildnings experiment med ett ScriptRunConfig-objekt.  Det här objektet innehåller:
 
@@ -42,7 +42,7 @@ Du skickar in ditt utbildnings experiment med ett ScriptRunConfig-objekt.  Det h
 * **skript**: det utbildnings skript som ska köras
 * **compute_target**: det beräknings mål som ska köras
 * **miljö**: miljön som ska användas när skriptet körs
-* och vissa ytterligare konfigurerbara alternativ (se [referens dokumentationen](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) för mer information)
+* och vissa ytterligare konfigurerbara alternativ (se [referens dokumentationen](/python/api/azureml-core/azureml.core.scriptrunconfig) för mer information)
 
 ## <a name="train-your-model"></a><a id="submit"></a>Träna modellen
 
@@ -133,7 +133,7 @@ Om du har kommando rads argument som du vill skicka till ditt utbildnings skript
 Om du vill åsidosätta den maximala standard tiden som tillåts för körningen kan du göra det via **`max_run_duration_seconds`** parametern. Systemet kommer att försöka att automatiskt avbryta körningen om det tar längre tid än det här värdet.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Ange en konfiguration för distribuerat jobb
-Om du vill köra ett distribuerat utbildnings jobb anger du den distribuerade jobbbaserade konfigurationen till **`distributed_job_config`** parametern. Konfigurations typerna som stöds är [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)och [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py). 
+Om du vill köra ett distribuerat utbildnings jobb anger du den distribuerade jobbbaserade konfigurationen till **`distributed_job_config`** parametern. Konfigurations typerna som stöds är [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)och [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration). 
 
 Mer information och exempel på hur du kör distribuerade Horovod-, TensorFlow-och PyTorch-jobb finns i:
 
@@ -197,10 +197,10 @@ I de här antecknings böckerna finns exempel på hur du konfigurerar körningar
     
     Azure ML-underhållna Docker-avbildningar och deras innehåll kan visas i [azureml-behållare](https://github.com/Azure/AzureML-Containers).
     De Ramverks-/regionsspecifika beroendena visas i respektive Ramverks dokumentation:
-    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer#remarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch#remarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow#remarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn#remarks)
     
     > [!Note]
     > Om du tror att ett visst paket är tillräckligt vanligt för att läggas till i Azure ML-underhållna bilder och miljöer kan du generera ett GitHub-problem i [azureml-behållare](https://github.com/Azure/AzureML-Containers). 
@@ -208,7 +208,7 @@ I de här antecknings böckerna finns exempel på hur du konfigurerar körningar
 * **NameError (namn har inte definierats), AttributeError (objektet har inget attribut)**: det här undantaget bör komma från dina utbildnings skript. Du kan titta på loggfilerna från Azure Portal för att få mer information om det angivna namnet inte är definierat eller ett attributvärde. Från SDK kan du använda `run.get_details()` för att titta på fel meddelandet. Detta visar även alla loggfiler som genererats för din körning. Se till att ta en titt på ditt utbildnings skript och åtgärda felet innan du skickar om körningen. 
 
 
-* **Körning eller experimentering**: experiment kan arkiveras med hjälp av metoden [experiment. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) eller från fliken experiment i Azure Machine Learning Studio-klienten via "arkivera experiment"-knappen. Den här åtgärden döljer experimentet från List frågor och vyer, men tar inte bort den.
+* **Körning eller experimentering**: experiment kan arkiveras med hjälp av metoden [experiment. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29#archive--) eller från fliken experiment i Azure Machine Learning Studio-klienten via "arkivera experiment"-knappen. Den här åtgärden döljer experimentet från List frågor och vyer, men tar inte bort den.
 
     Permanent borttagning av enskilda experiment eller körningar stöds för närvarande inte. Mer information om hur du tar bort arbets ytans till gångar finns i [Exportera eller ta bort data för Machine Learning service-arbetsytan](how-to-export-delete-data.md).
 
@@ -229,5 +229,5 @@ I de här antecknings böckerna finns exempel på hur du konfigurerar körningar
 * Se hur du tränar modeller med speciella ML-ramverk, till exempel [Scikit – lära](how-to-train-scikit-learn.md), [TensorFlow](how-to-train-tensorflow.md)och [PyTorch](how-to-train-pytorch.md).
 * Lär dig hur du [effektivt justerar disponeringsparametrarna](how-to-tune-hyperparameters.md) för att bygga bättre modeller.
 * När du har en tränad modell lär du dig [hur och var modeller ska distribueras](how-to-deploy-and-where.md).
-* Visa SDK-referens för [ScriptRunConfig-klass](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) .
+* Visa SDK-referens för [ScriptRunConfig-klass](/python/api/azureml-core/azureml.core.scriptrunconfig) .
 * [Använda Azure Machine Learning med virtuella Azure-nätverk](./how-to-network-security-overview.md)

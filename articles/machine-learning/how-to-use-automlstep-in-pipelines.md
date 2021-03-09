@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692223"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520514"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Använd automatisk ML i en Azure Machine Learning pipeline i python
 
@@ -37,7 +37,7 @@ Automatiserad ML i en pipeline representeras av ett `AutoMLStep` objekt. `AutoML
 
 Det finns flera underklasser för `PipelineStep` . Förutom den `AutoMLStep` här artikeln visas en `PythonScriptStep` för data förberedelse och en annan för att registrera modellen.
 
-Det bästa sättet att flytta data _till_ en ml-pipeline är med `Dataset` objekt. Det bästa sättet att flytta data _mellan_ steg och att spara data från körs är med [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) och [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) objekt. För att kunna användas med `AutoMLStep` `PipelineData` måste objektet transformeras till ett- `PipelineOutputTabularDataset` objekt. Mer information finns i [indata och utdata från ml-pipeliner](how-to-move-data-in-out-of-pipelines.md).
+Det bästa sättet att flytta data _till_ en ml-pipeline är med `Dataset` objekt. Det bästa sättet att flytta data _mellan_ steg och att spara data från körs är med [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) och [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) objekt. För att kunna användas med `AutoMLStep` `PipelineData` måste objektet transformeras till ett- `PipelineOutputTabularDataset` objekt. Mer information finns i [indata och utdata från ml-pipeliner](how-to-move-data-in-out-of-pipelines.md).
 
 `AutoMLStep`Konfigureras via ett- `AutoMLConfig` objekt. `AutoMLConfig` är en flexibel klass som beskrivs i [Konfigurera automatiserade ml-experiment i python](./how-to-configure-auto-train.md#configure-your-experiment-settings). 
 

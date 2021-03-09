@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388081"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521024"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Använda hanterade identiteter med Azure Machine Learning (förhands granskning)
 
@@ -38,7 +38,7 @@ I den här artikeln får du lära dig hur du använder hanterade identiteter fö
 
 - En Azure Machine Learning-arbetsyta. Mer information finns i [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 - [Azure CLI-tillägget för Machine Learning tjänst](reference-azure-machine-learning-cli.md)
-- [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py).
+- [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro).
 - För att tilldela roller måste inloggningen för din Azure-prenumeration ha rollen [hanterad identitets operatör](../role-based-access-control/built-in-roles.md#managed-identity-operator) eller annan roll som ger nödvändiga åtgärder (till exempel __ägare__).
 - Du måste vara bekant med att skapa och arbeta med [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -107,7 +107,7 @@ För att få åtkomst till arbets ytans ACR skapar du beräknings kluster för m
 
 # <a name="python"></a>[Python](#tab/python)
 
-När du skapar ett beräknings kluster med [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)använder du `identity_type` parametern för att ange den hanterade identitets typen.
+När du skapar ett beräknings kluster med [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration)använder du `identity_type` parametern för att ange den hanterade identitets typen.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -191,7 +191,7 @@ I det här scenariot skapar Azure Machine Learning-tjänsten utbildnings-eller m
 
         Resurs-ID: t för UAI är Azure-resurs-ID för den tilldelade användaren identitet i formatet `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. Ange det externa ACR och klient-ID: t för den __användarspecifika hanterade identiteten__ i arbets ytans anslutningar med hjälp av [Workspace.set_connection metod](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-):
+1. Ange det externa ACR och klient-ID: t för den __användarspecifika hanterade identiteten__ i arbets ytans anslutningar med hjälp av [Workspace.set_connection metod](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-):
 
     ```python
     workspace.set_connection(
@@ -211,7 +211,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-Alternativt kan du ange den hanterade identitets resurs-URL: en och klient-ID i själva miljö definitionen med hjälp av [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py). Om du använder register identiteten explicit, åsidosätter den eventuella arbets ytans anslutningar som angetts tidigare:
+Alternativt kan du ange den hanterade identitets resurs-URL: en och klient-ID i själva miljö definitionen med hjälp av [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity). Om du använder register identiteten explicit, åsidosätter den eventuella arbets ytans anslutningar som angetts tidigare:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

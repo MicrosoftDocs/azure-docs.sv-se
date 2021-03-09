@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 11/04/2020
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 09be6a73b092f6298099e4a11bcd606759515c07
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374260"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521398"
 ---
 # <a name="what-is-azure-machine-learning"></a>Vad är Azure Machine Learning?
 
@@ -42,7 +42,7 @@ Prognoser eller förutsägelser från maskininlärning kan göra appar och enhet
 Azure Machine Learning innehåller alla verktyg och data forskare som behöver för sina Machine Learning-arbetsflöden, inklusive:
 + [Azure Machine Learning designer](tutorial-designer-automobile-price-train-score.md): dra-n-släpp-moduler för att bygga experimenten och sedan distribuera pipeliner.
 
-+ Jupyter Notebook: Använd våra [exempel Notebook-anteckningsböcker](https://github.com/Azure/MachineLearningNotebooks) eller skapa egna antecknings böcker för att utnyttja våra SDK: er <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">för python</a> -exempel för din maskin inlärning. 
++ Jupyter Notebook: Använd våra [exempel Notebook-anteckningsböcker](https://github.com/Azure/MachineLearningNotebooks) eller skapa egna antecknings böcker för att utnyttja våra SDK: er <a href="/python/api/overview/azure/ml/intro" target="_blank">för python</a> -exempel för din maskin inlärning. 
 
 + R-skript eller antecknings böcker där du använder <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK för R</a> för att skriva din egen kod eller använda R-modulerna i designern.
 
@@ -60,7 +60,7 @@ Du kan även använda [MLflow för att spåra mått och distribuera modeller](ho
 
 ## <a name="build-ml-models-in-python-or-r"></a>Bygg ML-modeller i python eller R
 
-Starta utbildningen på den lokala datorn med hjälp av Azure Machine Learning <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">python SDK</a> eller <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>. Sedan kan du skala ut till molnet. 
+Starta utbildningen på den lokala datorn med hjälp av Azure Machine Learning <a href="/python/api/overview/azure/ml/intro" target="_blank">python SDK</a> eller <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>. Sedan kan du skala ut till molnet. 
 
 Tack vare de många tillgängliga [beräkningsmålen](how-to-create-attach-compute-studio.md), däribland Azure Machine Learning Compute och [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks), och med [tjänster för finjustering av avancerade hyperparametrar](how-to-tune-hyperparameters.md) kan du skapa bättre modeller snabbare genom att använda hela styrkan från molnet.
 
@@ -91,7 +91,7 @@ Du kan också [Automatisera modell träning och-justering](tutorial-auto-train-m
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: Distribuera & livs cykel hantering
 När du har rätt modell kan du enkelt använda den i en webb tjänst, på en IoT-enhet eller från Power BI. Mer information finns i artikeln om [hur och var man distribuerar](how-to-deploy-and-where.md).
 
-Sedan kan du hantera dina distribuerade modeller med hjälp av [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py), [Azure Machine Learning Studio](https://ml.azure.com)eller [Machine Learning CLI](reference-azure-machine-learning-cli.md).
+Sedan kan du hantera dina distribuerade modeller med hjälp av [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/), [Azure Machine Learning Studio](https://ml.azure.com)eller [Machine Learning CLI](reference-azure-machine-learning-cli.md).
 
 Dessa modeller kan förbrukas och returnera förutsägelser i [real tid](how-to-consume-web-service.md) eller [asynkront](./tutorial-pipeline-batch-scoring-classification.md) på stora mängder data.
 

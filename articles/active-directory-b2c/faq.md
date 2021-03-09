@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498837"
+ms.locfileid: "102517998"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: vanliga frågor och svar
 
@@ -145,13 +145,13 @@ Du kan använda vår nya enhetlig **Appregistreringar** upplevelse eller äldre 
 1. Välj filtret **katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller Azure AD B2C klienten.
 1. På den vänstra menyn väljer du **Azure AD B2C**. Eller Välj **alla tjänster** och Sök efter och välj **Azure AD B2C**.
 1. Ta bort alla **användar flöden (principer)** i Azure AD B2C klient organisationen.
+1. Ta bort alla **identitets leverantörer** i Azure AD B2C klient organisationen.
 1. Välj **Appregistreringar** och välj sedan fliken **alla program** .
 1. Ta bort alla program som du har registrerat.
 1. Ta bort **B2C-Extensions-appen**.
 1. Under **Hantera** väljer du **Användare**.
 1. Välj varje användare i tur (exkludera den *prenumerations administratörs* användare som du för närvarande är inloggad som). Välj **ta bort** längst ned på sidan och välj **Ja** när du uppmanas till det.
 1. Välj **Azure Active Directory** på menyn till vänster.
-1. Under **Hantera** väljer du **användar inställningar**.
 1. Under **Hantera**, väljer du **Egenskaper**
 1. Under **Åtkomsthantering för Azure-resurser** väljer du **Ja** och väljer sedan **Spara**.
 1. Logga ut från Azure Portal och logga sedan in igen för att uppdatera åtkomsten.

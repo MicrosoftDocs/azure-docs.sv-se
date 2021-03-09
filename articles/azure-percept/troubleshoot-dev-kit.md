@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c8027b62c0c463e134817f589ba3e1957cea5b39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680082"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521534"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Fel sökning för Azure percept DK (dev Kit)
 
@@ -60,9 +60,9 @@ Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentation
 |Azure IoT Edge          |```sudo journalctl -u iotedge -f``` |Visa loggarna för Azure IoT Edge Security Manager |
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Starta om Azure IoT Edge Security daemon |
 |Azure IoT Edge          |```sudo iotedge list```           |Visa en lista över distribuerade Azure IoT Edge-moduler |
-|Övrigt             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
-|Övrigt             |```ip route get 1.1.1.1```        |Visa enhetens IP-och gränssnitts information |
-|Övrigt             |```ip route get 1.1.1.1 \| awk '{print $7}'``` <br> ```ifconfig [interface]``` |Visa endast enhets-IP-adress |
+|Annat             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
+|Annat             |```ip route get 1.1.1.1```        |Visa enhetens IP-och gränssnitts information |
+|Annat             |```ip route get 1.1.1.1 \| awk '{print $7}'``` <br> ```ifconfig [interface]``` |Visa endast enhets-IP-adress |
 
 
 ```journalctl```Wi-Fi kommandon kan kombineras i följande enda kommando:
@@ -95,7 +95,7 @@ Det finns tre små indikatorer ovanpå transport örens hölje. En moln ikon skr
 |SPOLNING             |Stat      |Beskrivning                      |
 |----------------|-----------|---------------------------------|
 |LAMPA 1 (IoT Hub) |På (heldragen) |Enheten är ansluten till en IoT Hub. |
-|LAMPA 2 (Wi-Fi)   |Långsam blink |Enhets autentisering pågår. |
+|LAMPA 2 (Wi-Fi)   |Långsam blink |Enheten är redo att konfigureras med Wi-Fi enkel anslutning och vi presenterar dess förekomst i en Configurator. |
 |LAMPA 2 (Wi-Fi)   |Snabb blinkning |Autentiseringen lyckades, enhets associationen pågår. |
 |LAMPA 2 (Wi-Fi)   |På (heldragen) |Autentisering och Association lyckades. enheten är ansluten till ett Wi-Fi nätverk. |
 |INDIKATOR 3           |NA         |INDIKATORn används inte. |

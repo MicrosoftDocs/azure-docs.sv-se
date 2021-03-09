@@ -16,12 +16,12 @@ ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 681d92ed162feff0510067556d7eeaa47b12d988
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80331098"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520038"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Portar och protokoll som krävs för hybrididentitet
 Följande dokument är en teknisk referens för de portar och protokoll som krävs för att implementera en hybrid identitets lösning. Använd följande bild och referera till motsvarande tabell.
@@ -39,7 +39,7 @@ I den här tabellen beskrivs de portar och protokoll som krävs för kommunikati
 | LDAP |389 (TCP/UDP) |Används för data import från AD. Data krypteras med Kerberos-signera & sigill. |
 | SMB | 445 (TCP) |Används av sömlös SSO för att skapa ett dator konto i AD-skogen. |
 | LDAP/SSL |636 (TCP/UDP) |Används för data import från AD. Data överföringen är signerad och krypterad. Används endast om du använder TLS. |
-| RPC |49152-65535 (slumpmässig hög RPC-port) (TCP) |Används under den inledande konfigurationen av Azure AD Connect när den binder till AD-skogar och under Lösenordssynkronisering. Mer information finns i [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)och [KB224196](https://support.microsoft.com/kb/224196) . |
+| RPC |49152-65535 (slumpmässig hög RPC-port) (TCP) |Används under den inledande konfigurationen av Azure AD Connect när den binder till AD-skogar och under Lösenordssynkronisering. Om den dynamiska porten har ändrats måste du öppna den porten. Mer information finns i [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)och [KB224196](https://support.microsoft.com/kb/224196) . |
 |WinRM  | 5985 (TCP) |Används endast om du installerar AD FS med gMSA av Azure AD Connect-guiden|
 |AD DS-webbtjänster | 9389 (TCP) |Används endast om du installerar AD FS med gMSA av Azure AD Connect-guiden |
 
@@ -104,8 +104,8 @@ I den här tabellen beskrivs följande utgående portar och protokoll som krävs
 
 | Protokoll | Portar | Beskrivning |
 | --- | --- | --- |
-| HTTPS |443 (TCP) |Outbound (Utgående) |
-| Azure Service Bus |5671 (TCP) |Outbound (Utgående) |
+| HTTPS |443 (TCP) |Utgående |
+| Azure Service Bus |5671 (TCP) |Utgående |
 
 Azure Service Bus port 5671 krävs inte längre för den senaste versionen av agenten. Den senaste versionen av Azure AD Connect Health Agent version krävde bara port 443.
 

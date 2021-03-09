@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693874"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519715"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>För hands version: skapa en Azure Image Builder-mall 
 
@@ -391,7 +391,7 @@ Anpassa egenskaper:
 - **validExitCodes** – valfria, giltiga koder som kan returneras från skriptet/inline-kommandot. Detta undviker att det rapporteras ett skript/inline-kommando.
 - **runElevated** – valfritt, booleskt, stöd för att köra kommandon och skript med förhöjd behörighet.
 - **sha256Checksum** -värdet för filens SHA256-kontrollsumma, du genererar det här lokalt och sedan kontrol leras kontroll summor och Image Builder.
-    * Skapa sha256Checksum med hjälp av PowerShell på Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * Skapa sha256Checksum med hjälp av PowerShell på Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash)
 
 
 ### <a name="file-customizer"></a>Fil anpassning
@@ -456,7 +456,7 @@ Anpassa egenskaper:
 - **updateLimit** – valfritt, definierar hur många uppdateringar som kan installeras, standard 1000.
  
 > [!NOTE]
-> Windows Update anpassning kan Miss lyckas om det finns väntande Windows-omstarter eller om program installationer fortfarande körs, så det kan hända att du ofta ser det här felet i anpassningen. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Vi rekommenderar starkt att du lägger till i en Windows-omstart och/eller gör det möjligt för program att slutföra sina installationer med [vilo läge] eller vänta-kommandon ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) i de infogade kommandona eller skripten innan du kör Windows Update.
+> Windows Update anpassning kan Miss lyckas om det finns väntande Windows-omstarter eller om program installationer fortfarande körs, så det kan hända att du ofta ser det här felet i anpassningen. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Vi rekommenderar starkt att du funderar på att lägga till i en Windows-omstart och/eller att göra det möjligt för program att slutföra sina installationer med [vila](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) -eller wait-kommandon i infogade kommandon eller skript innan du kör Windows Update.
 
 ### <a name="generalize"></a>Generalisera 
 Som standard kommer Azure Image Builder också att köra "avetablering"-kod i slutet av varje bild anpassnings fas till "generalize"-avbildningen. Att generalisera är en process där avbildningen konfigureras så att den kan återanvändas för att skapa flera virtuella datorer. För virtuella Windows-datorer använder Azure Image Builder Sysprep. För Linux kör Azure Image Builder "waagent-deetablering". 

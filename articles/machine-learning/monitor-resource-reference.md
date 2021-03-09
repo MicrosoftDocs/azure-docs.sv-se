@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575074"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521347"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Övervaka data referens för Azure Machine Learning
 
@@ -27,7 +27,7 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 
 **Modell**
 
-| Metric | Enhet | Description |
+| Metric | Enhet | Beskrivning |
 | ----- | ----- | ----- |
 | Modell distributionen misslyckades | Antal | Antalet modell distributioner som misslyckades. |
 | Modell distribution har startat | Antal | Antalet modell distributioner som har startats. |
@@ -39,7 +39,7 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 
 Kvot information gäller endast för Azure Machine Learning beräkning.
 
-| Metric | Enhet | Description |
+| Metric | Enhet | Beskrivning |
 | ----- | ----- | ----- |
 | Aktiva kärnor | Antal | Antalet aktiva beräknings kärnor. |
 | Aktiva noder | Antal | Antalet aktiva noder. |
@@ -57,7 +57,7 @@ Kvot information gäller endast för Azure Machine Learning beräkning.
 
 **Resurs**
 
-| Metric | Enhet | Description |
+| Metric | Enhet | Beskrivning |
 | ----- | ----- | ----- |
 | CpuUtilization | Procent | Hur mycket processor användnings procent som används för en viss nod under en körning/ett jobb. Det här måttet publiceras bara när ett jobb körs på en nod. Ett jobb kan använda en eller flera noder. Det här måttet publiceras per nod. |
 | GpuUtilization | Procent | Hur mycket GPU-minne som utnyttjades för en viss nod under en körning/ett jobb. En nod kan ha en eller flera GPU: er. Det här måttet publiceras per GPU per nod. |
@@ -66,7 +66,7 @@ Kvot information gäller endast för Azure Machine Learning beräkning.
 
 Information om utbildning körs.
 
-| Metric | Enhet | Description |
+| Metric | Enhet | Beskrivning |
 | ----- | ----- | ----- |
 | Slutförda körningar | Antal | Antalet slutförda körningar. |
 | Misslyckade körningar | Antal | Antalet misslyckade körningar. |
@@ -78,7 +78,7 @@ Mer information om vilka mått dimensioner som finns i [flerdimensionella mått]
 
 Azure Machine Learning har följande dimensioner kopplade till sina mått.
 
-| Dimension | Description |
+| Dimension | Beskrivning |
 | ---- | ---- |
 | Klusternamn | Namnet på beräknings kluster resursen. Tillgängligt för alla kvot mått. |
 | Namn på virtuell dator familj | Namnet på den VM-serie som används av klustret. Tillgängligt för kvot användning i procent. |
@@ -88,7 +88,7 @@ Azure Machine Learning har följande dimensioner kopplade till sina mått.
 | NodeId | ID för noden som skapades där jobbet körs. Endast tillgängligt för CpuUtilization och GpuUtilization. |
 | RunId | ID för körning/jobb. Endast tillgängligt för CpuUtilization och GpuUtilization. |
 | ComputeType | Den beräknings typ som används för körningen. Endast tillgängligt för slutförda körningar, misslyckade körningar och startade körningar. |
-| PipelineStepType | Den typ av [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) som används i körningen. Endast tillgängligt för slutförda körningar, misslyckade körningar och startade körningar. |
+| PipelineStepType | Den typ av [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) som används i körningen. Endast tillgängligt för slutförda körningar, misslyckade körningar och startade körningar. |
 | PublishedPipelineId | ID för den publicerade pipelinen som används i körningen. Endast tillgängligt för slutförda körningar, misslyckade körningar och startade körningar. |
 | RunType | Typ av körning. Endast tillgängligt för slutförda körningar, misslyckade körningar och startade körningar. |
 
@@ -105,7 +105,7 @@ Giltiga värden för dimensionen RunType är:
 
 I följande tabell visas de åtgärder som är relaterade till Azure Machine Learning som kan skapas i aktivitets loggen.
 
-| Åtgärd | Description |
+| Åtgärd | Beskrivning |
 |:---|:---|
 | Skapar eller uppdaterar en Machine Learning arbets yta | En arbets yta har skapats eller uppdaterats |
 | CheckComputeNameAvailability | Kontrol lera om ett beräknings namn redan används |

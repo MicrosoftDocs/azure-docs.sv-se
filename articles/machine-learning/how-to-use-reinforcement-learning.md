@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c03016d003978b3c56361595bec7c559205574b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562454"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520888"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Förstärka inlärningen (för hands version) med Azure Machine Learning
 
@@ -49,8 +49,8 @@ Kör den här koden i någon av dessa miljöer. Vi rekommenderar att du provar A
  
  - Din egen Jupyter Notebook Server
 
-    - Installera [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
-    - Installera [Azure Machine Learning HUVUDWEBBADRESS SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Installera [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
+    - Installera [Azure Machine Learning HUVUDWEBBADRESS SDK](/python/api/azureml-contrib-reinforcementlearning/): `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Skapa en [konfigurations fil för arbets ytor](how-to-configure-environment.md#workspace).
     - Kör det virtuella nätverket för att öppna nätverks portar som används för distribuerad förstärknings inlärning.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Skapa ett förstärkt inlärnings experiment
 
-Skapa ett [experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) för att spåra din effektiviserade inlärnings körning. I Azure Machine Learning är experiment logiska samlingar av relaterade försök för att organisera körnings loggar, historik, utdata och mycket annat.
+Skapa ett [experiment](/python/api/azureml-core/azureml.core.experiment.experiment) för att spåra din effektiviserade inlärnings körning. I Azure Machine Learning är experiment logiska samlingar av relaterade försök för att organisera körnings loggar, historik, utdata och mycket annat.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -214,7 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Skapa en uppskattad uppskattnings utbildning
-Använd [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) för att skicka ett utbildnings jobb till Azure Machine Learning.
+Använd [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) för att skicka ett utbildnings jobb till Azure Machine Learning.
 
 Azure Machine Learning använder uppskattnings klasser för att kapsla in kör konfigurations information. På så sätt kan du ange hur skript körningen ska konfigureras. 
 
@@ -402,7 +402,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Skicka in en körning
 
-[Kör](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) hanterar körnings historiken för pågående eller fullständiga jobb. 
+[Kör](/python/api/azureml-core/azureml.core.run%28class%29) hanterar körnings historiken för pågående eller fullständiga jobb. 
 
 ```python
 run = exp.submit(config=rl_estimator)

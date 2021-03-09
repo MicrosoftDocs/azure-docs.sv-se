@@ -2,19 +2,19 @@
 title: Distribuera resurser med Azure CLI och mall
 description: Använd Azure Resource Manager och Azure CLI för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall eller en bicep-fil.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741131"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521704"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Distribuera resurser med ARM-mallar och Azure CLI
 
-Den här artikeln förklarar hur du använder Azure CLI med Azure Resource Manager mallar (ARM-mallar) eller bicep-fil för att distribuera dina resurser till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure-lösningar kan du läsa [Översikt över mall-distribution](overview.md) eller [bicep översikt](bicep-overview.md).
+Den här artikeln förklarar hur du använder Azure CLI med Azure Resource Manager mallar (ARM-mallar) eller bicep-filer för att distribuera dina resurser till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure-lösningar kan du läsa [Översikt över mall-distribution](overview.md) eller [bicep översikt](bicep-overview.md).
 
-Distributions kommandona ändrades i Azure CLI-version 2.2.0. Exemplen i den här artikeln kräver Azure CLI version 2.2.0 eller senare.
+Distributions kommandona ändrades i Azure CLI-version 2.2.0. Exemplen i den här artikeln kräver Azure CLI version 2.2.0 eller senare. Om du vill distribuera bicep-filer behöver du [Azure CLI-version 2.20.0 eller senare](/cli/azure/install-azure-cli).
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -85,7 +85,7 @@ Det kan ta några minuter att slutföra distributionen. När det är klart visas
 ## <a name="deploy-remote-template"></a>Distribuera fjärran sluten mall
 
 > [!NOTE]
-> För närvarande stöder inte Azure CLI distribution av Remove bicep-filer.
+> För närvarande stöder inte Azure CLI distribution av bicep-filer. Om du vill distribuera en bicep-fil använder du CLI-bicep för att kompilera bicep-filen till en JSON-mall först.
 
 I stället för att lagra ARM-mallar på den lokala datorn kanske du föredrar att lagra dem på en extern plats. Du kan lagra mallar på en lagringsplats för versionskontroll (till exempel GitHub). Eller så kan du lagra dem i ett Azure Storage-konto för delad åtkomst i din organisation.
 
@@ -148,7 +148,7 @@ För att undvika konflikter med samtidiga distributioner och för att säkerstä
 ## <a name="deploy-template-spec"></a>Specifikation för att distribuera mall
 
 > [!NOTE]
-> För närvarande stöder inte Azure CLI skapandet av mall-specifikationer genom att tillhandahålla bicep-filer. Du kan dock skapa en ARM-mall eller en bicep-fil med resursen [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) för att distribuera en mall-specifikation. Här är ett [exempel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+> För närvarande stöder inte Azure CLI skapandet av mall-specifikationer genom att tillhandahålla bicep-filer. Du kan dock skapa en bicep-fil med resursen [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) för att distribuera en mall-specifikation. Här är ett [exempel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 
 I stället för att distribuera en lokal mall eller en fjärran sluten mall kan du skapa en [mall-specifikation](template-specs.md). Mallen specifikation är en resurs i din Azure-prenumeration som innehåller en ARM-mall. Det gör det enkelt att på ett säkert sätt dela mallen med användare i din organisation. Du använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att ge åtkomst till mallen specifikation. Den här funktionen är för närvarande en för hands version.
 

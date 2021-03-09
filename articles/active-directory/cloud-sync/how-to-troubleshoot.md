@@ -8,16 +8,16 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805537"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517879"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Fel sökning av Cloud Sync
 
-Cloud Sync vidrör många olika saker och har många olika beroenden. Detta breda omfång kan ge upphov till olika problem. Den här artikeln hjälper dig att felsöka problemen. Den introducerar typiska områden som du kan fokusera på, hur du samlar in ytterligare information och de olika tekniker som du kan använda för att spåra problem.
+Cloud Sync har kontakt med många olika saker och har många olika beroenden. Det breda omfånget kan ge upphov till olika problem. Den här artikeln hjälper dig att felsöka problemen. Där introduceras några vanliga områden att fokusera på, hur du samlar in ytterligare information och de olika tekniker du kan använda till att spåra problem.
 
 
 ## <a name="common-troubleshooting-areas"></a>Vanliga fel söknings områden
@@ -120,7 +120,7 @@ Du kan få ett fel meddelande när du installerar Cloud Provisioning-agenten.
 
 Det här problemet orsakas vanligt vis av att agenten inte kan köra PowerShell-registrerings skripten på grund av lokala PowerShell-körnings principer.
 
-Lös problemet genom att ändra körnings principerna för PowerShell på-servern. Du måste ha dator-och användar principer inställda som *odefinierade* eller *RemoteSigned*. Om de är inställda som *obegränsade* visas det här felet. Mer information finns i [körnings principer för PowerShell](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Lös problemet genom att ändra körnings principerna för PowerShell på-servern. Du måste ha dator-och användar principer inställda som *odefinierade* eller *RemoteSigned*. Om de är inställda som *obegränsade* visas det här felet. Mer information finns i [körnings principer för PowerShell](/powershell/module/microsoft.powershell.core/about/about_execution_policies). 
 
 ### <a name="log-files"></a>Loggfiler
 

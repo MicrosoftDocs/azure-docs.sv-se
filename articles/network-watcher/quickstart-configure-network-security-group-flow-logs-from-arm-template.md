@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019728"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521874"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Snabb start: Konfigurera flödes loggar för nätverks säkerhets grupper med en ARM-mall
 
@@ -82,7 +82,7 @@ En fullständig översikt över objekt egenskaperna för NSG Flow-loggar finns i
 
 Om du använder ARM-mallar för första gången kan du läsa mer om ARM-mallar i följande artiklar:
 
-- [Distribuera resurser med ARM-mallar och Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [Distribuera resurser med ARM-mallar och Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [Självstudie: skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Följande exempel är en fullständig mall. Det är också den enklaste versionen av mallen. Exemplet innehåller de lägsta parametrar som skickas för att ställa in NSG flödes loggar. Fler exempel finns i översikts artikeln [Konfigurera NSG flödes loggar från en Azure Resource Manager-mall](network-watcher-nsg-flow-logging-azure-resource-manager.md).
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 Du har två alternativ för att se om distributionen är klar:
 
 - PowerShell-konsolen visas `ProvisioningState` som `Succeeded` .
-- Gå till [Portal sidan NSG Flow logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) för att bekräfta ändringarna. 
+- Gå till [Portal sidan NSG Flow logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) för att bekräfta ändringarna.
 
 Om det uppstod problem med distributionen läser du [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
 

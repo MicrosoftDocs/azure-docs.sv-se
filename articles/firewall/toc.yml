@@ -99,6 +99,8 @@
       href: firewall-workbook.md
     - name: Distribuera och konfigurera brand Väggs Premium
       href: premium-deploy.md
+    - name: Distribuera certifikat för företags certifikat utfärdare för Premium
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: Migrera till Azure Firewall Premium
       href: premium-migrate.md
 - name: Referens

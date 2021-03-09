@@ -1,18 +1,18 @@
 ---
 title: Använda parametrar och uttryck i Azure Data Factory
 description: Den här artikeln innehåller information om uttryck och funktioner som du kan använda för att skapa Data Factory-entiteter.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 9cf37d554081ddd300a3ea4c16e2f167c5b98895
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/08/2020
+ms.openlocfilehash: 4aa8a0790e7f5812e8c6a70eab1718f92a5e00d0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510561"
+ms.locfileid: "102520310"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Använda parametrar, uttryck och funktioner i Azure Data Factory
 
@@ -21,7 +21,11 @@ ms.locfileid: "102510561"
 > * [Aktuell version](how-to-expression-language-functions.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-I den här artikeln fokuserar vi främst på inlärnings begrepp med exempel och självstudier för att utforska möjligheten att skapa parameterstyrda datapipelines i Azure Data Factory. Parameterisering och dynamiska uttryck är sådana som är viktiga för ADF, eftersom det kan spara mycket tid och tillåta en mycket mer flexibel extraherings-, transformerings-, inläsnings-eller extraherings-, belastnings-, transformerings-(ELT) lösning som dramatiskt minskar kostnaden för lösnings underhåll och påskyndar implementeringen av nya funktioner i befintliga pipeliner. Dessa vinster beror på att Parameterisering minimerar mängden hård kodning och ökar antalet återanvändbara objekt och processer i en lösning.
+I det här dokumentet fokuserar vi främst på att lära dig grundläggande koncept med olika exempel för att utforska möjligheten att skapa parameterstyrda data pipelines i Azure Data Factory. Parameterisering och dynamiska uttryck är sådana som är viktiga för ADF eftersom de kan spara mycket tid och tillåta en mycket mer flexibel extraherings-, transformerings-, inläsnings-eller extraherings-, belastnings-, transformerings-eller ELT-lösning () som dramatiskt minskar kostnaden för lösnings underhåll och påskyndar implementeringen av nya funktioner i befintliga pipeliner. Dessa vinster beror på att Parameterisering minimerar mängden hård kodning och ökar antalet återanvändbara objekt och processer i en lösning.
+
+## <a name="azure-data-factory-ui-and-parameters"></a>Användar gränssnitt och parametrar för Azure Data Factory
+
+Om du inte har använt Azure Data Factory-parametern i ADF-användargränssnittet kan du granska [Data Factory-gränssnittet för länkade tjänster med parametrar](https://docs.microsoft.comazure/data-factory/parameterize-linked-services#data-factory-ui)  och [Data Factory-användargränssnitt för metadata driven pipeline med parametrar](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) för visuell förklaring.
 
 ## <a name="parameter-and-expression-concepts"></a>Begrepp för parameter och uttryck 
 
@@ -39,7 +43,7 @@ Exempel:
 "name": "@pipeline().parameters.password"
 ```
 
-Uttryck kan finnas var som helst i ett JSON-sträng värde och resulterar alltid i ett annat JSON-värde. Om ett JSON-värde är ett uttryck extraheras bröd texten i uttrycket genom att ta bort at-tecknet ( \@ ). Om en tecken sträng krävs som börjar med \@ måste den föregås av \@ \@ . I följande exempel visas hur uttryck utvärderas.  
+Uttryck kan finnas var som helst i ett JSON-sträng värde och resulterar alltid i ett annat JSON-värde. Här är *lösen ordet* en pipeline-parameter i uttrycket. Om ett JSON-värde är ett uttryck extraheras bröd texten i uttrycket genom att ta bort at-tecknet ( \@ ). Om en tecken sträng krävs som börjar med \@ måste den föregås av \@ \@ . I följande exempel visas hur uttryck utvärderas.  
   
 |JSON-värde|Resultat|  
 |----------------|------------|  
@@ -301,13 +305,20 @@ Dessa funktioner är användbara i villkor, de kan användas för att utvärdera
 | [ticks](control-flow-expression-language-functions.md#ticks) | Returnera `ticks` egenskap svärdet för en angiven tidstämpel. |
 | [utcNow](control-flow-expression-language-functions.md#utcNow) | Returnera den aktuella tidstämpeln som en sträng. |
 
-## <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Detaljerad kopia av Azure Data Factory-pipeline med parametrar 
+## <a name="detailed-examples-for-practice"></a>Detaljerade exempel på praxis
+
+### <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Detaljerad kopia av Azure Data Factory-pipeline med parametrar 
 
 Den här [Azure Data Factory-parametern för att skicka självstudier](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vägleder dig genom hur du skickar parametrar mellan en pipeline och aktivitet samt mellan aktiviteterna.
 
-## <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Detaljerad data flödes pipeline för mappning med parametrar 
+### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Detaljerad data flödes pipeline för mappning med parametrar 
 
 Följ [mappnings data flödet med parametrar](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) för omfattande exempel på hur du använder parametrar i data flödet.
+
+### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Detaljerade metadata drivna pipeline med parametrar
+
+Följ [de metadata drivna pipelinen med parametrar](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) för att lära dig mer om hur du använder parametrar för att utforma metadata drivna pipeliner. Detta är ett populärt användnings fall för parametrar.
+
 
 ## <a name="next-steps"></a>Nästa steg
 En lista över systemvariabler som du kan använda i uttryck finns i [Systemvariabler](control-flow-system-variables.md).

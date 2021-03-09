@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503189"
+ms.locfileid: "102522214"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Använd en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning
 
@@ -32,12 +32,7 @@ Mer information finns i [distribuera ett program med Azure Resource Manager-mall
 
 * Om du vill använda en mall från en CLI behöver du antingen [Azure PowerShell](/powershell/azure/) eller [Azure CLI](/cli/azure/install-azure-cli).
 
-* Vissa scenarier kräver att du öppnar ett support ärende. De här scenarierna är:
-
-    * __Private Link-aktiverad arbetsyta med kundhanterad nyckel__
-    * __Azure Container Registry för arbetsytan bakom ditt virtuella nätverk__
-
-    Mer information finns i [Hantera och öka kvoter](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Vissa scenarier kräver att du öppnar ett support ärende. Du kan till exempel använda en privat länk aktive rad arbets yta med en kundhanterad nyckel. Mer information finns i [Hantera och öka kvoter](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Begränsningar
 

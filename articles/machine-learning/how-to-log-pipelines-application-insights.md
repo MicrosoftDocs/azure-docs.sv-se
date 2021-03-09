@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592520"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520055"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Samla in loggfiler för Machine Learning-pipeline i Application Insights för aviseringar och fel sökning
 
@@ -38,7 +38,7 @@ Om du loggar in på samma plats får du en historik över undantag och fel medde
 
 Det här avsnittet är en introduktion till hur du använder openräkning från en Azure Machine Learning pipeline. En detaljerad själv studie kurs finns i [Openinventering Azure Monitor exportörer](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Lägg till en PythonScriptStep i din Azure ML-pipeline. Konfigurera din [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) med beroendet av openinventering-ext-Azure. Konfigurera `APPLICATIONINSIGHTS_CONNECTION_STRING` miljövariabeln.
+Lägg till en PythonScriptStep i din Azure ML-pipeline. Konfigurera din [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) med beroendet av openinventering-ext-Azure. Konfigurera `APPLICATIONINSIGHTS_CONNECTION_STRING` miljövariabeln.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies

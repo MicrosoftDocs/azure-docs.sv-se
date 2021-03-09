@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880075"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520548"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Version och spårning Azure Machine Learning data uppsättningar
 
@@ -31,7 +31,7 @@ Scenarier för typiska versioner:
 
 Du behöver följande för den här självstudien:
 
-- [Azure Machine Learning SDK för python installerat](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Det här SDK: t innehåller paketet [azureml-DataSets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) .
+- [Azure Machine Learning SDK för python installerat](/python/api/overview/azure/ml/install). Det här SDK: t innehåller paketet [azureml-DataSets](/python/api/azureml-core/azureml.core.dataset) .
     
 - En [Azure Machine Learning-arbetsyta](concept-workspace.md). Hämta ett befintligt namn genom att köra följande kod eller [skapa en ny arbets yta](how-to-manage-workspace.md).
 
@@ -62,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Hämta en data uppsättning efter namn
 
-Som standard returnerar metoden [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) i `Dataset` klassen den senaste versionen av data uppsättningen som är registrerad i arbets ytan. 
+Som standard returnerar metoden [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) i `Dataset` klassen den senaste versionen av data uppsättningen som är registrerad i arbets ytan. 
 
 Följande kod hämtar version 1 av `titanic_ds` data uppsättningen.
 
@@ -182,7 +182,7 @@ Här följer några scenarier där dina data spåras som en **data uppsättning 
 
 För varje Machine Learning experiment kan du enkelt spåra data uppsättningarna som används som indata med experiment- `Run` objektet.
 
-I följande kod används [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metoden för att spåra vilka indata-datauppsättningar som användes när experimentet kördes:
+I följande kod används [`get_details()`](/python/api/azureml-core/azureml.core.run.run#get-details--) metoden för att spåra vilka indata-datauppsättningar som användes när experimentet kördes:
 
 ```Python
 # get input datasets

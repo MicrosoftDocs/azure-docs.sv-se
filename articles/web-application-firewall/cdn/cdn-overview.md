@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd1f21f150094094a6bf856b04a64a02963f35a8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225160"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521721"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Web Application-brandvägg på Azure Content Delivery Network
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network-from-microsoft"></a>Brand vägg för Azure-webbprogram på Azure Content Delivery Network från Microsoft
 
 Azure Web Application Firewall (WAF) på Azure Content Delivery Network (CDN) från Microsoft tillhandahåller centraliserat skydd för ditt webb innehåll. WAF skyddar dina webb tjänster mot vanliga sårbarheter och sårbarheter. Tjänsten håller din tjänst hög tillgänglig för dina användare och hjälper dig att uppfylla kraven för efterlevnad.
 
@@ -35,7 +35,7 @@ Du kan konfigurera en WAF-princip och associera principen till en eller flera CD
 
 - hanterade regel uppsättningar som är en samling med Azure-hanterade förkonfigurerade regler.
 
-När båda finns bearbetas anpassade regler innan reglerna bearbetas i en hanterad regel uppsättning. En regel består av ett matchnings villkor, en prioritet och en åtgärd. De åtgärds typer som stöds är: *Tillåt*, *blockera*, *Logga*och *omdirigera*. Du kan skapa en helt anpassad princip som uppfyller dina specifika krav för program skydd genom att kombinera de hanterade och anpassade reglerna.
+När båda finns bearbetas anpassade regler innan reglerna bearbetas i en hanterad regel uppsättning. En regel består av ett matchnings villkor, en prioritet och en åtgärd. De åtgärds typer som stöds är: *Tillåt*, *blockera*, *Logga* och *omdirigera*. Du kan skapa en helt anpassad princip som uppfyller dina specifika krav för program skydd genom att kombinera de hanterade och anpassade reglerna.
 
 Regler i en princip bearbetas i en prioritetsordning. Prioritet är ett unikt nummer som definierar ordningen på regler som ska bearbetas. Lägre siffror är högre prioritet och dessa regler utvärderas innan regler med ett större värde. När en regel har matchats tillämpas motsvarande åtgärd som definierats i regeln för begäran. När en sådan matchning bearbetas bearbetas inte regler med lägre prioritet ytterligare.
 

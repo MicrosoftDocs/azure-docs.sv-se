@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692427"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520649"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Skapa, granska och distribuera automatiserade maskin inlärnings modeller med Azure Machine Learning
 
@@ -136,7 +136,7 @@ Annars visas en lista över dina senaste automatiserade maskin inlärnings exper
     ------|------
     Primärt mått| Främsta mått som används för att värdera din modell. [Lär dig mer om modell mått](how-to-configure-auto-train.md#primary-metric).
     Förklara bästa modell | Välj om du vill aktivera eller inaktivera för att visa förklaringar för den rekommenderade bästa modellen. <br> Den här funktionen är för närvarande inte tillgänglig för [vissa algoritmer för Prognosticering](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
-    Blockerad algoritm| Välj algoritmer som du vill undanta från utbildnings jobbet. <br><br> Att tillåta algoritmer är bara tillgängligt för [SDK-experiment](how-to-configure-auto-train.md#supported-models). <br> Se de [modeller som stöds för varje aktivitets typ](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py).
+    Blockerad algoritm| Välj algoritmer som du vill undanta från utbildnings jobbet. <br><br> Att tillåta algoritmer är bara tillgängligt för [SDK-experiment](how-to-configure-auto-train.md#supported-models). <br> Se de [modeller som stöds för varje aktivitets typ](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels).
     Avslutnings kriterium| När något av dessa villkor uppfylls stoppas utbildnings jobbet. <br> *Utbildnings jobb tid (timmar)*: hur lång tid det tar att köra utbildnings jobbet. <br> *Mät* värdes tröskel: minsta mått Poäng för alla pipeliner. Detta säkerställer att om du har ett definierat målmått som du vill nå, ägnar du inte mer tid åt övnings jobbet än nödvändigt.
     Validering| Välj ett av de kors validerings alternativ som ska användas i övnings jobbet. <br> [Läs mer om kors validering](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Prognosticering stöder endast mellanvalidering av n:te vikning.
     Samtidighet| *Max. antal samtidiga iterationer*: maximalt antal pipelines (iterationer) som ska testas i utbildnings jobbet. Jobbet kan inte köra fler än det angivna antalet iterationer. Läs mer om hur automatiserad ML utför [flera underordnade körningar i kluster](how-to-configure-auto-train.md#multiple-child-runs-on-clusters).

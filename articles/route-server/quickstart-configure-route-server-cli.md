@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef41c52fa1b63094d952dc34f81db36f7aeaac95
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695251"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521296"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Snabb start: skapa och konfigurera Route server med Azure CLI 
 
@@ -56,8 +56,8 @@ az account set --subscription "<subscription ID>"
 Innan du kan skapa en Azure Route-server behöver du ett virtuellt nätverk som värd för distributionen. Använd kommandot Följ för att skapa en resurs grupp och ett virtuellt nätverk. Om du redan har ett virtuellt nätverk kan du gå vidare till nästa avsnitt.
 
 ```azurecli-interactive
-az group create -n “RouteServerRG” -l “westus” 
-az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --address-prefix “10.0.0.0/16” 
+az group create -n "RouteServerRG" -l "westus" 
+az network vnet create -g "RouteServerRG" -n "myVirtualNetwork" --address-prefix "10.0.0.0/16" 
 ``` 
 
 ### <a name="add-a-subnet"></a>Lägga till ett undernät 
@@ -65,13 +65,13 @@ az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --addres
 1. Lägg till ett undernät med namnet *RouteServerSubnet* för att distribuera Azure Route-servern till. Det här under nätet är endast ett dedikerat undernät för Azure Route Server. RouteServerSubnet måste vara/27 eller ett kortare prefix (till exempel/26,/25), eller så visas ett fel meddelande när du lägger till Azure Route-servern.
 
     ```azurecli-interactive 
-    az network vnet subnet create -g “RouteServerRG” --vnet-name “myVirtualNetwork” --name “RouteServerSubnet” --address-prefix “10.0.0.0/24”  
+    az network vnet subnet create -g "RouteServerRG" --vnet-name "myVirtualNetwork" --name "RouteServerSubnet" --address-prefix "10.0.0.0/24"  
     ``` 
 
 1. Hämta RouteServerSubnet-ID: t. Om du vill visa resurs-ID för alla undernät i det virtuella nätverket använder du följande kommando: 
 
     ```azurecli-interactive 
-    subnet_id = $(az network vnet subnet show -n “RouteServerSubnet” --vnet-name “myVirtualNetwork” -g “RouteServerRG” --query id -o tsv) 
+    subnet_id = $(az network vnet subnet show -n "RouteServerSubnet" --vnet-name "myVirtualNetwork" -g "RouteServerRG" --query id -o tsv) 
     ``` 
 
 RouteServerSubnet-ID: t ser ut ungefär så här: 
@@ -83,7 +83,7 @@ RouteServerSubnet-ID: t ser ut ungefär så här:
 Skapa en Route-server med det här kommandot: 
 
 ```azurecli-interactive
-az network routeserver create -n “myRouteServer” -g “RouteServerRG” --hosted-subnet $subnet_id  
+az network routeserver create -n "myRouteServer" -g "RouteServerRG" --hosted-subnet $subnet_id  
 ``` 
 
 Platsen måste matcha platsen för det virtuella nätverket. HostedSubnet är RouteServerSubnet-ID: t som du fick i föregående avsnitt. 
@@ -94,7 +94,7 @@ Använd följande kommando för att upprätta peering från väg servern till NV
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA1_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
 
 ``` 
 
@@ -104,7 +104,7 @@ Använd följande kommando för att konfigurera peering med olika NVA eller en a
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA2_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
 ``` 
 
 ## <a name="complete-the-configuration-on-the-nva"></a>Slutför konfigurationen av NVA 
@@ -112,7 +112,7 @@ az network routeserver peering create --routeserver-name “myRouteServer” -g 
 För att slutföra konfigurationen på NVA och aktivera BGP-sessioner behöver du IP och ASN för Azure Route Server. Du kan hämta den här informationen med hjälp av det här kommandot: 
 
 ```azurecli-interactive 
-az network routeserver show -g “RouteServerRG” -n “myRouteServer” 
+az network routeserver show -g "RouteServerRG" -n "myRouteServer" 
 ``` 
 
 Utdata har följande information. 
@@ -143,14 +143,14 @@ Om du har en ExpressRoute-gateway och en Azure VPN-gateway i samma VNet och du v
 1. Använd följande kommando om du vill aktivera Route Exchange mellan Azure Route Server och gateway (-erna):
 
 ```azurecli-interactive 
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic true 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic true 
 
 ``` 
 
 2. Använd följande kommando om du vill inaktivera Route Exchange mellan Azure Route Server och gateway (erna):
 
 ```azurecli-interactive
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic false 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic false 
 ``` 
 
 ## <a name="troubleshooting"></a>Felsökning 
@@ -169,13 +169,13 @@ Om du inte längre behöver Azure Route-servern använder du dessa kommandon fö
 1. Ta bort BGP-peering mellan Azure Route Server och en NVA med det här kommandot:
 
 ```azurecli-interactive
-az network routeserver peering delete --routeserver-name “myRouteServer” -g “RouteServerRG” -n “NVA2_name” 
+az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
 ``` 
 
 2. Ta bort Azure Route server med det här kommandot: 
 
 ```azurecli-interactive 
-az network routeserver delete -n “myRouteServer” -g “RouteServerRG” 
+az network routeserver delete -n "myRouteServer" -g "RouteServerRG" 
 ``` 
 
 ## <a name="next-steps"></a>Nästa steg

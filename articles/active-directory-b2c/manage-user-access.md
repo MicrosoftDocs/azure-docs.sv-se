@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951629"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518065"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Hantera användar åtkomst i Azure Active Directory B2C
 
@@ -83,7 +83,53 @@ Om ett program har samlat in information om DOB eller land/region på andra sät
 - Om en användare är känd som vuxen, uppdaterar du **ageGroup** med värdet **vuxen**.
 - Om en användare är känd som en mindre uppdaterar du **ageGroup** med värdet **moll** och anger **consentProvidedForMinor**, efter behov.
 
-Mer information om att samla in DOB-data finns i [använda ålders hantera i Azure AD B2C](basic-age-gating.md).
+## <a name="minor-calculation-rules"></a>Mindre beräknings regler
+
+Ålders hantera omfattar två ålders värden: den ålder som någon inte längre anses vara mindre och den tid då en mindre måste ha ett överordnat medgivande. I följande tabell visas de ålders regler som används för att definiera en mindre och en mindre som kräver medgivande.
+
+| Land/region | Land/region namn | Liten medgivande ålder | Mindre ålder |
+| -------------- | ------------------- | ----------------- | --------- |
+| Standardvärde | Inga | Inga | 18 |
+| AE | Förenade Arabemiraten | Inget | 21 |
+| AT | Österrike | 14 | 18 |
+| BE | Belgien | 14 | 18 |
+| BG | Bulgarien | 16 | 18 |
+| BH | Bahrain | Inget | 21 |
+| CM | Kamerun | Inget | 21 |
+| CY | Cypern | 16 | 18 |
+| CZ | Tjeckien | 16 | 18 |
+| DE | Tyskland | 16 | 18 |
+| DK | Danmark | 16 | 18 |
+| EE | Estland | 16 | 18 |
+| EG | Egypten | Inget | 21 |
+| ES | Spanien | 13 | 18 |
+| FR | Frankrike | 16 | 18 |
+| GB | Storbritannien | 13 | 18 |
+| GR | Grekland | 16 | 18 |
+| HR | Kroatien | 16 | 18 |
+| HU | Ungern | 16 | 18 |
+| IE | Irland | 13 | 18 |
+| IT | Italien | 16 | 18 |
+| KR | Sydkorea | 14 | 18 |
+| LT | Litauen | 16 | 18 |
+| LU | Luxemburg | 16 | 18 |
+| LV | Lettland | 16 | 18 |
+| MT | Malta | 16 | 18 |
+| NA | Namibia | Inget | 21 |
+| NL | Nederländerna | 16 | 18 |
+| PL | Polen | 13 | 18 |
+| PT | Portugal | 16 | 18 |
+| RO | Rumänien | 16 | 18 |
+| SE | Sverige | 13 | 18 |
+| SG | Singapore | Inget | 21 |
+| SI | Slovenien | 16 | 18 |
+| SK | Slovakien | 16 | 18 |
+| TD | Tchad | Inget | 21 |
+| TH | Thailand | Inget | 20 |
+| TW | Taiwan | Inget | 20 |
+| USA | USA | 13 | 18 |
+
+
 
 ## <a name="capture-terms-of-use-agreement"></a>Sammanställ användnings villkors avtal
 
@@ -175,5 +221,6 @@ Följande är ett exempel på en versions beroende användnings villkor i ett an
 
 ## <a name="next-steps"></a>Nästa steg
 
+- [Aktivera ålders hantera i Azure AD B2C](age-gating.md).
 - Information om hur du tar bort och exporterar användar data finns i [hantera användar data](manage-user-data.md).
 - Ett exempel på en anpassad princip som implementerar en användnings villkors fråga finns i [en B2C IEF anpassad princip, registrera dig och logga in med "användnings villkor"](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

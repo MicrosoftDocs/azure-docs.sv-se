@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: efedb21a1ec1ed53a8c6bfadf337d23a89c04383
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879401"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520184"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publicera och spåra maskin inlärnings pipeliner
 
@@ -38,7 +38,7 @@ Maskin inlärnings pipeliner är återanvändbara arbets flöden för Machine Le
 
 När du har en pipeline igång kan du publicera en pipeline så att den körs med olika indata. För REST-slutpunkten för en redan publicerad pipeline för att acceptera parametrar måste du konfigurera din pipeline så att `PipelineParameter` den använder objekt för argumenten som varierar.
 
-1. Om du vill skapa en pipeline-parameter använder du ett [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?preserve-view=true&view=azure-ml-py) -objekt med ett standardvärde.
+1. Om du vill skapa en pipeline-parameter använder du ett [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter) -objekt med ett standardvärde.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -76,7 +76,7 @@ Alla publicerade pipeliner har en REST-slutpunkt. Med pipeline-slutpunkten kan d
 > [!IMPORTANT]
 > Om du använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att hantera åtkomst till din pipeline, anger du [behörigheterna för ditt pipeline-scenario (utbildning eller poängsättning)](how-to-assign-roles.md#common-scenarios).
 
-Om du vill anropa körningen av föregående pipeline behöver du en Azure Active Directory Authentication Head-token. Att hämta en sådan token beskrivs i [klass](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) referensen AzureCliAuthentication och i [autentiseringen i Azure Machine Learning](https://aka.ms/pl-restep-auth) Notebook.
+Om du vill anropa körningen av föregående pipeline behöver du en Azure Active Directory Authentication Head-token. Att hämta en sådan token beskrivs i [klass](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication) referensen AzureCliAuthentication och i [autentiseringen i Azure Machine Learning](https://aka.ms/pl-restep-auth) Notebook.
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -360,10 +360,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-Du kan aktivera den igen med `p.enable()` . Mer information finns i klass referens för [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) .
+Du kan aktivera den igen med `p.enable()` . Mer information finns i klass referens för [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline) .
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Använd [dessa Jupyter-anteckningsböcker på GitHub](https://aka.ms/aml-pipeline-readme) för att utforska maskin inlärnings pipeliner ytterligare.
-- Se SDK Reference-hjälpen för [azureml-pipeline-Core-](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) paketet och AzureML- [pipeline-steg-](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) paketet.
+- Se SDK Reference-hjälpen för [azureml-pipeline-Core-](/python/api/azureml-pipeline-core/) paketet och AzureML- [pipeline-steg-](/python/api/azureml-pipeline-steps/) paketet.
 - Se tips om [hur du](how-to-debug-pipelines.md) felsöker och felsöker pipeliner.

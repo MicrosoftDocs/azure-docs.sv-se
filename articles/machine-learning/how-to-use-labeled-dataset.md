@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981518"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521058"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Skapa och utforska Azure Machine Learning data uppsättning med etiketter
 
@@ -27,8 +27,8 @@ Vi refererar till Azure Machine Learning data uppsättningar med etiketter som e
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://aka.ms/AMLFree) innan du börjar.
-* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)eller åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
-    * Installera [Azure-contrib-dataset-](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py) paketet
+* [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro)eller åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
+    * Installera [Azure-contrib-dataset-](/python/api/azureml-contrib-dataset/) paketet
 * En Machine Learning-arbetsyta. Se [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 * Åtkomst till ett projekt med Azure Machine Learning data etiketter. Om du inte har ett etikett projekt kan du skapa ett med [de här stegen](how-to-create-labeling-projects.md).
 
@@ -55,7 +55,7 @@ Läs in dina märkta data uppsättningar i en Pandas dataframe-eller Torchvision
 
 ### <a name="pandas-dataframe"></a>Pandas dataframe
 
-Du kan läsa in märkta data uppsättningar i en Pandas-dataframe med [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metoden från- `azureml-contrib-dataset` klassen. Installera-klassen med följande Shell-kommando: 
+Du kan läsa in märkta data uppsättningar i en Pandas-dataframe med [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metoden från- `azureml-contrib-dataset` klassen. Installera-klassen med följande Shell-kommando: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -90,7 +90,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision data uppsättningar
 
-Du kan läsa in märkta data uppsättningar i Torchvision data uppsättning med metoden [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) även från `azureml-contrib-dataset` klassen. Om du vill använda den här metoden måste du ha [PyTorch](https://pytorch.org/) installerat. 
+Du kan läsa in märkta data uppsättningar i Torchvision data uppsättning med metoden [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset#to-torchvision--) även från `azureml-contrib-dataset` klassen. Om du vill använda den här metoden måste du ha [PyTorch](https://pytorch.org/) installerat. 
 
 I följande kod `animal_labels` är data uppsättningen utdata från ett etikett projekt som tidigare sparats på arbets ytan.
 
