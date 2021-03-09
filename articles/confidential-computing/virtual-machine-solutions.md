@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 3e55ae476becca23e6ea23fdc9c5fc7ec72b68ef
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204192"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509157"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösningar på virtuella Azure-datorer
 
@@ -76,7 +76,7 @@ Följ en snabb starts guide för att distribuera en DCsv2-Series virtuell dator 
 
 När du använder virtuella datorer i Azure är det du som ansvarar för att implementera en lösning för hög tillgänglighet och haveri beredskap för att undvika avbrott. 
 
-Azures konfidentiella data behandling har inte stöd för zon-redundans via Tillgänglighetszoner för tillfället. Använd [tillgänglighets uppsättningar](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)för högsta tillgänglighet och redundans för konfidentiell dator användning. På grund av maskin varu begränsningar kan tillgänglighets uppsättningar för konfidentiella data bearbetnings instanser bara ha högst 10 uppdaterings domäner. 
+Azures konfidentiella data behandling har inte stöd för zon-redundans via Tillgänglighetszoner för tillfället. Använd [tillgänglighets uppsättningar](../virtual-machines/availability-set-overview.md)för högsta tillgänglighet och redundans för konfidentiell dator användning. På grund av maskin varu begränsningar kan tillgänglighets uppsättningar för konfidentiella data bearbetnings instanser bara ha högst 10 uppdaterings domäner. 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Distribution med Azure Resource Manager-mall (ARM)
 

@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109157"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510941"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Autentisering via Azure Active Directory
 
@@ -25,13 +25,13 @@ I följande avsnitt använder du antingen Azure Cloud Shells miljön eller Azure
 
 Det första steget är att skapa en anpassad under domän. Om du vill använda en befintlig Cognitive Services-resurs som inte har något anpassat under domän namn följer du anvisningarna i [Cognitive Services anpassade under domäner](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources) för att aktivera anpassad under domän för resursen.
 
-1. Börja med att öppna Azure Cloud Shell. [Välj en prenumeration](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Börja med att öppna Azure Cloud Shell. [Välj en prenumeration](/powershell/module/az.accounts/set-azcontext):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Skapa sedan [en Cognitive Services-resurs](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) med en anpassad under domän. Under domän namnet måste vara globalt unikt och får inte innehålla specialtecken, till exempel: ".", "!", ",".
+2. Skapa sedan [en Cognitive Services-resurs](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount) med en anpassad under domän. Under domän namnet måste vara globalt unikt och får inte innehålla specialtecken, till exempel: ".", "!", ",".
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Nu när du har en anpassad under domän som är kopplad till din resurs, kommer 
 > [!NOTE]
 > Tänk på att det kan ta upp till fem minuter för Azure Role-tilldelningar att spridas.
 
-1. Först ska vi registrera ett [AAD-program](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
+1. Först ska vi registrera ett [AAD-program](/powershell/module/Az.Resources/New-AzADApplication).
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Nu när du har en anpassad under domän som är kopplad till din resurs, kommer 
 
    Du kommer att behöva **ApplicationId** i nästa steg.
 
-2. Därefter måste du [skapa ett huvud namn för tjänsten](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) för AAD-programmet.
+2. Därefter måste du [skapa ett huvud namn för tjänsten](/powershell/module/az.resources/new-azadserviceprincipal) för AAD-programmet.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Nu när du har en anpassad under domän som är kopplad till din resurs, kommer 
    >[!NOTE]
    > Om du registrerar ett program i Azure Portal har det här steget slutförts.
 
-3. Det sista steget är att [tilldela rollen "Cognitive Services användare"](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) till tjänstens huvud namn (omfattas av resursen). Genom att tilldela en roll beviljar du tjänstens huvud namns åtkomst till den här resursen. Du kan ge samma tjänst huvud namn åtkomst till flera resurser i din prenumeration.
+3. Det sista steget är att [tilldela rollen "Cognitive Services användare"](/powershell/module/az.Resources/New-azRoleAssignment) till tjänstens huvud namn (omfattas av resursen). Genom att tilldela en roll beviljar du tjänstens huvud namns åtkomst till den här resursen. Du kan ge samma tjänst huvud namn åtkomst till flera resurser i din prenumeration.
    >[!NOTE]
    > Objekt-ID: t för tjänstens huvud namn används, inte ObjectId för programmet.
    > ACCOUNT_ID är Azure-resurs-ID: t för det Cognitive Services konto som du har skapat. Du hittar Azure Resource ID från "egenskaper" för resursen i Azure Portal.

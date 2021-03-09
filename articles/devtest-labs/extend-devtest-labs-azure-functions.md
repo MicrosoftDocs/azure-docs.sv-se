@@ -3,12 +3,12 @@ title: Utöka Azure DevTest Labs med Azure Functions | Microsoft Docs
 description: Lär dig hur du utökar Azure DevTest Labs med hjälp av Azure Functions.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203682"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501166"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Använda Azure Functions för att utöka DevTest Labs
 Du kan använda Azure Functions för att stödja ytterligare scenarier utöver de som redan stöds av DevTest Labs. Azure Functions kan användas för att utöka de inbyggda funktionerna i tjänsten för att möta dina verksamhets specifika behov. I följande lista finns några möjliga scenarier. Den här artikeln visar hur du implementerar ett av dessa exempel scenarier.
@@ -44,7 +44,7 @@ Det finns ytterligare en åtgärd som kan vidtas för virtuella datorer där Win
 Det här avsnittet innehåller stegvisa instruktioner för hur du konfigurerar de Azure-resurser som krävs för att uppdatera den **interna support** sidan. Den här genom gången innehåller ett exempel på att utöka DevTest Labs. Du kan använda det här mönstret för andra scenarier.
 
 ### <a name="step-1-create-a-service-principal"></a>Steg 1: skapa ett huvud namn för tjänsten 
-Det första steget är att hämta ett huvud namn för tjänsten med behörighet till den prenumeration som innehåller labbet. Tjänstens huvud namn måste använda lösenordsbaserad autentisering. Det kan göras med [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)eller [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Om du redan har ett huvud namn för tjänsten kan du hoppa över det här steget.
+Det första steget är att hämta ett huvud namn för tjänsten med behörighet till den prenumeration som innehåller labbet. Tjänstens huvud namn måste använda lösenordsbaserad autentisering. Det kan göras med [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)eller [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Om du redan har ett huvud namn för tjänsten kan du hoppa över det här steget.
 
 Anteckna **program-ID**, **nyckel** och **klient-ID** för tjänstens huvud namn. Du kommer att behöva dem senare i den här genom gången. 
 

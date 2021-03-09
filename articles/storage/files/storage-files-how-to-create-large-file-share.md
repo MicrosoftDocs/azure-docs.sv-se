@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 118c08c8ede369eecd86fe8e6db24473b67ff306
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214447"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501302"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Aktivera och skapa stora fil resurser
 
@@ -23,7 +23,7 @@ När du aktiverar stora fil resurser på ditt lagrings konto kan fil resurserna 
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 - Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli).
-- Om du tänker använda Azure PowerShell-modulen [installerar du den senaste versionen](/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Om du tänker använda Azure PowerShell-modulen [installerar du den senaste versionen](/powershell/azure/install-az-ps).
 
 ## <a name="restrictions"></a>Begränsningar
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Installera först [den senaste versionen av PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0) så att du kan aktivera stora fil resurser.
+Installera först [den senaste versionen av PowerShell](/powershell/azure/install-az-ps) så att du kan aktivera stora fil resurser.
 
 Om du vill skapa ett lagrings konto med stora fil resurser aktiverade använder du följande kommando. Ersätt `<yourStorageAccountName>` , `<yourResourceGroup>` och `<yourDesiredRegion>` med din information.
 

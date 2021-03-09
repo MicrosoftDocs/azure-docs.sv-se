@@ -4,12 +4,12 @@ description: Det gick inte att skapa kluster på grund av otillräckliga fel dom
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
-ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ed9e98750a469f78855096c3149254cf92c2788f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939042"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501353"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Scenario: det gick inte att skapa kluster på grund av `not sufficient fault domains in region` i Azure HDInsight
 
@@ -23,7 +23,7 @@ Få ett fel meddelande som liknar `not sufficient fault domains in region` när 
 
 En feldomän är en logisk gruppering av underliggande maskinvara i ett Azure-datacenter. Varje feldomän delar en gemensam strömkälla och nätverksbrytare. De virtuella datorer och hanterade diskar som implementerar noderna i ett HDInsight-kluster är fördelade mellan dessa feldomäner. Den här arkitekturen begränsar de potentiella problemen vid fysiska maskinvarufel.
 
-Varje Azure-region har ett visst antal feldomäner. En lista över domäner och antalet fel domäner som de innehåller finns i dokumentationen om [tillgänglighets uppsättningar](../../virtual-machines/manage-availability.md).
+Varje Azure-region har ett visst antal feldomäner. En lista över domäner och antalet fel domäner som de innehåller finns i dokumentationen om [tillgänglighets uppsättningar](../../virtual-machines/availability.md).
 
 I HDInsight måste Kafka-kluster vara etablerade i en region med minst tre fel domäner.
 

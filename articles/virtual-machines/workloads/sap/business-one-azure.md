@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677164"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506896"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One på Azure Virtual Machines
 Det här dokumentet innehåller rikt linjer för att distribuera SAP Business One på Azure Virtual Machines. Dokumentationen ersätter inte installations dokumentationen för Business One för SAP. Dokumentationen bör avse grundläggande planerings-och distributions rikt linjer för Azure-infrastrukturen för att köra företag ett program på.
@@ -102,7 +102,7 @@ SQL Server och SAP HANA för databas typen är tillgängliga. Oberoende av DBMS 
 
 Även om den har framhävts i de aktuella och allmänna databas dokumenten, bör du bekanta dig med:
 
-- [Hantera tillgängligheten för virtuella Windows-datorer i Azure](../../manage-availability.md) och [Hantera tillgängligheten för virtuella Linux-datorer i Azure](../../manage-availability.md)
+- [Hantera tillgängligheten för virtuella Windows-datorer i Azure](../../availability.md) och [Hantera tillgängligheten för virtuella Linux-datorer i Azure](../../availability.md)
 - [SLA för Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 De här dokumenten bör hjälpa dig att bestämma urvalet av lagrings typer och konfiguration med hög tillgänglighet.

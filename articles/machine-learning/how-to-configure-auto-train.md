@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 98260b909514febf80ea6a1a33b0f9e3d2d1446b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431898"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498871"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
 
-I den här guiden får du lära dig hur du definierar olika konfigurations inställningar för dina automatiserade maskin inlärnings experiment med [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Automatisk maskin inlärning väljer en algoritm och sina egenskaper för dig och genererar en modell som är klar för distribution. Det finns flera alternativ som du kan använda för att konfigurera automatiserade maskin inlärnings experiment.
+I den här guiden får du lära dig hur du definierar olika konfigurations inställningar för dina automatiserade maskin inlärnings experiment med [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro). Automatisk maskin inlärning väljer en algoritm och sina egenskaper för dig och genererar en modell som är klar för distribution. Det finns flera alternativ som du kan använda för att konfigurera automatiserade maskin inlärnings experiment.
 
 Om du vill visa exempel på automatiserade Machine Learning-experiment, se [Självstudier: träna en klassificerings modell med automatiserad maskin inlärning](tutorial-auto-train-models.md) eller [träna modeller med automatiserad maskin inlärning i molnet](how-to-auto-train-remote.md).
 
@@ -46,7 +46,7 @@ För den här artikeln behöver du
     Om du vill installera SDK kan du antingen 
     * Skapa en beräknings instans som automatiskt installerar SDK och som är förkonfigurerat för ML-arbetsflöden. Mer information finns i [skapa och hantera en Azure Machine Learning beräknings instans](how-to-create-manage-compute-instance.md) . 
 
-    * [Installera `automl` paketet själv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), som innehåller [standard installationen](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install) av SDK.
+    * [Installera `automl` paketet själv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), som innehåller [standard installationen](/python/api/overview/azure/ml/install#default-install) av SDK.
 
 ## <a name="select-your-experiment-type"></a>Välj experimenttyp
 
@@ -69,7 +69,7 @@ Krav för tränings data i Machine Learning:
 - Data måste vara i tabell form.
 - Värdet som ska förutsäga, mål kolumnen, måste finnas i datan.
 
-**För fjärrexperiment** måste inlärnings data vara tillgängliga från fjärrdatorn. AutoML tar bara emot [TabularDatasets i Azure Machine Learning](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) när du arbetar från en fjärransluten dator. 
+**För fjärrexperiment** måste inlärnings data vara tillgängliga från fjärrdatorn. AutoML tar bara emot [TabularDatasets i Azure Machine Learning](/python/api/azureml-core/azureml.data.tabulardataset) när du arbetar från en fjärransluten dator. 
 
 Azure Machine Learning-datamängder exponerar funktioner för att:
 
@@ -257,7 +257,7 @@ I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt
 
 När du konfigurerar experiment i `AutoMLConfig` objektet kan du aktivera/inaktivera inställningen `featurization` . I följande tabell visas de accepterade inställningarna för funktionalisering i [AutoMLConfig-objektet](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Funktionalisering-konfiguration | Description |
+|Funktionalisering-konfiguration | Beskrivning |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att [data guardrails och funktionalisering-steg](how-to-configure-auto-features.md#featurization) utförs automatiskt när en del av förbearbetningen. **Standardinställning**.|
 |`"featurization": 'off'`| Anger att funktionalisering-steget inte ska göras automatiskt.|

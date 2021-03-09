@@ -3,12 +3,12 @@ title: Skapa en virtuell dator i DevTest Labs med Azure PowerShell
 description: Lär dig hur du använder Azure DevTest Labs för att skapa och hantera virtuella datorer med Azure PowerShell.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85484119"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499262"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Skapa en virtuell dator med DevTest Labs med Azure PowerShell
 Den här artikeln visar hur du skapar en virtuell dator i Azure DevTest Labs med hjälp av Azure PowerShell. Du kan använda PowerShell-skript för att automatisera skapandet av virtuella datorer i ett labb i Azure DevTest Labs. 
@@ -17,10 +17,10 @@ Den här artikeln visar hur du skapar en virtuell dator i Azure DevTest Labs med
 Innan du börjar:
 
 - [Skapa ett labb](devtest-lab-create-lab.md) om du inte vill använda ett befintligt labb för att testa skriptet eller kommandona i den här artikeln. 
-- [Installera Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) eller Använd Azure Cloud Shell som är integrerat i Azure Portal. 
+- [Installera Azure PowerShell](/powershell/azure/install-az-ps) eller Använd Azure Cloud Shell som är integrerat i Azure Portal. 
 
 ## <a name="powershell-script"></a>PowerShell-skript
-Exempel skriptet i det här avsnittet använder cmdleten [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) .  Denna cmdlet tar Labbets resurs-ID, namnet på den åtgärd som ska utföras ( `createEnvironment` ) och de parametrar som krävs för att utföra åtgärden. Parametrarna finns i en hash-tabell som innehåller alla egenskaper för den virtuella datorns beskrivning. 
+Exempel skriptet i det här avsnittet använder cmdleten [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) .  Denna cmdlet tar Labbets resurs-ID, namnet på den åtgärd som ska utföras ( `createEnvironment` ) och de parametrar som krävs för att utföra åtgärden. Parametrarna finns i en hash-tabell som innehåller alla egenskaper för den virtuella datorns beskrivning. 
 
 ```powershell
 [CmdletBinding()]

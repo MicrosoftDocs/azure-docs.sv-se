@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ea67fa4ae925e04415fe358175c1dea3b0f03e3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428804"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501580"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -104,7 +104,7 @@ För åtkomst till lagring som skyddas med brand väggen via användar identitet
 
 Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och lägga till ett undantag för Synapse-arbetsytan.
 
-1. Öppna PowerShell eller [Installera PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
+1. Öppna PowerShell eller [Installera PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)
 2. Installera modulen AZ. Storage 3.4.0 och AZ. Synapse 0.7.0: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.4.0

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183632"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499704"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Distribuera en maskin inlärnings modell till Azure Functions med Azure cache för Redis 
 
@@ -128,7 +128,7 @@ Mer information om Entry-skript finns i [definiera bedömnings kod.](../machine-
 Dessa entiteter kapslas in i en konfiguration för en __härledning__. Inferenskonfigurationen refererar till startskriptet och andra beroenden.
 
 > [!IMPORTANT]
-> När du skapar en konfigurations konfiguration för användning med Azure Functions måste du använda ett [miljö](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) objekt. Observera att om du definierar en anpassad miljö måste du lägga till azureml-defaults med version >= 1.0.45 som ett pip-beroende. Det här paketet innehåller de funktioner som krävs för att vara värd för modellen som en webb tjänst. I följande exempel visas hur du skapar ett miljö objekt och använder det med en konfigurations konfiguration:
+> När du skapar en konfigurations konfiguration för användning med Azure Functions måste du använda ett [miljö](/python/api/azureml-core/azureml.core.environment%28class%29) objekt. Observera att om du definierar en anpassad miljö måste du lägga till azureml-defaults med version >= 1.0.45 som ett pip-beroende. Det här paketet innehåller de funktioner som krävs för att vara värd för modellen som en webb tjänst. I följande exempel visas hur du skapar ett miljö objekt och använder det med en konfigurations konfiguration:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -161,7 +161,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>Skapa avbildningen
 
-Om du vill skapa Docker-avbildningen som distribueras till Azure Functions använder du [azureml. contrib. functions. Package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) eller funktionen Package för den utlösare som du är intresse rad av. Följande kodfragment visar hur du skapar ett nytt paket med en HTTP-utlösare från modellen och konfigurationen för konfigurations härledning:
+Om du vill skapa Docker-avbildningen som distribueras till Azure Functions använder du [azureml. contrib. functions. Package](/python/api/azureml-contrib-functions/azureml.contrib.functions) eller funktionen Package för den utlösare som du är intresse rad av. Följande kodfragment visar hur du skapar ett nytt paket med en HTTP-utlösare från modellen och konfigurationen för konfigurations härledning:
 
 > [!NOTE]
 > Kodfragmentet förutsätter att `model` innehåller en registrerad modell och att den `inference_config` innehåller konfigurationen för härlednings miljön. Mer information finns i [Distribuera modeller med Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md).
@@ -317,5 +317,5 @@ Efter en liten stund tas resursgruppen och de resurser som finns i den bort.
 
 * Läs mer om [Azure cache för Redis](./cache-overview.md)
 * Lär dig hur du konfigurerar din Function-app [i functions-dokumentationen.](../azure-functions/functions-create-function-linux-custom-image.md)
-* [API-referens](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* [API-referens](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
 * Skapa en [python-app som använder Azure cache för Redis](./cache-python-get-started.md)

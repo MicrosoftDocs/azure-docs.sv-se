@@ -1,22 +1,22 @@
 ---
-title: 'PowerShell: Använd närhets placerings grupper'
+title: Skapa en närhets placerings grupp med Azure PowerShell
 description: Lär dig mer om att skapa och använda närhets placerings grupper med hjälp av Azure PowerShell.
 services: virtual-machines
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 742ce6e9937fbe0f67e61b7b96b1289030e7e148
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 26921b3d102032cb36f47c3be7a79c2b596a1d0c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677207"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503682"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Distribuera virtuella datorer till närhets placerings grupper med hjälp av PowerShell
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Distribuera virtuella datorer till närhets placerings grupper med hjälp av Azure PowerShell
 
 
 För att få virtuella datorer så nära som möjligt, vilket ger lägsta möjliga fördröjning, bör du distribuera dem i en [närhets placerings grupp](../co-location.md#proximity-placement-groups).

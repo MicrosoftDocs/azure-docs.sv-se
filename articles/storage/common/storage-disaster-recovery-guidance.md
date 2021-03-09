@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737655"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506709"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Haveriberedskap och lagringskontoredundans
 
@@ -132,7 +132,7 @@ Eftersom Azure Storage Resource Provider inte växlar över, returnerar egenskap
 
 ### <a name="azure-virtual-machines"></a>Virtuella Azure-datorer
 
-Virtuella Azure-datorer (VM) växlar inte över som en del av en redundansväxling av kontot. Om den primära regionen blir otillgänglig och du växlar över till den sekundära regionen måste du återskapa alla virtuella datorer efter redundansväxlingen. Det finns också en potentiell data förlust som är associerad med kontots redundans. Microsoft rekommenderar följande rikt linjer för [hög tillgänglighet](../../virtual-machines/manage-availability.md) och [katastrof återställning](../../virtual-machines/backup-recovery.md) som är särskilt tillgängliga för virtuella datorer i Azure.
+Virtuella Azure-datorer (VM) växlar inte över som en del av en redundansväxling av kontot. Om den primära regionen blir otillgänglig och du växlar över till den sekundära regionen måste du återskapa alla virtuella datorer efter redundansväxlingen. Det finns också en potentiell data förlust som är associerad med kontots redundans. Microsoft rekommenderar följande rikt linjer för [hög tillgänglighet](../../virtual-machines/availability.md) och [katastrof återställning](../../virtual-machines/backup-recovery.md) som är särskilt tillgängliga för virtuella datorer i Azure.
 
 ### <a name="azure-unmanaged-disks"></a>Azure-ohanterade diskar
 

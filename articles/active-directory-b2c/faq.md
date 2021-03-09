@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660292"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498837"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: vanliga frågor och svar
 
@@ -82,7 +82,10 @@ E-postsignaturen innehåller Azure AD B2C klientens namn som du angav när du f�
 1. Ändra fältet **namn** .
 1. Klicka på **Spara** längst upp på sidan.
 
-Det finns för närvarande inget sätt att ändra fältet från: i e-postmeddelandet.
+För närvarande kan du inte ändra fältet från: i e-postmeddelandet.
+
+> [!TIP]
+> Med Azure AD B2C [anpassad princip](custom-policy-overview.md)kan du anpassa e-Azure AD B2C skickar till användare, inklusive fältet från: i e-postmeddelandet. Den anpassade e-postverifieringen kräver att en e-postleverantör från tredje part används, till exempel [MailJet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md)eller [Spark post](https://sparkpost.com).
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hur kan jag migrera mina befintliga användar namn, lösen ord och profiler från databasen till Azure AD B2C?
 

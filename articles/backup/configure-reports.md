@@ -3,12 +3,12 @@ title: Konfigurera Azure Backup-rapporter
 description: Konfigurera och Visa rapporter för Azure Backup med Log Analytics och Azure-arbetsböcker
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710625"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509377"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurera Azure Backup-rapporter
 
@@ -22,8 +22,8 @@ Idag tillhandahåller Azure Backup en rapporterings lösning som använder [Azur
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-- Säkerhets kopierings rapporter stöds för virtuella Azure-datorer, SQL på virtuella Azure-datorer, SAP HANA i virtuella Azure-datorer, Microsoft Azure Recovery Services MARS-agent (MARS), Microsoft Azure Backup Server (MABS) och System Center-Data Protection Manager (DPM). För säkerhets kopiering av Azure-filresurs visas data för alla poster som skapats den 1 juni 2020.
-- För säkerhets kopiering av Azure-filresurs visas inte data på skyddade instanser för närvarande i rapporterna (Standardvärdet är noll för alla säkerhets kopierings objekt).
+- Säkerhets kopierings rapporter stöds för virtuella Azure-datorer, SQL på virtuella Azure-datorer, SAP HANA i virtuella Azure-datorer, Microsoft Azure Recovery Services MARS-agent (MARS), Microsoft Azure Backup Server (MABS) och System Center-Data Protection Manager (DPM). För säkerhets kopiering av Azure-filresurs visas data för poster som skapats den 1 juni 2020.
+- För säkerhets kopiering av Azure-filresurs visas data på skyddade instanser för poster som skapats efter feb 1st 2021 (Standardvärdet är noll för äldre poster).
 - För DPM-arbetsbelastningar stöds säkerhets kopierings rapporter för DPM version 5.1.363.0 och senare och agent version 2.0.9127.0 och senare.
 - För MABS-arbetsbelastningar stöds backup-rapporter för MABS version 13.0.415.0 och senare samt agent version 2.0.9170.0 och senare.
 - Säkerhets kopierings rapporter kan visas i alla säkerhets kopierings objekt, valv, prenumerationer och regioner så länge som deras data skickas till en Log Analytics-arbetsyta som användaren har åtkomst till. Om du vill visa rapporter för en uppsättning valv behöver du bara ha Läs behörighet till den Log Analytics arbets ytan som valven skickar data till. Du behöver inte ha åtkomst till enskilda valv.
@@ -142,17 +142,31 @@ Filter för **säkerhets kopierings hantering** överst på fliken ska ha objekt
 
 ###### <a name="policy-adherence"></a>Princip inställning
 
-På den här fliken kan du identifiera om alla säkerhets kopierings instanser har minst en genomförd säkerhets kopiering varje dag. Du kan visa princip efter tids period eller säkerhets kopierings instans.
+På den här fliken kan du identifiera om alla säkerhets kopierings instanser har minst en genomförd säkerhets kopiering varje dag. För objekt med princip för veckovis säkerhets kopiering kan du använda den här fliken för att avgöra om alla säkerhets kopierings instanser har minst en lyckad säkerhets kopiering per vecka.
+
+Det finns två typer av princip för att visa tillgängliga vyer:
+
+* **Princip efter tids period**: om du använder den här vyn kan du identifiera hur många objekt som har minst en genomförd säkerhets kopiering under en viss dag och hur många som inte hade haft en lyckad säkerhets kopiering under den dagen. Du kan klicka på en rad om du vill se information om alla säkerhets kopierings jobb som har utlösts på den valda dagen. Observera att om du ökar tidsintervallet till ett större värde, till exempel de senaste 60 dagarna, återges rutnätet i veckovis vy och visar antalet objekt som har minst en genomförd säkerhets kopiering på varje dag under den givna veckan. På samma sätt finns det en månatlig vy för större tidsintervall.
+
+När det gäller objekt som har säkerhetskopierats varje vecka hjälper detta rutnät dig att identifiera alla objekt som har minst en genomförd säkerhets kopiering under den aktuella veckan. För ett större tidsintervall, till exempel de senaste 120 dagarna, återges rutnätet i månatlig vy och visar antalet objekt som har minst en genomförd säkerhets kopiering varje vecka under den månaden. Se [konventioner som används i Backup-rapporter](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) för mer information om dagliga, veckovis och månatliga vyer.
+
+![Princip efter tids period](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
+
+* **Princip genom gång av säkerhets kopierings instans**: med hjälp av den här vyn kan du välja att visa information om en säkerhets kopierings instans. En cell som är grön anger att säkerhets kopierings instansen hade minst en slutförd säkerhets kopia på den aktuella dagen. En cell som är röd anger att säkerhets kopierings instansen inte har ens en genomförd säkerhets kopiering på den aktuella dagen. Varje dag, veckovis och månads agg regeringar följer samma beteende som vyn princip efter tids period. Du kan klicka på valfri rad om du vill visa alla säkerhets kopierings jobb på den angivna säkerhets kopierings instansen i det valda tidsintervallet.
+
+![Policy genom gång av säkerhets kopierings instans](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
 
 ###### <a name="email-azure-backup-reports"></a>E-Azure Backup rapporter
 
 Med hjälp av funktionen **e-postrapport** som är tillgänglig i säkerhets kopierings rapporter kan du skapa automatiska uppgifter som tar emot regelbundna rapporter via e-post. Den här funktionen fungerar genom att distribuera en Logic-app i din Azure-miljö som frågar data från dina valda Log Analytics (LA)-arbets ytor, baserat på de indata som du anger.
 
-När du har skapat Logic-appen måste du auktorisera anslutningar till Azure Monitor loggar och Office 365. Det gör du genom att gå till **Logic Apps** i Azure Portal och söka efter namnet på den uppgift som du har skapat. Om du väljer meny alternativet **API-anslutningar** öppnas listan över API-anslutningar som du behöver auktorisera.
+När du har skapat Logic-appen måste du auktorisera anslutningar till Azure Monitor loggar och Office 365. Det gör du genom att gå till **Logic Apps** i Azure Portal och söka efter namnet på den uppgift som du har skapat. Om du väljer meny alternativet **API-anslutningar** öppnas listan över API-anslutningar som du behöver auktorisera. [Läs mer om hur du konfigurerar e-post och felsöker problem](backup-reports-email.md).
 
 ###### <a name="customize-azure-backup-reports"></a>Anpassa Azure Backup rapporter
 
-I Backup-rapporter används funktioner på Azure Monitor loggar. Dessa funktioner fungerar på data i rå Azure Backup tabeller i LA och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor.
+I Backup-rapporter används [system funktioner på Azure Monitor loggar](backup-reports-system-functions.md). Dessa funktioner fungerar på data i rå Azure Backup tabeller i LA och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor. 
+
+Om du vill skapa egna rapporterings arbets böcker med hjälp av säkerhets kopierings rapporter som en bas, kan du gå till säkerhets kopierings rapporter, klicka på **Redigera** överst i rapporten och Visa/redigera frågorna som används i rapporterna. Läs mer om hur du skapar anpassade rapporter i [dokumentationen för Azure-arbetsböcker](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) . 
 
 ## <a name="export-to-excel"></a>Exportera till Excel
 
@@ -175,6 +189,8 @@ Om du använder [Azure-Lighthouse](../lighthouse/index.yml) med delegerad åtkom
 - Rapporten visar information om jobb (förutom logg jobb) som har *utlösts* i det valda tidsintervallet.
 - Värdena som visas för **moln lagring** och **skyddade instanser** är i *slutet* av det valda tidsintervallet.
 - De säkerhets kopierings objekt som visas i rapporterna är de objekt som finns i *slutet* av det valda tidsintervallet. Säkerhets kopierings objekt som har tagits bort i mitten av det valda tidsintervallet visas inte. Samma konvention gäller även för säkerhets kopierings principer.
+- Om det valda tidsintervallet sträcker sig över en period på 30 dagar på mindre, återges diagram i dagsvyn, där det finns en data punkt för varje dag. Om tidsintervallet omfattar en period som är längre än 30 dagar och mindre än (eller lika med) 90 dagar, återges diagram i vyn veckovis. För större tidsintervall återges diagram i månatlig vy. Att aggregera data varje vecka eller månad bidrar till bättre prestanda för frågor och enklare läsbarhet för data i diagram.
+- Rikt linjerna för policyn följer också en liknande agg regerings logik enligt beskrivningen ovan. Det finns dock några mindre skillnader. Den första skillnaden är att för objekt med en veckovis säkerhets kopierings policy finns det ingen daglig vy (endast veckovis och månatlig vy är tillgängliga). I rutnätet för objekt med en princip för veckovis säkerhets kopiering betraktas en månad som en 4-veckors period (28 dagar) och inte 30 dagar, för att eliminera delvis veckor från överväganden.
 
 ## <a name="query-load-times"></a>Fråga om inläsnings tider
 

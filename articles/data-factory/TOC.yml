@@ -586,6 +586,8 @@
           href: control-flow-system-variables.md
         - name: Parametrisera mappningsdataflöden
           href: parameters-data-flow.md
+        - name: Parameterisera
+          href: how-to-expression-language-functions.md
     - name: Säkerhet
       items:
         - name: Säkerhetsöverväganden vid dataflytt

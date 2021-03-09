@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 511544f81f6de887014545e3f4bbc7a4172fc91e
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f7761cf011a3a678bb7609e1063ac6ebec90d395
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488757"
+ms.locfileid: "102499194"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Importera HSM-skyddade nycklar för Key Vault (hjälp programmet nCipher)
 
@@ -63,7 +63,7 @@ I följande tabell finns en lista över förutsättningar för att ta med din eg
 | En prenumeration på Azure |Om du vill skapa en Azure Key Vault behöver du en Azure-prenumeration: [Registrera dig för en kostnads fri utvärderings version](https://azure.microsoft.com/pricing/free-trial/) |
 | Tjänst nivån Azure Key Vault Premium som stöder HSM-skyddade nycklar |Mer information om tjänst nivåer och funktioner för Azure Key Vault finns på webbplatsen för [Azure Key Vault prissättning](https://azure.microsoft.com/pricing/details/key-vault/) . |
 | Hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM: er, SmartCards och support Software |Du måste ha åtkomst till en hjälp programmet nCipher för maskin vara och grundläggande operativa kunskaper om hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM: er. Se [Hjälp programmet nCipher nshield maskinvarusäkerhetsmodul Hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) i listan över kompatibla modeller eller Köp en HSM om du inte har någon. |
-| Följande maskin-och program vara:<ol><li>En offline x64-arbets station med minst Windows-operativsystem av Windows 7-och hjälp programmet nCipher nshield maskinvarusäkerhetsmodul-programvara som är minst version 11,50.<br/><br/>Om den här arbets stationen kör Windows 7 måste du [installera Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>En arbets station som är ansluten till Internet och som har minst Windows-operativsystemet Windows 7 och [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **lägsta version 1.1.0** installerad.</li><li>En USB-enhet eller annan bärbar lagrings enhet som har minst 16 MB ledigt utrymme.</li></ol> |Av säkerhetsskäl rekommenderar vi att den första arbetsstationen inte är ansluten till ett nätverk. Den här rekommendationen tillämpas dock inte program mässigt.<br/><br/>I instruktionerna som följer kallas den frånkopplade arbets stationen.</p></blockquote><br/>Om din klient nyckel är för ett produktions nätverk, rekommenderar vi dessutom att du använder en andra, separat arbets station för att ladda ned verktygs uppsättningen och laddar upp klient nyckeln. För testsyften kan du emellertid använda samma arbetsstation som den första.<br/><br/>I anvisningarna som följer kallas den här andra arbets stationen som den Internet-anslutna arbets stationen.</p></blockquote><br/> |
+| Följande maskin-och program vara:<ol><li>En offline x64-arbets station med minst Windows-operativsystem av Windows 7-och hjälp programmet nCipher nshield maskinvarusäkerhetsmodul-programvara som är minst version 11,50.<br/><br/>Om den här arbets stationen kör Windows 7 måste du [installera Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>En arbets station som är ansluten till Internet och som har minst Windows-operativsystemet Windows 7 och [Azure PowerShell](/powershell/azure/) **lägsta version 1.1.0** installerad.</li><li>En USB-enhet eller annan bärbar lagrings enhet som har minst 16 MB ledigt utrymme.</li></ol> |Av säkerhetsskäl rekommenderar vi att den första arbetsstationen inte är ansluten till ett nätverk. Den här rekommendationen tillämpas dock inte program mässigt.<br/><br/>I instruktionerna som följer kallas den frånkopplade arbets stationen.</p></blockquote><br/>Om din klient nyckel är för ett produktions nätverk, rekommenderar vi dessutom att du använder en andra, separat arbets station för att ladda ned verktygs uppsättningen och laddar upp klient nyckeln. För testsyften kan du emellertid använda samma arbetsstation som den första.<br/><br/>I anvisningarna som följer kallas den här andra arbets stationen som den Internet-anslutna arbets stationen.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generera och överför din nyckel till Azure Key Vault HSM
 

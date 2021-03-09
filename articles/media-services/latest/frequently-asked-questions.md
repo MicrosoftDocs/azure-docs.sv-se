@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897568"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505774"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Vanliga frågor och svar om Media Services v3
 
@@ -25,6 +25,14 @@ ms.locfileid: "98897568"
 Den här artikeln innehåller svar på vanliga frågor om Azure Media Services v3.
 
 ## <a name="general"></a>Allmänt
+
+### <a name="does-media-services-store-any-customer-data-outside-of-the-service-region"></a>Lagrar Media Services alla kund uppgifter utanför tjänst regionen?
+
+- Kunder ansluter sina egna lagrings konton till sina Azure Media Services-konton.  Alla till gångs data lagras i dessa associerade lagrings konton och kunden styr platsen och replikeringens typ av lagringen.
+- Ytterligare data som är associerade med Media Services konto (inklusive innehålls krypterings nycklar, verifierings nycklar för token, JobInputHttp-URL: er och andra entitets-metadata) lagras i Microsofts ägda lagring inom den region som valts för det Media Services kontot.
+    - På grund av [placering-krav för data](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) i brasilien och Sydostasien, lagras ytterligare konto data i zoner som är redundanta och finns i en enda region. För Sydostasien lagras alla ytterligare konto data i Singapore och för södra Brasilien lagras data i Brasilien.
+    - I andra regioner än Brasilien, södra och Sydostasien, kan ytterligare konto data också lagras i Microsoft-ägda lagrings utrymmen i den [kopplade regionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+- Azure Media Services är en regional tjänst och ger inte [hög tillgänglighet](media-services-high-availability-encoding.md) eller datareplikering. Kunder som behöver dessa funktioner rekommenderas att bygga en lösning med hjälp av Media Services konton i flera regioner.  Ett exempel som visar hur du skapar en lösning för hög tillgänglighet med Media Services video på begäran finns i en guide.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Vilka Azure Portal begränsningar för Media Services v3?
 

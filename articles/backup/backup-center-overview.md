@@ -3,12 +3,12 @@ title: Översikt över säkerhets kopierings Center
 description: Den här artikeln innehåller en översikt över backup Center för Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: fee7bf41d0c72238231d9c4aba52a26cac9fb960
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b42bb2719d03108212f62428dc97ed814899c63c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100006"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506062"
 ---
 # <a name="overview-of-backup-center"></a>Översikt över säkerhets kopierings Center
 

@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ab85067184ebe5b34097a3c81aa521d509ae4b9a
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d9bf1b54f1bfeebacbb406a50c8496817857204c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744861"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507576"
 ---
 # <a name="azure-cloud-services-extended-support-definition-schema-csdef-file"></a>Definitions schema för Azure Cloud Services (utökad support) (csdef-fil)
 
@@ -68,7 +68,7 @@ I följande tabell beskrivs attributen för- `ServiceDefinition` elementet.
 | name                    |Krävs. Namnet på tjänsten. Namnet måste vara unikt inom tjänst kontot.|
 | topologyChangeDiscovery | Valfritt. Anger typ av meddelande om ändring av topologin. Möjliga värden:<br /><br /> -   `Blast` – Skickar uppdateringen så snart som möjligt till alla roll instanser. Om du väljer alternativet ska rollen kunna hantera topologins uppdatering utan att starta om.<br />-   `UpgradeDomainWalk` – Skickar uppdateringen till varje roll instans på ett sekventiellt sätt efter att uppdateringen har godkänts av föregående instans.|
 | Schema           | Valfritt. Anger versionen för tjänst definitions schema. Med schema versionen kan Visual Studio välja rätt SDK-verktyg som ska användas för schema validering om fler än en version av SDK: n installeras sida vid sida.|
-| upgradeDomainCount      | Valfritt. Anger det antal uppgraderings domäner över vilka roller i den här tjänsten allokeras. Roll instanser tilldelas en uppgraderings domän när tjänsten distribueras. Mer information finns i [Uppdatera en moln tjänst roll eller distribution](sample-update-cloud-service.md) och [Hantera tillgängligheten för virtuella datorer](../virtual-machines/manage-availability.md) du kan ange upp till 20 uppgraderings domäner. Om inget värde anges är standard antalet uppgraderings domäner 5.|
+| upgradeDomainCount      | Valfritt. Anger det antal uppgraderings domäner över vilka roller i den här tjänsten allokeras. Roll instanser tilldelas en uppgraderings domän när tjänsten distribueras. Mer information finns i [Uppdatera en moln tjänst roll eller distribution](sample-update-cloud-service.md) och [Hantera tillgängligheten för virtuella datorer](../virtual-machines/availability.md) du kan ange upp till 20 uppgraderings domäner. Om inget värde anges är standard antalet uppgraderings domäner 5.|
 
 ## <a name="see-also"></a>Se även
 

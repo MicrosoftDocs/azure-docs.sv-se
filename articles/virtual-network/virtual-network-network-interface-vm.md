@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43d3da49688a7daeb3ea4e0c1c3dba505dcd3b59
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216979"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508341"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Lägga till nätverksgränssnitt till eller ta bort nätverksgränssnitt från virtuella datorer
 
@@ -143,7 +143,7 @@ Information om inställningar för nätverks gränssnitt och hur du ändrar dem 
 
 - Du kan styra vilka nätverks gränssnitt du skickar utgående trafik till. En virtuell dator skickar som standard all utgående trafik till IP-adressen som har tilldelats den primära IP-konfigurationen för det primära nätverks gränssnittet.
 
-- Tidigare behövde alla virtuella datorer i samma tillgänglighets uppsättning ha ett enskilt eller flera nätverks gränssnitt. Virtuella datorer med valfritt antal nätverks gränssnitt kan nu finnas i samma tillgänglighets uppsättning, upp till det antal som stöds av storleken på den virtuella datorn. Du kan bara lägga till en virtuell dator i en tillgänglighets uppsättning när den skapas. Mer information om tillgänglighets uppsättningar finns i [Hantera tillgängligheten för virtuella datorer i Azure](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- Tidigare behövde alla virtuella datorer i samma tillgänglighets uppsättning ha ett enskilt eller flera nätverks gränssnitt. Virtuella datorer med valfritt antal nätverks gränssnitt kan nu finnas i samma tillgänglighets uppsättning, upp till det antal som stöds av storleken på den virtuella datorn. Du kan bara lägga till en virtuell dator i en tillgänglighets uppsättning när den skapas. Mer information om tillgänglighets uppsättningar finns i [Hantera tillgängligheten för virtuella datorer i Azure](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 - Du kan ansluta nätverks gränssnitt i samma virtuella dator till olika undernät i ett virtuellt nätverk. Nätverks gränssnitten måste dock vara anslutna till samma virtuella nätverk.
 

@@ -280,28 +280,26 @@
           href: ./linux/spot-template.md
         - name: Felkoder
           href: error-codes-spot.md
-    - name: Inköpsalternativ
+    - name: Azure Hybrid-förmån
       items:
-        - name: Azure Hybrid-förmån
+        - name: Linux
+          href: ./linux/azure-hybrid-benefit-linux.md
+        - name: Windows
           items:
-            - name: Linux
-              href: ./linux/azure-hybrid-benefit-linux.md
-            - name: Windows
-              items:
-                - name: Använda licens för Azure Hybrid-förmånen
-                  href: ./windows/hybrid-use-benefit-licensing.md
-                - name: Använda värdrättigheter för flera innehavare för Windows 10
-                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-        - name: Reserverade instanser
-          items:
-            - name: Förskottsbetala för virtuella datorer
-              href: ./prepay-reserved-vm-instances.md
-            - name: Förskottsbetala för Dedicated Host
-              href: prepay-dedicated-hosts-reserved-instances.md
-            - name: Vad är Azure-reservationer?
-              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
-            - name: Flexibilitet för VM-instansstorlek
-              href: reserved-vm-instance-size-flexibility.md
+            - name: Använda licens för Azure Hybrid-förmånen
+              href: ./windows/hybrid-use-benefit-licensing.md
+            - name: Använda värdrättigheter för flera innehavare för Windows 10
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+    - name: Reserverade instanser
+      items:
+        - name: Förskottsbetala för virtuella datorer
+          href: ./prepay-reserved-vm-instances.md
+        - name: Förskottsbetala för Dedicated Host
+          href: prepay-dedicated-hosts-reserved-instances.md
+        - name: Vad är Azure-reservationer?
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Flexibilitet för VM-instansstorlek
+          href: reserved-vm-instance-size-flexibility.md
     - name: Skapa virtuella Linux-datorer
       items:
         - name: Godkända distributioner
@@ -783,41 +781,52 @@
           href: ./windows/build-image-with-packer.md
 - name: Tillgänglighet och skalning
   items:
-    - name: Skalningsuppsättningar
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
-    - name: Tillgänglighet
+    - name: Översikt
       href: availability.md
-    - name: Samlokalisering
-      href: co-location.md
-    - name: Nätverksprestanda
-      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
-    - name: Tillstånd och livscykel
-      href: states-lifecycle.md
-    - name: Automatisk skalning
-      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-    - name: Hög tillgänglighet
-      href: manage-availability.md
     - name: Tillgänglighetsuppsättningar
       items:
-        - name: Linux
+        - name: Översikt
+          href: availability-set-overview.md
+        - name: CLI
           href: ./linux/tutorial-availability-sets.md
-        - name: Windows
-          items:
-            - name: Skapa en tillgänglighetsuppsättning
-              href: ./windows/tutorial-availability-sets.md
-            - name: Ändra tillgänglighetsuppsättning
-              href: ./windows/change-availability-set.md
-    - name: Skapa en närhetsplaceringsgrupp
-      displayName: PPG aligned colocation co-location
+        - name: PowerShell
+          href: ./windows/tutorial-availability-sets.md
+        - name: Ändra en tillgänglighets uppsättning
+          href: ./windows/change-availability-set.md
+    - name: Tillgänglighetszoner
       items:
+        - name: Översikt
+          href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ./linux/create-cli-availability-zone.md
+        - name: PowerShell
+          href: ./windows/create-powershell-availability-zone.md
+        - name: Portalen
+          href: ./windows/create-portal-availability-zone.md
+    - name: Placerings grupper för närhet
+      items:
+        - name: Översikt
+          href: co-location.md
         - name: CLI
           href: ./linux/proximity-placement-groups.md
-        - name: Portalen
-          href: ./windows/proximity-placement-groups-portal.md
         - name: PowerShell
           href: ./windows/proximity-placement-groups.md
-    - name: Skapa virtuell dator i tillgänglighetszon
-      href: ./linux/create-cli-availability-zone.md
+        - name: Portalen
+          href: ./windows/proximity-placement-groups-portal.md
+    - name: Virtual Machine Scale Sets
+      items:
+        - name: Översikt
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: Automatisk skalning
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
+        - name: Orkestreringslägen
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - name: Förstå omstarter av virtuella datorer
+      href: understand-vm-reboots.md
+    - name: Tillstånd och livscykel
+      href: states-lifecycle.md
+    - name: Azure-regioner
+      href: regions.md
 - name: Diskar
   items:
     - name: Introduktion till hanterade diskar

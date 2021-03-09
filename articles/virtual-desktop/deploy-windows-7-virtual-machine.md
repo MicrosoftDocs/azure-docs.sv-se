@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d245b780acee59afbc6cb8bde6c916bfd1046e3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007581"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508562"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Distribuera en virtuell Windows 7-dator på Windows Virtual Desktop
 
@@ -37,7 +37,7 @@ Konfigurera en virtuell Windows 7-dator på Windows Virtual Desktop:
 5. Gå till Windows Update på den virtuella datorn.
 6. Installera alla Windows-uppdateringar i den viktiga kategorin.
 7. Installera alla Windows-uppdateringar i den valfria kategorin (exklusive språk paket). Den här processen installerar Remote Desktop Protocol 8,0-uppdateringen ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) som du behöver för att slutföra de här instruktionerna.
-8. Öppna redigerare för lokalt grupprincipobjekt och navigera till **dator konfiguration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **fjärrskrivbordssessionen**  >  **Remote Session Environment**för fjärrskrivbordssessioner.
+8. Öppna redigerare för lokalt grupprincipobjekt och navigera till **dator konfiguration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **fjärrskrivbordssessionen**  >  för fjärrskrivbordssessioner.
 9. Aktivera Remote Desktop Protocol 8,0-principen.
 10. Anslut den här virtuella datorn till din Active Directory-domän.
 11. Starta om den virtuella datorn genom att köra följande kommando:
@@ -46,7 +46,7 @@ Konfigurera en virtuell Windows 7-dator på Windows Virtual Desktop:
      shutdown /r /t 0
      ```
 
-12. Följ anvisningarna [här](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) för att hämta en registrerings-token.
+12. Följ anvisningarna [här](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo) för att hämta en registrerings-token.
 
       - Om du hellre vill använda Azure Portal kan du också gå till sidan Översikt för den värddator som du vill lägga till den virtuella datorn i och skapa en token där.
 

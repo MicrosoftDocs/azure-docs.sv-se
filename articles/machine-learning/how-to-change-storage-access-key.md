@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450788"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503444"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Återskapa åtkomst nycklar för lagrings kontot
 
@@ -33,7 +33,7 @@ Av säkerhets synpunkt kan du behöva ändra åtkomst nycklarna för ett Azure S
 
 * En Azure Machine Learning-arbetsyta. Mer information finns i artikeln [skapa en arbets yta](how-to-manage-workspace.md) .
 
-* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
 
 * [Azure Machine Learning CLI-tillägget](reference-azure-machine-learning-cli.md).
 
@@ -142,4 +142,4 @@ Om du vill uppdatera Azure Machine Learning att använda den nya nyckeln använd
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du registrerar data lager finns i [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) klass referensen.
+Mer information om hur du registrerar data lager finns i [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29) klass referensen.

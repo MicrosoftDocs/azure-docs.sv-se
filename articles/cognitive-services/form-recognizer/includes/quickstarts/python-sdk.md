@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 47082bd6a441bc857022c960abe3169995074dde
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 445fdea4cb92ed8080528a41cf19ad774751b9ce
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445664"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511136"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -187,7 +187,7 @@ Det här avsnittet visar hur du analyserar och extraherar vanliga fält från f�
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) -metoderna, till exempel `begin_recognize_invoices` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel `begin_recognize_invoices` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -335,7 +335,7 @@ Det här avsnittet visar hur du analyserar och extraherar vanliga fält från am
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) -metoderna, till exempel `begin_recognize_receipts` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel `begin_recognize_receipts` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
 
 ### <a name="output"></a>Utdata
 
@@ -368,7 +368,7 @@ Det här avsnittet visar hur du analyserar och extraherar vanliga fält från en
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> Du kan också analysera lokala företags korts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala företags korts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 

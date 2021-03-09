@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 397dd3d16fa994df29a08ff9095b4c7c6c4af815
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98901233"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510867"
 ---
 | Resurs | Gräns |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "98901233"
 | Totalt antal VM-kärnor per [prenumeration](https://azure.microsoft.com/pricing/) |20<sup>1</sup> per region. Kontakta supporten för att öka gränsen. |
 | Totalt antal kärnor per [prenumeration](https://azure.microsoft.com/pricing/) i Azure-VM |20<sup>1</sup> per region. Kontakta supporten för att öka gränsen. |
 | VM per serie, till exempel Dv2 och F, kärnor per [prenumeration](https://azure.microsoft.com/pricing/) |20<sup>1</sup> per region. Kontakta supporten för att öka gränsen. |
-| [Tillgänglighets uppsättningar](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per prenumeration |2 500 per region. |
+| [Tillgänglighets uppsättningar](../articles/virtual-machines/availability-set-overview.md) per prenumeration |2 500 per region. |
 | Virtuella datorer per tillgänglighets uppsättning | 200 |
 | [Placerings grupper för närhet](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) per [resurs grupp](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Certifikat per tillgänglighets uppsättning | 199<sup>2</sup> |

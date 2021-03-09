@@ -3,12 +3,12 @@ title: Minska tjänste kostnaderna med Azure Advisor
 description: Använd Azure Advisor för att optimera kostnaden för dina Azure-distributioner.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458514"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503382"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Minska service kostnaderna genom att använda Azure Advisor
 
@@ -21,7 +21,7 @@ Azure Advisor hjälper dig att optimera och minska dina totala Azure-utgifter ge
 De rekommenderade åtgärderna stängs av eller ändras, beroende på den resurs som utvärderas.
 
 Den avancerade utvärderings modellen i Advisor ser till att stänga av virtuella datorer när samtliga dessa påståenden är uppfyllda: 
-- P95th av det maximala värdet för processor belastningen är mindre än 3%. 
+- P95th av det maximala värdet för processor användning är mindre än 3%. 
 - Nätverks användningen är mindre än 2% under en sju dagars period.
 - Minnes belastningen är lägre än tröskelvärdena
 
