@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687301"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500816"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Gör så här: planera din hybrid Azure Active Directory delta-implementering
 
@@ -171,7 +171,7 @@ Tabellen nedan innehåller information om stöd för dessa lokala AD-UPN i Windo
 | ----- | ----- | ----- | ----- |
 | Dirigera | Federerade | Från 1703-version | Allmänt tillgänglig |
 | Ej dirigerbart | Federerade | Från 1803-version | Allmänt tillgänglig |
-| Dirigera | Hanterad | Från 1803-version | Azure AD-SSPR på Windows-låsskärm som är allmänt tillgängligt stöds inte |
+| Dirigera | Hanterad | Från 1803-version | Azure AD SSPR på Windows-låsskärm stöds inte allmänt tillgänglig. Det lokala UPN: en måste synkroniseras med     `onPremisesUserPrincipalName` attributet i Azure AD |
 | Ej dirigerbart | Hanterad | Stöds inte | |
 
 ## <a name="next-steps"></a>Nästa steg

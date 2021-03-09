@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919938"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507219"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Om Azure Key Vault-certifikat
 
@@ -91,7 +91,7 @@ En certifikat princip innehåller information om hur du skapar och hanterar livs
 
 När ett Key Vault-certifikat skapas från grunden måste en princip anges. Principen anger hur du skapar den här Key Vault certifikat versionen eller nästa Key Vault certifikat version. När en princip har upprättats krävs det inte med efterföljande skapande åtgärder för framtida versioner. Det finns bara en instans av en princip för alla versioner av ett Key Vault certifikat.  
 
-På en hög nivå innehåller en certifikat princip följande information (deras definitioner hittar du [här](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
+På en hög nivå innehåller en certifikat princip följande information (deras definitioner hittar du [här](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)):  
 
 -   Egenskaper för X509-certifikat: innehåller ämnes namn, alternativa namn för certifikat mottagare och andra egenskaper som används för att skapa en x509-certifikatbegäran.  
 -   Nyckel egenskaper: innehåller fält av nyckel typ, nyckel längd, export bar och ReuseKeyOnRenewal. Dessa fält instruerar nyckel valvet om hur man genererar en nyckel. 
@@ -112,14 +112,14 @@ Följande tabell visar mappningen av principen för x509-nyckel användning till
 
 |**Användnings flaggor för X509-nyckel**|**Key Vault Key OPS**|**Standardbeteende**|
 |----------|--------|--------|
-|DataEncipherment|kryptera, dekryptera| E.t. |
-|DecipherOnly|innehållet| E.t.  |
+|DataEncipherment|kryptera, dekryptera| Ej tillämpligt |
+|DecipherOnly|innehållet| Ej tillämpligt  |
 |DigitalSignature|signera, verifiera| Key Vault standard utan användnings specifikation när certifikat skapas | 
-|EncipherOnly|encrypt| E.t. |
-|KeyCertSign|signera, verifiera|E.t.|
+|EncipherOnly|encrypt| Ej tillämpligt |
+|KeyCertSign|signera, verifiera|Ej tillämpligt|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault standard utan användnings specifikation när certifikat skapas | 
-|Oavvislig het|signera, verifiera| E.t. |
-|cRLSign|signera, verifiera| E.t. |
+|Oavvislig het|signera, verifiera| Ej tillämpligt |
+|cRLSign|signera, verifiera| Ej tillämpligt |
 
 ## <a name="certificate-issuer"></a>Certifikat utfärdare
 
@@ -127,7 +127,7 @@ Ett Key Vault certifikat objekt innehåller en konfiguration som används för a
 
 -   Key Vault partner med följande providers för certifikat utfärdare för TLS/SSL-certifikat
 
-|**Providernamn**|**Platser**|
+|**Leverantörens namn**|**Platser**|
 |----------|--------|
 |DigiCert|Stöds i alla Key Vault service-platser i det offentliga molnet och Azure Government|
 |GlobalSign|Stöds i alla Key Vault service-platser i det offentliga molnet och Azure Government|

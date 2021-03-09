@@ -1,78 +1,62 @@
 ---
-title: Alternativ för tillgänglighet
-description: Lär dig mer om tillgänglighets funktionerna för att köra virtuella datorer i Azure
-author: cynthn
-ms.author: cynthn
+title: Tillgänglighets alternativ för Azure Virtual Machines
+description: Lär dig mer om tillgänglighets alternativen för att köra virtuella datorer i Azure
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 0af9d27561649a559913912165e63e913a32ff2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/08/2021
+ms.reviewer: cynthn
+ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178294"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507882"
 ---
-# <a name="availability-options-for-virtual-machines-in-azure"></a>Tillgänglighetsalternativ för virtuella datorer i Azure
+# <a name="availability-options-for-azure-virtual-machines"></a>Tillgänglighets alternativ för Azure Virtual Machines
+Den här artikeln innehåller en översikt över tillgänglighets alternativ för virtuella Azure-datorer (VM).
 
-Den här artikeln ger en översikt över tillgänglighets funktionerna i Azure Virtual Machines (VM).
+## <a name="availability-zones"></a>Tillgänglighetszoner
 
-## <a name="high-availability"></a>Hög tillgänglighet
+[Tillgänglighets zoner](../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context) utökar kontroll nivån som du måste ha för att upprätthålla tillgängligheten för program och data på dina virtuella datorer. En tillgänglighets zon är en fysiskt separat zon i en Azure-region. Det finns tre Tillgänglighetszoner per Azure-region som stöds. 
 
-Arbets belastningar är vanligt vis spridda över olika virtuella datorer för att få hög genom strömning, prestanda och för att skapa redundans om en virtuell dator påverkas på grund av en uppdatering eller en händelse. 
+Varje tillgänglighetszon har en distinkt strömkälla, nätverk och kylning. Genom att utforma dina lösningar för att använda replikerade virtuella datorer i zoner kan du skydda dina appar och data från förlust av ett Data Center. Om en zon komprometteras, är replikerade appar och data omedelbart tillgängliga i en annan zon. 
 
-Det finns några alternativ som Azure erbjuder för att uppnå hög tillgänglighet. Först ska vi prata om grundläggande konstruktioner. 
-
-### <a name="availability-zones"></a>Tillgänglighetszoner
-
-[Tillgänglighets zoner](../availability-zones/az-overview.md) utökar kontroll nivån som du måste ha för att upprätthålla tillgängligheten för program och data på dina virtuella datorer. En tillgänglighets zon är en fysiskt separat zon i en Azure-region. Det finns tre Tillgänglighetszoner per Azure-region som stöds. 
-
-Varje tillgänglighetszon har en distinkt strömkälla, nätverk och kylning. Genom att skapa lösningar för att använda replikerade virtuella datorer i zoner kan du skydda dina appar och data från förlust av ett Data Center. Om en zon komprometteras, är replikerade appar och data omedelbart tillgängliga i en annan zon. 
-
-![Tillgänglighetszoner](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-Lär dig mer om att distribuera en virtuell [Windows](./windows/create-powershell-availability-zone.md) -eller [Linux](./linux/create-cli-availability-zone.md) -dator i en tillgänglighets zon.
-
-
-### <a name="fault-domains"></a>Feldomäner
-
-En feldomän är en logisk grupp av underliggande maskinvara som delar en gemensam strömkälla och nätverksswitch, ungefär som ett rack i ett lokalt datacenter. 
-
-### <a name="update-domains"></a>Uppdateringsdomäner
-
-En uppdateringsdomän är en logisk grupp av underliggande maskinvara som kan underhållas eller startas om samtidigt. 
-
-På så sätt säkerställs att minst en instans av ditt program alltid körs vid ett periodiskt underhåll av Azure-plattformen. Ordningen för uppdaterings domäner som startas om kanske inte fortsätter i följd under underhåll, men endast en uppdaterings domän startas om i taget.
+## <a name="availability-sets"></a>Tillgänglighetsuppsättningar
+En [tillgänglighets uppsättning](availability-set-overview.md) är en logisk gruppering av virtuella datorer som gör det möjligt för Azure att förstå hur ditt program är utformat för att tillhandahålla redundans och tillgänglighet. Vi rekommenderar att två eller flera virtuella datorer skapas i en tillgänglighets uppsättning för att tillhandahålla ett program med hög tillgänglighet och uppfylla [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). För själva tillgänglighets uppsättningen kostar du bara att betala för varje VM-instans som du skapar.
 
 
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines skalnings uppsättningar 
 
-Med skalnings uppsättningar för virtuella Azure-datorer kan du skapa och hantera en grupp med belastningsutjämnade virtuella datorer. Antalet VM-instanser kan automatiskt öka eller minska som svar på efterfrågan eller ett definierat schema. Skalnings uppsättningar ger hög tillgänglighet till dina program och gör att du kan hantera, konfigurera och uppdatera många virtuella datorer centralt. Vi rekommenderar att två eller flera virtuella datorer skapas i en skalnings uppsättning för att tillhandahålla ett program med hög tillgänglighet och som uppfyller [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Du betalar ingen kostnad för själva skalnings uppsättningen. du betalar bara för varje VM-instans som du skapar. När en enskild virtuell dator använder [Azure Premium-SSD](./disks-types.md#premium-ssd)gäller Azure SLA för oplanerade underhålls händelser. Virtuella datorer i en skalnings uppsättning kan distribueras över flera uppdaterings domäner och fel domäner för att maximera tillgängligheten och återhämtning till drift störningar på grund av avbrott i data centret och planerade eller oplanerade underhålls händelser. Virtuella datorer i en skalnings uppsättning kan också distribueras till en enda tillgänglighets zon eller regionalt. Distributions alternativen för tillgänglighets zon kan variera beroende på dirigerings läge.
+Med [skalnings uppsättningar för virtuella Azure-datorer](../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context) kan du skapa och hantera en grupp med belastningsutjämnade virtuella datorer. Antalet VM-instanser kan automatiskt öka eller minska som svar på efterfrågan eller ett definierat schema. Skalnings uppsättningar ger hög tillgänglighet till dina program och gör att du kan hantera, konfigurera och uppdatera många virtuella datorer centralt. Vi rekommenderar att två eller flera virtuella datorer skapas i en skalnings uppsättning för att tillhandahålla ett program med hög tillgänglighet och som uppfyller [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Du betalar ingen kostnad för själva skalnings uppsättningen. du betalar bara för varje VM-instans som du skapar.
 
-**Fel domäner och uppdaterings domäner**
+Virtuella datorer i en skalnings uppsättning kan också distribueras till en enda tillgänglighets zon eller regionalt. Distributions alternativen för tillgänglighets zon kan variera beroende på [Dirigerings läge](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context).
 
-Skalnings uppsättningar för virtuella datorer fören klar designen för hög tillgänglighet genom att justera fel domäner och uppdatera domäner. Du behöver bara definiera antalet fel domäner för skalnings uppsättningen. Antalet fel domäner som är tillgängliga för skalnings uppsättningarna kan variera beroende på region. Se [Hantera tillgängligheten för virtuella datorer i Azure](./manage-availability.md).
-
-**Orchestration-lägen för skalnings uppsättningar**
-
-I Orchestration-lägena för skalnings uppsättningar för virtuella datorer kan du få bättre kontroll över hur virtuella dator instanser hanteras av skalnings uppsättningen. Du kan aktivera ett enhetligt eller flexibelt Orchestration-läge på din skalnings uppsättning. Enhetlig dirigering är optimerad för storskaliga tillstånds lösa arbets belastningar med identiska instanser. Flexibel dirigering (för hands version) är avsedd för hög tillgänglighet i skala med identiska eller flera typer av virtuella datorer. Läs mer om de här [Dirigerings lägena](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) och hur du aktiverar dem.
+## <a name="load-balancer"></a>Lastbalanserare
+Kombinera [Azure Load Balancer](../load-balancer/load-balancer-overview.md) med en tillgänglighets zon eller tillgänglighets uppsättning för att få flest program återhämtning. Azure Load Balancer distribuerar trafiken mellan flera virtuella datorer. Azure Load Balancer ingår i standardnivån för Virtual Machines. Azure Load Balancer ingår inte i alla nivåer för Virtual Machines. Mer information om belastnings utjämning för virtuella datorer finns i **belastnings utjämning för virtuella datorer** för [Linux](linux/tutorial-load-balancer.md) eller [Windows](windows/tutorial-load-balancer.md).
 
 
-## <a name="availability-sets"></a>Tillgänglighetsuppsättningar
-En tillgänglighetsuppsättning är en logisk gruppering av virtuella datorer som gör att Azure kan förstå hur ett program är utformat och kan tillhandahålla redundans och tillgänglighet. Vi rekommenderar att två eller flera virtuella datorer skapas i en tillgänglighets uppsättning för att tillhandahålla ett program med hög tillgänglighet och uppfylla [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). För själva tillgänglighets uppsättningen kostar du bara att betala för varje VM-instans som du skapar. När en enskild virtuell dator använder [Azure Premium-SSD](./disks-types.md#premium-ssd)gäller Azure SLA för oplanerade underhålls händelser.
+## <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
+Azure Storage lagrar alltid flera kopior av dina data så att de skyddas från planerade och oplanerade händelser, inklusive tillfälliga maskin varu haverier, nätverks-eller strömavbrott, och massiv natur katastrofer. Redundans garanterar att ditt lagrings konto uppfyller sina tillgänglighets-och hållbarhets mål även om de inte är i rätt tid.
 
-I en tillgänglighets uppsättning distribueras virtuella datorer automatiskt mellan dessa fel domäner. På så sätt begränsas påverkan av potentiella fel på fysisk maskinvara, nätverksavbrott och strömavbrott.
+När du bestämmer vilket alternativ för redundans som passar bäst för ditt scenario bör du fundera över kompromisserna mellan lägre kostnader och högre tillgänglighet. De faktorer som hjälper dig att avgöra vilket alternativ för redundans som du bör välja bland:
+- Hur dina data replikeras i den primära regionen
+- Om dina data replikeras till en andra region som är geografiskt avlägsen till den primära regionen, för att skydda mot regionala haverier
+- Huruvida programmet kräver Läs behörighet till replikerade data i den sekundära regionen om den primära regionen blir otillgänglig av någon anledning
 
-För virtuella datorer som använder [Azure Managed Disks](./faq-for-disks.md) justeras de virtuella datorerna efter feldomänerna för hanterade diskar när en hanterad tillgänglighetsuppsättning används. På så sätt säkerställs att alla hanterade diskar som är kopplade till en virtuell dator finns i samma feldomän. 
+Mer information finns i [Azure Storage redundans](../storage/common/storage-redundancy.md)
 
-Endast virtuella datorer med hanterade diskar kan skapas i en hanterad tillgänglighetsuppsättning. Antalet feldomäner kan vara två eller tre, beroende på region. Du kan läsa mer om dessa hanterade disk fel domäner för virtuella [Linux-datorer](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) eller [virtuella Windows-datorer](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+## <a name="azure-site-recovery"></a>Azure Site Recovery
+Som organisation måste du införa en strategi för affärs kontinuitet och haveri beredskap (BCDR) som skyddar dina data och dina appar och arbets belastningar online, när planerade och oplanerade avbrott inträffar.
 
-![Hanterad tillgänglighets uppsättning](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) hjälper till att säkerställa affärs kontinuiteten genom att hålla affärsappar och arbets belastningar som körs under drift avbrott. Site Recovery replikerar arbetsbelastningar som körs på fysiska och virtuella datorer (VM) från en primär plats till en sekundär plats. När ett driftstopp uppstår på den primära platsen sker redundansväxling till den sekundära platsen, och det går att komma åt apparna därifrån. När den primära platsen körs igen kan du växla tillbaka till den.
 
-
-Virtuella datorer i en tillgänglighets uppsättning distribueras också automatiskt mellan uppdaterings domäner. 
-
-![Tillgänglighetsuppsättningar](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+Site Recovery kan hantera replikering för:
+- Replikera virtuella Azure-datorer mellan Azure-regioner.
+- Lokala virtuella datorer, Azure Stack virtuella datorer och fysiska servrar.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu kan du börja använda dessa tillgänglighets- och redundansfunktioner till att bygga din egen Azure-miljö. Metodtips hittar du i [Metodtips för Azure-tillgänglighet](/azure/architecture/checklist/resiliency-per-service).
+- [Skapa en virtuell dator i en tillgänglighets zon](/linux/create-cli-availability-zone.md)
+- [Skapa en virtuell dator i en tillgänglighets uppsättning](/linux/tutorial-availability.md)
+- [Skapa en VM-skalningsuppsättning](../virtual-machine-scale-sets/quick-create-portal.md)

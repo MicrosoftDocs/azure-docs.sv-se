@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dadd86521a7b6c20dab2ed036555b798b869344c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002091"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511103"
 ---
 Använd Event Hubs utgående bindning för att skriva händelser till en händelse ström. Du måste ha behörighet att skicka till en händelsehubb för att kunna skicka händelser till den.
 
@@ -243,7 +243,7 @@ I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtim
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `EventHub` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste vara inställd på eventHub. |
 |**position** | saknas | Måste anges till "out". Den här parametern anges automatiskt när du skapar bindningen i Azure Portal. |
@@ -274,7 +274,7 @@ Det finns två alternativ för att placera ett Event Hub-meddelande från en fun
 
 - **RETUR värde**: ange `name` egenskapen i *function.jspå* till `$return` . Med den här konfigurationen sparas funktionens retur värde som ett Event Hub-meddelande.
 
-- **Tvingande**: Skicka ett värde till [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) -metoden för den parameter som deklarerats som [Utdatatyp.](/python/api/azure-functions/azure.functions.out?view=azure-python) Värdet som skickas till `set` behålls som ett Event Hub-meddelande.
+- **Tvingande**: Skicka ett värde till [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) -metoden för den parameter som deklarerats som [Utdatatyp.](/python/api/azure-functions/azure.functions.out) Värdet som skickas till `set` behålls som ett Event Hub-meddelande.
 
 # <a name="java"></a>[Java](#tab/java)
 

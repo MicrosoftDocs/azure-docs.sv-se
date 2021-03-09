@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461443"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508239"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Ansluta till data med Azure Machine Learning Studio
 
@@ -24,20 +24,20 @@ I den här artikeln får du lära dig hur du får åtkomst till dina data med [A
 
 I följande tabell definieras och sammanfattas fördelarna med data lager och data uppsättningar. 
 
-|Objekt|Description| Fördelar|   
+|Objekt|Beskrivning| Fördelar|   
 |---|---|---|
 |Datalager| Anslut säkert till lagrings tjänsten på Azure genom att lagra din anslutnings information, t. ex. prenumerations-ID och token-auktorisering i [Key Vault](https://azure.microsoft.com/services/key-vault/) som är kopplade till arbets ytan | Eftersom informationen lagras på ett säkert sätt kan du <br><br> <li> Ange &nbsp; inte &nbsp; &nbsp; autentiseringsuppgifter &nbsp; för autentisering eller &nbsp; ursprungliga &nbsp; data källor i risk zonen. <li> Behöver du inte längre hårdkoda dem i dina skript.
 |Datauppsättningar| Genom att skapa en datamängd skapar du en referens till datakällans plats, tillsammans med en kopia av dess metadata. Med data uppsättningar kan du <br><br><li> Få åtkomst till data under modell träning.<li> Dela data och samar beta med andra användare.<li> Utnyttja bibliotek med öppen källkod, som Pandas, för data utforskning. | Eftersom data uppsättningar är Lazy utvärderas och data finns kvar på sin befintliga plats, <br><br><li>Behåll en enda kopia av data i lagrings utrymmet.<li> Ingen extra lagrings kostnad <li> Riskerar inte att oavsiktligt ändra dina ursprungliga data källor.<li>Förbättra prestanda hastigheten i ML-arbetsflöde. 
 
 Information om var data lager och data uppsättningar passar i Azure Machine Learning programmets övergripande data åtkomst arbets flöde finns i artikeln [säker åtkomst till data](concept-data.md#data-workflow) .
 
-För en kod första gången kan du läsa följande artiklar för att använda [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) för att:
+För en kod första gången kan du läsa följande artiklar för att använda [Azure Machine Learning python SDK](/python/api/overview/azure/ml/) för att:
 * [Anslut till Azure Storage-tjänster med data lager](how-to-access-data.md). 
 * [Skapa Azure Machine Learning data uppsättningar](how-to-create-register-datasets.md). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En Azure-prenumeration. Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto  innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
+- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
 
@@ -111,7 +111,7 @@ Mer specifikt innehåller Azure Machine Learning data uppsättningens data profi
 >[!NOTE]
 > Tomma poster visas för funktioner med irrelevanta typer.
 
-|Statistik|Description
+|Statistik|Beskrivning
 |------|------
 |Funktion| Namn på den kolumn som sammanfattas.
 |Profil| Infogad visualisering baserat på den härledda typen. Strängar, booleska värden och datum har till exempel värde antal, medan decimaler (numeriska värden) har ungefärligt histogram. På så sätt får du en snabb förståelse för data fördelningen.

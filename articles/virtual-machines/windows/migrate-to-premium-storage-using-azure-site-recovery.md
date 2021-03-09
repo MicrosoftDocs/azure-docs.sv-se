@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e2bc42f8222c1c713b995a6184ac8a2d1d304d7e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975560"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502730"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrera till Premium Storage med Azure Site Recovery
 
@@ -82,11 +82,11 @@ Du kan använda Site Recovery för att migrera virtuella Azure IaaS-datorer mell
 ### <a name="step-2-choose-your-protection-goals"></a>Steg 2: Välj skydds mål 
 
 1. Öppna [Azure Portal](https://portal.azure.com)på den virtuella datorn där du vill installera konfigurations servern.
-2. Gå till inställningar för **Recovery Services valv**  >  **Settings**  >  **Site Recovery**  >  **steg 1: Förbered infrastruktur**  >  **skydds mål**.
+2. Gå till inställningar för **Recovery Services valv**  >    >  **Site Recovery**  >  **steg 1: Förbered infrastruktur**  >  **skydds mål**.
 
    ![Bläddra till rutan skydds mål][2]
 
-3. I den första List rutan under **skydds mål**väljer **du Azure**. Välj **inte virtualiserad/övrigt**i den andra List rutan och välj sedan **OK**.
+3. I den första List rutan under **skydds mål** väljer **du Azure**. Välj **inte virtualiserad/övrigt** i den andra List rutan och välj sedan **OK**.
 
    ![Rutan skydds mål med ifyllda rutor][3]
 
@@ -104,7 +104,7 @@ Du kan använda Site Recovery för att migrera virtuella Azure IaaS-datorer mell
 
 3. På den virtuella datorn som du använder som konfigurations server kör du en enhetlig installation för att installera konfigurations servern och processervern. Du kan [gå igenom skärm](../../site-recovery/vmware-azure-tutorial.md) bilderna för att slutföra installationen. Du kan referera till följande skärm dum par för steg som har angetts för det här scenariot för migrering.
 
-   1. I **innan du börjar**väljer du **Installera konfigurations servern och processervern**.
+   1. I **innan du börjar** väljer du **Installera konfigurations servern och processervern**.
 
       ![Innan du börjar Sidan][6]
 
@@ -125,7 +125,7 @@ Du kan använda Site Recovery för att migrera virtuella Azure IaaS-datorer mell
 
 ### <a name="step-4-set-up-the-target-environment"></a>Steg 4: Konfigurera mål miljön
 
-Välj **Förbered infrastruktur**  >  **mål**och ange den distributions modell som du vill använda för virtuella datorer efter redundansväxlingen. Du kan välja **klassisk** eller **Resource Manager**, beroende på ditt scenario.
+Välj **Förbered infrastruktur**  >  **mål** och ange den distributions modell som du vill använda för virtuella datorer efter redundansväxlingen. Du kan välja **klassisk** eller **Resource Manager**, beroende på ditt scenario.
 
 ![Mål fönster][10]
 
@@ -167,7 +167,7 @@ Om du vill kontrol lera att konfigurations servern har kopplats till den replike
 
    ![Aktivera fönstret replikering med vald källa][13]
 
-När du utformar din Azure Storage-miljö rekommenderar vi att du använder separata lagrings konton för varje virtuell dator i en tillgänglighets uppsättning. Vi rekommenderar att du följer bästa praxis i lagrings lagret för att [använda flera lagrings konton för varje tillgänglighets uppsättning](../manage-availability.md). Distribution av virtuella dator diskar till flera lagrings konton hjälper till att förbättra lagrings tillgängligheten och distribuerar I/O i Azure Storage-infrastrukturen.
+När du utformar din Azure Storage-miljö rekommenderar vi att du använder separata lagrings konton för varje virtuell dator i en tillgänglighets uppsättning. Vi rekommenderar att du följer bästa praxis i lagrings lagret för att [använda flera lagrings konton för varje tillgänglighets uppsättning](../availability.md). Distribution av virtuella dator diskar till flera lagrings konton hjälper till att förbättra lagrings tillgängligheten och distribuerar I/O i Azure Storage-infrastrukturen.
 
 Om dina virtuella datorer finns i en tillgänglighets uppsättning, i stället för att replikera diskar för alla virtuella datorer till ett lagrings konto, rekommenderar vi starkt att du migrerar flera virtuella datorer flera gånger. På så sätt delar inte de virtuella datorerna i samma tillgänglighets uppsättning ett enda lagrings konto. Använd fönstret **Aktivera replikering** för att ställa in ett mål lagrings konto för varje virtuell dator, en i taget.
  

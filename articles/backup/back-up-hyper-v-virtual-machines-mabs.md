@@ -3,12 +3,12 @@ title: Säkerhetskopiera virtuella Hyper-V-datorer med MABS
 description: Den här artikeln innehåller procedurer för att säkerhetskopiera och återställa virtuella datorer med hjälp av Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378006"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509514"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Säkerhetskopiera virtuella Hyper-V-datorer med Azure Backup Server
 
@@ -84,7 +84,7 @@ Detta är kraven för att säkerhetskopiera virtuella Hyper-V-datorer med MABS:
 
 5. På sidan **Välj dataskyddsmetod** anger du ett skyddsgruppnamn. Välj **Jag vill ha kortvarigt skydd med disk** och välj **Jag vill ha ett onlineskydd** om du vill säkerhetskopiera data till Azure med tjänsten Azure Backup.
 
-6. I **Ange Short-Term mål**för  >  **kvarhållning**anger du hur länge du vill behålla disk data. I **Synkroniseringsfrekvens**anger du hur ofta stegvis säkerhets kopiering av data ska köras. Du kan också välja att aktivera **Precis innan en återställningspunkt** i stället för att välja ett intervall för inkrementell säkerhetskopiering. När den här inställningen är aktive rad kommer MABS att köra en fullständig snabb säkerhets kopiering precis innan varje schemalagd återställnings punkt.
+6. I **Ange Short-Term mål** för  >  **kvarhållning** anger du hur länge du vill behålla disk data. I **Synkroniseringsfrekvens** anger du hur ofta stegvis säkerhets kopiering av data ska köras. Du kan också välja att aktivera **Precis innan en återställningspunkt** i stället för att välja ett intervall för inkrementell säkerhetskopiering. När den här inställningen är aktive rad kommer MABS att köra en fullständig snabb säkerhets kopiering precis innan varje schemalagd återställnings punkt.
 
     > [!NOTE]
     >
@@ -94,7 +94,7 @@ Detta är kraven för att säkerhetskopiera virtuella Hyper-V-datorer med MABS:
 
    **Total data storlek** är storleken på de data som du vill säkerhetskopiera och **disk utrymme som ska tillhandahållas på Mabs** är det utrymme som Mabs rekommenderar för skydds gruppen. MABS väljer den ideala säkerhets kopierings volymen baserat på inställningarna. Du kan dock redigera valen av säkerhetskopieringsvolym under **Disk allocation details (Diskallokeringsdetaljer)**. Välj önskad lagringsplats för arbetsbelastningarna i den nedrullningsbara menyn. Redigeringarna ändrar värdena för **Totalt lagringsutrymme** och **Ledigt lagringsutrymme** i fönstret **Tillgängligt disklagringsutrymme**. Underetablerat utrymme är mängden lagrings MABS som föreslår att du lägger till volymen, för att fortsätta med säkerhets kopieringar smidigt i framtiden.
 
-8. På sidan **Välj metod för skapande av replik** anger du hur den första replikeringen av data i skyddsgruppen ska utföras. Om du väljer att **Replikera över nätverket automatiskt**rekommenderar vi att du väljer en tid med låg belastning. För stora mängder data eller mindre än optimala nätverks förhållanden bör du överväga att välja **manuellt**, vilket kräver att replikera data offline med hjälp av flyttbara medier.
+8. På sidan **Välj metod för skapande av replik** anger du hur den första replikeringen av data i skyddsgruppen ska utföras. Om du väljer att **Replikera över nätverket automatiskt** rekommenderar vi att du väljer en tid med låg belastning. För stora mängder data eller mindre än optimala nätverks förhållanden bör du överväga att välja **manuellt**, vilket kräver att replikera data offline med hjälp av flyttbara medier.
 
 9. På sidan **Alternativ för konsekvenskontroll** väljer du hur du vill automatisera konsekvenskontroller. Du kan aktivera att en kontroll endast körs när replikdata blir inkonsekvent, eller enligt ett schema. Om du inte vill konfigurera automatiska konsekvenskontroller kan du när som helst köra en manuell kontroll genom att högerklicka på skyddsgruppen och välja **Utför konsekvenskontroll**.
 
@@ -136,10 +136,13 @@ När du kan återställa en säkerhetskopierade virtuell dator använder du guid
 
 4. På skärmen **Välj återställnings typ** väljer du var du vill återställa data och väljer sedan **Nästa**.
 
-    - **Återställ till ursprunglig instans**: När du återställer till den ursprungliga instansen tas den ursprungliga virtuella hårddisken bort. MABS återställer den virtuella hård disken och andra konfigurationsfiler till den ursprungliga platsen med hjälp av VSS-skrivaren för Hyper-V. I slutet av återställningsprocessen är de virtuella datorerna fortfarande högtillgängliga.
+    - **Återställ till ursprunglig instans**: när du återställer till den ursprungliga instansen raderas den ursprungliga virtuella hård disken och alla tillhör ande kontroll punkter. MABS återställer den virtuella hård disken och andra konfigurationsfiler till den ursprungliga platsen med hjälp av VSS-skrivaren för Hyper-V. I slutet av återställningsprocessen är de virtuella datorerna fortfarande högtillgängliga.
         Resursgruppen måste vara tillgänglig för återställning. Om den inte är tillgänglig återställer du till en annan plats och gör sedan den virtuella datorn högtillgänglig.
 
     - **Återställ som virtuell dator till valfri värd**: Mabs stöder alternativ plats återställning (återställning till), vilket ger en sömlös återställning av en skyddad virtuell Hyper-v-dator till en annan Hyper-v-värd, oberoende av processor arkitekturen. Virtuella Hyper-V-datorer som återställs till en klusternod blir inte hög tillgängliga. Om du väljer det här alternativet visas ytterligare en skärm i Återställningsguiden där du kan identifiera mål och målsökväg.
+    
+        >[!NOTE]
+        >Om du väljer den ursprungliga värden är beteendet detsamma som **Återställ till ursprunglig instans**. Den ursprungliga virtuella hård disken och alla tillhör ande kontroll punkter tas bort.
 
     - **Kopiera till en nätverksmapp**: Mabs har stöd för återställning på objekt nivå (ILR), vilket gör att du kan utföra återställning på objekt nivå av filer, mappar, volymer och virtuella hård diskar (VHD) från en säkerhets kopiering på värdnivå av virtuella Hyper-V-datorer till en nätverks resurs eller en volym på en Mabs-skyddad Server. MABS-skyddsagenten behöver inte vara installerad på gästen för att utföra återställning på objekt nivå. Om du väljer det här alternativet visas ytterligare en skärm i Återställningsguiden där du kan identifiera mål och målsökväg.
 

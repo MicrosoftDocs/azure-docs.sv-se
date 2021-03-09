@@ -3,14 +3,14 @@ title: Hantera ditt innehav av säkerhetskopior med Backup Center
 description: Lär dig hur du styr din Azure-miljö för att se till att alla resurser är kompatibla från ett säkerhets kopierings perspektiv med Backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893854"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506217"
 ---
-# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Styra reserv fastigheten med Backup Center (för hands version)
+# <a name="govern-your-backup-estate-using-backup-center"></a>Hantera ditt innehav av säkerhetskopior med Backup Center
 
 Backup Center hjälper dig att styra din Azure-miljö och se till att alla resurser är kompatibla från ett säkerhets kopierings perspektiv. Nedan visas några av styrnings funktionerna i säkerhets kopierings Center:
 

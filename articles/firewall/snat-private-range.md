@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c425afc314435c38d15d53ab0c38dcd48e35a40b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072249"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508936"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall SNAT privata IP-adressintervall
 
@@ -58,7 +58,7 @@ New-AzFirewall @azFw
 > [!NOTE]
 > IANAPrivateRanges utökas till aktuella standardinställningar i Azure-brandväggen medan de andra intervallen läggs till i den. För att behålla IANAPrivateRanges-standardvärdet i ditt privata intervall, måste det finnas i din `PrivateRange` specifikation, som du ser i följande exempel.
 
-Mer information finns i [New-AzFirewall](/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
+Mer information finns i [New-AzFirewall](/powershell/module/az.network/new-azfirewall).
 
 ### <a name="existing-firewall"></a>Befintlig brand vägg
 

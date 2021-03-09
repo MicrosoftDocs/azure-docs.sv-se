@@ -3,12 +3,12 @@ title: Automatisera tillägg av en labb användare i Azure DevTest Labs | Micros
 description: Den här artikeln visar hur du automatiserar hur du lägger till en användare i ett labb i Azure DevTest Labs att använda Azure Resource Manager mallar, PowerShell och CLI.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 6dddf06289da79e16cbd7e64869fa77f0a40dd22
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327968"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508834"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisera tillägg av en labb användare i ett labb i Azure DevTest Labs
 Azure DevTest Labs gör att du snabbt kan skapa självbetjänings utvecklings-och test miljöer med hjälp av Azure Portal. Men om du har flera team och flera DevTest Labs-instanser kan du spara tid genom att automatisera skapandet av processen. Med [Azure Resource Manager mallar](https://github.com/Azure/azure-devtestlab/tree/master/Environments) kan du skapa labb, virtuella labb datorer, anpassade bilder, formler och lägga till användare på ett automatiserat sätt. Den här artikeln fokuserar särskilt på att lägga till användare till en DevTest Labs-instans.
@@ -100,7 +100,7 @@ Roll Definitions-ID: t är sträng identifieraren för den befintliga roll defin
 
 Prenumerations-ID: t hämtas med hjälp av `subscription().subscriptionId` funktionen mall.  
 
-Du måste hämta roll definitionen för den `DevTest Labs User` inbyggda rollen. Om du vill hämta GUID för [användar rollen DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) kan du använda [roll tilldelningarna REST API](/rest/api/authorization/roleassignments) eller cmdleten [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) .
+Du måste hämta roll definitionen för den `DevTest Labs User` inbyggda rollen. Om du vill hämta GUID för [användar rollen DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) kan du använda [roll tilldelningarna REST API](/rest/api/authorization/roleassignments) eller cmdleten [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) .
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id

@@ -276,9 +276,9 @@
     - name: Python
       items:
         - name: Klientbibliotek
-          href: /python/api/overview/azure/eventhub-readme?view=azure-python
+          href: /python/api/overview/azure/eventhub-readme
         - name: Hanteringsbibliotek
-          href: /python/api/overview/azure/event-hub?view=azure-python
+          href: /python/api/overview/azure/event-hub
     - name: JavaScript
       items:
         - name: Klientbibliotek

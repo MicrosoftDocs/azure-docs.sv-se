@@ -10,12 +10,12 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 341615bf8fe231eafa606411948ad014399b8261
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 12ee827f297729682b0a5e1b1808afe312c657a4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079554"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499075"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Komma igång med Azure Table Storage och Azure Cosmos DB Table-API:et med hjälp av Python
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -35,7 +35,7 @@ Det här exemplet beskriver hur du använder [Azure Cosmos DB Table SDK för Pyt
 * Infogar och kör frågor mot entiteter
 * Ändrar entiteter
 
-Vi rekommenderar att du använder [referensen för Azure Cosmos DB SDK för Python API](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python) när du går igenom scenarierna i det här exemplet.
+Vi rekommenderar att du använder [referensen för Azure Cosmos DB SDK för Python API](/python/api/overview/azure/cosmosdb) när du går igenom scenarierna i det här exemplet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -119,7 +119,7 @@ table_service.insert_entity('tasktable', task)
 
 ### <a name="partitionkey-and-rowkey"></a>PartitionKey och RowKey
 
-Du måste ange både en **PartitionKey** - och en **RowKey** -egenskap för varje entitet. Dessa är entiteternas unika identifierare eftersom de tillsammans bildar primärnyckeln för en entitet. Du kan fråga mycket snabbare med dessa värden än du kan fråga andra entitetsegenskaper eftersom endast dessa egenskaper indexeras.
+Du måste ange både en **PartitionKey**- och en **RowKey**-egenskap för varje entitet. Dessa är entiteternas unika identifierare eftersom de tillsammans bildar primärnyckeln för en entitet. Du kan fråga mycket snabbare med dessa värden än du kan fråga andra entitetsegenskaper eftersom endast dessa egenskaper indexeras.
 
 Table Storage använder tabellen **PartitionKey** för att effektivt distribuera tabellentiteter mellan lagringsnoder. Entiteter som har samma **PartitionKey** lagras på samma nod. **RowKey** är det unika ID:t för entiteten i den partition som egenskapen hör till.
 
@@ -193,7 +193,7 @@ print(task.priority)
 
 ## <a name="query-a-set-of-entities"></a>Fråga efter en uppsättning entiteter
 
-Du kan hämta en uppsättning entiteter genom att ange en filtersträng med parametern **filter** . Det här exemplet hämtar alla aktiviteter i Seattle genom att tillämpa ett filter på PartitionKey:
+Du kan hämta en uppsättning entiteter genom att ange en filtersträng med parametern **filter**. Det här exemplet hämtar alla aktiviteter i Seattle genom att tillämpa ett filter på PartitionKey:
 
 ```python
 tasks = table_service.query_entities(
@@ -205,7 +205,7 @@ for task in tasks:
 
 ## <a name="query-a-subset-of-entity-properties"></a>Fråga en deluppsättning entitetsegenskaper
 
-Du kan också begränsa vilka egenskaper som returneras för varje entitet i en fråga. Den här tekniken, kallad *projektion* , minskar bandbredden och kan förbättra frågeprestanda, i synnerhet för stora entiteter eller resultatuppsättningar. Använd parametern **select** och ange namnen på egenskaperna som ska returneras till klienten.
+Du kan också begränsa vilka egenskaper som returneras för varje entitet i en fråga. Den här tekniken, kallad *projektion*, minskar bandbredden och kan förbättra frågeprestanda, i synnerhet för stora entiteter eller resultatuppsättningar. Använd parametern **select** och ange namnen på egenskaperna som ska returneras till klienten.
 
 Frågan i följande kod returnerar bara beskrivningarna av entiteter i tabellen.
 
@@ -238,22 +238,22 @@ table_service.delete_table('tasktable')
 ## <a name="next-steps"></a>Nästa steg
 
 * [Vanliga frågor och svar – Utveckla med Table-API:et](./faq.md)
-* [Referens för Azure Cosmos DB SDK för Python API](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)
+* [Referens för Azure Cosmos DB SDK för Python API](/python/api/overview/azure/cosmosdb)
 * [Python Developer Center](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Ett kostnadsfritt, plattformsoberoende program som låter dig arbeta visuellt med Azure Storage-data i Windows, macOS och Linux.
 * [Arbeta med Python i Visual Studio (Windows)](/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 
 
-[py_commit_batch]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_create_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_delete_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_get_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_insert_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_insert_or_replace_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_Entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.models.entity?preserve-view=true&view=azure-python
-[py_merge_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_update_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_delete_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_TableService]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_TableBatch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python&preserve-view=true
+[py_commit_batch]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_create_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_delete_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_get_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_insert_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_insert_or_replace_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_Entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.models.entity
+[py_merge_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_update_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_delete_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_TableService]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_TableBatch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice

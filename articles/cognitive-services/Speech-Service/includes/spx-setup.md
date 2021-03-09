@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: dcfc19700d24ca51d6e28aa511197c1c9e79e521
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c939c1d061f4e01a00bc2b886056e42f0b059ad5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428237"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510931"
 ---
 ## <a name="download-and-install"></a>Hämta och installera
 
@@ -19,7 +19,7 @@ ms.locfileid: "102428237"
 Följ de här stegen för att installera tal-CLI i Windows:
 
 1. I Windows behöver du [Microsoft Visual C++ Redistributable för Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) för din plattform. Det kan krävas en omstart för att installera det första gången.
-1. Installera [.net Core 3,1 SDK](/dotnet/core/install/linux).
+1. Installera [.net Core 3,1 SDK](/dotnet/core/install/windows).
 2. Installera tal-CLI med NuGet genom att ange följande kommando:
 
    ```console
@@ -52,7 +52,7 @@ Följande Linux-distributioner stöds för x64-arkitekturer med hjälp av tal CL
 
 Följ de här stegen för att installera Speech CLI på Linux på en x64-processor:
 
-1. Installera [.net Core 3,1](/dotnet/core/install/linux).
+1. Installera [.net Core 3,1 SDK](/dotnet/core/install/linux).
 2. Installera tal-CLI med NuGet genom att ange följande kommando:
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`

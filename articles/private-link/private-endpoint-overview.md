@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 62a5a5307e704b22a2c9ead197dae3360d5d03b1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214804"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508817"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Vad är en privat Azure-slutpunkt?
 
@@ -110,7 +110,7 @@ Resurs ägaren för privata länkar kan utföra följande åtgärder över en pr
 > Endast en privat slut punkt i ett godkänt tillstånd kan skicka trafik till en specifik privat länk resurs. 
 
 ### <a name="connecting-using-alias"></a>Ansluta med alias
-Alias är en unik moniker som skapas när tjänst ägaren skapar en privat länk tjänst bakom en standard belastningsutjämnare. Tjänstens ägare kan dela det här aliaset med sina konsumenter offline. Konsumenter kan begära en anslutning till privata länk tjänster med antingen resurs-URI eller alias. Om du vill ansluta med alias måste du skapa en privat slut punkt med hjälp av metoden för godkännande av manuellt anslutning. För att använda en manuell metod för godkännande av anslutning ställer du in en manuell begär ande parameter till sant under skapa flöde för privat slut punkt. Titta på [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) och [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create) för information. 
+Alias är en unik moniker som skapas när tjänst ägaren skapar en privat länk tjänst bakom en standard belastningsutjämnare. Tjänstens ägare kan dela det här aliaset med sina konsumenter offline. Konsumenter kan begära en anslutning till privata länk tjänster med antingen resurs-URI eller alias. Om du vill ansluta med alias måste du skapa en privat slut punkt med hjälp av metoden för godkännande av manuellt anslutning. För att använda en manuell metod för godkännande av anslutning ställer du in en manuell begär ande parameter till sant under skapa flöde för privat slut punkt. Titta på [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) och [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create) för information. 
 
 ## <a name="dns-configuration"></a>DNS-konfiguration 
 När du ansluter till en privat länk resurs med hjälp av ett fullständigt kvalificerat domän namn (FQDN) som en del av anslutnings strängen, är det viktigt att konfigurera dina DNS-inställningar på rätt sätt för att matcha den allokerade privata IP-adressen. Befintliga Azure-tjänster kanske redan har en DNS-konfiguration som ska användas vid anslutning via en offentlig slut punkt. Detta måste åsidosättas för att ansluta med hjälp av din privata slut punkt. 

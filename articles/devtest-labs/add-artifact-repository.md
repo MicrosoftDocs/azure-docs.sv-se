@@ -3,12 +3,12 @@ title: Lägga till en artefakt lagrings plats i labbet i Azure DevTest Labs | Mi
 description: Lär dig hur du anger din egen artefakt lagring för ditt labb i Azure DevTest Labs till Store-verktyg som inte är tillgängliga i den offentliga artefakt lagrings platsen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512019"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502203"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Lägga till en artefakt lagrings plats i labbet i DevTest Labs
 Med DevTest Labs kan du ange en artefakt som ska läggas till i en virtuell dator vid tidpunkten för att skapa den virtuella datorn eller efter att den virtuella datorn har skapats. Den här artefakten kan vara ett verktyg eller ett program som du vill installera på den virtuella datorn. Artefakter definieras i en JSON-fil som läses in från en GitHub-eller Azure DevOps git-lagringsplats.
@@ -19,7 +19,7 @@ Den här artikeln innehåller information om hur du lägger till din anpassade a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Om du vill lägga till en lagrings plats i labbet hämtar du först viktig information från din lagrings plats. I följande avsnitt beskrivs hur du hämtar den information som krävs för databaser som finns på **GitHub** eller **Azure DevOps**.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Hämta URL för kloning av GitHub-lagringsplats och personlig åtkomst-token
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 När New-AzResourceGroupDeployment har körts skriver kommandot ut viktig information, t. ex. etablerings status (bör utföras) och eventuella utdata för mallen.
 
 ## <a name="use-azure-powershell"></a>Använda Azure PowerShell
-Det här avsnittet innehåller ett exempel på ett PowerShell-skript som kan användas för att lägga till en artefakt lagrings plats i ett labb. Om du inte har Azure PowerShell kan du läsa mer i [så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/?view=azps-1.2.0) detaljerade anvisningar för att installera det.
+Det här avsnittet innehåller ett exempel på ett PowerShell-skript som kan användas för att lägga till en artefakt lagrings plats i ett labb. Om du inte har Azure PowerShell kan du läsa mer i [så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/) detaljerade anvisningar för att installera det.
 
 ### <a name="full-script"></a>Fullständigt skript
 Här är det fullständiga skriptet, inklusive några utförliga meddelanden och kommentarer:

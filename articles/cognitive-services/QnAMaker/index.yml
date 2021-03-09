@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Dokumentation om QnA Maker
   description: QnA Maker är en molnbaserad API-tjänst som skapar ett konversationsanpassat lager för frågor och svar över dina data. Med QnA Maker kan du driva en tjänst för frågor och svar från halvstrukturerat innehåll som Vanliga frågor och svar-dokument, URL:er och produkthandböcker. QnA Maker-tjänsten svarar på dina användares frågor på naturligt språk genom att matcha med det bästa möjliga svaret från vanliga frågor och svar i kunskapsbasen.
-  ms.openlocfilehash: 44a142ec69e48ebf2a95f1afbd1076ac96caa37f
-  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+  ms.openlocfilehash: 00e2f029d467e4bf4acfbc9ee55727328c23ba72
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/07/2021
-  ms.locfileid: "102432612"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102502220"
 landingContent:
 - title: Om QnA Maker
   linkLists:
@@ -107,7 +107,7 @@ landingContent:
     - text: Referensdokumentation för .Net-SDK
       url: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
     - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Kommandoradsgränssnitt för Azure (CLI)
       url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: Hjälp och feedback

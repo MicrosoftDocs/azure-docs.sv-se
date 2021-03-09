@@ -1,24 +1,20 @@
 ---
-title: Samplacera virtuella datorer
-description: Lär dig mer om hur du samplacerar Azure VM-resurser för bättre svars tid.
+title: Närhetsplaceringsgrupper
+description: Lär dig mer om att använda närhets placerings grupper i Azure.
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: e193b7d084723ad50ddc0d1a40e0b6c8a111af73
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 584d98c93083bc0b203276c8eda2801841da3ad7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924411"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507865"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Samplacera resurser för förbättrad svarstid
-
-När du distribuerar ditt program i Azure skapar spridnings instanser över regioner eller tillgänglighets zoner nätverks fördröjning, vilket kan påverka programmets övergripande prestanda. 
-
-## <a name="proximity-placement-groups"></a>Närhetsplaceringsgrupper
+# <a name="proximity-placement-groups"></a>Närhetsplaceringsgrupper
 
 Att placera virtuella datorer i en enda region minskar det fysiska avståndet mellan instanserna. Att placera dem i en enda tillgänglighets zon kommer också att ta dem fysiskt närmare varandra. I takt med att Azure-utrymmet växer kan en enda tillgänglighets zon sträcka sig över flera fysiska data Center, vilket kan leda till en nätverks fördröjning som påverkar ditt program. 
 

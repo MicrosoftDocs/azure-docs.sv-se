@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fa92002cfef070218902aa7919900dde9fe5a9b5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005239"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505417"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Skapa en webbapp i en App Service-miljön v1
 
@@ -105,4 +105,4 @@ När du har skapat din webbapp och App Service plan det är en bra idé att skal
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: /powershell/azure/?view=azps-3.8.0
+[AzurePowershell]: /powershell/azure/

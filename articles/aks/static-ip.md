@@ -5,12 +5,12 @@ description: Lär dig hur du skapar och använder en statisk IP-adress med AKS-b
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651897"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509480"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Använd en statisk offentlig IP-adress och DNS-etikett med belastningsutjämnaren för Azure Kubernetes service (AKS)
 
@@ -63,16 +63,14 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Skapa en tjänst med hjälp av den statiska IP-adressen
 
-Innan du skapar en tjänst kontrollerar du att tjänstens huvud namn som används av AKS-klustret har delegerade behörigheter till den andra resurs gruppen. Exempel:
+Innan du skapar en tjänst kontrollerar du att kluster identiteten som används av AKS-klustret har delegerade behörigheter till den andra resurs gruppen. Exempel:
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
-
-Du kan också använda systemtilldelad hanterad identitet för behörigheter i stället för tjänstens huvud namn. Mer information finns i [använda hanterade identiteter](use-managed-identity.md).
 
 > [!IMPORTANT]
 > Om du har anpassat den utgående IP-adressen kontrollerar du att din kluster identitet har behörighet till både den utgående offentliga IP-adressen och den inkommande offentliga IP-adressen.

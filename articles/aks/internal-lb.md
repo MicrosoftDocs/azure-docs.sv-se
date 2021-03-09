@@ -5,12 +5,12 @@ description: Lär dig hur du skapar och använder en intern belastningsutjämnar
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c2c0866aa9a721a73e1eb8fa230f0022cf6b8ca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285891"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505638"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Använda en intern belastningsutjämnare med Azure Kubernetes service (AKS)
 
@@ -23,11 +23,11 @@ För att begränsa åtkomsten till dina program i Azure Kubernetes service (AKS)
 
 Den här artikeln förutsätter att du har ett befintligt AKS-kluster. Om du behöver ett AKS-kluster kan du läsa snabb starten för AKS [med hjälp av Azure CLI][aks-quickstart-cli] eller [Azure Portal][aks-quickstart-portal].
 
-Du måste också ha Azure CLI-versionen 2.0.59 eller senare installerad och konfigurerad. Kör  `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa  [Installera Azure CLI 2.0][install-azure-cli].
+Du måste också ha Azure CLI-versionen 2.0.59 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
-AKS-kluster tjänstens huvud namn måste ha behörighet att hantera nätverks resurser om du använder ett befintligt undernät eller en befintlig resurs grupp. Mer information finns i [använda Kubernetes-nätverk med dina egna IP-adressintervall i Azure Kubernetes service (AKS)][use-kubenet] eller [Konfigurera Azure cni-nätverk i Azure KUBERNETES service (AKS)][advanced-networking]. Om du konfigurerar belastningsutjämnaren att använda en [IP-adress i ett annat undernät][different-subnet], se till att AKS-kluster tjänstens huvud namn också har Läs behörighet till det under nätet.
+AKS-klustrets kluster identitet måste ha behörighet att hantera nätverks resurser om du använder ett befintligt undernät eller en befintlig resurs grupp. Mer information finns i [använda Kubernetes-nätverk med dina egna IP-adressintervall i Azure Kubernetes service (AKS)][use-kubenet] eller [Konfigurera Azure cni-nätverk i Azure KUBERNETES service (AKS)][advanced-networking]. Om du konfigurerar belastningsutjämnaren att använda en [IP-adress i ett annat undernät][different-subnet]kontrollerar du att AKS-klustrets identitet också har Läs behörighet till det under nätet.
 
-I stället för ett huvud namn för tjänsten kan du också använda systemtilldelad hanterad identitet för behörigheter. Mer information finns i [använda hanterade identiteter](use-managed-identity.md). Mer information om behörigheter finns i [delegera AKS-åtkomst till andra Azure-resurser][aks-sp].
+Mer information om behörigheter finns i [delegera AKS-åtkomst till andra Azure-resurser][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Skapa en intern lastbalanserare
 
@@ -110,7 +110,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Du kan behöva ge tjänstens huvud namn för ditt AKS-kluster rollen *nätverks deltagare* till resurs gruppen där dina virtuella Azure-nätverks resurser distribueras. Visa tjänstens huvud namn med [AZ AKS show][az-aks-show], till exempel `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Om du vill skapa en roll tilldelning använder du kommandot [AZ roll tilldelning skapa][az-role-assignment-create] .
+> Du kan behöva ge kluster identiteten för ditt AKS-kluster rollen *nätverks deltagare* till den resurs grupp där dina virtuella Azure-nätverks resurser distribueras. Visa kluster identiteten med [AZ AKS show][az-aks-show], till exempel `az aks show --resource-group myResourceGroup --name myAKSCluster --query "identity"` . Om du vill skapa en roll tilldelning använder du kommandot [AZ roll tilldelning skapa][az-role-assignment-create] .
 
 ## <a name="specify-a-different-subnet"></a>Ange ett annat undernät
 

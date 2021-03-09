@@ -3,12 +3,12 @@ title: Få insikter med Backup Center
 description: Lär dig att analysera historiska trender och få djupare insikter om dina säkerhets kopior med Backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719465"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506024"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Få insikter med Backup Center
 
@@ -44,17 +44,19 @@ Nedan visas tillgängliga vyer:
 
 1. **Sammanfattning** – Använd den här fliken för att få en översikt över din reserv egendom. [Läs mer](./configure-reports.md#summary)
 
-1. **Säkerhets kopierings objekt** – Använd den här fliken för att se information och trender i moln lagring som förbrukas på en säkerhets kopierings nivå. [Läs mer](./configure-reports.md#backup-items)
+2. **Säkerhets kopierings objekt** – Använd den här fliken för att se information och trender i moln lagring som förbrukas på en säkerhets kopierings nivå. [Läs mer](./configure-reports.md#backup-items)
 
-1. **Användning** – Använd den här fliken för att Visa nyckel fakturerings parametrar för dina säkerhets kopior. [Läs mer](./configure-reports.md#usage)
+3. **Användning** – Använd den här fliken för att Visa nyckel fakturerings parametrar för dina säkerhets kopior. [Läs mer](./configure-reports.md#usage)
 
-1. **Jobb** – Använd den här fliken för att Visa tids krävande trender för jobb, till exempel antalet misslyckade jobb per dag och de vanligaste orsakerna till jobbfel. [Läs mer](./configure-reports.md#jobs)
+4. **Jobb** – Använd den här fliken för att Visa tids krävande trender för jobb, till exempel antalet misslyckade jobb per dag och de vanligaste orsakerna till jobbfel. [Läs mer](./configure-reports.md#jobs)
 
-1. **Principer** – Använd den här fliken om du vill visa information om alla dina aktiva principer, till exempel antalet associerade objekt och den totala moln lagring som förbrukas av objekt som har säkerhetskopierats under en specifik princip. [Läs mer](./configure-reports.md#policies)
+5. **Principer** – Använd den här fliken om du vill visa information om alla dina aktiva principer, till exempel antalet associerade objekt och den totala moln lagring som förbrukas av objekt som har säkerhetskopierats under en specifik princip. [Läs mer](./configure-reports.md#policies)
 
-1. **Optimera** – Använd den här fliken för att få insyn i potentiella kostnads optimerings möjligheter för dina säkerhets kopieringar. [Läs mer](./configure-reports.md#optimize)
+6. **Optimera** – Använd den här fliken för att få insyn i potentiella kostnads optimerings möjligheter för dina säkerhets kopieringar. [Läs mer](./configure-reports.md#optimize)
 
-1. **Princip** ökning – Använd den här fliken för att få insyn i om varje säkerhets kopierings instans har minst en lyckad säkerhets kopiering per dag.
+7. **Princip** ökning – Använd den här fliken för att få insyn i om varje säkerhets kopierings instans har minst en lyckad säkerhets kopiering per dag. [Läs mer](./configure-reports.md#policy-adherence)
+
+Du kan också konfigurera e-postmeddelanden för alla dessa rapporter med hjälp av funktionen för [e-postrapporten](backup-reports-email.md) .
 
 ## <a name="next-steps"></a>Nästa steg
 

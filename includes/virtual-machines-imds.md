@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175726"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510707"
 ---
 Azure-Instance Metadata Service (IMDS) innehåller information om de virtuella dator instanser som körs. Du kan använda den för att hantera och konfigurera dina virtuella datorer.
 Den här informationen omfattar SKU, lagring, nätverkskonfigurationer och kommande underhålls händelser. En fullständig lista över tillgängliga data finns i [Sammanfattning av slut punkts kategorier](#endpoint-categories).
@@ -104,7 +104,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Anger parametrarna:
 
-| Namn | Värde |
+| Name | Värde |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -314,7 +314,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametrar
 
-| Namn | Obligatorisk/valfri | Beskrivning |
+| Name | Obligatorisk/valfri | Beskrivning |
 |------|-------------------|-------------|
 | `api-version` | Krävs | Den version som används för att betjäna begäran.
 | `format` | Valfritt | `json`Svarets format (eller `text` ). * Obs: kan krävas när parametrarna för begäran används
@@ -345,8 +345,8 @@ Schema analys:
 | `osType` | Linux eller Windows | 2017-04-02
 | `placementGroupId` | [Placerings grupp](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) för den virtuella datorns skalnings uppsättning | 2017-08-01
 | `plan` | [Planera](/rest/api/compute/virtualmachines/createorupdate#plan) som innehåller namn, produkt och utgivare för en virtuell dator om det är en Azure Marketplace-avbildning | 2018-04-02
-| `platformUpdateDomain` |  [Uppdatera den domän](../articles/virtual-machines/manage-availability.md) som den virtuella datorn körs i | 2017-04-02
-| `platformFaultDomain` | [Feldomän](../articles/virtual-machines/manage-availability.md) som den virtuella datorn körs i | 2017-04-02
+| `platformUpdateDomain` |  [Uppdatera den domän](../articles/virtual-machines/availability.md) som den virtuella datorn körs i | 2017-04-02
+| `platformFaultDomain` | [Feldomän](../articles/virtual-machines/availability.md) som den virtuella datorn körs i | 2017-04-02
 | `priority` | Prioritet för den virtuella datorn. Se [virtuella datorer för virtuella datorer](../articles/virtual-machines/spot-vms.md) för mer information | 2020-12-01
 | `provider` | Provider för den virtuella datorn | 2018-10-01
 | `publicKeys` | [Samling offentliga nycklar](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) som har tilldelats den virtuella datorn och sökvägar | 2018-04-02
@@ -908,7 +908,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametrar
 
-| Namn | Obligatorisk/valfri | Beskrivning |
+| Name | Obligatorisk/valfri | Beskrivning |
 |------|-------------------|-------------|
 | `api-version` | Krävs | Den version som används för att betjäna begäran.
 | `nonce` | Valfritt | En 10-siffrig sträng som fungerar som en kryptografisk nonce. Om inget värde anges använder IMDS den aktuella UTC-tidsstämpeln.

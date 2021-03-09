@@ -4,12 +4,12 @@ description: Lär dig hur du aktiverar och konfigurerar Ultra disks i ett Azure 
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178855"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502577"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Använd Azure Ultra disks på Azure Kubernetes service (för hands version)
 
@@ -84,7 +84,7 @@ Om du vill skapa kluster utan stöd för Ultra disk kan du göra det genom att u
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Aktivera Ultra disks i ett befintligt kluster
 
-Du kan aktivera Ultra disks i befintliga kluster genom att lägga till en ny Node-pool i klustret som stöder Ultra disks. Konfigurera en ny Node-pool så att den använder värdbaserad kryptering med hjälp av `--aks-custom-headers` flaggan.
+Du kan aktivera Ultra disks i befintliga kluster genom att lägga till en ny Node-pool i klustret som stöder Ultra disks. Konfigurera en ny Node-pool att använda Ultra disks med hjälp av `--aks-custom-headers` flaggan.
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true

@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 8257c58c4185172218b833c3d4988b4db661a97a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669898"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507491"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referens arkitekturer för Oracle Database Enterprise Edition på Azure
 
@@ -29,7 +29,7 @@ Om du är intresse rad av att lära dig mer om hur du maximerar prestandan för 
 
 ## <a name="high-availability-for-oracle-databases"></a>Hög tillgänglighet för Oracle-databaser
 
-Att uppnå hög tillgänglighet i molnet är en viktig del av varje organisations planering och design. Microsoft Azure erbjuder [tillgänglighets zoner](../../../availability-zones/az-overview.md) och tillgänglighets uppsättningar (som ska användas i regioner där tillgänglighets zoner inte är tillgängliga). Läs mer om att [Hantera tillgängligheten för dina virtuella datorer](../../manage-availability.md) för att utforma molnet.
+Att uppnå hög tillgänglighet i molnet är en viktig del av varje organisations planering och design. Microsoft Azure erbjuder [tillgänglighets zoner](../../../availability-zones/az-overview.md) och tillgänglighets uppsättningar (som ska användas i regioner där tillgänglighets zoner inte är tillgängliga). Läs mer om att [Hantera tillgängligheten för dina virtuella datorer](../../availability.md) för att utforma molnet.
 
 Förutom Cloud-inbyggda verktyg och erbjudanden tillhandahåller Oracle lösningar för hög tillgänglighet som [Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [data Guard med FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [horisontell partitionering](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)och [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) som kan konfigureras i Azure. Den här guiden beskriver referens arkitekturer för var och en av dessa lösningar.
 
@@ -39,7 +39,7 @@ När du migrerar eller skapar program för molnet är det viktigt att du anpassa
 
 Oracle Real Application Cluster (RAC) är en lösning av Oracle för att hjälpa kunder att uppnå stora data flöden genom att ha många instanser som har åtkomst till en databas lagring (delade – alla arkitektur mönster). Oracle RAC kan också användas för hög tillgänglighet lokalt, men Oracle RAC kan endast användas för hög tillgänglighet i molnet eftersom det bara skyddar mot instans nivå problem och inte mot problem som uppstår på radnivå eller data Center. Av den anledningen rekommenderar Oracle att använda Oracle data Guard med din databas (oavsett om det är en instans eller RAC) för hög tillgänglighet. Kunderna kräver vanligt vis ett högt service avtal för att köra sina verksamhets kritiska program. Oracle RAC är för närvarande inte certifierat eller stöds inte av Oracle på Azure. Azure erbjuder dock funktioner som Azure erbjuder Tillgänglighetszoner och planerat underhålls fönster som hjälper till att skydda mot fel på instans nivå. Förutom detta kan kunder använda tekniker som Oracle data Guard, Oracle GoldenGate och Oracle horisontell partitionering för hög prestanda och återhämtning genom att skydda sina databaser från racknivå samt data Center-och geo-politiska fel.
 
-När du kör Oracle-databaser över flera [tillgänglighets zoner](../../../availability-zones/az-overview.md) tillsammans med Oracle data Guard eller GoldenGate, kan kunder få ett service avtal för drift tid på 99,99%. I Azure-regioner där tillgänglighets zoner ännu inte finns kan kunder använda [tillgänglighets uppsättningar](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) och uppnå ett service avtal för drift tid på 99,95%.
+När du kör Oracle-databaser över flera [tillgänglighets zoner](../../../availability-zones/az-overview.md) tillsammans med Oracle data Guard eller GoldenGate, kan kunder få ett service avtal för drift tid på 99,99%. I Azure-regioner där tillgänglighets zoner ännu inte finns kan kunder använda [tillgänglighets uppsättningar](../../availability-set-overview.md) och uppnå ett service avtal för drift tid på 99,95%.
 
 >Obs! Du kan ha ett drift tids mål som är mycket högre än service avtalet för drift tid som tillhandahålls av Microsoft.
 
@@ -205,7 +205,7 @@ Under den inledande begäran ansluter program servern till Shard-regissören i s
 
 ## <a name="patching-and-maintenance"></a>Uppdatering och underhåll
 
-När du distribuerar dina Oracle-arbetsbelastningar till Azure tar Microsoft hand om all korrigering av värd operativ system nivå. Alla planerade underhåll av OS-nivåer skickas till kunder i förväg för att tillåta kunden att göra det här planerade underhållet. Två servrar från två olika Tillgänglighetszoner korrigeras aldrig samtidigt. Mer information om underhåll och korrigeringar för virtuella datorer finns i [Hantera tillgängligheten för virtuella datorer](../../manage-availability.md) . 
+När du distribuerar dina Oracle-arbetsbelastningar till Azure tar Microsoft hand om all korrigering av värd operativ system nivå. Alla planerade underhåll av OS-nivåer skickas till kunder i förväg för att tillåta kunden att göra det här planerade underhållet. Två servrar från två olika Tillgänglighetszoner korrigeras aldrig samtidigt. Mer information om underhåll och korrigeringar för virtuella datorer finns i [Hantera tillgängligheten för virtuella datorer](../../availability.md) . 
 
 Korrigering av den virtuella datorns operativ system kan automatiseras med hjälp av [Azure Automation uppdateringshantering](../../../automation/update-management/overview.md). Uppdatering och underhåll av Oracle-databasen kan automatiseras och schemaläggas med hjälp av [Azure-pipeliner](/azure/devops/pipelines/get-started/what-is-azure-pipelines) eller [Azure Automation uppdateringshantering](../../../automation/update-management/overview.md) för att minimera stillestånds tiden. Se [kontinuerliga leveranser och blå/gröna distributioner](/azure/devops/learn/what-is-continuous-delivery) för att förstå hur det kan användas i samband med dina Oracle-databaser.
 

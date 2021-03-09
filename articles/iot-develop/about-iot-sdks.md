@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4ac675d0b6c2ce1e735a8ad530bc004f993a1833
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fa10ddad8d2fbbc414f0ccaf16b9b99fae0b0786
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435502"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505043"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Översikt över SDK: er för Azure IoT-enheter
 
@@ -116,7 +116,7 @@ Dessa SDK: er kan köras på alla enheter som har stöd för en språk körning 
 * [Exempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples)
 * [Paket](https://pypi.org/project/azure-iot-device/)
 * [Referensdokumentation](/python/api/azure-iot-device)
-* [Referens dokumentation för Edge-modul](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python&preserve-view=true)
+* [Referens dokumentation för Edge-modul](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)
 
 ### <a name="service-sdks"></a>Tjänst-SDK:er
 Azure IoT erbjuder också tjänst-SDK: er som gör det möjligt att skapa program på lösnings sidan för att hantera enheter, få insikter, visualisera data och mycket mer. Dessa SDK: er är speciella för varje Azure IoT-tjänst och är tillgängliga i C#, Java, Java Script och python för att förenkla din utvecklings upplevelse. 
@@ -147,7 +147,7 @@ Azure Digitals är ett PaaS-erbjudande (Platform as a Service) som gör det möj
 
 **Node.js ADT service SDK**: [](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)  |  [](https://www.npmjs.com/package/@azure/digital-twins-core)  |  [](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core/samples)  |  [referens dokumentation](/javascript/api/@azure/digital-twins-core/) för GitHubs lagrings plats paket
 
-**Python ADT service SDK**: [](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [](https://pypi.org/project/azure-digitaltwins-core/)  |  [exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)  |  [referens dokumentation](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true) för GitHub-lagringsplats
+**Python ADT service SDK**: [](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [](https://pypi.org/project/azure-digitaltwins-core/)  |  [exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)  |  [referens dokumentation](/python/api/azure-digitaltwins-core/azure.digitaltwins.core) för GitHub-lagringsplats
 
 #### <a name="device-provisioning-service"></a>Device Provisioning Service
 

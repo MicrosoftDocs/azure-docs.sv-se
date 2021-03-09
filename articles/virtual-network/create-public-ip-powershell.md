@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675124"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502458"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure PowerShell
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standard-SKU – använda zoner**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->Följande kommando fungerar för AZ. Network module version 4.5.0 eller senare.  Mer information om de PowerShell-moduler som används för närvarande finns i PowerShellGet- [dokumentationen](/powershell/module/powershellget/?view=powershell-7.1).
+>Följande kommando fungerar för AZ. Network module version 4.5.0 eller senare.  Mer information om de PowerShell-moduler som används för närvarande finns i PowerShellGet- [dokumentationen](/powershell/module/powershellget/).
 
 Använd [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) för att skapa en standard zon som REDUNDANT offentlig IP-adress med namnet **myStandardZRPublicIP** i **myResourceGroup**.
 
@@ -89,7 +89,7 @@ Observera att ovanstående alternativ för zoner endast är giltiga val i region
 # <a name="standard-sku---no-zones"></a>[**Standard-SKU – inga zoner**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->Följande kommando fungerar för AZ. Network module version 4.5.0 eller senare.  Mer information om de PowerShell-moduler som används för närvarande finns i PowerShellGet- [dokumentationen](/powershell/module/powershellget/?view=powershell-7.1).
+>Följande kommando fungerar för AZ. Network module version 4.5.0 eller senare.  Mer information om de PowerShell-moduler som används för närvarande finns i PowerShellGet- [dokumentationen](/powershell/module/powershellget/).
 
 Använd [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) för att skapa en offentlig standard-IP-adress som en icke-zonindelade resurs med namnet **myStandardPublicIP** i **myResourceGroup**.
 

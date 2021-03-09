@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 752f38c0a44d40f2bf7e7b5961dca7743fbf4b76
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488043"
+ms.locfileid: "102505485"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -48,7 +48,7 @@ Använd någon av följande metoder för att skapa en arbets yta med en privat s
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning python SDK tillhandahåller klassen [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) , som kan användas med [arbets ytan. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) för att skapa en arbets yta med en privat slut punkt. Den här klassen kräver ett befintligt virtuellt nätverk.
+Azure Machine Learning python SDK tillhandahåller klassen [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) , som kan användas med [arbets ytan. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) för att skapa en arbets yta med en privat slut punkt. Den här klassen kräver ett befintligt virtuellt nätverk.
 
 ```python
 from azureml.core import Workspace
@@ -112,7 +112,7 @@ ws = Workspace.from_config()
 ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
 ```
 
-Mer information om de klasser och metoder som används i det här exemplet finns i [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) och [Workspace.add_private_endpoint](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
+Mer information om de klasser och metoder som används i det här exemplet finns i [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) och [Workspace.add_private_endpoint](/python/api/azureml-core/azureml.core.workspace(class)#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -140,7 +140,7 @@ Använd någon av följande metoder för att ta bort en privat slut punkt från 
 
 # <a name="python"></a>[Python](#tab/python)
 
-Använd [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) för att ta bort en privat slut punkt.
+Använd [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)#delete-private-endpoint-connection-private-endpoint-connection-name-) för att ta bort en privat slut punkt.
 
 ```python
 from azureml.core import Workspace
@@ -181,7 +181,7 @@ Använd följande steg för att aktivera offentlig åtkomst till en privat länk
 
 # <a name="python"></a>[Python](#tab/python)
 
-Använd [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) för att ta bort en privat slut punkt.
+Använd [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)#delete-private-endpoint-connection-private-endpoint-connection-name-) för att ta bort en privat slut punkt.
 
 ```python
 from azureml.core import Workspace

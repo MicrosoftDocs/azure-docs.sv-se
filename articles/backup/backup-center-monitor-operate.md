@@ -3,14 +3,14 @@ title: Övervaka och arbeta med säkerhetskopieringar i Backup Center
 description: Den här artikeln förklarar hur du övervakar och använder säkerhets kopieringar i skala med Backup Center
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719550"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506171"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Övervaka och arbeta med säkerhetskopieringar i Backup Center
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Övervaka och använda säkerhets kopieringar med Backup Center
 
 Som administratör för säkerhets kopiering kan du använda Backup Center som ett enda fönster i glas för att övervaka dina jobb och säkerhets kopierings inventering på en daglig basis. Du kan också använda Backup Center för att utföra vanliga åtgärder, till exempel svara på begär Anden om säkerhets kopiering på begäran, återställa säkerhets kopior, skapa säkerhets kopierings principer och så vidare.
 

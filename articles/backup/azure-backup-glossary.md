@@ -3,12 +3,12 @@ title: Azure Backup ord lista
 description: Den här artikeln definierar termer som är användbara för användning med Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723922"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502033"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup ord lista
 
@@ -299,6 +299,18 @@ Säkerhetskopierar filer för operativ systemet. Med den här säkerhets kopian 
 ## <a name="tenant"></a>Klientorganisation
 
 En klientorganisation är en representation av en organisation. Det är en dedikerad instans av Azure AD som en organisation eller apputvecklare får när organisationen eller apputvecklaren skapar en relation med Microsoft, t.ex. genom att registrera sig för Azure, Microsoft Intune eller Microsoft 365.
+
+## <a name="tier"></a>Nivå
+
+Azure Backup stöder för närvarande följande lagrings nivåer för säkerhets kopiering:
+
+### <a name="snapshot-tier"></a>Ögonblicks bilds nivå
+
+(Villkor för arbets belastning) I den första fasen av VM-säkerhetskopieringen lagras den ögonblicks bild som togs tillsammans med disken. Den här typen av lagring kallas ögonblicks bild nivå. Återställningar av ögonblicks bilders nivåer är snabbare (än att återställa från ett valv) eftersom de eliminerar vänte tiden för ögonblicks bilder som ska kopieras till från valvet innan återställnings åtgärden utlöses.
+
+### <a name="vault-standard-tier"></a>Vault-Standard nivå
+
+Säkerhets kopierings data för alla arbets belastningar som stöds av Azure Backup lagras i valv som innehåller säkerhets kopierings lagring, en uppsättning med automatisk skalning av lagrings konton som hanteras av Azure Backup. Vault-Standard nivån är en lagrings nivå online som gör att du kan lagra en isolerad kopia av säkerhets kopierings data i en Microsoft-hanterad klient, vilket skapar ett extra skydds lager. För arbets belastningar där ögonblicks bilds nivån stöds finns det en kopia av säkerhets kopierings data både på ögonblicks bilds nivån och på nivån valvet standard. Valvet – standard nivån säkerställer att säkerhets kopierings data är tillgängliga även om data källan som säkerhets kopie ras tas bort eller komprometteras.
 
 ## <a name="unmanaged-disk"></a>Ohanterad disk
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 21550cc34b21756186ea607c3efd2ebd10cbf979
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b2f551257fb6869d5dec47014be3a8522b61b9fa
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214260"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506641"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Justera brand vägg för webbaserade program (WAF) för Azure-front dörr
  
@@ -144,7 +144,7 @@ En fördel med att använda en undantags lista är att bara den matchnings varia
  
 Det är viktigt att tänka på att undantag är en global inställning. Det innebär att den konfigurerade undantagen gäller för all trafik som passerar genom din WAF, inte bara en speciell webbapp eller URI. Detta kan till exempel vara ett problem om *1 = 1* är en giltig begäran i bröd texten för en viss webbapp, men inte för andra i samma WAF-princip. Om det är bra att använda olika undantags listor för olika program, bör du överväga att använda olika WAF-principer för varje program och tillämpa dem på varje program klient del.
  
-När du konfigurerar exkluderings listor för hanterade regler kan du välja att undanta alla regler inom en regel uppsättning, alla regler inom en regel grupp eller en enskild regel. En undantags lista kan konfigureras med [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)eller Azure Portal.
+När du konfigurerar exkluderings listor för hanterade regler kan du välja att undanta alla regler inom en regel uppsättning, alla regler inom en regel grupp eller en enskild regel. En undantags lista kan konfigureras med [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)eller Azure Portal.
 
 * Undantag på regel nivå
   * Att tillämpa undantag på en regel nivå innebär att de angivna undantagen inte analyseras mot den enskilda regeln, medan de fortfarande analyseras av alla andra regler i regel uppsättningen. Detta är den mest detaljerade nivån för undantag och kan användas för att finjustera den hanterade regel uppsättningen baserat på den information som du hittar i WAF-loggarna när du felsöker en händelse.
@@ -201,7 +201,7 @@ Att inaktivera en regel är en fördel när du är säker på att alla begär An
  
 Att inaktivera en regel är dock en global inställning som gäller för alla klient dels värdar som är kopplade till WAF-principen. När du väljer att inaktivera en regel kan du lämna sårbarheter som exponeras utan skydd eller identifiering för andra klient dels värdar som är kopplade till WAF-principen.
  
-Om du vill använda Azure PowerShell för att inaktivera en hanterad regel, se [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) objekt dokumentationen. Om du vill använda Azure CLI kan du läsa mer i [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override) dokumentationen.
+Om du vill använda Azure PowerShell för att inaktivera en hanterad regel, se [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject) objekt dokumentationen. Om du vill använda Azure CLI kan du läsa mer i [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override) dokumentationen.
 
 ![WAF-regler](../media/waf-front-door-tuning/waf-rules.png)
 

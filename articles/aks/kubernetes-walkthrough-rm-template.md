@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 56bacf1ae68081d5822fdb0e80762926d4eb581c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: f17e42915968f52aee8bd106b5cadd26457998ff
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173740"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501331"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med en ARM-mall
 
@@ -32,7 +32,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 - Den här artikeln kräver version 2.0.61 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
 
-- Om du vill skapa ett AKS-kluster med en Resource Manager-mall anger du en offentlig SSH-nyckel och Azure Active Directory tjänstens huvud namn. Alternativt kan du använda en [hanterad identitet](use-managed-identity.md) i stället för ett tjänst huvud namn för behörigheter. Om du behöver någon av dessa resurser kan du läsa mer i följande avsnitt: Annars hoppar du till avsnittet [granska mallen](#review-the-template) .
+- Om du vill skapa ett AKS-kluster med en Resource Manager-mall anger du en offentlig SSH-nyckel. Om du behöver den här resursen kan du läsa mer i följande avsnitt: Annars hoppar du till avsnittet [granska mallen](#review-the-template) .
 
 ### <a name="create-an-ssh-key-pair"></a>Skapa ett SSH-nyckelpar
 
@@ -47,28 +47,6 @@ ssh-keygen -t rsa -b 2048
 ```
 
 Mer information om hur du skapar SSH-nycklar finns i [skapa och hantera SSH-nycklar för autentisering i Azure][ssh-keys].
-
-### <a name="create-a-service-principal"></a>Skapa ett huvudnamn för tjänsten
-
-Om ett AKS-kluster ska kunna interagera med andra Azure-resurser behövs ett huvudnamn för tjänsten i Azure Active Directory. Skapa ett huvudnamn för tjänsten med kommandot [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametern `--skip-assignment` gör att inga ytterligare behörigheterna tilldelas. Som standard är tjänstens huvudnamn giltigt i ett år. Observera att du kan använda en hanterad identitet i stället för ett huvud namn för tjänsten. Mer information finns i [använda hanterade identiteter](use-managed-identity.md).
-
-```azurecli-interactive
-az ad sp create-for-rbac --skip-assignment
-```
-
-Utdata ser ut ungefär så här:
-
-```json
-{
-  "appId": "8b1ede42-d407-46c2-a1bc-6b213b04295f",
-  "displayName": "azure-cli-2019-04-19-21-42-11",
-  "name": "http://azure-cli-2019-04-19-21-42-11",
-  "password": "27e5ac58-81b0-46c1-bd87-85b4ef622682",
-  "tenant": "73f978cf-87f2-41bf-92ab-2e7ce012db57"
-}
-```
-
-Anteckna värdena för *appId* och *password*. De här värdena används i senare steg.
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -95,13 +73,10 @@ Fler AKS-exempel finns på webbplatsen för [AKS snabb starts mallar][aks-quicks
     * **DNS-prefix**: Ange ett unikt DNS-prefix för klustret, till exempel *myakscluster*.
     * **Användar namn för Linux-administratör**: Ange ett användar namn för att ansluta med SSH, till exempel *azureuser*.
     * **Offentlig SSH RSA-nyckel**: kopiera och klistra in den *offentliga* delen av ditt SSH-nyckelpar (som standard innehåller innehållet på *~/.ssh/id_rsa. pub*).
-    * **Tjänstens huvud namn för klient-ID**: kopiera och klistra in *appId* för tjänstens huvud namn från `az ad sp create-for-rbac` kommandot.
-    * **Tjänstens huvud namn, klient hemlighet**: kopiera och klistra in *lösen ordet* för tjänstens huvud namn från `az ad sp create-for-rbac` kommandot.
-    * **Jag godkänner villkors tillståndet ovan**: Markera den här rutan om du vill acceptera.
 
     ![Resource Manager-mall för att skapa ett Azure Kubernetes service-kluster i portalen](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. Välj **Köp**.
+3. Välj **Granska + skapa**.
 
 Det tar några minuter att skapa AKS-klustret. Vänta tills klustret har distribuerats innan du går vidare till nästa steg.
 

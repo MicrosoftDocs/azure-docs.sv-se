@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8473d3a19a86027b5b01af59d24833dc40cd1fe9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242363"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499228"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Hantera lagrings konto nycklar med Key Vault och Azure CLI
 > [!IMPORTANT]
@@ -32,7 +32,7 @@ Tänk på följande när du använder funktionen för hanterad lagrings konto ny
 - Endast ett enda Key Vault-objekt bör hantera lagrings konto nycklar. Tillåt inte nyckel hantering från flera objekt.
 - Återskapa nycklar med hjälp av Key Vault. Återskapa inte dina lagrings konto nycklar manuellt.
 
-## <a name="service-principal-application-id"></a>Program-ID för tjänstens huvud namn
+## <a name="service-principal-application-id"></a>Program-ID för tjänstens huvudnamn
 
 En Azure AD-klient tillhandahåller varje registrerat program med ett [huvud namn för tjänsten](../../active-directory/develop/developer-glossary.md#service-principal-object). Tjänstens huvud namn fungerar som program-ID, som används vid konfiguration av auktorisering för åtkomst till andra Azure-resurser via Azure RBAC.
 
@@ -42,21 +42,21 @@ Key Vault är ett Microsoft-program som är förregistrerat i alla Azure AD-klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure, offentlig | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Övrigt  | Valfri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Annat  | Valfri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här guiden måste du först göra följande:
 
 - [Installera Azure CLI](/cli/azure/install-azure-cli).
-- [Skapa ett nyckel valv](quick-create-cli.md)
+- [Skapa ett nyckelvalv](quick-create-cli.md)
 - [Skapa ett Azure Storage-konto](../../storage/common/storage-account-create.md?tabs=azure-cli). Lagrings konto namnet får bara innehålla gemena bokstäver och siffror. Namnet måste innehålla mellan 3 och 24 tecken.
       
 ## <a name="manage-storage-account-keys"></a>Hantera lagrings konto nycklar
 
 ### <a name="connect-to-your-azure-account"></a>Anslut till ditt Azure-konto
 
-Autentisera din Azure CLI-session med [AZ-inloggnings](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) kommandona.
+Autentisera din Azure CLI-session med [AZ-inloggnings](/powershell/module/az.accounts/connect-azaccount) kommandona.
 
 ```azurecli-interactive
 az login

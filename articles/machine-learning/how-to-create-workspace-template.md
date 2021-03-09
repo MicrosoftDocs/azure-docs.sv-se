@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488077"
+ms.locfileid: "102503189"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Använd en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning
 
@@ -30,7 +30,7 @@ Mer information finns i [distribuera ett program med Azure Resource Manager-mall
 
 * En **Azure-prenumeration**. Om du inte har en sådan kan du prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Om du vill använda en mall från en CLI behöver du antingen [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) eller [Azure CLI](/cli/azure/install-azure-cli).
+* Om du vill använda en mall från en CLI behöver du antingen [Azure PowerShell](/powershell/azure/) eller [Azure CLI](/cli/azure/install-azure-cli).
 
 * Vissa scenarier kräver att du öppnar ett support ärende. De här scenarierna är:
 

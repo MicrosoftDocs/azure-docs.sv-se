@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c73f6884a0bf9dc1e12e97439166c8aeabe6e35a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587967"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504566"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Distribuera diagnostikverktyget för Windows Virtual Desktop (klassiskt)
 
@@ -38,8 +38,8 @@ Du måste skapa en Azure Active Directory app-registrering och en Log Analytics 
 
 Du måste också installera dessa två PowerShell-moduler innan du börjar:
 
-- [Azure PowerShell-modul](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
-- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
+- [Azure PowerShell-modul](/powershell/azure/install-az-ps)
+- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0&preserve-view=true)
 
 Se till att du har ditt prenumerations-ID klart för när du loggar in.
 

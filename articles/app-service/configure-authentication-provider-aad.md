@@ -5,35 +5,31 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 377b7fd44b4f5afa2fd3892d9cb920484bc11c0b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630038"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509446"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Den här artikeln visar hur du konfigurerar Azure App Service eller Azure Functions att använda Azure Active Directory (Azure AD) som autentiseringsprovider.
+Den här artikeln visar hur du konfigurerar autentisering för Azure App Service eller Azure Functions så att appen loggar in användare med Azure Active Directory (Azure AD) som autentiseringsprovider.
 
-> [!NOTE]
-> Med Express Settings Flow konfigurerar du en AAD v1-programregistrering. Om du vill använda [Azure Active Directory v 2.0](../active-directory/develop/v2-overview.md) (inklusive [MSAL](../active-directory/develop/msal-overview.md)) följer du [anvisningarna för Avancerad konfiguration](#advanced).
-
-Följ dessa rekommendationer när du konfigurerar din app och autentisering:
-
-- Ge varje App Service app sina egna behörigheter och sitt medgivande.
-- Konfigurera varje App Service-app med en egen registrering.
-- Undvik att dela behörighet mellan miljöer genom att använda separata registrerings program för olika distributions platser. När du testar ny kod kan den här övningen hjälpa till att förhindra att problem påverkar produktions programmet.
-
-> [!NOTE]
-> Den här funktionen är för närvarande inte tillgänglig i användnings planen för Linux för Azure Functions
+Den här funktionen är för närvarande inte tillgänglig i användnings planen för Linux för Azure Functions.
 
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurera med Express inställningar
 
+**Express** alternativet är utformat för att göra det enkelt att aktivera autentisering och kräver bara några klick.
+
+Express inställningarna skapar automatiskt en program registrering som använder Azure Active Directory v1-slutpunkten. Följ de [avancerade konfigurations anvisningarna](#advanced)om du vill använda [Azure Active Directory v 2.0](../active-directory/develop/v2-overview.md) (inklusive [MSAL](../active-directory/develop/msal-overview.md)).
+
 > [!NOTE]
 > **Express** alternativet är inte tillgängligt för offentliga moln.
+
+Följ dessa steg om du vill aktivera autentisering med alternativet **Express** :
 
 1. I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan din app.
 2. Välj **autentisering/auktorisering** på i det vänstra navigerings fältet  >  .
@@ -58,27 +54,24 @@ Ett exempel på hur du konfigurerar Azure AD-inloggning för en webbapp som har 
 
 ## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurera med avancerade inställningar
 
-Du kan konfigurera inställningar för appar manuellt om du vill använda en app-registrering från en annan Azure AD-klient. För att slutföra den här anpassade konfigurationen:
-
-1. Skapa en registrering i Azure AD.
-2. Ange en del av registrerings informationen för att App Service.
+För att Azure AD ska fungera som autentiseringsprovider för din app måste du registrera din app med den. Express alternativet gör detta automatiskt åt dig. Med alternativet Avancerat kan du registrera din app manuellt, anpassa registreringen och manuellt lägga tillbaka registrerings informationen till App Service. Detta är användbart, till exempel om du vill använda en app-registrering från en annan Azure AD-klient än den som din App Service finns i.
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Skapa en app-registrering i Azure AD för din app service-app
 
-Du behöver följande information när du konfigurerar din App Service-app:
+Först ska du skapa din app-registrering. När du gör det samlar du in följande information som du behöver senare när du konfigurerar autentiseringen i App Service-appen:
 
 - Klient-ID
-- Klientorganisations-ID
+- Klient-ID:t
 - Klient hemlighet (valfritt)
 - Program-ID-URI
 
-Utför följande steg:
+Registrera appen genom att utföra följande steg:
 
 1. Logga in på [Azure Portal], Sök efter och välj **app Services** och välj sedan din app. Anteckna appens **URL**. Du använder den för att konfigurera din Azure Active Directory app-registrering.
-1. Välj **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering**.
+1. Välj **Azure Active Directory** på Portal-menyn och gå sedan till fliken **Appregistreringar** och välj **ny registrering**.
 1. På sidan **Registrera ett program** anger du ett **namn** för din app-registrering.
-1. I **omdirigerings-URI** väljer du **webb** och typ `<app-url>/.auth/login/aad/callback` . Ett exempel är `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. Välj **register**.
+1. I **omdirigerings-URI** väljer du **webb** och typ `<app-url>/.auth/login/aad/callback` . Till exempel `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Välj **Register** (Registrera).
 1. När appens registrering har skapats kopierar du **program-ID: t** och **katalogen (klient)-ID:** t för senare.
 1. Välj **Autentisering**. Under **implicit beviljande**, aktiverar du **ID-token** för att tillåta OpenID Connect-användarkonton från App Service.
 1. Valfritt Välj **anpassning**. På **Start sidans URL** anger du URL: en för din app service-app och väljer **Spara**.
@@ -113,13 +106,17 @@ Utför följande steg:
 
 Du är nu redo att använda Azure Active Directory för autentisering i din App Service-app.
 
-## <a name="configure-a-native-client-application"></a>Konfigurera ett internt klient program
+## <a name="configure-client-apps-to-access-your-app-service"></a>Konfigurera klient program för att få åtkomst till din App Service
 
-Du kan registrera interna klienter för att tillåta autentisering till webb-API: n som finns i din app med hjälp av ett klient bibliotek som **Active Directory-autentiseringsbibliotek**.
+I föregående avsnitt registrerade du App Service eller Azure-funktionen för att autentisera användare. I det här avsnittet beskrivs hur du registrerar interna klient-eller daemon-appar så att de kan begära åtkomst till API: er som exponeras av din App Service för användares räkning eller själva. Du behöver inte utföra stegen i det här avsnittet om du bara vill autentisera användare.
+
+### <a name="native-client-application"></a>Internt klient program
+
+Du kan registrera interna klienter för att begära åtkomst till App Service appens API: er för en inloggad användares räkning.
 
 1. I [Azure Portal]väljer du **Active Directory**  >  **Appregistreringar**  >  **ny registrering**.
 1. På sidan **Registrera ett program** anger du ett **namn** för din app-registrering.
-1. I **omdirigerings-URI** väljer du **offentlig klient (mobil & Desktop)** och anger URL: en `<app-url>/.auth/login/aad/callback` . Ett exempel är `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. I **omdirigerings-URI** väljer du **offentlig klient (mobil & Desktop)** och anger URL: en `<app-url>/.auth/login/aad/callback` . Till exempel `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
     > För ett Microsoft Store-program använder du [paket-sid](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) som URI i stället.
@@ -129,9 +126,9 @@ Du kan registrera interna klienter för att tillåta autentisering till webb-API
 1. Välj den app-registrering som du skapade tidigare för din App Service-app. Om du inte ser appens registrering ser du till att du har lagt till **user_impersonation** omfattning i [skapa en app-registrering i Azure AD för din app service-app](#register).
 1. Under **delegerade behörigheter** väljer du **user_impersonation** och väljer sedan **Lägg till behörigheter**.
 
-Nu har du konfigurerat ett internt klient program som kan komma åt din App Service-app för en användares räkning.
+Nu har du konfigurerat ett internt klient program som kan begära åtkomst till din App Service-app för en användares räkning.
 
-## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Konfigurera ett daemon-klientprogram för tjänst-till-tjänst-anrop
+### <a name="daemon-client-application-service-to-service-calls"></a>Daemon klient program (tjänst-till-tjänst-anrop)
 
 Ditt program kan hämta en token för att anropa ett webb-API som finns i din App Service-eller Function-app åt sig själv (inte för en användares räkning). Det här scenariot är användbart för icke-interaktiva daemon-program som utför uppgifter utan en inloggad användare. Den använder standard beviljast OAuth 2,0 [-klientautentiseringsuppgifter.](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
@@ -155,6 +152,14 @@ Detta gör att _alla_ klient program i Azure AD-klienten kan begära en åtkomst
 1. I appens mål App Service-eller Function-kod kan du nu kontrol lera att de förväntade rollerna finns i token (detta utförs inte av App Service autentisering/auktorisering). Mer information finns i [användar anspråk för åtkomst](app-service-authentication-how-to.md#access-user-claims).
 
 Nu har du konfigurerat ett daemon-klientcertifikat som kan komma åt din App Service-app med sin egen identitet.
+
+## <a name="best-practices"></a>Bästa praxis
+
+Oberoende av den konfiguration som du använder för att konfigurera autentisering, kommer följande bästa metoder att hålla din klient och dina program säkrare:
+
+- Ge varje App Service app sina egna behörigheter och sitt medgivande.
+- Konfigurera varje App Service-app med en egen registrering.
+- Undvik att dela behörighet mellan miljöer genom att använda separata registrerings program för olika distributions platser. När du testar ny kod kan den här övningen hjälpa till att förhindra att problem påverkar produktions programmet.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nästa steg
 

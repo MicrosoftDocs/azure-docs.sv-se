@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 73a9356de555e33996b92f05c3bbbabb651f1c9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c89ad69207a51a92b56d268c685aa2be4118cf1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014235"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507593"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Flytta interna Azure-Load Balancer till en annan region med hjälp av PowerShell
 
@@ -43,18 +43,18 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>Exportera mallen för det virtuella nätverket och distribuera från Azure PowerShell
 
-1. Logga in på din Azure-prenumeration med kommandot [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) och följ anvisningarna på skärmen:
+1. Logga in på din Azure-prenumeration med kommandot [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) och följ anvisningarna på skärmen:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2.  Hämta resurs-ID för det virtuella nätverk som du vill flytta till mål regionen och placera det i en variabel med [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+2.  Hämta resurs-ID för det virtuella nätverk som du vill flytta till mål regionen och placera det i en variabel med [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportera det virtuella käll nätverket till en. JSON-fil till den katalog där du kör kommandot [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Exportera det virtuella käll nätverket till en. JSON-fil till den katalog där du kör kommandot [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup):
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,7 +98,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
     ```
   
-7. Om du vill hämta regions koderna för regionen kan du använda Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) genom att köra följande kommando:
+7. Om du vill hämta regions koderna för regionen kan du använda Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation) genom att köra följande kommando:
 
     ```azurepowershell-interactive
 
@@ -196,20 +196,20 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
 9.  Spara **\<resource-group-name> . JSON** -filen.
 
-10. Skapa en resurs grupp i mål regionen som det virtuella mål-VNET ska distribueras med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
+10. Skapa en resurs grupp i mål regionen som det virtuella mål-VNET ska distribueras med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Distribuera den redigerade **\<resource-group-name> . JSON** -filen till resurs gruppen som skapades i föregående steg med [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Distribuera den redigerade **\<resource-group-name> . JSON** -filen till resurs gruppen som skapades i föregående steg med [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. Om du vill kontrol lera att resurserna har skapats i mål regionen använder du [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) och [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+12. Om du vill kontrol lera att resurserna har skapats i mål regionen använder du [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) och [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
     
     ```azurepowershell-interactive
 
@@ -224,19 +224,19 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
     ```
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportera den interna belastnings Utjämnings mal len och distribuera från Azure PowerShell
 
-1. Logga in på din Azure-prenumeration med kommandot [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) och följ anvisningarna på skärmen:
+1. Logga in på din Azure-prenumeration med kommandot [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) och följ anvisningarna på skärmen:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Hämta resurs-ID för den interna belastningsutjämnare som du vill flytta till mål regionen och placera den i en variabel med [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+2. Hämta resurs-ID för den interna belastningsutjämnare som du vill flytta till mål regionen och placera den i en variabel med [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
 
     ```azurepowershell-interactive
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportera den interna käll konfigurationen för belastnings utjämning till en JSON-fil till den katalog där du kör kommandot [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Exportera den interna käll konfigurationen för belastnings utjämning till en JSON-fil till den katalog där du kör kommandot [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup):
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
@@ -263,7 +263,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
              }
     ```
  
-6. Om du vill redigera värdet för det virtuella mål nätverket som flyttades ovan måste du först skaffa resurs-ID och sedan kopiera och klistra in det i **\<resource-group-name> . JSON** -filen.  Hämta ID: t med [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. Om du vill redigera värdet för det virtuella mål nätverket som flyttades ovan måste du först skaffa resurs-ID och sedan kopiera och klistra in det i **\<resource-group-name> . JSON** -filen.  Hämta ID: t med [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -306,7 +306,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
                 },
     ```
 
-11. Om du vill hämta regions koderna för regionen kan du använda Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) genom att köra följande kommando:
+11. Om du vill hämta regions koderna för regionen kan du använda Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation) genom att köra följande kommando:
 
     ```azurepowershell-interactive
 
@@ -315,7 +315,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
     ```
 12. Du kan också ändra andra parametrar i mallen om du väljer, och de är valfria beroende på dina krav:
     
-    * **SKU** – du kan ändra SKU: n för den interna belastningsutjämnaren i konfigurationen från standard till Basic eller Basic till standard genom att ändra egenskapen SKU- **sku**  >  **namn** i **\<resource-group-name> JSON** -filen:
+    * **SKU** – du kan ändra SKU: n för den interna belastningsutjämnaren i konfigurationen från standard till Basic eller Basic till standard genom att ändra egenskapen SKU-   >  **namn** i **\<resource-group-name> JSON** -filen:
 
         ```json
         "resources": [
@@ -433,12 +433,12 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
     
 13. Spara **\<resource-group-name> . JSON** -filen.
     
-10. Skapa eller en resurs grupp i mål regionen för den interna mål belastnings utjämning som ska distribueras med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). Den befintliga resurs gruppen ovan kan också återanvändas som en del av den här processen:
+10. Skapa eller en resurs grupp i mål regionen för den interna mål belastnings utjämning som ska distribueras med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Den befintliga resurs gruppen ovan kan också återanvändas som en del av den här processen:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Distribuera den redigerade **\<resource-group-name> . JSON** -filen till resurs gruppen som skapades i föregående steg med [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Distribuera den redigerade **\<resource-group-name> . JSON** -filen till resurs gruppen som skapades i föregående steg med [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
     ```azurepowershell-interactive
 
@@ -446,7 +446,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
     
     ```
 
-12. Om du vill kontrol lera att resurserna har skapats i mål regionen använder du [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) och [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+12. Om du vill kontrol lera att resurserna har skapats i mål regionen använder du [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) och [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
     
     ```azurepowershell-interactive
 
@@ -462,7 +462,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
 ## <a name="discard"></a>Ignorera 
 
-Om du vill börja om eller ta bort det virtuella nätverket och belastningsutjämnaren i målet efter distributionen, tar du bort resurs gruppen som skapades i målet och det flyttade virtuella nätverket och belastningsutjämnaren tas bort.  Om du vill ta bort resurs gruppen använder du [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Om du vill börja om eller ta bort det virtuella nätverket och belastningsutjämnaren i målet efter distributionen, tar du bort resurs gruppen som skapades i målet och det flyttade virtuella nätverket och belastningsutjämnaren tas bort.  Om du vill ta bort resurs gruppen använder du [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -472,7 +472,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>Rensa
 
-Om du vill genomföra ändringarna och slutföra flyttningen av NSG tar du bort käll NSG eller resurs gruppen, använder [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) eller [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) och [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
+Om du vill genomföra ändringarna och slutföra flyttningen av NSG tar du bort käll NSG eller resurs gruppen, använder [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) eller [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) och [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer)
 
 ```azurepowershell-interactive
 
