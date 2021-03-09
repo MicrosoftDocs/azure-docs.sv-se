@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358902"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488978"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migration guide: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -57,6 +57,8 @@ Du kan också använda [Microsoft Assessment and Planning Toolkit ("kart verkt
 Mer information om vilka verktyg som är tillgängliga för identifierings fasen finns i [tjänster och verktyg som är tillgängliga för data migrations scenarier](../../../dms/dms-tools-matrix.md). 
 
 ### <a name="assess"></a>Utvärdera 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 När data källorna har identifierats kan du utvärdera eventuella lokala SQL Server-instanser som kan migreras till den hanterade Azure SQL-instansen för att identifiera migreringsåtgärder eller kompatibilitetsproblem. 
 

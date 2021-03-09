@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 08fe9e56298218936e700518cdd150f54d7f01de
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: adb9ddee3d1caaac4c7530755b5e49ac50ab3181
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425744"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488876"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Självstudie: förbereda en webbapp för Azure Communication Services (Node.js)
 
@@ -161,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }     
+    }
 }
 ```
 
@@ -218,7 +218,7 @@ Filen bör nu se ut så här:
 }
 ```
 
-Du har lagt till kommandot som kan användas från NPM. 
+Du har lagt till kommandot som kan användas från NPM.
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="Skärm bild som visar ändringen av package.jspå.":::
 
@@ -327,7 +327,7 @@ Den här konfigurationen kommer att slås samman med `webpack.common.js` (där d
 I `package.json` lägger du till följande kod:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js" 
+"build:prod": "webpack --config webpack.prod.js"
 ```
 
 Filen bör se ut så här:
@@ -341,14 +341,14 @@ Filen bör se ut så här:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js" 
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.3",
-    "@azure/communication-common": "^1.0.0-beta.3"
+    "@azure/communication-calling": "^1.0.0-beta.6",
+    "@azure/communication-common": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -374,7 +374,7 @@ Kommandot skapar en `dist` mapp och en `app.js` statisk fil för produktion som 
  
  
 ### <a name="deploy-your-app-to-azure-storage"></a>Distribuera din app till Azure Storage
- 
+
 Kopiera `index.html` och `app.css` till `dist` mappen.
 
 I `dist` mappen skapar du en fil och namnger den `404.html` . Kopiera följande markeringar till filen:

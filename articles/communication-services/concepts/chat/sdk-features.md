@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ef013d97be8a5decbee46d25752ced7bd622a646
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9611a854c6dad29842f1652580da5fd1d449cb3f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657782"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485849"
 ---
 # <a name="chat-client-library-overview"></a>Översikt över klientbiblioteket för chatt
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Azure Communication Services Chat-klient bibliotek kan användas för att lägga till omfattande chatt i real tid till dina program.
 
@@ -42,7 +45,7 @@ I följande lista visas en uppsättning funktioner som för närvarande är till
 |                   | Skicka och ta emot Skriv meddelanden när en medlem aktivt skriver ett meddelande i en chatt-tråd <br/> *Inte tillgängligt när det finns fler än 20 medlemmar i en chatt-tråd*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | Hämta alla meddelanden i en chatt-tråd <br/> *Unicode-emojis stöds*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | Skicka emojis som en del av meddelande innehållet                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Signalering i real tid (aktiverat av patentskyddat signal paket * *)| Få ett meddelande när en användare får ett nytt meddelande i en chatt-tråd som de är medlem i                                     | ✔️   | ❌    | ❌  | ❌  |
+|Real tids signalering (aktive rad av patentskyddat signal paket * *)| Få ett meddelande när en användare får ett nytt meddelande i en chatt-tråd som de är medlem i                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | Få ett meddelande när ett meddelande har redigerats av en annan medlem i en chatt-tråd som de är medlem i                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Få ett meddelande när ett meddelande har tagits bort av en annan medlem i en chatt-tråd som de är medlem i                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Få ett meddelande när en annan Chat-tråd medlem skriver                                                             | ✔️   | ❌    | ❌    | ❌  |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c5bdab2038f2f41c7240addaff99bd831d29f489
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643821"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488484"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Självstudie: integrera Dropbox Business med Azure Active Directory
 
@@ -38,9 +38,9 @@ För att komma igång behöver du följande objekt:
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
-* I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. Dropbox Business har stöd för **SP** -INITIERAd SSO
+* I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. Dropbox Business har stöd för **SP** -initierad SSO.
 
-* Dropbox Business har stöd för [Automatisk användar etablering och avetablering](dropboxforbusiness-tutorial.md)
+* Dropbox Business har stöd för [Automatisk användar etablering och avetablering](dropboxforbusiness-tutorial.md).
 
 > [!NOTE]
 > ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
@@ -82,11 +82,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. På sidan **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://www.dropbox.com/sso/<id>`
-
-    b. I text rutan **identifierare (enhets-ID)** anger du värdet: `Dropbox`
-
+    
+     b. I text rutan **identifierare (enhets-ID)** anger du värdet: `Dropbox`
+    
     > [!NOTE]
-    > Föregående inloggnings-URL är inte verkligt. Du uppdaterar värdet med den faktiska inloggnings-URL:en, som förklaras senare i självstudien.
+    > **Dropbox-inloggnings-ID: t** finns på Dropbox-webbplatsen i Dropbox > administratörs konsolen > inställningar > enkel inloggning > SSO-inloggnings-URL.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -137,23 +137,23 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 4. Klicka på **användarikonen** och välj fliken **Inställningar**.
 
-    ![Skärm bild som visar åtgärden "användar ikon" och "Inställningar" markerat.](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurera enkel inloggning")
+    ![Skärm bild som visar åtgärden "användar ikon" och "Inställningar" markerat.](./media/dropboxforbusiness-tutorial/configure-1.png "Konfigurera enkel inloggning")
 
 5. Klicka på **Administratörskonsol** i den vänstra navigeringsfönstret.
 
-    ![Skärm bild som visar "administrations konsolen" vald.](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurera enkel inloggning")
+    ![Skärm bild som visar "administrations konsolen" vald.](./media/dropboxforbusiness-tutorial/configure-2.png "Konfigurera enkel inloggning")
 
 6. I **Administratörskonsol** klickar du på **Inställningar** i det vänstra navigeringsfönstret.
 
-    ![Skärm bild som visar "Inställningar" valt.](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurera enkel inloggning")
+    ![Skärm bild som visar "Inställningar" valt.](./media/dropboxforbusiness-tutorial/configure-3.png "Konfigurera enkel inloggning")
 
 7. Välj alternativet **Enkel inloggning** under avsnittet **Autentisering**.
 
-    ![Skärm bild som visar avsnittet "autentisering" med alternativet "enkel inloggning" markerat.](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurera enkel inloggning")
+    ![Skärm bild som visar avsnittet "autentisering" med alternativet "enkel inloggning" markerat.](./media/dropboxforbusiness-tutorial/configure-4.png "Konfigurera enkel inloggning")
 
 8. I avsnittet **enkel inloggning** utför du följande steg:  
 
-    ![Skärm bild som visar konfigurations inställningarna för enkel inloggning.](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurera enkel inloggning")
+    ![Skärm bild som visar konfigurations inställningarna för enkel inloggning.](./media/dropboxforbusiness-tutorial/configure-5.png "Konfigurera enkel inloggning")
 
     a. Välj **obligatoriskt** som ett alternativ i list rutan för **enkel inloggning**.
 
@@ -174,7 +174,7 @@ I det här avsnittet skapas en användare som heter B. Simon i Dropbox Business.
 >[!Note]
 >Kontakta [Dropbox Business client support team](https://www.dropbox.com/business/contact) om du behöver skapa en användare manuellt
 
-### <a name="test-sso"></a>Testa SSO
+## <a name="test-sso"></a>Testa SSO
 
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
@@ -186,4 +186,4 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Dropbox-företag kan du använda sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Dropbox-företag kan du använda sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

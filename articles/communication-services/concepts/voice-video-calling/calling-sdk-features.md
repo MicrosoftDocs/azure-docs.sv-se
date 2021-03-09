@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 03/04/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 54f3f075e9bf8bce9d8fb01a28f0f81dd3a930aa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218425"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489284"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Det finns två olika familjer av att anropa klient bibliotek för *klienter* och *tjänster.* För närvarande är tillgängliga klient bibliotek avsedda för slut användar upplevelser: webbplatser och inbyggda appar.
 
@@ -28,12 +29,12 @@ Tjänst klient biblioteken är inte tillgängliga än och ger till gång till pl
 
 I följande lista presenteras de funktioner som för närvarande är tillgängliga i Azure Communication Services som anropar klient bibliotek.
 
-| Grupp med funktioner | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Grupp med funktioner | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Kärn funktioner | Placera ett ett-till-ett-samtal mellan två användare                                                                           | ✔️   | ✔️            | ✔️  
-|                   | Placera ett grupp samtal med fler än två användare (upp till 350 användare)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | Marknadsför ett ett-till-ett-samtal med två användare i ett grupp samtal med fler än två användare                                 | ✔️   | ✔️            | ✔️ 
-|                   | Delta i ett grupp anrop efter att det har startat                                                                              | ✔️   | ✔️            | ✔️ 
+| Kärn funktioner | Placera ett ett-till-ett-samtal mellan två användare                                                                           | ✔️   | ✔️            | ✔️
+|                   | Placera ett grupp samtal med fler än två användare (upp till 350 användare)                                                       | ✔️   | ✔️            | ✔️
+|                   | Marknadsför ett ett-till-ett-samtal med två användare i ett grupp samtal med fler än två användare                                 | ✔️   | ✔️            | ✔️
+|                   | Delta i ett grupp anrop efter att det har startat                                                                              | ✔️   | ✔️            | ✔️
 |                   | Bjud in en annan VoIP-deltagare för att ansluta till ett pågående grupp anrop                                                       | ✔️   | ✔️            | ✔️
 |  Kontroll av Mid-anrop | Aktivera/inaktivera din video                                                                                              | ✔️   | ✔️            | ✔️ 
 |                   | Tyst/avljud av MIC                                                                                                     | ✔️   | ✔️            | ✔️         

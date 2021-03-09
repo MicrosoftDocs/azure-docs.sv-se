@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 66294e3c59c2252042e30864dd220683106cd574
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453809"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485392"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -29,6 +29,32 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 >
 > Du kan också delta! Delta i [Azure Sentinel Threat Hunters GitHub-communityn](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
+
+## <a name="march-2021"></a>Mars 2021
+
+- [Microsoft 365 Defender incident integrering](#microsoft-365-defender-incident-integration) (offentlig för hands version)
+- [Nya Microsoft Service Connectors med Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender incident integrering
+
+Med incident integrering med Azure Sentinels [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) kan du strömma alla M365D-incidenter till Azure Sentinel och hålla dem synkroniserade mellan båda portalerna. Incidenter från M365D (tidigare kallat Microsoft Threat Protection eller MTP) inkluderar alla associerade aviseringar, entiteter och relevant information, vilket ger dig tillräckligt med sammanhang för att utföra prioritering och förberedande undersökningar i Azure Sentinel. Incidenter i Sentinel förblir i dubbelriktat läge med M365D, så att du kan dra nytta av fördelarna med båda portalerna i incident undersökningen.
+
+Med både Azure Sentinel och Microsoft 365 Defender får du det bästa av båda världar. Du får insikter om att en SIEM ger dig en överblick över hela din organisations omfattning av informations resurser och även djupet på anpassade och skräddarsydda utgångs kraft som en XDR levererar för att skydda dina Microsoft 365-resurser, båda dessa koordinerade och synkroniserade för sömlös SOC-drift.
+
+Mer information finns i [Microsoft 365 Defender-integrering med Azure Sentinel](microsoft-365-defender-sentinel-integration.md).
+
+### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Nya Microsoft Service Connectors med Azure Policy
+
+[Azure policy](../governance/policy/overview.md) är en Azure-tjänst som gör att du kan använda principer för att övervaka och kontrol lera egenskaperna för en resurs. Användningen av principer garanterar att resurserna är kompatibla med dina IT-styrnings standarder.
+
+Bland egenskaperna för resurser som kan styras av principer skapas och hanteras diagnostik-och gransknings loggar. Azure Sentinel använder nu Azure Policy så att du kan använda en gemensam uppsättning inställningar för diagnostikloggar till alla (aktuella och framtida) resurser av en viss typ vars loggar du vill mata in i Azure Sentinel. Tack vare att du Azure Policy behöver du inte längre ange inställningar för diagnos loggar resurs per resurs.
+
+Azure Policy-baserade kopplingar är nu tillgängliga för följande Azure-tjänster:
+- [Azure Key Vault](connect-azure-key-vault.md) (offentlig för hands version)
+- [Azure Kubernetes service](connect-azure-kubernetes-service.md) (offentlig för hands version)
+- Azure SQL-databaser/-servrar (GA)
+
+Kunderna kommer fortfarande att kunna skicka loggarna manuellt för vissa instanser och behöver inte använda princip motorn.
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -86,7 +112,7 @@ Vår samling tredjeparts integreringar fortsätter att växa, med trettio koppli
 - [Symantec-Endpoint Protection](connect-data-sources.md)
 - [Thycotic Secret Server](connect-thycotic-secret-server.md)
 - [Trend Micro XDR](connect-data-sources.md)
-- [VMWare-ESXi](connect-vmware-esxi.md)
+- [VMware ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>UEBA insikter på sidan entitet
 

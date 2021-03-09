@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 4246ad48624eb0ca53fbe6bb747f02daa32119bf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e491c421f4af256b2e74fa61eb442d269bdb9e34
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432459"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487924"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Använda hanterade identiteter för att få åtkomst till Azure SQL Database eller Azure Synapse Analytics från ett Azure Stream Analytics jobb (förhands granskning)
 
@@ -52,6 +52,8 @@ Följande krävs för att använda den här funktionen:
 - En SQL-pool för Azure Synapse Analytics.
 
 - Ett Azure Storage-konto som är [konfigurerat för ditt Stream Analytics-jobb](azure-synapse-analytics-output.md).
+
+- Obs! Stream Analytics konto lagrings-MSI integrerad med Synapse SQL MSI är inte tillgänglig för tillfället.
 
 ---
 
@@ -171,7 +173,7 @@ Du kan också högerklicka på din Azure SQL-eller Azure Synapse-databas i SQL S
 Om du vill se alla behörigheter som du har lagt till i *ASA_JOB_NAME* användare kör du följande kommando i SSMS under den aktuella databasen: 
 
 ```sql
-SELECT dprin.name, dbprin.type_desc, dbperm.permission_name, dbperm.state_desc, dbperm.class_desc, object_name(dbperm.major_id) 
+SELECT dbprin.name, dbprin.type_desc, dbperm.permission_name, dbperm.state_desc, dbperm.class_desc, object_name(dbperm.major_id) 
 FROM sys.database_principals dbprin 
 LEFT JOIN sys.database_permissions dbperm 
 ON dbperm.grantee_principal_id = dbprin.principal_id 

@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e292aeb116bd33ce935c951b39015c54dd1a8bc
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690591"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486700"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,9 @@ Zonens redundanta version av hög tillgänglighets arkitektur för tjänst nivå
 
 > [!NOTE]
 > Generell användning-databaser med en storlek på 80 vCore kan orsaka försämrade prestanda med Zone-redundant konfiguration. Dessutom kan åtgärder som säkerhets kopiering, återställning, databas kopiering och konfiguration av Geo-DR-relationer uppleva sämre prestanda för alla enskilda databaser som är större än 1 TB. 
+> 
+> [!NOTE]
+> Förhands granskningen omfattas inte av en reserverad instans
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium och Affärskritisk Service Tier lokalt redundant tillgänglighet
 

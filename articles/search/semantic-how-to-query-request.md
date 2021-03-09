@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432952"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487158"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Skapa en semantisk fråga i Kognitiv sökning
 
@@ -172,12 +172,12 @@ Svar för ovanstående fråga returnerar följande matchning som den översta pl
 
 I följande tabell sammanfattas frågeparametrar som används i en semantisk fråga så att du kan se dem holistiskt. En lista över alla parametrar finns i [Sök efter dokument (rest-förhands granskning)](/rest/api/searchservice/preview-api/search-documents)
 
-| Parameter | Typ | Description |
+| Parameter | Typ | Beskrivning |
 |-----------|-------|-------------|
 | queryType | Sträng | Giltiga värden är enkel, fullständig och semantisk. Värdet "semantisk" krävs för semantiska frågor. |
 | queryLanguage | Sträng | Krävs för semantiska frågor. För närvarande är endast "en-US" implementerad. |
 | searchFields | Sträng | En kommaavgränsad lista över sökbara fält. Valfritt men rekommenderas. Anger de fält över vilka semantisk rangordning inträffar. </br></br>I motsats till enkla och fullständiga frågetyper, bestämmer ordningen i vilka fält som är prioritet.|
-| svar |Sträng | Valfritt fält för att ange om semantiska svar ingår i resultatet. För närvarande implementeras endast "extraktion". Svar kan konfigureras för att returnera högst fem. Det här exemplet "extraktioning|count3 "" visar antalet tre svar. Standard är 1.|
+| svar |Sträng | Valfritt fält för att ange om semantiska svar ingår i resultatet. För närvarande implementeras endast "extraktion". Svar kan konfigureras för att returnera högst fem. Standardvärdet är ett. Det här exemplet visar antalet tre svar: "extraherings \| count3". |
 
 ## <a name="query-with-search-explorer"></a>Fråga med Sökutforskaren
 
@@ -186,7 +186,7 @@ Följande fråga riktar sig till det inbyggda exempel indexet för hotell med AP
 ### <a name="with-querytypesemantic"></a>Med frågetyp = semantisk
 
 ```json
-search=I want a nice hotel on the water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
+search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
 ```
 
 De första resultaten är följande.

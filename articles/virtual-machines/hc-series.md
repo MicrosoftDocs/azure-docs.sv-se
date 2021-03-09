@@ -1,25 +1,25 @@
 ---
 title: HC-serien – Azure Virtual Machines
 description: Specifikationer för virtuella datorer i HC-serien.
-author: ju-shim
+author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: daca619affa0f5f177ccddbc08f26e73bd5086e3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 630d4ab1e20e92cc9dbe3881469df7f209078fba
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439994"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485709"
 ---
 # <a name="hc-series"></a>HC-serien
 
 Virtuella datorer i HC-serien är optimerade för program som drivs av kompakt beräkning, till exempel implicit ändlig analys av element, molekyl Dynamics och beräknings kemi. Virtuella HC-funktioner 44 Intel Xeon platina 8168 processor kärnor, 8 GB RAM-minne per CPU-kärna och ingen hyperthreading. Intel Xeon platina-plattformen stöder Intels omfattande eko system med program varu verktyg som Intel Math kernel-bibliotek och avancerade funktioner för vektor bearbetning, till exempel AVX-512.
 
-Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtuella datorerna är anslutna i ett icke-blockerande fat-träd för optimerad och konsekvent RDMA-prestanda. De här virtuella datorerna har stöd för anpassningsbar Routning och dynamisk ansluten transport (DCT, i tillägg till standard RC och UD transporter). Dessa funktioner förbättrar programmets prestanda, skalbarhet och konsekvens och användningen av dem rekommenderas.
+Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtuella datorerna är anslutna i ett icke-blockerande fat-träd för optimerad och konsekvent RDMA-prestanda. De här virtuella datorerna har stöd för anpassningsbar Routning och dynamisk ansluten transport (DCT, i tillägg till standard RC och UD transporter). Dessa funktioner förbättrar programmets prestanda, skalbarhet och konsekvens, och användningen rekommenderas. 
 
 [ACU](acu.md): 297-315<br>
 [Premium Storage](premium-storage-performance.md): stöds<br>
@@ -27,7 +27,7 @@ Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtue
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
-[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds ([Läs mer](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965) om prestanda och potentiella problem)<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 
 <br>
@@ -35,6 +35,10 @@ Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtue
 | Storlek | Virtuell processor | Processor | Minne (GiB) | Minnes bandbredd GB/s | Bas processor frekvens (GHz) | Frekvens för alla kärnor (GHz, högsta) | Frekvens för enkla kärnor (GHz, hög) | RDMA-prestanda (GB/s) | MPI-stöd | Temp-lagring (GiB) | Maximalt antal datadiskar | Högsta Ethernet-virtuella nätverkskort |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon platina 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Alla | 700 | 4 | 8 |
+
+Läs mer om den underliggande [arkitekturen, VM-topologin](./workloads/hpc/hc-series-overview.md) och förväntade [prestanda](./workloads/hpc/hc-series-performance.md) för den virtuella HC-serien.
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -49,7 +53,6 @@ Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtue
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [att konfigurera dina virtuella datorer](./workloads/hpc/configure.md), [Aktivera INFINIBAND](./workloads/hpc/enable-infiniband.md), [Konfigurera MPI](./workloads/hpc/setup-mpi.md)och optimera HPC-program för Azure på [HPC-arbetsbelastningar](./workloads/hpc/overview.md).
-- Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-community Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En övergripande arkitektur för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).
 - Lär dig mer om hur [Azure Compute Units (ACU)](acu.md) kan hjälpa dig att jämföra beräknings prestanda i Azure SKU: er.

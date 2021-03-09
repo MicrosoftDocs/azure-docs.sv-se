@@ -9,16 +9,15 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4acc1cb93fb04ba190173fea05805a1a4b833ffc
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690455"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488774"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Snabb start: Hämta ett telefonnummer med hjälp av Azure Portal
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Kom igång med Azure Communication Services genom att använda Azure Portal för att köpa ett telefonnummer.
@@ -40,15 +39,15 @@ Navigera till bladet med **telefonnummer** på resurs-menyn.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Skärm bild som visar telefon Sidan för kommunikations tjänst resursen.":::
 
-Tryck på **Get** -knappen för att starta guiden. I guiden på bladet **telefonnummer** får du hjälp med en serie frågor som hjälper dig att välja det telefonnummer som passar bäst för ditt scenario. 
+Tryck på **Get** -knappen för att starta guiden. I guiden på bladet **telefonnummer** får du hjälp med en serie frågor som hjälper dig att välja det telefonnummer som passar bäst för ditt scenario.
 
-Du måste först välja det **land/den region** där du vill etablera telefonnumret. När du har valt land/region måste du välja det **användnings fall** som bäst motsvarar dina behov. 
+Du måste först välja det **land/den region** där du vill etablera telefonnumret. När du har valt land/region måste du välja det **användnings fall** som bäst motsvarar dina behov.
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Skärm bild som visar vyn Hämta telefonnummer.":::
 
 ### <a name="select-your-phone-number-features"></a>Välj dina telefonnummers funktioner
 
-Konfigurationen av ditt telefonnummer är uppdelad i två steg: 
+Konfigurationen av ditt telefonnummer är uppdelad i två steg:
 
 1. Valet av [siffer typ](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. Valet av [nummer funktioner](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
