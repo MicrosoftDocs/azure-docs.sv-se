@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258226"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487958"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Felsöka konfigurationer med Kerberos-begränsad delegering för programproxy
 
@@ -161,7 +161,7 @@ Om du fortfarande inte kan göra något kan Microsoft Support hjälpa dig. Skapa
 ## <a name="other-scenarios"></a>Andra scenarier
 
 - Azure Application Proxy begär en Kerberos-biljett innan begäran skickas till ett program. Vissa program från tredje part liknar denna metod för autentisering. De här programmen förväntar sig att de mer konventionella förhandlingarna ska äga rum. Den första begäran är Anonym, vilket gör att programmet kan svara med de autentiseringstyper som stöds via en 401. Den här typen av Kerberos-förhandling kan aktive ras med de steg som beskrivs i det här dokumentet: [Kerberos-begränsad delegering för enkel inloggning](application-proxy-configure-single-sign-on-with-kcd.md).
-- Autentisering med flera hopp används ofta i scenarier där ett program skiktas, med en server del och klient del, där båda kräver autentisering, t. ex. SQL Server Reporting Services. Information om hur du konfigurerar multi-hop-scenariot finns i Support artikeln [Kerberos-begränsad delegering kan kräva protokoll över gång i scenarier med flera hopp](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Autentisering med flera hopp används ofta i scenarier där ett program skiktas, med en server del och klient del, där båda kräver autentisering, t. ex. SQL Server Reporting Services. Mer information finns i [så här konfigurerar du Kerberos-begränsad delegering för proxyservrar för webb registrering](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation).
 
 ## <a name="next-steps"></a>Nästa steg
 

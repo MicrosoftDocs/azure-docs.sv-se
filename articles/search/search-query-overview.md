@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043022"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487125"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
 
@@ -24,10 +24,11 @@ I Kognitiv sökning är en fråga en fullständig specifikation av en tur och re
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ Parametrar som används vid frågekörningen är:
 
 + **`queryType`** ställer in parsern, som är antingen [standardvärdet för enkel fråga](search-query-simple-examples.md) (optimal för full texts ökning) eller den [fullständiga Lucene-frågeuttrycket](search-query-lucene-examples.md) som används för avancerade fråge konstruktioner som reguljära uttryck, närhets sökning, fuzzy och jokertecken, för att ge några.
 
++ **`searchMode`** Anger om matchningar baseras på alla kriterier eller kriterier i uttrycket. Standardvärdet är any.
+
 + **`search`** innehåller matchnings kriterier, vanligt vis hela termer eller fraser, med eller utan operatorer. Alla fält som har attribut som *sökbara* i index schemat är en kandidat för den här parametern.
 
-+ **`searchFields`** begränsar frågans körning till vissa sökbara fält.
++ **`searchFields`** begränsar frågans körning till vissa sökbara fält. Under utvecklingen är det bra att använda samma fält lista för Select och search. Annars kan en matchning baseras på fält värden som du inte kan se i resultaten, vilket skapar en osäkerhet på varför dokumentet returnerades.
 
 Parametrar som används för att forma svaret:
 
@@ -114,4 +117,4 @@ Granska exemplen för varje syntax för en närmare titt på frågekörningen. O
 
 + [Enkla exempelfrågor](search-query-simple-examples.md)
 + [Exempel på Lucene-syntax för att skapa avancerade frågor](search-query-lucene-examples.md)
-+ [Så här fungerar fulltextsökning i Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Hur full texts ökning fungerar i Azure kognitiv sökning](search-lucene-query-architecture.md)git

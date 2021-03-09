@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: b471e113a7e5ae2277e275d53ff8ac8ca9187d1d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 23b534f1ccbd51b028beeee173e5c3e0accd47a3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731242"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med PrinterLogic SaaS
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera PrinterLogic-SaaS med A
 * Gör det möjligt för användarna att logga in automatiskt till PrinterLogic SaaS med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -37,10 +37,10 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* PrinterLogic SaaS stöder **SP-och IDP** -INITIERAd SSO
-* PrinterLogic SaaS stöder **just-in-Time** User-etablering
+* PrinterLogic SaaS har stöd för **SP-och IDP** -initierad SSO.
+* PrinterLogic SaaS stöder **just-in-Time** User-etablering.
 
-## <a name="adding-printerlogic-saas-from-the-gallery"></a>Lägga till PrinterLogic SaaS från galleriet
+## <a name="add-printerlogic-saas-from-the-gallery"></a>Lägg till PrinterLogic SaaS från galleriet
 
 Om du vill konfigurera integreringen av PrinterLogic-SaaS i Azure AD måste du lägga till PrinterLogic SaaS från galleriet till listan över hanterade SaaS-appar.
 
@@ -116,7 +116,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -146,17 +146,16 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 #### <a name="sp-initiated"></a>SP initierad:
 
-* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till AskYourTeam-inloggnings-URL där du kan starta inloggnings flödet.  
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till PrinterLogic SaaS-inloggnings-URL där du kan starta inloggnings flödet.  
 
-* Gå till AskYourTeam-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
+* Gå till PrinterLogic SaaS-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
 #### <a name="idp-initiated"></a>IDP initierad:
 
-* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den AskYourTeam som du har konfigurerat SSO för. 
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den PrinterLogic-SaaS som du ställer in SSO för. 
 
-Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen AskYourTeam i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på AskYourTeam som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
-
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen PrinterLogic SaaS i Mina appar, om det kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du loggas in automatiskt på PrinterLogic-SaaS som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat PrinterLogic SaaS kan du framtvinga sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat PrinterLogic SaaS kan du framtvinga sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

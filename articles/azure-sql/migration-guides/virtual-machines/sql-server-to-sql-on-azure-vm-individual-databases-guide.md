@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797875"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488262"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Guide för migrering: SQL Server till SQL Server på virtuella Azure-datorer 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Ytterligare identifierings verktyg finns i [tjänster och verktyg](../../../dms/
 
 
 ### <a name="assess"></a>Utvärdera
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 När du har identifierat alla data källor använder du [Data Migration Assistant (DMA)](/sql/dma/dma-overview) för att utvärdera lokala SQL Server-instanser migreras till en instans av SQL Server på den virtuella Azure-datorn för att förstå luckorna mellan käll-och mål instanserna. 
 
@@ -123,7 +125,7 @@ Följ dessa steg om du vill utföra en standardmigrering med säkerhets kopierin
 1. Pausa/stoppa alla program som använder databaser som är avsedda för migrering. 
 1. Se till att användar databaserna är inaktiva med [ett enda användarläge](/sql/relational-databases/databases/set-a-database-to-single-user-mode). 
 1. Utför en fullständig säkerhets kopiering av databasen till en lokal plats.
-1. Kopiera dina lokala säkerhets kopierings filer till den virtuella datorn med hjälp av fjärr skrivbord, [Azure datautforskaren](/azure/data-explorer/data-explorer-overview)eller [kommando rads verktyget AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (> 2 TB säkerhets kopiering rekommenderas).
+1. Kopiera dina lokala säkerhets kopior till den virtuella datorn med hjälp av fjärr skrivbord, [Azure datautforskaren](/azure/data-explorer/data-explorer-overview)eller [kommando rads verktyget AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (> 2 – TB säkerhets kopiering rekommenderas).
 1. Återställ fullständiga säkerhets kopieringar av databasen till SQL Server på den virtuella Azure-datorn.
 
 ### <a name="log-shipping--minimize-downtime"></a>Logg överföring (minimera stillestånds tid)
@@ -133,7 +135,7 @@ Följ dessa steg för att utföra en minimal nedtid-migrering med säkerhets kop
 1. Konfigurera anslutningen till att rikta SQL Server på virtuella Azure-datorer, baserat på dina krav. Se [ansluta till en SQL Server virtuell dator på Azure (Resource Manager)](../../virtual-machines/windows/ways-to-connect-to-sql.md).
 1. Se till att lokala användar databaser som ska migreras finns i fullständig eller Mass återställnings modell.
 1. Utför en fullständig säkerhets kopiering av databasen till en lokal plats och ändra eventuella befintliga säkerhets kopierings jobb som ska användas [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) nyckelord för att bevara logg kedjan.
-1. Kopiera dina lokala säkerhets kopierings filer till den virtuella datorn med hjälp av fjärr skrivbord, [Azure datautforskaren](/azure/data-explorer/data-explorer-overview)eller [kommando rads verktyget AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (>1 TB säkerhets kopiering rekommenderas).
+1. Kopiera dina lokala säkerhets kopior till den virtuella datorn med hjälp av fjärr skrivbord, [Azure datautforskaren](/azure/data-explorer/data-explorer-overview)eller [kommando rads verktyget AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (>1 TB säkerhets kopiering rekommenderas).
 1. Återställ fullständiga säkerhets kopieringar av databaser på SQL Server på den virtuella Azure-datorn.
 1. Konfigurera [logg överföring](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) mellan lokala databaser och mål SQL Server på den virtuella Azure-datorn. Se till att du inte initierar om databaserna eftersom det redan har slutförts i föregående steg.
 1. **Klipp ut över** till mål servern. 

@@ -3,21 +3,21 @@ title: Självstudie – distribuera och konfigurera VMware HCX
 description: Lär dig hur du distribuerar och konfigurerar en VMware HCX-lösning för ditt privata moln i Azure VMware-lösningen.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e1df53a7aea0b7642828bba80cd7237e26a7182f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728237"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488313"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Distribuera och konfigurera VMware HCX
 
 Den här artikeln visar hur du distribuerar och konfigurerar den lokala VMware HCX-anslutningen för ditt privata moln i Azure VMware-lösningen. Med VMware HCX kan du migrera dina VMware-arbetsbelastningar till Azure VMware-lösningen och andra anslutna platser via olika typer av migrering. Eftersom Azure VMware-lösningen distribuerar och konfigurerar HCX Cloud Manager måste du ladda ned, aktivera och konfigurera HCX-anslutningen i ditt lokala VMware-datacenter.
 
-VMware HCX Advanced Connector förinstalleras i Azure VMware-lösningen. Det har stöd för upp till tre plats anslutningar (lokalt till molnet eller molnet till molnet). Om du behöver fler än tre plats anslutningar skickar du en [supportbegäran](https://portal.azure.com/#create/Microsoft.Support) för att aktivera [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) -tillägget. Tillägget är för närvarande en för hands version. 
+VMware HCX Advanced Connector förinstalleras i Azure VMware-lösningen. Det har stöd för upp till tre plats anslutningar (lokalt till molnet eller molnet till molnet). Om du behöver fler än tre plats anslutningar skickar du en [supportbegäran](https://portal.azure.com/#create/Microsoft.Support) för att aktivera [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) -tillägget.  
 
 >[!TIP]
->Även om verktyget för maximala VMware-konfiguration beskriver plats par maximalt 25 mellan den lokala anslutningen och moln hanteraren, begränsar licensieringen detta till tre för avancerad och 10 för Enterprise Edition.
+>Även om verktyget för maximala VMware-konfiguration beskriver plats par maximalt 25 mellan den lokala anslutningen och moln hanteraren, begränsar licensen detta till tre för HCX Advanced och 10 för HCX Enterprise Edition.
 
 >[!NOTE]
 >VMware HCX Enterprise är tillgängligt med Azure VMware-lösningen som en för hands versions tjänst. Det är kostnads fritt och omfattas av villkor för en för hands versions tjänst. När VMware HCX Enterprise-tjänsten är allmänt tillgänglig får du ett meddelande om 30 dagar på att faktureringen ska växlas över. Du kan också välja att stänga av eller avanmäla tjänsten. Det finns ingen enkel degradering-sökväg från VMware HCX Enterprise till VMware HCX Advanced. Om du bestämmer dig för att nedgradera måste du distribuera om, vilket uppstår drift stopp.
@@ -58,9 +58,9 @@ Se till att din lokala vSphere-miljö (käll miljö) uppfyller [minimi kraven](h
 
 ### <a name="network-and-ports"></a>Nätverk och portar
 
-* [Azure ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md) konfigureras mellan lokala och Azure VMware-lösningar SDDC ExpressRoute-kretsar.
+* [Azure ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md) konfigureras mellan lokala och Azure VMware-lösningar privata moln ExpressRoute-kretsar.
 
-* [Alla portar som krävs](https://ports.vmware.com/home/VMware-HCX) är öppna för kommunikation mellan lokala komponenter och Azure VMware-SDDC.
+* [Alla portar som krävs](https://ports.vmware.com/home/VMware-HCX) är öppna för kommunikation mellan lokala komponenter och Azure VMware-lösningen privat.
 
 ### <a name="ip-addresses"></a>IP-adresser
 
@@ -169,7 +169,7 @@ När tjänsterna har startats om visas vCenter som visas som grönt på skärmen
 En översikt över slut punkt till slut punkt för den här proceduren finns i [Azure VMware-lösningen: Aktivera HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) video.
 
    > [!IMPORTANT]
-   > Oavsett om du använder VMware HCX Advanced eller VMware HCX Enterprise kan du behöva installera korrigeringen från VMwares KB- [artikel 81558](https://kb.vmware.com/s/article/81558). 
+   > Oavsett om du använder HCX Advanced eller HCX Enterprise kan du behöva installera korrigeringen från VMwares KB- [artikel 81558](https://kb.vmware.com/s/article/81558). 
 
 ## <a name="configure-the-vmware-hcx-connector"></a>Konfigurera VMware HCX-anslutningen
 
@@ -282,7 +282,7 @@ En översikt över slut punkt till slut punkt av den här proceduren finns i [Az
 
 ### <a name="create-a-service-mesh"></a>Skapa ett service nät
 
-Nu är det dags att konfigurera ett service nät mellan lokala och Azure VMware-SDDC.
+Nu är det dags att konfigurera ett service nät mellan lokalt och privat moln i Azure VMware-lösningen.
 
 
 
@@ -369,7 +369,7 @@ En översikt över slut punkt till slut punkt av den här proceduren finns i [Az
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om status för apparatens Interconnect-tunnel är **upp** och grön kan du migrera och skydda virtuella datorer i Azure VMware-lösningen med VMware HCX. Azure VMware-lösningen stöder migrering av arbets belastning (med eller utan ett nätverks tillägg). Du kan fortfarande migrera arbets belastningar i din vSphere-miljö, tillsammans med lokala skapande av nätverk och distribution av virtuella datorer till dessa nätverk.  
+Om HCX Interconnect-tunnelns status är **upp** och grön, kan du migrera och skydda virtuella datorer i Azure VMware-lösningen med hjälp av VMware HCX. Azure VMware-lösningen stöder migrering av arbets belastning (med eller utan ett nätverks tillägg). Du kan fortfarande migrera arbets belastningar i din vSphere-miljö, tillsammans med lokala skapande av nätverk och distribution av virtuella datorer till dessa nätverk.  
 
 Mer information om hur du använder HCX finns i den tekniska dokumentationen för VMware:
 

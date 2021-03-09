@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Uppdateringshantering
 description: Den här artikeln innehåller en översikt över den Uppdateringshantering funktionen som implementerar uppdateringar för dina Windows-och Linux-datorer.
 services: automation
 ms.subservice: update-management
-ms.date: 01/22/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8c25e54143f0a0815a523bb923b7a7442de2a3d2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587872"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485681"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -78,7 +78,7 @@ I följande tabell visas de operativ system som stöds för uppdaterings bedömn
 |Windows Server 2008 R2 (RTM och SP1 standard)| Uppdateringshantering stöder utvärderingar och korrigeringar för det här operativ systemet. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) stöds för Windows Server 2008 R2. |
 |CentOS 6 och 7 (x64)      | Linux-agenter kräver åtkomst till ett uppdaterings lager. Klassificerings-baserad uppdatering kräver `yum` att returnera säkerhets data som CentOS inte har i sina RTM-versioner. Mer information om klassificerings-baserad uppdatering på CentOS finns i [uppdaterings klassificeringar i Linux](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 och 7 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager.        |
-|SUSE Linux Enterprise Server 12 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager.        |
+|SUSE Linux Enterprise Server 12, 15 och 15,1 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager. Python 3 krävs på datorn för SUSE 15. x.      |
 |Ubuntu 14,04 LTS, 16,04 LTS och 18,04 LTS (x64)      |Linux-agenter kräver åtkomst till ett uppdaterings lager.         |
 
 > [!NOTE]
@@ -167,11 +167,11 @@ Mer information om uppdateringar av hanterings paket finns i [anslut Operations 
 
 I följande tabell beskrivs de anslutna källor som Uppdateringshantering stöder:
 
-| Ansluten källa | Stöds | Description |
+| Ansluten källa | Stöds | Beskrivning |
 | --- | --- | --- |
-| Windows-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
-| Linux-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
-| Operations Manager-hanteringsgrupp |Yes |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| Windows-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
+| Linux-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
+| Operations Manager-hanteringsgrupp |Ja |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
 
 ### <a name="collection-frequency"></a>Insamlingsfrekvens
 

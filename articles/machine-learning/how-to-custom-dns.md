@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871103"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487992"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Så här använder du din arbetsyta med en anpassad DNS-server
 
@@ -52,7 +52,7 @@ Följande lista innehåller de fullständigt kvalificerade domän namnen (FQDN) 
     > [!NOTE]
     > Beräknings instanser kan bara nås från det virtuella nätverket.
     
-### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>Dessa FQDN används i alla andra regioner
+### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>Dessa FQDN används i alla andra offentliga regioner
 Följande lista innehåller de fullständigt kvalificerade domän namnen (FQDN) som används av din arbets yta:
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
@@ -63,6 +63,17 @@ Följande lista innehåller de fullständigt kvalificerade domän namnen (FQDN) 
     > [!NOTE]
     > Beräknings instanser kan bara nås från det virtuella nätverket.
 
+### <a name="azure-china-21vianet-regions"></a>Azure Kina 21Vianet-regioner
+
+Följande FQDN är för Azure Kina 21Vianet-regioner:
+
+* `<workspace-GUID>.workspace.<region>.cert.api.ml.azure.cn`
+* `<workspace-GUID>.workspace.<region>.api.ml.azure.cn`
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
+
+    > [!NOTE]
+    > Arbets ytans namn för detta FQDN kan trunkeras. Trunkering görs för att behålla FQDN som är mindre än eller lika med 63 tecken.
+* `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>Hitta IP-adresserna
 
 Använd någon av följande metoder för att hitta de interna IP-adresserna för FQDN i VNet:
@@ -94,7 +105,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ---
 
-Informationen som returneras från alla metoder är densamma. en lista över FQDN och privat IP-adress för resurserna.
+Informationen som returneras från alla metoder är densamma. en lista över FQDN och privat IP-adress för resurserna. Följande exempel är från en global Azure-region:
 
 | FQDN | IP-adress |
 | ----- | ----- |
@@ -112,6 +123,12 @@ Informationen som returneras från alla metoder är densamma. en lista över FQD
 >
 > För alla dessa IP-adresser använder du samma adress som de `*.api.azureml.ms` poster som returneras från föregående steg.
 
+I följande tabell visas exempel på IP-adresser från Azure Kina 21Vianet-regioner:
+
+| FQDN | IP-adress |
+| ----- | ----- |
+| `52882c08-ead2-44aa-af65-08a75cf094bd.workspace.chinaeast2.api.ml.azure.cn` | `10.1.0.5` |
+| `ml-mype-pltest-chinaeast2-52882c08-ead2-44aa-af65-08a75cf094bd.notebooks.chinacloudapi.cn` | `10.1.0.6` |
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om hur du använder Azure Machine Learning med ett virtuellt nätverk finns i [Översikt över virtuella nätverk](how-to-network-security-overview.md).

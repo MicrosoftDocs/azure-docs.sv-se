@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454234"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489845"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -752,7 +752,7 @@ Du kan konfigurera SAP för att [Skicka idocs i paket](https://help.sap.com/view
 
 Här är ett exempel som visar hur du extraherar enskilda IDocs från ett paket med hjälp av [ `xpath()` funktionen](./workflow-definition-language-functions-reference.md#xpath):
 
-1. Innan du börjar måste du ha en Logic-app med en SAP-utlösare. Om du inte redan har den här Logic-appen följer du de föregående stegen i det här avsnittet för att [Konfigurera en Logic app med en SAP-utlösare](#receive-message-from-sap).
+1. Innan du börjar måste du ha en Logic-app med en SAP-utlösare. Om du inte redan har det här i din Logic-app följer du stegen i det här avsnittet för att [ställa in en Logic app med en SAP-utlösare](#receive-message-from-sap).
 
     > [!IMPORTANT]
     > ID för SAP- **program** är Skift läges känsligt. Se till att du konsekvent använder samma fall format för ditt **program-ID** när du konfigurerar din Logic app och SAP-server. Annars kan du få följande fel i tRFC-övervakaren (T-Code SM58) när du försöker skicka en IDoc till SAP:
@@ -765,6 +765,14 @@ Här är ett exempel som visar hur du extraherar enskilda IDocs från ett paket 
    Exempel:
 
    ![Lägg till SAP-utlösare i Logic app](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. [Lägg till en svars åtgärd i din](/azure/connectors/connectors-native-reqres#add-a-response-action) Logi Kap par för att svara omedelbart med statusen för din SAP-begäran. Det är en bra idé att lägga till den här åtgärden direkt efter utlösaren för att frigöra kommunikations kanalen med SAP-servern. Välj en av följande status koder ( `statusCode` ) som ska användas i din svars åtgärd:
+
+    * **202 godtogs**, vilket innebär att begäran har godkänts för bearbetning, men att bearbetningen inte har slutförts ännu.
+
+    * **204 inget innehåll**, vilket innebär att servern har slutfört begäran och att det inte finns något ytterligare innehåll att skicka i svars nytto lastens brödtext. 
+
+    * **200 OK**. Den här status koden innehåller alltid en nytto Last, även om servern genererar en nytto last av längden noll. 
 
 1. Hämta rot namn området från XML-IDoc som din Logic app tar emot från SAP. Om du vill extrahera det här namn området från XML-dokumentet lägger du till ett steg som skapar en lokal sträng variabel och lagrar namn området med hjälp av ett `xpath()` uttryck:
 

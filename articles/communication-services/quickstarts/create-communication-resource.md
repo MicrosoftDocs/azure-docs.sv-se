@@ -10,18 +10,21 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9324ca3b347550c2514a506c5a143b6e963e116f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691781"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487329"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Snabb start: skapa och hantera kommunikations tjänst resurser
- 
+
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med klient biblioteket för .net-hantering. Med hanterings klient biblioteket och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i klient biblioteken är tillgängliga i Azure Portal. 
+
+
+Kom igång med Azure Communication Services genom att tillhandahålla din första kommunikations tjänst resurs. Kommunikations tjänst resurser kan tillhandahållas via [Azure Portal](https://portal.azure.com) eller med klient biblioteket för .net-hantering. Med hanterings klient biblioteket och Azure Portal kan du skapa, konfigurera, uppdatera och ta bort resurser och gränssnitt med [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azures distributions-och hanterings tjänst. Alla funktioner i klient biblioteken är tillgängliga i Azure Portal.
 
 > [!WARNING]
 > Observera att även om kommunikations tjänsterna är tillgängliga i flera geografiska områden, måste resursen ha en data plats inställd på "USA" för att få ett telefonnummer. Observera också att kommunikations resurser inte kan överföras till en annan prenumeration under den offentliga för hands versionen.
@@ -40,7 +43,7 @@ Kom igång med Azure Communication Services genom att tillhandahålla din först
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Åtkomst till anslutnings strängar och tjänst slut punkter
 
-Anslutnings strängar gör att klient biblioteken för kommunikations tjänster kan ansluta och autentisera till Azure. Du kan komma åt anslutnings tjänst anslutnings strängar och tjänst slut punkter från Azure Portal eller program mässigt med Azure Resource Manager-API: er. 
+Anslutnings strängar gör att klient biblioteken för kommunikations tjänster kan ansluta och autentisera till Azure. Du kan komma åt anslutnings tjänst anslutnings strängar och tjänst slut punkter från Azure Portal eller program mässigt med Azure Resource Manager-API: er.
 
 När du har navigerat till kommunikations tjänst resursen väljer du **nycklar** i navigerings menyn och kopierar **anslutnings strängen** eller **slut punkts** värden för användning av klient biblioteken för kommunikations tjänster. Observera att du har åtkomst till primära och sekundära nycklar. Detta kan vara användbart i scenarier där du vill ge tillfällig åtkomst till dina kommunikations tjänst resurser till en tredje part eller en utvecklings miljö.
 
@@ -49,7 +52,7 @@ När du har navigerat till kommunikations tjänst resursen väljer du **nycklar*
 Du kan också komma åt viktig information med Azure CLI:
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"    
+az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -103,7 +106,7 @@ När du har lagt till miljövariabeln så kör `source ~/.bash_profile` från ko
 
 Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta bort resursen eller resurs gruppen. Om du tar bort resurs gruppen raderas även andra resurser som är kopplade till den.
 
-Om du har ett telefonnummer som är tilldelat till resursen när resursen tas bort, släpps telefonnumret från din resurs automatiskt på samma gång. 
+Om du har ett telefonnummer som är tilldelat till resursen när resursen tas bort, släpps telefonnumret från din resurs automatiskt på samma gång.
 
 ## <a name="next-steps"></a>Nästa steg
 

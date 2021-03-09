@@ -1,25 +1,25 @@
 ---
 title: 'Självstudie: skydda nya resurser med lås'
 description: I den här självstudien använder du alternativen för resurs lås för Azure-ritningar skrivskyddade och tar inte bort för att skydda nyligen distribuerade resurser.
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915414"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485749"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Självstudie: skydda nya resurser med resurs lås för Azure-ritningar
 
-Med [resurs lås](../concepts/resource-locking.md)för Azure-ritningar kan du skydda nyligen distribuerade resurser från att manipuleras, även genom ett konto med _ägar_ rollen. Du kan lägga till det här skyddet i skiss definitionerna för resurser som skapats av en Azure Resource Manager mall (ARM-mall) artefakt.
+Med [resurs lås](../concepts/resource-locking.md)för Azure-ritningar kan du skydda nyligen distribuerade resurser från att manipuleras, även genom ett konto med _ägar_ rollen. Du kan lägga till det här skyddet i skiss definitionerna för resurser som skapats av en Azure Resource Manager mall (ARM-mall) artefakt. Skiss resurs låset anges under skiss tilldelningen.
 
 I den här självstudien utför du följande steg:
 
 > [!div class="checklist"]
 > - Skapa en skiss definition
 > - Markera skiss definitionen som **publicerad**
-> - Tilldela din skiss definition till en befintlig prenumeration
+> - Tilldela din skiss definition till en befintlig prenumeration (**Ange resurs lås**)
 > - Granska den nya resurs gruppen
 > - Ta bort tilldelningen för att ta bort låsen
 
@@ -56,6 +56,9 @@ Börja med att skapa skiss definitionen.
    1. Välj raden **Lägg till artefakt** under posten **RGtoLock** .
    1. Välj **Azure Resource Manager mall** under **artefakt typ**, ange **artefakt visnings namnet** till **StorageAccount** och lämna **beskrivningen** tom.
    1. På fliken **mall** klistrar du in följande arm-mall i redigerings rutan. När du har klistrat in mallen väljer du **Lägg till** för att lägga till artefakten i skissen.
+
+      > [!NOTE]
+      > I det här steget definieras de resurser som ska distribueras som låses av skiss resurs låset, men innehåller inte skiss resursens lås. Skiss resursens lås anges som en parameter för skiss tilldelningen.
 
    ```json
    {
@@ -142,6 +145,9 @@ När skiss definitionen har publicerats kan du tilldela den till en prenumeratio
    - **Lås tilldelning**
 
      Välj Lås läget **skrivskyddad** skiss. Mer information finns i [Låsa skissresurser](../concepts/resource-locking.md).
+
+     > [!NOTE]
+     > Det här steget konfigurerar skiss resurs låset på de nyligen distribuerade resurserna.
 
    - **Hanterad identitet**
 

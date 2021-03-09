@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 752f38c0a44d40f2bf7e7b5961dca7743fbf4b76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215059"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488043"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -36,7 +36,7 @@ Med Azures privata länk kan du ansluta till din arbets yta med en privat slut p
 * Du måste ha ett befintligt virtuellt nätverk för att skapa den privata slut punkten i. Du måste också [inaktivera nätverks principer för privata slut punkter](../private-link/disable-private-endpoint-network-policy.md) innan du lägger till den privata slut punkten.
 ## <a name="limitations"></a>Begränsningar
 
-* Det går inte att använda en Azure Machine Learning arbets yta med privat länk i Azure Government regioner eller Azure Kina 21Vianet-regioner.
+* Användning av en Azure Machine Learning arbets yta med privat länk är inte tillgänglig i Azure Government regionerna.
 * Om du aktiverar offentlig åtkomst för en arbets yta som skyddas med en privat länk och använder Azure Machine Learning Studio via det offentliga Internet, kan vissa funktioner, till exempel designern, inte komma åt dina data. Det här problemet uppstår när data lagras på en tjänst som skyddas bakom VNet. Till exempel ett Azure Storage konto.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Skapa en arbets yta som använder en privat slut punkt

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 41293f96246dd4badab000c4e7f936d825e7665a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691135"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485409"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Azure Cosmos DB s API för MongoDB (4,0-Server version): funktioner som stöds och syntax
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,6 +24,9 @@ Genom att använda Azure Cosmos DBs API för MongoDB kan du dra nytta av fördel
 ## <a name="protocol-support"></a>Protokollstöd
 
 De operatorer som stöds och eventuella begränsningar eller undantag anges nedan. Klientdrivrutiner som förstår dessa protokoll bör kunna ansluta till Cosmos DB:s API för MongoDB. När du använder Azure Cosmos DBs API för MongoDB-konton har de 3,6-versioner av kontona som har slut punkten i formatet, `*.mongo.cosmos.azure.com` medan 3,2-versionen av kontona har slut punkten i formatet `*.documents.azure.com` .
+
+> [!NOTE]
+> Den här artikeln listar de Server kommandon som stöds och omfattar inte funktioner på klient sidan. Klient sidans wrapper-funktioner som `deleteMany()` och `updateMany()` internt använder-och-Server- `delete()` `update()` kommandon. Funktioner som använder Server kommandon som stöds är kompatibla med Azure Cosmos DB s API för MongoDB.
 
 ## <a name="query-language-support"></a>Stöd för frågespråk
 

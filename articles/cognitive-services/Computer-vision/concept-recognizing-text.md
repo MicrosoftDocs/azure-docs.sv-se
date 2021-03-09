@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e0247560afa8229f4fa5c25ec7dfbbca4f7defb2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362802"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486106"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optisk teckenläsning (OCR)
 
@@ -133,17 +133,17 @@ Se följande exempel på ett lyckat JSON-svar:
 ```
 
 ## <a name="natural-reading-order-output-latin-only"></a>Naturlig Läs ordning för utdata (endast latinsk)
-Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)anger du i vilken ordning text raderna ska matas med `readingOrder` Frågeparametern. Använd `natural` för att se en mer användarvänlig läsnings ordning enligt följande exempel. Den här funktionen stöds bara för latinska språk.
+Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)anger du i vilken ordning text raderna ska matas med `readingOrder` Frågeparametern. Använd `natural` för att se en mer användarvänlig läsnings ordning enligt följande exempel. Den här funktionen stöds bara för latinska språk.
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="Exempel på OCR-Läs ordning":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Handskriven klassificering för text rader (endast latinsk)
-I API-svaret för [Read 3,2-förhands granskning](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) ingår att klassificera om varje textrad är av hand SKRIFTS format eller inte, tillsammans med en förtroende poäng. Den här funktionen stöds bara för latinska språk. I följande exempel visas den handskrivna klassificeringen för texten i bilden.
+I API-svaret för [Read 3,2-förhands granskning](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005) ingår att klassificera om varje textrad är av hand SKRIFTS format eller inte, tillsammans med en förtroende poäng. Den här funktionen stöds bara för latinska språk. I följande exempel visas den handskrivna klassificeringen för texten i bilden.
 
 :::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="Exempel på klassificering av OCR-handstil":::
 
 ## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Välj sidor eller sid intervall för text extrahering
-Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005), för stora flersidiga dokument, använder du `pages` Frågeparametern för att ange sid nummer eller sid intervall för att extrahera text från de sidorna. I följande exempel visas ett dokument med 10 sidor, med text som extraherats för båda fallen – alla sidor (1-10) och valda sidor (3-6).
+Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005), för stora flersidiga dokument, använder du `pages` Frågeparametern för att ange sid nummer eller sid intervall för att extrahera text från de sidorna. I följande exempel visas ett dokument med 10 sidor, med text som extraherats för båda fallen – alla sidor (1-10) och valda sidor (3-6).
 
 :::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Valda sidor-utdata":::
 
@@ -166,4 +166,4 @@ För lokal distribution kan du med hjälp av den [skrivskyddade Docker-behållar
 
 - Kom igång med [snabb starterna för Visuellt innehåll REST API eller klient biblioteket](./quickstarts-sdk/client-library.md).
 - Lär dig mer om att [läsa 3,1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
-- Läs mer om den [offentliga för hands versionen av läs 3,2 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) med stöd för totalt 73-språk.
+- Läs mer om den [offentliga för hands versionen av läs 3,2 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005) med stöd för totalt 73-språk.

@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 66a5ed65b0582aafd641473163e1b273d4a4263d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657153"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489658"
 ---
 # <a name="voice-and-video-concepts"></a>Begrepp inom röst- och videosamtal
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Du kan använda Azure Communication Services för att skapa och ta emot en till en eller grupp röst-och video samtal. Dina anrop kan göras till andra Internet-anslutna enheter och till vanliga telefoner. Du kan använda kommunikations tjänsterna Java Script, Android eller iOS klient bibliotek för att bygga program som gör att användarna kan prata med varandra i privata konversationer eller gruppera diskussioner. Azure Communication Services stöder anrop till och från tjänster eller robotar.
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455237"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488213"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -88,6 +88,7 @@ I följande tabell visas rekommenderade Migreringsverktyg:
 
 |Teknik | Beskrivning|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Med Azure Migrate för Azure SQL kan du identifiera och utvärdera din SQL data-fastighets i stor skala när du arbetar på VMware, vilket ger rekommendationer för Azure SQL-distribution, mål storlek och månads uppskattningar. | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Azure-tjänsten från första part som stöder migrering i offline-läge för program som kan ge stillestånds tid under migreringsprocessen. Till skillnad från kontinuerlig migrering i onlineläge kör offline mode-migrering en eng ång slöation av en fullständig säkerhets kopia av databasen från källan till målet. | 
 |[Inbyggd säkerhets kopiering och återställning](../../managed-instance/restore-sample-database-quickstart.md) | SQL-hanterad instans har stöd för återställning av interna SQL Server databas säkerhets kopior (. bak-filer), vilket gör det till det enklaste alternativet för migrering för kunder som kan ge fullständig databas säkerhets kopiering till Azure Storage. Fullständiga och differentiella säkerhets kopieringar stöds också och dokumenteras i [avsnittet migrerings till gångar](#migration-assets) längre fram i den här artikeln.| 
 |[Logg uppspelnings tjänsten (LRS)](../../managed-instance/log-replay-service-migrate.md) | Det här är en moln tjänst som är aktive rad för hanterad instans baserat på SQL Server logg överförings teknik, vilket gör det till ett flyttnings alternativ för kunder som kan tillhandahålla fullständiga, differentiella och logga databas säkerhets kopior till Azure Storage. LRS används för att återställa säkerhetskopierade filer från Azure Blob Storage till SQL-hanterad instans.| 

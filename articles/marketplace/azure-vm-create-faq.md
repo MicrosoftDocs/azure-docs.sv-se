@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 88ec58ca9bcfa5c64036d3b65e77f3248e26357d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d045af3b170d585b4bf1f8c57b7ba924c6b30695
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124959"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489794"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Vanliga frågor om VM på Azure Marketplace
 
@@ -49,6 +49,19 @@ Mer information finns i de här artiklarna:
 Varje gång jag försöker skapa en avbildning från mina virtuella hård diskar visas felet "VHD har redan registrerats med avbildnings lagrings plats som resurs" i Azure PowerShell. Jag har inte skapat någon avbildning förut eller kunde inte hitta någon bild med det här namnet i Azure. Hur gör jag för att lösa det?
 
 Det här problemet uppstår vanligt vis om du har skapat en virtuell dator från en virtuell hård disk som har låst den. Bekräfta att det inte finns någon virtuell dator som har allokerats från denna virtuella hård disk och försök sedan igen. Om problemet kvarstår öppnar du ett support ärende. Se [Support för partner Center](support.md).
+
+## <a name="how-do-i-test-a-hidden-preview-image"></a>Hur gör jag för att testa en dold förhands gransknings bild?
+
+Du kan distribuera dolda förhands gransknings avbildningar med snabb starts mallar.
+Så här distribuerar du en Linux Preview-avbildning 
+1. Gå till den här [snabb starts mal len](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)och välj Distribuera till Azure. Detta bör ta dig Azure Portal
+2. I Azure Portal väljer du "Redigera mall".
+3. I JSON-mallen söker du efter imageReference och uppdaterar publisherID, OfferID, SkuID och version av avbildningen. Om du vill testa förhands gransknings bilden lägger du till "-PREVIEW" i OfferID.
+ ![bild](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
+4. Klicka på Spara
+5. Fyll i resten av detaljerna. Granska och skapa
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

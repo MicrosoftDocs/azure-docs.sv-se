@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
-ms.openlocfilehash: d8763a794d2fb96d0c464fb1249b9eb400fd23e7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339877"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489760"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Hantera ett Azure Cosmos-konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -198,7 +198,7 @@ Se [ange prioritet för redundans med Azure CLI](manage-with-cli.md#set-failover
 
 Se [ange prioritet för redundans med PowerShell](manage-with-powershell.md#modify-failover-priority)
 
-## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Utföra manuell redundans på ett Azure Cosmos-konto
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Utför manuell redundansväxling för ett Azure Cosmos-konto
 
 > [!IMPORTANT]
 > Azure Cosmos-kontot måste konfigureras för manuell redundansväxling för att åtgärden ska lyckas.
@@ -206,7 +206,7 @@ Se [ange prioritet för redundans med PowerShell](manage-with-powershell.md#modi
 Processen för att utföra en manuell redundansväxling innebär att ändra kontots Skriv region (redundans prioritet = 0) till en annan region som kon figurer ATS för kontot.
 
 > [!NOTE]
-> Konton med flera Skriv regioner kan inte växlas över manuellt. För program som använder Azure Cosmos SDK identifierar SDK när en region blir otillgänglig och dirigerar sedan automatiskt till nästa närmaste region om du använder API för flera värdar i SDK.
+> Konton med flera Skriv regioner kan inte växlas över manuellt. För program som använder Azure Cosmos SDK identifierar SDK när en region blir otillgänglig och dirigerar sedan automatiskt till nästa närmaste region.
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure Portal
 

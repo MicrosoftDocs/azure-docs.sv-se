@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 2/19/2021
 ms.author: cavoeg
-ms.openlocfilehash: 675030ac47cb26e817a9ef7ee51999f25020f292
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9ed78baed35312b9a33c71a3e49b7e9dca22eb9f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712710"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487227"
 ---
 # <a name="how-to-export-fhir-data"></a>Så här exporterar du FHIR-data
 
@@ -38,6 +38,13 @@ När data exporteras skapas en separat fil för varje resurs typ. För att säke
 
 Dessutom stöds att kontrol lera export statusen via URL: en som returnerades av plats rubriken under köerna, tillsammans med att avbryta det faktiska export jobbet.
 
+### <a name="exporting-fhir-data-to-adls-gen2"></a>Exportera FHIR-data till ADLS Gen2
+
+För närvarande stöder vi $export för ADLS Gen2-aktiverade lagrings konton, med följande begränsning:
+
+- Användaren kan inte dra nytta av [hierarkiska namn områden](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) än; Det finns inte något sätt att rikta in på att exportera till en angiven under katalog i behållaren. Vi tillhandahåller bara möjligheten att rikta en speciell behållare (där vi skapar en ny mapp för varje export).
+
+- När en export är klar exporterar vi aldrig något till den mappen igen, eftersom efterföljande exporter till samma behållare kommer att finnas i en nyligen skapad mapp.
 
 
 ## <a name="settings-and-parameters"></a>Inställningar och parametrar

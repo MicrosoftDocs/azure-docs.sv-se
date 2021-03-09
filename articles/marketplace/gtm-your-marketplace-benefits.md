@@ -4,15 +4,15 @@ description: Go-to-Marketing-tjänster – Microsoft-resurser som utgivare kan a
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/13/2021
+ms.date: 03/03/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246255"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489512"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Dina kommersiella marknads förmåner
 
@@ -38,7 +38,7 @@ Du får support för att förstå vilka resurser som är tillgängliga och hur d
 
 Detaljerade beskrivningar av alla program förmåner finns i den här [Marketplace-programpresentationen](https://aka.ms/marketplacerewards).
 
-Det är enkelt att komma igång:
+## <a name="getting-started-is-easy"></a>Det är enkelt att komma igång:
 
 1. Publicera ett erbjudande i antingen Microsoft AppSource eller Azure Marketplace.
 2. Gå till [Marketplace-förmåner](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) i Partner Center och välj **Registrera i Marketplace-program**.
@@ -49,19 +49,19 @@ Det är enkelt att komma igång:
     1. Ange telefonnummer och språk för den här marknadsföringskontakten. När du har angett den här informationen väljer du **Tilldela användare**.
     1. När du har uppdaterat marknadsförings kontakten väljer du **Aktivera** för den förmån som du vill börja använda. När du aktiverar en förmån kontaktas din marknadsföringskontakt av en medlem i Rewards-teamet inom en vecka.
 
-### <a name="technical-benefits"></a>Tekniska fördelar
+> [!NOTE]
+> Om erbjudandet har varit Live i mer än fyra veckor och du inte har fått något meddelande, kan du kontrol lera i din organisation vem som är ägare till erbjudandet i fråga, genom att titta i Partner Center. De bör ha kommunikation och nästa steg.
 
-1. Du kan använda dina tekniska förmåner för att begära teknisk support under försäljnings-, design-, distributions-och app Development-faserna i dina moln-och hybrid lösningar. Om du vill be om hjälp fyller du i formuläret för begäran och väljer **skicka begäran**.
-2. Hur du utnyttjar fördelarna med Azures sponsring kommer att delas via ett e-postmeddelande när du låser upp dessa förmåner.
-
->[!NOTE]
->Om erbjudandet har varit Live i mer än fyra veckor och du inte har fått något meddelande, kan du kontrol lera i din organisation vem som är ägare till erbjudandet i fråga, genom att titta i Partner Center. De bör ha kommunikation och nästa steg.<br><br>Om du inte kan fastställa ägaren, eller om ägaren har lämnat företaget, kan du generera ett support ärende i [Hjälp och support](https://aka.ms/marketplacepublishersupport).
+Om du inte kan fastställa ägaren, eller om ägaren har lämnat företaget, kan du generera ett support ärende i [Hjälp och support](https://aka.ms/marketplacepublishersupport).
 
 Omfattningen av de aktiviteter som är tillgängliga för dig expanderas när du växer dina erbjudanden i den kommersiella marknads platsen. Alla listor får en grundläggande optimerings nivå för optimering och befordran som en del av en självbetjänings-e-post med resurser och bästa praxis.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Lista, utvärdering och konsult förmåner
 
-Om du publicerar en utvärderings version eller ett konsult bevis för koncept, implementering eller workshop, tilldelas du en förlovnings ansvarig i tre månader, som hjälper dig att komma igång med att gå till marknads plan. Du kan upprepa det här tre månaders samengagemanget varje gång du publicerar ett nytt erbjudande, så att du kan få var och en av dina nya erbjudanden som börjar med framgång.
+Varje gång du publicerar på Microsoft AppSource eller Azure Marketplace får du till gång till en ny uppsättning förmåner. När ditt erbjudande går Live går du till [partner Center](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0) och aktiverar dina berättigade marknadsförings-, försäljnings-och tekniska förmåner.
+
+> [!NOTE]
+> Alla utvärderings versioner och konsult förmåner upphör att gälla efter tre månader.
 
 I tabellen nedan sammanfattas kraven för krav för List-, utvärderings-och konsult erbjudanden:
 

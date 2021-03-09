@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: cf05d5f93180db91658d0e94a23359edd5b0f7ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664076"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489437"
 ---
 # <a name="device-update-security-model"></a>Säkerhets modell för enhets uppdatering
 
@@ -54,7 +54,7 @@ Med rot-och signerings nycklar kan Microsoft regelbundet återställa signerings
 
 ### <a name="json-web-signature-jws"></a>JSON-webbsignatur (JWS)
 
-`updateManifestSignature`Används för att säkerställa att den information som ingår i `updateManifest` inte har ändrats. Skapas `updateManifestSignature` med hjälp av en JSON-webbsignatur med JSON-webbnycklar, vilket gör det möjligt att verifiera källan. Signaturen är en Base64Url kodad sträng med tre avsnitt som anges av ".".  Se hjälp metoder för jws_util. h för att parsa och verifiera JSON-nycklar och tokens.
+`updateManifestSignature`Används för att säkerställa att den information som ingår i `updateManifest` inte har ändrats. Skapas `updateManifestSignature` med hjälp av en JSON-webbsignatur med JSON-webbnycklar, vilket gör det möjligt att verifiera källan. Signaturen är en Base64Url kodad sträng med tre avsnitt som anges av ".".  Se [Hjälp metoder för jws_util. h](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) för att parsa och verifiera JSON-nycklar och tokens.
 
 JSON Web Signature är en vanlig [föreslagen IETF-standard](https://tools.ietf.org/html/rfc7515) för signering av innehåll med JSON-baserade data strukturer. Det är ett sätt att säkerställa integriteten för data genom att verifiera signaturen för data. Mer information finns i [RFC 7515](https://www.rfc-editor.org/info/rfc7515)för JSON-webbsignaturen (JWS).
 

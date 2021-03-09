@@ -5,19 +5,19 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739444"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489641"
 ---
-# <a name="create-sas-tokens-for-document-translation"></a>Skapa SAS-token för dokument Översättning
+# <a name="create-sas-tokens-for-document-translation-processing"></a>Skapa SAS-token för dokument översättnings bearbetning
 
 I den här artikeln får du lära dig hur du skapar SAS-token (signatur för delad åtkomst) med hjälp av Azure Storage Explorer eller Azure Portal. En SAS-token ger säker och delegerad åtkomst till resurser i ditt Azure Storage-konto.
 
-## <a name="create-sas-tokens-with-azure-storage-explorer"></a>Skapa SAS-token med Azure Storage Explorer
+## <a name="create-your-sas-tokens-with-azure-storage-explorer"></a>Skapa SAS-token med Azure Storage Explorer
 
 ### <a name="prerequisites"></a>Förutsättningar
 
@@ -65,7 +65,7 @@ I den här artikeln får du lära dig hur du skapar SAS-token (signatur för del
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Skapa SAS-token för blobbar i Azure Portal
 
 > [!NOTE]
-> Det finns för närvarande inte stöd för att skapa SAS-token för behållare direkt i Azure Portal. Du kan dock skapa en SAS-token med [**Azure Storage Explorer**](#create-sas-tokens-with-azure-storage-explorer) eller slutföra aktiviteten [program mässigt](../../../storage/blobs/sas-service-create.md).
+> Det finns för närvarande inte stöd för att skapa SAS-token för behållare direkt i Azure Portal. Du kan dock skapa en SAS-token med [**Azure Storage Explorer**](#create-your-sas-tokens-with-azure-storage-explorer) eller slutföra aktiviteten [program mässigt](../../../storage/blobs/sas-service-create.md).
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Förutsättningar
@@ -74,7 +74,7 @@ För att komma igång behöver du:
 
 * Ett aktivt [**Azure-konto**](https://azure.microsoft.com/free/cognitive-services/).  Om du inte har någon kan du [**skapa ett kostnads fritt konto**](https://azure.microsoft.com/free/).
 * En [**Translator**](https://ms.portal.azure.com/#create/Microsoft) -tjänst resurs (**inte** en Cognitive Services flera tjänst resurser.  *Se* [skapa en ny Azure-resurs](../../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).  
-* Ett [**Azure Blob Storage-konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). All åtkomst till Azure Storage sker via ett lagringskonto.
+* Ett [**Azure Blob Storage-konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Du skapar behållare för att lagra och organisera dina BLOB-data i ditt lagrings konto.
 
 ### <a name="create-your-tokens"></a>Skapa dina token
 

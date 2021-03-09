@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/21/2018
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d3558511721a91c3a195cb510a1a00d5d8a9a51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726775"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487886"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Förstå Stream Analytics jobb övervakning och övervaka frågor
 
@@ -30,7 +30,7 @@ Fönstret visas som det visas:
 | ---------------------- | ---------------------------------------- |
 | Eftersläpande inloggade ingångs händelser       | Antal ingångs händelser som är eftersläpande. Ett värde som inte är noll för det här måttet innebär att jobbet inte kan fortsätta med antalet inkommande händelser. Om det här värdet ökar långsamt eller ständigt inte är noll, bör du skala ut jobbet. Du kan lära dig mer genom att besöka [förstå och justera strömnings enheter](stream-analytics-streaming-unit-consumption.md). |
 | Data konverterings fel | Antal utgående händelser som inte kunde konverteras till det förväntade schemat för utdata. Fel policyn kan ändras till Drop för att släppa händelser som stöter på det här scenariot. |
-| CPU%-användning (för hands version)       | Procent andelen CPU som används av ditt jobb. Om måttet är konsekvent högre än 80% kan det betyda att jobbet är Flask halsar i CPU-användningen och kommer troligen att orsaka att inloggade händelser blir eftersläpande. Du kan öka antalet SUs-allokerade SUs-jobb för att minimera sådana problem. |
+| CPU%-användning (för hands version)       | Procent andelen CPU som används av ditt jobb. Även om det här värdet är mycket högt (90% eller högre) bör du inte öka antalet SUs-baserade med enbart detta mått. Om antalet inloggade inloggade inloggade händelser eller vattenstämplar ökar kan du använda det här måttet för processor-% för att avgöra om processorn är Flask hals. Det är möjligt att det här måttet har tillfälliga toppar. Du rekommenderas att göra skalnings test för att fastställa den övre gränsen för ditt jobb när indata får en inloggad eller vattenstämpel ökar på grund av processor Flask hals. |
 | Tidiga ingångs händelser       | Händelser vars programtidstämpel är tidigare än deras ankomst tid med mer än 5 minuter. |
 | Misslyckade funktions begär Anden | Antalet misslyckade Azure Machine Learning funktions anrop (om det finns). |
 | Funktions händelser        | Antalet händelser som skickats till Azure Machine Learning-funktionen (om det finns). |

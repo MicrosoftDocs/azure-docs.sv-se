@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 42212294580b85c2b06cd98603d0f7337cee92e3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093632"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485784"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault tillägg för virtuell dator för Windows
 
@@ -108,7 +108,7 @@ Följande JSON visar schemat för Key Vault VM-tillägget. Tillägget kräver in
 
 ### <a name="property-values"></a>Egenskaps värden
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | utgivare | Microsoft.Azure.KeyVault | sträng |
@@ -230,9 +230,9 @@ Azure CLI kan användas för att distribuera Key Vault VM-tillägget till en bef
     
     ```azurecli
        # Start the deployment
-         az vm extension set -name "KeyVaultForWindows" `
+         az vm extension set --name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -resource-group "<resourcegroup>" `
+         --resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185486"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487431"
 ---
 # <a name="camera-placement-guide"></a>Guide för kamera placering
 
@@ -72,12 +72,12 @@ Använd tabellen nedan för att fastställa kamerans avstånd från fokus punkte
 
 | Kamerans höjd | Avstånd för kamera till fokus punkt (min/max) |  
 | ------------- | ---------------------------------------- |  
-| 7,8            | 10 "-13"                                  |  
-| 10           | 7-13                                   |  
-| 12.5           | 10 "-17"                                  |  
-| längre           | 11-18                                  |  
-| 16           | 12-22                                  |  
-| tjugo           | 15-30                                  |  
+| 7,8            | 4.6-8                                  |  
+| 10           | 5,8-10                                 |  
+| 12.5           | 7-12                                   |  
+| längre           | 8 '-14 ' '                                  |  
+| 16           | 9.2 – 16                                 |  
+| tjugo           | 11,5 '-20 '                                |  
 
 Följande bild visar kameravyer från de närmast och de närmast bästa och mest blickande punkterna.
 
@@ -91,15 +91,9 @@ I det här avsnittet beskrivs acceptabla monterings intervall för kamera vinkel
 
 ### <a name="line-configuration"></a>Linje konfiguration
 
-I följande tabell visas rekommendationer för de kameror som har kon figurer ATS för åtgärden **cognitiveservices. vision. spatialanalysis-personcrossingline** . För identifiering av ansikts mask är +/-30 grader den optimala kamerans monterings vinkel för kamera höjden mellan 8 och 12.
+För åtgärden **cognitiveservices. vision. spatialanalysis-personcrossingline** , +/-5 är den optimala kamera monterings vinkeln för att maximera noggrannheten.
 
-| Kamerans höjd | Avstånd för kamera till brännvidd | Optimal kamera monterings vinkel (min/max) |  
-| ------------- | ------------------------------ | ------------------------------------------ |  
-| 7,8            | 1.9                             | +/-40 °                                     |  
-| 10           | 10                            | +/-30 °                                     |  
-| 12.5           | 13.4                            | +/-20 °                                     |  
-| 16           | arton                            | +/-10 °                                     |  
-| tjugo           | 22.2                            | +/-10 °                                     |  
+För identifiering av ansikts mask är +/-30 grader den optimala kamerans monterings vinkel för kamera höjden mellan 8 och 12.
 
 Följande bild visar kameravy med hjälp av rekommendationerna längst till vänster (-) och längst till höger (+) för att använda **cognitiveservices. vision. spatialanalysis-personcrossingline** för att göra ingångs beräkningen på en dörr väg.
 

@@ -10,16 +10,25 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738233"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487108"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
 Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
+
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="computer-vision-32-public-preview-update"></a>Visuellt innehåll 3,2 offentlig förhands gransknings uppdatering
+
+Den offentliga för hands versionen av API för visuellt innehåll v 3.2 har uppdaterats. För hands versionen har alla Visuellt innehåll funktioner tillsammans med uppdaterade API: er för läsning och analys.
+
+> [!div class="nextstepaction"]
+> [Se Visuellt innehåll v 3.2 Public Preview 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -34,7 +43,7 @@ Visuellt innehåll s Read API v 3.2 offentlig för hands version, som är tillg�
 [Läs mer](concept-recognizing-text.md) om Read API.
 
 > [!div class="nextstepaction"]
-> [Använd Read API v 3.2 offentlig för hands version](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+> [Använd Read API v 3.2 offentlig för hands version](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>Januari 2021

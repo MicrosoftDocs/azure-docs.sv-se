@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 03/08/2021
-ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447494"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489777"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Jämförelse av funktioner: Azure SQL Database och Azure SQL-hanterad instans
 
@@ -33,8 +33,8 @@ Azure SQL Database och SQL-hanterad instans delar en gemensam kodbas med den sen
 Azure hanterar dina databaser och garanterar deras hög tillgänglighet. Vissa funktioner som kan påverka hög tillgänglighet eller som inte kan användas i PaaS World har begränsade funktioner i SQL Database-och SQL-hanterade instanser. Dessa funktioner beskrivs i tabellerna nedan.
 
 Om du behöver mer information om skillnaderna kan du hitta dem på separata sidor:
-- [Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
-- [Hanterad Azure SQL-instans](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL Database jämfört med SQL Server skillnader](transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL-hanterad instans jämfört med SQL Server skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>Funktioner i SQL Database-och SQL-hanterad instans
 

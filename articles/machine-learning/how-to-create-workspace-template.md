@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f8ceacf88968d884de666b764c1037db9e63450f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214923"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488077"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Använd en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning
 
@@ -285,7 +285,7 @@ Genom att ange `vnetOption` parametervärdet till antingen `new` eller `existing
 Om de associerade resurserna inte ligger bakom ett virtuellt nätverk kan du ange parametern **privateEndpointType** till `AutoAproval` eller `ManualApproval` för att distribuera arbets ytan bakom en privat slut punkt. Detta kan göras för både nya och befintliga arbets ytor. När du uppdaterar en befintlig arbets yta fyller du i mallparametrar med informationen från den befintliga arbets ytan.
 
 > [!IMPORTANT]
-> Det går inte att använda en Azure Machine Learning arbets yta med privat länk i Azure Government regioner eller Azure Kina 21Vianet-regioner.
+> Användning av en Azure Machine Learning arbets yta med privat länk är inte tillgänglig i Azure Government regionerna.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

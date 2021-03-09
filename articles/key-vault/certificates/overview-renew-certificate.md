@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287685"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487193"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Förnya dina Azure Key Vault certifikat
 
@@ -73,7 +73,10 @@ Mer information om hur du skapar en ny CSR finns [i skapa och slå samman en CSR
 Azure Key Vault hanterar också automatisk förnyelse av självsignerade certifikat. Om du vill veta mer om hur du ändrar utgivnings principen och uppdaterar ett certifikats livs cykel attribut, se [Konfigurera autorotation av certifikat i Key Vault](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate).
 
 ## <a name="troubleshoot"></a>Felsöka
-Om det utfärdade certifikatet har *inaktiverats* i Azure Portal går du till **certifikat åtgärd** för att se certifikatets fel meddelande.
+* Om det utfärdade certifikatet har *inaktiverats* i Azure Portal går du till **certifikat åtgärd** för att se certifikatets fel meddelande.
+* Fel typ "CSR som användes för att hämta ditt certifikat har redan använts. Försök att generera ett nytt certifikat med en ny CSR. "
+  Gå till avsnittet "avancerad princip" i certifikatet och kontrol lera om alternativet **"Återanvänd nyckel vid förnyelse"** är inaktiverat.
+
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

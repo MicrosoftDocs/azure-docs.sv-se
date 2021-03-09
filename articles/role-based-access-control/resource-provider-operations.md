@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1ee422d4c040e8546135981e0640484acc997b0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718734"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487859"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -50,6 +50,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. storagesync](#microsoftstoragesync) |
 | [Microsoft. StorSimple](#microsoftstorsimple) |
 | **Webb** |
+| [Microsoft. AppPlatform](#microsoftappplatform) |
 | [Microsoft. CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft. DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft. Maps](#microsoftmaps) |
@@ -86,7 +87,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. Synapse](#microsoftsynapse) |
 | **Blockkedja** |
 | [Microsoft. blockchain](#microsoftblockchain) |
-| **AI + maskininlärning** |
+| **AI + maskin inlärning** |
 | [Microsoft. BotService](#microsoftbotservice) |
 | [Microsoft. CognitiveServices](#microsoftcognitiveservices) |
 | [Microsoft. MachineLearning](#microsoftmachinelearning) |
@@ -283,7 +284,7 @@ Azure-tjänst: Core
 > | Microsoft. support/supportTickets/Communications/Read | Visar en lista över en eller all support biljett kommunikation |
 > | Microsoft. support/supportTickets/kommunikation/Skriv | Lägger till en ny kommunikation till ett support ärende |
 
-## <a name="compute"></a>Beräkning
+## <a name="compute"></a>Compute
 
 ### <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -2047,6 +2048,62 @@ Azure-tjänst: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Operations/Read | Visar eller hämtar åtgärder |
 
 ## <a name="web"></a>Webb
+
+### <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+Azure-tjänst: [Azure våren Cloud](../spring-cloud/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Åtgärd | Beskrivning |
+> | --- | --- |
+> | Microsoft. AppPlatform/register/åtgärd | Registrera prenumerationen på Microsoft. AppPlatform Resource Provider |
+> | Microsoft. AppPlatform/avregistrera/åtgärd | Avregistrera prenumerationen från Microsoft. AppPlatform Resource Provider |
+> | Microsoft. AppPlatform/locations/checkNameAvailability/Action | Kontrol lera resurs namns tillgänglighet |
+> | Microsoft. AppPlatform/locations/operationResults/våren/Read | Läs resurs åtgärds resultat |
+> | Microsoft. AppPlatform/locations/operationStatus/operationId/Read | Läs resurs åtgärds status |
+> | Microsoft. AppPlatform/Operations/Read | Visa en lista över tillgängliga åtgärder för Microsoft Azure våren Cloud |
+> | Microsoft. AppPlatform/SKU/Read | Lista tillgängliga SKU: er av Microsoft Azure våren Cloud |
+> | Microsoft. AppPlatform/våren/Write | Skapa eller uppdatera en speciell Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/Delete | Ta bort en enskild Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/Read | Skaffa Azure våren Cloud Service Instance (s) |
+> | Microsoft. AppPlatform/våren/enableTestEndpoint/åtgärd | Aktivera test slut punkts funktioner för en speciell Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/disableTestEndpoint/åtgärd | Inaktivera slut punkts funktionen för en bestämd Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/listTestKeys/åtgärd | Visa en lista med test nycklar för en Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/regenerateTestKey/åtgärd | Återskapa test nyckeln för en speciell Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/Apps/Write | Skapa eller uppdatera programmet för en specifik Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/Apps/Delete | Ta bort programmet för en specifik Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/Apps/läsa | Hämta program för en speciell Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/Apps/getResourceUploadUrl/åtgärd | Hämta URL: en för resurs uppladdning för en specifik Microsoft Azure fjäder moln program |
+> | Microsoft. AppPlatform/våren/Apps/validateDomain/åtgärd | Verifiera den anpassade domänen för ett enskilt program |
+> | Microsoft. AppPlatform/våren/Apps/bindningar/skrivning | Skapa eller uppdatera bindningen för ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/bindningar/ta bort | Ta bort bindningen för ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/bindningar/läsa | Hämta bindningar för ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/distribution/skrivning | Skapa eller uppdatera distributionen för ett enskilt program |
+> | Microsoft. AppPlatform/våren/Apps/distributioner/Delete | Ta bort distributionen för ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/distribution/läsning | Hämta distributioner för ett enskilt program |
+> | Microsoft. AppPlatform/våren/Apps/distributioner/start/åtgärd | Starta distributionen av ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/distributioner/stoppa/åtgärd | Stoppa distributionen av ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/distributioner/omstart/åtgärd | Starta om distributionen för ett specifik program |
+> | Microsoft. AppPlatform/våren/Apps/distributioner/getLogFileUrl/åtgärd | Hämta logg filens URL för en specifik Microsoft Azure vår moln program distribution |
+> | Microsoft. AppPlatform/våren/Apps/distributioner/SKU: er/läsa | Lista tillgängliga SKU: er för en program distribution |
+> | Microsoft. AppPlatform/våren/Apps/Domains/Write | Skapa eller uppdatera den anpassade domänen för ett enskilt program |
+> | Microsoft. AppPlatform/våren/Apps/Domains/Delete | Ta bort den anpassade domänen för ett enskilt program |
+> | Microsoft. AppPlatform/våren/Apps/Domains/Read | Hämta de anpassade domänerna för ett enskilt program |
+> | Microsoft. AppPlatform/våren/certificates/Write | Skapa eller uppdatera certifikatet för en speciell Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/certificates/Delete | Ta bort certifikatet för en angiven Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/certificates/Read | Hämta certifikaten för en speciell Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/configServers/Read | Hämta konfigurations servern för en angiven Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/configServers/Write | Skapa eller uppdatera konfigurations servern för en angiven Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/fjädra/distribuera/läsa | Hämta distributioner för en angiven Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/Detections/Read | Hämta identifierarna för en bestämd Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/monitoringSettings/Read | Hämta övervaknings inställningen för en bestämd Azure våren Cloud Service-instans |
+> | Microsoft. AppPlatform/våren/monitoringSettings/Write | Skapa eller uppdatera övervaknings inställningen för en speciell Azure våren moln tjänst instans |
+> | **DataAction** | **Beskrivning** |
+> | Microsoft. AppPlatform/våren/configService/Read | Läs konfigurations innehållet (till exempel Application. yaml) för en specifik Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/eurekaService/Read | Läs registrerings informationen för användarens app (er) för en bestämd Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/eurekaService/Write | Skriv registrerings information för användarens app (er) för en bestämd Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/eurekaService/Delete | Ta bort registrerings information för användar program för en bestämd Azure våren moln tjänst instans |
+> | Microsoft. AppPlatform/våren/logstreamService/Read | Läs strömnings loggen för en webbapp för en Azure våren moln tjänst instans |
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -10443,7 +10500,7 @@ Azure-tjänst: Microsoft Monitoring Insights
 > | Microsoft. Intune/diagnosticsettings/Delete | Tar bort en diagnostisk inställning |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Läser en diagnostisk inställnings kategori |
 
-## <a name="other"></a>Övrigt
+## <a name="other"></a>Annat
 
 ### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 

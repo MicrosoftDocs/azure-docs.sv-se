@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a94aa0a0deea14cca2b558c602ff7e35ca0ba81f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659264"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487395"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Infrastruktur krav för SIP-gränssnitt 
 
@@ -158,12 +158,12 @@ Port intervallet för medie processorerna visas i följande tabell:
 
 ## <a name="media-traffic-media-processors-geography"></a>Medie trafik: geografi för medie processorer
 
-Medie trafiken flödar via komponenter som kallas medie processorer. Medie processorer placeras i samma data Center som SIP-proxyservrar. Det finns även ytterligare medie processorer för att optimera medie flödet. Vi har till exempel ingen SIP-proxyvärd i Australien (SIP-flöden via Singapore eller Hongkong), men vi har medie processorn lokalt i Australien. Behovet av medie processorer lokalt styrs av svars tiden som vi upplever genom att skicka trafikavstånd, till exempel från Australien till Singapore eller Hongkong. Svars tiden i exemplet på trafik som flödar från Australien till Hongkong eller Singapore är acceptabel för att bevara bra samtals kvalitet för SIP-trafik, för real tids medie trafik.
+Medie trafiken flödar via komponenter som kallas medie processorer. Medie processorer placeras i samma data Center som SIP-proxyservrar. Det finns även ytterligare medie processorer för att optimera medie flödet. Vi har till exempel ingen SIP-proxy-komponent i Australien (SIP-flöden via Singapore eller Hongkong SAR), men vi har medie processorn lokalt i Australien. Behovet av medie processorer lokalt styrs av svars tiden som vi upplever genom att skicka trafikavstånd, till exempel från Australien till Singapore eller Hongkong SAR. Tids fördröjningen i exemplet på trafik som flödar från Australien till Hongkong SAR eller Singapore är acceptabel för att bevara bra samtals kvalitet för SIP-trafik, för media trafik i real tid.
 
 Platser där både SIP-proxy och medie processor komponenter distribueras:
 - USA (två i västra USA och östra USA-datacenter)
 - Europa (Amsterdam och Dublin-datacenter)
-- Asien (Singapore och Hong Kong Data Center)
+- Asien (Singapore och Hong Kong SAR-datacenter)
 - Australien (AU, öst och sydöstra Data Center)
 
 Platser där endast medie processorer distribueras (SIP-flöden via det närmaste data centret som anges ovan):

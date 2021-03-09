@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368055"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488281"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Översikt över migrering: SQL Server till SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -104,6 +104,7 @@ I följande tabell visas rekommenderade Migreringsverktyg:
 
 |Teknik | Beskrivning|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Med Azure Migrate för Azure SQL kan du identifiera och utvärdera din SQL data-fastighets i stor skala när du arbetar på VMware, vilket ger rekommendationer för Azure SQL-distribution, mål storlek och månads uppskattningar. | 
 |[Data Migration Assistant (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|Data Migration Assistant är ett Skriv bords verktyg som ger sömlös utvärdering av SQL Server och migreringar till Azure SQL Database (både schema och data). Verktyget kan installeras på en server lokalt eller på den lokala datorn som har anslutning till dina käll databaser. Migreringsprocessen är en logisk data förflyttning mellan objekt i käll-och mål databasen. </br> -Migrera enskilda databaser (både schema och data)|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|En Azure-tjänst från första part som kan migrera dina SQL Server-databaser till Azure SQL Database med hjälp av Azure Portal eller automatiserad med PowerShell. Azure DMS kräver att du väljer en önskad Azure-Virtual Network (VNet) under etableringen för att säkerställa att det finns en anslutning till käll SQL Server databaserna. </br> – Migrera enskilda databaser eller skala. |
 | | |

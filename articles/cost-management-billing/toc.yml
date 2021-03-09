@@ -292,6 +292,8 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: 'Migrera från EA till MCA API:er'
           href: costs/migrate-cost-management-api.md
+        - name: Tilldela roller till SPN
+          href: manage/assign-roles-azure-service-principals.md
     - name: Köpa och administrera reservationer
       items:
         - name: Bestämma vad som ska köpas in

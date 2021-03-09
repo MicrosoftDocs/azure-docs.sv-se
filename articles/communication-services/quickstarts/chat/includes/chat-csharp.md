@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 70287a837b17268f2cddebfb2cf3344a8fe66ffe
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b4f058d9829a23748b8ef61daea5b3f12ce5fedf
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444526"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489712"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
-- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Installera [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
+- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Installera [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 - Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../create-communication-resource.md). Du måste registrera resurs **slut punkten** för den här snabb starten.
 - En [åtkomsttoken för användare](../../access-tokens.md). Var noga med att ange omfånget till "chatt" och anteckna token-strängen och userId-strängen.
 
@@ -47,7 +47,7 @@ Installera klient biblioteket för Azure Communication Chat för .NET
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-``` 
+```
 
 ## <a name="object-model"></a>Objekt modell
 
@@ -60,7 +60,7 @@ Följande klasser hanterar några av de viktigaste funktionerna i Azure Communic
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
 
-Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från `Administration` klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient.
+Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från identitets klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient.
 
 Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 
@@ -95,7 +95,7 @@ Använd `createChatThread` metoden på chatClient för att skapa en chatt-tråd
 - Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateTopic` funktionen.
 - Använd `participants` egenskap för att skicka en lista med `ChatParticipant` objekt som ska läggas till i chatt-tråden. `ChatParticipant`Objektet initieras med ett `CommunicationIdentifier` objekt. `CommunicationIdentifier` kan vara av typen `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` eller `PhoneNumberIdentifier` . Om du till exempel vill hämta ett `CommunicationIdentifier` objekt måste du skicka ett åtkomst-ID som du skapade genom att följa anvisningarna för att [skapa en användare](../../access-tokens.md#create-an-identity)
 
-Objektet Response från createChatThread-metoden innehåller chatThread-informationen. För att interagera med chatt-åtgärder, till exempel att lägga till deltagare, skicka ett meddelande, ta bort ett meddelande osv., måste en chatThreadClient-klient instans instansieras med GetChatThreadClient-metoden på ChatClient-klienten. 
+Objektet Response från `createChatThread` metoden innehåller `chatThread` information. För att interagera med chatt-åtgärder, till exempel att lägga till deltagare, skicka ett meddelande, ta bort ett meddelande osv., `chatThreadClient` måste en klient instans instansieras med hjälp av- `GetChatThreadClient` metoden på `ChatClient` klienten.
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))

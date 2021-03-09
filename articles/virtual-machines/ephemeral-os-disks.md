@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124694"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485766"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Tillfälliga OS-diskar för virtuella Azure-datorer
 
@@ -247,7 +247,7 @@ A: tillfälliga diskar stöder inte:
 
 > [!NOTE]
 > 
-> Den tillfälliga disken går inte att komma åt via portalen. Du kan få fel meddelandet "Det gick inte att hitta resursen" eller "404" vid åtkomst till den tillfälliga disken.
+> Den tillfälliga disken går inte att komma åt via portalen. Fel meddelandet "Det gick inte att hitta resursen" eller "404" visas vid åtkomst till den tillfälliga disken som förväntas.
 > 
  
 ## <a name="next-steps"></a>Nästa steg

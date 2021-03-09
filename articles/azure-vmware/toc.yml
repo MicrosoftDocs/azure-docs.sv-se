@@ -74,6 +74,8 @@
       href: public-ip-usage.md
     - name: Skapa en IPSec-tunnel
       href: create-ipsec-tunnel.md
+    - name: Windows Server-redundanskluster
+      href: windows-server-failover-cluster.md
     - name: Inbyggd Azure-integrering
       items:
         - name: API Management

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 09/30/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 8ea3f36d4e63b3439691772c25e7b3af77dcdb02
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210044"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489556"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Skapa en arbets yta för Azure Machine Learning med Azure CLI
 
@@ -148,7 +148,7 @@ Utdata från det här kommandot liknar följande JSON:
 ### <a name="virtual-network-and-private-endpoint"></a>Virtuellt nätverk och privat slut punkt
 
 > [!IMPORTANT]
-> Det går inte att använda en Azure Machine Learning arbets yta med privat länk i Azure Government regioner eller Azure Kina 21Vianet-regioner.
+> Användning av en Azure Machine Learning arbets yta med privat länk är inte tillgänglig i Azure Government regionerna.
 
 Om du vill begränsa åtkomsten till din arbets yta till ett virtuellt nätverk kan du använda följande parametrar:
 

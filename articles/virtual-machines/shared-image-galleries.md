@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 9a5bc0620468980da68e1b92f758d5f3862ac7d3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091891"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487261"
 ---
 # <a name="shared-image-galleries-overview"></a>Översikt över delade avbildnings gallerier
 
@@ -104,7 +104,7 @@ Specialiserade virtuella datorer har inte genomgått någon process för att ta 
 
 ## <a name="regional-support"></a>Regional support
 
-Alla offentliga regioner kan vara mål regioner, men för att replikera till Australien, centrala och Australien, Central 2 måste din prenumeration läggas till i listan över tillåtna. Om du vill begära att en prenumeration läggs till i listan över tillåtna går du till: https://azure.microsoft.com/global-infrastructure/australia/contact/
+Alla offentliga regioner kan vara mål regioner, men för att replikera till Australien, centrala och Australien, Central 2 måste din prenumeration läggas till i listan över tillåtna. Om du vill begära att en prenumeration läggs till i listan över tillåtna går du till: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
 
 ## <a name="limits"></a>Gränser 
 
@@ -151,7 +151,7 @@ När galleriet för delad avbildning, bild definition och avbildnings version ä
 | Delat med användare     | Delat bildgalleri | Bilddefinition | Avbildningsversion |
 |----------------------|----------------------|--------------|----------------------|
 | Delat bildgalleri | Ja                  | Ja          | Ja                  |
-| Bilddefinition     | Nej                   | Ja          | Ja                  |
+| Bilddefinition     | Inga                   | Ja          | Ja                  |
 
 Vi rekommenderar att du delar på Galleri nivå för bästa möjliga upplevelse. Vi rekommenderar inte att du delar enskilda avbildnings versioner. Mer information om Azure RBAC finns i [tilldela Azure-roller](../role-based-access-control/role-assignments-portal.md).
 
@@ -170,12 +170,12 @@ Anta till exempel att du har en avbildning av en 127 GB OS-disk, som endast uppt
 När du har skapat kan du göra några ändringar i avbildnings Galleri resurserna. Dessa är begränsade till:
  
 Galleri för delad avbildning:
-- Description
+- Beskrivning
 
 Bild definition:
 - Rekommenderad virtuella processorer
 - Rekommenderat minne
-- Description
+- Beskrivning
 - Datum för slut på livs längd
 
 Avbildnings version:
@@ -325,4 +325,3 @@ Dessutom kan du skicka och tagga din fråga med `azure-virtual-machines-images` 
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du distribuerar delade avbildningar med hjälp av [Azure CLI](shared-images-cli.md) eller [PowerShell](shared-images-powershell.md).
-

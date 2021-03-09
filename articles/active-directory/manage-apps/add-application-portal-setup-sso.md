@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 3278c9956dd5017572f063059250c97727656923
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 44a838bdce4721d24bd0bdbb45ac7b36ceb34e71
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252380"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488377"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Snabb start: Konfigurera SAML-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient
 
@@ -39,7 +39,7 @@ Om du vill konfigurera SSO för ett program som du har lagt till i din Azure AD-
 
 ## <a name="enable-single-sign-on-for-an-app"></a>Aktivera enkel inloggning för en app
 
-När du har lagt till ett program i Azure AD-klienten visas sidan Översikt. Om du konfigurerar ett program som redan har lagts till tittar du på den första snabb starten. Den vägleder dig genom att visa de program som har lagts till i din klient organisation. 
+När du har lagt till ett program i Azure AD-klienten visas sidan Översikt. Om du konfigurerar ett program som redan har lagts till tittar du på den första snabb starten. Den vägleder dig genom att visa de program som har lagts till i din klient organisation.
 
 Så här konfigurerar du enkel inloggning för ett program:
 

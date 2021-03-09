@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 86807899c06cb333238344b7168b5675e8f2e9a3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "100366593"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489420"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Importera HSM-skyddade nycklar till Key Vault
 
@@ -33,7 +33,7 @@ Den här funktionen är inte tillgänglig för Azure Kina 21Vianet.
 
 |Leverantörs namn|Typ av leverantör|HSM-modeller som stöds|Överförings metod som stöds av HSM-nyckel|
 |---|---|---|---|
-|[Hjälp programmet nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Tillverkare<br/>HSM som en tjänst|<ul><li>nshield maskinvarusäkerhetsmodul-serien HSM: er</li><li>nshield maskinvarusäkerhetsmodul som en tjänst</ul>|**Metod 1:** [Hjälp programmet nCipher BYOK](hsm-protected-keys-ncipher.md) (med stark attestering för nyckel import och HSM-validering)<br/>**Metod 2:** [Använd New BYOK-metod](hsm-protected-keys-byok.md) |
+|[Hjälp programmet nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Tillverkare<br/>HSM som en tjänst|<ul><li>nshield maskinvarusäkerhetsmodul-serien HSM: er</li><li>nshield maskinvarusäkerhetsmodul som en tjänst</ul>|**Metod 1:** [Hjälp programmet nCipher BYOK](hsm-protected-keys-ncipher.md) (inaktuell)<br/>**Metod 2:** [Använd New BYOK-metod](hsm-protected-keys-byok.md) (rekommenderas)|
 |Thales|Tillverkare|<ul><li>Luna HSM 7-serien med inbyggd program vara version 7,3 eller senare</li></ul>| [Använd ny BYOK-metod](hsm-protected-keys-byok.md)|
 |Fortanix|Tillverkare<br/>HSM som en tjänst|<ul><li>Self-Defending nyckel hanterings tjänst (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Använd ny BYOK-metod](hsm-protected-keys-byok.md)|
 |Marvell|Tillverkare|Alla LiquidSecurity-HSM: er med<ul><li>Version 2.0.4 eller senare av inbyggd program vara</li><li>Inbyggd program vara version 3,2 eller senare</li></ul>|[Använd ny BYOK-metod](hsm-protected-keys-byok.md)|

@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097234"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488094"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Justera frågeprestanda med Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -143,7 +143,6 @@ Följande är de vanligaste faktorer som påverkar Azure Cosmos DB frågans pres
 | Etablerat dataflöde | Mät RU per fråga och se till att du har det nödvändiga etablerade data flödet för dina frågor. | 
 | Partitionering och partitionerings nycklar | Prioritera frågor med värdet partition nyckel i filter satsen för låg latens. |
 | SDK och frågealternativ | Följ metod tips för SDK som direkt anslutning och finjustera körnings alternativ för frågekörning på klient sidan. |
-| Svarstid för nätverk | Konto för nätverks kostnader i måttet och Använd API: er för multi-värdar för att läsa från närmaste region. |
 | Indexeringsprincip | Kontrol lera att du har de nödvändiga indexerings Sök vägarna/principen för frågan. |
 | Fråga om körnings mått | Analysera frågans körnings mått för att identifiera eventuella omskrivningar av fråge-och data former.  |
 
@@ -239,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Mått | Enhet | Beskrivning | 
+| Metric | Enhet | Beskrivning | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | millisekunder | Körnings tid för fråga | 
 | `queryCompileTimeInMs` | millisekunder | Tid för kompilering av fråga  | 

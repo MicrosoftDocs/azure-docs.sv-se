@@ -3,14 +3,14 @@ title: Hantera för skript och efter skript i din Uppdateringshantering distribu
 description: Den här artikeln beskriver hur du konfigurerar och hanterar för-skript och post-skript för uppdaterings distributioner.
 services: automation
 ms.subservice: update-management
-ms.date: 12/17/2020
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ca1dec1b6139f3192edb09f8748c8f23a9d399e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701509"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485545"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Hantera förskript och efterskript
 
@@ -19,6 +19,8 @@ För skript och post-skript är Runbooks som ska köras i ditt Azure Automation 
 ## <a name="pre-script-and-post-script-requirements"></a>Krav för skript och efter skript
 
 För att en Runbook ska kunna användas som ett för skript eller efter skript måste du importera den till ditt Automation-konto och [publicera runbooken](../manage-runbooks.md#publish-a-runbook).
+
+För närvarande stöds endast PowerShell-och python 2-Runbooks som skript i förväg. Andra Runbook-typer som python 3, Graphic, PowerShell-arbetsflöde, grafiskt PowerShell-arbetsflöde stöds för närvarande inte som pre/post-skript.
 
 ## <a name="pre-script-and-post-script-parameters"></a>Parametrar för skript och efter skript
 
@@ -91,9 +93,6 @@ Du hittar ett fullständigt exempel med alla egenskaper på: [Hämta program upp
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext`Objektet kan innehålla dubbla poster för datorer. Detta kan orsaka att för skript och efter skript körs flera gånger på samma dator. Undvik problemet genom `Sort-Object -Unique` att använda för att välja enbart unika VM-namn.
 
-> [!NOTE]
-> För närvarande stöds endast PowerShell-Runbooks som skript i förväg. Andra Runbook-typer som python, Graphic, PowerShell-arbetsflöde och grafiskt PowerShell-arbetsflöde stöds för närvarande inte som för hands skript.
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Använda ett för skript eller efter skript i en distribution
 
 Om du vill använda ett för skript eller efter skript i en uppdaterings distribution börjar du med att skapa en uppdaterings distribution. Välj **för skript + efter skript**. Den här åtgärden öppnar sidan **Välj före skript + efter skript** .
@@ -120,7 +119,7 @@ Genom att välja körningen av uppdaterings distributionen visas ytterligare inf
 
 ## <a name="stop-a-deployment"></a>Stoppa en distribution
 
-Om du vill stoppa en distribution som baseras på ett för skript, måste du [utlösa](../automation-runbook-execution.md#throw) ett undantag. Om du inte gör det kommer distribution och post script fortfarande att köras. Följande kodfragment visar hur du genererar ett undantag.
+Om du vill stoppa en distribution som baseras på ett för skript, måste du [utlösa](../automation-runbook-execution.md#throw) ett undantag. Om du inte gör det kommer distribution och post script fortfarande att köras. Följande kodfragment visar hur du genererar ett undantag med hjälp av PowerShell.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,6 +133,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+I python 2 hanteras undantags hanteringen i ett [try](https://www.python-course.eu/exception_handling.php) -block.
 
 ## <a name="interact-with-machines"></a>Interagera med datorer
 
@@ -169,6 +170,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+I python 2, om du vill utlösa ett fel när ett visst villkor uppstår, använder du en [öknings](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) instruktion.
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>Exempel

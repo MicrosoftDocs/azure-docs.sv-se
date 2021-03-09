@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370826"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487754"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy
 
@@ -37,6 +37,21 @@ Om licensen går ut inaktive ras programproxyn automatiskt. Programinformationen
 Se till att du har minst en Azure AD Premium P1-eller P2-licens och att en Azure AD-programproxy-anslutning är installerad. När du har installerat din första anslutning aktive ras Azure AD-programproxy-tjänsten automatiskt.
 
 ## <a name="connector-configuration"></a>Anslutnings konfiguration
+
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>Varför använder min koppling fortfarande en äldre version och den uppgraderas inte automatiskt till den senaste versionen?
+
+Detta kan bero på att uppdaterings tjänsten inte fungerar som den ska eller på att det inte finns några nya tillgängliga uppdateringar som tjänsten kan installera.
+
+Uppdaterings tjänsten är felfri om den körs och inga fel registreras i händelse loggen (program-och tjänst loggar-> Microsoft-> AadApplicationProxy-> Updater-> admin). 
+
+> [!IMPORTANT]
+> Endast huvud versioner släpps för automatisk uppgradering. Vi rekommenderar att du uppdaterar din anslutning manuellt enligt ett regelbundet schema. Mer information om nya versioner finns i versions typ (hämtning, automatisk uppgradering), fel korrigeringar och nya funktioner i [Azure AD-programproxy: versions historik](application-proxy-release-version-history.md).
+
+Så här uppgraderar du en anslutning manuellt:
+
+-  Hämta den senaste versionen av anslutnings programmet. (Du hittar det under Application Proxy på Azure-portalen. Du kan också hitta länken på [Azure AD-programproxy: versions historik](application-proxy-release-version-history.md).
+-   Installations programmet startar om Azure AD-programproxy Connector-tjänsterna. I vissa fall kan en omstart av servern krävas om installations programmet inte kan ersätta alla filer. Vi rekommenderar därför att du stänger alla program (d.v.s. Loggboken) innan du påbörjar uppgraderingen.
+-   Kör installationsprogrammet. Uppgraderings processen är snabb och kräver inga autentiseringsuppgifter och anslutningen kommer inte att registreras igen.
 
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>Kan Application Proxy Connector-tjänster köras i ett annat användar sammanhang än standard?
 
