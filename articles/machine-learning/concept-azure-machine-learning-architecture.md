@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091677"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503699"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hur Azure Machine Learning fungerar: arkitektur och koncept
 
@@ -102,7 +102,7 @@ Du skapar en körning när du skickar ett skript för att träna en modell. En k
 
 [Arbets yta](#workspace)  >  [Experiment](#experiments)  >  [Kör](#runs)  >  **Kör konfiguration**
 
-En körnings konfiguration definierar hur ett skript ska köras i ett angivet beräknings mål. Du kan använda konfigurationen för att ange skript, beräknings mål och Azure ML-miljö som ska köras på, alla distribuerade projektspecifika konfigurationer och vissa ytterligare egenskaper. Mer information om en fullständig uppsättning konfigurerbara alternativ för körningar finns i [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+En körnings konfiguration definierar hur ett skript ska köras i ett angivet beräknings mål. Du kan använda konfigurationen för att ange skript, beräknings mål och Azure ML-miljö som ska köras på, alla distribuerade projektspecifika konfigurationer och vissa ytterligare egenskaper. Mer information om en fullständig uppsättning konfigurerbara alternativ för körningar finns i [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
 
 En körnings konfiguration kan sparas i en fil i den katalog som innehåller ditt utbildnings skript.   Eller så kan det skapas som ett minnes intern objekt och användas för att skicka in en körning.
 
@@ -282,7 +282,7 @@ Studio är också den plats där du kommer åt de interaktiva verktyg som ingår
 > Verktyg som marker ATS (för hands version) nedan finns för närvarande i offentlig för hands version.
 > För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Interagera med tjänsten i valfri python-miljö med [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
++  Interagera med tjänsten i valfri python-miljö med [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro).
 + Interagera med tjänsten i valfri R-miljö med [Azure Machine Learning SDK för R (för](https://azure.github.io/azureml-sdk-for-r/reference/index.html) hands version).
 + Använd [Azure Machine Learning designer](concept-designer.md) för att utföra arbets flödes stegen utan att skriva kod. 
 + Använd [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) för Automation.

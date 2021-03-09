@@ -1,6 +1,6 @@
 ---
-title: Skapa en virtuell Windows-dator som är i zon med Azure PowerShell
-description: Skapa en virtuell Windows-dator i en tillgänglighetszon med Azure PowerShell
+title: Skapa en virtuell dator i zonen med Azure PowerShell
+description: Skapa en virtuell dator i en tillgänglighets zon med Azure PowerShell
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02897add4f3ca51fa7e172bc200af2c7b9065ed4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825250"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502645"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Skapa en virtuell Windows-dator i en tillgänglighetszon med PowerShell
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>Skapa en virtuell dator i en tillgänglighets zon med hjälp av Azure PowerShell
 
 Den här artikeln innehåller information om att använda Azure PowerShell för att skapa en virtuell Azure-dator som kör Windows Server 2016 i en Azure-tillgänglighetszon. En [tillgänglighetszon](../../availability-zones/az-overview.md) är en fysiskt separat zon i en Azure-region. Använd tillgänglighetszoner för att skydda dina appar och data från ett osannolikt fel eller förlust av ett helt datacenter.
 

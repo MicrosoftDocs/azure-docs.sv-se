@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685762"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505066"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Styra utgående trafik för klusternoder i Azure Kubernetes service (AKS)
 
@@ -28,13 +28,13 @@ AKS utgående beroenden är nästan helt definierade med FQDN, som inte har stat
 Som standard har AKS-kluster obegränsad utgående Internet åtkomst. Den här nivån av nätverks åtkomst tillåter noder och tjänster som du kör för att få åtkomst till externa resurser efter behov. Om du vill begränsa utgångs trafik måste ett begränsat antal portar och adresser vara tillgängliga för att upprätthålla felfria kluster underhålls uppgifter. Den enklaste lösningen för att skydda utgående adresser är att använda en brand Väggs enhet som kan styra utgående trafik baserat på domän namn. Azure-brandväggen kan till exempel begränsa utgående HTTP-och HTTPS-trafik baserat på målets FQDN. Du kan också konfigurera önskade brand Väggs-och säkerhets regler för att tillåta dessa obligatoriska portar och adresser.
 
 > [!IMPORTANT]
-> Det här dokumentet beskriver bara hur du låser trafiken som lämnar AKS-undernätet. AKS har som standard inga ingress-krav.  Det går inte att blockera **intern under näts trafik** med hjälp av nätverks säkerhets grupper (NSG: er) och brand väggar. Om du vill styra och blockera trafiken i klustret använder du [ * *_nätverks principer_* _][network-policy].
+> Det här dokumentet beskriver bara hur du låser trafiken som lämnar AKS-undernätet. AKS har som standard inga ingress-krav.  Det går inte att blockera **intern under näts trafik** med hjälp av nätverks säkerhets grupper (NSG: er) och brand väggar. Använd [**_nätverks principer_**][network-policy]för att styra och blockera trafiken i klustret.
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Nödvändiga utgående nätverks regler och FQDN för AKS-kluster
 
 Följande nätverks-och FQDN/applikations regler krävs för ett AKS-kluster. du kan använda dem om du vill konfigurera en annan lösning än Azure-brandväggen.
 
-_ IP-adress beroenden är för trafik som inte är HTTP/S (både TCP-och UDP-trafik)
+* IP-adress beroenden är för trafik som inte är HTTP/S (både TCP-och UDP-trafik)
 * FQDN HTTP/HTTPS-slutpunkter kan placeras i brand Väggs enheten.
 * HTTP/HTTPS-slutpunkter med jokertecken är beroenden som kan variera med ditt AKS-kluster baserat på ett antal kvalificerare.
 * AKS använder en åtkomst kontroll för att mata in FQDN som en miljö variabel för alla distributioner under Kube-system och Gatekeeper-system, som säkerställer all system kommunikation mellan noder och API-servern använder API-serverns FQDN och inte IP-adressen för API-servern. 
@@ -407,7 +407,7 @@ Nu kan ett AKS-kluster distribueras till det befintliga virtuella nätverket. Vi
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Skapa ett huvud namn för tjänsten med åtkomst till etablering i det befintliga virtuella nätverket
 
-Ett huvud namn för tjänsten används av AKS för att skapa kluster resurser. Tjänstens huvud namn som skickas vid skapande tillfället används för att skapa underliggande AKS-resurser, till exempel lagrings resurser, IP-adresser och belastningsutjämnare som används av AKS (du kan också använda en [hanterad identitet](use-managed-identity.md) i stället). Om du inte har beviljats de behörigheter som krävs nedan kan du inte etablera AKS-klustret.
+En kluster identitet (hanterad identitet eller tjänstens huvud namn) används av AKS för att skapa kluster resurser. Ett huvud namn för tjänsten som skickas vid skapande tid används för att skapa underliggande AKS-resurser, till exempel lagrings resurser, IP-adresser och belastningsutjämnare som används av AKS (du kan också använda en [hanterad identitet](use-managed-identity.md) i stället). Om du inte har beviljats de behörigheter som krävs nedan kan du inte etablera AKS-klustret.
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

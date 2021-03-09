@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042461"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504175"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always on-tillgänglighetsgrupper på SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Följande diagram illustrerar en tillgänglighets grupp för SQL Server på virt
 
 ## <a name="vm-redundancy"></a>VM-redundans 
 
-Om du vill öka redundansen och hög tillgänglighet bör SQL Server virtuella datorer antingen finnas i samma [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)eller olika [tillgänglighets zoner](../../../availability-zones/az-overview.md).
+Om du vill öka redundansen och hög tillgänglighet bör SQL Server virtuella datorer antingen finnas i samma [tillgänglighets uppsättning](../../../virtual-machines/availability-set-overview.md)eller olika [tillgänglighets zoner](../../../availability-zones/az-overview.md).
 
 Att placera en uppsättning virtuella datorer i samma tillgänglighets uppsättning skyddar mot avbrott i ett Data Center som orsakas av utrustnings problem (virtuella datorer i en tillgänglighets uppsättning delar inte resurser) eller från uppdateringar (virtuella datorer i en tillgänglighets uppsättning uppdateras inte samtidigt). Tillgänglighetszoner skydda mot ett helt data centers haveri, med varje zon som representerar en uppsättning data Center inom en region.  Genom att se till att resurser placeras i olika Tillgänglighetszoner kan du inte göra något av dina virtuella datorer offline på data center nivå.
 

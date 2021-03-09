@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8aa5108b6998424b35e3f4ecac6b51e78f276b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424129"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500520"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planera en Azure Active Directory distribution av lösen ords återställning via självbetjäning
 
@@ -25,7 +25,7 @@ ms.locfileid: "102424129"
 >
 > **Om du är en slutanvändare och behöver gå tillbaka till ditt konto går du till [https://aka.ms/sspr](https://aka.ms/sspr)**.
 
-[Lösen ords återställning via självbetjäning (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) är en Azure Active Directory (AD)-funktion som gör det möjligt för användare att återställa sina lösen ord utan att kontakta IT-avdelningen för hjälp. Användarna kan snabbt avblockera sig själva och fortsätta att arbeta oavsett var de befinner sig eller tid på dagen. Genom att tillåta att medarbetarna avblockerar sig själva kan din organisation minska den icke produktiva tiden och höga support kostnader för de flesta vanliga problem som rör lösen ord.
+[Lösen ords återställning via självbetjäning (SSPR)](https://www.youtube.com/watch?v=pS3XwfxJrMo) är en Azure Active Directory (AD)-funktion som gör det möjligt för användare att återställa sina lösen ord utan att kontakta IT-avdelningen för hjälp. Användarna kan snabbt avblockera sig själva och fortsätta att arbeta oavsett var de befinner sig eller tid på dagen. Genom att tillåta att medarbetarna avblockerar sig själva kan din organisation minska den icke produktiva tiden och höga support kostnader för de flesta vanliga problem som rör lösen ord.
 
 SSPR har följande viktiga funktioner:
 
@@ -155,14 +155,14 @@ Följande inställningar krävs för att aktivera SSPR tillsammans med rekommend
 | **Egenskaper för SSPR** | Återställning av lösen ord för självbetjäning har Aktiver ATS | **Vald** grupp för pilot/ **alla** för produktion |
 | **Autentiseringsmetoder** | Autentiseringsmetoder som krävs för registrering | Alltid 1 mer än vad som krävs för återställning |
 |   | Autentiseringsmetoder som krävs för att återställa | En eller två |
-| **Registrering** | Kräv att användare registrerar sig vid inloggning | Yes |
+| **Registrering** | Kräv att användare registrerar sig vid inloggning | Ja |
 |   | Antal dagar innan användare uppmanas att bekräfta sin autentiseringsinformation | 90 – 180 dagar |
-| **Aviseringar** | Meddela användare om lösenordsåterställning | Yes |
-|   | Meddela alla administratörer när andra administratörer återställer sina lösenord | Yes |
-| **Anpassning** | Anpassa supportavdelningen-länk | Yes |
+| **Aviseringar** | Meddela användare om lösenordsåterställning | Ja |
+|   | Meddela alla administratörer när andra administratörer återställer sina lösenord | Ja |
+| **Anpassning** | Anpassa supportavdelningen-länk | Ja |
 |   | E-post eller URL för anpassad helpdesk | Support webbplats eller e-postadress |
-| **Lokal integration** | Skriv tillbaka lösen ord till lokal AD | Yes |
-|   | Tillåt att användare låser upp kontot utan att återställa lösen ordet | Yes |
+| **Lokal integration** | Skriv tillbaka lösen ord till lokal AD | Ja |
+|   | Tillåt att användare låser upp kontot utan att återställa lösen ordet | Ja |
 
 ### <a name="sspr-properties"></a>Egenskaper för SSPR
 
@@ -255,7 +255,7 @@ Medan SSPR vanligt vis inte skapar användar problem är det viktigt att förber
 
 Om du vill göra det möjligt för support teamet att lyckas kan du skapa vanliga frågor och svar baserat på frågor som du får från användarna. Några exempel:
 
-| Scenarier| Description |
+| Scenarier| Beskrivning |
 | - | - |
 | Användaren har inga registrerade autentiseringsmetoder tillgängliga| En användare försöker återställa sitt lösen ord men har inte någon av de autentiseringsmetoder som de registrerade är tillgängliga (exempel: de lämnade sin mobil telefon hemma och har inte åtkomst till e-post) |
 | Användaren får inte någon text eller ett anrop på deras telefonnummer till kontoret eller mobil telefonen| En användare försöker verifiera sin identitet via text eller anrop, men får ingen text/ett anrop. |

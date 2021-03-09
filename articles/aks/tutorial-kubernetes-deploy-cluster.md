@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c39169c0531a73bd00db7de5fe393ef8c51c8c96
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250646"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509429"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Självstudie: Distribuera ett Azure Kubernetes Service-kluster (AKS)
 
@@ -35,7 +35,7 @@ AKS-kluster kan använda Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RB
 
 Skapa ett AKS-kluster med [az aks create][]. I följande exempel skapas ett kluster med namnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup*. Den här resurs gruppen skapades i [föregående självstudie][aks-tutorial-prepare-acr] i regionen *östra* . I följande exempel anges ingen region så AKS-klustret skapas också i regionen *östra* . Mer information finns i [kvoter, storleks begränsningar för virtuella datorer och regions tillgänglighet i Azure Kubernetes service (AKS)][quotas-skus-regions] för mer information om resurs begränsningar och regions tillgänglighet för AKS.
 
-För att ett AKS-kluster ska kunna interagera med andra Azure-resurser skapas ett Azure Active Directory tjänstens huvud namn automatiskt, eftersom du inte angav något. Här ges tjänstens huvud namn [rätt att hämta avbildningar][container-registry-integration] från den Azure Container Registry-instans (ACR) som du skapade i föregående självstudie. Om du vill köra kommandot måste du ha rollen **ägare** eller **administratör för Azure-konto** på Azure-prenumerationen.
+Om du vill tillåta ett AKS-kluster att samverka med andra Azure-resurser skapas en kluster identitet automatiskt, eftersom du inte angav något. Här ges den här kluster identiteten behörighet [att hämta avbildningar][container-registry-integration] från den Azure Container Registry (ACR) som du skapade i föregående självstudie. Om du vill köra kommandot måste du ha rollen **ägare** eller **administratör för Azure-konto** på Azure-prenumerationen.
 
 ```azurecli
 az aks create \

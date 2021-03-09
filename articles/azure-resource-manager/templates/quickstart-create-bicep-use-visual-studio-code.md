@@ -5,18 +5,18 @@ author: mumian
 ms.date: 03/02/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: ab1d7b88321ce5959b99423ae2ca1332369ef691
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179001"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504158"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Snabb start: skapa bicep-filer med Visual Studio Code
 
 Bicep-tillägget för Visual Studio Code ger språk stöd och slut för ande av resurser. Dessa verktyg hjälper dig att skapa och validera [bicep](./bicep-overview.md) -filer. I den här snabb starten använder du tillägget för att skapa en bicep-fil från grunden. När du gör det kommer du att få tilläggets funktioner som verifiering och slut för ande.
 
-För att slutföra den här snabb starten behöver du [Visual Studio Code](https://code.visualstudio.com/)med [bicep-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) installerat. Du behöver också antingen den senaste versionen av [Azure CLI](/cli/azure/) eller den senaste [Azure PowerShell modulen](/powershell/azure/new-azureps-module-az?view=azps-3.7.0&preserve-view=true) installerad och autentiserad.
+För att slutföra den här snabb starten behöver du [Visual Studio Code](https://code.visualstudio.com/)med [bicep-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) installerat. Du behöver också antingen den senaste versionen av [Azure CLI](/cli/azure/) eller den senaste [Azure PowerShell modulen](/powershell/azure/new-azureps-module-az) installerad och autentiserad.
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 

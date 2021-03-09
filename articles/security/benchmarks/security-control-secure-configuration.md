@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 44604f910b3ee6e6ce1b21c736c6ad1f0443e996
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880177"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500044"
 ---
 # <a name="security-control-secure-configuration"></a>Säkerhets kontroll: säker konfiguration
 
@@ -30,7 +30,7 @@ Azure Resource Manager har också möjlighet att exportera mallen i JavaScript O
 
 Du kan också använda rekommendationer från Azure Security Center som en säker konfigurations bas linje för dina Azure-resurser.
 
-- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Självstudie: skapa och hantera principer för att genomdriva efterlevnad](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -108,7 +108,7 @@ Använd Azure-DevOps för att lagra och hantera din kod på ett säkert sätt, t
 
 | Azure-ID | CIS-ID: n | Ligger |
 |--|--|--|
-| 7,6 | 5.3 | Kund |
+| 7.6 | 5.3 | Kund |
 
 Om du använder anpassade avbildningar använder du rollbaserad åtkomst kontroll i Azure (Azure RBAC) så att endast behöriga användare får åtkomst till avbildningarna. Med hjälp av ett delat bild galleri kan du dela dina avbildningar till olika användare, tjänst huvud namn eller AD-grupper i din organisation.  För behållar avbildningar lagrar du dem i Azure Container Registry och utnyttjar Azure RBAC för att se till att endast behöriga användare kan komma åt avbildningarna.  
 
@@ -124,7 +124,7 @@ Om du använder anpassade avbildningar använder du rollbaserad åtkomst kontrol
 
 | Azure-ID | CIS-ID: n | Ligger |
 |--|--|--|
-| 7,7 | 5.4 | Kund |
+| 7.7 | 5.4 | Kund |
 
 Definiera och implementera standardinställda säkerhetskonfigurationer för Azure-resurser med hjälp av Azure Policy. Använd Azure Policy alias för att skapa anpassade principer för att granska eller tillämpa nätverks konfigurationen för dina Azure-resurser. Du kan också använda inbyggda princip definitioner som är relaterade till dina speciella resurser.  Dessutom kan du använda Azure Automation för att distribuera konfigurations ändringar.
 

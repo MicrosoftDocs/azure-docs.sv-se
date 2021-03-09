@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6c9b4a9ee1a778ba7a534377f8b2abe9d9a7e18a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627823"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504738"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Introduktion till Azure Managed Disks
 
@@ -35,7 +35,7 @@ Med hanterade diskar kan du skapa upp till 50 000 VM- **diskar** av en typ i en 
 
 ### <a name="integration-with-availability-sets"></a>Integrering med tillgänglighets uppsättningar
 
-Hanterade diskar är integrerade med tillgänglighets uppsättningar för att säkerställa att diskarna för [virtuella datorer i en tillgänglighets uppsättning](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) är tillräckligt isolerade från varandra för att undvika en enskild felpunkt. Diskar placeras automatiskt i olika enheter för lagrings skalning (stämplar). Om en stämpel Miss lyckas på grund av maskin-eller program varu fel, Miss lyckas bara de virtuella dator instanserna med diskar på dessa stämplar. Anta till exempel att du har ett program som körs på fem virtuella datorer och att de virtuella datorerna finns i en tillgänglighets uppsättning. Diskarna för de virtuella datorerna lagras inte i samma stämpel, så om en stämpel slutar fungera fortsätter de andra instanserna av programmet att köras.
+Hanterade diskar är integrerade med tillgänglighets uppsättningar för att säkerställa att diskarna för [virtuella datorer i en tillgänglighets uppsättning](./availability-set-overview.md) är tillräckligt isolerade från varandra för att undvika en enskild felpunkt. Diskar placeras automatiskt i olika enheter för lagrings skalning (stämplar). Om en stämpel Miss lyckas på grund av maskin-eller program varu fel, Miss lyckas bara de virtuella dator instanserna med diskar på dessa stämplar. Anta till exempel att du har ett program som körs på fem virtuella datorer och att de virtuella datorerna finns i en tillgänglighets uppsättning. Diskarna för de virtuella datorerna lagras inte i samma stämpel, så om en stämpel slutar fungera fortsätter de andra instanserna av programmet att köras.
 
 ### <a name="integration-with-availability-zones"></a>Integrering med Tillgänglighetszoner
 
@@ -100,7 +100,7 @@ Den här disken har en maximal kapacitet på 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Tillfällig disk
 
-De flesta virtuella datorer innehåller en temporär disk, som inte är en hanterad disk. Den temporära disken ger kortsiktig lagring för program och processer och är avsedd att endast lagra data, till exempel sid-eller växlingsfiler. Data på den tillfälliga disken kan gå förlorade under en [underhålls händelse](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime) eller när du [distribuerar om en virtuell dator](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Vid en lyckad standard omstart av den virtuella datorn kommer data på den temporära disken att kvarstå. Mer information om virtuella datorer utan temporära diskar finns i [storlekar för virtuella Azure-datorer utan lokal temporär disk](azure-vms-no-temp-disk.md).
+De flesta virtuella datorer innehåller en temporär disk, som inte är en hanterad disk. Den temporära disken ger kortsiktig lagring för program och processer och är avsedd att endast lagra data, till exempel sid-eller växlingsfiler. Data på den tillfälliga disken kan gå förlorade under en [underhålls händelse](./understand-vm-reboots.md) eller när du [distribuerar om en virtuell dator](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Vid en lyckad standard omstart av den virtuella datorn kommer data på den temporära disken att kvarstå. Mer information om virtuella datorer utan temporära diskar finns i [storlekar för virtuella Azure-datorer utan lokal temporär disk](azure-vms-no-temp-disk.md).
 
 På virtuella Azure Linux-datorer är den temporära disken vanligt vis/dev/SDB och på virtuella Windows-datorer är den temporära disken D: som standard. Den tillfälliga disken krypteras inte med kryptering på Server sidan om du inte aktiverar kryptering på värden.
 

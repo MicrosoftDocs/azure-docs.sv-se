@@ -3,12 +3,12 @@ title: Azure Monitor loggar data modell
 description: I den här artikeln lär du dig mer om Azure Monitor Log Analytics data modell information för Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586774"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500996"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics data modell för Azure Backup data
 
@@ -18,7 +18,8 @@ Använd Log Analytics data modell för att skapa anpassade aviseringar från Log
 
 > [!NOTE]
 >
-> Den här data modellen refererar till Azure-diagnostik läge för att skicka diagnostiska händelser till Log Analytics (LA). Om du vill lära dig data modellen för det nya resurs läget kan du läsa följande artikel: [data modell för Azure Backup diagnostiska händelser](./backup-azure-reports-data-model.md)
+> * Den här data modellen refererar till Azure-diagnostik läge för att skicka diagnostiska händelser till Log Analytics (LA). Om du vill lära dig data modellen för det nya resurs läget kan du läsa följande artikel: [data modell för Azure Backup diagnostiska händelser](./backup-azure-reports-data-model.md)
+> * För att skapa anpassade rapportvyer, rekommenderar vi att du använder [system funktioner på Azure Monitor loggar](backup-reports-system-functions.md) i stället för att arbeta med de obearbetade tabellerna i listan nedan.
 
 ## <a name="using-azure-backup-data-model"></a>Använda Azure Backup data modell
 
@@ -172,7 +173,7 @@ Den här tabellen innehåller information om projektrelaterade fält.
 
 Den här tabellen innehåller information om principbaserad fält.
 
-| Fält | Datatyp | Versioner som gäller | Description |
+| Fält | Datatyp | Versioner som gäller | Beskrivning |
 | --- | --- | --- | --- |
 | EventName_s |Text ||Det här fältet representerar namnet på den här händelsen. Det är alltid AzureBackupCentralReport |
 | SchemaVersion_s |Text ||Det här fältet anger den aktuella versionen av schemat. Det är **v2** |
@@ -220,7 +221,7 @@ Den här tabellen innehåller information om principbaserad fält.
 
 Den här tabellen innehåller information om princip kopplingar med olika entiteter.
 
-| Fält | Datatyp | Versioner som gäller | Description |
+| Fält | Datatyp | Versioner som gäller | Beskrivning |
 | --- | --- | --- | --- |
 | EventName_s |Text ||Det här fältet representerar namnet på den här händelsen. Det är alltid AzureBackupCentralReport |
 | SchemaVersion_s |Text ||Det här fältet anger den aktuella versionen av schemat. Det är **v2** |
@@ -349,7 +350,7 @@ Den här tabellen anger de arbets belastningar som en volym är kopplad till.
 
 Den här tabellen innehåller grundläggande skyddade instans fält.
 
-| Fält | Datatyp |Versioner som gäller | Description |
+| Fält | Datatyp |Versioner som gäller | Beskrivning |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Text |v2|Unikt ID som används för att identifiera säkerhets kopierings objekt för virtuella datorer som säkerhets kopie ras med DPM, MABS|
 | ProtectedContainerUniqueId_s |Text |v2|Unikt ID som används för att identifiera den skyddade behållaren för allting förutom virtuella datorer som säkerhets kopie ras med DPM, MABS|

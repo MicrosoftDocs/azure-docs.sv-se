@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d1021352f3555f49b165eed60214e11b1a8d07d9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180946"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508188"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Skapa och konfigurera ett Azure Kubernetes Services-kluster (AKS) för att använda virtuella noder med Azure CLI
 
@@ -86,7 +86,7 @@ az network vnet subnet create \
 
 ## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Skapa ett huvud namn för tjänsten eller Använd en hanterad identitet
 
-Om ett AKS-kluster ska kunna interagera med andra Azure-resurser behövs ett huvudnamn för tjänsten i Azure Active Directory. Du kan skapa ett huvudnamn för tjänsten automatiskt via Azure CLI eller portalen, eller så kan du skapa ett i förväg och tilldela ytterligare behörigheter. Alternativt kan du använda en hanterad identitet för behörigheter i stället för ett huvud namn för tjänsten. Mer information finns i [använda hanterade identiteter](use-managed-identity.md).
+Om du vill tillåta ett AKS-kluster att samverka med andra Azure-resurser används en kluster identitet. Den här kluster identiteten kan skapas automatiskt av Azure CLI eller portalen, eller så kan du skapa en ny och tilldela ytterligare behörigheter. Som standard är den här kluster identiteten en hanterad identitet. Mer information finns i [använda hanterade identiteter](use-managed-identity.md). Du kan också använda ett tjänst huvud namn som kluster identitet. Följande steg visar hur du manuellt skapar och tilldelar tjänstens huvud namn till klustret.
 
 Skapa ett huvudnamn för tjänsten med kommandot [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametern `--skip-assignment` gör att inga ytterligare behörigheterna tilldelas.
 

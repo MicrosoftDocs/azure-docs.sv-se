@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736907"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508327"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Affärs kontinuitet och HADR för SQL Server på Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -106,7 +106,7 @@ Virtuella Azure-datorer, lagring och nätverk har olika operativa egenskaper än
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Noder med hög tillgänglighet i en tillgänglighets uppsättning
 Med tillgänglighets uppsättningar i Azure kan du placera noderna med hög tillgänglighet i separata fel domäner och uppdaterings domäner. Azure-plattformen tilldelar en uppdaterings domän och en feldomän till varje virtuell dator i din tillgänglighets uppsättning. Den här konfigurationen i ett Data Center garanterar att minst en virtuell dator är tillgänglig under en planerad eller oplanerad underhålls händelse och uppfyller Azure-SLA på 99,95 procent. 
 
-Om du vill konfigurera en hög tillgänglighets installation placerar du alla deltagande SQL Server virtuella datorer i samma tillgänglighets uppsättning för att undvika program-eller data förlust under en underhålls händelse. Endast noder i samma moln tjänst kan ingå i samma tillgänglighets uppsättning. Mer information finns i [Hantera tillgängligheten för virtuella datorer](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Om du vill konfigurera en hög tillgänglighets installation placerar du alla deltagande SQL Server virtuella datorer i samma tillgänglighets uppsättning för att undvika program-eller data förlust under en underhålls händelse. Endast noder i samma moln tjänst kan ingå i samma tillgänglighets uppsättning. Mer information finns i [Hantera tillgängligheten för virtuella datorer](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Noder med hög tillgänglighet i en tillgänglighets zon
 Tillgänglighets zoner är unika fysiska platser inom en Azure-region. Varje zon består av ett eller flera data Center som är utrustade med oberoende strömförsörjning, kylning och nätverk. Den fysiska avgränsningen av tillgänglighets zoner inom en region hjälper till att skydda program och data från data Center problem genom att se till att minst en virtuell dator är tillgänglig och uppfyller Azure-SLA på 99,99 procent. 

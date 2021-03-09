@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051589"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501236"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Redigera grafiska runbooks i Azure Automation
 
@@ -34,7 +34,7 @@ Med kontrollen arbets yta kan du utforma din Runbook. Du kan lägga till aktivit
 
 Med biblioteks kontrollen kan du välja vilka [aktiviteter](#use-activities) som ska läggas till i din Runbook. Du lägger till dem på arbets ytan, där du kan ansluta dem till andra aktiviteter. Biblioteks kontrollen inkluderar de avsnitt som definieras i följande tabell.
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 |:--- |:--- |
 | Cmdletar |Alla cmdletar som kan användas i din Runbook. Cmdletar är ordnade efter modul. Alla moduler som du har installerat i ditt Automation-konto är tillgängliga. |
 | Runbooks |Runbooks i ditt Automation-konto. Du kan lägga till dessa Runbooks i arbets ytan som ska användas som underordnade Runbooks. Endast Runbooks av samma kärn typ som den Runbook som redige ras visas. För grafiska runbooks visas endast PowerShell-baserade Runbooks. För grafiska PowerShell Workflow-Runbooks visas bara PowerShell Workflow-baserade Runbooks. |
@@ -61,7 +61,7 @@ Välj en aktivitet på arbets ytan för att konfigurera dess egenskaper och para
 
 En parameter uppsättning definierar de obligatoriska och valfria parametrarna som accepterar värden för en viss cmdlet. Alla cmdlets har minst en parameter uppsättning och några har flera uppsättningar. Om en cmdlet har flera parameter uppsättningar måste du välja den som ska användas innan du kan konfigurera parametrar. Du kan ändra den parameter uppsättning som används av en aktivitet genom att välja **parameter uppsättning** och välja en annan uppsättning. I det här fallet går alla parameter värden som du redan har konfigurerat förlorade.
 
-I följande exempel har cmdleten [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) tre parameter uppsättningar. Exemplet använder en uppsättning som kallas **ListVirtualMachineInResourceGroupParamSet**, med en enda valfri parameter, för att returnera alla virtuella datorer i en resurs grupp. I exemplet används också **GetVirtualMachineInResourceGroupParamSet** -parametern för att ange den virtuella dator som ska returneras. Den här uppsättningen har två obligatoriska parametrar och en valfri parameter.
+I följande exempel har cmdleten [Get-AzVM](/powershell/module/az.compute/get-azvm) tre parameter uppsättningar. Exemplet använder en uppsättning som kallas **ListVirtualMachineInResourceGroupParamSet**, med en enda valfri parameter, för att returnera alla virtuella datorer i en resurs grupp. I exemplet används också **GetVirtualMachineInResourceGroupParamSet** -parametern för att ange den virtuella dator som ska returneras. Den här uppsättningen har två obligatoriska parametrar och en valfri parameter.
 
 ![Parameter uppsättning](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -69,7 +69,7 @@ I följande exempel har cmdleten [Get-AzVM](/powershell/module/az.compute/get-az
 
 När du anger ett värde för en parameter väljer du en data källa för att avgöra hur värdet anges. De data källor som är tillgängliga för en viss parameter beror på giltiga värden för den parametern. Null är till exempel inte ett tillgängligt alternativ för en parameter som inte tillåter Null-värden.
 
-| Datakälla | Description |
+| Datakälla | Beskrivning |
 |:--- |:--- |
 | Konstant värde |Ange ett värde för parametern. Den här data källan är bara tillgänglig för följande data typer: Int32, Int64, String, Boolean, DateTime, switch. |
 | Aktivitetens utdata |Använd utdata från en aktivitet som föregår den aktuella aktiviteten i arbets flödet. Alla giltiga aktiviteter visas. Använd bara den aktivitet som genererar utdata för parametervärdet. Om aktiviteten matar ut ett objekt med flera egenskaper kan du ange namnet på en speciell egenskap när du har valt aktiviteten. |
@@ -151,7 +151,7 @@ Du kan skapa en länk mellan två aktiviteter genom att välja käll aktivitet o
 
 Välj länken för att konfigurera dess egenskaper på bladet konfiguration. Egenskaperna inkluderar länk typen, som beskrivs i följande tabell.
 
-| Länktyp | Description |
+| Länktyp | Beskrivning |
 |:--- |:--- |
 | Pipeline |Mål aktiviteten körs en gång för varje objekts utdata från käll aktiviteten. Mål aktiviteten körs inte om käll aktiviteten resulterar i inga utdata. Utdata från käll aktiviteten är tillgängligt som ett objekt. |
 | Sequence |Mål aktiviteten körs bara en gång när den tar emot utdata från käll aktiviteten. Utdata från käll aktiviteten är tillgängligt som en matris med objekt. |
@@ -257,7 +257,7 @@ Varje indataparameter definieras av egenskaperna i följande tabell:
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | Name | Krävs. Parameterns namn. Namnet måste vara unikt inom runbooken. Det måste börja med en bokstav och får bara innehålla bokstäver, siffror och under streck. Namnet får inte innehålla blank steg. |
-| Description |Valfritt. Beskrivning av syftet med indataparametern. |
+| Beskrivning |Valfritt. Beskrivning av syftet med indataparametern. |
 | Typ | Valfritt. Datatyp förväntas för parametervärdet. Azure Portal ger en lämplig kontroll för data typen för varje parameter när du uppmanas att ange indata. Parameter typer som stöds är sträng, Int32, Int64, decimal, Boolean, DateTime och Object. Om du inte väljer någon datatyp används strängen som standard.|
 | Obligatorisk | Valfritt. Inställning som anger om ett värde måste anges för parametern. Om du väljer `yes` måste du ange ett värde när Runbook startas. Om du väljer `no` krävs inget värde när runbooken startas och ett standardvärde kan användas. Det går inte att starta runbooken om du inte anger något värde för varje obligatorisk parameter som inte har något definierat standardvärde. |
 | Standardvärde | Valfritt. Det värde som används för en parameter om det inte skickas i när runbooken startas. Om du vill ange ett standardvärde väljer du `Custom` . Välj `None` om du inte vill ange något standardvärde. |
@@ -435,4 +435,4 @@ Du kan välja att återgå till den publicerade versionen av en Runbook. Den hä
 * Information om hur du kommer igång med grafiska runbooks finns i [Självstudier: skapa en grafisk Runbook](learn/automation-tutorial-runbook-graphical.md).
 * Om du vill veta mer om Runbook-typer och deras fördelar och begränsningar, se [Azure Automation Runbook-typer](automation-runbook-types.md).
 * Information om hur du autentiserar med hjälp av Automation kör som-kontot finns i [Kör som-konto](automation-security-overview.md#run-as-account).
-* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).
+* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/#automation).

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: banders
-ms.openlocfilehash: 0f30c90bf81a837b1e78ca5f91450cf085cc91bc
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102495146"
+ms.locfileid: "102508528"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Tilldela roller till Azure Enterprise-avtal tjänstens huvud namn
 
@@ -23,7 +23,7 @@ Du kan hantera din Enterprise-avtal (EA)-registrering i [Azure Enterprise Portal
 Innan du börjar ska du se till att du är bekant med följande artiklar:
 
 - [Enterprise Agreement-roller](understand-ea-roles.md)
-- [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-5.5.0&preserve-view=true)
+- [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps)
 - [Så här anropar du REST-API: er med Postman](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
 ## <a name="create-and-authenticate-your-service-principal"></a>Skapa och autentisera ditt tjänst huvud namn
@@ -89,7 +89,7 @@ Parametern är fakturerings kontots ID. Du hittar den i Azure Portal på sidan f
 
 **billingRoleAssignmentName**
 
-Parametern är ett unikt GUID som du måste ange. Du kan generera en GUID med PowerShell [-kommandot New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) .
+Parametern är ett unikt GUID som du måste ange. Du kan generera en GUID med PowerShell [-kommandot New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) .
 
 Du kan också använda webbplatsen [online-GUID/UUID-Generator](https://guidgenerator.com/) för att generera ett unikt GUID.
 
@@ -141,7 +141,7 @@ Det är fakturerings kontots ID. Du hittar den i Azure Portal på sidan för Cos
 
 **billingRoleAssignmentName**
 
-Parametern är ett unikt GUID som du måste ange. Du kan generera en GUID med PowerShell [-kommandot New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) .
+Parametern är ett unikt GUID som du måste ange. Du kan generera en GUID med PowerShell [-kommandot New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) .
 
 Du kan också använda webbplatsen [online-GUID/UUID-Generator](https://guidgenerator.com/) för att generera ett unikt GUID.
 
@@ -199,7 +199,7 @@ Parametern är fakturerings kontots ID. Du hittar den i Azure Portal på sidan f
 
 **billingRoleAssignmentName**
 
-Parametern är ett unikt GUID som du måste ange. Du kan generera en GUID med PowerShell [-kommandot New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) .
+Parametern är ett unikt GUID som du måste ange. Du kan generera en GUID med PowerShell [-kommandot New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) .
 
 Du kan också använda webbplatsen [online-GUID/UUID-Generator](https://guidgenerator.com/) för att generera ett unikt GUID.
 **enrollmentAccountName**

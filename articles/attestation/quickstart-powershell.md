@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ebc12982bcc05c2d07f91fbc4d85afc170adf075
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453401"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501132"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Snabb start: Konfigurera Azure-attestering med Azure PowerShell
 
@@ -226,7 +226,7 @@ Observera att all semantisk manipulering av princip signerings certifikatet mås
 
 Exempel på princip signerings certifikat finns i [exempel på princip signerings certifikat](policy-signer-examples.md).
 
-Mer information om cmdletarna och dess parametrar finns i PowerShell- [cmdletar för Azure-attestering](/powershell/module/az.attestation/?view=azps-4.3.0#attestation) 
+Mer information om cmdletarna och dess parametrar finns i PowerShell- [cmdletar för Azure-attestering](/powershell/module/az.attestation/#attestation) 
 
 ## <a name="next-steps"></a>Nästa steg
 

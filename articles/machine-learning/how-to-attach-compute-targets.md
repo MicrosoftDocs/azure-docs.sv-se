@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 850b590ae8aeab822367714fb9a56661306c2387
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518699"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504941"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Konfigurera beräknings mål för modell utbildning och distribution
 
@@ -43,7 +43,7 @@ Om du vill använda beräknings mål som hanteras av Azure Machine Learning, se:
 
 * En Azure Machine Learning-arbetsyta. Mer information finns i [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
-* [Azure CLI-tillägget för Machine Learning-tjänst](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)eller [Azure Machine Learning Visual Studio Code-tillägget](tutorial-setup-vscode-extension.md).
+* [Azure CLI-tillägget för Machine Learning-tjänst](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)eller [Azure Machine Learning Visual Studio Code-tillägget](tutorial-setup-vscode-extension.md).
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -60,7 +60,7 @@ Med Azure Machine Learning kan du träna din modell på en mängd olika resurser
 
 När du använder den lokala datorn för **utbildning** behöver du inte skapa något beräknings mål.  [Skicka bara utbildnings körningen](how-to-set-up-training-targets.md) från den lokala datorn.
 
-När du använder den lokala datorn för att få en **härledning** måste du ha Docker installerat. Utför distributionen genom att använda [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) för att definiera den port som webb tjänsten ska använda. Använd sedan den normala distributions processen enligt beskrivningen i [Distribuera modeller med Azure Machine Learning](how-to-deploy-and-where.md).
+När du använder den lokala datorn för att få en **härledning** måste du ha Docker installerat. Utför distributionen genom att använda [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#deploy-configuration-port-none-) för att definiera den port som webb tjänsten ska använda. Använd sedan den normala distributions processen enligt beskrivningen i [Distribuera modeller med Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuella fjärrdatorer
 
@@ -325,7 +325,7 @@ Ett mer detaljerat exempel finns i en [exempel antecknings bok](https://aka.ms/p
 > Skapa inte flera, samtidiga bilagor till samma ADLA från din arbets yta. Varje ny bilaga kommer att dela upp de tidigare befintliga bifogade filerna.
 
 > [!TIP]
-> Azure Machine Learning pipelines kan bara arbeta med data som lagras i standard data lagret för det Data Lake Analytics kontot. Om de data du behöver arbeta med finns i ett lager som inte är standard kan du använda en [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) för att kopiera data före träning.
+> Azure Machine Learning pipelines kan bara arbeta med data som lagras i standard data lagret för det Data Lake Analytics kontot. Om de data du behöver arbeta med finns i ett lager som inte är standard kan du använda en [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep) för att kopiera data före träning.
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container instance
 

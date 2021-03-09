@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 04492abc0f235c2dc6139adbe543bcce82f7f7b3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646905"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500300"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Arkose Labs med Azure Active Directory B2C
 
-I den här självstudien lär du dig att integrera Azure Active Directory (AD) B2C-autentisering med [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs hjälper organisationer mot bot-attacker, konto upptagnings attacker och falska konto öppningar.  
+I den här exempel självstudien lär du dig att integrera Azure Active Directory (AD) B2C-autentisering med [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs hjälper organisationer mot bot-attacker, konto upptagnings attacker och falska konto öppningar.  
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -196,7 +196,7 @@ I [den här artikeln](https://docs.microsoft.com/azure/azure-functions/functions
 
 [Skapa en API-anslutning](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) och aktivera den för ditt användar flöde. Din API Connector-konfiguration bör se ut så här:
 
-![Bild som visar Sök efter app-ID](media/partner-arkose-labs/configure-api-connector.png)
+![Bild som visar hur du konfigurerar API-koppling](media/partner-arkose-labs/configure-api-connector.png)
 
 - **Slut punkts-URL** – är funktionen URL som du kopierade tidigare medan du distribuerade Azure function.
 

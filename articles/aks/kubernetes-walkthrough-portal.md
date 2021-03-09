@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 63d23b01eddc70dedd849560248dd053c80e0037
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181422"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507814"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure Portal
 
@@ -47,13 +47,11 @@ Du skapar ett AKS-kluster genom att slutföra följande steg:
 
 4. Behåll standard alternativen på sidan **Node-pooler** . Längst ned på skärmen klickar du på **Nästa: autentisering**.
     > [!CAUTION]
-    > Det kan ta flera minuter att sprida nya AAD-tjänstens huvud namn och bli tillgängliga, vilket orsakar att tjänstens huvud namn inte hittades fel och validerings fel i Azure Portal. Om du klickar på detta går du till [Felsöka vanliga problem med Azure Kubernetes-tjänsten](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) för att undvika problemet.
+    > Det kan ta flera minuter att sprida den nya kluster identiteten och bli tillgänglig, vilket innebär att tjänstens huvud namn inte hittades fel och validerings fel i Azure Portal. Om du klickar på detta går du till [Felsöka vanliga problem med Azure Kubernetes-tjänsten](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) för att undvika problemet.
 
 5. På sidan **Autentisering** konfigurerar du följande alternativ:
-    - Skapa ett nytt tjänsthuvudnamn genom att låta fältet **tjänstens huvudnamn** vara **(nytt) standardtjänsthuvudnamn**. Eller så kan du välja *Konfigurera tjänstens huvudnamn* om du vill använda ett befintligt. Om du använder en befintlig måste du ange klient-ID och hemlighet för tjänstens huvud namn.
+    - Skapa en ny kluster identitet genom att lämna fältet **Authentication** med **systemtilldelad hanterad identitet**. Alternativt kan du välja **tjänstens huvud namn** för att använda ett huvud namn för tjänsten. Välj *(nytt) standard tjänstens huvud namn* för att skapa ett standard huvud namn för tjänsten eller *Konfigurera tjänstens huvud* namn för att använda en befintlig. Om du använder en befintlig måste du ange klient-ID och hemlighet för tjänstens huvud namn.
     - Aktivera alternativet för Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC). Detta ger mer detaljerad kontroll över åtkomsten till de Kubernetes-resurser som distribueras i ditt AKS-kluster.
-
-    Alternativt kan du använda en hanterad identitet i stället för ett huvud namn för tjänsten. Mer information finns i [använda hanterade identiteter](use-managed-identity.md) .
 
 Som standard används *Grundläggande* nätverk och Azure Monitor för container är aktiverat. Klicka på **Granska + skapa** och sedan **Skapa** när valideringen är klar.
 

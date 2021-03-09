@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 74deebb66bc0db316e2aa36588034c6afb3bbe40
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8b1f820cfca0e352b49d815e2b99d407ccc8ce43
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674036"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505706"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimera transaktioner med dedikerad SQL-pool i Azure Synapse Analytics 
 
@@ -422,4 +422,4 @@ Det bästa scenariot är att låta ändringar i Flight-datatransaktionerna slutf
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om isolerings nivåer och transaktionella gränser finns i [transaktioner i dedikerad SQL-pool](develop-transactions.md) .  En översikt över andra bästa metoder finns i [metod tips för SQL-pool](best-practices-sql-pool.md).
+Mer information om isolerings nivåer och transaktionella gränser finns i [transaktioner i dedikerad SQL-pool](develop-transactions.md) .  En översikt över andra bästa metoder finns i [metod tips för dedikerad SQL-pool](best-practices-sql-pool.md).

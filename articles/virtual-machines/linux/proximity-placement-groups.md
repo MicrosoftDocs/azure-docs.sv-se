@@ -1,19 +1,19 @@
 ---
-title: Använda närhetsplaceringsgrupper
+title: Skapa en närhets placerings grupp med hjälp av Azure CLI
 description: Lär dig mer om att skapa och använda närhets placerings grupper för virtuella datorer i Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 21f657af60fa0012c517e4788a5d087b3924823f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666250"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505655"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Distribuera virtuella datorer till närhetsplaceringsgrupper med Azure CLI
 

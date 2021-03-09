@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 53459ad766ffcf156d2906a38666a14c4883b5e8
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 461c50bca53286cedcbb9ac21fc44467885e3d18
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215943"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500452"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integrering för Azure Machine Learning
 
@@ -123,7 +123,7 @@ SSH visar det här finger avtrycket när det ansluter till en okänd värd för 
 
 När du skickar en utbildning som körs från python SDK eller Machine Learning CLI överförs filerna som behövs för att träna modellen till din arbets yta. Om `git` kommandot är tillgängligt i utvecklings miljön använder överförings processen för att kontrol lera om filerna är lagrade i en git-lagringsplats. I så fall, överförs information från git-lagringsplatsen också som en del av övnings körningen. Den här informationen lagras i följande egenskaper för övnings körningen:
 
-| Egenskap | Git-kommando som används för att hämta värdet | Description |
+| Egenskap | Git-kommando som används för att hämta värdet | Beskrivning |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Den URI som din lagrings plats har kopierats från. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Den URI som din lagrings plats har kopierats från. |
@@ -178,7 +178,7 @@ Den loggade informationen innehåller text som liknar följande JSON:
 
 ### <a name="python-sdk"></a>Python SDK
 
-När du har skickat in en utbildnings körning returneras ett [körnings](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) objekt. `properties`Attribut för det här objektet innehåller den loggade git-informationen. Följande kod hämtar exempelvis commit hash:
+När du har skickat in en utbildnings körning returneras ett [körnings](/python/api/azureml-core/azureml.core.run%28class%29) objekt. `properties`Attribut för det här objektet innehåller den loggade git-informationen. Följande kod hämtar exempelvis commit hash:
 
 ```python
 run.properties['azureml.git.commit']

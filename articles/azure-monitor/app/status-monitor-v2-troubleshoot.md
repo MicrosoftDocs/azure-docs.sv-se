@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732586"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505587"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Felsöka Application Insights agent (tidigare namngiven Statusövervakare v2)
 
@@ -55,7 +55,7 @@ Du kan använda fel söknings verktyg för att Visa symptomatic beteende:
 ### <a name="powershell-versions"></a>PowerShell-versioner
 Den här produkten har skrivits och testats med PowerShell v 5.1.
 Den här modulen är inte kompatibel med PowerShell-versionerna 6 eller 7.
-Vi rekommenderar att du använder PowerShell v 5.1 tillsammans med nyare versioner. Mer information finns i [använda PowerShell 7 sida vid sida med PowerShell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
+Vi rekommenderar att du använder PowerShell v 5.1 tillsammans med nyare versioner. Mer information finns i [använda PowerShell 7 sida vid sida med PowerShell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7#using-powershell-7-side-by-side-with-windows-powershell-51).
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt med delad IIS-konfiguration
 

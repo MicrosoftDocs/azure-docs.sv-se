@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 869c4ac5cde7d1e50be0f2f738d8a0ce6de5e625
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951725"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508766"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Självstudie: förutsättningar för att skapa tillgänglighets grupper på SQL Server på Azure Virtual Machines
 
@@ -145,7 +145,7 @@ Följande tabell sammanfattar inställningarna för nätverks konfiguration:
 
 ## <a name="create-availability-sets"></a>Skapa tillgänglighetsuppsättningar
 
-Innan du skapar virtuella datorer måste du skapa tillgänglighets uppsättningar. Tillgänglighets uppsättningar minskar stillestånds tiden för planerade eller oplanerade underhålls händelser. En Azure-tillgänglighets uppsättning är en logisk grupp resurser som Azure placerar på fysiska fel domäner och uppdaterings domäner. En feldomän ser till att medlemmarna i tillgänglighets uppsättningen har separata strömförsörjnings-och nätverks resurser. En uppdaterings domän garanterar att medlemmarna i tillgänglighets uppsättningen inte har upprättats för underhåll på samma gång. Mer information finns i [Hantera tillgängligheten för virtuella datorer](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Innan du skapar virtuella datorer måste du skapa tillgänglighets uppsättningar. Tillgänglighets uppsättningar minskar stillestånds tiden för planerade eller oplanerade underhålls händelser. En Azure-tillgänglighets uppsättning är en logisk grupp resurser som Azure placerar på fysiska fel domäner och uppdaterings domäner. En feldomän ser till att medlemmarna i tillgänglighets uppsättningen har separata strömförsörjnings-och nätverks resurser. En uppdaterings domän garanterar att medlemmarna i tillgänglighets uppsättningen inte har upprättats för underhåll på samma gång. Mer information finns i [Hantera tillgängligheten för virtuella datorer](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Du behöver två tillgänglighets uppsättningar. En är för domän kontrol Lanterna. Den andra är för SQL Server virtuella datorer.
 
@@ -205,7 +205,7 @@ I följande tabell visas inställningarna för dessa två datorer:
 | **Lagringskonto för diagnostik** |*Skapas automatiskt* |
 
    >[!IMPORTANT]
-   >Du kan bara placera en virtuell dator i en tillgänglighets uppsättning när du skapar den. Du kan inte ändra tillgänglighets uppsättningen när en virtuell dator har skapats. Se [Hantera tillgängligheten för virtuella datorer](../../../virtual-machines/manage-availability.md).
+   >Du kan bara placera en virtuell dator i en tillgänglighets uppsättning när du skapar den. Du kan inte ändra tillgänglighets uppsättningen när en virtuell dator har skapats. Se [Hantera tillgängligheten för virtuella datorer](../../../virtual-machines/availability.md).
 
 Azure skapar de virtuella datorerna.
 
@@ -383,7 +383,7 @@ Innan du fortsätter bör du tänka på följande design beslut.
 
 * **Lagring – Azure-Managed Disks**
 
-   Använd Azure Managed Disks för lagring av virtuella datorer. Microsoft rekommenderar Managed Disks för SQL Server virtuella datorer. Managed Disks hanterar lagring i bakgrunden. När virtuella datorer med Managed Disks finns i samma tillgänglighetsuppsättning, distribuerar Azure dessutom lagringsresurser för att tillhandahålla rätt redundans. Mer information finns i [Översikt över Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Information om hanterade diskar i en tillgänglighets uppsättning finns i [använda Managed disks för virtuella datorer i en tillgänglighets uppsättning](../../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Använd Azure Managed Disks för lagring av virtuella datorer. Microsoft rekommenderar Managed Disks för SQL Server virtuella datorer. Managed Disks hanterar lagring i bakgrunden. När virtuella datorer med Managed Disks finns i samma tillgänglighetsuppsättning, distribuerar Azure dessutom lagringsresurser för att tillhandahålla rätt redundans. Mer information finns i [Översikt över Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Information om hanterade diskar i en tillgänglighets uppsättning finns i [använda Managed disks för virtuella datorer i en tillgänglighets uppsättning](../../../virtual-machines/availability.md).
 
 * **Nätverks-privata IP-adresser i produktion**
 

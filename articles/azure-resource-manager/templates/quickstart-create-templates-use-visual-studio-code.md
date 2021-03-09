@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 97f956c1b1c1ea18242dc656c533451eda29dc6d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e41d4f6f8b8aeb2be376ae1385189fe02e9b897
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179059"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504665"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Snabb start: skapa ARM-mallar med Visual Studio Code
 
 Azure Resource Manager Tools för Visual Studio Code tillhandahåller språk stöd, resurs kods tycken och slut för ande av resurser. Dessa verktyg hjälper dig att skapa och verifiera Azure Resource Manager mallar (ARM-mallar). I den här snabb starten använder du tillägget för att skapa en ARM-mall från grunden. När du gör det kommer du att uppleva tillägg som ARM-kodfragment, verifiering, slut för ande och stöd för parameter fil.
 
-För att slutföra den här snabb starten behöver du [Visual Studio Code](https://code.visualstudio.com/)med [tillägget Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) installerat. Du behöver också antingen [Azure CLI](/cli/azure/) eller Azure PowerShell- [modulen](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) installerad och autentiserad.
+För att slutföra den här snabb starten behöver du [Visual Studio Code](https://code.visualstudio.com/)med [tillägget Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) installerat. Du behöver också antingen [Azure CLI](/cli/azure/) eller Azure PowerShell- [modulen](/powershell/azure/new-azureps-module-az) installerad och autentiserad.
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 

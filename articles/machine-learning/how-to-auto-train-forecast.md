@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392331"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503512"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisk träna en tids serie prognos modell
 
 
-I den här artikeln får du lära dig hur du konfigurerar och tränar en uppskattnings Regressions modell i Time-serien med hjälp av automatisk maskin inlärning, AutoML, i [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
+I den här artikeln får du lära dig hur du konfigurerar och tränar en uppskattnings Regressions modell i Time-serien med hjälp av automatisk maskin inlärning, AutoML, i [Azure Machine Learning python SDK](/python/api/overview/azure/ml/). 
 
 Det gör du på följande sätt: 
 
@@ -120,7 +120,7 @@ Lär dig mer om hur AutoML använder kors validering för att [förhindra övera
 
 ## <a name="configure-experiment"></a>Konfigurera experiment
 
-[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)Objektet definierar de inställningar och data som krävs för en automatiserad maskin inlärnings uppgift. Konfigurationen för en prognos modell liknar installationen av en standard Regressions modell, men vissa modeller, konfigurations alternativ och funktionalisering-steg finns specifikt för Time-seriens data. 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)Objektet definierar de inställningar och data som krävs för en automatiserad maskin inlärnings uppgift. Konfigurationen för en prognos modell liknar installationen av en standard Regressions modell, men vissa modeller, konfigurations alternativ och funktionalisering-steg finns specifikt för Time-seriens data. 
 
 ### <a name="supported-models"></a>Modeller som stöds
 Automatisk maskin inlärning försöker automatiskt med olika modeller och algoritmer som en del av processen för att skapa och justera modeller. Som användare behöver du inte ange algoritmen. För prognostisering av experiment är både interna Time-Series-och djup inlärnings modeller en del av rekommendations systemet. I följande tabell sammanfattas den här del mängden av modeller. 
@@ -138,7 +138,7 @@ ForecastTCN (för hands version)| ForecastTCN är en neurala-nätverks modell so
 
 Precis som med ett Regressions problem definierar du standard utbildnings parametrar som aktivitets typ, antal iterationer, tränings data och antalet kors valideringar. För prognos uppgifter finns det ytterligare parametrar som måste anges som påverkar experimentet. 
 
-I följande tabell sammanfattas dessa ytterligare parametrar. I [ForecastingParameter-klassens referens dokumentation](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) finns mönster för utformning av syntax.
+I följande tabell sammanfattas dessa ytterligare parametrar. I [ForecastingParameter-klassens referens dokumentation](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) finns mönster för utformning av syntax.
 
 | Parameter &nbsp; namn | Beskrivning | Krävs |
 |-------|-------|-------|
@@ -154,7 +154,7 @@ I följande tabell sammanfattas dessa ytterligare parametrar. I [ForecastingPara
 
 
 Följande kod, 
-* Utnyttjar klassen för [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) att definiera prognos parametrar för din experiment utbildning
+* Utnyttjar klassen för [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) att definiera prognos parametrar för din experiment utbildning
 * Anger `time_column_name` `day_datetime` fältet i data uppsättningen. 
 * Definierar `time_series_id_column_names` parametern till `"store"` . Detta säkerställer att **två separata tids serie grupper** skapas för data. en för Store A och B.
 * Ställer in `forecast_horizon` till 50 för att förutsäga för hela test uppsättningen. 
@@ -298,7 +298,7 @@ Visa en python code-exempel som använder den angivna [mål funktionen för män
 
 ### <a name="short-series-handling"></a>Hantering av korta serier
 
-Med automatisk ML betraktas en tids serie med en **kort serie** om det inte finns tillräckligt många data punkter för att driva tåg-och validerings faserna för modell utveckling. Antalet data punkter varierar för varje experiment, och beror på max_horizon, antalet delningar av kors validering och längden på modellens lookback, vilket är den maximala historik som krävs för att skapa funktioner i Time-serien. Den exakta beräkningen finns i [referens dokumentationen för short_series_handling_configuration](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Med automatisk ML betraktas en tids serie med en **kort serie** om det inte finns tillräckligt många data punkter för att driva tåg-och validerings faserna för modell utveckling. Antalet data punkter varierar för varje experiment, och beror på max_horizon, antalet delningar av kors validering och längden på modellens lookback, vilket är den maximala historik som krävs för att skapa funktioner i Time-serien. Den exakta beräkningen finns i [referens dokumentationen för short_series_handling_configuration](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration).
 
 Med automatisk ML får du en kort serie hantering som standard med- `short_series_handling_configuration` parametern i `ForecastingParameters` objektet. 
 

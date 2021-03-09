@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661094"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503548"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Vad är Azure Machine Learning Designer? 
 
@@ -114,7 +114,7 @@ Publicerade pipelines är flexibla, de kan användas för att träna eller trän
 
 En publicerad pipeline körs på de beräknings resurser som du definierar i pipeline-utkastet för varje modul.
 
-Designern skapar samma [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?preserve-view=true&view=azure-ml-py) -objekt som SDK: n.
+Designern skapar samma [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline) -objekt som SDK: n.
 
 ## <a name="next-steps"></a>Nästa steg
 

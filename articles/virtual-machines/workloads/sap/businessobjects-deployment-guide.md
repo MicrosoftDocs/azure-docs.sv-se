@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671908"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505910"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Planerings- och implementeringsguide för SAP BusinessObjects BI-plattform i Azure
 
@@ -222,7 +222,7 @@ SAP BI-plattformen innehåller många olika komponenter och när du utformar ark
 
 Dessutom är antalet uppdaterings-och fel domäner som kan användas av en Azure-tillgänglighets uppsättning i en Azure-Scale-enhet begränsad. Så om du fortsätter att lägga till virtuella datorer i en enda tillgänglighets uppsättning upphör två eller fler virtuella datorer i samma fel-eller uppdaterings domän. Mer information finns i avsnittet om [Azures tillgänglighets uppsättningar](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#azure-availability-sets) i Azure Virtual Machines planering och implementering för SAP Document.
 
-För att förstå konceptet med tillgänglighets uppsättningar i Azure och hur tillgänglighets uppsättningar relaterar till fel-och uppgraderings domäner, Läs [Hantera tillgänglighets](../../manage-availability.md) artikel.
+För att förstå konceptet med tillgänglighets uppsättningar i Azure och hur tillgänglighets uppsättningar relaterar till fel-och uppgraderings domäner, Läs [Hantera tillgänglighets](../../availability.md) artikel.
 
 > [!Important]
 > Begreppen för Azure-tillgänglighetszoner och Azures tillgänglighets uppsättningar kan inte anges samtidigt. Det innebär att du kan antingen distribuera ett par eller flera virtuella datorer till en angiven tillgänglighets zon eller en Azure-tillgänglighets uppsättning. Men inte båda.

@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: d23d6cb5a43de4ccf0d10287b8cf8f597797b893
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e9fb801fce3e47fc83febeddd6f331ce2af207e6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214991"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506981"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Konsumera en Azure Machine Learning-modell som distribuerats som en webbtjänst
 
 
 Om du distribuerar en Azure Machine Learning-modell som en webbtjänst skapas en REST API-slutpunkt. Du kan skicka data till den här slutpunkten så returnerar modellen förutsägelsen. I det här dokumentet får du lära dig hur du skapar klienter för webb tjänsten med hjälp av C#, go, Java och python.
 
-Du skapar en webb tjänst när du distribuerar en modell till din lokala miljö, Azure Container Instances, Azure Kubernetes-tjänsten eller FPGA (Field-programmerbara grind mat ris). Du hämtar den URI som används för att få åtkomst till webb tjänsten med hjälp av [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Om autentisering är aktive rad kan du också använda SDK: n för att hämta nycklar eller tokens för autentisering.
+Du skapar en webb tjänst när du distribuerar en modell till din lokala miljö, Azure Container Instances, Azure Kubernetes-tjänsten eller FPGA (Field-programmerbara grind mat ris). Du hämtar den URI som används för att få åtkomst till webb tjänsten med hjälp av [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro). Om autentisering är aktive rad kan du också använda SDK: n för att hämta nycklar eller tokens för autentisering.
 
 Det allmänna arbets flödet för att skapa en klient som använder en Machine Learning-webbtjänst är:
 
@@ -39,7 +39,7 @@ Det allmänna arbets flödet för att skapa en klient som använder en Machine L
 > [!NOTE]
 > Använd Azure Machine Learning SDK för att hämta information om webb tjänsten. Det här är en python SDK. Du kan använda valfritt språk för att skapa en klient för tjänsten.
 
-[Azureml. Core. WebService-](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) klassen innehåller den information du behöver för att skapa en-klient. Följande `Webservice` egenskaper är användbara när du skapar ett klient program:
+[Azureml. Core. WebService-](/python/api/azureml-core/azureml.core.webservice%28class%29) klassen innehåller den information du behöver för att skapa en-klient. Följande `Webservice` egenskaper är användbara när du skapar ett klient program:
 
 * `auth_enabled` – Om Key Authentication har Aktiver ATS, `True` annars, `False` .
 * `token_auth_enabled` – Om token-autentisering är aktiverat, `True` annars, `False` .
@@ -59,7 +59,7 @@ Det finns flera sätt att hämta den här informationen för distribuerade webb 
     print(service.swagger_uri)
     ```
 
-* Du kan använda `Webservice.list` för att hämta en lista över distribuerade webb tjänster för modeller i din arbets yta. Du kan lägga till filter för att begränsa listan med information som returneras. Mer information om vad som kan filtreras finns i referens dokumentationen för [WebService. list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py) .
+* Du kan använda `Webservice.list` för att hämta en lista över distribuerade webb tjänster för modeller i din arbets yta. Du kan lägga till filter för att begränsa listan med information som returneras. Mer information om vad som kan filtreras finns i referens dokumentationen för [WebService. list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice) .
 
     ```python
     services = Webservice.list(ws)
@@ -139,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Om du behöver återskapa en nyckel använder du [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) .
+> Om du behöver återskapa en nyckel använder du [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29) .
 
 #### <a name="authentication-with-tokens"></a>Autentisering med token
 
@@ -527,7 +527,7 @@ De resultat som returneras liknar följande JSON-dokument:
 
 ## <a name="web-service-schema-openapi-specification"></a>Webb tjänst schema (OpenAPI-specifikation)
 
-Om du har använt automatisk schema generering med din distribution kan du hämta adressen till OpenAPI-specifikationen för tjänsten med hjälp av [egenskapen swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri). (Till exempel `print(service.swagger_uri)` .) Använd en GET-begäran eller öppna URI: n i en webbläsare för att hämta specifikationen.
+Om du har använt automatisk schema generering med din distribution kan du hämta adressen till OpenAPI-specifikationen för tjänsten med hjälp av [egenskapen swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#swagger-uri). (Till exempel `print(service.swagger_uri)` .) Använd en GET-begäran eller öppna URI: n i en webbläsare för att hämta specifikationen.
 
 Följande JSON-dokument är ett exempel på ett schema (OpenAPI-specifikation) som genereras för en distribution:
 
@@ -669,7 +669,7 @@ Ett verktyg som kan skapa klient bibliotek från specifikationen finns i [Swagge
 
 
 > [!TIP]
-> Du kan hämta schema-JSON-dokumentet när du har distribuerat tjänsten. Använd [egenskapen swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri) från den distribuerade webb tjänsten (till exempel `service.swagger_uri` ) för att hämta URI: n till den lokala webb tjänstens Swagger-fil.
+> Du kan hämta schema-JSON-dokumentet när du har distribuerat tjänsten. Använd [egenskapen swagger_uri](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#swagger-uri) från den distribuerade webb tjänsten (till exempel `service.swagger_uri` ) för att hämta URI: n till den lokala webb tjänstens Swagger-fil.
 
 ## <a name="consume-the-service-from-power-bi"></a>Använda tjänsten från Power BI
 

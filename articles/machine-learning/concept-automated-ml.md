@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180505"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502543"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Vad är automatisk maskin inlärning (AutoML)?
 
@@ -204,7 +204,7 @@ Att till exempel skapa en modell __för varje instans eller individ__ i följand
 
 Azure Machine Learning erbjuder två upplevelser för att arbeta med automatiserade ML:
 
-* För kod erfarna kunder [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 
+* För kod erfarna kunder [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro) 
 
 * För kunder med begränsade/inga kod upplevelser Azure Machine Learning Studio på [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,7 +289,7 @@ Granska detaljerade kod exempel och användnings fall i [GitHub Notebook-lagring
 
 ### <a name="python-sdk-reference"></a>Python SDK-referens
 
-Fördjupa dina kunskaper om SDK design mönster och klass specifikationer med [AutoML klass Reference documentation](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py). 
+Fördjupa dina kunskaper om SDK design mönster och klass specifikationer med [AutoML klass Reference documentation](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 > [!Note]
 > Automatiska maskin inlärnings funktioner är också tillgängliga i andra Microsoft-lösningar som, [ml.net](/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](/power-bi/service-machine-learning-automated) och [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

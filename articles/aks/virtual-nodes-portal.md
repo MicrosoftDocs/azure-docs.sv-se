@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4c67d3608d2128385c273425ea495a02fa5a8c45
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180912"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501812"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Skapa och konfigurera ett Azure Kubernetes Services-kluster (AKS) för att använda virtuella noder i Azure Portal
 
@@ -64,7 +64,7 @@ På sidan **skala** väljer du *aktive rad* under **virtuella noder**.
 
 ![Skapa AKS-kluster och aktivera de virtuella noderna](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Som standard skapas en Azure Active Directory tjänstens huvud namn. Tjänstens huvud namn används för kluster kommunikation och integrering med andra Azure-tjänster. Alternativt kan du använda en hanterad identitet för behörigheter i stället för ett huvud namn för tjänsten. Mer information finns i [använda hanterade identiteter](use-managed-identity.md).
+Som standard skapas en kluster identitet. Den här kluster identiteten används för kluster kommunikation och integrering med andra Azure-tjänster. Som standard är den här kluster identiteten en hanterad identitet. Mer information finns i [använda hanterade identiteter](use-managed-identity.md). Du kan också använda ett tjänst huvud namn som kluster identitet.
 
 Klustret är också konfigurerat för avancerade nätverk. De virtuella noderna har kon figurer ATS för att använda sina egna Azure Virtual Network-undernät. Det här under nätet har delegerade behörigheter för att ansluta Azure-resurser mellan AKS-klustret. Om du inte redan har ett delegerat undernät skapar och konfigurerar Azure Portal det virtuella Azure-nätverket och under nätet för användning med de virtuella noderna.
 

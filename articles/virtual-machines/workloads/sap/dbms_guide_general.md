@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 470b6b0c871d91a2a8a584a6efd04605e0afcf88
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e978baa556f1bc1cfea0ccd5abbbf92dc77b1622
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666844"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504022"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -265,7 +265,7 @@ Det finns andra metoder för redundans. Mer information finns i [Azure Storage r
 
 
 ## <a name="vm-node-resiliency"></a>Återhämtning av VM-nod
-Azure erbjuder flera olika service avtal för virtuella datorer. Mer information finns i den senaste versionen av [SLA för Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Eftersom DBMS-skiktet är kritiskt för att vara tillgängligt i ett SAP-system, måste du förstå tillgänglighets uppsättningar, Tillgänglighetszoner och underhålls händelser. Mer information om dessa begrepp finns i [Hantera tillgängligheten för virtuella Windows-datorer i Azure](../../manage-availability.md) och [Hantera tillgängligheten för virtuella Linux-datorer i Azure](../../manage-availability.md).
+Azure erbjuder flera olika service avtal för virtuella datorer. Mer information finns i den senaste versionen av [SLA för Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Eftersom DBMS-skiktet är kritiskt för att vara tillgängligt i ett SAP-system, måste du förstå tillgänglighets uppsättningar, Tillgänglighetszoner och underhålls händelser. Mer information om dessa begrepp finns i [Hantera tillgängligheten för virtuella Windows-datorer i Azure](../../availability.md) och [Hantera tillgängligheten för virtuella Linux-datorer i Azure](../../availability.md).
 
 Den minsta rekommendationen för scenarier med produktions-DBMS med en SAP-arbets belastning är att:
 

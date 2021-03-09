@@ -2,13 +2,13 @@
 title: Konfigurera Azure Red Hat OpenShift v4. x med container Insights | Microsoft Docs
 description: Den här artikeln beskriver hur du konfigurerar övervakning för ett Kubernetes-kluster med Azure Monitor som finns i Azure Red Hat OpenShift version 4 eller senare.
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a9e04818f1a915a853d32b5db408a521cdae9f4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713940"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506420"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Konfigurera Azure Red Hat OpenShift v4. x med container Insights
 
@@ -61,21 +61,8 @@ Gör så här för att aktivera övervakning av ett Azure Red Hat OpenShift-klus
 
     `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. Du kan identifiera *kubeContext* för klustret genom att köra följande kommandon
+1. Anslut till ARO v4-kluster med hjälp av anvisningarna i [Självstudier: Anslut till ett Azure Red Hat OpenShift 4-kluster](../../openshift/tutorial-connect-cluster.md).
 
-    ```
-    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
-    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
-    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
-    oc login $apiServer -u $adminUserName -p $adminPassword
-    # openshift project name for Container insights
-    openshiftProjectName="azure-monitor-for-containers"
-    oc new-project $openshiftProjectName
-    # get the kube config context
-    kubeContext=$(oc config current-context)
-    ```
-
-1. Kopiera värdet för senare användning.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrera med en befintlig arbets yta
 
@@ -113,17 +100,16 @@ Om du inte har en arbets yta att ange kan du gå till avsnittet [integrera med s
 
 1. I utdata letar du reda på arbets ytans namn och kopierar sedan det fullständiga resurs-ID: t för den Log Analytics arbets ytan under fält **-ID: t**.
 
-1. Kör följande kommando för att aktivera övervakning. Ersätt värdena för `azureAroV4ClusterResourceId` `logAnalyticsWorkspaceResourceId` parametrarna, och `kubeContext` .
+1. Kör följande kommando för att aktivera övervakning. Ersätt värdena för `azureAroV4ClusterResourceId` `logAnalyticsWorkspaceResourceId` parametrarna och.
 
     ```bash
-    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
-    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>" 
     ```
 
     Här är kommandot som du måste köra när du har fyllt i tre variabler med export kommandon:
 
-    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --workspace-id $logAnalyticsWorkspaceResourceId`
 
 När du har aktiverat övervakning kan det ta ungefär 15 minuter innan du kan visa hälso måtten för klustret.
 
@@ -135,16 +121,15 @@ I det här exemplet är du inte tvungen att skapa eller ange en befintlig arbets
 
 Standard arbets ytan som skapas har formatet *DefaultWorkspace- \<GUID> - \<Region>*.  
 
-Ersätt värdena för `azureAroV4ClusterResourceId` `kubeContext` parametrarna och.
+Ersätt värdet för `azureAroV4ClusterResourceId` parametern.
 
 ```bash
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
-export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
 Exempel:
 
-`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
+"bash enable-monitoring.sh--Resource-ID $azureAroV 4ClusterResourceId 
 
 När du har aktiverat övervakning kan det ta ungefär 15 minuter innan du kan visa hälso mått för klustret.
 

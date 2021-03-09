@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 3191987ea2d110487321beb0b11428f446f2b7a6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183650"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503886"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Självstudie: träna bild klassificerings modeller med MNIST-data och scikit-lär 
 
@@ -37,9 +37,9 @@ Du lär dig hur du väljer en modell och distribuerar den i [del två av den hä
 Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 
 >[!NOTE]
-> Koden i den här artikeln har testats med [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -version 1.13.0.
+> Koden i den här artikeln har testats med [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) -version 1.13.0.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför [självstudien: kom igång med att skapa ditt första Azure ml-experiment](tutorial-1st-experiment-sdk-setup.md) för att:
     * Skapa en arbetsyta
@@ -309,7 +309,7 @@ Observera hur skriptet hämtar data och sparar modeller:
 
 ### <a name="configure-the-training-job"></a>Konfigurera utbildnings jobbet
 
-Skapa ett [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) -objekt om du vill ange konfigurations information för ditt utbildnings jobb, inklusive ditt utbildnings skript, vilken miljö som ska användas och vilket beräknings mål som ska köras. Konfigurera ScriptRunConfig genom att ange:
+Skapa ett [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) -objekt om du vill ange konfigurations information för ditt utbildnings jobb, inklusive ditt utbildnings skript, vilken miljö som ska användas och vilket beräknings mål som ska köras. Konfigurera ScriptRunConfig genom att ange:
 
 * Katalogen som innehåller dina skript. Alla filer i den här katalogen laddas upp till klusternoderna för körning.
 * Beräkningsmålet. I det här fallet använder du Azure Machine Learning-beräkningsklustret som du skapade.
@@ -382,7 +382,7 @@ Du kan kontrollera förloppet för ett jobb som körs på flera olika sätt. Den
 
 ### <a name="jupyter-widget"></a>Jupyter-widget
 
-Se förloppet för [widgeten](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)kör med en Jupyter-widget. Precis som körningsöverföringen så är widgeten asynkron och tillhandahåller liveuppdateringar var 10:e till 15:e sekund tills jobbet slutförts:
+Se förloppet för [widgeten](/python/api/azureml-widgets/azureml.widgets)kör med en Jupyter-widget. Precis som körningsöverföringen så är widgeten asynkron och tillhandahåller liveuppdateringar var 10:e till 15:e sekund tills jobbet slutförts:
 
 ```python
 from azureml.widgets import RunDetails

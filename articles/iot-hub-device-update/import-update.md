@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442952"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507287"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
 Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub. Om du inte redan har gjort det, måste du bekanta dig med de grundläggande [import begreppen](import-concepts.md).
@@ -57,8 +57,8 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
 
     | Parameter | Beskrivning |
     | --------- | ----------- |
-    | deviceManufacturer | Enhetens tillverkare som uppdateringen är kompatibel med, till exempel contoso
-    | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster
+    | deviceManufacturer | Tillverkaren av enheten som uppdateringen är kompatibel med, till exempel contoso. Måste matcha _tillverkarens_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
+    | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster. Måste matcha _modell_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
     | updateProvider | Entitet som skapar eller är direkt ansvarig för uppdateringen. Det är ofta ett företags namn.
     | updateName | Identifierare för en klass med uppdateringar. Den här klassen kan vara allt du väljer. Det är ofta en enhet eller ett modell namn.
     | updateVersion | Versions nummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Kanske inte matchar en version av en enskild program varu komponent på enheten.

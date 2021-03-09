@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40d22a410054f17676c4d9db639fd5e32da18531
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665995"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504311"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-arbetsbelastningar på Azure: planering och distribution check lista
 
@@ -138,7 +138,7 @@ Vi rekommenderar att du ställer in och validerar en fullständig HADR-lösning 
         - Om du använder Azure Load Balancer tillsammans med Linux-gäst operativ system, kontrollerar du att parametern för Linux-nätverket **net.IPv4.tcp_timestamps** har angetts till **0**. Den här rekommendationen står i konflikt med rekommendationer i äldre versioner av [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). SAP-anteckningen har nu uppdaterats för att ange att den här parametern måste ställas in på **0** för att fungera med Azure Load Balancer.
         - Överväg att använda [Azure närhets placerings grupper](../../co-location.md) för att få optimal nätverks fördröjning. Mer information finns i [placerings grupper för Azure närhet för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
    4. Distributioner av hög tillgänglighet och haveri beredskap.
-        - Om du distribuerar SAP-programlagret utan att definiera en specifik Azure-tillgänglighets zon, se till att alla virtuella datorer som kör SAP-dialogrutor eller mellan-instanser av ett enda SAP-system distribueras i en [tillgänglighets uppsättning](../../manage-availability.md).
+        - Om du distribuerar SAP-programlagret utan att definiera en specifik Azure-tillgänglighets zon, se till att alla virtuella datorer som kör SAP-dialogrutor eller mellan-instanser av ett enda SAP-system distribueras i en [tillgänglighets uppsättning](../../availability-set-overview.md).
         - Om du inte behöver hög tillgänglighet för SAP Central Services och DBMS kan du distribuera de virtuella datorerna till samma tillgänglighets uppsättning som SAP-program skiktet.
         - Om du skyddar SAP Central Services och DBMS-skiktet för hög tillgänglighet genom att använda passiv replikering, placerar du de två noderna för SAP Central Services i en separat tillgänglighets uppsättning och de två DBMS-noderna i en annan tillgänglighets uppsättning.
         - Om du distribuerar till Azure-tillgänglighetszoner kan du inte använda tillgänglighets uppsättningar. Men du måste kontrol lera att du distribuerar aktiva och passiva centrala tjänster-noder i två olika Tillgänglighetszoner. Använd Tillgänglighetszoner som har den lägsta svars tiden mellan dem.

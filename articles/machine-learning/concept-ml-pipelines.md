@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 8b5e74d12af92b5d300e638bee27020a5af5383c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 584e421b6beac0e4ecfab5b3e3cb735b8465e1b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690387"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503529"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Vad är Azure Machine Learning pipelines?
 
@@ -79,7 +79,7 @@ När du skapar och kör ett `Pipeline` -objekt inträffar följande steg på hö
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Skapa pipelines med python SDK
 
-I [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)är en pipeline ett python-objekt som definierats i `azureml.pipeline.core` modulen. Ett [pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?preserve-view=true&view=azure-ml-py) -objekt innehåller en ordnad sekvens av ett eller flera [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) -objekt. `PipelineStep`Klassen är abstrakt och de faktiska stegen kommer att vara av underklasser som [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?preserve-view=true&view=azure-ml-py), [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?preserve-view=true&view=azure-ml-py)eller [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py). [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?preserve-view=true&view=azure-ml-py) -klassen innehåller en återanvändbara sekvens med steg som kan delas mellan pipeliner. En `Pipeline` körs som en del av en `Experiment` .
+I [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install)är en pipeline ett python-objekt som definierats i `azureml.pipeline.core` modulen. Ett [pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29) -objekt innehåller en ordnad sekvens av ett eller flera [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep) -objekt. `PipelineStep`Klassen är abstrakt och de faktiska stegen kommer att vara av underklasser som [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep), [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep)eller [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep). [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep) -klassen innehåller en återanvändbara sekvens med steg som kan delas mellan pipeliner. En `Pipeline` körs som en del av en `Experiment` .
 
 En pipeline för Azure Machine Learning är kopplad till en Azure Machine Learning arbets yta och ett steg i pipeline-steget är associerat med ett beräknings mål som är tillgängligt på arbets ytan. Mer information finns i [skapa och hantera Azure Machine Learning arbets ytor i Azure Portal](./how-to-manage-workspace.md) eller [Vad är beräknings mål i Azure Machine Learning?](./concept-compute-target.md).
 
@@ -123,7 +123,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Kodfragmentet börjar med vanliga Azure Machine Learning objekt, a `Workspace` , a `Datastore` , a, [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)och en `Experiment` . Sedan skapar koden de objekt som ska behållas `input_data` och `prepped_data_path` . `input_data`Är en instans av [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) och `prepped_data_path` är en instans av [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py). För `OutputFileDatasetConfig` standard beteendet är att kopiera utdata till `workspaceblobstore` data lagret under sökvägen `/dataset/{run-id}/{output-name}` , där `run-id` är körningens ID och `output-name` är ett automatiskt genererat värde om det inte anges av utvecklaren.
+Kodfragmentet börjar med vanliga Azure Machine Learning objekt, a `Workspace` , a `Datastore` , a, [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget)och en `Experiment` . Sedan skapar koden de objekt som ska behållas `input_data` och `prepped_data_path` . `input_data`Är en instans av [FileDataset](/python/api/azureml-core/azureml.data.filedataset) och `prepped_data_path` är en instans av [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig). För `OutputFileDatasetConfig` standard beteendet är att kopiera utdata till `workspaceblobstore` data lagret under sökvägen `/dataset/{run-id}/{output-name}` , där `run-id` är körningens ID och `output-name` är ett automatiskt genererat värde om det inte anges av utvecklaren.
 
 Data förberedelse koden (visas inte) skriver avgränsade filer till `prepped_data_path` . Dessa utdata från steget förberedelse av data skickas till `prepped_data` övnings steget. 
 
@@ -162,6 +162,6 @@ Azure Machine Learning pipelines är en kraftfull funktion som börjar leverera 
 
 + Lär dig hur du [kör batch-förutsägelser på stora data](tutorial-pipeline-batch-scoring-classification.md ).
 
-+ Se SDK-referens dokument för [pipeline-kärnan](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) och [pipeline-steg](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py).
++ Se SDK-referens dokument för [pipeline-kärnan](/python/api/azureml-pipeline-core/) och [pipeline-steg](/python/api/azureml-pipeline-steps/).
 
 + Prova Jupyter Notebooks som demonstrerar [Azure Machine Learning pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). Lär dig hur du [Kör antecknings böcker för att utforska den här tjänsten](samples-notebooks.md).
