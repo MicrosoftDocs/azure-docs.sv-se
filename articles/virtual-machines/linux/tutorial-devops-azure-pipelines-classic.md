@@ -5,19 +5,20 @@ author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dd47250989be5c31d5f0ade2b602b9d6af535d83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978313"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564007"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Självstudie – konfigurera strategin för rullande distribution för virtuella Azure Linux-datorer
 
@@ -52,7 +53,7 @@ Med alternativet för kontinuerlig leverans kan du konfigurera rullande uppdater
 
 1. En distributions grupp är en logisk uppsättning distributions mål datorer som representerar de fysiska miljöerna. Utveckling, testning, UAT och produktion är exempel. Du kan skapa en ny distributions grupp eller välja en befintlig.
 1. Välj den build-pipeline som publicerar paketet som ska distribueras till den virtuella datorn. Det publicerade paketet måste ha ett distributions skript med namnet deploy.ps1 eller deploy.sh i mappen deployscripts i paketets rotmapp. Pipelinen kör det här distributions skriptet.
-1. I **distributions strategi**väljer du **rullande**.
+1. I **distributions strategi** väljer du **rullande**.
 1. Du kan också tagga varje dator med dess roll. Taggarna "Web" och "DB" är exempel. Med de här taggarna kan du bara rikta in virtuella datorer som har en speciell roll.
 1. Välj **OK** för att konfigurera pipeline för kontinuerlig leverans.
 1. När konfigurationen är klar har du en pipeline för kontinuerlig leverans som har kon figurer ATS för distribution till den virtuella datorn.  

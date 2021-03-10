@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174737"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564092"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Självstudie: Konfigurera säker LDAP för en Azure Active Directory Domain Services hanterad domän
 
@@ -152,7 +152,7 @@ Innan du kan använda det digitala certifikatet som skapades i föregående steg
 
     På sidan **säkerhet** väljer du alternativet för **lösen ord** för att skydda *. PFX* -certifikatfil. Krypteringsalgoritmen måste vara *TripleDES-SHA1*. Ange och bekräfta ett lösen ord och välj sedan **Nästa**. Det här lösen ordet används i nästa avsnitt för att aktivera säker LDAP för din hanterade domän.
 
-    Om du exporterar med [PowerShell-cmdleten export-pfxcertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)måste du skicka flaggan *-CryptoAlgorithmOption* med hjälp av TripleDES_SHA1.
+    Om du exporterar med [PowerShell-cmdleten export-pfxcertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)måste du skicka flaggan *-CryptoAlgorithmOption* med hjälp av TripleDES_SHA1.
 
     ![Skärm bild av hur du krypterar lösen ordet](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -245,7 +245,7 @@ Nu ska vi skapa en regel för att tillåta inkommande säker LDAP-åtkomst via T
     | Protokoll                          | TCP          |
     | Åtgärd                            | Tillåt        |
     | Prioritet                          | 401          |
-    | Namn                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. När du är klar väljer du **Lägg till** för att spara och tillämpa regeln.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 03/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d9d56a7f6d1e265508081f735e2dbc379f195fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713413"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552039"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -147,6 +147,16 @@ Kontrol lera att `CaseSensitiveLookup` är aktiverat på Windows-klienten för a
 2. Montera volymen på Windows-servern.   
     Exempel:   
     `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
+
+### <a name="how-does-azure-netapp-files-support-nfsv41-file-locking"></a>Hur stöder Azure NetApp Files NFSv 4.1 fil låsning? 
+
+För NFSv 4.1-klienter har Azure NetApp Files stöd för fil låsnings funktionen NFSv 4.1 som upprätthåller statusen för alla fillås under en molnbaserad modell. 
+
+Enligt RFC 3530 definierar Azure NetApp Files en enda låne period för alla tillstånd som innehas av en NFS-klient. Om klienten inte förnyar sitt lån inom den angivna perioden kommer alla tillstånd som är associerade med klientens lån att frisläppas av servern.  
+
+Om en klient som monterar en volym till exempel slutar svara eller kraschar bortom tids gränsen frigörs låsen. Klienten kan förnya sitt lån explicit eller implicit genom att utföra åtgärder som att läsa en fil.   
+
+En respitperiod definierar en viss bearbetnings period i vilken klienter kan försöka återta sitt låsnings tillstånd under en Server återställning. Standard-timeout för lån är 30 sekunder med en respitperiod på 45 sekunder. Efter den tiden kommer klientens lån att frisläppas.   
 
 ## <a name="smb-faqs"></a>Vanliga frågor och svar om SMB
 

@@ -2,17 +2,18 @@
 title: Koppla en datadisk till en virtuell Windows-dator i Azure med hjälp av PowerShell
 description: Så här ansluter du en ny eller befintlig datadisk till en virtuell Windows-dator med hjälp av PowerShell med distributions modellen för Resource Manager.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d2f283aa8b049602d25cf8969bc2327ebcfafe08
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d5c638a63e4e8dc1a55c07f4bdf713fd36ca6b3d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202886"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550883"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Koppla en datadisk till en virtuell Windows-dator med PowerShell
 

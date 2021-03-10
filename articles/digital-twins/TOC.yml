@@ -97,10 +97,10 @@
       items:
         - name: 'Använda API:er och SDK:er'
           href: how-to-use-apis-sdks.md
+        - name: 'Skapa SDK: er med anpassade språk med AutoRest'
+          href: how-to-create-custom-sdks.md
         - name: Gör förfrågningar med Postman
           href: how-to-use-postman.md
-        - name: 'Skapa anpassade SDK:er med AutoRest'
-          href: how-to-create-custom-sdks.md
         - name: Integrera med Azure SignalR Service
           href: how-to-integrate-azure-signalr.md
     - name: Anslut indata

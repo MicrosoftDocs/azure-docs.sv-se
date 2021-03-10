@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: c1f41dca3b52ce75ba2342506f621cca0618a3bf
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740388"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565894"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD-administrativa enheter: fel sökning och vanliga frågor och svar
 
-För mer detaljerad administrativ kontroll i Azure Active Directory (Azure AD) kan du tilldela användare till en Azure AD-roll med en omfattning som är begränsad till en eller flera administrativa enheter. Exempel på PowerShell-skript för vanliga aktiviteter finns i [arbeta med administrativa enheter](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+För mer detaljerad administrativ kontroll i Azure Active Directory (Azure AD) kan du tilldela användare till en Azure AD-roll med en omfattning som är begränsad till en eller flera administrativa enheter. Exempel på PowerShell-skript för vanliga aktiviteter finns i [arbeta med administrativa enheter](/powershell/azure/active-directory/working-with-administrative-units).
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
@@ -69,9 +69,9 @@ Administrativa enheter, t. ex. organisationsenheter i Windows Server Active Dire
 
 **F: är administrativa enheter som stöds i PowerShell och Graph API?**
 
-**S:** Ja. Du hittar stöd för administrativa enheter i [PowerShell-cmdlet-dokumentation](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) och [exempel skript](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+**S:** Ja. Du hittar stöd för administrativa enheter i [PowerShell-cmdlet-dokumentation](/powershell/module/Azuread/) och [exempel skript](/powershell/azure/active-directory/working-with-administrative-units).
 
-Hitta stöd för [resurs typen administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) i Microsoft Graph.
+Hitta stöd för [resurs typen administrativeUnit](/graph/api/resources/administrativeunit) i Microsoft Graph.
 
 ## <a name="next-steps"></a>Nästa steg
 

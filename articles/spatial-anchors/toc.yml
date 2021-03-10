@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: Grov omlokalisering
       href: concepts/coarse-reloc.md
+    - name: Fäst lokalisera strategi
+      href: concepts/anchor-locate-strategy.md
 - name: Referenser
   items:
     - name: SDK för Unity

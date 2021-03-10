@@ -3,19 +3,20 @@ title: Optimera prestanda för virtuella datorer i Azure Lsv2-serien – lagring
 description: Lär dig hur du optimerar prestanda för din lösning på virtuella datorer i Lsv2-serien med ett Linux-exempel.
 services: virtual-machines-linux
 author: laurenhughes
-ms.service: virtual-machines-linux
-ms-subservice: sizes
+ms.service: virtual-machines
+ms-subservice: vm-sizes-storage
+ms.collection: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307109"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552770"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimera prestanda för virtuella Linux-datorer i Lsv2-serien
 

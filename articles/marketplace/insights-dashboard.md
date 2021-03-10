@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458298"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553943"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-instrumentpanelen i Commersial Marketplace-analys
 
@@ -103,6 +103,19 @@ Den här tabellen innehåller en listvy över sid besöken och anrop till åtgä
 
 > [!TIP]
 > Du kan använda nedladdnings ikonen i det övre högra hörnet i alla widgetar för att hämta data. Du kan ge feedback om var och en av widgetarna genom att klicka på ikonen "tummer upp" eller "tumme ner".
+
+| Kolumn namn i<br>användargränssnitt | Attributnamn | Definition | Kolumn namn i programmering<br>åtkomst rapporter |
+| ------------ | ------------- | ------------- | ------------- |
+| Datum | Datum för besök | Datumet då sidan besöks och/eller centrum klickar på händelse generering på erbjudandets sida i Azure Marketplace och/eller AppSource. | Datum |
+| Erbjudandets namn | Erbjudandets namn | Namnet på den kommersiella Marketplace-erbjudandet. | OfferName |
+| Referens domän | Referens domän | Namnet på den referens domän från vilken besöks sidan gjordes. Om det inte finns några referens domäner som har registrerats för sidan besök är motsvarande post "referens domän saknas". |  ReferralDomain |
+| Landsnamn | Landsnamn | Namnet på det land från vilket sidan besök har inträffat. | CountryName |
+| Sid besök | Sid besök | Antalet sid besök som är kopplade till erbjudande namnet för ett visst datum. | PageVisits |
+| Hämta nu | Hämta nu | Antalet klick till CENTRUMet "Hämta nu" på erbjudandets sida för ett visst datum. | GetItNow |
+| Kontakta mig | Kontakta mig | Antalet klick till CENTRUMet "kontakta mig" på erbjudandets sida för ett visst datum. | ContactMe |
+| Test Drive | Test Drive | Antalet klick till CENTRUMet "Test Drive" på erbjudandets sida för ett visst datum. | TestDrive |
+| Kostnadsfri utvärdering | Kostnadsfri utvärdering | Antalet klick till CENTRUMet "kostnads fri utvärdering" på erbjudandets sida för ett visst datum. | Fri utvärdering |
+|||||
 
 ## <a name="next-steps"></a>Nästa steg
 

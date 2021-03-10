@@ -1,7 +1,7 @@
 ---
 title: Distribuera Micro Focus Enterprise Server 5,0 till AKS | Microsoft Docs
 description: Revara värd för dina IBM z/OS-arbetsbelastningar med hjälp av Micro Focus-utveckling och test miljö på Azure Virtual Machines (VM).
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e5b3857c2252a939080206fb1f92cc422f326fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042550"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564364"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Distribuera Micro Focus Enterprise Server 5,0 till AKS
 
@@ -39,7 +39,7 @@ Redo? Då sätter vi igång!
 
 ## <a name="create-the-azure-container-registry"></a>Skapa Azure Container Registry
 
-Från Azure Portal väljer du **skapa en resurs** i det övre vänstra hörnet. Från Marketplace-instrumentpanelen väljer du **behållare och** sedan **container Registry**. Då går du till fönstret **skapa container Registry** där du måste fylla i **register namnet**, **Azure-prenumerationen**, **resurs gruppen**och **platsen**. **Register namnet** måste lösas, så det måste vara unikt. Välj den **resurs grupp** som du använde i föregående blogg inlägg och på samma **plats**. Välj **Aktivera** för **Administratörs användare** och **Basic** för **SKU: n**. När allt är ifyllt väljer du **skapa**.
+Från Azure Portal väljer du **skapa en resurs** i det övre vänstra hörnet. Från Marketplace-instrumentpanelen väljer du **behållare och** sedan **container Registry**. Då går du till fönstret **skapa container Registry** där du måste fylla i **register namnet**, **Azure-prenumerationen**, **resurs gruppen** och **platsen**. **Register namnet** måste lösas, så det måste vara unikt. Välj den **resurs grupp** som du använde i föregående blogg inlägg och på samma **plats**. Välj **Aktivera** för **Administratörs användare** och **Basic** för **SKU: n**. När allt är ifyllt väljer du **skapa**.
 
 ![Skapa container Registry-gränssnitt](media/deploy-image-1.png)
 
@@ -71,7 +71,7 @@ När du har loggat in öppnar du en kommando tolk och initierar följande Docker
 
 -   **Docker-avbildningar** – här visas en lista över alla aktuella installerade avbildningar på den virtuella datorn. Anteckna **mikrofokus/es-acctdemo** eftersom det är den som du kommer att arbeta med.
 
--   **Docker-inloggning acrmf50.azurecr.io** – det korrekta formatet här är *Docker \<registry name\> -inloggning *. Ersätt det namn som du använde när du skapade registret.
+-   **Docker-inloggning acrmf50.azurecr.io** – det korrekta formatet här är *Docker \<registry name\> -inloggning*. Ersätt det namn som du använde när du skapade registret.
 
     -   Du behöver det **användar namn** och **lösen ord** som du kopierade från Azure Portal. Det bör visas något i stil med följande bild.
 
@@ -85,7 +85,7 @@ När du har loggat in öppnar du en kommando tolk och initierar följande Docker
 
     ![Skärm för administratörs kommando tolken](media/deploy-image-4.png)
 
-Gå nu tillbaka till Azure Portal, specifikt till **lagrings platsen**. På menyn för **lagrings platsen**väljer du **Arkiv**och du bör se **es-acctdemo** listad. Skapa nu AKS-klustret.
+Gå nu tillbaka till Azure Portal, specifikt till **lagrings platsen**. På menyn för **lagrings platsen** väljer du **Arkiv** och du bör se **es-acctdemo** listad. Skapa nu AKS-klustret.
 
 ## <a name="create-the-azure-kubernetes-aks-cluster"></a>Skapa ett Azure Kubernetes-kluster (AKS)
 

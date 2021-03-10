@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652321"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547840"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrahering av diskussionsämne kognitiva kunskaper
 
@@ -41,6 +41,7 @@ Parametrar är skiftlägeskänsliga.
 |---------------------|-------------|
 | `defaultLanguageCode` | Valfritt Språk koden som ska användas för dokument som inte uttryckligen anger språk.  Om standard språk koden inte anges används engelska (en) som standard språk kod. <br/> Se en [fullständig lista över språk som stöds](../cognitive-services/text-analytics/language-support.md). |
 | `maxKeyPhraseCount`   | Valfritt Det maximala antalet nyckel fraser som ska skapas. |
+| `modelVersion`   | Valfritt Den version av modellen som ska användas när Textanalyss tjänsten anropas. Den senast tillgängliga anges som standard när du inte anger den. Vi rekommenderar att du inte anger det här värdet om det inte är absolut nödvändigt. Mer information finns [i modell versioner i API för textanalys](../cognitive-services/text-analytics/concepts/model-versioning.md) . |
 
 ## <a name="skill-inputs"></a>Kompetens inmatningar
 
@@ -109,8 +110,8 @@ I exemplet ovan skrivs resultatet av din färdighet till en ny nod i det fördju
 
 Du kan använda "Document/myKeyPhrases" som indata till andra kunskaper eller som en källa till en [mappning](cognitive-search-output-field-mapping.md)av ett fält för utdata.
 
-## <a name="errors-and-warnings"></a>Fel och varningar
-Om du anger en språk kod som inte stöds genereras ett fel och nyckel fraser extraheras inte.
+## <a name="warnings"></a>Varningar
+Om du anger en språk kod som inte stöds genereras en varning och viktiga fraser extraheras inte.
 Om texten är tom skapas en varning.
 Om texten är större än 50 000 tecken kommer endast de första 50 000 tecknen att analyseras och en varning utfärdas.
 

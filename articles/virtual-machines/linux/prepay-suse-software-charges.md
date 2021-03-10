@@ -4,16 +4,16 @@ description: Lär dig hur du kan betala för program varu planer för att spara 
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602615"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549761"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Förskottsbetala för programvaruplaner för Azure
 
@@ -32,7 +32,7 @@ Du kan köpa SUSE och RedHat Software-planer i Azure Portal. Så här köper du 
 Fyll i de obligatoriska fälten. Alla virtuella SUSE Linux-datorer eller virtuella RedHat-datorer som matchar attributen för det du köper får rabatten. Det faktiska antalet distributioner som erhåller rabatten beror på vald omfattning och kvantitet.
 3. Välj en prenumeration. Den används för att betala för planen.
 Betalnings metoden för prenumerationen debiteras de direkta kostnaderna för reservationen. Prenumerations typen måste vara en Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P) eller ett enskilt avtal med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P).
-    - För en företags prenumeration dras avgifterna från registreringen för förskotts betalning i Azure (tidigare kallat betalnings åtagande) eller debiteras som överanvändning.
+    - För företagsprenumerationer dras avgifterna från registreringens saldo för Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande) eller debiteras som överförbrukning.
     - För en enskild prenumeration med priset betala per användning debiteras avgifterna på prenumerationens kredit kort eller faktura betalnings metod.
 4. Välj ett omfång. Omfattningen kan omfatta en prenumeration eller flera prenumerationer (delad omfattning).
     - Enskild prenumeration – plan rabatten används för att matcha användning i prenumerationen.

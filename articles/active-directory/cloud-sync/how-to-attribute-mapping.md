@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect redigeraren för molnets Sync-attribut
-description: Den här artikeln beskriver hur du använder redigeraren för attribut.
+title: Mappning av attribut i Azure AD Connect molnbaserad synkronisering
+description: Den här artikeln beskriver hur du använder funktionen för moln synkronisering i Azure AD Connect att mappa attribut.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,97 +11,97 @@ ms.date: 01/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6d2adbd0fe0715cb22ac158d1804f53384f8b94
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cdb043374cf6252da3929c8f0cda6c0a4be558b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682113"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555218"
 ---
-# <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Azure AD Connect mappning av attributdefinitioner för molnet
+# <a name="attribute-mapping-in-azure-ad-connect-cloud-sync"></a>Mappning av attribut i Azure AD Connect molnbaserad synkronisering
 
-Azure AD Connect Cloud Sync har introducerat en ny funktion som gör att du enkelt kan mappa attribut mellan dina lokala användar-och grupp objekt och objekten i Azure AD.  Den här funktionen har lagts till i konfigurationen för moln synkronisering.
+Du kan använda funktionen Cloud Sync i Azure Active Directory (Azure AD) Anslut för att mappa attribut mellan dina lokala användar-eller grupp objekt och objekten i Azure AD. Den här funktionen har lagts till i konfigurationen för moln synkronisering.
 
-Du kan anpassa standardattributen – mappningar efter dina affärs behov. Så du kan ändra eller ta bort befintliga attribut-mappningar eller skapa nya attribut-mappningar.  En lista över attribut som synkroniseras finns i [attribut som synkroniseras](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md).
+Du kan anpassa (ändra, ta bort eller skapa) standardattributen för mappning enligt dina affärs behov. En lista över attribut som synkroniseras finns i [attribut som synkroniseras till Azure Active Directory](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md).
 
-## <a name="understanding-attribute-mapping-types"></a>Förstå attribut-mappnings typer
-Med attribut-mappningar kan du kontrol lera hur attributen fylls i i Azure AD.
-Det finns fyra olika mappnings typer som stöds:
+## <a name="understand-types-of-attribute-mapping"></a>Förstå typer av attributmappning
+Med attributmappning styr du hur attribut fylls i i Azure AD. Azure AD stöder fyra mappnings typer:
 
-- **Direct** – målattributet är ifyllt med värdet för ett attribut för det länkade objektet i AD.
-- **Konstant** – målattributet är ifyllt med en specifik sträng som du har angett.
-- **Uttryck** – målattributet är ifyllt baserat på resultatet av ett skript som liknar uttryck.
-  Mer information finns i [skriva uttryck för attribut-mappningar](reference-expressions.md).
-- **Inget** – målattributet lämnas oförändrat. Men om målattributet skulle vara tomt fylls det med det standardvärde som du anger.
+- **Direct**: målattributet fylls med värdet för ett attribut för det länkade objektet i Active Directory.
+- **Konstant**: målattributet är ifyllt med en angiven sträng som du anger.
+- **Uttryck**: målattributet är ifyllt baserat på resultatet av ett skript som liknar uttryck. Mer information finns i [skriva uttryck för mappningar av attribut i Azure Active Directory](reference-expressions.md).
+- **Ingen**: målattributet är oförändrat. Men om målattributet skulle vara tomt fylls det med det standardvärde som du anger.
 
-Tillsammans med de här fyra grundläggande typerna stöder anpassade attribut-mappningar konceptet med en valfri **Standardvärde** tilldelning. Standardvärdes tilldelningen säkerställer att ett målattribut fylls med ett värde om det inte finns ett värde i Azure AD eller på målobjektet. Den vanligaste konfigurationen är att lämna detta tomt.
+Tillsammans med de här grundläggande typerna stöder anpassade mappningar av attribut begreppet för *en valfri standardvärdes* tilldelning. Med standardvärde tilldelningen säkerställs att ett målattribut är ifyllt med ett värde om Azure AD eller målobjektet inte har något värde. Den vanligaste konfigurationen är att lämna detta tomt.
 
-## <a name="understanding-attribute-mapping-properties"></a>Förstå attribut-mappnings egenskaper
+## <a name="understand-properties-of-attribute-mapping"></a>Förstå egenskaper för Attribute-mappning
 
-I föregående avsnitt har du redan lanserats till egenskaps typen attribut-mappning.
-Tillsammans med den här egenskapen stöder attribut-mappningar även följande attribut:
+Tillsammans med egenskapen type stöder attributet mappning följande attribut:
 
-- **Källattribut** – attributet användare från käll systemet (exempel: Active Directory).
-- **Target** -attribut – användarattribut i mål systemet (exempel: Azure Active Directory).
-- **Standardvärde om null (valfritt)** – det värde som skickas till mål systemet om källattributet är null. Det här värdet kommer endast att tillhandahållas när en användare skapas. "Standardvärdet när null" kommer inte att tillhandahållas när en befintlig användare uppdateras.  
-- **Använd den här mappningen**
-  - **Alltid** – Använd den här mappningen för både skapande av användare och uppdaterings åtgärder.
-  - **Endast vid skapande** – Använd endast den här mappningen för åtgärder för att skapa användare.
+- **Källattribut**: attributet User från käll systemet (exempel: Active Directory).
+- **Target-attribut**: användarattribut i mål systemet (exempel: Azure Active Directory).
+- **Standardvärde om null (valfritt)**: det värde som skickas till mål systemet om källattributet är null. Det här värdet kommer endast att tillhandahållas när en användare skapas. Den tillhandahålls inte när du uppdaterar en befintlig användare.  
+- **Använd den här mappningen**:
+  - **Always**: Använd den här mappningen för både användar skapande och uppdaterings åtgärder.
+  - **Endast under skapande**: Använd endast den här mappningen för åtgärder som skapar användaren.
 
 > [!NOTE]
-> Det här dokumentet beskriver hur du använder Azure Portal för att mappa attribut.  Information om hur du använder Graph finns i [transformeringar](how-to-transformation.md)
+> Den här artikeln beskriver hur du använder Azure Portal för att mappa attribut.  Information om hur du använder Microsoft Graph finns i [transformeringar](how-to-transformation.md).
 
-## <a name="using-attribute-mapping"></a>Använda Attribute-mappning
+## <a name="add-an-attribute-mapping"></a>Lägga till en attributmappning
 
-Följ stegen nedan om du vill använda den nya funktionen.
+Följ dessa steg om du vill använda den nya funktionen:
 
 1.  Välj **Azure Active Directory** i Azure Portal.
 2.  Välj **Azure AD Connect**.
 3.  Välj **hantera synkronisering av moln**.
 
-    ![Hantera etablering](media/how-to-install/install-6.png)
+    ![Skärm bild som visar länken för att hantera synkronisering av molnet.](media/how-to-install/install-6.png)
 
 4. Under **konfiguration** väljer du din konfiguration.
-5. Välj **Klicka om du vill redigera mappningar**.  Då öppnas skärmen mappning av attribut.
+5. Välj **Klicka om du vill redigera mappningar**.  Den här länken öppnar sidan **mappningar för attribut** .
 
-    ![Lägger till attribut](media/how-to-attribute-mapping/mapping-6.png)
+    ![Skärm bild som visar länken för att lägga till attribut.](media/how-to-attribute-mapping/mapping-6.png)
 
-6.  Klicka på **Lägg till attribut**.
+6.  Välj **Lägg till attribut**.
 
-    ![Mappnings typ](media/how-to-attribute-mapping/mapping-1.png)
+    ![Skärm bild som visar knappen för att lägga till ett attribut, tillsammans med listor över attribut och mappnings typer.](media/how-to-attribute-mapping/mapping-1.png)
 
-7. Välj **mappnings typ**.  I det här exemplet använder vi Expression.
-8.  Ange uttrycket i rutan.  I det här exemplet använder vi: `Replace([mail], "@contoso.com", , ,"", ,).`
-9.  Ange Target-attributet.  I det här exemplet använder vi ExtensionAttribute15.
-10. Välj när du vill tillämpa detta och klicka sedan på **Använd**
+7. Välj mappnings typ. I det här exemplet använder vi **Expression**.
+8. Ange uttrycket i rutan. I det här exemplet använder vi `Replace([mail], "@contoso.com", , ,"", ,)` .
+9. Ange Target-attributet. I det här exemplet använder vi **ExtensionAttribute15**.
+10. Välj när du vill tillämpa mappningen och välj sedan **Använd**.
 
-    ![Redigera mappningar](media/how-to-attribute-mapping/mapping-2a.png)
+    ![Skärm bild som visar de ifyllda rutorna för att skapa en attributmappning.](media/how-to-attribute-mapping/mapping-2a.png)
 
-11. Tillbaka på skärmen mappning av attribut bör du se den nya mappningen för attribut.  
-12. Klicka på **Spara schema**.
+11. Tillbaka på skärmen **mappningar för attribut** bör du se den nya mappningen för attribut.  
+12. Välj **Spara schema**.
 
-    ![Spara schema](media/how-to-attribute-mapping/mapping-3.png)
+    ![Skärm bild som visar knappen Spara schema.](media/how-to-attribute-mapping/mapping-3.png)
 
 ## <a name="test-your-attribute-mapping"></a>Testa din attributmappning
 
-Du kan testa din attributmappning genom att använda [etablering på begäran](how-to-on-demand-provision.md).  Från 
+Om du vill testa din attributmappning kan du använda [etablering på begäran](how-to-on-demand-provision.md): 
 
 1. Välj **Azure Active Directory** i Azure Portal.
 2. Välj **Azure AD Connect**.
 3. Välj **Hantera etablering**.
 4. Under **konfiguration** väljer du din konfiguration.
-5. Under **Verifiera** klickar du på knappen **Tillhandahåll en användare** . 
-6. På sidan etablering på begäran.  Ange det **unika namnet** för en användare eller grupp och klicka på knappen **Tillhandahåll** .  
-7. När den är klar bör du se en lyckad skärm och en grön kryss ruta som anger att den har kon figurer ATS.  
+5. Under **Verifiera** väljer du knappen **Tillhandahåll en användare** . 
+6. På skärmen **etablera på begäran** anger du det unika namnet för en användare eller grupp och klickar på knappen **Tillhandahåll** . 
 
-    ![Lyckad etablering](media/how-to-attribute-mapping/mapping-4.png)
+   Skärmen visar att etableringen pågår.
 
-8. Under **utför åtgärd** klickar du på **Visa information**.  Till höger bör du se det nya attributet Synchronized och uttrycket som används.
+   ![Skärm bild som visar att etableringen pågår.](media/how-to-attribute-mapping/mapping-4.png)
 
-  ![Utför åtgärd](media/how-to-attribute-mapping/mapping-5.png)
+8. När etableringen har slutförts visas skärmen lyckades med fyra gröna kryss rutor. 
+
+   Under **utför åtgärd** väljer du **Visa information**. Till höger bör du se det nya attributet Synchronized och uttrycket som används.
+
+   ![Skärm bild som visar information om lyckade och exporterade uppgifter.](media/how-to-attribute-mapping/mapping-5.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Vad är Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
-- [Skriva uttryck för attribut-mappningar](reference-expressions.md)
-- [Attribut som har synkroniserats](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md)
+- [Skriver uttryck för mappningar av attribut](reference-expressions.md)
+- [Attribut som synkroniseras till Azure Active Directory](../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context/hybrid/reference-connect-sync-attributes-synchronized.md)

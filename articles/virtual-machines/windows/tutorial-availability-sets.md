@@ -1,7 +1,7 @@
 ---
 title: Distribuera virtuella datorer i en tillgänglighets uppsättning med hjälp av Azure PowerShell
 description: Lär dig hur du använder Azure PowerShell för att distribuera virtuella datorer med hög tillgänglighet i tillgänglighets uppsättningar
-services: virtual-machines-windows
+services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 90f57e48ef8cd2f71eea7a5c2b98fda83f282203
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509106"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555915"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Skapa och distribuera virtuella datorer i en tillgänglighets uppsättning med hjälp av Azure PowerShell
 

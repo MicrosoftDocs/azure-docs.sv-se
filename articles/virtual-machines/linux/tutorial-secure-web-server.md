@@ -1,25 +1,26 @@
 ---
 title: 'Självstudie: skydda en Linux-webbserver med TLS/SSL-certifikat i Azure'
 description: I den här självstudien får du lära dig hur du använder Azure CLI till att skydda en virtuell Linux-dator som kör webbservern NGINX med SSL-certifikat som lagras i Azure Key Vault.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3f762597ad81dfaba907115cbcf6074d81ec2fa4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878467"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549591"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Självstudie: skydda en webb server på en virtuell Linux-dator i Azure med TLS/SSL-certifikat som lagras i Key Vault
 För att skydda webb servrar, en Transport Layer Security (TLS), som tidigare kallades Secure Sockets Layer (SSL), kan du använda certifikat för att kryptera webb trafik. Dessa TLS/SSL-certifikat kan lagras i Azure Key Vault och tillåta säker distribution av certifikat till virtuella Linux-datorer (VM: ar) i Azure. I den här guiden får du lära du dig hur man:

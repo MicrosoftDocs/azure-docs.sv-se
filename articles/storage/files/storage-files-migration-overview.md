@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202356"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554878"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrera till Azure-filresurser
 
@@ -81,13 +81,12 @@ Ett scenario utan en länk har ännu ingen publicerad migreringsguiden. Markera 
 | Källa | Mål: </br>Hybrid distribution | Mål: </br>Distribution i molnet |
 |:---|:--|:--|
 | | Verktygs kombination:| Verktygs kombination: |
-| Windows Server 2012 R2 och senare | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync och Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Azure File Sync och förinstallerade filer i molnet](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Tjänsten Azure File Sync och lagringsmigrering</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync och Data Box-enhet</li><li>Tjänsten Azure File Sync och lagringsmigrering</li><li>RoboCopy</li></ul> |
-| Windows Server 2012 och tidigare | <ul><li>Azure File Sync och Data Box-enhet</li><li>Tjänsten Azure File Sync och lagringsmigrering</li></ul> | <ul><li>Tjänsten Azure File Sync och lagringsmigrering</li><li>RoboCopy</li></ul> |
-| Nätverksansluten lagring (NAS) | <ul><li>[Azure File Sync och RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Linux eller samba | <ul><li>[Azure File Sync och RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Microsoft Azure StorSimple Cloud-apparaten 8100 eller StorSimple Cloud Appliance 8600 | <ul><li>[Azure File Sync och StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple Cloud Appliance 1200 | <ul><li>[Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
-| | | |
+| Windows Server 2012 R2 och senare | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync och Azure Data Center](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>Via RoboCopy till en monterad Azure-filresurs</li><li>Via Azure File Sync</li></ul> |
+| Windows Server 2012 och tidigare | <ul><li>Via data-och Azure File Sync till senaste server-OS</li><li>Via Storage Migration service till den senaste servern med Azure File Sync, laddar du upp</li></ul> | <ul><li>Via Storage Migration service till den senaste servern med Azure File Sync</li><li>Via RoboCopy till en monterad Azure-filresurs</li></ul> |
+| Nätverksansluten lagring (NAS) | <ul><li>[Via Azure File Sync uppladdning](storage-files-migration-nas-hybrid.md)</li><li>[Via data-och Azure File Sync](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>Via RoboCopy till en monterad Azure-filresurs</li></ul> |
+| Linux/Samba | <ul><li>[Azure File Sync och RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Via RoboCopy till en monterad Azure-filresurs</li></ul> |
+| Microsoft Azure StorSimple Cloud-apparaten 8100 eller StorSimple Cloud Appliance 8600 | <ul><li>[Via moln tjänst för dedikerad data migrering](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Via Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Verktyg för migrering
 
@@ -120,9 +119,9 @@ I följande tabell klassificerar vi Microsoft-verktyg och deras aktuella lämpli
 |![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Stöds. Azure-filresurser kan monteras som nätverks enheter. | Fullständig åter givning. * |
 |![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Inbyggt i Azure-filresurser. | Fullständig åter givning. * |
 |![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| Tjänsten för lagringsmigrering | Stöds indirekt. Azure-filresurser kan monteras som nätverks enheter på SMS-mål servrar. | Fullständig åter givning. * |
-|![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, version 10,4 eller senare| Stöds. | Fullständig åter givning. * |
-|![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Stöds. | Dataservern har nu fullständigt stöd för metadata. [Data Box-enhet kan också användas i kombination med Azure File Sync](storage-sync-offline-data-transfer.md). |
-|![Inte fullständigt rekommenderat](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer version 1,14 | Stöds. | Kopierar inte ACL: er. Stöder tidsstämplar.  |
+|![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>version 10,6 | Stöds. | Stöder inte kopiering av käll-rot-ACL, annars fullständig åter givning. * </br>[Lär dig hur du använder AzCopy med Azure-filresurser](../common/storage-use-azcopy-files.md) |
+|![Ja, rekommenderas](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Stöds. | Data i helaet stöder metadata. |
+|![Inte fullständigt rekommenderat](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer </br>version 1,14 | Stöds. | Kopierar inte ACL: er. Stöder tidsstämplar.  |
 |![Rekommenderas inte](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Stöds. | Kopierar inte metadata. |
 |||||
 
@@ -149,7 +148,7 @@ Den testade versionen av verktyget är version 4.4.1. Den är kompatibel med fil
 1. Skapa en plan för vilken distribution av Azure-filresurser (endast moln eller hybrid) du vill använda.
 1. Gå igenom listan med tillgängliga stöd linjer för migrering för att hitta den detaljerade guiden som matchar din källa och distribution av Azure-filresurser.
 
-Här är mer information om Azure Files tekniker som nämns i den här artikeln:
+Mer information om de Azure Files tekniker som nämns i den här artikeln:
 
 * [Översikt över Azure-filresurs](storage-files-introduction.md)
 * [Planera för distribution av Azure File Sync](storage-sync-files-planning.md)

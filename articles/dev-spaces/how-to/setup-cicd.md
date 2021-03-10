@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Lär dig hur du konfigurerar kontinuerlig integrering/kontinuerlig distribution med Azure DevOps med Azure dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, behållare
-ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 142f01a04066b919a81e1ad1ea95efa31f51f6ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017788"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548741"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Använda CI/CD med Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Den här artikeln vägleder dig genom att konfigurera kontinuerlig integrering/k
 ## <a name="prerequisites"></a>Förutsättningar
 * Azure Kubernetes service-kluster (AKS) med Azure dev-platser aktiverat
 * [Azure dev Spaces CLI installerat](upgrade-tools.md)
-* [Azure DevOps-organisation med ett projekt](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Azure DevOps-organisation med ett projekt](/azure/devops/user-guide/sign-up-invite-teammates)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Azure Container Registry information om [Administratörs kontot](../../container-registry/container-registry-authentication.md#admin-account) tillgängliga
 * [Auktorisera ditt AKS-kluster för att hämta från din Azure Container Registry](../../aks/cluster-container-registry-integration.md)
@@ -70,7 +70,7 @@ Alternativet att inaktivera:
 > [!Note]
 > Azure DevOps _New yaml pipeline för skapande av pipeliner_ är i konflikt med att skapa fördefinierade Bygg pipeliner just nu. Du måste inaktivera det för tillfället för att kunna distribuera vår fördefinierade build-pipeline.
 
-I _azds_updates_ Branch har vi inkluderat en enkel [Azure pipeline-yaml](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) som definierar de build-steg som krävs för *mywebapi* och *webfrontend*.
+I _azds_updates_ Branch har vi inkluderat en enkel [Azure pipeline-yaml](/azure/devops/pipelines/yaml-schema?tabs=schema) som definierar de build-steg som krävs för *mywebapi* och *webfrontend*.
 
 Beroende på vilket språk du har valt har pipelinen YAML checkats in i en sökväg som liknar: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
@@ -79,7 +79,7 @@ Så här skapar du en pipeline från den här filen:
 1. Välj alternativet för att skapa en **ny** versions pipeline.
 1. Välj **GitHub** som källa, auktorisera med ditt GitHub-konto om det behövs och välj den _azds_updates_ grenen från den förgrenade versionen av exempel program lagrings platsen för _dev-Spaces_ .
 1. Välj **konfiguration som kod** eller **yaml** som mall.
-1. Nu visas en konfigurations sida för din build-pipeline. Som vi nämnt ovan navigerar du till den språkspecifika sökvägen för sökvägen till **yaml-filen** med hjälp av **...** -knappen. Exempelvis `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+1. Nu visas en konfigurations sida för din build-pipeline. Som vi nämnt ovan navigerar du till den språkspecifika sökvägen för sökvägen till **yaml-filen** med hjälp av **...** -knappen. Till exempel `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Gå till fliken **variabler** .
 1. Lägg till _dockerId_ manuellt som en variabel, vilket är användar namnet för ditt [Azure Container Registry administratörs konto](../../container-registry/container-registry-authentication.md#admin-account). (Anges i artikel förutsättningar)
 1. Lägg till _dockerPassword_ manuellt som en variabel, vilket är lösen ordet för ditt [Azure Container Registry administratörs konto](../../container-registry/container-registry-authentication.md#admin-account). Se till att ange _dockerPassword_ som en hemlighet (genom att välja Lås ikonen) av säkerhets synpunkt.

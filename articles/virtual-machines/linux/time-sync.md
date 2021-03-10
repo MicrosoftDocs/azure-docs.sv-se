@@ -1,23 +1,24 @@
 ---
 title: Tidssynkronisering för virtuella Linux-datorer i Azure
 description: Tidssynkronisering för virtuella Linux-datorer.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18c8570a8066985cab5263c4779787062dc32d75
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306964"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552651"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Tidssynkronisering för virtuella Linux-datorer i Azure
 
@@ -114,7 +115,7 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 
 ### <a name="check-for-ptp-clock-source"></a>Kontrol lera om det finns en PTP-klocka
 
-I nyare versioner av Linux är en PTP-datakälla (precision Time Protocol) tillgänglig som en del av VMICTimeSync-providern. I äldre versioner av Red Hat Enterprise Linux eller CentOS 7. x kan [Linux integrations tjänsterna](https://github.com/LIS/lis-next) hämtas och användas för att installera den uppdaterade driv rutinen. När PTP-klockan är tillgänglig kommer Linux-enheten att ha formatet/dev/PTP*x*. 
+I nyare versioner av Linux är en PTP-datakälla (precision Time Protocol) tillgänglig som en del av VMICTimeSync-providern. I äldre versioner av Red Hat Enterprise Linux eller CentOS 7. x kan [Linux integrations tjänsterna](https://github.com/LIS/lis-next) hämtas och användas för att installera den uppdaterade driv rutinen. När PTP-klockan är tillgänglig kommer Linux-enheten att ha formatet/dev/PTP *x*. 
 
 Se vilka PTP-klock källor som är tillgängliga.
 

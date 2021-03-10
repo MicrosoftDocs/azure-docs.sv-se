@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203002"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565724"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Skapa Azure-prenumerationer via programmering med förhandsversioner av API:er
 
@@ -190,7 +190,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | Ja       | Sträng | Objekt-ID:t för det registreringskonto som prenumerationen skapades under och som debiteras. Värdet är ett GUID som du får från `Get-AzEnrollmentAccount`. |
 | `OwnerObjectId`      | Inga       | Sträng | Objekt-ID:t för en användare som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas.  |
 | `OwnerSignInName`    | Inga       | Sträng | E-postadressen för en användare som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `OwnerObjectId`.|
-| `OwnerApplicationId` | Inga       | Sträng | Program-ID:t för ett tjänsthuvudnamn (SPN) som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `OwnerObjectId`. Om du använder parametern måste tjänsthuvudnamnet ha [läsbehörighet till katalogen](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
+| `OwnerApplicationId` | Inga       | Sträng | Program-ID:t för ett tjänsthuvudnamn (SPN) som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `OwnerObjectId`. Om du använder parametern måste tjänsthuvudnamnet ha [läsbehörighet till katalogen](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Se [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) för en fullständig lista över alla parametrar.
 
@@ -211,7 +211,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | Ja       | Sträng | Objekt-ID:t för det registreringskonto som prenumerationen skapades under och som debiteras. Värdet är ett GUID som du får från `az billing enrollment-account list`. |
 | `owner-object-id`      | Inga       | Sträng | Objekt-ID:t för en användare som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas.  |
 | `owner-upn`    | Inga       | Sträng | E-postadressen för en användare som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `owner-object-id`.|
-| `owner-spn` | Inga       | Sträng | Program-ID:t för ett tjänsthuvudnamn (SPN) som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `owner-object-id`. Om du använder parametern måste tjänsthuvudnamnet ha [läsbehörighet till katalogen](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
+| `owner-spn` | Inga       | Sträng | Program-ID:t för ett tjänsthuvudnamn (SPN) som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `owner-object-id`. Om du använder parametern måste tjänsthuvudnamnet ha [läsbehörighet till katalogen](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Se [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) för en fullständig lista över alla parametrar.
 

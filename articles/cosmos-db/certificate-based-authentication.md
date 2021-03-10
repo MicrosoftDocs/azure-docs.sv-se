@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 84cbc681d0974e91561daf8918dff389226fa7aa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334726"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553977"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Certifikatbaserad autentisering för en Azure AD-identitet för åtkomst till nycklar från ett Azure Cosmos DB konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Med certifikatbaserad autentisering kan klientprogrammet autentiseras med hjälp av Azure Active Directory (Azure AD) med ett klientcertifikat. Du kan utföra certifikatbaserad autentisering på en dator där du behöver en identitet, till exempel en lokal dator eller en virtuell dator i Azure. Ditt program kan sedan läsa Azure Cosmos DB nycklar utan att ha nycklarna direkt i programmet. Den här artikeln beskriver hur du skapar ett exempel på Azure AD-program, konfigurerar det för certifikatbaserad autentisering, loggar in på Azure med den nya program identiteten och hämtar sedan nycklarna från ditt Azure Cosmos-konto. Den här artikeln använder Azure PowerShell för att ställa in identiteter och innehåller en C#-exempel app som autentiserar och använder nycklar från ditt Azure Cosmos-konto.  
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Installera den [senaste versionen](/powershell/azure/install-az-ps) av Azure PowerShell.
 
@@ -30,7 +30,7 @@ Med certifikatbaserad autentisering kan klientprogrammet autentiseras med hjälp
 
 I det här steget ska du registrera ett exempel webb program i ditt Azure AD-konto. Det här programmet används senare för att läsa nycklarna från ditt Azure Cosmos DB-konto. Använd följande steg för att registrera ett program: 
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Öppna fönstret Azure **Active Directory** , gå till **Appregistreringar** fönstret och välj **ny registrering**. 
 
@@ -46,7 +46,7 @@ I det här steget ska du registrera ett exempel webb program i ditt Azure AD-kon
 
 1. Välj **Registrera** när du har fyllt i formuläret.
 
-1. När appen har registrerats ska du anteckna **program-ID: t** och **objekt-ID** : t. du kommer att använda informationen i nästa steg. 
+1. När appen har registrerats ska du anteckna **program-ID: t** och **objekt-ID**: t. du kommer att använda informationen i nästa steg. 
 
    :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Hämta program-och objekt-ID: n":::
 
@@ -65,7 +65,7 @@ I det här steget ska du installera Azure AD PowerShell-modulen. Den här module
    Set-AzContext $context 
    ```
 
-1. Installera och importera modulen [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true)
+1. Installera och importera modulen [AzureAD](/powershell/module/azuread/)
 
    ```powershell
    Install-Module AzureAD
@@ -105,7 +105,7 @@ Kommandot ovan resulterar i utdata som liknar skärm bilden nedan:
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Konfigurera ditt Azure Cosmos-konto för att använda den nya identiteten
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Gå till ditt Azure Cosmos-konto och öppna bladet **åtkomst kontroll (IAM)** .
 
@@ -121,7 +121,7 @@ Du kan associera den certifikatbaserad autentiseringsuppgiften med klient progra
 
 I Azure App-registreringen för klient programmet:
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Öppna fönstret Azure **Active Directory** , gå till fönstret **Appregistreringar** och öppna den exempel app som du skapade i föregående steg. 
 

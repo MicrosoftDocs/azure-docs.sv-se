@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 077730d63d388566bd842a4ba185bd5fd6637043
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589006"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551889"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Konfigurera en CI/CD-pipeline för en Java-app med Azure DevOps starter
 
 I den här snabb starten använder du den förenklade start miljön för Azure DevOps för att konfigurera en pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din Java-app i Azure-pipeline. Du kan använda Azure DevOps starter för att konfigurera allt du behöver för att utveckla, distribuera och övervaka din app. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Ett [Azure DevOps](https://azure.microsoft.com/services/devops/) -konto och en organisation.
@@ -131,4 +131,4 @@ Du kan ta bort Azure App Service och andra relaterade resurser när de inte län
 När du konfigurerade CI/CD-processen skapades bygg- och versionspipelines automatiskt. Du kan ändra dessa bygg- och versionspipelines för att tillgodose ditt teams behov. Mer information om CI/CD-pipelinen finns i:
 
 > [!div class="nextstepaction"]
-> [Anpassa CD-process](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassa CD-process](/azure/devops/pipelines/release/define-multistage-release-process)

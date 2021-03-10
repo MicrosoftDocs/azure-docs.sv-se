@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a5c6545c634d14b5bd1d6dbb47f878f6f4f5f0b6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 3dfb2cd445edf33ed8db4807efcc2e6326f838ab
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502832"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549013"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azures säkerhets bas linje för offentlig Azure-IP
 
@@ -114,9 +114,9 @@ Offentliga IP-adresser genererar inte loggar som rör annan nätverks trafik än
 
 Inventerade eller fråge fördefinierade inbyggda Azure-roller finns för vissa resurser via verktyg som Azure CLI, Azure PowerShell eller Azure Portal.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center-övervakning**: Ja
 

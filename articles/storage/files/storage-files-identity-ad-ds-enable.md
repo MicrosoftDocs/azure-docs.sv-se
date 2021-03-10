@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630404"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553229"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Del ett: Aktivera AD DS-autentisering för dina Azure-filresurser 
 
@@ -41,7 +41,7 @@ AD DS-kontot som skapas av cmdleten representerar lagrings kontot. Om AD DS-kont
 Ersätt plats hållarnas värden med dina egna i parametrarna nedan innan du kör det i PowerShell.
 > [!IMPORTANT]
 > Domän kopplings-cmdleten skapar ett AD-konto som representerar lagrings kontot (fil resursen) i AD. Du kan välja att registrera ett dator konto eller tjänst inloggnings konto, se [vanliga frågor och svar](./storage-files-faq.md#security-authentication-and-access-control) för mer information. För dator konton finns det ett standard ålder för lösen ord som anges i AD med 30 dagar. På samma sätt kan tjänst inloggnings kontot ha ett standard-ålder för lösen ord som angetts i AD-domänen eller organisationsenheten (OU).
-> För båda konto typerna rekommenderar vi att du kontrollerar lösen ordets förfallo ålder som kon figurer ATS i din AD-miljö och planerar att [Uppdatera lösen ordet för ditt lagrings kontos identitet](storage-files-identity-ad-ds-update-password.md) för AD-kontot innan du anger den högsta tillåtna åldern för lösen ord. Du kan överväga att [skapa en ny AD-organisationsenhet (OU) i AD](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) och inaktivera princip för lösen ords förfallo datum på [dator konton](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) eller tjänst inloggnings konton i enlighet med detta. 
+> För båda konto typerna rekommenderar vi att du kontrollerar lösen ordets förfallo ålder som kon figurer ATS i din AD-miljö och planerar att [Uppdatera lösen ordet för ditt lagrings kontos identitet](storage-files-identity-ad-ds-update-password.md) för AD-kontot innan du anger den högsta tillåtna åldern för lösen ord. Du kan överväga att [skapa en ny AD-organisationsenhet (OU) i AD](/powershell/module/addsadministration/new-adorganizationalunit) och inaktivera princip för lösen ords förfallo datum på [dator konton](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) eller tjänst inloggnings konton i enlighet med detta. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Om du redan har kört `Join-AzStorageAccountForAuth` skriptet ovan går du till 
 
 ### <a name="checking-environment"></a>Kontrollerar miljö
 
-Först måste du kontrol lera status för din miljö. Mer specifikt måste du kontrol lera om [Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) är installerat och om gränssnittet körs med administratörs behörighet. Kontrollera sedan för att se om [modulen Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) är installerad, i annat fall installerar du den. När du har slutfört kontrollerna kontrollerar du AD DS för att se om det finns något [dator konto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standard) eller [tjänst inloggnings konto](/windows/win32/ad/about-service-logon-accounts) som redan har skapats med SPN/UPN som "CIFS/ditt-Storage-Account-name-här. File. Core. Windows. net". Om kontot inte finns skapar du ett enligt beskrivningen i följande avsnitt.
+Först måste du kontrol lera status för din miljö. Mer specifikt måste du kontrol lera om [Active Directory PowerShell](/powershell/module/addsadministration/) är installerat och om gränssnittet körs med administratörs behörighet. Kontrollera sedan för att se om [modulen Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) är installerad, i annat fall installerar du den. När du har slutfört kontrollerna kontrollerar du AD DS för att se om det finns något [dator konto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standard) eller [tjänst inloggnings konto](/windows/win32/ad/about-service-logon-accounts) som redan har skapats med SPN/UPN som "CIFS/ditt-Storage-Account-name-här. File. Core. Windows. net". Om kontot inte finns skapar du ett enligt beskrivningen i följande avsnitt.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Skapa en identitet som representerar lagrings kontot i din AD manuellt
 

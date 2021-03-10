@@ -3,13 +3,13 @@ title: Hantera säkerhets kopiering med rollbaserad åtkomst kontroll i Azure
 description: Använd rollbaserad åtkomst kontroll i Azure för att hantera åtkomst till säkerhets kopierings hanterings åtgärder i Recovery Services valvet.
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 03/09/2021
+ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090887"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553416"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Använd rollbaserad åtkomst kontroll i Azure för att hantera Azure Backup återställnings punkter
 
@@ -28,37 +28,57 @@ Om du vill definiera egna roller för ännu mer kontroll, se så här [skapar du
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mappa inbyggda säkerhets kopierings roller till säkerhets kopierings hanterings åtgärder
 
+### <a name="minimum-role-requirements-for-azure-vm-backup"></a>Lägsta roll krav för virtuell Azure-säkerhetskopiering
+
 I följande tabell inhämtas åtgärder för säkerhets kopierings hantering och motsvarande minsta Azure-roll som krävs för att utföra åtgärden.
 
-| Hanterings åtgärd | Lägsta Azure-roll som krävs | Omfattning krävs |
-| --- | --- | --- |
-| Skapa Recovery Services-valv | Säkerhets kopierings deltagare | Resurs grupp som innehåller valvet |
-| Aktivera säkerhets kopiering av virtuella Azure-datorer | Ansvarig för säkerhets kopiering | Resurs grupp som innehåller valvet |
-| | Virtuell datordeltagare | VM-resurs |
-| Säkerhets kopiering på begäran av virtuell dator | Ansvarig för säkerhets kopiering | Recovery Services-valv |
-| Återställa virtuell dator | Ansvarig för säkerhets kopiering | Recovery Services-valv |
-| | Deltagare | Resurs grupp där den virtuella datorn ska distribueras |
-| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |
-| Återställa ohanterade diskar VM-säkerhetskopiering | Ansvarig för säkerhets kopiering | Recovery Services-valv |
-| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |
-| | Lagringskontodeltagare | Lagrings konto resurs där diskarna ska återställas |
-| Återställa hanterade diskar från VM-säkerhetskopiering | Ansvarig för säkerhets kopiering | Recovery Services-valv |
-| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |
-| | Lagringskontodeltagare | Tillfälligt lagrings konto valdes som en del av Restore för att lagra data från valvet innan de konverteras till Managed disks |
-| | Deltagare | Resurs grupp som den eller de hanterade diskarna ska återställas till |
-| Återställa enskilda filer från VM-säkerhetskopiering | Ansvarig för säkerhets kopiering | Recovery Services-valv |
-| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |
+| Hanterings åtgärd | Lägsta Azure-roll som krävs | Omfattning krävs | Andra |
+| --- | --- | --- | --- |
+| Skapa Recovery Services-valv | Säkerhets kopierings deltagare | Resurs grupp som innehåller valvet |   |
+| Aktivera säkerhets kopiering av virtuella Azure-datorer | Operator för säkerhetskopiering | Resurs grupp som innehåller valvet |   |
+| | Virtuell datordeltagare | VM-resurs |  Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| Säkerhets kopiering på begäran av virtuell dator | Operator för säkerhetskopiering | Recovery Services-valv |   |
+| Återställa virtuell dator | Operator för säkerhetskopiering | Recovery Services-valv |   |
+| | Deltagare | Resurs grupp där den virtuella datorn ska distribueras |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. Compute/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/subnets/Join/Action | 
+| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| Återställa ohanterade diskar VM-säkerhetskopiering | Operator för säkerhetskopiering | Recovery Services-valv |
+| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats | Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| | Lagringskontodeltagare | Lagrings konto resurs där diskarna ska återställas |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Storage/storageAccounts/Write |
+| Återställa hanterade diskar från VM-säkerhetskopiering | Operator för säkerhetskopiering | Recovery Services-valv |
+| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |    Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| | Lagringskontodeltagare | Tillfälligt lagrings konto valdes som en del av Restore för att lagra data från valvet innan de konverteras till Managed disks |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Storage/storageAccounts/Write |
+| | Deltagare | Resurs grupp som den eller de hanterade diskarna ska återställas till | Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Resources/Subscriptions/resourceGroups/Write|
+| Återställa enskilda filer från VM-säkerhetskopiering | Operator för säkerhetskopiering | Recovery Services-valv |
+| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats | Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
 | Skapa säkerhets kopierings princip för säkerhets kopiering av virtuella Azure-datorer | Säkerhets kopierings deltagare | Recovery Services-valv |
 | Ändra säkerhets kopierings princip för säkerhets kopiering av virtuella Azure-datorer | Säkerhets kopierings deltagare | Recovery Services-valv |
 | Ta bort säkerhets kopierings princip för virtuell Azure-säkerhetskopiering | Säkerhets kopierings deltagare | Recovery Services-valv |
 | Stoppa säkerhets kopiering (med Behåll data eller ta bort data) vid säkerhets kopiering av virtuell dator | Säkerhets kopierings deltagare | Recovery Services-valv |
-| Registrera lokala Windows Server-/klient-SCDPM eller Azure Backup Server | Ansvarig för säkerhets kopiering | Recovery Services-valv |
+| Registrera lokala Windows Server-/klient-SCDPM eller Azure Backup Server | Operator för säkerhetskopiering | Recovery Services-valv |
 | Ta bort registrerade lokala Windows Server-eller klient-SCDPM eller Azure Backup Server | Säkerhets kopierings deltagare | Recovery Services-valv |
 
 > [!IMPORTANT]
 > Om du anger VM-deltagare vid en VM-resurs omfattning och väljer **säkerhets kopiering** som en del av inställningarna för virtuella datorer öppnas skärmen **Aktivera säkerhets kopiering** , även om den virtuella datorn redan har säkerhetskopierats. Detta beror på att anropet att verifiera säkerhets kopierings status endast fungerar på prenumerations nivå. Undvik detta genom att gå till valvet och öppna säkerhets kopierings objekt visningen av den virtuella datorn eller ange rollen VM-deltagare på en prenumerations nivå.
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Lägsta roll krav för säkerhets kopiering av Azure-filresurs
+### <a name="minimum-role-requirements-for-azure-workload-backups-sql-and-hana-db-backups"></a>Lägsta roll krav för Azure-arbetsbelastnings säkerhets kopieringar (SQL-och HANA DB-säkerhetskopieringar)
+
+I följande tabell inhämtas åtgärder för säkerhets kopierings hantering och motsvarande minsta Azure-roll som krävs för att utföra åtgärden.
+
+| Hanterings åtgärd | Lägsta Azure-roll som krävs | Omfattning krävs | Andra |
+| --- | --- | --- | --- |
+| Skapa Recovery Services-valv | Säkerhets kopierings deltagare | Resurs grupp som innehåller valvet |   |
+| Aktivera säkerhets kopiering av SQL-och/eller HANA-databaser | Operator för säkerhetskopiering | Resurs grupp som innehåller valvet |   |
+| | Virtuell datordeltagare | VM-resurs där DB har installerats |  Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| Säkerhets kopiering på begäran av DB | Operator för säkerhetskopiering | Recovery Services-valv |   |
+| Återställ databas eller Återställ som filer | Operator för säkerhetskopiering | Recovery Services-valv |   |
+| | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| | Virtuell datordeltagare | Den virtuella mål datorn i vilken databasen kommer att återställas eller filer skapas |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| Skapa säkerhets kopierings princip för säkerhets kopiering av virtuella Azure-datorer | Säkerhets kopierings deltagare | Recovery Services-valv |
+| Ändra säkerhets kopierings princip för säkerhets kopiering av virtuella Azure-datorer | Säkerhets kopierings deltagare | Recovery Services-valv |
+| Ta bort säkerhets kopierings princip för virtuell Azure-säkerhetskopiering | Säkerhets kopierings deltagare | Recovery Services-valv |
+| Stoppa säkerhets kopiering (med Behåll data eller ta bort data) vid säkerhets kopiering av virtuell dator | Säkerhets kopierings deltagare | Recovery Services-valv |
+
+### <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Lägsta roll krav för säkerhets kopiering av Azure-filresurs
 
 I följande tabell inhämtas åtgärder för säkerhets kopierings hantering och motsvarande roll som krävs för att utföra en Azure-filresurs åtgärd.
 
@@ -66,10 +86,10 @@ I följande tabell inhämtas åtgärder för säkerhets kopierings hantering och
 | --- | --- | --- |
 | Aktivera säkerhets kopiering av Azure-filresurser | Säkerhets kopierings deltagare |Recovery Services-valv |
 | |Lagringskonto | Deltagar lagrings konto resurs |
-| Säkerhets kopiering på begäran av virtuell dator | Ansvarig för säkerhets kopiering | Recovery Services-valv |
-| Återställ fil resurs | Ansvarig för säkerhets kopiering | Recovery Services-valv |
+| Säkerhets kopiering på begäran av virtuell dator | Operator för säkerhetskopiering | Recovery Services-valv |
+| Återställ fil resurs | Operator för säkerhetskopiering | Recovery Services-valv |
 | | Lagringskontodeltagare | Lagrings konto resurser där återställning av käll-och mål fil resurser finns |
-| Återställa enskilda filer | Ansvarig för säkerhets kopiering | Recovery Services-valv |
+| Återställa enskilda filer | Operator för säkerhetskopiering | Recovery Services-valv |
 | |Lagringskontodeltagare|Lagrings konto resurser där återställning av käll-och mål fil resurser finns |
 | Sluta skydda |Säkerhets kopierings deltagare | Recovery Services-valv |
 | Avregistrera lagrings kontot från valvet |Säkerhets kopierings deltagare | Recovery Services-valv |

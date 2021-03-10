@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 66853b580ba1b619bf4cc995e05bd3cfaff07cfb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656843"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565877"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data vetenskaps kod testning på Azure med team data science-processen och Azure DevOps-tjänster
 Den här artikeln innehåller preliminära rikt linjer för testning av kod i ett data vetenskaps flöde. Sådan testning ger data experter ett systematiskt och effektivt sätt att kontrol lera kvaliteten och förväntat resultat av koden. Vi använder ett TDSP-projekt (Team data science process) [som använder den data uppsättning för den sexuella](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) värde som vi publicerade tidigare för att visa hur kod testning kan göras. 
@@ -124,7 +124,7 @@ Använd följande steg för att konfigurera och köra kod testning och en automa
 
     ![Lista över mallar och knappen "tom process"](./media/code-test/start_empty_process_template.PNG)
 
-    d. Namnge bygget och välj agenten. Du kan välja standardvärdet här om du vill använda en DSVM för att slutföra Bygg processen. Mer information om hur du ställer in agenter finns i [skapa och släppa agenter](/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Namnge bygget och välj agenten. Du kan välja standardvärdet här om du vill använda en DSVM för att slutföra Bygg processen. Mer information om hur du ställer in agenter finns i [skapa och släppa agenter](/azure/devops/pipelines/agents/agents).
     
     ![Build-och agent-val](./media/code-test/select_agent.PNG)
 

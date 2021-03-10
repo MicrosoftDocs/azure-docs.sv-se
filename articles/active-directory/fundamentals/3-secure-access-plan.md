@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 266142240ba9e892c905ac8aa6521da5a14c4c3d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725219"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554028"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. skapa ett säkerhets plan för extern åtkomst 
 
@@ -132,9 +132,9 @@ Tänk på följande när dina principer kommer att anpassas efter dina behov:
 
    * Om du använder [anslutna organisationer](../governance/entitlement-management-organization.md) för att gruppera alla användare från en enda partner kan du schemalägga regelbundna granskningar med företags ägaren och partner representanten.
 
-* **Microsoft 365 grupper**. Ange en [förfallo princip för grupp](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) för Microsoft 365 grupper som externa användare ska bjudas in till. 
+* **Microsoft 365 grupper**. Ange en [förfallo princip för grupp](/microsoft-365/solutions/microsoft-365-groups-expiration-policy) för Microsoft 365 grupper som externa användare ska bjudas in till. 
 
-* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Ett exempel:
+* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Exempel:
 
    * Ta bort inloggnings möjligheten för alla konton som inte är inloggade på i för 90 dagar.
 
