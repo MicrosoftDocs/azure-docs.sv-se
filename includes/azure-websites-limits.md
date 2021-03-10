@@ -3,18 +3,18 @@ author: rothja
 ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
-ms.author: jroth
-ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.author: msangapu
+ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024397"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532615"
 ---
 | Resurs | Kostnadsfri | Delad | Basic | Standard | Premium (v1-v3) | Isolerad </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Webb-, mobil-eller API-appar](https://azure.microsoft.com/services/app-service/) per [Azure App Service plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Obegränsat<sup>2</sup> |Obegränsat<sup>2</sup> |Obegränsat<sup>2</sup> |Obegränsat<sup>2</sup>|
-| [App Service plan](../articles/app-service/overview-hosting-plans.md) |10 per region |10 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp|
+| [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per region |10 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp|
 | Beräknings instans typ |Delad |Delad |Dedikerad<sup>3</sup> |Dedikerad<sup>3</sup> |Dedikerad<sup>3</sup></p> |Dedikerad<sup>3</sup>|
 | [Skala ut](../articles/app-service/manage-scale-up.md) (maximalt antal instanser) |1 delad |1 delad |3 dedikerad<sup>3</sup> |10 dedikerat<sup>3</sup> | 20 dedikerat för v1 och v2; 30 dedikerat för v3. <sup>3</sup>|100 dedikerat<sup>4</sup>|
 | Lagring<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Skicka en support förfrågan för mer än 250 GB. |1 TB<sup>5</sup> <br/><br/> Den tillgängliga lagrings kvoten är 999 GB. |
@@ -24,7 +24,7 @@ ms.locfileid: "98024397"
 | Bandbredd |165 MB |Obegränsad, [data överförings taxa](https://azure.microsoft.com/pricing/details/data-transfers/) gäller |Obegränsad, [data överförings taxa](https://azure.microsoft.com/pricing/details/data-transfers/) gäller |Obegränsad, [data överförings taxa](https://azure.microsoft.com/pricing/details/data-transfers/) gäller |Obegränsad, [data överförings taxa](https://azure.microsoft.com/pricing/details/data-transfers/) gäller |Obegränsad, [data överförings taxa](https://azure.microsoft.com/pricing/details/data-transfers/) gäller |
 | Programmets arkitektur |32-bitars |32-bitars |32-bitars/64-bitars |32-bitars/64-bitars |32-bitars/64-bitars |32-bitars/64-bitars |
 | Web Sockets per instans<sup>7</sup> |5 |35 |350 |Obegränsat |Obegränsat |Obegränsat |
-| IP-anslutningar | 600 | 600 | Är beroende av instans storlek<sup>8</sup> | Är beroende av instans storlek<sup>8</sup> | Är beroende av instans storlek<sup>8</sup> | 16 000 |
+| Utgående IP-anslutningar per instans | 600 | 600 | Är beroende av instans storlek<sup>8</sup> | Är beroende av instans storlek<sup>8</sup> | Är beroende av instans storlek<sup>8</sup> | 16 000 |
 | Samtidiga [fel söknings anslutningar](../articles/app-service/troubleshoot-dotnet-visual-studio.md) per program |1 |1 |1 |5 |5 |5 |
 | App Service certifikat per prenumeration<sup>9</sup>| Stöds inte | Stöds inte |10 |10 |10 |10 |
 | Anpassade domäner per app</a> |0 (endast azurewebsites.net-underdomän)|500 |500 |500 |500 |500 |

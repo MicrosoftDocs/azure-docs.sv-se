@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 10c1680afd6cd6673efe3fe9d2397a0dc6a04859
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5343653dc87325fa0702c0864f0df1456a36e304
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739008"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532588"
 ---
 Beroende på klientens operativ system är procedurerna för fjärr anslutning till enheten olika.
 
@@ -60,11 +60,11 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
 
 På den Linux-klient som du ska använda för att ansluta:
 
-- [Installera den senaste PowerShell Core för Linux](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) från GitHub för att hämta SSH-funktionen för fjärr kommunikation. 
+- [Installera den senaste PowerShell Core för Linux](/powershell/scripting/install/installing-powershell-core-on-linux) från GitHub för att hämta SSH-funktionen för fjärr kommunikation. 
 - [Installera endast `gss-ntlmssp` paketet från NTLM-modulen](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). För Ubuntu-klienter använder du följande kommando:
     - `sudo apt-get install gss-ntlmssp`
 
-Mer information finns i PowerShell- [fjärrkommunikation via SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Mer information finns i PowerShell- [fjärrkommunikation via SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
 Följ de här stegen för att fjärrans luta från en NFS-klient.
 

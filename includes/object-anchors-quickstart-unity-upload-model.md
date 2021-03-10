@@ -4,16 +4,16 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 03/02/2021
 ms.author: crtreasu
-ms.openlocfilehash: 8b7ab183dfb7b6721beae7835acd75bc7a05e72c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d8dfc3d4b7a8447250481b98c1adadc865a29da1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044769"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532714"
 ---
 ### <a name="upload-your-model"></a>Ladda upp din modell
 
-Om du inte redan har en modell för objekt ankare följer du anvisningarna i [skapa en modell](/object-anchors/quickstarts/get-started-model-conversion.md) för att skapa en. Gå sedan tillbaka hit.
+Om du inte redan har en modell för objekt ankare följer du anvisningarna i [skapa en modell](/azure/object-anchors/quickstarts/get-started-model-conversion) för att skapa en. Gå sedan tillbaka hit.
 
 När din HoloLens är ansluten till Windows Device Portal följer du de här stegen för att ladda upp en modell för appen som ska användas:
 

@@ -2,15 +2,15 @@
 title: Distribuera mall – Azure Portal
 description: Lär dig hur du skapar din första Azure Resource Manager mall (ARM-mall) med hjälp av Azure Portal och hur du distribuerar den.
 author: mumian
-ms.date: 01/26/2021
+ms.date: 03/09/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 20b1bf47ae2fd63e91a11c8cccd1f03cf3464899
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98892516"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548173"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Snabb start: skapa och distribuera ARM-mallar med hjälp av Azure Portal
 
@@ -34,7 +34,7 @@ Många erfarna mallar för utvecklare använder den här metoden för att skapa 
     ![Välj Skapa en resurs från Azure Portal-menyn](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
 1. Skriv **lagrings konto** i sökrutan och tryck sedan på **[ENTER]**.
-1. Välj **Skapa**.
+1. Välj nedpilen bredvid **skapa** och välj sedan **lagrings konto**.
 
     ![Skapa ett Azure Storage-konto](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 
@@ -59,7 +59,7 @@ Många erfarna mallar för utvecklare använder den här metoden för att skapa 
 
     Huvudfönsterrutan visar mallen. Det är en JSON-fil med sex element på den översta nivån – `schema`, `contentVersion`, `parameters`, `variables`, `resources` och `output`. Mer information finns i [förstå strukturen och syntaxen för ARM-mallar](./template-syntax.md)
 
-    Det finns åtta definierade parametrar. En av dem heter **storageAccountName**. Den andra markerade delen på den föregående skärmbilden visar hur den här parametern ska anges i mallen. I nästa avsnitt kan du redigera mallen för att använda ett genererat namn för lagringskontot.
+    Det finns nio definierade parametrar. En av dem heter **storageAccountName**. Den andra markerade delen på den föregående skärmbilden visar hur den här parametern ska anges i mallen. I nästa avsnitt kan du redigera mallen för att använda ett genererat namn för lagringskontot.
 
     En Azure-resurs har definierats i mallen. Typen är `Microsoft.Storage/storageAccounts` . Ta en titt på hur resursen definieras och definitions strukturen.
 1. Välj **Ladda ned** överst på skärmen.
@@ -92,72 +92,76 @@ Azure kräver att varje Azure-tjänst har ett unikt namn. Distributionen kan mis
    - Ta bort **storageAccountName** -parametern som visas på föregående skärm bild.
    - Lägg till en variabel med namnet **storageAccountName** som visas på föregående skärm bild:
 
-       ```json
-       "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
-       ```
+      ```json
+      "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+      ```
 
-       Här används två mallfunktioner: `concat()` och `uniqueString()`.
+      Här används två mallfunktioner: `concat()` och `uniqueString()`.
    - Uppdatera namnelementet för resursen **Microsoft.Storage/storageAccounts** för att använda den nyligen definierade variabeln i stället för parametern:
 
-       ```json
-       "name": "[variables('storageAccountName')]",
-       ```
+      ```json
+      "name": "[variables('storageAccountName')]",
+      ```
 
-     Den slutliga mallen bör se ut så här:
+      Den slutliga mallen bör se ut så här:
 
-     ```json
-     {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-         "location": {
-           "type": "string"
-         },
-         "accountType": {
-           "type": "string"
-         },
-         "kind": {
-           "type": "string"
-         },
-         "accessTier": {
-           "type": "string"
-         },
-         "minimumTlsVersion": {
-           "type": "string"
-         },
-         "supportsHttpsTrafficOnly": {
-          "type": "bool"
-         },
-         "allowBlobPublicAccess": {
-           "type": "bool"
-         }
-       },
-       "variables": {
-         "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
-       },
-       "resources": [
-         {
-           "name": "[variables('storageAccountName')]",
-           "type": "Microsoft.Storage/storageAccounts",
-           "apiVersion": "2019-06-01",
-           "location": "[parameters('location')]",
-           "properties": {
-             "accessTier": "[parameters('accessTier')]",
-             "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
-             "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
-             "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]"
-           },
-           "dependsOn": [],
-           "sku": {
-             "name": "[parameters('accountType')]"
-           },
-           "kind": "[parameters('kind')]",
-           "tags": {}
-         }
-       ],
-       "outputs": {}
-     }
-     ```
+      ```json
+      {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "location": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "accessTier": {
+            "type": "string"
+          },
+          "minimumTlsVersion": {
+            "type": "string"
+          },
+          "supportsHttpsTrafficOnly": {
+            "type": "bool"
+          },
+          "allowBlobPublicAccess": {
+            "type": "bool"
+          },
+          "allowSharedKeyAccess": {
+            "type": "bool"
+          }
+        },
+        "variables": {
+          "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+        },
+        "resources": [
+          {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "[parameters('location')]",
+            "properties": {
+              "accessTier": "[parameters('accessTier')]",
+              "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
+              "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+              "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]",
+              "allowSharedKeyAccess": "[parameters('allowSharedKeyAccess')]"
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "[parameters('accountType')]"
+            },
+            "kind": "[parameters('kind')]",
+            "tags": {}
+          }
+        ],
+        "outputs": {}
+      }
+      ```
 
 1. Välj **Spara**.
 1. Ange följande värden:
@@ -173,6 +177,7 @@ Azure kräver att varje Azure-tjänst har ett unikt namn. Distributionen kan mis
     |**Lägsta TLS-version**|Ange **TLS1_0**. |
     |**Endast stöd för HTTPS-trafik**| Välj **true** för den här snabbstarten. |
     |**Tillåt offentlig BLOB-åtkomst**| Välj **false** (falskt) för den här snabbstarten. |
+    |**Tillåt åtkomst till delad nyckel**| Välj **true** för den här snabbstarten. |
 
 1. Välj **Granska + skapa**.
 1. Välj **Skapa**.
