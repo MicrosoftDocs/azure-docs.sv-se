@@ -80,7 +80,7 @@
     - name: 'Graph-API:er'
       items:
         - name: Enhetsidentitet-API
-          href: /graph/api/resources/device?view=graph-rest-1.0
+          href: /graph/api/resources/device
 - name: Resurser
   items:
     - name: Azures feedbackforum

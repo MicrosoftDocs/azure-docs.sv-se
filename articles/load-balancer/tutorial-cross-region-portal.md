@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712523"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561406"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Självstudie: skapa en Azure Load Balancer över flera regioner med hjälp av Azure Portal
 
@@ -56,7 +56,7 @@ I det här avsnittet ska du skapa en belastningsutjämnare för flera regioner o
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och ange **CreateCRLBTutorial-RG** i text rutan.|
-    | Namn                   | Ange **myLoadBalancer – CR**                                   |
+    | Name                   | Ange **myLoadBalancer – CR**                                   |
     | Region         | Välj **(US) västra USA**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
     | SKU           | Låt standardvärdet vara **standard.** |
@@ -200,9 +200,6 @@ I den här kursen får du:
 * En regel för belastnings utjämning har skapats.
 * Belastnings utjämning har testats.
 
-Mer information om belastningsutjämnare för flera regioner finns i [belastnings utjämning i flera regioner (för hands version)](cross-region-overview.md).
-
-
-Gå vidare till nästa artikel om du vill lära dig att:
+Mer information om belastnings utjämning över flera regioner finns i:
 > [!div class="nextstepaction"]
-> [Belastningsutjämna virtuella datorer mellan tillgänglighetszoner](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Belastningsutjämnare för flera regioner (för hands version)](cross-region-overview.md)

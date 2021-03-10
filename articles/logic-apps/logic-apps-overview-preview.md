@@ -1,28 +1,28 @@
 ---
 title: Översikt över förhandsversion av Azure Logic Apps
-description: Azure Logic Apps Preview är en moln lösning för att skapa automatiserade tillstånds lösa och tillstånds lösa arbets flöden som integrerar appar, data, tjänster och system med minimal kod för scenarier på företags nivå.
+description: Azure Logic Apps Preview är en moln lösning för att skapa automatiserad, enskild klient, tillstånds känslig och tillstånds lösa arbets flöden som integrerar appar, data, tjänster och system med minimal kod för scenarier på företags nivå.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/08/2021
+ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442748"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561865"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
 
 > [!IMPORTANT]
 > Den här funktionen är tillgänglig som en offentlig förhandsversion utan servicenivåavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Med Azure Logic Apps för hands version kan du skapa automatiserings-och integrerings lösningar för appar, data, moln tjänster och system genom att skapa och köra Logi Kap par som innehåller [ *tillstånds* känsliga och *tillstånds lösa* arbets flöden](#stateful-stateless) med hjälp av resurs typen ny **Logic app (för hands version)** . Med den här nya typen av Logic-appar kan du skapa flera arbets flöden som drivs av omdesignad Azure Logic Apps Preview-körning, som ger portabilitet, bättre prestanda och flexibilitet för att distribuera och köra i olika värd miljöer, inte bara Azure, utan även Docker-behållare.
+Med Azure Logic Apps för hands version kan du skapa automatiserings-och integrerings lösningar mellan appar, data, moln tjänster och system genom att skapa och köra Logic Apps med en enda klient med den nya resurs typen **Logic app (för hands version)** . Med den här typen av Logic-appar för en enda klient kan du skapa flera [ *tillstånds* lösa och *tillstånds lösa* arbets flöden](#stateful-stateless) som drivs av den omdesignade Azure Logic Apps Preview runtime, som ger portabilitet, bättre prestanda och flexibilitet för att distribuera och köra i olika värd miljöer, inklusive inte bara Azure, utan även Docker-behållare.
 
-Hur är detta möjligt? Den omdesignade körningen använder [Azure Functions utöknings modell](../azure-functions/functions-bindings-register.md) och är värdbaserad som ett tillägg på Azure Functions Runtime. Den här arkitekturen innebär att du kan köra den nya Logic app-typen var som helst som Azure Functions körs. Du kan vara värd för den omdesignade körningen på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som krävs av dina arbets flöden. Mer information finns i [Introduktion till Azure Functions](../azure-functions/functions-overview.md) och [Azure Functions utlösare och bindningar](../azure-functions/functions-triggers-bindings.md).
+Hur är detta möjligt? Den omdesignade körningen använder [Azure Functions utöknings modell](../azure-functions/functions-bindings-register.md) och är värdbaserad som ett tillägg på Azure Functions Runtime. Den här arkitekturen innebär att du kan köra en Logic app-typ med en enda klient som Azure Functions körs. Du kan vara värd för den omdesignade körningen på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som krävs av dina arbets flöden. Mer information finns i [Introduktion till Azure Functions](../azure-functions/functions-overview.md) och [Azure Functions utlösare och bindningar](../azure-functions/functions-triggers-bindings.md).
 
-Du kan skapa en **Logic app-resurs (för hands version)** antingen genom [att starta i Azure Portal](create-stateful-stateless-workflows-azure-portal.md) eller genom att [skapa ett projekt i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)](create-stateful-stateless-workflows-visual-studio-code.md). I Visual Studio Code kan du också skapa *och lokalt köra* dina arbets flöden i din utvecklings miljö. Oavsett om du använder portalen eller Visual Studio Code, kan du distribuera och köra den nya typen av Logic-appar i samma typer av värd miljöer.
+Du kan skapa en **Logic app-resurs (för hands version)** antingen genom [att starta i Azure Portal](create-stateful-stateless-workflows-azure-portal.md) eller genom att [skapa ett projekt i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)](create-stateful-stateless-workflows-visual-studio-code.md). I Visual Studio Code kan du också skapa *och lokalt köra* dina arbets flöden i din utvecklings miljö. Oavsett om du använder portalen eller Visual Studio Code, kan du distribuera och köra Logic app-typen med en enda klient i samma typer av värd miljöer.
 
 Den här översikten täcker följande områden:
 
@@ -48,7 +48,7 @@ Mer information finns i följande avsnitt:
 
 ## <a name="how-does-azure-logic-apps-preview-differ"></a>Hur skiljer sig Azure Logic Apps för hands versionen?
 
-Azure Logic Apps för hands versions körning använder [Azure Functions](../azure-functions/functions-overview.md) utöknings barhet och är värdbaserad som ett tillägg i Azure Functions Runtime. Den här arkitekturen innebär att du kan köra den nya Logic app-typen var som helst som Azure Functions körs. Du kan vara värd för Azure Logic Apps för hands versions körning på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som arbets flödet behöver. Mer information om Azure Functions utöknings barhet finns i [WebJobs SDK: skapa anpassade bindningar för indata och utdata](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
+Azure Logic Apps för hands versions körning använder [Azure Functions](../azure-functions/functions-overview.md) utöknings barhet och är värdbaserad som ett tillägg i Azure Functions Runtime. Den här arkitekturen innebär att du kan köra en Logic app-typ med en enda klient som Azure Functions körs. Du kan vara värd för Azure Logic Apps för hands versions körning på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som arbets flödet behöver. Mer information om Azure Functions utöknings barhet finns i [WebJobs SDK: skapa anpassade bindningar för indata och utdata](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
 Med den här nya metoden är Azure Logic Apps Preview-körningsmiljön och dina arbets flöden båda delarna i din app som du kan paketera tillsammans. Med den här funktionen kan du distribuera och köra dina arbets flöden genom att helt enkelt kopiera artefakter till värd miljön och starta din app. Den här metoden ger också en mer standardiserad upplevelse för att skapa distributions pipeliner runt arbets flödes projekt för att köra nödvändiga tester och verifieringar innan du distribuerar ändringar i produktions miljöer. Mer information finns i [Azure Logic Apps som körs i djupet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
 
@@ -56,16 +56,18 @@ I följande tabell sammanfattas skillnaderna mellan hur arbets flöden delar res
 
 | Miljö | Resurs delning och förbrukning |
 |-------------|----------------------------------|
-| Azure Logic Apps (flera innehavare) | Arbets flöden *från kunder i flera klienter* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
-| Azure Logic Apps (för hands version) | Arbets flöden *i samma Logic-app* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
+| Azure Logic Apps (flera innehavare) | Arbets flöden *från kunder över flera klienter* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
+| Azure Logic Apps (för hands version, en-klient) | Arbets flöden *i samma Logic-app och en enda klient* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
 | Integrerings tjänst miljö (inte tillgänglig i för hands version) | Arbets flöden i *samma miljö* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
 ||||
 
-Under tiden kan du fortfarande skapa den ursprungliga typen av Logic-appar i Azure Portal och i Visual Studio Code med hjälp av det ursprungliga Azure Logic Apps tillägget. Även om utvecklings upplevelsen skiljer sig mellan de ursprungliga och nya Logic Apps-typerna kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade Logi Kap par i din Azure-prenumeration, men apparna organiseras i sina egna kategorier och avsnitt.
+Under tiden kan du fortfarande skapa Logic app-typen multi-apps i Azure Portal och i Visual Studio Code med hjälp av Azure Logic Apps-tillägget för flera innehavare. Även om utvecklings upplevelsen skiljer sig mellan olika typer av logiska appar för flera innehavare och en och samma klient kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade Logic Apps i din Azure-prenumeration, men apparna organiseras i sina egna kategorier och avsnitt.
 
 <a name="stateful-stateless"></a>
 
 ## <a name="stateful-and-stateless-workflows"></a>Tillstånds känsliga och tillstånds lösa arbets flöden
+
+Med den här typen av Logic-appar kan du skapa de här arbets flödes typerna i samma Logic-app:
 
 * *Tillståndskänsliga*
 
@@ -149,9 +151,9 @@ Azure Logic Apps för hands versionen innehåller många aktuella och ytterligar
 
   * [Azure Logic Apps som kör nätverks möjligheter med Azure Logic Apps för hands version](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-* Återskapa åtkomst nycklar för hanterade anslutningar som används av enskilda arbets flöden i en **Logic app-resurs (för hands version)** . För den här uppgiften [följer du samma steg för **Logic Apps** resursen, men på den enskilda arbets flödes nivån](logic-apps-securing-a-logic-app.md#regenerate-access-keys), inte på resurs nivån för Logic app.
+* Återskapa åtkomst nycklar för hanterade anslutningar som används av enskilda arbets flöden i en resurs för **Logic app (för hands version)** med en klient. För den här uppgiften [följer du samma steg för **Logic Apps** resursen för flera innehavare, men på den enskilda arbets flödes nivån](logic-apps-securing-a-logic-app.md#regenerate-access-keys), inte på resurs nivån för Logic app.
 
-* Lägg till parallella grenar i den nya designern genom att följa samma steg som för hands designern.
+* Lägg till parallella grenar i designern för en enda innehavare genom att följa samma steg som för flera innehavare.
 
 Mer information finns i avsnittet om [ändrade, begränsade, otillgängliga och ej stödda](#limited-unavailable-unsupported) på sidan med [kända problem med Logic Apps offentliga för hands versioner i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
@@ -159,14 +161,14 @@ Mer information finns i avsnittet om [ändrade, begränsade, otillgängliga och 
 
 ## <a name="pricing-model"></a>Prismodell
 
-När du skapar den nya typen av Logic-app i Azure Portal eller distribuerar från Visual Studio Code, måste du välja en värd plan, antingen [App Service eller Premium](../azure-functions/functions-scale.md), för att din Logi Kap par ska använda. Den här planen avgör vilken pris modell som används för att köra din Logic app. Om du väljer App Service plan måste du också välja en [pris nivå](../app-service/overview-hosting-plans.md).
+När du skapar en Logic app-typ med en enda klient i Azure Portal eller distribuerar från Visual Studio Code, måste du välja en värd plan, antingen [App Service eller Premium](../azure-functions/functions-scale.md), för att din Logi Kap par ska använda. Den här planen avgör vilken pris modell som används för att köra din Logic app. Om du väljer App Service plan måste du också välja en [pris nivå](../app-service/overview-hosting-plans.md).
 
 *Tillstånds känsliga* arbets flöden använder [extern lagring](../azure-functions/storage-considerations.md#storage-account-requirements), så [Azure Storage prissättningen](https://azure.microsoft.com/pricing/details/storage/) gäller för lagrings transaktioner som Azure Logic Apps för hands versions körning utför. Köer används till exempel för schemaläggning, medan tabeller och blobbar används för att lagra arbets flödes tillstånd.
 
 > [!NOTE]
 > Under den allmänt tillgängliga för hands versionen debiteras inte *ytterligare avgifter utöver* den valda planen när du kör Logic apps på App Service.
 
-Läs följande avsnitt om du vill ha mer information om de pris modeller som gäller för den här nya resurs typen:
+Läs följande avsnitt om du vill ha mer information om de pris modeller som gäller för resurs typen enskild klient:
 
 * [Skala och var värd i Azure Functions](../azure-functions/functions-scale.md)
 * [Skala upp en app i Azure App Service](../app-service/manage-scale-up.md)
@@ -202,9 +204,9 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
       I Azure Portal kan du välja en funktion för HTTP-utlösare där du har åtkomst genom att skapa en anslutning via användar upplevelsen. Om du inspekterar funktions åtgärdens JSON-definition i kodvyn eller **workflow.js** filen, refererar åtgärden till funktionen med hjälp av en `connectionName` referens. Den här versionen sammanfattar funktionens information som en anslutning, som du hittar i projektets **connections.jspå** fil, som är tillgänglig när du har skapat en anslutning.
 
       > [!NOTE]
-      > I för hands versionen stöder funktions åtgärden endast autentisering med frågesträng. Azure Logic Apps för hands version hämtar standard nyckeln från funktionen när du gör anslutningen, lagrar nyckeln i appens inställningar och använder nyckeln för autentisering när funktionen anropas.
+      > I den enda klient versionen stöder funktions åtgärden endast autentisering med frågesträng. Azure Logic Apps för hands version hämtar standard nyckeln från funktionen när du gör anslutningen, lagrar nyckeln i appens inställningar och använder nyckeln för autentisering när funktionen anropas.
       >
-      > Precis som med den ursprungliga versionen, om du förnyar den här nyckeln, till exempel genom Azure Functions upplevelsen i portalen, fungerar inte längre funktions åtgärden på grund av den ogiltiga nyckeln. För att åtgärda det här problemet måste du återskapa anslutningen till den funktion som du vill anropa eller uppdatera appens inställningar med den nya nyckeln.
+      > Precis som med flera klient versioner, om du förnyar den här nyckeln, till exempel genom Azure Functions upplevelsen i portalen, fungerar inte längre funktions åtgärden på grund av den ogiltiga nyckeln. För att åtgärda det här problemet måste du återskapa anslutningen till den funktion som du vill anropa eller uppdatera appens inställningar med den nya nyckeln.
 
     * Den inbyggda åtgärden, [Infogad kod för att köra JavaScript-kod](logic-apps-add-run-inline-code.md) , är nu **Inlined Code Operations-Run-line Java Script**.
 
@@ -222,7 +224,7 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
 
 * [Anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) stöds för närvarande inte för för hands version.
 
-* **Tillgänglighet för värd plan**: om du skapar en ny resurs typ för **Logic app (förhands granskning)** i Azure Portal eller distribuerar från Visual Studio Code, kan du bara använda Premium-eller App Service hosting-planen i Azure. Förbruknings värd planer är inte tillgängliga och stöds inte för distribution av den här resurs typen. Du kan distribuera från Visual Studio Code till en Docker-behållare, men inte till en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+* **Tillgänglighet för värd plan**: om du skapar resurs typen Single-Tenant **Logic app (för hands version)** i Azure Portal eller distribuerar från Visual Studio Code, kan du bara använda Premium-eller App Service hosting-planen i Azure. Förbruknings värd planer är inte tillgängliga och stöds inte för distribution av den här resurs typen. Du kan distribuera från Visual Studio Code till en Docker-behållare, men inte till en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 * **Bryt punkts fel sökning i Visual Studio Code**: även om du kan lägga till och använda Bryt punkter i **workflow.jsi** filen för ett arbets flöde, stöds Bryt punkter endast för åtgärder för tillfället, inte utlösare. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
@@ -233,6 +235,17 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
    * Om du vill visa körnings historiken öppnar du arbets flödet i din Logic app. Välj **övervaka** under **utvecklare** på arbets flödes menyn.
 
    * Om du vill granska utlösarens historik öppnar du arbets flödet i din Logic app. På arbets flödes menyn väljer du **Utlös historia** under **utvecklare**.
+
+<a name="firewall-permissions"></a>
+
+## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Tillåt trafik i strikta scenarier för nätverk och brand väggar
+
+Om din miljö har strikta nätverks krav eller brand väggar som begränsar trafiken, måste du tillåta åtkomst för alla utlösare eller åtgärds anslutningar i dina Logic app-arbetsflöden.
+
+Om du vill hitta de fullständigt kvalificerade domän namnen (FQDN) för de här anslutningarna granskar du motsvarande avsnitt i följande avsnitt:
+
+* [Brand Väggs behörigheter för en enskild klients Logic Apps – Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
+* [Brand Väggs behörigheter för en enda klient organisations Logic Apps – Azure Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
 
 <a name="limits"></a>
 

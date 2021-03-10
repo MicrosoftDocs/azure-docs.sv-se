@@ -1,19 +1,19 @@
 ---
-title: Skapa en privat slut punkt i en privat Azure-länk
+title: Snabb start – skapa en privat slut punkt med en ARM-mall
 description: I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) för att skapa en privat slut punkt.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705817"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562953"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Snabb start: skapa en privat slut punkt med en ARM-mall
 
@@ -87,7 +87,7 @@ Anslut till VM- _myVm {UniqueID}_ från Internet på följande sätt:
    b. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
 
       > [!NOTE]
-      > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto**för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
+      > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto** för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 
 5. Välj **OK**.
 
@@ -113,15 +113,15 @@ Så här ansluter du till SQL Database-servern från den virtuella datorn med hj
     ```
 
 3.  Installera SQL Server Management Studio.
-4.  I **Anslut till Server**anger eller väljer du den här informationen:
+4.  I **Anslut till Server** anger eller väljer du den här informationen:
     - **Server typ**: Välj **databas motor**.
     - **Server namn**: Välj **SQLServer {UniqueID}. Database. Windows. net**.
     - **Användar namn**: Ange ett användar namn som angavs vid skapandet.
     - **Lösen ord**: Ange ett lösen ord som anges när du skapar.
-    - **Kom ihåg lösen ord**: Välj **Ja**.
+    - **Kom ihåg lösen ord**: Välj  **Ja**.
 
 5.  Välj **Anslut**.
-6.  Gå till **databaser**på menyn till vänster.
+6.  Gå till **databaser** på menyn till vänster.
 7.  Du kan också skapa eller fråga efter information från _exempel-DB_.
 8.  Stäng fjärr skrivbords anslutningen till _myVm {UniqueID}_.
 
@@ -137,4 +137,6 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om [Azures privata länk](private-link-overview.md).
+Mer information om de tjänster som stöder en privat slut punkt finns i:
+> [!div class="nextstepaction"]
+> [Tillgänglighet för privat länk](private-link-overview.md#availability)

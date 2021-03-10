@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917808"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565832"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server instans migrering till Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ På en hög nivå ser databasens migreringsprocessen ut så här:
 
 Kontrol lera först om SQL-hanterad instans är kompatibel med programmets databas krav. SQL-hanterad instans är utformad för att ge enkel växel och Shift-migrering för de flesta befintliga program som använder SQL Server. Du kan dock ibland behöva funktioner eller funktioner som ännu inte stöds och kostnaden för att implementera en lösning är för hög.
 
-Använd [Data Migration Assistant](/sql/dma/dma-overview) för att identifiera potentiella kompatibilitetsproblem som påverkar databas funktioner på Azure SQL Database. Om det finns rapporterade spärrnings problem kan du behöva överväga ett alternativt alternativ, till exempel [SQL Server på den virtuella Azure-datorn](https://azure.microsoft.com/services/virtual-machines/sql-server/). Här följer några exempel:
+Använd [Data Migration Assistant](/sql/dma/dma-overview) för att identifiera potentiella kompatibilitetsproblem som påverkar databas funktioner på Azure SQL Database. Om det finns rapporterade spärrnings problem kan du behöva överväga ett alternativt alternativ, till exempel [SQL Server på den virtuella Azure-datorn](https://azure.microsoft.com/services/virtual-machines/sql-server/). Här är några exempel:
 
 - Om du behöver direkt åtkomst till operativ systemet eller fil systemet, till exempel för att installera tredje part eller anpassade agenter på samma virtuella dator med SQL Server.
 - Om du har strikt beroende på funktioner som fortfarande inte stöds, till exempel FileStream/FileTable-, PolyBase-och kors instans transaktioner.
@@ -59,6 +59,26 @@ Observera att vissa av ändringarna kan påverka arbets Belastningens prestanda 
 - Nya funktioner som du använder, till exempel transparent databas kryptering (TDE) eller grupper för automatisk redundans kan påverka CPU-och i/o-användning.
 
 SQL-hanterad instans garanterar 99,99% tillgänglighet även i kritiska scenarier, så det går inte att inaktivera kostnader som orsakas av dessa funktioner. Mer information finns i [rotor saken som kan orsaka olika prestanda på SQL Server och Azure SQL-hanterad instans](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/).
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (Minnesoptimerade tabeller)
+
+SQL Server ger In-Memory OLTP-kapacitet som gör att du kan använda minnesoptimerade tabeller, minnesoptimerade tabell typer och internt kompilerade SQL-moduler för att köra arbets belastningar som har hög genom strömning och transaktions bearbetnings krav med låg latens. 
+
+> [!IMPORTANT]
+> In-Memory OLTP stöds endast på Affärskritisk nivå i Azure SQL-hanterad instans (och stöds inte i Generell användning-nivån).
+
+Om du har minnesoptimerade tabeller eller minnesoptimerade tabell typer i din lokala SQL Server och du vill migrera till en Azure SQL-hanterad instans, bör du antingen:
+
+- Välj Affärskritisk nivå för din mål Azure SQL-hanterade instans som stöder In-Memory OLTP eller
+- Om du vill migrera till Generell användning nivå i Azure SQL Managed instance tar du bort minnesoptimerade tabeller, minnesoptimerade tabell typer och internt kompilerade SQL-moduler som interagerar med minnesoptimerade objekt innan du migrerar dina databaser. Följande T-SQL-fråga kan användas för att identifiera alla objekt som måste tas bort innan migrering till Generell användning nivå:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Mer information om minnes intern teknik finns i [optimera prestanda med hjälp av minnes intern teknik i Azure SQL Database och Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
 
 ### <a name="create-a-performance-baseline"></a>Skapa en bas linje för prestanda
 

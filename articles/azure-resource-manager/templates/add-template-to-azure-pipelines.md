@@ -2,13 +2,13 @@
 title: CI/CD med Azure-pipeline och-mallar
 description: Beskriver hur du konfigurerar kontinuerlig integrering i Azure-pipeline med hjälp av Azure Resource Manager mallar. Det visar hur du använder ett PowerShell-skript eller kopierar filer till en mellanlagringsplats och distribuerar därifrån.
 ms.topic: conceptual
-ms.date: 02/05/2021
-ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.date: 03/09/2021
+ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594205"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561950"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrera ARM-mallar med Azure Pipelines
 
@@ -234,4 +234,5 @@ När du väljer **Spara** körs Bygg pipelinen automatiskt. Gå tillbaka till sa
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du använder ARM-mallar med GitHub-åtgärder finns i [distribuera Azure Resource Manager mallar med GitHub-åtgärder](deploy-github-actions.md).
+* Om du vill använda konsekvens åtgärden i en pipeline, se [testa arm-mallar med What-If i en pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
+* Information om hur du använder ARM-mallar med GitHub-åtgärder finns i [distribuera Azure Resource Manager mallar med GitHub-åtgärder](deploy-github-actions.md).

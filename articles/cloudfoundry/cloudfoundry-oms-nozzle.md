@@ -1,7 +1,7 @@
 ---
 title: Distribuera Azure Log Analytics munstycke för Cloud Foundry övervakning
 description: Steg för steg-anvisningar om hur du distribuerar Cloud Foundry loggregator munstycke för Azure Log Analytics. Använd munstycket för att övervaka Cloud Foundry systemets hälso-och prestanda mått.
-services: virtual-machines-linux
+services: virtual-machines
 author: ningk
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 9fafa9bd014a44fdd0098ef2364375c3f9672bea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 54001c47d03b686a8e7c1f59f1e53d405e3bc506
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571066"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557394"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Distribuera Azure Log Analytics munstycke för Cloud Foundry system övervakning
 
@@ -193,7 +193,7 @@ Du kan anpassa dessa vyer eller skapa nya vyer via **View Designer**.
 
 Du kan [skapa aviseringarna](../azure-monitor/alerts/alerts-overview.md)och anpassa frågorna och tröskelvärdena efter behov. Följande är rekommenderade aviseringar:
 
-| Sökfråga                                                                  | Generera avisering baserat på | Description                                                                       |
+| Sökfråga                                                                  | Generera avisering baserat på | Beskrivning                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Skriv = CF_ValueMetric_CL Origin_s = BBS Name_s = "domän. CF-Apps"                   | Antal resultat < 1   | **BBS. Domain.cf – appar** anger om domänen CF-Apps är uppdaterad. Det innebär att CF app-begäranden från moln styrenheten synkroniseras till BBS. LRPsDesired (Diego-önskad AIs) för körning. Inga mottagna data betyder CF-Apps-domänen är inte uppdaterad i den angivna tids perioden. |
 | Skriv = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d>1            | Antal resultat > 0   | För Diego-celler betyder 0 att det är felfritt och 1 betyder fel. Ange aviseringen om flera felaktiga Diego-celler har identifierats i det angivna tidsfönstret. |

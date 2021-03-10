@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078331c35c76a3cda97398b1a487933a3f0f5ab8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856032"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559315"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Självstudie: distribuera din ASP.NET Core-app till Azure Service Fabric med Azure DevOps starter
 
@@ -45,7 +45,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -78,7 +78,7 @@ DevOps starter konfigurerar automatiskt en CI/CD-pipeline i Azure-pipeliner. Du 
 
 1. Gå till DevOps starter-instrumentpanelen.
 
-1. Välj **Bygg pipelines**överst på DevOps starter-instrumentpanelen. En webbläsarflik visar bygg-pipelinen för det nya projektet.
+1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen. En webbläsarflik visar bygg-pipelinen för det nya projektet.
 
 1. Peka på fältet **status** och välj ellipsen (...). En meny visar flera alternativ, till exempel att köa en ny version, pausa en version och redigera build-pipeline.
 
@@ -121,7 +121,7 @@ DevOps starter skapar och konfigurerar automatiskt de nödvändiga stegen för a
 
 Nu är du redo att samarbeta med ett team på din app med en CI/CD-process som automatiskt distribuerar ditt senaste arbete till din webbplats. Varje ändring av Git-lagringsplatsen påbörjar en version, och en version distribuerar dina ändringar till Azure. Följ proceduren i det här avsnittet eller använd en annan metod för att checka in ändringarna till lagringsplatsen. Du kan till exempel klona Git-lagringsplatsen i ditt favoritverktyg eller IDE och sedan push-överföra ändringarna till den här lagringsplatsen.
 
-1. I menyn Azure-DevOps väljer du **koda**  >  **filer**och går sedan till din lagrings platsen.
+1. I menyn Azure-DevOps väljer du **koda**  >  **filer** och går sedan till din lagrings platsen.
 
 1. Gå till katalogen *Views\Home* och välj ellipsen (...) bredvid filen *Index.cshtml*. Välj sedan **Redigera**.
 
@@ -158,4 +158,4 @@ Du kan även ändra Azure CI/CD-pipeline för att tillgodose ditt teams behov. D
 Se följande om du vill veta mer om Service Fabric och mikrotjänster:
 
 > [!div class="nextstepaction"]
-> [Använda mikrotjänster för att bygga program](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Använda mikrotjänster för att bygga program](/azure/devops/pipelines/release/define-multistage-release-process)

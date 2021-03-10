@@ -10,19 +10,19 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209635"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548469"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Tabeller för delade metadata i Azure Synapse Analytics
 
 
 Med Azure Synapse Analytics kan olika beräknings motorer för arbets ytan dela databaser och Parquet tabeller mellan Apache Spark pooler och SQL-pool utan server.
 
-När en databas har skapats av ett Spark-jobb kan du skapa tabeller i den med Spark som använder Parquet som lagrings format. Tabellerna blir omedelbart tillgängliga för frågor från någon av Azure Synapse-arbetsytans Spark-pooler. De kan också användas från alla Spark-jobb som omfattas av behörigheter.
+När en databas har skapats av ett Spark-jobb kan du skapa tabeller i den med Spark som använder Parquet som lagrings format. Tabell namn kommer att konverteras till gemener och måste frågas med gemener/versaler. Tabellerna blir omedelbart tillgängliga för frågor från någon av Azure Synapse-arbetsytans Spark-pooler. De kan också användas från alla Spark-jobb som omfattas av behörigheter.
 
 Spark created-, Managed-och external-tabellerna görs också tillgängliga som externa tabeller med samma namn i motsvarande synkroniserade databas i SQL-poolen utan server. Att [exponera en spark-tabell i SQL](#expose-a-spark-table-in-sql) innehåller mer information om Table-synkroniseringen.
 
@@ -101,17 +101,17 @@ I det här scenariot har du en spark-databas med namnet `mytestdb` . Se [skapa o
 Skapa en hanterad Spark-tabell med SparkSQL genom att köra följande kommando:
 
 ```sql
-    CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
+    CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet
 ```
 
-Det här kommandot skapar tabellen `myParquetTable` i-databasen `mytestdb` . Efter en kort fördröjning kan du se tabellen i din server lös SQL-pool. Kör till exempel följande-sats från din server lös SQL-pool.
+Det här kommandot skapar tabellen `myparquettable` i-databasen `mytestdb` . Tabell namn kommer att konverteras till gemener. Efter en kort fördröjning kan du se tabellen i din server lös SQL-pool. Kör till exempel följande-sats från din server lös SQL-pool.
 
 ```sql
     USE mytestdb;
     SELECT * FROM sys.tables;
 ```
 
-Kontrol lera att `myParquetTable` ingår i resultaten.
+Kontrol lera att `myparquettable` ingår i resultaten.
 
 >[!NOTE]
 >En tabell som inte använder Parquet som lagrings format kommer inte att synkroniseras.
@@ -136,13 +136,13 @@ var schema = new StructType
     );
 
 var df = spark.CreateDataFrame(data, schema);
-df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
+df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myparquettable");
 ```
 
 Nu kan du läsa data från SQL-poolen utan server på följande sätt:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myparquettable WHERE name = 'Alice';
 ```
 
 Du bör hämta följande rad som resultat:
@@ -160,26 +160,26 @@ I det här exemplet skapar du en extern Spark-tabell över de Parquet-datafiler 
 Till exempel när SparkSQL körs:
 
 ```sql
-CREATE TABLE mytestdb.myExternalParquetTable
+CREATE TABLE mytestdb.myexternalparquettable
     USING Parquet
     LOCATION "abfss://<fs>@arcadialake.dfs.core.windows.net/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/"
 ```
 
 Ersätt plats hållaren `<fs>` med fil system namnet som är standard fil systemet för arbets ytan och plats hållaren `<synapse_ws>` med namnet på Synapse-arbetsytan som du använder för att köra det här exemplet.
 
-I föregående exempel skapas tabellen `myExtneralParquetTable` i-databasen `mytestdb` . Efter en kort fördröjning kan du se tabellen i din server lös SQL-pool. Kör till exempel följande-sats från din server lös SQL-pool.
+I föregående exempel skapas tabellen `myextneralparquettable` i-databasen `mytestdb` . Efter en kort fördröjning kan du se tabellen i din server lös SQL-pool. Kör till exempel följande-sats från din server lös SQL-pool.
 
 ```sql
 USE mytestdb;
 SELECT * FROM sys.tables;
 ```
 
-Kontrol lera att `myExternalParquetTable` ingår i resultaten.
+Kontrol lera att `myexternalparquettable` ingår i resultaten.
 
 Nu kan du läsa data från SQL-poolen utan server på följande sätt:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myexternalparquettable WHERE name = 'Alice';
 ```
 
 Du bör hämta följande rad som resultat:

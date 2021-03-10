@@ -1,7 +1,7 @@
 ---
 title: Önskad tillstånds konfiguration för Azure-översikt
 description: Lär dig hur du använder den Microsoft Azure tilläggs hanteraren för PowerShell (Desired State Configuration). Artikeln innehåller krav, arkitektur och cmdlets.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: mgoedtel
 manager: evansma
@@ -9,20 +9,21 @@ editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dcdc325633aff5ab828cb1c82f4bb2d8becee967
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955862"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560046"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Introduktion till tilläggshanteraren för Azure Desired State Configuration
 
@@ -38,7 +39,7 @@ Ingen kontinuerlig rapportering är tillgänglig, förutom lokalt på den virtue
 
 Den här artikeln innehåller information om båda scenarierna: använda DSC-tillägget för automatisering onboarding och använda DSC-tillägget som ett verktyg för att tilldela konfigurationer till virtuella datorer med hjälp av Azure SDK.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - **Lokal dator**: om du vill interagera med tillägget för Azure VM måste du antingen använda Azure Portal eller Azure PowerShell SDK.
 - **Gästa Gent**: den virtuella Azure-dator som konfigureras av DSC-konfigurationen måste vara ett operativ system som stöder Windows Management Framework (WMF) 4,0 eller senare. En fullständig lista över OS-versioner som stöds finns i [versions historik för DSC-tillägg](../../automation/automation-dsc-extension-history.md).
@@ -198,7 +199,7 @@ Portalen samlar in följande ingångar:
 
 - **Version**: anger vilken version av DSC-tillägget som ska installeras. Information om versioner finns i [versions historik för DSC-tillägg](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
-- **Del version för automatisk uppgradering**: det här fältet mappar till **AutoUpdate** -växeln i-cmdletarna och aktiverar tillägget till att uppdateras automatiskt till den senaste versionen under installationen. **Ja** instruerar tilläggs hanteraren att använda den senaste tillgängliga versionen och **ingen** kommer att tvinga den angivna **versionen** att installeras. Att välja **Yes** nej eller **Nej** är inte detsamma som att välja **Nej**.
+- **Del version för automatisk uppgradering**: det här fältet mappar till **AutoUpdate** -växeln i-cmdletarna och aktiverar tillägget till att uppdateras automatiskt till den senaste versionen under installationen. **Ja** instruerar tilläggs hanteraren att använda den senaste tillgängliga versionen och **ingen** kommer att tvinga den angivna **versionen** att installeras. Att välja  nej eller **Nej** är inte detsamma som att välja **Nej**.
 
 ## <a name="logs"></a>Loggar
 

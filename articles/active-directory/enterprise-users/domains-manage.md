@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b8867a137e38e7400da877f4c239e517cbebe05
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 47c991457925664c82baed1a47d89f77a323ff45
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859988"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561542"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Hantera anpassade domän namn i Azure Active Directory
 
@@ -111,7 +111,7 @@ Om du upptäcker att något av villkoren inte har uppfyllts kan du rensa referen
 De flesta hanterings aktiviteter för domän namn i Azure Active Directory kan också slutföras med hjälp av Microsoft PowerShell eller program mässigt med hjälp av Microsoft Graph API.
 
 * [Använda PowerShell för att hantera domän namn i Azure AD](/powershell/module/azuread/#domains&preserve-view=true)
-* [Domän resurs typ](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
+* [Domän resurs typ](/graph/api/resources/domain)
 
 ## <a name="next-steps"></a>Nästa steg
 

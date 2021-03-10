@@ -1,7 +1,7 @@
 ---
 title: 'Snabb start: skapa en profil och en slut punkt för Resource Manager-mall'
 titleSuffix: Azure Content Delivery Network
-description: Lär dig hur du skapar en Azure Content Delivery Network-profil och en slut punkt till en Resource Manager-mall
+description: I den här snabb starten lär du dig att skapa en Azure Content Delivery Network-profil och en slut punkt för en Resource Manager-mall
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695720"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560471"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Snabb start: skapa en mall för Azure CDN profil och slut punkts ARM
 
@@ -107,13 +107,13 @@ När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/az
 
 ### <a name="powershell"></a>PowerShell
 
-När de inte längre behövs kan du använda kommandot [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) för att ta bort resurs gruppen och alla resurser som ingår i.
+När de inte längre behövs kan du använda kommandot [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resurs gruppen och alla resurser som ingår i.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
 ```
 
-### <a name="portal"></a>Portalen
+### <a name="portal"></a>Portal
 
 Ta bort resurs gruppen, CDN-profilen och alla relaterade resurser när de inte längre behövs. Välj den resurs grupps **myResourceGroupCDN** som innehåller CDN-profilen och slut punkten och välj sedan **ta bort**.
 
@@ -126,5 +126,5 @@ I den här snabb starten skapade du en:
 
 Om du vill veta mer om Azure CDN och Azure Resource Manager fortsätter du till artiklarna nedan.
 
-* Läs en [Översikt över Azure CDN](cdn-overview.md)
-* Läs mer om [Azure Resource Manager](../azure-resource-manager/management/overview.md)
+> [!div class="nextstepaction"]
+> [Självstudie: Använd CDN för att hantera statiskt innehåll från en webbapp](cdn-add-to-web-app.md)

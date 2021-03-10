@@ -2,22 +2,22 @@
 title: Självstudie – konfigurera Kanarie-distributioner för Azure Virtuella Linux-datorer
 description: I den här självstudien får du lära dig hur du konfigurerar en pipeline för kontinuerlig distribution (CD). Den här pipelinen uppdaterar en grupp med virtuella Azure Linux-datorer med hjälp av strategin för Kanarie-distribution.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963490"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552515"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Självstudie – konfigurera strategin för Kanarie-distribution för Azure Virtuella Linux-datorer
 
@@ -48,7 +48,7 @@ Med alternativet för kontinuerlig leverans kan du konfigurera Kanarie-distribut
 
 1. En distributions grupp är en logisk uppsättning distributions mål datorer som representerar de fysiska miljöerna. Utveckling, testning, UAT och produktion är exempel. Du kan skapa en ny distributions grupp eller välja en befintlig.
 1. Välj den build-pipeline som publicerar paketet som ska distribueras till den virtuella datorn. Det publicerade paketet måste ha ett distributions skript med namnet deploy.ps1 eller deploy.sh i mappen deployscripts i paketets rotmapp. Pipelinen kör det här distributions skriptet.
-1. I **distributions strategi**väljer du **Kanarie**.
+1. I **distributions strategi** väljer du **Kanarie**.
 1. Lägg till en "Kanarie"-tagg till virtuella datorer som ska ingå i Kanarie-distributioner. Lägg till en "Prod"-tagg till virtuella datorer som är en del av distributioner gjorda efter att Kanarie-distributionen lyckades. Med taggar kan du bara rikta in virtuella datorer som har en speciell roll.
 
    ![Panelen kontinuerlig leverans med det valda Kanarie-värdet för distributions strategin](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)

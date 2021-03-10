@@ -1,26 +1,26 @@
 ---
 title: Azure Backup för SQL Server som körs i Azure VM
 description: I den här artikeln får du lära dig hur du registrerar Azure Backup i SQL Server som körs i en virtuell Azure-dator.
-author: dcurwin
-manager: carmonm
+ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-ms.topic: conceptual
-ms.date: 07/05/2019
+author: dcurwin
 ms.author: dacurwin
-ms.openlocfilehash: c6a071956565a8bbc31e5be362c41a7c39d8f551
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.collection: windows
+ms.date: 07/05/2019
+ms.openlocfilehash: 46cc4b23ca7dd70da3f917a3399406480dc9fdbd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738058"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557105"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup för SQL Server som körs i Azure VM
 
 Azure Backup, bland annat erbjudanden, ger stöd för säkerhets kopiering av arbets belastningar som SQL Server som körs i virtuella Azure-datorer. Eftersom SQL-programmet körs i en virtuell Azure-dator måste säkerhets kopierings tjänsten ha behörighet att komma åt programmet och hämta nödvändig information.
 För att göra det, Azure Backup installerar tillägget **AzureBackupWindowsWorkload** på den virtuella datorn, där SQL Server körs, under registrerings processen som utlöses av användaren.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En lista över scenarier som stöds finns i [support mat ris](../../backup/sql-support-matrix.md#scenario-support) som stöds av Azure Backup.
 

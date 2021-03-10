@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f1bce5c0ecdab4a9c96c3f2cc0e9734247bdfd66
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808051"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566353"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Felsök problem med distribution av StorSimple-enheter
 ## <a name="overview"></a>Översikt
@@ -189,7 +189,7 @@ När du konfigurerar nätverks gränssnitt för en första enhets distribution �
    * Om gränssnittet är felfritt men inte aktiverat visas **ifIndex** status som **NotPresent**.
    * Om gränssnittet inte finns visas det inte i listan. Användar gränssnittet för StorSimple Enhetshanteraren-tjänsten kommer fortfarande att visa det här gränssnittet i ett felaktigt tillstånd.
 
-Mer information om hur du använder den här cmdleten finns i [Get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) i Windows PowerShell-cmdlet-referensen.
+Mer information om hur du använder den här cmdleten finns i [Get-netadapter](/powershell/module/netadapter/get-netadapter) i Windows PowerShell-cmdlet-referensen.
 
 I följande avsnitt visas exempel på utdata från `Get-NetAdapter` cmdleten.
 

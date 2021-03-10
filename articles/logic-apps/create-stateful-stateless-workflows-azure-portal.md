@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736379"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563972"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Skapa tillstånds lösa och tillstånds lösa arbets flöden i Azure Portal med Azure Logic Apps för hands version
 
@@ -236,7 +236,33 @@ Innan du kan lägga till en utlösare i ett tomt arbets flöde ser du till att a
 
 1. Spara ditt arbete. I verktygsfältet designer väljer du **Spara**.
 
-Sedan kan du testa arbets flödet manuellt genom att utlösa en körning.
+1. Om din miljö har strikta nätverks krav eller brand väggar som begränsar trafiken måste du ställa in behörigheter för alla utlösare eller åtgärds anslutningar som finns i ditt arbets flöde. För att hitta det fullständigt kvalificerade 
+
+   Annars kan du testa arbets flödet manuellt genom att [utlösa en körning](#trigger-workflow).
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Hitta domän namn för brand Väggs åtkomst
+
+Innan du distribuerar din Logic app och kör arbets flödet i Azure Portal, om din miljö har strikta nätverks krav eller brand väggar som begränsar trafiken, måste du konfigurera nätverks-eller brand Väggs behörigheter för alla utlösare eller åtgärds anslutningar i de arbets flöden som finns i din Logic app.
+
+Följ dessa steg om du vill hitta de fullständigt kvalificerade domän namnen (FQDN) för de här anslutningarna:
+
+1. På din Logic app-meny, under **arbets flöden**, väljer du **anslutningar**. På fliken **API-anslutningar** väljer du anslutningens resurs namn, till exempel:
+
+   ![Skärm bild som visar menyn Azure Portal och Logic app med anslutnings resurs namnet "Connections" och "offic365" valt.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. Utöka webbläsaren tillräckligt mycket så att när **JSON-vyn** visas i webbläsarens övre högra hörn väljer du **JSON-vy**.
+
+   ![Skärm bild som visar fönstret Azure Portal och API-anslutning med alternativet "JSON View" markerat.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. Hitta, kopiera och spara `connectionRuntimeUrl` egenskap svärdet på ett säkert sätt så att du kan konfigurera brand väggen med den här informationen.
+
+   ![Skärm bild som visar egenskap svärdet "connectionRuntimeUrl" markerat.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. Upprepa de relevanta stegen för varje anslutning.
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>Utlös arbets flödet
 

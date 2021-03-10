@@ -270,6 +270,8 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio-koden
                   href: ./create-first-function-vs-code-csharp.md
+                - name: 'C#, isolerat (.NET 5)'
+                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Java med Gradle
                   href: functions-create-first-java-gradle.md
                 - name: Java med hjälp av Eclipse

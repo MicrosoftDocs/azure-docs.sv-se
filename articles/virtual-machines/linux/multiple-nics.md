@@ -2,18 +2,18 @@
 title: Skapa en virtuell Linux-dator i Azure med flera nätverkskort
 description: Lär dig hur du skapar en virtuell Linux-dator med flera nätverkskort som är kopplade till den med hjälp av Azure CLI-eller Resource Manager-mallarna.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0eea74890665297a0d450c8afd0a5d60dd1ae00
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836929"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551818"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Så här skapar du en virtuell Linux-dator i Azure med flera nätverks gränssnitts kort
 
@@ -23,7 +23,7 @@ Den här artikeln beskriver hur du skapar en virtuell dator med flera nätverksk
 ## <a name="create-supporting-resources"></a>Skapa stöd resurser
 Installera den senaste versionen av [Azure CLI](/cli/azure/install-az-cli2) och logga in på ett Azure-konto med [AZ-inloggning](/cli/azure/reference-index).
 
-Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn som ingår *myResourceGroup*, *mystorageaccount*och *myVM*.
+Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn som ingår *myResourceGroup*, *mystorageaccount* och *myVM*.
 
 Skapa först en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
 
@@ -220,7 +220,7 @@ ssh azureuser@137.117.58.232
 
 Om du vill skicka till eller från ett sekundärt nätverks gränssnitt måste du manuellt lägga till beständiga vägar till operativ systemet för varje sekundärt nätverks gränssnitt. I den här artikeln är *eth1* det sekundära gränssnittet. Instruktioner för att lägga till beständiga vägar till operativ systemet varierar från distribution. Instruktioner finns i dokumentationen för din distribution.
 
-När du lägger till vägen i operativ systemet är gateway-adressen 1 *för det undernät som nätverks* gränssnittet finns i. Om nätverks gränssnittet till exempel tilldelas adressen *10.0.2.4*, är den gateway som du anger för vägen *10.0.2.1*. Du kan definiera ett specifikt nätverk för vägens mål eller ange målet *0.0.0.0*om du vill att all trafik för gränssnittet ska gå via den angivna gatewayen. Gatewayen för varje undernät hanteras av det virtuella nätverket.
+När du lägger till vägen i operativ systemet är gateway-adressen 1 *för det undernät som nätverks* gränssnittet finns i. Om nätverks gränssnittet till exempel tilldelas adressen *10.0.2.4*, är den gateway som du anger för vägen *10.0.2.1*. Du kan definiera ett specifikt nätverk för vägens mål eller ange målet *0.0.0.0* om du vill att all trafik för gränssnittet ska gå via den angivna gatewayen. Gatewayen för varje undernät hanteras av det virtuella nätverket.
 
 När du har lagt till vägen för ett sekundärt gränssnitt kontrollerar du att vägen finns i din routningstabell med `route -n` . Följande exempel på utdata är för routningstabellen som har de två nätverks gränssnitt som har lagts till i den virtuella datorn i den här artikeln:
 

@@ -2,22 +2,22 @@
 title: Självstudie – konfigurera Kanarie-distributioner för virtuella Azure Linux-datorer
 description: I den här självstudien får du lära dig hur du konfigurerar en pipeline för kontinuerlig distribution (CD). Den här pipelinen uppdaterar en grupp med virtuella Azure Linux-datorer med hjälp av den blå gröna distributions strategin.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: f349ff62fe211f0610341864a4c7528ee6bfe9c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961537"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552595"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Självstudie – konfigurera den blå gröna distributions strategin för virtuella Azure Linux-datorer
 
@@ -50,7 +50,7 @@ Med alternativet för kontinuerlig leverans kan du konfigurera blå-grönt-distr
 
 1. En distributions grupp är en logisk uppsättning distributions mål datorer som representerar de fysiska miljöerna. Utveckling, testning, UAT och produktion är exempel. Du kan skapa en ny distributions grupp eller välja en befintlig.
 1. Välj den build-pipeline som publicerar paketet som ska distribueras till den virtuella datorn. Det publicerade paketet måste ha ett distributions skript med namnet deploy.ps1 eller deploy.sh i mappen deployscripts i paketets rotmapp. Pipelinen kör det här distributions skriptet.
-1. I **distributions strategi**väljer du **blått-grönt**.
+1. I **distributions strategi** väljer du **blått-grönt**.
 1. Lägg till taggen "blå" eller "grön" till de virtuella datorer som ska ingå i Blue-grönt-distributioner. Tagga det som "grönt" om en virtuell dator är för en vänte läges roll. Annars kan du tagga det som "blått".
 
    ![Panelen kontinuerlig leverans med Blue-Green för distributions strategin valt](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
