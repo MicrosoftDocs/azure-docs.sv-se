@@ -2,17 +2,18 @@
 title: Migrera dina virtuella Windows-datorer till Azure Premium Storage med Azure Site Recovery
 description: Lär dig hur du migrerar dina virtuella dator diskar från ett standard lagrings konto till ett Premium Storage-konto med hjälp av Azure Site Recovery.
 author: luywang
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: e2bc42f8222c1c713b995a6184ac8a2d1d304d7e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: aeb8028468a1e1944a4fd39275f134bfae00dfa3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502730"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555354"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrera till Premium Storage med Azure Site Recovery
 

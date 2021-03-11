@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4298c10d6344a1b0173a2ea79aeba9b8bbfffe4c
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 2726be7b137b511795d92c62174158f33108cad9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102511061"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623356"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -136,11 +136,11 @@ console.log(token);
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>Skapa en identitet och utfärda en åtkomsttoken inom samma begäran
 
-Använd `createUserWithToken` metoden för att skapa en kommunikations tjänst identitet och utfärda en åtkomsttoken för den. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md).
+Använd `createUserAndToken` metoden för att skapa en kommunikations tjänst identitet och utfärda en åtkomsttoken för den. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md).
 
 ```javascript
 // Issue an identity and an access token with the "voip" scope for the new identity
-let identityTokenResponse = await this.client.createUserWithToken(["voip"]);
+let identityTokenResponse = await this.client.createUserAndToken(["voip"]);
 const { token, expiresOn, user } = identityTokenResponse;
 console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);

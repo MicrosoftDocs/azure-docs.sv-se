@@ -7,19 +7,19 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 40067815ad582191606ad5a53cf06c9584d83350
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592360"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618023"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Säkerhets rekommendationer för Blob Storage
 
-Den här artikeln innehåller säkerhets rekommendationer för Blob Storage. Genom att implementera dessa rekommendationer kan du uppfylla dina säkerhets skyldigheter enligt beskrivningen i vår delade ansvars modell. Mer information om hur Microsoft uppfyller tjänst leverantörens ansvar finns i [delade ansvars områden för molnbaserad data behandling](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
+Den här artikeln innehåller säkerhets rekommendationer för Blob Storage. Genom att implementera dessa rekommendationer kan du uppfylla dina säkerhets skyldigheter enligt beskrivningen i vår delade ansvars modell. Mer information om hur Microsoft uppfyller ansvar för service leverantörer finns i [delat ansvar i molnet](/azure/security/fundamentals/shared-responsibility).
 
 Några av rekommendationerna som ingår i den här artikeln kan övervakas automatiskt av Azure Security Center. Azure Security Center är den första försvars linjen i att skydda dina resurser i Azure. Mer information om Azure Security Center finns i [Azure Security Center?](../../security-center/security-center-introduction.md)
 
@@ -33,7 +33,7 @@ Azure Security Center analyserar regelbundet säkerhets status för dina Azure-r
 | Aktivera Azure Defender för alla dina lagrings konton | Azure Defender för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Säkerhets aviseringar utlöses i Azure Security Center när avvikelser i aktivitet sker och också skickas via e-post till prenumerations administratörer, med information om misstänkt aktivitet och rekommendationer för att undersöka och åtgärda hot. Mer information finns i [Konfigurera Azure Defender för Azure Storage](../common/azure-defender-storage-configure.md). | [Ja](../../security-center/security-center-remediate-recommendations.md) |
 | Aktivera mjuk blobborttagning | Med mjuk borttagning för blobbar kan du återställa BLOB-data när de har tagits bort. Mer information om mjuk borttagning för blobbar finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md). | - |
 | Aktivera mjuk borttagning för behållare | Med alternativet mjuk borttagning för behållare kan du återställa en behållare efter att den har tagits bort. Mer information om mjuk borttagning för behållare finns i [mjuk borttagning för behållare (för hands version)](./soft-delete-container-overview.md). | - |
-| Lås lagrings konto för att förhindra borttagning av oavsiktligt konto | Du kan låsa en Azure Resource Manager-resurs, till exempel en prenumeration, en resurs grupp eller ett lagrings konto, för att förhindra att andra användare i organisationen oavsiktligt tar bort eller ändrar det. Att låsa ett lagrings konto förhindrar inte att data i det kontot tas bort. Det förhindrar bara att själva kontot tas bort. Mer information finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+| Lås lagrings konto för att förhindra oavsiktlig eller skadlig borttagning eller konfigurations ändringar | Använd ett Azure Resource Manager lås till ditt lagrings konto för att skydda kontot från oavsiktlig eller skadlig borttagning eller konfigurations ändring. Att låsa ett lagrings konto förhindrar inte att data i det kontot tas bort. Det förhindrar bara att själva kontot tas bort. Mer information finns i [tillämpa ett Azure Resource Manager lås till ett lagrings konto](../common/lock-account-resource.md).
 | Lagra affärs kritiska data i oföränderliga blobbar | Konfigurera juridiska undantag och tidsbaserade bevarande principer för att lagra BLOB-data i en mask (Skriv en gång, Läs många). Blobs lagrade immutably kan läsas, men kan inte ändras eller tas bort under lagrings intervallets varaktighet. Mer information finns i [lagra affärs kritiska BLOB-data med oföränderlig lagring](storage-blob-immutable-storage.md). | - |
 | Kräv säker överföring (HTTPS) till lagrings kontot | När du kräver säker överföring för ett lagrings konto måste alla begär anden till lagrings kontot göras via HTTPS. Begär Anden som görs över HTTP avvisas. Microsoft rekommenderar att du alltid behöver säker överföring för alla dina lagrings konton. Mer information finns i [Kräv säker överföring för att säkerställa säkra anslutningar](../common/storage-require-secure-transfer.md). | - |
 | Begränsa endast SAS-token (signatur för delad åtkomst) till HTTPS-anslutningar | Att kräva HTTPS när en klient använder en SAS-token för att få åtkomst till BLOB-data hjälper till att minimera risken för avlyssning. Mer information finns i [bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst (SAS)](../common/storage-sas-overview.md). | - |

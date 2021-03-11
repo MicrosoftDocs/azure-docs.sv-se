@@ -3,16 +3,17 @@ title: Meddelanden om underhåll
 description: Översikt över underhålls meddelanden för virtuella datorer som körs i Azure.
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 53cde1178a4faae0fbd11222e4219f70be29145d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 92cb780a80f1010fd1c2f5d19fe616e0285de73b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560816"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564534"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Hantera meddelanden om planerat underhåll
 
@@ -65,7 +66,7 @@ Det är bäst att använda självbetjänings underhåll i följande fall:
 - Det krävs mer än 30 minuters återställnings tid för virtuella datorer mellan två uppdaterings domäner (UDs). Om du vill kontrol lera tiden mellan uppdaterings domäner måste du aktivera underhåll av virtuella datorer en uppdaterings domän (UD) i taget.
 
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 
 **F: Varför måste du starta om mina virtuella datorer nu?**

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576123"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619162"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Vanliga frågor och svar om Application Gateway
 
@@ -470,9 +470,9 @@ Normalt ser du en okänd status när åtkomst till Server delen blockeras av en 
 
 På grund av de aktuella plattforms begränsningarna, om du har en NSG på under nätet Application Gateway v2 (Standard_v2, WAF_v2) och om du har aktiverat NSG flödes loggar på den, kan du se icke deterministiskt beteende och det här scenariot stöds inte för närvarande.
 
-### <a name="does-application-gateway-store-customer-data"></a>Lagrar Application Gateway kund information?
+### <a name="where-does-application-gateway-store-customer-data"></a>Var lagrar Application Gateway kund information?
 
-Nej, Application Gateway lagrar inte kund information.
+Application Gateway flyttar eller lagrar inte kund information från den region som den har distribuerats i.
 
 ## <a name="next-steps"></a>Nästa steg
 

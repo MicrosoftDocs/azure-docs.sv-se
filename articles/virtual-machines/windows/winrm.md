@@ -3,17 +3,17 @@ title: Konfigurera WinRM-åtkomst för en virtuell Azure-dator
 description: Konfigurera WinRM-åtkomst för användning med en virtuell Azure-dator som skapats i distributions modellen för Resource Manager.
 author: mimckitt
 manager: vashan
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: fbba14980083287c91fdd3defec78b229808fb15
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: ab676e7595a8ccd902eea27612e4c2fd035fae0c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621696"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555728"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurera WinRM-åtkomst för Virtual Machines i Azure Resource Manager
 

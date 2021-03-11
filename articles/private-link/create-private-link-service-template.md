@@ -1,19 +1,19 @@
 ---
-title: Skapa en privat länk-tjänst i en privat Azure-länk
+title: 'Snabb start: skapa en privat länk-tjänst i en privat Azure-länk'
 description: I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) för att skapa en privat länk-tjänst.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705256"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555065"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Snabb start: skapa en privat länk-tjänst med en ARM-mall
 
@@ -84,7 +84,7 @@ Anslut till VM- _myConsumerVm {UniqueID}_ från Internet på följande sätt:
     b. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
     
     > [!NOTE]
-    > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto**för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
+    > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto** för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 
 5.  Välj **OK**.
 
@@ -112,4 +112,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om [Azures privata länk](private-link-overview.md).
+
+Mer information om de tjänster som stöder en privat slut punkt finns i:
+> [!div class="nextstepaction"]
+> [Tillgänglighet för privat länk](private-link-overview.md#availability)

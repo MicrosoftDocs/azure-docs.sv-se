@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 2/9/2021
+ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: ef6ea9017a9aaa98e153df0d67f0b54fe5a2b64d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9926102a2e6b25060c2a8840b56d690ce2868ade
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124167"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618802"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Lägg till stöd för IPv6 för privat peering med hjälp av Azure Portal (för hands version)
 
@@ -22,8 +22,9 @@ Den här artikeln beskriver hur du lägger till IPv6-stöd för att ansluta via 
 > Den här funktionen är för närvarande tillgänglig för för hands version i [Azure-regioner med Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones). ExpressRoute-kretsen kan därför skapas med valfri peering-plats, men de IPv6-baserade distributioner som den ansluter till måste finnas i en region med Tillgänglighetszoner.
 
 ## <a name="register-for-public-preview"></a>Registrera dig för offentlig för hands version
-Innan du lägger till stöd för IPv6 måste du först registrera din prenumeration. Registrera dig genom att göra följande via Azure PowerShell:
-1.  Logga in på Azure och Välj prenumerationen. Du måste göra detta för prenumerationen som innehåller din ExpressRoute-krets, samt prenumerationen som innehåller dina Azure-distributioner (om de är olika).
+Innan du lägger till stöd för IPv6 måste du först registrera din prenumeration. Registrera genom att köra följande kommandon via Azure PowerShell:
+
+1.  Logga in på Azure och Välj prenumerationen. Kör de här kommandona för prenumerationen som innehåller din ExpressRoute-krets och prenumerationen som innehåller dina Azure-distributioner (om de är olika).
 
     ```azurepowershell-interactive
     Connect-AzAccount 
@@ -31,7 +32,7 @@ Innan du lägger till stöd för IPv6 måste du först registrera din prenumerat
     Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
     ```
 
-2. Registrera din prenumeration för offentlig för hands version med följande kommando:
+1. Registrera din prenumeration för offentlig för hands version med följande kommando:
     ```azurepowershell-interactive
     Register-AzProviderFeature -FeatureName AllowIpv6PrivatePeering -ProviderNamespace Microsoft.Network
     ```
@@ -44,21 +45,21 @@ Från en webbläsare går du till [Azure Portal](https://portal.azure.com)och lo
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>Lägg till en offentlig IPv6-peering till din ExpressRoute-krets
 
-1. [Skapa en ExpressRoute-krets](https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) eller navigera till den befintliga krets som du vill ändra.
+1. [Skapa en ExpressRoute-krets](expressroute-howto-circuit-portal-resource-manager.md) eller navigera till den befintliga krets som du vill ändra.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-circuit.png" alt-text="Navigera till kretsen":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-circuit.png" alt-text="Skärm bild av ExpressRoute krets List.":::
 
-2. Välj **Azures privata** peering-konfiguration.
+1. Välj **Azures privata** peering-konfiguration.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-peering.png" alt-text="Navigera till peer koppling":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-peering.png" alt-text="Skärm bild av ExpressRoute översikts sida.":::
 
-3. Lägg till en privat IPv6-peering till din befintliga IPv4-privata peering-konfiguration genom att välja "båda" för **undernät** eller endast aktivera IPv6 privat peering på din nya krets genom att välja "IPv6". Ange ett par med/126 IPv6-undernät som du äger för din primära länk och sekundära länkar. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router. **Spara** peering-konfigurationen när du har angett alla parametrar.
+1. Lägg till en privat IPv6-peering till din befintliga IPv4-privata peering-konfiguration genom att välja "båda" för **undernät** eller endast aktivera IPv6 privat peering på din nya krets genom att välja "IPv6". Ange ett par med/126 IPv6-undernät som du äger för din primära länk och sekundära länkar. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router. **Spara** peering-konfigurationen när du har angett alla parametrar.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-peering.png" alt-text="Lägg till IPv6 privat peering":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-peering.png" alt-text="Skärm bild av Lägg till IPv6 på privat peering-sida.":::
 
-4. När konfigurationen har accepterats bör du se något som liknar följande exempel.
+1. När konfigurationen har accepterats bör du se något som liknar följande exempel.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/view-ipv6-peering.png" alt-text="Visa IPv6 privat peering":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/view-ipv6-peering.png" alt-text="Skärm bild av IPv6 konfigurerad för privat peering.":::
 
 ## <a name="update-your-connection-to-an-existing-virtual-network"></a>Uppdatera anslutningen till ett befintligt virtuellt nätverk
 
@@ -66,31 +67,31 @@ Följ stegen nedan om du har en befintlig miljö av Azure-resurser i en region m
 
 1. Navigera till det virtuella nätverk som din ExpressRoute-krets är ansluten till.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-vnet.png" alt-text="Navigera till VNet":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-vnet.png" alt-text="Skärm bild av lista över virtuella nätverk.":::
 
-2. Navigera till fliken **adress utrymme** och Lägg till ett IPv6-adressutrymme i det virtuella nätverket. **Spara** adress utrymmet.
+1. Navigera till fliken **adress utrymme** och Lägg till ett IPv6-adressutrymme i det virtuella nätverket. **Spara** adress utrymmet.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-space.png" alt-text="Lägg till IPv6-adressutrymme":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-space.png" alt-text="Skärm bild av Lägg till IPv6-adressutrymme i det virtuella nätverket.":::
 
-3. Gå till fliken **undernät** och välj **GatewaySubnet**. Markera **Lägg till IPv6-adressutrymme** och ange ett IPv6-adressutrymme för ditt undernät. Gatewayens IPv6-undernät ska vara/64 eller större. **Spara** konfigurationen när du har angett alla parametrar.
+1. Gå till fliken **undernät** och välj **GatewaySubnet**. Markera **Lägg till IPv6-adressutrymme** och ange ett IPv6-adressutrymme för ditt undernät. Gatewayens IPv6-undernät ska vara/64 eller större. **Spara** konfigurationen när du har angett alla parametrar.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-gateway-space.png" alt-text="Lägg till IPv6-adressutrymme i under nätet":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-gateway-space.png" alt-text="Skärm bild av Lägg till IPv6-adressutrymme till under nätet.":::
 
-4. Om du har en befintlig zon – redundant Gateway navigerar du till din ExpressRoute-gateway och uppdaterar resursen för att aktivera IPv6-anslutning. Annars [skapar du den virtuella Nätverksgatewayen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ.
+1. Om du har en befintlig zon – redundant Gateway navigerar du till din ExpressRoute-gateway och uppdaterar resursen för att aktivera IPv6-anslutning. Annars [skapar du den virtuella Nätverksgatewayen](expressroute-howto-add-gateway-portal-resource-manager.md) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/refresh-gateway.png" alt-text="Uppdatera gatewayen":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/refresh-gateway.png" alt-text="Skärm bild av uppdateringen av gatewayen.":::
 
 ## <a name="create-a-connection-to-a-new-virtual-network"></a>Skapa en anslutning till ett nytt virtuellt nätverk
 
 Följ stegen nedan om du planerar att ansluta till en ny uppsättning Azure-resurser i en region med Tillgänglighetszoner med din IPv6-privata peering.
 
-1. Skapa ett virtuellt nätverk med dubbla staplar med både IPv4-och IPv6-adressutrymme. Mer information finns i [skapa ett virtuellt nätverk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
+1. Skapa ett virtuellt nätverk med dubbla staplar med både IPv4-och IPv6-adressutrymme. Mer information finns i [skapa ett virtuellt nätverk](../virtual-network/quick-create-portal.md#create-a-virtual-network).
 
-2. [Skapa Gateway-undernätet med dubbla stackar](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-gateway-subnet).
+1. [Skapa Gateway-undernätet med dubbla stackar](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet).
 
-3. [Skapa den virtuella Nätverksgatewayen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ (Observera att detta endast är tillgängligt för kretsar som använder ExpressRoute Direct).
+1. [Skapa den virtuella Nätverksgatewayen](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway) med en zon-redundant SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Om du planerar att använda FastPath använder du ErGw3AZ (Observera att det här alternativet endast är tillgängligt för kretsar som använder ExpressRoute Direct).
 
-4. [Länka ditt virtuella nätverk till din ExpressRoute-krets](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
+1. [Länka ditt virtuella nätverk till din ExpressRoute-krets](expressroute-howto-linkvnet-portal-resource-manager.md).
 
 ## <a name="limitations"></a>Begränsningar
 Även om IPv6-stöd är tillgängligt för anslutningar till distributioner i regioner med Tillgänglighetszoner, stöder den inte följande användnings fall:

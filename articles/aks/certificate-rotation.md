@@ -4,12 +4,12 @@ description: Lär dig hur du roterar dina certifikat i ett Azure Kubernetes serv
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 1871a8deed4d189534915a9b46b6ace071c1126c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa26762c54ad54835b174b8d814a2e77cb38b885
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181779"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619043"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotera certifikat i Azure Kubernetes service (AKS)
 
@@ -28,8 +28,6 @@ AKS genererar och använder följande certifikat, certifikat utfärdare och tjä
 * AKS-API-servern skapar en certifikat utfärdare (CA) som kallas för kluster certifikat utfärdaren.
 * API-servern har en kluster certifikat utfärdare som signerar certifikat för enkelriktad kommunikation från API-servern till kubelets.
 * Varje kubelet skapar också en certifikat signerings förfrågan, som är signerad av kluster certifikat utfärdaren för kommunikation från kubelet till API-servern.
-* Nyckel värdes arkivet etcd har ett certifikat som signerats av kluster certifikat utfärdaren för kommunikation från etcd till API-servern.
-* Nyckel värdes arkivet etcd skapar en certifikat utfärdare som signerar certifikat för att autentisera och auktorisera datareplikering mellan etcd-replikeringar i AKS-klustret.
 * API Aggregator använder kluster certifikat utfärdaren för att utfärda certifikat för kommunikation med andra API: er. API Aggregator kan också ha sin egen certifikat utfärdare för att utfärda dessa certifikat, men för närvarande används kluster certifikat utfärdaren.
 * Varje nod använder en tjänst konto-token (SA) som är signerad av kluster certifikat utfärdaren.
 * `kubectl`Klienten har ett certifikat för att kommunicera med AKS-klustret.

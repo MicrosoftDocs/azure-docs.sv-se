@@ -2,17 +2,18 @@
 title: Migrera virtuella Linux-datorer till Azure Premium Storage med Azure Site Recovery
 description: Migrera dina befintliga virtuella datorer till Azure Premium Storage med Site Recovery. Premium Storage erbjuder disk support med hög prestanda och låg latens för I/O-intensiva arbets belastningar som körs på Azure Virtual Machines.
 author: luywang
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 5f8f72ec296be3127a2f8c1ddc87d883d7e2deed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8a03637352762646b0f209263769dbdb1ff14b21
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504583"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562630"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Använd Site Recovery för att migrera till Premium Storage
 

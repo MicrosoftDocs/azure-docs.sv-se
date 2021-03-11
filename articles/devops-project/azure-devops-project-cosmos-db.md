@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854689"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548707"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Distribuera Node.js appar som drivs av Azure Cosmos DB med DevOps starter
 
@@ -37,7 +37,7 @@ I de här självstudierna får du:
 > * Genomför ändringarna i git och distribuera dem automatiskt till Azure
 > * Rensa resurserna
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver en Azure-prenumeration, som du kan få via [Visual Studio dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) kostnads fritt.
 
@@ -47,17 +47,17 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Välj **Node.js** som körnings miljö och välj sedan **Nästa**. Under **Välj ett program ramverk**väljer du **Express.js**.
+1. Välj **Node.js** som körnings miljö och välj sedan **Nästa**. Under **Välj ett program ramverk** väljer du **Express.js**.
 
-1. Aktivera avsnittet **Lägg till en databas** för **Cosmos DB**och välj sedan **Nästa**.
+1. Aktivera avsnittet **Lägg till en databas** för **Cosmos DB** och välj sedan **Nästa**.
 
     ![Lägg till en databas](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Starter har stöd för olika program ramverk, till exempel **Express.js**, **exempel Node.js app**och **Sail.js**. I den här självstudien använder vi **Express.js**.
+    Azure DevOps Starter har stöd för olika program ramverk, till exempel **Express.js**, **exempel Node.js app** och **Sail.js**. I den här självstudien använder vi **Express.js**.
 
 1. Välj en Azure-tjänst för att distribuera programmet och välj sedan **Nästa**. Alternativen omfattar Windows Web App, Azure Kubernetes service och Azure Web App for Containers. I den här självstudien använder vi **Windows Web App**.
 
@@ -144,9 +144,9 @@ Du är nu redo att samar beta med ett team i din app genom att använda en CI/CD
 
 1. Lagrings platsen innehåller redan kod baserat på det program språk som du valde i skapande processen. Öppna filen **program/vyer/index. pug** .
 
-1. Välj **Redigera**och gör sedan en ändring av **rad nummer 15**. Du kan till exempel ändra till "min första distribution till Azure App Service som drivs av Azure Cosmos DB."
+1. Välj **Redigera** och gör sedan en ändring av **rad nummer 15**. Du kan till exempel ändra till "min första distribution till Azure App Service som drivs av Azure Cosmos DB."
 
-1. I det övre högra hörnet väljer du **genomför**och väljer sedan **genomför** igen för att skicka din ändring.
+1. I det övre högra hörnet väljer du **genomför** och väljer sedan **genomför** igen för att skicka din ändring.
 
      Efter några sekunder startar en version i Azure DevOps och en version körs för att distribuera ändringarna. Övervaka Bygg status på DevOps starter-instrumentpanelen eller i webbläsaren med din Azure DevOps-organisation.
 
@@ -167,4 +167,4 @@ Du kan ändra dessa bygg- och versionspipelines för att tillgodose ditt teams b
 > * Genomföra ändringar i Git och distribuera dem automatiskt till Azure
 > * Rensa resurser
 
-Mer information och nästa steg finns i [definiera en pipeline för kontinuerlig distribution i flera steg (CD)](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
+Mer information och nästa steg finns i [definiera en pipeline för kontinuerlig distribution i flera steg (CD)](/azure/devops/pipelines/release/define-multistage-release-process) .

@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031641"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618091"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Återställning av tidpunkter för block-blobar
 
@@ -47,7 +47,7 @@ Endast en återställnings åtgärd kan köras på ett lagrings konto i taget. E
 > Läs åtgärder från den sekundära platsen kan fortsätta under återställnings åtgärden om lagrings kontot är geo-replikerat.
 
 > [!CAUTION]
-> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. Ta bort enskilda blobbar i stället för att ta bort en hel behållare om du vill återställa dem senare.
+> Återställning vid tidpunkt stöder återställning mot åtgärder som endast har åtgärd ATS i block-blobbar. Alla åtgärder som har åtgärd ATS i behållare kan inte återställas. Om du till exempel tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd vid tidpunkten. Ta bort enskilda blobbar i stället för att ta bort en hel behållare om du vill återställa dem senare.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Krav för återställning av punkt-till-tid
 

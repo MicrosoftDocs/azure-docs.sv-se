@@ -2,17 +2,17 @@
 title: NCas T4 v3-serien
 description: Specifikationer för virtuella datorer i NCas T4 v3-serien.
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042750"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609217"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-serien 
 
@@ -28,7 +28,7 @@ De virtuella datorerna i NCasT4_v3 serien drivs av [NVIDIA Tesla T4](https://www
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
-NVIDIA NVLink-Interconnect: stöds inte<br>
+NVIDIA NVLink-Interconnect: stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | GPU | GPU-minne: GiB | Maximalt antal datadiskar | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) |

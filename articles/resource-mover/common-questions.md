@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007065"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564279"
 ---
 # <a name="common-questions"></a>Vanliga frågor
 
@@ -24,6 +24,15 @@ I den här artikeln besvaras vanliga frågor om [Azure Resource-arbetskraft](ove
 ### <a name="can-i-move-resources-across-any-regions"></a>Kan jag flytta resurser mellan olika regioner?
 
 För närvarande kan du flytta resurser från vilken offentlig käll region som helst till en offentlig mål region, beroende på vilka [resurs typer som är tillgängliga i den regionen](https://azure.microsoft.com/global-infrastructure/services/). Det finns för närvarande inte stöd för att flytta resurser i Azure Government regioner.
+
+### <a name="what-regions-are-currently-supported"></a>Vilka regioner stöds för närvarande?
+
+Azure Resource-arbetskraft är för närvarande tillgängligt på följande sätt:
+
+**Support** | **Information**
+--- | ---
+Stöd för att flytta | Azure-resurser som stöds för flytt med resurs förflyttning kan flyttas från valfri offentlig region till en annan offentlig region.
+Stöd för metadata |  Regioner som stöds för att lagra metadata om datorer som ska flyttas omfattar östra 2; USA, Nord Europa, Sydostasien, Japan, öst, Storbritannien, södra och östra Australien som metadata-regioner. <br/><br/> Det finns också stöd för att flytta resurser inom region region i Azure i region för North2 i Kina.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Vilka resurser kan jag flytta mellan regioner med resurs förflyttning?
 
@@ -44,15 +53,14 @@ Det går inte att välja diskar som resurser som flyttas mellan regioner. Diskar
 
 ### <a name="what-does-it-mean-to-move-a-resource-group"></a>Vad innebär det att flytta en resurs grupp?
 
-När en resurs väljs för flytt läggs motsvarande resurs grupp automatiskt till för flytt. Detta krävs eftersom mål resursen måste placeras under en resurs grupp som den var i målet. Du kan välja att anpassa och ange en befintlig resurs grupp när den har lagts till för flytt. Observera att om du flyttar en resurs grupp innebär det **inte** att alla resurser i käll resurs gruppen kommer att flyttas.
+När en resurs väljs för flytt, läggs motsvarande resurs grupp automatiskt till för att flytta. Detta är så att mål resursen kan placeras i en resurs grupp. Du kan välja att anpassa och tillhandahålla en befintlig resurs grupp när den har lagts till för flytt. Att flytta en resurs grupp innebär inte att alla resurser i käll resurs gruppen kommer att flyttas.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kan jag flytta resurser mellan prenumerationer när jag flyttar dem över flera regioner?
 
 Du kan ändra prenumerationen när du har flyttat resurser till mål regionen. [Lär dig mer](../azure-resource-manager/management/move-resource-group-and-subscription.md) om att flytta resurser till en annan prenumeration. 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Flyttar Azure-resursen kund information? 
-Nej. Tjänsten för resurs flyttning lagrar inte kund information, den lagrar bara metadatainformation som underlättar spårningen och förloppet för de resurser som valts för flytt, av kunden.
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Lagrar Azure Resource personal data? 
+Nej. Resurs förflyttnings tjänsten lagrar inte kund information, den lagrar bara metadatainformation som underlättar spårning och förlopp för resurser som du flyttar.
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Var finns metadata för att flytta mellan regioner?
 
@@ -85,13 +93,15 @@ När du lägger till resurser i Resource Mover-hubben på portalen hanteras beh�
 > [!IMPORTANT]
 > Vi rekommenderar starkt att du inte ändrar eller tar bort roll tilldelningar för identitet. 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>Vad ska jag göra om jag inte har behörighet att tilldela roll identiteten?
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>Vad händer om jag inte har behörighet att tilldela roll identiteten?
 
-**Möjlig orsak** | **Rekommendation**
+Det finns ett par orsaker till att du kanske inte har behörighet.
+
+**Möjlig orsak** | **Rekommenderade**
 --- | ---
 Du är inte *deltagare* och *administratör för användar åtkomst* (eller *ägare*) när du lägger till en resurs för första gången. | Använd ett konto med behörighet som *deltagare* och *användar åtkomst administratör* (eller *ägare*) för prenumerationen.
-Den hanterade identiteten för resurs förflyttad identitet saknar den roll som krävs. | Lägg till rollerna deltagare och användar åtkomst administratör.
-Resurs förflyttnings hanterad identitet återställdes till *ingen*. | Återaktivera en systemtilldelad identitet i flytt samlingen > **identitet**. Du kan också lägga till resursen igen i **Lägg till resurser**, vilket gör samma sak.  
+Den hanterade identiteten för resurs förflyttad identitet har inte den roll som krävs. | Lägg till rollerna deltagare och användar åtkomst administratör.
+Den hanterade identiteten för resurs förflyttning återställdes till *ingen*. | Återaktivera en systemtilldelad identitet i flytta samlings inställningarna > **identitet**. Du kan också lägga till resursen igen i **Lägg till resurser**, vilket gör samma sak.  
 Prenumerationen har flyttats till en annan klient. | Inaktivera och aktivera sedan hanterad identitet för flytt samlingen.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Hur kan jag göra flera flyttningar tillsammans?
@@ -100,7 +110,7 @@ Prenumerationen har flyttats till en annan klient. | Inaktivera och aktivera sed
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Vad händer när jag tar bort en resurs från en lista över flytt resurser?
 
-Du kan ta bort resurser som du har lagt till i flytta listan. Beteende när du tar bort en resurs från listan beror på resursens tillstånd. [Läs mer](remove-move-resources.md#vm-resource-state-after-removing).
+Du kan ta bort resurser som du har lagt till i flytta listan. Det exakta borttagnings beteendet beror på resursens tillstånd. [Läs mer](remove-move-resources.md#vm-resource-state-after-removing).
 
 
 

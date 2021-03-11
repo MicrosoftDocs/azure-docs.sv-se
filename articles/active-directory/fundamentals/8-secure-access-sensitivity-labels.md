@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ac3141823eb72b17754a771cd63264fe851949d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6fc8ceddce4d41244d72632db058aa58c0d919db
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365369"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565180"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Kontrol lera åtkomst med känslighets etiketter 
 
-[Känslighets etiketter](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) hjälper dig att kontrol lera åtkomsten till ditt innehåll i Office 365-program och i behållare som Microsoft Teams, Microsoft 365 grupper och SharePoint-webbplatser. De kan skydda ditt innehåll utan att hindra användarnas samarbets-och produktions möjligheter. Med känslighets etiketter kan du skicka din organisations innehåll mellan enheter, appar och tjänster, samtidigt som du skyddar dina data och uppfyller dina efterlevnads-och säkerhets principer. 
+[Känslighets etiketter](/microsoft-365/compliance/sensitivity-labels) hjälper dig att kontrol lera åtkomsten till ditt innehåll i Office 365-program och i behållare som Microsoft Teams, Microsoft 365 grupper och SharePoint-webbplatser. De kan skydda ditt innehåll utan att hindra användarnas samarbets-och produktions möjligheter. Med känslighets etiketter kan du skicka din organisations innehåll mellan enheter, appar och tjänster, samtidigt som du skyddar dina data och uppfyller dina efterlevnads-och säkerhets principer. 
 
 Med känslighets etiketter kan du:
 
 * **Klassificera innehåll utan att lägga till några skydds inställningar**. Du kan tilldela en klassificering till innehåll (som en etikett) som finns kvar och roamas med ditt innehåll när det används och delas. Du kan använda den här klassificeringen till att generera användningsrapporter och se aktivitetsdata för ditt känsliga innehåll.
 
-* **Använd skydds inställningar som kryptering, vattenstämplar och åtkomst begränsningar**. Användare kan till exempel använda en konfidentiell etikett på ett dokument eller e-postmeddelande, och etiketten kan [kryptera innehållet](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) och lägga till en "konfidentiell"-vattenstämpel. Dessutom kan du [använda en känslighets etikett för en behållare](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) som en SharePoint-webbplats och se om externa användare kan komma åt innehållet den innehåller.
+* **Använd skydds inställningar som kryptering, vattenstämplar och åtkomst begränsningar**. Användare kan till exempel använda en konfidentiell etikett på ett dokument eller e-postmeddelande, och etiketten kan [kryptera innehållet](/microsoft-365/compliance/encryption-sensitivity-labels) och lägga till en "konfidentiell"-vattenstämpel. Dessutom kan du [använda en känslighets etikett för en behållare](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites) som en SharePoint-webbplats och se om externa användare kan komma åt innehållet den innehåller.
 
 Känslighets etiketter för e-post och annat innehåll som överförs med innehållet. Känslighets etiketter på behållare kan begränsa åtkomsten till behållaren, men innehållet i behållaren ärver inte etiketten. En användare kan till exempel ta innehåll från en skyddad plats, ladda ned den och sedan dela den utan begränsningar om inte innehållet också har en känslighets etikett.
 
@@ -52,7 +52,7 @@ När du funderar på att styra extern åtkomst till ditt innehåll måste du bes
 
 * Hur kan du definiera vad som är hög, medel eller låg inverkan på företaget (HBI, MBI, LBI)? Överväg att din organisation påverkas om vissa typer av innehåll delas på ett felaktigt sätt.
 
-   * Innehåll med vissa typer av [innehålls känsligt innehåll](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), till exempel kredit kort eller Passport-nummer
+   * Innehåll med vissa typer av [innehålls känsligt innehåll](/microsoft-365/compliance/apply-sensitivity-label-automatically), till exempel kredit kort eller Passport-nummer
 
    * Innehåll som skapats av vissa grupper eller personer (till exempel tjänstemän, ekonomi chefer eller chefer)
 
@@ -66,21 +66,21 @@ När du funderar på att styra extern åtkomst till ditt innehåll måste du bes
 
 * Vilka standardinställningar ska användas för HBI-data, webbplatser eller Microsoft 365s grupper?
 
-* Var kommer du att använda känslighets etiketter för att [märka och övervaka](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide), jämfört med [kryptering](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) eller för att [genomdriva åtkomst begränsningar för behållare](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
+* Var kommer du att använda känslighets etiketter för att [märka och övervaka](/microsoft-365/compliance/sensitivity-labels), jämfört med [kryptering](/microsoft-365/compliance/encryption-sensitivity-labels) eller för att [genomdriva åtkomst begränsningar för behållare](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)?
 
 **För e-post och innehåll**
 
-* Vill du [använda känslighets etiketter automatiskt](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) för innehåll eller göra det manuellt?
+* Vill du [använda känslighets etiketter automatiskt](/microsoft-365/compliance/apply-sensitivity-label-automatically) för innehåll eller göra det manuellt?
 
-   * Vill du [rekommendera användarna att använda en etikett](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)om du väljer att göra det manuellt?
+   * Vill du [rekommendera användarna att använda en etikett](/microsoft-365/compliance/apply-sensitivity-label-automatically)om du väljer att göra det manuellt?
 
 **För behållare**
 
 * Vilka kriterier avgör om M365 grupper, grupper eller SharePoint-webbplatser kräver åtkomst att begränsas med hjälp av känslighets etiketter?
 
-* Vill du bara att etikett innehållet i dessa behållare flyttas framåt eller vill du [automatiskt märka](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) befintliga filer i SharePoint och OneDrive?
+* Vill du bara att etikett innehållet i dessa behållare flyttas framåt eller vill du [automatiskt märka](/microsoft-365/compliance/apply-sensitivity-label-automatically) befintliga filer i SharePoint och OneDrive?
 
-Se dessa [vanliga scenarier för känslighets etiketter](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) för andra idéer om hur du kan använda känslighets etiketter.
+Se dessa [vanliga scenarier för känslighets etiketter](/microsoft-365/compliance/get-started-with-sensitivity-labels) för andra idéer om hur du kan använda känslighets etiketter.
 
 ### <a name="sensitivity-labels-on-email-and-content"></a>Känslighets etiketter för e-post och innehåll
 
@@ -100,7 +100,7 @@ När du tilldelar en känslighets etikett till ett dokument eller e-postmeddelan
 
 ### <a name="sensitivity-labels-on-containers"></a>Känslighets etiketter på behållare
 
-Du kan använda känslighets etiketter på behållare som [Microsoft 365 grupper](../enterprise-users/groups-assign-sensitivity-labels.md), [Microsoft Teams](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)och [SharePoint-webbplatser](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide). När du använder den här känslighets etiketten för en behållare som stöds, tillämpar etiketten automatiskt klassificerings-och skydds inställningarna på den anslutna webbplatsen eller gruppen. Känslighets etiketter för dessa behållare kan styra följande aspekter av behållare:
+Du kan använda känslighets etiketter på behållare som [Microsoft 365 grupper](../enterprise-users/groups-assign-sensitivity-labels.md), [Microsoft Teams](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)och [SharePoint-webbplatser](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites). När du använder den här känslighets etiketten för en behållare som stöds, tillämpar etiketten automatiskt klassificerings-och skydds inställningarna på den anslutna webbplatsen eller gruppen. Känslighets etiketter för dessa behållare kan styra följande aspekter av behållare:
 
 * **Sekretess**. Du kan välja vem som ska kunna se webbplatsen: vissa användare, alla interna användare eller någon.
 
@@ -116,25 +116,25 @@ Du kan använda känslighets etiketter på behållare som [Microsoft 365 grupper
 
 När du använder en känslighets etikett för en behållare, till exempel en SharePoint-webbplats, tillämpas den inte på innehåll där: känslighets etiketter på behållare styr åtkomsten till innehållet i behållaren. 
 
-* Om du automatiskt vill tillämpa etiketter på innehållet i behållaren, se [Använd en känslighet för innehåll automatiskt](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide).
+* Om du automatiskt vill tillämpa etiketter på innehållet i behållaren, se [Använd en känslighet för innehåll automatiskt](/microsoft-365/compliance/apply-sensitivity-label-automatically).
 
-* Om du vill att användarna ska kunna tillämpa etiketter på det här innehållet manuellt, se till att du har [aktiverat känslighets etiketter för Office-filer i SharePoint och OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
+* Om du vill att användarna ska kunna tillämpa etiketter på det här innehållet manuellt, se till att du har [aktiverat känslighets etiketter för Office-filer i SharePoint och OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files).
 
 ### <a name="plan-to-implement-sensitivity-labels"></a>Planera att implementera känslighets etiketter
 
 När du har fastställt hur du vill använda känslighets etiketter och vilka innehåll och platser du vill använda, kan du läsa följande dokumentation som hjälper dig att utföra implementeringen.
 
-1. [Kom igång med känslighets etiketter](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+1. [Kom igång med känslighets etiketter](/microsoft-365/compliance/get-started-with-sensitivity-labels)
 
-2. [Skapa en distributions strategi](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+2. [Skapa en distributions strategi](/microsoft-365/compliance/get-started-with-sensitivity-labels)
 
-3. [Skapa och publicera känslighets etiketter](/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
+3. [Skapa och publicera känslighets etiketter](/microsoft-365/compliance/create-sensitivity-labels)
 
-4. [Begränsa åtkomsten till innehåll med känslighets etiketter för att tillämpa kryptering](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
+4. [Begränsa åtkomsten till innehåll med känslighets etiketter för att tillämpa kryptering](/microsoft-365/compliance/encryption-sensitivity-labels)
 
-5. [Använd känslighets etiketter med team, grupper och platser](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
+5. [Använd känslighets etiketter med team, grupper och platser](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 
-6. [Aktivera känslighets etiketter för Office-filer i SharePoint och OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
+6. [Aktivera känslighets etiketter för Office-filer i SharePoint och OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files)
 
 ### <a name="next-steps"></a>Nästa steg
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: b5dbb8498157096c8e3178175f827eb47591c9de
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659927"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555660"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Snabb start: ansluta ett Rust-program till Azure Cosmos DB s API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -279,7 +279,7 @@ fn list_todos(self, status_filter: &str) {
 }
 ```
 
-En `todo` status kan uppdateras (från `pending` eller till `completed` och vice versa) med hjälp av. `todo`Konverteras till en [bson:: OID:: ObjectID](https://docs.rs/bson/1.1.0/bson/oid/struct.ObjectId.html) som sedan används av metoden[Collection.update_one](https://docs.rs/mongodb/1.1.1/mongodb/struct.Collection.html#method.update_one) för att hitta det dokument som behöver uppdateras.
+En `todo` status kan uppdateras (från `pending` till `completed` eller vice versa). `todo`Konverteras till en [bson:: OID:: ObjectID](https://docs.rs/bson/1.1.0/bson/oid/struct.ObjectId.html) som sedan används av metoden[Collection.update_one](https://docs.rs/mongodb/1.1.1/mongodb/struct.Collection.html#method.update_one) för att hitta det dokument som behöver uppdateras.
 
 ```rust
 fn update_todo_status(self, todo_id: &str, status: &str) {

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-js
-ms.openlocfilehash: e29aff97d510dfed178e32aa319e5cb51ae9786c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fa28d5779c05af615479e3143713badb7842f6c6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376611"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619266"
 ---
 [Avancerad läsare](https://www.onenote.com/learningtools) är ett särskilt utformat verktyg som implementerar beprövade tekniker för att förbättra Läs förståelse för nya läsare, språkutbildningar och personer med inlärnings skillnader som Dyslexia. Du kan använda avancerad läsare i dina program för att isolera text för att förbättra fokus, Visa bilder för vanliga ord, markera delar av tal, läsa den markerade texten, översätta ord och fraser i real tid och mycket mer.
 
@@ -36,13 +36,13 @@ Starta ett nytt projekt i Android Studio. Käll koden för det här exemplet är
 
 ![Nytt projekt – Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
-I fönstret **Välj projekt väljer du** **Tom aktivitet**och väljer sedan **Nästa**.
+I fönstret **Välj projekt väljer du** **Tom aktivitet** och väljer sedan **Nästa**.
 
 ![Tomt aktivitets projekt – Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurera projektet
 
-Ge projektet namnet **QuickstartKotlin**och välj en plats där du vill spara den. Välj **Kotlin** som programmeringsspråk och välj sedan **Slutför**.
+Ge projektet namnet **QuickstartKotlin** och välj en plats där du vill spara den. Välj **Kotlin** som programmeringsspråk och välj sedan **Slutför**.
 
 ![Konfigurera projektet – Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
@@ -607,10 +607,11 @@ Eftersom programmet måste göra nätverks anrop till den fördjupade läsaren S
 
 ## <a name="run-the-app"></a>Kör appen
 
-Använd Android Studio för att köra appen på en enhets-emulator. När du väljer **Avancerad läsare**öppnas den fördjupade läsaren med innehållet i appen.
+Använd Android Studio för att köra appen på en enhets-emulator. När du väljer **Avancerad läsare** öppnas den fördjupade läsaren med innehållet i appen.
 
 ![Fördjupad läsare – Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Utforska SDK: [n för avancerad läsare](https://github.com/microsoft/immersive-reader-sdk) och [Avancerad läsare SDK-referens](../../reference.md).
+> [!div class="nextstepaction"]
+> [Skapa en resurs och konfigurera AAD](../../how-to-create-immersive-reader.md)

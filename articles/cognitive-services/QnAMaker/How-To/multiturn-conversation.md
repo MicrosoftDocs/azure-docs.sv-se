@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 313d1a390c30e7e5612b8d9bab7783b6698c35fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605152"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618499"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Använd uppföljande frågor för att skapa en längre konversation
 
@@ -111,7 +111,7 @@ Lägg till en uppföljnings fråga till ett befintligt fråga-och-svar-par som i
     |Fält|Värde|
     |--|--|
     |Visningstext|Ange **Stäng av enheten**. Det här är en anpassad text som visas i uppföljnings anvisningarna.|
-    |Endast Sammanhangs beroende| Markera den här kryss rutan. Ett svar returneras bara om frågan anger sammanhang.|
+    |Endast Sammanhangs beroende| Markera kryssrutan. Ett svar returneras bara om frågan anger sammanhang.|
     |Länk till svar|Ange **Använd inloggnings skärmen** för att hitta det befintliga fråga-och-svar-paret.|
 
 1.  En matchning returneras. Välj det här svaret som uppföljning och välj sedan **Spara**.
@@ -146,7 +146,7 @@ När du lägger till ett nytt fråga-och-svar-par i kunskaps basen ska varje par
     |Fält|Värde|
     |--|--|
     |Visningstext|*Skapa ett Windows-konto*. Den anpassade text som ska visas i uppföljnings anvisningarna.|
-    |Endast Sammanhangs beroende|Markera den här kryss rutan. Svaret returneras endast om frågan anger sammanhang.|
+    |Endast Sammanhangs beroende|Markera kryssrutan. Svaret returneras endast om frågan anger sammanhang.|
     |Länk till svar|Ange följande text som svar:<br>*[Skapa](https://account.microsoft.com/) ett Windows-konto med ett nytt eller befintligt e-postkonto*.<br>När du sparar och tränar databasen kommer den här texten att konverteras. |
     |||
 
@@ -363,7 +363,7 @@ QnA Maker stöder versions kontroll genom att inkludera konversations steg med f
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om sammanhangsbaserade konversationer från det här [dialog exemplet](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) eller Lär dig mer om [konceptuella robot design för flera-turn-konversationer](/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Lär dig mer om sammanhangsbaserade konversationer från det här [dialog exemplet](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) eller Lär dig mer om [konceptuella robot design för flera-turn-konversationer](/azure/bot-service/bot-builder-conversations).
 
 > [!div class="nextstepaction"]
 > [Migrera en kunskapsbas](../Tutorials/migrate-knowledge-base.md)

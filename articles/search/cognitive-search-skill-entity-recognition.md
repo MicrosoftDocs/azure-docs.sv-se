@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542469"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547908"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Kognitiv kunskap om entitets igenkänning
 
@@ -53,7 +53,7 @@ Parametrar är Skift läges känsliga och alla är valfria.
 ## <a name="skill-outputs"></a>Kunskaps utmatningar
 
 > [!NOTE]
-> Alla enhets kategorier stöds inte för alla språk. `"Person"` `"Location"` Kategori typerna, och `"Organization"` för entiteter stöds för den fullständiga listan över språk ovan. Endast _de_, _en_, _es_, _fr_och _zh-hans_ stöder extrahering av `"Quantity"` , `"Datetime"` , `"URL"` , och `"Email"` typer. Mer information finns i [språk-och region stöd för API för textanalys](../cognitive-services/text-analytics/language-support.md).  
+> Alla enhets kategorier stöds inte för alla språk. `"Person"` `"Location"` Kategori typerna, och `"Organization"` för entiteter stöds för den fullständiga listan över språk ovan. Endast _de_, _en_, _es_, _fr_ och _zh-hans_ stöder extrahering av `"Quantity"` , `"Datetime"` , `"URL"` , och `"Email"` typer. Mer information finns i [språk-och region stöd för API för textanalys](../cognitive-services/text-analytics/language-support.md).  
 
 | Namn på utdata      | Beskrivning                   |
 |---------------|-------------------------------|
@@ -189,8 +189,8 @@ Parametrar är Skift läges känsliga och alla är valfria.
 
 Observera att förskjutningarna som returneras för entiteter i resultatet av den här kunskapen returneras direkt från [API för textanalys](../cognitive-services/text-analytics/overview.md), vilket innebär att om du använder dem för att indexera till den ursprungliga strängen, bör du använda [StringInfo](/dotnet/api/system.globalization.stringinfo) -klassen i .net för att extrahera rätt innehåll.  [Mer information hittar du här.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
-## <a name="error-cases"></a>Fel fall
-Om språk koden för dokumentet inte stöds returneras ett fel och inga entiteter extraheras.
+## <a name="warning-cases"></a>Varnings fall
+Om språk koden för dokumentet inte stöds returneras en varning och inga entiteter extraheras.
 
 ## <a name="see-also"></a>Se även
 

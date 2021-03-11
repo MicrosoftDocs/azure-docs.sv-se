@@ -3,17 +3,18 @@ title: Skapa och ladda upp en Flatcar-behållare Linux VHD för användning i Az
 description: Lär dig att skapa och ladda upp en virtuell hård disk som innehåller ett operativ system för Flatcar container Linux.
 author: marga-kinvolk
 ms.author: danis
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 555e53899ed78a5200009d04659e974f8157057e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8be9493b7a312270301e3520f301f797fe2167
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87268247"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565299"
 ---
 # <a name="using-a-prebuilt-flatcar-image-for-azure"></a>Använda en fördefinierad Flatcar-avbildning för Azure
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: b0f8055dcd8bdfb2ecb3ea99448838514eeb34f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 05d136093bd509e8c23ce8622423216326b0f1f2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026787"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623189"
 ---
 ## <a name="add-to-your-functions-app"></a>Lägg till i functions-appen
 
@@ -29,6 +29,26 @@ Om du arbetar med utlösaren och bindningarna måste du referera till rätt pake
 [Uppdatera dina tillägg]: ../articles/azure-functions/functions-bindings-register.md
 [Tillägg för Azure-verktyg]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
+### <a name="event-hubs-extension-5x-and-higher"></a>Event Hubs tillägget 5. x och högre
+
+En ny version av tillägget Event Hubs bindningar är tillgänglig som ett [NuGet-paket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.1)för för hands versioner. I den här för hands versionen introduceras möjligheten att [ansluta med en identitet i stället för en hemlighet](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection). För .NET-program ändras även de typer som du kan binda till, vilket ersätter typerna från `Microsoft.Azure.EventHubs` med nya typer från [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs).
+
+> [!NOTE]
+> För hands versionen ingår inte i ett tilläggs paket och måste installeras manuellt. Lägg till en referens till paketet för .NET-appar. För alla andra typer av appar, se [Uppdatera dina tillägg].
+
+[core tools]: ./functions-run-local.md
+[paket för tillägg]: ./functions-bindings-register.md#extension-bundles
+[NuGet-paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/
+[Uppdatera dina tillägg]: ./functions-bindings-register.md
+[Tillägg för Azure-verktyg]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
 ### <a name="functions-1x"></a>Functions 1.x
 
 Functions 1. x-appar har automatiskt en referens till [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-paketet, version 2. x.
+
+## <a name="hostjson-settings"></a>host.jspå Inställningar
+<a name="host-json"></a>
+
+[host.js](../articles/azure-functions/functions-host-json.md#eventhub) filen innehåller inställningar som styr Event Hubs utlösnings beteende. Konfigurationen skiljer sig åt beroende på Azure Functions version.
+
+[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

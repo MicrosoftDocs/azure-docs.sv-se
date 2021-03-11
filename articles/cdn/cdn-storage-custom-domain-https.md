@@ -1,26 +1,20 @@
 ---
-title: Åtkomst till Storage-blobbar med en Azure CDN anpassad domän över HTTPS
+title: Självstudie – Använda lagringsblobar via en anpassad Azure CDN-domän och HTTPS
 description: Lär dig hur du lägger till en Azure CDN anpassad domän och aktiverar HTTPS på domänen för din anpassade Blob Storage-slutpunkt.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777851"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564891"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Självstudie – Använda lagringsblobar via en anpassad Azure CDN-domän och HTTPS
 

@@ -2,14 +2,14 @@
 title: Lås resurser för att förhindra ändringar
 description: Förhindra att användare uppdaterar eller tar bort Azure-resurser genom att använda ett lås för alla användare och roller.
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 28c31681b8fbe981cd51db294c91276dfd65d71f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369483"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619179"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Låsa resurser för att förhindra oväntade ändringar
 
@@ -33,6 +33,10 @@ Resource Manager-lås gäller endast för åtgärder som sker i hanteringsplanet
 Att använda Lås kan leda till oväntade resultat eftersom vissa åtgärder som inte verkar ändra resursen verkligen kräver åtgärder som blockeras av låset. Lås förhindrar alla åtgärder som kräver en POST-begäran till Azure Resource Manager API. Några vanliga exempel på åtgärder som blockeras av lås är:
 
 * Ett skrivskyddat lås på ett **lagrings konto** förhindrar att användare visar konto nycklarna. Åtgärden Azure Storage [list nycklar](/rest/api/storagerp/storageaccounts/listkeys) hanteras via en post-begäran för att skydda åtkomsten till konto nycklarna, som ger fullständig åtkomst till data i lagrings kontot. När ett skrivskyddat lås har kon figurer ATS för ett lagrings konto måste användare som inte har konto nycklar använda Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-eller Queue-data. Ett skrivskyddat lås förhindrar också tilldelningen av Azure RBAC-roller som är begränsade till lagrings kontot eller till en data behållare (BLOB container eller queue).
+
+* Ett borttagnings lås på ett **lagrings konto** förhindrar inte att data i det kontot tas bort eller ändras. Den här typen av lås skyddar bara själva lagrings kontot från att tas bort och skyddar inte BLOB-, Queue-, Table-eller File-data inom det lagrings kontot. 
+
+* Ett skrivskyddat lås på ett **lagrings konto** förhindrar inte att data i det kontot tas bort eller ändras. Den här typen av lås skyddar bara själva lagrings kontot från att tas bort eller ändras och skyddar inte BLOB-, Queue-, tabell-, tabell-eller fildata i det lagrings kontot. 
 
 * Ett skrivskyddat lås på en **App Service** resurs förhindrar att Visual Studio-Server Explorer visar filer för resursen, eftersom denna interaktion kräver skriv åtkomst.
 
