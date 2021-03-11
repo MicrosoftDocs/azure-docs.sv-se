@@ -2,14 +2,14 @@
 title: Metod tips för att förbättra prestanda med hjälp av Azure Service Bus
 description: Beskriver hur du använder Service Bus för att optimera prestanda vid utbyte av asynkrona meddelanden.
 ms.topic: article
-ms.date: 01/15/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c775555f82258c532d72917220129e3913ad314
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 10435f74cfb7c87ccb28b64e1b3f136add1dc927
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456053"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561882"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bra metoder för att öka prestanda med hjälp av meddelanden i Service Bus
 
@@ -44,17 +44,22 @@ Mer information om lägsta stöd för .NET standard Platform finns i [.net imple
 # <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
 Service Bus objekt som interagerar med tjänsten, till exempel [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)och [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor), bör registreras för beroende inmatning som singleton (eller instansieras en gång och delad). ServiceBusClient kan registreras för beroende inmatning med [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs). 
 
-Vi rekommenderar att du inte stänger eller tar bort de här objekten när du skickar eller tar emot varje meddelande. Om du stänger eller tar bort enhetsspecifika objekt (ServiceBusSender/mottagare/processor) kan du bryta ned länken till Service Bus tjänsten. Om du avstår från ServiceBusClient blir anslutningen till Service Buss tjänsten överrivad. Att upprätta en anslutning är en dyr åtgärd som du kan undvika genom att återanvända samma ServiceBusClient och skapa nödvändiga entiteter-speciella objekt från samma ServiceBusClient-instans. Du kan använda dessa klient objekt på ett säkert sätt för samtidiga asynkrona åtgärder och från flera trådar.
+Vi rekommenderar att du inte stänger eller tar bort de här objekten när du skickar eller tar emot varje meddelande. Om du stänger eller tar bort enhetsspecifika objekt (ServiceBusSender/mottagare/processor) kan du bryta ned länken till Service Bus tjänsten. Om du avstår från ServiceBusClient blir anslutningen till Service Buss tjänsten överrivad. 
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
-Service Bus klient objekt, till exempel implementeringar av [`IQueueClient`][QueueClient] eller [`IMessageSender`][MessageSender] , ska registreras för beroende inmatning som singleton (eller instansieras en gång och delad). Vi rekommenderar att du inte stänger meddelande fabriker, kö-, ämnes-eller prenumerations klienter när du har skickat ett meddelande och sedan skapar det igen när du skickar nästa meddelande. Om du stänger en meddelande fabrik tas anslutningen till Service Buss tjänsten bort. En ny anslutning upprättas när fabriken skapas på nytt. Att upprätta en anslutning är en dyr åtgärd som du kan undvika genom att återanvända samma fabriks-och klient objekt för flera åtgärder. Du kan använda dessa klient objekt på ett säkert sätt för samtidiga asynkrona åtgärder och från flera trådar.
+Service Bus klient objekt, till exempel implementeringar av [`IQueueClient`][QueueClient] eller [`IMessageSender`][MessageSender] , ska registreras för beroende inmatning som singleton (eller instansieras en gång och delad). Vi rekommenderar att du inte stänger meddelande fabriker, kö-, ämnes-eller prenumerations klienter när du har skickat ett meddelande och sedan skapar det igen när du skickar nästa meddelande. Om du stänger en meddelande fabrik tas anslutningen till Service Buss tjänsten bort. En ny anslutning upprättas när fabriken skapas på nytt. 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. Service Bus SDK](#tab/net-framework-sdk)
 
-Service Bus klient objekt, till exempel `QueueClient` eller `MessageSender` , skapas via ett [MessagingFactory][MessagingFactory] -objekt, vilket även ger intern hantering av anslutningar. Vi rekommenderar att du inte stänger meddelande fabriker, kö-, ämnes-eller prenumerations klienter när du har skickat ett meddelande och sedan skapar det igen när du skickar nästa meddelande. Om du stänger en meddelande fabrik tas anslutningen till Service Bus-tjänsten bort och en ny anslutning upprättas när fabriken skapas på nytt. Att upprätta en anslutning är en dyr åtgärd som du kan undvika genom att återanvända samma fabriks-och klient objekt för flera åtgärder. Du kan använda dessa klient objekt på ett säkert sätt för samtidiga asynkrona åtgärder och från flera trådar.
+Service Bus klient objekt, till exempel `QueueClient` eller `MessageSender` , skapas via ett [MessagingFactory][MessagingFactory] -objekt, vilket även ger intern hantering av anslutningar. Vi rekommenderar att du inte stänger meddelande fabriker, kö-, ämnes-eller prenumerations klienter när du har skickat ett meddelande och sedan skapar det igen när du skickar nästa meddelande. Om du stänger en meddelande fabrik tas anslutningen till Service Bus-tjänsten bort och en ny anslutning upprättas när fabriken skapas på nytt. 
 
 ---
+
+Följande anmärkning gäller alla SDK: er:
+
+> [!NOTE]
+> Att upprätta en anslutning är en dyr åtgärd som du kan undvika genom att återanvända samma fabriks-och klient objekt för flera åtgärder. Du kan använda dessa klient objekt på ett säkert sätt för samtidiga asynkrona åtgärder och från flera trådar.
 
 ## <a name="concurrent-operations"></a>Samtidiga åtgärder
 Åtgärder som att skicka, ta emot, ta bort och så vidare kan ta en stund. Den här gången inkluderar den tid som Service Bus tjänsten tar för att bearbeta åtgärden och svars tiden för begäran och svaret. För att öka antalet åtgärder per tid måste åtgärder köras samtidigt.

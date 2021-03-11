@@ -2,18 +2,19 @@
 title: 'Snabb start: Använd en Resource Manager-mall för att skapa en virtuell Windows-dator'
 description: I den här snabb starten får du lära dig hur du använder en Resource Manager-mall för att skapa en virtuell Windows-dator
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649677"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560760"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Snabb start: skapa en virtuell Windows-dator med en ARM-mall
 
@@ -80,7 +81,7 @@ Du kan använda Azure Portal för att kontrol lera den virtuella datorn och en a
 När de inte längre behövs tar du bort resurs gruppen, som tar bort den virtuella datorn och alla resurser i resurs gruppen. 
 
 1. Välj **resurs gruppen**.
-1. Välj **ta bort**på sidan för resurs gruppen.
+1. Välj **ta bort** på sidan för resurs gruppen.
 1. När du uppmanas till det anger du namnet på resurs gruppen och väljer sedan **ta bort**.
 
 

@@ -2,16 +2,17 @@
 title: Förbered en virtuell Debian Linux-hårddisk
 description: Lär dig hur du skapar Debian VHD-avbildningar för distributioner av virtuella datorer i Azure.
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: d822aa30926c473d08bc5d785211c82d038ef652
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203192"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554521"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Förbered en virtuell Debian-VHD för Azure
 ## <a name="prerequisites"></a>Förutsättningar

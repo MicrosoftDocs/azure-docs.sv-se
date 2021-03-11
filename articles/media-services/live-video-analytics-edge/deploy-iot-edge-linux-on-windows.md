@@ -3,16 +3,16 @@ title: Distribuera till en IoT Edge för Linux på Windows – Azure
 description: Den här artikeln innehåller rikt linjer för hur du distribuerar till en IoT Edge för Linux på Windows-enheter.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042189"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618142"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Distribuera till en IoT Edge för Linux på Windows-enheten (EFLOW)
 
-I den här artikeln får du lära dig hur du distribuerar direktsända video analyser på en Edge-enhet som har [IoT Edge för Linux på Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows?view=iotedge-2018-06). När du har gått igenom stegen i det här dokumentet kommer du att kunna köra ett [medie diagram](media-graph-concept.md) som identifierar rörelser i en video och avger sådana händelser till IoT Hub i molnet. Du kan sedan växla ut medie grafen för avancerade scenarier och ta kraften i direktsända video analyser till din Windows-baserade IoT Edge-enhet.
+I den här artikeln får du lära dig hur du distribuerar direktsända video analyser på en Edge-enhet som har [IoT Edge för Linux på Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows). När du har gått igenom stegen i det här dokumentet kommer du att kunna köra ett [medie diagram](media-graph-concept.md) som identifierar rörelser i en video och avger sådana händelser till IoT Hub i molnet. Du kan sedan växla ut medie grafen för avancerade scenarier och ta kraften i direktsända video analyser till din Windows-baserade IoT Edge-enhet.
 
 ## <a name="prerequisites"></a>Förutsättningar 
 

@@ -6,20 +6,17 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: b3ddbdf04dc736b6f78a04dc6bb2bc484e67f70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/11/2021
+ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107950"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617496"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>Bevilja och begära synlighet för hela klienten
 
 En användare med rollen Azure Active Directory (AD) för **Global administratör** kan ha ansvar för hela företaget, men saknar Azure-behörighet att visa den organisations information som finns i Azure Security Center. Behörighets höjning krävs eftersom roll tilldelningar för Azure AD inte beviljar åtkomst till Azure-resurser. 
-
-> [!TIP]
-> Läs mer om behörighets höjning för rollen global administratör i [öka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper](../role-based-access-control/elevate-access-global-admin.md).
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Bevilja behörighet för hela klienten själv
 
@@ -45,6 +42,14 @@ Så här tilldelar du dig själv behörigheter på klient nivå:
 1. Logga ut från Azure Portal och logga sedan in igen.
 
 1. När du har förhöjd åtkomst, öppna eller uppdatera Azure Security Center för att kontrol lera att du har insyn i alla prenumerationer under Azure AD-klienten. 
+
+Den enkla processen ovan utför ett antal åtgärder automatiskt åt dig:
+
+1. Användarens behörigheter är tillfälligt förhöjda.
+1. Med de nya behörigheterna tilldelas användaren den önskade Azure RBAC-rollen i rot hanterings gruppen.
+1. De utökade behörigheterna tas bort.
+
+Mer information om Azure AD-upphöjnings processen finns i [öka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper](../role-based-access-control/elevate-access-global-admin.md).
 
 
 ## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Begär behörigheter för klient åtkomst när dina inte är tillräckliga

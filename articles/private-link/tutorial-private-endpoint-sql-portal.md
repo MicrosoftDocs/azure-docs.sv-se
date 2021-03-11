@@ -1,5 +1,5 @@
 ---
-title: Självstudie – ansluta till en Azure SQL-Server med en privat Azure-slutpunkt – Portal
+title: 'Självstudie: ansluta till en Azure SQL-Server med en privat Azure-slutpunkt – Portal'
 description: Använd den här självstudien för att lära dig hur du skapar en Azure SQL-Server med en privat slut punkt med hjälp av Azure Portal.
 services: private-link
 author: asudbring
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dfbd1f4077caa2fd80a00e3cf950735363a0a971
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8bb227bdc4bbcdf986c2ed64e1f89e1dfa289b83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099904"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554980"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Självstudie – ansluta till en Azure SQL-Server med en privat Azure-slutpunkt – Azure Portal
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Självstudie: ansluta till en Azure SQL-Server med hjälp av en privat Azure-slutpunkt – Azure Portal
 
 Den privata Azure-slutpunkten är det grundläggande Bygg blocket för privat länk i Azure. Den gör det möjligt för Azure-resurser, till exempel virtuella datorer, att kommunicera med privata länk resurser privat.
 
@@ -177,7 +177,7 @@ I det här avsnittet ska du skapa en SQL-Server i Azure.
     | Prenumeration | Välj din prenumeration. |
     | Resursgrupp | Välj **CreateSQLEndpointTutorial**. |
     | Location | Välj **USA, östra**. |
-    | Namn | Ange **myPrivateSQLendpoint**. |
+    | Name | Ange **myPrivateSQLendpoint**. |
     | Målunderresurs | Välj **SQLServer**. |
     | **Nätverk** |  |
     | Virtuellt nätverk | Välj **myVNet**. |
@@ -261,8 +261,6 @@ I den här självstudien har du skapat en:
 
 Du använde den virtuella datorn för att testa anslutningen på ett säkert sätt till SQL Server över den privata slut punkten.
 
-Som nästa steg kanske du också är intresse rad av arkitektur scenariot för [webbappen med privat anslutning till Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , som ansluter ett webb program utanför det virtuella nätverket till en Databass privata slut punkt.
-
-Lär dig hur du skapar en privat länk-tjänst:
+Som nästa steg kanske du också är intresse rad av arkitektur scenariot för **webbappen med privat anslutning till Azure SQL Database** , som ansluter ett webb program utanför det virtuella nätverket till en Databass privata slut punkt.
 > [!div class="nextstepaction"]
-> [Skapa en Private Link-tjänst](create-private-link-service-portal.md)
+> [Webbapp med privat anslutning till Azure SQL Database](/azure/architecture/example-scenario/private-web-app/private-web-app)

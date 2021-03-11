@@ -1,22 +1,22 @@
 ---
 title: Linux-tillägg för VM-ögonblicksbild för Azure Backup
 description: Ta programkonsekvent säkerhets kopiering av den virtuella datorn från Azure Backup med hjälp av Linux-tillägget för VM-ögonblicksbild.
-services: backup, virtual-machines-linux
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
-manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 2bf653bb42351c9ab4811fde695c8f821fd42d7c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ea984fdc4abeb08f4b080e913a0c34b99c59d93c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966776"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561117"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Linux-tillägg för VM-ögonblicksbild för Azure Backup
 
@@ -26,7 +26,7 @@ Azure Backup ger stöd för säkerhets kopiering av arbets belastningar från lo
 
 VMSnapshot-tillägget visas endast i Azure Portal för icke-hanterade virtuella datorer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="operating-system"></a>Operativsystem
 En lista över operativ system som stöds finns i [operativ system som stöds av Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
@@ -63,9 +63,9 @@ Följande JSON visar schemat för ögonblicks bilds tillägget för den virtuell
 
 ### <a name="property-values"></a>Egenskaps värden
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | sträng |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | sträng |
 | locale | sv-se | sträng |

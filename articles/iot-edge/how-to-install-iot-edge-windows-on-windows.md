@@ -9,49 +9,31 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: kgremban
-ms.openlocfilehash: 7857f93e8c767f270041bb6bf041447786ce19ff
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c24389a1957f9e0cfb23e3bb5b8604c34e57a915
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634244"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609523"
 ---
-# <a name="install-and-manage-azure-iot-edge-for-windows"></a>Installera och hantera Azure IoT Edge för Windows
+# <a name="install-and-manage-azure-iot-edge-with-windows-containers"></a>Installera och hantera Azure IoT Edge med Windows-behållare
 
-Azure IoT Edge för Windows körs direkt på värd Windows-enheten och använder Windows-behållare för att köra affärs logiken på gränsen.
-
-Azure IoT Edge runtime är vad som förvandlar en enhet till en IoT Edge enhet. Körningen kan distribueras på enheter så små som Raspberry Pi eller lika stora som en industriell Server. När en enhet har konfigurerats med IoT Edge-körningen kan du börja distribuera affärslogiken till den från molnet. Mer information finns i [förstå Azure IoT Edge Runtime och dess arkitektur](iot-edge-runtime.md).
-
->[!NOTE]
->Azure IoT Edge för Windows stöds inte från och med version 1.2.0 av Azure IoT Edge.
->
->Överväg att använda den nya metoden för att köra IoT Edge på Windows-enheter Azure IoT Edge för Linux i Windows.
-
-<!-- TODO: link to EFLOW-->
+Azure IoT Edge runtime är vad som förvandlar en enhet till en IoT Edge enhet. När en enhet har konfigurerats med IoT Edge-körningen kan du börja distribuera affärslogiken till den från molnet. Mer information finns i [förstå Azure IoT Edge Runtime och dess arkitektur](iot-edge-runtime.md).
 
 Det finns två steg för att konfigurera en IoT Edge enhet. Det första steget är att installera körningen och dess beroenden. Det andra steget är att ansluta enheten till sin identitet i molnet och konfigurera autentisering med IoT Hub.
 
-Den här artikeln beskriver stegen för att installera Azure IoT Edge runtime på Windows-enheter. När du installerar körnings miljön kan du välja att använda Linux-behållare eller Windows-behållare. För närvarande stöds endast Windows-behållare i Windows för produktions scenarier. Linux-behållare i Windows är användbara för utvecklings-och testnings scenarier, särskilt om du utvecklar på en Windows-dator för att distribuera till Linux-enheter.
+I den här artikeln beskrivs stegen för att installera Azure IoT Edge runtime med Windows-behållare. Om du vill använda Linux-behållare på en Windows-enhet kan du läsa artikeln [Azure IoT Edge för Linux på Windows](how-to-install-iot-edge-on-windows.md) .
+
+>[!NOTE]
+>Azure IoT Edge med Windows-behållare stöds inte från och med version 1,2 av Azure IoT Edge.
+>
+>Överväg att använda den nya metoden för att köra IoT Edge på Windows-enheter [Azure IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Windows-enhet
 
-  IoT Edge med Windows-behållare kräver Windows version 1809/build 17762, vilket är den senaste versionen av [Windows långtids support](/windows/release-information/). För utvecklings-och test scenarier fungerar alla SKU: er (Pro, Enterprise, Server osv.) som stöder behållar funktionen. Se dock till att granska [listan över system som stöds](support.md#operating-systems) innan du går vidare till produktion.
-
-  IoT Edge med Linux-behållare kan köras på alla versioner av Windows som uppfyller [kraven för Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
-
-* Stöd för behållare på enheten
-
-  Azure IoT Edge förlitar sig på en [OCI-kompatibel](https://www.opencontainers.org/) container motor. Kontrol lera att enheten har stöd för behållare.
-
-  Om du installerar IoT Edge på en virtuell dator aktiverar du kapslad virtualisering och allokerar minst 2 GB minne. För Hyper-V kan virtuella datorer i generation 2 ha kapslad virtualisering aktiverat som standard. För VMware finns det en växling för att aktivera funktionen på den virtuella datorn.
-
-  Om du installerar IoT Edge på en IoT Core-enhet använder du följande kommando i en [fjärran sluten PowerShell-session](/windows/iot-core/connect-your-device/powershell) för att kontrol lera om Windows-behållare stöds på din enhet:
-
-  ```powershell
-  Get-Service vmcompute
-  ```
+  IoT Edge med Windows-behållare kräver Windows version 1809/build 17763, vilket är den senaste versionen av [Windows långtids support](/windows/release-information/). Se till att gå igenom [listan över system](support.md#operating-systems) som stöds för att se en lista över SKU: er som stöds.
 
 * Ett [registrerat enhets-ID](how-to-register-device.md)
 
@@ -61,16 +43,9 @@ Den här artikeln beskriver stegen för att installera Azure IoT Edge runtime p�
 
 ## <a name="install-a-container-engine"></a>Installera en behållar motor
 
-Azure IoT Edge förlitar sig på en OCI-kompatibel container Runtime. För produktions scenarier rekommenderar vi att du använder den Moby-baserade motorn. Moby-motorn är den enda behållar motorn som stöds officiellt med Azure IoT Edge. Docker CE/EE-behållar avbildningar är kompatibla med Moby-körningsmiljön.
-
-För produktions scenarier använder du den Moby-baserade motorn som ingår i installations skriptet. Det finns inga ytterligare steg för att installera motorn.
-
-För IoT Edge med Linux-behållare måste du ange en egen container Runtime. Installera [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) på enheten och konfigurera den så att den [använder Linux-behållare](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) innan du fortsätter.
+Azure IoT Edge förlitar sig på en OCI-kompatibel container runtime som [Moby](https://github.com/moby/moby). En Moby-baserad motor som ingår i installations skriptet. Det finns inga ytterligare steg för att installera motorn.
 
 ## <a name="install-the-iot-edge-security-daemon"></a>Installera IoT Edge Security daemon
-
->[!TIP]
->För IoT core-enheter rekommenderar vi att du kör installations kommandona med en fjärran sluten PowerShell-session. Mer information finns i [använda PowerShell för Windows IoT](/windows/iot-core/connect-your-device/powershell).
 
 1. Kör PowerShell som administratör.
 
@@ -91,21 +66,14 @@ För IoT Edge med Linux-behållare måste du ange en egen container Runtime. Ins
    Deploy-IoTEdge
    ```
 
-   `Deploy-IoTEdge`Kommandot använder som standard Windows-behållare. Om du vill använda Linux-behållare lägger du till `ContainerOs` parametern:
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge -ContainerOs Linux
-   ```
-
-3. I det här läget kan IoT core-enheter startas om automatiskt. Windows 10-eller Windows Server-enheter kan bli ombedd att starta om. Om så är fallet startar du om enheten nu.
+3. Starta om enheten om du uppmanas att göra det.
 
 När du installerar IoT Edge på en enhet kan du använda ytterligare parametrar för att ändra processen, inklusive:
 
 * Direkt trafik för att gå igenom en proxyserver
 * Peka installations programmet till en lokal katalog för offline-installation.
 
-Mer information om dessa ytterligare parametrar finns i [PowerShell-skript för IoT Edge i Windows](reference-windows-scripts.md).
+Mer information om dessa ytterligare parametrar finns i [PowerShell-skript för IoT Edge med Windows-behållare](reference-windows-scripts.md).
 
 ## <a name="provision-the-device-with-its-cloud-identity"></a>Etablera enheten med dess moln identitet
 
@@ -131,13 +99,6 @@ Det här avsnittet går igenom stegen för att etablera en enhet med symmetrisk 
    Initialize-IoTEdge -ManualConnectionString -ContainerOs Windows
    ```
 
-   * Om du använder Linux-behållare lägger du till `-ContainerOs` parametern i flaggan. Var konsekvent med det behållar alternativ som du valde med det `Deploy-IoTEdge` kommando som du körde tidigare.
-
-      ```powershell
-      . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-      Initialize-IoTEdge -ContainerOs Linux
-      ```
-
    * Om du har laddat ned IoTEdgeSecurityDaemon.ps1-skriptet till enheten för offline eller en speciell versions installation, måste du se till att referera till den lokala kopian av skriptet.
 
       ```powershell
@@ -154,7 +115,7 @@ När du etablerar en enhet manuellt kan du använda ytterligare parametrar för 
 * Direkt trafik för att gå igenom en proxyserver
 * Deklarera en speciell avbildning av edgeAgent-behållaren och ange autentiseringsuppgifter om den finns i ett privat register
 
-Mer information om dessa ytterligare parametrar finns i [PowerShell-skript för IoT Edge i Windows](reference-windows-scripts.md).
+Mer information om dessa ytterligare parametrar finns i [PowerShell-skript för IoT Edge med Windows-behållare](reference-windows-scripts.md).
 
 ### <a name="option-2-authenticate-with-x509-certificates"></a>Alternativ 2: autentisera med X. 509-certifikat
 
@@ -171,13 +132,6 @@ Det här avsnittet går igenom stegen för att etablera en enhet med X. 509 cert
    Initialize-IoTEdge -ManualX509
    ```
 
-   * Om du använder Linux-behållare lägger du till `-ContainerOs` parametern i flaggan. Var konsekvent med det behållar alternativ som du valde med det `Deploy-IoTEdge` kommando som du körde tidigare.
-
-      ```powershell
-      . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-      Initialize-IoTEdge -ManualX509 -ContainerOs Linux
-      ```
-
    * Om du har laddat ned IoTEdgeSecurityDaemon.ps1-skriptet till enheten för offline eller en speciell versions installation, måste du se till att referera till den lokala kopian av skriptet.
 
       ```powershell
@@ -187,17 +141,17 @@ Det här avsnittet går igenom stegen för att etablera en enhet med X. 509 cert
 
 3. När du uppmanas att göra det anger du följande information:
 
-   * **IotHubHostName**: värd namnet för den IoT-hubb som enheten ska ansluta till. Ett exempel är `{IoT hub name}.azure-devices.net`.
+   * **IotHubHostName**: värd namnet för den IoT-hubb som enheten ska ansluta till. Till exempel `{IoT hub name}.azure-devices.net`.
    * **DeviceID**: det ID som du angav när du registrerade enheten.
-   * **X509IdentityCertificate**: absolut sökväg till ett identitets certifikat på enheten. Ett exempel är `C:\path\identity_certificate.pem`.
-   * **X509IdentityPrivateKey**: absolut sökväg till den privata nyckel filen för det tillhandahållna identitets certifikatet. Ett exempel är `C:\path\identity_key.pem`.
+   * **X509IdentityCertificate**: absolut sökväg till ett identitets certifikat på enheten. Till exempel `C:\path\identity_certificate.pem`.
+   * **X509IdentityPrivateKey**: absolut sökväg till den privata nyckel filen för det tillhandahållna identitets certifikatet. Till exempel `C:\path\identity_key.pem`.
 
 När du etablerar en enhet manuellt kan du använda ytterligare parametrar för att ändra processen, inklusive:
 
 * Direkt trafik för att gå igenom en proxyserver
 * Deklarera en speciell avbildning av edgeAgent-behållaren och ange autentiseringsuppgifter om den finns i ett privat register
 
-Mer information om dessa ytterligare parametrar finns i [PowerShell-skript för IoT Edge i Windows](reference-windows-scripts.md).
+Mer information om dessa ytterligare parametrar finns i [PowerShell-skript för IoT Edge med Windows-behållare](reference-windows-scripts.md).
 
 ## <a name="offline-or-specific-version-installation-optional"></a>Offline eller en speciell versions installation (valfritt)
 
@@ -220,9 +174,7 @@ Om enheten ska vara offline under installationen, eller om du vill installera en
 2. Leta upp den version som du vill installera och ladda ned följande filer från avsnittet **till gångar** i viktig information på din IoT-enhet:
 
    * IoTEdgeSecurityDaemon.ps1
-   * Microsoft-Azure-IoTEdge-amd64.cab från att lansera 1.0.9 eller senare, eller Microsoft-Azure-IoTEdge.cab från att lansera 1.0.8 och äldre.
-
-   Microsoft-Azure-IotEdge-arm32.cab är även tillgängligt från och med 1.0.9 endast för testning. IoT Edge stöds för närvarande inte på Windows ARM32-enheter.
+   * Microsoft-Azure-IoTEdge-amd64.cab från 1,1 versions kanal.
 
    Det är viktigt att använda PowerShell-skriptet från samma version som. cab-filen som du använder eftersom funktionen ändras till att stödja funktionerna i varje version.
 
@@ -246,19 +198,19 @@ Om enheten ska vara offline under installationen, eller om du vill installera en
 Använd `Update-IoTEdge` kommandot för att uppdatera Security daemon. Skriptet hämtar automatiskt den senaste versionen av Security daemon.
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge
 ```
 
-Att köra kommandot Update-IoTEdge tar bort och uppdaterar säkerhets daemonen från enheten, tillsammans med de två behållar avbildningarna. Config. yaml-filen sparas på enheten, samt data från Moby container Engine (om du använder Windows-behållare). Att behålla konfigurations informationen innebär att du inte behöver ange anslutnings strängen eller enhets etablerings tjänstens information för enheten igen under uppdaterings processen.
+Att köra kommandot Update-IoTEdge tar bort och uppdaterar säkerhets daemonen från enheten, tillsammans med de två behållar avbildningarna. Config. yaml-filen sparas på enheten, samt data från Moby container Engine. Att behålla konfigurations informationen innebär att du inte behöver ange anslutnings strängen eller enhets etablerings tjänstens information för enheten igen under uppdaterings processen.
 
-Om du vill uppdatera till en speciell version av Security daemon, letar du upp den version som du vill använda för [IoT Edge-versioner](https://github.com/Azure/azure-iotedge/releases). I den versionen hämtar du **Microsoft-Azure-IoTEdge.cab** -filen. Använd sedan `-OfflineInstallationPath` parametern för att peka på den lokala fil platsen. Till exempel:
+Om du vill uppdatera till en speciell version av Security daemon letar du reda på versionen från 1,1 versions kanal som du vill rikta mot [IoT Edge-versioner](https://github.com/Azure/azure-iotedge/releases). I den versionen hämtar du **Microsoft-Azure-IoTEdge.cab** -filen. Använd sedan `-OfflineInstallationPath` parametern för att peka på den lokala fil platsen. Exempel:
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -OfflineInstallationPath <absolute path to directory>
 ```
 
 >[!NOTE]
->`-OfflineInstallationPath`Parametern söker efter en fil med namnet **Microsoft-Azure-IoTEdge.cab** i den angivna katalogen. Från och med IoT Edge version 1.0.9-RC4 finns det två CAB-filer som är tillgängliga för användning, en för AMD64-enheter och en för ARM32. Hämta rätt fil för enheten och byt sedan namn på filen för att ta bort det.
+>`-OfflineInstallationPath`Parametern söker efter en fil med namnet **Microsoft-Azure-IoTEdge.cab** i den angivna katalogen. Byt namn på filen om du vill ta bort Architecture-suffixet.
 
 Om du vill uppdatera en enhet offline söker du efter den version som du vill använda för [Azure IoT Edge-versioner](https://github.com/Azure/azure-iotedge/releases). I den versionen laddar du ned *IoTEdgeSecurityDaemon.ps1* och *Microsoft-Azure-IoTEdge.cab* filer. Det är viktigt att använda PowerShell-skriptet från samma version som. cab-filen som du använder eftersom funktionen ändras till att stödja funktionerna i varje version.
 
@@ -271,7 +223,7 @@ Om du vill uppdatera med offline-komponenter kan du [punkt källa](/powershell/m
 Update-IoTEdge -OfflineInstallationPath <path>
 ```
 
-Om du vill ha mer information om uppdaterings alternativ använder du kommandot `Get-Help Update-IoTEdge -full` eller läser [PowerShell-skript för IoT Edge i Windows](reference-windows-scripts.md).
+Om du vill ha mer information om uppdaterings alternativ använder du kommandot `Get-Help Update-IoTEdge -full` eller läser [PowerShell-skript för IoT Edge med Windows-behållare](reference-windows-scripts.md).
 
 ## <a name="uninstall-iot-edge"></a>Avinstallera IoT Edge
 
@@ -283,8 +235,6 @@ Om du vill ta bort IoT Edge installationen från Windows-enheten använder du ko
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
-
-`Uninstall-IoTEdge`Kommandot fungerar inte på Windows IoT Core. Om du vill ta bort IoT Edge måste du distribuera om din Windows IoT Core-avbildning.
 
 Om du vill ha mer information om avinstallations alternativ använder du kommandot `Get-Help Uninstall-IoTEdge -full` .
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde82a0ad50c2172e70337ad202b91af0a62c530
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535533"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547823"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Inbyggda kognitiva färdigheter för text-och bild bearbetning under indexering (Azure Kognitiv sökning)
 
@@ -34,7 +34,7 @@ Flera färdigheter är flexibla i vad de använder eller producerar. I allmänhe
 | Kvalifikation | Beskrivning |
 |-------|-------------|
 |[Microsoft. färdigheter. text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Söker efter text från en anpassad, användardefinierad lista med ord och fraser.|
-| [Microsoft. färdigheter. text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Den här kunskapen använder en förtränad modell för att identifiera viktiga fraser baserade på placering av termer, språk regler, närhet till andra villkor och hur ovanlig termen är i käll data. |
+| [Microsoft. färdigheter. text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md) | Den här kunskapen använder en förtränad modell för att identifiera viktiga fraser baserade på placering av termer, språk regler, närhet till andra villkor och hur ovanlig termen är i käll data. |
 | [Microsoft. färdigheter. text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Den här kunskapen använder en förtränad modell för att identifiera vilket språk som används (ett språk-ID per dokument). När flera språk används i samma text segment, är utdata LCID för det mest använda språket.|
 | [Microsoft. färdigheter. text. MergeSkill](cognitive-search-skill-textmerger.md) | Konsoliderar text från en samling fält till ett enda fält.  |
 | [Microsoft. färdigheter. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Den här kunskapen använder en förtränad modell för att upprätta entiteter för en fast uppsättning kategorier: personer, plats, organisation, e-post, URL: er, DateTime-fält. |

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e598f16c6b441cf986c7ac82d67c037f75be8982
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935950"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547449"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Kognitiv kompetens för entitets igenkänning
 
@@ -150,8 +150,8 @@ Parametrar är skiftlägeskänsliga.
 ```
 
 
-## <a name="error-cases"></a>Fel fall
-Om språk koden för dokumentet inte stöds returneras ett fel och inga entiteter extraheras.
+## <a name="warning-cases"></a>Varnings fall
+Om språk koden för dokumentet inte stöds returneras en varning och inga entiteter extraheras.
 
 ## <a name="see-also"></a>Se även
 

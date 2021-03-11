@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213104"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609404"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
@@ -37,6 +37,77 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 > Du kan använda [Azure Portal](https://portal.azure.com/) för att hantera v3 [Live-händelser](live-events-outputs-concept.md), Visa v3- [till gångar](assets-concept.md) och jobb, hämta information om åtkomst till API: er, Kryptera innehåll. För alla andra hanterings aktiviteter (till exempel Hantera transformeringar och jobb) använder du [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
 >
 > Mer information finns i: [Azure Portal begränsningar för Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>Stöd för HEVC-kodning i standard-kodare
+
+Standard-kodaren stöder nu 8-bitars HEVC (H. 265)-kodnings stöd. HEVC-innehåll kan levereras och paketeras via den dynamiska Paketeraren med formatet "hev1".  
+
+En ny .NET-anpassad kodning med HEVC-exemplet finns i [databasen Media-Services-v3-dotNet git Hub](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC).
+Förutom anpassad kodning är nu följande nya inbyggda HEVC Encoding-förval tillgängliga:
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+
+Kunder som tidigare använde HEVC i Premium-kodaren i v2-API: et bör migreras till att använda det nya HEVC Encoding-stödet i Standard-kodaren.
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API och SDK-utfasnings meddelande
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Uppdatera din Azure Media Services REST API och SDK: er till v3 senast den 29 februari 2024
+
+Eftersom version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java erbjuder fler funktioner än version 2, kommer vi att ta bort version 2 av Azure Media Services REST API-och klient-SDK: er för .NET och Java. Vi rekommenderar att du gör switchen tidigare för att få bättre fördelar med version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java. Version 3 tillhandahåller: 
+ 
+- Real tids support dygnet runt
+- ARM-REST-API: er, klient-SDK: er för .NET Core, Node.js, python, Java, go och Ruby.
+- Kundhanterade nycklar, betrodd lagrings integrering, stöd för privat länk och [mycket mer](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Åtgärd krävs:
+
+Du kan minimera störningar i arbets belastningarna genom att granska [migreringsguiden](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) för att överföra koden från version 2 API och SDK: er till version 3 API och SDK före den 29 februari 2024.
+**Efter 29 februari 2024** kommer Azure Media Services inte längre att acceptera trafik på version 2 REST API, arm-kontots hanterings-API-version 2015-10-01 eller från version 2 .net-klient-SDK: er. Detta omfattar klient-SDK: er med öppen källkod från tredje part som kan anropa API: t för version 2.  
+
+Se det officiella [uppdaterings meddelandet för Azure](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>Stöd för standard-kodare för v2 API-funktioner
+
+Förutom det nya extra stödet för HEVC (H. 265) encoding är följande funktioner nu tillgängliga i 2020-05-01-versionen av kodnings-API: et. 
+
+- Stöd för flera indatafiler stöds nu med hjälp av det nya **JobInputClip** -stödet. 
+    - Ett exempel är tillgängligt för .NET som visar hur du [häftar ihop två till gångar](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets).
+- Med ljud spår val kan kunder välja och mappa inkommande ljud spår och dirigera dem till utdata för kodning
+    - Se [REST API-openapi för information](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) om **AudioTrackDescriptor** och spåra val
+- Spåra markering för kodning – gör att kunderna kan välja spår från en OMRÅDESGRÄNSROUTER-källfil eller ett Live-Arkiv som har flera bit hastighets spår. Mycket användbart för att skapa hastigheter från live event Archive-filer.
+    - Se [VideoTrackDescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562)
+- Bortredigering-funktioner (oskärpa) har lagts till i FaceDetector
+    - Se [bortredigering](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634) och [kombinerade](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649) lägen i FaceDetector för inställning
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>Nya klient-SDK-versioner för 2020-05-01-versionen av Azure Media Services API
+
+Nya klient-SDK-versioner för alla tillgängliga språk är nu tillgängliga med ovanstående funktioner.
+Uppdatera till de senaste klient-SDK: erna i dina kod baser med hjälp av din paket hanterare.
+
+- [3.0.4 för .NET SDK-paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js typescript version 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python Azure-MGMT-Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK-1.0.0 – beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Uppdaterade typescript Node.js-exempel med isomorphic SDK för Java Script
+
+De Node.js exemplen har uppdaterats för att använda den senaste isomorphic SDK. Exemplen visar nu användningen av typescript. Dessutom lades ett nytt live streaming-exempel till för Node.js/typescript.
+
+Se de senaste exemplen i avsnittet **[Media-Services-v3-Node-självstudier](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** git Hub lagrings platsen.
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>Nytt live-Typvärde som stöder snabbare start från varmt tillstånd
+
+Live-händelser stöder nu ett fakturerings läge med lägre kostnad för "fristående". Detta gör det möjligt för kunderna att förallokera Live-händelser till en lägre kostnad för att skapa "frekventa pooler". Kunderna kan sedan använda Live-händelser för att övergå till körnings tillstånd snabbare än att starta från kall vid skapande.  Detta minskar tiden för att starta kanalen avsevärt och möjliggör snabb allokering av datorer som körs i ett lägre pris läge.
+Se den senaste pris informationen [här](https://azure.microsoft.com/pricing/details/media-services).
+Mer information om StandBy-tillståndet och andra Live-händelser finns i artikeln- [Live händelse tillstånd och fakturering.](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing)
 
 ## <a name="december-2020"></a>December 2020
 

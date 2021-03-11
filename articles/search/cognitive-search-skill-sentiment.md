@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935287"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547483"
 ---
 # <a name="sentiment-cognitive-skill"></a>Sentiment kognitiva kunskaper
 
@@ -110,11 +110,9 @@ Parametrar är skiftlägeskänsliga.
 }
 ```
 
-## <a name="notes"></a>Obs!
-Om värdet är tomt returneras ingen sentiment Poäng för dessa poster.
-
-## <a name="error-cases"></a>Fel fall
-Om ett språk inte stöds genereras ett fel och inget sentiment Poäng returneras.
+## <a name="warning-cases"></a>Varnings fall
+Om texten är tom genereras en varning och ingen sentiment Poäng returneras.
+Om ett språk inte stöds genereras en varning och ingen sentiment Poäng returneras.
 
 ## <a name="see-also"></a>Se även
 

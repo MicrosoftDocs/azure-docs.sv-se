@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520905"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618108"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Använd privata python-paket med Azure Machine Learning
 
@@ -52,11 +52,11 @@ Internt ersätter Azure Machine Learning-tjänsten URL: en med säker SAS-URL, s
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Använd en lagrings plats för paket från Azure DevOps-feed
 
-Om du aktivt utvecklar python-paket för ditt Machine Learning-program kan du vara värd för dem i en Azure DevOps-lagringsplats som artefakter och publicera dem som en feed. Med den här metoden kan du integrera DevOps-arbetsflödet för att skapa paket med din Azure Machine Learning-arbetsyta. Läs [komma igång med python-paket i Azure-artefakter](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops) för att lära dig hur du konfigurerar python-flöden med Azure DevOps
+Om du aktivt utvecklar python-paket för ditt Machine Learning-program kan du vara värd för dem i en Azure DevOps-lagringsplats som artefakter och publicera dem som en feed. Med den här metoden kan du integrera DevOps-arbetsflödet för att skapa paket med din Azure Machine Learning-arbetsyta. Läs [komma igång med python-paket i Azure-artefakter](/azure/devops/artifacts/quickstarts/python-packages) för att lära dig hur du konfigurerar python-flöden med Azure DevOps
 
 Den här metoden använder personlig åtkomsttoken för att autentisera mot lagrings platsen. Samma metod gäller för andra databaser med token-baserad autentisering, till exempel privata GitHub-databaser. 
 
- 1. [Skapa en personlig åtkomsttoken (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) för din Azure DevOps-instans. Ange omfånget för token som ska __paketera > läsa__. 
+ 1. [Skapa en personlig åtkomsttoken (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat) för din Azure DevOps-instans. Ange omfånget för token som ska __paketera > läsa__. 
 
  2. Lägg till URL-och PAT för Azure-DevOps som egenskaper för arbets ytan med hjälp av metoden [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) .
 

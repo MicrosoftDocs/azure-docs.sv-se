@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051232"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561899"
 ---
 # <a name="storage-account-overview"></a>Översikt över lagringskonto
 
@@ -71,7 +71,7 @@ Allmänna-Purpose v2-lagrings konton har stöd för de senaste Azure Storage fun
 - Tabeller
 
 > [!NOTE]
-> Microsoft rekommenderar att du använder ett allmänt-syfte v2-lagrings konto för de flesta scenarier. Du kan enkelt uppgradera ett allmänt v1-eller Blob Storage-konto till ett allmänt-syfte v2-konto utan avbrott och utan att behöva kopiera data.
+> Microsoft rekommenderar att du använder ett allmänt-syfte v2-lagrings konto för de flesta scenarier. Du kan enkelt uppgradera ett allmänt v1-eller Blob Storage-konto till ett allmänt-syfte v2-konto utan avbrott och utan att behöva kopiera data. Uppgraderingen kan dock inte återställas.
 >
 > Mer information om hur du uppgraderar till ett allmänt-syfte v2-konto finns i [Uppgradera till ett allmänt-syfte v2-lagrings konto](storage-account-upgrade.md).
 
@@ -87,13 +87,18 @@ Generella v1-lagrings konton ger till gång till alla Azure Storage-tjänster, m
 - Köer
 - Tabeller
 
-Microsoft rekommenderar General-Purpose v2-konton för de flesta scenarier. Du kan använda generella v1-konton i följande scenarier:
+Du kan använda generella v1-konton i följande scenarier:
 
 - Dina program kräver den klassiska Azure-distributions modellen. Allmänna-Purpose v2-konton och Blob Storage-konton stöder bara Azure Resource Manager distributions modellen.
 
 - Dina program är transaktions intensiva eller använder avsevärd bandbredd för geo-replikering, men kräver inte stor kapacitet. I det här fallet kan generell användning v1 vara det mest ekonomiska valet.
 
 - Du använder en version av [lagrings tjänster REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) som är tidigare än 2014-02-14 eller ett klient bibliotek med en version som är lägre än 4. x. Du kan inte uppgradera ditt program.
+
+> [!NOTE]
+> Även om Microsoft rekommenderar General-Purpose v2-konton för de flesta scenarier kommer Microsoft att fortsätta att stödja allmänna v1-konton för nya och befintliga kunder. Du kan skapa generella v1-lagrings konton i nya regioner när Azure Storage är tillgängliga i dessa regioner. Microsoft har för närvarande inte en plan för att föråldra support för allmänna v1-konton och ger minst ett års varsel innan det går att använda en Azure Storage-funktion. Microsoft fortsätter att tillhandahålla säkerhets uppdateringar för generella v1-konton, men ingen ny funktions utveckling förväntas för den här konto typen.
+>
+> Från och med den 1 oktober 2020 är prissättningen för allmänna v1-konton i nya Azure Storage regioner likvärdig med prissättningen för General-Purpose v2-konton i dessa regioner. Priser i befintliga Azure Storage-regioner har inte ändrats. Pris information för allmänna v1-konton i en speciell region finns på sidan med Azure Storage priser. **Välj din** region och välj sedan bredvid **prissättnings erbjudanden**.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-konton
 

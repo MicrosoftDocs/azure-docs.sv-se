@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725252"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560624"
 ---
 # <a name="securing-external-access-with-groups"></a>Skydda extern åtkomst med grupper 
 
@@ -54,7 +54,7 @@ När du utvecklar din grupp strategi för att skydda extern åtkomst till dina r
 
    * *Som standard kan alla användare skapa M365 grupper och grupper är öppna för alla (interna och externa) användare i din klient organisation att ansluta till*. 
 
-      * [Du kan begränsa skapandet av Microsoft 365 grupper](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) till medlemmarna i en viss säkerhets grupp. Använd Windows PowerShell för att konfigurera den här inställningen. 
+      * [Du kan begränsa skapandet av Microsoft 365 grupper](/microsoft-365/solutions/manage-creation-of-groups) till medlemmarna i en viss säkerhets grupp. Använd Windows PowerShell för att konfigurera den här inställningen. 
 
 * **Vem ska kunna bjuda in personer till grupper?** Kan alla grupp medlemmar kunna lägga till andra medlemmar, eller så kan endast grupp ägare lägga till medlemmar?
 
@@ -86,7 +86,7 @@ Mer information om dynamiska grupper finns [i Skapa eller uppdatera en dynamisk 
 
 När du använder grupper av säkerhets-eller resurs åtkomst, är det viktigt att de har en enda funktion. Om en grupp används för att bevilja åtkomst till resurser, bör den inte användas i något annat syfte. Om en grupp används för allmänna syfte, till exempel för att definiera plats-eller grupp medlemskap, bör den också användas för att skydda åtkomsten. 
 
-Vi rekommenderar en namngivnings konvention för säkerhets grupper som gör syftet tydligt. Ett exempel:
+Vi rekommenderar en namngivnings konvention för säkerhets grupper som gör syftet tydligt. Exempel:
 
 * *Secure_access_finance_apps*
 
@@ -150,13 +150,13 @@ Hybrid organisationer har både en lokal infrastruktur och en moln infrastruktur
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 grupper
 
-[Microsoft 365 grupper](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) är den grundläggande medlemskaps tjänsten som driver all åtkomst över M365. De kan skapas från [Azure Portal](https://portal.azure.com/)eller [M365-portalen](https://admin.microsoft.com/). När en M365-grupp skapas beviljar du åtkomst till en grupp med resurser som används för att samar beta. Se [Översikt över Microsoft 365 grupper för administratörer](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) för en fullständig lista över dessa resurser.
+[Microsoft 365 grupper](/microsoft-365/admin/create-groups/office-365-groups) är den grundläggande medlemskaps tjänsten som driver all åtkomst över M365. De kan skapas från [Azure Portal](https://portal.azure.com/)eller [M365-portalen](https://admin.microsoft.com/). När en M365-grupp skapas beviljar du åtkomst till en grupp med resurser som används för att samar beta. Se [Översikt över Microsoft 365 grupper för administratörer](/microsoft-365/admin/create-groups/office-365-groups) för en fullständig lista över dessa resurser.
 
 M365-grupper har följande olika delarna för sina roller
 
 * **Ägare** – grupp ägare kan lägga till eller ta bort medlemmar och ha unika behörigheter som möjligheten att ta bort konversationer från den delade Inkorgen eller ändra grupp inställningarna. Grupp ägare kan byta namn på gruppen, uppdatera beskrivningen eller bilden med mera.
 
-* **Medlemmar** – medlemmar kan komma åt allt i gruppen, men kan inte ändra grupp inställningar. Som standard kan grupp medlemmar bjuda in gäster att delta i gruppen, men du kan [kontrol lera den inställningen](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Medlemmar** – medlemmar kan komma åt allt i gruppen, men kan inte ändra grupp inställningar. Som standard kan grupp medlemmar bjuda in gäster att delta i gruppen, men du kan [kontrol lera den inställningen](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
 
 * **Gäster** – grupp gäster är medlemmar som ligger utanför din organisation. Gäster är som standard begränsade till funktioner i team.
 

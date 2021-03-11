@@ -7,21 +7,30 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202679"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547567"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrera från nätverksansluten lagring (NAS) till en hybrid moln distribution med Azure File Sync
+
+Den här migreringen är en av flera som inbegriper nyckelorden NAS och Azure File Sync. Kontrol lera om den här artikeln gäller ditt scenario:
+
+> [!div class="checklist"]
+> * Data Källa: nätverksansluten lagring (NAS)
+> * Migreringsjobb: NAS &rArr; Windows Server &rArr; upload och Sync med Azure-filresurs (er)
+> * Cachelagra filer lokalt: Ja, det slutliga målet är en Azure File Sync distribution.
+
+Om ditt scenario skiljer sig kan du titta igenom [tabellen med migrations guider](storage-files-migration-overview.md#migration-guides).
 
 Azure File Sync fungerar på DAS-platser (Direct Attached Storage) och stöder inte synkronisering till NAS-platser (Network Attached Storage).
 Detta innebär en migrering av dina filer som behövs och den här artikeln vägleder dig genom planering och körning av en sådan migrering.
 
 ## <a name="migration-goals"></a>Migreringsmål
 
-Målet är att flytta de resurser som du har på din NAS-installation till en Windows-Server. Använd sedan Azure File Sync för en hybrid moln distribution. Migreringen måste göras på ett sätt som garanterar integriteten för produktions data samt tillgänglighet under migreringen. Den sistnämnda lösningen kräver att drift stoppen är minimal, så att den får plats i eller endast något högre än vanliga underhålls perioder.
+Målet är att flytta de resurser som du har på din NAS-installation till en Windows-Server. Använd sedan Azure File Sync för en hybrid moln distribution. I allmänhet måste migreringar göras på ett sätt som Guaranty integriteten för produktions data och dess tillgänglighet under migreringen. Den sistnämnda lösningen kräver att drift stoppen är minimal, så att den får plats i eller endast något högre än vanliga underhålls perioder.
 
 ## <a name="migration-overview"></a>Översikt över migrering
 
@@ -45,14 +54,14 @@ Som vi nämnt i [artikeln Azure Files migrerings översikt](storage-files-migrat
 * Skapa en Windows Server 2019 – minst 2012R2 – som en virtuell dator eller fysisk server. Ett kluster för växling vid fel i Windows Server stöds också.
 * Etablera eller Lägg till direktansluten lagring (DAS jämfört med NAS, vilket inte stöds).
 
-    Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din NAS-enhet om du använder funktionen för [moln nivåer](storage-sync-cloud-tiering-overview.md) i Azure File Sync.
+    Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din NAS-enhet. Det här konfigurations valet kräver att du också använder Azure File syncs-funktionen för [moln nivåer](storage-sync-cloud-tiering-overview.md) .
     Men när du kopierar dina filer från det större NAS-utrymmet till den mindre Windows Server-volymen i en senare fas måste du arbeta i batchar:
 
     1. Flytta en uppsättning filer som passar på disken
     2. Låt filsynkronisering och moln nivå engagera
-    3. När mer ledigt utrymme skapas på volymen fortsätter du med nästa batch med filer. 
+    3. När mer ledigt utrymme skapas på volymen fortsätter du med nästa batch med filer. Du kan också granska RoboCopy-kommandot i [avsnittet kommande Robocopy](#phase-7-robocopy) för att använda den nya `/LFSM` växeln. Med `/LFSM` kan du förenkla dina Robocopy-jobb avsevärt, men det är inte kompatibelt med andra Robocopy-växlar som du kan bero på.
     
-    Du kan undvika den här batch-metoden genom att tillhandahålla motsvarande utrymme på Windows-servern som dina filer använder på NAS-enheten. Överväg deduplicering på NAS/Windows. Om du inte vill spara den här stora mängden lagrings utrymme på Windows Server permanent kan du minska volym storleken efter migreringen och innan du justerar principerna för moln nivåer. Detta skapar en mindre lokal cache för dina Azure-filresurser.
+    Du kan undvika den här batch-metoden genom att tillhandahålla motsvarande utrymme på Windows-servern som dina filer använder på NAS-enheten. Överväg deduplicering på NAS/Windows. Om du inte vill spara den här stora mängden lagrings utrymme på Windows Server permanent kan du minska volym storleken efter migreringen och innan du justerar principerna för moln nivå. Detta skapar en mindre lokal cache för dina Azure-filresurser.
 
 Resurs konfigurationen (beräkning och RAM) för den Windows Server som du distribuerar beror främst på antalet objekt (filer och mappar) som du kommer att synkronisera. Vi rekommenderar en högre prestanda konfiguration om du har problem.
 
@@ -108,76 +117,7 @@ Följande RoboCopy-kommando kommer att kopiera filer från NAS-lagringen till di
 Om du har allokerat mindre lagrings utrymme på Windows Server än vad filerna tar upp på NAS-enheten har du konfigurerat moln nivå. När den lokala Windows Server-volymen är full, kommer [moln nivån](storage-sync-cloud-tiering-overview.md) att sätta igång och på filer som redan har synkroniserats. Moln skiktet genererar tillräckligt med utrymme för att kunna fortsätta med kopian från NAS-enheten. Moln nivåer utförs en gång i timmen för att se vad som har synkroniserats och för att frigöra disk utrymme för att uppnå det lediga utrymmet på 99%-volymen.
 Det är möjligt att RoboCopy flyttar filer snabbare än att du kan synkronisera till molnet och nivån lokalt, så att det lokala disk utrymmet börjar ta slut. RoboCopy kommer inte att fungera. Vi rekommenderar att du arbetar genom resurserna i en följd som förhindrar detta. Du kan till exempel inte starta RoboCopy-jobb för alla resurser på samma gång, eller bara flytta resurser som passar på den aktuella mängden ledigt utrymme på Windows Server, så att du kan nämna några.
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Lägg
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Tillåter att RoboCopy körs med flera trådar. Standardvärdet är 8, Max är 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Matar ut status till logg filen som UNICODE (skriver över befintlig logg).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Utdata till konsol fönstret. Används tillsammans med utdata i en loggfil.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Kör RoboCopy i samma läge som ett säkerhets kopierings program använder. Det gör att RoboCopy kan flytta filer som den aktuella användaren inte har behörighet till.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Tillåter att det här RoboCopy-kommandot körs flera gånger, i turordning på samma mål/mål. Den identifierar vad som har kopierats innan och utelämnar det. Endast ändringar, tillägg och *borttagningar* kommer att bearbetas, som har inträffat sedan den senaste körningen. Om kommandot inte kördes förut utelämnas inget. */Mir* -flaggan är ett utmärkt alternativ för käll platser som fortfarande används aktivt och ändras.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      åter givningen av fil kopian (standard är/COPY: DAT), kopierings flaggor: D = data, A = attribut, T = tidsstämplar, S = Security = NTFS ACL, O = ägar information, U = gransknings information
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Kopiera ALL fil information (motsvarande/COPY: DATSOU)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      åter givning för kopian av kataloger (standard är/DCOPY: DA), kopierings flaggor: D = data, A = attribut, T = tidsstämplar
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>Fas 8: överhuggen av användare
 
@@ -196,7 +136,7 @@ Den andra gången kommer den att slutföras snabbare, eftersom det bara behöver
 
 Upprepa den här processen tills du är nöjd med hur lång tid det tar att slutföra en RoboCopy för en angiven plats är inom ett godkänt fönster för stillestånds tid.
 
-När du anser att nedtid är godtagbar och du är redo att ta NAS-platsen offline: för att kunna ta användar åtkomst offline, har du möjlighet att ändra ACL: er på resurs roten så att användarna inte längre kan komma åt platsen eller vidta andra lämpliga steg som förhindrar att innehåll ändras i den här mappen på din NAS.
+När du anser att avbrotts tiden är godtagbar måste du ta bort användar åtkomst till dina NAS-baserade resurser. Du kan göra det genom alla steg som förhindrar användare från att ändra fil-och mappstruktur och innehåll. Ett exempel är att peka DFS-Namespace till en plats som inte är en befintlig plats eller ändra rot-ACL: erna på resursen.
 
 Kör en sista RoboCopy-avrundning. De kommer att hämta alla ändringar som kan ha missats.
 Hur lång tid det sista steget tar är beroende av hastigheten på RoboCopy-genomsökningen. Du kan uppskatta tiden (som är lika med din stillestånds tid) genom att mäta hur lång tid den senaste körningen tog.
@@ -224,7 +164,7 @@ Kontrol lera länken i följande avsnitt för att felsöka Azure File Sync probl
 
 ## <a name="next-steps"></a>Nästa steg
 
-Det finns mer att identifiera om Azure-filresurser och Azure File Sync. Följande artiklar hjälper till att förstå avancerade alternativ, bästa praxis och att även innehålla fel söknings hjälp. De här artiklarna länkar till [dokumentationen för Azure-filresursen](storage-files-introduction.md) efter behov.
+Det finns mer att identifiera om Azure-filresurser och Azure File Sync. I följande artiklar får du hjälp att förstå avancerade alternativ, bästa praxis och även innehålla fel söknings hjälp. De här artiklarna länkar till [dokumentationen för Azure-filresursen](storage-files-introduction.md) efter behov.
 
 * [AFS-översikt](./storage-sync-files-planning.md)
 * [Distributions guide för AFS](./storage-how-to-create-file-share.md)
