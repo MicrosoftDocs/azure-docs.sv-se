@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 93443a321f22d232f8b2bfa6a0fe5a05a5e18175
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749052"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607908"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>Snabb start: skapa en objekt fäster-modell från en 3D-modell
 
@@ -102,7 +102,7 @@ Nu kan du gå vidare och konvertera din 3D-modell.
 
     | Fält                    | Beskrivning                       |
     | ---                      | ---                               |
-    | InputAssetPath           | Absolut sökväg till en 3D-modell på den lokala datorn (det finns en exempel modell i en `assets/models` mapp som du kan använda). Fil format som stöds är,,, `fbx` `ply` `obj` `glb` och `gltf` . |
+    | InputAssetPath           | Den absoluta sökvägen till en 3D-modell på den lokala datorn. Fil format som stöds är,,, `fbx` `ply` `obj` `glb` och `gltf` . |
     | AssetDimensionUnit       | Mått enheten för 3D-modellen. Alla mått enheter som stöds kan nås med `Azure.MixedReality.ObjectAnchors.Conversion.AssetLengthUnit` uppräkningen. |
     | Vikt                  | Riktningen på 3D-modellens gravitations riktning. Den här 3D-vektorn ger den nedåtriktade riktningen i koordinatsystemet i modellen. Om till exempel negativ `y` representerar den nedåtriktade riktningen i modellens 3D-utrymme blir det här värdet `Vector3(0.0f, -1.0f, 0.0f)` . |
 

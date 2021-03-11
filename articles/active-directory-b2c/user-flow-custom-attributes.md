@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174843"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607925"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definiera anpassade attribut i Azure Active Directory B2C
 
@@ -30,6 +30,8 @@ Din Azure AD B2C-katalog levereras med en [inbyggd uppsättning attribut](user-p
 * Ett kundriktat program måste spara ett **LoyaltyId** -attribut.
 * En identitets leverantör har en unik användar identifierare, **uniqueUserGUID**, som måste vara bestående.
 * En anpassad användar resa måste behålla användarens tillstånd, **migrationStatus**, för att den andra logiken ska kunna användas.
+
+Villkors *tilläggets egenskap*, *anpassade attribut* och *anpassat anspråk* refererar till samma sak som i den här artikeln. Namnet varierar beroende på kontexten, t. ex. program, objekt eller princip.
 
 Med Azure AD B2C kan du utöka uppsättningen med attribut som lagras för varje användar konto. Du kan också läsa och skriva attributen med hjälp av [Microsoft Graph-API: et](microsoft-graph-operations.md).
 
@@ -66,11 +68,7 @@ När du har skapat en ny användare med hjälp av ett användar flöde, som anv�
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C tillägg-appen
 
-Attribut för tillägg kan bara registreras på ett program objekt, även om de kan innehålla data för en användare. Attributet Extension är kopplat till programmet som kallas B2C-Extensions-app. Ändra inte det här programmet eftersom det används av Azure AD B2C för att lagra användar data. Du kan hitta det här programmet under Azure AD B2C, app-registreringar.
-
-Villkors *tilläggets egenskap*, *anpassade attribut* och *anpassat anspråk* refererar till samma sak som i den här artikeln. Namnet varierar beroende på kontexten, t. ex. program, objekt eller princip.
-
-## <a name="get-the-application-properties"></a>Hämta programmets egenskaper
+Attribut för tillägg kan bara registreras på ett program objekt, även om de kan innehålla data för en användare. Attributet Extension är kopplat till programmet som kallas `b2c-extensions-app` . Ändra inte det här programmet eftersom det används av Azure AD B2C för att lagra användar data. Du kan hitta det här programmet under Azure AD B2C, app-registreringar. Hämta program egenskaperna:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj filtret **katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller Azure AD B2C klienten.
@@ -80,14 +78,6 @@ Villkors *tilläggets egenskap*, *anpassade attribut* och *anpassat anspråk* re
 1. Kopiera följande identifierare till Urklipp och spara dem:
     * **Program-ID**. Exempel: `11111111-1111-1111-1111-111111111111`.
     * **Objekt-ID**. Exempel: `22222222-2222-2222-2222-222222222222`.
-
-## <a name="using-custom-attribute-with-ms-graph-api"></a>Använda anpassat attribut med MS Graph API
-
-Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_attributename` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet. Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Exempel:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -137,7 +127,7 @@ Samma attribut för tillägg delas mellan inbyggda och anpassade principer. När
 
 Du kan skapa de här attributen med hjälp av portalens användar gränssnitt innan du använder dem i dina anpassade principer. När du skapar ett attribut **loyaltyId** i portalen måste du referera till det enligt följande:
 
-|Namn     |Används i |
+|Name     |Används i |
 |---------|---------|
 |`extension_loyaltyId`  | Anpassad princip|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|
@@ -172,6 +162,14 @@ I följande exempel demonstreras användningen av ett anpassat attribut i Azure 
 ```
 
 ::: zone-end
+
+## <a name="using-custom-attribute-with-ms-graph-api"></a>Använda anpassat attribut med MS Graph API
+
+Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_attributename` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet. Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Exempel:
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
 
 ## <a name="next-steps"></a>Nästa steg
 

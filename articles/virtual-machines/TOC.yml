@@ -1231,16 +1231,24 @@
           href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
     - name: Linux Active Directory inloggning
       href: ./linux/login-using-aad.md
-- name: Underhåll och uppdateringar
+- name: Uppdateringar och underhåll
   items:
-    - name: Översikt
-      href: maintenance-and-updates.md
-    - name: Automatisk snabbkorrigering av VM-gäster (förhandsversion)
-      href: automatic-vm-guest-patching.md
+    - name: Uppdateringar av gäst operativ system
+      items:
+        - name: Uppdatering av gäst operativ system
+          items:
+            - name: Automatisk snabbkorrigering av VM-gäster (förhandsversion)
+              href: automatic-vm-guest-patching.md
+            - name: Korrigering
+              href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
+        - name: Automatisk uppgradering av operativ system avbildning
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
     - name: Automatisk tilläggs uppgradering (förhands granskning)
       href: automatic-extension-upgrade.md
-    - name: Kontroll av underhåll
+    - name: Underhåll
       items:
+        - name: Översikt
+          href: maintenance-and-updates.md
         - name: Meddelanden om underhåll
           items:
             - name: Översikt
@@ -1251,7 +1259,7 @@
               href: maintenance-notifications-portal.md
             - name: PowerShell
               href: maintenance-notifications-powershell.md
-        - name: Underhåll av plattform
+        - name: Kontroll av underhåll
           items:
             - name: Översikt
               href: maintenance-control.md
@@ -1273,16 +1281,6 @@
               href: ./linux/tutorial-config-management.md
             - name: Windows
               href: ./windows/tutorial-config-management.md
-        - name: Uppgradering av operativsystemavbildning för skalningsuppsättning för virtuell dator
-          items:
-            - name: Automatiska uppgraderingar av operativsystem
-              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-            - name: Kontroll av underhåll
-              items:
-                - name: Översikt (förhandsversion)
-                  href: virtual-machine-scale-sets-maintenance-control.md
-                - name: PowerShell (förhandsversion)
-                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
 - name: Övervakning
   items:
     - name: Översikt

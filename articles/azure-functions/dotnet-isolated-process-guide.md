@@ -5,18 +5,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: ab89c012c985afa8d7375ff94d0f55b0ea6941cc
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ffdb146b26e83e1973c1d1bfee130eabfa09ea6a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449466"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613960"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Guide för att köra funktioner på .NET 5,0 i Azure
 
-_.NET 5,0-support är för närvarande en för hands version._
-
 Den här artikeln är en introduktion till att använda C# för att utveckla isolerade process funktioner i .NET som körs utanför processen i Azure Functions. Genom att köra out-of-process kan du ta bort funktions koden från Azure Functions Runtime. Det gör det också möjligt för dig att skapa och köra funktioner som riktar sig mot den aktuella .NET 5,0-versionen. 
+
+| Komma igång | Begrepp| Exempel |
+|--|--|--| 
+| <ul><li>[Använda Visual Studio Code](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[Använda kommando rads verktyg](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[Använda Visual Studio](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[Värdalternativ](functions-scale.md)</li><li>[Övervakning](functions-monitoring.md)</li> | <ul><li>[Referens exempel](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 Om du inte behöver stöd för .NET 5,0 eller köra funktionerna utanför processen kanske du vill [utveckla funktioner i C#-klass bibliotek](functions-dotnet-class-library.md).
 
@@ -80,11 +82,12 @@ En `HostBuilder` används för att skapa och returnera en fullständigt initiera
 
 När du har åtkomst till Host Builder-pipeline innebär det att du kan ställa in alla appar som är speciella för initiering under initieringen. Dessa konfigurationer gäller för din Function-app som körs i en separat process. Om du vill göra ändringar i functions-värden eller Utlösar-och bindnings konfigurationen måste du fortfarande använda [host.jspå filen](functions-host-json.md).      
 
-I följande exempel visas hur du lägger till en konfiguration `args` som är Läs som kommando rads argument: 
+<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
 
-`ConfigureAppConfiguration`Metoden används för att konfigurera resten av bygg processen och programmet. I det här exemplet används också en [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), vilket gör det enklare att lägga till flera konfigurations objekt. Eftersom `ConfigureAppConfiguration` returnerar samma instans av [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , kan du också anropa det flera gånger för att lägga till flera konfigurations objekt. Du kan komma åt hela uppsättningen konfigurationer från både [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) och [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
+Du kan komma åt hela uppsättningen konfigurationer från både [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) och [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
 
 Mer information om konfiguration finns [i konfiguration i ASP.net Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
 
@@ -98,13 +101,13 @@ I följande exempel matas ett singleton-tjänst beroende:
 
 Läs mer i [beroende inmatning i ASP.net Core](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-### <a name="middleware"></a>Mellanprogram
+<!--### Middleware
 
-.NET, isolerat stöder även mellanprogram registrering, igen med hjälp av en modell som liknar den som finns i ASP.NET. Den här modellen ger dig möjlighet att mata in logik i pipelinen för anrop, och innan och efter att funktionerna körs.
+.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
 
-Även om den fullständiga registrerings uppsättningen för mellanprogram för API: er inte har exponerats, stöds mellanprogram registrering och vi har lagt till ett exempel i exempel programmet under mappen mellan program.
+While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
 
 ## <a name="execution-context"></a>Körningskontext
 
@@ -180,12 +183,15 @@ I det här avsnittet beskrivs det aktuella läget för funktionella och beteende
 | Bestående funktioner | [Stöds](durable/durable-functions-overview.md) | Stöds inte | 
 | Tvingande bindningar | [Stöds](functions-dotnet-class-library.md#binding-at-runtime) | Stöds inte |
 | function.jspå artefakt | Ges | Inte genererad |
-| Konfiguration | [host.jspå](functions-host-json.md) | [host.jspå](functions-host-json.md) och [anpassad initiering](#configuration) |
+| Konfiguration | [host.jspå](functions-host-json.md) | [host.jspå](functions-host-json.md) och anpassad initiering |
 | Beroendeinmatning | [Stöds](functions-dotnet-dependency-injection.md)  | [Stöds](#dependency-injection) |
-| Mellanprogram | Stöds inte | [Stöds](#middleware) |
+| Mellanprogram | Stöds inte | Stöds |
 | Kall start tider | Vanligt | Längre, på grund av just-in-Time-start. Kör på Linux i stället för Windows för att minska eventuella fördröjningar. |
 | ReadyToRun | [Stöds](functions-dotnet-class-library.md#readytorun) | _TBD_ |
 
+## <a name="known-issues"></a>Kända problem
+
+Information om hur du löser problem med att köra process funktioner som kör .NET, finns på [sidan kända problem](https://aka.ms/AAbh18e). [Skapa ett problem i den här GitHub-lagringsplatsen](https://github.com/Azure/azure-functions-dotnet-worker/issues/new/choose)för att rapportera problem.  
 
 ## <a name="next-steps"></a>Nästa steg
 

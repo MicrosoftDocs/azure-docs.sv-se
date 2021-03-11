@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016648"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603302"
 ---
 För närvarande har Ultra disks ytterligare begränsningar, de är följande:
 
@@ -39,18 +39,16 @@ Följande tabell beskriver regionerna Ultra disks finns i, samt motsvarande till
 |Australien, centrala    |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
 |Australien, östra     |Tre tillgänglighets zoner         |
 |Sydostasien    |Tre tillgänglighets zoner        |
-|Kanada, centrala *     |Tre tillgänglighets zoner          |
+|Kanada, centrala     |Tre tillgänglighets zoner          |
 |Central US     |Tre tillgänglighets zoner          |
 |East US     |Tre tillgänglighets zoner          |
 |USA, östra 2     |Tre tillgänglighets zoner         |
 |Frankrike, centrala    |Två tillgänglighets zoner        |
 |Japan, östra    |Tre tillgänglighets zoner        |
-|Norra Europa    |Tre tillgänglighets zoner        |
+|Europa, norra    |Tre tillgänglighets zoner        |
 |Storbritannien, södra    |Tre tillgänglighets zoner        |
 |Europa, västra    | Tre tillgänglighets zoner|
 |USA, västra 2    |Tre tillgänglighets zoner|
-
-\* Kontakta Azure-supporten för att få till gång till Tillgänglighetszoner för den här regionen.
 
 - Stöds endast i följande VM-serien:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
@@ -63,7 +61,7 @@ Följande tabell beskriver regionerna Ultra disks finns i, samt motsvarande till
     - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
-    - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+    - [Avstånd](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Alla VM-storlekar är inte tillgängliga i alla regioner som stöds med Ultra disks.
 - Är bara tillgängliga som data diskar. 

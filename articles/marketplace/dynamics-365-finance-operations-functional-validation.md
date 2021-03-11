@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131249"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613637"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finansiering och drift funktions validering
 
@@ -29,7 +29,7 @@ För att du ska kunna slutföra en första publicering i [partner Center](https:
 Det finns två alternativ för funktions validering:
 
 - Håll ett konferens samtal på 30 minuter med US (PST) i Stilla havs tid (PST) för att demonstrera och registrera [LCS](https://lcs.dynamics.com/) -miljön och-lösningen, eller
-- I Partner Center går du till [Commercial Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)  >  **Översikt över** kommersiell Marketplace och laddar upp en demonstrations video-URL och LCS skärm bilder på fliken tilläggs innehåll i erbjudandet.
+- I Partner Center går du till [](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)  >  **Översikt över** kommersiell Marketplace och laddar upp en demonstrations video-URL och LCS skärm bilder på fliken tilläggs innehåll i erbjudandet.
 
 Microsofts certifierings team granskar videon och filerna och godkänner sedan antingen lösningen eller e-postmeddelanden om nästa steg.
 
@@ -50,13 +50,13 @@ Om du vill schemalägga ett slutligt gransknings samtal kontaktar du [appsourceC
 
 2. Ta följande skärm bilder av [LCS](https://lcs.dynamics.com/) -miljön som matchar det erbjudande eller den lösning som du vill publicera. De måste vara tillräckligt tydliga för att certifierings teamet ska kunna läsa texten. Spara skärm bilderna som JPG-filer. Du kan ge [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) behörighet till din LCS-miljö så att vi kan verifiera installationen i stället för att tillhandahålla skärm bilder.
 
-    1. Gå till **LCS** för  >  **affärs process modelleraren**  >  **Project library** . Ta skärm bilder av alla process steg. Ta med **diagrammen** och **granskade** kolumner, som du ser här:
+    1. Gå till **LCS** för  >  **affärs process modelleraren**  >  . Ta skärm bilder av alla process steg. Ta med **diagrammen** och **granskade** kolumner, som du ser här:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Visar projekt biblioteks fönstret.":::
 
-      2. Gå till **LCS**  >  **lösnings hanterings**  >  **test lösnings paket** . Ta skärm bilder som innehåller paket översikt och innehåll som visas i följande exempel:
+      2. Gå till **LCS**  >  **lösnings hanterings**  >  **test lösnings paket**. Ta skärm bilder som innehåller paket översikt och innehåll som visas i följande exempel:
 
-    | Fält | Bild <img src="" width="400px">|
+    | Fält | Bild |
     | --- | --- |
     | Paketöversikt | [![Skärm bild som visar fönstret "paket översikt".](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Lösnings god kännare</li></ul> | [![Paket översikts skärmen](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |

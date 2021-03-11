@@ -4,12 +4,12 @@ description: Innehåller en översikt över support inställningar och begränsn
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710676"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609795"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Supportmatris för säkerhetskopiering av virtuella Azure-datorer
 
@@ -25,7 +25,7 @@ Andra support-matriser:
 
 Så här kan du säkerhetskopiera och återställa virtuella Azure-datorer med tjänsten Azure Backup.
 
-**Scenario** | **Säkerhetskopiering** | **Gent** |**Återställa**
+**Scenario** | **Säkerhetskopiering** | **Gent** |**Återställ**
 --- | --- | --- | ---
 Direkt säkerhets kopiering av virtuella Azure-datorer  | Säkerhetskopiera hela den virtuella datorn.  | Ingen ytterligare agent krävs på den virtuella Azure-datorn. Azure Backup installerar och använder ett tillägg till [Azure VM-agenten](../virtual-machines/extensions/agent-windows.md) som körs på den virtuella datorn. | Återställ enligt följande:<br/><br/> - **Skapa en grundläggande virtuell dator**. Detta är användbart om den virtuella datorn inte har någon särskild konfiguration, till exempel flera IP-adresser.<br/><br/> - **Återställa den virtuella dator disken**. Återställa disken. Koppla den sedan till en befintlig virtuell dator eller skapa en ny virtuell dator från disken med hjälp av PowerShell.<br/><br/> - **Ersätt VM-disk**. Om en virtuell dator finns och den använder hanterade diskar (okrypterade), kan du återställa en disk och använda den för att ersätta en befintlig disk på den virtuella datorn.<br/><br/> - **Återställa vissa filer/mappar**. Du kan återställa filer/mappar från en virtuell dator i stället för från hela den virtuella datorn.
 Direkt säkerhets kopiering av virtuella Azure-datorer (endast Windows)  | Säkerhetskopiera vissa filer/mappar/volym. | Installera [Azure Recovery Services-agenten](backup-azure-file-folder-backup-faq.md).<br/><br/> Du kan köra MARS-agenten tillsammans med säkerhets kopierings tillägget för den virtuella Azure-agenten för att säkerhetskopiera den virtuella datorn på fil/mapp-nivå. | Återställa vissa mappar/filer.
@@ -72,6 +72,7 @@ Det här är vad som stöds om du vill säkerhetskopiera Linux-datorer.
 Säkerhetskopiera virtuella Linux Azure-datorer med Linux Azure VM-agenten | Fil konsekvent säkerhets kopiering.<br/><br/> Appkonsekvent säkerhetskopiering med hjälp av [anpassade skript](backup-azure-linux-app-consistent.md).<br/><br/> Under återställningen kan du skapa en ny virtuell dator, återställa en disk och använda den för att skapa en virtuell dator, eller återställa en disk och använda den för att ersätta en disk på en befintlig virtuell dator. Du kan också återställa enskilda filer och mappar.
 Säkerhetskopiera virtuella Linux Azure-datorer med MARS-agent | Stöds inte.<br/><br/> MARS-agenten kan endast installeras på Windows-datorer.
 Säkerhetskopiera virtuella Linux Azure-datorer med DPM/MABS | Stöds inte.
+Säkerhetskopiera virtuella Linux Azure-datorer med Docker monterings punkter | Azure Backup stöder för närvarande inte undantag av Docker-monterings punkter när de är monterade på olika sökvägar varje gång.
 
 ## <a name="operating-system-support-linux"></a>Stöd för operativ system (Linux)
 
@@ -107,7 +108,7 @@ Högsta kvarhållningsperiod | Beror på säkerhetskopieringsfrekvensen.
 
 ## <a name="support-for-file-level-restore"></a>Stöd för återställning på filnivå
 
-**Återställa** | **Stöds**
+**Återställ** | **Stöds**
 --- | ---
 Återställa filer över operativ system | Du kan återställa filer på alla datorer som har samma (eller kompatibla) OS som den säkerhetskopierade virtuella datorn. Se den [kompatibla OS-tabellen](backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).
 Återställa filer från krypterade virtuella datorer | Stöds inte.
@@ -121,7 +122,7 @@ Högsta kvarhållningsperiod | Beror på säkerhetskopieringsfrekvensen.
 
 I följande tabell sammanfattas stödet för säkerhets kopiering under aktiviteter för hantering av virtuella datorer, till exempel att lägga till eller ersätta VM-diskar.
 
-**Återställa** | **Stöds**
+**Återställ** | **Stöds**
 --- | ---
 Återställ över prenumeration/region/zon. | Stöds inte.
 Återställa till en befintlig virtuell dator | Använd alternativet Ersätt disk.
@@ -170,6 +171,7 @@ Delad lagring| Säkerhets kopiering av virtuella datorer med klusterdelad volym 
 [Delade diskar](../virtual-machines/disks-shared-enable.md) | Stöds inte.
 Ultra SSD diskar | Stöds inte. Mer information finns i de här [begränsningarna](selective-disk-backup-restore.md#limitations).
 [Temporära diskar](../virtual-machines/managed-disks-overview.md#temporary-disk) | Temporära diskar säkerhets kopie ras inte av Azure Backup.
+NVMe/tillfälliga diskar | Stöds inte.
 
 ## <a name="vm-network-support"></a>Stöd för virtuella dator nätverk
 

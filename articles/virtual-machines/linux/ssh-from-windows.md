@@ -3,16 +3,17 @@ title: Använda SSH-nycklar för att ansluta till virtuella Linux-datorer
 description: Lär dig hur du skapar och använder SSH-nycklar från en Windows-dator för att ansluta till en virtuell Linux-dator på Azure.
 author: cynthn
 ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147155"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552787"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Använda SSH-nycklar med Windows på Azure
 
@@ -23,9 +24,9 @@ Information om hur du använder SSH-nycklar från en Linux-eller macOS-klient fi
 
 ## <a name="overview-of-ssh-and-keys"></a>Översikt över SSH och nycklar
 
-[SSH](https://www.ssh.com/ssh/) är ett krypterat anslutnings protokoll som tillåter säkra inloggningar via oskyddade anslutningar. SSH är standard anslutnings protokollet för virtuella Linux-datorer som finns i Azure. Även om SSH tillhandahåller en krypterad anslutning, lämnar lösen ord med SSH fortfarande den virtuella datorn som är sårbar för angrepp med brute force. Vi rekommenderar att du ansluter till en virtuell dator via SSH med ett offentligt privat nyckel par, även kallat *SSH-nycklar* . 
+[SSH](https://www.ssh.com/ssh/) är ett krypterat anslutnings protokoll som tillåter säkra inloggningar via oskyddade anslutningar. SSH är standard anslutnings protokollet för virtuella Linux-datorer som finns i Azure. Även om SSH tillhandahåller en krypterad anslutning, lämnar lösen ord med SSH fortfarande den virtuella datorn som är sårbar för angrepp med brute force. Vi rekommenderar att du ansluter till en virtuell dator via SSH med ett offentligt privat nyckel par, även kallat *SSH-nycklar*. 
 
-Det offentliga privata nyckel paret liknar låset på din front dörr. Låset exponeras för **allmänheten** , vem som helst med rätt nyckel kan öppna dörren. Nyckeln är **privat** och endast för personer som du litar på eftersom den kan användas för att låsa upp dörren. 
+Det offentliga privata nyckel paret liknar låset på din front dörr. Låset exponeras för **allmänheten**, vem som helst med rätt nyckel kan öppna dörren. Nyckeln är **privat** och endast för personer som du litar på eftersom den kan användas för att låsa upp dörren. 
 
 - Den *offentliga nyckeln* placeras på din virtuella Linux-dator när du skapar den virtuella datorn. 
 

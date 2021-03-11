@@ -7,15 +7,15 @@ author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 2503355a24a7452ca1ff9886a80f2956897889c4
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: d7a8a598ab2d0c873cf07510cf40a08c22c0f1d4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630403"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608605"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Skapa en fördjupad läsar resurs och konfigurera Azure Active Directory autentisering
 
@@ -176,7 +176,7 @@ Skriptet är utformat för att vara flexibelt. Den letar först efter befintliga
     | ResourceGroupName |Resurser skapas i resurs grupper inom prenumerationer. Ange namnet på en befintlig resurs grupp. Om resurs gruppen inte redan finns skapas en ny med det här namnet. |
     | ResourceGroupLocation |Om din resurs grupp inte finns måste du ange en plats där gruppen ska skapas. Du hittar en lista över platser genom att köra `az account list-locations` . Använd egenskapen *namn* (utan blank steg) för det returnerade resultatet. Den här parametern är valfri om din resurs grupp redan finns. |
     | AADAppDisplayName |Visnings namnet för Azure Active Directorys programmet. Om det inte går att hitta något befintligt Azure AD-program skapas en ny med det här namnet. Den här parametern är valfri om Azure AD-programmet redan finns. |
-    | AADAppIdentifierUri |URI för Azure AD-appen. Om det inte går att hitta en befintlig Azure AD-App skapas en ny med denna URI. Ett exempel är `https://immersivereaderaad-mycompany`. |
+    | AADAppIdentifierUri |URI för Azure AD-appen. Om det inte går att hitta en befintlig Azure AD-App skapas en ny med denna URI. Till exempel `https://immersivereaderaad-mycompany`. |
     | AADAppClientSecret |Ett lösen ord som du skapar kommer att användas senare för att autentisera när du hämtar en token för att starta den fördjupade läsaren. Lösen ordet måste innehålla minst 16 tecken, innehålla minst 1 specialtecken och innehålla minst 1 numeriskt tecken. Om du vill hantera Azure AD-programklient hemligheter när du har skapat den här resursen går https://portal.azure.com du till Start-> Azure Active Directory-> app-registreringar-> `[AADAppDisplayName]` -> certifikat och hemligheter blad-> klient hemligheter (som visas i skärm bilden "hantera dina Azure AD-programhemligheter" nedan). |
     | AADAppClientSecretExpiration |Datumet eller datum/tid efter vilken din `[AADAppClientSecret]` upphör att gälla (t. ex. "2020-12-31T11:59:59 + 00:00" eller "2020-12-31"). |
 

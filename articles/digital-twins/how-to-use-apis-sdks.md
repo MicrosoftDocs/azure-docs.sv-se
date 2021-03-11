@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507236"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554249"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Använda Azure Digital Twins-API:er och -SDK:er
 
@@ -122,18 +122,21 @@ Du kan också hitta ytterligare exempel i [GitHub-lagrings platsen för .net (C#
 Hjälp för serialisering är hjälp funktioner som är tillgängliga i SDK för att snabbt skapa eller avserialisera dubbla data för åtkomst till grundläggande information. Eftersom Core SDK-metoderna returnerar dubbla data som JSON som standard, kan det vara bra att använda dessa hjälp klasser för att dela upp de dubbla data nedåt.
 
 Tillgängliga hjälp klasser är:
-* `BasicDigitalTwin`: Representerar huvud data för en digital, dubbel
-* `BasicRelationship`: Representerar huvud data för en relation
-* `UpdateOperationUtility`: Representerar JSON-patch-information som används i uppdaterings anrop
-* `WriteableProperty`: Representerar metadata för egenskapen
+* `BasicDigitalTwin`: Allmänt representerar huvud data för en digital, dubbel
+* `BasicDigitalTwinComponent`: Allmänt representerar en komponent i `Contents` egenskaperna för en `BasicDigitalTwin`
+* `BasicRelationship`: Allmänt representerar en Relations kärn data
+* `DigitalTwinsJsonPropertyName`: Innehåller sträng konstanterna som används vid JSON-serialisering och deserialisering för anpassade digitala dubbla typer
 
 ##### <a name="deserialize-a-digital-twin"></a>Deserialisera en digital, dubbel
 
-Du kan alltid deserialisera dubbla data med valfritt JSON-bibliotek, till exempel `System.Test.Json` eller `Newtonsoft.Json` . För grundläggande åtkomst till en enhet gör hjälp klasserna detta lite bekvämare.
+Du kan alltid deserialisera dubbla data med valfritt JSON-bibliotek, till exempel `System.Text.Json` eller `Newtonsoft.Json` . För grundläggande åtkomst till en enhet kan hjälp klasserna göra detta bekvämare.
 
 `BasicDigitalTwin`Klassen Helper ger dig också åtkomst till egenskaper som definierats i den dubbla, via a `Dictionary<string, object>` . Om du vill visa egenskaperna för den dubbla kan du använda:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+
+> [!NOTE]
+> `BasicDigitalTwin` använder `System.Text.Json` attribut. Om du vill använda `BasicDigitalTwin` med din [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true)måste du antingen initiera klienten med Standardkonstruktören eller, om du vill anpassa alternativet serialisera, använda [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true).
 
 ##### <a name="create-a-digital-twin"></a>Skapa en digital, dubbel
 

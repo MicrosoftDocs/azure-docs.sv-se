@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562102"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608923"
 ---
 Använd funktions utlösaren för att svara på en händelse som skickas till händelse strömmen i Event Hub. Du måste ha Läs behörighet till den underliggande händelsehubben för att konfigurera utlösaren. När funktionen utlöses skrivs meddelandet som skickas till funktionen som en sträng.
 
@@ -360,9 +360,59 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 |**eventHubName** |**EventHubName** | Funktioner 2. x och högre. Namnet på händelsehubben. När namnet på händelsehubben också finns i anslutnings strängen, åsidosätter det värdet den här egenskapen vid körning. Kan refereras via [app-inställningar](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings)`%eventHubName%` |
 |**consumerGroup** |**ConsumerGroup** | En valfri egenskap som anger den [konsument grupp](../articles/event-hubs/event-hubs-features.md#event-consumers) som används för att prenumerera på händelser i hubben. Om detta utelämnas `$Default` används konsument gruppen. |
 |**kardinalitet** | saknas | Används för alla språk som inte är C-C. Ställ in på för `many` att aktivera batchbearbetning.  Om detta utelämnas eller anges till `one` skickas ett enskilt meddelande till funktionen.<br><br>I C# tilldelas den här egenskapen automatiskt när utlösaren har en matris för typen.|
-|**anslutningen** |**Anslutning** | Namnet på en app-inställning som innehåller anslutnings strängen till Event Hub-namnområdet. Kopiera den här anslutnings strängen genom att klicka på knappen **anslutnings information** för [namn området](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), inte själva händelsehubben. Den här anslutnings strängen måste ha minst Läs behörighet för att aktivera utlösaren.|
+|**anslutningen** |**Anslutning** | Namnet på en app-inställning som innehåller anslutnings strängen till Event Hub-namnområdet. Kopiera den här anslutnings strängen genom att klicka på knappen **anslutnings information** för [namn området](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), inte själva händelsehubben. Den här anslutnings strängen måste ha minst Läs behörighet för att aktivera utlösaren.<br><br>Om du använder [version 5. x eller högre av tillägget](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher), i stället för en anslutnings sträng, kan du ange en referens till ett konfigurations avsnitt som definierar anslutningen. Se [anslutningar](../articles/azure-functions/functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
+
+## <a name="usage"></a>Användning
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Standardvärde
+
+Du kan använda följande parameter typer för att utlösa händelsehubben:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` -Standard egenskaperna för EventData anges i [namn området för Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+
+### <a name="additional-types"></a>Ytterligare typer 
+Appar som använder 5.0.0 eller senare versioner av Event Hub-tillägget använder `EventData` typen i [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) i stället för det som är i [namn rymden Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Den här versionen har stöd för den äldre `Body` typen som prioriteras av följande typer:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="c-script"></a>[C#-skript](#tab/csharp-script)
+
+### <a name="default"></a>Standardvärde
+
+Du kan använda följande parameter typer för att utlösa händelsehubben:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` -Standard egenskaperna för EventData anges i [namn området för Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+
+### <a name="additional-types"></a>Ytterligare typer 
+Appar som använder 5.0.0 eller senare versioner av Event Hub-tillägget använder `EventData` typen i [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) i stället för det som är i [namn rymden Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Den här versionen har stöd för den äldre `Body` typen som prioriteras av följande typer:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="java"></a>[Java](#tab/java)
+
+Se exempel på Java- [utlösare](#example) för mer information.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Mer information finns i exempel på JavaScript- [utlösare](#example) .
+
+# <a name="python"></a>[Python](#tab/python)
+
+Mer information finns i exempel på python- [utlösare](#example) .
+
+
+---
+
 
 ## <a name="event-metadata"></a>Metadata för händelse
 
@@ -379,10 +429,3 @@ Event Hubs utlösaren innehåller flera [Egenskaper för metadata](../articles/a
 |`SystemProperties`|`IDictionary<String,Object>`|System egenskaper, inklusive händelse data.|
 
 Se [kod exempel](#example) som använder dessa egenskaper tidigare i den här artikeln.
-
-## <a name="hostjson-properties"></a>host.jspå egenskaper
-<a name="host-json"></a>
-
-[host.js](../articles/azure-functions/functions-host-json.md#eventhub) filen innehåller inställningar som styr Event Hubs utlösnings beteende. Konfigurationen skiljer sig åt beroende på Azure Functions version.
-
-[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

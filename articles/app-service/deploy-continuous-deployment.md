@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8dc290ed59a7738a1e2263b4203ab0d5be338ec8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 5af8294518759181326e7736ef755f0a83581014
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122280"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564975"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Kontinuerlig distribution till Azure App Service
 
@@ -160,7 +160,7 @@ För Windows-appar kan du manuellt konfigurera kontinuerlig distribution från e
 
 ## <a name="more-resources"></a>Fler resurser
 
-* [Distribuera från Azure pipelines till Azure App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)
+* [Distribuera från Azure pipelines till Azure App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)
 * [Undersök vanliga problem med kontinuerlig distribution](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Använda Azure PowerShell](/powershell/azure/)
 * [Kudu-projektet](https://github.com/projectkudu/kudu/wiki)

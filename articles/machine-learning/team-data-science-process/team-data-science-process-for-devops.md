@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653086"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614079"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Team data science-process för utvecklings åtgärder
 
@@ -25,7 +25,7 @@ Den här artikeln visar de DevOps-funktioner (Developer Operations) som är spec
 ## <a name="lesson-path"></a>Sökväg till lektion
 Följande tabell innehåller nivåbaserade rikt linjer som hjälper dig att slutföra DevOps-målen för att implementera data vetenskaps lösningar på Azure.
 
-| Mål | Ämne | **Resurs** | **Tekniker** | **Nivå** | **Förutsättningar** |
+| Mål | Avsnitt | **Resurs** | **Tekniker** | **Nivå** | **Förutsättningar** |
 |--|--|--|--|--|--|
 | Förstå avancerad analys | Livs cykeln för team data science process | [Den här tekniska genom gången beskriver processen för team data vetenskap](overview.md) | Datavetenskap | Medel | Allmän teknik bakgrund, välbekanthet med data lösningar, välbekanthet med IT-projekt och implementering av lösningar |
 | Förstå Microsoft Azures plattformen för avancerad analys | Informations hantering |
@@ -74,10 +74,10 @@ Följande tabell innehåller nivåbaserade rikt linjer som hjälper dig att slut
 |  |  | [Den här referensen beskriver hur du skapar en datapipeline för din lösning, som du kan spara som en JSON-mall som ett "paket"](../../data-factory/v1/data-factory-introduction.md) | Azure Data Factory | Medel | Allmän data behandlings bakgrund, data projekt upplevelse |
 |  |  | [I det här avsnittet beskrivs strukturen för en Azure Resource Manager mall](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | Medel | Bekant med Microsoft Azures plattformen |
 |  |  | [DSC är en hanterings plattform i PowerShell som gör att du kan hantera din IT-och utvecklings infrastruktur med konfiguration som kod, Sparad som ett paket. Den här referensen är en översikt över ämnet](/powershell/scripting/dsc/overview/overview) | PowerShell Desired State Configuration | Medel | PowerShell-kodning, välbekanthet med Enterprise-arkitekturer, skript |
-|  | Frisläpp | [Den här huvud referens artikeln innehåller metoder för att bygga, testa och lansera för CI/CD-miljöer](/azure/devops/pipelines/?view=azure-devops) | Visual Studio-Codespace | Stött | Program utveckling, bekanta med CI/CD-miljöer, bekanta dig med en SDLC |
+|  | Frisläpp | [Den här huvud referens artikeln innehåller metoder för att bygga, testa och lansera för CI/CD-miljöer](/azure/devops/pipelines/) | Visual Studio-Codespace | Stött | Program utveckling, bekanta med CI/CD-miljöer, bekanta dig med en SDLC |
 |  |  | [Använd den här tidigare referensen för Runbooks för att automatisera versions hantering med System Center](/system-center/orchestrator/automate-runbooks) | System Center | Stött | Upplevelse med System Center Orchestrator |
 |  |  | [Den här artikeln hjälper dig att avgöra det bästa alternativet för att distribuera filerna för din webbapp, en server del för mobilappar eller API-appen till Azure App Service, och vägleder dig sedan till lämpliga resurser med instruktioner som är relevanta för önskat alternativ](../../app-service/deploy-local-git.md) | Microsoft Azure distribution | Medel | Program varu utveckling, upplevelse med Microsoft Azures plattformen |
-|  | Övervaka | [Den här referensen förklarar Application Insights och hur du kan lägga till den i dina avancerade analys lösningar](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Medel | Program varu utveckling, förtrogen med Microsoft Azures plattformen |
+|  | Monitor | [Den här referensen förklarar Application Insights och hur du kan lägga till den i dina avancerade analys lösningar](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Medel | Program varu utveckling, förtrogen med Microsoft Azures plattformen |
 |  |  | [I det här avsnittet beskrivs grundläggande begrepp om Operations Manager för administratören som hanterar Operations Manager-infrastrukturen och operatören som övervakar och stöder den avancerade analys lösningen](/previous-versions/system-center/system-center-2012-R2/hh230741(v=sc.12)) | System Center | Stött | Bekanta dig med företags övervakning, System Center Operations Manager |
 |  |  | [I det här blogg inlägget förklaras hur du använder Azure Data Factory för att övervaka och hantera pipeline för avancerad analys](https://azure.microsoft.com/blog/azure-data-factory-updates-monitoring-and-management-enhancements/) | Azure Data Factory | Medel | Bekant med Azure Data Factory |
 |  |  | [Den här videon visar hur du övervakar en logg med Azure Monitor loggar](https://channel9.msdn.com/Shows/Data-Exposed/Enterprise-HDInsight-Monitoring-with-Operations-Management-Suite) | Azure-loggar, PowerShell | Stött | Bekant med Azure-plattformen |

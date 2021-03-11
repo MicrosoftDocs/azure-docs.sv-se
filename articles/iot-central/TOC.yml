@@ -201,6 +201,8 @@
           href: core/how-to-connect-devices-x509.md
         - name: Övervaka enhetsanslutningar med Azure CLI
           href: core/howto-monitor-devices-azure-cli.md
+        - name: Ansluta enheter via en IoT Edge transparent Gateway
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Förbereda och ansluta ett Azure Sphere DevKit
           href: core/howto-connect-sphere.md
         - name: Förbereda och ansluta en RuuviTag-enhet
@@ -209,6 +211,8 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Ansluta andra IoT-moln
           href: core/howto-build-iotc-device-bridge.md
+        - name: Hantera dina enheter
+          href: core/how-to-move-device-to-iot.md
     - name: Bygg integrerade lösningar
       items:
         - name: Lägga till paneler på din instrumentpanel
@@ -298,7 +302,7 @@
     - name: Kodexempel
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Alternativ för support och hjälp
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub

@@ -1,30 +1,26 @@
 - name: Dokumentation om Avancerad läsare
   href: index.yml
-- name: Vad är Avancerad läsare?
-  href: Overview.md
-- name: Snabbstart
-  href: ./quickstarts/client-libraries.md
-- name: Självstudier
+- name: Översikt
   items:
-    - name: Starta Avancerad läsare (Android)
-      href: tutorial-android.md
-    - name: Starta Avancerad läsare (iOS)
-      href: tutorial-ios.md
-    - name: Starta Avancerad läsare (Python)
-      href: tutorial-python.md
-    - name: Använda flera resurser för Avancerad läsare
-      href: tutorial-multiple-resources.md
+    - name: Översikt över avancerad läsare
+      href: Overview.md
+    - name: Stöd för språk
+      href: language-support.md
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+    - name: Viktig information
+      href: release-notes.md
+- name: Snabb start för avancerad läsare
+  href: ./quickstarts/client-libraries.md
 - name: Instruktioner
   items:
     - name: Skapa en resurs för Avancerad läsare
       href: how-to-create-immersive-reader.md
-    - name: Ange cookie-princip
-      href: how-to/set-cookie-policy.md
-    - name: Visa matematik
-      href: how-to/display-math.md
-    - name: Starta Avancerad läsare med HTML-innehåll
-      href: how-to-launch-with-html.md
-    - name: Anpassa Avancerad läsare-knappen
+    - name: Starta den fördjupade läsaren
+      href: how-to-launch-immersive-reader.md
+    - name: Förbered HTML-innehåll
+      href: how-to-prepare-html.md
+    - name: Redigera knappen för att starta avancerad läsare
       href: how-to-customize-launch-button.md
     - name: Cachelagra autentiseringstoken
       href: how-to-cache-token.md
@@ -32,21 +28,23 @@
       href: how-to-configure-read-aloud.md
     - name: Konfigurera översättning
       href: how-to-configure-translation.md
+    - name: Visa matematik
+      href: how-to/display-math.md
+    - name: Ange cookie-princip
+      href: how-to/set-cookie-policy.md
     - name: Spara användarinställningar
       href: how-to-store-user-preferences.md
+    - name: Använda flera resurser för Avancerad läsare
+      href: how-to-multiple-resources.md
 - name: Referens
   items:
     - name: JavaScript SDK
       href: reference.md
-    - name: Viktig information
-      href: release-notes.md
 - name: Resurser
   items:
+    - name: Regional support
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
-    - name: Azure-översikt
+    - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Stöd för språk
-      href: language-support.md
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

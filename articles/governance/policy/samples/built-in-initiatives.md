@@ -1,15 +1,15 @@
 ---
 title: Lista över inbyggda princip initiativ
 description: Visa en lista över inbyggda princip initiativ för Azure Policy. Kategorier omfattar regelefterlevnad, gäst konfiguration och mycket annat.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a10b35d80758ac7e872815e730e7ef9cee79d3e0
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a14385c491a877378d9184f3bc9872ce8ba63dee
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426931"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613827"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy inbyggda definitioner för initiativ
 
@@ -32,6 +32,10 @@ Namnet på varje inbyggt länkar till initiativ definitions källan på [Azure p
 ## <a name="monitoring"></a>Övervakning
 
 [!INCLUDE [azure-policy-reference-policysets-monitoring](../../../../includes/policy/reference/bycat/policysets-monitoring.md)]
+
+## <a name="network"></a>Nätverk
+
+[!INCLUDE [azure-policy-reference-policysets-network](../../../../includes/policy/reference/bycat/policysets-network.md)]
 
 ## <a name="regulatory-compliance"></a>Regelefterlevnad
 

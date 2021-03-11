@@ -91,7 +91,7 @@
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub
