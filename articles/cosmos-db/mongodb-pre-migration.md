@@ -1,21 +1,31 @@
 ---
 title: Steg före migrering för datamigrering till Azure Cosmos DBs API för MongoDB
 description: Det här dokumentet innehåller en översikt över förutsättningarna för en datamigrering från MongoDB till Cosmos DB.
-author: christopheranderson
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.author: chrande
-ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: anfeldma
+ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656966"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553297"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Steg före migrering för datamigrering från MongoDB till Azure Cosmos DB s API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> Den här MongoDB-guiden är den första i en serie vid migrering av MongoDB till Azure Cosmos DB Mongo-API i skala. Kunder som licensierar och distribuerar MongoDB på en egen hanterad infrastruktur kan vilja minska och hantera kostnaden för sin datafastighet genom att migrera till en hanterad moln tjänst som Azure Cosmos DB med priser för betala per användning och elastisk skalbarhet. Målet med den här serien är att vägleda kunden genom migreringsprocessen:
+>
+> 1. [För migrering](mongodb-pre-migration.md) – inventera den befintliga MongoDB datafastighet, Planera migreringen och Välj lämpliga Migreringsverktyg.
+> 2. Körning – migrera från MongoDB till Azure Cosmos DB med hjälp av de angivna [självstudierna]().
+> 3. [Efter migreringen](mongodb-post-migration.md) – uppdatera och optimera befintliga program för att köra mot din nya Azure Cosmos db data fastighets.
+>
+
+En solid pre-migration-plan kan ha en storleks ändring som påverkar tids linjen och framgången av teamets migrering. En lämplig jämförbarhet för förmigreringen är att starta ett nytt projekt – du kan börja med att definiera krav, sedan disponera de uppgifter som är inblandade och även prioritera de största uppgifter som ska behandlas först. Detta hjälper till att göra ditt projekt schema förutsägbart, men naturligtvis kan oväntade krav uppstå och komplicera projektschemat. Om du kommer tillbaka till migreringen och skapandet av en omfattande körnings plan i fasen för migrering minimeras risken att du upptäcker oväntade migreringar i processen, vilket sparar tid under migreringen och hjälper dig att säkerställa att målen är uppfyllda.
 
 Innan du migrerar dina data från MongoDB (antingen lokalt eller i molnet) till Azure Cosmos DB s API för MongoDB, bör du:
 

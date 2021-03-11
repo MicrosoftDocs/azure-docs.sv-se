@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 511eb12df511fd037fc0b5bec701c0cc5c29bad2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599420"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617785"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Vanliga frågor och svar om röst assistenter
 
@@ -36,7 +36,7 @@ S **:** [anpassade kommandon](custom-commands.md) är en lägre komplexitets upp
 **A:** Det bästa sättet att börja med att skapa ett anpassat kommando (för hands version) eller ett Basic bot-program (Basic bot Framework).
 
 - [Skapa ett anpassat kommando (för hands version)](./quickstart-custom-commands-application.md)
-- [Skapa en grundläggande bot-robot](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Skapa en grundläggande bot-robot](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 - [Anslut en robot till den direkta linjens tal kanal](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Felsökning

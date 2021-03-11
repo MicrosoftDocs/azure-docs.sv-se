@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 84caa287803fa64b12d9da4c2afb1f8dd1418e13
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 6a486057a265b02ce30059940c8c98837ec43f8e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455288"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617649"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Koda video och ljud med Media Services
 
@@ -95,20 +95,25 @@ Media Services stöder följande inbyggda kodnings för inställningar:
 
 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) används för att ange en inbyggd för inställning för kodning av inmatad video med Standard-kodaren.
 
-Följande för inställningar stöds för närvarande:
+Följande inbyggda för inställningar stöds för närvarande:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: skapar en enda MP4-fil som bara innehåller stereo ljud som är kodat med 192 kbps.
-- **EncoderNamedPreset. AdaptiveStreaming** (rekommenderas): Mer information finns i [skapa en bit hastighets steg automatiskt](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset. ContentAwareEncoding**: visar en för inställning för innehålls medveten kodning. Med allt indata-innehåll, försöker tjänsten automatiskt fastställa det optimala antalet lager och lämpliga bit hastighets-och upplösnings inställningar för leverans genom anpassad direkt uppspelning. De underliggande algoritmerna kommer att fortsätta att utvecklas över tid. Utdata kommer att innehålla MP4-filer med video och ljud som är överlagrade. Mer information finns i [Content medveten encoding](content-aware-encoding.md).
-
+- **EncoderNamedPreset. AdaptiveStreaming** (rekommenderas): detta stöder kodningen H. 264 anpassad bit hastighet. Mer information finns i [skapa en bit hastighet stega automatiskt](autogen-bitrate-ladder.md).
+- **EncoderNamerPreset. H265AdaptiveStreaming** : liknar AdaptiveStreaming för inställning, men använder HEVC (H. 265). Skapar en uppsättning GOP-justerade MP4-filer med H. 265 video och stereo AAC-ljud. Genererar automatiskt en bit hastighet baserat på inlösningen, bit hastigheten och bild frekvensen. Den automatiskt genererade inställningen kommer aldrig att överskrida den angivna upplösningen. Om t. ex. indata är 720p, kommer utdata att vara 720p på bästa sätt.
+- **EncoderNamedPreset. ContentAwareEncoding**: visar en för inställning för innehåll medveten kodning för H. 264. Med allt indata-innehåll, försöker tjänsten automatiskt fastställa det optimala antalet lager och lämpliga bit hastighets-och upplösnings inställningar för leverans genom anpassad direkt uppspelning. De underliggande algoritmerna kommer att fortsätta att utvecklas över tid. Utdata kommer att innehålla MP4-filer med video och ljud som är överlagrade. Mer information finns i [Content medveten encoding](content-aware-encoding.md).
+- **EncoderNamedPreset. H265ContentAwareEncoding**: visar en för inställning för innehålls medveten kodning för HEVC (H. 265). Skapar en uppsättning GOP hastigheter med hjälp av innehålls medveten kodning. Med allt indata-innehåll utför tjänsten en inledande förenklad analys av indata-innehållet och använder resultatet för att fastställa det optimala antalet lager, lämpliga bit hastighets-och upplösnings inställningar för leverans genom anpassad direkt uppspelning. Den här för inställningen är särskilt effektiv för små och medel stora komplexitets videor där utdatafilerna får lägre bit hastigheter men till en kvalitet som fortfarande ger en bra upplevelse till tittare. Utdata kommer att innehålla MP4-filer med video och ljud som är överlagrade.
   > [!NOTE]
-  > Se till att använda **ContentAwareEncoding** inte ContentAwareEncodingExperimental.
+  > Se till att använda **ContentAwareEncoding** inte ContentAwareEncodingExperimental som nu är föråldrad
+
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: genererar en uppsättning av åtta GOP MP4-filer, mellan 6000 och 400 kbit/s och stereo AAC-ljud. Lösningen börjar vid 1080p och går ned till 360p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: skapar en uppsättning av sex GOP MP4-filer, mellan 3400 och 400 kbit/s och stereo AAC-ljud. Lösningen börjar vid 720p och går ned till 360p.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: genererar en uppsättning av fem GOP MP4-filer, mellan 1600 och 400 kbit/s och stereo AAC-ljud. Lösningen börjar vid 480p och går ned till 360p.
 - **EncoderNamedPreset. H264SingleBitrate1080p**: genererar en MP4-fil där videon kodas med H. 264-codec vid 6750 kbit/s och en bild höjd på 1080 bild punkter, och stereo ljudet kodas med AAC-LC-kodek vid 64 kbit/s.
 - **EncoderNamedPreset. H264SingleBitrate720p**: genererar en MP4-fil där videon kodas med H. 264-codec vid 4500 kbit/s och en bild höjd på 720 bild punkter, och stereo ljudet kodas med AAC-LC-kodek vid 64 kbit/s.
 - **EncoderNamedPreset. H264SingleBitrateSD**: genererar en MP4-fil där videon kodas med H. 264-codec vid 2200 kbit/s och en bild höjd på 480 bild punkter, och stereo ljudet kodas med AAC-LC-kodek vid 64 kbit/s.
+- **EncoderNamedPreset. H265SingleBitrate720P**: genererar en MP4-fil där videon kodas med HEVC (H. 265)-codec vid 1800 kbit/s och en bild höjd på 720 bild punkter, och stereo ljudet kodas med AAC-LC-codec vid 128 kbit/s.
+- **EncoderNamedPreset. H265SingleBitrate1080p**: genererar en MP4-fil där videon kodas med HEVC (H. 265)-codec vid 3500 kbit/s och en bild höjd på 1080 bild punkter, och stereo ljudet kodas med AAC-LC-codec vid 128 kbit/s.
+- **EncoderNamedPreset. H265SingleBitrate4K**: genererar en MP4-fil där videon kodas med HEVC (H. 265)-codec vid 9500 kbit/s och en bild höjd på 2160 bild punkter, och stereo ljudet kodas med AAC-LC-codec vid 128 kbit/s.
 
 Om du vill se listan med de senaste aktuella för inställningarna, se [inbyggda för inställningar som används för att koda videor](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
@@ -135,6 +140,7 @@ Media Services har fullständigt stöd för att anpassa alla värden i för inst
 - [Anpassa för inställningar med CLI](custom-preset-cli-howto.md)
 - [Anpassa för inställningar med REST](custom-preset-rest-howto.md)
 
+
 ## <a name="preset-schema"></a>Förinställt schema
 
 I Media Services v3 är för inställningar starkt skrivna entiteter i själva API: et. Du hittar definitionen "schema" för dessa objekt i [Open API-specifikationen (eller Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Du kan också Visa förinställda definitioner (som **StandardEncoderPreset**) i [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) (eller andra Media Services v3 SDK referens dokumentation).
@@ -142,6 +148,7 @@ I Media Services v3 är för inställningar starkt skrivna entiteter i själva A
 ## <a name="scaling-encoding-in-v3"></a>Skalnings kodning i v3
 
 Om du vill skala medie bearbetning, se [skala med CLI](media-reserved-units-cli-how-to.md).
+För konton som har skapats med **2020-05-01** -versionen av API: et eller via Azure Portal, krävs inte längre skalnings-och medie reserverade enheter. Skalning sker automatiskt och hanteras av tjänsten internt.
 
 ## <a name="billing"></a>Fakturering
 

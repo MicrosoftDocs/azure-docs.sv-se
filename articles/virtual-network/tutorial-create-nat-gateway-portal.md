@@ -1,7 +1,7 @@
 ---
 title: 'Självstudie: skapa en NAT-gateway – Azure Portal'
 titlesuffix: Azure Virtual Network NAT
-description: Kom igång med att skapa en NAT-gateway med hjälp av Azure Portal.
+description: I den här självstudien får du lära dig hur du skapar och validerar en NAT-gateway med hjälp av Azure Portal.
 author: asudbring
 ms.author: allensu
 ms.service: virtual-network
@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 27b76f27b4e680c7e21f497f15b0fbf05fa40064
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 82b5892b027627871e5492e3c6cd3776a923632b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102108799"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553450"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Självstudie: skapa en NAT-gateway med hjälp av Azure Portal
 

@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e3f61886ca205f39f2d9485dba2218b823b7bac3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750939"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603266"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -47,8 +47,8 @@ Skapa en Podfile: `pod init`
 
 Öppna Podfile och Lägg till följande beroenden till `ChatQuickstart` målet:
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.8'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
+pod 'AzureCommunication', '~> 1.0.0-beta.9'
+pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
 ```
 
 Installera beroendena skapas även en arbets yta för Xcode: `pod install`
@@ -130,7 +130,7 @@ Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 ## <a name="object-model"></a>Objekt modell 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
 
-| Namn                                   | Beskrivning                                                                                                                                                                           |
+| Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |
@@ -146,7 +146,7 @@ let request = CreateThreadRequest(
     topic: "Quickstart",
     participants: [
         Participant(
-            id: "<USER_ID>",
+            id: CommunicationUserIdentifier("<USER_ID>"),
             displayName: "Jack"
         )
     ]
@@ -166,7 +166,7 @@ chatClient.create(thread: request) { result, _ in
 semaphore.wait()
 ```
 
-Ersätt `<<USER_ID>>` med ett giltigt användar-ID för kommunikations tjänster.
+Ersätt `<USER_ID>` med ett giltigt användar-ID för kommunikations tjänster.
 
 Vi använder en semafor här för att vänta på slut för ande hanteraren innan du fortsätter. Vi kommer att använda `threadId` från svaret som returnerades till slut för ande hanteraren i senare steg.
 
@@ -210,7 +210,7 @@ Ersätt kommentaren `<ADD A USER>` med följande kod:
 
 ```
 let user = Participant(
-    id: "<USER_ID>",
+    id: CommunicationUserIdentifier("<USER_ID>"),
     displayName: "Jane"
 )
 
@@ -258,7 +258,7 @@ Ersätt kommentaren `<REMOVE A USER>` med följande kod:
 ```
 chatThreadClient
     .remove(
-        participant: "<USER_ID>"
+        participant: CommunicationUserIdentifier("<USER_ID>")
     ) { result, _ in
         switch result {
         case .success:

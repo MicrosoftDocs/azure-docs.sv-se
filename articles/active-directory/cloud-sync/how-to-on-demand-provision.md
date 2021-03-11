@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect konfiguration av moln synkronisering på begäran
-description: I den här artikeln beskrivs etablerings funktionen på begäran.
+title: Etablering på begäran i Azure AD Connect molnbaserad synkronisering
+description: Den här artikeln beskriver hur du använder funktionen Cloud Sync i Azure AD Connect för att testa konfigurations ändringar.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,88 +11,90 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622532"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554283"
 ---
-# <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect konfiguration av moln synkronisering på begäran
+# <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Etablering på begäran i Azure AD Connect molnbaserad synkronisering
 
-Azure AD Connect Cloud Sync har introducerat en ny funktion som gör att du kan testa konfigurations ändringar genom att tillämpa dessa ändringar på en enskild användare.  Du kan använda detta för att verifiera och kontrol lera att ändringarna som har gjorts i konfigurationen har tillämpats korrekt och synkroniseras korrekt med Azure AD.  
+Du kan använda funktionen Cloud Sync i Azure Active Directory (Azure AD) Anslut för att testa konfigurations ändringar genom att tillämpa dessa ändringar på en enskild användare. Med den här etableringen av den här inställningen kan du verifiera och kontrol lera att ändringarna som har gjorts i konfigurationen har tillämpats korrekt och synkroniseras korrekt med Azure AD.  
 
 > [!IMPORTANT] 
-> När du använder etablering på begäran tillämpas inte omfångs filtren på den användare som du har valt.  Det innebär att du kan använda etablering på begäran för användare som finns utanför de organisationsenheter som du har angett.
+> När du använder etablering på begäran tillämpas inte omfångs filtren på den användare som du har valt. Du kan använda etablering på begäran för användare som är utanför de organisations enheter som du har angett.
 
-
-## <a name="using-on-demand-provisioning"></a>Använda etablering på begäran
-Följ stegen nedan om du vill använda den nya funktionen.
-
+## <a name="validate-a-user"></a>Verifiera en användare
+Följ dessa steg om du vill använda etablering på begäran:
 
 1.  Välj **Azure Active Directory** i Azure Portal.
 2.  Välj **Azure AD Connect**.
 3.  Välj **hantera synkronisering av moln**.
 
-    ![Hantera etablering](media/how-to-install/install-6.png)
+    ![Skärm bild som visar länken för att hantera synkronisering av molnet.](media/how-to-install/install-6.png)
 4. Under **konfiguration** väljer du din konfiguration.
-5. Under **Verifiera** klickar du på knappen **Tillhandahåll en användare** . 
+5. Under **Verifiera** väljer du knappen **Tillhandahåll en användare** . 
 
- ![Etablera en användare](media/how-to-on-demand-provision/on-demand-2.png)
+   ![Skärm bild som visar knappen för att konfigurera en användare.](media/how-to-on-demand-provision/on-demand-2.png)
 
-6. På sidan etablering på begäran.  Ange ett **unikt namn** för en användare och klicka på knappen **Tillhandahåll** .  
+6. På skärmen **etablera på begäran** anger du det unika namnet för en användare och klickar på knappen **Tillhandahåll** .  
  
- ![Etablering på begäran](media/how-to-on-demand-provision/on-demand-3.png)
-7. När den är klar bör du se en lyckad skärm och en grön kryss ruta som anger att den har kon figurer ATS.  Eventuella fel kommer att visas till vänster.
+   ![Skärm bild som visar knappen användar namn och en provision.](media/how-to-on-demand-provision/on-demand-3.png)
+7. När etableringen har slutförts visas skärmen lyckades med fyra gröna kryss rutor. Eventuella fel visas till vänster.
 
-  ![Klart](media/how-to-on-demand-provision/on-demand-4.png)
+   ![Skärm bild som visar lyckad etablering.](media/how-to-on-demand-provision/on-demand-4.png)
 
-Nu kan du titta på användaren och avgöra om ändringarna som du har gjort i konfigurationen har tillämpats.  Resten av det här dokumentet beskriver de enskilda avsnitten som visas i informationen om en korrekt synkroniserad användare.
+## <a name="get-details-about-provisioning"></a>Hämta information om etablering
+Nu kan du titta på användar informationen och avgöra om de ändringar som du har gjort i konfigurationen har tillämpats. Resten av den här artikeln beskriver de enskilda avsnitten som visas i informationen om en korrekt synkroniserad användare.
 
-## <a name="import-user-details"></a>Importera användar information
-Det här avsnittet innehåller information om den användare som har importer ATS från Active Directory.  Så här ser det ut som om användaren är etablerad i Azure AD.  Klicka på länken **Visa information** om du vill visa den här informationen.
+### <a name="import-user"></a>Importera användare
+Avsnittet **Importera användare** innehåller information om den användare som har importer ats från Active Directory. Så här ser det ut som om användaren ser ut innan den allokeras till Azure AD. Välj länken **Visa information** om du vill visa den här informationen.
 
-![Importera användare](media/how-to-on-demand-provision/on-demand-5.png)
+![Skärm bild av knappen för att visa information om en importerad användare.](media/how-to-on-demand-provision/on-demand-5.png)
 
-Med hjälp av den här informationen kan du se de olika attributen och deras värden, som har importer ATS.  Om du har skapat en anpassad attributmappning, kommer du att kunna se värdet här.
-![Importera användar information](media/how-to-on-demand-provision/on-demand-6.png)
+Med hjälp av den här informationen kan du se de olika attributen (och deras värden) som har importer ATS. Om du har skapat en anpassad attributmappning kan du se värdet här.
 
-## <a name="determine-if-user-is-in-scope-details"></a>Avgöra om användaren befinner sig i omfångs information
-Det här avsnittet innehåller information om huruvida användaren som har importer ATS till Azure AD finns i omfånget.  Klicka på länken **Visa information** om du vill visa den här informationen.
+![Skärm bild som visar användar information.](media/how-to-on-demand-provision/on-demand-6.png)
 
-![Användar omfång](media/how-to-on-demand-provision/on-demand-7.png)
+### <a name="determine-if-user-is-in-scope"></a>Avgöra om användaren är inom omfånget
+Avsnittet **avgöra om användaren finns i omfånget** innehåller information om huruvida användaren som har importerat till Azure AD finns i omfånget. Välj länken **Visa information** om du vill visa den här informationen.
 
-Med hjälp av den här informationen kan du se ytterligare information om användarens omfång.
+![Skärm bild av knappen för att visa information om användar omfång.](media/how-to-on-demand-provision/on-demand-7.png)
 
-![Användar omfattnings information](media/how-to-on-demand-provision/on-demand-10a.png)
+Med hjälp av den här informationen kan du se om användaren är i omfånget.
 
-## <a name="match-user-between-source-and-target-system-details"></a>Matcha användare mellan käll-och mål system information
-Det här avsnittet innehåller information om huruvida användaren redan finns i Azure AD och om en koppling ska ske i stället för att en ny användare skapas.  Klicka på länken **Visa information** om du vill visa den här informationen.
-![Visa information](media/how-to-on-demand-provision/on-demand-8.png)
+![Skärm bild som visar användar omfattnings information.](media/how-to-on-demand-provision/on-demand-10a.png)
+
+### <a name="match-user-between-source-and-target-system"></a>Matcha användare mellan käll-och mål system
+Avsnittet **matcha användare mellan käll-och mål system** innehåller information om huruvida användaren redan finns i Azure AD och om en anslutning ska ske i stället för att en ny användare ska skapas. Välj länken **Visa information** om du vill visa den här informationen.
+
+![Skärm bild av knappen för att visa information om en matchad användare.](media/how-to-on-demand-provision/on-demand-8.png)
 
 Med hjälp av den här informationen kan du se om en matchning hittades eller om en ny användare ska skapas.
 
-![Användarinformation](media/how-to-on-demand-provision/on-demand-11.png)
+![Skärm bild som visar användar information.](media/how-to-on-demand-provision/on-demand-11.png)
 
-Matchnings informationen visar ett meddelande med någon av följande tre åtgärder.  De är:
-- Skapa – en användare skapas i Azure AD
-- Uppdatera – en användare uppdateras baserat på en ändring som gjorts i konfigurationen
-- Ta bort – en användare tas bort från Azure AD.
+Matchnings informationen visar ett meddelande med någon av följande tre åtgärder:
+- **Skapa**: en användare skapas i Azure AD.
+- **Uppdatera**: en användare uppdateras baserat på en ändring som gjorts i konfigurationen.
+- **Ta bort**: en användare tas bort från Azure AD.
 
-Beroende på vilken typ av åtgärd du utför, kan meddelandet variera.
+Beroende på vilken typ av åtgärd som du har utfört varierar meddelandet.
 
-## <a name="perform-action-details"></a>Utför åtgärds information
-Det här avsnittet innehåller information om användaren som har tillhandahållits eller exporter ATS till Azure AD efter att konfigurationen har tillämpats.  Detta är vad användaren ser ut när den har etablerad till Azure AD.  Klicka på länken **Visa information** om du vill visa den här informationen.
-![Utför åtgärds information](media/how-to-on-demand-provision/on-demand-9.png)
+### <a name="perform-action"></a>Utför åtgärd
+Avsnittet **utföra åtgärd** innehåller information om användaren som etablerades eller exporterades till Azure AD efter att konfigurationen tillämpades. Detta är vad användaren ser ut efter etableringen i Azure AD. Välj länken **Visa information** om du vill visa den här informationen.
 
-Med hjälp av den här informationen kan du se värdena för attributen när konfigurationen har tillämpats.  Ser de ut ungefär som importerade eller är de olika?  Kan konfigurationen genomföras?  
+![Skärm bild av knappen för att visa information om en utförd åtgärd.](media/how-to-on-demand-provision/on-demand-9.png)
 
-På så sätt kan du spåra attributet Transformation när den flyttas genom molnet och till din Azure AD-klient.
+Med hjälp av den här informationen kan du se värdena för attributen när konfigurationen har tillämpats. Ser de ut ungefär som importerade eller är de annorlunda? Har konfigurationen tillämpats?  
 
-![spåra attribut](media/how-to-on-demand-provision/on-demand-12.png)
+Med den här processen kan du spåra attributet Transformation när den flyttas genom molnet och till din Azure AD-klient.
+
+![Skärm bild som visar information om spårat attribut.](media/how-to-on-demand-provision/on-demand-12.png)
 
 ## <a name="next-steps"></a>Nästa steg 
 
 - [Vad är Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
-- [Så här installerar du Azure AD Connect Cloud Sync](how-to-install.md)
+- [Installera Azure AD Connect Cloud Sync](how-to-install.md)
  

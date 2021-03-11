@@ -8,18 +8,18 @@ ms.author: pamistel
 ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 409498201ac94882f1a28917693ffd3a65631fc7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583919"
+ms.locfileid: "102617411"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>Förstå klassen AnchorLocateCriteria
 I den här artikeln får du lära dig de olika alternativen som du kan använda när du frågar efter ett ankare. Vi kommer att gå över AnchorLocateCriteria-klassen, dess alternativ och giltiga alternativ kombinationer.
 
 ## <a name="anchor-locate-criteria"></a>Fäst Sök villkor
-[Klassen AnchorLocateCriteria](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria?view=spatialanchors-dotnet) hjälper dig att fråga tjänsten för tidigare skapade ankare. Ett AnchorLocateCriteria-objekt kan användas per övervakare när som helst. Varje AnchorLocateCriteria-objekt måste innehålla **exakt en** av följande egenskaper: [identifierare](#identifiers), [NearAnchor](#nearanchor)eller [NearDevice](#neardevice). Ytterligare egenskaper som [strategi](#strategy), [BypassCache](#bypasscache)och [RequestedCategories](#requestedcategories) kan anges om du vill. 
+[Klassen AnchorLocateCriteria](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) hjälper dig att fråga tjänsten för tidigare skapade ankare. Ett AnchorLocateCriteria-objekt kan användas per övervakare när som helst. Varje AnchorLocateCriteria-objekt måste innehålla **exakt en** av följande egenskaper: [identifierare](#identifiers), [NearAnchor](#nearanchor)eller [NearDevice](#neardevice). Ytterligare egenskaper som [strategi](#strategy), [BypassCache](#bypasscache)och [RequestedCategories](#requestedcategories) kan anges om du vill. 
 
 ### <a name="properties"></a>Egenskaper
 Definiera **exakt en** av följande egenskaper i din Övervakare:

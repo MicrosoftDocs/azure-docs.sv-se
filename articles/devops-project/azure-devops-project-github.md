@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c03ba657ac264b72d035f28956354398421ed2f9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854655"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566608"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Skapa en CI/CD-pipeline för GitHub-lagrings platsen med Azure DevOps starter
 
@@ -45,7 +45,7 @@ Azure DevOps starter skapar en CI/CD-pipeline i Azure-pipeliner. Du kan skapa en
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
     
@@ -55,13 +55,13 @@ Azure DevOps starter skapar en CI/CD-pipeline i Azure-pipeliner. Du kan skapa en
 
 1. Välj antingen **GitHub** eller en extern **git** Code-lagringsplats. I den här självstudien väljer du **GitHub**. Du kan behöva autentisera med GitHub första gången så att Azure kan komma åt din GitHub-lagringsplats.
 
-1. Välj en **lagrings plats** och en **gren**och välj sedan **Nästa**.
+1. Välj en **lagrings plats** och en **gren** och välj sedan **Nästa**.
 
 1. Om du använder Docker-behållare ändrar du **appens Dockerized** till **Ja**. I den här självstudien lämnar du **inget** markerat och väljer sedan **Nästa**. Om du vill ha mer information om hur du använder Docker-behållare, hovrar du över **i** -ikonen.
 
    ![Val av program ramverk i nedrullningsbar meny](_img/azure-devops-project-github/appframework.png)
 
-1. I list menyerna väljer du en **program körning** och ett **program ramverk**och väljer sedan **Nästa**. Program ramverket styr vilken typ av distributions mål för Azure-tjänsten som är tillgänglig.
+1. I list menyerna väljer du en **program körning** och ett **program ramverk** och väljer sedan **Nästa**. Program ramverket styr vilken typ av distributions mål för Azure-tjänsten som är tillgänglig.
 
 1. Välj en **Azure-tjänst** för att distribuera programmet och välj sedan **Nästa**.
 
@@ -71,7 +71,7 @@ Azure DevOps starter skapar en CI/CD-pipeline i Azure-pipeliner. Du kan skapa en
 
 1. Skapa en ny kostnads fri organisation i **Azure DevOps Organization** eller Välj en befintlig organisation i den nedrullningsbara menyn.
 
-1. Välj din prenumeration i **Azure-prenumerationen**och ange antingen ett namn i **webbappen** eller Använd standardvärdet. Välj en **plats**och välj sedan **färdig**. Efter några minuter visas översikten DevOps starter Deployment i Azure Portal.
+1. Välj din prenumeration i **Azure-prenumerationen** och ange antingen ett namn i **webbappen** eller Använd standardvärdet. Välj en **plats** och välj sedan **färdig**. Efter några minuter visas översikten DevOps starter Deployment i Azure Portal.
 
 1. Välj **gå till resurs** för att Visa DevOps starter-instrumentpanelen. I det övre högra hörnet fäster du **projektet** på instrument panelen för snabb åtkomst. Azure DevOps starter konfigurerar automatiskt en CI-version och versions utlösare. Din kod finns kvar i din GitHub-lagrings platsen eller någon annan extern lagrings platsen och en exempel-app har kon figurer ATS i en lagrings platsen i **Azure DevOps-organisationen**. Azure DevOps starter kör bygget och distribuerar appen till Azure.
 
@@ -91,7 +91,7 @@ Du är nu redo att samar beta med en app med ett team. CI/CD-processen distribue
 
 Azure DevOps starter konfigurerar automatiskt en CI/CD-pipeline i Azure-pipeliner. Utforska och anpassa pipelinen efter behov. Utför följande för att bekanta dig med bygg- och versionspipelines:
 
-1. Välj **Bygg pipeliner**från start-instrumentpanelen DevOps.
+1. Välj **Bygg pipeliner** från start-instrumentpanelen DevOps.
 
 1. När sidan för **Azure-pipelinen** öppnas visas en historik över de senaste build-versionerna och status för varje version.
 
@@ -99,7 +99,7 @@ Azure DevOps starter konfigurerar automatiskt en CI/CD-pipeline i Azure-pipeline
 
 1. I det övre högra hörnet på sidan **versioner** kan du välja **Redigera** för att ändra den aktuella versionen, **kön** för att lägga till en ny version eller knappen lodrät ellips (**&#8942;**) för att öppna en meny med fler alternativ. Välj **Redigera**.
 
-1. Bygget gör olika uppgifter, till exempel hämtning av källor från lagrings platsen, återställning av beroenden och publicering av utdata för distributioner. Till höger, under **namn**, ändrar du namnet på Build-pipelinen till något mer beskrivande. Välj **spara & kö**och välj sedan **Spara**. Ange en kommentar och välj sedan **Spara** igen.
+1. Bygget gör olika uppgifter, till exempel hämtning av källor från lagrings platsen, återställning av beroenden och publicering av utdata för distributioner. Till höger, under **namn**, ändrar du namnet på Build-pipelinen till något mer beskrivande. Välj **spara & kö** och välj sedan **Spara**. Ange en kommentar och välj sedan **Spara** igen.
 
    ![Sidan Azure DevOps-versioner](_img/azure-devops-project-github/buildpage.png)
 
@@ -118,7 +118,7 @@ När du konfigurerade din CI/CD-process i den här självstudien skapade du auto
 Mer information om CI/CD-pipelinen finns i:
 
 > [!div class="nextstepaction"]
-> [Definiera din CD-pipeline med flera steg](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definiera din CD-pipeline med flera steg](/azure/devops/pipelines/release/define-multistage-release-process)
 
 Mer information om program övervakning finns i:
   

@@ -38,8 +38,14 @@
       items:
         - name: Översikt över exempel på App Management
           href: app-management-powershell-samples.md
-        - name: 'Exportera alla program registreringar, hemligheter och certifikat'
+        - name: Exportera hemligheter och certifikat (app-registreringar)
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: Exportera hemligheter och certifikat (företags program)
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: Exportera utgångna hemligheter och certifikat
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: Exportera hemligheter och certifikat som upphör att gälla efter det datum som krävs
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: PowerShell-exempel för App proxy
       href: application-proxy-powershell-samples.md
 - name: Begrepp

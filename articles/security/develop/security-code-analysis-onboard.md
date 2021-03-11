@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 30d6061e15b8eb17c1450500d9e8c141a83a3e08
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517078"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553926"
 ---
 # <a name="onboarding-and-installing"></a>Registrering och installation
 
@@ -63,7 +63,7 @@ Microsoft Security code Analysis-teamet kommer att titta på partners med en Pre
 1. Välj **delad**.
 1. Välj tillägget Microsoft säkerhets kod analys och välj **Installera**.
 1. I list rutan väljer du Azure DevOps-organisationen för att installera tillägget på.
-1. Välj **Installera**. När installationen är klar kan du börja använda tillägget.
+1. Välj **installera**. När installationen är klar kan du börja använda tillägget.
 
 >[!NOTE]
 > Även om du inte har åtkomst för att installera tillägget fortsätter du med installations stegen. Du kan begära åtkomst från din Azure DevOps-organisations administratör under installations processen.
@@ -73,7 +73,7 @@ När du har installerat tillägget visas de säkra utvecklings uppgifterna och d
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Lägga till specifika bygg uppgifter till din Azure DevOps-pipeline
 
 1. Öppna ditt team projekt från din Azure DevOps-organisation.
-1. Välj **pipeline** -  >  **versioner**.
+1. Välj **pipeline**-  >  **versioner**.
 1. Välj den pipeline som du vill lägga till tillägg för build-uppgifter för:
    - Ny pipeline: Välj **ny** och följ stegen som beskrivs för att skapa en ny pipeline.
    - Redigera pipeline: Välj en befintlig pipeline och välj sedan **Redigera** för att börja redigera pipelinen.
@@ -90,7 +90,7 @@ När du har installerat tillägget visas de säkra utvecklings uppgifterna och d
 > - Välj alltid **Fortsätt vid fel** för bygg uppgifter med säker utveckling. Även om ett verktyg Miss lyckas kan de andra köra. Det finns inga beroenden mellan verktyg.
 > - Microsoft Security code Analysis build-uppgifter Miss lyckas bara om ett verktyg inte kan köras utan problem. Men de lyckas även om ett verktyg identifierar problem i koden. Genom att använda åtgärden för att bygga efter analyser kan du konfigurera din version så att den inte fungerar när ett verktyg identifierar problem i koden.
 > - Vissa Azure DevOps build-uppgifter stöds inte när de körs via en versions pipeline. Mer specifikt stöder Azure DevOps inte uppgifter som publicerar artefakter inifrån en versions pipeline.
-> - En lista över fördefinierade variabler i Azure DevOps team build som du kan ange som parametrar finns i [Azure DevOps build-variabler](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
+> - En lista över fördefinierade variabler i Azure DevOps team build som du kan ange som parametrar finns i [Azure DevOps build-variabler](/azure/devops/pipelines/build/variables?tabs=batch).
 
 ## <a name="next-steps"></a>Nästa steg
 

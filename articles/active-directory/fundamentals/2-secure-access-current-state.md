@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 302e4becd337c8e7b0b425a52ed46d562db5bae4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725335"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553433"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Identifiera det aktuella läget för externt samarbete i din organisation 
 
@@ -34,11 +34,11 @@ Personer i din organisation samarbetar förmodligen redan med användare från a
 
 Användare som initierar externt samarbete förstår de program som är mest relevanta för externt samarbete och när den här åtkomsten ska sluta. Att förstå dessa användare kan hjälpa dig att avgöra vem som ska delegeras behörighet att bjuda in externa användare, skapa åtkomst paket och fullständig åtkomst granskningar.
 
-Om du vill hitta användare som för närvarande samarbetar granskar du [Microsoft 365 gransknings loggen för att dela och komma åt aktiviteter för begäran](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities). Du kan också granska [Azure AD audit-loggen för information om vem som bjudit in B2B](../external-identities/auditing-and-reporting.md) -användare i din katalog.
+Om du vill hitta användare som för närvarande samarbetar granskar du [Microsoft 365 gransknings loggen för att dela och komma åt aktiviteter för begäran](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharing-and-access-request-activities). Du kan också granska [Azure AD audit-loggen för information om vem som bjudit in B2B](../external-identities/auditing-and-reporting.md) -användare i din katalog.
 
 ## <a name="find-current-collaboration-partners"></a>Hitta aktuella samarbets partners
 
-Externa användare kan vara [Azure AD B2B-användare](../external-identities/what-is-b2b.md) (föredra) med partner hanterade autentiseringsuppgifter eller externa användare med lokalt etablerade autentiseringsuppgifter. Dessa användare är vanligt vis (men inte alltid) markerade med en UserType av gästen. Du kan räkna upp gäst användare via [Microsoft Graph API](/graph/api/user-list?tabs=http&view=graph-rest-1.0), [PowerShell](/graph/api/user-list?tabs=http&view=graph-rest-1.0)eller [Azure Portal](../enterprise-users/users-bulk-download.md).
+Externa användare kan vara [Azure AD B2B-användare](../external-identities/what-is-b2b.md) (föredra) med partner hanterade autentiseringsuppgifter eller externa användare med lokalt etablerade autentiseringsuppgifter. Dessa användare är vanligt vis (men inte alltid) markerade med en UserType av gästen. Du kan räkna upp gäst användare via [Microsoft Graph API](/graph/api/user-list?tabs=http), [PowerShell](/graph/api/user-list?tabs=http)eller [Azure Portal](../enterprise-users/users-bulk-download.md).
 
 ### <a name="use-email-domains-and-companyname-property"></a>Använd e-postdomäner och egenskapen företags namn
 
@@ -55,7 +55,7 @@ Om du använder rättighets hantering kan du också begränsa åtkomst paketen t
 
 ## <a name="find-access-being-granted-to-external-users"></a>Hitta åtkomst beviljas till externa användare
 
-När du har en inventering av externa användare och organisationer kan du fastställa åtkomsten till dessa användare med hjälp av Microsoft Graph-API: et för att fastställa Azure AD- [gruppmedlemskap](/graph/api/resources/groups-overview?view=graph-rest-1.0) eller [direkt program tilldelning](/graph/api/resources/approleassignment?view=graph-rest-1.0) i Azure AD.
+När du har en inventering av externa användare och organisationer kan du fastställa åtkomsten till dessa användare med hjälp av Microsoft Graph-API: et för att fastställa Azure AD- [gruppmedlemskap](/graph/api/resources/groups-overview) eller [direkt program tilldelning](/graph/api/resources/approleassignment) i Azure AD.
 
 
 ### <a name="enumerate-application-specific-permissions"></a>Räkna upp programspecifika behörigheter
@@ -65,7 +65,7 @@ Du kanske också kan utföra programspecifik behörighets uppräkning. Du kan ti
 Undersök särskilt åtkomst till alla dina verksamhets känsliga och affärs kritiska appar så att du är helt medveten om vilken extern åtkomst som helst.
 
 ### <a name="detect-ad-hoc-sharing"></a>Identifiera ad hoc-delning
-Om dina e-post-och nätverks planer gör det kan du undersöka innehåll som delas via e-post eller obehöriga SaaS-appar (program vara som en tjänst). [Microsoft 365 data förlust skydd](/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) hjälper dig att identifiera, förhindra och övervaka oavsiktlig delning av känslig information i din Microsoft 365-infrastruktur. [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) kan hjälpa dig att identifiera användningen av obehöriga SaaS-appar i din miljö.
+Om dina e-post-och nätverks planer gör det kan du undersöka innehåll som delas via e-post eller obehöriga SaaS-appar (program vara som en tjänst). [Microsoft 365 data förlust skydd](/microsoft-365/compliance/data-loss-prevention-policies) hjälper dig att identifiera, förhindra och övervaka oavsiktlig delning av känslig information i din Microsoft 365-infrastruktur. [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) kan hjälpa dig att identifiera användningen av obehöriga SaaS-appar i din miljö.
 
 ## <a name="next-steps"></a>Nästa steg
 

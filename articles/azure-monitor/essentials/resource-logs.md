@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558703"
 ---
 # <a name="azure-resource-logs"></a>Azure-resursloggar
 Azures resurs loggar är [plattforms loggar](../essentials/platform-logs-overview.md) som ger inblick i åtgärder som utförts i en Azure-resurs. Innehållet i resurs loggar varierar beroende på Azure-tjänsten och resurs typen. Resurs loggar samlas inte in som standard. Du måste skapa en diagnostisk inställning för varje Azure-resurs för att skicka resurs loggarna till en Log Analytics arbets yta som ska användas med [Azure Monitor loggar](../logs/data-platform-logs.md), Azure Event Hubs som ska vidarebefordras utanför Azure, eller för att Azure Storage arkivering.
@@ -28,11 +28,11 @@ Se [skapa diagnostikinställningar för att skicka plattforms loggar och mått t
 
 [Skapa en diagnostisk inställning](../essentials/diagnostic-settings.md) för att skicka resurs loggar till en Log Analytics-arbetsyta. Dessa data lagras i tabeller enligt beskrivningen i [strukturen i Azure Monitor loggar](../logs/data-platform-logs.md). Tabellerna som används av resurs loggar beror på vilken typ av samling resursen använder:
 
-- Azure Diagnostics – alla data som skrivs är till _AzureDiagnostics_ -tabellen.
+- Azure Diagnostics – alla data som skrivs är till [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) -tabellen.
 - Resurs specifika data skrivs till en enskild tabell för varje resurs kategori.
 
 ### <a name="azure-diagnostics-mode"></a>Azure Diagnostics-läge 
-I det här läget samlas alla data från alla diagnostiska inställningar i _AzureDiagnostics_ -tabellen. Detta är den äldre metoden som används idag av de flesta Azure-tjänster. Eftersom flera resurs typer skickar data till samma tabell, är schemats supermängd till schemana för alla olika data typer som samlas in.
+I det här läget samlas alla data från alla diagnostiska inställningar i [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) -tabellen. Detta är den äldre metoden som används idag av de flesta Azure-tjänster. Eftersom flera resurs typer skickar data till samma tabell, är schemats supermängd till schemana för alla olika data typer som samlas in. Se [AzureDiagnostics-referens](/azure/azure-monitor/reference/tables/azurediagnostics) för information om tabell strukturen och hur den fungerar med det här potentiellt stora antalet kolumner.
 
 Tänk på följande exempel där diagnostikinställningar samlas in i samma arbets yta för följande data typer:
 
@@ -95,16 +95,6 @@ De flesta Azure-resurser kommer att skriva data till arbets ytan i **Azure-diagn
 Du kan ändra en befintlig diagnostisk inställning till ett resurs speciellt läge. I det här fallet finns data som redan har samlats in kvar i _AzureDiagnostics_ -tabellen tills den tas bort enligt inställningen för kvarhållning för arbets ytan. Nya data samlas in i den dedikerade tabellen. Använd [union](/azure/kusto/query/unionoperator) -operatorn för att fråga efter data i båda tabellerna.
 
 Fortsätt att titta på [Azures uppdaterings](https://azure.microsoft.com/updates/) blogg för meddelanden om Azure-tjänster som stöder Resource-Specific läge.
-
-### <a name="column-limit-in-azurediagnostics"></a>Kolumn begränsning i AzureDiagnostics
-Det finns en gräns på 500-egenskapen för alla tabeller i Azure Monitor loggar. När den här gränsen har uppnåtts raderas alla rader som innehåller data med en egenskap utanför de första 500 vid inmatnings tiden. *AzureDiagnostics* -tabellen är särskilt känslig för den här gränsen eftersom den innehåller egenskaper för alla Azure-tjänster som skriver till den.
-
-Om du samlar in resurs loggar från flera tjänster kan _AzureDiagnostics_ överskrida den här gränsen och data kommer att saknas. Tills alla Azure-tjänster har stöd för det resursbaserade läget bör du konfigurera resurser för att skriva till flera arbets ytor för att minska risken för att nå 500-kolumn gränsen.
-
-### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory, på grund av en detaljerad uppsättning loggar, är en tjänst som är känd för att skriva ett stort antal kolumner och eventuellt orsaka att _AzureDiagnostics_ överskrider gränsen. För alla diagnostikinställningar som kon figurer ATS innan det resursbaserade läget aktiverades, skapas en ny kolumn som skapats för varje unikt namngiven användar parameter mot valfri aktivitet. Fler kolumner kommer att skapas på grund av den utförliga typen av aktivitets indata och utdata.
- 
-Du bör migrera loggarna för att använda det resursbaserade läget så snart som möjligt. Om du inte kan göra det direkt är det ett interimistiskt alternativ att isolera Azure Data Factory loggar i sin egen arbets yta för att minimera risken för att dessa loggar påverkar andra logg typer som samlas in i dina arbets ytor.
 
 
 ## <a name="send-to-azure-event-hubs"></a>Skicka till Azure Event Hubs

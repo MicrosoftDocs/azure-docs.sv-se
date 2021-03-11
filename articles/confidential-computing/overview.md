@@ -4,16 +4,16 @@ description: Översikt över Azures konfidentiella data behandling (ACC)
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560833"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554198"
 ---
 # <a name="confidential-computing-on-azure"></a>Konfidentiell data behandling i Azure
 
@@ -49,11 +49,11 @@ En TEE är en miljö som tillämpar körning av enbart auktoriserad kod. Alla da
 Att köra arbets belastningar i molnet kräver förtroende. Du ger förtroendet till olika providrar som aktiverar olika komponenter i ditt program.
 
 
-Program **varu leverantörer** : lita på program vara genom att distribuera lokal, med hjälp av öppen källkod eller genom att skapa interna program program.
+Program **varu leverantörer**: lita på program vara genom att distribuera lokal, med hjälp av öppen källkod eller genom att skapa interna program program.
 
-**Maskin varu leverantörer** : betrodd maskin vara genom att använda lokal maskin vara eller intern maskin vara. 
+**Maskin varu leverantörer**: betrodd maskin vara genom att använda lokal maskin vara eller intern maskin vara. 
 
-**Infrastruktur leverantörer** : lita på moln leverantörer eller hantera dina egna lokala data Center.
+**Infrastruktur leverantörer**: lita på moln leverantörer eller hantera dina egna lokala data Center.
 
 
 Med Azures konfidentiella data behandling blir det enklare att lita på moln leverantören genom att minska behovet av förtroende mellan olika aspekter av beräknings molnets infrastruktur. Azures konfidentiella data behandling minimerar förtroende för värd operativ systemets kernel, hypervisor, VM-administratör och värd administratör.
@@ -68,13 +68,13 @@ En lägre TCB innebär högre säkerhet. Det finns mindre risk för exponering f
 
 Med Azures konfidentiella data behandling kan du utnyttja funktioner för konfidentiell användning i en virtualiserad miljö. Nu kan du använda verktyg, program och moln infrastruktur för att bygga ovanpå säker maskin vara.  
 
-**Förhindra obehörig åtkomst** : kör känsliga data i molnet. Lita på att Azure ger bästa möjliga data skydd, med liten till ingen ändring från vad som gjorts idag.
+**Förhindra obehörig åtkomst**: kör känsliga data i molnet. Lita på att Azure ger bästa möjliga data skydd, med liten till ingen ändring från vad som gjorts idag.
 
 **Regelefterlevnad: Migrera** till molnet och behåll fullständig kontroll över data för att uppfylla myndighets bestämmelser för att skydda personlig information och säkra organisations-IP.
 
-**Säkert och ej betrott samarbete** : ta itu med problem med arbets skala genom att kamma data mellan organisationer, även konkurrenter, för att låsa upp breda data analyser och djupare insikter.
+**Säkert och ej betrott samarbete**: ta itu med problem med arbets skala genom att kamma data mellan organisationer, även konkurrenter, för att låsa upp breda data analyser och djupare insikter.
 
-**Isolerad bearbetning** : erbjud en ny våg med produkter som tar bort ansvar för privata data med blind bearbetning. Användar data kan inte till och med hämtas av tjänst leverantören. 
+**Isolerad bearbetning**: erbjud en ny våg med produkter som tar bort ansvar för privata data med blind bearbetning. Användar data kan inte till och med hämtas av tjänst leverantören. 
 
 ## <a name="get-started"></a>Kom igång
 ### <a name="azure-compute"></a>Azure Compute

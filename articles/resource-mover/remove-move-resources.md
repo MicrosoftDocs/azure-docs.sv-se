@@ -5,14 +5,14 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 02/22/2020
 ms.author: raynew
-ms.openlocfilehash: 63548e2bf470c012e0dd8a5f879a51eeb631f453
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 25311e93e1081b3c7638c275c39153b2c357048d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459271"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559143"
 ---
 # <a name="manage-move-collections-and-resource-groups"></a>Hantera flytta samlingar och resurs grupper
 
@@ -39,70 +39,111 @@ Du kan ta bort en flytt samling/resurs grupp i portalen.
 
 ## <a name="remove-a-resource-powershell"></a>Ta bort en resurs (PowerShell)
 
-Ta bort en resurs (i vårt exempel PSDemoVM-datorer) från en samling med PowerShell, enligt följande:
+Med PowerShell-cmdletar kan du ta bort en enskild resurs från en MoveCollection eller ta bort flera resurser.
+
+### <a name="remove-a-single-resource"></a>Ta bort en enskild resurs
+
+Ta bort en resurs (i vårt exempel det virtuella nätverket *psdemorm-VNet*) enligt följande:
 
 ```azurepowershell-interactive
 # Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus -Name PSDemoVM
+Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
 ```
-**Förväntad utdata**
+**Utdata efter körning av cmdlet**
 
-![Mata ut text efter borttagning av en resurs från en flyttnings samling](./media/remove-move-resources/remove-resource.png)
+![Mata ut text efter borttagning av en resurs från en flyttnings samling](./media/remove-move-resources/powershell-remove-single-resource.png)
 
-## <a name="remove-a-collection-powershell"></a>Ta bort en samling (PowerShell)
+### <a name="remove-multiple-resources"></a>Ta bort flera resurser
 
-Ta bort en hel flytt samling med PowerShell enligt följande:
+Ta bort flera resurser på följande sätt:
 
-1. Följ anvisningarna ovan för att ta bort resurser i samlingen med hjälp av PowerShell.
-2. Kör följande:
+1. Verifiera beroenden:
+
+    ````azurepowershell-interactive
+    $resp = Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -ValidateOnly
+    ```
+
+    **Output after running cmdlet**
+
+    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-validate-dependencies.png)
+
+2. Retrieve the dependent resources that need to be removed (along with our example virtual network psdemorm-vnet):
+
+    ````azurepowershell-interactive
+    $resp.AdditionalInfo[0].InfoMoveResource
+    ```
+
+    **Output after running cmdlet**
+
+    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-get-dependencies.png)
+
+
+3. Remove all resources, along with the virtual network:
+
+    
+    ````azurepowershell-interactive
+    Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM','psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg')
+    ```
+
+    **Output after running cmdlet**
+
+    ![Output text after removing all resources from a move collection](./media/remove-move-resources/remove-multiple-all.png)
+
+
+## Remove a collection (PowerShell)
+
+Remove an entire move collection from the subscription, as follows:
+
+1. Follow the instructions above to remove resources in the collection using PowerShell.
+2. Run:
 
     ```azurepowershell-interactive
-    # Remove a resource using the resource ID
-    Remove-AzResourceMoverMoveCollection -SubscriptionId <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus -MoveCollectionName MoveCollection-centralus-westcentralus
+    Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
     ```
-    **Förväntad utdata**
+
+    **Output after running cmdlet**
     
-    ![Mata ut text efter borttagning av en flytt samling](./media/remove-move-resources/remove-collection.png)
+    ![Output text after removing a move collection](./media/remove-move-resources/remove-collection.png)
 
-## <a name="vm-resource-state-after-removing"></a>Status för VM-resurs efter borttagning
+## VM resource state after removing
 
-Vad som händer när du tar bort en VM-resurs från en flyttnings samling beror på resursens tillstånd, som sammanfattas i tabellen.
+What happens when you remove a VM resource from a move collection depends on the resource state, as summarized in the table.
 
-###  <a name="remove-vm-state"></a>Ta bort VM-tillstånd
-**Resurs tillstånd** | **Virtuell dator** | **Nätverk**
+###  Remove VM state
+**Resource state** | **VM** | **Networking**
 --- | --- | --- 
-**Tillagt i flyttnings samlingen** | Ta bort från flytta samling. | Ta bort från flytta samling. 
-**Matchade beroenden/förberedelse** | Ta bort från flytta samling  | Ta bort från flytta samling. 
-**Förberedelse pågår**<br/> (eller någon annan status som pågår) | Borttagnings åtgärden Miss lyckas med felet.  | Borttagnings åtgärden Miss lyckas med felet.
-**Det gick inte att förbereda** | Ta bort från flyttnings samlingen.<br/>Ta bort allt som skapats i mål regionen, inklusive replik diskar. <br/><br/> Infrastruktur resurser som skapas under flytten måste tas bort manuellt. | Ta bort från flyttnings samlingen.  
-**Påbörja flytt väntar** | Ta bort från flytta samling.<br/><br/> Ta bort allt som skapats i mål regionen, inklusive VM, replik diskar osv.  <br/><br/> Infrastruktur resurser som skapas under flytten måste tas bort manuellt. | Ta bort från flytta samling.
-**Det gick inte att påbörja flytt** | Ta bort från flytta samling.<br/><br/> Ta bort allt som skapats i mål regionen, inklusive VM, replik diskar osv.  <br/><br/> Infrastruktur resurser som skapas under flytten måste tas bort manuellt. | Ta bort från flytta samling.
-**Incheckning väntar** | Vi rekommenderar att du tar bort flytten så att mål resurserna tas bort först.<br/><br/> Resursen går tillbaka till steget **påbörja flytt väntar** och du kan fortsätta därifrån. | Vi rekommenderar att du tar bort flytten så att mål resurserna tas bort först.<br/><br/> Resursen går tillbaka till steget **påbörja flytt väntar** och du kan fortsätta därifrån. 
-**Incheckning misslyckades** | Vi rekommenderar att du tar bort så att mål resurserna tas bort först.<br/><br/> Resursen går tillbaka till steget **påbörja flytt väntar** och du kan fortsätta därifrån. | Vi rekommenderar att du tar bort flytten så att mål resurserna tas bort först.<br/><br/> Resursen går tillbaka till steget **påbörja flytt väntar** och du kan fortsätta därifrån.
-**Borttagningen slutfördes** | Resursen går tillbaka till steget **påbörja flytt väntar** .<br/><br/> Den tas bort från flyttnings samlingen, tillsammans med allt som skapats på mål-VM, replik diskar, valv osv.  <br/><br/> Infrastruktur resurser som skapas under flytten måste tas bort manuellt. <br/><br/> Infrastruktur resurser som skapas under flytten måste tas bort manuellt. |  Resursen går tillbaka till steget **påbörja flytt väntar** .<br/><br/> Den tas bort från flyttnings samlingen.
-**Borttagningen misslyckades** | Vi rekommenderar att du tar bort flyttningarna så att mål resurserna tas bort först.<br/><br/> Efter det återgår resursen till läget **Starta flytt väntar** och du kan fortsätta därifrån. | Vi rekommenderar att du tar bort flyttningarna så att mål resurserna tas bort först.<br/><br/> Efter det återgår resursen till läget **Starta flytt väntar** och du kan fortsätta därifrån.
-**Borttagning av väntande källa** | Borttagen från flyttnings samlingen.<br/><br/> Det tar inte bort något som skapats i mål regionen.  | Borttagen från flyttnings samlingen.<br/><br/> Det tar inte bort något som skapats i mål regionen.
-**Det gick inte att ta bort källan** | Borttagen från flyttnings samlingen.<br/><br/> Det tar inte bort något som skapats i mål regionen. | Borttagen från flyttnings samlingen.<br/><br/> Det tar inte bort något som skapats i mål regionen.
+**Added to move collection** | Delete from move collection. | Delete from move collection. 
+**Dependencies resolved/prepare pending** | Delete from move collection  | Delete from move collection. 
+**Prepare in progress**<br/> (or any other state in progress) | Delete operation fails with error.  | Delete operation fails with error.
+**Prepare failed** | Delete from the move collection.<br/>Delete anything created in the target region, including replica disks. <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from the move collection.  
+**Initiate move pending** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
+**Initiate move failed** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
+**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
+**Commit failed** | We recommend that you discard the  so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
+**Discard completed** | The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target - VM, replica disks, vault etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. <br/><br/> Infrastructure resources created during the move need to be deleted manually. |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection.
+**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there.
+**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.  | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
+**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
 
-## <a name="sql-resource-state-after-removing"></a>Status för SQL-resurs efter borttagning
+## SQL resource state after removing
 
-Vad som händer när du tar bort en Azure SQL-resurs från en flyttnings samling beror på resursens tillstånd, som sammanfattas i tabellen.
+What happens when you remove an Azure SQL resource from a move collection depends on the resource state, as summarized in the table.
 
-**Resurs tillstånd** | **SQL** 
+**Resource state** | **SQL** 
 --- | --- 
-**Tillagt i flyttnings samlingen** | Ta bort från flytta samling. 
-**Matchade beroenden/förberedelse** | Ta bort från flytta samling 
-**Förberedelse pågår**<br/> (eller någon annan status som pågår)  | Borttagnings åtgärden Miss lyckas med felet. 
-**Det gick inte att förbereda** | Ta bort från flytta samling<br/><br/>Ta bort allt som skapats i mål regionen. 
-**Påbörja flytt väntar** |  Ta bort från flytta samling<br/><br/>Ta bort allt som skapats i mål regionen. SQL-databasen finns nu och kommer att tas bort. 
-**Det gick inte att påbörja flytt** | Ta bort från flytta samling<br/><br/>Ta bort allt som skapats i mål regionen. SQL-databasen finns just nu och måste tas bort. 
-**Incheckning väntar** | Vi rekommenderar att du tar bort flytten så att mål resurserna tas bort först.<br/><br/> Resursen går tillbaka till steget **påbörja flytt väntar** och du kan fortsätta därifrån.
-**Incheckning misslyckades** | Vi rekommenderar att du tar bort flytten så att mål resurserna tas bort först.<br/><br/> Resursen går tillbaka till steget **påbörja flytt väntar** och du kan fortsätta därifrån. 
-**Borttagningen slutfördes** |  Resursen går tillbaka till steget **påbörja flytt väntar** .<br/><br/> Den tas bort från flyttnings samlingen, tillsammans med allt som skapats på målet, inklusive SQL-databaser. 
-**Borttagningen misslyckades** | Vi rekommenderar att du tar bort flyttningarna så att mål resurserna tas bort först.<br/><br/> Efter det återgår resursen till läget **Starta flytt väntar** och du kan fortsätta därifrån. 
-**Borttagning av väntande källa** | Borttagen från flyttnings samlingen.<br/><br/> Det tar inte bort något som skapats i mål regionen. 
-**Det gick inte att ta bort källan** | Borttagen från flyttnings samlingen.<br/><br/> Det tar inte bort något som skapats i mål regionen. 
+**Added to move collection** | Delete from move collection. 
+**Dependencies resolved/prepare pending** | Delete from move collection 
+**Prepare in progress**<br/> (or any other state in progress)  | Delete operation fails with error. 
+**Prepare failed** | Delete from move collection<br/><br/>Delete anything created in the target region. 
+**Initiate move pending** |  Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and will be deleted. 
+**Initiate move failed** | Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and must be deleted. 
+**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
+**Commit failed** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
+**Discard completed** |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target, including SQL databases. 
+**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. 
+**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
+**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
 
-## <a name="next-steps"></a>Nästa steg
+## Next steps
 
-Försök att [flytta en virtuell dator](tutorial-move-region-virtual-machines.md) till en annan region med resurs förflyttning.
+Try [moving a VM](tutorial-move-region-virtual-machines.md) to another region with Resource Mover.

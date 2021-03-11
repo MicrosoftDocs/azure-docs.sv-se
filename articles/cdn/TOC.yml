@@ -27,8 +27,6 @@
       href: cdn-custom-ssl.md
     - name: Konfigurera cachelagringsregler
       href: cdn-caching-rules-tutorial.md
-    - name: Kräv HTTPS med hjälp av standardregelmotorn
-      href: cdn-standard-rules-engine.md
 - name: Exempel
   items:
     - name: Kodexempel
@@ -76,6 +74,8 @@
           href: cdn-improve-performance.md
         - name: Slutpunkt med flera ursprung
           href: endpoint-multiorigin.md
+        - name: Kräv HTTPS med hjälp av standardregelmotorn
+          href: cdn-standard-rules-engine.md
         - name: Kontrollera funktionssättet för cachelagring
           items:
             - name: Kontrollera cachelagringsbeteende med hjälp av cachelagringsregler

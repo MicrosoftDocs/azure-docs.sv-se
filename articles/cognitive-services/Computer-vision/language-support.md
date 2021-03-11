@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2e0cd424b71ff828ed0d8ad4c16d3333cf8a1c45
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 43804907d68ddd58e55c7ce453e0731d0cb4b9b5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575880"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560386"
 ---
 # <a name="language-support-for-computer-vision"></a>Språk stöd för Visuellt innehåll
 
@@ -68,13 +68,13 @@ Visuellt innehålls OCR-API: er stöder flera språk. De kräver inte att du ang
 |Italienska | `it` |✔ |✔ |✔ |
 |Japanska | `ja` |✔ | |✔ |
 |Javanesiska | `jv` | | |✔ |
+|Quiché  | `quc` | | |✔ |
 |Kabuverdianu | `kea` | | |✔ |
 |Kachin (Latin) | `kac` | | |✔ |
 |Kara-Kalpak | `kaa` | | |✔ |
 |Kashubian | `csb` | | |✔ |
 |Khasi  | `kha` | | |✔ |
 |Koreanska | `ko` |✔ | |✔ |
-|Quiché  | `quc` | | |✔ |
 |Kurdiska (latinsk) | `kur` | | |✔ |
 |Luxemburgiska  | `lb` | | |✔ |
 |Malajiska (latinsk)  | `ms` | | |✔ |
@@ -113,7 +113,7 @@ Visuellt innehålls OCR-API: er stöder flera språk. De kräver inte att du ang
 
 Vissa åtgärder för API: et [analys-image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) kan returnera resultat på andra språk, som anges med `language` Frågeparametern. Andra åtgärder returnerar resultat på engelska oavsett vilket språk som anges, och andra genererar ett undantag för språk som inte stöds. Åtgärder anges med `visualFeatures` `details` parametrarna och, se en lista över alla [](overview.md) åtgärder som du kan utföra med bild analys.
 
-|Språk | Språkkod | Kategorier | Taggar | Description | Vuxen | Varumärken | Färg | Ansikten | ImageType | Objekt | Kändisar | Landmärken |
+|Språk | Språkkod | Kategorier | Taggar | Beskrivning | Vuxen | Varumärken | Färg | Ansikten | ImageType | Objekt | Kändisar | Landmärken |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kinesiska | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Engelska | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
