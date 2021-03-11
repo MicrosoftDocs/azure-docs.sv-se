@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 087989638193bb59001ed33c4ee253d61682d8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078a9312a7ee1b3b0eafd000928ed74348a540c3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936001"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548061"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Kognitiv kompetens för språk identifiering
 
@@ -21,7 +21,7 @@ ms.locfileid: "88936001"
 
 Den här funktionen är särskilt användbar när du behöver ange språket för texten som inskickad till andra kunskaper (till exempel [Attitydanalys kompetens](cognitive-search-skill-sentiment.md) eller [text delnings kunskaper](cognitive-search-skill-textsplit.md)).
 
-Språk identifieringen utnyttjar Bing: s naturliga språk bearbetnings bibliotek, vilket överskrider antalet [språk och regioner som stöds](../cognitive-services/text-analytics/language-support.md) för textanalys. Den exakta listan över språk publiceras inte, men innehåller alla talade språk, plus varianter, dialekter och vissa regionala och kulturella språk. Om du har innehåll som uttryckts på ett mindre vanligt språk kan du [prova språkidentifiering-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) för att se om det returnerar en kod. Svaret för språk som inte kan identifieras är `unknown` .
+Språk identifieringen utnyttjar Bing: s naturliga språk bearbetnings bibliotek, vilket överskrider antalet [språk och regioner som stöds](../cognitive-services/text-analytics/language-support.md) för textanalys. Den exakta listan över språk publiceras inte, men innehåller alla talade språk, plus varianter, dialekter och vissa regionala och kulturella språk. Om du har innehåll som uttryckts på ett mindre vanligt språk kan du [prova språkidentifiering-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) för att se om det returnerar en kod. Svaret för språk som inte kan identifieras är `(Unknown)` .
 
 > [!NOTE]
 > När du utökar omfattningen genom att öka frekvensen för bearbetning, lägga till fler dokument eller lägga till fler AI-algoritmer måste du [koppla en fakturerbar Cognitive Services-resurs](cognitive-search-attach-cognitive-services.md). Avgifterna påförs när API: er anropas i Cognitive Services, och för avbildnings extrahering som en del av stadiet för dokument sprickor i Azure Kognitiv sökning. Det finns inga kostnader för text extrahering från dokument.
@@ -35,6 +35,15 @@ Microsoft. färdigheter. text. LanguageDetectionSkill
 ## <a name="data-limits"></a>Databegränsningar
 Den maximala storleken för en post ska vara 50 000 tecken som mäts av [`String.Length`](/dotnet/api/system.string.length) . Om du behöver dela upp dina data innan du skickar dem till språk identifierings kunskapen kan du använda [text delnings kunskapen](cognitive-search-skill-textsplit.md).
 
+## <a name="skill-parameters"></a>Kunskaps parametrar
+
+Parametrar är skiftlägeskänsliga.
+
+| Indata | Beskrivning |
+|---------------------|-------------|
+| `defaultCountryHint` | Valfritt En ISO 3166-1 alpha-2 2 bokstavs lands kod kan anges som en ledtråd till språk identifierings modellen om den inte kan disambiguate språket. Se [textanalys-dokumentationen](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) för det här avsnittet för mer information. Mer specifikt `defaultCountryHint` används parametern med dokument som inte anger `countryHint` indatatypen explicit.  |
+| `modelVersion`   | Valfritt Den version av modellen som ska användas när Textanalyss tjänsten anropas. Den senast tillgängliga anges som standard när du inte anger den. Vi rekommenderar att du inte anger det här värdet om det inte är absolut nödvändigt. Mer information finns [i modell versioner i API för textanalys](../cognitive-services/text-analytics/concepts/model-versioning.md) . |
+
 ## <a name="skill-inputs"></a>Kompetens inmatningar
 
 Parametrar är skiftlägeskänsliga.
@@ -42,6 +51,7 @@ Parametrar är skiftlägeskänsliga.
 | Indata     | Beskrivning |
 |--------------------|-------------|
 | `text` | Den text som ska analyseras.|
+| `countryHint` | En ISO 3166-1 alpha-2 2 bokstavs lands kod som används som ett tips för språk identifierings modellen om den inte kan disambiguate språket. Se [textanalys-dokumentationen](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) för det här avsnittet för mer information. |
 
 ## <a name="skill-outputs"></a>Kunskaps utmatningar
 
@@ -60,6 +70,10 @@ Parametrar är skiftlägeskänsliga.
       {
         "name": "text",
         "source": "/document/text"
+      },
+      {
+        "name": "countryHint",
+        "source": "/document/countryHint"
       }
     ],
     "outputs": [
@@ -98,6 +112,14 @@ Parametrar är skiftlägeskänsliga.
            {
              "text": "Estamos muy felices de estar con ustedes."
            }
+      },
+      {
+        "recordId": "3",
+        "data":
+           {
+             "text": "impossible",
+             "countryHint": "fr"
+           }
       }
     ]
 ```
@@ -125,14 +147,19 @@ Parametrar är skiftlägeskänsliga.
               "languageName": "Spanish",
               "score": 1,
             }
+      },
+      {
+        "recordId": "3",
+        "data":
+            {
+              "languageCode": "fr",
+              "languageName": "French",
+              "score": 1,
+            }
       }
     ]
 }
 ```
-
-
-## <a name="error-cases"></a>Fel fall
-Om texten uttrycks i ett språk som inte stöds, genereras ett fel och ingen språk identifierare returneras.
 
 ## <a name="see-also"></a>Se även
 

@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: 78b93c05621754ae499e4ae8ca6b66c5bbfaad1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028548"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623273"
 ---
 Cognitive Services tillhandahåller två bearbetnings tjänster för naturligt språk, [language Understanding](../luis/what-is-luis.md) och [QNA Maker](../qnamaker/overview/overview.md), var och en med olika ändamål. Förstå när du ska använda varje tjänst och hur de ska komplettera varandra.
 
@@ -71,7 +71,7 @@ Du kan presentera detta svar från tredje part för användaren för verifiering
 
 Om din Chat-robot behöver mer information än vad som finns i tjänsten kan du använda båda tjänsterna och bearbeta båda svaren i klient programmet för att fortsätta via ett besluts träd.
 
-Använd verktyget bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** för att hjälpa till att bygga en process som fungerar med båda tjänsterna. Det här verktyget skapar en LUIS app av avsikter som skickar mellan LUIS och QnA Maker som underordnade appar. [Läs mer](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) om integrering med Luis-, QNA Maker-och bot-ramverket.
+Använd verktyget bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** för att hjälpa till att bygga en process som fungerar med båda tjänsterna. Det här verktyget skapar en LUIS app av avsikter som skickar mellan LUIS och QnA Maker som underordnade appar. [Läs mer](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs) om integrering med Luis-, QNA Maker-och bot-ramverket.
 
 Använd robot Builder-exemplet, **NLP med sändning**, i [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) eller [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)för att implementera den här typen av chatt-robot.
 
@@ -88,6 +88,6 @@ Implementera bästa praxis för varje tjänst:
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [Skicka CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Robot Framework-exempel](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure bot-tjänst](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot-tjänst](/azure/bot-service/bot-service-overview-introduction)
 * [Azure bot-emulator](https://github.com/Microsoft/BotFramework-Emulator)
 * [Webb Chat för bot Framework](https://github.com/microsoft/BotFramework-WebChat)

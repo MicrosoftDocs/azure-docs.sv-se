@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429270"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618006"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -80,8 +80,8 @@ Kluster som distribueras i två regioner kommer att fungera oberoende under norm
 - Azure attestering BCDR ger sömlös redundans där kunder inte behöver göra något extra steg för att återställa
 - [Azure-Traffic Manager](../traffic-manager/index.yml) för regionen identifierar att hälso avsökningen är försämrad och växlar slut punkten till kopplad region
 - Befintliga anslutningar fungerar inte och får ett internt Server fel eller tids gräns problem
-- Alla kontroll Plans åtgärder kommer att blockeras. Kunder kommer inte att kunna skapa attesterings leverantörer och uppdatera principer i den primära regionen
-- Alla data Plans åtgärder, inklusive attesterings anrop, fortsätter att fungera i primär region
+- Alla kontroll Plans åtgärder kommer att blockeras. Kunder kommer inte att kunna skapa attesterings leverantörer i den primära regionen
+- Alla data Plans åtgärder, inklusive attesterings anrop och princip konfiguration, kommer att betjänas av en sekundär region. Kunder kan fortsätta att arbeta med data Plans åtgärder med den ursprungliga URI: n som motsvarar den primära regionen
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig mer om [grundläggande koncept för Azure-attestering](basic-concepts.md)

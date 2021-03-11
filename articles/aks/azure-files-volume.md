@@ -5,12 +5,12 @@ description: Lär dig hur du manuellt skapar en volym med Azure Files för anvä
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 4e009c5de2e24c1b0bd94fb4c11b0c52a3bc378d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246969"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609081"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Skapa och använda en volym med Azure Files resurs i Azure Kubernetes service (AKS) manuellt
 
@@ -67,7 +67,8 @@ Använd `kubectl create secret` kommandot för att skapa hemligheten. I följand
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>Montera fil resursen som en volym
+## <a name="mount-file-share-as-an-inline-volume"></a>Montera fil resurs som en infogad volym
+> Obs! från och med 1.18.15, 1.19.7, 1.20.2, 1.21.0, det hemliga namn området i en intern `azureFile` volym kan bara anges som `default` namn område, för att ange ett annat hemligt namn område, Använd nedanstående beständiga volym exempel i stället.
 
 Om du vill montera Azure Files resursen i din POD konfigurerar du volymen i behållar specifikationen. Skapa en ny fil `azure-files-pod.yaml` med namnet med följande innehåll. Om du har ändrat namnet på fil resursen eller det hemliga namnet uppdaterar du *resurs* namn och *secretName*. Om du vill kan du uppdatera `mountPath` , vilket är sökvägen till fil resursen som är monterad i pod. För Windows Server-behållare anger du en *mountPath* med hjälp av Windows Sök vägs konvention, till exempel *":"*.
 
@@ -131,9 +132,36 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Monteringsalternativ
+## <a name="mount-file-share-as-an-persistent-volume"></a>Montera fil resurs som en beständig volym
+ - Monteringsalternativ
 
-Standardvärdet för *fileMode* och *dirMode* är *0755* för Kubernetes version 1.9.1 och senare. Om du använder ett kluster med Kubernetes version 1.8.5 eller större och statiskt skapar permanent volym objekt måste monterings alternativ anges i *PersistentVolume* -objektet. I följande exempel anges *0777*:
+Standardvärdet för *fileMode* och *dirMode* är *0777* för Kubernetes version 1,15 och senare. I följande exempel anges *0755* på *PersistentVolume* -objektet:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azure-secret
+    secretNamespace: default
+    shareName: aksshare
+    readOnly: false
+  mountOptions:
+  - dir_mode=0755
+  - file_mode=0755
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+```
+
+Om du vill uppdatera monterings alternativen skapar du en *azurefile-Mount-Options-PV. yaml-* fil med en *PersistentVolume*. Exempel:
 
 ```yaml
 apiVersion: v1
@@ -158,34 +186,7 @@ spec:
   - nobrl
 ```
 
-Om du använder ett kluster av version 1.8.0-1.8.4 kan du ange en säkerhets kontext med värdet för *runAsUser* inställt på *0*. Mer information om säkerhets kontexten för Pod finns i [Konfigurera en säkerhets kontext][kubernetes-security-context].
-
-Om du vill uppdatera monterings alternativen skapar du en *azurefile-Mount-Options-PV. yaml-* fil med en *PersistentVolume*. Här är några exempel:
-
-```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: azurefile
-spec:
-  capacity:
-    storage: 5Gi
-  accessModes:
-    - ReadWriteMany
-  azureFile:
-    secretName: azure-secret
-    shareName: aksshare
-    readOnly: false
-  mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
-  - uid=1000
-  - gid=1000
-  - mfsymlinks
-  - nobrl
-```
-
-Skapa en *azurefile-Mount-Options-PVC. yaml-* fil med en *PersistentVolumeClaim* som använder *PersistentVolume*. Här är några exempel:
+Skapa en *azurefile-Mount-Options-PVC. yaml-* fil med en *PersistentVolumeClaim* som använder *PersistentVolume*. Exempel:
 
 ```yaml
 apiVersion: v1
@@ -217,7 +218,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Uppdatera din container specifikation för att referera till din *PersistentVolumeClaim* och uppdatera din POD. Här är några exempel:
+Uppdatera din container specifikation för att referera till din *PersistentVolumeClaim* och uppdatera din POD. Exempel:
 
 ```yaml
 ...

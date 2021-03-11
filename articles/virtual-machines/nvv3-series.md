@@ -4,16 +4,16 @@ description: Specifikationer för virtuella datorer i NVv3-serien.
 services: virtual-machines
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f04847930f078ef506d66784deab4767db0a282d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 276afba62a26a53fe32f7aa9d47f42ada251d6b5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123980"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613059"
 ---
 # <a name="nvv3-series"></a>NVv3-serien
 
@@ -27,7 +27,7 @@ Varje GPU i NVv3-instanser levereras med en GRID-licens. Den här licensen ger d
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
-[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | GPU | GPU-minne: GiB | Maximalt antal datadiskar | Maximalt antal cachelagrade diskar: IOPS/MBps | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) | Virtuella arbets stationer | Virtuella program |

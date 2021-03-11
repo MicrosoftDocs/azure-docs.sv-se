@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: ef41c52fa1b63094d952dc34f81db36f7aeaac95
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 73dc54ca04ad6ddb275947663959164cc2e3c019
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521296"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547891"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Snabb start: skapa och konfigurera Route server med Azure CLI 
 
@@ -162,7 +162,7 @@ az network routeserver peering list-advertised-routes -g RouteServerRG --vrouter
 az network routeserver peering list-learned-routes -g RouteServerRG --vrouter-name myRouteServer -n NVA1_name 
 ``` 
 
-## <a name="clean-up"></a>Rensa 
+## <a name="clean-up-resources"></a>Rensa resurser
 
 Om du inte längre behöver Azure Route-servern använder du dessa kommandon för att ta bort BGP-peering och tar sedan bort väg servern. 
 

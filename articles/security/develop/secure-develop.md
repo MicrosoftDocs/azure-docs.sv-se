@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576624"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548452"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Utveckla säkra program på Azure
 I den här artikeln presenterar vi säkerhets aktiviteter och kontroller för att tänka på när du utvecklar program för molnet. Säkerhets frågor och koncept som du bör tänka på under implementerings-och verifierings faserna i Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) omfattas. Målet är att hjälpa dig att definiera aktiviteter och Azure-tjänster som du kan använda för att utveckla ett säkrare program.
@@ -34,7 +34,7 @@ Anta att ditt program kommer att användas på sätt som du inte avsåg att anv�
 
 ### <a name="perform-code-reviews"></a>Utföra kod granskningar
 
-Innan du checkar in kod kan du göra [kod granskningar](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) för att öka den övergripande kod kvaliteten och minska risken för att skapa buggar. Du kan använda [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) för att hantera kod gransknings processen.
+Innan du checkar in kod kan du göra [kod granskningar](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) för att öka den övergripande kod kvaliteten och minska risken för att skapa buggar. Du kan använda [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) för att hantera kod gransknings processen.
 
 ### <a name="perform-static-code-analysis"></a>Utföra analys av statisk kod
 

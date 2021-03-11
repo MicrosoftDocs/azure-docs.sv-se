@@ -3,22 +3,23 @@ title: Kör PowerShell-skript i en virtuell Windows-dator i Azure
 description: I det här avsnittet beskrivs hur du kör PowerShell-skript i en virtuell Azure Windows-dator med hjälp av kommando funktionen kör
 services: automation
 ms.service: virtual-machines
+ms.collection: windows
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: eac6201f45b11cae223e2293644bd9d0144e6e31
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e2cd8ee4095db235215a2beaa68975e819b474c1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203362"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560692"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Kör PowerShell-skript i din virtuella Windows-dator med hjälp av kommandot kör
 
-Funktionen Kör kommando använder agenten för virtuella datorer (VM) för att köra PowerShell-skript i en virtuell Azure Windows-dator. Du kan använda dessa skript för allmän hantering av datorer eller program. De kan hjälpa dig att snabbt diagnostisera och åtgärda åtkomst till virtuella datorer och nätverks problem och återställa den virtuella datorn till ett lyckat tillstånd.
+Funktionen Kör kommando använder agenten för virtuella datorer (VM) för att köra PowerShell-skript i en virtuell Azure Windows-dator. Du kan använda de här skripten till allmän hantering av datorer eller program. De kan hjälpa dig att snabbt diagnostisera och åtgärda åtkomst till virtuella datorer och nätverks problem och återställa den virtuella datorn till ett lyckat tillstånd.
 
 
 
@@ -102,7 +103,7 @@ I följande exempel används cmdleten [Invoke-AzVMRunCommand](/powershell/module
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>Begränsa åtkomst till Kör kommando
+## <a name="limiting-access-to-run-command"></a>Begränsa åtkomst till Run Command
 
 Att Visa körnings kommandon eller Visa information om ett kommando kräver `Microsoft.Compute/locations/runCommands/read` behörighet på prenumerations nivå. Den inbyggda [läsar](../../role-based-access-control/built-in-roles.md#reader) rollen och högre nivåer har den här behörigheten.
 

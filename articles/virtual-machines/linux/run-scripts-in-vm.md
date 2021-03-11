@@ -2,17 +2,18 @@
 title: Köra skript i en virtuell Azure Linux-dator
 description: I det här avsnittet beskrivs hur du kör skript på en virtuell dator
 services: automation
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 151bc827cc92c749edd2899cb331eebd22e171a7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9531b5b3d5f178e204d408c677e8908be86e3367
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737837"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552872"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Kör skript i din virtuella Linux-dator
 

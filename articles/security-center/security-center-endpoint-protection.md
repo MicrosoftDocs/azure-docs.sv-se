@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341421"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561236"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-utvärdering och rekommendationer i Azure Security Center
 
@@ -29,9 +29,9 @@ Azure Security Center tillhandahåller hälso utvärdering av versioner av Endpo
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center rekommenderar att du **installerar Endpoint Protection-lösningar på den virtuella datorn** när [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) körs och resultatet är **AMServiceEnabled: falskt**
+* Security Center rekommenderar att du **installerar Endpoint Protection-lösningar på den virtuella datorn** när [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) körs och resultatet är **AMServiceEnabled: falskt**
 
-* Security Center rekommenderar att du **löser problem med hälso tillstånd för slut punkts skydd på dina datorer** när [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) körs och något av följande inträffar:
+* Security Center rekommenderar att du **löser problem med hälso tillstånd för slut punkts skydd på dina datorer** när [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) körs och något av följande inträffar:
 
   * Någon av följande egenskaper är falskt:
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/09/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357372"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555014"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uppgradera till ett V2-lagringskonto för generell användning
 
@@ -24,6 +24,15 @@ Att uppgradera till ett allmänt-syfte v2-lagrings konto från dina generella v1
 
 > [!IMPORTANT]
 > Att uppgradera ett allmänt v1-eller Blob Storage-konto till General-Purpose v2 är permanent och kan inte ångras.
+
+> [!NOTE]
+> Även om Microsoft rekommenderar General-Purpose v2-konton för de flesta scenarier kommer Microsoft att fortsätta att stödja allmänna v1-konton för nya och befintliga kunder. Du kan skapa generella v1-lagrings konton i nya regioner när Azure Storage är tillgängliga i dessa regioner. Microsoft har för närvarande inte en plan för att föråldra support för allmänna v1-konton och ger minst ett års varsel innan det går att använda en Azure Storage-funktion. Microsoft fortsätter att tillhandahålla säkerhets uppdateringar för generella v1-konton, men ingen ny funktions utveckling förväntas för den här konto typen.
+>
+> Från och med den 1 oktober 2020 är prissättningen för allmänna v1-konton i nya Azure Storage regioner likvärdig med prissättningen för General-Purpose v2-konton i dessa regioner. Priser i befintliga Azure Storage-regioner har inte ändrats. Pris information för allmänna v1-konton i en speciell region finns på sidan med Azure Storage priser. **Välj din** region och välj sedan bredvid **prissättnings erbjudanden**.
+
+## <a name="upgrade-an-account"></a>Uppgradera ett konto
+
+Om du vill uppgradera ett allmänt v1-eller Blob Storage-konto till ett allmänt-syfte v2-konto, använder du Azure Portal, PowerShell eller Azure CLI.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -47,6 +56,7 @@ Sedan anropar du följande kommando för att uppgradera kontot, vilket ersätter
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Om du vill uppgradera ett allmänt v1-konto till ett allmänt-syfte v2-konto med hjälp av Azure CLI installerar du först den senaste versionen av Azure CLI. Information om att installera CLI finns i [Installera Azure CLI 2.0](/cli/azure/install-azure-cli).

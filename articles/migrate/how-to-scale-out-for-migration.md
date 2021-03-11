@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048020"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612073"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skala agent lös migrering av virtuella VMware-datorer till Azure
 
@@ -147,10 +147,10 @@ Slutför registreringen av den skalbara installationen genom att klicka på **Im
 1. I popup-fönstret som öppnas i föregående steg väljer du platsen för den kopierade zip-filen och klickar på **Spara**.
 
 När filerna har importer ATS slutförs registreringen av den skalbara installationen och du får tidsstämpeln för den senaste lyckade importen. Du kan också se registrerings informationen genom att klicka på **Visa information**.
-:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Importen lyckades":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Skärm bild som visar att du kan registrera skalbar utrustning med Azure Migrate projekt.":::
 
 Nu bör du kontrol lera att den skalbara enheten kan ansluta till vCenter-servern. Verifiera vCenter Server anslutningen från en skalbar installation genom att klicka på **validera** igen.
-:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Importen lyckades":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Skärm bild som visar visnings uppgifter och identifierings källor som ska verifieras.":::
 
 > [!IMPORTANT]
 > Om du redigerar vCenter Server autentiseringsuppgifter på den primära installationen, se till att du importerar konfigurationsfilerna igen till den skalbara enheten för att få den senaste konfigurationen och fortsätta att utföra pågående replikeringar.<br/> Om du inte behöver den skalbara installationen längre, se till att du inaktiverar den skalbara enheten. [**Läs mer**](./common-questions-appliance.md) om hur du inaktiverar den skalbara installationen när det inte behövs.

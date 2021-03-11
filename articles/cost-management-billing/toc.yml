@@ -52,8 +52,6 @@
           href: costs/ingest-azure-usage-at-scale.md
         - name: Cost Management för partner
           href: costs/get-started-partners.md
-        - name: 'Migrera från EA-rapporter till Azure Resource Manager-API:er'
-          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Reservationer
       items:
         - name: Vad är Azure Reservations?
@@ -296,8 +294,10 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: 'Migrera från EA till MCA API:er'
           href: costs/migrate-cost-management-api.md
-        - name: Tilldela roller till SPN
+        - name: Tilldela roller till EA-SPN
           href: manage/assign-roles-azure-service-principals.md
+        - name: 'Migrera från EA-rapporter till Azure Resource Manager-API:er'
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Köpa och administrera reservationer
       items:
         - name: Bestämma vad som ska köpas in

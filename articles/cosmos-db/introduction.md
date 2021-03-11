@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556854"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618312"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Välkommen till Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,6 +19,9 @@ ms.locfileid: "99556854"
 Dagens program måste ha korta svarstider och alltid vara online. Instanser av dessa program måste distribueras i datacenter som ligger nära användarna för att uppnå kort svarstid och hög tillgänglighet. Programmen behöver kunna svara i realtid på stora förändringar av användningen vid hög belastning, lagra ständigt ökande datavolymer och göra dessa data tillgängliga för användare på millisekunder.
 
 Azure Cosmos DB är en fullständigt hanterad NoSQL-databas för modern app-utveckling. Ensiffriga svars tider i millisekunder och automatisk och omedelbar skalbarhet, garantera hastighet i vilken skala som helst. Verksamhets kontinuitet är garanterat med [SLA-baserad](https://azure.microsoft.com/support/legal/sla/cosmos-db) tillgänglighet och säkerhet i företags klass. Utveckling av appar är snabbare och mer produktiv tack vare nyckel för data distribution i flera regioner var som helst i världen, API: er och SDK: er med öppen källkod för populära språk. Som en helt hanterad tjänst kan Azure Cosmos DB sköta databas administration med automatisk hantering, uppdateringar och uppdatering. Den hanterar också kapacitets hantering med kostnads effektiva alternativ för Server lös och automatisk skalning som svarar på program måste matcha kapacitet med efter frågan.
+
+> [!NOTE]
+> Vill du hjälpa till att förbättra Azure Cosmos DB dokument genom att delta i en användar studie? Ta några minuter för att fylla i den här undersökningen om 5 minuters [gallring](https://aka.ms/cosmosdb-documentation-screener-survey). Om du kvalificerar dig omdirigeras du till en Scheduler där du kan boka en plats för att ansluta till en interaktiv Research session. Inga personliga data samlas in under den här processen enligt vår [sekretess policy](https://go.microsoft.com/fwlink/?LinkId=521839).
 
 Du kan [prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/) utan en Azure-prenumeration, utan kostnad och åtaganden eller använda den [Azure Cosmos DB kostnads fria nivån](optimize-dev-test.md#azure-cosmos-db-free-tier) för att få ett konto med de första 400 ru/s och 5 GB ledigt lagrings utrymme.
 

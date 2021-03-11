@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ec4e26e266a1777857fe0e890b093f60a3597f0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596635"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612532"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Skapa, ändra eller ta bort ett virtuellt nätverk
 
@@ -53,7 +53,7 @@ Utför följande åtgärder innan du slutför stegen i något avsnitt i den här
      > Om ett virtuellt nätverk har adress intervall som överlappar ett annat virtuellt nätverk eller lokalt nätverk, kan inte de två nätverken anslutas. Innan du definierar ett adress intervall bör du fundera över om du kanske vill ansluta det virtuella nätverket till andra virtuella nätverk eller lokala nätverk i framtiden. Microsoft rekommenderar att du konfigurerar adress intervall för virtuella nätverk med privat adress utrymme eller offentligt adress utrymme som ägs av din organisation.
      >
 
-     - **Under näts namn**: under nätets namn måste vara unikt inom det virtuella nätverket. Du kan inte ändra under nätets namn när under nätet har skapats. Portalen kräver att du definierar ett undernät när du skapar ett virtuellt nätverk, även om ett virtuellt nätverk inte krävs för att ha några undernät. I portalen kan du bara definiera ett undernät när du skapar ett virtuellt nätverk. Du kan lägga till fler undernät till det virtuella nätverket senare, efter att det virtuella nätverket har skapats. Information om hur du lägger till ett undernät i ett virtuellt nätverk finns i [Hantera undernät](virtual-network-manage-subnet.md). Du kan skapa ett virtuellt nätverk som har flera undernät med hjälp av Azure CLI eller PowerShell.
+     - **Under näts namn**: under nätets namn måste vara unikt inom det virtuella nätverket. Du kan inte ändra under nätets namn när under nätet har skapats. Portalen kräver att du definierar ett undernät när du skapar ett virtuellt nätverk, även om ett virtuellt nätverk inte krävs för att ha några undernät. I portalen kan du definiera ett eller flera undernät när du skapar ett virtuellt nätverk. Du kan lägga till fler undernät till det virtuella nätverket senare, efter att det virtuella nätverket har skapats. Information om hur du lägger till ett undernät i ett virtuellt nätverk finns i [Hantera undernät](virtual-network-manage-subnet.md). Du kan skapa ett virtuellt nätverk som har flera undernät med hjälp av Azure CLI eller PowerShell.
 
        >[!TIP]
        >Administratörer skapar ibland olika undernät för att filtrera eller styra trafik flödet mellan under näten. Innan du definierar undernät bör du fundera över hur du kan filtrera och dirigera trafik mellan dina undernät. Mer information om hur du filtrerar trafik mellan undernät finns i [nätverks säkerhets grupper](./network-security-groups-overview.md). Azure dirigerar automatiskt trafik mellan undernät, men du kan åsidosätta Azures standard vägar. Om du vill veta mer om Azures standard trafik routning för [routning, se Routning: översikt](virtual-networks-udr-overview.md).

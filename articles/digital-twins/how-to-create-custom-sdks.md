@@ -1,39 +1,44 @@
 ---
-title: 'Skapa anpassade SDK: er för Azure Digitals dubbla med AutoRest'
+title: 'Skapa SDK: er med anpassade språk med AutoRest'
 titleSuffix: Azure Digital Twins
-description: 'Se hur du genererar anpassade SDK: er för att använda Azure Digitals dubbla med andra språk än C#.'
+description: 'Lär dig hur du använder AutoRest för att generera SDK: er för anpassade språk, för att skriva Azure Digitals dubbla kod på andra språk som inte har några publicerade SDK: er.'
 author: baanders
 ms.author: baanders
-ms.date: 4/24/2020
+ms.date: 3/9/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-js
-ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom:
+- devx-track-js
+- contperf-fy21q3
+ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049805"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561848"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Skapa anpassade SDK: er för Azure Digitals dubbla med AutoRest
+# <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Skapa SDK: er för anpassade språk för Azure Digitals med AutoRest
 
-Just nu är de enda publicerade data Plans SDK: erna för att interagera med Azures digitala dubbla API: er för .NET (C#), Java Script och Java. Du kan läsa om dessa SDK: er och API: erna i allmänhet i [*How-to: använda Azure Digitals dubbla API: er och SDK: er*](how-to-use-apis-sdks.md). Om du arbetar på ett annat språk visar den här artikeln hur du skapar ett eget data plan SDK på det språk som du väljer med hjälp av AutoRest.
+Om du behöver arbeta med digitala Digital-objekt med Azure med ett språk som inte har någon [publicerad Azure Digitals-SDK](how-to-use-apis-sdks.md), visar den här artikeln hur du använder AutoRest för att skapa din egen SDK på valfritt språk. 
 
->[!NOTE]
-> Du kan också använda AutoRest för att generera ett Control plan SDK om du vill. Det gör du genom att följa anvisningarna i den här artikeln med hjälp av den senaste **kontroll planet Swagger** (openapi) från [mappen Control plan Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) i stället för data planet en.
+I exemplen i den här artikeln visas hur du skapar ett [data plan SDK](how-to-use-apis-sdks.md#overview-data-plane-apis), men den här processen fungerar även för att skapa ett  [Control plan SDK](how-to-use-apis-sdks.md#overview-control-plane-apis) .
 
-## <a name="set-up-your-machine"></a>Konfigurera din dator
+## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill generera ett SDK behöver du:
-* [AutoRest](https://github.com/Azure/autorest), version 2.0.4413 (version 3 stöds inte för närvarande)
-* [Node.js](https://nodejs.org) som ett krav för AutoRest
-* Den senaste Azure Digital- **dataplans Swagger** -filen (openapi) från [Dataplans Swagger-mappen](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)och dess medföljande mapp med exempel.  Hämta filen Swagger *digitaltwins.jspå* och dess mapp med exempel till din lokala dator.
+Om du vill generera ett SDK måste du först slutföra följande installation på den lokala datorn:
+* Installera [**AutoRest**](https://github.com/Azure/autorest), version 2.0.4413 (version 3 stöds inte för närvarande)
+* Installera [**Node.js**](https://nodejs.org), vilket är ett krav för att använda AutoRest
+* Installera [ **Visual Studio**](https://visualstudio.microsoft.com/downloads/)
+* Hämta den senaste Azure Digital- **dataplans Swagger** -filen (openapi) från [dataplan-Swagger-mappen](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins), tillsammans med dess medföljande mapp med exempel. Swagger-filen är den som kallas *digitaltwins.jspå*.
 
-När datorn är utrustad med allt från listan ovan är du redo att använda AutoRest för att skapa SDK: n.
+>[!TIP]
+> Om du vill skapa ett **Control plan SDK** i stället slutför du stegen i den här artikeln med hjälp av den senaste **kontroll Plans Swagger** (openapi) från [mappen Control plan Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) i stället för data planet en.
 
-## <a name="create-the-sdk-with-autorest"></a>Skapa SDK med AutoRest 
+När datorn är utrustad med allt från listan ovan är du redo att använda AutoRest för att skapa en SDK.
 
-Om du har Node.js installerat kan du köra det här kommandot för att kontrol lera att du har rätt version av AutoRest installerat:
+## <a name="create-the-sdk-using-autorest"></a>Skapa SDK med hjälp av AutoRest 
+
+När du har Node.js installerat kan du köra det här kommandot för att kontrol lera att du har den version av AutoRest som krävs:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -51,11 +56,11 @@ Därför visas en ny mapp med namnet *DigitalTwinsApi* i din arbets katalog. De 
 
 AutoRest har stöd för en mängd olika språk kods generatorer.
 
-## <a name="add-the-sdk-to-a-visual-studio-project"></a>Lägg till SDK i ett Visual Studio-projekt
+## <a name="make-the-sdk-into-a-class-library"></a>Gör SDK till ett klass bibliotek
 
-Du kan inkludera de filer som genereras av AutoRest direkt i en .NET-lösning. Det är dock troligt att du vill lägga till Azure Digitals-SDK: n i flera separata projekt (dina klient program, Azure Functions appar och så vidare). Därför kan det vara praktiskt att skapa ett separat projekt (ett .NET-klass bibliotek) från de genererade filerna. Sedan kan du inkludera detta klass biblioteks projekt i flera lösningar som en projekt referens.
+Du kan inkludera de filer som genereras av AutoRest direkt i en .NET-lösning. Det är dock troligt att du vill ta med Azure Digitals-SDK: n i flera separata projekt (dina klient program, Azure Functions appar med mera). Därför kan det vara praktiskt att skapa ett separat projekt (ett .NET-klass bibliotek) från de genererade filerna. Sedan kan du inkludera detta klass biblioteks projekt i flera lösningar som en projekt referens.
 
-Det här avsnittet innehåller anvisningar om hur du skapar SDK som ett klass bibliotek, vilket är ett eget projekt och kan ingå i andra projekt. De här stegen är beroende av **Visual Studio** (du kan installera den senaste versionen [härifrån).](https://visualstudio.microsoft.com/downloads/)
+Det här avsnittet innehåller anvisningar om hur du skapar SDK som ett klass bibliotek, vilket är ett eget projekt och kan ingå i andra projekt. De här stegen är beroende av **Visual Studio**.
 
 Här är stegen:
 
@@ -81,7 +86,7 @@ Om du vill lägga till dessa öppnar du *verktyg > NuGet Package Manager > hante
 
 Nu kan du skapa projektet och inkludera det som en projekt referens i Azure Digitals dubbla program som du skriver.
 
-## <a name="general-guidelines-for-generated-sdks"></a>Allmänna rikt linjer för genererade SDK: er
+## <a name="tips-for-using-the-sdk"></a>Tips om hur du använder SDK
 
 Det här avsnittet innehåller allmän information och rikt linjer för att använda den genererade SDK: n.
 

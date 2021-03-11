@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979886"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552124"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Självstudie: Logga in användare och anropa ett skyddat API från en blixt WebAssembly-app
 
@@ -49,7 +49,7 @@ När du har registrerat, under **Hantera**, väljer du **autentisering**  >  **i
 Du behöver de senaste blixt mallarna för att skapa appen. Du kan installera dem för .NET Core CLI med följande kommando:
 
 ```dotnetcli
-dotnet new --install Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.1
+dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.6.0
 ```
 
 Kör sedan följande kommando för att skapa programmet. Ersätt plats hållarna i kommandot med rätt information från appens översikts sida och kör kommandot i ett kommando gränssnitt. Den utmatnings plats som anges med `-o|--output` alternativet skapar en projektmapp om den inte finns och blir en del av appens namn.

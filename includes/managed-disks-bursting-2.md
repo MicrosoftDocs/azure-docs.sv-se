@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178395"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623581"
 ---
 ## <a name="disk-level-bursting"></a>Burst-överföring på disk nivå
 
@@ -147,7 +147,7 @@ När den virtuella datorn startar överförs den till en burst-gräns på 1 280 
 
 Efter starten startar du ett program som har en icke-kritisk arbets belastning. Det här programmet kräver 15 MB/s som sprids jämnt över alla diskar.
 
-![Programmet skickar en begäran om 15 MB/s av genomflödet till den virtuella datorn, den virtuella datorn tar emot begäran och skickar var och en av diskarna en begäran om 5 MB/s. varje disk returnerar 5 MB/s, och virtuella datorer returnerar 15 MB/s till programmet.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Programmet skickar en begäran om 15 MB/s av data flödet till den virtuella datorn, den virtuella datorn tar emot begäran och skickar var och en av diskarna en begäran om 5 MB/s, varje disk returnerar 5 MB/s-svar, den virtuella datorn returnerar 15 MB/s till programmet.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
 Programmet måste sedan bearbeta ett batch-jobb som kräver 360 MB/s. Standard_L8s_v2 bursts för att uppfylla det här behovet och begär sedan. Endast 20 MB/s krävs av OS-disken. De återstående 340 MB/s hanteras av data diskarna för burst-P4.
 

@@ -14,6 +14,8 @@
       href: tutorial-move-region-virtual-machines.md
     - name: Flytta krypterade virtuella Azure-datorer till en annan region
       href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: Flytta resurser mellan regioner med PowerShell
+      href: tutorial-move-region-powershell.md
     - name: Flytta SQL-resurser till en annan region
       href: tutorial-move-region-sql.md
 - name: Begrepp
@@ -28,8 +30,6 @@
   items:
     - name: Flytta mellan regioner
       items:
-        - name: Flytta mellan regioner med PowerShell
-          href: move-region-powershell.md
         - name: Flytta virtuella Azure-datorer till tillgänglighetszoner
           href: move-region-availability-zone.md
         - name: Flytta mellan regioner (från resursgrupper)

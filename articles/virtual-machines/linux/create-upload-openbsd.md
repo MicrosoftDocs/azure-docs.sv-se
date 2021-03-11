@@ -2,16 +2,17 @@
 title: Skapa och ladda upp en OpenBSD-avbildning
 description: Lär dig hur du skapar och laddar upp en virtuell hård disk (VHD) som innehåller operativ systemet OpenBSD för att skapa en virtuell Azure-dator via Azure CLI
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3437fcd2d1d521aad237ecf6d3f7937b4835d376
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685097"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554606"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Skapa och ladda upp en OpenBSD disk avbildning till Azure
 Den här artikeln visar hur du skapar och laddar upp en virtuell hård disk (VHD) som innehåller operativ systemet OpenBSD. När du har laddat upp det kan du använda det som en egen avbildning för att skapa en virtuell dator (VM) i Azure via Azure CLI.
@@ -87,7 +88,7 @@ Nu kan du stänga av den virtuella datorn.
 
 
 ## <a name="prepare-the-vhd"></a>Förbered den virtuella hård disken
-VHDX-formatet stöds inte i Azure, endast **fast virtuell hård disk**. Du kan konvertera disken till fast VHD-format med Hyper-V Manager eller PowerShell-cmdleten [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) . Ett exempel är följande.
+VHDX-formatet stöds inte i Azure, endast **fast virtuell hård disk**. Du kan konvertera disken till fast VHD-format med Hyper-V Manager eller PowerShell-cmdleten [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Ett exempel är följande.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

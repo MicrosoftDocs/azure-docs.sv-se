@@ -8,22 +8,22 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff54c1dc62189f2a00528c6a82abe26c667c5538
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 331ef39facb9f7cf8f069f2a238be325f53de2d0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038704"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618041"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>CI/CD för Azure våren Cloud
 
-Med kontinuerlig integrering och kontinuerliga leverans verktyg kan du snabbt distribuera uppdateringar till befintliga program med minimal ansträngning och risk. Azure DevOps hjälper dig att organisera och kontrol lera dessa viktiga jobb. För närvarande erbjuder Azure våren Cloud inget angivet Azure DevOps-plugin-program.  Du kan dock integrera dina våren Cloud-program med DevOps med hjälp av en [Azure CLI-uppgift](/azure/devops/pipelines/tasks/deploy/azure-cli?preserve-view=true&view=azure-devops).
+Med kontinuerlig integrering och kontinuerliga leverans verktyg kan du snabbt distribuera uppdateringar till befintliga program med minimal ansträngning och risk. Azure DevOps hjälper dig att organisera och kontrol lera dessa viktiga jobb. För närvarande erbjuder Azure våren Cloud inget angivet Azure DevOps-plugin-program.  Du kan dock integrera dina våren Cloud-program med DevOps med hjälp av en [Azure CLI-uppgift](/azure/devops/pipelines/tasks/deploy/azure-cli).
 
 Den här artikeln visar hur du använder en Azure CLI-aktivitet med Azure våren Cloud för att integrera med Azure DevOps.
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>Skapa en Azure Resource Manager tjänst anslutning
 
-Läs [den här artikeln](/azure/devops/pipelines/library/connect-to-azure?preserve-view=true&view=azure-devops) för att lära dig hur du skapar en Azure Resource Manager tjänst anslutning till ditt Azure DevOps-projekt. Se till att välja samma prenumeration som du använder för din Azure våren Cloud Service-instans.
+Läs [den här artikeln](/azure/devops/pipelines/library/connect-to-azure) för att lära dig hur du skapar en Azure Resource Manager tjänst anslutning till ditt Azure DevOps-projekt. Se till att välja samma prenumeration som du använder för din Azure våren Cloud Service-instans.
 
 ## <a name="azure-cli-task-templates"></a>Mallar för Azure CLI-aktiviteter
 ::: zone pivot="programming-language-csharp"
