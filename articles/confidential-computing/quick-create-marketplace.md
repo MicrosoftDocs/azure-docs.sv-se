@@ -3,17 +3,17 @@ title: Snabb start – skapa en virtuell Azure-dator med konfidentiell dator med
 description: Kom igång med dina distributioner genom att lära dig hur du snabbt skapar en virtuell dator med konfidentiella data behandling.
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409501"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566642"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Snabb start: Distribuera en virtuell Azure-dator med konfidentiella data behandling på Marketplace
 
@@ -32,7 +32,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Högst upp skriver du **Azures konfidentiella data behandling** i Sök fältet.
 
@@ -52,7 +52,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
    * **Region**: Välj den Azure-region som passar dig.
 
         > [!NOTE]
-        > Konfidentiella beräknings virtuella datorer kan bara köras på specialiserad maskin vara som är tillgänglig i vissa regioner. De senaste tillgängliga regionerna för virtuella datorer i DCsv2-serien finns i [tillgängliga regioner](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+        > Konfidentiella beräknings virtuella datorer kan bara köras på specialiserad maskin vara som är tillgänglig i vissa regioner. De senaste tillgängliga regionerna för DCsv2-Series virtuella datorer finns i [tillgängliga regioner](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
     
     * **Välj bild**: Välj valfri bild. Om du vill slutföra den här självstudien väljer du Ubuntu 18,04 (Gen 2). Annars omdirigeras du enligt lämpliga steg nedan. 
 
@@ -72,12 +72,12 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 1. Välj **Nästa: inställningar för virtuell dator** längst ned på skärmen.
 
     > [!IMPORTANT]
-    > Vänta tills sidan har uppdaterats. Du *bör inte* se ett meddelande om att virtuella datorer med konfidentiell dator användning i DCsv2-serien är tillgängliga i ett begränsat antal regioner. " Om det här meddelandet kvarstår går du tillbaka till föregående sida och väljer en tillgänglig DCsv2-serie region.
+    > Vänta tills sidan har uppdaterats. Du *bör inte* se ett meddelande om att virtuella datorer med konfidentiell dator användning i DCsv2-serien är tillgängliga i ett begränsat antal regioner. " Om det här meddelandet kvarstår går du tillbaka till föregående sida och väljer en tillgänglig DCsv2-Series region.
 
-1. För **ändrings storlek**väljer du en virtuell dator med konfidentiella beräknings funktioner i storleks väljaren. 
+1. För **ändrings storlek** väljer du en virtuell dator med konfidentiella beräknings funktioner i storleks väljaren. 
 
     > [!TIP]
-    > Du bör se storlekar **DC1s_v2**, **DC2s_v2**, **DC4s_V2**och **DC8_v2**. Detta är de enda storlekar för virtuella datorer som för närvarande stöder konfidentiell bearbetning. [Läs mer](virtual-machine-solutions.md).
+    > Du bör se storlekar **DC1s_v2**, **DC2s_v2**, **DC4s_V2** och **DC8_v2**. Detta är de enda storlekar för virtuella datorer som för närvarande stöder konfidentiell bearbetning. [Läs mer](virtual-machine-solutions.md).
 
 1. Välj en disktyp för **typ av operativ system disk**.
 
@@ -87,7 +87,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 
 1. Välj **SSH (Linux)/RDP (Windows)** för **utvalda offentliga inkommande portar**. I den här snabb starten är det här steget nödvändigt för att ansluta till den virtuella datorn och slutföra den öppna enklaven SDK-konfigurationen. 
 
-1. För **startdiagnostik**lämnar du den inaktive rad för den här snabb starten. 
+1. För **startdiagnostik** lämnar du den inaktive rad för den här snabb starten. 
 
 1. Välj **Granska + skapa**.
 
@@ -126,7 +126,7 @@ Mer information om hur du ansluter till virtuella Linux-datorer finns i [Skapa e
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Installera Open enklaven SDK (OE SDK) <a id="Install"></a>
 
-Följ de stegvisa anvisningarna för att installera [OE SDK](https://github.com/openenclave/openenclave) på den virtuella DCsv2-serien som kör en Ubuntu 18,04-LTS gen 2-avbildning. 
+Följ de stegvisa anvisningarna för att installera [OE SDK](https://github.com/openenclave/openenclave) på din DCsv2-Series virtuella dator som kör en Ubuntu 18,04-LTS gen 2-avbildning. 
 
 Om din virtuella dator körs på Ubuntu 16,04 LTS gen 2, måste du följa [installations anvisningarna för Ubuntu 16,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md). 
 

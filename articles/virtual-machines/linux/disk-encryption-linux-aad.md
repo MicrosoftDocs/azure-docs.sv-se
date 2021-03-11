@@ -2,18 +2,19 @@
 title: Azure Disk Encryption med Azure AD App Linux IaaS VM (tidigare version)
 description: Den här artikeln innehåller anvisningar om hur du aktiverar Microsoft Azure disk kryptering för virtuella Linux IaaS-datorer.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741798"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558413"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Aktivera Azure Disk Encryption med Azure AD på virtuella Linux-datorer (tidigare version)
 
@@ -36,7 +37,7 @@ Ta en [ögonblicks bild](snapshot-copy-managed-disk.md), gör en säkerhets kopi
 
  
 
-## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"> </a> Aktivera kryptering på en befintlig eller virtuell IaaS Linux-dator
+## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"></a> Aktivera kryptering på en befintlig eller virtuell IaaS Linux-dator
 
 I det här scenariot kan du aktivera kryptering med hjälp av Azure Resource Manager mall, PowerShell-cmdletar eller Azure CLI-kommandon. 
 
@@ -78,7 +79,7 @@ Använd kommandot [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encry
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
 
-### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"> </a> Aktivera kryptering på en befintlig eller virtuell Linux-dator med hjälp av PowerShell
+### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"></a> Aktivera kryptering på en befintlig eller virtuell Linux-dator med hjälp av PowerShell
 Använd cmdleten [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) för att aktivera kryptering på en virtuell IaaS-dator som körs i Azure. Ta en [ögonblicks bild](snapshot-copy-managed-disk.md) eller gör en säkerhets kopia av den virtuella datorn med [Azure Backup](../../backup/backup-azure-vms-encryption.md) innan diskarna krypteras. Parametern-skipVmBackup har redan angetts i PowerShell-skripten för att kryptera en virtuell Linux-dator som körs.
 
 - **Kryptera en virtuell dator som körs med hjälp av en klient hemlighet:** Följande skript initierar variablerna och kör Set-AzVMDiskEncryptionExtension-cmdleten. Resurs gruppen, den virtuella datorn, nyckel valvet, Azure AD-appen och klient hemligheten bör redan ha skapats som krav. Ersätt MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, MySecureVault, My-AAD-Client-ID och My-AAD-client-Secret med dina värden. Ändra parametern-VolumeType för att ange vilka diskar som du ska kryptera.
@@ -132,7 +133,7 @@ Använd cmdleten [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute
      ```
 
 
-### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"> </a> Aktivera kryptering på en befintlig eller virtuell IaaS Linux-dator med en mall
+### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"></a> Aktivera kryptering på en befintlig eller virtuell IaaS Linux-dator med en mall
 
 Du kan aktivera disk kryptering på en befintlig eller köra en virtuell IaaS Linux-dator i Azure med hjälp av [Resource Manager-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
@@ -148,7 +149,7 @@ I följande tabell visas parametrar för Resource Manager-mallar för befintliga
 | AADClientSecret | Klient hemlighet för Azure AD-programmet som har behörighet att skriva hemligheter till ditt nyckel valv. |
 | keyVaultName | Namnet på nyckel valvet som nyckeln ska överföras till. Du kan hämta den med hjälp av Azure CLI-kommandot `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL | URL till den nyckel krypterings nyckel som används för att kryptera den genererade nyckeln. Den här parametern är valfri om du väljer **nokek** i list rutan **UseExistingKek** . Om du väljer **KEK** i list rutan **UseExistingKek** måste du ange värdet _keyEncryptionKeyURL_ . |
-| volumeType | Typ av volym som krypterings åtgärden utförs på. Giltiga värden som stöds är _OS_ eller _alla_ . (Se Linux-distributioner som stöds och deras versioner för operativ system och data diskar i avsnittet krav ovan.) |
+| volumeType | Typ av volym som krypterings åtgärden utförs på. Giltiga värden som stöds är _OS_ eller _alla_. (Se Linux-distributioner som stöds och deras versioner för operativ system och data diskar i avsnittet krav ovan.) |
 | sequenceVersion | Sekvens-version av BitLocker-åtgärden. Öka det här versions numret varje gång en disk krypterings åtgärd utförs på samma virtuella dator. |
 | vmName | Namnet på den virtuella dator som krypterings åtgärden ska utföras på. |
 | lösenfras | Skriv en stark lösen fras som data krypterings nyckel. |
@@ -164,7 +165,7 @@ Parametern EncryptFormatAll minskar tiden för att Linux-datadiskarna ska krypte
 > EncryptFormatAll bör inte användas när det behövs data på en virtuell dators data volymer. Du kan utesluta diskar från kryptering genom att demontera dem. Testa EncryptFormatAll-parametern på en test-VM först för att förstå funktions parametern och dess indirekt innan du provar den på den virtuella produktions datorn. Alternativet EncryptFormatAll formaterar data disken så att alla data på den går förlorade. Innan du fortsätter bör du kontrol lera att alla diskar som du vill undanta är korrekt demonterade. </br></br>
  >Om du anger den här parametern när du uppdaterar krypterings inställningarna kan det leda till en omstart före den faktiska krypteringen. I så fall vill du också ta bort den disk som du inte vill ska formateras från fstab-filen. På samma sätt bör du lägga till partitionen som du vill kryptera-formaterad till fstab-filen innan du påbörjar krypterings åtgärden. 
 
-### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"> </a> EncryptFormatAll kriterier
+### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"></a> EncryptFormatAll kriterier
 Parametern går igenom alla partitioner och krypterar dem så länge de uppfyller *alla* följande kriterier: 
 - Är inte en rot-/OS/startpartition
 - Är inte redan krypterad
@@ -175,16 +176,16 @@ Parametern går igenom alla partitioner och krypterar dem så länge de uppfylle
 
 Kryptera diskarna som skapar RAID-eller LVM-volymen i stället för RAID-eller LVM-volymen.
 
-### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"> </a> Använda parametern EncryptFormatAll med en mall
+### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"></a> Använda parametern EncryptFormatAll med en mall
 Om du vill använda alternativet EncryptFormatAll använder du befintliga Azure Resource Manager-mallar som krypterar en virtuell Linux-dator och ändrar fältet **EncryptionOperation** för AzureDiskEncryption-resursen.
 
 1. Du kan till exempel använda [Resource Manager-mallen för att kryptera en virtuell Linux IaaS-dator som körs](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm). 
 2. Välj **distribuera till Azure** i Azure snabb starts mal len.
-3. Ändra fältet **EncryptionOperation** från **EnableEncryption** till **EnableEncryptionFormatAl** .
+3. Ändra fältet **EncryptionOperation** från **EnableEncryption** till **EnableEncryptionFormatAl**.
 4. Välj prenumeration, resurs grupp, plats för resurs grupp, andra parametrar, juridiska villkor och avtal. Välj **skapa** för att aktivera kryptering på den befintliga eller aktiva virtuella IaaS-datorn.
 
 
-### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a> Använda parametern EncryptFormatAll med en PowerShell-cmdlet
+### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"></a> Använda parametern EncryptFormatAll med en PowerShell-cmdlet
 Använd cmdleten [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) med parametern EncryptFormatAll.
 
 **Kryptera en virtuell dator som körs med hjälp av en klient hemlighet och EncryptFormatAll:** Som exempel initierar följande skript dina variabler och kör Set-AzVMDiskEncryptionExtension-cmdlet med parametern EncryptFormatAll. Resurs gruppen, den virtuella datorn, nyckel valvet, Azure AD-appen och klient hemligheten bör redan ha skapats som krav. Ersätt MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, MySecureVault, My-AAD-Client-ID och My-AAD-client-Secret med dina värden.
@@ -203,7 +204,7 @@ Använd cmdleten [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute
    ```
 
 
-### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"> </a> Använd parametern EncryptFormatAll med Logical Volume Manager (LVM) 
+### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"></a> Använd parametern EncryptFormatAll med Logical Volume Manager (LVM) 
 Vi rekommenderar en LVM-in-Encrypt-installation. I följande exempel ersätter du enhets Sök vägen och mountpoints med vad som passar ditt användnings fall. Du kan göra följande inställningar:
 
 - Lägg till de data diskar som ska skapa den virtuella datorn.
@@ -238,7 +239,7 @@ Vi rekommenderar en LVM-in-Encrypt-installation. I följande exempel ersätter d
 
 
 
-## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a> Nya virtuella IaaS-datorer som skapats från kund-krypterade VHD-och krypterings nycklar
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"></a> Nya virtuella IaaS-datorer som skapats från kund-krypterade VHD-och krypterings nycklar
 I det här scenariot kan du aktivera kryptering med hjälp av Resource Manager-mallen, PowerShell-cmdletar eller CLI-kommandon. I följande avsnitt beskrivs mer information i Resource Manager-mallen och CLI-kommandona. 
 
 Följ anvisningarna i bilagan för att förbereda förkrypterade avbildningar som kan användas i Azure. När avbildningen har skapats kan du använda stegen i nästa avsnitt för att skapa en krypterad virtuell Azure-dator.
@@ -252,7 +253,7 @@ Följ anvisningarna i bilagan för att förbereda förkrypterade avbildningar so
 
 
 
-### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"> </a> Använd Azure PowerShell för att kryptera virtuella IaaS-datorer med förkrypterade virtuella hård diskar 
+### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"></a> Använd Azure PowerShell för att kryptera virtuella IaaS-datorer med förkrypterade virtuella hård diskar 
 Du kan aktivera disk kryptering på din krypterade virtuella hård disk med PowerShell-cmdleten [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples). I följande exempel visas några vanliga parametrar. 
 
 ```powershell
@@ -341,7 +342,7 @@ Du kan inaktivera kryptering med hjälp av Azure PowerShell, Azure CLI eller en 
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Inaktivera kryptering med en Resource Manager-mall:** Om du vill inaktivera kryptering använder du [inaktivera kryptering på en virtuell Linux](https://aka.ms/decrypt-linuxvm) -mall för virtuella datorer.
-     1. Välj **distribuera till Azure** .
+     1. Välj **distribuera till Azure**.
      2. Välj prenumeration, resurs grupp, plats, virtuell dator, juridiska villkor och avtal.
      3. Välj **köp** för att inaktivera disk kryptering på en virtuell Windows-dator som körs. 
 

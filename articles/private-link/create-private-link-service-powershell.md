@@ -1,20 +1,20 @@
 ---
 title: 'Snabb start: skapa en Azure Private Link-tjänst med Azure PowerShell'
-description: Lär dig hur du skapar en Azure Private Link-tjänst med Azure PowerShell
+description: I den här snabb starten får du lära dig hur du skapar en Azure Private Link-tjänst med hjälp av Azure PowerShell
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 4780bc573796581438b8d331b1d1d9421a65414f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 366be37135808a6d3d5cc1a277e2de3e3d6da8ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653252"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566420"
 ---
-# <a name="create-a-private-link-service-using-azure-powershell"></a>Skapa en privat länk-tjänst med hjälp av Azure PowerShell
+# <a name="quickstart-create-a-private-link-service-using-azure-powershell"></a>Snabb start: skapa en privat länk-tjänst med hjälp av Azure PowerShell
 
 Kom igång med att skapa en privat länk-tjänst som refererar till din tjänst.  Ge privat länk åtkomst till din tjänst eller resurs som distribueras bakom en Azure-Standard Load Balancer.  Användare av tjänsten har privat åtkomst från det virtuella nätverket.
 

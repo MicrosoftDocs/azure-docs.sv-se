@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 06ac110da35a5a77157bd4e31caaa5aa5fd015cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588972"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566574"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Skapa en CI/CD-pipeline för PHP med Azure DevOps starter
 
@@ -125,4 +125,4 @@ Du kan ta bort Azure App Service och andra relaterade resurser när de inte län
 När du konfigurerade CI/CD-processen skapades bygg- och versionspipelines automatiskt. Du kan ändra dessa bygg- och versionspipelines för att tillgodose ditt teams behov. Mer information om CI/CD-pipelinen finns i den här självstudien:
 
 > [!div class="nextstepaction"]
-> [Anpassa CD-process](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassa CD-process](/azure/devops/pipelines/release/define-multistage-release-process)

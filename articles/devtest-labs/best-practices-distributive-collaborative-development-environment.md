@@ -3,12 +3,12 @@ title: Distribuerad samarbets utveckling för Azure DevTest Labs resurser
 description: Innehåller metod tips för att skapa en distribuerad och samarbets utvecklings miljö för att utveckla DevTest Labs-resurser.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592372"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550084"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Metod tips för distribuerad och samverkande utveckling av Azure DevTest Labs resurser
 Distribuerad samarbets utveckling gör att olika team eller personer kan utveckla och underhålla en kodbas. För att lyckas, är utvecklings processen beroende av möjligheten att skapa, dela och integrera information. Den här nyckel utvecklings principen kan användas i Azure DevTest Labs. Det finns flera typer av resurser i ett labb som ofta distribueras mellan olika labb i ett företag. De olika typerna av resurser fokuserar på två områden:
@@ -27,7 +27,7 @@ Du kan ha en gemensam källa med anpassade avbildningar som distribueras till la
 [Formler](devtest-lab-manage-formulas.md) är labbbaserade och har inte en distributions mekanism. Labb medlemmarna gör all utveckling av formler. 
 
 ## <a name="code-repository-based-resources"></a>Kod lagrings resurser
-Det finns två olika funktioner som baseras på kod databaser, artefakter och miljöer. Den här artikeln går igenom funktionerna och hur du effektivt konfigurerar databaser och arbets flöden så att du kan anpassa tillgängliga artefakter och miljöer på organisations nivå eller grupp nivå.  Det här arbets flödet baseras på standard [strategin för käll kods kontroll grenar](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Det finns två olika funktioner som baseras på kod databaser, artefakter och miljöer. Den här artikeln går igenom funktionerna och hur du effektivt konfigurerar databaser och arbets flöden så att du kan anpassa tillgängliga artefakter och miljöer på organisations nivå eller grupp nivå.  Det här arbets flödet baseras på standard [strategin för käll kods kontroll grenar](/azure/devops/repos/tfvc/branching-strategies-with-tfvc). 
 
 ### <a name="key-concepts"></a>Viktiga begrepp
 Käll informationen för artefakter innehåller metadata, skript. Käll informationen för miljöer omfattar metadata-och Resource Manager-mallar med stödfiler som PowerShell-skript, DSC-skript, zip-filer och så vidare.  
@@ -39,7 +39,7 @@ Den vanligaste konfigurationen för käll kods kontroll (SCC) är att skapa en s
 - Affär senhet/avdelning – breda resurser
 - Team-/regionsspecifika resurser.
 
-Var och en av dessa nivåer länkar till en annan lagrings plats där huvud grenen måste vara av produktions kvaliteten. [Grenarna](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) i varje lagrings plats kan vara för utveckling av dessa resurser (artefakter eller mallar). Den här strukturen justeras bra med DevTest Labs eftersom du enkelt kan ansluta flera databaser och flera grenar samtidigt till organisationens labb. Databas namnet ingår i användar gränssnittet (UI) för att undvika förvirring när det finns identiska namn, beskrivning och utgivare.
+Var och en av dessa nivåer länkar till en annan lagrings plats där huvud grenen måste vara av produktions kvaliteten. [Grenarna](/azure/devops/repos/git/git-branching-guidance) i varje lagrings plats kan vara för utveckling av dessa resurser (artefakter eller mallar). Den här strukturen justeras bra med DevTest Labs eftersom du enkelt kan ansluta flera databaser och flera grenar samtidigt till organisationens labb. Databas namnet ingår i användar gränssnittet (UI) för att undvika förvirring när det finns identiska namn, beskrivning och utgivare.
      
 Följande diagram visar två databaser: en företags lagrings plats som underhålls av IT-avdelningen och en avdelnings lagrings plats som underhålls av R&D-delningen.
 

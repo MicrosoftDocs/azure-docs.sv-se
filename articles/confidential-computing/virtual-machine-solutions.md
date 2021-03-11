@@ -3,17 +3,17 @@ title: Azure-lösningar för konfidentiell behandling på virtuella datorer
 description: Lär dig mer om Azures lösningar för konfidentiell behandling på virtuella datorer.
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 3e55ae476becca23e6ea23fdc9c5fc7ec72b68ef
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509157"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566591"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösningar på virtuella Azure-datorer
 

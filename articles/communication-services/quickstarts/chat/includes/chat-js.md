@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 24f64e19077488223e13d01e110b5b5118231673
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661674"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603243"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -125,7 +125,7 @@ Azure Communication Chat client created!
 ## <a name="object-model"></a>Objekt modell
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
 
-| Namn                                   | Beskrivning                                                                                                                                                                           |
+| Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |
@@ -140,22 +140,22 @@ Använd `createThread` metoden för att skapa en chatt-tråd.
 - Används `topic` för att ge ett ämne till den här chatten. Ämnen kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen.
 - Används `participants` för att visa en lista över deltagare som ska läggas till i chatt-tråden.
 
-Vid åtgärdat `createChatThread` returnerar metoden en `CreateChatThreadResponse` . Den här modellen innehåller en `chatThread` egenskap där du kan komma åt den `id` nya tråd som skapats. Du kan sedan använda `id` för att hämta en instans av en `ChatThreadClient` . `ChatThreadClient`Kan sedan användas för att utföra åtgärder i tråden, t. ex. skicka meddelanden eller lista deltagare.
+Vid åtgärdat `createChatThread` returnerar metoden en `CreateChatThreadResult` . Den här modellen innehåller en `chatThread` egenskap där du kan komma åt den `id` nya tråd som skapats. Du kan sedan använda `id` för att hämta en instans av en `ChatThreadClient` . `ChatThreadClient`Kan sedan användas för att utföra åtgärder i tråden, t. ex. skicka meddelanden eller lista deltagare.
 
 ```JavaScript
 async function createChatThread() {
     let createThreadRequest = {
         topic: 'Preparation for London conference',
         participants: [{
-                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
                     displayName: 'Jack'
                 }, {
-                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
                     displayName: 'Geeta'
                 }]
     };
-    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createThreadResponse.chatThread.id;
+    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createChatThreadResult.chatThread.id;
     return threadId;
     }
 
@@ -184,7 +184,7 @@ Thread created: <thread_id>
 `getChatThreadClient`Metoden returnerar en `chatThreadClient` för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. threadId är det unika ID: t för den befintliga chatt tråden.
 
 ```JavaScript
-let chatThreadClient = await chatClient.getChatThreadClient(threadId);
+let chatThreadClient = chatClient.getChatThreadClient(threadId);
 console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
@@ -195,35 +195,33 @@ Chat Thread client for threadId: <threadId>
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Skicka ett meddelande till en chatt-tråd
 
-Använd `sendMessage` metoden för att skicka ett chatt meddelande till den tråd som du nyss skapade, som identifieras av threadId.
+Använd `sendMessage` metoden för att skicka ett meddelande till en tråd som identifieras av threadId.
 
-`sendMessageRequest` beskriver de obligatoriska fälten i begäran om chatt-meddelande:
+`sendMessageRequest` används för att beskriva meddelande förfrågan:
 
 - Används `content` för att tillhandahålla chatt-meddelandets innehåll.
 
-`sendMessageOptions` beskriver valfria fält för begäran om chatt-meddelande:
+`sendMessageOptions` används för att beskriva de valfria parametrarna för åtgärden:
 
-- Används `priority` för att ange prioritets nivå för chatt meddelande, till exempel normal eller hög. Den här egenskapen kan användas för att visa en UI-indikator för mottagarens användare i din app för att uppmärksamma meddelandet eller köra anpassad affärs logik.
 - Används `senderDisplayName` för att ange visnings namnet på avsändaren.
+- Används `type` för att ange meddelande typen, till exempel text eller HTML.
 
-Svaret `sendChatMessageResult` innehåller ett ID, vilket är det unika ID: t för meddelandet.
+`SendChatMessageResult` är svaret som returnerades från att skicka ett meddelande, det innehåller ett ID, som är det unika ID: t för meddelandet.
 
 ```JavaScript
-
 let sendMessageRequest =
 {
     content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    priority: 'Normal',
-    senderDisplayName : 'Jack'
+    senderDisplayName : 'Jack',
+    type: 'text'
 };
 let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 let messageId = sendChatMessageResult.id;
-console.log(`Message sent!, message id:${messageId}`);
-
 ```
+
 Lägg till den här koden i stället för `<SEND MESSAGE TO A CHAT THREAD>` kommentaren i **client.js**, uppdatera din webbläsare-flik och kontrol lera konsolen.
 ```console
 Message sent!, message id:<number>
@@ -286,7 +284,7 @@ När en chatt-tråd har skapats kan du lägga till och ta bort användare från 
 Innan du anropar `addParticipants` -metoden kontrollerar du att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
 
 `addParticipantsRequest` Beskriver objektet begär ande där `participants` visar en lista över deltagare som ska läggas till i chatt-tråden.
-- `user`, krävs, är den kommunikations användare som ska läggas till i chatt-tråden.
+- `id`, krävs, är den kommunikations identifierare som ska läggas till i chatt-tråden.
 - `displayName`, valfritt är visnings namnet för tråd deltagaren.
 - `shareHistoryTime`, valfritt, är den tid från vilken chatt-historiken delas med deltagaren. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du vill dela ingen Historik tidigare till när deltagaren lades in, ställer du in den på det aktuella datumet. Om du vill dela delar av historiken anger du det datum som du önskar.
 
@@ -296,7 +294,7 @@ let addParticipantsRequest =
 {
     participants: [
         {
-            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]

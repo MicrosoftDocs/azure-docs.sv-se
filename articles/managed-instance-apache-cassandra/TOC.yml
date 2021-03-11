@@ -4,12 +4,6 @@
   items:
     - name: Vad är Azure Managed instance för Apache Cassandra?
       href: introduction.md
-- name: Begrepp
-  items:
-    - name: VANLIGA FRÅGOR OCH SVAR
-      href: faq.md
-    - name: Hanterad instans vs Azure Cosmos DB API för Cassandra
-      href: compare-cosmosdb-managed-instance.md
 - name: Snabbstarter
   items:
     - name: Skapa ett kluster – Portal
@@ -20,9 +14,23 @@
       href: configure-hybrid-cluster.md
     - name: Distribuera Spark-kluster med Databricks
       href: deploy-cluster-databricks.md
+- name: Begrepp
+  items:
+    - name: Vanliga frågor och svar
+      href: faq.md
+    - name: Hanterad instans vs Azure Cosmos DB API för Cassandra
+      href: compare-cosmosdb-managed-instance.md
 - name: Anvisningar
   items:
     - name: Hantera med Azure CLI
       href: manage-resources-cli.md
     - name: Visualisera mått i Prometheus med Grafana
       href: visualize-prometheus-grafana.md
+- name: Referens
+  items:
+    - name: REST-API
+      items:
+        - name: Cassandra-kluster
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
+        - name: Cassandra Data Center
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters

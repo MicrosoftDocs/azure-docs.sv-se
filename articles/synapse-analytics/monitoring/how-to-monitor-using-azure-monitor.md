@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672749"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549863"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Använda Azure Monitor med din Azure Synapse Analytics-arbetsyta
 
@@ -171,7 +171,7 @@ Skapa eller Lägg till diagnostikinställningar för din arbets yta, dedikerad S
 1. Ange ett namn, Välj **Skicka till Log Analytics** och välj sedan en arbets yta från **Log Analytics arbets yta**.
 
     > [!NOTE]
-    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [Log Analytics kända begränsningar](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
+    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [referens för AzureDiagnostics-loggar](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
 
 1. Välj **Spara**.
 

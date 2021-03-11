@@ -3,16 +3,16 @@ title: NCv3-serien – Azure Virtual Machines
 description: Specifikationer för virtuella datorer i NCv3-serien.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c28ed042156865c52607ce031507c696f28b4e7c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119764"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617309"
 ---
 # <a name="ncv3-series"></a>NCv3-serien
 
@@ -24,7 +24,7 @@ Virtuella datorer i NCv3-serien drivs av NVIDIA Tesla V100-GPU: er. Dessa GPU: e
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
-[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 NVIDIA NVLink-Interconnect: stöds inte<br>
 
 > [!IMPORTANT]

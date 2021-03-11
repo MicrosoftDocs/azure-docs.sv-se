@@ -12,16 +12,16 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259108"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566659"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-exempel för Azure AD-programproxy
 
-Följande tabell innehåller länkar till exempel på PowerShell-skript för Azure AD-programproxy. De här exemplen kräver antingen [AzureAD v2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2) eller [AzureAD v2 PowerShell för för hands versionen av Graph module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview), om inget annat anges.
+Följande tabell innehåller länkar till exempel på PowerShell-skript för Azure AD-programproxy. De här exemplen kräver antingen [AzureAD v2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2) eller [AzureAD v2 PowerShell för för hands versionen av Graph module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true), om inget annat anges.
 
 
 Mer information om de cmdlets som används i de här exemplen finns i [Application Management](/powershell/module/azuread/#application_proxy_application_management) och Application [proxy Connector Management](/powershell/module/azuread/#application_proxy_connector_management).

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098153"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616697"
 ---
 # <a name="azure-percept-security-overview"></a>Översikt över Azure percept-säkerhet
 
@@ -37,7 +37,7 @@ Azure percept-enheter använder maskin varu rot förtroende för att skydda inby
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure percept DK ansluter till Azure percept Studio med ytterligare säkerhet och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06).
+Azure percept DK ansluter till Azure percept Studio med ytterligare säkerhet och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager).
 
 ### <a name="device-update-for-iot-hub"></a>Enhets uppdatering för IoT Hub
 
@@ -57,7 +57,7 @@ Den här check listan är en start punkt för brand Väggs regler:
 |*. auth.azureperceptdk.azure.net|   443|    Azure DK som autentisering och auktorisering|
 |*. auth.projectsantacruz.azure.net| 443|    Azure DK som autentisering och auktorisering|
 
-Granska dessutom listan över anslutningar som [används av Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices).
+Granska dessutom listan över anslutningar som [används av Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices).
 
 <!---
 ## Additional Recommendations for Deployment to Production

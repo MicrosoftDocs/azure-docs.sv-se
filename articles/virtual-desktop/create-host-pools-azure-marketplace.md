@@ -4,15 +4,15 @@ description: Så här skapar du en Windows-pool för virtuella skriv bord med hj
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 02/17/2021
+ms.date: 03/10/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 60566b95447c1b69fb257435f45a11524ac5d8b2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651467"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617358"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Självstudie: skapa en värdbaserad pool med Azure Portal
 
@@ -101,18 +101,16 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
 
 1. Under **resurs grupp** väljer du den resurs grupp där du vill skapa de virtuella datorerna. Detta kan vara en annan resurs grupp än den som du använde för poolen.
 
-2. Välj den **virtuella dator plats** där du vill skapa de virtuella datorerna. De kan vara samma eller olika från den region som du har valt för poolen.
+2. Efter det anger du ett **namn prefix** som namnger de virtuella datorer som installations processen skapar. Suffixet kommer att vara `-` med siffror från 0.
 
-3. Välj sedan den **virtuella dator storlek** som du vill använda. Du kan antingen behålla standard storleken som är eller välja **ändra storlek** om du vill ändra storleken. Om du väljer **ändra storlek** i fönstret som visas väljer du storleken på den virtuella dator som passar din arbets belastning.
+3. Välj den **virtuella dator plats** där du vill skapa de virtuella datorerna. De kan vara samma eller olika från den region som du har valt för poolen.
+   
+4. Välj sedan det tillgänglighets alternativ som bäst passar dina behov. Mer information om vilket alternativ som passar dig bäst finns i [tillgänglighets alternativ för virtuella datorer i Azure](../virtual-machines/availability.md) och [våra vanliga frågor och svar](faq.md#which-availability-option-is-best-for-me).
+   
+   > [!div class="mx-imgBorder"]
+   > [En skärm bild av den nedrullningsbara menyn för tillgänglighets zon. Alternativet "tillgänglighets zon" är markerat.](media/availability-zone.png)
 
-4. Under **antal virtuella datorer** anger du det antal virtuella datorer som du vill skapa för din värd pool.
-
-    >[!NOTE]
-    >Installations processen kan skapa upp till 400 virtuella datorer när du konfigurerar din adresspool, och varje process för VM-installation skapar fyra objekt i resurs gruppen. Eftersom processen för att skapa inte kontrollerar din prenumerations kvot kontrollerar du att antalet virtuella datorer som du anger ligger inom Azure VM och API-gränserna för resurs gruppen och prenumerationen. Du kan lägga till fler virtuella datorer när du är klar med att skapa din värd-pool.
-
-5. Efter det anger du ett **namn prefix** som namnger de virtuella datorer som installations processen skapar. Suffixet kommer att vara `-` med siffror från 0.
-
-6. Välj sedan den avbildning som ska användas för att skapa den virtuella datorn. Du kan välja antingen **Galleri** eller **Storage-BLOB**.
+5. Välj sedan den avbildning som ska användas för att skapa den virtuella datorn. Du kan välja antingen **Galleri** eller **Storage-BLOB**.
 
     - Om du väljer **Galleri** väljer du en av de rekommenderade bilderna på den nedrullningsbara menyn:
 
@@ -122,23 +120,30 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
       - Windows 10 Enterprise multi-session, version 2004
       - Windows 10 Enterprise multi-session, version 2004 + Microsoft 365-appar
 
-     Om du inte ser den avbildning som du vill använda väljer du **Bläddra bland alla avbildningar och diskar**, vilket gör att du kan välja antingen en annan bild i galleriet eller en avbildning som tillhandahålls av Microsoft och andra utgivare. Se till att den avbildning du väljer är en av de [operativ system avbildningar som stöds](overview.md#supported-virtual-machine-os-images).
+      Om du inte ser den avbildning som du vill använda väljer du **Visa alla avbildningar**, där du kan välja antingen en annan bild i galleriet eller en avbildning som tillhandahålls av Microsoft och andra utgivare. Se till att den avbildning du väljer är en av de [operativ system avbildningar som stöds](overview.md#supported-virtual-machine-os-images).
 
-     > [!div class="mx-imgBorder"]
-     > ![En skärm bild av Marketplace med en lista över bilder från Microsoft som visas.](media/marketplace-images.png)
+      > [!div class="mx-imgBorder"]
+      > ![En skärm bild av Marketplace med en lista över bilder från Microsoft som visas.](media/marketplace-images.png)
 
-     Du kan också gå till **Mina objekt** och välja en anpassad avbildning som du redan har laddat upp.
+      Du kan också gå till **Mina objekt** och välja en anpassad avbildning som du redan har laddat upp.
 
-     > [!div class="mx-imgBorder"]
-     > ![En skärm bild av fliken Mina objekt.](media/my-items.png)
+      > [!div class="mx-imgBorder"]
+      > ![En skärm bild av fliken Mina objekt.](media/my-items.png)
 
     - Om du väljer **Storage BLOB** kan du använda en egen avbildning som bygger på Hyper-V eller på en virtuell Azure-dator. Allt du behöver göra är att ange platsen för avbildningen i Storage-blobben som en URI.
+   
+   Avbildningens plats är oberoende av tillgänglighets alternativet, men avbildningens zon återhämtning avgör om avbildningen kan användas med tillgänglighets zon. Om du väljer en tillgänglighets zon när du skapar din avbildning måste du kontrol lera att du använder en bild från galleriet med zon återhämtning aktive rad. Läs [vanliga frågor och svar](faq.md#which-availability-option-is-best-for-me)om du vill veta mer om vilket zon återhämtnings alternativ som ska användas.
 
-7. Välj vilken typ av OS-diskar du vill att de virtuella datorerna ska använda: Standard SSD, Premium SSD eller Standard HDD.
+6. Sedan väljer du den **virtuella dator storlek** som du vill använda. Du kan antingen behålla standard storleken som är eller välja **ändra storlek** om du vill ändra storleken. Om du väljer **ändra storlek** i fönstret som visas väljer du storleken på den virtuella dator som passar din arbets belastning.
 
-8. Under nätverk och säkerhet väljer du det **virtuella nätverk** och **undernät** där du vill placera de virtuella datorer som du skapar. Se till att det virtuella nätverket kan ansluta till domänkontrollanten eftersom du måste ansluta de virtuella datorerna i det virtuella nätverket till domänen. DNS-servrarna för det virtuella nätverk som du har valt ska konfigureras att använda IP-adressen för domänkontrollanten.
+7. Under **antal virtuella datorer** anger du det antal virtuella datorer som du vill skapa för din värd pool.
 
-9. Välj sedan om du vill ha en offentlig IP-adress för de virtuella datorerna. Vi rekommenderar att du väljer **Nej** eftersom en privat IP-adress är säkrare.
+    >[!NOTE]
+    >Installations processen kan skapa upp till 400 virtuella datorer när du konfigurerar din adresspool, och varje process för VM-installation skapar fyra objekt i resurs gruppen. Eftersom processen för att skapa inte kontrollerar din prenumerations kvot kontrollerar du att antalet virtuella datorer som du anger ligger inom Azure VM och API-gränserna för resurs gruppen och prenumerationen. Du kan lägga till fler virtuella datorer när du är klar med att skapa din värd-pool.
+
+8. Välj vilken typ av OS-diskar du vill att de virtuella datorerna ska använda: Standard SSD, Premium SSD eller Standard HDD.
+
+9. Under nätverk och säkerhet väljer du det **virtuella nätverk** och **undernät** där du vill placera de virtuella datorer som du skapar. Se till att det virtuella nätverket kan ansluta till domänkontrollanten eftersom du måste ansluta de virtuella datorerna i det virtuella nätverket till domänen. DNS-servrarna för det virtuella nätverk som du har valt ska konfigureras att använda IP-adressen för domänkontrollanten.
 
 10. Välj vilken typ av säkerhets grupp du vill använda: **Basic**, **Advanced** eller **none**.
 
@@ -154,9 +159,9 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
 
 11. Efter det väljer du om du vill att de virtuella datorerna ska vara anslutna till en speciell domän och organisationsenhet. Om du väljer **Ja** anger du domänen som ska anslutas. Du kan också lägga till en speciell organisationsenhet som du vill att de virtuella datorerna ska finnas i. Om du väljer **Nej** kommer de virtuella datorerna att anslutas till domänen som matchar suffixet för **AD-domänens anslutningens UPN**.
 
-  - När du anger en ORGANISATIONSENHET måste du kontrol lera att du använder den fullständiga sökvägen (unikt namn) och utan citat tecken.
+    - När du anger en ORGANISATIONSENHET måste du kontrol lera att du använder den fullständiga sökvägen (unikt namn) och utan citat tecken.
 
-12. Under administratörs konto anger du autentiseringsuppgifterna för Active Directory-domän admin för det virtuella nätverk som du har valt. Det här kontot kan inte ha Multi-Factor Authentication (MFA) aktiverat. När du ansluter till en Azure Active Directory Domain Services (Azure AD DS)-domän måste kontot vara en del av administratörs gruppen för Azure AD DC och konto lösen ordet måste fungera i Azure AD DS.
+12. Under domän administratörs konto anger du autentiseringsuppgifterna för Active Directory-domän admin för det virtuella nätverk som du har valt. Det här kontot kan inte ha Multi-Factor Authentication (MFA) aktiverat. När du ansluter till en Azure Active Directory Domain Services (Azure AD DS)-domän måste kontot vara en del av administratörs gruppen för Azure AD DC och konto lösen ordet måste fungera i Azure AD DS.
 
 13. Välj **Nästa: >arbets yta**.
 

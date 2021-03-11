@@ -409,15 +409,13 @@
               href: move-across-regions-publicip-powershell.md
     - name: NAT
       items:
-        - name: Skapa NAT-gateway – PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
+        - name: Skapa och verifiera en NAT-gateway – PowerShell
+          href: tutorial-create-nat-gateway-powershell.md
         - name: Skapa NAT-gateway – CLI
           href: quickstart-create-nat-gateway-cli.md
         - name: Skapa NAT-gateway – ARM-mall
           displayname: Resource Manager
           href: quickstart-create-nat-gateway-template.md
-        - name: Skapa och verifiera en NAT-gateway – PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
         - name: Skapa och verifiera en NAT-gateway – CLI
           href: tutorial-create-validate-nat-gateway-cli.md
     - name: Felsöka

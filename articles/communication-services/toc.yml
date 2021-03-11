@@ -120,6 +120,8 @@
       href: concepts/authentication.md
     - name: Sekretess
       href: concepts/privacy.md
+    - name: Prissättning
+      href: concepts/pricing.md
     - name: Push-meddelanden
       href: concepts/notifications.md
     - name: Samverkan mellan team

@@ -2,18 +2,19 @@
 title: 'Snabb start: Använd en Resource Manager-mall för att skapa en Ubuntu Linux virtuell dator'
 description: I den här snabb starten får du lära dig hur du använder en Resource Manager-mall för att skapa en virtuell Linux-dator
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649779"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549625"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Snabb start: skapa en Ubuntu Linux virtuell dator med en ARM-mall
 
@@ -60,8 +61,8 @@ Flera resurser definieras i mallen:
     - **Admin-användar namn**: Ange ett användar namn, till exempel *azureuser*.
     - **Autentiseringstyp**: du kan välja mellan att använda en SSH-nyckel eller ett lösen ord.
     - **Administratörs lösen ord eller nyckel** beroende på vad du väljer för autentiseringstypen:
-        - Om du väljer **lösen ord**måste lösen ordet vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](faq.md#what-are-the-password-requirements-when-creating-a-vm).
-        - Om du väljer **sshPublicKey**klistrar du in innehållet i den offentliga nyckeln.
+        - Om du väljer **lösen ord** måste lösen ordet vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+        - Om du väljer **sshPublicKey** klistrar du in innehållet i den offentliga nyckeln.
     - **DNS-etikett prefix**: Ange en unik identifierare som ska användas som en del av DNS-etiketten.
     - **Ubuntu OS-version**: Välj vilken version av Ubuntu som du vill köra på den virtuella datorn.
     - **Plats**: standardvärdet är samma plats som resurs gruppen, om den redan finns.
@@ -84,7 +85,7 @@ Du kan använda Azure Portal för att kontrol lera den virtuella datorn och en a
 När de inte längre behövs tar du bort resurs gruppen, som tar bort den virtuella datorn och alla resurser i resurs gruppen. 
 
 1. Välj **resurs gruppen**.
-1. Välj **ta bort**på sidan för resurs gruppen.
+1. Välj **ta bort** på sidan för resurs gruppen.
 1. När du uppmanas till det anger du namnet på resurs gruppen och väljer sedan **ta bort**.
 
 
