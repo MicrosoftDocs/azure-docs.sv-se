@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123283"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608639"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Ansluta Azure IoT Edge-enheter till ett Azure IoT Central-program
 
@@ -74,8 +74,6 @@ Följande diagram visar anslutningar till en IoT Edge gateway-enhet via båda ty
 Underordnade enheter kan ansluta till en IoT Edge gateway-enhet via flera anpassade moduler. Följande diagram visar underordnade enheter som ansluter via en anpassad modul för Modbus, en anpassad modul för en tabell och modulen *IoT Edge Hub*  :
 
 :::image type="content" source="media/concepts-iot-edge/gateway-two-modules-transparent.png" alt-text="Diagram över anslutning med hjälp av flera anpassade moduler" border="false":::
-
-<!-- To do: add link to how to configure gateway article? -->
 
 ## <a name="iot-edge-devices-and-iot-central"></a>IoT Edge enheter och IoT Central
 
@@ -286,7 +284,7 @@ Du kan också installera IoT Edge runtime i följande miljöer:
 
 Om du har valt en IoT Edge enhet som en gateway-enhet kan du lägga till underordnade relationer till enhets modeller för enheter som du vill ansluta till gateway-enheten.
 
-<!-- TODO - add link to Edge Gateway how-to -->
+Mer information finns i [så här ansluter du enheter via en IoT Edge transparent Gateway](how-to-connect-iot-edge-transparent-gateway.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

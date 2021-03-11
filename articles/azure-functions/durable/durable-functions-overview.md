@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 15e1dff37e1782baf5740a3fb35119bbbbffc297
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931729"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558805"
 ---
 # <a name="what-are-durable-functions"></a>Vad är Durable Functions?
 
@@ -23,7 +23,7 @@ Durable Functions stöder för närvarande följande språk:
 
 * **C#**: både [förkompilerade klassbibliotek](../functions-dotnet-class-library.md) och [C#-skript](../functions-reference-csharp.md).
 * **JavaScript**: stöds endast för version 2.x av Azure Functions-körningen. Kräver version 1.7.0 av Durable Functions-tillägget eller en senare version. 
-* **Python**: kräver version 2.3.1 av Durable Functions-tillägget eller en senare version. Stöd för Durable Functions är för närvarande en offentlig för hands version.
+* **Python**: kräver version 2.3.1 av Durable Functions-tillägget eller en senare version.
 * **F#**: både förkompilerade klassbibliotek och F#-skript. F#-skriptet stöds endast för version 1.x av Azure Functions-körningen.
 * **PowerShell**: stöd för Durable Functions finns för närvarande i en offentlig för hands version. Stöds endast för version 3. x av Azure Functions Runtime och PowerShell 7. Kräver version 2.2.2 av Durable Functions-tillägget eller en senare version. Endast följande mönster stöds för närvarande: [funktion länkning](#chaining), [fläkt-ut/fläkt-in](#fan-in-out), [asynkrona http API: er](#async-http).
 
@@ -710,7 +710,7 @@ Du kan komma igång med Durable Functions på mindre än 10 minuter genom att sl
 
 I de här snabb starterna skapar och testar du en "Hello World"-beständig funktion. Du publicerar sedan funktionskoden till Azure. Den funktion som du skapar orkestrerar och kedjar samman anrop till andra funktioner.
 
-## <a name="learn-more"></a>Mer information
+## <a name="learn-more"></a>Läs mer
 
 Följande video visar fördelarna med Durable Functions:
 

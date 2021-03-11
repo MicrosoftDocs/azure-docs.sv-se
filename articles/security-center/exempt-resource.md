@@ -3,16 +3,16 @@ title: Undanta en Azure Security Center rekommendation från en resurs, prenumer
 description: Lär dig hur du skapar regler för att undanta säkerhets rekommendationer från prenumerationer eller hanterings grupper och hindra dem från att påverka dina säkra Poäng
 author: memildin
 ms.author: memildin
-ms.date: 01/22/2021
+ms.date: 03/10/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7a010b1014181ed325500fa501212579ef67d26
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709384"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617581"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Undanta resurser och rekommendationer från dina säkra Poäng 
 
@@ -30,13 +30,14 @@ I sådana fall kan du skapa ett undantag för en rekommendation att:
 
 ## <a name="availability"></a>Tillgänglighet
 
-|Aspekt|Information|
-|----|:----|
-|Versions tillstånd:|Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Priset|Det här är en förstklassig Azure policy-funktion som erbjuds för Azure Defender-kunder utan extra kostnad. För andra användare kan avgifter tillkomma i framtiden.|
-|Nödvändiga roller och behörigheter:|**Prenumerations ägare** eller **princip deltagare** för att skapa ett undantag<br>Om du vill skapa en regel måste du ha behörighet att redigera principer i Azure Policy.<br>Läs mer i [Azure RBAC-behörigheter i Azure policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
-|||
+| Aspekt                          | Information                                                                                                                                                                                                                                                                                                                            |
+|---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Versions tillstånd:                  | Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
+| Priset                        | Det här är en förstklassig Azure policy-funktion som erbjuds för Azure Defender-kunder utan extra kostnad. För andra användare kan avgifter tillkomma i framtiden.                                                                                                                                                                 |
+| Nödvändiga roller och behörigheter: | **Prenumerations ägare** eller **princip deltagare** för att skapa ett undantag<br>Om du vill skapa en regel måste du ha behörighet att redigera principer i Azure Policy.<br>Läs mer i [Azure RBAC-behörigheter i Azure policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
+| Begränsningar:                    | Det går endast att skapa undantag för rekommendationer som ingår i Security Centers standard initiativ, Azures säkerhets benchmark. Rekommendationer som genereras från anpassade initiativ kan inte undantas. Lär dig mer om relationerna mellan [principer, initiativ och rekommendationer](security-policy-concept.md). |
+| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                                                                                                                                                         |
+|                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Definiera ett undantag
 
@@ -44,6 +45,9 @@ För att finjustera de säkerhets rekommendationer som Security Center gör för
 
 - Markera en speciell **rekommendation** eller som "begränsad" eller "risk godkänd". Du kan skapa rekommendations undantag för en prenumeration, flera prenumerationer eller en hel hanterings grupp.
 - Markera **en eller flera resurser** som "begränsad" eller "risk accepterad" för en speciell rekommendation.
+
+> [!NOTE]
+> Det går endast att skapa undantag för rekommendationer som ingår i Security Centers standard initiativ, Azures säkerhets benchmark. Rekommendationer som genereras från anpassade initiativ som är tilldelade till dina prenumerationer kan inte undantas. Lär dig mer om relationerna mellan [principer, initiativ och rekommendationer](security-policy-concept.md).
 
 > [!TIP]
 > Du kan också skapa undantag med hjälp av API: et. För ett exempel-JSON, och en förklaring av relevanta strukturer, se [Azure policy undantags struktur](../governance/policy/concepts/exemption-structure.md).
@@ -161,7 +165,7 @@ Läs mer på följande sidor:
 
 
 
-## <a name="exemption-rule-faq"></a>Vanliga frågor och svar om undantags regel
+## <a name="faq---exemption-rules"></a>FOS – undantags regler
 
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Vad händer om en rekommendation finns i flera princip initiativ?
 

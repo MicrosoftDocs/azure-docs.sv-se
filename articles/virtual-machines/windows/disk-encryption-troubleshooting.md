@@ -2,18 +2,19 @@
 title: Azure Disk Encryption fel söknings guide
 description: Den här artikeln innehåller fel söknings tips för Microsoft Azure disk kryptering för virtuella Windows-datorer.
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45c64261b60d88557e63cb8f9af922fd7aa71ad4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 057aba3e49d32694563f412101be499342f2aad0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977909"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550611"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption fel söknings guide
 
@@ -21,7 +22,7 @@ Den här guiden är för IT-proffs, informations säkerhets analytiker och moln 
 
 Innan du vidtar stegen nedan måste du först se till att de virtuella datorer som du försöker kryptera finns bland de [VM-storlekar och operativ system som stöds](disk-encryption-overview.md#supported-vms-and-operating-systems)och att du uppfyller alla krav:
 
-- [Nätverks krav](disk-encryption-overview.md#networking-requirements)
+- [Nätverkskrav](disk-encryption-overview.md#networking-requirements)
 - [Grup princip krav](disk-encryption-overview.md#group-policy-requirements)
 - [Lagrings krav för krypterings nyckel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
@@ -62,7 +63,7 @@ Undvik det här problemet genom att kopiera följande fyra filer från en virtue
 
 1. Använd DiskPart för att kontrol lera volymerna och fortsätt sedan.  
 
-Till exempel:
+Exempel:
 
 ```
 DISKPART> list vol

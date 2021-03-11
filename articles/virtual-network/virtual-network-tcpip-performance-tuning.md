@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10fae563f80a4d77e3f4bb1d5ca809a4130b050a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219325"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558856"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Prestanda justering för TCP/IP för virtuella Azure-datorer
 
@@ -210,7 +210,7 @@ Du kan använda `Get-NetTCPSetting` PowerShell-kommandot för att visa värdena 
 Get-NetTCPSetting
 ```
 
-Du kan ställa in den inledande TCP-fönster storleken och TCP-skalnings faktorn i Windows med hjälp av `Set-NetTCPSetting` PowerShell-kommandot. Mer information finns i  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Du kan ställa in den inledande TCP-fönster storleken och TCP-skalnings faktorn i Windows med hjälp av `Set-NetTCPSetting` PowerShell-kommandot. Mer information finns i  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting).
 
 ```powershell
 Set-NetTCPSetting

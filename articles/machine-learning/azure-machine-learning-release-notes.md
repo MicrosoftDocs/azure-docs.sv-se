@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8c876a09c77a2ed5441a2f40acc2da508697febb
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521211"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608690"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -59,8 +59,8 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
   + [Ursprunglig Terminal (ga)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den integrerade terminalen.
   + [Antecknings kods tycken (för hands version)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Vanliga utdrag för Azure ML-kod är nu tillgängliga. Navigera till panelen kodfragment, som är tillgänglig via verktygsfältet eller aktivera menyn infragmentets kod avsnitt med Ctrl + blank steg.  
   + [Kortkommandon.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys) Fullständig paritet med kortkommandon som är tillgängliga i Jupyter. 
-  + Ange cell parametrar. Visar att användare med cell i en antecknings bok är parameter cell och kan köra parameterstyrda antecknings böcker via [Papermill](https://github.com/nteract/papermill) på beräknings instansen.
-  + Terminal-och kernel-sessionshanteraren: användare kommer att kunna hantera alla kärnor och Terminal-sessioner som körs på din beräkning.
+  + Ange cell parametrar. Visar de användare som har celler i en antecknings bok som är parameter celler och kan köra parameterstyrda antecknings böcker via [Papermill](https://github.com/nteract/papermill) på beräknings instansen.
+  + Terminal-och kernel-sessionshanteraren: användare kommer att kunna hantera alla kärnor och Terminal-sessioner som körs på sin beräkning.
   + Delnings knapp. Användarna kan nu dela en fil i anteckningsbok-Utforskaren genom att högerklicka på filen och använda knappen Dela.
 
 

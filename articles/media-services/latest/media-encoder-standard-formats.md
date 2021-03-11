@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0cf89a755090010bb80507c52f90baa2a4e804a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289451"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617632"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standardformat för kodare och codec
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Den här artikeln innehåller en lista över de vanligaste import-och export fil formaten som du kan använda med [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Information om hur du skapar anpassade för inställningar med hjälp av **StandardEncoderPreset**finns i [skapa en transformering med en anpassad för inställning](customize-encoder-presets-how-to.md).
+Den här artikeln innehåller en lista över de vanligaste import-och export fil formaten som du kan använda med [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Information om hur du skapar anpassade för inställningar med hjälp av **StandardEncoderPreset** finns i [skapa en transformering med en anpassad för inställning](customize-encoder-presets-how-to.md).
 
 ## <a name="input-containerfile-formats"></a>Indatafil/fil format
 
@@ -98,7 +98,7 @@ I följande tabell visas de codecenheter och fil format som stöds för export.
 
 | Filformat | Video-codec | Ljud-codec |
 | --- | --- | --- |
-| MP4 <br/><br/>(inklusive MP4-behållare med flera bit hastigheter) |H. 264 (hög, huvud och bas linje profil) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(inklusive MP4-behållare med flera bit hastigheter) |H. 264 (hög, Main och bas linje profiler), HEVC (H. 265) 8-bitar |AAC-LC, HE-AAC v1, HE-AAC v2 |
 | MPEG2 – TS |H. 264 (hög, huvud och bas linje profil) |AAC-LC, HE-AAC v1, HE-AAC v2 |
 
 ## <a name="next-steps"></a>Nästa steg

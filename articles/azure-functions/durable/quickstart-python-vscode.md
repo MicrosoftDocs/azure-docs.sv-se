@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936183"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549472"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Skapa din första varaktiga funktion i python
 
@@ -20,7 +20,7 @@ I den här artikeln får du lära dig hur du använder Azure Functions-tillägge
 
 ![Köra beständiga funktioner i Azure](./media/quickstart-python-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -58,22 +58,7 @@ I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt A
 
 Visual Studio Code installerar Azure Functions Core Tools, om det behövs. Det skapar också ett app-projekt i en mapp. Det här projektet innehåller [host.js](../functions-host-json.md) och [local.settings.jsi](../functions-run-local.md#local-settings-file) konfigurationsfiler.
 
-En requirements.txt-fil skapas också i rotmappen. Den anger de python-paket som behövs för att köra din Function-app.
-
-## <a name="update-azure-functions-extension-bundles-version"></a>Uppdatera Azure Functions paket version
-
-Python-Azure Functions kräver version 2. x av [Azure Functions tilläggs paket](../functions-bindings-register.md#access-extensions-in-non-net-languages). Paket för tillägg konfigureras i *host.jspå*.
-
-1. Öppna *host.js* i projektet. Uppdatera tilläggs paketet `version` till `[2.*, 3.0.0)` . Detta anger ett versions intervall som är större än eller lika med 2,0 och mindre än 3,0.
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. VS Code måste läsas in igen innan den uppdaterade tilläggs paket versionen återspeglas. I paletten kommando kör du Sök efter *utvecklare: Läs in Window* -kommandot på nytt och kör det.
+En *requirements.txt* -fil skapas också i rotmappen. Den anger de python-paket som behövs för att köra din Function-app.
 
 ## <a name="install-azure-functions-durable-from-pypi"></a>Installera Azure-Functions – tålig från PyPI
 
@@ -83,7 +68,7 @@ När du skapade projektet skapade Azure Functions VS Code-tillägget automatiskt
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. Öppna redigerarens integrerade Terminal i den aktuella mappen (<kbd>CTRL + SHIFT + '</kbd>).
