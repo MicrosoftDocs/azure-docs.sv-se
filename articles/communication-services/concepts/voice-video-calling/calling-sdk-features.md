@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/04/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: a26f1a297837a01089783b1e920d1a6a17bc6cdc
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489284"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618329"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -86,7 +86,7 @@ Följande tabell visar en uppsättning webbläsare som stöds och som är tillg�
 | Windows * * *                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-* Safari-versionerna 13.1 + stöds. 
+* Safari-versionerna 13.1 + stöds, 1:1-anrop stöds inte i Safari. 
 
 * * Safari 14 +/macOS 11 + krävs för stöd för utgående video. 
 

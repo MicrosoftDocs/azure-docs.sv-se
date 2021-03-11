@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007456"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618414"
 ---
 # <a name="long-audio-api"></a>Långt ljud-API
 
@@ -47,6 +47,13 @@ När du förbereder text filen måste du se till att den:
 * Innehåller fler än 400 tecken för oformaterad text eller 400 [fakturerbara tecken](./text-to-speech.md#pricing-note) för SSML text och färre än 10 000 stycken
   * För oformaterad text separeras varje stycke genom att trycka på **RETUR/retur** -Visa [text ingångs exempel](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)
   * För SSML text betraktas varje SSML-enhet som ett stycke. SSML bitar separeras av olika stycken – Visa [SSML text ingångs exempel](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
+
+## <a name="sample-code"></a>Exempelkod
+Resten av den här sidan fokuserar på python, men exempel kod för lång ljud-API finns på GitHub för följande programmeringsspråk:
+
+* [Exempel kod: python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
+* [Exempel kod: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
+* [Exempel kod: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
 
 ## <a name="python-example"></a>Python-exempel
 
@@ -456,10 +463,3 @@ Vi har stöd för flexibla format för ljud uppspelning. Du kan generera ljud ut
 * Audio-24khz-48kbitrate-mono-MP3
 * Audio-24khz-96kbitrate-mono-MP3
 * Audio-24khz-160kbitrate-mono-MP3
-
-## <a name="sample-code"></a>Exempelkod
-Exempel kod för långsiktigt ljud-API finns på GitHub.
-
-* [Exempel kod: python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
-* [Exempel kod: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
-* [Exempel kod: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)

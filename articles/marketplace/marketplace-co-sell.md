@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 3/08/2021
+ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032593"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563786"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Översikt över samförsäljning med Microsoft Sales Teams och partners
 
@@ -37,11 +37,16 @@ En samförsäljnings möjlighet är en typ av samarbete med Microsoft Sales Team
 
 ## <a name="co-sell-statuses"></a>Status för samförsäljning
 
-Det finns fyra nivåer av samförsäljnings status som kan tillämpas på ett erbjudande:
+Detta är de nivåer av medförsäljnings status som kan tillämpas på ett erbjudande.
+
+Status för medförsäljning för Azure:
 
 - Är inte färdig att sälja
 - Färdiga försäljnings produkter
 - Azure IP Co-Sälj motiverade
+
+Försäljnings status för företags program
+- BIZ Apps ISV Connect standard
 - BIZ-appar ISV Connect Premium  
 
 Mer information om kraven för att uppnå de här samförsäljnings statusarna finns i [Co-Sälj krav](co-sell-requirements.md).
@@ -54,7 +59,7 @@ Om du vill lära dig hur du uppnår status för alla samförsäljnings produkter
 
 ## <a name="benefits-of-co-sell-incentivized-status"></a>Förmåner för medförsäljning motiverade-status
 
-_Medförsäljning motiverade_ -status, inklusive _Azure IP Co-Sälj motiverade_ och _BIZ Apps ISV Connect Premium-incitament_. Dessa statusar incentivize partners för att sälja ditt erbjudande. För att uppnå denna status måste du också få en färdig status för medförsäljning. Motiverade-statusen Co-Sales får alla fördelar med färdiga lösningar för samförsäljning och kan tjäna på ytterligare incitament för Microsofts försäljnings team och vara berättigade till fler kommersiella Marketplace-förmåner.
+Motiverade-status ( _Co-Sälj_ ) omfattar _Azure IP Co-Sälj motiverade_ och _BIZ Apps ISV Connect standard eller Premium_. Dessa statusar incentivize Microsoft Sales Teams för att sälja ditt erbjudande. För att uppnå denna status måste du också få en färdig status för medförsäljning. Motiverade-statusen Co-Sales får alla fördelar med färdig status för medförsäljning och kan tjäna på ytterligare incitament för Microsoft Sales Teams och vara berättigade till fler kommersiella Marketplace-förmåner.
 
 Azure IP Co-Sälj motiverade-status kan tillämpas på dessa erbjudande typer:
 
@@ -64,18 +69,17 @@ Azure IP Co-Sälj motiverade-status kan tillämpas på dessa erbjudande typer:
 - IoT Edge modul
 - Programvara som en tjänst (SaaS)
 
-BIZ Apps ISV Connect Premium-stimulans status kan tillämpas på dessa erbjudande typer:
+BIZ-appar ISV Connect standard eller Premium incitaments status kan tillämpas på dessa erbjudande typer:
 
-- Dynamics 365 Business Central
 - Dynamics 365 för kund engagemang & PowerApps
 - Dynamics 365 för åtgärder
 
-Erbjudanden som ger _Azure IP Co-Sälj motiverade-_ status får de här kommersiella Marketplace-fördelarna:
+Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ-appar ISV Connect standard eller Premium incitaments_ status får dessa kommersiella Marketplace-förmåner:
 
 - Service avgiften för Marketplace minskas från 20 till 10%. Rabatten gäller din IaaS-lösning (Infrastructure as a Service) eller SaaS-lösning (program vara som en tjänst) som säljs via den kommersiella marknads platsen. Mer information finns i [service avgifter för handels platser](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Leverantörer av moln lösnings leverantörer får 10% incitament att sälja IaaS-lösningen eller SaaS-erbjudandet. Läs mer om CSP-programmet i [Cloud Solution Provider-program](cloud-solution-providers.md).
 - Försäljning av ditt erbjudande via den kommersiella marknaden bidrar till kundernas Azure-förbruknings åtaganden. Berättigade kunder kommer att se erbjudandet som är markerat som Azure-förmån som är **berättigat** till Azure Portal. Mer information finns i [bidrag för Azure konsumtions åtagande](azure-consumption-commitment-benefit.md).
-- Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ Apps ISV Connect Premium-stimulans_ status får en skylt för **föredragna lösningar** på sidan för erbjudande listan i onlinebutiker. Aktivitets ikonen främjar ett erbjudandes kvalitet, prestanda och möjlighet att adressera kund behov i ett visst bransch lodrätt eller lösnings utrymme. Mer information finns i [rekommenderade lösningar i Microsoft AppSource och Azure Marketplace](preferred-solutions.md).
+- Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ-appar ISV Connect standard eller Premium incitaments_ status får ett **Microsoft-förmånskonto** på sidan för erbjudande listan i onlinebutiker. Aktivitets ikonen främjar ett erbjudandes kvalitet, prestanda och möjlighet att adressera kund behov i ett visst bransch lodrätt eller lösnings utrymme.
 
 Information om hur du uppnår motiverade-status i Co-försäljning finns i samförsäljnings [färdiga och samförsäljnings krav för motiverade](co-sell-requirements.md).
 

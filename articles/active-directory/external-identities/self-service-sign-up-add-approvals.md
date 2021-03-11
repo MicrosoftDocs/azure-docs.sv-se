@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 95274f42da7f6cac9b193504df834232d7c0eb90
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644875"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609998"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Lägg till ett anpassat godkännande arbets flöde till självbetjänings registrering
 
@@ -156,7 +156,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your access request is already processing. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-PENDING"
 }
 ```
 
@@ -168,7 +167,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-DENIED"
 }
 ```
 
@@ -244,7 +242,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your account is now waiting for approval. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-REQUESTED"
 }
 ```
 
@@ -256,7 +253,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-AUTO-DENIED"
 }
 ```
 
@@ -268,12 +264,12 @@ Content-type: application/json
 
 När du har fått manuellt godkännande skapar det anpassade godkännande systemet ett [användar](/graph/azuread-users-concept-overview) konto med hjälp av [Microsoft Graph](/graph/use-the-api). Hur ditt godkännande system etablerar användar kontot beror på vilken identitets leverantör som användes av användaren.
 
-### <a name="for-a-federated-google-or-facebook-user"></a>För en federerad Google-eller Facebook-användare
+### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>För en federerad Google-eller Facebook-användare och e-post med eng ång slö sen ord
 
 > [!IMPORTANT]
-> Godkännande systemet bör uttryckligen kontrol lera att `identities` `identities[0]` och `identities[0].issuer` är närvarande och att det är `identities[0].issuer` lika med "Facebook" eller "Google" för att använda den här metoden.
+> Godkännande systemet bör uttryckligen kontrol lera att `identities` `identities[0]` och `identities[0].issuer` är närvarande och att det är `identities[0].issuer` lika med "Facebook", "Google" eller "mail" för att använda den här metoden.
 
-Om användaren har loggat in med ett Google-eller Facebook-konto kan du använda API: et för att [skapa användare](/graph/api/user-post-users?tabs=http).
+Om användaren har loggat in med ett Google-eller Facebook-konto eller ett lösen ord för eng ång slö sen ord, kan du använda API: et för att [skapa användare](/graph/api/user-post-users?tabs=http).
 
 1. Godkännande systemet använder tar emot HTTP-begäran från användar flödet.
 
@@ -331,9 +327,9 @@ Content-type: application/json
 | \<otherBuiltInAttribute>                            | Inga       | Andra inbyggda attribut som `displayName` , `city` och andra. Parameter namn är desamma som de parametrar som skickas av API-anslutningen.                            |
 | \<extension\_\{extensions-app-id}\_CustomAttribute> | Inga       | Anpassade attribut för användaren. Parameter namn är desamma som de parametrar som skickas av API-anslutningen.                                                            |
 
-### <a name="for-a-federated-azure-active-directory-user"></a>För en federerad Azure Active Directory användare
+### <a name="for-a-federated-azure-active-directory-user-or-microsoft-account-user"></a>För en federerad Azure Active Directory användare eller Microsoft-konto användare
 
-Om en användare loggar in med ett federerat Azure Active Directory-konto måste du använda [Inbjudnings-API: et](/graph/api/invitation-post) för att skapa användaren och sedan välja [användar uppdaterings-API](/graph/api/user-update) för att tilldela fler attribut till användaren.
+Om en användare loggar in med ett federerat Azure Active Directory-konto eller en Microsoft-konto, måste du använda [Inbjudnings-API: et](/graph/api/invitation-post) för att skapa användaren och sedan välja [API för användar uppdatering](/graph/api/user-update) för att tilldela fler attribut till användaren.
 
 1. Godkännande systemet tar emot HTTP-begäran från användar flödet.
 

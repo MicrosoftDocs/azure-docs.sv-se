@@ -1,27 +1,19 @@
 ---
 title: Azure VM-tillägg och-funktioner för Windows
 description: Lär dig vilka tillägg som är tillgängliga för virtuella Azure-datorer, grupperade efter vad de erbjuder eller förbättrar.
-services: virtual-machines-windows
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 03/30/2018
-ms.author: akjosh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44d071c635967e4ce3078be8419414bc9ff0c653
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580147"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559791"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Tillägg och funktioner för virtuella datorer för Windows
 
@@ -422,7 +414,7 @@ Du kan också ta bort ett tillägg i Azure Portal på följande sätt:
 4. Välj **Avinstallera**.
 
 ## <a name="common-vm-extensions-reference"></a>Common VM Extensions-referens
-| Tilläggs namn | Description | Mer information |
+| Tilläggs namn | Beskrivning | Mer information |
 | --- | --- | --- |
 | Anpassat skripttillägg för Windows |Kör skript mot en virtuell Azure-dator |[Anpassat skripttillägg för Windows](custom-script-windows.md) |
 | DSC-tillägg för Windows |PowerShell DSC (Desired State Configuration)-tillägg |[DSC-tillägg för Windows](dsc-overview.md) |

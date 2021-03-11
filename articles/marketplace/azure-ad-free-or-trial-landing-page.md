@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: 699271316eccec1244db886ed2296f87c52f91ae
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348363"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559298"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Bygg in landnings sidan för ditt kostnads fria eller utvärderings SaaS-erbjudande på den kommersiella Marketplace
 
@@ -51,7 +51,7 @@ Det första steget för att använda identiteten är att se till att din landnin
 
 Kom igång genom att följa anvisningarna för att [Registrera ett nytt program](../active-directory/develop/quickstart-register-app.md). Om du vill låta användare från andra företag besöka appen måste du välja **konton i valfri organisations katalog (alla Azure AD-kataloger – flera innehavare) och personliga Microsoft-konton (t. ex. Skype eller Xbox)** när de uppmanas att använda programmet.
 
-Om du tänker fråga Microsoft Graph-API: t [konfigurerar du ditt nya program för att få åtkomst till webb-API: er](../active-directory/develop/quickstart-configure-app-access-web-apis.md). När du väljer API-behörigheter för det här programmet är standardvärdet **User. Read** tillräckligt för att samla in grundläggande information om användaren för att göra onboarding-processen smidig och automatisk. Begär inte några API-behörigheter som är märkta **kräver administratörs medgivande** , eftersom detta hindrar alla användare som inte är administratörer att besöka din landnings sida.
+Om du tänker fråga Microsoft Graph-API: t [konfigurerar du ditt nya program för att få åtkomst till webb-API: er](../active-directory/develop/quickstart-configure-app-access-web-apis.md). När du väljer API-behörigheter för det här programmet är standardvärdet **User. Read** tillräckligt för att samla in grundläggande information om användaren för att göra onboarding-processen smidig och automatisk. Begär inte några API-behörigheter som är märkta **kräver administratörs medgivande**, eftersom detta hindrar alla användare som inte är administratörer att besöka din landnings sida.
 
 Om du behöver utökade behörigheter som en del av din onboarding-eller etablerings process bör du överväga att använda de [stegvisa medgivande](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) funktionerna i Azure AD så att alla användare som skickas från Marketplace kan interagera från början med landnings sidan.
 
@@ -59,7 +59,7 @@ Om du behöver utökade behörigheter som en del av din onboarding-eller etabler
 
 Microsoft tillhandahåller flera exempel på appar som implementerar en enkel webbplats där Azure AD-inloggning är aktive rad. När programmet har registrerats i Azure AD erbjuder **snabb starts** bladet en lista över vanliga program typer och utvecklings stackar (bild 1). Välj den som matchar din miljö och följ anvisningarna för hämtning och installation.
 
-**_Bild 1: snabb starts bladet i Azure Portal_* _
+***Bild 1: snabb starts bladet i Azure Portal***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Visar bladet snabb start i Azure Portal.":::
 
@@ -82,20 +82,20 @@ Som en del av [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md)
 
 ## <a name="use-the-microsoft-graph-api"></a>Använda Microsoft Graph API
 
-ID-token innehåller grundläggande information för att identifiera användaren, men din aktiverings process kan kräva ytterligare information, t. ex. användarens företag, för att slutföra onboarding-processen. Använd [Microsoft Graph-API: et](/graph/use-the-api) för att begära den här informationen för att undvika att användaren kan ange informationen igen. Standard _ *User. Read* *-behörighet innehåller följande information, som standard:
+ID-token innehåller grundläggande information för att identifiera användaren, men din aktiverings process kan kräva ytterligare information, t. ex. användarens företag, för att slutföra onboarding-processen. Använd [Microsoft Graph-API: et](/graph/use-the-api) för att begära den här informationen för att undvika att användaren kan ange informationen igen. Standard **användaren. Läs** behörighet innehåller följande information, som standard:
 
 | Värde | Beskrivning |
 | ------------ | ------------- |
 | displayName | Namn som visas i användarens adress bok. |
 | förnamn | Användarens förnamn. |
-| Befattning | Användarens jobb titel. |
+| jobTitle | Användarens jobb titel. |
 | e-post | Användarens SMTP-adress. |
 | mobilePhone | Primärt mobilt mobiltelefon nummer för användaren. |
 | preferredLanguage | ISO 639-1-kod för användarens önskade språk. |
 | surname | Användarens efter namn. |
 |||
 
-Ytterligare egenskaper, till exempel namnet på användarens företag eller användarens plats (land), kan väljas för att inkluderas i begäran. Mer information finns i [Egenskaper för användar resurs typen](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties).
+Ytterligare egenskaper, till exempel namnet på användarens företag eller användarens plats (land), kan väljas för att inkluderas i begäran. Mer information finns i [Egenskaper för användar resurs typen](/graph/api/resources/user#properties).
 
 De flesta appar som är registrerade med Azure AD tilldelar delegerade behörigheter för att läsa användarens information från företagets Azure AD-klient. Alla begär Anden om att Microsoft Graph för den informationen måste åtföljas av en åtkomsttoken som autentisering. De olika stegen för att generera åtkomsttoken beror på vilken teknik stack du använder, men exempel koden innehåller ett exempel. Mer information finns i [få åtkomst för en användares räkning](/graph/auth-v2-user).
 

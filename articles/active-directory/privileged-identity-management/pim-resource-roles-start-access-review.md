@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370554"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564041"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Skapa en åtkomst granskning av Azures resurs roller i Privileged Identity Management
 
-Åtkomst till privilegierade Azure Resource roles för anställda ändras med tiden. För att minska risken för inaktuella roll tilldelningar bör du regelbundet granska åtkomst. Du kan använda Azure Active Directory (Azure AD) Privileged Identity Management (PIM) för att skapa åtkomst granskningar för privilegierade Azure-resurs roller. Du kan också konfigurera återkommande åtkomst granskningar som sker automatiskt.
+Behovet av åtkomst till behöriga Azure-resurs roller av anställda ändras med tiden. För att minska risken för inaktuella roll tilldelningar bör du regelbundet granska åtkomst. Du kan använda Azure Active Directory (Azure AD) Privileged Identity Management (PIM) för att skapa åtkomst granskningar för privilegie rad åtkomst till Azure-resurs roller. Du kan också konfigurera återkommande åtkomst granskningar som sker automatiskt. Den här artikeln beskriver hur du skapar en eller flera åtkomst granskningar.
 
-Den här artikeln beskriver hur du skapar en eller flera åtkomst granskningar för privilegierade Azure-resurs roller.
-
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisite-role"></a>Nödvändig roll
 
  Om du vill skapa åtkomst granskningar måste du ha tilldelats rollen [ägare](../../role-based-access-control/built-in-roles.md#owner) eller [administratör för användar åtkomst administratör](../../role-based-access-control/built-in-roles.md#user-access-administrator) för resursen.
 
 ## <a name="open-access-reviews"></a>Öppna åtkomst granskningar
 
-1. Logga in på [Azure Portal](https://portal.azure.com/) med en användare som är medlem i rollen privilegie rad roll administratör.
+1. Logga in på [Azure Portal](https://portal.azure.com/) med en användare som är tilldelad en av de nödvändiga rollerna.
 
 1. Öppna **Azure AD Privileged Identity Management**.
 

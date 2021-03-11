@@ -7,26 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/22/2021
+ms.date: 03/09/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699449"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549897"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Vad är Azure Cognitive Search?
 
 Azure Kognitiv sökning ([tidigare kallat "Azure Search"](whats-new.md#new-service-name)) är en moln Sök tjänst som tillhandahåller utvecklares API: er och verktyg för att skapa en omfattande Sök upplevelse över privat, heterogent innehåll i webb-, mobil-och företags program. 
 
+Sökningen är grundläggande för alla appar som innehåller innehåll till användare, med vanliga scenarier, till exempel katalog-eller dokuments ökning, e-handelsplatsens sökning eller kunskaps utvinning för data vetenskap. API: er och arkitekturen i Kognitiv sökning fören klar uppgiften att lägga till sofistikerade informations hämtningar till alla lösningar.
+
 En Sök tjänst har följande komponenter:
 
 + Sökmotor för full texts ökning
 + Beständig lagring av användar ägda indexerat innehåll
-+ API: er för indexering och frågor
-+ Valfria [AI-baserade anrikninger](cognitive-search-concept-intro.md), skapa sökbart innehåll av bilder, rå text, programfiler
-+ Valfri integrering med andra Azure-tjänster för data, Machine Learning/AI och säkerhet
++ API: er för att indexera och fråga innehåll
++ Valfria [AI-baserade anrikninger](cognitive-search-concept-intro.md), skapa sökbart innehåll av bilder, rå ostrukturerad text, programfiler
++ Valfri integrering med andra Azure-tjänster för data, maskin inlärning/AI, övervakning och säkerhet
++ Valfri implementering av [semantisk sökning (för hands version)](semantic-search-overview.md) för bättre relevans
 
 En Sök tjänst är arkitekturad mellan de externa data lager som innehåller dina data som inte har indexerats och din klient app som skickar förfrågningar till ett sökindex och hanterar svaret.
 
@@ -74,8 +77,9 @@ En heltäckande utforskning av Core search-funktioner kan uppnås i fyra steg:
 
 1. [**Fråga ett index**](search-query-overview.md) med hjälp av [Sök Utforskaren](search-explorer.md) i portalen, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)eller något annat SDK.
 
-> [!TIP]
-> Minimera stegen genom att starta med [**guiden Importera data**](search-get-started-portal.md) och en Azure-datakälla för att skapa, läsa in och fråga ett index på några minuter.
+För inledande utforskning börjar du med [**guiden Importera data**](search-get-started-portal.md) och en inbyggd Azure-datakälla för att skapa, läsa in och fråga ett index på några minuter.
+
+Om du behöver hjälp med komplexa eller anpassade lösningar kan du [**kontakta en partner**](resource-partners-knowledge-mining.md) med djupgående expertis i kognitiv sökning teknik.
 
 ## <a name="compare-search-options"></a>Jämför sökalternativ
 

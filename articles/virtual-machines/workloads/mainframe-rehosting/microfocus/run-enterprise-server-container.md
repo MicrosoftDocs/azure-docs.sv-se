@@ -1,7 +1,7 @@
 ---
 title: Kör Micro Focus Enterprise Server 5,0 i en Docker-behållare på Azure | Microsoft Docs
 description: I den här artikeln lär du dig att köra Micro Focus Enterprise Server 5,0 i en Docker-behållare på Microsoft Azure.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: f34767c160c8229eb5b63806924926a46ea00cc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5c436eae53b16c980e9725cfef0573367d144842
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127203"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548384"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Kör Micro Focus Enterprise Server 5,0 i en Docker-behållare på Azure
 
@@ -25,7 +25,7 @@ Du kan köra Micro Focus Enterprise Server 5,0 i en Docker-behållare på Azure.
 
 Docker lägger till portabilitet och isolering för program. Du kan till exempel exportera en Docker-avbildning från en virtuell Windows-dator (VM) så att den körs på en annan eller från en lagrings plats till en Windows-Server med Docker. Docker-avbildningen körs på den nya platsen med samma konfiguration – utan att du behöver installera Enterprise Server. Den är en del av bilden. Licens överväganden gäller fortfarande.
 
-Den här självstudien installerar **Windows 2016-datacenter med behållare** VM från Azure Marketplace. Den här virtuella datorn innehåller **Docker 18.09.0** . Stegen nedan visar hur du distribuerar behållaren, kör den och sedan ansluter till den med en 3270-emulator.
+Den här självstudien installerar **Windows 2016-datacenter med behållare** VM från Azure Marketplace. Den här virtuella datorn innehåller **Docker 18.09.0**. Stegen nedan visar hur du distribuerar behållaren, kör den och sedan ansluter till den med en 3270-emulator.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -44,7 +44,7 @@ Innan du börjar bör du gå igenom följande krav:
 
 1.  Skydda mediet från överordnad \_ Server \_ dockerfiles \_ 5,0 \_windows.zip-fil. Säkra licens filen ES-Docker-Prod-XXXXXXXX. mflic (krävs för att bygga Docker-avbildningarna).
 
-2.  Skapa den virtuella datorn. Det gör du genom att öppna Azure Portal, välja **skapa en resurs** på menyn längst upp till vänster och filtrera efter *Windows Server-operativsystem* . I resultaten väljer du **Windows Server.** På nästa skärm väljer du **Windows Server 2016 Data Center – med behållare** .
+2.  Skapa den virtuella datorn. Det gör du genom att öppna Azure Portal, välja **skapa en resurs** på menyn längst upp till vänster och filtrera efter *Windows Server-operativsystem*. I resultaten väljer du **Windows Server.** På nästa skärm väljer du **Windows Server 2016 Data Center – med behållare**.
 
     ![Skärm bild av Azure Portal Sök Resultat](./media/run-image-1.png)
 
@@ -54,11 +54,11 @@ Innan du börjar bör du gå igenom följande krav:
 
     2.  Välj den **region** och **resurs grupp** som du vill distribuera till.
 
-    3.  Använd standardinställningen för **tillgänglighets alternativ** .
+    3.  Använd standardinställningen för **tillgänglighets alternativ**.
 
     4.  För **användar namn** anger du det administratörs konto som du vill använda och lösen ordet.
 
-    5.  Kontrol lera att **port 3389 RDP** är öppen. Endast den här porten måste vara offentligt exponerad, så du kan logga in på den virtuella datorn. Godkänn sedan alla standardvärden och klicka på **Granska + skapa** .
+    5.  Kontrol lera att **port 3389 RDP** är öppen. Endast den här porten måste vara offentligt exponerad, så du kan logga in på den virtuella datorn. Godkänn sedan alla standardvärden och klicka på **Granska + skapa**.
 
     ![Skärm bild av fönstret Skapa en virtuell dator](./media/run-image-2.png)
 
@@ -81,11 +81,11 @@ Den virtuella datorn körs i det här läget via RDP. Du är inloggad och redo f
 
 ## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Skapa en sandbox-katalog och ladda upp zip-filen
 
-1.  Skapa en katalog på den virtuella datorn där du kan ladda upp demonstrationen och licensens filer. Till exempel **C: \\ sandbox** .
+1.  Skapa en katalog på den virtuella datorn där du kan ladda upp demonstrationen och licensens filer. Till exempel **C: \\ sandbox**.
 
 2.  Överför överordnad **\_ server \_ dockerfiles \_ 5,0 \_windows.zip** och **es-Docker-Prod-xxxxxxxx. mflic-** filen till den katalog som du skapade.
 
-3.  Extrahera innehållet i zip-filen till den överordnande **\_ servern \_ dockerfiles \_ 5,0 \_ Windows** -katalogen som skapats av extraherings processen. Den här katalogen innehåller en README-fil (som HTML-och. txt-fil) och två under kataloger, **EnterpriseServer** och **exempel** .
+3.  Extrahera innehållet i zip-filen till den överordnande **\_ servern \_ dockerfiles \_ 5,0 \_ Windows** -katalogen som skapats av extraherings processen. Den här katalogen innehåller en README-fil (som HTML-och. txt-fil) och två under kataloger, **EnterpriseServer** och **exempel**.
 
 4.  Kopiera **es – Docker-Prod-xxxxxxxx. mflic** till mappen C: Sandbox-överordnad \\ \\ \_ Server \_ dockerfiles \_ 5,0 \_ Windows \\ EnterpriseServer och C: \\ sandbox- \\ \_ Server \_ dockerfiles \_ 5,0 \_ Windows- \\ exempel \\ CICS kataloger.  
       
@@ -103,15 +103,15 @@ Den virtuella datorn körs i det här läget via RDP. Du är inloggad och redo f
     Till exempel var versionen 18.09.0 när den skrevs.
 
 3.  Om du vill ändra katalogen skriver du:  
-    **CD \\ Sandbox-överordnad \\ \_ server \_ dockerfiles \_ 5,0 \_ Windows- \\ EnterpriseServer** .
+    **CD \\ Sandbox-överordnad \\ \_ server \_ dockerfiles \_ 5,0 \_ Windows- \\ EnterpriseServer**.
 
 4.  Skriv **bld.bat IacceptEULA** för att börja bygga processen för den inledande bas avbildningen. Vänta några minuter för den här processen att köras. Observera i resultaten de två avbildningar som har skapats – en för x64 och en för x86:
 
     ![Fönstret Kommando visar bilder](./media/run-image-3.png)
 
-5.  Om du vill skapa den slutliga avbildningen för CICS-demonstrationen växlar du till CICS-katalogen genom att skriva **CD \\ sandbox \\ \_ Server \_ dockerfiles \_ 5,0 \_ Windows- \\ exempel \\ CICS** .
+5.  Om du vill skapa den slutliga avbildningen för CICS-demonstrationen växlar du till CICS-katalogen genom att skriva **CD \\ sandbox \\ \_ Server \_ dockerfiles \_ 5,0 \_ Windows- \\ exempel \\ CICS**.
 
-6.  Skapa avbildningen genom att skriva **bld.bat x64** . Vänta några minuter på att processen ska köras och meddelandet som anger att avbildningen har skapats.
+6.  Skapa avbildningen genom att skriva **bld.bat x64**. Vänta några minuter på att processen ska köras och meddelandet som anger att avbildningen har skapats.
 
 7.  Skriv **Docker-avbildningar** för att visa en lista över alla Docker-avbildningar som är installerade på den virtuella datorn. Se till att **mikrofocus/es-acctdemo** är en av dem.
 
@@ -129,7 +129,7 @@ Den virtuella datorn körs i det här läget via RDP. Du är inloggad och redo f
 
 2.  Hämta IP-adressen för acctdemo-behållaren så att Docker kan fungera som en Dynamic Host Configuration Protocol (DHCP)-Server för de behållare som den hanterar:
 
-    1.  Hämta ID: t för den behållare som körs. Skriv **Docker PS** i kommando tolken och anteckna ID ( **22a0fe3159d0** i det här exemplet). Spara den för nästa steg.
+    1.  Hämta ID: t för den behållare som körs. Skriv **Docker PS** i kommando tolken och anteckna ID (**22a0fe3159d0** i det här exemplet). Spara den för nästa steg.
 
     2.  Om du vill hämta IP-adressen för acctdemo-behållaren använder du behållar-ID: t från föregående steg enligt följande:
 
@@ -147,23 +147,23 @@ Den virtuella datorn körs i det här läget via RDP. Du är inloggad och redo f
 
     ![Skärm bild av Fönstret Kommando visar IP-adress](./media/run-image-5.png)
 
-5. Montera avbildningen med emulatorn. Konfigurera emulatorn för att använda adressen för acctdemo-avbildningen och port 9040. Här är det **172.19.202.52:9040** . Ditt är liknande. Skärmen **Logga** in på CICS öppnas.
+5. Montera avbildningen med emulatorn. Konfigurera emulatorn för att använda adressen för acctdemo-avbildningen och port 9040. Här är det **172.19.202.52:9040**. Ditt är liknande. Skärmen **Logga** in på CICS öppnas.
 
     ![Skärm bild av inloggning till CICS](./media/run-image-6.png)
 
-6. Logga in i CICS-regionen genom att ange **SYSAD** för **användar-ID** och **SYSAD** för **lösen ordet** .
+6. Logga in i CICS-regionen genom att ange **SYSAD** för **användar-ID** och **SYSAD** för **lösen ordet**.
 
 7. Ta bort skärmen med emulatorns Keymap. För x3270 väljer du meny alternativet **Keymap** .
 
-8. Starta acctdemo-programmet genom att skriva **acct** . Den första skärmen för programmet visas.
+8. Starta acctdemo-programmet genom att skriva **acct**. Den första skärmen för programmet visas.
 
      ![Skärm bild visar ett konsol fönster som visar programmet.](./media/run-image-7.png)
 
-9. Experimentera med konto typer för visning. Skriv till exempel **D** för begäran och **11111** för **kontot** . Andra konto nummer att testa är 22222, 33333 och så vidare.
+9. Experimentera med konto typer för visning. Skriv till exempel **D** för begäran och **11111** för **kontot**. Andra konto nummer att testa är 22222, 33333 och så vidare.
 
     ![Skärm bild som visar redigering av olika värden i programmet.](./media/run-image-8.png)
 
-10. Om du vill visa administrations konsolen för företags servern går du till kommando tolken och skriver **Start http: 172.19.202.52:86** .
+10. Om du vill visa administrations konsolen för företags servern går du till kommando tolken och skriver **Start http: 172.19.202.52:86**.
 
     ![Administrations konsol för Enterprise Server](media/run-image-9.png)
 

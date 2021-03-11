@@ -7,14 +7,23 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202696"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564262"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrera från Linux till en hybrid moln distribution med Azure File Sync
+
+Den här migrations artikeln är en av flera som rör nyckelorden NFS och Azure File Sync. Kontrol lera om den här artikeln gäller ditt scenario:
+
+> [!div class="checklist"]
+> * Data Källa: nätverksansluten lagring (NAS)
+> * Migreringsjobb: Linux-server med SAMBA &rArr; Windows Server-2012R2 eller senare &rArr; synkroniseras med Azure-filresurs (er)
+> * Cachelagra filer lokalt: Ja, det slutliga målet är en Azure File Sync distribution.
+
+Om ditt scenario skiljer sig kan du titta igenom [tabellen med migrations guider](storage-files-migration-overview.md#migration-guides).
 
 Azure File Sync fungerar på Windows Server-instanser med direktansluten lagring (DAS). Den stöder inte synkronisering till och från Linux-klienter, eller en SMB-resurs (Server Message Block) eller NFS-resurser (Network File System).
 
@@ -22,13 +31,13 @@ Det innebär att du måste omvandla dina fil tjänster till en hybrid distributi
 
 ## <a name="migration-goals"></a>Migreringsmål
 
-Målet är att flytta de resurser som du har på din Linux-Samba server till en Windows Server-instans. Använd sedan Azure File Sync för en hybrid moln distribution. Migreringen måste göras på ett sätt som garanterar integriteten för produktions data samt tillgänglighet under migreringen. Den sistnämnda lösningen kräver att drift stoppen är minimal, så att den får plats i eller endast något högre än vanliga underhålls perioder.
+Målet är att flytta de resurser som du har på din Linux-Samba server till en Windows Server-instans. Använd sedan Azure File Sync för en hybrid moln distribution. Migreringen måste göras på ett sätt som garanterar integriteten för produktions data och tillgänglighet under migreringen. Den sistnämnda lösningen kräver att drift stoppen är minimal, så att den får plats i eller endast något högre än vanliga underhålls perioder.
 
 ## <a name="migration-overview"></a>Översikt över migrering
 
 Som vi nämnt i [artikeln Azure Files migrerings översikt](storage-files-migration-overview.md)är det viktigt att använda rätt kopierings verktyg och metod. Din Linux-Samba server exponerar SMB-resurser direkt i det lokala nätverket. Robocopy, som är inbyggt i Windows Server, är det bästa sättet att flytta filer i det här scenariot för migrering.
 
-Om du inte kör Samba på Linux-servern och hellre vill migrera mappar till en hybrid distribution på Windows Server, kan du använda Linux-sökverktyg i stället för Robocopy. Om du gör det bör du vara medveten om åter givningen av funktionerna i fil kopierings verktyget. Läs [avsnittet grundläggande om migreringar](storage-files-migration-overview.md#migration-basics) i översikts artikeln om migreringen för att lära dig vad du ska titta efter i ett kopierings verktyg.
+Om du inte kör Samba på Linux-servern och hellre vill migrera mappar till en hybrid distribution på Windows Server, kan du använda Linux-sökverktyg i stället för Robocopy. Var medveten om åter bildskärms funktionerna i kopierings verktyget. Läs [avsnittet grundläggande om migreringar](storage-files-migration-overview.md#migration-basics) i översikts artikeln om migreringen för att lära dig vad du ska titta efter i ett kopierings verktyg.
 
 ## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>Fas 1: identifiera hur många Azure-filresurser du behöver
 
@@ -39,11 +48,13 @@ Om du inte kör Samba på Linux-servern och hellre vill migrera mappar till en h
 * Skapa en Windows Server 2019-instans som en virtuell dator eller fysisk server. Windows Server 2012 R2 är minimi kravet. Det finns också stöd för ett Windows Server-redundanskluster.
 * Etablera eller Lägg till direktansluten lagring (DAS). NAS (Network Attached Storage) stöds inte.
 
-  Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din lokala Linux-server, om du använder funktionen Azure File Sync [moln nivåer](storage-sync-cloud-tiering-overview.md) . Men när du kopierar dina filer från det större Linux-Samba server utrymmet till den mindre Windows Server-volymen i en senare fas måste du arbeta i batchar:
+  Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din lokala Linux-server, om du använder funktionen Azure File Sync [moln nivåer](storage-sync-cloud-tiering-overview.md) . 
+
+Mängden lagrings utrymme som du etablerar kan vara mindre än det som du för närvarande använder på din Linux-Samba server. Det här konfigurations valet kräver att du också använder Azure File syncs-funktionen för [moln nivåer](storage-sync-cloud-tiering-overview.md) . Men när du kopierar dina filer från det större Linux-Samba server utrymmet till den mindre Windows Server-volymen i en senare fas måste du arbeta i batchar:
 
   1. Flytta en uppsättning filer som passar på disken.
   2. Låt filsynkronisering och moln nivåer engagera.
-  3. När mer ledigt utrymme skapas på volymen fortsätter du med nästa batch med filer. 
+  3. När mer ledigt utrymme skapas på volymen fortsätter du med nästa batch med filer. Du kan också granska RoboCopy-kommandot i [avsnittet kommande Robocopy](#phase-7-robocopy) för att använda den nya `/LFSM` växeln. Med `/LFSM` kan du förenkla dina Robocopy-jobb avsevärt, men det är inte kompatibelt med andra Robocopy-växlar som du kan bero på.
     
   Du kan undvika den här batch-metoden genom att tillhandahålla motsvarande utrymme på den Windows Server-instans som filerna upptar på Linux-servern. Överväg att aktivera deduplicering i Windows. Om du inte vill spara den här stora mängden lagrings utrymme på en Windows Server-instans permanent kan du minska volym storleken efter migreringen och innan du justerar principerna för moln nivå. Detta skapar en mindre lokal cache för dina Azure-filresurser.
 
@@ -100,78 +111,9 @@ Följande Robocopy-kommando kommer att kopiera filer från din servers lagring f
 
 Om du har allokerat mindre lagrings utrymme på Windows Server-instansen än vad filerna tar upp på den Samba-servern för Linux, har du konfigurerat moln nivåer. När den lokala Windows Server-volymen blir full startar [moln skiktning](storage-sync-cloud-tiering-overview.md) och filer på nivån som redan har synkroniserats. Moln skiktet genererar tillräckligt med utrymme för att kunna fortsätta med kopian från den Samba-server som används av Linux. Moln nivåer utförs en gång i timmen för att se vad som har synkroniserats och för att frigöra disk utrymme för att uppnå principen på 99 procent ledigt utrymme för en volym.
 
-Det är möjligt att Robocopy flyttar filer snabbare än att du kan synkronisera till molnet och nivån lokalt, vilket gör att du får slut på det lokala disk utrymmet. Robocopy kommer sedan att Miss sen. Vi rekommenderar att du arbetar genom resurserna i en sekvens som förhindrar problemet. Överväg till exempel att inte starta Robocopy-jobb för alla resurser på samma gång. Eller Överväg att flytta resurser som passar på den aktuella mängden ledigt utrymme på Windows Server-instansen. Om ditt Robocopy-jobb Miss Miss kan du alltid köra kommandot igen så länge du använder följande alternativ för spegling/rensning:
+Det är möjligt att Robocopy flyttar filer snabbare än att du kan synkronisera till molnet och nivån lokalt, vilket gör att du får slut på det lokala disk utrymmet. Robocopy kommer sedan att Miss sen. Vi rekommenderar att du arbetar genom resurserna i en sekvens som förhindrar problemet. Överväg till exempel att inte starta Robocopy-jobb för alla resurser på samma gång. Eller Överväg att flytta resurser som passar på den aktuella mängden ledigt utrymme på Windows Server-instansen. Om ditt Robocopy-jobb Miss Miss kan du alltid köra om kommandot så länge du använder följande alternativ för spegling/rensning:
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Lägg
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Tillåter att Robocopy körs med flera trådar. Standardvärdet är 8, maximum är 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Matar ut status till en loggfil som Unicode (skriver över den befintliga loggen).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Utdata till ett konsol fönster. Används tillsammans med utdata i en loggfil.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Kör Robocopy i samma läge som ett säkerhets kopierings program använder. Det gör att Robocopy kan flytta filer som den aktuella användaren inte har behörighet till.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Tillåter körning av detta Robocopy-kommando flera gånger, i turordning, på samma mål/mål. Den identifierar och utelämnar det som har kopierats tidigare. Endast ändringar, tillägg och borttagningar som har gjorts sedan den senaste körningen bearbetades. Om kommandot inte kördes förut utelämnas inget. **/Mir** -flaggan är ett utmärkt alternativ för käll platser som fortfarande används aktivt och ändras.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      Åter givningen av fil kopian (standard är/COPY: DAT). Kopierings flaggor är: D = data, A = attribut, T = tidsstämplar, S = Security = NTFS ACL: er, O = ägar information, U = gransknings information.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Kopiera ALL fil information (motsvarande/COPY: DATSOU).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      Åter givning för kopian av kataloger (standard är/DCOPY: DA). Kopierings flaggor är: D = data, A = attribut, T = tidsstämplar.
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>Fas 8: överhuggen av användare
 

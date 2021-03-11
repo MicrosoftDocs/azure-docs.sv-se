@@ -9,19 +9,19 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: e1fc3771eaf5e8fa59b297e2052d232150ccfab3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 3d2dd7691ac601e690e9f477b0450da07233e201
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006301"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553467"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Skapa en App Service-app med kontinuerlig distribution med hjälp av Azure CLI
 
 Det här exempel skriptet skapar en app i App Service med dess relaterade resurser och ställer sedan in kontinuerlig distribution från en Azure DevOps-lagringsplats. För det här exemplet behöver du följande:
 
 * En Azure DevOps-lagringsplats med program kod som du har administratörs behörighet för.
-* En [personlig åtkomsttoken (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) för din Azure DevOps-organisation.
+* En [personlig åtkomsttoken (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) för din Azure DevOps-organisation.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

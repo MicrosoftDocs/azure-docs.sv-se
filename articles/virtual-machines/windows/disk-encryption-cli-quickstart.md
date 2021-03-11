@@ -3,17 +3,18 @@ title: Skapa och kryptera en virtuell Windows-dator med Azure CLI
 description: I den här snabb starten får du lära dig hur du använder Azure CLI för att skapa och kryptera en virtuell Windows-dator
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90c2584ef56922fc2cd57f445201b63550c485c1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bffa155a51c4897cd1e2cc07a6d4aea9a8e080ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200676"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562766"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>Snabb start: skapa och kryptera en virtuell Windows-dator med Azure CLI
 

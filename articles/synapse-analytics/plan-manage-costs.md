@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599041"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561253"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planera och hantera kostnader för Azure Synapse Analytics
 
@@ -113,7 +113,12 @@ Om du vill veta mer om kostnader för Server lös SQL-pool se [kostnads hanterin
 
 Du kan kontrol lera kostnaderna för en dedikerad SQL-pool genom att pausa resursen när den inte används. Om du till exempel inte använder databasen under natten och på helger, kan du pausa den under dessa tider och återuppta den under dagen. Mer information finns i [pausa och återuppta beräkning i dedikerad SQL-pool via Azure Portal](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-<!-- ### Serverless Apache Spark pool -->
+### <a name="serverless-apache-spark-pool"></a>Server lös Apache Spark pool
+
+Om du vill kontrol lera kostnaderna för din server lös Apache Spark-pool aktiverar du funktionen Server lös Apache Spark automatisk paus och anger timeout-värdet.  När du använder Synapse Studio för utveckling, skickar Studio ett Keep Alive-meddelande för att hålla sessionen aktiv, vilket också kan konfigureras, så ange ett kort tids gräns värde för automatisk paus.  När du är färdig stänger du sessionen och Apache Spark-poolen pausas automatiskt när timeout-värdet har uppnåtts.
+ 
+Under utvecklingen skapar du flera Apache Spark för pool definitioner av olika storlekar.  Att skapa Apache Spark pool definitioner är kostnads fria och du debiteras bara för användning.  Apache Spark användning i Azure Synapse debiteras per vCore timme och beräknas per minut.  Du kan till exempel använda små pool storlekar för kod utveckling och verifiering samtidigt som du använder större poolstorlek för prestanda testning.
+
 
 ### <a name="data-integration---pipelines-and-data-flows"></a>Data integrering – pipelines och data flöden 
 

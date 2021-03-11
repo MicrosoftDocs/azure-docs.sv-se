@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690639"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609931"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatiserade säkerhets kopieringar – Azure SQL Database & SQL-hanterad instans
 
@@ -140,9 +140,12 @@ För både SQL Database-och SQL-hanterad instans kan du konfigurera fullständig
 
 För ytterligare information om LTR, se [långsiktig kvarhållning av säkerhets kopior](long-term-retention-overview.md).
 
-## <a name="storage-costs"></a>Lagringskostnader
+## <a name="backup-storage-costs"></a>Reserv lagrings kostnader
 
 Priset för lagring av säkerhets kopior varierar och beror på inköps modellen (DTU eller vCore), valt alternativ för lagring av säkerhets kopior och även på din region. Lagring av säkerhets kopior debiteras per GB/månad för prissättningen se [Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) prissättnings sida och pris sida för [Azure SQL-hanterad instans](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) .
+
+> [!NOTE]
+> Azure-fakturan visar bara den överutnyttjade lagringen för säkerhets kopiering, inte hela förbrukningen av lagrings utrymmet. Om du till exempel har en etablerad 4 TB av data lagring i ett hypotetiskt scenario får du 4 TB med ledigt lagrings utrymme för säkerhets kopiering. Om du har använt över 5,8 TB av lagrings utrymmet för säkerhets kopieringen visar Azure-fakturan bara 1,8 TB eftersom endast överbelastade lagrings enheter för säkerhets kopior debiteras.
 
 ### <a name="dtu-model"></a>DTU-modell
 
@@ -446,7 +449,7 @@ En fullständig lista över inbyggda princip definitioner för SQL Database och 
 För att genomdriva krav på data placering på organisations nivå kan dessa principer tilldelas till en prenumeration. När de har tilldelats en prenumerations nivå kommer användare i den angivna prenumerationen inte att kunna skapa en databas eller en hanterad instans med Geo-redundant lagring av säkerhets kopior via Azure Portal eller Azure PowerShell. 
 
 > [!IMPORTANT]
-> Azure-principer tillämpas inte när du skapar en databas via T-SQL. Om du vill genomdriva data placering när du skapar en databas med T-SQL [använder du "lokal" eller "zon" som indata till BACKUP_STORAGE_REDUNDANCY parameter i Create Database-instruktionen](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
+> Azure-principer tillämpas inte när du skapar en databas via T-SQL. Om du vill genomdriva data placering när du skapar en databas med T-SQL [använder du "lokal" eller "zon" som indata till BACKUP_STORAGE_REDUNDANCY parameter i Create Database-instruktionen](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups).
 
 Lär dig hur du tilldelar principer med hjälp av [Azure Portal](../../governance/policy/assign-policy-portal.md) eller [Azure PowerShell](../../governance/policy/assign-policy-powershell.md)
 
@@ -458,4 +461,5 @@ Lär dig hur du tilldelar principer med hjälp av [Azure Portal](../../governanc
 - Få mer information om hur du [återställer en databas till en tidpunkt med hjälp av PowerShell](scripts/restore-database-powershell.md).
 - Information om hur du konfigurerar, hanterar och återställer från långsiktig kvarhållning av automatiserade säkerhets kopieringar i Azure Blob Storage med hjälp av Azure Portal finns i [Hantera långsiktig kvarhållning av säkerhets kopior med hjälp av Azure Portal](long-term-backup-retention-configure.md).
 - Information om hur du konfigurerar, hanterar och återställer från långsiktig kvarhållning av automatiserade säkerhets kopieringar i Azure Blob Storage med hjälp av PowerShell finns i [Hantera långsiktig kvarhållning av säkerhets kopior med hjälp av PowerShell](long-term-backup-retention-configure.md).
+- Om du vill lära dig allt om lagrings förbrukning i Azure SQL kan du läsa mer i avsnittet om att [säkerhetskopiera lagring på hanterade instanser](https://aka.ms/mi-backup-explained).
 - Information om hur du finjusterar lagring av säkerhets kopior och kostnader för Azure SQL-hanterad instans finns i [finjustera lagrings kostnader för säkerhets kopiering på den hanterade instansen](https://aka.ms/mi-backup-tuning).

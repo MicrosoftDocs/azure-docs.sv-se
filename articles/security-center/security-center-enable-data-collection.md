@@ -7,19 +7,19 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099428"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561270"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurera automatisk etablering för agenter och tillägg från Azure Security Center
 
-Security Center samlar in data från dina resurser med hjälp av relevanta agenter eller tillägg för den resursen och den typ av data insamling som du har aktiverat. Använd precedures nedan för att se till att din resurs har den här artikeln som beskriver hur du konfigurerar automatisk etablering av den Log Analytics agenten och andra agenter och tillägg som används av Azure Security Center
+Azure Security Center samlar in data från dina resurser med hjälp av relevanta agenter eller tillägg för den resursen och den typ av data insamling som du har aktiverat. Använd procedurerna nedan för att se till att dina resurser har de nödvändiga agenter och tillägg som används av Security Center.
 
 ## <a name="prerequisites"></a>Förutsättningar
-Du måste ha en prenumeration på Microsoft Azure för att komma igång med Security Center. Om du inte har någon prenumeration kan du registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
+Du måste ha en prenumeration på Microsoft Azure för att komma igång med Security Center. Om du inte har någon prenumeration kan du registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -35,7 +35,9 @@ Du måste ha en prenumeration på Microsoft Azure för att komma igång med Secu
 
 Security Center samlar in data från dina virtuella Azure-datorer, skalnings uppsättningar för virtuella datorer, IaaS behållare och icke-Azure (inklusive lokala) datorer för att övervaka säkerhets problem och hot. 
 
-Data insamling krävs för att ge insyn i saknade uppdateringar, felkonfigurerade OS-säkerhetsinställningar, Endpoint Protection-status och hälso-och hot skydd. Data insamling behövs bara för beräknings resurser (virtuella datorer, skalnings uppsättningar för virtuella datorer, IaaS behållare och datorer som inte är Azure-datorer). Du kan dra nytta av Azure Security Center även om du inte etablerar agenter. du kommer dock att ha begränsad säkerhet och de funktioner som anges ovan stöds inte.  
+Data insamling krävs för att ge insyn i saknade uppdateringar, felkonfigurerade OS-säkerhetsinställningar, Endpoint Protection-status och hälso-och hot skydd. Data insamling krävs bara för beräknings resurser, till exempel virtuella datorer, skalnings uppsättningar för virtuella datorer, IaaS behållare och datorer som inte är Azure-datorer. 
+
+Du kan dra nytta av Azure Security Center även om du inte etablerar agenter. Du har dock begränsad säkerhet och de funktioner som anges ovan stöds inte.  
 
 Data samlas in med:
 
@@ -51,7 +53,7 @@ Alla agenter och tillägg som beskrivs på den här sidan *kan* installeras manu
 Vi rekommenderar att du aktiverar automatisk etablering, men den är inaktive rad som standard.
 
 ## <a name="how-does-auto-provisioning-work"></a>Hur fungerar automatisk etablering?
-Security Center inställningarna för automatisk etablering har en växling för varje typ av tillägg som stöds. När du aktiverar automatisk etablering av ett tillägg tilldelar du lämplig **distribution om det inte finns** någon princip för att se till att tillägget är etablerad på alla befintliga och framtida resurser av den typen.
+Security Center inställningarna för automatisk etablering har en växling för varje typ av tillägg som stöds. När du aktiverar automatisk etablering av ett tillägg tilldelar du lämplig **distribution om principen inte finns** . Med den här princip typen ser du till att tillägget har allokerats på alla befintliga och framtida resurser av den typen.
 
 > [!TIP]
 > Läs mer om Azure Policy effekter, inklusive distribuera om de inte finns i [förstå Azure policys effekter](../governance/policy/concepts/effects.md).
@@ -282,4 +284,4 @@ Så här inaktiverar du automatisk etablering av en agent:
 
 
 ## <a name="next-steps"></a>Nästa steg
-Den här sidan förklaras hur du aktiverar automatisk etablering för Log Analytics agent och andra Security Center tillägg. Det beskrivs också hur du definierar en Log Analytics arbets yta där insamlade data ska lagras. Båda åtgärderna krävs för att aktivera data insamling. Om du lagrar data i Log Analytics, oavsett om du använder en ny eller befintlig arbets yta, kan ytterligare kostnader för data lagring uppstå. Information om priser i din valuta och enligt din region finns [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/).
+Den här sidan förklaras hur du aktiverar automatisk etablering för Log Analytics agent och andra Security Center tillägg. Det beskrivs också hur du definierar en Log Analytics arbets yta där insamlade data ska lagras. Båda åtgärderna krävs för att aktivera data insamling. Om du lagrar data i Log Analytics, oavsett om du använder en ny eller befintlig arbets yta, kan det uppstå fler avgifter för data lagring. Information om priser i din valuta och enligt din region finns [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/).

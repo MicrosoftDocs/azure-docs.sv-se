@@ -1,5 +1,5 @@
 ---
-title: Instrument panel för partner Center på den kommersiella Marketplace-analys, Microsoft AppSource och Azure Marketplace
+title: Instrument panel för partner Center-beställning i kommersiell Marketplace-analys | Microsoft AppSource och Azure Marketplace
 description: Lär dig hur du får åtkomst till analys rapporter om dina kommersiella Marketplace-erbjudanden i ett grafiskt och nedladdnings Bart format.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: ed12e470f3f3d8c1035c1e4e2e0fa7a3b33e2369
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955033"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561389"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Analys av orderinstrumentpanelen på kommersiell marknadsplats
 
@@ -111,32 +111,32 @@ Tabellen Order information visar en numrerad lista över de 1 000 främsta order
 - Använd filter i tabellen **Orderspecifikationer** om du bara vill visa de data du är intresse rad av. Filtrera efter land/region, typ av Azure-licens, licens typ för kommersiell Marketplace, erbjudande typ, order status, kostnads fria historik, prenumerations-ID för handels-Marketplace, kund-ID och företags namn.
 - När en order har köpts av en skyddad kund, maskeras information i **detaljerade data om ordern** (* * * * * * * * * * * *).
 
-**_Tabell 1: ord lista med data termer_* _
+***Tabell 1: ord lista med data termer***
 
-| Kolumnnamn | Attributnamn | Definition |
-| ------------ | ------------- | ------------- |
-| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. För infrastruktur erbjudanden är det här kundens GUID för Azure-prenumerationen. För SaaS-erbjudanden visas detta som nollor eftersom SaaS-inköp inte kräver en Azure-prenumeration. |
-| MonthStartDate | Månadens start datum | Månadens start datum representerar inköps månad. |
-| Erbjudandetyp | Erbjudandetyp | Typ av erbjudande för kommersiella marknads platser. |
-| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanal. Möjliga värden är:<ul><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
-| Marketplace-licens typ | Marketplace-licens typ | Fakturerings metoden för det kommersiella Marketplace-erbjudandet. De olika värdena är:<ul><li>Debiteras via Azure</li><li>Ta med din egen licens</li><li>Kostnadsfri</li><li>Microsoft as åter försäljare</li></ul> |
-| SKU | SKU | Planen som är associerad med erbjudandet |
-| Kund land | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. |
-| Är för hands version av SKU | Är för hands version av SKU | Värdet meddelar dig om du har taggat SKU som "Preview". Värdet är "Ja" om SKU: n har taggats enligt detta och bara Azure-prenumerationer som har auktoriserats av dig kan distribuera och använda den här avbildningen. Värdet är "nej" om SKU: n inte har identifierats som "för hands version". |
-| Order-ID | Order-ID | Den unika identifieraren för kund ordern för din kommersiella Marketplace-tjänst. Användnings erbjudanden för virtuella datorer är inte kopplade till någon order. |
-| Orderkvantitet | Orderkvantitet | Antal till gångar som är kopplade till order-ID för aktiva beställningar |
-| Moln instans namn | Moln instans namn | Den Microsoft Cloud där en VM-distribution ägdes. |
-| Är ny kund | Är ny kund | Värdet identifierar om en ny kund har köpt en eller flera av dina erbjudanden för första gången. Värdet blir "Ja" om det är inom samma kalender månad för "inköps datum". Värdet blir "nej" om kunden har köpt något av dina erbjudanden före den kalender månad som rapporter ATS. |
-| Orderstatus | Orderstatus | Status för en kommersiell Marketplace-order vid den tidpunkt då data senast uppdaterades. |
-| Annullera datum för beställning | Annullera datum för beställning | Det datum då den kommersiella Marketplace-ordern annullerades. |
-| Kund företags namn | Kund företags namn | Företags namnet som tillhandahålls av kunden. Namnet får inte vara detsamma som staden i en kunds Azure-prenumeration. |
-| Inköps datum för beställning | Inköps datum för beställning | Det datum då den kommersiella Marketplace-ordern skapades. |
-| Erbjudandets namn | Erbjudandets namn | Namnet på den kommersiella Marketplace-erbjudandet. |
-| Slutdatum för utvärdering | Slutdatum för utvärdering | Det datum då utvärderings perioden för den här ordern upphör eller har avslut ATS. |
-| Kund-ID | Kund-ID | Den unika identifierare som tilldelats till en kund. En kund kan ha noll eller flera prenumerationer på Azure Marketplace. |
-| ID för fakturerings konto | ID för fakturerings konto | Identifierare för det konto som faktureringen skapas på. Mappa _ *fakturerings konto-ID** till **CustomerID** för att ansluta din rapport över utbetalnings transaktion till kund-, order-och användnings rapporter. |
-| AssetCount | Antal till gångar | Antalet till gångar som är kopplade till order-ID: t. |
-||||
+| Kolumn namn i<br>användargränssnitt | Attributnamn | Definition | Kolumn namn i programmering<br>åtkomst rapporter |
+| ------------ | ------------- | ------------- | ------------- |
+| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. För infrastruktur erbjudanden är det här kundens GUID för Azure-prenumerationen. För SaaS-erbjudanden visas detta som nollor eftersom SaaS-inköp inte kräver en Azure-prenumeration. | Prenumerations-ID för Marketplace |
+| MonthStartDate | Månadens start datum | Månadens start datum representerar inköps månad. Formatet är åååå-mm-dd. | MonthStartDate |
+| Erbjudandetyp | Erbjudandetyp | Typ av erbjudande för kommersiella marknads platser. | OfferType |
+| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanal. Möjliga värden är:<ul><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> | AzureLicenseType |
+| Marketplace-licens typ | Marketplace-licens typ | Fakturerings metoden för det kommersiella Marketplace-erbjudandet. De olika värdena är:<ul><li>Debiteras via Azure</li><li>Ta med din egen licens</li><li>Kostnadsfri</li><li>Microsoft as åter försäljare</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Planen som är associerad med erbjudandet | SKU |
+| Kund land | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. | CustomerCountry |
+| Är för hands version av SKU | Är för hands version av SKU | Värdet meddelar dig om du har taggat SKU som "Preview". Värdet är "Ja" om SKU: n har taggats enligt detta och bara Azure-prenumerationer som har auktoriserats av dig kan distribuera och använda den här avbildningen. Värdet är "nej" om SKU: n inte har identifierats som "för hands version". | IsPreviewSKU |
+| Order-ID | Order-ID | Den unika identifieraren för kund ordern för din kommersiella Marketplace-tjänst. Användnings erbjudanden för virtuella datorer är inte kopplade till någon order. | OrderId |
+| Orderkvantitet | Orderkvantitet | Antal till gångar som är kopplade till order-ID för aktiva beställningar | OrderQuantity |
+| Moln instans namn | Moln instans namn | Den Microsoft Cloud där en VM-distribution ägdes. | CloudInstanceName |
+| Är ny kund | Är ny kund | Värdet identifierar om en ny kund har köpt en eller flera av dina erbjudanden för första gången. Värdet blir "Ja" om det är inom samma kalender månad för "inköps datum". Värdet blir "nej" om kunden har köpt något av dina erbjudanden före den kalender månad som rapporter ATS. | IsNewCustomer |
+| Orderstatus | Orderstatus | Status för en kommersiell Marketplace-order vid den tidpunkt då data senast uppdaterades. | OrderStatus |
+| Annullera datum för beställning | Annullera datum för beställning | Det datum då den kommersiella Marketplace-ordern annullerades. | OrderCancelDate |
+| Kund företags namn | Kund företags namn | Företags namnet som tillhandahålls av kunden. Namnet får inte vara detsamma som staden i en kunds Azure-prenumeration. | CustomerCompanyName |
+| Inköps datum för beställning | Inköps datum för beställning | Det datum då den kommersiella Marketplace-ordern skapades. Formatet är åååå-mm-dd. | OrderPurchaseDate |
+| Erbjudandets namn | Erbjudandets namn | Namnet på den kommersiella Marketplace-erbjudandet. | OfferName |
+| Slutdatum för utvärdering | Slutdatum för utvärdering | Det datum då utvärderings perioden för den här ordern upphör eller har avslut ATS. | TrialEndDate |
+| Kund-ID | Kund-ID | Den unika identifierare som tilldelats till en kund. En kund kan ha noll eller flera prenumerationer på Azure Marketplace. | CustomerId |
+| ID för fakturerings konto | ID för fakturerings konto | Identifierare för det konto som faktureringen skapas på. Mappa **fakturerings konto-ID: t** till **CustomerID** för att ansluta din rapport över utbetalnings transaktion till kund-, order-och användnings rapporterna. | BillingAccountId |
+| AssetCount | Antal till gångar | Antalet till gångar som är kopplade till order-ID: t. | Inaktuell |
+|||||
 
 ### <a name="orders-page-filters"></a>Sid filter för order
 

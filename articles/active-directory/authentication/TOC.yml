@@ -55,7 +55,7 @@
         - name: Licenser
           href: concept-mfa-licensing.md
         - name: MFA för Office 365
-          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: VANLIGA FRÅGOR OCH SVAR
           href: multi-factor-authentication-faq.md
     - name: Lösenordsskydd

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650982"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609914"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Skydda Microsoft 365 från lokala attacker
 
@@ -69,7 +69,7 @@ För att adressera de hot vektorer som beskrivs tidigare rekommenderar vi att du
 
     Dessa administratörs konton är begränsade – Använd-konton. *Inga lokala konton måste ha administratörs behörighet i Microsoft 365.* 
 
-    Mer information finns i [Översikt över Microsoft 365 administratörs roller](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide). Se även [roller för Microsoft 365 i Azure AD](../roles/m365-workload-docs.md).
+    Mer information finns i [Översikt över Microsoft 365 administratörs roller](/microsoft-365/admin/add-users/about-admin-roles). Se även [roller för Microsoft 365 i Azure AD](../roles/m365-workload-docs.md).
 
 1. **Hantera enheter från Microsoft 365.** Använd Azure AD Join och molnbaserad hantering av mobila enheter (MDM) för att ta bort beroenden i din lokala infrastruktur för enhets hantering. Dessa beroenden kan kompromettera enhets-och säkerhets kontroller.
 
@@ -151,7 +151,7 @@ När du använder för att etablera hybrid konton använder Azure-AD-från-Cloud
 
 Med moln grupper kan du frikoppla ditt samarbete och få åtkomst från din lokala infrastruktur.
 
-* **Samarbete**: Använd Microsoft 365 grupper och Microsoft Teams för modern samarbete. Inaktivera lokala distributions listor och [Uppgradera distributions listor till Microsoft 365 grupper i Outlook](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **Samarbete**: Använd Microsoft 365 grupper och Microsoft Teams för modern samarbete. Inaktivera lokala distributions listor och [Uppgradera distributions listor till Microsoft 365 grupper i Outlook](/office365/admin/manage/upgrade-distribution-lists).
 
 * **Åtkomst**: Använd Azure AD-säkerhetsgrupper eller Microsoft 365 grupper för att ge åtkomst till program i Azure AD.
 * **Office 365-licensiering**: Använd gruppbaserad licensiering för att etablera till Office 365 med hjälp av grupper med enbart moln. Med den här metoden frikopplas kontroll av grupp medlemskap från lokal infrastruktur.
@@ -203,9 +203,9 @@ Använd villkorlig åtkomst för Azure AD för att tolka signaler och använda d
 
 * Använd villkorlig åtkomst för att [blockera bakåtkompatibla autentiseringsprotokoll](../conditional-access/howto-conditional-access-policy-block-legacy.md) närhelst det är möjligt. Du kan dessutom inaktivera äldre autentiseringsprotokoll på program nivå genom att använda en programspecifik konfiguration.
 
-   Mer information finns i [bakåtkompatibla autentiseringsprotokoll](../fundamentals/auth-sync-overview.md). Eller se information om [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) och [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+   Mer information finns i [bakåtkompatibla autentiseringsprotokoll](../fundamentals/auth-sync-overview.md). Eller se information om [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) och [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant).
 
-* Implementera de rekommenderade [konfigurationerna för identitets-och enhets åtkomst](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide).
+* Implementera de rekommenderade [konfigurationerna för identitets-och enhets åtkomst](/microsoft-365/security/office-365-security/identity-access-policies).
 
 * Om du använder en version av Azure AD som inte har villkorlig åtkomst kontrollerar du att du använder [standardinställningarna för Azure AD-säkerhet](../fundamentals/concept-fundamentals-security-defaults.md).
 

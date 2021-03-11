@@ -4,12 +4,12 @@ description: Azure Instant Restore-funktion och vanliga frågor och svar om VM b
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014456"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618584"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Få förbättrad säkerhets kopiering och återställning av prestanda med Azure Backup omedelbar återställnings funktion
 
@@ -112,7 +112,13 @@ Den nya modellen tillåter inte borttagning av återställnings punkten (– niv
 
 ### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Varför finns min ögonblicks bild fortfarande kvar, även efter den angivna kvarhållningsperioden i säkerhets kopierings policyn?
 
-Om återställnings punkten har en ögonblicks bild och det är den senaste återställnings punkten finns den kvar tills nästa lyckade säkerhets kopiering. Detta sker enligt den angivna GC-principen (skräp insamlingen). Det innebär att det alltid finns minst en senaste återställnings punkt, vilket innebär att alla efterföljande säkerhets kopieringar inte kan utföras på grund av ett problem på den virtuella datorn. I normala fall rensas återställnings punkter högst 24 timmar efter att de gått ut.
+Om återställnings punkten har en ögonblicks bild och det är den senaste återställnings punkten finns den kvar tills nästa lyckade säkerhets kopiering. Detta sker enligt den angivna GC-principen (skräp insamlingen). Det innebär att det alltid finns minst en senaste återställnings punkt, vilket innebär att alla efterföljande säkerhets kopieringar inte kan utföras på grund av ett problem på den virtuella datorn. I normala fall rensas återställnings punkter högst 24 timmar efter att de gått ut. I sällsynta fall kan det finnas en eller två ytterligare ögonblicks bilder utifrån den kraftigare belastningen på skräp insamlaren (GC).
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>Varför visas fler ögonblicks bilder än min bevarande princip?
+
+I ett scenario där en bevarande princip anges som "1" kan du hitta två ögonblicks bilder. Detta innebär att det alltid finns minst en senaste återställnings punkt, vilket innebär att alla efterföljande säkerhets kopieringar inte kan utföras på grund av ett problem på den virtuella datorn. Detta kan orsaka förekomst av två ögonblicks bilder.<br></br>Om principen till exempel är för ögonblicks bilder av "n" kan du hitta "n + 1" ögonblicks bilder vid en tidpunkt. Du kan även hitta "n + 1 + 2" ögonblicks bilder om det finns en fördröjning i skräp insamling. Detta kan inträffa vid sällsynta tillfällen när:
+- Du rensar ögonblicks bilder, som är tidigare kvarhållning.
+- Skräp insamlaren (GC) i Server delen är hårt belastad.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Jag behöver inte omedelbar återställnings funktion. Kan den inaktive ras?
 
@@ -120,5 +126,5 @@ Funktionen omedelbar återställning är aktive rad för alla och kan inte inakt
 
 ### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Är det säkert att starta om den virtuella datorn under överförings processen (vilket kan ta flera timmar)? Startar om den virtuella datorns avbrott eller saktar ned överföringen?
 
-Ja, det är säkert och det är inte säkert att data överförings hastigheten påverkas.
+Ja, det är säkert och det finns ingen inverkan på data överförings hastigheten.
 

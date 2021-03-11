@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 113c8adccc5e8b1c3321569f32ca3fb33423ccd8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341574"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562885"
 ---
 # <a name="access-built-in-metrics"></a>Komma åt inbyggda mått
 
@@ -44,13 +44,15 @@ Få åtkomst till mått från värden genom att exponera och mappa måtten porta
 Välj olika och unika värd port nummer om du mappar både edgeHub och edgeAgents Mät slut punkter.
 
 > [!NOTE]
-> Om du vill inaktivera mått ställer du in `MetricsEnabled` miljövariabeln på `false` för **edgeAgent**.
+> Miljövariabeln `httpSettings__enabled` ska inte anges för att `false` inbyggda mått ska vara tillgängliga för insamling.
+>
+> Miljövariabler som kan användas för att inaktivera mått visas i [Azure/iotedge lagrings platsen-dokumentet](https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md).
 
 ## <a name="available-metrics"></a>Tillgängliga mått
 
 Mått innehåller taggar som hjälper dig att identifiera vilken typ av mått som samlas in. Alla mått innehåller följande Taggar:
 
-| Tagga | Beskrivning |
+| Tagg | Beskrivning |
 |-|-|
 | iothub | Den hubb som enheten pratar med |
 | edge_device | Den aktuella enhetens ID |
@@ -62,7 +64,7 @@ Quantiles som tillhandahålls för det inbyggda histogrammet och sammanfattnings
 
 **EdgeHub** -modulen genererar följande mått:
 
-| Namn | Dimensioner | Beskrivning |
+| Name | Dimensioner | Beskrivning |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (åtgärds källa)<br> `id` (modul-ID) | Typ: räknare<br> Totalt antal GetTwin-anrop |
 | `edgehub_messages_received_total` | `route_output` (utdata som har skickat meddelande)<br> `id` | Typ: räknare<br> Totalt antal meddelanden som tagits emot från klienter |
@@ -85,7 +87,7 @@ Quantiles som tillhandahålls för det inbyggda histogrammet och sammanfattnings
 
 **EdgeAgent** -modulen genererar följande mått:
 
-| Namn | Dimensioner | Beskrivning |
+| Name | Dimensioner | Beskrivning |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Typ: mätare<br> Hur lång tid modulen angavs i distributionen och var i körnings tillstånd |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Typ: mätare<br> Hur lång tid modulen angavs i distributionen |

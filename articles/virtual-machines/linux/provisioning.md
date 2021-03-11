@@ -2,19 +2,20 @@
 title: Översikt över Linux-etablering
 description: Översikt över hur du kan ta med dina virtuella Linux-avbildningar eller skapa nya avbildningar som ska användas i Azure.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080156"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563227"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM-etablering
 När du skapar en virtuell dator från en generaliserad avbildning (delat avbildnings Galleri eller hanterad avbildning) gör kontroll planet att du kan skapa en virtuell dator och skicka parametrar och inställningar till den virtuella datorn. Detta kallas VM- *etablering*. Under etableringen gör plattformen nödvändig virtuell dator skapa parameter värden (hostname, användar namn, lösen ord, SSH-nycklar, customData) som är tillgängliga för den virtuella datorn när den startas. 
@@ -70,10 +71,10 @@ Informations flödet från plattformen till agenten sker via två kanaler:
 
 ## <a name="azure-provisioning-agent-requirements"></a>Krav för Azure Provisioning-agenten
 Linux-agenten och Cloud-Init är beroende av vissa system paket för att kunna fungera korrekt:
-- Python 2.6 +
-- OpenSSL 1.0 +
-- OpenSSH 5.3 +
-- Fil Systems verktyg: `sfdisk` , `fdisk` , `mkfs` , `parted`
+- Python 2.6+
+- OpenSSL 1.0+
+- OpenSSH 5.3+
+- Filsystemverktyg: `sfdisk`, `fdisk`, `mkfs`, `parted`
 - Lösen ords verktyg: chpasswd, sudo
 - Verktyg för text bearbetning: sed, grep
 - Nätverks verktyg: IP-Route

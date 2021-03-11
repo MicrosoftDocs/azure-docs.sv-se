@@ -7,14 +7,14 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 8dbde1f74c700e772823d61b3e35a464f9bbc17e
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 63daa7cda2f10448e9a0f8e250412137dc2af892
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120971"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563905"
 ---
-# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Snabb start: skapa en Redis Enterprise-cache (för hands version)
+# <a name="quickstart-create-a-redis-enterprise-cache"></a>Snabb start: skapa en Redis företags-cache
 
 Azure cache för Redis "företags nivåer ger fullständigt integrerat och hanterade [Redis Enterprise](https://redislabs.com/redis-enterprise/) på Azure. De är för närvarande tillgängliga som för hands version. Det finns två nya nivåer i den här förhands granskningen:
 * Enterprise, som använder flyktigt minne (DRAM) på en virtuell dator för att lagra data

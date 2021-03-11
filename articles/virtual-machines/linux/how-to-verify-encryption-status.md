@@ -2,18 +2,18 @@
 title: Verifiera krypterings status för Linux – Azure Disk Encryption
 description: Den här artikeln innehåller anvisningar om hur du verifierar krypterings statusen från plattforms-och OS-nivåerna.
 author: kailashmsft
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 04654672cc5806465ec9f75b695772dcb2037eab
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676826"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564143"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Verifiera krypterings status för Linux 
 
@@ -29,7 +29,7 @@ Det här scenariot gäller för Azure Disk Encryption dubbla pass och ett enda p
 >[!NOTE] 
 >Vi använder variabler i artikeln. Ersätt värdena enligt detta.
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 I Azure Portal, i avsnittet **tillägg** , väljer du Azure Disk Encryption tillägget i listan. Informationen för **status meddelandet** anger aktuell krypterings status:
 

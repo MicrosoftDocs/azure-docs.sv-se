@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: f3c9f8f78f17153c3d2eb7b014cf616253b3c0c9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523948"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618261"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Hantera den lokala hanteringskonsolen
 
@@ -415,7 +415,21 @@ Följande procedur beskriver hur du uppdaterar program versionen för den lokala
 
 1. Välj den fil som du laddade ned från sidan Defender för IoT- **uppdateringar** .
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="mail-server-settings"></a>Inställningar för e-postserver
+
+Definiera SMTP-inställningar för e-postservern för den lokala hanterings konsolen.
+
+För att definiera:
+
+1. Logga in på CLI för lokal hantering med administratörs behörighet.
+1. Skriv ```nano /var/cyberx/properties/remote-interfaces.properties```.
+1. Välj Retur. Följande prompter visas.
+```mail.smtp_server= ```
+```mail.port=25 ```
+```mail.sender=```
+1. Ange SMTP-servernamnet och avsändarens namn och välj RETUR.
+
+## <a name="see-also"></a>Se även
 
 [Hantera sensorer från hanterings konsolen](how-to-manage-sensors-from-the-on-premises-management-console.md)
 
