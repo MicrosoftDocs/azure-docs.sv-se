@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 19ae5dc24e0a08548f4914114c9c0a6be65f4f0b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d2fe8f32ec854e1e6db644a039e6a249cfbddcaa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096085"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012895"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Använd IoT Hub meddelanderoutning för att skicka meddelanden från enheten till molnet till olika slut punkter
 
@@ -126,7 +126,7 @@ Du kan aktivera/inaktivera återställnings vägen på bladet Azure Portal->medd
 
 ## <a name="non-telemetry-events"></a>Händelser som inte är telemetri
 
-Förutom telemetri möjliggör meddelanderoutning även sändning av enhets dubbla ändrings händelser, livs cykel händelser för enheter och digitala dubbla ändrings händelser. Om en väg till exempel skapas med data källa inställt på **enhet dubbla ändrings händelser** skickar IoT Hub meddelanden till slut punkten som innehåller ändringen i enheten. På liknande sätt skickar IoT Hub ett meddelande som anger om enheten har tagits bort eller skapats, om en väg skapas med data källa inställt på **enhetens livs cykel händelser**. Som en del av [Azure IoT plug and Play](../iot-pnp/overview-iot-plug-and-play.md)kan en utvecklare skapa vägar med data källa inställt på **digitala dubbla ändrings händelser** och IoT Hub skickar meddelanden när en digital enhets [egenskap](../iot-pnp/iot-plug-and-play-glossary.md) har angetts eller ändrats, en [digital](../iot-pnp/iot-plug-and-play-glossary.md) enhet byts ut eller när en ändrings händelse inträffar för den underliggande enheten.
+Förutom telemetri möjliggör meddelanderoutning även sändning av enhets dubbla ändrings händelser, livs cykel händelser för enheter och digitala dubbla ändrings händelser. Om en väg till exempel skapas med data källa inställt på **enhet dubbla ändrings händelser** skickar IoT Hub meddelanden till slut punkten som innehåller ändringen i enheten. På liknande sätt skickar IoT Hub ett meddelande som anger om enheten har tagits bort eller skapats, om en väg skapas med data källa inställt på **enhetens livs cykel händelser**. Som en del av [Azure IoT plug and Play](../iot-pnp/overview-iot-plug-and-play.md)kan en utvecklare skapa vägar med data källa inställt på **digitala dubbla ändrings händelser** och IoT Hub skickar meddelanden när en digital enhets egenskap har angetts eller ändrats, en digital enhet byts ut eller när en ändrings händelse inträffar för den underliggande enheten.
 
 [IoT Hub integreras också med Azure Event Grid](iot-hub-event-grid.md) för att publicera enhets händelser som stöder real tids integrering och automatisering av arbets flöden baserat på dessa händelser. Se viktiga [skillnader mellan meddelanderoutning och event Grid](iot-hub-event-grid-routing-comparison.md) för att se vilka som fungerar bäst för ditt scenario.
 

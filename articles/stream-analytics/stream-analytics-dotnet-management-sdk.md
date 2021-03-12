@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
+ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012639"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232893"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Hantering av .NET SDK: Konfigurera och kör analys jobb med hjälp av Azure Stream Analytics API för .NET
 Lär dig hur du konfigurerar och kör analys jobb med hjälp av Stream Analytics API för .NET med hjälp av Management .NET SDK. Konfigurera ett projekt, skapa indata och utdata, transformeringar och start-och stopp jobb. För dina analys jobb kan du strömma data från Blob Storage eller från en Event Hub.
@@ -207,6 +207,12 @@ Metoden **TestConnection** testar om Stream Analyticss jobbet kan ansluta till I
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+Resultatet av TestConnection-anropet är ett *ResourceTestResult* -objekt som innehåller två egenskaper:
+
+- *status*: det kan vara en av följande strängar: ["TestNotAttempted", "TestSucceeded", "TestFailed"]
+- *fel*: det är av typen ErrorResponse som innehåller följande egenskaper:
+   - *Code*: en obligatorisk egenskap av typen sträng. Värdet är standard system .net. HttpStatusCode tas emot vid testning.
+   - *meddelande*: en obligatorisk egenskap av typen sträng som representerar felet. 
 
 ## <a name="create-a-stream-analytics-output-target"></a>Skapa ett Stream Analytics utgående mål
 Att skapa ett utgående mål liknar att skapa en indatakälla för Stream Analytics. Precis som indata källor är mål för utdata knutna till ett speciellt jobb. Om du vill använda samma utgående mål för olika jobb måste du anropa metoden igen och ange ett annat jobbnamn.

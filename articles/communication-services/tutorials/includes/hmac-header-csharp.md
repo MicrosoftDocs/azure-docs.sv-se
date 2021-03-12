@@ -1,6 +1,6 @@
 ---
 title: 'Signera en HTTP-begäran med C #'
-description: Det här är C#-versionen av signering av en HTTP-begäran med en HMAC-signatur för kommunikations tjänster.
+description: I den här självstudien beskrivs C#-versionen av signering av en HTTP-begäran med en HMAC-signatur för Azure Communication Services.
 author: alexandra142
 manager: soricos
 services: azure-communication-services
@@ -8,49 +8,50 @@ ms.author: apistrak
 ms.date: 01/15/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3c1b56f81e5164bbdfa94fdaeca5f5f1f55b3b51
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: c8cf2eb091aa7ab70fa6dba1a8b1f56bea1a00bf
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551301"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631359"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du se till att:
-- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Installera [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
-- Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../quickstarts/create-communication-resource.md). Du måste registrera din **resourceEndpoint** och  **resourceAccessKey** för den här självstudien.
 
-
+- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Installera [Visual Studio](https://visualstudio.microsoft.com/downloads/).
+- Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication Services-resurs](../../quickstarts/create-communication-resource.md). Du måste registrera din **resourceEndpoint** och **resourceAccessKey** för den här självstudien.
 
 ## <a name="sign-an-http-request-with-c"></a>Signera en HTTP-begäran med C #
-Autentisering med åtkomst nycklar använder en delad hemlig nyckel för att generera en HMAC-signatur för varje HTTP-begäran. Den här signaturen genereras med SHA256-algoritmen och skickas i `Authorization` rubriken med `HMAC-SHA256` schemat. Exempel:
+
+Autentisering med åtkomst nycklar använder en delad hemlig nyckel för att generera en HMAC-signatur för varje HTTP-begäran. Den här signaturen genereras med SHA256-algoritmen och skickas i `Authorization` rubriken med hjälp av `HMAC-SHA256` schemat. Exempel:
 
 ```
 Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"
 ```
 
-`hmac-sha256-signature`Består av: 
+`hmac-sha256-signature`Består av:
 
-- HTTP-verb (t. ex. `GET` eller `PUT` )
+- HTTP-verb (till exempel `GET` eller `PUT` )
 - Sökväg för HTTP-begäran
 - Datum
 - Värd
 - x-MS-Content-SHA256
 
-## <a name="setting-up"></a>Konfigurera
-Följande steg beskriver hur du skapar ett Authorization-huvud:
+## <a name="setup"></a>Installation
+
+Följande steg beskriver hur du skapar ett Authorization-huvud.
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `SignHmacTutorial` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: **program.cs**.
+I ett konsol fönster, till exempel cmd, PowerShell eller bash, använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `SignHmacTutorial` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: **program.cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial
 ```
 
-Ändra katalogen till den nya app-mappen och Använd `dotnet build` kommandot för att kompilera ditt program.
+Ändra katalogen till mappen nyligen skapade appar. Använd `dotnet build` kommandot för att kompilera ditt program.
 
 ```console
 cd SignHmacTutorial
@@ -59,13 +60,13 @@ dotnet build
 
 ## <a name="install-the-package"></a>Installera paketet
 
-Installera paketet `Newtonsoft.Json` som används för att serialisera brödtext:
+Installera det paket `Newtonsoft.Json` som används för att serialisera brödtext.
 
 ```console
 dotnet add package Newtonsoft.Json
 ```
 
-Uppdatera `Main` metod deklarationen för att stödja asynkron kod. Använd följande kod för att börja:
+Uppdatera `Main` metod deklarationen för att stödja asynkron kod. Använd följande kod för att börja.
 
 ```csharp
 using System;
@@ -82,21 +83,22 @@ namespace SignHmacTutorial
         static async Task Main(string[] args)
         {
             Console.WriteLine("Azure Communication Services - Sign an HTTP request Tutorial");
-            // Tutorial code goes here
+            // Tutorial code goes here.
         }
     }
 }
 
 ```
+
 ## <a name="create-a-request-message"></a>Skapa ett begär ande meddelande
 
-I det här exemplet ska vi signera en begäran om att skapa en ny identitet med hjälp av kommunikations tjänsternas API för autentisering (version `2021-03-07` )
+I det här exemplet ska vi signera en begäran om att skapa en ny identitet med hjälp av API: et för autentisering av kommunikations tjänster (version `2021-03-07` ).
 
-Lägg till följande kod i- `Main` metoden:
+Lägg till följande kod i metoden `Main`.
 
 ```csharp
 string resourceEndpoint = "resourceEndpoint";
-//Create an uri you are going to call
+//Create a uri you are going to call.
 var requestUri = new Uri($"{resourceEndpoint}/identities?api-version=2021-03-07");
 //Endpoint identities?api-version=2021-03-07 accepts list of scopes as a body
 var body = new[] { "chat" }; 
@@ -109,7 +111,7 @@ var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri)
 
 Ersätt `resourceEndpoint` med ditt verkliga resurs slut punkts värde.
 
-## <a name="create-content-hash"></a>Skapa innehålls-hash
+## <a name="create-a-content-hash"></a>Skapa en innehålls-hash
 
 Innehålls-hashen är en del av din HMAC-signatur. Använd följande kod för att beräkna hash för innehållet. Du kan lägga till den här metoden i `Progam.cs` under `Main` metoden.
 
@@ -125,6 +127,7 @@ static string ComputeContentHash(string content)
 ```
 
 ## <a name="compute-a-signature"></a>Beräkna en signatur
+
 Använd följande kod för att skapa en metod för att beräkna en HMAC-signatur.
 
 ```csharp
@@ -140,48 +143,49 @@ Använd följande kod för att skapa en metod för att beräkna en HMAC-signatur
 }
 ```
 
-Ersätt `resourceAccessKey` med åtkomst nyckeln till din riktiga Azure Communication Services-resurs.
+Ersätt `resourceAccessKey` med en åtkomst nyckel för din Real Communication Services-resurs.
 
 ## <a name="create-an-authorization-header-string"></a>Skapa en huvud sträng för auktorisering
 
-Nu ska vi skapa strängen som vi ska lägga till i vårt Authorization-huvud:
+Nu ska vi skapa strängen som vi ska lägga till i vårt Authorization-huvud.
 
-1. Beräkna en innehålls-hash
-2. Ange UTC-tidsstämpeln (Coordinated Universal Time)
-3. Förbered en sträng för att signera
-4. Beräkna signaturen
-5. Sammanfoga strängen som ska användas i Authorization-huvudet
+1. Beräkna en innehålls-hash.
+1. Ange UTC-tidsstämpeln (Coordinated Universal Time).
+1. Förbered en sträng för att signera.
+1. Beräkna signaturen.
+1. Sammanfoga strängen som ska användas i Authorization-huvudet.
  
-Lägg till följande kod i- `Main` metoden:
+Lägg till följande kod i metoden `Main`.
 
 ```csharp
-// Compute a content hash
+// Compute a content hash.
 var contentHash = ComputeContentHash(serializedBody);
-//Specify the Coordinated Universal Time (UTC) timestamp
+//Specify the Coordinated Universal Time (UTC) timestamp.
 var date = DateTimeOffset.UtcNow.ToString("r", CultureInfo.InvariantCulture);
-//Prepare a string to sign
+//Prepare a string to sign.
 var stringToSign = $"POST\n{requestUri.PathAndQuery}\n{date};{requestUri.Authority};{contentHash}";
-//Compute the signature
+//Compute the signature.
 var signature = ComputeSignature(stringToSign);
-//Concatenate the string, which will be used in authorization header
+//Concatenate the string, which will be used in the authorization header.
 var authorizationHeader = $"HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature={signature}";
 ```
 
 ## <a name="add-headers-to-requestmessage"></a>Lägg till rubriker i requestMessage
 
-Använd följande kod för att lägga till de obligatoriska rubrikerna i din `requestMessage` :
+Använd följande kod för att lägga till de obligatoriska rubrikerna i `requestMessage` .
 
 ```csharp
-//Add content hash header
+//Add a content hash header.
 requestMessage.Headers.Add("x-ms-content-sha256", contentHash);
-//add date header
+//Add a date header.
 requestMessage.Headers.Add("Date", date);
-//add Authorization header
+//Add an authorization header.
 requestMessage.Headers.Add("Authorization", authorizationHeader);
 ```
 
 ## <a name="test-the-client"></a>Testa klienten
-Anropa slut punkten med `HttpClient` och kontrol lera svaret.
+
+Anropa slut punkten genom att använda `HttpClient` och kontrol lera svaret.
 
 ```csharp
 HttpClient httpClient = new HttpClient

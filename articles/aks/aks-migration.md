@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526695"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609115"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrera till Azure Kubernetes service (AKS)
 
@@ -114,7 +114,7 @@ Tillstånds lös programmigrering är det enklaste fallet. Tillämpa dina resurs
 Planera noggrant migreringen av tillstånds känsliga program för att undvika data förlust eller oväntad stillestånds tid.
 
 Om du använder Azure Files kan du montera fil resursen som en volym i det nya klustret:
-* [Montera statisk Azure Files som en volym](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [Montera statisk Azure Files som en volym](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Om du använder Azure Managed Disks kan du bara montera disken om den inte är ansluten till någon virtuell dator:
 * [Montera statisk Azure-disk som en volym](./azure-disk-volume.md#mount-disk-as-volume)

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724514"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011637"
 ---
 # <a name="azure-built-in-roles"></a>Inbyggda roller i Azure
 
@@ -128,7 +128,7 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 > | [Schema register läsare (för hands version)](#schema-registry-reader-preview) | Läs och Visa lista över schema register grupper och scheman. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **Blockkedja** |  |  |
 > | [Blockchain för medlems Node (för hands version)](#blockchain-member-node-access-preview) | Tillåter åtkomst till blockchain-medlems noder | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
-> | **AI + maskininlärning** |  |  |
+> | **AI + maskin inlärning** |  |  |
 > | [Cognitive Services deltagare](#cognitive-services-contributor) | Gör att du kan skapa, läsa, uppdatera, ta bort och hantera nycklar för Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Cognitive Services Custom Vision deltagare](#cognitive-services-custom-vision-contributor) | Fullständig åtkomst till projektet, inklusive möjligheten att visa, skapa, redigera eller ta bort projekt. | c1ff6cc2-C111-46fe-8896-e0ef812ad9f3 |
 > | [Cognitive Services Custom Vision distribution](#cognitive-services-custom-vision-deployment) | Publicera, avpublicera eller exportera modeller. Distributionen kan visa projektet men kan inte uppdateras. | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
@@ -426,7 +426,7 @@ Gör att du kan hantera användar åtkomst till Azure-resurser. [Läs mer](rbac-
 }
 ```
 
-## <a name="compute"></a>Beräkning
+## <a name="compute"></a>Compute
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Klassisk virtuell dator deltagare
@@ -6702,7 +6702,7 @@ Låter dig läsa EventGrid händelse prenumerationer. [Läs mer](../event-grid/s
 
 ### <a name="fhir-data-contributor"></a>FHIR data deltagare
 
-Rollen ger användaren eller principen fullständig åtkomst till FHIR-data [Läs mer](../healthcare-apis/configure-azure-rbac.md)
+Rollen ger användaren eller principen fullständig åtkomst till FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6741,7 +6741,7 @@ Rollen ger användaren eller principen fullständig åtkomst till FHIR-data [Lä
 
 ### <a name="fhir-data-exporter"></a>FHIR data export
 
-Roll låter användare eller huvud användare läsa och exportera FHIR-data [Läs mer](../healthcare-apis/configure-azure-rbac.md)
+Roll låter användare eller huvud användare läsa och exportera FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6782,7 +6782,7 @@ Roll låter användare eller huvud användare läsa och exportera FHIR-data [Lä
 
 ### <a name="fhir-data-reader"></a>FHIR data läsare
 
-Roll låter användare eller huvud användare läsa FHIR-data [Läs mer](../healthcare-apis/configure-azure-rbac.md)
+Roll låter användare eller huvud användare läsa FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6821,7 +6821,7 @@ Roll låter användare eller huvud användare läsa FHIR-data [Läs mer](../heal
 
 ### <a name="fhir-data-writer"></a>FHIR data skrivare
 
-Roll låter användare eller huvud användare läsa och skriva FHIR-data [Läs mer](../healthcare-apis/configure-azure-rbac.md)
+Roll låter användare eller huvud användare läsa och skriva FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -10429,7 +10429,7 @@ Låter dig hantera Taggar i entiteter utan att ge åtkomst till själva entitete
 }
 ```
 
-## <a name="other"></a>Övrigt
+## <a name="other"></a>Annat
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Azure Digitals sammanflätade data ägare

@@ -3,7 +3,7 @@ title: Konfigurera till gångs leverans principer med .NET SDK | Microsoft Docs
 description: Det här avsnittet visar hur du konfigurerar olika till gångs leverans principer med Azure Media Services .NET SDK.
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24fd4dcb9b24b6d025ff0327d98fee15a05fb7de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82e152f257e867dfdbf97c92b041ce57c5a1bdbc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267725"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014272"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurera till gångs leverans principer med .NET SDK
 

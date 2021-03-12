@@ -2,16 +2,16 @@
 title: Självstudie – Lägg till variabel till Azure Resource Manager bicep-fil
 description: Lägg till variabler i bicep-filen för att förenkla syntaxen.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1706bafb85834cfd3abae1f5d6a0090da9041bb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da2755c1f2c0f9fa891fe1a99b1fed21f64492c8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748273"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632483"
 ---
 # <a name="tutorial-add-variables-to-azure-resource-manager-bicep-file"></a>Självstudie: lägga till variabler i Azure Resource Manager bicep-filen
 

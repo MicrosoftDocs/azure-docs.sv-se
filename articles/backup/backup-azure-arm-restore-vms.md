@@ -4,12 +4,12 @@ description: Återställa en virtuell Azure-dator från en återställnings punk
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722695"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016533"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Så här återställer du Azure VM-data i Azure Portal
 
@@ -181,7 +181,7 @@ För närvarande är sekundär region återställningen upp till 12 timmar från
 
 [Virtuella Azure-zoner som har fästs](../virtual-machines/windows/create-portal-availability-zone.md) kan återställas i alla [tillgänglighets zoner](../availability-zones/az-overview.md) i samma region.
 
-I återställnings processen visas alternativ **tillgänglighets zon.** Du ser din standard zon först. Om du vill välja en annan zon väljer du önskat värde för valfri zon. Om den fästa zonen inte är tillgänglig kan du inte återställa data till en annan zon eftersom säkerhetskopierade data inte zonally replikeras.
+I återställnings processen visas alternativ **tillgänglighets zon.** Du ser din standard zon först. Om du vill välja en annan zon väljer du önskat värde för valfri zon. Om den fästa zonen inte är tillgänglig kan du inte återställa data till en annan zon eftersom säkerhetskopierade data inte zonally replikeras. Det går bara att återställa i tillgänglighets zoner från återställnings punkter i valv skiktet.
 
 ![Välj tillgänglighets zon](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 

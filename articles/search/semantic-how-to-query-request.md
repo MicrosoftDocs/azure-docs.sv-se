@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/12/2021
+ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487158"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232755"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Skapa en semantisk fråga i Kognitiv sökning
 
 > [!IMPORTANT]
-> Typen av semantisk fråga finns i en offentlig för hands version, som är tillgänglig via REST API och Azure Portal för för hands versionen. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vid den första förhands granskningen är det ingen kostnad för semantisk sökning. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
+> Typen av semantisk fråga finns i en offentlig för hands version, som är tillgänglig via REST API och Azure Portal för för hands versionen. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
-I den här artikeln får du lära dig att formulera en sökbegäran som använder semantisk rangordning och ger semantiska beskrivningar och svar.
+I den här artikeln får du lära dig att formulera en sökbegäran som använder semantisk rangordning. Begäran kommer att returnera semantiska beskrivningar och eventuellt [semantiska svar](semantic-answers.md), med högdagrar över de mest relevanta termerna och fraserna.
 
-Semantiska frågor brukar fungera bäst på Sök index som har skapats av text – tungt innehåll, till exempel PDF-filer eller dokument med stora text mängder.
+Både bild texter och svar extraheras orda Grant från text i Sök dokumentet. Det semantiska under systemet avgör vilket innehåll som har egenskaperna för en under text eller ett svar, men det skapar inte nya meningar eller fraser. Av den anledningen fungerar innehåll som innehåller förklaringar eller definitioner bäst för semantisk sökning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -36,13 +36,13 @@ Semantiska frågor brukar fungera bäst på Sök index som har skapats av text �
 
   Sök klienten måste ha stöd för för hands versioner av REST-API: er i förfrågan. Du kan använda [Postman](search-get-started-rest.md), [Visual Studio-kod](search-get-started-vs-code.md)eller kod som du har ändrat för att göra rest-anrop till för hands versions-API: erna. Du kan också använda [Sök Utforskaren](search-explorer.md) i Azure Portal för att skicka en semantisk fråga.
 
-+ En [Sök dokument](/rest/api/searchservice/preview-api/search-documents) förfrågan med semantiskt alternativ och andra parametrar som beskrivs i den här artikeln.
++ En [fråge förfrågan](/rest/api/searchservice/preview-api/search-documents) måste innehålla semantiskt alternativ och andra parametrar som beskrivs i den här artikeln.
 
 ## <a name="whats-a-semantic-query"></a>Vad är en semantisk fråga?
 
 I Kognitiv sökning är en fråga en parametriserad begäran som avgör bearbetning av frågor och svars form. En *semantisk fråga* lägger till parametrar som anropar den semantiska ranknings modellen som kan bedöma kontexten och betydelsen av matchnings resultat, höja mer relevanta matchningar till toppen och returnera semantiska svar och bild texter.
 
-Följande begäran är representativ för en grundläggande semantisk fråga (utan svar).
+Följande begäran är representativ för en minimal semantisk fråga (utan svar).
 
 ```http
 POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=2020-06-30-Preview      
@@ -54,15 +54,25 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
 }
 ```
 
-Precis som med alla frågor i Kognitiv sökning riktar begäran dokument samlingen för ett enskilt index. Dessutom utför en semantisk fråga samma sekvens med parsning, analys och skanning som en icke-semantisk fråga. Skillnaden beror på hur relevansen beräknas. Som definieras i den här för hands versionen är en semantisk fråga en vars *resultat* bearbetas på nytt med hjälp av avancerade algoritmer, vilket ger ett sätt att skapa en yta för de matchningar som bedöms mest relevanta av semantisk rangation i stället för de poäng som tilldelas av standardalgoritmen för likhets rankning. 
+Precis som med alla frågor i Kognitiv sökning riktar begäran dokument samlingen för ett enskilt index. Dessutom har en semantisk fråga samma sekvens med parsning, analys, skanning och bedömning som en icke-semantisk fråga. 
 
-Endast de översta 50-matchningarna från de första resultaten kan semantiskt rangordnas och alla inkludera under texter i svaret. Alternativt kan du ange en **`answer`** parameter på begäran för att extrahera ett möjligt svar. Den här modellen upprättar upp till fem potentiella svar på frågan, som du kan välja att återge överst på Sök sidan.
+Skillnaden är relevans och poäng. Som definieras i den här för hands versionen är en semantisk fråga en vars *resultat* rangordnas med hjälp av en semantisk språk modell, vilket ger ett sätt att presentera de matchningar som bedöms mest relevant av semantisk rangation i stället för poängen som tilldelas av standardalgoritmen för algoritmen för likheter.
 
-## <a name="query-using-rest-apis"></a>Fråga med hjälp av REST API: er
+Endast de översta 50-matchningarna från de första resultaten kan semantiskt rangordnas och alla inkludera under texter i svaret. Alternativt kan du ange en **`answer`** parameter på begäran för att extrahera ett möjligt svar. Mer information finns i [semantiska svar](semantic-answers.md).
 
-Du hittar den fullständiga specifikationen för REST API i [sökdokument (rest-förhands granskning)](/rest/api/searchservice/preview-api/search-documents).
+## <a name="query-with-search-explorer"></a>Fråga med Sökutforskaren
 
-Semantiska frågor tillhandahåller under texter och markeringar automatiskt. Om du vill att svaret ska innehålla svar kan du lägga till en valfri **`answer`** parameter i begäran. Den här parametern plus konstruktion av frågesträngen skapar ett svar i svaret.
+[Sök Utforskaren](search-explorer.md) har uppdaterats för att inkludera alternativ för semantiska frågor. De här alternativen blir synliga i portalen när du får åtkomst till förhands granskningen. Frågealternativen kan aktivera semantiska frågor, searchFields och stavnings korrigering.
+
+Du kan också klistra in de obligatoriska frågeparametrarna i frågesträngen.
+
+:::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Frågealternativ i Sök Utforskaren" border="true":::
+
+## <a name="query-using-rest"></a>Fråga med REST
+
+Använd [Sök dokumenten (rest Preview)](/rest/api/searchservice/preview-api/search-documents) för att formulera begäran program mässigt.
+
+Ett svar innehåller under texter och markeringar automatiskt. Om du vill att svaret ska innehålla stavnings korrigering eller-svar lägger du till en valfri **`speller`** **`answers`** parameter eller parameter på begäran.
 
 I följande exempel används hotell-Sample-indexet för att skapa en semantisk förfrågan med semantiska svar och bild texter:
 
@@ -81,6 +91,16 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
     "count": true
 }
 ```
+
+I följande tabell sammanfattas frågeparametrar som används i en semantisk fråga så att du kan se dem holistiskt. En lista över alla parametrar finns i [Sök efter dokument (rest-förhands granskning)](/rest/api/searchservice/preview-api/search-documents)
+
+| Parameter | Typ | Beskrivning |
+|-----------|-------|-------------|
+| queryType | Sträng | Giltiga värden är enkel, fullständig och semantisk. Värdet "semantisk" krävs för semantiska frågor. |
+| queryLanguage | Sträng | Krävs för semantiska frågor. För närvarande är endast "en-US" implementerad. |
+| searchFields | Sträng | En kommaavgränsad lista över sökbara fält. Valfritt men rekommenderas. Anger de fält över vilka semantisk rangordning inträffar. </br></br>I motsats till enkla och fullständiga frågetyper, bestämmer ordningen i vilka fält som är prioritet. Mer information om användning finns i [steg 2: Ange searchFields](#searchfields). |
+| stavningskontroll | Sträng | Valfri parameter, inte bara för semantiska frågor, som korrigerar felstavade villkor innan de når sökmotorn. Mer information finns i [lägga till stavnings korrigering i frågor](speller-how-to-add.md). |
+| svar |Sträng | Valfria parametrar som anger om semantiska svar ingår i resultatet. För närvarande implementeras endast "extraktion". Svar kan konfigureras för att returnera högst fem. Standardvärdet är ett. Det här exemplet visar antalet tre svar: "extraherings \| count3". Mer information finns i [returnera semantiska svar](semantic-answers.md).|
 
 ### <a name="formulate-the-request"></a>Formulera begäran
 
@@ -109,7 +129,7 @@ Den här parametern är valfri i att det inte finns något fel om du lämnar den
 
 Parametern searchFields används för att identifiera passager som ska utvärderas för "semantisk likhet" i frågan. För för hands versionen rekommenderar vi inte att du lämnar searchFields tomt eftersom modellen kräver ett tips för vilka fält som är viktigast att bearbeta.
 
-SearchFields-ordningen är kritisk. Om du redan använder searchFields i befintliga enkla eller fullständiga Lucene-frågor, se till att du återanvänder den här parametern när du växlar till en semantisk frågetyp.
+SearchFields-ordningen är kritisk. Om du redan använder searchFields i befintliga enkla eller fullständiga Lucene-frågor måste du gå tillbaka till den här parametern för att kontrol lera om det finns fält ordning när du växlar till en semantisk frågetyp.
 
 Följ dessa rikt linjer för att säkerställa optimala resultat när två eller fler searchFields har angetts:
 
@@ -117,11 +137,11 @@ Följ dessa rikt linjer för att säkerställa optimala resultat när två eller
 
 + Det första fältet måste alltid vara koncist (till exempel titel eller namn), helst under 25 ord.
 
-+ Om indexet har ett URL-fält som är text (som kan läsas av människa, t. ex., `www.domain.com/name-of-the-document-and-other-details` och inte maskin fokuserat som `www.domain.com/?id=23463&param=eis` ), placerar du det andra i listan (eller första om det inte finns något koncist rubrik fält).
++ Om indexet har ett URL-fält som är text (som kan läsas av människa, t. ex `www.domain.com/name-of-the-document-and-other-details` ., och inte maskin fokuserat som `www.domain.com/?id=23463&param=eis` ), placerar du det andra i listan (eller första om det inte finns något koncist rubrik fält).
 
 + Följ dessa fält genom beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument.
 
-Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. Välj ett fält som tillhandahåller tillräckligt med innehåll.
+Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. Välj ett fält som tillhandahåller tillräckligt med innehåll. För att säkerställa bearbetnings tiden är det bara de första 20 000 tokens av det samlade innehållet i searchFields genomgår semantisk utvärdering och rangordning.
 
 #### <a name="step-3-remove-orderby-clauses"></a>Steg 3: ta bort orderBy-satser
 
@@ -129,15 +149,7 @@ Ta bort eventuella orderBy-satser, om de finns i en befintlig begäran. Det sema
 
 #### <a name="step-4-add-answers"></a>Steg 4: Lägg till svar
 
-Du kan också lägga till "svar" om du vill inkludera ytterligare bearbetning som ger ett svar. Svar (och under texter) formuleras från passager som finns i fält som anges i searchFields. Se till att inkludera innehålls rika fält i searchFields för att få bästa svar och beskrivningar i ett svar.
-
-Det finns uttryckliga och implicita villkor som ger svar. 
-
-+ Explicita villkor är att lägga till "svar = extraktion". Om du vill ange antalet svar som returneras i det övergripande svaret lägger du dessutom till "count" följt av ett tal: `"answers=extractive|count=3"` .  Standardvärdet är ett. Maximalt fem.
-
-+ I implicita villkor ingår en fråga om frågesträng som lånar sig till ett svar. En fråga som består av "vad hotell har det gröna rummet" är mer sannolikt "besvarat" än en fråga som består av en instruktion som "hotell med avancerad insida". Frågan kan förväntas, men den kan inte anges eller null.
-
-Den viktiga punkten att ta bort är att om frågan inte ser ut som en fråga hoppas svars bearbetningen över, även om parametern "svar" anges.
+Du kan också lägga till "svar" om du vill inkludera ytterligare bearbetning som ger ett svar. Svar (och under texter) extraheras från passager som finns i fält som anges i searchFields. Se till att inkludera innehålls rika fält i searchFields för att få bästa svar i ett svar. Mer information finns i [så här returnerar du semantiska svar](semantic-answers.md).
 
 #### <a name="step-5-add-other-parameters"></a>Steg 5: Lägg till andra parametrar
 
@@ -145,129 +157,33 @@ Ange andra parametrar som du vill ha i begäran. Parametrar som [stavfel](spelle
 
 Du kan också anpassa markerings formatet som används för under texter. Under texter används Markera formatering framför nyckel passager i det dokument som sammanfattar svaret. Standardvärdet är `<em>`. Om du vill ange typ av formatering (till exempel gul bakgrund) kan du ange highlightPreTag och highlightPostTag.
 
-### <a name="review-the-response"></a>Granska svaret
+## <a name="evaluate-the-response"></a>Utvärdera svaret
 
-Svar för ovanstående fråga returnerar följande matchning som den översta plockningen. Under texter returneras automatiskt med oformaterad text och markerade versioner. Mer information om semantiska svar finns i [semantisk rangordning och svar](semantic-how-to-query-response.md).
+Som med alla frågor består ett svar av alla fält som har marker ATS som hämtnings bara eller bara de fält som anges i SELECT-parametern. Den innehåller den ursprungliga relevansen och kan också innehålla ett antal, eller batchade resultat, beroende på hur du formulerat begäran.
+
+I en semantisk fråga har svaret ytterligare element: en ny semantiskt rangordnad resultat text, under texter i klartext och med högdagrar och eventuellt ett svar.
+
+I en klient app kan du strukturera Sök sidan så att den innehåller en beskrivning av matchningen, i stället för hela innehållet i ett särskilt fält. Detta är användbart när enskilda fält är för kompakta för sidan Sök resultat.
+
+Svaret för exempel frågan ovan returnerar följande matchning som den översta plockningen. Under texter returneras automatiskt med oformaterad text och markerade versioner. Svar utelämnas från exemplet eftersom ett inte kunde fastställas för den aktuella fråge-och sökkorpus.
 
 ```json
-"@odata.count": 29,
+"@odata.count": 35,
+"@search.answers": [],
 "value": [
     {
-        "@search.score": 1.8920634,
-        "@search.rerankerScore": 1.1091284966096282,
+        "@search.score": 1.8810667,
+        "@search.rerankerScore": 1.1446577133610845,
         "@search.captions": [
             {
-                "text": "Oceanside Resort. Budget. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-                "highlights": "<strong>Oceanside Resort.</strong> Budget. New Luxury Hotel. Be the first to stay.<strong> Bay views</strong> from every room, location near the pier, rooftop pool, waterfront dining & more."
+                "text": "Oceanside Resort. Luxury. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+                "highlights": "<strong>Oceanside Resort.</strong> Luxury. New Luxury Hotel. Be the first to stay.<strong> Bay</strong> views from every room, location near the pier, rooftop pool, waterfront dining & more."
             }
         ],
-        "HotelId": "18",
         "HotelName": "Oceanside Resort",
-        "Description": "New Luxury Hotel.  Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-        "Category": "Budget"
+        "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+        "Category": "Luxury"
     },
-```
-
-### <a name="parameters-used-in-a-semantic-query"></a>Parametrar som används i en semantisk fråga
-
-I följande tabell sammanfattas frågeparametrar som används i en semantisk fråga så att du kan se dem holistiskt. En lista över alla parametrar finns i [Sök efter dokument (rest-förhands granskning)](/rest/api/searchservice/preview-api/search-documents)
-
-| Parameter | Typ | Beskrivning |
-|-----------|-------|-------------|
-| queryType | Sträng | Giltiga värden är enkel, fullständig och semantisk. Värdet "semantisk" krävs för semantiska frågor. |
-| queryLanguage | Sträng | Krävs för semantiska frågor. För närvarande är endast "en-US" implementerad. |
-| searchFields | Sträng | En kommaavgränsad lista över sökbara fält. Valfritt men rekommenderas. Anger de fält över vilka semantisk rangordning inträffar. </br></br>I motsats till enkla och fullständiga frågetyper, bestämmer ordningen i vilka fält som är prioritet.|
-| svar |Sträng | Valfritt fält för att ange om semantiska svar ingår i resultatet. För närvarande implementeras endast "extraktion". Svar kan konfigureras för att returnera högst fem. Standardvärdet är ett. Det här exemplet visar antalet tre svar: "extraherings \| count3". |
-
-## <a name="query-with-search-explorer"></a>Fråga med Sökutforskaren
-
-Följande fråga riktar sig till det inbyggda exempel indexet för hotell med API-version 2020-06-30-Preview och körs i Sök Utforskaren. `$select`Satsen begränsar resultatet till bara några fält, vilket gör det lättare att skanna i utförlig JSON i Sök Utforskaren.
-
-### <a name="with-querytypesemantic"></a>Med frågetyp = semantisk
-
-```json
-search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
-```
-
-De första resultaten är följande.
-
-```json
-{
-    "@search.score": 0.38330218,
-    "@search.rerankerScore": 0.9754053303040564,
-    "HotelId": "18",
-    "HotelName": "Oceanside Resort",
-    "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-    "Tags": [
-        "view",
-        "laundry service",
-        "air conditioning"
-    ]
-},
-{
-    "@search.score": 1.8920634,
-    "@search.rerankerScore": 0.8829904259182513,
-    "HotelId": "36",
-    "HotelName": "Pelham Hotel",
-    "Description": "Stunning Downtown Hotel with indoor Pool. Ideally located close to theatres, museums and the convention center. Indoor Pool and Sauna and fitness centre. Popular Bar & Restaurant",
-    "Tags": [
-        "view",
-        "pool",
-        "24-hour front desk service"
-    ]
-},
-{
-    "@search.score": 0.95706713,
-    "@search.rerankerScore": 0.8538530203513801,
-    "HotelId": "22",
-    "HotelName": "Stone Lion Inn",
-    "Description": "Full breakfast buffet for 2 for only $1.  Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
-    "Tags": [
-        "laundry service",
-        "air conditioning",
-        "restaurant"
-    ]
-},
-```
-
-### <a name="with-querytype-default"></a>Med queryType (standard)
-
-För jämförelse kör du samma fråga som ovan, tar bort `&queryType=semantic&queryLanguage=english&searchFields=Description,Tags` . Observera att det inte finns något `"@search.rerankerScore"` i dessa resultat och att olika hotell visas i de tre översta positionerna.
-
-```json
-{
-    "@search.score": 8.633856,
-    "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Tags": [
-        "air conditioning",
-        "bar",
-        "continental breakfast"
-    ]
-},
-{
-    "@search.score": 6.407289,
-    "HotelId": "40",
-    "HotelName": "Trails End Motel",
-    "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport.",
-    "Tags": [
-        "continental breakfast",
-        "view",
-        "view"
-    ]
-},
-{
-    "@search.score": 5.843788,
-    "HotelId": "14",
-    "HotelName": "Twin Vertex Hotel",
-    "Description": "New experience in the Making.  Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
-    "Tags": [
-        "bar",
-        "restaurant",
-        "air conditioning"
-    ]
-},
 ```
 
 ## <a name="next-steps"></a>Nästa steg

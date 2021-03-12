@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: d94bedad1ba7a2c6d814021b733404ccc58148ed
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: db3f188cc796642285d9b082b46371879491c632
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424690"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225242"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Snabb start: skapa en Azure-hanterad instans för Apache Cassandra-kluster från Azure Portal (för hands version)
  
@@ -70,7 +70,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
    ```
 
    > [!NOTE]
-   > `assignee`Värdena och `role` i föregående kommando är fasta tjänst principer respektive roll identifierare.
+   > `assignee`Värdena och `role` i föregående kommando är fasta värden, ange värdena exakt som de anges i kommandot. Om du inte gör det kommer det att leda till fel när klustret skapas. Om du stöter på fel när du kör det här kommandot kanske du inte har behörighet att köra det, kontakta administratören för behörigheter.
 
 1. Nu när du är färdig med nätverket klickar du på **Granska + skapa**  >  **skapa**
 

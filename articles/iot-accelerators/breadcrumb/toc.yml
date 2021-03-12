@@ -1,0 +1,14 @@
+- name: Azure
+  tocHref: /azure
+  topicHref: /azure/index
+  items:
+    - name: Internet of Things
+      tocHref: /azure/iot-fundamentals/
+      topicHref: /azure/iot-fundamentals/index
+      items:
+        - name: Lösningsacceleratorer för IoT
+          tocHref: /azure/iot-accelerators/
+          topicHref: /azure/iot-accelerators/index/
+        - name: Lösningsacceleratorer för IoT
+          tocHref: /azure/iot-fundamentals/
+          topicHref: /azure/iot-accelerators/index

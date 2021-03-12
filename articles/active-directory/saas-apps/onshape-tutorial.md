@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d1c4d05748fd9efdc51e18396c8df14e12df63d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2ead9bd72691dc120afb60c025ce563684716038
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185431"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199325"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onshape"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Onshape
 
@@ -74,35 +74,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal går du till sidan för program integrering i **Onshape** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
-
-   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
-
-1. I avsnittet **Grundläggande SAML-konfiguration** behöver användaren inte utföra några steg eftersom appen redan är förintegrerad med Azure.
-
-1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
-
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<SUBDOMAIN>.onshape.com`
-
-    > [!NOTE]
-    > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Onshape client support team](mailto:support@onshape.com) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
-
-1. Klicka på **Spara**.
-
-1. Onshape-programmet förväntar sig SAML-intyg i ett särskilt format, vilket innebär att du kan lägga till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
+1. Om du uppmanas att spara inställningen för enkel inloggning väljer du **Ja**. 
+1. Onshape-programmet förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
 
     ![image](common/default-attributes.png)
 
-1. Utöver ovan förväntar sig Onshape-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
+1. Förutom ovan förväntar sig Onshape-programmet att fler attribut visas nedan för att skickas till det i SAML-svaret. Dessa attribut har också fyllts i i förväg, men du kan granska dem enligt dina krav.
     
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | --------------- | --------- |
     | firstName | user.givenname |
     | lastName | user.surname |
     | companyName | <COMPANY_NAME> |
 
     > [!NOTE]
-    > Redigera värdet för "företags namn"-anspråket med "domänautentisering". T. ex., om kunden har åtkomst till Onshape-programmet med en URL som https://acme.onshape.com , är deras domänsuffix "ABC". Attributvärdet får bara vara prefixet, inte hela DNS-namnet.
+    > Du _måste_ ändra värdet för attributet **företags namn** till *domännoden* för ditt Onshape Enterprise. Om du till exempel har åtkomst till Onshape-programmet med hjälp av en URL som till exempel `https://acme.onshape.com` , är ditt domän prefix " *ABC*". Attributvärdet får bara vara prefixet, inte hela DNS-namnet.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -137,7 +123,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-onshape-sso"></a>Konfigurera Onshape SSO
 
-Om du vill konfigurera enkel inloggning på **Onshape** sida måste du skicka den hämtade **XML-metadata för federationsmetadata** och lämpliga kopierade url: er från Azure Portal till [support teamet för Onshape](mailto:support@onshape.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+Information om hur du konfigurerar enkel inloggning på **Onshape** -sidan finns i [integrera med Microsoft Azure AD](https://cad.onshape.com/help/Content/MS_AzureAD.htm).
 
 ### <a name="create-onshape-test-user"></a>Skapa Onshape test användare
 

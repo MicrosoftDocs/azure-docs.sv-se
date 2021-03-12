@@ -191,6 +191,8 @@
       href: ../../iot-hub/security-baseline.md
     - name: Säkerhetsbaslinje för Key Vault
       href: ../../key-vault/general/security-baseline.md
+    - name: Säkerhets bas linje för Linux-beräkning
+      href: ../../governance/policy/samples/guest-configuration-baseline-linux.md?toc=/azure/security/benchmarks/toc.json
     - name: Logic Apps-säkerhetsbaslinje
       href: ../../logic-apps/security-baseline.md
     - name: Säkerhetsbaslinje för Microsoft Cloud App Security
@@ -229,6 +231,8 @@
       href: ../../virtual-wan/security-baseline.md
     - name: Säkerhetsbaslinje för VPN Gateway
       href: ../../vpn-gateway/security-baseline.md
+    - name: Windows Compute Security-bas linje
+      href: ../../governance/policy/samples/guest-configuration-baseline-windows.md?toc=/azure/security/benchmarks/toc.json
     - name: Säkerhets bas linje för Windows Virtual Desktop
       href: ../../virtual-desktop/security-baseline.md
 - name: Resurser

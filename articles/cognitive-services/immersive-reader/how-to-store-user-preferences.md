@@ -6,19 +6,19 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: 31c1ef8d75b4c12e4dd6a360852feb27857ac412
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 16ecd2166604d29fbc2242229f625b30ffd684e5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636552"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617700"
 ---
 # <a name="how-to-store-user-preferences"></a>Så här lagrar du användar inställningar
 
-Den här artikeln visar hur du lagrar användarens GRÄNSSNITTs inställningar, formellt känt som **användar inställningar** , via alternativen [-Preferences](./reference.md#options) och [-onPreferencesChanged](./reference.md#options) avancerad läsare SDK.
+Den här artikeln visar hur du lagrar användarens GRÄNSSNITTs inställningar, formellt känt som **användar inställningar**, via alternativen [-Preferences](./reference.md#options) och [-onPreferencesChanged](./reference.md#options) avancerad läsare SDK.
 
 När SDK-alternativet [CookiePolicy](./reference.md#cookiepolicy-options) är inställt på *aktive rad* lagrar det fördjupade läsar programmet **användar inställningarna** (text storlek, temafärg, teckensnitt och så vidare) i cookies, som är lokala för en specifik webbläsare och enhet. Varje gången användaren startar den fördjupade läsaren på samma webbläsare och enhet öppnas den med användarens inställningar från den senaste sessionen på den enheten. Men om användaren öppnar den fördjupade läsaren på en annan webbläsare eller enhet konfigureras inställningarna från början med standardinställningarna för avancerad läsare och användaren måste ange sina inställningar igen och så vidare för varje enhet de använder. `-preferences` `-onPreferencesChanged` SDK-alternativen för och avancerad läsare är ett sätt för program att växla till en användares inställningar i olika webbläsare och enheter, så att användaren får en enhetlig upplevelse oavsett var de använder programmet.
 

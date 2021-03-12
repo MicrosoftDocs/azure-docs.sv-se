@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e387653d73105911f10bb184f9179e33e22671d4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84200355"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021673"
 ---
 ---
 | Gräns för identifierare | Gräns | Kommentarer |
@@ -15,6 +15,6 @@ ms.locfileid: "84200355"
 | Maximalt antal funktioner per jobb |60 |Det finns en hård gräns på 60 funktioner per Stream Analytics jobb. |
 | Maximalt antal enheter för strömning per jobb |192 |Det finns en hård gräns på 192 strömnings enheter per Stream Analytics jobb. |
 | Maximalt antal jobb per region |1500 |Varje prenumeration kan ha upp till 1 500 jobb per geografisk region. |
-| Referensdatablob MB | 300 | Referens data blobbar får inte vara större än 300 MB. |
+| Referensdatablob MB | 5 GB | Upp till 5 GB när du använder 6 SUs eller mer. |
 | Maximalt antal tecken i en fråga | 512000 | Det finns en hård gräns på 512 KB tecken i en Azure Stream Analytics jobb fråga.|
 

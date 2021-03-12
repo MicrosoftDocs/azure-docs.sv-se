@@ -3,7 +3,7 @@ title: Publicera innehåll i Azure Portal | Microsoft Docs
 description: Den här självstudien vägleder dig genom stegen för att publicera ditt innehåll i Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 9f86f7a0a7eaef7c0dc244a2e089596de3779eae
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c22570153200b9daeae44701c814faa1a28916c8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018975"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009818"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Publicera innehåll i Azure Portal
 
@@ -40,7 +40,7 @@ ms.locfileid: "92018975"
 
 För att ge användaren en URL som kan användas för att strömma eller hämta innehållet måste du först publicera tillgången genom att skapa en lokaliserare. Lokaliserare ger åtkomst till till gångs filer. Azure Media Services stöder två typer av lokaliserare: 
 
-* **Strömningslokaliserare (OnDemandOrigin)**. Strömningslokaliserare används för anpassad strömning. Exempel på anpassningsbar direkt uppspelning inkluderar Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming och dynamisk adaptiv strömning via HTTP (streck, kallas även MPEG-streck). Om du vill skapa en strömningslokaliserare måste tillgången innehålla en .ism-fil. Exempelvis `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`.
+* **Strömningslokaliserare (OnDemandOrigin)**. Strömningslokaliserare används för anpassad strömning. Exempel på anpassningsbar direkt uppspelning inkluderar Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming och dynamisk adaptiv strömning via HTTP (streck, kallas även MPEG-streck). Om du vill skapa en strömningslokaliserare måste tillgången innehålla en .ism-fil. Till exempel `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`.
 * **Progressiv lokaliserare (signatur för delad åtkomst)**. Progressiva lokaliserare används för att leverera video via progressiv nedladdning.
 
 Om du vill bygga en HLS streaming-URL lägger du till *(format = M3U8-AAPL)* till URL: en:

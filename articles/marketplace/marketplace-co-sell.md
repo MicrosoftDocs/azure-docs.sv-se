@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 3/08/2021
-ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 7d1d4a1a89931e3ded8274a4731aa3606695771b
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563786"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199876"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Översikt över samförsäljning med Microsoft Sales Teams och partners
 
@@ -46,8 +46,8 @@ Status för medförsäljning för Azure:
 - Azure IP Co-Sälj motiverade
 
 Försäljnings status för företags program
-- BIZ Apps ISV Connect standard
-- BIZ-appar ISV Connect Premium  
+- BIZ Apps ISV Connect standard eller Premium stimulans standard
+- BIZ Apps ISV Connect standard eller Premium incitament Premium  
 
 Mer information om kraven för att uppnå de här samförsäljnings statusarna finns i [Co-Sälj krav](co-sell-requirements.md).
 
@@ -74,12 +74,12 @@ BIZ-appar ISV Connect standard eller Premium incitaments status kan tillämpas p
 - Dynamics 365 för kund engagemang & PowerApps
 - Dynamics 365 för åtgärder
 
-Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ-appar ISV Connect standard eller Premium incitaments_ status får dessa kommersiella Marketplace-förmåner:
+Erbjudanden som ger _Azure IP Co-Sälj motiverade-_ status får de här kommersiella Marketplace-fördelarna:
 
 - Service avgiften för Marketplace minskas från 20 till 10%. Rabatten gäller din IaaS-lösning (Infrastructure as a Service) eller SaaS-lösning (program vara som en tjänst) som säljs via den kommersiella marknads platsen. Mer information finns i [service avgifter för handels platser](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Leverantörer av moln lösnings leverantörer får 10% incitament att sälja IaaS-lösningen eller SaaS-erbjudandet. Läs mer om CSP-programmet i [Cloud Solution Provider-program](cloud-solution-providers.md).
 - Försäljning av ditt erbjudande via den kommersiella marknaden bidrar till kundernas Azure-förbruknings åtaganden. Berättigade kunder kommer att se erbjudandet som är markerat som Azure-förmån som är **berättigat** till Azure Portal. Mer information finns i [bidrag för Azure konsumtions åtagande](azure-consumption-commitment-benefit.md).
-- Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ-appar ISV Connect standard eller Premium incitaments_ status får ett **Microsoft-förmånskonto** på sidan för erbjudande listan i onlinebutiker. Aktivitets ikonen främjar ett erbjudandes kvalitet, prestanda och möjlighet att adressera kund behov i ett visst bransch lodrätt eller lösnings utrymme.
+- Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ Apps ISV Connect standard eller Premium._ status får en Microsoft-ikon för **föredraget lösning** på sidan med erbjudande listan i onlinebutiker. Aktivitets ikonen främjar ett erbjudandes kvalitet, prestanda och möjlighet att adressera kund behov i ett visst bransch lodrätt eller lösnings utrymme.
 
 Information om hur du uppnår motiverade-status i Co-försäljning finns i samförsäljnings [färdiga och samförsäljnings krav för motiverade](co-sell-requirements.md).
 

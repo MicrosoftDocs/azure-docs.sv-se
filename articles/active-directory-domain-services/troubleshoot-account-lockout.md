@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618781"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198964"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Felsöka problem med konto utelåsning med en Azure Active Directory Domain Services hanterad domän
 
@@ -83,6 +83,23 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
+
+**Obs!**
+
+Du kan se händelse information om 4776 och 4740 för "käll arbets Station:" tom. Detta beror på att det felaktiga lösen ordet har hänt över nätverks inloggning via några andra enheter.
+Exempel: om du har RADIUS-server, som kan vidarebefordra autentiseringen till AAD DS. För att bekräfta att du kan konfigurera Netlogon-loggar med RDP till DC Server del.
+
+03/04 19:07:29 [Inloggning] [10752] contoso: SamLogon: transitiv nätverks inloggning för contoso\Nagappan.Veerappan från (via LOB11-RADIUS) angavs 
+
+03/04 19:07:29 [Inloggning] [10752] contoso: SamLogon: transitiv nätverks inloggning för contoso\Nagappan.Veerappan från (via LOB11-RADIUS) returnerar 0xC000006A
+
+03/04 19:07:35 [Inloggning] [10753] contoso: SamLogon: transitiv nätverks inloggning för contoso\Nagappan.Veerappan från (via LOB11-RADIUS) angavs 
+
+03/04 19:07:35 [Inloggning] [10753] contoso: SamLogon: transitiv nätverks inloggning för contoso\Nagappan.Veerappan från (via LOB11-RADIUS) returnerar 0xC000006A
+
+Aktivera RDP till din DCs i NSG till Server del för att konfigurera diagnostikdata (dvs. Netlogon) https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules om du redan har ändrat standard NSG följer du PSlet sätt för att aktivera https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+
+Aktivera Netlogon-logg på valfri Server https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
 
 ## <a name="next-steps"></a>Nästa steg
 

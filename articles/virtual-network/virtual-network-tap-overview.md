@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804878"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617190"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 > [!IMPORTANT]
-> För hands versionen av virtuellt nätverk är för närvarande stoppad i alla Azure-regioner. Du kan e-posta oss <azurevnettap@microsoft.com> med ditt prenumerations-ID så meddelar vi dig kommande uppdateringar om förhands granskningen. Under tiden kan du använda agentbaserade eller NVA lösningar som tillhandahåller tryck-/nätverks Synlighets funktioner via våra [partner lösningar för paket](#virtual-network-tap-partner-solutions) integrering som finns i [Azure Marketplace-erbjudanden](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners).
+> För hands versionen av virtuellt nätverk är för närvarande stoppad i alla Azure-regioner. Du kan e-posta oss <azurevnettap@microsoft.com> med ditt prenumerations-ID så meddelar vi dig kommande uppdateringar om förhands granskningen. Under tiden kan du använda agentbaserade eller NVA lösningar som tillhandahåller tryck-/nätverks Synlighets funktioner via våra [partner lösningar för paket](#virtual-network-tap-partner-solutions) integrering som finns i [Azure Marketplace-erbjudanden](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners).
 
 Med hjälp av Azure Virtual Network-TRYCKNINGen (Terminal Access Point) kan du kontinuerligt strömma din virtuella dators nätverks trafik till en insamlare eller ett analys verktyg för nätverks paket. Insamlings-eller analys verktyget tillhandahålls av en [virtuell nätverks utrustnings](https://azure.microsoft.com/solutions/network-appliances/) partner. För en lista över partner lösningar som har verifierats för att fungera med Virtual Network-tryckning, se [partner lösningar](#virtual-network-tap-partner-solutions).
 Följande bild visar hur det virtuella nätverket trycker på Works. Du kan lägga till en tryck konfiguration i ett [nätverks gränssnitt](virtual-network-network-interface.md) som är kopplat till en virtuell dator som distribueras i det virtuella nätverket. Målet är en IP-adress för virtuellt nätverk i samma virtuella nätverk som det övervakade nätverks gränssnittet eller ett [peer](virtual-network-peering-overview.md) -kopplat virtuellt nätverk. Insamlings lösningen för Virtual Network-tryckning kan distribueras bakom en intern Azure-belastningsutjämnare för hög tillgänglighet.
@@ -64,6 +64,7 @@ De konton som du använder för att tillämpa tryck på konfiguration på nätve
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout-vSTREAM]( https://www.netscout.com/marketplace-azure)
+- [NoName-säkerhet](https://nonamesecurity.com/)
 - [Riverbed SteelCentral-AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA netvittne®-plattform](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)

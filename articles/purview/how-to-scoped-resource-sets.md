@@ -1,5 +1,5 @@
 ---
-title: 'Gör så här: skapa en konfiguration för en begränsad resurs uppsättning'
+title: Så här skapar du en konfiguration för en begränsad resurs uppsättning
 description: Lär dig hur du skapar en konfigurations regel för en begränsad resurs uppsättning för att skriva över hur till gångar ska visas grupperade i resurs uppsättningar
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 10e925a84dbe187ccdf5e444cb8b3dd4b7bb4676
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668443"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608010"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Skapa konfigurations regler för omfattnings resurs uppsättning
 
@@ -24,20 +24,29 @@ När du skannar ett lagrings konto använder Azure avdelningens kontroll en upps
 
 Följ stegen nedan för att skapa en ny konfiguration av en omfångs resurs uppsättning:
 
-1. Gå till hanterings centret. Välj **webbprogramsomfattande resurs uppsättningar** på menyn. Klicka på **+ ny** för att skapa en ny konfigurations regel uppsättning.
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Skapa ny regel för webbprogramsomfattande resurs uppsättning" border="true":::
+1. Gå till hanterings centret. Välj **webbprogramsomfattande resurs uppsättningar** på menyn. Välj **+ ny** för att skapa en ny konfigurations regel uppsättning.
 
-1. Ange omfånget för konfigurationen av din begränsade resurs uppsättning. Välj din typ av lagrings konto och namnet på det lagrings konto som du vill skapa en regel uppsättning på. Varje uppsättning regler tillämpas i förhållande till en mappsökväg som anges i fältet **mappsökväg** . 
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Skapa ny regel för webbprogramsomfattande resurs uppsättning" border="true":::
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Skapa ny regel för webbprogramsomfattande resurs uppsättning" border="true":::
+
+1. Ange omfånget för konfigurationen av din begränsade resurs uppsättning. Välj din typ av lagrings konto och namnet på det lagrings konto som du vill skapa en regel uppsättning på. Varje uppsättning regler tillämpas i förhållande till en mappsökväg som anges i fältet **mappsökväg** .
+
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Skapa konfigurationer för begränsad resurs uppsättning" border="true":::
 
 1. Om du vill ange en regel för ett konfigurations omfång väljer du **+ ny regel**.
+
 1. Ange följande fält för att skapa en regel:
-    1. **Regel namn:** Namnet på konfigurations regeln. Det här fältet har ingen inverkan på de till gångar som regeln gäller för.
-    1. **Kvalificerat namn:** En kvalificerad sökväg som använder en kombination av text, dynamiska Replacements och statiska Replacements för att matcha till gångar till konfigurations regeln. Den här sökvägen är relativ i förhållande till konfigurations regelns omfattning. I avsnittet [syntax](#syntax) nedan finns detaljerade instruktioner om hur du anger kvalificerade namn. 
-    1. **Visnings namn:** Visnings namnet för till gången. Det här fältet är valfritt. Använd oformaterad text och statiska omplaceringar för att anpassa hur en till gång visas i katalogen. Mer detaljerade instruktioner finns i avsnittet [syntax](#syntax) nedan.
-    1. **Gruppera inte som resurs uppsättning:** Om den är aktive rad kommer den matchade resursen inte att grupperas i en resurs uppsättning. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Skapa ny regel för webbprogramsomfattande resurs uppsättning" border="true"::: 
-1. Spara regeln genom att klicka på **Lägg till**. 
+
+   1. **Regel namn:** Namnet på konfigurations regeln. Det här fältet har ingen inverkan på de till gångar som regeln gäller för.
+
+   1. **Kvalificerat namn:** En kvalificerad sökväg som använder en kombination av text, dynamiska Replacements och statiska Replacements för att matcha till gångar till konfigurations regeln. Den här sökvägen är relativ i förhållande till konfigurations regelns omfattning. I avsnittet [syntax](#syntax) nedan finns detaljerade instruktioner om hur du anger kvalificerade namn.
+
+   1. **Visnings namn:** Visnings namnet för till gången. Det här fältet är valfritt. Använd oformaterad text och statiska omplaceringar för att anpassa hur en till gång visas i katalogen. Mer detaljerade instruktioner finns i avsnittet [syntax](#syntax) nedan.
+
+   1. **Gruppera inte som resurs uppsättning:** Om den är aktive rad kommer den matchade resursen inte att grupperas i en resurs uppsättning.
+
+      :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Skapa en ny konfigurations regel." border="true":::
+
+1. Spara regeln genom att klicka på **Lägg till**.
 
 ## <a name="scoped-resource-set-syntax"></a><a name="syntax"></a> Syntax för begränsad resurs uppsättning
 
@@ -69,21 +78,23 @@ Nedan visas tillgängliga typer som kan användas i statiska och dynamiska ompla
 | ---- | --------- |
 | sträng | En serie med 1 eller flera Unicode-tecken, inklusive avgränsare som blank steg. |
 | int | En serie med 1 eller fler 0-9 ASCII-tecken kan vara 0 före fast (t. ex. 0001). |
-| guid | En serie med 32-eller 8-4-4-4-12-sträng representation av en UUID som defineddefa i https://tools.ietf.org/html/rfc4122 |
-| date | En serie med 6 eller 8 0-9 ASCII-tecken med alternativ avgränsare: ÅÅÅÅMMDD, åååå-mm-dd, yymmdd, yy-mm-dd, angivet i https://tools.ietf.org/html/rfc3339 |
-| time | En serie med 4 eller 6 0-9 ASCII-tecken med alternativ avgränsare: HHmm, HH: mm, HHmmss, HH: mm: SS angiven i https://tools.ietf.org/html/rfc3339 |
-| timestamp | En serie med 12 eller 14 0-9 ASCII-tecken med alternativ avgränsare: ÅÅÅÅ-MM-ddTHH: mm, yyyymmddhhmm, åååå-mm-ddTHH: mm: SS, yyyymmddHHmmss som anges i https://tools.ietf.org/html/rfc3339 |
+| guid | En serie med 32-eller 8-4-4-4-12-sträng representation av en UUID som defineddefa i [RFC 4122](https://tools.ietf.org/html/rfc4122). |
+| date | En serie med 6 eller 8 0-9 ASCII-tecken med alternativ avgränsare: ÅÅÅÅMMDD, åååå-mm-dd, yymmdd, yy-mm-dd, som anges i [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| time | En serie med 4 eller 6 0-9 ASCII-tecken med alternativ avgränsare: HHmm, HH: mm, HHmmss, HH: mm: SS som anges i [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| timestamp | En serie med 12 eller 14 0-9 ASCII-tecken med alternativ avgränsare: ÅÅÅÅ-MM-ddTHH: mm, yyyymmddhhmm, åååå-mm-ddTHH: mm: SS, yyyymmddHHmmss som anges i [RFC 3339](https://tools.ietf.org/html/rfc3339). |
 | boolean | Kan innehålla "sant" eller "falskt", inte Skift läges okänsligt. |
-| antal | En serie med 0 eller fler 0-9 ASCII-tecken, det kan vara 0 före fast (t. ex. 0001) följt av en punkt "." och en serie med 1 eller fler 0-9 ASCII-tecken kan vara 0 som postfix (t. ex. 100) | 
+| antal | En serie med 0 eller fler 0-9 ASCII-tecken, det kan vara 0 prefix (t. ex. 0001) följt av en punkt "." och en serie med 1 eller flera 0-9 ASCII-tecken, den kan vara 0 som postfix (t. ex. 100) |
 | hex | En serie med 1 eller flera ASCII-tecken från set 0-1 och A-F, värdet kan vara 0 före fast |
-| locale | En sträng som matchar den syntax som anges i https://tools.ietf.org/html/rfc5646 |
+| locale | En sträng som matchar den syntax som anges i [RFC 5646](https://tools.ietf.org/html/rfc5646). |
 
-## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Ordningen för de regler för resurs uppsättning som används för omfång tillämpas.
+## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Ordning för regler för omfattning av resurs uppsättning som tillämpas
 
 Nedan visas ordningen för åtgärder för att tillämpa regler för begränsad resurs uppsättning:
 
-1. Mer exakta omfattningar får företräde om en till gång matchar två regler. Till exempel gäller regler i ett omfång `container/folder` innan reglerna i omfånget används `container` . 
+1. Mer exakta omfattningar får företräde om en till gång matchar två regler. Till exempel gäller regler i ett omfång `container/folder` innan reglerna i omfånget används `container` .
+
 1. Ordning för regler inom ett angivet omfång. Detta kan redige ras i UX.
+
 1. Om en till gång inte matchar någon angiven regel gäller standard uppsättningarna för resurs uppsättningen.
 
 ## <a name="examples"></a>Exempel
@@ -95,16 +106,16 @@ SAP-dataextrahering i fullständig och delta belastning
 #### <a name="inputs"></a>Indata
 
 Projektfiler
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
-#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning 
+#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning
 
-**Omfattning:**https://myazureblob.blob.core.windows.net/bar/
+**Omfattning:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Visnings namn:** Extern kund
 
@@ -112,7 +123,7 @@ Projektfiler
 
 **Resurs uppsättning:** True
 
-#### <a name="output"></a>Utdata 
+#### <a name="output"></a>Utdata
 
 En resurs uppsättnings till gång
 
@@ -124,17 +135,18 @@ En resurs uppsättnings till gång
 
 IoT-data i Avro-format
 
-#### <a name="inputs"></a>Indata 
+#### <a name="inputs"></a>Indata
 
 Projektfiler
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rules"></a>Regler för begränsad resurs uppsättning 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Omfattning:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rules"></a>Regler för begränsad resurs uppsättning
+
+**Omfattning:**`https://myazureblob.blob.core.windows.net/bar/`
 
 Regel 1
 
@@ -150,11 +162,11 @@ Regel 2
 
 **Kvalificerat namn:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Resurs uppsättning: true* 
+#### <a name="resource-set-true"></a>*Resurs uppsättning: true*
 
-#### <a name="outputs"></a>Utdata 
+#### <a name="outputs"></a>Utdata
 
-2 resurs uppsättningar 
+2 resurs uppsättningar
 
 Resurs uppsättning 1
 
@@ -172,17 +184,18 @@ Resurs uppsättning 2
 
 IoT-data i Avro-format
 
-#### <a name="inputs"></a>Indata 
+#### <a name="inputs"></a>Indata
 
 Projektfiler
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Omfattning:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning
+
+**Omfattning:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Visnings namn:** ' Machine-{{MachineID}} '
 
@@ -190,7 +203,7 @@ Projektfiler
 
 **Resurs uppsättning:** True
 
-#### <a name="outputs"></a>Utdata 
+#### <a name="outputs"></a>Utdata
 
 Resurs uppsättning 1
 
@@ -208,25 +221,26 @@ Resurs uppsättning 2
 
 Gruppera inte i resurs uppsättningar
 
-#### <a name="inputs"></a>Indata 
+#### <a name="inputs"></a>Indata
 
 Projektfiler
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Omfattning:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning
 
-**Visnings namn:** ' Machine-{{MachineID}} '
+**Omfattning:**`https://myazureblob.blob.core.windows.net/bar/`
+
+**Visnings namn:**`Machine-{{machineid}}`
 
 **Kvalificerat namn:**`raw/machinename-{{machineid:int}}/{{:date}}/{{:time}}-{{:int}}.avro`
 
 **Resurs uppsättning:** falskt
 
-#### <a name="outputs"></a>Utdata 
+#### <a name="outputs"></a>Utdata
 
 4 enskilda till gångar
 

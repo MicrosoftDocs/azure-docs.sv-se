@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520718"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610492"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Använda kubectl för att köra ett Kubernetes tillstånds känsligt program med en PersistentVolume på din Azure Stack Edge Pro-enhet
 
@@ -21,7 +21,7 @@ ms.locfileid: "102520718"
 
 Den här artikeln visar hur du distribuerar ett tillstånds känsligt program med en instans i Kubernetes med en PersistentVolume (PV) och en distribution. Distributionen använder `kubectl` kommandon i ett befintligt Kubernetes-kluster och distribuerar MySQL-programmet. 
 
-Den här proceduren är avsedd för de som har granskat [Kubernetes-lagringen på Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-kubernetes-storage.md) och som är bekanta med begreppen [Kubernetes-lagring](https://kubernetes.io/docs/concepts/storage/).
+Den här proceduren är avsedd för de som har granskat [Kubernetes-lagringen på Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-kubernetes-storage.md) och som är bekanta med begreppen [Kubernetes-lagring](https://kubernetes.io/docs/concepts/storage/). 
 
 Azure Stack Edge Pro stöder också körning av Azure SQL Edge-behållare och dessa kan distribueras på ett liknande sätt som beskrivs här för MySQL. Mer information finns i [Azure SQL Edge](../azure-sql-edge/overview.md).
 
@@ -62,7 +62,8 @@ Du är redo att distribuera ett tillstånds känsligt program på din Azure Stac
 Om du vill konfigurera ett PV statiskt måste du skapa en resurs på enheten. Följ de här stegen för att etablera ett PV mot din SMB-resurs. 
 
 > [!NOTE]
-> Det speciella exemplet som används i den här instruktions artikeln fungerar inte med NFS-resurser. I allmänhet kan NFS-resurser tillhandahållas på din Azure Stack Edge-enhet med program som inte är databaser.
+> - Det speciella exemplet som används i den här instruktions artikeln fungerar inte med NFS-resurser. I allmänhet kan NFS-resurser tillhandahållas på din Azure Stack Edge-enhet med program som inte är databaser.
+> - För att distribuera tillstånds känsliga program som använder lagrings volymer för att tillhandahålla beständig lagring, rekommenderar vi att du använder `StatefulSet` . Det här exemplet använder `Deployment` bara en replik och är lämplig för utveckling och testning. 
 
 1. Välj om du vill skapa en Edge-resurs eller en lokal lokal resurs. Följ instruktionerna i [Lägg till en resurs](azure-stack-edge-manage-shares.md#add-a-share) för att skapa en resurs. Se till att markera kryss rutan för att **använda resurs med Edge Compute**.
 

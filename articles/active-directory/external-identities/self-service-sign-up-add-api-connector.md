@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f190b8ffbb98c6ff5465af869305de4c9135cc3f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102610113"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008730"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Lägga till en API-anslutning till ett användar flöde
 
@@ -59,12 +59,12 @@ Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../../key-vaul
 
 Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autentisering](../../app-service/app-service-web-configure-tls-mutual-auth.md) för att lära dig hur du aktiverar och validerar certifikatet från API-slutpunkten.
 
-Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Om du vill överföra ett nytt certifikat till en befintlig API-anslutning väljer du API-anslutningen under **alla API-kopplingar** och klickar på **överför ny anslutning**. Det senast överförda certifikatet som inte har upphört att gälla och som har passerat start datumet används automatiskt av Azure Active Directory.
+Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Om du vill överföra ett nytt certifikat till en befintlig API-koppling väljer du API-anslutningen under **alla API-kopplingar** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som har passerat start datumet används automatiskt av Azure Active Directory.
 
 ### <a name="api-key"></a>API-nyckel
-Vissa tjänster använder en API-nyckel för att göra det svårare att komma åt dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Vissa tjänster använder en API-nyckel för att obfuscate åtkomst till dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Detta är inte en mekanism som endast ska användas i produktion. Därför krävs alltid konfiguration för Basic-eller certifikatautentisering. Om du vill implementera en autentiseringsmetod (rekommenderas inte) i utvecklings syfte kan du välja grundläggande autentisering och använda tillfälliga värden för `username` och `password` att ditt API kan ignorera när du implementerar auktoriseringen i ditt API.
+Detta är inte en mekanism som endast ska användas i produktion. Därför krävs alltid konfiguration för Basic-eller certifikatautentisering. Om du inte vill implementera någon autentiseringsmetod (rekommenderas inte) i utvecklings syfte kan du välja grundläggande autentisering och använda tillfälliga värden för `username` och `password` att ditt API kan ignorera när du implementerar auktoriseringen i ditt API.
 
 ## <a name="the-request-sent-to-your-api"></a>Begäran skickades till ditt API
 En API-anslutning materialiseras som en **http post** -begäran och skickar användarattribut ("anspråk") som nyckel/värde-par i en JSON-text. Attributen serialiseras på samma sätt som [Microsoft Graph](/graph/api/resources/user#properties) användar egenskaper. 
@@ -76,7 +76,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -138,7 +138,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -189,7 +189,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",

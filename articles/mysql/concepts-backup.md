@@ -6,22 +6,22 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492819"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010362"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Säkerhets kopiering och återställning i Azure Database for MySQL
 
-Azure Database for MySQL skapar automatiskt Server säkerhets kopior och lagrar dem i användar konfiguration lokalt redundant eller Geo-redundant lagring. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhets kopiering och återställning är en viktig del av en strategi för affärs kontinuitet eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
+Azure Database for MySQL skapar automatiskt serversäkerhetskopior och lagrar dem i användarkonfigurerad lokalt redundant eller geo-redundant lagring. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhetskopiering och återställning är en viktig del i strategin för affärskontinuitet, eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
 
 ## <a name="backups"></a>Säkerhetskopior
 
 Azure Database for MySQL säkerhetskopierar datafilerna och transaktions loggen. Med dessa säkerhets kopieringar kan du återställa en server till alla tidpunkter inom den konfigurerade kvarhållningsperioden för säkerhets kopior. Standard kvarhållningsperioden för säkerhets kopiering är sju dagar. Du kan [också konfigurera det](howto-restore-server-portal.md#set-backup-configuration) upp till 35 dagar. Alla säkerhetskopior krypteras med AES 256-bitars kryptering.
 
-De här säkerhetskopierade filerna är inte användare-exponerade och kan inte exporteras. Dessa säkerhets kopior kan bara användas för återställnings åtgärder i Azure Database for MySQL. Du kan använda [mysqldump](concepts-migrate-dump-restore.md) för att kopiera en databas.
+De säkerhetskopierade filerna visas inte för användarna och kan inte exporteras. Dessa säkerhets kopior kan bara användas för återställnings åtgärder i Azure Database for MySQL. Du kan använda [mysqldump](concepts-migrate-dump-restore.md) för att kopiera en databas.
 
 Säkerhets kopieringens typ och frekvens beror på Server serverns lagrings utrymme.
 
@@ -86,7 +86,17 @@ Det finns två typer av återställning:
 - **Återställning på plats-till-tid** är tillgängligt med alternativ för redundans och skapar en ny server i samma region som den ursprungliga servern som använder kombinationen av fullständiga säkerhets kopieringar och säkerhets kopieringar av transaktions loggar.
 - **Geo-återställning** är bara tillgängligt om du har konfigurerat servern för Geo-redundant lagring och du kan återställa servern till en annan region som använder den senaste säkerhets kopian.
 
-Den uppskattade återställnings tiden beror på flera faktorer, till exempel databasens storlek, transaktions loggens storlek, nätverks bandbredden och det totala antalet databaser som återställs i samma region på samma tid. Återställnings tiden är vanligt vis mindre än 12 timmar.
+Den uppskattade tiden för återställning av servern beror på flera faktorer:
+* Databasernas storlek
+* Antalet transaktions loggar som ingår
+* Den mängd aktivitet som måste spelas upp för att återställas till återställnings punkten
+* Nätverks bandbredden om återställningen är till en annan region
+* Antalet samtidiga återställnings begär Anden som bearbetas i mål regionen
+* Förekomsten av primär nyckel i tabellerna i-databasen. Överväg att lägga till primär nyckel för alla tabeller i databasen för snabbare återställning. Du kan använda följande fråga för att kontrol lera om tabellerna har en primär nyckel:
+```sql
+select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
+```
+För en stor eller mycket aktiv databas kan återställningen ta flera timmar. Om det finns ett långvarigt avbrott i en region, är det möjligt att ett stort antal geo-återställnings begär Anden kommer att initieras för haveri beredskap. När det finns många begär Anden kan återställnings tiden för enskilda databaser öka. De flesta databas återställningar slutförs på mindre än 12 timmar.
 
 > [!IMPORTANT]
 > Borttagna servrar kan bara återställas inom **fem dagar** från borttagningen efter vilken säkerhets kopian tas bort. Säkerhets kopian av databasen kan bara nås och återställas från Azure-prenumerationen som är värd för-servern. Om du vill återställa en släppt Server, se [dokumenterade steg](howto-restore-dropped-server.md). För att skydda server resurser, efter distribution, från oavsiktlig borttagning eller oväntade ändringar, kan administratörer utnyttja [hanterings lås](../azure-resource-manager/management/lock-resources.md).

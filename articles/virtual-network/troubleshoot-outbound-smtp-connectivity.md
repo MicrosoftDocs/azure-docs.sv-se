@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054863"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607619"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Felsöka utgående SMTP-anslutningsproblem i Azure
 
@@ -76,6 +76,10 @@ För prenumerationer av följande typer som har skapats efter den 15 november 20
 Om du vill kunna skicka e-post från virtuella Azure-datorer direkt till externa e-postleverantörer (utan att använda ett autentiserat SMTP-relä) kan du göra en begäran genom att öppna ett support ärende genom att använda följande typ av problem: **teknisk**  >  **Virtual Network**  >  **anslutning**  >  **kan inte skicka e-post (SMTP/port 25)**. Se till att lägga till information om varför din distribution måste skicka e-post direkt till e-postleverantörer i stället för att använda ett autentiserat relä. Begär Anden kommer att granskas och godkännas enligt Microsofts gottfinnande. Begär Anden beviljas endast efter att ytterligare antibedrägeri kontroller har slutförts. 
 
 När en prenumeration är undantagen och de virtuella datorerna har stoppats och startats om i Azure Portal, undantas alla virtuella datorer i den prenumerationen. Undantaget gäller endast för den prenumeration som begärs och endast för VM-trafik som dirigeras direkt till Internet.
+
+## <a name="changing-subscription-type"></a>Ändrar prenumerations typ
+
+Om du ändrar prenumerations typ eller din moln lösnings leverantör eller prenumerationen betala per användning godkänns måste du stoppa, frigöra och sedan starta om den virtuella datorn för att den nya principen ska börja gälla. Om du har en prenumerations typ som är tillåten som standard och sedan byter till en prenumerations typ som inte är tillåten kan port 25 sedan blockeras på grund av ändringarna i distributionen.
 
 ## <a name="need-help-contact-support"></a>Behöver du hjälp? Kontakta supporten
 

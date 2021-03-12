@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bbf0530c1a7f1a747d456d87efc106418f23b7ba
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 06db7bcb5698f152dd5062762fdb3d59ae326e22
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98053003"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603327"
 ---
 SMB Multichannel för Azure-filresurser har för närvarande följande begränsningar:
 - Kan endast användas med lokalt redundanta FileStorage-konton.
@@ -22,5 +22,5 @@ SMB Multichannel för Azure-filresurser har för närvarande följande begränsn
 - SMB Direct stöds inte.
 - Privata slut punkter för lagrings konton stöds inte.
 - För lagrings konton med lokal Active Directory Domain Services (AD DS) eller Azure AD DS [Identity-baserad autentisering](../articles/storage/files/storage-files-active-directory-overview.md) aktive rad för Azure Files kan SMB-klienter inte använda Windows Utforskaren för att konfigurera NTFS-behörigheter för kataloger och filer.
-    - Använd Windows [icacls](/windows-server/administration/windows-commands/icacls) -verktyget eller [set-ACL-](/powershell/module/microsoft.powershell.security/set-acl?view=powershell-7) kommandot i stället för att konfigurera behörigheter.
+    - Använd Windows [icacls](/windows-server/administration/windows-commands/icacls) -verktyget eller [set-ACL-](/powershell/module/microsoft.powershell.security/set-acl) kommandot i stället för att konfigurera behörigheter.
 

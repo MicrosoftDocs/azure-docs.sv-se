@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360111"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615609"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Pris vägledning för SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +60,7 @@ Om du har en icke-lättviktig produktions arbets belastning använder du någon 
 |-----|-----|
 | Webb | Små webbplatser |
 | Standard | Små till medel stora arbets belastningar |
-| Enterprise | Stora eller verksamhets kritiska arbets belastningar|
+| Stora företag | Stora eller verksamhets kritiska arbets belastningar|
 
 Du har två alternativ att betala för SQL Server-licensiering för dessa versioner: *betala per användning* eller *ta med din egen licens (BYOL)*.
 
@@ -97,10 +97,7 @@ Om du vill skapa en virtuell Azure-dator som kör SQL Server 2017 med någon av 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Bring your own license (BYOL)
 
-**Genom att ta med din egen SQL Server licens via licensmobilitet**, som även kallas **BYOL**, innebär det att använda en befintlig SQL Server volym licens med Software Assurance i en virtuell Azure-dator. En SQL Server VM som bara använder BYOL avgifter för kostnaden för att köra den virtuella datorn, inte för SQL Server-licensiering, eftersom du redan har köpt licenser och Software Assurance via ett volym licensierings program.
-
-> [!IMPORTANT]
-> BYOL-avbildningar kräver en Enterprise-avtal med Software Assurance. De är inte tillgängliga som en del av Azure Cloud Solution Partner (CSP) för tillfället. CSP-kunder kan ta med sin egen licens genom att distribuera en avbildning med betala per användning och sedan aktivera [Azure Hybrid-förmån](licensing-model-azure-hybrid-benefit-ahb-change.md).
+**Genom att ta med din egen SQL Server licens via licensmobilitet**, som även kallas **BYOL**, innebär det att använda en befintlig SQL Server volym licens med Software Assurance i en virtuell Azure-dator. En SQL Server VM som bara använder BYOL avgifter för kostnaden för att köra den virtuella datorn, inte för SQL Server-licensiering, eftersom du redan har köpt licenser och Software Assurance via ett volym licensierings program eller via en moln lösnings partner (CSP).
 
 > [!NOTE]
 > BYOL-avbildningarna är för närvarande endast tillgängliga för virtuella Windows-datorer. Du kan dock installera SQL Server manuellt på en virtuell Linux-dator. Se rikt linjerna i [SQL Server på vanliga frågor och svar om Linux-datorer](../linux/frequently-asked-questions-faq.md).

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8ed21d8689bf5340c1bde0a7f782bb8614f7cf11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700209"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618482"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Om Azure Cloud Services (utökad support)
 
@@ -57,7 +57,7 @@ De stora skillnaderna mellan Cloud Services (klassiska) och Cloud Services (utö
 
 ## <a name="migration-to-azure-resource-manager"></a>Migrering till Azure Resource Manager
 
-Cloud Services (utökad support) innehåller två sökvägar som du kan använda för att migrera från [Azure Service Manager](/powershell/azure/servicemanagement/overview?preserve-view=true&view=azuresmps-4.0.0) till [Azure Resource Manager](../azure-resource-manager/management/overview.md). 
+Cloud Services (utökad support) innehåller två sökvägar som du kan använda för att migrera från [Azure Service Manager](/powershell/azure/servicemanagement/overview) till [Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 1) Kunder distribuerar moln tjänster direkt i Azure Resource Manager och tar sedan bort den gamla moln tjänsten i Azure Service Manager. 
 2) Migrering på plats har stöd för möjligheten att migrera Cloud Services (klassisk) med minimal avbrotts tid till Cloud Services (utökad support). 
 

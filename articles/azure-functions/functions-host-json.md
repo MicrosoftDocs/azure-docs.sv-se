@@ -3,12 +3,12 @@ title: host.jssom referens för Azure Functions 2. x
 description: Referens dokumentation för Azure Functions host.jsi filen med v2-körningen.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 545b02ee8496c9530b263227d4138441f27f0cf9
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: cbedf2212c52d8f1996d3cce0d96d494313ea525
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441711"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608826"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-referens för Azure Functions 2.x och senare 
 
@@ -152,7 +152,7 @@ Den fullständiga JSON-strukturen finns i det tidigare [exemplet host.jsi filen]
 > [!NOTE]
 > Logg sampling kan orsaka att vissa körningar inte visas på bladet Application Insights övervakning. Om du vill undvika logg sampling lägger `excludedTypes: "Request"` du till `samplingSettings` värdet.
 
-| Egenskap | Standardvärde | Description |
+| Egenskap | Standardvärde | Beskrivning |
 | --------- | --------- | --------- | 
 | samplingSettings | saknas | Se [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Aktiverar insamling av Live-mått. |
@@ -166,7 +166,7 @@ Den fullständiga JSON-strukturen finns i det tidigare [exemplet host.jsi filen]
 
 Mer information om de här inställningarna finns [i sampling i Application Insights](../azure-monitor/app/sampling.md). 
 
-|Egenskap | Standardvärde | Description |
+|Egenskap | Standardvärde | Beskrivning |
 | --------- | --------- | --------- | 
 | isEnabled | true | Aktiverar eller inaktiverar sampling. | 
 | maxTelemetryItemsPerSecond | 20 | Mål antalet för telemetri som loggats per sekund på varje server värd. Om din app körs på många värdar kan du minska det här värdet så att det ligger kvar i den övergripande trafik hastigheten. | 
@@ -182,7 +182,7 @@ Mer information om de här inställningarna finns [i sampling i Application Insi
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Egenskap | Standardvärde | Description |
+|Egenskap | Standardvärde | Beskrivning |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Aktiverar eller inaktiverar utökad HTTP-begäran om HTTP-utlösare: inkommande begäran korrelations rubriker, stöd för flera instrument nycklar, HTTP-metod, sökväg och svar. |
 | enableW3CDistributedTracing | true | Aktiverar eller inaktiverar stöd för W3C Distributed tracing Protocol (och aktiverar ett äldre korrelations schema). Aktive ras som standard om `enableHttpTriggerExtendedInfoCollection` är sant. Om `enableHttpTriggerExtendedInfoCollection` är False gäller den här flaggan enbart utgående begär Anden, inte inkommande begär Anden. |
@@ -192,7 +192,7 @@ Mer information om de här inställningarna finns [i sampling i Application Insi
 
 Mer information om ögonblicks bilder finns i [fel sökning av ögonblicks bilder av undantag i .net-appar](../azure-monitor/app/snapshot-debugger.md) och [Felsöka problem som aktiverar Application Insights Snapshot debugger eller visning av ögonblicks bilder](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
-|Egenskap | Standardvärde | Description |
+|Egenskap | Standardvärde | Beskrivning |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Slut punkten som används för att ansluta till tjänsten Application Insights Snapshot Debugger. Om värdet är null används en standard slut punkt. |
 | captureSnapshotMemoryWeight | 0,5 | Vikten som ges till den aktuella processens minnes storlek vid kontroll om det finns tillräckligt med minne för att ta en ögonblicks bild. Det förväntade värdet är ett större än 0-bråk (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -240,7 +240,7 @@ Konfigurations inställningar för en anpassad hanterare. Mer information finns 
 }
 ```
 
-|Egenskap | Standardvärde | Description |
+|Egenskap | Standardvärde | Beskrivning |
 | --------- | --------- | --------- |
 | defaultExecutablePath | saknas | Den körbara fil som ska startas som anpassad hanterare. Det är en obligatorisk inställning när du använder anpassade hanterare och dess värde är i förhållande till Function-programroten. |
 | workingDirectory | *function-app-rot* | Den arbets katalog där processen för anpassad hanterare ska startas. Det är en valfri inställning och dess värde är i förhållande till Function-programmets rot. |
@@ -253,7 +253,7 @@ Konfigurations inställningen finns i [bindningar för Durable Functions](durabl
 
 ## <a name="eventhub"></a>eventHub
 
-Konfigurations inställningar finns i [Event Hub-utlösare och bindningar](functions-bindings-event-hubs-trigger.md#host-json). 
+Konfigurations inställningar finns i [Event Hub-utlösare och bindningar](functions-bindings-event-hubs.md#host-json). 
 
 ## <a name="extensions"></a>tillägg
 
@@ -310,7 +310,7 @@ Konfigurations inställningar för [övervakaren av värd hälsa](https://github
 }
 ```
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------| 
 |enabled|true|Anger om funktionen är aktive rad. | 
 |healthCheckInterval|10 sekunder|Tidsintervallet mellan de regelbundna hälso kontrollerna i bakgrunden. | 
@@ -342,7 +342,7 @@ Styr loggnings beteenden för Function-appen, inklusive Application Insights.
 }
 ```
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definierar vilken nivå av fil loggning som är aktive rad.  Alternativen är `never` , `always` , `debugOnly` . |
 |logLevel|saknas|Objekt som definierar logg kategori filtrering för funktioner i appen. Med den här inställningen kan du filtrera loggning för vissa funktioner. Mer information finns i [Konfigurera logg nivåer](configure-monitoring.md#configure-log-levels). |
@@ -365,7 +365,7 @@ Den här inställningen är underordnad [loggning](#logging). Den styr konsol lo
 }
 ```
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------| 
 |isEnabled|falskt|Aktiverar eller inaktiverar konsol loggning.| 
 
@@ -399,7 +399,7 @@ Kontrollerar princip alternativen för [återförsök](./functions-bindings-erro
 }
 ```
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------| 
 |strategi|null|Krävs. Återförsöksstrategin som ska användas. Giltiga värden är `fixedDelay` eller `exponentialBackoff` .|
 |maxRetryCount|null|Krävs. Maximalt antal tillåtna försök per funktions körning. `-1` innebär ett nytt försök på obestämd tid.|
@@ -431,7 +431,7 @@ Konfigurations inställningar för beteendet singleton lock. Mer information fin
 }
 ```
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Den period som funktions nivå lås utförs för. Lås automatisk förnyelse.| 
 |listenerLockPeriod|00:01:00|Den period som lyssnarens lås tas för.| 

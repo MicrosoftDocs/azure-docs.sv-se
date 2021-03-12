@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103999"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199580"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Använda Microsoft Authenticator eller Intune-företagsportal på Xamarin-program
 
@@ -326,6 +326,8 @@ Forward-snedstreck ( `/` ) framför signaturen i `android:path` värdet är **ob
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+Mer information om hur du konfigurerar ditt program för system webbläsare och stöd för Android 11 finns i [Uppdatera Android-manifestet för stöd för system webbläsare](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support).
+
 Alternativt kan du konfigurera MSAL så att den återgår till den inbäddade webbläsaren, som inte förlitar sig på en omdirigerings-URI:
 
 ```csharp
@@ -344,22 +346,22 @@ Här följer några tips på hur du undviker problem när du implementerar Broke
 
     Exempel: om du först installerar Microsoft Authenticator och sedan installerar Intune-företagsportal sker *endast* den sammanslagna autentiseringen på Microsoft Authenticator.
 - **Loggar** – om du stöter på ett problem med Broker-autentisering kan du med hjälp av Service Broker-loggarna hjälpa dig att diagnostisera orsaken.
-  - Visa Microsoft Authenticator loggar:
+  - Hämta Microsoft Authenticator loggar:
 
     1. Välj Meny knappen i det övre högra hörnet i appen.
-    1. Välj **Hjälp för att**  >  **skicka loggar**  >  **Visa loggar**.
-    1. Välj **Kopiera alla** för att kopiera Service Broker-loggarna till enhetens Urklipp.
+    1. Väljer du **Skicka feedback**  >  **med problem?**.
+    1. Under **Vad försöker du göra? väljer du** ett alternativ och lägger till en beskrivning.
+    1. Om du vill skicka loggarna väljer du pilen i det övre högra hörnet i appen.
 
-    Det bästa sättet att felsöka med dessa loggar är att skicka dem till dig själv och visa dem på din utvecklings dator. Det kan vara lättare att tolka loggarna på datorn i stället för på själva enheten. Du kan också använda ett test redigerings program på Android för att spara loggarna som en textfil och sedan använda en USB-kabel för att kopiera filen till en dator.
+    När du har skickat loggarna visas incident-ID i dialog rutan. Registrera incident-ID och inkludera det när du ber om hjälp.
 
-  - Visa Intune-företagsportal loggar:
+  - Hämta Intune-företagsportal loggar:
 
-    1. Välj Meny knappen i det övre vänstra hörnet i appen
-    1. Välj **Inställningar**  >  **diagnostikdata**
-    1. Välj **kopiera loggar** för att kopiera Service Broker-loggarna till ENHETens SD-kort.
-    1. Anslut enheten till en dator med hjälp av en USB-kabel för att visa loggarna på din utvecklings dator.
+    1. Välj Meny knappen i det övre vänstra hörnet i appen.
+    1. Välj **Hjälp** för  >  **e-postsupport**.
+    1. Om du vill skicka loggarna väljer du **överför endast loggar**.
 
-    När du har loggarna kan du söka igenom dem efter dina autentiseringsförsök via korrelations-ID. Korrelations-ID: t är kopplat till varje autentiseringsbegäran. Sök efter om du vill hitta fel som returneras av Microsoft Identity Platform-autentiseringens slut punkt `AADSTS` .
+    När du har skickat loggarna visas incident-ID i dialog rutan. Registrera incident-ID och inkludera det när du ber om hjälp.
 
 ## <a name="next-steps"></a>Nästa steg
 
