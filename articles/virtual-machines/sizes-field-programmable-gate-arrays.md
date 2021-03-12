@@ -3,17 +3,17 @@ title: Storlekar för virtuella Azure-datorer för fält-programmerbara grindar 
 description: Visar en lista över olika FPGA-optimerade storlekar som är tillgängliga för virtuella datorer i Azure. Visar information om antalet virtuella processorer, data diskar och nätverkskort samt lagrings data flöde och nätverks bandbredd för storlekar i den här serien.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-fpga
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: vikancha
-ms.openlocfilehash: b05c3198f6c3d84f852d9535a3cf0b67f66e01f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9eb0d5bc93cbe9c2a7cbae56c336115bb227b04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418060"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557683"
 ---
 # <a name="fpga-optimized-virtual-machine-sizes"></a>FPGA optimerade storlekar för virtuella datorer
 

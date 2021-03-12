@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce11fe5b65cd49cc880713eb4e47b081b6f3b44f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3495d0bd2a446b6b3255887d9b4523eb5a70ac53
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855981"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557326"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>Självstudie: distribuera din ASP.NET-app till Azure Virtual Machines med hjälp av Azure DevOps starter
 
@@ -46,7 +46,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -78,7 +78,7 @@ DevOps starter konfigurerar automatiskt en CI-version och versions utlösare som
  
 DevOps starter konfigurerade automatiskt en CI/CD-pipeline i Azure-pipeliner. Du kan utforska och anpassa pipelinen. För att bekanta dig med bygg-pipelinen gör du följande:
 
-1. Välj **Bygg pipelines**överst på DevOps starter-instrumentpanelen. En webbläsarflik visar bygg-pipelinen för det nya projektet.
+1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen. En webbläsarflik visar bygg-pipelinen för det nya projektet.
 
 1. Peka på fältet **status** och välj ellipsen (...). En meny visar flera alternativ, till exempel att köa en ny version, pausa en version och redigera build-pipeline.
 
@@ -198,4 +198,4 @@ I den här självstudiekursen lärde du dig att:
 Mer information om CI/CD-pipelinen finns i:
 
 > [!div class="nextstepaction"]
-> [Definiera din CD-pipeline med flera steg](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definiera din CD-pipeline med flera steg](/azure/devops/pipelines/release/define-multistage-release-process)

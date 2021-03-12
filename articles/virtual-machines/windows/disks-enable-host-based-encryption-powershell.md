@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 46c26b6070a874947dfe5d7acd5a615961576b49
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e56473ae935ec58a6cf6f0ea30fe5f7ccfec3f80
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736692"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017213"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Använd Azure PowerShell-modulen för att aktivera kryptering från slut punkt till slut punkt med kryptering på värden
 
@@ -23,9 +23,6 @@ När du aktiverar kryptering på värden krypteras data som lagras på den virtu
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Regioner som stöds
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>VM-storlekar som stöds
 
@@ -33,7 +30,7 @@ När du aktiverar kryptering på värden krypteras data som lagras på den virtu
 
 Du kan också hitta VM-storlekar program mässigt. Information om hur du hämtar dem program mässigt finns i avsnittet [hitta stödda VM-storlekar](#finding-supported-vm-sizes) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft.com med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer.
 

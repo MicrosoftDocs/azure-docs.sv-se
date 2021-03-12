@@ -11,26 +11,22 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 300df35918ea4868664fcb7c5882709eee4090ca
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582898"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008015"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app som anropar webb-API: er – kod konfiguration
 
 Lär dig hur du konfigurerar koden för daemon-programmet som anropar webb-API: er.
 
-## <a name="msal-libraries-that-support-daemon-apps"></a>MSAL-bibliotek som stöder daemon-appar
+## <a name="microsoft-libraries-supporting-daemon-apps"></a>Microsoft-bibliotek som stöder daemon-appar
 
-Dessa Microsoft-bibliotek stöder daemon-appar:
+Följande Microsoft-bibliotek stöder daemon-appar:
 
-  MSAL-bibliotek | Description
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework-och .NET Core-plattformarna stöds för att skapa daemon-program. (UWP, Xamarin. iOS och Xamarin. Android stöds inte eftersom dessa plattformar används för att bygga offentliga klient program.)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Stöd för daemon-program i python.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Stöd för daemon-program i Java.
+[!INCLUDE [active-directory-develop-libraries-daemon](../../../includes/active-directory-develop-libraries-daemon.md)]
 
 ## <a name="configure-the-authority"></a>Konfigurera utfärdaren
 

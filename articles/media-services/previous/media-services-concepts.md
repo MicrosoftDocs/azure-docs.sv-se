@@ -3,7 +3,7 @@ title: Azure Media Services koncept | Microsoft Docs
 description: Den här artikeln innehåller en kort översikt över Microsoft Azure Media Services koncept och länkar till andra artiklar för mer information.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 180965942285e99300c8aa054e638f2f0a2c0580
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fbe387b3f86dfd10cbc4e80a02ee2528e43c4b67
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695966"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016891"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services begrepp
 
@@ -192,7 +192,7 @@ Med progressiv nedladdning kan du starta uppspelning av media innan hela filen h
 >[!NOTE]
 >Du måste dekryptera krypterade resurser om du vill att de ska vara tillgängliga för progressiv nedladdning.
 
-För att ge användarna en URL för progressiv nedladdning måste du först skapa en OnDemandOrigin-lokaliserare. När du skapar en positionerare får du bas sökvägen till till gången. Du måste lägga till namnet på MP4-filen. Till exempel:
+För att ge användarna en URL för progressiv nedladdning måste du först skapa en OnDemandOrigin-lokaliserare. När du skapar en positionerare får du bas sökvägen till till gången. Du måste lägga till namnet på MP4-filen. Exempel:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 

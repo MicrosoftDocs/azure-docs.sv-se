@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915716"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632092"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Villkorlig åtkomst: Kräv MFA för administratörer
 
@@ -56,7 +56,7 @@ Följande steg hjälper dig att skapa en princip för villkorlig åtkomst som kr
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
 1. Under **tilldelningar** väljer **du användare och grupper**
-   1. Under **Inkludera** väljer du **katalog roller (för hands version)** och väljer följande roller som minst:
+   1. Under **Inkludera** väljer du **katalog roller** och väljer inbyggda roller som:
       * Administratör för autentisering
       * Faktureringsadministratör
       * Administratör för villkorlig åtkomst
@@ -69,12 +69,11 @@ Följande steg hjälper dig att skapa en princip för villkorlig åtkomst som kr
       * Användaradministratör
    
       > [!WARNING]
-      > Principer för villkorlig åtkomst stöder inte användare som har tilldelats en katalog roll som är [begränsad till en administrativ enhet](../roles/admin-units-assign-roles.md) eller katalog roller som omfattas direkt till ett-objekt, t. ex. genom [anpassade roller](../roles/custom-create.md).
+      > Principer för villkorlig åtkomst stöder inbyggda roller. Principer för villkorlig åtkomst tillämpas inte för andra roll typer, till exempel [administrativa enhets omfång](../roles/admin-units-assign-roles.md) eller [anpassade roller](../roles/custom-create.md).
 
    1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
    1. Välj **Klar**.
 1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **alla molnappar** och väljer sedan **Slutför**.
-1. Under **villkor**  >  **-klient program**,  växlar du till **Ja** och under **Välj de klient program som den här principen ska gälla för** lämna alla standardvärden markerade och välj **färdig**.
 1. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver Multi-Factor Authentication** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa för att aktivera principen.

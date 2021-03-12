@@ -3,7 +3,7 @@ title: Direkt uppspelning med Azure Media Services för att skapa data strömmar
 description: I det här avsnittet beskrivs hur du konfigurerar en kanal som tar emot en enda bit hastighets ström från en lokal kodare och sedan utför live encoding på en anpassad bit hastighets ström med Media Services.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/10/2021
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9b4cd54375a13da95259e27da680255f785df45
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268313"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013218"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Liveuppspelning med Azure Media Services för att skapa dataströmmar med flera bithastigheter
 
@@ -33,7 +33,7 @@ ms.locfileid: "89268313"
 I Azure Media Services (AMS) representerar en **kanal** en pipeline för bearbetning av direktsänd strömmande innehåll. En **kanal** tar emot direktsända indata strömmar på något av två sätt:
 
 * En lokal Live-kodare skickar en data ström med en bit hastighet till den kanal som är aktive rad för att utföra direktsänd kodning med Media Services i något av följande format: RTMP eller Smooth Streaming (fragmenterad MP4). Kanalen utför sedan Live Encoding av strömmen med en enda bithastighet till en video-ström med flera bithastigheter (anpassningsbar). På begäran levererar Media Services strömmen till kunder.
-* En lokal Live-kodare skickar en **RTMP** med flera bit hastigheter eller **Smooth Streaming** (fragmenterad MP4) till den kanal som inte är aktive rad för att utföra direktsänd kodning med AMS. De inmatade strömmarna passerar genom **kanal**s utan ytterligare bearbetning. Den här metoden kallas **genom strömning**. Du kan använda följande Live-kodare som utvärderar multi-bitrs Smooth Streaming: MediaExcel, Ateme, Föreställing Communications, Envivio, Cisco och grundämne. Följande Live-kodare utdata RTMP: [multistream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek Encoder.  En livekodare kan även skicka en ström med en enda bithastighet till en kanal som inte har aktiverats för Live Encoding, men det rekommenderas inte. På begäran levererar Media Services strömmen till kunder.
+* En lokal Live-kodare skickar en **RTMP** med flera bit hastigheter eller **Smooth Streaming** (fragmenterad MP4) till den kanal som inte är aktive rad för att utföra direktsänd kodning med AMS. De inmatade strömmarna passerar genom **kanal** s utan ytterligare bearbetning. Den här metoden kallas **genom strömning**. Du kan använda följande Live-kodare som utvärderar multi-bitrs Smooth Streaming: MediaExcel, Ateme, Föreställing Communications, Envivio, Cisco och grundämne. Följande Live-kodare utdata RTMP: [multistream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek Encoder.  En livekodare kan även skicka en ström med en enda bithastighet till en kanal som inte har aktiverats för Live Encoding, men det rekommenderas inte. På begäran levererar Media Services strömmen till kunder.
 
   > [!NOTE]
   > Att använda en direkt metod är det mest ekonomiska sättet att göra Direktsänd strömning.
@@ -127,7 +127,7 @@ Följande steg är allmänna steg som ingår i att skapa vanliga program för di
 
 ## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>Konfigurationer för kanalens indata (inmatnings konfiguration)
 ### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>Hämta strömnings protokoll
-Om **kodarens typ** är inställd på **standard**är giltiga alternativ:
+Om **kodarens typ** är inställd på **standard** är giltiga alternativ:
 
 * **RTMP** med enkel bit hastighet
 * Enkel bit hastighet, **fragmenterad MP4** (Smooth Streaming)
@@ -221,12 +221,12 @@ Anger den för inställning som ska användas av direktsänd kodare i den här k
 
 | Hastigheten | Bredd | Höjd | MaxFPS | Profil | Namn på utdataström |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Hög |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Hög |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Hög |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Hög |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Hög |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Hög |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |Högt |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Högt |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Högt |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Högt |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Högt |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Högt |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Utdata, ljud ström
 

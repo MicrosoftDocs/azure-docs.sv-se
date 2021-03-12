@@ -7,22 +7,25 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2019
-ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/11/2021
+ms.openlocfilehash: 5deaef04330e21c8d9c580bf2a16814d4e902f6a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497069"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199873"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Omvandla data med Mappa dataflöden
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Om du inte har använt Azure Data Factory tidigare kan du läsa [Introduktion till Azure Data Factory](introduction.md).
 
 I den här självstudien använder du gränssnittet i Azure Data Factory användar gränssnitt (UX) för att skapa en pipeline som kopierar och transformerar data från en Azure Data Lake Storage (ADLS) Gen2-källa till en ADLS Gen2 mottagare med hjälp av mappnings data flödet. Konfigurations mönstret i den här självstudien kan utökas vid omvandling av data med hjälp av data flöde för mappning
 
+ >[!NOTE]
+   >Den här självstudien är avsedd för att mappa data flöden i allmänhet. Data flöden är tillgängliga både i Azure Data Factory-och Synapse-pipeliner. Om du är nybörjare på data flöden i Azure Synapse-pipelines följer du [data flödet med Azure Synapse-pipeliner](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) 
+   
 I den här självstudien gör du följande:
 
 > [!div class="checklist"]

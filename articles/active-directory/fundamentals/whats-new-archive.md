@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 74bfd0fe8cf1d26ccf96a8a27985e456b4e0e67c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453027"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633486"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Vill du arkivera vad som är nytt i Azure Active Directory?
 
@@ -2106,7 +2106,7 @@ Om du behöver ytterligare behörigheter eller resurser som stöds, som du för 
 Nya etablerings loggar är tillgängliga som hjälper dig att övervaka och felsöka distribution av användar-och grupp etablering. Dessa nya loggfiler innehåller information om:
 
 - Vilka grupper har skapats i [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)
-- Vilka roller importerades från [Amazon Web Services (AWS)](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-amazon-web-services-aws)
+- Vilka roller har importer ATS från [AWS Single-Account åtkomst](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-aws-single-account-access)
 - Vilka medarbetare som inte har importer ATS från [Workday](../saas-apps/workday-inbound-tutorial.md)
 
 Mer information finns i [etablerings rapporter i Azure Active Directory portal (för hands version)](../reports-monitoring/concept-provisioning-logs.md).

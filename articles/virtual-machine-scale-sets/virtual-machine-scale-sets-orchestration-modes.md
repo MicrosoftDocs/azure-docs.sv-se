@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521755"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225038"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>För hands version: Orchestration-lägen för skalnings uppsättningar för virtuella datorer i Azure 
 
@@ -128,12 +128,22 @@ I följande tabell jämförs det flexibla Orchestration-läget, ett enhetligt Or
 |         Azure-aviseringar  |            Inga  |            Ja  |            Ja  |
 |         VM-insikter  |            Inga  |            Ja  |            Ja  |
 |         Azure Backup  |            Ja  |            Ja  |            Ja  |
-|         Azure Site Recovery  |            Inga  |            Inga  |            Ja  |
+|         Azure Site Recovery  |     Inga  |            Inga  |            Ja  |
 |         Lägg till/ta bort befintlig virtuell dator i gruppen  |            Inga  |            Inga  |            Inga  | 
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>Registrera dig för flexibelt Orchestration-läge
 Innan du kan distribuera skalnings uppsättningar för virtuella datorer i flexibelt Orchestration-läge måste du först registrera din prenumeration för för hands versions funktionen. Registreringen kan ta flera minuter att slutföra. Du kan använda följande Azure PowerShell-eller Azure CLI-kommandon för att registrera dig.
+
+### <a name="azure-portal"></a>Azure-portalen
+Gå till informations sidan för den prenumeration som du vill skapa en skalnings uppsättning i flexibelt Orchestration-läge och välj för hands versions funktioner på menyn. Välj de två Orchestrator-funktioner som ska aktive ras: _VMOrchestratorSingleFD_ och _VMOrchestratorMultiFD_ och tryck på knappen Registrera. Funktions registreringen kan ta upp till 15 minuter.
+
+![Funktions registrering.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
+
+När funktionerna har registrerats för din prenumeration slutför du opt-in-processen genom att sprida ändringen till beräknings resurs leverantören. Gå till fliken Resource providers för din prenumeration, Välj Microsoft. Compute och klicka på registrera igen.
+
+![Registrera igen](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
+
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 Använd cmdleten [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) för att aktivera för hands versionen av din prenumeration. 

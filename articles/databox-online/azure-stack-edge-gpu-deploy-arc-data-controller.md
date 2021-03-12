@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 3ff07c773a2976a296d13510a3ddd7b41217aaa2
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 57633df8c6482a9b0645813519991282bdbf22c1
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437629"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633520"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Distribuera Azure Data Services på din Azure Stack Edge Pro GPU-enhet
 
@@ -87,7 +87,7 @@ Skapa ett nytt, dedikerat namn område där du kommer att distribuera data styre
 
 1. Konfigurations filen ska finnas i `.kube` mappen i din användar profil på den lokala datorn. Kopiera filen till mappen i din användar profil.
 
-    ![Plats för konfigurations filen på klienten](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![Plats för konfigurations filen på klienten](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 1. Ge användaren åtkomst till namn området som du skapade. Ange: 
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <Name of namespace> -UserName <User name>`

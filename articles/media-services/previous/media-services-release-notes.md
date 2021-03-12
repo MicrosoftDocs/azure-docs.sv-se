@@ -3,7 +3,7 @@ title: Azure Media Services viktig information | Microsoft Docs
 description: Den här artikeln visar viktig information om Microsoft Azure Media Services v2.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694912"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017366"
 ---
 # <a name="azure-media-services-release-notes"></a>Viktig information om Azure Media Services
 
@@ -48,6 +48,26 @@ Vi vill höra från våra kunder så att vi kan fokusera på att åtgärda probl
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API versions historik
 Information om Media Services REST API versions historik finns i [Azure Media Services REST API referens].
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API och SDK-utfasnings meddelande
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Uppdatera din Azure Media Services REST API och SDK: er till v3 senast den 29 februari 2024
+
+Eftersom version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java erbjuder fler funktioner än version 2, kommer vi att ta bort version 2 av Azure Media Services REST API-och klient-SDK: er för .NET och Java. Vi rekommenderar att du gör switchen tidigare för att få bättre fördelar med version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java.
+Version 3 tillhandahåller:
+ 
+- Real tids support dygnet runt
+- ARM-REST-API: er, klient-SDK: er för .NET Core, Node.js, python, Java, go och Ruby.
+- Kundhanterade nycklar, betrodd lagrings integrering, stöd för privat länk och [mycket mer](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Åtgärd krävs:
+
+Du kan minimera störningar i arbets belastningarna genom att granska [migreringsguiden](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) för att överföra koden från version 2 API och SDK: er till version 3 API och SDK före den 29 februari 2024.
+**Efter 29 februari 2024** kommer Azure Media Services inte längre att acceptera trafik på version 2 REST API, arm-kontots hanterings-API-version 2015-10-01 eller från version 2 .net-klient-SDK: er. Detta omfattar klient-SDK: er med öppen källkod från tredje part som kan anropa API: t för version 2.  
+
+Se det officiella [uppdaterings meddelandet för Azure](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
 
 ## <a name="september-2020"></a>September 2020
 

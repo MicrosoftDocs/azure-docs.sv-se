@@ -49,8 +49,6 @@
       items:
         - name: Skapa ett konto med ARM
           href: quickstart-arm-template-account.md
-    - name: Snabb start för python Basic encoding
-      href: quickstart-basic-encoding-python.md
 - name: Självstudier
   items:
     - name: .NET
@@ -86,6 +84,10 @@
       items:
         - name: Koda och strömma en fjärrfil – Node.js
           href: stream-files-nodejs-quickstart.md
+    - name: Python
+      items:
+        - name: Snabb start för python Basic encoding
+          href: quickstart-basic-encoding-python.md
     - name: Azure Portal
       items:
         - name: Kundhanterade nycklar eller BYOK-självstudier

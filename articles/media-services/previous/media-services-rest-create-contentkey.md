@@ -3,7 +3,7 @@ title: Skapa innehålls nycklar med REST | Microsoft Docs
 description: Den här artikeln visar hur du skapar innehålls nycklar som ger säker åtkomst till till gångar.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a9960ece05b7cab4ddd26fdac7516f4adbccf5b0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256981"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017264"
 ---
 # <a name="create-content-keys-with-rest"></a>Skapa innehålls nycklar med REST
 
@@ -31,13 +31,13 @@ ms.locfileid: "89256981"
 > 
 > 
 
-Med Media Services kan du leverera krypterade till gångar. En **ContentKey** ger säker åtkomst till din **till gångs**användare. 
+Med Media Services kan du leverera krypterade till gångar. En **ContentKey** ger säker åtkomst till din **till gångs** användare. 
 
-När du skapar en ny till gång (till exempel innan du [överför filer](media-services-rest-upload-files.md)) kan du ange följande krypterings alternativ: **StorageEncrypted**, **CommonEncryptionProtected**eller **EnvelopeEncryptionProtected**. 
+När du skapar en ny till gång (till exempel innan du [överför filer](media-services-rest-upload-files.md)) kan du ange följande krypterings alternativ: **StorageEncrypted**, **CommonEncryptionProtected** eller **EnvelopeEncryptionProtected**. 
 
 När du levererar till gångar till dina klienter kan du [Konfigurera för att till gångar dynamiskt ska krypteras](media-services-rest-configure-asset-delivery-policy.md) med något av följande två krypteringar: **DynamicEnvelopeEncryption** eller **DynamicCommonEncryption**.
 
-Krypterade till gångar måste kopplas till **ContentKey**s. Den här artikeln beskriver hur du skapar en innehålls nyckel.
+Krypterade till gångar måste kopplas till **ContentKey** s. Den här artikeln beskriver hur du skapar en innehålls nyckel.
 
 Följande är allmänna steg för att skapa innehålls nycklar som du associerar med till gångar som du vill ska krypteras. 
 
@@ -71,7 +71,7 @@ Följande är allmänna steg för att skapa innehålls nycklar som du associerar
      }
     ```
 
-5. Skapa innehålls nyckeln med **EncryptedContentKey** (konverterad till Base64-kodad sträng), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**och **kontroll Summa** som du har tagit emot i föregående steg.
+5. Skapa innehålls nyckeln med **EncryptedContentKey** (konverterad till Base64-kodad sträng), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** och **kontroll Summa** som du har tagit emot i föregående steg.
 6. Associera entiteten **ContentKey** med din **till gångs** enhet genom $Links åtgärden.
 
 Den här artikeln visar inte hur du genererar en AES-nyckel, krypterar nyckeln och beräknar kontroll summan. 

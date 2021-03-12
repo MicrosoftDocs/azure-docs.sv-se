@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362292"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224392"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Agent installation
 
@@ -38,7 +38,7 @@ I följande tabell visas kraven för att använda Azure AD Connect Health.
 | Du är global administratör i Azure AD. |Som standard kan endast globala administratörer installera och konfigurera hälso agenter, få åtkomst till portalen och utföra åtgärder i Azure AD Connect Health. Mer information finns i [Administrera Azure AD-katalogen](../fundamentals/active-directory-whatis.md). <br /><br /> Genom att använda rollbaserad åtkomst kontroll i Azure (Azure RBAC) kan du ge andra användare i organisationen åtkomst till Azure AD Connect Health. Mer information finns i [Azure RBAC för Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Viktigt**: Använd ett arbets-eller skol konto för att installera agenterna. Du kan inte använda en Microsoft-konto. Mer information finns i [Registrera dig för Azure som en organisation](../fundamentals/sign-up-organization.md). |
 | Azure AD Connect Health agenten installeras på varje mål server. | Hälso agenter måste installeras och konfigureras på mål servrar så att de kan ta emot data och tillhandahålla funktioner för övervakning och analys. <br /><br />Om du till exempel vill hämta data från din Active Directory Federation Services (AD FS)-infrastruktur (AD FS) måste du installera agenten på AD FS-servern och Web Application Proxy-servern. På samma sätt måste du installera agenten på domän kontrol Lanterna för att kunna hämta data från din lokala Azure AD Domain Services-infrastruktur (Azure AD DS).  |
 | Azure-tjänstens slut punkter har utgående anslutning. | Under installation och körning kräver agenten anslutning till Azure AD Connect Health-tjänstens slutpunkter. Om brand väggar blockerar utgående anslutning lägger du till [slut punkterna för utgående anslutningar](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) i listan över tillåtna. |
-|Utgående anslutningar baseras på IP-adresser. | Information om brand Väggs filtrering baserat på IP-adresser finns i avsnittet om [Azure IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653).|
+|Utgående anslutningar baseras på IP-adresser. | Information om brand Väggs filtrering baserat på IP-adresser finns i avsnittet om [Azure IP-intervall](https://www.microsoft.com/download/details.aspx?id=56519).|
 | TLS-kontroll för utgående trafik filtreras eller inaktive ras. | Det kan hända att agent registrerings steget eller data överförings åtgärderna Miss söker om TLS-kontroll eller uppsägning av utgående trafik på nätverks lagret. Mer information finns i [Konfigurera TLS-kontroll](/previous-versions/tn-archive/ee796230(v=technet.10)). |
 | Brand Väggs portar på servern kör-agenten. |Agenten kräver att följande brand Väggs portar är öppna så att de kan kommunicera med Azure AD Connect Health tjänst slut punkter: <br /><li>TCP-port 443</li><li>TCP-port 5671</li> <br />Den senaste versionen av agenten kräver inte port 5671. Uppgradera till den senaste versionen så att endast port 443 krävs. Mer information finns i [hybrid identitet krävs portar och protokoll](./reference-connect-ports.md). |
 | Tillåt angivna webbplatser om förbättrad säkerhet i Internet Explorer är aktiverat.  |Om förbättrad säkerhet i Internet Explorer är aktiverat kan du tillåta följande webbplatser på den server där du installerar agenten:<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>Federations servern för din organisation som är betrodd av Azure AD (till exempel https: \/ /STS.contoso.com)</li> <br />Mer information finns i [så här konfigurerar du Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Om du har en proxyserver i nätverket kan du se den anteckning som visas i slutet av den här tabellen.|

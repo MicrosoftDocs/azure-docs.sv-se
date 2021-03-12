@@ -1,66 +1,52 @@
 ---
 title: 'Cognitive Services: Nyheter i dokument'
-description: Vad är nytt i Cognitive Services dokumenten för den 1 januari 2021 – 31 januari 2021.
+description: Vad är nytt i Cognitive Services dokumenten för den 1 februari 2020 – 28 februari 2020.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 02/08/2021
-ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710333"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631378"
 ---
-# <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services dokument: Nyheter i den 1 januari 2021 – 31 januari 2021
+# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services dokument: Nyheter för den 1 februari 2021 – 28 februari 2021
 
-Välkommen till nyheter i Cognitive Services dokumenten från den 1 januari 2021 till och med 31 januari 2021. Den här artikeln innehåller några av de större ändringarna av dokumenten under den här perioden.
+Välkommen till nyheter i Cognitive Services dokumenten från den 1 februari 2021 till 28 februari 2021. Den här artikeln innehåller några av de större ändringarna av dokumenten under den här perioden.
 
 ## <a name="cognitive-services"></a>Cognitive Services
 
-**Uppdaterade artiklar**
+### <a name="new-articles"></a>Nya artiklar
 
-- [Planera och hantera kostnader för Azure Cognitive Services](plan-manage-costs.md)
-- [Azure Cognitive Services-containrar](cognitive-services-container-support.md)
+- [Azure Policy kontroll av efterlevnad för Azure Cognitive Services](security-controls-policy.md)
+
+## <a name="containers"></a>Containers
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Vanliga frågor och svar om Azure Cognitive Services containers](/azure/cognitive-services/containers/container-faq)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Bild taggar för Azure Cognitive Services container och viktig information](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Formigenkänning
 
-**Nya artiklar**
+### <a name="updated-articles"></a>Uppdaterade artiklar
 
-- [Självstudie: extrahera formulär data i bulk med Azure Data Factory](./form-recognizer/tutorial-bulk-processing.md)
-
-**Uppdaterade artiklar**
-
-- [Vad är formigenkänning?](./form-recognizer/overview.md)
-
-## <a name="immersive-reader"></a>Avancerad läsare
-
-**Uppdaterade artiklar**
-
-- [Skapa en fördjupad läsar resurs och konfigurera Azure Active Directory autentisering](./immersive-reader/how-to-create-immersive-reader.md)
-
-## <a name="personalizer"></a>Personanpassning
-
-**Uppdaterade artiklar**
-
-- [Funktioner är information om åtgärder och kontext](./personalizer/concepts-features.md)
+- [Distribuera exempeletikettverktyget](/azure/cognitive-services/form-recognizer/deploy-label-tool)
+- [Vad är formigenkänning?](/azure/cognitive-services/form-recognizer/overview)
+- [Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
 
 ## <a name="text-analytics"></a>Textanalys
 
-**Uppdaterade artiklar**
+### <a name="updated-articles"></a>Uppdaterade artiklar
 
-- [Språk stöd för API för textanalys v3](./text-analytics/language-support.md)
-- [Migrera till version 3. x av API för textanalys](./text-analytics/migration-guide.md)
-- [Vad är nytt i API:et för textanalys?](./text-analytics/whats-new.md)
-
-## <a name="community-contributors"></a>Community-deltagare
-
-Följande personer har bidragit till Cognitive Services dokumenten under denna tid. Tack! Lär dig hur du kommer igång genom att följa länkarna under "delta" på [sidan Nyheter](index.yml).
-
-- [AnweshGangula](https://github.com/AnweshGangula) -Anwesh Gangula (1)
-- [cdglasz](https://github.com/cdglasz) -Christopher Glasz (1)
-- [huybuidac](https://github.com/huybuidac) -Bui DAC-Huy (1)
+- [Språk stöd för API för textanalys v3](/azure/cognitive-services/text-analytics/language-support)
+- [Så här anropar du Textanalys REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

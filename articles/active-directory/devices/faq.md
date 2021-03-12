@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365828"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199718"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Vanliga frågor och svar om Azure Active Directory enhets hantering
 
@@ -147,7 +147,7 @@ Se nedan om hur dessa åtgärder kan korrigeras.
 
 ### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>F: Jag kan inte lägga till fler än 3 Azure AD-användarkonton under samma användarsession på en Windows 10-enhet, varför?
 
-**A**: Azure AD har lagt till stöd för flera Azure AD-konton i Windows 10 1803-versionen. Windows 10 begränsar dock antalet Azure AD-konton på en enhet till 3 för att begränsa storleken på token-begäranden och aktivera tillförlitlig enkel inloggning (SSO). När 3 konton har lagts till ser användarna ett fel för efterföljande konton. Den ytterligare problem informationen på fel skärmen ger följande meddelande som anger orsaken till att åtgärden Lägg till konto blockeras eftersom kontot-gränsen har uppnåtts. 
+**A**: Azure AD har lagt till stöd för flera Azure AD-konton i Windows 10 1803-versionen. Windows 10 begränsar dock antalet Azure AD-konton på en enhet till 3 för att begränsa storleken på token-begäranden och aktivera tillförlitlig enkel inloggning (SSO). När 3 konton har lagts till ser användarna ett fel för efterföljande konton. Den ytterligare problem informationen på fel skärmen ger följande meddelande som anger varför-"Lägg till konto-åtgärd blockeras eftersom konto gränsen har nåtts". 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Vanliga frågor och svar om Azure AD Join

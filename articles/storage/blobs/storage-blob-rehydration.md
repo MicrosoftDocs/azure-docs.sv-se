@@ -4,17 +4,17 @@ description: Gör om Blobbarna från Arkiv lag ring så att du kan komma åt BLO
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/08/2021
+ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165679"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225089"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratisera BLOB-data från Arkiv lag rings nivå
 
@@ -29,6 +29,10 @@ När en BLOB finns i Arkiv åtkomst nivån anses den vara offline och kan inte l
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+### <a name="lifecycle-management"></a>Livs cykel hantering
+
+Återuppväcks en BLOB ändrar inte dess `Last-Modified` tid. Genom att använda [livs cykel hanterings](storage-lifecycle-management-concepts.md) funktionen kan du skapa ett scenario där en BLOB har reserver ATS, och sedan flyttar en princip för livs cykel hantering tillbaka bloben till arkivet, eftersom `Last-Modified` tiden överskrider den tröskel som angetts för principen. Undvik det här scenariot genom att använda *[Kopiera en arkiverad blob till en onlinenivå](#copy-an-archived-blob-to-an-online-tier)* metod. Kopierings metoden skapar en ny instans av blobben med en uppdaterad `Last-Modified` tid och utlöser inte policyn för livs cykel hantering.
+
 ## <a name="monitor-rehydration-progress"></a>Övervaka ÅTERUPPVÄCKNING-förlopp
 
 Under ÅTERUPPVÄCKNING använder du åtgärden Hämta BLOB-egenskaper för att kontrol lera attributet **arkivera status** och bekräfta när nivå ändringen har slutförts. Status är ”rehydrate-pending-to-hot” eller ”rehydrate-pending-to-cool” beroende på målnivån. När åtgärden har slutförts tas statusen för status för arkivet bort och egenskapen BLOB för **åtkomst nivå** visar den nya frekventa eller låg frekventa nivån.
@@ -42,7 +46,7 @@ Det kan ta flera timmar att kopiera en BLOB från arkivet, beroende på vilken r
 > [!IMPORTANT]
 > Ta inte bort käll-bloben förrän kopieringen har slutförts på mål platsen. Om käll-bloben tas bort kan inte mål-bloben slutföra kopieringen och måste vara tom. Du kan kontrol lera *x-MS-Copy-status* för att fastställa status för kopierings åtgärden.
 
-Arkiv-blobbar kan bara kopieras till mål nivåerna online inom samma lagrings konto. Det finns inte stöd för att kopiera en Arkiv-blob till en annan Archive-blob. I följande tabell visas CopyBlob funktioner.
+Arkiv-blobbar kan bara kopieras till mål nivåerna online inom samma lagrings konto. Det finns inte stöd för att kopiera en Arkiv-blob till en annan Archive-blob. I följande tabell visas funktionerna i en **kopierings-BLOB** -åtgärd.
 
 |                                           | **Källa för frekvent nivå**   | **Källa för låg frekvent nivå** | **Arkiv nivå källa**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |

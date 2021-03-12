@@ -9,14 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: kgremban
-ms.openlocfilehash: c24389a1957f9e0cfb23e3bb5b8604c34e57a915
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+monikerRange: iotedge-2018-06
+ms.openlocfilehash: bb87d09b67658f9a3d7c68f635bfcd9a29de675c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609523"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201635"
 ---
 # <a name="install-and-manage-azure-iot-edge-with-windows-containers"></a>Installera och hantera Azure IoT Edge med Windows-behållare
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge runtime är vad som förvandlar en enhet till en IoT Edge enhet. När en enhet har konfigurerats med IoT Edge-körningen kan du börja distribuera affärslogiken till den från molnet. Mer information finns i [förstå Azure IoT Edge Runtime och dess arkitektur](iot-edge-runtime.md).
 

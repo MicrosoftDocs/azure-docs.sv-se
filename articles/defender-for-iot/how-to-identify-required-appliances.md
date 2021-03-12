@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937142"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149313"
 ---
 # <a name="identify-required-appliances"></a>Identifiera apparater som krävs
 
@@ -38,13 +38,13 @@ Defender for IoT stöder både fysiska och virtuella distributioner.
 
 Det här avsnittet innehåller en översikt över de fysiska sensor modeller som är tillgängliga. Du kan köpa sensorer med förkonfigurerade program eller köp sensorer som inte är förkonfigurerade.
 
-| Distributions typ | Företag | Stora företag | SMB |
-|--|--|--|--|
-| Bild | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Modell på företags nivå."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Modellen på företags nivå."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB-nivå modellen."::: |
-| Modell | HPE DL360 | HPE DL20 | HPE DL20 |
-| Övervaka portar | Upp till 15 RJ45 eller 8 OPT | Upp till 8 RJ45 eller 6 OPT | 4 RJ45 |
-| Maximal bandbredd [1](#anchortext) | 3 GB per sekund | 1 GB per sekund | 200 MB per sekund |
-| Maximalt antal skyddade enheter | 30 000 | 15 000 | 1 000 |
+| Distributions typ | Företag | Stora företag | Montering av SMB-rack| SMB har upprobusts|
+|--|--|--|--|--|
+| Bild | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Modell på företags nivå."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Modellen på företags nivå."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB-nivå modellen."::: | :::image type="content" source="media/how-to-prepare-your-network/office-ruggedized.png" alt-text="Den SMB-robusta nivå modellen."::: |
+| Modell | HPE DL360 | HPE DL20 | HPE DL20 | HPE EL300 |
+| Övervaka portar | Upp till 15 RJ45 eller 8 OPT | Upp till 8 RJ45 eller 6 OPT | 4 RJ45 | Upp till 5 |
+| Maximal bandbredd [1](#anchortext) | 3 GB/SEK | 1 GB/SEK | 200 MB/SEK | 100 MB/SEK |
+| Maximalt antal skyddade enheter | 30 000 | 15 000 | 1 000 | 800 |
 
 Se [programspecifikationer](#appliance-specifications) för leverantörs information.
 
@@ -109,7 +109,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Description | Kvantitet |
+| PN | Beskrivning | Kvantitet |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO Server | 1 |
 | P19766-B21 | Europa – flerspråkig lokalisering | 1 |
@@ -180,7 +180,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Description | Kvantitet |
+| PN | Beskrivning | Kvantitet |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
@@ -194,6 +194,45 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 | P06683-B21 | HPE DL20 Gen10 M. 2 SATA/LFF AROC kabel kit | 1 |
 | 512485 – B21 | Support för HPE iLO adv 1 – Server licens 1-år | 1 |
 | 775612 – B21 | HPE 1U kort friktions järnvägs paket | 1 |
+
+## <a name="smb-rugged-hpe-edgeline-el300"></a>SMB robust: HPE Edgeline EL300
+
+| Komponent | Tekniska specifikationer |
+|--|--|
+| Konstruktion | Aluminium, fanless & damm-korrektur design |
+| Mått (höjd x bredd x djup) | 200.5 mm (7,9 ") hög, 232mm (9,14") brett av 100mm (3,9 ") djup |
+| Vikt | 4,91 KG (10,83 kg) |
+| Processor | Intel Core i7 – 8650U (1,9 GHz/4 kärnor/15W) |
+| 855 | Hubb för Intel® Q170 Platform Controller |
+| Minne | 8 GB DDR4 2133MHz wide temperatur SODIMM |
+| Storage | 128 GB 3ME3 wide temperatur mSATA SSD |
+| Nätverks styrenhet | 6x Gigabit Ethernet-portar med Intel® I219 |
+| Enhets åtkomst  | 4 USBs: 2 framtill; 2 baktill; 1 intern |
+| Nätadapter | 250V/10A |
+| Ansluter | Monterings sats, din järnväg |
+| Drift temperatur | 0C till + 70C  |
+| Luftfuktighet | 10% ~ 90%, icke-kondenserande |
+| Vibrationer | 0,3 Grms 10Hz till 300Hz, 15 minuter per axel – din järnväg   |
+| Skydd | 10G 10ms, halva-sinus, tre för varje axel. (Både positiva & negativ puls) – din järnväg |
+
+### <a name="appliance-bom"></a>Apparat struktur
+| Produkt | Beskrivning |
+|--|--|
+| P25828-B21 | HPE Edgeline EL300 v2 konvergerat Edge-system |
+| P25828-B21 B19 | HPE EL300 v2 konvergerat Edge-system |
+| P25833-B21 | Intel Core i7 – 8650U (1,9 GHz/4 kärnor/15W) FIO Basic processor Kit for HPE Edgeline EL300 |
+| P09176-B21 | HPE Edgeline 8 GB (1x8GB) med dubbla rangordning x8 DDR4-2666 SODIMM-CAS-19-19-19-registrerat minne WT kit |
+| P09188-B21 | HPE Edgeline 256GB SATA 6G Read intensivt M. 2 2242 3 miljoner Wty wide Temp SSD |
+| P04054-B21 | HPE Edgeline EL300 SFF till M. 2 aktiverings paket |
+| P08120-B21 | HPE Edgeline EL300 12VDC FIO transfer Board |
+| P08641-B21 | HPE Edgeline EL300 80W 12VDC strömförsörjning |
+| AF564A | HPE C13-SI-32 IL 250V 10Amp 1.83 m ström sladd |
+| P25835-B21 | HPE EL300 v2 FIO Carrier Board |
+| R1P49AAE | HPE EL300 iSM ADV 3 – dygnet runt Sup_Upd E-LTU |
+| P08018 – B21 valfritt | HPE Edgeline EL300 Low Profile klammer kit  |
+| P08019 – B21 valfritt | HPE Edgeline EL300 DIN järnvägs Mount-sats |
+| P08020 – B21 valfritt | HPE Edgeline EL300 vägg Mount kit |
+| P03456 – B21 valfritt | HPE Edgeline 1GbE 4-Port TSN FIO dotter kort |
 
 ## <a name="virtual-appliance-specifications"></a>Virtual installation-specifikationer
 
@@ -209,7 +248,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 | Typ | Stora företag |
 |--|--|
-| Description | Virtuell installation för företags distributions typer |
+| Beskrivning | Virtuell installation för företags distributions typer |
 | Virtuell processor | 8 |
 | Minne | 32 GB |
 | Storage | 1,8 TB |
@@ -238,7 +277,7 @@ När du har köpt installationen går du till **Defender för IoT**  >  **Networ
 
 | Komponent | Tekniska specifikationer |
 |--|--|
-| Chassi | 1U rack Server |
+| Chassi | 1U rack Server
 | Dimensioner | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(i) |
 | Vikt | Max 29,98 lb/13,6 kg |
 | Processor | Intel Xeon E-2144G 3,6 GHz, 8 M cache, lands-8T, Turbo (71 W) |
@@ -260,3 +299,4 @@ När du har köpt installationen går du till **Defender för IoT**  >  **Networ
 [Om Azure Defender för IoT-installation](how-to-install-software.md)
 
 [Om installation av Azure Defender för IoT-nätverk](how-to-set-up-your-network.md)
+

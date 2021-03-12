@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6836777c761fa2cce482cb000b6c86919e6b5613
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 829f89f716a29f09f88a2e02b257aba1b207d072
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834076"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634200"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>System krav för Azure Stack Edge Mini R
 
@@ -38,7 +38,7 @@ System kraven för Azure Stack Edge Mini R inkluderar:
 
 ## <a name="supported-edge-storage-accounts"></a>Gräns lagrings konton som stöds
 
-Följande gräns lagrings konton stöds med REST-gränssnittet på enheten. Gräns lagrings kontona skapas på enheten. Mer information finns i [Edge Storage-konton](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)
+Följande gräns lagrings konton stöds med REST-gränssnittet på enheten. Gräns lagrings kontona skapas på enheten. Mer information finns i [Edge Storage-konton](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts)
 
 |Typ  |Lagringskonto  |Kommentarer  |
 |---------|---------|---------|

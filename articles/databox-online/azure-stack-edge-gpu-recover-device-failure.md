@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b1bfbda007619bf5bd94d47297845881758037bc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442170"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636648"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Återställa från en misslyckad Azure Stack Edge Pro GPU-enhet 
 
@@ -52,10 +52,10 @@ Du är nu redo att distribuera de arbets belastningar som du körde på den gaml
 
 Följ dessa steg om du vill återställa data på gräns moln resurser på din enhet:
 
-1. [Lägg till resurser](azure-stack-edge-j-series-manage-shares.md#add-a-share) med samma resurs namn som skapades tidigare på den felande enheten. Se till att när du skapar resurser, **väljer du Blob container** är inställt på **Använd befintligt** och väljer sedan den behållare som användes med den tidigare enheten.
-1. [Lägg till användare](azure-stack-edge-j-series-manage-users.md#add-a-user) som hade åtkomst till den tidigare enheten.
-1. [Lägg till lagrings konton](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account) som är kopplade till resurserna som tidigare fanns på enheten. När du skapar gräns lagrings konton väljer du från en befintlig behållare och pekar på den behållare som har mappats till det Azure Storage konto som har mappats till den tidigare enheten. Alla data från enheten som skrevs till gräns lagrings kontot på den tidigare enheten laddades upp till den valda lagrings behållaren i det mappade Azure Storage kontot.
-1. [Uppdatera dela](azure-stack-edge-j-series-manage-shares.md#refresh-shares) data från Azure. Detta hämtar alla moln data från den befintliga behållaren till resurserna.
+1. [Lägg till resurser](azure-stack-edge-gpu-manage-shares.md#add-a-share) med samma resurs namn som skapades tidigare på den felande enheten. Se till att när du skapar resurser, **väljer du Blob container** är inställt på **Använd befintligt** och väljer sedan den behållare som användes med den tidigare enheten.
+1. [Lägg till användare](azure-stack-edge-gpu-manage-users.md#add-a-user) som hade åtkomst till den tidigare enheten.
+1. [Lägg till lagrings konton](azure-stack-edge-gpu-manage-storage-accounts.md#add-an-edge-storage-account) som är kopplade till resurserna som tidigare fanns på enheten. När du skapar gräns lagrings konton väljer du från en befintlig behållare och pekar på den behållare som har mappats till det Azure Storage konto som har mappats till den tidigare enheten. Alla data från enheten som skrevs till gräns lagrings kontot på den tidigare enheten laddades upp till den valda lagrings behållaren i det mappade Azure Storage kontot.
+1. [Uppdatera dela](azure-stack-edge-gpu-manage-shares.md#refresh-shares) data från Azure. Detta hämtar alla moln data från den befintliga behållaren till resurserna.
 
 ## <a name="restore-edge-local-shares"></a>Återställa Edge-lokala resurser
 
@@ -73,7 +73,7 @@ När ersättnings enheten är helt konfigurerad aktiverar du enheten för lokal 
 Följ dessa steg om du vill återställa data från lokala resurser:
 
 1. [Konfigurera beräkning på enheten](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. [Lägg till en lokal resurs](azure-stack-edge-j-series-manage-shares.md#add-a-local-share) tillbaka.
+1. [Lägg till en lokal resurs](azure-stack-edge-gpu-manage-shares.md#add-a-local-share) tillbaka.
 1. Kör återställnings proceduren som tillhandahålls av den data skydds lösning som du väljer. Se referenser från föregående tabell.
 
 ## <a name="restore-vm-files-and-folders"></a>Återställa VM-filer och mappar
