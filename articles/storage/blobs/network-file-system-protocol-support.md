@@ -9,12 +9,12 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428447"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224602"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage (för hands version)
 
@@ -112,7 +112,7 @@ Följande Azure Storage funktioner stöds inte när du aktiverar NFS 3,0-protoko
   
 ## <a name="nfs-30-features-not-yet-supported"></a>NFS 3,0-funktioner stöds ännu inte
 
-Följande NFS 3,0-funktioner stöds ännu inte med Azure Data Lake Storage Gen2.
+Följande NFS 3,0-funktioner stöds inte ännu.
 
 - NFS 3,0 över UDP. Endast NFS 3,0 över TCP stöds.
 
@@ -127,6 +127,12 @@ Följande NFS 3,0-funktioner stöds ännu inte med Azure Data Lake Storage Gen2.
 - Hård länk
 
 - Exportera en behållare som skrivskyddad
+
+## <a name="nfs-30-clients-not-yet-supported"></a>NFS 3,0-klienter stöds ännu inte
+
+Följande NFS 3,0-klienter stöds inte ännu.
+
+- Windows-klient för NFS
 
 ## <a name="pricing"></a>Prissättning
 

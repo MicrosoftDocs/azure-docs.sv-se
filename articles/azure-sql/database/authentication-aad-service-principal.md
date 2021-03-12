@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181762"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201248"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory tjänstens huvud namn med Azure SQL
 
@@ -52,7 +52,7 @@ Att stödja den här funktionen är användbart i Azure AD Application Automatio
 
 Om du vill aktivera en Azure AD-objekts skapande i SQL Database och Azure-Synapse för ett Azure AD-program, krävs följande inställningar:
 
-1. Tilldela server identiteten. Den tilldelade Server identiteten representerar den hanterade system identiteten (MSI). För närvarande stöder inte Server identiteten för Azure SQL användarens hanterade identitet (UMI).
+1. Tilldela server identiteten. Den tilldelade serverns identitet representerar Hanterad tjänstidentitet (MSI). För närvarande stöder inte Server identiteten för Azure SQL användarens hanterade identitet (UMI).
     - För en ny logisk Azure SQL-Server kör du följande PowerShell-kommando:
     
     ```powershell

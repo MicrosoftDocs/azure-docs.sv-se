@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f971466f25c2b7a4bd28e5b7eec6268f1b2e8b3d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199619"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225582"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -41,7 +41,9 @@ Dessa ändringar omfattar:
 
 ## <a name="some-logging-is-not-auto-collected"></a>Vissa loggningar samlas inte in automatiskt
 
-Loggning registreras endast om det stämmer överens med det konfigurerade tröskelvärdet för loggnings ramverk, och den andra uppfyller även det Application Insights konfigurerade tröskelvärdet.
+Loggningen registreras endast om den först uppfyller den nivå som har kon figurer ATS för loggnings ramverket och den andra också uppfyller den nivå som har kon figurer ATS för Application Insights.
+
+Om ditt loggnings ramverk till exempel har kon figurer ATS för att logga `WARN` (och senare) från paketet `com.example` och Application Insights har kon figurer ATS för att avbilda `INFO` (och senare), kommer Application Insights bara att avbilda `WARN` (och ovan) från paketet `com.example` .
 
 Det bästa sättet att veta om ett visst loggnings uttryck uppfyller det konfigurerade tröskelvärdet för loggnings ramverk är att bekräfta att det visas i din normala program logg (t. ex. fil eller konsol).
 

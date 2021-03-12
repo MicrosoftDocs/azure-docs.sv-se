@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: 8117f3ca70f51f2d9b11c479803ac33b49f416e7
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
-ms.translationtype: HT
+ms.openlocfilehash: ecc5c8ebef0d2add365d128e11caedaa173d9d63
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540038"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232151"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Så betalar du din faktura för Microsoft Azure
 
@@ -59,6 +59,18 @@ För att kunna betala för fakturor på Azure-portalen måste du ha rätt [MCA-b
 1. När du har valt en betalningsmetod väljer du **Betala nu**.
 
 Fakturans status visar *betald* inom 24 timmar.
+
+## <a name="pay-now-for-customers-in-india"></a>Betala nu för kunder i Indien
+
+Reserv banken i Indien utfärdade [nya förordningar](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12002&Mode=0) som börjar gälla den 1 april 2021. Efter det här datumet kan banker i Indien börja tacka automatiska återkommande betalningar, och betalningar måste göras manuellt i Azure Portal.
+
+Om din bank avböjer en automatisk återkommande betalning meddelar vi dig via e-post och ger instruktioner om hur du går vidare.
+
+Från och med 1 april 2021 kan du betala en utestående balans när som helst genom att följa dessa steg: 
+
+1. Logga in på [Azure-portalen](https://portal.azure.com/) som kontoadministratör.
+1. Sök efter **Kostnadshantering + fakturering**.
+1. På sidan Översikt väljer du knappen **betala nu** . (Om du inte ser knappen **betala nu** har du inte ett utestående saldo.)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrollera åtkomsten till ett Microsoft-kundavtal
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: fb7479f7e3b9ac631c164bbddf65ed8be3bab438
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 1d5fc097be188c820f9be15594f4bb382754b849
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122654"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224936"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Snabb start: Logga in och hämta en åtkomsttoken i ett särskilt skydd med auth Code Flow
 
@@ -117,12 +117,18 @@ I den här snabb starten används MSAL-vinkeln v2 med Authorization Code Flow. F
 > Ändra värdena i `auth` avsnittet enligt beskrivningen här:
 >
 > - `Enter_the_Application_Id_Here` är **program-ID: t (Client)** för det program som du har registrerat.
+>
+>    Du hittar värdet för **program-ID: t** genom att gå till sidan med registrerings **översikten** för appen i Azure Portal.
 > - `Enter_the_Cloud_Instance_Id_Here` är instansen av Azure-molnet. För huvud-eller globala Azure-molnet anger du `https://login.microsoftonline.com/` . För **nationella** moln (till exempel Kina), se [nationella moln](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` är inställt på något av följande:
 >   - Om ditt program har stöd *för konton i den här organisations katalogen* ersätter du värdet med **klient-ID** eller **klient namn**. Till exempel `contoso.microsoft.com`.
+>
+>    Om du vill hitta värdet för **katalog-ID: t** går du till sidan med registrerings **översikten** för appen i Azure Portal.
 >   - Om ditt program har stöd *för konton i en organisations katalog* ersätter du värdet med `organizations` .
 >   - Om ditt program har stöd *för konton i en organisations katalog och personliga Microsoft-konton* ersätter du värdet med `common` . **I den här snabb** starten använder du `common` .
 >   - Om du bara vill begränsa stödet till *personliga Microsoft-konton* ersätter du värdet med `consumers` .
+>
+>    Du hittar värdet för **konto typer som stöds** genom att gå till sidan med registrerings **översikten** för appen i Azure Portal.
 > - `Enter_the_Redirect_Uri_Here` är `http://localhost:4200/`.
 >
 > `authority`Värdet i din *app. module. TS* bör likna följande om du använder det huvudsakliga Azure-molnet (Globalt):
@@ -131,8 +137,6 @@ I den här snabb starten används MSAL-vinkeln v2 med Authorization Code Flow. F
 > authority: "https://login.microsoftonline.com/common",
 > ```
 >
-> > [!TIP]
-> > Om du vill hitta värdena för **program-ID**, **katalog (klient)-ID** och **konto typer som stöds**, går du till registrerings sidan för  app-registrering i Azure Portal.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras

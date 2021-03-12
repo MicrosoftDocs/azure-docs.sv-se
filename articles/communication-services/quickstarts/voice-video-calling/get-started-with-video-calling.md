@@ -7,14 +7,18 @@ ms.author: mikben
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 00721a5c7763663a17b1e67cf0ac3ae59fd9448a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 1d5bd8179d07477d8ae0cf60d4de291ed0e00201
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204574"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201066"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Snabb start: lägga till 1:1 video som anropar din app (Java Script)
+
+## <a name="download-code"></a>Hämta kod
+
+Hitta den färdiga koden för den här snabb starten på [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling)
 
 ## <a name="prerequisites"></a>Förutsättningar
 - Skaffa ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -122,7 +126,7 @@ let rendererRemote;
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Namn      | Beskrivning | 
+| Name      | Beskrivning | 
 | :---        |    :----   |
 | CallClient  | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.      |
 | CallAgent  | CallAgent används för att starta och hantera samtal.        |
@@ -323,7 +327,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 Du kan göra ett 1:1 utgående video samtal genom att ange ett användar-ID i fältet text och klicka på knappen starta samtal. 
 
 ## <a name="sample-code"></a>Exempelkod
-Du kan hämta exempelappen från [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/Add%201%20on%201%20video%20calling).
+Du kan hämta exempelappen från [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta bort resursen eller resurs gruppen. Om du tar bort resurs gruppen raderas även andra resurser som är kopplade till den. Läs mer om att [Rensa resurser](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources).

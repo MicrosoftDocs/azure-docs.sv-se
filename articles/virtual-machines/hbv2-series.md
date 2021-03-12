@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 92de7f93939f6673e2133f6eaf8086a1dcdd1964
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1abc05cf1486651b87094f40777f3679d234a34b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616255"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009346"
 ---
 # <a name="hbv2-series"></a>HBv2-serien
 
@@ -34,7 +34,10 @@ HBv2-serie VM-funktioner 200 GB/SEK Mellanox HDR InfiniBand. De här virtuella d
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB120rs_v2 | 120 | AMD EPYC-7V12 | 456 | 350 | 2.45 | 3.1 | 3.3 | 200 | Alla | 480 + 960 | 8 | 8 |
 
-Läs mer om den underliggande [arkitekturen, VM-topologin](./workloads/hpc/hbv2-series-overview.md)och förväntade [prestanda](./workloads/hpc/hbv2-performance.md) för den virtuella HBv2-serien.
+Läs mer om:
+- Underliggande [arkitektur och VM-topologi](./workloads/hpc/hbv2-series-overview.md)
+- [Program varu stack som stöds](./workloads/hpc/hbv2-series-overview.md#software-specifications) , inklusive operativ system som stöds
+- Förväntad [prestanda](./workloads/hpc/hbv2-performance.md) för den virtuella datorn med HBv2-serien.
 
 [!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 

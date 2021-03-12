@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430572"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199780"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Hantera instanser i Durable Functions i Azure
 
@@ -202,6 +202,9 @@ Metoden returnerar ett objekt med följande egenskaper:
   * **Misslyckades**: instansen misslyckades med ett fel.
   * **Avslutad**: instansen avbröts plötsligt.
 * **Historik**: körnings historiken för dirigeringen. Det här fältet fylls bara `showHistory` i om är inställt på `true` .
+
+> [!NOTE]
+> En Orchestrator har inte marker ATS som `Completed` förrän alla schemalagda aktiviteter har avslut ATS _och_ Orchestrator har returnerat. Med andra ord räcker det inte för att en Orchestrator ska kunna komma åt sin `return` instruktion för att markeras som `Completed` . Detta är särskilt relevant för de fall där `WhenAny` används, dessa Dirigerare ofta `return` innan alla schemalagda aktiviteter har körts.
 
 Den här metoden returnerar `null` (.net), `undefined` (Java Script) eller `None` (python) om instansen inte finns.
 

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 7a9d80344a31023d174935e7f785e36102e99eba
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740524"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011557"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Lägga till och hantera användare i en administrativ enhet i Azure Active Directory
 
@@ -70,9 +70,9 @@ Du kan tilldela användare till administrativa enheter individuellt eller som en
 I PowerShell använder du `Add-AzureADAdministrativeUnitMember` cmdleten i följande exempel för att lägga till användaren till den administrativa enheten. Objekt-ID för den administrativa enhet som du vill lägga till användaren i och objekt-ID: t för den användare som du vill lägga till tas som argument. Ändra det markerade avsnittet efter behov för din speciella miljö.
 
 ```powershell
-$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$userObj = Get-AzureADUser -Filter "UserPrincipalName eq 'bill@example.onmicrosoft.com'"
+Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.ObjectId -RefObjectId $userObj.ObjectId
 ```
 
 
@@ -80,20 +80,25 @@ Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefOb
 
 Ersätt plats hållaren med test information och kör följande kommando:
 
+Förfrågan
+
 ```http
-Http request
-POST /administrativeUnits/{Admin Unit id}/members/$ref
-Request body
+POST /administrativeUnits/{admin-unit-id}/members/$ref
+```
+
+Brödtext
+
+```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{user-id}"
 }
 ```
 
-Exempel:
+Exempel
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/john@example.com"
 }
 ```
 
@@ -118,6 +123,7 @@ Kör följande kommando:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+
 > [!NOTE]
 > Som standard `Get-AzureADAdministrativeUnitMember` returnerar endast 100 medlemmar av en administrativ enhet. Om du vill hämta fler medlemmar kan du lägga till `"-All $true"` .
 
@@ -126,7 +132,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 Ersätt plats hållaren med test information och kör följande kommando:
 
 ```http
-https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Ta bort en enskild användare från en administrativ enhet
@@ -152,14 +158,16 @@ Du kan ta bort en användare från en administrativ enhet på något av två sä
 Kör följande kommando:
 
 ```powershell
-Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
 ### <a name="use-microsoft-graph"></a>Använd Microsoft Graph
 
 Ersätt plats hållarna med test information och kör följande kommando:
 
-`https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref`
+```http
+https://graph.microsoft.com/v1.0/directory/administrativeUnits/{admin-unit-id}/members/{user-id}/$ref
+```
 
 ## <a name="remove-multiple-users-as-a-bulk-operation"></a>Ta bort flera användare som en Mass åtgärd
 

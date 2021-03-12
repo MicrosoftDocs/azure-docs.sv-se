@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103863"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225055"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
 
@@ -94,7 +94,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >
 > Ersätt följande värden:
 >
->|Värdenamn|Description|
+>|Värdenamn|Beskrivning|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|På sidan **Översikt** i program registreringen är det här ditt **program (klient) ID-** värde. |
 >|Enter_the_Cloud_Instance_Id_Here|Detta är instansen av Azure-molnet. För huvud-eller globala Azure-molnet anger du **https://login.microsoftonline.com** . För nationella moln (till exempel Kina), se [nationella moln](./authentication-national-cloud.md).|
@@ -102,8 +102,8 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >|Enter_the_Redirect_Uri_Here|Ersätt med **http://localhost:4200** .|
 >|cacheLocation  | Valfritt Ange webb läsar lagring för autentiseringens tillstånd. Standardvärdet är **SessionStorage**.   |
 >|storeAuthStateInCookie  | Valfritt Identifiera biblioteket som lagrar status för autentiseringsbegäran. Detta tillstånd krävs för att validera autentiserings flöden i webbläsarens cookies. Den här cookien är inställd för Internet Explorer och Edge för att hantera dessa två webbläsare. Mer information finns i [kända problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
-> > [!TIP]
-> > För att hitta värdena för **program-ID (klient)**, **katalog-ID (klient)** och **Kontotyper som stöds** går du till appens **översiktssida** i Azure-portalen.
+>
+> För att hitta värdena för **program-ID (klient)**, **katalog-ID (klient)** och **Kontotyper som stöds** går du till appens **översiktssida** i Azure-portalen.
 
 Mer information om tillgängliga konfigurerbara alternativ finns i [initiera klient program](msal-js-initializing-client-applications.md).
 

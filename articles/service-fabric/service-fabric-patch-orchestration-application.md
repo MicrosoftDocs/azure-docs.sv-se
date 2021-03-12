@@ -14,20 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390648"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614419"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Korrigera operativ systemet Windows i Service Fabric-klustret
 
-> [!IMPORTANT]
-> Från och med den 30 april 2019 stöds inte längre uppdaterings program version 1,2. *. Se till att uppgradera till den senaste versionen. VM-uppgraderingar där "Windows Update" tillämpar korrigeringsfiler för operativ system utan att ersätta OS-disken stöds inte. 
+## <a name="automatic-os-image-upgrades"></a>Automatiska uppgraderingar av operativ system avbildningar
 
-> [!NOTE]
-> Att hämta [automatiska operativ system avbildningar på den virtuella datorns skalnings uppsättning](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) är den bästa metoden för att hålla operativ systemet uppdaterad i Azure. För skalnings uppsättningar för virtuella datorer som baseras på automatiska uppgraderingar av OS-avbildningar krävs silver eller större hållbarhet på en skalnings uppsättning. I det här fallet kan du inte använda uppdaterings programmet för att välja Node-typer med hög tålighet på nivån brons.
+Att hämta [automatiska operativ system avbildningar på din Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) är den bästa metoden för att hålla operativ systemet uppdaterad i Azure. För skalnings uppsättningar för virtuella datorer som baseras på automatiska uppgraderingar av OS-avbildningar krävs silver eller större hållbarhet på en skalnings uppsättning.
+
+Krav för automatisk uppgradering av operativ system avbildningar med Virtual Machine Scale Sets
+-   Service Fabric [hållbarhets nivå](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) är silver eller guld och inte brons.
+-   Service Fabric-tillägget i modell definitionen för skalnings uppsättningen måste ha TypeHandlerVersion 1,1 eller senare.
+-   Hållbarhets nivån ska vara samma på Service Fabric klustret och Service Fabric tillägget i modell definitionen för skalnings uppsättningen.
+- Det krävs ingen ytterligare hälso avsökning eller användning av program hälso tillägg för Virtual Machine Scale Sets.
+
+Se till att hållbarhets inställningarna inte stämmer överens med Service Fabric klustret och Service Fabric tillägget, eftersom ett matchnings fel resulterar i uppgraderings fel. Du kan ändra hållbarhets nivåer enligt de rikt linjer som beskrivs på [den här sidan](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels).
+
+Med brons hållbarhet är automatisk uppgradering av OS-avbildningen inte tillgänglig. Även om [program för uppdaterings dirigering](#patch-orchestration-application ) (endast avsett för icke-Azure-värdbaserade kluster) *inte rekommenderas* för silver eller större hållbarhets nivåer, är det bara ditt alternativ att automatisera Windows-uppdateringar med avseende på Service Fabric uppgraderings domäner.
+
+> [!IMPORTANT]
+> Uppgraderingar vid virtuella datorer där "Windows Update" tillämpar operativ Systems korrigeringar utan att ersätta operativ system disken stöds inte på Azure Service Fabric.
+
+Det finns två steg som krävs för att aktivera funktionen med inaktiverat Windows Update i åtgärds systemet på rätt sätt.
+
+1. Aktivera automatisk uppgradering av operativ Systems avbildning, inaktivera Windows updates ARM 
+    ```json
+    "virtualMachineProfile": { 
+        "properties": {
+          "upgradePolicy": {
+            "automaticOSUpgradePolicy": {
+              "enableAutomaticOSUpgrade":  true
+            }
+          }
+        }
+      }
+    ```
+    
+    ```json
+    "virtualMachineProfile": { 
+        "osProfile": { 
+            "windowsConfiguration": { 
+                "enableAutomaticUpdates": false 
+            }
+        }
+    }
+    ```
+
+    Azure PowerShell
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
+    ``` 
+    
+1. Uppdatera skalnings uppsättnings modellen efter den här konfigurationen ändra en avbildning av alla datorer som behövs för att uppdatera skalnings uppsättnings modellen så att ändringen träder i funktion.
+    
+    Azure PowerShell
+    ```azurepowershell-interactive
+    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
+    $instances = foreach($vm in $scaleSet)
+    {
+        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
+    }
+    ``` 
+    
+Ta en titt på [automatiska avbildnings uppgraderingar av operativ systemet genom att Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) för ytterligare instruktioner.
+
+## <a name="patch-orchestration-application"></a>Program för uppdaterings dirigering
+
+> [!IMPORTANT]
+> Från och med den 30 april 2019 stöds inte längre uppdaterings program version 1,2. *. Se till att uppgradera till den senaste versionen.
 
 POA (patch Orchestration Application) är en omslutning runt Azure Service Fabric Repair Manager-tjänsten, som möjliggör konfigurations-baserad operativ Systems uppdaterings schemaläggning för icke-Azure-värdbaserade kluster. POA krävs inte för icke-Azure-värdbaserade kluster, men planerings korrigerings installation av uppdaterings domän krävs för att korrigera Service Fabric kluster värdar utan att det uppstår avbrott.
 

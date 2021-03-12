@@ -211,8 +211,6 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Ansluta andra IoT-moln
           href: core/howto-build-iotc-device-bridge.md
-        - name: Hantera dina enheter
-          href: core/how-to-move-device-to-iot.md
     - name: Bygg integrerade lösningar
       items:
         - name: Lägga till paneler på din instrumentpanel
@@ -245,6 +243,8 @@
           href: core/howto-manage-devices.md
         - name: Köra ett jobb
           href: core/howto-run-a-job.md
+        - name: Flytta enheter från IoT Hub
+          href: core/how-to-move-device-to-iot.md
     - name: Administrera din lösning
       items:
         - name: Ändra tillämpningsinställningar
@@ -303,6 +303,8 @@
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Alternativ för support och hjälp
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: IoT-ordlista
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub

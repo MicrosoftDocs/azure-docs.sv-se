@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050672"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199906"
 ---
 # <a name="log-analytics-agent-overview"></a>Översikt över Log Analytics agent
 
 Azure Log Analytics agent samlar in telemetri från virtuella Windows-och Linux-datorer i alla moln, lokala datorer och de som övervakas av [System Center Operations Manager](/system-center/scom/) och skickar insamlade data till din Log Analytics-arbetsyta i Azure Monitor. Log Analytics agenten stöder också insikter och andra tjänster i Azure Monitor som [VM Insights](../vm/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)och [Azure Automation](../../automation/automation-intro.md). Den här artikeln innehåller en detaljerad översikt över agent-, system-och nätverks krav och distributions metoder.
 
 > [!NOTE]
-> Du kan också se Log Analytics-agenten som kallas Microsoft Monitoring Agent (MMA) eller OMS Linux-agenten.
+> Du kan också se Log Analytics-agenten som kallas Microsoft Monitoring Agent (MMA).
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Jämförelse med Azure Diagnostics-tillägget
 [Tillägget Azure Diagnostics](./diagnostics-extension-overview.md) i Azure Monitor kan också användas för att samla in övervaknings data från gäst operativ systemet på virtuella Azure-datorer. Du kan välja att använda antingen eller båda beroende på dina behov. En detaljerad jämförelse av de Azure Monitor agenterna finns i [Översikt över Azure Monitors agenter](../agents/agents-overview.md) . 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 2139080367cdce9a5f018afab0970a7bd0e7504c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 66edd4cad5b2f38696ef1df2030687bf4c7d9956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467305"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634183"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-pro-r-device-via-azure-powershell"></a>Konfigurera VPN på din Azure Stack Edge Pro R-enhet via Azure PowerShell
 
@@ -165,7 +165,7 @@ Sedan konfigurerar du VPN-nätverket på enhetens lokala webb gränssnitt.
 
 ## <a name="validate-data-transfer-through-vpn"></a>Verifiera data överföring via VPN
 
-För att bekräfta att VPN fungerar kopierar du data till en SMB-resurs. Följ stegen i [Lägg till en resurs](azure-stack-edge-j-series-manage-shares.md#add-a-share) på din Azure Stack Edge Pro R-enhet. 
+För att bekräfta att VPN fungerar kopierar du data till en SMB-resurs. Följ stegen i [Lägg till en resurs](azure-stack-edge-gpu-manage-shares.md#add-a-share) på din Azure Stack Edge Pro R-enhet. 
 
 1. Kopiera en fil, till exempel \data\pictures\waterfall.jpg till den SMB-resurs som du monterade i klient systemet. 
 2. Kontrol lera att filen visas i ditt lagrings konto i molnet.

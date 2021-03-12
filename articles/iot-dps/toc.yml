@@ -175,7 +175,9 @@
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
+    - name: IoT-ordlista
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub

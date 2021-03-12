@@ -9,12 +9,12 @@ ms.date: 11/11/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f340a06f3b6b7c8fc0d78051fb0496dcab11fb5d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bc5bcca394fa66cea9cbf6bc20ac7d164c671cf7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122756"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632959"
 ---
 # <a name="back-up-to-azure-with-commvault"></a>Säkerhetskopiera till Azure med CommVault
 
@@ -118,7 +118,7 @@ Det här avsnittet innehåller en kort guide för att lägga till Azure Storage 
 
 1. Öppna Azure Portal och Sök efter "lagrings konton" eller klicka på standard tjänst ikonen.
     
-    1. ![Azure Portal](../media/azure-portal.png)
+    1. ![Azure-portalen](../media/azure-portal.png)
   
     1. ![Lagrings konton i Azure-portalen](../media/locate-storage-account.png)
 
@@ -161,11 +161,11 @@ Det här avsnittet innehåller en kort guide för att lägga till Azure Storage 
 
 9. Gå sedan till "lagring"--> "moln" i CommVault Command Center. Välj "Lägg till". Ange ett eget namn på lagrings kontot och välj sedan Microsoft Azure Storage från listan typ. Välj en medie agent server som ska användas för att överföra säkerhets kopior till Azure Storage. Lägg till den behållare som du skapade, Välj den lagrings nivå som ska användas i Azure Storage kontot och välj de autentiseringsuppgifter som skapades i steg #8. Slutligen väljer du om du vill överföra deduplicerade säkerhets kopior eller inte och en plats för Deduplicerings databasen.
     
-     ![CommVault Lägg till lagring](../media/commvault-add-storage.png)
+     ![Skärm bild av Lägg till moln användar gränssnitt. I den nedrullningsbara menyn Arkiv är * * Arkiv * * markerat.](../media/commvault-add-storage.png)
 
 10. Slutligen lägger du till din nya Azure Storage-resurs till en befintlig eller ny plan i CommVault Command Center via "hantera"--> "planer" som ett mål för säkerhets kopieringen.
 
-    ![CommVault Lägg till lagring](../media/commvault-plan.png)
+    ![Skärm bild av användar gränssnittet för COMMVAULT Command Center. I det vänstra navigerings fältet under * * Manage * *, * * Plans * * är markerat.](../media/commvault-plan.png)
 
 11. ***(Valfritt)*** Om du planerar att använda Azure som en återställnings plats eller CommVault för att migrera servrar och program till Azure, är det en bra idé att distribuera en VSA-proxy i Azure. Du hittar detaljerade instruktioner [här](https://documentation.commvault.com/commvault/v11/article?p=106208.htm).  
 

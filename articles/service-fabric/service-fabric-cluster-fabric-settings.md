@@ -3,12 +3,12 @@ title: Ändra kluster inställningar för Azure Service Fabric
 description: I den här artikeln beskrivs de infrastruktur inställningar och de uppgraderings principer för infrastruktur resurser som du kan anpassa.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183411"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232060"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassa Service Fabric-klusterinställningar
 I den här artikeln beskrivs de olika infrastruktur inställningarna för ditt Service Fabric-kluster som du kan anpassa. För kluster som finns i Azure kan du anpassa inställningarna via [Azure Portal](https://portal.azure.com) eller genom att använda en Azure Resource Manager mall. Mer information finns i [Uppgradera konfigurationen av ett Azure-kluster](service-fabric-cluster-config-upgrade-azure.md). För fristående kluster anpassar du inställningarna genom att uppdatera *ClusterConfig.jspå* filen och utföra en konfigurations uppgradering i klustret. Mer information finns i [Uppgradera konfigurationen av ett fristående kluster](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -349,6 +349,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |DisableContainers|bool, standard är falskt|Statisk|Konfiguration för att inaktivera behållare – används i stället för DisableContainerServiceStartOnContainerActivatorOpen som är föråldrad config |
 |DisableDockerRequestRetry|bool, standard är falskt |Dynamisk| Som standard kommunicerar sa med DD (Docker dameon) med en tids gräns på "DockerRequestTimeout" för varje http-begäran som skickas till den. Om DD inte svarar inom den här tids perioden; SF skickar begäran på nytt om den översta nivån fortfarande har kvar tiden.  Med HyperV-behållare; DD ibland tar det mycket mer tid att ta upp behållaren eller inaktivera den. I sådana fall är det en begäran från sa-perspektivet och SF-försöket. Ibland verkar detta vara att lägga till mer belastning på DD. Med den här konfigurationen kan du inaktivera det här försöket och vänta tills DD har svarat. |
 |DnsServerListTwoIps | Bool, standard är falskt | Statisk | Med den här flaggan lägger du till den lokala DNS-servern två gånger för att hjälpa till att lösa tillfälliga problem. |
+| DockerTerminateOnLastHandleClosed | bool, standard är falskt | Statisk | Som standard om Fabrichost returnerar hanterar "dockerd" (baserat på: SkipDockerProcessManagement = = false) den här inställningen anger vad som händer när antingen Fabrichost returnerar eller dockerd kraschar. När den är inställd på `true` om någon av processerna kraschar tvingas alla behållare att avslutas av HCS uppdateringsklienten. Om värdet är inställt på `false` behållarna fortsätter att köras. Obs! föregående till 8,0 det här beteendet var avsiktligt motsvarande `false` . Standardvärdet för `true` här är vad vi förväntar sig att hända som standard när vår rensnings logik används för att starta om de här processerna. |
 | DoNotInjectLocalDnsServer | bool, standard är falskt | Statisk | Hindrar körningen från att mata in den lokala IP-adressen som DNS-server för behållare. |
 |EnableActivateNoWindow| bool, standard är falskt|Dynamisk| Den aktiverade processen skapas i bakgrunden utan någon konsol. |
 |EnableContainerServiceDebugMode|bool, standard är sant|Statisk|Aktivera/inaktivera loggning för Docker-behållare.  Endast Windows.|

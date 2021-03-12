@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1fcf560ba1fef137a28ab1872635cc2182cd07e1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735931"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009206"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Guide för Azure IoT Hub-utvecklare
 
@@ -75,5 +75,3 @@ Den här guiden för IoT Hub utvecklare innehåller följande artiklar:
 * [Referens – enhets-och tjänst-SDK](iot-hub-devguide-sdks.md) : er visar Azure IoT-SDK: er för att utveckla enhets-och tjänst program som interagerar med IoT Artikeln innehåller länkar till API-dokumentation online.
 
 * [Referens-IoT Hub MQTT support](iot-hub-mqtt-support.md) innehåller detaljerad information om hur IoT Hub stöder MQTT-protokollet. Artikeln beskriver stödet för MQTT-protokollet som är inbyggt i Azure IoT-SDK: er och ger information om hur du använder MQTT-protokollet direkt.
-
-* [Ord](iot-hub-devguide-glossary.md) lista med vanliga IoT Hub-relaterade villkor.

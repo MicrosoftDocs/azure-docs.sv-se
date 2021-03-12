@@ -9,14 +9,16 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995921"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200634"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Använd Visual Studio Code för att utveckla och felsöka moduler för Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Du kan omvandla din affärs logik till moduler för Azure IoT Edge. Den här artikeln visar hur du använder Visual Studio Code som huvud verktyg för att utveckla och felsöka moduler.
 
@@ -160,7 +162,7 @@ Konfigurera och starta simulatorn genom att köra kommandot **Azure IoT Edge: st
 
 1. Förbered din miljö för fel sökning enligt kraven för ditt utvecklings språk, ange en Bryt punkt i modulen och välj den fel söknings konfiguration som ska användas:
    - **C#**
-     - I den integrerade Terminal Studio Code-integrerade terminalen ändrar du katalogen till mappen **_&lt; ditt &gt; Modulnamn_* _ mapp och kör sedan följande kommando för att skapa .net Core-program.
+     - I Visual Studio Code Integrated Terminal ändrar du katalogen till mappen ***&lt; Modulnamn &gt;*** och kör sedan följande kommando för att skapa .net Core-program.
 
        ```cmd
        dotnet build
@@ -168,13 +170,13 @@ Konfigurera och starta simulatorn genom att köra kommandot **Azure IoT Edge: st
 
      - Öppna filen `Program.cs` och Lägg till en Bryt punkt.
 
-     - Navigera till vyn Visual Studio Code debug genom att välja _* visa > debug * *. Välj fel söknings konfiguration * *_ &lt; ditt Modulnamn &gt; _ lokal fel sökning (.net Core) * * i list rutan.
+     - Navigera till vyn Visual Studio Code debug genom att välja **visa > fel sökning**. Välj fel söknings konfiguration **_&lt; ditt &gt; Modulnamn_ lokal fel sökning (.net Core)** i list rutan.
 
         > [!NOTE]
         > Om din .NET Core `TargetFramework` inte stämmer överens med din program Sök väg i `launch.json` måste du manuellt uppdatera program Sök vägen i `launch.json` så att den matchar `TargetFramework` i din. CSPROJ-fil så att Visual Studio Code kan starta programmet.
 
    - **Node.js**
-     - I den integrerade Terminal Studio Code-integrerade terminalen ändrar du katalogen till mappen **_&lt; ditt &gt; Modulnamn_* _ mapp och kör sedan följande kommando för att installera Node-paket
+     - I Visual Studio Code Integrated Terminal ändrar du katalogen till mappen ***&lt; Modulnamn &gt;*** och kör sedan följande kommando för att installera Node-paket
 
        ```cmd
        npm install
@@ -182,7 +184,7 @@ Konfigurera och starta simulatorn genom att köra kommandot **Azure IoT Edge: st
 
      - Öppna filen `app.js` och Lägg till en Bryt punkt.
 
-     - Navigera till vyn Visual Studio Code debug genom att välja _* visa > debug * *. Välj fel söknings konfiguration * *_ &lt; ditt Modulnamn &gt; _ lokal fel sökning (Node.js) * * i list rutan.
+     - Navigera till vyn Visual Studio Code debug genom att välja **visa > fel sökning**. Välj fel söknings konfiguration **_&lt; ditt &gt; Modulnamn_ lokal fel sökning (Node.js)** i list rutan.
    - **Java**
      - Öppna filen `App.java` och Lägg till en Bryt punkt.
 
@@ -234,7 +236,7 @@ I utvecklings datorn kan du starta en IoT Edge Simulator i stället för att ins
 
    ![Bevaka variabler](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Navigera till vyn Visual Studio Code debug och välj fel söknings konfigurations filen för modulen. Namnet på fel söknings alternativet bör likna **_&lt; ditt Modulnamn- &gt; namn_ för fjärrfelsökning**
+1. Navigera till vyn Visual Studio Code debug och välj fel söknings konfigurations filen för modulen. Namnet på fel söknings alternativet bör likna ***&lt; ditt Modulnamn- &gt; namn* för fjärrfelsökning**
 
 1. Välj **Starta fel sökning** eller tryck på **F5**. Välj den process som du vill koppla till.
 
@@ -322,13 +324,13 @@ Du kan hoppa över det här avsnittet om dina moduler körs på samma dator som 
 
   - Kontrol lera att modulen på datorn som ska felsökas körs och är redo för fel sökning och att den porten 9229 är tillgänglig externt. Du kan kontrol lera detta genom att öppna `http://<target-machine-IP>:9229/json` fel söknings datorn. URL: en ska visa information om Node.js-modulen som ska felsökas.
   
-  - På din utvecklings dator öppnar du Visual Studio Code och redigerar sedan `launch.json` så att adress värdet för **_&lt; &gt; din Modulnamn_ -profil för fjärrfelsökning (Node.js)** (eller **_&lt; ditt Modulnamn &gt;_ , fjärrfelsökning (Node.js i Windows-behållare)** visas om modulen körs som en Windows-behållare) är IP-adressen för den dator som ska felsökas.
+  - På din utvecklings dator öppnar du Visual Studio Code och redigerar sedan `launch.json` så att adress värdet för ***&lt; &gt; din Modulnamn* -profil för fjärrfelsökning (Node.js)** (eller **_&lt; ditt Modulnamn &gt;_ , fjärrfelsökning (Node.js i Windows-behållare)** visas om modulen körs som en Windows-behållare) är IP-adressen för den dator som ska felsökas.
 
 - **Java**
 
   - Bygg en SSH-tunnel till datorn som ska felsökas genom att köra `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` .
   
-  - Öppna Visual Studio Code på utvecklings datorn och redigera **_&lt; din modul namn &gt;_ Remote debug (Java)-** profil i `launch.json` så att du kan ansluta till mål datorn. Mer information om hur du redigerar `launch.json` och felsöker Java med Visual Studio Code finns i avsnittet om hur [du konfigurerar fel sökning](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
+  - Öppna Visual Studio Code på utvecklings datorn och redigera ***&lt; din modul namn &gt;* Remote debug (Java)-** profil i `launch.json` så att du kan ansluta till mål datorn. Mer information om hur du redigerar `launch.json` och felsöker Java med Visual Studio Code finns i avsnittet om hur [du konfigurerar fel sökning](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
 
 - **Python**
 
@@ -336,11 +338,11 @@ Du kan hoppa över det här avsnittet om dina moduler körs på samma dator som 
 
   - I den kod `ptvsd.enable_attach(('0.0.0.0', 5678))` som du tidigare infogade i `main.py` , ändra **0.0.0.0** till IP-adressen för den dator som ska felsökas. Bygg, push och distribuera IoT Edge-modulen igen.
 
-  - På din utvecklings dator öppnar du Visual Studio Code och redigerar sedan `launch.json` så att `host` värdet för **_&lt; din &gt;_ -profil för Fjärrhjälp (python)** använder IP-adressen för mål datorn i stället för `localhost` .
+  - På din utvecklings dator öppnar du Visual Studio Code och redigerar sedan `launch.json` så att `host` värdet för ***&lt; din &gt;* -profil för Fjärrhjälp (python)** använder IP-adressen för mål datorn i stället för `localhost` .
 
 ### <a name="debug-your-module"></a>Felsöka modulen
 
-1. I Visual Studio Code debug-vyn väljer du fel söknings konfigurations filen för modulen. Namnet på fel söknings alternativet bör likna **_&lt; ditt Modulnamn- &gt; namn_ för fjärrfelsökning**
+1. I Visual Studio Code debug-vyn väljer du fel söknings konfigurations filen för modulen. Namnet på fel söknings alternativet bör likna ***&lt; ditt Modulnamn- &gt; namn* för fjärrfelsökning**
 
 1. Öppna modul filen för ditt utvecklings språk och Lägg till en Bryt punkt:
 

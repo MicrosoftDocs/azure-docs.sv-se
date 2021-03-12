@@ -8,14 +8,16 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 56696f138fbf58993e990e263d2fa8e490672bb6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 11279c552cb599c24b72473d6574175450ca7ab0
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106305"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200857"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Skapa och etablera en simulerad IoT Edge enhet med en virtuell TPM i Windows
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge enheter kan konfigureras automatiskt med [enhets etablerings tjänsten](../iot-dps/index.yml) , precis som enheter som inte är Edge-aktiverade. Om du inte är bekant med processen för automatisk etablering, granskar du [etablerings](../iot-dps/about-iot-dps.md#provisioning-process) översikten innan du fortsätter.
 
@@ -31,7 +33,7 @@ Den här artikeln visar hur du testar automatisk etablering på en simulerad IoT
 > [!TIP]
 > I den här artikeln beskrivs hur du testar automatisk etablering genom att använda TPM-attestering på virtuella enheter, men det är mycket som gäller när du använder den fysiska TPM-maskinvaran.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Windows-utvecklings dator. Den här artikeln använder Windows 10.
 * En aktiv IoT Hub.

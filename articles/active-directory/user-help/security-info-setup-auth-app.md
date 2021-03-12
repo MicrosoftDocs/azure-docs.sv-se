@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348304"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197481"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Konfigurera Microsoft Authenticator-appen som din verifierings metod
 
@@ -46,10 +46,10 @@ Metoder för säkerhets information används för både dubbelriktad säkerhets 
 
 Beroende på din organisations inställningar kan du kanske använda en app för autentisering som en av dina metoder för säkerhets information. Du behöver inte använda Microsoft Authenticator-appen, och du kan välja en annan app under installationen. Den här artikeln använder dock Microsoft Authenticator-appen.
 
->[!Important]
-> Om du har installations program för Microsoft Authenticator på 5 olika enheter eller 5-maskinvaru-token kan du inte konfigurera en sjätte, och kan se följande fel meddelande.
+> [!IMPORTANT]
+> Om du har konfigurerat Microsoft Authenticator-appen på fem olika enheter eller om du har använt fem maskinvaru-token, kan du inte konfigurera en sjätte, och du kan se följande fel meddelande:
 > 
-> **Det går inte att konfigurera Microsoft Authenticator eftersom du redan har fem Authenticator-appar eller maskinvaru-token. Kontakta administratören om du vill ta bort en av dina Authenticator-appar eller maskinvaru-token.**
+> **Du kan inte konfigurera Microsoft Authenticator eftersom du redan har fem Authenticator-appar eller maskinvaru-token. Kontakta administratören om du vill ta bort en av dina Authenticator-appar eller maskinvaru-token.**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Konfigurera Microsoft Authenticator-appen
 
@@ -57,7 +57,7 @@ Beroende på din organisations inställningar kan du kanske använda en app för
 
     ![Sidan min profil, som visar markerade länkar för säkerhets information](media/security-info/securityinfo-myprofile-page.png)
 
-2. Välj **säkerhets information** i det vänstra navigerings fönstret eller från länken i **säkerhets informations** blocket och välj sedan **Lägg till metod** på sidan **säkerhets information** .
+2. Välj **säkerhets information** på den vänstra menyn eller med hjälp av länken i rutan **säkerhets information** . Om du redan har registrerat dig uppmanas du att utföra tvåstegsverifiering. Välj sedan **Lägg till metod** i rutan **säkerhets information** .
 
     ![Sidan säkerhets information med markerat Lägg till metod-alternativ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 

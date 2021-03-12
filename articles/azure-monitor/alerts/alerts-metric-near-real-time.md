@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: c282e6890d56fe047b319f72e05cdc97de76cfcf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/11/2021
+ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038194"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016108"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Resurser som stöds för mått varningar i Azure Monitor
 
@@ -36,6 +36,7 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft. Automation/automationAccounts | Ja| Inga | [Automation-konton](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft. AVS/privateClouds | Inga | Inga | [Azure VMware Solution](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.BatCH/batchAccounts | Ja | Inga | [Batch-konton](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft. BotService/botServices | Ja | Inga | [Robot tjänster](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft. cache/Redis | Ja | Ja | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
 |Microsoft. ClassicCompute/domän namn/platser/roller | Inga | Inga | [Klassisk Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | Inga | Inga | [Klassisk Virtual Machines](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
@@ -45,6 +46,8 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft. ClassicStorage/storageAccounts/queueServices | Ja | Inga | [Lagrings konton (klassiska) – köer](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
 |Microsoft. ClassicStorage/storageAccounts/tableServices | Ja | Inga | [Lagrings konton (klassiska) – tabeller](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft. CognitiveServices/konton | Ja | Inga | [Cognitive Services](../essentials/metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft. Compute/cloudServices | Ja | Inga |  [Molntjänster](../essentials/metrics-supported.md#microsoftcomputecloudservices) |
+|Microsoft. Compute/cloudServices/roles | Ja | Inga |  [Moln tjänst roller](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtual Machines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ja | Inga |[Skalnings uppsättningar för virtuella datorer](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. ContainerInstance/containerGroups | Ja| Inga | [Containergrupper](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
@@ -56,9 +59,10 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft. DataShare/konton | Ja | Inga | [Data resurser](../essentials/metrics-supported.md#microsoftdatashareaccounts) |
 |Microsoft. DBforMariaDB/servers | Inga | Inga | [DATABAS för MariaDB](../essentials/metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. DBforMySQL/servers | Inga | Inga |[DB för MySQL](../essentials/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Ja | Inga | [DB för PostgreSQL (flexibla servrar)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft. DBforPostgreSQL/serverGroupsv2 | Ja | Inga | DB för PostgreSQL (skala) |
 |Microsoft. DBforPostgreSQL/servers | Inga | Inga | [DATABAS för PostgreSQL](../essentials/metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Inga | Inga | [DB för PostgreSQL v2](../essentials/metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/flexibleServers | Ja | Inga | [DB för PostgreSQL (flexibla servrar)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Ja | Inga |[IoT Hub](../essentials/metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Ja | Inga | [Enhets etablerings tjänster](../essentials/metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/digitalTwinsInstances | Ja | Inga | [Digital Twins](../essentials/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
@@ -75,6 +79,8 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft. Logic/integrationServiceEnvironments | Ja | Inga |[Integrerings tjänst miljöer](../essentials/metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft. Logic/arbets flöden | Inga | Inga |[Logic Apps](../essentials/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft. MachineLearningServices/arbets ytor | Ja | Inga | [Machine Learning](../essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints | Ja | Inga | Machine Learning-slutpunkter |
+|Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/distributioner | Ja | Inga | Distributioner av Machine Learning-slutpunkt |
 |Microsoft. Maps/konton | Ja | Inga | [Mappar konton](../essentials/metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft. Media/Media Services | Inga | Inga | [Media Services](../essentials/metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft. Media/Media Services/strömnings slut punkter | Ja | Inga | [Media Services slut punkter för direkt uppspelning](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |

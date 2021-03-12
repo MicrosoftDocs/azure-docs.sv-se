@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 1d435c3b15433b7fec00d5dfa80970c04323e635
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199373"
+ms.locfileid: "103225633"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Belastningsutjämnare för flera regioner (för hands version)
 
@@ -94,7 +94,7 @@ Backend-poolen för belastningsutjämnare i flera regioner innehåller en eller 
 
 Lägg till dina befintliga belastnings Utjämnings distributioner i en belastningsutjämnare för flera regioner för en hög tillgänglig distribution över flera regioner.
 
-**Hem regionen** är den plats där belastningsutjämnaren för flera regioner har distribuerats. Den här regionen påverkar inte hur trafiken kommer att dirigeras. Om en hem region slutar fungera påverkas inte trafikflöde.
+**Hem region** är den plats där en belastningsutjämnare för flera regioner eller den offentliga IP-adressen för den globala nivån distribueras. Den här regionen påverkar inte hur trafiken kommer att dirigeras. Om en hem region slutar fungera påverkas inte trafikflöde.
 
 ### <a name="home-regions"></a>Hem regioner
 * USA, östra 2
@@ -106,7 +106,7 @@ Lägg till dina befintliga belastnings Utjämnings distributioner i en belastnin
 * Asien, östra
 
 > [!NOTE]
-> Du kan bara distribuera en belastningsutjämnare för flera regioner i någon av de 7 regionerna ovan.
+> Du kan bara distribuera en belastningsutjämnare för flera regioner eller offentliga IP-adresser på global nivå i någon av de 7 regionerna ovan.
 
 En **deltagande region** är den plats där den globala offentliga IP-adressen för belastningsutjämnaren är tillgänglig. 
 

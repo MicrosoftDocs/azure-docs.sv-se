@@ -63,6 +63,8 @@
       href: tutorials/hmac-header-tutorial.md
     - name: Förbereda en webbapp för kommunikations tjänster (Node.js)
       href: tutorials/building-app-start.md
+    - name: Signera och gör förfrågningar till ACS SMS API med Postman
+      href: tutorials/postman-tutorial.md
 - name: Begrepp
   expanded: false
   items:
@@ -145,9 +147,9 @@
     - name: Samtalsbibliotek
       items:
         - name: Samtal (JavaScript)
-          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: Samtal (Android/Java)
-          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+          href: /java/api/com.azure.communication.calling
         - name: Samtal (iOS)
           href: /objectivec/communication-services/calling/
     - name: Chattbibliotek

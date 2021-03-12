@@ -21,13 +21,6 @@
         - name: ARM-mall
           displayName: Resource Manager
           href: quick-create-template.md
-- name: Begrepp
-  items:
-    - name: Dela instrumentpaneler med rollbaserad åtkomstkontroll i Azure
-      href: azure-portal-dashboard-share-access.md
-    - name: Skapa Azure-instrumentpaneler programmässigt
-      href: azure-portal-dashboards-create-programmatically.md
-      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: Anvisningar
   items:
     - name: Hantera dina inställningar i Microsoft Azure-portalen
@@ -38,8 +31,13 @@
       href: manage-filter-resource-views.md
     - name: Skapa Azure-instrumentpaneler
       items:
-        - name: Skapa och dela Azure-instrumentpaneler
+        - name: Skapa en Azure-instrumentpanel
           href: azure-portal-dashboards.md
+        - name: Dela en Azure-instrumentpanel
+          href: azure-portal-dashboard-share-access.md
+        - name: Skapa en Azure-instrumentpanel program mässigt
+          href: azure-portal-dashboards-create-programmatically.md
+          displayName: 'Azure CLI, az portal dashboard, az portal'
         - name: Använda en anpassad Markdown-panel
           href: azure-portal-markdown-tile.md
     - name: Instruktionsvideoserie om Azure-portalen

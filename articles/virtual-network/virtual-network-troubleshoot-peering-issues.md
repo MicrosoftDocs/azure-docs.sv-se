@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518172"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200536"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Felsöka problem med peering i virtuella nätverk
 
@@ -44,7 +44,7 @@ Använd metoderna i följande artiklar för att konfigurera peering för virtuel
 >
 > * Virtual Machines (VM) bakom Basic Internal Load Balancer (ILB) SKU
 > * Redis cache (använder Basic ILB SKU)
-> * Application Gateway (använder Basic ILB SKU)
+> * Application Gateway v1 (använder Basic ILB SKU)
 > * Skalnings uppsättningar för virtuella datorer (använder Basic ILB SKU)
 > * Azure Service Fabric-kluster (använder Basic ILB SKU)
 > * SQL Server Always On (använder Basic ILB SKU)

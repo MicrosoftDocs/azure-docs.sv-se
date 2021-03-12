@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 93278a2c8e83541f49ca76542de1c352fbc02239
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524252"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613229"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-serien: en hybrid moln lagrings lösning
 
@@ -60,7 +60,7 @@ Den Microsoft Azure StorSimple lösningen innehåller följande komponenter:
 * **StorSimple Cloud Appliance** – även kallat den virtuella StorSimple-enheten. En program varu version av StorSimple-enheten som replikerar arkitekturen och de flesta funktioner i den fysiska hybrid lagrings enheten. StorSimple Cloud Appliance körs på en enskild nod på en virtuell Azure-dator. Premium-virtuella enheter, som utnyttjar Azure Premium Storage, är tillgängliga i uppdatering 2 och senare.
 * **StorSimple Enhetshanteraren service** – en utökning av Azure Portal som gör att du kan hantera en StorSimple-enhet eller StorSimple Cloud Appliance från ett enda webb gränssnitt. Du kan använda tjänsten StorSimple Enhetshanteraren för att skapa och hantera tjänster, Visa och hantera enheter, Visa aviseringar, hantera volymer och Visa och hantera säkerhets kopierings principer och säkerhets kopierings katalogen.
 * **Windows PowerShell för StorSimple** – ett kommando rads gränssnitt som du kan använda för att hantera StorSimple-enheten. Windows PowerShell för StorSimple har funktioner som gör att du kan registrera din StorSimple-enhet, konfigurera nätverks gränssnittet på enheten, installera vissa typer av uppdateringar, Felsöka enheten genom att komma åt support sessionen och ändra enhetens tillstånd. Du kan komma åt Windows PowerShell för StorSimple genom att ansluta till serie konsolen eller använda Windows PowerShell-fjärrkommunikation.
-* **Azure PowerShell StorSimple-cmdletar** – en samling Windows PowerShell-cmdletar som gör att du kan automatisera uppgifter på tjänst nivå och migrering från kommando raden. Mer information om Azure PowerShell-cmdletar för StorSimple finns i [cmdlet-referensen](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure).
+* **Azure PowerShell StorSimple-cmdletar** – en samling Windows PowerShell-cmdletar som gör att du kan automatisera uppgifter på tjänst nivå och migrering från kommando raden. Mer information om Azure PowerShell-cmdletar för StorSimple finns i [cmdlet-referensen](/powershell/module/servicemanagement/azure.service/#azure).
 * **StorSimple Snapshot Manager** – en MMC-snapin-modul som använder volym grupper och Windows-tjänsten Volume Shadow Copy för att generera programkonsekventa säkerhets kopieringar. Dessutom kan du använda StorSimple Snapshot Manager för att skapa säkerhets kopierings scheman och klona eller återställa volymer.
 * **StorSimple Adapter för SharePoint** – ett verktyg som transparent utökar Microsoft Azure StorSimple lagring och data skydd till SharePoint-servergrupper, samtidigt som du gör StorSimple-lagring synlig och hanterbar från SharePoint Central administrations Portal.
 
@@ -129,7 +129,7 @@ Du kan komma åt Windows PowerShell för StorSimple från en serie konsol (på e
 Mer information finns i [använda Windows PowerShell för StorSimple för att administrera enheten](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple-cmdletar
-De Azure PowerShell StorSimple-cmdletarna är en samling Windows PowerShell-cmdletar som gör att du kan automatisera uppgifter på tjänst nivå och migrering från kommando raden. Mer information om Azure PowerShell-cmdletar för StorSimple finns i [cmdlet-referensen](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true).
+De Azure PowerShell StorSimple-cmdletarna är en samling Windows PowerShell-cmdletar som gör att du kan automatisera uppgifter på tjänst nivå och migrering från kommando raden. Mer information om Azure PowerShell-cmdletar för StorSimple finns i [cmdlet-referensen](/powershell/module/servicemanagement/azure.service/).
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager är en snapin-modul för Microsoft Management Console (MMC) som du kan använda för att skapa konsekventa säkerhets kopior av lokala data och moln data vid en viss tidpunkt. Snapin-modulen körs på en Windows Server-baserad värd. Du kan använda StorSimple-Snapshot Manager för att:
@@ -213,10 +213,10 @@ En sammanfattning av de StorSimple-arbetsbelastningar som stöds är tabellen ne
 
 | Scenario | Arbetsbelastning | Stöds | Begränsningar | Version |
 | --- | --- | --- | --- | --- |
-| Samarbete |Fildelning |Yes | |Alla versioner |
-| Samarbete |Delning av distribuerad fil |Yes | |Alla versioner |
+| Samarbete |Fildelning |Ja | |Alla versioner |
+| Samarbete |Delning av distribuerad fil |Ja | |Alla versioner |
 | Samarbete |SharePoint |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
-| Arkivering |Enkel filarkivering |Yes | |Alla versioner |
+| Arkivering |Enkel filarkivering |Ja | |Alla versioner |
 | Virtualisering |Virtuella datorer |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
 | Databas |SQL |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
 | Videoövervakning |Videoövervakning |Ja* |Stöds endast om StorSimple-enheten endast är dedikerad för den här arbets belastningen |Uppdatering 2 och senare |
@@ -240,7 +240,7 @@ Nedan följer en lista över de infrastruktur komponenter som stöds av StorSimp
 
 | Scenario | Arbetsbelastning | Stöds | Begränsningar | Version |
 | --- | --- | --- | --- | --- |
-| Allmänt |Express Route |Yes | |Alla versioner |
+| Allmänt |Express Route |Ja | |Alla versioner |
 | Allmänt |DataCore FC |Ja* |Stöds med DataCore SANsymphony |Alla versioner |
 | Allmänt |DFSR |Ja* |Stöds bara med lokalt fästa volymer |Alla versioner |
 | Allmänt |Indexering |Ja* |För volymer med nivåer stöds endast metadata-indexering (inga data).<br>Fullständig indexering stöds för lokalt fästa volymer. |Alla versioner |
@@ -261,7 +261,7 @@ Nedan följer en lista över annan program vara som används med StorSimple för
 Innan du distribuerar din Microsoft Azure StorSimple-lösning rekommenderar vi att du läser igenom följande villkor och definitioner.
 
 ### <a name="key-terms-and-definitions"></a>Viktiga termer och definitioner
-| Term (akronym eller förkortning) | Description |
+| Term (akronym eller förkortning) | Beskrivning |
 | --- | --- |
 | åtkomst kontroll post (ACR) |En post som är kopplad till en volym på din Microsoft Azure StorSimple enhet som avgör vilka värdar som kan ansluta till den. Bestämningen baseras på iSCSI-kvalificerat namn (IQN) för värdarna (som finns i ACR) som ansluter till din StorSimple-enhet. |
 | AES-256 |En algoritm på 256-bitars Advanced Encryption Standard (AES) för kryptering av data när den flyttas till och från molnet. |

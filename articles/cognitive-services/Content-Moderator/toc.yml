@@ -5,33 +5,31 @@
   items:
     - name: Vad är Content Moderator?
       href: overview.md
+    - name: Stöd för språk
+      href: language-support.md
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
       expanded: true
     - name: Nyheter
       href: whats-new.md
 - name: Snabbstarter
   items:
-    - name: Prova Content Moderator på webben
-      href: quick-start.md
     - name: Använda klientbiblioteket eller REST-API
       href: client-libraries.md
-- name: Självstudier
+    - name: Använda det webbaserade användar gränssnittet
+      href: quick-start.md
+- name: Exempel
   items:
-    - name: Moderera bilder för e-handel
-      href: ecommerce-retail-catalog-moderation.md
-    - name: Moderera Facebook-innehåll
-      href: facebook-post-moderation.md
-- name: Begrepp
-  items:
-    - name: Bildmoderering
-      href: image-moderation-api.md
-    - name: Textmoderering
-      href: text-moderation-api.md
-    - name: Videomoderering
-      href: video-moderation-human-review.md
-    - name: Granskningsverktyg
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: 'Granskningar, arbetsflöden och jobb'
-      href: review-api.md
+    - name: Exempel webbläsare
+      href: 'https://docs.microsoft.com/samples/browse/?terms=content%20moderator'
+    - name: .NET SDK-exempel
+      href: samples-dotnet.md
+    - name: Python SDK-exempel
+      href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
+    - name: Node.js SDK-exempel
+      href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
+    - name: REST API-exempel i C#
+      href: samples-rest.md
 - name: Anvisningar
   items:
     - name: Moderera innehåll
@@ -80,47 +78,53 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: Exportera eller ta bort kontodata
       href: ./export-delete-data.md
+    - name: Anpassa Content Moderator
+      items:
+        - name: 'Granskningar, arbetsflöden och jobb'
+          href: review-api.md
+- name: Begrepp
+  items:
+    - name: Bildmoderering
+      href: image-moderation-api.md
+    - name: Textmoderering
+      href: text-moderation-api.md
+    - name: Videomoderering
+      href: video-moderation-human-review.md
+    - name: Granskningsverktyg
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+- name: Självstudier
+  items:
+    - name: Moderera bilder för e-handel
+      href: ecommerce-retail-catalog-moderation.md
+    - name: Moderera Facebook-innehåll
+      href: facebook-post-moderation.md
 - name: Referens
   items:
-    - name: API för Content Moderator
+    - name: Content Moderator REST API
       href: api-reference.md
-    - name: 'SDK:er'
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-contentmoderator/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/contentmoderator
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-contentmoderator/
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/contentmoderator
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: Resurser
   items:
-    - name: Alternativ för support och hjälp
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: Exempel
-      items:
-        - name: .NET SDK-exempel
-          href: samples-dotnet.md
-        - name: Python SDK-exempel
-          href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
-        - name: Node.js SDK-exempel
-          href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: REST API-exempel i C#
-          href: samples-rest.md
-        - name: Andra Azure-exempel
-          href: /samples/browse/?products=azure&term=content-moderator
     - name: Azure-webbseminarserie
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: Priser och begränsningar
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: Stöd för språk
-      href: language-support.md
-    - name: Regional tillgänglighet
+    - name: Stöd för regioner
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure-översikt
+    - name: Microsoft Learn moduler
+      href: 'https://docs.microsoft.com/learn/browse/?terms=content%20moderator'
+    - name: Alternativ för support och hjälp
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Azure Government och Global Azure
+      href: 'https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure'
+    - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

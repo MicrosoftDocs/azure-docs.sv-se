@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449500"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615592"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -117,7 +117,7 @@ Om du har konfigurerat ditt lagrings konto för att tillåta åtkomst från vald
 ### <a name="create-or-update-data-export-rule"></a>Skapa eller uppdatera data export regel
 En data export regel definierar de tabeller för vilka data exporteras och målet. Du kan skapa en enskild regel för varje mål för närvarande.
 
-Om du behöver en lista med tabeller i din workapce för att exportera regler, kör du den här frågan i din arbets yta.
+Export regeln ska innehålla tabeller som du har i din arbets yta. Kör den här frågan för en lista över tillgängliga tabeller i din arbets yta.
 
 ```kusto
 find where TimeGenerated > ago(24h) | distinct Type

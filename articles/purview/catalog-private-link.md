@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 3193c5c00789b793a5b5beaf662f94ab9525888a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d9088e5c6302c41c64f2a2e9034e7c3d659e37eb
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107838"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615643"
 ---
 # <a name="use-private-endpoints-for-your-purview-account"></a>Använd privata slut punkter för ditt avdelningens kontroll-konto
 
@@ -24,15 +24,15 @@ Du kan använda privata slut punkter för dina avdelningens kontroll-konton för
 
 1. Fyll grundläggande information och ange anslutnings metod till privat slut punkt i fliken **nätverk** . Konfigurera dina inmatnings privata slut punkter genom att ange information om **prenumeration, VNet och undernät** som du vill koppla till din privata slut punkt.
 
-    :::image type="content" source="media/catalog-private-link/create-pe-azure-portal.png" alt-text="Skapa PE när kontot skapas":::
+    :::image type="content" source="media/catalog-private-link/create-pe-azure-portal.png" alt-text="Skapa en privat slut punkt i Azure Portal":::
 
 1. Du kan också välja att ställa in en **privat DNS zon** för varje intag privat slut punkt.
 
 1. Klicka på Lägg till för att lägga till en privat slut punkt för ditt avdelningens kontroll-konto.
 
-1. På bladet skapa privat slut punkt anger du avdelningens kontroll under resurs till **konto**, väljer ditt virtuella nätverk och undernät och väljer den privat DNS zon där DNS ska registreras (du kan också använda dina vunna DNS-servrar eller skapa DNS-poster med hjälp av filer på dina virtuella datorer).
+1. På sidan Skapa privat slut punkt ställer du in avdelningens kontroll under resurs till **konto**, väljer ditt virtuella nätverk och undernät och väljer den privat DNS zon där DNS ska registreras (du kan också använda dina vunna DNS-servrar eller skapa DNS-poster med hjälp av filer på dina virtuella datorer).
 
-    :::image type="content" source="media/catalog-private-link/create-pe-account.png" alt-text="Skapa PE när kontot skapas":::
+    :::image type="content" source="media/catalog-private-link/create-pe-account.png" alt-text="Val av privat slut punkts skapande":::
 
 1. Välj **OK**.
 
@@ -45,7 +45,7 @@ Du kan använda privata slut punkter för dina avdelningens kontroll-konton för
 ## <a name="create-a-private-endpoint-for-the-purview-web-portal"></a>Skapa en privat slut punkt för avdelningens kontroll-webbportalen
 
 1. Navigera till det avdelningens kontroll-konto som du nyss skapade, Välj de privata slut punkts anslutningarna under avsnittet Inställningar.
-    
+
 1. Klicka på + privat slut punkt för att skapa en ny privat slut punkt.
 
     :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Skapa Portal privat slut punkt":::
@@ -68,31 +68,32 @@ Anvisningarna nedan är till för att komma åt avdelningens kontroll på ett s�
 
 1. Gå till den virtuella datorn på fliken Azure Portal, Välj nätverk under Inställningar. Välj sedan utgående port regler och klicka på Lägg till regel för utgående port.
 
-    :::image type="content" source="media/catalog-private-link/outbound-rule-add.png" alt-text="Lägger till utgående regel":::
+   :::image type="content" source="media/catalog-private-link/outbound-rule-add.png" alt-text="Lägger till utgående regel":::
 
 2. I Lägg till regel för utgående port regel väljer du *målet* som service tag, mål tjänst tag gen som ska vara **AzureActiveDirectory**, mål Port intervall som *, åtgärden som ska tillåtas, **prioriteten bör vara högre än regeln som nekade all Internet trafik**. Skapa regeln.
 
-    :::image type="content" source="media/catalog-private-link/outbound-rule-details.png" alt-text="Lägger till information om utgående regel":::
- 
+   :::image type="content" source="media/catalog-private-link/outbound-rule-details.png" alt-text="Lägger till information om utgående regel":::
+
 3. Följ samma steg för att skapa en annan regel för att tillåta "**AzureResourceManager**"-tjänst tag gen. Om du behöver åtkomst till Azure Portal kan du också lägga till en regel för tjänst tag gen '*AzurePortal*'.
 
 4. Anslut till den virtuella datorn, öppna webbläsaren och navigera till webb läsar konsolen (Ctrl + Shift + J) och växla till fliken nätverk för att övervaka nätverks begär Anden. Ange web.purview.azure.com i rutan URL och försök logga in med dina AAD-autentiseringsuppgifter. Inloggningen kan antagligen Miss lyckas och på fliken nätverk i-konsolen kan du se AAD försöker komma åt aadcdn.msauth.net men blockeras.
 
-    :::image type="content" source="media/catalog-private-link/login-fail.png" alt-text="Information om inloggningen lyckades":::
- 
+   :::image type="content" source="media/catalog-private-link/login-fail.png" alt-text="Information om inloggningen lyckades":::
+
 5. I det här fallet öppnar du en kommando tolk på den virtuella datorn och pingar denna URL (aadcdn.msauth.net), hämtar dess IP-adress och lägger sedan till en utgående port regel för IP-adressen i VM: s nätverks säkerhets regler. Ange IP-adress för målet och ange IP-adresser för målet som IP-adress för aadcdn. På grund av belastningsutjämnare och Traffic Manager kan AAD CDN IP vara dynamisk. När du har tilldelat IP-adressen är det bättre att lägga till den i den virtuella datorns värd fil för att tvinga webbläsaren att besöka den IP-adressen för att få AAD CDN.
 
-    :::image type="content" source="media/catalog-private-link/ping.png" alt-text="Testa ping":::
+   :::image type="content" source="media/catalog-private-link/ping.png" alt-text="Testa ping":::
 
-    :::image type="content" source="media/catalog-private-link/aadcdn-rule.png" alt-text="AAD CDN-regel":::
- 
+   :::image type="content" source="media/catalog-private-link/aadcdn-rule.png" alt-text="AAD CDN-regel":::
+
 6. När den nya regeln har skapats går du tillbaka till den virtuella datorn och försöker logga in med autentiseringsuppgifterna för AAD igen. Om inloggningen lyckas är avdelningens kontroll-portalen redo att användas. Men i vissa fall omdirigerar AAD till andra domäner för inloggning baserat på kundens kontotyp. För ett live.com-konto omdirigeras t. ex. AAD till live.com för att logga in, kommer dessa förfrågningar att blockeras igen. För Microsoft Employee-konton kommer AAD att få åtkomst till msft.sts.microsoft.com för inloggnings information. Kontrol lera nätverks förfrågningarna i webb läsar fliken nätverk om du vill se vilka domän förfrågningar som blockeras, gör om föregående steg för att få dess IP-adress och lägga till utgående port regler i nätverks säkerhets gruppen för att tillåta begär Anden för den IP-adressen (om möjligt, Lägg till URL-adressen och IP-adressen till den virtuella datorns värd fil för att åtgärda Om du känner till den exakta inloggnings domänens IP-intervall kan du också lägga till dem direkt i nätverks regler.
 
 7. Nu måste inloggningen till AAD lyckas. Avdelningens kontroll-portalen kommer att läsas in men det går inte att visa alla avdelningens kontroll-konton eftersom det bara kan komma åt ett speciellt avdelningens kontroll-konto. Ange *Web. avdelningens kontroll. Azure. com/Resource/{PurviewAccountName}* om du vill gå direkt till det avdelningens kontroll-konto som du har konfigurerat en privat slut punkt för.
 
-##  <a name="enable-private-endpoint-on-existing-purview-accounts"></a>Aktivera privat slut punkt för befintliga avdelningens kontroll-konton
+## <a name="enable-private-endpoint-on-existing-purview-accounts"></a>Aktivera privat slut punkt för befintliga avdelningens kontroll-konton
 
 Det finns två sätt att lägga till avdelningens kontroll privata slut punkter när du har skapat ditt avdelningens kontroll-konto:
+
 - Använda Azure Portal (avdelningens kontroll-konto)
 - Använda det privata länk centret
 
@@ -101,16 +102,16 @@ Det finns två sätt att lägga till avdelningens kontroll privata slut punkter 
 1. Gå till avdelningens kontroll-kontot från Azure Portal och välj de privata slut punkts anslutningarna under avsnittet **nätverk** i **Inställningar**.
 
 :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Skapa Portal privat slut punkt":::
-    
-2. Klicka på + privat slut punkt för att skapa en ny privat slut punkt.
 
-3. Fyll i grundläggande information.
+1. Klicka på + privat slut punkt för att skapa en ny privat slut punkt.
 
-4. På fliken resurs väljer du resurs typ som **Microsoft. avdelningens kontroll/Accounts**.
+1. Fyll i grundläggande information.
 
-5. Välj den resurs som ska vara avdelningens kontroll-konto och välj mål under resurs som ska vara **konto**.
+1. På fliken resurs väljer du resurs typ som **Microsoft. avdelningens kontroll/Accounts**.
 
-6. Välj det **virtuella nätverket** och **privat DNS zon** på fliken konfiguration. Gå till sidan Sammanfattning och klicka på **skapa** för att skapa portalens privata slut punkt.
+1. Välj den resurs som ska vara avdelningens kontroll-konto och välj mål under resurs som ska vara **konto**.
+
+1. Välj det **virtuella nätverket** och **privat DNS zon** på fliken konfiguration. Gå till sidan Sammanfattning och klicka på **skapa** för att skapa portalens privata slut punkt.
 
 > [!NOTE]
 > Du måste följa samma steg som ovan för den mål under resurs som valts som **Portal** .
@@ -123,7 +124,7 @@ Det finns två sätt att lägga till avdelningens kontroll privata slut punkter 
 
 3. Klicka på + Lägg till och fyll i grundläggande information.
 
-    :::image type="content" source="media/catalog-private-link/private-link-center.png" alt-text="Skapa PE från Private Link Center":::
+   :::image type="content" source="media/catalog-private-link/private-link-center.png" alt-text="Skapa PE från Private Link Center":::
 
 4. Välj den resurs som ska vara det redan skapade avdelningens kontroll-kontot och välj mål under resurs som ska vara **konto**.
 
@@ -135,4 +136,5 @@ Det finns två sätt att lägga till avdelningens kontroll privata slut punkter 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Bläddra i Azure avdelningens kontroll-Data Catalog](how-to-browse-catalog.md)
-- [Sök i Azure avdelningens kontroll-Data Catalog](how-to-search-catalog.md)  
+
+- [Sök i Azure avdelningens kontroll-Data Catalog](how-to-search-catalog.md)

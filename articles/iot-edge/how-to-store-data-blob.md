@@ -8,14 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539441"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200672"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Lagra data på gränsen med Azure Blob Storage på IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure Blob Storage på IoT Edge tillhandahåller en [Block-Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) och [lägger till en BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage-lösning på gränsen. En Blob Storage-modul på din IoT Edge-enhet fungerar som en Azure blob-tjänst, förutom att blobbar lagras lokalt på IoT Edge enheten. Du kan komma åt dina blobar med samma Azure Storage SDK-metoder eller BLOB-API-anrop som du redan använder. I den här artikeln beskrivs begreppen för Azure Blob Storage på IoT Edge behållare som kör en blob-tjänst på din IoT Edge enhet.
 

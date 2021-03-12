@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/10/2020
+ms.date: 03/10/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 351669453a5ce6930d3eb912e95e530d14febf61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb6a597d4fd58646f56e271cb6027fb46db1e26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335858"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634234"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Gör så här: integrera Azure Active Directorys loggar med Splunk med Azure Monitor
 
@@ -34,7 +34,7 @@ För att använda funktionen behöver du:
 
 - En Azure Event Hub som innehåller Azure AD-aktivitets loggar. Lär dig hur du [strömmar dina aktivitets loggar till en Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 
--  [Microsoft Azure lägga till på för Splunk](https://splunkbase.splunk.com/app/3757/). 
+-  [Splunk-tillägget för Microsoft Cloud Services](https://splunkbase.splunk.com/app/3110/#/details). 
 
 ## <a name="integrate-azure-active-directory-logs"></a>Integrera Azure Active Directory loggar 
 

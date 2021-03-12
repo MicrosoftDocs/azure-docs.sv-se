@@ -2,13 +2,13 @@
 title: Koncept – lagring
 description: Lär dig mer om nyckel lagrings funktionerna i privata moln i Azure VMware-lösningar.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 522e4f651b36532ac0c144b3889b2b67c91dc77b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/11/2021
+ms.openlocfilehash: a4c34f8767b20de3ca0647e09c5dc9edad3d45fb
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536958"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200546"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Lagrings koncept för Azure VMware-lösningar
 
@@ -32,7 +32,7 @@ Virtuellt San-datalager använder kryptering av data i vila som standard. Krypte
 
 ## <a name="scaling"></a>Skalning
 
-Intern kluster lagrings kapacitet skalas genom att lägga till värdar i ett kluster. För kluster som använder våra värdar ökas kapaciteten för den obearbetade klustret med 15,4 TB med varje tillagd värd. Kluster som har skapats med GP-värdar har sin RAW-kapacitet ökad med 7,7 TB med varje tillagd värd. I båda typerna av kluster tar värdar cirka 10 minuter att lägga till i ett kluster. Instruktioner för hur du skalar kluster finns i [själv studie kursen för att skala privat moln][tutorial-scale-private-cloud].
+Intern kluster lagrings kapacitet skalas genom att lägga till värdar i ett kluster. För kluster som använder AVS36-värdar ökas kapaciteten för den obearbetade klustret med 15,4 TB med varje tillagd värd. Det tar cirka 10 minuter att lägga till värdar i ett kluster. Instruktioner för hur du skalar kluster finns i [själv studie kursen för att skala privat moln][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Integrering av Azure Storage
 
