@@ -1,31 +1,26 @@
 ---
-title: Nätverks sto pol faktorer för Azure AD-programproxy
-description: Behandlar nätverks sto pol faktorer när du använder Azure AD-programproxy.
+title: Överväganden för nätverkstopologier för Azure Active Directory-programproxy
+description: Behandlar nätverks sto pol faktorer när du använder Azure Active Directory-programproxy.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 02/22/2021
 ms.author: kenwith
-ms.reviewer: harshja
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67505e7112c41b21b2ae5e8acc834ff047a470d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.reviewer: japere
+ms.openlocfilehash: bbab5463f0d022cb9bf155c7d33e2d81c8bdd448
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254813"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199683"
 ---
-# <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Nätverks sto pol faktorer när du använder Azure Active Directory-programproxy
+# <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Optimera trafikflöde med Azure Active Directory-programproxy
 
-Den här artikeln förklarar nätverks sto pol faktorer när du använder Azure Active Directory (Azure AD) Application Proxy för att publicera och komma åt dina program via en fjärr anslutning.
+Den här artikeln förklarar hur du optimerar faktorer för trafikflöde och nätverkstopologier när du använder Azure Active Directory (Azure AD) Application Proxy för att publicera och komma åt dina program via en fjärr anslutning.
 
 ## <a name="traffic-flow"></a>Trafikflöde
 
@@ -35,13 +30,32 @@ När ett program publiceras via Azure AD-programproxy flödar trafik från anvä
 1. Tjänsten Application Proxy ansluter till Application Proxy Connector
 1. Application Proxy Connector ansluter till mål programmet
 
-![Diagram över trafikflöde från användare till mål program](./media/application-proxy-network-topology/application-proxy-three-hops.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-three-hops.png" alt-text="Diagram som visar trafikflödet från användare till mål programmet." lightbox="./media/application-proxy-network-topology/application-proxy-three-hops.png":::
 
-## <a name="tenant-location-and-application-proxy-service"></a>Klient plats och Application Proxy-tjänst
+## <a name="optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview"></a>Optimera kopplings grupper så att de använder närmaste moln tjänst i Application Proxy (för hands version)
 
-När du registrerar dig för en Azure AD-klient bestäms regionen för din klient organisation av landet/regionen som du anger. När du aktiverar programproxyn väljs tjänsten Application Proxy-instanser för din klient organisation eller skapas i samma region som din Azure AD-klient eller i den närmaste regionen.
+När du registrerar dig för en Azure AD-klient bestäms regionen för din klient organisation av landet/regionen som du anger. När du aktiverar programproxyn väljs **standard** instanserna för moln tjänsten i Azure för din klient organisation i samma region som din Azure AD-klient eller den närmaste regionen.
 
-Om till exempel din Azure AD-klients land eller region är Storbritannien, använder alla Application Proxy-kopplingar tjänst instanser i Europeiska Data Center. När dina användare kommer åt publicerade program går deras trafik igenom Application Proxy-tjänsteinstanserna på den här platsen.
+Om till exempel din Azure AD-klients land eller region är Storbritannien, kommer alla programproxy-kopplingar som **standard** att tilldelas till att använda tjänst instanser i Europeiska Data Center. När dina användare kommer åt publicerade program, går deras trafik genom programproxyns moln tjänst instanser på den här platsen.
+
+Om du har anslutningar installerade i regioner som skiljer sig från din standard region, kan det vara bra att ändra vilken region som anslutnings gruppen är optimerad för för att förbättra prestanda vid åtkomst till dessa program. När en region har angetts för en kopplings grupp ansluts den till Application Proxy Cloud Services i den angivna regionen.
+
+För att optimera trafikflöde och minska svars tiden till en kopplings grupp tilldelar du anslutnings gruppen till den närmaste regionen. Så här tilldelar du en region:
+
+1. Logga in på [Azure-portalen](https://portal.azure.com/) som programadministratör för den katalog som använder programproxy. Om klientdomänen exempelvis är contoso.com ska administratören vara admin@contoso.com eller något annat administratörsalias på den domänen.
+1. Välj ditt användar namn i det övre högra hörnet. Kontrol lera att du är inloggad på en katalog som använder programproxy. Om du behöver ändra kataloger väljer du **Växla katalog** och väljer en katalog som använder Application Proxy.
+1. I den vänstra navigerings panelen väljer du **Azure Active Directory**.
+1. Under **Hantera** väljer du **programproxy**.
+1. Välj **ny anslutnings grupp**, ange ett **namn** för anslutnings gruppen.
+1. Gå sedan till **Avancerade inställningar** och välj List rutan under optimera för en bestämd region och välj den region som är närmast kopplingarna.
+1. Välj **Skapa**.
+    
+    :::image type="content" source="./media/application-proxy-network-topology/geo-routing.png" alt-text="Konfigurera en ny anslutnings grupp." lightbox="./media/application-proxy-network-topology/geo-routing.png":::
+
+1. När den nya anslutnings gruppen har skapats kan du välja vilka kopplingar som ska tilldelas den här anslutnings gruppen. 
+   - Du kan bara flytta kopplingar till anslutnings gruppen om den finns i en kopplings grupp med hjälp av standard regionen. Den bästa metoden är att alltid börja med dina anslutningar som är placerade i "standard grupp" och sedan flytta dem till rätt anslutnings grupp.
+   - Du kan bara ändra region för en kopplings grupp om det **inte finns några** kopplingar tilldelade till den eller de tilldelade apparna.
+1. Tilldela sedan kopplings gruppen till dina program. Vid åtkomst till apparna bör trafiken nu gå till program proxyns moln tjänst i den region som anslutnings gruppen är optimerad för.
 
 ## <a name="considerations-for-reducing-latency"></a>Att tänka på när du minskar svars tiden
 
@@ -96,7 +110,7 @@ Om du har en särskild VPN-eller ExpressRoute som har kon figurer ATS med privat
 
 Svars tiden komprometteras inte eftersom trafiken flödar över en dedikerad anslutning. Du får också bättre svars tid för service till koppling för programproxy eftersom anslutningen installeras i ett Azure-datacenter nära platsen för din Azure AD-klient.
 
-![Diagram som visar Connector som installerats i ett Azure-datacenter](./media/application-proxy-network-topology/application-proxy-expressroute-private.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-expressroute-private.png" alt-text="Diagram som visar Connector som installerats i ett Azure-datacenter" lightbox="./media/application-proxy-network-topology/application-proxy-expressroute-private.png":::
 
 ### <a name="other-approaches"></a>Andra metoder
 
@@ -124,7 +138,7 @@ I dessa scenarier kallar vi varje anslutning till "hopp" och numrera dem för en
 
 Detta är ett enkelt mönster. Du optimerar hopp 3 genom att placera kopplingen nära appen. Detta är också ett naturligt val, eftersom anslutningen vanligt vis installeras med en rad syn för appen och till data centret för att utföra KCD-åtgärder.
 
-![Diagram som visar användare, proxy, anslutning och app är alla i USA](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern1.png" alt-text="Diagram som visar användare, proxy, anslutning och app är alla i USA." lightbox="./media/application-proxy-network-topology/application-proxy-pattern1.png":::
 
 ### <a name="use-case-2"></a>Användnings fall 2
 
@@ -134,7 +148,7 @@ Detta är ett enkelt mönster. Du optimerar hopp 3 genom att placera kopplingen 
 
 Ett vanligt mönster är att optimera hopp 3, där du placerar kopplingen nära appen. Hopp 3 är vanligt vis kostsamt, om det är i samma region. Hopp 1 kan dock vara dyrare beroende på var användaren är, eftersom användare i världen måste ha åtkomst till Application Proxy-instansen i USA. Det är värt att notera att alla proxyservrar har liknande egenskaper för användare som sprids ut globalt.
 
-![Användare sprids globalt, men allt annat är i USA](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern2.png" alt-text="Användare sprids globalt, men allt annat är i USA" lightbox="./media/application-proxy-network-topology/application-proxy-pattern2.png":::
 
 ### <a name="use-case-3"></a>Användnings fall 3
 
@@ -146,7 +160,7 @@ Börja med att placera anslutningen så nära appen som möjligt. Sedan använde
 
 Om ExpressRoute-länken använder Microsoft-peering flödar trafiken mellan proxyn och anslutnings tjänsten över länken. Hopp 2 har optimerad svars tid.
 
-![Diagram över ExpressRoute mellan proxy och koppling](./media/application-proxy-network-topology/application-proxy-pattern3.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern3.png" alt-text="Diagram över ExpressRoute mellan proxy och koppling" lightbox="./media/application-proxy-network-topology/application-proxy-pattern3.png":::
 
 ### <a name="use-case-4"></a>Användnings fall 4
 
@@ -158,19 +172,25 @@ Placera anslutningen i det Azure-datacenter som är anslutet till företags nät
 
 Anslutningen kan placeras i Azure-datacentret. Eftersom anslutnings tjänsten fortfarande har en detaljerad serie för programmet och data centret via det privata nätverket är hopp 3 optimerat. Dessutom optimeras hopp 2 ytterligare.
 
-![Koppling i Azure Data Center, ExpressRoute mellan koppling och app](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern4.png" alt-text="Koppling i Azure Data Center, ExpressRoute mellan koppling och app" lightbox="./media/application-proxy-network-topology/application-proxy-pattern4.png":::
 
 ### <a name="use-case-5"></a>Användnings fall 5
 
-**Scenario:** Appen är i en organisations nätverk i Europa, med Application Proxy-instansen och de flesta användare i USA.
+**Scenario:** Appen är i en organisations nätverk i Europa, som standard är vi USA, med de flesta användare i Europa.
 
-**Rekommendation:** Placera kopplingen nära appen. Eftersom oss-användare har åtkomst till en programproxy-instans som sker i samma region, är hopp 1 inte för dyrt. Hopp 3 är optimerat. Överväg att använda ExpressRoute för att optimera hopp 2.
+**Rekommendation:** Placera kopplingen nära appen. Uppdatera kopplings gruppen så att den optimeras för användning av Europa Application Proxy Service-instanser. Anvisningar finns i [optimera kopplings grupper för att använda närmaste moln tjänst för tillämpningsproxy](application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service).
 
-![Diagrammet visar användare och proxy i USA, anslutning och app i Europa](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+Eftersom Europa användare har åtkomst till en Application Proxy-instans som sker i samma region, är hopp 1 inte dyrt. Hopp 3 är optimerat. Överväg att använda ExpressRoute för att optimera hopp 2.
 
-Du kan också överväga att använda en annan variant i den här situationen. Om de flesta användare i organisationen är i USA är det mycket troligt att nätverket även utsätts för oss. Placera anslutningen i USA och Använd den dedikerade interna företags nätverks linjen till programmet i Europa. På så sätt optimeras hopp 2 och 3.
+### <a name="use-case-6"></a>Användnings fall 6
 
-![Diagrammet visar användare, proxy och anslutning i USA, app i Europa](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+**Scenario:** Appen är i en organisations nätverk i Europa, som standard är vi USA, med de flesta användare i USA.
+
+**Rekommendation:** Placera kopplingen nära appen. Uppdatera kopplings gruppen så att den optimeras för användning av Europa Application Proxy Service-instanser. Anvisningar finns i [optimera kopplings grupper för att använda närmaste moln tjänst för tillämpningsproxy](/application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service). Hopp 1 kan vara dyrare eftersom alla amerikanska användare måste ha åtkomst till Application Proxy-instansen i Europa.
+
+Du kan också överväga att använda en annan variant i den här situationen. Om de flesta användare i organisationen är i USA är det mycket troligt att nätverket även utsätts för oss. Placera anslutaren i USA, Fortsätt att använda standard regionen USA för dina anslutnings grupper och Använd den dedikerade interna företags nätverks linjen till programmet i Europa. På så sätt optimeras hopp 2 och 3.
+
+:::image type="content" source="./media/application-proxy-network-topology/application-proxy-pattern5c.png" alt-text="Diagrammet visar användare, proxy och anslutning i USA, appen i Europa." lightbox="./media/application-proxy-network-topology/application-proxy-pattern5c.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 

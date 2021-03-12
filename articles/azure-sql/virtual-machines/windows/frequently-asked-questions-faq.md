@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 91f93faded7c18a1bc24f17053231f9011080c57
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036256"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224681"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Vanliga frågor och svar om SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -244,6 +244,10 @@ Den här artikeln innehåller svar på några av de vanligaste frågorna om att 
 1. **Stöds distribuerade transaktioner med MSDTC på SQL Server virtuella datorer?**
    
     Ja. Lokal DTC stöds för SQL Server 2016 SP2 och senare. Program måste dock testas när du använder Always on-tillgänglighetsgrupper, eftersom transaktioner under flygningen inte går att redundansväxla och måste göras om. Klustrad DTC är tillgänglig från och med Windows Server 2019. 
+    
+1. **Flyttar den virtuella Azure SQL-datorn eller lagrar kund information utanför regionen?**
+
+   Nej. I själva verket lagrar inte Azure SQL Virtual Machine och SQL IaaS agent-tillägget någon kund information.
 
 ## <a name="sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent-tillägg
 

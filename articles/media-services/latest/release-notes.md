@@ -11,18 +11,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: fc48c9b8a0a7510dd8792c959c1f63a0340f89ce
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609404"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011214"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
-
->Bli informerad om när du ska gå tillbaka till den här sidan för uppdateringar genom att kopiera och klistra in den här URL: en `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` i din RSS-feed läsare.
 
 För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikeln information om:
 
@@ -32,12 +30,6 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 * Föråldrade funktioner
 
 ## <a name="known-issues"></a>Kända problem
-
-> [!NOTE]
-> Du kan använda [Azure Portal](https://portal.azure.com/) för att hantera v3 [Live-händelser](live-events-outputs-concept.md), Visa v3- [till gångar](assets-concept.md) och jobb, hämta information om åtkomst till API: er, Kryptera innehåll. För alla andra hanterings aktiviteter (till exempel Hantera transformeringar och jobb) använder du [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
->
-> Mer information finns i: [Azure Portal begränsningar för Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -54,20 +46,22 @@ Förutom anpassad kodning är nu följande nya inbyggda HEVC Encoding-förval ti
 - H265SingleBitrate1080p
 - H265SingleBitrate4K
 
-
 Kunder som tidigare använde HEVC i Premium-kodaren i v2-API: et bör migreras till att använda det nya HEVC Encoding-stödet i Standard-kodaren.
 
 ### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API och SDK-utfasnings meddelande
 
 #### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Uppdatera din Azure Media Services REST API och SDK: er till v3 senast den 29 februari 2024
 
-Eftersom version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java erbjuder fler funktioner än version 2, kommer vi att ta bort version 2 av Azure Media Services REST API-och klient-SDK: er för .NET och Java. Vi rekommenderar att du gör switchen tidigare för att få bättre fördelar med version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java. Version 3 tillhandahåller: 
+Eftersom version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java erbjuder fler funktioner än version 2, kommer vi att ta bort version 2 av Azure Media Services REST API-och klient-SDK: er för .NET och Java.
+
+Vi rekommenderar att du gör switchen tidigare för att få bättre fördelar med version 3 av Azure Media Services REST API-och klient-SDK: er för .NET och Java.
+Version 3 tillhandahåller:
  
 - Real tids support dygnet runt
 - ARM-REST-API: er, klient-SDK: er för .NET Core, Node.js, python, Java, go och Ruby.
-- Kundhanterade nycklar, betrodd lagrings integrering, stöd för privat länk och [mycket mer](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Kundhanterade nycklar, betrodd lagrings integrering, stöd för privat länk och [mycket mer](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
-#### <a name="action-required"></a>Åtgärd krävs:
+#### <a name="action-required"></a>Åtgärd krävs
 
 Du kan minimera störningar i arbets belastningarna genom att granska [migreringsguiden](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) för att överföra koden från version 2 API och SDK: er till version 3 API och SDK före den 29 februari 2024.
 **Efter 29 februari 2024** kommer Azure Media Services inte längre att acceptera trafik på version 2 REST API, arm-kontots hanterings-API-version 2015-10-01 eller från version 2 .net-klient-SDK: er. Detta omfattar klient-SDK: er med öppen källkod från tredje part som kan anropa API: t för version 2.  
@@ -76,9 +70,9 @@ Se det officiella [uppdaterings meddelandet för Azure](https://azure.microsoft.
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>Stöd för standard-kodare för v2 API-funktioner
 
-Förutom det nya extra stödet för HEVC (H. 265) encoding är följande funktioner nu tillgängliga i 2020-05-01-versionen av kodnings-API: et. 
+Förutom det nya extra stödet för HEVC (H. 265) encoding är följande funktioner nu tillgängliga i 2020-05-01-versionen av kodnings-API: et.
 
-- Stöd för flera indatafiler stöds nu med hjälp av det nya **JobInputClip** -stödet. 
+- Stöd för flera indatafiler stöds nu med hjälp av det nya **JobInputClip** -stödet.
     - Ett exempel är tillgängligt för .NET som visar hur du [häftar ihop två till gångar](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets).
 - Med ljud spår val kan kunder välja och mappa inkommande ljud spår och dirigera dem till utdata för kodning
     - Se [REST API-openapi för information](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) om **AudioTrackDescriptor** och spåra val
@@ -96,6 +90,15 @@ Uppdatera till de senaste klient-SDK: erna i dina kod baser med hjälp av din pa
 - [Node.js typescript version 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
 - [Python Azure-MGMT-Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
 - [Java SDK-1.0.0 – beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="new-security-features-available-in-the-2020-05-01-version-of-the-azure-media-services-api"></a>Nya säkerhetsfunktioner som är tillgängliga i 2020-05-01-versionen av Azure Media Services API
+
+- **[Kundhanterade nycklar](concept-use-customer-managed-keys-byok.md)**: innehålls nycklar och andra data som lagras i konton som skapats med versions-API: t "2020-05-01" krypteras med en konto nyckel. Kunder kan tillhandahålla en nyckel för att kryptera konto nyckeln.
+
+- **[Betrodd lagring](concept-trusted-storage.md)**: Media Services kan konfigureras för åtkomst till Azure Storage med hjälp av en hanterad identitet som är kopplad till Media Services-kontot. När lagrings konton nås med hjälp av en hanterad identitet kan kunderna konfigurera mer restriktiva nätverks-ACL: er på lagrings kontot utan att blockera Media Services scenarier.
+
+- **[Hanterade identiteter](concept-managed-identities.md)**: kunder kan aktivera en systemtilldelad hanterad identitet för ett Media Services konto för att ge åtkomst till nyckel valv (för Kundhanterade nycklar) och lagrings konton (för betrodd lagring).
+
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Uppdaterade typescript Node.js-exempel med isomorphic SDK för Java Script
 
@@ -143,7 +146,8 @@ Med Live encoding kan du nu lägga till funktioner för att placera fragment i f
 ## <a name="august-2020"></a>Augusti 2020
 
 ### <a name="dynamic-encryption"></a>Dynamisk kryptering
-Stöd för äldre PlayReady Protected PIFF-kryptering (1,1) är nu tillgängligt i den dynamiska Paketeraren. Detta ger stöd för äldre Smart TV-uppsättningar från Samsung och LG som implementerade de tidiga utkasten av Common Encryption Standard (CENC) som publicerats av Microsoft.  PIFF 1,1-formatet kallas även krypterings format som tidigare stöddes av Silverlight-klientcertifikatet. Idag är det enda användnings Falls scenariot för det här krypterings formatet att rikta in sig på den äldre marknaden för smart TV där det finns ett icke-trivialt antal smarta TV-apparater i vissa regioner som endast stöder Smooth Streaming med PIFF 1,1-kryptering. 
+
+Stöd för äldre PlayReady Protected PIFF-kryptering (1,1) är nu tillgängligt i den dynamiska Paketeraren. Detta ger stöd för äldre Smart TV-uppsättningar från Samsung och LG som implementerade de tidiga utkasten av Common Encryption Standard (CENC) som publicerats av Microsoft.  PIFF 1,1-formatet kallas även krypterings format som tidigare stöddes av Silverlight-klientcertifikatet. Idag är det enda användnings Falls scenariot för det här krypterings formatet att rikta in sig på den äldre marknaden för smart TV där det finns ett icke-trivialt antal smarta TV-apparater i vissa regioner som endast stöder Smooth Streaming med PIFF 1,1-kryptering.
 
 Om du vill använda det nya PIFF 1,1-krypterings stödet ändrar du kryptering svärdet till "Piff" i URL-sökvägen för den strömmande lokaliseraren. Mer information finns i [Översikt över Content Protection.](content-protection-overview.md)
 Exempel: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|

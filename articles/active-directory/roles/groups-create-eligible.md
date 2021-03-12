@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06a1e9ea83fc7ad758ad17245ffa5d7ca973f6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9bf0a9ca193be9fd61d0b284338c0f581c9f91e3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742106"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012062"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Skapa en roll tilldelnings bara grupp i Azure Active Directory
 
@@ -51,14 +51,14 @@ Gruppen skapas med roller som du kanske har tilldelat till den.
 ### <a name="install-the-azure-ad-preview-module"></a>Installera Azure AD Preview-modulen
 
 ```powershell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 För att kontrol lera att modulen är redo att användas, utfärda följande kommando:
 
 ```powershell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
 ```
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Skapa en grupp som kan tilldelas rollen
@@ -73,9 +73,9 @@ För den här typen av grupp `isPublic` kommer alltid att vara falskt och `isSec
 
 ```powershell
 #Basic set up
-install-module azureadpreview
-import-module azureadpreview
-get-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
+Get-Module -Name AzureADPreview
 
 #Connect to Azure AD. Sign in as Privileged Role Administrator or Global Administrator. Only these two roles can create a role-assignable group.
 Connect-AzureAD
@@ -107,7 +107,7 @@ Add-AzureADGroupMember -ObjectId $roleAssignablegroup.Id -RefObjectId $member.Ob
 
 ### <a name="create-a-role-assignable-group-in-azure-ad"></a>Skapa en roll tilldelnings bara grupp i Azure AD
 
-```powershell
+```http
 POST https://graph.microsoft.com/beta/groups
 {
 "description": "This group is assigned to Helpdesk Administrator built-in role of Azure AD.",

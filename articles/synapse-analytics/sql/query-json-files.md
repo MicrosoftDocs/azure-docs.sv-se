@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56d9c621579e19cf2c32562560e40fe42ff3989b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5fcf688bbe8a5be2fc10b70950990b7b6ca71df8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677511"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225599"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Fråga JSON-filer med Server lös SQL-pool i Azure Synapse Analytics
 
@@ -126,12 +126,13 @@ Fråge exemplen läser *JSON* -filer som innehåller dokument med följande stru
 
 ### <a name="query-json-files-using-json_value"></a>Fråga JSON-filer med JSON_VALUE
 
-Frågan nedan visar hur du använder [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att hämta skalära värden (title, Publisher) från ett JSON-dokument:
+Frågan nedan visar hur du använder [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att hämta skalära värden ( `date_rep` , `countries_and_territories` , `cases` ) från ett JSON-dokument:
 
 ```sql
 select
     JSON_VALUE(doc, '$.date_rep') AS date_reported,
     JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    CAST(JSON_VALUE(doc, '$.deaths') AS INT) as fatal,
     JSON_VALUE(doc, '$.cases') as cases,
     doc
 from openrowset(
@@ -143,6 +144,8 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 order by JSON_VALUE(doc, '$.geo_id') desc
 ```
+
+När du extraherar JSON-egenskaper från ett JSON-dokument kan du definiera kolumnalias och eventuellt omvandla textvärdet till någon typ.
 
 ### <a name="query-json-files-using-openjson"></a>Fråga JSON-filer med openjson
 
@@ -166,6 +169,10 @@ from openrowset(
 where country = 'Serbia'
 order by country, date_rep desc;
 ```
+Resultatet är detsamma som de resultat som returneras med `JSON_VALUE` funktionen. I vissa fall kan du använda `OPENJSON` `JSON_VALUE` :
+- I- `WITH` satsen kan du uttryckligen ange kolumnalias och typer för varje egenskap. Du behöver inte ställa in `CAST` funktionen i varje kolumn i `SELECT` listan.
+- `OPENJSON` kan vara snabbare om du returnerar ett stort antal egenskaper. Om du returnerar precis 1-2 egenskaper `OPENJSON` kan funktionen bli överordnad.
+- Du måste använda `OPENJSON` funktionen om du behöver parsa matrisen från varje dokument och koppla den till den överordnade raden.
 
 ## <a name="next-steps"></a>Nästa steg
 

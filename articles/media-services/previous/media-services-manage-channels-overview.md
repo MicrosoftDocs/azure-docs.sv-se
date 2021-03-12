@@ -3,7 +3,7 @@ title: Översikt över direkt uppspelning med Azure Media Services | Microsoft D
 description: Den här artikeln ger en översikt över direkt uppspelning med Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 77c68b3c17b8815c4858e1d73251975a7e00e6eb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 195333f5f06145a1dfa84f0de2c5984190e3d7ca
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695712"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014833"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Översikt över direkt uppspelning med Media Services
 
@@ -76,17 +76,17 @@ Följande tabell innehåller en guide för att jämföra de två kanal typer som
 
 | Funktion | Direkt kanal | Standard kanal |
 | --- | --- | --- |
-| Inmatade enstaka bit hastighet kodas till flera bit hastigheter i molnet |Nej |Ja |
+| Inmatade enstaka bit hastighet kodas till flera bit hastigheter i molnet |Inga |Ja |
 | Högsta upplösning, antal lager |1080p, 8 lager, 60 + fps |720p, 6 lager, 30 fps |
 | Protokoll för indataport |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Pris |Se [sidan med priser](https://azure.microsoft.com/pricing/details/media-services/) och klicka på fliken "live video" |Se [sidan med priser](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximal kör tid |runt |8 timmar |
-| Stöd för att infoga mellanliggande |Nej |Ja |
-| Stöd för AD-signalering |Nej |Ja |
+| Stöd för att infoga mellanliggande |Inga |Ja |
+| Stöd för AD-signalering |Inga |Ja |
 | Pass-through CEA 608/708-textning |Ja |Ja |
 | Stöd för icke-uniform GOPs |Ja |Nej – indatamängden måste vara fast 2sec GOPs |
 | Stöd för variabla bild Rute frekvens inmatade |Ja |Nej – indatatyper måste vara fasta bild hastigheter.<br/>Mindre variationer tolereras, till exempel vid hög rörelse i bakgrunden. Men kodare kan inte släppa till 10 bild rutor/SEK. |
-| Shutoff av kanaler när inmatnings flöde förloras |Nej |Efter 12 timmar, om inget program körs |
+| Shutoff av kanaler när inmatnings flöde förloras |Inga |Efter 12 timmar, om inget program körs |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Arbeta med kanaler som tar emot liveström med flera bithastigheter från lokala kodare (genomströmning)
 
@@ -155,7 +155,7 @@ Följande tabell visar hur kanal tillstånd mappas till fakturerings läget.
 | Startar |Startar |Nej (tillfälligt tillstånd) |
 | Körs |Redo (inga program som körs)<br/>eller<br/>Strömning (minst ett program som körs) |JA |
 | Stoppas |Stoppas |Nej (tillfälligt tillstånd) |
-| Stoppad |Stoppad |Nej |
+| Stoppad |Stoppad |Inga |
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

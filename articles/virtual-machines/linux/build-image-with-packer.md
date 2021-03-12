@@ -2,18 +2,19 @@
 title: Skapa virtuella Linux Azure-avbildningar med Packer
 description: Lär dig hur du använder Packer för att skapa avbildningar av virtuella Linux-datorer i Azure
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 29a0c47bf24ecd916fb9402ffcb2a3ff13a36a84
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.collection: linux
+ms.openlocfilehash: 4d85106cb78b5f4799a78d18463d83594f54dbac
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016428"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556748"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Använda Packer för att skapa avbildningar av virtuella Linux-datorer i Azure
 Varje virtuell dator (VM) i Azure skapas från en avbildning som definierar Linux-distributionen och OS-versionen. Avbildningar kan omfatta förinstallerade program och konfigurationer. Azure Marketplace innehåller många första och tredje parts avbildningar för de flesta vanliga distributioner och program miljöer, eller så kan du skapa egna anpassade avbildningar som är anpassade efter dina behov. Den här artikeln beskriver [hur du använder verktyg för](https://www.packer.io/) öppen källkod för att definiera och skapa anpassade avbildningar i Azure.

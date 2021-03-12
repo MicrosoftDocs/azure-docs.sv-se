@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d09f27eebba5db2edb56185b658c8ae2b06e42d3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552277"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200008"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Använda en Windows-klient i Azure för dev/test-scenarier
 Du kan använda Windows 7, Windows 8 eller Windows 10 Enterprise (x64) i Azure för utveckling/testning-scenarier förutsatt att du har en lämplig Visual Studio-prenumeration (tidigare MSDN). 
@@ -41,10 +41,10 @@ I följande tabell visas de ID: n som är kvalificerade för att distribuera Win
 | [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P | Windows 10 Enterprise N (x64) <br> Windows 8,1 Enterprise N (x64) <br> Windows 7 Enterprise N med SP1 (x64) |
 
 ## <a name="check-your-azure-subscription"></a>Kontrol lera din Azure-prenumeration
-Om du inte känner till ditt erbjudande-ID kan du hämta det via Azure Portal på något av följande två sätt:  
+Om du inte känner till ditt erbjudande-ID kan du hämta det via Azure Portal.  
 - I fönstret *prenumerationer* : ![ erbjud ID-information från Azure Portal](./media/client-images/offer-id-azure-portal.png) 
-- Du kan också klicka på **fakturering** och sedan på ditt PRENUMERATIONS-ID. Erbjudande-ID visas i *fakturerings* fönstret.
-Du kan också Visa erbjudande-ID: t från [fliken prenumerationer](https://account.windowsazure.com/Subscriptions) i Azure-konto portalen: ![ erbjud ID-information från Azure-konto portalen](./media/client-images/offer-id-azure-account-portal.png) 
+- Du kan också klicka på **fakturering** och sedan på ditt PRENUMERATIONS-ID. Erbjudande-ID visas i *fakturerings* fönstret. 
+- Du kan också Visa erbjudande-ID: t från [fliken prenumerationer](https://account.windowsazure.com/Subscriptions) i Azure-konto portalen: ![ erbjud ID-information från Azure-konto portalen](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Nästa steg
 Nu kan du distribuera dina virtuella datorer med hjälp av [PowerShell](quick-create-powershell.md), [Resource Manager-mallar](ps-template.md)eller [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

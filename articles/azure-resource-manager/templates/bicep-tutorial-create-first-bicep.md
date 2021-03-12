@@ -2,16 +2,16 @@
 title: Självstudie – Skapa & Distribuera Azure Resource Manager bicep-filer
 description: Skapa din första bicep-fil för att distribuera Azure-resurser. I självstudien får du lära dig om bicep-filsyntaxen och hur du distribuerar ett lagrings konto.
 author: mumian
-ms.date: 03/03/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036357"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632585"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Självstudie: skapa och distribuera den första Azure Resource Manager bicep-filen
 
@@ -76,7 +76,7 @@ OK, du är redo att börja lära dig om bicep.
     Resurs deklarationen har fyra komponenter:
 
     - **resurs**: nyckelord.
-    - **symboliskt namn** (STG): ett symboliskt namn är en identifierare för att referera till resursen i hela bicep-filen. Det är inte vad namnet på resursen kommer att vara när det distribueras. Namnet på resursen definieras av egenskapen **Name** .  Se den fjärde komponenten i den här listan. För att göra självstudierna enkla att följa, används **STG** som symboliskt namn för lagrings konto resursen i den här själv studie serien.
+    - **symboliskt namn** (STG): ett symboliskt namn är en identifierare för att referera till resursen i hela bicep-filen. Det är inte vad namnet på resursen kommer att vara när det distribueras. Namnet på resursen definieras av egenskapen **Name** .  Se den fjärde komponenten i den här listan. För att göra självstudierna enkla att följa, används **STG** som symboliskt namn för lagrings konto resursen i den här själv studie serien. Information om hur du använder det symboliska namnet för att få en fullständig lista över objekt egenskaperna finns i [lägga till utdata](./bicep-tutorial-add-outputs.md).
     - **resurs typ** ( Microsoft.Storage/storageAccounts@2019-06-01 ): den består av resurs leverantören (Microsoft. Storage), resurs typ (StorageAccounts) och API version (2019-06-01). Varje resurs leverantör publicerar sina egna API-versioner, så det här värdet är specifika för typen. Du hittar fler typer och apiVersions för olika Azure-resurser från [referens för ARM-mallar](/azure/templates/).
     - **Egenskaper** (allt inuti = {...}): dessa är de egenskaper som du vill ange för den angivna resurs typen. Detta är exakt samma egenskaper som är tillgängliga i en ARM-mall. Varje resurs har en `name` egenskap. De flesta resurser har också en `location` egenskap som anger den region där resursen distribueras. De andra egenskaperna varierar beroende på resurs typ och API-version. Det är viktigt att förstå anslutningen mellan API-versionen och de tillgängliga egenskaperna, så vi går vidare till mer information.
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071638"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225225"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Snabb start: skapa ett Azure Kognitiv sökning-index i python med Jupyter Notebook
 
@@ -271,9 +271,9 @@ Om du vill läsa in dokument skapar du en dokument samling med hjälp av en [ind
 
 ## <a name="3---search-an-index"></a>3 – Söka i ett index
 
-Det här steget visar hur du frågar ett index med hjälp av [Sök dokumenten (rest)](/rest/api/searchservice/search-documents).
+Det här steget visar hur du frågar ett index med **Sök** -metoden i [search. client-klassen](/python/api/azure-search-documents/azure.search.documents.searchclient).
 
-1. Använd search_client för den här åtgärden. Den här frågan kör en tom sökning ( `search=*` ) och returnerar en lista med en lista (Sök poäng = 1,0) av godtyckliga dokument. Eftersom det inte finns några kriterier inkluderas alla dokument i resultaten. Den här frågan skriver bara ut två av fälten i varje dokument. Den lägger också `include_total_count=True` till för att få ett antal dokument (4) i resultatet.
+1. Följande steg kör en tom sökning ( `search=*` ) och returnerar en lista med en lista med en lista (Sök poäng = 1,0) av godtyckliga dokument. Eftersom det inte finns några kriterier inkluderas alla dokument i resultaten. Den här frågan skriver bara ut två av fälten i varje dokument. Den lägger också `include_total_count=True` till för att få ett antal dokument (4) i resultatet.
 
     ```python
     results =  search_client.search(search_text="*", include_total_count=True)

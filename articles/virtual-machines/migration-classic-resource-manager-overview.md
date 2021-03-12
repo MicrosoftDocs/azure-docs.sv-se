@@ -9,14 +9,14 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 69eae2bd2e2db27c6cc9d0a0c1eb29576e96179a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 116e99339ac79e9e6a2de5e7a6222460a71bf4a1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669318"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615099"
 ---
-# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plattforms stöd för migrering av IaaS-resurser från klassisk till Azure Resource Manager i Linux
+# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plattformsstödd migrering av IaaS-resurser från klassisk till Azure Resource Manager
 
 > [!IMPORTANT]
 > Idag, cirka 90% av virtuella IaaS-datorer använder [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Från och med den 28 februari 2020 har klassiska virtuella datorer föråldrats och kommer att dras tillbaka den 1 mars 2023. [Läs mer]( https://aka.ms/classicvmretirement) om den här utfasningen och [hur den påverkar dig](classic-vm-deprecation.md#how-does-this-affect-me).
@@ -119,8 +119,8 @@ Följande funktioner stöds inte för närvarande. Du kan också ta bort de här
 
 | Resursprovider | Funktion | Rekommendation |
 | --- | --- | --- |
-| Beräkning | Avassocierade virtuella dator diskar. | VHD-blobbar bakom diskarna migreras när lagrings kontot migreras |
-| Beräkning | Avbildningar av virtuella datorer. | VHD-blobbar bakom diskarna migreras när lagrings kontot migreras |
+| Compute | Avassocierade virtuella dator diskar. | VHD-blobbar bakom diskarna migreras när lagrings kontot migreras |
+| Compute | Avbildningar av virtuella datorer. | VHD-blobbar bakom diskarna migreras när lagrings kontot migreras |
 | Nätverk | Slutpunktens åtkomstkontrollistor. | Ta bort ACL för slut punkter och försök att migrera igen. |
 | Nätverk | Application Gateway | Ta bort Application Gateway innan du påbörjar migreringen och återskapa sedan Application Gateway när migreringen är klar. |
 | Nätverk | Virtuella nätverk som använder VNet-peering. | Migrera Virtual Network till Resource Manager och sedan peer. Läs mer om [VNet-peering](../virtual-network/virtual-network-peering-overview.md). |
@@ -131,16 +131,16 @@ Följande konfigurationer stöds inte för närvarande.
 | Tjänst | Konfiguration | Rekommendation |
 | --- | --- | --- |
 | Resource Manager |Role-Based Access Control (RBAC) för klassiska resurser |Eftersom resursens URI ändras efter migreringen, rekommenderar vi att du planerar de RBAC-principinställningar som måste inträffa efter migreringen. |
-| Beräkning |Flera undernät som är kopplade till en virtuell dator |Uppdatera under näts konfigurationen så att den bara refererar till ett undernät. Detta kan kräva att du tar bort ett sekundärt nätverkskort (som refererar till ett annat undernät) från den virtuella datorn och ansluter det igen efter att migreringen har slutförts. |
-| Beräkning |Virtuella datorer som tillhör ett virtuellt nätverk, men som inte har något explicit tilldelat undernät |Du kan också ta bort den virtuella datorn. |
-| Beräkning |Virtuella datorer som har aviseringar, principer för autoskalning |Migreringen går igenom och de här inställningarna tas bort. Vi rekommenderar starkt att du utvärderar din miljö innan du migrerar. Alternativt kan du konfigurera om aviserings inställningarna när migreringen är klar. |
-| Beräkning |VIRTUELLA XML-tillägg (BGInfo 1. *, Visual Studio-felsökning, webb distribution och fjärrfelsökning) |Detta stöds inte. Vi rekommenderar att du tar bort dessa tillägg från den virtuella datorn för att fortsätta migreringen, eller så kommer de att tas bort automatiskt under migreringsprocessen. |
-| Beräkning |Startdiagnostik med Premium Storage |Inaktivera funktionen för startdiagnostik för de virtuella datorerna innan du fortsätter med migreringen. Du kan återaktivera startdiagnostik i Resource Manager-stacken när migreringen är klar. Dessutom bör blobbar som används för skärm bilds-och serie loggar tas bort så att du inte längre debiteras för dessa blobbar. |
-| Beräkning | Moln tjänster som innehåller webb-/arbets roller | Detta stöds inte för närvarande. |
-| Beräkning | Moln tjänster som innehåller mer än en tillgänglighets uppsättning eller flera tillgänglighets uppsättningar. |Detta stöds inte för närvarande. Flytta Virtual Machines till samma tillgänglighets uppsättning innan du migrerar. |
-| Beräkning | Virtuell dator med Azure Security Center-tillägget | Azure Security Center installerar automatiskt tillägg på Virtual Machines för att övervaka deras säkerhet och utlösa aviseringar. Dessa tillägg installeras vanligt vis automatiskt om Azure Security Centers principen är aktive rad för prenumerationen. Om du vill migrera Virtual Machines inaktiverar du Security Center-principen för prenumerationen, som tar bort Security Center övervaknings tillägget från Virtual Machines. |
-| Beräkning | Virtuell dator med säkerhets kopiering eller Snapshot-tillägg | Dessa tillägg installeras på en virtuell dator som har kon figurer ATS med tjänsten Azure Backup. Även om migreringen av de här virtuella datorerna inte stöds, följer du anvisningarna [här](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) för att behålla säkerhets kopior som togs innan migreringen.  |
-| Beräkning | Virtuell dator med Azure Site Recovery-tillägget | Dessa tillägg installeras på en virtuell dator som har kon figurer ATS med tjänsten Azure Site Recovery. Även om migreringen av lagrings utrymme som används med Site Recovery fungerar, påverkas den aktuella replikeringen. Du måste inaktivera och aktivera VM-replikering efter lagringsmigrering. |
+| Compute |Flera undernät som är kopplade till en virtuell dator |Uppdatera under näts konfigurationen så att den bara refererar till ett undernät. Detta kan kräva att du tar bort ett sekundärt nätverkskort (som refererar till ett annat undernät) från den virtuella datorn och ansluter det igen efter att migreringen har slutförts. |
+| Compute |Virtuella datorer som tillhör ett virtuellt nätverk, men som inte har något explicit tilldelat undernät |Du kan också ta bort den virtuella datorn. |
+| Compute |Virtuella datorer som har aviseringar, principer för autoskalning |Migreringen går igenom och de här inställningarna tas bort. Vi rekommenderar starkt att du utvärderar din miljö innan du migrerar. Alternativt kan du konfigurera om aviserings inställningarna när migreringen är klar. |
+| Compute |VIRTUELLA XML-tillägg (BGInfo 1. *, Visual Studio-felsökning, webb distribution och fjärrfelsökning) |Detta stöds inte. Vi rekommenderar att du tar bort dessa tillägg från den virtuella datorn för att fortsätta migreringen, eller så kommer de att tas bort automatiskt under migreringsprocessen. |
+| Compute |Startdiagnostik med Premium Storage |Inaktivera funktionen för startdiagnostik för de virtuella datorerna innan du fortsätter med migreringen. Du kan återaktivera startdiagnostik i Resource Manager-stacken när migreringen är klar. Dessutom bör blobbar som används för skärm bilds-och serie loggar tas bort så att du inte längre debiteras för dessa blobbar. |
+| Compute | Moln tjänster som innehåller webb-/arbets roller | Detta stöds inte för närvarande. |
+| Compute | Moln tjänster som innehåller mer än en tillgänglighets uppsättning eller flera tillgänglighets uppsättningar. |Detta stöds inte för närvarande. Flytta Virtual Machines till samma tillgänglighets uppsättning innan du migrerar. |
+| Compute | Virtuell dator med Azure Security Center-tillägget | Azure Security Center installerar automatiskt tillägg på Virtual Machines för att övervaka deras säkerhet och utlösa aviseringar. Dessa tillägg installeras vanligt vis automatiskt om Azure Security Centers principen är aktive rad för prenumerationen. Om du vill migrera Virtual Machines inaktiverar du Security Center-principen för prenumerationen, som tar bort Security Center övervaknings tillägget från Virtual Machines. |
+| Compute | Virtuell dator med säkerhets kopiering eller Snapshot-tillägg | Dessa tillägg installeras på en virtuell dator som har kon figurer ATS med tjänsten Azure Backup. Även om migreringen av de här virtuella datorerna inte stöds, följer du anvisningarna [här](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) för att behålla säkerhets kopior som togs innan migreringen.  |
+| Compute | Virtuell dator med Azure Site Recovery-tillägget | Dessa tillägg installeras på en virtuell dator som har kon figurer ATS med tjänsten Azure Site Recovery. Även om migreringen av lagrings utrymme som används med Site Recovery fungerar, påverkas den aktuella replikeringen. Du måste inaktivera och aktivera VM-replikering efter lagringsmigrering. |
 | Nätverk |Virtuella nätverk som innehåller virtuella datorer och webb-/arbets roller |Detta stöds inte för närvarande. Flytta webb-/arbets rollerna till sina egna Virtual Network innan du migrerar. När den klassiska Virtual Network har migrerats kan den migrerade Azure Resource Manager Virtual Network vara peer-kopplad med den klassiska Virtual Network för att uppnå liknande konfiguration som tidigare.|
 | Nätverk | Klassiska ExpressRoute-kretsar |Detta stöds inte för närvarande. Dessa kretsar måste migreras till Azure Resource Manager innan du påbörjar migreringen av IaaS. Läs mer i [Flytta ExpressRoute-kretsar från den klassiska distributions modellen till Resource Manager](../expressroute/expressroute-move.md).|
 | Azure App Service |Virtuella nätverk som innehåller App Service miljöer |Detta stöds inte för närvarande. |

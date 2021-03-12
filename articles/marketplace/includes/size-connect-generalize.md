@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826627"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630122"
 ---
 ## <a name="generalize-the-image"></a>Generalisera avbildningen
 
@@ -38,60 +38,31 @@ Följande process generaliserar en virtuell Linux-dator och distribuerar den ige
     1. I Azure Portal väljer du resurs gruppen (RG) och avallokerar den virtuella datorn.
     2. Den virtuella datorn är nu generaliserad och du kan skapa en ny virtuell dator med den här virtuella dator disken.
 
-### <a name="take-a-snapshot-of-the-vm-disk"></a>Ta en ögonblicks bild av den virtuella dator disken
+### <a name="capture-image"></a>Avbilda avbildning
 
-1. Logga in på [Azure-portalen](https://ms.portal.azure.com/).
-2. Börja längst upp till vänster, Välj **skapa en resurs** och Sök sedan efter och välj **ögonblicks bild**.
-3. På bladet ögonblicks bild väljer du  **skapa**.
-4. Ange ett **namn** för ögonblicks bilden.
-5. Välj en befintlig resurs grupp eller ange ett namn för en ny resurs grupp.
-6. För **käll disk** väljer du den hanterade disk som ska avbildas.
-7. Välj den **Kontotyp** som ska användas för att lagra ögonblicks bilden. Använd **standard HDD** om du inte behöver den lagrad på ett högt presterande SSD.
-8. Välj **Skapa**.
+När den virtuella datorn är klar kan du avbilda den i ett Azure-Galleri för delad avbildning. Följ stegen nedan för att avbilda:
 
-#### <a name="extract-the-vhd"></a>Extrahera den virtuella hård disken
+1. På [Azure Portal](https://ms.portal.azure.com/)går du till den virtuella datorns sida.
+2. Välj **avbildning**.
+3. Under **dela avbildningen till den delade avbildnings galleriet** väljer du **Ja, dela den i ett galleri som en avbildnings version**.
+4. Välj generaliserad under **operativ system tillstånd** .
+5. Välj ett mål avbildnings Galleri eller **Skapa nytt**.
+6. Välj en mål avbildnings definition eller **Skapa ny**.
+7. Ange ett **versions nummer** för avbildningen.
+8. Välj **Granska + skapa** för att granska dina val.
+9. När verifieringen har slutförts väljer du **skapa**.
 
-Använd följande skript för att exportera ögonblicks bilden till en virtuell hård disk i ditt lagrings konto.
+För att publicera måste utgivar kontot ha en ägare till SIG. För att bevilja åtkomst:
 
-```azurecli-interactive
-#Provide the subscription Id where the snapshot is created
-$subscriptionId=yourSubscriptionId
+1. Gå till galleriet för delad avbildning.
+2. Välj **åtkomst kontroll** (IAM) på den vänstra panelen.
+3. Välj **Lägg till** och **Lägg sedan till roll tilldelning**.
+4. Välj en **roll** eller **ägare**.
+5. Under **tilldela åtkomst till väljer du** **användare, grupp eller tjänstens huvud namn**.
+6. Välj Azure-e-post för den person som ska publicera avbildningen.
+7. Välj **Spara**.
 
-#Provide the name of your resource group where the snapshot is created
-$resourceGroupName=myResourceGroupName
+:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Visar fönstret Lägg till roll tilldelning.":::
 
-#Provide the snapshot name
-$snapshotName=mySnapshot
-
-#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
-
-#Provide storage account name where you want to copy the underlying VHD file. 
-$storageAccountName=mystorageaccountname
-
-#Name of the storage container where the downloaded VHD will be stored.
-$storageContainerName=mystoragecontainername
-
-#Provide the key of the storage account where you want to copy the VHD 
-$storageAccountKey=mystorageaccountkey
-
-#Give a name to the destination VHD file to which the VHD will be copied.
-$destinationVHDFileName=myvhdfilename.vhd
-
-az account set --subscription $subscriptionId
-
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
-
-az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
-```
-
-#### <a name="script-explanation"></a>Förklaring av skript
-
-Det här skriptet använder följande kommandon för att generera SAS-URI för en ögonblicks bild och kopierar den underliggande virtuella hård disken till ett lagrings konto med SAS-URI: n. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
-
-| Kommando | Obs! |
-| --- | --- |
-| az disk grant-access | Genererar skrivskyddad SAS som används för att kopiera den underliggande VHD-filen till ett lagringskonto eller för att ladda ned den till en lokal plats
-| az storage blob copy start | Kopierar en BLOB asynkront från ett lagrings konto till ett annat. Används `az storage blob show` för att kontrol lera status för den nya blobben. |
-|
+> [!NOTE]
+> Du behöver inte skapa SAS-URI: er eftersom du nu kan publicera en SIG-avbildning på Partner Center. Men om du fortfarande behöver referera till stegen för att skapa SAS-URI: n, se [så här skapar du en SAS-URI för en VM-avbildning](../azure-vm-get-sas-uri.md).

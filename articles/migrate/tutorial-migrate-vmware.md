@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bebc2e629193944c840948c9c573462a43e3032e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702206"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201709"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrera virtuella VMware-datorer till Azure (utan agent)
 
@@ -111,7 +111,7 @@ Aktivera replikering på följande sätt:
     > Om du vill välja ett annat tillgänglighets alternativ för en uppsättning virtuella datorer går du till steg 1 och upprepar stegen genom att välja olika tillgänglighets alternativ när du har startat replikering för en uppsättning virtuella datorer.
 
 
- ![Inställningar för VM-beräkning](./media/tutorial-migrate-vmware/compute-settings.png)
+
 
 12. I **Diskar** anger du om VM-diskarna ska replikeras till Azure och disktypen (standard SSD/HDD eller premiumhanterade diskar) i Azure. Klicka på **Nästa**.
    
@@ -189,7 +189,7 @@ När du har kontrollerat att testmigreringen fungerar som förväntat kan du mig
 ## <a name="complete-the-migration"></a>Slutföra migreringen
 
 1. När migreringen är färdig högerklickar du på den virtuella datorn > **stoppar replikeringen**. Detta stoppar replikeringen för den lokala datorn och rensar information om replikeringstillståndet för den virtuella datorn.
-2. Installera Azure VM [Linux](../virtual-machines/extensions/agent-linux.md) -agenten på de migrerade datorerna om datorn har Linux OS. Vi installerar automatiskt VM-agenten för virtuella Windows-datorer under migreringen.
+2. Vi installerar automatiskt VM-agenten för virtuella Windows-datorer och Linux under migreringen. Granska [kraven](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) för Azure VM Linux-agenten på de migrerade datorerna om datorn har Linux OS för att säkerställa att installationen av Linux VM-agenten utförs på rätt sätt. 
 3. Utför alla finjusteringar av appen efter migreringen som att uppdatera databasanslutningssträngar och webbserverkonfigurationer.
 4. Utför slutlig program- och migreringsacceptanstestning på det migrerade programmet som nu körs i Azure.
 5. Klipp ut över trafik till den migrerade virtuella Azure-instansen.

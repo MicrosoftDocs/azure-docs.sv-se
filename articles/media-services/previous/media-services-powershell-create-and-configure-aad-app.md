@@ -3,7 +3,7 @@ title: 'Använd PowerShell för att skapa en Azure AD-App för att få åtkomst 
 description: Lär dig hur du använder PowerShell för att skapa en Azure Active Directory-app (Azure AD) och konfigurera den för att få åtkomst till Azure Media Services API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 1be3de87493db61ebc901fe240b9eb109a3a90a3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d16c2bbb16a19e5cb22b2b2b0378880ec9aa48b5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695162"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009665"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Använd PowerShell för att skapa en Azure AD-app som ska användas med Azure Media Services-API: et
 

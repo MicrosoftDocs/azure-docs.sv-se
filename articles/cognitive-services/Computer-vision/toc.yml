@@ -1,46 +1,26 @@
-- name: Dokumentation om visuellt API-innehåll
+- name: Dokumentation om visuellt innehåll
   href: index.yml
 - name: Översikt
   expanded: true
   items:
     - name: Vad är visuellt innehåll?
       href: overview.md
+    - name: Stöd för språk
+      href: language-support.md
+    - name: Priser och begränsningar
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: Nyheter
       href: whats-new.md
-- name: Snabbstarter
+    - name: Visuellt innehåll vanliga frågor och svar
+      href: FAQ.md
+- name: Visuellt innehåll snabb start
+  href: quickstarts-sdk/client-library.md
+- name: Exempel
   items:
-    - name: Använda klientbiblioteket eller REST-API
-      href: quickstarts-sdk/client-library.md
-- name: Självstudier
-  items:
-    - name: Generera metadata för avbildningar
-      href: Tutorials/storage-lab-tutorial.md
-- name: Begrepp
-  items:
-    - name: Optisk teckenläsning (OCR)
-      href: concept-recognizing-text.md
-    - name: Objektidentifiering
-      href: concept-object-detection.md
-    - name: Varumärkesidentifiering
-      href: concept-brand-detection.md
-    - name: Innehållstaggar
-      href: concept-tagging-images.md
-    - name: Bildkategorisering
-      href: concept-categorizing-images.md
-    - name: Bildbeskrivningar
-      href: concept-describing-images.md
-    - name: Ansiktsspårning
-      href: concept-detecting-faces.md
-    - name: Identifiering av bildtyp
-      href: concept-detecting-image-types.md
-    - name: Domänspecifikt innehåll
-      href: concept-detecting-domain-content.md
-    - name: Identifiering av färgschema
-      href: concept-detecting-color-schemes.md
-    - name: Miniatyrbilder med smart beskärning
-      href: concept-generating-thumbnails.md
-    - name: Identifiering av innehåll som är olämpligt för barn
-      href: concept-detecting-adult-content.md
+    - name: Utforska en bildbearbetningsapp
+      href: Tutorials/CSharpTutorial.md
+    - name: Andra Visuellt innehåll-exempel
+      href: /samples/browse/?products=azure&terms=computer-vision
 - name: Ansvarsfull användning av AI
   items:
     - name: Rumslig analys
@@ -48,111 +28,139 @@
         - name: Information om transparens
           items:
             - name: Användnings fall för rums analys
-              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
             - name: Egenskaper och begränsningar
-              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
         - name: Integrering och ansvarsfull användning
           items:
             - name: Ansvarig användning för AI-distribution
-              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/computer-vision/context/context
             - name: Utlämnande av designriktlinjer
-              href: /legal/cognitive-services/computer-vision/disclosure-design?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
             - name: Forskningsinsikter
-              href: /legal/cognitive-services/computer-vision/research-insights?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/computer-vision/context/context
         - name: 'Data, sekretess och säkerhet'
-          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-- name: Containrar
-  items:
-    - name: Läs API-container
-      items:
-        - name: Installera och köra containrar
-          href: computer-vision-how-to-install-containers.md
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-        - name: Konfigurera containrar
-          href: computer-vision-resource-container-config.md
-        - name: Migrera till v3 av Read-containern
-          href: read-container-migration-guide.md
-          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-        - name: Använda med Kubernetes och Helm
-          href: deploy-computer-vision-on-premises.md
-          displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-        - name: Använda containerinstanser
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-          displayName: 'container instances, container, containers, images'
-    - name: Container för rumslig analys
-      items:
-        - name: Översikt över rums analys
-          href: intro-to-spatial-analysis-public-preview.md
-        - name: Konfigurera värddatorn och kör containern
-          href: spatial-analysis-container.md
-        - name: Konfigurera åtgärder
-          href: spatial-analysis-operations.md
-        - name: Distribuera en webbapp för att räkna människor
-          href: Spatial-analysis-web-app.md
-        - name: Loggning och felsökning
-          href: spatial-analysis-logging.md
-        - name: Zon- och linjeplacering
-          href: spatial-analysis-zone-line-placement.md
-        - name: Kameraplacering
-          href: spatial-analysis-camera-placement.md
-    - name: Dokumentation om containrar för Cognitive Services
-      href: ../containers/index.yml
+          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
 - name: Anvisningar
   items:
     - name: 'Anropa API:et för visuellt innehåll'
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Analysera videor i realtid
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
-- name: Referens
-  items:
-    - name: Azure CLI
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.cognitiveservices/
-    - name: API för Visuellt innehåll v3.2 – förhandsversion
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-    - name: API för Visuellt innehåll v3.1
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-    - name: API v2.1 för Visuellt innehåll
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-    - name: API v1.0 för visuellt innehåll
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
-    - name: 'SDK:er'
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-computervision/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/computervision
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/computervision
-- name: Resurser
-  items:
-    - name: Alternativ för support och hjälp
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Exempel
-      items:
-        - name: Utforska en bildbearbetningsapp
-          href: Tutorials/CSharpTutorial.md
-        - name: Andra Visuellt innehåll-exempel
-          href: /samples/browse/?products=azure&terms=computer-vision
-    - name: VANLIGA FRÅGOR OCH SVAR
-      href: FAQ.md
-    - name: Kategoritaxonomi
-      href: Category-Taxonomy.md
-    - name: Stöd för språk
-      href: language-support.md
-    - name: Priser och begränsningar
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: Azure-översikt
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Så här konfigurerar du virtuella nätverk
+      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
     - name: Uppgradera från Read 2.x till Read 3.x
       href: upgrade-api-versions.md
+    - name: Så här konfigurerar du AAD-autentisering
+      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Använda Kundhanterade nycklar
+      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+- name: Distribuera Visuellt innehåll
+  items:
+    - name: Containers
+      items:
+        - name: Dokumentation om containrar för Cognitive Services
+          href: ../containers/index.yml
+        - name: Läs API-container
+          items:
+            - name: Installera och köra containrar
+              href: computer-vision-how-to-install-containers.md
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+            - name: Konfigurera containrar
+              href: computer-vision-resource-container-config.md
+            - name: Migrera till v3 av Read-containern
+              href: read-container-migration-guide.md
+              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+            - name: Använda med Kubernetes och Helm
+              href: deploy-computer-vision-on-premises.md
+              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+            - name: Använda containerinstanser
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+              displayName: 'container instances, container, containers, images'
+        - name: Container för rumslig analys
+          items:
+            - name: Översikt över rums analys
+              href: intro-to-spatial-analysis-public-preview.md
+            - name: Konfigurera värddatorn och kör containern
+              href: spatial-analysis-container.md
+            - name: Konfigurera åtgärder
+              href: spatial-analysis-operations.md
+            - name: Distribuera en webbapp för att räkna människor
+              href: Spatial-analysis-web-app.md
+            - name: Loggning och felsökning
+              href: spatial-analysis-logging.md
+            - name: Zon- och linjeplacering
+              href: spatial-analysis-zone-line-placement.md
+            - name: Kameraplacering
+              href: spatial-analysis-camera-placement.md
+- name: Begrepp
+  items:
+    - name: Lägen
+      items:
+        - name: Optisk teckenläsning (OCR)
+          href: concept-recognizing-text.md
+        - name: Objektidentifiering
+          href: concept-object-detection.md
+        - name: Varumärkesidentifiering
+          href: concept-brand-detection.md
+        - name: Innehållstaggar
+          href: concept-tagging-images.md
+        - name: Bildkategorisering
+          href: concept-categorizing-images.md
+        - name: Kategoritaxonomi
+          href: Category-Taxonomy.md
+        - name: Bildbeskrivningar
+          href: concept-describing-images.md
+        - name: Ansiktsspårning
+          href: concept-detecting-faces.md
+        - name: Identifiering av bildtyp
+          href: concept-detecting-image-types.md
+        - name: Domänspecifikt innehåll
+          href: concept-detecting-domain-content.md
+        - name: Identifiering av färgschema
+          href: concept-detecting-color-schemes.md
+        - name: Miniatyrbilder med smart beskärning
+          href: concept-generating-thumbnails.md
+        - name: Identifiering av innehåll som är olämpligt för barn
+          href: concept-detecting-adult-content.md
+- name: Självstudier
+  items:
+    - name: Generera metadata för avbildningar
+      href: Tutorials/storage-lab-tutorial.md
+- name: Referens
+  items:
+    - name: Visuellt innehåll REST API v 3.2 Preview
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+    - name: Visuellt innehåll REST API v 3.1
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+    - name: Visuellt innehåll REST API v 2.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+    - name: Visuellt innehåll REST API v 1.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+    - name: Azure CLI
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cognitiveservices/
+- name: Resurser
+  items:
+    - name: Stöd för regioner
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Lär dig moduler
+      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+    - name: Support & hjälp
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Efterlevnad
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Azure-uppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

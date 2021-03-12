@@ -108,7 +108,10 @@
         - name: Automatisera svar på rekommendationer
           displayName: workflow
           href: workflow-automation.md
-        - name: Undanta en resurs från en rekommendation
+        - name: Inaktivera en rekommendation
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: 'Undantags rekommendationer per resurs, prenumeration eller hanterings grupp'
+          displayName: disable
           href: exempt-resource.md
         - name: Skapa anpassade säkerhets initiativ och principer
           href: custom-security-policies.md
@@ -233,7 +236,8 @@
       href: security-center-partner-integration.md
     - name: Skydda nätverksresurser
       href: security-center-network-recommendations.md
-    - name: Skydda identitet och åtkomst
+    - name: Framtvinga och hantera MFA
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
       href: security-center-identity-access.md
     - name: Använd Security Centers ytterligare hot skydd
       href: other-threat-protections.md

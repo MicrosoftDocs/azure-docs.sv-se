@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 5c2023ffa4446760c85b07659f13e421e62e6020
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/12/2021
+ms.openlocfilehash: 91e383b746509000cef74e96c08d1b70316a0527
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383797"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225259"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure SQL-hanterad instans med hjälp av Azure Data Factory
 
@@ -644,7 +644,7 @@ När du transformerar data i mappnings data flödet kan du läsa och skriva till
 
 I tabellen nedan visas de egenskaper som stöds av källan för Azure SQL-hanterad instans. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Tabell | Om du väljer tabell som indata hämtar data flödet alla data från tabellen som anges i data uppsättningen. | Inga | - |- |
 | Söka i data | Om du väljer fråga som indata anger du en SQL-fråga för att hämta data från källan, vilket åsidosätter alla tabeller som du anger i data uppsättningen. Att använda frågor är ett bra sätt att minska rader för testning eller sökning.<br><br>**Order by** -satsen stöds inte, men du kan ange en fullständig Select from-instruktion. Du kan också använda användardefinierade tabell funktioner. **Select * from udfGetData ()** är en UDF i SQL som returnerar en tabell som du kan använda i data flödet.<br>Exempel på frågor: `Select * from MyTable where customerId > 1000 and customerId < 2000`| Inga | Sträng | DocumentDB |
@@ -667,7 +667,7 @@ source(allowSchemaDrift: true,
 
 I tabellen nedan visas de egenskaper som stöds av en Azure SQL-hanterad instans mottagare. Du kan redigera dessa egenskaper på fliken **mottagar alternativ** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Uppdaterings metod | Ange vilka åtgärder som tillåts på databas målet. Standardvärdet är att endast tillåta infogningar.<br>Om du vill uppdatera, upsert eller ta bort rader krävs en [Alter Row-omvandling](data-flow-alter-row.md) för att tagga rader för dessa åtgärder. | Ja | `true` eller `false` | bort <br/>infognings bara <br/>uppdaterings bara <br/>upsertable |
 | Nyckel kolumner | För uppdateringar, upsertar och borttagningar måste nyckel kolumnerna anges för att avgöra vilken rad som ska ändras.<br>Kolumn namnet som du väljer som nyckel kommer att användas som en del av den efterföljande uppdateringen, upsert, Delete. Därför måste du välja en kolumn som finns i Sink-mappningen. | Inga | Matris | keys |
@@ -761,7 +761,7 @@ Mer specifikt:
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - Använda **Data Factory hanterad identitets autentisering**: 
+    - Om du kör Integration Runtime med egen värd på en virtuell Azure-dator kan du använda **hanterad identitets autentisering** med Azure VM-identitet: 
 
         1. Följ samma [krav](#managed-identity) för att skapa databas användare för den hanterade identiteten och ge rätt roll i databasen.
         2. I länkad tjänst anger du ODBC-anslutningssträngen enligt nedan och väljer **Anonym** autentisering som själva anslutnings strängen anger `Authentication=ActiveDirectoryMsi` .

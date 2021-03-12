@@ -41,7 +41,7 @@
           href: test-drive-hosted-detailed-config.md
         - name: Konfigurera Azure-prenumeration för värdbaserad provkörning
           href: test-drive-azure-subscription-setup.md
-    - name: Spårning av kundanvändning för Azure-partner
+    - name: Azures kund användnings behörighet
       href: azure-partner-customer-usage-attribution.md
     - name: Alternativ för Go-to-market
       items:

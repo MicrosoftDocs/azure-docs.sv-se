@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 746845004a7a1baf1cafb872aae9322177879b6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027279"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011110"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Om att överföra faktureringsägarskap för en Azure-prenumeration
 
@@ -30,16 +30,30 @@ Om du är Enterprise-avtalskund (EA) kan ditt företags administratörer överf�
 
 Endast faktureringsadministratören för ett konto kan överföra ägarskapet för en prenumeration.
 
-## <a name="determine-account-billing-administrator"></a>Fastställa administratören för kontofakturering
+## <a name="determine-if-you-are-a-billing-administrator"></a>Ta reda på om du är fakturerings administratör
 
 <a name="whoisaa"></a>
 
-Faktureringsadministratören är den person som har behörighet att hantera fakturering för ett konto. Personen har behörighet att komma åt fakturering på [Azure-portalen](https://portal.azure.com) och utföra olika faktureringsuppgifter, till exempel skapa prenumerationer, visa och betala fakturor eller uppdatera betalningsmetoder.
+För att kunna utföra överföringen letar du reda på den person som har åtkomst till att hantera faktureringen för ett konto. Personen har behörighet att komma åt fakturering på [Azure-portalen](https://portal.azure.com) och utföra olika faktureringsuppgifter, till exempel skapa prenumerationer, visa och betala fakturor eller uppdatera betalningsmetoder.
 
-Om du vill identifiera konton som du är faktureringsadministratör för går du till [sidan Kostnadshantering och fakturering i Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview). Välj sedan **Alla faktureringsomfång** i rutan till vänster. På prenumerationssidan visas alla prenumerationer där du är faktureringsadministratör.
+### <a name="check-if-you-have-billing-access"></a>Kontrol lera om du har fakturerings behörighet
 
-Om du inte är säker på vem kontoadministratören är för en prenumeration kan du gå till sidan [Prenumerationer i Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Välj sedan den prenumeration du vill kontrollera och gå till **Inställningar**. Välj **Egenskaper** så visas kontoadministratören för prenumerationen i rutan **Kontoadministratör**.
+1. Om du vill identifiera konton som du har fakturerings behörighet för, går du till [Cost Management + fakturerings sida i Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
 
+2. Välj **fakturerings konton** på menyn till vänster.
+
+3. Sidan lista med **fakturerings omfång** visar alla prenumerationer där du har åtkomst till fakturerings informationen.
+
+### <a name="check-by-subscription"></a>Check efter prenumeration
+
+1. Om du inte är säker på vem kontoadministratören är för en prenumeration kan du gå till sidan [Prenumerationer i Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). 
+
+2. Välj den prenumeration som du vill kontrol lera.
+
+3. Under rubriken **Inställningar** väljer du **Egenskaper**. I rutan **konto administratör** kan du förstå vem som är konto administratör för prenumerationen.
+
+   > [!NOTE]
+   > Alla typer av prenumerationer visar inte egenskaperna.
 
 ## <a name="supported-subscription-types"></a>Prenumerationstyper som stöds
 

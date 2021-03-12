@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 6a7f50268a09ae451b1e9dda2ca354ded31efb68
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095179"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200757"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
@@ -67,11 +67,11 @@ Vi rekommenderar att du har mer än en Windows-server för att säkra hög tillg
 > Nyckeln kan ställas in via PowerShell med följande kommando.
 > ```
 > Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
->
+> ```
 
 #### <a name="recommendations-for-the-connector-server"></a>Rekommendationer för anslutningsservern
 
-1. Placera fysiskt anslutningsservern nära programservrarna för att optimera prestandan mellan anslutningsprogrammet och programmet. Mer information finns i [Överväganden för nätverkstopologi](application-proxy-network-topology.md).
+1. Placera fysiskt anslutningsservern nära programservrarna för att optimera prestandan mellan anslutningsprogrammet och programmet. Mer information finns i [optimera trafikflöde med Azure Active Directory-programproxy](application-proxy-network-topology.md).
 1. Kopplings servern och webb program servrarna bör tillhöra samma Active Directory domän eller intervall för domäner som är betrodda. Att ha servrar i samma domän eller betrodda domäner är ett krav för att använda enkel inloggning (SSO) med integrerad Windows-autentisering (IWA) och Kerberos-begränsad delegering (KCD). Om anslutningsservern och webbprogramservrarna är i olika Active Directory-domäner så måste du använda resursbaserad delegering för enkel inloggning. Mer information finns i [KCD för enkel inloggning med programproxy](application-proxy-configure-single-sign-on-with-kcd.md).
 
 > [!WARNING]
@@ -115,10 +115,10 @@ Börja med att aktivera kommunikation till Azure-datacenter för att förbereda 
 
 Öppna följande portar för **utgående** trafik.
 
-   | Portnummer | Hur den används |
-   | --- | --- |
-   | 80 | Laddar ned listor över återkallade certifikat (CRL) När TLS/SSL-certifikatet verifieras |
-   | 443 | All utgående kommunikation med programproxytjänsten |
+| Portnummer | Hur den används |
+| ----------- | ------------------------------------------------------------ |
+| 80          | Laddar ned listor över återkallade certifikat (CRL) När TLS/SSL-certifikatet verifieras |
+| 443         | All utgående kommunikation med programproxytjänsten |
 
 Om brandväggstrafiken hanteras baserat på användarna som genererar den ska du även öppna portarna 80 och 443 för trafik som kommer från Windows-tjänster som körs som en nätverkstjänst.
 
@@ -127,11 +127,11 @@ Om brandväggstrafiken hanteras baserat på användarna som genererar den ska du
 Tillåt åtkomst till följande webbadresser:
 
 | URL | Port | Hur den används |
-| --- | --- | --- |
-| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | Kommunikation mellan anslutningsprogrammet och molntjänsten för programproxy |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |Anslutnings tjänsten använder dessa URL: er för att verifiera certifikat. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Anslutningsprogrammet använder dessa webbadresser under registreringen. |
-| ctldl.windowsupdate.com | 80/HTTP |Anslutningen använder denna URL under registrerings processen. |
+| ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net         | 443/HTTPS | Kommunikation mellan anslutningsprogrammet och molntjänsten för programproxy |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP   | Anslutnings tjänsten använder dessa URL: er för att verifiera certifikat.        |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS | Anslutningsprogrammet använder dessa webbadresser under registreringen. |
+| ctldl.windowsupdate.com                                      | 80/HTTP   | Anslutningen använder denna URL under registrerings processen. |
 
 Du kan tillåta anslutningar till &ast; . msappproxy.net, &ast; . ServiceBus.Windows.net och andra URL: er ovan om din brand vägg eller proxy låter dig konfigurera åtkomst regler baserade på domänsuffix. Om inte, måste du tillåta åtkomst till [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). IP-adressintervallen uppdateras varje vecka.
 
@@ -157,6 +157,7 @@ Så här installerar du anslutningsprogrammet:
 1. Läs användningsvillkoren. När du är klar väljer du **Godkänn villkoren & Ladda ned**.
 1. Längst ned i fönstret väljer du **Kör** för att installera anslutningen. Installationsguiden öppnas.
 1. Följ anvisningarna i guiden för att installera tjänsten. När du uppmanas att registrera anslutningsprogrammet med programproxyn för Azure AD-klientorganisationen anger du autentiseringsuppgifterna för programadministratören.
+   
     - Om **IE Förbättrad säkerhetskonfiguration** är satt till **På** för Internet Explorer (IE) kanske inte registreringsskärmen visas. Följ instruktionerna i felmeddelandet för att få åtkomst. Se till att **förbättrad säkerhets konfiguration i Internet Explorer** är inställt på **av**.
 
 ### <a name="general-remarks"></a>Allmänna anmärkningar
@@ -164,6 +165,8 @@ Så här installerar du anslutningsprogrammet:
 Om du tidigare har installerat ett anslutningsprogram måste du installera om för att hämta den senaste versionen. Information om tidigare utgivna versioner och vilka ändringar de innehåller finns i [Application Proxy: versions historik](application-proxy-release-version-history.md).
 
 Väljer du att ha mer än en Windows-server för dina lokala program måste du installera och registrera anslutningsprogrammet på varje server. Du kan ordna anslutningsprogrammen i anslutningsgrupper. Mer information finns i [anslutningsgrupper](application-proxy-connector-groups.md).
+
+Om du har installerat anslutningar i olika regioner kan du optimera trafiken genom att välja den närmaste moln tjänst regionen för programproxyn som ska användas med varje anslutnings grupp, se [optimera trafikflöde med Azure Active Directory-programproxy](application-proxy-network-topology.md)
 
 Om din organisation använder proxyservrar för att ansluta till internet måste du konfigurera dem för programproxy.  Mer information finns i [Arbeta med befintliga lokala proxyservrar](application-proxy-configure-connectors-with-proxy-servers.md). 
 
@@ -208,20 +211,20 @@ Nu när du har förberett din miljö och installerat ett anslutningsprogram är 
 4. Välj **Lägg till en lokal program** knapp som visas om halva sidan i avsnittet **lokala program** . Alternativt kan du välja **skapa ett eget program** överst på sidan och sedan välja **Konfigurera programproxy för säker fjärråtkomst till ett lokalt program**.
 5. I avsnittet **Lägg till ett eget lokalt program** anger du följande information om ditt program:
 
-    | Fält | Beskrivning |
-    | :---- | :---------- |
+    | Fält  | Beskrivning |
+    | :--------------------- | :----------------------------------------------------------- |
     | **Namn** | Namnet på programmet som ska visas i Mina appar och i Azure Portal. |
     | **Intern webbadress** | Det här är webbadressen för att komma åt programmet från inuti ditt privata nätverk. Du kan ange en specifik sökväg på backend-servern som du vill publicera, medan resten av servern är opublicerad. På så sätt kan du publicera olika webbplatser på samma server som olika program och ge varje webbplats sitt eget namn och sina egna åtkomstregler.<br><br>Om du publicerar en sökväg, så se till att den innehåller alla bilder, skript och formatmallar som krävs för ditt program. Om din app till exempel är på https: \/ /yourapp/app och använder avbildningar som finns på https: \/ /yourapp/media, ska du publicera https: \/ /yourapp/som sökväg. Den interna webbadressen måste inte vara landningssidan som användarna ser. Mer information finns i [Ange en anpassad startsida för publicerade program](application-proxy-configure-custom-home-page.md). |
-    | **Extern webbadress** | Adressen som ger användare åtkomst till programmet från utanför ditt nätverk. Om du inte vill använda standarddomänen för programproxy kan du läsa om [anpassade domäner i Azure AD Application Proxy](application-proxy-configure-custom-domain.md).|
+    | **Extern webbadress** | Adressen som ger användare åtkomst till programmet från utanför ditt nätverk. Om du inte vill använda standarddomänen för programproxy kan du läsa om [anpassade domäner i Azure AD Application Proxy](application-proxy-configure-custom-domain.md). |
     | **Förautentisering** | Hur programproxyn verifierar användare innan de ges åtkomst till ditt program.<br><br>**Azure Active Directory** – Programproxyn omdirigerar användarna till att logga in med Azure AD, som autentiserar deras katalog- och programbehörigheter. Vi rekommenderar att du behåller det här alternativet som standard så att du kan utnyttja Azure AD-säkerhetsfunktioner som villkorlig åtkomst och Multi-Factor Authentication. **Azure Active Directory** krävs för övervakning av program med Microsoft Cloud Application Security.<br><br>**Genom strömning** – användarna behöver inte autentisera sig mot Azure AD för att få åtkomst till programmet. Du kan fortfarande konfigurera autentiseringskrav från serverdelen. |
-    | **Anslutningsgrupp** | Anslutningsprogram bearbetar fjärråtkomsten till programmet och anslutningsgrupper hjälper dig att organisera anslutningsprogram och program efter region, nätverk eller syfte. Om du inte har skapat några anslutningsgrupper än kommer programmet att tilldelas **Standard**.<br><br>Om ditt program använder WebSockets för att ansluta måste alla anslutningsprogram i gruppen vara version 1.5.612.0 eller senare.|
+    | **Anslutningsgrupp** | Anslutningsprogram bearbetar fjärråtkomsten till programmet och anslutningsgrupper hjälper dig att organisera anslutningsprogram och program efter region, nätverk eller syfte. Om du inte har skapat några anslutningsgrupper än kommer programmet att tilldelas **Standard**.<br><br>Om ditt program använder WebSockets för att ansluta måste alla anslutningsprogram i gruppen vara version 1.5.612.0 eller senare. |
 
 6. Om det behövs konfigurerar du **ytterligare inställningar**. De flesta programmen bör behålla dessa inställningarna i standardtillstånden. 
 
     | Fält | Beskrivning |
-    | :---- | :---------- |
+    | :------------------------------ | :----------------------------------------------------------- |
     | **Tidsgränsen för serverdels-programmet** | Ställ endast in värdet på **Lång** om programmet autentiserar och ansluter långsamt. Som standard har backend-programmets tids gräns en längd på 85 sekunder. När värdet är Long ökas Server dels tids gränsen till 180 sekunder. |
-    | **Använd endast HTTP-cookie** | Ställ in värdet på **Ja** för att programproxycookies ska inkluderas i HTTPOnly-flaggan i HTTP-svarsrubriken. Ställ in värdet på **Nej** om du använder fjärrskrivbordstjänster.|
+    | **Använd endast HTTP-cookie** | Ställ in värdet på **Ja** för att programproxycookies ska inkluderas i HTTPOnly-flaggan i HTTP-svarsrubriken. Ställ in värdet på **Nej** om du använder fjärrskrivbordstjänster. |
     | **Använd säker cookie**| Ställ in värdet på **Ja** för att skicka cookies via en säker kanal, som en krypterad HTTPS-begäran.
     | **Använd beständig cookie**| Behåll det här värdet inställt på **Nej**. Använd endast den här inställningen för program som inte kan dela cookies mellan processer. Mer information om cookie-inställningar finns i [cookie-inställningar för att komma åt lokala program i Azure Active Directory](./application-proxy-configure-cookie-settings.md).
     | **Översätt webbadresser i rubriker** | Behåll det här värdet som **Ja** såvida inte programmets ursprungliga värdrubrik krävs i autentiseringsbegäran. |

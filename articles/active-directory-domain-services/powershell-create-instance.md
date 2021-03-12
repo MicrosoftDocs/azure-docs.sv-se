@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 02/04/2021
+ms.date: 03/10/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e79bbb2ac6febb39fec27aa6ac3c82ff58f81122
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8056e95b731b1818e10d7415cb813d6aba0ec7fa
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575829"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149109"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivera Azure Active Directory Domain Services med PowerShell
 
@@ -39,6 +39,13 @@ För att slutföra den här artikeln behöver du följande resurser:
     * Kontrol lera att du loggar in på Azure AD-klienten med hjälp av cmdleten [Connect-AzureAD][Connect-AzureAD] .
 * Du behöver *Global administratörs* behörighet i Azure AD-klienten för att aktivera Azure AD DS.
 * Du behöver *deltagar* behörighet i din Azure-prenumeration för att skapa de nödvändiga Azure AD DS-resurserna.
+
+  > [!IMPORTANT]
+  > Även om **AZ. ADDomainServices** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten.
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.ADDomainServices
+  ```
 
 ## <a name="create-required-azure-ad-resources"></a>Skapa nödvändiga Azure AD-resurser
 
@@ -93,13 +100,13 @@ Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjec
 
 Registrera först Azure AD Domain Services Resource Provider med hjälp av cmdleten [register-AzResourceProvider][Register-AzResourceProvider] :
 
-```powershell
+```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
 Skapa sedan en resurs grupp med cmdleten [New-AzResourceGroup][New-AzResourceGroup] . I följande exempel heter resurs gruppen *myResourceGroup* och skapas i regionen *väst* . Använd ditt eget namn och önskad region:
 
-```powershell
+```azurepowershell-interactive
 $ResourceGroupName = "myResourceGroup"
 $AzureLocation = "westus"
 
@@ -113,7 +120,7 @@ Skapa det virtuella nätverket och undernät för Azure AD Domain Services. Två
 
 Skapa under näten med cmdleten [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] och skapa sedan det virtuella nätverket med cmdleten [New-AzVirtualNetwork][New-AzVirtualNetwork] .
 
-```powershell
+```azurepowershell-interactive
 $VnetName = "myVnet"
 
 # Create the dedicated subnet for Azure AD Domain Services.
@@ -142,7 +149,7 @@ Azure AD DS behöver en nätverks säkerhets grupp för att skydda de portar som
 
 Följande PowerShell-cmdletar använder [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] för att skapa reglerna, sedan [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] för att skapa nätverks säkerhets gruppen. Nätverks säkerhets gruppen och-reglerna är sedan kopplade till det virtuella nätverkets undernät med cmdleten [set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] .
 
-```powershell
+```azurepowershell-interactive
 $NSGName = "aaddsNSG"
 
 # Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
@@ -196,17 +203,24 @@ Tillgänglighetszoner är unika fysiska platser inom en Azure-region. Varje zon 
 
 Det finns inget som du kan konfigurera för att Azure AD DS ska distribueras mellan zoner. Azure-plattformen hanterar automatiskt zon distributionen av resurser. Mer information och mer information om regions tillgänglighet finns i [Vad är Tillgänglighetszoner i Azure?][availability-zones].
 
-```powershell
+```azurepowershell-interactive
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
-New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -ApiVersion "2017-06-01" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; `
-    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -Force -Verbose
+$replicaSetParams = @{
+  Location = $AzureLocation
+  SubnetId = "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"
+}
+$replicaSet = New-AzADDomainServiceReplicaSetObject @replicaSetParams
+
+$domainServiceParams = @{
+  Name = $ManagedDomainName
+  ResourceGroupName = $ResourceGroupName
+  DomainName = $ManagedDomainName
+  ReplicaSet = $replicaSet
+}
+New-AzADDomainService @domainServiceParams
 ```
 
 Det tar några minuter att skapa resursen och returnera kontrollen till PowerShell-prompten. Den hanterade domänen fortsätter att tillhandahållas i bakgrunden och kan ta upp till en timme att slutföra distributionen. På sidan Azure Portal visar **översikts** sidan för din hanterade domän den aktuella statusen i den här distributions fasen.
@@ -224,7 +238,7 @@ Följande fullständiga PowerShell-skript kombinerar alla uppgifter som visas i 
 > [!NOTE]
 > Om du vill aktivera Azure AD DS måste du vara global administratör för Azure AD-klienten. Du måste också ha minst *deltagar* behörighet i Azure-prenumerationen.
 
-```powershell
+```azurepowershell-interactive
 # Change the following values to match your deployment.
 $AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
@@ -292,7 +306,7 @@ $Vnet=New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
-  
+
 $NSGName = "aaddsNSG"
 
 # Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
@@ -336,12 +350,19 @@ Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
 $vnet | Set-AzVirtualNetwork
 
 # Enable Azure AD Domain Services for the directory.
-New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -ApiVersion "2017-06-01" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; `
-    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -Force -Verbose
+$replicaSetParams = @{
+  Location = $AzureLocation
+  SubnetId = "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"
+}
+$replicaSet = New-AzADDomainServiceReplicaSetObject @replicaSetParams
+
+$domainServiceParams = @{
+  Name = $ManagedDomainName
+  ResourceGroupName = $ResourceGroupName
+  DomainName = $ManagedDomainName
+  ReplicaSet = $replicaSet
+}
+New-AzADDomainService @domainServiceParams
 ```
 
 Det tar några minuter att skapa resursen och returnera kontrollen till PowerShell-prompten. Den hanterade domänen fortsätter att tillhandahållas i bakgrunden och kan ta upp till en timme att slutföra distributionen. På sidan Azure Portal visar **översikts** sidan för din hanterade domän den aktuella statusen i den här distributions fasen.

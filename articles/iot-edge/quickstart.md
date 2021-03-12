@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 6170f91d11b47a43e15488bcbb0e91ff3f7c906e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008085"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616102"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Snabb start: distribuera din första IoT Edge-modul till en Windows-enhet (förhands granskning)
 
@@ -51,9 +51,16 @@ Skapa en moln resurs grupp för att hantera alla resurser du kommer att använda
 
 Kontrol lera att din IoT Edge enhet uppfyller följande krav:
 
-* Windows-dator eller server, version 1809 eller senare
-* Minst 4 GB minne, rekommenderas 8 GB minne
-* 10 GB ledigt diskutrymme
+* Utgåvor
+  * Windows 10 version 1809 eller senare; Build 17763 eller senare
+    * Professional, Enterprise, IoT Enterprise
+  * Windows Server 2019 build 17763 eller senare
+
+  
+* Maskinvarukrav
+  * Minsta lediga minne: 2 GB
+  * Minsta lediga disk utrymme: 10 GB
+
 
 >[!NOTE]
 >I den här snabb starten används Windows administrations Center för att skapa en distribution av IoT Edge för Linux i Windows. Du kan också använda PowerShell. Om du vill använda PowerShell för att skapa en distribution följer du stegen i instruktions guiden för att [Installera och etablering Azure IoT Edge för Linux på en Windows-enhet](how-to-install-iot-edge-on-windows.md).
@@ -108,7 +115,7 @@ Installera IoT Edge för Linux i Windows på din enhet och konfigurera den med e
 
 ![Diagram som visar steget för att starta IoT Edge Runtime.](./media/quickstart/start-runtime.png)
 
-1. [Hämta Windows administrations Center](https://aka.ms/WACDownloadEFLOW).
+1. [Hämta Windows administrations Center](https://aka.ms/wacdownload).
 
 1. Följ anvisningarna i installations guiden för att konfigurera Windows administrations Center på enheten.
 

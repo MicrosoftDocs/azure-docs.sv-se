@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5671626e05145f79c3ad5fc0ecdb5628ac9421
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427138"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630885"
 ---
 # <a name="conditional-access-users-and-groups"></a>Villkorlig åtkomst: användare och grupper
 
@@ -38,7 +38,7 @@ Följande alternativ är tillgängliga för att ta med när du skapar en princip
    - Alla gäst-och externa användare
       - Det här valet inkluderar alla B2B-gäster och externa användare, inklusive alla användare med `user type` attributet inställt på `guest` . Det här valet gäller även för alla externa användare som är inloggade från en annan organisation som en moln lösnings leverantör (CSP). 
    - Katalogroller
-      - Administratörer kan välja särskilda Azure AD-katalog roller som används för att fastställa tilldelningen. Organisationer kan till exempel skapa en mer restriktiv princip för användare som har tilldelats rollen som global administratör.
+      - Administratörer kan välja särskilda inbyggda Azure AD-katalog roller som används för att fastställa princip tilldelningen. Organisationer kan till exempel skapa en mer restriktiv princip för användare som har tilldelats rollen som global administratör. Andra roll typer stöds inte, inklusive administrativa enhets omfångs katalog roller, anpassade roller.
    - Användare och grupper
       - Tillåter mål för specifika uppsättningar av användare. Organisationer kan till exempel välja en grupp som innehåller alla medlemmar i PERSONALAVDELNINGEN när en HR-app väljs som Cloud-App. En grupp kan vara vilken typ av grupp som helst i Azure AD, inklusive dynamiska eller tilldelade säkerhets-och distributions grupper. Principen kommer att tillämpas på kapslade användare och grupper.
 

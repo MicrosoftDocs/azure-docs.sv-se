@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Dokumentation om Azure API for FHIR
+summary: Azure API for FHIR är ett hanterat, standardbaserat, kompatibelt API för kliniska hälsodata som möjliggör lösningar för analys med handlingsbarhet och maskininlärning.
+metadata:
+  title: Dokumentation om Azure API for FHIR – självstudier, instruktioner
+  description: Azure API for FHIR är ett hanterat, standardbaserat, kompatibelt API för kliniska hälsodata som möjliggör lösningar för analys med handlingsbarhet och maskininlärning.
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "103017446"
+landingContent:
+- title: Komma igång med Azure API for FHIR
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure API for FHIR?
+      url: overview.md
+    - text: Vad är Azure IoT-anslutningsprogram för FHIR (förhandsversion)?
+      url: overview.md#azure-iot-connector-for-fhir-preview
+  - linkListType: quickstart
+    links:
+    - text: Distribuera API-server för FHIR
+      url: fhir-paas-portal-quickstart.md
+    - text: Distribuera Azure IoT-anslutningsprogram för FHIR (förhandsversion)
+      url: iot-fhir-portal-quickstart.md
+- title: Självstudier för konfiguration
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Distribuera en javascript-app för att läsa data från FHIR-tjänsten
+      url: tutorial-web-app-fhir-server.md
+    - text: Få åtkomst till FHIR-API med Postman
+      url: access-fhir-postman-tutorial.md
+    - text: SMART-integrering för appar från tredje part och medicinska journaler
+      url: use-smart-on-fhir-proxy.md
+    - text: Ta emot enhetsdata från Azure IoT Hub
+      url: device-data-through-iot-hub.md
+- title: Registrera appar för AD-autentisering
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Registrera ett resursprogram
+      url: register-resource-azure-ad-client-app.md
+    - text: Registrera ett konfidentiellt klientprogram
+      url: register-confidential-azure-ad-client-app.md
+    - text: Registrera ett offentligt klientprogram
+      url: register-public-azure-ad-client-app.md
+    - text: Registrera ett tjänstklientprogram
+      url: register-service-azure-ad-client-app.md

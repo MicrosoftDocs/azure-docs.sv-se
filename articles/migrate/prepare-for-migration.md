@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724497"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614895"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Förbered lokala datorer för migrering till Azure
 
@@ -111,11 +111,12 @@ Konfigurera den här inställningen manuellt på följande sätt:
 
 Azure Migrate slutför de här åtgärderna automatiskt för dessa versioner
 
-- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x
-- % OS 7,7, 7,6, 7,5, 7,4, 6. x
+- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x (Azure Linux VM-agenten installeras också automatiskt under migreringen)
+- % OS 7,7, 7,6, 7,5, 7,4, 6. x (Azure Linux VM-agenten installeras också automatiskt under migreringen)
 - SUSE Linux Enterprise Server 12 SP1 +
 - SUSE Linux Enterprise Server 15 SP1
-- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS
+- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS (Azure Linux VM-agenten installeras också automatiskt under migreringen)
+- Ubuntu 18.04 LTS, 16.04 LTS
 - Debian 9, 8, 7
 - Oracle Linux 7,7, 7,7 – CI
 
@@ -147,6 +148,7 @@ I följande tabell sammanfattas de steg som utförs automatiskt för de operativ
 
 Lär dig mer om hur du [kör en virtuell Linux-dator på Azure](../virtual-machines/linux/create-upload-generic.md)och få instruktioner för några av de populära Linux-distributionerna.
 
+Granska listan med [nödvändiga paket](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) för att installera Linux VM-agenten. Azure Migrate installerar Linux VM-agenten automatiskt för RHEL6, RHEL7, CentOS7 (6 bör stödjas på liknande sätt som RHEL), Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 när du använder en agent lös metod för VMware-migrering.
 
 ## <a name="check-azure-vm-requirements"></a>Kontrol lera kraven för virtuella Azure-datorer
 

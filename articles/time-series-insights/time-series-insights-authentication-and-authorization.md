@@ -11,19 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041220"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009274"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Autentisering och auktorisering för Azure Time Series Insights API
 
-Beroende på dina affärs behov kan din lösning innehålla ett eller flera klient program som du använder för att interagera med din Azure Time Series Insights-Miljös [API: er](/rest/api/time-series-insights/reference-data-access-overview). Azure Time Series Insights utför autentisering med [Azure AD-säkerhetstoken baserat på OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). För att autentisera dina klienter måste du skaffa en Bearer-token med rätt behörigheter och skicka den tillsammans med dina API-anrop. I det här dokumentet beskrivs flera autentiseringsuppgifter för att hämta metoder som du kan använda för att hämta en Bearer-token och autentisera.
-
-
-  registrera en app i Azure Active Directory att använda bladet ny Azure Active Directory. Appar som registrerats i Azure Active Directory gör det möjligt för användare att autentisera till och ha behörighet att använda Azure Time Series Insight-API som är associerat med en Azure Time Series Insights miljö.
+Beroende på dina affärs behov kan din lösning innehålla ett eller flera klient program som du använder för att interagera med din Azure Time Series Insights-Miljös [API: er](/rest/api/time-series-insights/reference-data-access-overview). Azure Time Series Insights utför autentisering med [Azure AD-säkerhetstoken baserat på OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). För att autentisera dina klienter måste du skaffa en Bearer-token med rätt behörigheter och skicka den tillsammans med dina API-anrop. I det här dokumentet beskrivs flera metoder för att hämta autentiseringsuppgifter som du kan använda för att få en Bearer-token och autentisera, inklusive användning av hanterade identiteter och Azure Active Directory app-registrering.
 
 ## <a name="managed-identities"></a>Hanterade identiteter
 
@@ -108,10 +105,7 @@ När din hanterade identitet eller app-registrering har etablerats och tilldelat
 
 När du kommer åt från Azure App Service eller funktioner följer du rikt linjerna i [Hämta token för Azure-resurser](../app-service/overview-managed-identity.md).
 
-> [!TIP]
-> För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via [klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme) för .net. 
-
-För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via paketet Microsoft. Azure. Services. AppAuthentication. Det här paketet är populärt på grund av dess enkelhet-och säkerhets förmåner. Utvecklare kan skriva kod en gång och låta klient biblioteket bestämma hur de ska autentiseras baserat på program miljön – om en utvecklares arbets Station använder ett utvecklares konto eller distribueras i Azure med hjälp av en hanterad tjänst identitet. För information om migrering från det föregående AppAuthentication-biblioteket läser [du AppAuthentication till Azure. vägledning för identitets migrering](/dotnet/api/overview/azure/app-auth-migration).
+För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via [klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme) för .net. Det här klient biblioteket är populärt på grund av dess enkelhet-och säkerhets förmåner. Utvecklare kan skriva kod en gång och låta klient biblioteket bestämma hur de ska autentiseras baserat på program miljön – om en utvecklares arbets Station använder ett utvecklares konto eller distribueras i Azure med hjälp av en hanterad tjänst identitet. För information om migrering från det föregående AppAuthentication-biblioteket läser [du AppAuthentication till Azure. vägledning för identitets migrering](/dotnet/api/overview/azure/app-auth-migration).
 
 Begär en token för Azure Time Series Insights med C# och klient biblioteket för Azure Identity för .NET:
 

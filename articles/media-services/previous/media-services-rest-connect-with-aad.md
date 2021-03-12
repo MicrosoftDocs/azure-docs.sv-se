@@ -3,7 +3,7 @@ title: Använd Azure AD-autentisering för att få åtkomst till Azure Media Ser
 description: Lär dig hur du kommer åt Azure Media Services API med Azure Active Directory autentisering med hjälp av REST.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a2b4e7bf03ebb1fbc197b78287cb50b3f421d713
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694738"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017315"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Använda Azure AD-autentisering för att ansluta till API:et för Media Services med REST
 
@@ -38,7 +38,7 @@ När du använder Azure AD-autentisering med Azure Media Services kan du autenti
     > [!NOTE]
     > **Tjänstens huvud namn** rekommenderas för de flesta program som ansluter till Azure Media Services. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Hämta autentiseringsinformation från Azure Portal
@@ -64,7 +64,7 @@ I de här självstudierna får du lära dig att
 
 Du måste samla in följande data punkter för att få åtkomst till Media Services API.
 
-|Inställning|Exempel|Description|
+|Inställning|Exempel|Beskrivning|
 |---|-------|-----|
 |Azure Active Directory klient domän|microsoft.onmicrosoft.com|Azure AD som en STS-slutpunkt (Secure token service) skapas med följande format: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Azure AD utfärdar en JWT för att få åtkomst till resurser (en åtkomsttoken).|
 |Slutpunkt för REST-API:t|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Detta är den slut punkt mot vilken alla Media Services REST API samtal i ditt program görs.|

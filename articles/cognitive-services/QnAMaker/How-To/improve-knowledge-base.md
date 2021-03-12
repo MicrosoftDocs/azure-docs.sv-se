@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7c477655dfb24eebab9a2669697d9ef610088198
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592032"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011450"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Acceptera föreslagna frågor om aktiva utbildningar i kunskaps basen
 
@@ -79,25 +79,24 @@ När du importerar om den här appen fortsätter den aktiva inlärningen att sam
 
 En robot eller något annat klient program bör använda följande arkitektur flöde för att använda aktiv inlärning:
 
-* Bot [hämtar svaret från kunskaps basen](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) med GenerateAnswer-API: et med hjälp av `top` egenskapen för att få ett antal svar.
+1. Bot [hämtar svaret från kunskaps basen](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) med GenerateAnswer-API: et med hjälp av `top` egenskapen för att få ett antal svar.
 
-    #### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Använd egenskapen Top i GenerateAnswer-begäran för att få flera matchande svar
-
-    När du skickar en fråga till QnA Maker för ett svar `top` anger egenskapen för JSON-texten antalet svar som ska returneras.
-
-    ```json
-    {
-        "question": "wi-fi",
-        "isTest": false,
-        "top": 3
-    }
-    ```
-
-* Bot avgör explicit feedback:
+2. Bot avgör explicit feedback:
     * Filtrera ut låga resultat med din egen [anpassade affärs logik](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user).
     * I robot-eller klient programmet visar du en lista över möjliga svar på användaren och får användarens valda svar.
-* Robot [skickar det valda svaret tillbaka till QNA Maker](#bot-framework-sample-code) med [träna-API: et](#train-api).
+3. Robot [skickar det valda svaret tillbaka till QNA Maker](#bot-framework-sample-code) med [träna-API: et](#train-api).
 
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Använd egenskapen Top i GenerateAnswer-begäran för att få flera matchande svar
+
+När du skickar en fråga till QnA Maker för ett svar `top` anger egenskapen för JSON-texten antalet svar som ska returneras.
+
+```json
+{
+    "question": "wi-fi",
+    "isTest": false,
+    "top": 3
+}
+```
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Använd score-egenskapen tillsammans med affärs logiken för att få en lista med svar för att visa användare
 
@@ -337,7 +336,7 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="best-practices"></a>Rekommenderade metoder
+## <a name="best-practices"></a>Bästa praxis
 
 För bästa praxis när du använder aktiv inlärning, se [metod tips](../Concepts/best-practices.md#active-learning).
 

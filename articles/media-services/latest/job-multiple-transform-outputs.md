@@ -12,19 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a40ce1fd7b3d9d946641c91f5876d8c73755b005
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092264"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635849"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Skapa ett jobb med flera transformera utdata
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Det här avsnittet visar hur du skapar en transformering med två transformera utdata. Det första anropet för indata som ska kodas för strömning med anpassad bit hastighet med en inbyggd [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) för inställning. Det andra anropet för ljud signalen i indata-videon som ska bearbetas med [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). När transformeringen har skapats kan du skicka ett jobb som bearbetar din video på motsvarande sätt. Eftersom vi i det här exemplet anger två transformera utdata måste vi ange två jobb-utdata. Du kan välja att dirigera både jobbets utdata till samma till gång (enligt nedan), eller så kan du få resultaten att skrivas till separata till gångar.
- 
 
 > [!TIP]
 > Innan du börjar utveckla bör du läsa [utveckla med Media Services v3-API: er](media-services-apis-overview.md) (innehåller information om hur du kommer åt API: er, namngivnings konventioner osv.)

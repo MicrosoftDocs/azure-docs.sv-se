@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7aa8221c960685149a5d475665be105acaf7aa15
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046677"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634166"
 ---
 # <a name="enable-vm-insights-overview"></a>Aktivera översikt över VM Insights
 
@@ -54,6 +54,7 @@ VM Insights stöder alla operativ system som stöder Log Analytics agent och ber
 > [!IMPORTANT]
 > Tjänsten VM Insights-gäst hälsa har mer begränsat stöd för operativ system medan den är i offentlig för hands version. Se [Aktivera VM Insights-gäst hälsa (för hands version)](../vm/vminsights-health-enable.md) för en detaljerad lista.
 
+### <a name="linux-considerations"></a>Linux-överväganden
 Se följande lista över överväganden för Linux-stöd för den beroende agent som stöder VM-insikter:
 
 - Endast standardversioner och SMP Linux-kernelversioner stöds.
@@ -61,7 +62,22 @@ Se följande lista över överväganden för Linux-stöd för den beroende agent
 - Anpassade kärnor, inklusive omkompileringar av standard kärnor, stöds inte.
 - För Debian-distributioner som inte är version 9,4 stöds inte kart funktionen och prestanda funktionen är bara tillgänglig på Azure Monitor-menyn. Den är inte tillgänglig direkt från den vänstra rutan i den virtuella Azure-datorn.
 - CentOSPlus-kärnan stöds.
-- Linux-kärnan måste korrigeras för SPECTRE-problemet. Kontakta din leverantör av Linux-distribution för mer information.
+
+Linux-kärnan måste korrigeras för SPECTRE-och Meltdown-sårbarheter. Kontakta din leverantör av Linux-distribution för mer information. Kör följande kommando för att kontrol lera om SPECTRE/Meltdown har begränsats:
+
+```
+$ grep . /sys/devices/system/cpu/vulnerabilities/*
+```
+
+Utdata för det här kommandot kommer att se ut ungefär så här och ange om en dator är sårbar för antingen problemet. Om de här filerna saknas, är datorn inte uppdaterad.
+
+```
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: PTI
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Vulnerable
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Vulnerable: Minimal generic ASM retpoline
+```
+
+
 ## <a name="log-analytics-workspace"></a>Log Analytics-arbetsyta
 VM-insikter kräver en Log Analytics-arbetsyta. Mer information och krav för den här arbets ytan finns i [konfigurera Log Analytics arbets yta för VM-insikter](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Agenter

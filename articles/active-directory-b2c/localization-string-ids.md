@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448652"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631191"
 ---
 # <a name="localization-string-ids"></a>Sträng-ID för lokalisering
 
@@ -356,7 +356,7 @@ Följande är ID: n för en [verifierings visnings kontroll](display-control-ver
 
 | ID | Standardvärde |
 | -- | ------------- |
-|intro_msg| Verifiering är nödvändig. Klicka på knappen Skicka.|
+|intro_msg <sup>*</sup>| Verifiering är nödvändig. Klicka på knappen Skicka.|
 |success_send_code_msg | Verifierings koden har skickats. Kopiera den till inmatade rutan nedan.|
 |failure_send_code_msg | Vi har problem med att verifiera din e-postadress. Ange en giltig e-postadress och försök igen.|
 |success_verify_code_msg | E-postadress verifierad. Nu kan du fortsätta.|
@@ -365,6 +365,12 @@ Följande är ID: n för en [verifierings visnings kontroll](display-control-ver
 |but_verify_code | Verifiera koden|
 |but_send_new_code | Skicka ny kod|
 |but_change_claims | Ändra e-post|
+
+Obs: `intro_msg` elementet är dolt och visas inte på den själv kontrollerade sidan. Om du vill göra det synligt använder du [HTML-customiztion](customize-ui-with-html.md) med sammanhängande formatmallar. Exempel:
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>Exempel på verifiering av visnings kontroll
 
