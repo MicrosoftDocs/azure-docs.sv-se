@@ -2,24 +2,23 @@
 title: Azure-front dörr | Microsoft Docs
 description: Den här artikeln innehåller en översikt för Azure Front Door.
 services: frontdoor
-documentationcenter: ''
 author: duongau
-editor: ''
 ms.service: frontdoor
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2020
+ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a5c298c201aa2a1f968c2a96dcfd6963a410cf7
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183173"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149230"
 ---
 # <a name="what-is-azure-front-door"></a>Vad är Azure Front Door?
+
+> [!IMPORTANT]
+> Den här dokumentationen är för Azures front dörr. Letar du efter information om Azure front dörr standard/Premium (för hands version)? Visa [här](/standard-premium/overview.md).
 
 Azures front dörr är en global, skalbar start punkt som använder Microsoft Global Edge-nätverket för att skapa snabba, säkra och mycket skalbara webb program. Med front dörren kan du omvandla dina globala konsument-och företags program till robusta, högpresterande anpassade moderna program med innehåll som når en global publik via Azure.
 

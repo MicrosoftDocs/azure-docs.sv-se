@@ -1,18 +1,18 @@
 ---
 title: Felsöka allmänna problem med Azure percept DK och IoT Edge
-description: Få fel söknings tips för några av de vanligaste problemen som påträffas under den här insikts upplevelsen
+description: Få fel söknings tips för några av de vanligaste problemen med Azure percept DK
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 93812cf2b0db7fc3557e31c8d9e8053831c7b90f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521534"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011008"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Fel sökning för Azure percept DK (dev Kit)
 
@@ -28,7 +28,7 @@ För att köra dessa kommandon,
 Om du vill omdirigera utdata till en txt-fil för ytterligare analys, använder du följande syntax:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 När du har omdirigerat utdata till en txt-fil kopierar du filen till värddatorn via SCP:
@@ -47,13 +47,13 @@ Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentation
 |Operativsystem                |```cat /etc/os-subrelease```      |kontrol lera derivat-avbildnings version |
 |Operativsystem                |```cat /etc/adu-version```        |kontrol lera ADU-versionen |
 |Temperatur       |```cat /sys/class/thermal/thermal_zone0/temp``` |kontrol lera temperaturen för devkit |
-|Wi-Fi             |```journalctl -u hostapd.service``` |kontrol lera SoftAP-loggar|
-|Wi-Fi             |```journalctl -u wpa_supplicant.service``` |kontrol lera Wi-Fi Services-loggar |
-|Wi-Fi             |```journalctl -u ztpd.service```  |kontrol lera Wi-Fi inga loggar för touch-etablering |
-|Wi-Fi             |```journalctl -u systemd-networkd``` |kontrol lera Mariner Network stack-loggar |
-|Wi-Fi             |```/data/misc/wifi/hostapd_virtual.conf``` |kontrol lera konfigurations information för WiFi-åtkomst punkt |
-|KOMS              |```journalctl -u oobe -b```       |kontrol lera OOBE-loggar |
-|Telemetri         |```azure-device-health-id```      |Hitta unika telemetri HW_ID |
+|Wi-Fi             |```sudo journalctl -u hostapd.service``` |kontrol lera SoftAP-loggar|
+|Wi-Fi             |```sudo journalctl -u wpa_supplicant.service``` |kontrol lera Wi-Fi Services-loggar |
+|Wi-Fi             |```sudo journalctl -u ztpd.service```  |kontrol lera Wi-Fi inga loggar för touch-etablering |
+|Wi-Fi             |```sudo journalctl -u systemd-networkd``` |kontrol lera Mariner Network stack-loggar |
+|Wi-Fi             |```sudo cat /etc/hostapd/hostapd-wlan1.conf``` |kontrol lera konfigurations information för WiFi-åtkomst punkt |
+|KOMS              |```sudo journalctl -u oobe -b```       |kontrol lera OOBE-loggar |
+|Telemetri         |```sudo azure-device-health-id```      |Hitta unika telemetri HW_ID |
 |Azure IoT Edge          |```sudo iotedge check```          |Kör konfigurations-och anslutnings kontroller för vanliga problem |
 |Azure IoT Edge          |```sudo iotedge logs [container name]``` |kontrol lera behållar loggar, t. ex. tal-och syn-moduler |
 |Azure IoT Edge          |```sudo iotedge support-bundle --since 1h``` |samla in modulreferens, Azure IoT Edge Security Manager-loggar, behållar motor loggar, ```iotedge check``` JSON-utdata och annan användbar felsöknings information från den senaste timmen |
@@ -61,26 +61,26 @@ Mer information om Azure IoT Edge-kommandon finns i [fel söknings dokumentation
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Starta om Azure IoT Edge Security daemon |
 |Azure IoT Edge          |```sudo iotedge list```           |Visa en lista över distribuerade Azure IoT Edge-moduler |
 |Annat             |```df [option] [file]```          |Visa information om tillgängligt/totalt utrymme i angivna fil system |
-|Annat             |```ip route get 1.1.1.1```        |Visa enhetens IP-och gränssnitts information |
-|Annat             |```ip route get 1.1.1.1 \| awk '{print $7}'``` <br> ```ifconfig [interface]``` |Visa endast enhets-IP-adress |
+|Annat             |`ip route get 1.1.1.1`        |Visa enhetens IP-och gränssnitts information |
+|Annat             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Visa endast enhets-IP-adress |
 
 
 ```journalctl```Wi-Fi kommandon kan kombineras i följande enda kommando:
 
 ```console
-journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
+sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
 ```
 
 ## <a name="docker-troubleshooting-commands"></a>Docker-felsöknings kommandon
 
 |Kommandoprompt                        |Funktioner                  |
 |--------------------------------|---------------------------|
-|```docker ps``` |[visar vilka behållare som körs](https://docs.docker.com/engine/reference/commandline/ps/) |
-|```docker images``` |[visar vilka bilder som finns på enheten](https://docs.docker.com/engine/reference/commandline/images/)|
-|```docker rmi [image id] -f``` |[tar bort en bild från enheten](https://docs.docker.com/engine/reference/commandline/rmi/) |
-|```docker logs -f edgeAgent``` <br> ```docker logs -f [module_name]``` |[använder container loggar för angiven modul](https://docs.docker.com/engine/reference/commandline/logs/) |
-|```docker image prune``` |[tar bort alla Dangling-avbildningar](https://docs.docker.com/engine/reference/commandline/image_prune/) |
-|```watch docker ps``` <br> ```watch ifconfig [interface]``` |kontrol lera nedladdnings status för Docker-behållare |
+|```sudo docker ps``` |[visar vilka behållare som körs](https://docs.docker.com/engine/reference/commandline/ps/) |
+|```sudo docker images``` |[visar vilka bilder som finns på enheten](https://docs.docker.com/engine/reference/commandline/images/)|
+|```sudo docker rmi [image id] -f``` |[tar bort en bild från enheten](https://docs.docker.com/engine/reference/commandline/rmi/) |
+|```sudo docker logs -f edgeAgent``` <br> ```sudo docker logs -f [module_name]``` |[använder container loggar för angiven modul](https://docs.docker.com/engine/reference/commandline/logs/) |
+|```sudo docker image prune``` |[tar bort alla Dangling-avbildningar](https://docs.docker.com/engine/reference/commandline/image_prune/) |
+|```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |kontrol lera nedladdnings status för Docker-behållare |
 
 ## <a name="usb-updating"></a>USB-uppdatering
 

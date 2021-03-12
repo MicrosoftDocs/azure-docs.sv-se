@@ -3,15 +3,15 @@ title: Vanliga frågor och svar om Windows Virtual Desktop – Azure
 description: Vanliga frågor och rekommendationer för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720281"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613977"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Vanliga frågor och svar om Windows Virtual Desktop
 
@@ -140,3 +140,22 @@ Slutligen, om du har aktiverat resurs leverantören från kontot för CSP-ägare
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Hur ofta ska jag aktivera mina virtuella datorer för att förhindra registrerings problem?
 
 När du registrerar en virtuell dator till en adresspool i Windows Virtual Desktop-tjänsten uppdaterar agenten regelbundet den virtuella datorns token när den virtuella datorn är aktiv. Certifikatet för registrerings-token är giltigt i 90 dagar. På grund av den här 90-dagars gränsen rekommenderar vi att du startar dina virtuella datorer var 90 dag. Om du aktiverar den virtuella datorn inom den här tids gränsen kommer dess registrerings token att upphöra att gälla eller bli ogiltig. Om du har startat den virtuella datorn efter 90 dagar och har problem med registreringen, följer du anvisningarna i [fel söknings guiden för Windows Virtual Desktop agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) för att ta bort den virtuella datorn från poolen, installera om agenten och registrera den på poolen igen.
+
+## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Kan jag ange tillgänglighets alternativ när du skapar värdar för pooler?
+
+Ja. Windows-pooler för virtuella skriv bord kan välja antingen tillgänglighets uppsättning eller tillgänglighets zoner när du skapar en virtuell dator. Dessa tillgänglighets alternativ är desamma som de som Azure Compute använder. Om du väljer en zon för den virtuella dator som du skapar i en adresspool, tillämpas inställningen automatiskt på alla virtuella datorer som du skapar i den zonen. Om du föredrar att sprida dina virtuella datorers värdar i flera zoner måste du följa anvisningarna i [lägga till virtuella datorer med Azure Portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) för att manuellt välja en ny zon för varje ny virtuell dator som du skapar.
+
+## <a name="which-availability-option-is-best-for-me"></a>Vilket tillgänglighets alternativ passar mig bäst för mig?
+
+Vilket tillgänglighets alternativ som ska användas för dina virtuella datorer beror på din avbildnings plats och dess hanterade disk fält. I följande tabell förklaras förhållandet som varje inställning har med dessa variabler för att hjälpa dig att avgöra vilket alternativ som är bäst för din distribution. 
+
+| Tillgänglighets alternativ | Bild plats | Alternativ knappen Använd hanterad disk (alternativ knapp) |
+|---|---|---|
+| Inget | Galleri | Inaktiverat med alternativet Ja som standard |
+| Inget | Blob Storage | Aktive rad med "nej" som standard |
+| Tillgänglighetszon | Galleri (Blob Storage-alternativet inaktive rad) | Inaktiverat med alternativet Ja som standard |
+| Tillgänglighets uppsättning med hanterad SKU (hanterad disk) | Galleri | Inaktiverat med alternativet Ja som standard |
+| Tillgänglighets uppsättning med hanterad SKU (hanterad disk) | Blob Storage | Aktive rad med "nej" som standard |
+| Tillgänglighets uppsättning med hanterad SKU (hanterad disk) | Blob Storage (alternativ för Galleri är inaktiverat) | Inaktiverat med "nej" som standard |
+| Tillgänglighets uppsättning (nyligen skapad av användare) | Galleri | Inaktiverat med alternativet Ja som standard |
+| Tillgänglighets uppsättning (nyligen skapad av användare) | Blob Storage | Aktive rad med "nej" som standard |

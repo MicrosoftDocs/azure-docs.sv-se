@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038721"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010413"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrera till anslutnings övervakaren från Övervakare av nätverksprestanda
 
@@ -37,6 +37,9 @@ Migreringen hjälper till att producera följande resultat:
 * Data övervakning:
    * **Data i Log Analytics**: innan migreringen finns data kvar i arbets ytan där NPM har kon figurer ATS i NetworkMonitoring-tabellen. Efter migreringen går data till NetworkMonitoring-tabellen, NWConnectionMonitorTestResult-tabellen och NWConnectionMonitorPathResult-tabellen i samma arbets yta. När testerna har inaktiverats i NPM lagras data endast i tabellen NWConnectionMonitorTestResult och NWConnectionMonitorPathResult.
    * **Loggbaserade aviseringar, instrument paneler och integreringar**: du måste redigera frågorna manuellt baserat på den nya tabellen NWConnectionMonitorTestResult och tabellen NWConnectionMonitorPathResult. Information om hur du återskapar aviseringarna i mått finns i [övervakning av nätverks anslutning med anslutnings övervakaren](./connection-monitor-overview.md#metrics-in-azure-monitor).
+* För ExpressRoute-övervakning:
+    * **Slut punkt till slut punkt och svars tid**: anslutnings övervakaren kommer att sätta detta och det blir enklare än NPM eftersom användarna inte behöver konfigurera vilka kretsar och peering som ska övervakas. Kretsar i sökvägen identifieras automatiskt. data kommer att vara tillgängliga i mått (snabbare än LA där NPM lagrade resultaten). Topologin fungerar som den också.
+    * **Bandbredds mått**: vid start av bandbredds mått är NPM för den Log Analytics-baserade metoden inte effektiv i bandbredds övervakning för ExpressRoute-kunder. Den här funktionen är nu inte tillgänglig i anslutnings övervakaren.
     
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -60,7 +63,7 @@ När migreringen har påbörjats sker följande ändringar:
    * En anslutnings övervakare per region och prenumeration skapas. För tester med lokala agenter formateras namnet för den nya anslutnings övervakaren som `<workspaceName>_"workspace_region_name"` . För tester med Azure-agenter formateras namnet för den nya anslutnings övervakaren som `<workspaceName>_<Azure_region_name>` .
    * Övervaknings data lagras nu i samma Log Analytics arbets yta där NPM är aktiverat, i nya tabeller som heter NWConnectionMonitorTestResult Table och NWConnectionMonitorPathResult Table. 
    * Test namnet överförs som test gruppens namn. Test beskrivningen har inte migrerats.
-   * Käll-och mål slut punkter skapas och används i den nya test gruppen. För lokala agenter formateras slut punkterna som `<workspaceName>_<FQDN of on-premises machine>` .
+   * Käll-och mål slut punkter skapas och används i den nya test gruppen. För lokala agenter formateras slut punkterna som `<workspaceName>_<FQDN of on-premises machine>` . Agent beskrivningen migreras inte.
    * Mål porten och söknings intervallet flyttas till en test konfiguration som kallas `TC_<protocol>_<port>` och `TC_<protocol>_<port>_AppThresholds` . Protokollet anges baserat på port värden. För ICMP heter test konfigurationerna som `TC_<protocol>` och `TC_<protocol>_AppThresholds` . Tröskelvärden för lyckade och andra valfria egenskaper om inställningen migreras lämnas annars tomt.
    * Om de migrerande testerna innehåller agenter som inte körs måste du aktivera agenterna och migrera igen.
 * NPM är inte inaktiverat, så de migrerade testerna kan fortsätta att skicka data till NetworkMonitoring-tabellen, NWConnectionMonitorTestResult Table och NWConnectionMonitorPathResult-tabellen. Den här metoden säkerställer att befintliga loggbaserade aviseringar och integreringar inte påverkas.

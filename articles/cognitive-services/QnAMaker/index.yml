@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Dokumentation om QnA Maker
   description: QnA Maker är en molnbaserad API-tjänst som skapar ett konversationsanpassat lager för frågor och svar över dina data. Med QnA Maker kan du driva en tjänst för frågor och svar från halvstrukturerat innehåll som Vanliga frågor och svar-dokument, URL:er och produkthandböcker. QnA Maker-tjänsten svarar på dina användares frågor på naturligt språk genom att matcha med det bästa möjliga svaret från vanliga frågor och svar i kunskapsbasen.
-  ms.openlocfilehash: 00e2f029d467e4bf4acfbc9ee55727328c23ba72
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: d993dfcc4d486190e2501940465598b53808b965
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102502220"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102613892"
 landingContent:
 - title: Om QnA Maker
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
     - text: 'Power Apps: Skapa en QnA Maker-baserad robot'
       url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - text: 'Bot Framework: Använda Dispatch mellan LUIS- och QnA Maker-appar'
-      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0
+      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs
     - text: Andra exempelrobotar
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: Referens

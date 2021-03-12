@@ -2,18 +2,19 @@
 title: Självstudie – konfigurera haveri beredskap för virtuella Linux-datorer med Azure Site Recovery
 description: Lär dig hur du konfigurerar haveri beredskap för virtuella Linux-datorer till en annan Azure-region med hjälp av tjänsten Azure Site Recovery.
 author: rayne-wiselman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d14d276c798e40d417a8038aee5b7550e84f4114
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380410"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564755"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Självstudie: Konfigurera haveri beredskap för virtuella Linux-datorer
 
@@ -41,7 +42,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 3. Kontrol lera att den virtuella Linux-datorn kör ett [operativ system som stöds](../../site-recovery/azure-to-azure-support-matrix.md#linux).
 4. Om utgående anslutningar för virtuella datorer använder en URL-baserad proxy, se till att den har åtkomst till dessa URL: er. Det finns inte stöd för att använda en autentiserad proxy.
 
-    **Namn** | **Offentligt moln** | **Myndighets moln** | **Detaljer**
+    **Namn** | **Offentligt moln** | **Myndighets moln** | **Information**
     --- | --- | --- | ---
     Storage | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| Skriv data från den virtuella datorn till cache Storage-kontot i käll regionen. 
     Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Auktorisera och autentisera till Site Recovery tjänst-URL: er. 
@@ -152,7 +153,7 @@ Stoppa replikering på följande sätt:
 
 Site Recovery tillägget som har installerats på den virtuella datorn under replikeringen tas inte bort automatiskt. Om du inaktiverar replikering för den virtuella datorn och du inte vill replikera den igen vid ett senare tillfälle kan du ta bort Site Recovery tillägget manuellt, enligt följande: 
 
-1. Gå till tillägg för VM > **Inställningar**  >  **Extensions**.
+1. Gå till tillägg för VM > **Inställningar**  >  .
 2. På sidan **tillägg** väljer du alla *Microsoft. Azure. RecoveryServices* -poster för Linux.
 3. På sidan Egenskaper för tillägget väljer du **Avinstallera**.
 

@@ -1,25 +1,19 @@
 ---
 title: Azure Disk Encryption för Linux
 description: Distribuerar Azure Disk Encryption för Linux till en virtuell dator med ett tillägg för virtuell dator.
-services: virtual-machines-linux
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: 61f8fd3d671bbd66d2dc5656e9a467b06798d280
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 03/19/2020
+ms.collection: linux
+ms.openlocfilehash: 7c79391e3459804a4b5ce72c2230d17af3269641
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968425"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566268"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption för Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
@@ -27,7 +21,7 @@ ms.locfileid: "94968425"
 
 Azure Disk Encryption utnyttjar del systemet dm-crypt i Linux för att tillhandahålla fullständig disk kryptering på [utvalda Azure Linux-distributioner](../linux/disk-encryption-overview.md).  Den här lösningen är integrerad med Azure Key Vault för att hantera disk krypterings nycklar och hemligheter.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En fullständig lista över krav finns i [Azure Disk Encryption för virtuella Linux-datorer](../linux/disk-encryption-overview.md), särskilt i följande avsnitt:
 
@@ -142,13 +136,13 @@ Använda `AADClientCertificate` :
 
 ### <a name="property-values"></a>Egenskaps värden
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | datum |
+| apiVersion | 2019-07-01 | date |
 | utgivare | Microsoft. Azure. Security | sträng |
 | typ | AzureDiskEncryptionForLinux | sträng |
 | typeHandlerVersion | 1,1, 0,1 | int |
-| (0,1-schema) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | guid | 
+| (0,1-schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (0,1-schema) AADClientSecret | password | sträng |
 | (0,1-schema) AADClientCertificate | begäran | sträng |
 | valfritt (0,1-schema) Fraser | password | sträng |

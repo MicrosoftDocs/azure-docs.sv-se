@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: 055df9d2290ee445e2a7201acd374508a86e839f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 03/09/2021
+ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213326"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556629"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Autentisera åtkomst till Azure-resurser med hjälp av hanterade identiteter i Azure Logic Apps
 
@@ -39,7 +39,6 @@ För närvarande kan endast [vissa inbyggda utlösare och åtgärder](../logic-a
 * Azure Automation
 * Azure Event Grid
 * Azure Key Vault
-* Azure Monitor-loggar
 * Azure Resource Manager
 * HTTP med Azure AD
 
@@ -182,10 +181,10 @@ Om du vill konfigurera en användardefinierad hanterad identitet för din Logic 
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Prenumeration** | Yes | <*Azure-prenumeration-namn*> | Namnet på den Azure-prenumeration som ska användas |
-   | **Resursgrupp** | Yes | <*Azure-resurs-grupp-namn*> | Namnet på resurs gruppen som ska användas. Skapa en ny grupp eller Välj en befintlig grupp. I det här exemplet skapas en ny grupp med namnet `fabrikam-managed-identities-RG` . |
-   | **Region** | Yes | <*Azure-region*> | Den Azure-region där information om din resurs ska lagras. I det här exemplet används "västra USA". |
-   | **Namn** | Yes | <*användarens tilldelad identitet-namn*> | Namnet för att ge din användar tilldelnings identitet. I det här exemplet används `Fabrikam-user-assigned-identity`. |
+   | **Prenumeration** | Ja | <*Azure-prenumeration-namn*> | Namnet på den Azure-prenumeration som ska användas |
+   | **Resursgrupp** | Ja | <*Azure-resurs-grupp-namn*> | Namnet på resurs gruppen som ska användas. Skapa en ny grupp eller Välj en befintlig grupp. I det här exemplet skapas en ny grupp med namnet `fabrikam-managed-identities-RG` . |
+   | **Region** | Ja | <*Azure-region*> | Den Azure-region där information om din resurs ska lagras. I det här exemplet används "västra USA". |
+   | **Namn** | Ja | <*användarens tilldelad identitet-namn*> | Namnet för att ge din användar tilldelnings identitet. I det här exemplet används `Fabrikam-user-assigned-identity`. |
    |||||
 
    När du har verifierat informationen skapar Azure din hanterade identitet. Nu kan du lägga till den användardefinierade identiteten i din Logic app. Du kan inte lägga till fler än en användardefinierad identitet i din Logic app.
@@ -458,11 +457,11 @@ HTTP-utlösaren eller åtgärden kan använda den systemtilldelade identitet som
 
 | Egenskap | Krävs | Beskrivning |
 |----------|----------|-------------|
-| **Metod** | Yes | HTTP-metoden som används av den åtgärd som du vill köra |
-| **URI** | Yes | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
-| **Sidhuvuden** | No | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
-| **Frågor** | No | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
-| **Autentisering** | Yes | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
+| **Metod** | Ja | HTTP-metoden som används av den åtgärd som du vill köra |
+| **URI** | Ja | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
+| **Sidhuvuden** | Inga | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
+| **Frågor** | Inga | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
+| **Autentisering** | Ja | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
 ||||
 
 Som ett särskilt exempel förutsätter vi att du vill köra [ögonblicks bilds-bloben](/rest/api/storageservices/snapshot-blob) på en BLOB i det Azure Storage konto där du tidigare har konfigurerat åtkomst till din identitet. Men [Azure Blob Storage-anslutningen](/connectors/azureblob/) har för närvarande inte den här åtgärden. I stället kan du köra den här åtgärden med hjälp av [http-åtgärden](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) eller någon annan [REST API åtgärd för BLOB service](/rest/api/storageservices/operations-on-blobs).
@@ -472,10 +471,10 @@ Som ett särskilt exempel förutsätter vi att du vill köra [ögonblicks bilds-
 
 För att köra [ögonblicks bildens BLOB](/rest/api/storageservices/snapshot-blob)-åtgärd anger http-åtgärden följande egenskaper:
 
-| Egenskap | Krävs | Exempelvärde | Description |
+| Egenskap | Krävs | Exempelvärde | Beskrivning |
 |----------|----------|---------------|-------------|
-| **Metod** | Yes | `PUT`| HTTP-metoden som ögonblicks bildens BLOB-åtgärd använder |
-| **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Resurs-ID för en Azure Blob Storage-fil i den globala Azure-miljön (offentlig) som använder den här syntaxen |
+| **Metod** | Ja | `PUT`| HTTP-metoden som ögonblicks bildens BLOB-åtgärd använder |
+| **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Resurs-ID för en Azure Blob Storage-fil i den globala Azure-miljön (offentlig) som använder den här syntaxen |
 | **Sidhuvuden** | För Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type`Värdena, `x-ms-version` och måste `x-ms-date` anges för Azure Storage åtgärder. <p><p>**Viktigt**: i utgående http-utlösare och åtgärds begär anden för Azure Storage, kräver huvudet `x-ms-version` egenskapen och API-versionen för den åtgärd som du vill köra. `x-ms-date`Måste vara det aktuella datumet. Annars Miss lyckas din Logic app med ett `403 FORBIDDEN` fel. Om du vill hämta det aktuella datumet i det format som krävs kan du använda uttrycket i exempel svärdet. <p>Mer information finns i de här ämnena: <p><p>- [Begärandehuvuden – ögonblicks bilds-BLOB](/rest/api/storageservices/snapshot-blob#request) <br>- [Versions hantering för Azure Storage tjänster](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
 | **Frågor** | Endast för BLOB-åtgärden för ögonblicks bilder | `comp` = `snapshot` | Frågans parameter namn och värde för åtgärden. |
 |||||

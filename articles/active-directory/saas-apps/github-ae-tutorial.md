@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221063"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196816"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med GitHub AE
 
@@ -101,9 +101,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Klicka på **Välj grupper** och Sök efter den **grupp** som du vill inkludera det här anspråket, där dess medlemmar ska vara administratörer för GHAE.
 
-1. Välj **attribut** för **källa** och ange **Sant** för **värdet**. 
+1. Välj **attribut** för **källa** och ange **Sant** (utan citat tecken) för **värdet**. 
 
-10. Klicka på **Spara**.
+1. Klicka på **Spara**.
 
     ![hantera anspråk](./media/github-ae-tutorial/administrator.png)
 
@@ -112,7 +112,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
-    ![Länk för nedladdning av certifikatet](common/certificateBase64.png)
+    ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
 1. I avsnittet **Konfigurera GITHUB AE** kopierar du lämpliga URL: er baserat på ditt krav.
 
@@ -126,7 +126,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ce79b450e5eaed04150ffafd88528a131417044a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0b6f85a675dc98928309870ea177629203db39e7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692325"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557343"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB:s API för MongoDB (version 3.6): Funktioner och syntax som stöds
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -142,7 +142,7 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 | $limit | Ja |
 | $listLocalSessions | Inga |
 | $listSessions | Inga |
-| $lookup | Ja |
+| $lookup | Delvis |
 | $match | Ja |
 | $out | Ja |
 | $project | Ja |
@@ -154,6 +154,9 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 | $sort | Ja |
 | $sortByCount | Ja |
 | $unwind | Ja |
+
+> [!NOTE]
+> `$lookup` har ännu inte stöd för funktionen för icke [korrelerade under frågor](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) som introducerades i server version 3,6. Du får ett fel meddelande med ett meddelande som innehåller `let is not supported` om du försöker använda `$lookup` operatorn med `let` `pipeline` fälten och.
 
 ### <a name="boolean-expressions"></a>Booleska uttryck
 

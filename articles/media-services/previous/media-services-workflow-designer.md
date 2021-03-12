@@ -3,7 +3,7 @@ title: Skapa avancerade kodnings arbets flöden med arbetsflödesdesigner | Micr
 description: Lär dig mer om hur du skapar avancerade kodnings arbets flöden med arbetsflödesdesigner.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 004815f2-0761-4706-87a1-675ba36e0322
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262693"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011161"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Skapa avancerade arbetsflöden för kodning med Workflow Designer
 
@@ -42,7 +42,7 @@ Det här verktyget kan också användas för att ändra alla [publicerade arbets
 > [!NOTE]
 > Kontakta om du vill hämta en kopia av arbetsflödesdesigner-verktyget mepd@microsoft.com .
 
-När en arbets flödes fil har skapats kan den laddas upp som en till gång och sedan användas för kodning av mediefiler. Information om hur du kodar med **Media Encoder Premium Workflow** med hjälp av **.net**finns i [Avancerad kodning med Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
+När en arbets flödes fil har skapats kan den laddas upp som en till gång och sedan användas för kodning av mediefiler. Information om hur du kodar med **Media Encoder Premium Workflow** med hjälp av **.net** finns i [Avancerad kodning med Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Ändra befintliga arbets flöden
 De [publicerade standard arbets flödena](media-services-workflow-designer.md#existing_workflows) kan ändras med hjälp av verktyget designer. Du kan hämta standard arbets flödes filerna [här](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Mappen innehåller också en beskrivning av de här filerna.
@@ -76,7 +76,7 @@ Dag 3 video försättsblad:
 
 * Skript i arbets flöden/ritningar
 * Begränsningar med aktuell kodare
-* Frågor och svar
+* Vanliga frågor och svar
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 

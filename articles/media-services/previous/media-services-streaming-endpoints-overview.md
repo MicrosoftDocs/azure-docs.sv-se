@@ -3,7 +3,7 @@ title: Översikt över Azure Media Services strömnings slut punkt | Microsoft D
 description: Den här artikeln ger en översikt över Azure Media Services slut punkter för direkt uppspelning.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: f5e3d7e61b6c2a6ad3c121da9c0198c95ac24850
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0961b52ebc7271fabf4cc05ed99eea23d911a2d4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694582"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009121"
 ---
 # <a name="streaming-endpoints-overview"></a>Översikt över slut punkter för direkt uppspelning  
 
@@ -79,9 +79,9 @@ Om din **version "1,0"** för strömnings slut punkten har >= 1 Premium streamin
 
 |Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturering|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klassisk|1,0|0|NA|Kostnadsfri|
+|Klassisk|1.0|0|NA|Kostnadsfri|
 |Standard slut punkt för direkt uppspelning (förhands granskning)|2.0|0|Ja|Betald|
-|Premium – direktuppspelningsenheter|1,0|> 0|Ja|Betald|
+|Premium – direktuppspelningsenheter|1.0|> 0|Ja|Betald|
 |Premium – direktuppspelningsenheter|2.0|> 0|Ja|Betald|
 
 ### <a name="features"></a>Funktioner

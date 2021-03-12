@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611629"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008441"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Lägga till en API-anslutning till ett användar flöde för registrering (för hands version)
 
@@ -61,9 +61,9 @@ Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autent
 Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Om du vill överföra ett nytt certifikat till en befintlig API-anslutning väljer du API-anslutaren under **API-kopplingar (för hands version)** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som har passerat start datumet används automatiskt av Azure AD B2C.
 
 ### <a name="api-key"></a>API-nyckel
-Vissa tjänster använder en API-nyckel för att göra det svårare att komma åt dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Vissa tjänster använder en API-nyckel för att obfuscate åtkomst till dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Detta är inte en mekanism som endast ska användas i produktion. Därför krävs alltid konfiguration för Basic-eller certifikatautentisering. Om du vill implementera en autentiseringsmetod (rekommenderas inte) i utvecklings syfte kan du välja grundläggande autentisering och använda tillfälliga värden för `username` och `password` att ditt API kan ignorera när du implementerar auktoriseringen i ditt API.
+Detta är inte en mekanism som endast ska användas i produktion. Därför krävs alltid konfiguration för Basic-eller certifikatautentisering. Om du inte vill implementera någon autentiseringsmetod (rekommenderas inte) i utvecklings syfte kan du välja grundläggande autentisering och använda tillfälliga värden för `username` och `password` att ditt API kan ignorera när du implementerar auktoriseringen i ditt API.
 
 ## <a name="the-request-sent-to-your-api"></a>Begäran skickades till ditt API
 En API-anslutning materialiseras som en **http post** -begäran och skickar användarattribut ("anspråk") som nyckel/värde-par i en JSON-text. Attributen serialiseras på samma sätt som [Microsoft Graph](/graph/api/resources/user#properties) användar egenskaper. 

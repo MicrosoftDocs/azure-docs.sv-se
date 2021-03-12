@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 03/10/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d628903f98f96fc205c9a6c9196a90b251e52af2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: f88a0818d93c33b6265cc8c695479d2a42678ada
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740558"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011042"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Lägg till och hantera grupper i en administrativ enhet i Azure Active Directory
 
@@ -66,30 +66,34 @@ I följande exempel använder du `Add-AzureADMSAdministrativeUnitMember` cmdlete
 
 
 ```powershell
-$administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
-Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+Add-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
 ### <a name="use-microsoft-graph"></a>Använd Microsoft Graph
 
 Kör följande kommandon:
 
-```http
-Http request
-POST /administrativeUnits/{Admin Unit id}/members/$ref
+Förfrågan
 
-Request body
+```http
+POST /administrativeUnits/{admin-unit-id}/members/$ref
+```
+
+Brödtext
+
+```http
 {
-"@odata.id":"https://graph.microsoft.com/v1.0/groups/{id}"
+"@odata.id":"https://graph.microsoft.com/v1.0/groups/{group-id}"
 }
 ```
 
-Exempel:
+Exempel
 
 ```http
 {
-"@odata.id":"https://graph.microsoft.com/v1.0/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
+"@odata.id":"https://graph.microsoft.com/v1.0/groups/871d21ab-6b4e-4d56-b257-ba27827628f3"
 }
 ```
 
@@ -110,14 +114,14 @@ Exempel:
 Om du vill visa en lista över alla medlemmar i den administrativa enheten kör du följande kommando: 
 
 ```powershell
-$administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitObj.ObjectId
 ```
 
 Om du vill visa alla grupper som är medlemmar i den administrativa enheten använder du följande kodfragment:
 
-```http
-foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
+```powershell
+foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitObj.ObjectId)) 
 {
 if($member.ObjectType -eq "Group")
 {
@@ -130,10 +134,15 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 
 Kör följande kommando:
 
+Förfrågan
+
 ```http
-HTTP request
-GET /directory/administrativeUnits/{Admin id}/members/$/microsoft.graph.group
-Request body
+GET /directory/administrativeUnits/{admin-unit-id}/members/$/microsoft.graph.group
+```
+
+Brödtext
+
+```http
 {}
 ```
 
@@ -164,7 +173,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 Kör följande kommando:
 
 ```http
-https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-group-from-an-administrative-unit"></a>Ta bort en grupp från en administrativ enhet
@@ -196,7 +205,7 @@ Du kan ta bort en grupp från en administrativ enhet i Azure Portal på något a
 Kör följande kommando:
 
 ```powershell
-Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
+Remove-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitId -MemberId $memberGroupObjId
 ```
 
 ### <a name="use-microsoft-graph"></a>Använd Microsoft Graph
@@ -204,7 +213,7 @@ Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupO
 Kör följande kommando:
 
 ```http
-https://graph.microsoft.com/v1.0/directory/AdministrativeUnits/<adminunit-id>/members/<group-id>/$ref
+https://graph.microsoft.com/v1.0/directory/administrativeUnits/{admin-unit-id}/members/{group-id}/$ref
 ```
 
 ## <a name="next-steps"></a>Nästa steg

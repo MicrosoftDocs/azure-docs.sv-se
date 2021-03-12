@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f8210428e772241134b57ac4fccb5b1549e04483
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ab1da88899ba2b90e303da107631e3878b3a8b58
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617280"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635883"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>Synkronisera med Azure Blob Storage med hjälp av AzCopy v10
 
@@ -33,7 +33,7 @@ Se artikeln [Kom igång med AZCopy](storage-use-azcopy-v10.md) för att ladda ne
 > [!NOTE] 
 > I exemplen i den här artikeln förutsätter vi att du har angett autentiseringsuppgifter för auktorisering genom att använda Azure Active Directory (Azure AD).
 >
-> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Till exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'` . ken> ' '.
+> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="guidelines"></a>Riktlinjer
 

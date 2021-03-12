@@ -1131,6 +1131,8 @@
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Avvikelseidentifiering med Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
+        - name: Bygg maskin inlärnings program med Microsoft Machine Learning för Apache Spark (för hands version)
+          href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
 - name: Data Catalog och styrning
   items:
     - name: Snabbstarter

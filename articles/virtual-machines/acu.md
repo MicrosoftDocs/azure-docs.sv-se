@@ -3,18 +3,18 @@ title: Översikt över Azure Compute Unit
 description: 'Översikt över konceptet med Azure Compute units. ACU är ett sätt att jämföra CPU-prestanda i Azure SKU: er.'
 author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: ba8c3f730897c01c52aaf4499269425426d0b7b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae37771cd9e48f450ae538174b9bed9cfa866f9d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667188"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565537"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure Compute Unit (ACU)
 
@@ -69,7 +69,7 @@ Hyper-threaded och kan köra kapslad virtualisering
 | [HC](hc-series.md) |297 – 315 * | 1:1 |
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2-L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
-| [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
+| [Avstånd](m-series.md) | 160 – 180 | 2:1\*\*\* |
 | [NVv4](nvv4-series.md) |230 – 260 * * | 2:1 |
 
 Här finns länkar till mer information om de olika storlekarna:

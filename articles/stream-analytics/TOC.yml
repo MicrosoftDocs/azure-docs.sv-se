@@ -39,7 +39,7 @@
     - name: Skapa en anpassad .NET-deserialiserare
       href: custom-deserializer.md
     - name: Skapa ett IoT Edge-jobb
-      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md
       maintainContext: true
 - name: Exempel
   items:

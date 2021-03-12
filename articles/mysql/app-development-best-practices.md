@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547256"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611971"
 ---
-# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Metod tips för att skapa ett program med Azure Database for MySQL 
+# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Metodtips för att skapa ett program med Azure Database for MySQL 
 
 Här följer några metod tips som hjälper dig att bygga ett moln klart program med hjälp av Azure Database for MySQL. Dessa metod tips kan minska utvecklings tiden för din app. 
 
@@ -73,10 +73,10 @@ Du kan använda [datareplikering](./howto-data-in-replication.md) för scenarier
 
 Du ser en fördröjning mellan källan och repliken eftersom replikeringen är asynkron. Nätverks fördröjning kan påverkas av många faktorer, t. ex. storleken på arbets belastningen som körs på käll servern och fördröjningen mellan data Center. I de flesta fall är replik fördröjningen från några sekunder till några minuter.
 
-## <a name="database-deployment"></a>Databas distribution 
+## <a name="database-deployment"></a>Databasdistribution 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>Konfigurera en Azure Database för MySQL-aktivitet i din CI/CD distributions pipeline
-Ibland måste du distribuera ändringar i databasen. I sådana fall kan du använda kontinuerlig integrering (CI) och kontinuerlig leverans (CD) via [Azure-pipelines](https://azure.microsoft.com/services/devops/pipelines/) och använda en aktivitet för [MySQL-servern](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) för att uppdatera databasen genom att köra ett anpassat skript mot den.
+Ibland måste du distribuera ändringar i databasen. I sådana fall kan du använda kontinuerlig integrering (CI) och kontinuerlig leverans (CD) via [Azure-pipelines](https://azure.microsoft.com/services/devops/pipelines/) och använda en aktivitet för [MySQL-servern](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment) för att uppdatera databasen genom att köra ett anpassat skript mot den.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>Använd en effektiv process för manuell databas distribution 
 Under en manuell databas distribution följer du dessa steg för att minimera stillestånds tiden eller minska risken för misslyckad distribution: 

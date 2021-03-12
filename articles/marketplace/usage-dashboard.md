@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215739"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555133"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Instrumentpanelen för användning i Commersial Marketplace-analys
 
@@ -62,7 +62,7 @@ Det finns två representationer av användnings timmar: normaliserad VM-användn
 
 Det här avsnittet innehåller den totala förbruknings tiden och trenden för dina användnings erbjudanden i Azure Marketplace. Diagrammet normaliserad användning per erbjudande beskrivs nedan.
 
-- Det staplade **användnings diagrammet med** ett stående stapeldiagram visar en uppdelning av normaliserade användnings timmar för de 5 främsta erbjudandena enligt den valda beräknings perioden. De fem främsta erbjudandena visas i ett diagram, medan resten grupperas i resten av kategorin **alla** .
+- Det staplade **användnings diagrammet med** ett stående stapeldiagram visar en uppdelning av normaliserade användnings timmar för de fem främsta erbjudandena enligt den valda beräknings perioden. De fem främsta erbjudandena visas i ett diagram, medan resten grupperas i resten av kategorin **alla** .
 - Det liggande stapeldiagrammet visar en tillväxt trend i månaden för det valda datum intervallet. Månads kolumnerna representerar användnings timmar från erbjudandena med högst användnings timmar för respektive månad. Linje diagrammet visar trenden för tillväxt procent ritad på den sekundära Y-axeln.
 - Du kan välja vissa erbjudanden i förklaringen om du bara vill visa de erbjudanden som finns i diagrammet.
 
@@ -117,46 +117,45 @@ Tabellen **användnings information** visar en numrerad lista över de översta 
 
 _**Tabell 1: ord lista med data termer**_
 
-| Kolumnnamn | Attributnamn | Definition |
-| ------------ | ------------- | ------------- |
-| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. ID var tidigare GUID för Azure-prenumerationen. |
-| MonthStartDate | Månadens start datum | Månadens start datum representerar månad för inköp. |
-| Erbjudandetyp | Erbjudandetyp | Typ av erbjudande för kommersiella marknads platser. |
-| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanalen. Möjliga värden är:<ui><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
-| Marketplace-licens typ | Marketplace-licens typ | Fakturerings metoden för det kommersiella Marketplace-erbjudandet. Möjliga värden är:<ul><li>Debiteras via Azure</li><li>Ta med din egen licens</li><li>Kostnadsfri</li><li>Microsoft as åter försäljare</li></ul> |
-| SKU | SKU | Planen som är associerad med erbjudandet. |
-| Kund land | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. |
-| Är för hands version av SKU | Är för hands version av SKU | Värdet visar om du har taggat SKU som "Preview". Värdet är "Ja" om SKU: n har taggats enligt detta och bara Azure-prenumerationer som har auktoriserats av dig kan distribuera och använda den här avbildningen. Värdet är "nej" om SKU: n inte har identifierats som "för hands version". |
-| SKU-fakturerings typ | SKU-fakturerings typ | Fakturerings typen som är associerad med varje SKU i erbjudandet. Möjliga värden är:<ul><li>Kostnadsfri</li><li>Betald</li></ul> |
-| IsInternal | Inaktuell | Inaktuell |
-| Storlek på virtuell dator | Storlek på virtuell dator | För VM-baserade erbjudande typer anger den här entiteten storleken på den virtuella dator som är associerad med SKU: n för erbjudandet. |
-| Moln instans namn | Moln instans namn | Den Microsoft Cloud där en VM-distribution ägdes. |
-| ServicePlanName | Inaktuell | Föråldrad (samma definition som SKU) |
-| Erbjudandets namn | Erbjudandets namn | Namnet på den kommersiella Marketplace-erbjudandet. |
-| DeploymentMethod | Inaktuell | Inaktuell (samma definition som erbjudande typen)
- |
-| Kund företags namn | Kund företags namn | Företags namnet som tillhandahålls av kunden. Namnet får inte vara detsamma som namnet i en kunds Azure-prenumeration. |
-| Datum för användning | Datum för användning | Datum för generering av användnings händelse för användnings till gångar. |
-| IsMultisolution | Är multilösning | Indikerar om erbjudandet är en typ av erbjudande för multilösning. |
-| Är ny kund | Inaktuell | Inaktuell |
-| Kärn storlek | Kärn storlek | Antal kärnor som associeras med det VM-baserade erbjudandet. |
-| Användningstyp | Användningstyp | Indikerar om användnings händelsen som är associerad med erbjudandet är något av följande:<ul><li>Normaliserad användning</li><li>Rå användning</li><li>Mätnings användning</li></ul> |
-| Slutdatum för utvärdering | Slutdatum för utvärdering | Det datum då utvärderings perioden för den här ordern upphör eller har avslut ATS. |
-| Kund valuta (CC) | Kund valuta | Valutan som används av kunden för den kommersiella Marketplace-transaktionen. |
-| Pris (CC) | Pris | Enhets priset för SKU: n som visas i kund valutan. |
-| Utbetalnings valuta (PC) | Utbetalnings valuta | Publisher betalas för användnings händelser som är kopplade till till gången i den valuta som har kon figurer ATS av utgivaren. |
-| Uppskattat pris (PC) | Beräknat pris | Enhets priset för SKU: n i den valuta som har kon figurer ATS av utgivaren. |
-| Användnings referens | Användnings referens | Ett sammanfogat GUID som används för att ansluta användnings rapporten (i affärs marknads plats analys) med rapporten utbetalnings transaktion. Användnings referensen är kopplad till Ordernr och LineItemId i rapporten utbetalnings transaktion. |
-| Användnings enhet | Användnings enhet | Förbruknings enhet som är associerad med SKU: n. |
-| Kund-ID | Kund-ID | Den unika identifierare som tilldelats till en kund. En kund kan ha noll eller flera prenumerationer på Azure Marketplace. |
-| ID för fakturerings konto | ID för fakturerings konto | Identifierare för det konto som faktureringen skapas på. Mappa **fakturerings konto-ID: t** till **CustomerID** för att ansluta din rapport över utbetalnings transaktion till kund-, order-och användnings rapporterna. |
-| Användnings antal | Användnings antal | Det totala antalet användnings enheter som används av till gången som distribueras av kunden.<br>Detta baseras på objekt av typen användning. Om användnings typen till exempel är normaliserad används, är användnings antalet för normaliserad användning. |
-| NormalizedUsage | Normaliserad användning | Totalt antal normaliserade användnings enheter som används av till gången som distribueras av kunden.<br>Normaliserad användnings tid definieras som de användnings timmar som normaliseras för antalet virtuella dator kärnor ([antal VM-kärnor] x [timmar RAW Usage]). Virtuella datorer som anges som "SHAREDCORE" använder 1/6 (eller 0,1666) som [antal VM-kärnor] multiplikatorn. |
-| MeteredUsage | Mätnings användning | Totalt antal användnings enheter som förbrukas av de mätare som är konfigurerade med erbjudandet som distribueras av kunden. |
-| RawUsage | Rå användning | Det totala antalet obearbetade användnings enheter som används av till gången som distribueras av kunden.<br>Rå användnings timmar definieras som mängden tid som virtuella datorer har körts i användnings enheter. |
-| Uppskattad utökad avgift (CC) | Uppskattad utökad avgift i kund valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av pris (CC) och RAW-användning. |
-| Uppskattad utökad avgift (PC) | Uppskattad utökad avgift i utbetalnings valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av uppskattat pris (PC) och rå Usage. |
-|
+| Kolumn namn i<br>användargränssnitt | Attributnamn | Definition | Kolumn namn i programmering<br>åtkomst rapporter |
+| ------------ | ------------- | ------------- | ------------- |
+| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. ID var tidigare GUID för Azure-prenumerationen. | MarketplaceSubscriptionId |
+| MonthStartDate | Månadens start datum | Månadens start datum representerar månad för inköp. | MonthStartDate |
+| Erbjudandetyp | Erbjudandetyp | Typ av erbjudande för kommersiella marknads platser. | OfferType |
+| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanalen. Möjliga värden är:<ui><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> | AzureLicenseType |
+| Marketplace-licens typ | Marketplace-licens typ | Fakturerings metoden för det kommersiella Marketplace-erbjudandet. Möjliga värden är:<ul><li>Debiteras via Azure</li><li>Ta med din egen licens</li><li>Kostnadsfri</li><li>Microsoft as åter försäljare</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Planen som är associerad med erbjudandet. | SKU |
+| Kund land | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. | CustomerCountry |
+| Är för hands version av SKU | Är för hands version av SKU | Värdet visar om du har taggat SKU som "Preview". Värdet är "Ja" om SKU: n har taggats enligt detta och bara Azure-prenumerationer som har auktoriserats av dig kan distribuera och använda den här avbildningen. Värdet är "nej" om SKU: n inte har identifierats som "för hands version". | IsPreviewSKU |
+| SKU-fakturerings typ | SKU-fakturerings typ | Fakturerings typen som är associerad med varje SKU i erbjudandet. Möjliga värden är:<ul><li>Kostnadsfri</li><li>Betald</li></ul> | SKUBillingType |
+| IsInternal | Inaktuell | Inaktuell | Inaktuell |
+| Storlek på virtuell dator | Storlek på virtuell dator | För VM-baserade erbjudande typer anger den här entiteten storleken på den virtuella dator som är associerad med SKU: n för erbjudandet. | VMSize |
+| Moln instans namn | Moln instans namn | Den Microsoft Cloud där en VM-distribution ägdes. | CloudInstanceName |
+| ServicePlanName | Inaktuell | Föråldrad (samma definition som SKU) | ServicePlanName |
+| Erbjudandets namn | Erbjudandets namn | Namnet på den kommersiella Marketplace-erbjudandet. | OfferName |
+| DeploymentMethod | Inaktuell | Inaktuell (samma definition som erbjudande typen) | DeploymentMethod |
+| Kund företags namn | Kund företags namn | Företags namnet som tillhandahålls av kunden. Namnet får inte vara detsamma som namnet i en kunds Azure-prenumeration. | CustomerCompanyName |
+| Datum för användning | Datum för användning | Datum för generering av användnings händelse för användnings till gångar. | UsageDate |
+| IsMultisolution | Är multilösning | Indikerar om erbjudandet är en typ av erbjudande för multilösning. | IsMultisolution |
+| Är ny kund | Inaktuell | Inaktuell | IsNewCustomer |
+| Kärn storlek | Kärn storlek | Antal kärnor som associeras med det VM-baserade erbjudandet. | CoreSize |
+| Användningstyp | Användningstyp | Indikerar om användnings händelsen som är associerad med erbjudandet är något av följande:<ul><li>Normaliserad användning</li><li>Rå användning</li><li>Mätnings användning</li></ul> | UsageType |
+| Slutdatum för utvärdering | Slutdatum för utvärdering | Det datum då utvärderings perioden för den här ordern upphör eller har avslut ATS. | TrialEndDate |
+| Kund valuta (CC) | Kund valuta | Valutan som används av kunden för den kommersiella Marketplace-transaktionen. | CustomerCurrencyCC |
+| Pris (CC) | Pris | Enhets priset för SKU: n som visas i kund valutan. | PriceCC |
+| Utbetalnings valuta (PC) | Utbetalnings valuta | Publisher betalas för användnings händelser som är kopplade till till gången i den valuta som har kon figurer ATS av utgivaren. | PayoutCurrencyPC |
+| Uppskattat pris (PC) | Beräknat pris | Enhets priset för SKU: n i den valuta som har kon figurer ATS av utgivaren. | EstimatedPricePC |
+| Användnings referens | Användnings referens | Ett sammanfogat GUID som används för att ansluta användnings rapporten (i affärs marknads plats analys) med rapporten utbetalnings transaktion. Användnings referensen är kopplad till Ordernr och LineItemId i rapporten utbetalnings transaktion. | UsageReference |
+| Användnings enhet | Användnings enhet | Förbruknings enhet som är associerad med SKU: n. | UsageUnit |
+| Kund-ID | Kund-ID | Den unika identifierare som tilldelats till en kund. En kund kan ha noll eller flera prenumerationer på Azure Marketplace. | CustomerId |
+| ID för fakturerings konto | ID för fakturerings konto | Identifierare för det konto som faktureringen skapas på. Mappa **fakturerings konto-ID: t** till **CustomerID** för att ansluta din rapport över utbetalnings transaktion till kund-, order-och användnings rapporterna. | BillingAccountId |
+| Användnings antal | Användnings antal | Det totala antalet användnings enheter som används av till gången som distribueras av kunden.<br>Detta baseras på objekt av typen användning. Om användnings typen till exempel är normaliserad används, är användnings antalet för normaliserad användning. | UsageQuantity |
+| NormalizedUsage | Normaliserad användning | Total normaliserad användnings enhet som används av till gången som distribueras av kunden.<br>Normaliserad användnings tid definieras som de användnings timmar som normaliseras för antalet virtuella dator kärnor ([antal VM-kärnor] x [timmar RAW Usage]). Virtuella datorer som anges som "SHAREDCORE" använder 1/6 (eller 0,1666) som [antal VM-kärnor] multiplikatorn. | NormalizedUsage |
+| MeteredUsage | Mätnings användning | Det totala antalet användnings enheter som används av de mätare som är konfigurerade med erbjudandet som distribueras av kunden. | MeteredUsage |
+| RawUsage | Rå användning | Det totala antalet obearbetade användnings enheter som förbrukas av den till gång som har distribuerats av kunden.<br>Rå användnings timmar definieras som mängden tid som virtuella datorer har körts i användnings enheter. | RawUsage |
+| Uppskattad utökad avgift (CC) | Uppskattad utökad avgift i kund valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av pris (CC) och förbruknings antal. | EstimatedExtendedChargeCC |
+| Uppskattad utökad avgift (PC) | Uppskattad utökad avgift i utbetalnings valuta | Visar de kostnader som är associerade med användningen. Kolumnen är produkten av uppskattat pris (PC) och förbruknings antal. | EstimatedExtended ChargePC |
+|||||
 
 ### <a name="usage-page-filters"></a>Användnings sid filter
 

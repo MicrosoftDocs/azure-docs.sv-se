@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636682"
+ms.locfileid: "103149650"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -35,6 +35,7 @@ Uppdateringar i mars inkluderar:
 - [SQL sårbarhet Assessment innehåller nu "Inaktivera regel"-upplevelsen (för hands version)](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
 - [Azure Monitor arbets böcker som är integrerade i Security Center och tre mallar som tillhandahålls](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Instrument panelen för kontroll av efterlevnad innehåller nu Azure audit Reports (för hands version)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [Rekommendations data kan visas i Azure Resource Graph med "utforska i ARG"](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [Uppdateringar av principerna för distribution av arbets flödes automatisering](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Två tidigare rekommendationer skriver inte längre data direkt till Azure aktivitets loggen](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
@@ -91,6 +92,17 @@ Lär dig mer om [att hantera standarderna i din instrument panel för kontroll a
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Filtrera listan över tillgängliga Azure audit-rapporter":::
 
+
+
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>Rekommendations data kan visas i Azure Resource Graph med "utforska i ARG"
+
+På sidan med rekommendations information finns nu verktygsfälts knappen "utforska i ARG". Använd den här knappen för att öppna en Azure Resource Graph-fråga och utforska, exportera och dela rekommendationens data.
+
+Azure Resource Graph (ARG) ger direkt åtkomst till resursinformation i dina moln miljöer med robusta funktioner för filtrering, gruppering och sortering. Det är ett snabbt och effektivt sätt att fråga information i Azure-prenumerationer program mässigt eller inifrån Azure Portal.
+
+Lär dig mer om [Azure Resource Graph (arg)](../governance/resource-graph/index.yml).
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Utforska rekommendations data i Azure Resource Graph.":::
 
 
 ### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>Uppdateringar av principerna för distribution av arbets flödes automatisering

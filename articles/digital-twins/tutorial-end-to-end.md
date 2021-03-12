@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424588"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634982"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -120,6 +120,8 @@ Då öppnas paket hanteraren för NuGet. Välj fliken *uppdateringar* och om det
 Gå tillbaka till Visual Studio-fönstret där _**AdtE2ESample**_ -projektet är öppet och leta upp _**SampleFunctionsApp**_ -projektet i fönstret *Solution Explorer* .
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+För att din Function-app ska kunna komma åt Azure Digitals, måste den ha en Systemhanterad identitet med behörigheter för åtkomst till din Azure Digital-instansen. Nu ska du ställa in det här.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Tilldela behörigheter till Function-appen
 

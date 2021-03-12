@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: kryptering, BYOK, Aro, CMK, OpenShift, Red Hat
-ms.openlocfilehash: ca69594952c9fa547390e9a73b48ec8165145378
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: fa84096dcc44e668a6cf7ebd0369c6d3631c28d2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505230"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555626"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Kryptera beständiga volym anspråk med en kundhanterad nyckel (CMK) på Azure Red Hat OpenShift (ARO) (för hands version)
 
@@ -29,7 +29,7 @@ Den här artikeln förutsätter att:
 
 * Du har ett redan befintligt ARO-kluster i OpenShift version 4,4 (eller senare).
 
-* Du har kommando rads verktyget **oc** OpenShift, base64 (del av Core-utils) och **AZ** Azure CLI installerat.
+* Du har kommando rads verktyget **oc** OpenShift, base64 (del av coreutils) och **AZ** Azure CLI installerat.
 
 * Du är inloggad på ditt ARO-kluster med hjälp av **oc** som global kluster administratörs användare (kubeadmin).
 
@@ -43,8 +43,8 @@ Den här artikeln förutsätter att:
 ## <a name="declare-cluster--encryption-variables"></a>Deklarera variabler för kluster & kryptering
 Du bör konfigurera variablerna nedan till det som kan vara lämpligt för ditt ARO-kluster där du vill aktivera Kundhanterade krypterings nycklar:
 ```
-aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from *az aro list -o table*
-buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from *az aro list -o table*
+aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from **az aro list -o table**
+buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from **az aro list -o table**
 desName="aro-des"                  # Your Azure Disk Encryption Set name. This must be unique in your subscription.
 vaultName="aro-keyvault-1"         # Your Azure Key Vault name. This must be unique in your subscription.
 vaultKeyName="myCustomAROKey"      # The name of the key to be used within your Azure Key Vault. This is the name of the key, not the actual value of the key that you will rotate.
@@ -58,18 +58,19 @@ subId="$(az account list -o tsv | grep True | awk '{print $3}')"
 ```
 
 ## <a name="create-an-azure-key-vault-instance"></a>Skapa en Azure Key Vault-instans
-En Azure Key Vault instans måste användas för att lagra dina nycklar. Skapa en ny Key Vault med rensnings skyddet och mjuk borttagning aktive rad. Skapa sedan en ny nyckel i valvet för att lagra din egen anpassade nyckel:
+En Azure Key Vault instans måste användas för att lagra dina nycklar. Skapa en ny Key Vault med rensnings skyddet aktiverat. Skapa sedan en ny nyckel i valvet för att lagra din egen anpassade nyckel:
 
 ```azurecli-interactive
 # Create an Azure Key Vault resource in a supported Azure region
 az keyvault create -n $vaultName -g $buildRG --enable-purge-protection true -o table
+
 # Create the actual key within the Azure Key Vault
 az keyvault key create --vault-name $vaultName --name $vaultKeyName --protection software -o jsonc
 ```
 
 ## <a name="create-an-azure-disk-encryption-set"></a>Skapa en Azure Disk Encryption-uppsättning
 
-Azure Disk Encryption-uppsättningen används som referens punkt för diskar i ARO. Den är ansluten till Azure Key Vault vi skapade i föregående steg och kommer att hämta Kundhanterade nycklar från den platsen.
+Azure Disk Encryptions uppsättningen används som referens punkt för diskar i ARO. Den är ansluten till Azure Key Vault vi skapade i föregående steg och kommer att hämta Kundhanterade nycklar från den platsen.
 
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -86,20 +87,21 @@ az disk-encryption-set create -n $desName -g $buildRG --source-vault $keyVaultId
 Använd disk krypterings uppsättningen som vi skapade i föregående steg och ge disk krypterings uppsättningen åtkomst till Azure Key Vault:
 
 ```azurecli-interactive
-# First, find the disk encryption set's AppId value.
+# First, find the disk encryption set's Azure Application ID value.
 desIdentity="$(az disk-encryption-set show -n $desName -g $buildRG --query [identity.principalId] -o tsv)"
 
 # Next, update the Key Vault security policy settings to allow access to the disk encryption set.
 az keyvault set-policy -n $vaultName -g $buildRG --object-id $desIdentity --key-permissions wrapkey unwrapkey get -o table
 
-# Now, ensure the disk encryption set can read the contents of the Azure Key Vault.
+# Now, ensure the Disk Encryption Set can read the contents of the Azure Key Vault.
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId -o jsonc
 ```
 
 ### <a name="obtain-other-ids-required-for-role-assignments"></a>Hämta andra ID: n som krävs för roll tilldelningar
 Vi måste tillåta att ARO-klustret använder disk krypterings uppsättningen för att kryptera PVC-anspråk (persistent Volume claims) i ARO-klustret. För att göra detta skapar vi en ny Hanterad tjänstidentitet (MSI). Vi kommer också att ange andra behörigheter för ARO-MSI och för disk krypterings uppsättningen.
-```
-# First, get the application ID of the service principal used in the ARO cluster.
+
+```azurecli-interactive
+# First, get the Azure Application ID of the service principal used in the ARO cluster.
 aroSPAppId="$(oc get secret azure-credentials -n kube-system -o jsonpath='{.data.azure_client_id}' | base64 --decode)"
 
 # Next, get the object ID of the service principal used in the ARO cluster.
@@ -111,7 +113,7 @@ msiName="$aroCluster-msi"
 # Create the Managed Service Identity (MSI) required for disk encryption.
 az identity create -g $buildRG -n $msiName -o jsonc
 
-# Get the ARO Managed Service Identity application ID.
+# Get the ARO Managed Service Identity Azure Application ID.
 aroMSIAppId="$(az identity show -n $msiName -g $buildRG -o tsv --query [clientId])"
 
 # Get the resource ID for the disk encryption set and the Key Vault resource group.
@@ -132,9 +134,10 @@ az role assignment create --assignee $aroMSIAppId --role Reader --scope $buildRG
 az role assignment create --assignee $aroSPObjId --role Contributor --scope $buildRGResourceId -o jsonc
 ```
 
-## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks-optional"></a>Skapa en K8s lagrings klass för krypterade Premium & Ultra disks (valfritt)
+## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks"></a>Skapa en K8s lagrings klass för krypterade Premium & Ultra disks
 Skapa lagrings klasser som ska användas för CMK för Premium_LRS och UltraSSD_LRS diskar:
-```
+
+```azurecli-interactive
 # Premium Disks
 cat > managed-premium-encrypted-cmk.yaml<< EOF
 kind: StorageClass
@@ -174,13 +177,15 @@ EOF
 ```
 
 Kör sedan den här distributionen i ditt ARO-kluster för att använda lagrings klass konfigurationen:
-```
+
+```azurecli-interactive
 # Update cluster with the new storage classes
 oc apply -f managed-premium-encrypted-cmk.yaml
 oc apply -f managed-ultra-encrypted-cmk.yaml
 ```
-## <a name="test-encryption-with-customer-managed-keys"></a>Testa kryptering med Kundhanterade nycklar
-För att kontrol lera om klustret använder en kundhanterad nyckel för PVC-kryptering skapar vi ett beständigt volym anspråk med lämplig lagrings klass. Kodfragmentet nedan skapar en POD och monterar ett beständigt volym anspråk med standard diskar
+
+## <a name="test-encryption-with-customer-managed-keys-optional"></a>Testa kryptering med Kundhanterade nycklar (valfritt)
+För att kontrol lera om klustret använder en kundhanterad nyckel för PVC-kryptering skapar vi ett beständigt volym anspråk med den nya lagrings klassen. Kodfragmentet nedan skapar en POD och monterar ett beständigt volym anspråk med hjälp av Premium diskar.
 ```
 # Create a pod which uses a persistent volume claim referencing the new storage class
 cat > test-pvc.yaml<< EOF
@@ -220,9 +225,9 @@ spec:
         claimName: mypod-with-cmk-encryption-pvc
 EOF
 ```
-### <a name="apply-the-test-pod-configuration-file"></a>Tillämpa konfigurations filen för test Pod
+### <a name="apply-the-test-pod-configuration-file-optional"></a>Tillämpa konfigurations filen för test Pod (valfritt)
 Kör kommandona nedan för att tillämpa test Pod-konfigurationen och returnera UID för det nya beständiga volym anspråket. UID kommer att användas för att kontrol lera att disken är krypterad med CMK.
-```
+```azurecli-interactive
 # Apply the test pod configuration file and set the PVC UID as a variable to query in Azure later.
 pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 
@@ -230,8 +235,9 @@ pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 pvName="$(oc get pv pvc-$pvcUid -o jsonpath='{.spec.azureDisk.diskName}')"
 ```
 > [!NOTE]
-> Det uppstår en liten fördröjning när du tillämpar roll tilldelningar inom Azure Active Directory. Beroende på hastigheten som de här kommandona körs på, kan det hända att det inte går att avgöra det fullständiga namnet på Azure-disken. I så fall kan du se resultatet av **oc i beskrivningen PVC myPod-with-CMK-Encryption-PVC** för att säkerställa att disken har allokerats. Om spridningen av roll tilldelningen inte har slutförts måste du *ta bort* och *tillämpa* Pod-& PVC-yaml.
-### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey"></a>Verifiera att PVC-disken har kon figurer ATS med "EncryptionAtRestWithCustomerKey" 
+> Ibland kan det uppstå en liten fördröjning när roll tilldelningar tillämpas i Azure Active Directory. Beroende på hur snabbt de här instruktionerna körs kanske kommandot för att fastställa det fullständiga namnet på Azure-disken inte lyckas. Om detta inträffar granskar du utmatningen av **oc och beskriver PVC-myPod – med-CMK-Encryption-PVC** för att säkerställa att disken har allokerats. Om spridningen av roll tilldelningen inte har slutförts kan du behöva *ta bort* och *tillämpa* Pod & PVC-yaml igen.
+
+### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey-optional"></a>Verifiera att PVC-disken har kon figurer ATS med "EncryptionAtRestWithCustomerKey" (valfritt)
 Pod ska skapa ett beständigt volym anspråk som refererar till lagrings klassen CMK. Genom att köra följande kommando verifierar du att PVC: n har distribuerats som förväntat:
 ```azurecli-interactive
 # Describe the OpenShift cluster-wide persistent volume claims
