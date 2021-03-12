@@ -115,8 +115,6 @@
       href: support.md
     - name: Checklista för produktionsdistribution
       href: production-checklist.md
-    - name: IoT Edge-ordlista
-      href: iot-edge-glossary.md
 - name: Anvisningar
   items:
     - name: Skapa en IoT Edge-enhet
@@ -259,6 +257,8 @@
   items:
     - name: Alternativ för support och hjälp
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: IoT-ordlista
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub

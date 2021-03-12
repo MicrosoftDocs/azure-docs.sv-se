@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/12/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 81c6e58e34f30d5736c40c77a308321dee28ae34
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058981"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224273"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurera komplexitets krav för lösen ord i Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Om du använder anpassade principer kan du ([Konfigurera lösen ords komplexitet
 | --- | --- |
 | Enkelt | Ett lösen ord som består av minst 8 till 64 tecken. |
 | Stark | Ett lösen ord som består av minst 8 till 64 tecken. Det kräver 3 av 4 av gemener, versaler, siffror eller symboler. |
-| Anpassad | Det här alternativet ger störst kontroll över regler för lösen ords komplexitet.  Det gör det möjligt att konfigurera en anpassad längd.  Det tillåter också att du godkänner endast lösen ord (PIN-kod). |
+| Anpassat | Det här alternativet ger störst kontroll över regler för lösen ords komplexitet.  Det gör det möjligt att konfigurera en anpassad längd.  Det tillåter också att du godkänner endast lösen ord (PIN-kod). |
 
 ## <a name="custom-options"></a>Anpassade alternativ
 
@@ -102,75 +102,89 @@ Om du vill konfigurera lösen ords komplexiteten åsidosätter du- `newPassword`
 1. Lägg till- `newPassword` och- `reenterPassword` anspråk i **ClaimsSchema** -elementet.
 
     ```xml
-    <ClaimType Id="newPassword">
-      <PredicateValidationReference Id="CustomPassword" />
-    </ClaimType>
-    <ClaimType Id="reenterPassword">
-      <PredicateValidationReference Id="CustomPassword" />
-    </ClaimType>
+    <!-- 
+    <BuildingBlocks>
+      <ClaimsSchema> -->
+        <ClaimType Id="newPassword">
+          <PredicateValidationReference Id="CustomPassword" />
+        </ClaimType>
+        <ClaimType Id="reenterPassword">
+          <PredicateValidationReference Id="CustomPassword" />
+        </ClaimType>
+      <!-- 
+      </ClaimsSchema>
+    </BuildingBlocks>-->
     ```
 
 1. [Predikat](predicates.md) definierar en grundläggande verifiering för att kontrol lera värdet för en anspråks typ och returnerar true eller false. Verifieringen görs med hjälp av ett angivet metod element och en uppsättning parametrar som är relevanta för metoden. Lägg till följande predikat i **BuildingBlocks** -elementet, direkt efter stängningen av `</ClaimsSchema>` elementet:
 
     ```xml
-    <Predicates>
-      <Predicate Id="LengthRange" Method="IsLengthRange">
-        <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
-        <Parameters>
-          <Parameter Id="Minimum">6</Parameter>
-          <Parameter Id="Maximum">64</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Lowercase" Method="IncludesCharacters">
-        <UserHelpText>a lowercase letter</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">a-z</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Uppercase" Method="IncludesCharacters">
-        <UserHelpText>an uppercase letter</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">A-Z</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Number" Method="IncludesCharacters">
-        <UserHelpText>a digit</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">0-9</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Symbol" Method="IncludesCharacters">
-        <UserHelpText>a symbol</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
-        </Parameters>
-      </Predicate>
-    </Predicates>
+    <!-- 
+    <BuildingBlocks>-->
+      <Predicates>
+        <Predicate Id="LengthRange" Method="IsLengthRange">
+          <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
+          <Parameters>
+            <Parameter Id="Minimum">6</Parameter>
+            <Parameter Id="Maximum">64</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Lowercase" Method="IncludesCharacters">
+          <UserHelpText>a lowercase letter</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">a-z</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Uppercase" Method="IncludesCharacters">
+          <UserHelpText>an uppercase letter</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">A-Z</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Number" Method="IncludesCharacters">
+          <UserHelpText>a digit</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">0-9</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Symbol" Method="IncludesCharacters">
+          <UserHelpText>a symbol</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
+          </Parameters>
+        </Predicate>
+      </Predicates>
+    <!-- 
+    </BuildingBlocks>-->
     ```
 
 1. Lägg till följande predikat verifieringar i **BuildingBlocks** -elementet, direkt efter stängningen av `</Predicates>` elementet:
 
     ```xml
-    <PredicateValidations>
-      <PredicateValidation Id="CustomPassword">
-        <PredicateGroups>
-          <PredicateGroup Id="LengthGroup">
-            <PredicateReferences MatchAtLeast="1">
-              <PredicateReference Id="LengthRange" />
-            </PredicateReferences>
-          </PredicateGroup>
-          <PredicateGroup Id="CharacterClasses">
-            <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
-            <PredicateReferences MatchAtLeast="3">
-              <PredicateReference Id="Lowercase" />
-              <PredicateReference Id="Uppercase" />
-              <PredicateReference Id="Number" />
-              <PredicateReference Id="Symbol" />
-            </PredicateReferences>
-          </PredicateGroup>
-        </PredicateGroups>
-      </PredicateValidation>
-    </PredicateValidations>
+    <!-- 
+    <BuildingBlocks>-->
+      <PredicateValidations>
+        <PredicateValidation Id="CustomPassword">
+          <PredicateGroups>
+            <PredicateGroup Id="LengthGroup">
+              <PredicateReferences MatchAtLeast="1">
+                <PredicateReference Id="LengthRange" />
+              </PredicateReferences>
+            </PredicateGroup>
+            <PredicateGroup Id="CharacterClasses">
+              <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+              <PredicateReferences MatchAtLeast="3">
+                <PredicateReference Id="Lowercase" />
+                <PredicateReference Id="Uppercase" />
+                <PredicateReference Id="Number" />
+                <PredicateReference Id="Symbol" />
+              </PredicateReferences>
+            </PredicateGroup>
+          </PredicateGroups>
+        </PredicateValidation>
+      </PredicateValidations>
+    <!-- 
+    </BuildingBlocks>-->
     ```
 
 ## <a name="disable-strong-password"></a>Inaktivera starkt lösen ord 
@@ -178,22 +192,28 @@ Om du vill konfigurera lösen ords komplexiteten åsidosätter du- `newPassword`
 Följande tekniska profiler är [Active Directory tekniska profiler](active-directory-technical-profile.md)som läser och skriver data till Azure Active Directory. Åsidosätt dessa tekniska profiler i tilläggs filen. Använd `PersistedClaims` för att inaktivera principen för starkt lösen ord. Hitta **ClaimsProviders** -elementet.  Lägg till följande anspråks leverantörer enligt följande:
 
 ```xml
-<ClaimsProvider>
-  <DisplayName>Azure Active Directory</DisplayName>
-  <TechnicalProfiles>
-    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-      </PersistedClaims>
-    </TechnicalProfile>
-    <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-      </PersistedClaims>
-    </TechnicalProfile>
-  </TechnicalProfiles>
-</ClaimsProvider>
+<!-- 
+<ClaimsProviders>-->
+  <ClaimsProvider>
+    <DisplayName>Azure Active Directory</DisplayName>
+    <TechnicalProfiles>
+      <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+        <PersistedClaims>
+          <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </PersistedClaims>
+      </TechnicalProfile>
+      <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
+        <PersistedClaims>
+          <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </PersistedClaims>
+      </TechnicalProfile>
+    </TechnicalProfiles>
+  </ClaimsProvider>
+<!-- 
+</ClaimsProviders>-->
 ```
+
+Om du använder den [användar namnbaserade inloggnings](https://github.com/azure-ad-b2c/samples/tree/master/policies/username-signup-or-signin) principen uppdaterar du `AAD-UserWriteUsingLogonEmail` , `AAD-UserWritePasswordUsingObjectId` , och `LocalAccountWritePasswordUsingObjectId` tekniska profiler med *DisableStrongPassword* -principen.
 
 Spara princip filen.
 

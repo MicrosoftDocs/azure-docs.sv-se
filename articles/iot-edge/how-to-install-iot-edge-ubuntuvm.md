@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1cd89f3f772effce4997fb69b37858ce2077c1dc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629970"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201098"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Kör Azure IoT Edge på Ubuntu Virtual Machines
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge runtime är vad som förvandlar en enhet till en IoT Edge enhet. Körningen kan distribueras på enheter så små som Raspberry Pi eller lika stora som en industriell Server. När en enhet har konfigurerats med IoT Edge-körningen kan du börja distribuera affärslogiken till den från molnet.
 
@@ -26,7 +28,10 @@ Mer information om hur IoT Edge runtime fungerar och vilka komponenter som ingå
 Den här artikeln innehåller stegen för att distribuera en virtuell dator med Ubuntu 18,04 LTS med Azure IoT Edge Runtime installerat och konfigurerat med en föranged enhets anslutnings sträng. Distributionen görs med hjälp av en [Cloud-Init-](../virtual-machines/linux/using-cloud-init.md
 ) baserad [Azure Resource Manager mall](../azure-resource-manager/templates/overview.md) som underhålls i projekt lagringen [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) .
 
-Vid den första starten installerar Ubuntu 18,04 LTS Virtual Machine [den senaste versionen av Azure IoT Edge runtime via Cloud-Init](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Den anger också en angiven anslutnings sträng innan körningen startar, så att du enkelt kan konfigurera och ansluta den IoT Edge enheten utan att behöva starta en SSH-eller fjärr skrivbords session. 
+Vid den första starten installerar Ubuntu 18,04 LTS Virtual Machine [den senaste versionen av Azure IoT Edge runtime via Cloud-Init](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Den anger också en angiven anslutnings sträng innan körningen startar, så att du enkelt kan konfigurera och ansluta den IoT Edge enheten utan att behöva starta en SSH-eller fjärr skrivbords session.
+
+>[!NOTE]
+>Den mall som används för den här artikeln installerar IoT Edge version 1,1.
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>Knappen distribuera med distribuera till Azure
 

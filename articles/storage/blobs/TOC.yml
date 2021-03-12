@@ -295,6 +295,8 @@
               href: storage-blob-copy.md
             - name: Använda blobindextaggar
               href: storage-blob-index-how-to.md
+            - name: Beräkna blobbar och Total storlek
+              href: calculate-blob-count-size.md
         - name: Bevilja åtkomst till blobdata
           items:
             - name: Auktoriseringsalternativ för användare

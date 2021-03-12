@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5695b21a09199a46ab38d887f2127a61507426d3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562800"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014391"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Kryptering på Server sidan av Azure-disklagring
 
@@ -77,10 +77,6 @@ Temporära diskar och tillfälliga OS-diskar är krypterade i vila med plattform
 ### <a name="restrictions"></a>Begränsningar
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
-
-#### <a name="supported-regions"></a>Regioner som stöds
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 #### <a name="supported-vm-sizes"></a>VM-storlekar som stöds
 

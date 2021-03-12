@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 113c8adccc5e8b1c3321569f32ca3fb33423ccd8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562885"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200501"
 ---
 # <a name="access-built-in-metrics"></a>Komma åt inbyggda mått
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge körnings komponenter, IoT Edge Hub och IoT Edge agent, skapar inbyggda mått i [formatet Prometheus](https://prometheus.io/docs/instrumenting/exposition_formats/). Få åtkomst till dessa mått via fjärr anslutning för att övervaka och förstå hälsan hos en IoT Edge enhet.
 

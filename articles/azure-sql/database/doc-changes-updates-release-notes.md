@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042512"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634846"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Vad är nytt i Azure SQL Database & SQL-hanterad instans?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,13 +50,10 @@ Den här tabellen ger en snabb jämförelse mellan ändringen i terminologin:
 
 | Funktion | Information |
 | ---| --- |
-| Accelererad databas återställning med enkla databaser och elastiska pooler | Mer information finns i [accelererad databas återställning](../accelerated-database-recovery.md).|
-| Dataidentifiering och -klassificering  |Mer information finns i [Azure SQL Database och Azure Synapse Analytics data discovery & klassificering](data-discovery-and-classification-overview.md).|
 | Elastic Database-jobb (för hands version) | Mer information finns i [skapa, konfigurera och hantera elastiska jobb](elastic-jobs-overview.md). |
 | Elastiska frågor | Mer information finns i [Översikt över elastiska frågor](elastic-query-overview.md). |
 | Elastiska transaktioner | [Distribuerade transaktioner över moln databaser](elastic-transactions-overview.md). |
 | Frågeredigeraren i Azure Portal |Mer information finns i [använda Azure Portal SQL-Frågeredigeraren för att ansluta och fråga efter data](connect-query-portal.md).|
-| R Services/Machine Learning med enkla databaser och elastiska pooler |Mer information finns i [Machine Learning Services i Azure SQL Database](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 |SQL-analys|Mer information finns i [Azure SQL-analys](../../azure-monitor/insights/azure-sql.md).|
 | &nbsp; |
 
@@ -66,7 +63,7 @@ Den här tabellen ger en snabb jämförelse mellan ändringen i terminologin:
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Distribuerade transaktioner</a> | Distribuerade transaktioner över hanterade instanser. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Instanspooler</a> | Ett bekvämt och kostnads effektivt sätt att migrera mindre SQL-instanser till molnet. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Azure AD server-huvudobjekt på instans nivå (inloggningar)</a> | Skapa inloggningar på instans nivå med hjälp av instruktionen <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Skapa inloggning från extern provider</a> . |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Azure AD server-huvudobjekt på instans nivå (inloggningar)</a> | Skapa inloggningar på instans nivå med hjälp av instruktionen <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Skapa inloggning från extern provider</a> . |
 | [Transaktionell replikering](../managed-instance/replication-transactional-overview.md) | Replikera ändringarna från dina tabeller till andra databaser i SQL-hanterad instans, SQL Database eller SQL Server. Eller uppdatera dina tabeller när några rader ändras i andra instanser av SQL-hanterad instans eller SQL Server. Mer information finns i [Konfigurera replikering i Azure SQL-hanterad instans](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Hotidentifiering |Mer information finns i [Konfigurera hot identifiering i Azure SQL Managed instance](../managed-instance/threat-detection-configure.md).|
 | Långsiktig kvarhållning av säkerhetskopior | Mer information finns i [Konfigurera långsiktig säkerhets kopiering i Azure SQL Managed instance](../managed-instance/long-term-backup-retention-configure.md), som för närvarande finns i begränsad offentlig för hands version. | 
@@ -101,7 +98,7 @@ Följande funktioner är aktiverade i distributions modellen SQL-hanterad instan
 |[Procedur sp_send_dbmail kan tillfälligt Miss lyckas när @query parametern används](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Jan 2021|Har en lösning||
 |[Distribuerade transaktioner kan utföras efter borttagning av hanterade instanser från Server förtroende grupp](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Okt 2020|Har en lösning||
 |[Distribuerade transaktioner kan inte utföras efter skalnings åtgärden för hanterade instanser](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Okt 2020|Har en lösning||
-|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) i Azure SQL och `BACKUP` / `RESTORE` instruktionen i en hanterad instans kan inte använda Azure AD-hantera identitet för att autentisera till Azure Storage|Sep 2020|Har en lösning||
+|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql) i Azure SQL och `BACKUP` / `RESTORE` instruktionen i en hanterad instans kan inte använda Azure AD-hantera identitet för att autentisera till Azure Storage|Sep 2020|Har en lösning||
 |[Tjänstens huvud namn kan inte komma åt Azure AD och AKV](#service-principal-cannot-access-azure-ad-and-akv)|Aug 2020|Har en lösning||
 |[Återställning av manuell säkerhets kopiering utan kontroll summa kan Miss kopie ras](#restoring-manual-backup-without-checksum-might-fail)|Maj 2020|Matchat|Juni 2020|
 |[Agenten slutar svara vid ändring, inaktive ring eller aktivering av befintliga jobb](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Maj 2020|Matchat|Juni 2020|
@@ -174,7 +171,7 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Lösning**: Använd [signaturen för delad åtkomst för att autentisera till lagring](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
+**Lösning**: Använd [signaturen för delad åtkomst för att autentisera till lagring](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Tjänstens huvud namn kan inte komma åt Azure AD och AKV
 

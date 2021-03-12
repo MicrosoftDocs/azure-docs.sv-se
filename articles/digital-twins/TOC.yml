@@ -296,4 +296,6 @@
         - name: Azure Portal
           href: 'https://portal.azure.com'
     - name: Alternativ för support och hjälp
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json
+    - name: IoT-ordlista
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json

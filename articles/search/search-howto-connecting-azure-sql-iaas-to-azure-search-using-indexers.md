@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: dce4c41d0d6f15ac9dc33e687c9a5ac7b7b96e06
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951323"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200789"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurera en anslutning från en Azure Kognitiv sökning-indexerare till SQL Server på en virtuell Azure-dator
 
@@ -75,18 +75,9 @@ IP-adresser kan innebära några utmaningar som är lätta att lösa om du är m
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Begränsa åtkomsten till Azure-Kognitiv sökning
 Vi rekommenderar starkt att du begränsar åtkomsten till IP-adressen för Sök tjänsten och IP-adressintervallet för `AzureCognitiveSearch` [service tag](../virtual-network/service-tags-overview.md#available-service-tags) i ACL i stället för att göra dina SQL Azure virtuella datorer öppna för alla anslutnings begär Anden.
 
-Du kan ta reda på IP-adressen genom att pinga FQDN (till exempel `<your-search-service-name>.search.windows.net` ) för Sök tjänsten.
+Du kan ta reda på IP-adressen genom att pinga FQDN (till exempel `<your-search-service-name>.search.windows.net` ) för Sök tjänsten. Även om det är möjligt att ändra IP-adressen för Sök tjänsten är det osannolikt att den kommer att ändras. IP-adressen är till för att vara statisk under tjänstens livs längd.
 
 Du kan ta reda på IP-adressintervallet för `AzureCognitiveSearch` [service tag](../virtual-network/service-tags-overview.md#available-service-tags) genom att antingen använda [nedladdnings bara JSON-filer](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) eller genom att använda [API: et för identifiering av service tag](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview). IP-adressintervallet uppdateras varje vecka.
-
-#### <a name="managing-ip-address-fluctuations"></a>Hantera IP-adressernas fluktuationer
-Om Sök tjänsten bara har en Sök enhet (det vill säga en replik och en partition) ändras IP-adressen när rutin tjänsten startas om, vilket gör att en befintlig ACL verifieras med Sök tjänstens IP-adress.
-
-Ett sätt att undvika det efterföljande anslutnings felet är att använda mer än en replik och en partition i Azure Kognitiv sökning. Detta ökar kostnaden, men löser även problemet med IP-adressen. I Azure Kognitiv sökning ändras inte IP-adresser när du har mer än en Sök enhet.
-
-En andra metod är att tillåta anslutningen att sluta fungera och sedan konfigurera om åtkomst kontrol listorna i NSG. I genomsnitt kan du vänta på att IP-adresser ändras med några veckor. Den här metoden kan vara livskraftig för kunder som använder kontrollerad indexering på ett ovanligt sätt.
-
-En tredje livskraftig (men inte särskilt säker) metod är att ange IP-adressintervallet för den Azure-region där Sök tjänsten är etablerad. Listan över IP-adressintervall från vilka offentliga IP-adresser tilldelas till Azure-resurser publiceras i [IP-intervall för Azure-datacenter](https://www.microsoft.com/download/details.aspx?id=41653). 
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Ta med IP-adresser för Azure Kognitiv sökning-portalen
 Om du använder Azure Portal för att skapa en indexerare, behöver Azure Kognitiv sökning Portal logik också åtkomst till din SQL Azure virtuella dator när den skapas. Azure Kognitiv sökning Portal IP-adresser kan hittas via pingering `stamp2.search.ext.azure.com` .

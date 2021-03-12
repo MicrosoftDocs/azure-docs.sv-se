@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092178"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224987"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i en Node-webbapp med hjälp av kod flödet för autentisering
 
@@ -48,6 +48,15 @@ I den här snabb starten används Microsoft Authentication Library för Node.js 
 > 1. På sidan **Översikt över** appar noterar du **programmets (klient) ID-** värde för senare användning.
 > 1. Under **Hantera** väljer du **certifikat & hemligheter**  >  **ny klient hemlighet**.  Lämna beskrivningen Tom och standard förfallo datum och välj sedan **Lägg till**.
 > 1. Notera **värdet** för **klient hemligheten** för senare användning.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Steg 1: konfigurera programmet i Azure Portal
+> För att kod exemplet för den här snabb starten ska fungera måste du skapa en klient hemlighet och lägga till en svars-URL som **http://localhost:3000/redirect** .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Gör den här ändringen åt mig]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Redan konfigurerad](media/quickstart-v2-windows-desktop/green-check.png) Programmet konfigureras med de här attributen.
 
 #### <a name="step-2-download-the-project"></a>Steg 2: Ladda ned projektet
 
@@ -91,16 +100,17 @@ I den här snabb starten används Microsoft Authentication Library för Node.js 
 > Ändra värdena i `config` avsnittet enligt beskrivningen här:
 >
 > - `Enter_the_Application_Id_Here` är **program-ID: t (Client)** för det program som du har registrerat.
+>
+>    Du hittar värdet för **program-ID: t** genom att gå till sidan med registrerings **översikten** för appen i Azure Portal.
 > - `Enter_the_Client_Secret_Here` är **värdet** för **klient hemligheten** för det program som du har registrerat.
+>
+>    Om du vill hämta eller generera en ny **klient hemlighet** väljer du **certifikat & hemligheter** under **Hantera**.
 >
 > `authority`Standardvärdet representerar det största (globala) Azure-molnet:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > Du hittar värdet för **program-ID: t** genom att gå till sidan med registrerings **översikten** för appen i Azure Portal. Gå till **certifikat & hemligheter** för att hämta eller generera en ny **klient hemlighet**.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras

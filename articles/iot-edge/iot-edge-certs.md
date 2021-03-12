@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: e5b1950935e6279995b44c2e07931519e82359d2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040642"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200240"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Förstå hur Azure IoT Edge använder certifikat
 
@@ -90,7 +90,7 @@ Eftersom tillverknings-och drift processerna är åtskilda bör du tänka på f�
 
 ## <a name="devtest-implications"></a>Effekter för utveckling och testning
 
-För att under lätta utvecklings-och test scenarier tillhandahåller Microsoft en uppsättning [bekvämlighets skript](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) för att skapa icke-produktions certifikat som är lämpliga för IoT Edge i scenariot med transparent Gateway. Exempel på hur skripten fungerar finns i [skapa demonstrations certifikat för att testa IoT Edge enhets funktioner](how-to-create-test-certificates.md).
+För att under lätta utvecklings-och test scenarier tillhandahåller Microsoft en uppsättning [bekvämlighets skript](https://github.com/Azure/iotedge/tree/master/tools/CACertificates) för att skapa icke-produktions certifikat som är lämpliga för IoT Edge i scenariot med transparent Gateway. Exempel på hur skripten fungerar finns i [skapa demonstrations certifikat för att testa IoT Edge enhets funktioner](how-to-create-test-certificates.md).
 
 >[!Tip]
 > För att ansluta enheten IoT-enheter och program som använder vår IoT-enhets-SDK via IoT Edge, måste du lägga till valfri GatewayHostName-parameter i slutet av enhetens anslutnings sträng. När Server certifikatet för Edge Hub skapas, baseras det på en lägre bokstäver-version av värd namnet från konfigurations filen, så att namnen som matchar och verifieringen av TLS-certifikatet måste anges i gemener.

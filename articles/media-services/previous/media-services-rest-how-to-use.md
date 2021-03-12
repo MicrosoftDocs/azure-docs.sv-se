@@ -1,9 +1,9 @@
 ---
 title: Översikt över Media Services åtgärder REST API | Microsoft Docs
-description: 'API: et "Media Services Operations REST" används för att skapa jobb, till gångar, direktsända kanaler och andra resurser i ett Media Services konto. Den här artikeln innehåller en Azure Media Services v2 REST API översikt.'
+description: Media Services åtgärder REST API används för att skapa jobb, till gångar, Live Channels och andra resurser i ett Media Services-konto. Den här artikeln innehåller en Azure Media Services v2 REST API översikt.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696235"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010056"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Översikt över Media Services åtgärder REST API
 
@@ -78,7 +78,7 @@ Följande är en uppsättning valfria huvuden:
 
 | Huvud | Typ | Värde |
 | --- | --- | --- |
-| Date |RFC 1123-datum |Tidsstämpel för begäran |
+| Datum |RFC 1123-datum |Tidsstämpel för begäran |
 | Acceptera |Innehållstyp |Begärd innehålls typ för svaret, till exempel följande:<p> -Application/JSON; OData = verbose<p> -Application/Atom + XML<p> Svar kan ha en annan innehålls typ, till exempel en BLOB Fetch, där ett lyckat svar innehåller BLOB-dataströmmen som nytto lasten. |
 | Accept-Encoding |Gzip, deflate |GZIP och DEFLATE-kodning, om tillämpligt. Obs! för stora resurser kan Media Services ignorera detta sidhuvud och returnera data som inte är komprimerade. |
 | Accept-Language |"sv", "es" och så vidare. |Anger det språk som ska besvaras. |
@@ -94,7 +94,7 @@ Följande är en uppsättning huvuden som kan returneras till dig, beroende på 
 | --- | --- | --- |
 | begärande-ID |Sträng |En unik identifierare för den aktuella åtgärden, genererad tjänst. |
 | klient-begärande-ID |Sträng |En identifierare som anges av anroparen i den ursprungliga begäran, om sådan finns. |
-| Date |RFC 1123-datum |Datum/tid då begäran bearbetades. |
+| Datum |RFC 1123-datum |Datum/tid då begäran bearbetades. |
 | Content-Type |Det varierar |Innehålls typen för svars texten. |
 | Content-Encoding |Det varierar |Gzip eller deflatera efter behov. |
 

@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046099"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199145"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Ansluta en underordnad IoT Edge enhet till en Azure IoT Edge Gateway (förhands granskning)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Den här artikeln innehåller instruktioner för att upprätta en betrodd anslutning mellan en IoT Edge gateway och en underordnad IoT Edge enhet.
 
@@ -207,7 +209,7 @@ Se till att användar **iotedge** har Läs behörighet för katalogen som inneh�
 
 1. Konfigurera följande miljövariabler för edgeHub-modulen:
 
-   | Namn | Värde |
+   | Name | Värde |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |

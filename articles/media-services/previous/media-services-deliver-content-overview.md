@@ -2,20 +2,20 @@
 title: Leverera innehåll till kunder
 description: Det här avsnittet ger en översikt över vad som ingår i att leverera ditt innehåll med Azure Media Services.
 services: media-services
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1ad89345a2779766fde4559758e61dff92023741
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014400"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016619"
 ---
 # <a name="deliver-content-to-customers"></a>Leverera innehåll till kunder
 
@@ -154,7 +154,7 @@ En slut punkt för direkt uppspelning representerar en strömmande tjänst som k
 
 ## <a name="known-issues"></a>Kända problem
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Ändringar av Smooth Streaming manifest version
-Innan den 2016 Service Release – när till gångar som produceras av Media Encoder Standard, Media Encoder Premium Workflow eller tidigare Azure Media Encoder strömmas med hjälp av dynamisk paketering--Smooth Streaming manifestet som returnerades uppfyller version 2,0. I version 2,0 använder Fragmentets varaktighet inte den så kallade REPEAT-Taggar (r). Till exempel:
+Innan den 2016 Service Release – när till gångar som produceras av Media Encoder Standard, Media Encoder Premium Workflow eller tidigare Azure Media Encoder strömmas med hjälp av dynamisk paketering--Smooth Streaming manifestet som returnerades uppfyller version 2,0. I version 2,0 använder Fragmentets varaktighet inte den så kallade REPEAT-Taggar (r). Exempel:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Innan den 2016 Service Release – när till gångar som produceras av Media Enc
 </SmoothStreamingMedia>
 ```
 
-I 2016-versionen från juli är det genererade Smooth Streaming manifestet som överensstämmer med version 2,2, med fragmenterade varaktigheter med hjälp av upprepade taggar. Till exempel:
+I 2016-versionen från juli är det genererade Smooth Streaming manifestet som överensstämmer med version 2,2, med fragmenterade varaktigheter med hjälp av upprepade taggar. Exempel:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

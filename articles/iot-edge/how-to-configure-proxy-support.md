@@ -10,14 +10,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 22cea6a641a03d60565e62e64ccdeef72437d476
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046150"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200045"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurera en IoT Edge-enhet för att kommunicera via en proxyserver
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge enheter skickar HTTPS-begäranden till att kommunicera med IoT Hub. Om enheten är ansluten till ett nätverk som använder en proxyserver måste du konfigurera IoT Edge runtime för att kommunicera via servern. Proxyservrar kan också påverka enskilda IoT Edge moduler om de gör HTTP-eller HTTPS-begäranden som inte dirigeras via IoT Edge Hub.
 

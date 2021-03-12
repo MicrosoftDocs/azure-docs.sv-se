@@ -3,26 +3,47 @@ title: Använd dynamisk konfiguration i en våren Boot-app
 titleSuffix: Azure App Configuration
 description: Lär dig hur du dynamiskt uppdaterar konfigurations data för våren Boot Apps
 services: azure-app-configuration
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 08/06/2020
+ms.date: 12/09/2020
 ms.custom: devx-track-java
-ms.author: alkemper
-ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.author: mametcal
+ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929166"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636546"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Självstudie: Använd dynamisk konfiguration i en Java våren-app
 
-App-konfigurationen för att starta klient biblioteket stöder uppdatering av en uppsättning konfigurations inställningar på begäran, utan att ett program startas om. Klient biblioteket cachelagrar varje inställning för att undvika för många anrop till konfigurations arkivet. Uppdaterings åtgärden uppdaterar inte värdet förrän det cachelagrade värdet har upphört att gälla, även om värdet har ändrats i konfigurations arkivet. Standard förfallo tiden för varje begäran är 30 sekunder. Den kan åsidosättas om det behövs.
+App-konfigurationen har två bibliotek för våren. `spring-cloud-azure-appconfiguration-config` kräver våren boot och tar ett beroende på `spring-cloud-context` . `spring-cloud-azure-appconfiguration-config-web` kräver våren Web tillsammans med vår start. Båda biblioteken stöder manuell utlösare för att kontrol lera om det finns uppdaterade konfigurations värden. `spring-cloud-azure-appconfiguration-config-web` lägger också till stöd för automatisk kontroll av konfigurations uppdatering.
 
-Du kan kontrol lera om det finns uppdaterade inställningar på begäran genom att anropa `AppConfigurationRefresh` `refreshConfigurations()` metoden.
+Med uppdatera kan du uppdatera konfigurations värden utan att behöva starta om programmet, men det gör att alla bönor i `@RefreshScope` som ska återskapas. Klient biblioteket cachelagrar ett hash-ID för de för tillfället laddade konfigurationerna för att undvika för många anrop till konfigurations arkivet. Uppdaterings åtgärden uppdaterar inte värdet förrän det cachelagrade värdet har upphört att gälla, även om värdet har ändrats i konfigurations arkivet. Standard förfallo tiden för varje begäran är 30 sekunder. Den kan åsidosättas om det behövs.
 
-Du kan också använda `spring-cloud-azure-appconfiguration-config-web` paketet, som tar ett beroende på `spring-web` för att hantera automatisk uppdatering.
+`spring-cloud-azure-appconfiguration-config-web`den automatiserade uppdateringen utlöses baserat på aktivitet, speciellt våren Web `ServletRequestHandledEvent` . Om en `ServletRequestHandledEvent` inte utlöses `spring-cloud-azure-appconfiguration-config-web` utlöses automatisk uppdatering även om förfallo tiden för cachen har upphört att gälla.
+
+## <a name="use-manual-refresh"></a>Använd manuell uppdatering
+
+App-konfigurationen visar `AppConfigurationRefresh` vilka som kan användas för att kontrol lera om cacheminnet har upphört att gälla och om det har upphört att gälla en uppdatering.
+
+```java
+import com.microsoft.azure.spring.cloud.config.AppConfigurationRefresh;
+
+...
+
+@Autowired
+private AppConfigurationRefresh appConfigurationRefresh;
+
+...
+
+public void myConfigurationRefreshCheck() {
+    Future<Boolean> triggeredRefresh = appConfigurationRefresh.refreshConfigurations();
+}
+```
+
+`AppConfigurationRefresh``refreshConfigurations()`returnerar ett värde `Future` som är sant om en uppdatering har Aktiver ATS och falskt om den inte är det. Falskt innebär att förfallo tiden för cachen inte har gått ut, inga ändringar har utförts eller att en annan tråd för närvarande söker efter en uppdatering.
 
 ## <a name="use-automated-refresh"></a>Använd automatisk uppdatering
 
@@ -59,7 +80,7 @@ Om du vill använda automatisk uppdatering börjar du med en våren Boot-app som
     mvn spring-boot:run
     ```
 
-1. Öppna ett webbläsarfönster och gå till URL: en: `http://localhost:8080` .  Du ser det meddelande som är kopplat till din nyckel. 
+1. Öppna ett webbläsarfönster och gå till URL: en: `http://localhost:8080` .  Du ser det meddelande som är kopplat till din nyckel.
 
     Du kan också använda *sväng* för att testa ditt program, till exempel: 
     

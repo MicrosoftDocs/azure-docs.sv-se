@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/12/2021
+ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120138"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225072"
 ---
 # <a name="co-sell-requirements"></a>Krav för samförsäljning
 
@@ -24,7 +24,7 @@ I den här tabellen visas alla möjliga status för samma försäljning:
 | ------------ | ------------- |
 | Är inte färdig att sälja | Minimi [kraven för status för medförsäljnings klar](#requirements-for-co-sell-ready-status) har inte uppfyllts. |
 | Färdiga försäljnings produkter | Alla [krav för klar status för medförsäljning](#requirements-for-co-sell-ready-status) har uppfyllts. |
-| Azure IP Co-Sälj motiverade | Medförsäljnings klara krav har uppfyllts utöver [dessa ytterligare krav](#requirements-for-ip-co-sell-incentivized-status). |
+| Azure IP Co-Sälj motiverade | Medförsäljnings klara krav har uppfyllts utöver [dessa ytterligare krav](#requirements-for-azure-ip-co-sell-incentivized-status). |
 | BIZ Apps ISV Connect Premium-incitament  | Den här statusen gäller för Dynamics 365 och Power apps erbjuder och indikerar att alla [krav för den här statusen](#requirements-for-biz-apps-isv-connect-premium-incentive-status) har uppfyllts. |
 |||
 
@@ -35,7 +35,7 @@ För ett erbjudande om att uppnå en färdig status för medförsäljning måste
 **Alla partner**:
 
 - Ha ett MPN-ID och ett aktivt [kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md).
-- Se till att du har en fullständig [företags profil](/partner-center/create-a-marketing-profile.md) i Partner Center. Som kvalificerad Microsoft-partner hjälper din företags profil dig att presentera din verksamhet för kunder som letar efter dina unika lösningar och expertis för att lösa sina affärs behov, vilket resulterar i [hänvisningar](/partner-center/referrals.md).
+- Se till att du har en fullständig [företags profil](/partner-center/create-a-marketing-profile) i Partner Center. Som kvalificerad Microsoft-partner hjälper din företags profil dig att presentera din verksamhet för kunder som letar efter dina unika lösningar och expertis för att lösa sina affärs behov, vilket resulterar i [hänvisningar](/partner-center/referrals).
 - Slutför fliken **Co-Sälj med Microsoft** och publicera erbjudandet på den kommersiella Marketplace.
 - Ange en försäljnings kontakt för varje samsäljande geografi och obligatorisk struktur lista
 
@@ -60,7 +60,7 @@ Vi tillhandahåller mallar för att hjälpa dig att skapa dessa dokument. Mer in
 
 Om du vill kvalificera sig för medförsäljnings status måste ditt erbjudande eller din lösning publiceras Live till minst ett av de kommersiella online butikerna för Marketplace: Azure Marketplace eller Microsoft AppSource. Information om hur du publicerar erbjudanden till den kommersiella marknads platsen finns i [publicerings guide efter erbjudande typ](publisher-guide-by-offer-type.md). Om du inte har publicerat något erbjudande på den kommersiella Marketplace tidigare, se till att du har ett [kommersiellt marknads plats konto](./partner-center-portal/create-account.md).
 
-## <a name="requirements-for-ip-co-sell-incentivized-status"></a>Krav för IP-Co-Sälj motiverade-status
+## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Krav för Azure IP Co-Sälj motiverade-status
 
 Azure IP Co-Sälj motiverade-status gäller för följande erbjudande typer:
 

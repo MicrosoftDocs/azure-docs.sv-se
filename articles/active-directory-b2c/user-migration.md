@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661161"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010175"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrera användare till Azure AD B2C
 
@@ -50,7 +50,7 @@ Det sömlösa migreringsjobbet har därför två faser: *för migrering* och *an
 ### <a name="phase-1-pre-migration"></a>Fas 1: för migrering
 
 1. Ditt program för migrering läser användar kontona från den gamla identitets leverantören.
-1. Programmet för migrering skapar motsvarande användar konton i din Azure AD B2C katalog, men *anger inte lösen ord*.
+1. Programmet för migrering skapar motsvarande användar konton i din Azure AD B2C katalog, men *anger slumpmässiga lösen ord* som du skapar.
 
 ### <a name="phase-2-set-credentials"></a>Fas 2: ange autentiseringsuppgifter
 

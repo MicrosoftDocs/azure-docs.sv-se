@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av stödinställningar och begränsni
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d8ffaf2c5aa32e8e0f851510adb58a78167abccb
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149043"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225555"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
 
@@ -40,6 +40,7 @@ I följande tabell beskrivs funktionerna i Recovery Services-valv:
 **Flytta data mellan valv** | Det finns inte stöd för att flytta säkerhetskopierade data mellan valv.
 **Ändra lagrings typ för valv** | Du kan ändra typen av lagrings replik (antingen Geo-redundant lagring eller lokalt redundant lagring) för ett valv innan säkerhets kopiorna lagras. När säkerhetskopiering börjar i valvet går det inte att ändra replikeringstypen.
 **Zonredundant lagring (ZRS)** | Tillgängligt i regionerna Storbritannien, södra (UKS) och Asien, sydöstra (SEA).
+**Privata slut punkter** | I [det här avsnittet](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start) finns krav för att skapa privata slut punkter för ett Recovery Service-valv.  
 
 ## <a name="on-premises-backup-support"></a>Stöd för lokal säkerhetskopiering
 

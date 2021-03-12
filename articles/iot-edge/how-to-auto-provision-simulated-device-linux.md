@@ -8,16 +8,23 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9356da9516ea17243be8e0e5519ec4b19e06db8a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175524"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200863"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Skapa och etablera en IoT Edge enhet med en TPM på Linux
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Den här artikeln visar hur du testar automatisk etablering på en Linux IoT Edge-enhet med hjälp av en Trusted Platform Module (TPM). Du kan etablera Azure IoT Edge-enheter automatiskt med [enhets etablerings tjänsten](../iot-dps/index.yml). Om du inte är bekant med processen för automatisk etablering, granskar du [etablerings](../iot-dps/about-iot-dps.md#provisioning-process) översikten innan du fortsätter.
+
+:::moniker range=">=iotedge-2020-11"
+> [!NOTE]
+> För närvarande stöds inte automatisk etablering med TPM-autentisering i IoT Edge version 1,2.
+:::moniker-end
 
 Uppgifterna är följande:
 

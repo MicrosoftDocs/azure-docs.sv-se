@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f55d1dcc3364f119faab0c728f6e3b7f5ecbb06
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265889"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614946"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Hämta autentiseringsuppgifter för åtkomst Media Services-API
 
@@ -37,7 +37,7 @@ I den här artikeln beskrivs steg för att få åtkomst till Media Services API.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto. Om du inte har ett konto börjar du med en [kostnads fri utvärderings version av Azure](https://azure.microsoft.com/pricing/free-trial/). 
+- Ett Azure-konto. Om du inte har ett konto börjar du med en [kostnads fri utvärderings version av Azure](https://azure.microsoft.com/pricing/free-trial/).
 - Ett Media Services-konto. Mer information finns i [skapa ett Azure Media Services konto med hjälp av Azure Portal](create-account-howto.md).
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
@@ -47,8 +47,8 @@ I den här artikeln beskrivs steg för att få åtkomst till Media Services API.
 På sidan **API-åtkomst** kan du välja den autentiseringsmetod som du vill använda för att ansluta till API: et. Sidan innehåller också de värden som du behöver för att ansluta till API: et.
 
 1. I [Azure Portal](https://portal.azure.com/)väljer du ditt Media Services-konto.
-2. Välj bladet **API-åtkomst (nytt)** i det vänstra navigerings fältet.
-3. Under **Anslut till Media Services-API**väljer du den Media Services API-version som du vill ansluta till (v3 är den senaste versionen av tjänsten).
+2. Välj bladet **API-åtkomst** i det vänstra navigerings fältet.
+3. Under **Anslut till Media Services-API** väljer du den Media Services API-version som du vill ansluta till (v3 är den senaste versionen av tjänsten).
 
 ### <a name="service-principal-authentication--recommended"></a>Autentisering av tjänstens huvud namn (rekommenderas)
 
