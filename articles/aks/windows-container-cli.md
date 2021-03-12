@@ -4,12 +4,12 @@ description: Lär dig hur du snabbt skapar ett Kubernetes-kluster, distribuerar 
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 4d429b7136158723fa6110975326217c5540bc2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181014"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200897"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Skapa en Windows Server-behållare i ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure CLI
 
@@ -69,32 +69,35 @@ Följande exempelutdata visar den resursgrupp som skapats:
 
 Om du vill köra ett AKS-kluster som har stöd för resurspooler för Windows Server-behållare måste klustret använda en nätverks princip som använder [Azure cni][azure-cni-about] (avancerat) nätverks-plugin. Mer detaljerad information om hur du planerar ut nödvändiga undernät och nätverks överväganden finns i [Konfigurera Azure cni Networking][use-advanced-networking]. Använd kommandot [AZ AKS Create][az-aks-create] för att skapa ett AKS-kluster med namnet *myAKSCluster*. Med det här kommandot skapas nödvändiga nätverks resurser om de inte finns.
 
-* Klustret har kon figurer ATS med två noder
-* Parametrarna *Windows-Admin-Password* och *Windows-Admin-username* anger admin-autentiseringsuppgifter för alla Windows Server-behållare som skapats i klustret och måste uppfylla [kraven för Windows Server-lösenord][windows-server-password].
-* Node-poolen använder `VirtualMachineScaleSets`
+* Klustret har kon figurer ATS med två noder.
+* `--windows-admin-password`Parametrarna och `--windows-admin-username` anger administratörsautentiseringsuppgifter för alla Windows Server-behållare som skapats i klustret och måste uppfylla krav för [Windows Server-lösenord][windows-server-password]. Om du inte anger parametern *Windows-Admin-Password* uppmanas du att ange ett värde.
+* Node-poolen använder `VirtualMachineScaleSets` .
 
 > [!NOTE]
 > För att klustret ska fungera på ett tillförlitligt sätt bör du köra minst två noder (två) i standardnodens pool.
 
-Ange din egen säkra *PASSWORD_WIN* (kom ihåg att kommandona i den här artikeln har angetts i ett bash-gränssnitt):
+Skapa ett användar namn som ska användas som administratörsautentiseringsuppgifter för dina Windows Server-behållare i klustret. I följande kommandon uppmanas du att ange ett användar namn och ange det WINDOWS_USERNAME för användning i ett senare kommando (kom ihåg att kommandona i den här artikeln anges i ett BASH-gränssnitt).
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+Skapa klustret och se till att du anger `--windows-admin-username` parametern. Följande exempel kommando skapar ett kluster med värdet från *WINDOWS_USERNAME* som du angav i föregående kommando. Alternativt kan du ange ett annat användar namn direkt i-parametern i stället för att använda *WINDOWS_USERNAME*. Följande kommando kommer också att uppmana dig att skapa ett lösen ord för administratörsautentiseringsuppgifter för dina Windows Server-behållare i klustret. Du kan också använda *Windows-Admin-Password-* parametern och ange ditt eget värde där.
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> Om du får ett lösen ords verifierings fel kontrollerar du att parametern *Windows-Admin-Password* uppfyller [lösen ords kraven för Windows Server][windows-server-password]. Om ditt lösen ord uppfyller kraven kan du försöka skapa en resurs grupp i en annan region. Försök sedan att skapa klustret med den nya resurs gruppen.
+> Om du får ett lösen ords verifierings fel kontrollerar du att lösen ordet som du anger uppfyller [lösen ords kraven för Windows Server][windows-server-password]. Om ditt lösen ord uppfyller kraven kan du försöka skapa en resurs grupp i en annan region. Försök sedan att skapa klustret med den nya resurs gruppen.
 
 Efter några minuter slutförs kommandot och returnerar JSON-formaterad information om klustret. Ibland kan det ta längre tid än några minuter att etablera klustret. Tillåt upp till 10 minuter i dessa fall.
 

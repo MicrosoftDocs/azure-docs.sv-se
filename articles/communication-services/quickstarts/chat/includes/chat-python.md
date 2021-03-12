@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 9e83203e937d794451dfb91fe0403117df72c8c0
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 7ffb656613a5401ac37f1e606b6d70dea9934b2f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489709"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021152"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -77,7 +77,9 @@ pip install azure-communication-identity
 ```
 
 ```python
-from azure.communication.chat import ChatClient, CommunicationTokenCredential, CommunicationTokenRefreshOptions
+from azure.communication.chat import ChatClient
+from azure.communication.identity._shared.user_credential import CommunicationTokenCredential
+from azure.communication.chat._shared.user_token_refresh_options import CommunicationTokenRefreshOptions
 
 endpoint = "https://<RESOURCE_NAME>.communication.azure.com"
 refresh_options = CommunicationTokenRefreshOptions(<Access Token>)
@@ -92,12 +94,23 @@ Använd `create_chat_thread` metoden för att skapa en chatt-tråd.
 - Använd `thread_participants` för att visa en lista över `ChatThreadParticipant` som ska läggas till i chatten. `ChatThreadParticipant` tar med `CommunicationUserIdentifier` typ som det `user` du fick när du skapade genom att [skapa en användare](../../access-tokens.md#create-an-identity)
 - Används `repeatability_request_id` för att dirigera om att begäran kan upprepas. Klienten kan göra begäran flera gånger med samma repeterbarhet-Request-ID och få tillbaka ett lämpligt svar utan att servern kör begäran flera gånger.
 
-Svaret `chat_thread_client` används för att utföra åtgärder på den nya chatt-tråden som att lägga till deltagare i chatt-tråden, skicka meddelande, ta bort meddelande, osv. Den innehåller en `thread_id` egenskap som är det unika ID: t för chatt-tråden.
+`CreateChatThreadResult` är resultatet som returneras från att skapa en tråd. du kan använda det för att hämta den `id` tråd som skapades av chatten. Detta `id` kan sedan användas för att hämta ett `ChatThreadClient` objekt med hjälp av `get_chat_thread_client` metoden. `ChatThreadClient` kan användas för att utföra andra chatt-åtgärder för den här chatt-tråden.
 
 #### <a name="without-repeatability-request-id"></a>Utan repeterbarhet-begärande-ID
 ```python
 from datetime import datetime
 from azure.communication.chat import ChatThreadParticipant
+
+# from azure.communication.identity import CommunicationIdentityClient
+# 
+# # create an user
+# identity_client = CommunicationIdentityClient.from_connection_string('<connection_string>')
+# user = identity_client.create_user()
+# 
+# ## OR pass existing user
+# # from azure.communication.identity import CommunicationUserIdentifier
+# # user_id = 'some_user_id'
+# # user = CommunicationUserIdentifier(user_id)
 
 topic="test topic"
 participants = [ChatThreadParticipant(
@@ -106,13 +119,25 @@ participants = [ChatThreadParticipant(
     share_history_time=datetime.utcnow()
 )]
 
-chat_thread_client = chat_client.create_chat_thread(topic, participants)
+create_chat_thread_result = chat_client.create_chat_thread(topic)
+chat_thread_client = chat_client.get_chat_thread_client(create_chat_thread_result.chat_thread.id)
 ```
 
 #### <a name="with-repeatability-request-id"></a>Med repeterbarhet – begärande-ID
 ```python
 from datetime import datetime
 from azure.communication.chat import ChatThreadParticipant
+
+# from azure.communication.identity import CommunicationIdentityClient
+# 
+# # create an user
+# identity_client = CommunicationIdentityClient.from_connection_string('<connection_string>')
+# user = identity_client.create_user()
+# 
+# ## OR pass existing user
+# # from azure.communication.identity import CommunicationUserIdentifier
+# # user_id = 'some_user_id'
+# # user = CommunicationUserIdentifier(user_id)
 
 topic="test topic"
 participants = [ChatThreadParticipant(
@@ -122,15 +147,27 @@ participants = [ChatThreadParticipant(
 )]
 
 repeatability_request_id = 'b66d6031-fdcc-41df-8306-e524c9f226b8' # some unique identifier
-chat_thread_client = chat_client.create_chat_thread(topic, participants, repeatability_request_id)
+chat_thread_client = chat_client.create_chat_thread(topic, 
+                                                    thread_participants=participants, 
+                                                    repeatability_request_id=repeatability_request_id)
 ```
 
 ## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
 `get_chat_thread_client`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. thread_id är det unika ID: t för den befintliga chatt tråden.
 
+`ChatThreadClient` kan användas för att utföra andra chatt-åtgärder för den här chatt-tråden.
+
 ```python
-thread_id = chat_thread_client.thread_id
+thread_id = create_chat_thread_result.chat_thread.id
 chat_thread_client = chat_client.get_chat_thread_client(thread_id)
+```
+
+## <a name="get-a-chat-thread"></a>Hämta en chatt-tråd
+
+Användnings `get_chat_thread` metoden hämtar en `ChatThread` från tjänsten, `thread_id` är det unika ID: t för tråden.
+- Använd `thread_id` , krävs för att ange det unika ID: t för tråden. 
+```python
+chat_thread = chat_client.get_chat_thread(thread_id=thread_id)
 ```
 
 ## <a name="list-all-chat-threads"></a>Lista alla chatt trådar
@@ -139,18 +176,17 @@ chat_thread_client = chat_client.get_chat_thread_client(thread_id)
 - Används `start_time` för att ange den tidigaste tidpunkt som chatten ska få upp till.
 - Används `results_per_page` för att ange det maximala antalet chatt trådar som returneras per sida.
 
+En iterator av `[ChatThreadInfo]` är svaret som returneras från List trådar
+
 ```python
 from datetime import datetime, timedelta
-import pytz
 
 start_time = datetime.utcnow() - timedelta(days=2)
-start_time = start_time.replace(tzinfo=pytz.utc)
-chat_thread_infos = chat_client.list_chat_threads(results_per_page=5, start_time=start_time)
 
+chat_thread_infos = chat_client.list_chat_threads(results_per_page=5, start_time=start_time)
 for chat_thread_info_page in chat_thread_infos.by_page():
     for chat_thread_info in chat_thread_info_page:
-        # Iterate over all chat threads
-        print("thread id:", chat_thread_info.id)
+        print(chat_thread_info)
 ```
 
 ## <a name="delete-a-chat-thread"></a>Ta bort en chatt-tråd
@@ -159,8 +195,8 @@ for chat_thread_info_page in chat_thread_infos.by_page():
 - Används `thread_id` för att ange thread_id för en befintlig chatt-tråd som måste tas bort
 
 ```python
-thread_id = chat_thread_client.thread_id
-chat_client.delete_chat_thread(thread_id)
+thread_id = create_chat_thread_result.chat_thread.id
+chat_client.delete_chat_thread(thread_id=thread_id)
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Skicka ett meddelande till en chatt-tråd
@@ -175,26 +211,36 @@ Svaret är ett "ID" av typen `str` , vilket är det unika ID: t för meddelandet
 
 #### <a name="message-type-not-specified"></a>Meddelande typ har inte angetts
 ```python
-chat_thread_client = chat_client.create_chat_thread(topic, participants)
+topic = "test topic"
+create_chat_thread_result = chat_client.create_chat_thread(topic)
+thread_id = create_chat_thread_result.chat_thread.id
+chat_thread_client = chat_client.get_chat_thread_client(create_chat_thread_result.chat_thread.id)
 
 content='hello world'
-sender_display_name='sender name'
 
-send_message_result_id = chat_thread_client.send_message(content=content, sender_display_name=sender_display_name)
+send_message_result_id = chat_thread_client.send_message(content)
 ```
 
 #### <a name="message-type-specified"></a>Meddelande typ har angetts
 ```python
 from azure.communication.chat import ChatMessageType
 
+topic = "test topic"
+create_chat_thread_result = chat_client.create_chat_thread(topic)
+thread_id = create_chat_thread_result.chat_thread.id
+chat_thread_client = chat_client.get_chat_thread_client(create_chat_thread_result.chat_thread.id)
+
+
 content='hello world'
 sender_display_name='sender name'
 
 # specify chat message type with pre-built enumerations
 send_message_result_id_w_enum = chat_thread_client.send_message(content=content, sender_display_name=sender_display_name, chat_message_type=ChatMessageType.TEXT)
+print("Message sent: id: ", send_message_result_id_w_enum)
 
 # specify chat message type as string
 send_message_result_id_w_str = chat_thread_client.send_message(content=content, sender_display_name=sender_display_name, chat_message_type='text')
+print("Message sent: id: ", send_message_result_id_w_str)
 ```
 
 ## <a name="get-a-specific-chat-message-from-a-chat-thread"></a>Hämta ett enskilt chatt-meddelande från en chatt
@@ -216,12 +262,17 @@ Du kan hämta chatt meddelanden genom att avsöka `list_messages` metoden vid an
 - Används `results_per_page` för att ange det maximala antalet meddelanden som ska returneras per sida.
 - Används `start_time` för att ange den tidigaste tidpunkt som meddelanden ska hämtas till.
 
+En iterator av `[ChatMessage]` är svaret som returneras från listan över meddelanden
+
 ```python
+from datetime import datetime, timedelta
+
+start_time = datetime.utcnow() - timedelta(days=1)
+
 chat_messages = chat_thread_client.list_messages(results_per_page=1, start_time=start_time)
 for chat_message_page in chat_messages.by_page():
     for chat_message in chat_message_page:
-        print('ChatMessage: ', chat_message)
-        print('ChatMessage: ', chat_message.content.message)
+        print("ChatMessage: Id=", chat_message.id, "; Content=", chat_message.content.message)
 ```
 
 `list_messages` Returnerar den senaste versionen av meddelandet, inklusive eventuella ändringar eller borttagningar som hände i meddelandet med hjälp av `update_message` och `delete_message` . För borttagna meddelanden `ChatMessage.deleted_on` returnerar ett datetime-värde som anger när meddelandet togs bort. För redigerade meddelanden `ChatMessage.edited_on` returnerar en datetime som anger när meddelandet redigerades. Det går att få åtkomst till den ursprungliga tiden för att skapa meddelanden med `ChatMessage.created_on` som kan användas för att ordna meddelandena.
@@ -246,15 +297,18 @@ Du kan uppdatera ämnet i en chatt-tråd med hjälp av `update_topic` metoden
 ```python
 topic = "updated thread topic"
 chat_thread_client.update_topic(topic=topic)
-updated_topic = chat_client.get_chat_thread(chat_thread_client.thread_id).topic
+
+chat_thread = chat_client.get_chat_thread(chat_thread_client.thread_id)
+updated_topic = chat_thread.topic
+
 print('Updated topic: ', updated_topic)
 ```
 
 ## <a name="update-a-message"></a>Uppdatera ett meddelande
 Du kan uppdatera innehållet i ett befintligt meddelande med hjälp av `update_message` -metoden, som identifieras av message_id
 
-- Använd `message_id` för att ange message_id
-- Använd `content` för att ange det nya innehållet i meddelandet
+- Använd `message_id` , är obligatoriskt, är det unika ID: t för meddelandet.
+- Använd `content` , valfritt, är meddelande innehållet som ska uppdateras. om det inte anges måste det tilldelas tomt
 
 ```python
 content = 'Hello world!'
@@ -283,12 +337,17 @@ chat_thread_client.send_read_receipt(message_id=message_id)
 - Används `results_per_page` för att ange det högsta antalet läsnings kvitton för chatt som ska returneras per sida.
 - Används `skip` för att ange Skip chat-meddelande med Läs-och skriv åtgärder upp till en angiven befattning.
 
+En iterator av `[ChatMessageReadReceipt]` är svaret som returnerades från att Visa Läs kvitton
+
 ```python
-read_receipts = chat_thread_client.list_read_receipts(results_per_page=2, skip=0)
+read_receipts = chat_thread_client.list_read_receipts(results_per_page=5, skip=0)
 
 for read_receipt_page in read_receipts.by_page():
     for read_receipt in read_receipt_page:
         print('ChatMessageReadReceipt: ', read_receipt)
+        print('Sender', read_receipt.sender)
+        print('Message Id', read_receipt.chat_message_id)
+        print('Read On Timestamp', read_receipt.read_on)
 ```
 
 ## <a name="send-typing-notification"></a>Skicka meddelande vid inmatning
@@ -319,32 +378,92 @@ Använd `add_participant` metoden för att lägga till tråd deltagare i den tr�
 - `display_name`, valfritt är visnings namnet för tråd deltagaren.
 - `share_history_time`, valfritt, är den tid från vilken chatt-historiken delas med deltagaren. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du vill dela ingen Historik tidigare till när deltagaren lades in, ställer du in den på det aktuella datumet. Om du vill dela partiell historik anger du ett mellanliggande datum.
 
-```python
-new_user = identity_client.create_user()
+Inget fel genereras när deltagaren har lagts till. Om ett fel uppstår när deltagare lades till, `RuntimeError` genereras en
 
+```python
+from azure.communication.identity import CommunicationIdentityClient
 from azure.communication.chat import ChatThreadParticipant
 from datetime import datetime
 
-new_chat_thread_participant = ChatThreadParticipant(
+# create an user
+identity_client = CommunicationIdentityClient.from_connection_string('<connection_string>')
+new_user = identity_client.create_user()
+
+# # conversely, you can also add an existing user to a chat thread; provided the user_id is known
+# from azure.communication.identity import CommunicationUserIdentifier
+#
+# user_id = 'some user id'
+# user_display_name = "Wilma Flinstone"
+# new_user = CommunicationUserIdentifier(user_id)
+# participant = ChatThreadParticipant(
+#     user=new_user,
+#     display_name=user_display_name,
+#     share_history_time=datetime.utcnow())
+
+def decide_to_retry(error, **kwargs):
+    """
+    Insert some custom logic to decide if retry is applicable based on error
+    """
+    return True
+
+participant = ChatThreadParticipant(
     user=new_user,
-    display_name='name',
+    display_name='Fred Flinstone',
     share_history_time=datetime.utcnow())
 
-chat_thread_client.add_participant(new_chat_thread_participant)
+try:
+    chat_thread_client.add_participant(thread_participant=participant)
+except RuntimeError as e:
+    if e is not None and decide_to_retry(error=e):
+        chat_thread_client.add_participant(thread_participant=participant)
 ```
 
 Flera användare kan också läggas till i chatten med hjälp av `add_participants` metoden, förutsatt att en ny åtkomsttoken och identifiering är tillgänglig för alla användare.
 
+A `list(tuple(ChatThreadParticipant, CommunicationError))` returneras. En tom lista förväntas när deltagaren har lagts till. Om ett fel uppstår när deltagare lades till fylls listan i med de misslyckade deltagarna tillsammans med det fel som påträffades.
+
 ```python
+from azure.communication.identity import CommunicationIdentityClient
 from azure.communication.chat import ChatThreadParticipant
 from datetime import datetime
 
-new_chat_thread_participant = ChatThreadParticipant(
-        user=self.new_user,
-        display_name='name',
-        share_history_time=datetime.utcnow())
-thread_participants = [new_chat_thread_participant] # instead of passing a single participant, you can pass a list of participants
-chat_thread_client.add_participants(thread_participants)
+# create 2 users
+identity_client = CommunicationIdentityClient.from_connection_string('<connection_string>')
+new_users = [identity_client.create_user() for i in range(2)]
+
+# # conversely, you can also add an existing user to a chat thread; provided the user_id is known
+# from azure.communication.identity import CommunicationUserIdentifier
+#
+# user_id = 'some user id'
+# user_display_name = "Wilma Flinstone"
+# new_user = CommunicationUserIdentifier(user_id)
+# participant = ChatThreadParticipant(
+#     user=new_user,
+#     display_name=user_display_name,
+#     share_history_time=datetime.utcnow())
+
+participants = []
+for _user in new_users:
+  chat_thread_participant = ChatThreadParticipant(
+    user=_user,
+    display_name='Fred Flinstone',
+    share_history_time=datetime.utcnow()
+  ) 
+  participants.append(chat_thread_participant) 
+
+response = chat_thread_client.add_participants(thread_participants=participants)
+
+def decide_to_retry(error, **kwargs):
+    """
+    Insert some custom logic to decide if retry is applicable based on error
+    """
+    return True
+
+# verify if all users has been successfully added or not
+# in case of partial failures, you can retry to add all the failed participants 
+retry = [p for p, e in response if decide_to_retry(e)]
+if len(retry) > 0:
+    chat_thread_client.add_participants(retry)
 ```
 
 
@@ -356,7 +475,13 @@ Använd `remove_participant` metoden för att ta bort tråd deltagare från den 
 - `user` är den `CommunicationUserIdentifier` som ska tas bort från tråden.
 
 ```python
-chat_thread_client.remove_participant(new_user)
+chat_thread_client.remove_participant(user=new_user)
+
+# # converesely you can also do the following; provided the user_id is known
+# from azure.communication.identity import CommunicationUserIdentifier
+# 
+# user_id = 'some user id'
+# chat_thread_client.remove_participant(user=CommunincationUserIdentfier(new_user))
 ```
 
 ## <a name="run-the-code"></a>Kör koden

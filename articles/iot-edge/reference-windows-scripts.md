@@ -1,5 +1,5 @@
 ---
-title: Windows-skript för Azure IoT Edge | Microsoft Docs
+title: Skript för Azure IoT Edge med Windows-behållare | Microsoft Docs
 description: Referensinformation för att installera, avinstallera eller uppdatera Windows-enheter med hjälp av IoT Edge PowerShell-skript
 author: kgremban
 manager: philmea
@@ -8,27 +8,27 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b7614f7ccd24d0237a043a9b5bf0ad988146d89c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630624"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615915"
 ---
-# <a name="powershell-scripts-for-iot-edge-on-windows"></a>PowerShell-skript för IoT Edge i Windows
+# <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>PowerShell-skript för IoT Edge med Windows-behållare
 
 Förstå de PowerShell-skript som installerar, uppdaterar eller avinstallerar IoT Edge på Windows-enheter.
 
 Kommandona som beskrivs i den här artikeln är från den `IoTEdgeSecurityDaemon.ps1` fil som släpps med alla [IoT Edge-versioner](https://github.com/Azure/azure-iotedge/releases). Den senaste versionen av skriptet är alltid tillgänglig på aka.ms/iotedge-win.
 
-Du kan köra något av kommandona med hjälp av- `Invoke-WebRequest` cmdlet: en för att få åtkomst till den senaste skript versionen. Till exempel:
+Du kan köra något av kommandona med hjälp av- `Invoke-WebRequest` cmdlet: en för att få åtkomst till den senaste skript versionen. Exempel:
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Deploy-IoTEdge
 ```
 
-Du kan också hämta skriptet eller en version av skriptet från en speciell version för att köra kommandona. Till exempel:
+Du kan också hämta skriptet eller en version av skriptet från en speciell version för att köra kommandona. Exempel:
 
 ```powershell
 . <path>\IoTEdgeSecurityDaemon.ps1

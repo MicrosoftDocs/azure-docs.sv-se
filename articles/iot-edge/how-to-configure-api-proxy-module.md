@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024678"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200588"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Konfigurera API-proxy-modulen för gateway-hierarkins scenario (för hands version)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 API-proxy-modulen gör det möjligt för IoT Edge enheter att skicka HTTP-förfrågningar via gatewayer i stället för att göra direkta anslutningar till moln tjänster. Den här artikeln vägleder dig genom konfigurations alternativen så att du kan anpassa modulen så att den stöder Gateway-hierarkins krav.
 
@@ -50,7 +52,7 @@ API-proxy-modulen levereras med en standard konfiguration som stöder vanliga sc
 
 För närvarande är standard miljö variablerna:
 
-| Miljövariabel | Description |
+| Miljövariabel | Beskrivning |
 | -------------------- | ----------- |
 | `PROXY_CONFIG_ENV_VAR_LIST` | Visa en lista med alla variabler som du vill uppdatera i en kommaavgränsad lista. Det här steget förhindrar oavsiktlig ändring av felaktiga konfigurations inställningar.
 | `NGINX_DEFAULT_PORT` | Ändrar porten som nginx proxy lyssnar på. Om du uppdaterar den här miljövariabeln ser du till att porten du väljer också exponeras i modulen Dockerfile och deklareras som en port bindning i distributions manifestet.<br><br>Standardvärdet är 443.<br><br>När den distribueras från Azure Marketplace uppdateras standard porten till 8000 för att förhindra konflikter med edgeHub-modulen. Mer information finns i [minimera öppna portar](#minimize-open-ports). |
@@ -109,7 +111,7 @@ Om du inte behöver minimera öppna portar kan du låta edgeHub-modulen använda
 
 Ett vanligt användnings fall för API-modulen är att aktivera IoT Edge enheter i lägre lager för att hämta behållar avbildningar. I det här scenariot används [Docker-register-modulen](https://hub.docker.com/_/registry) för att hämta behållar avbildningar från molnet och cachelagra dem på det översta lagret. API-proxyn reläerar alla HTTPS-begäranden för att ladda ned en behållar avbildning från de nedre skikten som ska hanteras av register-modulen i det översta lagret.
 
-Det här scenariot kräver att underordnade IoT Edge enheter pekar på domän namnet `$upstream` följt av API-proxyns port nummer i stället för behållar registret i en avbildning. Till exempel: `$upstream:8000/azureiotedge-api-proxy:1.0`.
+Det här scenariot kräver att underordnade IoT Edge enheter pekar på domän namnet `$upstream` följt av API-proxyns port nummer i stället för behållar registret i en avbildning. Exempel: `$upstream:8000/azureiotedge-api-proxy:1.0`.
 
 Det här användnings fallet visas i självstudien [skapa en hierarki med IoT Edge enheter med hjälp av gatewayer](tutorial-nested-iot-edge.md).
 
@@ -123,8 +125,8 @@ Konfigurera följande moduler på det **översta lagret**:
 
     | Name | Värde |
     | ---- | ----- |
-    | `DOCKER_REQUEST_ROUTE_ADDRESS` | Registry-modulens namn och öppna port. Exempelvis `registry:5000`. |
-    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Exempelvis `8000`. |
+    | `DOCKER_REQUEST_ROUTE_ADDRESS` | Registry-modulens namn och öppna port. Till exempel `registry:5000`. |
+    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Till exempel `8000`. |
 
   * Konfigurera följande createOptions:
 
@@ -149,7 +151,7 @@ Konfigurera följande modul på ett **lägre lager** i det här scenariot:
 
     | Name | Värde |
     | ---- | ----- |
-    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Exempelvis `8000`. |
+    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Till exempel `8000`. |
 
   * Konfigurera följande createOptions:
 
@@ -181,8 +183,8 @@ Konfigurera följande moduler på det **översta lagret**:
 
     | Name | Värde |
     | ---- | ----- |
-    | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob Storage-modulens namn och öppen port. Exempelvis `azureblobstorageoniotedge:1102`. |
-    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Exempelvis `8000`. |
+    | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob Storage-modulens namn och öppen port. Till exempel `azureblobstorageoniotedge:1102`. |
+    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Till exempel `8000`. |
 
   * Konfigurera följande createOptions:
 
@@ -207,7 +209,7 @@ Konfigurera följande modul på ett **lägre lager** i det här scenariot:
 
     | Name | Värde |
     | ---- | ----- |
-    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Exempelvis `8000`. |
+    | `NGINX_DEFAULT_PORT` | Porten som nginx proxy lyssnar på efter begär Anden från underordnade enheter. Till exempel `8000`. |
 
   * Konfigurera följande createOptions:
 
@@ -228,7 +230,7 @@ Konfigurera följande modul på ett **lägre lager** i det här scenariot:
 Använd följande steg för att ladda upp support paketet eller logg filen till Blob Storage-modulen som finns på det översta lagret:
 
 1. Skapa en BLOB-behållare med antingen Azure Storage Explorer eller REST-API: er. Mer information finns i [lagra data på gränsen med Azure Blob Storage på IoT Edge](how-to-store-data-blob.md).
-1. Begär en logg-eller support paket uppladdning enligt stegen i [Hämta loggar från IoT Edge distributioner](how-to-retrieve-iot-edge-logs.md), men Använd domän namnet `$upstream` och den öppna proxy-porten i stället för adressen till Blob Storage-modulen. Ett exempel:
+1. Begär en logg-eller support paket uppladdning enligt stegen i [Hämta loggar från IoT Edge distributioner](how-to-retrieve-iot-edge-logs.md), men Använd domän namnet `$upstream` och den öppna proxy-porten i stället för adressen till Blob Storage-modulen. Exempel:
 
    ```json
    {

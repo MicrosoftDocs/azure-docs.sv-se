@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: f0a9298b6d8ee011052a20dc34d314adbc5a0b1e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 358e066631304e727d18d092bd4b9a5b2a0bb89a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646409"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199617"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Objekt för program och tjänstens huvudnamn i Azure Active Directory
 
@@ -63,11 +63,10 @@ Programobjektet är den *globala* åter givningen av ditt program för användni
 
 Programobjektet fungerar som mallen som vanliga och standardinställda egenskaper *härleds* för användning när motsvarande objekt för tjänstens huvudnamn skapas. Ett program objekt har därför en 1:1-relation med program varan och en 1: många relation med motsvarande tjänst huvud objekt.
 
-Ett huvud namn för tjänsten måste skapas i varje klient där programmet används, vilket gör det möjligt att upprätta en identitet för inloggning och/eller åtkomst till resurser som skyddas av klienten. Ett program för enskild klient har bara ett tjänsthuvudnamn (i dess startklientorganisation), som skapas och godkänns vid programregistrering. Ett webb program/API för flera innehavare har också ett tjänst huvud namn som skapats i varje klient organisation där en användare från den klienten har samtyckt till användningen.
+Ett huvud namn för tjänsten måste skapas i varje klient där programmet används, vilket gör det möjligt att upprätta en identitet för inloggning och/eller åtkomst till resurser som skyddas av klienten. Ett program för enskild klient har bara ett tjänsthuvudnamn (i dess startklientorganisation), som skapas och godkänns vid programregistrering. Ett program med flera klienter har också ett huvud namn för tjänsten som skapats i varje klient organisation där en användare från den klienten har samtyckt till användningen.
 
-Eventuella ändringar som du gör i program objekt, inklusive borttagning, avspeglas i dess tjänst huvud objekt i programmets hem klient (den klient där det registrerades). För program med flera klient organisationer avspeglas inte ändringar i programobjektet i någon konsument innehavares tjänst huvud objekt, tills åtkomsten tas bort via [program åtkomst panelen](https://myapps.microsoft.com) och beviljats igen.
-
-Interna program registreras som en multi-klient som standard.
+### <a name="consequences-of-modifying-and-deleting-applications"></a>Konsekvenser av att ändra och ta bort program
+Eventuella ändringar som du gör i program objekt avspeglas också i dess tjänst huvud objekt i programmets hem klient (den klient där det registrerades). Det innebär att om du tar bort ett program objekt tas även dess huvud objekt för hem klient tjänsten bort.  Att återställa programobjektet kommer dock inte att återställa motsvarande huvud namn för tjänsten. För program med flera klient organisationer avspeglas inte ändringar i programobjektet i någon konsument innehavares tjänst huvud objekt, tills åtkomsten tas bort via [program åtkomst panelen](https://myapps.microsoft.com) och beviljats igen.
 
 ## <a name="example"></a>Exempel
 

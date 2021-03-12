@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043056"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614640"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Vad är nytt i Azure Migrate
 
@@ -20,7 +20,9 @@ ms.locfileid: "102043056"
 
 ## <a name="update-march-2021"></a>Uppdatering (mars 2021)
 - Stöd för att tillhandahålla flera autentiseringsuppgifter för servern på Azure Migrate-enheten för att identifiera installerade program (program varu inventering), agent lös beroende analys och identifiera SQL Server instanser och databaser i VMware-miljön. [Läs mer](tutorial-discover-vmware.md#provide-server-credentials)
-- Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. [Läs mer](concepts-azure-sql-assessment-calculation.md)<br/>Om du vill testa den här funktionen använder du [den här länken](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Gå till vägledningen för [identifiering](tutorial-discover-vmware.md) och [utvärdering](tutorial-assess-sql.md) för att komma igång.
+- Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. [Läs mer](concepts-azure-sql-assessment-calculation.md)<br/>Om du vill testa funktionen använder du [den här länken](https://aka.ms/AzureMigrate/SQL) till att skapa ett projekt i regionen **Australien, östra**. Se självstudierna för [Identifiering](tutorial-discover-vmware.md) och [utvärdering](tutorial-assess-sql.md) för att komma igång.
+- Utan agent för VMware-migrering stöder nu samtidig replikering av 500 VM: ar per vCenter.
+- Azure Migrate installerar nu automatiskt Azure VM-agenten på de virtuella VMware-datorerna samtidigt som de migrerar dem till Azure med hjälp av metoden för att VMware-migreringen ska gå
 
 ## <a name="update-january-2021"></a>Uppdatering (januari 2021)
 -  Azure Migrate: verktyget Migreringsverktyg nu kan du migrera virtuella VMware-datorer, fysiska servrar och virtuella datorer från andra moln till virtuella Azure-datorer med diskar som är krypterade med kryptering på Server sidan med Kundhanterade nycklar (CMK).

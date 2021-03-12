@@ -13,6 +13,8 @@
       href: partner-center-portal/company-work-accounts.md
     - name: Kontomigrering från CPP till Partner-centrum
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: Meddela Microsoft
+      href: submit-legal-notice.md
 - name: Begrepp
   items:
     - name: Listalternativ

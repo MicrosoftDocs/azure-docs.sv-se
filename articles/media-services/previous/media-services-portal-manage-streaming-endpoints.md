@@ -3,7 +3,7 @@ title: Hantera slut punkter för direkt uppspelning med Azure Portal | Microsoft
 description: Den här artikeln visar hur du hanterar strömnings slut punkter med Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: bda244267e81d959abbc4ae0a8532ddce68d5726
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041978"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017400"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Hantera slutpunkter för direktuppspelning med Azure-portalen
 
@@ -38,7 +38,7 @@ Information om hur du skalar slut punkten för direkt uppspelning finns i [den h
 Gör så här för att börja hantera strömnings slut punkter för ditt konto.
 
 1. Välj ditt Azure Media Services-konto i [Azure-portalen](https://portal.azure.com/).
-2. I bladet **Inställningar** väljer du **strömnings slut punkter** .
+2. I bladet **Inställningar** väljer du **strömnings slut punkter**.
    
     ![Skärm bild som visar sidan medie tjänster med "streaming-slutpunkter" valda från bladet "Inställningar".](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
@@ -77,7 +77,7 @@ Detaljerad information om dessa egenskaper finns i [StreamingEndpoint](/rest/api
 Du kan konfigurera strömnings slut punkten genom att göra följande:
 
 1. Välj den slut punkt för direkt uppspelning som du vill konfigurera.
-2. Klicka på **Inställningar** .
+2. Klicka på **Inställningar**.
 
 En kort beskrivning av fälten följer.
 
@@ -99,10 +99,10 @@ Om du senare vill inaktivera/aktivera CDN måste slut punkten för direkt uppspe
 
 CDN-integrering är aktiverat i alla Azure-datacenter förutom Kina och federala myndighets regioner.
 
-När den har Aktiver ATS inaktive ras **Access Control** , * * anpassad värdnamn och konfiguration av **Akamai-signatur** .
+När den har Aktiver ATS inaktive ras **Access Control**, * * anpassad värdnamn och konfiguration av **Akamai-signatur** .
  
 > [!IMPORTANT]
-> Azure Media Services integration med Azure CDN implementeras på **Azure CDN från Verizon** för standard slut punkter för direkt uppspelning. Premium-slutpunkter för direkt uppspelning kan konfigureras med alla **Azure CDN pris nivåer och leverantörer** . Mer information om Azure CDN funktioner finns i CDN- [översikten](../../cdn/cdn-overview.md).
+> Azure Media Services integration med Azure CDN implementeras på **Azure CDN från Verizon** för standard slut punkter för direkt uppspelning. Premium-slutpunkter för direkt uppspelning kan konfigureras med alla **Azure CDN pris nivåer och leverantörer**. Mer information om Azure CDN funktioner finns i CDN- [översikten](../../cdn/cdn-overview.md).
  
 ### <a name="additional-considerations"></a>Annat som är bra att tänka på
 

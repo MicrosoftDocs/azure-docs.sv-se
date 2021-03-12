@@ -1,15 +1,15 @@
 ---
 title: Resurs typer som stöds Azure Resource Manager
 description: Ange en lista över de Azure Resource Manager resurs typer som stöds av Azure Resource Graph och ändrings historik.
-ms.date: 02/04/2021
+ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594341"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633775"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Resurs diagram tabell och referens för resurs typ i Azure
 
@@ -26,9 +26,18 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 
 - Microsoft. alertsmanagement/Alerts
 
+## <a name="extendedlocationresources"></a>extendedlocationresources
+
+- Microsoft. extendedlocation/customlocations/enabledresourcetypes
+
 ## <a name="guestconfigurationresources"></a>guestconfigurationresources
 
 - Microsoft. guestconfiguration/guestconfigurationassignments
+
+## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
+
+- Microsoft. kubernetesconfiguration/Extensions
+- Microsoft. kubernetesconfiguration/sourcecontrolconfigurations
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -118,6 +127,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. AzureArcData/postgresInstances (Azure Database for PostgreSQL Server grupper – Azure-båge)
 - Microsoft. AzureArcData/sqlManagedInstances (SQL Managed instances – Azure ARC)
 - Microsoft. AzureArcData/sqlServerInstances (SQL Server-Azure-båge)
+- Microsoft. azurecis/autopilotenvironments
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatamanagers
 - Microsoft. azuredata/postgresinstances
@@ -132,6 +142,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. AzureStackHCI/kluster (Azure Stack HCI)
 - Microsoft. azurestackhci/galleryimages
 - Microsoft. azurestackhci/NetworkInterfaces
+- Microsoft. AzureStackHCI/virtualmachines (Azure Stack HCI virtuell dator – Azure ARC)
 - Microsoft. azurestackhci/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (Cray-servrar)
@@ -151,12 +162,13 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. BotService/botServices (bot-tjänster)
 - Microsoft. cache/Redis (Azure cache för Redis)
 - Microsoft. cache/RedisEnterprise (Redis Enterprise)
+- Microsoft. kaskad/webbplatser
 - Microsoft. CDN/CdnWebApplicationFirewallPolicies (brand Väggs principer för webb program (WAF))
-- Microsoft. CDN/profiler (CDN-profiler)
+- Microsoft. CDN/profiler (Front dörrar standard/Premium (för hands version))
 - Microsoft. CDN/profiler/afdendpoints
 - Microsoft. CDN/profiler/slut punkter (slut punkter)
 - Microsoft. CertificateRegistration/certificateOrders (App Service certifikat)
-- Microsoft. kaos/chaosexperiments
+- Microsoft. kaos/chaosexperiments (kaos experiment)
 - Microsoft. classicCompute/domän namn (moln tjänster (klassisk))
 - Microsoft. ClassicCompute/VirtualMachines (Virtual Machines (klassisk))
 - Microsoft. ClassicNetwork/networkSecurityGroups (nätverks säkerhets grupper (klassisk))
@@ -169,6 +181,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. CloudTest/hostedpools (1ES Hosted Pools)
 - Microsoft. CloudTest/images (CloudTest-avbildningar)
 - Microsoft. CloudTest/pooler (CloudTest pooler)
+- Microsoft. ClusterStor/Nodes (ClusterStors)
 - Microsoft. codespaces/-planer
 - Microsoft. Cognition/syntheticsAccounts (syntetiska konton)
 - Microsoft. CognitiveServices/accounts (Cognitive Services)
@@ -204,6 +217,11 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Fluent/Organizations (samflytande organisationer)
 - Microsoft. ConnectedCache/cacheNodes (anslutna cache-resurser)
 - Microsoft. connectedvehicle/platformaccounts
+- Microsoft. connectedvmwarevsphere/resourcepools
+- Microsoft. connectedvmwarevsphere/vCenter
+- Microsoft. connectedvmwarevsphere/virtualmachines
+- Microsoft. connectedvmwarevsphere/virtualmachinetemplates
+- Microsoft. connectedvmwarevsphere/virtualnetworks
 - Microsoft. ContainerInstance/containerGroups (container instances)
 - Microsoft. ContainerRegistry/register (behållar register)
 - Microsoft. containerregistry/register/agentpools
@@ -226,7 +244,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Databricks/arbets ytor (Azure Databricks tjänster)
 - Microsoft. DataCatalog/kataloger (Data Catalog)
 - Microsoft. datacatalog/datacatalogs
-- Microsoft. DataCollaboration/arbets ytor (data samarbete)
+- Microsoft. DataCollaboration/arbets ytor (projekt CI)
 - Microsoft. Datadog/Monitors (Datadog)
 - Microsoft. DataFactory/dataFactories (data fabriker)
 - Microsoft. DataFactory/fabriker (data fabriker (v2))
@@ -244,6 +262,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. DBforMySQL/-servrar (Azure Database for MySQL-servrar)
 - Microsoft. DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL flexibla servrar)
 - Microsoft. DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL Server grupper)
+- Microsoft. dbforpostgresql/servergroupsv2
 - Microsoft. DBforPostgreSQL/-servrar (Azure Database for PostgreSQL-servrar)
 - Microsoft. DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL servers v2)
 - Microsoft. dbforpostgresql/singleservers
@@ -258,7 +277,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. deploymentmanager/steg
 - Microsoft. DesktopVirtualization/ApplicationGroups (program grupper)
 - Microsoft. DesktopVirtualization/HostPools (värd-pooler)
-- Microsoft. desktopvirtualization/scalingplans
+- Microsoft. DesktopVirtualization/ScalingPlans (skalnings planer)
 - Microsoft. DesktopVirtualization/arbets ytor (arbets ytor)
 - Microsoft. Devices/elasticpools
 - Microsoft. Devices/elasticpools/iothubtenants
@@ -274,9 +293,13 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. DevTestLab/Labs/virtualMachines (Virtual Machines)
 - Microsoft. devtestlab/scheman
 - Microsoft. DigitalTwins/digitalTwinsInstances (Azure Digitals dubbla)
+- Microsoft.DocumentDB/cassandraClusters (Azure Managed instance för Apache Cassandra)
 - Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB-konton)
 - Microsoft. DomainRegistration/Domains (App Service domäner)
-- Microsoft. Elastic/Monitors (elastiska)
+- Microsoft. edgeorder/adresser
+- Microsoft. edgeorder/ordercollections
+- Microsoft. edgeorder/order
+- Microsoft. Elastic/Monitors (ElasticSearch)
 - Microsoft. enterpriseknowledgegraph/Services
 - Microsoft. EventGrid/Domains (Event Grid domäner)
 - Microsoft. EventGrid/partnerNamespaces (Event Grid partner namnrum)
@@ -306,8 +329,8 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. hybridcompute/Machines/Extensions
 - Microsoft. HybridCompute/privateLinkScopes (Azure Arc Private Link-omfång)
 - Microsoft. HybridData/dataManagers (StorSimple Data Manager)
-- Microsoft. HybridNetwork/enheter (Azure Network Function Manager – enheter)
-- Microsoft. HybridNetwork/networkFunctions (Azure Network Function Manager – Nätverks funktioner)
+- Microsoft. HybridNetwork/enheter (Azure Network Function Manager – enheter (för hands version))
+- Microsoft. HybridNetwork/networkFunctions (Azure Network Function Manager – Nätverks funktioner (för hands version))
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. ImportExport/Jobs (import/export-jobb)
 - Microsoft. industrydatalifecycle/basemodels
@@ -333,10 +356,10 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Insights/arbets böcker (Azure-arbetsböcker)
 - Microsoft. Insights/workbooktemplates (mallar för Azure-arbetsböcker)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minervas)
-- Microsoft. intelligentitdigitaltwin/digitaltwins/assets
-- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplans
-- Microsoft. intelligentitdigitaltwin/digitaltwins/testplans
-- Microsoft. intelligentitdigitaltwin/digitaltwins/tests
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/Assets (till gångar)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/executionPlans (distributioner)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/testPlans (Suites)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/test (skript)
 - Microsoft. IoTCentral/IoTApps (IoT Central program)
 - Microsoft. IoTSpaces/Graph (digitala dubbla (inaktuella))
 - Microsoft. nyckel valv/hsmpools
@@ -352,13 +375,14 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Logic/integrationServiceEnvironments/managedApis (hanterad koppling)
 - Microsoft. Logic/arbets flöden (Logic Apps)
 - Microsoft. Logz/Monitors (Logz-huvud konto)
-- Microsoft. Logz/Monitors/accounts (Logz-underkontot)
+- Microsoft. Logz/Monitors/accounts (Logz sub Account)
 - Microsoft. MachineLearning/commitmentPlans (Machine Learning Studio (klassiska) webb tjänst planer
 - Microsoft. MachineLearning/WebService (Machine Learning Studio (klassiska) webb tjänster)
 - Microsoft. MachineLearning/arbets ytor (Machine Learning Studio (klassiska) arbets ytor)
 - Microsoft. machinelearningcompute/operationalizationclusters
 - Microsoft. machinelearningservices/modelinventories
 - Microsoft. machinelearningservices/modelinventory
+- Microsoft. machinelearningservices/virtualclusters
 - Microsoft. MachineLearningServices/arbets ytor (Machine Learning)
 - Microsoft. machinelearningservices/arbets ytor/batchendpoints
 - Microsoft. machinelearningservices/arbets ytor/batchendpoints/distributioner
@@ -383,16 +407,22 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Media/Media Services/liveevents (Live Events)
 - Microsoft. Media/Media Services/strömnings slut punkter (slut punkter för direkt uppspelning)
 - Microsoft. Media/Media Services/Transforms
+- Microsoft. Media/videoanalyzers
 - Microsoft. microservices4spring/appclusters
 - Microsoft. Migrate/assessmentprojects
 - Microsoft. Migrate/migrateprojects
 - Microsoft. Migrate/movecollections
 - Microsoft. Migrate/Projects (migreringsjobb)
 - Microsoft. MixedReality/holographicsBroadcastAccounts (Holographics broadcast-konton)
+- Microsoft. MixedReality/objectAnchorsAccounts (konton för objekt ankare)
 - Microsoft. MixedReality/objectUnderstandingAccounts (objekt förståelse konton)
 - Microsoft. MixedReality/remoteRenderingAccounts (Remote rendering Accounts)
 - Microsoft. MixedReality/spatialAnchorsAccounts (konton för spatiala ankare)
 - Microsoft. mixedreality/surfacereconstructionaccounts
+- Microsoft. mobilenetwork/Networks
+- Microsoft. mobilenetwork/Networks/Sites
+- Microsoft. mobilenetwork/Sims
+- Microsoft. mobilenetwork/Sims/simprofiles
 - Microsoft. NetApp/netAppAccounts (NetApp-konton)
 - Microsoft. NetApp/netappaccounts/backuppolicies
 - Microsoft. NetApp/netAppAccounts/capacityPools (kapacitets grupper)
@@ -485,6 +515,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. PowerBI/privatelinkservicesforpowerbi
 - Microsoft. PowerBI/klient organisationer
 - Microsoft. PowerBI/workspacecollections
+- Microsoft. powerbidedicated/autoscalevcores
 - Microsoft. PowerBIDedicated/kapacitet (Power BI Embedded)
 - Microsoft. ProjectBabylon/konton (Babylon-konton)
 - Microsoft. avdelningens kontroll/konton (avdelningens kontroll-konton)
@@ -494,13 +525,13 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Relay/namnrymder (reläer)
 - Microsoft. RemoteApp/samlingar
 - Microsoft. återhämtnings-/chaosexperiments
-- Microsoft. resourceconnector/-apparater
+- Microsoft. ResourceConnector/apparater (apparater)
 - Microsoft. resourcegraph/frågor (resurs diagram frågor)
 - Microsoft. Resources/deploymentScripts (distributions skript)
 - Microsoft. Resources/templateSpecs (mall-specifikationer)
 - Microsoft. Resources/templatespecs/versions
 - Microsoft. SaaS/program (program vara som en tjänst (klassisk))
-- Microsoft. SaaS/Resources (CPX-placeholder)
+- Microsoft. SaaS/Resources (SaaS)
 - Microsoft. Scheduler/Förfrågningsåtgärder (Scheduler Job Collections)
 - Microsoft. SCVMM/moln
 - Microsoft. SCVMM/virtualMachines (SCVMM virtuell dator – Azure-båge)
@@ -514,7 +545,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Service Bus/namnrymder (Service Bus namnrum)
 - Microsoft. ServiceFabric/kluster (Service Fabric kluster)
 - Microsoft. servicefabric/containergroupsets
-- Microsoft. ServiceFabric/managedclusters (hanterade Service Fabric-kluster)
+- Microsoft. ServiceFabric/managedclusters (Service Fabric hanterade kluster)
 - Microsoft. ServiceFabricMesh/program (nätprogram)
 - Microsoft. servicefabricmesh/gateways
 - Microsoft. servicefabricmesh/Networks
@@ -542,6 +573,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. SqlVirtualMachine/SqlVirtualMachines (SQL Virtual Machines)
 - Microsoft. sqlvm/dwvm
 - Microsoft. Storage/StorageAccounts (lagrings konton)
+- Microsoft. storagecache/amlfilesystems
 - Microsoft. StorageCache/cacheminnen (HPC-cacheminnen)
 - Microsoft. StoragePool/diskpools
 - Microsoft. StorageSync/storageSyncServices (tjänster för synkronisering av lagring)
@@ -558,12 +590,13 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Synapse/arbets ytor/sqldatabases
 - Microsoft. Synapse/arbetsytes/sqlPools (dedikerade SQL-pooler)
 - Microsoft. terraformoss/providerregistrations
+- Microsoft. testbase/testbases
 - Microsoft. TimeSeriesInsights/miljöer (Time Series Insights miljöer)
 - Microsoft. TimeSeriesInsights/miljöer/eventsources (Time Series Insights händelse källor)
 - Microsoft. TimeSeriesInsights/miljöer/referenceDataSets (Time Series Insights referens data uppsättningar)
 - Microsoft. token/butiker
 - Microsoft. tokenvault/valv
-- Microsoft. virtualmachineimages/imagetemplates
+- Microsoft. VirtualMachineImages/imageTemplates (bildmallar)
 - Microsoft. VisualStudio/Account (Azure DevOps-organisationer)
 - Microsoft. VisualStudio/konto/tillägg
 - Microsoft. VisualStudio/Account/Project (DevOps starter)
@@ -628,7 +661,8 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 
 - Microsoft. Security/bedömningar
 - Microsoft. Security/bedömningar/underbedömningar
-- Microsoft. Security/locations/Alerts (säkerhets aviseringar (för hands version))
+- Microsoft. Security/iotalerts
+- Microsoft. Security/locations/Alerts (säkerhets aviseringar)
 - Microsoft. Security/prissättning
 - Microsoft. Security/regulatorycompliancestandards
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
@@ -639,6 +673,10 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 ## <a name="servicehealthresources"></a>servicehealthresources
 
 - Microsoft. resourcehealth/Events
+
+## <a name="workloadmonitorresources"></a>workloadmonitorresources
+
+- Microsoft. workloadmonitor/övervakare
 
 ## <a name="next-steps"></a>Nästa steg
 

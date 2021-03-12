@@ -3,15 +3,16 @@ title: Begränsade vCPU-storlekar
 description: Visar en lista med de VM-storlekar som kan ha ett begränsat vCPU antal.
 author: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7faeec8494a908b9aab00be9b63904354b5e0994
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426161"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557088"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Begränsade vCPU-kompatibla VM-storlekar
 
@@ -24,7 +25,7 @@ Till exempel innehåller den aktuella virtuella dator storleken Standard_GS5 32 
 De licens avgifter som debiteras för SQL Server eller Oracle är begränsade till det nya antalet vCPU och andra produkter bör debiteras baserat på det nya vCPU antalet. Detta resulterar i en 50% till 75% ökning av förhållandet mellan VM-specifikationerna och aktiva (fakturerbara) virtuella processorer. Dessa nya VM-storlekar gör att kundernas arbets belastningar kan använda samma minne, lagrings utrymme och I/O-bandbredd samtidigt som program varu licensierings kostnaden optimeras. För närvarande är beräknings kostnaden, som innehåller OS-licensiering, densamma som den ursprungliga storleken. Mer information finns i [storlekar för virtuella Azure-datorer för mer kostnads effektiva databas arbets belastningar](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Namn                | Virtuell processor | Specifikationer           |
+| Name                | Virtuell processor | Specifikationer           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | Samma som M8ms    |
 | Standard_M8-4ms     | 4    | Samma som M8ms    |

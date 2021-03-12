@@ -3,14 +3,14 @@ title: JavaScript-referens för utvecklare för Azure Functions
 description: Lär dig hur du utvecklar funktioner med hjälp av Java Script.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591048"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614912"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript-guide för utvecklare
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontexten som skickas till funktionen exponerar en `executionContext` egenskap, som är ett objekt med följande egenskaper:
 
-| Egenskapsnamn  | Typ  | Description |
+| Egenskapsnamn  | Typ  | Beskrivning |
 |---------|---------|---------|
 | `invocationId` | Sträng | Innehåller en unik identifierare för det specifika funktions anropet. |
 | `functionName` | Sträng | Anger namnet på den aktiva funktionen |
@@ -507,20 +507,20 @@ I följande tabell visas aktuella Node.js-versioner som stöds för varje huvud 
 
 | Funktions version | Node-version (Windows) | Node-version (Linux) |
 |---|---| --- |
+| 3. x (rekommenderas) | `~14` rekommenderas<br/>`~12`<br/>`~10` | `node|14` rekommenderas<br/>`node|12`<br/>`node|10` |
+| 2x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 1.x | 6.11.2 (låst av körningen) | saknas |
-| 2x  | `~8`<br/>`~10` rekommenderas<br/>`~12` | `node|8`<br/>`node|10` rekommenderas  |
-| 3.x | `~10`<br/>`~12` rekommenderas<br/>`~14` förhandsgranskningsvyn  | `node|10`<br/>`node|12` rekommenderas<br/>`node|14` förhandsgranskningsvyn |
 
 Du kan se den aktuella versionen som körningen använder genom att logga `process.version` från vilken funktion som helst.
 
 ### <a name="setting-the-node-version"></a>Ställer in Node-versionen
 
-För Windows Function-appar ska du rikta in dig på versionen i Azure genom att ange `WEBSITE_NODE_DEFAULT_VERSION` [appens inställning](functions-how-to-use-azure-function-app-settings.md#settings) till en LTS-version som stöds, till exempel `~12` .
+För Windows Function-appar ska du rikta in dig på versionen i Azure genom att ange `WEBSITE_NODE_DEFAULT_VERSION` [appens inställning](functions-how-to-use-azure-function-app-settings.md#settings) till en LTS-version som stöds, till exempel `~14` .
 
 För Linux Function-appar kör du följande Azure CLI-kommando för att uppdatera Node-versionen.
 
 ```bash
-az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
 
 ## <a name="dependency-management"></a>Beroendehantering
@@ -597,6 +597,23 @@ module.exports = async function (context, myTimer) {
 
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
+};
+```
+
+## <a name="ecmascript-modules-preview"></a><a name="ecmascript-modules"></a>ECMAScript-moduler (för hands version)
+
+> [!NOTE]
+> Eftersom ECMAScript-moduler är märkta med *experiment* i Node.js 14 är de tillgängliga som en förhands gransknings funktion i Node.js 14 Azure Functions. Tills Node.js 14-stöd för ECMAScript-moduler blir *stabilt*, förväntar vi dig eventuella ändringar i dess API eller beteende.
+
+[ECMAScript-moduler](https://nodejs.org/docs/latest-v14.x/api/esm.html#esm_modules_ecmascript_modules) (ES-moduler) är det nya officiella standardmoduls systemet för Node.js. I så fall använder kod exemplen i den här artikeln CommonJS-syntaxen. När du kör Azure Functions i Node.js 14, kan du välja att skriva dina funktioner med hjälp av ES modules syntax.
+
+Använd ES-moduler i en funktion genom att ändra dess fil namn till att använda ett `.mjs` tillägg. Följande exempel på *index. MJS* -fil är en http-utlöst funktion som använder sig av ES modules syntax för att importera `uuid` biblioteket och returnera ett värde.
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+
+export default async function (context, req) {
+    context.res.body = uuidv4();
 };
 ```
 

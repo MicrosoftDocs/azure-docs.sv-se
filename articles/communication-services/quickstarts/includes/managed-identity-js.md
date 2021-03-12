@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a51121b9dd9c7dcb894399fd9ad5f49cc5e07f3a
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0d45e04bbafc7b2480abdcb2ab21bdb219a09b9e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486642"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021490"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Lägg till hanterad identitet i din kommunikations tjänst lösning (JS)
 
@@ -24,7 +24,7 @@ Lägg till följande `import` direktiv i koden för att använda Azure-identitet
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
 import { CommunicationIdentityClient } from "@azure/communication-identity";
-import { SmsClient } from "@azure/communication-sms";
+import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 ```
 
 Exemplen nedan använder [DefaultAzureCredential](/javascript/api/azure.identity.defaultazurecredential). Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer.
@@ -51,7 +51,7 @@ Följande kod exempel visar hur du skapar ett tjänst klient objekt med hanterad
 export async function sendSms(resourceEndpoint: string, fromNumber: any, toNumber: any, message: string) {
      let credential = new DefaultAzureCredential();
      const smsClient = new SmsClient(resourceEndpoint, credential);
-     const sendRequest: SendRequest = { 
+     const sendRequest: SmsSendRequest = { 
           from: fromNumber, 
           to: [toNumber], 
           message: message 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633044"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232383"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Enhets uppdatering för IoT Hub (för hands version) – Översikt
 
@@ -23,7 +23,8 @@ För att kunna utnyttja de fulla fördelarna med IoT-aktiverad digital omvandlin
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Stöd för ett brett utbud av IoT-enheter
 
-Enhets uppdatering för IoT Hub är utformad för att erbjuda optimerad uppdaterings distribution och effektiviserade åtgärder genom integrering med [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/). Den här integrationen gör det enkelt att införa enhets uppdateringar på alla befintliga lösningar. Den tillhandahåller en moln värd lösning för att ansluta praktiskt taget vilken enhet som helst. Enhets uppdatering har stöd för ett brett utbud av IoT-operativsystem – inklusive Linux och [Azure återställnings tider](https://azure.microsoft.com/en-us/services/rtos/) (real tids operativ system) – och är utöknings bar via öppen källkod. Vi samarbetar med att utveckla enhets uppdateringar för IoT Hub erbjudanden med våra halvledar partners, inklusive STMicroelectronics, NXP, Renesas och mikrochip. Se [exempel](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) på utvärderings kort för nyckel halvledare som innehåller guider för att komma igång och lär dig hur du konfigurerar, bygger och distribuerar OTA-uppdateringar (över-Air) till MCU-enhets enheter.
+
+Enhets uppdatering för IoT Hub är utformad för att erbjuda optimerad uppdaterings distribution och effektiviserade åtgärder genom integrering med [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/). Den här integrationen gör det enkelt att införa enhets uppdateringar på alla befintliga lösningar. Den tillhandahåller en moln värd lösning för att ansluta praktiskt taget vilken enhet som helst. Enhets uppdatering har stöd för ett brett utbud av IoT-operativsystem – inklusive Linux och [Azure återställnings tider](https://azure.microsoft.com/en-us/services/rtos/) (real tids operativ system) – och är utöknings bar via öppen källkod. Vi samarbetar med att utveckla enhets uppdateringar för IoT Hub erbjudanden med våra halvledar partners, inklusive STMicroelectronics, NXP, Renesas och mikrochip. Se [exempel](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) på utvärderings kort för nyckel halvledare som innehåller guider för att komma igång och lär dig hur du konfigurerar, bygger och distribuerar OTA-uppdateringar (över-Air) till MCU-enhets enheter. 
 
 Både en enhets uppdatering av en binär och Raspberry Pi-referens yocto-avbildningar tillhandahålls.
 Enhets uppdatering för IoT Hub stöder även uppdatering av Azure IoT Edge enheter. En enhets uppdaterings agent tillhandahålls för Ubuntu Server 18,04 amd64-plattform. Enhets uppdatering för IoT Hub innehåller även kod med öppen källkod om du inte kör någon av plattformarna ovan. Du kan Porta agenten på den distribution du kör.
@@ -79,7 +80,7 @@ När ett uppdaterings kommando tas emot på en enhet körs den begärda fasen av
 
 ### <a name="importing"></a>Import
 
-Import är möjligheten att importera din uppdatering till enhets uppdatering. Enhets uppdatering stöder distribution av en enskild uppdatering per enhet. Detta gör det idealiskt för fullständiga uppdateringar som uppdaterar en hel OS-partition på en gång, eller ett apt-manifest som beskriver alla paket som du vill uppdatera på enheten. Om du vill importera uppdateringar till enhets uppdatering skapar du först ett import manifest som beskriver uppdateringen och laddar sedan ned uppdaterings filen (-erna) och import manifestet till en plats som kan nås via Internet. Sedan kan du använda Azure Portal eller enhets uppdateringens import REST API för att initiera den asynkrona processen för uppdaterings import. Enhets uppdatering överför filerna, bearbetar dem och gör dem tillgängliga för distribution till IoT-enheter.
+Att importera är hur dina uppdateringar matas in i enhets uppdateringen så att de kan distribueras till enheter. Enhets uppdatering stöder distribution av en enskild uppdatering per enhet. Detta gör det idealiskt för fullständiga uppdateringar som uppdaterar en hel OS-partition på en gång, eller ett apt-manifest som beskriver alla paket som du vill uppdatera på enheten. Om du vill importera uppdateringar till enhets uppdatering skapar du först ett import manifest som beskriver uppdateringen och laddar sedan ned uppdaterings filen (-erna) och import manifestet till en plats som kan nås via Internet. Sedan kan du använda Azure Portal eller [enhets uppdateringens import REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) för att initiera den asynkrona processen för uppdaterings import. Enhets uppdatering överför filerna, bearbetar dem och gör dem tillgängliga för distribution till IoT-enheter.
 
 För känsligt innehåll skyddar du hämtningen med en signatur för delad åtkomst (SAS), till exempel ad hoc SAS för Azure Blob Storage. [Läs mer om SAS](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 

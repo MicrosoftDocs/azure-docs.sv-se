@@ -3,18 +3,18 @@ title: CLI – skapa en bild från en ögonblicks bild eller hanterad disk i ett
 description: Lär dig hur du skapar en avbildning från en ögonblicks bild eller en hanterad disk i ett delat avbildnings galleri med hjälp av Azure CLI.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 9cfb1fe6d2050a63070e9c21e4b8c3ef59efcb15
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682689"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556969"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Skapa en bild från en hanterad disk eller ögonblicks bild i ett galleri för delad avbildning med hjälp av Azure CLI
 

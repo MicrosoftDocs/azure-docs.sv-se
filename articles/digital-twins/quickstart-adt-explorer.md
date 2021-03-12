@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434210"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232429"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Snabb start – utforska ett Azure-exempel med Azure Digitals dubblare med Azure Digitals Internet Explorer
 
@@ -93,13 +93,16 @@ Sedan kör du Azure Digitals program Utforskaren och konfigurerar den för din A
 
 1. Ange den URL som du har samlat in tidigare i avsnittet [Konfigurera en digital Azure Digitals-instans](#set-up-an-azure-digital-twins-instance) i formatet *https://{instans värd namn}*.
 
->[!NOTE]
-> Du kan gå tillbaka eller redigera informationen när som helst genom att välja samma ikon för att öppna **inloggnings** rutan igen. Den behåller de värden som du har skickat.
-
 > [!TIP]
 > Om ett `SignalRService.subscribe` fel meddelande visas när du ansluter, se till att din Azure Digital-URL börjar med *https://*.
 
+> [!TIP]
+> Om ett autentiseringsfel visas kanske du vill kontrol lera miljövariablerna för att se till att alla autentiseringsuppgifter som ingår är giltiga för digitala Azure-nätverk. DefaultAzureCredential försöker autentisera sig mot [autentiseringstyper](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) i en angiven ordning och miljövariablerna utvärderas först.
+
 Om du ser en **behörighet som begärs** i popup-fönstret från Microsoft, bevilja du medgivande för det här programmet och accepterar att fortsätta.
+
+>[!NOTE]
+> Du kan gå tillbaka eller redigera informationen när som helst genom att välja samma ikon för att öppna **inloggnings** rutan igen. Den behåller de värden som du har skickat.
 
 ## <a name="add-the-sample-data"></a>Lägg till exempel data
 

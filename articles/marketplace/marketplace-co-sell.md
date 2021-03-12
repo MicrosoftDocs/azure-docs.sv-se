@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/08/2021
-ms.openlocfilehash: 7d1d4a1a89931e3ded8274a4731aa3606695771b
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.date: 3/12/2021
+ms.openlocfilehash: 47f8f4ec3b5c5dd2d4545fc67561487d4f5a465c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199876"
+ms.locfileid: "103225325"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Översikt över samförsäljning med Microsoft Sales Teams och partners
 
@@ -33,7 +33,7 @@ En samförsäljnings möjlighet är en typ av samarbete med Microsoft Sales Team
 - Samar **beta med Microsoft Sales Teams** – arbeta med ett eller flera Microsoft-säljteam för att aktivt uppfylla kund behov. Detta kan inkludera Sälj erbjudanden, Microsofts erbjudanden eller både och. Du och Microsoft Sales Teams kan identifiera och dela kund möjligheter där dina lösningar kan vara en bra anpassning.
 - **Partner till partner (P2P)** – arbeta med en annan Microsoft-partner för att aktivt lösa ett kund problem.
 - **Privat** arbete – dela det du är oberoende av varandra med Microsoft så att det visas i Microsoft repor ting-systemet för analys och prognoser.
-- **Lösnings bedömning (sa)** – arbeta med partner som är testats av affärs teamet för lösnings bedömning för att få åtkomst till teknik behoven hos kunder som använder eller planerar att använda Microsoft-tekniker.
+- **Lösnings bedömning (sa)** – arbeta med partner som är testats av affärs teamet för lösnings bedömningar för att bedöma teknik behoven hos kunder som använder eller planerar att använda Microsoft-tekniker.
 
 ## <a name="co-sell-statuses"></a>Status för samförsäljning
 

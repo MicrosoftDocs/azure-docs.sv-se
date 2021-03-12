@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021804"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196915"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Fel söknings fel vid körning av ett anpassat kommando program
 
@@ -28,7 +28,7 @@ Om programmet kör anpassade kommandon från [klient programmet (med tal-SDK)](.
 | Felkod | Information |
 | ------- | -------- |
 | [401](#error-401) | AuthenticationFailure: WebSocket-uppgraderingen misslyckades med ett autentiseringsfel |
-| [1002](#error-1002)] | Servern returnerade status koden 404 när status koden 101 förväntades. |
+| [1002](#error-1002) | Servern returnerade status koden 404 när status koden 101 förväntades. |
 
 ### <a name="error-401"></a>Fel 401
 - Den region som anges i klient programmet överensstämmer inte med regionen för det anpassade kommando programmet

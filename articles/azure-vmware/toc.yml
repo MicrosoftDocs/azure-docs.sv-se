@@ -116,6 +116,16 @@
           href: fix-deployment-provisioning-failures.md
     - name: VANLIGA FRÅGOR OCH SVAR
       href: faq.yml
+    - name: Video
+      items:
+        - name: Upprepning
+          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+        - name: Integrering med Azure-tjänsten
+          href: 'https://youtu.be/m26iLu6DHbU'
+        - name: Integrering med Azure Application Gateway
+          href: 'https://youtu.be/BoQYvqzb6Y8'
+        - name: Migrering och kapacitets planering
+          href: 'https://youtu.be/NoNG-hkksrA'
 - name: Referens
   items:
     - name: Azure CLI

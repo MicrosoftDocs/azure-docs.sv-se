@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 809dc6d0958b754911362f933e9fe964bce9c679
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 279d432dbc5770cc89486c517b8fcbe6392b03d1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727931"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012198"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Blob Storage med hjälp av Azure Data Factory
 
@@ -229,7 +229,7 @@ Dessa egenskaper stöds för en länkad Azure Blob Storage-tjänst:
 |:--- |:--- |:--- |
 | typ | Egenskapen **Type** måste anges till **AzureBlobStorage**. | Ja |
 | serviceEndpoint | Ange Azure Blob Storage-tjänstens slut punkt med mönstret för `https://<accountName>.blob.core.windows.net/` . | Ja |
-| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/> När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. | Inga |
+| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/><br/>När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. | Inga |
 | servicePrincipalId | Ange programmets klient-ID. | Ja |
 | servicePrincipalKey | Ange programmets nyckel. Markera det här fältet som **SecureString** för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenant | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Hämta det genom att hovra över det övre högra hörnet av Azure Portal. | Ja |
@@ -237,7 +237,9 @@ Dessa egenskaper stöds för en länkad Azure Blob Storage-tjänst:
 | connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. | Inga |
 
 >[!NOTE]
->Om ditt BLOB-konto aktiverar [mjuk borttagning](../storage/blobs/soft-delete-blob-overview.md), stöds inte tjänstens huvud namns autentisering i data flödet.
+>
+>- Om ditt BLOB-konto aktiverar [mjuk borttagning](../storage/blobs/soft-delete-blob-overview.md), stöds inte tjänstens huvud namns autentisering i data flödet.
+>- Om du har åtkomst till blob-lagringen via privat slut punkt med hjälp av data flödet noterar du när autentisering av tjänstens huvud namn används data flöde ansluter till ADLS Gen2 slut punkten i stället för BLOB-slutpunkt. Se till att du skapar motsvarande privata slut punkt i ADF för att aktivera åtkomst.
 
 >[!NOTE]
 >Autentisering av tjänstens huvud namn stöds endast av den länkade tjänsten "AzureBlobStorage", inte den tidigare länkade tjänsten av typen "AzureStorage".
@@ -289,11 +291,13 @@ Dessa egenskaper stöds för en länkad Azure Blob Storage-tjänst:
 |:--- |:--- |:--- |
 | typ | Egenskapen **Type** måste anges till **AzureBlobStorage**. | Ja |
 | serviceEndpoint | Ange Azure Blob Storage-tjänstens slut punkt med mönstret för `https://<accountName>.blob.core.windows.net/` . | Ja |
-| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/> När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. | Inga |
+| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/><br/>När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. | Inga |
 | connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. | Inga |
 
 > [!NOTE]
-> Om ditt BLOB-konto aktiverar [mjuk borttagning](../storage/blobs/soft-delete-blob-overview.md), stöds inte hanterad identitets autentisering i data flödet.
+>
+> - Om ditt BLOB-konto aktiverar [mjuk borttagning](../storage/blobs/soft-delete-blob-overview.md), stöds inte hanterad identitets autentisering i data flödet.
+> - Om du har åtkomst till blob-lagringen via en privat slut punkt med hjälp av data flödet noterar du när hanterad identitetsautentisering används data flöde ansluter till ADLS Gen2 slut punkten i stället för BLOB-slutpunkten. Se till att du skapar motsvarande privata slut punkt i ADF för att aktivera åtkomst.
 
 > [!NOTE]
 > Hanterade identiteter för Azure-autentisering stöds endast av den länkade tjänsten "AzureBlobStorage", inte den tidigare länkade tjänsten av typen "AzureStorage".

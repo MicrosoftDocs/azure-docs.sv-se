@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5289f9b558a200bf3dbefdf584eab59d1792439b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ddbf3c99845f4c38f511260f4dec274903a9d586
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437748"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631969"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Ansluta till och hantera ett Kubernetes-kluster via kubectl på din Azure Stack Edge Pro GPU-enhet
 
@@ -105,7 +105,7 @@ I den här metoden skapar du ett namn område och en användare. Sedan kopplar d
 
 4. Konfigurations filen ska finnas i `.kube` mappen i din användar profil på den lokala datorn. Kopiera filen till mappen i din användar profil.
 
-    ![Plats för konfigurations filen på klienten](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![Plats för konfigurations filen på klienten](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 
 5. Koppla namn området till den användare som du skapade. Ange:
 
@@ -169,9 +169,9 @@ Nu kan du distribuera dina program i namn området och sedan Visa dessa program 
 
 Om du vill ta bort Kubernetes-klustret måste du ta bort IoT Edge-konfigurationen.
 
-Detaljerade anvisningar finns i [ta bort IoT Edge konfiguration](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+Detaljerade anvisningar finns i [hantera IoT Edge konfiguration](azure-stack-edge-gpu-manage-compute.md#manage-iot-edge-configuration).
    
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Distribuera ett tillstånds lösa program på Azure Stack Edge Pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Distribuera ett tillstånds lösa program på Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).

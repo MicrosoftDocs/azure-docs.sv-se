@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719023"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200699"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Hämta loggar från IoT Edge-distributioner
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Hämta loggar från dina IoT Edge-distributioner utan att behöva fysisk eller SSH-åtkomst till enheten med hjälp av de direkta metoderna som ingår i modulen för IoT Edge agent. Direkta metoder implementeras på enheten och kan sedan anropas från molnet. IoT Edge agenten innehåller direkta metoder som hjälper dig att övervaka och hantera dina IoT Edge-enheter via fjärr anslutning. De direkta metoder som beskrivs i den här artikeln är allmänt tillgängliga i 1.0.10-versionen.
 

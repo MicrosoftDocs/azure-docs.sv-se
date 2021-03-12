@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: f10978107f80e7dea4e6d5ad40c078c55f225c2d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102494796"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614351"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Snabb start: Anslut och fråga med Azure CLI med Azure Database for PostgreSQL-flexibel Server
 
@@ -34,7 +34,7 @@ Det första vi ska skapa är en hanterad PostgreSQL-Server. Kör följande skrip
 ```azurecli
 az postgres flexible-server create --public-access <your-ip-address>
 ```
-Du kan ange ytterligare argument för det här kommandot för att anpassa det. Se alla argument för [AZ postgres Flexible Server Create](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az_postgres_flexible_server_create).
+Du kan ange ytterligare argument för det här kommandot för att anpassa det. Se alla argument för [AZ postgres Flexible Server Create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create).
 
 ## <a name="view-all-the-arguments"></a>Visa alla argument
 Du kan visa alla argument för det här kommandot med ```--help``` argumentet. 

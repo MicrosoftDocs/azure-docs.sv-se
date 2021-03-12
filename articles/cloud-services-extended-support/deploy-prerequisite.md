@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e5994f05187cd25996bcc007d27a7e10eb76427
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728118"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232536"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
@@ -120,7 +120,7 @@ Distributioner som använder gamla plugin-program för fjärr skrivbord måste t
 
 ## <a name="key-vault-creation"></a>Skapa Key Vault 
 
-Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault för lämpliga behörigheter så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Key Vault kan skapas via [Azure Portal](../key-vault/general/quick-create-portal.md)och  [PowerShell](../key-vault/general/quick-create-powershell.md). Key Vault måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault för lämpliga behörigheter så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Du kan skapa ett nyckel valv i [Azure Portal](../key-vault/general/quick-create-portal.md) eller genom att använda [PowerShell](../key-vault/general/quick-create-powershell.md). Nyckel valvet måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Nästa steg 
 - Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).

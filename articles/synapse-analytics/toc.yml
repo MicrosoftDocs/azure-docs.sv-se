@@ -559,6 +559,8 @@
       items:
         - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
+        - name: Konfigurationer för Apache Spark pool
+          href: ./spark/apache-spark-pool-configurations.md
         - name: Data Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
         - name: Beteende för Apache Spark-autoskalning

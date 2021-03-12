@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 4e9ea1ec85067a59c5ee6bcd27993e294559f410
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561355"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232094"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionstillgänglighet och datahemvist
 
@@ -51,12 +51,14 @@ Med hjälp av Azure Portal-eller Azure Resource Manager-API: er med kommunikatio
 
 ### <a name="telephone-number-management"></a>Hantering av telefonnummer
 
-Azure Communication Services underhåller en katalog med telefonnummer som är associerade med en kommunikations tjänst resurs. Använd dessa API: er för att hämta telefonnummer och ta bort dem:
+Azure Communication Services underhåller en katalog med telefonnummer som är associerade med en kommunikations tjänst resurs. Använd [administrations-API: er för telefonnummer](/rest/api/communication/phonenumberadministration) för att hämta telefonnummer och ta bort dem:
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>Chatt
 
-Chatt-trådar och meddelanden behålls tills de tas bort explicit. En helt inaktiv tråd tas bort automatiskt efter 30 dagar. Använd [chatt-API: er](/rest/api/communication/chat/deletechatmessage/deletechatmessage) för att hämta, Visa, uppdatera och ta bort meddelanden.
+Chatt-trådar och meddelanden behålls tills de tas bort explicit. En helt inaktiv tråd tas bort automatiskt efter 30 dagar. Använd [chatt-API: er](/rest/api/communication/chat/chatthread) för att hämta, Visa, uppdatera och ta bort meddelanden.
 
 - `Get Thread`
 - `Get Message`

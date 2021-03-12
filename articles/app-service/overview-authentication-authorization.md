@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095244"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632075"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Autentisering och auktorisering i Azure App Service och Azure Functions
 
-Azure App Service tillhandahåller stöd för inbyggd autentisering och auktorisering, så att du kan logga in användare och få åtkomst till data genom att skriva minimalt eller ingen kod i din webbapp, RESTful-API och mobil Server del och även [Azure Functions](../azure-functions/functions-overview.md). Den här artikeln beskriver hur App Service underlättar autentisering och auktorisering för din app.
+Azure App Service tillhandahåller stöd för inbyggd autentisering och auktorisering (ibland kallat "enkel autentisering"), så du kan logga in användare och få åtkomst till data genom att skriva minimal eller ingen kod i din webbapp, RESTful-API och mobil Server del och även [Azure Functions](../azure-functions/functions-overview.md). Den här artikeln beskriver hur App Service underlättar autentisering och auktorisering för din app.
 
 Säker autentisering och auktorisering kräver djupgående förståelse av säkerhet, inklusive Federation, kryptering, [JSON Web token (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) -hantering, [beviljande typer](https://oauth.net/2/grant-types/)och så vidare. App Service tillhandahåller de här verktygen så att du kan lägga mer tid och energi på att tillhandahålla affärs värde till din kund.
 
@@ -24,9 +24,6 @@ Säker autentisering och auktorisering kräver djupgående förståelse av säke
 >
 > ASP.NET Core 2,1 och senare versioner som är värd för App Service har redan korrigerats för den här avbrytande ändringen och hanterar Chrome 80 och äldre webbläsare på lämpligt sätt. Dessutom har samma korrigerings fil för ASP.NET Framework-4.7.2 distribuerats på App Service instanserna i januari 2020. Mer information finns i [Azure App Service cookie-uppdatering för SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
-
-> [!NOTE]
-> Autentiserings-/auktoriserings funktionen kallas även för "enkel autentisering".
 
 > [!NOTE]
 > Om du aktiverar den här funktionen så kommer **alla** icke-säkra HTTP-förfrågningar till programmet att omdirigeras automatiskt till https, oavsett App Service konfigurations inställningen för att [tvinga https](configure-ssl-bindings.md#enforce-https). Om det behövs kan du inaktivera detta via `requireHttps` inställningen i [konfigurations filen för autentiseringsinställningarna](app-service-authentication-how-to.md#configuration-file-reference), men du måste sedan vara noga med att se till att inga säkerhetstoken någonsin överförs över osäkra http-anslutningar.

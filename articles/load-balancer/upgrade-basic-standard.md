@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 0f8476a8759dd445500c2eb6c029cd618a7ff8ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 125d4a02d06e2792f9a2a4e646c3788dcf223318
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718989"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612838"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Uppgradera offentliga Azure-Load Balancer
 [Azure standard Load Balancer](load-balancer-overview.md) erbjuder en omfattande uppsättning funktioner och hög tillgänglighet genom zon redundans. Mer information om Load Balancer SKU finns i [jämförelse tabell](./skus.md#skus).
@@ -23,7 +23,7 @@ Det finns två steg i en uppgradering:
 2. Kör PowerShell-skriptet för att slutföra migreringen av uppgraderingen och trafiken.
 
 > [!IMPORTANT]
-> Skriptet är för närvarande under underhåll. Du hittar anvisningar [här](../virtual-network/virtual-network-public-ip-address-upgrade.md?tabs=option-upgrade-cli%2coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) om hur du uppgraderar offentliga IP-adresser från Basic SKU och standard-SKU.
+> Skriptet är för närvarande under underhåll. Du hittar anvisningar [här](../virtual-network/virtual-network-public-ip-address-upgrade.md) om hur du uppgraderar offentliga IP-adresser från Basic SKU och standard-SKU.
 
 ## <a name="upgrade-overview"></a>Översikt över uppgradering
 

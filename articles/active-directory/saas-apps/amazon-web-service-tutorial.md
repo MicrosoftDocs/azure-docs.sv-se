@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Amazon Web Services (AWS) | Microsoft Docs'
-description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Amazon Web Services (AWS).
+title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med AWS Single-Account åtkomst | Microsoft Docs'
+description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och AWS Single-Account åtkomst.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/08/2020
+ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f217a13ce68b42d3f9ee2dec4bfae47a0b64b0ca
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689019"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200040"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Amazon Web Services (AWS)
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med AWS Single-Account åtkomst
 
-I den här självstudien får du lära dig hur du integrerar Amazon Web Services (AWS) med Azure Active Directory (Azure AD). När du integrerar Amazon Web Services (AWS) med Azure AD kan du:
+I den här självstudien får du lära dig hur du integrerar AWS-Single-Account åtkomst med Azure Active Directory (Azure AD). När du integrerar AWS Single-Account åtkomst med Azure AD kan du:
 
-* Kontroll i Azure AD som har åtkomst till Amazon Web Services (AWS).
-* Gör det möjligt för användarna att logga in automatiskt till Amazon Web Services (AWS) med sina Azure AD-konton.
+* Kontroll i Azure AD som har åtkomst till AWS Single-Account åtkomst.
+* Gör det möjligt för användarna att logga in automatiskt för att AWS Single-Account åtkomst med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>Förstå de olika AWS-programmen i Azure AD-programgalleriet
@@ -78,41 +78,41 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Amazon Web Services (AWS) stöder **SP- och IDP**-initierad enkel inloggning
+* AWS Single-Account åtkomst stöder **SP-och IDP** -initierad SSO.
 
 > [!NOTE]
 > ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Lägga till Amazon Web Services (AWS) från galleriet
+## <a name="adding-aws-single-account-access-from-the-gallery"></a>Lägga till AWS Single-Account åtkomst från galleriet
 
-För att konfigurera integreringen av Amazon Web Services (AWS) med Azure AD måste du lägga till Amazon Web Services (AWS) från galleriet till din lista över hanterade SaaS-appar.
+Om du vill konfigurera integreringen av AWS Single-Account åtkomst till Azure AD måste du lägga till AWS Single-Account åtkomst från galleriet till listan över hanterade SaaS-appar.
 
 1. Logga in på Azure Portal med ett arbets konto, skol konto eller personliga Microsoft-konto.
 1. I Azure Portal söker du efter och väljer **Azure Active Directory**.
 1. I menyn Azure Active Directory översikt väljer du **företags program**  >  **alla program**.
 1. Välj **nytt program** för att lägga till ett program.
-1. I avsnittet **Lägg till från galleriet** , Skriv **Amazon Web Services (AWS)** i sökrutan.
-1. Välj **Amazon Web Services (AWS)** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
+1. I avsnittet **Lägg till från galleriet** , skriv **AWS Single-Account åtkomst** i sökrutan.
+1. Välj **AWS Single-Account åtkomst** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>Konfigurera och testa Azure AD SSO för Amazon Web Services (AWS)
+## <a name="configure-and-test-azure-ad-sso-for-aws-single-account-access"></a>Konfigurera och testa Azure AD SSO för AWS Single-Account åtkomst
 
-Konfigurera och testa Azure AD SSO med Amazon Web Services (AWS) med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Amazon Web Services (AWS).
+Konfigurera och testa Azure AD SSO med AWS Single-Account åtkomst med hjälp av en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i AWS Single-Account åtkomst.
 
-Utför följande steg för att konfigurera och testa Azure AD SSO med Amazon Web Services (AWS):
+Utför följande steg för att konfigurera och testa Azure AD SSO med AWS Single-Account åtkomst:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
     1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
-1. **[Konfigurera Amazon Web Services (AWS) SSO](#configure-amazon-web-services-aws-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
-    1. **[Skapa Amazon Web Services (AWS)-test användare](#create-amazon-web-services-aws-test-user)** – om du vill ha en motsvarighet till B. Simon i Amazon Web Services (AWS) som är länkad till Azure AD-representation av användare.
-    1. **[Konfigurera roll etablering i Amazon Web Services (AWS)](#how-to-configure-role-provisioning-in-amazon-web-services-aws)**
+1. **[Konfigurera AWS Single-Account åtkomst till SSO](#configure-aws-single-account-access-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
+    1. **[Skapa AWS Single-Account Access test User](#create-aws-single-account-access-test-user)** – om du vill ha en motsvarighet till B. Simon i AWS Single-Account åtkomst som är länkad till Azure AD-representation av användare.
+    1. **[Konfigurera roll etablering i AWS Single-Account åtkomst](#how-to-configure-role-provisioning-in-aws-single-account-access)**
 1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. På sidan **Amazon Web Services (AWS)** program integration i Azure Portal, letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal på sidan **AWS Single-Account åtkomst till** program integration hittar du avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
@@ -130,7 +130,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig AWS-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Namn  | Källattribut  | Namnområde |
+    | Name  | Källattribut  | Namnområde |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Roll | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -151,7 +151,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Länk för nedladdning av certifikatet](./media/amazon-web-service-tutorial/certificate.png)
 
-1. I avsnittet **konfigurera Amazon Web Services (AWS)** kopierar du lämpliga URL: er baserat på ditt krav.
+1. I avsnittet **Konfigurera AWS Single-Account åtkomst** kopierar du lämpliga URL: er baserat på ditt krav.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
@@ -170,17 +170,17 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Amazon Web Services (AWS).
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till AWS Single-Account åtkomst.
 
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
-1. I listan program väljer du **Amazon Web Services (AWS)**.
+1. I listan program väljer du **AWS Single-Account Access**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-## <a name="configure-amazon-web-services-aws-sso"></a>Konfigurera Amazon Web Services (AWS) SSO
+## <a name="configure-aws-single-account-access-sso"></a>Konfigurera AWS Single-Account åtkomst till SSO
 
 1. Logga in på din AWS företags webbplats som administratör i ett annat webbläsarfönster.
 
@@ -343,7 +343,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     c. Välj **Stäng**.
 
-### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>Konfigurera roll etablering i Amazon Web Services (AWS)
+### <a name="how-to-configure-role-provisioning-in-aws-single-account-access"></a>Konfigurera roll etablering i AWS Single-Account åtkomst
 
 1. I AWS-appen i Azure AD-hanteringsportalen går du till **etablering**.
 
@@ -371,9 +371,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 > [!NOTE]
 > När du har sparat autentiseringsuppgifterna för etablering måste du vänta tills den inledande synkroniseringen har körts. Synkronisering tar vanligt vis cirka 40 minuter att slutföra. Du kan se statusen längst ned på **etablerings** sidan under **aktuell status**.
 
-### <a name="create-amazon-web-services-aws-test-user"></a>Skapa Amazon Web Services (AWS)-testanvändare
+### <a name="create-aws-single-account-access-test-user"></a>Skapa AWS Single-Account åtkomst test användare
 
-Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i Amazon Web Services (AWS). För Amazon Web Services (AWS) krävs det inte att en användare skapas i deras system för enkel inloggning, så du behöver inte göra någonting här.
+Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i AWS Single-Account åtkomst. AWS Single-Account Access behöver inte ha någon användare som kan skapas i systemet för SSO, så du behöver inte utföra några åtgärder här.
 
 ## <a name="test-sso"></a>Testa SSO
 
@@ -381,26 +381,28 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 #### <a name="sp-initiated"></a>SP initierad:
 
-* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Amazon Web Services (AWS)-inloggnings-URL där du kan starta inloggnings flödet.  
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till AWS Single-Account åtkomst inloggnings-URL där du kan starta inloggnings flödet.  
 
-* Gå till Amazon Web Services (AWS) inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
+* Gå till AWS Single-Account åtkomst inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
 #### <a name="idp-initiated"></a>IDP initierad:
 
-* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den Amazon Web Services (AWS) som du ställer in SSO för. 
+* Klicka på **testa det här programmet** i Azure Portal så ska du vara inloggad automatiskt på den AWS Single-Account åtkomst som du ställer in i SSO 
 
-Du kan också använda Microsoft Access-panelen för att testa programmet i vilket läge som helst. När du klickar på panelen Amazon Web Services (AWS) i åtkomst panelen, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på den Amazon Web Services (AWS) som du har konfigurerat SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på AWS Single-Account åtkomst panelen i Mina appar, om den har kon figurer ATS i SP-läge, kommer du att omdirigeras till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på AWS Single-Account åtkomst som du konfigurerar SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="known-issues"></a>Kända problem
 
- * I avsnittet om **etablering** visas en "inläsning..." i underavsnittet **mappningar** . meddelande, och visar aldrig mappningar för attribut. Det enda etablerings arbets flödet som stöds idag är att importera roller från AWS till Azure AD för val under en användar-eller grupp tilldelning. Attributens mappningar för detta är för bestämda och kan inte konfigureras.
+* AWS Single-Account åtkomst etablerings integrering kan endast användas för att ansluta till AWS offentliga moln slut punkter. AWS Single-Account åtkomst etablerings integrering kan inte användas för att få åtkomst till AWS myndighets miljöer.
+ 
+* I avsnittet om **etablering** visas en "inläsning..." i underavsnittet **mappningar** . meddelande, och visar aldrig mappningar för attribut. Det enda etablerings arbets flödet som stöds idag är att importera roller från AWS till Azure AD för val under en användar-eller grupp tilldelning. Attributens mappningar för detta är för bestämda och kan inte konfigureras.
 
- * Avsnittet **Etablering** stöder endast inmatning av en uppsättning autentiseringsuppgifter för en AWS-klientorganisation i taget. Alla importerade roller skrivs till `appRoles` egenskapen för Azure AD- [ `servicePrincipal` objektet](/graph/api/resources/serviceprincipal?view=graph-rest-beta) för AWS-klienten.
+* Avsnittet **Etablering** stöder endast inmatning av en uppsättning autentiseringsuppgifter för en AWS-klientorganisation i taget. Alla importerade roller skrivs till `appRoles` egenskapen för Azure AD- [ `servicePrincipal` objektet](/graph/api/resources/serviceprincipal?view=graph-rest-beta) för AWS-klienten.
 
-   Flera AWS-klienter (som representeras av `servicePrincipals` ) kan läggas till i Azure AD från galleriet för etablering. Det finns dock ett känt problem, men det går inte att automatiskt skriva alla importerade roller från de flera AWS `servicePrincipals` som används för etablering i den enda `servicePrincipal` som används för SSO.
+  Flera AWS-klienter (som representeras av `servicePrincipals` ) kan läggas till i Azure AD från galleriet för etablering. Det finns dock ett känt problem, men det går inte att automatiskt skriva alla importerade roller från de flera AWS `servicePrincipals` som används för etablering i den enda `servicePrincipal` som används för SSO.
 
-   Som en lösning kan du använda [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) för att extrahera alla `appRoles` importerade till varje AWS `servicePrincipal` där etableringen har kon figurer ATS. Du kan senare lägga till de här roll strängarna i AWS `servicePrincipal` där SSO är konfigurerat.
+  Som en lösning kan du använda [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) för att extrahera alla `appRoles` importerade till varje AWS `servicePrincipal` där etableringen har kon figurer ATS. Du kan senare lägga till de här roll strängarna i AWS `servicePrincipal` där SSO är konfigurerat.
 
 * Roller måste uppfylla följande krav för att kunna importeras från AWS till Azure AD:
 
@@ -413,7 +415,7 @@ Du kan också använda Microsoft Access-panelen för att testa programmet i vilk
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Amazon Web Services (AWS) kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+När du har konfigurerat AWS Single-Account åtkomst kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
