@@ -3,12 +3,12 @@ title: Privata slutpunkter
 description: Förstå processen med att skapa privata slut punkter för Azure Backup och scenarier där privata slut punkter används för att upprätthålla säkerheten för dina resurser.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728220"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224715"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privata slut punkter för Azure Backup
 
@@ -24,7 +24,7 @@ Den här artikeln hjälper dig att förstå processen med att skapa privata slut
 - En privat slut punkts anslutning för säkerhets kopiering använder totalt 11 privata IP-adresser i ditt undernät, inklusive de som används av Azure Backup för lagring. Det här antalet kan vara högre (upp till 25) för vissa Azure-regioner. Vi föreslår att du har tillräckligt med privata IP-adresser tillgängliga när du försöker skapa privata slut punkter för säkerhets kopiering.
 - Även om ett Recovery Services valv används av (både) Azure Backup och Azure Site Recovery, diskuterar den här artikeln användning av privata slut punkter för enbart Azure Backup.
 - Azure Active Directory stöder för närvarande inte privata slut punkter. IP-adresser och FQDN: er som krävs för att Azure Active Directory ska fungera i en region måste vara tillåtna utgående åtkomst från det skyddade nätverket när du säkerhetskopierar databaser i virtuella Azure-datorer och säkerhets kopiering med MARS-agenten. Du kan också använda NSG-Taggar och Azure Firewall-taggar för att tillåta åtkomst till Azure AD, efter vad som är tillämpligt.
-- Virtuella nätverk med nätverks principer stöds inte för privata slut punkter. Du måste inaktivera nätverks principer innan du fortsätter.
+- Virtuella nätverk med nätverks principer stöds inte för privata slut punkter. Du måste [inaktivera nätverks principer](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) innan du fortsätter.
 - Du måste registrera om Recovery Services Resource Provider med prenumerationen om du registrerade den innan maj 1 2020. Om du vill registrera providern igen går du till prenumerationen i Azure Portal, navigerar till **resurs leverantören** i det vänstra navigerings fältet och väljer sedan **Microsoft. RecoveryServices** och väljer **Omregistrera**.
 - [Återställning mellan regioner](backup-create-rs-vault.md#set-cross-region-restore) för SQL och SAP HANA databas säkerhets kopieringar stöds inte om valvet har aktiverade privata slut punkter.
 - När du flyttar ett Recovery Services valv som redan använder privata slut punkter till en ny klient måste du uppdatera Recovery Services-valvet för att återskapa och konfigurera om valvets hanterade identitet och skapa nya privata slut punkter efter behov (som bör finnas i den nya klienten). Om detta inte är slutfört kommer säkerhets kopierings-och återställnings åtgärderna att börja fungera. Dessutom måste alla rollbaserade behörigheter för åtkomst kontroll (RBAC) som kon figurer ATS i prenumerationen konfigureras om.
@@ -297,6 +297,10 @@ När du använder MARS-agenten för att säkerhetskopiera lokala resurser, se ti
 
 Men om du tar bort privata slut punkter för valvet efter att en MARS-agent har registrerats på den, måste du registrera om behållaren med valvet. Du behöver inte sluta skydda dem.
 
+## <a name="deleting-private-endpoints"></a>Tar bort privata slut punkter
+
+Se [det här avsnittet](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete) om du vill veta hur du tar bort privata slut punkter.
+
 ## <a name="additional-topics"></a>Ytterligare information
 
 ### <a name="create-a-recovery-services-vault-using-the-azure-resource-manager-client"></a>Skapa ett Recovery Services valv med hjälp av Azure Resource Manager-klienten
@@ -554,4 +558,4 @@ A. När du har använt processen som beskrivs i den här artikeln behöver du in
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs om alla [säkerhetsfunktioner i Azure Backup](security-overview.md)
+- Läs om alla [säkerhetsfunktioner i Azure Backup](security-overview.md).

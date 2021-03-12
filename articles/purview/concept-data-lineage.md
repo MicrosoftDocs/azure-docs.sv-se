@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: ceb30cee194994e5b31db312f191194932c937b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554104"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200734"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Data härkomst i Azure avdelningens kontroll Data Catalog-klienten
 
-Den här artikeln innehåller en översikt över data härkomst i Azure avdelningens kontroll Data Catalog. Den innehåller också information om hur data system kan integreras med katalogen för att avbilda härkomst av data. Avdelningens kontroll kan samla in härkomst för data i olika delar av din organisations datafastighet och på olika förberedelse nivåer, inklusive:
+Den här artikeln innehåller en översikt över data härkomst i Azure avdelningens kontroll Data Catalog. Den innehåller också information om hur data system kan integreras med katalogen för att avbilda härkomst av data. Avdelningens kontroll kan samla in härkomst för data i olika delar av organisationens datafastighet och på olika förberedelse nivåer, inklusive:
 
 - Fullständigt RAW-data som mellanlagrats från olika plattformar
 - Transformerade och för beredda data

@@ -3,7 +3,7 @@ title: Infoga annonser på klient Sidan | Microsoft Docs
 description: Den här artikeln visar hur du infogar annonser i media på klient sidan.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263594"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014969"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Infoga annonser på klient Sidan
 

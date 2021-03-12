@@ -475,8 +475,6 @@
           items:
             - name: Hantera måttaviseringar
               href: alerts/alerts-metric.md
-            - name: Tillgänglighet
-              href: app/monitor-web-app-availability.md
             - name: Använda dynamiska tröskelvärden
               href: alerts/alerts-dynamic-thresholds.md
             - name: Enskilda aviseringar för många tidsserier

@@ -1,18 +1,18 @@
 ---
 title: Lista över klassificeringar som stöds
 description: Den här sidan visar de system klassificeringar som stöds i Azure avdelningens kontroll.
-author: animukherjee
+author: anmuk601
 ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 2/5/2021
-ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/05/2021
+ms.openlocfilehash: 60aede65f8217d46844398d0199ff7edca7f36a9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988306"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200809"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Klassificeringar som stöds i Azure avdelningens kontroll
 
@@ -59,7 +59,9 @@ Formatera
 - ett bindestreck
 - fyra siffror
 - ett bindestreck
-- en siffra som är oformaterad: nio efterföljande siffror som börjar med 0, 1, 2, 3, 6, 7 eller 8
+- en siffra
+
+Oformaterad: nio siffror i följd som börjar med 0, 1, 2, 3, 6, 7 eller 8
 
 ### <a name="keywords"></a>Nyckelord
 

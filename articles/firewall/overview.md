@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 02/24/2021
+ms.date: 03/10/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 6e5b553ea3be7e5b4b1d8cb396b35fdf2d5796a9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0982f0293b452c29a1c9fbb46cb24d47e70c0f5e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721777"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615575"
 ---
 # <a name="what-is-azure-firewall"></a>Vad är Azure Firewall?
 
@@ -83,6 +83,6 @@ Azure Firewall har följande kända problem:
 
 ## <a name="next-steps"></a>Nästa steg
 
+- [Snabb start: skapa en Azure-brandvägg och en brand Väggs princip – ARM-mall](../firewall-manager/quick-firewall-policy.md)
+- [Snabb start: Distribuera Azure-brandväggen med Tillgänglighetszoner ARM-mall](deploy-template.md)
 - [Självstudie: Distribuera och konfigurera Azure Firewall via Azure Portal](tutorial-firewall-deploy-portal.md)
-- [Distribuera Azure Firewall med hjälp av en mall](deploy-template.md)
-- [Skapa en testmiljö för Azure Firewall](scripts/sample-create-firewall-test.md)

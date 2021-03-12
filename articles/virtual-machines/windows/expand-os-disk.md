@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: af57bc396349286c3edcaefc8385ddbaec066226
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549608"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199490"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Utöka operativsystemenheten för en virtuell dator
 
@@ -49,21 +49,21 @@ När du skapar en ny virtuell dator i en resurs grupp genom att distribuera en a
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Skärm bild som visar fönstret disks med ett disk namn valt.":::
 
-4. På den vänstra menyn under **Inställningar** väljer du **konfiguration**.
+4. I den vänstra menyn under **Inställningar** väljer du **storlek + prestanda**.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Skärm bild som visar det konfigurations alternativ som valts i avsnittet Inställningar på menyn.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Skärm bild som visar alternativet storlek och prestanda som marker ATS i avsnittet Inställningar på menyn.":::
 
-5. I **storlek (GIB)** väljer du den disk storlek som du vill använda.
+5. I **storlek + prestanda** väljer du den disk storlek som du vill använda.
    
    > [!WARNING]
    > Den nya storleken måste vara större än den befintliga. Det högsta tillåtna antalet är 2 048 GB för OS-diskar. (Det är möjligt att expandera VHD-blobben utöver den storleken, men operativ systemet fungerar endast med de första 2 048 GB utrymme.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Skärm bild som visar konfigurations fönstret med den valda disk storleken.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Skärm bild som visar fönstret storlek och prestanda med den valda disk storleken.":::
 
-6. Välj **Spara**.
+6. Välj **ändra storlek** längst ned på sidan.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Skärm bild som visar konfigurations fönstret med knappen Spara vald.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Skärm bild som visar fönstret storlek och prestanda med knappen Ändra storlek markerad.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Ändra storlek på en hanterad disk med hjälp av PowerShell

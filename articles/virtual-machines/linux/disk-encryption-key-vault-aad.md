@@ -2,18 +2,19 @@
 title: Skapa och konfigurera ett nyckel valv för Azure Disk Encryption med Azure AD (tidigare version)
 description: Den här artikeln innehåller förutsättningar för att använda Microsoft Azure disk kryptering för virtuella Linux-datorer.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3862a07eea2dcec3e67c0145fcdcff8140d19ec3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20cb94dd8bfca6adeba151d2169b1896cc7ff5a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746774"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557887"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Skapa och konfigurera ett nyckel valv för Azure Disk Encryption med Azure AD (tidigare version) för virtuella Linux-datorer
 
@@ -61,7 +62,7 @@ Du kan skapa ett nyckel valv med Azure PowerShell med hjälp av cmdleten [New-Az
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. Observera **valv namnet** , **resurs gruppens namn** , **resurs-ID** , **valv-URI** och **objekt-ID** som returneras för senare användning när du krypterar diskarna. 
+4. Observera **valv namnet**, **resurs gruppens namn**, **resurs-ID**, **valv-URI** och **objekt-ID** som returneras för senare användning när du krypterar diskarna. 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> Skapa ett nyckel valv med Azure CLI
@@ -80,14 +81,14 @@ Du kan hantera ditt nyckel valv med Azure CLI med hjälp av AZ-kommandon för ny
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. Observera **valv namnet** (namn), **resurs gruppens namn** , **resurs-ID** (ID), **valv-URI** och **objekt-ID** som returneras för användning senare. 
+4. Observera **valv namnet** (namn), **resurs gruppens namn**, **resurs-ID** (ID), **valv-URI** och **objekt-ID** som returneras för användning senare. 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a><a name="bkmk_KVRM"></a> Skapa ett nyckel valv med en Resource Manager-mall
 
 Du kan skapa ett nyckel valv med hjälp av [Resource Manager-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. I mallen för Azure snabb start klickar **du på distribuera till Azure** .
-2. Välj prenumeration, resurs grupp, resurs grupp plats, Key Vault namn, objekt-ID, juridiska villkor och avtal och klicka sedan på **köp** . 
+1. I mallen för Azure snabb start klickar **du på distribuera till Azure**.
+2. Välj prenumeration, resurs grupp, resurs grupp plats, Key Vault namn, objekt-ID, juridiska villkor och avtal och klicka sedan på **köp**. 
 
 
 ## <a name="set-up-an-azure-ad-app-and-service-principal"></a><a name="bkmk_ADapp"></a> Konfigurera en Azure AD-App och tjänstens huvud namn 
@@ -161,10 +162,10 @@ az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the A
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> Ange åtkomst princip för nyckel valvet för Azure AD-appen med portalen
 
 1. Öppna resurs gruppen med nyckel valvet.
-2. Välj ditt nyckel valv, gå till **åtkomst principer** och klicka sedan på **Lägg till ny** .
+2. Välj ditt nyckel valv, gå till **åtkomst principer** och klicka sedan på **Lägg till ny**.
 3. Under **Välj huvud konto** söker du efter det Azure AD-program som du skapade och väljer det. 
-4. För **nyckel behörigheter** kontrollerar du **rad brytnings nyckeln** under **kryptografiska åtgärder** .
-5. För **hemliga behörigheter** markerar du **Ange** under **hemliga hanterings åtgärder** .
+4. För **nyckel behörigheter** kontrollerar du **rad brytnings nyckeln** under **kryptografiska åtgärder**.
+5. För **hemliga behörigheter** markerar du **Ange** under **hemliga hanterings åtgärder**.
 6. Spara åtkomst principen genom att klicka på **OK** . 
 
 ![Azure Key Vault kryptografiska åtgärds brytnings nyckel](./media/disk-encryption/keyvault-portal-fig3.png)
@@ -217,10 +218,10 @@ Använd [AZ-uppdateringen](/cli/azure/keyvault#az-keyvault-update) för att akti
 
 ### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a><a name="bkmk_KVperrm"></a> Ange avancerade åtkomst principer för Key Vault via Azure Portal
 
-1. Välj ditt nyckel valv, gå till **åtkomst principer** och **Klicka om du vill visa avancerade åtkomst principer** .
-2. Markera rutan **ge till gång till Azure Disk Encryption för volym kryptering** .
-3. Välj **Aktivera åtkomst till Azure Virtual Machines för distribution** och/eller **aktivera åtkomst till Azure Resource Manager för mall distribution** , om det behövs. 
-4. Klicka på **Spara** .
+1. Välj ditt nyckel valv, gå till **åtkomst principer** och **Klicka om du vill visa avancerade åtkomst principer**.
+2. Markera rutan **ge till gång till Azure Disk Encryption för volym kryptering**.
+3. Välj **Aktivera åtkomst till Azure Virtual Machines för distribution** och/eller **aktivera åtkomst till Azure Resource Manager för mall distribution**, om det behövs. 
+4. Klicka på **Spara**.
 
 ![Avancerade åtkomst principer för Azure Key Vault](./media/disk-encryption/keyvault-portal-fig4.png)
 

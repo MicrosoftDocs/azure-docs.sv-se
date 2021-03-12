@@ -136,8 +136,10 @@
       items:
         - name: Skala ett AKS-kluster
           href: scale-cluster.md
-        - name: Stoppa ett AKS-kluster (förhandsversion)
+        - name: Stoppa ett AKS-kluster
           href: start-stop-cluster.md
+        - name: Använd planerat underhåll (förhands granskning)
+          href: planned-maintenance.md
         - name: Uppgradera ett AKS-kluster
           href: upgrade-cluster.md
         - name: Använda serviceavtal för drifttid

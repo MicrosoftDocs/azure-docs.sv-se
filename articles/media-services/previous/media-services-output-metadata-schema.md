@@ -1,7 +1,7 @@
 ---
 title: Schema för Azure Media Services utdata-metadata | Microsoft Docs
 description: Den här artikeln ger en översikt över Azure Media Services schemat för utdata.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 519aa158d60eae97eb4c1b792bcecfc8a6c066e0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261333"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008305"
 ---
 # <a name="output-metadata"></a>Metadata för utdata
 
@@ -40,7 +40,7 @@ Du hittar den fullständiga schema koden och XML-exemplet i slutet av den här a
 Samling av AssetFile-poster för kodnings jobbet.  
 
 ### <a name="child-elements"></a>Underordnade element
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |Ett AssetFile-element som ingår i AssetFiles-samlingen. |
 
@@ -50,12 +50,12 @@ Du hittar ett XML-exempel med [XML-](#xml)exempel.
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Namn**<br/><br/> Krävs |**XS: String** |Medie till gångens fil namn. |
-| **Storlek**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: Long** |Storlek på till gångs filen i byte. |
-| **Varaktighet**<br/><br/> Krävs |**XS: duration** |Innehållets uppspelnings varaktighet. |
+| **Namn**<br/><br/> Obligatorisk |**XS: String** |Medie till gångens fil namn. |
+| **Storlek**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: Long** |Storlek på till gångs filen i byte. |
+| **Varaktighet**<br/><br/> Obligatorisk |**XS: duration** |Innehållets uppspelnings varaktighet. |
 
 ### <a name="child-elements"></a>Underordnade element
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **Källor** |Samling med indatafiler/källfiler, som bearbetades för att skapa den här AssetFile. Mer information finns i käll element. |
 | **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Varje fysisk AssetFile kan innehålla i noll eller flera videor spårar överlagrad i ett lämpligt behållar format. Mer information finns i VideoTracks-element. |
@@ -67,7 +67,7 @@ Samling med indatafiler/källfiler, som bearbetades för att skapa den här Asse
 Du hittar ett XML-exempel med [XML-](#xml)exempel.  
 
 ### <a name="child-elements"></a>Underordnade element
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **Källa**<br/><br/> minOccurs = "1" maxOccurs = "obunden" |En indata-/käll fil som används när du skapar den här till gången. Mer information finns i käll element. |
 
@@ -79,7 +79,7 @@ Du hittar ett XML-exempel med [XML-](#xml)exempel.
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Namn**<br/><br/> Krävs |**XS: String** |Fil namn för indatakälla. |
+| **Namn**<br/><br/> Obligatorisk |**XS: String** |Fil namn för indatakälla. |
 
 ## <a name="videotracks-element"></a><a name="VideoTracks"></a> VideoTracks-element
 Varje fysisk AssetFile kan innehålla i noll eller flera videor spårar överlagrad i ett lämpligt behållar format. Elementet **VideoTracks** representerar en samling med alla video spår.  
@@ -87,7 +87,7 @@ Varje fysisk AssetFile kan innehålla i noll eller flera videor spårar överlag
 Du hittar ett XML-exempel med [XML-](#xml)exempel.  
 
 ### <a name="child-elements"></a>Underordnade element
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "obunden" |Ett särskilt video spår i den överordnade AssetFile. Mer information finns i VideoTrack-element. |
 
@@ -99,18 +99,18 @@ Du hittar ett XML-exempel med [XML-](#xml)exempel.
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Identitet**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Noll-baserat index för det här video spåret. **Obs:**  Detta **ID** är inte nödvändigt vis det TrackID som används i en MP4-fil. |
-| **FourCC**<br/><br/> Krävs |**XS: String** |Video-codec FourCC-kod. |
+| **Identitet**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Noll-baserat index för det här video spåret. **Obs:**  Detta **ID** är inte nödvändigt vis det TrackID som används i en MP4-fil. |
+| **FourCC**<br/><br/> Obligatorisk |**XS: String** |Video-codec FourCC-kod. |
 | **Profil** |**XS: String** |H264,-profil (gäller endast H264,-codec). |
 | **Nivå** |**XS: String** |H264,-nivå (gäller endast H264,-codec). |
-| **LED**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Kodad video bredd i bild punkter. |
-| **Våghöjd**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Kodad video höjd i bild punkter. |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: Double** |Täljare för bild förhållande i bild förhållande. |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: Double** |Nämnare för bild förhållande i bild. |
-| **Bildfrekvens**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: decimal** |Uppmätt video bild Rute frekvens i. 3F-format. |
-| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: decimal** |Förinställt mål video bild Rute frekvens i. 3F-format. |
-| **Hastigheten**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Genomsnittlig video bit hastighet i kilobit per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna. |
-| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Genomsnittlig bit hastighet för mål för det här video spåret enligt begäran via kodnings inställningen i kilobit per sekund. |
+| **Bredd**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Kodad video bredd i bild punkter. |
+| **Höjd**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Kodad video höjd i bild punkter. |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: Double** |Täljare för bild förhållande i bild förhållande. |
+| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: Double** |Nämnare för bild förhållande i bild. |
+| **Bildfrekvens**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: decimal** |Uppmätt video bild Rute frekvens i. 3F-format. |
+| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: decimal** |Förinställt mål video bild Rute frekvens i. 3F-format. |
+| **Hastigheten**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Genomsnittlig video bit hastighet i kilobit per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna. |
+| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Genomsnittlig bit hastighet för mål för det här video spåret enligt begäran via kodnings inställningen i kilobit per sekund. |
 | **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**XS: int** |Högsta GOP genomsnittlig bit hastighet för det här video spåret i kilobit per sekund. |
 
 ## <a name="audiotracks-element"></a><a name="AudioTracks"></a> AudioTracks-element
@@ -119,7 +119,7 @@ Varje fysisk AssetFile kan innehålla i noll eller flera ljud spår som är öve
 Du hittar ett XML-exempel med [XML-](#xml)exempel.  
 
 ### <a name="child-elements"></a>Underordnade element
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs = "1" maxOccurs = "obunden" |Ett särskilt ljud spår i den överordnade AssetFile. Mer information finns i AudioTrack-element. |
 
@@ -131,16 +131,16 @@ Du hittar ett XML-exempel med [XML-](#xml)exempel.
 ### <a name="attributes"></a>Attribut
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Identitet**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Noll-baserat index för det här ljud spåret. **Obs:**  Detta är inte nödvändigt vis TrackID som används i en MP4-fil. |
+| **Identitet**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Noll-baserat index för det här ljud spåret. **Obs:**  Detta är inte nödvändigt vis TrackID som används i en MP4-fil. |
 | **ADPCM** |**XS: String** |Ljud spårets codec-sträng. |
 | **EncoderVersion** |**XS: String** |Valfri kodare versions sträng som krävs för EAC3. |
-| **Kanaler**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Antal ljud kanaler. |
-| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Ljud samplings frekvens i sampel/SEK eller Hz. |
-| **Hastigheten**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Genomsnittlig ljud bit hastighet i bitar per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna. |
-| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Krävs |**XS: int** |Bitar per sampel för format typen wFormatTag. |
+| **Kanaler**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Antal ljud kanaler. |
+| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Ljud samplings frekvens i sampel/SEK eller Hz. |
+| **Hastigheten**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Genomsnittlig ljud bit hastighet i bitar per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna. |
+| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Obligatorisk |**XS: int** |Bitar per sampel för format typen wFormatTag. |
 
 ### <a name="child-elements"></a>Underordnade element
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Resultat parametrar för loudness-avläsning. Mer information finns i LoudnessMeteringResultParameters-element. |
 
@@ -153,15 +153,15 @@ Du hittar ett XML-exempel med [XML-](#xml)exempel.
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**XS: String** |**Dolby** Professional loudness-avläsning Development Kit-version. |
-| **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Krävs |**XS: int** |DialogNormalization som genererats via DPLM, krävs när LoudnessMetering har angetts |
-| **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive = "10"<br/><br/> Krävs |**XS: Float** |Integrerad loudness |
-| **IntegratedLoudnessUnit**<br/><br/> Krävs |**XS: String** |Integrerad loudness-enhet. |
-| **IntegratedLoudnessGatingMethod**<br/><br/> Krävs |**XS: String** |Hantera-ID |
+| **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Obligatorisk |**XS: int** |DialogNormalization som genererats via DPLM, krävs när LoudnessMetering har angetts |
+| **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive = "10"<br/><br/> Obligatorisk |**XS: Float** |Integrerad loudness |
+| **IntegratedLoudnessUnit**<br/><br/> Obligatorisk |**XS: String** |Integrerad loudness-enhet. |
+| **IntegratedLoudnessGatingMethod**<br/><br/> Obligatorisk |**XS: String** |Hantera-ID |
 | **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**XS: Float** |Tal innehåll över programmet, i procent. |
-| **SamplePeak**<br/><br/> Krävs |**XS: Float** |Det absoluta exempel värdets topp, sedan reset eller sen det senast tömdes, per kanal.  Enheter är dBFS. |
-| **SamplePeakUnit**<br/><br/> fast = "dBFS"<br/><br/> Krävs |**XS: anySimpleType** |Exempel på hög belastnings enhet. |
-| **TruePeak**<br/><br/> Krävs |**XS: Float** |Högsta sanna högsta värde, som per ITU-R BS. 1770-2, sedan återställt eller sedan det senast rensades, per kanal. Enheter är dBTP. |
-| **TruePeakUnit**<br/><br/> fast = "dBTP"<br/><br/> Krävs |**XS: anySimpleType** |True Top-enhet. |
+| **SamplePeak**<br/><br/> Obligatorisk |**XS: Float** |Det absoluta exempel värdets topp, sedan reset eller sen det senast tömdes, per kanal.  Enheter är dBFS. |
+| **SamplePeakUnit**<br/><br/> fast = "dBFS"<br/><br/> Obligatorisk |**XS: anySimpleType** |Exempel på hög belastnings enhet. |
+| **TruePeak**<br/><br/> Obligatorisk |**XS: Float** |Högsta sanna högsta värde, som per ITU-R BS. 1770-2, sedan återställt eller sedan det senast rensades, per kanal. Enheter är dBTP. |
+| **TruePeakUnit**<br/><br/> fast = "dBTP"<br/><br/> Obligatorisk |**XS: anySimpleType** |True Top-enhet. |
 
 ## <a name="schema-code"></a>Schema kod
 ```xml

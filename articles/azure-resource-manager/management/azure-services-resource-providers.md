@@ -3,12 +3,12 @@ title: Resurs leverantörer efter Azure-tjänster
 description: Visar en lista över alla resurs leverantörs namn områden för Azure Resource Manager och Azure-tjänsten för namn området visas.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: cc9793bfc0ca6cc0afbede241534453209685d94
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 65fa6a690f05a61e54bae2d22f4889c3193bcb1a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198939"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008713"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resursleverantörer för Azure-tjänster
 
@@ -98,7 +98,7 @@ De resurs leverantörer som är markerade med **-registrerade** registreras som 
 | Microsoft. HanaOnAzure | [SAP HANA på stora Azure-instanser](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft. HDInsight | [HDInsight](../../hdinsight/index.yml) |
-| Microsoft. HealthcareApis | [Azure API för FHIR](../../healthcare-apis/index.yml) |
+| Microsoft. HealthcareApis | [Azure API för FHIR](../../healthcare-apis/fhir/index.yml) |
 | Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. HybridNetwork  | [Privata gräns zoner](../../networking/edge-zones-overview.md) |

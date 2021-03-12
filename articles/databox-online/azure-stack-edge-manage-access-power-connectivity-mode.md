@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453069"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200210"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Hantera åtkomst, energi och anslutnings läge för din Azure Stack Edge Pro
 
@@ -103,7 +103,7 @@ Förutom det fullständigt anslutna standard läget kan enheten också köras i 
 
 - **Fullständigt ansluten** – detta är det normala standard läget där enheten fungerar. Både moln överföring och hämtning av data är aktiverat i det här läget. Du kan använda Azure Portal eller det lokala webb gränssnittet för att hantera enheten.
 
-- **Delvis frånkopplad** – i det här läget kan enheten inte ladda upp eller ladda ned några delnings data, men de kan hanteras via Azure Portal.
+- **Delvis ansluten** – i det här läget kan enheten inte ladda upp eller ladda ned några delnings data, men de kan hanteras via Azure Portal.
 
     Det här läget används vanligt vis i ett avgiftsbelagdt satellit nätverk och målet är att minimera användningen av nätverks bandbredd. Minimal nätverks förbrukning kan fortfarande uppstå för enhets övervaknings åtgärder.
 

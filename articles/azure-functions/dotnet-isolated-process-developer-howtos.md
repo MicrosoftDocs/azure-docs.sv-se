@@ -4,14 +4,14 @@ description: Lär dig hur du skapar och felsöker C#-funktioner med hjälp av .N
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 70eacc5ec7f6adb65ba6e01c55acc6c6e3075ca9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584247"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201372"
 ---
-# <a name="develop-and-publish-net-5-function-using-azure-functions"></a>Utveckla och publicera .NET 5-funktionen med hjälp av Azure Functions 
+# <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Utveckla och publicera .NET 5-funktioner med hjälp av Azure Functions 
 
 Den här artikeln visar hur du arbetar med C#-funktioner med hjälp av .NET 5,0, som körs utanför processen från Azure Functions Runtime. Du får lära dig att skapa, felsöka lokalt och publicera de här .NET-isolerade process funktionerna i Azure. I Azure körs dessa funktioner i en isolerad process som stöder .NET 5,0. Mer information finns i [Guide för att köra funktioner i .net 5,0 i Azure](dotnet-isolated-process-guide.md).
 
@@ -152,7 +152,7 @@ Nu kan du köra `func start` kommandot från roten i projektmappen för att komp
  
 1. I Azure Functions runtime-utdata noterar du process-ID: t för den värd process som du kopplar en fel sökare till. Observera även URL: en för din lokala funktion.
 
-1. Från **fel söknings** menyn i Visual Studio väljer du **Anslut till process...**, leta upp den dotnet.exe processen som matchar process-ID: t och välj **bifoga**. 
+1. Från **fel söknings** menyn i Visual Studio väljer du **Anslut till process...**, leta upp den process som matchar process-ID och välj **bifoga**. 
     
     :::image type="content" source="media/dotnet-isolated-process-developer-howtos/attach-to-process.png" alt-text="Koppla fel söknings programmet till funktionens värd process":::    
 

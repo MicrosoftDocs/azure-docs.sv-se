@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard schema | Microsoft Docs
 description: I den här artikeln beskrivs några av elementen och typerna av XML-schemat som Media Encoder Standard för inställningar baseras på.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: f82e0c3f76dba05c3404b11e07c7130119ce0b9d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261520"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015666"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-schema
 
@@ -41,7 +41,7 @@ Definierar en kodning för förval.
 
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Version**<br/><br/> Krävs |**XS: decimal** |För inställnings versionen. Följande begränsningar gäller: XS: fractionDigits Value = "1" och XS: minInclusive Value = "1", t. ex. **version = "1.0"**. |
+| **Version**<br/><br/> Obligatorisk |**XS: decimal** |För inställnings versionen. Följande begränsningar gäller: XS: fractionDigits Value = "1" och XS: minInclusive Value = "1", t. ex. **version = "1.0"**. |
 
 ## <a name="encoding"></a><a name="Encoding"></a> Inställning
 Innehåller en sekvens med följande element:  
@@ -64,7 +64,7 @@ Innehåller en sekvens med följande element:
 | **TwoPass**<br/><br/> minOccurs = "0" |**XS: Boolean** |För närvarande stöds endast en-pass-kodning. |
 | **KeyFrameInterval**<br/><br/> minOccurs = "0"<br/><br/> **standard = "00:00:02"** |**XS: Time** |Anger det fasta avståndet mellan IDR-ramar i antal sekunder. Kallas även GOP varaktighet. Se **SceneChangeDetection** för att kontrol lera om kodaren kan avvika från det här värdet. |
 | **SceneChangeDetection**<br/><br/> minOccurs = "0"<br/><br/> standard = "falskt" |**XS: Boolean** |Om värdet är true försöker kodaren identifiera scen ändringar i videon och infogar en IDR-ram. |
-| **Tillräckligt**<br/><br/> minOccurs = "0"<br/><br/> standard = "bal anse rad" |**XS: String** |Styr kompromissen mellan kodad hastighet och video kvalitet. Kan vara något av följande värden: **hastighet**, **bal anse rad**eller **kvalitet**<br/><br/> Standard: **balanserade** |
+| **Tillräckligt**<br/><br/> minOccurs = "0"<br/><br/> standard = "bal anse rad" |**XS: String** |Styr kompromissen mellan kodad hastighet och video kvalitet. Kan vara något av följande värden: **hastighet**, **bal anse rad** eller **kvalitet**<br/><br/> Standard: **balanserade** |
 | **SyncMode**<br/><br/> minOccurs = "0" | |Funktionen kommer att visas i en framtida version. |
 | **H264Layers**<br/><br/> minOccurs = "0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Samling av utdata för video lager. |
 
@@ -99,8 +99,8 @@ Om du skickar ett indata till kodaren som bara innehåller ljud, och ingen video
 | **Hastigheten**<br/><br/> minOccurs = "0" |**XS: int** |Bit hastigheten som används för det här video lagret, anges i kbps. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**XS: int** |Den högsta bit hastighet som används för det här video skiktet som anges i kbps. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> standard = "00:00:05" |**XS: Time** |Video buffertens längd. |
-| **LED**<br/><br/> minOccurs = "0" |**XS: int** |Bredden på videons utmatnings bild, i bild punkter.<br/><br/> För närvarande måste du ange både bredd och höjd. Bredd och höjd måste vara jämna tal. |
-| **Våghöjd**<br/><br/> minOccurs = "0" |**XS: int** |Höjden på videons utmatnings bild, i bild punkter.<br/><br/> För närvarande måste du ange både bredd och höjd. Bredd och höjd måste vara jämna tal.|
+| **Bredd**<br/><br/> minOccurs = "0" |**XS: int** |Bredden på videons utmatnings bild, i bild punkter.<br/><br/> För närvarande måste du ange både bredd och höjd. Bredd och höjd måste vara jämna tal. |
+| **Höjd**<br/><br/> minOccurs = "0" |**XS: int** |Höjden på videons utmatnings bild, i bild punkter.<br/><br/> För närvarande måste du ange både bredd och höjd. Bredd och höjd måste vara jämna tal.|
 | **BFrames**<br/><br/> minOccurs = "0" |**XS: int** |Antal B-ramar mellan referens ramar. |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> standard = "3" |**XS: int** |Antal referens ramar i en GOP. |
 | **EntropyMode**<br/><br/> minOccurs = "0"<br/><br/> standard = "CABAC" |**XS: String** |Kan vara något av följande värden: **CABAC** och **CAVLC**. |
@@ -117,7 +117,7 @@ Om du skickar ett indata till kodaren som bara innehåller ljud, och ingen video
 
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs = "0"<br/><br/> standard = "AACLC" |**XS: String** |Kan vara något av följande värden: **AACLC**, **HEAACV1**eller **HEAACV2**. |
+| **Profil**<br/><br/> minOccurs = "0"<br/><br/> standard = "AACLC" |**XS: String** |Kan vara något av följande värden: **AACLC**, **HEAACV1** eller **HEAACV2**. |
 
 ### <a name="attributes"></a>Attribut
 
@@ -217,8 +217,8 @@ Du kan också använda flaggan **PreserveResolutionAfterRotation** och ange den 
 
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **LED**<br/><br/> minOccurs = "0" |**XS: int** | |
-| **Våghöjd**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Bredd**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Höjd**<br/><br/> minOccurs = "0" |**XS: int** | |
 
 ### <a name="attributes"></a>Attribut
 
@@ -231,8 +231,8 @@ Du kan också använda flaggan **PreserveResolutionAfterRotation** och ange den 
 
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **LED**<br/><br/> minOccurs = "0" |**XS: int** | |
-| **Våghöjd**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Bredd**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Höjd**<br/><br/> minOccurs = "0" |**XS: int** | |
 
 ### <a name="attributes"></a>Attribut
 
@@ -245,8 +245,8 @@ Du kan också använda flaggan **PreserveResolutionAfterRotation** och ange den 
 
 | Namn | Typ | Beskrivning |
 | --- | --- | --- |
-| **LED**<br/><br/> minOccurs = "0" |**XS: int** | |
-| **Våghöjd**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Bredd**<br/><br/> minOccurs = "0" |**XS: int** | |
+| **Höjd**<br/><br/> minOccurs = "0" |**XS: int** | |
 | **Kvalitet**<br/><br/> minOccurs = "0" |**XS: int** |Giltiga värden: 1 (sämsta)-100 (bästa) |
 
 ### <a name="attributes"></a>Attribut

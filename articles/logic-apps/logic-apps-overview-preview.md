@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.date: 03/10/2021
+ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561865"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636343"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
 
@@ -59,7 +59,7 @@ I följande tabell sammanfattas skillnaderna mellan hur arbets flöden delar res
 | Azure Logic Apps (flera innehavare) | Arbets flöden *från kunder över flera klienter* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
 | Azure Logic Apps (för hands version, en-klient) | Arbets flöden *i samma Logic-app och en enda klient* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
 | Integrerings tjänst miljö (inte tillgänglig i för hands version) | Arbets flöden i *samma miljö* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
-||||
+|||
 
 Under tiden kan du fortfarande skapa Logic app-typen multi-apps i Azure Portal och i Visual Studio Code med hjälp av Azure Logic Apps-tillägget för flera innehavare. Även om utvecklings upplevelsen skiljer sig mellan olika typer av logiska appar för flera innehavare och en och samma klient kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade Logic Apps i din Azure-prenumeration, men apparna organiseras i sina egna kategorier och avsnitt.
 
@@ -122,7 +122,10 @@ Azure Logic Apps för hands versionen innehåller många aktuella och ytterligar
 
 * Skapa Logi Kap par och deras arbets flöden från [400 + kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors) för SaaS-appar (program vara som en tjänst) och PaaS (Platform-as-a-Service) och-tjänster plus anslutningar för lokala system.
 
-  * Vissa hanterade anslutningar, till exempel Azure Service Bus, Azure Event Hubs, SQL Server och MQ, körs på samma sätt som de inbyggda utlösarna och åtgärder som är inbyggda i Azure Logic Apps för hands versions körning, t. ex. begär ande utlösare och HTTP-åtgärd.
+  * Vissa hanterade anslutningar är nu tillgängliga som inbyggda versioner, som körs på samma sätt som de inbyggda utlösarna och åtgärderna, till exempel begär ande utlösare och HTTP-åtgärd som körs internt i Azure Logic Apps för hands versions körning. De här nya inbyggda kopplingarna inkluderar till exempel Azure Service Bus, Azure Event Hubs, SQL Server och MQ.
+
+    > [!NOTE]
+    > För den inbyggda SQL Server-anslutningen kan endast åtgärden **köra fråga** ansluta direkt till virtuella Azure-nätverk utan att den [lokala datagatewayen](logic-apps-gateway-connection.md)krävs.
 
   * Skapa dina egna inbyggda anslutnings program för alla tjänster du behöver med hjälp av för [hands versionens utöknings ramverk](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). På liknande sätt som med inbyggda anslutnings program, till exempel Azure Service Bus och SQL Server, men till skillnad från [anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) som inte stöds för för hands versioner, ger dessa anslutningar högre data flöde, kort svars tid, lokal anslutning och körs internt i samma process som för hands versions körningen.
 

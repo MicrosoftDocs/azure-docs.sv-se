@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 431c116fee22da27ed0487fc6d2fe3644575491f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f7f05fb84ff6cbe320e8f479912bdcdefdc41021
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046031"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201643"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurera en IoT Edge-enhet till att fungera som en transparent gateway
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Den här artikeln innehåller detaljerade anvisningar för hur du konfigurerar en IoT Edge-enhet så att den fungerar som en transparent Gateway för andra enheter att kommunicera med IoT Hub. I den här artikeln används termen *IoT Edge Gateway* för att referera till en IoT Edge enhet som kon figurer ATS som en transparent Gateway. Mer information finns i [så här kan en IoT Edge enhet användas som en gateway](./iot-edge-as-gateway.md).
 
@@ -142,10 +144,10 @@ Om du har skapat certifikaten på en annan dator kopierar du dem till din IoT Ed
 
 1. Spara och stäng filen.
 
-1. Starta om IoT Edge.
+1. Spara ändringarna.
 
    ```bash
-   sudo iotedge system restart
+   sudo iotedge config apply
    ```
 
 :::moniker-end

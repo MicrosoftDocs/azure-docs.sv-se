@@ -1,14 +1,14 @@
 ---
 title: Index för skissexempel
 description: Index över efterlevnads- och standardexempel för distribution av miljöer, principer och ramverket för molnimplementering med Azure Blueprints.
-ms.date: 02/08/2020
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370962"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200993"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-exempel
 
@@ -22,7 +22,8 @@ Följande tabell innehåller länkar till exempel för Azure Blueprints. Alla ex
 | [Benchmark för Azure-säkerhet](./azure-security-benchmark.md) | Innehåller riktlinjer för efterlevnad av [Azure Security Benchmark](../../../security/benchmarks/overview.md). |
 | [Azure Security benchmark Foundation](./azure-security-benchmark-foundation/index.md) | Distribuerar och konfigurerar Azure Security benchmark Foundation. |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Tillhandahåller riktlinjer för överensstämmelse med Kanadas PBMM (Protected B, Medium Integrity, Medium Availability). |
-| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Innehåller en uppsättning principer som hjälper dig att följa CIS Microsoft Azure Foundations Benchmark-rekommendationerna. |
+| [CIS Microsoft Azure grunderna benchmark v 1.3.0](./cis-azure-1-3-0.md)| Innehåller en uppsättning principer som hjälper dig att följa CIS-Microsoft Azure grunderna i 1.3.0-rekommendationer för benchmark v. |
+| [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)| Innehåller en uppsättning principer som hjälper dig att följa CIS-Microsoft Azure grunderna i 1.1.0-rekommendationer för benchmark v. |
 | [DoD:s effektnivå 4](./dod-impact-level-4/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa DoD:s effektnivå 4. |
 | [DoD:s effektnivå 5](./dod-impact-level-5/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa DoD:s effektnivå 5. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa FedRAMP Moderate. |

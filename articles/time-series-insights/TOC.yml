@@ -180,7 +180,7 @@
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: Kunddataförfrågningar
       href: time-series-insights-customer-data-requests.md
     - name: Resurser för utvecklare

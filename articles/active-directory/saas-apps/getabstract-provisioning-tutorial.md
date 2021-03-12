@@ -1,6 +1,6 @@
 ---
 title: 'Självstudie: Konfigurera getAbstract för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
-description: Lär dig hur du automatiskt etablerar och avetablerar användar konton från Azure AD till getAbstract.
+description: Lär dig hur du automatiskt etablerar och avetablerar användar konton från Azure Active Directory till getAbstract.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,116 +15,116 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 25253e9a302a34fb473da63ad4cad562d6302a8a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1d1b2417750b917f5b09bb53ee980887218a785c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651759"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616153"
 ---
 # <a name="tutorial-configure-getabstract-for-automatic-user-provisioning"></a>Självstudie: Konfigurera getAbstract för automatisk användar etablering
 
-I den här självstudien beskrivs de steg du behöver utföra i både getAbstract och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras, etablerar och avetablerar Azure AD automatiskt användare och grupper i [getAbstract](https://www.getabstract.com) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md). 
-
+I den här självstudien beskrivs de steg du behöver utföra i både getAbstract och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras etablerar och avetablerar Azure AD automatiskt användare och grupper i [getAbstract](https://www.getabstract.com) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användar etablering och avetablering för SaaS-program (program vara som en tjänst) med Azure AD](../app-provisioning/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Funktioner som stöds
+
 > [!div class="checklist"]
 > * Skapa användare i getAbstract.
 > * Ta bort användare i getAbstract när de inte behöver åtkomst längre.
 > * Behåll användarattribut synkroniserade mellan Azure AD och getAbstract.
 > * Etablera grupper och grupp medlemskap i getAbstract.
-> * [Enkel inloggning](getabstract-tutorial.md) till getAbstract (rekommenderas)
+> * Aktivera [enkel inloggning (SSO)](getabstract-tutorial.md) till getAbstract (rekommenderas).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
-* [En Azure AD-klient](../develop/quickstart-create-new-tenant.md) 
-* Ett användar konto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etablering (till exempel program administratör, moln program administratör, program ägare eller global administratör). 
+* [En Azure AD-klientorganisation](../develop/quickstart-create-new-tenant.md).
+* Ett användar konto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etableringen. Exempel är program administratör, moln program administratör, program ägare eller global administratör.
 * En getAbstract-klient (getAbstract Corporate License).
 * SSO aktiverat på Azure AD-klienten och getAbstract-klienten.
-* Godkännande och SCIM aktivera för getAbstract (skicka e-post till b2b.itsupport@getabstract.com ).
+* Godkännande och system för SCIM (Cross-Domain Identity Management) som aktive ras för getAbstract. (Skicka e-post till b2b.itsupport@getabstract.com .)
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Steg 1. Planera etablering av distributionen
+
 1. Lär dig mer om [hur etableringstjänsten fungerar](../app-provisioning/user-provisioning.md).
-2. Ta reda på vem som finns i [etableringsomfånget](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
-3. Ta reda på vilka data som ska [mappas mellan Azure AD och getAbstract](../app-provisioning/customize-application-attributes.md). 
+1. Ta reda på vem som finns i [etableringsomfånget](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Ta reda på vilka data som ska [mappas mellan Azure AD och getAbstract](../app-provisioning/customize-application-attributes.md).
 
 ## <a name="step-2-configure-getabstract-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera getAbstract för att ge stöd för etablering med Azure AD
-1. Logga in på getAbstract
-2. Klicka på ikonen Inställningar som finns i det övre högra hörnet och klicka på alternativet **mitt centralt administration**
- 
-    ![getAbstract min centrala administratör](media/getabstract-provisioning-tutorial/my-account.png)
 
-3. Leta upp och klicka på alternativet **scim admin**
- 
-    ![getAbstract SCIM-administratör](media/getabstract-provisioning-tutorial/scim-admin.png) 
+1. Logga in på getAbstract.
+1. Välj ikonen Inställningar i det övre högra hörnet och välj **mitt centrala administratörs** alternativ.
 
-4. Klicka på knappen **gå** till 
+    ![Skärm bild som visar getAbstract My Central admin.](media/getabstract-provisioning-tutorial/my-account.png)
 
-    ![getAbstract SCIM-klient-ID](media/getabstract-provisioning-tutorial/scim-client-go.png)
+1. Leta upp och välj alternativet **scim admin** .
 
-5. Klicka på **generera ny token**
+    ![Skärm bild som visar getAbstract SCIM-administratören.](media/getabstract-provisioning-tutorial/scim-admin.png)
 
-    ![getAbstract SCIM-token 1](media/getabstract-provisioning-tutorial/scim-generate-token-step-2.png)
+1. Välj **gå** till.
 
-6. Om du är säker klickar du på knappen **generera ny token** . Annars klickar du på **Avbryt** -knappen
+    ![Skärm bild som visar getAbstract SCIM-klient-ID.](media/getabstract-provisioning-tutorial/scim-client-go.png)
 
-    ![getAbstract SCIM-token 2](media/getabstract-provisioning-tutorial/scim-generate-token-step-1.png)
+1. Välj **generera ny token**.
 
-7. Slutligen kan du antingen klicka på ikonen Kopiera till Urklipp eller välja hela token och kopiera den. Anteckna också att URL: en för klient organisationen/basen är `https://www.getabstract.com/api/scim/v2` . Dessa värden anges i fältet **hemlig token** * och **klient-URL** * på fliken etablering i ditt getAbstract-program i Azure Portal.
+    ![Skärm bild som visar getAbstract SCIM-token 1.](media/getabstract-provisioning-tutorial/scim-generate-token-step-2.png)
 
-    ![getAbstract SCIM-token 3](media/getabstract-provisioning-tutorial/scim-generate-token-step-3.png)
+1. Om du är säker väljer du **generera ny token**. Annars väljer du **Avbryt**.
 
+    ![Skärm bild som visar getAbstract SCIM-token 2.](media/getabstract-provisioning-tutorial/scim-generate-token-step-1.png)
+
+1. Välj antingen kopiera till Urklipp-ikonen eller Välj hela token och kopiera den. Notera också att URL: en för klient organisationen/basen är `https://www.getabstract.com/api/scim/v2` . Dessa värden anges i rutorna **hemlig token** och **klient webb adress** på fliken **etablering** i getAbstract-programmet i Azure Portal.
+
+    ![Skärm bild som visar getAbstract SCIM-token 3.](media/getabstract-provisioning-tutorial/scim-generate-token-step-3.png)
 
 ## <a name="step-3-add-getabstract-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till getAbstract från Azure AD-programgalleriet
 
-Lägg till getAbstract från Azure AD-programgalleriet för att börja hantera etablering till getAbstract. Om du tidigare har konfigurerat getAbstract för SSO kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen i början. Lär dig mer om att lägga till ett program från galleriet [här](../manage-apps/add-application-portal.md). 
+Lägg till getAbstract från Azure AD-programgalleriet för att börja hantera etablering till getAbstract. Om du tidigare har konfigurerat getAbstract för SSO kan du använda samma program. Vi rekommenderar att du skapar en separat app när du testar integrationen från början. Mer information om hur du lägger till ett program från galleriet finns i [den här snabb](../manage-apps/add-application-portal.md)starten.
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Steg 4. Definiera vem som ska finnas i etableringsomfånget 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Steg 4. Definiera vem som ska finnas i etableringsomfånget
 
-Med Azure AD-etableringstjänsten kan du bestämma vem som ska etableras, baserat på tilldelningen till programmet och eller baserat på attribut för användaren/gruppen. Om du väljer att omfånget som ska etableras till din app ska baseras på tilldelning, kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du väljer att omfånget endast ska etableras baserat på attribut för användaren eller gruppen, kan du använda ett omfångsfilter enligt beskrivningen [här](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
+Du kan använda Azure AD Provisioning-tjänsten för det omfång som ska tillhandahållas baserat på tilldelning till programmet eller baserat på attribut för användaren eller gruppen. Om du väljer att omfånget som ska etableras till din app ska baseras på tilldelning, kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du väljer att omfånget som endast ska etableras baserat på attribut för användaren eller gruppen kan du använda ett omfångs filter enligt beskrivningen i [etablera appar med omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-* När du tilldelar användare och grupper till getAbstract måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](../develop/howto-add-app-roles-in-azure-ad-apps.md) och lägga till fler roller. 
+* När du tilldelar användare och grupper till getAbstract måste du välja en annan roll än **standard åtkomst**. Användare med standard åtkomst rollen undantas från etablering och markeras som inte faktiskt berättigade i etablerings loggarna. Om den enda rollen som är tillgänglig i programmet är standard åtkomst rollen kan du [Uppdatera applikations manifestet](../develop/howto-add-app-roles-in-azure-ad-apps.md) för att lägga till fler roller.
 
-* Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När etableringsomfånget har angetts till tilldelade användare och grupper, kan du kontrollera detta genom att tilldela en eller två användare eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attributbaserat omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
+* Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När omfång för etablering har angetts till tilldelade användare och grupper kan du kontrol lera det här alternativet genom att tilldela en eller två användare eller grupper till appen. När omfång är inställt på alla användare och grupper, kan du ange ett [attribut-baserat omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
+## <a name="step-5-configure-automatic-user-provisioning-to-getabstract"></a>Steg 5. Konfigurera automatisk användar etablering till getAbstract
 
-## <a name="step-5-configure-automatic-user-provisioning-to-getabstract"></a>Steg 5. Konfigurera automatisk användar etablering till getAbstract 
+Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare eller grupper i TestApp baserat på användar-eller grupp tilldelningar i Azure AD.
 
-Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i TestApp baserat på användar-och/eller grupp tilldelningar i Azure AD.
+### <a name="configure-automatic-user-provisioning-for-getabstract-in-azure-ad"></a>Konfigurera automatisk användar etablering för getAbstract i Azure AD
 
-### <a name="to-configure-automatic-user-provisioning-for-getabstract-in-azure-ad"></a>Konfigurera automatisk användar etablering för getAbstract i Azure AD:
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **företags program**  >  **alla program**.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Företagsprogram** och sedan **Alla program**.
+    ![Skärm bild som visar fönstret företags program.](common/enterprise-applications.png)
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+1. I listan med program väljer du **getAbstract**.
 
-2. I listan program väljer du **getAbstract**.
+    ![Skärm bild som visar getAbstract-länken i listan över program.](common/all-applications.png)
 
-    ![GetAbstract-länken i program listan](common/all-applications.png)
+1. Välj fliken **Etablering**.
 
-3. Välj fliken **Etablering**.
+    ![Skärm bild som visar fliken etablering.](common/provisioning.png)
 
-    ![Fliken Etablering](common/provisioning.png)
+1. Ange **etablerings läget** till **Automatisk**.
 
-4. Ange **Etableringsläge** som **Automatiskt**.
+    ![Skärm bild som visar etablerings läget inställt på automatiskt.](common/provisioning-automatic.png)
 
-    ![Fliken etablering automatiskt](common/provisioning-automatic.png)
+1. I avsnittet **admin credentials** anger du din GetAbstract- **klient-URL** och information om **hemliga token** . Välj **Testa anslutning** för att se till att Azure AD kan ansluta till getAbstract. Om anslutningen Miss lyckas kontrollerar du att getAbstract-kontot har administratörs behörighet och försöker igen.
 
-5. Under avsnittet **admin credentials** , skriver du in din GetAbstract-klient-URL och en hemlig token. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till getAbstract. Om anslutningen Miss lyckas kontrollerar du att getAbstract-kontot har administratörs behörighet och försöker igen.
+    ![Skärm bild som visar rutorna för klient-URL och hemlig token.](common/provisioning-testconnection-tenanturltoken.png)
 
-    ![Token](common/provisioning-testconnection-tenanturltoken.png)
+1. I rutan **aviserings-e** -postadress anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etablerings fel. Markera kryss rutan **Skicka ett e-postmeddelande när ett fel inträffar** .
 
-6. I fältet **E-postavisering** anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etableringsfel. Markera sedan kryssrutan **Skicka ett e-postmeddelande när ett fel uppstår**.
+    ![Skärm bild som visar rutan e-postavisering.](common/provisioning-notification-email.png)
 
-    ![E-postavisering](common/provisioning-notification-email.png)
+1. Välj **Spara**.
 
-7. Välj **Spara**.
+1. I avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory användare till getAbstract**.
 
-8. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory användare till getAbstract**.
-
-9. Granska de användarattribut som synkroniseras från Azure AD till getAbstract i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i getAbstract för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](../app-provisioning/customize-application-attributes.md)måste du se till att getAbstract-API: et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
+1. Granska de användarattribut som synkroniseras från Azure AD till getAbstract i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i getAbstract för uppdaterings åtgärder. Om du ändrar det [matchande målattributet](../app-provisioning/customize-application-attributes.md)måste du se till att getAbstract-API: et stöder filtrering av användare baserat på det attributet. Välj **Spara** för att genomföra ändringarna.
 
    |Attribut|Typ|Stöds för filtrering|
    |---|---|---|
@@ -136,41 +136,43 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |externalId|Sträng|
    |preferredLanguage|Sträng|
 
-10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till getAbstract**.
+1. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till getAbstract**.
 
-11. Granska gruppattributen som synkroniseras från Azure AD till getAbstract i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha grupperna i getAbstract för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
+1. Granska gruppattributen som synkroniseras från Azure AD till getAbstract i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha grupperna i getAbstract för uppdaterings åtgärder. Välj **Spara** för att genomföra ändringarna.
 
     |Attribut|Typ|Stöds för filtrering|
     |---|---|---|
     |displayName|Sträng|&check;|
     |externalId|Sträng|
     |medlemmar|Referens|
-12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Om du vill aktivera Azure AD Provisioning-tjänsten för getAbstract ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
+1. Information om hur du konfigurerar omfångs filter finns i anvisningarna i [artikeln omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-    ![Etableringsstatus är på](common/provisioning-toggle-on.png)
+1. Om du vill aktivera Azure AD Provisioning-tjänsten för getAbstract ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
 
-14. Definiera de användare och/eller grupper som du vill etablera till getAbstract genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+    ![Skärm bild som visar etablerings statusen växlad på.](common/provisioning-toggle-on.png)
 
-    ![Etableringsomfång](common/provisioning-scope.png)
+1. Definiera de användare eller grupper som du vill etablera till getAbstract genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
 
-15. När du är redo att etablera klickar du på **Spara**.
+    ![Skärm bild som visar etablerings omfånget.](common/provisioning-scope.png)
 
-    ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
+1. När du är redo att etablera väljer du **Spara**.
 
-Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs. 
+    ![Skärm bild som visar knappen Spara.](common/provisioning-configuration-save.png)
+
+Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket sker ungefär var 40: e minut, förutsatt att Azure AD Provisioning-tjänsten körs.
 
 ## <a name="step-6-monitor-your-deployment"></a>Steg 6. Övervaka distributionen
-När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:
 
-* Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
-* Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
-* Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+När du har konfigurerat etableringen använder du följande resurser för att övervaka distributionen:
+
+* Använd [etablerings loggarna](../reports-monitoring/concept-provisioning-logs.md) för att avgöra vilka användare som etablerades lyckades eller inte.
+* Kontrol lera [förlopps indikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etablerings cykeln och hur nära den är att slutföras.
+* Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Mer information om karantäns tillstånd finns i [Application etablerings status för karantän](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Hantera användarkontoetablering för Enterprise-appar](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Hantera användar konto etablering för företags program](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nästa steg

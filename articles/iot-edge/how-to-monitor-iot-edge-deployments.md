@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684211"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200251"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Övervaka IoT Edge-distributioner
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge ger rapporter som gör att du kan övervaka real tids information i de moduler som distribueras till dina IoT Edge-enheter. Tjänsten IoT Hub hämtar status från enheterna och gör dem tillgängliga för operatören. Övervakning är också viktigt för [distributioner som görs i skala](module-deployment-monitoring.md) , inklusive automatiska distributioner och lager distributioner.
 
@@ -25,7 +27,7 @@ Både enheter och moduler har liknande data, till exempel anslutningar, så att 
 
 IoT Hubs tjänsten samlar in data som rapporter ATS av enhet och modul, och innehåller antalet olika tillstånd som enheterna kan ha. Tjänsten IoT Hub organiserar dessa data i fyra grupper av mått:
 
-| Typ | Description |
+| Typ | Beskrivning |
 | --- | ---|
 | Riktad | Visar de IoT Edge enheter som matchar villkoret för distributions målet. |
 | Tillämpat | Visar mål IoT Edge enheter som inte är riktade till en annan distribution med högre prioritet. |
@@ -43,7 +45,7 @@ Använd följande steg för att visa information om en distribution och övervak
 1. Välj fliken **IoT Edge distributioner** .
 1. Granska distributions listan. För varje distribution kan du se följande information:
 
-    | Kolumn | Description |
+    | Kolumn | Beskrivning |
     | --- | --- |
     | ID | Namnet på distributionen. |
     | Typ | Distributions typ, antingen **distribution** eller **lager distribution**. |

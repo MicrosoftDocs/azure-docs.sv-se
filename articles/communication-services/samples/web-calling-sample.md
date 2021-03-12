@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: aadecd3c57f5a145efd43058a5113205d7517c0b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c3ceb866d9ca817299929b9a811915b82ccfbd48
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486411"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614752"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
 
@@ -88,7 +88,7 @@ Mer information finns i följande artiklar:
 
 - Bekanta dig med [att använda det anropande klient biblioteket](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Läs mer om [hur du anropar Works](../concepts/voice-video-calling/about-call-types.md)
-- Granska [API Reference-dokument](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
+- Granska [API Reference-dokument](/javascript/api/azure-communication-services/@azure/communication-calling/)
 - Granska exemplet [contoso with app](https://github.com/Azure-Samples/communication-services-contoso-med-app)
 
 ## <a name="additional-reading"></a>Mer att läsa

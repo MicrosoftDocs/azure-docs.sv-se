@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d75e60d0e497dcdd2aa121f8da73f11a7e2af5b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701815"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015224"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2
 
@@ -206,7 +206,7 @@ För en ny Data Lake Storage Gen2-behållare är masken för åtkomst-ACL: en f�
 |--|--|--|
 |Ägande användare|`rwx`|`r-w`|
 |Ägande grupp|`r-x`|`r--`|
-|Övrigt|`---`|`---`|
+|Annat|`---`|`---`|
 
 Filerna tar inte emot X-biten eftersom det är irrelevant för filer i ett system för endast lagring. 
 
@@ -285,7 +285,7 @@ Roll tilldelningar i Azure ärver. Tilldelnings flödet från prenumerations-, r
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Stöder Data Lake Storage Gen2 arv av ACL: er?
 
-Standard-ACL: er kan användas för att ange ACL: er för nya underordnade under kataloger och filer som skapas under den överordnade katalogen. Om du vill uppdatera ACL: er för befintliga underordnade objekt måste du lägga till, uppdatera eller ta bort ACL: er rekursivt för den önskade katalogpartitionen. Mer information finns i [ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2](#set-access-control-lists). 
+Standard-ACL: er kan användas för att ange ACL: er för nya underordnade under kataloger och filer som skapas under den överordnade katalogen. Om du vill uppdatera ACL: er för befintliga underordnade objekt måste du lägga till, uppdatera eller ta bort ACL: er rekursivt för den önskade katalogpartitionen. Vägledning finns i avsnittet [så här anger du ACL: er](#set-access-control-lists) i den här artikeln. 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Vilka behörigheter krävs för att rekursivt ta bort en katalog och dess innehåll?
 

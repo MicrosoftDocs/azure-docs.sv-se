@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 07a959d4e8ba41652ba4e31ad59cf852659a5926
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030791"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199770"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Använda funktioner i Azure Monitor logg frågor
 
@@ -22,12 +22,12 @@ Skapa en funktion med Log Analytics i Azure Portal genom att klicka på **Spara*
 
 | Inställning | Beskrivning |
 |:---|:---|
-| Namn           | Visnings namn för frågan i **query Explorer**. |
+| Name           | Visnings namn för frågan i **query Explorer**. |
 | Spara som        | Funktion |
 | Funktions Ali Aset | Kort namn för att använda funktionen i andra frågor. Får inte innehålla blank steg och måste vara unikt. |
 | Kategori       | En kategori för att organisera sparade frågor och funktioner i **query Explorer**. |
 
-
+Du kan också skapa funktioner med hjälp av [REST API](/rest/api/loganalytics/savedsearches/createorupdate) eller [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch).
 
 
 ## <a name="use-a-function"></a>Använd en funktion

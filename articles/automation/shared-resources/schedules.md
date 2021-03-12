@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004620"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149485"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Hantera scheman i Azure Automation
 
@@ -45,7 +45,7 @@ Du kan skapa ett nytt schema för dina Runbooks i Azure Portal eller med PowerSh
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>Skapa ett nytt schema i Azure Portal
 
-1. Från ditt Automation-konto väljer du **scheman** under **delade resurser**i den vänstra rutan.
+1. Från ditt Automation-konto väljer du **scheman** under **delade resurser** i den vänstra rutan.
 2. På sidan **scheman** väljer du **Lägg till ett schema**.
 3. Ange ett namn på sidan **nytt schema** och ange en beskrivning för det nya schemat.
 
@@ -53,13 +53,13 @@ Du kan skapa ett nytt schema för dina Runbooks i Azure Portal eller med PowerSh
     >Automation-scheman stöder inte för närvarande specialtecken i schema namnet.
     >
 
-4. Välj om schemat körs en gång eller om schemat ska köras genom att välja **en gång** eller **återkommande**. Om du väljer en **gång**, anger du en start tid och väljer sedan **skapa**. Om du väljer **återkommande**anger du en start tid. För **Upprepa varje**väljer du hur ofta du vill att runbooken ska upprepas. Välj per timme, dag, vecka eller månad.
+4. Välj om schemat körs en gång eller om schemat ska köras genom att välja **en gång** eller **återkommande**. Om du väljer en **gång**, anger du en start tid och väljer sedan **skapa**. Om du väljer **återkommande** anger du en start tid. För **Upprepa varje** väljer du hur ofta du vill att runbooken ska upprepas. Välj per timme, dag, vecka eller månad.
 
-    * Om du väljer **vecka**visas vecko dagarna som du kan välja bland. Välj så många dagar som du vill. Den första körningen av ditt schema sker på den första dagen som väljs efter start tiden. Om du till exempel vill välja ett helg schema väljer du lördag och söndag.
+    * Om du väljer **vecka** visas vecko dagarna som du kan välja bland. Välj så många dagar som du vill. Den första körningen av ditt schema sker på den första dagen som väljs efter start tiden. Om du till exempel vill välja ett helg schema väljer du lördag och söndag.
 
     ![Inställning av återkommande helg schema](../media/schedules/week-end-weekly-recurrence.png)
 
-    * Om du väljer **månad**får du olika alternativ. Välj antingen **månads dagar** eller **vecko dagar**för alternativet **månatlig förekomst** . Om du väljer **månads dagar**visas en kalender så att du kan välja så många dagar som du vill. Om du väljer ett datum, till exempel 31 som inte inträffar under den aktuella månaden, körs inte schemat. Om du vill att schemat ska köras den senaste dagen väljer du **Ja** under **kör på sista dagen i månaden**. Om du väljer **vecko dagar**visas alternativet **Upprepa varje** . Välj **första**, **andra**, **tredje**, **fjärde**eller **sista**. Slutligen väljer du en dag som ska upprepas.
+    * Om du väljer **månad** får du olika alternativ. Välj antingen **månads dagar** eller **vecko dagar** för alternativet **månatlig förekomst** . Om du väljer **månads dagar** visas en kalender så att du kan välja så många dagar som du vill. Om du väljer ett datum, till exempel 31 som inte inträffar under den aktuella månaden, körs inte schemat. Om du vill att schemat ska köras den senaste dagen väljer du **Ja** under **kör på sista dagen i månaden**. Om du väljer **vecko dagar** visas alternativet **Upprepa varje** . Välj **första**, **andra**, **tredje**, **fjärde** eller **sista**. Slutligen väljer du en dag som ska upprepas.
 
     ![Månads schema på första, femtonde och sista dagen i månaden](../media/schedules/monthly-first-fifteenth-last.png)
 
@@ -121,6 +121,47 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
+## <a name="create-a-schedule-with-a-resource-manager-template"></a>Skapa ett schema med en Resource Manager-mall
+
+I det här exemplet använder vi en ARM-mall (Automation Resource Manager) som skapar ett nytt jobb schema. Allmän information om den här mallen för att hantera automatiserings jobb scheman finns i [referens för Microsoft. Automation automationAccounts/jobSchedules Template](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+
+Kopiera den här mallfilen till en text redigerare:
+
+```json
+{
+  "name": "5d5f3a05-111d-4892-8dcc-9064fa591b96",
+  "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+  "apiVersion": "2015-10-31",
+  "properties": {
+    "schedule": {
+      "name": "scheduleName"
+    },
+    "runbook": {
+      "name": "runbookName"
+    },
+    "runOn": "hybridWorkerGroup",
+    "parameters": {}
+  }
+}
+```
+
+Redigera följande parameter värden och spara mallen som en JSON-fil:
+
+* Objekt namn för jobb schema: en GUID (globalt unik identifierare) används som namn på objektet jobb schema.
+
+   >[!IMPORTANT]
+   > För varje jobb schema som distribueras med en ARM-mall måste GUID: t vara unikt. Även om du schemalägger om ett befintligt schema måste du ändra GUID. Detta gäller även om du tidigare har tagit bort ett befintligt jobb schema som skapats med samma mall. Att återanvända samma GUID resulterar i en misslyckad distribution.</br></br>
+   > Det finns tjänster online som kan generera ett nytt GUID åt dig, till exempel den här [kostnads fria online-GUID-generatorn](https://guidgenerator.com/).
+
+* Schema namn: representerar namnet på det Automation Job-schema som ska länkas till angiven Runbook.
+* Runbook-namn: representerar namnet på Automation-runbooken som jobbschemat ska kopplas till.
+
+När filen har sparats kan du skapa ett jobb schema för Runbook med följande PowerShell-kommando. Kommandot använder `TemplateFile` parametern för att ange sökväg och fil namn för mallen.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "<path>\RunbookJobSchedule.json"
+```
+
 ## <a name="link-a-schedule-to-a-runbook"></a>Länka ett schema till en Runbook
 
 En runbook kan länkas till flera scheman och ett schema kan vara kopplat till flera runbooks. Om en Runbook har parametrar, kan du ange värden för dem. Du måste ange värden för alla obligatoriska parametrar och du kan även ange värden för eventuella valfria parametrar. Dessa värden används varje gång som Runbook startas med det här schemat. Du kan koppla samma Runbook till ett annat schema och ange olika parameter värden.
@@ -161,7 +202,7 @@ När du inaktiverar ett schema körs inte längre någon Runbook som är länkad
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>Inaktivera ett schema från Azure Portal
 
-1. I ditt Automation-konto väljer du **scheman** under **delade resurser**i den vänstra rutan.
+1. I ditt Automation-konto väljer du **scheman** under **delade resurser** i den vänstra rutan.
 1. Välj namnet på ett schema för att öppna informations fönstret.
 1. Ändringen har **Aktiver ATS** till **Nej**.
 
@@ -187,7 +228,7 @@ När du är redo att ta bort dina scheman kan du antingen använda Azure Portal 
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>Ta bort ett schema med hjälp av Azure Portal
 
-1. I ditt Automation-konto väljer du **scheman** under **delade resurser**i den vänstra rutan.
+1. I ditt Automation-konto väljer du **scheman** under **delade resurser** i den vänstra rutan.
 2. Välj namnet på ett schema för att öppna informations fönstret.
 3. Klicka på **Ta bort**.
 

@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: f8a780afba1f5703fbe457e113ed1b455f1e9b64
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746411"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614334"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Network File System (NFS) 3,0 prestanda överväganden i Azure Blob Storage (för hands version)
 
@@ -35,7 +35,7 @@ Följande diagram visar hur bandbredden ökar när du lägger till fler klienter
 Följande diagram visar samma effekt när den tillämpas på ett konto som använder Premium Performance-nivån.
 
 > [!div class="mx-imgBorder"]
-> ![Standard prestanda](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
+> ![Förstklassig prestanda](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>Använd Premium Performance-nivå för små skalnings program
 

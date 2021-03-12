@@ -8,20 +8,22 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9248c9578d94b000c04c82b33eeeb089e55a26ef
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048040"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200302"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Distribuera Azure IoT Edge moduler från Azure Portal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 När du skapar IoT Edge-moduler med din affärs logik vill du distribuera dem till dina enheter så att de körs på gränsen. Om du har flera moduler som arbetar tillsammans för att samla in och bearbeta data kan du distribuera dem samtidigt och deklarera de routningsregler som ansluter dem.
 
 Den här artikeln visar hur Azure Portal vägleder dig genom att skapa ett distributions manifest och distribuera distributionen till en IoT Edge enhet. Information om hur du skapar en distribution som riktar sig till flera enheter baserat på deras delade taggar finns i [distribuera och övervaka IoT Edge moduler i stor skala](how-to-deploy-at-scale.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En [IoT-hubb](../iot-hub/iot-hub-create-through-portal.md) i din Azure-prenumeration.
 * En IoT Edge enhet.
@@ -32,7 +34,7 @@ Den här artikeln visar hur Azure Portal vägleder dig genom att skapa ett distr
 
 Ett distributions manifest är ett JSON-dokument som beskriver vilka moduler som ska distribueras, hur data flödar mellan moduler och önskade egenskaper för modulen. Mer information om hur distributions manifest fungerar och hur du skapar dem finns i [förstå hur IoT Edge moduler kan användas, konfigureras och återanvändas](module-composition.md).
 
-Azure Portal har en guide som vägleder dig genom att skapa distributions manifestet, i stället för att skapa JSON-dokumentet manuellt. Det finns tre steg: **Lägg till moduler**, **Ange vägar**och **Granska distribution**.
+Azure Portal har en guide som vägleder dig genom att skapa distributions manifestet, i stället för att skapa JSON-dokumentet manuellt. Det finns tre steg: **Lägg till moduler**, **Ange vägar** och **Granska distribution**.
 
 >[!NOTE]
 >Stegen i den här artikeln visar den senaste schema versionen av IoT Edge agent och hubb. Schema version 1,1 släpptes tillsammans med IoT Edge version 1.0.10, och aktiverar modulens start ordning och väg prioritets funktioner.
@@ -105,10 +107,10 @@ Kontrol lera att modulen har distribuerats i IoT Hub i Azure Portal. Välj din e
 Du kan snabbt distribuera en modul från Azure Marketplace till din enhet i din IoT Hub i Azure Portal.
 
 1. I Azure Portal navigerar du till IoT Hub.
-1. I den vänstra rutan under **Automatisk enhets hantering**väljer du **IoT Edge**.
+1. I den vänstra rutan under **Automatisk enhets hantering** väljer du **IoT Edge**.
 1. Välj den IoT Edge enhet som ska ta emot distributionen.
 1. I den övre stapeln väljer du **Ange moduler**.
-1. I avsnittet **IoT Edge moduler** klickar du på **Lägg till**och väljer **Marketplace-modul** på den nedrullningsbara menyn.
+1. I avsnittet **IoT Edge moduler** klickar du på **Lägg till** och väljer **Marketplace-modul** på den nedrullningsbara menyn.
 
 ![Lägg till modul i IoT Hub](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 

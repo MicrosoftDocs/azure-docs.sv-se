@@ -8,12 +8,12 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 75beb214682536b996cf4896588ea32d568579f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: edca5a278414288ceb3c3d13f5d49e723e0ee5c2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045997"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615932"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge system som stöds
 
@@ -23,7 +23,7 @@ Den här artikeln innehåller information om vilka system och komponenter som st
 
 Om du får problem när du använder tjänsten Azure IoT Edge kan du söka efter support på flera sätt. Prova någon av följande kanaler för support:
 
-**Rapportera buggar** – merparten av utvecklingen som ingår i Azure IoT Edge produkten sker i projektet IoT Edge projekt med öppen källkod. Buggar kan rapporteras på [sidan problem](https://github.com/azure/iotedge/issues) i projektet. Du kan snabbt göra sitt sätt från projektet i till produkt uppdateringar.
+**Rapporterings buggar** – merparten av utvecklingen som ingår i Azure IoT Edge produkten sker i projektet IoT Edge projekt med öppen källkod. Buggar kan rapporteras på [sidan problem](https://github.com/azure/iotedge/issues) i projektet. Buggar som rör Azure IoT Edge för Linux i Windows kan rapporteras på [sidan problem med iotedge-Eflow](https://github.com/azure/iotedge-eflow/issues). Du kan snabbt göra sitt sätt från projekt i till produkt uppdateringar.
 
 **Microsofts kund support team** – användare som har ett [support](https://azure.microsoft.com/support/plans/) avtal kan engagera Microsofts kund support team genom att skapa ett Support ärende direkt från [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

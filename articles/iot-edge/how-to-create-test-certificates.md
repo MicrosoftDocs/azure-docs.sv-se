@@ -8,14 +8,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d82f1cac6e437663fa0b1c3e21c65036f3c1d4eb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d8cf3dbe9d1dc2ad329a0b5ab8fa9554c85ae55c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046048"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199068"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Skapa democertifikat för att testa funktioner på IoT Edge-enheter
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge enheter kräver certifikat för säker kommunikation mellan körningen, modulerna och eventuella efterföljande enheter.
 Om du inte har någon certifikat utfärdare för att skapa de certifikat som krävs kan du använda demonstrations certifikat för att testa IoT Edge funktioner i test miljön.

@@ -1,17 +1,17 @@
 ---
 title: Klient fel koder för enhets uppdatering för Azure IoT Hub | Microsoft Docs
 description: Det här dokumentet innehåller en tabell med klient fel koder för olika enhets uppdaterings komponenter.
-author: lichris
+author: chrisjlin
 ms.author: lichris
 ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5251d0cb09e40305d1efd89c31d3af0fa36ad385
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664080"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200343"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>Enhets uppdatering för IoT Hub felkoder
 
@@ -59,26 +59,19 @@ Den osignerade hex-representationen av `-536870781` är `FFFFFFFF E0000083` .
 ## <a name="delivery-optimization-agent"></a>Leverans optimerings agent
 I följande tabell visas felkoder som rör leverans optimerings komponenten i enhets uppdaterings klienten. Komponenten gör är ansvarig för att ladda ned uppdaterings innehåll på IoT-enheten.
 
-Du kan hämta felkoden genom att undersöka undantag som har utlösts som svar på ett API-anrop.
+Du kan hämta felkoden genom att undersöka undantag som har utlösts som svar på ett API-anrop. Alla fel koder kan identifieras av 0x80D0-prefixet.
 
 | Felkod  | Sträng fel                       | Typ                 | Beskrivning |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | DO_E_NO_SERVICE                    | saknas                  | Leverans optimering kunde inte tillhandahålla tjänsten |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | Hämta jobb         | Hämtning av en fil försetts inte inom den definierade perioden |
-| 0x80D02003L | DO_E_JOB_NOT_FOUND                 | Hämta jobb         | Jobbet hittades inte |
-| 0x80D02005L | DO_E_NO_DOWNLOADS                  | Hämta jobb         | Det finns för närvarande inga hämtningar |
-| 0x80D0200CL | DO_E_JOB_TOO_OLD                   | Hämta jobb         | Jobbet har inte slutförts eller har avbrutits innan högsta ålders tröskeln nåtts |
 | 0x80D02011L | DO_E_UNKNOWN_PROPERTY_ID           | Hämta jobb         | SetProperty () eller GetProperty () anropades med ett okänt egenskaps-ID |
 | 0x80D02012L | DO_E_READ_ONLY_PROPERTY            | Hämta jobb         | Det går inte att anropa SetProperty () för en skrivskyddad egenskap |
 | 0x80D02013L | DO_E_INVALID_STATE                 | Hämta jobb         | Den begärda åtgärden tillåts inte i det aktuella jobb läget. Jobbet kan ha avbrutits eller överföringen har slutförts. Den är i ett skrivskyddat tillstånd nu. |
 | 0x80D02018L | DO_E_FILE_DOWNLOADSINK_UNSPECIFIED | Hämta jobb         | Det gick inte att starta en nedladdning eftersom ingen hämtnings mottagare (antingen lokal fil eller Stream-gränssnitt) angavs |
 | 0x80D02200L | DO_E_DOWNLOAD_NO_URI               | IDODownload-gränssnitt| Hämtningen startades utan att tillhandahålla en URI |
 | 0x80D03805L | DO_E_BLOCKED_BY_NO_NETWORK         | Tillfälliga villkor | Nedladdningen pausades på grund av förlust av nätverks anslutning |
-| 0x80D05001L | DO_E_HTTP_BLOCKSIZE_MISMATCH       | HTTP                 | HTTP-servern returnerade ett svar med data storleken inte lika med vad som begärdes |
-| 0x80D05002L | DO_E_HTTP_CERT_VALIDATION          | HTTP                 | Det gick inte att verifiera HTTP-servercertifikat |
-| 0x80D05010L | DO_E_INVALID_RANGE                 | HTTP                 | Det angivna byte-intervallet är ogiltigt |
-| 0x80D05011L | DO_E_INSUFFICIENT_RANGE_SUPPORT    | HTTP                 | Servern har inte stöd för det nödvändiga HTTP-protokollet. Leverans optimering kräver att servern stöder intervallets protokoll huvud |
-| 0x80D05012L | DO_E_OVERLAPPING_RANGES            | HTTP                 | Listan över byte-intervall innehåller vissa överlappande intervall, vilket inte stöds |
+
 ## <a name="device-update-content-service"></a>Innehålls tjänst för enhets uppdatering
 I följande tabell visas felkoder som rör innehålls tjänst komponenten i enhets uppdaterings tjänsten. Innehålls tjänst komponenten ansvarar för hantering av import av uppdaterings innehåll.
 

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439637"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636682"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -36,6 +36,7 @@ Uppdateringar i mars inkluderar:
 - [Azure Monitor arbets böcker som är integrerade i Security Center och tre mallar som tillhandahålls](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Instrument panelen för kontroll av efterlevnad innehåller nu Azure audit Reports (för hands version)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
 - [Uppdateringar av principerna för distribution av arbets flödes automatisering](#updates-to-the-policies-for-deploying-workflow-automation)
+- [Två tidigare rekommendationer skriver inte längre data direkt till Azure aktivitets loggen](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall Management är integrerad i Security Center
@@ -113,6 +114,19 @@ Det finns två uppdateringar av funktionerna i dessa principer:
 Kom igång med [automatiserings mallar för arbets flöden](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 
 Läs mer om hur du [automatiserar svar på Security Center utlösare](workflow-automation.md).
+
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>Två tidigare rekommendationer skriver inte längre data direkt till Azure aktivitets loggen 
+
+Security Center skickar data för nästan alla säkerhets rekommendationer till Azure Advisor vilket i sin tur skriver den till [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md).
+
+För två rekommendationer skrivs data samtidigt direkt till Azure aktivitets loggen. Med den här ändringen slutar Security Center att skriva data för dessa äldre säkerhets rekommendationer direkt till aktivitets loggen. I stället exporterar vi data till Azure Advisor som vi gör för alla andra rekommendationer.
+
+De två tidigare rekommendationerna är:
+- Problem med slut punkts skydd bör lösas på dina datorer
+- Säkerhets problem i säkerhets konfiguration på dina datorer bör åtgärdas
+
+Om du har åtkomst till information för dessa två rekommendationer i aktivitets loggens "rekommendation av typen TaskDiscovery", är detta inte längre tillgängligt.
 
 
 

@@ -2,7 +2,7 @@
 rubrik: Azure Media Services v3: Översikt: Azure Media Services Beskrivning: en översikt över Azure Media Services v3 med länkar till snabb starter, självstudier och kod exempel.
 tjänster: Media-Services documentationcenter: na author: IngridAtMicrosoft Manager: femila Editor: ' ' Taggar: ' ' Nyckelord: Azure Media Services, Stream, broadcast, Live, offline
 
-MS. service: Media-Services MS. devlang: flera MS. topic: översikt ms.tgt_pltfrm: flera MS. arbets belastning: Media MS. Date: 08/31/2020 MS. author: inhenkel MS. Custom: MVC
+MS. service: Media-Services MS. devlang: flera MS. topic: översikt ms.tgt_pltfrm: flera MS. arbets belastning: Media MS. Date: 3/10/2021 MS. author: inhenkel MS. Custom: MVC
 #<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Kund avsikt: som utvecklare eller en innehålls leverantör, jag vill koda, strömma (på begäran eller Live), analysera medie innehåll så att mina kunder kan: Visa innehållet i en mängd olika webbläsare och enheter och få värdefulla insikter från inspelat innehåll.
 ---
 
@@ -13,9 +13,6 @@ MS. service: Media-Services MS. devlang: flera MS. topic: översikt ms.tgt_pltfr
 Azure Media Services är en molnbaserad plattform för att skapa lösningar för videor i sändningskvalitet för direktuppspelning, förbättra tillgängligheten och distributionen, analysera innehållet och mycket mer. Oavsett om du är en app-utvecklare, ett Call Center, ett myndighets organ eller ett underhållnings företag, kan Media Services hjälpa dig att skapa appar som levererar medie upplevelser av enastående kvalitet till stora publiker på dagens mest populära mobila enheter och webbläsare.
 
 Media Services v3-SDK: er baseras på [Media Services v3 openapi-specifikation (Swagger)](https://aka.ms/ams-v3-rest-sdk).
-
-> [!NOTE]
-> För närvarande kan du använda [Azure Portal](https://portal.azure.com/) för att: Hantera Media Services v3 [Live-händelser](live-events-outputs-concept.md), Visa (inte hantera) v3- [till gångar](assets-concept.md), [få information om åtkomst till API: er](./access-api-howto.md). För alla andra hanterings uppgifter (t. ex. [transformationer och jobb](transforms-jobs-concept.md) och [innehålls skydd](content-protection-overview.md)) använder du [REST API](/rest/api/media/), [CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -1,14 +1,14 @@
 ---
 title: Förstå frågespråket
 description: Beskriver resurs diagram tabeller och tillgängliga Kusto data typer, operatorer och funktioner som kan användas med Azure Resource Graph.
-ms.date: 01/14/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624766"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633809"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Förstå frågespråket i Azure Resource Graph
 
@@ -26,20 +26,23 @@ Den här artikeln beskriver de språk komponenter som stöds av resurs diagram:
 
 Resurs diagram innehåller flera tabeller för de data som lagras om Azure Resource Manager resurs typer och deras egenskaper. Vissa tabeller kan användas med `join` eller- `union` operatörer för att hämta egenskaper från relaterade resurs typer. Här är listan över tabeller som är tillgängliga i resurs diagram:
 
-|Resurs diagram tabell |Kan `join` andra tabeller användas? |Description |
+|Resurs diagram tabell |Kan `join` andra tabeller användas? |Beskrivning |
 |---|---|---|
-|Resurser |Yes |Standard tabellen om ingen har definierats i frågan. De flesta resurs typer och egenskaper för Resource Manager finns här. |
-|ResourceContainers |Yes |Inkluderar prenumeration (i förhands granskning-- `Microsoft.Resources/subscriptions` ) och resurs typ och data för resurs grupp ( `Microsoft.Resources/subscriptions/resourcegroups` ). |
+|Resurser |Ja |Standard tabellen om ingen har definierats i frågan. De flesta resurs typer och egenskaper för Resource Manager finns här. |
+|ResourceContainers |Ja |Inkluderar prenumeration (i förhands granskning-- `Microsoft.Resources/subscriptions` ) och resurs typ och data för resurs grupp ( `Microsoft.Resources/subscriptions/resourcegroups` ). |
 |AdvisorResources |Ja (för hands version) |Innehåller resurser som är _relaterade_ till `Microsoft.Advisor` . |
 |AlertsManagementResources |Ja (för hands version) |Innehåller resurser som är _relaterade_ till `Microsoft.AlertsManagement` . |
-|GuestConfigurationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.GuestConfiguration` . |
+|ExtendedLocationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.ExtendedLocation` . |
+|GuestConfigurationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.GuestConfiguration` . |
+|KubernetesConfigurationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.KubernetesConfiguration` . |
 |MaintenanceResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser som är _relaterade_ till `Microsoft.Maintenance` . |
-|PatchAssessmentResources|No |Innehåller resurser som _rör_ utvärdering av Azure Virtual Machines-korrigering. |
-|PatchInstallationResources|No |Innehåller resurser som _rör_ installation av Azure Virtual Machines patch. |
-|PolicyResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.PolicyInsights` . (För **hands version**)|
+|PatchAssessmentResources|Inga |Innehåller resurser som _rör_ utvärdering av Azure Virtual Machines-korrigering. |
+|PatchInstallationResources|Inga |Innehåller resurser som _rör_ installation av Azure Virtual Machines patch. |
+|PolicyResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.PolicyInsights` . (För **hands version**)|
 |RecoveryServicesResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser _relaterade_ till `Microsoft.DataProtection` och `Microsoft.RecoveryServices` . |
 |SecurityResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser som är _relaterade_ till `Microsoft.Security` . |
-|ServiceHealthResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.ResourceHealth` . |
+|ServiceHealthResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.ResourceHealth` . |
+|WorkloadMonitorResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.WorkloadMonitor` . |
 
 En fullständig lista, inklusive resurs typer, finns i [referens: tabeller och resurs typer som stöds](../reference/supported-tables-resources.md).
 
@@ -126,7 +129,7 @@ Här är listan över KQL tabell operatörer som stöds av resurs diagram med vi
 
 |KQL |Exempel fråga för resurs diagram |Kommentarer |
 |---|---|---|
-|[reparationer](/azure/kusto/query/countoperator) |[Räkna nyckel valv](../samples/starter.md#count-keyvaults) | |
+|[count](/azure/kusto/query/countoperator) |[Räkna nyckel valv](../samples/starter.md#count-keyvaults) | |
 |[kontrollstämpel](/azure/kusto/query/distinctoperator) |[Visa resurser som innehåller lagring](../samples/starter.md#show-storage) | |
 |[batteri](/azure/kusto/query/extendoperator) |[Antal virtuella datorer efter OS-typ](../samples/starter.md#count-os) | |
 |[ansluta](/azure/kusto/query/joinoperator) |[Nyckel valv med prenumerations namn](../samples/advanced.md#join) |Join-varianter som stöds: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Gränsen på 3 `join` i en enskild fråga, varav 1 kan vara en kors tabell `join` . Om all `join` användning mellan tabeller är mellan _resurs_ -och _ResourceContainers_ tillåts 3 kors tabeller `join` . Anpassade kopplings strategier, till exempel sändnings anslutning, är inte tillåtna. Information om vilka tabeller som kan användas `join` finns i [resurs diagram tabeller](#resource-graph-tables). |
@@ -141,7 +144,7 @@ Här är listan över KQL tabell operatörer som stöds av resurs diagram med vi
 |[gå](/azure/kusto/query/takeoperator) |[Lista över alla offentliga IP-adresser](../samples/starter.md#list-publicip) |Synonymen för `limit` . Fungerar inte med [Skip](./work-with-data.md#skipping-records). |
 |[översta](/azure/kusto/query/topoperator) |[Visa de första fem virtuella datorerna efter namn och deras OS-typ](../samples/starter.md#show-sorted) | |
 |[Union](/azure/kusto/query/unionoperator) |[Kombinera resultat från två frågor till ett enda resultat](../samples/advanced.md#unionresults) |Enskild tabell tillåts: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _columnName_ - \] _tabell_. Gräns på 3 `union` ben i en enda fråga. Fuzzy-upplösning av `union` ben tabeller är inte tillåten. Kan användas i en enskild tabell eller mellan _resurserna_ och _ResourceContainers_ -tabellerna. |
-|[vilken](/azure/kusto/query/whereoperator) |[Visa resurser som innehåller lagring](../samples/starter.md#show-storage) | |
+|[var](/azure/kusto/query/whereoperator) |[Visa resurser som innehåller lagring](../samples/starter.md#show-storage) | |
 
 Det finns en standard gräns på 3- `join` och 3- `mv-expand` operatörer i en enda resurs för Graph SDK-fråga. Du kan begära en ökning av dessa gränser för din klient genom **Hjälp + Support**.
 

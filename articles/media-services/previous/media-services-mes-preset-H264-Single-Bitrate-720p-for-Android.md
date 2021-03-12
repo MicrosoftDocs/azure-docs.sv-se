@@ -1,7 +1,7 @@
 ---
 title: H264, enkel bit hastighet 720p för Android | Microsoft Docs
 description: Avsnittet ger en översikt över **H264, enkel bit hastighet för Android Task för** inställning.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: fb51599a7d4e242ddc92f546ae3bb62b77aeed2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a05203925c0e731c1c05e0c97d0f67f997419970
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261605"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016448"
 ---
 # <a name="h264-single-bitrate-720p-for-android"></a>H264, enkel bithastighet, 720p för Android
 

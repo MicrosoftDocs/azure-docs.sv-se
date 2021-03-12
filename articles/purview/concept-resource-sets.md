@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387860"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200819"
 ---
 # <a name="understanding-resource-sets"></a>Förstå resursuppsättningar
 
@@ -21,7 +21,7 @@ Den här artikeln hjälper dig att förstå hur Azure-avdelningens kontroll anv�
 
 Vid skalning av data bearbetnings system lagras vanligt vis en enda tabell på en disk som flera filer. Det här konceptet representeras i Azure avdelningens kontroll med hjälp av resurs uppsättningar. En resurs uppsättning är ett enda objekt i katalogen som representerar ett stort antal till gångar i lagringen.
 
-Anta till exempel att ditt Spark-kluster har bevarat en DataFrame till en ADLS-Gen2 (data källa för Azure Data Lake Storage). Även om tabellen i Spark ser ut som en enda logisk resurs, finns det troligen tusentals Parquet-filer på disken som representerar en partition av den totala DataFrame innehåll. IoT-data och webb logg data har samma utmaning. Anta att du har en sensor som utvärderar loggfiler flera gånger om en sekund. Det tar inte lång tid förrän du har hundratals tusentals loggfiler från den enskilda sensorn.
+Anta till exempel att ditt Spark-kluster har sparat en DataFrame i en Azure Data Lake Storage (ADLS) Gen2-datakälla. Även om tabellen i Spark ser ut som en enda logisk resurs, finns det troligen tusentals Parquet-filer på disken som representerar en partition av den totala DataFrame innehåll. IoT-data och webb logg data har samma utmaning. Anta att du har en sensor som utvärderar loggfiler flera gånger om en sekund. Det tar inte lång tid förrän du har hundratals tusentals loggfiler från den enskilda sensorn.
 
 Azure avdelningens kontroll använder resurs uppsättningar för att åtgärda utmaningen med att mappa ett stort antal data till gångar till en enda logisk resurs.
 

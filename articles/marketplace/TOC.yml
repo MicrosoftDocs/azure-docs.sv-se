@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Instrumentpanel för omdömen och recensioner
       href: partner-center-portal/ratings-reviews.md
+    - name: Programmerings åtkomst till analys
+      items:
+        - name: Kom igång
+          href: analytics-get-started.md
+        - name: Krav för program mässig åtkomst
+          href: analytics-prerequisites.md
+        - name: Paradigm för program mässig åtkomst
+          href: analytics-programmatic-access.md
+        - name: Gör ditt första API-anrop
+          href: analytics-make-your-first-api-call.md
+        - name: Lista över system frågor
+          href: analytics-system-queries.md
+        - name: Exempelfrågor
+          href: analytics-sample-queries.md
+        - name: Exempelprogram
+          href: analytics-sample-application.md
+        - name: Anpassad fråga-specifikation
+          href: analytics-custom-query-specification.md
+        - name: Vanliga frågor och svar om programmatisk analys
+          href: analytics-programmatic-faq.md
+        - name: Analytics API-referens
+          items:
+            - name: 'Lista över API: er'
+              href: analytics-available-apis.md
+            - name: Hämta alla data uppsättningar
+              href: analytics-api-get-all-datasets.md
+            - name: Hämta API för rapport frågor
+              href: analytics-api-get-report-queries.md
+            - name: Ta bort API för rapport frågor
+              href: analytics-api-delete-report-queries.md
+            - name: Prova API för rapport frågor
+              href: analytics-api-try-report-queries.md
+            - name: Hämta rapport-API
+              href: analytics-api-get-report.md
+            - name: Uppdatera rapport-API
+              href: analytics-api-update-report.md
+            - name: Ta bort rapport-API
+              href: analytics-api-delete-report.md
+            - name: Pausa API för rapport körningar
+              href: analytics-api-pause-report-executions.md
+            - name: Återuppta API för rapport körningar
+              href: analytics-api-resume-report-executions.md
     - name: Hantera avlästa fakturerings avvikelser
       href: anomaly-detection.md
     - name: Vanliga analysfrågor

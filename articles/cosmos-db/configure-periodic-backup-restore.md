@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 185320868c491d98df5fb6e31d9a627157431944
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527785"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565843"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Konfigurera Azure Cosmos DB konto med periodisk säkerhets kopiering
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB automatiskt tar säkerhets kopior av dina data med jämna mellanrum. Automatiska säkerhets kopieringar tas utan att påverka databas åtgärdernas prestanda eller tillgänglighet. Alla säkerhets kopior lagras separat i en lagrings tjänst och de säkerhets kopiorna replikeras globalt för återhämtning mot regionala haverier. Med Azure Cosmos DB, inte bara för dina data, utan även säkerhets kopior av dina data är mycket redundanta och elastiska för regional katastrofer. Följande steg visar hur Azure Cosmos DB utför säkerhets kopiering av data:
+Azure Cosmos DB gör automatiskt en säkerhetskopia av dina data med jämna mellanrum. Automatiska säkerhetskopieringar görs utan att det påverkar databasernas prestanda eller tillgänglighet. Alla säkerhets kopior lagras separat i en lagrings tjänst och de säkerhets kopiorna replikeras globalt för återhämtning mot regionala haverier. Med Azure Cosmos DB, inte bara för dina data, utan även säkerhets kopior av dina data är mycket redundanta och elastiska för regional katastrofer. Följande steg visar hur Azure Cosmos DB utför säkerhets kopiering av data:
 
 * Azure Cosmos DB automatiskt tar en fullständig säkerhets kopia av databasen var fjärde timme och när som helst, så lagras bara de senaste två säkerhets kopiorna som standard. Om standard intervallen inte räcker för dina arbets belastningar kan du ändra säkerhets kopierings intervallet och kvarhållningsperioden från Azure Portal. Du kan ändra konfigurationen för säkerhets kopiering under eller efter att Azure Cosmos-kontot har skapats. Om behållaren eller databasen tas bort behåller Azure Cosmos DB befintliga ögonblicks bilder av en specifik behållare eller databas i 30 dagar.
 
@@ -33,7 +33,7 @@ Azure Cosmos DB automatiskt tar säkerhets kopior av dina data med jämna mellan
 
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>Ändra intervallet för säkerhets kopiering och kvarhållningsperiod
 
-Azure Cosmos DB automatiskt tar en fullständig säkerhets kopia av dina data varje 4 timme och när som helst, lagras de senaste två säkerhets kopiorna. Den här konfigurationen är standard alternativet och erbjuds utan extra kostnad. Du kan ändra standard intervallet för säkerhets kopiering och kvarhållningsperiod när du skapar ett Azure Cosmos-konto eller när kontot har skapats. Konfigurationen för säkerhetskopiering anges på kontonivå i Azure Cosmos och du måste ange inställningen för varje konto. När du har konfigurerat alternativ för säkerhets kopiering för ett konto tillämpas det på alla behållare i kontot. Du kan för närvarande bara ändra säkerhetskopieringsalternativ via Azure-portalen.
+Azure Cosmos DB automatiskt tar en fullständig säkerhets kopia av dina data varje 4 timme och när som helst, lagras de senaste två säkerhets kopiorna. Den här konfigurationen är standard alternativet och erbjuds utan extra kostnad. Du kan ändra standardintervallet för säkerhetskopiering och kvarhållningsintervallet antingen när du skapar Azure Cosmos-kontot eller när kontot har skapats. Konfigurationen för säkerhetskopiering anges på kontonivå i Azure Cosmos och du måste ange inställningen för varje konto. När du har konfigurerat alternativ för säkerhets kopiering för ett konto tillämpas det på alla behållare i kontot. Du kan för närvarande bara ändra säkerhetskopieringsalternativ via Azure-portalen.
 
 Om du av misstag har tagit bort eller skadat dina data, **innan du skapar en support förfrågan för att återställa data, måste du öka säkerhets kopians kvarhållning för ditt konto till minst sju dagar. Det är bäst att öka din kvarhållning inom 8 timmar efter den här händelsen.** På så sätt har Azure Cosmos DB-teamet tillräckligt med tid för att återställa ditt konto.
 
@@ -115,7 +115,7 @@ Om du etablerar data flöde på databas nivå sker säkerhets kopierings-och åt
 Huvud konton som ingår i rollen [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), ägare eller deltagare kan begära en återställning eller ändra kvarhållningsperioden.
 
 ## <a name="understanding-costs-of-extra-backups"></a>Förstå kostnader för extra säkerhets kopieringar
-Två säkerhets kopior tillhandahålls kostnads fritt och extra säkerhets kopieringar debiteras enligt den regionbaserade prissättningen för säkerhets kopierings lagring som beskrivs i pris nivån för [säkerhets kopierings lagring](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/). Till exempel om kvarhållning av säkerhets kopior har kon figurer ATS till 240 timmar, vilket är 10 dagar och intervallet för säkerhets kopiering till 24 timmar. Detta innebär 10 kopior av säkerhets kopierings data. Vi antar 1 TB data i USA, västra 2, som är 1000 * 0,12 ~ $120 för lagring av säkerhets kopior under den månaden. 
+Två säkerhets kopior tillhandahålls kostnads fritt och extra säkerhets kopieringar debiteras enligt den regionbaserade prissättningen för säkerhets kopierings lagring som beskrivs i pris nivån för [säkerhets kopierings lagring](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/). Till exempel om kvarhållning av säkerhets kopior har kon figurer ATS till 240 timmar, vilket är 10 dagar och intervallet för säkerhets kopiering till 24 timmar. Detta innebär 10 kopior av säkerhets kopierings data. Om vi antar 1 TB data i USA, västra 2, blir kostnaden 0,12 * 1000 * 8 för lagring av säkerhets kopior under den aktuella månaden. 
 
 
 ## <a name="options-to-manage-your-own-backups"></a>Alternativ för att hantera dina egna säkerhets kopior

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504941"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149349"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Konfigurera beräknings mål för modell utbildning och distribution
 
@@ -64,11 +64,7 @@ När du använder den lokala datorn för att få en **härledning** måste du ha
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuella fjärrdatorer
 
-Azure Machine Learning också stöd för att ta med din egen beräknings resurs och koppla den till din arbets yta. En sådan resurs typ är en godtycklig virtuell fjärrdator, så länge den är tillgänglig från Azure Machine Learning. Resursen kan vara en virtuell Azure-dator, en fjärrserver i din organisation eller lokalt. Mer specifikt, baserat på IP-adress och autentiseringsuppgifter (användar namn och lösen ord eller SSH-nyckel), kan du använda valfri tillgänglig virtuell dator för fjärrkörningar.
-
-Du kan använda en [systemskapad Conda-miljö](how-to-use-environments.md), en redan befintlig [python-miljö](how-to-configure-environment.md#local)eller en [Docker-behållare](https://docs.docker.com/engine/install/ubuntu/). Om du vill köra på en Docker-behållare måste du ha en Docker-motor som körs på den virtuella datorn. Den här funktionen är särskilt användbar när du vill ha en mer flexibel, molnbaserad utvecklings-eller experiment miljö än din lokala dator.
-
-Använd Azure-Data Science Virtual Machine (DSVM) som den virtuella Azure-dator som du väljer för det här scenariot. Den här virtuella datorn är en förkonfigurerad miljö för data vetenskap och AI-utveckling i Azure. Den virtuella datorn innehåller ett granskat val av verktyg och ramverk för hela livs cykeln för Machine Learning-utveckling. Mer information om hur du använder DSVM med Azure Machine Learning finns i [Konfigurera en utvecklings miljö](./how-to-configure-environment.md#dsvm).
+Azure Machine Learning stöder också anslutning av en virtuell Azure-dator. Den virtuella datorn måste vara en Azure-Data Science Virtual Machine (DSVM). Den här virtuella datorn är en förkonfigurerad miljö för data vetenskap och AI-utveckling i Azure. Den virtuella datorn innehåller ett granskat val av verktyg och ramverk för hela livs cykeln för Machine Learning-utveckling. Mer information om hur du använder DSVM med Azure Machine Learning finns i [Konfigurera en utvecklings miljö](./how-to-configure-environment.md#dsvm).
 
 1. **Skapa**: skapa en DSVM innan du använder den för att träna din modell. Information om hur du skapar den här resursen finns i [etablera data science Virtual Machine för Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 

@@ -1,20 +1,20 @@
 ---
 title: Övervaka Delegerings ändringar i hanterings klienten
 description: Lär dig hur du övervakar Delegerings aktivitet från kund klienter till din hanterings klient.
-ms.date: 01/27/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593131"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199064"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka Delegerings ändringar i hanterings klienten
 
 Som tjänst leverantör kanske du vill vara medveten om att kund prenumerationer eller resurs grupper delegeras till din klient organisation via [Azure Lighthouse](../overview.md)eller när tidigare delegerade resurser tas bort.
 
-I hanterings klienten spårar [Azure aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md) Delegerings aktivitet på klient nivå. Den här loggade aktiviteten innehåller alla tillagda eller borttagna delegeringar från alla kund klienter.
+I hanterings klienten spårar [Azure aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md) Delegerings aktivitet på klient nivå. Den här loggade aktiviteten innehåller alla tillagda eller borttagna delegeringar från kund klienter.
 
 I det här avsnittet beskrivs de behörigheter som krävs för att övervaka Delegerings aktivitet till din klient (i alla dina kunder). Det innehåller också ett exempel skript som visar en metod för att fråga och rapportera om dessa data.
 

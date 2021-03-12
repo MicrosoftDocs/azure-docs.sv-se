@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
+    - name: Nyheter
+      href: release-notes.md
     - name: Arkitektur för agent lösa lösningar
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: Agent-baserad lösnings arkitektur
       href: architecture-agent-based.md
-- name: Nyheter
-  href: release-notes.md
 - name: Snabbstarter
   expanded: true
   items:
@@ -111,13 +111,13 @@
         - name: Förbereda nätverket
           items:
             - name: Identifiera apparater som krävs
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment, DL20, EL300, R340, enterprise, SMB, corporate'
             - name: Konfigurera ditt nätverk
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
             - name: Installera programvara
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate'
               href: how-to-install-software.md
         - name: Förbereda sensorer
           items:
@@ -155,8 +155,8 @@
         - name: Hantera sensorer i molnet
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Hantera den lokala hanteringskonsolen
-          displayName: 'upgrade, activation, certificate, software update, backup, restore, proxy, password recovery'
           href: how-to-manage-the-on-premises-management-console.md
+          displayName: 'mail, SMTP, activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: Arbeta med paket för hotinformation
           href: how-to-work-with-threat-intelligence-packages.md
         - name: Arbeta med information om enhetsinventering
@@ -295,17 +295,12 @@
             - name: Undersöka en enhet
               displayName: 'access, data, kql, ports, logins, process'
               href: how-to-investigate-device.md
-- name: Felsökning
-  items:
-    - name: Fel sökning av Defender IoT Micro-agent (för hands version)
-      displayName: 'service status, review logs'
-      href: troubleshoot-defender-micro-agent.md
-- name: Funktions support och pensionering
-  items:
-    - name: Funktions support och pensionering
-      displayName: 'C, C#, deprecation, support'
-      href: edge-security-module-deprecation.md
-- name: Referenser
+    - name: Felsöka
+      items:
+        - name: Fel sökning av Defender IoT Micro-agent (för hands version)
+          displayName: 'service status, review logs'
+          href: troubleshoot-defender-micro-agent.md
+- name: Referens
   items:
     - name: Lösning utan agent för organisationer
       items:
@@ -334,7 +329,12 @@
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Defender för IoT-ordlista
       href: references-defender-for-iot-glossary.md
-- name: Resurser
+    - name: Funktions support och pensionering
+      items:
+        - name: Funktions support och pensionering
+          displayName: 'C, C#, deprecation, support'
+          href: edge-security-module-deprecation.md
+- name: Resurs
   items:
     - name: Agentbaserad lösning för enhetsskapare
       items:

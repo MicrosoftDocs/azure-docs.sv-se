@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046133"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199623"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Ansluta en underordnad enhet till en Azure IoT Edge-gateway
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Den här artikeln innehåller instruktioner för att upprätta en betrodd anslutning mellan underordnade enheter och IoT Edge transparenta gatewayer. I ett scenario med transparent Gateway kan en eller flera enheter skicka sina meddelanden via en enda gateway-enhet som upprätthåller anslutningen till IoT Hub.
 
@@ -44,7 +46,19 @@ I den här artikeln hänvisar termerna *Gateway* och *IoT Edge gateway* till en 
 
 ## <a name="prepare-a-downstream-device"></a>Förbered en underordnad enhet
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 En underordnad enhet kan vara ett program eller en plattform som har en identitet som skapats med Azure IoT Hub Cloud service. I många fall använder dessa program [Azure IoT-enhetens SDK](../iot-hub/iot-hub-devguide-sdks.md). En underordnad enhet kan även vara ett program som körs på själva IoT Edge gateway-enheten. En annan IoT Edge enhet kan dock inte underordnas IoT Edge Gateway.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+En underordnad enhet kan vara ett program eller en plattform som har en identitet som skapats med Azure IoT Hub Cloud service. I många fall använder dessa program [Azure IoT-enhetens SDK](../iot-hub/iot-hub-devguide-sdks.md). En underordnad enhet kan även vara ett program som körs på själva IoT Edge gateway-enheten.
+
+Den här artikeln innehåller anvisningar för hur du ansluter en IoT-enhet som en underordnad enhet. Om du har en IoT Edge enhet som en underordnad enhet kan du läsa [Anslut en underordnad IoT Edge enhet till en Azure IoT Edge Gateway](how-to-connect-downstream-iot-edge-device.md).
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >IoT-enheter som är registrerade med IoT Hub kan använda [modulerna](../iot-hub/iot-hub-devguide-module-twins.md) för att isolera olika processer, maskin vara eller funktioner på en enskild enhet. IoT Edge gateways stöder underordnad modul anslutningar med hjälp av symmetrisk nyckel autentisering men inte X. 509-certifikatautentisering.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433275"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149711"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
@@ -127,13 +127,15 @@ Resultatet av att ringa `object result = await client.GetDigitalTwinAsync("my-mo
 }
 ```
 
-De definierade egenskaperna för den digitala kanten returneras som toppnivå egenskaper på den digitala dubbla. Metadata-eller system information som inte ingår i DTDL-definitionen returneras med ett `$` prefix. Metadata-egenskaper inkluderar:
-* ID: t för den digitala dubbla i den här Azure Digital-instansen, som `$dtId` .
-* `$etag`, ett standard-HTTP-fält som tilldelas av webb servern.
-* Andra egenskaper i ett `$metadata` avsnitt. Dessa omfattar:
-    - DTMI för den digitala dubbla.
-    - Synkroniseringsstatus för varje skrivbar egenskap. Detta är mest användbart för enheter, där det är möjligt att tjänsten och enheten har avvikande status (till exempel när en enhet är offline). Den här egenskapen gäller för närvarande endast för fysiska enheter som är anslutna till IoT Hub. Med data i avsnittet metadata är det möjligt att förstå fullständig status för en egenskap samt de senast ändrade tidsstämplar. Mer information om synkroniseringsstatus finns i [den här IoT Hub själv studie kursen](../iot-hub/tutorial-device-twins.md) om synkronisering av enhets status.
-    - Tjänstspecifika metadata, t. ex. från IoT Hub eller Azure digitala dubbla. 
+De definierade egenskaperna för den digitala kanten returneras som toppnivå egenskaper på den digitala dubbla. Metadata-eller system information som inte ingår i DTDL-definitionen returneras med ett `$` prefix. Metadata-egenskaperna innehåller följande värden:
+* `$dtId`: ID: t för den digitala dubbla i den här Azure Digital-instansen
+* `$etag`: Ett standard-HTTP-fält som tilldelas av webb servern. Detta uppdateras till ett nytt värde varje gång den dubbla uppdateras, vilket kan vara användbart för att avgöra om den dubbla data har uppdaterats på servern sedan en tidigare kontroll. Den kan också användas i HTTP-huvuden på följande sätt:
+  - med Läs åtgärder för att undvika att hämta innehåll som inte har ändrats
+  - med Skriv åtgärder för att stödja optimistisk samtidighet
+* `$metadata`: En uppsättning andra egenskaper, inklusive:
+  - DTMI för den digitala dubbla.
+  - Synkroniseringsstatus för varje skrivbar egenskap. Detta är mest användbart för enheter, där det är möjligt att tjänsten och enheten har avvikande status (till exempel när en enhet är offline). Den här egenskapen gäller för närvarande endast för fysiska enheter som är anslutna till IoT Hub. Med data i avsnittet metadata är det möjligt att förstå fullständig status för en egenskap samt de senast ändrade tidsstämplar. Mer information om synkroniseringsstatus finns i [den här IoT Hub själv studie kursen](../iot-hub/tutorial-device-twins.md) om synkronisering av enhets status.
+  - Tjänstspecifika metadata, t. ex. från IoT Hub eller Azure digitala dubbla. 
 
 Du kan läsa mer om serialiserings hjälp klasser som `BasicDigitalTwin` i [*How-to: använda Azure Digitals dubbla API: er och SDK: er*](how-to-use-apis-sdks.md).
 

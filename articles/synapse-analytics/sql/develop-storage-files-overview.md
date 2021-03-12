@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695676"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199986"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Få åtkomst till extern lagring med Server lös SQL-pool i Azure Synapse Analytics
 
-Det här dokumentet beskriver hur kan användare läsa data från filerna som lagras på Azure Storage i SQL-poolen utan server. Användare har följande alternativ för åtkomst till lagring:
+Den här artikeln beskriver hur användare kan läsa data från filerna som lagras på Azure Storage i SQL-poolen utan server. Användare har följande alternativ för åtkomst till lagring:
 
 - [OpenRowSet](develop-openrowset.md) -funktionen som aktiverar ad hoc-frågor över filerna i Azure Storage.
 - [Extern tabell](develop-tables-external-tables.md) som är en fördefinierad data struktur som skapats ovanpå en uppsättning externa filer.

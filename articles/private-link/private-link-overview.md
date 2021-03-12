@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ee9b38343176eec82d8e227e86faa97814f5be13
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712189"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616544"
 ---
 # <a name="what-is-azure-private-link"></a>Vad är Azure Privat Link? 
 Med Azures privata länk kan du få åtkomst till Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade/partner tjänster som ägs av en [privat slut punkt](private-endpoint-overview.md) i det virtuella nätverket.
@@ -65,7 +65,7 @@ Azure Private-länken ger följande fördelar:
 |Azure Service Bus | Alla offentliga regioner<br/>Alla myndighets regioner  | Stöds med Premium-nivån av Azure Service Bus. [Välj för nivåer](../service-bus-messaging/service-bus-premium-messaging.md) | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Service Bus.](../service-bus-messaging/private-link-service.md)    |
 |Azure Relay | Alla offentliga regioner      |  | Förhandsgranskning <br/> [Lär dig hur du skapar en privat slut punkt för Azure Relay.](../azure-relay/private-link-service.md)  |
 |Azure Event Grid| Alla offentliga regioner<br/> Alla myndighets regioner       |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Event Grid.](../event-grid/network-security.md) |
-|Azure Web Apps | Alla offentliga regioner      | Stöds med PremiumV2, PremiumV3 eller Function Premium plan  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Web Apps.](./tutorial-private-endpoint-webapp-portal.md)   |
+|Azure Web Apps | Alla offentliga regioner<br/> Kina, norra 2 & öst 2    | Stöds med PremiumV2, PremiumV3 eller Function Premium plan  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Web Apps.](./tutorial-private-endpoint-webapp-portal.md)   |
 |Azure Machine Learning | Alla offentliga regioner    |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Machine Learning.](../machine-learning/how-to-configure-private-link.md)   |
 | Azure Automation  | Alla offentliga regioner<br/> Alla myndighets regioner |  | Förhandsgranskning </br> [Lär dig hur du skapar en privat slut punkt för Azure Automation.](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | Alla offentliga regioner    |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure IoT Hub.](../iot-hub/virtual-network-support.md) |
