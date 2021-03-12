@@ -153,18 +153,18 @@
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Dataskydd
           items:
+            - name: Mjuk borttagning för cotainrar
+              href: soft-delete-container-overview.md
             - name: Versionshantering
               href: versioning-overview.md
             - name: Mjuk borttagning för blobar
               href: soft-delete-blob-overview.md
-            - name: Mjuk borttagning för cotainrar
-              href: soft-delete-container-overview.md
+            - name: Återställning från tidpunkt
+              href: point-in-time-restore-overview.md
             - name: Ögonblicksbilder
               href: snapshots-overview.md
             - name: Ändringsfeed
               href: storage-blob-change-feed.md
-            - name: Återställning från tidpunkt
-              href: point-in-time-restore-overview.md
             - name: Blobar som inte kan ändras
               href: storage-blob-immutable-storage.md
         - name: Redundans och haveri beredskap
@@ -401,18 +401,20 @@
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Skydda BLOB-data
           items:
+            - name: Lås ett lagrings konto
+              href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Aktivera mjuk borttagning för behållare
+              href: soft-delete-container-enable.md
             - name: Aktivera blobversionshantering
               href: versioning-enable.md
             - name: Aktivera mjuk borttagning för blobar
               href: soft-delete-blob-enable.md
-            - name: Aktivera mjuk borttagning för behållare
-              href: soft-delete-container-enable.md
+            - name: Aktivera återställning baserat på tidpunkt
+              href: point-in-time-restore-manage.md
             - name: Skapa ögonblicksbilder (.NET)
               href: snapshots-manage-dotnet.md
             - name: Bearbeta ändringsflödesloggar
               href: storage-blob-change-feed-how-to.md
-            - name: Aktivera återställning baserat på tidpunkt
-              href: point-in-time-restore-manage.md
             - name: Ange och hantera oföränderlighetsprinciper
               href: storage-blob-immutability-policies-manage.md
         - name: Hantera redundans och redundans

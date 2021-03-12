@@ -2,15 +2,15 @@
 title: Självstudie – lägga till parametrar till Azure Resource Manager bicep-fil
 description: Lägg till parametrar till din bicep-fil så att den kan användas igen.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748293"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632789"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>Självstudie: lägga till parametrar i Azure Resource Manager bicep-filen
 
@@ -34,7 +34,7 @@ Du kanske har märkt att det är problem med den här bicep-filen. Lagringskonto
 
 ## <a name="make-bicep-file-reusable"></a>Gör bicep-filen återanvändbar
 
-Vi lägger till en parameter som du kan använda för att skicka in ett lagrings konto namn för att göra din bicep-fil oanvändbar. Det markerade bicep i följande exempel visar vad som har ändrats i filen. `storageName`Parametern identifieras som en sträng. Den maximala längden är inställd på 24 tecken för att förhindra namn som är för långa.
+Vi lägger till en parameter som du kan använda för att skicka in ett lagrings konto namn för att göra din bicep-fil oanvändbar. Följande bicep-fil visar vad som har ändrats i filen. `storageName`Parametern identifieras som en sträng. Den maximala längden är inställd på 24 tecken för att förhindra namn som är för långa.
 
 Kopiera hela filen och ersätt den med följande innehåll.
 

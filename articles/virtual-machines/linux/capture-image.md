@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 6b345f159ca30d93e43aae8fe34e7d469c57795b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8e81c204c1f05b7fc6bdf1efc7060e2094c648e5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556663"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630630"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Så här skapar du en hanterad avbildning av en virtuell dator eller virtuell hård disk
 
@@ -40,7 +40,7 @@ För en förenklad version av den här artikeln och för testning, utvärdering 
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Steg 1: avetablera den virtuella datorn
-Först avetablerar du den virtuella datorn med hjälp av Azure VM-agenten för att ta bort datorspecifika filer och data. Använd `waagent` kommandot med `-deprovision+user` parametern på den virtuella käll Linux-datorn. Mer information finns i [Användarguide för Azure Linux Agent](../extensions/agent-linux.md).
+Först avetablerar du den virtuella datorn med hjälp av Azure VM-agenten för att ta bort datorspecifika filer och data. Använd `waagent` kommandot med `-deprovision+user` parametern på den virtuella käll Linux-datorn. Mer information finns i [Användarguide för Azure Linux Agent](../extensions/agent-linux.md). Den här processen kan inte ångras.
 
 1. Anslut till din virtuella Linux-dator med en SSH-klient.
 2. I SSH-fönstret anger du följande kommando:

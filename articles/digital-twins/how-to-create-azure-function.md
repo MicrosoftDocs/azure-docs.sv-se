@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433547"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630274"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -63,7 +63,7 @@ För att kunna använda SDK måste du inkludera följande paket i projektet. Du 
 * [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Öppna sedan _Function1.cs_ -filen i Visual Studio-Solution Explorer där du har exempel kod och Lägg till följande `using` instruktioner för dessa paket i din funktion. 
+Öppna sedan _Function1.cs_ -filen i Visual Studio-Solution Explorer där du har exempel kod och Lägg till följande `using` instruktioner för dessa paket i din funktion.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -96,6 +96,20 @@ Nu när ditt program är skrivet kan du publicera det till Azure med hjälp av s
 ## <a name="publish-the-function-app-to-azure"></a>Publicera funktionsappen till Azure
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+### <a name="verify-function-publish"></a>Verifiera funktionen publicera
+
+1. Logga in med dina autentiseringsuppgifter i [Azure Portal](https://portal.azure.com/).
+2. I Sök fältet högst upp i fönstret söker du efter namnet på din **funktion i appen**.
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Sök efter din Function-app med namnet i Azure Portal." lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. På sidan *Function-appen* som öppnas väljer du *funktioner* i meny alternativen till vänster. Om din funktion har publicerats visas funktions namnet i listan.
+Observera att du kan behöva vänta några minuter eller uppdatera sidan ett par gånger innan du kan se din funktion listad i listan publicerade funktioner.
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Visa publicerade funktioner i Azure Portal." lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+För att din Function-app ska kunna komma åt Azure Digitals, måste den ha en Systemhanterad identitet med behörigheter för åtkomst till din Azure Digital-instansen. Nu ska du ställa in det här.
 
 ## <a name="set-up-security-access-for-the-function-app"></a>Konfigurera säkerhets åtkomst för Function-appen
 
@@ -155,7 +169,7 @@ En systemtilldelad hanterad identitet gör det möjligt för Azure-resurser att 
 
     :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärm bild av Azure Portal: namnet på appens funktion genomsöks i portalens sökfält och Sök resultatet är markerat.":::
 
-1. På sidan Function-appen väljer du _identitet_ i navigerings fältet till vänster för att arbeta med en hanterad identitet för funktionen. På sidan _systemtilldelat_ , kontrollerar du att _statusen_ är inställd på **på** (om den inte är det, anger du den nu och *sparar* ändringen).
+1. På sidan Function-appen väljer du _identitet_ i navigerings fältet till vänster för att arbeta med en hanterad identitet för funktionen. På sidan _systemtilldelat_ , kontrollerar du att _statusen_ är inställd **på på** (om den inte är det, anger du den nu och *sparar* ändringen).
 
     :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Skärm bild av Azure Portal: på sidan identitet för Function-appen är alternativet status inställt på on." lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 

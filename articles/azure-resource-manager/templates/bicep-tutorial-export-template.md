@@ -2,15 +2,15 @@
 title: Självstudie – exportera JSON-mall från Azure Portal för utveckling av bicep
 description: Lär dig hur du använder en exporterad JSON-mall för att slutföra din bicep-utveckling.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748268"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632567"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>Självstudie: Använd exporterad JSON-mall från Azure Portal
 

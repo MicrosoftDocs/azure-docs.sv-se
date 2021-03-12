@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 763ccd397d8cd704ca161032e65f17979bccb53b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467898"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630970"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Konfigurera VPN på din Azure Stack Edge-Mini R-enhet via Azure PowerShell
 
@@ -147,7 +147,7 @@ Följ dessa steg om du vill använda den ändrade `parameters-p2s.json` och kör
     
     |Parameter  |Beskrivning  |
     |---------|---------|
-    |Plats     |Det här är den region där Azure-resurserna måste skapas.         |
+    |Location     |Det här är den region där Azure-resurserna måste skapas.         |
     |AzureAppRuleFilePath     | Detta är fil Sök vägen för `appRule.json` .       |
     |AzureIPRangesFilePath     |Det här är den JSON-fil för service tag som du laddade ned i det tidigare steget.         |
     |ResourceGroupName     | Detta är namnet på den resurs grupp som alla Azure-resurser skapas under.        |
@@ -303,7 +303,7 @@ Följ de här stegen i det lokala användar gränssnittet för din Azure Stack E
 
 ## <a name="validate-data-transfer-through-vpn"></a>Verifiera data överföring via VPN
 
-För att bekräfta att VPN fungerar kopierar du data till en SMB-resurs. Följ stegen i [Lägg till en resurs](azure-stack-edge-j-series-manage-shares.md#add-a-share) på din Azure Stack Edge-enhet. 
+För att bekräfta att VPN fungerar kopierar du data till en SMB-resurs. Följ stegen i [Lägg till en resurs](azure-stack-edge-gpu-manage-shares.md#add-a-share) på din Azure Stack Edge-enhet. 
 
 1. Kopiera en fil, till exempel \data\pictures\waterfall.jpg till den SMB-resurs som du monterade i klient systemet. 
 2. För att verifiera att data går via VPN, medan data kopieras:

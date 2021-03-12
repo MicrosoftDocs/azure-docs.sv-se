@@ -2,18 +2,19 @@
 title: Så här mappar du Azure-diskar till virtuella Linux-datorer gäst diskar
 description: Så här fastställer du de Azure-diskar som Underlay en virtuell Linux-dators gäst diskar.
 author: timbasham
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: 4f0e48bf1c14728c54d4e89f30700017b0420d7d
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.collection: linux
+ms.openlocfilehash: bc6c6273ab3d1a4403763e4ed0a8c491995fb2df
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523702"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556731"
 ---
 # <a name="how-to-map-azure-disks-to-linux-vm-guest-disks"></a>Så här mappar du Azure-diskar till virtuella Linux-datorer gäst diskar
 
@@ -23,7 +24,7 @@ Du kan behöva bestämma vilka Azure-diskar som ska återställa en virtuell dat
 
 Ett logiskt enhets nummer (LUN) är ett tal som används för att identifiera en speciell lagrings enhet. Varje lagrings enhet tilldelas en unik numerisk identifierare som börjar med noll. Den fullständiga sökvägen till en enhet representeras av buss numret, målets ID-nummer och LUN (Logical Unit Number). 
 
-Exempel: ***Bus Number 0, mål-ID 0, LUN 3** _
+Exempel: ***buss nummer 0, mål-ID 0, LUN 3***
 
 För vår övning behöver du bara använda LUN.
 
@@ -36,7 +37,7 @@ Nedan finns två metoder för att hitta LUN på en disk i Linux.
 1. Anslut till VM:en
 1. `sudo lsscsi`
 
-Den första kolumnen i listan innehåller LUN, formatet är [värd: kanal: Target: _ * LUN * *].
+Den första kolumnen i listan innehåller LUN, formatet är [värd: kanal: Target:**LUN**].
 
 ### <a name="listing-block-devices"></a>Visar block enheter
 

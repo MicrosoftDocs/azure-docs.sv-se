@@ -2,19 +2,19 @@
 title: Självstudie – Skapa anpassade VM-avbildningar med Azure PowerShell
 description: I den här självstudien får du lära dig hur du använder Azure PowerShell för att skapa en anpassad avbildning av en Windows-avbildning som lagras i ett Azure-delat avbildnings Galleri.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0e3521603c4651133f1420809e4921ad27279860
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 145b7300272243099cfccad0c99d8f69e83e6762
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873204"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555830"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Självstudie: skapa virtuella Windows-avbildningar med Azure PowerShell
 

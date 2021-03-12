@@ -1,6 +1,6 @@
 ---
-title: PowerShell-exempel – export av app-registreringar, hemligheter och certifikat i Azure Active Directory klient organisationen.
-description: PowerShell-exempel som exporterar alla app-registreringar, hemligheter och certifikat för de angivna apparna i Azure Active Directory klient organisationen.
+title: PowerShell-exempel – exportera hemligheter och certifikat för registrerings program i Azure Active Directory klient organisationen.
+description: PowerShell-exempel som exporterar alla hemligheter och certifikat för de angivna app-registreringarna i Azure Active Directory-klienten.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
-ms.date: 02/18/2021
+ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 768f2f3241144085acb7a218b60034cdfa9e45b9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d0de96d0d8a5edc6fbacc25dcbcb868073e57183
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185421"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556561"
 ---
-# <a name="export-app-registrations-secrets-and-certificates"></a>Exportera program registreringar, hemligheter och certifikat
+# <a name="export-secrets-and-certificates-for-app-registrations"></a>Exportera hemligheter och certifikat för app-registreringar
 
-Det här PowerShell-skriptet exporterar alla registrerings program, hemligheter och certifikat för de angivna apparna i din katalog.
+Detta exempel på PowerShell-skript exporterar alla hemligheter och certifikat för de angivna registrerings program från din katalog till en CSV-fil.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,13 +28,17 @@ Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurepowershell[main](~/powershell_scripts/application-management/export-all-app-registrations-secrets-and-certs.ps1 "Exports all app registrations, secrets, and certificates for the specified apps in your directory.")]
+[!code-azurepowershell[main](~/powershell_scripts/application-management/export-all-app-registrations-secrets-and-certs.ps1 "Exports all secrets and certificates for the specified app registrations in your directory.")]
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
+Kommandot "Lägg till medlem" ansvarar för att skapa kolumner i CSV-filen.
+Du kan ändra variabeln "$Path" direkt i PowerShell med en CSV-fil Sök väg, om du hellre vill att exporten ska vara icke-interaktiv.
+
 | Kommando | Kommentarer |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Exporterar alla app-registreringar, hemligheter och certifikat för de angivna apparna i din katalog. |
+| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Hämtar ett program från din katalog. |
+| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner) | Hämtar ägare av ett program från din katalog. |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 01/06/2021
-ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.date: 02/18/2021
+ms.openlocfilehash: 7ed3f707ad69c60111bcc97e139c0825fd503d8e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976868"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630119"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Så här skapar du en virtuell dator med en godkänd bas
 
-Den här artikeln beskriver hur du använder Azure för att skapa en virtuell dator (VM) som innehåller ett förkonfigurerat, godkänt operativ system. Om detta inte är kompatibelt med din lösning, är det möjligt att [skapa och konfigurera en lokal virtuell dator](azure-vm-create-using-own-image.md) med ett godkänt operativ system och sedan konfigurera och förbereda den för uppladdning enligt beskrivningen i [förbereda en Windows-VHD eller VHDX att ladda upp till Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
+Den här artikeln beskriver hur du använder Azure för att skapa en virtuell dator (VM) som innehåller ett förkonfigurerat, godkänt operativ system. Om detta inte är kompatibelt med din lösning, är det möjligt att [skapa och konfigurera en lokal virtuell dator](azure-vm-create-using-own-image.md) med ett godkänt operativ system.
 
 > [!NOTE]
 > Innan du påbörjar den här proceduren bör du gå igenom de [tekniska kraven](marketplace-virtual-machines.md#technical-requirements) för virtuella Azure-datorer, inklusive krav på virtuell hård disk (VHD).
@@ -78,5 +78,5 @@ Se följande dokumentation för att ansluta till din virtuella [Windows](../virt
 ## <a name="next-steps"></a>Nästa steg
 
 - Rekommenderat nästa steg: [testa din VM-avbildning](azure-vm-image-test.md) för att säkerställa att den uppfyller publicerings kraven för Azure Marketplace. Detta är valfritt.
-- Om du inte testar din VM-avbildning fortsätter du med [att generera SAS-URI: n](azure-vm-get-sas-uri.md).
+- Om du inte vill testa din VM-avbildning loggar du in på [partner Center](https://partner.microsoft.com/) för att publicera avbildningen.
 - Om du har problem med att skapa din nya Azure-baserade virtuella hård disk läser du [vanliga frågor och svar om virtuella datorer för Azure Marketplace](azure-vm-create-faq.md).

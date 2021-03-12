@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705174"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632398"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikering i Azure Container Registry
 
@@ -22,6 +22,7 @@ Ett georeplikerat register ger följande fördelar:
 * Förbättra prestanda och tillförlitlighet i regionala distributioner med nätverks åtkomst till register
 * Minska kostnaderna för data överföring genom att dra bild lager från ett lokalt replikerat register i samma eller närliggande region som behållar värden
 * Enkel hantering av ett register i flera regioner
+* Register återhämtning om ett regionalt avbrott inträffar
 
 > [!NOTE]
 > Om du behöver upprätthålla kopior av containeravbildningar i mer än ett Azure-containerregister har Azure Container Registry även stöd för [avbildningsimport](container-registry-import-images.md). Till exempel kan du i ett DevOps-arbetsflöde importera en avbildning från ett utvecklingsregister till ett produktionsregister utan att behöva använda Docker-kommandon.
@@ -59,6 +60,7 @@ Användning av funktionen för geo-replikering i Azure Container Registry ger f�
 * Hantera en enda konfiguration av avbildnings distributioner som alla regioner använder samma bild-URL: `contoso.azurecr.io/public/products/web:1.2`
 * Push-överför till ett enda register medan ACR hanterar geo-replikeringen. ACR replikerar bara unika lager, vilket minskar data överföringen mellan regioner. 
 * Konfigurera regionala [webhookar](container-registry-webhook.md) som meddelar dig om händelser i vissa repliker.
+* Tillhandahålla ett register med hög tillgänglighet som är flexibelt för regionala avbrott.
 
 Azure Container Registry stöder också [tillgänglighets zoner](zone-redundancy.md) för att skapa ett flexibelt och hög tillgänglighet för Azure Container Registry i en Azure-region. Kombinationen av tillgänglighets zoner för redundans inom en region och geo-replikering över flera regioner förbättrar både tillförlitlighet och prestanda i ett register.
 

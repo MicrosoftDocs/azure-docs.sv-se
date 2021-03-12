@@ -3,14 +3,14 @@ title: Azure Automation data säkerhet
 description: Den här artikeln hjälper dig att lära dig hur Azure Automation skyddar din integritet och skyddar dina data.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050825"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616124"
 ---
 # <a name="management-of-azure-automation-data"></a>Hantera Azure Automation-data
 
@@ -22,11 +22,11 @@ För att säkerställa säkerheten för data som överförs till Azure Automatio
 
 * Webhook-anrop
 
-* Hybrid Runbook Worker, som innehåller datorer som hanteras av Uppdateringshantering och Ändringsspårning och inventering.
+* Hybrid Runbook Worker, inklusive datorer som hanteras av Uppdateringshantering och Ändringsspårning och inventering.
 
 * DSC-noder
 
-Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Vi rekommenderar att du inte uttryckligen anger att agenten ska använda TLS 1,2 om det inte är absolut nödvändigt, eftersom det kan bryta säkerhets funktioner på plattforms nivå som gör att du automatiskt kan identifiera och dra nytta av nyare säkra protokoll när de blir tillgängliga, t. ex. TLS 1,3.
+Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Vi rekommenderar att du inte uttryckligen anger att agenten ska använda TLS 1,2 om det inte krävs, eftersom det kan bryta säkerhets funktioner på plattforms nivå som gör att du automatiskt kan identifiera och dra nytta av nyare säkra protokoll när de blir tillgängliga, t. ex. TLS 1,3.
 
 Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Linux, vilket är ett beroende för Hybrid Runbook Worker-rollen finns i [Log Analytics agent översikt – TLS 1,2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol).
 
@@ -41,7 +41,7 @@ Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Lin
 
 ## <a name="data-retention"></a>Datakvarhållning
 
-När du tar bort en resurs i Azure Automation sparas den i ett antal dagar för gransknings syfte innan permanent borttagning. Du kan inte se eller använda resursen under den här tiden. Den här principen gäller även för resurser som tillhör ett borttaget Automation-konto. Bevarande principen gäller för alla användare och kan för närvarande inte anpassas. Men om du behöver lagra data under en längre period kan du [vidarebefordra Azure Automation jobb data till Azure Monitor loggar](automation-manage-send-joblogs-log-analytics.md).
+När du tar bort en resurs i Azure Automation behålls den i många dagar för gransknings syfte innan permanent borttagning. Du kan inte se eller använda resursen under den här tiden. Den här principen gäller även för resurser som tillhör ett borttaget Automation-konto. Bevarande principen gäller för alla användare och kan för närvarande inte anpassas. Men om du behöver lagra data under en längre period kan du [vidarebefordra Azure Automation jobb data till Azure Monitor loggar](automation-manage-send-joblogs-log-analytics.md).
 
 I följande tabell sammanfattas bevarande principen för olika resurser.
 
@@ -68,7 +68,7 @@ Du kan exportera dina runbooks till skriptfiler med antingen Azure Portal-eller 
 
 ### <a name="integration-modules"></a>Integreringsmoduler
 
-Du kan inte exportera integrerings moduler från Azure Automation. Du måste göra dem tillgängliga utanför Automation-kontot.
+Du kan inte exportera integrerings moduler från Azure Automation, de måste göras tillgängliga utanför Automation-kontot.
 
 ### <a name="assets"></a>Tillgångar
 
@@ -84,7 +84,10 @@ Du kan exportera DSC-konfigurationerna till skriptfiler med antingen Azure Porta
 
 Geo-replikering är standard i Azure Automation-konton. Du väljer en primär region när du konfigurerar ditt konto. Den interna Automation-tjänsten för geo-replikering tilldelar kontot automatiskt en sekundär region. Tjänsten säkerhetskopierar sedan kontinuerligt konto data från den primära regionen till den sekundära regionen. Den fullständiga listan med primära och sekundära regioner finns i [verksamhets kontinuitet och haveri beredskap (BCDR): Azure-kopplade regioner](../best-practices-availability-paired-regions.md).
 
-Säkerhets kopian som skapats av tjänsten Automation geo-Replication är en fullständig kopia av Automation-tillgångar, konfigurationer och liknande. Den här säkerhets kopian kan användas om den primära regionen slutar fungera och förlorar data. Om det osannoliks att data för en primär region förloras försöker Microsoft återställa det. Om företaget inte kan återställa primära data använder den automatisk redundans och informerar dig om situationen genom din Azure-prenumeration.
+Säkerhets kopian som skapats av tjänsten Automation geo-Replication är en fullständig kopia av Automation-tillgångar, konfigurationer och liknande. Den här säkerhets kopian kan användas om den primära regionen slutar fungera och förlorar data. Om det osannoliks att data för en primär region förloras försöker Microsoft återställa det.
+
+> [!NOTE]
+> Azure Automation lagrar kund information i den region som valts av kunden. För BCDR, för alla regioner förutom Brasilien, södra och Sydostasien, lagras Azure Automation data i en annan region (Azure-länkad region). Endast för regionerna södra Brasilien (Sao Paulo State) i Brasilien och Sydostasien region (Singapore) i Asien och stillahavsområdet geografi, lagrar vi Azure Automation data i samma region för att tillgodose kraven för data placering för dessa regioner.
 
 Tjänsten Automation geo-Replication är inte tillgänglig direkt för externa kunder om det uppstår ett regionalt haveri. Om du vill underhålla automatiserings konfiguration och Runbooks under regionala haverier:
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d12ce74cb961148776d81b3d7cabc281bbc59fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665612"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633044"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Enhets uppdatering för IoT Hub (för hands version) – Översikt
 
@@ -23,10 +23,10 @@ För att kunna utnyttja de fulla fördelarna med IoT-aktiverad digital omvandlin
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Stöd för ett brett utbud av IoT-enheter
 
-Enhets uppdatering för IoT Hub är utformad för att erbjuda optimerad uppdaterings distribution och effektiviserade åtgärder genom integrering med [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/). Den här integrationen gör det enkelt att införa enhets uppdateringar på alla befintliga lösningar. Den tillhandahåller en moln värd lösning för att ansluta praktiskt taget vilken enhet som helst. Enhets uppdatering har stöd för ett brett utbud av IoT-operativsystem – inklusive Linux och [Azure återställnings tider](https://azure.microsoft.com/en-us/services/rtos/) (real tids operativ system) – och är utöknings bar via öppen källkod. 
+Enhets uppdatering för IoT Hub är utformad för att erbjuda optimerad uppdaterings distribution och effektiviserade åtgärder genom integrering med [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/). Den här integrationen gör det enkelt att införa enhets uppdateringar på alla befintliga lösningar. Den tillhandahåller en moln värd lösning för att ansluta praktiskt taget vilken enhet som helst. Enhets uppdatering har stöd för ett brett utbud av IoT-operativsystem – inklusive Linux och [Azure återställnings tider](https://azure.microsoft.com/en-us/services/rtos/) (real tids operativ system) – och är utöknings bar via öppen källkod. Vi samarbetar med att utveckla enhets uppdateringar för IoT Hub erbjudanden med våra halvledar partners, inklusive STMicroelectronics, NXP, Renesas och mikrochip. Se [exempel](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) på utvärderings kort för nyckel halvledare som innehåller guider för att komma igång och lär dig hur du konfigurerar, bygger och distribuerar OTA-uppdateringar (över-Air) till MCU-enhets enheter.
 
 Både en enhets uppdatering av en binär och Raspberry Pi-referens yocto-avbildningar tillhandahålls.
-Enhets uppdatering för IoT Hub stöder även uppdatering av Azure IoT Edge enheter. En enhets uppdaterings agent tillhandahålls för Ubuntu Server 18,04 amd64-plattform. Enhets uppdatering för IoT Hub innehåller även kod med öppen källkod om du inte kör någon av plattformarna ovan. På så sätt kan du Porta agenten på den distribution du kör.
+Enhets uppdatering för IoT Hub stöder även uppdatering av Azure IoT Edge enheter. En enhets uppdaterings agent tillhandahålls för Ubuntu Server 18,04 amd64-plattform. Enhets uppdatering för IoT Hub innehåller även kod med öppen källkod om du inte kör någon av plattformarna ovan. Du kan Porta agenten på den distribution du kör.
 
 Enhets uppdatering fungerar med IoT Plug and Play (PnP) och kan hantera alla enheter som stöder de PnP-gränssnitt som krävs. Mer information finns i [enhets uppdatering för IoT Hub-och IoT-plug and Play](device-update-plug-and-play.md).
 

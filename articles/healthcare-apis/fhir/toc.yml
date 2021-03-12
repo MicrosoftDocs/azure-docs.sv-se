@@ -1,0 +1,148 @@
+- name: Azure API för FHIR
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Om Azure API för FHIR
+      href: overview.md
+    - name: Om Azure IoT-anslutningsprogram för FHIR (förhandsversion)
+      href: overview.md#azure-iot-connector-for-fhir-preview
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Distribuera Azure API för FHIR
+      expanded: false
+      items:
+        - name: Använda portalen
+          href: fhir-paas-portal-quickstart.md
+        - name: Använda PowerShell
+          href: fhir-paas-powershell-quickstart.md
+        - name: Använda CLI
+          href: fhir-paas-cli-quickstart.md
+        - name: Använda ARM-mall
+          displayName: Resource Manager
+          href: fhir-paas-arm-template-quickstart.md
+    - name: Distribuera Azure IoT-anslutningsprogram för FHIR (förhandsversion)
+      expanded: false
+      items:
+        - name: Använda portalen
+          href: iot-fhir-portal-quickstart.md
+        - name: Använda ARM-mall
+          href: iot-fhir-arm-template-quickstart.md
+- name: Självstudier
+  expanded: false
+  items:
+    - name: Distribuera JavaScript-program
+      expanded: false
+      items:
+        - name: 1. Första installation och FHIR-distribution
+          href: tutorial-web-app-fhir-server.md
+        - name: 2. Registrera offentligt klientprogram
+          href: tutorial-web-app-public-app-reg.md
+        - name: 3. Testa installationen med Postman
+          href: tutorial-web-app-test-postman.md
+        - name: 4. Skriv webbprogram
+          href: tutorial-web-app-write-web-app.md
+    - name: Få åtkomst till FHIR-API med Postman
+      href: access-fhir-postman-tutorial.md
+    - name: Använda SMART på FHIR-proxy
+      href: use-smart-on-fhir-proxy.md
+    - name: Mata in data från IoT-enheter
+      expanded: false
+      items:
+        - name: Ta emot enhetsdata från Azure IoT Hub
+          href: device-data-through-iot-hub.md
+- name: Anvisningar
+  expanded: false
+  items:
+    - name: Registrera program
+      expanded: false
+      items:
+        - name: Översikt över att registrera program för Azure API for FHIR
+          href: fhir-app-registration.md
+        - name: Resursprogram
+          href: register-resource-azure-ad-client-app.md
+        - name: Konfidentiellt klientprogram
+          href: register-confidential-azure-ad-client-app.md
+        - name: Offentligt klientprogram
+          href: register-public-azure-ad-client-app.md
+        - name: Tjänstklientprogram
+          href: register-service-azure-ad-client-app.md
+    - name: Konfigurera inställningar
+      expanded: false
+      items:
+        - name: Konfigurera ytterligare Azure API for FHIR-inställningar
+          href: azure-api-for-fhir-additional-settings.md
+        - name: Konfigurera Azure RBAC
+          href: configure-azure-rbac.md
+        - name: Konfigurera lokal RBAC
+          href: configure-local-rbac.md
+        - name: Konfigurera databasinställningarna
+          href: configure-database.md
+        - name: Konfigurera kundhanterade nycklar
+          href: customer-managed-key.md
+        - name: Konfigurera CORS
+          href: configure-cross-origin-resource-sharing.md
+        - name: Konfigurera export
+          href: configure-export-data.md
+        - name: Konfigurera privat länk
+          href: configure-private-link.md
+    - name: Exportera data
+      expanded: false
+      items:
+        - name: Exportera data
+          href: export-data.md
+        - name: Avidentifierad export
+          href: de-identified-export.md
+    - name: Konvertera data
+      expanded: false
+      items:
+        - name: Mallar för $convert-data-och FHIR Converter-tillägg
+          href: convert-data.md
+    - name: 'Hitta ID:n för identitetsobjekt'
+      href: find-identity-object-ids.md
+    - name: Diagnostisk loggning och mått
+      expanded: false
+      items:
+        - name: Aktivera diagnostisk loggning i Azure API for FHIR
+          href: enable-diagnostic-logging.md
+        - name: Visa och konfigurera Azure IoT-anslutningsprogram för FHIR-mått (förhandsversion)
+          href: iot-metrics-display.md
+    - name: Hämta en token för Azure API för FHIR – CLI
+      href: get-healthcare-apis-access-token-cli.md
+    - name: Felsöka fel i Azure IoT-anslutningsprogram för FHIR (förhandsversion)
+      href: iot-troubleshoot-guide.md
+- name: Begrepp
+  expanded: false
+  items:
+    - name: Översikt över Azure AD och Azure API for FHIR
+      href: azure-ad-hcapi.md
+    - name: Verifiering av åtkomsttoken
+      href: azure-ad-hcapi-token-validation.md
+    - name: Använda anpassade HTTP-huvuden för att lägga till data i spårningsloggar
+      href: use-custom-headers.md
+    - name: Azure IoT-anslutningsprogram för FHIR (förhandsversion) – bearbetning
+      expanded: false
+      items:
+        - name: Azure IoT-anslutningsprogram för FHIR (förhandsversion) – dataflöde
+          href: iot-data-flow.md
+        - name: Azure IoT-anslutningsprogram för FHIR (förhandsversion) – mappningsmall
+          href: iot-mapping-templates.md
+    - name: Säkerhet
+      items:
+        - name: Säkerhetskontroller av Azure Policy
+          href: ./security-controls-policy.md
+- name: Resurser
+  items:
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: fhir-faq.md
+    - name: Funktioner som stöds
+      href: fhir-features-supported.md
+    - name: Partnernätverk
+      href: partner-ecosystem.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Inbyggda Azure Policy-program
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

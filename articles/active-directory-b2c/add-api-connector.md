@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805520"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611629"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Lägga till en API-anslutning till ett användar flöde för registrering (för hands version)
 
@@ -34,12 +34,36 @@ Om du vill använda en [API-anslutning](api-connectors-overview.md)skapar du fö
 
 5. Ange ett visnings namn för anropet. Verifiera till exempel **användar information**.
 6. Ange **slut punkts-URL** för API-anropet.
-7. Ange autentiseringsinformation för API: et.
+7. Välj **Autentiseringstyp** och konfigurera Autentiseringsinformationen för att anropa ditt API. Se avsnittet nedan för alternativ för att skydda ditt API.
 
-   - Det finns för närvarande endast stöd för grundläggande autentisering. Om du vill använda ett API utan grundläggande autentisering i utvecklings syfte anger du bara ett "dummy"- **användar namn** och **lösen ord** som ditt API kan ignorera. För användning med en Azure-funktion med en API-nyckel kan du inkludera koden som en frågeparameter i **slut punktens URL** (t. ex. `https://contoso.azurewebsites.net/api/endpoint?code=0123456789` ).
+    ![Konfigurera en API-anslutning](./media/add-api-connector/api-connector-config.png)
 
-   ![Konfigurera en ny API-anslutning](./media/add-api-connector/api-connector-config.png)
 8. Välj **Spara**.
+
+## <a name="securing-the-api-endpoint"></a>Skydda API-slutpunkten
+Du kan skydda din API-slutpunkt genom att använda antingen HTTP Basic-autentisering eller HTTPS-autentisering av klient certifikat (för hands version). I båda fallen anger du de autentiseringsuppgifter som Azure AD B2C ska använda när du anropar API-slutpunkten. API-slutpunkten kontrollerar sedan autentiseringsuppgifterna och genomför auktoriseringsbeslut.
+
+### <a name="http-basic-authentication"></a>Grundläggande HTTP-autentisering
+Grundläggande HTTP-autentisering definieras i [RFC 2617](https://tools.ietf.org/html/rfc2617). Azure AD B2C skickar en HTTP-begäran med klientautentiseringsuppgifterna ( `username` och `password` ) i `Authorization` huvudet. Autentiseringsuppgifterna formateras som Base64-kodad sträng `username:password` . Ditt API kontrollerar sedan dessa värden för att avgöra om ett API-anrop eller inte ska avvisas.
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS-autentisering av klient certifikat (för hands version)
+
+> [!IMPORTANT]
+> Den här funktionen är en för hands version och tillhandahålls utan ett service nivå avtal. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Autentisering av klient certifikat är en ömsesidigt certifikatbaserad autentisering, där klienten tillhandahåller ett klient certifikat för servern för att bevisa sin identitet. I det här fallet kommer Azure AD B2C att använda det certifikat som du överför som en del av API-kopplingens konfiguration. Detta inträffar som en del av SSL-handskakningen. Endast tjänster som har rätt certifikat kan komma åt din REST API-tjänst. Klient certifikatet är ett digitalt X. 509-certifikat. I produktions miljöer bör den signeras av en certifikat utfärdare. 
+
+
+Om du vill skapa ett certifikat kan du använda [Azure Key Vault](../key-vault/certificates/create-certificate.md), som innehåller alternativ för självsignerade certifikat och integreringar med certifikat utfärdare för signerade certifikat. Sedan kan du [Exportera certifikatet](../key-vault/certificates/how-to-export-certificate.md) och ladda upp det för användning i API Connectors-konfigurationen. Observera att lösen ord krävs endast för certifikatfiler som skyddas av ett lösen ord. Du kan också använda PowerShell [: s New-SelfSignedCertificate-cmdlet](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) för att skapa ett självsignerat certifikat.
+
+Azure App Service och Azure Functions finns i [Konfigurera ömsesidig TLS-autentisering](../app-service/app-service-web-configure-tls-mutual-auth.md) för att lära dig hur du aktiverar och validerar certifikatet från API-slutpunkten.
+
+Vi rekommenderar att du ställer in påminnelse aviseringar när certifikatet upphör att gälla. Om du vill överföra ett nytt certifikat till en befintlig API-anslutning väljer du API-anslutaren under **API-kopplingar (för hands version)** och klickar på **överför nytt certifikat**. Det senast överförda certifikatet som inte har upphört att gälla och som har passerat start datumet används automatiskt av Azure AD B2C.
+
+### <a name="api-key"></a>API-nyckel
+Vissa tjänster använder en API-nyckel för att göra det svårare att komma åt dina HTTP-slutpunkter under utvecklingen. För [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)kan du göra detta genom att inkludera `code` parametern som en frågeparameter i **slut punkts-URL:** en. Till exempel `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+
+Detta är inte en mekanism som endast ska användas i produktion. Därför krävs alltid konfiguration för Basic-eller certifikatautentisering. Om du vill implementera en autentiseringsmetod (rekommenderas inte) i utvecklings syfte kan du välja grundläggande autentisering och använda tillfälliga värden för `username` och `password` att ditt API kan ignorera när du implementerar auktoriseringen i ditt API.
 
 ## <a name="the-request-sent-to-your-api"></a>Begäran skickades till ditt API
 En API-anslutning materialiseras som en **http post** -begäran och skickar användarattribut ("anspråk") som nyckel/värde-par i en JSON-text. Attributen serialiseras på samma sätt som [Microsoft Graph](/graph/api/resources/user#properties) användar egenskaper. 
@@ -75,7 +99,7 @@ Content-type: application/json
 
 Endast användar egenskaper och anpassade attribut i listan **Azure AD B2C**  >  **användarattribut** är tillgängliga att skickas i begäran.
 
-Anpassade attribut finns i **extension_ \<extensions-app-id> _CustomAttributes**  formatet i katalogen. Ditt API bör förvänta sig att ta emot anspråk i samma serialiserade format. Mer information om anpassade attribut finns [i Definiera anpassade attribut i Azure Active Directory B2C](user-flow-custom-attributes.md).
+Anpassade attribut finns i **extension_ \<extensions-app-id> _CustomAttributes**  formatet i katalogen. Ditt API bör förvänta sig att ta emot anspråk i samma serialiserade format. Mer information om anpassade attribut finns [i Definiera anpassade attribut i Azure AD B2C](user-flow-custom-attributes.md).
 
 Dessutom skickas anspråk som är **lokala för användar gränssnittet (ui_locales)** som standard i alla begär Anden. Den innehåller en användares språkvariant (er) som kon figurer ATS på deras enhet som kan användas av API: et för att returnera internationella svar.
 
@@ -155,13 +179,6 @@ Se ett exempel på ett [blockerande svar](#example-of-a-blocking-response).
 
 En API-anslutning i det här steget i registrerings processen anropas efter sidan Attribute Collection, om en sådan ingår. Det här steget anropas alltid innan ett användar konto skapas.
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Exempel förfrågan skickades till API: et i det här steget
 
 ```http
@@ -239,7 +256,6 @@ Content-type: application/json
 
 | Parameter                                          | Typ              | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | Sträng            | Ja      | API-versionen.                                                                                                                                                                                                                                                                |
 | åtgärd                                             | Sträng            | Ja      | Värdet måste vara `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Inga       | Returnerade värden kan skriva över värden som samlas in från en användare. De kan också returneras i token om de väljs som ett **program anspråk**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Inga       | Anspråket behöver inte innehålla något `_<extensions-app-id>_` . Returnerade värden kan skriva över värden som samlas in från en användare. De kan också returneras i token om de väljs som ett **program anspråk**.  |
@@ -270,8 +286,6 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Exempel på ett verifierings fel svar
 
-
-
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -286,7 +300,7 @@ Content-type: application/json
 
 | Parameter   | Typ    | Obligatorisk | Beskrivning                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | Sträng  | Ja      | API-versionen.                                                    |
+| version     | Sträng  | Ja      | Versionen av ditt API.                                                    |
 | åtgärd      | Sträng  | Ja      | Värdet måste vara `ValidationError` .                                           |
 | status      | Integer | Ja      | Måste vara `400` ett värde för ett ValidationError-svar.                        |
 | userMessage | Sträng  | Ja      | Meddelande som ska visas för användaren.                                            |
@@ -304,14 +318,14 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Använda Server lös moln funktioner
 Funktioner utan server, t. ex. HTTP-utlösare i Azure Functions, ger ett enkelt sätt att skapa API-slutpunkter att använda med API-anslutningen. Du kan använda funktionen för Server lös molnet till [exempel](code-samples.md#api-connectors)utföra validerings logik och begränsa registreringen till vissa e-postdomäner. Moln funktionen utan server kan också anropa och anropa andra webb-API: er, användar lager och andra moln tjänster för mer komplexa scenarier.
 
-### <a name="best-practices"></a>Rekommenderade metoder
+### <a name="best-practices"></a>Bästa praxis
 Se till att:
 * Ditt API följer API-begäran och svars avtalen enligt beskrivningen ovan. 
 * **Slut punkts-URL: en** för API-anslutningen pekar på rätt API-slutpunkt.
 * Ditt API söker uttryckligen efter null-värden för mottagna anspråk.
 * Ditt API svarar så snabbt som möjligt för att säkerställa en flytande användar upplevelse.
     * Om du använder en server lös funktion eller en skalbar webb tjänst använder du en värd plan som behåller API: t "vakna" eller "varm". i produktion. För Azure Functions rekommenderar vi att du använder [Premium-planen](../azure-functions/functions-scale.md)
-
+ 
 
 ### <a name="use-logging"></a>Använd loggning
 I allmänhet är det bra att använda de loggnings verktyg som har Aktiver ATS av webb-API-tjänsten, som [Application Insights](../azure-functions/functions-monitoring.md), för att övervaka ditt API för oväntade felkoder, undantag och dåliga prestanda.
@@ -321,5 +335,4 @@ I allmänhet är det bra att använda de loggnings verktyg som har Aktiver ATS a
 * Övervaka ditt API för långa svars tider.
 
 ## <a name="next-steps"></a>Nästa steg
-<!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - Kom igång med våra [exempel](code-samples.md#api-connectors).

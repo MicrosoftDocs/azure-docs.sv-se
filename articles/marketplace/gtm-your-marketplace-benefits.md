@@ -4,15 +4,15 @@ description: Go-to-Marketing-tjänster – Microsoft-resurser som utgivare kan a
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 58e55527c84db0c368e676f2bf1314dca32e78db
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489512"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631082"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Dina kommersiella marknads förmåner
 
@@ -50,17 +50,15 @@ Detaljerade beskrivningar av alla program förmåner finns i den här [Marketpla
     1. När du har uppdaterat marknadsförings kontakten väljer du **Aktivera** för den förmån som du vill börja använda. När du aktiverar en förmån kontaktas din marknadsföringskontakt av en medlem i Rewards-teamet inom en vecka.
 
 > [!NOTE]
-> Om erbjudandet har varit Live i mer än fyra veckor och du inte har fått något meddelande, kan du kontrol lera i din organisation vem som är ägare till erbjudandet i fråga, genom att titta i Partner Center. De bör ha kommunikation och nästa steg.
-
-Om du inte kan fastställa ägaren, eller om ägaren har lämnat företaget, kan du generera ett support ärende i [Hjälp och support](https://aka.ms/marketplacepublishersupport).
+> Om erbjudandet har varit Live i mer än fyra veckor och du inte har fått något meddelande, kan du kontrol lera i din organisation vem som är ägare till erbjudandet i fråga, genom att titta i Partner Center. De bör ha kommunikation och nästa steg.<br><br>Om du inte kan fastställa ägaren, eller om ägaren har lämnat företaget, kan du generera ett support ärende i [Hjälp och support](https://aka.ms/marketplacepublishersupport).
 
 Omfattningen av de aktiviteter som är tillgängliga för dig expanderas när du växer dina erbjudanden i den kommersiella marknads platsen. Alla listor får en grundläggande optimerings nivå för optimering och befordran som en del av en självbetjänings-e-post med resurser och bästa praxis.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Lista, utvärdering och konsult förmåner
 
-Varje gång du publicerar på Microsoft AppSource eller Azure Marketplace får du till gång till en ny uppsättning förmåner. När ditt erbjudande går Live går du till [partner Center](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0) och aktiverar dina berättigade marknadsförings-, försäljnings-och tekniska förmåner.
+Varje gång du publicerar på Microsoft AppSource eller Azure Marketplace får du till gång till en ny uppsättning förmåner. När ditt erbjudande går Live går du till [partner Center](https://partner.microsoft.com/dashboard) och aktiverar dina berättigade marknadsförings-, försäljnings-och tekniska förmåner.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Alla utvärderings versioner och konsult förmåner upphör att gälla efter tre månader.
 
 I tabellen nedan sammanfattas kraven för krav för List-, utvärderings-och konsult erbjudanden:
@@ -71,7 +69,7 @@ Detaljerade beskrivningar för alla dessa förmåner finns i [program däcken f�
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Marknads förmåner för Transact-partner
 
-När du är live med ditt transactable-erbjudande i antingen Microsoft AppSource eller Azure Marketplace kan du få åtkomst till ytterligare förmåner när du ökar dina fakturerade försäljnings transaktioner eller platser som säljs via den kommersiella Marketplace.
+När du är live med ditt transactable-erbjudande i antingen Microsoft AppSource eller Azure Marketplace, kan du komma åt ytterligare förmåner när du ökar dina fakturerade försäljnings transaktioner eller platser som säljs via den kommersiella marknads platsen.
 
 >[!NOTE]
 >Tröskelvärden för platser som säljs gäller endast för Microsoft 365 appar (SaaS-program som har integreringar med Microsoft Teams, Office, Outlook eller SharePoint) och förmåner måste ha genomförts senast den 30 juni 2021.
@@ -80,13 +78,19 @@ Dessa fördelar är utformade för att ge stöd åt dig i marknadsförings-, fö
 
 Alla partner som har ett Live-erbjudande får arbeta med en engagerad engagemang hanterare för att välja de mest värde aktiviteterna för din portfölj av kommersiella Marketplace-erbjudanden. Det här åtagandet är Evergreen per erbjudande, vilket innebär att du kan välja dina aktiviteter och tidpunkten för dessa aktiviteter för att anpassa sig till tidpunkten för företagets bredare marknadsförings-och Sälj strategier.
 
+### <a name="marketing-benefits-for-transact-offers"></a>Marknadsförings förmåner för Transact-erbjudanden
+
 ![Marknadsförings förmåner](./media/marketplace-publishers-guide/marketing-benefit.png)
+
+### <a name="sales-benefits-for-transact-offers"></a>Sälj förmåner för Transact-erbjudanden
 
 ![Sälj förmåner](./media/marketplace-publishers-guide/sales-benefit.png)
 
+### <a name="technical-benefits-for-transact-offers"></a>Tekniska förmåner för Transact-erbjudanden
+
 ![Tekniska fördelar](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\* Tröskelvärde för platser som säljs gäller endast för Microsoft 365 appar (SaaS-program som har integreringar med Microsoft Teams, Office, Outlook eller SharePoint) och förmåner måste utföras senast den 30 juni 2021.
+Tröskelvärde för platser som säljs gäller endast för Microsoft 365 appar (SaaS-program som har integreringar med Microsoft Teams, Office, Outlook eller SharePoint) och förmåner måste utföras senast den 30 juni 2021.
 
 Detaljerade beskrivningar för alla dessa förmåner finns i [program däcken för Marketplace](https://aka.ms/marketplacerewards)-förmåner.
 

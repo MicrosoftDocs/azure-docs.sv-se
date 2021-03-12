@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565571"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631888"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Vanliga frågor och svar om flera sessioner för Windows 10 Enterprise
 
@@ -63,7 +63,7 @@ Windows 10 Enterprise multi-session, version 1809 och senare stöds och är till
 
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Vilken profil hanterings lösning ska jag använda för Windows 10 Enterprise multi-session?
 
-Vi rekommenderar att du använder FSLogix profil behållare när du konfigurerar Windows 10 Enterprise i icke-beständiga miljöer eller andra scenarier som behöver en centralt lagrad profil. FSLogix garanterar att användar profilen är tillgänglig och aktuell för varje användarsession. Vi rekommenderar också att du använder en FSLogix profil behållare för att lagra en användar profil i en SMB-resurs med rätt behörigheter, men du kan lagra användar profiler i Azure-sidans blob-lagring om det behövs. Användare av virtuella Windows-datorer kan använda FSLogix utan extra kostnad.
+Vi rekommenderar att du använder FSLogix profil behållare när du konfigurerar Windows 10 Enterprise i icke-beständiga miljöer eller andra scenarier som behöver en centralt lagrad profil. FSLogix garanterar att användar profilen är tillgänglig och aktuell för varje användarsession. Vi rekommenderar också att du använder en FSLogix profil behållare för att lagra en användar profil i en SMB-resurs med rätt behörigheter, men du kan lagra användar profiler i Azure-sidans blob-lagring om det behövs. Användare av virtuella Windows-datorer kan använda FSLogix utan extra kostnad.  FSLogix är förinstallerat på alla Windows 10 Enterprise multi-session-avbildningar, men IT-administratören ansvarar fortfarande för att konfigurera FSLogix Profile-behållaren.
 
 Mer information om hur du konfigurerar en FSLogix profil behållare finns i [Konfigurera FSLogix profil container](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
 

@@ -2,16 +2,18 @@
 title: Alternativ för DNS-namnmatchning för virtuella Linux-datorer
 description: Namn matchnings scenarier för virtuella Linux-datorer i Azure IaaS, inklusive tillhandahållna DNS-tjänster, hybrid extern DNS och att ta med din egen DNS-server.
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.collection: linux
+ms.openlocfilehash: e689e934f11e3cc2a621f25525e507a72a7044b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372832"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556799"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Alternativ för DNS-namnmatchning för virtuella Linux-datorer i Azure
 Azure tillhandahåller DNS-namnmatchning som standard för alla virtuella datorer som finns i ett enda virtuellt nätverk. Du kan implementera din egen lösning för DNS-namnmatchning genom att konfigurera dina egna DNS-tjänster på dina virtuella datorer som Azure-värdar. Följande scenarier bör hjälpa dig att välja den som fungerar för din situation.
@@ -29,7 +31,7 @@ I följande tabell visas scenarier och motsvarande namn matchnings lösningar:
 | Namn matchning mellan roll instanser eller virtuella datorer i olika virtuella nätverk |Kundhanterade DNS-servrar som vidarebefordrar frågor mellan virtuella nätverk för lösning av Azure (DNS-proxy). Se [namn matchning med hjälp av en egen DNS-Server](#name-resolution-using-your-own-dns-server). |Endast FQDN |
 | Matchning av lokala datorer och tjänst namn från roll instanser eller virtuella datorer i Azure |Kundhanterade DNS-servrar (till exempel en lokal domänkontrollant, en lokal skrivskyddad domänkontrollant eller en sekundär DNS-sekundär som synkroniseras med hjälp av zon överföringar). Se [namn matchning med hjälp av en egen DNS-Server](#name-resolution-using-your-own-dns-server). |Endast FQDN |
 | Matchning av Azure-värdnamn från lokala datorer |Vidarebefordra frågor till en kundhanterad DNS-proxyserver i motsvarande virtuella nätverk. Proxyservern vidarebefordrar frågor till Azure för lösning. Se [namn matchning med hjälp av en egen DNS-Server](#name-resolution-using-your-own-dns-server). |Endast FQDN |
-| Omvänd DNS för interna IP-adresser |[Namn matchning med hjälp av en egen DNS-Server](#name-resolution-using-your-own-dns-server) |Saknas |
+| Omvänd DNS för interna IP-adresser |[Namn matchning med hjälp av en egen DNS-Server](#name-resolution-using-your-own-dns-server) |saknas |
 
 ## <a name="name-resolution-that-azure-provides"></a>Namn matchning som Azure tillhandahåller
 Tillsammans med matchning av offentliga DNS-namn tillhandahåller Azure intern namn matchning för virtuella datorer och roll instanser i samma virtuella nätverk. I virtuella nätverk som baseras på Azure Resource Manager är DNS-suffixet konsekvent i det virtuella nätverket. FQDN krävs inte. DNS-namn kan tilldelas till både nätverkskort och virtuella datorer. Även om namn matchningen som Azure tillhandahåller inte kräver någon konfiguration, är det inte det lämpligaste alternativet för alla distributions scenarier som visas i tabellen ovan.

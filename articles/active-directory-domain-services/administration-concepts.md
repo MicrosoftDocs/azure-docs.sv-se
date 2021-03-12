@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 03/10/2021
 ms.author: justinha
-ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620349"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631395"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Hanterings begrepp för användar konton, lösen ord och administration i Azure Active Directory Domain Services
 
@@ -80,8 +80,8 @@ I Azure AD DS baseras tillgängliga prestanda och funktioner på SKU: n. Du väl
 
 | SKU-namn   | Maximalt antal objekt | Säkerhetskopieringsfrekvens | Maximalt antal utgående skogs förtroenden |
 |------------|----------------------|------------------|----|
-| Standard   | Obegränsat            | Var sjunde dag     | 0  |
-| Enterprise | Obegränsat            | Var 3 dag     | 5  |
+| Standard   | Obegränsat            | Var femte dag     | 0  |
+| Stora företag | Obegränsat            | Var 3 dag     | 5  |
 | Premium    | Obegränsat            | Varje dag            | 10 |
 
 Innan dessa Azure AD DS-SKU: er användes en fakturerings modell baserat på antalet objekt (användar-och dator konton) i den hanterade domänen. Det finns inte längre någon varierande prissättning baserat på antalet objekt i den hanterade domänen.
