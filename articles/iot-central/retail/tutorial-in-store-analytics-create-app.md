@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832240"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014374"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Självstudie: skapa ett in-Store Analytics-program i Azure IoT Central
 
@@ -228,8 +228,8 @@ I den här självstudien använder du följande uppsättning verkliga och simule
 
 Slutför stegen i följande två artiklar för att ansluta en riktig Rigado-gateway och RuuviTag-sensorer. När du är klar kan du gå tillbaka till den här självstudien. Eftersom du redan har skapat enhetsspecifika mallar i den här självstudien behöver du inte skapa dem igen i följande riktnings uppsättningar.
 
-- Information om hur du ansluter en Rigado-Gateway finns i [ansluta en Rigado kaskad 500 till ditt Azure IoT Central-program](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Information om hur du ansluter RuuviTag-sensorer finns i [ansluta en RuuviTag-sensor till ditt Azure IoT Central-program](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Du kan också använda de här anvisningarna för att skapa två simulerade sensorer, om det behövs.
+- Information om hur du ansluter en Rigado-Gateway finns i [ansluta en Rigado kaskad 500 till ditt Azure IoT Central-program](../core/howto-connect-rigado-cascade-500.md).
+- Information om hur du ansluter RuuviTag-sensorer finns i [ansluta en RuuviTag-sensor till ditt Azure IoT Central-program](../core/howto-connect-ruuvi.md). Du kan också använda de här anvisningarna för att skapa två simulerade sensorer, om det behövs.
 
 ## <a name="add-rules-and-actions"></a>Lägg till regler och åtgärder
 Som en del av att använda sensorer i ditt Azure IoT Central-program för att övervaka villkor, kan du skapa regler för att köra åtgärder när vissa villkor är uppfyllda. En regel är kopplad till en enhets mall och en eller flera enheter och innehåller villkor som måste uppfyllas utifrån enhetens telemetri eller händelser. En regel har också en eller flera associerade åtgärder. Åtgärderna kan omfatta att skicka e-postmeddelanden eller utlösa en webhook-åtgärd för att skicka data till andra tjänster. Program mal len **BA-utcheckning i butiken** innehåller några fördefinierade regler för enheterna i programmet.

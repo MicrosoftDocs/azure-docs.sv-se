@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: 1dfbaea2086dd038a55bfb84b350d526ec49466b
-  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+  ms.openlocfilehash: 5af26d889ae6cfa6943bfa09ff47cc19d5977b4c
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/07/2021
-  ms.locfileid: "102425574"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102615898"
 highlightedContent:
   items:
   - title: Vad är IoT i Azure?
@@ -132,6 +132,20 @@ conceptualContent:
       text: Utvecklarguide
     footerLink:
       url: ../iot-pnp/index.yml
+      text: Mer information
+  - title: Uppdatera dina IoT Hub enheter
+    links:
+    - url: ../iot-hub-device-update/understand-device-update.md
+      itemType: overview
+      text: Vad är enhets uppdatering?
+    - url: ../iot-hub-device-update/device-update-simulator.md
+      itemType: tutorial
+      text: Använda enhets uppdatering på en simulator
+    - url: ../iot-hub-device-update/device-update-ubuntu-agent.md
+      itemType: tutorial
+      text: Paket uppdatering på Ubuntu-Server
+    footerLink:
+      url: ../iot-hub-device-update/index.yml
       text: Mer information
   - title: Utforska och analysera enhetdata
     links:

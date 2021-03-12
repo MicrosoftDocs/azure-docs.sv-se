@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 1/5/2021
-ms.openlocfilehash: 560699296b8cae83413c36820106eedf7fef7414
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 02/19/2021
+ms.openlocfilehash: 870482ca7894c5e260a78270fb036d6a6b22ee41
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914169"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630069"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Så här skapar du en SAS-URI för en VM-avbildning
 
-Under publicerings processen måste du ange en SAS-URI (Shared Access Signature) för varje virtuell hård disk som är kopplad till dina planer (tidigare kallade SKU: er). Microsoft behöver åtkomst till dessa VHD: er under certifierings processen. Du anger denna URI på fliken **planer** i Partner Center.
+> [!NOTE]
+> Du behöver inte en SAS-URI för att publicera den virtuella datorn. Du kan helt enkelt dela en bild i delar av centret. Se [skapa en virtuell dator med en godkänd bas](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) eller [skapa en virtuell dator med hjälp av dina egna avbildnings](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) instruktioner.
 
 Att skapa SAS-URI: er för dina virtuella hård diskar uppfyller följande krav:
 
@@ -24,6 +25,71 @@ Att skapa SAS-URI: er för dina virtuella hård diskar uppfyller följande krav:
 - Endast list-och Läs behörigheter krävs. Ange inte Skriv-eller borttagnings behörighet.
 - Tiden för åtkomst (utgångs datum) bör vara minst tre veckor från det att SAS-URI: n skapas.
 - För att skydda mot UTC-tidsändringar anger du Start datumet till en dag före det aktuella datumet. Om det aktuella datumet är till exempel 16 juni 2020 väljer du 6/15/2020.
+
+## <a name="extract-vhd-from-a-vm"></a>Extrahera VHD från en virtuell dator
+
+> [!NOTE]
+> Du kan hoppa över det här steget om du redan har en virtuell hård disk som laddats upp i ett lagrings konto.
+
+Om du vill extrahera den virtuella hård disken från den virtuella datorn måste du ta en ögonblicks bild av din virtuella dator disk och extrahera VHD från ögonblicks bilden.
+
+Starta genom att ta en ögonblicks bild av den virtuella dator disken:
+
+1. Logga in på Azure-portalen.
+2. Börja längst upp till vänster, Välj Skapa en resurs och Sök sedan efter och välj ögonblicks bild.
+3. På bladet ögonblicks bild väljer du skapa.
+4. Ange ett namn för ögonblicks bilden.
+5. Välj en befintlig resurs grupp eller ange ett namn för en ny resurs grupp.
+6. För käll disk väljer du den hanterade disk som ska avbildas.
+7. Välj den kontotyp som ska användas för att lagra ögonblicks bilden. Använd Standard HDD om du inte behöver den lagrad på ett högt presterande SSD.
+8. Välj Skapa.
+
+### <a name="extract-the-vhd"></a>Extrahera den virtuella hård disken
+
+Använd följande skript för att exportera ögonblicks bilden till en virtuell hård disk i ditt lagrings konto.
+
+```azurecli
+#Provide the subscription Id where the snapshot is created
+$subscriptionId=yourSubscriptionId
+
+#Provide the name of your resource group where the snapshot is created
+$resourceGroupName=myResourceGroupName
+
+#Provide the snapshot name
+$snapshotName=mySnapshot
+
+#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
+#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+$sasExpiryDuration=3600
+
+#Provide storage account name where you want to copy the underlying VHD file. 
+$storageAccountName=mystorageaccountname
+
+#Name of the storage container where the downloaded VHD will be stored.
+$storageContainerName=mystoragecontainername
+
+#Provide the key of the storage account where you want to copy the VHD 
+$storageAccountKey=mystorageaccountkey
+
+#Give a name to the destination VHD file to which the VHD will be copied.
+$destinationVHDFileName=myvhdfilename.vhd
+
+az account set --subscription $subscriptionId
+
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+
+az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
+```
+
+### <a name="script-explanation"></a>Förklaring av skript
+Det här skriptet använder följande kommandon för att generera SAS-URI för en ögonblicks bild och kopierar den underliggande virtuella hård disken till ett lagrings konto med SAS-URI: n. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
+
+
+|Kommando  |Kommentarer  |
+|---------|---------|
+| az disk grant-access    |     Genererar skrivskyddad SAS som används för att kopiera den underliggande VHD-filen till ett lagringskonto eller för att ladda ned den till en lokal plats    |
+|  az storage blob copy start   |    Kopierar en BLOB asynkront från ett lagrings konto till ett annat. Använd AZ Storage BLOB show för att kontrol lera status för den nya blobben.     |
+|
 
 ## <a name="generate-the-sas-address"></a>Generera SAS-adressen
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Service Bus meddelanden
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Service Bus meddelande hantering. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c5afa711fbd3ea0a0d477d28889252114aa12208
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 578d292a33459bfd36c75676b384b4085bd95690
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438632"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636612"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>Azure Policy kontroll av efterlevnad för Azure Service Bus meddelanden
 

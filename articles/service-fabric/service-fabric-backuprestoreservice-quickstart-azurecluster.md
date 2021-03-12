@@ -3,12 +3,12 @@ title: Regelbunden säkerhetskopiering och återställning i Azure Service Fabri
 description: Använd Service Fabric periodiska säkerhets kopierings-och återställnings funktionen för att aktivera regelbunden data säkerhets kopiering av program data.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927991"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198718"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodisk säkerhets kopiering och återställning i ett Azure Service Fabric-kluster
 > [!div class="op_single_selector"]
@@ -215,6 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ``` 
 
 #### <a name="using-service-fabric-explorer"></a>Använda Service Fabric Explorer
+Kontrol lera att [Avancerat läge](service-fabric-visualizing-your-cluster.md#backup-and-restore) för Service Fabric Explorer har Aktiver ATS 
 
 1. Välj ett program och gå till åtgärd. Klicka på Aktivera/uppdatera program säkerhets kopiering.
 

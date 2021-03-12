@@ -4,12 +4,12 @@ description: Använd rollbaserad åtkomst kontroll i Azure för att hantera åtk
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553416"
+ms.locfileid: "102613450"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Använd rollbaserad åtkomst kontroll i Azure för att hantera Azure Backup återställnings punkter
 
@@ -39,7 +39,7 @@ I följande tabell inhämtas åtgärder för säkerhets kopierings hantering och
 | | Virtuell datordeltagare | VM-resurs |  Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
 | Säkerhets kopiering på begäran av virtuell dator | Operator för säkerhetskopiering | Recovery Services-valv |   |
 | Återställa virtuell dator | Operator för säkerhetskopiering | Recovery Services-valv |   |
-| | Deltagare | Resurs grupp där den virtuella datorn ska distribueras |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. Compute/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/subnets/Join/Action | 
+| | Deltagare | Resurs grupp där den virtuella datorn ska distribueras |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. Compute/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/subnets/Join/Action |
 | | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats |   Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
 | Återställa ohanterade diskar VM-säkerhetskopiering | Operator för säkerhetskopiering | Recovery Services-valv |
 | | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats | Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
@@ -50,6 +50,7 @@ I följande tabell inhämtas åtgärder för säkerhets kopierings hantering och
 | | Deltagare | Resurs grupp som den eller de hanterade diskarna ska återställas till | Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Resources/Subscriptions/resourceGroups/Write|
 | Återställa enskilda filer från VM-säkerhetskopiering | Operator för säkerhetskopiering | Recovery Services-valv |
 | | Virtuell datordeltagare | Virtuell käll dator som har säkerhetskopierats | Alternativt kan du, i stället för en inbyggd roll, överväga en anpassad roll som har följande behörigheter: Microsoft. Compute/virtualMachines/Write |
+| Återställning mellan regioner | Operator för säkerhetskopiering | Prenumeration av Recovery Services-valvet | Detta gäller även för de återställnings behörigheter som anges ovan. Specifikt för CRR, i stället för en inbyggd roll, kan du överväga en anpassad roll som har följande behörigheter: "Microsoft. RecoveryServices/locations/backupAadProperties/Read" "Microsoft. RecoveryServices/locations/backupCrrJobs/Action" "Microsoft. RecoveryServices/locations/backupCrrJob/Action" "Microsoft. RecoveryServices/locations/backupCrossRegionRestore/Action" "Microsoft. RecoveryServices/locations/backupCrrOperationResults/Read" "Microsoft. RecoveryServices/locations/backupCrrOperationsStatus/Read" |
 | Skapa säkerhets kopierings princip för säkerhets kopiering av virtuella Azure-datorer | Säkerhets kopierings deltagare | Recovery Services-valv |
 | Ändra säkerhets kopierings princip för säkerhets kopiering av virtuella Azure-datorer | Säkerhets kopierings deltagare | Recovery Services-valv |
 | Ta bort säkerhets kopierings princip för virtuell Azure-säkerhetskopiering | Säkerhets kopierings deltagare | Recovery Services-valv |

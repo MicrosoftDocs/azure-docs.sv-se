@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: kom igång med Visual Studio Code'
+title: 'Snabb start: kom igång med Azure Kognitiv sökning med Visual Studio Code'
 titleSuffix: Azure Cognitive Search
 description: Lär dig hur du installerar och använder Visual Studio Code-tillägget för Azure Kognitiv sökning.
 author: dereklegenzoff
@@ -7,21 +7,19 @@ manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: 7a613dd6cba55831b02a60f833088b6c34bfc4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/10/2021
+ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122710"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015853"
 ---
-# <a name="get-started-with-visual-studio-code-and-azure-cognitive-search"></a>Kom igång med Visual Studio Code och Azure Kognitiv sökning
+# <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>Kom igång med Azure Kognitiv sökning med Visual Studio Code
 
-Den här artikeln förklarar hur du formulerar REST API begär Anden interaktivt med [Azure KOGNITIV sökning REST-API: er](/rest/api/searchservice) och en API-klient för att skicka och ta emot förfrågningar. Med en API-klient och dessa instruktioner kan du skicka begär Anden och Visa svar innan du skriver någon kod.
+Den här artikeln förklarar hur du formulerar REST API begär Anden interaktivt med [Azure KOGNITIV sökning REST-API: er](/rest/api/searchservice) och [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch). Med [Visual Studio Code-tillägget för Azure kognitiv sökning (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) och de här anvisningarna kan du skicka begär Anden och Visa svar innan du skriver någon kod.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-
-Artikeln använder ett Visual Studio Code-tillägg (för hands version) för Azure Kognitiv sökning REST-API: er.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 > [!IMPORTANT] 
 > Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion. För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
@@ -35,18 +33,6 @@ Följande tjänster och verktyg krävs för den här snabb starten.
 + [Azure Kognitiv sökning för Visual Studio Code (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
 
 + [Skapa en Azure kognitiv sökning-tjänst](search-create-service-portal.md) eller [hitta en befintlig tjänst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under din aktuella prenumeration. Du kan använda en kostnads fri tjänst för den här snabb starten. 
-
-## <a name="copy-a-key-and-url"></a>Kopiera en nyckel och en URL
-
-För att kunna göra REST-anrop behöver du tjänstens webbadress och en åtkomstnyckel för varje begäran. En Sök tjänst skapas med båda, så om du har lagt till Azure-Kognitiv sökning till din prenumeration följer du dessa steg för att få den information som krävs:
-
-1. [Logga](https://portal.azure.com/)in på Azure Portal och hämta URL: en på sidan **Översikt över** Sök tjänsten. Här följer ett exempel på hur en slutpunkt kan se ut: `https://mydemo.search.windows.net`.
-
-1. I **Inställningar**  >  **nycklar**, hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
-
-![Hämta en HTTP-slutpunkt och åtkomst nyckel](media/search-get-started-rest/get-url-key.png "Hämta en HTTP-slutpunkt och åtkomst nyckel")
-
-Alla begär Anden kräver en API-nyckel på varje begäran som skickas till din tjänst. En giltig nyckel upprättar förtroende, i varje begäran, mellan programmet som skickar begäran och tjänsten som hanterar den.
 
 ## <a name="install-the-extension"></a>Installera tillägget
 

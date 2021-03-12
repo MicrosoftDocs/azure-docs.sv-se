@@ -3,14 +3,14 @@ title: Köra Azure Automation runbooks på en Hybrid Runbook Worker
 description: Den här artikeln beskriver hur du kör Runbooks på datorer i ditt lokala data Center eller någon annan moln leverantör med Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 6d1f504458aed440464015a34479d75992fe5c45
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633316"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149383"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Köra runbook-flöden på Hybrid Runbook Worker
 
@@ -56,10 +56,10 @@ Hybrid Runbook Worker på virtuella Azure-datorer kan använda hanterade identit
 Följ nästa steg för att använda en hanterad identitet för Azure-resurser på en Hybrid Runbook Worker:
 
 1. Skapa en virtuell Azure-dator.
-2. Konfigurera hanterade identiteter för Azure-resurser på den virtuella datorn. Se [Konfigurera hanterade identiteter för Azure-resurser på en virtuell dator med hjälp av Azure Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
-3. Ge VM-åtkomst till en resurs grupp i Resource Manager. Se [använda en Windows VM-systemtilldelad hanterad identitet för åtkomst till Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
-4. Installera Hybrid Runbook Worker på den virtuella datorn. Se [distribuera en Windows hybrid Runbook Worker](automation-windows-hrw-install.md) eller [distribuera en Linux-hybrid Runbook Worker](automation-linux-hrw-install.md).
-5. Uppdatera runbooken så att den använder cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) med `Identity` parametern för att autentisera till Azure-resurser. Den här konfigurationen minskar behovet av att använda ett Kör som-konto och utföra den associerade konto hanteringen.
+1. Konfigurera hanterade identiteter för Azure-resurser på den virtuella datorn. Se [Konfigurera hanterade identiteter för Azure-resurser på en virtuell dator med hjälp av Azure Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
+1. Ge VM-åtkomst till en resurs grupp i Resource Manager. Se [använda en Windows VM-systemtilldelad hanterad identitet för åtkomst till Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
+1. Installera Hybrid Runbook Worker på den virtuella datorn. Se [distribuera en Windows hybrid Runbook Worker](automation-windows-hrw-install.md) eller [distribuera en Linux-hybrid Runbook Worker](automation-linux-hrw-install.md).
+1. Uppdatera runbooken så att den använder cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) med `Identity` parametern för att autentisera till Azure-resurser. Den här konfigurationen minskar behovet av att använda ett Kör som-konto och utföra den associerade konto hanteringen.
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -76,20 +76,24 @@ Följ nästa steg för att använda en hanterad identitet för Azure-resurser p�
 
 I stället för att låta din Runbook tillhandahålla egen autentisering för lokala resurser kan du ange ett Kör som-konto för en Hybrid Runbook Worker grupp. Om du vill ange ett Kör som-konto måste du definiera en [referens till gång](./shared-resources/credentials.md) som har åtkomst till lokala resurser. Dessa resurser omfattar certifikat Arkiv och alla Runbooks som körs under dessa autentiseringsuppgifter på en Hybrid Runbook Worker i gruppen.
 
-Användar namnet för autentiseringsuppgiften måste vara i något av följande format:
+- Användar namnet för autentiseringsuppgiften måste vara i något av följande format:
 
-* namn
-* username@domain
-* användar namn (för lokala konton på den lokala datorn)
+   * namn
+   * username@domain
+   * användar namn (för lokala konton på den lokala datorn)
+
+- Om du vill använda PowerShell **-runbooken export-RunAsCertificateToHybridWorker** måste du installera AZ-modulerna för Azure Automation på den lokala datorn.
+
+#### <a name="use-a-credential-asset-to-specify-a-run-as-account"></a>Använd en inloggnings till gång för att ange ett Kör som-konto
 
 Använd följande procedur för att ange ett Kör som-konto för en Hybrid Runbook Worker grupp:
 
 1. Skapa en [inloggnings till gång](./shared-resources/credentials.md) med till gång till lokala resurser.
-2. Öppna Automation-kontot i Azure Portal.
-3. Välj **hybrid Worker grupper** och välj sedan den aktuella gruppen.
-4. Välj **alla inställningar**, följt av **inställningarna för Hybrid Worker-grupper**.
-5. Ändra värdet för **Kör som** **från standardvärdet** till **Custom**.
-6. Välj autentiseringsuppgiften och klicka på **Spara**.
+1. Öppna Automation-kontot i Azure Portal.
+1. Välj **hybrid Worker grupper** och välj sedan den aktuella gruppen.
+1. Välj **alla inställningar**, följt av **inställningarna för Hybrid Worker-grupper**.
+1. Ändra värdet för **Kör som** **från standardvärdet** till **Custom**.
+1. Välj autentiseringsuppgiften och klicka på **Spara**.
 
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Installera certifikat för kör som-konto
 
@@ -178,11 +182,11 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 För att slutföra förberedelse av kör som-kontot:
 
 1. Spara **export-RunAsCertificateToHybridWorker-** runbooken till datorn med tillägget **. ps1** .
-2. Importera den till ditt Automation-konto.
-3. Redigera runbooken och ändra värdet för `Password` variabeln till ditt eget lösen ord.
-4. Publicera runbooken.
-5. Kör runbooken och fokusera på Hybrid Runbook Worker grupp som kör och autentiserar Runbooks med hjälp av kör som-kontot. 
-6. Granska jobb strömmen för att se att den rapporterar försöket att importera certifikatet till den lokala datorns Arkiv, följt av flera rader. Detta beteende beror på hur många Automation-konton du definierar i din prenumeration och graden av lyckade autentisering.
+1. Importera den till ditt Automation-konto.
+1. Redigera runbooken och ändra värdet för `Password` variabeln till ditt eget lösen ord.
+1. Publicera runbooken.
+1. Kör runbooken och fokusera på Hybrid Runbook Worker grupp som kör och autentiserar Runbooks med hjälp av kör som-kontot. 
+1. Granska jobb strömmen för att se att den rapporterar försöket att importera certifikatet till den lokala datorns Arkiv, följt av flera rader. Detta beteende beror på hur många Automation-konton du definierar i din prenumeration och graden av lyckade autentisering.
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Arbeta med signerade Runbooks på en Windows-Hybrid Runbook Worker
 
@@ -267,13 +271,13 @@ Om du vill skapa GPG-nyckelring och nyckel par använder du Hybrid Runbook Worke
     sudo su – nxautomation
     ```
 
-2. När du använder **nxautomation** genererar du GPG-nyckelpar. GPG vägleder dig genom stegen. Du måste ange namn, e-postadress, förfallo tid och lösen fras. Sedan väntar du tills det finns tillräckligt med entropi på datorn för att nyckeln ska genereras.
+1. När du använder **nxautomation** genererar du GPG-nyckelpar. GPG vägleder dig genom stegen. Du måste ange namn, e-postadress, förfallo tid och lösen fras. Sedan väntar du tills det finns tillräckligt med entropi på datorn för att nyckeln ska genereras.
 
     ```bash
     sudo gpg --generate-key
     ```
 
-3. Eftersom GPG-katalogen genererades med sudo måste du ändra dess ägare till **nxautomation** med hjälp av följande kommando.
+1. Eftersom GPG-katalogen genererades med sudo måste du ändra dess ägare till **nxautomation** med hjälp av följande kommando.
 
     ```bash
     sudo chown -R nxautomation ~/.gnupg

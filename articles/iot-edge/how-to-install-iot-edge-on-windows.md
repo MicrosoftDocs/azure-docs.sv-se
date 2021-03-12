@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 812bfcc8d82c08600bd7391cdf70661585ceaf2f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123198"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015190"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -43,18 +43,11 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
   * Minsta RAM: 4 GB (8 GB rekommenderas)
   * Minsta lagrings utrymme: 10 GB
 
-* Åtkomst till Windows administrations Center Insider build med Azure IoT Edge tillägget för Windows administrations Center installerat:  <!-- The link below needs the language localization to work; otherwise broken -->
-   1. Besök [Windows Insider Preview](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver).
+* Åtkomst till Windows administrations Center med Azure IoT Edge tillägget för Windows administrations Center installerat:
 
-   1. I list rutan för hands versioner väljer du för **hands version av Windows administrations Center – Build 2012** och väljer **Bekräfta**.
+   1. Hämta [installations programmet för Windows administrations Center](https://aka.ms/wacdownload).
 
-      ![Välj för hands versionen av Windows administrations Center – build 2012 från List menyn för tillgängliga för hands versioner.](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
-
-   1. I list rutan **Välj språk** väljer du **engelska** och sedan **Bekräfta**.
-
-   1. Klicka på **Hämta nu** för att ladda ned *WindowsAdminCenterPreview2012.msi*.
-
-   1. Kör *WindowsAdminCenterPreview2012.msi* och följ anvisningarna i installations guiden för att installera administrations Center för Windows. När du har installerat öppnar du administrations Center för Windows.
+   1. Kör det nedladdade installations programmet och följ anvisningarna i installations guiden för att installera Windows administrations Center. När du har installerat öppnar du administrations Center för Windows.
 
    1. Vid den första användningen av Windows administrations Center uppmanas du att välja ett certifikat som ska användas. Välj **Windows administrations Center-klient** som certifikat.
 
@@ -143,7 +136,7 @@ Installera IoT Edge för Linux på Windows på mål enheten om du inte redan har
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. Installera IoT Edge för Linux i Windows på din enhet.

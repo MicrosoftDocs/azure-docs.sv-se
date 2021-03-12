@@ -8,20 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/16/2020
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4a68b492bad4ac091b4600c9ec81ac0de27cc05
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572896"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611835"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Samla in Azure Active Directory B2C loggar med Application Insights
 
-Den här artikeln innehåller steg för att samla in loggar från Active Directory B2C (Azure AD B2C) så att du kan diagnostisera problem med dina anpassade principer. Application Insights är ett sätt att diagnostisera undantag och visualisera problem med program prestanda. Azure AD B2C innehåller en funktion för att skicka data till Application Insights.
+Den här artikeln innehåller steg för att samla in loggar från Active Directory B2C (Azure AD B2C) så att du kan diagnostisera problem med dina anpassade principer. I Application Insights finns olika sätt att diagnostisera undantag och visualisera prestandaproblem i programmet. Azure AD B2C har en funktion för att skicka data till Application Insights.
 
 De detaljerade aktivitets loggarna som beskrivs här ska **bara** aktive ras under utvecklingen av dina anpassade principer.
 
@@ -51,7 +51,7 @@ Om du inte redan har en, skapar du en instans av Application Insights i din pren
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Lägg till en `<UserJourneyBehaviors>` underordnad nod till noden om den inte redan finns `<RelyingParty>` . Den måste finnas omedelbart efter `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Lägg till en `<UserJourneyBehaviors>` underordnad nod till noden om den inte redan finns `<RelyingParty>` . Den måste finnas efter `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
 1. Lägg till följande nod som underordnad till `<UserJourneyBehaviors>` elementet. Ersätt `{Your Application Insights Key}` med den Application Insights **Instrumentation-nyckel** som du registrerade tidigare.
 
     ```xml
@@ -94,7 +94,7 @@ Det finns en kort fördröjning, vanligt vis mindre än fem minuter, innan du ka
 
 Här är en lista över frågor som du kan använda för att visa loggarna:
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 |---------------------|--------------------|
 `traces` | Se alla loggar som genererats av Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Se alla loggar som genererats av Azure AD B2C den senaste dagen
@@ -130,7 +130,7 @@ För att förbättra produktions miljöns prestanda och förbättra användar up
 
 ## <a name="next-steps"></a>Nästa steg
 
-Communityn har utvecklat ett användar resa visnings program för att hjälpa identitets utvecklare. Den läser från din Application Insights instans och ger en välstrukturerad vy över användar resans händelser. Du får käll koden och distribuerar den i din egen lösning.
+Communityn har utvecklat ett visningsverktyg för användarresan som är till hjälp för identitetsutvecklare. Det läser från din Application Insights-instans och visar en välstrukturerad vy över händelserna längs användarresan. Du laddar ned källkoden och distribuerar den i din egen lösning.
 
 Användarens körnings spelare stöds inte av Microsoft och görs tillgänglig enbart i befintligt skick.
 

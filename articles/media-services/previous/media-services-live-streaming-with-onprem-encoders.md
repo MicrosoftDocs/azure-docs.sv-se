@@ -3,7 +3,7 @@ title: Strömma live med lokala kodare som skapar strömmar med flera bit hastig
 description: I det här avsnittet beskrivs hur du konfigurerar en kanal som tar emot en Live-bit ström från en lokal kodare.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 316372f091833519f0479d07355d2845c82743b6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269632"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014850"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Arbeta med kanaler som tar emot Live-dataströmmar med flera bit hastigheter från lokala kodare
 
@@ -196,7 +196,7 @@ Följande tabell visar hur kanal tillstånd mappas till fakturerings läget.
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Dold textning och annons infogning
 Följande tabell visar vilka standarder som stöds för dold textning och annons infogning.
 
-| Standard | Obs! |
+| Standard | Kommentarer |
 | --- | --- |
 | CEA-708 och EIA-608 (708/608) |CEA-708 och EIA-608 är stängda – bild texter standarder för USA och Kanada.<p><p>För närvarande stöds inte textning för tillfället om den har överförts i den kodade indataströmmen. Du måste använda en Live Media-kodare som kan infoga 608-eller 708-textning i den kodade data strömmen som skickas till Media Services. Media Services levererar innehållet med infogade under texter till dina användare. |
 | TTML inuti. ISMT (Smooth Streaming text spår) |Med Media Services dynamisk paketering kan klienter strömma innehåll i något av följande format: bindestreck, HLS eller Smooth Streaming. Men om du matar in fragmenterad MP4 (Smooth Streaming) med under texter inuti. ISMT (Smooth Streaming text spår) kan du endast leverera data strömmen till Smooth Streaming klienter. |

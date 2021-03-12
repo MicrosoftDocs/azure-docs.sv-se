@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 33ad17e3024011368c909a89e9164ca06d044bad
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369432"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612090"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geo-filtrering på en domän för Azures front dörr
 
@@ -214,4 +214,4 @@ Du kan konfigurera en princip för geo-filtrering för din front dörr genom att
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs hur du [skapar en Front Door](quickstart-create-front-door.md).
-- Lär dig mer om att [Konfigurera en princip för geo-filtrering WAF](front-door-tutorial-geo-filtering.md).
+- Lär dig hur du [konfigurerar en princip för geo-filtrering WAF](front-door-tutorial-geo-filtering.md).

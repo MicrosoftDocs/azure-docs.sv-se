@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av stödinställningar och begränsni
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d8ffaf2c5aa32e8e0f851510adb58a78167abccb
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915717"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149043"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
 
@@ -150,8 +150,8 @@ Azure Backup har lagt till funktionen för återställning av kors region för a
 
 | Typ av säkerhets kopierings hantering | Stöds                                                    | Regioner som stöds |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Tillgängligt i alla offentliga Azure-regioner utom Frankrikes centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL-/SAP HANA | I förhandsversion                                                      | Tillgängligt i alla offentliga Azure-regioner utom Frankrikes centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL-/SAP HANA | I förhandsversion                                                      | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | MARS-agent/lokalt  | Inga                                                           | Ej tillämpligt               |
 | AFS (Azure-filresurser)                 | Inga                                                           | Ej tillämpligt               |
 

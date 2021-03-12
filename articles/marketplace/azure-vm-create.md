@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: 2ef80d26336ddbe3c015dfcde0c5ed29b762f39b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5c01b1965c38811e78909f27ca4ab65614bc7f0e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629724"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102629984"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Så här skapar du ett erbjudande för virtuella datorer på Azure Marketplace
 
@@ -27,7 +27,7 @@ Om du inte har gjort det ännu kan du gå igenom [planera ett erbjudande för vi
 ## <a name="create-a-new-offer"></a>Skapa ett nytt erbjudande
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
-2. I det vänstra fönstret väljer du **kommersiell Marketplace** -  >  **Översikt**.
+2. I det vänstra fönstret väljer du **kommersiell Marketplace**-  >  **Översikt**.
 3. På sidan **Översikt** väljer du **+ nytt erbjud**  >  **Azure Virtual Machine**.
 
     ![Skärm bild som visar meny alternativ för det vänstra fönstret och knappen "nytt erbjudande".](./media/create-vm/new-offer-azure-virtual-machine.png)
@@ -38,7 +38,7 @@ Om du inte har gjort det ännu kan du gå igenom [planera ett erbjudande för vi
 Ange ett **erbjudande-ID**. Detta är en unik identifierare för varje erbjudande i ditt konto.
 
 - Detta ID är synligt för kunder i webb adressen för Azure Marketplace-erbjudandet och i Azure PowerShell och Azure CLI, om tillämpligt.
-- Använd bara gemena bokstäver och siffror. ID: t kan innehålla bindestreck och under streck, men inte blank steg och är begränsat till 50 tecken. Om du till exempel anger **test-erbjudande-1** , är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- Använd bara gemena bokstäver och siffror. ID: t kan innehålla bindestreck och under streck, men inte blank steg och är begränsat till 50 tecken. Om du till exempel anger **test-erbjudande-1**, är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Erbjudande-ID: t kan inte ändras när du har valt **skapa**.
 
 Ange ett **erbjudande alias**. Erbjudandets alias är det namn som används för erbjudandet i Partner Center.

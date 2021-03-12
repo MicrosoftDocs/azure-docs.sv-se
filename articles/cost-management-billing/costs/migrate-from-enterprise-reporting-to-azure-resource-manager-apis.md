@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355836"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635798"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Migrera från rapporterings-API:er för Enterprise till Azure Resource Manager-API:er
 
@@ -51,28 +51,7 @@ När du har skapat ett tjänsthuvudnamn för att programmatiskt anropa Azure Res
 
 ### <a name="azure-billing-hierarchy-access"></a>Hierarkiåtkomst för Azure-fakturering
 
-Om du vill tilldela behörigheter för tjänstens huvudnamn till omfång för Enterprise-faktureringskontot, avdelningar eller registreringskonton använder du API:erna för [faktureringsbehörighet](/rest/api/billing/2019-10-01-preview/billingpermissions), [rolldefinitioner för fakturering](/rest/api/billing/2019-10-01-preview/billingroledefinitions) och [rolltilldelningar för fakturering](/rest/api/billing/2019-10-01-preview/billingroleassignments).
-
-- Använd API:erna för faktureringsbehörighet för att identifiera de behörigheter som tjänstens huvudnamn redan har för ett angivet omfång, till exempel ett faktureringskonto eller en avdelning.
-- Använd API:erna för rolldefinitioner för fakturering för att räkna upp de tillgängliga roller som kan tilldelas till tjänstens huvudnamn.
-  - Endast skrivskyddade roller för EA-administratörer och avdelningsadministratörer kan tilldelas till tjänstens huvudnamn för närvarande.
-- Använd API:erna för rolltilldelningar för fakturering för att tilldela en roll till tjänstens huvudnamn.
-
-I följande exempel kan du se hur du anropar rolltilldelnings-API:et för att ge tjänstens huvudnamn åtkomst till ditt faktureringskonto. Vi rekommenderar att du använder [PostMan](https://postman.com) för att göra dessa engångskonfigurationer.
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>Begärandetext
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+Information om hur du tilldelar tjänst huvud namn till företagets fakturerings konto, avdelningar eller registrerings konto omfattningar finns i [tilldela roller till Azure Enterprise-avtal tjänstens huvud namn](../manage/assign-roles-azure-service-principals.md).
 
 ### <a name="azure-role-based-access-control"></a>Rollbaserad Azure-åtkomstkontroll
 

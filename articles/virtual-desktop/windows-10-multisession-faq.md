@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025018"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565571"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Vanliga frågor och svar om flera sessioner för Windows 10 Enterprise
 
@@ -81,7 +81,7 @@ De flesta virtualiserade miljöer konfigureras som standard för att hindra anv�
 
 - [Publicera inbyggda appar i Windows Virtual Desktop](publish-apps.md)
 - [Kommando rads alternativ för DISM-paket underhåll](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Hur gör jag för att se till att användarna inte laddar ned och installerar appar från Microsoft Store?
 
@@ -94,7 +94,7 @@ Så här inaktiverar du Store-appen:
 3. Välj **Arkiv**.
 4. Välj **Store-program**.
 5. Välj **inaktive rad** och välj sedan **OK**.
-6. Välj **Tillämpa**.
+6. Välj **Använd**.
 
 ## <a name="next-steps"></a>Nästa steg
 
