@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: e8005bbf0373c91cf9f3515059544b9af3d52384
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443802"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630375"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Viktig information om Azure Stack Edge 2101
 
@@ -29,7 +29,7 @@ Den här artikeln gäller **Azure Stack Edge 2101** -versionen som mappas till v
 
 Följande nya funktioner är tillgängliga i Azure Stack Edge 2101-versionen. 
 
-- **Allmän tillgänglighet för Azure Stack Edge Pro r och Azure Stack Edge mini r-enheter** – från och med den här versionen, Azure Stack Edge Pro r-och Azure Stack Edge mini r-enheter är tillgängliga. Mer information finns i [Vad är Azure Stack Edge Pro R](azure-stack-edge-j-series-overview.md) och [Vad är Azure Stack Edge mini r](azure-stack-edge-k-series-overview.md).  
+- **Allmän tillgänglighet för Azure Stack Edge Pro r och Azure Stack Edge mini r-enheter** – från och med den här versionen, Azure Stack Edge Pro r-och Azure Stack Edge mini r-enheter är tillgängliga. Mer information finns i [Vad är Azure Stack Edge Pro R](azure-stack-edge-pro-r-overview.md) och [Vad är Azure Stack Edge mini r](azure-stack-edge-mini-r-overview.md).  
 - **Moln hantering av Virtual Machines** – från och med den här versionen kan du skapa och hantera de virtuella datorerna på enheten via Azure Portal. Mer information finns i [distribuera virtuella datorer via Azure Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md).
 - **Integrering med Azure Monitor** – nu kan du använda Azure Monitor för att övervaka behållare från beräknings programmen som körs på enheten. Azure Monitor Metrics Store stöds inte i den här versionen. Mer information finns i så här [aktiverar du Azure Monitor på enheten](azure-stack-edge-gpu-enable-azure-monitor.md).
 - **Edge container Registry** – i den här versionen är ett gräns container register tillgängligt som tillhandahåller en lagrings plats på enheten. Du kan använda det här registret för att lagra och hantera behållar avbildningar. Mer information finns i [Aktivera gräns container Registry](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). 

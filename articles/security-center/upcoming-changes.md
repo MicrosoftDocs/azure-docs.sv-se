@@ -1,23 +1,18 @@
 ---
 title: Viktiga ändringar som kommer till Azure Security Center
 description: Kommande ändringar av Azure Security Center som du kan behöva känna till och för vilka du kan behöva planera
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051624"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633724"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -32,7 +27,6 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 ## <a name="planned-changes"></a>Planerade ändringar
 
 - [Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [Två tidigare rekommendationer kommer inte längre att skriva data direkt till Azure aktivitets loggen](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
 - [Utfasning av 11 Azure Defender-aviseringar](#deprecation-of-11-azure-defender-alerts)
@@ -53,21 +47,6 @@ Med den här ändringen kommer två uppsättningar med AWS-rekommendationer att 
 
 När dessa är GA och utvärderingarna körs på dina AWS-resurser påverkar resultaten dina kombinerade säkra Poäng för alla dina resurser i flera och hybrid moln. 
 
-
-
-### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Två tidigare rekommendationer kommer inte längre att skriva data direkt till Azure aktivitets loggen 
-
-**Beräknat datum för ändring:** Mars 2021
-
-Security Center skickar data för nästan alla säkerhets rekommendationer till Azure Advisor vilket i sin tur skriver den till [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md).
-
-För två rekommendationer skrivs data samtidigt direkt till Azure aktivitets loggen. Med den här ändringen slutar Security Center att skriva data för dessa äldre säkerhets rekommendationer direkt till aktivitets loggen. I stället ska vi exportera data till Azure Advisor som vi gör för alla andra rekommendationer. 
-
-De två tidigare rekommendationerna är:
-- Problem med slut punkts skydd bör lösas på dina datorer
-- Säkerhets problem i säkerhets konfiguration på dina datorer bör åtgärdas
-
-Om du har åtkomst till information för dessa två rekommendationer i aktivitets loggens "rekommendation av typen TaskDiscovery" kommer detta inte längre att vara tillgängligt.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
 

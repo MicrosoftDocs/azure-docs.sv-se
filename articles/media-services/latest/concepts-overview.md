@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2a1c0c0685ab5a908a89f4a43073f9f773cd58c3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897925"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632007"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminologi och koncept
 
@@ -26,10 +26,6 @@ ms.locfileid: "98897925"
 Det här avsnittet ger en kort översikt över Azure Media Services terminologi och begrepp. Artikeln innehåller också länkar till artiklar med en djupgående förklaring av Media Services v3-koncept och-funktioner.
 
 De grundläggande begreppen som beskrivs i dessa avsnitt bör granskas innan du börjar utveckla.
-
-> [!NOTE]
-> För närvarande kan du använda [Azure Portal](https://portal.azure.com/) för att: Hantera Media Services v3 [Live-händelser](live-events-outputs-concept.md), Visa (inte hantera) v3- [till gångar](assets-concept.md)och [få information om åtkomst till API: er](./access-api-howto.md).
-> För alla andra hanterings uppgifter (t. ex. [transformationer och jobb](transforms-jobs-concept.md) och [innehålls skydd](content-protection-overview.md)) använder du [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -42,7 +38,7 @@ De grundläggande begreppen som beskrivs i dessa avsnitt bör granskas innan du 
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3-begrepp
 
-|Begrepp|Description|Länkar|
+|Begrepp|Beskrivning|Länkar|
 |---|---|---|
 |Till gångar och överför innehåll|För att börja hantera, kryptera, koda, analysera och strömma medie innehåll i Azure måste du skapa ett Media Services konto och ladda upp dina digitala filer till **till gångar**.|[Uppladdning till och lagring i molnet](storage-account-concept.md)<br/><br/>[Till gångs koncept](assets-concept.md)|
 |Koda innehåll|När du har överfört digitala mediefiler med hög kvalitet till till gångar kan du koda dem till-format som kan spelas upp i en mängd olika webbläsare och enheter. <br/><br/>Om du vill koda med Media Services v3 måste du skapa **transformeringar** och **jobb**.|[Transformeringar och jobb](transforms-jobs-concept.md)<br/><br/>[Kodning med Media Services](encoding-concept.md)|

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 02/24/2021
-ms.openlocfilehash: 114e52884ca220635085bdbb8ab19b4f9cf810c0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9c788109b014be244560fb652de830ba14a44d68
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120104"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225021"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>Verifiera samförsäljnings status för ett erbjudande från en kommersiell Marketplace
 
@@ -32,7 +32,7 @@ I följande tabell visas alla möjliga status värden för samma försäljning. 
 | ------------ | ------------- |
 | Är inte färdig att sälja | Minimi [kraven för status för medförsäljnings klar](co-sell-requirements.md#requirements-for-co-sell-ready-status) har inte uppfyllts. |
 | Färdiga försäljnings produkter | Alla [krav för klar status för medförsäljning](co-sell-requirements.md#requirements-for-co-sell-ready-status) har uppfyllts. |
-| Azure IP Co-Sälj motiverade | Medförsäljnings klara krav har uppfyllts utöver [dessa ytterligare krav](co-sell-requirements.md#requirements-for-ip-co-sell-incentivized-status). |
+| Azure IP Co-Sälj motiverade | Medförsäljnings klara krav har uppfyllts utöver [dessa ytterligare krav](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentivized-status). |
 | BIZ Apps ISV Connect Premium-incitament  | Den här statusen gäller för Dynamics 365 och Power apps erbjuder och indikerar att alla [krav för den här statusen](co-sell-requirements.md#requirements-for-biz-apps-isv-connect-premium-incentive-status) har uppfyllts. |
 |||
 

@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/27/2020
-ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/10/2021
+ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247173"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630902"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Granska och publicera ett erbjudande på den kommersiella Marketplace
 
@@ -74,6 +74,13 @@ Det första steget i publicerings processen är en uppsättning automatiserade v
 - **Verifiering och registrering av lead-hantering** (<15 min)
 
     Vi bekräftar att ditt lead management-system kan ta emot kund leads utifrån den information du angav på sidan **erbjudande konfiguration** . Det här steget gäller bara för erbjudanden där lead management har Aktiver ATS.
+
+- **Erbjudande verifiering** (<30 min)
+
+    För SaaS-erbjudanden utför vi snabba valideringar för innehåll och tekniska konfigurationer. Det går inte att skapa en för hands version av verifierings problem som upptäckts i det här steget. Om vi hittar några problem som kan göra att certifieringen inte kan utföras visas länken **Visa verifierings rapport** på sidan **erbjudande översikt** . Rapporten innehåller beskrivningar av eventuella princip överträdelser.
+
+    > [!IMPORTANT]
+    > Se till att granska och adressera alla varningar från steget för att validera erbjudandet innan du väljer knappen **Go Live** . I annat fall riskerar du att en certifiering som gör att ditt erbjudande upphör att fungera.
 
 ## <a name="certification-phase"></a>Certifierings fas
 
@@ -143,16 +150,19 @@ Om du vill publicera erbjudandet vid ett senare tillfälle måste du starta publ
 
 När erbjudandet är klart för att du ska kunna granska och vara inloggad skickar vi ett e-postmeddelande till dig om att granska och godkänna din för hands version av erbjudandet. Du kan också uppdatera sidan **erbjudande översikt** i webbläsaren för att se om ditt erbjudande har nått utgivarens signerings fas. Om den har det är knappen **Go Live** och för hands versions länkarna tillgänglig.
 
-Följande skärm bild visar sidan **erbjudande översikt** för ett SaaS-erbjudande. De verifierings steg som visas på den här sidan varierar beroende på erbjudande typen och de val du gjorde när du skapade erbjudandet.
+Följande skärm bild visar sidan **erbjudande översikt** i programmet för kommersiella marknads platser i Partner Center. De verifierings steg som visas på den här sidan varierar beroende på erbjudande typen och de val du gjorde när du skapade erbjudandet. Observera att certifierings fasen kan ske under överföring till för hands version eller överföring till Live beroende på typen av erbjudande.
 
 ![Visar sidan erbjudande översikt för ett erbjudande i Partner Center. Knappen gå live och för hands versions länkarna visas.](./media/publish-status-publisher-signoff.png)
 
 ### <a name="previewing-and-approving-your-offer"></a>För hands Grans kar och godkänner ditt erbjudande
 
 > [!IMPORTANT]
-> Om du vill kontrol lera inköps-och installations flödet från slut punkt till slut punkt köper du ditt erbjudande när det är i för hands version. Meddela först Microsoft med ett [support ärende](https://aka.ms/marketplacesupport) för att se till att vi inte behandlar någon avgift. Om ditt erbjudande är en lista med kontakt information kan du testa att ett lead skapas som förväntat genom att tillhandahålla informationen om kontakt information under för hands versionen.
+> Om du vill kontrol lera inköps-och installations flödet från slut punkt till slut punkt köper du ditt erbjudande när det är i för hands version. Meddela först Microsoft med ett [support ärende](https://aka.ms/marketplacesupport) för att se till att vi inte behandlar någon avgift. Om ditt erbjudande är en lista med _kontakt_ information kan du testa att ett lead skapas som förväntat genom att tillhandahålla informationen om kontakt information under för hands versionen.
 
 På sidan **erbjudande översikt** visas förhands gransknings länkar under knappen **gå live** . Det finns en länk till antingen AppSource Preview, Azure Marketplace Preview eller båda beroende på vilka alternativ du valde när du skapade erbjudandet. Om du har valt att sälja ditt erbjudande via Microsoft kan alla som har lagts till i förhands gransknings gruppen testa förvärvet och distributionen av ditt erbjudande för att säkerställa att det uppfyller dina krav under det här skedet.
+
+> [!IMPORTANT]
+> Se till att granska och adressera alla varningar från steget för att _validera erbjudandet_ innan du väljer knappen **Go Live** . I annat fall riskerar du att en certifiering som gör att ditt erbjudande upphör att fungera.
 
 När du har godkänt din för hands version väljer du **Go Live** för att publicera erbjudandet Live på den kommersiella marknads platsen. 
 
@@ -225,7 +235,7 @@ Du kan använda filter för att begränsa den fullständiga historiken för ditt
 Det finns fyra filter:
 * Händelser
 * Användare
-* Date
+* Datum
 * Sidor
 
 När du väljer filtret **sidor** kan du välja någon av de partner Center-sidor som gäller för din erbjudande typ. När detta används visar filtret **Pages** alla **skickade erbjudanden för för hands versions** händelser med ändringar på sidan som du har valt.

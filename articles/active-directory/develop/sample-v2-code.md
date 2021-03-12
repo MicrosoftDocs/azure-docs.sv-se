@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: dc740acb366212640015ca0fb527d34fade1097d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436506"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010770"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)
 
@@ -36,20 +36,21 @@ Du kan också bidra till exemplen på GitHub. Mer information finns i [Microsoft
 
 De här exemplen visar hur du skriver ett program med en enda sida som skyddas med Microsoft Identity Platform. I de här exemplen används en varianter av MSAL.js.
 
-| Plattform | Description | Länk |
+| Plattform | Beskrivning | Länk |
 | -------- | --------------------- | -------- |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-anrop Microsoft Graph |[Java Script-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA-anrop Microsoft Graph att använda auth Code Flow med PKCE |[Java Script-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-anrop B2C |[B2C – Java Script-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
 | ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA-anrop B2C med auth Code Flow w/PKCE |[B2C – Java Script – Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) |
+| ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA anropar anpassat webb-API som i sin tur anropar Microsoft Graph  | [MS-Identity-JavaScript-självstudie-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA-anrop Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-vinkel](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA-anrop Microsoft Graph att använda auth Code Flow med PKCE | [MS-Identity-JavaScript-vinkel-Spa](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA-anrop anpassad webb-API | [MS-Identity-JavaScript-vinkel-Spa-aspnetcore-WebAPI](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop B2C |[Active-Directory-B2C-JavaScript-vinkel-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
-| ![Den här bilden visar att den reagerar på logo typen ](media/sample-v2-code/logo_react.png) [reagerar (MSAL reagerar)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| SPA-anrop Microsoft Graph att använda auth Code Flow med PKCE | [MS-Identity-JavaScript-reakta-Spa](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) |
-| ![Den här bilden visar att den reagera på logo typen ](media/sample-v2-code/logo_react.png) [reagerar (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA anropar anpassat webb-API som i sin tur anropar Microsoft Graph  | [MS-Identity-JavaScript-reakta-Spa-dotnetcore-WebAPI-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Den här bilden visar JavaScript-filens ](media/sample-v2-code/logo_js.png) [JavaScript-skript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA anropar anpassat webb-API som i sin tur anropar Microsoft Graph  | [MS-Identity-JavaScript-självstudie-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA anropar anpassat webb-API med app-roller och säkerhets grupper |[MS-Identity-JavaScript-vinkel-Spa-dotnetcore-WebAPI-roles-Groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
+| ![Den här bilden visar att den reagerar på logo typen ](media/sample-v2-code/logo_react.png) [reagerar (MSAL reagerar)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| SPA-anrop Microsoft Graph att använda auth Code Flow med PKCE | [MS-Identity-JavaScript-reakta-Spa](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) |
+| ![Den här bilden visar att den reagerar på logo typen ](media/sample-v2-code/logo_react.png) [reagerar (MSAL reagerar)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| SPA-anrop anpassad webb-API | [MS-Identity-JavaScript-preakta – självstudie](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/1-call-api) |
+| ![Den här bilden visar att den reagera på logo typen ](media/sample-v2-code/logo_react.png) [reagerar (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA anropar anpassat webb-API som i sin tur anropar Microsoft Graph  | [MS-Identity-JavaScript-reakta-Spa-dotnetcore-WebAPI-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![Den här bilden visar ](media/sample-v2-code/logo-blazor.png) [WebAssembly-webbsammansättningen](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) från blixtens logo typ (MSAL.js) | Själv studie kurs om blixt websammansättning för inloggnings användare och anropar API: er med Azure Active Directory |[MS-Identity-blixte-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
 ## <a name="web-applications"></a>Webbprogram
@@ -129,7 +130,7 @@ I följande exempel visas ett offentligt klient program som körs på en enhet u
 
 Följande exempel visar hur du konfigurerar programmet så att det accepterar inloggningar från valfri Azure Active Directory (Azure AD)-klient. Att konfigurera ditt program så att det blir *flera klienter* innebär att du kan erbjuda ett SaaS-program ( **program vara som en tjänst** ) till många organisationer, så att användarna kan logga in till ditt program efter att de har gett sitt medgivande.
 
-| Plattform | Description | Länk |
+| Plattform | Beskrivning | Länk |
 | -------- | --------------------- | -------- |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop för flera innehavare Graph API |[MS-Identity-JavaScript-vinkel-Spa-ASPNET-ASPNET-WebAPI-flera innehavare](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Den här bilden visar vinkel typ ](media/sample-v2-code/logo_angular.png) [vinkeln (MSAL vinkel 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA-anrop för flera innehavare med anpassat webb-API |[MS-Identity-JavaScript-vinkel-Spa-ASPNET-ASPNET-WebAPI-flera innehavare](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

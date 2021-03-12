@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 372efa217e400ffd4bcecd286f3c3dc7b81f64d6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756564"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007980"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Skriv bords app som anropar webb-API: kod konfiguration
 
 Nu när du har skapat ditt program får du lära dig hur du konfigurerar koden med programmets koordinater.
 
-## <a name="microsoft-authentication-libraries"></a>Microsoft Authentication libraries
+## <a name="microsoft-libraries-supporting-desktop-apps"></a>Microsoft-bibliotek med stöd för skrivbordsappar
 
-Följande Microsoft-MSALs (Authentication Libraries) stöder Skriv bords program.
+Följande Microsoft-bibliotek har stöd för skrivbordsappar:
 
-  Microsofts autentiseringsbibliotek | Beskrivning
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Har stöd för att skapa ett Skriv bords program på flera plattformar, till exempel Linux, Windows och macOS.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Har stöd för att skapa ett Skriv bords program på flera plattformar.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Har stöd för att skapa ett Skriv bords program på flera plattformar.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Stöder Skriv bords program som bara körs på macOS.
+[!INCLUDE [active-directory-develop-libraries-desktop](../../../includes/active-directory-develop-libraries-desktop.md)]
 
 ## <a name="public-client-application"></a>Offentligt klientprogram
 

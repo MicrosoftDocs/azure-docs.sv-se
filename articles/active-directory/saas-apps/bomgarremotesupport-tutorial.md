@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/12/2020
+ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1996024d163a4bf7cfa741110038bb8db5b883e8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728048"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632754"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med BeyondTrust-fjärrsupport
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera BeyondTrust-fjärrsuppo
 * Gör det möjligt för användarna att logga in automatiskt för att BeyondTrust fjärrsupport med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -51,7 +51,7 @@ Om du vill konfigurera integrationen av BeyondTrust-fjärrsupport i Azure AD må
 1. I avsnittet **Lägg till från galleriet** , Skriv **BeyondTrust remote support** i sökrutan.
 1. Välj **BeyondTrust remote support** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>Konfigurera och testa enkel inloggning med Azure AD för BeyondTrust-fjärrsupport
+## <a name="configure-and-test-azure-ad-sso-for-beyondtrust-remote-support"></a>Konfigurera och testa Azure AD SSO för BeyondTrust-fjärrsupport
 
 Konfigurera och testa Azure AD SSO med BeyondTrust-fjärrsupport med en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i BeyondTrust remote support.
 
@@ -76,14 +76,14 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<HOSTNAME>.bomgar.com/saml`
+    a. I rutan **identifierare** anger du en URL med följande mönster: `https://<HOSTNAME>.bomgar.com`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<HOSTNAME>.bomgar.com`
-
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<HOSTNAME>.bomgar.com/saml/sso`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<HOSTNAME>.bomgar.com/saml/sso`
+    
+    c. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<HOSTNAME>.bomgar.com/saml`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Du får de här värdena förklaras senare i självstudien.
+    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och Sign-On-URL. Du får de här värdena förklaras senare i självstudien.
 
 1. BeyondTrust-fjärrsupportprogram förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
 
@@ -124,7 +124,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -167,6 +167,10 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>Skapa BeyondTrust support test användare
 
+I det här avsnittet skapas en användare med namnet Britta Simon i BeyondTrust remote support. BeyondTrust-fjärrsupporten stöder just-in-Time-etablering, som är aktiverat som standard. Det finns inget åtgärdsobjekt för dig i det här avsnittet. Om en användare inte redan finns i BeyondTrust-fjärrsupporten skapas en ny efter autentiseringen.
+
+Följ proceduren nedan, som är obligatorisk för att konfigurera BeyondTrust-fjärrsupporten.
+
 Vi kommer att konfigurera inställningarna för användar etablering här. Värdena som används i det här avsnittet kommer att refereras till i avsnittet **användarattribut &-anspråk** i Azure Portal. Vi konfigurerade detta som standardvärden som redan har importer ATS vid tidpunkten för skapandet, men värdet kan anpassas om det behövs.
 
 ![Skärm bild som visar användar etablerings inställningar där du kan konfigurera användar värden.](./media/bomgarremotesupport-tutorial/user-attribute.png)
@@ -174,7 +178,7 @@ Vi kommer att konfigurera inställningarna för användar etablering här. Värd
 > [!NOTE]
 > Attributen Groups och e-mail är inte nödvändiga för den här implementeringen. Om du använder Azure AD-grupper och tilldelar dem till BeyondTrust för fjärran sluten support, måste objekt-ID: t för gruppen refereras via dess egenskaper i Azure Portal och placeras i avsnittet "tillgängliga grupper". När detta har slutförts kommer objekt-ID/AD-gruppen nu att vara tillgänglig för tilldelning till en grup princip för behörigheter.
 
-![Skärm bild som visar avsnittet I T med medlemskaps typ, källa, typ och objekt I D.](./media/bomgarremotesupport-tutorial/config-user2.png)
+![Skärm bild som visar avsnittet I T med medlemskaps typ, källa, typ och objekt I D.](./media/bomgarremotesupport-tutorial/config-user-2.png)
 
 ![Skärm bild som visar sidan grundläggande inställningar för en grup princip.](./media/bomgarremotesupport-tutorial/group-policy.png)
 

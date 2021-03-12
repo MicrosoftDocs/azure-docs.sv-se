@@ -3,15 +3,15 @@ title: Skala sessioner värdar Azure Automation – Azure
 description: Hur du automatiskt skalar värdar för virtuella Windows-fjärrskrivbordssessioner med Azure Automation.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f60341ea51f1cf4e856b1b4598887da3dc37ebb2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078562"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613127"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skala sessionsbaserade värdar med hjälp av Azure Automation
 
@@ -41,7 +41,7 @@ Under den högsta användnings tiden bestämmer jobbet hur många VM-sessioner s
 >[!NOTE]
 >Om du ställer in sessionens värddator för virtuella datorer manuellt i dränerings läge, hanterar inte jobbet den virtuella datorns VM för sessionen. Om den virtuella datorns värd för sessionen körs och är inställt på dränerings läge behandlas den som otillgänglig, vilket gör att jobbet startar ytterligare virtuella datorer för att hantera belastningen. Vi rekommenderar att du taggar alla virtuella Azure-datorer innan du anger dem till dränerings läge manuellt. Du kan namnge taggen med parametern *MaintenanceTagName* när du skapar Schemaläggaren för Azure Logic app senare. Taggar hjälper dig att skilja de virtuella datorerna från dem som skalnings verktyget hanterar. Att ställa in en underhålls tagg förhindrar även skalnings verktyget från att göra ändringar i den virtuella datorn tills du tar bort taggen.
 
-Om du ställer in parametern *LimitSecondsToForceLogOffUser* på noll tillåter jobbet konfigurations inställningen för sessionen i angivna grup principer för att hantera signering av användarsessioner. Om du vill se dessa grup principer går du till **dator konfiguration**  >  **principer**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **Remote Desktop Session Host**  >  **Session Time Limits**sessionsvärdservern för fjärrskrivbordssession. Om det finns aktiva sessioner på en virtuell dator för en virtuell dator kommer jobbet att lämna den virtuella dator som körs på sessionen. Om det inte finns några aktiva sessioner stängs jobbet av den virtuella datorns sessions värd.
+Om du ställer in parametern *LimitSecondsToForceLogOffUser* på noll tillåter jobbet konfigurations inställningen för sessionen i angivna grup principer för att hantera signering av användarsessioner. Om du vill se dessa grup principer går du till **dator konfiguration**  >  **principer**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >    >  sessionsvärdservern för fjärrskrivbordssession. Om det finns aktiva sessioner på en virtuell dator för en virtuell dator kommer jobbet att lämna den virtuella dator som körs på sessionen. Om det inte finns några aktiva sessioner stängs jobbet av den virtuella datorns sessions värd.
 
 När som helst tar jobbet också med *MaxSessionLimit* i kontot för att avgöra om det aktuella antalet sessioner är mer än 90% av den maximala kapaciteten. Om så är fallet kommer jobbet att starta ytterligare virtuella datorer i sessions värden.
 
@@ -52,6 +52,9 @@ Verktyget har dock också följande begränsningar:
 - Den här lösningen gäller endast för pooler för virtuella datorer i flera sessioner.
 - Den här lösningen hanterar virtuella datorer i vilken region som helst, men kan bara användas i samma prenumeration som ditt Azure Automation-konto och Azure Logic-appen.
 - Den maximala körningen av ett jobb i runbooken är 3 timmar. Om det tar längre tid att starta eller stoppa de virtuella datorerna i poolen, kommer jobbet att Miss Förslut. Mer information finns i [delade resurser](../automation/automation-runbook-execution.md#fair-share).
+- Minst en virtuell dator eller sessionsvariabel måste vara aktive rad för att skalnings algoritmen ska fungera korrekt.
+- Skalnings verktyget stöder inte skalning baserat på CPU eller minne.
+- Skalning fungerar bara med befintliga värdar i poolen. Skalnings verktyget stöder inte skalning av nya sessionsbaserade värdar.
 
 >[!NOTE]
 >Skalnings verktyget styr belastnings Utjämnings läget för den aktuella värddatorn som skalas för närvarande. Verktyget använder det bredd-första belastnings Utjämnings läget för både högsta och låg belastnings tid.

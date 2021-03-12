@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360062"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634693"
 ---
 # <a name="input-metadata"></a>Inkommande metadata
 
@@ -39,9 +39,7 @@ Exemplet på JSON-schemat finns i slutet av den här artikeln.
 Innehåller en samling av AssetFile-element för kodnings jobbet.  
 
 > [!NOTE]
-> Följande fyra underordnade element måste finnas i en sekvens.  
-> 
-> 
+> Följande fyra underordnade element måste finnas i en sekvens.
 
 | Name  | Beskrivning |
 | --- | --- | 
@@ -67,12 +65,12 @@ Innehåller en samling av AssetFile-element för kodnings jobbet.
 
 | Name | Beskrivning |
 | --- | --- |
-| **FourCC**<br />Obligatorisk |Video-codec FourCC-kod som rapporteras av ffmpeg.<br /><br />Exempel: `"FourCC": "avc1"` |
+| **FourCC**<br />Obligatorisk |Video-codec FourCC-kod som rapporteras av ffmpeg.<br /><br />Exempel: `"FourCC": "avc1" | "hev1" | "hvc1"` |
 | **Profil** |Video spårets profil. <br /><br />Exempel: `"Profile": "Main"`|
 | **Nivå** |Video spårets nivå. <br /><br />Exempel: `"Level": "3.2"`|
 | **PixelFormat** |Video spårets bild punkts format. <br /><br />Exempel: `"PixelFormat": "yuv420p"`|
 | **Bredd**<br />Obligatorisk |Kodad video bredd i bild punkter. <br /><br />Exempel: `"Width": "1280"`|
-| **Våghöjd**<br />Obligatorisk |Kodad video höjd i bild punkter.<br /><br />Exempel: `"Height": "720"` |
+| **Höjd**<br />Obligatorisk |Kodad video höjd i bild punkter.<br /><br />Exempel: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Obligatorisk |Täljare för bild förhållande i bild förhållande.<br /><br />Exempel: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Obligatorisk |Nämnare för bild förhållande i bild. <br /><br />Exempel: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Bild förhållande – täljare för video exempel. <br /><br />Exempel: `"SampleAspectRatioNumerator": 1.0`|
@@ -82,9 +80,9 @@ Innehåller en samling av AssetFile-element för kodnings jobbet.
 | **HasBFrames** |Video spårs nummer för B-ramar. <br /><br />Exempel: `"HasBFrames": 2`|
 | **Metadata** |Generiska nyckel/värde-strängar som kan användas för att lagra en rad olika uppgifter. <br />Se det fullständiga exemplet i slutet av artikeln. |
 | **Identitet**<br />Obligatorisk |Noll-baserat index för det här ljud-eller video spåret.<br /><br /> Detta **ID** är inte nödvändigt vis det TrackID som används i en MP4-fil. <br /><br />Exempel: `"Id": 2`|
-| **ADPCM** |Video spårets codec-sträng. <br /><br />Exempel: `"Codec": "h264"`|
+| **ADPCM** |Video spårets codec-sträng. <br /><br />Exempel: `"Codec": "h264 | hev1"`|
 | **CodecLongName** |Ljud-eller video spårs-codec långt namn. <br /><br />Exempel: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
-| **ADPCM** |Video spårets codec-sträng. <br /><br />Exempel: `"Codec": "h264"`|
+| **ADPCM** |Video spårets codec-sträng. <br /><br />Exempel: `"Codec": "h264 | hev1"`|
 | **Tids**<br />Obligatorisk |Tids bas.<br /><br />Exempel: `"TimeBase": "1/30000"`|
 | **NumberOfFrames** |Antal bild rutor (som finns för video spår). <br /><br />Exempel: `"NumberOfFrames": 2107`|
 | **/St** |Spåra start tid.<br /><br />Exempel: `"StartTime": "PT0.033S"` |

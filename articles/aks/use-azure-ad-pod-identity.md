@@ -3,13 +3,13 @@ title: Använda Azure Active Directory Pod-hanterade identiteter i Azure Kuberne
 description: Lär dig hur du använder AAD-Pod hanterade identiteter i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/01/2020
-ms.openlocfilehash: e7c8a96ad012afdcd724a4a242c27018563f3a10
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/12/2021
+ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176322"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233504"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Använda Azure Active Directory Pod-hanterade identiteter i Azure Kubernetes service (för hands version)
 
@@ -24,13 +24,13 @@ Azure Active Directory Pod-hanterade identiteter använder Kubernetes-primitiver
 
 Du måste ha följande resurs installerad:
 
-* Azure CLI, version 2.8.0 eller senare
-* `azure-preview`Tilläggs version 0.4.68 eller senare
+* Azure CLI, version 2.20.0 eller senare
+* `azure-preview`Tilläggs version 0.5.5 eller senare
 
 ### <a name="limitations"></a>Begränsningar
 
-* Högst 50 Pod-identiteter tillåts för ett kluster.
-* Högst 50 Pod-identitets undantag är tillåtna för ett kluster.
+* Högst 200 Pod-identiteter tillåts för ett kluster.
+* Högst 200 Pod-identitets undantag är tillåtna för ett kluster.
 * Pod-hanterade identiteter är bara tillgängliga på Linux-nodkonfigurationer.
 
 ### <a name="register-the-enablepodidentitypreview"></a>Registrera `EnablePodIdentityPreview`
@@ -66,6 +66,21 @@ Använd [AZ AKS get-credentials][az-aks-get-credentials] för att logga in på d
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+```
+## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Skapa ett AKS-kluster med Kubernetes Network-plugin
+
+Skapa ett AKS-kluster med Kubernetes Network-plugin och Pod-hanterad identitet aktive rad.
+
+```azurecli-interactive
+az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
+```
+
+## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Uppdatera ett befintligt AKS-kluster med Kubernetes Network-plugin
+
+Uppdatera ett befintligt AKS-kluster med Kubnet Network-plugin-programmet för att inkludera Pod-hanterad identitet.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
 ```
 
 ## <a name="create-an-identity"></a>Skapa en identitet

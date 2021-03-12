@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581398"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014901"
 ---
 # <a name="security-best-practices"></a>Rekommenderade säkerhetsmetoder
 
@@ -29,16 +29,16 @@ Här är de säkerhets behov som du är ansvarig för i distributionen av Window
 
 | Säkerhets behov | Är kunden ansvarig för detta? |
 |---------------|:-------------------------:|
-|Identitet|Yes|
-|Användar enheter (mobil och PC)|Yes|
-|App Security|Yes|
-|Sessionens värd operativ system|Yes|
-|Distributions konfiguration|Yes|
-|Nätverkskontroller|Yes|
-|Kontroll plan för nätverksvirtualisering|No|
-|Fysiska värdar|No|
-|Fysiskt nätverk|No|
-|Fysiskt Data Center|No|
+|Identitet|Ja|
+|Användar enheter (mobil och PC)|Ja|
+|App Security|Ja|
+|Sessionens värd operativ system|Ja|
+|Distributions konfiguration|Ja|
+|Nätverkskontroller|Ja|
+|Kontroll plan för nätverksvirtualisering|Inga|
+|Fysiska värdar|Inga|
+|Fysiskt nätverk|Inga|
+|Fysiskt Data Center|Inga|
 
 Säkerheten behöver kunden är inte ansvarig för hanteras av Microsoft.
 
@@ -117,7 +117,6 @@ Testa den här nya funktionen:
 >[!NOTE]
 >Under för hands versionen stöder endast fullständiga Skriv bords anslutningar från Windows 10-slutpunkter den här funktionen.
 
-
 ### <a name="enable-endpoint-protection"></a>Aktivera Endpoint Protection
 
 För att skydda din distribution från känd skadlig program vara rekommenderar vi att du aktiverar Endpoint Protection på alla värdar i sessionen. Du kan använda antingen Windows Defender Antivirus eller ett program från tredje part. Mer information finns i [distributions guide för Windows Defender Antivirus i en VDI-miljö](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
@@ -169,6 +168,52 @@ Genom att begränsa operativ systemets funktioner kan du förbättra säkerheten
 - Bevilja användare begränsade behörigheter när de ansluter till lokala och fjärranslutna fil system. Du kan begränsa behörigheterna genom att se till att dina lokala och fjärranslutna fil system använder åtkomst kontrol listor med minsta behörighet. På så sätt kan användarna bara komma åt vad de behöver och inte kan ändra eller ta bort viktiga resurser.
 
 - Förhindra oönskad program vara från att köras på sessionsbaserade värdar. Du kan aktivera app Locker för ytterligare säkerhet på sessionsbaserade, och se till att endast de appar som du tillåter kan köras på värden.
+
+## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Stöd för virtuella Windows-datorer för betrodd start
+
+Betrodd lansering är Gen2 virtuella Azure-datorer med förbättrade säkerhetsfunktioner som syftar till att skydda mot "botten av stacken"-hot via angrepps vektorer som rootkits, start paket och skadlig kod på kernel-nivå. Följande är de förbättrade säkerhetsfunktionerna i betrodd start, som alla stöds i Windows Virtual Desktop. Om du vill veta mer om betrodd start kan du gå till [betrodd start för Azure Virtual Machines (för hands version)](../virtual-machines/trusted-launch.md).
+
+### <a name="secure-boot"></a>Säker start
+
+Säker start är ett läge som stöder inbyggd plattforms-firmware som skyddar den inbyggda program varan från malware-baserade rootkits och start paket. Det här läget tillåter endast signerade operativ system och driv rutiner att starta datorn. 
+
+### <a name="monitor-boot-integrity-using-remote-attestation"></a>Övervaka start integritet med fjärrattestering
+
+Fjärrattestering är ett bra sätt att kontrol lera hälso tillståndet för dina virtuella datorer. Fjärrattesteringen verifierar att uppmätta start poster finns, är äkta och härstammar från den virtuella Trusted Platform Module (vTPM). Som hälso kontroll ger den kryptografisk säkerhet som en plattform startade korrekt. 
+
+### <a name="vtpm"></a>vTPM
+
+En vTPM är en virtualiserad version av en maskin varu Trusted Platform Module (TPM) med en virtuell instans av en TPM per virtuell dator. vTPM aktiverar fjärrattestering genom att utföra integritets mätning av hela den virtuella datorns start kedja (UEFI, OS, system och driv rutiner). 
+
+Vi rekommenderar att du aktiverar vTPM för att använda fjärrattestering på de virtuella datorerna. När vTPM är aktiverat kan du också aktivera BitLocker-funktioner, vilket ger full volym kryptering för att skydda data i vila. Alla funktioner som använder vTPM leder till att hemligheterna är kopplade till den angivna virtuella datorn. När användarna ansluter till Windows Virtual Desktop-tjänsten i ett sammankopplat scenario kan användare omdirigeras till en virtuell dator i poolen. Beroende på hur funktionen är utformad kan detta påverka påverkan.
+
+>[!NOTE]
+>BitLocker bör inte användas för att kryptera den disk där du lagrar dina FSLogix-profil data.
+
+### <a name="virtualization-based-security"></a>Virtualiseringsbaserad säkerhet
+
+Virtualiseringsbaserad säkerhet (VBS) använder hypervisorn för att skapa och isolera en säker region med minne som inte är tillgängligt för operativ systemet. Hypervisor-Protected Code Integrity (begärda HVCI) och Windows Defender Credential Guard använder sig av VBS för att ge ökat skydd mot sårbarheter. 
+
+#### <a name="hypervisor-protected-code-integrity"></a>Hypervisor-Protected kod integritet
+
+BEGÄRDA HVCI är en kraftfull system minskning som använder VBS för att skydda Windows kernel-läges processer mot insprutning och körning av skadlig eller overifierad kod.
+
+#### <a name="windows-defender-credential-guard"></a>Windows Defender Credential Guard
+
+Windows Defender Credential Guard använder VBS för att isolera och skydda hemligheter så att endast privilegie rad system program vara kan komma åt dem. Detta förhindrar obehörig åtkomst till dessa hemligheter och stöld attacker, till exempel pass-The-hash-attacker.
+
+### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Distribuera betrodd start i din Windows-miljö för virtuella skriv bord
+
+Windows Virtual Desktop stöder för närvarande inte automatisk konfiguration av betrodd start under konfigurationen av poolen för värdar. Om du vill använda betrodd start i din Windows Virtual Desktop-miljö måste du distribuera betrodd start normalt och sedan manuellt lägga till den virtuella datorn i önskad adresspool.
+
+## <a name="nested-virtualization"></a>Kapslad virtualisering
+
+Följande operativ system stöder körning av kapslad virtualisering på virtuella Windows-datorer:
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise multi-session.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9be00fd89234be0a8b5740af9e12811f36a47619
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092332"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633061"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamisk paketering i Media Services v3
 
@@ -27,9 +27,6 @@ ms.locfileid: "101092332"
 Microsoft Azure Media Services kan användas för att koda många fil format för medie källan. Den skickar dem via olika strömnings protokoll, med eller utan innehålls skydd, för att komma åt alla större enheter (t. ex. iOS-och Android-enheter). Dessa klienter förstår olika protokoll. Till exempel kräver iOS att strömmar levereras i HTTP Live Streaming-format (HLS) och Android-enheter stöder HLS samt MPEG-streck.
 
 I Media Services representerar en [strömmande slut punkt](streaming-endpoint-concept.md) (ursprung) en dynamisk (just-in-Time)-paketering och ursprungs tjänst som kan leverera Live och innehåll på begäran direkt till en app i klient spelaren. Det använder ett av de vanliga protokollen för strömmande media som anges i följande avsnitt. *Dynamisk paketering* är en funktion som levereras som standard på alla slut punkter för direkt uppspelning.
-
-> [!NOTE]
-> Du kan använda [Azure Portal](https://portal.azure.com/) för att hantera v3 [Live-händelser](live-events-outputs-concept.md), Visa v3- [till gångar](assets-concept.md), hämta information om åtkomst till API: er. För alla andra hanterings uppgifter (t. ex. transformationer och jobb) använder du [REST API](/rest/api/media/), [CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Förbereda dina källfiler för leverans
 

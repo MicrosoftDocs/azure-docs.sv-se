@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 637a8ab934c1a0858da480064f73fb0170c3db5c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a4aafd7dc1608bc2e19be2aec804e6cd7b2c7092
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432437"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612646"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure-datafabriker bör krypteras med en kundhanterad nyckel](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ec52d6d-beb7-40c4-9a9e-fe753254690e) |Använd Kundhanterade nycklar för att hantera krypteringen i resten av Azure Data Factory. Som standard krypteras kund information med tjänst hanterade nycklar, men Kundhanterade nycklar krävs ofta för att uppfylla gällande regler för efterlevnad. Kundhanterade nycklar gör det möjligt att kryptera data med en Azure Key Vault-nyckel som skapats och ägs av dig. Du har fullständig kontroll och ansvar för nyckel livs cykeln, inklusive rotation och hantering. Läs mer på [https://aka.ms/adf-cmk](https://aka.ms/adf-cmk) . |Granska, neka, inaktive rad |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_CustomerManagedKey_Audit.json) |
 |[Azure Data Factory integration runtime ska ha en gräns för antalet kärnor](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F85bb39b5-2f66-49f8-9306-77da3ac5130f) |Om du vill hantera resurser och kostnader begränsar du antalet kärnor för en integration Runtime. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/IR_Core_Count_Exceeds_Audit.json) |
@@ -21,3 +21,4 @@ ms.locfileid: "102432437"
 |[Azure Data Factory länkade tjänster ska använda systemtilldelad autentisering med hanterad identitet när den stöds](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff78ccdb4-7bf4-4106-8647-270491d2978a) |Om du använder systemtilldelad hanterad identitet när du kommunicerar med data lager via länkade tjänster, undviks användningen av mindre säkrade autentiseringsuppgifter, till exempel lösen ord eller anslutnings strängar. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/LinkedService_All_Auth_Audit_except_MSI.json) |
 |[Azure Data Factory bör använda en git-lagringsplats för käll kontroll](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77d40665-3120-4348-b539-3192ec808307) |Aktivera käll kontroll på data fabriker för att få funktioner som ändrings spårning, samarbete, kontinuerlig integrering och distribution. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/Factory_None_GIT_Audit.json) |
 |[Åtkomst till offentligt nätverk på Azure Data Factory bör inaktive ras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cf164be-6819-4a50-b8fa-4bcaa4f98fb6) |Inaktive ring av den offentliga nätverks åtkomst egenskapen förbättrar säkerheten genom att se till att Azure Data Factory endast kan nås från en privat slut punkt. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Audit.json) |
+|[SQL Server Integration Services integrerings körningar på Azure Data Factory ska vara anslutna till ett virtuellt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Azure Virtual Network-distribution ger förbättrad säkerhet och isolering för dina SQL Server Integration Services integrations körningar på Azure Data Factory, samt undernät, åtkomst kontroll principer och andra funktioner för att ytterligare begränsa åtkomst. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |

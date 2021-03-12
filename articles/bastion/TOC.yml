@@ -57,6 +57,8 @@
       href: diagnostic-logs.md
     - name: Övervaka och hantera sessioner
       href: session-monitoring.md
+    - name: 'Mått, övervakning och aviseringar'
+      href: howto-metrics-monitor-alert.md
     - name: Felsöka
       href: troubleshoot.md
 - name: Referens

@@ -3,7 +3,7 @@ title: Hybrid design av DRM-undersystem med Azure Media Services | Microsoft Doc
 description: I det här avsnittet beskrivs hybrid design av DRM-undersystem med Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48e761c4fb74802c6b1db63884ee192446720a4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266909"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016295"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybrid design av DRM-undersystem
 
@@ -83,7 +83,7 @@ Genom att konfigurera en innehålls nyckel kan du kontrol lera följande attribu
 * Innehålls nyckeln som används för dynamisk DRM-kryptering.
 * Innehåll för DRM-licens som ska levereras av licens leverans tjänster: rättigheter, innehålls nyckel och begränsningar.
 * Typ av **princip begränsning för Auktoriseringsprinciper för innehålls nyckel**: öppna, IP eller token-begränsning.
-* Om **token** -typen för **begränsning av innehålls nycklar används**måste **begränsningen för innehålls nyckelns auktoriseringsprincip** uppfyllas innan en licens utfärdas.
+* Om **token** -typen för **begränsning av innehålls nycklar används** måste **begränsningen för innehålls nyckelns auktoriseringsprincip** uppfyllas innan en licens utfärdas.
 
 ### <a name="asset-delivery-policy"></a>Till gångs leverans princip
 
@@ -97,7 +97,7 @@ Genom att konfigurera en till gångs leverans princip kan du kontrol lera följa
 
 Baserat på förklaringarna i föregående avsnitt, använder följande fem hybrid scenarier respektive konfigurations kombinationer för **innehålls nyckel** - **till gångs** -och konfigurations principer (de exempel som anges i den sista kolumnen följer tabellen):
 
-|**Innehåll som är värd för & ursprung**|**DRM-kryptering**|**DRM-licensleverans**|**Konfigurera innehålls nyckel**|**Konfigurera till gångs leverans princip**|**Urvalsundersökningar**|
+|**Innehåll som är värd för & ursprung**|**DRM-kryptering**|**DRM-licensleverans**|**Konfigurera innehålls nyckel**|**Konfigurera till gångs leverans princip**|**Exempel**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Ja|Ja|Exempel 1|
 |AMS|AMS|Tredje part|Ja|Ja|Exempel 2|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d30d8cdfe6ee93f54dfd560987ac8b6a78517fd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ccfbb585ccf50366721925b0b31b17088fd36371
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718700"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612430"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Säkerhets kontroll: loggning och övervakning
 
@@ -124,9 +124,9 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel.
 
 Aktivera insamling av händelse samling för program mot skadlig kod för Azure Virtual Machines och Cloud Services.
 
-- [Så här konfigurerar du Microsoft Antimalware för Virtual Machines](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Så här konfigurerar du Microsoft Antimalware för Virtual Machines](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [Så här konfigurerar du Microsoft Antimalware för Cloud Services](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Så här konfigurerar du Microsoft Antimalware för Cloud Services](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension)
 
 - [Förstå Microsoft Antimalware](../fundamentals/antimalware.md)
 

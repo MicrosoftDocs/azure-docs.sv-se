@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 3ae81a9c05f0c88a52db6409bf870ee0427f09db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 37f6a779e7dd83a6aa61de9850ad3b49b57393f9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696174"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010478"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Registrera och skanna Oracle-källa (för hands version)
 
@@ -31,7 +31,7 @@ Oracle-källan stöder **fullständig sökning** för att extrahera metadata fr�
 
 3.  Se till att \" Visual C++ redistributable 2012 uppdatering 4 \" är installerat på den lokala datorn för integration Runtime. Om du \' ännu inte har installerat det kan du ladda ned det [här](https://www.microsoft.com/download/details.aspx?id=30679).
 
-4.  Du måste manuellt hämta en Oracle JDBC-drivrutin med namnet ' Oracle. JDBC. driver. OracleDriver \' på din virtuella dator där integration runtime med egen värd körs.
+4.  Du måste manuellt hämta en Oracle JDBC-drivrutin [manuellt från den](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html) virtuella datorn där integration runtime med egen värd körs.
 
     > [!Note] 
     > Driv rutinen bör vara tillgänglig för alla konton på den virtuella datorn. Installera det inte i ett användar konto.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a7e33f950bc5f13372962694abc8e3e40d8ad5c0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 960c00f516aac0c804718e439ae3ed9691759329
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753230"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010685"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: webb program som loggar in användare
 
@@ -55,7 +55,7 @@ Om du utvecklar med python kan du prova följande snabb start:
 
 Du lägger till autentisering till din webbapp så att den kan logga in användare. Genom att lägga till autentisering kan din webbapp komma åt begränsad profil information för att anpassa användar upplevelsen.
 
-Web Apps autentiserar en användare i en webbläsare. I det här scenariot dirigerar webbappen användarens webbläsare för att logga in till Azure Active Directory (Azure AD). Azure AD returnerar ett inloggnings svar via användarens webbläsare, som innehåller anspråk om användaren i en säkerhetstoken. Inloggnings användare drar nytta av [Open ID Connect](./v2-protocols-oidc.md) standard-protokollet, vilket är förenklat genom användning av mellanprogram [bibliotek](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
+Web Apps autentiserar en användare i en webbläsare. I det här scenariot dirigerar webbappen användarens webbläsare för att logga in till Azure Active Directory (Azure AD). Azure AD returnerar ett inloggnings svar via användarens webbläsare, som innehåller anspråk om användaren i en säkerhetstoken. Inloggnings användare drar nytta av [Open ID Connect](./v2-protocols-oidc.md) standard-protokollet, vilket är förenklat genom användning av mellanprogram [bibliotek](scenario-web-app-sign-user-app-configuration.md#microsoft libraries supporting web apps).
 
 ![Webbapp loggar in användare](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 

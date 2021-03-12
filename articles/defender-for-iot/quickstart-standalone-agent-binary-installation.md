@@ -1,27 +1,27 @@
 ---
-title: Installera Defender för IoT Micro agent
+title: Installera Defender för IoT Micro agent (för hands version)
 titleSuffix: Azure Defender for IoT
 description: Lär dig hur du installerar och autentiserar Defender Micro-agenten.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 3/3/2021
+ms.date: 3/9/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8984b1dbcb9a6aca6d313d8195a75093ae421bbd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120444"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611683"
 ---
-# <a name="install-defender-for-iot-micro-agent"></a>Installera Defender för IoT Micro agent 
+# <a name="install-defender-for-iot-micro-agent-preview"></a>Installera Defender för IoT Micro agent (för hands version)
 
 Den här artikeln innehåller en förklaring av hur du installerar och autentiserar Defender Micro-agenten.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du installerar Defender for IoT-modulen måste du skapa en modul identitet i IoT Hub. Mer information om hur du skapar en modul identitet finns i [skapa en Defender IoT Micro agent-modul, dubbla ](quickstart-create-micro-agent-module-twin.md).
+Innan du installerar Defender för IoT-modulen måste du skapa en modul identitet i IoT Hub. Mer information om hur du skapar en modul identitet finns i [skapa en Defender IoT Micro agent-modul, delad (för hands version)](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>Installera paketet
 
@@ -49,13 +49,37 @@ sudo apt-get install defender-iot-micro-agent
 
 De två alternativen som används för att autentisera Defender för IoT Micro-agenten är: 
 
-- Anslutnings sträng. 
+- Anslutnings sträng för modul identitet. 
 
 - Certifikatmallens.
 
-### <a name="authenticate-using-a-connection-string"></a>Autentisera med hjälp av en anslutnings sträng
+### <a name="authenticate-using-a-module-identity-connection-string"></a>Autentisera med hjälp av en anslutnings sträng för modul identitet
 
-Autentisera med hjälp av en anslutnings sträng:
+Se till att [kraven](#prerequisites) för den här artikeln är uppfyllda och att du skapar en modul identitet innan du startar de här stegen. 
+
+#### <a name="get-the-module-identity-connection-string"></a>Hämta anslutnings strängen för modul identitet
+
+För att hämta anslutnings strängen för modulens identitet från IoT Hub: 
+
+1. Navigera till IoT Hub och välj hubben.
+
+1. På den vänstra menyn, under avsnittet **Utforskare** , väljer du **IoT-enheter**.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/iot-devices.png" alt-text="Välj IoT-enheter i den vänstra menyn.":::
+
+1. Välj en enhet i listan enhets-ID om du vill visa sidan med **enhets information** .
+
+1. Välj fliken **modul identiteter**   och välj sedan modulen **DefenderIotMicroAgent**   i listan över modul identiteter som är associerade med enheten.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/module-identities.png" alt-text="Välj fliken modul identiteter.":::
+
+1. På sidan **information om modulens identitet** kopierar du den primära nyckeln genom att välja knappen **Kopiera** .
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/copy-button.png" alt-text="Välj kopierings knappen för att kopiera primär nyckeln.":::
+
+#### <a name="configure-authentication-using-a-module-identity-connection-string"></a>Konfigurera autentisering med hjälp av en anslutnings sträng för modul identitet
+
+Konfigurera agenten att autentisera med hjälp av en anslutnings sträng för modul identitet:
 
 1. Placera en fil med namnet `connection_string.txt` som innehåller anslutnings strängen som kodats i UTF-8 i katalog Sök vägen för Defender-agenten `/var/defender_iot_micro_agent` genom att ange följande kommando:
 
@@ -63,7 +87,7 @@ Autentisera med hjälp av en anslutnings sträng:
     sudo bash -c 'echo "<connection string" > /var/defender_iot_micro_agent/connection_string.txt' 
     ```
 
-    `connection_string.txt`Ska nu finnas på följande Sök vägs plats `/var/defender_iot_micro_agent/connection_string.txt` .
+    `connection_string.txt`Ska finnas på följande Sök vägs plats `/var/defender_iot_micro_agent/connection_string.txt` .
 
 1. Starta om tjänsten med det här kommandot:  
 

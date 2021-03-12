@@ -312,6 +312,8 @@
           href: search-query-create.md
         - name: Skapa en semantisk fråga
           href: semantic-how-to-query-request.md
+        - name: Returnera ett semantiskt svar
+          href: semantic-answers.md
         - name: Lägg till stavnings kontroll i frågor
           href: speller-how-to-add.md
         - name: Frågetyper och sammansättning
@@ -330,6 +332,8 @@
               href: index-add-suggesters.md
             - name: Lägga till automatisk komplettering och förslag
               href: search-autocomplete-tutorial.md
+        - name: Växling och antal
+          href: search-pagination-page-layout.md
         - name: Syntaxreferens
           items:
             - name: Enkel frågesyntax
@@ -352,16 +356,14 @@
           href: search-query-understand-collection-filters.md
         - name: Filtrera efter språk
           href: search-filters-language.md
-    - name: Resultat
+    - name: Relevans
       items:
-        - name: Arbeta med resultat
-          href: search-pagination-page-layout.md
-        - name: Strukturera ett semantiskt svar
-          href: semantic-how-to-query-response.md
+        - name: Rangordning för likhets sätt
+          href: index-ranking-similarity.md
+        - name: Semantisk rangordning
+          href: semantic-ranking.md
         - name: Poängprofiler
           href: index-add-scoring-profiles.md
-        - name: Likhetsalgoritm
-          href: index-ranking-similarity.md
     - name: Säkerhet
       items:
         - name: Datakryptering

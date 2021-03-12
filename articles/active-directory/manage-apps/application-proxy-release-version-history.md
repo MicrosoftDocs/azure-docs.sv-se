@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD-programproxy: versions historik'
-description: Den här artikeln innehåller en lista över alla versioner av Azure AD-programproxy och beskriver nya funktioner och problem som har åtgärd ATS
+title: 'Azure Active Directory-programproxy: versions historik'
+description: I den här artikeln visas alla versioner av Azure Active Directory-programproxy och nya funktioner och problem som har åtgärd ATS.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,15 +8,16 @@ ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/17/2021
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.reviewer: japere
+ms.openlocfilehash: 0244e0ca66f452649d3136eb122d1c2666182ae2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686724"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200974"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-programproxy: versions historik
 Den här artikeln innehåller versioner och funktioner i Azure Active Directory (Azure AD) Application Proxy som har släppts. Azure AD-teamet uppdaterar regelbundet programproxy med nya funktioner och funktioner. Application Proxy-kopplingar uppdateras automatiskt när en ny version släpps. 
@@ -25,11 +26,11 @@ Vi rekommenderar att du ser till att automatiska uppdateringar har Aktiver ATS f
 
 Här är en lista över relaterade resurser:
 
-Resurs |  Information
---------- | --------- |
-Så här aktiverar du tillämpningsproxy | För hands krav för att aktivera programproxy och installera och registrera en anslutning beskrivs i den här [självstudien](application-proxy-add-on-premises-application.md).
-Förstå Azure AD-programproxy-kopplingar | Lär dig mer om [anslutnings hantering](application-proxy-connectors.md) och hur anslutningar [uppgraderas automatiskt](application-proxy-connectors.md#automatic-updates).
-Hämtning av Azure AD-programproxy Connector |  [Hämta den senaste anslutningen](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+| Resurs                                         | Information                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Så här aktiverar du tillämpningsproxy                  | För hands krav för att aktivera programproxy och installera och registrera en anslutning beskrivs i den här [självstudien](application-proxy-add-on-premises-application.md). |
+| Förstå Azure AD-programproxy-kopplingar | Lär dig mer om [anslutnings hantering](application-proxy-connectors.md) och hur anslutningar [uppgraderas automatiskt](application-proxy-connectors.md#automatic-updates). |
+| Hämtning av Azure AD-programproxy Connector    | [Hämta den senaste anslutningen](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download). |
 
 ## <a name="1519750"></a>1.5.1975.0
 
@@ -41,6 +42,7 @@ Den 22 juli 2020: lanserad för nedladdning den här versionen är bara tillgän
 -   Förbättrat stöd för Azure Government moln miljöer. Anvisningar om hur du installerar anslutningen för Azure Government Cloud genom att granska [kraven](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) och [installations stegen](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
 - Stöd för att använda Fjärrskrivbordstjänster-webbklient med programproxy. Mer information finns i [publicera fjärr skrivbord med Azure AD-programproxy](application-proxy-integrate-with-remote-desktop-services.md) .
 - Förbättrade förhandlingar om WebSocket-tillägg. 
+- Stöd för optimerad routning mellan anslutnings grupper och programproxyns moln tjänster baserat på region. Se [optimera trafikflöde med Azure Active Directory-programproxy](application-proxy-network-topology.md) för mer information. 
 
 ### <a name="fixed-issues"></a>Åtgärdade problem
 - Ett WebSocket-problem har åtgärd ATS som framtvingade gemener av strängar.

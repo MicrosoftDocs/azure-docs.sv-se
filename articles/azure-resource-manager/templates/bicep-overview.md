@@ -2,19 +2,19 @@
 title: Bicep-språk för Azure Resource Manager mallar
 description: Beskriver bicep-språket för att distribuera infrastruktur till Azure via Azure Resource Manager mallar.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036392"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232978"
 ---
 # <a name="what-is-bicep-preview"></a>Vad är bicep (för hands version)?
 
-Bicep är ett språk för deklarativ distribution av Azure-resurser. Det fören klar redigerings upplevelsen genom att tillhandahålla kortfattad syntax och bättre stöd för kod åter användning. Bicep är ett domänbaserat språk (DSL), vilket innebär att det är utformat för ett visst scenario eller en viss domän. Bicep är inte avsett som ett allmänt programmeringsspråk för att skriva program.
+Bicep är ett språk för deklarativ distribution av Azure-resurser. Du kan använda bicep i stället för JSON för att utveckla dina Azure Resource Manager-mallar (ARM-mallar). Bicep fören klar redigerings upplevelsen genom att tillhandahålla koncis syntax, bättre stöd för kod åter användning och bättre typ säkerhet. Bicep är ett domänbaserat språk (DSL), vilket innebär att det är utformat för ett visst scenario eller en viss domän. Den är inte avsedd som ett allmänt programmeringsspråk för att skriva program.
 
-Tidigare utvecklade du Azure Resource Manager mallar (ARM-mallar) med JSON. JSON-syntaxen för att skapa mallen kan vara utförlig och kräva ett komplicerat uttryck. Bicep förbättrar upplevelsen utan att förlora någon av funktionerna i en JSON-mall. Det är en transparent abstraktion över JSON för ARM-mallar. Varje bicep-fil kompileras till en standard ARM-mall. Resurs typer, API-versioner och egenskaper som är giltiga i en ARM-mall är giltiga i en bicep-fil.
+JSON-syntaxen för att skapa mallen kan vara utförlig och kräva ett komplicerat uttryck. Bicep förbättrar upplevelsen utan att förlora någon av funktionerna i en JSON-mall. Det är en transparent abstraktion över JSON för ARM-mallar. Varje bicep-fil kompileras till en standard ARM-mall. Resurs typer, API-versioner och egenskaper som är giltiga i en ARM-mall är giltiga i en bicep-fil. Det finns några [kända begränsningar](#known-limitations) i den aktuella versionen.
 
 ## <a name="get-started"></a>Kom igång
 
@@ -55,7 +55,15 @@ Med bicep kan du dela upp projektet i flera moduler.
 
 Strukturen för bicep-filen är mer flexibel än JSON-mallen. Du kan deklarera parametrar, variabler och utdata var som helst i filen. I JSON måste du deklarera alla parametrar, variabler och utdata i motsvarande avsnitt i mallen.
 
-VS Code-tillägget för bicep erbjuder omfattande verifiering och IntelliSense. Tillägget har till exempel IntelliSense för att hämta egenskaper för en resurs.
+VS Code-tillägget för bicep erbjuder omfattande verifiering och IntelliSense. Du kan till exempel använda tilläggets IntelliSense för att hämta egenskaper för en resurs.
+
+## <a name="known-limitations"></a>Kända begränsningar
+
+Följande gränser finns för närvarande:
+
+* Det går inte att ange läge eller batchstorlek för kopierings slingor.
+* Det går inte att kombinera slingor och villkor.
+* Enkel rads objekt och matriser, som `['a', 'b', 'c']` inte stöds.
 
 ## <a name="faq"></a>Vanliga frågor
 

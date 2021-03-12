@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2021
-ms.openlocfilehash: 63509262b8a75eebaffc34eca9861fe6748ff969
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048462"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232400"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiera data från en SAP-tabell med hjälp av Azure Data Factory
 
@@ -238,6 +238,10 @@ Följande egenskaper stöds för att kopiera data från en SAP-tabell:
 >Med `partitionOption` följande `partitionOnInt` formel beräknas antalet rader i varje partition: (totalt antal rader som faller mellan `partitionUpperBound` och `partitionLowerBound` )/ `maxPartitionsNumber` .<br/>
 <br/>
 >Om du vill läsa in datapartitioner parallellt för att påskynda kopieringen styrs parallell graden av [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) inställningen för kopierings aktiviteten. Om du till exempel anger `parallelCopies` fyra Data Factory samtidigt genererar och kör fyra frågor baserat på ditt angivna partitionsalternativ och inställningar, och varje fråga hämtar en del av data från SAP-tabellen. Vi rekommenderar starkt att du gör `maxPartitionsNumber` en multipel av `parallelCopies` egenskapens värde. När du kopierar data till ett filbaserat data lager, skrivs det också om att skriva till en mapp som flera filer (ange bara mappnamn), i vilket fall prestandan är bättre än att skriva till en enda fil.
+
+
+>[!TIP]
+> `BASXML`Är aktiverat som standard för SAP Table Connector på Azure Data Factory sida.
 
 I `rfcTableOptions` kan du använda följande vanliga SAP-fråge operatorer för att filtrera raderna:
 

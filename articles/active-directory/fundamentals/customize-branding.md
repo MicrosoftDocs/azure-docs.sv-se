@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b69daf9e9fbbb3f6d6597a8e8349dc8bec61fbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996669"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008782"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Lägg till anpassning till din organisations Azure Active Directory inloggnings sida
 Använd organisationens logo typ och egna färg scheman för att ge ett enhetligt utseende på dina Azure Active Directory-inloggnings sidor (Azure AD). Dina inloggnings sidor visas när användarna loggar in i din organisations webbaserade appar, till exempel Microsoft 365, som använder Azure AD som identitets leverantör.
@@ -58,7 +58,7 @@ Din anpassade anpassning visas inte direkt när användarna går till webbplatse
 
         - **Banderoll-logotyp.** Välj en. png-eller. jpg-version av logo typen som ska visas på inloggnings sidan när användaren har angett ett användar namn och på Portal sidan **Mina appar** .
             
-            Bilden får inte vara högre än 60 bild punkter eller bredare än 280 bild punkter. Vi rekommenderar att du använder en transparent bild eftersom bakgrunden kanske inte matchar din logo typ bakgrund. Vi rekommenderar också att du inte lägger till utfyllnad runt bilden eller ser till att din logo typ är liten.
+            Bilden får inte vara högre än 60 bild punkter eller bredare än 280 bild punkter och filen får inte vara större än 10 kB. Vi rekommenderar att du använder en transparent bild eftersom bakgrunden kanske inte matchar din logo typ bakgrund. Vi rekommenderar också att du inte lägger till utfyllnad runt bilden eller ser till att din logo typ är liten. 
 
         - **Användar tips.** Skriv tips texten som visas för användarna om de glömmer bort sitt användar namn. Den här texten måste vara Unicode, utan länkar eller kod, och får inte innehålla fler än 64 tecken. Om gäster loggar in på din app rekommenderar vi inte att du lägger till det här tipset.
 

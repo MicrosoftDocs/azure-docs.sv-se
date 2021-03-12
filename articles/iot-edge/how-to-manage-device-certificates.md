@@ -8,14 +8,16 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4cade6a740bffc33695c40663609df38ba6e7a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044909"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200280"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Hantera certifikat på en IoT Edge enhet
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Alla IoT Edge-enheter använder certifikat för att skapa säkra anslutningar mellan körningen och de moduler som körs på enheten. IoT Edge enheter som fungerar som gateways använder samma certifikat för att ansluta till deras underordnade enheter också.
 

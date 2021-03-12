@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9abed17f5a3d23f811c7cec0d4fd31e4433f651d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177035"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633435"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Vad är nytt i Azure Active Directory?
 
@@ -211,7 +211,7 @@ Mer information finns [i automatisera användar etablering för SaaS-program med
  
 10 inbyggda Azure AD-roller har döpts om så att de är justerade i [Microsoft 365 administrations Center](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD-portalen](https://portal.azure.com/)och [Microsoft Graph](https://developer.microsoft.com/graph/). Mer information om de nya rollerna finns [i administratörs roll behörigheter i Azure Active Directory](../roles/permissions-reference.md#all-roles).
 
-![Tabell med nya roll namn](media/whats-new/roles-table-rbac.png)
+![Tabell som visar roll namn i MS Graph API och Azure Portal och det föreslagna slutliga namnet över API, Azure Portal och Mac.](media/whats-new/roles-table-rbac.png)
 
 ---
 
@@ -968,7 +968,7 @@ Du kan nu tillåta att program ägare övervakar aktivitet från etablerings tj�
  
 Vissa Azure Active Directory (AD) inbyggda roller har namn som skiljer sig från de som visas i Microsoft 365 administrations Center, Azure AD-portalen och Microsoft Graph. Den här inkonsekvensen kan orsaka problem i automatiserade processer. Med den här uppdateringen byter vi namn på 10 rollnamn så att de blir konsekventa. Följande tabell har de nya roll namnen:
 
-![Tabell med nya roll namn](media/whats-new/azure-role.png)
+![Tabell som visar roll namn i MS Graph API och Azure Portal och det föreslagna nya roll namnet i M365 administrations Center, Azure Portal och API.](media/whats-new/azure-role.png)
 
 ---
 

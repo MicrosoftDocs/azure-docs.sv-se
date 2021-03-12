@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880346"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613620"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Vanliga frågor om över gång från Cloud Partner Portal till Partner Center
 
@@ -22,7 +22,7 @@ Cloud Partner Portal har övergått till Partner Center. Partner Center erbjuder
 
 Du kan fortsätta att göra affärer i Partner Center:
 
-| Område<img src="" width=200px> | Ändringar |
+| Område | Ändringar |
 | --- | --- |
 | Konto | Du behöver inte skapa ett nytt Partner Center-konto. Du kan använda dina befintliga Cloud Partner Portal autentiseringsuppgifter för att logga in på Partner Center där du nu kommer att hantera ditt konto, användare, behörigheter och fakturering. Publicerings avtalet och företags profil informationen migreras till ditt nya partner Center-konto, tillsammans med eventuell utbetalnings profil information, användar konton och behörigheter samt aktiva erbjudanden. Läs mer i [Hantera ditt kommersiella Marketplace-konto i Partner Center](partner-center-portal/manage-account.md). |
 | Erbjud hanterings upplevelse för publicering och erbjudande | Vi har flyttat dina erbjudande data från Cloud Partner Portal till Partner Center. Du kommer nu att få åtkomst till dina erbjudanden i Partner Center, vilket ger en bättre användar upplevelse och intuitivt gränssnitt. Lär dig hur du [uppdaterar ett befintligt erbjudande i den kommersiella marknads platsen](partner-center-portal/update-existing-offer.md). |
@@ -41,7 +41,7 @@ Nej, ditt konto kommer att bevaras. Det innebär att om du är en befintlig part
 
 Nedan visas länkar till Partner Center för sidor som används ofta i Cloud Partner Portal. Om du sparade Cloud Partner Portal länkar som bok märken, vill du uppdatera dem.
 
-| Cloud Partner Portal sida <img src="" width=100px>| Cloud Partner Portal sid länk | Länk till Partner Center-sidan |
+| Cloud Partner Portal sida | Cloud Partner Portal sid länk | Länk till Partner Center-sidan |
 | --- | --- | --- |
 | Sidan med alla erbjudanden | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
 | Sidan med alla utgivare | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
@@ -75,7 +75,7 @@ Alla erbjudande typer som tidigare stöds i Cloud Partner Portal stöds i Partne
 
 För de erbjudande typer som stöds i Partner Center har alla erbjudanden flyttats oavsett deras status. utkast, de visas och för hands versions erbjudanden flyttas också.
 
-| Erbjudandetyp <img src="" width=150px>| Har du flyttat till Partner Center? <img src="" width=100px>| Nästa steg |
+| Erbjudandetyp | Har du flyttat till Partner Center? | Nästa steg |
 | --- | --- | --- |
 | SaaS | Ja | Logga in på Partner Center för att skapa nya erbjudanden och hantera erbjudanden som skapats i Cloud Partner Portal. Läs mer i [planera ett SaaS-erbjudande för den kommersiella marknads platsen](plan-saas-offer.md). |
 | Virtuell dator | Ja | Logga in på Partner Center för att skapa nya erbjudanden och hantera erbjudanden som skapats i Cloud Partner Portal. Läs mer i [planera ett erbjudande för virtuella datorer](marketplace-virtual-machines.md). |
@@ -88,8 +88,8 @@ För de erbjudande typer som stöds i Partner Center har alla erbjudanden flytta
 | Container | Ja | Logga in på Partner Center för att skapa nya erbjudanden och hantera erbjudanden som skapats i Cloud Partner Portal. Läs mer i [skapa ett erbjudande för Azure Container](./create-azure-container-offer.md). |
 | Konsulttjänst | Ja | Logga in på Partner Center för att skapa nya erbjudanden och hantera erbjudanden som skapats i Cloud Partner Portal. Läs mer i [skapa ett konsult tjänst erbjudande](./create-consulting-service-offer.md). |
 | Hanterad tjänst | Ja | Logga in på Partner Center för att skapa nya erbjudanden och hantera erbjudanden som skapats i Cloud Partner Portal. Läs mer i [skapa ett hanterat tjänst erbjudande](./plan-managed-service-offer.md). |
-| Hanterad tjänst för Dynamics NAV | Nej | Microsoft har utvecklats för att hantera Dynamics NAV Managed Service till [Dynamics 365 Business Central](/dynamics365/business-central/), så vi debiteras de Live-erbjudanden som hanteras av Dynamics NAV Managed Service från AppSource. Dessa erbjudanden kan inte längre identifieras av kunder och har inte flyttats till Partner Center. Om du vill göra dina erbjudanden tillgängliga i AppSource kan du anpassa dem till Dynamics 365 Business Central-erbjudanden och skicka dem till [partner Center](https://partner.microsoft.com/). Läs mer i [skapa ett Dynamics 365 Business Central-erbjudande](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | Nej | Microsoft har utvecklats produktens väg karta för Cortana Intelligence, så vi har tagit bort Cortana Intelligence Live-erbjudanden från AppSource. Dessa erbjudanden kan inte längre identifieras av kunder och har inte flyttats till Partner Center. Om du vill göra dina erbjudanden tillgängliga på den kommersiella Marketplace kan du anpassa dina erbjudanden till SaaS (Software as a Service) och skicka dem i [partner Center](https://partner.microsoft.com/). Läs mer i [Check lista för att skapa SaaS i Partner Center](./plan-saas-offer.md). |
+| Hanterad tjänst för Dynamics NAV | Inga | Microsoft har utvecklats för att hantera Dynamics NAV Managed Service till [Dynamics 365 Business Central](/dynamics365/business-central/), så vi debiteras de Live-erbjudanden som hanteras av Dynamics NAV Managed Service från AppSource. Dessa erbjudanden kan inte längre identifieras av kunder och har inte flyttats till Partner Center. Om du vill göra dina erbjudanden tillgängliga i AppSource kan du anpassa dem till Dynamics 365 Business Central-erbjudanden och skicka dem till [partner Center](https://partner.microsoft.com/). Läs mer i [skapa ett Dynamics 365 Business Central-erbjudande](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | Inga | Microsoft har utvecklats produktens väg karta för Cortana Intelligence, så vi har tagit bort Cortana Intelligence Live-erbjudanden från AppSource. Dessa erbjudanden kan inte längre identifieras av kunder och har inte flyttats till Partner Center. Om du vill göra dina erbjudanden tillgängliga på den kommersiella Marketplace kan du anpassa dina erbjudanden till SaaS (Software as a Service) och skicka dem i [partner Center](https://partner.microsoft.com/). Läs mer i [Check lista för att skapa SaaS i Partner Center](./plan-saas-offer.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Jag kan inte hitta mina Cloud Partner Portal erbjudanden i Partner Center
 
@@ -181,7 +181,7 @@ Du kan begära att [sluta sälja ett erbjudande](partner-center-portal/update-ex
 
 Cloud Partner Portal API: er är integrerade med partner Center och kommer att fortsätta att fungera. Över gången till Partner Center introducerar små ändringar. Granska tabellen nedan för att se till att koden fortsätter att fungera i Partner Center.
 
-| API <img src="" width=100px>| Ändra beskrivning | Påverkan |
+| API | Ändra beskrivning | Påverkan |
 | --- | --- | --- |
 | Publicera, GoLive, Avbryt | För migrerade erbjudanden har svars huvudet ett annat format men fortsätter att fungera på samma sätt, vilket anger en relativ sökväg för att hämta åtgärds statusen. | När du skickar någon av motsvarande POST-förfrågningar för ett erbjudande får plats huvudet ett av två format beroende på status för migreringen: <ul><li>Icke-migrerade erbjudanden: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrerade erbjudanden: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | Hämta åtgärd | För erbjudanden som tidigare har stöd för fältet meddelande-e-post i svaret kommer det här fältet att föråldras och inte längre returneras för migrerade erbjudanden. | För migrerade erbjudanden skickar vi inte längre meddelanden till listan över e-postmeddelanden som anges i förfrågningarna. I stället justeras API-tjänsten med e-postprocessen för meddelanden i Partner Center för att skicka e-postmeddelanden. Mer specifikt skickas aviseringar om åtgärds förlopp till den e-postadress som anges i avsnittet säljar kontakt information i konto inställningarna i Partner Center.<br><br>Se till att den e-postadress som anges i avsnittet kontakt information för säljaren i [konto inställningarna](https://partner.microsoft.com/dashboard/account/management) i Partner Center är korrekt för att ta emot meddelanden. |

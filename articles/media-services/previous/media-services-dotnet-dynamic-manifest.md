@@ -3,7 +3,7 @@ title: Skapa filter med Azure Media Services .NET SDK
 description: I det här avsnittet beskrivs hur du skapar filter så att klienten kan använda dem för att strömma vissa delar av en ström. Media Services .NET SDK skapar dynamiska manifest för att uppnå den här selektiva strömningen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 862385d1117e0a1b5d2220c06885e0fd0ecfa4d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd5435f7a2969c486042c9447a0fffbb745229f9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531636"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014119"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Skapa filter med Media Services .NET SDK
 
@@ -33,7 +33,7 @@ ms.locfileid: "90531636"
 > 
 > 
 
-Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör det möjligt för kunderna att välja att göra saker som: endast uppspelning av en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar uppnås genom **dynamiskt manifest**s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
+Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör det möjligt för kunderna att välja att göra saker som: endast uppspelning av en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar uppnås genom **dynamiskt manifest** s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
 
 Mer detaljerad information om filter och dynamiskt manifest finns i [Översikt över dynamiska manifest](media-services-dynamic-manifest-overview.md).
 

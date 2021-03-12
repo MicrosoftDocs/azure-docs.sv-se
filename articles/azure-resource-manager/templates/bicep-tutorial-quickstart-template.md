@@ -2,16 +2,16 @@
 title: Självstudie – använda snabb starts mallar för Azure Resource Manager bicep-utveckling
 description: Lär dig hur du använder Azures snabb starts mallar för att slutföra din bicep-utveckling.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 12dcf4bfc00c299d94d45a5bd02bf9eea576cc73
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748240"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632447"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>Självstudie: Använd Azures snabb starts mallar för Azure Resource Manager bicep-utveckling
 

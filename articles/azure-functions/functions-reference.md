@@ -4,12 +4,12 @@ description: Lär dig Azure Functions koncept och tekniker som du behöver för 
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386908"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614827"
 ---
 # <a name="azure-functions-developer-guide"></a>Utvecklarguide för Azure Functions
 I Azure Functions delar specifika funktioner några viktiga tekniska koncept och komponenter, oavsett vilket språk eller vilken bindning du använder. Innan du hoppar till inlärnings information som är specifik för ett specifikt språk eller en bindning bör du läsa igenom den här översikten som gäller för alla.
@@ -116,10 +116,11 @@ Vissa anslutningar i Azure Functions konfigureras för att använda en identitet
 
 Identitetsbaserade anslutningar stöds av följande utlösare och bindnings tillägg:
 
-| Tilläggs namn | Tilläggsversion                                                                                     | Har stöd för identitetsbaserade anslutningar i förbruknings planen |
+| Tilläggs namn | Tilläggsversion                                                                                     | Stöds i förbruknings planen |
 |----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Azure-blobb     | [Version 5.0.0 – beta1 eller senare](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | Inga                                    |
 | Azure Queue    | [Version 5.0.0 – beta1 eller senare](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | Inga                                    |
+| Azure Event Hubs    | [Version 5.0.0 – beta1 eller senare](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | Inga                                    |
 
 > [!NOTE]
 > Stöd för identitetsbaserade anslutningar är ännu inte tillgängligt för lagrings anslutningar som används av Functions-körningen för kärn funktioner. Det innebär att `AzureWebJobsStorage` inställningen måste vara en anslutnings sträng.
@@ -128,9 +129,10 @@ Identitetsbaserade anslutningar stöds av följande utlösare och bindnings till
 
 En identitets baserad anslutning för en Azure-tjänst godkänner följande egenskaper:
 
-| Egenskap    | Miljövariabel | Krävs | Beskrivning |
+| Egenskap    | Krävs för tillägg | Miljövariabel | Beskrivning |
 |---|---|---|---|
-| Tjänst-URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Ja | Data planens URI för tjänsten som du ansluter till. |
+| Tjänst-URI | Azure-Blob, Azure-kö | `<CONNECTION_NAME_PREFIX>__serviceUri` |  Data planens URI för tjänsten som du ansluter till. |
+| Fullständigt kvalificerat namn område | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Det fullständigt kvalificerade Event Hub-namnområdet. |
 
 Ytterligare alternativ kan ha stöd för en specifik Anslutnings typ. Se dokumentationen för komponenten som gör anslutningen.
 
@@ -152,14 +154,26 @@ I vissa fall kanske du vill ange användning av en annan identitet. Du kan lägg
 > [!NOTE]
 > Följande konfigurations alternativ stöds inte när tjänsten Azure Functions körs.
 
-Om du vill ansluta med ett Azure Active Directory tjänstens huvud namn med ett klient-ID och en hemlighet definierar du anslutningen med följande egenskaper:
+Om du vill ansluta med ett Azure Active Directory tjänstens huvud namn med ett klient-ID och en hemlighet definierar du anslutningen med följande obligatoriska egenskaper utöver [anslutnings egenskaperna](#connection-properties) ovan:
 
-| Egenskap    | Miljövariabel | Krävs | Beskrivning |
-|---|---|---|---|
-| Tjänst-URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Ja | Data planens URI för tjänsten som du ansluter till. |
-| Klient-ID:t | `<CONNECTION_NAME_PREFIX>__tenantId` | Ja | ID för Azure Active Directory klient organisation (katalog). |
-| Klient-ID | `<CONNECTION_NAME_PREFIX>__clientId` | Ja |  Klient-ID för en app-registrering i klienten. |
-| Klienthemlighet | `<CONNECTION_NAME_PREFIX>__clientSecret` | Ja | En klient hemlighet som genererades för registrering av appen. |
+| Egenskap    | Miljövariabel | Beskrivning |
+|---|---|---|
+| Klient-ID:t | `<CONNECTION_NAME_PREFIX>__tenantId` | ID för Azure Active Directory klient organisation (katalog). |
+| Klient-ID | `<CONNECTION_NAME_PREFIX>__clientId` |  Klient-ID för en app-registrering i klienten. |
+| Klienthemlighet | `<CONNECTION_NAME_PREFIX>__clientSecret` | En klient hemlighet som genererades för registrering av appen. |
+
+Exempel på `local.settings.json` egenskaper som krävs för Identity-baserad anslutning med Azure Blob: 
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
 
 #### <a name="grant-permission-to-the-identity"></a>Bevilja behörighet till identiteten
 

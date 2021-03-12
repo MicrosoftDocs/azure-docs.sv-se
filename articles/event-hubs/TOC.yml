@@ -136,9 +136,13 @@
           href: ./security-controls-policy.md
         - name: Säkerhetsbaslinje
           href: security-baseline.md
-    - name: AMQP 1.0-protokollguide
-      href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
-      maintainContext: true
+    - name: AMQP
+      items:
+        - name: AMQP 1.0-protokollguide
+          href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
+          maintainContext: true
+        - name: AMQP-fel
+          href: event-hubs-amqp-troubleshoot.md
 - name: Anvisningar
   items:
     - name: Skapa ett schemaregister

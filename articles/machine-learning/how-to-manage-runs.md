@@ -12,23 +12,27 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520344"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634782"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starta, övervaka och avbryta inlärnings körningar i python
+# <a name="start-monitor-and-track-runs"></a>Starta, övervaka och spåra körningar 
 
 [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning Studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och hantera dina körningar för utbildning och experimentering.
 
 Den här artikeln innehåller exempel på följande uppgifter:
 
 * Övervaka körnings prestanda.
+* Övervaka körnings statusen per e-postavisering.
+* Tagga och hitta körningar.
+* Lägg till en körnings beskrivning. 
+* Kör sökningen. 
 * Avbryt eller kör inte.
 * Skapa underordnade körningar.
-* Tagga och hitta körningar.
+ 
 
 > [!TIP]
 > Om du vill ha information om hur du övervakar Azure Machine Learning tjänsten och tillhör ande Azure-tjänster, se [övervaka Azure Machine Learning](monitor-azure-machine-learning.md).
@@ -50,7 +54,8 @@ Du behöver följande objekt:
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](/cli/azure/) -och [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) -och [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
+
 
 ## <a name="monitor-run-performance"></a>Övervaka körnings prestanda
 
@@ -96,7 +101,7 @@ Du behöver följande objekt:
     
         Det här kommandot skapar en `.azureml` under katalog som innehåller exempel på runconfig-och Conda-miljöfiler. Den innehåller också en `config.json` fil som används för att kommunicera med din Azure Machine Learning-arbetsyta.
     
-        Mer information finns i [AZ ml Folder Attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach).
+        Mer information finns i [AZ ml Folder Attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
     
     2. Starta körningen med hjälp av följande kommando. När du använder det här kommandot anger du namnet på runconfig-filen (texten före \* . runconfig om du tittar på ditt fil system) mot parametern-c.
     
@@ -111,7 +116,7 @@ Du behöver följande objekt:
         >
         > Fler exempel på runconfig-filer finns i [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
-        Mer information finns i [AZ ml Run Submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script).
+        Mer information finns i [AZ ml Run Submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -162,7 +167,7 @@ Du behöver följande objekt:
     
         Det här kommandot returnerar ett JSON-dokument som visar information om körningar för det här experimentet.
     
-        Mer information finns i [AZ ml experiment List](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list).
+        Mer information finns i [AZ ml experiment List](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
     
     * Använd följande kommando om du vill visa information om en speciell körning. Ersätt `runid` med ID: t för körningen:
     
@@ -172,7 +177,7 @@ Du behöver följande objekt:
     
         Det här kommandot returnerar ett JSON-dokument som visar information om körningen.
     
-        Mer information finns i [AZ ml Run show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show).
+        Mer information finns i [AZ ml Run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
@@ -192,6 +197,29 @@ Du behöver följande objekt:
     1. Om du vill visa körnings loggarna väljer du en speciell körning och på fliken **utdata + loggar** kan du hitta diagnostik-och fel loggar för din körning.
     
     ---
+
+## <a name="monitor-the-run-status-by-email-notification"></a>Övervaka körnings status via e-postavisering
+
+1. I [Azure Portal](https://ms.portal.azure.com/)i det vänstra navigerings fältet väljer du fliken **övervaka** . 
+
+1. Välj **diagnostikinställningar** och välj sedan **+ Lägg till diagnostisk inställning**.
+
+    ![Skärm bild av diagnostikinställningar för e-postavisering](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. I den diagnostiska inställningen 
+    1. under **kategori Detaljer** väljer du **AmlRunStatusChangedEvent**. 
+    1. I **mål informationen** väljer du **arbets ytan skicka till Log Analytics** och anger **arbets ytan** för **prenumeration** och Log Analytics. 
+
+    > [!NOTE]
+    > **Azure Log Analytics-arbetsytan** är en annan typ av Azure-resurs än **Azure Machine Learning service-arbetsytan**. Om det inte finns några alternativ i listan kan du [skapa en Log Analytics-arbetsyta](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    
+    ![Var du ska spara e-postavisering](./media/how-to-manage-runs/log-location.png)
+
+1. Lägg till en **ny aviserings regel** på fliken **loggar** . 
+
+    ![Ny varnings regel](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. Se [hur du skapar och hanterar logg aviseringar med hjälp av Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
 
 ## <a name="run-description"></a>Körnings Beskrivning 
 
@@ -253,7 +281,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Mer information finns i [AZ ml kör Update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update).
+    Mer information finns i [AZ ml kör Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
@@ -287,17 +315,17 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    Mer information om hur du frågar Azure CLI-resultat finns i [läsa utdata från Azure CLI-kommandot](/cli/azure/query-azure-cli).
+    Mer information om hur du frågar Azure CLI-resultat finns i [läsa utdata från Azure CLI-kommandot](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    1. Navigera till listan  **alla körningar** .
+    Om du vill söka efter vissa körningar navigerar du till listan  **alla körningar** . Där finns det två alternativ:
     
-    1. Använd Sök fältet för att filtrera på metadata för körning, t. ex. taggar, beskrivningar, experiment namn och namn på översändare. Filtret taggar kan också användas för att filtrera på taggarna. 
+    1. Använd knappen **Lägg till filter** och välj filtrera efter taggar för att filtrera dina körningar efter tagg som har tilldelats till körningen. <br><br>
+    ELLER
     
-    ---
-
-
+    1. Använd Sök fältet för att snabbt hitta körningar genom att söka på metadata för körning, t. ex. körnings status, beskrivningar, experiment namn och sändnings namn. 
+    
 ## <a name="cancel-or-fail-runs"></a>Avbryt eller kör inte
 
 Om du ser ett fel eller om körningen tar för lång tid att slutföra, kan du avbryta körningen.
@@ -331,7 +359,7 @@ Om du vill avbryta en körning med hjälp av CLI använder du följande kommando
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Mer information finns i [AZ ml kör Avbryt](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel).
+Mer information finns i [AZ ml kör Avbryt](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

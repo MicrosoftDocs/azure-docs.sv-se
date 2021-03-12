@@ -2,15 +2,15 @@
 title: Självstudie – Använd parameter fil för att distribuera Azure Resource Manager bicep-fil
 description: Använd parameterstyrda filer som innehåller de värden som ska användas för att distribuera bicep-filen.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 233bab26d659fef2da9a9f5a7080d4b3ecbce7d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca3a73cde9549bfcdfd47bc4f1955904fac69d1c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748284"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632364"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-azure-resource-manager-bicep-file"></a>Självstudie: använda parameter-filer för att distribuera Azure Resource Manager bicep-fil
 

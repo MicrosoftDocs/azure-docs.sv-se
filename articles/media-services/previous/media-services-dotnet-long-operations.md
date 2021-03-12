@@ -3,7 +3,7 @@ title: Avsökning Long-Running åtgärder | Microsoft Docs
 description: 'Azure Media Services erbjuder API: er som skickar begär anden till Media Services för att starta åtgärder (till exempel skapa, starta, stoppa eller ta bort en kanal) körs de här åtgärderna länge. Det här avsnittet visar hur du avsöker tids krävande åtgärder.'
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44cecbd8d2cdc95e342d7aaf2b33f6cc0192e182
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7926f7aaa427d49d13cab5e13f5153bcd22e5898
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262044"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013830"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Leverera Direktsänd strömning med Azure Media Services
 
@@ -33,9 +33,9 @@ Microsoft Azure Media Services erbjuder API: er som skickar begär anden till Me
 Media Services .NET SDK innehåller API: er som skickar begäran och väntar på att åtgärden ska slutföras (internt, API: erna avsöker för åtgärds förlopp i vissa intervall). Till exempel när du anropar en kanal. Start (), metoden returnerar när kanalen har startats. Du kan också använda den asynkrona versionen: väntar på kanal. StartAsync () (för information om uppgiftsbaserade asynkrona mönster, se [Knacka](./media-services-mes-schema.md)). API: er som skickar en åtgärds förfrågan och sedan söker efter statusen tills åtgärden har slutförts kallas för "avsöknings metoder". Dessa metoder (särskilt den asynkrona versionen) rekommenderas för omfattande klient program och/eller tillstånds känsliga tjänster.
 
 Det finns scenarier där ett program inte kan vänta på en tids krävande http-begäran och vill söka efter åtgärdens förlopp manuellt. Ett typiskt exempel är en webbläsare som interagerar med en tillstånds lös webb tjänst: när webbläsaren begär att skapa en kanal, initierar webb tjänsten en tids krävande åtgärd och returnerar åtgärds-ID: t till webbläsaren. Webbläsaren kan sedan be webb tjänsten att hämta åtgärds status baserat på ID. Media Services .NET SDK innehåller API: er som är användbara för det här scenariot. Dessa API: er kallas "icke-avsöknings metoder".
-"Icke-avsöknings metoder" har följande namn mönster: skicka*OperationName*-åtgärd (till exempel SendCreateOperation). Skicka*OperationName*-åtgärds metoder returnerar **IOperation** -objektet; det returnerade objektet innehåller information som kan användas för att spåra åtgärden. **Uppgiften \<IOperation> **skicka*OperationName*-OperationAsync metoder returneras.
+"Icke-avsöknings metoder" har följande namn mönster: skicka *OperationName*-åtgärd (till exempel SendCreateOperation). Skicka *OperationName*-åtgärds metoder returnerar **IOperation** -objektet; det returnerade objektet innehåller information som kan användas för att spåra åtgärden. **Uppgiften \<IOperation>** skicka *OperationName*-OperationAsync metoder returneras.
 
-För närvarande stöder följande klasser icke-avsöknings metoder:  **kanal**, **StreamingEndpoint**och **program**.
+För närvarande stöder följande klasser icke-avsöknings metoder:  **kanal**, **StreamingEndpoint** och **program**.
 
 Om du vill avsöka efter åtgärds status använder du **Get operation** -metoden i **OperationBaseCollection** -klassen. Använd följande intervall för att kontrol lera åtgärds status: för **kanal** -och **StreamingEndpoint** -åtgärder ska du använda 30 sekunder; Använd 10 sekunder för **program** åtgärder.
 
