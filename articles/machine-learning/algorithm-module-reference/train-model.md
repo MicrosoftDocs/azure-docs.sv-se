@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 03/10/2021
+ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751945"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224352"
 ---
 # <a name="train-model-module"></a>Träna modell modul
 
@@ -66,6 +66,28 @@ I Azure Machine Learning är det vanligt vis en tre stegs process att skapa och 
     > Om du har en ID-kolumn som är ID för varje rad, eller en text kolumn som innehåller för många unika värden, kan **träna modell** få ett fel meddelande som "antalet unika värden i kolumnen: {column_name} är större än tillåtet.
     >
     > Detta beror på att kolumnen träffar tröskelvärdet för unika värden och kan orsaka slut på minne. Du kan använda [Redigera metadata](edit-metadata.md) för att markera kolumnen som **rensad funktion** och den används inte i utbildningen eller [extrahera N-gram-funktioner från text-modulen](extract-n-gram-features-from-text.md) för att Förbearbeta text kolumnen. Mer fel information finns i [fel koden för designer](././designer-error-codes.md) .
+
+## <a name="model-interpretability"></a>Modell tolkning
+
+Modell tolkningen ger möjlighet att förstå ML-modellen och presentera den underliggande grunden för besluts fattande på ett sätt som kan förstås av människa.
+
+Modulen **modell modell** stöder för närvarande stöd [för att använda tolknings paket för att förklara ml-modeller](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). Följande inbyggda algoritmer stöds:
+
+- Linjär regression
+- Regression för Neural Network
+- Logistic Regression med två klasser
+- Tvåklassig dator för vektorstöd
+- Besluts skog med flera klasser
+
+Om du vill generera modell förklaringar kan du välja **Sant** i list rutan med **modell förklaring** i träna modell-modul. Som standard är den inställd på falskt i modulen **träna modell** . Observera att generering av förklaringar kräver extra beräknings kostnader.
+
+![Skärm bild som visar kryss rutan modell förklaring](./media/module/train-model-explanation-checkbox.png)
+
+När pipeline-körningen är klar kan du besöka **förklaringar** i den högra rutan i modulen **träna modell** och utforska modell prestanda, data uppsättning och funktions betydelse.
+
+![Skärm bild som visar modell förklarings diagram](./media/module/train-model-explanations-tab.gif)
+
+Mer information om hur du använder modell förklaringar i Azure Machine Learning finns i instruktions artikeln om att [tolka ml-modeller](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Resultat
 

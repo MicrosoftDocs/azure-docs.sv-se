@@ -3,18 +3,18 @@ title: Snabbstart – Utforska Azure-kostnader med kostnadsanalys
 description: Den här snabbstarten hjälper dig att använda kostnadsanalys för att utforska och analysera dina Azure-organisationskostnader.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: HT
+ms.openlocfilehash: 86f7bbbb52b1596e20fb1f3a67e42b2dd27c501a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882457"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012623"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Snabbstart: Utforska och analysera kostnader med kostnadsanalys
 
@@ -68,11 +68,9 @@ Den initiala kostnadsanalysvyn innehåller följande områden.
 
 ### <a name="understand-forecast"></a>Förstå en prognos
 
-En kostnadsprognos visar en uppskattning av kostnaderna för den valda tidsperioden. Modellen baseras på en regressionsmodell med en tidsserie. Kostnads- och användningsdata för minst de senaste tio dagarna krävs för att få en korrekt prognostisering av kostnaderna. För en viss tidsperiod behöver prognosmodellen lika delar med träningsdata för prognosperioden. För att göra en uppskattning för tre månader krävs kostnads- och användningsdata för minst de senaste tre månaderna.
+Baserat på din senaste användning visar kostnads prognoser en projektion av de uppskattade kostnaderna för den valda tids perioden. Om en budget har kon figurer ATS i kostnads analys kan du Visa när prognostiserade utgifter kan överskrida budget tröskeln. Prognos modellen kan förutsäga framtida kostnader i upp till ett år. Välj filter om du vill visa den detaljerade prognostiserade kostnaden för den valda dimensionen.
 
-Modellen använder maximalt sex månaders träningsdata för att uppskatta kostnaderna för ett år. Den behöver minst sju dagars träningsdata för att ändra förutsägelsen. Förutsägelsen baseras på stora förändringar, till exempel topp- och bottenvärden, i kostnads- och användningsmönster. Prognosen skapar inte enskilda uppskattningar för varje objekt i **Gruppera efter**-egenskaper. Den ger bara en prognos för ackumulerade kostnader totalt. Om du använder flera valutor anger modellen en prognos för kostnaderna endast i USD.
-
-På grund av modellens beroende på dataminskningar och -ökningar kommer stora inköp som reserverade instanser göra att prognosen blir artificiellt förstorad. Prognostidsperioden och storleken på inköpen påverkar hur länge prognosen påverkas. Prognosen återgår till normalt när utgifter stabiliseras.
+Prognos modellen baseras på en tids serie Regressions modell. Kostnads- och användningsdata för minst de senaste tio dagarna krävs för att få en korrekt prognostisering av kostnaderna. För en viss tidsperiod behöver prognosmodellen lika delar med träningsdata för prognosperioden. För att göra en uppskattning för tre månader krävs kostnads- och användningsdata för minst de senaste tre månaderna.
 
 ## <a name="customize-cost-views"></a>Anpassa kostnadsvyer
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547373"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149672"
 ---
 # <a name="troubleshooting-message-routing"></a>Felsöka meddelanderoutning
 
@@ -37,11 +37,11 @@ Du kan felsöka det här problemet genom att analysera följande.
 
 #### <a name="the-routing-metrics-for-this-endpoint"></a>Operationsföljd måtten för den här slut punkten
 
-Alla [IoT Hub mått som är relaterade till routning](monitor-iot-hub-reference.md#routing-metrics) har prefixet *routning* . Du kan kombinera information från flera mått för att identifiera rotor saken till problem. Använd till exempel leverans av mått **routning** för att identifiera antalet meddelanden som levererades till en slut punkt eller som släppts när de inte matchade frågorna på någon av vägarna och återställnings vägen inaktiverades. Kontrol lera värdet för **vidarebefordring av routning** för att kontrol lera om svars tiden för meddelande leverans är konstant eller ökande. En växande latens kan tyda på ett problem med en angiven slut punkt och vi rekommenderar att du kontrollerar [slut punktens tillstånd](#the-health-of-the-endpoint). Dessa operationsföljd mått har också [dimensioner](monitor-iot-hub-reference.md#metric-dimensions) som anger information om måttet, till exempel typ av slut punkt, ett särskilt slut punkts namn och en orsak till varför meddelandet inte levererades.
+Alla [IoT Hub mått som är relaterade till routning](monitor-iot-hub-reference.md#routing-metrics) har prefixet *routning*. Du kan kombinera information från flera mått för att identifiera rotor saken till problem. Använd till exempel leverans av mått **routning** för att identifiera antalet meddelanden som levererades till en slut punkt eller som släppts när de inte matchade frågorna på någon av vägarna och återställnings vägen inaktiverades. Kontrol lera värdet för **vidarebefordring av routning** för att kontrol lera om svars tiden för meddelande leverans är konstant eller ökande. En växande latens kan tyda på ett problem med en angiven slut punkt och vi rekommenderar att du kontrollerar [slut punktens tillstånd](#the-health-of-the-endpoint). Dessa operationsföljd mått har också [dimensioner](monitor-iot-hub-reference.md#metric-dimensions) som anger information om måttet, till exempel typ av slut punkt, ett särskilt slut punkts namn och en orsak till varför meddelandet inte levererades.
 
 #### <a name="the-resource-logs-for-any-operational-issues"></a>Resurs loggarna för eventuella drift problem
 
-Observera [resurs loggarna för **flöden**](monitor-iot-hub-reference.md#routes) för att få mer information om Routning och slut punkts [åtgärder](#operation-names) eller identifiera fel och relevant [Felkod](#common-error-codes) för att förstå problemet ytterligare. Till exempel anger **RouteEvaluationError** i loggen att vägen inte kunde utvärderas på grund av ett problem med meddelande formatet. Använd tipsen för de olika [Åtgärds namnen](#operation-names) för att undvika problemet. När en händelse loggas som ett fel innehåller loggen även mer information om varför utvärderingen misslyckades. Om åtgärds namnet till exempel är **EndpointUnhealthy** , visar [felkoden](#common-error-codes) 403004 att slut punkten hade slut på utrymme.
+Observera [resurs loggarna för **flöden**](monitor-iot-hub-reference.md#routes) för att få mer information om Routning och slut punkts [åtgärder](#operation-names) eller identifiera fel och relevant [Felkod](#common-error-codes) för att förstå problemet ytterligare. Till exempel anger **RouteEvaluationError** i loggen att vägen inte kunde utvärderas på grund av ett problem med meddelande formatet. Använd tipsen för de olika [Åtgärds namnen](#operation-names) för att undvika problemet. När en händelse loggas som ett fel innehåller loggen även mer information om varför utvärderingen misslyckades. Om åtgärds namnet till exempel är **EndpointUnhealthy**, visar [felkoden](#common-error-codes) 403004 att slut punkten hade slut på utrymme.
 
 #### <a name="the-health-of-the-endpoint"></a>Slut punktens tillstånd
 
@@ -82,4 +82,4 @@ Här följer de åtgärds namn och felkoder som loggas i [resurs loggarna för f
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du behöver mer hjälp kan du kontakta Azure-experterna i [MSDN Azure och Stack Overflow forum](https://azure.microsoft.com/support/forums/). Du kan också skriva en support incident för Azure. Gå till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/) och välj **få support** .
+Om du behöver mer hjälp kan du kontakta Azure-experterna på [Microsoft Q&ett och Stack Overflow forum](https://azure.microsoft.com/support/forums/). Du kan också skriva en support incident för Azure. Gå till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/) och välj **få support**.

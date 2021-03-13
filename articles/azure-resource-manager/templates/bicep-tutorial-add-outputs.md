@@ -2,16 +2,16 @@
 title: Självstudie – Lägg till utdata i Azure Resource Manager bicep-fil
 description: Lägg till utdata i bicep-filen för att förenkla syntaxen.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748292"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636280"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>Självstudie: lägga till utdata i Azure Resource Manager bicep-fil
 
@@ -37,7 +37,7 @@ Den distribuerar ett lagrings konto, men returnerar inte någon information om l
 
 Du kan använda utdata för att returnera värden från distributionen. Det kan till exempel vara användbart att få slut punkter för ditt nya lagrings konto.
 
-I följande exempel visas ändringarna i bicep-filen för att lägga till ett utdata-värde. Kopiera hela filen och ersätt din bicep-fil med dess innehåll.
+I följande exempel visas ändringen av bicep-filen för att lägga till ett utdata-värde. Kopiera hela filen och ersätt din bicep-fil med dess innehåll.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ Det finns några viktiga saker att notera om det utdata som du har lagt till.
 
 Det returnerade värdets typ är inställt på `object` , vilket innebär att det returnerar ett mallobjekt.
 
-Om du vill hämta `primaryEndpoints` egenskapen från lagrings kontot använder du det symboliska namnet för lagrings kontot.
+Om du vill hämta `primaryEndpoints` egenskapen från lagrings kontot använder du det symboliska namnet för lagrings kontot. Funktionen Autoavsluta i Visual Studio Code visar en fullständig lista över egenskaperna:
+
+   ![Visual Studio Code bicep symboliskt namn objekt egenskaper](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>Distribuera bicep-fil
 

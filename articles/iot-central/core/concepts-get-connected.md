@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 828f0ff81048ca0b6f07b7fdee9ed29c87991db4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032644"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015463"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Ansluta till Azure IoT Central
 
@@ -178,7 +178,7 @@ Den här metoden är användbar när du experimenterar med IoT Central eller tes
 
 ## <a name="associate-a-device-with-a-device-template"></a>Koppla en enhet till en enhets mall
 
-IoT Central associerar automatiskt en enhet med en enhets mall när enheten ansluter. En enhet skickar ett [modell-ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) när den ansluter. IoT Central använder modell-ID: t för att identifiera enhets mal len för den aktuella enhets modellen. Identifierings processen fungerar på följande sätt:
+IoT Central associerar automatiskt en enhet med en enhets mall när enheten ansluter. En enhet skickar ett [modell-ID](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) när den ansluter. IoT Central använder modell-ID: t för att identifiera enhets mal len för den aktuella enhets modellen. Identifierings processen fungerar på följande sätt:
 
 1. Om enhets mal len redan har publicerats i IoT Central-programmet är enheten kopplad till enhets mal len.
 1. Om enhets mal len inte redan har publicerats i IoT Central-programmet söker IoT Central efter enhets modellen i den [offentliga modellens lagrings plats](https://github.com/Azure/iot-plugandplay-models). Om IoT Central hittar modellen används den för att generera en grundläggande enhets mall.

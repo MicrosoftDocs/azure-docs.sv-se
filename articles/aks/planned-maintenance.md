@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: f5c85f371dbe0fe3488c1ca6ff806f114153d3a7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102639191"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201564"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Använda planerat underhåll för att schemalägga underhålls perioder för ditt Azure Kubernetes service (AKS)-kluster (för hands version)
 
@@ -28,8 +28,8 @@ Den här artikeln förutsätter att du har ett befintligt AKS-kluster. Om du beh
 
 När planerat underhåll används gäller följande begränsningar:
 
-- AKS förbehåller sig rätten att dela upp dessa fönster för korrigeringar och korrigeringar som är brådskande eller kritiska.
-- Att utföra underhålls åtgärder anses vara *bästa möjliga* och är inte garanterat att ske inom ett angivet fönster.
+- AKS förbehåller sig rätten att dela upp dessa fönster efter oplanerade/reaktiva underhålls åtgärder som är brådskande eller kritiska.
+- För närvarande anses underhålls åtgärder *endast vara bästa* möjliga och är inte garanterat att ske inom ett angivet fönster.
 - Det går inte att blockera uppdateringar i mer än sju dagar.
 
 ### <a name="install-aks-preview-cli-extension"></a>Installera CLI-tillägget aks-preview

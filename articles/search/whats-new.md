@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694605"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233556"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
@@ -23,7 +23,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 
 |Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
 |------------------------------|---------------|---------------|
-| [Semantisk sökning](semantic-search-overview.md) | En samling frågor relaterade funktioner som förbättrar relevansen hos Sök resultat med mycket lite ansträngning. Med små ändringar i en Sök förfrågan kan du prova dessa funktioner på befintliga index.</br></br>[Semantisk fråga](semantic-how-to-query-request.md) är en ny frågetyp som utnyttjar framsteg i naturlig språk bearbetning för att förbättra rangordningen, samt för att förstå frågans avsikt att tillhandahålla svar, beskrivningar och semantiska högdagrar.</br></br>[Semantisk rangordning och svar (svar, under texter och högdagrar)](semantic-how-to-query-response.md) hänvisar till modellen som utvärderar resultat och modellens förmåga att lägga till strukturen i svaret. | Offentlig för hands version ([efter begäran](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Använd [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) API-version = 2020-06 -30 – för hands version och [sök Utforskaren](search-explorer.md) i Azure Portal. </br></br>Begränsningar för region och nivå gäller. |
+| [Semantisk sökning](semantic-search-overview.md) | En samling frågor relaterade funktioner som avsevärt förbättrar relevansen hos Sök resultat med mycket liten ansträngning. </br></br>[Semantisk rangordning](semantic-ranking.md) beräknar relevanta resultat med hjälp av den semantiska innebörden bakom ord och innehåll. </br></br>[Semantiska under texter](semantic-how-to-query-request.md) är relevanta från det dokument som bäst sammanfattar dokumentet, med högdagrar som visar de viktigaste termerna eller fraserna. </br></br>[Semantiska svar](semantic-answers.md) är nyckel passager som extraheras från ett Sök dokument, som formuleras som ett direkt svar på en fråga som ser ut som en fråga. | Offentlig för hands version ([efter begäran](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Använd [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) API-version = 2020-06 -30 – för hands version och [sök Utforskaren](search-explorer.md) i Azure Portal. </br></br>Begränsningar för region och nivå gäller. |
 | [Stavnings kontrol lera sökord](speller-how-to-add.md) | Innan du kan komma åt sökmotorn kan du välja att kontrol lera stavnings fel. `speller`Alternativet fungerar med valfri typ av fråga (enkel, fullständig eller semantisk). |  Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version|
 | [SharePoint Online-indexerare](search-howto-index-sharepoint-online.md) | Den här indexeraren ansluter dig till en SharePoint Online-webbplats så att du kan indexera innehåll från ett dokument bibliotek. | Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
 

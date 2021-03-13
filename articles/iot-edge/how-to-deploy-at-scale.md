@@ -9,14 +9,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: db27a466ca5f1370e8b43ceb472f5deeaba509f1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048431"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200322"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Distribuera IoT Edge moduler i skala med hjälp av Azure Portal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Skapa en **IoT Edge automatisk distribution** i Azure Portal för att hantera pågående distributioner för många enheter samtidigt. Automatiska distributioner för IoT Edge ingår i funktionen [Automatisk enhets hantering](../iot-hub/iot-hub-automatic-device-management.md) i IoT Hub. Distributioner är dynamiska processer som gör att du kan distribuera flera moduler till flera enheter, spåra status och hälsa för modulerna och göra ändringar när det behövs.
 
@@ -43,7 +45,7 @@ Mer information om enhets sammanflätade och taggar finns i [förstå och använ
 
 ## <a name="create-a-deployment"></a>Skapa en distribution
 
-IoT Edge tillhandahåller två olika typer av automatiska distributioner som du kan använda för att anpassa ditt scenario. Du kan skapa en standard *distribution*, som innehåller system runtime-moduler och eventuella ytterligare moduler och vägar. Varje enhet kan bara använda en distribution. Du kan också skapa en *lager distribution*som bara innehåller anpassade moduler och vägar, inte systemets körnings miljö. Många lager distributioner kan kombineras på en enhet, ovanpå en standard distribution. Mer information om hur de två typerna av automatisk distribution fungerar tillsammans finns i [förstå IoT Edge automatiska distributioner för enskilda enheter eller i skala](module-deployment-monitoring.md).
+IoT Edge tillhandahåller två olika typer av automatiska distributioner som du kan använda för att anpassa ditt scenario. Du kan skapa en standard *distribution*, som innehåller system runtime-moduler och eventuella ytterligare moduler och vägar. Varje enhet kan bara använda en distribution. Du kan också skapa en *lager distribution* som bara innehåller anpassade moduler och vägar, inte systemets körnings miljö. Många lager distributioner kan kombineras på en enhet, ovanpå en standard distribution. Mer information om hur de två typerna av automatisk distribution fungerar tillsammans finns i [förstå IoT Edge automatiska distributioner för enskilda enheter eller i skala](module-deployment-monitoring.md).
 
 Stegen för att skapa en distribution och en lager distribution är mycket lika. Eventuella skillnader anropas i följande steg.
 
@@ -132,7 +134,7 @@ Om flera distributioner riktar sig till samma enhet används bara den som har de
 Alla lager distributioner riktade till en enhet måste ha en högre prioritet än den grundläggande distributionen för att kunna tillämpas.
 
 1. Ange ett positivt heltal för distributions **prioriteten**.
-1. Ange ett **mål villkor** för att avgöra vilka enheter som ska vara mål för distributionen.Villkoret baseras på enhetens dubbla taggar eller enhets egenskaper med dubbla rapporter och ska överensstämma med uttrycks formatet.Exempel: `tags.environment='test'` eller `properties.reported.devicemodel='4000x'`.
+1. Ange ett **mål villkor** för att avgöra vilka enheter som ska vara mål för distributionen. Villkoret baseras på enhetens dubbla taggar eller enhets egenskaper med dubbla rapporter och ska överensstämma med uttrycks formatet. Exempel: `tags.environment='test'` eller `properties.reported.devicemodel='4000x'`.
 
 Välj **Nästa: granska + skapa** för att gå vidare till det sista steget.
 
@@ -182,7 +184,7 @@ När du tar bort en distribution börjar alla distribuerade enheter med sin näs
 
 1. Använd kryss rutan för att välja den distribution som du vill ta bort.
 1. Välj **Ta bort**.
-1. En prompt informerar dig om att den här åtgärden tar bort den här distributionen och återgår till det tidigare läget för alla enheter.En distribution med lägre prioritet kommer att gälla.Om ingen annan distribution är avsedd tas inga moduler bort. Om du vill ta bort alla moduler från enheten skapar du en distribution med noll moduler och distribuerar den till samma enheter.Fortsätt genom att välja **Ja**.
+1. En prompt informerar dig om att den här åtgärden tar bort den här distributionen och återgår till det tidigare läget för alla enheter. En distribution med lägre prioritet kommer att gälla. Om ingen annan distribution är avsedd tas inga moduler bort. Om du vill ta bort alla moduler från enheten skapar du en distribution med noll moduler och distribuerar den till samma enheter. Fortsätt genom att välja **Ja**.
 
 ## <a name="next-steps"></a>Nästa steg
 

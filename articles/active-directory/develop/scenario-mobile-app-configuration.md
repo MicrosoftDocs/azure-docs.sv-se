@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6f13d789cd63bb568bb8940ce614ebdb2dbcdb83
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584439"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199755"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurera en mobilapp som anropar webb-API: er
 
 När du har skapat ditt program får du lära dig hur du konfigurerar koden med hjälp av registrerings parametrarna för appen. Mobila program innehåller några komplexa lösningar som rör inpassning i deras ramverk för skapande.
 
-## <a name="find-msal-support-for-mobile-apps"></a>Hitta MSAL-stöd för mobila appar
+## <a name="microsoft-libraries-supporting-mobile-apps"></a>Microsoft-bibliotek som stöder Mobile Apps
 
-Följande typer av MSAL-typer (Microsoft Authentication Library) stöder mobila appar.
+Följande Microsoft-bibliotek stöder Mobile Apps:
 
-MSAL | Description
------------- | ----------
-![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Används för att utveckla bärbara program. MSAL.NET stöder följande plattformar för att skapa ett mobil program: Universell Windows-plattform (UWP), Xamarin. iOS och Xamarin. Android.
-![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Används för att utveckla interna iOS-program med hjälp av mål-C eller Swift.
-![MSAL. Android](media/sample-v2-code/logo_android.png) <br/> MSAL. Android | Används för att utveckla inbyggda Android-program i Java för Android.
+[!INCLUDE [active-directory-develop-libraries-mobile](../../../includes/active-directory-develop-libraries-mobile.md)]
 
 ## <a name="instantiate-the-application"></a>Instansiera programmet
 
@@ -130,7 +126,7 @@ De här uppgifterna är nödvändiga när du använder MSAL för iOS och macOS:
 Om du använder Xamarin. Android utför du följande uppgifter:
 
 - [Se till att kontrollen går tillbaka till MSAL när den interaktiva delen av autentiserings flödet slutar](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
-- [Uppdatera Android-manifestet](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
+- [Uppdatera Android-manifestet](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)
 - [Använda den inbäddade webb visningen (valfritt)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
 - [Felsök vid behov](msal-net-xamarin-android-considerations.md#troubleshooting)
 

@@ -5,22 +5,22 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9c7b265118e395dde2b4b5f3959ba397d75ddac5
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703413"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232196"
 ---
 # <a name="precise-answering"></a>Exakta svar
 
 Funktionen exakt svars funktion som introducerades i QnA Maker hanterad (för hands version), gör det möjligt att få det exakta korta svaret från den bästa kandidat svars passage som finns i kunskaps basen för alla användar frågor. Den här funktionen använder en djup inlärnings modell som på körning, som förstår avsikten med användar frågan och identifierar det exakta korta svaret från svars passage, om det finns ett kort svar som är ett faktum i svars passagen. 
 
-Den här funktionen är aktive ras som standard i test fönstret så att du kan testa funktionaliteten som är speciell för ditt scenario. Den här funktionen är mycket bra för både innehålls utvecklare och slutanvändare. Innehålls utvecklare behöver nu inte manuellt se specifika QnA-par för varje faktum i kunskaps basen och slutanvändaren behöver inte gå igenom hela svars resultatet som returneras från tjänsten för att hitta det faktiska faktum som svarar på användarens fråga. 
+Den här funktionen är aktive ras som standard i test fönstret så att du kan testa funktionaliteten som är speciell för ditt scenario. Den här funktionen är mycket bra för både innehålls utvecklare och slutanvändare. Innehålls utvecklare behöver nu inte manuellt se specifika QnA-par för varje faktum i kunskaps basen och slutanvändaren behöver inte gå igenom hela svars resultatet som returneras från tjänsten för att hitta det faktiska faktum som svarar på användarens fråga. Du kan hämta [exakta svar via generera svars-API](How-To/metadata-generateanswer-usage.md#get-precise-answers-with-generateanswer-api).
 
 ## <a name="precise-answering-on-qna-maker-portal"></a>Exakt svar på QnA Maker Portal
 
-När du öppnar test-fönstret i QnA Maker Portal visas ett alternativ för att **Visa ett kort svar** överst. Det här alternativet är valt som standard. När du anger en fråga i test fönstret visas ett kort svar tillsammans med svaren, om det finns ett kort svar i svars resultatet. 
+När du öppnar test-fönstret i QnA Maker Portal visas ett alternativ för att **Visa ett kort svar** överst. Det här alternativet är valt som standard. När du anger en fråga i test fönstret visas ett kort svar tillsammans med svaren, om det finns ett kort svar i svars resultatet.
  
 ![Hanterat aktiverat test fönster](../QnAMaker/media/conversational-context/test-pane-with-managed.png)
 

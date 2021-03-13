@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 0c8f55b6eeba4319b0ce9e39085912b8c4829235
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 104e6503ba47d17c17cfec2b4e62ec3f69f18330
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720808"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200018"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Anslutnings arkitektur i Azure Database for PostgreSQL
 Den här artikeln förklarar Azure Database for PostgreSQL anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for PostgreSQL databas instans från klienter både inom och utanför Azure.
@@ -60,7 +60,9 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Post
 | Frankrike, centrala | 40.79.137.0, 40.79.129.1  | | |
 | Frankrike, södra | 40.79.177.0     | | |
 | Tyskland, centrala | 51.4.144.100     | | |
+| Tyskland, norra | 51.116.56.0 | |
 | Tyskland, norra öst | 51.5.144.179  | | |
+| Tyskland, västra centrala | 51.116.152.0 | |
 | Indien, centrala | 104.211.96.159     | | |
 | Södra Indien | 104.211.224.146  | | |
 | Indien, västra | 104.211.160.80    | | |
@@ -74,6 +76,8 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Post
 | Sydafrika, västra | 102.133.24.0   | | |
 | USA, södra centrala |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
 | Sydostasien | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
+| Schweiz, norra | 51.107.56.0 ||
+| Schweiz, västra | 51.107.152.0| ||
 | Förenade Arabemiraten Central | 20.37.72.64  | | |
 | Förenade Arabemiraten, norra | 65.52.248.0    | | |
 | Storbritannien, södra | 51.140.184.11   | | |
@@ -83,6 +87,37 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Post
 | USA, västra |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
 | USA, västra 2 | 13.66.226.202  | | |
 ||||
+
+## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
+
+### <a name="what-you-need-to-know-about-this-planned-maintenance"></a>Vad du behöver veta om det här planerade underhållet?
+Detta är en DNS-ändring som gör det transparent för klienter. Även om IP-adressen för FQDN ändras på DNS-servern, kommer den lokala DNS-cachen att uppdateras inom 5 minuter och den utförs automatiskt av operativ systemen. Efter den lokala DNS-uppdateringen ansluter alla nya anslutningar till den nya IP-adressen. alla befintliga anslutningar förblir anslutna till den gamla IP-adressen utan avbrott förrän de gamla IP-adresserna har inaktiverats helt. Den gamla IP-adressen kommer att ta tre till fyra veckor innan inaktive ring, Därför bör den inte påverka klient programmen.
+
+### <a name="what-are-we-decommissioning"></a>Vad har vi invecklat?
+Endast Gateway-noder tas ur bruk. När användarna ansluter till sina servrar är det första stoppet i anslutningen till gateway-noden innan anslutningen vidarebefordras till servern. Vi inaktiverar tidigare Gateway-ringar (inte klient organisationer där servern körs). mer information finns i [anslutnings arkitekturen](#connectivity-architecture) .
+
+### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Hur kan du verifiera om dina anslutningar kommer till gamla Gateway-noder eller nya gateway-noder?
+Pinga serverns FQDN, till exempel  ``ping xxx.postgres.database.azure.com`` . Om den returnerade IP-adressen är en av IP-adresserna som listas under gatewayens IP-adresser (inaktive ring) i dokumentet ovan innebär det att din anslutning går via den gamla gatewayen. Om den returnerade IP-adressen är en av IP-adresserna som anges under Gateway-IP-adresser, innebär det att din anslutning går via den nya gatewayen.
+
+Du kan också testa av [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) eller TCPPing databas servern från klient programmet med port 3306 och se till att RETUR-IP-adressen inte är en av IP-adresserna för inaktive ring
+
+### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Hur gör jag för att veta när underhållet är över och får jag ett nytt meddelande när gamla IP-adresser tas ur bruk?
+Du får ett e-postmeddelande för att meddela dig när vi kommer igång med underhålls arbetet. Underhållet kan ta upp till en månad beroende på hur många servrar vi behöver migrera i Al-regioner. Förbered klienten för att ansluta till databas servern med hjälp av FQDN eller genom att använda den nya IP-adressen från tabellen ovan. 
+
+### <a name="what-do-i-do-if-my-client-applications-are-still-connecting-to-old-gateway-server-"></a>Vad gör jag om mina klient program fortfarande ansluter till den gamla Gateway-servern?
+Detta anger att programmen ansluter till servern med hjälp av statisk IP-adress i stället för FQDN. Granska anslutnings strängar och inställningar för anslutningspoolen, AKS-inställning eller till och med i käll koden.
+
+### <a name="is-there-any-impact-for-my-application-connections"></a>Påverkas eventuella program anslutningar?
+Det här underhållet är bara en DNS-ändring, så det är transparent för klienten. När DNS-cachen har uppdaterats i klienten (utförs automatiskt av åtgärds systemet) kommer all den nya anslutningen att ansluta till den nya IP-adressen och den befintliga anslutningen fungerar fortfarande tills den gamla IP-adressen är helt inaktive rad, vilket vanligt vis är flera veckor senare. Och logiken för omprövning krävs inte för det här fallet, men det är klokt att se programmet har kon figurer ATS igen. Använd antingen FQDN för att ansluta till databas servern eller aktivera en lista över de nya Gateway-IP-adresserna i program anslutnings strängen.
+Den här underhålls åtgärden tar inte bort befintliga anslutningar. Det gör bara de nya anslutnings förfrågningarna till ny Gateway-ring.
+
+### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>Kan jag begära en tids period för underhållet? 
+Eftersom migreringen ska vara transparent och ingen påverkan på kundens anslutning förväntas vi inte att det är något problem för majoriteten av användarna. Granska programmet proaktivt och se till att du antingen använder FQDN för att ansluta till databas servern eller aktivera en lista över de nya Gateway-IP-adresserna i program anslutnings strängen.
+
+### <a name="i-am-using-private-link-will-my-connections-get-affected"></a>Jag använder en privat länk, kommer mina anslutningar att påverkas?
+Nej, det här är en gateway-maskinvaru-deprovision och inte har någon relation till privata eller privata IP-adresser. den påverkar bara offentliga IP-adresser som anges under avställning av IP-adresser.
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

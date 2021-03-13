@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 7eb4647ae5ba40688cbf39cbfe8449f59275e7e6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348499"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014323"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Så här hämtar du en medie processor instans
 
@@ -51,7 +51,7 @@ Information om hur du ansluter till AMS-API: et finns i [komma åt Azure Media S
 
 ## <a name="get-a-media-processor"></a>Hämta en medie processor
 
-Följande REST-anrop visar hur du hämtar en medie processor instans efter namn (i det här fallet **Media Encoder Standard** ). 
+Följande REST-anrop visar hur du hämtar en medie processor instans efter namn (i det här fallet **Media Encoder Standard**). 
 
 Begäran:
 

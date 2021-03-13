@@ -2,13 +2,13 @@
 title: Noder och pooler i Azure Batch
 description: Lär dig mer om Compute-noder och pooler och hur de används i ett Azure Batch arbets flöde från en utvecklings synpunkt.
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/11/2021
+ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183666"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200231"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Noder och pooler i Azure Batch
 
@@ -65,7 +65,7 @@ När du skapar en batch-pool anger du konfigurationen för den virtuella Azure-d
 Det finns två typer av pool-konfigurationer som är tillgängliga i batch.
 
 > [!IMPORTANT]
-> Pooler ska konfigureras med hjälp av konfiguration av virtuell dator och inte Cloud Services konfiguration. Alla batch-funktioner stöds av konfigurations pooler för virtuella datorer och nya funktioner läggs till. Poolerna för Cloud Services konfiguration stöder inte alla funktioner och inga nya funktioner planeras.
+> Även om du kan skapa pooler med hjälp av en konfiguration, ska nya pooler konfigureras med hjälp av konfiguration av virtuell dator och inte Cloud Services konfiguration. Alla aktuella och nya batch-funktioner kommer att stödjas av konfigurations pooler för virtuella datorer. Cloud Services konfigurations grupper stöder inte alla funktioner och inga nya funktioner planeras. Du kommer inte att kunna skapa nya CloudServiceConfiguration-pooler eller lägga till nya noder i befintliga pooler [efter den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/).
 
 ### <a name="virtual-machine-configuration"></a>Konfiguration av virtuell dator
 
@@ -76,13 +76,13 @@ Konfigurationen av den **virtuella datorn** anger att poolen består av virtuell
 ### <a name="cloud-services-configuration"></a>Cloud Services konfiguration
 
 > [!WARNING]
-> Konfigurations pooler för moln tjänster är inaktuella. Använd konfigurations pooler för virtuella datorer i stället.
+> Cloud Services konfigurations pooler är [föråldrade](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Använd konfigurations pooler för virtuella datorer i stället. Mer information finns i [migrera konfiguration av batch-pool från Cloud Services till virtuell dator](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 **Cloud Services-konfigurationen** anger att poolen består av Azure Cloud Services-noder. Cloud Services tillhandahåller endast Windows Compute-noder.
 
 Tillgängliga operativ system för Cloud Services konfigurations-pooler visas i [Azure gäst operativ system versioner och SDK-kompatibilitet](../cloud-services/cloud-services-guestos-update-matrix.md), och tillgängliga Compute Node-storlekar anges i [storlekar för Cloud Services](../cloud-services/cloud-services-sizes-specs.md). När du skapar en pool som innehåller Cloud Services noder anger du nodens storlek och dess *OS-familj* (som avgör vilka versioner av .net som installeras med operativ systemet). Cloud Services distribueras snabbare till Azure än virtuella datorer som kör Windows. Om du vill ha pooler med Windows-beräkningsnoder får du bättre distributionstid med Cloud Services.
 
-Precis som med arbetsroller i Cloud Services kan du ange en *operativsystemversion* (mer information om arbetsroller finns i avsnittet [Översikt över Cloud Services](../cloud-services/cloud-services-choose-me.md)). Vi rekommenderar att du anger `Latest (*)` för *operativ system versionen* så att noderna uppgraderas automatiskt och det inte finns något arbete som krävs för att hantera nya versioner. Det huvudsakliga skälet till att välja en viss operativsystemversion är att säkerställa programkompatibiliteten, så att du kan testa bakåtkompatibiliteten innan versionen uppdateras. Efter valideringen kan *operativ system versionen* för poolen uppdateras och den nya operativ system avbildningen kan installeras. Alla pågående aktiviteter avbryts och placeras i kö.
+Precis som med arbets roller i Cloud Services kan du ange en *operativ system version*. Vi rekommenderar att du anger `Latest (*)` för *operativ system versionen* så att noderna uppgraderas automatiskt och det inte finns något arbete som krävs för att hantera nya versioner. Det huvudsakliga skälet till att välja en viss operativsystemversion är att säkerställa programkompatibiliteten, så att du kan testa bakåtkompatibiliteten innan versionen uppdateras. Efter valideringen kan *operativ system versionen* för poolen uppdateras och den nya operativ system avbildningen kan installeras. Alla pågående aktiviteter avbryts och placeras i kö.
 
 ### <a name="node-agent-skus"></a>Node agent-SKU: er
 

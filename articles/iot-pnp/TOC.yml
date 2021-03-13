@@ -51,8 +51,6 @@
       href: concepts-model-discovery.md
     - name: Modellparser
       href: concepts-model-parser.md
-    - name: Ordlista
-      href: iot-plug-and-play-glossary.md
 - name: Anvisningar
   items:
     - name: Installera och använda IoT Explorer
@@ -83,6 +81,8 @@
   items:
     - name: Alternativ för support och hjälp
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: IoT-ordlista
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub

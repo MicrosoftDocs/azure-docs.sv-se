@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7e8d1b13dfd802df820bea4015e411dbb85540ba
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011433"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232213"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>Få ett svar med GenerateAnswer-API: et
 
@@ -174,9 +174,13 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 Föregående JSON begärde bara svar som är 30% eller högre än tröskel poängen.
 
-## <a name="return-precise-answers"></a>Returnera exakta svar
+## <a name="get-precise-answers-with-generateanswer-api"></a>Få exakta svar med GenerateAnswer-API
 
-### <a name="generate-answer-api"></a>Generera svars-API 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
+
+Vi erbjuder exakt svars funktion med den QnA Maker hanterade versionen.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 
 Användaren kan aktivera [exakta svar](../reference-precise-answering.md) när du använder den QNA Maker hanterade resursen. AnswerSpanRequest-parametern måste uppdateras för samma.
 
@@ -211,6 +215,8 @@ Om du vill konfigurera exakta svars inställningar för din bot-tjänst går du 
 |Exakt svar|true|true|
 |Endast långa svar|falskt|falskt|
 |Både långa och exakta svar|true|falskt|
+
+---
 
 ## <a name="common-http-errors"></a>Vanliga HTTP-fel
 

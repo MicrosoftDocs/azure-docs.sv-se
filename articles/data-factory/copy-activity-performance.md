@@ -1,18 +1,23 @@
 ---
 title: Vägledning om prestanda och skalbarhet för kopieringsaktivitet
 description: Lär dig mer om viktiga faktorer som påverkar prestanda för data förflyttning i Azure Data Factory när du använder kopierings aktiviteten.
+services: data-factory
+documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
 ms.service: data-factory
+ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387673"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616085"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Vägledning om prestanda och skalbarhet för kopieringsaktivitet
 
@@ -48,8 +53,8 @@ ADF erbjuder en server lös arkitektur som tillåter parallellitet på olika niv
 
 Med den här arkitekturen kan du utveckla pipeliner som maximerar data flödet för data flödet i din miljö. Dessa pipeliner använder fullt ut följande resurser:
 
-* Nätverksbandbredd
-* Lagrings-/utdata-åtgärder per sekund (IOPS) och bandbredd
+* Nätverks bandbredd mellan käll-och mål data lager
+* Käll-eller mål data lager-in-/utdata-åtgärder per sekund (IOPS) och bandbredd
 
 Den här fullständiga användningen innebär att du kan beräkna det totala data flödet genom att mäta det minsta data flöde som är tillgängligt med följande resurser:
 
@@ -57,7 +62,7 @@ Den här fullständiga användningen innebär att du kan beräkna det totala dat
 * Måldatalager
 * Nätverks bandbredd mellan käll-och mål data lager
 
-I tabellen nedan beräknas kopieringens varaktighet. Varaktigheten baseras på data storleken och bandbredds gränsen för din miljö.
+I tabellen nedan beräknas kopieringens varaktighet. Varaktigheten baseras på data storlek och nätverket/data lagrets bandbredds gräns för din miljö.
 
 &nbsp;
 

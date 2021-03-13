@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bbab5463f0d022cb9bf155c7d33e2d81c8bdd448
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199683"
+ms.locfileid: "103232927"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Optimera trafikflöde med Azure Active Directory-programproxy
 
@@ -41,6 +41,9 @@ Om till exempel din Azure AD-klients land eller region är Storbritannien, komme
 Om du har anslutningar installerade i regioner som skiljer sig från din standard region, kan det vara bra att ändra vilken region som anslutnings gruppen är optimerad för för att förbättra prestanda vid åtkomst till dessa program. När en region har angetts för en kopplings grupp ansluts den till Application Proxy Cloud Services i den angivna regionen.
 
 För att optimera trafikflöde och minska svars tiden till en kopplings grupp tilldelar du anslutnings gruppen till den närmaste regionen. Så här tilldelar du en region:
+
+> [!IMPORTANT]
+> Anslutningarna måste använda minst version 1.5.1975.0 för att kunna använda den här funktionen.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/) som programadministratör för den katalog som använder programproxy. Om klientdomänen exempelvis är contoso.com ska administratören vara admin@contoso.com eller något annat administratörsalias på den domänen.
 1. Välj ditt användar namn i det övre högra hörnet. Kontrol lera att du är inloggad på en katalog som använder programproxy. Om du behöver ändra kataloger väljer du **Växla katalog** och väljer en katalog som använder Application Proxy.

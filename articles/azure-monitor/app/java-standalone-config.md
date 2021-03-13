@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201259"
+ms.locfileid: "103224664"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -184,9 +184,11 @@ Mer information finns i dokumentationen om [telemetri-processorn](./java-standal
 
 Log4j, logback och Java. util. logging är automatiskt instrumenterade och loggning som utförs via dessa loggnings ramverk samlas automatiskt in.
 
-Loggning registreras endast om det stämmer överens med det konfigurerade tröskelvärdet för loggnings ramverk, och den andra uppfyller även det Application Insights konfigurerade tröskelvärdet.
+Loggningen registreras endast om den först uppfyller den nivå som har kon figurer ATS för loggnings ramverket och den andra också uppfyller den nivå som har kon figurer ATS för Application Insights.
 
-Standard Application Insights tröskelvärdet är `INFO` . Om du vill ändra den här nivån:
+Om ditt loggnings ramverk till exempel har kon figurer ATS för att logga `WARN` (och senare) från paketet `com.example` och Application Insights har kon figurer ATS för att avbilda `INFO` (och senare), kommer Application Insights bara att avbilda `WARN` (och ovan) från paketet `com.example` .
+
+Standard nivån som kon figurer ATS för Application Insights är `INFO` . Om du vill ändra den här nivån:
 
 ```json
 {

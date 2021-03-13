@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: c41dc65b920c80d25a81a09f4550e76a8fd1095a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204554"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225191"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Självstudie: skapa en Azure Load Balancer över flera regioner med Azure CLI
 
@@ -81,23 +81,6 @@ Skapa en belastningsutjämnare för flera regioner med [AZ Network Cross-region 
     --backend-pool-name myBackEndPool-CR     
 ```
 
-### <a name="create-the-health-probe"></a>Skapar hälsoavsökningen
-
-Skapa en hälso avsöknings kontroll över en belastningsutjämnare med [AZ Network Cross-region lb PROBE Create](/cli/azure/network/cross-region-lb/probe#az_network_cross_region_lb_probe_create):
-
-* Med namnet **myHealthProbe – CR**.
-* Protokoll- **TCP**.
-* Port **80**.
-
-```azurecli-interactive
-  az network cross-region lb probe create \
-    --lb-name myLoadBalancer-CR \
-    --name myHealthProbe-CR \
-    --port 80 \
-    --protocol Tcp \
-    --resource-group myResourceGroupLB-CR
-```
-
 ### <a name="create-the-load-balancer-rule"></a>Skapa lastbalanseringsregeln
 
 En belastnings Utjämnings regel definierar:
@@ -122,8 +105,7 @@ Skapa en belastnings Utjämnings regel med [AZ Network Cross-region-lb Rule Crea
     --protocol tcp \
     --resource-group myResourceGroupLB-CR \
     --backend-pool-name myBackEndPool-CR \
-    --frontend-ip-name myFrontEnd-CR \
-    --probe-name myHealthProbe-CR
+    --frontend-ip-name myFrontEnd-CR
 ```
 
 ## <a name="create-backend-pool"></a>Skapa serverdelspool
@@ -204,7 +186,6 @@ När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/az
 I den här kursen får du:
 
 * En belastningsutjämnare för flera regioner har skapats.
-* En hälso avsökning har skapats.
 * En regel för belastnings utjämning har skapats.
 * Regionala belastningsutjämnare har lagts till i backend-poolen för belastningsutjämnaren i flera regioner.
 * Belastnings utjämning har testats.
