@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 5d64ec925e1d88f8143a85393ceb18ae37c2b917
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 3bb7311a16b71b9bb76f14b4ba7a29dd2dae4a96
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202288"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010005"
 ---
 # <a name="whats-new-in-qna-maker"></a>Vad är nytt i QnA Maker
 
@@ -35,7 +35,7 @@ Lär dig vad som är nytt med QnA Maker.
   
 ### <a name="july-2020"></a>Juli 2020
 
-* [Metadata: `OR` logisk kombination av multipla metadata-par](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* [Metadata: `OR` logisk kombination av multipla metadata-par](how-to/query-knowledge-base-with-metadata.md#logical-or-using-strictfilterscompoundoperationtype-property)
 * [Steg](how-to/network-isolation.md) för att konfigurera kognitiv sökning slut punkter som ska vara privata, men fortfarande tillgängliga för QNA Maker.
 * Kostnads fria Kognitiv söknings resurser tas bort efter [90 dagar av inaktivitet](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources).
 

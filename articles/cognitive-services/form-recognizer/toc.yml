@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: Använda Formigenkänning med AI Builder
       href: tutorial-ai-builder.md
+    - name: Använda formulär igenkänning med Azure Functions
+      href: tutorial-azure-function.md
     - name: Massextrahera formulärdata
       href: tutorial-bulk-processing.md
 - name: Begrepp

@@ -5,23 +5,20 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 94edf35cc16d4967449af15797f6ecccba60be4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 87d51f9c1d084faf79c7ec1cf1255a6fb3c8245d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181099"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201008"
 ---
-# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Stoppa och starta ett AKS-kluster (Azure Kubernetes service) (för hands version)
+# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Stoppa och starta ett Azure Kubernetes service-kluster (AKS)
 
 Dina AKS-arbetsbelastningar kanske inte behöver köras kontinuerligt, till exempel ett utvecklings kluster som bara används under kontors tid. Detta leder till tider där ditt AKS-kluster (Azure Kubernetes service) kan vara inaktivt, vilket inte kör mer än system komponenterna. Du kan minska klustrets storlek genom [att skala alla `User` nodkonfigurationer till 0](scale-cluster.md#scale-user-node-pools-to-0), men [ `System` poolen](use-system-pools.md) krävs fortfarande för att köra system komponenterna medan klustret körs. Om du vill optimera kostnaderna ytterligare under dessa perioder kan du stänga av (stoppa) klustret. Med den här åtgärden stoppas dina kontroll Plans-och agent-noder helt, så att du kan spara på alla beräknings kostnader samtidigt som du behåller alla dina objekt och kluster tillstånd som lagras när du startar det igen. Sedan kan du hämta den högra delen av efter en helg eller låta klustret köras när du kör dina batch-jobb.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Den här artikeln förutsätter att du har ett befintligt AKS-kluster. Om du behöver ett AKS-kluster kan du läsa snabb starten för AKS [med hjälp av Azure CLI][aks-quickstart-cli] eller [Azure Portal][aks-quickstart-portal].
-
 
 ### <a name="limitations"></a>Begränsningar
 
@@ -29,42 +26,7 @@ När du använder funktionen för att starta/stoppa kluster gäller följande be
 
 - Den här funktionen stöds bara för Virtual Machine Scale Sets backade kluster.
 - Kluster statusen för ett stoppat AKS-kluster bevaras i upp till 12 månader. Om klustret har stoppats i mer än 12 månader går det inte att återställa kluster statusen. Mer information finns i [AKS support policies](support-policies.md).
-- Under för hands versionen måste du stoppa klustrets autoskalning (CA) innan du försöker stoppa klustret.
 - Du kan bara starta eller ta bort ett stoppat AKS-kluster. Starta klustret först om du vill utföra en åtgärd som Scale eller Upgrade.
-
-### <a name="install-the-aks-preview-azure-cli"></a>Installera `aks-preview` Azure CLI 
-
-Du behöver också *AKS – för hands* version av Azure CLI-tillägget 0.4.64 eller senare. Installera *AKS-Preview* Azure CLI-tillägget med kommandot [AZ Extension Add][az-extension-add] . Eller installera eventuella tillgängliga uppdateringar med kommandot [AZ Extension Update][az-extension-update] .
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
-
-### <a name="register-the-startstoppreview-preview-feature"></a>Registrera `StartStopPreview` förhands gransknings funktionen
-
-Om du vill använda funktionen starta/stoppa kluster måste du aktivera `StartStopPreview` funktions flaggan i din prenumeration.
-
-Registrera `StartStopPreview` funktions flaggan med hjälp av kommandot [AZ Feature register][az-feature-register] , som du ser i följande exempel:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
-```
-
-Det tar några minuter för statusen att visa *registrerad*. Verifiera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
-```
-
-När du är klar uppdaterar du registreringen av resurs leverantören *Microsoft. container service* med hjälp av kommandot [AZ Provider register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 ## <a name="stop-an-aks-cluster"></a>Stoppa ett AKS-kluster
 
@@ -95,7 +57,6 @@ Om `provisioningState` visar `Stopping` att ditt kluster inte har stoppats helt 
 > [!IMPORTANT]
 > Om du använder [Pod störnings budgetar](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) kan stopp åtgärden ta längre tid eftersom tömnings processen tar längre tid att slutföra.
 
-
 ## <a name="start-an-aks-cluster"></a>Starta ett AKS-kluster
 
 Du kan använda `az aks start` kommandot för att starta ett stoppat AKS-klusters noder och kontroll plan. Klustret startas om med föregående kontroll Plans tillstånd och antalet agent-noder.  
@@ -122,7 +83,6 @@ Du kan kontrol lera att klustret har startats med kommandot [AZ AKS show][az-aks
 ```
 
 Om `provisioningState` visar `Starting` att ditt kluster inte har startats helt ännu.
-
 
 ## <a name="next-steps"></a>Nästa steg
 

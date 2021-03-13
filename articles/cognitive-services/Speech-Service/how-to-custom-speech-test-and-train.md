@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424503"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232502"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Förbereda data för Custom Speech
 
@@ -39,6 +39,8 @@ En modell som är utbildad i en delmängd scenarier kan bara fungera bra i dessa
 > Börja med små mängder exempel data som matchar språket och akustiskt din modell.
 > Registrera till exempel ett litet men representativt exempel på ljud på samma maskin vara och i samma akustiska miljö som din modell kommer att se i produktions scenarier.
 > Små data uppsättningar med representativa data kan exponera problem innan du har investerat i att samla in en mycket större data uppsättningar för utbildning.
+>
+> Överväg att använda exempel data för att snabbt komma igång. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Exempel Custom Speech data</a> finns i den här GitHub-lagringsplatsen
 
 ## <a name="data-types"></a>Datatyper
 
@@ -46,21 +48,18 @@ I den här tabellen listas godkända data typer, när varje datatyp ska använda
 
 | Datatyp | Används för testning | Rekommenderad kvantitet | Används för utbildning | Rekommenderad kvantitet |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ljud](#audio-data-for-testing) | Yes<br>Används för visuell granskning | 5 + ljudfiler | No | Ej tillämpligt |
-| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Yes | 1-20 timmars ljud |
-| [Relaterad text](#related-text-data-for-training) | No | Ej tillämpligt | Yes | 1-200 MB relaterad text |
-
-När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser. Det går mycket snabbare att träna med text än att träna med ljud (minuter jämfört med dagar).
+| [Ljud](#audio-data-for-testing) | Ja<br>Används för visuell granskning | 5 + ljudfiler | Inga | Ej tillämpligt |
+| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Ja | 1-20 timmars ljud |
+| [Relaterad text](#related-text-data-for-training) | Inga | Ej tillämpligt | Ja | 1-200 MB relaterad text |
 
 Filerna ska grupperas efter typ i en data uppsättning och laddas upp som en zip-fil. Varje data uppsättning får bara innehålla en enda datatyp.
 
 > [!TIP]
-> Överväg att använda exempel data för att snabbt komma igång. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Exempel Custom Speech data</a> finns i den här GitHub-lagringsplatsen
+> När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser. Det går mycket snabbare att träna med text än att träna med ljud (minuter jämfört med dagar).
 
 > [!NOTE]
 > Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data. Även om en bas modell stöder utbildning med ljuddata, kan tjänsten endast använda en del av ljudet. Fortfarande kommer den att använda alla avskrifter.
-
-> [!NOTE]
+>
 > I fall när du ändrar bas modellen som används för utbildning och du har ljud i träning-datauppsättningen, kontrollerar du *alltid* om den nya valda bas modellen [stöder utbildning med ljuddata](language-support.md#speech-to-text). Om den tidigare använda bas modellen inte har stöd för utbildning med ljuddata, och hierarkin data uppsättning innehåller ljud, ökar inlärnings tiden med den nya bas modellen **drastiskt** , och det kan enkelt gå från flera timmar till flera dagar. Detta gäller särskilt om din röst tjänst prenumeration **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 >
 > Om du möter problemet som beskrivs i stycket ovan kan du snabbt minska inlärnings tiden genom att minska mängden ljud i data uppsättningen eller ta bort det helt och hållet texten kvar. Det sistnämnda alternativet är starkt rekommenderat om din prenumeration på röst tjänsten **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
@@ -103,7 +102,7 @@ Använd den här tabellen för att se till att ljudfilerna är korrekt formatera
 
 Använd <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX </a> för att verifiera ljud egenskaperna eller konvertera det befintliga ljudet till rätt format. Nedan visas några exempel på hur var och en av dessa aktiviteter kan göras via SoX-kommando raden:
 
-| Aktivitet | Description | SoX-kommando |
+| Aktivitet | Beskrivning | SoX-kommando |
 |----------|-------------|-------------|
 | Kontrol lera ljud formatet | Använd det här kommandot för att kontrol lera<br>ljud fil formatet. | `sox --i <filename>` |
 | Konvertera ljud format | Använd det här kommandot för att konvertera<br>ljud filen till en kanal, 16-bitars 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |

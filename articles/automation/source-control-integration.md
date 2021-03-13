@@ -3,14 +3,14 @@ title: Använd käll kontroll integrering i Azure Automation
 description: Den här artikeln beskriver hur du synkroniserar Azure Automation käll kontroll med andra databaser.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/12/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050778"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631752"
 ---
 # <a name="use-source-control-integration"></a>Använda källkontrollsintegrering
 
@@ -30,7 +30,7 @@ Azure Automation stöder tre typer av käll kontroll:
 
 * Ett lagrings lager för käll kontroll (GitHub eller Azure databaser)
 * Ett [Kör som-konto](automation-security-overview.md#run-as-accounts)
-* De [senaste Azure-modulerna](automation-update-azure-modules.md) i ditt Automation-konto, inklusive `Az.Accounts` modulen (AZ-modul motsvarande `AzureRM.Profile` )
+* [ `AzureRM.Profile` Modulen](/powershell/module/azurerm.profile/) måste importeras till ditt Automation-konto. Observera att motsvarande AZ module ( `Az.Accounts` ) inte fungerar med automatiserings käll kontroll.
 
 > [!NOTE]
 > Synkroniseringsjobb för käll kontroll körs under användarens Automation-konto och debiteras enligt samma taxa som andra Automation-jobb.
@@ -62,7 +62,7 @@ Använd den här proceduren för att konfigurera käll kontroll med Azure Portal
     |Mappsökväg     | Mapp som innehåller Runbooks som ska synkroniseras, till exempel **/Runbooks**. Endast Runbooks i den angivna mappen synkroniseras. Rekursion stöds inte.        |
     |Automatisk synkronisering<sup>1</sup>     | Inställning som aktiverar eller inaktiverar automatisk synkronisering när ett genomförande görs i käll kontrollens lagrings plats.        |
     |Publicera Runbook     | Inställning av på om Runbooks publiceras automatiskt efter synkronisering från käll kontroll och av annat sätt.           |
-    |Description     | Text som anger ytterligare information om käll kontrollen.        |
+    |Beskrivning     | Text som anger ytterligare information om käll kontrollen.        |
 
     <sup>1</sup> om du vill aktivera automatisk synkronisering när du konfigurerar käll kontrolls integrering med Azure databaser måste du vara projekt administratör.
 

@@ -3,14 +3,14 @@ title: Skapa en Windows Server-behållare i ett AKS-kluster med hjälp av PowerS
 description: Lär dig hur du snabbt skapar ett Kubernetes-kluster, distribuerar ett program i en Windows Server-behållare i Azure Kubernetes service (AKS) med hjälp av PowerShell.
 services: container-service
 ms.topic: article
-ms.date: 05/26/2020
+ms.date: 03/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b877ecbdca06ff73d152e1b491e993798a99f98a
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625122"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233522"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Skapa en Windows Server-behållare i ett Azure Kubernetes service-kluster (AKS) med PowerShell
 
@@ -83,8 +83,9 @@ Om du vill köra ett AKS-kluster som har stöd för resurspooler för Windows Se
 > För att säkerställa att klustret fungerar på ett tillförlitligt sätt bör du köra minst två (två) noder i standardnodens adresspool.
 
 ```azurepowershell-interactive
-$Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+$Username = Read-Host -Prompt 'Please create a username for the administrator credentials on your Windows Server containers: '
+$Password = Read-Host -Prompt 'Please create a password for the administrator credentials on your Windows Server containers: ' -AsSecureString
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName $Username -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -97,7 +98,7 @@ Efter några minuter slutförs kommandot och returnerar information om klustret.
 Som standard skapas ett AKS-kluster med en Node-pool som kan köra Linux-behållare. Använd `New-AzAksNodePool` cmdlet för att lägga till en noduppsättning som kan köra Windows Server-behållare tillsammans med Linux-noden.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin
 ```
 
 Kommandot ovan skapar en ny Node-pool med namnet **npwin** och lägger till den i **myAKSCluster**. När du skapar en Node-pool för att köra Windows Server-behållare, är standardvärdet för **VmSize** **Standard_D2s_v3**. Om du väljer att ange parametern **VmSize** kontrollerar du listan med [begränsade VM-storlekar][restricted-vm-sizes]. Den minsta rekommenderade storleken är **Standard_D2s_v3**. Föregående kommando använder också standard under nätet i det virtuella nätverk som skapas när det körs `New-AzAks` .

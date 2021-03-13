@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367511"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616408"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Självstudiekurs: Konfigurera HTTPS på en anpassad Azure CDN-domän
 
@@ -356,6 +356,11 @@ I följande tabell visas åtgärdsförloppet när du inaktiverar HTTPS. När du 
 7. *Hur fungerar certifikat förnyelser med ditt eget certifikat?*
 
     Om du vill se till att ett nyare certifikat distribueras till PoP-infrastrukturen laddar du upp det nya certifikatet till Azure-nyckel valvet. I TLS-inställningarna på Azure CDN väljer du den senaste certifikat versionen och väljer Spara. Azure CDN kommer sedan att sprida ditt nya uppdaterade certifikat. 
+
+8. *Måste jag återaktivera HTTPS när slut punkten har startats om?*
+
+    Ja. Om du använder **Azure CDN från Akamai**, om slut punkten stoppas och startas om, måste du Aktivera HTTPS-inställningen igen om inställningen var aktiv tidigare.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

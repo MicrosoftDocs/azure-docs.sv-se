@@ -3,12 +3,12 @@ title: Åtgärds regler för Azure Monitor aviseringar
 description: Att förstå vilka åtgärds regler i Azure Monitor är och hur du konfigurerar och hanterar dem.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 07d179f557671a515a7933b64a25e6d41f75219b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1a86493b4b478e8ebc75545bf80dafa425132fe4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045623"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016006"
 ---
 # <a name="action-rules-preview"></a>Åtgärds regler (förhands granskning)
 
@@ -61,19 +61,25 @@ Välj först omfånget (Azure-prenumeration, resurs grupp eller mål resurs). Du
 
 ### <a name="filter-criteria"></a>Filter villkor
 
-Du kan också definiera filter för att begränsa dem till en viss delmängd av aviseringarna.
+Du kan också definiera filter så att regeln gäller för en viss del av aviseringarna eller till vissa händelser för varje avisering (till exempel endast "utlöst" eller "löst").
 
 De tillgängliga filtren är:
 
-* **Allvarlighets grad**: möjlighet att välja en eller flera aviserings allvarlighets grader. **Allvarlighets grad = Sev1** innebär att åtgärds regeln gäller för alla aviseringar som angetts till Sev1.
-* **Övervaka tjänst**: ett filter som baseras på den ursprungliga övervaknings tjänsten. Det här filtret är också flera-Välj. Exempel: **Monitor Service = "Application Insights"** innebär att åtgärds regeln gäller för alla Application Insights-baserade aviseringar.
-* **Resurs typ**: ett filter baserat på en speciell resurs typ. Det här filtret är också flera-Välj. Till exempel innebär **resurs typ = "Virtual Machines"** att åtgärds regeln gäller för alla virtuella datorer.
-* **Varnings regel-ID**: ett alternativ för att filtrera efter vissa aviserings regler med hjälp av Resource Manager-ID för varnings regeln.
-* **Övervaknings villkor**: ett filter för varnings instanser med antingen **utlöst** eller **löst** som övervaknings villkor.
-* **Beskrivning**: ett regex-matchning (reguljärt uttryck) som definierar en sträng matchning mot beskrivningen, definierad som en del av varnings regeln. Beskrivningen innehåller t. ex. **"Prod"** att matcha alla aviseringar som innehåller strängen "Prod" i deras beskrivningar.
-* **Aviserings kontext (nytto Last)**: en regex-matchning som definierar en sträng matchning mot aviserings kontext fälten i en aviserings nytto Last. Till exempel **innehåller aviserings kontext (nytto Last) "Computer-01"** och matchar alla aviseringar vars nytto laster innehåller strängen "Computer-01".
+* **Allvarlighets grad**: regeln gäller endast för aviseringar med de valda allvarlighets graderna.  
+**Allvarlighets grad = Sev1** innebär till exempel att regeln endast gäller för aviseringar med Sev1-allvarlighets grad.
+* **Övervaka tjänst**: regeln gäller endast för aviseringar som kommer från de valda övervaknings tjänsterna.  
+Exempel: **Monitor Service = "Azure Backup"** innebär att regeln endast gäller för säkerhets kopierings aviseringar (kommer från Azure Backup).
+* **Resurs typ**: regeln gäller endast för aviseringar på de valda resurs typerna.  
+Till exempel innebär **resurs typ = "Virtual Machines"** att regeln endast ska gälla för aviseringar på virtuella datorer.
+* **Varnings regel-ID**: regeln gäller endast för aviseringar som kommer från en speciell aviserings regel. Värdet ska vara Resource Manager-ID för varnings regeln.  
+**Varnings regel-ID = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/providers/Microsoft.Insights/metricalerts/MyAPI-highLatency"** innebär till exempel att den här regeln endast gäller för aviseringar som kommer från "MyAPI-highLatency" mått varnings regel.
+* **Övervaknings villkor**: regeln gäller endast för aviserings händelser med angivet övervaknings villkor – antingen **utlöst** eller **löst**.
+* **Beskrivning**: regeln gäller endast för aviseringar som innehåller en angiven sträng i fältet aviserings beskrivning. Fältet innehåller en beskrivning av varnings regeln.  
+**Beskrivningen innehåller till exempel "Prod"** innebär att regeln endast matchar aviseringar som innehåller strängen "Prod" i deras beskrivning.
+* **Aviserings kontext (nytto Last)**: den här regeln gäller endast för aviseringar som innehåller ett eller flera angivna värden i aviserings kontext fälten.  
+Till exempel **innehåller aviserings kontexten (nytto lasten) "Computer-01"** att regeln endast ska gälla aviseringar vars nytto Last innehåller strängen "Computer-01".
 
-Dessa filter används tillsammans med varandra. Om du till exempel anger **resurs typen ' = Virtual Machines** och **allvarlighets grad ' = Sev0** har du filtrerat för alla **Sev0** -aviseringar endast på dina virtuella datorer.
+Om du anger flera filter i en regel gäller alla. Om du till exempel anger **resurs typen ' = Virtual Machines** och **allvarlighets grad ' = Sev0** gäller regeln endast för Sev0-aviseringar på virtuella datorer.
 
 ![Åtgärds regel filter](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -102,7 +108,7 @@ Om du väljer **Åtgärds grupp** i växlingen, lägger du till en befintlig åt
 ### <a name="action-rule-details"></a>Åtgärds regel information
 
 Konfigurera senast följande information för åtgärds regeln:
-* Namn
+* Name
 * Resurs grupp där den sparas
 * Beskrivning
 

@@ -9,14 +9,16 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 055b89858fde901ab014e409fbe30c3438efce12
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9ee5536562eb3f2008908a36ff296ef2cfa337ea
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732997"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200608"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Konfigurera behållar skapande alternativ för IoT Edge moduler
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Med parametern **createOptions** i distributions manifestet kan du konfigurera modulens behållare vid körning. Den här parametern utökar kontrollen över modulerna och gör det möjligt för uppgifter som att tillåta eller begränsa modulens åtkomst till värd enhetens resurser, eller konfigurera nätverk.
 

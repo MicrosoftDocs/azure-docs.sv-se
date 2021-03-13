@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382828"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630749"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrera arbets belastningar från en Azure Stack Edge Pro-FPGA till en Azure Stack Edge Pro GPU
 
@@ -157,10 +157,10 @@ Du kommer nu att kopiera data från käll enheten till gräns moln resurser och 
 
 Följ dessa steg för att synkronisera data på gräns moln resurser på mål enheten:
 
-1. [Lägg till resurser](azure-stack-edge-j-series-manage-shares.md#add-a-share) som motsvarar resurs namnen som skapats på käll enheten. Se till att när du skapar resurser, **väljer du Blob container** är inställt på **Använd befintligt** och väljer sedan den behållare som användes med den tidigare enheten.
-1. [Lägg till användare](azure-stack-edge-j-series-manage-users.md#add-a-user) som hade åtkomst till den tidigare enheten.
-1. [Uppdatera dela](azure-stack-edge-j-series-manage-shares.md#refresh-shares) data från Azure. Detta hämtar alla moln data från den befintliga behållaren till resurserna.
-1. Återskapa de bandbredds scheman som ska associeras med dina resurser. Se [Lägg till ett bandbredds schema](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) för detaljerade steg.
+1. [Lägg till resurser](azure-stack-edge-gpu-manage-shares.md#add-a-share) som motsvarar resurs namnen som skapats på käll enheten. Se till att när du skapar resurser, **väljer du Blob container** är inställt på **Använd befintligt** och väljer sedan den behållare som användes med den tidigare enheten.
+1. [Lägg till användare](azure-stack-edge-gpu-manage-users.md#add-a-user) som hade åtkomst till den tidigare enheten.
+1. [Uppdatera dela](azure-stack-edge-gpu-manage-shares.md#refresh-shares) data från Azure. Detta hämtar alla moln data från den befintliga behållaren till resurserna.
+1. Återskapa de bandbredds scheman som ska associeras med dina resurser. Se [Lägg till ett bandbredds schema](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) för detaljerade steg.
 
 
 ### <a name="2-from-edge-local-shares"></a>2. från lokala Edge-resurser
@@ -172,7 +172,7 @@ När ersättnings enheten är helt konfigurerad aktiverar du enheten för lokal 
 Följ dessa steg om du vill återställa data från lokala resurser:
 
 1. [Konfigurera beräkning på enheten](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. Lägg till alla lokala resurser på mål enheten. Se de detaljerade stegen i [Lägg till en lokal resurs](azure-stack-edge-j-series-manage-shares.md#add-a-local-share).
+1. Lägg till alla lokala resurser på mål enheten. Se de detaljerade stegen i [Lägg till en lokal resurs](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
 1. Att komma åt SMB-resurserna på käll enheten använder IP-adresserna på mål enheten, du använder enhets namnet. Se [ansluta till en SMB-resurs på Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Om du vill ansluta till NFS-resurser på mål enheten måste du använda de nya IP-adresserna som är kopplade till enheten. Se [ansluta till en NFS-resurs på Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
     Om du har kopierat dina delnings data till en mellanliggande server över SMB/NFS, kan du kopiera dessa data till resurser på mål enheten. Du kan också kopiera data från käll enheten direkt, om både källan och mål enheten är *online*.

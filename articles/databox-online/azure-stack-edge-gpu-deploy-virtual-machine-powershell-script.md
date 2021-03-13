@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 82019031eab4c17465115c4a24598f43d4620148
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 36c7078a79cf8b0b7414c5031acb79b9a2c2453c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436456"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630494"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet via Azure PowerShell-skript
 
@@ -41,7 +41,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
     1. Starta **anteckningar** som administratör (administratörs behörighet krävs för att spara filen) och öppna sedan **hosts** -filen som finns på `C:\Windows\System32\Drivers\etc` .
     
-        ![Windows Explorer Hosts-fil](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![Windows Explorer Hosts-fil](media/azure-stack-edge-gpu-connect-resource-manager/hosts-file.png)
     
     2. Lägg till följande poster i **hosts** -filen och Ersätt med lämpliga värden för din enhet:
     
@@ -54,7 +54,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
     3. Använd följande bild för referens. Spara **värdens** fil.
 
-        ![Hosts-fil i anteckningar](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![Hosts-fil i anteckningar](media/azure-stack-edge-gpu-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
 2. [Hämta PowerShell-skriptet](https://aka.ms/ase-vm-powershell) som används i den här proceduren.
 

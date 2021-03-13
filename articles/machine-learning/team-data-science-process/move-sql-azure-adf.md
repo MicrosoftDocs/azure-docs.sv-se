@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e477e4bb3b31477f9407e981d4c8da2340411f55
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309543"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615745"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Flytta data från en SQL Server databas till SQL Database med Azure Data Factory
 
@@ -87,7 +87,7 @@ Steg för steg-proceduren för att skapa länkade tjänster finns i [Skapa länk
 Skapa tabeller som anger strukturen, platsen och tillgängligheten för data uppsättningarna med följande skriptbaserade procedurer. JSON-filer används för att definiera tabeller. Mer information om strukturen för dessa filer finns i [data uppsättningar](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> Du bör köra `Add-AzureAccount` cmdleten innan du kör cmdleten [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) för att bekräfta att rätt Azure-prenumeration har valts för kommando körningen. Dokumentation av den här cmdleten finns i [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
+> Du bör köra `Add-AzureAccount` cmdleten innan du kör cmdleten [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) för att bekräfta att rätt Azure-prenumeration har valts för kommando körningen. Dokumentation av den här cmdleten finns i [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount).
 >
 >
 
@@ -138,7 +138,7 @@ Tabell definitionen för SQL Server anges i följande JSON-fil:
 
 Kolumn namnen ingår inte här. Du kan välja att markera kolumn namnen genom att inkludera dem här (mer information finns i artikeln om [dokumentation om ADF](../../data-factory/copy-activity-overview.md) .
 
-Kopiera JSON-definitionen för tabellen till en fil med namnet *onpremtabledef.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\onpremtabledef.jspå* ). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera JSON-definitionen för tabellen till en fil med namnet *onpremtabledef.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\onpremtabledef.jspå*). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ Definitionen för tabellen för BLOB-platsen för utdata är i följande (detta 
 }
 ```
 
-Kopiera JSON-definitionen för tabellen till en fil med namnet *bloboutputtabledef.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\bloboutputtabledef.jspå* ). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera JSON-definitionen för tabellen till en fil med namnet *bloboutputtabledef.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\bloboutputtabledef.jspå*). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ Definitionen för tabellen för SQL Azure utdata finns i följande (det här sch
 }
 ```
 
-Kopiera JSON-definitionen för tabellen till en fil med namnet *AzureSqlTable.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\AzureSqlTable.jspå* ). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera JSON-definitionen för tabellen till en fil med namnet *AzureSqlTable.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\AzureSqlTable.jspå*). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -294,7 +294,7 @@ Med de tabell definitioner som tillhandahölls tidigare, anges pipelinen för AD
 }
 ```
 
-Kopiera den här JSON-definitionen för pipelinen till en fil *med namnetpipelinedef.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\pipelinedef.jspå* ). Skapa pipelinen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera den här JSON-definitionen för pipelinen till en fil *med namnetpipelinedef.jspå* filen och spara den på en känd plats (här förutsätts vara *C:\temp\pipelinedef.jspå*). Skapa pipelinen i ADF med följande Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

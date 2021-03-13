@@ -3,7 +3,7 @@ title: Använda castLabs för att leverera Widevine-licenser till Azure Media Se
 description: 'I den här artikeln beskrivs hur du kan använda Azure Media Services (AMS) för att leverera en ström som är dynamiskt krypterad av AMS med både PlayReady-och Widevine-DRM: er.'
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: Juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan
-ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264495"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017060"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Använd castLabs för att leverera Widevine-licenser till Azure Media Services
 
@@ -40,7 +40,7 @@ Om du vill spela upp strömmande innehåll som skyddas av CENC (PlayReady och/el
 
 Följande diagram visar en övergripande Azure Media Services-och castLabs integrerings arkitektur.
 
-![samordning](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![integration](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Standard system konfiguration
 
@@ -71,7 +71,7 @@ I följande tabell beskrivs JWT-token i AMS.
 
 I följande tabell beskrivs JWT-token i castLabs. 
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | optData |En JSON-sträng som innehåller information om dig. |
 | CRT |En JSON-sträng som innehåller information om till gången, dess licens information och uppspelnings rättigheter. |

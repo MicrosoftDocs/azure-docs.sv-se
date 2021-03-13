@@ -10,6 +10,8 @@
       href: iot-services-and-technologies.md
     - name: Alternativ för support och hjälp
       href: iot-support-help.md
+    - name: IoT-ordlista
+      href: iot-glossary.md
 - name: Säkerhet
   items:
     - name: Rekommendationer

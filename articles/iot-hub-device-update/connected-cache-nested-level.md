@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 1501153b73683081dfac0684d6714eb537c03380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665019"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615388"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Exempel på distributions scenario med Microsoft Connected cache Preview: två nivåer kapslad Azure IoT Edge Gateway med utgående oautentiserad proxy
 
@@ -31,7 +31,7 @@ Diagrammet nedan beskriver scenariot där en Azure IoT Edge gateway som direkt �
 
     **Miljövariabler**
 
-    | Namn                 | Värde                                       |
+    | Name                 | Värde                                       |
     | ----------------------------- | --------------------------------------------| 
     | CACHE_NODE_ID                 | Se beskrivning av miljö variabel ovan. |
     | CUSTOMER_ID                   | Se beskrivning av miljö variabel ovan. |
@@ -70,7 +70,7 @@ Diagrammet nedan beskriver scenariot där en Azure IoT Edge gateway som direkt �
 ## <a name="child-gateway-configuration"></a>Konfiguration av underordnad Gateway
 
 >[!Note]
->Om du har replikerat behållare som används i din konfiguration i ditt eget privata register, måste du göra ändringar i inställningarna för config. toml och körnings inställningarna i modulen. Mer information finns i [självstudier – skapa en hierarki med IoT Edge enheter – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal#deploy-modules-to-the-lower-layer-device&preserve-view=true) för mer information.
+>Om du har replikerat behållare som används i din konfiguration i ditt eget privata register, måste du göra ändringar i inställningarna för config. toml och körnings inställningarna i modulen. Mer information finns i [självstudier – skapa en hierarki med IoT Edge enheter – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) för mer information.
 
 1. Ändra avbildnings Sök vägen för Edge-agenten så som visas i exemplet nedan:
 

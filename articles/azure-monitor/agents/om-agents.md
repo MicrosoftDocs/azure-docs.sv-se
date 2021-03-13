@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: e429b87397b91de28f7fea14729b0d18187fa8ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031386"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613008"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Anslut Operations Manager till Azure Monitor
 
@@ -99,6 +99,10 @@ För att säkerställa säkerheten för data som överförs till Azure Monitor r
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Ansluta Operations Manager till Azure Monitor
 
 Utför följande steg för att konfigurera hanteringsgruppen för Operations Manager för att ansluta till en av dina Log Analytics-arbetsytor.
+
+> [!NOTE]
+> Om du märker att Log Analytics data slutar att komma in från en angiven agent eller hanterings Server kan du prova att återställa Winsock-katalogen (Använd `netsh winsock reset` ) och sedan starta om servern. Om du återställer Winsock-katalogen kan nätverks anslutningar som har brutits återupprättas.
+
 
 Under den inledande registreringen av din Operations Manager hanterings grupp med en Log Analytics arbets yta är alternativet för att ange proxykonfigurationen för hanterings gruppen inte tillgängligt i drift konsolen.  Hanteringsgruppen måste registrerats med tjänsten innan det här alternativet är tillgängligt.  För att undvika detta måste du uppdatera systemproxy-konfigurationen med Netsh på systemet som kör drift konsolen från för att konfigurera integrering och alla hanterings servrar i hanterings gruppen.  
 

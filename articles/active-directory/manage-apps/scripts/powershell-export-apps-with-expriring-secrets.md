@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: c8a37b08db5cdb35bc9328cbc29caa04a5cdf412
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: def9b55a1d873cccda5d1c48921e3f098beeced1
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010845"
+ms.locfileid: "103149723"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>Exportera appar med utgångna hemligheter och certifikat
 
@@ -31,6 +31,8 @@ Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/
 [!code-azurepowershell[main](~/powershell_scripts/application-management/export-apps-with-expiring-secrets.ps1 "Exports all apps with expiring secrets and certificates for the specified apps in your directory.")]
 
 ## <a name="script-explanation"></a>Förklaring av skript
+
+Skriptet kan användas direkt utan några ändringar. Administratören kommer att tillfrågas om förfallo datumet och om de vill visa redan utgångna hemligheter eller certifikat eller inte.
 
 Kommandot "Lägg till medlem" ansvarar för att skapa kolumner i CSV-filen.
 Kommandot "nytt-objekt" skapar ett objekt som ska användas för kolumnerna i exporten av CSV-filen.

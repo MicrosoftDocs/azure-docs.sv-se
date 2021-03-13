@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: bb3925c5c642f2a6d00f8f5b7fe6471676c23c30
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f2e4bf603fa4cfb93c7ca51f64029ccaedcff727
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486645"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021612"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Lägg till hanterad identitet i kommunikations tjänst lösningen (Java)
 
@@ -15,12 +15,12 @@ I pom.xml-filen lägger du till följande beroende element i gruppen med beroend
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-identity</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.6</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.4</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
@@ -34,10 +34,17 @@ I pom.xml-filen lägger du till följande beroende element i gruppen med beroend
 Lägg till följande `import` direktiv i koden för att använda klient biblioteken Azure-identitet och Azure-kommunikation.
 
 ```java
-import com.azure.identity.*;
-import com.azure.communication.sms.*;
-import com.azure.communication.identity.*;
 import com.azure.communication.common.*;
+import com.azure.communication.identity.*;
+import com.azure.communication.identity.models.*;
+import com.azure.communication.sms.*;
+import com.azure.core.credential.*;
+import com.azure.core.http.*;
+import com.azure.core.http.netty.*;
+import com.azure.identity.*;
+
+import java.io.IOException;
+import java.util.*;
 ```
 
 Exemplen nedan använder [DefaultAzureCredential](/java/api/azure.identity.defaultazurecredential). Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer.
@@ -88,12 +95,12 @@ Följande kod exempel visar hur du skapar ett tjänst klient objekt med hanterad
                .buildClient();
 
           // Send the message and check the response for a message id
-          SendSmsResponse response = smsClient.sendMessage(
-               new PhoneNumberIdentifier("<leased-phone-number>"),
-               to,
-               "your message",
-               options /* Optional */
+          SmsSendResult response = smsClient.send(
+               "<from-phone-number>",
+               "<to-phone-number>",
+               "your message"
           );
+
           return response;
     }
 ```
