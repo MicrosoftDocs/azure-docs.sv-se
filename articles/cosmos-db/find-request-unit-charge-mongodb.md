@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: b7d880183ac5f920bbed1a85d7660db6a8f21462
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e488d1acfe116409caf571e7878e454628a9dea9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078483"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201333"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>Sök efter begär ande enhets avgiften för åtgärder som körs i Azure Cosmos DB API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB stöder många API: er, till exempel SQL, MongoDB, Cassandra, Gremlin och Table. Varje API har en egen uppsättning databas åtgärder. Dessa åtgärder sträcker sig från enkla punkter som läser och skriver till komplexa frågor. Varje databas åtgärd förbrukar system resurser baserat på åtgärdens komplexitet.
 
-Kostnaden för alla databasåtgärder normaliseras av Azure Cosmos DB och uttrycks i form av enheter för programbegäran (Request Units, RU:er). Du kan tänka dig ru: er som en prestanda valuta som sammanfattar system resurserna, till exempel CPU, IOPS och minne som krävs för att utföra de databas åtgärder som stöds av Azure Cosmos DB. Oavsett vilket API du använder för att interagera med din Azure Cosmos-behållare mäts kostnaderna alltid med RU:er. Om databas åtgärden är en skrivning, en läsning eller fråga, mäts kostnader alltid i ru: er. Mer information finns i artikeln om [enheter för programbegäran och dess överväganden](request-units.md) .
+Kostnaden för alla databasåtgärder normaliseras av Azure Cosmos DB och uttrycks i form av enheter för programbegäran (Request Units, RU:er). Avgift för begäran är de enheter för programbegäran som används av alla dina databas åtgärder. Du kan tänka dig ru: er som en prestanda valuta som sammanfattar system resurserna, till exempel CPU, IOPS och minne som krävs för att utföra de databas åtgärder som stöds av Azure Cosmos DB. Oavsett vilket API du använder för att interagera med din Azure Cosmos-behållare mäts kostnaderna alltid med RU:er. Om databas åtgärden är en skrivning, en läsning eller fråga, mäts kostnader alltid i ru: er. Mer information finns i artikeln om [enheter för programbegäran och dess överväganden](request-units.md) .
 
 I den här artikeln beskrivs de olika sätt som du kan hitta för att köra den [begärda enheten](request-units.md) (ru) för alla åtgärder som utförs mot en behållare i Azure Cosmos DB API för MongoDB. Om du använder ett annat API, se [SQL API](find-request-unit-charge.md), [API för Cassandra](find-request-unit-charge-cassandra.md), [Gremlin-API](find-request-unit-charge-gremlin.md)och [tabell-API](find-request-unit-charge-table.md) artiklar för att hitta ru/s-avgiften.
 
@@ -34,9 +34,9 @@ Avgiften för RU visas med ett anpassat [databas kommando](https://docs.mongodb.
 
 1. Gå till fönstret **datautforskaren** och välj den behållare som du vill arbeta med.
 
-1. Välj **Ny fråga** .
+1. Välj **Ny fråga**.
 
-1. Ange en giltig fråga och välj sedan **Kör fråga** .
+1. Ange en giltig fråga och välj sedan **Kör fråga**.
 
 1. Välj **fråga statistik** för att visa den faktiska begär ande avgiften för den begäran du utförde.
 

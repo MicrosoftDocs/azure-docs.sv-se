@@ -3,16 +3,17 @@ title: Underhålls kontroll för virtuella Azure-datorer med hjälp av Azure Por
 description: Lär dig hur du styr när underhåll tillämpas på dina virtuella Azure-datorer med underhålls kontroll och Azure Portal.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397291"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563021"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Styra uppdateringar med underhålls kontroll och Azure Portal
 
@@ -20,7 +21,7 @@ Med underhålls kontrollen kan du bestämma när du ska tillämpa uppdateringar 
 
 ## <a name="create-a-maintenance-configuration"></a>Skapa en underhållskonfiguration
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 
 1. Sök efter **underhålls konfigurationer**.
 
@@ -70,7 +71,7 @@ Du kan också kontrol lera konfigurationen för en speciell virtuell dator på s
 
 ## <a name="check-for-pending-updates"></a>Sök efter väntande uppdateringar
 
-Det finns också två sätt att kontrol lera om uppdateringar väntar på en underhålls konfiguration. I **underhålls**konfiguration klickar du på **tilldelningar** i information om konfigurationen och kontrollerar **underhålls status**.
+Det finns också två sätt att kontrol lera om uppdateringar väntar på en underhålls konfiguration. I **underhålls** konfiguration klickar du på **tilldelningar** i information om konfigurationen och kontrollerar **underhålls status**.
 
 ![Skärm bild som visar hur du kontrollerar väntande uppdateringar](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending.png)
 
@@ -86,7 +87,7 @@ Du kan tillämpa väntande uppdateringar på begäran med hjälp av **Virtual Ma
 
 ## <a name="check-the-status-of-applying-updates"></a>Kontrol lera status för att tillämpa uppdateringar 
 
-Du kan kontrol lera förloppet för uppdateringarna för en konfiguration i **underhålls konfiguration** eller med hjälp av **Virtual Machines**. Klicka på **Underhåll**i den virtuella dator informationen. I följande exempel visar **underhålls status** en uppdatering **väntar**.
+Du kan kontrol lera förloppet för uppdateringarna för en konfiguration i **underhålls konfiguration** eller med hjälp av **Virtual Machines**. Klicka på **Underhåll** i den virtuella dator informationen. I följande exempel visar **underhålls status** en uppdatering **väntar**.
 
 ![Skärm bild som visar hur du kontrollerar status för väntande uppdateringar](media/virtual-machines-maintenance-control-portal/maintenance-configurations-status.png)
 

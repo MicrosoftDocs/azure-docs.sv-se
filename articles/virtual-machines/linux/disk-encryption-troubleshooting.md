@@ -2,18 +2,19 @@
 title: Felsöka Azure Disk Encryption för virtuella Linux-datorer
 description: Den här artikeln innehåller fel söknings tips för Microsoft Azure disk kryptering för virtuella Linux-datorer.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a1bdce0478961b27bde7dd32733d95c58ba2361
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 58ea788d6959b039ff5de8a4a889c531b987d826
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972245"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563378"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Azure Disk Encryption för fel söknings guide för Linux-VM: ar
 
@@ -22,7 +23,7 @@ Den här guiden är för IT-proffs, informations säkerhets analytiker och moln 
 Innan du vidtar stegen nedan måste du först se till att de virtuella datorer som du försöker kryptera finns bland de [VM-storlekar och operativ system som stöds](disk-encryption-overview.md#supported-vms-and-operating-systems)och att du uppfyller alla krav:
 
 - [Ytterligare krav för virtuella datorer](disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [Nätverks krav](disk-encryption-overview.md#networking-requirements)
+- [Nätverkskrav](disk-encryption-overview.md#networking-requirements)
 - [Lagrings krav för krypterings nyckel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
  

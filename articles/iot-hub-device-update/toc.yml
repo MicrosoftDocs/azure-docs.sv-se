@@ -56,8 +56,6 @@
       href: create-update-group.md
     - name: Distribuera en enhets uppdatering
       href: deploy-update.md
-    - name: Distribuera en enhets uppdatering
-      href: deploy-update.md
     - name: Microsoft-ansluten cache med en nivå
       href: connected-cache-single-level.md
     - name: Microsoft-ansluten cache med kapslad nivå
@@ -75,7 +73,7 @@
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
     - name: Azure IoT-tjänster
       items:
         - name: IoT Hub

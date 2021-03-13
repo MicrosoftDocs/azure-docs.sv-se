@@ -7,55 +7,69 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 19b7f9bc19bec989e524dce7172037025e2fe4fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 634298952d990cd3639aa1c62592fde534b3e8b8
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432987"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232687"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantisk sökning i Azure Kognitiv sökning
 
 > [!IMPORTANT]
-> Semantiska Sök funktioner finns i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Semantiska Sök funktioner finns i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick, under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)och är inte garanterade att ha samma implementering vid allmän tillgänglighet. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
-Semantisk sökning är en samling frågor som är relaterade till funktioner som stöder en bättre, mer naturlig fråge upplevelse. Funktionerna omfattar semantisk rerangering av Sök resultat, samt under texter och svars generering med semantisk markering. De översta 50 resultaten som returnerades från [motorn för full texts ökning](search-lucene-query-architecture.md) rangordnas för att hitta de mest relevanta matchningarna.
+Semantisk sökning är en samling frågor som är relaterade till funktioner som stöder en bättre, mer naturlig fråge upplevelse. 
 
-Den underliggande tekniken är från Bing och Microsoft Research och integreras i Kognitiv sökning-infrastrukturen. Mer information om forskning och AI-investeringar som backar semantisk sökning finns i [hur AI från Bing fungerar med Azure kognitiv sökning (Microsoft Research blogg)](https://www.microsoft.com/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/).
+Dessa funktioner omfattar en semantisk rerangering av Sök resultat, samt beskrivning och extrahering av svar, med semantisk markering över relevanta termer och fraser. Avancerade förtränade modeller används för extrahering och rankning. För att upprätthålla den snabba prestanda som användarna förväntar sig att söka, tillämpas semantisk Sammanfattning och rangordning enbart på de översta 50-resultaten, vilket visas i [standard algoritmen för likhets](index-similarity-and-scoring.md#similarity-ranking-algorithms)bedömning. Genom att använda dessa resultat som dokument sökkorpus, kommer semantisk rangordning att omvärdera dessa resultat baserat på matchningens semantiska styrka.
 
-Om du vill använda semantisk sökning i frågor måste du göra små ändringar i sökbegäran, men ingen extra konfiguration eller Omindexering krävs.
+Den underliggande tekniken är från Bing och Microsoft Research och integreras i Kognitiv sökning-infrastrukturen som en tilläggs funktion. Mer information om forskning och AI-investeringar som backar semantisk sökning finns i [hur AI från Bing fungerar med Azure kognitiv sökning (Microsoft Research blogg)](https://www.microsoft.com/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/).
 
-Offentliga för hands versions funktioner är:
+Följande videoklipp ger en översikt över funktionerna.
 
-+ Semantisk rangordnings modell som använder kontexten eller semantiskt syfte att beräkna en relevans Poäng
-+ Semantiska beskrivningar som sammanfattar viktiga resultat för enkel skanning
-+ Semantiska svar på frågan, om frågan är en fråga
-+ Semantiska högdagrar som fokuserar på nyckel fraser och termer
-+ Stavnings kontroll som korrigerar skrivfel innan villkoren når sökmotorn
+> [!VIDEO https://www.youtube.com/embed/yOf0WfVd_V0]
+
+## <a name="components-and-workflow"></a>Komponenter och arbets flöde
+
+Semantisk sökning förbättrar precisionen och återkallas genom att lägga till följande funktioner:
+
+| Funktion | Beskrivning |
+|---------|-------------|
+| [Stavningskontroll](speller-how-to-add.md) | Korrigerar skrivfel innan sökorden når sökmotorn. |
+| [Semantisk rangordning](semantic-ranking.md) | Använder kontexten eller semantiskt innebörd för att beräkna en ny relevans poäng. |
+| [Semantiska beskrivningar och högdagrar](semantic-how-to-query-request.md) | Meningar och fraser från ett dokument som bäst sammanfattar innehållet, med högdagrar över viktiga passager för enkel sökning. Under texter som sammanfattar ett resultat är användbart när enskilda innehålls fält är för kompakta för resultat sidan. Markerad text förhöjer de mest relevanta termerna och fraserna så att användarna snabbt kan avgöra varför en matchning ansågs vara relevant. |
+| [Semantiska svar](semantic-answers.md) | En valfri och ytterligare under struktur som returneras från en semantisk fråga. Det ger ett direkt svar på en fråga som ser ut som en fråga. |
+
+### <a name="order-of-operations"></a>Åtgärds ordning
+
+Komponenter för semantisk sökning utökar den befintliga pipeline för körning av frågor i båda riktningarna. Om du aktiverar stavnings korrigering korrigeras stavarna i början av [stavningen](speller-how-to-add.md) innan villkoren når sökmotorn.
+
+:::image type="content" source="media/semantic-search-overview/semantic-workflow.png" alt-text="Semantiska komponenter i frågekörningen" border="true":::
+
+Frågekörningen fortsätter som vanligt, med termen tolkning, analys och skanningar över de inverterade indexen. Motorn hämtar dokument med hjälp av token-matchning och ger resultaten med hjälp av [standard bedömnings algoritmen för likhet](index-similarity-and-scoring.md#similarity-ranking-algorithms). Poängen beräknas baserat på den språkliga likheten mellan sökorden och matchnings villkoren i indexet. Om du har definierat dem tillämpas bedömnings profiler också i det här skedet. Resultaten skickas sedan till under systemet för semantisk sökning.
+
+I förberedelse steget analyseras det dokument sökkorpus som returnerades från den första resultat uppsättningen på menings-och stycke nivå för att hitta resultat som sammanfattar varje dokument. I motsats till nyckelords sökning använder det här steget maskin läsning och förståelse för att utvärdera innehållet. Som en del av resultat sammansättningen returnerar en semantisk fråga under texter och svar. För att formulera dem använder semantisk sökning en språk representation för att extrahera och markera nyckel passager som bäst sammanfattar ett resultat. Om Sök frågan är en fråga – och svar begärs – svaret innehåller även en text passage som bäst svarar på frågan, som uttrycks av Sök frågan. För både bild texter och svar används befintlig text i formuleringen. De semantiska modellerna skapar inte nya meningar eller fraser från det tillgängliga innehållet, och använder inte heller logik för att komma till nya slut satser. I korthet returnerar systemet aldrig innehåll som inte redan finns.
+
+Resultaten visas sedan på nytt baserat på det [konceptuella likhets](semantic-ranking.md) tecknet för sökord.
+
+Om du vill använda semantiska funktioner i frågor måste du göra små ändringar i [sökbegäran](semantic-how-to-query-request.md), men ingen extra konfiguration eller Omindexering krävs.
 
 ## <a name="availability-and-pricing"></a>Tillgänglighet och priser
 
-Semantisk rangordning är tillgängligt via [registrerings registrering](https://aka.ms/SemanticSearchPreviewSignup), på search Services som skapats på en standard nivå (S1, S2, S3), som finns i någon av dessa regioner: Norra centrala USA, västra USA, västra USA 2, östra USA 2, norra Europa, västra Europa. Stavnings korrigering är tillgänglig i samma regioner, men saknar nivå begränsningar. Om du har en befintlig tjänst som uppfyller villkoret för nivån och regionen krävs bara registrering.
+Semantiska funktioner är tillgängliga via [registrerings registrering](https://aka.ms/SemanticSearchPreviewSignup), på search Services som skapats på en standard nivå (S1, S2, S3), som finns i något av följande regioner: Norra centrala USA, västra USA, västra USA 2, östra USA 2, norra Europa, Västeuropa. 
+
+Stavnings korrigering är tillgänglig i samma regioner, men saknar nivå begränsningar. Om du har en befintlig tjänst som uppfyller villkoret för nivån och regionen krävs bara registrering.
 
 Mellan för hands versions lansering den 2 mars till och med den 1 april erbjuds stavnings korrigering och semantisk rangordning utan kostnad. Efter den 1 april blir beräknings kostnaden för att köra den här funktionen en fakturerbar händelse. Den förväntade kostnaden är cirka USD $500/månad för 250 000 frågor. Du hittar detaljerad kostnads information som beskrivs på [sidan kognitiv sökning prissättning](https://azure.microsoft.com/pricing/details/search/) och i [Beräkna och hantera kostnader](search-sku-manage-costs.md).
-
-## <a name="semantic-search-architecture"></a>Arkitektur för semantisk sökning
-
-Komponenter i semantisk sökning ligger ovanpå den befintliga pipeline för frågekörning. Stavnings korrigering (visas inte i diagrammet) förbättrar återställningen genom att korrigera skrivfel i enskilda sökord. När parsningen och analysen har slutförts hämtar sökmotorn dokumenten som matchade frågan och returnerar dem med hjälp av [standard bedömnings algoritmen](index-similarity-and-scoring.md#similarity-ranking-algorithms), antingen BM25 eller klassisk, beroende på när tjänsten skapades. Bedömnings profiler tillämpas också i det här skedet.
-
-När de översta 50-matchningarna har tagits emot utvärderar den [semantiska ranknings modellen](semantic-how-to-query-response.md) dokumentet sökkorpus. Resultaten kan innehålla fler än 50 matchningar, men endast den första 50 kommer att rangordnas. För rankning använder modellen både Machine Learning och överförings utbildning för att omvärdera dokumenten baserat på hur väl var och en matchar frågans avsikt.
-
-För att skapa under texter och svar, använder semantisk sökning en språk representation för att extrahera och markera nyckel passager som bäst sammanfattar ett resultat. Om Sök frågan är en fråga och svaren begärs, kommer svaret att innehålla en text passage som bäst svarar på frågan, som uttrycks av Sök frågan.
-
-:::image type="content" source="media/semantic-search-overview/semantic-query-architecture.png" alt-text="Semantiska komponenter i en frågans pipeline" border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 
 Med en ny frågetyp aktive ras rangordning och svars struktur för semantisk sökning.
 
-Kom igång genom att [skapa en semantisk fråga](semantic-how-to-query-request.md) . Du kan också läsa någon av följande artiklar om relaterad information.
+Kom igång genom att [skapa en semantisk fråga](semantic-how-to-query-request.md) . Du kan också läsa följande artiklar om relaterad information.
 
 + [Lägg till stavnings kontroll i sökord](speller-how-to-add.md)
-+ [Semantisk rangordning och svar (svar och under texter)](semantic-how-to-query-response.md)
++ [Returnera ett semantiskt svar](semantic-answers.md)
++ [Semantisk rangordning](semantic-ranking.md)

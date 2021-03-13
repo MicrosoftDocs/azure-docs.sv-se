@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201761"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201259"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -61,7 +61,7 @@ Anslutnings sträng krävs. Du kan hitta din anslutnings sträng i Application I
 }
 ```
 
-Du kan också ange anslutnings strängen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+Du kan också ange anslutnings strängen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_CONNECTION_STRING` (som sedan kommer att prioriteras om anslutnings strängen också anges i JSON-konfigurationen).
 
 Om du inte anger anslutnings strängen inaktive ras Java-agenten.
 
@@ -81,7 +81,7 @@ Om du vill ange namnet på moln rollen:
 
 Om du inte anger namnet på moln rollen används Application Insights resursens namn för att märka komponenten på program kartan.
 
-Du kan också ange namnet på moln rollen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_NAME` .
+Du kan också ange namnet på moln rollen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_NAME` (som sedan prioriteras om namnet på moln rollen också anges i JSON-konfigurationen).
 
 ## <a name="cloud-role-instance"></a>Moln roll instans
 
@@ -98,7 +98,7 @@ Om du vill ställa in en annan moln roll instans i stället för namnet på dato
 }
 ```
 
-Du kan också ställa in moln Rolls instansen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
+Du kan också ställa in moln Rolls instansen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_INSTANCE` (som sedan kommer att prioriteras om moln roll instansen också anges i JSON-konfigurationen).
 
 ## <a name="sampling"></a>Samling
 
@@ -117,7 +117,7 @@ Här är ett exempel på hur du ställer in samplingen för att samla in cirka *
 }
 ```
 
-Du kan också ange samplings procenten med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
+Du kan också ange samplings procenten med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (som sedan prioriteras om samplings procenten också anges i JSON-konfigurationen).
 
 > [!NOTE]
 > För samplings procenten väljer du en procents ATS som ligger nära 100/N där N är ett heltal. För närvarande stöder sampling inte andra värden.
@@ -150,9 +150,6 @@ Om du vill samla in ytterligare JMX-mått:
 `attribute` är attributnamnet i den JMX-MBean som du vill samla in.
 
 Numeriska och booleska JMX-mått stöds. Booleska JMX-mått mappas till `0` för falskt och `1` true.
-
-[//]: # "Obs!: dokumentera APPLICATIONINSIGHTS_JMX_METRICS här"
-[//]: # "JSON Embedded i kuvert var är rörigt och bör bara dokumenteras för kod kopplings scenario"
 
 ## <a name="custom-dimensions"></a>Anpassade dimensioner
 
@@ -201,7 +198,7 @@ Standard Application Insights tröskelvärdet är `INFO` . Om du vill ändra den
 }
 ```
 
-Du kan också ange tröskelvärdet med hjälp av miljövariabeln `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` .
+Du kan också ange nivån med hjälp av miljövariabeln `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (som sedan kommer att ha företräde om nivån också anges i JSON-konfigurationen).
 
 Dessa är giltiga `level` värden som du kan ange i `applicationinsights.json` filen och hur de motsvarar loggnings nivåer i olika loggnings ramverk:
 
@@ -284,7 +281,7 @@ Som standard skickar Application Insights Java 3,0 ett pulsslags mått var 15: e
 ```
 
 > [!NOTE]
-> Du kan inte minska frekvensen på pulsslaget, eftersom pulsslags data också används för att spåra Application Insights användning.
+> Du kan inte öka intervallet till mer än 15 minuter eftersom pulsslags data också används för att spåra Application Insights användning.
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
@@ -300,6 +297,30 @@ Om ditt program ligger bakom en brand vägg och inte kan ansluta direkt till App
 ```
 
 Application Insights Java 3,0 respekterar också den globala `-Dhttps.proxyHost` och `-Dhttps.proxyPort` om de är inställda.
+
+## <a name="metric-interval"></a>Mått intervall
+
+Den här funktionen är en förhandsversion.
+
+Som standard samlas måtten var 60 sekund.
+
+Från och med version 3.0.3 – BETA kan du ändra följande intervall:
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+Inställningen gäller för alla dessa mått:
+
+* Standard prestanda räknare, t. ex. CPU och minne
+* Standard anpassade mått, t. ex. tids inställning för skräp insamling
+* Konfigurerade JMX-mått ([se ovan](#jmx-metrics))
+* Micrometer mått ([se ovan](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "Obs! opentelemetri-stöd finns i privat för hands version tills opentelemetri-API: n når 1,0"
 
@@ -349,7 +370,7 @@ Som standard loggar Application Insights Java 3,0 på nivå `INFO` till både fi
 
 `maxHistory` är antalet upplyft över loggfiler som bevaras (utöver den aktuella logg filen).
 
-Från och med version 3.0.2 kan du också ställa in själv diagnostik `level` med miljövariabeln `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
+Från och med version 3.0.2 kan du också ställa in självdiagnostiken `level` med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (som sedan kommer att prioriteras om själv diagnostik `level` också anges i JSON-konfigurationen).
 
 ## <a name="an-example"></a>Ett exempel
 

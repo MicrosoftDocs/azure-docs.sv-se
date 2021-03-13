@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650578"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149536"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Snabb start: skapa din första statiska plats i Azure Portal
 
@@ -115,9 +115,9 @@ Om du inte kommer att fortsätta att använda det här programmet kan du ta bort
 
 1. Öppna [Azure-portalen](https://portal.azure.com)
 1. Sök efter **min-First-Web-static-app** från det övre Sök fältet
-1. Välj på appens namn
-1. Välj på knappen **ta bort**
-1. Välj **Ja** för att bekräfta borttagnings åtgärden
+1. Välj appens namn
+1. Välj knappen **ta bort**
+1. Välj **Ja** för att bekräfta borttagnings åtgärden (den här åtgärden kan ta en stund att slutföra)
 
 ## <a name="next-steps"></a>Nästa steg
 

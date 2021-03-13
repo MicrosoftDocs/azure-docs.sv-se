@@ -1,22 +1,23 @@
 ---
 title: 'Ändra D:-enheten för en virtuell dator till en datadisk '
 description: 'Beskriver hur du ändrar enhets beteckningar för en virtuell Windows-dator så att du kan använda enheten D: som en data enhet.'
-services: virtual-machines-windows
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: cae29954211e62601debb35d76f938fb6a92779e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87aa1344b3fbe0d11c1c5cdfa8a56560d67eb54f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019811"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555558"
 ---
-# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Använd D:-enheten som en data enhet på en virtuell Windows-dator
+# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Använda D:-enheten som en dataenhet på en virtuell Windows-dator
 Om ditt program behöver använda D-enheten för att lagra data, följer du dessa instruktioner för att använda en annan enhets beteckning för den tillfälliga disken. Använd aldrig den temporära disken för att lagra data som du behöver behålla.
 
 Om du ändrar storlek på eller **stoppar (frigör)** en virtuell dator kan detta utlösa placeringen av den virtuella datorn till en ny hypervisor. En planerad eller oplanerad underhålls händelse kan också utlösa denna placering. I det här scenariot omtilldelas den temporära disken till den första tillgängliga enhets beteckningen. Om du har ett program som specifikt kräver D: Drive måste du följa de här stegen för att tillfälligt flytta pagefile.sys, koppla en ny datadisk och pagefile.sys tilldela den till den temporära enheten. När den är klar kommer Azure inte att ta tillbaka D: om den virtuella datorn flyttas till en annan hypervisor.
@@ -35,7 +36,7 @@ Först måste du koppla data disken till den virtuella datorn. Information om hu
 6. I avsnittet **virtuellt minne** väljer du **ändra**.
 7. Välj enhet **C** och klicka sedan på **Systemhanterad storlek** och klicka sedan på **Ange**.
 8. Välj enheten **D** och klicka sedan på **ingen växlings fil** och klicka sedan på **Ange**.
-9. Klicka på Använd. Du får en varning om att datorn måste startas om för att ändringarna ska börja gälla.
+9. Klicka på Applicera. Du får en varning om att datorn måste startas om för att ändringarna ska börja gälla.
 10. Starta om den virtuella datorn.
 
 ## <a name="change-the-drive-letters"></a>Ändra enhets beteckningar
@@ -54,7 +55,7 @@ Först måste du koppla data disken till den virtuella datorn. Information om hu
 5. I avsnittet **virtuellt minne** väljer du **ändra**.
 6. Välj OS-enhet **C** och klicka på **ingen växlings fil** och klicka sedan på **Ange**.
 7. Välj den tillfälliga lagrings enheten **T** och klicka sedan på **Systemhanterad storlek** och klicka sedan på **Ange**.
-8. Klicka på **Använd**. Du får en varning om att datorn måste startas om för att ändringarna ska börja gälla.
+8. Klicka på **Applicera**. Du får en varning om att datorn måste startas om för att ändringarna ska börja gälla.
 9. Starta om den virtuella datorn.
 
 ## <a name="next-steps"></a>Nästa steg

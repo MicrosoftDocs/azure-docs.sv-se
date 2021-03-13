@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: stevestein
 ms.author: sashan
-ms.reviewer: ''
-ms.date: 10/30/2020
-ms.openlocfilehash: b112506acead01e8dc2bbe72b0d52f47ada326a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.reviewer: wiassaf
+ms.date: 03/10/2021
+ms.openlocfilehash: 1a86522975ffb7b5b2bd514402dd97a76aa2506e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440419"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014612"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopiera en transaktions konsekvent kopia av en databas i Azure SQL Database
 
@@ -98,7 +98,7 @@ Logga in på huvud databasen med Server Administratörs inloggning eller inloggn
 Detta kommando kopierar Databas1 till en ny databas med namnet Databas2 på samma server. Beroende på databasens storlek kan kopierings åtgärden ta lite tid att slutföra.
 
    ```sql
-   -- execute on the master database to start copying
+   -- Execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
    ```
 
@@ -111,10 +111,10 @@ Detta kommando kopierar Databas1 till en ny databas med namnet Databas2 i en ela
 Databas1 kan vara en enskild databas eller en databas i en pool. Kopiering mellan olika nivåer stöds, men vissa kopior på flera nivåer kommer inte att lyckas. Du kan till exempel kopiera en enkel eller elastisk standard databas till en generell användnings pool, men du kan inte kopiera en standard elastisk databas till en Premium-pool. 
 
    ```sql
-   -- execute on the master database to start copying
+   -- Execute on the master database to start copying
    CREATE DATABASE "Database2"
    AS COPY OF "Database1"
-   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) );
    ```
 
 ### <a name="copy-to-a-different-server"></a>Kopiera till en annan server
@@ -136,43 +136,45 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 Du kan använda stegen i avsnittet [Kopiera en SQL Database till en annan server](#copy-to-a-different-server) för att kopiera databasen till en server i en annan prenumeration med hjälp av T-SQL. Se till att du använder en inloggning som har samma namn och lösen ord som databas ägaren till käll databasen. Dessutom måste inloggningen vara medlem i `dbmanager` rollen eller en Server administratör på både käll-och mål servrar.
 
 ```sql
-Step# 1
-Create login and user in the master database of the source server.
+--Step# 1
+--Create login and user in the master database of the source server.
 
 CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx'
 GO
-CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE dbmanager ADD MEMBER loginname;
 GO
 
-Step# 2
-Create the user in the source database and grant dbowner permission to the database.
+--Step# 2
+--Create the user in the source database and grant dbowner permission to the database.
 
-CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
 GO
-exec sp_addrolemember 'db_owner','loginname'
-GO
-
-Step# 3
-Capture the SID of the user “loginname” from master database
-
-SELECT [sid] FROM sysusers WHERE [name] = 'loginname'
-
-Step# 4
-Connect to Destination server.
-Create login and user in the master database, same as of the source server.
-
-CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server]
-GO
-CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
-GO
-exec sp_addrolemember 'dbmanager','loginname'
+ALTER ROLE db_owner ADD MEMBER loginname;
 GO
 
-Step# 5
-Execute the copy of database script from the destination server using the credentials created
+--Step# 3
+--Capture the SID of the user "loginname" from master database
+
+SELECT [sid] FROM sysusers WHERE [name] = 'loginname';
+
+--Step# 4
+--Connect to Destination server.
+--Create login and user in the master database, same as of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server];
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE dbmanager ADD MEMBER loginname;
+GO
+
+--Step# 5
+--Execute the copy of database script from the destination server using the credentials created
 
 CREATE DATABASE new_database_name
-AS COPY OF source_server_name.source_database_name
+AS COPY OF source_server_name.source_database_name;
 ```
 
 > [!NOTE]
@@ -192,7 +194,7 @@ AS COPY OF source_server_name.source_database_name
 > Om du väljer att avbryta kopieringen medan den pågår kör du [Drop Database](/sql/t-sql/statements/drop-database-transact-sql) -instruktionen på den nya databasen.
 
 > [!IMPORTANT]
-> Om du behöver skapa en kopia med ett betydligt mindre tjänst mål än källan, kanske mål databasen inte har tillräckligt med resurser för att slutföra initierings processen och det kan leda till att kopieringen Miss lyckas. I det här scenariot använder du en geo-Restore-begäran för att skapa en kopia på en annan server och/eller en annan region. Mer information finns i [återställa en Azure SQL Database med hjälp av databas säkerhets kopior](recovery-using-backups.md#geo-restore) .
+> Om du behöver skapa en kopia med ett betydligt mindre tjänst mål än källan, kanske mål databasen inte har tillräckligt med resurser för att slutföra initierings processen och det kan leda till att kopierings åtgärden Miss lyckas. I det här scenariot använder du en geo-Restore-begäran för att skapa en kopia på en annan server och/eller en annan region. Mer information finns i [återställa en Azure SQL Database med hjälp av databas säkerhets kopior](recovery-using-backups.md#geo-restore) .
 
 ## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>Azure RBAC-roller och behörigheter för att hantera databas kopiering
 

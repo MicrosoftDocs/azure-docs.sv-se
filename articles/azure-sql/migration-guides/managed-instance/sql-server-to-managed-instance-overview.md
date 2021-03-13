@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488213"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562035"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -64,6 +64,8 @@ Du kan välja beräknings-och lagrings resurser under distributionen och sedan �
 
 > [!IMPORTANT]
 > Eventuella skillnader i kraven för det [virtuella nätverket för den hanterade instansen](../../managed-instance/connectivity-architecture-overview.md#network-requirements) kan hindra dig från att skapa nya instanser eller använda befintliga. Lär dig mer om att [skapa nya](../../managed-instance/virtual-network-subnet-create-arm-template.md)   och [Konfigurera befintliga](../../managed-instance/vnet-existing-add-subnet.md)   nätverk. 
+
+Ett annat viktigt övervägande vid valet av mål tjänst nivå i Azure SQL-hanterad instans (Generell användning vs Affärskritisk) är tillgängligheten för vissa funktioner som In-Memory OLTP som bara är tillgänglig i Affärskritisk-nivån. 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternativ
 
@@ -191,6 +193,26 @@ När du migrerar databaser som skyddas av [Transparent datakryptering](../../d
 #### <a name="system-databases"></a>System databaser
 
 Det finns inte stöd för återställning av system databaser. Om du vill migrera objekt på instans nivå (lagrade i Master-eller MSDB-databaser), skripterar du dem med hjälp av Transact-SQL (T-SQL) och återskapar dem sedan på den hanterade mål instansen. 
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (Minnesoptimerade tabeller)
+
+SQL Server ger In-Memory OLTP-kapacitet som gör att du kan använda minnesoptimerade tabeller, minnesoptimerade tabell typer och internt kompilerade SQL-moduler för att köra arbets belastningar som har hög genom strömning och transaktions bearbetnings krav med låg latens. 
+
+> [!IMPORTANT]
+> In-Memory OLTP stöds endast på Affärskritisk nivå i Azure SQL-hanterad instans (och stöds inte i Generell användning-nivån).
+
+Om du har minnesoptimerade tabeller eller minnesoptimerade tabell typer i din lokala SQL Server och du vill migrera till en Azure SQL-hanterad instans, bör du antingen:
+
+- Välj Affärskritisk nivå för din mål Azure SQL-hanterade instans som stöder In-Memory OLTP eller
+- Om du vill migrera till Generell användning nivå i Azure SQL Managed instance tar du bort minnesoptimerade tabeller, minnesoptimerade tabell typer och internt kompilerade SQL-moduler som interagerar med minnesoptimerade objekt innan du migrerar dina databaser. Följande T-SQL-fråga kan användas för att identifiera alla objekt som måste tas bort innan migrering till Generell användning nivå:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Mer information om minnes intern teknik finns i [optimera prestanda med hjälp av minnes intern teknik i Azure SQL Database och Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
 
 ## <a name="leverage-advanced-features"></a>Utnyttja avancerade funktioner 
 

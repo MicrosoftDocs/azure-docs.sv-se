@@ -1,39 +1,43 @@
 ---
-title: Konfigurera algoritm för rangordning av likhet
+title: Konfigurera likhets algoritmen
 titleSuffix: Azure Cognitive Search
-description: Så här anger du algoritmen för likhet för att testa en ny likhets algoritm för rangordning
+description: Lär dig hur du aktiverar BM25 på äldre Sök tjänster och hur BM25-parametrar kan ändras för att bättre anpassa innehållet i dina index.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9f806b512ae8e118fca8f32115c8be3b493fd681
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 03/12/2021
+ms.openlocfilehash: 52b3523d3c092f1b9375f53038cc3b20d0ddedcc
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677789"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232842"
 ---
-# <a name="configure-ranking-algorithms-in-azure-cognitive-search"></a>Konfigurera rankade algoritmer i Azure Kognitiv sökning
+# <a name="configure-the-similarity-ranking-algorithm-in-azure-cognitive-search"></a>Konfigurera algoritmen för rangordning av likhet i Azure Kognitiv sökning
 
 Azure Kognitiv sökning stöder två likartade algoritmer för rangordning:
 
 + En *klassisk likhets* algoritm som används av alla Sök tjänster fram till den 15 juli 2020.
 + En implementering av *OKAPI BM25* -algoritmen som används i alla Sök tjänster som skapats efter den 15 juli.
 
-BM25 rangordning är det nya standardvärdet eftersom det är bra att skapa Sök rankninger som bättre överensstämmer med användarnas förväntningar. Du kan också använda konfigurations alternativ för att justera resultat baserat på faktorer som dokument storlek. För nya tjänster som skapats efter den 15 juli 2020 används BM25 automatiskt och är den enda likhets algoritmen. Om du försöker ange likhet med ClassicSimilarity på en ny tjänst returneras ett HTTP 400-fel på grund av att algoritmen inte stöds av tjänsten.
+BM25 rangordning är det nya standardvärdet eftersom det är bra att skapa Sök rankninger som bättre överensstämmer med användarnas förväntningar. Den innehåller [parametrar](#set-bm25-parameters) för att justera resultat baserat på faktorer som dokument storlek. 
 
-För äldre tjänster som skapats före den 15 juli 2020 är den klassiska likheten fortfarande standardalgoritmen. Äldre tjänster kan ange egenskaper för ett sökindex för att anropa BM25, enligt beskrivningen nedan. Om du växlar från klassisk till BM25 kan du vänta på att se vissa skillnader hur Sök Resultat beställs.
+För nya tjänster som skapats efter den 15 juli 2020 används BM25 automatiskt och är den enda likhets algoritmen. Om du försöker ange likhet med ClassicSimilarity på en ny tjänst returneras ett HTTP 400-fel på grund av att algoritmen inte stöds av tjänsten.
+
+För äldre tjänster som skapats före den 15 juli 2020 är den klassiska likheten fortfarande standardalgoritmen. Äldre tjänster kan uppgraderas till BM25 per index enligt beskrivningen nedan. Om du växlar från klassisk till BM25 kan du vänta på att se vissa skillnader hur Sök Resultat beställs.
 
 > [!NOTE]
-> Semantisk sökning är en ytterligare semantisk omrangordnings algoritm som begränsar avståndet mellan förväntningar och resultat ännu mer. Till skillnad från andra algoritmer är det en tilläggs funktion som itererar över en befintlig resultat uppsättning. Om du vill använda den semantiska sökalgoritmen för förhands granskning måste du skapa en ny tjänst och du måste ange en [typ av semantisk fråga](semantic-how-to-query-request.md). Mer information finns i [Översikt över semantisk sökning](semantic-search-overview.md).
+> Semantisk rangordning, som för närvarande finns som för hands version för standard tjänster i valda regioner, är ett ytterligare steg framåt i att producera mer relevanta resultat. Till skillnad från andra algoritmer är det en tilläggs funktion som itererar över en befintlig resultat uppsättning. Mer information finns i [Översikt över semantisk sökning](semantic-search-overview.md) och [semantisk rangordning](semantic-ranking.md).
 
-## <a name="create-a-search-index-for-bm25-scoring"></a>Skapa ett Sök index för BM25-Poängsättning
+## <a name="enable-bm25-scoring-on-older-services"></a>Aktivera BM25-Poängsättning på äldre tjänster
 
-Om du kör en Sök tjänst som skapades före den 15 juli 2020 kan du ange likhets egenskapen till antingen BM25Similarity eller ClassicSimilarity i index definitionen. Om egenskapen likhets värde utelämnas eller anges till null används den klassiska algoritmen av indexet.
+Om du kör en Sök tjänst som skapades före den 15 juli 2020 kan du aktivera BM25 genom att ange en likhets egenskap för nya index. Egenskapen visas bara för nya index, så om du vill BM25 på ett befintligt index måste du släppa och [återskapa indexet](search-howto-reindex.md) med en ny likhets egenskap som är inställd på "Microsoft. Azure. search. BM25Similarity".
 
-Det går bara att ställa in likhets algoritmen vid skapande av index. Men när ett index har skapats med BM25 kan du uppdatera det befintliga indexet för att ange eller ändra BM25-parametrarna.
+När det finns ett index med en likhets egenskap kan du växla mellan BM25Similarity eller ClassicSimilarity. 
+
+Följande länkar beskriver egenskapen likhet i Azure SDK: er. 
 
 | Klientbibliotek | Egenskap för likhet |
 |----------------|---------------------|
@@ -70,7 +74,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-## <a name="bm25-similarity-parameters"></a>Parametrar för BM25-likhet
+## <a name="set-bm25-parameters"></a>Ange BM25-parametrar
 
 BM25-likhet lägger till två användarvänliga parametrar för att kontrol lera de beräknade resultatet. Du kan ställa in BM25-parametrar när du skapar index eller som en index uppdatering om BM25-algoritmen angavs när index skapas.
 

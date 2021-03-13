@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/08/2021
+ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449738"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557020"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
 
@@ -33,6 +33,8 @@ Den här artikeln visar hur du skapar din Logi Kap par och ett arbets flöde i V
 * Lägg till en utlösare och en åtgärd.
 
 * Kör, testa, Felsök och granska körnings historik lokalt.
+
+* Hitta domän namns information för brand Väggs åtkomst.
 
 * Distribuera till Azure, som innehåller alternativ för att aktivera Application Insights.
 
@@ -576,7 +578,7 @@ Följ dessa steg om du vill lägga till en Bryt punkt:
 
 1. Om du vill granska tillgänglig information när en Bryt punkt träffar i körnings vyn, kontrollerar du fönstret **variabler** .
 
-1. Fortsätt att köra arbets flödes körningen genom att välja **Fortsätt** (uppspelnings knapp) i verktygsfältet för fel sökning. 
+1. Fortsätt att köra arbets flödes körningen genom att välja **Fortsätt** (uppspelnings knapp) i verktygsfältet för fel sökning.
 
 Du kan lägga till och ta bort Bryt punkter när som helst under arbets flödes körningen. Men om du uppdaterar **workflow.jspå** filen när körningen har startat, uppdateras inte Bryt punkter automatiskt. Om du vill uppdatera Bryt punkterna startar du om Logic-appen.
 
@@ -758,6 +760,55 @@ När du har gjort uppdateringar till din Logic app kan du köra ett annat test g
    ![Skärm bild som visar status för varje steg i det uppdaterade arbets flödet plus indata och utdata i den expanderade åtgärden "respons".](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details-rerun.png)
 
 1. Om du vill stoppa felsökningssessionen väljer du **stoppa fel sökning** på menyn **Kör** (Shift + F5).
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Hitta domän namn för brand Väggs åtkomst
+
+Innan du distribuerar och kör ditt Logic app-arbetsflöde i Azure Portal, om din miljö har strikta nätverks krav eller brand väggar som begränsar trafiken, måste du konfigurera behörigheter för alla utlösare eller åtgärds anslutningar som finns i ditt arbets flöde.
+
+Följ dessa steg om du vill hitta de fullständigt kvalificerade domän namnen (FQDN) för de här anslutningarna:
+
+1. I ditt Logic app-projekt öppnar du **connections.jspå** filen, som skapas när du har lagt till den första anslutningsbaserade utlösaren eller åtgärden i arbets flödet och hittat `managedApiConnections` objektet.
+
+1. För varje anslutning som du har skapat kan du söka efter, kopiera och spara `connectionRuntimeUrl` egenskap svärdet på ett säkert sätt så att du kan konfigurera brand väggen med den här informationen.
+
+   Det här exemplet **connections.jsi** filen innehåller två anslutningar, en AS2-anslutning och en Office 365-anslutning med följande `connectionRuntimeUrl` värden:
+
+   * AS2 `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
+
+   * Office 365: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f`
+
+   ```json
+   {
+      "managedApiConnections": {
+         "as2": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/as2"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         },
+         "office365": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/office365"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         }
+      }
+   }
+   ```
 
 <a name="deploy-azure"></a>
 

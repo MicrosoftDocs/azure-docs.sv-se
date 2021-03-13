@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365518"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548758"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell för Azure AD-roller i Privileged Identity Management
 
@@ -54,7 +54,7 @@ Den här artikeln innehåller instruktioner för att använda PowerShell-cmdlets
     ![Hitta organisations-ID: t i egenskaperna för Azure AD-organisationen](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> Följande avsnitt innehåller enkla exempel som hjälper dig att komma igång. Du hittar mer detaljerad dokumentation om följande cmdlets på [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Du måste dock ersätta "azureResources" i parametern providerID med "aadRoles". Du måste också komma ihåg att använda klient-ID: t för din Azure AD-organisation som resourceId-parameter.
+> Följande avsnitt innehåller enkla exempel som hjälper dig att komma igång. Du hittar mer detaljerad dokumentation om följande cmdlets på [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) . Du måste dock ersätta "azureResources" i parametern providerID med "aadRoles". Du måste också komma ihåg att använda klient-ID: t för din Azure AD-organisation som resourceId-parameter.
 
 ## <a name="retrieving-role-definitions"></a>Hämtar roll definitioner
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 7ae447a9577feba8b43b5b03a757ec4095ee2cb4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f5c189e63a8be3c9c46c406ab7bd0250dc75ec5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177988"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SharingCloud
 
@@ -26,14 +26,13 @@ I den här självstudien får du lära dig hur du integrerar SharingCloud med Az
 * Gör det möjligt för användarna att logga in automatiskt till SharingCloud med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-Om du vill veta mer om SaaS-appens integrering med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få en månads kostnads fri utvärderings version [här](https://azure.microsoft.com/pricing/free-trial/).
-* SharingCloud för enkel inloggning (SSO) aktive rad.
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+* Sapient för enkel inloggning (SSO) aktive rad.
+
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -46,30 +45,19 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 Om du vill konfigurera integreringen av SharingCloud i Azure AD måste du lägga till SharingCloud från galleriet i listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-
-    ![Azure Active Directory-knappen](common/select-azuread.png)
-    
 1. Navigera till **företags program** och välj sedan **alla program**.
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-    
 1. Välj **nytt program** om du vill lägga till ett nytt program.
-
-    ![Knappen Nytt program](common/add-new-app.png)
-    
 1. I avsnittet **Lägg till från galleriet** , skriver du **SharingCloud** i sökrutan.
-
-    ![SharingCloud i resultat listan](common/search-new-app.png)
-    
 1. Välj **SharingCloud** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sharingcloud"></a>Konfigurera och testa enkel inloggning med Azure AD för SharingCloud
+
+## <a name="configure-and-test-azure-ad-sso-for-sharingcloud"></a>Konfigurera och testa Azure AD SSO för SharingCloud
 
 Konfigurera och testa Azure AD SSO med SharingCloud med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SharingCloud.
 
-Om du vill konfigurera och testa Azure AD SSO med SharingCloud, slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med SharingCloud:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -82,15 +70,9 @@ Om du vill konfigurera och testa Azure AD SSO med SharingCloud, slutför du föl
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **SharingCloud** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
-    
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-    
+1. I Azure Portal går du till sidan för program integrering i **SharingCloud** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen **Redigera** för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -98,19 +80,19 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     Ladda upp metadatafilen med XML-filen från SharingCloud. Kontakta [SharingCloud-klientens support team](mailto:support@sharingcloud.com) för att hämta filen.
 
-    ![image](common/upload-metadata.png)
+    ![Skärm bild av användar gränssnittet för den grundläggande SAML-konfigurationen med * * Ladda upp metadatafilen * * länk markerad.](common/upload-metadata.png)
     
     Välj den metadatafil som angetts och klicka på **överför**.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Skärm bild av användar gränssnittet för metadatafilen som har tillhandahållits, med knappen Välj fil och * * överför * * markerat.](common/browse-upload-metadata.png)
 
 1. SharingCloud-programmet förväntar sig SAML-intyg i ett särskilt format, vilket innebär att du kan lägga till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
 
-    ![image](common/edit_attribute.png)
+    ![Skärm bild av användar gränssnittet för användarattribut med redigerings ikonen markerad.](common/edit_attribute.png)
 
 1. Utöver ovan förväntar sig SharingCloud-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem efter behov.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ---------------| --------- |
     | urn: sharingcloud: SSO: FirstName | user.givenname |
     | urn: sharingcloud: SSO: LastName | user.surname |
@@ -119,10 +101,6 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på **Kopiera** ikon för att kopiera **URL: en för federationsmetadata** från de angivna alternativen enligt ditt krav.
 
     ![URL för metadata som ska kopieras](common/copy_metadataurl.png)
-
-## <a name="configure-sharingcloud-sso"></a>Konfigurera SharingCloud SSO
-
-Om du vill konfigurera enkel inloggning på **SharingCloud** sida måste du skicka den kopierade **federationens metadata-URL** från Azure Portal till [support teamet för SharingCloud](mailto:support@sharingcloud.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -143,16 +121,14 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **SharingCloud**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-   ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
+
+## <a name="configure-sharingcloud-sso"></a>Konfigurera SharingCloud SSO
+
+Om du vill konfigurera enkel inloggning på **SharingCloud** sida måste du skicka den kopierade **federationens metadata-URL** från Azure Portal till [support teamet för SharingCloud](mailto:support@sharingcloud.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-sharingcloud-test-user"></a>Skapa SharingCloud test användare
 
@@ -160,7 +136,20 @@ I det här avsnittet skapas en användare som kallas Britta Simon i SharingCloud
 
 ## <a name="test-sso"></a>Testa SSO 
 
-* Gå till din SharingCloud-URL direkt och starta inloggnings flödet därifrån.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
+
+#### <a name="sp-initiated"></a>SP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till SharingCloud-inloggnings-URL där du kan starta inloggnings flödet.  
+
+* Gå till SharingCloud-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
+
+#### <a name="idp-initiated"></a>IDP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den SharingCloud som du har konfigurerat SSO för. 
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen SharingCloud i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på SharingCloud som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="next-steps"></a>Nästa steg
 

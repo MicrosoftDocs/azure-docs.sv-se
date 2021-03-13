@@ -2,18 +2,19 @@
 title: Azure Disk Encryption med nödvändiga komponenter för Azure AD-appar (tidigare version)
 description: Den här artikeln ger komplement till Azure Disk Encryption för virtuella Linux-datorer med ytterligare krav och krav för Azure Disk Encryption med Azure AD.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b258d499c78aa5fb734cbee01fb753c292bf2678
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e27eb64139c20ac2b8c776edc2d0840b80fddb62
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970880"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558346"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Disk Encryption med Azure Active Directory (AD) (tidigare version)
 
@@ -47,7 +48,7 @@ Om du vill aktivera Azure Disk Encryption funktionen med hjälp av den äldre AA
   ```
 
 ### <a name="group-policy"></a>Grupprincip
- - Azure Disk Encryption-lösningen använder BitLockers externa nyckel skydd för virtuella Windows IaaS-datorer. För domänanslutna virtuella datorer ska du inte skicka några grup principer som tillämpar TPM-skydd. Information om grupprincip för alternativet **Tillåt BitLocker utan en kompatibel TPM**finns i [referens för BitLocker-Grupprincip](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
+ - Azure Disk Encryption-lösningen använder BitLockers externa nyckel skydd för virtuella Windows IaaS-datorer. För domänanslutna virtuella datorer ska du inte skicka några grup principer som tillämpar TPM-skydd. Information om grupprincip för alternativet **Tillåt BitLocker utan en kompatibel TPM** finns i [referens för BitLocker-Grupprincip](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
 - BitLocker-principen på domänanslutna virtuella datorer med en anpassad grupprincip måste innehålla följande inställning: [Konfigurera användar lagring av BitLocker-återställningsinformation – > tillåt 256-bitars återställnings nyckel](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption Miss lyckas när anpassade grupprincip inställningar för BitLocker inte är kompatibla. På datorer som inte har rätt princip inställning tillämpar du den nya principen, tvingar den nya principen att uppdatera (gpupdate.exe/Force) och startar om den om det behövs. 
 

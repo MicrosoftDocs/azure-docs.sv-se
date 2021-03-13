@@ -55,7 +55,7 @@
     - name: Översikt
       items:
         - name: Vad är Azure Stack Edge Pro R?
-          href: azure-stack-edge-j-series-overview.md
+          href: azure-stack-edge-pro-r-overview.md
     - name: Begrepp
       items:
         - name: Säkerhetsinställningar
@@ -171,7 +171,7 @@
         - name: Distribuera IoT Edge-exempel
           items:
             - name: Modul från NVIDIA-galleri
-              href: azure-stack-edge-j-series-configure-gpu-modules.md
+              href: azure-stack-edge-gpu-configure-gpu-modules.md
             - name: GPU-modul från Git-lagringsplats
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-modul via Marketplace
@@ -189,7 +189,7 @@
                 - name: Beräkningsacceleration
                   href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: Tillståndslös app
-                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                  href: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
                 - name: Statiskt etablerad tillståndskänslig app
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dynamiskt etablerad tillståndskänslig app
@@ -199,7 +199,7 @@
                 - name: Tillståndslös app
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
                 - name: Utveckla en C#-modul
-                  href: azure-stack-edge-j-series-create-iot-edge-module.md
+                  href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Via Azure Arc (förhandsversion)
               items:
                 - name: Aktivera Arc på Kubernetes-kluster
@@ -211,11 +211,11 @@
         - name: Konfigurera Azure Resource Manager (förhandsversion)
           items:
             - name: Ansluta via Azure PowerShell
-              href: azure-stack-edge-j-series-connect-resource-manager.md
+              href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: Konfigurera Azure Resource Manager-lösenord
-              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+              href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
             - name: Konfigurera klientinställningar för TLS
-              href: azure-stack-edge-j-series-configure-tls-settings.md
+              href: azure-stack-edge-gpu-configure-tls-settings.md
         - name: Distribuera virtuella datorer (förhandsversion)
           items:
             - name: Distribuera virtuella datorer – Azure-portalen
@@ -229,7 +229,7 @@
             - name: Distribuera virtuella datorer – Azure PowerShell-skript
               href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: Distribuera virtuella datorer – Azure CLI/Python
-              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
             - name: Distribuera Anpassat skripttillägg på virtuella datorer
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Skapa VM-avbildning
@@ -247,23 +247,23 @@
             - name: Felsöka certifikatfel
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Hantera databehandling på gränsenheter
-          href: azure-stack-edge-j-series-manage-compute.md
+          href: azure-stack-edge-gpu-manage-compute.md
         - name: Hantera Edge-containerregister
           href: azure-stack-edge-gpu-edge-container-registry.md
         - name: Hantera lagringsgateway
           items:
             - name: Lägga till och ansluta till resurs
-              href: azure-stack-edge-j-series-deploy-add-shares.md
+              href: azure-stack-edge-gpu-deploy-add-shares.md
             - name: Lägga till och ansluta till lagringskonton
-              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
+              href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
             - name: Resurser
-              href: azure-stack-edge-j-series-manage-shares.md
+              href: azure-stack-edge-gpu-manage-shares.md
             - name: Användare
-              href: azure-stack-edge-j-series-manage-users.md
+              href: azure-stack-edge-gpu-manage-users.md
             - name: Lagringskonton
-              href: azure-stack-edge-j-series-manage-storage-accounts.md
+              href: azure-stack-edge-gpu-manage-storage-accounts.md
             - name: Bandwidth-scheman
-              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+              href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
         - name: Hantera enhet
           items:
             - name: 'Kraft, åtkomst, anslutning'
@@ -318,6 +318,9 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway
+        - name: Inbyggda Azure Policy-program
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
 - name: Azure Stack Edge Pro – FPGA
   items:
     - name: Översikt
@@ -403,23 +406,10 @@
           href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: Allmän tillgänglighet (GA)
           href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
-    - name: Referens
-      items:
-        - name: Azure PowerShell
-          href: /powershell/module/az.stackedge/#stack_edge
-        - name: REST-API
-          href: /rest/api/databoxedgegateway
-        - name: .NET SDK
-          href: /dotnet/api/overview/azure/databoxedge/databoxgateway
 - name: Säkerhet
   items:
     - name: Säkerhetsbaslinje
       href: security-baseline.md
-- name: Referenser
-  items:
-    - name: Inbyggda Azure Policy-program
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Resurser
   items:
     - name: Exempel på Azure Stack Edge Pro C#-moduler (.NET)

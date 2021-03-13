@@ -149,6 +149,10 @@
               href: alert-service-principal.md
             - name: Aviseringar om säkert LDAP
               href: alert-ldaps.md
+- name: Referens
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.addomainservices/
 - name: Resurser
   items:
     - name: Vanliga frågor och svar

@@ -2,18 +2,19 @@
 title: Exempelskript för Azure Disk Encryption
 description: Den här artikeln är bilagan till Microsoft Azure disk kryptering för virtuella Linux-datorer.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f11677d9ebc31f1c1f7cc6332b07b69f8e35ad52
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911502"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561185"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption exempel skript för virtuella Linux-datorer
 
@@ -231,7 +232,7 @@ Konfigurera kryptering så att den fungerar med Azure genom att utföra följand
     fi
    ```
 
-2. Ändra config config i */etc/crypttab* . Den bör se ut så här:
+2. Ändra config config i */etc/crypttab*. Den bör se ut så här:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```

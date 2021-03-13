@@ -4,15 +4,16 @@ description: Förstå hur du använder konfidentiell data behandling i ditt scen
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: jencook
-ms.openlocfilehash: e1280ac90032869616830ccb931b367ff22f8bfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 47938f3a44c3a47f8b444b59d7e2f0867a274f33
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001010"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566625"
 ---
 # <a name="common-scenarios-for-azure-confidential-computing"></a>Vanliga scenarier för Azures konfidentiella data behandling
 
@@ -33,7 +34,7 @@ Flera källor kan överföra sina data till en enklaven på en virtuell dator. E
 I säkra multi-parts-databehandlingar går krypterade data till enklaven, enklaven dekrypterar data med hjälp av en nyckel, utför analys, erhåller ett resultat och skickar tillbaka ett krypterat resultat som en part kan dekryptera med den angivna nyckeln. 
 
 **Skydda data som används**: 
-- Använd en virtuell dator med DCsv2-serien (VM) i Azure med aktive rad Intel SGX-support. Dessa virtuella datorer är aktiverade med betrodda körnings miljöer (TEEs) som skyddar och isolerar delar av program data och kod.
+- Använd en DCsv2-Series virtuell dator (VM) i Azure med aktiverat stöd för Intel SGX. Dessa virtuella datorer är aktiverade med betrodda körnings miljöer (TEEs) som skyddar och isolerar delar av program data och kod.
 - Använd en enklaven-medveten SDK för att skapa en enklaven inuti den virtuella datorn. I enklaven kommer data inte att exponeras för någon, även VM-providern. Data i enklaven kommer att krypteras av maskin varu supporten.
     - Du kan till exempel använda [OE SDK](https://github.com/openenclave/openenclave) för bearbetning på Server sidan. 
 
@@ -67,9 +68,9 @@ Blockchain Technologies som bygger på konfidentiell data behandling kan använd
 
 ![Ett nätverk av noder](./media/use-cases-scenarios/ccf.png)
 
-I CCF består den decentraliserade redovisningen av registrerade ändringar i ett nyckel värdes lager som replikeras över alla noder i nätverket. Var och en av dessa noder kör en transaktions motor som kan utlösas av användare av blockchain över TLS. När du utlöser en slut punkt tar du med nyckel värdes lagringen i förväg. Innan den krypterade ändringen registreras i den decentraliserade redovisningen måste den överenskommas av ett visst antal noder för att uppnå konsensus. 
+I CCF består den decentraliserade redovisningen av registrerade ändringar i ett Key-Value arkiv som replikeras över alla noder i nätverket. Var och en av dessa noder kör en transaktions motor som kan utlösas av användare av blockchain över TLS. När du utlöser en slut punkt tar du i Key-Value Store. Innan den krypterade ändringen registreras i den decentraliserade redovisningen måste den överenskommas av ett visst antal noder för att uppnå konsensus. 
 
-## <a name="next-steps"></a>Efterföljande moment
-[Distribuera](quick-create-marketplace.md) en virtuell dator med DCsv2-serien.
+## <a name="next-steps"></a>Nästa steg
+[Distribuera](quick-create-marketplace.md) en DCsv2-Series virtuell dator.
 
 

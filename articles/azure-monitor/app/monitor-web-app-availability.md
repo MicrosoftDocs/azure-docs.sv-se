@@ -2,14 +2,14 @@
 title: Övervaka tillgänglighet och svarstider på valfri webbplats | Microsoft Docs
 description: Konfigurera webbtester i Application Insights. Få aviseringar om en webbplats blir otillgänglig eller svarar långsamt.
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 03/10/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729036"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012572"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 

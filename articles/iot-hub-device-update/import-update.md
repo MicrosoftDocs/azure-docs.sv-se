@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507287"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008570"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
 Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub. Om du inte redan har gjort det, måste du bekanta dig med de grundläggande [import begreppen](import-concepts.md).
@@ -33,9 +33,9 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
 
 1. Se till att din uppdaterings avbildnings fil eller APT manifest fil finns i en katalog som är tillgänglig från PowerShell.
 
-2. Klona [enhets uppdatering för IoT Hub-lagringsplatsen](https://github.com/azure/iot-hub-device-update)eller ladda ned den som en. zip-fil till en plats som är tillgänglig från PowerShell (när zip-filen har laddats ned högerklickar du på `Properties`  >  `General` fliken > check `Unblock` i `Security` avsnittet för att undvika PowerShell-Säkerhetsvarnings meddelanden).
+2. Skapa en textfil med namnet **AduUpdate. psm1** i katalogen där uppdaterings avbildnings filen eller apt manifest filen finns. Öppna PowerShell-cmdleten [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) , kopiera innehållet till text filen och spara sedan text filen.
 
-3. I PowerShell navigerar du till `tools/AduCmdlets` katalog och kör:
+3. I PowerShell navigerar du till den katalog där du skapade PowerShell-cmdleten från steg 2. Kör sedan:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -57,11 +57,11 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
 
     | Parameter | Beskrivning |
     | --------- | ----------- |
-    | deviceManufacturer | Tillverkaren av enheten som uppdateringen är kompatibel med, till exempel contoso. Måste matcha _tillverkarens_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
-    | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster. Måste matcha _modell_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
+    | deviceManufacturer | Tillverkaren av enheten som uppdateringen är kompatibel med, till exempel contoso. Måste matcha _tillverkarens_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
+    | deviceModel | Enhets modellen som uppdateringen är kompatibel med, till exempel toaster. Måste matcha _modell_ [enhets egenskap](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
     | updateProvider | Entitet som skapar eller är direkt ansvarig för uppdateringen. Det är ofta ett företags namn.
     | updateName | Identifierare för en klass med uppdateringar. Den här klassen kan vara allt du väljer. Det är ofta en enhet eller ett modell namn.
-    | updateVersion | Versions nummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Kanske inte matchar en version av en enskild program varu komponent på enheten.
+    | updateVersion | Versions nummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Har inte samma version av en enskild program varu komponent på enheten (men kan även om du väljer).
     | Uppdateringstyp | <ul><li>Ange `microsoft/swupdate:1` för avbildnings uppdatering</li><li>Ange `microsoft/apt:1` för paket uppdatering</li></ul>
     | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdaterings typ</li><li>Ange Rekommenderat värde för `microsoft/apt:1` uppdaterings typen.
     | updateFilePath (s) | Sökväg till uppdaterings filen (-erna) på datorn
@@ -111,6 +111,9 @@ Exempel:
 ```
 
 ## <a name="import-update"></a>Importera uppdatering
+
+[!NOTE]
+Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal användar gränssnittet. Du kan också använda [enhets uppdateringen för IoT Hub-API: er för](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) att importera en uppdatering. 
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och navigera till IoT Hub med enhets uppdatering.
 
