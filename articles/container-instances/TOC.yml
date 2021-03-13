@@ -156,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: Anslutningsprogram
       href: /connectors/aci
+    - name: Inbyggda Azure Policy-program
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resurser
   items:
     - name: Utveckla dina färdigheter med Microsoft Learn

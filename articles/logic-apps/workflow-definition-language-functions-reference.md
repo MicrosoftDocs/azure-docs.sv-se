@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 02/18/2021
-ms.openlocfilehash: 484ee9e67aa2adc11529f8a2239a813b3b12f7b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/12/2021
+ms.openlocfilehash: 8093b61213c3e26b93df2a3f495e7efe0a61d523
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702495"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103420042"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referens guide för att använda funktioner i uttryck för Azure Logic Apps och energi automatisering
 
@@ -4708,16 +4708,22 @@ workflow().<property>
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*immaterialrätt*> | Inga | Sträng | Namnet på den arbets flödes egenskap vars värde du vill ha <p>Ett arbets flödes objekt har följande egenskaper: **namn**, **typ**, **ID**, **plats** och **Kör**. Värdet **Kör** egenskap är också ett objekt som har dessa egenskaper: **namn**, **typ** och **ID**. |
+| <*immaterialrätt*> | Inga | Sträng | Namnet på den arbets flödes egenskap vars värde du vill ha <p><p>Som standard har ett arbets flödes objekt följande egenskaper: `name` ,,,, `type` `id` `location` `run` och `tags` . <p><p>– `run` Egenskap svärdet är ett JSON-objekt som innehåller dessa egenskaper: `name` , `type` och `id` . <p><p>- `tags` Egenskapen är ett JSON-objekt som innehåller [taggar som är associerade med din Logic app i Azure Logic Apps eller flödet i Energis par](../azure-resource-manager/management/tag-resources.md) och värden för dessa taggar. Om du vill ha mer information om taggar i Azure-resurser granskar du [tagga resurser, resurs grupper och prenumerationer för logisk organisation i Azure](../azure-resource-manager/management/tag-resources.md). <p><p>**Obs!** en Logic app har som standard inga taggar, men ett energi flöde har `flowDisplayName` `environmentName` taggarna och. |
 |||||
 
-*Exempel*
+*Exempel 1*
 
 Det här exemplet returnerar namnet på arbets flödets aktuella körning:
 
-```
-workflow().run.name
-```
+`workflow().run.name`
+
+*Exempel 2*
+
+Om du använder automatisk energi användning kan du skapa ett `@workflow()` uttryck som använder `tags` egenskapen output för att hämta värdena från ditt flödes `flowDisplayName` eller `environmentName` egenskap.
+
+Du kan till exempel skicka anpassade e-postaviseringar från själva flödet som länkar tillbaka till ditt flöde. Dessa meddelanden kan innehålla en HTML-länk som innehåller flödets visnings namn i e-postrubriken och följer den här syntaxen:
+
+`<a href=https://flow.microsoft.com/manage/environments/@{workflow()['tags']['environmentName']}/flows/@{workflow()['name']}/details>Open flow @{workflow()['tags']['flowDisplayName']}</a>`
 
 <a name="xml"></a>
 

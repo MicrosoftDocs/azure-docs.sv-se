@@ -5,14 +5,14 @@ author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 03/12/2021
 ms.author: jlian
-ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 62292a2ee51f8e1838e9cf3376367a02964cad47
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656371"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418750"
 ---
 # <a name="use-ip-filters"></a>Använda IP-filter
 
@@ -85,6 +85,10 @@ Alla anslutnings försök från en IP-adress som inte uttryckligen tillåts får
 IP-filter regler är *tillåtna* regler och tillämpas utan sortering. Endast IP-adresser som du lägger till får ansluta till IoT Hub. 
 
 Om du till exempel vill acceptera adresser i intervallet `192.168.100.0/22` och förkasta allt annat behöver du bara lägga till en regel i rutnätet med adress intervall `192.168.100.0/22` .
+
+### <a name="azure-portal"></a>Azure Portal 
+
+IP filter regler tillämpas också när du använder IoT Hub via Azure Portal. Detta beror på att API-anrop till tjänsten IoT Hub görs direkt med din webbläsare med dina autentiseringsuppgifter, vilket är konsekvent med andra Azure-tjänster. Om du vill komma åt IoT Hub att använda Azure Portal när IP-filtret är aktiverat lägger du till datorns IP-adress i listan över tillåtna. 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Hämta och uppdatera IP-filter med Azure CLI
 

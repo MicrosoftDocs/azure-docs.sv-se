@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d28946aad263af635a0139e68d424a77a1eab25
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84803637"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417832"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Belastnings utjämning på flera IP-konfigurationer med hjälp av Azure Portal
 
@@ -26,7 +26,6 @@ ms.locfileid: "84803637"
 > * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
-
 
 I den här artikeln ska vi visa hur du använder Azure Load Balancer med flera IP-adresser på en sekundär nätverks gränssnitts styrenhet (NIC). Följande diagram illustrerar vårt scenario:
 
@@ -42,7 +41,7 @@ I vårt scenario använder vi följande konfiguration:
 - Azure Load Balancer används för att exponera två frontend-IP-adresser, en för varje webbplats. Klient dels adresserna används för att distribuera trafik till respektive IP-konfiguration för varje webbplats.
 - Samma port nummer används för både frontend-IP-adresser och backend-poolens IP-adresser.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vårt scenario exempel förutsätter att du har en resurs grupp med namnet **contosofabrikam** som är konfigurerad på följande sätt:
 
@@ -90,11 +89,11 @@ Skapa belastningsutjämnaren för konfigurationen:
 
 2. I det övre vänstra hörnet på skärmen väljer du **skapa en resurs**  >  **nätverk**  >  **Load Balancer**. Välj sedan **skapa**.
 
-3. Under **skapa belastningsutjämnare**anger du ett namn för belastningsutjämnaren. I det här scenariot använder vi namnet **mylb**.
+3. Under **skapa belastningsutjämnare** anger du ett namn för belastningsutjämnaren. I det här scenariot använder vi namnet **mylb**.
 
-4. Under **offentlig IP-adress**skapar du en ny offentlig IP-adress med namnet **PublicIP1**.
+4. Under **offentlig IP-adress** skapar du en ny offentlig IP-adress med namnet **PublicIP1**.
 
-5. Under **resurs grupp**väljer du den befintliga resurs gruppen för dina virtuella datorer (till exempel **contosofabrikam**). Välj platsen där du vill distribuera belastningsutjämnaren till och välj sedan **OK**.
+5. Under **resurs grupp** väljer du den befintliga resurs gruppen för dina virtuella datorer (till exempel **contosofabrikam**). Välj platsen där du vill distribuera belastningsutjämnaren till och välj sedan **OK**.
 
 Belastningsutjämnaren börjar distribuera. Det kan ta några minuter innan distributionen har slutförts. När distributionen är klar visas belastningsutjämnaren som en resurs i resurs gruppen.
 
@@ -102,29 +101,29 @@ Belastningsutjämnaren börjar distribuera. Det kan ta några minuter innan dist
 
 För varje webbplats (contoso.com och fabrikam.com) konfigurerar du klient delens IP-pool på belastningsutjämnaren:
 
-1. Välj **fler tjänster**i portalen. I rutan Filter anger du **offentlig IP-adress** och väljer sedan **offentliga IP-adresser**. I nästa ruta, längst upp, väljer du **Lägg till**.
+1. Välj **fler tjänster** i portalen. I rutan Filter anger du **offentlig IP-adress** och väljer sedan **offentliga IP-adresser**. I nästa ruta, längst upp, väljer du **Lägg till**.
 
 2. Konfigurera två offentliga IP-adresser (**PublicIP1** och **PublicIP2**) för båda webbplatserna (contoso.com och fabrikam.com):
 
    1. Ange ett namn för din klient-IP-adress.
 
-   2. För **resurs grupp**väljer du den befintliga resurs gruppen för dina virtuella datorer (till exempel **contosofabrikam**).
+   2. För **resurs grupp** väljer du den befintliga resurs gruppen för dina virtuella datorer (till exempel **contosofabrikam**).
 
-   3. För **plats**väljer du samma plats som de virtuella datorerna.
+   3. För **plats** väljer du samma plats som de virtuella datorerna.
 
    4. Välj **OK**.
 
       När de offentliga IP-adresserna har skapats visas de under **offentliga IP-** adresser.
 
-3. <a name="step3-3"></a>Välj **fler tjänster**i portalen. I rutan Filter skriver du **Load Balancer** och väljer sedan **Load Balancer**. 
+3. <a name="step3-3"></a>Välj **fler tjänster** i portalen. I rutan Filter skriver du **Load Balancer** och väljer sedan **Load Balancer**. 
 
 4. Välj den belastningsutjämnare (**mylb**) som du vill lägga till klient DELENS IP-pool till.
 
-5. Under **Inställningar**väljer du **IP-konfiguration för klient delen**. I nästa ruta, längst upp, väljer du **Lägg till**.
+5. Under **Inställningar** väljer du **IP-konfiguration för klient delen**. I nästa ruta, längst upp, väljer du **Lägg till**.
 
 6. Ange ett namn på klient delens IP-adress (till exempel **contosofe** eller **fabrikamfe**).
 
-7. <a name="step3-7"></a>Välj **IP-adress**. Under **Välj offentlig IP-adress**väljer du IP-adresserna för klient delen (**PublicIP1** eller **PublicIP2**).
+7. <a name="step3-7"></a>Välj **IP-adress**. Under **Välj offentlig IP-adress** väljer du IP-adresserna för klient delen (**PublicIP1** eller **PublicIP2**).
 
 8. Skapa den andra IP-adressen för klient sidan genom att upprepa <a href="#step3-3">steg 3</a> till <a href="#step3-7">steg 7</a> i det här avsnittet.
 
@@ -134,23 +133,23 @@ När klient delens pool har kon figurer ATS visas IP-adresserna under **konfigur
 
 För varje webbplats (contoso.com och fabrikam.com) konfigurerar du backend-adresspoolen på belastningsutjämnaren:
         
-1. Välj **fler tjänster**i portalen. I rutan Filter skriver du **Load Balancer** och väljer sedan **Load Balancer**.
+1. Välj **fler tjänster** i portalen. I rutan Filter skriver du **Load Balancer** och väljer sedan **Load Balancer**.
 
 2. Välj den belastningsutjämnare (**mylb**) som du vill lägga till backend-poolen till.
 
-3. Under **Inställningar**väljer du **backend-pooler**. Ange ett namn för backend-poolen (till exempel **contosopool** eller **fabrikampool**). I nästa ruta, längst upp, väljer du **Lägg till**. 
+3. Under **Inställningar** väljer du **backend-pooler**. Ange ett namn för backend-poolen (till exempel **contosopool** eller **fabrikampool**). I nästa ruta, längst upp, väljer du **Lägg till**. 
 
-4. För **kopplad till**väljer du **tillgänglighets uppsättning**.
+4. För **kopplad till** väljer du **tillgänglighets uppsättning**.
 
-5. För **tillgänglighets uppsättning**väljer du **myAvailset**.
+5. För **tillgänglighets uppsättning** väljer du **myAvailset**.
 
 6. Lägg till mål nätverkets IP-konfigurationer för båda virtuella datorerna: 
 
     ![Konfigurera Server dels pooler för belastningsutjämnare](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
     
-    1. För **virtuell mål dator**väljer du den virtuella dator som du vill lägga till i backend-poolen (till exempel **VM1** eller **VM2**).
+    1. För **virtuell mål dator** väljer du den virtuella dator som du vill lägga till i backend-poolen (till exempel **VM1** eller **VM2**).
 
-    2. För **IP-konfiguration för nätverk**väljer du IP-konfigurationen för det sekundära nätverkskortet för den virtuella dator som du valde i föregående steg (till exempel **VM1NIC2-ipconfig2** eller **VM2NIC2-ipconfig2**).
+    2. För **IP-konfiguration för nätverk** väljer du IP-konfigurationen för det sekundära nätverkskortet för den virtuella dator som du valde i föregående steg (till exempel **VM1NIC2-ipconfig2** eller **VM2NIC2-ipconfig2**).
 
 7. Välj **OK**.
 
@@ -160,11 +159,11 @@ När backend-poolen har kon figurer ATS visas adresserna under inställningarna 
 
 Konfigurera en hälso avsökning för belastningsutjämnaren:
 
-1. Välj **fler tjänster**i portalen. I rutan Filter skriver du **Load Balancer** och väljer sedan **Load Balancer**.
+1. Välj **fler tjänster** i portalen. I rutan Filter skriver du **Load Balancer** och väljer sedan **Load Balancer**.
 
 2. Välj den belastningsutjämnare (**mylb**) som du vill lägga till hälso avsökningen i.
 
-3. Under **Inställningar**väljer du **hälso avsökning**. I nästa ruta, längst upp, väljer du **Lägg till**. 
+3. Under **Inställningar** väljer du **hälso avsökning**. I nästa ruta, längst upp, väljer du **Lägg till**. 
 
 4. Ange ett namn på hälso avsökningen (till exempel **http**). Välj **OK**.
 
@@ -172,13 +171,13 @@ Konfigurera en hälso avsökning för belastningsutjämnaren:
 
 Konfigurera belastnings Utjämnings reglerna för varje webbplats (contoso.com och fabrikam.com):
     
-1. <a name="step6-1"></a>Under **Inställningar**väljer du **belastnings Utjämnings regler**. I nästa ruta, längst upp, väljer du **Lägg till**. 
+1. <a name="step6-1"></a>Under **Inställningar** väljer du **belastnings Utjämnings regler**. I nästa ruta, längst upp, väljer du **Lägg till**. 
 
-2. I **namn**anger du ett namn för belastnings Utjämnings regeln (till exempel **HTTPc** för contoso.com eller **HTTPf** för fabrikam.com).
+2. I **namn** anger du ett namn för belastnings Utjämnings regeln (till exempel **HTTPc** för contoso.com eller **HTTPf** för fabrikam.com).
 
-3. För **IP-adress för klient**del väljer du den IP-adress för klient delen som du skapade tidigare (till exempel **contosofe** eller **fabrikamfe**).
+3. För **IP-adress för klient** del väljer du den IP-adress för klient delen som du skapade tidigare (till exempel **contosofe** eller **fabrikamfe**).
 
-4. Behåll standardvärdet **80**för **port** -och **backend-porten**.
+4. Behåll standardvärdet **80** för **port** -och **backend-porten**.
 
 5. För **flytande IP (direkt Server retur)** väljer du **inaktive rad**.
 

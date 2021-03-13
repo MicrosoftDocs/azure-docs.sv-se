@@ -2,26 +2,24 @@
 title: 'SQL Server till Azure Synapse Analytics: migration guide'
 description: Följ den här guiden för att migrera dina SQL-databaser till Azure Synapse Analytics SQL-poolen.
 ms.service: synapse-analytics
-ms.subservice: ''
-ms.custom: ''
-ms.devlang: ''
+ms.subservice: sql
 ms.topic: conceptual
 author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 09914b409c7d8412f6ba30d4412e28e264bd50f6
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 9a7888d3ccf7e033f15f184227c65c746780aa12
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225831"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418036"
 ---
 # <a name="migration-guide-sql-server-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Migration guide: SQL Server till en dedikerad SQL-pool i Azure Synapse Analytics 
-I följande avsnitt får du en översikt över vad som ingår i migreringen av en befintlig SQL Server data lager lösning till Azure Synapse Analytics SQL-poolen
+I följande avsnitt får du en översikt över vad som ingår i migreringen av en befintlig SQL Server data lager lösning till Azure Synapse Analytics SQL-poolen.
 
 ## <a name="overview"></a>Översikt
-Innan du migrerar bör du kontrol lera att Azure Synapse Analytics är den bästa lösningen för din arbets belastning. Azure Synapse Analytics är ett distribuerat system utformat för att utföra analyser av stora data. För att migrera till Azure Synapse Analytics krävs vissa design ändringar som inte är svåra att förstå, men som kan ta lite tid att implementera. Om ditt företag kräver ett informations lager i företags klass är fördelarna värdefull. Men om du inte behöver kraften i Azure Synapse Analytics är det mer kostnads effektivt att använda [SQL Server](https://docs.microsoft.com/sql/sql-server/) eller [Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/).
+Innan du migrerar bör du kontrol lera att Azure Synapse Analytics är den bästa lösningen för din arbets belastning. Azure Synapse Analytics är ett distribuerat system utformat för att utföra analyser av stora data. För att migrera till Azure Synapse Analytics krävs vissa design ändringar som inte är svåra att förstå, men som kan ta lite tid att implementera. Om ditt företag kräver ett informations lager i företags klass är fördelarna värdefull. Men om du inte behöver kraften i Azure Synapse Analytics är det mer kostnads effektivt att använda [SQL Server](/sql/sql-server/) eller [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview).
 
 Överväg att använda Azure Synapse Analytics när du:
 - Ha en eller flera terabyte data.
@@ -44,10 +42,10 @@ Kontrol lera att du har följande förutsättningar för att migrera SQL Server 
 - En [dedikerad SQL-pool](../get-started-create-workspace.md) i Azure dataSynapses-arbetsytan. 
 
 ## <a name="pre-migration"></a>Före migrering
-När du har fattat beslutet om att migrera en befintlig lösning till Azure Synapse Analytics är det viktigt att planera migreringen innan du börjar. Ett primärt mål för planering är att se till att dina data, tabell scheman och kod är kompatibla med Azure Synapse Analytics. Det finns vissa skillnader i kompatibilitet mellan ditt nuvarande system och SQL Data Warehouse som du behöver lösa. Dessutom tar det tid att migrera stora mängder data till Azure. Noggrann planering påskyndar processen med att hämta dina data till Azure. Ett annat viktiga mål för planeringen är att justera din design för att säkerställa att din lösning utnyttjar den höga prestanda som Azure Synapse Analytics har utformats för att tillhandahålla. Att utforma data lager för skalning introducerar unika design mönster, så traditionella metoder är inte alltid det bästa. Vissa design justeringar kan göras efter migreringen, men om du gör ändringar tidigare i processen kommer du att spara tid senare.
+När du har fattat beslutet om att migrera en befintlig lösning till Azure Synapse Analytics är det viktigt att planera migreringen innan du börjar. Ett primärt mål för planering är att se till att dina data, tabell scheman och kod är kompatibla med Azure Synapse Analytics. Det finns vissa skillnader i kompatibilitet mellan ditt nuvarande system och SQL Data Warehouse som du behöver lösa. Det tar också tid att migrera stora mängder data till Azure. Noggrann planering påskyndar processen med att hämta dina data till Azure. Ett annat viktiga mål för planeringen är att justera din design för att säkerställa att din lösning utnyttjar den höga prestanda som Azure Synapse Analytics har utformats för att tillhandahålla. Att utforma data lager för skalning introducerar unika design mönster, så traditionella metoder är inte alltid det bästa. Vissa design justeringar kan göras efter migreringen, men om du gör ändringar tidigare i processen kommer du att spara tid senare.
 
 ## <a name="azure-synapse-pathway"></a>Azure Synapse-utbildningsavsnitt
-En av de kritiska Blocker som kunderna möter översätter sin SQL-kod vid migrering från ett system till ett annat. [Azure Synapse-väg](https://docs.microsoft.com/sql/tools/synapse-pathway/azure-synapse-pathway-overview) hjälper dig att uppgradera till en modern informations lager plattform genom att automatisera kod översättningen av ditt befintliga data lager. Det är ett kostnads fritt, intuitivt och lättanvänt verktyg som automatiserar kod översättningen och möjliggör en snabb migrering till Azure Synapse Analytics.
+En av de kritiska Blocker som kunderna möter översätter sin SQL-kod vid migrering från ett system till ett annat. [Azure Synapse-väg](/sql/tools/synapse-pathway/azure-synapse-pathway-overview) hjälper dig att uppgradera till en modern informations lager plattform genom att automatisera kod översättningen av ditt befintliga data lager. Det är ett kostnads fritt, intuitivt och lättanvänt verktyg som automatiserar kod översättningen och möjliggör en snabb migrering till Azure Synapse Analytics.
 
 ## <a name="migrate"></a>Migrera
 Om du utför en lyckad migrering måste du migrera tabell scheman, kod och data. Mer detaljerad information om de här ämnena finns i:

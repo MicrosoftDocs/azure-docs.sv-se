@@ -6,13 +6,13 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/03/2020
-ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/12/2021
+ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175880"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418104"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Felsök problem med CI-CD, Azure DevOps och GitHub i ADF 
 
@@ -178,19 +178,21 @@ Azure Resource Manager begränsar storleken på mallen till 4 MB. Begränsa stor
 
 För små till medelstora lösningar är en enskild mall enklare att förstå och underhålla. Du kan se alla resurser och värden i en enda fil. I avancerade scenarier kan du använda länkade mallar till att dela upp lösningen i riktade komponenter. Följ bästa praxis vid [användning av länkade och kapslade mallar](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
 
-### <a name="cannot-connect-to-git-enterprise"></a>Det går inte att ansluta till GIT Enterprise 
+### <a name="cannot-connect-to-git-enterprise-cloud"></a>Det går inte att ansluta till GIT Enterprise Cloud 
 
 ##### <a name="issue"></a>Problem
 
-Du kan inte ansluta till GIT Enterprise på grund av behörighets problem. Du kan se felet som **422-en entitet som inte kan bearbetas.**
+Du kan inte ansluta till GIT Enterprise-molnet på grund av behörighets problem. Du kan se felet som **422-en entitet som inte kan bearbetas.**
 
 #### <a name="cause"></a>Orsak
 
-Du har inte konfigurerat OAuth för ADF. URL: en är felkonfigurerad.
+* Du använder git Enterprise på lokal-servern. 
+* Du har inte konfigurerat OAuth för ADF. 
+* URL: en är felkonfigurerad.
 
 ##### <a name="resolution"></a>Lösning
 
-Du beviljar OAuth-åtkomst till ADF först. Sedan måste du använda rätt URL för att ansluta till GIT Enterprise. Konfigurationen måste anges till kundens organisation (er). Till exempel så försöker ADF först *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ..* . och Miss Missing. Sedan kommer det att försöka *https://hostname/api/v3/orgs/ <org> / <repo> ...* och lyckas. 
+Du beviljar OAuth-åtkomst till ADF först. Sedan måste du använda rätt URL för att ansluta till GIT Enterprise. Konfigurationen måste anges till kundens organisation (er). ADF kommer till exempel att försöka *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* vid första och misslyckad. Sedan kommer det att försöka *https://hostname/api/v3/orgs/ <org> / <repo> ...* och lyckas. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Återställa från en borttagen data fabrik
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 6c96c5b03a3561ae57807ad2788064f2a568f84c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106282"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418716"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Självstudie: köra Python-skript via Azure Data Factory med Azure Batch
 
@@ -34,7 +34,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 
 * En installerad [python](https://www.python.org/downloads/) -distribution för lokal testning.
 * [Azure-Storage-BLOB-](https://pypi.org/project/azure-storage-blob/) `pip` paketet.
-* [iris.csv data uppsättning](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* [iris.csv data uppsättning](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv)
 * Ett Azure Batch-konto och ett länkat Azure Storage-konto. Mer information om hur du skapar och länkar batch-konton till lagrings konton finns i [skapa ett batch-konto](quick-create-portal.md#create-a-batch-account) .
 * Ett Azure Data Factory konto. Se [skapa en data fabrik](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) för mer information om hur du skapar en data fabrik via Azure Portal.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -67,7 +67,7 @@ Här skapar du Blob-behållare som lagrar dina indata och utdatafiler för OCR-b
 1. Logga in för att Storage Explorer med dina Azure-autentiseringsuppgifter.
 1. Skapa två BLOB-behållare (en för indatafiler, en för utdatafiler) med hjälp av det lagrings konto som är kopplat till ditt batch-konto genom att följa stegen i [skapa en BLOB-behållare](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
     * I det här exemplet ska vi anropa vår container för indata `input` och vår behållare för utdata `output` .
-1. Överför [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) till din indatamängds behållare `input` med hjälp av Storage Explorer genom att följa stegen i [Hantera blobbar i en BLOB-behållare](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)
+1. Överför [`iris.csv`](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv) till din indatamängds behållare `input` med hjälp av Storage Explorer genom att följa stegen i [Hantera blobbar i en BLOB-behållare](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)
 
 ## <a name="develop-a-script-in-python"></a>Utveckla ett skript i python
 
@@ -75,32 +75,28 @@ Följande Python-skript läser in data `iris.csv` uppsättningen från din `inpu
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import BlobClient
 import pandas as pd
 
 # Define parameters
-storageAccountURL = "<storage-account-url>"
-storageKey         = "<storage-account-key>"
-containerName      = "output"
+connectionString = "<storage-account-connection-string>"
+containerName = "output"
+outputBlobName  = "iris_setosa.csv"
 
 # Establish connection with the blob storage account
-blob_service_client = BlockBlobService(account_url=storageAccountURL,
-                               credential=storageKey
-                               )
+blob = BlobClient.from_connection_string(conn_str=connectionString, container_name=containerName, blob_name=outputBlobName)
 
 # Load iris dataset from the task node
 df = pd.read_csv("iris.csv")
 
-# Subset records
+# Take a subset of the records
 df = df[df['Species'] == "setosa"]
 
 # Save the subset of the iris dataframe locally in task node
-df.to_csv("iris_setosa.csv", index = False)
+df.to_csv(outputBlobName, index = False)
 
-# Upload iris dataset
-container_client = blob_service_client.get_container_client(containerName)
-with open("iris_setosa.csv", "rb") as data:
-    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
+with open(outputBlobName, "rb") as data:
+    blob.upload_blob(data)
 ```
 
 Spara skriptet som `main.py` och ladda upp det till **Azure Storage** - `input` behållaren. Se till att testa och verifiera dess funktioner lokalt innan du laddar upp den till BLOB-behållaren:
@@ -119,19 +115,17 @@ I det här avsnittet ska du skapa och validera en pipeline med hjälp av python-
 
     ![På fliken Allmänt anger du namnet på pipelinen som "kör python"](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. I rutan **aktiviteter** expanderar du **batch-tjänsten**. Dra den anpassade aktiviteten från **aktivitets** verktygs lådan till pipelinens designer-yta.
-1. På fliken **Allmänt** anger du **testPipeline** som namn
-
-    ![På fliken Allmänt anger du testPipeline som namn](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. På fliken **Azure Batch** lägger du till det **Batch-konto** som skapades i föregående steg och **testar anslutningen** för att kontrol lera att det lyckades
-
+1. I rutan **aktiviteter** expanderar du **batch-tjänsten**. Dra den anpassade aktiviteten från **aktivitets** verktygs lådan till pipelinens designer-yta. Fyll i följande flikar för den anpassade aktiviteten:
+    1. På fliken **Allmänt** anger du **testPipeline** som namn ![ på fliken Allmänt, anger testPipeline som namn](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    1. På fliken **Azure Batch** lägger du till det **Batch-konto** som skapades i föregående steg och **testar anslutningen** för att kontrol lera att det lyckades.
     ![På fliken Azure Batch lägger du till batch-kontot som skapades i föregående steg och testar sedan anslutning](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    1. På fliken **Inställningar** :
+        1. Ange **kommandot** som `python main.py` .
+        1. För den **länkade resurs tjänsten** lägger du till det lagrings konto som skapades i föregående steg. Testa anslutningen för att säkerställa att den lyckas.
+        1. I **mappsökvägen** väljer du namnet på den **Azure Blob Storage** -behållare som innehåller python-skriptet och tillhör ande indata. Detta laddar ned de valda filerna från behållaren till poolens noder innan python-skriptet körs.
 
-1. På fliken **Inställningar** anger du kommandot `python main.py` .
-1. För den **länkade resurs tjänsten** lägger du till det lagrings konto som skapades i föregående steg. Testa anslutningen för att säkerställa att den lyckas.
-1. I **mappsökvägen** väljer du namnet på den **Azure Blob Storage** -behållare som innehåller python-skriptet och tillhör ande indata. Detta laddar ned de valda filerna från behållaren till poolens noder innan python-skriptet körs.
+        ![I mappsökvägen väljer du namnet på Azure Blob Storage-behållaren](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 
-    ![I mappsökvägen väljer du namnet på Azure Blob Storage-behållaren](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Verifiera pipelineinställningarna genom att klicka på **Verifiera** i verktygsfältet för pipelinen. Bekräfta att pipelinen har verifierats. Du stänger utdata från verifieringen genom att välja &gt;&gt; (högerpil).
 1. Klicka på **Felsök** för att testa pipelinen och se till att den fungerar korrekt.
 1. Klicka på **publicera** för att publicera pipelinen.

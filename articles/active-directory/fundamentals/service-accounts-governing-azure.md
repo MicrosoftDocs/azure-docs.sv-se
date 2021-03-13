@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034544"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418189"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Styrande Azure AD-tjänstekonton
 
@@ -41,7 +41,7 @@ Innan du skapar ett tjänst konto, eller registrerar ett program, dokumenterar d
 | Riskbedömning| Risk-och företags påverkan om kontot skulle komprometteras.| Använd den här informationen för att begränsa omfattningen av behörigheter och bestämma vem som ska ha åtkomst till konto informationen. |
 | Period för granskning| Det schema som tjänst kontot ska granskas av av ägaren.| Använd den här för att schemalägga granskning av kommunikation och recensioner. Dokumentera vad som ska hända om en granskning inte utförs vid en viss tidpunkt efter den schemalagda gransknings perioden. |
 | Giltighet| Förväntad högsta livstid för konto.| Använd den här för att schemalägga kommunikation till ägaren och inaktivera sedan kontona. När det är möjligt anger du ett förfallo datum för autentiseringsuppgifter, där autentiseringsuppgifterna inte kan återställas automatiskt. |
-| Namn| Standardiserat konto namn| Skapa ett namngivnings schema för alla tjänst konton så att du enkelt kan söka, sortera och filtrera efter tjänst konton. |
+| Name| Standardiserat konto namn| Skapa ett namngivnings schema för alla tjänst konton så att du enkelt kan söka, sortera och filtrera efter tjänst konton. |
 
 
 ## <a name="use-the-principle-of-least-privileges"></a>Använd principen om lägsta behörighet
@@ -172,7 +172,7 @@ Upprätta en gransknings process för att säkerställa att tjänst konton regel
 
 **Processerna för avetablering bör omfatta följande uppgifter.**
 
-1. När det associerade programmet eller skriptet har avetablerats, [övervakar du inloggningar](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) och resurs åtkomst av tjänst kontot.
+1. När det associerade programmet eller skriptet har avetablerats, [övervakar du inloggningar](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) och resurs åtkomst av tjänst kontot.
 
    * Om kontot fortfarande är aktivt, avgör du hur det används innan du vidtar efterföljande steg.
  

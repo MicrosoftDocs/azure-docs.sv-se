@@ -5,14 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: victorh
-ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.custom: references_regions
+ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453435"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419957"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>För hands versions funktioner för Azure Firewall Premium
 
@@ -100,6 +101,44 @@ eller
 
 Du är välkommen att skicka en begäran till [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
  
+## <a name="supported-regions"></a>Regioner som stöds
+
+För hands versionen av Azure Firewall Premium stöds i följande regioner:
+
+- Västeuropa (offentlig/Europa)
+- USA, östra (offentlig/USA)
+- Östra Australien (offentlig/Australien)
+- Sydostasien (offentlig/Asien och stillahavsområdet)
+- Storbritannien, södra (offentlig/Storbritannien)
+- Europa, norra (offentlig/Europa)
+- USA, östra 2 (offentliga/USA)
+- Södra centrala USA (offentliga/USA)
+- USA, västra 2 (offentliga/USA)
+- USA, västra (offentlig/USA)
+- USA, centrala (offentlig/USA)
+- Norra centrala USA (offentlig/USA)
+- Japan, östra (offentlig/Japan)
+- Asien, östra (offentlig/Asien och stillahavsområdet)
+- Kanada, centrala (offentliga/Kanada)
+- Centrala Frankrike (offentliga/Frankrike)
+- Södra Afrika (offentlig/Sydafrika)
+- Förenade Arabemiraten Nord (offentlig/Förenade Arabemiraten)
+- Schweiz, norra (offentlig/Schweiz)
+- Södra Brasilien (offentlig/Brasilien)
+- Östra Norge (offentliga/Norge)
+- Australien, centrala (offentlig/Australien)
+- Australien, centrala 2 (offentlig/Australien)
+- Australien, sydöstra (offentlig/Australien)
+- Kanada, östra (offentliga/Kanada)
+- Centrala USA-EUAP (offentlig/Kanarie (USA))
+- Frankrike, södra (offentlig/Frankrike)
+- Västra Japan (offentlig/Japan)
+- Republiken Korea (offentlig/Korea)
+- Förenade Arabemiraten Central (offentlig/Förenade Arabemiraten)
+- Storbritannien, västra (offentlig/Storbritannien)
+- USA, västra centrala (offentlig/USA)
+- Västra Indien (offentlig/Indien)
+
 
 ## <a name="known-issues"></a>Kända problem
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020226"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419599"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Så här bearbetar och extraherar du information från bilder i AI-anriknings scenarier
 
@@ -88,7 +88,7 @@ När *imageAction* är inställt på ett annat värde än "ingen", kommer fälte
 ]
 ```
 
-## <a name="image-related-skills"></a>Bildrelaterade kunskaper
+## <a name="image-related-skills"></a>Bild-relaterade kunskaper
 
 Det finns två inbyggda kognitiva färdigheter som tar bilder som indata: [OCR](cognitive-search-skill-ocr.md) -och [bild analys](cognitive-search-skill-image-analysis.md). 
 
@@ -213,6 +213,77 @@ Om du behöver transformera normaliserade koordinater till det ursprungliga koor
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>Skicka bilder till anpassade kunskaper
+
+För scenarier där du behöver en anpassad färdighet för att arbeta med bilder kan du skicka bilder till den anpassade kunskapen och låta dem returnera text eller bilder. Bild bearbetningen [python](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) demonstrerar arbets flödet. Följande färdigheter är från exemplet.
+
+Följande färdigheter tar den normaliserade avbildningen (hämtas under dokument sprickor) och matar ut segment av bilden.
+
+#### <a name="sample-skillset"></a>Exempel på färdigheter
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>Anpassad kompetens
+
+Den anpassade själva kompetensen är extern i färdigheter. I det här fallet är det python-kod som först loopar i gruppen med begär ande poster i det anpassade färdighets formatet och konverterar den base64-kodade strängen till en bild.
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+Om du vill returnera en bild returnerar du en Base64-kodad sträng i ett JSON-objekt med `$type` egenskapen `file` .
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>Se även
 + [Skapa indexerare (REST)](/rest/api/searchservice/create-indexer)
@@ -221,3 +292,4 @@ Om du behöver transformera normaliserade koordinater till det ursprungliga koor
 + [Text sammanfognings kunskaper](cognitive-search-skill-textmerger.md)
 + [Så här definierar du en färdigheter](cognitive-search-defining-skillset.md)
 + [Så här mappar du omfattande fält](cognitive-search-output-field-mapping.md)
++ [Så här skickar du avbildningar till anpassade kunskaper](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

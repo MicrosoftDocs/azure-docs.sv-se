@@ -12,12 +12,12 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 410c0942b9040a6707a51e4ff9f375b9d4728668
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 1e08203076de2073e39c5b5f5eb40b66c88490d7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821578"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417751"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Använd codec-komprimerad ljud inspelning med talet SDK
 
@@ -25,13 +25,14 @@ Med API: t för tal service SDK **komprimerad ljud inspelnings ström** får du 
 
 Plattform | Språk | GStreamer-version som stöds
 | :--- | ---: | :---:
-Windows (exklusive UWP)  | C++, C#, Java, python | [1.15.1](https://gstreamer.freedesktop.org/releases/gstreamer/1.5.1.html)
+Windows (exklusive UWP)  | C++, C#, Java, python | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/)
 Linux  | C++, C#, Java, python | [Linux-distributioner och mål arkitekturer som stöds](~/articles/cognitive-services/speech-service/speech-sdk.md)
-Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/)
+Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.18.3/)
 
 ## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>Tal SDK-version krävs för komprimerad ljud inspelning
 * Tal SDK-version 1.10.0 eller senare krävs för RHEL 8 och CentOS 8
 * Tal SDK-version 1.11.0 eller senare krävs för för Windows.
+* Tal SDK-version 1.16.0 eller senare för senaste GStreamer på Windows och Android.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

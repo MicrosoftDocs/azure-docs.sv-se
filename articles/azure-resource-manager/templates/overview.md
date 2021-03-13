@@ -2,13 +2,13 @@
 title: Översikt över mallar
 description: Beskriver fördelarna med Azure Resource Manager mallar (ARM-mallar) för att distribuera resurser.
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455743"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419991"
 ---
 # <a name="what-are-arm-templates"></a>Vad är ARM-mallar?
 
@@ -19,6 +19,10 @@ För att möta dessa utmaningar kan du automatisera distributioner och använda 
 Använd Azure Resource Manager mallar (ARM-mallar) om du vill implementera infrastruktur som kod för dina Azure-lösningar. Mallen är en JavaScript Object Notation-fil (JSON) som definierar infrastrukturen och konfigurationen för ditt projekt. Mallen använder deklarativ syntax, som låter dig ange vad du vill distribuera utan att du behöver skriva sekvensen med programmeringskommandon för att skapa det. I mallen anger du de resurser som ska distribueras och egenskaperna för dessa resurser.
 
 Vi har introducerat ett nytt språk för att utveckla ARM-mallar. Språket heter bicep och är för närvarande en för hands version. Bicep-och JSON-mallar ger samma funktioner. Du kan konvertera en mall mellan de två språken. Bicep innehåller en syntax som är enklare att använda för att skapa mallar. Mer information finns i [Vad är bicep (för hands version)?](bicep-overview.md).
+
+Mer information om hur du kan komma igång med ARM-mallar finns i följande video.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>Varför ska du välja ARM-mallar?
 

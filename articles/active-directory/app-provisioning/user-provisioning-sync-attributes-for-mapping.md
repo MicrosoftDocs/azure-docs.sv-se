@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/13/2019
+ms.date: 03/12/2021
 ms.author: kenwith
-ms.openlocfilehash: 62d035b85850f8ac455a85fd93e4d081bbd386e1
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0f8369c80a7a219b159f31aacb7d10a0dd009d00
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256093"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418682"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Synkronisera ett attribut från din lokala Active Directory till Azure AD för etablering till ett program
 
@@ -23,9 +23,9 @@ När du anpassar mappningar för attribut för användar etablering kan du se at
 
 Azure AD måste innehålla alla data som krävs för att skapa en användar profil vid etablering av användar konton från Azure AD till en SaaS-app. I vissa fall kan du behöva synkronisera attribut från din lokala AD till Azure AD för att kunna göra data tillgängliga. Azure AD Connect synkroniserar automatiskt vissa attribut till Azure AD, men inte alla attribut. Dessutom kanske vissa attribut (till exempel SAMAccountName) som synkroniseras som standard inte exponeras med hjälp av Microsoft Graph API. I dessa fall kan du använda funktionen Azure AD Connect katalog tillägg för att synkronisera attributet med Azure AD. På så sätt blir attributet synligt för Microsoft Graph API och Azure AD Provisioning-tjänsten.
 
-Om de data du behöver för etablering är i Active Directory men inte är tillgängliga för etablering på grund av de orsaker som beskrivs ovan, följer du de här stegen.
+Om de data du behöver för etablering är i Active Directory men inte är tillgängliga för etablering på grund av de orsaker som beskrivs ovan, kan du använda Azure AD Connect eller PowerShell för att skapa attribut för tillägg. 
  
-## <a name="sync-an-attribute"></a>Synkronisera ett attribut 
+## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Skapa ett tilläggs attribut med Azure AD Connect
 
 1. Öppna guiden Azure AD Connect, Välj uppgifter och välj sedan **Anpassa synkroniseringsalternativ**.
 
@@ -51,6 +51,33 @@ Om de data du behöver för etablering är i Active Directory men inte är tillg
 
 > [!NOTE]
 > Möjligheten att etablera referenser från lokala AD, till exempel **ManagedBy** eller **DN/DistinguishedName**, stöds inte idag. Du kan begära den här funktionen på [användarens röst](https://feedback.azure.com/forums/169401-azure-active-directory). 
+
+## <a name="create-an-extension-attribute-using-powershell"></a>Skapa ett tillägg-attribut med PowerShell
+Skapa ett anpassat tillägg med PowerShell och tilldela ett värde till en användare. 
+
+```
+#Connect to your Azure AD tenant   
+Connect-AzureAD
+
+#Create an application (you can instead use an existing application if you would like)
+$App = New-AzureADApplication -DisplayName “test app name” -IdentifierUris https://testapp
+
+#Create a service principal
+New-AzureADServicePrincipal -AppId $App.AppId
+
+#Create an extension property
+New-AzureADApplicationExtensionProperty -ObjectId $App.ObjectId -Name “TestAttributeName” -DataType “String” -TargetObjects “User”
+
+#List users in your tenant to determine the objectid for your user
+Get-AzureADUser
+
+#Set a value for the extension property on the user. Replace the objectid with the id of the user and the extension name with the value from the previous step
+Set-AzureADUserExtension -objectid 0ccf8df6-62f1-4175-9e55-73da9e742690 -ExtensionName “extension_6552753978624005a48638a778921fan3_TestAttributeName”
+
+#Verify that the attribute was added correctly.
+Get-AzureADUser -ObjectId 0ccf8df6-62f1-4175-9e55-73da9e742690 | Select -ExpandProperty ExtensionProperty
+
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

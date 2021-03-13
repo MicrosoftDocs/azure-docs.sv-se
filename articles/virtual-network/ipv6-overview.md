@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538263"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419107"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Vad är IPv6 för Azure Virtual Network?
 
@@ -77,8 +77,7 @@ Aktuell IPv6 för Azure Virtual Network-versionen har följande begränsningar:
 - IPv6 för Azure Virtual Network är tillgängligt i alla globala Azure-regioner och amerikanska myndigheter med alla distributions metoder.  
 - ExpressRoute-gatewayer kan endast användas för IPv4-trafik i ett virtuellt nätverk med IPv6 aktiverat.  Stöd för IPv6-trafik finns i vår översikt.   
 - VPN-gatewayer kan inte användas i ett virtuellt nätverk med IPv6 aktiverat, antingen direkt eller peer-kopplas med "UseRemoteGateway".
-- Azure-plattformen (AKS osv.) stöder inte IPv6-kommunikation för behållare.  
-- IPv6 kan endast läsas in till det primära nätverks gränssnittet (NIC) på virtuella Azure-datorer. Belastnings utjämning av IPv6-trafik till sekundära nätverkskort stöds inte.    
+- Azure-plattformen (AKS osv.) stöder inte IPv6-kommunikation för behållare. 
 - Endast IPv6-Virtual Machines eller Virtual Machines skalnings uppsättningar stöds inte, varje nätverkskort måste innehålla minst en IPv4-IP-konfiguration. 
 - När du lägger till IPv6 i befintliga IPv4-distributioner går det inte att lägga till IPv6-intervall i ett VNET med befintliga länkar för resurs navigering.  
 - Vidarebefordring av DNS för IPv6 stöds för Azures offentliga DNS idag men omvänd DNS stöds inte ännu.   

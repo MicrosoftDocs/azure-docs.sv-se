@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806976"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418070"
 ---
 # <a name="public-ip-addresses"></a>Offentliga IP-adresser
 
@@ -54,7 +54,7 @@ Offentliga IP-adresser för standard-SKU:
 - Har en justerbar inkommande tidsgräns för inaktivitet i flöde på 4–30 minuter, med ett standardvärde på 4 minuter, och en fast utgående tidsgräns för inaktivitet i flöde på 4 minuter.
 - Skydda som standard och stängas till inkommande trafik. Tillåt en lista över inkommande trafik med en [nätverks säkerhets grupp](./network-security-groups-overview.md#network-security-groups).
 - Tilldelad till nätverks gränssnitt, offentliga standard belastningsutjämnare eller programgatewayer. Mer information om standard Load Balancer finns i [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Kan vara Zone-redundant (är annonserad från alla tre zoner), zonindelade (garanterat i en viss förvald tillgänglighets zon) eller ingen zon (som inte är associerad med en viss förvald tillgänglighets zon). Om du vill veta mer om tillgänglighetszoner kan du läsa [Översikt över tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) och [Standard Load Balancer och tillgänglighetszoner](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zon redundanta IP-adresser kan bara skapas i [regioner där 3 tillgänglighets zoner](../availability-zones/az-region.md) är Live.** IP-adresser som skapats innan zoner är Live är inte zonens redundanta.
+- Kan vara Zone-redundant (annonserad från alla tre zoner), zonindelade (garanterat i en viss förvald tillgänglighets zon) eller ingen zon (som inte är associerad med en viss förvald tillgänglighets zon). Om du vill veta mer om tillgänglighetszoner kan du läsa [Översikt över tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) och [Standard Load Balancer och tillgänglighetszoner](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zon redundanta IP-adresser kan bara skapas i [regioner där 3 tillgänglighets zoner](../availability-zones/az-region.md) är Live.** IP-adresser som skapats innan zoner är Live är inte zonens redundanta.
 - Kan användas som anycast-klient-IP [-adresser för belastningsutjämnare mellan regioner](../load-balancer/cross-region-overview.md) (för hands versions funktioner).
  
 > [!NOTE]
@@ -162,14 +162,17 @@ Mer information om SKU:er för lastbalanserare i Azure finns i [Standard-SKU fö
 * Virtuella Azure-nätverk
 * Lokala nätverk (n). 
 
-En offentlig IP-adress tilldelas till VPN Gateway för att möjliggöra kommunikation med fjärrnätverket. Du kan endast tilldela en *dynamisk* grundläggande offentlig IP-adress till en VPN-gateway.
+En offentlig IP-adress tilldelas till VPN Gateway för att möjliggöra kommunikation med fjärrnätverket. 
+
+* Tilldela en **dynamisk** grundläggande offentlig IP-adress till en VPNGw 1-5-SKU front-end-konfiguration.
+* Tilldela en **statisk** standard-IP-adress till en VPNGwAZ 1-5-SKU front-end-konfiguration.
 
 ## <a name="application-gateways"></a>Programgatewayer
 
 Du kan associera en offentlig IP-adress med en Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) genom att tilldela den till gatewayens konfiguration på **klientsidan**. 
 
 * Tilldela en **dynamisk** grundläggande offentlig IP-adress till en Application Gateway v1-konfiguration för klient delen. 
-* Tilldela en **statisk** standard-SKU-adress till en konfiguration av klient delen i v2.
+* Tilldela en **statisk** offentlig IP-adress till en v2-konfiguration för klient delen.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 

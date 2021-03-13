@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/12/2021
+ms.openlocfilehash: 539e420cb9085fad10ea3972ba0e9e5ffb9d0622
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517135"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419770"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Hantera offentlig nätverks åtkomst för IoT Hub
 
@@ -29,6 +29,10 @@ Om du vill begränsa åtkomsten till enbart [privat slut punkt för din IoT Hub 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Bild som visar Azure Portal där du kan inaktivera offentlig nätverks åtkomst" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
 Om du vill aktivera offentlig nätverks åtkomst väljer du **alla nätverk** och sedan **Spara**.
+
+## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>Åtkomst till IoT Hub efter inaktive ring av offentlig nätverks åtkomst
+
+När offentlig nätverks åtkomst har inaktiverats är IoT Hub bara tillgänglig via [sin privata VNet-slutpunkt med Azures privata länk](virtual-network-support.md). Den här begränsningen inkluderar åtkomst via Azure Portal, eftersom API-anrop till tjänsten IoT Hub görs direkt med din webbläsare med dina autentiseringsuppgifter. 
 
 ## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>IoT Hub-slutpunkt, IP-adress och portar efter inaktive ring av offentlig nätverks åtkomst
 

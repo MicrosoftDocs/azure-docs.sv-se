@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609217"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417815"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-serien 
 
@@ -46,6 +46,8 @@ NVIDIA NVLink-Interconnect: stöds<br>
 För att kunna dra nytta av GPU-funktionerna i Azure NCasT4_v3-seriens virtuella datorer som kör Windows eller Linux måste nVidia GPU-drivrutiner vara installerade.
 
 Om du vill installera nVidia GPU-drivrutiner manuellt, se [N-seriens installation av GPU-drivrutiner för Windows](./windows/n-series-driver-setup.md) för operativ system, driv rutiner, installation och verifierings steg som stöds.
+
+Tillägget för Azure nVidia GPU-drivrutinen distribuerar CUDA-drivrutiner på virtuella datorer i NCasT4_v3-serien. För arbets belastningar för grafik och visualiseringar installerar du manuellt de RUTNÄTs driv rutiner som stöds av Azure.
 
 ## <a name="other-sizes"></a>Andra storlekar
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 1bccfa4d36ad39aec79a50c8a6b6c50260370223
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235081"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418903"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Returnera ett semantiskt svar i Azure Kognitiv sökning
 
@@ -63,7 +63,7 @@ Parametern "searchFields" är viktig för att returnera ett svar med hög kvalit
 
 + En frågesträng får inte vara null och bör formuleras som fråga. I den här för hands versionen måste "queryType" och "queryLanguage" anges exakt som visas i exemplet.
 
-+ Parametern "searchFields" avgör vilka fält som tillhandahåller token till extraherings modellen. Högst 20 000 tokens används vid inläsning av token, så starta fält listan med kortfattade fält och fortsätt sedan till text rika fält. Mer detaljerad information om hur du ställer in det här fältet finns i [set searchFields](semantic-how-to-query-request.md#searchfields).
++ Parametern "searchFields" avgör vilka fält som tillhandahåller token till extraherings modellen. Se till att du anger den här parametern. Du måste ha minst ett sträng fält, men inkludera alla sträng fält som du tror är användbara när du tillhandahåller ett svar. Endast ca 8 000-token per dokument skickas till modellen. Starta fält listan med kortfattade fält och fortsätt sedan till text rika fält. Mer detaljerad information om hur du ställer in det här fältet finns i [set searchFields](semantic-how-to-query-request.md#searchfields).
 
 + För "svar" är den grundläggande parameter konstruktionen `"answers": "extractive"` , där standard antalet returnerade svar är ett. Du kan öka antalet svar genom att lägga till ett antal, högst fem.  Om du behöver mer än ett svar beror på användarens upplevelse av appen och hur du vill återge resultaten.
 

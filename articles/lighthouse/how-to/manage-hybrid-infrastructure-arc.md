@@ -1,14 +1,14 @@
 ---
 title: Hantera hybrid infrastruktur i stor skala med Azure Arc
 description: Lär dig hur du effektivt hanterar kundernas datorer och Kubernetes-kluster utanför Azure.
-ms.date: 09/22/2020
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336623"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419344"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Hantera hybrid infrastruktur i stor skala med Azure Arc
 
@@ -18,9 +18,9 @@ Som tjänst leverantör kan du ha registrerat flera kund klienter i [Azure-Light
 
 Med [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md)kan kunder hantera alla Windows-och Linux-datorer som finns utanför Azure i företagets nätverk, på samma sätt som de hanterar interna virtuella Azure-datorer. När en hybriddator länkas till Azure ansluts den och behandlas som en resurs i Azure. Tjänste leverantörer kan sedan hantera dessa datorer som inte är Azure-datorer tillsammans med sina kunders Azure-resurser.
 
-[Azure Arc Enabled Kubernetes (för hands version)](../../azure-arc/kubernetes/overview.md) låter kunder ansluta och konfigurera Kubernetes-kluster i eller utanför Azure. När ett Kubernetes-kluster är kopplat till Azure-bågen visas det i Azure Portal, med ett Azure Resource Manager-ID och en hanterad identitet. Kluster är anslutna till Azures standard prenumerationer, finns i en resurs grupp och kan ta emot Taggar precis som andra Azure-resurser.
+[Azure Arc Enabled Kubernetes](../../azure-arc/kubernetes/overview.md) låter kunder ansluta och konfigurera Kubernetes-kluster i eller utanför Azure. När ett Kubernetes-kluster är kopplat till Azure-bågen visas det i Azure Portal, med ett Azure Resource Manager-ID och en hanterad identitet. Kluster är anslutna till Azures standard prenumerationer, finns i en resurs grupp och kan ta emot Taggar precis som andra Azure-resurser.
 
-Det här avsnittet innehåller en översikt över hur tjänst leverantörer kan använda Azure Arc-aktiverade servrar och Azure Arc-aktiverade Kubernetes (för hands version) på ett skalbart sätt för att hantera kundernas hybrid miljö, med insyn i alla hanterade kund klienter.
+Det här avsnittet innehåller en översikt över hur tjänst leverantörer kan använda Azure Arc-aktiverade servrar och Azure Arc-aktiverade Kubernetes på ett skalbart sätt för att hantera kundernas hybrid miljö, med insyn i alla hanterade kund klienter.
 
 > [!TIP]
 > Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet gäller den här vägledningen även för [företag som använder Azure-Lighthouse för att hantera flera klienter](../concepts/enterprise.md).
@@ -33,10 +33,7 @@ När du visar resurser för en delegerad prenumeration i Azure Portal ser du att
 
 Du kan till exempel [Se till att samma uppsättning principer tillämpas på kunders hybrid datorer](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Du kan också använda Azure Security Center för att övervaka efterlevnad i alla kunders hybrid miljöer eller [använda Azure Monitor för att samla in data direkt från dina hybrid datorer](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) till en Log Analytics-arbetsyta. [Tillägg för virtuella datorer](../../azure-arc/servers/manage-vm-extensions.md) kan distribueras till virtuella Windows-och Linux-datorer som inte är Azure-datorer, vilket fören klar hanteringen av kundens hybrid datorer.
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes-preview"></a>Hantera hybrid Kubernetes-kluster i stor skala med Azure Arc Enabled Kubernetes (för hands version)
-
-> [!NOTE]
-> Azure Arc-aktiverade Kubernetes är för närvarande en för hands version. Vi rekommenderar den inte för produktions arbets belastningar för tillfället.
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Hantera hybrid Kubernetes-kluster i stor skala med Azure Arc-aktiverad Kubernetes
 
 Du kan hantera Kubernetes-kluster som har [anslutits till en kunds prenumeration med Azure Arc](../../azure-arc/kubernetes/connect-cluster.md), precis som om de kördes i Azure.
 
@@ -48,9 +45,8 @@ Du kan också övervaka anslutna kluster med Azure Monitor och [använda Azure p
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Utforska JumpStarts och exemplen i [Azure Arc GitHub-lagringsplatsen](https://github.com/microsoft/azure_arc). 
+- Utforska JumpStarts och exemplen i [Azure Arc GitHub-lagringsplatsen](https://github.com/microsoft/azure_arc).
 - Lär dig mer om [scenarier som stöds för Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md#supported-scenarios).
 - Lär dig mer om [Kubernetes-distributioner som stöds av Azure-bågen](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions).
 - Lär dig hur du [distribuerar en princip i stor skala](policy-at-scale.md).
 - Lär dig hur du [använder Azure Monitor loggar i stor skala](monitor-at-scale.md).
-

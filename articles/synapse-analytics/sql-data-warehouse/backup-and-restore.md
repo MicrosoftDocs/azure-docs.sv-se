@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 8fd64023b9c07e8dd426b2b51916db4515a5405a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 866fe01e11ee53188cea6ea490304462acc1f6a2
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102451514"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103420008"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Säkerhets kopiering och återställning i Azure Synapse-dedikerad SQL-pool
 
@@ -48,7 +48,7 @@ order by run_id desc
 Med den här funktionen kan du utlösa ögonblicks bilder manuellt för att skapa återställnings punkter för ditt informations lager innan och efter stora ändringar. Den här funktionen säkerställer att återställnings punkter logiskt konsekvent, vilket ger ytterligare data skydd i händelse av arbets belastnings avbrott eller användar fel för snabb återställnings tid. Användardefinierade återställnings punkter är tillgängliga i sju dagar och tas automatiskt bort för din räkning. Det går inte att ändra kvarhållningsperioden för användardefinierade återställnings punkter. **42 användardefinierade återställnings punkter** garanteras vid varje tidpunkt så att de måste [tas bort](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint) innan en annan återställnings punkt skapas. Du kan utlösa ögonblicks bilder för att skapa användardefinierade återställnings punkter via [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) eller Azure Portal.
 
 > [!NOTE]
-> Om du behöver återställnings punkter längre än 7 dagar bör du rösta på den här funktionen [här](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Du kan också skapa en användardefinierad återställnings punkt och återställa från den nyligen skapade återställnings punkten till ett nytt data lager. När du har återställt har du den dedikerade SQL-poolen online och kan pausa den på obestämd tid att spara beräknings kostnader. Den pausade databasen ådrar sig lagrings kostnader med Azure Premium Storage rate. Om du behöver en aktiv kopia av det återställda informations lagret kan du återuppta vilket som bör ta några minuter.
+> Om du behöver återställnings punkter längre än 7 dagar bör du rösta på den här funktionen [här](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Du kan också skapa en användardefinierad återställnings punkt och återställa från den nyligen skapade återställnings punkten till ett nytt data lager. När du har återställt har du den dedikerade SQL-poolen online och kan pausa den på obestämd tid att spara beräknings kostnader. Den pausade databasen ådrar sig lagrings kostnader enligt Azure Synapse-lagrings takten. Om du behöver en aktiv kopia av det återställda informations lagret kan du återuppta vilket som bör ta några minuter.
 
 ### <a name="restore-point-retention"></a>Kvarhållning av återställnings punkt
 

@@ -4,12 +4,12 @@ description: Övervaka webb- och arbetsroller effektivt med Application Insights
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573864"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419243"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights för Azure Cloud Services
 [Application Insights][start] kan övervaka [Azure Cloud Service-appar](https://azure.microsoft.com/services/cloud-services/) för tillgänglighet, prestanda, haverier och användning genom att kombinera data från Application Insights sdk: er med [Azure-diagnostik](../agents/diagnostics-extension-overview.md) data från moln tjänsterna. Med den feedback du får om appens prestanda och effektivitet kan du fatta välgrundade beslut om designen i varje utvecklingslivscykel.
@@ -52,9 +52,8 @@ Telemetrin från din app lagras, analyseras och visas i en Azure-resurs av typen
 Varje resurs tillhör en resursgrupp. Resurs grupper används för att hantera kostnader, för att bevilja åtkomst till grupp medlemmar och för att distribuera uppdateringar i en enda koordinerad transaktion. Du kan till exempel [skriva ett skript för att distribuera](../../azure-resource-manager/templates/deploy-powershell.md) en moln tjänst i Azure och dess Application Insights övervakning av resurser i en enda åtgärd.
 
 ### <a name="resources-for-components"></a>Resurser för komponenter
-Vi rekommenderar att du skapar en separat resurs för varje komponent i din app. Det innebär att du skapar en resurs för varje webb roll och arbets roll. Du kan analysera varje komponent separat, men du skapar en [instrument panel](./overview-dashboard.md) som sammanför nyckel diagrammen från alla komponenter så att du kan jämföra och övervaka dem tillsammans i en enda vy. 
 
-En annan metod är att skicka Telemetrin från mer än en roll till samma resurs, men [lägga till en dimensions egenskap till varje telemetri-objekt](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) som identifierar dess käll roll. I den här metoden visar mått diagram, till exempel undantag, vanligt vis en agg regering av antalet från de olika rollerna, men du kan segmentera diagrammet utifrån roll-ID: t, om det behövs. Du kan också filtrera sökningar efter samma dimension. Det här alternativet gör det lättare att Visa allting samtidigt, men det kan också leda till viss förvirring mellan rollerna.
+Vi rekommenderar att du [lägger till en dimensions egenskap för varje telemetri-objekt](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) som identifierar dess käll roll. I den här metoden visar mått diagram, till exempel undantag, vanligt vis en agg regering av antalet från de olika rollerna, men du kan segmentera diagrammet utifrån roll-ID: t, om det behövs. Du kan också filtrera sökningar efter samma dimension. Det här alternativet gör det lättare att Visa allting samtidigt, men det kan också leda till viss förvirring mellan rollerna.
 
 Webbläsartelemetri ingår vanligtvis i samma resurs som dess webbroll på serversidan.
 

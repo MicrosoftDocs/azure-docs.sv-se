@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522197"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417645"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Skapa Azure Machine Learning-datamängder
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 [Registrera din data uppsättning](#register-datasets)för att återanvända och dela data uppsättningar mellan experiment i din arbets yta.
 
+## <a name="wrangle-data"></a>Wrangle-data
+När du har skapat och [registrerat](#register-datasets) din data uppsättning kan du läsa in den i din bärbara dator för data datatransformering och [utforskning](#explore-data) före modell träning. 
+
+Om du inte behöver göra några data datatransformering eller utforskningar, se hur du använder data uppsättningar i dina utbildnings skript för att skicka ML experiment i [träna med data uppsättningar](how-to-train-with-datasets.md).
+
+### <a name="filter-datasets-preview"></a>Filtrera data uppsättningar (förhands granskning)
+Filtrerings funktionerna beror på vilken typ av data uppsättning du har. 
+> [!IMPORTANT]
+> Filtrering av data uppsättningar med den offentliga för hands versionen [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) är en [experimentell](/python/api/overview/azure/ml/#stable-vs-experimental) förhands gransknings funktion och kan ändras när som helst. 
+> 
+**För TabularDatasets** kan du behålla eller ta bort kolumner med metoderna [keep_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) och [drop_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) .
+
+Om du vill filtrera ut rader efter ett särskilt kolumn värde i en TabularDataset använder du metoden [filter ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) (för hands version). 
+
+Följande exempel returnerar en oregistrerad data uppsättning baserat på de angivna uttrycken.
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+**I FileDatasets** motsvarar varje rad en sökväg till en fil, så det är inte praktiskt att filtrera efter kolumn värde. Men du kan [Filtrera ()](/python/api/azureml-core/azureml.data.filedataset#filter-expression-) ut rader efter metadata som, CreationTime, storlek osv.
+
+Följande exempel returnerar en oregistrerad data uppsättning baserat på de angivna uttrycken.
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+**Etiketterade data uppsättningar** som skapats från [data etikett projekt](how-to-create-labeling-projects.md) är ett specialfall. Dessa data uppsättningar är en typ av TabularDataset som består av bildfiler. För dessa typer av data uppsättningar kan du [Filtrera ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) bilder efter metadata och efter kolumn värden som `label` och `image_details` .
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>Utforska data
 
-När du har skapat och [registrerat](#register-datasets) din data uppsättning kan du läsa in den i din bärbara dator för data utforskning före modell träning. Om du inte behöver göra några data utforskningar läser du så här använder du data uppsättningar i dina utbildnings skript för att skicka ML experiment i [träna med data uppsättningar](how-to-train-with-datasets.md).
+När du är klar med datatransformering dina data kan du [Registrera](#register-datasets) din data uppsättning och sedan läsa in den i din bärbara dator för data utforskning före modell träning.
 
 För FileDatasets kan du antingen **montera** eller **Ladda ned** din data uppsättning och tillämpa python-biblioteken som du använder normalt för data utforskning. [Läs mer om montering jämfört med hämtning](how-to-train-with-datasets.md#mount-vs-download).
 
@@ -261,7 +307,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Skapa data uppsättningar med Azure Resource Manager
 
-Det finns ett antal mallar i [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) som kan användas för att skapa data uppsättningar.
+Det finns många mallar i [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) som kan användas för att skapa data uppsättningar.
 
 Information om hur du använder dessa mallar finns i [använda en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning](how-to-create-workspace-template.md).
 

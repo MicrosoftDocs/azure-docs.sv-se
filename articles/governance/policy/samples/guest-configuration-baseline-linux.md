@@ -1,19 +1,19 @@
 ---
 title: Referens – Azure Policy bas linje för gäst konfiguration för Linux
 description: Information om Linux-bas linjen på Azure implementeras via Azure Policy gäst konfiguration.
-ms.date: 02/26/2021
+ms.date: 03/12/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 20f589b02f2a43bb3feb954dc4eac2dd6a9c3925
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 6b1d3048fdc0945e1ee64e211d2f7b1f9de5e6e6
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235034"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419872"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>Azure Policy bas linje för gäst konfiguration för Linux
 
-Följande artikel beskriver vad för **\[ hands versionen av \] Linux-datorerna uppfyller kraven för granskning av policy initiativ för Azures säkerhets bas linje** gäst konfiguration. Mer information finns i [Azure policy gäst konfiguration](../concepts/guest-configuration.md) och [Översikt över Azure Security benchmark (v2)](../../../security/benchmarks/overview.md).
+I följande artikel beskrivs vad som **\[ finns i för hands versionen av \] Linux-datorerna som uppfyller kraven för granskning av princip definition för Azures säkerhets bas linje** . Mer information finns i [Azure policy gäst konfiguration](../concepts/guest-configuration.md) och [Översikt över Azure Security benchmark (v2)](../../../security/benchmarks/overview.md).
 
 ## <a name="general-security-controls"></a>Allmänna säkerhets kontroller
 

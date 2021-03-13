@@ -1,32 +1,34 @@
 ---
 title: Azure Lighthouse i företagsscenarier
 description: Funktionerna i Azure Lighthouse kan användas för att förenkla hanteringen av flera innehavare i ett företag som använder flera Azure AD-klienter.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573025"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419362"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse i företagsscenarier
 
-Ett vanligt scenario för [Azure Lighthouse](../overview.md) är en tjänst leverantör som hanterar resurser i sina kunders Azure Active Directory (Azure AD)-klient organisationer. Funktionerna i Azure Lighthouse kan dock också användas för att förenkla hanteringen av flera innehavare i ett företag som använder flera Azure AD-klienter.
+Ett vanligt scenario för [Azure-Lighthouse](../overview.md) är när en tjänst leverantör hanterar resurser i Azure Active Directory (Azure AD)-klienter som tillhör kunder. Funktionerna i Azure Lighthouse kan också användas för att förenkla hanteringen av flera innehavare i ett företag som använder flera Azure AD-klienter.
 
 ## <a name="single-vs-multiple-tenants"></a>En eller flera klienter
 
-För de flesta organisationer är hanteringen enklare med en enda Azure AD-klient. Med alla resurser inom en klient organisation kan centralisering hanterings uppgifter hanteras av användare, användar grupper eller tjänstens huvud namn inom den klient organisationen. Vi rekommenderar att du använder en klient organisation för din organisation närhelst det är möjligt. Vissa organisationer kan dock ha flera Azure AD-klienter. Ibland kan detta vara en tillfällig situation, som när förvärv har ägt rum och en långsiktig företags konsoliderings strategi inte har definierats ännu. Andra tider kan organisationer behöva upprätthålla flera klienter med jämna mellanrum på grund av helt oberoende dotter bolag, geografiska eller juridiska krav eller andra överväganden.
+För de flesta organisationer är hanteringen enklare med en enda Azure AD-klient. Med alla resurser inom en klient organisation kan centralisering hanterings uppgifter hanteras av användare, användar grupper eller tjänstens huvud namn inom den klient organisationen. Vi rekommenderar att du använder en klient organisation för din organisation närhelst det är möjligt.
+
+Vissa organisationer kan behöva använda flera Azure AD-klienter. Detta kan vara en tillfällig situation, precis som när förvärv har ägt rum och en långsiktig företags konsoliderings strategi inte har definierats ännu. Andra tider kan organisationer behöva upprätthålla flera klienter med jämna mellanrum på grund av helt oberoende dotter bolag, geografiska eller juridiska krav eller andra överväganden.
 
 I de fall där en arkitektur för flera innehavare krävs kan Azure Lighthouse hjälpa till att centralisera och effektivisera hanterings åtgärder. Genom att använda [Azure-delegerad resurs hantering](azure-delegated-resource-management.md)kan användare i en hanterings klient utföra [hanterings funktioner för flera innehavare](cross-tenant-management-experience.md) på ett centraliserat och skalbart sätt.
 
 ## <a name="tenant-management-architecture"></a>Arkitektur för klient hantering
 
-Om du vill använda Azure Lighthouse i ett företag måste du bestämma vilken klient som ska innehålla de användare som utför hanterings åtgärder på de andra klient organisationerna. Med andra ord måste du bestämma vilken klient som ska användas som hanterings klient för andra klienter.
+Om du vill använda Azure Lighthouse i ett företag måste du bestämma vilken klient som ska innehålla de användare som utför hanterings åtgärder på de andra klient organisationerna. Med andra ord måste du ange en klient organisation som hanterings klient för andra klienter.
 
-Anta till exempel att din organisation har en enda klient som vi ska kalla *klient a*. Din organisation kommer sedan att förvärva *klient B* och *klient C* och du har affärs skäl som kräver att du underhåller dem som separata klienter.
+Anta till exempel att din organisation har en enda klient som vi ska kalla *klient a*. Din organisation kommer sedan att förvärva *klient B* och *klient C* och du har affärs skäl som kräver att du underhåller dem som separata klienter. Men du vill använda samma princip definitioner, säkerhets kopierings metoder och säkerhets processer för alla dessa, med hanterings uppgifter som utförs av samma uppsättning användare.
 
-Organisationen vill använda samma princip definitioner, säkerhets kopierings metoder och säkerhets processer för alla klienter. Eftersom klient organisationen redan innehåller användare som är ansvariga för dessa uppgifter kan du publicera prenumerationer i klient B och klient C, så att samma användare i klient organisationen kan utföra dessa uppgifter.
+Eftersom klient organisationen redan innehåller användare i din organisation som har utfört dessa uppgifter för klient A, kan du publicera prenumerationer i klient B och klient C, vilket gör att samma användare i klient organisationen kan utföra dessa uppgifter över alla klienter.
 
 ![Diagram som visar användare i klient organisation A hantera resurser i klient B och klient organisation C.](../media/enterprise-azure-lighthouse.jpg)
 
@@ -54,7 +56,7 @@ För hantering av flera innehavare i företaget kan referenser till tjänst leve
 
 I det exempel som beskrivs ovan kan klient A betraktas som tjänst leverantörens klient organisation (hanterings klienten) och klient B och klient C kan betraktas som kund innehavare.
 
-I det exemplet kan klienter som har rätt behörighet [Visa och hantera delegerade resurser](../how-to/view-manage-customers.md) på sidan **mina kunder** i Azure Portal. På samma sätt kan klient B-och klient organisation C-användare med lämpliga behörigheter [Visa och hantera de resurser som har delegerats](../how-to/view-manage-service-providers.md) till klient organisation A på sidan **tjänst leverantörer** i Azure Portal.
+Om du fortsätter med det exemplet kan klienten som använder rätt behörighet [Visa och hantera delegerade resurser](../how-to/view-manage-customers.md) på sidan **mina kunder** i Azure Portal. På samma sätt kan klient B-och klient organisation C-användare med lämpliga behörigheter [Visa och hantera de resurser som har delegerats](../how-to/view-manage-service-providers.md) till klient organisation A på sidan **tjänst leverantörer** i Azure Portal.
 
 ## <a name="next-steps"></a>Nästa steg
 

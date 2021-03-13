@@ -1,14 +1,14 @@
 ---
 title: Rekommenderade säkerhetsmetoder
 description: När du använder Azure Lighthouse är det viktigt att tänka på säkerhets-och åtkomst kontroll.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843731"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419311"
 ---
 # <a name="recommended-security-practices"></a>Rekommenderade säkerhetsmetoder
 
@@ -17,7 +17,7 @@ När du använder [Azure Lighthouse](../overview.md)är det viktigt att tänka p
 > [!TIP]
 > Dessa rekommendationer gäller även för [företag som hanterar flera klienter](enterprise.md) med Azure Lighthouse.
 
-## <a name="require-azure-ad-multi-factor-authentication"></a>Kräv Azure AD-Multi-Factor Authentication
+## <a name="require-azure-ad-multi-factor-authentication"></a>Kräv Azure AD-multifaktorautentisering
 
 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (även kallat tvåstegsverifiering) hjälper till att förhindra angripare från att få åtkomst till ett konto genom att kräva flera steg för autentisering. Du bör kräva Multi-Factor Authentication för alla användare i hanterings klienten, inklusive användare som kommer att ha åtkomst till delegerade kund resurser.
 
@@ -47,5 +47,6 @@ Tänk på att när du registrerar [kunder via ett offentligt hanterat tjänst er
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Granska [säkerhets bas linje informationen](../security-baseline.md) för att förstå hur vägledning från Azures säkerhets benchmark gäller för Azure Lighthouse.
 - [Distribuera Azure AD-Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
 - Lär dig mer om [hanterings upplevelser mellan flera innehavare](cross-tenant-management-experience.md).

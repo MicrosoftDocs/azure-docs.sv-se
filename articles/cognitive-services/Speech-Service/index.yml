@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 8e97fe287335837ad79e6446bb7abf196cda6f75
-  ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+  ms.openlocfilehash: be3cbee5bee706bc10036349950c3b128d007a34
+  ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 02/03/2021
-  ms.locfileid: "99508124"
+  ms.lasthandoff: 03/13/2021
+  ms.locfileid: "103419634"
 highlightedContent:
   items:
   - title: Vad är Speech Service?
@@ -44,7 +44,7 @@ conceptualContent:
       text: Komma igång med tal-till-text
       url: get-started-speech-to-text.md
     - itemType: overview
-      text: Om Custom Speech
+      text: Förbättra noggrannheten med anpassat tal
       url: custom-speech-overview.md
     footerLink:
       text: Mer
@@ -60,6 +60,12 @@ conceptualContent:
     - itemType: how-to-guide
       text: Förbättra syntesen med SSML
       url: speech-synthesis-markup.md
+    - itemType: overview
+      text: Skapa en anpassad röst
+      url: custom-neural-voice.md
+    - itemType: how-to-guide
+      text: Gör text till tal-ljudet naturlig
+      url: how-to-audio-content-creation.md
     footerLink:
       text: Mer
       url: index-text-to-speech.yml
@@ -74,20 +80,6 @@ conceptualContent:
     footerLink:
       text: Mer
       url: index-speech-translation.yml
-  - title: Avsiktsigenkänning
-    links:
-    - itemType: quickstart
-      text: Känna igen tal, avsikter och entiteter
-      url: quickstarts/intent-recognition.md
-    - itemType: how-to-guide
-      text: Känna igen talavsikter med LUIS och C#
-      url: how-to-recognize-intents-from-speech-csharp.md
-    - itemType: reference
-      text: Language Understanding-portalen (LUIS)
-      url: https://www.luis.ai
-    footerLink:
-      text: Mer
-      url: index-intent-recognition.yml
   - title: Talarigenkänning
     links:
     - itemType: overview
@@ -107,6 +99,20 @@ conceptualContent:
     - itemType: quickstart
       text: Komma igång med Anpassat nyckelord
       url: custom-keyword-basics.md
+  - title: Avsiktsigenkänning
+    links:
+    - itemType: quickstart
+      text: Känna igen tal, avsikter och entiteter
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: Känna igen talavsikter med LUIS och C#
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Language Understanding-portalen (LUIS)
+      url: https://www.luis.ai
+    footerLink:
+      text: Mer
+      url: index-intent-recognition.yml
   - title: Djupdykningsscenarier
     links:
     - itemType: overview
@@ -138,7 +144,7 @@ conceptualContent:
     - itemType: overview
       text: Om Speech Studio (anpassningar)
       url: https://speech.microsoft.com
-  - title: Hosting
+  - title: Värd
     links:
     - itemType: how-to-guide
       text: Speech Service-containrar

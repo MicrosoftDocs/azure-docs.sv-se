@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216996"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419022"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Lägga till, ändra eller ta bort IP-adresser för ett Azure-nätverksgränssnitt
 
@@ -54,10 +54,10 @@ Du kan lägga till så många [privata](#private) och [offentliga](#public) [IPv
 
    |Inställning|Obligatoriskt?|Information|
    |---|---|---|
-   |Name|Yes|Måste vara unikt för nätverks gränssnittet|
-   |Typ|Yes|Eftersom du lägger till en IP-konfiguration i ett befintligt nätverks gränssnitt, och varje nätverks gränssnitt måste ha en [primär](#primary) IP-konfiguration, är ditt enda alternativ **sekundärt**.|
-   |Tilldelnings metod för privat IP-adress|Yes|[**Dynamisk**](#dynamic): Azure tilldelar nästa tillgängliga adress för under nätets adress intervall som nätverks gränssnittet har distribuerats i. [**Statisk**](#static): du tilldelar en oanvänd adress för under nätets adress intervall som nätverks gränssnittet har distribuerats i.|
-   |Offentlig IP-adress|No|**Inaktive rad:** Ingen offentlig IP-adressresurs är för närvarande kopplad till IP-konfigurationen. **Aktive rad:** Välj en befintlig offentlig IPv4-IP-adress eller skapa en ny. Information om hur du skapar en offentlig IP-adress finns i artikeln [offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address) .|
+   |Name|Ja|Måste vara unikt för nätverks gränssnittet|
+   |Typ|Ja|Eftersom du lägger till en IP-konfiguration i ett befintligt nätverks gränssnitt, och varje nätverks gränssnitt måste ha en [primär](#primary) IP-konfiguration, är ditt enda alternativ **sekundärt**.|
+   |Tilldelnings metod för privat IP-adress|Ja|[**Dynamisk**](#dynamic): Azure tilldelar nästa tillgängliga adress för under nätets adress intervall som nätverks gränssnittet har distribuerats i. [**Statisk**](#static): du tilldelar en oanvänd adress för under nätets adress intervall som nätverks gränssnittet har distribuerats i.|
+   |Offentlig IP-adress|Inga|**Inaktive rad:** Ingen offentlig IP-adressresurs är för närvarande kopplad till IP-konfigurationen. **Aktive rad:** Välj en befintlig offentlig IPv4-IP-adress eller skapa en ny. Information om hur du skapar en offentlig IP-adress finns i artikeln [offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address) .|
 6. Lägg till sekundära privata IP-adresser manuellt i operativ systemet för den virtuella datorn genom att följa anvisningarna i artikeln [tilldela flera IP-adresser till operativ systemen för virtuella datorer](virtual-network-multiple-ip-addresses-portal.md#os-config) . Se [privata](#private) IP-adresser för särskilda överväganden innan du manuellt lägger till IP-adresser i ett operativ system för virtuella datorer. Lägg inte till några offentliga IP-adresser i operativ systemet för den virtuella datorn.
 
 **Kommandon**
@@ -192,8 +192,6 @@ Du kan tilldela noll eller en privat [IPv6](#ipv6) -adress till en sekundär IP-
 
 > [!NOTE]
 > Även om du kan skapa ett nätverks gränssnitt med en IPv6-adress med hjälp av portalen kan du inte lägga till ett befintligt nätverks gränssnitt till en ny eller befintlig virtuell dator med hjälp av portalen. Använd PowerShell eller Azure CLI för att skapa ett nätverks gränssnitt med en privat IPv6-adress och Anslut sedan nätverks gränssnittet när du skapar en virtuell dator. Du kan inte bifoga ett nätverks gränssnitt med en privat IPv6-adress tilldelad till en befintlig virtuell dator. Du kan inte lägga till en privat IPv6-adress i en IP-konfiguration för ett nätverks gränssnitt som är kopplat till en virtuell dator med hjälp av valfria verktyg (portal, CLI eller PowerShell).
-
-Du kan inte tilldela en offentlig IPv6-adress till en primär eller sekundär IP-konfiguration.
 
 ## <a name="skus"></a>SKU:er
 

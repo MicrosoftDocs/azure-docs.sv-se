@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 3cd5fdbf6cdc504a1290c8fbd80cf89cf85ce714
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68b1ca625b5c8bd7ec195b89de63485c542e6691
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746735"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419082"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Hantera Azure-hanterad instans för Apache Cassandra-resurser med hjälp av Azure CLI (för hands version)
 
@@ -24,9 +24,9 @@ I den här artikeln beskrivs vanliga kommandon för att automatisera hanteringen
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Den här artikeln kräver Azure CLI-version 2.12.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
-
 > [!IMPORTANT]
+> Den här artikeln kräver Azure CLI-version 2.12.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+>
 > Det går inte att byta namn på Hantera Azure-hanterad instans för Apache Cassandra-resurser eftersom detta strider mot hur Azure Resource Manager fungerar med resurs-URI: er.
 
 ## <a name="azure-managed-instance-for-apache-cassandra-clusters"></a>Azure-hanterad instans för Apache Cassandra-kluster

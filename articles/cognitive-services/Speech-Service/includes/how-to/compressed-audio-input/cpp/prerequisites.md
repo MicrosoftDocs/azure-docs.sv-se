@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 10e7db521781c21b3fe5feda0880fee7e603afab
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d555322c0fd4067a4232e53387d811de7b50a8f5
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128332"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417754"
 ---
 Hantering av komprimerat ljud implementeras med [gstreamer](https://gstreamer.freedesktop.org). Av licens skäl GStreamer binärfiler inte kompileras och länkas till tal-SDK: n. Utvecklare måste installera flera beroenden och plugin-program.
 
@@ -37,10 +37,9 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
+> - På RHEL/CentOS 7 och RHEL/CentOS 8, vid användning av "komprimerat format", måste fler gstreamer-plugin-program installeras om Stream Media format-plugin-programmet inte finns i ovanstående installerade plugin-program. 
 > - På RHEL/CentOS 7 följer du anvisningarna för [hur du konfigurerar RHEL/CentOS 7 för tal-SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
 > - På RHEL/CentOS 8 följer du anvisningarna för [hur du konfigurerar openssl för Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
-> [!IMPORTANT]
-> Opus ljud kodnings format stöds inte av talet SDK på RHEL/CentOS 7.
 
 ---

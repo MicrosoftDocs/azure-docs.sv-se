@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401550"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419940"
 ---
 # <a name="what-is-azure-purview"></a>Vad är Azure Purview?
 
@@ -69,6 +69,9 @@ När du har registrerat en data källa kan du sedan utöka dess metadata. Anting
 Huvudsyftet med registrering av källorna är att identifiera och förstå datakällor och deras användningsområden. Företagsanvändare behöver data för business intelligence, programutveckling, datavetenskap eller andra uppgifter där rätt data krävs. De använder identifierings upplevelsen för Data Catalog för att snabbt hitta data som matchar deras behov, förstå data för att utvärdera dess lämplighet och använda data genom att öppna data källan i det verktyg som du väljer.
 
 På samma gång kan användarna bidra till katalogen genom att tagga, dokumentera och kommentera datakällor som redan har registrerats. De kan också registrera nya data källor, som sedan identifieras, förstås och konsumeras av community-användarens katalog.
+
+## <a name="in-region-data-residency"></a>Placering för region data
+Azure avdelningens kontroll flyttar eller lagrar inte kund information från den region där den distribueras.
 
 ## <a name="next-steps"></a>Nästa steg
 

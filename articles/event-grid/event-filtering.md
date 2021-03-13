@@ -3,12 +3,12 @@ title: Händelse filtrering för Azure Event Grid
 description: Beskriver hur du filtrerar händelser när du skapar en Azure Event Grid-prenumeration.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197783"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419855"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Förstå händelse filtrering för Event Grid prenumerationer
 
@@ -355,6 +355,7 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+Se avsnittet [begränsningar](#limitations) för den här operatorns aktuella begränsning.
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
 **StringBeginsWith** -operatorn utvärderar värdet sant  om nyckelvärdet **börjar med** något av de angivna **filtervärdet** . I följande exempel kontrollerar den om värdet för `key1` attributet i `data` avsnittet börjar med `event` eller `grid` . Börjar till exempel `event hubs` med `event` .  
@@ -634,6 +635,7 @@ Avancerad filtrering har följande begränsningar:
 * 5 avancerade filter och 25 filter värden i alla filter per Event Grid-prenumeration
 * 512 tecken per sträng värde
 * Fem värden för **in** -och **not** -operatorer
+* `StringNotContains`Operatorn är för närvarande inte tillgänglig i portalen.
 * Nycklar med **`.` (punkt)** -tecknen i dem. Till exempel: `http://schemas.microsoft.com/claims/authnclassreference` eller `john.doe@contoso.com` . För närvarande finns det inget stöd för escape-tecken i nycklar. 
 
 Samma nyckel kan användas i mer än ett filter.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232755"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418886"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Skapa en semantisk fråga i Kognitiv sökning
 
@@ -141,7 +141,7 @@ Följ dessa rikt linjer för att säkerställa optimala resultat när två eller
 
 + Följ dessa fält genom beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument.
 
-Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. Välj ett fält som tillhandahåller tillräckligt med innehåll. För att säkerställa bearbetnings tiden är det bara de första 20 000 tokens av det samlade innehållet i searchFields genomgår semantisk utvärdering och rangordning.
+Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. Välj ett fält som tillhandahåller tillräckligt med innehåll. För att säkerställa bearbetnings tiden kan endast cirka 8 000 tokens av det samlade innehållet i searchFields genomgå semantisk utvärdering och rangordning.
 
 #### <a name="step-3-remove-orderby-clauses"></a>Steg 3: ta bort orderBy-satser
 

@@ -13,14 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: d928a86f958e54552f5cc8d030b0fb74fa3bd3c2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 67f3ffa15b46eec9f352e08b0fe7c8b1bb15ac7e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214515"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417798"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Belastnings utjämning på flera IP-konfigurationer med Azure CLI
+
+> [!div class="op_single_selector"]
+> * [Portal](load-balancer-multiple-ip.md)
+> * [CLI](load-balancer-multiple-ip-cli.md)
+> * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
 Den här artikeln beskriver hur du använder Azure Load Balancer med flera IP-adresser i ett sekundärt nätverks gränssnitt (NIC). I det här scenariot har vi två virtuella datorer som kör Windows, var och en med ett primärt och ett sekundärt nätverkskort. Vart och ett av de sekundära nätverkskorten har två IP-konfigurationer. Varje virtuell dator är värd för både websites contoso.com och fabrikam.com. Varje webbplats är kopplad till en av IP-konfigurationerna på det sekundära NÄTVERKSKORTet. Vi använder Azure Load Balancer för att exponera två IP-adresser för klient delen, en för varje webbplats, för att distribuera trafik till respektive IP-konfiguration för webbplatsen. I det här scenariot används samma port nummer både i båda frontend-klienterna och i båda IP-adresserna för backend-poolen.
 

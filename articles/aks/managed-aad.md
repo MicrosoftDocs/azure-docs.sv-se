@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: ca8b9a511de1b71e5d03b8aac7631fc8f524500f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177944"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418971"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-hanterad Azure Active Directory-integrering
 
@@ -36,7 +36,7 @@ Läs mer om Azure AD-integrerings flödet i [dokumentationen för Azure Active D
 * Om du använder [Helm](https://github.com/helm/helm), den lägsta versionen av Helm 3,3.
 
 > [!Important]
-> Du måste använda Kubectl med en lägsta version av 1.18.1 eller kubelogin. Om du inte använder rätt version kommer du att märka problem med autentiseringen.
+> Du måste använda Kubectl med en lägsta version av 1.18.1 eller kubelogin. Skillnaden mellan lägre versioner av Kubernetes och kubectl får inte vara mer än 1 version. Om du inte använder rätt version kommer du att märka problem med autentiseringen.
 
 Använd följande kommandon för att installera kubectl och kubelogin:
 

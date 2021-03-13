@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737638"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417679"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Felsöka prestanda problem i Azure-filresurser
 
@@ -39,7 +39,8 @@ Du kan kontrol lera om din resurs har begränsats genom att komma åt och använ
     För standard fil resurser loggas följande svars typer om en begäran begränsas:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     För Premium-filresurser loggas följande svars typer om en begäran begränsas:
 
@@ -244,7 +245,8 @@ För att bekräfta kan du använda Azure-mått i portalen –
     För standard fil resurser väljer du följande svars typer:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     Välj följande svars typer för Premium File-resurser:
 

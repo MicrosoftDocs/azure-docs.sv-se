@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547867"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418087"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -260,7 +260,7 @@ S **: du** måste först se till att du har valt att dela din analys med oss. Om
 
 **F**: kommer mina anställda eller studenter att få använda lösen ord Autofyll i Authenticator-appen?
 
-**A**: Ja, Autofyll fungerar nu för de flesta företags användare även när ett arbets-eller skol konto läggs till i Authenticator-appen. Du kan fylla i ett formulär för att konfigurera (Tillåt eller neka) Autofyll för din organisation och [skicka det till Authenticator-teamet](https://aka.ms/ConfigureAutofillInAuthenticator).
+**A**: Ja, Autofyll för dina [personliga Microsoft-konton](https://go.microsoft.com/fwlink/?linkid=2144423) fungerar nu för de flesta företags användare även när ett arbets-eller skol konto läggs till i Authenticator-appen. Du kan fylla i ett formulär för att tillåta eller neka Autofyll för din organisation och [skicka det till Authenticator-teamet](https://aka.ms/ConfigureAutofillInAuthenticator). Autofyll är för närvarande inte tillgängligt för arbets-eller skol konton.
 
 **F**: kommer mina användares lösen ord för arbets-eller skol kontot att synkroniseras automatiskt?
 

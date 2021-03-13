@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826552"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419294"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Autentisering och auktorisering för förhandsversionen av Azure Static Web Apps
 
@@ -62,7 +62,7 @@ Inbjudningar är specifika för enskilda Authorization-providers, så du bör t�
 | Twitter                | användarnamn          |
 
 1. Navigera till en statisk Web Apps resurs i [Azure Portal](https://portal.azure.com).
-1. Klicka på **roll hantering**under _Inställningar_.
+1. Klicka på **roll hantering** under _Inställningar_.
 1. Klicka på knappen **Bjud in** .
 1. Välj en _Authorization-Provider_ från listan med alternativ.
 1. Lägg till antingen användar namnet eller e-postadressen för mottagaren i rutan _Bjud in information_ .
@@ -84,7 +84,7 @@ När användaren klickar på länken i inbjudan uppmanas de att logga in med sit
 ### <a name="update-role-assignments"></a>Uppdatera roll tilldelningar
 
 1. Navigera till en statisk Web Apps resurs i [Azure Portal](https://portal.azure.com).
-1. Klicka på **roll hantering**under _Inställningar_.
+1. Klicka på **roll hantering** under _Inställningar_.
 1. Klicka på användaren i listan.
 1. Redigera listan över roller i rutan _roll_ .
 1. Klicka på knappen **Uppdatera** .
@@ -92,7 +92,7 @@ När användaren klickar på länken i inbjudan uppmanas de att logga in med sit
 ### <a name="remove-user"></a>Ta bort användare
 
 1. Navigera till en statisk Web Apps resurs i [Azure Portal](https://portal.azure.com).
-1. Klicka på **roll hantering**under _Inställningar_.
+1. Klicka på **roll hantering** under _Inställningar_.
 1. Leta upp användaren i listan.
 1. Markera kryss rutan på användarens rad.
 1. Klicka på knappen **Ta bort**.
@@ -145,19 +145,18 @@ Om du till exempel vill logga in med GitHub kan du lägga till en inloggnings l�
 
 Om du väljer att stödja fler än en provider måste du Visa en leverantörsspecifik länk för var och en på din webbplats.
 
-Du kan använda en [väg regel](routes.md) för att mappa en standardprovider till en egen väg som _/login_.
+Du kan använda en [väg regel](./configuration.md#routes) för att mappa en standardprovider till en egen väg som _/login_.
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>Skicka inloggnings omdirigering
 
 Om du vill att en användare ska gå tillbaka till en viss sida efter inloggningen anger du en URL i frågesträngparametern `post_login_redirect_uri` .
-
 
 ## <a name="logout"></a>Utloggning
 
@@ -167,12 +166,12 @@ Om du vill att en användare ska gå tillbaka till en viss sida efter inloggning
 <a href="/.auth/logout">Log out</a>
 ```
 
-Du kan använda en [väg regel](routes.md) för att mappa en läsvänlig väg som _/logout_.
+Du kan använda en [väg regel](./configuration.md#routes) för att mappa en läsvänlig väg som _/logout_.
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 

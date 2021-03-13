@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: a008551ac6f149617feedd01e256b637f83e975d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235060"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418852"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Semantisk rangordning i Azure Kognitiv sökning
 
@@ -30,9 +30,9 @@ För semantisk rangordning använder modellen både maskin läsnings förståels
 
 1. För varje dokument utvärderar semantisk rangordning fälten i searchFields-parametern i ordning, och konsoliderar innehållet till en stor sträng.
 
-1. Strängen trimmas sedan för att säkerställa att den totala längden är högst 20 000 tokens. Om du har mycket stora dokument, med ett innehålls fält eller merged_content fält som har många sidor med innehåll, kommer endast de första 20 000 tokens att användas.
+1. Strängen trimmas sedan för att säkerställa att den totala längden är högst 8 000 tokens. Om du har mycket stora dokument, med ett fält för innehåll eller merged_content som har många sidor med innehåll, så kommer allt efter token-gränsen att ignoreras.
 
-1. Var och en av de 50 dokumenten representeras nu av en enda lång sträng som är upp till 20 000 tokens. Den här strängen skickas till sammanfattnings modellen. Sammanfattnings modellen skapar under texter (och svar) med hjälp av maskin läsnings förståelse för att identifiera de passager som visas för att sammanfatta innehållet eller besvara frågan. Utdatan från sammanfattnings modellen är en ytterligare reducerad sträng, som är högst 128 tokens.
+1. Vart och ett av 50-dokumenten representeras nu av en enda lång sträng. Den här strängen skickas till sammanfattnings modellen. Sammanfattnings modellen skapar under texter (och svar) med hjälp av maskin läsnings förståelse för att identifiera de passager som visas för att sammanfatta innehållet eller besvara frågan. Utdatan från sammanfattnings modellen är en ytterligare reducerad sträng, som är högst 128 tokens.
 
 1. Den mindre strängen blir dokumentets rubrik och representerar de mest relevanta träffarna i den större strängen. Uppsättningen med 50 (eller färre) under texter rangordnas sedan i prioritetsordning. 
 

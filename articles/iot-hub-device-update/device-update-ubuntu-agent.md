@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 245998fb7229c483fb7f664ea000b62abf07eda9
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149791"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418648"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Uppdatering av enhets uppdateringar för Azure IoT Hub med paket agenten på Ubuntu Server 18,04 x64
 
@@ -128,9 +128,11 @@ Läs licens villkoren innan du använder ett paket. Din installation och använd
 
 ## <a name="import-update"></a>Importera uppdatering
 
-1. Ladda ned följande [apt manifest fil](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-apt-manifest.json) och [Importera manifest filen](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.1-importManifest.json). Det här apt-manifestet kommer att installera den senaste tillgängliga versionen av `libcurl4-doc package` på enheten.
+1. Gå till [enhets uppdaterings utgåvor](https://github.com/Azure/iot-hub-device-update/releases) i GitHub och klicka på list rutan "till gångar".
 
-   Du kan också ladda ned [manifest filen för apt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-7.58-apt-manifest.json) och [Importera manifest filen](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-2-2.0.1-importManifest.json). Detta kommer att installera en speciell version v-7.58.0 av på `libcurl4-doc package` enheten.
+3. Hämta `apt-update-import-samples.zip` genom att klicka på den.
+
+5. Extrahera innehållet i mappen för att identifiera olika uppdaterings exempel och deras motsvarande import manifest. 
 
 2. I Azure Portal väljer du alternativet enhets uppdateringar under automatisk enhets hantering från det vänstra navigerings fältet i IoT Hub.
 
@@ -138,7 +140,10 @@ Läs licens villkoren innan du använder ett paket. Din installation och använd
 
 4. Välj "+ Importera ny uppdatering".
 
-5. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj det import manifest som du laddade ned tidigare. Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj den apt manifest uppdaterings fil som du laddade ned tidigare.
+5. Välj mappikonen eller text rutan under "Välj en import manifest fil". Du kommer att se en dialog ruta för fil väljaren. Välj `sample-package-update-1.0.1-importManifest.json` import manifestet från mappen som du laddade ned tidigare. Välj sedan mappikonen eller text rutan under "Välj en eller flera uppdateringsfiler". Du kommer att se en dialog ruta för fil väljaren. Välj `sample-1.0.1-libcurl4-doc-apt-manifest.json` manifest uppdaterings filen apt från mappen som du laddade ned tidigare.
+Den här uppdateringen installerar den senaste tillgängliga versionen av `libcurl4-doc package` på enheten.
+
+   Alternativt kan du välja `sample-package-update-2-2.0.1-importManifest.json` import manifest filen och `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` apt manifest uppdaterings filen från mappen som du laddade ned tidigare. Detta kommer att installera en speciell version v-7.58.0 av på `libcurl4-doc package` enheten.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Skärm bild som visar val av uppdaterings fil." lightbox="media/import-update/select-update-files.png":::
 
@@ -213,9 +218,9 @@ Du har nu slutfört en lyckad paket uppdatering från slut punkt till slut punkt
 
 ## <a name="bonus-steps"></a>Bonus steg
 
-1. Ladda ned följande [apt manifest fil](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-remove-apt-manifest.json) och [Importera manifest filen](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.2-importManifest.json). Detta apt-manifest tar bort installerade `libcurl4-doc package` från enheten.
-
 1. Upprepa avsnitten "Importera uppdatering" och "distribuera uppdatering"
+
+3. Under steget "Importera uppdatering" väljer du filen för `sample-package-update-1.0.2-importManifest.json` import manifest filen och `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt-manifestet från mappen som du laddade ned tidigare. Den här uppdateringen tar bort den som installeras `libcurl4-doc package` från enheten.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

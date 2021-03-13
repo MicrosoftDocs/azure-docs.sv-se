@@ -3,12 +3,12 @@ title: Bicep-språk för Azure Resource Manager mallar
 description: Beskriver bicep-språket för att distribuera infrastruktur till Azure via Azure Resource Manager mallar.
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 599cb378da51c5d13e7db3cf45cacf750c5843cc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232978"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419838"
 ---
 # <a name="what-is-bicep-preview"></a>Vad är bicep (för hands version)?
 
@@ -24,7 +24,7 @@ När du har installerat verktygen kan du prova [själv studie kursen om bicep](.
 
 Om du vill visa motsvarande JSON-och bicep-filer sida vid sida, se [bicep-Playground](https://aka.ms/bicepdemo).
 
-Om du har en befintlig ARM-mall som du vill konvertera till bicep, se [dekompilera JSON till bicep](compare-template-syntax.md#decompile-json-to-bicep).
+Om du har en befintlig ARM-mall som du vill konvertera till bicep, se [konvertera arm-mallar mellan JSON och bicep](bicep-decompile.md).
 
 ## <a name="bicep-improvements"></a>Bicep-förbättringar
 
@@ -89,7 +89,7 @@ Bicep är ett DSL fokuserat på distribution av kompletta lösningar till Azure.
 
 De fortsätter att fungera exakt som de alltid har. Du behöver inte göra några ändringar. Vi kommer att fortsätta att stödja den underliggande ARM-mallens JSON-språk. Bicep filer kompileras till JSON och den JSON skickas till Azure för distribution.
 
-När du är klar kan du [konvertera JSON-filerna till bicep](compare-template-syntax.md#decompile-json-to-bicep).
+När du är klar kan du [konvertera JSON-filerna till bicep](bicep-decompile.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

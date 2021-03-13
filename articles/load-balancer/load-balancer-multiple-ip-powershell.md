@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8b10e850fd3ae0282785164596f537652148a716
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a2916f28be0b45eec6e9c1a85c0b8db3fb611381
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791011"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417881"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Belastnings utjämning på flera IP-konfigurationer med PowerShell
 
@@ -27,14 +27,13 @@ ms.locfileid: "98791011"
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-
 Den här artikeln beskriver hur du använder Azure Load Balancer med flera IP-adresser i ett sekundärt nätverks gränssnitt (NIC). I det här scenariot har vi två virtuella datorer som kör Windows, var och en med ett primärt och ett sekundärt nätverkskort. Vart och ett av de sekundära nätverkskorten har två IP-konfigurationer. Varje virtuell dator är värd för både websites contoso.com och fabrikam.com. Varje webbplats är kopplad till en av IP-konfigurationerna på det sekundära NÄTVERKSKORTet. Vi använder Azure Load Balancer för att exponera två IP-adresser för klient delen, en för varje webbplats, för att distribuera trafik till respektive IP-konfiguration för webbplatsen. I det här scenariot används samma port nummer både i båda frontend-klienterna och i båda IP-adresserna för backend-poolen.
 
 ![Bild av LB-scenario](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Steg för belastnings utjämning på flera IP-konfigurationer
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln:
 
