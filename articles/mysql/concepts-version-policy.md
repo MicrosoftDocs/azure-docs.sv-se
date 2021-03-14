@@ -1,5 +1,5 @@
 ---
-title: Versions princip – Azure Database for MySQL-enskild server och flexibel Server (för hands version)
+title: Princip för versions support – Azure Database for MySQL-enskild server och flexibel Server (för hands version)
 description: Beskriver principen kring de större och lägre MySQL-versionerna i Azure Database for MySQL
 author: sr-msft
 ms.author: srranga
@@ -7,14 +7,14 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6acb3268ba40399612940b395437fde3beffda1a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f34e1ff7134788d064a82ec7b646df915dbe24e
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732878"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462566"
 ---
-# <a name="azure-database-for-mysql-versioning-policy"></a>Princip för Azure Database for MySQL versions hantering
+# <a name="azure-database-for-mysql-version-support-policy"></a>Princip för Azure Database for MySQL versions support
 
 Den här sidan beskriver principen för Azure Database for MySQL versions hantering och gäller för distributions lägena Azure Database for MySQL-enskild server och Azure Database for MySQL-flexibel Server (för hands version).
 

@@ -9,18 +9,20 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920856"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461427"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Självstudie: utveckla IoT Edge moduler för Linux-enheter
+# <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Självstudie: utveckla IoT Edge moduler med Linux-behållare
 
-Använd Visual Studio Code för att utveckla och distribuera kod till Linux-enheter som kör IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-I snabb starten skapade du en IoT Edge-enhet med en virtuell Linux-dator och distribuerade en modul från Azure Marketplace. Den här självstudien vägleder dig genom att utveckla och distribuera din egen kod till en IoT Edge enhet. Den här artikeln är en användbar förutsättning för de andra självstudierna, som går till mer detaljerad information om särskilda programmeringsspråk eller Azure-tjänster.
+Använd Visual Studio Code för att utveckla och distribuera kod till enheter som kör IoT Edge.
+
+I snabb starten skapade du en IoT Edge-enhet och distribuerade en modul från Azure Marketplace. Den här självstudien vägleder dig genom att utveckla och distribuera din egen kod till en IoT Edge enhet. Den här artikeln är en användbar förutsättning för de andra självstudierna, som går till mer detaljerad information om särskilda programmeringsspråk eller Azure-tjänster.
 
 I den här självstudien använder vi exemplet på att distribuera en **C#-modul till en Linux-enhet**. Det här exemplet valdes eftersom det är det vanligaste utvecklings scenariot för IoT Edge lösningar. Även om du planerar att använda ett annat språk eller distribuera en Azure-tjänst är den här självstudien fortfarande användbar för att lära dig mer om utvecklingsverktyg och koncept. Slutför den här introduktionen till utvecklings processen och välj sedan önskat språk eller Azure-tjänst för att komma in i informationen.
 
@@ -33,7 +35,7 @@ I den här guiden får du lära dig att:
 > * Skapa ditt projekt som en behållare och lagra det i ett Azure Container Registry.
 > * Distribuera din kod till en IoT Edge enhet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En utvecklings dator:
 
@@ -44,7 +46,7 @@ En utvecklings dator:
 * [C# för Visual Studio Code-tillägg (drivs av OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
-En Azure IoT Edge enhet i Linux:
+En Azure IoT Edge-enhet:
 
 * Vi rekommenderar att du inte kör IoT Edge på din utvecklings dator, utan i stället använder en separat enhet. Den här skillnaden mellan utvecklings datorn och IoT Edge enheten är mer korrekt speglar ett verkligt distributions scenario och hjälper till att hålla de olika koncepten direkt.
 * Om du inte har någon andra enhet tillgänglig använder du snabb starts artikeln för att skapa en IoT Edge enhet i Azure med en [virtuell Linux-dator](quickstart-linux.md).
@@ -61,7 +63,10 @@ Den här självstudien vägleder dig genom utvecklingen av en IoT Edge modul. En
 
 När du utvecklar IoT Edge moduler är det viktigt att förstå skillnaden mellan utvecklings datorn och mål IoT Edges enheten där modulen slutligen kommer att distribueras. Den behållare som du skapar för att hålla din modul kod måste matcha *mål enhetens* operativ system (OS). Det vanligaste scenariot är att någon utvecklar en modul på en Windows-dator som avser att rikta in sig mot en Linux-enhet som kör IoT Edge. I så fall skulle behållar operativ systemet vara Linux. När du går igenom den här självstudien bör du tänka på skillnaden mellan *utvecklings datorn* och *BEhållar operativ* systemet.
 
-Den här kursen riktar sig till Linux-enheter som kör IoT Edge. Du kan använda det önskade operativ systemet så länge din utvecklings dator kör Linux-behållare. Vi rekommenderar att du använder Visual Studio Code för att utveckla för Linux-enheter, så att den här självstudien kommer att använda. Du kan även använda Visual Studio även om det finns skillnader i stödet mellan de två verktygen.
+>[!TIP]
+>Om du använder [IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md), är *mål enheten* i ditt scenario den virtuella Linux-datorn, inte Windows-värden.
+
+Den här kursen riktar sig till enheter som kör IoT Edge med Linux-behållare. Du kan använda det önskade operativ systemet så länge din utvecklings dator kör Linux-behållare. Vi rekommenderar att du använder Visual Studio Code för att utveckla med Linux-behållare, så det är vad den här självstudien kommer att använda. Du kan även använda Visual Studio även om det finns skillnader i stödet mellan de två verktygen.
 
 I följande tabell visas de utvecklings scenarier som stöds för **Linux-behållare** i Visual Studio Code och Visual Studio.
 
@@ -101,7 +106,7 @@ Använd IoT-tilläggen för Visual Studio Code för att utveckla IoT Edge module
 
 3. Sök efter **Azure IoT-verktyg**, som i själva verket är en samling tillägg som hjälper dig att interagera med IoT Hub-och IoT-enheter samt utveckla IoT Edge moduler.
 
-4. Välj **Installera**. Varje inkluderat tillägg installeras individuellt.
+4. Välj **installera**. Varje inkluderat tillägg installeras individuellt.
 
 5. När du har installerat tilläggen öppnar du paletten kommando genom att välja **Visa**  >  **kommando palett**.
 

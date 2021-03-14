@@ -2,13 +2,13 @@
 title: Anslut Azure VMware-lösningen till din lokala miljö
 description: Lär dig hur du ansluter Azure VMware-lösningen till din lokala miljö.
 ms.topic: tutorial
-ms.date: 12/28/2020
-ms.openlocfilehash: 753835b0206d8bbabe42b057fa40a2d6c4c8c414
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 03/13/2021
+ms.openlocfilehash: 6d1c52784eae2efabe79a9ba5c6cdf9bbfdc1950
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809691"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461663"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Anslut Azure VMware-lösningen till din lokala miljö
 
@@ -17,7 +17,7 @@ I den här artikeln fortsätter du med den [information som samlats in under pla
 Innan du börjar måste du ha två krav för att ansluta Azure VMware-lösningen till din lokala miljö:
 
 - En ExpressRoute-krets från din lokala miljö till Azure.
-- Ett/29 icke-överlappande nätverks adress block för ExpressRoute Global Reach-peering, som du definierade som en del av [planerings fasen](production-ready-deployment-steps.md).
+- A/29 icke-överlappande CIDR-adressblock för ExpressRoute Global Reach-peering, som du definierade som en del av [planerings fasen](production-ready-deployment-steps.md).
 
 >[!NOTE]
 > Du kan ansluta via VPN, men det är utanför omfånget för det här snabb starts dokumentet.
@@ -25,6 +25,10 @@ Innan du börjar måste du ha två krav för att ansluta Azure VMware-lösningen
 ## <a name="establish-an-expressroute-global-reach-connection"></a>Upprätta en ExpressRoute Global Reach anslutning
 
 Om du vill upprätta lokal anslutning till ditt privata moln i Azure VMware-lösningen med hjälp av ExpressRoute Global Reach, följer du själv studie kursen [om peer-datorer i ett privat moln](tutorial-expressroute-global-reach-private-cloud.md) .
+
+Den här självstudien resulterar i en anslutning som visas i diagrammet.
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" alt-text="ExpressRoute Global Reach lokala nätverks anslutnings diagram." lightbox="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png":::
 
 ## <a name="verify-on-premises-network-connectivity"></a>Verifiera lokal nätverks anslutning
 

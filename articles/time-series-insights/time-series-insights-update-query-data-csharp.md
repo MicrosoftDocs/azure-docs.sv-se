@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: aecd18fd0d568904f9704b749525204ced05f3ef
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020035"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463433"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Fråga efter data från Azure Time Series Insights Gen2-miljön med hjälp av C Sharp
 
@@ -48,7 +48,7 @@ Exempel koden nedan visar följande funktioner:
 
 Slutför följande steg innan du kompilerar och kör exempel koden:
 
-1. [Etablera en Gen2 Azure Time Series Insightss](./how-to-provision-manage.md#create-the-environment) miljö.
+1. [Etablera en Gen2 Azure Time Series Insightss](./how-to-create-environment-using-portal.md) miljö.
 1. Konfigurera din Azure Time Series Insightss miljö för Azure Active Directory enligt beskrivningen i [autentisering och auktorisering](time-series-insights-authentication-and-authorization.md).
 1. Kör [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) som anges i [Readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) för att generera Azure Time Series Insights Gen2 klient beroenden.
 1. Öppna `TSIPreviewDataPlaneclient.sln` lösningen och ange `DataPlaneClientSampleApp` som standard projekt i Visual Studio.
@@ -65,7 +65,7 @@ Exempel koden har flera obligatoriska beroenden som kan visas i [packages.config
 
 Ladda ned paketen i Visual Studio 2019 genom att välja alternativet **build**  >  **build-lösning** .
 
-Du kan också lägga till varje paket med [NuGet 2.12 +](https://www.nuget.org/). Ett exempel:
+Du kan också lägga till varje paket med [NuGet 2.12 +](https://www.nuget.org/). Exempel:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 

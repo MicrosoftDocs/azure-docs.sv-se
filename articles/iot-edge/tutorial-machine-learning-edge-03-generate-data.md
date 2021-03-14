@@ -8,14 +8,16 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d5fdd762834d351119116c5e4854dd4233671c29
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932412"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463137"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Självstudie: skapa simulerade enhets data
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 I den här artikeln använder vi Machine Learning Training-data för att simulera en enhet som skickar telemetri till Azure IoT Hub. Som anges i introduktionen använder den här självstudien [turbofan](https://c3.nasa.gov/dashlink/resources/139/) för att simulera data från en uppsättning flyg Plans motorer för utbildning och testning.
 
@@ -51,7 +53,7 @@ I det här avsnittet av självstudien får du lära dig att:
 > * Använd samplet DeviceHarness-projektet för att generera simulerade IoT-enhets data.
 > * Visa genererade data i IoT Hub.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln ingår i en serie för självstudier om hur du använder Azure Machine Learning på IoT Edge. Varje artikel i serien bygger på arbetet i föregående artikel. Om du har kommit till den här artikeln direkt kan du gå till den [första artikeln](tutorial-machine-learning-edge-01-intro.md) i serien.
 
@@ -92,7 +94,7 @@ Den här artikeln ingår i en serie för självstudier om hur du använder Azure
 
 Nu när vi har skapat projektet ansluter du till din IoT Hub för att få åtkomst till anslutnings strängen och övervakar förloppet för genereringen av data.
 
-### <a name="sign-in-to-azure-in-visual-studio-code"></a>Logga in på Azure i Visual Studio Code
+### <a name="sign-in-to-azure-in-visual-studio-code"></a>Logga in till Azure i Visual Studio Code
 
 1. Logga in på din Azure-prenumeration i Visual Studio Code genom att öppna kommando-paletten `Ctrl + Shift + P` eller **Visa**  >  **kommando paletten**.
 

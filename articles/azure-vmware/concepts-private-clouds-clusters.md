@@ -2,13 +2,13 @@
 title: Koncept – privata moln och kluster
 description: Lär dig mer om de viktigaste funktionerna i Azure VMware-lösningen program varu definierade Data Center och vSphere-kluster.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 87bd2592da681726227f89b403916a12593a9db8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/13/2021
+ms.openlocfilehash: d1837ae7cf01fcb9642e0cafe4e0430e403b9899
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391396"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462531"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-lösning, privata moln och kluster koncept
 
@@ -20,8 +20,6 @@ I den här artikeln beskrivs alla dessa begrepp.
 
 ![Bild av två privata moln i en kund prenumeration](./media/hosts-clusters-private-clouds-final.png)
 
->[!NOTE]
->På grund av de lägre potentiella behoven i en utvecklings miljö använder du mindre kluster med lägre kapacitets värdar. 
 
 ## <a name="private-clouds"></a>Privata moln
 
@@ -30,7 +28,7 @@ Privata moln innehåller virtuellt San-kluster som skapats med dedikerade, Bare-
 Precis som med andra resurser installeras och hanteras privata moln i en Azure-prenumeration. Antalet privata moln i en prenumeration är skalbart. Inlednings vis finns det en gräns för ett privat moln per prenumeration.
 
 ## <a name="clusters"></a>Kluster
-Det finns ett virtuellt San-kluster som standard för varje privat moln som skapas. Du kan lägga till, ta bort och skala kluster med hjälp av Azure Portal eller via API: et.  Alla kluster har en standard storlek på tre värdar och kan skala upp till 16 värdar.  Värdarna som används i ett kluster måste vara av samma värd typ.
+Det finns ett virtuellt San-kluster som standard för varje privat moln som skapas. Du kan lägga till, ta bort och skala kluster med hjälp av Azure Portal eller via API: et.  Alla kluster har en standard storlek på tre värdar och kan skala upp till 16 värdar. Du kan ha upp till fyra kluster per privat moln.
 
 Utvärderings kluster är tillgängliga för utvärdering och begränsade till tre värdar. Det finns ett enda utvärderings kluster per privat moln. Du kan skala ett utvärderings kluster med en enda värd under utvärderings perioden.
 
@@ -38,11 +36,11 @@ Du kan använda vSphere och NSX-T Manager för att hantera de flesta andra aspek
 
 ## <a name="hosts"></a>Värdar
 
-Azure VMware-lösningar privata moln kluster använder Hyper-konvergerade, Bare-Metal infrastruktur värdar. I följande tabell visas processorns RAM-, processor-och disk kapacitet. 
+Azure VMware-lösnings kluster baseras på en klustrad, Bare Metal-infrastruktur. I följande tabell visas processorns RAM-, processor-och disk kapacitet.
 
 | Värdtyp              |             Processor             |   RAM (GB)   |  Virtuellt San NVMe cache-nivå (TB, RAW)  |  kapacitets nivå för virtuellt San SSD (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| High-End (HE)          |  dubbla Intel 18 kärnor 2,3 GHz  |     576      |                3.2               |                15,20               |
+| AVS36          |  dubbla Intel 18 kärnor 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Värdar som används för att bygga eller skala kluster kommer från en isolerad pool med värdar. De här värdarna har klarat maskin varu test och har tagit bort alla data på ett säkert sätt. 
 
@@ -55,10 +53,7 @@ Värdar som används för att bygga eller skala kluster kommer från en isolerad
 
 Underhåll av värd och livs cykel hantering påverkar inte det privata moln klustrets kapacitet eller prestanda.  Exempel på automatiserat värd underhåll är uppgraderingar av inbyggd program vara och reparation eller ersättning av maskin vara.
 
-Microsoft ansvarar för livs cykel hanteringen av NSX-T-apparater, till exempel NSX-T-tjänsthanteraren och NSX-T-Edge. De är också ansvariga för start nätverks konfiguration, till exempel att skapa nivå 0-gatewayen och aktivera North-South routning. Du är ansvarig för NSX-T SDN-konfigurationen. Till exempel nätverks segment, distribuerade brand Väggs regler, nivå 1-gatewayer och belastningsutjämnare.
-
-> [!IMPORTANT]
-> Ändra inte konfigurationen för NSX-T Edge-eller nivå-0-gatewayen, eftersom detta kan leda till förlust av tjänst.
+Microsoft ansvarar för livs cykel hanteringen av NSX-T-apparater, till exempel NSX-T-tjänsthanteraren och NSX-T-Edge. Microsoft ansvarar för att starta Nätverks konfigurationen, till exempel att skapa nivå 0-gatewayen och aktivera North-South routning. Du är ansvarig för NSX-T SDN-konfigurationen. Till exempel nätverks segment, distribuerade brand Väggs regler, nivå 1-gatewayer och belastningsutjämnare.
 
 ## <a name="backup-and-restoration"></a>Säkerhets kopiering och återställning
 

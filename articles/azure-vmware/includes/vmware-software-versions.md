@@ -2,31 +2,28 @@
 title: Versioner av VMware-programvara
 description: Versioner av VMware-programvara som stöds för Azure VMware-lösning.
 ms.topic: include
-ms.date: 12/29/2020
-ms.openlocfilehash: c6ba2904bab6c6f44001cafed1bd4cbdeb786373
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 03/13/2021
+ms.openlocfilehash: 9a1781d163e67c2f9b6a4f756a616e59a969696f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825078"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462530"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
 
-De aktuella program varu versionerna av VMware-programvaran som används i Azure VMware-lösningar privata moln kluster är:
+De VMware-programversioner som används i nya distributioner av Azure VMware-lösningar privata moln-kluster är:
 
 | Programvara              |    Version   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6,7 U3    | 
 | ESXi                  |    6,7 U3    | 
 | Virtuellt San                  |    6,7 U3    |
-| NSX-T                 |      2.5     |
+| NSX-T <br />**Obs:** NSX-T är den enda version av NSX som stöds.               |      2.5     |
 
 
->[!NOTE]
->NSX-T är den enda version av NSX som stöds.
-
-För alla nya kluster i ett privat moln, matchar program varu versionen vad som körs för tillfället. Program varu stackens senaste version installeras för alla nya privata moln i en prenumeration. Mer information finns i [versions kraven för VMware-programvaran](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
+Nya kluster läggs till i ett befintligt privat moln, den program varu version som körs för tillfället tillämpas. Mer information finns i [versions kraven för VMware-programvaran](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
 Den privata moln program varu paketets uppgraderingar behåller program varan i en version av den senaste versionen av program varu paket från VMware. Program varu versionerna för det privata molnet kan skilja sig från de senaste versionerna av de enskilda program varu komponenterna (ESXi, NSX-T, vCenter, virtuellt SAN). Du hittar de allmänna uppgraderings principerna och processerna för Azure VMware Solution Platform-programvaran som beskrivs i [privata moln uppdateringar och uppgraderingar](../concepts-upgrades.md).
 

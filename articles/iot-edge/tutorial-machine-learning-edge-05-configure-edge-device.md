@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 0ed085a161ced22efb1e5022e34b6f9b0344f942
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721437"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463093"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>Självstudie: Konfigurera en Azure IoT Edge enhet
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 I den här artikeln konfigurerar vi en virtuell Azure-dator som kör Linux som en Azure IoT Edge-enhet som fungerar som en transparent Gateway. Med en transparent gateway-konfiguration kan enheter ansluta till Azure IoT Hub via gatewayen utan att veta att gatewayen finns. På samma gång är en användare som interagerar med enheterna i IoT Hub inte medveten om den mellanliggande gateway-enheten. Slutligen lägger vi till Edge Analytics i vårt system genom att lägga till IoT Edge moduler till den transparenta gatewayen.
+
+>[!NOTE]
+>Begreppen i den här självstudien gäller för alla versioner av IoT Edge, men exempel enheten som du skapar för att testa scenariot kör IoT Edge version 1,1.
 
 Stegen i den här artikeln utförs vanligt vis av en molnbaserad utvecklare.
 

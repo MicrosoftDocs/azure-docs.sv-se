@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7b7e29b6e2ebb3b229045df439848264540b59b1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881813"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461631"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights händelse källor för Gen2
 
@@ -27,7 +27,7 @@ Händelser måste skickas som UTF-8-kodad JSON.
 
 ## <a name="create-or-edit-event-sources"></a>Skapa eller redigera händelse källor
 
-Dina händelse käll resurser kan finnas i samma Azure-prenumeration som din Azure Time Series Insights Gen2-miljö eller en annan prenumeration. Du kan använda [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [arm-mallar](time-series-insights-manage-resources-using-azure-resource-manager-template.md)och [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) för att skapa, redigera eller ta bort din miljös händelse källor.
+Dina händelse käll resurser kan finnas i samma Azure-prenumeration som din Azure Time Series Insights Gen2-miljö eller en annan prenumeration. Du kan använda [Azure Portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [arm-mallar](time-series-insights-manage-resources-using-azure-resource-manager-template.md)och [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) för att skapa, redigera eller ta bort din miljös händelse källor.
 
 När du ansluter en händelse källa kommer din Azure Time Series Insights Gen2-miljö läsa alla händelser som för närvarande lagras i IoT-eller Händelsehubben, med början den äldsta händelsen.
 

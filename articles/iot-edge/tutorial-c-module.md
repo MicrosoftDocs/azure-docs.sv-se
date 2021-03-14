@@ -9,16 +9,18 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 470f82026cc27431555336570ef6f41063442c1e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: acedf0c5437ce0b4f1106cac4d1878c7a49e8a36
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964549"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463331"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Självstudie: utveckla en C IoT Edge-modul för Linux-enheter
+# <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Självstudie: utveckla en C IoT Edge-modul med Linux-behållare
 
-Använd Visual Studio Code för att utveckla C-kod och distribuera den till en Linux-enhet som kör Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Använd Visual Studio Code för att utveckla C-kod och distribuera den till en enhet som kör Azure IoT Edge.
 
 Du kan använda IoT Edge-moduler för att distribuera kod som implementerar din affärslogik direkt till dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata. I den här guiden får du lära dig att:
 
@@ -33,21 +35,21 @@ IoT Edge-modulen som du skapar i den här självstudien filtrerar temperaturdata
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Den här självstudien visar hur du utvecklar en modul i **C** med **Visual Studio Code** och hur du distribuerar den till en **Linux-enhet**. Om du utvecklar moduler för Windows-enheter går du till [utveckla en C IoT Edge-modul för Windows-enheter](tutorial-c-module-windows.md) i stället.
+Den här självstudien visar hur du utvecklar en modul i **C** med **Visual Studio Code** och hur du distribuerar den till en IoT Edge enhet. Om du utvecklar moduler med hjälp av Windows-behållare går du till [utveckla en C IoT Edge-modul med Windows-behållare](tutorial-c-module-windows.md) i stället.
 
-Använd följande tabell för att förstå alternativen för att utveckla och distribuera C-moduler till Linux:
+Använd följande tabell för att förstå alternativen för att utveckla och distribuera C-moduler med hjälp av Linux-behållare:
 
 | C | Visual Studio-koden | Visual Studio |
 | - | ------------------ | ------------- |
 | **Linux AMD64** | ![Använda VS Code för C-moduler på Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Använda VS for C-moduler på Linux AMD64](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![Använda VS Code för C-moduler på Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Använda VS for C-moduler på Linux-ARM32](./media/tutorial-c-module/green-check.png) |
 
-Innan du påbörjar den här självstudien bör du ha gått igenom den föregående kursen för att konfigurera din utvecklings miljö för att utveckla Linux-behållare: [utveckla IoT Edge moduler för Linux-enheter](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du ha följande krav på plats:
+Innan du påbörjar den här självstudien bör du ha gått igenom den föregående själv studie kursen för att konfigurera utvecklings miljön för utveckling av Linux-behållare: [utveckla IoT Edge moduler med hjälp av Linux-behållare](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du ha följande krav på plats:
 
 * En [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) på kostnadsfri nivå eller standardnivå i Azure.
-* En [Linux-enhet som kör Azure IoT Edge](quickstart-linux.md)
+* En enhet som kör Azure IoT Edge. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Ett behållar register som [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio-kod](https://code.visualstudio.com/) som kon figurer ATS med [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) konfigurerat för att köra Linux-behållare.

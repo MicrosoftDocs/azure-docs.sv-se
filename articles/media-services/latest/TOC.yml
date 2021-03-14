@@ -214,14 +214,18 @@
           href: content-key-policy-concept.md
     - name: Övervakning
       items:
-        - name: Händelser med Event Grid
-          href: reacting-to-media-services-events.md
-        - name: Event Grid-scheman
-          href: media-services-event-schemas.md
-        - name: Mått och diagnostikloggar
-          href: media-services-metrics-diagnostic-logs.md
-        - name: Scheman för diagnostikloggar
-          href: media-services-diagnostic-logs-schema.md
+        - name: Övervaka med Azure Monitor
+          items:
+            - name: Övervaka Media Services
+              href: monitoring/monitor-media-services.md
+            - name: Övervaknings Media Services data referens
+              href: monitoring/monitor-media-services-data-reference.md
+        - name: Övervaka med Event Grid
+          items:
+            - name: Händelser med Event Grid
+              href: reacting-to-media-services-events.md
+            - name: Event Grid-scheman
+              href: media-services-event-schemas.md
     - name: Kompatibla spelare
       items:
         - name: Medie spelare för Media Services

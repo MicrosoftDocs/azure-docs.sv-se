@@ -9,18 +9,20 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 71bfc84eb50521aef72f78b482bddda112c00c6c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964379"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461750"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Självstudie: utveckla en C# IoT Edge-modul för Linux-enheter
+# <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Självstudie: utveckla en C# IoT Edge-modul som använder Linux-behållare
 
-Använd Visual Studio Code för att utveckla C#-kod och distribuera den till en Linux-enhet som kör Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Du kan använda Azure IoT Edge-moduler till att distribuera kod som implementerar din affärslogik direkt på dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata. Du kommer att använda den simulerade IoT Edge-enheten som du skapade i snabbstarterna Distribuera Azure IoT Edge på en simulerad enhet i [Windows](quickstart.md) eller [Linux](quickstart-linux.md). I den här guiden får du lära dig att:
+Använd Visual Studio Code för att utveckla C#-kod och distribuera den till en enhet som kör Azure IoT Edge.
+
+Du kan använda Azure IoT Edge-moduler till att distribuera kod som implementerar din affärslogik direkt på dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata. Du använder den simulerade IoT Edge-enhet som du skapade i snabbstarterna. I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -33,11 +35,11 @@ IoT Edge-modulen du skapar i den här självstudien filtrerar temperaturdata som
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Den här självstudien visar hur du utvecklar en modul i **C#** med hjälp av **Visual Studio Code** och distribuerar den till en **Linux-enhet**. Om du utvecklar moduler för Windows-enheter går du till [utveckla en C# IoT Edge-modul för Windows-enheter](tutorial-csharp-module-windows.md) i stället.
+Den här självstudien visar hur du utvecklar en modul i **C#** med hjälp av **Visual Studio Code** och distribuerar den till en IoT Edge enhet. Om du utvecklar moduler med Windows-behållare går du till [utveckla en C# IoT Edge-modul som använder Windows-behållare](tutorial-csharp-module-windows.md) i stället.
 
-Använd följande tabell för att förstå alternativen för att utveckla och distribuera C#-moduler till Linux:
+Använd följande tabell för att förstå alternativen för att utveckla och distribuera C#-moduler med hjälp av Linux-behållare:
 
 | C# | Visual Studio-koden | Visual Studio |
 | -- | ------------------ | ------------- |
@@ -47,10 +49,10 @@ Använd följande tabell för att förstå alternativen för att utveckla och di
 >[!NOTE]
 >Stöd för Linux ARM64-enheter finns i [offentlig för hands version](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Mer information finns i [utveckla och FELSÖKA ARM64 IoT Edge moduler i Visual Studio Code (för hands version)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-Innan du påbörjar den här självstudien bör du ha gått igenom föregående självstudie för att konfigurera din utvecklings miljö, [utveckla en IoT Edge modul för en Linux-enhet](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du redan ha följande krav:
+Innan du påbörjar den här självstudien bör du ha gått igenom den föregående kursen för att konfigurera din utvecklings miljö, [utveckla en IoT Edge-modul med hjälp av Linux-behållare](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du redan ha följande krav:
 
 * En [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) på kostnadsfri nivå eller standardnivå i Azure.
-* En [Linux-enhet som kör Azure IoT Edge](quickstart-linux.md).
+* En enhet som kör Azure IoT Edge. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Ett behållar register som [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio-kod](https://code.visualstudio.com/) som kon figurer ATS med [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) konfigurerat för att köra Linux-behållare.

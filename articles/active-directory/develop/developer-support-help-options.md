@@ -1,27 +1,26 @@
 ---
-title: Support-och hjälp alternativ för Azure AD Apps-utvecklare
-description: Lär dig mer om att få hjälp och support för utvecklings-relaterade frågor och problem när du skapar program som integreras med Microsoft-identiteter (Azure Active Directory och Microsoft-konto)
+title: Support-och hjälp alternativ för Microsoft Identity Platform-utvecklare | Azure
+description: Lär dig var du kan få hjälp och hitta svar på dina frågor när du skapar lösningar för identitets-och åtkomst hantering (IAM) som integreras med Azure Active Directory (Azure AD) och andra komponenter i Microsoft Identity Platform.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/23/2019
-ms.author: ryanwi
+ms.date: 03/09/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517961"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462770"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- och hjälpalternativ för utvecklare
 
-Om du bara börjar integrera med Azure Active Directory (Azure AD), Microsoft-identiteter eller Microsoft Graph API eller när du implementerar en ny funktion för ditt program, finns det tillfällen när du behöver få hjälp från communityn eller förstå de support alternativ som du har som utvecklare. Här är några förslag på var du kan få hjälp när du utvecklar dina Microsoft Identity Platform-lösningar.
+Om du behöver ett svar på en fråga eller hjälp med att lösa ett problem som inte beskrivs i vår dokumentation, kan det vara dags att kontakta experterna för hjälp. Här är några förslag på hur du får svar på dina frågor när du utvecklar program som integreras med Microsoft Identity Platform.
 
 ## <a name="create-an-azure-support-request"></a>Skapa en Azure-supportbegäran
 
@@ -33,9 +32,10 @@ Utforska [support alternativen för Azure och välj den plan](https://azure.micr
 
 - Om du redan har ett support avtal för Azure kan du [öppna en support förfrågan här](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-- Om du inte är en Azure-kund kan du också öppna en supportbegäran med Microsoft via [vår kommersiella support](https://support.serviceshub.microsoft.com/supportforbusiness).
+- Om du inte är en Azure-kund kan du öppna en support förfrågan med [Microsoft Support för företag](https://support.serviceshub.microsoft.com/supportforbusiness).
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Skicka en fråga till Microsoft Q&A
+
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
 </div>             

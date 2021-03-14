@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 979194efc5ea956c99943cba15efc4a5e3fea2f9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9279dddc92629b17a2a73f3a41fe261d322d677e
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691611"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463688"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Ändra flödes hämtnings modell i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,19 +65,19 @@ Det `FeedIterator` kommer att finnas i två varianter. Förutom exemplen nedan s
 Här är ett exempel på hur du hämtar en `FeedIterator` som returnerar enhets objekt, i det här fallet ett `User` objekt:
 
 ```csharp
-FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.Incremental);
 ```
 
 Här är ett exempel på hur du kan hämta en `FeedIterator` som returnerar en `Stream` :
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.Incremental);
 ```
 
 Om du inte anger en `FeedRange` till a `FeedIterator` kan du bearbeta en hel behållares ändrings flöde i din egen takt. Här är ett exempel som börjar läsa alla ändringar som börjar vid aktuell tidpunkt:
 
 ```csharp
-FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Now());
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now(), ChangeFeedMode.Incremental);
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -104,8 +104,7 @@ I vissa fall kanske du bara vill bearbeta ändringar i en viss partitionsnyckel.
 
 ```csharp
 FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(
-    ChangeFeedMode.Incremental, 
-    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
+    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue")), ChangeFeedMode.Incremental));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -149,7 +148,7 @@ Här är ett exempel som visar hur du läser från början av behållarens ändr
 Dator 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[0]));
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]), ChangeFeedMode.Incremental);
 while (iteratorA.HasMoreResults)
 {
     try {
@@ -171,7 +170,7 @@ while (iteratorA.HasMoreResults)
 Dator 2:
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[1]));
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]), ChangeFeedMode.Incremental);
 while (iteratorB.HasMoreResults)
 {
     try {
@@ -195,7 +194,7 @@ while (iteratorB.HasMoreResults)
 Du kan spara positionen `FeedIterator` genom att skapa en fortsättnings-token. En fortsättnings-token är ett sträng värde som håller koll på dina FeedIterator senaste bearbetade ändringar. Detta gör `FeedIterator` att du senare kan återuppta den här tidpunkten. Följande kod läser igenom ändrings flödet sedan containern skapades. När inga fler ändringar är tillgängliga behåller den en fortsättnings-token så att förbrukningen av ändrings flödet kan återupptas senare.
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.Incremental);
 
 string continuation = null;
 
@@ -218,7 +217,7 @@ while (iterator.HasMoreResults)
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.ContinuationToken(continuation));
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation), ChangeFeedMode.Incremental);
 ```
 
 Så länge Cosmos-containern fortfarande finns går det inte att ändra en FeedIterators fortsättnings-token.

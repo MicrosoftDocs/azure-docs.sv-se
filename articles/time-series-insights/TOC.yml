@@ -14,7 +14,7 @@
 - name: Självstudier
   items:
     - name: Konfigurera en Time Series Insights Gen2-miljö
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Modellsynkronisering mellan Azure Digital Twins och Time Series Insights Gen2
       href: tutorials-model-sync.md
 - name: Begrepp
@@ -95,9 +95,13 @@
           items:
             - name: Planera din miljö
               href: how-to-plan-your-environment.md
-        - name: Miljöhantering
+        - name: Hantering
           items:
-            - name: Etablera och hantera
+            - name: Så här skapar du en miljö med hjälp av Azure CLI
+              href: how-to-create-environment-using-cli.md
+            - name: Så här skapar du en miljö med hjälp av Azure Portal
+              href: how-to-create-environment-using-portal.md
+            - name: Hantera en miljö
               href: how-to-provision-manage.md
             - name: Välja ett TSID
               href: how-to-select-tsid.md

@@ -10,16 +10,18 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 402b61bb0845532d601e9f5dcaaf55eacce685d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959381"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462736"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Självstudie: utveckla och distribuera en python IoT Edge-modul för Linux-enheter
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>Självstudie: utveckla och distribuera en python IoT Edge-modul med Linux-behållare
 
-Använd Visual Studio Code för att utveckla python-kod och distribuera den till en Linux-enhet som kör Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Använd Visual Studio Code för att utveckla python-kod och distribuera den till en enhet som kör Azure IoT Edge.
 
 Du kan använda Azure IoT Edge-moduler till att distribuera kod som implementerar din affärslogik direkt på dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensor data på den IoT Edge enhet som du har konfigurerat i snabb starten. I den här guiden får du lära dig att:
 
@@ -34,21 +36,23 @@ IoT Edge-modulen du skapar i den här självstudien filtrerar temperaturdata som
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Den här självstudien visar hur du utvecklar en modul i **python** med **Visual Studio Code** och hur du distribuerar den till en **Linux-enhet**. IoT Edge stöder inte python-moduler för Windows-enheter.
+Den här självstudien visar hur du utvecklar en modul i **python** med **Visual Studio Code** och hur du distribuerar den till en IoT Edge enhet.
 
-Använd följande tabell för att förstå alternativen för att utveckla och distribuera python-moduler till Linux:
+IoT Edge stöder inte python-moduler med Windows-behållare.
+
+Använd följande tabell för att förstå alternativen för att utveckla och distribuera python-moduler med hjälp av Linux-behållare:
 
 | Python | Visuell Studio-kod | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Använda VS Code för python-moduler på Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Använda VS Code för python-moduler på Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-Innan du påbörjar den här självstudien bör du ha gått igenom den föregående kursen för att konfigurera din utvecklings miljö för att utveckla Linux-behållare: [utveckla IoT Edge moduler för Linux-enheter](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du ha följande krav på plats:
+Innan du påbörjar den här självstudien bör du ha gått igenom den föregående själv studie kursen för att konfigurera utvecklings miljön för utveckling av Linux-behållare: [utveckla IoT Edge moduler med hjälp av Linux-behållare](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du ha följande krav på plats:
 
 * En [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) på kostnadsfri nivå eller standardnivå i Azure.
-* En [Linux-enhet som kör Azure IoT Edge](quickstart-linux.md)
+* En enhet som kör Azure IoT Edge. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Ett behållar register som [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio-kod](https://code.visualstudio.com/) som kon figurer ATS med [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) konfigurerat för att köra Linux-behållare.

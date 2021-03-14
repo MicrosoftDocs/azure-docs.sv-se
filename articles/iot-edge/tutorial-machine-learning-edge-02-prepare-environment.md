@@ -8,14 +8,16 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932378"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463161"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Självstudie: Konfigurera en miljö för maskin inlärning på IoT Edge
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Den här artikeln hjälper dig att förbereda din miljö för utveckling och distribution. Börja med att konfigurera en utvecklings dator med alla verktyg du behöver. Skapa sedan nödvändiga moln resurser i Azure.
 
@@ -26,7 +28,7 @@ I det här avsnittet av självstudien får du lära dig att:
 > * Konfigurera en virtuell dator för utveckling.
 > * Konfigurera en IoT Hub och moln lagring för utvecklings miljön som ska användas.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln ingår i en serie för självstudier om hur du använder Azure Machine Learning på IoT Edge. Varje artikel i serien bygger på arbetet i föregående artikel. Om du har kommit till den här artikeln direkt kan du gå till den [första artikeln](tutorial-machine-learning-edge-01-intro.md) i serien.
 
@@ -80,7 +82,7 @@ Det tar cirka 30 minuter att skapa och konfigurera den virtuella datorn.
     .\Create-AzureDevVm.ps1
     ```
 
-    När du uppmanas anger du följande information:
+    När du uppmanas att göra det anger du följande information:
 
     * **ID för Azure-prenumeration**: ditt prenumerations-ID, som du hittar i [Azure-prenumerationer](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i portalen.
     * **Resurs grupp namn**: namnet på en ny eller en befintlig resurs grupp i Azure.

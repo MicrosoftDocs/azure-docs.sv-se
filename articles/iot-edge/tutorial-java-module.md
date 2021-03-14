@@ -12,16 +12,18 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f24f38db7704557894d866b789890763f9e1316
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177316"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463263"
 ---
-# <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Självstudie: utveckla en Java IoT Edge-modul för Linux-enheter
+# <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>Självstudie: utveckla en Java IoT Edge-modul med hjälp av Linux-behållare
 
-Du kan använda Azure IoT Edge-moduler till att distribuera kod som implementerar din affärslogik direkt på dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata. Du använder den simulerade IoT Edge enheten som du skapade i distributions Azure IoT Edge på en simulerad enhet i [Linux](quickstart-linux.md) -snabb starten. I den här guiden får du lära dig att:
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Du kan använda Azure IoT Edge-moduler till att distribuera kod som implementerar din affärslogik direkt på dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata. Du använder den simulerade IoT Edge enheten som du skapade i distributions Azure IoT Edge på en simulerad enhet i snabb starts artiklarna. I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -36,7 +38,7 @@ IoT Edge-modulen du skapar i den här självstudien filtrerar temperaturdata som
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Den här självstudien visar hur du utvecklar en modul i **Java** med **Visual Studio Code** och hur du distribuerar den till en **Linux-enhet**. IoT Edge stöder inte Java-moduler för Windows-enheter.
+Den här självstudien visar hur du utvecklar en modul i **Java** med **Visual Studio Code** och hur du distribuerar den till en IoT Edge enhet. IoT Edge stöder inte Java-moduler som skapats som Windows-behållare.
 
 Använd följande tabell för att förstå alternativen för att utveckla och distribuera Java-moduler:
 
@@ -48,12 +50,12 @@ Använd följande tabell för att förstå alternativen för att utveckla och di
 Innan du påbörjar den här självstudien bör du ha gått igenom den föregående kursen för att konfigurera din utvecklings miljö för att utveckla Linux-behållare: [utveckla IoT Edge moduler för Linux-enheter](tutorial-develop-for-linux.md). Genom att slutföra någon av de här självstudierna bör du ha följande krav på plats:
 
 * En [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) på kostnadsfri nivå eller standardnivå i Azure.
-* En [Linux-enhet som kör Azure IoT Edge](quickstart-linux.md)
+* En enhet som kör Azure IoT Edge. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Ett behållar register som [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio-kod](https://code.visualstudio.com/) som kon figurer ATS med [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) konfigurerat för att köra Linux-behållare.
 
-Om du vill utveckla en IoT Edge-modul i Java installerar du följande ytterligare krav på utvecklings datorn: 
+Om du vill utveckla en IoT Edge-modul i Java installerar du följande ytterligare krav på utvecklings datorn:
 
 * [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) för Visual Studio Code.
 * [Java se Development Kit 11](/azure/developer/java/fundamentals/java-jdk-long-term-support)och [Ställ in `JAVA_HOME` miljövariabeln](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) så att den pekar på din JDK-installation.

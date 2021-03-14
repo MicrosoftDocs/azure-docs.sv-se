@@ -9,20 +9,25 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: edbe2b8370b943aa93a1cef425c64e9f11feb735
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705599"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464077"
 ---
-# <a name="tutorial-develop-c-iot-edge-modules-for-windows-devices"></a>Självstudie: utveckla C# IoT Edge-moduler för Windows-enheter
+# <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Självstudie: utveckla C# IoT Edge moduler med Windows-behållare
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Den här artikeln visar hur du använder Visual Studio för att utveckla C#-kod och distribuera den till en Windows-enhet som kör Azure IoT Edge.
 
-Du kan använda Azure IoT Edge moduler för att distribuera kod som implementerar affärs logiken direkt i dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata. 
+>[!NOTE]
+>IoT Edge 1,1 LTS är den sista versions kanal som stöder Windows-behållare. Från och med version 1,2 stöds inte Windows-behållare. Överväg att använda eller flytta till [IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md) för att köra IoT Edge på Windows-enheter.
 
-I de här självstudierna får du lära dig att
+Du kan använda Azure IoT Edge moduler för att distribuera kod som implementerar affärs logiken direkt i dina IoT Edge-enheter. Den här självstudien vägleder dig genom att skapa och distribuera en IoT Edge-modul som filtrerar sensordata.
+
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -37,19 +42,19 @@ IoT Edge-modulen du skapar i den här självstudien filtrerar temperaturdata som
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Den här självstudien visar hur du utvecklar en modul i C# med hjälp av Visual Studio 2019 och sedan distribuerar den till en Windows-enhet. Om du utvecklar moduler för Linux-enheter går du till [utveckla C# IoT Edge moduler för Linux-enheter](tutorial-csharp-module.md) i stället.
+Den här självstudien visar hur du utvecklar en modul i C# med hjälp av Visual Studio 2019 och sedan distribuerar den till en Windows-enhet. Om du utvecklar moduler med hjälp av Linux-behållare går du till [utveckla C# IoT Edge moduler med hjälp av Linux-behållare](tutorial-csharp-module.md) i stället.
 
-För att förstå alternativen för att utveckla och distribuera C#-moduler till Windows-enheter, se följande tabell:
+För att förstå alternativen för att utveckla och distribuera C#-moduler med hjälp av Windows-behållare, se följande tabell:
 
 | C# | Visual &nbsp; Studio- &nbsp; kod | Visual Studio 2017 &nbsp; och &nbsp; 2019 |
 | -- | :------------------: | :------------------: |
 | Windows AMD64-utveckling | ![Utveckla C#-moduler för WinAMD64 i Visual Studio Code](./media/tutorial-c-module/green-check.png) | ![Utveckla C#-moduler för WinAMD64 i Visual Studio](./media/tutorial-c-module/green-check.png) |
 | Windows AMD64-felsökning |   | ![Felsöka C#-moduler för WinAMD64 i Visual Studio](./media/tutorial-c-module/green-check.png) |
 
-Innan du påbörjar den här självstudien ställer du in utvecklings miljön genom att följa anvisningarna i själv studie kursen [utveckla IoT Edge moduler för Windows-enheter](tutorial-develop-for-windows.md) . När du har slutfört den kommer din miljö att innehålla följande krav:
+Innan du påbörjar den här självstudien ställer du in utvecklings miljön genom att följa anvisningarna i självstudien [utveckla IoT Edge moduler med hjälp av Windows-behållare](tutorial-develop-for-windows.md) . När du har slutfört den kommer din miljö att innehålla följande krav:
 
 * En [IoT-hubb](../iot-hub/iot-hub-create-through-portal.md) (kostnads fri) eller standard nivå i Azure.
-* En [Windows-enhet som kör Azure IoT Edge](quickstart.md).
+* En [Windows-enhet som kör Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md).
 * Ett behållar register, till exempel [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio 2019](/visualstudio/install/install-visual-studio), konfigurerat med [Azure IoT Edge tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) -tillägget.
 * [Docker Desktop](https://docs.docker.com/docker-for-windows/install/), konfigurerat för att köra Windows-behållare.
@@ -280,7 +285,7 @@ Koden för standardmodulen tar emot meddelanden i en indatakö och skickar dem v
     }
     ```
 
-1. Spara filen *Program.cs*.
+1. Spara *Program.cs*-filen.
 
 1. Öppna filen *deployment.template.js* i IoT Edge-lösningen. Den här filen talar om för IoT Edge-agenten vilka moduler som ska distribueras och talar om för IoT Edge Hub hur meddelanden ska skickas mellan dem. De moduler som ska distribueras är **SimulatedTemperatureSensor** och **CSharpModule**.
 

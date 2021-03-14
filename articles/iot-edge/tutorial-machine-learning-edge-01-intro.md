@@ -8,16 +8,21 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932191"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463246"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Självstudie: en lösning från slut punkt till slut punkt med hjälp av Azure Machine Learning och IoT Edge
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 IoT-program vill ofta dra nytta av det intelligenta molnet och den intelligenta gränsen. I den här självstudien vägleder vi dig genom utbildningen av en maskin inlärnings modell med data som samlas in från IoT-enheter i molnet, distribution av modellen till IoT Edge och underhåll och raffinering av modellen med jämna mellanrum.
+
+>[!NOTE]
+>Begreppen i den här uppsättningen med självstudier gäller för alla versioner av IoT Edge, men exempel enheten som du skapar för att testa scenariot kör IoT Edge version 1,1.
 
 Det främsta syftet med den här självstudien är att introducera bearbetningen av IoT-data med Machine Learning, specifikt på gränsen. Medan vi vidrör många aspekter av ett allmänt Machine Learning-arbetsflöde är den här självstudien inte avsedd som en djupgående introduktion till Machine Learning. Som ett litet exempel försöker vi inte skapa en mycket optimerad modell för användnings fallet – vi räcker bara för att illustrera processen med att skapa och använda en praktisk modell för IoT-databearbetning.
 
@@ -32,7 +37,7 @@ Det här avsnittet i själv studie kursen beskriver:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra självstudien måste du ha åtkomst till en Azure-prenumeration där du har behörighet att skapa resurser. Flera av de tjänster som används i den här självstudien debiteras Azure-avgifter. Om du inte redan har en Azure-prenumeration kan du komma igång med ett [kostnads fritt Azure-konto](https://azure.microsoft.com/offers/ms-azr-0044p/).
 
@@ -69,9 +74,9 @@ De data som används i den här självstudien hämtas från [data uppsättningen
 
 Från Readme-filen:
 
-***Experimentellt scenario** _
+***Experiment scenario***
 
-_Data mängder består av flera multivarierad tids serier. Varje data uppsättning är ytterligare indelad i utbildning och test del mängder. Varje tids serie är från en annan motor, d.v.s. data kan anses vara från en flotta av motorer av samma typ. Varje motor börjar med olika grader av inledande slitage och tillverknings variation som är okänt för användaren. Detta slitage betraktas som vanligt, d.v.s. det anses inte vara ett fel tillstånd. Det finns tre operativa inställningar som har en betydande effekt på motorns prestanda. Dessa inställningar ingår också i datan. Data är förorenade av sensor brus. *
+*Data uppsättningar består av flera multivarierad tids serier. Varje data uppsättning är ytterligare indelad i utbildning och test del mängder. Varje tids serie är från en annan motor, d.v.s. data kan anses vara från en flotta av motorer av samma typ. Varje motor börjar med olika grader av inledande slitage och tillverknings variation som är okänt för användaren. Detta slitage betraktas som vanligt, d.v.s. det anses inte vara ett fel tillstånd. Det finns tre operativa inställningar som har en betydande effekt på motorns prestanda. Dessa inställningar ingår också i datan. Data är förorenade av sensor brus.*
 
 *Motorn fungerar normalt i början av varje tids serie och utvecklar ett fel vid någon tidpunkt under serien. I inlärnings uppsättningen växer felet i storleksordning tills systemet havererar. I test uppsättningen går tids serien ut en stund innan systemet kraschar. Målet med tävlingen är att förutsäga antalet återstående operativa cykler innan det uppstår problem i test uppsättningen, d.v.s. antalet operativa cykler efter den senaste cykeln som motorn fortsätter att fungera. Tillhandahöll också en Vector med sanna återstående användbara livs längd värden (RUL) för test data.*
 

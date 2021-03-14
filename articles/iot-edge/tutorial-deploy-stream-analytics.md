@@ -7,14 +7,16 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 61779527d4b855f4327ad4b77a1e22207a94b8c0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 323973b7646acee07a0c4dbc59834e0aceca75ee
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048380"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462056"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Självstudie: Distribuera Azure Stream Analytics som en IoT Edge modul
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Många IoT-lösningar använder analys tjänster för att få insikt om data när de tas emot i molnet från IoT-enheter. Med Azure IoT Edge kan du använda logik från [Azure Stream Analytics](../stream-analytics/index.yml) och flytta den till själva enheten. Du kan minska hur mycket data som överförs och minska tiden det tar att reagera på insikter genom att bearbeta telemetriströmmar på gränsen.
 
@@ -24,7 +26,7 @@ Azure Stream Analytics ger en omfattande strukturerad frågesyntax för data ana
 
 Stream Analytics-modulen i den här självstudien beräknar medeltemperaturen över ett rullande 30-sekundersschema. När medeltemperaturen når 70 grader skickar modulen en varning så att enheten kan vidta en åtgärd. I det här fallet är åtgärden att återställa den simulerade temperatursensorn. Du kan till exempel använda den här funktionen för att stänga av en dator eller vidta förebyggande åtgärder när temperaturen når farliga nivåer i en produktionsmiljö.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 >
 > * Skapa ett Azure Stream Analytics-jobb för bearbetning av data på gränsen.
@@ -38,7 +40,7 @@ I de här självstudierna får du lära dig att
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En Azure IoT Edge-enhet:
 
@@ -56,7 +58,7 @@ I det här avsnittet skapar du ett Azure Stream Analytics jobb som gör följand
 * Fråga telemetridata för värden utanför ett uppsättnings intervall.
 * Vidta åtgärder på den IoT Edge enheten baserat på frågeresultaten.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-enhet måste det lagras på ett sätt som kan anropas från enheten. Du kan använda ett befintligt Azure Storage konto eller skapa ett nytt nu.
 
@@ -69,7 +71,7 @@ När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-en
    | Prenumeration | Välj samma prenumeration som din IoT-hubb. |
    | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser för IoT Edge snabb starter och självstudier. Till exempel **IoTEdgeResources**. |
    | Name | Ange ett unikt namn för lagringskontot. |
-   | Plats | Välj en plats i närheten av dig. |
+   | Location | Välj en plats i närheten av dig. |
 
 1. Behåll standardvärdena för de andra fälten och välj **Granska + skapa**.
 
@@ -86,7 +88,7 @@ När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-en
    | Jobbnamn | Ange ett namn för ditt jobb. Till exempel **IoTEdgeJob** |
    | Prenumeration | Välj samma prenumeration som din IoT-hubb. |
    | Resursgrupp | Vi rekommenderar att du använder samma resursgrupp för alla testresurser som du skapar i snabbstarterna och självstudierna om IoT Edge. Till exempel **IoTEdgeResources**. |
-   | Plats | Välj en plats i närheten av dig. |
+   | Location | Välj en plats i närheten av dig. |
    | Värdmiljö | Välj **Gräns**. |
 
 1. Välj **Skapa**.
@@ -119,7 +121,7 @@ I det här avsnittet används de tre elementen för indata, utdata och fråga f�
 
 1. Behåll standardvärdena för de andra fälten och välj **Spara**.
 
-1. Under **jobb sto pol Ogin**väljer du **fråga**.
+1. Under **jobb sto pol Ogin** väljer du **fråga**.
 
 1. Ersätt standardtexten med följande fråga. SQL-koden skickar ett återställningskommando till aviseringens utdata om medeltemperaturen under ett 30-sekundersintervall når 70 grader. Återställningskommandot har förprogrammerats i sensorn som en åtgärd som kan utföras.
 
@@ -140,7 +142,7 @@ I det här avsnittet används de tre elementen för indata, utdata och fråga f�
 
 För att förbereda Stream Analytics-jobbet för distribution till en IoT Edge-enhet måste du associera jobbet med en container i ett lagringskonto. När du sedan distribuerar jobbet exporteras jobbdefinitionen till lagringscontainern.
 
-1. Under **Konfigurera**väljer du **Inställningar för lagrings konto** och väljer sedan **Lägg till lagrings konto**.
+1. Under **Konfigurera** väljer du **Inställningar för lagrings konto** och väljer sedan **Lägg till lagrings konto**.
 
    ![Azure Stream Analytics – Lägg till lagrings konto](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
@@ -160,14 +162,14 @@ I den här självstudien ska du distribuera två moduler. Den första är **Simu
 
 1. Gå till din IoT-hubb på Azure Portal.
 
-1. Gå till **IoT Edge**och öppna sedan informations sidan för IoT Edge enheten.
+1. Gå till **IoT Edge** och öppna sedan informations sidan för IoT Edge enheten.
 
 1. Välj **Ange moduler**.  
 
 1. Om du tidigare har distribuerat SimulatedTemperatureSensor-modulen på den här enheten kan den fyllas i automatiskt. Om inte så lägger du till modulen genom att följa dessa steg:
 
    1. Klicka på **Lägg till** och välj **IoT Edge-modul**.
-   1. Skriv **SimulatedTemperatureSensor**som namn.
+   1. Skriv **SimulatedTemperatureSensor** som namn.
    1. Ange **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** som URI för avbildning.
    1. Lämna de andra inställningarna oförändrade och välj **Lägg till**.
 

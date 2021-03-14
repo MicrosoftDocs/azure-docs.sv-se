@@ -10,22 +10,22 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736860"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464096"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-utforskaren
 
 I den här artikeln beskrivs de olika funktionerna och alternativen som är tillgängliga i Azure Time Series Insights Gen2 [demo Environment](https://insights.timeseries.azure.com/preview/demo).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång med Azure Time Series Insights Explorer måste du:
 
-* Ha en Azure Time Series Insights Gen2-miljö etablerad. Läs mer om hur du konfigurerar en instans genom att läsa självstudien om [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) .
+* Ha en Azure Time Series Insights Gen2-miljö etablerad. Läs mer om hur du konfigurerar en instans genom att läsa självstudien om [Azure Time Series Insights Gen2](./tutorial-set-up-environment.md) .
 * [Ge data åtkomst](./concepts-access-policies.md) till den Azure Time Series Insights Gen2-miljö som du skapade för kontot. Du kan ge åtkomst till andra och dig själv.
 * Lägg till en händelse källa i Azure Time Series Insights Gen2-miljön för att skicka data till miljön:
   * Lär dig [hur du ansluter till en Event Hub](./how-to-ingest-data-event-hub.md)
@@ -92,7 +92,7 @@ Visar instans fälten och andra metadata som är kopplade till valda tids serie 
 
 Du kan ta bort vissa data element från dina aktuella data på ett bra sätt genom att välja den röda **borttagningen** (pappers korgen) på vänster sida av elementet. Med det här alternativet kan du också styra hur varje element visas i diagrammet. Du kan välja att lägga till min/högsta skuggor, data punkter, flytta elementet i tid och visualisera instansen på ett stegat sätt.
 
-Dessutom kan du med utforsknings kontrollen skapa tids Skift och punkt diagram enkelt.  
+Dessutom kan du med utforsknings kontrollen skapa tids Skift och punkt diagram enkelt.
 
   [![Alternativ för bra layout](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 

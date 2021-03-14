@@ -4,27 +4,29 @@ description: I den här snabb starten lär du dig hur du skapar en IoT Edge-enhe
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920809"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463495"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Snabb start: distribuera din första IoT Edge-modul till en virtuell Linux-enhet
 
-Testa Azure IoT Edge i den här snabb starten genom att distribuera container kod till en virtuell Linux IoT Edge-enhet. Med IoT Edge kan du fjärrhantera kod på dina enheter så att du kan skicka fler arbets belastningar till gränsen. I den här snabb starten rekommenderar vi att du använder en virtuell Azure-dator för din IoT Edge-enhet, vilket gör att du snabbt kan skapa en test dator med tjänsten IoT Edge installerad och sedan ta bort den när du är klar.
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
+Testa Azure IoT Edge i den här snabb starten genom att distribuera container kod till en virtuell Linux IoT Edge-enhet. Med IoT Edge kan du fjärrhantera kod på dina enheter så att du kan skicka fler arbets belastningar till gränsen. I den här snabb starten rekommenderar vi att du använder en virtuell Azure-dator för din IoT Edge-enhet, vilket gör att du snabbt kan skapa en test dator och sedan ta bort den när du är klar.
 
 I den här snabbstarten lär du dig att:
 
 * Skapa en IoT Hub.
 * Registrera en IoT Edge-enhet till din IoT Hub.
-* Installera och starta IoT Edge runtime på den virtuella enheten.
+* Installera och starta IoT Edge runtime på en virtuell enhet.
 * Fjärrdistribuera en modul till en IoT Edge-enhet.
 
 ![Diagram – Snabbstart av arkitektur för enhet och moln](./media/quickstart-linux/install-edge-full.png)
@@ -33,7 +35,7 @@ Den här snabb starten vägleder dig genom att skapa en virtuell Linux-dator som
 
 Om du inte har en aktiv Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Förbered din miljö för Azure CLI.
 
@@ -41,7 +43,7 @@ Förbered din miljö för Azure CLI.
 
 Molnresurser:
 
-- En resursgrupp som du använder för att hantera alla resurser i den här snabbstarten. Vi använder exempel på resurs grupps namnet **IoTEdgeResources** i den här snabb starten och följande självstudier.
+* En resursgrupp som du använder för att hantera alla resurser i den här snabbstarten. Vi använder exempel på resurs grupps namnet **IoTEdgeResources** i den här snabb starten och följande självstudier.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -103,6 +105,9 @@ Under körningskonfigurationen anger du en enhetsanslutningssträng. Detta är d
 
 I det här avsnittet används en Azure Resource Manager-mall för att skapa en ny virtuell dator och installera IoT Edge runtime på den. Om du vill använda en egen Linux-enhet i stället kan du följa installations stegen i [installera Azure IoT Edge runtime](how-to-install-iot-edge.md)och sedan återgå till den här snabb starten.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Använd följande CLI-kommando för att skapa din IoT Edge-enhet baserat på mallen för inbyggd [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) .
 
 * För bash eller Cloud Shell användare kopierar du följande kommando till en text redigerare, ersätter platshållartexten med din information och kopierar sedan till bash-eller Cloud Shells fönstret:
@@ -113,8 +118,7 @@ Använd följande CLI-kommando för att skapa din IoT Edge-enhet baserat på mal
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
-   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
    --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
@@ -131,6 +135,42 @@ Använd följande CLI-kommando för att skapa din IoT Edge-enhet baserat på mal
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Använd följande CLI-kommando för att skapa din IoT Edge-enhet baserat på mallen för inbyggd [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0-rc4) .
+
+* För bash eller Cloud Shell användare kopierar du följande kommando till en text redigerare, ersätter platshållartexten med din information och kopierar sedan till bash-eller Cloud Shells fönstret:
+
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+
+* För PowerShell-användare kopierar du följande kommando till PowerShell-fönstret och ersätter sedan platshållartexten med din egen information:
+
+   ```azurecli
+   az deployment group create `
+   --resource-group IoTEdgeResources `
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
+   --parameters adminUsername='azureUser' `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters authenticationType='password' `
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+:::moniker-end
+<!-- end 1.2 -->
 
 Den här mallen använder följande parametrar:
 
@@ -158,6 +198,9 @@ Resten av kommandona i den här snabbstarten sker på din IoT Edge-enhet så att
 
 När du är ansluten till den virtuella datorn kontrollerar du att körningen har installerats och kon figurer ATS på IoT Edge enheten.
 
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Kontrol lera att IoT Edge Security Daemon körs som en system tjänst.
 
    ```bash
@@ -182,6 +225,35 @@ När du är ansluten till den virtuella datorn kontrollerar du att körningen ha
    ```
 
    ![Visa en modul på din enhet](./media/quickstart-linux/iotedge-list-1.png)
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Kontrol lera att IoT Edge körs. Följande kommando ska returnera statusen **OK** om IoT Edge körs eller ange eventuella tjänst fel.
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+   >[!TIP]
+   >Förhöjd behörighet krävs för att köra `iotedge`-kommandon. När du loggar ut från datorn och sedan loggar in igen för första gången efter installationen av IoT Edge-körningen, så uppdateras dina behörigheter automatiskt. Tills dess kan du använda framför `sudo` kommandona.
+
+2. Hämta tjänstloggar om du behöver felsöka tjänsten.
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+3. Visa alla moduler som körs på din IoT Edge-enhet. Eftersom det är första gången du startar tjänsten, bör du bara kunna se den **edgeAgent**-modul som körs. EdgeAgent-modulen körs som standard och hjälper till att installera och starta ytterligare moduler som du distribuerar till din enhet.
+
+   ```bash
+   sudo iotedge list
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 IoT Edge-enheten har nu konfigurerats. Den är redo att köra molndistribuerade moduler.
 
@@ -192,6 +264,31 @@ Hantera din Azure IoT Edge-enhet från molnet för att distribuera en modul som 
 ![Diagram – Distribuera en modul från ett moln till en enhet](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Eftersom IoT Edge version 1,2 finns i en offentlig för hands version finns det ett extra steg att vidta för att uppdatera runtime-modulerna till deras offentliga för hands versioner.
+
+1. På sidan enhets information väljer du **Ange moduler** igen.
+
+1. Välj **körnings inställningar**.
+
+1. Uppdatera fältet **avbildning** för båda modulerna IoT Edge hub och IoT Edge agent för att använda versions tag gen 1.2.0-RC4. Exempel:
+
+   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
+   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
+
+1. Modulen simulerad temperatur sensor bör fortfarande visas i avsnittet moduler. Du behöver inte göra några ändringar i modulen för den offentliga för hands versionen.
+
+1. Välj **Granska + skapa**.
+
+1. Välj **Skapa**.
+
+1. På sidan enhets information kan du välja antingen **$edgeAgent** eller **$edgeHub** för att se information om modulen återspeglar den offentliga för hands versionen av avbildningen.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="view-generated-data"></a>Visa genererade data
 
@@ -205,7 +302,15 @@ I det här fallet genererar modulen som du har överfört exempel miljö data so
    sudo iotedge list
    ```
 
-   ![Visa tre moduler på enheten](./media/quickstart-linux/iotedge-list-2.png)
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+   ![Visa tre moduler på enheten](./media/quickstart-linux/iotedge-list-2-version-201806.png)
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+   ![Visa tre moduler på enheten](./media/quickstart-linux/iotedge-list-2-version-202011.png)
+:::moniker-end
 
 Visa de meddelanden som skickas från temperatursensor-modulen:
 
@@ -232,7 +337,7 @@ Om du skapade den virtuella datorn och IoT-hubben i en ny resursgrupp kan du ta 
 Ta bort gruppen **IoTEdgeResources**. Det kan ta några minuter att ta bort en resurs grupp.
 
 ```azurecli-interactive
-az group delete --name IoTEdgeResources
+az group delete --name IoTEdgeResources --yes
 ```
 
 Du kan bekräfta att resurs gruppen tas bort genom att visa listan över resurs grupper.

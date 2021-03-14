@@ -13,8 +13,12 @@
   items:
     - name: Koda en klientapp
       href: tutorial-code.md
-    - name: Utforska grunderna med en exempelklientapp
-      href: tutorial-command-line-app.md
+    - name: Skapa en graf
+      items:
+        - name: Använda en exempel klient app
+          href: tutorial-command-line-app.md
+        - name: Använda Azure CLI-kommandon
+          href: tutorial-command-line-cli.md
     - name: Ansluta en lösning från slutpunkt till slutpunkt
       href: tutorial-end-to-end.md
 - name: Begrepp

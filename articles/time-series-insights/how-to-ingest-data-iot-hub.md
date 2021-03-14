@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695568"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464028"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Lägg till en händelse källa för IoT Hub i din Azure Time Series Insight-miljö
 
@@ -27,7 +27,7 @@ Den här artikeln beskriver hur du använder Azure Portal för att lägga till e
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Skapa en [Azure Time Series Insightss miljö](./tutorials-set-up-tsi-environment.md).
+* Skapa en [Azure Time Series Insightss miljö](./tutorial-set-up-environment.md).
 * Skapa en [IoT-hubb med hjälp av Azure Portal](../iot-hub/iot-hub-create-through-portal.md).
 * IoT-hubben måste ha aktiva meddelande händelser som skickas i.
 * Skapa en dedikerad konsument grupp i IoT Hub för Azure Time Series Insight-miljön att använda. Varje händelse källa för Azure Time Series Insight måste ha en egen dedikerad konsument grupp som inte delas med någon annan konsument. Om flera läsare förbrukar händelser från samma konsument grupp, kommer alla läsare att kunna uppvisa problem. Mer information finns i [Azure IoT Hub Developer Guide](../iot-hub/iot-hub-devguide.md).

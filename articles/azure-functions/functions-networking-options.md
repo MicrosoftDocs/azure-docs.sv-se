@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215161"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463042"
 ---
 # <a name="azure-functions-networking-options"></a>Nätverksalternativ för Azure Functions
 
@@ -87,7 +87,7 @@ Mer information finns i [tjänst slut punkter för virtuella nätverk](../virtua
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Begränsa ditt lagrings konto till ett virtuellt nätverk 
 
-När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt. Den här funktionen fungerar för närvarande för alla virtuella nätverk som stöds SKU: er, som innehåller standard och Premium, förutom på de Flex-stämplar där virtuella nätverk endast är tillgängliga för Premium SKU. Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
+När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt. Den här funktionen fungerar för närvarande för alla virtuella Windows-nätverk som stöds SKU: er som innehåller standard och Premium, med undantag för på de Flex-stämplar där virtuella nätverk endast är tillgängliga för Premium SKU. Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
 
 1. Skapa en funktion med ett lagrings konto där tjänstens slut punkter inte är aktiverade.
 1. Konfigurera funktionen för att ansluta till ditt virtuella nätverk.

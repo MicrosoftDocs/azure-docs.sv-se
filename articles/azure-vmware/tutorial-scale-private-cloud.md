@@ -2,13 +2,13 @@
 title: Självstudie – skala ett privat moln
 description: I den här självstudien använder du Azure Portal för att skala ett privat moln i Azure VMware-lösningen.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: d49d973cc6d97280dc0c7ea6681f2602b871e1ba
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 03/13/2021
+ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791247"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463637"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Självstudie: skala ett privat moln i Azure VMware-lösningen
 
@@ -22,17 +22,17 @@ I den här självstudien använder du Azure Portal för att:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Ett privat moln för att slutföra den här självstudien. Om du inte har skapat ett privat moln använder du [själv studie kursen skapa ett privat moln](tutorial-create-private-cloud.md) för att skapa ett. Konfigurera nätverk för ditt privata VMware-moln i Azure för att konfigurera det virtuella nätverket som krävs.
+Du behöver ett befintligt privat moln för att kunna slutföra den här kursen. Om du inte har skapat ett privat moln använder du [själv studie kursen skapa ett privat moln](tutorial-create-private-cloud.md) för att skapa ett. 
 
 ## <a name="add-a-new-cluster"></a>Lägg till ett nytt kluster
 
-1. På sidan Översikt i ett befintligt privat moln väljer du **skala privat moln** under **Hantera** . Välj sedan **+ Lägg till ett kluster** .
+1. På sidan Översikt i ett befintligt privat moln väljer du **skala privat moln** under **Hantera**. Välj sedan **+ Lägg till ett kluster**.
 
    :::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="Välj Lägg till ett kluster" border="true":::
 
-1. På sidan **Lägg till kluster** använder du skjutreglaget för att välja antalet värdar. Välj **Spara** .
+1. På sidan **Lägg till kluster** använder du skjutreglaget för att välja antalet värdar. Välj **Spara**.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Välj Lägg till ett kluster" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="På sidan Lägg till kluster använder du skjutreglaget för att välja antalet värdar. Välj Spara." border="true":::
 
    Distributionen av det nya klustret kommer att börja.
 
@@ -40,13 +40,13 @@ Ett privat moln för att slutföra den här självstudien. Om du inte har skapat
 
 1. På sidan Översikt i ett befintligt privat moln väljer du **skala privat moln** och väljer Penn ikonen för att redigera klustret.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Välj Lägg till ett kluster" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Välj skala privat moln i Översikt" border="true":::
 
-1. På sidan **Redigera kluster** använder du skjutreglaget för att välja antalet värdar. Välj **Spara** .
+1. På sidan **Redigera kluster** använder du skjutreglaget för att välja antalet värdar. Välj **Spara**.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="Välj Lägg till ett kluster" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="På sidan Redigera kluster använder du skjutreglaget för att välja antalet värdar. Välj Spara." border="true":::
 
-   Tillägg av värdar till klustret börjar.
+   Att lägga till värdar i klustret börjar.
 
 ## <a name="next-steps"></a>Nästa steg
 

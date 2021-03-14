@@ -2,13 +2,13 @@
 title: Självstudie – check lista för nätverks planering
 description: Lär dig mer om nätverks kraven för nätverks anslutning och nätverks portar på Azure VMware-lösningen.
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918593"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462073"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Check lista för nätverks planering för Azure VMware-lösning 
 
@@ -67,7 +67,7 @@ Under näten:
 
 ## <a name="required-network-ports"></a>Nätverks portar som krävs
 
-| Källa | Mål | Protokoll | Port | Description  | 
+| Källa | Mål | Protokoll | Port | Beskrivning  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | DNS-server för privat moln | Lokal DNS-Server | UDP | 53 | DNS-klient vidarebefordra begär Anden från PC vCenter för alla lokala DNS-frågor (kontrol lera DNS-avsnittet nedan) |  
 | Lokal DNS-Server   | DNS-server för privat moln | UDP | 53 | DNS-klient vidarebefordra begär Anden från lokala tjänster till privata moln DNS-servrar (kontrol lera DNS-avsnittet nedan) |  
@@ -89,13 +89,12 @@ Program och arbets belastningar som körs i en privat moln miljö kräver namn m
 
 Använd den DHCP-tjänst som är inbyggd för att NSX eller använda en lokal DHCP-server i det privata molnet i stället för att dirigera broadcast-DHCP-trafik via WAN tillbaka till lokalt.
 
+Mer information finns i artikeln [TILLHANDAHÅLL DHCP-tjänster till NSX-T-nätverk](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment) .
+
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig om överväganden och krav för att distribuera ett privat moln i Azure VMware-lösningen. 
-
-
-När du har rätt nätverk på plats kan du fortsätta till nästa självstudie för att skapa ett privat moln i Azure VMware-lösningen.
+I den här självstudien har du lärt dig om överväganden och krav för att distribuera ett privat moln i Azure VMware-lösningen. När du har rätt nätverk på plats kan du fortsätta till nästa självstudie för att skapa ett privat moln i Azure VMware-lösningen.
 
 > [!div class="nextstepaction"]
 > [Skapa ett privat moln för Azure VMware-lösningen](tutorial-create-private-cloud.md)

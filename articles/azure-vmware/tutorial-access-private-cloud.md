@@ -2,25 +2,25 @@
 title: Självstudie – åtkomst till ditt privata moln
 description: Lär dig hur du kommer åt ett privat moln i Azure VMware-lösningen
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/13/2021
+ms.openlocfilehash: f689a0c706b6427497c80dabb01579ace161d1e2
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045011"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462273"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Självstudie: få åtkomst till ett privat moln i Azure VMware-lösningen
 
-Med Azure VMware-lösningen kan du inte hantera ditt privata moln med din lokala vCenter. Du måste göra ytterligare inställningar och ansluta till en lokal vCenter-instans via en hopp ruta. 
+Med Azure VMware-lösningen kan du inte hantera ditt privata moln med din lokala vCenter. Du måste ansluta till vCenter-instansen för Azure VMware-lösningen via en hopp ruta. 
 
-I den här självstudien skapar du en hopp ruta i resurs gruppen som du skapade i [föregående självstudie](tutorial-configure-networking.md) och logga in på vCenter. Hopp rutan är en virtuell Windows-dator (VM) i samma virtuella nätverk som du skapade.  Den ger åtkomst till vCenter och NSX Manager. 
+I den här självstudien skapar du en hopp ruta i resurs gruppen som du skapade i [föregående självstudie](tutorial-configure-networking.md) och loggar in på Azure VMware-lösningen vCenter. Den här hopp rutan är en virtuell Windows-dator (VM) i samma virtuella nätverk som du skapade.  Den ger åtkomst till både vCenter och NSX Manager. 
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
-> * Skapa en virtuell Windows-dator som ska användas för att ansluta till vCenter
-> * Logga in på vCenter från den virtuella datorn
+> * Skapa en virtuell Windows-dator för åtkomst till Azure VMware-lösningen vCenter
+> * Logga in på vCenter från den här virtuella datorn
 
 ## <a name="create-a-new-windows-virtual-machine"></a>Skapa en ny virtuell Windows-dator
 
@@ -28,16 +28,16 @@ I den här guiden får du lära dig att:
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>Ansluta till det privata molnets lokala vCenter
 
-1. I rutan hopp loggar du in på vSphere-klienten med VMware vCenter SSO med hjälp av ett moln administratörs användar namn och varlighetsgrad som användar gränssnittet visar.
+1. I rutan hopp loggar du in på vSphere-klienten med VMware vCenter SSO med hjälp av ett moln administratörs användar namn och kontrollerar att användar gränssnittet visas korrekt.
 
-1. I Azure Portal väljer du ditt privata moln och hanterar sedan   >  **identiteten**. 
+1. I Azure Portal väljer du ditt privata moln och **hanterar** sedan  >  **identiteten**. 
 
    URL: er och användarautentiseringsuppgifter för privat moln vCenter och NSX-T Manager-visning.
 
    >[!TIP]
    >Välj **skapa ett nytt lösen ord** om du vill generera nya vCenter-och NSX-lösenord.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
 
 1. Navigera till den virtuella dator som du skapade i föregående steg och Anslut till den virtuella datorn. 
 

@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433224"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462685"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Skicka frågor till Azure Digitals dubbla grafer
 
@@ -36,8 +36,10 @@ Hämta digitala dubbla med **Egenskaper** (inklusive ID och metadata):
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> Det går att köra en fråga för en digital tvillings ID med fältet metadata `$dtId`.
+Som du ser i frågan ovan, frågas ID: t för en Digitals, med hjälp av fältet metadata `$dtId` .
+
+>[!TIP]
+> Om du använder Cloud Shell för att köra en fråga med metadatafält som börjar med `$` , bör du kringgå `$` med ett baktick för att göra det möjligt för Cloud Shell veta att det inte är en variabel och bör användas som en literal i frågetexten.
 
 Du kan också skapa dubbla baserat på **om en viss egenskap har definierats**. Här är en fråga som hämtar dubbla med en definierad *plats* egenskap:
 

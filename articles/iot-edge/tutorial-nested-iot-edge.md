@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 3f997b577fb473e30fbafec08c4e68547a641fa3
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200148"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462039"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Självstudie: skapa en hierarki med IoT Edge enheter (förhands granskning)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Distribuera Azure IoT Edge noder mellan nätverk som är ordnade i hierarkiska lager. Varje lager i en hierarki är en gateway-enhet som hanterar meddelanden och begär Anden från enheter i lagret under den.
 

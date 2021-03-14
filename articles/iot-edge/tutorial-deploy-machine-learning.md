@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292c82624103fc2eae46d8aecb5e85b2181e7938
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271285"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463059"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Distribuera Azure Machine Learning som en IoT Edge-modul (förhandsversion)
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Använd Azure Notebooks för att utveckla en Machine Learning-modul och distribuera den till en Linux-enhet som kör Azure IoT Edge.
 Du kan använda IoT Edge-moduler för att distribuera kod som implementerar din affärslogik direkt till dina IoT Edge-enheter. Den här självstudiekursen vägleder dig genom processen att distribuera en Azure Machine Learning-modul som förutsäger när en enhet slutar fungera baserat på simulerade data om datortemperaturen. Mer information om Azure Machine Learning på IoT Edge finns i [Azure Machine Learning dokumentation](../machine-learning/how-to-deploy-and-where.md).
@@ -37,11 +39,11 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En Azure IoT Edge-enhet:
 
-* Du kan använda en virtuell Azure-dator som en IoT Edge enhet genom att följa stegen i snabb starten för [Linux](quickstart-linux.md).
+* Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Azure Machine Learning-modulen stöder inte Windows-behållare.
 * Azure Machine Learning modulen stöder inte ARM-processorer.
 
@@ -94,13 +96,13 @@ Kontrol lera att behållar avbildningen har skapats och lagrats i Azure Containe
 
 2. I **översikts** avsnittet visas information om arbets ytan och dess tillhör ande resurser. Välj **registervärdet** , som ska vara namnet på din arbets yta följt av slumpmässiga tal.
 
-3. Välj **databaser**under **tjänster**i behållar registret. Du bör se en databas med namnet **tempanomalydetection** som har skapats av den antecknings bok som du körde i föregående avsnitt.
+3. Välj **databaser** under **tjänster** i behållar registret. Du bör se en databas med namnet **tempanomalydetection** som har skapats av den antecknings bok som du körde i föregående avsnitt.
 
 4. Välj **tempanomalydetection**. Du bör se att lagrings platsen har en tagg: **1**.
 
-   Nu när du känner till register namnet, databas namnet och taggen, känner du till den fullständiga avbildnings Sök vägen för behållaren. Bild Sök vägar ser ut så här ** \<registry_name\> . azurecr.io/tempanomalydetection:1**. Du kan använda avbildningssökvägen för att distribuera containern till IoT Edge-enheter.
+   Nu när du känner till register namnet, databas namnet och taggen, känner du till den fullständiga avbildnings Sök vägen för behållaren. Bild Sök vägar ser ut så här **\<registry_name\> . azurecr.io/tempanomalydetection:1**. Du kan använda avbildningssökvägen för att distribuera containern till IoT Edge-enheter.
 
-5. Välj **åtkomst nycklar**under **Inställningar**i behållar registret. Du bör se ett antal autentiseringsuppgifter, till exempel **inloggnings Server** och **användar namn**och **lösen ord** för en administratörs användare.
+5. Välj **åtkomst nycklar** under **Inställningar** i behållar registret. Du bör se ett antal autentiseringsuppgifter, till exempel **inloggnings Server** och **användar namn** och **lösen ord** för en administratörs användare.
 
    Dessa autentiseringsuppgifter kan ingå i distributionsmanifestet så att IoT Edge-enheten kan hämta containeravbildningar från registret.
 

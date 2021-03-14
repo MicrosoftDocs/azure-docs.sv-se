@@ -1,16 +1,16 @@
 ---
 title: Planera för en storskalig distribution av Azure Arc-aktiverade servrar
 description: Lär dig hur du aktiverar ett stort antal datorer till Azure Arc-aktiverade servrar för att förenkla konfigurationen av viktiga säkerhets-, hanterings-och övervaknings funktioner i Azure.
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032236"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461308"
 ---
-# <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Planera för en storskalig distribution av Azure Arc-aktiverade servrar
+# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Planera och distribuera Arc-aktiverade servrar i skala
 
 Distribution av en IT-infrastruktur eller ett affärs program är en utmaning för alla företag. För att kunna köra den väl och undvika eventuella oväntade överraskningar och oplanerade kostnader måste du noggrant planera för det för att säkerställa att du är så klar som möjligt. Om du vill planera för distribution av Azure Arc-aktiverade servrar i stor skala bör det täcka de design-och distributions kriterier som måste uppfyllas för att slutföra aktiviteterna för att stödja en storskalig distribution.
 
@@ -67,7 +67,7 @@ I den här fasen aktiverar system tekniker eller administratörer de grundlägga
 
 ## <a name="phase-2-deploy-arc-enabled-servers"></a>Fas 2: Distribuera Arc-aktiverade servrar
 
-Därefter lägger vi till den grund som anges i fas 1 genom att förbereda distributionen och utföra installationen av agenten.
+Därefter lägger vi till den grund som anges i fas 1 genom att förbereda för och distribuera Arc-aktiverade servrar som är anslutna till dator agenten.
 
 |Uppgift |Detalj |Varaktighet |
 |-----|-------|---------|

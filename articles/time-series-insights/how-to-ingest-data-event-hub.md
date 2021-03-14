@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696337"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461142"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Lägg till händelse källan för Event Hub i Azure Time Series Insightss miljön
 
@@ -27,7 +27,7 @@ Den här artikeln beskriver hur du använder Azure Portal för att lägga till e
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Skapa en Azure Time Series Insights-miljö enligt beskrivningen i [skapa en Azure Time Series Insights-miljö](./tutorials-set-up-tsi-environment.md).
+- Skapa en Azure Time Series Insights-miljö enligt beskrivningen i [skapa en Azure Time Series Insights-miljö](./tutorial-set-up-environment.md).
 - Skapa en händelsehubb. Läs [skapa ett Event Hubs-namnområde och en Event Hub med hjälp av Azure Portal](../event-hubs/event-hubs-create.md).
 - Event Hub måste ha aktiva meddelande händelser skickade till den. Lär dig hur du [skickar händelser till Azure Event Hubs med hjälp av .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Skapa en dedikerad konsument grupp i händelsehubben som Azure Time Series Insightss miljön kan använda. Varje Azure Time Series Insights händelse källa måste ha en egen dedikerad konsument grupp som inte delas med någon annan konsument. Om flera läsare förbrukar händelser från samma konsument grupp, kommer alla läsare att kunna uppvisa problem. Det finns en gräns på 20 konsument grupper per Event Hub. Mer information finns i [programmerings guiden för Event Hubs](../event-hubs/event-hubs-programming-guide.md).

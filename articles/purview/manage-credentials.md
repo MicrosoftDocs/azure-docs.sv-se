@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673519"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461716"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Autentiseringsuppgifter för Source Authentication i Azure avdelningens kontroll
 
@@ -41,7 +41,7 @@ Om du använder den avdelningens kontroll-hanterade identiteten för att konfigu
 
 Innan du kan skapa en autentiseringsuppgift måste du först associera en eller flera av dina befintliga Azure Key Vault-instanser med ditt Azure avdelningens kontroll-konto.
 
-1. Välj ditt Azure avdelningens kontroll-konto från [Azure Portal](https://portal.azure.com). Navigera till **hanterings centret** och navigera sedan till **autentiseringsuppgifter**.
+1. Från [Azure Portal](https://portal.azure.com)väljer du ditt Azure avdelningens kontroll-konto och öppnar Azure avdelningens kontroll Studio. Navigera till **Management Center** på Azure avdelningens kontroll Studio och navigera sedan till **autentiseringsuppgifter**.
 
 2. Välj **hantera Key Vault anslutningar** på sidan **autentiseringsuppgifter** .
 

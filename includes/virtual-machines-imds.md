@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510707"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464973"
 ---
 Azure-Instance Metadata Service (IMDS) innehåller information om de virtuella dator instanser som körs. Du kan använda den för att hantera och konfigurera dina virtuella datorer.
 Den här informationen omfattar SKU, lagring, nätverkskonfigurationer och kommande underhålls händelser. En fullständig lista över tillgängliga data finns i [Sammanfattning av slut punkts kategorier](#endpoint-categories).
@@ -1140,174 +1140,168 @@ Om det inte går att hitta ett data element eller en felaktig begäran, returner
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
-**Jag får felet `400 Bad Request, Required metadata header not specified` . Vad betyder detta?**
+- Jag får felet `400 Bad Request, Required metadata header not specified` . Vad betyder detta?
+  - IMDS kräver att rubriken `Metadata: true` skickas i begäran. Att skicka den här rubriken i REST-anropet ger åtkomst till IMDS.
 
-IMDS kräver att rubriken `Metadata: true` skickas i begäran. Att skicka den här rubriken i REST-anropet ger åtkomst till IMDS.
+- Varför får jag inte beräknings information för min virtuella dator?
+  - För närvarande stöder IMDS endast instanser som skapats med Azure Resource Manager.
 
-**Varför får jag inte beräknings information för min virtuella dator?**
+- Jag skapade den virtuella datorn via Azure Resource Manager en tid sedan. Varför ser jag inte information om att beräkna metadata?
+  - Om du har skapat den virtuella datorn efter september 2016 lägger du till en [tagg](../articles/azure-resource-manager/management/tag-resources.md) för att börja se Compute metadata. Om du har skapat den virtuella datorn före september 2016 lägger du till eller tar bort tillägg eller data diskar till VM-instansen för att uppdatera metadata.
 
-För närvarande stöder IMDS endast instanser som skapats med Azure Resource Manager.
+- Varför ser jag inte alla data som är fyllda för en ny version?
+  - Om du har skapat den virtuella datorn efter september 2016 lägger du till en [tagg](../articles/azure-resource-manager/management/tag-resources.md) för att börja se Compute metadata. Om du har skapat den virtuella datorn före september 2016 lägger du till eller tar bort tillägg eller data diskar till VM-instansen för att uppdatera metadata.
 
-**Jag skapade den virtuella datorn via Azure Resource Manager en tid sedan. Varför ser jag inte information om att beräkna metadata?**
+- Varför får jag fel meddelandet `500 Internal Server Error` `410 Resource Gone` ?
+  - Gör om begäran. Mer information finns i [hantering av tillfälliga fel](/azure/architecture/best-practices/transient-faults). Om problemet kvarstår kan du skapa ett support ärende i Azure Portal för den virtuella datorn.
 
-Om du har skapat den virtuella datorn efter september 2016 lägger du till en [tagg](../articles/azure-resource-manager/management/tag-resources.md) för att börja se Compute metadata. Om du har skapat den virtuella datorn före september 2016 lägger du till eller tar bort tillägg eller data diskar till VM-instansen för att uppdatera metadata.
+- Kommer detta att fungera för instanser av skalnings uppsättningar för virtuella datorer?
+  - Ja, IMDS är tillgängligt för instanser av skalnings uppsättningar för virtuella datorer.
 
-**Varför ser jag inte alla data som är fyllda för en ny version?**
+- Jag uppdaterade mina taggar i skalnings uppsättningar för virtuella datorer, men de visas inte i instanserna (till skillnad från virtuella datorer med en instans). Är jag något fel?
+  - För närvarande används taggar för skalnings uppsättningar för virtuella datorer endast på den virtuella datorn vid omstart, avbildning eller disk ändring till instansen.
 
-Om du har skapat den virtuella datorn efter september 2016 lägger du till en [tagg](../articles/azure-resource-manager/management/tag-resources.md) för att börja se Compute metadata. Om du har skapat den virtuella datorn före september 2016 lägger du till eller tar bort tillägg eller data diskar till VM-instansen för att uppdatera metadata.
+- Varför ser jag inte SKU-informationen för min virtuella dator i `instance/compute` detalj?
+  - För anpassade avbildningar som skapats från Azure Marketplace behåller Azure-plattformen inte SKU-informationen för den anpassade avbildningen och information om alla virtuella datorer som skapats från den anpassade avbildningen. Detta är avsiktligt och visas därför inte i den virtuella dator `instance/compute` informationen.
 
-**Varför får jag fel meddelandet `500 Internal Server Error` `410 Resource Gone` ?**
+- Varför har min begäran nått sin tids gräns för mitt samtal till tjänsten?
+  - Metadata-anrop måste göras från den primära IP-adress som tilldelats till det primära nätverkskortet på den virtuella datorn. Om du har ändrat dina vägar måste du dessutom ha en väg för 169.254.169.254-/32-adressen i den virtuella datorns lokala routningstabell.
 
-Gör om begäran. Mer information finns i [hantering av tillfälliga fel](/azure/architecture/best-practices/transient-faults). Om problemet kvarstår kan du skapa ett support ärende i Azure Portal för den virtuella datorn.
+    ### <a name="windows"></a>[Windows](#tab/windows/)
 
-**Kommer detta att fungera för instanser av skalnings uppsättningar för virtuella datorer?**
+    1. Dumpa din lokala routningstabell och leta efter IMDS-posten. Exempel:
+        ```console
+        > route print
+        IPv4 Route Table
+        ===========================================================================
+        Active Routes:
+        Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+            168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+        ... (continues) ...
+        ```
+    1. Kontrol lera att det finns en väg för `169.254.169.254` och anteckna motsvarande nätverks gränssnitt (till exempel `172.16.69.7` ).
+    1. Dumpa gränssnitts konfigurationen och hitta det gränssnitt som motsvarar den som refereras i routningstabellen, som anger MAC-adressen (fysisk).
+        ```console
+        > ipconfig /all
+        ... (continues) ...
+        Ethernet adapter Ethernet:
 
-Ja, IMDS är tillgängligt för instanser av skalnings uppsättningar för virtuella datorer.
+        Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+        Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+        Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+        IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        ... (continues) ...
+        ```
+    1. Bekräfta att gränssnittet motsvarar det primära NÄTVERKSKORTet för den virtuella datorn och den primära IP-adressen. Du kan hitta det primära NÄTVERKSKORTet och IP-adressen genom att titta på nätverks konfigurationen i Azure Portal eller genom att titta på den med Azure CLI. Anteckna de privata IP-adresserna (och MAC-adressen om du använder CLI). Här är ett PowerShell CLI-exempel:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: wintest767 True 00-0D-3A-E5-1C-C0
+        ```
+    1. Om de inte matchar, uppdaterar du routningstabellen så att det primära NÄTVERKSKORTet och IP-adressen är riktade.
 
-**Jag uppdaterade mina taggar i skalnings uppsättningar för virtuella datorer, men de visas inte i instanserna (till skillnad från virtuella datorer med en instans). Är jag något fel?**
+    ### <a name="linux"></a>[Linux](#tab/linux/)
 
-För närvarande används taggar för skalnings uppsättningar för virtuella datorer endast på den virtuella datorn vid omstart, avbildning eller disk ändring till instansen.
+    1. Dumpa din lokala routningstabell med ett kommando som `netstat -r` och leta efter posten IMDS (t. ex.):
+        ```console
+        ~$ netstat -r
+        Kernel IP routing table
+        Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+        default         _gateway        0.0.0.0         UG        0 0          0 eth0
+        168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+        169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+        172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+        ```
+    1. Kontrol lera att det finns en väg för `169.254.169.254` och notera motsvarande nätverks gränssnitt (t. ex. `eth0` ).
+    1. Dumpa gränssnitts konfigurationen för motsvarande gränssnitt i routningstabellen (Observera att det exakta namnet på konfigurations filen kan variera)
+        ```console
+        ~$ cat /etc/netplan/50-cloud-init.yaml
+        network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                dhcp4-overrides:
+                    route-metric: 100
+                dhcp6: false
+                match:
+                    macaddress: 00:0d:3a:e4:c7:2e
+                set-name: eth0
+        version: 2
+        ```
+    1. Om du använder en dynamisk IP-adress noterar du MAC-adressen. Om du använder en statisk IP-adress kan du anteckna IP-adresser och/eller MAC-adressen i listan.
+    1. Bekräfta att gränssnittet motsvarar det primära NÄTVERKSKORTet för den virtuella datorn och den primära IP-adressen. Du kan hitta det primära NÄTVERKSKORTet och IP-adressen genom att titta på nätverks konfigurationen i Azure Portal eller genom att titta på den med Azure CLI. Anteckna de privata IP-adresserna (och MAC-adressen om du använder CLI). Här är ett PowerShell CLI-exempel:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+        ```
+    1. Om de inte matchar uppdaterar du routningstabellen så att det primära NÄTVERKSKORTet/IP-adressen är mål.
 
-**Varför har min begäran nått sin tids gräns för mitt samtal till tjänsten?**
+    ---
 
-Metadata-anrop måste göras från den primära IP-adress som tilldelats till det primära nätverkskortet på den virtuella datorn. Om du har ändrat dina vägar måste du dessutom ha en väg för 169.254.169.254-/32-adressen i den virtuella datorns lokala routningstabell.
+- Kluster för växling vid fel i Windows Server
+  - När du frågar efter IMDS med redundanskluster, är det ibland nödvändigt att lägga till en väg i routningstabellen. Gör så här:
 
-#### <a name="windows"></a>[Windows](#tab/windows/)
+    1. Öppna en kommandotolk med administratörsbehörighet.
 
-1. Dumpa din lokala routningstabell och leta efter IMDS-posten. Exempel:
-    ```console
-    > route print
+    1. Kör följande kommando och anteckna adressen till gränssnittet för nätverks målet ( `0.0.0.0` ) i IPv4-routningstabellen.
+
+    ```bat
+    route print
+    ```
+
+    > [!NOTE]
+    > Följande exempel på utdata är från en virtuell Windows Server-dator med redundanskluster aktiverat. För enkelhetens skull innehåller utdata endast IPv4-routningstabellen.
+
+    ```
     IPv4 Route Table
     ===========================================================================
     Active Routes:
     Network Destination        Netmask          Gateway       Interface  Metric
-              0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+            0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+            10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+            10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
             127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
             127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-      127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-        168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-      169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-    ... (continues) ...
+    127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+        169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+    169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+            224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+            224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+    255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
     ```
-1. Kontrol lera att det finns en väg för `169.254.169.254` och anteckna motsvarande nätverks gränssnitt (till exempel `172.16.69.7` ).
-1. Dumpa gränssnitts konfigurationen och hitta det gränssnitt som motsvarar den som refereras i routningstabellen, som anger MAC-adressen (fysisk).
-    ```console
-    > ipconfig /all
-    ... (continues) ...
-    Ethernet adapter Ethernet:
 
-       Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-       Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-       Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-       DHCP Enabled. . . . . . . . . . . : Yes
-       Autoconfiguration Enabled . . . . : Yes
-       Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-       IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-       Subnet Mask . . . . . . . . . . . : 255.255.255.0
-    ... (continues) ...
+    Kör följande kommando och Använd adressen för gränssnittet för nätverks mål ( `0.0.0.0` ), som är ( `10.0.1.10` ) i det här exemplet.
+
+    ```bat
+    route add 169.254.169.254/32 10.0.1.10 metric 1 -p
     ```
-1. Bekräfta att gränssnittet motsvarar det primära NÄTVERKSKORTet för den virtuella datorn och den primära IP-adressen. Du kan hitta det primära NÄTVERKSKORTet och IP-adressen genom att titta på nätverks konfigurationen i Azure Portal eller genom att titta på den med Azure CLI. Anteckna de privata IP-adresserna (och MAC-adressen om du använder CLI). Här är ett PowerShell CLI-exempel:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: wintest767 True 00-0D-3A-E5-1C-C0
-    ```
-1. Om de inte matchar, uppdaterar du routningstabellen så att det primära NÄTVERKSKORTet och IP-adressen är riktade.
-
-#### <a name="linux"></a>[Linux](#tab/linux/)
-
- 1. Dumpa din lokala routningstabell med ett kommando som `netstat -r` och leta efter posten IMDS (t. ex.):
-    ```console
-    ~$ netstat -r
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-    default         _gateway        0.0.0.0         UG        0 0          0 eth0
-    168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-    169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-    172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
-    ```
-1. Kontrol lera att det finns en väg för `169.254.169.254` och notera motsvarande nätverks gränssnitt (t. ex. `eth0` ).
-1. Dumpa gränssnitts konfigurationen för motsvarande gränssnitt i routningstabellen (Observera att det exakta namnet på konfigurations filen kan variera)
-    ```console
-    ~$ cat /etc/netplan/50-cloud-init.yaml
-    network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            dhcp4-overrides:
-                route-metric: 100
-            dhcp6: false
-            match:
-                macaddress: 00:0d:3a:e4:c7:2e
-            set-name: eth0
-    version: 2
-    ```
-1. Om du använder en dynamisk IP-adress noterar du MAC-adressen. Om du använder en statisk IP-adress kan du anteckna IP-adresser och/eller MAC-adressen i listan.
-1. Bekräfta att gränssnittet motsvarar det primära NÄTVERKSKORTet för den virtuella datorn och den primära IP-adressen. Du kan hitta det primära NÄTVERKSKORTet och IP-adressen genom att titta på nätverks konfigurationen i Azure Portal eller genom att titta på den med Azure CLI. Anteckna de privata IP-adresserna (och MAC-adressen om du använder CLI). Här är ett PowerShell CLI-exempel:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: ipexample606 True 00-0D-3A-E4-C7-2E
-    ```
-1. Om de inte matchar uppdaterar du routningstabellen så att det primära NÄTVERKSKORTet/IP-adressen är mål.
-
----
-
-**Kluster för växling vid fel i Windows Server**
-
-När du frågar efter IMDS med redundanskluster, är det ibland nödvändigt att lägga till en väg i routningstabellen. Gör så här:
-
-1. Öppna en kommandotolk med administratörsbehörighet.
-
-1. Kör följande kommando och anteckna adressen till gränssnittet för nätverks målet ( `0.0.0.0` ) i IPv4-routningstabellen.
-
-```bat
-route print
-```
-
-> [!NOTE]
-> Följande exempel på utdata är från en virtuell Windows Server-dator med redundanskluster aktiverat. För enkelhetens skull innehåller utdata endast IPv4-routningstabellen.
-
-```
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-Kör följande kommando och Använd adressen för gränssnittet för nätverks mål ( `0.0.0.0` ), som är ( `10.0.1.10` ) i det här exemplet.
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
 
 ## <a name="support"></a>Support
 
@@ -1315,12 +1309,12 @@ Om du inte kan få svar på metadata efter flera försök, kan du skapa ett supp
 
 ## <a name="product-feedback"></a>Produktfeedback
 
-Du kan ge feedback om produkter och idéer till vår kanal för feedback från användare under Virtual Machines > Instance Metadata Service här: https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
+Du kan ge feedback om produkter och idéer till vår kanal för feedback från användare under Virtual Machines > Instance Metadata Service [här](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627)
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Hämta en åtkomsttoken för den virtuella datorn](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+- [Hämta en åtkomsttoken för den virtuella datorn](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[Schemalagda händelser för Linux](../articles/virtual-machines/linux/scheduled-events.md)
+- [Schemalagda händelser för Linux](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Schemalagda händelser för Windows](../articles/virtual-machines/windows/scheduled-events.md)
+- [Schemalagda händelser för Windows](../articles/virtual-machines/windows/scheduled-events.md)

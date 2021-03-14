@@ -2,13 +2,13 @@
 title: Självstudie – distribuera och konfigurera VMware HCX
 description: Lär dig hur du distribuerar och konfigurerar en VMware HCX-lösning för ditt privata moln i Azure VMware-lösningen.
 ms.topic: tutorial
-ms.date: 11/25/2020
-ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/13/2021
+ms.openlocfilehash: d1b0792ab9b9975edf45ab8addb81410e1da4107
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488313"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462372"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Distribuera och konfigurera VMware HCX
 
@@ -183,7 +183,7 @@ Du kan ansluta eller para ihop VMware HCX Cloud Manager i Azure VMware-lösninge
 
 1. Under **infrastruktur** väljer du **plats par** och väljer sedan alternativet **Anslut till fjärrplats** (i mitten av skärmen). 
 
-1. Ange den Azure VMware-lösning HCX Cloud Manager-URL eller IP-adress som du noterade tidigare `https://x.x.x.9` , Azure VMware-lösningens cloudadmin@vsphere.local användar namn och lösen ord. Välj **Anslut**.
+1. Ange den Azure VMware-lösning HCX Cloud Manager-URL eller IP-adress som du noterade tidigare `https://x.x.x.9` , Azure VMware-lösningen cloudadmin \@ vSphere. local användar namn och lösen ordet. Välj **Anslut**.
 
    > [!NOTE]
    > För att kunna upprätta ett plats par:

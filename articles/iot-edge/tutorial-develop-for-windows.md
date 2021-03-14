@@ -9,18 +9,23 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920763"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463365"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Självstudie: utveckla IoT Edge moduler för Windows-enheter
+# <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Självstudie: utveckla IoT Edge moduler med Windows-behållare
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Använd Visual Studio för att utveckla och distribuera kod till Windows-enheter som kör IoT Edge.
 
-I snabb starten skapade du en IoT Edge-enhet med en virtuell Windows-dator och distribuerade en fördefinierad modul från Azure Marketplace. Den här självstudien vägleder dig genom vad det tar att utveckla och distribuera din egen kod till en IoT Edge enhet. Den här självstudien är en användbar förutsättning för de andra självstudierna som går in i detalj om särskilda programmeringsspråk eller Azure-tjänster.
+>[!NOTE]
+>IoT Edge 1,1 LTS är den sista versions kanal som stöder Windows-behållare. Från och med version 1,2 stöds inte Windows-behållare. Överväg att använda eller flytta till [IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md) för att köra IoT Edge på Windows-enheter.
+
+Den här självstudien vägleder dig genom vad det tar att utveckla och distribuera din egen kod till en IoT Edge enhet. Den här självstudien är en användbar förutsättning för de andra självstudierna som går in i detalj om särskilda programmeringsspråk eller Azure-tjänster.
 
 I den här självstudien använder vi exemplet på att distribuera en **C#-modul till en Windows-enhet**. Det här exemplet valdes eftersom det är det vanligaste utvecklings scenariot. Om du är intresse rad av att utveckla på ett annat språk, eller om du planerar att distribuera Azure-tjänster som moduler, kommer den här kursen fortfarande att vara användbar för att lära dig mer om utvecklingsverktyg. När du förstår utvecklings koncepten kan du välja önskat språk eller Azure-tjänst för att få information.
 
@@ -33,7 +38,7 @@ I den här guiden får du lära dig att:
 > * Skapa ditt projekt som en behållare och lagra det i ett Azure Container Registry.
 > * Distribuera din kod till en IoT Edge enhet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En utvecklings dator:
 
@@ -44,8 +49,8 @@ En utvecklings dator:
 
 En Azure IoT Edge enhet i Windows:
 
-* Vi rekommenderar att du inte kör IoT Edge på din utvecklings dator, utan i stället använder en separat enhet. Den här skillnaden mellan utvecklings datorn och IoT Edge enheten är mer korrekt speglar ett verkligt distributions scenario och hjälper till att hålla de olika koncepten direkt.
-* Om du inte har någon andra enhet tillgänglig använder du snabb starts artikeln för att skapa en IoT Edge enhet i Azure med en [virtuell Windows-dator](quickstart.md).
+* [Installera och hantera Azure IoT Edge med Windows-behållare](how-to-install-iot-edge-windows-on-windows.md).
+* Vi rekommenderar att du inte kör IoT Edge på din utvecklings dator, utan i stället använder en separat enhet om det är möjligt. Den här skillnaden mellan utvecklings datorn och IoT Edge enheten är mer korrekt speglar ett verkligt distributions scenario och hjälper till att hålla de olika koncepten direkt.
 
 Molnresurser:
 

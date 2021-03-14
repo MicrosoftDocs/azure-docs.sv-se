@@ -1,18 +1,18 @@
 ---
-title: Självstudie – Skapa och distribuera ett privat moln i Azure VMware-lösningen
+title: Självstudie – distribuera ett privat moln i Azure VMware-lösningen
 description: Lär dig hur du skapar och distribuerar ett privat moln i Azure VMware-lösningen
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725432"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462175"
 ---
-# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Självstudie: skapa ett privat moln för Azure VMware-lösningen
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Självstudie: Distribuera ett privat moln i Azure VMware-lösningen
 
-I den här självstudien får du lära dig hur du skapar och distribuerar ett privat moln i Azure VMware-lösningen. Den minsta inledande distributionen av värdar är tre. Ytterligare värdar kan läggas till en i taget, upp till högst 16 värdar per kluster. 
+Med Azure VMware-lösningen kan du distribuera ett vSphere-kluster i Azure. Den minsta första distributionen är tre värdar. Ytterligare värdar kan läggas till en i taget, upp till högst 16 värdar per kluster.
 
 Eftersom Azure VMware-lösningen inte tillåter att du hanterar ditt privata moln med din lokala vCenter vid lanseringen krävs ytterligare konfiguration. Dessa procedurer och relaterade krav beskrivs i den här självstudien.
 
@@ -48,7 +48,7 @@ Välj **testa det** övre högra hörnet i ett kodblock. Du kan också starta Cl
 
 #### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resursgrupp med kommandot `[az group create](/cli/azure/group)`. En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
+Skapa en resurs grupp med kommandot ["AZ Group Create"](/cli/azure/group) . En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
 
 ```azurecli-interactive
 

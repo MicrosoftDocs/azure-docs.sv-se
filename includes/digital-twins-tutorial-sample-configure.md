@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ff9d1f0ff75a6df6c115ecfe2b8c5f71b12049e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 67a2799a93141ad84f458642d8499a58784cc19c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036187"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463906"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurera exempelprojektet
 
@@ -38,3 +38,4 @@ Konfigurera sedan *appsettings.jspå* filen som ska kopieras till utdatakataloge
 
 Se till att _**AdtE2ESample**_ -projektet är öppet i Visual Studio och fortsätt att använda det i självstudien.
 
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](digital-twins-local-credentials-outer.md)]

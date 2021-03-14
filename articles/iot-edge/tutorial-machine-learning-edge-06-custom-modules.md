@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932344"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462804"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Självstudie: skapa och distribuera anpassade IoT Edge-moduler
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 I den här artikeln skapar vi tre IoT Edge moduler som tar emot meddelanden från löv IoT-enheter, kör data via din Machine Learning-modell och vidarebefordrar insikter till IoT Hub.
 
@@ -61,7 +63,7 @@ I det här avsnittet av självstudien får du lära dig att:
 > * Konfigurera om IoT Hub routning för att stödja dina anpassade moduler.
 > * Bygg, publicera och distribuera dina anpassade moduler.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln ingår i en serie för självstudier om hur du använder Azure Machine Learning på IoT Edge. Varje artikel i serien bygger på arbetet i föregående artikel. Om du har kommit till den här artikeln direkt kan du gå till den [första artikeln](tutorial-machine-learning-edge-01-intro.md) i serien.
 
