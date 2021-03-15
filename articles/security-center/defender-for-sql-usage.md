@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100584"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465471"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Aktivera Azure Defender för SQL-servrar på datorer 
 
@@ -47,7 +47,7 @@ Så här aktiverar du den här planen:
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Steg 1. Etablera Log Analytics-agenten på SQL Server-värden:
 
-- **SQL Server på Azure VM** – om din SQL-dator finns på en virtuell Azure-dator kan du [Aktivera automatisk etablering av Log Analytics agenten <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma). Alternativt kan du följa den manuella proceduren för att [publicera dina Azure Stack virtuella datorer](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
+- **SQL Server på Azure VM** – om din SQL-dator finns på en virtuell Azure-dator kan du [Aktivera automatisk etablering av Log Analytics agenten <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma). Alternativt kan du följa den manuella proceduren för att [publicera dina virtuella Azure Stack hubb-datorer](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms).
 - **SQL Server på Azure-bågen** – om SQL Server hanteras av [Azure Arc](../azure-arc/index.yml) -aktiverade servrar kan du distribuera Log Analytics agenten med hjälp av Security Center rekommendationen Log Analytics Agent installeras på dina Windows-baserade Azure Arc-datorer (för hands version) ". Du kan också följa installations metoderna som beskrivs i [Azure Arc-dokumentationen](../azure-arc/servers/manage-vm-extensions.md).
 
 - **SQL Server lokal** – om din SQL Server finns på en lokal Windows-dator utan Azure ARC har du två alternativ för att ansluta den till Azure:

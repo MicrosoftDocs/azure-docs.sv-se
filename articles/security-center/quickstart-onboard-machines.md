@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712206"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465505"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Anslut dina datorer som inte är Azure-datorer till Security Center
 
@@ -75,24 +75,24 @@ Läs mer om [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md).
 
     Härifrån väljer du den relevanta proceduren nedan beroende på vilken typ av datorer du registrerar:
 
-    - [Publicera dina Azure Stack virtuella datorer](#onboard-your-azure-stack-vms)
+    - [Publicera dina virtuella Azure Stack Hub-datorer](#onboard-your-azure-stack-hub-vms)
     - [Publicera dina Linux-datorer](#onboard-your-linux-machines)
     - [Publicera dina Windows-datorer](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>Publicera dina Azure Stack virtuella datorer
+### <a name="onboard-your-azure-stack-hub-vms"></a>Publicera dina virtuella Azure Stack Hub-datorer
 
-Om du vill lägga till Azure Stack virtuella datorer behöver du informationen på sidan **hantering av agenter** och konfigurera **Azure Monitor, uppdatering och konfigurations hantering** för virtuella datorer på de virtuella datorer som körs på din Azure Stack.
+Om du vill lägga till virtuella datorer för Azure Stack hubb behöver du informationen på sidan **hantering av agenter** och konfigurera **Azure Monitor-, uppdaterings-och konfigurations hanterings** tillägget för virtuella datorer på de virtuella datorerna som körs på din Azure Stack Hub-instans.
 
 1. På sidan **hantering av agenter** kopierar du **arbets ytans ID** och **primär nyckel** till anteckningar.
-1. Logga in på **Azure Stack** Portal och öppna sidan **virtuella datorer** .
+1. Logga in på **Azure Stack Hub** -portalen och öppna sidan **virtuella datorer** .
 1. Välj den virtuella dator som du vill skydda med Security Center.
     >[!TIP]
-    > Information om hur du skapar en virtuell dator på Azure Stack finns i [den här snabb starten för virtuella Windows-datorer](/azure-stack/user/azure-stack-quick-windows-portal) eller [den här snabb starten för virtuella Linux-datorer](/azure-stack/user/azure-stack-quick-linux-portal).
+    > Information om hur du skapar en virtuell dator på Azure Stack hubb finns i [den här snabb starten för virtuella Windows-datorer](/azure-stack/user/azure-stack-quick-windows-portal) eller [den här snabb starten för virtuella Linux-datorer](/azure-stack/user/azure-stack-quick-linux-portal).
 1. Välj **Tillägg**. Listan över virtuella dator tillägg som är installerade på den här virtuella datorn visas.
 1. Välj fliken **Lägg till** . Menyn **Ny resurs** visar en lista över tillgängliga tillägg för virtuella datorer.
 1. Välj tillägget **Azure Monitor, uppdatering och konfigurations hantering** och välj **skapa**. Sidan **installera tillägg** konfiguration öppnas.
     >[!NOTE]
-    > Om du inte ser tillägget **Azure Monitor, uppdatering och konfigurations hantering** som visas på din Marketplace, kan du kontakta din Azure Stack-operatör för att göra det tillgängligt.
+    > Om du inte ser tillägget **Azure Monitor, uppdatering och konfigurations hantering** som visas på din Marketplace, kan du kontakta din Azure Stack Hub-operatör för att göra det tillgängligt.
 1. På sidan **installera tillägg** -konfiguration klistrar du in **arbets ytans ID** och den **arbets ytans nyckel (primär nyckel)** som du kopierade i anteckningar i föregående steg.
 1. När du har slutfört konfigurationen väljer du **OK**. Tilläggets status visas som **etableringen har slutförts**. Det kan ta upp till en timme innan den virtuella datorn visas i Security Center.
 
