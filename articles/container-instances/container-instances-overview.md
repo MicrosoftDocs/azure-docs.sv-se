@@ -4,12 +4,12 @@ description: Tjänsten Azure Container Instances är det snabbaste och enklaste 
 ms.topic: overview
 ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 873f7cc51d1b369503a72501ae000000ff06f805
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121671"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573021"
 ---
 # <a name="what-is-azure-container-instances"></a>Vad är Azure Container Instances?
 
@@ -21,14 +21,11 @@ Azure Container Instances är en bra lösning för alla scenarier som kan funger
 
 Med containrar får du betydande startfördelar jämfört med virtuella datorer. Azure Container Instances kan starta en behållare i Azure på några sekunder utan att några virtuella datorer behöver etableras eller hanteras.
 
-Ta Linux-eller Windows container-avbildningar från Docker Hub, ett privat [Azure Container Registry](../container-registry/index.yml)eller ett annat molnbaserad Docker-register. Azure Container Instances cachelagrar flera vanliga grundläggande OS-avbildningar, vilket hjälper till att påskynda distributionen av dina anpassade program avbildningar.
-
-> [!NOTE]
-> För närvarande kan du inte distribuera en avbildning från ett lokalt register till Azure Container Instances.
+Ta Linux-eller Windows container-avbildningar från Docker Hub, ett privat [Azure Container Registry](../container-registry/index.yml)eller ett annat molnbaserad Docker-register. Besök [vanliga frågor och svar](container-instances-faq.md) för att lära dig vilka register som stöds av ACI. Azure Container Instances cachelagrar flera vanliga grundläggande OS-avbildningar, vilket hjälper till att påskynda distributionen av dina anpassade program avbildningar.
 
 ## <a name="container-access"></a>Åtkomst till behållare
 
-Azure Container Instances möjliggör exponera dina behållar grupper direkt till Internet med en IP-adress och ett fullständigt kvalificerat domän namn (FQDN). När du skapar en behållarinstans kan du ange en anpassad DNS-namnsetikett, så att programmet kan nås på *customlabel*.* azureregion*. azurecontainer.io.
+Azure Container Instances möjliggör exponera dina behållar grupper direkt till Internet med en IP-adress och ett fullständigt kvalificerat domän namn (FQDN). När du skapar en behållarinstans kan du ange en anpassad DNS-namnsetikett, så att programmet kan nås på *customlabel*.*azureregion*. azurecontainer.io.
 
 Azure Container Instances också stöd för att köra ett kommando i en behållare som körs genom att tillhandahålla ett interaktivt gränssnitt som hjälper dig med program utveckling och fel sökning. Åtkomsten tar platser över HTTPS och använder TLS för att skydda klient anslutningar.
 
@@ -43,7 +40,7 @@ Tidigare har containrar erbjudit isolering av programberoenden och resursstyrnin
 
 ### <a name="customer-data"></a>Kundinformation
 
-ACI-tjänsten lagrar lägsta kund information som krävs för att se till att behållar grupper körs som förväntat. Att lagra kund information i en enda region är för närvarande endast tillgängligt i Sydostasien region (Singapore) för Asien och stillahavsområdet geo. För alla andra regioner lagras kund information på [geo](https://azure.microsoft.com/global-infrastructure/geographies/). Kontakta Azure-supporten för att få mer information.
+ACI-tjänsten lagrar lägsta kund information som krävs för att se till att behållar grupper körs som förväntat. Att lagra kund information i en enda region är för närvarande endast tillgängligt i Sydostasien region (Singapore) i regionen Asien och stillahavsområdet Geo-och Brasilien syd (Sao Paulo State) i Brasilien geo. För alla andra regioner lagras kund information på [geo](https://azure.microsoft.com/global-infrastructure/geographies/). Kontakta Azure-supporten för att få mer information.
 
 ## <a name="custom-sizes"></a>Anpassade storlekar
 
@@ -68,9 +65,6 @@ Vissa funktioner är för närvarande begränsade till Linux-behållare:
 * [GPU-resurser](container-instances-gpu.md) (förhands granskning)
 
 För distributioner av Windows-behållare använder du avbildningar baserade på vanliga [Windows Base-avbildningar](container-instances-faq.md#what-windows-base-os-images-are-supported).
-
-> [!NOTE]
-> Användning av Windows Server 2019-baserade avbildningar i Azure Container Instances är en för hands version.
 
 ## <a name="co-scheduled-groups"></a>Samordna schemalagda grupper
 

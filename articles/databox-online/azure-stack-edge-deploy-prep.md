@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 03/16/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 9ceba84cb3bbe52dc5ba51d0f4945f5bad0a5034
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761715"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574004"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Pro  
 
-Det här är den första självstudien i serien med distributions kurser som krävs för att distribuera Azure Stack Edge Pro fullständigt. I den här självstudien beskrivs hur du förbereder Azure Portal för att distribuera en Azure Stack Edge-resurs.
+Det här är den första självstudien i serien med distributions kurser som krävs för att distribuera Azure Stack Edge Pro fullständigt. I den här självstudien beskrivs hur du förbereder Azure Portal för att distribuera en Azure Stack Edge-resurs. 
 
-Du måste ha administratörsbehörighet för att utföra installationen och konfigurationen. Portalförberedelserna tar mindre än tio minuter.
+Du måste ha administratörsbehörighet för att utföra installationen och konfigurationen. Portalförberedelserna tar mindre än tio minuter.  
 
 I den här guiden får du lära dig att:
 
@@ -45,7 +45,7 @@ För att distribuera Azure Stack Edge Pro, se följande självstudier i den angi
 
 Nu kan du börja konfigurera Azure-portalen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande är konfigurations kraven för din Azure Stack Edge-resurs, din Azure Stack Edge-enhet och data Center nätverket.
 
@@ -53,7 +53,7 @@ Följande är konfigurations kraven för din Azure Stack Edge-resurs, din Azure 
 
 Innan du börjar ska du kontrollera att:
 
-* Din Microsoft Azure-prenumeration är aktiverad för en Azure Stack Edge-resurs. Se till att du har använt en prenumeration som stöds, till exempel [Microsoft Enterprise-avtal (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)eller [Microsoft Azure-sponsring](https://azure.microsoft.com/offers/ms-azr-0036p/). Prenumerationer med principen betala per användning stöds inte.
+* Din Microsoft Azure-prenumeration är aktiverad för en Azure Stack Edge-resurs. Se till att du har använt en prenumeration som stöds, till exempel [Microsoft Enterprise-avtal (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)eller [Microsoft Azure-sponsring](https://azure.microsoft.com/offers/ms-azr-0036p/). Prenumerationer enligt principen betala per användning stöds inte.
 
 * Du har ägar-eller deltagar åtkomst på resurs grupps nivå för Azure Stack Edge/Data Box Gateway, IoT Hub och Azure Storage resurser.
 
@@ -85,70 +85,66 @@ Innan du börjar ska du kontrollera att:
 * För normala drift villkor för Azure Stack Edge Pro har du:
 
   * Minst 10 Mbit/s Ladda ned bandbredd för att se till att enheten förblir uppdaterad.
-  * Minst 20 Mbit/s dedikerad överföring och nedladdning av bandbredd för överföring av filer.
+  * Minst 20 Mbit/s dedikerad uppladdning och nedladdnings bandbredd för överföring av filer.
 
-## <a name="create-a-new-resource"></a>Skapa en ny resurs
+## <a name="create-new-resource-for-existing-device"></a>Skapa en ny resurs för en befintlig enhet
 
-Om du har en befintlig Azure Stack Edge-resurs för att hantera din fysiska enhet kan du hoppa över det här steget och gå till [Hämta aktiverings nyckeln](#get-the-activation-key).
+Om du är en befintlig Azure Stack Edge Pro-kund använder du följande procedur för att skapa en ny resurs om du behöver ersätta eller återställa den befintliga enheten.
 
-För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
+Om du är en ny kund rekommenderar vi att du utforskar med Azure Stack Edge Pro-GPU-enheter för dina arbets belastningar. Mer information finns i [Azure Stack Edge Pro med GPU](azure-stack-edge-gpu-overview.md). Information om hur du beställer en Azure Stack Edge Pro med GPU-enhet finns i [skapa en ny resurs för Azure Stack Edge Pro-GPU](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
 
-1. Använd dina Microsoft Azure autentiseringsuppgifter för att logga in på 
+Om du vill skapa en ny Azure Stack Edge Pro-resurs för en befintlig enhet utför du följande steg i Azure Portal.
+
+1. Använd dina Microsoft Azure autentiseringsuppgifter för att logga in på:
 
     - Azure Portal på denna URL: [https://portal.azure.com](https://portal.azure.com) .
     - Eller, Azure Government portalen på denna URL: [https://portal.azure.us](https://portal.azure.us) . Mer information finns i [ansluta till Azure Government med hjälp av portalen](../azure-government/documentation-government-get-started-connect-with-portal.md).
 
-2. I den vänstra rutan väljer du **+ skapa en resurs**. Sök efter och välj **Azure Stack gräns/data Box Gateway**. Välj **Skapa**.
-3. Välj den prenumeration som du vill använda för Azure Stack Edge Pro-enheten. Välj den region där du vill distribuera Azure Stack Edge-resursen. För en lista över alla regioner där Azure Stack Edge-resursen är tillgänglig, se [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+1. Välj **+ Skapa en resurs**. Sök efter och välj **Azure Stack Edge**. Välj sedan **Skapa**.
 
-    Välj den plats som är närmast den geografiska region där du vill distribuera enheten. Regionen lagrar bara metadata för enhets hantering. Faktiska data kan lagras i valfritt lagrings konto.
+1. Välj prenumerationen för Azure Stack Edge Pro-enhet och land för att skicka enheten till i **leverera till**.
+
+   ![Välj prenumeration och leverans land för din enhet](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
+
+
+1. I listan över enhets typer som visas väljer du **Azure Stack Edge Pro-FPGA**. Välj sedan **Välj**. 
+
+   Enhets typen **Azure Stack Edge Pro-FPGA** visas bara om du har en befintlig enhet. Om du behöver beställa en ny enhet går du till [skapa en ny resurs för Azure Stack Edge Pro-GPU](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
+
+   ![Sök Azure Stack Edge-tjänst](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-02.png)
+
+1. På fliken **Grunder**:
+
+   1. Ange eller Välj följande **projekt information**.
     
-    I alternativet **Azure Stack Edge Pro** väljer du **skapa**.
+       |Inställning  |Värde  |
+       |---------|---------|
+       |Prenumeration    |Värdet fylls i automatiskt baserat på den tidigare markeringen. Prenumerationen är kopplad till ditt faktureringskonto. |
+       |Resursgrupp  |Välj en befintlig grupp eller skapa en ny grupp.<br>Lär dig mer om [Azures resurs grupper](../azure-resource-manager/management/overview.md).     |
 
-    ![Sök Azure Stack Edge-tjänst](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
+   1. Ange eller Välj följande **instans information**.
 
-3. På fliken **grundläggande** anger eller väljer du följande **projekt information**.
-    
-    |Inställning  |Värde  |
-    |---------|---------|
-    |Prenumeration    |Detta fylls i automatiskt baserat på den tidigare markeringen. Prenumerationen är kopplad till ditt faktureringskonto. |
-    |Resursgrupp  |Välj en befintlig grupp eller skapa en ny grupp.<br>Lär dig mer om [Azures resurs grupper](../azure-resource-manager/management/overview.md).     |
+       |Inställning  |Värde  |
+       |---------|---------|
+       |Namn   | Ett eget namn som identifierar resursen.<br>Namnet innehåller mellan 2 och 50 tecken, inklusive bokstäver, siffror och bindestreck.<br> Namnet börjar och slutar med en bokstav eller en siffra.        |
+       |Region     |För en lista över alla regioner där Azure Stack Edge-resursen är tillgänglig, se [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Om du använder Azure Government är alla myndigheter tillgängliga som de visas i Azure- [regionerna](https://azure.microsoft.com/global-infrastructure/regions/).<br> Välj den plats som är närmast den geografiska region där du vill distribuera enheten.|
 
-4. Ange eller Välj följande **instans information**.
+   1. Välj **Granska + skapa**.
 
-    |Inställning  |Värde  |
-    |---------|---------|
-    |Namn   | Ett eget namn som identifierar resursen.<br>Namnet innehåller mellan 2 och 50 tecken, inklusive bokstäver, siffror och bindestreck.<br> Namnet börjar och slutar med en bokstav eller en siffra.        |
-    |Region     |För en lista över alla regioner där Azure Stack Edge-resursen är tillgänglig, se [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Om du använder Azure Government är alla myndigheter tillgängliga som de visas i Azure- [regionerna](https://azure.microsoft.com/global-infrastructure/regions/).<br> Välj den plats som är närmast den geografiska region där du vill distribuera enheten.|
+    ![Projekt-och instans information](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-03.png)
 
-    ![Projekt-och instans information](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
+1. På fliken **Granska + skapa** granskar du **användningsvillkor**, **pris information** och information om resursen. Välj sedan **Skapa**.
 
-5. Välj **Nästa: leverans adress**.
+    ![Granska Azure Stack gräns resurs information och sekretess villkor](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-04.png)
 
-    - Om du redan har en enhet väljer du kombinations rutan för **Jag har en Azure Stack Edge-enhet**.
-    - Om det här är den nya enhet som du beställer anger du kontakt namn, företag, adress för att leverera enheten och kontakt information.
+1. Det tar några minuter att skapa resursen. När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå till resurs**.
 
-    ![Leverans adress för ny enhet](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
+   ![Gå till Azure Stack Edge-resursen](media/azure-stack-edge-deploy-prep/data-box-edge-resource-01.png)
 
-6. Välj **Nästa: Granska + skapa**.
+När ordern har placerats, granskar Microsoft order och kontakter som du (via e-post) med leverans information.
 
-7. På fliken **Granska + skapa** granskar du **pris informationen**, **användningsvillkor** och informationen för resursen. Välj kombinations rutan för **Jag har granskat sekretess villkoren**.
+![Meddelande om granskning av Azure Stack Edge Pro-beställning](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
-    ![Granska Azure Stack gräns resurs information och sekretess villkor](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
-
-8. Välj **Skapa**.
-
-   Det tar några minuter att skapa resursen. När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå till resurs**.
-
-   ![Gå till Azure Stack Edge-resursen](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
-
-När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
-
-![Meddelande om granskning av Azure Stack Edge Pro-beställning](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
-
-
-> [!NOTE]
-> Om du vill skapa flera beställningar samtidigt eller klona en befintlig order kan du använda [skripten i Azure-exempel](https://github.com/Azure-Samples/azure-stack-edge-order). Mer information finns i README-filen.
 
 ## <a name="get-the-activation-key"></a>Hämta aktiveringsnyckeln
 
@@ -156,7 +152,7 @@ När Azure Stack Edge-resursen är igång måste du hämta aktiverings nyckeln. 
 
 1. Gå till den resurs som du har skapat och välj **Översikt**. Du får ett meddelande om vilken inverkan din beställning bearbetas.
 
-    ![Välj översikt](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Välj översikt](media/azure-stack-edge-deploy-prep/data-box-edge-select-device-setup.png)
 
 2. När beställningen har bearbetats och enheten är på väg, uppdateras **översikten** . Godkänn standardvärdet för Azure Key Vault eller ange ett nytt **namn** . Välj **generera aktiverings nyckel**. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
 

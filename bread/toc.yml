@@ -924,6 +924,9 @@
         - name: Reservationer
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+        - name: Microsoft-kundavtal
+          tocHref: /azure/cost-management-billing/microsoft-customer-agreement/
+          topicHref: /azure/cost-management-billing/microsoft-customer-agreement/
     - name: Verkningsområde
       tocHref: /azure/purview/
       topicHref: /azure/purview/

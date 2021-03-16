@@ -11,16 +11,18 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd4724fc19814a5ffd35380c0b326e035a340ef2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561523"
+ms.locfileid: "103573072"
 ---
 # <a name="embedded-sign-in-experience"></a>Inbäddad inloggnings upplevelse
 
 För en enklare inloggnings upplevelse kan du undvika att omdirigera användare till en separat inloggnings sida eller skapa ett popup-fönster. Genom att använda det infogade ram `<iframe>` -elementet kan du bädda in användar gränssnittet för Azure AD B2C inloggning direkt i ditt webb program.
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="web-application-embedded-sign-in"></a>Inbäddad inloggning för webb program
 
@@ -32,7 +34,12 @@ Tänk på följande när du använder iframe:
 
 - Inbäddad inloggning stöder endast lokala konton. De flesta sociala identitets leverantörer (till exempel Google och Facebook) blockerar sina inloggnings sidor från att återges i infogade ramar.
 - Eftersom Azure AD B2C sessionscookies i en iframe betraktas som cookies från tredje part, kan vissa webbläsare (till exempel Safari eller Chrome i Incognito-läge) antingen blockera eller rensa dessa cookies, vilket resulterar i en oönskad användar upplevelse. Undvik det här problemet genom att kontrol lera att ditt program domän namn och din Azure AD B2C domän har *samma ursprung*. Om du vill använda samma ursprung [aktiverar du anpassade domäner](custom-domain.md) för Azure AD B2C klient och konfigurerar sedan din webbapp med samma ursprung. Till exempel har ett program som finns på https://app.contoso.com samma ursprung som Azure AD B2C körs på https://login.contoso.com .
- 
+
+## <a name="perquisites"></a>Förutsättningar
+
+* Slutför stegen i avsnittet [komma igång med anpassade principer i Active Directory B2C](custom-policy-get-started.md).
+* [Aktivera anpassade domäner](custom-domain.md) för dina principer.
+
 ## <a name="configure-your-policy"></a>Konfigurera principen
 
 Om du vill tillåta att ditt Azure AD B2C användar gränssnitt bäddas in i en iframe måste du ta med en innehålls säkerhets princip `Content-Security-Policy` och ram alternativ `X-Frame-Options` i Azure AD B2C HTTP-svarshuvuden. Med dessa huvuden kan Azure AD B2C användar gränssnitt köras under ditt program domän namn.

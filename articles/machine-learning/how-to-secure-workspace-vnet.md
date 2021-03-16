@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 6d23b0204cc597898eb2202a329d93ff349f8c13
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5031d097b5d1bdef45dd4b653ae7cef06f5daca0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518542"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573667"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Skydda en Azure Machine Learning arbets yta med virtuella nätverk
 
@@ -240,3 +240,5 @@ Den här artikeln är del två i en serie virtuella nätverks serier i fem delar
 * [Del 3: skydda tränings miljön](how-to-secure-training-vnet.md)
 * [Del 4: skydda inferencing-miljön](how-to-secure-inferencing-vnet.md)
 * [Del 5: Aktivera Studio-funktioner](how-to-enable-studio-virtual-network.md)
+
+Se även artikeln om hur du använder [anpassad DNS](how-to-custom-dns.md) för namn matchning.

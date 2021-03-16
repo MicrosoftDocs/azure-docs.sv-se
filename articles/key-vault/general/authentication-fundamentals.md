@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535203"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103572816"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundläggande om Key Vault-autentisering
 
 Med Azure Key Vault kan du lagra och hantera autentiseringsuppgifter på ett säkert sätt, till exempel hemligheter, nycklar och certifikat i en central och säker moln lagrings plats. Key Vault eliminerar behovet av att lagra autentiseringsuppgifter i dina program. Dina program kan autentiseras för Key Vault vid körning för att hämta autentiseringsuppgifter.
 
-Som administratör kan du noggrant styra vilka användare och program som har åtkomst till ditt nyckel valv och du kan begränsa och granska de åtgärder de utför. Det här dokumentet beskriver de grundläggande begreppen i åtkomst modellen för Key Vault. Det kommer att ge dig en introduktions nivå och visa dig hur du kan autentisera en användare eller ett program till nyckel valvet från början till slut.
+Som administratör kan du noggrant styra vilka användare och program som har åtkomst till ditt nyckel valv och du kan begränsa och granska de åtgärder de utför. Det här dokumentet beskriver de grundläggande begreppen i åtkomst modellen för Key Vault. Det ger dig en introduktion till kunskaps nivån och visar hur du kan autentisera en användare eller ett program till nyckel valvet från början till slut.
 
 ## <a name="required-knowledge"></a>Nödvändig kunskap
 

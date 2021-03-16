@@ -1,15 +1,15 @@
 ---
 title: Översikt över Azure blockchain service
 description: Översikt över Azure blockchain-tjänsten
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963886"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573633"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Vad är Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Azure blockchain service är en fullständigt hanterad redovisnings tjänst som 
 * Inbyggd konsortiums hantering
 * Utveckla smarta kontrakt med välbekanta utvecklingsverktyg
 
-Azure blockchain-tjänsten har utformats för att stödja flera redovisnings protokoll. För närvarande ger det stöd för Ethereum- [kvorumet](https://www.goquorum.com/) med den samliggande mekanismen för [IBFT () för fel tolerans](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) .
+Azure blockchain-tjänsten har utformats för att stödja flera redovisnings protokoll. För närvarande ger det stöd för Ethereum- [kvorumet](https://www.goquorum.com/) med den samliggande mekanismen för [IBFT () för fel tolerans](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/) .
 
 Dessa funktioner kräver nästan ingen administration och de tillhandahålls utan extra kostnad. Du kan fokusera på utveckling och affärs logik i appar i stället för att allokera tid och resurser för att hantera virtuella datorer och infrastruktur. Dessutom kan du fortsätta att utveckla ditt program med de verktyg med öppen källkod och plattform som du väljer för att leverera dina lösningar utan att behöva lära dig nya kunskaper.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86c8943531171094600bc7d93b8694bdd1c6e051
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225838"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573752"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Vanliga frågor och svar om tjänsten för tal tjänst behållare
 
@@ -292,7 +292,7 @@ Kan du fylla i följande test mått, inklusive vilka funktioner som ska testas o
 
 | Slutpunkt                                                | Funktionellt test                                                   | SDK | REST-API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Ja      |
+| `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Yes      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services lokal Diktering v1 WebSocket-slutpunkt        | Ja | Inga       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Den Cognitive Services lokal interaktiva v1 WebSocket-slutpunkten  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Kognitiva tjänster på lokal-konversation v1 WebSocket-slutpunkt |     |          |
@@ -344,20 +344,6 @@ Bara för att klargöra för interaktiva, konversationer och diktering, Det här
 - För MIC är det klockan 1x real tid. Den övergripande användningen bör vara ungefär 1 kärna för en enda igenkänning.
 
 Detta kan alla verifieras från Docker-loggarna. Vi har faktiskt dumpat raden med sessions-och fras-/uttryck-statistik och innehåller RTF-nummer.
-
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Är det vanligt att dela ljudfiler i Chucks för användning av tal behållare?</b>
-</summary>
-
-Min nuvarande plan är att ta en befintlig ljudfil och dela upp den i 10 andra segment och skicka dem via behållaren. Är det ett acceptabelt scenario?  Finns det ett bättre sätt att bearbeta större ljudfiler med behållaren?
-
-**Svar:** Använd bara tal-SDK och ge den filen. Varför måste du segmentera filen?
-
 
 <br>
 </details>

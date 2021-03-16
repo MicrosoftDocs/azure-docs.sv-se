@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518693"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573480"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Översikt över virtuella nätverks isolering och sekretess
 
@@ -36,7 +36,6 @@ Den här artikeln förutsätter att du är bekant med följande avsnitt:
 + [Azure Private Link](how-to-configure-private-link.md)
 + [Nätverks säkerhets grupper (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Nätverks brand väggar](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>Exempelscenario
 
 I det här avsnittet får du lära dig hur ett vanligt nätverks scenario är konfigurerat för att säkra Azure Machine Learning kommunikation med privata IP-adresser.
@@ -62,8 +61,8 @@ Följande fem avsnitt visar hur du skyddar nätverks scenariot som beskrivs ovan
 1. Skydda [**inlärnings miljön**](#secure-the-training-environment).
 1. Skydda [**inferencing-miljön**](#secure-the-inferencing-environment).
 1. Du kan också: [**Aktivera Studio-funktioner**](#optional-enable-studio-functionality).
-1. Konfigurera [ **brand Väggs inställningar**](#configure-firewall-settings)
-
+1. Konfigurera [**brand Väggs inställningar**](#configure-firewall-settings).
+1. Konfigurera [DNS-namnmatchning](#custom-dns).
 ## <a name="secure-the-workspace-and-associated-resources"></a>Skydda arbets ytan och tillhör ande resurser
 
 Använd följande steg för att skydda arbets ytan och associerade resurser. De här stegen gör att tjänsterna kan kommunicera i det virtuella nätverket.
@@ -186,3 +185,5 @@ Den här artikeln är en del av en serie virtuella nätverks serier i fem delar.
 * [Del 3: skydda tränings miljön](how-to-secure-training-vnet.md)
 * [Del 4: skydda inferencing-miljön](how-to-secure-inferencing-vnet.md)
 * [Del 5: Aktivera Studio-funktioner](how-to-enable-studio-virtual-network.md)
+
+Se även artikeln om hur du använder [anpassad DNS](how-to-custom-dns.md) för namn matchning.

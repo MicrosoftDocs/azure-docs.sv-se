@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232429"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574585"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Snabb start – utforska ett Azure-exempel med Azure Digitals dubblare med Azure Digitals Internet Explorer
 
@@ -95,9 +95,8 @@ Sedan kör du Azure Digitals program Utforskaren och konfigurerar den för din A
 
 > [!TIP]
 > Om ett `SignalRService.subscribe` fel meddelande visas när du ansluter, se till att din Azure Digital-URL börjar med *https://*.
-
-> [!TIP]
-> Om ett autentiseringsfel visas kanske du vill kontrol lera miljövariablerna för att se till att alla autentiseringsuppgifter som ingår är giltiga för digitala Azure-nätverk. DefaultAzureCredential försöker autentisera sig mot [autentiseringstyper](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) i en angiven ordning och miljövariablerna utvärderas först.
+>
+> Om ett autentiseringsfel visas kanske du vill kontrol lera **miljövariablerna** för att se till att alla autentiseringsuppgifter som ingår är giltiga för digitala Azure-nätverk. `DefaultAzureCredential`Försöket att autentisera mot autentiseringstypen i en [angiven ordning](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)och Miljövariabler utvärderas först.
 
 Om du ser en **behörighet som begärs** i popup-fönstret från Microsoft, bevilja du medgivande för det här programmet och accepterar att fortsätta.
 

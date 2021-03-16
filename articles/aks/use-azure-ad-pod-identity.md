@@ -4,12 +4,12 @@ description: Lär dig hur du använder AAD-Pod hanterade identiteter i Azure Kub
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: f3d0db5b085fcdb9a24310cb2fe310d390b1790a
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233504"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574381"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Använda Azure Active Directory Pod-hanterade identiteter i Azure Kubernetes service (för hands version)
 
@@ -53,13 +53,16 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>Skapa ett AKS-kluster med hanterade identiteter
+## <a name="create-an-aks-cluster-with-azure-cni"></a>Skapa ett AKS-kluster med Azure CNI
 
-Skapa ett AKS-kluster med en hanterad identitet och Pod-hanterad identitet aktive rad. Följande kommandon använder [AZ Group Create][az-group-create] för att skapa en resurs grupp med *namnet myResourceGroup* och kommandot [AZ AKS Create][az-aks-create] för att skapa ett AKS-kluster med namnet *myAKSCluster* i resurs gruppen *myResourceGroup* .
+> [!NOTE]
+> Detta är standard konfigurationen som rekommenderas
+
+Skapa ett AKS-kluster med Azure CNI och Pod-hanterad identitet aktive rad. Följande kommandon använder [AZ Group Create][az-group-create] för att skapa en resurs grupp med *namnet myResourceGroup* och kommandot [AZ AKS Create][az-aks-create] för att skapa ett AKS-kluster med namnet *myAKSCluster* i resurs gruppen *myResourceGroup* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
+az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
 
 Använd [AZ AKS get-credentials][az-aks-get-credentials] för att logga in på ditt AKS-kluster. Det här kommandot hämtar också och konfigurerar `kubectl` klient certifikatet på din utvecklings dator.
@@ -67,6 +70,44 @@ Använd [AZ AKS get-credentials][az-aks-get-credentials] för att logga in på d
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Uppdatera ett befintligt AKS-kluster med Azure CNI
+
+Uppdatera ett befintligt AKS-kluster med Azure CNI för att inkludera Pod-hanterad identitet.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+```
+## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>Använda Kubernetes Network-plugin med Azure Active Directory Pod-hanterade identiteter 
+
+> [!IMPORTANT]
+> Att köra AAD-Pod-Identity i ett kluster med Kubernetes är inte en rekommenderad konfiguration på grund av säkerhets indirekt. Följ stegen och konfigurera principer innan du aktiverar AAD-Pod-Identity i ett kluster med Kubernetes.
+
+## <a name="mitigation"></a>Åtgärd
+
+För att minska säkerhets risken på kluster nivå kan du använda OpenPolicyAgent-åtkomstkontroll tillsammans med en gatekeeper som verifierar webhook. Om du redan har installerat en gatekeeper i klustret, lägger du till ConstraintTemplate av typen K8sPSPCapabilities:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
+```
+Lägg till en mall för att begränsa poddar med NET_RAW-kapacitet:
+
+```
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPCapabilities
+metadata:
+  name: prevent-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    excludedNamespaces:
+      - "kube-system"
+  parameters:
+    requiredDropCapabilities: ["NET_RAW"]
+```
+
 ## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Skapa ett AKS-kluster med Kubernetes Network-plugin
 
 Skapa ett AKS-kluster med Kubernetes Network-plugin och Pod-hanterad identitet aktive rad.

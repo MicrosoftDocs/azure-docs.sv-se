@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013948"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574262"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skala ditt Stream Analytics jobb med Azure Machine Learning Studio (klassiska) funktioner
 
@@ -24,7 +24,7 @@ Den här artikeln beskriver hur du effektivt skalar Azure Stream Analytics jobb 
 
 En Machine Learning Studio (klassisk) funktion i Stream Analytics kan användas som ett vanligt funktions anrop i Stream Analytics frågespråket. Dessa funktions anrop är dock i själva verket Studio (klassiska) webb tjänst begär Anden.
 
-Du kan förbättra data flödet för webb tjänst begär anden i Studio (klassisk) genom att "Gruppera" flera rader i samma webb tjänst-API-anrop. Den här grupperingen kallas för en mini-batch. Mer information finns i [Azure Machine Learning Studio (klassiska) webb tjänster](../machine-learning/classic/consume-web-services.md). Stöd för Studio (klassisk) i Stream Analytics är en för hands version.
+Du kan förbättra data flödet för webb tjänst begär anden i Studio (klassisk) genom att "Gruppera" flera rader i samma webb tjänst-API-anrop. Den här grupperingen kallas för en mini-batch. Mer information finns i [Azure Machine Learning Studio (klassiska) webb tjänster](../machine-learning/classic/consume-web-services.md). Stöd för Studio (klassisk) i Stream Analytics.
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Konfigurera ett Stream Analytics jobb med Studio-funktioner (klassisk)
 
@@ -51,7 +51,7 @@ För att bearbeta 200 000-händelser per sekund behöver Stream Analyticss jobbe
 
 ![Skala Stream Analytics med Studio (klassisk) funktioner två jobb exempel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Skala Stream Analytics med Studio (klassisk) funktioner två jobb exempel")
 
-I allmänhet, **_B_* _ för batchstorlek, _*_L_*_ för webb tjänstens svars tid vid batch-storlek B i millisekunder, är data flödet för ett Stream Analytics jobb med _*_N_*_ SUS:
+I allmänhet, ***B** _ för batchstorlek, _*_L_*_ för webb tjänstens svars tid vid batch-storlek B i millisekunder, är data flödet för ett Stream Analytics jobb med _ *_N_** SUS:
 
 ![Skala Stream Analytics med funktions formeln Studio (klassisk)](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Skala Stream Analytics med funktions formeln Studio (klassisk)")
 
@@ -62,7 +62,7 @@ Mer information om den här inställningen finns i [skalnings artikeln för Mach
 ## <a name="example--sentiment-analysis"></a>Exempel – Attitydanalys
 I följande exempel finns ett Stream Analytics jobb med funktionen sentiment Analysis Studio (klassisk), enligt beskrivningen i [själv studie kursen om Stream Analytics Machine Learning Studio (klassisk)](stream-analytics-machine-learning-integration-tutorial.md).
 
-Frågan är en helt partitionerad fråga som följs av funktionen _ *sentiment**, som visas i följande exempel:
+Frågan är en helt partitionerad fråga som följs av **sentiment** -funktionen, som visas i följande exempel:
 
 ```SQL
     WITH subquery AS (

@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: caf9cbb0ca017ee00c5061d94e0d37703194943d
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493285"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573392"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrera data från Cassandra till Azure Cosmos DB API för Cassandra konto med Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -42,20 +42,18 @@ Det finns olika sätt att migrera databas arbets belastningar från en plattform
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Etablera ett Azure Databricks kluster
 
-Du kan följa anvisningarna för att [etablera ett Azure Databricks kluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Observera dock att Apache Spark 3. x för närvarande inte stöds för Apache Cassandra-anslutningen. Du måste tillhandahålla en Databricks-körning med en v2. x-version som stöds av Apache Spark. Vi rekommenderar att du väljer en version av Databricks runtime som stöder den senaste versionen av Spark 2. x, med en senare version än Scala version 2,11:
+Du kan följa anvisningarna för att [etablera ett Azure Databricks kluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Vi rekommenderar att du väljer Databricks runtime version 7,5, som stöder Spark 3,0:
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks-körning":::
 
 
 ## <a name="add-dependencies"></a>Lägg till beroenden
 
-Du måste lägga till Apache Spark Cassandra Connector-biblioteket till klustret för att kunna ansluta till både interna och Cosmos DB Cassandra-slutpunkter. I klustret väljer du bibliotek – > installerar New-> maven-> Sök paket:
+Du måste lägga till Apache Spark Cassandra Connector-biblioteket till klustret för att kunna ansluta till både interna och Cosmos DB Cassandra-slutpunkter. I klustret väljer du bibliotek – > installerar New-> Maven. Lägg till `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` i maven-koordinater:
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Databricks Sök paket":::
 
-Skriv `Cassandra` i sökrutan och välj den senaste `spark-cassandra-connector` maven-databasen som är tillgänglig och välj sedan installera:
-
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages-2.png" alt-text="Databricks Välj paket":::
+Välj Installera och se till att du startar om klustret när installationen är klar. 
 
 > [!NOTE]
 > Se till att du startar om Databricks-klustret när Cassandra Connector-biblioteket har installerats.
@@ -91,7 +89,6 @@ val cosmosCassandra = Map(
     "table" -> "<TABLE>",
     //throughput related settings below - tweak these depending on data volumes. 
     "spark.cassandra.output.batch.size.rows"-> "1",
-    "spark.cassandra.connection.connections_per_executor_max" -> "10",
     "spark.cassandra.output.concurrent.writes" -> "1000",
     "spark.cassandra.concurrent.reads" -> "512",
     "spark.cassandra.output.batch.grouping.buffer.size" -> "1000",
@@ -110,11 +107,12 @@ DFfromNativeCassandra
   .write
   .format("org.apache.spark.sql.cassandra")
   .options(cosmosCassandra)
+  .mode(SaveMode.Append)
   .save
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.batch.size.rows`- `spark.cassandra.output.concurrent.writes` Och- `connections_per_executor_max` konfigurationerna är viktiga för att undvika [hastighets begränsning](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), vilket inträffar när begär anden till Azure Cosmos DB överskrider etablerade data flöde/([enheter för programbegäran](./request-units.md)). Du kan behöva justera de här inställningarna beroende på antalet körningar i Spark-klustret och eventuellt storleken (och därför RU-kostnaden) för varje post som skrivs till mål tabellerna.
+> Värdena för `spark.cassandra.output.batch.size.rows` och `spark.cassandra.output.concurrent.writes` , samt antalet arbetare i Spark-klustret, är viktiga konfigurationer som du kan justera för att undvika [hastighets begränsning](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), som inträffar när begär anden till Azure Cosmos DB överskrider etablerade data flöde/([enheter för programbegäran](./request-units.md)). Du kan behöva justera de här inställningarna beroende på antalet körningar i Spark-klustret och eventuellt storleken (och därför RU-kostnaden) för varje post som skrivs till mål tabellerna.
 
 ## <a name="troubleshooting"></a>Felsökning
 
@@ -123,19 +121,8 @@ Du kan få en felkod på 429 eller `request rate is large` fel text, trots att d
 
 - **Data flödet som tilldelas tabellen är mindre än 6000 [enheter för programbegäran](./request-units.md)**. Med lägsta möjliga inställningar kommer Spark att kunna köra skrivningar till en hastighet av cirka 6000 enheter för programbegäran eller mer. Om du har etablerad en tabell i ett disk utrymme med delat data flöde, är det möjligt att den här tabellen har mindre än 6000 ru: er tillgänglig vid körning. Se till att tabellen som du migrerar till har minst 6000 ru: er tillgänglig för den när du kör migreringen, och om det behövs allokera enheter för dedikerade enheter till tabellen. 
 - **Onödig data lutning med stor data volym**. Om du har en stor mängd data (d.v.s. tabell rader) som ska migreras till en specifik tabell men har en betydande skev i data (dvs. ett stort antal poster som skrivs för samma partitionsnyckel), kan du fortfarande uppleva hastighets begränsning även om du har en stor mängd [enheter för programbegäran](./request-units.md) som tillhandahålls i tabellen. Detta beror på att enheter för programbegäran delas lika mellan fysiska partitioner och att tung data skevning kan resultera i en Flask hals för begär anden till en enda partition, vilket orsakar en hastighets begränsning. I det här scenariot rekommenderar vi att du minskar till minimala data flödes inställningar i Spark för att undvika hastighets begränsning och tvingar migreringen att köras långsamt. Det här scenariot kan vara vanligare när du migrerar referens-eller kontroll tabeller, där åtkomsten är mindre frekvent men skevningen kan vara hög. Men om en betydande skevning finns i någon annan typ av tabell, kan det också vara tillrådligt att granska data modellen för att undvika problem med hot mot partitioner för arbets belastningen under stabilitets åtgärder. 
-- **Det går inte att hämta Count i stor tabell**. Körning `select count(*) from table` stöds för närvarande inte för stora tabeller. Du kan hämta Count från mått i Azure Portal (se vår [fel söknings artikel](cassandra-troubleshoot.md)), men om du behöver fastställa antalet i en stor tabell inom ramen för ett Spark-jobb kan du kopiera data till en tillfällig tabell och sedan använda Spark SQL för att hämta Count, t. ex. nedan (Ersätt `<primary key>` med ett fält från den resulterande tillfälliga tabellen).
 
-  ```scala
-  val ReadFromCosmosCassandra = sqlContext
-    .read
-    .format("org.apache.spark.sql.cassandra")
-    .options(cosmosCassandra)
-    .load
 
-  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
-  %sql
-  select count(<primary key>) from CosmosCassandraResult
-  ```
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -3,12 +3,12 @@ title: Skydda ett kluster som körs på Windows med hjälp av Windows-säkerhet
 description: Lär dig hur du konfigurerar nod-till-nod-och klient-till-nod-säkerhet i ett fristående kluster som körs på Windows med hjälp av Windows-säkerhet.
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a34c7084a9faaf0d676d4f6c68da53b2bc84f01b
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839489"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574619"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Skydda ett fristående kluster i Windows med hjälp av Windows-säkerhet
 För att förhindra obehörig åtkomst till ett Service Fabric-kluster måste du skydda klustret. Säkerhet är särskilt viktigt när klustret kör produktions arbets belastningar. Den här artikeln beskriver hur du konfigurerar säkerhet för nod-till-nod-och klient-till-nod med hjälp av Windows-säkerhet i filen *ClusterConfig.JS* .  Processen motsvarar steget Konfigurera säkerhets steg i [skapa ett fristående kluster som körs på Windows](service-fabric-cluster-creation-for-windows-server.md). Mer information om hur Service Fabric använder Windows-säkerhet finns i [kluster säkerhets scenarier](service-fabric-cluster-security.md).
@@ -19,13 +19,13 @@ För att förhindra obehörig åtkomst till ett Service Fabric-kluster måste du
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurera Windows-säkerhet med gMSA  
-Exempel *ClusterConfig.gMSA.Windows.MultiMachine.JSi* konfigurations filen som hämtats med [Microsoft. Azure. ServiceFabric. Windows Server. \<version> zip](https://go.microsoft.com/fwlink/?LinkId=730690) -fristående kluster paket innehåller en mall för att konfigurera Windows-säkerhet med [grupphanterat tjänst konto (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
+gMSA är den prioriterade säkerhets modellen. Exempel *ClusterConfig.gMSA.Windows.MultiMachine.JSi* konfigurations filen som hämtats med [Microsoft. Azure. ServiceFabric. Windows Server. \<version> zip](https://go.microsoft.com/fwlink/?LinkId=730690) -fristående kluster paket innehåller en mall för att konfigurera Windows-säkerhet med [grupphanterat tjänst konto (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
 
 ```
 "security": {
     "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
-    "WindowsIdentities": {  
+    "WindowsIdentities": {  
         "ClustergMSAIdentity": "[gMSA Identity]",
         "ClusterSPN": "[Registered SPN for the gMSA account]",
         "ClientIdentities": [
@@ -40,7 +40,7 @@ Exempel *ClusterConfig.gMSA.Windows.MultiMachine.JSi* konfigurations filen som h
 
 | **Konfigurationsuppsättning** | **Beskrivning** |
 | --- | --- |
-| ClusterCredentialType |Ange till *Windows* om du vill aktivera Windows-säkerhet för kommunikation på nod-noden.  | 
+| ClusterCredentialType |Ange till *Windows* om du vill aktivera Windows-säkerhet för kommunikation på nod-noden.  | 
 | ServerCredentialType |Ange till *Windows* om du vill aktivera Windows-säkerhet för kommunikation på klient-noden. |
 | WindowsIdentities |Innehåller kluster-och klient identiteter. |
 | ClustergMSAIdentity |Konfigurerar säkerhet för nod-till-nod. Ett grupphanterat tjänst konto. |
@@ -75,7 +75,7 @@ I följande exempel **säkerhets** avsnitt konfigureras Windows-säkerhet med gM
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurera Windows-säkerhet med en dator grupp  
-Den här modellen är inaktuell. Rekommendationen är att använda gMSA enligt beskrivningen ovan. Exempel *ClusterConfig.Windows.MultiMachine.JSi* konfigurations filen som hämtats med [Microsoft. Azure. ServiceFabric. Windows Server. \<version> zip](https://go.microsoft.com/fwlink/?LinkId=730690) -fristående kluster paket innehåller en mall för att konfigurera Windows-säkerhet.  Windows-säkerhet konfigureras i avsnittet **Egenskaper** : 
+Så som beskrivs ovan gMSA rekommenderas, men det finns också stöd för att använda den här säkerhets modellen. Exempel *ClusterConfig.Windows.MultiMachine.JSi* konfigurations filen som hämtats med [Microsoft. Azure. ServiceFabric. Windows Server. \<version> zip](https://go.microsoft.com/fwlink/?LinkId=730690) -fristående kluster paket innehåller en mall för att konfigurera Windows-säkerhet.  Windows-säkerhet konfigureras i avsnittet **Egenskaper** : 
 
 ```
 "security": {
@@ -93,7 +93,7 @@ Den här modellen är inaktuell. Rekommendationen är att använda gMSA enligt b
 
 | **Konfigurationsuppsättning** | **Beskrivning** |
 | --- | --- |
-| ClusterCredentialType |Ange till *Windows* om du vill aktivera Windows-säkerhet för kommunikation på nod-noden.  |
+| ClusterCredentialType |Ange till *Windows* om du vill aktivera Windows-säkerhet för kommunikation på nod-noden.  |
 | ServerCredentialType |Ange till *Windows* om du vill aktivera Windows-säkerhet för kommunikation på klient-noden. |
 | WindowsIdentities |Innehåller kluster-och klient identiteter. |
 | ClusterIdentity |Använd ett dator grupp namn, domain\machinegroup, om du vill konfigurera nod-till-nod-säkerhet. |

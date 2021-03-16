@@ -4,14 +4,14 @@ description: Ta reda på vilka portar och adresser som krävs för att styra utg
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 11/09/2020
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505066"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573837"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Styra utgående trafik för klusternoder i Azure Kubernetes service (AKS)
 
@@ -214,6 +214,24 @@ Följande FQDN/program-regler krävs för AKS-kluster som har Azure Policy aktiv
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Adressen används för att Azure Policy ska fungera korrekt.  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Den här adressen används för att hämta de inbyggda principerna från GitHub för att säkerställa korrekt drift av Azure Policy. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy tillägg som skickar telemetridata till program insikter-slutpunkten. |
+
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure Kina 21Vianet krävde FQDN/program regler 
+
+Följande FQDN/program-regler krävs för AKS-kluster som har Azure Policy aktiverat.
+
+| FQDN                                          | Port      | Användning      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | Den här adressen används för att hämta Kubernetes-principerna och rapportera klustrets kompatibilitetsstatus till princip tjänsten. |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | Den här adressen används för att hämta Gatekeeper-artefakter för inbyggda principer. |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure amerikanska myndigheter, nödvändiga FQDN/applikations regler
+
+Följande FQDN/program-regler krävs för AKS-kluster som har Azure Policy aktiverat.
+
+| FQDN                                          | Port      | Användning      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | Den här adressen används för att hämta Kubernetes-principerna och rapportera klustrets kompatibilitetsstatus till princip tjänsten. |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | Den här adressen används för att hämta Gatekeeper-artefakter för inbyggda principer. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Begränsa utgående trafik med hjälp av Azure-brandvägg
 

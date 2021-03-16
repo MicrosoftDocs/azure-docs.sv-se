@@ -4,16 +4,16 @@ description: Om du vill skapa hög tillgängliga och elastiska program i Azure k
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7aff8320186ada53772fc4ff2232e8cf55585a77
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701458"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573038"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
@@ -50,12 +50,13 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 | Nord- och Sydamerika           | Europa               | Afrika              | Asien och stillahavsområdet   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Kanada, centrala     | Frankrike, centrala       | Södra Afrika, norra * | Japan, östra     |
-| Central US         | Tyskland, västra centrala |                     | Sydostasien |
-| East US            | Europa, norra         |                     | Australien, östra |
-| USA, östra 2          | Storbritannien, södra             |                     |                |
-| Södra centrala USA | Europa, västra          |                     |                |
-| US Gov, Virginia    |                      |                     |                |
+| Brasilien, södra       | Frankrike, centrala       | Södra Afrika, norra * | Japan, östra     |
+| Kanada, centrala     | Tyskland, västra centrala |                     | Sydostasien |
+| Central US         | Europa, norra         |                     | Australien, östra |
+| East US            | Storbritannien, södra             |                     |                |
+| USA, östra 2          | Europa, västra          |                     |                |
+| Södra centrala USA |                      |                     |                |
+| US Gov, Virginia     |                      |                     |                |
 | USA, västra 2        |                      |                     |                |
 
 
@@ -125,6 +126,7 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 | Azure Database for MySQL – flexibel Server      |      : large_blue_diamond:  |
 | Azure Database for PostgreSQL – flexibel Server |      : large_blue_diamond:  |
 | Azure DDoS Protection                           |      : large_blue_diamond:  |
+| Azure Disk Encryption                           |      : large_blue_diamond:  |
 | Azure Firewall                                  |      : large_blue_diamond:  |
 | Azure Firewall Manager                          |      : large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
@@ -169,6 +171,7 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 |     Azure Advisor                             |     : globe_with_meridians:             |
 |     Azure Blueprints                          |     : globe_with_meridians:             |
 |     Azure Bot Services                        |     : globe_with_meridians:             |
+|     Azure Front Door                          |     : globe_with_meridians:             |
 |     Azure Defender för IoT                  |     : globe_with_meridians:             |
 |     Azure Front Door                           |     : globe_with_meridians:             |
 |     Azure Information Protection            |     : globe_with_meridians:             |

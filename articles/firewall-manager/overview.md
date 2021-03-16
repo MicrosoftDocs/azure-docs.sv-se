@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/16/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132451"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573463"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Vad är Azure Firewall Manager?
 
@@ -88,7 +88,6 @@ Azure Firewall Manager har följande kända problem:
 |Det går inte att lägga till Mass IP-adress|Brand väggen för skyddat nav hamnar i ett felaktigt tillstånd om du lägger till flera offentliga IP-adresser.|Lägg till mindre offentliga IP-prisökningar. Du kan till exempel lägga till 10 i taget.|
 |DDoS Protection standard stöds inte med skyddade virtuella hubbar|DDoS Protection standard är inte integrerat med vWANs.|Undersöker|
 |Aktivitets loggar stöds inte fullt ut|Brand Väggs principen stöder för närvarande inte aktivitets loggar.|Undersöker|
-|Konfigurera privata IP-adressintervall för SNAT|[Inställningar för privat IP-intervall](../firewall/snat-private-range.md) ignoreras om Azure Firewall-principen har kon figurer ATS. Standard beteendet för Azure-brandväggen används, där det inte är SNAT-nätverks regler när mål-IP-adressen är i ett privat IP-adressintervall per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Undersöker|
 |Vissa brand Väggs inställningar migreras inte när brand väggen migreras för att använda brand Väggs principen|Tillgänglighetszoner-och SNAT-privata adresser migreras inte när du migrerar till Azure brand Väggs princip.|Undersöker| 
 
 ## <a name="next-steps"></a>Nästa steg

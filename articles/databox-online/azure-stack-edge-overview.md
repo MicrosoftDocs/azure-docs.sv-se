@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3973235991a16d118b47d7289f3a1825621a9023
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455748"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574687"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Vad är Azure Stack Edge Pro med FPGA?
 
-[!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
-Azure Stack Edge Pro med FPGA är en AI-aktiverad Edge-baserad data behandlings enhet med funktioner för nätverks data överföring. Den här artikeln ger en översikt över Azure Stack Edge Pro med FPGA-lösning, fördelar, viktiga funktioner och scenarier där du kan distribuera den här enheten.
+Azure Stack Edge Pro med FPGA är en AI-aktiverad Edge-baserad data behandlings enhet med funktioner för nätverks data överföring. Den här artikeln ger en översikt över Azure Stack Edge Pro med FPGA-lösning, förmåner, viktiga funktioner och distributions scenarier.
 
-Azure Stack Edge Pro med FPGA är en maskinvaru-som-tjänst-lösning. Microsoft levererar en molnbaserad enhet med en inbyggd fält programmerbar grind mat ris (FPGA) som aktiverar accelererad AI-inferencing och har alla funktioner i en nätverks lagrings-Gateway. 
+Azure Stack Edge Pro med FPGA är en maskinvaru-som-tjänst-lösning. Microsoft levererar en molnbaserad enhet med en inbyggd fält programmerbar grind mat ris (FPGA) som aktiverar accelererad AI-inferencing och har alla funktioner i en nätverks lagrings-Gateway.
+
+Azure Data Box Edge ommärkess som Azure Stack kant.
 
 ## <a name="use-cases"></a>Användningsfall
 
@@ -46,7 +48,7 @@ Azure Stack Edge Pro har följande funktioner:
 |---------|---------|
 |Accelererad AI-inferencing| Aktive rad av de inbyggda FPGA.|
 |Databehandling       |Möjliggör analys, bearbetning och filtrering av data.|
-|Höga prestanda | Beräkning och data överföringar med höga prestanda.|
+|Höga prestanda | Beräknings-och data överföringar med höga prestanda.|
 |Dataåtkomst     | Direktåtkomst till data från Azure Storage-blobar och Azure Files med moln-API:er för ytterligare databehandling i molnet. Lokal cache på enheten används för snabb åtkomst till de senast använda filerna.|
 |Molnbaserad hantering     |Enhet och tjänst hanteras via Azure Portal.  |
 |Offlineuppladdning     | Frånkopplat läge stöder scenarier med offlineuppladdning.|
@@ -60,13 +62,15 @@ Azure Stack Edge Pro har följande funktioner:
 
 Azure Stack Edge Pro-lösningen består av Azure Stack Edge-resurs, Azure Stack Edge Pro-fysisk enhet och ett lokalt webb gränssnitt.
 
-* **Azure Stack den fysiska enheten för Edge Pro** – en rackoptimerad 1U-server som tillhandahålls av Microsoft och som kan konfigureras för att skicka data till Azure.
+* **Azure Stack fysisk enhet i Edge Pro**: en racken 1U-server som tillhandahålls av Microsoft och som kan konfigureras för att skicka data till Azure.
     
-* **Azure Stack Edge-resurs** – en resurs i Azure Portal som låter dig hantera en Azure Stack Edge Pro-enhet från ett webb gränssnitt som du kan komma åt från olika geografiska platser. Använd Azure Stack Edge-resursen för att skapa och hantera resurser, Visa och hantera enheter och aviseringar och hantera resurser.  
+* **Azure Stack Edge-resurs**: en resurs i Azure Portal som låter dig hantera en Azure Stack Edge Pro-enhet från ett webb gränssnitt som du kan komma åt från olika geografiska platser. Använd Azure Stack Edge-resursen för att skapa och hantera resurser, hantera resurser och Visa och hantera enheter och aviseringar.
+  
+   <!--[The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
+   Eftersom Azure Stack Edge Pro närmar sig livs längd, så fylls inga beställningar för nya Azure Stack Edge Pro-enheter. Om du är en ny kund rekommenderar vi att du utforskar med Azure Stack Edge Pro-GPU-enheter för dina arbets belastningar. Mer information finns i [Azure Stack Edge Pro med GPU](azure-stack-edge-gpu-overview.md). Information om hur du beställer en Azure Stack Edge Pro med GPU-enhet finns i [skapa en ny resurs för Azure Stack Edge Pro-GPU](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
 
-    Mer information finns i [skapa en order för din Azure Stack Edge Pro-enhet](azure-stack-edge-deploy-prep.md#create-a-new-resource).
+   Om du är en befintlig kund kan du fortfarande skapa en ny Azure Stack Edge Pro-resurs om du behöver ersätta eller återställa din befintliga Azure Stack Edge Pro-enhet. Anvisningar finns i [skapa en ordning för din Azure Stack Edge Pro-enhet](azure-stack-edge-deploy-prep.md#create-new-resource-for-existing-device).
 
 * **Azure Stack Edge Pro-lokalt webb gränssnitt** – Använd det lokala webb gränssnittet för att köra diagnostik, stänga av och starta om Azure Stack Edge Pro-enheten, Visa kopierings loggar och kontakta Microsoft Support för att skicka en tjänstbegäran.
 

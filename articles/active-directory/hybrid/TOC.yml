@@ -254,6 +254,8 @@
           href: how-to-connect-health-adfs.md
         - name: Rapport om riskfylld IP för Azure AD Connect Health med AD FS
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: AD FS Sign-Ins i Azure AD med Connect Health
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Använda Azure AD Connect Health för synkronisering
           href: how-to-connect-health-sync.md
         - name: Använda Azure AD Connect Health med AD DS

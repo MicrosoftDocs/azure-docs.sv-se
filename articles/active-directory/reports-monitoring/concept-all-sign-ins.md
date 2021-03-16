@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319782"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574568"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Rapporter för Azure Active Directory inloggnings aktivitet – för hands version
 
@@ -125,7 +125,12 @@ På varje flik i inloggnings bladet visas standard kolumnerna nedan. Vissa flika
 
 Interaktiva användar inloggningar är inloggningar där en användare tillhandahåller en autentiseringsnivå för Azure AD eller interagerar direkt med Azure AD eller en hjälp program, till exempel Microsoft Authenticator-appen. De faktorer som användarna tillhandahåller inkluderar lösen ord, svar på MFA-utmaningar, bio metriska faktorer eller QR-koder som en användare tillhandahåller för Azure AD eller till en hjälp program.
 
-Den här rapporten inkluderar även federerade inloggningar från identitets leverantörer som är federerade till Azure AD.  
+> [!NOTE]
+> Den här rapporten inkluderar även federerade inloggningar från identitets leverantörer som är federerade till Azure AD.  
+
+
+
+Obs! rapporten över interaktiva användar inloggningar som används för att innehålla vissa icke-interaktiva inloggningar från Microsoft Exchange-klienter. Även om dessa inloggningar inte var interaktiva fanns de med i rapporten över interaktiva användar inloggningar för ytterligare synlighet. När rapporten icke-interaktiva användare loggar in som offentlig för hands version i november 2020 flyttades de icke-interaktiva inloggnings händelse loggarna till den icke-interaktiva användar inloggnings rapporten för ökad noggrannhet. 
 
 
 **Rapport storlek:** liten <br> 
@@ -205,7 +210,7 @@ För att göra det enklare att sammanställa data, grupperas icke-interaktiva in
 
 - Program
 
-- Användare
+- User
 
 - IP-adress
 
@@ -336,7 +341,7 @@ Möjliga värden:
 
 - 20 – fyra timmar
 
-- Anpassad
+- Anpassat
 
 ![Filter för datum intervall](./media/concept-all-sign-ins/date-range-filter.png)
 
@@ -395,7 +400,7 @@ När du laddar ned en rapport om inloggnings aktiviteter är följande sant:
 - Antalet poster som du kan hämta begränsas av [Azure Active Directory bevarande principer för rapporter](reference-reports-data-retention.md). 
 
 
-![Hämta rapporter](./media/concept-all-sign-ins/download-reports.png "Hämta rapporter")
+![Ladda ned rapporter](./media/concept-all-sign-ins/download-reports.png "Ladda ned rapporter")
 
 
 Varje CSV-nedladdning består av sex olika filer:

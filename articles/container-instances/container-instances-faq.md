@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186200"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573140"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Vanliga frågor och svar om Azure Container Instances
 
@@ -45,7 +45,7 @@ Mer [detaljerad](container-instances-troubleshooting.md#container-takes-a-long-t
 > [!NOTE]
 > Windows-avbildningar baserade på Semi-Annual Channel release 1709 eller 1803 stöds inte.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 och client Base images (för hands version)
+#### <a name="windows-server-2019-and-client-base-images"></a>Windows Server 2019 och klients bas avbildningar
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` eller senare
 * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` eller senare
@@ -55,9 +55,12 @@ Mer [detaljerad](container-instances-troubleshooting.md#container-takes-a-long-t
 
 Använd den minsta avbildning som uppfyller dina krav. För Linux kan du använda en *runtime-Alpine* .net Core-avbildning, som har stöd för sedan lanseringen av .net Core 2,1. Om du använder den fullständiga .NET Framework för Windows måste du använda en Windows Server Core-avbildning (endast körnings avbildning, till exempel  *4.7.2-windowsservercore-ltsc2016*). Endast körnings avbildningar är mindre, men har inte stöd för arbets belastningar som kräver .NET SDK.
 
+> [!NOTE]
+> ACI kan inte hämta bilder från icke-OCI-kompatibla register.
+
 ### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Vilka typer av behållar register är kompatibla med ACI?
 
-ACI stöder avbildnings hämtningar från ACR och andra behållar register från tredje part, till exempel DockerHub. ACI har också stöd för avbildnings hämtningar från lokala register, så länge de är OCR-kompatibla och har en slut punkt som är offentligt exponerad för Internet.
+ACI stöder avbildnings hämtningar från ACR och andra behållar register från tredje part, till exempel DockerHub. ACI stöder avbildningar från ACR och andra tredjeparts OCI-kompatibla behållar register, till exempel DockerHub med en slut punkt som är offentligt exponerad för Internet.
 
 ## <a name="availability-and-quotas"></a>Tillgänglighet och kvoter
 

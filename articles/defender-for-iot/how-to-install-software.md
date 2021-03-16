@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470682"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574670"
 ---
 # <a name="defender-for-iot-installation"></a>Defender för IoT-installation
 
@@ -697,9 +697,9 @@ För att installera:
 
 1. Inloggnings uppgifter genereras och presenteras automatiskt. Kopiera användar namnet och lösen ordet på en säker plats, eftersom de krävs för inloggning och administration.
 
-    - **Support**: den administrativa användaren för användar hantering.
+      - **Support**: den administrativa användaren för användar hantering.
 
-    - **CyberX**: motsvarigheten till roten för att komma åt enheten.
+      - **CyberX**: motsvarigheten till roten för att komma åt enheten.
 
 1. Enheten startas om.
 
@@ -851,9 +851,10 @@ Installera program varan:
 
 1. Inloggnings uppgifter genereras och presenteras automatiskt. Behåll dessa autentiseringsuppgifter på en säker plats, eftersom de krävs för inloggning och administration.
 
-  - **Support**: den administrativa användaren för användar hantering.
-
-  - **CyberX**: motsvarigheten till roten för att komma åt enheten.
+    | Användarnamn | Description |
+    |--|--|
+    | Support | Den administrativa användaren för användar hantering. |
+    | CyberX | Motsvarigheten till roten för att komma åt enheten. |
 
 1. Enheten startas om.
 

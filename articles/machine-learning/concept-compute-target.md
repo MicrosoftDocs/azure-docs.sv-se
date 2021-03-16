@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b4422c664071087ccae73a5b6f642b53dcca74bf
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503626"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574653"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Vad är beräkningsmål i Azure Machine Learning?
 
@@ -98,30 +98,30 @@ Det finns några undantag och begränsningar för att välja en VM-storlek:
 
 I följande tabell finns mer information om vilka serier och begränsningar som stöds.
 
-| **VM-serien som stöds**  | **Begränsningar** |
-|------------|------------|
-| D | Inga. |
-| DDSv4 | Inga. |
-| Dv2 | Inga. |  
-| Dv3 | Inga.|
-| DSv2 | Inga. | 
-| DSv3 | Inga.|
-| EAv4 | Inga. |
-| Ev3 | Inga. |
-| FSv2 | Inga. | 
-| H | Inga. |
-| HB | Kräver godkännande. |
-| HBv2 | Kräver godkännande. |  
-| HCS UPPDATERINGSKLIENTEN | Kräver godkännande. |  
-| M | Kräver godkännande. |
-| NC | Inga. |  
-| NC-kampanj | Inga. |
-| NCsv2 | Kräver godkännande. |
-| NCsv3 | Kräver godkännande. |  
-| NDs | Kräver godkännande. |
-| NDv2 | Kräver godkännande. |
-| NV | Inga. |
-| NVv3 | Kräver godkännande. | 
+| **VM-serien som stöds**  | **Begränsningar** | **Kategori** | **Stöds av** |
+|------------|------------|------------|------------|
+| D | Inga. | Generellt syfte | Beräknings kluster och instans |
+| DDSv4 | Inga. | Generellt syfte | Beräknings kluster och instans |
+| Dv2 | Inga. | Generellt syfte | Beräknings kluster och instans |
+| Dv3 | Inga.| Generellt syfte | Beräknings kluster och instans |
+| DSv2 | Inga. | Generellt syfte | Beräknings kluster och instans |
+| DSv3 | Inga.| Generellt syfte | Beräknings kluster och instans |
+| EAv4 | Inga. | Minnesoptimerad | Beräknings kluster och instans |
+| Ev3 | Inga. | Minnesoptimerad | Beräknings kluster och instans |
+| FSv2 | Inga. | Beräkningsoptimerad | Beräknings kluster och instans |
+| H | Inga. | Databehandling med höga prestanda | Beräknings kluster och instans |
+| HB | Kräver godkännande. | Databehandling med höga prestanda | Beräknings kluster och instans |
+| HBv2 | Kräver godkännande. |  Databehandling med höga prestanda | Beräknings kluster och instans |
+| HCS UPPDATERINGSKLIENTEN | Kräver godkännande. |  Databehandling med höga prestanda | Beräknings kluster och instans |
+| M | Kräver godkännande. | Minnesoptimerad | Beräknings kluster och instans |
+| NC | Inga. |  GPU | Beräknings kluster och instans |
+| NC-kampanj | Inga. | GPU | Beräknings kluster och instans |
+| NCsv2 | Kräver godkännande. | GPU | Beräknings kluster och instans |
+| NCsv3 | Kräver godkännande. | GPU | Beräknings kluster och instans |  
+| NDs | Kräver godkännande. | GPU | Beräknings kluster och instans | 
+| NDv2 | Kräver godkännande. | GPU | Beräknings kluster och instans | 
+| NV | Inga. | GPU | Beräknings kluster och instans | 
+| NVv3 | Kräver godkännande. | GPU | Beräknings kluster och instans | 
 
 
 Även om Azure Machine Learning stöder dessa VM-serier är de kanske inte tillgängliga i alla Azure-regioner. Information om hur du kontrollerar om VM-serien är tillgänglig finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).

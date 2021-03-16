@@ -6,36 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630749"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573292"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrera arbets belastningar från en Azure Stack Edge Pro-FPGA till en Azure Stack Edge Pro GPU
 
-Den här artikeln beskriver hur du migrerar arbets belastningar och data från en Azure Stack Edge Pro FPGA-enhet till en Azure Stack Edge Pro GPU-enhet. Migreringsprocessen omfattar en översikt över migreringen, inklusive en jämförelse mellan de två enheterna, migrerings överväganden, detaljerade steg och verifiering som följs av rensning.
+Den här artikeln beskriver hur du migrerar arbets belastningar och data från en Azure Stack Edge Pro FPGA-enhet till en Azure Stack Edge Pro GPU-enhet. Migreringsprocessen börjar med en jämförelse av de två enheterna, en migrations plan och en granskning av migrerings överväganden. Migreringsprocessen innehåller detaljerade steg som avslutar verifieringen och rensningen av enheten.
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>Om migrering
 
 Migrering är en process för att flytta arbets belastningar och program data från en lagrings plats till en annan. Detta gör att du kan skapa en exakt kopia av en organisations aktuella data från en lagrings enhet till en annan lagrings enhet – helst utan att störa eller inaktivera aktiva program, och sedan dirigera om alla aktiviteter för indata/utdata (I/O) till den nya enheten. 
 
-Den här migreringsguiden innehåller en stegvis genom gång av de steg som krävs för att migrera data från en Azure Stack Edge Pro FPGA-enhet till en Azure Stack Edge Pro GPU-enhet. Det här dokumentet är avsett för IT-proffs och kunskaps arbetare som ansvarar för drift, distribution och hantering av Azure Stack gräns enheter i data centret. 
+Den här migreringsguiden innehåller en stegvis genom gång av de steg som krävs för att migrera data från en Azure Stack Edge Pro FPGA-enhet till en Azure Stack Edge Pro GPU-enhet. Det här dokumentet är avsett för IT-proffs och kunskaps arbetare som ansvarar för drift, distribution och hantering av Azure Stack gräns enheter i data centret.
 
 I den här artikeln kallas den Azure Stack Edge Pro FPGA-enheten som *käll* enheten och Azure Stack Edge Pro GPU-enhet är *mål* enheten. 
 
 ## <a name="comparison-summary"></a>Jämförelse Sammanfattning
 
-Det här avsnittet innehåller en jämför ande Sammanfattning av funktionerna mellan Azure Stack Edge Pro GPU jämfört med Azure Stack Edge Pro FPGA-enheter. Maskin varan i både käll-och mål enheten är i stort sett identisk och skiljer sig bara åt för maskin varu accelerations kortet och lagrings kapaciteten. 
+Det här avsnittet innehåller en jämför ande Sammanfattning av funktionerna mellan Azure Stack Edge Pro GPU jämfört med Azure Stack Edge Pro FPGA-enheter. Maskin varan i både käll-och mål enheten är i stort sett identisk. Det är bara maskin varu accelerations kortet och lagrings kapaciteten som kan skilja sig.<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    Funktion  | Azure Stack Edge Pro GPU (mål enhet)  | Azure Stack Edge Pro-FPGA (käll enhet)|
 |----------------|-----------------------|------------------------|
-| Maskinvara       | Maskin varu acceleration: 1 eller 2 NVIDIA T4-GPU: er <br> Compute, minne, nätverks gränssnitt, strömförsörjnings enhet och specifikationer för ström sladd är identiska med enheten med FPGA.  | Maskin varu acceleration: Intel Arria 10 FPGA <br> Compute, minne, nätverks gränssnitt, strömförsörjnings enhet och specifikationer för ström sladd är identiska med enheten med GPU.          |
+| Maskinvara       | Maskin varu acceleration: 1 eller 2 NVIDIA T4-GPU: er <br> Beräknings-, minnes-, nätverks gränssnitt, strömförsörjnings enhet och ström sladds specifikationer är identiska med enheten med FPGA.  | Maskin varu acceleration: Intel Arria 10 FPGA <br> Beräknings-, minnes-, nätverks gränssnitt, strömförsörjnings enhet och ström sladds specifikationer är identiska med enheten med GPU.          |
 | Användbar lagring | 4,19 TB <br> Efter reserverat utrymme för paritets återhämtning och intern användning | 12,5 TB <br> Efter reservering av utrymme för intern användning |
 | Säkerhet       | Certifikat |                                                     |
 | Arbetsbelastningar      | IoT Edge arbets belastningar <br> Arbetsbelastningar för virtuella datorer <br> Kubernetes-arbetsbelastningar| IoT Edge arbets belastningar |
@@ -55,11 +55,11 @@ Tänk på följande om du vill skapa en migrerings plan:
 
 Överväg följande information innan du fortsätter med migreringen: 
 
-- Det går inte att aktivera en GPU-enhet för Azure Stack Edge Pro mot en Azure Stack Edge Pro FPGA-resurs. En ny resurs ska skapas för Azure Stack Edge Pro GPU-enhet enligt beskrivningen i [skapa en GPU-beställning för Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource).
+- Det går inte att aktivera en GPU-enhet för Azure Stack Edge Pro mot en Azure Stack Edge Pro FPGA-resurs. Du bör skapa en ny resurs för Azure Stack Edge Pro GPU-enhet enligt beskrivningen i [skapa en Azure Stack Edge Pro GPU-ordning](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource).
 - Machine Learning modeller som distribuerats på käll enheten som använde FPGA måste ändras för mål enheten med GPU. Om du behöver hjälp med modellerna kan du kontakta Microsoft Support. Anpassade modeller som distribuerats på käll enheten som inte använde FPGA (endast Använd processor) bör fungera som de är på mål enheten (med hjälp av CPU).
-- De IoT Edge moduler som distribueras på käll enheten kan kräva ändringar innan de kan distribueras på mål enheten. 
+- De IoT Edge moduler som distribueras på käll enheten kan kräva ändringar innan modulerna kan distribueras på mål enheten. 
 - Käll enheten har stöd för NFS 3,0-och 4,1-protokoll. Mål enheten stöder bara NFS 3,0-protokollet.
-- Käll enheten stöder SMB-och NFS-protokoll. Mål enheten stöder lagring via REST-protokoll med hjälp av lagrings konton utöver SMB-och NFS-protokoll för resurser.
+- Käll enheten stöder SMB-och NFS-protokoll. Mål enheten stöder lagring via REST-protokollet med hjälp av lagrings konton utöver SMB-och NFS-protokollen för resurser.
 - Resurs åtkomsten på käll enheten är via IP-adressen medan resurs åtkomsten på mål enheten är via enhets namnet.
 
 ## <a name="migration-steps-at-a-glance"></a>Stegvisa migreringar
@@ -99,15 +99,15 @@ Gräns moln resurs nivå data från din enhet till Azure. Utför de här stegen 
 
 - Skapa en lista över alla gräns moln resurser och användare som du har på käll enheten.
 - Skapa en lista över alla bandbredds scheman som du har. Du kommer att återskapa dessa bandbredds scheman på mål enheten.
-- Beroende på tillgänglig nätverks bandbredd konfigurerar du bandbredds scheman på enheten så att du kan maximera data skiktet i molnet. Detta minimerar lokala data på enheten.
-- Se till att resurserna är helt på nivå av molnet. Detta kan bekräftas genom att kontrol lera resursens status i Azure Portal.  
+- Beroende på tillgänglig nätverks bandbredd konfigurerar du bandbredds scheman på enheten för att maximera data skiktet i molnet. Det minimerar lokala data på enheten.
+- Se till att resurserna är helt på nivå av molnet. Du kan bekräfta nivån genom att kontrol lera resursens status i Azure Portal.  
 
 #### <a name="data-in-edge-local-shares"></a>Data i lokala Edge-resurser
 
 Data i Edge lokala resurser ligger kvar på enheten. Utför de här stegen på *käll* enheten via Azure Portal. 
 
-- Gör en lista över de Edge-lokala resurser som du har på enheten.
-- Med tanke på det här migreringen av data kan du skapa en kopia av de lokala data resurserna till en annan lokal server. Du kan använda kopierings verktyg som `robocopy` (SMB) eller `rsync` (NFS) för att kopiera data. Alternativt kanske du redan har distribuerat en data skydds lösning från tredje part för att säkerhetskopiera data i dina lokala resurser. Följande lösningar från tredje part stöds för användning med Azure Stack Edge Pro FPGA-enheter:
+- Gör en lista över de Edge-lokala resurserna på enheten.
+- Eftersom du kommer att utföra migreringen av data i taget, skapar du en kopia av de lokala data resurserna till en annan lokal server. Du kan använda kopierings verktyg som `robocopy` (SMB) eller `rsync` (NFS) för att kopiera data. Alternativt kanske du redan har distribuerat en data skydds lösning från tredje part för att säkerhetskopiera data i dina lokala resurser. Följande lösningar från tredje part stöds för användning med Azure Stack Edge Pro FPGA-enheter:
 
     | Tredjepartsprogram           | Referens till lösningen                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,10 +157,10 @@ Du kommer nu att kopiera data från käll enheten till gräns moln resurser och 
 
 Följ dessa steg för att synkronisera data på gräns moln resurser på mål enheten:
 
-1. [Lägg till resurser](azure-stack-edge-gpu-manage-shares.md#add-a-share) som motsvarar resurs namnen som skapats på käll enheten. Se till att när du skapar resurser, **väljer du Blob container** är inställt på **Använd befintligt** och väljer sedan den behållare som användes med den tidigare enheten.
-1. [Lägg till användare](azure-stack-edge-gpu-manage-users.md#add-a-user) som hade åtkomst till den tidigare enheten.
-1. [Uppdatera dela](azure-stack-edge-gpu-manage-shares.md#refresh-shares) data från Azure. Detta hämtar alla moln data från den befintliga behållaren till resurserna.
-1. Återskapa de bandbredds scheman som ska associeras med dina resurser. Se [Lägg till ett bandbredds schema](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) för detaljerade steg.
+1. [Lägg till resurser](azure-stack-edge-j-series-manage-shares.md#add-a-share) som motsvarar resurs namnen som skapats på käll enheten. När du skapar resurserna ser du till att **Välj BLOB-behållare** är inställt på **Använd befintlig**, och väljer sedan den behållare som användes med den tidigare enheten.
+1. [Lägg till användare](azure-stack-edge-j-series-manage-users.md#add-a-user) som hade åtkomst till den tidigare enheten.
+1. [Uppdatera dela](azure-stack-edge-j-series-manage-shares.md#refresh-shares) data från Azure. Om du uppdaterar resursen hämtas alla moln data från den befintliga behållaren till resurserna.
+1. Återskapa de bandbredds scheman som ska associeras med dina resurser. Se [Lägg till ett bandbredds schema](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) för detaljerade steg.
 
 
 ### <a name="2-from-edge-local-shares"></a>2. från lokala Edge-resurser
@@ -175,7 +175,7 @@ Följ dessa steg om du vill återställa data från lokala resurser:
 1. Lägg till alla lokala resurser på mål enheten. Se de detaljerade stegen i [Lägg till en lokal resurs](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
 1. Att komma åt SMB-resurserna på käll enheten använder IP-adresserna på mål enheten, du använder enhets namnet. Se [ansluta till en SMB-resurs på Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Om du vill ansluta till NFS-resurser på mål enheten måste du använda de nya IP-adresserna som är kopplade till enheten. Se [ansluta till en NFS-resurs på Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
-    Om du har kopierat dina delnings data till en mellanliggande server över SMB/NFS, kan du kopiera dessa data till resurser på mål enheten. Du kan också kopiera data från käll enheten direkt, om både källan och mål enheten är *online*.
+    Om du har kopierat dina delnings data till en mellanliggande server över SMB eller NFS, kan du kopiera data från den mellanliggande servern till resurser på mål enheten. Om både käll-och mål enheten är *online* kan du också kopiera data direkt från käll enheten.
 
     Om du har använt program vara från tredje part för att säkerhetskopiera data i de lokala resurserna måste du köra återställnings proceduren som tillhandahålls av den data skydds lösning som du väljer. Se referenser i följande tabell.
 
