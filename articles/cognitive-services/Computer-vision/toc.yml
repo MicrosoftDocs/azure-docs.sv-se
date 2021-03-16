@@ -52,78 +52,76 @@
     - name: Uppgradera från Read 2.x till Read 3.x
       href: upgrade-api-versions.md
     - name: Så här konfigurerar du AAD-autentisering
-      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: Använda Kundhanterade nycklar
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
-- name: Distribuera Visuellt innehåll
-  items:
-    - name: Containers
+    - name: Distribuera Visuellt innehåll
       items:
-        - name: Dokumentation om containrar för Cognitive Services
-          href: ../containers/index.yml
-        - name: Läs API-container
+        - name: Containers
           items:
-            - name: Installera och köra containrar
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: Konfigurera containrar
-              href: computer-vision-resource-container-config.md
-            - name: Migrera till v3 av Read-containern
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: Använda med Kubernetes och Helm
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: Använda containerinstanser
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-        - name: Container för rumslig analys
-          items:
-            - name: Översikt över rums analys
-              href: intro-to-spatial-analysis-public-preview.md
-            - name: Konfigurera värddatorn och kör containern
-              href: spatial-analysis-container.md
-            - name: Konfigurera åtgärder
-              href: spatial-analysis-operations.md
-            - name: Distribuera en webbapp för att räkna människor
-              href: Spatial-analysis-web-app.md
-            - name: Loggning och felsökning
-              href: spatial-analysis-logging.md
-            - name: Zon- och linjeplacering
-              href: spatial-analysis-zone-line-placement.md
-            - name: Kameraplacering
-              href: spatial-analysis-camera-placement.md
+            - name: Dokumentation om containrar för Cognitive Services
+              href: ../containers/index.yml
+            - name: Läs API-container
+              items:
+                - name: Installera och köra containrar
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: Konfigurera containrar
+                  href: computer-vision-resource-container-config.md
+                - name: Migrera till v3 av Read-containern
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: Använda med Kubernetes och Helm
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: Använda containerinstanser
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: Container för rumslig analys
+              items:
+                - name: Översikt över rums analys
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: Konfigurera värddatorn och kör containern
+                  href: spatial-analysis-container.md
+                - name: Konfigurera åtgärder
+                  href: spatial-analysis-operations.md
+                - name: Distribuera en webbapp för att räkna människor
+                  href: Spatial-analysis-web-app.md
+                - name: Loggning och felsökning
+                  href: spatial-analysis-logging.md
+                - name: Zon- och linjeplacering
+                  href: spatial-analysis-zone-line-placement.md
+                - name: Kameraplacering
+                  href: spatial-analysis-camera-placement.md
 - name: Begrepp
   items:
-    - name: Lägen
-      items:
-        - name: Optisk teckenläsning (OCR)
-          href: concept-recognizing-text.md
-        - name: Objektidentifiering
-          href: concept-object-detection.md
-        - name: Varumärkesidentifiering
-          href: concept-brand-detection.md
-        - name: Innehållstaggar
-          href: concept-tagging-images.md
-        - name: Bildkategorisering
-          href: concept-categorizing-images.md
-        - name: Kategoritaxonomi
-          href: Category-Taxonomy.md
-        - name: Bildbeskrivningar
-          href: concept-describing-images.md
-        - name: Ansiktsspårning
-          href: concept-detecting-faces.md
-        - name: Identifiering av bildtyp
-          href: concept-detecting-image-types.md
-        - name: Domänspecifikt innehåll
-          href: concept-detecting-domain-content.md
-        - name: Identifiering av färgschema
-          href: concept-detecting-color-schemes.md
-        - name: Miniatyrbilder med smart beskärning
-          href: concept-generating-thumbnails.md
-        - name: Identifiering av innehåll som är olämpligt för barn
-          href: concept-detecting-adult-content.md
+    - name: Optisk teckenläsning (OCR)
+      href: concept-recognizing-text.md
+    - name: Objektidentifiering
+      href: concept-object-detection.md
+    - name: Varumärkesidentifiering
+      href: concept-brand-detection.md
+    - name: Innehållstaggar
+      href: concept-tagging-images.md
+    - name: Bildkategorisering
+      href: concept-categorizing-images.md
+    - name: Kategoritaxonomi
+      href: Category-Taxonomy.md
+    - name: Bildbeskrivningar
+      href: concept-describing-images.md
+    - name: Ansiktsspårning
+      href: concept-detecting-faces.md
+    - name: Identifiering av bildtyp
+      href: concept-detecting-image-types.md
+    - name: Domänspecifikt innehåll
+      href: concept-detecting-domain-content.md
+    - name: Identifiering av färgschema
+      href: concept-detecting-color-schemes.md
+    - name: Miniatyrbilder med smart beskärning
+      href: concept-generating-thumbnails.md
+    - name: Identifiering av innehåll som är olämpligt för barn
+      href: concept-detecting-adult-content.md
 - name: Självstudier
   items:
     - name: Generera metadata för avbildningar

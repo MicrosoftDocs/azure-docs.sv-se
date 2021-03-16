@@ -1,5 +1,5 @@
 ---
-title: Distribuera IoT Edge säkerhetsmodul
+title: Distribuera IoT Edge Defender-IoT-Micro-agent
 description: Lär dig mer om hur du distribuerar en Defender för IoT-säkerhetsagent på IoT Edge.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4117c3c0f1016da616a88a36a1b8c926b790c62
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705780"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495121"
 ---
-# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Distribuera en säkerhetsmodul på din IoT Edge-enhet
+# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>Distribuera en Defender-IoT-Micro-agent på din IoT Edge-enhet
 
 **Defender för IoT** -modulen innehåller en omfattande säkerhetslösning för dina IoT Edge enheter.
-Säkerhetsmodulen samlar in, samlar in och analyserar rå säkerhets data från operativ systemet och behållar systemet till åtgärds bara säkerhets rekommendationer och aviseringar.
-Mer information finns i [säkerhetsmodulen för IoT Edge](security-edge-architecture.md).
+Defender-IoT-Micro-agent samlar in, samlar in och analyserar rå säkerhets data från operativ systemet och behållar systemet till rekommenderade säkerhets rekommendationer och aviseringar.
+Mer information finns i [Defender-IoT-Micro-agent för IoT Edge](security-edge-architecture.md).
 
-I den här artikeln får du lära dig hur du distribuerar en säkerhetsmodul på din IoT Edge-enhet.
+I den här artikeln lär du dig hur du distribuerar en Defender-IoT-Micro-agent på din IoT Edge-enhet.
 
-## <a name="deploy-security-module"></a>Distribuera säkerhetsmodul
+## <a name="deploy-defender-iot-micro-agent"></a>Distribuera Defender-IoT-Micro-agent
 
-Använd följande steg för att distribuera en Defender for IoT-säkerhetsmodul för IoT Edge.
+Använd följande steg för att distribuera en Defender for IoT Defender-IoT-Micro-agent för IoT Edge.
 
 ### <a name="prerequisites"></a>Förutsättningar
 
@@ -169,7 +169,7 @@ Slutför varje steg för att slutföra din IoT Edge-distribution för Defender f
 
 ## <a name="diagnostic-steps"></a>Diagnostiska steg
 
-Om du stöter på problem är behållar loggarna det bästa sättet att lära sig om status för en IoT Edge säkerhetsmodulen het. Använd kommandona och verktygen i det här avsnittet för att samla in information.
+Om du stöter på problem är behållar loggarna det bästa sättet att lära sig om status för en IoT Edge Defender-IoT-Micro-agent-enhet. Använd kommandona och verktygen i det här avsnittet för att samla in information.
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Kontrol lera att de obligatoriska behållarna är installerade och fungerar som förväntat
 

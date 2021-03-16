@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 4aeaa703b5e3203eeb7bc355051e0e8f48f898ac
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449177"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494129"
 ---
 # <a name="security-agent-authentication-methods"></a>Autentiseringsmetoder för säkerhets agent
 
 I den här artikeln beskrivs de olika autentiseringsmetoderna som du kan använda med AzureIoTSecurity-agenten för att autentisera med IoT Hub.
 
-För varje enhet som har publicerats till Defender för IoT i IoT Hub krävs en säkerhetsmodul. För att autentisera enheten kan Defender för IoT använda en av två metoder. Välj den metod som passar bäst för din befintliga IoT-lösning.
+För varje enhet som har registrerats till Defender för IoT i IoT Hub krävs en Defender-IoT-Micro-agent. För att autentisera enheten kan Defender för IoT använda en av två metoder. Välj den metod som passar bäst för din befintliga IoT-lösning.
 
 - Alternativet SecurityModule
 - Enhets alternativ
@@ -33,12 +33,12 @@ För varje enhet som har publicerats till Defender för IoT i IoT Hub krävs en 
 
 De två metoderna för AzureIoTSecurity-agenten Defender for IoT för att utföra autentisering:
 
-- **SecurityModule** -autentiseringsläge<br>
-Agenten autentiseras med säkerhetsmodulens identitet oberoende av enhetens identitet.
-Använd den här typen av autentisering om du vill att säkerhets agenten ska använda en dedikerad autentiseringsmetod via säkerhetsmodulen (endast symmetrisk nyckel).
+- **Defender-IoT-Micro-agent-** autentiseringsläge<br>
+Agenten autentiseras med hjälp av-identiteten Defender-IoT-Micro-agent oberoende av enhets identiteten.
+Använd den här typen av autentisering om du vill att säkerhets agenten ska använda en dedikerad autentiseringsmetod via Defender-IoT-Micro-agent (endast symmetrisk nyckel).
 
 - Autentiseringsläge för **enhet**<br>
-I den här metoden autentiserar säkerhets agenten först med enhets identiteten. Efter den inledande autentiseringen utför Defender för IoT-agenten ett **rest** -anrop till IoT Hub med hjälp av REST API med enhetens autentiseringsdata. Defender for IoT-agenten begär sedan autentiseringsmetoden för säkerhetsmodulen och data från IoT Hub. I det sista steget utför Defender för IoT-agenten en autentisering mot modulen Defender för IoT.
+I den här metoden autentiserar säkerhets agenten först med enhets identiteten. Efter den inledande autentiseringen utför Defender för IoT-agenten ett **rest** -anrop till IoT Hub med hjälp av REST API med enhetens autentiseringsdata. Defender for IoT-agenten begär sedan autentiseringsmetoden Defender-IoT-Micro-agent och data från IoT Hub. I det sista steget utför Defender för IoT-agenten en autentisering mot modulen Defender för IoT.
 
 Använd den här autentiseringstypen om du vill att säkerhets agenten ska återanvända en befintlig autentiseringsmetod för enheten (självsignerat certifikat eller symmetrisk nyckel).
 

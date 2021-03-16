@@ -31,15 +31,6 @@
     - name: Parallell filbearbetning – Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Scenrendering med Arnold
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Rendering med hjälp av Batch Explorer
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: Parallell R-simulering
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: OCR med Batch och Functions
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md

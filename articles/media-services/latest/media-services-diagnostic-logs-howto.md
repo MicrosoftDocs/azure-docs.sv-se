@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e65ab1cdf08e51b3e2f9df49e39fdd921499f4a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576319"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493837"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Övervaka Media Services diagnostikloggar
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. Detaljerad beskrivning av den här funktionen och se varför du vill använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services statistik och diagnostikloggar](media-services-metrics-diagnostic-logs.md).
+Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. Detaljerad beskrivning av den här funktionen och se varför du vill använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services statistik och diagnostikloggar](monitoring/monitor-media-services.md).
 
 Den här artikeln visar hur du dirigerar data till lagrings kontot och sedan visar data.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - [Skapa ett Media Services-konto](./create-account-howto.md).
-- Granska  [övervaknings Media Services statistik och diagnostikloggar](media-services-metrics-diagnostic-logs.md).
+- Granska  [övervaknings Media Services](monitoring/monitor-media-services.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Dirigera data till lagrings kontot med hjälp av portalen
 

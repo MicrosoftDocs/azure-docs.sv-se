@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14237894a38725ee07deca3b5f46cbe0ecfce4cd
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851241"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493228"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Förstå den lokala konfigurations filen (C#-agenten)
 
@@ -84,7 +84,7 @@ För Windows:
 
 | Konfigurations namn | Möjliga värden | Information |
 |:-----------|:---------------|:--------|
-| moduleName | sträng | Namn på säkerhetsmodulens identitet. Namnet måste motsvara modulens identitets namn i enheten. |
+| moduleName | sträng | Namnet på identiteten för Defender-IoT-Micro-agenten. Namnet måste motsvara modulens identitets namn i enheten. |
 | deviceId | sträng | ID för enheten (som registrerats i Azure IoT Hub). |
 | schedulerInterval | TimeSpan-sträng | Internt schema intervall. |
 | gatewayHostname | sträng | Värd namnet för Azure IoT Hub. <vanligt vis>. azure-devices.net |

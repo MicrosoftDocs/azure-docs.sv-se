@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d3586e03a3c6214390f4a8b72b1db5871d2d1900
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102511060"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487959"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -101,7 +101,7 @@ Mer information finns i följande artiklar:
 
 ### <a name="additional-reading"></a>Mer att läsa
 
-- [Azure Communication-GitHub](https://github.com/Azure/communication) – Hitta fler exempel och information på den officiella GitHub-Sidan
+- [Exempel](./../overview.md) – Hitta fler exempel och exempel på översikts sidan exempel.
 - [Redux](https://redux.js.org/) – tillstånds hantering på klient Sidan
 - [FluentUI](https://aka.ms/fluent-ui) – Microsoft Powered UI-bibliotek
 - [Reagera](https://reactjs.org/) – bibliotek för att skapa användar gränssnitt

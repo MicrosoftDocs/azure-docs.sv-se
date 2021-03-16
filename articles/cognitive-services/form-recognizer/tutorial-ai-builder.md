@@ -2,19 +2,19 @@
 title: 'Självstudie: skapa en app för formulär bearbetning med AI Builder – formulär tolken'
 titleSuffix: Azure Cognitive Services
 description: I den här självstudien använder du AI Builder för att skapa och träna ett formulär bearbetnings program.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 11/23/2020
-ms.author: pafarley
-ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.author: lajanuar
+ms.openlocfilehash: 30c44ac60783132344cc018135d2c248f91f46bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95757428"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467127"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Självstudie: skapa en app för bearbetning av formulär med AI Builder
 
@@ -23,7 +23,7 @@ ms.locfileid: "95757428"
 > [!NOTE]
 > Det här projektet är också tillgängligt som en [Microsoft Learn modul](/learn/modules/get-started-with-form-processing/).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en AI-modell för formulär bearbetning

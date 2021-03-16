@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafeb7ebd939805ae18e29670f359660db12e2e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102603302"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103555895"
 ---
 För närvarande har Ultra disks ytterligare begränsningar, de är följande:
 
@@ -65,11 +65,11 @@ Följande tabell beskriver regionerna Ultra disks finns i, samt motsvarande till
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Alla VM-storlekar är inte tillgängliga i alla regioner som stöds med Ultra disks.
 - Är bara tillgängliga som data diskar. 
-- Stöd för fysisk sektor storlek på 4K som standard. 512E sektor storlek är tillgänglig som ett allmänt tillgängligt erbjudande (ingen registrering krävs), men det är för närvarande bara tillgängligt med CLI eller PowerShell. De flesta program är kompatibla med storleken på 4K-sektorn men vissa kräver 512 byte sektor storlek. Ett exempel skulle vara Oracle Database, vilket kräver version 12,2 eller senare för att kunna stödja de 4K-inhemska diskarna. För äldre versioner av Oracle DB krävs en sektor storlek på 512 byte.
+- Stöd för fysisk sektor storlek på 4K som standard. 512E sektor storlek är tillgänglig som ett allmänt tillgängligt erbjudande (ingen registrering krävs). De flesta program är kompatibla med storleken på 4K-sektorn men vissa kräver 512 byte sektor storlek. Ett exempel skulle vara Oracle Database, vilket kräver version 12,2 eller senare för att kunna stödja de 4K-inhemska diskarna. För äldre versioner av Oracle DB krävs en sektor storlek på 512 byte.
 - Kan bara skapas som tomma diskar.
 - Stöder för närvarande inte disk ögonblicks bilder, VM-avbildningar, tillgänglighets uppsättningar, Azure-dedikerade värdar eller Azure Disk Encryption.
 - Stöder för närvarande inte integrering med Azure Backup eller Azure Site Recovery.
 - Har endast stöd för icke-cachelagrade läsningar och icke-cachelagrade skrivningar.
 - Den aktuella maximala gränsen för IOPS på GA-VM: ar är 80 000.
 
-Azure Ultra disks erbjuder upp till 16 TiB per region per prenumeration som standard, men Ultra disks stöder högre kapacitet på begäran. Kontakta Azure-supporten om du vill begära en ökning av kapaciteten.
+Azure Ultra disks erbjuder upp till 32 TiB per region per prenumeration som standard, men Ultra disks stöder högre kapacitet på begäran. Om du vill begära en ökning av kapaciteten, begär en kvot ökning eller kontakta Azure-supporten.

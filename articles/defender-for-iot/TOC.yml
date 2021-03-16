@@ -314,16 +314,16 @@
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Hantera upphovsrättsskyddade protokoll (Horisont)
           href: resources-manage-proprietary-protocols.md
+        - name: Vanliga frågor och svar – tjänst
+          displayName: 'FAQ, regulation, internet, connection, hardware, appliances, ports, logs'
+          href: resources-frequently-asked-questions.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
         - name: Säkerhetsmodul för Azure RTOS-API
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
-        - name: Vanliga frågor och svar – tjänst
-          displayName: 'regulation, internet, connection, hardware, appliances, ports, logs'
-          href: resources-frequently-asked-questions.md
         - name: Vanliga frågor och svar – agent
-          displayName: 'embedded, dependencies, data, quota, internet,'
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
           href: resources-agent-frequently-asked-questions.md
         - name: Azure-översikt
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

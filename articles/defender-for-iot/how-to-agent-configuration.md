@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b59d9079b6d0fe0ab3fe61eacf43f3a99eb46686
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090853"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495784"
 ---
 # <a name="tutorial-configure-security-agents"></a>Självstudie: Konfigurera säkerhets agenter
 
@@ -88,7 +88,7 @@ Om du vill använda ett standard egenskaps värde tar du bort egenskapen från k
 
 1. Klicka på **modulens identitet, delad**.
 
-1. Redigera egenskaperna som du vill ändra i säkerhetsmodulen.
+1. Redigera egenskaperna som du vill ändra i Defender-IoT-Micro-agenten.
 
    Om du till exempel vill konfigurera anslutnings händelser som hög prioritet och samla in händelser med hög prioritet var 7: e minut, använder du följande konfiguration.
 
@@ -117,7 +117,7 @@ Följande tabell innehåller de egenskaper som går att kontrol lera för säker
 
 Standardvärden är tillgängliga i rätt schema i [GitHub](https\://aka.ms/iot-security-module-default).
 
-| Name| Status | Giltiga värden| Standardvärden| Beskrivning |
+| Namn| Status | Giltiga värden| Standardvärden| Beskrivning |
 |----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Krävs: falskt |Giltiga värden: varaktighet i ISO 8601-format |Standardvärde: PT7M |Max tidsintervall innan meddelanden med hög prioritet skickas.|
 |lowPriorityMessageFrequency |Krävs: falskt|Giltiga värden: varaktighet i ISO 8601-format |Standardvärde: PT5H |Max tid innan meddelanden med låg prioritet skickas.|
@@ -134,12 +134,12 @@ Standardvärden är tillgängliga i rätt schema i [GitHub](https\://aka.ms/iot-
 |Konfigurationsfel |eventPriorityConfigurationError |Låg |Falskt |Agenten kunde inte parsa konfigurationen. Verifiera konfigurationen mot schemat.|
 |Statistik över ignorerade händelser |eventPriorityDroppedEventsStatistics |Låg |Sant|Agent relaterad händelse statistik. |
 |Ansluten maskin vara|eventPriorityConnectedHardware |Låg |Sant |Ögonblicks bild av all maskin vara som är ansluten till enheten.|
-|Lyssnande portar|eventPriorityListeningPorts |Hög |Sant |Ögonblicks bild av alla öppna lyssnings portar på enheten.|
+|Lyssnande portar|eventPriorityListeningPorts |Högt |Sant |Ögonblicks bild av alla öppna lyssnings portar på enheten.|
 |Skapa process |eventPriorityProcessCreate |Låg |Falskt |Granskar process skapande på enheten.|
 |Processen avslutas|eventPriorityProcessTerminate |Låg |Falskt |Granskar avslutning av processen på enheten.|
 |Systeminformation |eventPrioritySystemInformation |Låg |Sant |En ögonblicks bild av system information (till exempel: OS eller CPU).|
-|Lokala användare| eventPriorityLocalUsers |Hög |Sant|En ögonblicks bild av registrerade lokala användare i systemet. |
-|Inloggning|  eventPriorityLogin |Hög|Falskt|Granska inloggnings händelser för enheten (lokala och fjärranslutna inloggningar).|
+|Lokala användare| eventPriorityLocalUsers |Högt |Sant|En ögonblicks bild av registrerade lokala användare i systemet. |
+|Inloggning|  eventPriorityLogin |Högt|Falskt|Granska inloggnings händelser för enheten (lokala och fjärranslutna inloggningar).|
 |Skapa anslutning |eventPriorityConnectionCreate|Låg|Falskt|Granskar TCP-anslutningar som skapats till och från enheten. |
 |Konfigurering av brandvägg| eventPriorityFirewallConfiguration|Låg|Sant|Ögonblicks bild av enhets brand Väggs konfiguration (brand Väggs regler). |
 |OS-bas linje| eventPriorityOSBaseline| Låg|Sant|Ögonblicks bild av bas linje kontroll för enhetens operativ system.|

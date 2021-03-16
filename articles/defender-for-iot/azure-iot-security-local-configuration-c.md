@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: d96a73c3ba996fecf24a4232e1391f0b814be868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161bc008076de2bba62cd65c6c9bb106f648aa47
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851262"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493245"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Förstå filen LocalConfiguration.json – C-agent
 
@@ -39,7 +39,7 @@ Filen finns som standard på:/var/ASCIoTAgent/LocalConfiguration.jspå
 | TriggerdEventsInterval | ISO8601 sträng | Scheduler-intervall för insamling av utlöst händelser |
 | ConnectionTimeout | ISO8601 sträng | Tids gränsen för tids gränsen uppnåddes för anslutningen till IoThub |
 | Autentisering | JsonObject | Konfiguration av autentisering. Det här objektet innehåller all information som behövs för autentisering mot IoTHub |
-| Identitet | "DPS", "SecurityModule", "Device" | Autentiseringsidentitet – DPS om autentisering görs via DPS, SecurityModule om autentisering görs via autentiseringsuppgifter för säkerhetsmodulen eller enheten om autentisering görs med autentiseringsuppgifter för enhet |
+| Identitet | "DPS", "SecurityModule", "Device" | Autentiseringsidentitet – DPS om autentisering görs via DPS, SecurityModule om autentisering görs via Defender-IoT-Micro-agentcredentials eller Device om autentisering görs med autentiseringsuppgifter för enhet |
 | AuthenticationMethod | "SasToken", "SelfSignedCertificate" | användar hemlighet för autentisering – Välj SasToken om användnings hemligheten är en symmetrisk nyckel väljer du självsignerat certifikat om hemligheten är ett självsignerat certifikat  |
 | FilePath | Sökväg till fil (sträng) | Sökväg till filen som innehåller hemligheten för autentisering |
 | HostName | sträng | Värd namnet för Azure IoT Hub. <vanligt vis>. azure-devices.net |

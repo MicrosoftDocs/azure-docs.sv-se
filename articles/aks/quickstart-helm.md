@@ -4,20 +4,20 @@ description: Använd Helm med AKS och Azure Container Registry för att paketera
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 01/12/2021
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4f5232920853908aa5ad714313ead201494caa0d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249932"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493091"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Snabb start: utveckla på Azure Kubernetes service (AKS) med Helm
 
-[Helm][helm] är ett paket med öppen källkod som hjälper dig att installera och hantera livs cykeln för Kubernetes-program. Precis som Linux-paket hanterare som *apt* och *yum*, används Helm för att hantera Kubernetes-diagram, som är paket med förkonfigurerade Kubernetes-resurser.
+[Helm][helm] är ett paket med öppen källkod som hjälper dig att installera och hantera livs cykeln för Kubernetes-program. På liknande sätt som med Linux-paket som *apt* och *yum* hanterar Helm Kubernetes-diagram, som är paket med förkonfigurerade Kubernetes-resurser.
 
-Den här artikeln visar hur du använder Helm för att paketera och köra ett program på AKS. Mer information om hur du installerar ett befintligt program med hjälp av Helm finns [i installera befintliga program med Helm i AKS][helm-existing].
+I den här snabb starten använder du Helm för att paketera och köra ett program på AKS. Mer information om hur du installerar ett befintligt program med hjälp av Helm finns i [Installera befintliga program med Helm i AKS][helm-existing] instruktions guide.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -26,14 +26,16 @@ Den här artikeln visar hur du använder Helm för att paketera och köra ett pr
 * [Helm v3 installerat][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Skapa ett Azure Container Registry
-Om du vill använda Helm för att köra ditt program i ditt AKS-kluster måste du ha en Azure Container Registry för att lagra behållar avbildningarna. I exemplet nedan används [AZ ACR Create][az-acr-create] för att skapa en ACR med namnet *MyHelmACR* i resurs gruppen *MyResourceGroup* med *Basic* SKU. Du bör ange ditt eget unika register namn. Registernamnet måste vara unikt i Azure och innehålla 5–50 alfanumeriska tecken. Den *grundläggande* SKU:n är en kostnadsoptimerad startpunkt för utvecklingsändamål som ger en bra balans mellan lagring och dataflöde.
+Du måste lagra behållar avbildningarna i en Azure Container Registry (ACR) för att köra ditt program i ditt AKS-kluster med hjälp av Helm. Ange ett eget register namn som är unikt i Azure och som innehåller 5-50 alfanumeriska tecken. Den *grundläggande* SKU:n är en kostnadsoptimerad startpunkt för utvecklingsändamål som ger en bra balans mellan lagring och dataflöde.
+
+I exemplet nedan används [AZ ACR Create][az-acr-create] för att skapa en ACR med namnet *MyHelmACR* i *MyResourceGroup* med *Basic* SKU.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-De utdata som genereras påminner om de i följande exempel. Anteckna *namnet* -värdet för ditt ACR eftersom det kommer att användas i ett senare steg. I exemplet nedan är *Myhelmacr.azurecr.io* *namnet* för *myhelmacr*.
+Utdata ser ut ungefär som i följande exempel. Anteckna ditt *namnet* -värde för ditt ACR eftersom du kommer att använda det i ett senare steg. I exemplet nedan är *Myhelmacr.azurecr.io* *namnet* för *myhelmacr*.
 
 ```console
 {
@@ -57,31 +59,32 @@ De utdata som genereras påminner om de i följande exempel. Anteckna *namnet* -
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Skapa ett Azure Kubernetes Service-kluster
+## <a name="create-an-aks-cluster"></a>Skapa ett AKS-kluster
 
-Skapa ett AKS-kluster. Kommandot nedan skapar ett AKS-kluster med namnet MyAKS och bifogar MyHelmACR.
+Ditt nya AKS-kluster behöver åtkomst till din ACR för att hämta behållar avbildningarna och köra dem. Använd följande kommando för att:
+* Skapa ett AKS-kluster med namnet *MyAKS* och bifoga *MyHelmACR*.
+* Bevilja *MyAKS* -klustret åtkomst till din *MyHelmACR* -ACR.
+
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-Ditt AKS-kluster behöver åtkomst till din ACR för att hämta behållar avbildningarna och köra dem. Kommandot ovan ger också *MyAKS* -klustret åtkomst till *MyHelmACR* -ACR.
-
 ## <a name="connect-to-your-aks-cluster"></a>Anslut till ditt AKS-kluster
 
-När du ska ansluta till Kubernetes-klustret från din lokala dator använder du [kubectl][kubectl], Kubernetes kommandoradsklient.
+Om du vill ansluta ett Kubernetes-kluster lokalt använder du kommando rads klienten Kubernetes, [kubectl][kubectl]. `kubectl` är redan installerat om du använder Azure Cloud Shell. 
 
-Om du använder Azure Cloud Shell är `kubectl` redan installerat. Du kan även installera det lokalt med hjälp av kommandot [az aks install-cli][]:
+1. Installera `kubectl` lokalt med `az aks install-cli` kommandot:
 
-```azurecli
-az aks install-cli
-```
+    ```azurecli
+    az aks install-cli
+    ```
 
-För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials][]. I följande exempel hämtas autentiseringsuppgifter för AKS-klustret med namnet *MyAKS* i *MyResourceGroup*:
+2. Konfigurera `kubectl` för att ansluta till ditt Kubernetes-kluster med hjälp av `az aks get-credentials` kommandot. Följande kommando exempel hämtar autentiseringsuppgifter för AKS-klustret med namnet *MyAKS* i *MyResourceGroup*:  
 
-```azurecli
-az aks get-credentials --resource-group MyResourceGroup --name MyAKS
-```
+    ```azurecli
+    az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+    ```
 
 ## <a name="download-the-sample-application"></a>Hämta exempelprogrammet
 
@@ -94,7 +97,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>Hur du skapar en Dockerfile
 
-Skapa en ny *Dockerfile* -fil med hjälp av följande:
+Skapa en ny *Dockerfile* -fil med hjälp av följande kommandon:
 
 ```dockerfile
 FROM node:latest
@@ -113,7 +116,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>Bygg och skicka exempel programmet till ACR
 
-Använd kommandot [AZ ACR build][az-acr-build] för att bygga och skicka en avbildning till registret med hjälp av föregående Dockerfile. I `.` slutet av kommandot anges platsen för Dockerfile, i det här fallet den aktuella katalogen.
+Med hjälp av föregående Dockerfile kör du kommandot [AZ ACR build][az-acr-build] för att skapa och skicka en avbildning till registret. I `.` slutet av kommandot anges platsen för Dockerfile (i det här fallet den aktuella katalogen).
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,12 +132,12 @@ Generera ditt Helm-diagram med `helm create` kommandot.
 helm create webfrontend
 ```
 
-Gör följande uppdateringar för *webfrontend/Values. yaml*. Ersätt namnet av registret som du antecknade i ett tidigare steg, t. ex. *myhelmacr.azurecr.io*:
-
+Uppdatera *webfrontend/Values. yaml*:
+* Ersätt namnet i ditt register som du antecknade i ett tidigare steg, till exempel *myhelmacr.azurecr.io*.
 * Ändra `image.repository` till `<loginServer>/webfrontend`
 * Ändra `service.type` till `LoadBalancer`
 
-Här är några exempel:
+Exempel:
 
 ```yml
 # Default values for webfrontend.
@@ -166,13 +169,13 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>Kör ditt Helm-diagram
 
-Använd `helm install` kommandot för att installera programmet med Helm-diagrammet.
+Installera ditt program med hjälp av Helm-diagrammet med hjälp av `helm install` kommandot.
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-Det tar några minuter för tjänsten att returnera en offentlig IP-adress. För att övervaka förloppet använder du `kubectl get service` kommandot med parametern *Watch* :
+Det tar några minuter för tjänsten att returnera en offentlig IP-adress. Övervaka förloppet med `kubectl get service` kommandot med `--watch` argumentet.
 
 ```console
 $ kubectl get service --watch
@@ -183,18 +186,20 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Gå till belastningsutjämnare för ditt program i en webbläsare med hjälp av `<EXTERNAL-IP>` för att se exempel programmet.
+Navigera till programmets belastningsutjämnare i en webbläsare med hjälp av `<EXTERNAL-IP>` för att se exempel programmet.
 
 ## <a name="delete-the-cluster"></a>Ta bort klustret
 
-När klustret inte längre behövs kan du använda kommandot [AZ Group Delete][az-group-delete] för att ta bort resurs gruppen, AKS-klustret, behållar registret, behållar avbildningarna som lagras där och alla relaterade resurser.
+Använd kommandot [AZ Group Delete][az-group-delete] för att ta bort resurs gruppen, AKS-klustret, behållar registret, behållar avbildningarna som lagras i ACR och alla relaterade resurser.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> När du tar bort klustret tas Azure Active Directory-tjänstens huvudnamn, som används av AKS-klustret, inte bort. Stegvisa instruktioner om hur du tar bort tjänstens huvudnamn finns i dokumentationen om [viktiga överväganden och borttagning av AKS-tjänsten][sp-delete]. Om du använde en hanterad identitet hanteras identiteten av plattformen och kräver inte borttagning.
+> När du tar bort klustret tas Azure Active Directory-tjänstens huvudnamn, som används av AKS-klustret, inte bort. Stegvisa instruktioner om hur du tar bort tjänstens huvudnamn finns i dokumentationen om [viktiga överväganden och borttagning av AKS-tjänsten][sp-delete].
+> 
+> Om du använde en hanterad identitet hanteras identiteten av plattformen och kräver inte borttagning.
 
 ## <a name="next-steps"></a>Nästa steg
 

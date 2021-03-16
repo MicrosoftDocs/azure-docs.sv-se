@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab5871749630b047f6498a2439f77693a999c798
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590756"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493942"
 ---
 # <a name="monitor-media-services-metrics"></a>Övervaka Media Services-mått
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. En detaljerad beskrivning av den här funktionen och för att förstå varför du bör använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services mått och diagnostikloggar](media-services-metrics-diagnostic-logs.md).
+Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. En detaljerad beskrivning av den här funktionen och för att förstå varför du bör använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services mått och diagnostikloggar](monitoring/monitor-media-services-data-reference.md).
 
 Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av Azure CLI. Den här artikeln visar hur du övervakar mått med Azure Portal-diagram och Azure CLI.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - [Skapa ett Media Services-konto](./create-account-howto.md)
-- Granska  [övervaknings Media Services mått och diagnostikloggar](media-services-metrics-diagnostic-logs.md)
+- Granska  [övervaknings Media Services mått och diagnostikloggar](monitoring/monitor-media-services-data-reference.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>Visa mått i Azure Portal
 
@@ -46,7 +46,7 @@ Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklu
     * &lt;Media Services konto namn &gt; / &lt; strömmande slut punkts namn&gt;
     * &lt;lagrings konto namn&gt;
 
-    Filtrera sedan och Välj resursen och tryck på **Använd**. Mer information om resurser och mått som stöds finns i [övervaka Media Services mått](media-services-metrics-diagnostic-logs.md).
+    Filtrera sedan och Välj resursen och tryck på **Använd**. Mer information om resurser och mått som stöds finns i [övervaka Media Services mått](monitoring/monitor-media-services-data-reference.md).
 
     > [!NOTE]
     > Om du vill växla mellan resurser som du vill övervaka klickar du på rutan **källa** igen och upprepar det här steget.

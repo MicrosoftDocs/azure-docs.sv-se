@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9f34e1ff7134788d064a82ec7b646df915dbe24e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462566"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465665"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Princip för Azure Database for MySQL versions support
 
@@ -29,10 +29,11 @@ Azure Database for MySQL stöder för närvarande följande högre och lägre ve
 
 | Version | Enskild server <br/> Aktuell del version |Flexibel server (förhandsversion) <br/> Aktuell del version  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
-|MySQL version 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Stöds inte|
+|MySQL version 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(dras tillbaka) | Stöds inte|
 |MySQL version 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL version 8,0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
+Läs versions support policyn för indragna versioner i [dokumentation om versions policyn.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
 ## <a name="major-version-support"></a>Huvud versions stöd
 Varje huvud version av MySQL kommer att stödjas av Azure Database for MySQL från det datum då Azure börjar stödja versionen tills versionen har dragits tillbaka av MySQL-communityn, som anges i [versions principen](https://www.mysql.com/support/eol-notice.html).

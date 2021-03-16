@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 9e47171fc20ba07823e73f71713307e3a0e37278
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448412"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488932"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med SAML Identity Provider med hjälp av Azure Active Directory B2C
 
@@ -205,9 +205,16 @@ I följande exempel visas en URL-adress för SAML-metadata för en Azure AD B2C 
 https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
 ```
 
+Använd följande format när du använder en [anpassad domän](custom-domain.md):
+
+```
+https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
+```
+
 Ersätt följande värden:
 
-- **din klient** organisation med ditt klient namn, till exempel Your-Tenant.onmicrosoft.com.
+- **ditt klient namn** med ditt klient namn, till exempel Your-Tenant.onmicrosoft.com.
+- **ditt domän namn** med ditt anpassade domän namn, till exempel login.contoso.com.
 - **din princip** med ditt princip namn. Till exempel B2C_1A_signup_signin_adfs.
 - **din tekniska profil** med namnet på din SAML Identity Provider-tekniska profil. Till exempel contoso-SAML2.
 

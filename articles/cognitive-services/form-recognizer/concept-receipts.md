@@ -3,31 +3,29 @@ title: Inleveranser-formulär igenkänning
 titleSuffix: Azure Cognitive Services
 description: Lär dig begrepp som rör inbetalnings analys med formulär tolkens API-användning och begränsningar.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546014"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467365"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Inbyggd fördefinierad inleverans modell för formulär tolken
 
-Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) som kan hjälpa dig att förstå djup inlärnings modeller för att extrahera viktig information från kvitton på engelska. Kvitto-API: et extraherar viktig information från försäljnings kvitton på engelska, till exempel handels namn, transaktions datum, transaktions summa, rad artiklar med mera. 
+Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med djupgående inlärnings modeller för att extrahera viktig information från kvitton som skrivits på engelska.
 
-## <a name="understanding-receipts"></a>Förstå kvitton 
+## <a name="understanding-receipts"></a>Förstå kvitton
 
-Många företag och individer är fortfarande beroende av manuell extrahering av data från deras försäljnings kvitton, oavsett om det gäller utgifts rapporter, åter betalningar, granskningar, skatte syfte, budgetering, marknadsföring eller annat. I dessa scenarier krävs ofta avbildningar av det fysiska inleveransen i validerings syfte.  
+Många företag och individer är fortfarande beroende av manuellt extraherade data från försäljnings kvitton. Det kan vara komplicerat att automatiskt extrahera data från dessa kvitton. Kvitton kan vara Crumpled, svårt att läsa, ha handskrivna delar och innehålla låg kvalitet för smartphone-avbildningar. Dessutom kan mallar och fält för kvitton variera avsevärt mellan marknad, region och handlare. De här data extraherings-och fält identifierings utmaningarna gör kvittot att bearbeta ett unikt problem.  
 
-Det kan vara komplicerat att automatiskt extrahera data från dessa kvitton. Kvitton kan vara crumpleda och svåra att läsa, tryckta eller handskrivna delar och smartphone-bilder av kvitton kan vara låg kvalitet. Dessutom kan mallar och fält för kvitton variera avsevärt mellan marknad, region och handlare. Dessa utmaningar i både data extrahering och fält identifiering gör kvittot att bearbeta ett unikt problem.  
-
-Med hjälp av optisk tecken läsning (OCR) och vår fördefinierade kvitto modell, aktiverar API för kvitto bearbetning och extraherar data från kvittona, t. ex. namn, tips, totalt, rad objekt med mera. Med det här API: et behöver du inte träna en modell, du behöver bara skicka kvitto avbildningen till API: et för att analysera kvitto och data extraheras.
+Kvitto-API: et använder optisk tecken läsning (OCR) och en fördefinierad modell för att möjliggöra enorma bearbetnings scenarier för kvitto bearbetning. Med kvitto-API behöver du inte träna en modell. Skicka kvitto avbildningen till API för att analysera kvitto och data extraheras.
 
 ![exempel kvitto](./media/receipts-example.jpg)
 
@@ -38,7 +36,7 @@ Den förbyggda tjänsten för inbyggade kvitton extraherar innehållet i försä
 
 ### <a name="fields-extracted"></a>Extraherade fält
 
-|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
+|Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | sträng | Typ av försäljnings kvitto | Uppdelat |  |
 | MerchantName | sträng | Namn på den handlare som utfärdar kvittot | Contoso |  |
@@ -73,12 +71,12 @@ Om du vill prova formulär tolkens mottagnings tjänst går du till verktyget on
 
 ## <a name="input-requirements"></a>Krav för indatamängd
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>Språk som stöds 
 
 * **Förbyggd kvitto v 2.0** (ga) stöder försäljnings kvitton i en-US-språkvariant
-* **Förskapad kvitto v 2.1 – för hands version. 2** (offentlig för hands version) lägger till ytterligare stöd för följande inleverans-språk: 
+* **Förskapad kvitto v 2.1 – för hands version. 3** (offentlig för hands version) lägger till ytterligare stöd för följande inleverans-språk: 
   * EN – AU 
   * EN-CA 
   * EN-GB 
@@ -87,12 +85,12 @@ Om du vill prova formulär tolkens mottagnings tjänst går du till verktyget on
   > [!NOTE]
   > Språk information 
   >
-  > Förbyggd kvitto v 2.1 – för hands version. 2 har en valfri begäran-parameter för att ange ett kvitto språk från ytterligare engelska marknader. För försäljnings kvitton på engelska från Australien (EN-AU), Kanada (EN-CA), Storbritannien (EN-GB) och Indien (EN-i) kan du ange språkvarianten för att få bättre resultat. Om ingen nationell inställning anges i v 2.1 – för hands version. 2 kommer modellen att standardvärdet för EN-US-modell.
+  > Förbyggd kvitto v 2.1 – för hands version. 3 har en valfri begäran-parameter för att ange ett kvitto språk från ytterligare engelska marknader. För försäljnings kvitton på engelska från Australien (EN-AU), Kanada (EN-CA), Storbritannien (EN-GB) och Indien (EN-i) kan du ange språkvarianten för att få bättre resultat. Om du inte anger något språk i v 2.1 – för hands version 3, kommer modellen att standardvärdet för EN-US-modell.
 
 
 ## <a name="the-analyze-receipt-operation"></a>Åtgärden analysera inleverans
 
-I det här dokumentet [analyseras](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) en bild eller en PDF av ett kvitto som indata och det går att extrahera värdena för ränta och text. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
+I det här dokumentet [analyseras](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync) en bild eller en PDF av ett kvitto som indata och det går att extrahera värdena för ränta och text. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
 
 |Svars huvud| Resultat-URL |
 |:-----|:----|
@@ -100,16 +98,16 @@ I det här dokumentet [analyseras](https://westcentralus.dev.cognitive.microsoft
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Resultat åtgärden för att analysera kvittot
 
-Det andra steget är att anropa åtgärden för att [analysera mottagnings resultat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) . Den här åtgärden tar inmatat till det resultat-ID som skapades av åtgärden för att analysera kvittot. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
+Det andra steget är att anropa åtgärden för att [analysera mottagnings resultat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult) . Den här åtgärden tar inmatat till det resultat-ID som skapades av åtgärden för att analysera kvittot. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
 
 |Fält| Typ | Möjliga värden |
 |:-----|:----:|:----|
-|status | sträng | notStarted: analys åtgärden har inte startats. |
+|status | sträng | notStarted: åtgärden har inte startats. |
 | |  | körs: analys åtgärden pågår. |
 | |  | misslyckades: det gick inte att utföra analysen. |
 | |  | lyckades: analys åtgärden har slutförts. |
 
-När fältet **status** har värdet **lyckades** inkluderar JSON-svaret mottagnings förståelse och text igenkännings resultat. Resultatet av mottagnings förståelsen är ordnat som en ord lista med namngivna fält värden där varje värde innehåller den extraherade texten, normaliserade värdet, avgränsnings rutan, relevansen och motsvarande Word-element. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
+När fältet **status** har värdet **lyckades** inkluderar JSON-svaret mottagnings förståelse och text igenkännings resultat. Resultatet av mottagnings förståelsen är ordnat som en ord lista med namngivna fält värden. Varje värde innehåller den extraherade texten, normaliserade värdet, avgränsnings rutan, relevansen och motsvarande Word-element. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
 
 ![exempel på mottagnings resultat](./media/contoso-receipt-2-information.png)
 
@@ -447,18 +445,17 @@ Se följande exempel på ett lyckat JSON-svar:
 }
 ```
 
-
 ## <a name="customer-scenarios"></a>Kund scenarier  
 
-De data som extraheras med kvitto-API kan användas för att utföra en rad olika uppgifter. Här följer några exempel på vad våra kunder har utfört med API: et för inleverans. 
+De data som extraheras med kvitto-API kan användas för att utföra en rad olika uppgifter. Nedan visas några exempel på vad kunderna har utfört med kvitto-API: et.
 
 ### <a name="business-expense-reporting"></a>Rapportering av affärs utgifter  
 
 Att arkivera företags kostnader innebär ofta att du anger data från bilder av kvitton manuellt. Med kvitto-API: et kan du använda de extraherade fälten för att delvis automatisera den här processen och snabbt analysera dina kvitton.  
 
-Eftersom kvitto-API: et har ett enkelt JSON-utdata kan du använda de extraherade fältvärdena på flera sätt. Integrera med interna utgifts program för att fylla i utgifts rapporter i förväg. Mer information om det här scenariot får du genom att läsa om hur Acumatica använder sig av kvitto-API för att [göra utgifts rapportering till en mindre smärtsamt process](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).  
+Kvitto-API: et är ett enkelt JSON-utdata som gör att du kan använda de extraherade fältvärdena på flera sätt. Integrera med interna utgifts program för att fylla i utgifts rapporter i förväg. Mer information om det här scenariot får du genom att läsa om hur Acumatica använder sig av kvitto-API för att [göra utgifts rapportering till en mindre smärtsamt process](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).  
 
-### <a name="auditing-and-accounting"></a>Granskning och redovisning 
+### <a name="auditing-and-accounting"></a>Granskning och redovisning
 
 Utdata för API för kvittot kan också användas för att utföra analyser på ett stort antal utgifter vid olika tidpunkter i utgifts rapporteringen och åter betalnings processen. Du kan bearbeta kvitton för att prioritering dem för manuella granskningar eller snabba godkännanden.  
 
@@ -472,9 +469,13 @@ Mottagnings-API: t har även befogenhet att [bearbeta hanterings funktionen för
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Slutför en [snabb start för formulär igenkänning](quickstarts/client-library.md) för att komma igång med att skriva en app för mottagnings bearbetning med formulär tolken i det utvecklings språk du väljer.
+ . Kom igång med att skriva en app för mottagnings bearbetning med formulär tolken i valfritt utvecklings språk.
+
+> [!div class="nextstepaction"]
+> [Slutför snabb starten för formulär tolken](quickstarts/client-library.md)
 
 ## <a name="see-also"></a>Se även
 
-* [Vad är formigenkänning?](./overview.md)
-* [REST API referens dokument](./index.yml)
+* [Vad är formigenkänning?](overview.md)
+* [Forms igenkännings-API-referens](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)
+>

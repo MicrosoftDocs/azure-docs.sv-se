@@ -1,6 +1,6 @@
 ---
-title: Konceptuell förklaring av grunderna i säkerhetsmodulen för Azure återställnings tider
-description: Lär dig grunderna om säkerhetsmodulen för Azure återställnings tider-koncept och arbets flöde.
+title: Konceptuell förklaring av grunderna i Defender-IoT-Micro-agenten för Azure återställnings tider
+description: Lär dig grunderna om Defender-IoT-Micro-agent för Azure återställnings tider-koncept och arbets flöde.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 04a499f1feae630d3436c75ae2081413789c0ca3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340058"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494242"
 ---
-# <a name="security-module-for-azure-rtos-preview"></a>Säkerhetsmodul för Azure-återställnings tider (för hands version)
+# <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Defender-IoT-Micro-agent för Azure återställnings tider (för hands version)
 
-Använd den här artikeln för att få en bättre förståelse för säkerhetsmodulen för Azure återställnings tider, inklusive funktioner och fördelar samt länkar till relevanta konfigurations-och referens resurser. 
+Använd den här artikeln för att få en bättre förståelse för Defender-IoT-Micro-agenten för Azure återställnings tider, inklusive funktioner och fördelar samt länkar till relevanta konfigurations-och referens resurser. 
 
-## <a name="azure-rtos-iot-security-module"></a>Azure återställnings tider IoT-säkerhetsmodul
+## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Azure återställnings tider IoT Defender-IoT-Micro-agent
 
-Säkerhetsmodulen för Azure återställnings tider innehåller en omfattande säkerhetslösning för Azure återställnings tider-enheter som en del av NetX Duo-erbjudandet. I NetX Duo-erbjudandet levereras Azure återställnings tider med den inbyggda Azure IoT-säkerhetsmodulen och ger täckning för vanliga hot i real tids operativ system enheter när de har Aktiver ATS. 
+Defender-IoT-Micro-agent för Azure återställnings tider tillhandahåller en omfattande säkerhetslösning för Azure återställnings tider-enheter som en del av NetX Duo-erbjudandet. I NetX Duo-erbjudandet levereras Azure återställnings tider med Azure IoT Defender-IoT-Micro-agent inbyggt och ger täckning för vanliga hot i real tids operativ system enheter när de har Aktiver ATS. 
 
-Säkerhetsmodulen för Azure återställnings tider körs i bakgrunden och ger en smidig användar upplevelse, samtidigt som du skickar säkerhets meddelanden med hjälp av varje kunds unika anslutningar till deras IoT Hub. Säkerhetsmodulen för Azure återställnings tider är aktive rad som standard.  
+Defender-IoT-Micro-agenten för Azure återställnings tider körs i bakgrunden och ger en smidig användar upplevelse, samtidigt som du skickar säkerhets meddelanden med hjälp av varje kunds unika anslutningar till deras IoT Hub. Defender-IoT-Micro-agenten för Azure återställnings tider är aktive rad som standard.  
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
@@ -40,13 +40,13 @@ Modulen erbjuder följande funktioner:
 - **Enhets beteende bas linjer baserade på anpassade aviseringar**
 - **Förbättra enhetens säkerhets hygien**
 
-## <a name="security-module-for-azure-rtos-architecture"></a>Säkerhetsmodul för Azure återställnings tider-arkitektur
+## <a name="defender-iot-micro-agent-for-azure-rtos-architecture"></a>Defender-IoT-Micro-agent för Azure återställnings tider-arkitektur
 
-Säkerhetsmodulen för Azure återställnings tider initieras av Azure IoT mellan plattforms plattform och använder IoT Hub klienter för att skicka säkerhetstelemetri till hubben.
+Defender-IoT-Micro-agenten för Azure återställnings tider initieras av Azure IoT mellan plattforms plattform och använder IoT Hub klienter för att skicka säkerhetstelemetri till hubben.
 
-:::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Tillstånds diagram för Azure IoT-säkerhetsmodulen och informations flödet":::
+:::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT Defender – IoT-Micro-agent state diagram och informations flöde":::
 
-Säkerhetsmodulen för Azure återställnings tider övervakar följande enhets aktivitet och information med hjälp av tre insamlare:
+Defender-IoT-Micro-agenten för Azure återställnings tider övervakar följande enhets aktivitet och information med hjälp av tre insamlare:
 - Enhets nätverks aktivitet **TCP**, **UDP** och **ICM**
 - System information som **ThreadX** -och **netx Duo** -versioner
 - Pulsslagshändelser
@@ -57,14 +57,14 @@ Varje tidsintervall kan konfigureras och IoT-anslutningarna kan aktive ras och i
 
 ## <a name="supported-security-alerts-and-recommendations"></a>Säkerhets aviseringar och rekommendationer som stöds
 
-Säkerhetsmodulen för Azure återställnings tider har stöd för vissa säkerhets aviseringar och rekommendationer. Se till att [Granska och anpassa relevanta aviserings-och rekommendations värden](concept-rtos-security-alerts-recommendations.md) för tjänsten när du har slutfört den inledande konfigurationen.
+Defender-IoT-Micro-agenten för Azure återställnings tider har stöd för vissa säkerhets aviseringar och rekommendationer. Se till att [Granska och anpassa relevanta aviserings-och rekommendations värden](concept-rtos-security-alerts-recommendations.md) för tjänsten när du har slutfört den inledande konfigurationen.
 
 ## <a name="ready-to-begin"></a>Är du redo att börja?
 
-Säkerhetsmodulen för Azure återställnings tider tillhandahålls som kostnads fri nedladdning för dina IoT-enheter. Tjänsten Defender för IoT Cloud är tillgänglig med en 30-dagars utvärderings version per Azure-prenumeration. [Hämta säkerhetsmodulen nu](https://github.com/azure-rtos/azure-iot-preview/releases) och kom igång. 
+Defender-IoT-Micro-agent för Azure återställnings tider tillhandahålls som kostnads fri nedladdning för dina IoT-enheter. Tjänsten Defender för IoT Cloud är tillgänglig med en 30-dagars utvärderings version per Azure-prenumeration. [Ladda ned Defender-IoT-Micro-agenten nu](https://github.com/azure-rtos/azure-iot-preview/releases) och kom igång. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Kom igång med säkerhetsmodulen för Azure återställnings tider- [krav och installation](quickstart-azure-rtos-security-module.md).
-- Lär dig mer om säkerhetsmodulen för Azure återställnings tider [Security-aviseringar och rekommendations support](concept-rtos-security-alerts-recommendations.md). 
-- Använd säkerhetsmodulen för Azure återställnings tider [Reference API](azure-rtos-security-module-api.md).
+- Kom igång med Defender-IoT-Micro-agent för Azure återställnings tider- [krav och installations program](quickstart-azure-rtos-security-module.md).
+- Läs mer om Defender-IoT-Micro-agent för Azure återställnings tider- [säkerhetsaviseringar och rekommendations support](concept-rtos-security-alerts-recommendations.md). 
+- Använd [referens-API: et](azure-rtos-security-module-api.md)Defender-IoT-Micro-agent för Azure återställnings tider.

@@ -1,5 +1,5 @@
 ---
-title: Använd & migrera Java-webbprogram till Azure Kubernetes-tjänsten.
+title: Azure App Skapa behållare Java; Skapa behållare och migrering av Java-webbprogram till Azure Kubernetes.
 description: 'Självstudie: Använd & migrera Java-webbprogram till Azure Kubernetes-tjänsten.'
 services: ''
 author: rahugup
@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 71d0e219a84e018eef363732169ab2ec9c43dde2
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233340"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466600"
 ---
 # <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Använd Java-webbprogram och migrera till Azure Kubernetes-tjänsten
 

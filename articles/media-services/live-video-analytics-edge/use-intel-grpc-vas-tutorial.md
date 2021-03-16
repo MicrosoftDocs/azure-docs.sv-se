@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124422"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465767"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Självstudie: analysera direktsänd video genom att använda Intel Open™ DL-dataströmmar – Edge AI-tillägg 
 
@@ -128,7 +128,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
     Filen *deployment.openvino.grpc.cpu.amd64.jspå* manifest filen skapas i mappen *src/Edge/config* .
 
 > [!NOTE]
-Vi har också lagt *till endeployment.openvino.grpc.gpu.template.jspå* en mall som möjliggör GPU-stöd för en Stream-modul för AI-tillägg för Intel openprodukts dl. Dessa mallar pekar på Intels Docker Hub-avbildning.
+> Vi har också lagt *till endeployment.openvino.grpc.gpu.template.jspå* en mall som möjliggör GPU-stöd för en Stream-modul för AI-tillägg för Intel openprodukts dl. Dessa mallar pekar på Intels Docker Hub-avbildning.
 
 De ovan nämnda mallarna pekar på Intel Docker Hub-avbildningen. Om du hellre vill vara värd för en kopia på din egen Azure Container Registry kan du följa steg 1 och 2 nedan:
 1. SSH till en enhet med Docker CLI-verktyg installerade (d.v.s. din Edge-enhet) och hämta/tagga/skicka behållaren med följande steg:

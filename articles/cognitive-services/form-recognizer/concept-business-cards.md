@@ -3,19 +3,19 @@ title: Visitkort – formulär igenkänning
 titleSuffix: Azure Cognitive Services
 description: Lär dig begrepp som är relaterade till visitkorts analys med formatet igenkännings-API-användning och begränsningar.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 5211c1263af599eb5fd09ad276545c725ce5c867
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546031"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467006"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Fördefinierad visitkorts modell för formulär igenkänning 
 
@@ -31,7 +31,7 @@ Det inbyggda visitkorts-API: n extraherar nyckel fält från visitkort och retur
 
 ### <a name="fields-extracted"></a>Extraherade fält:
 
-|Namn| Typ | Description | Text | 
+|Namn| Typ | Beskrivning | Text | 
 |:-----|:----|:----|:----|
 | ContactNames | objekt mat ris | Kontakt namn extraherat från visitkort | [{"FirstName": "John", "LastName": "berg"}] |
 | FirstName | sträng | Första (angivet) namn på kontakt | Anders | 
@@ -52,25 +52,25 @@ Visitkorts-API: et kan också returnera all identifierad text från visitkortet.
 
 ### <a name="input-requirements"></a>Krav för indatamängd 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-business-card-operation"></a>Åtgärden analysera visitkort
 
-På [kortet analysera](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) får du en bild eller en PDF-fil med ett visitkort som indata och utvärderar intressena. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
+På [kortet analysera](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync) får du en bild eller en PDF-fil med ett visitkort som indata och utvärderar intressena. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
 
 |Svars huvud| Resultat-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>Resultat åtgärden för att analysera affärs kort
 
-Det andra steget är att anropa åtgärden för att [analysera visitkorts resultat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult) . Den här åtgärden tar sig in i det resultat-ID som skapades av åtgärden analysera visitkort. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
+Det andra steget är att anropa åtgärden för att [analysera visitkorts resultat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult) . Den här åtgärden tar sig in i det resultat-ID som skapades av åtgärden analysera visitkort. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
 
 |Fält| Typ | Möjliga värden |
 |:-----|:----:|:----|
 |status | sträng | notStarted: analys åtgärden har inte startats.<br /><br />körs: analys åtgärden pågår.<br /><br />misslyckades: det gick inte att utföra analysen.<br /><br />lyckades: analys åtgärden har slutförts.|
 
-När fältet **status** har värdet **lyckades** , inkluderar JSON-svaret affärs korts förståelse och valfria text igenkännings resultat om det behövs. Resultatet av visitkorten är ordnat som en ord lista med namngivna fält värden där varje värde innehåller den extraherade texten, normaliserade värdet, avgränsnings rutan, relevansen och motsvarande Word-element. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
+När fältet **status** har värdet **lyckades** , inkluderar JSON-svaret affärs korts förståelse och valfria text igenkännings resultat om det behövs. Resultatet av visitkorten är ordnat som en ord lista med namngivna fält värden där varje värde innehåller den extraherade texten, normaliserat värde, avgränsnings Box, relevans och motsvarande Word-element. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
 
 ![exempel på visitkorts resultat](./media/business-card-results.png)
 
@@ -386,7 +386,7 @@ Följ snabb starten för [snabb](./QuickStarts/client-library.md) start för att
 
 ## <a name="customer-scenarios"></a>Kund scenarier  
 
-De data som extraheras med visitkorts-API kan användas för att utföra en rad olika uppgifter. Om du extraherar den här kontakt informationen sparas automatiskt tid för dem i klient roller. Här följer några exempel på vad våra kunder har utfört med API: t för visitkort:
+De data som extraheras med visitkorts-API kan användas för att utföra olika uppgifter. Om du extraherar denna kontakt information sparas tid automatiskt för användare i klientbaserade roller. Här följer några exempel på vad våra kunder har utfört med API: t för visitkort:
 
 * Extrahera kontakt information från visitkort och skapa snabbt telefon kontakter. 
 * Integrera med CRM för att automatiskt skapa kontakter med hjälp av visitkorts avbildningar. 
@@ -402,4 +402,4 @@ Visitkorts-API: t ger även [AI Builder-Affärskortets bearbetnings funktion](/a
 ## <a name="see-also"></a>Se även
 
 * [Vad är formigenkänning?](./overview.md)
-* [REST API referens dokument](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [REST API referens dokument](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)

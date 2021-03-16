@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/24/2020
+ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f2e0e96f11203633b756a320d3da503686ed9f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504498"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493500"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS-instans multi-SID hög tillgänglighet med kluster för växling vid fel i Windows Server och fil resurs på Azure
 
@@ -59,6 +59,7 @@ _**Bild 1:** En SAP ASCS/SCS-instans och SOFS distribuerade i två kluster_
 > Installationen måste uppfylla följande villkor:
 > * SAP ASCS/SCS-instanserna måste dela samma WSFC-kluster.
 > * Olika SAP-globala värd fil resurser som tillhör olika SAP-sid: er måste dela samma SOFS-kluster.
+> * SAP ASCS/SCS-instanserna och SOFS-resurserna får inte kombineras i samma kluster. 
 > * Varje databas hanterings system (DBMS) SID måste ha ett eget dedikerat WSFC-kluster.
 > * SAP-programservrar som tillhör ett SAP-system-SID måste ha egna dedikerade virtuella datorer.
 > * Det finns inte stöd för en blandning av kötjänsten för Server 1 och Queue server 2 i samma kluster.  

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d2e2680f1d679a4bd1e967e32a409b59ad992c01
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c7538cf052fcf51d03d1ac854d4da50db02004ea
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448106"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488575"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett WeChat-konto med hjälp av Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Om du vill aktivera inloggning för användare med ett WeChat-konto i Azure Acti
 1. Logga in på [https://open.weixin.qq.com/](https://open.weixin.qq.com/) med dina WeChat-autentiseringsuppgifter.
 1. Välj **管理中心** (Management Center).
 1. Följ stegen för att registrera ett nytt program.
-1. Ange `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` i **授权回调域** (återanrops-URL). Om ditt klient namn till exempel är contoso anger du URL: en `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. För **授权回调域** (återanrops-URL) anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient och `your-domain-name` med din anpassade domän.
 1. Kopiera **app-ID** och **app-nyckel**. Du behöver båda dessa för att konfigurera identitets leverantören för din klient.
 
 ::: zone pivot="b2c-user-flow"

@@ -4,15 +4,15 @@ description: Felsök sensorn och den lokala hanterings konsolen för att elimine
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/14/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523727"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465784"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Felsöka sensorn och den lokala hanteringskonsolen
 
@@ -54,7 +54,7 @@ Så här återställer du ditt lösen ord:
 1. Välj **Nästa** och ditt användar-och systemgenererade lösen ord för hanterings konsolen visas sedan.
 
     > [!NOTE]
-    > När du loggar in på en sensor eller lokal hanterings konsol för första gången kommer den att länkas till den prenumeration du anslöt till. Om du behöver återställa lösen ordet för CyberX-eller support användaren måste du välja den prenumerationen. Mer information om hur du återställer en CyberX eller stöder användar lösen ord finns i [återställa en användares lösen ord för sensorn eller den lokala hanterings konsolen](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)
+    > När du loggar in på en sensor eller lokal hanterings konsol för första gången kommer den att länkas till den prenumeration du anslöt till. Om du behöver återställa lösen ordet för CyberX-eller support användaren måste du välja den prenumerationen. Mer information om hur du återställer en CyberX eller har stöd för användar lösen ord finns i [återställa lösen ord](how-to-create-and-manage-users.md#resetting-passwords).
 
 ### <a name="investigate-a-lack-of-traffic"></a>Undersök bristande trafik
 
@@ -283,7 +283,7 @@ De exporterade loggarna läggs till i listan **arkiverade loggar** . Skicka eng 
 
 Listan över arkiverade loggar kan innehålla upp till fem objekt. Om antalet objekt i listan hamnar bortom det antalet raderas det tidigaste objektet.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 - [Visa aviseringar](how-to-view-alerts.md)
 

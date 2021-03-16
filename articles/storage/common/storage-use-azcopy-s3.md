@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792005"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494520"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopiera data från Amazon S3 till Azure Storage med hjälp av AzCopy
 
@@ -70,7 +70,7 @@ Använd samma URL-syntax ( `blob.core.windows.net` ) för konton som har ett hie
 >
 > Du kan också använda virtuella webb adresser i värd format (till exempel: `http://bucket.s3.amazonaws.com` ). 
 >
-> Om du vill veta mer om virtuell värd för buckets, se [virtuell värd för buckets]] ( https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) .
+> Mer information om virtuell värd för buckets finns i [virtuell värd för buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
 ### <a name="copy-a-directory"></a>Kopiera en katalog
 
@@ -103,7 +103,7 @@ Använd samma URL-syntax ( `blob.core.windows.net` ) för konton som har ett hie
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Exempel** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
-| **Exempel** (hierarkiskt namn område)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Exempel** (hierarkiskt namn område)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Kopiera alla buckets i alla regioner
 
@@ -113,7 +113,7 @@ Använd samma URL-syntax ( `blob.core.windows.net` ) för konton som har ett hie
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Exempel** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **Exempel** (hierarkiskt namn område)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Exempel** (hierarkiskt namn område)| `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Kopiera alla buckets i en angiven S3-region
 
@@ -123,7 +123,7 @@ Använd samma URL-syntax ( `blob.core.windows.net` ) för konton som har ett hie
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Exempel** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **Exempel** (hierarkiskt namn område)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Exempel** (hierarkiskt namn område)| `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Hantera skillnader i namngivnings regler för objekt
 
@@ -168,7 +168,5 @@ Hitta fler exempel i någon av följande artiklar:
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
 
 - [Överföra data](storage-use-azcopy-v10.md#transfer-data)
-
-- [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
 
 - [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)

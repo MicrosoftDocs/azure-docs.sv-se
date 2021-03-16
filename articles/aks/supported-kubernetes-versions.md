@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3ed5c2c1c95822717981f7d30b91edd244420c59
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427693"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493670"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Kubernetes-versioner som stöds i Azure Kubernetes Service (AKS)
 
@@ -151,7 +151,7 @@ Tidigare versions historik finns i [Kubernetes](https://en.wikipedia.org/wiki/Ku
 
 **Hur ofta ska jag förvänta mig att uppgradera Kubernetes-versioner för att stanna kvar i supporten?**
 
-Med beaktande av Kubernetes 1,19 [har communityn öppen källkod utökad support till 1 år](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS åtar sig att aktivera korrigeringar och stöd för att matcha de överordnade åtagandena minst. Det innebär att du börjar med AKS-kluster på 1,19, du kommer att kunna uppgradera minst en gång om året till en version som stöds. För versioner på 1,18 eller lägre finns support perioden på 9 månader, vilket kräver en uppgradering var 9: e månad för att stanna kvar på en version som stöds. Vi rekommenderar starkt att du testar nya versioner regelbundet och är redo att uppgradera till nyare versioner för att avbilda de senaste stabila förbättringarna i Kubernetes.
+Från och med Kubernetes 1,19 [har communityn öppen källkod utökad support till 1 år](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS åtar sig att aktivera korrigeringar och stöd för att matcha de överordnade åtagandena minst. Det innebär att du börjar med AKS-kluster på 1,19, du kommer att kunna uppgradera minst en gång om året till en version som stöds. För versioner på 1,18 eller lägre finns support perioden på 9 månader, vilket kräver en uppgradering var 9: e månad för att stanna kvar på en version som stöds. Vi rekommenderar starkt att du testar nya versioner regelbundet och är redo att uppgradera till nyare versioner för att avbilda de senaste stabila förbättringarna i Kubernetes.
 
 **Vad händer när en användare uppgraderar ett Kubernetes-kluster med en lägre version som inte stöds?**
 

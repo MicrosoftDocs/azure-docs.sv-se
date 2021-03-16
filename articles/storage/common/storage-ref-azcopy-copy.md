@@ -4,16 +4,16 @@ description: Den här artikeln innehåller referensinformation för kommandot Az
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879164"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493772"
 ---
 # <a name="azcopy-copy"></a>azcopy kopiera
 
@@ -31,6 +31,7 @@ Kopierar käll data till en målplats. De vägvisningar som stöds är:
   - Azure Files (SAS) – > Azure Files (SAS)
   - Azure Files (SAS) – > Azure Blob (SAS eller OAuth-autentisering)
   - Amazon Web Services (AWS) S3 (åtkomst nyckel) – > Azure Block Blob (SAS eller OAuth-autentisering)
+  - Google Cloud Storage (tjänst konto nyckel) – > Azure Block Blob (SAS eller OAuth-autentisering) [för hands version]
 
 Mer information finns i avsnittet exempel i den här artikeln.
 
@@ -229,6 +230,36 @@ Kopiera en delmängd av buckets med hjälp av en symbol för jokertecken (*) i B
 - Nycklar och värden är URL-kodade och nyckel/värde-par avgränsas med ett et-tecken (&)
     
 - När du anger taggar på Blobbarna, finns det ytterligare behörigheter (t för taggar) i SAS utan vilken tjänsten ger auktoriseringsfel tillbaka.
+
+Kopiera ett enskilt objekt till Blob Storage från Google Cloud Storage med hjälp av en tjänst konto nyckel och en SAS-token. Ställ först in miljövariabeln GOOGLE_APPLICATION_CREDENTIALS för Google Cloud Storage-källan.
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+Kopiera en hel katalog till Blob Storage från Google Cloud Storage med hjälp av en tjänst konto nyckel och en SAS-token. Ställ först in miljövariabeln GOOGLE_APPLICATION_CREDENTIALS för Google Cloud Storage-källan.
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+Kopiera en hel Bucket till Blob Storage från Google Cloud Storage med hjälp av en tjänst konto nyckel och en SAS-token. Ställ först in miljövariabeln GOOGLE_APPLICATION_CREDENTIALS för Google Cloud Storage-källan.
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Kopiera alla buckets till Blob Storage från Google Cloud Storage med hjälp av en tjänst konto nyckel och en SAS-token. Ange först miljövariabler GOOGLE_APPLICATION_CREDENTIALS och GOOGLE_CLOUD_PROJECT =<projekt-ID> för GC generationer-källa
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Kopiera en delmängd av buckets med hjälp av en jokertecken (*) i Bucket-namnet från Google Cloud Storage med hjälp av en tjänst konto nyckel och en SAS-token som mål. Ställ först in miljövariabler GOOGLE_APPLICATION_CREDENTIALS och GOOGLE_CLOUD_PROJECT =<projekt-ID> för källan Google Cloud Storage.
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
 
 ## <a name="options"></a>Alternativ
 

@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041380"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487708"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Förbered din utvecklings-och test miljö för IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge flyttar din befintliga affärs logik till enheter som arbetar i gränsen. För att förbereda program och arbets belastningar att köras som [IoT Edge moduler](iot-edge-modules.md)måste du skapa dem som behållare. Den här artikeln innehåller rikt linjer för hur du konfigurerar utvecklings miljön så att du kan skapa en IoT Edge-lösning. När du har konfigurerat utvecklings miljön kan du lära dig hur du [utvecklar dina egna IoT Edge moduler](module-development.md).
 
@@ -74,7 +76,7 @@ Verktyget Azure IoT Edge dev fören klar IoT Edge utveckling med kommando rads f
 
 Mer information och kom igång finns i [IoT Edge dev-verktyget wiki](https://github.com/Azure/iotedgedev/wiki).
 
-## <a name="testing-tools"></a>Test verktyg
+## <a name="testing-tools"></a>Testverktyg
 
 Det finns flera test verktyg som hjälper dig att simulera IoT Edge enheter eller felsöka moduler på ett mer effektivt sätt. I följande tabell visas en jämförelse mellan verktygen och enskilda avsnitt beskriver varje verktyg mer specifikt.
 
