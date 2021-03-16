@@ -2,13 +2,13 @@
 title: Vad är nytt med Azure Arc-aktiverade Server agenter
 description: Den här artikeln innehåller viktig information om Azure Arc-aktiverade Server agenter. För många av de sammanfattade problemen finns det länkar till mer information.
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.date: 03/15/2021
+ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722529"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470514"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Vad är nytt med Azure Arc-aktiverade Server agenter
 
@@ -18,13 +18,27 @@ Azure Arc-aktiverade servrar som är anslutna till dator agenten får fort löp 
 - Kända problem
 - Felkorrigeringar
 
+## <a name="march-2021"></a>Mars 2021
+
+Version 1,4
+
+## <a name="new-feature"></a>Ny funktion
+
+- Stöd har lagts till för privata slut punkter.
+- Expanderad lista över avslutnings koder för azcmagent.
+- Agent konfigurations parametrar kan nu läsas från en fil med parametern--config.
+
+## <a name="fixed"></a>Fast
+
+Kontroll av nätverks slut punkter är nu snabbare.
+
 ## <a name="december-2020"></a>December 2020
 
 Version: 1,3
 
 ### <a name="new-feature"></a>Ny funktion
 
-Stöd har lagts till för Windows Server 2008 R2
+Stöd har lagts till för Windows Server 2008 R2.
 
 ### <a name="fixed"></a>Fast
 
@@ -47,7 +61,7 @@ Version: 1.1
 - Fast proxy-skript för att hantera alternativ plats för en annan GC-enhets fil.
 - GuestConfig-agentens tillförlitlighet ändras.
 - Stöd för GuestConfig-agent för US Gov, Virginia region.
-- GuestConfig agent Extension rapporterar meddelanden för att vara mer utförliga om det uppstår problem.
+- GuestConfig agent Extension rapporterar meddelanden för att vara mer utförliga om det uppstår ett problem.
 
 ## <a name="september-2020"></a>September 2020
 

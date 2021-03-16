@@ -1,5 +1,5 @@
 ---
-title: 'Migrera OWIN-baserade webb-API: er till b2clogin.com'
+title: 'Migrera OWIN-baserade webb-API: er till b2clogin.com eller en anpassad domän'
 titleSuffix: Azure AD B2C
 description: Lär dig hur du aktiverar ett .NET-webb-API för att stödja tokens som utfärdats av flera token utfärdare när du migrerar dina program till b2clogin.com.
 services: active-directory-b2c
@@ -8,28 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/31/2019
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953941"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491577"
 ---
-# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrera ett OWIN webb-API till b2clogin.com
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>Migrera ett OWIN webb-API till b2clogin.com eller en anpassad domän
 
-Den här artikeln beskriver en teknik för att aktivera stöd för flera token utfärdare i webb-API: er som implementerar [Open Web Interface för .net (OWIN)](http://owin.org/). Stöd för flera token-slutpunkter är användbart när du migrerar Azure Active Directory B2C (Azure AD B2C) API: er och deras program från *login.microsoftonline.com* till *b2clogin.com*.
+Den här artikeln beskriver en teknik för att aktivera stöd för flera token utfärdare i webb-API: er som implementerar [Open Web Interface för .net (OWIN)](http://owin.org/). Stöd för flera token-slutpunkter är användbart när du migrerar Azure Active Directory B2C-API: er (Azure AD B2C) och deras program från en domän till en annan. Till exempel från *login.microsoftonline.com* till *b2clogin.com* eller till en [anpassad domän](custom-domain.md).
 
-Genom att lägga till stöd i ditt API för att acceptera token som utfärdats av både b2clogin.com och login.microsoftonline.com, kan du migrera dina webb program på ett stegvist sätt innan du tar bort stöd för login.microsoftonline.com utfärdade token från API: et.
+Genom att lägga till stöd i ditt API för att acceptera token som utfärdats av b2clogin.com, login.microsoftonline.com eller en anpassad domän, kan du migrera dina webb program på ett stegvist sätt innan du tar bort stöd för login.microsoftonline.com utfärdade token från API: et.
 
 I följande avsnitt finns ett exempel på hur du aktiverar flera utfärdare i ett webb-API som använder [Microsoft OWIN][katana] -komponenter för mellanprogram (Katana). Även om kod exemplen är speciella för Microsoft OWIN mellanprogram, bör den allmänna tekniken vara tillämplig på andra OWIN-bibliotek.
 
-> [!NOTE]
-> Den här artikeln är avsedd för Azure AD B2C kunder med för närvarande distribuerade API: er och program som refererar `login.microsoftonline.com` till och som vill migrera till den rekommenderade `b2clogin.com` slut punkten. Om du konfigurerar ett nytt program ska du använda [b2clogin.com](b2clogin.md) som dirigerad.
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande Azure AD B2C resurser på plats innan du fortsätter med stegen i den här artikeln:
 
@@ -88,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 I det här avsnittet uppdaterar du koden för att ange att både token utfärdarens slut punkter är giltiga.
 
 1. Öppna lösningen **B2C-WebAPI-dotNet. SLN** i Visual Studio
-1. I **TaskService** -projektet öppnar du filen * TaskService \\ App_Start \\ **startup.auth.cs** _ _ i redigeraren
+1. I **TaskService** -projektet öppnar du filen *TaskService \\ App_Start \\ * * startup.auth.cs** * i redigeraren
 1. Lägg till följande `using` direktiv överst i filen:
 
     `using System.Collections.Generic;`
@@ -102,12 +99,13 @@ I det här avsnittet uppdaterar du koden för att ange att både token utfärdar
         AuthenticationType = Startup.DefaultPolicy,
         ValidIssuers = new List<string> {
             "https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/",
-            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
+            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"//,
+            //"https://your-custom-domain/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
         }
     };
     ```
 
-`TokenValidationParameters` tillhandahålls av MSAL.NET och används av OWIN mellanprogram i nästa avsnitt av kod i _Startup. auth. cs *. När flera giltiga utfärdare har angetts görs OWIN program pipelinen medveten om att båda token-slutpunkterna är giltiga utfärdare.
+`TokenValidationParameters` tillhandahålls av MSAL.NET och används av OWIN mellanprogram i nästa avsnitt av kod i *startup.auth.cs*. När flera giltiga utfärdare har angetts görs OWIN program pipelinen medveten om att båda token-slutpunkterna är giltiga utfärdare.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -142,6 +140,13 @@ Efter (Ersätt `{your-b2c-tenant}` med namnet på din B2C-klient):
 ```
 
 När slut punkts strängarna skapas när webbappen körs, används b2clogin.com-baserade slut punkter när den begär token.
+
+När du använder en anpassad domän:
+
+```xml
+<!-- Custom domain -->
+<add key="ida:AadInstance" value="https://custom-domain/{0}/{1}" />
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

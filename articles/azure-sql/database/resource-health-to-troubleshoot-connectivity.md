@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497970"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472009"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Använd Resource Health för att felsöka anslutningar för Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Statusen **Degraderad** innebär att Resource Health har identifierat mestadels 
 
 Statusen **otillgänglig** innebär att Resource Health har identifierat konsekventa inloggnings försök till din SQL-resurs. Kontakta supporten om resursen är i detta tillstånd under en längre tid.
 
-![Ej tillgänglig](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unavailable.jpg)
+![Inte tillgänglig](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-unavailable.jpg)
 
 ### <a name="unknown"></a>Okänt
 
@@ -61,7 +61,7 @@ Du kan komma åt upp till 14 dagar hälso historik i avsnittet hälso historik i
 
 ### <a name="downtime-reasons"></a>Orsaker till stillestånds tid
 
-När din databas upplever avbrott utförs analysen för att fastställa en orsak. När det är tillgängligt rapporteras stillestånds orsaken i avsnittet hälso historik i Resource Health. Orsaker till stillestånd publiceras vanligen 30 minuter efter en händelse.
+När din databas upplever avbrott utförs analysen för att fastställa en orsak. När det är tillgängligt rapporteras stillestånds orsaken i avsnittet hälso historik i Resource Health. Avbrotts orsaker publiceras vanligt vis inom 45 minuter efter en händelse.
 
 #### <a name="planned-maintenance"></a>Planerat underhåll
 

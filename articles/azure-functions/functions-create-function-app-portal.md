@@ -4,12 +4,12 @@ description: Lär dig hur du skapar din första Azure-funktion för serverfri k�
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732195"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492152"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Skapa din första funktion i Azure Portal
 
@@ -42,13 +42,11 @@ Skapa sedan en funktion i appen ny funktion.
 
 1. På den vänstra menyn i fönstret **funktioner** väljer du **Functions** och väljer sedan **Lägg till** på den översta menyn. 
  
-1. Välj **http-utlösare** i fönstret **ny funktion** .
+1. I fönstret **Lägg till funktion** väljer du mallen **http-utlösare** .
 
     ![Välj funktionen HTTP-utlösare](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. I fönstret **ny funktion** godkänner du standard namnet för **ny funktion** eller anger ett nytt namn. 
-
-1. Välj **Anonym** i list rutan **Autentiseringsnivå** och välj sedan **skapa funktion**.
+1. Under **mall information** Använd `HttpExample` för **ny funktion** väljer du **Anonym** i list rutan **[Autentiseringsnivå](functions-bindings-http-webhook-trigger.md#authorization-keys)** och väljer sedan **Lägg till**.
 
     Azure skapar funktionen HTTP-utlösare. Nu kan du köra den nya funktionen genom att skicka en HTTP-begäran.
 

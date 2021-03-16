@@ -4,14 +4,14 @@ description: Så här skapar du klientbaserade sökvägar för Server dels lagri
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: f45d5710f6feb8af2347ca298e07e8a4870d3d4f
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760548"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470478"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Konfigurera sammanställd namnrymd
 
@@ -132,6 +132,30 @@ Om du vill uppdatera målets namn områdes Sök väg eller lägga till ytterliga
 Alternativen som används för kommandot Update liknar kommandot "skapa", förutom att du inte skickar information om lagrings system (IP-adress eller värdnamn) och användnings modellen är valfri. Läs [Lägg till ett nytt NFS-mål](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) för mer information om syntaxen för ``--junction`` alternativet.
 
 ---
+
+### <a name="adls-nfs-namespace-paths-preview"></a>Sökvägar för ADLS-NFS-namnrymd (för hands version)
+
+Precis som ett vanligt Blob Storage-mål har ett ADLS-NFS-mål bara en export, så det kan bara ha en namn områdes Sök väg.
+
+Följ anvisningarna nedan för att ange eller ändra sökvägen med Azure Portal.
+
+Läs in sidan **namn rymds** inställningar.
+
+* **Lägg till en ny sökväg:** Klicka på knappen **+ Lägg till** överst och fyll i informationen på Redigera-panelen.
+
+  ![Skärm bild av redigera fält för Lägg till namnrymd med ett ADLS-NFS valt. Sökvägarna export och under katalog är inställda på/och kan inte redige ras.](media/namespace-add-adls.png)
+
+  * Ange sökvägen som klienter ska använda för att få åtkomst till det här lagrings målet.
+
+  * Välj vilken åtkomst princip som ska användas för den här sökvägen. Läs mer om hur du anpassar klient åtkomst i [använda klient åtkomst principer](access-policies.md).
+
+  * Välj lagrings målet i den nedrullningsbara listan. Om det redan finns en namn områdes Sök väg för ett ADLS-NFS-lagrings mål kan du inte välja det.
+
+  * För ett ADLS-NFS-lagrings mål anges export-och under katalog Sök vägar automatiskt till ``/`` .
+
+* **Ändra en befintlig sökväg:** Klicka på namn områdes Sök vägen. Redigerings panelen öppnas. Du kan ändra sökvägen och åtkomst principen, men du kan inte ändra till ett annat lagrings mål.
+
+* **Ta bort en sökväg för namn område:** Markera kryss rutan till vänster om sökvägen och klicka på knappen **ta bort** .
 
 ## <a name="next-steps"></a>Nästa steg
 

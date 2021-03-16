@@ -1,22 +1,25 @@
 ---
 title: Återge program
 description: Det är möjligt att använda alla åter givnings program med Azure Batch. VIRTUELLA Azure Marketplace-avbildningar är dock tillgängliga med vanliga program för installation.
-ms.date: 02/12/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635344"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496651"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Förinstallerade program på VM-avbildningar för batch-rendering
 
 Det är möjligt att använda alla åter givnings program med Azure Batch. VIRTUELLA Azure Marketplace-avbildningar är dock tillgängliga med vanliga program för installation.
 
-I tillämpliga fall är licens för betalning per användning tillgängligt för de förinstallerade åter givnings programmen. När en batch-pool skapas kan de nödvändiga programmen anges och både kostnaden för VM och program debiteras per minut. Program priserna visas på [sidan Azure Batch priser](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
+I förekommande fall är betala för användning-licensiering tillgänglig för de förinstallerade åter givnings programmen. När en batch-pool skapas kan de nödvändiga programmen anges och både kostnaden för VM och program debiteras per minut. Program priserna visas på [sidan Azure Batch priser](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 Vissa program stöder bara Windows, men de flesta stöds i både Windows och Linux.
+
+> [!IMPORTANT]
+> Avbildningarna för rendering av virtuella datorer och licenser för betalning för användning är [inaktuella och kommer att dras tillbaka den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Om du vill använda batch för rendering ska du använda [en anpassad VM-avbildning och standard program licensiering.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>Program på den senaste CentOS 7-åter givnings avbildningen
 

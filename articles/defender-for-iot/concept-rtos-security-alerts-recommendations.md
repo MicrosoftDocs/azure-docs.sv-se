@@ -1,6 +1,6 @@
 ---
-title: Säkerhetsmodul för Azure återställnings tider-inbyggda & anpassningsbara aviseringar och rekommendationer
-description: Lär dig mer om säkerhets aviseringar och rekommenderade åtgärder med hjälp av Azure IoT Security-modulen – återställnings tider.
+title: Defender-IoT-Micro-agent för Azure återställnings tider inbyggd & anpassningsbara aviseringar och rekommendationer
+description: Lär dig mer om säkerhets aviseringar och rekommenderade åtgärder med hjälp av Azure IoT Defender-IoT-Micro-agent-återställnings tider.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cf4924f8a9b97487e64e12ab80df92f2b2a81de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6dfeb01e174d71c926e9fcf7f5f1ee078524cf9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941720"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494282"
 ---
-# <a name="security-module-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Säkerhetsmodul för Azure återställnings tider säkerhets aviseringar och rekommendationer (för hands version)
+# <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Defender-IoT-Micro-agent för Azure återställnings tider säkerhets aviseringar och rekommendationer (för hands version)
 
-Säkerhetsmodulen för Azure återställnings tider analyserar kontinuerligt din IoT-lösning med avancerad analys och hot information för att varna dig om potentiellt skadlig aktivitet och misstänkta system ändringar. Du kan också skapa anpassade aviseringar baserat på dina kunskaper om förväntat enhets beteende och bas linjer.
+Defender-IoT-Micro-agent för Azure återställnings tider analyserar kontinuerligt din IoT-lösning med avancerad analys och hot information för att varna dig om potentiella skadliga aktiviteter och misstänkta system ändringar. Du kan också skapa anpassade aviseringar baserat på dina kunskaper om förväntat enhets beteende och bas linjer.
 
-En säkerhetsmodul för Azure återställnings tider-avisering fungerar som en indikator för potentiella kompromisser och bör undersökas och åtgärdas. En säkerhetsmodul för Azure återställnings tider-rekommendation identifierar svaga säkerhets position som ska åtgärdas och uppdateras. 
+En Defender-IoT-Micro-agent för Azure återställnings tider-avisering fungerar som en indikator för potentiella kompromisser och bör undersökas och åtgärdas. En Defender-IoT-Micro-agent för Azure återställnings tider-rekommendation identifierar svaga säkerhets position som ska åtgärdas och uppdateras. 
 
 I den här artikeln hittar du en lista över inbyggda aviseringar och rekommendationer som utlöses baserat på standard intervall och anpassningsbara med dina egna värden, baserat på förväntat eller bas linje beteende. 
 
-Mer information om hur du anpassar aviseringen i Defender for IoT-tjänsten finns i [anpassningsbara aviseringar](concept-customizable-security-alerts.md). De särskilda aviseringar och rekommendationer som är tillgängliga för anpassning när du använder säkerhetsmodulen för Azure återställnings tider beskrivs i följande tabeller. 
+Mer information om hur du anpassar aviseringen i Defender for IoT-tjänsten finns i [anpassningsbara aviseringar](concept-customizable-security-alerts.md). De särskilda aviseringar och rekommendationer som är tillgängliga för anpassning när du använder Defender-IoT-Micro-agent för Azure återställnings tider beskrivs i följande tabeller. 
 
-## <a name="security-module-for-azure-rtos-supported-security-alerts"></a>Säkerhetsmodulen för Azure-återställnings tider som stöds säkerhets aviseringar
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-security-alerts"></a>Defender-IoT-Micro-agent för Azure återställnings tider-stöd för säkerhets aviseringar
 
 ### <a name="device-related-security-alerts"></a>Enhets-relaterade säkerhets aviseringar
 
@@ -53,7 +53,7 @@ Mer information om hur du anpassar aviseringen i Defender for IoT-tjänsten finn
 |Borttaget certifikat    | Borttagning av ett certifikat har upptäckts från en IoT Hub        |
 |Nytt certifikat     |  Tillägg av nytt certifikat har identifierats för en IoT Hub       |
 
-## <a name="security-module-for-azure-rtos-supported-customizable-alerts"></a>Säkerhetsmodulen för Azure-återställnings tider som stöds anpassningsbara aviseringar
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-customizable-alerts"></a>Defender-IoT-Micro-agent för Azure återställnings tider-stöd för anpassningsbara aviseringar
 
 ### <a name="device-related-customizable-alerts"></a>Enhet relaterade anpassningsbara aviseringar
 
@@ -75,7 +75,7 @@ Mer information om hur du anpassar aviseringen i Defender for IoT-tjänsten finn
 |Uppdateringar till dubbla moduler     |  Antal uppdateringar till dubbla moduler utanför det tillåtna intervallet       |
 |Obehöriga åtgärder    |  Antal otillåtna åtgärder utanför det tillåtna intervallet       |
 
-## <a name="security-module-for-azure-rtos-supported-recommendations"></a>Säkerhets modul för Azure återställnings tider-rekommendationer som stöds
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-recommendations"></a>Defender-IoT-Micro-agent för Azure återställnings tider-support rekommendationer
 
 ### <a name="device-related-recommendations"></a>Enhets relaterade rekommendationer
 
@@ -97,6 +97,6 @@ En fullständig lista över alla Defender-relaterade aviseringar och rekommendat
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Snabb start: säkerhetsmodul för Azure-återställnings tider](quickstart-azure-rtos-security-module.md)
-- [Konfigurera och anpassa säkerhetsmodulen för Azure återställnings tider](how-to-azure-rtos-security-module.md)
-- Referera till [Security-modulen för Azure återställnings tider-API](azure-rtos-security-module-api.md)
+- [Snabb start: Defender-IoT-Micro-agent för Azure återställnings tider](quickstart-azure-rtos-security-module.md)
+- [Konfigurera och anpassa Defender-IoT-Micro-agent för Azure återställnings tider](how-to-azure-rtos-security-module.md)
+- Se [API för Defender-IoT-Micro-agent för Azure återställnings tider-API](azure-rtos-security-module-api.md)

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2fa8c2ea990644fa82ae79114322fa087259378b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 0f09b4557f9bbf2f074948bd7c8dbd349cd397bc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448203"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488677"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett QQ-konto med hjälp av Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Om du vill aktivera inloggning för användare med ett QQ-konto i Azure Active D
 1. Gå till [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 1. Välj **应用管理** (app Management).
 1. Välj **创建应用** (skapa app) och ange den information som krävs.
-1. Ange `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` i **授权回调域** (återanrops-URL). Om din till exempel `tenant_name` är contoso anger du URL: en `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. För **授权回调域** (återanrops-URL) anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient och `your-domain-name` med din anpassade domän.
 1. Välj **创建应用** (skapa app).
 1. På sidan bekräftelse väljer du **应用管理** (app Management) för att gå tillbaka till sidan för hantering av appar.
 1. Välj **查看** (Visa) bredvid den app som du skapade.

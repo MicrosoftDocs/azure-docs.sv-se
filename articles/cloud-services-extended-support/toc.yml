@@ -65,6 +65,8 @@
       href: configure-scaling.md
     - name: Certifikat
       href: certificates-and-key-vault.md
+    - name: Skapa ARM-mall med hjälp av portalen
+      href: generate-template-portal.md
 - name: Exempel
   items:
     - name: Exempel på mallar

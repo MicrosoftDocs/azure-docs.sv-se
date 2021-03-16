@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197910"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492771"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globala parametrar i Azure Data Factory
 
@@ -49,7 +49,10 @@ Det finns två sätt att integrera globala parametrar i den kontinuerliga integr
 I de flesta användnings fall rekommenderar vi att du inkluderar globala parametrar i ARM-mallen. Detta integreras internt med den lösning som beskrivs i [CI/CD-dokumentet](continuous-integration-deployment.md). Globala parametrar läggs till som en ARM-mallparameter som standard eftersom de ofta ändras från miljö till miljö. Du kan aktivera inkludering av globala parametrar i ARM-mallen från **Hantera** hubben.
 
 > [!NOTE]
-> Konfigurationen **inkludera i arm-mallen** är bara tillgänglig i git-läge. För närvarande är den inaktive rad i läget "Live mode" eller "Data Factory".
+> Konfigurationen **inkludera i arm-mallen** är bara tillgänglig i git-läge. För närvarande är den inaktive rad i läget "Live mode" eller "Data Factory". 
+
+> [!WARNING]
+>Du kan inte använda--i parameter namnet. Du får felkod "{" Code ":" BadRequest "," meddelande ":" ErrorCode = InvalidTemplate, ErrorMessage = uttrycket > pipelinen (). Dublettparameternamnet. min-dbtest-URL: en är inte giltig:.....}. Men du kan använda "_" i parameter namnet.
 
 ![Ta med i ARM-mallen](media/author-global-parameters/include-arm-template.png)
 

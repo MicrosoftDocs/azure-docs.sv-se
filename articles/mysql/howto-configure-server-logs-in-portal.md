@@ -1,17 +1,17 @@
 ---
 title: Åtkomst till långsamma Query-loggar – Azure Portal-Azure Database for MySQL
 description: Den här artikeln beskriver hur du konfigurerar och kommer åt långsamma loggar i Azure Database for MySQL från Azure Portal.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/13/2020
-ms.openlocfilehash: 5ad4ffa99a7af592e3e93e53673d254956807c40
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 3/15/2021
+ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541631"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496226"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurera och komma åt långsamma Query-loggar från Azure Portal
 
@@ -34,11 +34,13 @@ Konfigurera åtkomst till MySQLs långsamma fråga logg.
 
 5. Aktivera **slow_query_log** till **på**.
 
-6. Välj var loggarna ska matas till med **log_output**. Om du vill skicka loggar till både lokal lagring och Azure Monitor diagnostikloggar väljer du **fil**. 
+6. Välj var loggarna ska matas till med **log_output**. Om du vill skicka loggar till både lokal lagring och Azure Monitor diagnostikloggar väljer du **fil**.
 
-7. Ändra eventuella andra parametrar som behövs. 
+7. Överväg att ange "long_query_time" som representerar tids tröskelvärdet för frågor som ska samlas in i logg filen för långsamma frågor, och de lägsta och standardvärdena för long_query_time är 0 respektive 10.
 
-8. Välj **Spara**. 
+8. Justera andra parametrar, till exempel log_slow_admin_statements att logga administrativa instruktioner. Som standard loggas inte administrativa instruktioner, inte heller frågor som inte använder index för sökningar. 
+
+9. Välj **Spara**. 
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Skärm bild av långsam frågans logg parametrar och spara.":::
 
@@ -70,17 +72,17 @@ När loggningen har påbörjats kan du Visa en lista över tillgängliga långsa
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Skärm bild av alternativ för diagnostikinställningar":::
 
-1. Ange ett namn på en diagnostisk inställning.
+2. Ange ett namn på en diagnostisk inställning.
 
-1. Ange vilka data mottagare som de långsamma frågarna ska skickas till (lagrings konto, händelsehubben eller Log Analytics arbets yta).
+3. Ange vilka data mottagare som de långsamma frågarna ska skickas till (lagrings konto, händelsehubben eller Log Analytics arbets yta).
 
-1. Välj **MySqlSlowLogs** som logg typ.
+4. Välj **MySqlSlowLogs** som logg typ.
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Skärm bild av konfigurations alternativ för diagnostikinställningar":::
 
-1. När du har konfigurerat data Sinks att skicka in de långsamma frågeresultaten till väljer du **Spara**.
+5. När du har konfigurerat data Sinks att skicka in de långsamma frågeresultaten till väljer du **Spara**.
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Skärm bild av konfigurations alternativ för diagnostikinställningar med Spara markerat":::
 
-1. Få åtkomst till långsamma fråga-loggar genom att utforska dem i de data mottagare du konfigurerade. Det kan ta upp till 10 minuter innan loggarna visas.
+6. Få åtkomst till långsamma fråga-loggar genom att utforska dem i de data mottagare du konfigurerade. Det kan ta upp till 10 minuter innan loggarna visas.
 
 ## <a name="next-steps"></a>Nästa steg
 - Mer information om hur du hämtar långsamma frågemeddelanden via programmering finns i [komma åt långsamma fråge loggar i CLI](howto-configure-server-logs-in-cli.md) .

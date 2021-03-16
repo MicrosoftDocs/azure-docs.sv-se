@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig hur du återställer filer och mapp
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725517"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493534"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Återställa filer från en säkerhetskopia av en virtuell Azure-dator
 
@@ -60,18 +60,18 @@ Om du vill återställa filer eller mappar från återställnings punkten går d
 
 ## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>Steg 2: kontrol lera att datorn uppfyller kraven innan du kör skriptet
 
-När skriptet har hämtats kontrollerar du att du har rätt dator för att köra det här skriptet. Den virtuella datorn där du planerar att köra skriptet bör inte ha någon av följande konfigurationer som inte stöds. Om så är fallet väljer du en annan dator helst från samma region som uppfyller kraven.  
+När skriptet har hämtats kontrollerar du att du har rätt dator för att köra det här skriptet. Den virtuella datorn där du planerar att köra skriptet bör inte ha någon av följande konfigurationer som inte stöds. **Om så är fallet väljer du en annan dator helst från samma region som uppfyller kraven**.  
 
 ### <a name="dynamic-disks"></a>Dynamiska diskar
 
-Du kan inte köra det körbara skriptet på den virtuella datorn med någon av följande egenskaper:
+Du kan inte köra det körbara skriptet på den virtuella datorn med någon av följande egenskaper: Välj en annan dator
 
 - Volymer som sträcker sig över flera diskar (utsträckta och stripade volymer).
 - Feltoleranta volymer (speglade volymer och RAID-5-volymer) på dynamiska diskar.
 
 ### <a name="windows-storage-spaces"></a>Windows Storage Spaces
 
-Det går inte att köra den nedladdade körbara filen på den virtuella datorn som är konfigurerad för Windows lagrings utrymmen.
+Du kan inte köra den hämtade körbara filen på samma säkerhetskopierade virtuella dator om den säkerhetskopierade virtuella datorn har Windows lagrings utrymmen. Välj en annan dator.
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>Säkerhets kopiering av virtuella datorer med stora diskar
 

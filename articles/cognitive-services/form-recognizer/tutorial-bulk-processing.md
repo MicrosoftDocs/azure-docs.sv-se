@@ -2,19 +2,19 @@
 title: 'Självstudie: extrahera formulär data i bulk med hjälp av Azure Data Factory-formulär tolken'
 titleSuffix: Azure Cognitive Services
 description: Konfigurera Azure Data Factory aktiviteter för att utlösa utbildning och körning av formulär igenkännings modeller och digitalisera en stor efter släpning av dokument.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
-ms.author: pafarley
-ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.author: lajanuar
+ms.openlocfilehash: 0c009a87a5834997cdc489efc75ebb16f9459754
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423904"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467110"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Självstudie: extrahera formulär data i bulk genom att använda Azure Data Factory
 
@@ -511,4 +511,4 @@ Om du lägger till nya former av en ny typ måste du också överföra en data u
 
 I den här självstudien ställer du in Azure Data Factory pipelines för att utlösa utbildning och körning av formulär igenkännings modeller och digitalisera en stor efter släpning av filer. Nu ska du utforska formulärets tolknings-API för att se vad mer du kan göra med det.
 
-* [Formulär igenkännings REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [Formulär igenkännings REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)

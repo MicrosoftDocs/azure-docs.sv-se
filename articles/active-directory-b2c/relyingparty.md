@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 5374ce59d3a599e243684c168a8d84a6434059ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198446"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492021"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**RelyingParty** -elementet anger användar resan som ska tillämpas på den aktuella begäran för att Azure Active Directory B2C (Azure AD B2C). Den anger också listan över anspråk som den förlitande parten (RP) behöver som en del av Utfärdad token. Ett RP-program, till exempel ett webb-, mobil-eller Skriv bords program, anropar RP-principagenten. RP-principagenten kör en speciell uppgift, som att logga in, återställa ett lösen ord eller redigera en profil. Flera program kan använda samma RP-princip och ett enda program kan använda flera principer. Alla RP-program får samma token med anspråk, och användaren går igenom samma användar resa.
+**RelyingParty**-elementet anger användarresan som ska tillämpas på aktuell begäran till Azure Active Directory B2C (Azure AD B2C). Den anger också listan med anspråk som den förlitande partens program behöver som en del av utfärdad token. Ett RP-program, till exempel ett webb-, mobil-eller Skriv bords program, anropar RP-principagenten. RP-principagenten kör en speciell uppgift, som att logga in, återställa ett lösen ord eller redigera en profil. Flera program kan använda samma RP-princip och ett enda program kan använda flera principer. Alla RP-program får samma token med anspråk, och användaren går igenom samma användar resa.
 
 I följande exempel visas ett **RelyingParty** -element i *B2C_1A_signup_signin* princip filen:
 
@@ -145,6 +145,7 @@ I följande exempel visas en förlitande part med [UserInfo-slutpunkten](userinf
 | JourneyInsights | 0:1 | Den Azure Application Insights Instrumentation-nyckel som ska användas. |
 | ContentDefinitionParameters | 0:1 | Listan över nyckel värdes par som ska läggas till i innehålls definitionens inläsnings-URI. |
 |ScriptExecution| 0:1| [Skript](javascript-and-page-layout.md) körnings lägen som stöds. Möjliga värden: `Allow` eller `Disallow` (standard).
+| JourneyFraming | 0:1| Tillåter att användar gränssnittet för den här principen läses in i en iframe. |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -165,7 +166,7 @@ I följande exempel visas en förlitande part med [UserInfo-slutpunkten](userinf
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ja | Värdet måste vara `ApplicationInsights` . |
 | InstrumentationKey | Ja | Strängen som innehåller Instrumentation-nyckeln för Application Insights-elementet. |
-| DeveloperMode | Ja | Möjliga värden: `true` eller `false` . Om `true` Application Insights påskyndar Telemetrin genom bearbetnings pipelinen. Den här inställningen är praktisk för utveckling, men är begränsad till hög volym. De detaljerade aktivitets loggarna är endast utformade för att under lätta utvecklingen av anpassade principer. Använd inte utvecklings läge i produktion. Loggar samlar in alla anspråk som skickas till och från identitets leverantörerna under utvecklingen. Om den används i produktion, antar utvecklaren ansvaret för PII (privat identifierbar information) som samlats in i den App Insights-logg som de äger. Dessa detaljerade loggar samlas endast in när det här värdet är inställt på `true` .|
+| DeveloperMode | Ja | Möjliga värden: `true` eller `false` . Om `true` Application Insights påskyndar Telemetrin genom bearbetnings pipelinen. Den här inställningen är praktisk för utveckling, men är begränsad till hög volym. De detaljerade aktivitets loggarna är endast utformade för att under lätta utvecklingen av anpassade principer. Använd inte utvecklings läge i produktion. Loggar samlar in alla anspråk som skickas till och från identitets leverantörerna under utvecklingen. Om det används i produktion, förutsätter utvecklaren ansvar för person uppgifter som samlats in i den App Insights-logg som de äger. Dessa detaljerade loggar samlas endast in när det här värdet är inställt på `true` .|
 | ClientEnabled | Ja | Möjliga värden: `true` eller `false` . `true`Skickar Application Insights klient sidans skript för att spåra sid visning och fel på klient sidan. |
 | ServerEnabled | Ja | Möjliga värden: `true` eller `false` . `true`Skickar den befintliga UserJourneyRecorder-JSON som en anpassad händelse till Application Insights. |
 | TelemetryVersion | Ja | Värdet måste vara `1.0.0` . |
@@ -193,6 +194,15 @@ I följande exempel skickas en parameter `campaignId` med namnet med värdet `ha
 | Namn | Ja | Namnet på nyckel värdes paret. |
 
 Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med hjälp av anpassade principer](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)
+
+### <a name="journeyframing"></a>JourneyFraming
+
+**JourneyFraming** -elementet innehåller följande attribut:
+
+| Attribut | Krävs | Beskrivning |
+| --------- | -------- | ----------- |
+| Enabled | Ja | Aktiverar den här principen för att läsas in i en iframe. Möjliga värden: `false` (standard) eller `true` . |
+| Källor | Ja | Innehåller de domäner som ska läsa in värden i iframe. Mer information finns i [inläsning av Azure-B2C i en iframe](embedded-login.md). |
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

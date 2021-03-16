@@ -4,20 +4,20 @@ description: Definiera lagrings mål så att Azure HPC-cachen kan använda ditt 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054373"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471943"
 ---
 # <a name="add-storage-targets"></a>Lägga till lagringsmål
 
 *Lagrings målen* är Server dels lagring för filer som nås via en Azure HPC-cache. Du kan lägga till NFS-lagring (t. ex. ett lokalt maskin varu system) eller lagra data i Azure blob.
 
-Du kan definiera upp till tio olika lagrings mål för ett cacheminne. Cachen visar alla lagrings mål i ett sammanlagt namn område.
+Du kan definiera upp till 20 olika lagrings mål för ett cacheminne. Cachen visar alla lagrings mål i ett sammanlagt namn område.
 
 Namn rymds Sök vägarna konfigureras separat när du har lagt till lagrings målen. I allmänhet kan ett NFS-lagrings mål ha upp till tio namn rymds Sök vägar eller mer för vissa stora konfigurationer. Mer information finns i [sökvägar till NFS-namnområden](add-namespace-paths.md#nfs-namespace-paths) .
 
@@ -29,7 +29,7 @@ Lägg till lagrings mål när du har skapat din cache. Följ den här processen:
 1. Definiera ett lagrings mål (information i den här artikeln)
 1. [Skapa de klientbaserade Sök vägarna](add-namespace-paths.md) (för den [aggregerade namn rymden](hpc-cache-namespace.md))
 
-Proceduren för att lägga till ett lagrings mål skiljer sig något beroende på om du lägger till Azure Blob Storage eller en NFS-export. Information om var och en finns nedan.
+Proceduren för att lägga till ett lagrings mål skiljer sig något beroende på vilken typ av lagring som används. Information om var och en finns nedan.
 
 Klicka på bilden nedan om du vill titta på en [video demonstration](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) av hur du skapar en cache och lägger till ett lagrings mål från Azure Portal.
 
@@ -40,6 +40,9 @@ Klicka på bilden nedan om du vill titta på en [video demonstration](https://az
 Ett nytt Blob Storage-mål måste ha en tom BLOB-behållare eller en behållare som är ifylld med data i Azure HPC-cachens moln fil system format. Läs mer om att för hands läsa in en BLOB-behållare i [Flytta data till Azure Blob Storage](hpc-cache-ingest.md).
 
 Sidan Azure Portal **Lägg till lagrings mål** innehåller alternativet att skapa en ny BLOB-behållare precis innan du lägger till den.
+
+> [!NOTE]
+> För NFS-monterad blob-lagring, Använd [måltypen ADLS-NFS-lagring](#) .
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -161,38 +164,48 @@ Ett NFS-lagrings mål har olika inställningar från ett Blob Storage-mål. Inst
 > Innan du skapar ett NFS-lagrings mål bör du kontrol lera att lagrings systemet är tillgängligt från Azure HPC cache och uppfyller behörighets kraven. Det gick inte att skapa lagrings mål om cachen inte kan komma åt lagrings systemet. Läs om [lagrings krav för NFS](hpc-cache-prerequisites.md#nfs-storage-requirements) och [FELSÖK problem med NAS-konfiguration och NFS-lagring](troubleshoot-nas.md) för mer information.
 
 ### <a name="choose-a-usage-model"></a>Välj en användnings modell
-<!-- referenced from GUI - update aka.ms link if you change this heading -->
+<!-- referenced from GUI - update aka.ms link to point at new article when published -->
 
-När du skapar ett lagrings mål som pekar på ett NFS-lagrings system måste du välja användnings modellen för det målet. Den här modellen avgör hur dina data cachelagras.
+När du skapar ett lagrings mål som använder NFS för att nå sitt lagrings system måste du välja en användnings modell för det målet. Den här modellen avgör hur dina data cachelagras.
 
-Med de inbyggda användnings modellerna kan du välja hur du ska utjämna snabba svar med risken för att få inaktuella data. Om du vill optimera fil läsnings hastigheten kanske du inte bryr dig om filerna i cacheminnet kontrol leras mot backend-filerna. Å andra sidan, om du vill vara säker på att filerna alltid är uppdaterade med Fjärrlagring, väljer du en modell som söker ofta.
+Läs [förstå användnings modeller](cache-usage-models.md) för mer information om alla dessa inställningar.
 
-Det finns tre alternativ:
+Med de inbyggda användnings modellerna kan du välja hur du ska utjämna snabba svar med risken för att få inaktuella data. Om du vill optimera hastigheten för att läsa filer kanske du inte bryr dig om filerna i cacheminnet kontrol leras mot backend-filerna. Å andra sidan, om du vill vara säker på att filerna alltid är uppdaterade med Fjärrlagring, väljer du en modell som söker ofta.
 
-* **Läs tung, ovanliga skrivningar** – Använd det här alternativet om du vill påskynda Läs åtkomsten till filer som är statiska eller sällan ändrade.
+Dessa tre alternativ behandlar de flesta situationer:
 
-  Med det här alternativet cachelagras filer som klienter läser, men skickar omedelbart skrivningar till backend-lagringen. Filer som lagras i cacheminnet jämförs inte automatiskt med filerna på NFS-lagrings volymen. (Läs kommentaren nedan om Server verifiering för mer information.)
+* **Läsning tung, ovanliga skrivningar** – snabbare Läs åtkomst till filer som är statiska eller sällan ändrade.
+
+  Med det här alternativet cachelagras filer från klient läsningar, men klient skrivningar skickas direkt till backend-lagringen. Filer som lagras i cacheminnet jämförs inte automatiskt med filerna på NFS-lagrings volymen.
 
   Använd inte det här alternativet om det finns en risk att en fil kan ändras direkt på lagrings systemet utan att först skriva den till cacheminnet. Om det händer kommer den cachelagrade versionen av filen inte att synkroniseras med backend-filen.
 
-* **Större än 15% skrivningar** – det här alternativet påskyndar både Läs-och skriv prestanda. När du använder det här alternativet måste alla klienter komma åt filer via Azure HPC-cachen i stället för att montera Server dels lagringen direkt. De cachelagrade filerna kommer att ha nya ändringar som inte lagras på Server delen.
+* **Större än 15% skrivningar** – det här alternativet påskyndar både Läs-och skriv prestanda.
 
-  I den här användnings modellen kontrol leras bara filer i cacheminnet mot filerna på backend-lagringsplatsen var åttonde timme. Den cachelagrade versionen av filen antas vara mer aktuell. En ändrad fil i cachen skrivs till Server dels lagrings systemet när den har varit i cachen under en timme utan ytterligare ändringar.
+  Klient läsningar och klient skrivningar cachelagras. Filerna i cachen antas vara nyare än filer på Server dels lagrings systemet. Cachelagrade filer kontrol leras bara automatiskt mot filerna på Server sidans lagring var åttonde timme. Ändrade filer i cachen skrivs till Server dels lagrings systemet när de har funnits i cachen i 20 minuter utan ytterligare ändringar.
 
-* **Klienter skriver till NFS-målet, vilket kringgår cachen** – Välj det här alternativet om några klienter i arbets flödet skriver data direkt till lagrings systemet utan att först skriva till cachen eller om du vill optimera data konsekvens. Filer som klienten begär cachelagras, men eventuella ändringar av filerna från klienten skickas tillbaka till lagrings systemet på Server sidan omedelbart.
+  Använd inte det här alternativet om några klienter monterar backend-fjärrvolymen direkt, eftersom det finns en risk att den har inaktuella filer.
 
-  Med den här användnings modellen kontrol leras ofta filerna i cacheminnet mot backend-versionerna för uppdateringar. Den här verifieringen tillåter att filer ändras utanför cachen och samtidigt bibehåller sig data konsekvens.
+* **Klienter skriver till NFS-målet, vilket kringgår cachen** – Välj det här alternativet om några klienter i arbets flödet skriver data direkt till lagrings systemet utan att först skriva till cachen eller om du vill optimera data konsekvens.
 
-I den här tabellen sammanfattas skillnaderna mellan användnings modeller:
+  Filer som klienten begär cachelagras, men ändringar av filerna från klienten skickas direkt till backend-lagrings systemet. Filerna i cacheminnet kontrol leras ofta mot backend-versionerna för uppdateringar. Den här kontrollen upprätthåller data konsekvens när filer ändras direkt i lagrings systemet i stället för via cachen.
 
-| Användnings modell                   | Cacheläge | Verifiering på Server Sidan | Maximal Skriv åtgärds fördröjning |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Läs tung, sällan skrivna skrivningar | Läs         | Aldrig                 | Inget                     |
-| Större än 15% skrivningar       | Läsning/skrivning   | 8 timmar               | 1 timme                   |
-| Klienterna kringgår cachen      | Läs         | 30 sekunder            | Inget                     |
+Mer information om de andra alternativen finns i [förstå användnings modeller](cache-usage-models.md).
+
+I den här tabellen sammanfattas skillnaderna mellan alla användnings modeller:
+
+| Användnings modell | Cacheläge | Verifiering på Server Sidan | Maximal Skriv åtgärds fördröjning |
+|--|--|--|--|
+| Läs tung, sällan skrivna skrivningar | Läs | Aldrig | Inget |
+| Större än 15% skrivningar | Läsning/skrivning | 8 timmar | 20 minuter |
+| Klienterna kringgår cachen | Läs | 30 sekunder | Inget |
+| Större än 15% skrivningar, frekvent kontroll av Server delen (30 sekunder) | Läsning/skrivning | 30 sekunder | 20 minuter |
+| Större än 15% skrivningar, frekvent kontroll av Server delen (60 sekunder) | Läsning/skrivning | 60 sekunder | 20 minuter |
+| Större än 15% skrivningar, frekvent skrivning | Läsning/skrivning | 30 sekunder | 30 sekunder |
+| Läs tung, kontrol lera servern var 3: e timme | Läs | 3 timmar | Inget |
 
 > [!NOTE]
-> Verifiering svärdet på **Server** sidan visar när cachen automatiskt jämför sina filer med källfiler i Fjärrlagring. Du kan dock tvinga Azure HPC-cache att jämföra filer genom att utföra en katalog åtgärd som innehåller en readdirplus-begäran. Readdirplus är ett standard-NFS-API (kallas även utökad läsning) som returnerar katalogens metadata, vilket gör att cachen jämför och uppdaterar filer.
+> Verifiering svärdet på **Server** sidan visar när cachen automatiskt jämför sina filer med källfiler i Fjärrlagring. Du kan dock utlösa en jämförelse genom att skicka en klientbegäran som innehåller en readdirplus-åtgärd på Server dels lagrings systemet. Readdirplus är ett standard-NFS-API (kallas även utökad läsning) som returnerar katalogens metadata, vilket gör att cachen jämför och uppdaterar filer.
 
 ### <a name="create-an-nfs-storage-target"></a>Skapa ett NFS-lagrings mål
 
@@ -291,6 +304,43 @@ Utdata:
 ```
 
 ---
+
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Lägg till ett nytt ADLS-NFS-lagrings mål (för hands version)
+
+ADLS-NFS-lagrings mål använder Azure Blob-behållare som har stöd för NFS (Network File System) 3,0-protokollet.
+
+> [!NOTE]
+> NFS 3,0 protokoll stöd för Azure Blob Storage finns i offentlig för hands version. Tillgänglighet är begränsad och funktioner kan ändras mellan nu och när funktionen blir allmänt tillgänglig. Använd inte för hands versions teknik i produktions system.
+>
+> Den senaste informationen finns i [stöd för NFS 3,0-protokoll](../storage/blobs/network-file-system-protocol-support.md) .
+
+ADLS-NFS-lagrings mål har en del likheter med Blob Storage-mål och vissa med NFS-lagrings mål. Exempel:
+
+* Precis som med ett Blob Storage-mål måste du ge Azure HPC-behörighet [åtkomst till ditt lagrings konto](#add-the-access-control-roles-to-your-account).
+* Precis som ett NFS-lagrings mål måste du ange en [användnings modell](#choose-a-usage-model)för cache.
+* Eftersom NFS-aktiverade BLOB-behållare har en NFS-kompatibel hierarkisk struktur behöver du inte använda cacheminnet för att mata in data och behållarna kan läsas av andra NFS-system. Du kan i förväg läsa in data i en ADLS-NFS-behållare, sedan lägga till dem i en HPC-cache som ett lagrings mål och sedan komma åt data senare utanför en HPC-cache. När du använder en standard-BLOB-behållare som ett HPC cache Storage-mål, skrivs data i ett eget format och kan bara nås från andra Azure HPC cache-kompatibla produkter.
+
+Innan du kan skapa ett lagrings mål för ADLS-NFS måste du skapa ett NFS-aktiverat lagrings konto. Följ tipsen i [krav för Azure HPC cache](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) och instruktionerna i [montera Blob Storage med hjälp av NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). När lagrings kontot har kon figurer ATS kan du skapa en ny behållare när du skapar lagrings målet.
+
+Om du vill skapa ett ADLS-NFS-lagrings mål öppnar du sidan **Lägg till lagrings mål** i Azure Portal. (Ytterligare metoder är under utveckling.)
+
+![Skärm bild av sidan Lägg till lagrings mål med definierat ADLS-NFS-mål](media/add-adls-target.png)
+
+Ange den här informationen.
+
+* **Lagrings mål namn** – ange ett namn som identifierar det här lagrings målet i Azure HPC-cachen.
+* **Måltyp** – Välj **ADLS-NFS**.
+* **Lagrings konto** – Välj det konto som du vill använda. Om ditt NFS-aktiverade lagrings konto inte visas i listan kontrollerar du att det följer kraven och att cachen har åtkomst till det.
+
+  Du måste auktorisera cache-instansen för att komma åt lagrings kontot enligt beskrivningen i [Lägg till åtkomst roller](#add-the-access-control-roles-to-your-account).
+
+* **Lagrings behållare** – Välj den NFS-aktiverade BLOB-behållaren för målet eller klicka på **Skapa ny**.
+
+* **Användnings modell** – Välj en av profilerna för Datacachen baserat på ditt arbets flöde, som beskrivs i [Välj en användnings modell](#choose-a-usage-model) ovan.
+
+När du är färdig klickar du på **OK** för att lägga till lagrings målet.
+
+<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Visa lagrings mål
 

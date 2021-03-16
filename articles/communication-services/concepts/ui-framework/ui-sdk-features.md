@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services conceptual document
 description: Lär dig mer om funktioner i UI Framework
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 51caf1e73cdeda5862e033a05878f35ddb6ff8dc
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539910"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492225"
 ---
 # <a name="ui-framework-capabilities"></a>Funktioner i UI Framework
 
@@ -22,7 +22,7 @@ Med hjälp av Azure Communication Services UI Framework kan du skapa kommunikati
 
 ## <a name="ui-framework-composite-components"></a>Sammansatta GRÄNSSNITTs Ramverks komponenter
 
-| Sammansatt               | Description                                               | Webb   | Android | iOS   |
+| Sammansatt               | Beskrivning                                               | Webb   | Android | iOS   |
 |-------------------------|-----------------------------------------------------------|-------|---------|-------|
 | Grupp som anropar sammansatt | Ingångs samtal med låg vikt för röst och video för Azure Communication Services som anropar med hjälp av användar gränssnittet i Fluent UI design. Stöder grupp som anropar med grupp-ID för Azure Communication Services. Den sammansatta anslutningen gör att en-till-en-anrop kan användas genom att referera till en Azure Communication Services-identitet eller ett telefonnummer för PSTN med hjälp av ett telefonnummer som har införskaffats via Azure.                                    | React |  |  |
 | Gruppera chatt sammansatt    | Lätt att chatta med Azure Communication Services med hjälp av design resurser för Fluent UI. Den här upplevelsen fokuserar på att leverera en enkel Chat-klient som kan ansluta till Azure Communication Services-trådar. Det gör att användare kan skicka meddelanden och se mottagna meddelanden med Skriv indikatorer och Läs kvitton. Den skalar från 1:1 för att gruppera chatt scenarier. Har stöd för en enda chatt-tråd.                         | React |  |  |

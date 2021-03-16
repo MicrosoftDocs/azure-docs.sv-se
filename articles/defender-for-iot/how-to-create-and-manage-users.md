@@ -4,15 +4,15 @@ description: Skapa och hantera användare av sensorer och den lokala hanterings 
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/03/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: dff379c99fa7383c7f7844cf8d195a345e88a335
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522350"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466277"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Om Defender för IoT Console-användare
 
@@ -162,7 +162,7 @@ Två typer av LDAP-baserad autentisering stöds:
 
 ### <a name="active-directory-and-defender-for-iot-permissions"></a>Active Directory och Defender för IoT-behörigheter
 
-Du kan associera Active Directory grupper som definierats här med vissa behörighets nivåer. Du kan till exempel konfigurera en speciell Active Directory grupp och tilldela RO-behörigheter till alla användare i gruppen. Mer information finns i [skapa och hantera användare](how-to-create-and-manage-users.md) .
+Du kan associera Active Directory grupper som definierats här med vissa behörighets nivåer. Du kan till exempel konfigurera en speciell Active Directory grupp och tilldela Läs behörighet till alla användare i gruppen.
 
 Så här konfigurerar du Active Directory:
 
@@ -170,11 +170,11 @@ Så här konfigurerar du Active Directory:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Visa Active Directory Systeminställningar.":::
 
-1. I fönstret **system inställningar** väljer du **Active Directory**.
+2. I fönstret **system inställningar** väljer du **Active Directory**.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Redigera dina Active Directory-konfigurationer.":::
 
-1. Välj **Active Directory integration Enabled** Save i dialog rutan **Redigera Active Directory konfiguration**  >  . Dialog rutan **redigera Active Directory konfiguration** expanderas och du kan nu ange de parametrar som ska konfigureras Active Directory.
+3. Välj **Active Directory integration Enabled** Save i dialog rutan **Redigera Active Directory konfiguration**  >  . Dialog rutan **redigera Active Directory konfiguration** expanderas och du kan nu ange de parametrar som ska konfigureras Active Directory.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Ange de parametrar som ska konfigureras Active Directory.":::
 
@@ -183,7 +183,7 @@ Så här konfigurerar du Active Directory:
     > - Använd endast gemener för alla Active Directory parametrar. Använd gemener även när konfigurationerna i Active Directory använda versaler.
     > - Du kan inte konfigurera både LDAP och LDAP för samma domän. Du kan dock använda båda för olika domäner samtidigt.
 
-1. Ange parametrarna för Active Directory servern enligt följande:
+4. Ange parametrarna för Active Directory servern enligt följande:
 
    | Server parameter | Beskrivning |
    |--|--|
@@ -193,11 +193,15 @@ Så här konfigurerar du Active Directory:
    | Active Directory grupper | Ange de grupp namn som definieras i Active Directory-konfigurationen på LDAP-servern. |
    | Betrodda domäner | Lägg till en betrodd domän genom att lägga till domän namnet och anslutnings typen för en betrodd domän. <br />Du kan bara konfigurera betrodda domäner för användare som har definierats under användare. |
 
+#### <a name="activedirectory-groups-for-the-on-premises-management-console"></a>ActiveDirectory-grupper för den lokala hanterings konsolen
+
+Om du skapar Active Directory grupper för lokala hanterings konsol användare måste du skapa en regel för åtkomst grupper för varje Active Directory grupp. Den lokala hanterings konsolens Active Directory autentiseringsuppgifter fungerar inte om det inte finns någon åtkomst grupps regel för Active Directory användar gruppen. Se [definiera global åtkomst kontroll](how-to-define-global-user-access-control.md).
+
 1. Välj **Spara**.
 
-1. Om du vill lägga till en betrodd server väljer du **Lägg till Server** och konfigurerar en annan server.
+2. Om du vill lägga till en betrodd server väljer du **Lägg till Server** och konfigurerar en annan server.
 
-## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Återställa en användares lösen ord för sensorn eller den lokala hanterings konsolen
+## <a name="resetting-passwords"></a>Återställa lösen ord
 
 ### <a name="cyberx-or-support-user"></a>CyberX eller support användare
 
@@ -265,7 +269,7 @@ Skrivskyddade och säkerhetsanalytiker kan inte återställa sina egna lösen or
 
 1. Välj **Uppdatera**.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Aktivera och konfigurera din sensor](how-to-activate-and-set-up-your-sensor.md) 
  [Aktivera och konfigurera den lokala hanterings konsolen](how-to-activate-and-set-up-your-on-premises-management-console.md) 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c4d28addac0ecfc9605678582562550a1c96b8d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593321"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491953"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Meddelanden och anslutningar i Azure SignalR Service
 
@@ -48,9 +48,16 @@ Om du har tre klienter och en program Server. En klient skickar ett meddelande p
 
 Det finns Server anslutningar och klient anslutningar med Azure SignalR-tjänsten. Som standard startar varje program server med fem första anslutningar per hubb och varje klient har en klient anslutning.
 
-Det antal anslutningar som visas i Azure-portalen omfattar både serveranslutningar och klientanslutningar.
-
 Anta till exempel att du har två program servrar och att du definierar fem hubbar i kod. Antalet Server anslutningar är 50:2 App-servrar * 5 hubbar * 5 anslutningar per hubb.
+
+Antalet anslutningar som visas i Azure Portal inkluderar server anslutningar, klient anslutningar, diagnostiska anslutningar och direktsända spårnings anslutningar. Anslutnings typerna definieras i följande lista:
+
+- **Server anslutning**: ansluter Azure SignalR-tjänsten och App Server.
+- **Klient anslutning**: ansluter Azure SignalR-tjänsten och klient programmet.
+- **Diagnostisk anslutning**: en särskild typ av klient anslutning som kan skapa en mer detaljerad logg, vilket kan påverka prestandan. Den här typen av klient är utformad för fel sökning.
+- **Direkt spårnings anslutning**: ansluter till Live Trace-slutpunkten och tar emot real tids spår för Azure SignalR-tjänsten. 
+ 
+Observera att en direkt spårnings anslutning inte räknas som en klient anslutning eller som en server anslutning. 
 
 ASP.NET SignalR beräknar serveranslutningar på ett annat sätt. Det omfattar en standardhubb utöver de hubbar som du definierar. Som standard behöver varje program Server fem fler inledande Server anslutningar. Det första antalet anslutningar för standard navet förblir konsekvent med andra hubbar.
 

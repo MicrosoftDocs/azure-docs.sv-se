@@ -2,13 +2,13 @@
 title: Åtgärds regler för Azure Monitor aviseringar
 description: Att förstå vilka åtgärds regler i Azure Monitor är och hur du konfigurerar och hanterar dem.
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/15/2021
+ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463076"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466736"
 ---
 # <a name="action-rules-preview"></a>Åtgärds regler (förhands granskning)
 
@@ -76,7 +76,8 @@ Den här regeln gäller endast för aviseringar på de valda resurs typerna.
 Till exempel innebär **resurs typ = "Virtual Machines"** att regeln endast ska gälla för aviseringar på virtuella datorer.
 * **Varnings regel-ID**  
 Den här regeln gäller endast för aviseringar som kommer från en speciell aviserings regel. Värdet ska vara Resource Manager-ID för varnings regeln.  
-**Varnings regel-ID = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/providers/Microsoft.Insights/metricalerts/API-latency"** innebär till exempel att den här regeln endast gäller för aviseringar som kommer från "API-latenion" mått varnings regel.
+**Varnings regel-ID = "/Subscriptions/SubId1/resourceGroups/RG1/providers/Microsoft.Insights/metricalerts/API-latency"** innebär till exempel att den här regeln endast gäller för aviseringar som kommer från "API-latenion" mått varnings regel.
+Du kan få rätt varnings regel-ID genom att lista dina aviserings regler från CLI eller genom att öppna en speciell varnings regel i portalen, klicka på egenskaper och kopiera värdet "resurs-ID".
 * **Övervaknings villkor**  
 Den här regeln gäller endast för aviserings händelser med det angivna övervaknings villkoret, antingen **utlöst** eller **löst**.
 * **Beskrivning**  

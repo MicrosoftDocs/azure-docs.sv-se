@@ -4,89 +4,68 @@
   items:
     - name: Vad är Azure AD RBAC?
       href: custom-overview.md
-    - name: Förstå Azure AD-roller
-      href: concept-understand-roles.md
 - name: Snabbstarter
   items:
-    - name: Skapa obegränsade appregistreringar
-      href: quickstart-app-registration-limits.md
-- name: Självstudier
-  expanded: true
-  items:
-    - name: Tilldela användare administrativa roller
+    - name: Tilldela roller till användare
       href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Begrepp
-  expanded: true
   items:
-    - name: Delegera administratörsroller i Azure AD
-      href: concept-delegation.md
-    - name: Jämföra standardbehörigheter för användare
-      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-    - name: Jämför roller i Azure och Azure AD
-      href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-    - name: Förstå administrativa enheter i Azure AD
+    - name: Förstå Azure AD-roller
+      href: concept-understand-roles.md
+    - name: Jämför roller
+      items:
+        - name: Jämför roller i Azure och Azure AD
+          href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Microsoft 365-roller
+          href: m365-workload-docs.md
+    - name: Gruppbaserade roll tilldelningar
+      href: groups-concept.md
+    - name: Administrativa enheter
       href: administrative-units.md
-- name: Anvisningar
-  expanded: true
-  items:
-    - name: Roller och behörigheter
-      expanded: true
-      items:
-        - name: Roller och behörigheter
-          href: permissions-reference.md
-        - name: Visa och tilldela roller
-          href: manage-roles-portal.md
-        - name: Min personal-delegering
-          href: my-staff-configure.md
-    - name: Anpassade roller
-      expanded: true
-      items:
-        - name: Skapa en anpassad roll
-          href: custom-create.md
-        - name: Visa anpassade rolltilldelningar
-          href: custom-view-assignments.md
-        - name: Tilldela anpassade roller i Azure-portalen
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Tilldela anpassade roller i PowerShell
-          href: custom-assign-powershell.md
-        - name: Tilldela anpassade roller för företagsappar
-          href: custom-enterprise-apps.md
-        - name: Anpassade rollbehörigheter
-          items:
-            - name: Behörigheter för appregistrering
-              href: custom-available-permissions.md
-            - name: Behörigheter för företagsappar
-              href: custom-enterprise-app-permissions.md
-            - name: Behörigheter för appmedgivande
-              href: custom-consent-permissions.md
-        - name: Delegera appadministratörsroll
-          href: delegate-app-roles.md
-    - name: Tilldela roller till grupper
-      items:
-        - name: Förhandsgranskning av gruppbaserad rolltilldelning
-          href: groups-concept.md
-        - name: Skapa en rolltilldelningsbar grupp
-          href: groups-create-eligible.md
-        - name: Tilldela roller till en grupp
-          href: groups-assign-role.md
-        - name: Ta bort rolltilldelningar från en grupp
-          href: groups-remove-assignment.md
-        - name: Visa en grupps rolltilldelningar
-          href: groups-view-assignments.md
-        - name: Göra en grupp tilldelningsbar för en roll i PIM
-          href: groups-pim-eligible.md
-        - name: Vanliga frågor och felsökning
-          href: groups-faq-troubleshooting.md
-    - name: Skydda dina roller
+    - name: Säkerhet
       items:
         - name: Planering av rollsäkerhet
           href: security-planning.md
         - name: Skapa nödkonton
           href: security-emergency-access.md
+- name: Anvisningar
+  items:
+    - name: Visa lista över rolldefinitioner
+      href: role-definitions-list.md
+    - name: Visa lista över rolltilldelningar
+      items:
+        - name: Visa lista över rolltilldelningar
+          href: view-assignments.md
+        - name: Lista roll tilldelningar för grupper
+          href: groups-view-assignments.md
+    - name: Tilldela roller
+      items:
+        - name: Tilldela roller till användare
+          href: manage-roles-portal.md
+        - name: Skapa en rolltilldelningsbar grupp
+          href: groups-create-eligible.md
+        - name: Tilldela roller till grupper
+          href: groups-assign-role.md
+        - name: Göra en grupp tilldelningsbar för en roll i PIM
+          href: groups-pim-eligible.md
+        - name: Tilldela roller med definitions område med hjälp av PowerShell
+          href: custom-assign-powershell.md
+        - name: Tilldela roller med hjälp av Graph API
+          href: custom-assign-graph.md
+    - name: Ta bort rolltilldelningar
+      items:
+        - name: Ta bort roll tilldelningar från grupper
+          href: groups-remove-assignment.md
+    - name: Skapa anpassade roller
+      items:
+        - name: Skapa en anpassad roll
+          href: custom-create.md
+        - name: Skapa anpassade roller för företags program
+          href: custom-enterprise-apps.md
+        - name: Skapa obegränsade appregistreringar
+          href: quickstart-app-registration-limits.md
     - name: Administrativa enheter
       items:
-        - name: Administrativa enheter – översikt
-          href: administrative-units.md
         - name: Lägga till och hantera
           href: admin-units-manage.md
         - name: Lägga till och hantera användare
@@ -95,23 +74,39 @@
           href: admin-units-add-manage-groups.md
         - name: Tilldela en roll med omfång
           href: admin-units-assign-roles.md
-        - name: Vanliga frågor och felsökning
-          href: admin-units-faq-troubleshoot.md
+    - name: Delegera
+      items:
+        - name: Delegera appadministratörsroll
+          href: delegate-app-roles.md
+        - name: Min personal-delegering
+          href: my-staff-configure.md
     - name: Felsöka
       items:
+        - name: Felsöka roller tilldelade till grupper
+          href: groups-faq-troubleshooting.md
+        - name: Felsöka administrativa enheter
+          href: admin-units-faq-troubleshoot.md
         - name: Få support för Azure AD
           href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Referens
   items:
+    - name: Inbyggda roller
+      href: permissions-reference.md
     - name: Lägsta behörighetsroller efter uppgift
       href: delegate-by-task.md
-    - name: Dokumentation om Microsoft 365-roll
-      href: m365-workload-docs.md
-    - name: Graph API
-      href: /graph/api/resources/directoryrole
-    - name: Azure AD CLI
-      href: /cli/azure/ad
-    - name: Azure AD PowerShell för Graph
-      href: /powershell/azure/active-directory/install-adv2
+    - name: Standardinställningar för användarbehörigheter
+      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Anpassade rollbehörigheter
+      items:
+        - name: Behörigheter för appregistrering
+          href: custom-available-permissions.md
+        - name: Behörigheter för företagsappar
+          href: custom-enterprise-app-permissions.md
+        - name: Behörigheter för appmedgivande
+          href: custom-consent-permissions.md
     - name: Begränsningar för Azure AD-tjänsten
       href: ../enterprise-users/directory-service-limits-restrictions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure AD PowerShell
+      href: /powershell/azure/active-directory/overview
+    - name: Graph API
+      href: /graph/api/overview

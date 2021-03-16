@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629180"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470762"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Del tre: Konfigurera behörigheter för kataloger och filnivå över SMB 
 
@@ -93,19 +93,6 @@ När fil resursen har monterats med lagrings konto nyckeln måste du konfigurera
 
 Om du har kataloger eller filer på lokala fil servrar med Windows-DACL: er som kon figurer ATS mot AD DS-identiteter, kan du kopiera den till Azure Files att bevara ACL: er med traditionella fil kopierings verktyg som Robocopy eller [Azure AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases). Om dina kataloger och filer är i nivå av Azure Files via Azure File Sync, förs dina ACL: er över och sparas i sitt ursprungliga format.
 
-### <a name="configure-windows-acls-with-windows-file-explorer"></a>Konfigurera Windows ACL: er med Windows Utforskaren
-
-Använd Utforskaren i Windows för att ge fullständig behörighet till alla kataloger och filer under fil resursen, inklusive rot katalogen.
-
-1. Öppna Utforskaren i Windows och högerklicka på filen/katalogen och välj **Egenskaper**.
-1. Välj fliken **säkerhet** .
-1. Välj **Redigera...** ändra behörigheter.
-1. Du kan ändra behörigheter för befintliga användare eller välja **Lägg till...** om du vill ge nya användare behörigheter.
-1. I fönstret prompt för att lägga till nya användare anger du det användar namn som du vill bevilja behörigheter i rutan **Ange de objekt namn som ska väljas** och väljer **kontrol lera namn** för att hitta det fullständiga UPN-namnet för mål användaren.
-1.    Välj **OK**.
-1.    På fliken **säkerhet** väljer du alla behörigheter som du vill ge den nya användaren.
-1.    Välj **Tillämpa**.
-
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurera Windows ACL: er med icacls
 
 Använd följande Windows-kommando för att ge fullständig behörighet till alla kataloger och filer under fil resursen, inklusive rot katalogen. Kom ihåg att ersätta plats hållarnas värden i exemplet med dina egna värden.
@@ -115,6 +102,20 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
 Mer information om hur du använder icacls för att ange Windows ACL: er och de olika typerna av behörigheter som stöds finns i [kommando rads referens för icacls](/windows-server/administration/windows-commands/icacls).
+
+### <a name="configure-windows-acls-with-windows-file-explorer"></a>Konfigurera Windows ACL: er med Windows Utforskaren
+
+Använd Utforskaren i Windows för att ge fullständig behörighet till alla kataloger och filer under fil resursen, inklusive rot katalogen. Om du inte kan läsa in informationen om AD-domänen på rätt sätt i Utforskaren i Windows kan detta bero på en förtroende konfiguration i din lokal AD-miljö. Klient datorn kunde inte ansluta till AD-domänkontrollanten som registrerats för Azure Files autentisering. I det här fallet använder du icacls för configurating Windows ACL: er.
+
+1. Öppna Utforskaren i Windows och högerklicka på filen/katalogen och välj **Egenskaper**.
+1. Välj fliken **säkerhet** .
+1. Välj **Redigera...** ändra behörigheter.
+1. Du kan ändra behörigheter för befintliga användare eller välja **Lägg till...** om du vill ge nya användare behörigheter.
+1. I fönstret prompt för att lägga till nya användare anger du det användar namn som du vill bevilja behörigheter i rutan **Ange de objekt namn som ska väljas** och väljer **kontrol lera namn** för att hitta det fullständiga UPN-namnet för mål användaren.
+1.    Välj **OK**.
+1.    På fliken **säkerhet** väljer du alla behörigheter som du vill ge den nya användaren.
+1.    Välj **Använd**.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

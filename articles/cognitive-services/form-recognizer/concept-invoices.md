@@ -3,29 +3,29 @@ title: Fakturor-formulär identifierare
 titleSuffix: Azure Cognitive Services
 description: Lär dig begrepp som rör faktura analys med formatet tolknings-API-användning och begränsningar.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.author: pafarley
-ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736754"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467399"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Fördefinierad faktura modell för formulär tolken
 
-Azure formulär tolken kan analysera och extrahera information från försäljnings fakturor med hjälp av inbyggda faktura modeller. Med faktura-API: et kan kunder ta fakturor i olika format och returnera strukturerade data för att automatisera faktura bearbetningen. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med faktura om djup inlärnings modeller för att extrahera viktig information från fakturor på engelska. Den extraherar text, tabeller och information, till exempel kund, leverantör, faktura-ID, förfallo datum för faktura, totalt, Fakturerat belopp, moms belopp, leverera till, fakturera till och mycket annat. Det inbyggda faktura-API: t är offentligt tillgängligt i för hands versionen av formulär igenkänning v 2.1.
+Azure formulär tolken kan analysera och extrahera information från försäljnings fakturor med hjälp av inbyggda faktura modeller. Med faktura-API: et kan kunder ta fakturor i olika format och returnera strukturerade data för att automatisera faktura bearbetningen. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med faktura om djup inlärnings modeller för att extrahera viktig information från fakturor på engelska. Den extraherar text, tabeller och information, till exempel kund, leverantör, faktura-ID, förfallo datum för faktura, totalt, Fakturerat belopp, moms belopp, leverera till, fakturera till, rad artiklar med mera. Det inbyggda faktura-API: t är offentligt tillgängligt i för hands versionen av formulär igenkänning v 2.1.
 
 ## <a name="what-does-the-invoice-service-do"></a>Vad gör faktura tjänsten?
 
-Faktura-API: n extraherar nyckel fält från fakturor och returnerar dem i ett ordnat strukturerat JSON-svar. Fakturor kan vara från en rad olika format och kvalitet, inklusive hämtade bilder, skannade dokument och digitala PDF-filer. Med faktura-API: et extraheras strukturerad utdata från alla dessa fakturor. 
+Faktura-API: n extraherar nyckel fält och rad objekt från fakturor och returnerar dem i ett ordnat strukturerat JSON-svar. Fakturor kan vara från en rad olika format och kvalitet, inklusive hämtade bilder, skannade dokument och digitala PDF-filer. Med faktura-API: et extraheras strukturerad utdata från alla dessa fakturor. 
 
-![Exempel på Contoso-faktura](./media/invoice-example.jpg)
+![Exempel på Contoso-faktura](./media/invoice-example-new.jpg)
 
 ## <a name="try-it-out"></a>Prova
 
@@ -36,51 +36,50 @@ Om du vill testa faktura tjänsten för formulär tolken går du till verktyget 
 
 Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services)) och en resurs slut punkt för [formulär igenkänning](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) och en nyckel för att testa formulär tolkens faktura tjänst. 
 
-![Exempel på analyserad faktura](./media/analyze-invoice.png)
+:::image type="content" source="media/analyze-invoice-new.png" alt-text="Exempel på analyserad faktura" lightbox="media/analyze-invoice-new.png":::
 
-
-### <a name="input-requirements"></a>Krav för indatamängd 
+### <a name="input-requirements"></a>Krav för indatamängd
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>Faktura åtgärden analysera
 
-[Faktura åtgärden analysera](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) tar en bild eller PDF av en faktura som indata och extraherar värdena för ränta. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
+[Faktura åtgärden analysera](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291) tar en bild eller PDF av en faktura som indata och extraherar värdena för ränta. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
 
 |Svars huvud| Resultat-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>Resultat åtgärden hämta faktura resultat
 
-Det andra steget är att anropa åtgärden för att [analysera resultat för faktura resultat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) . Den här åtgärden tar in det resultat-ID som skapades av faktura åtgärden analysera. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
+Det andra steget är att anropa åtgärden för att [analysera resultat för faktura resultat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9acb78c40a2533aee83) . Den här åtgärden tar in det resultat-ID som skapades av faktura åtgärden analysera. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
 
 |Fält| Typ | Möjliga värden |
 |:-----|:----:|:----|
 |status | sträng | notStarted: analys åtgärden har inte startats.<br /><br />körs: analys åtgärden pågår.<br /><br />misslyckades: det gick inte att utföra analysen.<br /><br />lyckades: analys åtgärden har slutförts.|
 
-När värdet i fältet **status** har värdet **lyckades** inkluderar JSON-svaret faktura förståelsens resultat, tabeller extraherade och valfria text igenkännings resultat om det behövs. Resultatet av faktura förståelsen är ordnat som en ord lista med namngivna fält värden där varje värde innehåller den extraherade texten, normaliserade värdet, avgränsnings rutan, relevansen och motsvarande Word-element. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
+När värdet i fältet **status** har värdet **lyckades** inkluderar JSON-svaret faktura förståelsens resultat, tabeller extraherade och valfria text igenkännings resultat om det behövs. Resultatet av faktura förståelsen är ordnat som en ord lista med namngivna fält värden där varje värde innehåller den extraherade texten, normaliserade värdet, avgränsnings rutan, relevansen och motsvarande Word-element. Den innehåller också de rad objekt som extraheras där varje rad objekt innehåller belopp, beskrivning, enhets pris, antal osv. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
 
 ### <a name="sample-json-output"></a>Exempel på JSON-utdata
 
-Svaret på resultat åtgärden hämta faktura resultat blir den strukturerade åter givningen av fakturan med all information som extraheras. Här visas en [exempel faktura fil](./media/sample-invoice.jpg) och dess strukturerade utdata för [exempel faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice-output.json).
+Svaret på resultat åtgärden hämta faktura resultat blir den strukturerade åter givningen av fakturan med all information som extraheras. Här visas en [exempel faktura fil](media/sample-invoice.jpg) och dess strukturerade utdata för [exempel faktura](media/invoice-example-new.jpg).
 
 JSON-utdata har 3 delar: 
 * `"readResults"` noden innehåller alla tolkade text-och markerings märken. Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. 
 * `"pageResults"` Node innehåller tabeller och celler som extraheras med deras avgränsnings rutor, relevans och referenser till rader och ord i "readResults".
-* `"documentResults"` noden innehåller de öres värden som modellen identifierade. Här hittar du alla fält från fakturan, till exempel faktura-ID, leverera till, fakturera till, kund, totalt och mycket mer.
+* `"documentResults"` noden innehåller de specifika värdena och rad objekt som modellen identifierade. Här hittar du alla fält från fakturan, till exempel faktura-ID, leverera till, fakturera till, kund, Summa, rad artiklar och mycket mer.
 
 ## <a name="example-output"></a>Exempel på utdata
 
-Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. Nedan visas fälten som extraheras från en faktura i JSON-utdata (resultatet nedan använder den här [exempel fakturan](./media/sample-invoice.jpg))  
+Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. Nedan visas fälten som extraheras från en faktura i JSON-utdata (resultatet nedan använder den här [exempel fakturan](media/sample-invoice.jpg)).
 
 |Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sträng | Kunden faktureras | Microsoft Corp |  |
 | CustomerId | sträng | Referens-ID för kunden | CID – 12345 |  |
-| PurchaseOrder | sträng | Ett referens nummer för inköps order | PO – 3333 | |  |
-| InvoiceId | sträng | ID för den här aktuella fakturan (ofta "faktura nummer") | INV-100 | |  |
-| InvoiceDate | date | Datum då fakturan utfärdades | 11/15/2019 | 2019-11-15 |
+| PurchaseOrder | sträng | Ett referens nummer för inköps order | PO – 3333 | | 
+| InvoiceId | sträng | ID för den här aktuella fakturan (ofta "faktura nummer") | INV-100 | | 
+| InvoiceDate | date | Datum då fakturan utfärdades | 11/15/2019 | 2019-11-15 | 
 | DueDate | date | Datum betalning för den här fakturan är förfallen | 12/15/2019 | 2019-12-15 |
 | Namn | sträng | Leverantör som har skapat den här fakturan | CONTOSO LTD. | |
 | VendorAddress | sträng | E-postadress för leverantören | 123 456th St New York, Sverige, 10001 | |
@@ -103,6 +102,20 @@ Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. N
 | ServiceEndDate | date | Slutdatum för service perioden (till exempel en service period för verktyg) | 11/14/2019 | 2019-11-14 |
 | PreviousUnpaidBalance | antal | Explicit tidigare obetald balans | $500,00 | 500 |
 
+Nedan visas de rad objekt som har extraherats från en faktura i JSON-utdata (utdata nedan använder den här [exempel fakturan](./media/sample-invoice.jpg))  
+
+|Namn| Typ | Beskrivning | Text (rad objekt #1) | Värde (standardiserad utdata) |
+|:-----|:----|:----|:----| :----|
+| Poster | sträng | Fullständig sträng text rad i rad objektet | 3/4/2021 A123 Consulting Services 2 timmar $30,00 10% $60,00 | |
+| Amount | antal | Rad objektets belopp | $60,00 | 100 |
+| Description | sträng | Text beskrivningen för faktura rads objektet | Konsult tjänst | Konsult tjänst |
+| Kvantitet | antal | Kvantitet för den här faktura rads posten | 2 | 2 |
+| UnitPrice | antal | Netto priset eller brutto priset (beroende på fakturans brutto faktura inställning) för en enhet av det här objektet | $30,00 | 30 |
+| ProductCode | sträng| Produkt kod, produkt nummer eller SKU som är associerad med det specifika rad objektet | A123 | |
+| Enhet | sträng| Enhetens enhets objekt t. ex. kg, lb. fl. | timmar | |
+| Datum | date| Datum för varje rad objekt. Det här är ofta ett datum då rad artikeln levererades | 3/4/2021| 2021-03-04 |
+| Skatt | antal | Skatt som är kopplad till varje rad objekt. Möjliga värden är skatte belopp, momssats% och skatt Y/N | 10 % | |
+
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -112,4 +125,4 @@ Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. N
 ## <a name="see-also"></a>Se även
 
 * [Vad är formigenkänning?](./overview.md)
-* [REST API referens dokument](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)
+* [REST API referens dokument](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)
