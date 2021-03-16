@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034684"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490984"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Om frågespråket för Azure Digitals dubbla
 
@@ -85,7 +85,7 @@ I det här avsnittet beskrivs begränsningar för frågespråket.
 * Det finns inte stöd för under frågor i `FROM` instruktionen.
 * `OUTER JOIN` semantik stöds inte, vilket innebär att om relationen har en rangordning på noll, elimineras hela raden rad från resultat uppsättningen utdata.
 * Diagram över gångs djupet är begränsat till fem `JOIN` nivåer per fråga.
-* Källan för `JOIN` åtgärder är begränsad: frågan måste deklarera de dubbla platser där frågan börjar.
+* Relationer i digitala Azure-enheter kan inte frågas som oberoende entiteter. Du måste också ange information om källan som relationen kommer från. Det innebär att det finns vissa begränsningar för `JOIN` åtgärden, som används för att fråga relationer, för att se till att frågan deklarerar de dubbla (s) där frågan börjar. Exempel på detta finns i [*fråga efter relation*](how-to-query-graph.md#query-by-relationship) i *instruktionen How-to: fråga den dubbla diagram* artikeln.
 
 ## <a name="next-steps"></a>Nästa steg
 

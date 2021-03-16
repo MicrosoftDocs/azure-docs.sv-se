@@ -4,14 +4,14 @@ description: Hantera och uppdatera Azure HPC-cache med hjälp av Azure Portal el
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590795"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471907"
 ---
 # <a name="manage-your-cache"></a>Hantera din cache
 
@@ -254,6 +254,20 @@ På sidan Översikt visas diagram för viss grundläggande cache-statistik – c
 ![skärm bild av tre linje diagram som visar ovanstående statistik för ett exempel-cache](media/hpc-cache-overview-stats.png)
 
 Dessa diagram ingår i Azures inbyggda verktyg för övervakning och analys. Det finns ytterligare verktyg och aviseringar på sidorna under **övervaknings** rubriken i portalens marginal List. Läs mer i avsnittet portal i [Azures övervaknings dokumentation](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+
+## <a name="view-warnings"></a>Visa varningar
+
+Om cachen hamnar i ett ohälsosamt tillstånd kontrollerar du sidan **varningar** . Den här sidan visar meddelanden från cache-programvaran som kan hjälpa dig att förstå dess tillstånd.
+
+Dessa aviseringar visas inte i aktivitets loggen eftersom de inte styrs av Azure Portal. De är ofta kopplade till anpassade inställningar som du kan ha gjort.
+
+Typer av varningar som du kan se här är:
+
+* Cachen kan inte komma åt sin NTP-server
+* Cachen kunde inte hämta användar namns information för utökade grupper
+* Anpassade DNS-inställningar har ändrats på ett lagrings mål
+
+![skärm bild av sidan övervaknings > varningar som visar ett meddelande om att det inte gick att hämta användar namn för utökade grupper](media/warnings-page.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

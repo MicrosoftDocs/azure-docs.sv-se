@@ -6,19 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 12/07/2020
-ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/08/2021
+ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879772"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493041"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografisk tillgänglighet och valuta support för den kommersiella marknaden
 
 ## <a name="supported-geographic-locations"></a>Geografiska platser som stöds
 
 Kommersiella Marketplace-erbjudanden kan köpas i 141-geografiska områden som definieras av kundens fakturerings adress, och transaktioner kan slutföras i 17 valutor. I följande tabell visas varje geografisk plats som stöds, dess [ISO 3166 2-siffriga alfa kod](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)och den tilldelade valutan.
+
+En KRYPTOGRAFIPROVIDER kan köpa ett erbjudande i Partner Center i sin slut kunds valuta så att de kan faktureras i samma valuta. Mer information om detta finns i [dessa vanliga frågor och svar](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf).
 
 |   Land/region namn               |   ISO-2   |   Valuta</br>(Alla erbjudande typer)  |    Valuta</br>(Endast konsult tjänster erbjuder)    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|

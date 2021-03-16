@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd2a38e3d59af18477a1e5bb11e8b58dbbe81e0b
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471662"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491625"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Konfigurera och aktivera användare för SMS-baserad autentisering med hjälp av Azure Active Directory 
 
@@ -36,6 +36,7 @@ För att slutföra den här artikeln behöver du följande resurser och behörig
 * Varje användare som är aktive rad i principen för autentiseringsmetoden för SMS måste vara licensierad, även om de inte använder den. Varje aktive rad användare måste ha någon av följande Azure AD-, EMS-Microsoft 365-licenser:
     * [Microsoft 365 (M365) F1 eller F3][m365-firstline-workers-licensing]
     * [Enterprise Mobility + Security (EMS) E3 eller E5][ems-licensing] eller [Microsoft 365 (M365) E3 eller E5][m365-licensing]
+    * [Office 365 F3][o365-f3]
 
 ## <a name="limitations"></a>Begränsningar
 

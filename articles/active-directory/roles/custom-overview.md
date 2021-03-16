@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742054"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466770"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Översikt över rollbaserad åtkomst kontroll i Azure Active Directory
 
@@ -60,7 +60,7 @@ En roll tilldelning är en Azure AD-resurs som bifogar en *roll definition* till
 - Rolldefinition
 - Resursomfång
 
-Du kan [skapa roll tilldelningar](custom-create.md) med hjälp av Azure Portal, Azure AD PowerShell eller Graph API. Du kan också [Visa tilldelningarna för en anpassad roll](custom-view-assignments.md#view-the-assignments-of-a-role).
+Du kan [skapa roll tilldelningar](custom-create.md) med hjälp av Azure Portal, Azure AD PowerShell eller Graph API. Du kan också [ange roll tilldelningarna](view-assignments.md).
 
 Följande diagram visar ett exempel på en rolltilldelning. I det här exemplet har Christer grönt tilldelats den anpassade rollen app Registration-administratör i omfånget för Contoso widget Builder-appens registrering. Tilldelningen ger Christer behörigheterna för administratörs rollen för app-registrering enbart för den här aktuella program registreringen.
 
@@ -89,4 +89,4 @@ Användning av inbyggda roller i Azure AD är kostnads fri, medan anpassade roll
 
 - [Förstå Azure AD-roller](concept-understand-roles.md)
 - Skapa anpassade roll tilldelningar med hjälp av [Azure Portal, Azure AD PowerShell och Graph API](custom-create.md)
-- [Visa tilldelningarna för en anpassad roll](custom-view-assignments.md)
+- [Visa lista över rolltilldelningar](view-assignments.md)

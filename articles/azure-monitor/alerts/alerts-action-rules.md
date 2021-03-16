@@ -3,12 +3,12 @@ title: Åtgärds regler för Azure Monitor aviseringar
 description: Att förstå vilka åtgärds regler i Azure Monitor är och hur du konfigurerar och hanterar dem.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466736"
+ms.locfileid: "103471676"
 ---
 # <a name="action-rules-preview"></a>Åtgärds regler (förhands granskning)
 
@@ -76,8 +76,8 @@ Den här regeln gäller endast för aviseringar på de valda resurs typerna.
 Till exempel innebär **resurs typ = "Virtual Machines"** att regeln endast ska gälla för aviseringar på virtuella datorer.
 * **Varnings regel-ID**  
 Den här regeln gäller endast för aviseringar som kommer från en speciell aviserings regel. Värdet ska vara Resource Manager-ID för varnings regeln.  
-**Varnings regel-ID = "/Subscriptions/SubId1/resourceGroups/RG1/providers/Microsoft.Insights/metricalerts/API-latency"** innebär till exempel att den här regeln endast gäller för aviseringar som kommer från "API-latenion" mått varnings regel.
-Du kan få rätt varnings regel-ID genom att lista dina aviserings regler från CLI eller genom att öppna en speciell varnings regel i portalen, klicka på egenskaper och kopiera värdet "resurs-ID".
+**Varnings regel-ID = "/Subscriptions/SubId1/resourceGroups/RG1/providers/Microsoft.Insights/metricalerts/API-latency"** innebär till exempel att den här regeln endast gäller för aviseringar som kommer från "API-latenion" mått varnings regel.  
+_Obs! Du kan få rätt varnings regel-ID genom att lista dina aviserings regler från CLI eller genom att öppna en speciell varnings regel i portalen, klicka på egenskaper och kopiera värdet "resurs-ID"._
 * **Övervaknings villkor**  
 Den här regeln gäller endast för aviserings händelser med det angivna övervaknings villkoret, antingen **utlöst** eller **löst**.
 * **Beskrivning**  
@@ -116,7 +116,7 @@ Om du väljer **Åtgärds grupp** i växlingen, lägger du till en befintlig åt
 ### <a name="action-rule-details"></a>Åtgärds regel information
 
 Konfigurera senast följande information för åtgärds regeln:
-* Name
+* Namn
 * Resurs grupp där den sparas
 * Beskrivning
 
@@ -274,7 +274,7 @@ Om du vill använda logg aviseringar med åtgärds regler skapar du logg aviseri
 
 ![Åtgärds regler och logg aviseringar (antal resultat)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>När jag konfigurerar en åtgärds regel skulle jag vilja se alla eventuella överlappande åtgärds regler så att jag undviker dubbla meddelanden. Är det möjligt att göra detta?
 

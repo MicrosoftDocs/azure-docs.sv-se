@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 54f3004c190c104f2f869b2878b50f5b6c88856b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463942"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493720"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Självstudie: skapa ett digitalt Azure-diagram med en exempel klient
 
@@ -37,18 +37,17 @@ I den här självstudien kommer du att...
 
 Nu när appen och autentiseringen har kon figurer ATS kör du projektet med den här knappen i verktygsfältet:
 
-:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Start knappen i Visual Studio (SampleClientApp-projekt)":::
+:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Skärm bild av Start knappen i Visual Studio (SampleClientApp-projekt)." lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 Ett konsol fönster öppnas, utför autentisering och vänta på ett kommando. 
 * Autentiseringen hanteras via webbläsaren: din standard webbläsare öppnas med en autentiserings-prompt. Använd den här frågan för att logga in med dina Azure-autentiseringsuppgifter. Sedan kan du stänga webbläsarens flik eller fönster.
 
 Här är en skärm bild av hur projekt konsolen ser ut:
 
-:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Välkomst meddelande från kommando rads appen":::
+:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Skärm bild av välkomst meddelandet från kommando rads appen." lightbox="media/tutorial-command-line/app/command-line-app.png":::
 
 > [!TIP]
 > En lista över alla möjliga kommandon som du kan använda med det här projektet får du genom `help` att skriva i projekt konsolen och trycka på RETUR.
-> :::image type="content" source="media/tutorial-command-line/app/command-line-app-help.png" alt-text="Utdata från hjälp kommandot":::
 
 Se till att projekt konsolen körs för resten av stegen i den här självstudien.
 
@@ -83,7 +82,7 @@ När du har utformat modeller måste du ladda upp dem till din Azure Digital-ins
 
 1. Kontrol lera att modellerna har skapats genom att köra kommandot `GetModels true` . Detta kommer att fråga Azure Digitals-instansen för alla modeller som har laddats upp och skriva ut all information. Leta efter den redigerade *rums* modellen i resultaten:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Resultat av GetModels, som visar den uppdaterade rums modellen":::
+    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Skärm bild av resultatet från GetModels, som visar den uppdaterade rums modellen." lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
 ### <a name="errors"></a>Fel
 
@@ -128,7 +127,7 @@ Om du vill skapa en digital-delad använder du `CreateDigitalTwin` kommandot. Du
 
     Utdata från de här kommandona ska ange att de dubbla värdena har skapats. 
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Utdrag från resultaten av CreateDigitalTwin-kommandon, som visar floor0, floor1, room0 och room1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Skärm bild som visar ett utdrag från resultatet av CreateDigitalTwin-kommandon, som innehåller floor0, floor1, room0 och room1." lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
 1. Du kan kontrol lera att de dubblarna har skapats genom att köra `Query` kommandot. Det här kommandot frågar din Azure Digital-instansen för alla digitala dubbla som den innehåller. Leta efter *room0*, *room1*, *floor0* och *floor1* -dubbla i resultaten.
 
@@ -180,7 +179,7 @@ Om du vill lägga till en relation använder du `CreateRelationship` kommandot. 
     
     Utdata från de här kommandona bekräftar att relationerna har skapats:
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Utdrag från resultaten av CreateRelationship-kommandon, som visar relationship0 och relationship1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Skärm bild av ett utdrag från resultatet av CreateRelationship-kommandona, som innehåller relationship0 och relationship1." lightbox="media/tutorial-command-line/app/output-create-relationship.png":::
 
 1. Du kan kontrol lera relationerna med något av följande kommandon, som frågar relationerna i din Azure Digital-instansen.
     * Om du vill se alla relationer som kommer från varje våning (som visar relationerna från ena sidan):
@@ -201,7 +200,7 @@ Om du vill lägga till en relation använder du `CreateRelationship` kommandot. 
 
 De dubbla och relationer som du har skapat i den här självstudien utgör följande konceptuella diagram:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Ett diagram som visar floor0 som är anslutna via relationship0 till room0 och floor1 som är anslutna via relationship1 till room1" border="false":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Ett diagram som visar ett konceptuellt diagram. floor0 är ansluten via relationship0 till room0 och floor1 är ansluten via relationship1 till room1." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Fråga den dubbla grafen för att svara på frågor om miljön
 
@@ -217,7 +216,7 @@ Kör följande kommandon i projekt konsolen som körs för att svara på frågor
 
     På så sätt kan du snabbt ta en titt på din miljö och se till att allt är representerat på det sätt som du vill att det ska vara i Azure Digitals. Resultatet av detta är en utmatning som innehåller varje digital enhet med information. Här är ett utdrag:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Partiella resultat av en delad fråga som visar room0 och floor1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Skärm bild som visar ett partiellt resultat från den dubbla frågan, inklusive room0 och floor1.":::
 
     >[!NOTE]
     >Kommandot `Query` utan några ytterligare argument är detsamma som i exempelprojektet `Query SELECT * FROM DIGITALTWINS` . Om du vill fråga alla dubbla i din instans med hjälp av [fråge-API: erna](/rest/api/digital-twins/dataplane/query) eller [CLI-kommandona](how-to-use-cli.md)använder du frågan längre (slutförd).
@@ -230,7 +229,7 @@ Kör följande kommandon i projekt konsolen som körs för att svara på frågor
 
     Du kan begränsa frågan till flera av en viss typ, för att få mer specifik information om vad som visas. Resultatet av detta är *room0* och *room1*, men visar **inte** *floor0* eller *floor1* (eftersom de är golv, inte rum).
     
-    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Resultat av modell frågan, som endast visar room0 och room1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Skärm bild av resultatet från modell frågan, som endast visar room0 och room1.":::
 
 1. **Vilka är alla rum på *floor0*?** (fråga efter relation)
 
@@ -240,7 +239,7 @@ Kör följande kommandon i projekt konsolen som körs för att svara på frågor
 
     Du kan fråga baserat på relationer i diagrammet för att få information om hur dubbla anslutningar är anslutna eller begränsa din fråga till ett visst område. Endast *room0* är på *floor0*, så det är det enda rummet i resultatet.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="Resultat av Relations frågan, som visar room0":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="Skärm bild av resultatet från Relations frågan som visar room0.":::
 
 1. **Vad är alla dubbla i min miljö med en temperatur över 75?** (fråga efter egenskap)
 
@@ -250,7 +249,7 @@ Kör följande kommandon i projekt konsolen som körs för att svara på frågor
 
     Du kan fråga diagrammet utifrån egenskaper för att besvara en rad olika frågor, inklusive att hitta avvikande extrem värden i din miljö som kan behöva åtgärdas. Andra jämförelse operatorer ( *<* ,, *>* *=* eller *! =*) stöds också. *room1* visas i resultatet, eftersom det har en temperatur på 80.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Resultat för egenskaps fråga, som endast visar room1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Skärm bild av resultatet från egenskaps frågan, som endast visar room1.":::
 
 1. **Vilka är alla rum på *floor0* med en temperatur över 75?** (sammansatt fråga)
 
@@ -260,7 +259,7 @@ Kör följande kommandon i projekt konsolen som körs för att svara på frågor
 
     Du kan också kombinera de tidigare frågorna som du skulle göra i SQL, med kombinations operatorer som `AND` , `OR` , `NOT` . Den här frågan använder `AND` för att göra den föregående frågan om dubbla temperaturer mer detaljerad. Resultatet innehåller nu bara rum med temperaturer över 75 som finns på *floor0*, vilket i det här fallet inte är något av dem. Resultat uppsättningen är tom.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Resultat av sammansatt fråga som visar inga resultat":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Skärm bild av resultatet från den sammansatta frågan och visar inga resultat." lightbox="media/tutorial-command-line/app/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

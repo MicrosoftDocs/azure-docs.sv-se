@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 16d3d50d5ade298e2ca22f271466c70e74724381
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 67480786e963235d4d3c010bea72e551a8be7bbc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613569"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493806"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Använd privata slut punkter för Azure Storage
 
@@ -146,6 +146,12 @@ Den här begränsningen beror på DNS-ändringar som gjorts när konto a2 skapar
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Regler för nätverkssäkerhetsgrupper för undernät med privata slutpunkter
 
 För närvarande kan du inte konfigurera regler för [nätverks säkerhets grupper](../../virtual-network/network-security-groups-overview.md) (NSG) och användardefinierade vägar för privata slut punkter. NSG-regler som tillämpas på det undernät som är värdar för den privata slut punkten används inte för den privata slut punkten. De tillämpas endast på andra slut punkter (till exempel nätverks gränssnitts styrenheter). En begränsad lösning för det här problemet är att implementera åtkomst regler för privata slut punkter på käll under näten, även om den här metoden kan kräva en högre hanterings kostnad.
+
+### <a name="copying-blobs-between-storage-accounts"></a>Kopiera blobbar mellan lagrings konton
+
+Du kan bara kopiera blobbar mellan lagrings konton med hjälp av privata slut punkter om du använder Azure-REST API eller verktyg som använder REST API. Dessa verktyg omfattar AzCopy, Storage Explorer, Azure PowerShell, Azure CLI och Azure-Blob Storage SDK: er. 
+
+Endast privata slut punkter som är riktade till Blob Storage-resursen stöds. Privata slut punkter som är riktade till Data Lake Storage Gen2 eller fil resursen stöds inte ännu. Det går inte heller att kopiera mellan lagrings konton med hjälp av NFS-protokollet (Network File System) ännu. 
 
 ## <a name="next-steps"></a>Nästa steg
 

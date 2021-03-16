@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: 28265861c98cceaedf7d2662f6526a9f62fe68de
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803773"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472068"
 ---
 # <a name="configure-directory-services"></a>Konfigurera katalog tjänster
 
@@ -75,7 +75,7 @@ Servern och Bas-DN är de enda inställningar som krävs för att göra LDAP-arb
 
 I avsnittet **säker åtkomst** kan du aktivera kryptering och certifikat validering för LDAP-anslutningen. När du har klickat på **Ja** för att aktivera kryptering har du följande alternativ:
 
-* **Kräv giltigt certifikat** – när det här anges verifieras LDAP-serverns certifikat mot certifikat utfärdaren i URI-fältet nedan.
+* **Verifiera certifikat** – när det här anges VERIFIERAs LDAP-serverns certifikat mot certifikat utfärdaren i URI-fältet nedan.
 
 * **Ca-certifikat-URI** – ange sökvägen till det auktoritativa certifikatet. Detta kan vara en länk till ett CA-verifierat certifikat eller ett självsignerat certifikat. Det här fältet krävs för att använda inställningen för externt validerade certifikat.
 

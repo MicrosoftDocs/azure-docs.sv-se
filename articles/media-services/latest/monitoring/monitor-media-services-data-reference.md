@@ -7,12 +7,12 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.date: 03/11/2021
-ms.openlocfilehash: c5545ead3e4d40c7a0642aee6273c4df241bd394
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 461c998aa85d70d69cb267fdbeabd7eabcfb5854
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464533"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471547"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Övervaknings Media Services data referens
 
@@ -61,7 +61,7 @@ Följande Media Services [slut punkter för direkt uppspelnings](/rest/api/media
 
 Mer information om vilka mått dimensioner som finns i [flerdimensionella mått](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
 
-**Plats hållare** för dimensions tabell.
+<!--**PLACEHOLDER** for dimensions table.-->
 
 ## <a name="resource-logs"></a>Resursloggar
 
@@ -75,7 +75,7 @@ Media Services stöder följande diagnostikloggar:
 
 ### <a name="key-delivery"></a>Nyckel leverans
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |Begäran om nyckel leverans tjänst|Loggar som visar information om viktiga leverans tjänst begär Anden. Mer information finns i [scheman](monitor-media-services-data-reference.md).|
 
@@ -87,7 +87,7 @@ Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar 
 
 De här egenskaperna är speciella för logg schema för nyckel leverans.
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |keyId|ID för den begärda nyckeln.|
 |keyType|Kan vara något av följande värden: "Clear" (ingen kryptering), "FairPlay", "PlayReady" eller "Widevine".|

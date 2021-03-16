@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: fd332ffbbca4987b52ce380c6fd893571e65fb1c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435468"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490117"
 ---
 # <a name="introduction-to-azure-percept"></a>Introduktion till Azure percept
 
@@ -35,6 +35,9 @@ Huvud komponenterna i Azure-percept är:
 2. Azure percept DK (devkit).
 
     - Ett utvecklings paket som är tillräckligt flexibelt för att stödja en mängd olika prototyp scenarier för enhets byggare, lösnings utvecklare och kunder.
+
+        > [!div class="nextstepaction"]
+        > [Köp nu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 3. Tjänster och arbets flöden för att påskynda utvecklingen av AI-modellen och lösningen.
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 02/28/2021
-ms.author: anfeldma
+ms.date: 03/15/2021
+ms.author: kuthapar
 ms.custom: devx-track-java
-ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3c740aa00b158c7ddbca3e4f61d79e37978223c2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692733"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493619"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB v3 for Core (SQL) API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,13 @@ ms.locfileid: "101692733"
 
 Med vår data Azure Cosmos DB version 3 för Core (SQL) kan utvecklare använda Azure Cosmos DB i vår program. Våren data Azure Cosmos DB visar data gränssnittet våren för att manipulera databaser och samlingar, arbeta med dokument och skicka frågor. Både synkronisering och asynkron (reaktiv) API: er stöds i samma maven-artefakt. 
 
-Våren data Azure Cosmos DB är beroende av våren data Framework. Azure Cosmos DB SDK-teamet släpper maven-artefakter för våren data version 2,2 och 2,3.
+> [!IMPORTANT]
+> Våren data Azure Cosmos DB är beroende av våren data Framework.
+> 
+> Azure-våren-data-Cosmos-versioner från 3.0.0 till 3.4.0 stöder våren data version 2,2 och 2,3.
+> 
+> Azure-våren-data-Cosmos-versioner 3.5.0 och senare stöder våren-data versioner 2.4.3 och senare.
+>
 
 [Våren-ramverket](https://spring.io/projects/spring-framework) är en programmerings-och konfigurations modell som fören klar utveckling av Java-program. Våren effektiviserar "rör koppling" av program genom att använda beroende inmatning. Många utvecklare liknar våren eftersom det gör det enklare att skapa och testa program. [Våren Boot](https://spring.io/projects/spring-boot) utökar denna hantering av rör med ett öga mot webb program och utveckling av mikrotjänster. [Våren data](https://spring.io/projects/spring-data) är en programmerings modell och ett ramverk för att komma åt data lager som Azure Cosmos dB från kontexten för ett våren-eller våren Boot-program. 
 
@@ -91,7 +97,7 @@ Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://az
 * Våren data Azure Cosmos DB stöder Java JDK 8 och Java JDK 11.
 * Våren data 2,3 stöds för närvarande, våren data 2,4 stöds inte för närvarande.
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

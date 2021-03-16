@@ -3,24 +3,19 @@ title: Registrera resurs leverantören för Azure VMware-lösningen
 description: Steg för att registrera resurs leverantören för Azure VMware-lösningen.
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: cd4a6f3003945973f0fe5367eb198823595a412e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d2363ca2672f7f668d8f9b3816447f316d8b7347
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750312"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103555906"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
 Om du vill använda Azure VMware-lösningen måste du först registrera resurs leverantören med din prenumeration. Mer information om resurs leverantörer finns i [Azure Resource providers och-typer](../../azure-resource-manager/management/resource-providers-and-types.md).
 
-### <a name="azure-cli"></a>Azure CLI 
 
-```azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-### <a name="azure-portal"></a>Azure Portal
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
@@ -33,3 +28,22 @@ az provider register -n Microsoft.AVS --subscription <your subscription ID>
 1. Välj **resurs leverantörer** och ange **Microsoft. AVS** i sökningen. 
  
 1. Om resurs leverantören inte är registrerad väljer du **Registrera**.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Börja använda Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Logga in på Azure-prenumerationen som du använder för distributionen av Azure VMware-lösningen via Azure CLI. Registrera `Microsoft.AVS` resurs leverantören med [AZ Provider register](/cli/azure/provider#az_provider_register) kommando:
+
+```azurecli-interactive
+az provider register -n Microsoft.AVS --subscription <your subscription ID>
+```
+
+Du kan använda kommandot [AZ Provider List](/cli/azure/provider#az_provider_list) för att se alla tillgängliga providers.
+
+---
+
+
+ 

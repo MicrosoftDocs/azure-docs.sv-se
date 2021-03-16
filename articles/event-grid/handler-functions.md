@@ -2,13 +2,13 @@
 title: Använd en funktion i Azure som händelse hanterare för Azure Event Grid händelser
 description: Beskriver hur du kan använda funktioner som skapats i och finns i Azure Functions som händelse hanterare för Event Grid händelser.
 ms.topic: conceptual
-ms.date: 09/18/2020
-ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632520"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496549"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Använd en funktion som händelse hanterare för Event Grid händelser
 
@@ -79,6 +79,9 @@ Du kan använda [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/ev
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Du kan använda cmdleten [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) eller [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) för att konfigurera batch-relaterade inställningar med följande parametrar: `-MaxEventsPerBatch` eller `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> När du använder Event Grid-utlösaren hämtar Event Grid tjänsten klient hemligheten för Azure-funktionen och använder den för att leverera händelser till Azure-funktionen. Om du skyddar din Azure-funktion med ett Azure Active Directory-program måste du ta den allmänna webhook-metoden och använda HTTP-utlösaren.
 
 ## <a name="next-steps"></a>Nästa steg
 En lista över händelse hanterare som stöds finns i artikeln [händelse hanterare](event-handlers.md) .

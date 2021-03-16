@@ -7,20 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5095e077ad1f2259c227c37f789dbcaf1f6d1cd7
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 608017c15d039be940d1d67b8f9e1bf7618134b7
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611869"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491524"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webb inloggning med OpenID Connect i Azure Active Directory B2C
 
 OpenID Connect är ett autentiseringsprotokoll som byggts ovanpå OAuth 2,0 och som kan användas för att på ett säkert sätt logga användare i webb program. Genom att använda Azure Active Directory B2C (Azure AD B2C) implementeringen av OpenID Connect kan du registrera dig för registrering, inloggning och andra identitets hanterings upplevelser i dina webb program för att Azure Active Directory (Azure AD). Den här guiden visar hur du gör detta på ett språk oberoende sätt. Den beskriver hur du skickar och tar emot HTTP-meddelanden utan att använda våra bibliotek med öppen källkod.
+
+> [!NOTE]
+> De flesta av autentiseringsmetoderna för autentisering med öppen källkod hämtar och validerar JWT-token för ditt program. Vi rekommenderar att du utforskar dessa alternativ i stället för att implementera din egen kod. Mer information finns i [Översikt över Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)och [Microsoft Identity Web Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web).
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) utökar protokollet OAuth 2,0- *auktorisering* för användning som *autentiseringsprotokoll* . Med det här autentiseringsprotokollet kan du utföra enkel inloggning. Den introducerar begreppet *ID-token*, vilket gör att klienten kan verifiera användarens identitet och få grundläggande profil information om användaren.
 
@@ -97,7 +100,10 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>Validera ID-token
 
-Det räcker bara att ta emot ID-token för att autentisera användaren. Verifiera signaturen för ID-token och verifiera anspråk i token enligt programmets krav. Azure AD B2C använder [JSON-Webbtoken (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) och kryptering med offentliga nycklar för att signera tokens och kontrol lera att de är giltiga. Det finns många bibliotek med öppen källkod som är tillgängliga för validering av JWTs, beroende på vilket språk du föredrar. Vi rekommenderar att du utforskar dessa alternativ i stället för att implementera din egen verifierings logik.
+Det räcker bara att ta emot ID-token för att autentisera användaren. Verifiera signaturen för ID-token och verifiera anspråk i token enligt programmets krav. Azure AD B2C använder [JSON-Webbtoken (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) och kryptering med offentliga nycklar för att signera tokens och kontrol lera att de är giltiga. 
+
+> [!NOTE]
+> De flesta av autentiseringsmetoderna för autentisering med öppen källkod verifierar JWT-token för ditt program. Vi rekommenderar att du utforskar dessa alternativ i stället för att implementera din egen verifierings logik. Mer information finns i [Översikt över Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)och [Microsoft Identity Web Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web).
 
 Azure AD B2C har en slut punkt för OpenID Connect-metadata som gör det möjligt för ett program att hämta information om Azure AD B2C vid körning. Den här informationen omfattar slut punkter, token innehåll och signerings nycklar för token. Det finns ett JSON-Metadatadokumentet för varje användar flöde i B2C-klienten. Till exempel finns metadata-dokumentet för `b2c_1_sign_in` användar flödet i `fabrikamb2c.onmicrosoft.com` :
 
@@ -129,7 +135,7 @@ Det finns också flera fler verifieringar som du bör utföra. Valideringarna be
 - Se till att användaren har rätt behörighet/privilegier.
 - Se till att en viss styrka autentisering har inträffat, till exempel Azure AD Multi-Factor Authentication.
 
-När du har validerat ID-token kan du starta en session med användaren. Du kan använda anspråken i ID-token för att hämta information om användaren i ditt program. Användningen av den här informationen omfattar visning, poster och auktorisering.
+När ID-token har verifierats kan du starta en session med användaren. Du kan använda anspråken i ID-token för att hämta information om användaren i ditt program. Användningen av den här informationen omfattar visning, poster och auktorisering.
 
 ## <a name="get-a-token"></a>Hämta en token
 

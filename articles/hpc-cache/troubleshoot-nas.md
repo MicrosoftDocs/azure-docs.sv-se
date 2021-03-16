@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082774"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471714"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Felsök problem med NAS-konfiguration och NFS-lagring
 
@@ -64,7 +64,7 @@ Olika lagrings system använder olika metoder för att aktivera den här åtkoms
 Om du använder export regler måste du komma ihåg att cachen kan använda flera olika IP-adresser från cache-undernätet. Tillåt åtkomst från alla möjliga IP-adresser för undernät.
 
 > [!NOTE]
-> Som standard är Azure HPC cache-squashes rot åtkomst. Mer information finns i [Konfigurera ytterligare cache-inställningar](configuration.md#configure-root-squash) .
+> Även om cachen behöver rot åtkomst till Server dels lagrings systemet, kan du begränsa åtkomsten för klienter som ansluter via cacheminnet. Läs [kontrol lera klient åtkomst](access-policies.md#root-squash) för mer information.
 
 Arbeta med din NAS-lagringsenhet för att aktivera rätt åtkomst nivå för cacheminnet.
 

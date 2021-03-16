@@ -5,23 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 1/19/2021
+ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 83f9778da91cebb651d98e2e85748cda7435230a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674681"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470412"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Kända problem med virtuella datorer i H-serien och N-serien
 
 Den här artikeln innehåller de vanligaste problemen och lösningarna när du använder HPC-och [N-seriens](../../sizes-gpu.md) HPC [-](../../sizes-hpc.md) och GPU-datorer.
 
+## <a name="known-issues-on-hbv3"></a>Kända problem på HBv3
+- InfiniBand stöds för närvarande endast på den virtuella datorn med 120 kärnor (Standard_HB120rs_v3). Stöd för andra VM-storlekar kommer snart att aktive ras.
+- Azure-accelererat nätverk stöds inte i HBv3-serien i alla regioner. Den här funktionen kommer snart att aktive ras.
+
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Accelererat nätverk på HB, HC, HBv2 och NDv2
 
-[Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är nu tillgängligt på RDMA-och InfiniBand-kompatibla och SR-IOV-aktiverade VM-storlekar [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md) och [NDv2](../../ndv2-series.md). Den här funktionen kan nu utökas i hela (upp till 30 Gbit/s) och fördröjning i Azure Ethernet-nätverket. Även om detta skiljer sig från RDMA-funktionerna i InfiniBand-nätverket kan vissa plattforms ändringar för den här funktionen påverka beteendet för vissa MPI-implementeringar när Kör-jobb över InfiniBand. Särskilt InfiniBand-gränssnittet på vissa virtuella datorer kan ha ett något annorlunda namn (mlx5_1 till skillnad från tidigare mlx5_0) och detta kan kräva att kommando raderna i MPI ändras särskilt när du använder UCX-gränssnittet (vanligt vis med OpenMPI och HPC-X).
+[Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är nu tillgängligt på RDMA-och InfiniBand-kompatibla och SR-IOV-aktiverade VM-storlekar [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)och [NDv2](../../ndv2-series.md). Den här funktionen kan nu utökas i hela (upp till 30 Gbit/s) och fördröjning i Azure Ethernet-nätverket. Även om detta är skilt från RDMA-funktionerna i InfiniBand-nätverket kan vissa plattforms ändringar för den här funktionen påverka beteendet för vissa MPI-implementeringar när du kör jobb över InfiniBand. Särskilt InfiniBand-gränssnittet på vissa virtuella datorer kan ha ett något annorlunda namn (mlx5_1 till skillnad från tidigare mlx5_0) och detta kan kräva att kommando raderna i MPI ändras särskilt när du använder UCX-gränssnittet (vanligt vis med OpenMPI och HPC-X).
 Mer information om detta finns i den här [blogg artikeln](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) med anvisningar om hur du åtgärdar eventuella observerade problem.
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>InfiniBand-drivrutin installation av virtuella datorer i N-serien
@@ -54,11 +58,7 @@ Detta är ett känt problem med att duplicera MAC med Cloud-Init på Ubuntu. Lö
 
 ## <a name="dram-on-hb-series"></a>DRAM på HB-serien
 
-Virtuella datorer i HB-serien kan bara exponera 228 GB RAM-minne för virtuella gäst datorer för tillfället. Detta beror på en känd begränsning i Azure hypervisor för att förhindra att sidor tilldelas till det lokala DRAM av AMD CCX (NUMA-domäner) som är reserverade för den virtuella gäst datorn.
-
-## <a name="accelerated-networking"></a>Accelererat nätverk
-
-Azure accelererat nätverk i IB-aktiverade HPC-och GPU-datorer är inte aktiverat för tillfället. Vi kommer att meddela kunder när den här funktionen stöds.
+Virtuella datorer i HB-serien kan bara exponera 228 GB RAM-minne för virtuella gäst datorer för tillfället. På samma sätt är 458 GB på HBv2 och 448 GB på virtuella HBv3-datorer. Detta beror på en känd begränsning i Azure hypervisor för att förhindra att sidor tilldelas till det lokala DRAM av AMD CCX (NUMA-domäner) som är reserverade för den virtuella gäst datorn.
 
 ## <a name="qp0-access-restriction"></a>Åtkomst begränsning för qp0
 
@@ -114,5 +114,5 @@ Du kan ignorera följande kernel-varnings meddelanden när du startar en virtuel
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs översikten över [HB-serien](hb-series-overview.md) och [HC-serien](hc-series-overview.md) för att lära dig mer om att konfigurera arbets belastningar optimalt för prestanda och skalbarhet.
-- Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En mer övergripande arkitektur för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).

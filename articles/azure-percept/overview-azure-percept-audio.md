@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8f57c63868d6f70094cf040a92c0124b46477758
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426356"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490202"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Introduktion till Azure percept-ljud
 
 Azure percept Audio är en tillbehörs enhet som lägger till tal AI-funktioner i Azure percept DK. Den innehåller en förkonfigurerad ljud processor och en linjär matris med fyra mikrofoner, så att du kan använda röst kommando, nyckelords upptäcka och långt fält tal för lokala lyssnings enheter med Azure Cognitive Services. Azure percept Audio gör det möjligt för enhets tillverkare att utöka Azure percept DK bortom visionens funktioner till nya, smart Voice-aktiverade enheter. Den är integrerad med Azure percept DK, Azure percept Studio och andra Azure Edge Management-tjänster. Den kan köpas på [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+
+> [!div class="nextstepaction"]
+> [Köp nu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-audio/percept-audio.png" alt-text="Azure percept Audio-enhet.":::
 
@@ -67,4 +70,5 @@ Bygg en [icke-kodad tal lösning](./tutorial-no-code-speech.md) i [Azure percept
 
 ## <a name="next-steps"></a>Nästa steg
 
-Beställ en Azure percept Audio-enhet på [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+> [!div class="nextstepaction"]
+> [Köp en Azure percept-ljudenhet från Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

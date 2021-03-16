@@ -8,14 +8,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043909"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487742"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Ansluta Modbus TCP-enheter via en IoT Edge enhets-Gateway
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Om du vill ansluta IoT-enheter som använder Modbus TCP-eller RTU-protokoll till en Azure IoT-hubb kan du använda en IoT Edge enhet som en gateway. Gatewayenheten läser data från Modbus-enheterna och kommunicerar sedan dessa data till molnet med ett protokoll som stöds.
 
@@ -25,7 +27,7 @@ Den här artikeln beskriver hur du skapar en egen containeravbildning för en Mo
 
 Den här artikeln förutsätter att du använder Modbus TCP-protokollet. Mer information om hur du konfigurerar modulen så att den stöder Modbus-RTU finns i [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) -projekt på GitHub.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure IoT Edge-enhet. En genom gång av hur du konfigurerar en sådan finns i [distribuera Azure IoT Edge på Windows](quickstart.md) eller [Linux](quickstart-linux.md).
 * Primärnyckelns anslutningssträng för IoT Edge-enheten.

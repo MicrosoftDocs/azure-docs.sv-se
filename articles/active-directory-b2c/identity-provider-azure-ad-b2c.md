@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9a20305f05b285b29d4a5eaf75116c862f3a6d4
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 4b357213f4e552fd791fb575d8b7a287b924c7f9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448497"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489078"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Konfigurera registrering och inloggning med ett Azure AD B2C konto från en annan Azure AD B2C klient
 
@@ -63,6 +63,8 @@ För att skapa ett program.
     ```
 
     Till exempel `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+
+    Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-domain-name` med din anpassade domän och `your-tenant-name` med namnet på din klient.
 
 1. Under Behörigheter markerar du kryss rutan **bevilja administratörs medgivande till OpenID och offline_access behörighet** .
 1. Välj **Register** (Registrera).

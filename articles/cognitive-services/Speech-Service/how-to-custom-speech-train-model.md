@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373376"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491120"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Träna och distribuera en Custom Speech-modell
 
@@ -61,7 +61,7 @@ I **tränings** tabellen visas en ny post som motsvarar den nya modellen. Tabell
 Se [hur du kan](how-to-custom-speech-evaluate-data.md) utvärdera och förbättra Custom Speech modellens precision. Om du väljer att testa noggrannhet är det viktigt att välja en akustisk data uppsättning som skiljer sig från den som du använde med din modell för att få en realistisk känsla för modellens prestanda.
 
 > [!NOTE]
-> Både bas modeller och anpassade modeller kan bara användas upp till ett visst datum (se [modellens livs cykel](custom-speech-overview.md#model-lifecycle)). Tal Studio visar det här datumet i kolumnen **förfallo** datum för varje modell och slut punkt. Efter denna datum förfrågan till en slut punkt eller till en batch-avskrift kan det gå sönder eller återgå till bas modellen.
+> Både bas modeller och anpassade modeller kan bara användas upp till ett visst datum (se [modell-och slut punkts livs cykel](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Tal Studio visar det här datumet i kolumnen **förfallo** datum för varje modell och slut punkt. Efter denna datum förfrågan till en slut punkt eller till en batch-avskrift kan det gå sönder eller återgå till bas modellen.
 >
 > Träna modellen med hjälp av den senaste bas modellen för att dra nytta av precisions förbättringar och undvika att din modell upphör att gälla.
 

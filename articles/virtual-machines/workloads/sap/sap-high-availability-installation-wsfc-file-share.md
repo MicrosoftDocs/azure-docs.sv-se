@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5fa4cba67e279f66c090c8cb30eadf099f3c998
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a3759bbe92a2de8515c7d812637acd88070f8d46
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673560"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490916"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installera SAP NetWeaver med hög tillgänglighet på ett Windows-redundanskluster och en fil resurs för SAP ASCS/SCS-instanser på Azure
 
@@ -214,9 +214,11 @@ Du behöver följande körbara filer och DLL-filer från SAP:
 * SAP kernel 7,49 eller senare
 
 > [!IMPORTANT]
-> Att klustra SAP ASCS/SCS-instanser med hjälp av en fil resurs stöds för SAP NetWeaver 7,40 (och senare), med SAP kernel 7,49 (och senare).
+> Att klustra SAP ASCS/SCS-instanser med hjälp av en fil resurs stöds för SAP NetWeaver 7,40 (och senare), med SAP kernel 7,49 (och senare).  
+>   
+> [!IMPORTANT]
+> Installationen måste uppfylla följande krav: SAP ASCS/SCS-instanserna och SOFS-resursen måste distribueras i separata kluster.    
 >
-
 
 Vi beskriver inte installations programmet för databas hanterings system (DBMS) eftersom installations programmet varierar beroende på den DBMS som du använder. Vi förutsätter dock att hög tillgänglighets problem med DBMS är riktade mot de funktioner som olika DBMS-leverantörer stöder för Azure. Sådana funktioner omfattar AlwaysOn-eller databas spegling för SQL Server och Oracle data Guard för Oracle-databaser. I det scenario vi använder i den här artikeln har vi inte lagt till mer skydd i DBMS.
 

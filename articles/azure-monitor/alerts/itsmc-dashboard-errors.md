@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036460"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471519"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Anslutnings status fel i ITSMC-instrumentpanelen
 
@@ -88,3 +88,11 @@ I följande avsnitt beskrivs vanliga fel som visas i avsnittet anslutnings statu
 
 * När en ny ITSMC-instans skapas börjar den synkronisera information från ITSM-systemet, till exempel mallar för arbets objekt och arbets objekt. [Synkronisera ITSMC för att generera en ny uppdateringstoken](./itsmc-resync-servicenow.md).
 * [Granska anslutnings informationen i ITSMC](./itsmc-connections-servicenow.md#create-a-connection) och kontrol lera att ITSMC kan [synkroniseras](./itsmc-resync-servicenow.md).
+
+
+## <a name="ip-restrictions"></a>IP-begränsningar
+**Fel**: "Det gick inte att lägga till ITSM-anslutningen med namnet" XXX "på grund av en felaktig begäran. Fel: felaktig begäran. Ogiltiga parametrar har angetts för anslutningen. Http-undantag: status kod tillåts inte. "
+
+**Orsak**: IP-adressen för ITSM-programmet tillåter inte ITSM-anslutningar från partners ITSM-verktyg.
+
+**Lösning**: om du vill visa en lista över ITSM-IP-adresser för att tillåta ITSM-anslutningar från partners ITSM verktyg, rekommenderar vi att du listar hela det offentliga IP-intervallet för Azure-regionen där deras LogAnalytics-arbetsyta tillhör. [information här](https://www.microsoft.com/download/details.aspx?id=56519) För regionerna EUS/WEU/EUS2/WUS2/USA, södra centrala kunde kunden endast lista ActionGroup nätverks tag.

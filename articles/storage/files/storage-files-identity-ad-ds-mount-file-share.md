@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3aa7ab2fd3217377e9c56c8c71a1c1acc959bcd9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535067"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472276"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Del fyra: montera en fil resurs från en domänansluten virtuell dator
 
@@ -28,10 +28,10 @@ Logga in på klienten genom att använda de autentiseringsuppgifter som du har b
 
 Innan du kan montera fil resursen måste du kontrol lera att du har gått igenom följande krav:
 
-- Om du monterar fil resursen från en klient som tidigare har monterat fil resursen med hjälp av lagrings kontots nyckel kontrollerar du att du har kopplat från resursen, tagit bort beständiga autentiseringsuppgifter för lagrings konto nyckeln och använder AD DS-autentiseringsuppgifter för autentisering.
+- Om du monterar fil resursen från en klient som tidigare har monterat fil resursen med hjälp av lagrings kontots nyckel kontrollerar du att du har kopplat från resursen, tagit bort beständiga autentiseringsuppgifter för lagrings konto nyckeln och använder AD DS-autentiseringsuppgifter för autentisering. Instruktioner för hur du avmarkerar den monterade resursen med lagrings konto nyckeln finns på [sidan med vanliga frågor och svar](https://docs.microsoft.com/azure/storage/files/storage-files-faq#ad-ds--azure-ad-ds-authentication).
 - Din klient måste ha detaljerad information om din AD DS. Om datorn eller den virtuella datorn ligger utanför nätverket som hanteras av AD DS måste du aktivera VPN för att komma åt AD DS för autentisering.
 
-Ersätt plats hållarna med dina egna värden och Använd sedan följande kommando för att montera Azure-fil resursen:
+Ersätt plats hållarnas värden med dina egna värden och Använd sedan följande kommando för att montera Azure-filresursen. Du måste alltid montera med sökvägen som visas nedan. Användning av CNAME för fil montering stöds inte för identitets baserad autentisering (AD DS eller Azure AD DS).
 
 ```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: cfd5192a78c34caf5acbe4576f5a00ab314acb61
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449704"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489904"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Snabb start: skapa en azureiotsecurity-modul med dubbla
 
@@ -39,9 +39,9 @@ Se [IoT Hub moduls dubblare](../iot-hub/iot-hub-devguide-module-twins.md) för a
 
 Defender for IoT använder modulens dubbla mekanism och underhåller en säkerhetsmodul med dubbla namngivna _azureiotsecurity_ för var och en av dina enheter.
 
-Säkerhetsmodulen är dubbelt lagra all information som är relevant för enhets säkerhet för var och en av dina enheter.
+Defender-IoT-Micro-agenten innehåller all information som är relevant för enhets säkerhet för var och en av dina enheter.
 
-För att kunna utnyttja Defender för IoT-funktioner måste du skapa, konfigurera och använda den här säkerhetsmodulen för varje enhet i tjänsten.
+För att kunna använda Defender för IoT-funktioner måste du skapa, konfigurera och använda den här Defender-IoT-Micro-agenten för varje enhet i tjänsten.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Skapa azureiotsecurity-modul, dubbla
 

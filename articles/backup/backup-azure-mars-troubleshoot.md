@@ -3,12 +3,12 @@ title: Felsöka Azure Backup Agent
 description: I den här artikeln får du lära dig hur du felsöker installationen och registreringen av den Azure Backup agenten.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: c08a146d91a128dc48fa4c379055b8c0efc1df0c
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3203d5604f1bd5db9cf579af01b2ae6f34032d89
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986657"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467620"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Felsöka Microsoft Azure Recovery Services (MARS)-agenten
 
@@ -22,7 +22,7 @@ Vi rekommenderar att du kontrollerar följande innan du börjar felsöka Microso
 - [Se till att du har nätverks anslutning mellan mars-agenten och Azure](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Se till att MARS körs (i tjänst konsolen). Om du behöver startar du om och försöker igen.
 - [Se till att det finns 5% till 10% ledigt volym utrymme på platsen för den tillfälliga mappen](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder).
-- [Kontrol lera om en annan process eller ett antivirus program stör Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
+- [Kontrollera om någon annan process eller ett antivirusprogram stör Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
 - Om säkerhets kopierings jobbet slutfördes med varningar, se [säkerhets kopierings jobb slutförda med varning](#backup-jobs-completed-with-warning)
 - Om schemalagd säkerhets kopiering Miss lyckas men manuell säkerhets kopiering fungerar, se [säkerhets kopieringar körs inte enligt schema](#backups-dont-run-according-to-schedule).
 - Se till att operativ systemet har de senaste uppdateringarna.
@@ -41,7 +41,7 @@ Vi rekommenderar att du kontrollerar följande innan du börjar felsöka Microso
 
 | Orsak | Rekommenderade åtgärder |
 | ---     | ---    |
-| **Autentiseringsuppgifterna för valvet är ogiltiga** <br/> <br/> Valvets autentiseringsuppgifter kan vara skadade, kan ha upphört att gälla eller också har de ett annat fil namns tillägg än *. vaultCredentials*. (Till exempel kan de ha hämtats mer än 48 timmar före registrerings tiden.)| [Hämta nya autentiseringsuppgifter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) från Recovery Services valvet på Azure Portal. Utför sedan dessa steg efter behov: <ul><li> Om du redan har installerat och registrerat MARS öppnar du MMC-konsolen för Microsoft Azure Backup agenten. Välj sedan **Registrera Server** i **Åtgärds** fönstret för att slutföra registreringen med de nya autentiseringsuppgifterna. <br/> <li> Om den nya installationen Miss lyckas kan du försöka med att installera om med de nya autentiseringsuppgifterna.</ul> **Obs!** om filer med flera valv har hämtats är det bara den senaste filen som är giltig för de kommande 48 timmarna. Vi rekommenderar att du hämtar en ny fil med autentiseringsuppgifter för valvet.
+| **Autentiseringsuppgifterna för valvet är ogiltiga** <br/> <br/> Valvets autentiseringsuppgifter kan vara skadade, kan ha upphört att gälla eller också har de ett annat fil namns tillägg än *. vaultCredentials*. (Till exempel kan de ha hämtats mer än 10 dagar före registrerings tiden.)| [Hämta nya autentiseringsuppgifter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) från Recovery Services valvet på Azure Portal. Utför sedan dessa steg efter behov: <ul><li> Om du redan har installerat och registrerat MARS öppnar du MMC-konsolen för Microsoft Azure Backup agenten. Välj sedan **Registrera Server** i **Åtgärds** fönstret för att slutföra registreringen med de nya autentiseringsuppgifterna. <br/> <li> Om den nya installationen Miss lyckas kan du försöka med att installera om med de nya autentiseringsuppgifterna.</ul> **Obs!** om filer med flera valv har hämtats är det bara den senaste filen som är giltig under de närmaste 10 dagarna. Vi rekommenderar att du hämtar en ny fil med autentiseringsuppgifter för valvet.
 | **Proxyservern eller brand väggen blockerar registreringen** <br/>eller <br/>**Ingen Internet anslutning** <br/><br/> Om din dator eller proxyserver har begränsad Internet anslutning och du inte ser till att du har åtkomst till de nödvändiga URL: erna, Miss söker registreringen.| Gör så här:<br/> <ul><li> Arbeta med IT-teamet för att säkerställa att systemet är ansluten till Internet.<li> Om du inte har en proxyserver, se till att alternativet proxy inte är markerat när du registrerar agenten. [Kontrol lera proxyinställningarna](#verifying-proxy-settings-for-windows).<li> Om du har en brand vägg/proxyserver arbetar du med nätverks teamet för att se till att dessa URL: er och IP-adresser har åtkomst:<br/> <br> **Webbadresser**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP-adresser**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>Försök att registrera igen när du har slutfört föregående fel söknings steg.<br></br> Om din anslutning är via Azure ExpressRoute kontrollerar du att inställningarna är konfigurerade enligt beskrivningen i [Azure ExpressRoute-supporten](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Antivirus programmet blockerar registreringen** | Om du har installerat antivirus program på servern lägger du till nödvändiga undantags regler i Antivirus genomsökningen för dessa filer och mappar: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Mappen scratch. Standard platsen är C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Bin-mappen i C:\Program\Microsoft Azure Recovery Services Agent\Bin.
 

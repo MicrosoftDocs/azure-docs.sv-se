@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a1651ef1b49ecedb8070f32c56e9d23a0f8fd0da
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201577"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494503"
 ---
 # <a name="get-started-with-azcopy"></a>Kom igång med AzCopy
 
@@ -110,7 +110,8 @@ Du hittar exempel kommandon i någon av de här artiklarna.
 |--------|-----------|
 |Azure Blob Storage |[Ladda upp filer till Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Ladda ned blobbar från Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopiera blobbar mellan Azure Storage-konton](storage-use-azcopy-blobs-copy.md)<br><br>[Synkronisera med Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)|
-|Amazon S3|[Överföra data med AzCopy och Amazon S3-buckets](storage-use-azcopy-s3.md)|
+|Amazon S3|[Kopiera data från Amazon S3 till Azure Storage](storage-use-azcopy-s3.md)|
+|Google Cloud Storage|[Kopiera data från Google Cloud Storage till Azure Storage (för hands version)](storage-use-azcopy-google-cloud.md)|
 |Azure Stack lagring|[Överföra data med AzCopy och Azure Stack Storage](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>Använd i ett skript

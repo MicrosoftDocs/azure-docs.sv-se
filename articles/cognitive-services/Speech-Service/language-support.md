@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: ebdb6a44a1f20ce0835fc5d7358d99c8224d3d77
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044943"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470242"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -194,8 +194,8 @@ Neurala röster kan användas för att göra interaktioner med chattrobotar och 
 | Engelska (Storbritannien) | `en-GB` | Kvinna | `en-GB-MiaNeural` | Allmänt |
 | Engelska (Storbritannien) | `en-GB` | Man | `en-GB-RyanNeural` | Allmänt |
 | Engelska (USA) | `en-US` | Kvinna | `en-US-AriaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Engelska (USA) | `en-US` | Kvinna | `en-US-JennyNeural` | Allmänt |
-| Engelska (USA) | `en-US` | Man | `en-US-GuyNeural` | Allmänt |
+| Engelska (USA) | `en-US` | Kvinna | `en-US-JennyNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Engelska (USA) | `en-US` | Man | `en-US-GuyNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
 | Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-NooraNeural` | Allmänt |
 | Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-SelmaNeural` <sup>Ny</sup> | Allmänt |
 | Finska (Finland) | `fi-FI` | Man | `fi-FI-HarriNeural` <sup>Ny</sup> | Allmänt |

@@ -14,39 +14,24 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65b91e3dff3ef412dad8bbe57383a9dbf8c7765
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7a0f50a7f84b89d7c048e57eadc85635df10f77
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032253"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467688"
 ---
 # <a name="azure-ad-built-in-roles"></a>Inbyggda roller i Azure AD
 
-Med hjälp av Azure Active Directory (Azure AD) kan du ange begränsade administratörer för att hantera identitets uppgifter i mindre privilegierade roller. Administratörer kan tilldelas till sådana orsaker som att lägga till eller ändra användare, tilldela administrativa roller, återställa användar lösen ord, hantera användar licenser och hantera domän namn. [Standard användar behörigheter](../fundamentals/users-default-permissions.md) kan bara ändras i användar inställningar i Azure AD.
+Om en annan administratör eller icke-administratör behöver hantera Azure AD-resurser i Azure Active Directory (Azure AD) tilldelar du dem en Azure AD-roll som ger de behörigheter som de behöver. Du kan till exempel tilldela roller för att lägga till eller ändra användare, återställa användar lösen ord, hantera användar licenser eller hantera domän namn.
+
+Den här artikeln innehåller inbyggda Azure AD-roller som du kan tilldela för att tillåta hantering av Azure AD-resurser. Information om hur du tilldelar roller finns i [tilldela Azure AD-roller till användare](manage-roles-portal.md).
 
 ## <a name="limit-use-of-global-administrator"></a>Begränsa användningen av global administratör
 
 Användare som har tilldelats rollen som global administratör kan läsa och ändra alla administrativa inställningar i din Azure AD-organisation. När en användare registrerar sig för en moln tjänst från Microsoft skapas en Azure AD-klient som standard och användaren blir medlem i rollen global administratör. När du lägger till en prenumeration till en befintlig klient är du inte tilldelad rollen som global administratör. Endast globala administratörer och privilegierade roll administratörer kan delegera administratörs roller. För att minska risken för verksamheten rekommenderar vi att du tilldelar den här rollen till det minsta möjliga antalet personer i din organisation.
 
 Som bästa praxis rekommenderar vi att du tilldelar rollen till färre än fem personer i din organisation. Om du har fler än fem administratörer tilldelade rollen global administratör i din organisation kan du använda följande metoder för att minska användningen.
-
-### <a name="find-the-role-you-need"></a>Hitta den roll du behöver
-
-Om det är frustrerande att hitta den roll du behöver från en lista över många roller, kan Azure AD Visa dina del mängder av rollerna baserat på roll kategorier. Kolla in vårt nya **typ** filter för [Azure AD-roller och-administratörer](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) för att visa att du bara visar rollerna i den valda typen.
-
-### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>En roll finns nu som inte fanns när du tilldelade rollen som global administratör
-
-Det är möjligt att en roll eller roller har lagts till i Azure AD och ger mer detaljerade behörigheter som inte var ett alternativ när du utökade vissa användare till global administratör. Med tiden, tar vi upp ytterligare roller som utför uppgifter som bara den globala administratörs rollen kan utföra före. Du kan se dessa återspeglade i följande [roller](#all-roles).
-
-## <a name="assign-or-remove-administrator-roles"></a>Tilldela eller ta bort administratörs roller
-
-Information om hur du tilldelar administrativa roller till en användare i Azure Active Directory finns i [Visa och tilldela administratörs roller i Azure Active Directory](manage-roles-portal.md).
-
-> [!Note]
-> Om du har en Azure AD Premium P2-licens och du redan är en Privileged Identity Management-användare (PIM) utförs alla roll hanterings aktiviteter i Privileged Identity Management och inte i Azure AD.
->
-> ![Azure AD-roller som hanteras i PIM för användare som redan använder PIM och har en Premium P2-licens](./media/permissions-reference/pim-manages-roles-for-p2.png)
 
 ## <a name="all-roles"></a>Alla roller
 
@@ -1879,6 +1864,6 @@ Rapport läsare för användnings Sammanfattning | &nbsp; | :heavy_check_mark: |
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du tilldelar en användare som administratör för en Azure-prenumeration finns i [tilldela en användare som administratör för en Azure-prenumeration](../../role-based-access-control/role-assignments-portal-subscription-admin.md)
-* Mer information om hur resurs åtkomsten styrs i Microsoft Azure finns i [förstå de olika rollerna](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Mer information om relationen mellan prenumerationer och en Azure AD-klient, eller för instruktioner för att associera eller lägga till en prenumeration, finns i [associera eller lägga till en Azure-prenumeration i Azure Active Directory klient organisationen](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Tilldela Azure AD-roller till grupper](groups-assign-role.md)
+- [Förstå de olika rollerna](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Tilldela en användare administratörsbehörighet för en Azure-prenumeration](../../role-based-access-control/role-assignments-portal-subscription-admin.md)

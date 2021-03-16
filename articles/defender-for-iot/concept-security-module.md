@@ -1,6 +1,6 @@
 ---
-title: Säkerhetsmodulen och enheten är dubbla
-description: Lär dig mer om begreppet säkerhetsmoduls dubbla och hur de används i Defender för IoT.
+title: Defender-IoT-Micro-agent och enhets dubbla
+description: Lär dig mer om konceptet Defender-IoT-Micro-agent och hur de används i Defender för IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: feb84a1261e37600c68d8e372162033d4021f564
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 552da329b90b102a13ef53158ec81be87684c1fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522928"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493194"
 ---
-# <a name="security-module"></a>Säkerhetsmodul
+# <a name="defender-iot-micro-agent"></a>Defender-IoT-Micro-agent
 
 I den här artikeln förklaras hur Defender för IoT använder enhets dubbla och moduler.
 
@@ -32,15 +32,15 @@ Defender för IoT erbjuder fullständig integrering med din befintliga plattform
 
 Lär dig mer om begreppet [enhets enheter](../iot-hub/iot-hub-devguide-device-twins.md) i Azure IoT Hub.
 
-## <a name="security-module-twins"></a>Säkerhetsmodul, dubbla
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-Micro-agent är dubbla
 
-Defender för IoT upprätthåller en säkerhetsmodul för varje enhet i tjänsten.
-Säkerhetsmodulen är dubbelt innehåller all information som är relevant för enhets säkerhet för varje enskild enhet i din lösning.
-Egenskaperna för enhets säkerhet underhålls i en dedikerad säkerhetsmodul för säkrare kommunikation och för att aktivera uppdateringar och underhåll som kräver färre resurser.
+Defender för IoT upprätthåller en Defender-IoT-mikroagent som är dubbel för varje enhet i tjänsten.
+Defender-IoT-Micro-agenten innehåller all information som är relevant för enhets säkerhet för varje enskild enhet i lösningen.
+Egenskaperna för enhets säkerhet underhålls i en dedikerad Defender-IoT-mikroagent-enhet för säkrare kommunikation och för att aktivera uppdateringar och underhåll som kräver färre resurser.
 
-Mer information om hur du skapar, anpassar och konfigurerar den dubbla finns i [skapa säkerhetsmodul](quickstart-create-security-twin.md) , grupp två och [Konfigurera säkerhets agenter](how-to-agent-configuration.md) . Mer information om hur modulen finns i IoT Hub finns i [förstå modulernas dubblare](../iot-hub/iot-hub-devguide-module-twins.md) .
+Se [skapa Defender-IoT-Micro-agents dubbla](quickstart-create-security-twin.md) och [Konfigurera säkerhets agenter](how-to-agent-configuration.md) för att lära dig hur du skapar, anpassar och konfigurerar den dubbla. Mer information om hur modulen finns i IoT Hub finns i [förstå modulernas dubblare](../iot-hub/iot-hub-devguide-module-twins.md) .
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 - [Översikt över Defender för IoT](overview.md)
 - [Distribuera säkerhetsagenter](how-to-deploy-agent.md)

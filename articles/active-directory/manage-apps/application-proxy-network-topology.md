@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 2873bd9668bfba887ad9add061e68f36a747d5b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232927"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492327"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Optimera trafikflöde med Azure Active Directory-programproxy
 
@@ -38,7 +38,7 @@ När du registrerar dig för en Azure AD-klient bestäms regionen för din klien
 
 Om till exempel din Azure AD-klients land eller region är Storbritannien, kommer alla programproxy-kopplingar som **standard** att tilldelas till att använda tjänst instanser i Europeiska Data Center. När dina användare kommer åt publicerade program, går deras trafik genom programproxyns moln tjänst instanser på den här platsen.
 
-Om du har anslutningar installerade i regioner som skiljer sig från din standard region, kan det vara bra att ändra vilken region som anslutnings gruppen är optimerad för för att förbättra prestanda vid åtkomst till dessa program. När en region har angetts för en kopplings grupp ansluts den till Application Proxy Cloud Services i den angivna regionen.
+Om du har anslutningar installerade i regioner som skiljer sig från din standard region, kan det vara bra att ändra vilken region som anslutnings gruppen är optimerad för för att förbättra prestanda vid åtkomst till dessa program. När en region har angetts för en kopplings grupp ansluter den till Application Proxy Cloud Services i den angivna regionen.
 
 För att optimera trafikflöde och minska svars tiden till en kopplings grupp tilldelar du anslutnings gruppen till den närmaste regionen. Så här tilldelar du en region:
 
@@ -181,7 +181,7 @@ Anslutningen kan placeras i Azure-datacentret. Eftersom anslutnings tjänsten fo
 
 **Scenario:** Appen är i en organisations nätverk i Europa, som standard är vi USA, med de flesta användare i Europa.
 
-**Rekommendation:** Placera kopplingen nära appen. Uppdatera kopplings gruppen så att den optimeras för användning av Europa Application Proxy Service-instanser. Anvisningar finns i [optimera kopplings grupper för att använda närmaste moln tjänst för tillämpningsproxy](application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service).
+**Rekommendation:** Placera kopplingen nära appen. Uppdatera kopplings gruppen så att den optimeras för användning av Europa Application Proxy Service-instanser. Anvisningar finns i [optimera kopplings grupper för att använda närmaste moln tjänst för tillämpningsproxy](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
 
 Eftersom Europa användare har åtkomst till en Application Proxy-instans som sker i samma region, är hopp 1 inte dyrt. Hopp 3 är optimerat. Överväg att använda ExpressRoute för att optimera hopp 2.
 
@@ -189,7 +189,7 @@ Eftersom Europa användare har åtkomst till en Application Proxy-instans som sk
 
 **Scenario:** Appen är i en organisations nätverk i Europa, som standard är vi USA, med de flesta användare i USA.
 
-**Rekommendation:** Placera kopplingen nära appen. Uppdatera kopplings gruppen så att den optimeras för användning av Europa Application Proxy Service-instanser. Anvisningar finns i [optimera kopplings grupper för att använda närmaste moln tjänst för tillämpningsproxy](/application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service). Hopp 1 kan vara dyrare eftersom alla amerikanska användare måste ha åtkomst till Application Proxy-instansen i Europa.
+**Rekommendation:** Placera kopplingen nära appen. Uppdatera kopplings gruppen så att den optimeras för användning av Europa Application Proxy Service-instanser. Anvisningar finns i [optimera kopplings grupper för att använda närmaste moln tjänst för tillämpningsproxy](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview). Hopp 1 kan vara dyrare eftersom alla amerikanska användare måste ha åtkomst till Application Proxy-instansen i Europa.
 
 Du kan också överväga att använda en annan variant i den här situationen. Om de flesta användare i organisationen är i USA är det mycket troligt att nätverket även utsätts för oss. Placera anslutaren i USA, Fortsätt att använda standard regionen USA för dina anslutnings grupper och Använd den dedikerade interna företags nätverks linjen till programmet i Europa. På så sätt optimeras hopp 2 och 3.
 

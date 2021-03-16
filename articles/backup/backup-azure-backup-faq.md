@@ -3,12 +3,12 @@ title: Svar på vanliga frågor
 description: 'Svar på vanliga frågor om: Azure Backup-funktioner inklusive Recovery Services-valvet, vad du kan säkerhetskopiera, hur det fungerar, kryptering och gränser. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806651"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467637"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Vanliga frågor och svar
 
@@ -65,6 +65,13 @@ Export av data direkt från Recovery Services-valvet till lokalt med hjälp av D
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Vad är skillnaden mellan ett GRS-valv (Geo-redundant Storage) med och utan CRR-funktionen (Cross-region Restore) aktive rad?
 
 Om det finns ett [GRS](azure-backup-glossary.md#grs) -valv utan [CRR](azure-backup-glossary.md#cross-region-restore-crr) -funktionen aktive rad kan inte data i den sekundära regionen nås förrän Azure deklarerar en katastrof i den primära regionen. I ett sådant scenario sker återställningen från den sekundära regionen. När CRR är aktiverat, även om den primära regionen är igång, kan du utlösa en återställning i den sekundära regionen.
+
+### <a name="can-i-move-a-subscription-that-contains-a-vault-to-a-different-azure-active-directory"></a>Kan jag flytta en prenumeration som innehåller ett valv till en annan Azure Active Directory?
+
+Ja. Information om hur du flyttar en prenumeration (som innehåller ett valv) till en annan Azure Active Directory (AD) finns i [överföra prenumeration till en annan katalog](../role-based-access-control/transfer-subscription.md).
+
+>[!IMPORTANT]
+>Se till att du utför följande åtgärder när du har flyttat prenumerationen:<ul><li>Rollbaserade behörigheter för åtkomst kontroll och anpassade roller kan inte delegeras. Du måste återskapa behörigheter och roller i den nya Azure AD.</li><li>Du måste återskapa den hanterade identiteten (MI) för valvet genom att inaktivera och aktivera det igen. Du måste också utvärdera och återskapa MI-behörigheterna.</li><li>Om valvet använder funktioner som utnyttjar MI, till exempel [privata slut punkter](private-endpoints.md#before-you-start) och [Kundhanterade nycklar](encryption-at-rest-with-cmk.md#before-you-start), måste du konfigurera om funktionerna.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 

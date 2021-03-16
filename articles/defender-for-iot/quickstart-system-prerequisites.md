@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 7b609fec2a47dc0685b30dac12f43263127f70ef
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4b5db049e6d1cfe76bdd0d5cd6d7360e0b98bad0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523218"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489819"
 ---
 # <a name="system-prerequisites"></a>Systemkrav
 Den här artikeln innehåller en lista över system krav för att köra Azure Defender för IoT.
@@ -23,7 +23,7 @@ Den här artikeln innehåller en lista över system krav för att köra Azure De
 - Maskin varu anordningar för NTA-sensorer.
 - Rollen Azure-prenumerations deltagare. Det krävs endast under onboarding för att definiera allokerade enheter och anslutning till Azure Sentinel.
 - Azure IoT Hub- **deltagar** rollen (kostnads fri eller standard nivå) för moln ansluten hantering. Kontrol lera att **Azure Defender för IoT** -funktionen är aktive rad.
-- För säkerhetsmodulen på enhets nivå stöder Defender för IoT-agenter en växande lista med enheter och plattformar. Se [listan över plattformar som stöds](how-to-deploy-agent.md).
+- För stöd på enhets nivå Defender-IoT-Micro-agent har Defender för IoT-agenter stöd för en växande lista över enheter och plattformar. Se [listan över plattformar som stöds](how-to-deploy-agent.md).
 
 ## <a name="supported-service-regions"></a>Service regioner som stöds
 
@@ -31,7 +31,7 @@ Defender för IoT dirigerar all trafik från alla europeiska regioner till regio
 
 Mer information finns i [IoT Hub regioner som stöds](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
-[Identifiera nödvändiga enheter](how-to-identify-required-appliances.md) 
- [Om installation av Azure Defender för IoT-nätverk](how-to-set-up-your-network.md)
+- [Identifiera apparater som krävs](how-to-identify-required-appliances.md)
+- [Om installation av Azure Defender för IoT-nätverk](how-to-set-up-your-network.md)

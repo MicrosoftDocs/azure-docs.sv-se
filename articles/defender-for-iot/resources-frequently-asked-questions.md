@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 03/02/2021
 ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 89da9ed378118875f0c09d3c23799349a4d093b0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247473"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467705"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Defender för IoT
 
@@ -51,29 +51,23 @@ Ja, du kan! Azure Defender för IoT Platforms lokala lösning distribueras som e
 
 Azure Defender för IoT-sensorn ansluter till en intervall port eller ett nätverk, och börjar omedelbart samla in ICS-nätverks trafik via passiv (utan agent) övervakning. Den har ingen påverkan på nätverks vägs nätverk eftersom den inte placerats i data Sök vägen och söker inte aktivt på enhets nivå.
 
-Här är några exempel:
+Exempel:
 - En enda apparat (virtuell fysisk) kan finnas i DMZ-lagret, där all fabriks våningsplan trafik dirigeras till detta skikt.
 - Du kan också hitta små mini-sensorer i varje arbets plan för arbets ytan med moln-eller lokal hantering som kommer att finnas i arbets ytan DMZ lager. En annan installation (virtuell eller fysisk) kan övervaka trafiken i affär DMZ-lagret (för SCADA, historian eller marknads avdelningen).
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Hur jämförs Defender för IoT med tävlingen?
 
-Även om andra lösningar tillhandahåller en uppsättning funktioner som gör att kunderna kan skapa sina egna lösningar, ger Defender för IoT en unik lösning från slut punkt till slut punkt som ger en bred vy över säkerheten för alla dina relaterade Azure-resurser. Azure möjliggör snabb distribution och fullständig integrering med IoT Hub modul för enkel integrering med befintliga enhets hanterings verktyg.
+Azure Defender för IoT ger omfattande säkerhet på alla dina IoT/enhet-enheter. För **slut användar organisationer** erbjuder Azure Defender för IoT utan agent, säkerhet på nätverks nivå som snabbt distribueras, fungerar med olika patentskyddade komponenter och äldre Windows-system och samarbetar med Azure Sentinel och andra SoC-verktyg. Den kan distribueras lokalt eller i Azure-anslutna miljöer. För **IoT-enhets byggare** erbjuder Azure Defender för IoT lätta agenter att bädda in säkerhet på enhets nivå i nya IoT/DataStore-initiativ.
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>Måste jag vara en Azure-kund?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Måste jag vara en Azure IoT-kund?
+Nej, för den agentbaserade versionen av Azure Defender för IoT, behöver du inte vara en Azure-kund. Men om du vill skicka aviseringar till Azure Sentinel; etablera nätverks sensorer och övervaka deras hälsa från molnet. och dra nytta av automatiska uppdateringar av program vara och hot information, måste du ansluta sensorn till Azure via Azure IoT Hub.
 
-Ja. För moln anslutna distributioner är Azure Defender för IoT beroende av Azure IoT-anslutning och-infrastruktur.
+För den agentbaserade versionen av Azure Defender för IoT måste du vara en Azure-kund.
+
 ## <a name="can-i-create-my-own-alerts"></a>Kan jag skapa mina egna aviseringar?
 
-Ja. Du kan ange en anpassad avisering på en fördefinierad uppsättning beteenden, till exempel IP-adress och öppna portar. Se [skapa anpassade aviseringar](quickstart-create-custom-alerts.md) för att lära dig mer om anpassade aviseringar och hur du gör dem.
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Var kan jag se loggar? Kan jag anpassa loggar?
-
-- Visa aviseringar och rekommendationer med hjälp av den anslutna Log Analytics-arbetsytan. Konfigurera lagrings storlek och varaktighet i arbets ytan.
-
-- Rå data från din säkerhets agent kan också lagras i ditt Log Analytics-konto. Överväg storlek, varaktighet, lagrings krav och tillhör ande kostnader innan du ändrar konfigurationen för det här alternativet.
-
-
+Ja, du kan skapa anpassade aviseringar baserat på flera parametrar, inklusive IP/MAC-adress, protokoll typ, klass, tjänst, funktion, kommando osv. och värden för anpassade taggar i nytto lasterna.  Se [skapa anpassade aviseringar](quickstart-create-custom-alerts.md) för att lära dig mer om anpassade aviseringar och hur du skapar dem.
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Vad händer när Internet anslutningen slutar fungera?
 

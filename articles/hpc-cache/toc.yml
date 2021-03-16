@@ -8,6 +8,8 @@
   items:
     - name: Planera det aggregerade namnområdet
       href: hpc-cache-namespace.md
+    - name: Förstå användnings modeller för cache
+      href: cache-usage-models.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje

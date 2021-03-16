@@ -4,13 +4,13 @@ description: Vanliga problem med Azure Monitor metriska aviseringar och möjliga
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/21/2021
-ms.openlocfilehash: 2bd82d18d6647e47d9838702af45cff68f2bc6cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/15/2021
+ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037871"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466505"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -138,11 +138,9 @@ För att undvika att distributionen Miss fungerar när du försöker validera de
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportera Azure Resource Manager mall för en mått varnings regel via Azure Portal
 
 Genom att exportera Resource Manager-mallen för en mått varnings regel får du hjälp att förstå dess JSON-syntax och egenskaper och kan användas för att automatisera framtida distributioner.
-1. Gå till avsnittet **resurs grupper** i portalen och välj den resurs grupp som innehåller regeln.
-2. I avsnittet Översikt markerar du kryss rutan **Visa dolda typer** .
-3. I filter **typ** väljer du *Microsoft. Insights/metricalerts*.
-4. Välj den relevanta aviserings regeln om du vill visa information om den.
-5. Under **Inställningar** väljer du **Exportera mall**.
+1. Öppna aviserings regeln i Azure Portal för att visa information om den.
+2. Klicka på **Egenskaper**.
+3. Under **Automation** väljer du **Exportera mall**.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Måttet för mått för varnings regler är för litet
 

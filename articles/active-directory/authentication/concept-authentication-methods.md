@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652087"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471690"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Vilka autentiserings- och verifieringsmetoder är tillgängliga i Azure Active Directory?
 
@@ -43,7 +43,7 @@ Följande tabell beskriver säkerhets överväganden för tillgängliga autentis
 | Windows Hello för företag     | Högt     | Högt      | Högt         |
 | Microsoft Authenticator-appen    | Högt     | Högt      | Högt         |
 | Säkerhets nyckel för FIDO2             | Högt     | Högt      | Högt         |
-| OATH-maskinvarutoken           | Medel   | Medel    | Högt         |
+| OATH-token för maskin vara (för hands version) | Medel   | Medel    | Högt         |
 | OATH-programvaru-token           | Medel   | Medel    | Högt         |
 | SMS                            | Medel   | Högt      | Medel       |
 | Röst                          | Medel   | Medel    | Medel       |
@@ -68,7 +68,7 @@ Följande tabell beskriver när du kan använda en autentiseringsmetod under en 
 | Windows Hello för företag     | Ja                    | Multifaktorautentisering                       |
 | Microsoft Authenticator-appen    | Ja                    | MFA och SSPR              |
 | Säkerhets nyckel för FIDO2             | Ja                    | Multifaktorautentisering                       |
-| OATH-maskinvarutoken           | Inga                     | Multifaktorautentisering                       |
+| OATH-token för maskin vara (för hands version) | Inga                     | Multifaktorautentisering                       |
 | OATH-programvaru-token           | Inga                     | Multifaktorautentisering                       |
 | SMS                            | Ja                    | MFA och SSPR              |
 | Röstsamtal                     | Inga                     | MFA och SSPR              |
@@ -81,7 +81,7 @@ Mer information om hur varje autentiseringsmetod fungerar finns i följande arti
 * [Windows Hello för företag](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator-appen](concept-authentication-authenticator-app.md)
 * [Säkerhets nyckel för FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH-maskinvarutoken](concept-authentication-oath-tokens.md#oath-hardware-tokens)
+* [OATH-token för maskin vara (för hands version)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH-programvaru-token](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS-inloggning](howto-authentication-sms-signin.md) och [verifiering](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Verifiering av röst samtal](concept-authentication-phone-options.md)

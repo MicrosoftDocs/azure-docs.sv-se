@@ -7,26 +7,26 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 05/14/2020
+ms.date: 03/10/2021
 tags: connectors
-ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85609511"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495240"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Anslut till en IBM MQ-Server från Azure Logic Apps
 
-IBM MQ Connector skickar och hämtar meddelanden som lagras i en IBM MQ-server lokalt eller i Azure. Den här anslutningen innehåller en Microsoft MQ-klient som kommunicerar med en IBM MQ-server i ett TCP/IP-nätverk. Den här artikeln innehåller en start guide för att använda MQ-anslutaren. Du kan börja med att bläddra i ett enskilt meddelande i en kö och sedan försöka med andra åtgärder.
+MQ-anslutningen skickar och hämtar meddelanden som lagras i en MQ-server lokalt eller i Azure. Den här anslutningen innehåller en Microsoft MQ-klient som kommunicerar med en IBM MQ-server i ett TCP/IP-nätverk. Den här artikeln innehåller en start guide för att använda MQ-anslutaren. Du kan börja med att bläddra i ett enskilt meddelande i en kö och sedan försöka med andra åtgärder.
 
-IBM MQ Connector innehåller följande åtgärder men ger inga utlösare:
+MQ-kopplingen innehåller följande åtgärder, men ger inga utlösare:
 
-- Bläddra i ett enskilt meddelande utan att ta bort meddelandet från IBM MQ-servern.
-- Bläddra i en batch med meddelanden utan att ta bort meddelandena från IBM MQ-servern.
-- Ta emot ett enda meddelande och ta bort meddelandet från IBM MQ-servern.
-- Ta emot en batch med meddelanden och ta bort meddelandena från IBM-MQ-servern.
-- Skicka ett enskilt meddelande till IBM MQ Server.
+- Bläddra i ett enskilt meddelande utan att ta bort meddelandet från MQ-servern.
+- Bläddra i en batch med meddelanden utan att ta bort meddelandena från MQ-servern.
+- Ta emot ett enda meddelande och ta bort meddelandet från MQ-servern.
+- Ta emot en batch med meddelanden och ta bort meddelandena från MQ-servern.
+- Skicka ett enskilt meddelande till MQ-servern.
 
 Här är de officiellt IBM WebSphere MQ-versioner som stöds:
 
@@ -35,17 +35,22 @@ Här är de officiellt IBM WebSphere MQ-versioner som stöds:
   * MQ 9,0
   * MQ 9,1
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-* Om du använder en lokal MQ-Server [installerar du den lokala datagatewayen](../logic-apps/logic-apps-gateway-install.md) på en server i nätverket. Servern där den lokala datagatewayen är installerad måste också ha .NET Framework 4,6 installerat för att MQ-kopplingen ska fungera.
+* Om du använder en lokal MQ-Server måste du [installera den lokala datagatewayen](../logic-apps/logic-apps-gateway-install.md) på en server i nätverket.
 
-  När du har installerat gatewayen måste du också skapa en resurs i Azure för den lokala datagatewayen. Mer information finns i [Konfigurera data Gateway-anslutningen](../logic-apps/logic-apps-gateway-connection.md).
+  > [!NOTE]
+  > Om din MQ-Server är offentligt tillgänglig eller tillgänglig i Azure behöver du inte använda data gatewayen.
 
-  Om din MQ-Server är offentligt tillgänglig eller tillgänglig i Azure behöver du inte använda data gatewayen.
+  * För att MQ-kopplingen ska fungera måste den server där du installerar den lokala datagatewayen också ha .NET Framework 4,6 installerat.
+  
+  * När du har installerat den lokala datagatewayen måste du också [skapa en Azure gateway-resurs för den lokala datagatewayen](../logic-apps/logic-apps-gateway-connection.md) som MQ-anslutningen använder för att komma åt din lokala MQ-Server.
 
-* Den Logic app där du vill lägga till åtgärden MQ. Den här Logic-appen måste använda samma plats som din lokala datagateway-anslutning och måste redan ha en utlösare som startar arbets flödet.
+* Den Logic app där du vill använda MQ-anslutningsprogrammet. MQ-anslutningen har inga utlösare, så du måste först lägga till en utlösare i din Logic app. Du kan till exempel använda [upprepnings utlösaren](../connectors/connectors-native-recurrence.md). Om du inte har använt Logic Apps igen kan du prova den här [snabb starten för att skapa din första Logic-app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-  MQ-anslutningen har inga utlösare, så du måste först lägga till en utlösare i din Logic app. Du kan till exempel använda upprepnings utlösaren. Om du inte har använt Logic Apps igen kan du prova den här [snabb starten för att skapa din första Logic-app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="limitations"></a>Begränsningar
+
+MQ-anslutningsprogrammet stöder eller använder inte meddelandets **format** fält och utför inte några teckenuppsättningar för teckenuppsättning. Kopplingen placerar bara de data som visas i meddelande fältet i ett JSON-meddelande och skickar meddelandet tillsammans.
 
 <a name="create-connection"></a>
 
@@ -59,15 +64,15 @@ Om du inte redan har en MQ-anslutning när du lägger till en MQ-åtgärd uppman
 
 1. Ange anslutnings informationen för din MQ-Server.
 
-   * För **Server**kan du ange namnet på MQ-servern eller ange IP-adressen följt av ett kolon och port numret.
+   * För **Server** kan du ange namnet på MQ-servern eller ange IP-adressen följt av ett kolon och port numret.
 
-   * Om du vill använda Secure Sockets Layer (SSL) väljer du **Aktivera SSL?**.
+   * Om du vill använda Transport Layer Security (TLS) eller Secure Sockets Layer (SSL) väljer du **Aktivera SSL?**.
 
      MQ-anslutaren stöder för närvarande endast serverautentisering, inte klientautentisering. Mer information finns i [problem med anslutning och autentisering](#connection-problems).
 
 1. I avsnittet **Gateway** följer du dessa steg:
 
-   1. I listan **prenumeration** väljer du den Azure-prenumeration som är associerad med din Azure gateway-resurs.
+   1. I listan **prenumeration** väljer du den Azure-prenumeration som är kopplad till din Azure gateway-resurs.
 
    1. Välj den Azure gateway-resurs som du vill använda från listan **anslutnings-Gateway** .
 
@@ -89,7 +94,7 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
 
   1. Öppna Start-menyn på datorn där den lokala data Gateway-tjänsten körs, leta upp och välj **hantera användar certifikat**.
 
-  1. När Windows Certificate Manager-verktyget har öppnats går du till mappen **certifikat – lokal dator**för  >   **betrodda rot certifikat utfärdare** och installerar certifikatet.
+  1. När Windows Certificate Manager-verktyget har öppnats går du till mappen **certifikat – lokal dator** för  >   **betrodda rot certifikat utfärdare** och installerar certifikatet.
 
      > [!IMPORTANT]
      > Se till att du installerar certifikat i arkivet **certifikat – lokal dator**  >  **betrodd rot certifikat utfärdare** .
@@ -113,7 +118,7 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
    | Egenskap | Beskrivning |
    |----------|-------------|
    | **Kö** | Om det skiljer sig från den kö som anges i anslutningen anger du den kön. |
-   | **Messageid**, **correlationId**, **Egenskaper**och andra egenskaper | Bläddra efter ett meddelande som baseras på de olika egenskaperna för MQ-meddelanden |
+   | **Messageid**, **correlationId**, **Egenskaper** och andra egenskaper | Bläddra efter ett meddelande som baseras på de olika egenskaperna för MQ-meddelanden |
    | **IncludeInfo** | Om du vill inkludera ytterligare meddelande information i utdata väljer du **Sant**. Om du vill utelämna ytterligare meddelande information i utdata väljer du **falskt**. |
    | **Standardvärde** | Ange ett värde för att avgöra hur lång tid det tar innan ett meddelande kommer till en tom kö. Om inget anges hämtas det första meddelandet i kön och det finns ingen tids åtgång i väntan på att ett meddelande ska visas. |
    |||
@@ -122,7 +127,7 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
 
    ![Egenskaper för åtgärden "Bläddra meddelande"](media/connectors-create-api-mq/browse-message-properties.png)
 
-1. När du är klar väljer du **Spara**i verktygsfältet designer. Om du vill testa appen väljer du **Kör**.
+1. När du är klar väljer du **Spara** i verktygsfältet designer. Om du vill testa appen väljer du **Kör**.
 
    När körningen är klar visar designern arbets flödes stegen och deras status så att du kan granska utdata.
 
@@ -134,7 +139,7 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
 
    ![Bläddra i meddelandets RAW-utdata](media/connectors-create-api-mq/browse-message-raw-output.png)
 
-1. Om du anger **IncludeInfo** till **Sant**visas ytterligare utdata:
+1. Om du anger **IncludeInfo** till **Sant** visas ytterligare utdata:
 
    ![Bläddra bland meddelandet innehåller info](media/connectors-create-api-mq/browse-message-include-info.png)
 
@@ -156,11 +161,11 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
 
 ## <a name="receive-single-message"></a>Ta emot ett enskilt meddelande
 
-Åtgärden **ta emot meddelande** har samma indata och utdata som åtgärd för att **söka efter meddelanden** . När **du använder meddelandet tas meddelandet bort**från kön.
+Åtgärden **ta emot meddelande** har samma indata och utdata som åtgärd för att **söka efter meddelanden** . När **du använder meddelandet tas meddelandet bort** från kön.
 
 ## <a name="receive-multiple-messages"></a>Ta emot flera meddelanden
 
-Åtgärden **ta emot meddelanden** har samma indata och utdata som åtgärd för att **söka meddelanden** . När du använder **mottagna meddelanden**tas meddelandena bort från kön.
+Åtgärden **ta emot meddelanden** har samma indata och utdata som åtgärd för att **söka meddelanden** . När du använder **mottagna meddelanden** tas meddelandena bort från kön.
 
 > [!NOTE]
 > När du kör en browse-eller Receive-åtgärd i en kö som inte har några meddelanden, Miss lyckas åtgärden med följande utdata:
@@ -173,7 +178,7 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
 
 1. Om du inte redan har skapat en MQ-anslutning uppmanas du att [skapa anslutningen](#create-connection). Annars används den första tidigare konfigurerade anslutningen som standard. Om du vill skapa en ny anslutning väljer du **ändra anslutning**. Eller Välj en annan anslutning.
 
-1. Ange informationen för åtgärden. För **MessageType**väljer du en giltig meddelande typ: **datagram**, **Reply**eller **Request**
+1. Ange informationen för åtgärden. För **MessageType** väljer du en giltig meddelande typ: **datagram**, **Reply** eller **Request**
 
    ![Egenskaper för "Skicka meddelande åtgärd"](media/connectors-create-api-mq/send-message-properties.png)
 
@@ -185,7 +190,7 @@ När din Logi Kap par försöker ansluta till din lokala MQ-Server kan du få f�
 
 ## <a name="connector-reference"></a>Referens för anslutningsapp
 
-Teknisk information om åtgärder och begränsningar, som beskrivs av kopplingens Swagger beskrivning, finns på kopplingens [referens sida](/connectors/mq/).
+För teknisk information, till exempel åtgärder och begränsningar, som beskrivs i anslutningens Swagger-fil, granskar du [kopplingens referens sida](/connectors/mq/).
 
 ## <a name="next-steps"></a>Nästa steg
 

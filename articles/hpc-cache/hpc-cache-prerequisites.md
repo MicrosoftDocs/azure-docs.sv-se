@@ -4,14 +4,14 @@ description: Krav för att använda Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7a91cf5f9341d2b42f1c8f242d288b4ee59b632d
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412518"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471805"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Krav för Azure HPC-cache
 
@@ -91,14 +91,18 @@ Kontrol lera de här behörighets kraven innan du börjar skapa din cache.
   Följ instruktionerna i [Lägg till lagrings mål](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) för att lägga till rollerna.
 
 ## <a name="storage-infrastructure"></a>Lagrings infrastruktur
+<!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-Cachen stöder export av Azure Blob-behållare eller NFS-maskinvara. Lägg till lagrings mål när du har skapat cacheminnet.
+Cachen stöder Azure Blob-behållare, NFS-maskinvara för maskin varu lagring och NFS-monterade ADLS BLOB-behållare (för närvarande i för hands version). Lägg till lagrings mål när du har skapat cacheminnet.
 
 Varje lagrings typ har särskilda krav.
 
 ### <a name="blob-storage-requirements"></a>Blob Storage-krav
 
 Om du vill använda Azure Blob Storage med ditt cacheminne behöver du ett kompatibelt lagrings konto och antingen en tom BLOB-behållare eller en behållare som är ifylld med Azure HPC cache-formaterade data enligt beskrivningen i [Flytta data till Azure Blob Storage](hpc-cache-ingest.md).
+
+> [!NOTE]
+> Olika krav gäller för NFS-monterad blob-lagring. Mer information finns i [ADLS-NFS-lagrings kraven](#nfs-mounted-blob-adls-nfs-storage-requirements-preview) .
 
 Skapa kontot innan du försöker lägga till ett lagrings mål. Du kan skapa en ny behållare när du lägger till målet.
 
@@ -169,6 +173,37 @@ Mer information finns i [Felsöka problem med NAS-konfiguration och NFS-lagring]
   * Om lagrings platsen har en export som är under kataloger till en annan export, se till att cachen har rot åtkomst till det lägsta segmentet i sökvägen. Läs [rot åtkomst för katalog Sök vägar](troubleshoot-nas.md#allow-root-access-on-directory-paths) i fel söknings artikeln NFS-lagrings mål för mer information.
 
 * NFS-backend-lagring måste vara en kompatibel maskin-/program varu plattform. Kontakta Azure HPC-teamet för mer information.
+
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>NFS-monterade blob-lagring (ADLS-NFS) lagrings krav (för hands version)
+
+Azure HPC cache kan också använda en BLOB-behållare som är monterad med NFS-protokollet som ett lagrings mål.
+
+> [!NOTE]
+> NFS 3,0 protokoll stöd för Azure Blob Storage finns i offentlig för hands version. Tillgänglighet är begränsad och funktioner kan ändras mellan nu och när funktionen blir allmänt tillgänglig. Använd inte för hands versions teknik i produktions system.
+>
+> Läs mer om den här förhands gransknings funktionen i [NFS 3,0 protokoll stöd i Azure Blob Storage](../storage/blobs/network-file-system-protocol-support.md).
+
+Kraven på lagrings kontot skiljer sig åt från ett ADLS-NFS-Blob Storage-mål och för ett standard-Blob Storage-mål. Följ instruktionerna i [montera Blob Storage med hjälp av Network File System (NFS) 3,0-protokollet](../storage/blobs/network-file-system-protocol-support-how-to.md) noggrant för att skapa och konfigurera det NFS-aktiverade lagrings kontot.
+
+Detta är en allmän översikt över stegen:
+
+1. Se till att de funktioner som du behöver är tillgängliga i de regioner där du planerar att arbeta.
+
+1. Aktivera funktionen NFS-protokoll för din prenumeration. Gör detta *innan* du skapar lagrings kontot.
+
+1. Skapa ett säkert virtuellt nätverk (VNet) för lagrings kontot. Du bör använda samma virtuella nätverk för ditt NFS-aktiverade lagrings konto och för Azure HPC-cachen.
+
+1. Skapa lagrings kontot.
+
+   * I stället för att använda lagrings konto inställningarna för ett standard-Blob Storage-konto, följer du anvisningarna i [instruktions-dokumentet](../storage/blobs/network-file-system-protocol-support-how-to.md). Vilken typ av lagrings konto som stöds kan variera beroende på Azure-region.
+
+   * I avsnittet **nätverk** väljer du en privat slut punkt i det säkra virtuella nätverk som du skapade (rekommenderas) eller så väljer du en offentlig slut punkt med begränsad åtkomst från det säkra virtuella nätverket.
+
+   * Glöm inte att slutföra det **avancerade** avsnittet där du aktiverar NFS-åtkomst.
+
+   * Ge cache-programmet åtkomst till ditt Azure Storage-konto som anges i [behörigheter](#permissions)ovan. Du kan göra detta första gången du skapar ett lagrings mål. Följ proceduren i [Lägg till lagrings mål](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) för att ge cachen de nödvändiga åtkomst rollerna.
+
+     Om du inte är lagrings kontots ägare kan du låta ägaren göra detta steg.
 
 ## <a name="set-up-azure-cli-access-optional"></a>Konfigurera Azure CLI-åtkomst (valfritt)
 

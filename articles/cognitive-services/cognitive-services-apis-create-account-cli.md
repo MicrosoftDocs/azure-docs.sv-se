@@ -1,7 +1,7 @@
 ---
 title: Skapa en Cognitive Services resurs med hjälp av Azure CLI
 titleSuffix: Azure Cognitive Services
-description: Kom igång med Azure Cognitive Services genom att skapa och prenumerera på en resurs med hjälp av Azures kommando rads gränssnitt.
+description: Kom igång med Azure Cognitive Services genom att skapa och prenumerera på en resurs med hjälp av kommando rads gränssnittet i Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ keywords: kognitiva tjänster, kognitiv intelligens, kognitiva lösningar, AI-tj
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050077"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472107"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Snabb start: skapa en Cognitive Services resurs med hjälp av Azure Command-Line Interface (CLI)
 
@@ -99,16 +99,6 @@ När du skapar en ny resurs behöver du veta vilken typ av tjänst du vill anvä
 | Formigenkänning            | `FormRecognizer`          |
 | Handskriftsigenkänning             | `InkRecognizer`           |
 
-### <a name="search"></a>Sök
-
-| Tjänst            | Variant                  |
-|--------------------|-----------------------|
-| Automatiska förslag i Bing   | `Bing.Autosuggest.v7` |
-| Anpassad sökning i Bing | `Bing.CustomSearch`   |
-| Entitetssökning i Bing | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Stavningskontroll i Bing   | `Bing.SpellCheck.v7`  |
-
 ### <a name="speech"></a>Speech
 
 | Tjänst            | Variant                 |
@@ -181,7 +171,7 @@ Använd kommandot [AZ cognitiveservices Account Keys List](/cli/azure/cognitives
 Pris nivåerna (och den mängd du debiteras) baseras på antalet transaktioner som du skickar med hjälp av autentiseringsinformationen. Varje pris nivå anger:
 * maximalt antal tillåtna transaktioner per sekund (TPS).
 * tjänst funktioner som Aktiver ATS inom pris nivån.
-* Kostnaden för en fördefinierad mängd transaktioner. Om du fortsätter över den här mängden kommer du att få en extra avgift som anges i [pris informationen](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) för din tjänst.
+* Kostnaden för ett fördefinierat antal transaktioner. Om du fortsätter över den här mängden kommer du att få en extra avgift som anges i [pris informationen](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) för din tjänst.
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Hämta aktuell kvot användning för din resurs
 

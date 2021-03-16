@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453282"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491307"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -113,7 +113,7 @@ Det här felet uppstår om Azure-filresursen redan används av en annan molnslut
 Om du ser det här meddelandet och Azure-filresursen för närvarande inte används av en moln slut punkt, slutför du följande steg för att rensa Azure File Sync metadata på Azure-filresursen:
 
 > [!Warning]  
-> Om du tar bort metadata på en Azure-filresurs som för närvarande används av en moln slut punkt uppstår Azure File Sync åtgärder för att Miss kunna. 
+> Om du tar bort metadata på en Azure-filresurs som för närvarande används av en moln slut punkt uppstår Azure File Sync åtgärder för att Miss kunna. Om du sedan använder den här fil resursen för synkronisering i en annan Sync-grupp är data förlust för filer i den gamla synkroniseringsresursen nästan säker.
 
 1. Gå till Azure-filresursen i Azure Portal.  
 2. Högerklicka på Azure-filresursen och välj sedan **Redigera metadata**.

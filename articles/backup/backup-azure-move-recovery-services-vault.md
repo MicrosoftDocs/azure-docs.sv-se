@@ -4,12 +4,12 @@ description: Instruktioner om hur du flyttar ett Recovery Services valv över Az
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4f75bec533181b29625fb0a10cc26d03f2875036
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325782"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466379"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Flytta ett Recovery Services valv över Azure-prenumerationer och resurs grupper
 
@@ -23,7 +23,7 @@ Alla offentliga regioner och suveräna regioner stöds, förutom Frankrikes cent
 
 - När valvet flyttas över resurs grupper är både käll-och mål resurs grupperna låsta för att förhindra Skriv-och borttagnings åtgärder. Mer information finns i den här [artikeln](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Endast administratörs prenumerationen har behörighet att flytta ett valv.
-- För att flytta valv mellan prenumerationer måste mål prenumerationen finnas i samma klient organisation som käll prenumerationen och dess tillstånd ska vara aktiverat.
+- För att flytta valv mellan prenumerationer måste mål prenumerationen finnas i samma klient organisation som käll prenumerationen och dess status måste vara aktive rad. Information om hur du flyttar ett valv till en annan Azure AD-katalog finns i [överför prenumeration till en annan katalog](../role-based-access-control/transfer-subscription.md) och [vanliga frågor om Recovery Service-valv](backup-azure-backup-faq.md#recovery-services-vault).
 - Du måste ha behörighet att utföra Skriv åtgärder i mål resurs gruppen.
 - Om du flyttar valvet ändras bara resurs gruppen. Recovery Services valvet kommer att finnas på samma plats och kan inte ändras.
 - Du kan bara flytta ett Recovery Services valv per region i taget.
@@ -65,7 +65,7 @@ Så här flyttar du ett Recovery Services valv och dess associerade resurser til
 
    ![Flytta prenumeration](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. Om du vill lägga till mål resurs gruppen väljer du en befintlig resurs grupp i list rutan **resurs grupp** eller väljer **skapa en ny grupp** .
+5. Om du vill lägga till mål resurs gruppen går du till List rutan **resurs grupp** och väljer en befintlig resurs grupp eller väljer alternativet **skapa en ny grupp** .
 
    ![Skapa resurs](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
@@ -95,7 +95,7 @@ Du kan flytta ett Recovery Services valv och dess associerade resurser till en a
    ![flytta resurs](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Välj mål prenumerationen i list rutan **prenumeration** där du vill att valvet ska flyttas.
-6. Om du vill lägga till mål resurs gruppen väljer du en befintlig resurs grupp i list rutan **resurs grupp** eller väljer **skapa en ny grupp** .
+6. Om du vill lägga till mål resurs gruppen går du till List rutan **resurs grupp** och väljer en befintlig resurs grupp eller väljer alternativet **skapa en ny grupp** .
 
    ![Lägg till prenumeration](./media/backup-azure-move-recovery-services/add-subscription.png)
 

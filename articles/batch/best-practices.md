@@ -3,12 +3,12 @@ title: Bästa praxis
 description: Lär dig metod tips och användbara tips för att utveckla dina Azure Batch-lösningar.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0b3dfe6d974f2cc2449faf54c4549589e0baa7cf
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199853"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496294"
 ---
 # <a name="azure-batch-best-practices"></a>Metod tips för Azure Batch
 
@@ -25,8 +25,8 @@ I den här artikeln beskrivs en samling med bästa praxis och användbara tips f
 
 - **Poolens fördelnings läge** När du skapar ett batch-konto kan du välja mellan två pool tilldelnings lägen: **Batch-tjänst** eller **användar prenumeration**. I de flesta fall bör du använda standard läget för batch-tjänsten, där pooler allokeras bakom scenerna i batch-hanterade prenumerationer. I det alternativa användarprenumerationsläget skapas virtuella Batch-datorer och andra resurser direkt i din prenumeration när en pool skapas. Användar prenumerations konton används främst för att aktivera en viktig, men liten del av scenarier. Du kan läsa mer om användar prenumerations läge på [ytterligare konfiguration för användar prenumerations läge](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **' virtualMachineConfiguration ' eller ' virtualMachineConfiguration '.**
-    Även om du kan skapa pooler med hjälp av en konfiguration måste nya pooler konfigureras med hjälp av "virtualMachineConfiguration" och inte "virtualMachineConfiguration". Alla aktuella och nya batch-funktioner kommer att stödjas av konfigurations pooler för virtuella datorer. Cloud Services konfigurations grupper stöder inte alla funktioner och inga nya funktioner planeras. Du kommer inte att kunna skapa nya CloudServiceConfiguration-pooler eller lägga till nya noder i befintliga pooler [efter den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Mer information finns i [migrera konfiguration av batch-pool från Cloud Services till virtuell dator](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+- **' virtualMachineConfiguration ' eller ' cloudServiceConfiguration '.**
+    Även om du kan skapa pooler med hjälp av en konfiguration måste nya pooler konfigureras med hjälp av "virtualMachineConfiguration" och inte "cloudServiceConfiguration". Alla aktuella och nya batch-funktioner kommer att stödjas av konfigurations pooler för virtuella datorer. Cloud Services konfigurations grupper stöder inte alla funktioner och inga nya funktioner planeras. Du kommer inte att kunna skapa nya cloudServiceConfiguration-pooler eller lägga till nya noder i befintliga pooler [efter den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Mer information finns i [migrera konfiguration av batch-pool från Cloud Services till virtuell dator](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 - **Överväg jobb-och uppgifts körnings tid när du bestämmer jobb till pool-mappning.**
     Om du har jobb som huvudsakligen är kortsiktiga och de förväntade totala antalet aktiviteter är små, så att den förväntade körnings tiden för jobbet inte är lång, allokera inte en ny pool för varje jobb. Tilldelnings tiden för noderna minskar jobbets körnings tid.

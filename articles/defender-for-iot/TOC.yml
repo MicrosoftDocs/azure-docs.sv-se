@@ -35,7 +35,7 @@
         - name: Bygg in Defender för IoT Micro agent från käll koden (för hands version)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
-        - name: Konfigurera säkerhetsmodulen för Azure-återställnings tider
+        - name: Konfigurera Defender-IoT-Micro-agent för Azure återställnings tider
           href: quickstart-azure-rtos-security-module.md
         - name: Lägg till Azure-resurser i din IoT-lösning
           displayName: 'resources, monitored, resource'
@@ -79,10 +79,10 @@
           href: concept-recommendations.md
         - name: Klassisk
           items:
-            - name: Säkerhetsmodul
-              displayName: 'device twins, security module twin'
+            - name: Defender-IoT-Micro-agent
+              displayName: 'device twins, Defender-IoT-micro-agent twin'
               href: concept-security-module.md
-            - name: Edge-säkerhetsmodul
+            - name: Edge Defender-IoT-Micro-agent
               href: security-edge-architecture.md
             - name: Säkerhetsagenter
               href: overview-security-agents.md
@@ -95,7 +95,7 @@
             - name: Azures säkerhets bas linje för Azure Defender för IoT
               displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
               href: security-baseline.md
-            - name: Klassisk händelse agg regering för säkerhetsmodulen
+            - name: Defender – IoT-Micro-agent klassisk händelse agg regering
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
             - name: Agentbaserade säkerhets aviseringar
@@ -253,14 +253,14 @@
         - name: Skapa anpassade aviseringar
           displayName: security group
           href: quickstart-create-custom-alerts.md
-        - name: Säkerhetsmodul för Azure RTOS
+        - name: Defender-IoT-Micro-agent för Azure återställnings tider
           href: iot-security-azure-rtos.md
           items:
-            - name: Arbeta med säkerhetsmodul för Azure RTOS
+            - name: Arbeta med Defender-IoT-Micro-agent för Azure återställnings tider
               href: how-to-azure-rtos-security-module.md
-            - name: Förstå säkerhetsmodulen för Azure RTOS
+            - name: Förstå Defender-IoT-Micro-agenten för Azure återställnings tider
               href: concept-rtos-security-module.md
-            - name: Aviseringar och rekommendationer för säkerhetsmodul för Azure RTOS
+            - name: Defender-IoT-Micro-agent för Azure återställnings tider-aviseringar och rekommendationer
               href: concept-rtos-security-alerts-recommendations.md
         - name: Klassisk
           items:
@@ -282,7 +282,7 @@
                   href: azure-iot-security-local-configuration-c.md
                 - name: Lokal konfiguration C#
                   href: azure-iot-security-local-configuration-csharp.md
-            - name: Distribuera Edge-säkerhetsmodul
+            - name: Distribuera Edge Defender-IoT-Micro-agent
               href: how-to-deploy-edge.md
             - name: Konfigurera säkerhetsagenter
               displayName: property
@@ -319,7 +319,7 @@
           href: resources-frequently-asked-questions.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Säkerhetsmodul för Azure RTOS-API
+        - name: Defender-IoT-Micro-agent för Azure återställnings tider-API
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: Vanliga frågor och svar – agent
@@ -344,7 +344,7 @@
           href: ../security-center/
         - name: Dokumentation om Azure-säkerhet
           href: ../security/index.yml
-        - name: Azure RTOS-säkerhetsmodul på Stack Overflow
+        - name: Azure återställnings tider Defender-IoT-Micro-agent på Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Blogg om säkerhet, sekretess och efterlevnad för IoT i Azure'
           href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'

@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 192970540f21905b624ce3f6e3558baa935a4d7a
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 146053ffd72b24216bfa86577787727257da2516
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489735"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495430"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -74,7 +74,7 @@ För autentisering måste klienten referera till `azure-communication-common` pa
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java.
 
-| Name                                  | Beskrivning                                                  |
+| Namn                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatAsyncClient | Den här klassen krävs för den asynkrona chatt funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |

@@ -3,14 +3,14 @@ title: Åter givnings funktioner
 description: Standard Azure Batch-funktioner används för att köra åter givning av arbets belastningar och appar. Batch innehåller vissa funktioner som stöder åter givning av arbets belastningar.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429810"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496345"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch åter givnings funktioner
 
@@ -27,6 +27,9 @@ Kommando rads strängarna för aktiviteten måste referera till de program och s
 De flesta åter givnings program kräver licenser som hämtats från en licens Server. Om det finns en befintlig lokal licens Server måste både poolen och licens servern finnas i samma [virtuella nätverk](../virtual-network/virtual-networks-overview.md). Det är också möjligt att köra en licens server på en virtuell Azure-dator, med batch-poolen och den virtuella licens servern som finns på samma virtuella nätverk.
 
 ## <a name="batch-pools-using-rendering-vm-images"></a>Batch-pooler som använder rendering av VM-avbildningar
+
+> [!IMPORTANT]
+> Avbildningarna för rendering av virtuella datorer och licenser för betalning för användning är [inaktuella och kommer att dras tillbaka den 29 februari 2024](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Om du vill använda batch för rendering ska du använda [en anpassad VM-avbildning och standard program licensiering.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ### <a name="rendering-application-installation"></a>Återge programinstallation
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63288bca124959463dc6ea16cb9d681c68ad00da
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448208"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488728"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Konfigurera inloggning med en Salesforce-SAML-Provider med hjälp av SAML-protokollet i Azure Active Directory B2C
 
@@ -60,11 +60,24 @@ Den här artikeln visar hur du aktiverar inloggning för användare från en Sal
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
+      Använd följande format när du använder en [anpassad domän](custom-domain.md):
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
+      ```
+
 6. I fältet **ACS URL** anger du följande URL. Se till att du ersätter värdet för `your-tenant` med namnet på din Azure AD B2C-klient.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
+
+      Använd följande format när du använder en [anpassad domän](custom-domain.md):
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
+      ```
+
 7. Rulla längst ned i listan och klicka sedan på **Spara**.
 
 ### <a name="get-the-metadata-url"></a>Hämta metadata-URL

@@ -2,23 +2,23 @@
 title: Skapa en tränings data uppsättning för en anpassad modell för formulär igenkänning
 titleSuffix: Azure Cognitive Services
 description: Lär dig hur du ser till att din tränings data uppsättning är optimerad för att träna en formulär igenkännings modell.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.author: pafarley
-ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: b33ac3cb710a2d2a9d92efadf14dc829cb5da6e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585117"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467501"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Skapa en tränings data uppsättning för en anpassad modell
 
-När du använder den anpassade modellen för formulär igenkänning kan du ange dina egna utbildnings data till åtgärden [träna anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) så att modellen kan träna till dina branschspecifika formulär. Följ den här guiden för att lära dig hur du samlar in och förbereder data för att träna modellen på ett effektivt sätt.
+När du använder den anpassade modellen för formulär igenkänning kan du ange dina egna utbildnings data till åtgärden [träna anpassad modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) så att modellen kan träna till dina branschspecifika formulär. Följ den här guiden för att lära dig hur du samlar in och förbereder data för att träna modellen på ett effektivt sätt.
 
 Du behöver minst fem ifyllda formulär av samma typ.
 
@@ -47,7 +47,7 @@ Om du vill använda manuellt märkta data måste du också ladda upp *.labels.js
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organisera dina data i undermappar (valfritt)
 
-Som standard använder [träna anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) -API bara formulär dokument som finns i roten för din lagrings behållare. Du kan dock träna med data i undermappar om du anger den i API-anropet. Normalt har själva bröd texten i det [anpassade modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) anropet följande format, där `<SAS URL>` är URL: en för signaturen för delad åtkomst för din behållare:
+Som standard använder [träna anpassad modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) -API bara formulär dokument som finns i roten för din lagrings behållare. Du kan dock träna med data i undermappar om du anger den i API-anropet. Normalt har själva bröd texten i det [anpassade modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) anropet följande format, där `<SAS URL>` är URL: en för signaturen för delad åtkomst för din behållare:
 
 ```json
 {

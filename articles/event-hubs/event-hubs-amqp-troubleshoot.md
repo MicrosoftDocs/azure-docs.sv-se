@@ -3,20 +3,20 @@ title: Felsöka AMQP-fel i Azure Event Hubs | Microsoft Docs
 description: Innehåller en lista med AMQP-fel som du kan få när du använder Azure Event Hubs och orsaken till dessa fel.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 409552bb6176f2023901b4518646fbfcb2d51adf
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 51b96792f6921bae9364212c6e5f9c987ff05e2a
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235058"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466073"
 ---
 # <a name="amqp-errors-in-azure-event-hubs"></a>AMQP-fel i Azure Event Hubs
 Den här artikeln innehåller några av de fel som du får när du använder AMQP med Azure Event Hubs. De är alla standard beteenden för tjänsten. Du kan undvika dem genom att skicka/ta emot samtal via anslutningen/länken, som automatiskt återskapar anslutningen/länken.
 
 ## <a name="link-is-closed"></a>Länken är stängd 
-Följande fel visas när AMQP-anslutningen och länken är aktiva men inga anrop (till exempel skicka eller ta emot) görs med länken i 10 minuter. Därför stängs länken. Anslutningen är fortfarande öppen.
+Följande fel visas när AMQP-anslutningen och länken är aktiva men inga anrop (till exempel skicka eller ta emot) görs med hjälp av länken i 30 minuter. Därför stängs länken. Anslutningen är fortfarande öppen.
 
-"AMQP: Link: Detached-FORCEDOS: länken" G2:7223832: user.tenant0.cud_00000000000-0000-0000-0000-00000000000000 "tvingas att frånkopplas av koordinatorn på grund av att det uppstod fel i utgivaren (link164614). Frånkopplat ursprung: AmqpMessagePublisher. IdleTimerExpired: tids gräns för inaktivitet: 00:10:00. TrackingId: 00000000000000000000000000000000000000_G2_B3, SystemTracker:: ämne: topic, tidsstämpel: 2/16/2018 11:10:40 PM "
+"AMQP: Link: Detached-FORCEDOS: länken" G2:7223832: user.tenant0.cud_00000000000-0000-0000-0000-00000000000000 "tvingas att frånkopplas av koordinatorn på grund av att det uppstod fel i utgivaren (link164614). Frånkopplat ursprung: AmqpMessagePublisher. IdleTimerExpired: tids gräns för inaktivitet: 00:30:00. TrackingId: 00000000000000000000000000000000000000_G2_B3, SystemTracker:: ämne: topic, tidsstämpel: 2/16/2018 11:10:40 PM "
 
 ## <a name="connection-is-closed"></a>Anslutningen är stängd
 Följande fel visas på AMQP-anslutningen när alla länkar i anslutningen har stängts eftersom det inte fanns någon aktivitet (inaktiv) och en ny länk inte har skapats på 5 minuter.

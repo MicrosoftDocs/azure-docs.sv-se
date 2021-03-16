@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247598"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470682"
 ---
 # <a name="defender-for-iot-installation"></a>Defender för IoT-installation
 
@@ -42,12 +42,12 @@ Defender for IoT-sensorn ansluter till en intervall port eller ett nätverk, och
 
 Följande rack monterings anordningar är tillgängliga:
 
-| **Distributions typ** | **Företag** | **Enterprise** | **SMB** |  |
+| **Distributions typ** | **Företag** | **Enterprise** | **SMB** | **Linje** |
 |--|--|--|--|--|
 | **Modell** | HPE DL360 | Dell PowerEdge R340 XL | HPE DL20 | HPE DL20 |
 | **Övervaka portar** | upp till 15 RJ45 eller 8 OPT | upp till 9 RJ45 eller 6 OPT | upp till 8 RJ45 eller 6 OPT | 4 RJ45 |
-| **Maximal bandbredd \** _ | 3 GB/SEK | 1 GB/SEK | 1 GB/SEK | 100 MB/SEK |
-| _ *Max skyddade enheter** | 30 000 | 10 000 | 15 000 | 1 000 |
+| **Maximal bandbredd\*** | 3 GB/SEK | 1 GB/SEK | 1 GB/SEK | 100 MB/SEK |
+| **Maximalt antal skyddade enheter** | 30 000 | 10 000 | 15 000 | 1 000 |
 
 * Maximal bandbredds kapacitet kan variera beroende på protokoll distribution.
 
@@ -58,8 +58,8 @@ Följande virtuella enheter är tillgängliga:
 | **Distributions typ** | **Enterprise** | **SMB** | **Linje** |
 |--|--|--|--|
 | **Beskrivning** | Virtuell installation för företags distributioner | Virtuell installation för SMB-distributioner | Virtuell installation för rad distributioner |
-| **Maximal bandbredd \** _ | 150 MB/SEK | 15 MB/SEK | 3 MB/SEK |
-| _ *Max skyddade enheter** | 3 000 | 300 | 100 |
+| **Maximal bandbredd\*** | 150 MB/SEK | 15 MB/SEK | 3 MB/SEK |
+| **Maximalt antal skyddade enheter** | 3 000 | 300 | 100 |
 | **Distributions typ** | Stora företag | SMB | Linje |
 | **Beskrivning** | Virtuell installation för företags distributioner | Virtuell installation för SMB-distributioner | Virtuell installation för rad distributioner |
 
@@ -84,7 +84,7 @@ För att komma åt filen:
 
 1. Logga in på ditt Defender för IoT-konto.
 
-2. Gå till sidan **nätverks sensor** eller **lokal hanterings konsol** och välj en version som du vill ladda ned.
+1. Gå till sidan **nätverks sensor** eller **lokal hanterings konsol** och välj en version som du vill ladda ned.
 
 ### <a name="install-from-dvd"></a>Installera från DVD
 
@@ -116,9 +116,9 @@ Så här förbereder du en disk i en nyckel:
 
 1. Kör Rufus och välj **sensor ISO**.
 
-2. Anslut disken i en nyckel till Front panelen.
+1. Anslut disken i en nyckel till Front panelen.
 
-3. Ange BIOS för servern för att starta från USB-minnet.
+1. Ange BIOS för servern för att starta från USB-minnet.
 
 ## <a name="dell-poweredger340xl-installation"></a>Dell PowerEdgeR340XL-installation
 
@@ -149,27 +149,27 @@ För att installera Dell PowerEdge R340XL-enheten behöver du:
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-front-panel.jpg" alt-text="Dell PowerEdge R340-front panel.":::
 
  1. Vänster kontroll panel 
- 2. Optisk enhet (valfritt) 
- 3. Höger kontroll panel 
- 4. Information-tagg 
- 5. Enheter  
+ 1. Optisk enhet (valfritt) 
+ 1. Höger kontroll panel 
+ 1. Information-tagg 
+ 1. Enheter  
 
 ### <a name="dell-poweredge-r340-back-panel"></a>Dell PowerEdge-R340 på bak panelen
 
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-back-panel.jpg" alt-text="Dell PowerEdge R340 back panel.":::
 
 1. Serie port 
-2. NIC-port (GB 1) 
-3. NIC-port (GB 1) 
-4. Halv Höjds PCIe 
-5. Kort plats för PCIe-expansion med full höjd 
-6. Strömförsörjnings enhet 1 
-7. Strömförsörjnings enhet 2 
-8. System identifiering 
-9. CMA-knapp (system status indikator kabel port) 
-10. USB 3,0-port (2) 
-11. iDRAC9 dedikerad nätverks port 
-12. VGA-port 
+1. NIC-port (GB 1) 
+1. NIC-port (GB 1) 
+1. Halv Höjds PCIe 
+1. Kort plats för PCIe-expansion med full höjd 
+1. Strömförsörjnings enhet 1 
+1. Strömförsörjnings enhet 2 
+1. System identifiering 
+1. CMA-knapp (system status indikator kabel port) 
+1. USB 3,0-port (2) 
+1. iDRAC9 dedikerad nätverks port 
+1. VGA-port 
 
 ### <a name="dell-bios-configuration"></a>Konfiguration av Dell BIOS
 
@@ -189,28 +189,28 @@ Så här konfigurerar du Dell BIOS:
 
 1. [Konfigurera IP-adressen för iDRAC](#configure-idrac-ip-address)
 
-2. [Importera konfigurations filen för BIOS](#import-the-bios-configuration-file)
+1. [Importera konfigurations filen för BIOS](#import-the-bios-configuration-file)
 
 #### <a name="configure-idrac-ip-address"></a>Konfigurera iDRAC IP-adress
 
 1. Starta sensorn.
 
-2. Om operativ systemet redan är installerat väljer du nyckeln F2 för att ange BIOS-konfigurationen.
+1. Om operativ systemet redan är installerat väljer du nyckeln F2 för att ange BIOS-konfigurationen.
 
-3. Välj **Inställningar för Idrac**.
+1. Välj **Inställningar för Idrac**.
 
-4. Välj **nätverk**.
+1. Välj **nätverk**.
 
    > [!NOTE]
    > Under installationen måste du konfigurera standard-iDRAC IP-adress och lösen ord som nämns i följande steg. Efter installationen ändrar du definitionerna.
 
-5. Ändra den statiska IPv4-adressen till **10.100.100.250**.
+1. Ändra den statiska IPv4-adressen till **10.100.100.250**.
 
-6. Ändra den statiska nät masken till **255.255.255.0**.
+1. Ändra den statiska nät masken till **255.255.255.0**.
 
    :::image type="content" source="media/tutorial-install-components/idrac-network-settings-screen-v2.png" alt-text="Skärm bild som visar den statiska nät masken.":::
 
-7. Välj **tillbaka** till  >  **slutet**.
+1. Välj **tillbaka** till  >  **slutet**.
 
 #### <a name="import-the-bios-configuration-file"></a>Importera konfigurations filen för BIOS
 
@@ -220,15 +220,15 @@ I den här artikeln beskrivs hur du konfigurerar BIOS med hjälp av konfiguratio
 
    :::image type="content" source="media/tutorial-install-components/idrac-port.png" alt-text="Skärm bild av den förkonfigurerade IP-adressen.":::
 
-2. Öppna en webbläsare och ange **10.100.100.250** för att ansluta till Idrac-webbgränssnittet.
+1. Öppna en webbläsare och ange **10.100.100.250** för att ansluta till Idrac-webbgränssnittet.
 
-3. Logga in med Dells standard administratörs behörighet:
+1. Logga in med Dells standard administratörs behörighet:
 
    - Användar namn: **rot**
 
    - Lösen ord: **Calvin**
 
-4. Installationens autentiseringsuppgifter är:
+1. Installationens autentiseringsuppgifter är:
 
    - Användar namn: **xxx**
 
@@ -241,7 +241,7 @@ I den här artikeln beskrivs hur du konfigurerar BIOS med hjälp av konfiguratio
      > - Du är den enda användare som för närvarande är ansluten till iDRAC.
      > - Systemet finns inte i BIOS-menyn.
 
-5. Gå till konfigurations profil för **konfigurations**  >  **Server**. Ange följande parametrar:
+1. Gå till konfigurations profil för **konfigurations**  >  **Server**. Ange följande parametrar:
 
    :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="Skärm bild som visar konfigurationen av din server profil.":::
 
@@ -252,9 +252,9 @@ I den här artikeln beskrivs hur du konfigurerar BIOS med hjälp av konfiguratio
    | Importera komponenter | Välj **BIOS, NIC, RAID**. |
    | Högsta väntetid | Välj **20 minuter**. |
 
-6. Välj **Importera**.
+1. Välj **Importera**.
 
-7. Om du vill övervaka processen går du till **underhålls**  >  **jobb kön**.
+1. Om du vill övervaka processen går du till **underhålls**  >  **jobb kön**.
 
    :::image type="content" source="media/tutorial-install-components/view-the-job-queue.png" alt-text="Skärm bild som visar jobbkö.":::
 
@@ -276,33 +276,33 @@ Konfigurera manuellt:
 
    - Om installationen är en Defender för IoT-enhet loggar du in med **xxx** som användar namn och **xxx** för lösen ordet.
 
-2. När du har åtkomst till BIOS går du till **enhets inställningar**.
+1. När du har åtkomst till BIOS går du till **enhets inställningar**.
 
-3. Välj den RAID-styrda konfigurationen genom att välja **integrerad RAID-styrenhet 1: Dell PERC- \<PERC H330 Adapter\> konfigurationsverktyget**.
+1. Välj den RAID-styrda konfigurationen genom att välja **integrerad RAID-styrenhet 1: Dell PERC- \<PERC H330 Adapter\> konfigurationsverktyget**.
 
-4. Välj **konfigurations hantering**.
+1. Välj **konfigurations hantering**.
 
-5. Välj **Skapa virtuell disk**.
+1. Välj **Skapa virtuell disk**.
 
-6. I fältet **Välj RAID-nivå** väljer du **RAID5**. I fältet **namn på virtuell disk** anger du **rot** och väljer **fysiska diskar**.
+1. I fältet **Välj RAID-nivå** väljer du **RAID5**. I fältet **namn på virtuell disk** anger du **rot** och väljer **fysiska diskar**.
 
-7. Välj Markera **alla** och välj sedan **tillämpa ändringar**
+1. Välj Markera **alla** och välj sedan **tillämpa ändringar**
 
-8. Välj **OK**.
+1. Välj **OK**.
 
-9. Bläddra nedåt och välj **Skapa virtuell disk**.
+1. Bläddra nedåt och välj **Skapa virtuell disk**.
 
-10. Markera kryss rutan **Bekräfta** och välj **Ja**.
+1. Markera kryss rutan **Bekräfta** och välj **Ja**.
 
-11. Välj **OK**.
+1. Välj **OK**.
 
-12. Gå tillbaka till huvud skärmen och välj **system-BIOS**.
+1. Gå tillbaka till huvud skärmen och välj **system-BIOS**.
 
-13. Välj **Start Inställningar**.
+1. Välj **Start Inställningar**.
 
-14. För alternativet **Start läge** väljer du **BIOS**.
+1. För alternativet **Start läge** väljer du **BIOS**.
 
-15. Välj **tillbaka** och välj sedan **Slutför** för att avsluta BIOS-inställningarna.
+1. Välj **tillbaka** och välj sedan **Slutför** för att avsluta BIOS-inställningarna.
 
 ### <a name="software-installation-dell-r340"></a>Program varu installation (Dell R340)
 
@@ -316,25 +316,25 @@ För att installera:
 
    - Montera ISO-avbildningen med hjälp av iDRAC. När du har loggat in på iDRAC väljer du den virtuella konsolen och väljer sedan **virtuella medier**.
 
-2. I avsnittet **MAPPA CD/DVD** väljer du **Välj fil**.
+1. I avsnittet **MAPPA CD/DVD** väljer du **Välj fil**.
 
-3. Välj version ISO-avbildningsfilen för den här versionen i dialog rutan som öppnas.
+1. Välj version ISO-avbildningsfilen för den här versionen i dialog rutan som öppnas.
 
-4. Välj knappen **Mappa enhet** .
+1. Välj knappen **Mappa enhet** .
 
    :::image type="content" source="media/tutorial-install-components/mapped-device-on-virtual-media-screen-v2.png" alt-text="Skärm bild som visar en mappad enhet.":::
 
-5. Mediet är monterat. Välj **Stäng**.
+1. Mediet är monterat. Välj **Stäng**.
 
-6. Starta enheten. När du använder iDRAC kan du starta om servrarna genom att välja knappen **konsulär kontroll** . I **tangent bords makrona** väljer du sedan knappen **tillämpa** som startar Ctrl + Alt + Delete-sekvensen.
+1. Starta enheten. När du använder iDRAC kan du starta om servrarna genom att välja knappen **konsulär kontroll** . I **tangent bords makrona** väljer du sedan knappen **tillämpa** som startar Ctrl + Alt + Delete-sekvensen.
 
-7. Välj **engelska**.
+1. Välj **engelska**.
 
-8. Välj **sensor-release- \<version\> Enterprise**.
+1. Välj **sensor-release- \<version\> Enterprise**.
 
    :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Skärm bild som visar versions val.":::   
 
-9. Definiera apparatens profil och nätverks egenskaper:
+1. Definiera apparatens profil och nätverks egenskaper:
 
    :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Skärm bild som visar produkt profilen.":::   
 
@@ -348,13 +348,13 @@ För att installera:
    | **datorns värdnamn:** | - |
    | **DNS** | - |
    | **IP-adress för standard-gateway:** | - |
-   | **gränssnitt för indataport:** |  Systemet genererar en lista med indataportar åt dig. Om du vill spegla indataportarna kopierar du alla objekt som visas i listan med en tusentals avgränsare. Observera att du inte behöver konfigurera brygga gränssnittet. Det här alternativet används endast för särskilda användnings fall. |
+   | **gränssnitt för indataport:** |  Systemet genererar en lista med indataportar åt dig. Om du vill spegla indataportarna kopierar du alla objekt som visas i listan med en tusentals avgränsare. Du behöver inte konfigurera brygga gränssnittet. Det här alternativet används endast för särskilda användnings fall. |
 
-10. Efter 10 minuter visas de två uppsättningarna med autentiseringsuppgifter. En är för en **CyberX** -användare och en för en **support** användare.  
+1. Efter 10 minuter visas de två uppsättningarna med autentiseringsuppgifter. En är för en **CyberX** -användare och en för en **support** användare.  
 
-11. Spara installations-ID och lösen ord. Du behöver dessa autentiseringsuppgifter för att få åtkomst till plattformen första gången du använder den.
+1. Spara installations-ID och lösen ord. Du behöver dessa autentiseringsuppgifter för att få åtkomst till plattformen första gången du använder den.
 
-12. Fortsätt genom att välja **RETUR** .
+1. Fortsätt genom att välja **RETUR** .
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE DL20-installation
 
@@ -389,7 +389,7 @@ Så här aktiverar och uppdaterar du lösen ordet:
 
     :::image type="content" source="media/tutorial-install-components/hpe-proliant-screen-v2.png" alt-text="Skärm bild som visar fönstret HPE.":::
 
-2. Gå till **system verktyg**  >  **system konfiguration**  >  **ILO 5 konfigurations verktyg**  >  **nätverks alternativ**.
+1. Gå till **system verktyg**  >  **system konfiguration**  >  **ILO 5 konfigurations verktyg**  >  **nätverks alternativ**.
 
     :::image type="content" source="media/tutorial-install-components/system-configuration-window-v2.png" alt-text="Skärm bild som visar fönstret system konfiguration.":::
 
@@ -399,13 +399,13 @@ Så här aktiverar och uppdaterar du lösen ordet:
     
     1.  Ange IP-adressen, nät masken och IP-adressen för gatewayen.
 
-3. Välj **F10: Spara**.
+1. Välj **F10: Spara**.
 
-4. Välj **ESC** för att återgå till **konfigurations verktyget för ILO 5** och välj sedan **användar hantering**.
+1. Välj **ESC** för att återgå till **konfigurations verktyget för ILO 5** och välj sedan **användar hantering**.
 
-5. Välj **Redigera/ta bort användare**. Administratören är den enda definierade standard användaren. 
+1. Välj **Redigera/ta bort användare**. Administratören är den enda definierade standard användaren. 
 
-6. Ändra standard lösen ordet och välj **F10: Spara**.
+1. Ändra standard lösen ordet och välj **F10: Spara**.
 
 ### <a name="configure-the-hpe-bios"></a>Konfigurera HPE BIOS
 
@@ -415,41 +415,41 @@ Så här konfigurerar du HPE-BIOS:
 
 1. Välj **system verktyg**  >  **system konfiguration**  >  **BIOS/plattforms konfiguration (RBSU)**.
 
-2. Välj **Start alternativ** i **RBSU-formuläret (BIOS/Platform Configuration)** .
+1. Välj **Start alternativ** i **RBSU-formuläret (BIOS/Platform Configuration)** .
 
-3. Ändra **Start läget** till **bakåtkompatibelt BIOS-läge** och välj sedan **F10: Spara**.
+1. Ändra **Start läget** till **bakåtkompatibelt BIOS-läge** och välj sedan **F10: Spara**.
 
-4. Välj **ESC** två gånger för att stänga formuläret **system konfiguration** .
+1. Välj **ESC** två gånger för att stänga formuläret **system konfiguration** .
 
 #### <a name="for-the-enterprise-appliance"></a>För företags produkten
 
 1. Välj **inbäddad RAID 1: HPE Smart Array P408i – en konfiguration av SR generation 10-**  >  **matris**  >  **skapa matris**.
 
-2. I formuläret **skapa matris** väljer du alla alternativ. Tre alternativ är tillgängliga för **företags** enheten.
+1. I formuläret **skapa matris** väljer du alla alternativ. Tre alternativ är tillgängliga för **företags** enheten.
 
 #### <a name="for-the-smb-appliance"></a>För SMB-installationen
 
 1. Välj **inbäddad RAID 1: HPE Smart Array P208i – en konfiguration av SR generation 10-**  >  **matris**  >  **skapa matris**.
 
-2. Välj **Fortsätt till nästa formulär**.
+1. Välj **Fortsätt till nästa formulär**.
 
-3. I formuläret **Ange RAID-nivå** ställer du in nivån på **RAID 5** för företags distributioner och **RAID 1** för SMB-distributioner.
+1. I formuläret **Ange RAID-nivå** ställer du in nivån på **RAID 5** för företags distributioner och **RAID 1** för SMB-distributioner.
 
-4. Välj **Fortsätt till nästa formulär**.
+1. Välj **Fortsätt till nästa formulär**.
 
-5. I formuläret **etikett för logisk enhet** anger du **logisk enhet 1**.
+1. I formuläret **etikett för logisk enhet** anger du **logisk enhet 1**.
 
-6. Välj **skicka ändringar**.
+1. Välj **skicka ändringar**.
 
-7. I formuläret **Skicka** väljer **du tillbaka till huvud menyn**.
+1. I formuläret **Skicka** väljer **du tillbaka till huvud menyn**.
 
-8. Välj **F10: Spara** och tryck sedan på **ESC** två gånger.
+1. Välj **F10: Spara** och tryck sedan på **ESC** två gånger.
 
-9. I fönstret **system verktyg** väljer du **Start menyn för en tidpunkt**.
+1. I fönstret **system verktyg** väljer du **Start menyn för en tidpunkt**.
 
-10. I meny formuläret för **eng ång slö ren tid** väljer du **äldre BIOS-One-Time Start menyn**.
+1. I meny formuläret för **eng ång slö ren tid** väljer du **äldre BIOS-One-Time Start menyn**.
 
-11. **Start i äldre** fönster och **Start åsidosättande** fönster visas. Välj ett alternativ för att åsidosätta datorn; till exempel för en CD-ROM-, USB-, HDD-eller UEFI-gränssnitt.
+1. **Start i äldre** fönster och **Start åsidosättande** fönster visas. Välj ett alternativ för att åsidosätta datorn; till exempel för en CD-ROM-, USB-, HDD-eller UEFI-gränssnitt.
 
     :::image type="content" source="media/tutorial-install-components/boot-override-window-one-v2.png" alt-text="Skärm bild som visar det första fönstret för åsidosättning av omstart.":::
 
@@ -462,19 +462,19 @@ Installera program varan:
 
 1. Anslut skärmen och tangent bordet till enheten och Anslut sedan till CLI.
 
-2. Anslut en extern CD eller disk i nyckeln med ISO-avbildningen som du laddade ned från sidan **uppdateringar** i Defender for IoT-portalen.
+1. Anslut en extern CD eller disk i nyckeln med ISO-avbildningen som du laddade ned från sidan **uppdateringar** i Defender for IoT-portalen.
 
-3. Starta enheten.
+1. Starta enheten.
 
-4. Välj **engelska**.
+1. Välj **engelska**.
 
     :::image type="content" source="media/tutorial-install-components/select-english-screen.png" alt-text="Val av engelska i CLI-fönstret.":::
 
-5. Välj **sensor-release- <version> Enterprise**.
+1. Välj **sensor-release- <version> Enterprise**.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Skärm bild av skärmen för att välja en version.":::
 
-6. I installations guiden definierar du enhets profilen och nätverks egenskaperna:
+1. I installations guiden definierar du enhets profilen och nätverks egenskaperna:
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Skärm bild som visar installations guiden.":::
 
@@ -485,11 +485,11 @@ Installera program varan:
     | **Standard nätverks parametrar (vanligt vis parametrarna tillhandahålls av kunden)** | **IP-adress för hanterings nätverk:** <br/> <br/>**datorns värdnamn:** <br/>**DNS** <br/>**IP-adress för standard-gateway:**|
     | **gränssnitt för indataport:** | Systemet genererar en lista med indataportar åt dig.<br/><br/>Om du vill spegla indataportarna kopierar du alla objekt som visas i listan med en tusentals avgränsare: **eno5, eno3, eno1, eno6, eno4**<br/><br/>**För HPE-DL20: Visa inte eno1, enp1s0f4u4 (iLo-gränssnitt)**<br/><br/>**Brygga**: du behöver inte konfigurera brygga gränssnittet. Det här alternativet används endast för särskilda användnings fall. Tryck på **RETUR** för att fortsätta. |
 
-7. Efter 10 minuter visas de två uppsättningarna med autentiseringsuppgifter. En är för en **CyberX** -användare och en för en **support** användare.
+1. Efter 10 minuter visas de två uppsättningarna med autentiseringsuppgifter. En är för en **CyberX** -användare och en för en **support** användare.
 
-8. Spara installations programmets ID och lösen ord. Du behöver autentiseringsuppgifterna för att få åtkomst till plattformen för första gången.
+1. Spara installations programmets ID och lösen ord. Du behöver autentiseringsuppgifterna för att få åtkomst till plattformen för första gången.
 
-9. Fortsätt genom att välja **RETUR** .
+1. Fortsätt genom att välja **RETUR** .
 
 ## <a name="hpe-proliant-dl360-installation"></a>HPE DL360-installation
 
@@ -528,17 +528,17 @@ För att installera:
 
 1. Logga in på den iLO-konsolen och högerklicka sedan på skärmen servrar.
 
-2. Välj **HTML5-konsol**.
+1. Välj **HTML5-konsol**.
 
-3. I-konsolen väljer du CD-ikonen och väljer alternativet CD/DVD.
+1. I-konsolen väljer du CD-ikonen och väljer alternativet CD/DVD.
 
-4. Välj **lokal ISO-fil**.
+1. Välj **lokal ISO-fil**.
 
-5. I dialog rutan väljer du den relevanta ISO-filen.
+1. I dialog rutan väljer du den relevanta ISO-filen.
 
-6. Gå till vänster ikon, Välj **energi** och välj **Återställ**.
+1. Gå till vänster ikon, Välj **energi** och välj **Återställ**.
 
-7. Installations processen startas om och körs.
+1. Installations processen startas om och körs.
 
 ### <a name="software-installation-hpe-dl360"></a>Program varu installation (HPE DL360)
 
@@ -548,17 +548,17 @@ För att installera:
 
 1. Anslut skärmen och tangent bordet till enheten och Anslut sedan till CLI.
 
-2. Anslut en extern CD eller disk i en nyckel med ISO-avbildningen som du laddade ned från sidan **uppdateringar** i Defender for IoT-portalen.
+1. Anslut en extern CD eller disk i en nyckel med ISO-avbildningen som du laddade ned från sidan **uppdateringar** i Defender for IoT-portalen.
 
-3. Starta enheten.
+1. Starta enheten.
 
-4. Välj **engelska**.
+1. Välj **engelska**.
 
-5. Välj **sensor-release- <version> Enterprise**.
+1. Välj **sensor-release- <version> Enterprise**.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Skärm bild som visar valet av version.":::
 
-6. I installations guiden definierar du apparatens profil och nätverks egenskaper.
+1. I installations guiden definierar du apparatens profil och nätverks egenskaper.
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Skärm bild som visar installations guiden.":::
 
@@ -567,13 +567,13 @@ För att installera:
     | **Maskinvaruprofil** | Välj **företag**. |
     | **Hanterings gränssnitt** | **eno2** |
     | **Standard nätverks parametrar (tillhandahålls av kunden)** | **IP-adress för hanterings nätverk:** <br/>**nätmask:** <br/>**datorns värdnamn:** <br/>**DNS** <br/>**IP-adress för standard-gateway:**|
-    | **gränssnitt för indataport:**  | Systemet genererar en lista med indataportar åt dig.<br/><br/>Om du vill spegla indataportarna kopierar du alla objekt som visas i listan med en tusentals avgränsare.<br/><br/>Observera att du inte behöver konfigurera brygga gränssnittet. Det här alternativet används endast för särskilda användnings fall. |
+    | **gränssnitt för indataport:**  | Systemet genererar en lista med indataportar åt dig.<br/><br/>Om du vill spegla indataportarna kopierar du alla objekt som visas i listan med en tusentals avgränsare.<br/><br/> Du behöver inte konfigurera brygga gränssnittet. Det här alternativet används endast för särskilda användnings fall. |
 
-7. Efter 10 minuter visas de två uppsättningarna med autentiseringsuppgifter. En är för en **CyberX** -användare och en för en **support** användare.
+1. Efter 10 minuter visas de två uppsättningarna med autentiseringsuppgifter. En är för en **CyberX** -användare och en för en **support** användare.
 
-8. Spara installations programmets ID och lösen ord. Du behöver dessa autentiseringsuppgifter för att få åtkomst till plattformen för första gången.
+1. Spara installations programmets ID och lösen ord. Du behöver dessa autentiseringsuppgifter för att få åtkomst till plattformen för första gången.
 
-9. Fortsätt genom att välja **RETUR** .
+1. Fortsätt genom att välja **RETUR** .
 
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>Sensor installation för den virtuella enheten
 
@@ -602,13 +602,13 @@ Kontrol lera att hypervisorn körs.
 
 1. Logga in på ESXi, Välj relevant **data lager** och välj **data lager läsare**.
 
-2. **Ladda upp** avbildningen och välj **Stäng**.
+1. **Ladda upp** avbildningen och välj **Stäng**.
 
-3. Gå till **Virtual Machines** och välj **skapa/registrera VM**.
+1. Gå till **Virtual Machines** och välj **skapa/registrera VM**.
 
-4. Välj **Skapa ny virtuell dator** och välj sedan **Nästa**.
+1. Välj **Skapa ny virtuell dator** och välj sedan **Nästa**.
 
-5. Lägg till ett sensor namn och välj:
+1. Lägg till ett sensor namn och välj:
 
    - Kompatibilitet: **&lt; senaste ESXi- &gt; versionen**
 
@@ -616,15 +616,15 @@ Kontrol lera att hypervisorn körs.
 
    - Gäst operativ system version: **Ubuntu Linux (64-bitars)**
 
-6. Välj **Nästa**.
+1. Välj **Nästa**.
 
-7. Välj relevant data lager och välj **Nästa**.
+1. Välj relevant data lager och välj **Nästa**.
 
-8. Ändra de virtuella maskin varu parametrarna enligt den arkitektur som krävs.
+1. Ändra de virtuella maskin varu parametrarna enligt den arkitektur som krävs.
 
-9. För **CD/DVD-enhet 1** väljer du **data lager ISO-fil** och väljer den ISO-fil som du överförde tidigare.
+1. För **CD/DVD-enhet 1** väljer du **data lager ISO-fil** och väljer den ISO-fil som du överförde tidigare.
 
-10. Välj **Nästa** > **Slutför**.
+1. Välj **Nästa** > **Slutför**.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>Skapa den virtuella datorn (Hyper-V)
 
@@ -634,43 +634,43 @@ Så här skapar du en virtuell dator:
 
 1. Skapa en virtuell disk i Hyper-V Manager.
 
-2. Välj **format = VHDX**.
+1. Välj **format = VHDX**.
 
-3. Välj **typ = dynamisk expandering**.
+1. Välj **typ = dynamisk expandering**.
 
-4. Ange namn och plats för den virtuella hård disken.
+1. Ange namn och plats för den virtuella hård disken.
 
-5. Ange den storlek som krävs (enligt arkitekturen).   
+1. Ange den storlek som krävs (enligt arkitekturen).   
 
-6. Granska sammanfattningen och välj **Slutför**.
+1. Granska sammanfattningen och välj **Slutför**.
 
-7. På menyn **åtgärder** skapar du en ny virtuell dator.
+1. På menyn **åtgärder** skapar du en ny virtuell dator.
 
-8. Ange ett namn för den virtuella datorn.
+1. Ange ett namn för den virtuella datorn.
 
-9. Välj **Ange generations**  >  **generation 1**.
+1. Välj **Ange generations**  >  **generation 1**.
 
-10. Ange minnesallokering (enligt arkitekturen) och markera kryss rutan för dynamiskt minne.
+1. Ange minnesallokering (enligt arkitekturen) och markera kryss rutan för dynamiskt minne.
 
-11. Konfigurera nätverks korts kortet enligt Server nätverk sto pol Ogin.
+1. Konfigurera nätverks korts kortet enligt Server nätverk sto pol Ogin.
 
-12. Anslut VHDX som skapades tidigare till den virtuella datorn.
+1. Anslut VHDX som skapades tidigare till den virtuella datorn.
 
-13. Granska sammanfattningen och välj **Slutför**.
+1. Granska sammanfattningen och välj **Slutför**.
 
-14. Högerklicka på den nya virtuella datorn och välj **Inställningar**.
+1. Högerklicka på den nya virtuella datorn och välj **Inställningar**.
 
-15. Välj **Lägg till maskin vara** och Lägg till ett nytt nätverkskort.
+1. Välj **Lägg till maskin vara** och Lägg till ett nytt nätverkskort.
 
-16. Välj den virtuella växel som ska anslutas till sensor hanterings nätverket.
+1. Välj den virtuella växel som ska anslutas till sensor hanterings nätverket.
 
-17. Allokera processor resurser (enligt arkitekturen).
+1. Allokera processor resurser (enligt arkitekturen).
 
-18. Anslut hanterings konsolens ISO-avbildning till en virtuell DVD-enhet.
+1. Anslut hanterings konsolens ISO-avbildning till en virtuell DVD-enhet.
 
-19. Starta den virtuella datorn.
+1. Starta den virtuella datorn.
 
-20. På menyn **åtgärder** väljer du **Anslut** för att fortsätta program varu installationen.
+2. På menyn **åtgärder** väljer du **Anslut** för att fortsätta program varu installationen.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Program varu installation (ESXi och Hyper-V)
 
@@ -680,11 +680,11 @@ För att installera:
 
 1. Öppna konsolen för virtuella datorer.
 
-2. Den virtuella datorn kommer att starta från ISO-avbildningen och skärmen val av språk visas. Välj **engelska**.
+1. Den virtuella datorn kommer att starta från ISO-avbildningen och skärmen val av språk visas. Välj **engelska**.
 
-3. Välj den arkitektur som krävs.
+1. Välj den arkitektur som krävs.
 
-4. Definiera apparatens profil och nätverks egenskaper:
+1. Definiera apparatens profil och nätverks egenskaper:
 
     | Parameter | Konfiguration |
     | ----------| ------------- |
@@ -693,17 +693,17 @@ För att installera:
     | **Nätverks parametrar (tillhandahålls av kunden)** | **IP-adress för hanterings nätverk:** <br/>**nätmask:** <br/>**datorns värdnamn:** <br/>**DNS** <br/>**standardgateway:** <br/>**gränssnitt för indataport:**|
     | **bro gränssnitt:** | Du behöver inte konfigurera brygga gränssnittet. Det här alternativet är endast för särskilda användnings fall. |
 
-5. Godkänn inställningarna genom att ange **Y** .
+1. Godkänn inställningarna genom att ange **Y** .
 
-6. Inloggnings uppgifter genereras och presenteras automatiskt. Kopiera användar namnet och lösen ordet på en säker plats, eftersom de krävs för inloggning och administration.
+1. Inloggnings uppgifter genereras och presenteras automatiskt. Kopiera användar namnet och lösen ordet på en säker plats, eftersom de krävs för inloggning och administration.
 
-   - **Support**: den administrativa användaren för användar hantering.
+    - **Support**: den administrativa användaren för användar hantering.
 
-   - **CyberX**: motsvarigheten till roten för att komma åt enheten.
+    - **CyberX**: motsvarigheten till roten för att komma åt enheten.
 
-7. Enheten startas om.
+1. Enheten startas om.
 
-8. Få åtkomst till hanterings konsolen via IP-adressen som du konfigurerade tidigare: `https://ip_address` .
+1. Få åtkomst till hanterings konsolen via IP-adressen som du konfigurerade tidigare: `https://ip_address` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Skärm bild som visar åtkomst till hanterings konsolen.":::
 
@@ -735,15 +735,15 @@ Till en virtuell dator för att skapa en virtuell dator (ESXi):
 
 1. Logga in på ESXi, Välj relevant **data lager** och välj **data lager läsare**.
 
-2. Ladda upp avbildningen och välj **Stäng**.
+1. Ladda upp avbildningen och välj **Stäng**.
 
-3. Gå till **Virtual Machines**.
+1. Gå till **Virtual Machines**.
 
-4. Välj **skapa/registrera virtuell dator**.
+1. Välj **skapa/registrera virtuell dator**.
 
-5. Välj **Skapa ny virtuell dator** och välj **Nästa**.
+1. Välj **Skapa ny virtuell dator** och välj **Nästa**.
 
-6. Lägg till ett sensor namn och välj:
+1. Lägg till ett sensor namn och välj:
 
    - Kompatibilitetsläget \<latest ESXi version>
 
@@ -751,15 +751,15 @@ Till en virtuell dator för att skapa en virtuell dator (ESXi):
 
    - Gäst operativ system version: Ubuntu Linux (64-bitars)
 
-7. Välj **Nästa**.
+1. Välj **Nästa**.
 
-8. Välj relevant data lager och välj **Nästa**.
+1. Välj relevant data lager och välj **Nästa**.
 
-9. Ändra de virtuella maskin varu parametrarna enligt den arkitektur som krävs.
+1. Ändra de virtuella maskin varu parametrarna enligt den arkitektur som krävs.
 
-10. För **CD/DVD-enhet 1** väljer du **data lager ISO-fil** och väljer den ISO-fil som du överförde tidigare.
+1. För **CD/DVD-enhet 1** väljer du **data lager ISO-fil** och väljer den ISO-fil som du överförde tidigare.
 
-11. Välj **Nästa** > **Slutför**.
+1. Välj **Nästa** > **Slutför**.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>Skapa den virtuella datorn (Hyper-V)
 
@@ -767,91 +767,103 @@ Så här skapar du en virtuell dator med hjälp av Hyper-V:
 
 1. Skapa en virtuell disk i Hyper-V Manager.
 
-2. Välj formatet **VHDX**.
+1. Välj formatet **VHDX**.
 
-3. Välj **Nästa**.
+1. Välj **Nästa**.
 
-4. Välj typ **dynamisk expandering**.
+1. Välj typ **dynamisk expandering**.
 
-5. Välj **Nästa**.
+1. Välj **Nästa**.
 
-6. Ange namn och plats för den virtuella hård disken.
+1. Ange namn och plats för den virtuella hård disken.
 
-7. Välj **Nästa**.
+1. Välj **Nästa**.
 
-8. Ange den storlek som krävs (enligt arkitekturen).
+1. Ange den storlek som krävs (enligt arkitekturen).
 
-9. Välj **Nästa**.
+1. Välj **Nästa**.
 
-10. Granska sammanfattningen och välj **Slutför**.
+1. Granska sammanfattningen och välj **Slutför**.
 
-11. På menyn **åtgärder** skapar du en ny virtuell dator.
+1. På menyn **åtgärder** skapar du en ny virtuell dator.
 
-12. Välj **Nästa**.
+1. Välj **Nästa**.
 
-13. Ange ett namn för den virtuella datorn.
+1. Ange ett namn för den virtuella datorn.
 
-14. Välj **Nästa**.
+1. Välj **Nästa**.
 
-15. Välj **generation** och Ställ in den på **generation 1**.
+1. Välj **generation** och Ställ in den på **generation 1**.
 
-16. Välj **Nästa**.
+1. Välj **Nästa**.
 
-17. Ange minnesallokering (enligt arkitekturen) och markera kryss rutan för dynamiskt minne.
+1. Ange minnesallokering (enligt arkitekturen) och markera kryss rutan för dynamiskt minne.
 
-18. Välj **Nästa**.
+1. Välj **Nästa**.
 
-19. Konfigurera nätverks korts kortet enligt Server nätverk sto pol Ogin.
+1. Konfigurera nätverks korts kortet enligt Server nätverk sto pol Ogin.
 
-20. Välj **Nästa**.
+1. Välj **Nästa**.
 
-21. Anslut VHDX som skapades tidigare till den virtuella datorn.
+1. Anslut VHDX som skapades tidigare till den virtuella datorn.
 
-22. Välj **Nästa**.
+1. Välj **Nästa**.
 
-23. Granska sammanfattningen och välj **Slutför**.
+1. Granska sammanfattningen och välj **Slutför**.
 
-24. Högerklicka på den nya virtuella datorn och välj sedan **Inställningar**.
+1. Högerklicka på den nya virtuella datorn och välj sedan **Inställningar**.
 
-25. Välj **Lägg till maskin vara** och Lägg till ett nytt **kort för nätverkskort**.
+1. Välj **Lägg till maskin vara** och Lägg till ett nytt **kort för nätverkskort**.
 
-26. För **virtuell växel** väljer du den växel som ska anslutas till sensor hanterings nätverket.
+1. För **virtuell växel** väljer du den växel som ska anslutas till sensor hanterings nätverket.
 
-27. Allokera processor resurser (enligt arkitekturen).
+1. Allokera processor resurser (enligt arkitekturen).
 
-28. Anslut hanterings konsolens ISO-avbildning till en virtuell DVD-enhet.
+1. Anslut hanterings konsolens ISO-avbildning till en virtuell DVD-enhet.
 
-29. Starta den virtuella datorn.
+1. Starta den virtuella datorn.
 
-30. På menyn **åtgärder** väljer du **Anslut** för att fortsätta program varu installationen.
+1. På menyn **åtgärder** väljer du **Anslut** för att fortsätta program varu installationen.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Program varu installation (ESXi och Hyper-V)
 
-Om du startar den virtuella datorn startas installations processen från ISO-avbildningen.
+Om du startar den virtuella datorn startas installations processen från ISO-avbildningen. Du kan förbättra säkerheten genom att skapa ett andra nätverks gränssnitt i den lokala hanterings konsolen. Ett nätverks gränssnitt är dedikerat för dina användare och har stöd för konfigurationen av en gateway för dirigerade nätverk. Det andra nätverks gränssnittet är dedicerat till alla anslutna sensorer inom ett IP-adressintervall.
+
+Både nätverks gränssnitten har användar gränssnittet aktiverat och alla funktioner som stöds av användar gränssnittet är tillgängliga i det sekundära nätverks gränssnittet när routning inte behövs. Hög tillgänglighet kommer att köras i det sekundära nätverks gränssnittet.
+
+Om du väljer att inte distribuera ett sekundärt nätverks gränssnitt kommer alla funktioner att vara tillgängliga via det primära nätverks gränssnittet. 
 
 Installera program varan:
 
 1. Välj **engelska**.
 
-2. Välj den arkitektur som krävs för din distribution.
+1. Välj den arkitektur som krävs för din distribution.
 
-3. Definiera nätverks gränssnittet för sensor hanterings nätverket: gränssnitt, IP, undernät, DNS-server och standard-gateway.
+1. Definiera nätverks gränssnittet för sensor hanterings nätverket: gränssnitt, IP, undernät, DNS-server och standard-gateway.
 
-4. Inloggnings uppgifter genereras och presenteras automatiskt. Behåll dessa autentiseringsuppgifter på en säker plats, eftersom de krävs för inloggning och administration.
+1. Valfritt Lägg till ett andra nätverks gränssnitt i den lokala hanterings konsolen.
+
+    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
+    
+    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
+    
+    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
+
+1. Inloggnings uppgifter genereras och presenteras automatiskt. Behåll dessa autentiseringsuppgifter på en säker plats, eftersom de krävs för inloggning och administration.
 
   - **Support**: den administrativa användaren för användar hantering.
 
   - **CyberX**: motsvarigheten till roten för att komma åt enheten.
 
-5. Enheten startas om.
+1. Enheten startas om.
 
-6. Få åtkomst till hanterings konsolen via IP-adressen som du konfigurerade tidigare: `<https://ip_address>` .
+1. Få åtkomst till hanterings konsolen via IP-adressen som du konfigurerade tidigare: `<https://ip_address>` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-management-console-sign-in-screen.png" alt-text="Skärm bild som visar hanterings konsolens inloggnings skärm.":::
 
 ## <a name="post-installation-validation"></a>Verifiering efter installationen
 
-Om du vill verifiera installationen av en fysisk installation måste du utföra ett antal tester. Samma validerings process gäller för alla typer av utrustning.
+Om du vill verifiera installationen av en fysisk installation måste du utföra många tester. Samma validerings process gäller för alla typer av utrustning.
 
 Utför verifieringen med hjälp av GUI eller CLI. Verifieringen är tillgänglig för användar **supporten** och användaren **CyberX**.
 
@@ -899,7 +911,7 @@ Verifieringen efter installationen måste innehålla följande test:
   - Storleken på säkerhetskopieringsmappen
   - Begränsningar för säkerhetskopieringsmappen
   - När den senaste säkerhets kopieringen skedde
-  - Hur mycket utrymme det finns för de ytterligare säkerhetskopierade filerna
+  - Hur mycket utrymme det finns för de extra säkerhetskopieringsfilerna
 
 - **ifconfig**: visar parametrarna för apparatens fysiska gränssnitt.
 
@@ -911,7 +923,7 @@ För att få åtkomst till verktyget:
 
 1. Logga in på sensorn med **support** användarens autentiseringsuppgifter.
 
-2. Välj **system statistik** i fönstret **system inställningar** .
+1. Välj **system statistik** i fönstret **system inställningar** .
 
     :::image type="icon" source="media/tutorial-install-components/system-statistics-icon.png" border="false":::
 
@@ -923,13 +935,13 @@ Kontrol lera att systemet är igång:
 
 1. Anslut till CLI med Linux-terminalen (till exempel SparaTillFil) och användar **supporten**.
 
-2. Ange `system sanity`.
+1. Ange `system sanity`.
 
-3. Kontrol lera att alla tjänster är gröna (körs).
+1. Kontrol lera att alla tjänster är gröna (körs).
 
     :::image type="content" source="media/tutorial-install-components/support-screen.png" alt-text="Skärm bild som visar att tjänsterna körs.":::
 
-4. Kontrol lera att **systemet är igång! (prod)** visas längst ned.
+1. Kontrol lera att **systemet är igång! (prod)** visas längst ned.
 
 **Test 2: versions kontroll**
 
@@ -937,9 +949,9 @@ Kontrol lera att rätt version används:
 
 1. Anslut till CLI med Linux-terminalen (till exempel SparaTillFil) och användar **supporten**.
 
-2. Ange `system version`.
+1. Ange `system version`.
 
-3. Kontrol lera att rätt version visas.
+1. Kontrol lera att rätt version visas.
 
 **Test 3: nätverks verifiering**
 
@@ -947,9 +959,9 @@ Kontrol lera att alla indataporter som kon figurer ATS under installations proce
 
 1. Anslut till CLI med Linux-terminalen (till exempel SparaTillFil) och användar **supporten**.
 
-2. Ange `network list` (motsvarande Linux `ifconfig` -kommando).
+1. Ange `network list` (motsvarande Linux `ifconfig` -kommando).
 
-3. Verifiera att de nödvändiga gränssnitten visas. Om exempelvis två nätverkskort med fyra koppar är installerade, bör det finnas 10 gränssnitt i listan.
+1. Verifiera att de nödvändiga gränssnitten visas. Om exempelvis två nätverkskort med fyra koppar är installerade, bör det finnas 10 gränssnitt i listan.
 
     :::image type="content" source="media/tutorial-install-components/interface-list-screen.png" alt-text="Skärm bild som visar listan över gränssnitt.":::
 
@@ -959,17 +971,17 @@ Kontrol lera att du har åtkomst till konsolens webb gränssnitt:
 
 1. Anslut en bärbar dator med en Ethernet-kabel till hanterings porten (**GB1**).
 
-2. Definiera den bärbara datorns NIC-adress i samma intervall som enheten.
+1. Definiera den bärbara datorns NIC-adress i samma intervall som enheten.
 
     :::image type="content" source="media/tutorial-install-components/access-to-ui.png" alt-text="Skärm bild som visar hanterings åtkomst till användar gränssnittet.":::
 
-3. Pinga enhetens IP-adress från den bärbara datorn för att verifiera anslutningen (standard: 10.100.10.1).
+1. Pinga enhetens IP-adress från den bärbara datorn för att verifiera anslutningen (standard: 10.100.10.1).
 
-4. Öppna Chrome-webbläsaren på den bärbara datorn och ange enhetens IP-adress.
+1. Öppna Chrome-webbläsaren på den bärbara datorn och ange enhetens IP-adress.
 
-5. I fönstret **anslutningen är inte privat** väljer du **Avancerat** och fortsätter.
+1. I fönstret **anslutningen är inte privat** väljer du **Avancerat** och fortsätter.
 
-6. Testet lyckas när inloggnings skärmen för Defender för IoT visas.
+1. Testet lyckas när inloggnings skärmen för Defender för IoT visas.
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Skärm bild som visar åtkomst till hanterings konsolen.":::
 
@@ -979,9 +991,9 @@ Kontrol lera att du har åtkomst till konsolens webb gränssnitt:
 
 1. Kontrol lera att datorn du försöker ansluta är i samma nätverk som installationen.
 
-2. Kontrol lera att GUI-nätverket är anslutet till hanterings porten.
+1. Kontrol lera att GUI-nätverket är anslutet till hanterings porten.
 
-3. Pinga produktens IP-adress. Om det inte finns något ping:
+1. Pinga produktens IP-adress. Om det inte finns något ping:
 
    1. Anslut en övervakare och ett tangent bord till-enheten.
 
@@ -991,7 +1003,7 @@ Kontrol lera att du har åtkomst till konsolens webb gränssnitt:
 
       :::image type="content" source="media/tutorial-install-components/network-list.png" alt-text="Skärm bild som visar listan över nätverk.":::
 
-4. Om nätverks parametrarna är felkonfigurerade kan du använda följande procedur för att ändra dem:
+1. Om nätverks parametrarna är felkonfigurerade kan du använda följande procedur för att ändra dem:
 
    1. Använd kommandot `network edit-settings` .
 
@@ -1007,17 +1019,17 @@ Kontrol lera att du har åtkomst till konsolens webb gränssnitt:
 
    1. Om du vill tillämpa inställningarna väljer du **Y**.
 
-5. När du har startat om ansluter du till support användarens autentiseringsuppgifter och använder `network list` kommandot för att kontrol lera att parametrarna har ändrats.
+1. När du har startat om ansluter du till support användarens autentiseringsuppgifter och använder `network list` kommandot för att kontrol lera att parametrarna har ändrats.
 
-6. Försök att pinga och ansluta från det grafiska användar gränssnittet igen.
+1. Försök att pinga och ansluta från det grafiska användar gränssnittet igen.
 
 ### <a name="the-appliance-isnt-responding"></a>Enheten svarar inte
 
 1. Anslut en bildskärm och ett tangent bord till enheten eller Använd SparaTillFil för att fjärrans luta till CLI.
 
-2. Använd **support** användarens autentiseringsuppgifter för att logga in.
+1. Använd **support** användarens autentiseringsuppgifter för att logga in.
 
-3. Använd `system sanity` kommandot och kontrol lera att alla processer körs.
+1. Använd `system sanity` kommandot och kontrol lera att alla processer körs.
 
     :::image type="content" source="media/tutorial-install-components/system-sanity-screen.png" alt-text="Skärm bild som visar kommandot system Sanity.":::
 
@@ -1027,33 +1039,33 @@ Kontakta [Microsoft Support](https://support.microsoft.com/en-us/supportforbusin
 
 ### <a name="configure-a-span-port-on-an-existing-vswitch"></a>Konfigurera en SPAN-port på en befintlig vSwitch
 
-En vSwitch har inte speglings funktioner, men du kan använda en enkel lösning för att implementera en intervall port.
+En vSwitch har inte funktioner för spegling, men du kan använda en lösning för att implementera en intervall port.
 
 Så här konfigurerar du en SPAN-port:
 
 1. Öppna egenskaper för vSwitch.
 
-2. Välj **Lägg till**.
+1. Välj **Lägg till**.
 
-3. Välj den **virtuella datorn**  >  **Nästa**.
+1. Välj den **virtuella datorn**  >  **Nästa**.
 
-4. Sätt in en nätverks etikett **span Network**, Välj **VLAN-ID**  >  **alla** och välj sedan **Nästa**.
+1. Sätt in en nätverks etikett **span Network**, Välj **VLAN-ID**  >  **alla** och välj sedan **Nästa**.
 
-5. Välj **Slutför**.
+1. Välj **Slutför**.
 
-6. Välj **span Network** > **Edit*.
+1. Välj **span Network** > **Edit*.
 
-7. Välj **säkerhet** och kontrol lera att principen för **läge för läge** är inställd på **Accept** läge.
+1. Välj **säkerhet** och kontrol lera att principen för **läge för läge** är inställd på **Accept** läge.
 
-8. Välj **OK** och välj sedan **Stäng** för att stänga egenskaperna för vSwitch.
+1. Välj **OK** och välj sedan **Stäng** för att stänga egenskaperna för vSwitch.
 
-9. Öppna egenskaperna för den **virtuella XSense-datorn** .
+1. Öppna egenskaperna för den **virtuella XSense-datorn** .
 
-10. För **nätverkskort 2** väljer du **span** -nätverket.
+1. För **nätverkskort 2** väljer du **span** -nätverket.
 
-11. Välj **OK**.
+1. Välj **OK**.
 
-12. Anslut till sensorn och kontrol lera att spegling fungerar.
+1. Anslut till sensorn och kontrol lera att spegling fungerar.
 
 ## <a name="appendix-b-access-sensors-from-the-on-premises-management-console"></a>Bilaga B: få åtkomst till sensorer från den lokala hanterings konsolen
 
@@ -1065,11 +1077,11 @@ Så här aktiverar du tunnel trafik:
 
 1. Logga in på den lokala hanterings konsolens CLI med **CyberX** eller ge **support** för användarens autentiseringsuppgifter.
 
-2. Ange `sudo cyberx-management-tunnel-enable`.
+1. Ange `sudo cyberx-management-tunnel-enable`.
 
-3. Välj **Retur**.
+1. Välj **Retur**.
 
-4. Ange `--port 10000`.
+1. Ange `--port 10000`.
 
 ### <a name="next-steps"></a>Nästa steg
 

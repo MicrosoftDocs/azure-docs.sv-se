@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037242"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490317"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -63,6 +63,20 @@ Som standard visar diagrammet de senaste 24 timmarna med mät data. Använd pane
 - **Dela upp** styr om diagrammet ska visa separata rader för varje värde i en dimension eller mängd värden i en enda rad. Du kan till exempel se en rad för en genomsnittlig svars tid för alla Server instanser eller se separata rader för varje server. Du måste tillämpa delning på *Server instans* dimensionen för att se separata rader.
 
 Se [exempel på de diagram](../essentials/metric-chart-samples.md) som har filtrering och delning tillämpad. Artikeln visar stegen som användes för att konfigurera diagram.
+
+## <a name="share-your-metric-chart"></a>Dela ditt mått diagram
+Det finns för närvarande två sätt att dela mått diagrammet. Nedan visas instruktioner om hur du delar information från dina mått diagram via Excel och en länk.
+ 
+### <a name="download-to-excel"></a>Ladda ned till Excel
+Klicka på "dela" och välj "Ladda ned till Excel". Hämtningen bör börja direkt.
+
+![skärm bild som visar hur du delar mått diagram via Excel](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>Dela en länk
+Klicka på "dela" och välj "Kopiera länk". Du bör få ett meddelande om att länken har kopierats.
+
+![skärm bild som visar hur du delar mått diagram via länk](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>Avancerade diagram inställningar
 
