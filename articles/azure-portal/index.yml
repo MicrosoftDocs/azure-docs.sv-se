@@ -7,13 +7,13 @@ metadata:
   services: Azure portal
   ms.topic: landing-page
   ms.collection: collection
-  ms.date: 08/05/2020
-  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
-  ms.translationtype: HT
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 7b7727d1fdf550b3ab3341bd0dc852f343b00791
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749019"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103563920"
 landingContent:
 - title: Om Azure-portalen
   linkLists:
@@ -21,18 +21,44 @@ landingContent:
     links:
     - text: Vad är Azure-portalen?
       url: azure-portal-overview.md
+    - text: Kom igång med Azure Snabbstartscenter
+      url: azure-portal-quickstart-center.md
     - text: Webbläsare och enheter som stöds
       url: azure-portal-supported-browsers-devices.md
-- title: Anpassa Azure-portalen
+- title: Kom igång
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Skapa en virtuell dator i portalen
+      url: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - text: Skapa en instrument panel – Azure CLI
+      url: quickstart-portal-dashboard-azure-cli.md
+    - text: Skapa en instrument panel – Azure PowerShell
+      url: quickstart-portal-dashboard-powershell.md
+    - text: Skapa en instrumentpanel – ARM-mall
+      url: quick-create-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Instruktionsvideoserie om Azure-portalen
+      url: azure-portal-video-series.md
+- title: Skapa och hantera supportförfrågningar
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Ange portalinställningar
-      url: set-preferences.md
-    - text: Skapa och dela anpassade instrumentpaneler
-      url: azure-portal-dashboards.md
-    - text: Hantera dina favoriter
-      url: azure-portal-add-remove-sort-favorites.md
+    - text: Skapa en Azure-supportbegäran
+      url: supportability/how-to-create-azure-support-request.md
+    - text: Hantera en Azure-supportbegäran
+      url: supportability/how-to-manage-azure-support-request.md
+- title: Använda hjälpmedelsalternativ
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Kortkommandon
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivera högkontrast
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
 - title: Hantera åtkomst till Azure-portalen
   linkLists:
   - linkListType: reference
@@ -45,39 +71,17 @@ landingContent:
     links:
     - text: Hantera resurser i Azure
       url: /learn/paths/manage-resources-in-azure/
-    - text: Skydda dina Azure-resurser med rollbaserad åtkomstkontroll i Azure (Azure RBAC)
-      url: /learn//modules/secure-azure-resources-with-rbac/
-- title: Kom igång
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Kom igång med Azure Snabbstartscenter
-      url: azure-portal-quickstart-center.md
-  - linkListType: how-to-guide
-    links:
-    - text: Instruktionsvideoserie om Azure-portalen
-      url: azure-portal-video-series.md
-  - linkListType: learn
-    links:
-    - text: Grunderna för Azure
-      url: /learn/paths/azure-fundamentals/
-    - text: Molnbegrepp – principerna bakom molnbaserad databehandling
-      url: /learn/modules/principles-cloud-computing/
-- title: Använda hjälpmedelsalternativ
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Kortkommandon
-      url: azure-portal-keyboard-shortcuts.md
-  - linkListType: how-to-guide
-    links:
-    - text: Aktivera högkontrast
-      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
-- title: Skapa och hantera supportförfrågningar
+    - text: Skydda dina resurser med rollbaserad åtkomst kontroll i Azure (Azure RBAC)
+      url: /learn/modules/secure-azure-resources-with-rbac
+- title: Anpassa Azure-portalen
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Skapa en Azure-supportbegäran
-      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - text: Felsök region eller problem med SKU-prenumeration
-      url: ../azure-portal/supportability/sku-series-unavailable.md
+    - text: Hantera dina inställningar i Microsoft Azure-portalen
+      url: set-preferences.md
+    - text: Visa och filtrera resursinformation
+      url: manage-filter-resource-views.md
+    - text: Skapa en instrument panel – Azure Portal användar gränssnitt
+      url: azure-portal-dashboards.md
+    - text: Lägga till, ta bort och sortera favoriter
+      url: azure-portal-add-remove-sort-favorites.md

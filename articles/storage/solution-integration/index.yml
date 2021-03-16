@@ -1,54 +1,55 @@
 ### YamlMime:Landing
 title: Azure Storage-validerad partner Solutions-dokumentation
-summary: Azure Storage validerade partner lösningar möjliggör avancerade scenarier ovanpå Azure Storages plattformen.
+summary: Azure Storage validerade partner lösningar aktiverar avancerade scenarier ovanpå Azure Storage.
 metadata:
   title: Azure Storage validerade partner lösningar
-  description: Azure Storage validerade partner lösningar möjliggör avancerade scenarier ovanpå Azure Storages plattformen.
+  description: Azure Storage validerade partner lösningar aktiverar avancerade scenarier ovanpå Azure Storage.
   services: storage
   ms.service: storage
+  ms.subservice: partner
   ms.topic: landing-page
   ms.collection: collection
   author: beber-msft
   ms.author: beber
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 5d2c7d767fd678867175481c0b837c1aa11ecf33
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101749152"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103562458"
 landingContent:
-- title: Azure-lagringsanalys och Big data partners
+- title: Analytics och Big data partners
   linkLists:
   - linkListType: overview
     links:
-    - text: Verifierade Azure-lagringsanalys partner
+    - text: Verifierade analys partner
       url: .\validated-partners\analytics\partner-overview.md
-- title: Azure Storage Arkiv, säkerhets kopiering och BCDR-partner
+- title: Arkiv, säkerhets kopiering och BCDR-partner
   linkLists:
   - linkListType: overview
     links:
-    - text: Verifierade Azure Storage Arkiv-och BCDR-partner
+    - text: Verifierade Arkiv-och BCDR-partner
       url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
-    - text: Snabb starts guide för CommVault
+    - text: Guide för att komma igång med CommVault
       url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - text: Snabb starts guide för Veeam
+    - text: Guide för att komma igång med Veeam
       url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
-- title: Partners för Azure Storage container Solution
+- title: Container Solution-Partner
   linkLists:
   - linkListType: overview
     links:
-    - text: Verifierade Azure Storage container Solution partners
+    - text: Verifierade lösnings partner för container
       url: .\validated-partners\container-solutions\partner-overview.md
-- title: Azure Storage data hantering och migrations partner
+- title: Data hantering och migrations partner
   linkLists:
   - linkListType: overview
     links:
-    - text: Verifierade Azure Storage data hantering och migrations partner
+    - text: Verifierad data hantering och migrations partner
       url: .\validated-partners\data-management\partner-overview.md
-- title: Azure Storage primära och sekundära lagrings partner
+- title: Primära och sekundära lagrings partner
   linkLists:
   - linkListType: overview
     links:

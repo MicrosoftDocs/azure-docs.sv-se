@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/12/2021
-ms.openlocfilehash: 2f716fd7723f35fb5e7071afb15cfa8dab4ce5d2
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.date: 03/15/2021
+ms.openlocfilehash: d64b1413267a62daa46a112e706a4381189baf77
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225293"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564356"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure SQL Database med Azure Data Factory
 
@@ -643,7 +643,12 @@ Inställningar som är aktuella för Azure SQL Database finns tillgängliga på 
 
 **Fråga**: om du väljer fråga i fältet inmatat anger du en SQL-fråga för källan. Den här inställningen åsidosätter alla tabeller som du har valt i data uppsättningen. **Order by** -satser stöds inte här, men du kan ange en fullständig Select from-instruktion. Du kan också använda användardefinierade tabell funktioner. **Select * from udfGetData ()** är en UDF i SQL som returnerar en tabell. Med den här frågan skapas en käll tabell som du kan använda i ditt data flöde. Att använda frågor är också ett bra sätt att minska antalet rader för testning eller sökning.
 
+**Lagrad procedur**: Välj det här alternativet om du vill generera en projektion och källdata från en lagrad procedur som körs från käll databasen. Du kan skriva in schemat, procedur namnet och parametrarna eller klicka på Uppdatera för att be ADF att identifiera scheman och procedur namn. Sedan kan du klicka på Importera för att importera alla procedur parametrar med hjälp av formuläret ``@paraName`` .
+
+![Lagrad procedur](media/data-flow/stored-procedure-2.png "Lagrad procedur")
+
 - SQL-exempel: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
+- Parameter-SQL-exempel: ``"select * from {$tablename} where orderyear > {$year}"``
 
 **Batchstorlek**: Ange en batchstorlek för att segmentera stora data till läsningar.
 

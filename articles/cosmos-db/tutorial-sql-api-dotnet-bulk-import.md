@@ -6,15 +6,15 @@ ms.author: maquaran
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548077"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563631"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Mass import av data till Azure Cosmos DB SQL API-konto med hjälp av .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ Den här självstudiekursen omfattar:
 > * Ansluta till ett Azure Cosmos-konto med Mass stöd aktiverat
 > * Utföra en data import via samtidiga skapande åtgärder
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Se till att du har följande resurser innan du följer anvisningarna i den här artikeln:
 
@@ -112,7 +112,7 @@ Vi börjar med att skriva över standard `Main` metoden och definiera de globala
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -150,14 +150,11 @@ Skapa sedan en hjälp funktion inuti `Program` klassen. Den här hjälp funktion
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Läs objekten och serialisera dem till Stream-instanser med hjälp av- `System.Text.Json` klassen. På grund av vilken typ av data som genereras automatiskt serialiseras data som strömmar. Du kan också använda objekt instansen direkt, men genom att konvertera dem till strömmar kan du utnyttja prestanda för Stream-API: er i CosmosClient. Normalt kan du använda data direkt så länge du känner till partitionsnyckel. 
-
-
-Om du vill konvertera data till Stream-instanser i- `Main` metoden lägger du till följande kod direkt efter att behållaren har skapats:
+Använd hjälp funktionen för att initiera en lista över dokument att arbeta med:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-Använd sedan data strömmar för att skapa samtidiga aktiviteter och fylla i uppgifts listan för att infoga objekten i behållaren. För att utföra den här åtgärden lägger du till följande kod i `Program` klassen:
+Använd sedan listan med dokument för att skapa samtidiga uppgifter och fylla i uppgifts listan för att infoga objekten i behållaren. För att utföra den här åtgärden lägger du till följande kod i `Program` klassen:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 

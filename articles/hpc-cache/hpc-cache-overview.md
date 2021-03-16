@@ -4,15 +4,15 @@ description: Beskriver Azure HPC cache, en lösning för fil åtkomst Accelerato
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb0ca345dc76f566dd55956911703e2c9bf0183
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519344"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471811"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Vad är Azure HPC Cache?
 
@@ -55,15 +55,6 @@ En Azure HPC cache-distribution kan hjälpa dig att påskynda kvantitativa analy
 ## <a name="region-availability"></a>Regional tillgänglighet
 
 Besök sidan [Azures globala infrastruktur produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) för att lära dig var Azure HPC cache är tillgängligt.
-
-[Funktionen Kundhanterade nycklar](customer-keys.md) stöds bara i följande Azure-regioner:
-
-* East US
-* USA, södra centrala
-* USA, västra 2
-* Europa, västra
-* US Gov, Arizona
-* US Gov, Virginia
 
 Azure HPC-cache finns i en enda region. Den kan komma åt data som lagras i andra regioner om du ansluter den till BLOB-behållare som finns där. Cacheminnet lagrar inte kund information permanent.
 

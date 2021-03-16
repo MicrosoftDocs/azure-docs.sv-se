@@ -4,14 +4,14 @@ description: Lär dig mer om vanliga kommandon för att automatisera hanteringen
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 68b1ca625b5c8bd7ec195b89de63485c542e6691
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419082"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564532"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Hantera Azure-hanterad instans för Apache Cassandra-resurser med hjälp av Azure CLI (för hands version)
 
@@ -25,7 +25,7 @@ I den här artikeln beskrivs vanliga kommandon för att automatisera hanteringen
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Den här artikeln kräver Azure CLI-version 2.12.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+> Den här artikeln kräver Azure CLI-version 2.17.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
 >
 > Det går inte att byta namn på Hantera Azure-hanterad instans för Apache Cassandra-resurser eftersom detta strider mot hur Azure Resource Manager fungerar med resurs-URI: er.
 
@@ -42,7 +42,7 @@ Följande avsnitt visar hur du hanterar Azure Managed instance för Apache Cassa
 
 ### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Skapa ett hanterat instans kluster
 
-Skapa en Azure-hanterad instans för Apache Cassandra-kluster:
+Skapa en Azure-hanterad instans för Apache Cassandra-kluster med kommandot [AZ Managed-Cassandra Cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -65,7 +65,7 @@ az managed-cassandra cluster create \
 
 ### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>Ta bort ett hanterat instans kluster
 
-Ta bort ett kluster:
+Ta bort ett kluster med kommandot [AZ Managed-Cassandra Cluster Delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -78,7 +78,7 @@ az managed-cassandra cluster delete \
 
 ### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>Hämta kluster information
 
-Hämta kluster information:
+Hämta kluster information med kommandot [AZ Managed-Cassandra Cluster show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -91,7 +91,7 @@ az managed-cassandra cluster show \
 
 ### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>Hämta status för klusternod
 
-Hämta kluster information:
+Hämta kluster information med hjälp av kommandot [AZ Managed-Cassandra cluster node-status](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) :
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -104,7 +104,7 @@ az managed-cassandra cluster node-status \
 
 ### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>Visa en lista över kluster per resurs grupp
 
-Lista kluster per resurs grupp:
+Visa en lista över kluster per resurs grupp med kommandot [AZ-hanterad-Cassandra Cluster List](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) :
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -116,7 +116,7 @@ az managed-cassandra cluster list\
 
 ### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>Lista kluster efter prenumerations-ID
 
-Lista kluster efter prenumerations-ID:
+Lista kluster efter prenumerations-ID med hjälp av kommandot [AZ Managed-Cassandra Cluster List](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) :
 
 ```azurecli-interactive
 # set your subscription id
@@ -137,7 +137,7 @@ Följande avsnitt visar hur du hanterar Azure Managed instance för Apache Cassa
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>Skapa ett Data Center
 
-Skapa ett Data Center:
+Skapa ett Data Center med hjälp av kommandot [AZ Managed-Cassandra Data Center Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>Ta bort ett Data Center
 
-Ta bort ett Data Center:
+Ta bort ett Data Center med hjälp av kommandot [AZ Managed-Cassandra Data Center Delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -172,7 +172,7 @@ az managed-cassandra datacenter delete \
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>Hämta information om data Center
 
-Information om att hämta data Center:
+Hämta information om data Center med hjälp av kommandot [AZ Managed-Cassandra Data Center show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -187,7 +187,7 @@ az managed-cassandra datacenter show \
 
 ### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>Uppdatera eller skala ett Data Center
 
-Uppdatera eller skala ett Data Center (för skalning av ändrings nodeCount värde):
+Uppdatera eller skala ett Data Center (för skalning av ändrings nodeCount värde) med hjälp av kommandot [AZ Managed-Cassandra Data Center Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,7 +205,7 @@ az managed-cassandra datacenter update \
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Hämta data Center i ett kluster
 
-Hämta data Center i ett kluster:
+Hämta data Center i ett kluster med kommandot [AZ Managed-Cassandra Data Center List](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

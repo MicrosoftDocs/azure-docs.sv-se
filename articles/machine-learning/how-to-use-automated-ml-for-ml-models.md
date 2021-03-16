@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520649"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562730"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Skapa, granska och distribuera automatiserade maskin inlärnings modeller med Azure Machine Learning
 
@@ -37,7 +37,7 @@ För ett slut punkt till slut punkts exempel kan du prova [självstudien för at
 
 ## <a name="get-started"></a>Kom igång
 
-1. Logga in på Azure Machine Learning på https://ml.azure.com . 
+1. Logga in på [Azure Machine Learning Studio](https://ml.azure.com). 
 
 1. Välj din prenumeration och arbets yta. 
 
@@ -198,6 +198,11 @@ För att få förklaringar för en viss modell,
 ## <a name="deploy-your-model"></a>Distribuera din modell
 
 När du har den bästa modellen tillhands är det dags att distribuera den som en webbtjänst för att göra förutsägelser på nya data.
+
+>[!TIP]
+> Om du vill distribuera en modell som har genererats via `automl` paketet med python SDK måste du [Registrera din modell](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1) på arbets ytan. 
+>
+> När du har registrerat en modell kan du söka efter den i Studio genom att välja **modeller** i det vänstra fönstret. När du har öppnat din modell kan du välja knappen **distribuera** överst på skärmen och följa instruktionerna som beskrivs i **steg 2** i avsnittet **distribuera din modell** .
 
 Automatiserad ML hjälper dig att distribuera modellen utan att skriva kod:
 

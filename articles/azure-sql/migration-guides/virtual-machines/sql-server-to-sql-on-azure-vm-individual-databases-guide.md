@@ -1,6 +1,6 @@
 ---
-title: SQL Server SQL Server på virtuella Azure-datorer (migreringsguiden)
-description: Följ den här guiden för att migrera dina enskilda SQL Server-databaser till SQL Server på Azure-Virtual Machines (VM).
+title: 'SQL Server SQL Server på virtuella Azure-datorer: migrations guide'
+description: I den här guiden får du lära dig att migrera dina enskilda SQL Server-databaser till SQL Server på virtuella Azure-datorer.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
-ms.date: 11/06/2020
-ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 0e1b44667a5ff42978b22ab9450d6a8e9870960b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488262"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563223"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Guide för migrering: SQL Server till SQL Server på virtuella Azure-datorer 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -195,7 +195,7 @@ Test metoden för migrering av databasen består av att utföra följande aktivi
 
 > [!TIP]
 > Använd [Database experimentation Assistant (dietanolamin)](/sql/dea/database-experimentation-assistant-overview) för att hjälpa till med att utvärdera mål SQL Server prestanda.
->
+
 
 ### <a name="optimize"></a>Optimera
 

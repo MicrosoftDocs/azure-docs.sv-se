@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522061"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561948"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Distribuera Machine Learning-modeller till Azure
 
@@ -145,6 +145,7 @@ Mer information finns i `az ml model register` [referens dokumentationen](/cli/a
 
     Mer information finns i [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) -dokumentationen.
 
+    Om du vill distribuera en registrerad modell från en `AutoMLRun` , rekommenderar vi att du gör det genom att [Klicka på knappen distribuera i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#deploy-your-model). 
 ### <a name="register-a-model-from-a-local-file"></a>Registrera en modell från en lokal fil
 
 Du kan registrera en modell genom att ange den lokala sökvägen till modellen. Du kan ange sökvägen till antingen en mapp eller en enskild fil. Du kan använda den här metoden för att registrera modeller som har tränats med Azure Machine Learning och sedan laddats ned. Du kan också använda den här metoden för att registrera modeller som har tränats utanför Azure Machine Learning.
@@ -368,6 +369,7 @@ Mer information finns i dokumentationen för [WebService. Delete ()](/python/api
 * [Skapa klient program för att använda webb tjänster](how-to-consume-web-service.md)
 * [Uppdatera webbtjänst](how-to-deploy-update-web-service.md)
 * [Så här distribuerar du en modell med en anpassad Docker-avbildning](how-to-deploy-custom-docker-image.md)
+* [En klicknings distribution för automatiserade ML-körningar i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)
 * [Använda TLS för att skydda en webbtjänst via Azure Machine Learning](how-to-secure-web-service.md)
 * [Övervaka dina Azure Machine Learning modeller med Application Insights](how-to-enable-app-insights.md)
 * [Samla in data för modeller i produktion](how-to-enable-data-collection.md)

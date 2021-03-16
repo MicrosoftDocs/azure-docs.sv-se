@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030774"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562254"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standard kolumner i Azure Monitor loggar
 Data i Azure Monitor loggar [lagras som en uppsättning poster i antingen en Log Analytics arbets yta eller ett Application Insights program](../logs/data-platform-logs.md), var och en med en viss datatyp som har en unik uppsättning kolumner. Många data typer kommer att ha standard kolumner som är gemensamma för flera typer. Den här artikeln beskriver de här kolumnerna och innehåller exempel på hur du kan använda dem i frågor.
@@ -132,7 +132,7 @@ Använd dessa `union withsource = tt *` frågor sparsamt eftersom det är dyrt a
 
 Det är alltid mer effektivt att använda \_ SubscriptionId-kolumnen än att extrahera den genom att parsa \_ kolumnen ResourceID.
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionId
 **\_ SubscriptionId** -kolumnen innehåller prenumerations-ID för den resurs som posten är associerad med. Detta ger dig en standard kolumn som du kan använda för att begränsa din fråga till endast poster från en viss prenumeration, eller för att jämföra olika prenumerationer.
 
 För Azure-resurser är värdet för **__SubscriptionId** prenumerations delen av [URL: en för Azure-resurs-ID](../../azure-resource-manager/templates/template-functions-resource.md). Kolumnen är begränsad till Azure-resurser, inklusive [Azure Arc](../../azure-arc/overview.md) -resurser, eller anpassade loggar som anger resurs-ID vid inmatning.

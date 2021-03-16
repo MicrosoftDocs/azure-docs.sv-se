@@ -1,6 +1,6 @@
 ---
-title: DB2 till SQL Server på virtuella Azure-datorer (migration guide)
-description: Följ den här guiden för att migrera DB2-servern till SQL Server på virtuella Azure-datorer.
+title: 'DB2 till SQL Server på virtuella Azure-datorer: migreringsguiden'
+description: Den här guiden lär dig att migrera DB2-databasen till SQL Server på virtuella Azure-datorer med SQL Server Migration Assistant för DB2.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797478"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562237"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Migreringsguiden: DB2 till SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,14 +144,12 @@ Test metoden för migrering av databasen består av följande aktiviteter:
 1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
 1. **Kör prestandatester**: kör prestandatest mot källan och målet och analysera och jämför sedan resultaten.
 
-   > [!NOTE]
-   > Om du behöver hjälp med att utveckla och köra verifierings test efter migrering bör du tänka på vilken data kvalitets lösning som är tillgänglig från partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
 
 ## <a name="migration-assets"></a>Migrera till gångar 
 
 Mer hjälp finns i följande resurser som har utvecklats som stöd för ett verkligt migreringsjobb-projekt engagemang:
 
-|Tillgång  |Description  |
+|Tillgång  |Beskrivning  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
 |[Paket för identifiering och utvärdering av DB2 zOS data till gångar](https://github.com/Microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|När du har kört SQL-skriptet på en databas kan du exportera resultatet till en fil i fil systemet. Flera fil format stöds, inklusive *. csv, så att du kan samla in resultaten i externa verktyg som kalkyl blad. Den här metoden kan vara användbar om du enkelt vill dela resultat med team som inte har Workbench installerat.|
@@ -169,5 +167,4 @@ För en matris med tjänster och verktyg från Microsoft och tredje part som är
 Mer information om andra biflyttnings guider finns i [databas migrering](https://datamigration.microsoft.com/). 
 
 För video innehåll, se:
-- [Använda Database migration guide](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [Översikt över migrerings resan](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

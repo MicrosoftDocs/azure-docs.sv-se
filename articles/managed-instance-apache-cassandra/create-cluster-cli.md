@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 6de2e0f1744b333a830fbe500e2df51e7eaca62d
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/15/2021
+ms.openlocfilehash: 3890b06b2d085cea57b59cfe34d8b961918471c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419090"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562407"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Snabb start: skapa en Azure-hanterad instans för Apache Cassandra-kluster med hjälp av Azure CLI (för hands version)
 
@@ -31,7 +31,7 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att skapa
 * Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 > [!IMPORTANT]
-> Den här artikeln kräver Azure CLI-version 2.12.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+> Den här artikeln kräver Azure CLI-version 2.17.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Skapa ett hanterat instans kluster
 
@@ -58,7 +58,7 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att skapa
    > [!NOTE]
    > `assignee`Värdena och `role` i föregående kommando är fasta värden, ange värdena exakt som de anges i kommandot. Om du inte gör det kommer det att leda till fel när klustret skapas. Om du stöter på fel när du kör det här kommandot kanske du inte har behörighet att köra det, kontakta administratören för behörigheter.
 
-1. Skapa sedan klustret i det nyskapade Virtual Network. Kör följande kommando och se till att du använder det `Resource ID` värde som hämtades i föregående kommando som `delegatedManagementSubnetId` variabelns värde:
+1. Skapa sedan klustret i det nyligen skapade Virtual Network med hjälp av kommandot [AZ Managed-Cassandra Cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) . Kör följande kommando och se till att du använder det `Resource ID` värde som hämtades i föregående kommando som `delegatedManagementSubnetId` variabelns värde:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
@@ -76,7 +76,7 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att skapa
       --debug
    ```
 
-1. Skapa slutligen ett Data Center för klustret med tre noder:
+1. Skapa slutligen ett Data Center för klustret med tre noder genom att använda kommandot [AZ Managed-Cassandra Data Center Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) :
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -92,7 +92,7 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att skapa
       --node-count 3 
    ```
 
-1. När data centret har skapats, om du vill skala upp eller skala ned noderna i data centret kör du följande kommando. Ändra värdet för `node-count` parametern till önskat värde:
+1. När data centret har skapats, om du vill skala upp eller skala ned noderna i data centret, kör du kommandot [AZ Managed-Cassandra Data Center Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) . Ändra värdet för `node-count` parametern till önskat värde:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'

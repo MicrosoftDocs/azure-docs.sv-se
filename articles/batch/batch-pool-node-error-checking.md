@@ -3,14 +3,14 @@ title: Sök efter fel i pooler och noder
 description: Den här artikeln beskriver de bakgrunds åtgärder som kan uppstå, tillsammans med fel för att söka efter och hur du undviker dem när du skapar pooler och noder.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/03/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576320"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564413"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sök efter fel i pooler och noder
 
@@ -62,6 +62,13 @@ När du tar bort en pool som innehåller noder, tar den första batchen bort nod
 
 Batch anger det [tillstånd för poolen](/rest/api/batchservice/pool/get#poolstate) som ska **tas bort** under borttagnings processen. Det anropande programmet kan identifiera om borttagningen tar för lång tid genom att använda egenskaperna **State** och **stateTransitionTime** .
 
+Om poolen tar längre tid än förväntat görs ett nytt försök med en batch tills poolen kan tas bort. I vissa fall beror fördröjningen på ett avbrott i Azure-tjänsten eller andra tillfälliga problem. Andra faktorer som kan förhindra att en pool tas bort kan kräva att du vidtar åtgärder för att åtgärda problemet. Dessa faktorer omfattar följande:
+
+- Resurs lås har placerats på batch-skapade resurser eller på nätverks resurser som används av batch.
+- Resurser som du har skapat är beroende av en batch-skapad resurs. Om du till exempel [skapar en pool i ett virtuellt nätverk](batch-virtual-network.md)skapar batch en nätverks säkerhets grupp (NSG), en offentlig IP-adress och en belastningsutjämnare. Om du använder dessa resurser utanför poolen kan poolen inte tas bort förrän beroendet har tagits bort.
+- Resurs leverantören för Microsoft.BatCH avregistrerades från den prenumeration som innehåller poolen.
+- "Microsoft Azure Batch" har inte längre [deltagar-eller ägar rollen](batch-account-create-portal.md#allow-azure-batch-to-access-the-subscription-one-time-operation) till den prenumeration som innehåller din pool (för batch-konton för användar prenumerations läge).
+
 ## <a name="node-errors"></a>Nodfel
 
 Även om batch allokerar noder i en pool kan olika problem orsaka att några av noderna inte är felfria och inte kan köra uppgifter. De här noderna kostar fortfarande att betala, så det är viktigt att upptäcka problem för att undvika att betala för noder som inte kan användas. Förutom vanliga nodfel kan det vara bra att känna till det aktuella [jobb läget](/rest/api/batchservice/job/get#jobstate) för fel sökning.
@@ -105,15 +112,10 @@ Om batch kan bestämma orsaken rapporterar egenskapen Node [errors](/rest/api/ba
 Fler exempel på orsaker till **oanvändbara** noder är:
 
 - En anpassad virtuell dator avbildning är ogiltig. Till exempel en bild som inte är korrekt för beredd.
-
 - En virtuell dator flyttas på grund av ett infrastruktur haveri eller en uppgradering på lägre nivå. Batch återställer noden.
-
 - En avbildning av en virtuell dator har distribuerats på maskin vara som inte stöder den. Försök till exempel att köra en CentOS HPC-avbildning på en [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) virtuell dator.
-
 - De virtuella datorerna finns i ett [virtuellt Azure-nätverk](batch-virtual-network.md)och trafiken har blockerats för nyckel portar.
-
 - De virtuella datorerna finns i ett virtuellt nätverk, men utgående trafik till Azure Storage blockeras.
-
 - De virtuella datorerna finns i ett virtuellt nätverk med en kund-DNS-konfiguration och DNS-servern kan inte lösa Azure Storage.
 
 ### <a name="node-agent-log-files"></a>Loggfiler för Node agent

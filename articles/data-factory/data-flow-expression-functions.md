@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/10/2021
-ms.openlocfilehash: 78a17ad6599e1ac4f455f2806a5f944675198b4b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102631497"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563946"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Data omvandlings uttryck i data flöde för mappning
 
@@ -152,14 +152,13 @@ Samlar in alla värden i uttrycket i den aggregerade gruppen i en matris. Strukt
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-Hämtar alla utdatakolumner för en ström. Du kan skicka ett valfritt Stream-namn som det andra argumentet.  
+Hämtar namnen på alla utdatakolumner för en data ström. Du kan skicka ett valfritt Stream-namn som det andra argumentet.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
-
 ___
 ### <code>columns</code>
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Hämtar alla utdatakolumner för en ström. Du kan skicka ett valfritt Stream-namn som det andra argumentet.   
+Hämtar värdena för alla utdatakolumner för en data ström. Du kan skicka ett valfritt Stream-namn som det andra argumentet.   
 * ``columns()``
 * ``columns('DeriveStream')``
 ___

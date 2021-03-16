@@ -4,14 +4,14 @@ description: Krav för att använda Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7a91cf5f9341d2b42f1c8f242d288b4ee59b632d
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 5ac0f0677be6b641d496a941c5a8e1343fd017bc
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471805"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562566"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Krav för Azure HPC-cache
 
@@ -61,7 +61,7 @@ Cachen behöver DNS för att få åtkomst till resurser utanför det virtuella n
 * För att få åtkomst till Azure Blob Storage-slutpunkter och andra interna resurser behöver du den Azure-baserade DNS-servern.
 * För att komma åt lokal lagring måste du konfigurera en anpassad DNS-server som kan matcha dina lagrings-värdnamn. Du måste göra detta **innan** du skapar cachen.
 
-Om du bara behöver åtkomst till Blob Storage kan du använda standard-Azure-standardservern för cacheminnet. Men om du behöver åtkomst till andra resurser bör du skapa en anpassad DNS-server och konfigurera den så att den vidarebefordrar alla Azure-speciella matchnings begär anden till Azure DNS-servern.
+Om du bara använder Blob Storage kan du använda standard-Azure-standardservern för din cache. Men om du behöver åtkomst till lagrings utrymme eller andra resurser utanför Azure bör du skapa en anpassad DNS-server och konfigurera den så att den vidarebefordrar eventuella Azure-/regionsspecifika matchnings begär anden till Azure DNS-servern.
 
 Om du vill använda en anpassad DNS-server måste du utföra dessa installations steg innan du skapar din cache:
 
@@ -185,13 +185,13 @@ Azure HPC cache kan också använda en BLOB-behållare som är monterad med NFS-
 
 Kraven på lagrings kontot skiljer sig åt från ett ADLS-NFS-Blob Storage-mål och för ett standard-Blob Storage-mål. Följ instruktionerna i [montera Blob Storage med hjälp av Network File System (NFS) 3,0-protokollet](../storage/blobs/network-file-system-protocol-support-how-to.md) noggrant för att skapa och konfigurera det NFS-aktiverade lagrings kontot.
 
-Detta är en allmän översikt över stegen:
+Detta är en allmän översikt över stegen. De här stegen kan ändras, så du kan alltid se [ADLS-NFS-instruktionerna](../storage/blobs/network-file-system-protocol-support-how-to.md) för den aktuella informationen.
 
 1. Se till att de funktioner som du behöver är tillgängliga i de regioner där du planerar att arbeta.
 
 1. Aktivera funktionen NFS-protokoll för din prenumeration. Gör detta *innan* du skapar lagrings kontot.
 
-1. Skapa ett säkert virtuellt nätverk (VNet) för lagrings kontot. Du bör använda samma virtuella nätverk för ditt NFS-aktiverade lagrings konto och för Azure HPC-cachen.
+1. Skapa ett säkert virtuellt nätverk (VNet) för lagrings kontot. Du bör använda samma virtuella nätverk för ditt NFS-aktiverade lagrings konto och för Azure HPC-cachen. (Använd inte samma undernät som cachen.)
 
 1. Skapa lagrings kontot.
 

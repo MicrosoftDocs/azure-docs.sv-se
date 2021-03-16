@@ -4,14 +4,14 @@ description: Definiera lagrings mål så att Azure HPC-cachen kan använda ditt 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: bba6745a4cc0be30648e23501f9a9e2f0cc6c8db
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471943"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563254"
 ---
 # <a name="add-storage-targets"></a>Lägga till lagringsmål
 
@@ -194,15 +194,17 @@ Mer information om de andra alternativen finns i [förstå användnings modeller
 
 I den här tabellen sammanfattas skillnaderna mellan alla användnings modeller:
 
-| Användnings modell | Cacheläge | Verifiering på Server Sidan | Maximal Skriv åtgärds fördröjning |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
+
+<!-- | Usage model | Caching mode | Back-end verification | Maximum write-back delay |
 |--|--|--|--|
-| Läs tung, sällan skrivna skrivningar | Läs | Aldrig | Inget |
-| Större än 15% skrivningar | Läsning/skrivning | 8 timmar | 20 minuter |
-| Klienterna kringgår cachen | Läs | 30 sekunder | Inget |
-| Större än 15% skrivningar, frekvent kontroll av Server delen (30 sekunder) | Läsning/skrivning | 30 sekunder | 20 minuter |
-| Större än 15% skrivningar, frekvent kontroll av Server delen (60 sekunder) | Läsning/skrivning | 60 sekunder | 20 minuter |
-| Större än 15% skrivningar, frekvent skrivning | Läsning/skrivning | 30 sekunder | 30 sekunder |
-| Läs tung, kontrol lera servern var 3: e timme | Läs | 3 timmar | Inget |
+| Read heavy, infrequent writes | Read | Never | None |
+| Greater than 15% writes | Read/write | 8 hours | 20 minutes |
+| Clients bypass the cache | Read | 30 seconds | None |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None | -->
 
 > [!NOTE]
 > Verifiering svärdet på **Server** sidan visar när cachen automatiskt jämför sina filer med källfiler i Fjärrlagring. Du kan dock utlösa en jämförelse genom att skicka en klientbegäran som innehåller en readdirplus-åtgärd på Server dels lagrings systemet. Readdirplus är ett standard-NFS-API (kallas även utökad läsning) som returnerar katalogens metadata, vilket gör att cachen jämför och uppdaterar filer.

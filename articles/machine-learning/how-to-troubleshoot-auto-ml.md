@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: b66c768011c05e1105f1351ebe4ed7c3c9700b70
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 28aac830326d60161f54d7ad5fa03326c1d66462
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519171"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563682"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Felsöka automatiserade ML-experiment i python
 
@@ -166,6 +166,10 @@ Om det här mönstret förväntas i din tids serie kan du växla det primära m�
   1. Ladda ned modell paketet
   1. Packa upp paketet
   1. Distribuera med hjälp av unzippade till gångar
+
+## <a name="azure-functions-application"></a>Azure Functions program
+  
+  Automatisk ML stöder för närvarande inte Azure Functions-program. 
 
 ## <a name="sample-notebook-failures"></a>Exempel på bärbara Notebook-problem
 

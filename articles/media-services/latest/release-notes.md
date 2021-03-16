@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a36b5c8b0c8f24d093d887ad788c4ce9857d355
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492684"
+ms.locfileid: "103562577"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
@@ -29,7 +29,32 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 * Felkorrigeringar
 * Föråldrade funktioner
 
-## <a name="known-issues"></a>Kända problem
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="new-language-support-added-to-the-audioanalyzer-preset"></a>Nytt språk stöd har lagts till i AudioAnalyzer-förinställningen
+
+Ytterligare språk för video avskrift och under textning är tillgängliga nu i AudioAnalyzer för inställning (både Basic-och standard-lägen).
+
+* Engelska (Australien), "en-AU"
+* Franska (Kanada), "fr-CA"
+* Arabiska (Bahrain) modern standard, "ar-BH"
+* Arabiska (Egypten), "ar-tex"
+* Arabiska (Irak), ' ar-SWEETIQ '
+* Arabiska (Israel), ' ar-IL '
+* Arabiska (Jordanien), "ar-JO"
+* Arabiska (Kuwait), "ar-KW"
+* Arabiska (Libanon), ' ar-LB '
+* Arabiska (Oman), "ar-OM"
+* Arabiska (Qatar), "ar-frågor och svar"
+* Arabiska (Saudiarabien), ' ar-SA '
+* Danska, da-DK
+* Norska, "NB-nej"
+* Svenska, sa-SE
+* Finska, fi-FI
+* Thai, "th"
+* Turkiska, "TR-TR"
+
+Se de senaste tillgängliga språken i [artikeln analys av koncept för video och ljud.](analyzing-video-audio-files-concept.md)
 
 ## <a name="february-2021"></a>Februari 2021
 

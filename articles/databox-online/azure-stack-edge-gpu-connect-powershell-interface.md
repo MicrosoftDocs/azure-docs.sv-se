@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102517587"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562169"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Hantera en Azure Stack Edge Pro GPU-enhet via Windows PowerShell
 
@@ -161,6 +161,7 @@ Följande tabell innehåller en kort beskrivning av de kommandon som är tillgä
 |`logs`     | Hämta loggarna för en modul        |
 |`restart`     | Stoppa och starta om en modul         |
 
+#### <a name="list-all-iot-edge-modules"></a>Visa alla IoT Edge moduler
 
 Om du vill visa alla moduler som körs på enheten använder du `iotedge list` kommandot.
 
@@ -180,7 +181,64 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 [10.100.10.10]: PS>
 ```
+#### <a name="restart-modules"></a>Starta om moduler
 
+Du kan använda `list` kommandot för att visa en lista över alla moduler som körs på enheten. Identifiera sedan namnet på den modul som du vill starta om och Använd det med `restart` kommandot.
+
+Här är ett exempel på hur du startar om en modul. Utifrån beskrivningen av hur länge modulen körs för kan du se att `cuda-sample1` startades om.
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME         STATUS  DESCRIPTION CONFIG                                          EXTERNAL-IP PORT(S)
+----         ------  ----------- ------                                          ----------- -------
+edgehub      Running Up 5 days   mcr.microsoft.com/azureiotedge-hub:1.0          10.57.48.62 443:31457/TCP,5671:308
+                                                                                             81/TCP,8883:31753/TCP
+iotedged     Running Up 7 days   azureiotedge/azureiotedge-iotedged:0.1.0-beta13 <none>      35000/TCP,35001/TCP
+cuda-sample2 Running Up 1 days   nvidia/samples:nbody
+edgeagent    Running Up 7 days   azureiotedge/azureiotedge-agent:0.1.0-beta13
+cuda-sample1 Running Up 1 days   nvidia/samples:nbody
+
+[10.100.10.10]: PS>iotedge restart cuda-sample1
+[10.100.10.10]: PS>iotedge list
+
+NAME         STATUS  DESCRIPTION  CONFIG                                          EXTERNAL-IP PORT(S)
+----         ------  -----------  ------                                          ----------- -------
+edgehub      Running Up 5 days    mcr.microsoft.com/azureiotedge-hub:1.0          10.57.48.62 443:31457/TCP,5671:30
+                                                                                              881/TCP,8883:31753/TC
+                                                                                              P
+iotedged     Running Up 7 days    azureiotedge/azureiotedge-iotedged:0.1.0-beta13 <none>      35000/TCP,35001/TCP
+cuda-sample2 Running Up 1 days    nvidia/samples:nbody
+edgeagent    Running Up 7 days    azureiotedge/azureiotedge-agent:0.1.0-beta13
+cuda-sample1 Running Up 4 minutes nvidia/samples:nbody
+
+[10.100.10.10]: PS>
+
+```
+
+#### <a name="get-module-logs"></a>Hämta Modulnamn
+
+Använd `logs` kommandot för att hämta loggar för alla IoT Edge modul som körs på enheten. 
+
+Om det uppstod ett fel när behållar avbildningen skulle skapas eller när avbildningen hämtades kör du `logs edgeagent` . `edgeagent` är den IoT Edge runtime-behållare som ansvarar för att tillhandahålla andra behållare. Eftersom `logs edgeagent` dumpar alla loggar, är ett bra sätt att se de senaste felen att använda alternativet `--tail ` 0. 
+
+Här är ett exempel på utdata.
+
+```powershell
+[10.100.10.10]: PS>iotedge logs cuda-sample2 --tail 10
+[10.100.10.10]: PS>iotedge logs edgeagent --tail 10
+<6> 2021-02-25 00:52:54.828 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:52:54.829 +00:00 [INF] - Plan execution ended for deployment 11
+<6> 2021-02-25 00:53:00.191 +00:00 [INF] - Plan execution started for deployment 11
+<6> 2021-02-25 00:53:00.191 +00:00 [INF] - Executing command: "Create an EdgeDeployment with modules: [cuda-sample2, edgeAgent, edgeHub, cuda-sample1]"
+<6> 2021-02-25 00:53:00.212 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:53:00.212 +00:00 [INF] - Plan execution ended for deployment 11
+<6> 2021-02-25 00:53:05.319 +00:00 [INF] - Plan execution started for deployment 11
+<6> 2021-02-25 00:53:05.319 +00:00 [INF] - Executing command: "Create an EdgeDeployment with modules: [cuda-sample2, edgeAgent, edgeHub, cuda-sample1]"
+<6> 2021-02-25 00:53:05.412 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:53:05.412 +00:00 [INF] - Plan execution ended for deployment 11
+[10.100.10.10]: PS>
+```
 
 ### <a name="use-kubectl-commands"></a>Använda kubectl-kommandon
 

@@ -4,12 +4,12 @@ description: Prestandaanalys och diagnostik för webbappar vid felsökning och i
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2507dbf7bb8294c949f434d5fa96ccc0af9a7eb3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532910"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563546"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Felsöka dina program med Azure Application insikter i Visual Studio
 I Visual Studio (2015 och senare) kan du analysera prestanda och diagnostisera problem i din ASP.NET-webbapp både när du felsöker och i produktion med hjälp av telemetri från [Azure Application Insights](./app-insights-overview.md).
@@ -65,17 +65,6 @@ I kod lins linjen ovanför varje hanterare-metod ser du antalet begär Anden och
 >
 
 [Läs mer om Application Insights i CodeLens](./visual-studio-codelens.md)
-
-## <a name="trends"></a>Trends
-Trends är ett verktyg för visualisering av hur din app ska bete sig över tiden. 
-
-Välj **Utforska telemetritrender** med verktygsfältsknappen eller sökfönstret för Application Insights. Välj en av fem vanliga frågor för att komma igång. Du kan analysera olika datauppsättningar baserat på telemetrityper, tidsintervall och andra egenskaper. 
-
-För att hitta avvikelser i dina data väljer du ett av avvikelsealternativen i listrutan ”Vytyp”. Filtreringsalternativen längst ned i fönstret gör det lättare att justera efter specifika delmängder av dina telemetri.
-
-![Trends](./media/visual-studio/51.png)
-
-[Mer om Trends](./visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Lokal övervakning
 (Från Visual Studio 2015 uppdatering 2) Om du inte har konfigurerat SDK för att skicka telemetri till Application Insights portal (så att det inte finns någon Instrumentation-nyckel i ApplicationInsights.config) visas telemetri från din senaste felsökningssession i fönstret diagnostik. 

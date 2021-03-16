@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498871"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563495"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -396,9 +396,29 @@ För att få en funktionalisering-Sammanfattning och förstå vilka funktioner s
 > Algoritmerna för automatisk ML-användning har potentiell slumpmässig het som kan orsaka smärre variationer i en rekommenderad modells slutliga mått poäng, som noggrannhet. Med automatisk ML utförs även åtgärder för data som träna-test-delning, träna eller kors validering när det behövs. Så om du kör ett experiment med samma konfigurations inställningar och primär mått flera gånger, kommer du troligen att se variationen i varje experiment slutliga Mät resultat på grund av dessa faktorer. 
 
 ## <a name="register-and-deploy-models"></a>Registrera och distribuera modeller
+Du kan registrera en modell så att du kan komma tillbaka till den för senare användning. 
 
-Information om hur du hämtar eller registrerar en modell för distribution till en webb tjänst finns i [hur och var du distribuerar en modell](how-to-deploy-and-where.md).
+Om du vill registrera en modell från en automatisk ML-körning använder du- [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) metoden. 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+Mer information om hur du skapar en distributions konfiguration och distribuerar en registrerad modell till en webb tjänst finns i [hur och var du distribuerar en modell](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration).
+
+> [!TIP]
+> För registrerade modeller är distribution med ett klick tillgängligt via [Azure Machine Learning Studio](https://ml.azure.com). Se [hur du distribuerar registrerade modeller från Studio](how-to-use-automated-ml-for-ml-models.md#deploy-your-model). 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>Modelltolkning

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 03/15/2021
+ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222957"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561693"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestanda-och justerings guiden för att mappa data flöden
 
@@ -41,7 +41,7 @@ När du övervakar data flödes prestanda finns det fyra möjliga Flask halsar a
 * Omvandlings tid
 * Skriver till en mottagare 
 
-![Övervakning av data flöde](media/data-flow/monitoring-performance.png "Data flödes övervakare 3")
+![Dataflödesövervakning](media/data-flow/monitoring-performance.png "Data flödes övervakare 3")
 
 Kluster start tid är den tid det tar att skapa ett Apache Spark-kluster. Det här värdet finns i det övre högra hörnet på övervaknings skärmen. Data flöden körs på en just-in-Time-modell där varje jobb använder ett isolerat kluster. Den här start tiden tar vanligt vis 3-5 minuter. För sekventiella jobb kan detta minskas genom att ett TTL-värde aktive ras. Mer information finns i [optimera Azure integration runtime](#ir).
 
@@ -115,7 +115,7 @@ Data flöden distribuerar data bearbetningen över olika noder i ett Spark-klust
 
 Standard kluster storleken är fyra driv rutins noder och fyra arbetsnoder.  När du bearbetar mer data rekommenderas större kluster. Nedan visas möjliga alternativ för storleks ändring:
 
-| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Kommentarer |
+| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Anteckningar |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Inte tillgängligt för beräknings optimering |
 | 8 | 8 | 16 | |
@@ -181,7 +181,7 @@ Om du kör samma data flöde på en uppsättning filer rekommenderar vi att du l
 
 Undvik om möjligt att använda For-Each-aktivitet för att köra data flöden över en uppsättning filer. Detta medför varje iteration av for-each för att skapa ett eget Spark-kluster, vilket ofta inte är nödvändigt och kan vara dyrt. 
 
-## <a name="optimizing-sinks"></a>Optimera Sinks
+## <a name="optimizing-sinks"></a>Optimera mottagare
 
 När data flödar till handfat sker eventuell Anpassad partitionering omedelbart före skrivningen. Precis som källan rekommenderar vi i de flesta fall att du behåller den **aktuella** partitionering som alternativet för den valda partitionen. Partitionerade data skrivs betydligt snabbare än opartitionerade data, även om målet inte är partitionerat. Nedan visas de enskilda övervägandena för olika typer av mottagare. 
 
@@ -250,7 +250,7 @@ När du skriver till CosmosDB kan du förbättra prestanda genom att ändra geno
 
 **Skriv data flödes budget:** Använd ett värde som är mindre än det totala antalet ru: er per minut. Om du har ett data flöde med ett stort antal Spark-partitioner, kan du ställa in en budget genom strömning för att öka balansen mellan dessa partitioner.
 
-## <a name="optimizing-transformations"></a>Optimera omvandlingar
+## <a name="optimizing-transformations"></a>Optimera transformeringar
 
 ### <a name="optimizing-joins-exists-and-lookups"></a>Optimera kopplingar, finns och uppslag
 
@@ -259,6 +259,8 @@ När du skriver till CosmosDB kan du förbättra prestanda genom att ändra geno
 I kopplingar, sökningar och exists-transformeringar, om en eller båda data strömmarna är tillräckligt små för att passa in i arbetsnodens minne, kan du optimera prestanda genom att aktivera **sändning**. Sändning är när du skickar små data ramar till alla noder i klustret. Detta gör att Spark-motorn kan utföra en koppling utan att reshuffling data i den stora data strömmen. Som standard bestämmer Spark-motorn om en sida av en anslutning ska sändas automatiskt eller inte. Om du är bekant med inkommande data och vet att en data ström kommer att vara betydligt mindre än den andra kan du välja **fast** sändning. Fast sändning tvingar Spark att sända den valda strömmen. 
 
 Om storleken på de distribuerade data är för stor för Spark-noden kan du få ett slut på minnes fel. Använd **minnesoptimerade** kluster för att undvika minnes fel. Om du upplever sändnings tids gränser vid körning av data flöden kan du inaktivera sändnings optimering. Detta kommer dock att leda till långsammare data flöden.
+
+När du arbetar med data källor som kan ta längre tid, t. ex. stora databas frågor, rekommenderar vi att du stänger av sändningen för kopplingar. Källan med långa fråge tider kan orsaka Spark-tidsgräns när klustret försöker sända till Compute-noder. Ett annat bra val för att inaktivera sändning är om du har en data ström i ditt data flöde som aggregerar värden för användning i en söknings omvandling senare. Det här mönstret kan förväxla Spark-optimeringen och orsaka timeout.
 
 ![Optimering av kopplings omvandling](media/data-flow/joinoptimize.png "Delta i optimering")
 

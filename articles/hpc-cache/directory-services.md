@@ -4,14 +4,14 @@ description: Så här konfigurerar du katalog tjänster för klient åtkomst til
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472068"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563391"
 ---
 # <a name="configure-directory-services"></a>Konfigurera katalog tjänster
 
@@ -81,7 +81,7 @@ I avsnittet **säker åtkomst** kan du aktivera kryptering och certifikat valide
 
 * **Hämta certifikat automatiskt** – Välj **Ja** om du vill försöka hämta ett certifikat så snart du skickar de här inställningarna.
 
-Fyll i avsnittet **autentiseringsuppgifter** om du vill använda statiska autentiseringsuppgifter för LDAP-säkerhet.
+Fyll i avsnittet **autentiseringsuppgifter** om du vill använda statiska autentiseringsuppgifter för LDAP-säkerhet. Den här informationen krypteras när den lagras och kan inte frågas.
 
 * **BIND DN** – ange det unika bindnings namnet som ska användas för att autentisera till LDAP-servern. (Använd DN-format.)
 * **Bindnings lösen ord** – ange lösen ordet för BINDNINGENS unika namn.

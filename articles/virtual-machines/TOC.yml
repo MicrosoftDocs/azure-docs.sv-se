@@ -1053,6 +1053,8 @@
                     - name: Azure Portal
                       displayname: 'Azure disk encryption, encryption, ADE'
                       href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Diskkrypteringsscenarier för Linux
+                  href: ./linux/disk-encryption-linux.md
                 - name: Nyckelvalv för Azure Disk Encryption
                   displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                   href: ./linux/disk-encryption-key-vault.md
@@ -1081,8 +1083,8 @@
                       href: ./linux/disk-encryption-linux-aad.md
             - name: Windows
               items:
-                - name: Diskkrypteringsscenarier för Windows
-                  href: ./windows/disk-encryption-windows.md
+                - name: Översikt
+                  href: ./windows/disk-encryption-overview.md
                 - name: Snabbstarter
                   items:
                     - name: Azure CLI
@@ -1091,6 +1093,8 @@
                       href: ./windows/disk-encryption-powershell-quickstart.md
                     - name: Azure Portal
                       href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Diskkrypteringsscenarier för Windows
+                  href: ./windows/disk-encryption-windows.md
                 - name: Nyckelvalv för Azure Disk Encryption
                   href: ./windows/disk-encryption-key-vault.md
                 - name: Exempelskript för diskkryptering

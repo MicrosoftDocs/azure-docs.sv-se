@@ -2,14 +2,14 @@
 title: Översikt över Azure Portal
 description: Azure Portal är ett grafiskt användar gränssnitt som du kan använda för att hantera dina Azure-tjänster. Lär dig hur du navigerar och söker efter resurser i Azure Portal.
 keywords: portal
-ms.date: 12/20/2019
+ms.date: 03/12/2021
 ms.topic: overview
-ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745935"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564002"
 ---
 # <a name="azure-portal-overview"></a>Översikt över Azure Portal
 
@@ -75,7 +75,7 @@ Figuren nedan etiketter de grundläggande elementen i Azure Portal, som beskrivs
 
 ## <a name="get-started-with-services"></a>Kom igång med tjänster
 
-Om du är en ny prenumerant måste du skapa en resurs innan det finns något att hantera. Välj **+ skapa en resurs** för att visa de tjänster som är tillgängliga på Azure Marketplace. Du hittar program och tjänster från hundratals leverantörer här, allt certifierat för att köras på Azure.
+Om du är en ny prenumerant måste du skapa en resurs innan det finns något att hantera. Välj **+ skapa en resurs** för att visa de tjänster som är tillgängliga på Azure Marketplace. Du hittar hundratals program och tjänster från många leverantörer här, allt certifierat för att köras på Azure.
 
 Vi fyllde i dina favoriter i sido panelen med länkar till vanliga tjänster.  Om du vill visa alla tillgängliga tjänster väljer du **alla tjänster** från sido panelen.
 

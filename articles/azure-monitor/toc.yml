@@ -966,8 +966,6 @@
           items:
             - name: F5-insikter
               href: app/visual-studio.md
-            - name: Trends
-              href: app/visual-studio-trends.md
             - name: CodeLens
               href: app/visual-studio-codelens.md
         - name: Andra plattformar
@@ -1038,6 +1036,8 @@
           href: vm/vminsights-workbooks.md
         - name: Inaktivera övervakning
           href: vm/vminsights-optout.md
+        - name: Felsöka
+          href: vm/vminsights-troubleshoot.md
     - name: Container Insights
       items:
         - name: Översikt

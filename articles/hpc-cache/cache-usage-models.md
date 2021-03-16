@@ -4,14 +4,14 @@ description: Beskriver de olika användnings modellerna för cache och hur du v�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 856f2c15d2bd0b39212e8962a92b1df50cada29e
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: b23afb17b9b7152e82049ca4f6127e2811913296
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472889"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563461"
 ---
 # <a name="understand-cache-usage-models"></a>Förstå användnings modeller för cache
 
@@ -29,7 +29,7 @@ Cachelagring av filer är hur Azure HPC-cachen påskyndar klient förfrågningar
 
   Om skrivcache är inaktiverat, lagrar cacheminnet inte den ändrade filen och skriver den omedelbart till Server dels lagrings systemet.
 
-* **Skriv** åtgärds fördröjning – för en cache med skrivcache aktive rad är Skriv-tillbaka-fördröjning den tid som cachen väntar på ytterligare fil ändringar innan filen flyttas till Server delens lagrings system.
+* **Skriv** åtgärds fördröjning – för en cache med skrivcache aktive rad är Skriv-tillbaka-fördröjning den tid som cachen väntar på ytterligare fil ändringar innan filen kopieras till Server delens lagrings system.
 
 * **Verifiering på Server** sidan – inställningen för Server dels verifiering anger hur ofta cachen jämför sin lokala kopia av en fil med fjärrversionen på backend-startsystemet. Om backend-kopian är nyare än den cachelagrade kopian, hämtar cachen fjär kopian och lagrar den för framtida begär Anden.
 
@@ -43,7 +43,7 @@ Du måste välja en användnings modell för varje NFS-monterat lagrings mål so
 
 Med användnings modeller för HPC-cache kan du välja hur du ska utjämna snabba svar med risken för att få inaktuella data. Om du vill optimera hastigheten för att läsa filer kanske du inte bryr dig om filerna i cacheminnet kontrol leras mot backend-filerna. Å andra sidan, om du vill vara säker på att filerna alltid är uppdaterade med Fjärrlagring, väljer du en modell som söker ofta.
 
-Det finns flera alternativ:
+Detta är alternativen för användnings modell:
 
 * **Läs tung, ovanliga skrivningar** – Använd det här alternativet om du vill påskynda Läs åtkomsten till filer som är statiska eller sällan ändrade.
 
@@ -53,13 +53,16 @@ Det finns flera alternativ:
 
   Använd inte det här alternativet om det finns en risk att en fil kan ändras direkt på lagrings systemet utan att först skriva den till cacheminnet. Om det händer kommer den cachelagrade versionen av filen inte att synkroniseras med backend-filen.
 
-* **Större än 15% skrivningar** – det här alternativet påskyndar både Läs-och skriv prestanda. När du använder det här alternativet måste alla klienter komma åt filer via Azure HPC-cachen i stället för att montera Server dels lagringen direkt. De cachelagrade filerna kommer att ha nya ändringar som inte lagras på Server delen.
+* **Större än 15% skrivningar** – det här alternativet påskyndar både Läs-och skriv prestanda. När du använder det här alternativet måste alla klienter komma åt filer via Azure HPC-cachen i stället för att montera Server dels lagringen direkt. De cachelagrade filerna kommer att ha nya ändringar som ännu inte har kopierats till Server delen.
 
   I den här användnings modellen kontrol leras bara filer i cacheminnet mot filerna på backend-lagringsplatsen var åttonde timme. Den cachelagrade versionen av filen antas vara mer aktuell. En ändrad fil i cachen skrivs till Server dels lagrings systemet när den har varit i cacheminnet i 20 minuter<!-- an hour --> utan ytterligare ändringar.
 
 * **Klienter skriver till NFS-målet, vilket kringgår cachen** – Välj det här alternativet om några klienter i arbets flödet skriver data direkt till lagrings systemet utan att först skriva till cachen eller om du vill optimera data konsekvens. Filer som klienten begär cachelagras (läsningar), men ändringar av filerna från klienten (skrivningar) cachelagras inte. De skickas direkt till Server dels lagrings systemet.
 
-  Med den här användnings modellen kontrol leras ofta filerna i cacheminnet mot backend-versionerna för uppdateringar. Den här verifieringen tillåter att filer ändras utanför cachen och samtidigt bibehåller sig data konsekvens.
+  Med den här användnings modellen kontrol leras ofta filerna i cacheminnet mot backend-versionerna för uppdateringar – var 30: e sekund. Den här verifieringen tillåter att filer ändras utanför cachen och samtidigt bibehåller sig data konsekvens.
+
+  > [!TIP]
+  > De första tre bas användnings modellerna kan användas för att hantera de flesta Azure HPC-arbetsflöden. Följande alternativ är för mindre vanliga scenarier.
 
 * **Större än 15% skrivningar, kontroll av Server för ändringar var 30: e sekund** och **större än 15% skrivningar, kontroll av den säkerhetskopierade servern för ändringar var 60 sekund** : dessa alternativ är utformade för arbets flöden där du vill påskynda både läsningar och skrivningar, men det finns en risk att en annan användare skriver direkt till Server dels lagrings systemet. Om till exempel flera klient grupper arbetar med samma filer från olika platser, kan dessa användnings modeller vara begripliga för att balansera behovet av snabb fil åtkomst med låg tolerans för inaktuellt innehåll från källan.
 
@@ -71,16 +74,18 @@ Det finns flera alternativ:
 
 I den här tabellen sammanfattas skillnaderna mellan användnings modeller:
 
-| Användnings modell                   | Cacheläge | Verifiering på Server Sidan | Maximal Skriv åtgärds fördröjning |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Läs tung, sällan skrivna skrivningar | Läs         | Aldrig                 | Inget                     |
-| Större än 15% skrivningar       | Läsning/skrivning   | 8 timmar               | 20 minuter               |
-| Klienterna kringgår cachen      | Läs         | 30 sekunder            | Inget                     |
-| Större än 15% skrivningar, frekvent kontroll av Server delen (30 sekunder) | Läsning/skrivning | 30 sekunder | 20 minuter |
-| Större än 15% skrivningar, frekvent kontroll av Server delen (60 sekunder) | Läsning/skrivning | 60 sekunder | 20 minuter |
-| Större än 15% skrivningar, frekvent skrivning | Läsning/skrivning | 30 sekunder | 30 sekunder |
-| Läs tung, kontrol lera servern var 3: e timme | Läs | 3 timmar | Inget |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
+<!-- | Usage model                   | Caching mode | Back-end verification | Maximum write-back delay |
+|-------------------------------|--------------|-----------------------|--------------------------|
+| Read heavy, infrequent writes | Read         | Never                 | None                     |
+| Greater than 15% writes       | Read/write   | 8 hours               | 20 minutes               |
+| Clients bypass the cache      | Read         | 30 seconds            | None                     |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None |
+-->
 Om du har frågor om den bästa användnings modellen för ditt Azure HPC cache-arbetsflöde, pratar du med Azure-representanten eller öppnar en support förfrågan om hjälp.
 
 ## <a name="next-steps"></a>Nästa steg

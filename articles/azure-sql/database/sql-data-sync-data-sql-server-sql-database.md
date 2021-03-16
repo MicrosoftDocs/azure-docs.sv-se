@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922282"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562067"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Vad är SQL Data Sync för Azure?
 
@@ -101,6 +101,9 @@ Med funktionen ny privat länk (förhands granskning) kan du välja en tjänst h
 - [Använd PowerShell för att synkronisera mellan flera databaser i Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [Använda PowerShell för att synkronisera mellan en databas i Azure SQL Database och en databas i en SQL Server instans](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
+### <a name="set-up-data-sync-with-rest-api"></a>Konfigurera datasynkronisering med REST API
+- [Använd REST API för att synkronisera mellan flera databaser i Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
+
 ### <a name="review-the-best-practices-for-data-sync"></a>Granska metod tips för datasynkronisering
 
 - [Metodtips för Azure SQL Data Sync](sql-data-sync-best-practices.md)
@@ -165,7 +168,7 @@ Datasynkronisering kan inte synkronisera skrivskyddade eller systemgenererade ko
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Begränsningar för tjänst-och databas dimensioner
 
-| **Dimensioner**                                                  | **Gräns**              | **Lösning**              |
+| **Dimensioner**                                                  | **Gränserna**              | **Lösning**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximalt antal Sync-grupper som alla databaser kan tillhöra.       | 5                      |                             |
 | Maximalt antal slut punkter i en enskild Sync-grupp              | 30                     |                             |
@@ -261,7 +264,7 @@ Behöver du uppdatera schemat för en databas i en Sync-grupp? Schema ändringar
 - [Automatisera replikeringen av schema ändringar med SQL Data Sync i Azure](./sql-data-sync-update-sync-schema.md)
 - [Använd PowerShell för att uppdatera synkroniseringsschemat i en befintlig synkroniseringsgrupp](scripts/update-sync-schema-in-sync-group.md)
 
-### <a name="monitor-and-troubleshoot"></a>Övervaka och felsöka
+### <a name="monitor-and-troubleshoot"></a>Övervaka och felsök
 
 Är SQL Data Sync att göra som det ska? Information om hur du övervakar aktiviteter och felsöker problem finns i följande artiklar:
 

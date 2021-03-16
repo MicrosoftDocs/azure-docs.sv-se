@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 2d43eda404a5257c0ec28a884b6ebf182330ba51
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488423"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563852"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Guide för migrering: SQL Server till SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -183,9 +183,6 @@ Test metoden för migrering av databasen består av följande aktiviteter:
 1. **Konfigurera test miljö**: test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
 1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
 1. **Kör prestandatester**: kör prestandatest mot källan och målet och analysera och jämför sedan resultaten.
-
-   > [!NOTE]
-   > Om du behöver hjälp med att utveckla och köra verifierings test efter migrering bör du tänka på vilken data kvalitets lösning som är tillgänglig från partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
 
 
 ## <a name="leverage-advanced-features"></a>Utnyttja avancerade funktioner 

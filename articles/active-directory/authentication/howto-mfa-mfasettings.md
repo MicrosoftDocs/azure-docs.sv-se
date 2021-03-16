@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198531"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471643"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurera inställningar för Azure AD-Multi-Factor Authentication
 
@@ -120,6 +120,8 @@ Azure AD stöder användningen av OATH-TOTP mobilapp SHA-1-token som uppdaterar 
 OATH TOTP mobilapp-token levereras vanligt vis med en hemlig nyckel eller dirigeras, förprogrammeras i token. De här nycklarna måste vara inmatade i Azure AD enligt beskrivningen i följande steg. Hemliga nycklar är begränsade till 128 tecken, som kanske inte är kompatibla med alla tokens. Den hemliga nyckeln får bara innehålla tecknen *a-z* eller *a-z* och siffror *1-7* och måste kodas i *Base32*.
 
 Programmerbara OATH TOTP mobilapp-maskinvaru-token som kan dirigeras om kan också konfigureras med Azure AD i installations flödet för programtoken.
+
+OATH-token för OATH-enheter stöds som en del av en offentlig för hands version. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versionerna
 
 ![Laddar upp OATH-token till bladet MFA OATH-token](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

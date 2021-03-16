@@ -1,6 +1,6 @@
 ---
 title: 'SQL Server till SQL-hanterad instans: migreringsguiden'
-description: Följ den här guiden för att migrera SQL Server-databaser till Azure SQL-hanterad instans.
+description: Den här guiden lär dig att migrera dina SQL Server-databaser till Azure SQL-hanterad instans.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488978"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564498"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migration guide: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -197,10 +197,6 @@ Test metoden för migrering av databasen består av följande aktiviteter:
 1. **Konfigurera test miljö**: test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
 1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
 1. **Kör prestandatester**: kör prestandatest mot källan och målet och analysera och jämför sedan resultaten.
-
-   > [!NOTE]
-   > Om du behöver hjälp med att utveckla och köra verifierings test efter migrering bör du tänka på vilken data kvalitets lösning som är tillgänglig från partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
-
 
 
 ## <a name="leverage-advanced-features"></a>Utnyttja avancerade funktioner 

@@ -8,14 +8,16 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: edca5a278414288ceb3c3d13f5d49e723e0ee5c2
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a3656d6dd81132a7fd10103fc0199d55d9288df3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615932"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489619"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge system som stöds
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Den här artikeln innehåller information om vilka system och komponenter som stöds av IoT Edge, oavsett om de är officiellt eller i för hands versionen.
 

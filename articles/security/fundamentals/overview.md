@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: a62326d99eee8407b65c0c640b4db8a6f051c758
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 1159736d59e15fa36c0feb7e5d5b5553953fb6b9
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101196"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564519"
 ---
 # <a name="introduction-to-azure-security"></a>Introduktion till Azure-säkerhet
 
@@ -202,6 +202,14 @@ Azure-nätverk stöder olika scenarier för säker fjärråtkomst. Några av des
 
 - [Ansluta virtuella Azure-nätverk till varandra](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
+### <a name="azure-private-link"></a>Azure Private Link
+
+Med [Azures privata länk](https://azure.microsoft.com/services/private-link/) kan du komma åt Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade kund tjänster/partner tjänster privat i det virtuella nätverket via en [privat slut punkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview). Installation och användning med Azure Private Link är konsekvent i Azure PaaS, kundägda och delade partner tjänster. Trafik från ditt virtuella nätverk till Azure-tjänsten finns alltid kvar på Microsoft Azure stamnät nätverket.
+
+Med [privata slut punkter](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) kan du skydda dina kritiska Azure-tjänsteresurser enbart till dina virtuella nätverk. Den privata Azure-slutpunkten använder en privat IP-adress från ditt VNet för att ansluta dig privat och säkert till en tjänst som drivs av en privat Azure-länk, vilket effektivt tar tjänsten i ditt VNet. Att exponera det virtuella nätverket på det offentliga Internet är inte längre nödvändigt för att använda tjänster i Azure. 
+
+Du kan också skapa en egen privat länk-tjänst i det virtuella nätverket. [Tjänsten Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-service-overview) är referensen till din egen tjänst som drivs av en privat Azure-länk. Din tjänst som körs bakom Azure Standard Load Balancer kan aktive ras för åtkomst till privat länk så att konsumenter till tjänsten kan komma åt den privat från sina egna virtuella nätverk. Dina kunder kan skapa en privat slut punkt i sitt virtuella nätverk och mappa den till den här tjänsten. Att exponera tjänsten för det offentliga Internet är inte längre nödvändigt för att återge tjänster på Azure. 
+
 ### <a name="vpn-gateway"></a>VPN Gateway
 
 Om du vill skicka nätverks trafik mellan Azure-Virtual Network och din lokala plats måste du skapa en VPN-gateway för Azure-Virtual Network. En [VPN-gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) är en typ av virtuell nätverksgateway som skickar krypterad trafik över en offentlig anslutning. Du kan också använda VPN-gatewayer för att skicka trafik mellan virtuella Azure-nätverk via Azures nätverks infrastruktur resurs.
@@ -284,7 +292,7 @@ Du kan aktivera följande diagnostiska logg kategorier för NSG: er:
 
 [Azure Security Center](../../security-center/security-center-introduction.md) fort löp ande analyserar säkerhets läget för dina Azure-resurser för metod tips för nätverks säkerhet. När Security Center identifierar potentiella säkerhets risker skapar den [rekommendationer](../../security-center/security-center-recommendations.md) som vägleder dig genom processen att konfigurera de nödvändiga kontrollerna för att skärp och skydda dina resurser.
 
-## <a name="compute"></a>Beräkning
+## <a name="compute"></a>Compute
 Avsnittet innehåller ytterligare information om viktiga funktioner i det här området och sammanfattnings information om dessa funktioner.
 
 ### <a name="antimalware--antivirus"></a>Antivirus program & Antivirus

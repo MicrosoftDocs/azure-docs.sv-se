@@ -1,6 +1,6 @@
 ---
 title: 'DB2 till SQL Database: migrations guide'
-description: Följ den här guiden för att migrera dina DB2-databaser till Azure SQL Database.
+description: I den här guiden får du lära dig att migrera dina DB2-databaser till Azure SQL Database att använda SQL Server Migration Assistant för DB2 (SSMA för DB2).
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 917390b43a772cbb9374c560fc3a65cfa7278839
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356352"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563954"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Migration guide: DB2 till SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -61,7 +61,7 @@ Följ dessa steg om du vill skapa en utvärdering:
 
 1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av DB2-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects.
 
-   Till exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/report.png" alt-text="Granska rapporten för att identifiera eventuella fel eller varningar":::
 
@@ -142,9 +142,6 @@ Test metoden för migrering av databasen består av följande aktiviteter:
 1. **Konfigurera test miljö**: test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
 1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
 1. **Kör prestandatester**: kör prestandatest mot källan och målet och analysera och jämför sedan resultaten.
-
-   > [!NOTE]
-   > Om du behöver hjälp med att utveckla och köra verifierings test efter migrering bör du tänka på vilken data kvalitets lösning som är tillgänglig från partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
 
 
 ## <a name="leverage-advanced-features"></a>Utnyttja avancerade funktioner 

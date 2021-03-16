@@ -1,30 +1,33 @@
 ---
 title: Konfigurera inställningar för Azure HPC-cache
-description: Förklarar hur du konfigurerar ytterligare inställningar för cachen som MTU och No-root-squash, samt hur du får åtkomst till Express-ögonblicksbilder från Azure Blob Storage-mål.
+description: Förklarar hur du konfigurerar ytterligare inställningar för cachen som MTU, anpassad NTP-och DNS-konfiguration samt hur du får åtkomst till Express-ögonblicksbilder från Azure Blob Storage-mål.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760511"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563392"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurera ytterligare inställningar för Azure HPC cache
 
-**Konfigurations** sidan i Azure Portal har alternativ för att anpassa flera inställningar. De flesta användare behöver inte ändra dessa inställningar från standardvärdena.
+Sidan **nätverk** i Azure Portal har alternativ för att anpassa flera inställningar. De flesta användare behöver inte ändra dessa inställningar från standardvärdena.
 
 Den här artikeln beskriver också hur du använder ögonblicks bild funktionen för Azure Blob Storage-mål. Ögonblicks bild funktionen har inga konfigurerbara inställningar.
 
-Om du vill se inställningarna öppnar du cachens **konfigurations** sida i Azure Portal.
+Om du vill se inställningarna öppnar du sidan för cachens **nätverk** i Azure Portal.
 
-![skärm bild av konfigurations sidan i Azure Portal](media/configuration.png)
+![skärm bild av sidan nätverk i Azure Portal](media/networking-page.png)
 
-> [!TIP]
-> I [Hantera Azure HPC cache-videon](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) visas konfigurations sidan och dess inställningar.
+> [!NOTE]
+> En tidigare version av den här sidan innehöll en rot squash-inställning på cache nivå, men den här inställningen har flyttats till [klient åtkomst principer](access-policies.md).
+
+<!-- >> [!TIP]
+> The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
 
 ## <a name="adjust-mtu-value"></a>Justera MTU-värde
 <!-- linked from troubleshoot-nas article -->
@@ -42,21 +45,39 @@ Om du inte vill ändra MTU-inställningarna på andra system komponenter bör du
 
 Läs mer om MTU-inställningar i virtuella Azure-nätverk genom [att läsa TCP/IP-prestanda för virtuella Azure-datorer](../virtual-network/virtual-network-tcpip-performance-tuning.md).
 
-## <a name="configure-root-squash"></a>Konfigurera rot-squash
-<!-- linked from troubleshoot and from access policies -->
+## <a name="customize-ntp"></a>Anpassa NTP
 
-Inställningen **Aktivera rot squash** styr hur Azure HPC cache behandlar begär Anden från rot användaren på klient datorer.
+Din cache använder Azure-baserade Time Server-time.microsoft.com som standard. Om du vill att din cache ska använda en annan NTP-server anger du den i avsnittet **NTP-konfiguration** . Använd ett fullständigt kvalificerat domän namn eller en IP-adress.
 
-När rot-squash har Aktiver ATS mappas rot användare från en klient automatiskt till användaren "ingen" när de skickar förfrågningar via Azure HPC-cachen. Det förhindrar också att klient begär Anden använder set-UID-behörighet bitar.
+## <a name="set-a-custom-dns-configuration"></a>Ange en anpassad DNS-konfiguration
 
-Om rot-squash är inaktive rad skickas en begäran från klientens rot användare (UID 0) till ett Server dels-NFS-lagrings system som rot. Den här konfigurationen kan tillåta olämplig fil åtkomst.
+> [!CAUTION]
+> Ändra inte cache-DNS-konfigurationen om du inte behöver det. Konfigurations misstag kan ha ödesdigra-konsekvenser. Om konfigurationen inte kan matcha Azure-tjänst namn, blir HPC cache-instansen permanent otillgänglig.
 
-Genom att ange rot-squash i cacheminnet kan du kompensera för den nödvändiga ``no_root_squash`` inställningen på NAS-system som används som lagrings mål. (Läs mer om [NFS-mål krav för lagring](hpc-cache-prerequisites.md#nfs-storage-requirements).) Det kan också förbättra säkerheten när den används med Azure Blob Storage-mål.
+Azure HPC cache konfigureras automatiskt för att använda det säkra och smidiga Azure DNS systemet. Några ovanliga konfigurationer kräver dock att cachen använder ett separat lokalt DNS-system i stället för Azure-systemet. Avsnittet **DNS-konfiguration** på sidan **nätverk** används för att ange den här typen av system.
 
-Standardinställningen är **Ja**. (Cacheminnen som skapats före april 2020 kan ha standardvärdet **Nej**.)
+Kontakta Azure-representanterna eller kontakta Microsoft service och support för att avgöra om du behöver använda en anpassad cache-DNS-konfiguration.
 
-> [!TIP]
-> Du kan också ange rot-squash för en speciell lagrings export genom [att anpassa klient åtkomst principer](access-policies.md#root-squash).
+Om du konfigurerar ditt eget lokala DNS-system för att Azure HPC-cache ska använda, måste du se till att konfigurationen kan matcha namn på Azure-slutpunkter för Azure-tjänster. Du måste konfigurera din anpassade DNS-miljö så att den vidarebefordrar vissa namn matchnings begär anden till Azure DNS eller till en annan server efter behov.
+
+Kontrol lera att DNS-konfigurationen kan lösa dessa objekt innan du använder den för en Azure HPC-cache:
+
+* ``*.core.windows.net``
+* Hämtning av listor över återkallade certifikat (CRL) och kontroll tjänster online Certificate Status Protocol (OCSP). En partiell lista finns i [objektet brand Väggs regler](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) i slutet av den här [Azure TLS-artikeln](../security/fundamentals/tls-certificate-changes.md), men du bör kontakta en teknisk representant från Microsoft för att förstå alla krav.
+* Det fullständigt kvalificerade domän namnet för din NTP-server (time.microsoft.com eller en anpassad server)
+
+Om du behöver ange en anpassad DNS-server för cacheminnet använder du de angivna fälten:
+
+* **DNS-sökdomän** (valfritt) – Ange din Sök domän, till exempel ``contoso.com`` . Ett enda värde är tillåtet, eller så kan du lämna det tomt.
+* **DNS** -servrar – Ange upp till tre DNS-servrar. Ange dem efter IP-adress.
+
+<!-- 
+  > [!NOTE]
+  > The cache will use only the first DNS server it successfully finds. -->
+
+### <a name="refresh-storage-target-dns"></a>Uppdatera lagrings målets DNS
+
+Om DNS-servern uppdaterar IP-adresser blir de tillhör ande NFS-målen tillfälligt otillgängliga. Läs hur du uppdaterar dina anpassade DNS-systemip-adresser i [Redigera lagrings mål](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only).
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Visa ögonblicks bilder för Blob Storage-mål
 
@@ -75,8 +96,8 @@ Den här funktionen är endast tillgänglig för Azure Blob Storage-mål och des
 
 Azure HPC-cache lagrar dagliga, veckovis och månatliga ögonblicks bilder tills de ersätts av nya. Gränserna är:
 
-* upp till 20 dagliga ögonblicks bilder
-* upp till 8 veckors ögonblicks bilder
-* upp till tre månatliga ögonblicks bilder
+* Upp till 20 dagliga ögonblicks bilder
+* Upp till 8 veckors ögonblicks bilder
+* Upp till tre månatliga ögonblicks bilder
 
 Få åtkomst till ögonblicks bilderna från `.snapshot` katalogen i Blob Storage-målets namnrymd.

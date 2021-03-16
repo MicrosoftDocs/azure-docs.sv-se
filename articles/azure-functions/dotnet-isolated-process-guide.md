@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: cfef510646489e65f5cbc5d0d3e14c468301f48e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199959"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561829"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Guide för att köra funktioner på .NET 5,0 i Azure
 
@@ -122,7 +122,7 @@ While the full middleware registration set of APIs is not yet exposed, we do sup
 
 Bindningar definieras genom att använda attribut för metoder, parametrar och retur typer. En funktions metod är en metod med `Function` attributet och ett utlösare som tillämpas på en indataparameter, som du ser i följande exempel:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 Attributet trigger anger utlösarens typ och binder indata till en metod parameter. Föregående exempel funktion utlöses av ett köat meddelande och Queue-meddelandet skickas till-metoden i- `myQueueItem` parametern.
 
@@ -140,7 +140,7 @@ En funktion kan ha noll eller flera indata-bindningar som kan skicka data till e
 
 Om du vill skriva till en utgående bindning måste du använda attributet utgående bindning till funktions metoden, som definierats för skrivning till den kopplade tjänsten. Värdet som returneras av metoden skrivs till utgående bindning. Följande exempel skriver till exempel ett sträng värde till en meddelandekö med namnet `functiontesting2` med hjälp av en utgående bindning:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>Flera utgående bindningar
 
@@ -156,7 +156,7 @@ På samma sätt returnerar funktionen ett `HttpReponseData` objekt, som innehål
 
 Följande kod är en HTTP-utlösare 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>Loggning
 
@@ -164,7 +164,7 @@ I .NET som är isolerade kan du skriva till loggar genom att använda en [`ILogg
 
 I följande exempel visas hur du hämtar `ILogger` och skriver loggar i en funktion:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
 Använd olika metoder för `ILogger` att skriva olika logg nivåer, till exempel `LogWarning` eller `LogError` . Mer information om loggnings nivåer finns i [övervaknings artikeln](functions-monitoring.md#log-levels-and-categories).
 

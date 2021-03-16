@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624778"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561965"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure dataSynapses-arbetsyta
 
@@ -125,6 +125,140 @@ Använd [distributions tillägget Synapse-arbetsyta](https://marketplace.visuals
 När du har sparat alla ändringar kan du välja **Skapa version** för att skapa en version manuellt. För att automatisera skapandet av versioner, se [Azure DevOps release triggers](/azure/devops/pipelines/release/triggers)
 
    ![Välj Skapa version](media/release-creation-manually.png)
+
+## <a name="use-custom-parameters-of-the-workspace-template"></a>Använd anpassade parametrar för arbets ytans mall 
+
+Du använder automatiserad CI/CD och du vill ändra vissa egenskaper under distributionen, men egenskaperna är inte parameterstyrda som standard. I det här fallet kan du åsidosätta standard parameter mal len.
+
+Om du vill åsidosätta standard parameter mal len måste du skapa en anpassad parametriserad mall, en fil med namnet **template-parameters-definition.js** i rotmappen i din git Collaboration-gren. Du måste använda det exakta fil namnet. När du publicerar från samarbets grenen kommer Synapse-arbetsytan att läsa den här filen och använda dess konfiguration för att generera parametrarna. Om ingen fil hittas används standard parameter mal len.
+
+### <a name="custom-parameter-syntax"></a>Anpassad parameter-syntax
+
+Här följer några rikt linjer för att skapa filen med anpassade parametrar:
+
+* Ange sökvägen till egenskapen under den relevanta entitetstypen.
+* Om du anger ett egenskaps namn för att ange att `*` du vill Parameterisera alla egenskaper under den (enbart till den första nivån, inte rekursivt). Du kan också ange undantag för den här konfigurationen.
+* Att ange värdet för en egenskap som en sträng anger att du vill Parameterisera egenskapen. Använd formatet `<action>:<name>:<stype>`.
+   *  `<action>` kan vara något av följande tecken:
+      * `=` betyder att det aktuella värdet ska vara standardvärdet för parametern.
+      * `-` innebär att inte behålla standardvärdet för parametern.
+      * `|` är ett specialfall för hemligheter från Azure Key Vault för anslutnings strängar eller nycklar.
+   * `<name>` är namnet på parametern. Om det är tomt tar det med namnet på egenskapen. Om värdet börjar med ett `-` Character förkortas namnet. Till exempel `AzureStorage1_properties_typeProperties_connectionString` skulle kortas till `AzureStorage1_connectionString` .
+   * `<stype>` är typen av parameter. Om `<stype>` är tomt är standard typen `string` . Värden som stöds:,,,, `string` `securestring` `int` `bool` `object` `secureobject` och `array` .
+* Att ange en matris i filen anger att den matchande egenskapen i mallen är en matris. Synapse itererar igenom alla objekt i matrisen med hjälp av definitionen som anges. Det andra objektet, en sträng, blir namnet på egenskapen, som används som namn för parametern för varje iteration.
+* En definition kan inte vara unik för en resurs instans. Alla definitioner gäller för alla resurser av den typen.
+* Som standard är alla säkra strängar, som Key Vault hemligheter och säkra strängar, som anslutnings strängar, nycklar och tokens, parameterstyrda.
+
+### <a name="parameter-template-definition-samples"></a>Definitions exempel för parameter mal len 
+
+Här är ett exempel på hur en definition av en parametriserad mall ser ut så här:
+
+```json
+{
+"Microsoft.Synapse/workspaces/notebooks": {
+        "properties":{
+            "bigDataPool":{
+                "referenceName": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/sqlscripts": {
+     "properties": {
+         "content":{
+             "currentConnection":{
+                    "*":"-"
+                 }
+            } 
+        }
+    },
+    "Microsoft.Synapse/workspaces/pipelines": {
+        "properties": {
+            "activities": [{
+                 "typeProperties": {
+                    "waitTimeInSeconds": "-::int",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.Synapse/workspaces/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/triggers": {
+        "properties": {
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:int",
+                    "frequency": "=:-freq"
+                },
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                     "*": "="
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
+                }
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
+Här är en förklaring av hur föregående mall skapas, uppdelat efter resurs typ.
+
+#### <a name="notebooks"></a>Notebooks 
+
+* Alla egenskaper i sökvägen `properties/bigDataPool/referenceName` är parameterstyrda med standardvärdet. Du kan Parameterisera anslutna Spark-pool för varje Notebook-fil. 
+
+#### <a name="sql-scripts"></a>SQL-skript 
+
+* Egenskaperna (poolName och databaseName) i sökvägen `properties/content/currentConnection` är parameterstyrda som strängar utan standardvärdena i mallen. 
+
+#### <a name="pipelines"></a>Pipelines
+
+* Alla egenskaper i sökvägen `activities/typeProperties/waitTimeInSeconds` är parameterstyrda. Alla aktiviteter i en pipeline som har en kod nivå egenskap med namnet `waitTimeInSeconds` (till exempel `Wait` aktiviteten) är parameterstyrda som ett tal med ett standard namn. Men det finns inget standardvärde i Resource Manager-mallen. Det är en obligatorisk Indatatyp under distributionen av Resource Manager.
+* På samma sätt är en egenskap `headers` som kallas (t. ex. i en `Web` aktivitet) parameterstyrda med typ `object` (objekt). Det har ett standardvärde, vilket är samma värde som käll fabriken.
+
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
+
+* Alla egenskaper under sökvägen `typeProperties` är parameterstyrda med respektive standardvärden. Det finns till exempel två egenskaper under `IntegrationRuntimes` typ egenskaper: `computeProperties` och `ssisProperties` . Båda egenskaps typerna skapas med deras respektive standardvärden och typer (objekt).
+
+#### <a name="triggers"></a>Utlösare
+
+* Under `typeProperties` , har två egenskaper parametriserade. Det första är `maxConcurrency` , som har angetts att ha ett standardvärde och är av typen `string` . Den har standard parameter namnet `<entityName>_properties_typeProperties_maxConcurrency` .
+* `recurrence`Egenskapen är också parametriserad. Under den här nivån anges alla egenskaper på den nivån som parameterstyrda som strängar, med standardvärden och parameter namn. Ett undantag är `interval` egenskapen, som är parameterstyrda som typ `int` . Parameter namnet har suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . På samma sätt `freq` är egenskapen en sträng och är parameterstyrda som en sträng. `freq`Egenskapen är dock parameterstyrda utan ett standardvärde. Namnet är kortare och suffixet. Till exempel `<entityName>_freq`.
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* Länkade tjänster är unika. Eftersom länkade tjänster och data uppsättningar har en mängd olika typer, kan du ange en typ bestämd anpassning. I det här exemplet `AzureDataLakeStore` används en speciell mall för alla länkade tjänster av typen. En annan mall används för alla andra (via `*` ).
+* `connectionString`Egenskapen är parameterstyrda som ett `securestring` värde. Det har inget standardvärde. Det kommer att ha ett förkortat parameter namn med suffix `connectionString` .
+* Egenskapen `secretAccessKey` inträffar som en (till `AzureKeyVaultSecret` exempel i en länkad Amazon S3-tjänst). Den är automatiskt parameterstyrda som en Azure Key Vault hemlighet och hämtas från det konfigurerade nyckel valvet. Du kan också Parameterisera själva nyckel valvet.
+
+#### <a name="datasets"></a>Datauppsättningar
+
+* Även om typ specifik anpassning är tillgänglig för data uppsättningar kan du ange konfiguration utan att uttryckligen ha en \* -nivå-konfiguration. I föregående exempel är alla data uppsättnings egenskaper under `typeProperties` parameterstyrda.
+
 
 ## <a name="best-practices-for-cicd"></a>Metod tips för CI/CD
 

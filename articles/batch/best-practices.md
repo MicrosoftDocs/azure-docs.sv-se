@@ -3,12 +3,12 @@ title: Bästa praxis
 description: Lär dig metod tips och användbara tips för att utveckla dina Azure Batch-lösningar.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496294"
+ms.locfileid: "103561846"
 ---
 # <a name="azure-batch-best-practices"></a>Metod tips för Azure Batch
 
@@ -238,6 +238,6 @@ Den automatiserade rensningen av arbets katalogen blockeras om du kör en tjäns
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Skapa ett Azure Batch konto med hjälp av Azure Portal](batch-account-create-portal.md).
 - Lär dig mer om [batch-tjänstens arbets flöde och primära resurser](batch-service-workflow-features.md) som pooler, noder, jobb och aktiviteter.
 - Lär dig mer om [standard Azure Batch kvoter, gränser och begränsningar samt hur du begär kvot ökningar](batch-quota-limit.md).
+- Lär dig hur du kan [identifiera och undvika fel i en pool-och nods bakgrunds åtgärder ](batch-pool-node-error-checking.md).

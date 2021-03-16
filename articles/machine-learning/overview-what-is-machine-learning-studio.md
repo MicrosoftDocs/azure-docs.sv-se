@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374243"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563200"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Vad är Azure Machine Learning Studio?
 
@@ -76,31 +76,26 @@ Hantera dina Machine Learning-tillgångar direkt i webbläsaren. Till gångar de
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (klassisk) vs Azure Machine Learning Studio
 
-**Ml Studio (klassisk)** släpptes i 2015 var vårt första drag-och-släpp Machine Learning Builder. Det är en fristående tjänst som bara erbjuder en visuell upplevelse. Studio (klassisk) fungerar inte med Azure Machine Learning.
+**Ml Studio (klassisk)** släpptes i 2015 var vårt första drag-och-släpp Machine Learning Builder. 
+
+**Ml Studio (klassisk)** är en fristående tjänst som bara erbjuder en visuell upplevelse. Studio (klassisk) fungerar inte med Azure Machine Learning.
 
 **Azure Machine Learning** är en separat och modern tjänst som levererar en komplett data vetenskaps plattform. Det stöder både kod-till-och låg kod upplevelser.
 
 **Azure Machine Learning Studio** är en webb portal *i* Azure Machine Learning som innehåller alternativ med låg kod och ingen kod för projekt redigering och till gångs hantering. 
 
-Vi rekommenderar att nya användare väljer **Azure Machine Learning**, i stället för ml Studio (klassisk), för den senaste mängden data vetenskaps verktyg.
+Vi rekommenderar att nya användare väljer **Azure Machine Learning**, i stället för ml Studio (klassisk), för den senaste mängden data vetenskaps verktyg. Om du är en befintlig ML Studio-användare (klassisk) bör du överväga [att migrera till Azure Machine Learning](classic/migrate-overview.md).
+
+Här är några av fördelarna med att växla till Azure Machine Learning:
+
+- Skalbara beräknings kluster för storskalig utbildning.
+- Företags säkerhet och styrning.
+- Samverka med populära verktyg med öppen källkod.
+- MLOps från slut punkt till slut punkt.
 
 ### <a name="feature-comparison"></a>Jämför funktioner
 
-I följande tabell sammanfattas viktiga skillnader mellan ML Studio (klassisk) och Azure Machine Learning.
-
-| Funktion | ML Studio (klassisk) | Azure Machine Learning |
-|---| --- | --- |
-| Dra och släpp gränssnitt | Klassisk miljö | Uppdaterad erfarenhet – [Azure Machine Learning designer](concept-designer.md)| 
-| Kod-SDK: er | Stöd saknas | Fullständigt integrerat med [Azure Machine Learning python](/python/api/overview/azure/ml/) -och [R](https://github.com/Azure/azureml-sdk-for-r) SDK: er |
-| Experiment | Skalbar (10 GB inlärnings data gräns) | Skala med beräknings mål |
-| Inlärnings mål | Patentskyddat beräknings mål, endast CPU-stöd | Brett utbud av anpassningsbara [inlärnings mål](concept-compute-target.md#train). Innehåller stöd för GPU och CPU | 
-| Beräknings mål för distribution | Eget webb tjänst format, inte anpassningsbart | Brett utbud av anpassningsbara [beräknings mål för distribution](concept-compute-target.md#deploy). Innehåller stöd för GPU och CPU |
-| ML pipeline | Stöds inte | Bygg flexibla, modulära [pipelines](concept-ml-pipelines.md) för att automatisera arbets flöden |
-| MLOps | Grundläggande modell hantering och distribution; Distributioner endast CPU | Enhets version (modell, data, arbets flöden), automatisering av arbets flöde, integrering med CICD-verktyg, processor-och GPU-distributioner med [mera](concept-model-management-and-deployment.md) |
-| Modell format | Eget format, endast Studio (klassiskt) | Flera format som stöds beroende på utbildnings jobb typ |
-| Automatisk modell inlärning och inställning för att justera dem |  Stöds inte | [Stöds](concept-automated-ml.md). Kod-första och inga kod alternativ. | 
-| Data avkänning | Stöds inte | [Stöds](how-to-monitor-datasets.md) |
-| Data märknings projekt | Stöds inte | [Stöds](how-to-create-labeling-projects.md) |
+[!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
 ## <a name="troubleshooting"></a>Felsökning
 
