@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360827"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472209"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimera data bearbetning med Azure Machine Learning
 
@@ -86,8 +86,6 @@ Om du är bekant med `Pandas`| `Modin` eller `Dask` dataframe
 Om du föredrar `Spark` | `PySpark`
 För data som är mindre än 1 GB | `Pandas` lokalt **eller** en beräknings instans för fjärrAzure Machine Learning
 För data som är större än 10 GB| Flytta till ett kluster med hjälp av `Ray` , `Dask` eller `Spark`
-
-Du kan skapa `Dask` kluster i Azure ml Compute-kluster med [dask-cloudprovider-](https://cloudprovider.dask.org/en/latest/#azure) paketet. Eller så kan du köra `Dask` lokalt på en beräknings instans.
 
 ## <a name="next-steps"></a>Nästa steg
 

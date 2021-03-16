@@ -2,29 +2,58 @@
 title: Vad är nytt i Formigenkänning?
 titleSuffix: Azure Cognitive Services
 description: Förstå de senaste ändringarna i formulärets tolknings-API.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: pafarley
-ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.author: lajanuar
+ms.openlocfilehash: 6760194fea71cd97b4d206ccd2ccc281e18ea279
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703396"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467057"
 ---
+<!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>Vad är nytt i Formigenkänning?
 
 Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artikeln för att hålla dig uppdaterad med funktions förbättringar, korrigeringar och dokumentations uppdateringar.
+
+## <a name="march-2021"></a>Mars 2021
+
+**Formulär igenkänning v 2.1 Public Preview 3 är nu tillgängligt.** v 2.1 – för hands version. 3 har släppts, inklusive följande funktioner:
+
+- **Ny fördefinierad ID-modell** Med den nya fördefinierade ID-modellen kan kunder ta med ID och returnera strukturerade data till automatiserad bearbetning. Den kombinerar vår kraftfulla OCR-kapacitet (optisk tecken läsning) med ID förstå modeller för att extrahera viktig information från Passport och amerikanska driv rutins licenser, till exempel namn, födelse datum, utfärdandedatum, förfallo datum och mycket annat.
+
+  [Lär dig mer om den fördefinierade ID-modellen](concept-identification-cards.md)
+
+   :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Passport-exempel" lightbox="./media/id-canada-passport-example.png":::
+
+- **Extrahering av rad objekt för fördefinierad faktura modell** – en inbyggd faktura modell stöder nu extrahering av rad objekt. nu extraheras fullständiga objekt och deras delar – beskrivning, belopp, kvantitet, produkt-ID, datum och mer. Med ett enkelt API/SDK-anrop kan du extrahera användbara data från dina fakturor – text, tabell, nyckel/värde-par och rad objekt.
+
+   [Läs mer om den färdiga faktura modellen](concept-invoices.md)
+
+- **Övervakad tabell etikettering och utbildning, Tom-värde-etiketter** – utöver formulär tolkens [tillstånds känsliga djup inlärnings funktioner för automatisk tabell extrahering](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011), kan kunderna märka och träna i tabeller. Den här nya versionen innehåller möjlighet att märka och träna på rad objekt/tabeller (dynamiska och fasta) och träna en anpassad modell för att extrahera nyckel/värde-par och rad objekt. När en modell har tränats extraherar modellen rad objekt som en del av JSON-utdata i avsnittet documentResults.
+
+    :::image type="content" source="./media/table-labeling.png" alt-text="Tabell etikettering" lightbox="./media/table-labeling.png":::
+
+    Förutom att märka tabeller, kan du nu etikettera tomma värden och regioner. om vissa dokument i din tränings uppsättning inte har värden för vissa fält kan du använda detta så att din modell kommer att kunna extrahera värden korrekt från analyserade dokument.
+
+- **Stöd för 66 nya språk** – formulär tolkens layout-API och anpassade modeller stöder nu 73-språk.
+
+  [Läs mer om språk stöd för formulär igenkänning](language-support.md)
+
+- **Naturlig Läs ordning, hand SKRIFTS klassificering och sid val** – med den här uppdateringen kan du välja att hämta text radens utdata i den naturliga Läs ordningen i stället för standard ordningen från vänster till höger och till-till-nederkant. Använd den nya readingOrder för frågor och Ställ in den på "naturlig"-värde för en mer användarvänlig läsning av order utdata. För latinska språk klassificerar formulär tolken text rader som handskrivet format eller inte och ger en säkerhets poäng.
+
+- **Färdiga förbättringar av inbetalnings modell kvalitet** Den här uppdateringen innehåller ett antal kvalitets förbättringar för en fördefinierad kvitto modell, särskilt genom extrahering av rad objekt.
 
 ## <a name="november-2020"></a>November 2020
 
 ### <a name="new-features"></a>Nya funktioner
 
-**Formulär igenkänning v 2.1 Public Preview 2 är nu tillgängligt.** V 2.1 – för hands version. 2 har släppts, inklusive följande funktioner: 
+**Formulär igenkänning v 2.1 Public Preview 2 är nu tillgängligt.** v 2.1 – för hands version. 2 har släppts, inklusive följande funktioner: 
 
 - **Ny fördefinierad faktura modell** – den nya inbyggda faktura modellen gör det möjligt för kunder att ta fakturor i en rad olika format och returnera strukturerade data för att automatisera faktura bearbetningen. Den kombinerar vår kraftfulla OCR-kapacitet (optisk tecken läsning) med faktura om djup inlärnings modeller för att extrahera viktig information från fakturor på engelska. Den extraherar text, tabeller och information, till exempel kund, leverantör, faktura-ID, förfallo datum för faktura, totalt, förfallet belopp, moms belopp, leverera till, fakturera till och mycket annat.
 
@@ -68,36 +97,33 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
 - **[Nya språk för förbyggda kvitton](concept-receipts.md)** , förutom en-US, support är nu tillgängligt för en-au, en-ca, en-GB, en-i
 - **Kvalitets förbättringar** för `Layout` , `Train Custom Model`  -  _träna utan etiketter_ och _träna med etiketter_.
 
-
 **v 2.0** innehåller följande uppdatering:
 
 - [Klient biblioteken](quickstarts/client-library.md) för net, python, Java och Java Script har angett allmän tillgänglighet. 
 
-
 **Nya exempel** finns på GitHub. 
+
 - [Recepten för kunskaps extrahering – formulär Spelbok](https://github.com/microsoft/knowledge-extraction-recipes-forms) samlar in bästa praxis från riktiga formulär som kund engagemang och ger användbara kod exempel, check listor och exempel på pipelines som används för att utveckla dessa projekt. 
 - [Verktyget för samplings etiketter](https://github.com/microsoft/OCR-Form-Tools) har uppdaterats för att stödja de nya v 2.1-funktionerna. Se den här [snabb](quickstarts/label-tool.md) starten för att komma igång med verktyget. 
 - Formulär tolks exemplet i [intelligent kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) visar hur du integrerar `Analyze Receipt` och `Train Custom Model`  -  _tränar utan etiketter_.
 
-
-
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="new-features"></a>Nya funktioner
-
+<!-- markdownlint-disable MD004 -->
 * **v 2.0-referensen är tillgänglig** – Visa [v 2.0 API-referensen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) och uppdaterade SDK: er för [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme), [python](/python/api/overview/azure/), [Java](/java/api/overview/azure/ai-formrecognizer-readme)och [Java Script](/javascript/api/overview/azure/).
 * Förbättringar av **tabell förbättringar och extrahering av utdrag** – innehåller precisions förbättringar och förbättringar av tabell extrahering, särskilt möjligheten att lära sig tabell rubriker och strukturer i _anpassade tåg utan etiketter_. 
 
 * **Valuta support** – identifiering och extrahering av globala valuta symboler.
 * **Azure gov** -tolken är nu också tillgänglig i Azure gov.
 * **Förbättrade säkerhetsfunktioner**: 
-   * **Ta med din egen nyckel** igenkännings funktion krypterar dina data automatiskt när de behålls i molnet för att skydda dem och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Du kan nu även hantera din prenumeration med dina egna krypterings nycklar. [Kundhanterade nycklar, som även kallas för att ta med din egen nyckel (BYOK)](./encrypt-data-at-rest.md), erbjuder större flexibilitet för att skapa, rotera, inaktivera och återkalla åtkomst kontroller. Du kan också granska krypteringsnycklarna som används för att skydda dina data.  
-   * **Privata slut punkter** – gör att du på ett virtuellt nätverk (VNet) kan [komma åt data på ett säkert sätt via en privat länk.](../../private-link/private-link-overview.md)
-
+  * **Ta med din egen nyckel** igenkännings funktion krypterar dina data automatiskt när de behålls i molnet för att skydda dem och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Du kan nu även hantera din prenumeration med dina egna krypterings nycklar. [Kundhanterade nycklar, som även kallas för att ta med din egen nyckel (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), erbjuder större flexibilitet för att skapa, rotera, inaktivera och återkalla åtkomst kontroller. Du kan också granska krypteringsnycklarna som används för att skydda dina data.  
+  * **Privata slut punkter** – gör att du på ett virtuellt nätverk (VNet) kan [komma åt data på ett säkert sätt via en privat länk.](../../private-link/private-link-overview.md)
 
 ## <a name="june-2020"></a>Juni 2020
 
 ### <a name="new-features"></a>Nya funktioner
+
 * **CopyModel-API har lagts till i klient-SDK** : er kan du nu använda klient-SDK: er för att kopiera modeller från en prenumeration till en annan. Se [säkerhetskopiera och återställa modeller](./disaster-recovery.md) för allmän information om den här funktionen.
 * **Azure Active Directory integration** – nu kan du använda dina autentiseringsuppgifter för Azure AD för att autentisera dina klient objekt i SDK: er för formulär igenkänning.
 * **SDK-/regionsspecifika ändringar** – det här inkluderar både mindre funktions tillägg och avbrytande ändringar. Se SDK-ChangeLogs för mer information.
@@ -109,24 +135,26 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
 ## <a name="april-2020"></a>April 2020
 
 ### <a name="new-features"></a>Nya funktioner
+
 * **SDK-stöd för Forms IGENKÄNNING API v 2.0 offentlig för hands version** – den här månaden expanderade vi tjänst supporten för att inkludera en för hands versions-SDK för formulär igenkänning v 2.0 (för hands version). Använd länkarna nedan för att komma igång med ditt val av språk: 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
-   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
-   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
+  * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+  * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+  * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
+  * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   Den nya SDK: n stöder alla funktioner i v 2.0-REST API för formulär igenkänning. Du kan till exempel träna en modell med eller utan etiketter och extrahera text, nyckel värde par och tabeller från dina formulär, extrahera data från kvitton med den förbyggda tjänsten för inaktuella inleveranser och extrahera text och tabeller med layout tjänsten från dina dokument. Du kan dela din feedback på SDK: erna via [feedback-formuläret för SDK](https://aka.ms/FR_SDK_v1_feedback).
- 
+
 * **Kopiera anpassad modell** Nu kan du kopiera modeller mellan regioner och prenumerationer med hjälp av funktionen ny kopiera anpassad modell. Innan du anropar API: t för kopiera anpassad modell måste du först få behörighet att kopiera till mål resursen genom att anropa åtgärden Kopiera auktorisering mot mål resursens slut punkt.
-   * [Skapa en kopierings auktorisering](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
-   * [Kopiera en anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
+
+  * [Skapa en kopierings auktorisering](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
+  * [Kopiera en anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
 
 ### <a name="security-improvements"></a>Förbättringar av säkerhet
 
 * Customer-Managed nycklar är nu tillgängliga för FormRecognizer. Mer information finns i [data kryptering i vila för formulär igenkänning](./encrypt-data-at-rest.md).
 * Använd hanterade identiteter för åtkomst till Azure-resurser med Azure Active Directory. Mer information finns i [ge åtkomst till hanterade identiteter](../authentication.md#authorize-access-to-managed-identities).
 
-## <a name="march-2020"></a>Mars 2020 
+## <a name="march-2020"></a>Mars 2020
 
 ### <a name="new-features"></a>Nya funktioner
 

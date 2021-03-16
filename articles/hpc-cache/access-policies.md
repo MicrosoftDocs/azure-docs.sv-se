@@ -4,26 +4,26 @@ description: Skapa och använda anpassade åtkomst principer för att begränsa 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 795b194eb7cd31e633128c22ddffe808b32e07da
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802428"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471779"
 ---
-# <a name="use-client-access-policies"></a>Använd klient åtkomst principer
+# <a name="control-client-access"></a>Kontrol lera klient åtkomst
 
 Den här artikeln förklarar hur du skapar och använder anpassade klient åtkomst principer för dina lagrings mål.
 
-Klient åtkomst principer styr hur klienter kan ansluta till lagrings målets exporter. Du kan styra saker som rot-squash och Läs-/skriv åtkomst på klient värden eller på nätverks nivå.
+Klient åtkomst principer styr hur klienter får ansluta till lagrings målets exporter. Du kan styra saker som rot-squash och Läs-/skriv åtkomst på klient värden eller på nätverks nivå.
 
 Åtkomst principer tillämpas på en namn områdes Sök väg, vilket innebär att du kan använda olika åtkomst principer för två olika exporter i ett NFS-filsystem.
 
 Den här funktionen gäller för arbets flöden där du behöver styra hur olika grupper av klienter får åtkomst till lagrings målen.
 
-Om du inte behöver detaljerad kontroll över lagrings mål åtkomsten kan du använda standard principen, eller så kan du anpassa standard principen med ytterligare regler.
+Om du inte behöver detaljerad kontroll över lagrings mål åtkomsten kan du använda standard principen, eller så kan du anpassa standard principen med ytterligare regler. Om du till exempel vill aktivera rot-squash för alla klienter som ansluter via cachen, kan du redigera principen med namnet **default** för att lägga till inställningen root squash.
 
 ## <a name="create-a-client-access-policy"></a>Skapa en klient åtkomst princip
 
@@ -81,15 +81,21 @@ Markera den här kryss rutan om du vill tillåta att de angivna klienterna direk
 
 Välj om du vill ange rot-squash för klienter som matchar den här regeln.
 
-Med det här värdet kan du tillåta rot-squash på lagrings export nivån. Du kan också [Ange rot-squash på cachenivå](configuration.md#configure-root-squash).
+Den här inställningen styr hur Azure HPC cache behandlar begär Anden från rot användaren på klient datorer. När rot-squash har Aktiver ATS mappas rot användare från en klient automatiskt till en icke-privilegie rad användare när de skickar begär Anden via Azure HPC-cachen. Det förhindrar också att klient begär Anden använder set-UID-behörighet bitar.
 
-Om du aktiverar rot-squash måste du också ange användar värde för anonyma ID till något av följande alternativ:
+Om rot-squash är inaktive rad skickas en begäran från klientens rot användare (UID 0) till ett Server dels-NFS-lagrings system som rot. Den här konfigurationen kan tillåta olämplig fil åtkomst.
 
-* **-2** (ingen)
-* **65534** (ingen)
-* **-1** (ingen åtkomst)
-* **65535** (ingen åtkomst)
+Att ange rot-squash för klient begär Anden kan hjälpa dig att kompensera för den nödvändiga ``no_root_squash`` inställningen på NAS-system som används som lagrings mål. (Läs mer om [NFS-mål krav för lagring](hpc-cache-prerequisites.md#nfs-storage-requirements).) Det kan också förbättra säkerheten när den används med Azure Blob Storage-mål.
+
+Om du aktiverar rot-squash måste du också ange användar värde för anonyma ID. Portalen accepterar heltals värden mellan 0 och 4294967295. (De gamla värdena-2 och-1 stöds för bakåtkompatibilitet, men rekommenderas inte för nya konfigurationer.)
+
+Dessa värden mappas till vissa användar värden:
+
+* **-2** eller **65534** (ingen)
+* **-1** eller **65535** (ingen åtkomst)
 * **0** (ej privilegie rad rot)
+
+Ditt lagrings system kan ha andra värden med speciell innebörd.
 
 ## <a name="update-access-policies"></a>Uppdatera åtkomst principer
 

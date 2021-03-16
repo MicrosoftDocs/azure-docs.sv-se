@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 93f7b8f83d7b864a76eb9f31024ed55a7a1639e9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706970"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472292"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
@@ -44,6 +44,9 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
 
 ## <a name="deploy-a-cloud-service-extended-support"></a>Distribuera en moln tjänst (utökad support)
 
+> [!NOTE]
+ Ett alternativt sätt att distribuera moln tjänsten (utökad support) är via [Azure Portal](https://portal.azure.com). Du kan hämta den genererade ARM-mallen via portalen för framtida distributioner
+ 
 1. Skapa virtuellt nätverk. Namnet på det virtuella nätverket måste matcha referenserna i tjänst konfigurations filen (. cscfg). Om du använder ett befintligt virtuellt nätverk utelämnar du det här avsnittet från ARM-mallen.
 
     ```json

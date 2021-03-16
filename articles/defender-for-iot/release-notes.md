@@ -11,33 +11,39 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2021
+ms.date: 03/14/2021
 ms.author: shhazam
-ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ef72be60b6294ad4e1fca2ce9c0e3c66b64ac687
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820678"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493971"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Vad är nytt i Azure Defender för IoT?
 
 Den här artikeln innehåller nya funktioner och funktions förbättringar för Defender för IoT.
 
 Antecknade funktioner finns i för hands version. I [tilläggs villkoren för Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ingår ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte har publicerats i allmän tillgänglighet.
-## <a name="february-2021"></a>Februari 2021
+## <a name="march-2021"></a>Mars 2021
 
-### <a name="sensor---enhanced-custom-alert-rules"></a>Sensor-förbättrade anpassade aviserings regler
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Sensor-förbättrade anpassade aviserings regler (offentlig för hands version)
 
 Nu kan du skapa anpassade varnings regler baserat på den dag, den grupp av dagar och den tids period som nätverks aktiviteten har identifierats.  Att arbeta med villkor för dag och tid är användbart, till exempel i fall där allvarlighets graden för aviseringar härleds vid tidpunkten för att aviserings händelsen ska äga rum. Du kan till exempel skapa en anpassad regel som utlöser en avisering med hög allvarlighets grad när en nätverks aktivitet identifieras på en helg eller på kvällen.
 
-Den här funktionen är tillgänglig i sensorn med version 10,1.
+Den här funktionen är tillgänglig i sensorn med version 10,2.
 
-### <a name="on-premises-management-console---export-alerts"></a>Lokal hanterings konsol-exportera aviseringar
+### <a name="on-premises-management-console---export-alerts-public-preview"></a>Lokal hanterings konsol-exportera aviseringar (offentlig för hands version)
 
 Aviserings informationen kan nu exporteras till en. csv-fil från den lokala hanterings konsolen. Du kan exportera information om alla aviseringar som identifierats eller exportera information baserat på den filtrerade vyn.
 
-Den här funktionen är tillgänglig i den lokala hanterings konsolen med version 10,1.
+Den här funktionen är tillgänglig i den lokala hanterings konsolen med version 10,2.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Lägg till ett andra nätverks gränssnitt i den lokala hanterings konsolen (offentlig för hands version)
+
+Du kan nu förbättra säkerheten för distributionen genom att lägga till ett andra nätverks gränssnitt i den lokala hanterings konsolen. Den här funktionen gör det möjligt för din lokala hantering att ha den anslutna sensorer i ett säkert nätverk, samtidigt som användarna kan komma åt den lokala hanterings konsolen via ett andra separat nätverks gränssnitt.
+
+Den här funktionen är tillgänglig i den lokala hanterings konsolen med version 10,2.
 ### <a name="device-builder---new-micro-agent-public-preview"></a>Device Builder – ny Micro agent (offentlig för hands version)
 
 Det finns en ny Device Builder-modul. Modulen, som kallas Micro-agent, tillåter:
@@ -48,7 +54,7 @@ Det finns en ny Device Builder-modul. Modulen, som kallas Micro-agent, tillåter
 - **Hantering av säkerhets position** – proaktivt övervaka säkerhets position för dina IoT-enheter.
 - **Kontinuerlig identifiering av IoT/nätverks-hot i real tid** – identifiera hot som botnät, brutna Force-försök, krypto gruvprogram och misstänkt nätverks aktivitet
 
-Den föråldrade dokumentationen för säkerhetsmodulen kommer att flyttas till den *agentbaserade lösningen för enhets byggare>Classic* -mappen.
+Den föråldrade versionen av Defender-IoT-Micro-Micro-agenten kommer att flyttas till den *agentbaserade lösningen för enhets byggare>klassisk* mapp.
 
 Den här funktionen är tillgänglig med den aktuella offentliga för hands versionen av molnet.
 

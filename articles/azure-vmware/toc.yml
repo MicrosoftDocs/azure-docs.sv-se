@@ -56,6 +56,8 @@
   items:
     - name: Begär värd kvot och aktivera Azure VMware-lösning
       href: enable-azure-vmware-solution.md
+    - name: Flytta EA-och CSP-prenumerationer
+      href: move-ea-csp-subscriptions.md
     - name: Spara kostnader med en reserverad instans
       href: reserved-instance.md
     - name: Migreringsutvärdering

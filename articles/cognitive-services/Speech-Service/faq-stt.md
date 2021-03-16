@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738199"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491256"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Vanliga frågor och svar om tal till text
 
@@ -57,7 +57,7 @@ De andra resultaten är förmodligen sämre och har kanske inte full användning
 
 **F: Varför finns det olika bas modeller?**
 
-**A**: du kan välja bland fler än en bas modell i tal tjänsten. Varje modell namn innehåller det datum då det lades till. När du börjar träna en anpassad modell använder du den senaste modellen för att få bästa möjliga noggrannhet. Äldre bas modeller är fortfarande tillgängliga under en tid när en ny modell görs tillgänglig. Du kan fortsätta att använda modellen som du har arbetat med tills den dras tillbaka (se [modellens livs cykel](custom-speech-overview.md#model-lifecycle)). Vi rekommenderar fortfarande att du växlar till den senaste bas modellen för bättre noggrannhet.
+**A**: du kan välja bland fler än en bas modell i tal tjänsten. Varje modell namn innehåller det datum då det lades till. När du börjar träna en anpassad modell använder du den senaste modellen för att få bästa möjliga noggrannhet. Äldre bas modeller är fortfarande tillgängliga under en tid när en ny modell görs tillgänglig. Du kan fortsätta att använda modellen som du har arbetat med tills den dras tillbaka (se [modell-och slut punktens livs cykel](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Vi rekommenderar fortfarande att du växlar till den senaste bas modellen för bättre noggrannhet.
 
 **F: kan jag uppdatera min befintliga modell (modell stackning)?**
 
@@ -71,7 +71,7 @@ Den gamla data uppsättningen och den nya data uppsättningen måste kombineras 
 
 Om du har anpassat och distribuerat en modell förblir den distributionen. Du kan inaktivera den distribuerade modellen, omanpassa med den nya versionen av bas modellen och omdistribuera för att få bättre noggrannhet.
 
-Både bas modeller och anpassade modeller kommer att dras tillbaka efter en stund (se [modellens livs cykel](custom-speech-overview.md#model-lifecycle)).
+Både bas modeller och anpassade modeller kommer att dras tillbaka efter en stund (se [modell och slut punkts livs cykel](./how-to-custom-speech-model-and-endpoint-lifecycle.md)).
 
 **F: kan jag hämta min modell och köra den lokalt?**
 

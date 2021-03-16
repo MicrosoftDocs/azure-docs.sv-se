@@ -1,14 +1,14 @@
 ---
-title: Översikt över den anslutna datorns Windows-agent
+title: Översikt över den anslutna dator agenten
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
-ms.date: 02/18/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651101"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470497"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -90,9 +90,11 @@ Följande versioner av operativ systemet Windows och Linux stöds officiellt fö
 
 ### <a name="required-permissions"></a>Behörigheter som krävs
 
-* För att publicera datorer är du medlem i rollen **Azure Connected Machine onboarding** .
+* För att publicera datorer är du medlem i rollen **Azure-ansluten dator-onboarding** eller [deltagar](../../role-based-access-control/built-in-roles.md#contributor) roll i resurs gruppen.
 
-* Om du vill läsa, ändra och ta bort en dator är du medlem i rollen **resurs administratör för Azure Connected Machine** . 
+* Om du vill läsa, ändra och ta bort en dator är du medlem i rollen **resurs administratör för Azure-ansluten dator** i resurs gruppen.
+
+* Om du vill välja en resurs grupp från den nedrullningsbara listan när du använder metoden för att **skapa skript** , är du minst medlem i rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) för den resurs gruppen.
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-prenumeration och tjänstbegränsningar
 

@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: ce6d2c34c48a26f99f78c364db5f06f9931c9dd7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103021819"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495433"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 Följande klasser hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för C#.
 
-| Name                                  | Beskrivning                                                  |
+| Namn                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/Hämta deltagare, skicka Skriv meddelanden och läsa kvitton. |

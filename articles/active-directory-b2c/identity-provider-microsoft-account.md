@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8ba3fc578580e6eee02f435272f4ea53523586
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: db6793389df0df169745ddd50551f836d06cf08c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448225"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488762"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med en Microsoft-konto med hjälp av Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Om du vill aktivera inloggning för användare med en Microsoft-konto i Azure Ac
 1. Under **konto typer som stöds** väljer du **konton i valfri organisations katalog (alla Azure AD-klienter-flera klienter) och personliga Microsoft-konton (t. ex. Skype, Xbox)**.
 
    Mer information om de olika alternativen för konto typer finns i [snabb start: registrera ett program med Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
-1. Under **omdirigerings-URI (valfritt)** väljer du **webb** och anger `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` i text rutan. Ersätt `<tenant-name>` med ditt Azure AD B2C klient namn.
+1. Under **omdirigerings-URI (valfritt)** väljer du **webb** och retur `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient och `your-domain-name` med din anpassade domän.
 1. Välj **register**
 1. Registrera **program-ID (klient)** som visas på sidan program översikt. Du behöver klient-ID när du konfigurerar identitets leverantören i nästa avsnitt.
 1. Välj **certifikat & hemligheter**

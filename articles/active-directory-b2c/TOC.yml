@@ -209,6 +209,9 @@
           href: customize-ui-with-html.md
         - name: JavaScript och sidlayouter
           href: javascript-and-page-layout.md
+        - name: Inbäddad inloggning med iframe
+          displayName: iframe
+          href: embedded-login.md
         - name: Anpassa språk
           href: language-customization.md
           displayName: localization
@@ -420,11 +423,13 @@
           href: partner-whoiam.md
         - name: Zscaler
           href: partner-zscaler.md
-    - name: Använda b2clogin.com
+    - name: Domännamn
       items:
         - name: Översikt över b2clogin.com
           href: b2clogin.md
-        - name: Migrera webb-API till b2clogin.com
+        - name: Konfigurera ett anpassat domännamn
+          href: custom-domain.md
+        - name: Konfigurera webb-API-domäner
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
     - name: Automation

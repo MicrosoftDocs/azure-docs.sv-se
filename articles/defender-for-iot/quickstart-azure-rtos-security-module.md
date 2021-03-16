@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: Konfigurera och aktivera säkerhetsmodulen för Azure återställnings tider'
-description: I den här snabb starten får du lära dig hur du integrerar och aktiverar säkerhetsmodulen för Azure återställnings tider service i Azure IoT Hub.
+title: 'Snabb start: Konfigurera och aktivera Defender-IoT-Micro-agenten för Azure återställnings tider'
+description: Lär dig hur du integrerar och aktiverar tjänsten Defender-IoT-Micro-Micro-agent för Azure återställnings tider-tjänsten i Azure IoT Hub.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 19a439ec48d4a8705ffb46db7ca037b51449083d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447307"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489853"
 ---
-# <a name="quickstart-security-module-for-azure-rtos"></a>Snabb start: säkerhetsmodul för Azure-återställnings tider 
+# <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>Snabb start: Defender-IoT-Micro-agent för Azure återställnings tider (för hands version)
 
-Den här artikeln innehåller en förklaring av kraven innan du börjar och förklarar hur du aktiverar säkerhetsmodulen för Azure återställnings tider service på en IoT Hub. Om du för närvarande inte har en IoT Hub kan du läsa [skapa ett IoT Hub med hjälp av Azure Portal](../iot-hub/iot-hub-create-through-portal.md) för att komma igång.
+Den här artikeln innehåller en förklaring av kraven innan du börjar och förklarar hur du aktiverar tjänsten Defender-IoT-Micro-agent för Azure återställnings tider-tjänsten på en IoT Hub. Om du för närvarande inte har en IoT Hub kan du läsa [skapa ett IoT Hub med hjälp av Azure Portal](../iot-hub/iot-hub-create-through-portal.md) för att komma igång.
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
@@ -32,7 +32,7 @@ Den här artikeln innehåller en förklaring av kraven innan du börjar och för
 - NXP i.MX RT1060 EVK
 - Mikrochip SAM E54 Xplained Pro EVK
 
-Ladda ned, kompilera och kör en av. zip-filerna för den speciella tavlan och verktyget (IAR, semi, IDE eller PC) som du väljer från [säkerhetsmodulen för Azure återställnings tider GitHub-resursen](https://github.com/azure-rtos/azure-iot-preview/releases).
+Ladda ned, kompilera och kör en av. zip-filerna för den speciella tavlan och verktyget (IAR, semi, IDE eller PC) som du väljer från [GitHub-resursen för Defender-IoT-Micro-agent för Azure återställnings tider](https://github.com/azure-rtos/azure-iot-preview/releases).
 
 ### <a name="azure-resources"></a>Azure-resurser
 
@@ -52,11 +52,11 @@ Det krävs en IoT Hub anslutning för att komma igång.
 
 Autentiseringsuppgifterna för anslutningen hämtas från konfiguration av användar program **HOST_NAME**, **DEVICE_ID** och **DEVICE_SYMMETRIC_KEY**.
 
-Säkerhetsmodulen för Azure återställnings tider använder Azure IoT mellanprogram anslutningar baserat på **MQTT** -protokollet.
+Defender-IoT-Micro-agenten för Azure återställnings tider använder Azure IoT mellanprogram anslutningar baserat på **MQTT** -protokollet.
 
 ## <a name="next-steps"></a>Nästa steg
 
 Fortsätt till nästa artikel och Slutför konfigurationen och anpassningen av lösningen.
 
 > [!div class="nextstepaction"]
-> [Konfigurera säkerhetsmodul för Azure RTOS](how-to-azure-rtos-security-module.md)
+> [Konfigurera och anpassa Defender-IoT-Micro-agent för Azure återställnings tider (för hands version)](how-to-azure-rtos-security-module.md)

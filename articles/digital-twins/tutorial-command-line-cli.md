@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 16425c1f15b78e2d0aaa7a8a1f55ff47a44d56dd
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464862"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496617"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Självstudie: skapa ett digitalt Azure-diagram med Azure CLI
 
@@ -64,7 +64,7 @@ Du kan hämta båda värdena för din instans i resultatet av följande Azure CL
 az dt show -n <ADT_instance_name>
 ```
 
-:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Cloud Shell fönstret visar utdata från kommandot AZ DT show. HostName-fältet och prenumerations-ID: t (en del av ID-fältet) är markerade.":::
+:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Skärm bild av Cloud Shell webbläsarfönster som visar utdata från kommandot AZ DT show. HostName-fältet och prenumerations-ID: t (en del av ID-fältet) är markerade.":::
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>Modellera en fysisk miljö med DTDL
 
@@ -87,7 +87,7 @@ När du har utformat modeller måste du ladda upp dem till din Azure Digital-ins
 
 1. Om du vill lägga till modeller med Cloud Shell måste du ladda upp dina modellvariabler till Cloud Shell lagrings utrymme så att filerna blir tillgängliga när du kör Cloud Shell kommandot som använder dem. Det gör du genom att välja ikonen "Ladda upp/ladda ned filer" och välja "Ladda upp".
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell fönster som visar uppladdnings ikonen":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Skärm bild av Cloud Shell webbläsarfönster med val av uppladdnings ikonen.":::
     
     Navigera till *Room.jspå* filen på din dator och välj "öppna". Upprepa sedan det här steget för *Floor.jspå*.
 
@@ -111,7 +111,7 @@ När du har utformat modeller måste du ladda upp dem till din Azure Digital-ins
     
     Leta efter den redigerade *rums* modellen i resultaten:
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Resultat av kommandot modell lista som visar den uppdaterade rums modellen" lightbox="media/tutorial-command-line/cli/output-get-models.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Skärm bild av Cloud Shell visar resultatet av kommandot modell lista, som innehåller den uppdaterade rums modellen." lightbox="media/tutorial-command-line/cli/output-get-models.png":::
 
 ### <a name="errors"></a>Fel
 
@@ -159,7 +159,7 @@ Om du vill skapa en digital-delad använder du kommandot [**AZ DT dubbla Create*
     
     Leta efter *room0*, *room1*, *floor0* och *floor1* -dubbla i resultaten. Här är ett utdrag som visar en del av resultatet av den här frågan.
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Partiella resultat av en delad fråga som visar room0 och room1" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Skärm bild av Cloud Shell visar partiellt resultat av en delad fråga, inklusive room0 och room1." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
 ### <a name="modify-a-digital-twin"></a>Ändra en digital delad
 
@@ -181,7 +181,7 @@ Du kan också ändra egenskaperna för en som du har skapat.
     
     Utdata från det här kommandot visar den dubblans aktuella information och du bör se det nya värdet för `RoomName` i resultatet.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Resultat av kommandot Update som visar en RoomName av PresidentialSuite" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Skärm bild av Cloud Shell visar resultatet av kommandot Update, som innehåller en RoomName av PresidentialSuite." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
 1. Du kan kontrol lera att uppdateringen har slutförts genom att köra kommandot [**AZ DT dubbla show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) för att se *room0* information:
 
@@ -236,7 +236,7 @@ Om du vill lägga till en relation använder du kommandot [**AZ DT dubbla Relati
 
 De dubbla och relationer som du har skapat i den här självstudien utgör följande konceptuella diagram:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Ett diagram som visar floor0 som är anslutna via relationship0 till room0 och floor1 som är anslutna via relationship1 till room1" border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Ett diagram som visar ett konceptuellt diagram. floor0 är ansluten via relationship0 till room0 och floor1 är ansluten via relationship1 till room1." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Fråga den dubbla grafen för att svara på frågor om miljön
 
@@ -252,7 +252,7 @@ Kör följande frågor i Cloud Shell för att svara på några frågor om exempe
 
     På så sätt kan du snabbt ta en titt på din miljö och se till att allt är representerat på det sätt som du vill att det ska vara i Azure Digitals. Resultatet av detta är en utmatning som innehåller varje digital enhet med information. Här är ett utdrag:
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Partiella resultat av en delad fråga som visar room0 och room1" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Skärm bild av Cloud Shell visar partiellt resultat av en delad fråga, inklusive room0 och room1." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
     >[!TIP]
     >Du kanske upptäcker att det här är samma kommando som du använde i avsnittet [*skapa digitala dubbla*](#create-digital-twins) avsnitt tidigare för att hitta alla Azure Digital-dubbla i-instansen.
@@ -265,7 +265,7 @@ Kör följande frågor i Cloud Shell för att svara på några frågor om exempe
 
     Du kan begränsa frågan till flera av en viss typ, för att få mer specifik information om vad som visas. Resultatet av detta är *room0* och *room1*, men visar **inte** *floor0* eller *floor1* (eftersom de är golv, inte rum).
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Resultat av modell frågan, som endast visar room0 och room1" lightbox="media/tutorial-command-line/cli/output-query-model.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Skärm bild av Cloud Shell visar resultatet av modell frågan, som endast innehåller room0 och room1." lightbox="media/tutorial-command-line/cli/output-query-model.png":::
 
 1. **Vilka är alla rum på *floor0*?** (fråga efter relation)
 
@@ -275,7 +275,7 @@ Kör följande frågor i Cloud Shell för att svara på några frågor om exempe
 
     Du kan fråga baserat på relationer i diagrammet för att få information om hur dubbla anslutningar är anslutna eller begränsa din fråga till ett visst område. Endast *room0* är på *floor0*, så det är det enda rummet i resultatet.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Resultat av Relations frågan, som visar room0" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Skärm bild av Cloud Shell visar resultatet av Relations frågan, som innehåller room0." lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
     > Lägg märke till att ett nummer med dubbla ID (t. ex. *floor0* i frågan ovan) frågas med hjälp av fältet metadata `$dtId` . 
@@ -290,7 +290,7 @@ Kör följande frågor i Cloud Shell för att svara på några frågor om exempe
 
     Du kan fråga diagrammet utifrån egenskaper för att besvara en rad olika frågor, inklusive att hitta avvikande extrem värden i din miljö som kan behöva åtgärdas. Andra jämförelse operatorer ( *<* ,, *>* *=* eller *! =*) stöds också. *room1* visas i resultatet, eftersom det har en temperatur på 80.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Resultat för egenskaps fråga, som endast visar room1" lightbox="media/tutorial-command-line/cli/output-query-property.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Skärm bild av Cloud Shell visar resultatet av egenskaps frågan, som endast innehåller room1." lightbox="media/tutorial-command-line/cli/output-query-property.png":::
 
 1. **Vilka är alla rum på *floor0* med en temperatur över 75?** (sammansatt fråga)
 
@@ -300,7 +300,7 @@ Kör följande frågor i Cloud Shell för att svara på några frågor om exempe
 
     Du kan också kombinera de tidigare frågorna som du skulle göra i SQL, med kombinations operatorer som `AND` , `OR` , `NOT` . Den här frågan använder `AND` för att göra den föregående frågan om dubbla temperaturer mer detaljerad. Resultatet innehåller nu bara rum med temperaturer över 75 som finns på *floor0*, vilket i det här fallet inte är något av dem. Resultat uppsättningen är tom.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Resultat av sammansatt fråga som visar inga resultat" lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Skärm bild av Cloud Shell visar resultatet av en sammansatt fråga som inte innehåller några objekt." lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e2c82858b9f4b9846ff5371da347be942eed0a4f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448378"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488864"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett GitHub-konto med hjälp av Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Om du vill aktivera inloggning med ett GitHub-konto i Azure Active Directory B2C
 1. Logga in på [GitHub-utvecklaren](https://github.com/settings/developers) med dina GitHub-autentiseringsuppgifter.
 1. Välj **OAuth-appar** och välj sedan **ny OAuth-app**.
 1. Ange ett **program namn** och din **Start sidas URL**.
-1. Ange `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` i **återanrops-URL för auktorisering**. Ersätt `your-tenant-name` med namnet på din Azure AD B2C-klient. Använd små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C.
+1. För **återanrops-URL för auktorisering** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-domain-name` med din anpassade domän och `your-tenant-name` med namnet på din klient. Använd små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C.
 1. Klicka på **Registrera program**.
 1. Kopiera värdena för **klient-ID** och **klient hemlighet**. Du behöver båda för att lägga till identitets leverantören i din klient organisation.
 

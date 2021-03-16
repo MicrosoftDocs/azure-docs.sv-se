@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 50fdab1fa8def1b4e3b9a9d59d3b2593e5526c65
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657099"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472036"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Skapa en Azure HPC-cache
 
@@ -59,7 +59,7 @@ Azure HPC cache hanterar vilka filer som cachelagras och förinstalleras för at
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Aktivera Azure Key Vault kryptering (valfritt)
 
-Om din cache finns i en region som stöder Kundhanterade krypterings nycklar visas sidan **disk krypterings nycklar** mellan flikarna **cache** och **taggar** . Läs [regional tillgänglighet](hpc-cache-overview.md#region-availability) om du vill veta mer om region support.
+Sidan **disk krypterings nycklar** visas mellan flikarna **cache** och **taggar** .<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 Om du vill hantera krypterings nycklarna som används för cache-lagringen, anger du Azure Key Vault information på sidan **disk krypterings nycklar** . Nyckel valvet måste finnas i samma region och i samma prenumeration som cachen.
 
@@ -105,7 +105,7 @@ När en avisering har skapats visas ett meddelande med en länk till den nya Azu
 [Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
 
 > [!NOTE]
-> Azure CLI har för närvarande inte stöd för att skapa en cache med Kundhanterade krypterings nycklar. Använd Azure Portal.
+> Azure CLI har för närvarande inte stöd för att skapa en cache med Kundhanterade krypterings nycklar. Använd Azure-portalen.
 
 Använd kommandot [AZ HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) för att skapa en ny Azure HPC-cache.
 
@@ -208,7 +208,7 @@ Install-Module -Name Az.HPCCache
 ## <a name="create-the-cache-with-azure-powershell"></a>Skapa cachen med Azure PowerShell
 
 > [!NOTE]
-> Azure PowerShell har för närvarande inte stöd för att skapa en cache med Kundhanterade krypterings nycklar. Använd Azure Portal.
+> Azure PowerShell har för närvarande inte stöd för att skapa en cache med Kundhanterade krypterings nycklar. Använd Azure-portalen.
 
 Använd cmdleten [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) för att skapa en ny Azure HPC-cache.
 

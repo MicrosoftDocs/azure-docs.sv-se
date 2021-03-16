@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3a9e4c8f3dd9e4cf291388bc102ae9a73d8de6dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131572"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471772"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Logga in på dina konton med Microsoft Authenticator-appen
 
@@ -55,6 +55,9 @@ Telefonin loggning är bara tillgängligt på iOS-och Android-enheter som kör A
 - **Om du redan har använt appen för tvåstegsverifiering** kan du trycka på panelen konto om du vill se en hel skärms visning av kontot. Tryck sedan på **Aktivera telefonin loggning** för att aktivera telefonin loggning.
 - **Om du inte hittar ditt arbets-eller skol konto** på skärmen **konton** i appen, innebär det att du inte har lagt till det i appen ännu. Lägg till ditt arbets-eller skol konto genom att följa stegen i [hjälpen för Lägg till ditt arbets-eller skol konto](user-help-auth-app-add-work-school-account.md).
 
+> [!NOTE]
+> Microsoft stöder inte en kombination av enhets registrering och certifikatbaserad autentisering i autentiserad iOS. I stället måste användaren registrera enheten manuellt via verifierings inställningar innan du loggar in.
+
 När du har aktiverat telefonin loggning kan du bara logga in med Microsoft Authenticator-appen. Gör så här:
 
 1. Logga in på ditt arbets-eller skol konto.
@@ -67,7 +70,7 @@ När du har aktiverat telefonin loggning kan du bara logga in med Microsoft Auth
 
     ![Godkänn inloggnings rutan på enheten](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
-3. Välj **Godkänn** om du känner igen inloggningsförsöket. Annars väljer du **Neka** .
+3. Välj **Godkänn** om du känner igen inloggningsförsöket. Annars väljer du **Neka**.
 
 4. Använd telefonens PIN-kod eller bio metriska nyckel för att slutföra autentiseringen.
 

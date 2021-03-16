@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ba960465ab0ca8d5124d5882e3578e61fee2cf14
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179382"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490151"
 ---
 # <a name="azure-percept-dk-overview"></a>Översikt över Azure percept DK
 
 Azure percept DK är ett Edge AI och IoT Development Kit som utformats för att utveckla koncept för vision och Audio AI. När de kombineras med [Azure percept Studio](./overview-azure-percept-studio.md) -och [Azure percept-ljud](./overview-azure-percept-audio.md), blir det en kraftfull plattform som du kan använda för att bygga Edge AI-lösningar för en mängd olika vision-eller audio AI-program. Den kan köpas på [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+
+> [!div class="nextstepaction"]
+> [Köp nu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure percept DK-enhet.":::
 
@@ -52,4 +55,5 @@ Azure percept DK är ett Edge AI och IoT Development Kit som utformats för att 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Beställ en Azure percept DK på [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+> [!div class="nextstepaction"]
+> [Köp en Azure percept DK från Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

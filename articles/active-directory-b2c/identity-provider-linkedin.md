@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: dd87b58c604b0bb2141c29d3b2227e9a81668a75
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448276"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488830"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett LinkedIn-konto med hjälp av Azure Active Directory B2C
 
@@ -43,8 +43,8 @@ Om du vill aktivera inloggning för användare med ett LinkedIn-konto i Azure Ac
 1. Ange **appens namn**, **LinkedIn-sida**, **URL för sekretess policy** och **app-logotyp**.
 1. Godkänn LinkedIn- **API-villkoren för användning** och klicka på **skapa app**.
 1. Välj fliken **autentisering** . Under **nycklar för autentisering** kopierar du värdena för **klient-ID** och **klient hemlighet**. Du behöver båda dessa för att konfigurera LinkedIn som en identitets leverantör i din klient. **Klient hemlighet** är en viktig säkerhets autentiseringsuppgift.
-1. Välj Redigera penna bredvid **auktoriserade omdirigerings-URL: er för din app** och välj sedan **Lägg till omdirigerings-URL**. Skriv `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` och Ersätt `your-tenant-name` med namnet på din klient. Du måste använda små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C. Välj **Uppdatera**.
-2. Din LinkedIn-app är som standard inte godkänd för omfattningar som är relaterade till inloggning. Om du vill begära en granskning väljer du fliken **produkter** och väljer sedan **Logga in med LinkedIn**. När granskningen är klar kommer de obligatoriska omfattningarna att läggas till i ditt program.
+1. Välj Redigera penna bredvid **auktoriserade omdirigerings-URL: er för din app** och välj sedan **Lägg till omdirigerings-URL**. Ange `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient och `your-domain-name` med din anpassade domän. Du måste använda små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C. Välj **Uppdatera**.
+1. Din LinkedIn-app är som standard inte godkänd för omfattningar som är relaterade till inloggning. Om du vill begära en granskning väljer du fliken **produkter** och väljer sedan **Logga in med LinkedIn**. När granskningen är klar kommer de obligatoriska omfattningarna att läggas till i ditt program.
    > [!NOTE]
    > Du kan visa de omfattningar som för närvarande är tillåtna för din app på fliken **auth** i avsnittet **OAuth 2,0-omfång** .
 

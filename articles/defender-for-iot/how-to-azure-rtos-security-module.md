@@ -1,6 +1,6 @@
 ---
-title: Konfigurera och anpassa säkerhetsmodulen för Azure återställnings tider
-description: Lär dig hur du konfigurerar och anpassar din säkerhetsmodul för Azure återställnings tider.
+title: Konfigurera och anpassa Defender-IoT-Micro-agent för Azure återställnings tider
+description: Lär dig hur du konfigurerar och anpassar din Defender-IoT-Micro-agent för Azure återställnings tider.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2021
 ms.author: shhazam
-ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 874a783763882a28f2fe7078e3a264d09107808a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449823"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495104"
 ---
-# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>Konfigurera och anpassa Defender-IoT-Micro-agent för Azure återställnings tider GA
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-preview"></a>Konfigurera och anpassa Defender-IoT-Micro-agent för Azure återställnings tider (för hands version)
 
 I den här artikeln beskrivs hur du konfigurerar Defender-IoT-Micro-agenten för din Azure återställnings tider-enhet för att uppfylla dina krav på nätverk, bandbredd och minne.
 
@@ -89,5 +89,6 @@ Du kan aktivera och konfigurera Log Analytics för att undersöka enhets händel
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Granska och anpassa säkerhetsmodulen för [säkerhets aviseringar och rekommendationer](concept-rtos-security-alerts-recommendations.md) för Azure återställnings tider
-- Se [säkerhetsmodulen för Azure återställnings tider API](azure-rtos-security-module-api.md) vid behov.
+
+- Granska och anpassa Defender-IoT-Micro-agent för Azure återställnings tider [säkerhets aviseringar och rekommendationer](concept-rtos-security-alerts-recommendations.md)
+- Se API: t [för Defender-IoT-Micro-agent för Azure återställnings tider-API](azure-rtos-security-module-api.md) efter behov.

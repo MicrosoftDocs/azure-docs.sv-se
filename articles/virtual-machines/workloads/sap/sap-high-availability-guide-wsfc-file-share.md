@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675341"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496209"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Klustra en SAP ASCS/SCS-instans i ett Windows-redundanskluster med hjälp av en fil resurs i Azure
 
@@ -147,10 +147,14 @@ Om du vill använda en skalbar fil resurs måste systemet uppfylla följande kra
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurera SAP ASCS/SCS-instanser och en skalbar fil resurs i två kluster
 
-Du kan distribuera SAP ASCS/SCS-instanser i ett kluster med deras egna SAP- \<SID\> kluster roll. I det här fallet kan du konfigurera den skalbara fil resursen i ett annat kluster med en annan kluster roll.
+Du måste distribuera SAP ASCS/SCS-instanserna i ett separat kluster med deras egna SAP- \<SID\> kluster roll. I det här fallet kan du konfigurera den skalbara fil resursen i ett annat kluster med en annan kluster roll.
+
 
 > [!IMPORTANT]
->I det här scenariot konfigureras SAP ASCS/SCS-instansen för åtkomst till den globala SAP-värden med hjälp av UNC-sökväg \\ \\ &lt; SAP global Host &gt; \sapmnt \\ &lt; sid &gt; \SYS\.
+> Installationen måste uppfylla följande krav: SAP ASCS/SCS-instanserna och SOFS-resursen måste distribueras i separata kluster.    
+>
+> [!IMPORTANT] 
+> I det här scenariot konfigureras SAP ASCS/SCS-instansen för åtkomst till den globala SAP-värden med hjälp av UNC-sökväg \\ \\ &lt; SAP global Host &gt; \sapmnt \\ &lt; sid &gt; \SYS\.
 >
 
 ![Bild 5: SAP ASCS/SCS-instans och en skalbar fil resurs som distribueras i två kluster][sap-ha-guide-figure-8007]

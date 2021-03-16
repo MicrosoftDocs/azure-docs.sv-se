@@ -3,12 +3,12 @@ title: Koncept – nätverks anslutning
 description: Lär dig mer om viktiga aspekter och användnings fall för nätverk och anslutningar i Azure VMware-lösningar.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: cd62949c13b1f12e635d8d7bf07518a94c4e8d4b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462599"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491817"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Nätverks-och samanslutnings koncept i Azure VMware-lösningen
 
@@ -16,9 +16,9 @@ ms.locfileid: "103462599"
 
 Det finns två sätt att ansluta till ett privat moln i Azure VMware-lösningen:
 
-1. [**Grundläggande Azure-anslutningar med enbart Azure**](#azure-virtual-network-interconnectivity) kan du hantera och använda ditt privata moln med bara ett enda virtuellt nätverk i Azure. Den här implementeringen passar bäst för Azures utvärdering av VMware-lösningar eller implementeringar som inte kräver åtkomst från lokala miljöer.
+- [**Grundläggande Azure-anslutningar med enbart Azure**](#azure-virtual-network-interconnectivity) kan du hantera och använda ditt privata moln med bara ett enda virtuellt nätverk i Azure. Den här implementeringen passar bäst för Azures utvärdering av VMware-lösningar eller implementeringar som inte kräver åtkomst från lokala miljöer.
 
-1. En [**fullständig lokal till privat moln anslutning**](#on-premises-interconnectivity) utökar den grundläggande Azure-bara implementeringen för att omfatta samanslutning mellan lokala och Azure VMware-lösningar privata moln.
+- En [**fullständig lokal till privat moln anslutning**](#on-premises-interconnectivity) utökar den grundläggande Azure-bara implementeringen för att omfatta samanslutning mellan lokala och Azure VMware-lösningar privata moln.
  
 I den här artikeln tar vi upp viktiga begrepp som etablerar nätverk och anslutningar, inklusive krav och begränsningar. Den här artikeln innehåller den information du behöver känna till för att konfigurera nätverket så att det fungerar med Azure VMware-lösningen.
 

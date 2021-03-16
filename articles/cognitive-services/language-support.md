@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706290"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472060"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Stöd för naturligt språk för Azure Cognitive Services
 
@@ -48,16 +48,6 @@ Dessa Cognitive Services är språk oberoende och har inga begränsningar basera
 * [Speech service: tal-till-text](./speech-service/language-support.md#speech-to-text)
 * [Speech service: text till tal](./speech-service/language-support.md#text-to-speech)
 * [Speech service: tal Översättning](./speech-service/language-support.md#speech-translation)
-
-## <a name="search"></a>Sök
-
-* [Anpassad sökning i Bing](./bing-custom-search/language-support.md)
-* [Bildsökning i Bing](./bing-image-search/language-support.md)
-* [Nyhetssökning i Bing](./bing-news-search/language-support.md)
-* [Automatiska förslag i Bing](./bing-autosuggest/language-support.md)
-* [Stavningskontroll i Bing](./bing-spell-check/language-support.md)
-* [Visuell sökning i Bing](./bing-visual-search/language-support.md)
-* [Webbsökning i Bing](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Beslut
 

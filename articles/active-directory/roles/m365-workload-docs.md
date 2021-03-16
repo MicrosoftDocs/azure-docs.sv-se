@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310dd82f9a5f7f98fbca720b48212b7963e25a63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f56f8ac42f0db3d2cd27453cd023a2e869b0cde0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551512"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466090"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Roller för Microsoft 365 tjänster i Azure Active Directory
 
-Alla produkter i Microsoft 365 kan hanteras med administrativa roller i Azure Active Directory (Azure AD). Vissa produkter ger också ytterligare roller som är speciella för produkten. Information om vilka roller som stöds av varje produkt finns i tabellen nedan. Allmänna diskussioner om Delegerings problem finns i [planering av roll delegering i Azure Active Directory](concept-delegation.md).
+Alla produkter i Microsoft 365 kan hanteras med administrativa roller i Azure Active Directory (Azure AD). Vissa produkter ger också ytterligare roller som är speciella för produkten. Information om vilka roller som stöds av varje produkt finns i tabellen nedan. Rikt linjer för planering av roll säkerhet finns i [skydda privilegie rad åtkomst för Hybrid-och moln distributioner i Azure AD](security-planning.md).
 
 ## <a name="where-to-find-content"></a>Var du hittar innehåll
 

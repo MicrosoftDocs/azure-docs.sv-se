@@ -28,6 +28,12 @@
               href: hbv2-series-overview.md
             - name: Prestanda
               href: hbv2-performance.md
+        - name: HBv3-serien
+          items:
+            - name: Översikt
+              href: hbv3-series-overview.md
+            - name: Prestanda
+              href: hbv3-performance.md
         - name: HC-serien
           items:
             - name: Översikt

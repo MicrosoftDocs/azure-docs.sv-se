@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014254"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466430"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Använd Azure-DevOps för att skapa en CI/CD-pipeline för ett Stream Analytics jobb
 
@@ -56,6 +56,22 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Ange konfigurationer för NPM-aktivitet":::
 
+Använd följande steg om du behöver använda värdbaserad-Linux-Agent:
+1.  Välj din **agent specifikation**
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="Skärm bild av val av agent specifikation.":::
+
+2.  På sidan **aktiviteter** väljer du plus tecknet bredvid **Agent jobb 1**. Ange *kommando raden* i uppgifts sökningen och välj **kommando raden**.
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="Skärm bild av aktiviteten söka kommando rad. ":::
+
+3.  Ge uppgiften ett **visnings namn**. Ange följande kommando i **skriptet**. Lämna kvar de återstående standard alternativen.
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="Skärm bild av inmatning av skript för cmd-aktivitet.":::
+
 ## <a name="add-a-build-task"></a>Lägg till en build-uppgift
 
 1. På sidan **variabler** väljer du **+ Lägg till** i **pipeline-variabler**. Lägg till följande variabler. Ange följande värden enligt din preferens:
@@ -63,7 +79,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
    |Variabelnamn|Värde|
    |-|-|
    |projectRootPath|YourProjectName|
-   |outputPath|Resultat|
+   |outputPath|Utdata|
    |deployPath|Distribuera|
 
 2. På sidan **aktiviteter** väljer du plus tecknet bredvid **Agent jobb 1**. Sök efter **kommando rad**.
@@ -165,9 +181,9 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
    |-|-|
    |Visningsnamn| *Distribuera myASAProject*|
    |Azure-prenumeration| Välj din prenumeration.|
-   |Åtgärd| *Skapa eller uppdatera resursgrupp*|
+   |Action| *Skapa eller uppdatera resursgrupp*|
    |Resursgrupp| Välj ett namn för den test resurs grupp som ska innehålla ditt Stream Analytics jobb.|
-   |Plats|Välj platsen för test resurs gruppen.|
+   |Location|Välj platsen för test resurs gruppen.|
    |Mallens plats| Länkad artefakt|
    |Mall| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.jspå |
    |Mallparametrar|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.parameters.jspå |
@@ -182,9 +198,9 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
    |-|-|
    |Visningsnamn| *Distribuera myASAProject*|
    |Azure-prenumeration| Välj din prenumeration.|
-   |Åtgärd| *Skapa eller uppdatera resursgrupp*|
+   |Action| *Skapa eller uppdatera resursgrupp*|
    |Resursgrupp| Välj ett namn för den produktions resurs grupp som ska innehålla ditt Stream Analytics jobb.|
-   |Plats|Välj platsen för produktions resurs gruppen.|
+   |Location|Välj platsen för produktions resurs gruppen.|
    |Mallens plats| *Länkad artefakt*|
    |Mall| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.jspå |
    |Mallparametrar|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/Drop/myASAProject.JobTemplate.parameters.jspå |

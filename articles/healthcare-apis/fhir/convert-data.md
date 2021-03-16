@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020421"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490933"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>Så här konverterar du data till FHIR (för hands version)
 
@@ -125,6 +125,12 @@ Bevilja AcrPull-rollen till din Azure API för FHIR-tjänstinstans.
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>Registrera ACR-servrarna i Azure API för FHIR
 
+Du kan registrera ACR-servern med hjälp av Azure Portal eller med CLI.
+
+#### <a name="registering-the-acr-server-using-azure-portal"></a>Registrera ACR-servern med hjälp av Azure Portal
+Navigera till _artefakt_ bladet under _data omvandling_ i din Azure API för FHIR-instans. Listan över aktuella registrerade ACR-servrar visas. Klicka på _Lägg till_ och välj din register server i list rutan. Du måste klicka på _Spara_ för att registreringen ska börja gälla. Det kan ta några minuter att tillämpa ändringen och starta om instansen.
+
+#### <a name="registering-the-acr-server-using-cli"></a>Registrera ACR-servern med CLI
 Du kan registrera upp till 20 ACR-servrar i Azure-API: et för FHIR.
 
 Installera healthcareapis CLI från Azure PowerShell vid behov:
@@ -135,13 +141,13 @@ az extension add -n healthcareapis
 
 Registrera ACR-servrarna i Azure API för FHIR enligt exemplen nedan:
 
-#### <a name="register-a-single-acr-server"></a>Registrera en enskild ACR-Server
+##### <a name="register-a-single-acr-server"></a>Registrera en enskild ACR-Server
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
 
-#### <a name="register-multiple-acr-servers"></a>Registrera flera ACR-servrar
+##### <a name="register-multiple-acr-servers"></a>Registrera flera ACR-servrar
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
@@ -152,8 +158,3 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 Anropa $convert-data-API: et som anger din mal lin reference i templateCollectionReference-parametern.
 
 `<RegistryServer>/<imageName>@<imageDigest>`
-
-## <a name="known-issues-and-workarounds"></a>Kända problem och lösningar
-
-- Vissa standardmallar innehåller UTF-8-struktur. Det innebär att de genererade ID-värdena innehåller ett STRUKTURLISTENUMMER. Detta kan skapa ett problem med FHIR-servern. Lösningen är att hämta Microsoft-mallar med VS Code-tillägg och skicka dem till din egen ACR när du har tagit bort struktur tecknen från _ID/_procedur. flytande_, _ID/_härkomst. flytande_ och _ID/_vaccination. flytande_.
-

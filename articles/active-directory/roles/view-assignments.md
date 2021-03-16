@@ -1,5 +1,5 @@
 ---
-title: Visa anpassade roll tilldelningar i Azure Active Directory Portal | Microsoft Docs
+title: Visa en lista över Azure AD-roll tilldelningar
 description: Nu kan du se och hantera medlemmar i en Azure Active Directory administratörs roll i Azure Active Directory administrations centret.
 services: active-directory
 author: rolyon
@@ -13,31 +13,41 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3e2bbc88b896d65592ba742fece723d3f5e168f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: de546ef091b1a8e996f286b0c9af45e93488b5b4
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103015768"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467665"
 ---
-# <a name="view-custom-role-assignments-using-azure-active-directory"></a>Visa anpassade roll tilldelningar med Azure Active Directory
+# <a name="list-azure-ad-role-assignments"></a>Visa en lista över Azure AD-roll tilldelningar
 
-Den här artikeln beskriver hur du visar anpassade roller som du har tilldelat i Azure Active Directory (Azure AD). I Azure Active Directory (Azure AD) kan roller tilldelas till en omfattning i hela organisationen eller med en omfattning för ett enda program.
+Den här artikeln beskriver hur du visar en lista över roller som du har tilldelat i Azure Active Directory (Azure AD). I Azure Active Directory (Azure AD) kan roller tilldelas till en omfattning i hela organisationen eller med en omfattning för ett enda program.
 
 - Roll tilldelningar i området för hela organisationen läggs till i och visas i listan över tilldelningar för enskilda program roller.
 - Roll tilldelningar i det enskilda programområdeet läggs inte till och visas inte i listan över områdes tilldelningar i organisationen.
 
-## <a name="view-role-assignments-in-the-azure-portal"></a>Visa roll tilldelningar i Azure Portal
+## <a name="list-role-assignments-in-the-azure-portal"></a>Lista roll tilldelningar i Azure Portal
 
-Den här proceduren beskriver hur du visar tilldelningar för en roll med omfattning i hela organisationen.
+Den här proceduren beskriver hur du visar roll tilldelningar med omfattning i hela organisationen.
 
 1. Logga in på [administrations centret för Azure AD](https://aad.portal.azure.com) med privilegierade roll administratörer eller globala administratörs behörigheter i Azure AD-organisationen.
 1. Välj **Azure Active Directory**, Välj **roller och administratörer** och välj sedan en roll för att öppna den och visa dess egenskaper.
-1. Välj **tilldelningar** för att Visa rollernas tilldelningar.
+1. Välj **tilldelningar** för att lista roll tilldelningarna.
 
-    ![Visa roll tilldelningar och behörigheter när du öppnar en roll i listan](./media/view-assignments/role-assignments.png)
+    ![Lista roll tilldelningar och behörigheter när du öppnar en roll i listan](./media/view-assignments/role-assignments.png)
 
-## <a name="view-role-assignments-using-azure-ad-powershell"></a>Visa roll tilldelningar med hjälp av Azure AD PowerShell
+## <a name="list-my-role-assignments"></a>Lista mina roll tilldelningar
+
+Det är enkelt att lista dina egna behörigheter. Välj **din roll** på sidan **roller och administratörer** för att se de roller som för närvarande är tilldelade till dig.
+
+## <a name="download-role-assignments"></a>Hämta roll tilldelningar
+
+Om du vill hämta alla tilldelningar för en speciell roll väljer du en roll på sidan **roller och administratörer** och väljer sedan **Hämta roll tilldelningar**. En CSV-fil som visar tilldelningar för alla omfattningar för rollen hämtas.
+
+![Hämta alla tilldelningar för en roll](./media/view-assignments/download-role-assignments.png)
+
+## <a name="list-role-assignments-using-azure-ad-powershell"></a>Lista roll tilldelningar med hjälp av Azure AD PowerShell
 
 I det här avsnittet beskrivs hur du visar tilldelningar för en roll med omfattning i hela organisationen. Den här artikeln använder modulen [Azure Active Directory PowerShell version 2](/powershell/module/azuread/#directory_roles) . Om du vill visa omfattnings tilldelningar för enskilda program med hjälp av PowerShell kan du använda cmdletarna i [tilldela anpassade roller med PowerShell](custom-assign-powershell.md).
 
@@ -61,9 +71,9 @@ Get-Module -Name AzureADPreview
   Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
 ```
 
-### <a name="view-the-assignments-of-a-role"></a>Visa tilldelningarna för en roll
+### <a name="list-role-assignments"></a>Visa lista över rolltilldelningar
 
-Exempel på hur du visar tilldelningarna för en roll.
+Exempel på hur du visar roll tilldelningarna.
 
 ``` PowerShell
 # Fetch list of all directory roles with object ID
@@ -76,9 +86,9 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-role-assignments-using-microsoft-graph-api"></a>Visa roll tilldelningar med Microsoft Graph API
+## <a name="list-role-assignments-using-microsoft-graph-api"></a>Lista roll tilldelningar med Microsoft Graph API
 
-I det här avsnittet beskrivs hur du visar tilldelningar för en roll med omfattning i hela organisationen.  Om du vill visa omfattnings tilldelningar för enskilda program med hjälp av Graph API kan du använda åtgärderna i [tilldela anpassade roller med Graph API](custom-assign-graph.md).
+I det här avsnittet beskrivs hur du visar roll tilldelningar med omfattning i hela organisationen.  Om du vill visa roll tilldelningar för en program omfattning med Graph API kan du använda åtgärderna i [tilldela anpassade roller med Graph API](custom-assign-graph.md).
 
 HTTP-begäran om att få en roll tilldelning för en specifik roll definition.
 
@@ -100,9 +110,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-assignments-of-single-application-scope"></a>Visa tilldelningar för en program omfattning
+## <a name="list-role-assignments-with-single-application-scope"></a>Lista roll tilldelningar med program med en enda applikation
 
-I det här avsnittet beskrivs hur du visar tilldelningar för en roll med en omfattning i ett program. Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion.
+I det här avsnittet beskrivs hur du visar roll tilldelningar med ett definitions område för ett enda program. Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion.
 
 1. Logga in på [administrations centret för Azure AD](https://aad.portal.azure.com) med privilegierade roll administratörer eller globala administratörs behörigheter i Azure AD-organisationen.
 1. Välj **Appregistreringar** och välj sedan appens registrering för att visa dess egenskaper. Du kanske måste välja **alla program** om du vill se en fullständig lista över app-registreringar i din Azure AD-organisation.
@@ -111,11 +121,11 @@ I det här avsnittet beskrivs hur du visar tilldelningar för en roll med en omf
 
 1. I appens registrering väljer du **roller och administratörer** och väljer sedan en roll för att visa dess egenskaper.
 
-    ![Visa roll tilldelningar för program registrering från sidan Appregistreringar](./media/view-assignments/app-reg-assignments.png)
+    ![Visa lista över program registrerings roll tilldelningar från sidan Appregistreringar](./media/view-assignments/app-reg-assignments.png)
 
-1. Välj **tilldelningar** för att Visa rollernas tilldelningar. Om du öppnar vyn tilldelningar från App-registreringen visas de tilldelningar som är begränsade till den här Azure AD-resursen.
+1. Välj **tilldelningar** för att lista roll tilldelningarna. Om du öppnar sidan tilldelningar inifrån appens registrering visas roll tilldelningarna som är begränsade till den här Azure AD-resursen.
 
-    ![Visa roll tilldelningar för program registrering från egenskaperna för en app-registrering](./media/view-assignments/app-reg-assignments-2.png)
+    ![Visa lista över program registrerings roll tilldelningar från egenskaperna för en app-registrering](./media/view-assignments/app-reg-assignments-2.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

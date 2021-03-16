@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: visuellt innehåll, program för visuellt innehåll, dator vision
-ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575948"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488490"
 ---
 # <a name="what-is-computer-vision"></a>Vad är visuellt innehåll?
 
@@ -29,6 +29,12 @@ ms.locfileid: "99575948"
 Azures Visuellt innehåll tjänst ger dig till gång till avancerade algoritmer som bearbetar bilder och returnerar information baserat på de visuella funktioner som du är intresse rad av. Visuellt innehåll kan till exempel avgöra om en bild innehåller innehåll som är olämpligt för barn, hitta vissa varumärken eller objekt eller hitta mänskliga ansikten.
 
 Du kan skapa Visuellt innehåll program via ett [klient biblioteks-SDK](./quickstarts-sdk/client-library.md) eller genom att anropa [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) direkt. Den här sidan beskriver allmänt vad du kan göra med Visuellt innehåll.
+
+Den här dokumentationen innehåller följande typer av artiklar:
+* [Snabb starterna](./quickstarts-sdk/client-library.md) är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat under en kort tids period. 
+* [Instruktions guiderna](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* De [konceptuella artiklarna](concept-recognizing-text.md) innehåller djupgående förklaringar av tjänstens funktioner och funktioner.
+* [Självstudierna](./tutorials/storage-lab-tutorial.md) är längre guider som visar hur du använder den här tjänsten som en komponent i bredare affärs lösningar.
 
 ## <a name="optical-character-recognition-ocr"></a>Optisk teckenläsning (OCR)
 

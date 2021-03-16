@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 90af33a01450002c7d36a4ab4cf4a3da647068c5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444575"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471976"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Använd kund hanterade krypterings nycklar för Azure HPC cache
 
@@ -22,7 +22,7 @@ Du kan använda Azure Key Vault för att kontrol lera ägarskapet för de nyckla
 
 Azure HPC cache skyddas också av [värd kryptering för virtuella datorer](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) på de hanterade diskar som innehåller cachelagrade data, även om du lägger till en kund nyckel för cache-diskarna. Genom att lägga till en kundhanterad nyckel för Double Encryption får du en extra säkerhets nivå för kunder med höga säkerhets krav. Mer information finns [i kryptering på Server sidan av Azure disk Storage](../virtual-machines/disk-encryption.md) .
 
-Den här funktionen är endast tillgänglig i några av de Azure-regioner där Azure HPC cache är tillgängligt. Se [region tillgänglighets](hpc-cache-overview.md#region-availability) listan för mer information.
+<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Det finns tre steg för att aktivera kundhanterad nyckel kryptering för Azure HPC cache:
 

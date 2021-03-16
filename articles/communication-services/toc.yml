@@ -132,6 +132,8 @@
       href: concepts/known-issues.md
 - name: Exempel
   items:
+    - name: Översikt
+      href: samples/overview.md
     - name: Exempel på gruppsamtal
       href: samples/calling-hero-sample.md
     - name: Exempel på gruppchatt

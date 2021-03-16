@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102248"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491086"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender för IoT-bas linje och anpassade kontroller
 
@@ -42,7 +42,7 @@ Med anpassade bas kontroller upprättas en anpassad lista över kontroller för 
 
 1. Ladda upp **bas linje filen för anpassade kontroller** till enheten.
 
-1. Lägg till egenskaper för bas linje i säkerhetsmodulen och klicka på **Spara**.
+1. Lägg till egenskaper för bas linje i Defender-IoT-Micro-agenten och klicka på **Spara**.
 
 ### <a name="baseline-custom-check-file-example"></a>Exempel på anpassad kontroll fil för bas linje
 
@@ -66,7 +66,7 @@ Så här konfigurerar du anpassade bas kontroller:
 
 ## <a name="baseline-custom-check-properties"></a>Egenskaper för anpassad kontroll bas linje
 
-| Namn| Status | Giltiga värden| Standardvärden| Description |
+| Namn| Status | Giltiga värden| Standardvärden| Beskrivning |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Krävs: sant |Giltiga värden: **Boolean** |Standardvärde: **falskt** |Max tidsintervall innan meddelanden med hög prioritet skickas.|
 |baselineCustomChecksFilePath |Krävs: sant|Giltiga värden: **sträng**, **Null** |Standardvärde: **Null** |Fullständig sökväg till bas linje XML-konfigurationen|

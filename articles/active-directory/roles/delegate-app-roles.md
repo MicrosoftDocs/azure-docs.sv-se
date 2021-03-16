@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d1e8a0f1919da125a571429e1efff06589c7e85a
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051199"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466719"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegera registrerings behörigheter för app i Azure Active Directory
 
@@ -30,7 +30,7 @@ Den här artikeln beskriver hur du använder behörigheter som beviljats av anpa
 - [Tilldela en inbyggd administrativ roll](#assign-built-in-application-admin-roles) som beviljar åtkomst för att hantera konfiguration i Azure AD för alla program. Detta är det rekommenderade sättet att ge IT-experter åtkomst till att hantera omfattande program konfigurations behörigheter utan att bevilja åtkomst till att hantera andra delar av Azure AD som inte är relaterade till program konfigurationen.
 - [Skapa en anpassad roll](#create-and-assign-a-custom-role-preview) som definierar mycket specifika behörigheter och tilldela den till någon antingen till omfånget för ett enskilt program som en begränsad ägare, eller i katalogens omfattning (alla program) som en begränsad administratör.
 
-Det är viktigt att överväga att bevilja åtkomst med hjälp av någon av ovanstående metoder av två orsaker. Innan du delegerar möjligheten att utföra administrativa uppgifter minskar du den globala administratörs belastningen. För det andra ökar säkerheten position med begränsade behörigheter och risken för obehörig åtkomst minskas. Delegerings problem och allmänna rikt linjer beskrivs i [delegerad administration i Azure Active Directory](concept-delegation.md).
+Det är viktigt att överväga att bevilja åtkomst med hjälp av någon av ovanstående metoder av två orsaker. Innan du delegerar möjligheten att utföra administrativa uppgifter minskar du den globala administratörs belastningen. För det andra ökar säkerheten position med begränsade behörigheter och risken för obehörig åtkomst minskas. Rikt linjer för planering av roll säkerhet finns i [skydda privilegie rad åtkomst för Hybrid-och moln distributioner i Azure AD](security-planning.md).
 
 ## <a name="restrict-who-can-create-applications"></a>Begränsa vem som kan skapa program
 

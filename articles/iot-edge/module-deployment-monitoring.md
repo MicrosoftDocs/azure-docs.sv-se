@@ -8,31 +8,33 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3989ec4ca2b5c9d7385841604678791b20c1d102
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85194798"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489990"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Förstå IoT Edge automatiska distributioner för enskilda enheter eller i skala
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Automatiska distributioner och lager distribution hjälper dig att hantera och konfigurera moduler på ett stort antal IoT Edge enheter.
 
 Azure IoT Edge tillhandahåller två sätt att konfigurera modulerna så att de körs på IoT Edge enheter. Den första metoden är att distribuera moduler per enhet. Du skapar ett distributions manifest och tillämpar det på en viss enhet efter namn. Den andra metoden är att distribuera moduler automatiskt till alla registrerade enheter som uppfyller en uppsättning definierade villkor. Du skapar ett distributions manifest och definierar sedan vilka enheter den gäller baserat på [taggar](../iot-edge/how-to-deploy-at-scale.md#identify-devices-using-tags) i enheten.
 
-Den här artikeln fokuserar på att konfigurera och övervaka flotta av enheter, gemensamt kallade *IoT Edge automatiska distributioner*.De grundläggande distributions stegen är följande:
+Den här artikeln fokuserar på att konfigurera och övervaka flotta av enheter, gemensamt kallade *IoT Edge automatiska distributioner*. De grundläggande distributions stegen är följande:
 
-1. En operator definierar en distribution som beskriver en uppsättning moduler och mål enheter.Varje distribution har ett distributions manifest som motsvarar den här informationen.
+1. En operator definierar en distribution som beskriver en uppsättning moduler och mål enheter. Varje distribution har ett distributions manifest som motsvarar den här informationen.
 2. Tjänsten IoT Hub kommunicerar med alla riktade enheter för att konfigurera dem med de deklarerade modulerna.
-3. Tjänsten IoT Hub hämtar status från IoT Edge enheter och gör dem tillgängliga för operatören.En operatör kan till exempel se när en Edge-enhet inte har kon figurer ATS korrekt eller om en modul Miss lyckas under körningen.
+3. Tjänsten IoT Hub hämtar status från IoT Edge enheter och gör dem tillgängliga för operatören.  En operatör kan till exempel se när en Edge-enhet inte har kon figurer ATS korrekt eller om en modul Miss lyckas under körningen.
 4. När som helst har nya IoT Edge enheter som uppfyller mål villkoren kon figurer ATS för distributionen.
 
 I den här artikeln beskrivs varje komponent som ingår i att konfigurera och övervaka en distribution. En genom gång av hur du skapar och uppdaterar en-distribution finns i [distribuera och övervaka IoT Edge moduler i skala](how-to-deploy-at-scale.md).
 
 ## <a name="deployment"></a>Distribution
 
-En IoT Edge automatisk distribution tilldelar IoT Edge modul avbildningar som ska köras som instanser på en mål uppsättning IoT Edge enheter. Det fungerar genom att konfigurera ett IoT Edge distributions manifest som innehåller en lista med moduler med motsvarande initierings parametrar.En distribution kan tilldelas en enda enhet (baserat på enhets-ID) eller till en grupp av enheter (baserat på taggar).När en IoT Edge enhet tar emot ett distributions manifest laddas och installeras behållar avbildningarna från respektive behållares databaser och konfigurerar dem därefter.När en distribution har skapats kan en operatör övervaka distributions statusen för att se om de riktade enheterna är korrekt konfigurerade.
+En IoT Edge automatisk distribution tilldelar IoT Edge modul avbildningar som ska köras som instanser på en mål uppsättning IoT Edge enheter. Det fungerar genom att konfigurera ett IoT Edge distributions manifest som innehåller en lista med moduler med motsvarande initierings parametrar. En distribution kan tilldelas en enda enhet (baserat på enhets-ID) eller till en grupp av enheter (baserat på taggar). När en IoT Edge enhet tar emot ett distributions manifest laddas och installeras behållar avbildningarna från respektive behållares databaser och konfigurerar dem därefter. När en distribution har skapats kan en operatör övervaka distributions statusen för att se om de riktade enheterna är korrekt konfigurerade.
 
 Endast IoT Edge enheter kan konfigureras med en distribution. Följande krav måste finnas på enheten innan den kan ta emot distributionen:
 
@@ -42,7 +44,7 @@ Endast IoT Edge enheter kan konfigureras med en distribution. Följande krav må
 
 ### <a name="deployment-manifest"></a>Distributionsmanifest
 
-Ett distributions manifest är ett JSON-dokument som beskriver de moduler som ska konfigureras på mål IoT Edge enheter. Den innehåller konfigurations-metadata för alla moduler, inklusive nödvändiga systemmoduler (särskilt IoT Edge-agenten och IoT Edge Hub).  
+Ett distributions manifest är ett JSON-dokument som beskriver de moduler som ska konfigureras på mål IoT Edge enheter. Den innehåller konfigurations-metadata för alla moduler, inklusive nödvändiga systemmoduler (särskilt IoT Edge-agenten och IoT Edge Hub).  
 
 Konfigurationens metadata för varje modul innehåller:
 
@@ -81,11 +83,11 @@ Tänk på följande begränsningar när du skapar ett mål villkor:
 
 ### <a name="priority"></a>Prioritet
 
-En prioritet definierar om en distribution ska tillämpas på en mål enhet i förhållande till andra distributioner. En distributions prioritet är ett positivt heltal, med större tal som anger högre prioritet. Om en IoT Edge enhet är riktad mot fler än en distribution gäller distributionen med högst prioritet.Distributioner med lägre prioritet tillämpas inte och slås inte samman.Om en enhet är riktad mot två eller flera distributioner med samma prioritet, gäller den senast skapade distributionen (bestäms av tids stämplingen för skapandet).
+En prioritet definierar om en distribution ska tillämpas på en mål enhet i förhållande till andra distributioner. En distributions prioritet är ett positivt heltal, med större tal som anger högre prioritet. Om en IoT Edge enhet är riktad mot fler än en distribution gäller distributionen med högst prioritet.  Distributioner med lägre prioritet tillämpas inte och slås inte samman.  Om en enhet är riktad mot två eller flera distributioner med samma prioritet, gäller den senast skapade distributionen (bestäms av tids stämplingen för skapandet).
 
 ### <a name="labels"></a>Etiketter
 
-Etiketter är sträng nyckel/värdepar som du kan använda för att filtrera och gruppera distributioner.En distribution kan ha flera etiketter. Etiketter är valfria och påverkar inte den faktiska konfigurationen för IoT Edge enheter.
+Etiketter är sträng nyckel/värdepar som du kan använda för att filtrera och gruppera distributioner. En distribution kan ha flera etiketter. Etiketter är valfria och påverkar inte den faktiska konfigurationen för IoT Edge enheter.
 
 ### <a name="metrics"></a>Mått
 
@@ -174,16 +176,16 @@ En stegvis distribution är en övergripande process där en operatör distribue
 
 En stegvis distribution körs i följande faser och steg:
 
-1. Upprätta en test miljö för IoT Edge enheter genom att etablera dem och ställa in en enhets dubbla taggar som `tag.environment='test'` .Test miljön bör spegla produktions miljön som distributionen kommer att ta slut.
+1. Upprätta en test miljö för IoT Edge enheter genom att etablera dem och ställa in en enhets dubbla taggar som `tag.environment='test'` . Test miljön bör spegla produktions miljön som distributionen kommer att ta slut.
 2. Skapa en distribution inklusive önskade moduler och konfigurationer. Mål villkoret ska vara mål för test IoT Edge enhets miljön.
 3. Verifiera den nya modul konfigurationen i test miljön.
 4. Uppdatera distributionen så att den innehåller en delmängd av produktions IoT Edge enheter genom att lägga till en ny tagg till mål villkoret. Kontrol lera också att prioriteten för distributionen är högre än andra distributioner som för närvarande är riktade till enheterna
 5. Kontrol lera att distributionen har slutförts på de riktade IoT-enheterna genom att Visa distributions statusen.
 6. Uppdatera distributionen så att den riktas mot alla återstående produktions IoT Edge enheter.
 
-## <a name="rollback"></a>Ånger
+## <a name="rollback"></a>Återställning
 
-Distributioner kan återställas om du får fel eller fel konfiguration.Eftersom en distribution definierar den absoluta modul konfigurationen för en IoT Edge enhet måste även en ytterligare distribution vara riktad till samma enhet med lägre prioritet även om målet är att ta bort alla moduler.  
+Distributioner kan återställas om du får fel eller fel konfiguration. Eftersom en distribution definierar den absoluta modul konfigurationen för en IoT Edge enhet måste även en ytterligare distribution vara riktad till samma enhet med lägre prioritet även om målet är att ta bort alla moduler.  
 
 Om du tar bort en distribution tas inte modulerna bort från riktade enheter. Det måste finnas en annan distribution som definierar en ny konfiguration för enheterna, även om det är en tom distribution.
 

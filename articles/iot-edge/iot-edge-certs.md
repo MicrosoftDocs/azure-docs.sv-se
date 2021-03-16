@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200240"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491001"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Förstå hur Azure IoT Edge använder certifikat
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge certifikat används av modulerna och underordnade IoT-enheter för att verifiera identiteten och giltighet för modulen för [IoT Edge Hub](iot-edge-runtime.md#iot-edge-hub) -körning. Dessa kontroller aktiverar TLS (Transport Layer Security) säker anslutning mellan körning, moduler och IoT-enheter. Precis som IoT Hub behöver IoT Edge en säker och krypterad anslutning från IoT-underenheten (eller löv) och IoT Edge moduler. För att upprätta en säker TLS-anslutning visar IoT Edge Hub-modulen en server certifikat kedja för att ansluta klienter för att verifiera identiteten.
 

@@ -2,19 +2,19 @@
 title: Vägledning för haveri beredskap för Azure formulär igenkänning
 titleSuffix: Azure Cognitive Services
 description: Lär dig hur du använder kopiera modell-API för att säkerhetskopiera formulär igenkännings resurser.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427172"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466923"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Säkerhetskopiera och återställa formulär igenkännings modeller
 
@@ -39,9 +39,6 @@ Processen för att kopiera en anpassad modell består av följande steg:
 1. Först utfärdar du en begäran om kopiering av begäran till mål resursen &mdash; som är den resurs som ska ta emot den kopierade modellen. Du får tillbaka URL: en för den nyligen skapade mål modellen, som kommer att ta emot de kopierade data.
 1. Sedan skickar du kopierings förfrågan till käll resursen &mdash; som innehåller den modell som ska kopieras. Du får tillbaka en URL som du kan fråga efter för att följa åtgärdens förlopp.
 1. Du ska använda dina käll resurs uppgifter för att ställa frågor till förlopps-URL tills åtgärden har slutförts. Du kan också fråga det nya modell-ID: t i mål resursen för att hämta statusen för den nya modellen.
-
-> [!CAUTION]
-> Kopierings-API: t stöder för närvarande inte modell-ID: n för [sammansatta anpassade modeller](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose). Modell sammanställning är en förhands gransknings funktion i v 2.1 – för hands version. 2 för hands version. 
 
 ## <a name="generate-copy-authorization-request"></a>Skapa begäran om Copy-auktorisering
 
@@ -165,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Nästa steg
 
 I den här guiden har du lärt dig hur du använder kopierings-API: t för att säkerhetskopiera dina anpassade modeller till en sekundär formulär igenkännings resurs. Nu ska du utforska API-referenserna för att se vad mer du kan göra med formulär igenkänning.
-* [REST API referens dokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [REST API referens dokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

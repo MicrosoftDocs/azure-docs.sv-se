@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202645"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470892"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Vanliga frågor och svar om Azure Files
 [Azure Files](storage-files-introduction.md) erbjuder fullständigt hanterade fil resurser i molnet som är tillgängliga via [SMB-protokollet (Server Message Block](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ) som är bransch standard och [NFS-protokollet (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (för hands version). Du kan montera Azure-filresurser samtidigt i molnet eller lokala distributioner av Windows, Linux och macOS. Du kan också cachelagra Azure-filresurser på Windows Server-datorer med hjälp av Azure File Sync för snabb åtkomst nära var data används.
@@ -308,6 +308,18 @@ I den här artikeln besvaras vanliga frågor om Azure Files funktioner och funkt
 **Finns det REST-API: er som stöder get/set/Copy Directory/File Windows ACL: er?**
 
     Ja, vi har stöd för REST API: er som hämtar, anger eller kopierar NTFS ACL: er för kataloger eller filer när du använder REST API [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (eller senare). Vi har även stöd för att bevara Windows ACL: er i REST-baserade verktyg: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
+* <a id="ad-support-rest-apis"></a>
+**Ta bort cachelagrade autentiseringsuppgifter med lagrings konto nyckeln och ta bort befintliga SMB-anslutningar innan du initierar ny anslutning med Azure AD-eller AD-autentiseringsuppgifter?**
+
+    Du kan följa stegen i den två stegen nedan för att ta bort de sparade autentiseringsuppgifter som är associerade med lagrings konto nyckeln och ta bort SMB-anslutningen: 
+    1. Kör cmdleten nedan i Windows Cmd.exe för att ta bort autentiseringsuppgiften. Om du inte kan hitta något innebär det att du inte har sparat autentiseringsuppgiften och kan hoppa över det här steget.
+    
+       cmdkey/Delete: domän: Target = Storage-Account-name.file.core.windows.net
+    
+    2. Ta bort den befintliga anslutningen till fil resursen. Du kan ange monterings Sök vägen antingen som den monterade enhets beteckningen eller storage-account-name.file.core.windows.net sökväg.
+    
+       net use <enhets beteckning/resurs-sökväg>/Delete
 
 ## <a name="network-file-system"></a>Network File System
 

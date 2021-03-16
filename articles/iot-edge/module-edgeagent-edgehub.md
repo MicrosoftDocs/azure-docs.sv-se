@@ -8,14 +8,16 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978704"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489956"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Egenskaperna för IoT Edge agenten och IoT Edge Hub-modulen är dubbla
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge agent och IoT Edge hubb är två moduler som utgör IoT Edge Runtime. Mer information om ansvars områden för varje körnings modul finns i [förstå Azure IoT Edge körning och dess arkitektur](iot-edge-runtime.md).
 
@@ -36,30 +38,30 @@ Modulerna för IoT Edge agenten anropas `$edgeAgent` och koordinerar kommunikati
 | Schema | Antingen "1,0" eller "1,1". Version 1,1 introducerades med IoT Edge version 1.0.10 och rekommenderas. | Ja |
 | Runtime. Type | Måste vara "Docker" | Ja |
 | Runtime. Settings. minDockerVersion | Ange den lägsta Docker-version som krävs av distributions manifestet | Ja |
-| Runtime. Settings. loggingOptions | En stringified-JSON som innehåller loggnings alternativen för IoT Edge agent-behållaren. [Docker-loggnings alternativ](https://docs.docker.com/engine/admin/logging/overview/) | Nej |
-| Runtime. Settings. registryCredentials<br>. {registryId}. användar namn | Användar namnet för behållar registret. För Azure Container Registry är användar namnet vanligt vis register namnet.<br><br> Autentiseringsuppgifter för registret krävs för bilder i en privat modul. | Nej |
-| Runtime. Settings. registryCredentials<br>. {registryId}. lösen ord | Lösen ordet för behållar registret. | Nej |
-| Runtime. Settings. registryCredentials<br>. {registryId}. adress | Adress till behållar registret. För Azure Container Registry är adressen vanligt vis *{Registry Name}. azurecr. io*. | Nej |  
+| Runtime. Settings. loggingOptions | En stringified-JSON som innehåller loggnings alternativen för IoT Edge agent-behållaren. [Docker-loggnings alternativ](https://docs.docker.com/engine/admin/logging/overview/) | Inga |
+| Runtime. Settings. registryCredentials<br>. {registryId}. användar namn | Användar namnet för behållar registret. För Azure Container Registry är användar namnet vanligt vis register namnet.<br><br> Autentiseringsuppgifter för registret krävs för bilder i en privat modul. | Inga |
+| Runtime. Settings. registryCredentials<br>. {registryId}. lösen ord | Lösen ordet för behållar registret. | Inga |
+| Runtime. Settings. registryCredentials<br>. {registryId}. adress | Adress till behållar registret. För Azure Container Registry är adressen vanligt vis *{Registry Name}. azurecr. io*. | Inga |  
 | systemModules. edgeAgent. Type | Måste vara "Docker" | Ja |
 | systemModules. edgeAgent. Settings. image | URI för avbildningen av IoT Edge agenten. IoT Edge-agenten kan för närvarande inte uppdatera sig själv. | Ja |
-| systemModules. edgeAgent. Settings<br>.createOptions | En stringified-JSON som innehåller alternativen för att skapa IoT Edge agent-behållaren. [Alternativ för Docker-skapande](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nej |
+| systemModules. edgeAgent. Settings<br>.createOptions | En stringified-JSON som innehåller alternativen för att skapa IoT Edge agent-behållaren. [Alternativ för Docker-skapande](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Inga |
 | systemModules.edgeAgent.configuration.id | ID för distributionen som distribuerade den här modulen. | IoT Hub anger den här egenskapen när manifestet tillämpas med hjälp av en distribution. Ingår inte i ett distributions manifest. |
 | systemModules. edgeHub. Type | Måste vara "Docker" | Ja |
 | status för systemModules. edgeHub. | Måste vara "igång" | Ja |
 | systemModules. edgeHub. restartPolicy | Måste vara "Always" | Ja |
-| systemModules.edgeHub.startupOrder | Ett heltals värde för vilket plats en modul har i Start ordningen. 0 är första och högsta heltal (4294967295) är sist. Om ett värde inte anges är standardvärdet Max heltal.  | Nej |
+| systemModules.edgeHub.startupOrder | Ett heltals värde för vilket plats en modul har i Start ordningen. 0 är första och högsta heltal (4294967295) är sist. Om ett värde inte anges är standardvärdet Max heltal.  | Inga |
 | systemModules. edgeHub. Settings. image | URI för avbildningen av IoT Edge Hub. | Ja |
-| systemModules. edgeHub. Settings<br>.createOptions | En stringified-JSON som innehåller alternativen för att skapa IoT Edge Hub-behållaren. [Alternativ för Docker-skapande](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nej |
+| systemModules. edgeHub. Settings<br>.createOptions | En stringified-JSON som innehåller alternativen för att skapa IoT Edge Hub-behållaren. [Alternativ för Docker-skapande](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Inga |
 | systemModules.edgeHub.configuration.id | ID för distributionen som distribuerade den här modulen. | IoT Hub anger den här egenskapen när manifestet tillämpas med hjälp av en distribution. Ingår inte i ett distributions manifest. |
 | moduler. {moduleId}. version | En användardefinierad sträng som representerar versionen för den här modulen. | Ja |
 | moduler. {moduleId}. typ | Måste vara "Docker" | Ja |
 | moduler. {moduleId}. status | {"körs" \| "stoppad"} | Ja |
 | moduler. {moduleId}. restartPolicy | {"aldrig" \| "vid fel" \| "på-ohälsosam" " \| Always"} | Ja |
-| moduler. {moduleId}. startupOrder | Ett heltals värde för vilket plats en modul har i Start ordningen. 0 är första och högsta heltal (4294967295) är sist. Om ett värde inte anges är standardvärdet Max heltal.  | Nej |
-| moduler. {moduleId}. imagePullPolicy | {"på-skapa" \| "aldrig"} | Nej |
-| moduler. {moduleId}. kuvert | En lista med miljövariabler som ska skickas till modulen. Använder formatet `"<name>": {"value": "<value>"}` | Nej |
+| moduler. {moduleId}. startupOrder | Ett heltals värde för vilket plats en modul har i Start ordningen. 0 är första och högsta heltal (4294967295) är sist. Om ett värde inte anges är standardvärdet Max heltal.  | Inga |
+| moduler. {moduleId}. imagePullPolicy | {"på-skapa" \| "aldrig"} | Inga |
+| moduler. {moduleId}. kuvert | En lista med miljövariabler som ska skickas till modulen. Använder formatet `"<name>": {"value": "<value>"}` | Inga |
 | moduler. {moduleId}. Settings. image | URI: n till modulens bild. | Ja |
-| moduler. {moduleId}. Settings. createOptions | En stringified-JSON som innehåller alternativen för att skapa en modul-behållare. [Alternativ för Docker-skapande](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nej |
+| moduler. {moduleId}. Settings. createOptions | En stringified-JSON som innehåller alternativen för att skapa en modul-behållare. [Alternativ för Docker-skapande](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Inga |
 | moduler. {moduleId}. Configuration. ID | ID för distributionen som distribuerade den här modulen. | IoT Hub anger den här egenskapen när manifestet tillämpas med hjälp av en distribution. Ingår inte i ett distributions manifest. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent rapporterade egenskaper

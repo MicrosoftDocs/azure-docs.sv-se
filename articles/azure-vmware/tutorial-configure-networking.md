@@ -3,12 +3,12 @@ title: Självstudie – Konfigurera nätverk för ditt privata VMware-moln i Azu
 description: Lär dig att skapa och konfigurera de nätverk som behövs för att distribuera ditt privata moln i Azure
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 0fc934cfec17d8d3bb69c21d324f06bee3f9515c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462382"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494382"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Självstudie: Konfigurera nätverk för ditt privata VMware-moln i Azure
 
@@ -94,7 +94,7 @@ Om du vill logga in på vCenter och NSX Manager behöver du URL: erna till vCent
 
 Navigera till Azure VMware-lösningen privat moln, under **Hantera**, Välj **identitet**, här hittar du den information som behövs.
 
-:::image type="content" source="./media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Skärm bild av autentiseringsuppgifterna vCenter och NSX-T och webb klientens URL: er." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Skärm bild av autentiseringsuppgifterna vCenter och NSX-T och webb klientens URL: er." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 
