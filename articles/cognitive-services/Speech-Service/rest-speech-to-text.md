@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24cc7773d281d98b6a0943f5e0a61b6f547991ee
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 90a4ad068f332b198696d96bddbb794c820f42f5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032831"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564396"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API för tal-till-text
 
@@ -28,7 +28,7 @@ REST-API: er från tal till text är:
 
 ## <a name="speech-to-text-rest-api-v30"></a>Tal till text REST API v 3.0
 
-Tal-till-text REST API v 3.0 används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). Om du behöver kommunicera med OnLine-avskriften via REST använder [du tal-till-text-REST API för kort ljud](#speech-to-text-rest-api-for-short-audio).
+Tal-till-text REST API v 3.0 används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). Om du behöver kommunicera med online-avskriften via REST använder [du tal-till-text-REST API för kort ljud](#speech-to-text-rest-api-for-short-audio).
 
 Använd REST API v 3.0 för att:
 - Kopiera modeller till andra prenumerationer om du vill att kollegor ska ha åtkomst till en modell som du har skapat, eller i de fall där du vill distribuera en modell till mer än en region

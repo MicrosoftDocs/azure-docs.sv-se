@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 731d94aa76146bf06a03842e8f3907d1762eeca3
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225616"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467552"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
 
@@ -22,8 +22,7 @@ Du kan lägga till IP-adresser i listan över tillåtna appar för att begränsa
 
 #### <a name="add-ips-to-app-service-allow-list"></a>Lägg till IP-adresser i App Service listan över tillåtna
 
-1. 
-trafik endast från Cognitive Services IP-adresser. Dessa ingår redan i Service Tag-numret `CognitiveServicesManagement` . Detta krävs för att skapa API: er (Skapa/uppdatera KB) för att anropa app service och uppdatera Azure Search-tjänsten enligt detta. Läs [Mer information om service märken.](../../../virtual-network/service-tags-overview.md)
+1. Tillåt endast trafik från Cognitive Services IP-adresser. Dessa ingår redan i Service Tag-numret `CognitiveServicesManagement` . Detta krävs för att skapa API: er (Skapa/uppdatera KB) för att anropa app service och uppdatera Azure Search-tjänsten enligt detta. Läs [Mer information om service märken.](../../../virtual-network/service-tags-overview.md)
 2. Se till att du även tillåter andra start punkter som Azure Bot Service, QnA Maker Portal osv. för förutsägelse "GenerateAnswer" API-åtkomst.
 3. Följ dessa steg om du vill lägga till IP-adressintervall i en lista över tillåtna:
 

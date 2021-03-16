@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763038"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563619"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Använda privata slutpunkter för Azure Web Apps
 
@@ -121,6 +121,8 @@ Du kan ansluta upp till 100 privata slut punkter till en viss webbapp.
 Platser kan inte använda privat slut punkt.
 
 Fjärr fel söknings funktionen är inte tillgänglig när privat slut punkt har Aktiver ATS för webb programmet. Rekommendationen är att distribuera koden till en plats och fjärran sluten fel sökning där.
+
+FTP-åtkomst tillhandahålls via den inkommande offentliga IP-adressen. Den privata slut punkten har inte stöd för FTP-åtkomst till webbappen.
 
 Vi förbättrar den privata länk funktionen och den privata slut punkten regelbundet. Läs [den här artikeln][pllimitations] för uppdaterad information om begränsningar.
 

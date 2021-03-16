@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680611"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563784"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Distribuera ett Azure Service Fabric-kluster med endast tillstånds lösa Node-typer (för hands version)
 Service Fabric Node-typer levereras med ett förutsättnings antagande som vid en viss tidpunkt kan tillstånds känsliga tjänster placeras på noderna. Tillstånds lösa nodtyper sänker detta antagande för en nodtyp, vilket innebär att nodtypen kan använda andra funktioner, till exempel snabbare skalnings åtgärder, stöd för automatiska operativ system uppgraderingar på brons-hållbarhet och skalbarhet till fler än 100 noder i en enda skalnings uppsättning för virtuella datorer.
@@ -72,9 +72,13 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
 Om du vill aktivera tillstånds lösa nodtyper bör du konfigurera den underliggande resursen för skalnings uppsättningar för virtuella datorer på följande sätt:
 
 * Egenskapen Value  **singlePlacementGroup** , som ska anges till **false** om du behöver skala till fler än 100 virtuella datorer.
-* Skalnings uppsättningens **upgradePolicy** vilket **läge** ska vara inställt på **rullande**.
+* Skalnings uppsättningens **upgradePolicy** **läge** ska vara inställt på **rullande**.
 * Läget för löpande uppgradering kräver att ett program hälso tillägg eller hälso avsökning har kon figurer ATS. Konfigurera hälso avsökningen med standard konfiguration för tillstånds lösa nodtyper enligt rekommendationerna nedan. När program har distribuerats till nodtypen kan hälso avsökningen/hälso tilläggets portar ändras för att övervaka program hälsan.
 
+>[!NOTE]
+> Det krävs att antalet plattforms Fels domäner uppdateras till 5 när en tillstånds lös nodtyp backas upp av en skalnings uppsättning för virtuella datorer som sträcker sig över flera zoner. Mer information finns i den här [mallen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
+> 
+> **platformFaultDomainCount: 5**
 ```json
 {
     "apiVersion": "2018-10-01",

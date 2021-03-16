@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448599"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489176"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Lägg till AD FS som en SAML Identity-Provider med anpassade principer i Azure Active Directory B2C
 
@@ -156,9 +156,16 @@ Om du vill använda AD FS som identitets leverantör i Azure AD B2C måste du sk
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
+Använd följande format när du använder en [anpassad domän](custom-domain.md):
+
+```
+https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
+```
+
 Ersätt följande värden:
 
-- **din klient** organisation med ditt klient namn, till exempel Your-Tenant.onmicrosoft.com.
+- **ditt klient namn** med ditt klient namn, till exempel Your-Tenant.onmicrosoft.com.
+- **ditt domän namn** med ditt anpassade domän namn, till exempel login.contoso.com.
 - **din princip** med ditt princip namn. Till exempel B2C_1A_signup_signin_adfs.
 - **din tekniska profil** med namnet på din SAML Identity Provider-tekniska profil. Till exempel contoso-SAML2.
 

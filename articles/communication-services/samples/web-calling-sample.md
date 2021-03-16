@@ -6,15 +6,15 @@ author: chriswhilar
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 10/15/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c3ceb866d9ca817299929b9a811915b82ccfbd48
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614752"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496243"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
 
@@ -93,7 +93,7 @@ Mer information finns i följande artiklar:
 
 ## <a name="additional-reading"></a>Mer att läsa
 
-- [Azure Communication-GitHub](https://github.com/Azure/communication) – Hitta fler exempel och information på den officiella GitHub-Sidan
+- [Exempel](./overview.md) – Hitta fler exempel och exempel på översikts sidan exempel.
 - [Redux](https://redux.js.org/) – tillstånds hantering på klient Sidan
 - [FluentUI](https://aka.ms/fluent-ui) – Microsoft Powered UI-bibliotek
 - [Reagera](https://reactjs.org/) – bibliotek för att skapa användar gränssnitt

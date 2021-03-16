@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: af66f2ec56551a5177cd9323d216e9bf4b0c41be
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021855"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562339"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Viktig information: tal enheter SDK
 
 I följande avsnitt listas ändringar i de senaste versionerna.
+
+## <a name="speech-devices-sdk-1150"></a>1.15.0 för tal enheter SDK:
+
+- Uppgraderat till en ny Microsoft Audio-stack (MAS) med förbättrad beamforming och brus minskning för tal.
+- Minska den binära storleken med så mycket som 70% beroende på målet.
+- Stöd för [Azure percept-ljud](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio) med [binär version](https://aka.ms/sdsdk-download-APAudio).
+- Versionen av [tal-SDK](./speech-sdk.md) -komponenten har uppdaterats till version 1.15.0. Mer information finns i [versions anteckningarna](./releasenotes.md).
 
 ## <a name="speech-devices-sdk-1110"></a>1.11.0 för tal enheter SDK:
 

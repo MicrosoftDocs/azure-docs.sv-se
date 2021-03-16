@@ -8,21 +8,22 @@ ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
+ms.subservice: migration-guide
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2be824c89ac1e6b900dc9b67e046e2be2c7f8919
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742134"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562832"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Självstudie: Migrera Oracle till Azure Database for PostgreSQL online med DMS (för hands version)
 
 > [!IMPORTANT]
-> "Oracle to Azure Database for PostgreSQL"-scenario för migrering (för närvarande i för hands version) kommer inte längre att vara tillgängligt efter den 1 maj 2021. Vi kommer att fortsätta att tillhandahålla support via alternativa verktyg (till exempel Ora2pg) och tillhandahålla bästa migrering för Oracle till PostgreSQL-migreringar. Metod tips för migrering finns i [Oracle to Azure Database for PostgreSQL migration Guide] ( https://aka.ms/OracletoPGguide) . 
+> Scenario **för Oracle till Azure Database for PostgreSQL** migrering (för närvarande i för hands version) kommer inte längre att vara tillgängligt efter den 1 maj 2021. Vi kommer att fortsätta att tillhandahålla support via alternativa verktyg (till exempel Ora2pg) och tillhandahålla bästa migrering för Oracle till PostgreSQL-migreringar. Metod tips för migrering finns i [Oracle to Azure Database for PostgreSQL migration guide](https://aka.ms/OracletoPGguide). 
 
 Du kan använda Azure Database Migration Service för att migrera databaserna från Oracle-databaser som finns lokalt eller på virtuella datorer för att [Azure Database for PostgreSQL](../postgresql/index.yml) med minimal stillestånds tid. Med andra ord kan du slutföra migreringen med minimal stillestånds tid för programmet. I den här självstudien migrerar du exempel databasen **HR** från en lokal eller virtuell dator instans av Oracle-11g till Azure Database for PostgreSQL med hjälp av aktiviteten online-migrering i Azure Database migration service.
 

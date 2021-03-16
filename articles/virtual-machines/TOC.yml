@@ -49,6 +49,8 @@
           href: ./linux/tutorial-load-balancer.md
         - name: 8 – Hantera nätverk
           href: ./linux/tutorial-virtual-network.md
+        - name: 9 – hantera resurser
+          href: ./linux/tutorial-govern-resources.md
     - name: Windows
       items:
         - name: 1 – Skapa/hantera en virtuell dator
@@ -67,6 +69,8 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8 – Hantera nätverk
           href: ./windows/tutorial-virtual-network.md
+        - name: 9 – hantera resurser
+          href: ./windows/tutorial-govern-resources.md
 - name: Arbetsbelastningar
   items:
     - name: Red Hat
@@ -313,99 +317,100 @@
           displayName: 'Azure Hybrid Benefit, Linux, AHB'
           href: ./linux/azure-hybrid-benefit-linux.md
         - name: Windows
-          items:
-            - name: Använda licens för Azure Hybrid-förmånen
-              displayName: 'Azure Hybrid Benefit, AHB'
-              href: ./windows/hybrid-use-benefit-licensing.md
-            - name: Använda värdrättigheter för flera innehavare för Windows 10
-              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
-              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+          displayName: 'Azure Hybrid Benefit, AHB'
+          href: ./windows/hybrid-use-benefit-licensing.md
     - name: Reserverade instanser
       items:
+        - name: Vad är Azure-reservationer?
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Förskottsbetala för virtuella datorer
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: ./prepay-reserved-vm-instances.md
         - name: Förskottsbetala för Dedicated Host
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: prepay-dedicated-hosts-reserved-instances.md
-        - name: Vad är Azure-reservationer?
-          displayName: 'Reserved Instances, RI, prepay, flexibility'
-          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Flexibilitet för VM-instansstorlek
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
-    - name: Skapa virtuella Linux-datorer
+    - name: Skapa virtuella datorer
       items:
-        - name: Godkända distributioner
-          href: ./linux/endorsed-distros.md
-        - name: Använda CLI
-          href: ./linux/create-cli-complete.md
-        - name: Använda en ARM-mall
-          displayName: Azure Resource Manager
-          href: ./linux/create-ssh-secured-vm-from-template.md
-        - name: Använda REST-API
-          href: ./linux/create-vm-rest-api.md
-        - name: Kopiera en virtuell dator med CLI
-          href: ./linux/copy-vm.md
-        - name: Bygg med Jenkins
-          href: /azure/developer/jenkins/pipeline-with-github-and-docker
-        - name: Integrera Jenkins med Azure DevOps
-          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-        - name: Konfigurera strategi för löpande distribution
-          href: ./linux/tutorial-devops-azure-pipelines-classic.md
-        - name: Konfigurera strategin för Kanarie-distribution
-          href: ./linux/tutorial-azure-devops-canary-strategy.md
-        - name: Konfigurera strategin för Blue-Green distribution
-          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-        - name: CI/CD med Azure-pipeliner (YAML)
-          href: ./linux/tutorial-build-deploy-azure-pipelines.md
-        - name: Skapa LAMP-stack
-          href: ./linux/tutorial-lamp-stack.md
-        - name: Säker webb server med TLS\SSL
+        - name: Linux
           items:
-            - name: Linux
+            - name: Godkända distributioner
+              href: ./linux/endorsed-distros.md
+            - name: CLI
+              displayName: 'Create VM, Create'
+              href: ./linux/create-cli-complete.md
+            - name: ARM-mall
+              displayName: 'Create VM, Create, ARM'
+              href: ./linux/create-ssh-secured-vm-from-template.md
+            - name: REST
+              displayName: 'Create VM, Create, REST'
+              href: ./linux/create-vm-rest-api.md
+            - name: LAMP-stack
+              href: ./linux/tutorial-lamp-stack.md
+            - name: Kontinuerlig leverans
+              items:
+                - name: Konfigurera strategi för löpande distribution
+                  href: ./linux/tutorial-devops-azure-pipelines-classic.md
+                - name: Konfigurera strategin för Kanarie-distribution
+                  href: ./linux/tutorial-azure-devops-canary-strategy.md
+                - name: Konfigurera strategin för Blue-Green distribution
+                  href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+                - name: CI/CD med Azure-pipeliner (YAML)
+                  href: ./linux/tutorial-build-deploy-azure-pipelines.md
+            - name: Säker webb server med TLS\SSL
               href: ./linux/tutorial-secure-web-server.md
-            - name: Windows
-              href: ./windows/tutorial-secure-web-server.md
-          displayname: SSL TLS
-    - name: Anslut till virtuella Linux-datorer
-      items:
-        - name: SSH för virtuella Linux-datorer
+        - name: Windows
           items:
-            - name: På Linux eller macOS
-              href: ./linux/mac-create-ssh-keys.md
-            - name: På Windows
-              href: ./linux/ssh-from-windows.md
-            - name: I portalen
-              href: ssh-keys-portal.md
-            - name: Detaljerade steg
-              href: ./linux/create-ssh-keys-detailed.md
-        - name: Fjärr skrivbord för Linux
-          href: ./linux/use-remote-desktop.md
-    - name: Skapa virtuella Windows-datorer
-      items:
-        - name: Använda C#
-          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
-        - name: Använda specialiserad disk
-          items:
-            - name: Portalen
+            - name: Specialiserad disk – Portal
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
-            - name: PowerShell
+            - name: Specialiserad disk – PowerShell
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized.md
-        - name: Skapa en virtuell dator med Chef
-          href: /azure/developer/chef/windows-vm-configure
-        - name: Använda Java
-          href: ./windows/java.md
-        - name: Python
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Använda ARM-mall
-          displayName: Azure Resource Manager template
-          href: ./windows/ps-template.md
-    - name: Ansluta till virtuella Windows-datorer
-      href: ./windows/connect-logon.md
+            - name: ARM-mall
+              displayName: 'Create VM, Create, ARM'
+              href: ./windows/ps-template.md
+            - name: Säker webb server med TLS\SSL
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Anslut till Virtual Machines
       items:
-        - name: WinRM
-          href: ./windows/winrm.md
+        - name: Linux
+          items:
+            - name: Skapa och hantera SSH-nycklar lokalt
+              href: ./linux/create-ssh-keys-detailed.md
+            - name: Skapa och hantera SSH-nycklar i portalen
+              href: ssh-keys-portal.md
+            - name: SSH på Linux eller macOS
+              href: ./linux/mac-create-ssh-keys.md
+            - name: SSH på Windows
+              href: ./linux/ssh-from-windows.md
+            - name: Fjärr skrivbord för Linux
+              href: ./linux/use-remote-desktop.md
+        - name: Windows
+          items:
+            - name: Fjärr skrivbord för Windows
+              href: ./windows/connect-logon.md
+            - name: WinRM
+              href: ./windows/winrm.md
+    - name: Tidssynkronisering
+      items:
+        - name: Linux
+          displayName: Time sync
+          href: ./linux/time-sync.md
+        - name: Windows
+          displayName: Time sync
+          href: ./windows/time-sync.md
+    - name: Kör kommando
+      items:
+        - name: Linux
+          displayName: Run command
+          href: ./linux/run-command.md
+        - name: Windows
+          displayName: Run command
+          href: ./windows/run-command.md
     - name: Tillägg
       items:
         - name: Översikt
@@ -554,6 +559,8 @@
           href: ./extensions/troubleshoot.md
         - name: Problem med Python 3-aktiverade Linux-system
           href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Kapslad virtualisering
+      href: ./windows/nested-virtualization.md
     - name: Migrera till Azure Resource Manager
       items:
         - name: Tas ur bruk från och med 1 mars 2023
@@ -583,54 +590,6 @@
         - name: VANLIGA FRÅGOR OCH SVAR
           displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.md
-    - name: Grundläggande om hantering
-      items:
-        - name: Hantera resurser
-          items:
-            - name: Linux
-              href: ./linux/tutorial-govern-resources.md
-            - name: Windows
-              href: ./windows/tutorial-govern-resources.md
-        - name: Tidssynkronisering
-          items:
-            - name: Linux
-              href: ./linux/time-sync.md
-            - name: Windows
-              href: ./windows/time-sync.md
-        - name: Köra skript på en virtuell dator
-          items:
-            - name: Anpassat skripttillägg
-              items:
-                - name: Linux
-                  href: ./extensions/custom-script-linux.md
-                - name: Windows
-                  href: ./extensions/custom-script-windows.md
-            - name: Kör kommando
-              items:
-                - name: Linux
-                  href: ./linux/run-command.md
-                - name: Windows
-                  href: ./windows/run-command.md
-            - name: Hybrid Runbook Worker
-              href: ../automation/automation-hybrid-runbook-worker.md
-            - name: Seriekonsol
-              items:
-                - name: Linux
-                  href: ./troubleshooting/serial-console-linux.md
-                - name: Windows
-                  href: ./troubleshooting/serial-console-windows.md
-        - name: Aktivera kapslad virtualisering
-          href: ./windows/nested-virtualization.md
-        - name: File Storage
-          items:
-            - name: Linux-montering med SMB
-              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
-            - name: Kopiera filer till en virtuell Linux-dator
-              href: ./linux/copy-files-to-linux-vm-using-scp.md
-        - name: Uppdateringar och korrigeringar
-          items:
-            - name: Red Hat Update Infrastructure
-              href: ./workloads/redhat/redhat-rhui.md
 - name: Avbildningar
   items:
     - name: Hitta Azure Marketplace-avbildningar
@@ -644,6 +603,9 @@
         - name: Windows-klient avbildningar
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
+        - name: Värd rättigheter för flera innehavare för Windows 10
+          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Anpassade Linux-avbildningar
       items:
         - name: Översikt
@@ -1205,6 +1167,8 @@
             - name: PowerShell
               displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
+        - name: Kopiera en virtuell dator med CLI
+          href: ./linux/copy-vm.md
     - name: Lägg till en datadisk
       items:
         - name: Linux
@@ -1274,6 +1238,12 @@
           href: ./linux/azure-to-guest-disk-mapping.md
         - name: Mappa hanterad disk till gäst disk – Windows
           href: ./windows/azure-to-guest-disk-mapping.md
+        - name: File Storage
+          items:
+            - name: Linux-montering med SMB
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Kopiera filer till en virtuell Linux-dator
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: Hitta icke anslutna diskar
           items:
             - name: CLI

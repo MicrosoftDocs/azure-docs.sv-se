@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107597"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562356"
 ---
 # <a name="api-management-policies"></a>API Management-principer
 Det här avsnittet innehåller en referens för följande API Managements principer. Information om hur du lägger till och konfigurerar principer finns [i principer i API Management](api-management-howto-policies.md).
@@ -81,10 +81,16 @@ Det här avsnittet innehåller en referens för följande API Managements princi
     - [Skicka begäran till en tjänst](api-management-dapr-policies.md#invoke) – använder Dapr runtime för att hitta och tillförlitligt kommunicera med en Dapr-mikrotjänst.
     -  [Skicka meddelande till pub/sub-avsnittet](api-management-dapr-policies.md#pubsub) – använder Dapr runtime för att publicera ett meddelande till ett publicerings-/prenumerations ämne.
     -  [Utlös utmatnings bindning](api-management-dapr-policies.md#bind) – använder Dapr runtime för att anropa ett externt system via utgående bindning.
+- [Validerings principer](validation-policies.md)
+    - [Validera innehåll](validation-policies.md#validate-content) – verifierar storleken eller JSON-schemat för en begäran eller en svars text mot API-schemat.
+. 
+    - [Validate Parameters](validation-policies.md#validate-parameters) – verifierar parametrarna för begärans huvud, fråga eller sökväg mot API-schemat.
+    - [Verifiera huvuden](validation-policies.md#validate-headers) – verifierar svars huvudena mot API-schemat.
+    - [Validera status kod](validation-policies.md#validate-status-code) – validerar HTTP-statuskoden i svar mot API-schemat.
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information om hur du arbetar med principer finns i:
 
 + [Principer i API Management](api-management-howto-policies.md)
 + [Transformera API: er](transform-api.md)
-+ [Princip exempel](./policy-reference.md)
++ [Principexempel](./policy-reference.md)

@@ -140,6 +140,20 @@
         - name: Galleridata
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+    - name: Migrera till Azure Machine Learning
+      items:
+        - name: Översikt över migrering
+          href: migrate-overview.md
+        - name: Migrera data uppsättningar
+          href: migrate-register-dataset.md
+        - name: Återskapa experiment
+          href: migrate-rebuild-experiment.md
+        - name: Återskapa webb tjänster
+          href: migrate-rebuild-web-service.md
+        - name: Migrera klient program
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: Återskapa kör R-skript moduler
+          href: migrate-execute-r-script.md
 - name: Referens
   items:
     - name: Algoritm- och modulreferens

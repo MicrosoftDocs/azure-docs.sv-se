@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Ansluta med Microsoft Store-klienten
           href: connect-microsoft-store.md
-        - name: Ansluta med Linux-enheter
+        - name: Ansluta till tunna klienter
           href: linux-overview.md
     - name: Konfigurera omdirigering av enheter
       href: configure-device-redirections.md

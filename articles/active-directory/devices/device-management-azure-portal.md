@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688917"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561659"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Hantera enhetsidentiteter med hjälp av Azure-portalen
 
@@ -169,6 +169,10 @@ Du måste ha tilldelats någon av följande roller för att kunna visa eller han
 
 > [!NOTE]
 > **Enheter som är anslutna till Azure AD eller Azure AD-registrerade kräver Multi-Factor Authentication** inställningen gäller för enheter som antingen är Azure AD-anslutna (med vissa undantag) eller Azure AD registrerad. Den här inställningen gäller inte för Hybrid Azure AD-anslutna enheter, [Azure AD-anslutna virtuella datorer i Azure](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) -och Azure AD-anslutna enheter med hjälp av [själv distributions läge för Windows autopilot](/mem/autopilot/self-deploying).
+
+> [!IMPORTANT]
+> - Vi rekommenderar att du använder [användar åtgärder "Registrera eller ansluta enheter"](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) i villkorlig åtkomst för att tvinga Multi-Factor Authentication för att ansluta till eller registrera en enhet. 
+> - Du måste ange den här inställningen till **Nej** om du använder en princip för villkorlig åtkomst för att kräva Multi-Factor authencation. 
 
 - **Maximalt antal enheter** – med den här inställningen kan du välja maximalt antal Azure AD-anslutna eller Azure AD-registrerade enheter som en användare kan ha i Azure AD. Om en användare når den här kvoten kan de inte lägga till fler enheter förrän en eller flera av de befintliga enheterna tas bort. Standardvärdet är **50**.
 

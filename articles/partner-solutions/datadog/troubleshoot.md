@@ -6,16 +6,26 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: a8bb28892fe42215876b5cc8771ae73c7d2aab7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747115"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563716"
 ---
 # <a name="troubleshooting-datadog-on-azure"></a>Felsöka Datadog på Azure
 
 Det här dokumentet innehåller information om hur du felsöker dina lösningar som använder Datadog.
+
+## <a name="purchase-errors"></a>Köp fel
+
+* Köpet Miss lyckas eftersom ett giltigt kredit kort inte är anslutet till Azure-prenumerationen eller så är ingen betalnings metod kopplad till prenumerationen.
+
+  Använd en annan Azure-prenumeration. Eller Lägg till eller uppdatera kredit kortet eller betalnings metoden för prenumerationen. Mer information finns i [Uppdatera kredit-och betalnings metoden](../../cost-management-billing/manage/change-credit-card.md).
+
+* EA-prenumerationen tillåter inte Marketplace-inköp.
+
+  Använd en annan prenumeration. Eller kontrol lera om din EA-prenumeration är aktive rad för Marketplace-köp. Mer information finns i [Aktivera inköp på Marketplace](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Om dessa alternativ inte löser problemet kan du kontakta [Datadog-supporten](https://www.datadoghq.com/support).
 
 ## <a name="unable-to-create-datadog-resource"></a>Det gick inte att skapa Datadog-resurs
 

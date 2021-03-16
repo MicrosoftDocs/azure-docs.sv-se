@@ -5,19 +5,47 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d560b261e058d01040616f3c59ede60e5986c672
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666969"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470752"
 ---
 # <a name="scaling-hpc-applications"></a>Skala HPC-program
 
 Optimal skalbarhet och skalbar prestanda för HPC-program i Azure kräver prestanda justering och optimerings experiment för den speciella arbets belastningen. Det här avsnittet och de sidor för VM-serien innehåller allmänna rikt linjer för att skala dina program.
+
+## <a name="optimally-scaling-mpi"></a>Optimal skalning av MPI 
+
+Följande rekommendationer gäller för optimal effektivitet, prestanda och konsekvens för program skalning:
+
+- För mindre skalnings jobb (dvs. < 256 KB-anslutningar) använder du alternativet:
+   ```bash
+   UCX_TLS=rc,sm
+   ```
+
+- För större skalnings jobb (dvs. > 256 KB-anslutningar) använder du alternativet:
+   ```bash
+   UCX_TLS=dc,sm
+   ```
+
+- I ovanstående exempel, för att beräkna antalet anslutningar för ditt MPI-jobb, använder du:
+   ```bash
+   Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
+   ```
+
+## <a name="process-pinning"></a>Process fäste
+
+- Fästa processer på kärnor med en ordning för att fästa en gång (till skillnad från en metod för autobalans). 
+- Bindning efter NUMA/Core/HwThread är bättre än standard bindningen.
+- För Hybrid parallella program (OpenMP + MPI) använder du 4 trådar och 1 MPI rang per CCX på HB och HBv2 VM-storlekar.
+- För rena MPI-program kan du experimentera med 1-4 MPI-rankning per CCX för optimala prestanda på HB-och HBv2 VM-storlekar.
+- Vissa program med extrem känslighet för minnes bandbredd kan dra nytta av ett minskat antal kärnor per CCX. För dessa program kan du använda 3 eller 2 kärnor per CCX för att minska minnes bandbredds konkurrens och ge högre prestanda eller mer konsekvent skalbarhet. I synnerhet kan MPI Allreduce ha nytta av den här metoden.
+- För betydligt större skalnings körning rekommenderar vi att du använder UD-eller hybrid RC + UD-transporter. Många MPI-bibliotek/körnings bibliotek gör detta internt (till exempel UCX eller MVAPICH2). Kontrol lera dina transport konfigurationer för storskaliga körningar.
 
 ## <a name="compiling-applications"></a>Kompilera program
 
@@ -68,17 +96,6 @@ För HPC rekommenderar AMD GCC compiler 7,3 eller senare. Äldre versioner, till
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
-
-## <a name="scaling-applications"></a>Skala program 
-
-Följande rekommendationer gäller för optimal effektivitet, prestanda och konsekvens för program skalning:
-
-* Fäst processer till kärnor 0-59 med hjälp av ett rikt uppfästnings sätt (till skillnad från en automatisk balans metod). 
-* Bindning efter NUMA/Core/HwThread är bättre än standard bindningen.
-* För Hybrid parallella program (OpenMP + MPI) använder du 4 trådar och 1 MPI rang per CCX.
-* För rena MPI-program kan du experimentera med 1-4 MPI-rankning per CCX för bästa prestanda.
-* Vissa program med extrem känslighet för minnes bandbredd kan dra nytta av ett minskat antal kärnor per CCX. För dessa program kan du använda 3 eller 2 kärnor per CCX för att minska minnes bandbredds konkurrens och ge högre prestanda eller mer konsekvent skalbarhet. I synnerhet kan MPI Allreduce ha nytta av detta.
-* För betydligt större skalnings körning rekommenderar vi att du använder UD-eller hybrid RC + UD-transporter. Många MPI-bibliotek/körnings bibliotek gör detta internt (till exempel UCX eller MVAPICH2). Kontrol lera dina transport konfigurationer för storskaliga körningar.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/11/2020
-ms.openlocfilehash: f8a852a8c4197169061a9c7633f4f363ad057337
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505808"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467739"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 
@@ -165,36 +165,6 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 - **Orsak**: obestämd.
 - **Rekommendation**: kontrol lera tilldelning av parameter värde i pipelinen. Ett parameter uttryck kan innehålla ogiltiga tecken.
 
-### <a name="error-code-df-excel-invalidconfiguration"></a>Felkod: DF-Excel-InvalidConfiguration
-- **Meddelande**: namn eller index för Excel-blad krävs.
-- **Orsak**: obestämd.
-- **Rekommendation**: kontrol lera värdet för parametern. Ange kalkyl bladets namn eller index för att läsa Excel-data.
-
-- **Meddelande**: Excel-bladets namn och index kan inte finnas samtidigt.
-- **Orsak**: obestämd.
-- **Rekommendation**: kontrol lera värdet för parametern. Ange kalkyl bladets namn eller index för att läsa Excel-data.
-
-- **Meddelande**: ogiltigt intervall har angetts.
-- **Orsak**: obestämd.
-- **Rekommendation**: kontrol lera värdet för parametern. Ange ett giltigt intervall med referens. Mer information finns i [Egenskaper för Excel](./format-excel.md#dataset-properties).
-
-- **Meddelande**: en ogiltig Excel-fil anges när endast. xlsx och. xls stöds
-- **Orsak**: obestämd.
-- **Rekommendation**: se till att fil namns tillägget för Excel är antingen. xlsx eller. xls.
-
-
- ### <a name="error-code-df-excel-invaliddata"></a>Felkod: DF-Excel-InvalidData
-- **Meddelande**: Excel-kalkylbladet finns inte.
-- **Orsak**: obestämd.
-- **Rekommendation**: kontrol lera värdet för parametern. Ange ett giltigt kalkyl blads namn eller index för att läsa Excel-data.
-
-- **Meddelande**: det finns inte stöd för att läsa Excel-filer med ett annat schema nu.
-- **Orsak**: obestämd.
-- **Rekommendation**: Använd en Excel-fil som stöds.
-
-- **Meddelande**: data typen stöds inte.
-- **Orsak**: obestämd.
-- **Rekommendation**: Använd fil data typer som stöds av Excel.
 
 ### <a name="error-code-4502"></a>Felkod: 4502
 - **Meddelande**: det finns betydande samtidiga MappingDataflow-körningar som orsakar fel på grund av begränsning av integration Runtime.
@@ -211,6 +181,206 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 - **Meddelande**: aktiviteten kördes på Azure integration Runtime och det gick inte att dekryptera autentiseringsuppgifterna för data lagret eller data bearbetningen som är ansluten via en egen värd integration Runtime. Kontrol lera konfigurationen av länkade tjänster som är associerade med den här aktiviteten och se till att du använder rätt typ av integration Runtime.
 - **Orsak**: data flödet stöder inte länkade tjänster på integration runtime med egen värd.
 - **Rekommendation**: Konfigurera data flöde som ska köras på en hanterad Virtual Network integration Runtime.
+
+### <a name="error-code-df-xml-invalidvalidationmode"></a>Felkod: DF-XML-InvalidValidationMode
+- **Meddelande**: ogiltigt läge för XML-validering har angetts.
+- **Rekommendation**: kontrol lera värdet för parametern och ange rätt validerings läge.
+
+### <a name="error-code-df-xml-invaliddatafield"></a>Felkod: DF-XML-InvalidDataField
+- **Meddelande**: fältet för skadade poster måste vara av sträng typ och kan ha värdet null.
+- **Rekommendation**: kontrol lera att kolumnen `\"_corrupt_record\"` i käll projektet har en sträng data typ.
+
+### <a name="error-code-df-xml-malformedfile"></a>Felkod: DF-XML-MalformedFile
+- **Meddelande**: felaktig XML-kod i FailFastMode.
+- **Rekommendation**: uppdatera innehållet i XML-filen till rätt format.
+
+### <a name="error-code-df-xml-invaliddatatype"></a>Felkod: DF-XML-InvalidDataType
+- **Meddelande**: XML-element innehåller under element eller attribut och kan inte konverteras.
+
+### <a name="error-code-df-xml-invalidreferenceresource"></a>Felkod: DF-XML-InvalidReferenceResource
+- **Meddelande**: det går inte att matcha referens resursen i XML-datafilen.
+- **Rekommendation**: du bör kontrol lera referens resursen i XML-datafilen.
+
+### <a name="error-code-df-xml-invalidschema"></a>Felkod: DF-XML-InvalidSchema
+- **Meddelande**: schema valideringen misslyckades.
+
+### <a name="error-code-df-xml-unsupportedexternalreferenceresource"></a>Felkod: DF-XML-UnsupportedExternalReferenceResource
+- **Meddelande**: det finns inte stöd för extern referens resurs i XML-datafilen.
+- **Rekommendation**: uppdatera XML-filens innehåll när den externa referens resursen inte stöds nu.
+
+### <a name="error-code-df-gen2-invalidaccountconfiguration"></a>Felkod: DF-GEN2-InvalidAccountConfiguration
+- **Meddelande**: antingen en av konto nyckeln eller Tenant/SpnId/SpnCredential/SpnCredentialType eller MiServiceUri/miServiceToken måste anges.
+- **Rekommendation**: Konfigurera rätt konto i den relaterade länkade Gen2-tjänsten.
+
+### <a name="error-code-df-gen2-invalidauthconfiguration"></a>Felkod: DF-GEN2-InvalidAuthConfiguration
+- **Meddelande**: det går bara att ange en av de tre autentiseringsmetoderna (Key, SERVICEPRINCIPAL och mi). 
+- **Rekommendation**: Välj rätt autentiseringstyp i den relaterade länkade Gen2-tjänsten.
+
+### <a name="error-code-df-gen2-invalidserviceprincipalcredentialtype"></a>Felkod: DF-GEN2-InvalidServicePrincipalCredentialType
+- **Meddelande**: ServicePrincipalCredentialType är ogiltigt.
+
+### <a name="error-code-df-gen2-invaliddatatype"></a>Felkod: DF-GEN2-InvalidDataType
+- **Meddelande**: moln typen är ogiltig.
+
+### <a name="error-code-df-blob-invalidaccountconfiguration"></a>Felkod: DF-BLOB-InvalidAccountConfiguration
+- **Meddelande**: du måste ange antingen en av konto nyckeln eller sas_token.
+
+### <a name="error-code-df-blob-invalidauthconfiguration"></a>Felkod: DF-BLOB-InvalidAuthConfiguration
+- **Meddelande**: det går bara att ange en av de två autentiseringsmetoderna (nyckel, SAS).
+
+### <a name="error-code-df-blob-invaliddatatype"></a>Felkod: DF-BLOB-InvalidDataType
+- **Meddelande**: moln typen är ogiltig.
+
+### <a name="error-code-df-cosmos-partitionkeymissed"></a>Felkod: DF-Cosmos-PartitionKeyMissed
+- **Meddelande**: sökväg till partitionsnyckel måste anges för uppdaterings-och borttagnings åtgärder.
+- **Rekommendation**: Använd den tillhandahållna partitionsnyckel i Cosmos Sink-inställningar.
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Felkod: DF-Cosmos-InvalidPartitionKey
+- **Meddelande**: sökvägen till partitionsnyckel får inte vara tom för uppdaterings-och borttagnings åtgärder.
+- **Rekommendation**: Använd den tillhandahållna partitionsnyckel i Cosmos Sink-inställningar.
+
+### <a name="error-code-df-cosmos-idpropertymissed"></a>Felkod: DF-Cosmos-IdPropertyMissed
+- **Meddelande**: egenskapen ID ska vara mappad för borttagnings-och uppdaterings åtgärder.
+- **Rekommendation**: kontrol lera att indata innehåller en `id` kolumn i Cosmos Sink-inställningar. Om nej, Använd **Select eller härledd Transformation** för att generera den här kolumnen före Sink.
+
+### <a name="error-code-df-cosmos-invalidpartitionkeycontent"></a>Felkod: DF-Cosmos-InvalidPartitionKeyContent
+- **Meddelande**: partitionsnyckel ska börja med/.
+- **Rekommendation**: gör en partitionsnyckel inleds med `/` i Cosmos Sink-inställningar, till exempel: `/movieId` .
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Felkod: DF-Cosmos-InvalidPartitionKey
+- **Meddelande**: partitionKey har inte mappats i mottagare för borttagnings-och uppdaterings åtgärder.
+- **Rekommendation**: Använd den partitionsnyckel som är samma som behållarens partitionsnyckel i Cosmos Sink-inställningar.
+
+### <a name="error-code-df-cosmos-invalidconnectionmode"></a>Felkod: DF-Cosmos-InvalidConnectionMode
+- **Meddelande**: ogiltigt connectionMode.
+- **Rekommendation**: kontrol lera att det läge som stöds är **Gateway** och **DirectHttps** i Cosmos-inställningar.
+
+### <a name="error-code-df-cosmos-invalidaccountconfiguration"></a>Felkod: DF-Cosmos-InvalidAccountConfiguration
+- **Meddelande**: antingen AccountName eller accountEndpoint ska anges.
+
+### <a name="error-code-df-github-writenotsupported"></a>Felkod: DF-GitHub-WriteNotSupported
+- **Meddelande**: GitHub Store tillåter inte skrivningar.
+
+### <a name="error-code-df-pgsql-invalidcredential"></a>Felkod: DF-PGSQL-InvalidCredential
+- **Meddelande**: användaren/lösen ordet ska anges.
+- **Rekommendation**: kontrol lera att du har rätt inställningar för autentiseringsuppgifter i den relaterade länkade postgresql-tjänsten.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Felkod: DF-snö-InvalidStageConfiguration
+- **Meddelande**: det går bara att använda Blob storage-typ som fas i Läs-/skriv åtgärd för snö.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Felkod: DF-snö-InvalidStageConfiguration
+- **Meddelande**: egenskaper för snö Stage-fas ska anges med Azure Blob + SAS-autentisering.
+
+### <a name="error-code-df-snowflake-invaliddatatype"></a>Felkod: DF-snö-InvalidDataType
+- **Meddelande**: Spark-typen stöds inte i snö flingor.
+- **Rekommendation**: Använd den **härledda omvandlingen** för att ändra den relaterade kolumnen i indata till sträng typen innan du kan använda snö handfat. 
+
+### <a name="error-code-df-hive-invalidblobstagingconfiguration"></a>Felkod: DF-Hive-InvalidBlobStagingConfiguration
+- **Meddelande**: egenskaper för mellanlagring av blob-lagring måste anges.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Felkod: DF-Hive-InvalidGen2StagingConfiguration
+- **Meddelande**: ADLS Gen2 lagrings-mellanlagring stöder endast autentiseringsuppgifter för tjänstens huvud namn.
+- **Rekommendation**: bekräfta att du tillämpar autentiseringsuppgifterna för tjänstens huvud namn i den ADLS Gen2 länkade tjänsten som används som mellanlagring.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Felkod: DF-Hive-InvalidGen2StagingConfiguration
+- **Meddelande**: ADLS Gen2 lagrings egenskaper för lagring ska anges. Antingen en av nycklarna Key eller Tenant/spnId/spnKey eller miServiceUri/miServiceToken krävs.
+- **Rekommendation**: Använd rätt autentiseringsuppgifter som används som mellanlagring i registrerings data filen i den relaterade ADLS Gen2 länkade tjänsten. 
+
+### <a name="error-code-df-hive-invaliddatatype"></a>Felkod: DF-Hive-InvalidDataType
+- **Meddelande**: kolumn (er) som inte stöds.
+- **Rekommendation**: uppdatera kolumnen med indata så att den matchar den datatyp som stöds av Hive.
+
+### <a name="error-code-df-hive-invalidstoragetype"></a>Felkod: DF-Hive-InvalidStorageType
+- **Meddelande**: lagrings typen kan antingen vara BLOB eller Gen2.
+
+### <a name="error-code-df-delimited-invalidconfiguration"></a>Felkod: DF-delimited-InvalidConfiguration
+- **Meddelande**: du måste ange antingen en tom rad eller ett anpassat sidhuvud.
+- **Rekommendation**: ange tomma rader eller anpassade rubriker i CSV-inställningar.
+
+### <a name="error-code-df-delimited-columndelimitermissed"></a>Felkod: DF-delimited-ColumnDelimiterMissed
+- **Meddelande**: kolumn avgränsare krävs för att parsa.
+- **Rekommendation**: kontrol lera att du har kolumn avgränsaren i CSV-inställningarna.
+
+### <a name="error-code-df-mssql-invalidcredential"></a>Felkod: DF-MSSQL-InvalidCredential
+- **Meddelande**: antingen en av alternativen User/PWD eller Tenant/SpnId/SpnKey eller MiServiceUri/miServiceToken måste anges.
+- **Rekommendation**: Använd rätt autentiseringsuppgifter i den relaterade MSSQL-länkade tjänsten.
+
+### <a name="error-code-df-mssql-invaliddatatype"></a>Felkod: DF-MSSQL-InvalidDataType
+- **Meddelande**: fält som inte stöds.
+- **Rekommendation**: ändra kolumnen indata så att den matchar den datatyp som stöds av MSSQL.
+
+### <a name="error-code-df-mssql-invalidauthconfiguration"></a>Felkod: DF-MSSQL-InvalidAuthConfiguration
+- **Meddelande**: det går bara att ange en av de tre autentiseringsmetoderna (Key, SERVICEPRINCIPAL och mi).
+- **Rekommendation**: du kan bara ange en av de tre autentiseringsmetoderna (Key, SERVICEPRINCIPAL och mi) i den relaterade MSSQL-länkade tjänsten.
+
+### <a name="error-code-df-mssql-invalidcloudtype"></a>Felkod: DF-MSSQL-InvalidCloudType
+- **Meddelande**: moln typen är ogiltig.
+- **Rekommendation**: kontrol lera din moln typ i relaterad MSSQL-länkad tjänst.
+
+### <a name="error-code-df-sqldw-invalidblobstagingconfiguration"></a>Felkod: DF-SQLDW-InvalidBlobStagingConfiguration
+- **Meddelande**: egenskaper för mellanlagring av blob-lagring måste anges.
+
+### <a name="error-code-df-sqldw-invalidstoragetype"></a>Felkod: DF-SQLDW-InvalidStorageType
+- **Meddelande**: lagrings typen kan antingen vara BLOB eller Gen2.
+
+### <a name="error-code-df-sqldw-invalidgen2stagingconfiguration"></a>Felkod: DF-SQLDW-InvalidGen2StagingConfiguration
+- **Meddelande**: ADLS Gen2 lagrings-mellanlagring stöder endast autentiseringsuppgifter för tjänstens huvud namn.
+
+### <a name="error-code-df-sqldw-invalidconfiguration"></a>Felkod: DF-SQLDW-InvalidConfiguration
+- **Meddelande**: ADLS Gen2 lagrings egenskaper för lagring ska anges. Antingen en av nycklarna Key eller Tenant/spnId/spnCredential/spnCredentialType eller miServiceUri/miServiceToken krävs.
+
+### <a name="error-code-df-delta-invalidconfiguration"></a>Felkod: DF-DELTA-InvalidConfiguration
+- **Meddelande**: det går inte att ange timestamp och version samtidigt.
+
+### <a name="error-code-df-delta-keycolumnmissed"></a>Felkod: DF-DELTA-KeyColumnMissed
+- **Meddelande**: nyckel kolumn (er) måste anges för åtgärder som inte kan infogas.
+
+### <a name="error-code-df-delta-invalidtableoperationsettings"></a>Felkod: DF-DELTA-InvalidTableOperationSettings
+- **Meddelande**: återskapa och trunkera alternativ kan inte båda anges.
+
+### <a name="error-code-df-excel-worksheetconfigmissed"></a>Felkod: DF-Excel-WorksheetConfigMissed
+- **Meddelande**: namn eller index för Excel-blad krävs.
+- **Rekommendation**: kontrol lera värdet för parametern och ange blad namnet eller indexet för att läsa Excel-data.
+
+### <a name="error-code-df-excel-invalidworksheetconfiguration"></a>Felkod: DF-Excel-InvalidWorksheetConfiguration
+- **Meddelande**: Excel-bladets namn och index kan inte finnas samtidigt.
+- **Rekommendation**: kontrol lera värdet för parametern och ange blad namnet eller indexet för att läsa Excel-data.
+
+### <a name="error-code-df-excel-invalidrange"></a>Felkod: DF-Excel-InvalidRange
+- **Meddelande**: ogiltigt intervall har angetts.
+- **Rekommendation**: kontrol lera parametervärdet och ange det giltiga intervallet enligt följande referens: Excel- [format i Azure Data Factory-Dataset egenskaper](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+
+### <a name="error-code-df-excel-worksheetnotexist"></a>Felkod: DF-Excel-WorksheetNotExist
+- **Meddelande**: Excel-kalkylbladet finns inte.
+- **Rekommendation**: kontrol lera värdet för parametern och ange det giltiga blad namnet eller indexet för att läsa Excel-data.
+
+### <a name="error-code-df-excel-differentschemanotsupport"></a>Felkod: DF-Excel-DifferentSchemaNotSupport
+- **Meddelande**: det finns inte stöd för att läsa Excel-filer med ett annat schema nu.
+
+### <a name="error-code-df-excel-invaliddatatype"></a>Felkod: DF-Excel-InvalidDataType
+- **Meddelande**: data typen stöds inte.
+
+### <a name="error-code-df-excel-invalidfile"></a>Felkod: DF-Excel-InvalidFile
+- **Meddelande**: en ogiltig Excel-fil tillhandahålls medan endast. xlsx och. xls stöds.
+
+### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Felkod: DF-AdobeIntegration-InvalidMapToFilter
+- **Meddelande**: en anpassad resurs kan bara ha en nyckel/ID som är mappad till filter.
+
+### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Felkod: DF-AdobeIntegration-InvalidPartitionConfiguration
+- **Meddelande**: endast en enda partition stöds. Partitionsschema kan vara RoundRobin eller hash.
+- **Rekommendation**: kontrol lera att du bara har en enda partition i AdobeIntegration-inställningar. Partitionsnamnet kan vara RoundRobin eller hash.
+
+### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Felkod: DF-AdobeIntegration-KeyColumnMissed
+- **Meddelande**: nyckeln måste anges för åtgärder som inte kan infogas.
+- **Rekommendation**: Ange nyckel kolumnerna i AdobeIntegration-inställningar för åtgärder som inte går att infoga.
+
+### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Felkod: DF-AdobeIntegration-InvalidPartitionType
+- **Meddelande**: partitionstypen måste vara roundRobin.
+- **Rekommendation**: bekräfta att partitionstypen är RoundRobin i AdobeIntegration-inställningarna.
+
+### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Felkod: DF-AdobeIntegration-InvalidPrivacyRegulation
+- **Meddelande**: endast den sekretess förordning som stöds för närvarande är GDPR.
+- **Rekommendation**: bekräfta sekretess förordningen i AdobeIntegration-inställningarna är **' GDPR '**.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Övriga fel söknings tips
 - **Problem**: ett oväntat undantag inträffade och körningen misslyckades.

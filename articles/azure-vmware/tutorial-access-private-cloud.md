@@ -3,12 +3,12 @@ title: Självstudie – åtkomst till ditt privata moln
 description: Lär dig hur du kommer åt ett privat moln i Azure VMware-lösningen
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: f689a0c706b6427497c80dabb01579ace161d1e2
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462273"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494401"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Självstudie: få åtkomst till ett privat moln i Azure VMware-lösningen
 
@@ -34,10 +34,7 @@ I den här guiden får du lära dig att:
 
    URL: er och användarautentiseringsuppgifter för privat moln vCenter och NSX-T Manager-visning.
 
-   >[!TIP]
-   >Välj **skapa ett nytt lösen ord** om du vill generera nya vCenter-och NSX-lösenord.
-
-   :::image type="content" source="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. Navigera till den virtuella dator som du skapade i föregående steg och Anslut till den virtuella datorn. 
 

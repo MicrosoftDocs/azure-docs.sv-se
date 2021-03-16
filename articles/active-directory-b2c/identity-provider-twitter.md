@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 397fff3fafad52b3b989049096fb2d3e1fa2cba1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448157"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488524"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Twitter-konto med hjälp av Azure Active Directory B2C
 
@@ -45,8 +45,12 @@ Om du vill aktivera inloggning för användare med ett Twitter-konto i Azure AD 
 1. Under **autentiseringsinställningar** väljer du **Redigera**
     1. Markera kryss rutan **Aktivera 3-ledade OAuth** .
     1. Kryss rutan Markera **begär e-postadress från användare** .
-    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Till exempel `b2c_1a_signup_signin_twitter`. Använd gemener när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
-    1. För **webbplats-URL: en** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Till exempel `https://contosob2c.b2clogin.com`.
+    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` .  Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Använd gemener när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C. Ersätt:
+        - `your-tenant-name` med namnet på ditt klient namn.
+        - `your-domain-name` med din anpassade domän.
+        - `your-user-flow-Id` med identifieraren för ditt användar flöde. Till exempel `b2c_1a_signup_signin_twitter`. 
+    
+    1. För **webbplats-URL: en** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Till exempel `https://contosob2c.b2clogin.com`. Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name` .
     1. Ange en URL för **tjänst villkoren**, till exempel `http://www.contoso.com/tos` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla villkor för ditt program.
     1. Ange en URL för **Sekretess policyn**, till exempel `http://www.contoso.com/privacy` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla sekretess information för ditt program.
     1. Välj **Spara**.

@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 03/12/2021
-  ms.openlocfilehash: 9014dbbfdb9d1f0ef4af975da917abdcf71d8b2a
-  ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+  ms.openlocfilehash: edf9adfa316407eb0bf1270bae93d7cfa273d50f
+  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/12/2021
-  ms.locfileid: "103232961"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103490098"
 landingContent:
 - title: Om Azure VMware Solution
   linkLists:
@@ -74,12 +74,6 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Begär värd kvot och aktivera Azure VMware-lösning
-      url: enable-azure-vmware-solution.md
-    - text: Spara kostnader med en reserverad instans
-      url: reserved-instance.md
-    - text: Migreringsutvärdering
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: Hantera DHCP
       url: manage-dhcp.md
     - text: Konfigurera NSX-nätverks komponenter
@@ -94,6 +88,16 @@ landingContent:
       url: public-ip-usage.md
     - text: Skapa en IPSec-tunnel
       url: create-ipsec-tunnel.md
+  - linkListType: reference
+    links:
+    - text: Begär värd kvot för Azure VMware-lösning
+      url: enable-azure-vmware-solution.md
+    - text: Flytta EA-och CSP-prenumerationer
+      url: move-ea-csp-subscriptions.md
+    - text: Spara kostnader med en reserverad instans
+      url: reserved-instance.md
+    - text: Migreringsutvärdering
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
 - title: Inbyggd Azure-integrering
   linkLists:
   - linkListType: how-to-guide

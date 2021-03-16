@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3e1eaf4f97b9b04ed02aeb3c6de65b90bf4947e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448582"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489159"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Amazon-konto med hjälp av Azure Active Directory B2C
 
@@ -38,12 +38,17 @@ ms.locfileid: "102448582"
 
 Om du vill aktivera inloggning för användare med ett Amazon-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [Amazon Developer-tjänster och-tekniker](https://developer.amazon.com). Mer information finns i [Registrera för inloggning med Amazon](https://developer.amazon.com/docs/login-with-amazon/register-web.html). Om du inte redan har ett Amazon-konto kan du registrera dig på [https://www.amazon.com/](https://www.amazon.com/) .
 
-> [!NOTE]  
-> Använd följande URL: er i **steg 8** nedan och Ersätt `your-tenant-name` med namnet på din klient. När du anger ditt klient namn använder du enbart gemener, även om klienten har definierats med versaler i Azure AD B2C.
-> - För **tillåtna ursprung** anger du `https://your-tenant-name.b2clogin.com` 
-> - För **tillåtna retur-URL: er**, ange `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
-
-[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
+1. Logga in på [Amazon Developer-konsolen](https://developer.amazon.com/dashboard) med dina Amazon-kontoautentiseringsuppgifter.
+1. Om du inte redan har gjort **det väljer du registrering,** följer stegen för utvecklare och accepterar sedan principen.
+1. Välj **Logga in med Amazon** på instrument panelen.
+1. Välj **skapa en ny säkerhets profil**.
+1. Ange ett **namn på säkerhets profilen**, **beskrivningen av säkerhets profilen** och URL: en för sekretess **meddelandet**, till exempel URL: en för `https://www.contoso.com/privacy` Sekretess meddelandet är en sida som du hanterar som ger sekretess information till användarna. Klicka sedan på **Spara**.
+1. I avsnittet **Logga in med Amazon-konfigurationer** väljer du **det säkerhets profil namn** som du skapade, väljer ikonen **Hantera** och väljer sedan **webb inställningar**.
+1. I avsnittet **webb inställningar** kopierar du värdena för **klient-ID**. Välj **Visa hemlighet** för att hämta klient hemligheten och kopiera den sedan. Du behöver båda värdena för att konfigurera ett Amazon-konto som en identitets leverantör i din klient organisation. **Klient hemlighet** är en viktig säkerhets autentiseringsuppgift.
+1. I avsnittet **webb inställningar** väljer du **Redigera**. 
+    1. I **tillåtna ursprung** anger du `https://your-tenant-name.b2clogin.com` . Ersätt `your-tenant-name` med namnet på din klient. Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name` .
+    1.  **Tillåtna URL: er för returer** , retur `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  Ersätt `your-tenant-name` med namnet på din klient och `your-domain-name` med din anpassade domän.
+1. Välj **Spara**.
 
 ::: zone pivot="b2c-user-flow"
 

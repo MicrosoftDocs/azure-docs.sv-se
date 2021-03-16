@@ -1,6 +1,6 @@
 ---
 title: 'DB2 till SQL-hanterad instans: guide för migrering'
-description: Följ den här guiden för att migrera DB2-databaser till Azure SQL-hanterad instans.
+description: Den här guiden lär dig att migrera dina DB2-databaser till Azure SQL-hanterad instans med hjälp av SQL Server Migration Assistant för DB2.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9ad838b8c5f54d3ecdd5c8ce56b197cdb6cec1ba
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359191"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563869"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Migrations guide: DB2 till SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -61,7 +61,7 @@ Följ dessa steg om du vill skapa en utvärdering:
 
 1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av DB2-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects.
 
-   Till exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
 
    :::image type="content" source="media/db2-to-managed-instance-guide/report.png" alt-text="Granska rapporten för att identifiera eventuella fel eller varningar":::
 
@@ -142,9 +142,6 @@ Test metoden för migrering av databasen består av följande aktiviteter:
 1. **Konfigurera test miljö**: test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
 1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
 1. **Kör prestandatester**: kör prestandatest mot källan och målet och analysera och jämför sedan resultaten.
-
-   > [!NOTE]
-   > Om du behöver hjälp med att utveckla och köra verifierings test efter migrering bör du tänka på vilken data kvalitets lösning som är tillgänglig från partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
 
 
 ## <a name="leverage-advanced-features"></a>Utnyttja avancerade funktioner 

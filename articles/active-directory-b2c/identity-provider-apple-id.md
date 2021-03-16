@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc385c3a7ceb0245e3a4acbedb037b1b28bde7b3
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 24377cf02b30a550043ee63267229039d680cd1c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518117"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489142"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Konfigurera registrering och inloggning med ett Apple-ID med hjälp av Azure Active Directory B2C (för hands version)
 
@@ -57,8 +57,8 @@ Om du vill aktivera inloggning för användare med ett Apple-ID i Azure Active D
 1. Från **identifierare** väljer du den identifierare som du skapade.
 1. Välj **Logga in med Apple** och välj sedan **Konfigurera**.
     1. Välj det **primära app-ID** som du vill konfigurera logga in med Apple med.
-    1. I **domäner och under domäner** anger du `your-tenant-name.b2clogin.com` . Ersätt ditt-Tenant-namn med namnet på din klient.
-    1. I **Retur-URL: er** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt ditt-Tenant-namn med namnet på din klient.
+    1. I **domäner och under domäner** anger du `your-tenant-name.b2clogin.com` . Ersätt ditt-Tenant-namn med namnet på din klient. Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name` .
+    1. I **Retur-URL: er** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Om du använder en [anpassad domän](custom-domain.md)anger du `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient och `your-domain-name` med din anpassade domän.
     1. Välj **Nästa** och välj sedan **färdig**.
     1. När popup-fönstret stängs väljer du **Fortsätt** och väljer sedan **Spara**.
 

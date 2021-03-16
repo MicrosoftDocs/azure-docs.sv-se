@@ -1,6 +1,6 @@
 ---
-title: Säkerhets modul för Azure återställnings tider-översikt
-description: Lär dig mer om säkerhetsmodulen för Azure återställnings tider support och implementering som en del av Azure Defender for IoT.
+title: Defender-IoT-Micro-agent för Azure återställnings tider-översikt
+description: Läs mer om Defender-IoT-Micro-agenten för Azure återställnings tider support och implementering som en del av Azure Defender for IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2021
 ms.author: shhazam
-ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: ae1ae941dcb1af73286a4865089b1be227c484fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809090"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496056"
 ---
-# <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Översikt: Defender för IoT Security Module för Azure återställnings tider (för hands version)
+# <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos-preview"></a>Översikt: Defender för IoT Defender-IoT-Micro-agent för Azure återställnings tider (för hands version)
 
-Azure Defender for IoT Micro-modulen innehåller en omfattande säkerhetslösning för enheter som använder Azure återställnings tider. Den ger täckning för vanliga hot och potentiella skadliga aktiviteter på återställnings tider-enheter (Real Time Opera ting system). Azure återställnings tider levereras nu med Azure IoT Security-modulen inbyggd.
+Azure Defender for IoT Micro-modulen innehåller en omfattande säkerhetslösning för enheter som använder Azure återställnings tider. Den ger täckning för vanliga hot och potentiella skadliga aktiviteter på återställnings tider-enheter (Real Time Opera ting system). Azure återställnings tider levereras nu med Azure IoT Defender-IoT-Micro-agent inbyggt.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Visualisering av Defender för IoT Azure-återställnings tider.":::
 
@@ -47,11 +47,11 @@ Genom att använda den rekommenderade Infrastructure Defender för IoT får du k
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Kom igång med att skydda Azure återställnings tider-enheter
 
-Säkerhetsmodulen för Azure återställnings tider tillhandahålls som kostnads fri nedladdning för dina enheter. Tjänsten Defender för IoT Cloud är tillgänglig med en 30-dagars utvärderings version per Azure-prenumeration. Kom igång genom att ladda ned [Security-modulen för Azure återställnings tider](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
+Defender-IoT-Micro-agent för Azure återställnings tider tillhandahålls som kostnads fri nedladdning för dina enheter. Tjänsten Defender för IoT Cloud är tillgänglig med en 30-dagars utvärderings version per Azure-prenumeration. Kom igång genom att hämta [Defender-IoT-Micro-agenten för Azure återställnings tider](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig om säkerhetsmodulen för Azure återställnings tider. Mer information om säkerhetsmodulen och hur du kommer igång finns i följande artiklar:
+I den här artikeln har du lärt dig mer om Defender-IoT-Micro-agenten för Azure återställnings tider. Mer information om Defender-IoT-Micro-agenten och kom igång finns i följande artiklar:
 
-- [Koncept i Azure återställnings tider IoT Security Module](concept-rtos-security-module.md)
-- [Snabb start: Azure återställnings tider IoT-säkerhetsmodul](quickstart-azure-rtos-security-module.md)
+- [Azure återställnings tider IoT Defender-IoT-Micro-agent-koncept](concept-rtos-security-module.md)
+- [Snabb start: Azure återställnings tider IoT Defender-IoT-Micro-agent](quickstart-azure-rtos-security-module.md)

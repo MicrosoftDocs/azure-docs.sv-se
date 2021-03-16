@@ -162,6 +162,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes-arbetsbelastningar
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Vad är GPU-delning?
+          href: azure-stack-edge-gpu-sharing.md
         - name: Visa Key Vault-integrering
           href: azure-stack-edge-gpu-activation-key-vault.md
         - name: Aktivera proaktiv loggning
@@ -194,10 +196,14 @@
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dynamiskt etablerad tillståndskänslig app
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+                - name: GPU-delad arbets belastning
+                  href: azure-stack-edge-gpu-deploy-kubernetes-gpu-sharing.md
             - name: Via IoT Edge
               items:
                 - name: Tillståndslös app
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: GPU-delad arbets belastning
+                  href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: Utveckla en C#-modul
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Via Azure Arc (förhandsversion)

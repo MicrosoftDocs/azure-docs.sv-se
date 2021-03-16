@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178848"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470721"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -29,9 +29,9 @@ En anpassad princip visas som en eller flera XML-formaterade filer som refererar
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
-  TenantId="mytenant.onmicrosoft.com"
+  TenantId="yourtenant.onmicrosoft.com"
   PolicyId="B2C_1A_TrustFrameworkBase"
-  PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
   ...
 ```
 
@@ -40,13 +40,13 @@ En anpassad princip visas som en eller flera XML-formaterade filer som refererar
 
 | Attribut | Krävs | Beskrivning |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Yes | Den schema version som ska användas för att köra principen. Värdet måste vara `0.3.0.0` |
-| TenantObjectId | No | Den unika objekt identifieraren för Azure Active Directory B2C-klienten (Azure AD B2C). |
-| TenantId | Yes | Den unika identifieraren för den klient som principen tillhör. |
-| PolicyId | Yes | Den unika identifieraren för principen. Den här identifieraren måste föregås av *B2C_1A_* |
-| PublicPolicyUri | Yes | En URI för principen, som är en kombination av klient-ID och princip-ID. |
-| DeploymentMode | No | Möjliga värden: `Production` , eller `Development` . `Production` används som standard. Använd den här egenskapen för att felsöka principen. Mer information finns i [samla in loggar](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | No | Den slut punkt som används för loggning. Värdet måste anges till `urn:journeyrecorder:applicationinsights` om attributet finns. Mer information finns i [samla in loggar](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Ja | Den schema version som ska användas för att köra principen. Värdet måste vara `0.3.0.0` |
+| TenantObjectId | Inga | Den unika objekt identifieraren för Azure Active Directory B2C-klienten (Azure AD B2C). |
+| TenantId | Ja | Den unika identifieraren för den klient som principen tillhör. |
+| PolicyId | Ja | Den unika identifieraren för principen. Den här identifieraren måste föregås av *B2C_1A_* |
+| PublicPolicyUri | Ja | En URI för principen, som är en kombination av klient-ID och princip-ID. |
+| DeploymentMode | Inga | Möjliga värden: `Production` , eller `Development` . `Production` används som standard. Använd den här egenskapen för att felsöka principen. Mer information finns i [samla in loggar](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Inga | Den slut punkt som används för loggning. Värdet måste anges till `urn:journeyrecorder:applicationinsights` om attributet finns. Mer information finns i [samla in loggar](troubleshoot-with-application-insights.md). |
 
 
 I följande exempel visas hur du anger **TrustFrameworkPolicy** -elementet:
@@ -57,14 +57,14 @@ I följande exempel visas hur du anger **TrustFrameworkPolicy** -elementet:
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkBase"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
 **TrustFrameworkPolicy** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| Identifieraren för en bas princip. |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | Bygg stenarna i principen. |
@@ -76,7 +76,7 @@ Om du vill ärva en princip från en annan princip måste ett **BasePolicy** -el
 
 **BasePolicy** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | ID för din Azure AD B2C klient. |
 | PolicyId | 1:1 | Identifierare för den överordnade principen. |
@@ -90,9 +90,9 @@ I följande exempel visas hur du anger en bas princip. Den här **B2C_1A_TrustFr
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkExtensions"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
 
   <BasePolicy>
     <TenantId>yourtenant.onmicrosoft.com</TenantId>

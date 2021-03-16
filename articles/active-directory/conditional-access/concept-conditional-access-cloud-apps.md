@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2895588a5a82ec2b6c69d33ff6cea39bbe3a0372
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307767"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492004"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Villkorlig åtkomst: molnappar eller åtgärder
 
@@ -125,8 +125,14 @@ Förutom Microsoft-appar kan administratörer lägga till alla registrerade Azur
 
 ## <a name="user-actions"></a>Användaråtgärder
 
-Användar åtgärder är uppgifter som kan utföras av en användare. Den enda åtgärd som stöds för närvarande är att **Registrera säkerhets information** , vilket gör det möjligt för principen för villkorlig åtkomst att genomdriva när användare som har Aktiver ATS för kombinerad registrering försöker registrera sin säkerhets information. Mer information finns i artikeln [kombinerad säkerhets informations registrering](../authentication/concept-registration-mfa-sspr-combined.md).
+Användar åtgärder är uppgifter som kan utföras av en användare. Villkorlig åtkomst har för närvarande stöd för två användar åtgärder: 
 
+- **Registrera säkerhets information**: den här användar åtgärden gör att principen för villkorlig åtkomst kan tillämpas när användare som är aktiverade för sammanställd registrering försöker registrera sin säkerhets information. Mer information finns i artikeln [kombinerad säkerhets informations registrering](../authentication/concept-registration-mfa-sspr-combined.md).
+
+- **Registrera eller ansluta enheter (förhands granskning)**: med den här användar åtgärden kan administratörer tillämpa principer för villkorlig åtkomst när användare [registrerar](../devices/concept-azure-ad-register.md) eller [ansluter](../devices/concept-azure-ad-join.md) enheter till Azure AD. Det finns två viktiga överväganden med den här användar åtgärden: 
+   - `Require multi-factor authentication` är den enda åtkomst kontrollen som är tillgänglig för den här användar åtgärden och alla andra har inaktiverats. Den här begränsningen förhindrar konflikter med åtkomst kontroller som antingen är beroende av Azure AD-enhets registrering eller inte tillämplig för registrering av Azure AD-enheter. 
+   - När en princip för villkorlig åtkomst har Aktiver ATS med den här användar åtgärden måste du ange  >    >  **enhets inställningarna** för Azure Active Directory enheter  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` till **Nej**. Annars tillämpas inte principen för villkorlig åtkomst med den här användar åtgärden korrekt. Mer information om den här enhets inställningen finns i [Konfigurera enhets inställningar](../device-management-azure-portal.md##configure-device-settings). Den här användar åtgärden ger flexibilitet att kräva Multi-Factor Authentication för att registrera eller ansluta enheter för vissa användare och grupper eller villkor i stället för att ha en princip för hela klienten i enhets inställningarna. 
+   
 ## <a name="next-steps"></a>Nästa steg
 
 - [Villkorlig åtkomst: villkor](concept-conditional-access-conditions.md)
