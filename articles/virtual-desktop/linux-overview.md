@@ -1,17 +1,17 @@
 ---
-title: Windows Virtual Desktop Linux Support – Azure
-description: En kort översikt av Linux-stöd för virtuella Windows-datorer.
+title: Windows Virtual Desktop tunn klient support – Azure
+description: En kort översikt över tunn klient stöd för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 502a89c5a2c0384e34ee35346332a4dd6adc38aa
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185435"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491477"
 ---
 # <a name="linux-support"></a>Linux-support
 
@@ -23,10 +23,11 @@ Följande partners har godkänt Windows virtuella Skriv bords klienter för Linu
 
 |Partner|Partner dokumentation|Support för partner|
 |:------|:--------------------|:--------------|
-|![Dell-logotyp](./media/partners/dell.png)|[Dokumentation om Dell-klient](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell-support](https://www.dell.com/support)|
-|![IGEL-logotyp](./media/partners/igel.png)|[Dokumentation om IGEL-klient](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-stöd](https://www.igel.com/support/)|
-|![NComputing-logotyp](./media/partners/ncomputing.png)|[Dokumentation om NComputing-klient](https://www.ncomputing.com/microsoft)|[NComputing-stöd](https://www.ncomputing.com/support/support-options)|
-|![Stratodesk-logotyp](./media/partners/stratodesk.png)|[Dokumentation om Stratodesk-klient](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-stöd](https://www.stratodesk.com/support/)|
+|Dells |[Dokumentation om Dell-klient](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell-support](https://www.dell.com/support)|
+|IGEL |[Dokumentation om IGEL-klient](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-stöd](https://www.igel.com/support/)|
+|NComputing |[Dokumentation om NComputing-klient](https://www.ncomputing.com/microsoft)|[NComputing-stöd](https://www.ncomputing.com/support/support-options)|
+|Stratodesk |[Dokumentation om Stratodesk-klient](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-stöd](https://www.stratodesk.com/support/)|
+|HP |[HP-klient dokumentation](https://h20195.www2.hp.com/v2/GetDocument.aspx?docname=c07051097)|[HP-support](https://support.hp.com/us-en/products/workstations-thin-clients)|
 
 ## <a name="next-steps"></a>Nästa steg
 

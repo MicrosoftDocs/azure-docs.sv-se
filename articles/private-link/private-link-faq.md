@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d06e90a691389b99d8f439364203b921f49b2305
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709417"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496481"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Private Link
 
@@ -54,6 +54,11 @@ Ja. Privata slut punkter kan ansluta till Azure PaaS-resurser i Azure-regioner.
 
 ### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Kan jag ändra mitt privata nätverks gränssnitt (NIC)?
 När en privat slut punkt skapas tilldelas ett skrivskyddat nätverkskort. Detta kan inte ändras och kommer att fortsätta för den privata slut punktens livs cykel.
+
+### <a name="how-do-i-achieve-availability-while-using-private-endpoints-in-case-of-regional-failures-"></a>Hur gör jag för att uppnå tillgänglighet när du använder privata slut punkter i händelse av regionala haverier?
+
+Privata slut punkter är resurser med hög tillgänglighet med 99,99% SLA [[SLA för Azure Private Link]](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/). Men eftersom de är regionala resurser kan eventuella störningar i Azure-regioner påverka tillgängligheten. Om du vill uppnå tillgänglighet vid regionala haverier kan flera Parameterentiteter som är anslutna till samma mål resurs distribueras i olika regioner. På så sätt kan du fortfarande dirigera trafiken för dina återställnings scenarier via PE i olika regioner för att få åtkomst till mål resursen. Information om hur regionala fel hanteras på mål tjänst sidan finns i tjänst dokumentationen om redundans och återställning. Trafik för privata länkar följer Azure DNS-matchning för mål slut punkten. 
+
 
 ## <a name="private-link-service"></a>Private Link-tjänst
  

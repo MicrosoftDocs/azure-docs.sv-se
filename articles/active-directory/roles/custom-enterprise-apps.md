@@ -1,5 +1,5 @@
 ---
-title: Anpassade roll behörigheter för åtkomst tilldelningar för företags program – Azure Active Directory | Microsoft Docs
+title: Skapa anpassade roller för att hantera företags program i Azure Active Directory
 description: Skapa och tilldela anpassade Azure AD-roller för åtkomst till företags program i Azure Active Directory
 services: active-directory
 author: rolyon
@@ -13,14 +13,14 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb04616fb442f4a6c000e11919638231e3ddf64c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012181"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467756"
 ---
-# <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Tilldela anpassade roller för att hantera företags program i Azure Active Directory
+# <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Skapa anpassade roller för att hantera företags program i Azure Active Directory
 
 Den här artikeln beskriver hur du skapar en anpassad roll med behörigheter för att hantera tilldelningar av företags program för användare och grupper i Azure Active Directory (Azure AD). För elementen i roll tilldelningarna och innebörden av termer som undertyp, behörighet och egenskaps uppsättning, se [översikten över anpassade roller](custom-overview.md).
 

@@ -4,12 +4,12 @@ description: Ser du inte data i Azure Application Insights? Prova här.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092459"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562203"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Fel sökning av inga data Application Insights för .NET/.NET Core
 
@@ -68,11 +68,11 @@ När du uppgraderar från SDK: er som är äldre än (2,4) måste du se till att
     </TelemetryModules>
     ```
 
-*Om det inte *_går att uppgradera korrekt kan det leda till oväntade undantag eller telemetri som inte samlas in._* _
+***Om det inte går att uppgradera korrekt kan det leda till oväntade undantag eller telemetri som inte samlas in.***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Alternativet Lägg till Application Insights i Visual Studio
-_When jag högerklickar på ett befintligt projekt i Solution Explorer, ser jag inga Application Insights alternativ. *
+*När jag högerklickar på ett befintligt projekt i Solution Explorer visas inga Application Insights alternativ.*
 
 * Alla typer av .NET-projekt stöds inte av verktygen. Webb-och WCF-projekt stöds. För andra projekt typer, till exempel Skriv bords-eller tjänst program, kan du fortfarande [lägga till en Application Insights SDK i projektet manuellt](./windows-desktop.md).
 * Kontrol lera att du har [Visual Studio 2013 Update 3 eller senare](/visualstudio/releasenotes/vs2013-update3-rtm-vs). Det levereras förinstallerat med Developer Analytics-verktyg, som tillhandahåller Application Insights SDK.
@@ -224,7 +224,7 @@ Följ de här anvisningarna för att avbilda fel söknings loggar för ditt ramv
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>

@@ -1,5 +1,5 @@
 ---
-title: Klassisk händelse agg regering för säkerhetsmodulen
+title: Defender – IoT-Micro-agent klassisk händelse agg regering
 description: Läs mer om Defender för händelse agg regering i IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 01333da3041cc93154c46fb45a39bb209fd30f91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809226"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493089"
 ---
-# <a name="security-module-classic-event-aggregation"></a>Klassisk händelse agg regering för säkerhetsmodulen
+# <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Defender – IoT-Micro-agent klassisk händelse agg regering
 
 Defender för IoT-säkerhetsagenter samlar in data-och system händelser från den lokala enheten och skickar dessa data till Azure-molnet för bearbetning och analys. Säkerhets agenten samlar in många typer av enhets händelser, inklusive nya processer och nya anslutnings händelser. Både nya processer och nya anslutnings händelser kan på ett legitimt sätt ske ofta på en enhet inom en sekund, och även om det är viktigt för robust och omfattande säkerhet, tvingas det att skicka säkerhets agenter för meddelanden som snabbt når eller överskrider din IoT Hub kvot och dina kostnads gränser. Dessa händelser innehåller dock mycket värdefull säkerhets information som är viktig för att skydda enheten.
 

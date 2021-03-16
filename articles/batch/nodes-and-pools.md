@@ -3,12 +3,12 @@ title: Noder och pooler i Azure Batch
 description: Lär dig mer om Compute-noder och pooler och hur de används i ett Azure Batch arbets flöde från en utvecklings synpunkt.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200231"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563903"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Noder och pooler i Azure Batch
 
@@ -208,3 +208,4 @@ Om du lägger till ett certifikat i en befintlig pool måste du starta om dess d
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [jobb och uppgifter](jobs-and-tasks.md).
+- Lär dig hur du kan [identifiera och undvika fel i en pool-och nods bakgrunds åtgärder ](batch-pool-node-error-checking.md).

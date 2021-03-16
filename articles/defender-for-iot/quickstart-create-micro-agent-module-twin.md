@@ -1,5 +1,5 @@
 ---
-title: Skapa en Defender IoT Micro agent-modul med dubbla
+title: Skapa en Defender IoT Micro agent-modul, delad (för hands version)
 titleSuffix: Azure Defender for IoT
 description: Lär dig hur du skapar en enskild DefenderIotMicroAgent-modul för nya enheter.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e1c2f4e79b9f0f0ba1ec0da0c5a2a29cdc8bc6d7
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123011"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489887"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>Skapa en Defender IoT Micro agent-modul med dubbla 
+# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Skapa en Defender IoT Micro agent-modul, delad (för hands version)
 
 Du kan skapa en enskild **DefenderIotMicroAgent** -modul för nya enheter. Du kan också skapa en modul med dubbla för alla enheter i en IoT Hub. 
 
@@ -27,9 +27,9 @@ Defender för IoT kan integreras fullständigt med din befintliga plattform för
 
 Lär dig mer om begreppet [enhets enheter](../iot-hub/iot-hub-devguide-device-twins.md)   i Azure IoT Hub. 
 
-## <a name="security-module-twins"></a>Säkerhetsmodul, dubbla 
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-Micro-agent är dubbla 
 
-Defender for IoT använder en säkerhetsmodul som är dubbel för varje enhet. Säkerhetsmodulen är dubbelt innehåller all information som är relevant för enhets säkerhet, för varje enskild enhet i din lösning. Egenskaper för enhets säkerhet konfigureras via en dedikerad säkerhetsmodul för säkrare kommunikation, för att möjliggöra uppdateringar och underhåll som kräver färre resurser. 
+Defender for IoT använder en Defender-IoT-mikroagent för varje enhet. Defender-IoT-Micro-agenten innehåller all information som är relevant för enhets säkerhet, för varje enskild enhet i lösningen. Egenskaperna för enhets säkerhet konfigureras via en dedikerad Defender-IoT-mikroagent som är unik för säkrare kommunikation, för att möjliggöra uppdateringar och underhåll som kräver färre resurser. 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>Att förstå DefenderIotMicroAgent-modulen är dubbla 
 
@@ -39,9 +39,9 @@ Defender for IoT erbjuder möjlighet att helt integrera din befintliga plattform
 
 Om du vill veta mer om det allmänna konceptet moduls dubbla i Azure IoT Hub, se [IoT Hub modul, dubbla](../iot-hub/iot-hub-devguide-module-twins.md).
 
-Defender for IoT använder modulens dubbla mekanism och underhåller en säkerhetsmodul med dubbla namn `DefenderIotMicroAgent` för var och en av dina enheter. 
+Defender for IoT använder modulens dubbla mekanism och har ett dubbla namn på en Defender-IoT-Micro-agent `DefenderIotMicroAgent` som heter för var och en av dina enheter. 
 
-För att kunna utnyttja alla funktioner i Defender för IoT måste du skapa, konfigurera och använda säkerhetsmodulen för alla enheter i tjänsten. 
+För att kunna dra full nytta av alla Defender-funktioner i IoT måste du skapa, konfigurera och använda Defender-IoT-Micro-agenten för varje enhet i tjänsten. 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>Skapa DefenderIotMicroAgent-modul, dubbla 
 
@@ -49,7 +49,7 @@ Du kan skapa **DefenderIotMicroAgent** -modulens dubblare genom att manuellt red
 
 Så här skapar du en ny **DefenderIotMicroAgent** -modul för en enhet manuellt: 
 
-1. Leta upp och välj den enhet som du vill skapa en säkerhetsmodul för i IoT Hub. 
+1. Leta upp och välj den enhet på vilken du vill skapa en Defender-IoT-Micro-agent på IoT Hub. 
 
 1. Välj **Lägg till modulens identitet**. 
 
@@ -59,7 +59,7 @@ Så här skapar du en ny **DefenderIotMicroAgent** -modul för en enhet manuel
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>Kontrol lera att en modul har skapats 
 
-Så här kontrollerar du om det finns en säkerhetsmodul för en speciell enhet: 
+Så här kontrollerar du om det finns en Defender-IoT-Micro-agent för en speciell enhet: 
 
 1. I Azure IoT Hub väljer du **IoT**   -enheter på menyn **Explorer**   . 
 
