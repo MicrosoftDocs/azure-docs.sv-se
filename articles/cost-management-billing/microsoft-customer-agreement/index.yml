@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Kom igång med Microsofts kund avtal
+summary: Kom igång med att hantera dina fakturerings-och prenumerationer enligt ditt kund avtal för Microsoft. Lär dig att förstå och optimera dina kostnader samtidigt som du säkerställer säker åtkomst till din fakturerings miljö.
+metadata:
+  title: Kom igång med Microsofts kund avtal
+  description: Lär dig hur du kommer igång med ditt kund avtal för Microsoft.
+  ms.service: cost-management-billing
+  ms.subservice: billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 03/01/2021
+  ms.openlocfilehash: f2dcb2687a5a765e674a3dce7ac9016e58056b81
+  ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103574722"
+landingContent:
+- title: Kom igång
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är ett kund avtal för Microsoft?
+      url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Flytta från kredit kort till faktura
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Åtkomst prenumerationer med domän-ID
+      url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Konfigurera en administratör för att hantera prenumerations användare
+      url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Skapa nya prenumerationer
+      url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- title: Hantera fakturering
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Förstå min fakturerings period
+      url: ../understand/mca-understand-your-invoice.md#billing-period
+  - linkListType: tutorial
+    links:
+    - text: Få en faktura under mitt avtal
+      url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Vad är en fakturerings profil och hur hanterar jag den?
+      url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Betala faktura per faktura
+      url: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Betala faktura per kredit eller betalkort eller via kontroll eller överföring
+      url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Konfigurera en administratör för att hantera fakturering
+      url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Starta fakturering för mitt avtal
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Hitta min prenumerations ägare
+      url: ../manage/add-change-subscription-administrator.md#assign-a-subscription-administrator
+  - linkListType: video
+    links:
+    - text: Organisera kostnader
+      url: https://www.youtube.com/watch?v=7RxTfShGHwU
+    - text: Hantera åtkomst till fakturerings konto
+      url: https://www.youtube.com/watch?v=9sqglBlKkho
+    - text: Förstå din faktura
+      url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+- title: Hantera prenumerationer
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vad är Active Directory?
+      url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
