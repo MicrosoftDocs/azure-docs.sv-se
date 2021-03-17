@@ -2,13 +2,13 @@
 title: Översikt över funktioner – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om funktioner och terminologi i Azure Event Hubs.
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.openlocfilehash: fbfc2a23a7cde50172b80769558c2dfd6fd5ec84
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739083"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601312"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funktioner och terminologi i Azure Event Hubs
 
@@ -53,6 +53,13 @@ Publicerade händelser tas bort från en Händelsehubben baserat på en konfigur
 - För Event Hubs **standard** är den maximala kvarhållningsperioden **7 dagar**. 
 - För Event Hubs **dedikerad** är den högsta kvarhållningsperioden **90 dagar**.
 - Om du ändrar kvarhållningsperioden gäller den för alla meddelanden, inklusive meddelanden som redan finns i händelsehubben. 
+
+Event Hubs behåller händelser för en konfigurerad kvarhållningsperiod som gäller för alla partitioner. Händelser tas bort automatiskt när kvarhållningsperioden har nåtts. Om du anger en kvarhållningsperiod på en dag blir händelsen otillgänglig exakt 24 timmar efter att den har accepterats. Du kan inte uttryckligen ta bort händelser. 
+
+Om du behöver arkivera händelser utöver den tillåtna kvarhållningsperioden, kan du låta dem [lagras automatiskt i Azure Storage eller Azure Data Lake genom att aktivera funktionen för Event Hubs Capture](event-hubs-capture-overview.md)och om du behöver söka efter eller analysera sådana djup arkiv kan du [enkelt importera dem till Azure Synapse](store-captured-data-data-warehouse.md) eller andra liknande butiker och analys plattformar. 
+
+Orsaken till Event Hubs gräns för datakvarhållning baserat på tid är att förhindra att stora mängder historiska kund data får fångas i en djup lagring som bara indexeras av en tidsstämpel och endast tillåter sekventiell åtkomst. Arkitektur filosofin här är att historiska data behöver bättre indexering och direkt åtkomst än i real tids händelse gränssnittet som Event Hubs eller Kafka tillhandahåller. Händelse Ströms motorer är inte väl lämpade för att spela upp rollen som data sjöar eller långsiktiga Arkiv för händelse källor. 
+ 
 
 > [!NOTE]
 > Event Hubs är en händelse Ströms motor i real tid och är inte avsedd att användas i stället för en databas och/eller som ett permanent Arkiv för händelse strömmar med oändligt kvarhållna händelser. 

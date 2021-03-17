@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741124"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600870"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Felsöka lösen ords återställning via självbetjäning i Azure Active Directory
 
 Azure Active Directory (Azure AD) självbetjäning för återställning av lösen ord (SSPR) gör det möjligt för användare att återställa sina lösen ord i molnet.
 
-Om du har problem med SSPR kan du använda följande fel söknings steg och vanliga fel. Om du inte hittar svaret på ditt problem [är våra support team alltid tillgängliga](#contact-microsoft-support) för att hjälpa dig.
+Om du har problem med SSPR kan du använda följande fel söknings steg och vanliga fel. Du kan också titta på den här korta videon om [hur man löser de sex vanligaste SSPR slut användar fel meddelandena](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1).
+
+Om du inte hittar svaret på ditt problem [är våra support team alltid tillgängliga](#contact-microsoft-support) för att hjälpa dig.
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>SSPR-konfiguration i Azure Portal
 

@@ -7,16 +7,10 @@
       href: what-are-cognitive-services.md
     - name: Nyheter i Cognitive Services-dokument
       href: whats-new-docs.md
-    - name: Cognitive Services och Machine Learning
-      href: cognitive-services-and-machine-learning.md
-    - name: Utvecklingsalternativ för Cognitive Services
-      href: cognitive-services-development-options.md
-    - name: Anpassade underdomäner för Cognitive Services
-      href: cognitive-services-custom-subdomains.md
     - name: Stöd för språk
       href: language-support.md
-    - name: Planera och hantera kostnader
-      href: plan-manage-costs.md
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
 - name: Snabbstarter
   items:
     - name: Skapa en ny resurs med Azure Portal
@@ -28,68 +22,82 @@
     - name: Skapa en ny resurs med en ARM-mall
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+- name: Instruktioner
+  items:
+    - name: Planera och hantera kostnader
+      href: plan-manage-costs.md
     - name: Diagnostikloggning
       href: diagnostic-logging.md
-- name: Säkerhet
+    - name: Distribuera
+      items:
+        - name: Containers
+          items:
+            - name: Stöd för containrar
+              href: cognitive-services-container-support.md
+            - name: Taggar och viktig information för containeravbildningar
+              href: ./containers/container-image-tags.md
+            - name: Vanliga frågor och svar om containrar
+              href: ./containers/container-faq.yml
+            - name: Containerinstruktioner
+              items:
+                - name: Containeråteranvändning
+                  href: ./containers/container-reuse-recipe.md
+                - name: Distribuera till Azure Container Instances
+                  href: ./containers/azure-container-instance-recipe.md
+                - name: Distribuera till Azure Kubernetes
+                  href: ./containers/azure-kubernetes-recipe.md
+                - name: Distribuera med Docker Compose
+                  href: ./containers/docker-compose-recipe.md
+            - name: Andra containertjänster
+              items:
+                - name: Azure Container Instances
+                  href: ../container-instances/container-instances-tutorial-prepare-app.md
+                - name: Azure Container Registry
+                  href: ../container-registry/container-registry-get-started-azure-cli.md
+                - name: Azure Kubernetes Service (AKS)
+                  href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Dokumentation om containrar för Cognitive Services
+              href: containers/index.yml
+    - name: Säkerhet
+      items:
+        - name: Cognitive Services-säkerhet
+          href: cognitive-services-security.md
+        - name: Virtuella nätverk för Cognitive Services
+          href: cognitive-services-virtual-networks.md
+        - name: Konfigurera kundhanterade nycklar
+          href: ./encryption/cognitive-services-encryption-keys-portal.md
+        - name: Autentisera begäranden till Cognitive Services
+          href: authentication.md
+        - name: Säkerhetsbaslinje
+          href: security-baseline.md
+        - name: Säkerhetskontroller av Azure Policy
+          href: ./security-controls-policy.md
+    - name: Använd med Big data
+      items:
+        - name: Cognitive Services för stordata
+          href: ./big-data/cognitive-services-for-big-data.md
+        - name: Komma igång
+          href: ./big-data/getting-started.md
+        - name: Exempel
+          items:
+            - name: Python
+              href: ./big-data/samples-python.md
+            - name: Scala
+              href: ./big-data/samples-scala.md
+        - name: Recept
+          items:
+            - name: 'Recept: Avvikelseidentifiering'
+              href: ./big-data/recipes/anomaly-detection.md
+            - name: 'Recept: Art Explorer'
+              href: ./big-data/recipes/art-explorer.md
+- name: Begrepp
   items:
-    - name: Cognitive Services-säkerhet
-      href: cognitive-services-security.md
-    - name: Virtuella nätverk för Cognitive Services
-      href: cognitive-services-virtual-networks.md
-    - name: Konfigurera kundhanterade nycklar
-      href: ./encryption/cognitive-services-encryption-keys-portal.md
-    - name: Autentisera begäranden till Cognitive Services
-      href: authentication.md
-    - name: Säkerhetsbaslinje
-      href: security-baseline.md
-    - name: Säkerhetskontroller av Azure Policy
-      href: ./security-controls-policy.md
-- name: Stöd för containrar
-  items:
-    - name: Stöd för containrar
-      href: cognitive-services-container-support.md
-    - name: Taggar och viktig information för containeravbildningar
-      href: ./containers/container-image-tags.md
-    - name: Vanliga frågor och svar om containrar
-      href: ./containers/container-faq.yml
-    - name: Containerinstruktioner
-      items:
-        - name: Containeråteranvändning
-          href: ./containers/container-reuse-recipe.md
-        - name: Distribuera till Azure Container Instances
-          href: ./containers/azure-container-instance-recipe.md
-        - name: Distribuera till Azure Kubernetes
-          href: ./containers/azure-kubernetes-recipe.md
-        - name: Distribuera med Docker Compose
-          href: ./containers/docker-compose-recipe.md
-    - name: Andra containertjänster
-      items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Container Registry
-          href: ../container-registry/container-registry-get-started-azure-cli.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Dokumentation om containrar för Cognitive Services
-      href: containers/index.yml
-- name: Stordata
-  items:
-    - name: Cognitive Services för stordata
-      href: ./big-data/cognitive-services-for-big-data.md
-    - name: Komma igång
-      href: ./big-data/getting-started.md
-    - name: Exempel
-      items:
-        - name: Python
-          href: ./big-data/samples-python.md
-        - name: Scala
-          href: ./big-data/samples-scala.md
-    - name: Recept
-      items:
-        - name: 'Recept: Avvikelseidentifiering'
-          href: ./big-data/recipes/anomaly-detection.md
-        - name: 'Recept: Art Explorer'
-          href: ./big-data/recipes/art-explorer.md
+    - name: Utvecklingsalternativ för Cognitive Services
+      href: cognitive-services-development-options.md
+    - name: Cognitive Services och Machine Learning
+      href: cognitive-services-and-machine-learning.md
+    - name: Anpassade underdomäner för Cognitive Services
+      href: cognitive-services-custom-subdomains.md
 - name: Referens
   items:
     - name: Inbyggda Azure Policy-program
@@ -99,23 +107,19 @@
   items:
     - name: Alternativ för support och hjälp
       href: cognitive-services-support-options.md
-    - name: Azure-översikt
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: Prissättning
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Stöd för regioner
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Azure-uppdateringar
+      href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
     - name: Priskalkylator
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Serviceavtal (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
+    - name: Azure Government
+      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
     - name: Videoklipp
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Blogg
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
-    - name: Tjänstuppdateringar
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Ge produktfeedback
-      href: 'https://cognitive.uservoice.com/'
-    - name: Uppförandekod
-      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

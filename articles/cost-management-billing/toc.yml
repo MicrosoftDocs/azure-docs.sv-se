@@ -148,6 +148,8 @@
               href: manage/understand-mca-roles.md
             - name: Länka partner-ID
               href: manage/link-partner-id.md
+            - name: Länka partner-ID till Power Apps-konton
+              href: manage/link-partner-id-power-apps-accounts.md
         - name: Administrera prenumerationer
           items:
             - name: Tilldela åtkomst till Cost Management-data

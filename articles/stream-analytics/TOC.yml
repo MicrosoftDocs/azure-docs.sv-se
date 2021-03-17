@@ -44,7 +44,7 @@
 - name: Exempel
   items:
     - name: Kodexempel
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+      href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure-stream-analytics'
 - name: Begrepp
   items:
     - name: Lösningsmönster från slutpunkt till slutpunkt
@@ -688,7 +688,7 @@
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blogg
-      href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
+      href: 'https://techcommunity.microsoft.com/t5/analytics-on-azure/bg-p/AnalyticsonAzure'
     - name: Feedback-forum
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Frågesida på Microsoft Q&A
@@ -705,5 +705,3 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: Kundfallstudier
       href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: Whitepaper-datablad – händelsebearbetning i realtid
-      href: stream-analytics-real-time-event-processing-reference-architecture.md

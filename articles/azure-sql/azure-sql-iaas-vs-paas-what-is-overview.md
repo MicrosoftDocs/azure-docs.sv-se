@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6961c0ffc0d5b9c6559d20b00bfb5510f7247adb
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550886"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600989"
 ---
 # <a name="what-is-azure-sql"></a>Vad är Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,11 @@ Azure SQL bygger på den välbekanta SQL Server motorn, så att du kan migrera p
 
 Lär dig hur varje produkt passar in i Microsofts Azure SQL data-plattform för att matcha det rätta alternativet för dina affärs behov. Oavsett om du prioriterar kostnads besparingar eller minimal administration kan den här artikeln hjälpa dig att avgöra vilken metod som passar bäst för de affärs krav du bryr dig om.
 
-
 Om du är nybörjare på Azure SQL kan du titta närmare *på Azure SQL-* video från vår djupgående [Azure SQL-video serie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-
+> [!TIP]
+> Hur kan vi göra Azure SQL bättre? [Ta undersökningen](https://aka.ms/AzureSQLSurvey).
 
 ## <a name="overview"></a>Översikt
 
@@ -144,7 +144,7 @@ Mer information om priser finns i följande resurser:
 
 - [Prissättning för SQL Database & SQL-hanterad instans](https://azure.microsoft.com/pricing/details/sql-database/)
 - [Priser för virtuella datorer](https://azure.microsoft.com/pricing/details/virtual-machines/) för [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) och för [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows)
-- [Pris kalkylator för Azure](https://azure.microsoft.com/pricing/calculator/)
+- [Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/)
 
 ## <a name="administration"></a>Administration
 

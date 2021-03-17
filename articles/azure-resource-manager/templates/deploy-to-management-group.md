@@ -2,13 +2,13 @@
 title: Distribuera resurser till hanterings grupp
 description: Beskriver hur du distribuerar resurser i hanterings gruppens omfattning i en Azure Resource Manager-mall.
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 03/16/2021
+ms.openlocfilehash: b14dc3622a6ad6519968bd2998aa354a850f2515
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491615"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601601"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Distributioner av hanterings grupper med ARM-mallar
 
@@ -219,6 +219,8 @@ I nästa exempel skapas en ny hanterings grupp i hanterings gruppen som anges so
     }
 }
 ```
+
+Om du vill distribuera en mall som flyttar en befintlig Azure-prenumeration till en ny hanterings grupp läser du [Flytta prenumerationer i arm-mallen](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template)
 
 ## <a name="azure-policy"></a>Azure Policy
 
