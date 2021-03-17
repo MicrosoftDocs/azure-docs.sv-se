@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: pausa och återuppta beräkning i Synapse SQL-poolen med Azure PowerShell'
-description: Du kan använda Azure PowerShell för att pausa och återuppta Synapse SQL-poolen (data lager). beräknings resurser.
+title: 'Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool (tidigare SQL DW) med Azure PowerShell'
+description: Du kan använda Azure PowerShell för att pausa och återuppta en dedikerad SQL-pool (tidigare SQL DW). beräknings resurser.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0851bbf990e78e32a1b4330719ad82bd6a7d3703
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121047"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600928"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Snabb start: pausa och återuppta beräkning i Synapse SQL-poolen med Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool (tidigare SQL DW) med Azure PowerShell
 
-Du kan använda Azure PowerShell för att pausa och återuppta beräknings resurserna för Synapse SQL-pool (data lager).
+Du kan använda Azure PowerShell för att pausa och återuppta dedikerad SQL-pool (tidigare SQL DW) Compute-resurser.
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Den här snabb starten förutsätter att du redan har en SQL-pool som du kan pausa och återuppta. Om du behöver skapa ett kan du använda [skapa och ansluta-portalen](create-data-warehouse-portal.md) för att skapa en SQL-pool med namnet **mySampleDataWarehouse**.
+Den här snabb starten förutsätter att du redan har en särskild SQL-pool (tidigare SQL DW) som du kan pausa och återuppta. Om du behöver skapa en, kan du använda [skapa och ansluta – Portal](create-data-warehouse-portal.md) för att skapa en dedikerad SQL-pool (tidigare SQL DW) som kallas **mySampleDataWarehouse**.
 
 ## <a name="log-in-to-azure"></a>Logga in på Azure
 
@@ -49,11 +49,11 @@ Om du behöver använda en annan prenumeration än standardinställningen kör d
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-sql-pool-information"></a>Slå upp information om SQL-pool
+## <a name="look-up-dedicated-sql-pool-formerly-sql-dw-information"></a>Leta upp dedikerad SQL-pool (tidigare SQL DW) information
 
-Leta upp databas namnet, Server namnet och resurs gruppen för SQL-poolen som du planerar att pausa och återuppta.
+Leta upp databas namnet, Server namnet och resurs gruppen för den dedikerade SQL-poolen (tidigare SQL DW) som du planerar att pausa och återuppta.
 
-Följ de här stegen för att hitta plats information för SQL-poolen:
+Följ de här stegen för att hitta plats information för din dedikerade SQL-pool (tidigare SQL DW):
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Klicka på **Azure Synapse Analytics (tidigare SQL DW)** på den vänstra sidan i Azure Portal.
@@ -61,7 +61,7 @@ Följ de här stegen för att hitta plats information för SQL-poolen:
 
     ![Servernamn och resursgrupp](./media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. Anteckna SQL-poolnamn, som är databas namnet. Anteckna även servernamnet och resursgruppen.
+1. Skriv ner den dedikerade SQL-poolen (tidigare SQL DW), som är databas namnet. Anteckna även servernamnet och resursgruppen.
 1. Använd endast den första delen av Server namnet i PowerShell-cmdletar. I föregående bild är det fullständiga Server namnet sqlpoolservername.database.windows.net. Vi använder **sqlpoolservername** som server namn i PowerShell-cmdleten.
 
 ## <a name="pause-compute"></a>Pausa beräkning
@@ -75,7 +75,7 @@ Använd cmdleten [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsql
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
-–ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
+–ServerName "sqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
 I följande exempel hämtas databasen till $database-objektet. Sedan rör det objektet för att [pausa-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Resultaten lagras i objektet resultDatabase. Det slutliga kommandot visar resultatet.
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>Kontrol lera status för SQL-programåtgärden
 
-Om du vill kontrol lera status för SQL-poolen använder du cmdleten [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
+Använd cmdleten [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) för att kontrol lera status för den DEDIKERADe SQL-poolen (tidigare SQL DW).
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -115,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Du debiteras för data lager enheter och data som lagras i SQL-poolen. Dessa beräknings- och lagringsresurser debiteras separat.
+Du debiteras för data lager enheter och data som lagras i din dedikerade SQL-pool (tidigare SQL DW). Dessa beräknings- och lagringsresurser debiteras separat.
 
 - Om du vill behålla data i lagringen ska du pausa beräkningen.
 - Om du vill ta bort framtida avgifter kan du ta bort SQL-poolen.
@@ -136,4 +136,4 @@ Följ dessa steg för att rensa resurser enligt dina önskemål.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill veta mer om SQL-poolen fortsätter du till artikeln [Läs in data i SQL-poolen](./load-data-from-azure-blob-storage-using-copy.md) . Mer information om hur du hanterar Compute-funktioner finns i artikeln [hantera beräknings översikt](sql-data-warehouse-manage-compute-overview.md) .
+Om du vill veta mer om SQL-poolen fortsätter du till artikeln [Läs in data i dedikerad SQL-pool (tidigare SQL DW)](./load-data-from-azure-blob-storage-using-copy.md) . Mer information om hur du hanterar Compute-funktioner finns i artikeln [hantera beräknings översikt](sql-data-warehouse-manage-compute-overview.md) .

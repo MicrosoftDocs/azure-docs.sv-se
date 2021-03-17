@@ -258,8 +258,6 @@
               href: application-sign-in-problem-application-error.md
             - name: Problem med att logga in i en Microsoft-app
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: Problem med enkel inloggning
-              href: application-sign-in-problem-federated-sso-gallery.md
         - name: Felsöka lokala appar
           items:
             - name: Felsökning av programproxy

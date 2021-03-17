@@ -8,20 +8,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 7e5ea8dcddce31a414d983d14fba483eb388d5d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a29244745b154aa81997813fcf4e1457f599270
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334691"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622063"
 ---
 Behållaren tillhandahåller [rest-baserade slut punkts-API: er](../rest-text-to-speech.md). Det finns många [exempel på käll kods projekt](https://github.com/Azure-Samples/Cognitive-Speech-TTS) för plattforms-, ramverk-och språkvarianter som är tillgängliga.
 
-Med standard-eller neurala text till tal-behållare bör du förlita dig på språket och rösten för den bildtagg som du laddade ned. Om du till exempel `latest` har hämtat taggen är standard språket `en-US` och `AriaRUS` rösten. `{VOICE_NAME}`Argumentet skulle då vara [`en-US-AriaRUS`](../language-support.md#standard-voices) . Se exempel SSML nedan:
+Med standard-eller neurala text till tal-behållare bör du förlita dig på språket och rösten för den bildtagg som du laddade ned. Om du till exempel `latest` har hämtat taggen är standard språket `en-US` och `AriaNeural` rösten. `{VOICE_NAME}`Argumentet skulle då vara [`en-US-AriaNeural`](../language-support.md#neural-voices) . Se exempel SSML nedan:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         This text will get converted into synthesized speech.
     </voice>
 </speak>

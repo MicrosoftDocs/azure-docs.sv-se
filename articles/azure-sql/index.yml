@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SQL-dokumentation
-summary: 'Hitta dokumentation om Azure SQL-familjen av produkter för SQL Server-databasmotorn i molnet: Azure SQL Database, Azure SQL-hanterad instans och SQL Server på virtuell Azure-dator. '
+summary: 'Hitta dokumentation om Azure SQL-familjen av produkter för SQL Server-databasmotorn i molnet: Azure SQL Database, Azure SQL-hanterad instans och SQL Server på virtuell Azure-dator.'
 metadata:
   title: Azure SQL-dokumentation
   description: Azure SQL är en familj av produkter för SQL Server-databasmotorn i molnet, från en fullständigt hanterad databas i Azure SQL Database, en fullständigt hanterad instans i Azure SQL-hanterad instans eller SQL Server installerad på en virtuell Azure-dator.
@@ -14,19 +14,23 @@ metadata:
   ms.author: sstein
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
-  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
-  ms.translationtype: HT
+  ms.openlocfilehash: 13fcc3b41777a6b198ad9a8b12d93877adae75ca
+  ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/13/2020
-  ms.locfileid: "94593900"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103601431"
 landingContent:
 - title: Azure SQL Database
   linkLists:
-  - linkListType: overview
+  - linkListType: whats-new
     links:
     - text: Nyheter
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: Feedback? Ta undersökningen!
+      url: https://aka.ms/AzureSQLSurvey
+  - linkListType: overview
+    links:
     - text: Vad är SQL Database?
       url: database/sql-database-paas-overview.md
     - text: Vad är elastiska pooler?
@@ -55,6 +59,12 @@ landingContent:
       url: database/transact-sql-tsql-differences-sql-server.md
 - title: Hanterad Azure SQL-instans
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Nyheter
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: Feedback? Ta undersökningen!
+      url: https://aka.ms/AzureSQLSurvey
   - linkListType: overview
     links:
     - text: Nyheter
