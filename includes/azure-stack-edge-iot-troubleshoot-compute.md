@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 02/05/2021
-ms.openlocfilehash: ad981264a99bd48e27f745a789ebe857b7f17d80
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/02/2021
+ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750323"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622121"
 ---
 Använd IoT Edge-agentens körnings svar för att felsöka Compute-relaterade fel. Här är en lista över möjliga svar:
 
@@ -22,7 +22,7 @@ Använd IoT Edge-agentens körnings svar för att felsöka Compute-relaterade fe
 
 Mer information finns i [IoT Edge agent](../articles/iot-edge/iot-edge-runtime.md?preserve-view=true&view=iotedge-2018-06#iot-edge-agent).
 
-Följande fel är relaterat till tjänsten IoT Edge på Azure Stack Edge Pro<!--/ Data Box Gateway--> enheter.
+Följande fel är relaterat till tjänsten IoT Edge på din Azure Stack Edge Pro-enhet.
 
 ### <a name="compute-modules-have-unknown-status-and-cant-be-used"></a>Compute-moduler har okänd status och kan inte användas
 
@@ -33,3 +33,36 @@ Alla moduler på enheten visar okänd status och kan inte användas. Den okända
 #### <a name="suggested-solution"></a>Föreslagen lösning
 
 Ta bort IoT Edge tjänsten och distribuera sedan om modulerna. Mer information finns i [ta bort IoT Edge-tjänsten](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+
+
+### <a name="modules-show-as-running-but-are-not-working"></a>Moduler visas som körs men fungerar inte
+
+#### <a name="error-description"></a>Felbeskrivning
+
+Körnings status för modulen visas som körs men förväntade resultat visas inte. 
+
+Det här tillståndet kan bero på ett problem med en modul vägs konfiguration som inte fungerar eller `edgehub` inte dirigerar meddelanden som förväntat. Du kan kontrol lera `edgehub` loggarna. Om du ser att det finns fel som inte kan ansluta till den IoT Hub tjänsten, är den vanligaste orsaken till anslutnings problemen. Problem med anslutningen kan bero på att AMPQ-porten som används som standard port av IoT Hub tjänsten för kommunikation är blockerad eller att webbproxyservern blockerar dessa meddelanden.
+
+#### <a name="suggested-solution"></a>Föreslagen lösning
+
+Utför följande steg:
+1. Lös felet genom att gå till IoT Hub resurs för enheten och sedan välja din Edge-enhet. 
+1. Gå till **Ange moduler > körnings inställningar**. 
+1. Lägg till `Upstream protocol` miljövariabeln och tilldela den värdet `AMQPWS` . De meddelanden som har kon figurer ATS i det här fallet skickas via WebSockets via port 443.
+
+### <a name="modules-show-as-running-but-do-not-have-an-ip-assigned"></a>Moduler visas som körs men har ingen tilldelad IP
+
+#### <a name="error-description"></a>Felbeskrivning
+
+Körnings status för modulen visas som körs men appen för container har ingen tilldelad IP-adress. 
+
+Det här tillståndet beror på att det IP-adressintervall som du har angett för Kubernetes external service IP-adresser inte räcker. Du måste utöka intervallet för att säkerställa att varje behållare eller virtuell dator som du har distribuerat omfattas.
+
+#### <a name="suggested-solution"></a>Föreslagen lösning
+
+I enhetens lokala webb gränssnitt gör du följande steg:
+1. Gå till **beräknings** sidan. Välj den port som du har aktiverat beräknings nätverket för. 
+1. Ange ett statiskt, sammanhängande utbud av IP **-adresser för Kubernetes external service IP-adresser**. Du behöver 1 IP för `edgehub` tjänst. Dessutom behöver du en IP-adress för varje IoT Edge modul och för varje virtuell dator som du distribuerar. 
+1. Välj **Använd**. Det ändrade IP-intervallet bör börja gälla omedelbart.
+
+Mer information finns i [ändra IP-adresser för externa tjänster för behållare](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).

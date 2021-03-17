@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: Så här fungerar hash-synkronisering
           href: how-to-connect-password-hash-synchronization.md
+        - name: Selektiv hash-synkronisering av lösen ord
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: Direktautentisering
       items:
         - name: Vad är direktautentisering?

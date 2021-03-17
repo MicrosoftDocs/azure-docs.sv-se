@@ -3,19 +3,19 @@ title: Använda privata slutpunkter
 titleSuffix: Azure Storage
 description: Översikt över privata slut punkter för säker åtkomst till lagrings konton från virtuella nätverk.
 services: storage
-author: santoshc
+author: normesta
 ms.service: storage
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.author: santoshc
+ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 67480786e963235d4d3c010bea72e551a8be7bbc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 13e274a0d43ba4399e039d1280aa5ada3c94afe5
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103493806"
+ms.locfileid: "103601482"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Använd privata slut punkter för Azure Storage
 

@@ -2,13 +2,13 @@
 title: Skalbarhet – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om hur du skalar Azure-Event Hubs med partitioner och data flödes enheter.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521963"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601292"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalning med Event Hubs
 
@@ -39,11 +39,7 @@ Mer information om funktionen för automatiskt öknings funktionen finns i [skal
 ## <a name="partitions"></a>Partitioner
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>Partitionsnyckel
 
-Du kan använda en [partitionsnyckel](event-hubs-programming-guide.md#partition-key) för att mappa inkommande händelse data till vissa partitioner för data organisationens syfte. Partitionsnyckeln är ett värde som avsändaren anger och som skickas till en händelsehubb. Den bearbetas via en statisk hash-funktion som skapar partitionstilldelningen. Om du inte anger en partitionsnyckel när du publicerar en händelse, används en tilldelning enligt resursallokeringsmodellen.
-
-Händelseutfärdaren känner bara till sin partitionsnyckel, inte den partition som händelserna publiceras till. Frikopplingen av nyckeln och partitionen gör att avsändaren inte behöver känna till så mycket om bearbetningen nedströms. En identitet per enhet eller en användarunik identitet utgör en bra partitionsnyckel, men andra attribut, till exempel geografi, kan också användas för att gruppera relaterade händelser i en enda partition.
 
 
 ## <a name="next-steps"></a>Nästa steg
