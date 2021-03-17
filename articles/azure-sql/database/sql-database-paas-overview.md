@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c6b1129ca4a63e9adc8bb679dce53ff728456f42
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451418"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601839"
 ---
 # <a name="what-is-azure-sql-database"></a>Vad är Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,6 +32,9 @@ Med SQL Database kan du enkelt definiera och skala prestanda inom två olika ink
 
 Om du inte har använt Azure SQL Database kan du titta närmare på *Azure SQL Database översikts* video från vår djupgående [Azure SQL-video serie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
+
+> [!TIP]
+> Hur kan vi göra Azure SQL bättre? [Ta undersökningen](https://aka.ms/AzureSQLSurvey).
 
 ## <a name="deployment-models"></a>Distributionsmodeller
 
@@ -114,7 +117,7 @@ Azure-tillgänglighetszoner försöker skydda mot avbrott i en enda data centers
 
 Service avtalet [(SLA)](https://azure.microsoft.com/support/legal/sla/) för Azure, som drivs av ett globalt nätverk av Microsoft-hanterade data Center, hjälper till att hålla appen igång 24/7. Azure-plattformen hanterar fullständigt alla databaser och garanterar ingen data förlust och en hög procent andel data tillgänglighet. Azure hanterar automatiskt korrigering, säkerhets kopiering, replikering, fel identifiering, underliggande potentiell maskin vara, program vara eller nätverks fel, distribution av fel korrigeringar, redundans, databas uppgraderingar och andra underhålls aktiviteter. Standardtillgänglighet uppnås genom en uppdelning av beräknings och lagringslager. Premium-tillgänglighet uppnås genom att integrera beräkning och lagring på en enda nod för prestanda och sedan implementera teknik som liknar Always on-tillgänglighetsgrupper. En fullständig beskrivning av funktionerna för hög tillgänglighet i Azure SQL Database finns [SQL Database tillgänglighet](high-availability-sla.md). 
 
-Dessutom ger SQL Database inbyggd [affärs kontinuitet och globala skalbarhets](business-continuity-high-availability-disaster-recover-hadr-overview.md) funktioner. Exempel på dessa är:
+Dessutom ger SQL Database inbyggd [affärs kontinuitet och globala skalbarhets](business-continuity-high-availability-disaster-recover-hadr-overview.md) funktioner. Dessa omfattar:
 
 - [Automatisk säkerhets kopiering](automated-backups-overview.md):
 
@@ -190,7 +193,7 @@ SQL Database hjälper till att skydda dina data med hjälp av kryptering. För d
 
 Med SQL Database kan du centralt hantera identiteter för databasanvändare och andra Microsoft-tjänster med [Azure Active Directory-integrering](authentication-aad-overview.md). Den här funktionen förenklar hanteringen av behörighet och ger ökad säkerhet. Azure Active Directory stöder [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) för att öka säkerheten för data och program, samtidigt som den har stöd för en enda inloggnings process.
 
-## <a name="easy-to-use-tools"></a>Lättanvända verktyg
+## <a name="easy-to-use-tools"></a>Användarvänliga verktyg
 
 SQL Database gör byggandet och underhållet av appar enklare och mer produktivt. Med SQL Database kan du fokusera på det du gör väst: bygga bra appar. Du kan hantera och utveckla i SQL Database med hjälp av verktyg och färdigheter som du redan har.
 

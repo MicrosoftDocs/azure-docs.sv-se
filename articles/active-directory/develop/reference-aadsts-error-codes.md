@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175353"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601023"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Felkoder för Azure AD-autentisering och -auktorisering
 
@@ -60,7 +60,7 @@ Här är ett exempel på fel svar:
 
 `error`Fältet har flera möjliga värden – granska protokoll dokumentations länkarna och OAuth 2,0-specifikationerna för att lära dig mer om vissa fel (till exempel `authorization_pending` i [enhets kod flödet](v2-oauth2-device-code.md)) och hur du kan reagera på dem.  Några vanliga visas här:
 
-| Felkod         | Beskrivning        | Klient åtgärd    |
+| Felkod         | Description        | Klient åtgärd    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokoll fel, till exempel en obligatorisk parameter som saknas. | Åtgärda och skicka begäran på nytt.|
 | `invalid_grant`    | En del av autentiserings materialet (auth Code, Refresh token, Access token, PKCE Challenge) var ogiltigt, kunde inte parsas, saknas eller på annat sätt oanvändbar | Testa en ny begäran till `/authorize` slut punkten för att få en ny auktoriseringskod.  Överväg att granska och verifiera appens användning av protokollen. |
@@ -96,13 +96,13 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS50001 | InvalidResource-resursen är inaktive rad eller finns inte. Kontrol lera appens kod för att se till att du har angett den exakta resurs-URL: en för resursen som du försöker få åtkomst till.  |
 | AADSTS50002 | NotAllowedTenant-inloggningen misslyckades på grund av en begränsad proxy-åtkomst på klienten. Om det är din egen klientprincip kan du åtgärda problemet genom att ändra inställningarna för den begränsade klientorganisationen. |
 | AADSTS500021 | Åtkomst till klienten ' {Tenant} ' nekas. AADSTS500021 anger att funktionen för klient begränsning har kon figurer ATS och att användaren försöker få åtkomst till en klient som inte finns i listan över tillåtna innehavare som anges i huvudet `Restrict-Access-To-Tenant` . Mer information finns i [använda klient begränsningar för att hantera åtkomst till SaaS Cloud-program](../manage-apps/tenant-restrictions.md).|
-| AADSTS50003 | MissingSigningKey-inloggningen misslyckades på grund av en saknad signerings nyckel eller certifikat. Det kan bero på att ingen signerings nyckel har kon figurer ATS i appen. Kolla in de lösningar som beskrivs på [... /Manage-Apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # certifikat-eller-Key-not-konfigurerat](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Kontakta appens ägare eller en app-administratör om problemen fortfarande visas. |
+| AADSTS50003 | MissingSigningKey-inloggningen misslyckades på grund av en saknad signerings nyckel eller certifikat. Det kan bero på att ingen signerings nyckel har kon figurer ATS i appen. Mer information finns i fel söknings artikeln om fel [AADSTS50003](/troubleshoot/azure/active-directory/error-code-aadsts50003-cert-or-key-not-configured). Kontakta appens ägare eller en app-administratör om problemen fortfarande visas. |
 | AADSTS50005 | DevicePolicyError – användaren försökte logga in på en enhet från en plattform som för närvarande inte stöds via principen för villkorlig åtkomst. |
 | AADSTS50006 | InvalidSignature-signaturverifieringen misslyckades på grund av en ogiltig signatur. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing – det gick inte att hitta partner krypterings certifikatet för den här appen. [Öppna ett support ärende](../fundamentals/active-directory-troubleshooting-support-howto.md) med Microsoft för att få detta åtgärdat. |
 | AADSTS50008 | InvalidSamlToken-SAML-kontroll saknas eller är felkonfigurerat i token. Kontakta den federerade providern. |
 | AADSTS50010 | AudienceUriValidationFailed-URI-validering av appen misslyckades eftersom ingen token för token hade kon figurer ATS. |
-| AADSTS50011 | InvalidReplyTo-svars adressen saknas, är felkonfigurerad eller matchar inte svars adresser som har kon figurer ATS för appen.  Som lösning ser du till att lägga till den saknade svars adressen i Azure Active Directory programmet eller låta någon med behörighet att hantera ditt program i Active Directory göra detta åt dig.|
+| AADSTS50011 | InvalidReplyTo-svars adressen saknas, är felkonfigurerad eller matchar inte svars adresser som har kon figurer ATS för appen.  Som lösning ser du till att lägga till den saknade svars adressen i Azure Active Directory programmet eller låta någon med behörighet att hantera ditt program i Active Directory göra detta åt dig. Mer information finns i fel söknings artikeln om fel [AADSTS50011](/troubleshoot/azure/active-directory/error-code-aadsts50011-reply-url-mismatch).|
 | AADSTS50012 | AuthenticationFailed-Autentiseringen misslyckades av någon av följande orsaker:<ul><li>Ämnes namnet för signerings certifikatet är inte auktoriserat</li><li>Det gick inte att hitta en matchande betrodd auktoritets princip för det godkända ämnes namnet</li><li>Certifikat kedjan är ogiltig</li><li>Signerings certifikatet är inte giltigt</li><li>Principen har inte kon figurer ATS för klienten</li><li>Signerings certifikatets tumavtryck har inte behörighet</li><li>Klientens kontroll innehåller en ogiltig signatur</li></ul> |
 | AADSTS50013 | InvalidAssertion-Assertion är ogiltig på grund av olika orsaker – token Issuer inte matchar API-versionen inom sitt giltiga tidsintervall-upphört att gälla-en felaktig-uppdateringstoken i kontrollen är inte en primär uppdateringstoken. |
 | AADSTS50014 | GuestUserInPendingState – användarens inlösen är i ett väntande tillstånd. Gäst användar kontot har inte skapats helt ännu. |
@@ -140,7 +140,7 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS50089 | Flödestoken har upphört att gälla – autentiseringen misslyckades. Låt användaren försöka logga in igen med username-Password. |
 | AADSTS50097 | DeviceAuthenticationRequired-enhets autentisering krävs. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized-JWT-signaturen är ogiltig. |
-| AADSTS50105 | EntitlementGrantsNotFound – den inloggade användaren har inte tilldelats någon roll för den inloggade appen. Tilldela användaren till appen. Mer information:[.. /Manage-Apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # User-not-Assigned-a-Role](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound – den inloggade användaren har inte tilldelats någon roll för den inloggade appen. Tilldela användaren till appen. Mer information finns i fel söknings artikeln om fel [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role). |
 | AADSTS50107 | InvalidRealmUri-det begärda Federations sfär objektet finns inte. Kontakta administratören för klientorganisationen. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat – problem med JWT-huvudet. Kontakta administratören för klientorganisationen. |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter-anspråks omvandlingen innehåller ogiltig indataparameter. Kontakta administratören för klientorganisationen för att uppdatera principen. |
@@ -191,11 +191,11 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – användaren eller administratören har inte samtyckt till att använda programmet med ID X. skicka en interaktiv auktoriseringsbegäran för den här användaren och resursen. |
 | AADSTS65004 | UserDeclinedConsent – användaren avböjde ett medgivande till att få åtkomst till appen. Låt användaren logga in igen och ge samtycke till appen|
-| AADSTS65005 | MisconfiguredApplication – appens obligatoriska resurs åtkomst lista innehåller inte appar som kan upptäckas av resursen eller klient programmet har begärt åtkomst till resursen, som inte angavs i den nödvändiga resurs åtkomst listan eller diagram tjänsten returnerade en felaktig begäran eller så gick det inte att hitta resursen. Om appen har stöd för SAML kan du ha konfigurerat appen med fel identifierare (entitet). Prova lösningarna som anges för SAML med hjälp av länken nedan: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication – appens obligatoriska resurs åtkomst lista innehåller inte appar som kan upptäckas av resursen eller klient programmet har begärt åtkomst till resursen, som inte angavs i den nödvändiga resurs åtkomst listan eller diagram tjänsten returnerade en felaktig begäran eller så gick det inte att hitta resursen. Om appen har stöd för SAML kan du ha konfigurerat appen med fel identifierare (entitet). Mer information finns i fel söknings artikeln om fel [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app). |
 | AADSTS650052 | Appen behöver åtkomst till en tjänst `(\"{name}\")` som din organisation `\"{organization}\"` inte har prenumererat på eller aktiverat. Kontakta IT-administratören om du vill granska konfigurationen av dina tjänst prenumerationer. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – Autentiseringen misslyckades. Uppdateringstoken är ogiltig. Felet kan bero på följande orsaker:<ul><li>Token binding-huvud är tomt</li><li>Token binding hash matchar inte</li></ul> |
-| AADSTS70001 | UnauthorizedClient – programmet är inaktiverat. |
+| AADSTS70001 | UnauthorizedClient – programmet är inaktiverat. Mer information finns i fel söknings artikeln om fel [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory). |
 | AADSTS70002 | InvalidClient – det gick inte att verifiera autentiseringsuppgifterna. Den angivna client_secret matchar inte det förväntade värdet för den här klienten. Korrigera client_secret och försök igen. Mer information finns i [använda auktoriseringskod för att begära en åtkomsttoken](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType – appen returnerade en beviljande typ som inte stöds. |
 | AADSTS70004 | InvalidRedirectUri – appen returnerade en ogiltig omdirigerings-URI. Adressen för omdirigering som angetts av klienten matchar inte några konfigurerade adresser eller någon adress på godkännandelistan för OIDC. |
@@ -209,10 +209,11 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS70019 | CodeExpired-verifierings koden har gått ut. Låt användaren försöka logga in igen. |
 | AADSTS75001 | BindingSerializationError-ett fel uppstod under SAML-meddelande bindningen. |
 | AADSTS75003 | UnsupportedBindingError – appen returnerade ett fel som är relaterat till en bindning som inte stöds (SAML-protokollets svar kan inte skickas via andra bindningar än HTTP POST). |
-| AADSTS75005 | Saml2MessageInvalid – Azure AD har inte stöd för SAML-begäran som skickats av appen för SSO. |
+| AADSTS75005 | Saml2MessageInvalid – Azure AD har inte stöd för SAML-begäran som skickats av appen för SSO. Mer information finns i fel söknings artikeln om fel [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request). |
 | AADSTS7500514 | Det gick inte att hitta en typ av SAML-svar som stöds. Svars typerna som stöds är "svar" (i XML-namnområdet urn: Oasis: Names: TC: SAML: 2.0: Protocol) eller "Assertion" (i XML-namnområdet urn: Oasis: Names: TC: SAML: 2.0: Assertion). Program fel-utvecklaren kommer att hantera det här felet.|
+| AADSTS750054 | SAMLRequest eller SAMLResponse måste finnas som frågeparametrar i HTTP-begäran för SAML-omdirigerings bindning. Mer information finns i fel söknings artikeln om fel [AADSTS750054](/troubleshoot/azure/active-directory/error-code-aadsts750054-saml-request-not-present). |
 | AADSTS75008 | RequestDeniedError-begäran från appen nekades eftersom SAML-begäran hade ett oväntat mål. |
-| AADSTS75011 | NoMatchedAuthnContextInOutputClaims – autentiseringsmetoden som användaren autentiseras med tjänsten inte matchar den begärda autentiseringsmetoden. |
+| AADSTS75011 | NoMatchedAuthnContextInOutputClaims – autentiseringsmetoden som användaren autentiseras med tjänsten inte matchar den begärda autentiseringsmetoden. Mer information finns i fel söknings artikeln om fel [AADSTS75011](/troubleshoot/azure/active-directory/error-code-aadsts75011-auth-method-mismatch). |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy-SAML2-autentiseringsbegäran har ogiltig NameIdPolicy. |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable – Autentiseringstjänsten kan inte ansluta till Active Directory. Se till att agent servrarna är medlemmar i samma AD-skog som de användare vars lösen ord måste verifieras och att de kan ansluta till Active Directory. |
 | AADSTS80002 | OnPremisePasswordValidatorRequestTimedout – tids gränsen nåddes för begäran om lösen ords validering. Se till att Active Directory är tillgänglig och svarar på begär Anden från agenterna. |

@@ -4,12 +4,12 @@ description: Använd Azure Resource Manager för att flytta resurser till en ny 
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093625"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601397"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Flytta resurser till en ny resursgrupp eller prenumeration
 
@@ -34,6 +34,7 @@ Några viktiga steg måste utföras innan en resurs flyttas. Du kan undvika fel 
    * [Vägledning om nätverks flytt](./move-limitations/networking-move-limitations.md)
    * [Vägledning för Recovery Services flytt](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Vägledning för Virtual Machines flytt](./move-limitations/virtual-machines-move-limitations.md)
+   * Information om hur du flyttar en Azure-prenumeration till en ny hanterings grupp finns i [Flytta prenumerationer](../../governance/management-groups/manage.md#move-subscriptions).
 
 1. Om du flyttar en resurs som har en Azure-roll som tilldelats direkt till resursen (eller en underordnad resurs) flyttas inte roll tilldelningen och blir överbliven. När du har flyttat måste du återskapa roll tilldelningen. Slutligen tas den överblivna roll tilldelningen bort automatiskt, men det är en bra idé att ta bort roll tilldelningen innan du flyttar resursen.
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90563343"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601941"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files nätverks överväganden 
 Du kan ansluta till en Azure-filresurs på två sätt:
@@ -25,6 +25,15 @@ Den här artikeln fokuserar på hur du konfigurerar nätverk för när ditt anv�
 Nätverks konfigurationen för Azure-filresurser görs på Azure Storage-kontot. Ett lagrings konto är en hanterings konstruktion som representerar en delad pool av lagring där du kan distribuera flera fil resurser, samt andra lagrings resurser, till exempel BLOB-behållare eller köer. Lagrings konton visar flera inställningar som hjälper dig att skydda nätverks åtkomsten till dina fil resurser: nätverks slut punkter, inställningar för lagrings konto brand vägg och kryptering under överföring. 
 
 Vi rekommenderar att du läser [planering för en Azure Files distribution](storage-files-planning.md) innan du läser den här konceptuella guiden.
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        Den här videon är en guide och en demonstration av hur du på ett säkert sätt kan exponera Azure-filresurser direkt till informations arbetare och appar i fem enkla steg. I avsnitten nedan finns länkar och ytterligare kontext till den dokumentation som refereras i videon.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="accessing-your-azure-file-shares"></a>Åtkomst till dina Azure-filresurser
 När du distribuerar en Azure-filresurs inom ett lagrings konto är fil resursen omedelbart tillgänglig via lagrings kontots offentliga slut punkt. Det innebär att autentiserade begär Anden, till exempel begär Anden som har godkänts av en användares inloggnings identitet, kan komma från eller utanför Azure. 
@@ -58,7 +67,7 @@ Oavsett vilken tunnel metod du använder för att få åtkomst till dina Azure-f
 
 I stället för att hårdkoda IP-adressen för dina lagrings konton till reglerna för VPN-routning rekommenderar vi att du använder privata slut punkter, vilket ger ditt lagrings konto en IP-adress från adress utrymmet för ett virtuellt Azure-nätverk. Eftersom du skapar en tunnel till Azure skapar peering mellan ditt lokala nätverk och ett eller flera virtuella nätverk, så att detta möjliggör rätt routning på ett hållbart sätt.
 
-### <a name="private-endpoints"></a>Privata slut punkter
+### <a name="private-endpoints"></a>Privata slutpunkter
 Förutom den offentliga standard slut punkten för ett lagrings konto tillhandahåller Azure Files alternativet att ha en eller flera privata slut punkter. En privat slut punkt är en slut punkt som endast är tillgänglig i ett virtuellt Azure-nätverk. När du skapar en privat slut punkt för ditt lagrings konto hämtar ditt lagrings konto en privat IP-adress från det virtuella nätverkets adress utrymme, ungefär som hur en lokal fil server eller NAS-enhet tar emot en IP-adress inom det lokala nätverkets dedikerade adress utrymme. 
 
 En privat privat slut punkt är associerad med ett specifikt Azure Virtual Network-undernät. Ett lagrings konto kan ha privata slut punkter i fler än ett virtuellt nätverk.

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258107"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601720"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planera en distribution för enkel inloggning
 
@@ -291,17 +291,12 @@ Följande länkar visar fel söknings scenarier. Du kanske vill skapa en speciel
 
 - [Problem med att logga in på ett Microsoft-program](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>SSO-problem för program som listas i Azure Application galleriet
+#### <a name="sso-issues-for-applications"></a>SSO-problem för program
 
-- [Problem med inloggning med lösen ord för program som listas i Azure Application galleriet](./troubleshoot-password-based-sso.md) 
+- [Problem med inloggning med lösen ord för program](./troubleshoot-password-based-sso.md) 
 
-- [Problem med federerade SSO för program som listas i Azure Application galleriet](./application-sign-in-problem-federated-sso-gallery.md)   
+- [Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>SSO-problem för program som inte visas i Azure Application galleriet
-
-- [Problem med inloggning med lösen ord för program som inte visas i Azure Application galleriet](./troubleshoot-password-based-sso.md) 
-
-- [Problem med federerad SSO för program som inte visas i Azure Application galleriet](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

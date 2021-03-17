@@ -3,12 +3,12 @@ title: Använd Azure Application Gateway för att skydda dina webbappar på Azur
 description: Konfigurera Azure Application Gateway för att på ett säkert sätt exponera dina webbappar som körs på Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733592"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601924"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Använd Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen
 
@@ -193,4 +193,4 @@ Nu när du har använt Application Gateway för att skydda en webbapp som körs 
 - [Konfigurera Azure Application Gateway för olika scenarier](../application-gateway/configuration-overview.md).
 - [Distribuera Traffic Manager för att balansera arbets belastningar för Azure VMware-lösningar](deploy-traffic-manager-balance-workloads.md).
 - [Integrera Azure NetApp Files med Azure VMware Solution-baserade arbets belastningar](netapp-files-with-azure-vmware-solution.md).
-- [Skydda Azure-resurser i virtuella nätverk](../ddos-protection/ddos-protection-overview.md)
+- [Skydda Azure-resurser i virtuella nätverk](../ddos-protection/ddos-protection-overview.md).

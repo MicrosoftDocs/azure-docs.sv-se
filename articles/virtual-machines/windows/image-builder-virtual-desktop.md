@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: a2c4e3c1079d488b9255fb1b9660ff5c4b0aad8f
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103422197"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103602026"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Skapa en Windows Virtual Desktop-avbildning med Azure VM Image Builder och PowerShell
 
@@ -39,7 +39,7 @@ Den här artikeln är avsedd att vara en kopierings-och Inklistrings övning.
 ## <a name="tips-for-building-windows-images"></a>Tips för att skapa Windows-avbildningar 
 
 - VM-storlek – standard storleken för virtuella datorer är en `Standard_D1_v2` , vilket inte är lämpligt för Windows. Använd en `Standard_D2_v2` eller fler.
-- I det här exemplet används [PowerShell-anpassare-skripten](../linux/image-builder-json.md). Du måste använda de här inställningarna, annars låser du upp.
+- I det här exemplet används [PowerShell-anpassare-skripten](../linux/image-builder-json.md). Du måste använda de här inställningarna, annars slutar versionen att svara.
 
     ```json
       "runElevated": true,

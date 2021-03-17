@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 01/11/2021
+ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147575"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622181"
 ---
 | Resurs | Gräns |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -34,6 +34,8 @@ ms.locfileid: "98147575"
 | Maximal buffrad nytto Last storlek<sup>8</sup> | 2 MiB |
 | Maximal URL-storlek för begäran<sup>9</sup> | 4096 byte |
 | Maximal längd på URL-Sök segment<sup>10</sup> | 260 tecken |
+| Maximal storlek för API-schema som används av [validerings princip](../articles/api-management/validation-policies.md)<sup>10</sup> | 4 MB |
+| Maximal storlek på begäran eller svars text i principen för att [Verifiera innehåll](../articles/api-management/validation-policies.md#validate-content) | 100 kB |
 | Maximalt antal gatewayer för egen värd<sup>11</sup> | 25 |
 
 <sup>1</sup> Skalnings gränser beror på pris nivån. Mer information om pris nivåerna och deras skalnings gränser finns [API Management prissättning](https://azure.microsoft.com/pricing/details/api-management/).<br/>
@@ -45,5 +47,5 @@ ms.locfileid: "98147575"
 <sup>7</sup> CA-certifikat stöds inte i förbruknings nivån.<br/>
 <sup>8</sup> Den här gränsen gäller enbart för förbruknings nivån. Det finns inga begränsningar i dessa kategorier för andra nivåer.<br/>
 <sup>9</sup> Gäller endast för förbruknings nivån. Innehåller en sträng med upp till 2048 byte lång frågesträng.<br/>
-<sup>10</sup> om du vill höja gränsen kontaktar du [supporten](https://azure.microsoft.com/support/options/).<br/>
+<sup>10</sup> om du vill öka den här gränsen kan du kontakta [supporten](https://azure.microsoft.com/support/options/).<br/>
 <sup>11</sup> Egen värdbaserade gatewayer stöds endast på utvecklings-och Premium-nivåerna. Gränsen gäller för antalet [egna värdbaserade gateway-resurser](/rest/api/apimanagement/2019-12-01/gateway). Kontakta [supporten](https://azure.microsoft.com/support/options/)om du vill höja gränsen. Observera att antalet noder (eller repliker) som är kopplade till en lokal gateway-resurs är obegränsat på Premium nivån och på en enskild nod på nivån utvecklare.

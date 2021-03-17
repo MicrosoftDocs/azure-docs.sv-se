@@ -2,20 +2,20 @@
 title: ta med fil
 description: ta med fil
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: bertong
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: fc20396053dee32ac7976139a634b4592389ab5f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: bertong
+ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488351"
+ms.locfileid: "103622308"
 ---
 Kom igång med Azure Communication Services med hjälp av Java Script SMS-klientprogrammet för kommunikations tjänster för att skicka SMS-meddelanden.
 
@@ -69,11 +69,12 @@ I det här `--save` alternativet visas biblioteket som ett beroende i **package.
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services SMS-klient biblioteket för Node.js.
 
-| Namn                                  | Beskrivning                                                  |
+| Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Den här klassen krävs för alla SMS-funktioner. Du instansierar det med din prenumerations information och använder den för att skicka SMS-meddelanden. |
-| SendSmsOptions | Det här gränssnittet innehåller alternativ för att konfigurera leverans rapportering. Om `enable_delivery_report` är inställt på `true` , genereras en händelse när leveransen lyckades. |
-| SendMessageRequest | Det här gränssnittet är modellen för att skapa SMS-begäran (t. ex. Konfigurera till och från telefonnummer och SMS-innehåll). |
+| SmsSendResult               | Den här klassen innehåller resultatet från SMS-tjänsten.                                          |
+| SmsSendOptions | Det här gränssnittet innehåller alternativ för att konfigurera leverans rapportering. Om `enableDeliveryReport` är inställt på `true` , genereras en händelse när leveransen lyckas. |
+| SmsSendRequest | Det här gränssnittet är modellen för att skapa SMS-begäran (t. ex. Konfigurera till och från telefonnummer och SMS-innehåll). |
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
@@ -92,27 +93,66 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>Skicka ett SMS-meddelande
+## <a name="send-a-1n-sms-message"></a>Skicka ett 1: N SMS-meddelande
 
-Skicka ett SMS-meddelande genom att anropa- `send` metoden. Lägg till den här koden i slutet av **send-sms.js**:
+Om du vill skicka ett SMS-meddelande till en lista över mottagare anropar du `send` funktionen från SmsClient med en lista över mottagarnas telefonnummer (om du vill skicka ett meddelande till en enskild mottagare ska du bara inkludera en siffra i listan). Lägg till den här koden i slutet av **send-sms.js**:
 
 ```javascript
 async function main() {
-  await smsClient.send({
-    from: "<leased-phone-number>",
-    to: ["<to-phone-number>"],
-    message: "Hello World 👋🏻 via Sms"
-  }, {
-    enableDeliveryReport: true //Optional parameter
+  const sendResults = await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Hello World 👋🏻 via SMS"
   });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
+}
+
+main();
+```
+Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till.
+
+## <a name="send-a-1n-sms-message-with-options"></a>Skicka ett 1: N SMS-meddelande med alternativ
+
+Du kan också skicka ett alternativ-objekt för att ange om leverans rapporten ska vara aktive rad och för att ange anpassade taggar.
+
+```javascript
+
+async function main() {
+  await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Weekly Promotion!"
+  }, {
+    //Optional parameter
+    enableDeliveryReport: true,
+    tag: "marketing"
+  });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
 }
 
 main();
 ```
 
-Ersätt `<leased-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänst resursen och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till.
-
 `enableDeliveryReport`Parametern är en valfri parameter som du kan använda för att konfigurera leverans rapportering. Detta är användbart för scenarier där du vill generera händelser när SMS-meddelanden levereras. Se snabb starten [Hantera SMS-händelser](../handle-sms-events.md) för att konfigurera leverans rapportering för SMS-meddelanden.
+`tag` är en valfri parameter som du kan använda för att tillämpa en tagg i leverans rapporten.
 
 ## <a name="run-the-code"></a>Kör koden
 
