@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4951e86b7fd14809811ebc2cb8e50442a8d28248
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a2e41ef8ba318c77b5f21613e72b14e8a400e96d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609457"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582500"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Key Vault hanterad HSM bör ha rensnings skyddet aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |Skadlig borttagning av en Azure Key Vault hanterad HSM kan leda till permanent data förlust. En skadlig Insider i din organisation kan eventuellt ta bort och rensa Azure Key Vault hanterad HSM. Rensnings skyddet skyddar dig från insider attacker genom att tvinga fram en obligatorisk kvarhållningsperiod för mjuk borttagning av Azure Key Vault hanterad HSM. Ingen i din organisation eller Microsoft kommer att kunna rensa Azure Key Vault hanterad HSM under kvarhållningsperioden för mjuk borttagning. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |
 |[Certifikat ska utfärdas av den angivna integrerade certifikat utfärdaren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Hantera organisationens krav på efterlevnad genom att ange de Azure-integrerade certifikat utfärdare som kan utfärda certifikat i nyckel valvet, till exempel DigiCert eller GlobalSign. |granska, neka, inaktive rad |[2.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |

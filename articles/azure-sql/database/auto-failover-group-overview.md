@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/26/2020
-ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792508"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594265"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Använd grupper för automatisk redundans för att aktivera transparent och samordnad redundansväxling av flera databaser
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ När du använder grupper för automatisk redundans med automatisk redundansväx
 - [Azure-portalen](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: redundans grupp](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: redundans grupp](scripts/add-database-to-failover-group-powershell.md)
-- [REST API: grupp växling vid fel](/rest/api/sql/failovergroups).
+- [REST API: redundans grupp](/rest/api/sql/failovergroups)
 
 Efter redundansväxlingen kontrollerar du autentiseringskrav för din databas och Server, eller så har instansen kon figurer ATS på den nya primära servern. Mer information finns i [SQL Database säkerhet efter haveri beredskap](active-geo-replication-security-configure.md).
 
@@ -115,7 +115,7 @@ För att uppnå verklig affärs kontinuitet är det bara en del av lösningen at
 
   - Utföra haveri beredskap (DR) i produktion om data förlust inte är acceptabel
   - Flytta databaserna till en annan region
-  - Returnera databaserna till den primära regionen efter att avbrottet har begränsats (failback).
+  - Returnera databaserna till den primära regionen efter att avbrottet har begränsats (failback)
 
 - **Oplanerad redundans**
 
@@ -127,7 +127,7 @@ För att uppnå verklig affärs kontinuitet är det bara en del av lösningen at
 
 - **Respitperiod med data förlust**
 
-  Eftersom de primära och sekundära databaserna synkroniseras med hjälp av asynkron replikering kan redundansväxlingen leda till data förlust. Du kan anpassa principen för automatisk redundans så att den återspeglar programmets tolerans för data förlust. Genom `GracePeriodWithDataLossHours` att konfigurera kan du kontrol lera hur lång tid systemet väntar innan redundansväxlingen initieras som kan leda till data förlust.
+  Eftersom de primära och sekundära databaserna synkroniseras med hjälp av asynkron replikering kan redundansväxlingen leda till data förlust. Du kan anpassa principen för automatisk redundans så att den återspeglar programmets tolerans för data förlust. Genom `GracePeriodWithDataLossHours` att konfigurera kan du styra hur lång tid systemet väntar innan redundansväxlingen initieras, vilket sannolikt skulle leda till data förlust.
 
 - **Flera failover-grupper**
 
@@ -176,7 +176,7 @@ När du utför OLTP-åtgärder ska du använda `<fog-name>.database.windows.net`
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Använda skrivskyddad lyssnare för skrivskyddad arbets belastning
 
-Om du har en logiskt isolerad skrivskyddad arbets belastning som är tolerant till viss föråldrade data kan du använda den sekundära databasen i programmet. För skrivskyddade sessioner använder du `<fog-name>.secondary.database.windows.net` som server-URL och anslutningen dirigeras automatiskt till den sekundära. Vi rekommenderar också att du anger i anslutnings strängens läsnings avsikt med `ApplicationIntent=ReadOnly` .
+Om du har en logiskt isolerad skrivskyddad arbets belastning som är tolerant till viss föråldrade data kan du använda den sekundära databasen i programmet. För skrivskyddade sessioner använder du `<fog-name>.secondary.database.windows.net` som server-URL och anslutningen dirigeras automatiskt till den sekundära. Vi rekommenderar också att du anger Läs avsikt i anslutnings strängen med hjälp av `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>Prestanda försämring förbereds
 

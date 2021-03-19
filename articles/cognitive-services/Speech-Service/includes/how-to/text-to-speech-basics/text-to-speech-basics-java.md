@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: bb2d9b04e6366b17cfb0ee4b8586359035be910d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428255"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612913"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -67,7 +67,7 @@ Det finns några sätt som du kan initiera en [`SpeechConfig`](/java/api/com.mic
 I det här exemplet skapar du en [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) med en prenumerations nyckel och en region. Hämta dessa autentiseringsuppgifter genom att följa stegen i [testa tal tjänsten kostnads fritt](../../../overview.md#try-the-speech-service-for-free). Du kan också skapa en grundläggande exempel kod som du kan använda för resten av den här artikeln, som du ändrar för olika anpassningar.
 
 ```java
-public class Program 
+public class Program
 {
     public static void main(String[] args) {
         SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -124,7 +124,7 @@ För många scenarier i tal program utveckling behöver du förmodligen resulter
 * Integrera resultatet med andra API: er eller tjänster.
 * Ändra ljud data, skriv anpassade `.wav` rubriker osv.
 
-Det är enkelt att göra den här ändringen från föregående exempel. Ta först bort `AudioConfig` blocket, eftersom du kommer att hantera utmatnings beteendet manuellt från den här punkten och därefter för ökad kontroll. Pass sedan `null` efter `AudioConfig` i `SpeechSynthesizer` konstruktorn. 
+Det är enkelt att göra den här ändringen från föregående exempel. Ta först bort `AudioConfig` blocket, eftersom du kommer att hantera utmatnings beteendet manuellt från den här punkten och därefter för ökad kontroll. Pass sedan `null` efter `AudioConfig` i `SpeechSynthesizer` konstruktorn.
 
 > [!NOTE]
 > `null`Att skicka till `AudioConfig` , i stället för att utesluta det som i exemplet ovan, spelar inte upp ljudet som standard på den aktuella aktiva utmatnings enheten.
@@ -135,7 +135,7 @@ Den här gången sparar du resultatet i en [`SpeechSynthesisResult`](/java/api/c
 public static void main(String[] args) {
     SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     SpeechSynthesizer synthesizer = new SpeechSynthesizer(speechConfig, null);
-    
+
     SpeechSynthesisResult result = synthesizer.SpeakText("Getting the response as an in-memory stream.");
     AudioDataStream stream = AudioDataStream.fromResult(result);
     System.out.print(stream.getStatus());
@@ -254,3 +254,10 @@ Om du vill växla till en neurala röst ändrar `name` du till ett av [röst alt
   </voice>
 </speak>
 ```
+
+## <a name="visemes"></a>Visemes
+
+Tal behandlas vanligt vis som ett bra sätt att köra animeringen av ansikts uttryck.
+[Visemes](../../../how-to-speech-synthesis-viseme.md) används ofta för att representera viktiga attityder i observerat tal (t. ex. läpparnas position, Jaw och tunghet vid framställning av en viss fonem).
+Du kan prenumerera på Viseme-händelsen i tal-SDK för att skapa data för ansikts animationer. Sedan kan du använda sådana data på ett specialtecken för att använda ansikts animering.
+Lär dig [hur du hämtar viseme-utdata](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).

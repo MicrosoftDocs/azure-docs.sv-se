@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 0325dcf16c8e637a58365311a4ebd37a442d6b8c
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522478"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596305"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Tillstånd och fakturering av Azure-Virtual Machines
 
@@ -41,7 +41,7 @@ Energi läget motsvarar det senaste kända läget för den virtuella datorn.
 
 Följande tabell innehåller en beskrivning av varje instans tillstånd och indikerar om det debiteras för användning av instanser eller inte.
 
-| Energi spar läge | Beskrivning | Fakturering |  
+| Energi spar läge | Description | Fakturering |  
 |---|---|---|
 | Startar| Den virtuella datorn har startats. |Ej fakturerat * | 
 | Körs | Den virtuella datorn är helt igång. Detta är standard arbets läget. | Debiteras | 
@@ -59,7 +59,7 @@ Ett etablerings tillstånd är status för en användarinitierad, kontroll Plans
 
 :::image type="content" source="./media/virtual-machines-common-states-lifecycle/vm-provisioning-states.png" alt-text="Bild visar de etablerings tillstånd en virtuell dator kan gå igenom.":::
 
-| Etablerings status | Beskrivning | Energi spar läge | Fakturering | 
+| Etablerings status | Description | Energi spar läge | Fakturering | 
 |---|---|---|---|
 | Skapa | Skapa virtuell dator. | Startar | Ej fakturerat * | 
 | Uppdatera | Uppdaterar modellen för en befintlig virtuell dator. Vissa ändringar i en virtuell dator som inte är modeller, till exempel start och omstart, faller under uppdaterings läget. | Körs | Debiteras | 
@@ -73,7 +73,7 @@ Etablerings tillstånd för operativ system gäller endast för virtuella datore
 
 :::image type="content" source="./media/virtual-machines-common-states-lifecycle/os-provisioning-states.png" alt-text="Bild visar de OS-etablerings tillstånd som en virtuell dator kan gå igenom.":::
 
-| Etablerings status för operativ system | Beskrivning | Energi spar läge | Fakturering | 
+| Etablerings status för operativ system | Description | Energi spar läge | Fakturering | 
 |---|---|---|---|
 | OSProvisioningInProgress | Den virtuella datorn körs och installationen av gäst operativ systemet pågår. | Körs | Debiteras | 
 | OSProvisioningComplete | Detta är ett tillstånd för kort livs längd. Den virtuella datorn övergår snabbt från det här läget till **framgång**. Om tillägg fortfarande installeras kommer du att fortsätta att se det här läget tills det är klart. | Körs | Debiteras | 
@@ -82,6 +82,6 @@ Etablerings tillstånd för operativ system gäller endast för virtuella datore
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Läs [Azure Cost Management-och fakturerings dokumentationen](https://docs.microsoft.com/azure/cost-management-billing/)
+- Läs [Azure Cost Management-och fakturerings dokumentationen](../cost-management-billing/index.yml)
 - Använd [pris Kalkylatorn för Azure](https://azure.microsoft.com/pricing/calculator/) för att planera dina distributioner.
-- Läs mer om övervakning av den virtuella datorn [i övervaka virtuella datorer i Azure](../azure-monitor/insights/monitor-vm-azure.md).
+- Läs mer om övervakning av den virtuella datorn [i övervaka virtuella datorer i Azure](../azure-monitor/vm/monitor-vm-azure.md).

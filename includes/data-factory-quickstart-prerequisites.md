@@ -8,18 +8,18 @@ ms.service: data-factory
 ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
-ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c21c576cbb99ccc96bf7edf733769a9b28b9344
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013385"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612642"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="azure-subscription"></a>Azure-prenumeration
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
 ### <a name="azure-roles"></a>Azure-roller
 
@@ -27,7 +27,7 @@ Om du vill skapa Data Factory-instanser måste det användarkonto du använder f
 
 För att skapa och hantera underordnade resurser för Data Factory – inklusive datauppsättningar, länkade tjänster, pipelines, utlösare och integreringskörningar – gäller följande krav:
 
-- För att kunna skapa och hantera underordnade resurser i Azure-portalen måste du tillhöra rollen **Data Factory-deltagare** på resursgruppsnivå eller högre.
+- Om du vill skapa och hantera underordnade resurser i Azure Portal måste du tillhöra rollen **Data Factory Contributor** på resurs grupps nivå eller högre.
 - För att skapa och hantera underordnade resurser med PowerShell eller SDK räcker det att du har rollen som **deltagare** på resursnivå eller högre.
 
 För exempel på instruktioner om hur du lägger till en användare till en roll läser du artikeln [Lägg till roller](../articles/cost-management-billing/manage/add-change-subscription-administrator.md).
@@ -55,11 +55,12 @@ Du kan också söka efter och välja *lagrings konton* från vilken sida som hel
 
 I det här avsnittet skapar du en blobcontainer med namnet **adftutorial** i Azure Blob Storage.
 
-1. Välj **Översikt** behållare på sidan lagrings konto  >  **Containers**.
+1. Välj **Översikt** behållare på sidan lagrings konto  >  .
 2. På *\<Account name>*  -  **behållarens** verktygsfält väljer du **behållare**.
 3. I dialogrutan **Ny container** anger du **adftutorial** som namn och väljer **OK**. *\<Account name>*  -  **Behållare** sidan uppdateras till att inkludera **adftutorial** i listan över behållare.
 
-   ![Lista över behållare](media/data-factory-quickstart-prerequisites/list-of-containers.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/list-of-containers.png" alt-text="Lista över behållare":::
+
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Lägg till en mapp för indata och en fil för BLOB-behållaren
 
@@ -82,7 +83,8 @@ Spara filen i mappen **C:\ADFv2QuickStartPSH** (Om mappen inte redan finns skapa
 3. På sidan **Ladda upp BLOB** väljer du rutan **filer** och bläddrar sedan till och väljer **emp.txts** filen.
 4. Expandera den **avancerade** rubriken. Sidan visas nu som på det sätt som visas:
 
-   ![Välj länken Avancerat](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/upload-blob-advanced.png" alt-text="Välj länken Avancerat":::
+
 5. I rutan **Ladda upp till mapp** anger du **ininformation**.
 6. Välj knappen **Ladda upp**. Du bör se filen **emp.txt** och uppladdningens status i listan.
 7. Välj ikonen **Stäng** (a **X**) för att stänga sidan **Ladda upp BLOB** .

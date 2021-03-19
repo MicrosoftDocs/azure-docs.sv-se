@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ecabfde624ba6d3393bbf6d5480b83dbb5303c5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522367"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604567"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Självstudie: Använd dina egna data (del 4 av 4)
 
@@ -39,7 +39,12 @@ I den här kursen får du:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Slut för ande av [del 3](tutorial-1st-experiment-sdk-train.md) av serien.
+Du behöver data och en uppdaterad version av pytorch-miljön som skapats i föregående självstudie.  Kontrol lera att du har slutfört de här stegen:
+
+1. [Skapa träningsskriptet](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [Skapa en ny python-miljö](tutorial-1st-experiment-sdk-train.md#environment)
+1. [Testa lokalt](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [Uppdatera miljö filen för Conda](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>Justera övnings skriptet
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [Jag justerade det utbildnings skript](?success=adjust-training-script#test-locally) [Jag stötte på ett problem](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
@@ -84,28 +90,27 @@ Ditt skript accepterar nu _data Sök vägen_ som ett argument. Börja med genom 
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Katalog strukturen visar. azureml, data och src-under kataloger":::
 
+1. Avsluta den aktuella miljön.
 
-Om du inte körde `train.py` lokalt i den föregående själv studie kursen har du inte `data/` katalogen. I det här fallet kör du `torchvision.datasets.CIFAR10` metoden lokalt med `download=True` i `train.py` skriptet.
+    ```bash
+    conda deactivate
 
-För att köra lokalt, se till att du avslutar själv studie miljön och aktiverar den nya Conda-miljön:
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-För att köra det ändrade tränings skriptet lokalt, anropa:
+1. Kör slutligen det ändrade tränings skriptet lokalt.
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 Du undviker att ladda ned CIFAR10-datauppsättningen genom att skicka in en lokal sökväg till data. Du kan också experimentera med olika värden för _inlärnings frekvens_ _och_ avvikande egenskaper utan att behöva hårdkoda dem i övnings skriptet.
 

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260070"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589471"
 ---
-# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Använda rapporten AD FS program aktivitet (för hands version) för att migrera program till Azure AD
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Använda rapporten AD FS program aktivitet för att migrera program till Azure AD
 
 Många organisationer använder Active Directory Federation Services (AD FS) (AD FS) för att tillhandahålla enkel inloggning till moln program. Det finns stora fördelar med att flytta AD FS-program till Azure AD för autentisering, särskilt vad gäller kostnads hantering, riskhantering, produktivitet, efterlevnad och styrning. Men det kan ta lång tid att förstå vilka program som är kompatibla med Azure AD och identifiera särskilda migrerings steg.
 
-I rapporten AD FS program aktivitet (för hands version) i Azure Portal kan du snabbt identifiera vilka av dina program som kan migreras till Azure AD. Den utvärderar alla AD FS program för kompatibilitet med Azure AD, söker efter eventuella problem och ger vägledning om att förbereda enskilda program för migrering. Med rapporten AD FS program aktivitet kan du:
+I rapporten AD FS program aktivitet i Azure Portal kan du snabbt identifiera vilka av dina program som kan migreras till Azure AD. Den utvärderar alla AD FS program för kompatibilitet med Azure AD, söker efter eventuella problem och ger vägledning om att förbereda enskilda program för migrering. Med rapporten AD FS program aktivitet kan du:
 
 * **Identifiera AD FS program och omfånget för migreringen.** I rapporten AD FS program aktivitet visas alla AD FS program i din organisation som har haft en aktiv användar inloggning under de senaste 30 dagarna. Rapporten visar att det är en app-beredskap för migrering till Azure AD. Rapporten visar inte Microsoft-relaterade förlitande parter i AD FS som Office 365. Till exempel förlitande parter med namnet "urn: federation: MicrosoftOnline".
 
@@ -52,7 +52,7 @@ Rapporten AD FS program aktivitet är tillgänglig i Azure Portal under Azure AD
 
 2. Välj **Azure Active Directory** och välj sedan **företags program**.
 
-3. Under **aktivitet** väljer du **användning & insikter (för hands version)** och väljer sedan **AD FS program aktivitet** för att öppna en lista över alla AD FS program i din organisation.
+3. Under **aktivitet** väljer du **användning & insikter** och väljer sedan **AD FS program aktivitet** för att öppna en lista över alla AD FS program i din organisation.
 
    ![AD FS program aktivitet](media/migrate-adfs-application-activity/adfs-application-activity.png)
 
@@ -78,7 +78,7 @@ Rapporten AD FS program aktivitet är tillgänglig i Azure Portal under Azure AD
 
 I följande tabell visas alla konfigurations test som utförs på AD FS program.
 
-|Resultat  |Pass/varning/fel  |Beskrivning  |
+|Resultat  |Pass/varning/fel  |Description  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Minst en icke-går migrera regel identifierades för AdditionalAuthentication.       | Pass/varning          | Den förlitande parten har regler för att begära Multi-Factor Authentication (MFA). Om du vill flytta till Azure AD översätter du reglerna till principer för villkorlig åtkomst. Om du använder en lokal MFA-MFA rekommenderar vi att du flyttar till Azure AD MFA. [Läs mer om villkorlig åtkomst](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Förlitande part har AdditionalWSFedEndpoint inställt på sant.       | Godkänn/Underkänn          | Den förlitande parten i AD FS tillåter flera WS-Fed försäkrade slut punkter.Azure AD har för närvarande endast stöd för en.Om du har ett scenario där det här resultatet blockerar migreringen kan du berätta för [oss](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

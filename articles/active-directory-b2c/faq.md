@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517998"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580104"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: vanliga frågor och svar
 
@@ -103,7 +103,7 @@ Nej, Azure AD Connect har inte utformats för att fungera med Azure AD B2C. Öve
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Kan min app öppna Azure AD B2C sidor i en iFrame?
 
-Nej, av säkerhets skäl kan Azure AD B2C sidor inte öppnas i en iFrame. Tjänsten kommunicerar med webbläsaren för att förhindra iFrames. Säkerhets communityn i allmänhet och OAUTH2-specifikationen rekommenderar att du använder iFrames för identitets upplevelser på grund av risken för klicknings uttag.
+Den här funktionen är en allmänt tillgänglig förhandsversion. Mer information finns i [inbäddad inloggnings upplevelse](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login).
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Fungerar Azure AD B2C med CRM-system som Microsoft Dynamics?
 
@@ -131,7 +131,7 @@ Ja, se [språk anpassning](language-customization.md). Vi tillhandahåller över
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Kan jag använda mina egna URL: er på mina registrerings-och inloggnings sidor som hanteras av Azure AD B2C? Kan jag till exempel ändra URL: en från contoso.b2clogin.com till login.contoso.com?
 
-Inte för tillfället. Den här funktionen finns i vår översikt. Att verifiera din domän på fliken **domäner** i Azure Portal att inte uppnå det här målet. Men med b2clogin.com erbjuder vi en [neutral toppnivå domän](b2clogin.md)och därför kan det externa utseendet implementeras utan omnämnande av Microsoft.
+Den här funktionen är tillgänglig i en offentlig för hands version. Mer information finns i [Azure AD B2C anpassade domäner](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow).
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hur gör jag för att ta bort Azure AD B2C klienten?
 

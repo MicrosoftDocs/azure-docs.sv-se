@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73693161"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Förbered mål miljön för haveri beredskap för virtuella VMware-datorer eller fysiska servrar till Azure
 
 Den här artikeln beskriver hur du förbereder din Azure-miljö så att du kan börja replikera virtuella VMware-datorer eller fysiska servrar till Azure.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Artikeln förutsätter:
 - Du har skapat ett Recovery Services-valv på [Azure Portal](https://portal.azure.com "Azure Portal") för att skydda dina käll datorer
@@ -27,7 +27,7 @@ Artikeln förutsätter:
 
 ## <a name="prepare-target"></a>Förbered målet
 
-När du har slutfört **steg 1: Välj skydds mål** och **steg 2: förbereda källan**går du till **steg 3: mål**
+När du har slutfört **steg 1: Välj skydds mål** och **steg 2: förbereda källan** går du till **steg 3: mål**
 
 ![Förbered målet](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 

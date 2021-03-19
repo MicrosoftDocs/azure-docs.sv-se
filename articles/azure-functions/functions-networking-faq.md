@@ -4,12 +4,12 @@ description: Svar på några av de vanligaste frågorna och scenarierna för nä
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578237"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592310"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Vanliga frågor om nätverk i Azure Functions
 
@@ -17,7 +17,9 @@ Den här artikeln innehåller vanliga frågor om nätverk i Azure Functions. En 
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>Hur gör jag för att anger du en statisk IP-adress i functions?
 
-Att distribuera en funktion i en App Service-miljön är för närvarande det enda sättet att ha en statisk inkommande och utgående IP-adress för din funktion. Om du vill ha mer information om hur du använder en App Service-miljön börjar du med artikeln [skapa och använder en intern belastningsutjämnare med en app service-miljön](../app-service/environment/create-ilb-ase.md).
+Att distribuera en funktion i en App Service-miljön är det primära sättet att ha statiska inkommande och utgående IP-adresser för dina funktioner. Om du vill ha mer information om hur du använder en App Service-miljön börjar du med artikeln [skapa och använder en intern belastningsutjämnare med en app service-miljön](../app-service/environment/create-ilb-ase.md).
+
+Du kan också använda en NAT-gateway för virtuella nätverk för att dirigera utgående trafik via en offentlig IP-adress som du styr. Mer information finns i [Självstudier: kontrol lera Azure Functions utgående IP med en Azure Virtual Network NAT gateway](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Hur gör jag för att begränsa Internet åtkomst till min funktion?
 
@@ -33,7 +35,7 @@ Tänk på att Azure Portals redigeraren kräver direkt åtkomst till den funktio
 
 Du kan begränsa **inkommande** trafik för en Function-app till ett virtuellt nätverk med hjälp av [tjänst slut punkter](./functions-networking-options.md#use-service-endpoints). Den här konfigurationen tillåter fortfarande att Function-appen gör utgående anrop till Internet.
 
-För att helt begränsa en funktion så att all trafik flödar genom ett virtuellt nätverk kan du använda en [privat slut punkt](./functions-networking-options.md#private-endpoint-connections) med utgående integrering av virtuella nätverk eller en app service-miljön.
+För att helt begränsa en funktion så att all trafik flödar genom ett virtuellt nätverk kan du använda en [privat slut punkt](./functions-networking-options.md#private-endpoint-connections) med utgående integrering av virtuella nätverk eller en app service-miljön. Mer information finns i [integrera Azure Functions med ett virtuellt Azure-nätverk med hjälp av privata slut punkter](functions-create-vnet.md).
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hur kan jag få åtkomst till resurser i ett virtuellt nätverk från en Function-app?
 

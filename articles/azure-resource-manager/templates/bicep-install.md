@@ -2,13 +2,13 @@
 title: Konfigurera bicep utvecklings-och distributions miljöer
 description: Så här konfigurerar du bicep utvecklings-och distributions miljöer
 ms.topic: conceptual
-ms.date: 03/09/2021
-ms.openlocfilehash: 0434c08a4427d2549a9adf4e4ab1e7e73a465ad8
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.date: 03/17/2021
+ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620137"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594401"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>Konfigurera bicep utvecklings-och distributions miljö
 
@@ -18,7 +18,7 @@ Lär dig hur du ställer in bicep utvecklings-och distributions miljöer.
 
 Du behöver två komponenter för att få bästa redigerings upplevelse för bicep:
 
-- **Bicep-tillägg för Visual Studio Code**. Om du vill skapa bicep-filer behöver du en lämplig bicep-redigerare. Vi rekommenderar [Visual Studio Code](https://code.visualstudio.com/) med [bicep-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Dessa verktyg ger språk stöd och slut för ande av resurser. De hjälper dig att skapa och validera bicep-filer. Mer information finns i [snabb start: skapa bicep-filer med Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).
+- **Bicep-tillägg för Visual Studio Code**. Om du vill skapa bicep-filer behöver du en lämplig bicep-redigerare. Vi rekommenderar [Visual Studio Code](https://code.visualstudio.com/) med [bicep-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Dessa verktyg ger språk stöd och slut för ande av resurser. De hjälper dig att skapa och validera bicep-filer. Mer information om hur du använder Visual Studio Code och bicep-tillägget finns i [snabb start: skapa bicep-filer med Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).
 - **BICEP CLI**. Använd bicep CLI för att kompilera bicep-filer till ARM JSON-mallar och dekompilera ARM JSON-mallar till bicep-filer. Mer information finns i [Installera BICEP CLI](#install-bicep-cli).
 
 ## <a name="deployment-environment"></a>Distributionsmiljö

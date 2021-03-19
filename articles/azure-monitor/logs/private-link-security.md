@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101485"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594571"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Använd Azure Private Link för att ansluta nätverk till Azure Monitor på ett säkert sätt
 
@@ -51,14 +51,16 @@ Vissa Azure Monitor tjänster använder globala slut punkter, vilket innebär at
 När du konfigurerar en anslutning till en privat länk uppdateras din DNS för att mappa Azure Monitor slut punkter till privata IP-adresser från ditt VNet IP-intervall. Den här ändringen åsidosätter alla tidigare mappningar av dessa slut punkter, vilket kan ha meningsfulla följder, som granskas nedan. 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor privat länk gäller för alla Azure Monitor resurser – allt det är eller inget
-Eftersom vissa Azure Monitor slut punkter är globala är det omöjligt att skapa en privat länk anslutning för en viss komponent eller arbets yta. I stället uppdateras dina DNS-poster för **alla** Application Insights-komponenter när du konfigurerar en privat länk till en enda Application Insights-komponent. Försök att mata in eller fråga en komponent går via den privata länken och kan eventuellt Miss lyckas. Om du ställer in en privat länk till en enskild arbets yta så kommer alla Log Analyticss frågor att gå igenom slut punkten för den privata länken (men inte inmatnings begär Anden som har arbets ytans angivna slut punkter).
+Eftersom vissa Azure Monitor slut punkter är globala är det omöjligt att skapa en privat länk anslutning för en viss komponent eller arbets yta. I stället uppdateras dina DNS-poster för **alla** Application Insights-komponenter när du konfigurerar en privat länk till en enskild Application Insights-komponent eller Log Analytics arbets yta. Försök att mata in eller fråga en komponent går via den privata länken och kan eventuellt Miss lyckas. När det gäller Log Analytics, är inmatnings-och konfigurations slut punkter specifika för arbets ytor, vilket innebär att konfigurationen av den privata länken endast gäller för de angivna arbets ytorna. Inmatningen och konfigurationen av andra arbets ytor dirigeras till de offentliga standard Log Analytics slut punkterna.
 
 ![Diagram över DNS-åsidosättningar i ett enda VNet](./media/private-link-security/dns-overrides-single-vnet.png)
 
 Det stämmer inte bara för ett särskilt VNet, men för alla virtuella nätverk som delar samma DNS-server (se [frågan om DNS-åsidosättningar](#the-issue-of-dns-overrides)). Det innebär att till exempel begäran om att mata in loggar till en Application Insights komponent alltid skickas via den privata länk vägen. Komponenter som inte är länkade till AMPLS kommer att Miss klar med verifieringen av den privata länken och inte gå igenom.
 
 > [!NOTE]
-> Att ingå: när du har konfigurerat en privat länk anslutning till en enda resurs gäller den för alla Azure Monitor resurser i nätverket – allt det är eller inget. Det innebär att du bör lägga till alla Azure Monitor resurser i nätverket till din AMPLS, eller ingen av dem.
+> Att ingå: när du har konfigurerat en privat länk anslutning till en enda resurs gäller den för Azure Monitor resurser i nätverket. För Application Insights resurser är allt eller Nothing. Det innebär att du bör lägga till alla Application Insights resurser i nätverket till din AMPLS, eller ingen av dem.
+> 
+> För att hantera data exfiltrering-risker är vår rekommendation att lägga till alla Application Insights och Log Analytics resurser till din AMPLS och blockera nätverkets utgående trafik så mycket som möjligt.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor privat länk gäller hela nätverket
 Vissa nätverk består av flera virtuella nätverk. Om virtuella nätverk använder samma DNS-Server åsidosätter de var and ras DNS-mappningar och kan eventuellt dela var and ras kommunikation med Azure Monitor (se [frågan om DNS-åsidosättningar](#the-issue-of-dns-overrides)). Slutligen kommer endast det sista virtuella nätverket kunna kommunicera med Azure Monitor, eftersom DNS kommer att mappa Azure Monitor slut punkter till privata IP-adresser från det här virtuella nätverk-intervallet (som kanske inte kan nås från andra virtuella nätverk).

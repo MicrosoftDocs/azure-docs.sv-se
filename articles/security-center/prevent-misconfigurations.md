@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 5d172a73674195e7f64f5ef02322e2bd2d6314df
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: fabbd255f64e5614ae052c9d7c8d65fc35d45856
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439535"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600504"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Förhindra felkonfiguration med Enforce/Deny-rekommendationer
 
@@ -68,6 +68,7 @@ Dessa rekommendationer kan användas med alternativet **tillämpa** :
 - Granskning på SQL Server måste vara aktiverat
 - Azure Backup ska vara aktiverat för virtuella datorer
 - Azure Defender för SQL ska vara aktiverat på dina SQL-servrar
+- Azure Policy tillägg för Kubernetes bör installeras och aktive ras i klustren
 - Diagnostikloggar i Azure Stream Analytics ska vara aktive rad
 - Diagnostikloggar i batch-konton måste vara aktiverade
 - Diagnostikloggar i Data Lake Analytics ska vara aktive rad

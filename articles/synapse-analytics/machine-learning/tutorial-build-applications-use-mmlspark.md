@@ -9,20 +9,20 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruxu
 ms.author: ruxu
-ms.openlocfilehash: ad6f0d5ad55716e19e4e0c571056d18641e23d21
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589607"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Självstudie: utveckla maskin inlärnings program med Microsoft Machine Learning för Apache Spark (för hands version)
 
-I den här artikeln får du lära dig hur du använder Microsoft Machine Learning för Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) för att skapa maskin inlärnings program. MMLSpark utökar den distribuerade maskin inlärnings lösningen för Apache Spark genom att lägga till många djup inlärnings-och data vetenskaps verktyg, till exempel [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data), [opencv](https://opencv.org/), [LightGBM](https://github.com/Microsoft/LightGBM) och mycket annat.  Med MMLSpark kan du bygga kraftfulla och mycket skalbara förutsägelser och analys modeller från olika Spark-datakällor.
+I den här artikeln får du lära dig hur du använder Microsoft Machine Learning för Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) för att skapa maskin inlärnings program. MMLSpark utökar den distribuerade maskin inlärnings lösningen för Apache Spark genom att lägga till många djup inlärnings-och data vetenskaps verktyg, till exempel [Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md), [opencv](https://opencv.org/), [LightGBM](https://github.com/Microsoft/LightGBM) och mycket annat.  Med MMLSpark kan du bygga kraftfulla och mycket skalbara förutsägelser och analys modeller från olika Spark-datakällor.
 Synapse Spark tillhandahåller inbyggda MMLSpark-bibliotek inklusive:
 
 - [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – biblioteks tjänster för maskin inlärning för att aktivera text analys som sentiment-analys i tweets.
-- [Cognitive Services i Spark](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data) – för att kombinera funktionen i Azure Cognitive Services i SparkML-pipeliner för att kunna härleda lösnings design för kognitiva data modellerings tjänster som avvikelse identifiering.
+- [Cognitive Services i Spark](../../cognitive-services/big-data/cognitive-services-for-big-data.md) – för att kombinera funktionen i Azure Cognitive Services i SparkML-pipeliner för att kunna härleda lösnings design för kognitiva data modellerings tjänster som avvikelse identifiering.
 - [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – maskin inlärnings modell som gör det möjligt att träna modellen för förutsägelse analys som identifiering av ansikts-ID.
 - Villkorsstyrd KNN – skalbara KNN-modeller med villkorliga frågor.
 - [Http på Spark](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – aktiverar distribuerade mikrotjänster-dirigering i integrerande Spark-och http-protokollbaserade hjälpmedel.
@@ -38,9 +38,9 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto inn
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-- [Azure Synapse Analytics-arbetsyta](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace) med ett Azure Data Lake Storage Gen2 lagrings konto konfigurerat som standard lagring. Du måste vara *data deltagare i Storage BLOB* för det data Lake Storage Gen2 fil system som du arbetar med.
-- Spark-pool i din Azure Synapse Analytics-arbetsyta. Mer information finns i [skapa en spark-pool i Azure Synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-sql-pool-studio).
-- För konfigurations steg som beskrivs i självstudien [konfigurera Cognitive Services i Azure-Synapse](https://docs.microsoft.com/azure/synapse-analytics/machine-learning/tutorial-configure-cognitive-services-synapse).
+- [Azure Synapse Analytics-arbetsyta](../get-started-create-workspace.md) med ett Azure Data Lake Storage Gen2 lagrings konto konfigurerat som standard lagring. Du måste vara *data deltagare i Storage BLOB* för det data Lake Storage Gen2 fil system som du arbetar med.
+- Spark-pool i din Azure Synapse Analytics-arbetsyta. Mer information finns i [skapa en spark-pool i Azure Synapse](../quickstart-create-sql-pool-studio.md).
+- För konfigurations steg som beskrivs i självstudien [konfigurera Cognitive Services i Azure-Synapse](./tutorial-configure-cognitive-services-synapse.md).
 
 
 ## <a name="get-started"></a>Kom igång
@@ -69,7 +69,7 @@ anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", a
 
 ## <a name="text-analytics-sample"></a>Exempel på text analys
 
-Tjänsten [textanalys](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) tillhandahåller flera algoritmer för att extrahera intelligenta insikter från text. Vi kan till exempel hitta sentiment för den angivna texten. Tjänsten returnerar ett resultat mellan 0,0 och 1,0 där låga poäng indikerar negativa sentiment och höga poäng indikerar positiv sentiment. Det här exemplet använder tre enkla meningar och returnerar sentiment för var och en.
+Tjänsten [textanalys](../../cognitive-services/text-analytics/index.yml) tillhandahåller flera algoritmer för att extrahera intelligenta insikter från text. Vi kan till exempel hitta sentiment för den angivna texten. Tjänsten returnerar ett resultat mellan 0,0 och 1,0 där låga poäng indikerar negativa sentiment och höga poäng indikerar positiv sentiment. Det här exemplet använder tre enkla meningar och returnerar sentiment för var och en.
 
 ```python
 from pyspark.sql.functions import col
@@ -104,7 +104,7 @@ display(sentiment.transform(df_sentences).select("text", col("sentiment")[0].get
 | Jag är så glad idag, dess solig! | positivt |
 
 ## <a name="computer-vision-sample"></a>Exempel på dator vision
-[Visuellt innehåll](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyserar bilder för att identifiera strukturen som ansikten, objekt och beskrivningar av naturligt språk. I det här exemplet ska vi tagga följande bild. Taggar är en beskrivning av saker i bilden, till exempel igenkännliga objekt, människor, landskap och åtgärder.
+[Visuellt innehåll](../../cognitive-services/computer-vision/index.yml) analyserar bilder för att identifiera strukturen som ansikten, objekt och beskrivningar av naturligt språk. I det här exemplet ska vi tagga följande bild. Taggar är en beskrivning av saker i bilden, till exempel igenkännliga objekt, människor, landskap och åtgärder.
 
 
 ![image](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg)
@@ -134,7 +134,7 @@ display(analysis.transform(df_images).select("image", "analysis_results.descript
 | `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg` | [skridsko, person, man, Utomhus, händer, sport, skateboard, unga, bord, skjorta, luft, Park, pojke, sida, hopp, ramp, trick, att göra |
 
 ## <a name="bing-image-search-sample"></a>Exempel på bilds ökning i Bing
-[Bildsökning i Bing](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) söker på webben för att hämta avbildningar relaterade till en användares naturliga språk fråga. I det här exemplet använder vi en text fråga som söker efter bilder med citat tecken. Den returnerar en lista med bild-URL: er som innehåller foton som är relaterade till vår fråga.
+[Bildsökning i Bing](../../cognitive-services/bing-image-search/overview.md) söker på webben för att hämta avbildningar relaterade till en användares naturliga språk fråga. I det här exemplet använder vi en text fråga som söker efter bilder med citat tecken. Den returnerar en lista med bild-URL: er som innehåller foton som är relaterade till vår fråga.
 
 
 ```python
@@ -185,7 +185,7 @@ display(res_bingsearch.dropDuplicates())
 
 ## <a name="anomaly-detector-sample"></a>Exempel på avvikelse detektor
 
-[Avvikelse detektor](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) är perfekt för att upptäcka överträdelser i dina tids serie data. I det här exemplet använder vi tjänsten för att hitta avvikelser i hela tids serien.
+[Avvikelse detektor](../../cognitive-services/anomaly-detector/index.yml) är perfekt för att upptäcka överträdelser i dina tids serie data. I det här exemplet använder vi tjänsten för att hitta avvikelser i hela tids serien.
 
 ```python
 from pyspark.sql.functions import lit

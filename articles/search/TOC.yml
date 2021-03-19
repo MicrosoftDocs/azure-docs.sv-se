@@ -358,6 +358,8 @@
           href: search-query-understand-collection-filters.md
         - name: Filtrera efter språk
           href: search-filters-language.md
+        - name: Normalisera text
+          href: search-normalizers.md
     - name: Relevans
       items:
         - name: Rangordning för likhets sätt

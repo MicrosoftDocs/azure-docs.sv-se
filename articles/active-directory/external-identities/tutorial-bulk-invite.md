@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 03/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01deae46c442fc95c6aead0f11de929f47163c3c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905930"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586579"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Självstudier: Massinbjuda Azure AD B2B-samarbetsanvändare
 
@@ -40,8 +40,8 @@ Hämta och fyll i mallen för Mass uppladdning av CSV så att du kan bjuda in Az
 Raderna i en Hämtad CSV-mall är följande:
 
 - **Versions nummer**: den första raden som innehåller versions numret måste inkluderas i överförings-CSV-filen.
-- **Kolumn rubriker**: kolumn rubrikernas format är &lt; *objekt namnet* &gt; [PropertyName] &lt; *obligatoriskt eller tomt* &gt; . Exempelvis `Email address to invite [inviteeEmail] Required`. Vissa äldre versioner av mallen kan ha små variationer.
-- **Exempel rad**: vi har inkluderat i mallen en rad exempel på acceptabla värden för varje kolumn. Du måste ta bort exempel raden och ersätta den med dina egna poster.
+- **Kolumn rubriker**: kolumn rubrikernas format är &lt; *objekt namnet* &gt; [PropertyName] &lt; *obligatoriskt eller tomt* &gt; . Till exempel `Email address to invite [inviteeEmail] Required`. Vissa äldre versioner av mallen kan ha små variationer.
+- **Exempel rad**: vi har inkluderat i mallen en rad exempel på värden för varje kolumn. Du måste ta bort exempel raden och ersätta den med dina egna poster.
 
 ### <a name="additional-guidance"></a>Mer information
 
@@ -50,24 +50,28 @@ Raderna i en Hämtad CSV-mall är följande:
 - Vi rekommenderar inte att du lägger till nya kolumner i mallen. Eventuella ytterligare kolumner som du lägger till ignoreras och bearbetas inte.
 - Vi rekommenderar att du laddar ned den senaste versionen av CSV-mallen så ofta som möjligt.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver två eller flera test-e-postkonton att skicka inbjudningar till. Kontona måste finnas utanför din organisation. Du kan använda vilken typ av konto som helst, t.ex. konton i sociala medier som gmail.com- eller outlook.com-adresser.
 
 ## <a name="invite-guest-users-in-bulk"></a>Bjud in gäst användare i bulk
 
-1. Logga in på Azure Portal med ett konto som är en användar administratör i organisationen.
+1. Logga in på Azure Portal med ett konto som är en global administratör i organisationen.
 2. I navigerings fönstret väljer du **Azure Active Directory**.
-3. Under **Hantera**väljer **du användare**  >  **Mass inbjudan**.
+3. Under **Hantera** väljer du **alla användare**.
+4. Välj   >  **Mass inbjudan** för Mass åtgärder.
+
+    ![Knappen samlings inbjudan](media/tutorial-bulk-invite/bulk-invite-button.png)
+
 4. På sidan **massredigera användare** väljer du **Hämta** för att hämta en giltig CSV-mall med Inbjudnings egenskaper.
 
-    ![Hämtnings knapp för Mass inbjudan](media/tutorial-bulk-invite/bulk-invite-button.png)
+     ![Ladda ned CSV-filen](media/tutorial-bulk-invite/download-button.png)
 
-5. Öppna CSV-mallen och Lägg till en rad för varje gäst användare. Obligatoriska värden är:
+1. Öppna CSV-mallen och Lägg till en rad för varje gäst användare. Obligatoriska värden är:
 
    * **E-postadress att bjuda in** – användaren som får en inbjudan
 
-   * **URL för omdirigering** – URL: en dit den inbjudna användaren vidarebefordras efter att inbjudan har accepterats
+   * **URL för omdirigering** – URL: en dit den inbjudna användaren vidarebefordras efter att inbjudan har accepterats. Om du vill vidarebefordra användaren till sidan Mina appar måste du ändra värdet till https://myapps.microsoft.com eller https://myapplications.microsoft.com .
 
     ![Exempel på en CSV-fil med gäst användare angivna](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
@@ -75,10 +79,10 @@ Du behöver två eller flera test-e-postkonton att skicka inbjudningar till. Kon
    > Använd inte kommatecken i det **anpassade Inbjudnings meddelandet** eftersom de hindrar meddelandet från att kunna parsas.
 
 6. Spara filen.
-7. På sidan **gruppbjuda in användare** går du till **överför CSV-filen**och bläddrar till filen. När du väljer filen startar valideringen av. csv-filen. 
+7. På sidan **gruppbjuda in användare** går du till **överför CSV-filen** och bläddrar till filen. När du väljer filen startar valideringen av. csv-filen. 
 8. När fil innehållet verifieras visas **filen har laddats upp**. Om det finns fel måste du åtgärda dem innan du kan skicka jobbet.
 9. När din fil klarar valideringen väljer du **Skicka** för att starta den Azure Mass åtgärd som lägger till inbjudningarna. 
-10. Om du vill visa jobb statusen väljer **du klicka här för att visa status för varje åtgärd**. Du kan också välja **Mass åtgärds resultat** i avsnittet **aktivitet** . Om du vill ha mer information om varje rad objekt i Mass åtgärden väljer du värdena under kolumnerna **# lyckades**, **# Failure**eller **Totalt antal förfrågningar** . Om fel inträffar visas orsaken till felet.
+10. Om du vill visa jobb statusen väljer **du klicka här för att visa status för varje åtgärd**. Du kan också välja **Mass åtgärds resultat** i avsnittet **aktivitet** . Om du vill ha mer information om varje rad objekt i Mass åtgärden väljer du värdena under kolumnerna **# lyckades**, **# Failure** eller **Totalt antal förfrågningar** . Om fel inträffar visas orsaken till felet.
 
     ![Exempel på Mass åtgärds resultat](media/tutorial-bulk-invite/bulk-operation-results.png)
 
@@ -93,7 +97,7 @@ Kontrol lera att gäst användare som du har lagt till finns i katalogen antinge
 1. Logga in på Azure Portal med ett konto som är en användar administratör i organisationen.
 2. I navigerings fönstret väljer du **Azure Active Directory**.
 3. Under **Hantera** väljer du **Användare**.
-4. Under **Visa**väljer du **gäst användare** och verifiera att de användare som du har lagt till visas.
+4. Under **Visa** väljer du **gäst användare** och verifiera att de användare som du har lagt till visas.
 
 ### <a name="view-guest-users-with-powershell"></a>Visa gäst användare med PowerShell
 

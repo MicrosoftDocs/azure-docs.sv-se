@@ -2,17 +2,17 @@
 title: Resurs leverantörer efter Azure-tjänster
 description: Visar en lista över alla resurs leverantörs namn områden för Azure Resource Manager och Azure-tjänsten för namn området visas.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: 65fa6a690f05a61e54bae2d22f4889c3193bcb1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/16/2021
+ms.openlocfilehash: ee8cb054f3f10c3b33d5235b2b03cdfeac266139
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008713"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592169"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resursleverantörer för Azure-tjänster
 
-Den här artikeln visar hur namn områden för resurs leverantörer mappas till Azure-tjänster.
+Den här artikeln visar hur namn områden för resurs leverantörer mappas till Azure-tjänster. Om du inte känner till resurs leverantören kan du läsa [hitta resurs leverantör](#find-resource-provider).
 
 ## <a name="match-resource-provider-to-service"></a>Matcha Resource Provider till tjänst
 
@@ -192,6 +192,42 @@ De resurs leverantörer som är markerade med **-registrerade** registreras som 
 
 > [!IMPORTANT]
 > Registrera bara en resurs leverantör när du är redo att använda den. Med registrerings steget kan du behålla de lägsta privilegierna i din prenumeration. En obehörig användare kan inte använda resurs leverantörer som inte är registrerade.
+
+## <a name="find-resource-provider"></a>Hitta resurs leverantör
+
+Om du har en befintlig infrastruktur i Azure, men inte är säker på vilken resurs leverantör som används, kan du använda antingen Azure CLI eller PowerShell för att hitta resurs leverantören. Ange namnet på den resurs grupp som innehåller de resurser som du vill hitta.
+
+I följande exempel används Azure CLI:
+
+```azurecli-interactive
+az resource list -g examplegroup
+```
+
+Resultatet inkluderar resurs typen. Namn området för resurs leverantören är den första delen av resurs typen. I följande exempel visas resurs leverantören **Microsoft. nyckel valv** .
+
+```json
+[
+  {
+    ...
+    "type": "Microsoft.KeyVault/vaults"
+  }
+]
+```
+
+I följande exempel används PowerShell:
+
+```azurepowershell-interactive
+Get-AzResource -ResourceGroupName examplegroup
+```
+
+Resultatet inkluderar resurs typen. Namn området för resurs leverantören är den första delen av resurs typen. I följande exempel visas resurs leverantören **Microsoft. nyckel valv** .
+
+```azurepowershell
+Name              : examplekey
+ResourceGroupName : examplegroup
+ResourceType      : Microsoft.KeyVault/vaults
+...
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

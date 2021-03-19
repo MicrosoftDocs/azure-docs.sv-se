@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553756"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582076"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Distribuera en virtuell dator med Trusted Launch Enabled (för hands version)
 
@@ -134,13 +134,13 @@ Klicka på knappen nedan om du vill distribuera principerna till din prenumerati
 
 Mallen behöver bara distribueras en gång per prenumeration. Den installeras automatiskt `GuestAttestation` och `AzureSecurity` tilläggen på alla virtuella datorer som stöds. Försök att distribuera om mallen igen om du får fel meddelanden.
 
-För att få vTPM och säkra start rekommendationer för betrodda virtuella datorer, se [Lägg till ett anpassat initiativ till din prenumeration](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription).
+För att få vTPM och säkra start rekommendationer för betrodda virtuella datorer, se [Lägg till ett anpassat initiativ till din prenumeration](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription).
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Signera saker för säker start på Linux
 
 I vissa fall kan du behöva signera saker för UEFI säker start.  Du kan till exempel behöva gå igenom [hur du ska logga in saker för säker start](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) för Ubuntu. I dessa fall måste du ange MOK-verktyget registrera nycklar för den virtuella datorn. För att göra detta måste du använda Azures serie konsol för att få åtkomst till MOK-verktyget.
 
-1. Aktivera Azures serie konsol för Linux. Mer information finns i [serie konsol för Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
+1. Aktivera Azures serie konsol för Linux. Mer information finns i [serie konsol för Linux](/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Logga in på [Azure Portal](https://portal.azure.com).
 1. Sök efter **virtuella datorer** och välj den virtuella datorn i listan.
 1. I den vänstra menyn, under **support + fel sökning**, väljer du **seriell konsol**. En sida öppnas till höger med serie konsolen.

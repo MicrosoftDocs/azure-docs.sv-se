@@ -1,20 +1,20 @@
 ---
 title: Skapa Azure-prenumerationer via programmering för ett Microsoft-kundavtal med de senaste API:erna
-description: Lär dig hur du skapar Azure-prenumerationer för ett Microsoft-kundavtal via programmering med de senaste versionerna av REST API, Azure CLI och Azure PowerShell.
+description: Lär dig hur du skapar Azure-prenumerationer för ett Microsoft-kundavtal genom programmering med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61a658cc9654a93b4c92fda6cc1f38cd2e77dafa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 779a1410641f945dc8dbf38aecf65b97d64971b1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216096"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593988"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Skapa Azure-prenumerationer via programmering för ett Microsoft-kundavtal med de senaste API:erna
 
@@ -32,13 +32,11 @@ För att kunna skapa prenumerationer måste du ha rollen ägare, deltagare eller
 
 Om du inte vet om du har åtkomst till ett konto för ett Microsoft-kundavtal kan du läsa mer i [Kontrollera åtkomsten till ett Microsoft-kundavtal](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement).
 
-I följande exempel används REST-API:er. PowerShell och Azure CLI stöds inte för närvarande.
-
 ## <a name="find-billing-accounts-that-you-have-access-to"></a>Sök efter faktureringskonton som du har åtkomst till
 
 Visa en lista över alla faktureringskonton genom att göra följande begäran.
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingAccounts)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
@@ -70,10 +68,10 @@ API-svaret visar alla faktureringskonton som du har åtkomst till.
 
 Använd egenskapen `displayName` för att identifiera det faktureringskonto som du vill skapa prenumerationer för. Se till att agreementType för kontot är *MicrosoftCustomerAgreement*. Kopiera `name` för kontot.  Om du till exempel vill skapa en prenumeration för faktureringskontot `Contoso` kopierar du `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Klistra in värdet någonstans så att du kan använda det i nästa steg.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingAccounts)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```azurepowershell-interactive
-PS C:\WINDOWS\system32> Get-AzBillingAccount
+```azurepowershell
+Get-AzBillingAccount
 ```
 Du får tillbaka en lista över alla fakturerings konton som du har åtkomst till 
 
@@ -88,9 +86,10 @@ HasReadAccess : True
 Använd egenskapen `displayName` för att identifiera det faktureringskonto som du vill skapa prenumerationer för. Se till att agreementType för kontot är *MicrosoftCustomerAgreement*. Kopiera `name` för kontot.  Om du till exempel vill skapa en prenumeration för faktureringskontot `Contoso` kopierar du `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Klistra in värdet någonstans så att du kan använda det i nästa steg.
 
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingAccounts)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-> az billing account list
+az billing account list
 ```
 Du får tillbaka en lista över alla fakturerings konton som du har åtkomst till 
 
@@ -127,7 +126,8 @@ Avgifterna för din prenumeration visas i ett avsnitt på fakturan för en faktu
 
 Först får du listan över fakturerings profiler under det fakturerings konto som du har åtkomst till (Använd det `name` du fick från föregående steg)
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingProfiles)
+### <a name="rest"></a>[REST](#tab/rest)
+
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingprofiles/?api-version=2020-05-01
 ```
@@ -208,10 +208,10 @@ GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/5e9
 
 Använd egenskapen `id` för att identifiera det fakturaavsnitt som du vill skapa prenumerationer för. Kopiera hela strängen. Exempelvis `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingProfiles)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```powershell-interactive
-PS C:\WINDOWS\system32> Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```azurepowershell
+Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
 ```
 
 Du får listan över fakturerings profiler under det här kontot som en del av svaret.
@@ -238,8 +238,8 @@ PostalCode        : 98052
 
 Notera `name` fakturerings profilen från ovanstående svar. Nästa steg är att hämta faktura avsnittet som du har åtkomst till under denna fakturerings profil. Du behöver ditt `name` fakturerings konto och fakturerings profil
 
-```powershell-interactive
-PS C:\WINDOWS\system32> Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
+```azurepowershell
+Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
 ```
 
 Du får faktura avsnittet returnerat
@@ -249,13 +249,14 @@ Name        : SH3V-xxxx-xxx-xxx
 DisplayName : Development
 ```
 
-Det `name` här är namnet på faktura avsnittet som du behöver för att skapa en prenumeration under. Skapa din fakturerings omfattning med formatet "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /BillingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> ". I det här exemplet kommer detta att likställas med `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
+Det `name` här är namnet på faktura avsnittet som du behöver för att skapa en prenumeration under. Skapa din fakturerings omfattning med formatet "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /BillingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> ". I det här exemplet motsvarar det här värdet `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingProfiles)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-> az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
+```azurecli
+az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
 ```
+
 Detta API kommer att returnera listan över fakturerings profiler och faktura avsnitt under det angivna fakturerings kontot.
 
 ```json
@@ -320,7 +321,7 @@ Detta API kommer att returnera listan över fakturerings profiler och faktura av
   }
 ]
 ```
-Använd egenskapen ID under objektet faktura avsnitt för att identifiera faktura avsnittet som du vill skapa prenumerationer för. Kopiera hela strängen. Till exempel/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-XX-XX/billingProfiles/AW4F-xxxx-XXX-XXX/invoiceSections/SH3V-xxxx-XXX-XXX.
+Använd `id` egenskapen under objektet faktura avsnitt för att identifiera faktura avsnittet som du vill skapa prenumerationer för. Kopiera hela strängen. Till exempel/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-XX-XX/billingProfiles/AW4F-xxxx-XXX-XXX/invoiceSections/SH3V-xxxx-XXX-XXX.
 
 ---
 
@@ -328,7 +329,7 @@ Använd egenskapen ID under objektet faktura avsnitt för att identifiera faktur
 
 I följande exempel skapas en prenumeration med namnet *Dev Team Subscription* (Prenumeration för utvecklingsteam) för fakturaavsnittet *Development* (Utveckling). Prenumerationen debiteras till faktureringsprofilen *Contoso Billing Profile* (Faktureringsprofil för Contoso) och visas i avsnittet *Development* (Utveckling) på fakturan. Du använder det kopierade faktureringsomfånget från föregående steg: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-### <a name="rest"></a>[REST](#tab/rest-MCA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
@@ -385,19 +386,19 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 En ”pågående”-status returneras som ett `Accepted`-tillstånd under `provisioningState`.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MCA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Kör `Install-Module Az.Subscription` för att installera den senaste versionen av modulen som innehåller cmdleten `New-AzSubscriptionAlias`. Se [Hämta PowerShellGet-modul](/powershell/scripting/gallery/installing-psget) om du vill installera en nyare version av PowerShellGet.
 
 Kör följande [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription)-kommando och faktureringsomfånget `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
 ```
 
 subscriptionId returneras som en del av svaret från kommandot.
 
-```azurepowershell
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -409,19 +410,19 @@ subscriptionId returneras som en del av svaret från kommandot.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MCA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Installera först tillägget genom att köra `az extension add --name account` och `az extension add --name alias`.
 
 Kör följande [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create)-kommando.
 
-```azurecli-interactive
+```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" --display-name "Dev Team Subscription" --workload "Production"
 ```
 
 subscriptionId returneras som en del av svaret från kommandot.
 
-```azurecli
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -435,7 +436,115 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 ---
 
+## <a name="use-arm-template"></a>Använda ARM-mall
+
+Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du överväga att använda en Azure Resource Manager mall (ARM-mall).
+
+Följande mall skapar en prenumeration. För `billingScope` anger du ID för faktura avsnitt. För `targetManagementGroup` , ange den hanterings grupp där du vill skapa prenumerationen.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/templates/deploy-to-management-group.md).
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+Med en begär ande text:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="next-steps"></a>Nästa steg
 
 * Nu när du har skapat en prenumeration kan du bevilja den möjligheten till andra användare och tjänsthuvudnamn. Mer information finns i [Bevilja behörighet att skapa Azure Enterprise-prenumerationer (förhandsversion)](grant-access-to-create-subscription.md).
 * Mer information om hur du hanterar ett stort antal prenumerationer med hanteringsgrupper finns i [Ordna resurser med hanteringsgrupper i Azure](../../governance/management-groups/overview.md).
+* Information om hur du ändrar hanterings gruppen för en prenumeration finns i [Flytta prenumerationer](../../governance/management-groups/manage.md#move-subscriptions).

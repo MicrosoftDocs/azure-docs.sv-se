@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e31a696dfb443c20566f13f5a228eefac7af5ecc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218170"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595931"
 ---
 # <a name="azure-percept-ai-models"></a>Azure percept AI-modeller
 
@@ -40,6 +40,10 @@ Det finns också en [inventerings referens lösning för människor](https://git
 Med Azure percept Studio kan du utveckla anpassade lösningar för [visioner](./tutorial-nocode-vision.md) och tal, utan att behöva koda.
 
 För anpassade visioner-lösningar är både objekt identifiering och klassificering AI-modeller tillgängliga. Ladda bara upp och tagga dina utbildnings avbildningar, som kan hämtas direkt med Azure percept-visionen som i Azure percept DK, om så önskas. Modell inlärning och utvärdering utförs enkelt i [Custom vision](https://www.customvision.ai/), som är en del av [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview).
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
 
 För anpassade tal lösningar är röst assistent mallar för närvarande tillgängliga för följande program:
 

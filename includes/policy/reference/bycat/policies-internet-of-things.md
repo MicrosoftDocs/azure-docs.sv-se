@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cbd15f487a8651bb2ea5e3274795bfad68fbc34e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d6aa8aee3c4f6060f987b201a941f0f24fe76506
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611373"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605703"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[För hands version \] : Azure IoT Hub bör använda kundhanterad nyckel för att kryptera data i vila](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Kryptering av data i vila i IoT Hub med kundhanterad nyckel lägger till ett sekundärt krypterings lager överst i standard tjänst hanterade nycklar, aktiverar kundstyr nycklar, anpassade rotations principer och möjlighet att hantera åtkomst till data via nyckel åtkomst kontroll. Kundhanterade nycklar måste konfigureras när IoT Hub skapas. Mer information om hur du konfigurerar Kundhanterade nycklar finns i [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[Konfigurera IoT Hub enhets etablerings instanser att använda privata DNS-zoner](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |Använd privata DNS-zoner för att åsidosätta DNS-matchningen för en privat slut punkt. En privat DNS-zon länkar till det virtuella nätverket för att lösa en IoT Hub enhets etablerings tjänst instans. Läs mer på: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |DeployIfNotExists, inaktiverat |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |

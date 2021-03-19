@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 906c7e00cba1e0feb85289e8f2a46e74924dc0c3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e890ff1cb64961c7747b8865b68504ff0a266a3e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665007"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med enkel inloggning för AWS
 
@@ -39,7 +39,7 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 * AWS enkel inloggning stöder SP- **och IDP** -INITIERAd SSO
 
-* AWS enkel inloggning stöder [**Automatisk användar etablering**](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial).
+* AWS enkel inloggning stöder [**Automatisk användar etablering**](./aws-single-sign-on-provisioning-tutorial.md).
 
 ## <a name="adding-aws-single-sign-on-from-the-gallery"></a>Lägga till AWS enkel inloggning från galleriet
 
@@ -196,7 +196,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 10. Välj **Slutför**.
 
 > [!NOTE]
-> AWS enkel inloggning stöder även automatisk användar etablering, du hittar mer information [här](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial) om hur du konfigurerar automatisk användar etablering.
+> AWS enkel inloggning stöder även automatisk användar etablering, du hittar mer information [här](./aws-single-sign-on-provisioning-tutorial.md) om hur du konfigurerar automatisk användar etablering.
 
 ## <a name="test-sso"></a>Testa SSO 
 
@@ -212,11 +212,9 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den AWS enkel inloggning för vilken du konfigurerar SSO 
 
-Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen för enkel inloggning i AWS i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt till AWS enkel inloggning för vilken du konfigurerar SSO. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen för enkel inloggning i AWS i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt till AWS enkel inloggning för vilken du konfigurerar SSO. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat AWS enkel inloggning kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+När du har konfigurerat AWS enkel inloggning kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

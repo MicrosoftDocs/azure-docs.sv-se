@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 2/16/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06ed37b914c352d7162db7f8409ac09b7615da47
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a793ebb6d2b58718a6ee42c69c38b9da1b124722
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174435"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589403"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Säker hybrid åtkomst: säkra äldre appar med Azure Active Directory
 
@@ -44,15 +44,15 @@ Förutom [Azure AD-programproxy](./what-is-application-proxy.md)så att du kan a
 
 Följande nätverks leverantörer erbjuder färdiga lösningar och detaljerad vägledning för integrering med Azure AD.
 
-- [Akamai Enterprise Application Access (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
+- [Akamai Enterprise Application Access (EAA)](../saas-apps/akamai-tutorial.md)
 
-- [Citrix Application Delivery Controller (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)
+- [Citrix Application Delivery Controller (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
 
-- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+- [F5 Big-IP APM](./f5-aad-integration.md)
 
-- [Kemp:](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
+- [Kemp:](../saas-apps/kemp-tutorial.md)
 
-- [Pulse Secure Virtual Traffic Manager (VTM)](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial)
+- [Pulse Secure Virtual Traffic Manager (VTM)](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 ### <a name="sha-through-vpn-and-sdp-applications"></a>SHA via VPN och SDP-program
 
@@ -62,24 +62,25 @@ Med hjälp av VPN-och SDP-lösningar kan du när som helst tillhandahålla säke
 
 Följande VPN-leverantörer erbjuder färdiga lösningar och detaljerad vägledning för integrering med Azure AD.
 
-- [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
+- [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)
 
-- [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
+- [Fortinet](../saas-apps/fortigate-ssl-vpn-tutorial.md)
 
-- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)
+- [F5 Big-IP APM](./f5-aad-password-less-vpn.md)
 
-- [Palo-nätverk global Protect](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
+- [Palo-nätverk global Protect](../saas-apps/paloaltoadmin-tutorial.md)
 
-- [Pulse Secure Pulse Connect Secure (PC)](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial)
+- [Pulse Secure Pulse Connect Secure (PC)](../saas-apps/pulse-secure-pcs-tutorial.md)
 
 Följande SDP-leverantörer erbjuder färdiga lösningar och detaljerad vägledning för integrering med Azure AD.
 
-- [Datawiza åtkomst utjämning](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
+- [Datawiza åtkomst utjämning](./add-application-portal-setup-oidc-sso.md)
 
-- [Perimeter 81](https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial#:~:text=For%20SSO%20to%20work,%20you%20need%20to%20establish,to%20test%20Azure%20AD%20single%20sign-on%20with%20B.Simon.)
+- [Perimeter 81](../saas-apps/perimeter-81-tutorial.md)
 
-- [Plattform för Silverfort-autentisering](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
 
-- [Strata](https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial)
+- [Plattform för Silverfort-autentisering](./add-application-portal-setup-oidc-sso.md)
 
-- [Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)
+- [Strata](../saas-apps/maverics-identity-orchestrator-saml-connector-tutorial.md)
+
+- [Zscaler Private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)

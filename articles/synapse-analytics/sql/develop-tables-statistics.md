@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594792"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistik i Synapse SQL
 
@@ -90,9 +90,9 @@ Statistik för en land-eller region kolumn i en kund tabell kanske aldrig behöv
 
 Om informations lagret bara innehåller ett land eller en region och du hämtar data från ett nytt land eller en annan region måste du uppdatera statistik i kolumnen land eller region.
 
-Följande är rekommendationer om uppdaterings statistik:
+Följande är rekommendationer för att uppdatera statistik:
 
-|||
+|Typ|Rekommendation|
 |-|-|
 | **Frekvens för statistik uppdateringar**  | Försiktigt: varje dag </br> När du har läst in eller omvandlat dina data |
 | **Sampling** |  Färre än 1 000 000 000 rader, Använd standard sampling (20 procent). </br> Med fler än 1 000 000 000 rader använder du samplingen av två procent. |
@@ -443,7 +443,7 @@ Det finns flera systemvyer och funktioner som du kan använda för att hitta inf
 
 Dessa system visningar innehåller information om statistik:
 
-| Katalogvy | Beskrivning |
+| Katalogvy | Description |
 |:--- |:--- |
 | [sys. columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |En rad för varje kolumn. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |En rad för varje objekt i databasen. |
@@ -457,7 +457,7 @@ Dessa system visningar innehåller information om statistik:
 
 Dessa system funktioner är användbara när du arbetar med statistik:
 
-| System funktion | Beskrivning |
+| System funktion | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Datum då statistik objekt senast uppdaterades. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Sammanfattnings nivå och detaljerad information om distributionen av värden som förstås av statistik objekt. |
@@ -825,7 +825,7 @@ Det finns flera systemvyer och funktioner som du kan använda för att hitta inf
 
 Dessa system visningar innehåller information om statistik:
 
-| Katalogvy                                                 | Beskrivning                                                  |
+| Katalogvy                                                 | Description                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [sys. columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | En rad för varje kolumn.                                     |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | En rad för varje objekt i databasen.                     |
@@ -839,7 +839,7 @@ Dessa system visningar innehåller information om statistik:
 
 Dessa system funktioner är användbara när du arbetar med statistik:
 
-| System funktion                                              | Beskrivning                                  |
+| System funktion                                              | Description                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Datum då statistik objekt senast uppdaterades. |
 
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du kan förbättra frågans prestanda för dedikerad SQL-pool finns i [övervaka din arbets belastning](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) och [bästa praxis för dedikerad SQL-pool](best-practices-sql-pool.md#maintain-statistics).
+Mer information om hur du kan förbättra frågans prestanda för dedikerad SQL-pool finns i [övervaka din arbets belastning](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) och [bästa praxis för dedikerad SQL-pool](best-practices-dedicated-sql-pool.md#maintain-statistics).
 
-För att ytterligare förbättra frågans prestanda för SQL-pool utan server, se [metod tips för Server lös SQL-pool](best-practices-sql-on-demand.md)
+För att ytterligare förbättra frågans prestanda för SQL-pool utan server, se [metod tips för Server lös SQL-pool](best-practices-serverless-sql-pool.md)

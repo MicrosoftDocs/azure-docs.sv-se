@@ -7,10 +7,10 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73468550"
 ---
 # <a name="azure-data-share-concepts"></a>Azure Data Share-koncept 
@@ -27,7 +27,7 @@ En data konsument är den organisation som tar emot data från en data leverant�
 
 ## <a name="data-share"></a>Data Share
 
-En data resurs är en grupp data uppsättningar som delas som en enda enhet. Data uppsättningar kan vara från ett antal Azure-datakällor som stöds av Azure Data Share. För närvarande stöder Azure Data Share Azure Blob Storage och Azure Data Lake Store. 
+En dataresurs är en grupp med datauppsättningar som delas som en enda enhet. Datauppsättningar kan komma från ett antal Azure-datakällor som stöds av Azure Data Share. För närvarande stöder Azure Data Share Azure Blob Storage och Azure Data Lake Store. 
 
 ## <a name="share-subscription"></a>Dela prenumeration 
 

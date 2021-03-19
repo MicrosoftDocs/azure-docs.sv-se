@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a22a214104357b9ad99238a8db157839a1c9fd46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655158"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Akamai
 
@@ -478,11 +478,11 @@ Tilldela identitets leverantören.
 
 1. Verifiera skapandet av katalogen.
 
-    ![Skärm bild av fönstret Akamais EAA-konsol kataloger som visar att katalogen superdemo. Live har lagts till.](./media/header-akamai-tutorial/directory-domain.png)
+    ![Skärm bild av fönstret Akamais fönstret i EAA-konsolen som visar att katalogen superdemo.live har lagts till.](./media/header-akamai-tutorial/directory-domain.png)
 
 1. Lägg till de grupper/organisationsenheter som behöver åtkomst.
 
-    ![Skärm bild av inställningarna för katalogen superdemo. live. Ikonen som du väljer för att lägga till grupper eller organisationsenheter är markerad.](./media/header-akamai-tutorial/add-group.png)
+    ![Skärm bild av inställningarna för katalogen superdemo.live. Ikonen som du väljer för att lägga till grupper eller organisationsenheter är markerad.](./media/header-akamai-tutorial/add-group.png)
 
 1. I listan nedan kallas gruppen EAAGroup och har en medlem.
 
@@ -490,7 +490,7 @@ Tilldela identitets leverantören.
 
 1. Lägg till katalogen i identitets leverantören genom att klicka på **identitets**  >  **identitets leverantörer** och på fliken **kataloger** och klicka på **tilldela katalog**.
 
-    ![Skärm bild av fliken Akamai i EAA-konsolen för Azure AD SSO, som visar superdemo. live i listan över för närvarande tilldelade kataloger.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Skärm bild av fliken Akamai i EAA-konsolen för Azure AD SSO, som visar superdemo.live i listan över för tillfället tilldelade kataloger.](./media/header-akamai-tutorial/assign-directory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>Konfigurera KCD delegering för EAA-genom gång
 
@@ -498,7 +498,7 @@ Tilldela identitets leverantören.
 
 1. I exemplet ska vi använda ett konto som heter **EAADelegation**. Du kan göra detta med hjälp av **Active Directory användare och dator** fästning.
 
-    ![Skärm bild av fliken Akamai i EAA-konsolen för Azure AD SSO. Katalogen superdemo. live visas under för tillfället tilldelade kataloger.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Skärm bild av fliken Akamai i EAA-konsolen för Azure AD SSO. Katalogen superdemo.live visas under för tillfället tilldelade kataloger.](./media/header-akamai-tutorial/assign-directory.png)
 
     > [!NOTE]
     > Användar namnet måste vara i ett särskilt format baserat på **identitets spärrens namn**. Från bild 1 ser vi att det är **corpapps.login.go.Akamai-Access.com**
@@ -583,8 +583,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den Akamai som du ställer in SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Akamai i Mina appar, bör du loggas in automatiskt på den Akamai som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Akamai i Mina appar, bör du loggas in automatiskt på den Akamai som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Akamai kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Akamai kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8af6802f785718ca6064a34c98d9f6dafc046a2c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116736"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594775"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Använda transaktioner med dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -204,4 +204,4 @@ Dedikerad SQL-pool har några andra begränsningar som relaterar till transaktio
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du optimerar transaktioner finns i [metod tips för transaktioner](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ytterligare metod tips finns också för [dedikerad SQL-pool](best-practices-sql-pool.md) och [Server lös SQL-pool](best-practices-sql-on-demand.md).
+Mer information om hur du optimerar transaktioner finns i [metod tips för transaktioner](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ytterligare metod tips finns också för [dedikerad SQL-pool](best-practices-dedicated-sql-pool.md) och [Server lös SQL-pool](best-practices-serverless-sql-pool.md).

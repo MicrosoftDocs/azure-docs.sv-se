@@ -6,17 +6,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 03/18/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410699"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595268"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referens – IoT Hub kvoter och begränsning
 
@@ -43,7 +43,7 @@ I följande tabell visas de tvingade begränsningarna. Värden refererar till en
 | Begränsning | Gratis, B1 och S1 | B2 och S2 | B3 och S3 | 
 | -------- | ------- | ------- | ------- |
 | [Identitets register åtgärder](#identity-registry-operations-throttle) (skapa, Hämta, lista, uppdatera, ta bort) | 1.67 per sekund/enhet (100 per minut/enhet) | 1.67 per sekund/enhet (100 per minut/enhet) | 83.33 per sekund per enhet (5000 per minut/enhet) |
-| [Nya enhets anslutningar](#device-connections-throttle) (denna gräns gäller för antalet _nya anslutningar_ , inte det totala antalet anslutningar) | Större än 100 per sekund eller 12 per sekund/enhet <br/> Till exempel är två S1-enheter 2 \* 12 = 24 nya anslutningar/SEK, men du har minst 100 nya anslutningar/SEK över dina enheter. Med nio S1-enheter har du 108 nya anslutningar/SEK (9 \* 12) över dina enheter. | 120 nya anslutningar/SEK/enhet | 6 000 nya anslutningar/SEK/enhet |
+| [Nya enhets anslutningar](#device-connections-throttle) (denna gräns gäller för antalet _nya anslutningar_, inte det totala antalet anslutningar) | Större än 100 per sekund eller 12 per sekund/enhet <br/> Till exempel är två S1-enheter 2 \* 12 = 24 nya anslutningar/SEK, men du har minst 100 nya anslutningar/SEK över dina enheter. Med nio S1-enheter har du 108 nya anslutningar/SEK (9 \* 12) över dina enheter. | 120 nya anslutningar/SEK/enhet | 6 000 nya anslutningar/SEK/enhet |
 | Sändningar enhet-till-moln | Högst 100 sändnings åtgärder/SEK eller 12 sändnings åtgärder/SEK/enhet <br/> Till exempel är två S1-enheter 2 \* 12 = 24/SEK, men du har minst 100 skicka-åtgärder per sekund för dina enheter. Med nio S1-enheter har du 108 skicka åtgärder/SEK (9 \* 12) över dina enheter. | 120 skicka åtgärder/SEK/enhet | 6 000 skicka åtgärder/SEK/enhet |
 | Skicka från moln till enhet<sup>1</sup> | 1,67 skicka åtgärder/SEK/enhet (100 meddelanden/min/enhet) | 1,67 skicka åtgärder/SEK/enhet (100 skicka åtgärder/min/enhet) | 83,33 skicka åtgärder/SEK/enhet (5 000 skicka åtgärder/min/enhet) |
 | Ta emot från moln till enhet<sup>1</sup> <br/> (endast när enheten använder HTTPS)| 16,67 Receive-åtgärder/SEK/enhet (1 000 Receive-åtgärder/min/enhet) | 16,67 Receive-åtgärder/SEK/enhet (1 000 Receive-åtgärder/min/enhet) | 833,33 Receive-åtgärder/SEK/enhet (50 000 Receive-åtgärder/min/enhet) |
@@ -86,6 +86,8 @@ Du kan till exempel använda en simulerad enhet för att skicka 200 enhet-till-m
 ### <a name="identity-registry-operations-throttle"></a>Åtgärds begränsningar för identitets registret
 
 Åtgärder för enhets identitets registret är avsedda för körnings användning i enhets hantering och etablerings scenarier. Läsning eller uppdatering av ett stort antal enhets identiteter stöds via [import-och export jobb](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+
+När du initierar identitets åtgärder via [Mass enhets åtgärder](iot-hub-bulk-identity-mgmt.md)gäller samma begränsnings gränser. Om du till exempel vill skicka en Mass åtgärd för att skapa 50-enheter och du har en S1-IoT Hub med 1 enhet godkänns bara två av dessa Mass begär Anden per minut. Detta beror på att identitets åtgärden för en S1-IoT Hub med 1 enhet är 100 per minut/enhet. I det här fallet skulle en tredje begäran (och mer) på samma minut nekas eftersom gränsen redan hade uppnåtts. 
 
 ### <a name="device-connections-throttle"></a>Begränsning av enhets anslutningar
 

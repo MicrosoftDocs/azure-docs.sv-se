@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 40751401760d877fe3feab39f3fea1f2fbeee54b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608188"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>Snabb start: avpaketera och montera dina Azure percept DK-komponenter
 
@@ -32,7 +32,7 @@ När du har fått din Azure percept DK hänvisar du till den här guiden för in
 1. Anslut devkit-komponenterna.
 
     > [!NOTE]
-    > Strömadapterns port finns på den högra sidan av frakt kortet. De återstående portarna (2x USB-A, 1x USB-C, 1x HDMI och 1x Ethernet) och återställnings knappen finns på vänster sida av frakt tavlan.
+    > Strömadapterns port finns på den högra sidan av frakt kortet. De återstående portarna (2x USB-A, 1x USB-C och 1x Ethernet) och strömbrytaren är placerad på den vänstra sidan av operatörs kortet.
 
     1. Skruva skruven både Wi-Fi antenner i frakt tavlan.
 
@@ -44,11 +44,17 @@ När du har fått din Azure percept DK hänvisar du till den här guiden för in
 
     1. Anslut strömadaptern/kabeln till frakt kortet och ett vägguttag. Om du vill skydda elkabelns koppling på ett säkert sätt kan du använda en P7-Screwdriver (som inte ingår i devkit) för att dra in kopplings skruvarna.
 
-    1. När strömförsörjnings kabeln har kopplats till ett vägguttag aktive ras enheten automatiskt. Återställnings knappen till vänster på operatörs kortet kommer att belysas. Vänta lite tills enheten har startats.
+    1. När strömförsörjnings kabeln har kopplats till ett vägguttag aktive ras enheten automatiskt. Strömbrytaren på den vänstra sidan av frakt tavlan kommer att tändas. Vänta lite tills enheten har startats.
 
         > [!NOTE]
-        > Återställnings knappen är för att starta eller återställa enheten när den är ansluten till ett El uttag. I händelse av ett strömavbrott återställs enheten automatiskt och aktive ras igen.
+        > Strömbrytaren är för att starta eller starta om enheten när du är ansluten till ett El uttag. I händelse av ett strömavbrott startar enheten om automatiskt.
+
+En visuell demonstration av devkit-sammansättningen finns i 0:00 till 0:50 av följande video:
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när din devkit är ansluten och påslagen kan du läsa mer i genom gången Azure percept DK setup Experience för att slutföra enhets konfigurationen. Med installations miljön kan du ansluta din devkit till ett Wi-Fi nätverk, konfigurera en SSH-inloggning, skapa en IoT Hub och etablera din devkit till ditt Azure-konto. När du har slutfört enhets konfigurationen är du redo att börja skapa prototyper.
+Nu när din devkit är ansluten och påslagen kan du läsa mer i [genom gången Azure PERCEPT DK setup Experience](./quickstart-percept-dk-set-up.md) för att slutföra enhets konfigurationen. Med installations miljön kan du ansluta din devkit till ett Wi-Fi nätverk, konfigurera en SSH-inloggning, skapa en IoT Hub och etablera din devkit till ditt Azure-konto. När du har slutfört enhets konfigurationen är du redo att börja skapa prototyper.

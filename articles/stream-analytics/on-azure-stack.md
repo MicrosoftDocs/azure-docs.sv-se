@@ -1,23 +1,20 @@
 ---
-title: Kör Azure Stream Analytics på Azure Stack (förhands granskning)
+title: Kör Azure Stream Analytics på Azure Stack
 description: Skapa ett Azure Stream Analytics Edge-jobb och distribuera det till Azure Stack Hub via IoT Edge Runtime.
 ms.service: stream-analytics
 author: an-emma
 ms.author: raan
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020136"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589811"
 ---
-# <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Kör Azure Stream Analytics på Azure Stack (förhands granskning)
-
-> [!IMPORTANT]
-> Den här funktionen är i för hands version och rekommenderas inte för användning i produktion.
+# <a name="run-azure-stream-analytics-on-azure-stack"></a>Kör Azure Stream Analytics på Azure Stack 
 
 Du kan köra Azure Stream Analytics på Azure Stack Hub som en IoT Edge modul. Konfigurationer har lagts till i IoT Edge-modulen som gör det möjligt att interagera med Blob Storage, Event Hubs och IoT-hubbar som körs i en prenumeration på en Azure Stack hubb genom att tillåta anpassade webb adresser som finns i varje Azure Stack Hub-anställning.
 
@@ -64,7 +61,7 @@ När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-en
    | Fält | Värde |
    | --- | --- |
    | Namn | Ange ett unikt namn för lagringskontot. |
-   | Plats | Välj en plats i närheten av dig.|
+   | Location | Välj en plats i närheten av dig.|
    | Prenumeration | Välj samma prenumeration som din IoT-hubb.|
    | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser som du skapar under [IoT Edge snabb starter](../iot-edge/quickstart.md) och självstudier. Till exempel **IoTEdgeResources**. |
 
@@ -81,7 +78,7 @@ När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-en
    | Jobbnamn | Ange ett namn för ditt jobb. Till exempel **IoTEdgeJob** |
    | Prenumeration | Välj samma prenumeration som din IoT-hubb.|
    | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser som du skapar under [IoT Edge snabb starter](../iot-edge/quickstart.md) och självstudier. Till exempel **IoTEdgeResources**. |
-   | Plats | Välj en plats i närheten av dig. |
+   | Location | Välj en plats i närheten av dig. |
    | Värd miljö | Välj **Gräns**. |
 
 3. Välj **Skapa**.
