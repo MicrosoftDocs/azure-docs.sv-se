@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175438"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578812"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snabb start: registrera ett program med Microsoft Identity Platform
 
@@ -44,7 +44,7 @@ Följ de här stegen för att skapa appens registrering:
     Du kan när som helst ändra visnings namnet och flera registrerings program kan dela samma namn. App-registreringens automatiskt genererade program-ID (klient), inte dess visnings namn, identifierar din app unikt i identitets plattformen.
 1. Ange vem som kan använda programmet, ibland kallat *inloggnings mål gruppen*.
 
-    | Kontotyper som stöds | Beskrivning |
+    | Kontotyper som stöds | Description |
     |-------------------------|-------------|
     | **Endast konton i den här organisationskatalogen** | Välj det här alternativet om du vill skapa ett program för användning endast av användare (eller gäster) i *din* klient organisation.<br><br>Som ofta kallas LOB-program ( *line-of-Business* ) är den här appen ett program med en *enda klient organisation* i Microsoft Identity Platform. |
     | **Konton i valfri organisationskatalog** | Välj det här alternativet om du vill att användare i *någon* Azure Active Directory (Azure AD)-klient ska kunna använda ditt program. Det här alternativet är lämpligt om du till exempel skapar ett SaaS-program (program vara som en tjänst) som du vill ge till flera organisationer.<br><br>Den här typen av app kallas för ett program med flera *klienter* i Microsoft Identity Platform. |
@@ -89,7 +89,7 @@ Konfigurera program inställningar baserat på den plattform eller enhet som du 
     | **Enkelsidig app** | Ange en **omdirigerings-URI** för appen. Denna URI är den plats där Microsoft Identity Platform omdirigerar en användares klient och skickar säkerhetstoken efter autentisering.<br/><br/>Välj den här plattformen om du skapar en webbapp på klient sidan med hjälp av Java Script eller ett ramverk som vinkel, Vue.js, React.js eller blixt webb sammansättning. |
     | **iOS/macOS** | Ange appens **paket-ID**. Hitta den i **Bygg inställningar** eller i Xcode i *info. plist*.<br/><br/>En omdirigerings-URI genereras åt dig när du anger ett **paket-ID**. |
     | **Android** | Ange namnet på appens **paket**. Hitta den i *AndroidManifest.xml* -filen. Generera och ange även **signaturens hash-värde**.<br/><br/>En omdirigerings-URI genereras åt dig när du anger dessa inställningar. |
-    | **Mobil-och skriv bords program** | Välj en av de **föreslagna omdirigerings-URI: erna**. Eller ange en **anpassad omdirigerings-URI**.<br/><br/>För Skriv bords program rekommenderar vi<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Välj den här plattformen för mobila program som inte använder det senaste MSAL (Microsoft Authentication Library) eller som inte använder en Broker. Välj även den här plattformen för Skriv bords program. |
+    | **Mobil-och skriv bords program** | Välj en av de **föreslagna omdirigerings-URI: erna**. Eller ange en **anpassad omdirigerings-URI**.<br/><br/>För Skriv bords program med inbäddad webbläsare rekommenderar vi<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>För Skriv bords program med hjälp av system webbläsare rekommenderar vi<br/>`http://localhost`<br/><br/>Välj den här plattformen för mobila program som inte använder det senaste MSAL (Microsoft Authentication Library) eller som inte använder en Broker. Välj även den här plattformen för Skriv bords program. |
 1. Välj **Konfigurera** för att slutföra plattforms konfigurationen.
 
 ### <a name="redirect-uri-restrictions"></a>Omdirigera URI-begränsningar

@@ -4,12 +4,12 @@ description: Hur du ger maximal tillgänglighet och konsekvens med Azure Event H
 ms.topic: article
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 62249357f8c6aa8521924dceef26a6f2c1e9e296
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 6005a51314cff19883fc2a07e4810bd24eb94b24
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600853"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600963"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Tillgänglighet och konsekvens i Event Hubs
 Den här artikeln innehåller information om tillgänglighet och konsekvens som stöds av Azure Event Hubs. 
@@ -43,7 +43,7 @@ Vi rekommenderar att du skickar händelser till en händelsehubben utan att ange
 I det här avsnittet får du lära dig hur du skickar händelser till en särskild partition med olika programmeringsspråk. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
-Om du vill skicka händelser till en särskild partition skapar du batchen med hjälp av metoden [EventHubProducerClient. CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) genom att ange antingen `PartitionId` eller `PartitionKey` i [CreateBatchOptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions). Följande kod skickar en batch med händelser till en särskild partition genom att ange en partitionsnyckel. 
+Om du vill skicka händelser till en särskild partition skapar du batchen med hjälp av metoden [EventHubProducerClient. CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) genom att ange antingen `PartitionId` eller `PartitionKey` i [CreateBatchOptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions). Följande kod skickar en batch med händelser till en särskild partition genom att ange en partitionsnyckel. Event Hubs garanterar att alla händelser som delar ett nyckel värde lagras tillsammans och levereras i den ordning de anländer.
 
 ```csharp
 var batchOptions = new CreateBatchOptions { PartitionKey = "cities" };

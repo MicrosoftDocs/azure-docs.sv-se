@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362428"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579135"
 ---
 # <a name="conditional-access-conditions"></a>Villkorlig åtkomst: villkor
 
@@ -174,11 +174,11 @@ Den här inställningen påverkar åtkomst försök som görs från följande mo
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-klienter
 
-- Organisationer kan bara välja Exchange ActiveSync-klienter när de tilldelar principer till användare eller grupper. Om du markerar **alla användare**, **alla gäst-och externa användare** eller **katalog roller** kommer alla användare att bli blockerade.
+- Organisationer kan bara välja Exchange ActiveSync-klienter när de tilldelar principer till användare eller grupper. Om du väljer **alla användare**, **alla gäst-och externa användare** eller **katalog roller** , kommer alla användare att omfattas av principen.
 - När du skapar en princip som är tilldelad till Exchange ActiveSync-klienter bör **Exchange Online** vara det enda moln program som tilldelats principen. 
 - Organisationer kan begränsa omfånget för den här principen till specifika plattformar med hjälp av villkor för **enhets plattformar** .
 
-Om åtkomst kontrollen som tilldelas principen använder **Kräv godkänd klient app**, dirigeras användaren till att installera och använda Outlook Mobile-klienten. Om **Multi-Factor Authentication** krävs blockeras berörda användare, eftersom grundläggande autentisering inte stöder Multi-Factor Authentication.
+Om åtkomst kontrollen som tilldelas principen använder **Kräv godkänd klient app**, dirigeras användaren till att installera och använda Outlook Mobile-klienten. Om **Multi-Factor Authentication**, **användningsvillkor** eller **anpassade kontroller** krävs blockeras berörda användare, eftersom grundläggande autentisering inte stöder dessa kontroller.
 
 Mer information finns i följande artiklar:
 

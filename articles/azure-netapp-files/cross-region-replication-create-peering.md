@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249945"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591018"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Skapa Volume Replication för Azure NetApp Files
 
@@ -63,11 +63,11 @@ Du kan också välja ett befintligt NetApp-konto i en annan region.
     ![Lägg till datareplikering](../media/azure-netapp-files/cross-region-replication-add-data-replication.png)
  
 5. På sidan Skapa en volym som visas fyller du i följande fält under fliken **grundläggande** :
-    * Volym namn
+    * Volymnamn
     * Pool för kapacitet
     * Volym kvot
         > [!NOTE] 
-        > Vi rekommenderar att käll volymens volym kvot storlek speglas.
+        > Volym kvoten (storlek) för mål volymen ska spegla käll volymens storlek. Om du anger en storlek som är mindre än käll volymen ändras storleken på mål volymen automatiskt till käll volymens storlek. 
     * Virtuellt nätverk 
     * Undernät
 
@@ -80,7 +80,7 @@ För NFS-protokollet ser du till att export policy reglerna uppfyller kraven fö
 
 8. Under fliken **replikering** klistrar du in käll volymens resurs-ID som du har fått i [hitta käll VOLYMENS resurs-ID](#locate-the-source-volume-resource-id)och väljer sedan det önskade replikeringsschema. Alternativen för replikeringsschema är: var 10: e minut, varje timme, varje dag, varje vecka och varje månad.  
 
-    ![Skapa volym replikering](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
+    ![Skapa volymreplikering](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 
 9. Klicka på **Granska + skapa** och klicka sedan på **skapa** för att skapa en datareplikerings volym.   
 
@@ -113,6 +113,6 @@ Om du vill auktorisera replikeringen måste du hämta resurs-ID för replikering
 * [Visa hälsostatus för replikeringsrelation](cross-region-replication-display-health-status.md)
 * [Mått för volym replikering](azure-netapp-files-metrics.md#replication)
 * [Hantera haveriberedskap](cross-region-replication-manage-disaster-recovery.md)
-* [Ta bort volymer eller volymer](cross-region-replication-delete.md)
+* [Ta bort volymreplikeringar eller volymer](cross-region-replication-delete.md)
 * [Felsöka replikering mellan regioner](troubleshoot-cross-region-replication.md)
 

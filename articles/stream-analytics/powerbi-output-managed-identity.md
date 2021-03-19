@@ -6,14 +6,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: b468df97f168562f4f5ce9e0e6d6e9a70835648b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436115"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589692"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Använd hanterad identitet för att autentisera ditt Azure Stream Analytics jobb till Power BI (förhands granskning)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Använd hanterad identitet för att autentisera ditt Azure Stream Analytics jobb till Power BI
 
 [Hanterad identitets autentisering](../active-directory/managed-identities-azure-resources/overview.md) för utdata till Power BI ger Stream Analytics-jobb direkt åtkomst till en arbets yta i ditt Power BI-konto. Den här funktionen gör det möjligt att distribuera Stream Analytics jobb helt automatiserade, eftersom det inte längre krävs för att en användare ska kunna logga in interaktivt på Power BI via Azure Portal. Dessutom stöds långa jobb som skrivs till Power BI bättre, eftersom du inte behöver godkänna jobbet med jämna mellanrum.
 

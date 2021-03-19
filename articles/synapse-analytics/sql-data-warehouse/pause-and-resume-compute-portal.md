@@ -2,21 +2,21 @@
 title: 'Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool via Azure Portal'
 description: Använd Azure Portal för att pausa beräkningen för dedikerad SQL-pool för att spara kostnader. Återuppta beräkning när du är redo att använda data lagret.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 11/23/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f9cc5083c4b515454b9d5cbc40ed3b48cba80211
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120299"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602170"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool via Azure Portal
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 920249aa252469c3db2be284fc010d775d04c921
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103200"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578285"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webbapp som loggar in användare: app-registrering
 
@@ -94,6 +94,21 @@ Som standard använder exemplet:
    1. Välj nyckel varaktigheten **i 1 år**.
    1. Välj **Lägg till**.
    1. När nyckelvärdet visas kopierar du det för senare. Det här värdet kommer inte att visas igen eller kan hämtas på annat sätt.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+1. När **sidan Registrera ett program** visas anger du programmets registrerings information:
+   1. Ange ett **namn** för programmet, till exempel `node-webapp` . Användare av appen kan se det här namnet och du kan ändra det senare.
+   1. Ändra **konto typer som stöds** till **konton i alla organisations kataloger och personliga Microsoft-konton (t. ex. Skype, Xbox, Outlook.com)**.
+   1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger följande omdirigerings-URI: `http://localhost:3000/redirect` .
+   1. Välj **Registrera** för att skapa programmet.
+1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och registrerar det för senare. Du behöver den för att konfigurera konfigurations filen för projektet.
+1. Välj **Certifikat och hemligheter** under **Hantera**.
+1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet** och sedan:
+   1. Ange en nyckel beskrivning.
+   1. Välj en nyckel varaktighet på om **1 år**.
+   1. Välj **Lägg till**.
+   1. När nyckelvärdet visas kopierar du det. Du behöver det senare.
 
 # <a name="python"></a>[Python](#tab/python)
 

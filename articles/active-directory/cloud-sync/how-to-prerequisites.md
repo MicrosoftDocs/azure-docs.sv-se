@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689325"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579169"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Krav för Azure AD Connect Cloud Sync
 Den här artikeln innehåller information om hur du väljer och använder Azure Active Directory (Azure AD) Connect Cloud Sync som din identitets lösning.
@@ -33,15 +33,15 @@ Du behöver följande för att kunna använda Azure AD Connect Cloud Sync:
 Ett grupphanterat tjänst konto är ett hanterat domän konto som tillhandahåller automatisk lösen ords hantering, förenklad hantering av tjänst huvud namn (SPN), möjlighet att delegera hanteringen till andra administratörer och även utöka den här funktionaliteten över flera servrar.  Azure AD Connect Cloud Sync stöder och använder en gMSA för att köra agenten.  Du uppmanas att ange administratörs behörighet under installationen för att kunna skapa det här kontot.  Kontot visas som (domain\provAgentgMSA $).  Mer information om en gMSA finns i [gruppera hanterade tjänst konton](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>Krav för gMSA:
-1.  Active Directory-schemat i gMSA-domänens skog måste uppdateras till Windows Server 2012.
+1.  Active Directory-schemat i gMSA-domänens skog måste uppdateras till Windows Server 2016.
 2.  [PowerShell-moduler för RSAT](/windows-server/remote/remote-server-administration-tools) på en domänkontrollant
-3.  Minst en domänkontrollant i domänen måste köra Windows Server 201.
-4.  En domänansluten server där agenten installeras måste vara antingen Windows Server 2012 eller senare.
+3.  Minst en domänkontrollant i domänen måste köra Windows Server 2016.
+4.  En domänansluten server där agenten installeras måste vara antingen Windows Server 2016 eller senare.
 
 ### <a name="custom-gmsa-account"></a>Anpassat gMSA-konto
 Om du skapar ett anpassat gMSA-konto måste du kontrol lera att kontot har följande behörigheter.
 
-|Typ |Namn |Access |Gäller för| 
+|Typ |Name |Access |Gäller för| 
 |-----|-----|-----|-----|
 |Tillåt |gMSA-konto |Läsa alla egenskaper |Underordnade enhets objekt| 
 |Tillåt |gMSA-konto|Läsa alla egenskaper |Objekt för underordnade InetOrgPerson| 

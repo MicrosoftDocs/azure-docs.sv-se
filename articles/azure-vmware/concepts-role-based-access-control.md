@@ -2,32 +2,32 @@
 title: Koncept – vSphere-rollbaserad åtkomst kontroll (vSphere RBAC)
 description: Lär dig mer om de viktigaste funktionerna i vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösning
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: 1e49f219fba8317040bfa56f6576a7c1f5b1ae22
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.date: 03/18/2021
+ms.openlocfilehash: c2d27531f7a0acd36b4047e98aac994668f64a09
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573342"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586174"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere-rollbaserad åtkomst kontroll (vSphere RBAC) för Azure VMware-lösning
 
 I Azure VMware-lösningen har vCenter en inbyggd lokal användare som kallas cloudadmin och tilldelad den inbyggda CloudAdmin-rollen. Den lokala cloudadmin-användaren används för att konfigurera användare i AD. I allmänhet skapar och hanterar CloudAdmin-rollen arbets belastningar i ditt privata moln. I Azure VMware-lösningen har CloudAdmin-rollen vCenter-behörigheter som skiljer sig från andra VMware Cloud-lösningar.     
 
 > [!NOTE]
-> Azure VMware-lösningen erbjuder anpassade roller på vCenter, men erbjuder för närvarande inte dem på Azure VMware Solution-portalen. Mer information finns i avsnittet [skapa anpassade roller på vCenter](#create-custom-roles-on-vcenter) längre fram i den här artikeln. 
+> Azure VMware-lösningen erbjuder anpassade roller på vCenter erbjuder inte dem på Azure VMware Solution-portalen. Mer information finns i avsnittet [skapa anpassade roller på vCenter](#create-custom-roles-on-vcenter) längre fram i den här artikeln. 
 
 I en vCenter-och ESXi lokal distribution har administratören åtkomst till vCenter- administrator@vsphere.local kontot. De kan också ha fler Active Directory (AD) användare/grupper tilldelade. 
 
 I en distribution av Azure VMware-lösningar har administratören inte åtkomst till administratörs användar kontot. Men de kan tilldela AD-användare och-grupper till CloudAdmin-rollen på vCenter.  
 
-Det privata molnets användare har inte åtkomst till och kan inte konfigurera vissa hanterings komponenter som stöds och hanteras av Microsoft. Till exempel kluster, värdar, data lager och distribuerade virtuella växlar.
+Den privata moln användaren har inte åtkomst och kan inte konfigurera vissa hanterings komponenter som stöds och hanteras av Microsoft. Till exempel kluster, värdar, data lager och distribuerade virtuella växlar.
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>CloudAdmin-rollen för Azure VMware-lösningen på vCenter
 
 Du kan visa de behörigheter som har tilldelats Azure VMware-lösningen CloudAdmin-rollen i Azure VMware-lösningen privat moln vCenter.
 
-1. Logga in på SDDC vSphere-klienten och gå till **meny**  >  **Administration**.
+1. Logga in på vCenter och gå till **meny**  >  **Administration**.
 1. Under **Access Control** väljer du **roller**.
 1. Välj **CloudAdmin** i listan över roller och välj sedan **behörigheter**. 
 
@@ -62,7 +62,7 @@ Azure VMware-lösningen stöder användning av anpassade roller med lika eller l
 
 CloudAdmin-rollen kan skapa, ändra eller ta bort anpassade roller som har behörighet som är mindre än eller lika med den aktuella rollen. Du kanske kan skapa roller som har större behörighet än CloudAdmin, men du kan inte tilldela rollen till några användare eller grupper eller ta bort rollen.
 
-För att förhindra skapandet av roller som inte kan tilldelas eller tas bort rekommenderar Azure VMware-lösningen kloning av CloudAdmin-rollen som bas för att skapa nya anpassade roller.
+För att förhindra skapandet av roller som inte kan tilldelas eller tas bort rekommenderar vi att klona CloudAdmin-rollen som bas för att skapa nya anpassade roller.
 
 ### <a name="create-a-custom-role"></a>Skapa en anpassad roll
 1. Logga in på vCenter med cloudadmin \@ vSphere. local eller en användare med rollen cloudadmin.

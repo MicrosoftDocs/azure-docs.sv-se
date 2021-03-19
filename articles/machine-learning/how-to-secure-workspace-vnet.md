@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/17/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 5031d097b5d1bdef45dd4b653ae7cef06f5daca0
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: a923f65e5c6183d045f4b7455e0a01edda75d499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573667"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584350"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Skydda en Azure Machine Learning arbets yta med virtuella nätverk
 
@@ -56,16 +56,12 @@ Med Azures privata länk kan du ansluta till din arbets yta med en privat slut p
 
 Mer information om hur du konfigurerar en privat länk arbets yta finns i [så här konfigurerar du en privat länk](how-to-configure-private-link.md).
 
+> [!Warning]
+> Att skydda en arbets yta med privata slut punkter garanterar inte fullständig säkerhet från slut punkt till slut punkt. Du måste följa stegen i resten av den här artikeln och VNet-serien för att skydda enskilda komponenter i lösningen.
+
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Skydda Azure Storage-konton med tjänst slut punkter
 
 Azure Machine Learning stöder lagrings konton som kon figurer ATS att använda antingen tjänst slut punkter eller privata slut punkter. I det här avsnittet får du lära dig hur du skyddar ett Azure Storage-konto med hjälp av tjänst slut punkter. För privata slut punkter, se nästa avsnitt.
-
-> [!IMPORTANT]
-> Du kan placera både _standard lagrings kontot_ för Azure Machine Learning eller _andra lagrings konton som inte är standard_ i ett virtuellt nätverk.
->
-> Standard lagrings kontot tillhandahålls automatiskt när du skapar en arbets yta.
->
-> För lagrings konton som inte är standard `storage_account` kan du ange ett anpassat lagrings konto per Azure-resurs-ID i-parametern i [ `Workspace.create()` funktionen](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) .
 
 Använd följande steg för att använda ett Azure Storage-konto för arbets ytan i ett virtuellt nätverk:
 
@@ -73,18 +69,18 @@ Använd följande steg för att använda ett Azure Storage-konto för arbets yta
 
    [![Lagrings utrymmet som är kopplat till arbets ytan Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. På sidan Storage Service-konto väljer du __brand väggar och virtuella nätverk__.
+1. På sidan Storage Service-konto väljer du __nätverk__.
 
-   ![Avsnittet "brand väggar och virtuella nätverk" på sidan Azure Storage i Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+   ![Nätverks ytan på sidan Azure Storage i Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. På sidan __brand väggar och virtuella nätverk__ utför du följande åtgärder:
+1. Utför följande åtgärder på fliken __brand väggar och virtuella nätverk__ :
     1. Välj __Valda nätverk__.
     1. Under __virtuella nätverk__ väljer du länken __Lägg till befintligt virtuellt nätverk__ . Den här åtgärden lägger till det virtuella nätverk där din beräkning finns (se steg 1).
 
         > [!IMPORTANT]
         > Lagrings kontot måste finnas i samma virtuella nätverk och undernät som de beräknings instanser eller kluster som används för utbildning eller härledning.
 
-    1. Markera kryss rutan __Tillåt att betrodda Microsoft-tjänster har åtkomst till det här lagrings kontot__ . Detta ger inte alla Azure-tjänster åtkomst till ditt lagrings konto.
+    1. Markera kryss rutan __Tillåt att betrodda Microsoft-tjänster har åtkomst till det här lagrings kontot__ . Den här ändringen ger inte alla Azure-tjänster åtkomst till ditt lagrings konto.
     
         * Resurser för vissa tjänster som har **registrerats i din prenumeration** kan komma åt lagrings kontot **i samma prenumeration** för Select-åtgärder. Skriv till exempel loggar eller skapar säkerhets kopior.
         * Resurser i vissa tjänster kan beviljas uttrycklig åtkomst till ditt lagrings konto genom att __tilldela en Azure-roll__ till sin systemtilldelade hanterade identitet.
@@ -102,7 +98,7 @@ Använd följande steg för att använda ett Azure Storage-konto för arbets yta
 
 Azure Machine Learning stöder lagrings konton som kon figurer ATS att använda antingen tjänst slut punkter eller privata slut punkter. Om lagrings kontot använder privata slut punkter måste du konfigurera två privata slut punkter för ditt standard lagrings konto:
 1. En privat slut punkt med en **BLOB** Target-underresurs.
-1. En privat slut punkt med en **fil** mål del resurs (fileshare).
+1. En privat slut punkt med en **fil** mål under resurs (fileshare).
 
 ![Skärm bild som visar konfigurations sidan för privat slut punkt med blob-och fil alternativ](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
 
@@ -118,7 +114,7 @@ Om du vill komma åt data med hjälp av SDK måste du använda autentiseringsmet
 
 ### <a name="disable-data-validation"></a>Inaktivera data verifiering
 
-Som standard utför Azure Machine Learning data giltighet och autentiseringsuppgifter vid försök att komma åt data med hjälp av SDK. Om data ligger bakom ett virtuellt nätverk kan Azure Machine Learning inte utföra de här kontrollerna. För att undvika detta måste du skapa data lager och data uppsättningar som hoppar över verifieringen.
+Som standard utför Azure Machine Learning data giltighet och autentiseringsuppgifter vid försök att komma åt data med hjälp av SDK. Om data ligger bakom ett virtuellt nätverk kan Azure Machine Learning inte utföra de här kontrollerna. För att kringgå den här kontrollen måste du skapa data lager och data uppsättningar som hoppar över verifieringen.
 
 ### <a name="use-datastores"></a>Använda data lager
 
@@ -179,7 +175,7 @@ Använd följande steg för att använda Azure Machine Learning experiment funkt
 1. Utför följande åtgärder på fliken __brand väggar och virtuella nätverk__ :
     1. Under __Tillåt åtkomst från__ väljer du __privat slut punkt och valda nätverk__.
     1. Under __virtuella nätverk__ väljer du __Lägg till befintliga virtuella nätverk__ för att lägga till det virtuella nätverk där din experiment beräkning finns.
-    1. Under __Tillåt betrodda Microsoft-tjänster att kringgå den här brand väggen? väljer du__ __Ja__.
+    1. Under __Tillåt att betrodda Microsoft-tjänster kringgår den här brand väggen väljer du__ __Ja__.
 
    [![Avsnittet "brand väggar och virtuella nätverk" i fönstret Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -195,7 +191,13 @@ Om du vill använda Azure Container Registry inuti ett virtuellt nätverk måste
 
     När ACR ligger bakom ett virtuellt nätverk kan Azure Machine Learning inte använda det för att direkt bygga Docker-avbildningar. I stället används beräknings klustret för att bygga avbildningarna.
 
+    > [!IMPORTANT]
+    > Beräknings klustret som används för att skapa Docker-avbildningar måste ha åtkomst till de paket databaser som används för att träna och distribuera dina modeller. Du kan behöva lägga till nätverks säkerhets regler som tillåter åtkomst till offentliga databaser, [använder privata python-paket](how-to-use-private-python-packages.md)eller använder [anpassade Docker-avbildningar](how-to-train-with-custom-image.md) som redan innehåller paketen.
+
 När dessa krav är uppfyllda använder du följande steg för att aktivera Azure Container Registry.
+
+> [!TIP]
+> Om du inte använde en befintlig Azure Container Registry när du skapade arbets ytan, kan det hända att den inte finns. Som standard kommer arbets ytan inte att skapa en ACR-instans förrän den behöver en. Om du vill framtvinga skapandet av ett, träna eller distribuera en modell med hjälp av arbets ytan innan du följer stegen i det här avsnittet.
 
 1. Hitta namnet på Azure Container Registry för din arbets yta med någon av följande metoder:
 
@@ -217,6 +219,8 @@ När dessa krav är uppfyllda använder du följande steg för att aktivera Azur
 
 1. Begränsa åtkomsten till ditt virtuella nätverk genom att följa stegen i [Konfigurera nätverks åtkomst för registret](../container-registry/container-registry-vnet.md#configure-network-access-for-registry). När du lägger till det virtuella nätverket väljer du det virtuella nätverket och under nätet för dina Azure Machine Learning-resurser.
 
+1. Konfigurera ACR för arbets ytan för att [tillåta åtkomst av betrodda tjänster](../container-registry/allow-access-trusted-services.md).
+
 1. Använd Azure Machine Learning python SDK för att konfigurera ett beräknings kluster för att bygga Docker-avbildningar. Följande kodfragment visar hur du gör detta:
 
     ```python
@@ -225,6 +229,8 @@ När dessa krav är uppfyllda använder du följande steg för att aktivera Azur
     ws = Workspace.from_config()
     # Update the workspace to use an existing compute cluster
     ws.update(image_build_compute = 'mycomputecluster')
+    # To switch back to using ACR to build (if ACR is not in the VNet):
+    # ws.update(image_build_compute = None)
     ```
 
     > [!IMPORTANT]

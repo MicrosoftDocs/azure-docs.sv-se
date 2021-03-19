@@ -3,25 +3,25 @@ title: Återställ vSphere-autentiseringsuppgifter för Azure VMware-lösning
 description: Lär dig hur du återställer vSphere-autentiseringsuppgifter för ditt privata moln i Azure VMware-lösningen och se till att HCX-anslutningen har de senaste vSphere-autentiseringsuppgifterna.
 ms.topic: how-to
 ms.date: 03/16/2021
-ms.openlocfilehash: e5a15caa98a46b0ae75b68ee7b568dabdbf1956c
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 1376b6322250da506d32b8ced0a62ddbf60ba9f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103603273"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587635"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>Återställ vSphere-autentiseringsuppgifter för Azure VMware-lösning
 
-I den här artikeln ska vi gå igenom stegen för att återställa vSphere-autentiseringsuppgifterna för ditt privata moln i Azure VMware-lösningen. Detta gör att du kan se till att HCX-anslutningen har de senaste vSphere-autentiseringsuppgifterna.
+I den här artikeln går vi igenom stegen för att återställa vCenter Server-och NSX-autentiseringsuppgifter för ditt privata moln i Azure VMware-lösningen. Detta gör att du kan se till att HCX-anslutningen har de senaste vCenter Server autentiseringsuppgifterna.
 
-## <a name="reset-your-vsphere-credentials"></a>Återställ dina vSphere-autentiseringsuppgifter
+## <a name="reset-your-azure-vmware-solution-credentials"></a>Återställa dina autentiseringsuppgifter för Azure VMware-lösningen
 
- Först ska vi återställa dina vSphere-autentiseringsuppgifter. Dina vCenter-CloudAdmin och NSX-T-admin-autentiseringsuppgifter upphör inte; Du kan dock följa de här stegen för att generera nya lösen ord för dessa konton.
+ Först ska vi återställa dina autentiseringsuppgifter för Azure VMare-lösning. Dina vCenter Server CloudAdmin-och NSX-T-admin-autentiseringsuppgifter upphör inte; Du kan dock följa de här stegen för att generera nya lösen ord för dessa konton.
 
 > [!NOTE]
-> Om du använder dina CloudAdmin-autentiseringsuppgifter för anslutna tjänster som HCX, vCenter Orchestrator, vCloud Director eller vRealize slutar dina anslutningar att fungera när du har uppdaterat ditt lösen ord.  De här tjänsterna bör stoppas innan du initierar lösen ords rotationen.  Om du inte gör det kan det leda till tillfälliga lås på dina vCenter-CloudAdmin och NSX-T-administratörskonton, eftersom dessa tjänster kontinuerligt kommer att anropas med dina gamla autentiseringsuppgifter.  Mer information om hur du konfigurerar separata konton för anslutna tjänster finns i [åtkomst-och identitets koncept](https://docs.microsoft.com/azure/azure-vmware/concepts-identity).
+> Om du använder dina CloudAdmin-autentiseringsuppgifter för anslutna tjänster som HCX, vRealize Orchestrator, vRealizae Operations Manager eller VMware-horisont, slutar dina anslutningar att fungera när du har uppdaterat ditt lösen ord.  De här tjänsterna bör stoppas innan du initierar lösen ords rotationen.  Om du inte gör det kan det leda till tillfälliga lås på dina vCenter-CloudAdmin och NSX-T-administratörskonton, eftersom dessa tjänster kontinuerligt kommer att anropas med dina gamla autentiseringsuppgifter.  Mer information om hur du konfigurerar separata konton för anslutna tjänster finns i [åtkomst-och identitets koncept](https://docs.microsoft.com/azure/azure-vmware/concepts-identity).
 
-1. Öppna en kommando rad i Azure VMware Solutions-portalen.
+1. Öppna en Azure Cloud Shell-session från Azure Portal.
 
 2. Kör följande kommando för att uppdatera ditt vCenter CloudAdmin-lösenord.  Du måste ersätta {SubscriptionID}, {ResourceGroup} och {PrivateCloudName} med de faktiska värdena för det privata moln som CloudAdmin-kontot tillhör.
 
@@ -35,7 +35,7 @@ az resource invoke-action --action rotateVcenterPassword --ids "/subscriptions/{
 az resource invoke-action --action rotateNSXTPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
 ```
 
-## <a name="ensure-the-hcx-connector-has-your-latest-vsphere-credentials"></a>Se till att HCX-anslutningen har dina senaste vSphere-autentiseringsuppgifter
+## <a name="ensure-the-hcx-connector-has-your-latest-vcenter-server-credentials"></a>Se till att HCX-anslutningen har dina senaste vCenter Server autentiseringsuppgifter
 
 Nu när du har återställt dina autentiseringsuppgifter följer du de här stegen för att se till att HCX-anslutningen har dina uppdaterade autentiseringsuppgifter.
 
@@ -45,13 +45,13 @@ Nu när du har återställt dina autentiseringsuppgifter följer du de här steg
     
     :::image type="content" source="media/reset-vsphere-credentials/hcx-site-pairing.png" alt-text="Skärm bild av VMware HCX-instrumentpanelen med plats länkning markerat.":::
  
-3. Välj korrekt anslutning till AVS (om det finns mer än ett) och välj **Redigera anslutning**.
+3. Välj korrekt anslutning till Azure VMware-lösningen (om det finns fler än en) och välj **Redigera anslutning**.
  
-4. Ange de nya vSphere-autentiseringsuppgifterna och välj **Redigera**, vilket sparar autentiseringsuppgifterna. Spara ska Visa lyckades.
+4. Ange de nya vCenter Server CloudAdmin-användarautentiseringsuppgifter och välj **Redigera**, vilket sparar autentiseringsuppgifterna. Spara ska Visa lyckades.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har täckt att återställa vSphere-autentiseringsuppgifter för Azure VMware-lösningen kanske du vill lära dig mer om:
+Nu när du har täckt att återställa vCenter Server-och NSX-autentiseringsuppgifter för Azure VMware-lösningen kanske du vill lära dig mer om:
 
 - [Konfigurera NSX Network-komponenter i Azure VMware-lösningen](configure-nsx-network-components-azure-portal.md).
 - [Livs cykel hantering av virtuella datorer i Azure VMware-lösningen](lifecycle-management-of-azure-vmware-solution-vms.md).

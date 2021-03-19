@@ -4,14 +4,14 @@ description: Lär dig hur du konfigurerar rollbaserad åtkomst kontroll med Azur
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: thweiss
-ms.openlocfilehash: 7c5497615ce71d0be713ef9ae28ab1e0f85b7ddb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586071"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurera rollbaserad åtkomst kontroll med Azure Active Directory för ditt Azure Cosmos DB-konto (för hands version)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ RBAC-Azure Cosmos DB data planet bygger på begrepp som ofta finns i andra RBAC-
 
 I tabellen nedan visas alla åtgärder som exponeras av behörighets modellen.
 
-| Namn | Motsvarande databas åtgärd (er) |
+| Name | Motsvarande databas åtgärd (er) |
 |---|---|
 | `Microsoft.DocumentDB/databaseAccounts/readMetadata` | Läs kontots metadata. Se [begär Anden om metadata](#metadata-requests) för mer information. |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create` | Skapa ett nytt objekt. |
@@ -325,13 +325,13 @@ Hur du skapar en `TokenCredential` instans ligger utanför den här artikelns om
 
 - [i .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [i Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
+- [i Java Script](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
 
 I exemplen nedan används ett huvud namn för tjänsten med en `ClientSecretCredential` instans.
 
 ### <a name="in-net"></a>I .NET
 
-> [!NOTE]
-> Du måste använda `preview` versionen av Azure Cosmos dB .NET SDK för att få åtkomst till den här funktionen.
+Azure Cosmos DB RBAC stöds för närvarande i `preview` versionen av [.NET SDK v3](sql-api-sdk-dotnet-standard.md).
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -342,6 +342,8 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 ```
 
 ### <a name="in-java"></a>I Java
+
+Azure Cosmos DB RBAC stöds för närvarande i [Java SDK v4](sql-api-sdk-java-v4.md).
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -354,6 +356,21 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .endpoint("<account-endpoint>")
     .credential(ServicePrincipal)
     .build();
+```
+
+### <a name="in-javascript"></a>I Java Script
+
+Azure Cosmos DB RBAC stöds för närvarande i [Java Script SDK v3](sql-api-sdk-node.md).
+
+```javascript
+const servicePrincipal = new ClientSecretCredential(
+    "<azure-ad-tenant-id>",
+    "<client-application-id>",
+    "<client-application-secret>");
+const client = new CosmosClient({
+    "<account-endpoint>",
+    aadCredentials: servicePrincipal
+});
 ```
 
 ## <a name="auditing-data-requests"></a>Gransknings data begär Anden
@@ -374,25 +391,25 @@ Denna ytterligare information flödar i **DataPlaneRequests** -logg kategorin oc
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
-### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>Vilka Azure Cosmos DB-API: er stöds av RBAC?
+### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>Vilka Azure Cosmos DB API:er stöds av RBAC?
 
-Det finns för närvarande inte stöd för SQL-API: et.
+För närvarande stöds endast SQL API:et.
 
-### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Är det möjligt att hantera roll definitioner och roll tilldelningar från Azure Portal?
+### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Går det att hantera rolldefinitioner och rolltilldelningar från Azure-portalen?
 
-Azure Portal stöd för roll hantering är inte tillgängligt ännu.
+Stöd för rollhantering från Azure-portalen är inte tillgängligt än.
 
 ### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Vilka SDK: er i Azure Cosmos DB SQL API stöder RBAC?
 
 [.Net v3](sql-api-sdk-dotnet-standard.md) -och [Java v4](sql-api-sdk-java-v4.md) SDK: er stöds för närvarande.
 
-### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Uppdateras Azure AD-token automatiskt av Azure Cosmos DB SDK: er när den upphör att gälla?
+### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Uppdateras Azure AD-token automatiskt av Azure Cosmos DB-SDK: er när den upphör att gälla?
 
 Ja.
 
-### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Är det möjligt att inaktivera användningen av kontots primära nyckel när du använder RBAC?
+### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Går det att inaktivera användningen av kontots primära nyckel när RBAC används?
 
-Det går för närvarande inte att inaktivera kontots primär nyckel.
+Det går för närvarande inte att inaktivera kontots primära nyckel.
 
 ## <a name="next-steps"></a>Nästa steg
 

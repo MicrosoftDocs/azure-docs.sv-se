@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cbb1db15eed53af1d0e4590e1b228e5e47680560
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614929"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576789"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Stödmatris för VMware-migrering
 
@@ -27,14 +27,9 @@ Du kan migrera virtuella VMware-datorer på ett par olika sätt:
 
 Läs [den här artikeln](server-migrate-overview.md) för att ta reda på vilken metod du vill använda.
 
-## <a name="migration-limitations"></a>Migreringsbegränsningar
-
-- Du kan välja upp till 10 virtuella datorer på en gång för replikering via Azure Portal. Om du vill migrera fler datorer kan du replikera i grupper om 10. Det finns ingen gräns för antalet virtuella datorer som kan replikeras via PowerShell-cmdletar. Vi rekommenderar att du replikerar högst 500 virtuella datorer i taget från en enda vCenter till PowerShell för att säkerställa optimala prestanda.
-- För VMware-agent lös migrering kan du köra upp till 500 replikeringar samtidigt från varje vCenter Server.
-
 ## <a name="agentless-migration"></a>Migrering utan agent 
 
-I det här avsnittet sammanfattas kraven för migrering utan agent.
+I det här avsnittet sammanfattas kraven för migrering av virtuella VMware-datorer till Azure.
 
 ### <a name="vmware-requirements-agentless"></a>VMware-krav (utan agent)
 
@@ -72,8 +67,11 @@ I tabellen sammanfattas kraven för att migrera utan agent för virtuella VMware
 **Grupperade nätverkskort** | Stöds inte.
 **IPv6** | Stöds inte.
 **Mål disk** | Virtuella datorer kan bara migreras till Managed disks (standard-HDD, standard SSD, Premium SSD) i Azure.
-**Samtidig replikering** | 500 virtuella datorer per vCenter Server. Om du har fler kan du migrera dem i batchar på 500.
+**Samtidig replikering** | Upp till 300 replikering av virtuella datorer per vCenter Server med 1-apparat. Upp till 500 samtidigt replikering av virtuella datorer per vCenter Server när ytterligare en [skalbar](./how-to-scale-out-for-migration.md) installation har distribuerats. 
 **Automatisk installation av Azure VM-agenten (Windows och Linux-agenten)** | Stöds för Windows Server 2008 R2 och senare. <br/> Stöds för RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04. Granska listan med [nödvändiga paket](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)) för dessa Linux-operativsystem.
+
+> [!TIP]
+>  Med hjälp av Azure Portal kan du välja upp till 10 virtuella datorer i taget för att konfigurera replikering. Om du vill replikera fler virtuella datorer kan du använda portalen och lägga till de virtuella datorer som ska replikeras i flera batchar med 10 virtuella datorer eller använda Azure Migrate PowerShell-gränssnittet för att konfigurera replikering. Se till att du inte konfigurerar samtidig replikering på fler än det högsta antalet virtuella datorer som stöds för samtidiga replikeringar.
 
 ### <a name="appliance-requirements-agentless"></a>Installations krav (utan agent)
 

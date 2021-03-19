@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935894"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579084"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Vad är läget endast i rapporten för villkorlig åtkomst?
 
@@ -29,6 +29,8 @@ Endast rapport läge är ett nytt tillstånd för villkorlig åtkomst som gör a
 - Resultaten loggas i flikarna **villkorlig åtkomst** och **endast rapporter** i inloggnings loggen.
 - Kunder med en Azure Monitor prenumeration kan övervaka påverkan av sina principer för villkorlig åtkomst med hjälp av arbets boken för villkorlig åtkomst.
 
+> [!VIDEO https://www.youtube.com/embed/NZbPYfhb5Kc]
+
 > [!WARNING]
 > Principer i läge för endast rapporter som kräver kompatibla enheter kan begära att användare på Mac, iOS och Android väljer ett enhets certifikat under princip utvärderingen, även om enhetens efterlevnad inte tillämpas. Dessa prompter kan upprepas tills enheten blir kompatibel. För att förhindra att slutanvändare får meddelanden under inloggningen utesluter du Mac-, iOS-och Android-enheter från enbart rapport principer som utför kontroll av enhetskompatibilitet. Observera att endast rapport läge är tillämpligt för principer för villkorlig åtkomst med "användar åtgärder"-omfattningen.
 
@@ -38,7 +40,7 @@ Endast rapport läge är ett nytt tillstånd för villkorlig åtkomst som gör a
 
 När en princip i endast rapport läge utvärderas för en specifik inloggning, finns det fyra nya möjliga resultat värden:
 
-| Resultat | Beskrivning |
+| Resultat | Description |
 | --- | --- |
 | Endast rapport: lyckad | Alla konfigurerade princip villkor, obligatoriska icke-interaktiva beviljade kontroller och kontroller av sessionen var uppfyllda. Till exempel uppfylls ett Multi-Factor Authentication-krav av ett MFA-anspråk som redan finns i token eller en kompatibel enhets princip är uppfylld genom att utföra en enhets kontroll på en kompatibel enhet. |
 | Endast rapport: problem | Alla konfigurerade princip villkor uppfylldes men det var inte alla nödvändiga icke-interaktiva beviljade kontroller eller kontroll av sessionen uppfyllda. En princip gäller till exempel en användare där en blockerande kontroll har kon figurer ATS, eller en enhet som inte uppfyller en kompatibel enhets princip. |

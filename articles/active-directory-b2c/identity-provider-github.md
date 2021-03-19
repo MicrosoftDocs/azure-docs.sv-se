@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2c82858b9f4b9846ff5371da347be942eed0a4f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0c0507f9206ebe69662090d7a00da6d5c9d0b90a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488864"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580019"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett GitHub-konto med hjälp av Azure Active Directory B2C
 
@@ -61,6 +61,9 @@ Om du vill aktivera inloggning med ett GitHub-konto i Azure Active Directory B2C
 1. Välj **Spara**.
 
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>Lägg till GitHub Identity Provider i ett användar flöde 
+
+GitHub Identity-providern har nu kon figurer ATS, men den är inte tillgänglig ännu på någon av inloggnings sidorna. Så här lägger du till GitHub Identity Provider i ett användar flöde:
+
 
 1. Välj **användar flöden** i Azure AD B2C klient.
 1. Klicka på det användar flöde som du vill lägga till GitHub Identity Provider.

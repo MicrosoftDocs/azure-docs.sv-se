@@ -1,18 +1,18 @@
 ---
-title: Vad är Azure Cosmos DB-analysarkiv?
+title: Vad är Azure Cosmos DB Analytical Store?
 description: Lär dig mer om Azure Cosmos DB transaktionell (rad-och kolumnbaserade) och analys (kolumnbaserade). Fördelar med analytisk lagring, prestanda påverkan för storskaliga arbets belastningar och automatisk synkronisering av data från transaktions lagring till analytisk lagring
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452846"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577367"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Vad är Azure Cosmos DB Analytical Store?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -65,32 +65,60 @@ Automatisk synkronisering syftar på den fullständigt hanterade funktionen i Az
 
 Funktionen för automatisk synkronisering tillsammans med analytiskt lager ger följande viktiga fördelar:
 
-#### <a name="scalability--elasticity"></a>Skalbarhets & elastiskhet
+### <a name="scalability--elasticity"></a>Skalbarhets & elastiskhet
 
 Genom att använda vågrät partitionering kan Azure Cosmos DB transaktions lager elastiskt skala lagringen och data flödet utan avbrott. Horisontell partitionering i transaktions arkivet ger skalbarhet & elastiskhet i automatisk synkronisering för att säkerställa att data synkroniseras med analys lagret i nära real tid. Datasynkroniseringen sker oavsett transaktions trafik genom strömning, om det är 1000 åtgärder/SEK eller 1 000 000 åtgärder/SEK, och det inte påverkar det etablerade data flödet i transaktions arkivet. 
 
-#### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Hantera schema uppdateringar automatiskt
+### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Hantera schema uppdateringar automatiskt
 
 Azure Cosmos DB transaktions lager är schema-oberoende, och det gör att du kan iterera i dina transaktions program utan att behöva hantera schema-eller index hantering. I motsats till detta är Azure Cosmos DB Analytical Store schematiserade för att optimera prestanda för analytiska frågor. Med funktionen för automatisk synkronisering hanterar Azure Cosmos DB schemats härledning över de senaste uppdateringarna från transaktions arkivet.  Den hanterar också schema representationen i den analytiska lagringen som ingår i den här typen av hantering av kapslade data typer.
 
 När schemat utvecklas och nya egenskaper läggs till med tiden visar analys arkivet automatiskt ett uppdelat schema över alla historiska scheman i transaktions arkivet.
 
-##### <a name="schema-constraints"></a>Schema begränsningar
+#### <a name="schema-constraints"></a>Schema begränsningar
 
 Följande begränsningar gäller för användnings data i Azure Cosmos DB när du aktiverar analytisk lagring så att det automatiskt härleds och representerar schemat korrekt:
 
-* Du kan ha högst 200 egenskaper på valfri kapslings nivå i schemat och ett maximalt kapslings djup på 5.
+* Du kan ha högst 1000 egenskaper på valfri kapslings nivå i schemat och ett maximalt kapslings djup på 127.
+  * Endast de första 1000 egenskaperna visas i analys lagret.
+  * Endast de första 127 kapslade nivåerna visas i analys lagret.
+
+* JSON-dokument (och Cosmos DB samlingar/behållare) är Skift läges känsliga från det unika perspektivet, vilket inte är analytiskt lagrings utrymme.
+
+  * **I samma dokument:** Egenskaps namn på samma nivå måste vara unika vid jämförelse av Skift läges okänslighet. Följande JSON-dokument har till exempel "name" och "name" på samma nivå. Även om det är ett giltigt JSON-dokument uppfyller det inte unikhetsvillkoret och kommer därför inte att visas fullständigt i analys lagret. I det här exemplet är "namn" och "namn" samma vid jämförelse i ett skift läges okänsligt sätt. Visas endast `"Name": "fred"` i analys lager, eftersom det är den första förekomsten. Och `"name": "john"` visas inte alls.
   
-  * Ett objekt med 201-egenskaper på den översta nivån uppfyller inte den här begränsningen och kommer därför inte att visas i analys lagret.
-  * Ett objekt med fler än fem kapslade nivåer i schemat uppfyller inte heller den här begränsningen och kommer därför inte att visas i analys lagret. Följande objekt uppfyller till exempel inte kravet:
+  
+  ```json
+  {"id": 1, "Name": "fred", "name": "john"}
+  ```
+  
+  * **I olika dokument:** Egenskaper på samma nivå och med samma namn, men i olika fall, visas i samma kolumn med namn formatet för den första förekomsten. Till exempel har följande JSON-dokument `"Name"` och `"name"` på samma nivå. Eftersom det första dokument formatet är `"Name"` , är det här det som kommer att användas för att representera egenskaps namnet i analys arkivet. Med andra ord är kolumn namnet i analys lager `"Name"` . Både `"fred"` och `"john"` kommer att visas i `"Name"` kolumnen.
 
-     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
 
-* Egenskaps namn måste vara unika vid jämförelse av Skift läges okänslighet. Följande objekt uppfyller till exempel inte den här begränsningen och kommer därför inte att visas i analys lagret:
+  ```json
+  {"id": 1, "Name": "fred"}
+  {"id": 2, "name": "john"}
+  ```
 
-  `{"Name": "fred"} {"name": "john"}` – "Name" och "name" är desamma vid jämförelse i ett skift läges okänsligt sätt.
 
-##### <a name="schema-representation"></a>Schema representation
+* Det första dokumentet i samlingen definierar det första analys lagrings schemat.
+  * Egenskaperna i dokumentets första nivå visas som kolumner.
+  * Dokument med fler egenskaper än det ursprungliga schemat genererar nya kolumner i ett analys lager.
+  * Det går inte att ta bort kolumner.
+  * Om du tar bort alla dokument i en samling återställs inte analys lagrets schema.
+  * Det finns ingen schema versions hantering. Den senaste versionen som härleds från transaktions arkivet är vad du ser i analys lager.
+
+* För närvarande har vi inte stöd för att läsa kolumn namn för Azure Synapse Spark som innehåller blank steg (blank steg).
+
+* Ett annat förväntat beteende i förhållande till `NULL` värden:
+  * Spark-pooler i Azure Synapse kommer att läsa dessa värden som 0 (noll).
+  * SQL Server-pooler i Azure Synapse kommer att läsa dessa värden som `NULL` .
+
+* Förväntar dig olika beteenden i samband med saknade kolumner:
+  * Spark-pooler i Azure Synapse kommer att representera dessa kolumner som `undefined` .
+  * SQL Server-pooler i Azure Synapse kommer att representera dessa kolumner som `NULL` .
+
+#### <a name="schema-representation"></a>Schema representation
 
 Det finns två lägen för schemarepresentation i analysarkivet. De här lägena utgör en kompromiss mellan enkelheten i kolumnrepresentation, hanteringen av polymorfiska scheman och enkelheten i frågeupplevelsen:
 
@@ -106,7 +134,7 @@ Den väldefinierade schema representationen skapar en enkel tabell representatio
 
 * En egenskap har alltid samma typ för flera objekt.
 
-  * Har till exempel `{"a":123} {"a": "str"}` inte ett väldefinierat schema eftersom det `"a"` ibland är en sträng och ibland ett tal. I det här fallet registrerar analys arkivet data typen `“a”` som data typen för `“a”` i det första objektet i behållarens livs längd. Objekt där data typen `“a”` skiljer sig, tas inte med i analys lagret.
+  * Har till exempel `{"a":123} {"a": "str"}` inte ett väldefinierat schema eftersom det `"a"` ibland är en sträng och ibland ett tal. I det här fallet registrerar analys arkivet data typen `"a"` som data typen för `“a”` i det första objektet i behållarens livs längd. Dokumentet kommer fortfarande att ingå i ett analys lager, men objekt där data typen `"a"` skiljer sig.
   
     Det här villkoret gäller inte för null-egenskaper. Är till exempel `{"a":123} {"a":null}` fortfarande väl definierat.
 
@@ -230,7 +258,7 @@ Mer information finns i [så här konfigurerar du analytiskt TTL-värde på en b
 
 Mer information finns i följande dokument:
 
-* [Azure Synapse-länk för Azure Cosmos DB](synapse-link.md)
+* [Azure Synapse Link för Azure Cosmos DB](synapse-link.md)
 
 * [Kom igång med Azure Synapse Link för Azure Cosmos DB](configure-synapse-link.md)
 

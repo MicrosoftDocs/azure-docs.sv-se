@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bd4dcbdc7ab13d18ef7f2d7102c56d1bd8d8758d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565469"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582110"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM-storlekar utan lokal temporär disk 
 Den här artikeln innehåller svar på vanliga frågor och svar om Azure VM-storlekar som inte har en lokal temporär disk (dvs. ingen lokal temporär disk). Mer information om de här VM-storlekarna finns i [specifikationer för DV4 och Dsv4-serien (generell användning arbets belastningar)](dv4-dsv4-series.md) eller [specifikationer för Ev4 och Esv4-serien (minnesoptimerade arbets belastningar)](ev4-esv4-series.md).
@@ -56,7 +56,7 @@ Du kan migrera genom att följa dessa steg:
    > Följ rikt linjerna i avsnittet "tillfälligt flytta pagefile.sys till C-enhet" i Använd D: enheten som en data enhet på en virtuell Windows-dator för att flytta växlings filen från den lokala tillfälliga disken (D: Drive) till C: Drive. **Avvikelser från de steg som beskrivs leder till fel meddelandet – "det går inte att ändra storlek på den virtuella datorn eftersom det inte går att ändra storlek på resurs disk till icke-resursens VM-storlek och vice versa är inte tillåtet.**
 
 3. Ta en ögonblicks bild av den virtuella datorn genom att följa stegen som beskrivs i [skapa en ögonblicks bild med hjälp av portalen eller Azure CLI](./linux/snapshot-copy-managed-disk.md). 
-4. Använd ögonblicks bild för att skapa en ny disk lös virtuell dator (till exempel DV4, Dsv4, Ev4, Esv4-serien) genom att följa stegen som beskrivs i [skapa en virtuell dator från en ögonblicks bild med CLI](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md). 
+4. Använd ögonblicks bild för att skapa en ny disk lös virtuell dator (till exempel DV4, Dsv4, Ev4, Esv4-serien) genom att följa stegen som beskrivs i [skapa en virtuell dator från en ögonblicks bild med CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot). 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Stöder de här VM-storlekarna både Linux-och Windows-operativsystem (OS)?
 Ja.

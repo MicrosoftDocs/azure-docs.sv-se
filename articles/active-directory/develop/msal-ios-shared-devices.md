@@ -1,7 +1,7 @@
 ---
 title: Läge för delad enhet för iOS-enheter
 titleSuffix: Microsoft identity platform | Azure
-description: Lär dig hur du aktiverar delad enhets läge så att firstline arbetare kan dela en iOS-enhet
+description: Lär dig hur du aktiverar delad enhets läge så att Frontline arbetare kan dela en iOS-enhet
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c67c5d7b46c04e7f1aea020127ee798878c43d60
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561071"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578795"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Läge för delad enhet för iOS-enheter
 
 >[!IMPORTANT]
 > Den här funktionen [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-Firstline-anställda som detalj handels företag, flyg besättnings medlemmar och fält tjänst arbetare använder ofta en delad mobil enhet för att utföra sitt arbete. Dessa delade enheter kan utgöra en säkerhets risk om användarna delar sina lösen ord eller PIN-filer, avsiktligt eller inte, för att komma åt kund-och affärs data på den delade enheten.
+Frontline-anställda som detalj handels företag, flyg besättnings medlemmar och fält tjänst arbetare använder ofta en delad mobil enhet för att utföra sitt arbete. Dessa delade enheter kan utgöra en säkerhets risk om användarna delar sina lösen ord eller PIN-filer, avsiktligt eller inte, för att komma åt kund-och affärs data på den delade enheten.
 
 Med delad enhets läge kan du konfigurera en iOS 13-enhet eller en högre enhet så att den blir enklare och på ett säkert sätt delas av anställda. Anställda kan snabbt logga in och komma åt kund information. När de är klara med Skift eller uppgift kan de logga ut från enheten och den är omedelbart redo att användas av nästa anställd.
 
@@ -41,7 +41,7 @@ För att skapa en app för delad enhets läge fungerar utvecklare och moln enhet
 
 1. **Enhets administratörer** förbereder enheten för delning med hjälp av en MDM-Provider (Mobile Device Management) som Microsoft Intune för att hantera enheterna i organisationen. MDM push-överför Microsoft Authenticator-appen till enheterna och aktiverar "delat läge" för varje enhet genom en profil uppdatering till enheten. Den här inställningen för delat läge är det som ändrar beteendet för de appar som stöds på enheten. Den här konfigurationen från MDM-providern anger delad enhets läge för enheten och aktiverar [Microsoft Enterprise SSO-plugin-programmet för Apple-enheter](apple-sso-plugin.md) som krävs för delad enhets läge.
 
-1. [ **Krävs endast under offentlig för hands version** ] En användare med rollen som [moln enhets administratör](../roles/permissions-reference.md#cloud-device-administrator) måste sedan starta [Microsoft Authenticator-appen](../user-help/user-help-auth-app-overview.md) och ansluta sin enhet till organisationen.
+1. [**Krävs endast under offentlig för hands version**] En användare med rollen som [moln enhets administratör](../roles/permissions-reference.md#cloud-device-administrator) måste sedan starta [Microsoft Authenticator-appen](../user-help/user-help-auth-app-overview.md) och ansluta sin enhet till organisationen.
 
     Konfigurera medlemskap för organisations roller i Azure Portal: **Azure Active Directory**  >  **roller och administratörer**  >  **moln enhets administratör**
 
@@ -56,10 +56,10 @@ Enheten måste konfigureras för att stödja delat enhets läge. Den måste ha i
 
 1. I konfigurations portalen för Intune ber du enheten att aktivera [Microsoft Enterprise SSO-plugin-programmet för Apple-enheter](apple-sso-plugin.md) med följande konfiguration:
 
-    - **Typ** : omdirigera
-    - **Tilläggs-ID** : com. Microsoft. azureauthenticator. ssoextension
-    - **Team-ID** : (det här fältet behövs inte för iOS)
-    - **URL: er** :   
+    - **Typ**: omdirigera
+    - **Tilläggs-ID**: com. Microsoft. azureauthenticator. ssoextension
+    - **Team-ID**: (det här fältet behövs inte för iOS)
+    - **URL: er**:   
         - `https://login.microsoftonline.com`
         - `https://login.microsoft.com`
         - `https://sts.windows.net`
@@ -69,7 +69,7 @@ Enheten måste konfigureras för att stödja delat enhets läge. Den måste ha i
         - `https://login.microsoftonline.us`
         - `https://login.usgovcloudapi.net`
         - `https://login-us.microsoftonline.com`
-    - **Ytterligare data att konfigurera** :
+    - **Ytterligare data att konfigurera**:
       - Nyckel: sharedDeviceMode
       - Typ: boolesk
       - Värde: true
@@ -95,7 +95,7 @@ Om en användare ändras bör du se till att både den tidigare användarens dat
 
 ### <a name="detect-shared-device-mode"></a>Identifiera delad enhets läge
 
-Att identifiera delad enhets läge är viktigt för ditt program. Många program kräver en ändring i användar upplevelsen (UX) när programmet används på en delad enhet. Ditt program kan till exempel ha en "registrerings funktion" som inte passar för en firstline Worker eftersom de förmodligen redan har ett konto. Du kanske också vill lägga till extra säkerhet för programmets hantering av data om det är i delat enhets läge.
+Att identifiera delad enhets läge är viktigt för ditt program. Många program kräver en ändring i användar upplevelsen (UX) när programmet används på en delad enhet. Ditt program kan till exempel ha en "registrerings funktion" som inte passar för en Frontline Worker eftersom de förmodligen redan har ett konto. Du kanske också vill lägga till extra säkerhet för programmets hantering av data om det är i delat enhets läge.
 
 Använd `getDeviceInformationWithParameters:completionBlock:` API: et i `MSALPublicClientApplication` för att avgöra om en app körs på en enhet i delat enhets läge.
 
@@ -230,6 +230,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följande kod exempel på GitHub innehåller ett exempel på att köra en firstline Worker-app på en iOS-enhet i läget delad enhet för att se läget delad enhet:
+Följande kod exempel på GitHub innehåller ett exempel på att köra en Frontline Worker-app på en iOS-enhet i läget delad enhet för att se läget delad enhet:
 
 [MSAL iOS Swift Microsoft Graph API-exempel](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

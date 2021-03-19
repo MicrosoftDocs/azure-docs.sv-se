@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb81960b573b5b7d28f44f7a7482c28b4ef284be
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496464"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580359"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption för virtuella Linux-datorer 
 
@@ -108,7 +108,7 @@ Linux Server-distributioner som inte har godkänts av Azure stöder inte Azure D
 
 Azure Disk Encryption kräver att dm-crypt-och vfat-modulerna finns i systemet. Om du tar bort eller inaktiverar vfat från standard avbildningen så förhindras systemet från att läsa nyckel volymen och hämta den nyckel som behövs för att låsa upp diskarna vid efterföljande omstarter. System härdnings steg som tar bort vfat-modulen från systemet eller tvingar fram expandering av OS-mountpoints/-mappar på data enheter är inte kompatibla med Azure Disk Encryption. 
 
-Innan du aktiverar kryptering måste data diskarna som ska krypteras anges korrekt i/etc/fstab. Använd alternativet "nomissation" när du skapar poster och välj ett beständigt block enhets namn (som enhets namn i formatet "/dev/sdX" kan inte associeras med samma disk i omstarter, särskilt efter kryptering. mer information om det här problemet finns i: [Felsöka Linux VM enhets namn ändringar](../troubleshooting/troubleshoot-device-names-problems.md)).
+Innan du aktiverar kryptering måste data diskarna som ska krypteras anges korrekt i/etc/fstab. Använd alternativet "nomissation" när du skapar poster och välj ett beständigt block enhets namn (som enhets namn i formatet "/dev/sdX" kan inte associeras med samma disk i omstarter, särskilt efter kryptering. mer information om det här problemet finns i: [Felsöka Linux VM enhets namn ändringar](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)).
 
 Kontrol lera att/etc/fstab-inställningarna är korrekt konfigurerade för montering. Om du vill konfigurera dessa inställningar kör du kommandot Mount-a eller startar om den virtuella datorn och utlöser ommonteringen på det sättet. När den är klar kontrollerar du utdata från kommandot lsblk för att kontrol lera att enheten fortfarande är monterad. 
 

@@ -4,13 +4,13 @@ description: Lär dig hur du skapar ett kluster som distribuerar noder över til
 services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
-ms.date: 09/04/2020
-ms.openlocfilehash: 3eec8a6c331227d9d6298c46b272a5784080d342
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 4c5b0ceb3f8e0b96f18a67ed0c7dbf1b56ac30da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180334"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583555"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Skapa ett Azure Kubernetes service-kluster (AKS) som använder tillgänglighets zoner
 
@@ -29,6 +29,7 @@ Du behöver Azure CLI-versionen 2.0.76 eller senare installerad och konfigurerad
 AKS-kluster kan för närvarande skapas med tillgänglighets zoner i följande regioner:
 
 * Australien, östra
+* Brasilien, södra
 * Kanada, centrala
 * Central US
 * East US 
@@ -167,7 +168,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 Nu har vi två ytterligare noder i zon 1 och 2. Du kan distribuera ett program som består av tre repliker. Vi kommer att använda NGINX som exempel:
 
 ```console
-kubectl create deployment nginx --image=nginx
+kubectl create deployment nginx --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 kubectl scale deployment nginx --replicas=3
 ```
 

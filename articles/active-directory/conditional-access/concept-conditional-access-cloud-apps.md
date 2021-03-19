@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2895588a5a82ec2b6c69d33ff6cea39bbe3a0372
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492004"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579152"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Villkorlig åtkomst: molnappar eller åtgärder
 
@@ -131,7 +131,7 @@ Användar åtgärder är uppgifter som kan utföras av en användare. Villkorlig
 
 - **Registrera eller ansluta enheter (förhands granskning)**: med den här användar åtgärden kan administratörer tillämpa principer för villkorlig åtkomst när användare [registrerar](../devices/concept-azure-ad-register.md) eller [ansluter](../devices/concept-azure-ad-join.md) enheter till Azure AD. Det finns två viktiga överväganden med den här användar åtgärden: 
    - `Require multi-factor authentication` är den enda åtkomst kontrollen som är tillgänglig för den här användar åtgärden och alla andra har inaktiverats. Den här begränsningen förhindrar konflikter med åtkomst kontroller som antingen är beroende av Azure AD-enhets registrering eller inte tillämplig för registrering av Azure AD-enheter. 
-   - När en princip för villkorlig åtkomst har Aktiver ATS med den här användar åtgärden måste du ange  >    >  **enhets inställningarna** för Azure Active Directory enheter  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` till **Nej**. Annars tillämpas inte principen för villkorlig åtkomst med den här användar åtgärden korrekt. Mer information om den här enhets inställningen finns i [Konfigurera enhets inställningar](../device-management-azure-portal.md##configure-device-settings). Den här användar åtgärden ger flexibilitet att kräva Multi-Factor Authentication för att registrera eller ansluta enheter för vissa användare och grupper eller villkor i stället för att ha en princip för hela klienten i enhets inställningarna. 
+   - När en princip för villkorlig åtkomst har Aktiver ATS med den här användar åtgärden måste du ange  >    >  **enhets inställningarna** för Azure Active Directory enheter  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` till **Nej**. Annars tillämpas inte principen för villkorlig åtkomst med den här användar åtgärden korrekt. Mer information om den här enhets inställningen finns i [Konfigurera enhets inställningar](../devices/device-management-azure-portal.md#configure-device-settings). Den här användar åtgärden ger flexibilitet att kräva Multi-Factor Authentication för att registrera eller ansluta enheter för vissa användare och grupper eller villkor i stället för att ha en princip för hela klienten i enhets inställningarna. 
    
 ## <a name="next-steps"></a>Nästa steg
 

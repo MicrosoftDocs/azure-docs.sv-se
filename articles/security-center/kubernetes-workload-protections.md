@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: eacca5573c672e9f4485c26b1b580ee4c982c5d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095603"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580766"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Skydda dina Kubernetes-arbetsbelastningar
 
@@ -39,7 +39,7 @@ Security Center innehåller fler säkerhets funktioner för behållare om du akt
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|**Ägare** eller **säkerhets administratör** för att redigera en tilldelning<br>**Läsare** för att Visa rekommendationerna|
 |Miljö krav:|Kubernetes v-1.14 (eller högre) krävs<br>Ingen PodSecurityPolicy-resurs (gammal PSP-modell) i klustren<br>Windows-noder stöds inte|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 
@@ -80,12 +80,12 @@ Konfigurera rekommendationerna genom att installera  **Azure policy-tillägget f
 
     | Rekommendations namn                                                         | Säkerhets kontroll                         | Konfiguration krävs |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | CPU-och minnes gränser för containern ska tillämpas                          | Skydda program mot DDoS-attacker | Inga                     |
-    | Privilegierade behållare bör undvikas                                     | Hantera åtkomst och behörigheter            | Inga                     |
-    | Oföränderligt (skrivskyddat) rot fil system ska tillämpas för behållare     | Hantera åtkomst och behörigheter            | Inga                     |
-    | Container med behörighets eskalering bör undvikas                       | Hantera åtkomst och behörigheter            | Inga                     |
-    | Att köra behållare som rot användare bör undvikas                           | Hantera åtkomst och behörigheter            | Inga                     |
-    | Behållare som delar känsliga värd namn områden bör undvikas              | Hantera åtkomst och behörigheter            | Inga                     |
+    | CPU-och minnes gränser för containern ska tillämpas                          | Skydda program mot DDoS-attacker | No                     |
+    | Privilegierade behållare bör undvikas                                     | Hantera åtkomst och behörigheter            | No                     |
+    | Oföränderligt (skrivskyddat) rot fil system ska tillämpas för behållare     | Hantera åtkomst och behörigheter            | No                     |
+    | Container med behörighets eskalering bör undvikas                       | Hantera åtkomst och behörigheter            | No                     |
+    | Att köra behållare som rot användare bör undvikas                           | Hantera åtkomst och behörigheter            | No                     |
+    | Behållare som delar känsliga värd namn områden bör undvikas              | Hantera åtkomst och behörigheter            | No                     |
     | Minst privilegierade Linux-funktioner bör tillämpas för behållare       | Hantera åtkomst och behörigheter            | **Ja**                |
     | Användningen av Pod HostPath-volym monteringar bör begränsas till en känd lista    | Hantera åtkomst och behörigheter            | **Ja**                |
     | Behållare ska bara lyssna på tillåtna portar                              | Begränsa obehörig nätverks åtkomst     | **Ja**                |

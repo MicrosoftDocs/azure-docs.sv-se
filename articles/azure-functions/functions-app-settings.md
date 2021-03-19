@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425710"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595986"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -257,9 +257,17 @@ Används endast vid distribution till en Premium-plan eller till en förbrukning
 
 När du använder en Azure Resource Manager för att skapa en Function-app under distributionen ska du inte ta med WEBSITE_CONTENTSHARE i mallen. Den här program inställningen genereras under distributionen. Läs mer i [Automatisera resurs distribution för din Function-app](functions-infrastructure-as-code.md#windows).   
 
+## <a name="website_dns_server"></a>WEBBPLATS \_ -DNS- \_ Server
+
+Anger den DNS-server som används av en app vid matchning av IP-adresser. Den här inställningen krävs ofta när du använder vissa nätverksfunktioner, till exempel [Azure DNS privata zoner](functions-networking-options.md#azure-dns-private-zones) och [privata slut punkter](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).   
+
+|Nyckel|Exempelvärde|
+|---|------------|
+|WEBBPLATS \_ -DNS- \_ Server|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBBPLATS \_ högsta \_ dynamiska \_ program \_ skala \_ ut
 
-Det maximala antalet instanser som Function-appen kan skala ut till. Standardvärdet är ingen gräns.
+Det maximala antalet instanser som appen kan skala ut till. Standardvärdet är ingen gräns.
 
 > [!IMPORTANT]
 > Den här inställningen är i för hands version.  En [app-egenskap för funktionen högsta skalbarhet](./event-driven-scaling.md#limit-scale-out) har lagts till och är det rekommenderade sättet att begränsa skalan.
@@ -297,6 +305,14 @@ Gör att du kan ange tids zonen för din Function-app.
 |WEBBPLATS \_ \_ tidszon|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>webbplatsens \_ VNet- \_ väg \_ alla
+
+Anger om all utgående trafik från appen dirigeras via det virtuella nätverket. Värdet Setting `1` anger att all trafik dirigeras via det virtuella nätverket. Du måste använda den här inställningen när du använder funktioner i [regional integrering av virtuella nätverk](functions-networking-options.md#regional-virtual-network-integration). Den används också när en [NAT-gateway för virtuellt nätverk används för att definiera en statisk utgående IP-adress](functions-how-to-use-nat-gateway.md). 
+
+|Nyckel|Exempelvärde|
+|---|------------|
+|webbplatsens \_ VNet- \_ väg \_ alla|1|
 
 ## <a name="next-steps"></a>Nästa steg
 

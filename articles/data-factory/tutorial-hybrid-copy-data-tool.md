@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: aa6c7dd786a90abadb43a13eaa73a78a2a61bd0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719295"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606726"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopiera data från en SQL Server-databas till Azure Blob Storage med hjälp av Kopiera data-verktyget
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -113,7 +113,7 @@ I det här avsnittet skapar du en blobcontainer med namnet **adftutorial** i Blo
 
    Namnet på data fabriken måste vara *globalt unikt*. Om följande felmeddelande visas för namnfältet ändrar du namnet på datafabriken (t.ex. dittnamnADFTutorialDataFactory). Se artikeln [Namnregler för Data Factory](naming-rules.md) för namnregler för Data Factory-artefakter.
 
-   ![Namn på ny datafabrik](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fel meddelande för ny data fabrik för dubblettnamn.":::
 1. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
 1. Gör något av följande för **Resursgrupp**:
 
@@ -128,7 +128,7 @@ I det här avsnittet skapar du en blobcontainer med namnet **adftutorial** i Blo
 
 1. När den har skapats visas sidan **Data Factory** som visas i bilden.
 
-     ![Datafabrikens startsida](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Start sidan för Azure Data Factory, med panel för författar & övervakning.":::
 1. Välj **Författare och övervakare** för att starta användargränssnittet för Data Factory på en separat flik.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Använd verktyget Kopiera data för att skapa en pipeline

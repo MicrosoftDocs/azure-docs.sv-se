@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 03/15/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ce1a4808833cbd897da17f9ad75af346538d23d1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e0d8a8e3320b49b6fbe3e8ab66c0b4569fac9afd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103473095"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587941"
 ---
 # <a name="azure-synapse-analytics-connectivity-settings"></a>Anslutnings inställningar för Azure Synapse Analytics
 
@@ -21,7 +21,7 @@ I den här artikeln förklaras anslutnings inställningarna i Azure Synapse Anal
 
 
 ## <a name="connection-policy"></a>Anslutnings princip
-Anslutnings principen för Synapse SQL i Azure Synapse Analytics är inställd på *default*. Du kan inte ändra detta i Azure Synapse Analytics. Du kan lära dig mer om hur det påverkar anslutningar till Synapse SQL i Azure Synapse Analytics [här](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy). 
+Anslutnings principen för Synapse SQL i Azure Synapse Analytics är inställd på *default*. Du kan inte ändra detta i Azure Synapse Analytics. Du kan lära dig mer om hur det påverkar anslutningar till Synapse SQL i Azure Synapse Analytics [här](../../azure-sql/database/connectivity-architecture.md#connection-policy). 
 
 ## <a name="minimal-tls-version"></a>Lägsta TLS-version
 Synapse SQL i Azure Synapse Analytics tillåter anslutningar med alla TLS-versioner. Du kan inte ange den lägsta TLS-versionen för Synapse SQL i Azure Synapse Analytics.

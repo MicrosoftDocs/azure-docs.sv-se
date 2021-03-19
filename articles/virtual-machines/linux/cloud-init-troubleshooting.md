@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6c5922137b5d3ee14461adb88fba2e8b2cf41e16
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558975"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582161"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Felsöka VM-etablering med Cloud-Init
 
@@ -56,11 +56,11 @@ När den virtuella datorn inte kan etableras visar Azure status för att skapa, 
 
 När den virtuella datorn körs behöver du loggarna från den virtuella datorn för att förstå varför etableringen misslyckades.  För att förstå varför VM-etableringen misslyckades, stoppa inte den virtuella datorn. Behåll den virtuella datorn som körs. Du måste behålla den felande virtuella datorn i ett körnings tillstånd för att kunna samla in loggar. Använd någon av följande metoder för att samla in loggarna:
 
-- [Seriekonsol](../troubleshooting/serial-console-grub-single-user-mode.md)
+- [Seriekonsol](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)
 
 - [Aktivera startdiagnostik](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) innan du skapar den virtuella datorn och [Visa](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) dem under starten.
 
-- [Kör AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) för att ansluta och montera OS-disken, vilket gör att du kan samla in dessa loggar:
+- [Kör AZ VM Repair](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands) för att ansluta och montera OS-disken, vilket gör att du kan samla in dessa loggar:
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -108,7 +108,7 @@ När du har hittat ett fel eller en varning läser du bakåt i Cloud-Init-loggen
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Om du har åtkomst till den [seriella konsolen](../troubleshooting/serial-console-grub-single-user-mode.md)kan du försöka köra kommandot igen som Cloud-Init försökte köra.
+Om du har åtkomst till den [seriella konsolen](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)kan du försöka köra kommandot igen som Cloud-Init försökte köra.
 
 Loggningen för `/var/log/cloud-init.log` kan också konfigureras om i/etc/cloud/cloud.cfg.d/05_logging. cfg. Mer information om Cloud-Init-loggning finns i dokumentationen om [Cloud-Init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/24/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256313"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579509"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Program etablering i karantän status
 
@@ -52,7 +52,7 @@ Det finns tre sätt att kontrol lera om ett program finns i karantän:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Varför är mitt program i karantän?
 
-|Beskrivning|Rekommenderad åtgärd|
+|Description|Rekommenderad åtgärd|
 |---|---|
 |**Problem med scim-kompatibilitet:** Ett HTTP/404-svar som inte hittades returnerades i stället för det förväntade HTTP/200 OK-svaret. I det här fallet har Azure AD Provisioning-tjänsten gjort en begäran till mål programmet och fått ett oväntat svar.|Kontrol lera avsnittet admin credentials. Se om programmet kräver att du anger klient-URL: en och att webb adressen är korrekt. Om du inte ser något problem kontaktar du programutvecklaren för att säkerställa att deras tjänster är SCIM-kompatibla. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Ogiltiga autentiseringsuppgifter:** Vid försök att auktorisera åtkomst till mål programmet fick vi ett svar från mål programmet som anger att de angivna autentiseringsuppgifterna är ogiltiga.|Gå till avsnittet admin credentials i etablerings konfigurationens gränssnitt och auktorisera åtkomsten igen med giltiga autentiseringsuppgifter. Om programmet finns i galleriet läser du själv studie kursen om program konfiguration för längre nödvändiga steg.|
@@ -85,7 +85,7 @@ Först löser du problemet som gjorde att programmet placerades i karantän.
 
 När du har löst problemet startar du om etablerings jobbet. Vissa ändringar av programmets etablerings inställningar, till exempel attribut mappningar eller omfångs filter, startar automatiskt om etablering. Förlopps indikatorn på programmets **etablerings** sida anger när etableringen senast startades. Om du behöver starta om etablerings jobbet manuellt kan du använda någon av följande metoder:  
 
-- Använd Azure Portal för att starta om etablerings jobbet. På programmets **etablerings** sida under **Inställningar** väljer du **Rensa tillstånd och startar om synkronisering** och ställer in **etablerings status** på **på**. Den här åtgärden startar om etablerings tjänsten helt, vilket kan ta lite tid. En fullständig första cykel körs igen, vilket rensar escrows, tar bort appen från karantänen och tar bort alla vattenstämplar.
+- Använd Azure Portal för att starta om etablerings jobbet. På programmets **etablerings** sida väljer du **starta om etablering**. Den här åtgärden startar om etablerings tjänsten helt, vilket kan ta lite tid. En fullständig första cykel körs igen, vilket rensar escrows, tar bort appen från karantänen och tar bort alla vattenstämplar. Tjänsten utvärderar sedan alla användare i käll systemet igen och fastställer om de är inom omfånget för etablering. Detta kan vara användbart när ditt program för närvarande finns i karantän, som beskrivs i den här artikeln, eller så behöver du göra en ändring i mappningarna för attribut. Observera att den första cykeln tar längre tid än den normala stegvisa cykeln på grund av antalet objekt som måste utvärderas. Du kan lära dig mer om prestanda för inledande och stegvisa cykler [här](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 - Använd Microsoft Graph för att [starta om etablerings jobbet](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). Du har fullständig kontroll över vad du vill starta om. Du kan välja att rensa escrows (om du vill starta om depositions-räknaren som påförs i karantäns status), rensa karantän (för att ta bort programmet från karantän) eller rensa vattenstämplar. Använd följande begäran:
  

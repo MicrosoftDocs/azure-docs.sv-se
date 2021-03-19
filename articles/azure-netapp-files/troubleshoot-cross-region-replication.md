@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/18/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95239558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590933"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Felsöka replikering mellan regioner
 
@@ -71,11 +71,18 @@ I den här artikeln beskrivs fel meddelanden och lösningar som kan hjälpa dig 
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     Kontrol lera att du har förstört volymens replikering om du vill ta bort den här ögonblicks bilden.    |
 |     `Cannot delete   volume replication generated snapshot`    |     Det är inte tillåtet att ta bort ögonblicks bilder av Replikerings bas linjer.    |
 
+## <a name="errors-resizing-volumes"></a>Fel vid storleks ändring av volymer
+
+|     Felmeddelande    |     Lösning    |
+|-|-|
+|   Försöket att ändra storlek på en käll volym misslyckades med felet `"PoolSizeTooSmall","message":"Pool size too small for total volume size."`  |  Se till att du har tillräckligt med utrymme i poolerna för kapacitet för både käll-och mål volymerna för replikering över flera regioner. När du ändrar storlek på käll volymen ändras storleken på mål volymen automatiskt. Men om den kapacitets pool som är värd för mål volymen inte har tillräckligt med utrymme, går det inte att ändra storlek på både käll-och mål volymerna. Mer information finns i [ändra storlek på en mål volym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume) .   |
+
 ## <a name="next-steps"></a>Nästa steg  
 
 * [Replikering mellan regioner](cross-region-replication-introduction.md)
 * [Krav och överväganden för att använda replikering över flera regioner](cross-region-replication-requirements-considerations.md)
-* [Skapa volym replikering](cross-region-replication-create-peering.md)
+* [Skapa volymreplikering](cross-region-replication-create-peering.md)
 * [Visa hälsostatus för replikeringsrelation](cross-region-replication-display-health-status.md)
 * [Hantera haveriberedskap](cross-region-replication-manage-disaster-recovery.md)
+* [Ändra storlek på en mål volym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Felsöka replikering mellan regioner](troubleshoot-cross-region-replication.md)

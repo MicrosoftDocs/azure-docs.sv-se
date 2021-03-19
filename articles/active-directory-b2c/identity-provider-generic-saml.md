@@ -13,16 +13,16 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9e47171fc20ba07823e73f71713307e3a0e37278
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: a66486d791968f5752b96ed00374f8662b9c30fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488932"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580053"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med SAML Identity Provider med hjälp av Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) stöder Federation med SAML 2,0 Identity providers. Den här artikeln visar hur du aktiverar inloggning med ett användar konto för SAML-identitetsprovider, så att användarna kan logga in med sina befintliga sociala eller företags identiteter, till exempel [ADFS](identity-provider-adfs2016-custom.md) och [Salesforce](identity-provider-salesforce-saml.md).
+Azure Active Directory B2C (Azure AD B2C) stöder Federation med SAML 2,0 Identity providers. Den här artikeln visar hur du aktiverar inloggning med ett användar konto för SAML-identitetsprovider, så att användarna kan logga in med sina befintliga sociala eller företags identiteter, till exempel [ADFS](./identity-provider-adfs.md) och [Salesforce](identity-provider-salesforce-saml.md).
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 

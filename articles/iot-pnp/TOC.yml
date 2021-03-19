@@ -35,8 +35,8 @@
       href: concepts-developer-guide-device.md
     - name: Guide för tjänstutvecklare
       href: concepts-developer-guide-service.md
-    - name: Komponenter
-      href: concepts-components.md
+    - name: Modellerings guide
+      href: concepts-modeling-guide.md
     - name: Konventioner för IoT Plug and Play
       href: concepts-convention.md
     - name: IoT Plug and Play-brygga

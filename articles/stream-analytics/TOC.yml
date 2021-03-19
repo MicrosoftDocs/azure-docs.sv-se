@@ -44,7 +44,7 @@
 - name: Exempel
   items:
     - name: Kodexempel
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure-stream-analytics'
+      href: /samples/browse/?products=azure-stream-analytics
 - name: Begrepp
   items:
     - name: Lösningsmönster från slutpunkt till slutpunkt
@@ -316,13 +316,13 @@
               href: external-error-codes.md
             - name: Interna fel
               href: internal-error-codes.md
-    - name: Integrera med maskininlärning
+    - name: Integrera med Machine Learning
       items:
         - name: Attitydanalys med maskininlärningsmodeller
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: Avvikelseidentifiering
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: 'Använda REST-API:er'
+        - name: 'Använd ML REST API: er'
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Felsöka med hjälp av jobbdiagram
       href: stream-analytics-job-diagram-with-metrics.md

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210714"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595999"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer-utlösare för Azure Functions
 
@@ -365,6 +365,16 @@ Timer-utlösaren använder ett lagrings lås för att säkerställa att det bara
 ## <a name="retry-behavior"></a>Omprövnings beteende
 
 Till skillnad från kön utlöses inte timer-utlösaren igen när en funktion Miss lyckas. När en funktion Miss lyckas anropas den inte igen förrän nästa gång enligt schemat.
+
+## <a name="manually-invoke-a-timer-trigger"></a>Anropa en timer-utlösare manuellt
+
+Timer-utlösaren för Azure Functions tillhandahåller en HTTP-webhook som kan anropas för att utlösa funktionen manuellt. Detta kan vara mycket användbart i följande scenarier.
+
+* Integreringstestning
+* Plats växlingar som en del av en rök test-eller uppvärmnings-aktivitet
+* Inledande distribution av en funktion som omedelbart fyller i en cache eller en uppslags tabell i en databas
+
+Information om hur du anropar en timer-utlöst funktion manuellt finns i [köra en icke-http-utlöst funktion](./functions-manually-run-non-http.md) .
 
 ## <a name="troubleshooting"></a>Felsökning
 

@@ -71,10 +71,15 @@
       href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: 'OpenAPI-definition för serverlösa API:er'
       href: functions-openapi-definition.md
-    - name: Ansluta till ett virtuellt nätverk
-      href: functions-create-vnet.md
-    - name: Upprätta åtkomst till privat plats
-      href: functions-create-private-site-access.md
+    - name: Nätverk
+      items:
+        - name: Ansluta till ett virtuellt nätverk
+          href: functions-create-vnet.md
+          displayName: vnet
+        - name: Upprätta åtkomst till privat plats
+          href: functions-create-private-site-access.md
+        - name: Använd en utgående NAT-gateway
+          href: functions-how-to-use-nat-gateway.md
     - name: Ändra storlek på avbildning med Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Skapa en webbapp utan server
@@ -365,6 +370,8 @@
           href: set-runtime-version.md
         - name: Inaktivera en funktion
           href: disable-function.md
+        - name: Nätverk
+          href: configure-networking-how-to.md
         - name: Geohaveriberedskap
           href: functions-geo-disaster-recovery.md
     - name: Övervaka

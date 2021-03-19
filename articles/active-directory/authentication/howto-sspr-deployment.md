@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500520"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579203"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planera en Azure Active Directory distribution av lösen ords återställning via självbetjäning
 
@@ -155,14 +155,14 @@ Följande inställningar krävs för att aktivera SSPR tillsammans med rekommend
 | **Egenskaper för SSPR** | Återställning av lösen ord för självbetjäning har Aktiver ATS | **Vald** grupp för pilot/ **alla** för produktion |
 | **Autentiseringsmetoder** | Autentiseringsmetoder som krävs för registrering | Alltid 1 mer än vad som krävs för återställning |
 |   | Autentiseringsmetoder som krävs för att återställa | En eller två |
-| **Registrering** | Kräv att användare registrerar sig vid inloggning | Ja |
+| **Registrering** | Kräv att användare registrerar sig vid inloggning | Yes |
 |   | Antal dagar innan användare uppmanas att bekräfta sin autentiseringsinformation | 90 – 180 dagar |
-| **Aviseringar** | Meddela användare om lösenordsåterställning | Ja |
-|   | Meddela alla administratörer när andra administratörer återställer sina lösenord | Ja |
-| **Anpassning** | Anpassa supportavdelningen-länk | Ja |
+| **Aviseringar** | Meddela användare om lösenordsåterställning | Yes |
+|   | Meddela alla administratörer när andra administratörer återställer sina lösenord | Yes |
+| **Anpassning** | Anpassa supportavdelningen-länk | Yes |
 |   | E-post eller URL för anpassad helpdesk | Support webbplats eller e-postadress |
-| **Lokal integration** | Skriv tillbaka lösen ord till lokal AD | Ja |
-|   | Tillåt att användare låser upp kontot utan att återställa lösen ordet | Ja |
+| **Lokal integration** | Skriv tillbaka lösen ord till lokal AD | Yes |
+|   | Tillåt att användare låser upp kontot utan att återställa lösen ordet | Yes |
 
 ### <a name="sspr-properties"></a>Egenskaper för SSPR
 
@@ -255,7 +255,7 @@ Medan SSPR vanligt vis inte skapar användar problem är det viktigt att förber
 
 Om du vill göra det möjligt för support teamet att lyckas kan du skapa vanliga frågor och svar baserat på frågor som du får från användarna. Några exempel:
 
-| Scenarier| Beskrivning |
+| Scenarier| Description |
 | - | - |
 | Användaren har inga registrerade autentiseringsmetoder tillgängliga| En användare försöker återställa sitt lösen ord men har inte någon av de autentiseringsmetoder som de registrerade är tillgängliga (exempel: de lämnade sin mobil telefon hemma och har inte åtkomst till e-post) |
 | Användaren får inte någon text eller ett anrop på deras telefonnummer till kontoret eller mobil telefonen| En användare försöker verifiera sin identitet via text eller anrop, men får ingen text/ett anrop. |
@@ -322,7 +322,7 @@ Gransknings loggar för registrering och återställning av lösen ord är tillg
 
 ### <a name="authentication-methods--usage-and-insights"></a>Autentiseringsmetoder – användning och insikter
 
-Med [användning och insikter](./howto-authentication-methods-usage-insights.md) kan du förstå hur autentiseringsmetoder för funktioner som Azure AD MFA och SSPR arbetar i din organisation. Den här rapporterings funktionen ger din organisation möjlighet att förstå vilka metoder som registreras och hur de används.
+Med [användning och insikter](./howto-authentication-methods-activity.md) kan du förstå hur autentiseringsmetoder för funktioner som Azure AD MFA och SSPR arbetar i din organisation. Den här rapporterings funktionen ger din organisation möjlighet att förstå vilka metoder som registreras och hur de används.
 
 ### <a name="troubleshoot"></a>Felsöka
 

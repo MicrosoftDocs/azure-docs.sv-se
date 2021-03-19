@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487125"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600810"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
 
@@ -71,7 +71,7 @@ I Kognitiv sökning skapas full texts ökning på Apache Lucene-frågespråket. 
 
 När matchnings termer påträffas utgör frågespråket ett sökdokument som innehåller matchningen med hjälp av dokument nyckeln eller ID: t för att sätta samman fält värden, rangordna dokumenten efter relevans och returnerar de översta 50 (som standard) i svaret eller ett annat nummer om du har angett **`top`** .
 
-Om du implementerar fullständig texts ökning kan du förstå hur ditt innehåll är uppfyllt för att felsöka eventuella avvikelser i frågan. Frågor över avstavade strängar eller specialtecken kan krävas med hjälp av en annan analys än standard-Lucene för att säkerställa att indexet innehåller rätt tokens. Du kan åsidosätta standardvärdet med [språk analys](index-add-language-analyzers.md#language-analyzer-list) verktyg eller [särskilda analyser](index-add-custom-analyzers.md#AnalyzerTable) som ändrar lexikalisk analys. Ett exempel är ett [nyckelord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) som behandlar hela innehållet i ett fält som en enskild token. Detta är användbart för data som post nummer, ID: n och vissa produkt namn. Mer information finns i [partiell terms ökning och mönster med specialtecken](search-query-partial-matching.md).
+Om du implementerar fullständig texts ökning kan du förstå hur ditt innehåll är uppfyllt för att felsöka eventuella avvikelser i frågan. Frågor över avstavade strängar eller specialtecken kan krävas med hjälp av en annan analys än standard-Lucene för att säkerställa att indexet innehåller rätt tokens. Du kan åsidosätta standardvärdet med [språk analys](index-add-language-analyzers.md#language-analyzer-list) verktyg eller [särskilda analyser](index-add-custom-analyzers.md#built-in-analyzers) som ändrar lexikalisk analys. Ett exempel är ett [nyckelord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) som behandlar hela innehållet i ett fält som en enskild token. Detta är användbart för data som post nummer, ID: n och vissa produkt namn. Mer information finns i [partiell terms ökning och mönster med specialtecken](search-query-partial-matching.md).
 
 Om du förväntar dig kraftig användning av booleska operatorer, vilket är mer sannolik i index som innehåller stora textblock (ett innehålls fält eller långa beskrivningar), måste du testa frågor med **`searchMode=Any|All`** parametern för att utvärdera effekten av den här inställningen vid boolesk sökning.
 
@@ -85,7 +85,7 @@ Filter används ofta i appar som innehåller Kognitiv sökning. På program sido
 
 Du kan också behöva filter för att anropa ett specialiserat fråge formulär, enligt beskrivningen i följande tabell. Du kan använda ett filter med en ospecificerad sökning ( **`search=*`** ) eller med en frågesträng som innehåller termer, fraser, operatorer och mönster.
 
-| Filter scenario | Beskrivning |
+| Filter scenario | Description |
 |-----------------|-------------|
 | Intervall filter | I Azure Kognitiv sökning skapas intervall frågor med hjälp av filter parametern. Mer information och exempel finns i [exempel på Range filter](search-query-simple-examples.md#example-5-range-filters). |
 | Sökning på Geo-platser | Om ett sökbart fält är av [typen EDM. GeographyPoint](/rest/api/searchservice/supported-data-types)kan du skapa ett filter uttryck för "hitta nära mig" eller mappnings-baserade Sök kontroller. Fält som driver geo-search innehåller koordinater. Mer information och ett exempel finns i [exempel på Geo-sökning](search-query-simple-examples.md#example-6-geo-search). |

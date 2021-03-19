@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a8dfb3cacf798559273361ec75cab4570a8a5228
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302602"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582688"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Konventioner för IoT Plug and Play
 
@@ -25,7 +25,7 @@ Du beskriver telemetri, egenskaper och kommandon som en IoT Plug and Play-enhet 
 - **Ingen komponent** -en modell utan komponenter. Modellen förklarar telemetri, egenskaper och kommandon som egenskaper på den högsta nivån i avsnittet innehåll i huvud gränssnittet. I Azure IoT Explorer-verktyget visas den här modellen som en enda _standard komponent_.
 - **Flera komponenter** – en modell som består av två eller flera gränssnitt. Ett huvud gränssnitt som visas som _standard komponent_, med telemetri, egenskaper och kommandon. Ett eller flera gränssnitt som har deklarerats som komponenter med ytterligare telemetri, egenskaper och kommandon.
 
-Mer information finns i [IoT plug and Play-komponenter i modeller](concepts-components.md).
+Mer information finns i [IoT plug and Play Modeling guide](concepts-modeling-guide.md).
 
 ## <a name="identify-the-model"></a>Identifiera modellen
 
@@ -136,7 +136,7 @@ Enheten eller modulen bör bekräfta att den har fått egenskapen genom att skic
 
 När en enhet startar bör den begära enheten, och kontrol lera eventuella uppdateringar av skrivbara egenskaper. Om versionen av en skrivbar egenskap ökar medan enheten var offline, ska enheten skicka ett svar som har rapporter ATS för att bekräfta att uppdateringen har tagits emot.
 
-När en enhet startar för första gången kan den skicka ett start värde för en rapporterad egenskap om den inte får en inledande önskad egenskap från hubben. I det här fallet ska enheten anges `av` till `1` . Ett exempel:
+När en enhet startar för första gången kan den skicka ett start värde för en rapporterad egenskap om den inte får en inledande önskad egenskap från hubben. I det här fallet ska enheten anges `av` till `1` . Exempel:
 
 ```json
 "reported": {
@@ -350,7 +350,7 @@ På en enhet eller modul använder flera komponent gränssnitt kommando namn med
 
 Nu när du har lärt dig om IoT Plug and Play-konventioner finns här några ytterligare resurser:
 
-- [Digitalt flätat definitions språk (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C (enhets-SDK)](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT-REST API](/rest/api/iothub/device)
-- [Modell komponenter](./concepts-components.md)
+- [IoT Plug and Play modellerings guide](concepts-modeling-guide.md)

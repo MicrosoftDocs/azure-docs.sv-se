@@ -6,13 +6,13 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
-ms.date: 03/11/2021
-ms.openlocfilehash: 461c998aa85d70d69cb267fdbeabd7eabcfb5854
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.date: 03/17/2021
+ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471547"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598192"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Övervaknings Media Services data referens
 
@@ -31,7 +31,7 @@ Media Services stöder övervaknings mått för följande resurser:
 
 Du kan övervaka följande konto mått.
 
-|Måttnamn|Visningsnamn|Beskrivning|
+|Måttnamn|Visningsnamn|Description|
 |---|---|---|
 |AssetCount|Antal till gångar|Till gångar i ditt konto.|
 |AssetQuota|Till gångs kvot|Till gångs kvot i ditt konto.|
@@ -49,7 +49,7 @@ Du bör också granska [konto kvoter och begränsningar](../limits-quotas-constr
 
 Följande Media Services [slut punkter för direkt uppspelnings](/rest/api/media/streamingendpoints) mått stöds:
 
-|Måttnamn|Visningsnamn|Beskrivning|
+|Måttnamn|Visningsnamn|Description|
 |---|---|---|
 |Begäranden|Begäranden|Visar det totala antalet HTTP-begäranden som hanteras av slut punkten för direkt uppspelning.|
 |Utgående|Utgående|Utgående byte totalt per minut per slut punkt för direkt uppspelning.|
@@ -75,7 +75,7 @@ Media Services stöder följande diagnostikloggar:
 
 ### <a name="key-delivery"></a>Nyckel leverans
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |Begäran om nyckel leverans tjänst|Loggar som visar information om viktiga leverans tjänst begär Anden. Mer information finns i [scheman](monitor-media-services-data-reference.md).|
 
@@ -87,7 +87,7 @@ Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar 
 
 De här egenskaperna är speciella för logg schema för nyckel leverans.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |keyId|ID för den begärda nyckeln.|
 |keyType|Kan vara något av följande värden: "Clear" (ingen kryptering), "FairPlay", "PlayReady" eller "Widevine".|

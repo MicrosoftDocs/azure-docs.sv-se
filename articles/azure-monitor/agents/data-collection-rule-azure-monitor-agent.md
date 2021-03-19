@@ -4,13 +4,13 @@ description: Beskriver hur du skapar en data insamlings regel för att samla in 
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723647"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586377"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurera data insamling för Azure Monitor agenten (för hands version)
 
@@ -68,6 +68,32 @@ Klicka på **Lägg till data källa** och **granska sedan + skapa** för att gra
 > [!NOTE]
 > När data insamlings regeln och associationerna har skapats kan det ta upp till 5 minuter innan data skickas till målen.
 
+## <a name="limit-data-collection-with-custom-xpath-queries"></a>Begränsa data insamling med anpassade XPath-frågor
+Eftersom du debiteras för data som samlas in i en Log Analytics arbets yta bör du endast samla in de data som du behöver. Med hjälp av grundläggande konfiguration i Azure Portal har du bara begränsad möjlighet att filtrera händelser som ska samlas in. För program-och system loggar är detta alla loggar med en viss allvarlighets grad. För säkerhets loggar är detta alla lyckade eller misslyckade gransknings loggar.
+
+Om du vill ange ytterligare filter måste du använda Anpassad konfiguration och ange en XPath som filtrerar bort händelser som du inte vill. XPath-poster skrivs i formuläret `LogName!XPathQuery` . Du kanske till exempel bara vill returnera händelser från program händelse loggen med händelse-ID 1035. XPathQuery för dessa händelser är `*[System[EventID=1035]]` . Eftersom du vill hämta händelserna från program händelse loggen skulle XPath vara `Application!*[System[EventID=1035]]`
+
+> [!TIP]
+> Använd PowerShell-cmdleten `Get-WinEvent` med `FilterXPath` parametern för att testa giltigheten för en XPathQuery. Följande skript visar ett exempel.
+> 
+> ```powershell
+> $XPath = '*[System[EventID=1035]]'
+> Get-WinEvent -LogName 'Application' -FilterXPath $XPath
+> ```
+>
+> - Om händelser returneras är frågan giltig.
+> - Om du får meddelandet det *gick inte att hitta några händelser som matchar de angivna urvalskriterierna.* frågan kan vara giltig, men det finns inga matchande händelser på den lokala datorn.
+> - Om du får meddelandet *den angivna frågan är ogiltig* är frågesyntaxen ogiltig. 
+
+I följande tabell visas exempel för att filtrera händelser med hjälp av en anpassad XPath.
+
+| Description |  XPath |
+|:---|:---|
+| Samla endast in system händelser med händelse-ID = 4648 |  `System!*[System[EventID=4648]]`
+| Samla endast in system händelser med händelse-ID = 4648 och process namnet consent.exe |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Samla in alla kritiska händelser, fel, varnings-och informations händelser från system händelse loggen utom händelse-ID = 6 (driv rutin inläst) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
+| Samla in alla lyckade och misslyckade säkerhets händelser förutom händelse-ID 4624 (lyckad inloggning) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
+
 
 ## <a name="create-rule-and-association-using-rest-api"></a>Skapa regel och Association med REST API
 
@@ -83,6 +109,8 @@ Följ stegen nedan för att skapa en data insamlings regel och associationer med
 ## <a name="create-association-using-resource-manager-template"></a>Skapa Association med Resource Manager-mall
 
 Du kan inte skapa en data insamlings regel med hjälp av en Resource Manager-mall, men du kan skapa en koppling mellan en virtuell Azure-dator eller Azure Arc-aktiverad server med hjälp av en Resource Manager-mall. Se exempel [på Resource Manager-mallar för data insamlings regler i Azure Monitor](./resource-manager-data-collection-rules.md) för exempel-mallar.
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

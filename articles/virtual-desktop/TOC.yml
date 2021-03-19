@@ -242,3 +242,5 @@
       href: 'https://aka.ms/wvdroadmap'
     - name: Azure Resource Manager-mallar
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
+    - name: Efterlevnadserbjudanden i Azure
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'

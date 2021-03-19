@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644790"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589530"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory sömlös enkel inloggning: snabb start
 
@@ -41,6 +41,9 @@ Se till att följande krav är uppfyllda:
 
     >[!NOTE]
     >Azure AD Connect-versionerna 1.1.557.0, 1.1.558.0, 1.1.561.0 och 1.1.614.0 har ett problem som rör hash-synkronisering av lösen ord. Om du _inte_ tänker använda Lösenordssynkronisering i samband med direktautentisering kan du läsa mer i [Azure AD Connect viktig information](./reference-connect-version-history.md) .
+    
+    >[!NOTE]
+    >Om du har en utgående HTTP-proxy kontrollerar du att URL: en, autologon.microsoftazuread-sso.com, är vit listas. Du bör ange den här URL: en explicit eftersom jokertecken kanske inte accepteras. 
 
 * **Använd en Azure AD Connect topologi som stöds**: kontrol lera att du använder en av Azure AD Connects topologier som stöds beskrivs [här](plan-connect-topologies.md).
 
