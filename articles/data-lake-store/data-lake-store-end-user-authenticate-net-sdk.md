@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 67ba4f12aec9e987d79109b7197d03301bf40650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89004790"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Autentisering med slutanvändare med Azure Data Lake Storage Gen1 med .NET SDK
@@ -19,7 +19,7 @@ ms.locfileid: "89004790"
 > * [Använda Java](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Använda .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Använda Python](data-lake-store-end-user-authenticate-python.md)
-> * [Använda REST API](data-lake-store-end-user-authenticate-rest-api.md)
+> * [Använda REST-API](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
@@ -33,9 +33,9 @@ I den här artikeln får du lära dig hur du använder .NET SDK för att utföra
 * **Skapa ett Azure Active Directory "internt"-program**. Du måste ha slutfört stegen i [slut användar autentisering med data Lake Storage gen1 med hjälp av Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Skapa ett .NET-program
-1. I Visual Studio väljer du **Arkiv** -menyn, **nytt**och sedan **projekt**.
+1. I Visual Studio väljer du **Arkiv** -menyn, **nytt** och sedan **projekt**.
 2. Välj **konsol program (.NET Framework)** och välj sedan **Nästa**.
-3. I **projekt namn**anger du `CreateADLApplication` och väljer sedan **skapa**.
+3. I **projekt namn** anger du `CreateADLApplication` och väljer sedan **skapa**.
 
 4. Lägg till NuGet-paketen i projektet.
 
@@ -49,7 +49,7 @@ I den här artikeln får du lära dig hur du använder .NET SDK för att utföra
         ![Lägg till en NuGet-källa](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Skapa ett nytt Azure Data Lake konto")
    4. Stäng **NuGet Package Manager**.
 
-5. Öppna **program.cs**
+5. Öppna **program. cs**
 6. Ersätt using using-uttryck med följande rader:
 
     ```csharp

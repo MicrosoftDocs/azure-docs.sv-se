@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/13/2019
-ms.openlocfilehash: 8c0fe30961e8ca0f31374bfdb5c5f17d58cb7673
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 82f5d4f4c3f12b6e14e260fa004bb031247e1096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385803"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597512"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopiera data till ett Azure Kognitiv sökning-index med Azure Data Factory
 
@@ -40,10 +40,10 @@ Följande egenskaper stöds för den länkade tjänsten Azure Kognitiv sökning:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till: **AzureSearch** | Ja |
-| url | URL för Sök tjänsten. | Ja |
-| key | Administratörs nyckel för Sök tjänsten. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |Inga |
+| typ | Egenskapen Type måste anges till: **AzureSearch** | Yes |
+| url | URL för Sök tjänsten. | Yes |
+| key | Administratörs nyckel för Sök tjänsten. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |No |
 
 > [!IMPORTANT]
 > När du kopierar data från ett moln data lager till sökindexet i Azure Kognitiv sökning länkade tjänsten måste du referera till en Azure Integration Runtime med en explicit region i connactVia. Ange regionen som den plats där Sök tjänsten finns. Läs mer från [Azure integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -78,8 +78,8 @@ Följande egenskaper stöds för att kopiera data till Azure Kognitiv sökning:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till: **AzureSearchIndex** | Ja |
-| indexName | Sök Indexets namn. Data Factory skapar inte indexet. Indexet måste finnas i Azure Kognitiv sökning. | Ja |
+| typ | Data uppsättningens typ-egenskap måste anges till: **AzureSearchIndex** | Yes |
+| indexName | Sök Indexets namn. Data Factory skapar inte indexet. Indexet måste finnas i Azure Kognitiv sökning. | Yes |
 
 **Exempel:**
 
@@ -110,9 +110,10 @@ Om du vill kopiera data till Azure Kognitiv sökning anger du käll typen i kopi
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **AzureSearchIndexSink** | Ja |
-| writeBehavior | Anger om du vill sammanfoga eller ersätta när ett dokument redan finns i indexet. Se [egenskapen WriteBehavior](#writebehavior-property).<br/><br/>Tillåtna värden är: **sammanfoga** (standard) och **Ladda upp**. | Inga |
-| writeBatchSize | Överför data till Sök indexet när buffertstorleken når writeBatchSize. Mer information finns i [WriteBatchSize-egenskapen](#writebatchsize-property) .<br/><br/>Tillåtna värden är: heltal 1 till 1 000; Standardvärdet är 1000. | Inga |
+| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **AzureSearchIndexSink** | Yes |
+| writeBehavior | Anger om du vill sammanfoga eller ersätta när ett dokument redan finns i indexet. Se [egenskapen WriteBehavior](#writebehavior-property).<br/><br/>Tillåtna värden är: **sammanfoga** (standard) och **Ladda upp**. | No |
+| writeBatchSize | Överför data till Sök indexet när buffertstorleken når writeBatchSize. Mer information finns i [WriteBatchSize-egenskapen](#writebatchsize-property) .<br/><br/>Tillåtna värden är: heltal 1 till 1 000; Standardvärdet är 1000. | No |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No |
 
 ### <a name="writebehavior-property"></a>WriteBehavior-egenskap
 

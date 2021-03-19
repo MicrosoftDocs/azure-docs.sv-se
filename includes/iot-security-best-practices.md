@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72793135"
 ---
 Att skydda en Sakernas Internet (IoT)-infrastruktur kräver en omfattande säkerhets djupgående strategi. Den här strategin kräver att du skyddar data i molnet, skyddar data integriteten vid överföring via det offentliga Internet och etablerar enheter på ett säkert sätt. Varje lager skapar större säkerhets garantier i den övergripande infrastrukturen.
@@ -59,7 +59,7 @@ Följande är metod tips för IoT Solution-distributioner:
 
 * **Distribuera maskin vara på ett säkert sätt**: IoT-distributioner kan kräva att maskin vara distribueras på osäkra platser, till exempel i offentliga utrymmen eller i ej övervakade språk. I sådana fall kontrollerar du att maskin varu distributionen är Manipulerings medveten om den maximala omfattningen. Om USB-enheter eller andra portar är tillgängliga på maskin varan, se till att de skyddas på ett säkert sätt. Många angrepps vektorer kan använda dessa som start punkter.
 
-* **Se**till att nycklarna är säkra: under distributionen kräver varje enhet enhets-ID: n och associerade autentiseringsinställningar som genereras av moln tjänsten. Behåll dessa nycklar fysiskt säkra även efter distributionen. Eventuella komprometterade nycklar kan användas av en skadlig enhet för att maskeras som en befintlig enhet.
+* **Se** till att nycklarna är säkra: under distributionen kräver varje enhet enhets-ID: n och associerade autentiseringsinställningar som genereras av moln tjänsten. Behåll dessa nycklar fysiskt säkra även efter distributionen. Eventuella komprometterade nycklar kan användas av en skadlig enhet för att maskeras som en befintlig enhet.
 
 ## <a name="iot-solution-operator"></a>IoT Solution-operator
 

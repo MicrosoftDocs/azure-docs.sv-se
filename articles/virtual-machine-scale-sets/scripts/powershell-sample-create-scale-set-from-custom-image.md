@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh, devx-track-azurepowershell
 ms.openlocfilehash: 34a786c133d38e40cfa614ddceed53a6cf52b617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078936"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Skapa en VM-skalningsuppsättning från en anpassad virtuell datoravbildning med PowerShell
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 ## <a name="script-explanation"></a>Förklaring av skript
 Det här skriptet använder följande kommandon för att skapa distributionen. Varje post i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzVmss](/powershell/module/az.compute/new-azvmss) | Skapar VM-skalningsuppsättningen och alla stödresurser, inklusive virtuellt nätverk, lastbalansering och NAT-regler. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Tar bort en resursgrupp och alla resurser som ingår i gruppen. |

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712453"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Exempel på dataåtgärdskod för Azure Logic Apps
@@ -93,7 +93,7 @@ För att testa [ **Skriv** åtgärds exemplet](../logic-apps/logic-apps-perform-
 
 ## <a name="create-csv-table"></a>Skapa CSV-tabell
 
-Om du vill prova [Åtgärds exemplet **Skapa CSV-tabell** ](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)kan du använda följande definitions definitioner:
+Om du vill prova [Åtgärds exemplet **Skapa CSV-tabell**](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)kan du använda följande definitions definitioner:
 
 ```json
 "actions": {
@@ -138,7 +138,7 @@ Om du vill prova [Åtgärds exemplet **Skapa CSV-tabell** ](../logic-apps/logic-
 
 ## <a name="create-html-table"></a>Skapa HTML-tabell
 
-För att testa [Åtgärds exemplet **skapa HTML-tabell** ](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), är det här de åtgärds definitioner som du kan använda:
+För att testa [Åtgärds exemplet **skapa HTML-tabell**](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), är det här de åtgärds definitioner som du kan använda:
 
 ```json
 "actions": {

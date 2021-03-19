@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743770"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Konfigurera säkerhets aviseringar för Azures resurs roller i Privileged Identity Management
@@ -38,9 +38,9 @@ Välj en avisering om du vill visa en rapport som visar de användare eller roll
 
 | Varning | Allvarlighetsgrad | Utlösare | Rekommendation |
 | --- | --- | --- | --- |
-| **För många ägare har tilldelats till en resurs** |Medium |För många användare har ägar rollen. |Granska användarna i listan och tilldela om några till mindre privilegierade roller. |
-| **För många permanenta ägare har tilldelats till en resurs** |Medium |För många användare tilldelas permanent till en roll. |Granska användarna i listan och tilldela om några för att kräva aktivering för roll användning. |
-| **En duplicerad roll har skapats** |Medium |Flera roller har samma villkor. |Använd endast en av dessa roller. |
+| **För många ägare har tilldelats till en resurs** |Medel |För många användare har ägar rollen. |Granska användarna i listan och tilldela om några till mindre privilegierade roller. |
+| **För många permanenta ägare har tilldelats till en resurs** |Medel |För många användare tilldelas permanent till en roll. |Granska användarna i listan och tilldela om några för att kräva aktivering för roll användning. |
+| **En duplicerad roll har skapats** |Medel |Flera roller har samma villkor. |Använd endast en av dessa roller. |
 
 ### <a name="severity"></a>Allvarlighetsgrad
 
@@ -50,7 +50,7 @@ Välj en avisering om du vill visa en rapport som visar de användare eller roll
 
 ## <a name="configure-security-alert-settings"></a>Konfigurera säkerhets aviserings inställningar
 
-Gå till **Inställningar**på sidan aviseringar.
+Gå till **Inställningar** på sidan aviseringar.
 
 ![Sidan aviseringar med markerade inställningar](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 

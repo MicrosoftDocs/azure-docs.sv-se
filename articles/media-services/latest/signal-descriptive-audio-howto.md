@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5174cb584f2e8df236725f7427b423fda1a02c88
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630868"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596730"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signals beskrivande ljud spår
 
@@ -80,7 +80,7 @@ Jobbet tar en stund att slutföra och du meddelas när detta sker. Vi rekommende
 
 Jobbet går vanligt vis igenom följande tillstånd: **schemalagda**, **köade**, **bearbetar**, **slutförda** (slutligt tillstånd). Om jobbet har påträffat ett fel visas tillståndet **Fel**. Om jobbet avbryts visas **Avbryter** och **Avbruten** när det är klart.
 
-Mer information finns i [hantera Event Grid händelser](reacting-to-media-services-events.md).
+Mer information finns i [hantera Event Grid händelser](monitoring/reacting-to-media-services-events.md).
 
 ## <a name="upload-the-audio-only-mp4-file"></a>Ladda upp en MP4-fil med enbart ljud
 

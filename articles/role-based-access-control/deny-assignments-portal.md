@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84790254"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Visa en lista över Azure Deny-tilldelningar med hjälp av Azure Portal
@@ -28,7 +28,7 @@ ms.locfileid: "84790254"
 > [!NOTE]
 > Du kan inte skapa egna neka-tilldelningar direkt. För information om hur neka-tilldelningar skapas, se [Azure Deny-tilldelningar](deny-assignments.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att få information om en neka-tilldelning måste du ha:
 
@@ -42,7 +42,7 @@ Följ dessa steg om du vill visa en lista över neka tilldelningar i prenumerati
 
 1. Klicka på den hanterings grupp eller prenumeration som du vill visa.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på fliken **neka tilldelningar** (eller klicka på knappen **Visa** på panelen Visa neka-tilldelningar).
 
@@ -50,7 +50,7 @@ Följ dessa steg om du vill visa en lista över neka tilldelningar i prenumerati
 
     ![Åtkomst kontroll – fliken neka tilldelningar](./media/deny-assignments-portal/access-control-deny-assignments.png)
 
-1. Klicka på **Redigera kolumner**om du vill visa fler kolumner.
+1. Klicka på **Redigera kolumner** om du vill visa fler kolumner.
 
     ![Neka tilldelningar – kolumner](./media/deny-assignments-portal/deny-assignments-columns.png)
 
@@ -101,7 +101,7 @@ Följ dessa steg om du vill visa mer information om en neka-tilldelning.
 
     - Alla lagrings åtgärder på data planet nekas, förutom för beräknings åtgärder.
 
-1. Klicka på **Egenskaper**för att se egenskaperna för en neka-tilldelning.
+1. Klicka på **Egenskaper** för att se egenskaperna för en neka-tilldelning.
 
     ![Neka tilldelning – egenskaper](./media/deny-assignments-portal/deny-assignment-properties.png)
 

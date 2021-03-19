@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 2a075c5c99f457681cd49e75014487bf9cca263c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87099928"
 ---
 # <a name="createuidefinition-collection-functions"></a>Funktioner för CreateUiDefinition-samling
 
 Dessa funktioner kan användas med samlingar, t. ex. JSON-strängar, matriser och objekt.
 
-## <a name="contains"></a>contains
+## <a name="contains"></a>innehåller
 
 Returnerar `true` om en sträng innehåller den angivna under strängen, om en matris innehåller det angivna värdet, eller om ett objekt innehåller den angivna nyckeln.
 

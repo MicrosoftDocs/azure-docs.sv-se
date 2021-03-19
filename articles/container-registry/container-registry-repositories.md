@@ -4,17 +4,17 @@ description: Använd Azure Portal för att Visa Azure Container Registry-databas
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74456291"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Visa behållare register Arkiv i Azure Portal
 
 Med Azure Container Registry kan du lagra Docker-behållar avbildningar i-databaser. Genom att lagra avbildningar i lagrings utrymmen kan du lagra grupper med bilder (eller versioner av avbildningar) i isolerade miljöer. Du kan ange dessa databaser när du push-överför avbildningar till registret och visa innehållet i Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **Behållar register**: skapa ett behållar register i din Azure-prenumeration. Använd till exempel [Azure Portal](container-registry-get-started-portal.md) eller [Azure CLI](container-registry-get-started-azure-cli.md).
 * **Docker CLI**: installera [Docker][docker-install] på den lokala datorn, som ger dig kommando rads gränssnittet Docker.

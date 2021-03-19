@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936970"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Spara jobb-och uppgifts data till Azure Storage med bibliotek för batch-fil konventioner för .NET
@@ -47,7 +47,7 @@ Om du utvecklar med ett annat språk än .NET kan du implementera filen Conventi
 Om du vill spara utdata för att Azure Storage med hjälp av biblioteket fil konventioner måste du först länka ett Azure Storage-konto till batch-kontot. Om du inte redan har gjort det kan du länka ett lagrings konto till ditt batch-konto med hjälp av [Azure Portal](https://portal.azure.com):
 
 1. Navigera till ditt Batch-konto i Azure Portal.
-1. Under **Inställningar**väljer du **lagrings konto**.
+1. Under **Inställningar** väljer du **lagrings konto**.
 1. Om du inte redan har ett lagrings konto som är kopplat till ditt batch-konto klickar du på **lagrings konto (ingen)**.
 1. Välj ett lagrings konto i listan för din prenumeration. För bästa prestanda bör du använda ett Azure Storage konto som finns i samma region som batch-kontot där dina aktiviteter körs.
 
@@ -104,7 +104,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 Med dessa typer av utdata kan du ange vilken typ av utdata som ska visas när du kör en fråga i batch för de sparade utdata för en specifik aktivitet. Med andra ord kan du filtrera listan på en av utdatatyperna när du listar utdata för en aktivitet. Till exempel "ge mig för *hands* utdata för uppgift *109*". Mer information om att visa och hämta utdata visas i Hämta utdata senare i artikeln.
 
 > [!TIP]
-> Utmatnings typen avgör också var i Azure Portal en viss fil visas: *TaskOutput*-kategoriserade filer visas under **Uppgiftsutdata**och *TaskLog* -filer visas under **aktivitets loggar**.
+> Utmatnings typen avgör också var i Azure Portal en viss fil visas: *TaskOutput*-kategoriserade filer visas under **Uppgiftsutdata** och *TaskLog* -filer visas under **aktivitets loggar**.
 
 ### <a name="store-job-outputs"></a>Lagra utdata från jobb
 
@@ -156,7 +156,7 @@ Avsnittet kommenterad `Code to process data and produce output file(s)` är en p
 Node agent är ett program som körs på varje nod i poolen och tillhandahåller kommando-och-Control-gränssnittet mellan noden och batch-tjänsten. `Task.Delay`Anropet krävs i slutet av det här `using` blocket för att säkerställa att Node-agenten har tid att rensa innehållet i standard ut till stdout.txt-filen på noden. Utan denna fördröjning är det möjligt att förlora de senaste sekunderna utdata. Den här fördröjningen kanske inte krävs för alla filer.
 
 > [!NOTE]
-> När du aktiverar fil spårning med **SaveTrackedAsync**sparas bara *tillägg* till den spårade filen Azure Storage. Använd endast den här metoden för att spåra icke-roterande loggfiler eller andra filer som skrivs till med åtgärderna Lägg till i slutet av filen.
+> När du aktiverar fil spårning med **SaveTrackedAsync** sparas bara *tillägg* till den spårade filen Azure Storage. Använd endast den här metoden för att spåra icke-roterande loggfiler eller andra filer som skrivs till med åtgärderna Lägg till i slutet av filen.
 
 ## <a name="retrieve-output-data"></a>Hämta utdata
 

@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614357"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Använd Visual Studio för att skapa och publicera .net Core-program som riktar sig mot ett fjärran slutet Linux Service Fabric-kluster
@@ -54,7 +54,7 @@ Med Visual Studio-verktyg kan du utveckla och publicera Service Fabric .net Core
     </EntryPoint>
 ```
 6. I Solution Explorer högerklickar du på programmet och väljer **publicera**. Dialogrutan **Publish** (Publicera) visas.
-7. I **anslutnings slut punkt**väljer du slut punkten för det fjärran Service Fabric Linux-kluster som du vill använda som mål.
+7. I **anslutnings slut punkt** väljer du slut punkten för det fjärran Service Fabric Linux-kluster som du vill använda som mål.
 ![Publicera – program]
 
 <!--Image references-->

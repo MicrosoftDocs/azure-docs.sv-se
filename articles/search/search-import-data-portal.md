@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935219"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Guiden Importera data för Azure Kognitiv sökning
@@ -105,7 +105,7 @@ Guiden genererar ett ofullständigt index som kommer att fyllas i med dokument s
 
 1. Är data typen lämplig för inkommande data? Azure Kognitiv sökning stöder [data typerna Entity Data Model (EDM)](/rest/api/searchservice/supported-data-types). För Azure SQL data finns [mappnings diagram](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) som innehåller motsvarande värden. Mer bakgrunds information finns i [fält mappningar och transformeringar](search-indexer-field-mappings.md).
 
-1. Har du ett fält som kan användas som *nyckel*? Det här fältet måste vara en EDM. String och måste identifiera ett dokument unikt. För Relations data kan den mappas till en primär nyckel. För blobbar kan det vara `metadata-storage-path` . Om fältvärdena innehåller blank steg eller tank streck, måste du ange alternativet **bas-64-kodning** i steget **skapa ett indexerare** , under **Avancerade alternativ**för att utelämna verifierings kontrollen för dessa tecken.
+1. Har du ett fält som kan användas som *nyckel*? Det här fältet måste vara en EDM. String och måste identifiera ett dokument unikt. För Relations data kan den mappas till en primär nyckel. För blobbar kan det vara `metadata-storage-path` . Om fältvärdena innehåller blank steg eller tank streck, måste du ange alternativet **bas-64-kodning** i steget **skapa ett indexerare** , under **Avancerade alternativ** för att utelämna verifierings kontrollen för dessa tecken.
 
 1. Ange attribut för att avgöra hur fältet används i ett index. 
 
@@ -121,7 +121,7 @@ Guiden genererar ett ofullständigt index som kommer att fyllas i med dokument s
 
    + **Sorterbar** gör att fältet kan användas i en sortering. Alla fält som används i ett **$OrderBy** -uttryck måste ha det här attributet.
 
-1. Behöver du en [lexikalisk analys](search-lucene-query-architecture.md#stage-2-lexical-analysis)? För EDM. **String-fält**som är sökbara kan du ange en **analys** om du vill använda språkförbättrad indexering och frågor. 
+1. Behöver du en [lexikalisk analys](search-lucene-query-architecture.md#stage-2-lexical-analysis)? För EDM. **String-fält** som är sökbara kan du ange en **analys** om du vill använda språkförbättrad indexering och frågor. 
 
    Standardvärdet är standard *Lucene* men du kan välja *Microsoft English* om du vill använda Microsofts analys för avancerad lexikal bearbetning, till exempel att lösa oregelbundna Substantiv-och verb-formulär. Det går bara att ange språk analys verktyg i portalen. Att använda en anpassad analys eller en icke-språks analys som nyckelord, mönster och så vidare, måste utföras program mässigt. Mer information om analys verktyg finns i [lägga till språk analys](search-language-support.md)verktyg.
 

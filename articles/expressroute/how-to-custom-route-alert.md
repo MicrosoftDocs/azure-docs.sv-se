@@ -1,22 +1,22 @@
 ---
 title: 'ExpressRoute: Konfigurera anpassade aviseringar för annonserade vägar'
-description: Den här artikeln visar hur du använder Azure Automation och Logic Apps för att övervaka antalet vägar som annonseras från ExpressRoute-gatewayen till lokala nätverk för att förhindra att gränsen på 200-vägar påträffas.
+description: Den här artikeln visar hur du använder Azure Automation och Logic Apps för att övervaka antalet vägar som annonseras från ExpressRoute-gatewayen till lokala nätverk för att förhindra att gränsen på 1000-vägar påträffas.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504409"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654398"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurera anpassade aviseringar för att övervaka annonserade vägar
 
-Den här artikeln hjälper dig att använda Azure Automation och Logic Apps för att ständigt övervaka antalet vägar som annonseras från ExpressRoute-gatewayen till lokala nätverk. Övervakning kan hjälpa till att förhindra att [gränsen på 200-vägar](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering)påträffas.
+Den här artikeln hjälper dig att använda Azure Automation och Logic Apps för att ständigt övervaka antalet vägar som annonseras från ExpressRoute-gatewayen till lokala nätverk. Övervakning kan hindra att du når gränsen för 1000-vägar] (ExpressRoute-FAQ. MD # how-många-prefix-kan-annonseras-från-en-VNet-till-lokalt-on-ExpressRoute-Private-peering).
 
 Med **Azure Automation** kan du automatisera körningen av anpassat PowerShell-skript som lagras i en *Runbook*. När du använder konfigurationen i den här artikeln innehåller runbooken ett PowerShell-skript som frågar en eller flera ExpressRoute-gatewayer. Den samlar in en data uppsättning som innehåller resurs gruppen, ExpressRoute Gateway-namn och antalet nätverks prefix som annonseras lokalt.
 
@@ -48,7 +48,7 @@ Kontrollera att du har uppfyllt följande villkor innan du påbörjar konfigurat
 
 * Den anpassade aviseringen som beskrivs i den här artikeln är ett tillägg för att uppnå bättre drift och kontroll. Det är inte en ersättning för de interna aviseringarna i ExpressRoute.
 * Data insamling för ExpressRoute-gatewayer körs i bakgrunden. Körningen kan vara längre än förväntat. För att undvika jobb köer måste upprepningen av arbets flödet konfigureras korrekt.
-* Distributioner av skript eller ARM-mallar kan inträffa snabbare än den anpassade Alarm utlösaren. Detta kan leda till ökande antal nätverksprefix i ExpressRoute-Gateway över gränsen på 200 vägar.
+* Distributioner av skript eller ARM-mallar kan inträffa snabbare än den anpassade Alarm utlösaren. Detta kan leda till ökande antal nätverksprefix i ExpressRoute-Gateway över gränsen på 1000 vägar.
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Skapa och konfigurera konton
 
@@ -409,7 +409,7 @@ När JSON parsas lagrar åtgärden **parsa JSON-data åtgärder** innehållet i 
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. Logik villkoret är sant när en av två dynamiska variabler, numRoute1 eller numRoute2, är större än tröskelvärdet. I det här exemplet är tröskelvärdet fast till 160 (80% av Max värdet för 200-vägar). Du kan ändra tröskelvärdet så att det passar dina behov. För konsekvens bör värdet vara samma värde som används i PowerShell-skriptet för Runbook.
+9. Logik villkoret är sant när en av två dynamiska variabler, numRoute1 eller numRoute2, är större än tröskelvärdet. I det här exemplet är tröskelvärdet fast till 800 (80% av Max värdet för 1000-vägar). Du kan ändra tröskelvärdet så att det passar dina behov. För konsekvens bör värdet vara samma värde som används i PowerShell-skriptet för Runbook.
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Logik villkor":::
 

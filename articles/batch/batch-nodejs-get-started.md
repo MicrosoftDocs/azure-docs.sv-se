@@ -3,18 +3,18 @@ title: Använd Azure Batch klient bibliotek för Node.js
 description: Lär dig de grundläggande principerna för Azure Batch och skapa en enkel lösning med Node.js.
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a2d86582c94804a20a3a9e952bc64d60414e25a5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737294"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656030"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Kom igång med Batch SDK för Node.js
 
 Lär dig grunderna i att bygga en Batch-klient i Node.js med [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch). Vi går igenom ett scenario med ett batch-program, steg för steg, och utför sedan en konfigurering med en Node.js-klient.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du har kunskaper om Node.js och att du är bekant med Linux. Den förutsätter också att du har ett Azure-konto med behörighet att skapa batch- och lagringstjänster.
 
@@ -32,9 +32,9 @@ Följande diagram visar hur vi kan skala Python-skriptet med Azure Batch och en 
 
 Node.js-klienten distribuerar ett batch-jobb med en förberedande aktivitet (beskrivs i detalj senare) och en uppsättning aktiviteter beroende på antalet containrar i lagringskontot. Du kan ladda ned skripten från GitHub-lagringsplatsen.
 
-- [Node.js-klient](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-- [Förberedande aktivitet – kommandoskript](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-- [Processor för konvertering från CSV-format (Python) till JSON-format](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js-klient](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/sample.js)
+- [Förberedande aktivitet – kommandoskript](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/startup_prereq.sh)
+- [Processor för konvertering från CSV-format (Python) till JSON-format](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/processcsv.py)
 
 > [!TIP]
 > Node.js-klienten i den angivna länken innehåller ingen kod som kan distribueras som en Azure-funktionsapp. Se följande länkar för att få anvisningar om hur du skapar en sådan.

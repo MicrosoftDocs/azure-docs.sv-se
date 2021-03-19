@@ -4,10 +4,10 @@ description: Förbättra prestanda genom att för hämtning Azure Service Bus me
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341049"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>För hämtning Azure Service Bus meddelanden
@@ -18,7 +18,7 @@ Ett enda första [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclien
 
 ## <a name="enable-prefetch"></a>Aktivera för hämtning
 
-Med .NET aktiverar du för hämtnings funktionen genom att ange egenskapen [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) för en **MessageReceiver**, **QueueClient**eller **SubscriptionClient** till ett tal som är större än noll. Om du anger värdet noll inaktive ras för hämtning.
+Med .NET aktiverar du för hämtnings funktionen genom att ange egenskapen [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) för en **MessageReceiver**, **QueueClient** eller **SubscriptionClient** till ett tal som är större än noll. Om du anger värdet noll inaktive ras för hämtning.
 
 Du kan enkelt lägga till den här inställningen till mottagnings sidan av inställningarna för [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) eller [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) -exempel för att se effekterna i dessa sammanhang.
 

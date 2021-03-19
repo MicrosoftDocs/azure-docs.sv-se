@@ -10,10 +10,10 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72248574"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Skicka ett arbetsflöde med flera indata från samma prov
@@ -28,7 +28,7 @@ I den här artikeln förutsätts det att du redan har installerat och kört `msg
 ## <a name="multiple-bam-files"></a>Flera BAM-filer
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Ladda upp dina indatafiler till Azure Storage
-Vi antar att du har flera BAM-filer som indata, *reads.bam*, *additional_reads.bam* och *yet_more_reads.bam*, och att du har laddat upp dem till ditt lagringskonto *myaccount* i Azure. Du har API-URL och din åtkomstnyckel. Du vill ha utdata i **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Vi antar att du har flera BAM-filer som indata, *reads.bam*, *additional_reads.bam* och *yet_more_reads.bam*, och att du har laddat upp dem till ditt lagringskonto *myaccount* i Azure. Du har API-URL och din åtkomstnyckel. Du vill ha utdata i **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>**.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Skicka jobbet till `msgen`-klienten 
@@ -91,7 +91,7 @@ Skicka filen `config.txt` med det här anropet: `msgen submit -f config.txt`
 ## <a name="multiple-paired-fastq-files"></a>Flera, parade FASTQ-filer
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Ladda upp dina indatafiler till Azure Storage
-Vi antar att du har flera parade FASTQ-filer som indata, *reads_1.fq.gz* och *reads_2.fq.gz*, *additional_reads_1.fq.gz* och *additional_ reads_2.fq.GZ* och *yet_more_reads_1.fq.gz* och *yet_more_reads_2.fq.gz*. Du har laddat upp dem till ditt lagringskonto *myaccount* i Azure och du har API-URL och din åtkomstnyckel. Du vill ha utdata i **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Vi antar att du har flera parade FASTQ-filer som indata, *reads_1.fq.gz* och *reads_2.fq.gz*, *additional_reads_1.fq.gz* och *additional_ reads_2.fq.GZ* och *yet_more_reads_1.fq.gz* och *yet_more_reads_2.fq.gz*. Du har laddat upp dem till ditt lagringskonto *myaccount* i Azure och du har API-URL och din åtkomstnyckel. Du vill ha utdata i **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>**.
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Skicka jobbet till `msgen`-klienten 

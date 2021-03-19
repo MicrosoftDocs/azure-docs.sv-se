@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84689995"
 ---
 # <a name="azure-api-management-template-resources"></a>Resurser för Azure API Management-mallar
@@ -353,7 +353,7 @@ Följande lokaliserings alternativ stöds:
   
 |Name|Text|  
 |----------|----------|  
-|WebIssuesIndexTitle|Problem|  
+|WebIssuesIndexTitle|Ärenden|  
 |WebIssuesNoActiveSubscriptions|Du har inga aktiva prenumerationer. Du måste prenumerera på en produkt för att rapportera ett problem.|  
 |WebIssuesNotSignin|Du är inte inloggad. {0}Rapportera ett problem eller publicera en kommentar.|  
 |WebIssuesReportIssueButton|Rapportera problem|  
@@ -458,7 +458,7 @@ Följande lokaliserings alternativ stöds:
 |WebAuthenticationPasswordCompareErrorMessage|Lösen orden matchar inte|  
 |WebAuthenticationPasswordConfirmLabel|Bekräfta lösenordet|  
 |ValidationErrorPasswordInvalidDetailed|Lösen ordet är för svagt.|  
-|WebAuthenticationPasswordLabel|lösenordsinställning|  
+|WebAuthenticationPasswordLabel|Lösenord|  
 |ValidationErrorPasswordRequired|Lösenord måste anges.|  
 |WebAuthenticationPasswordResetSendNotice|Ändra lösen ordet bekräfta att e-post är på väg {0} . Följ anvisningarna i e-postmeddelandet för att fortsätta med processen för lösen ords ändring.|  
 |WebAuthenticationPasswordResetSendNoticeHeader|Din begäran om lösen ords återställning har bearbetats|  

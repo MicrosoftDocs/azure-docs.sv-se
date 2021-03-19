@@ -4,13 +4,13 @@ description: Lär dig hur du skapar en Log Analytics arbets yta för att aktiver
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 3c5df095cccec7509084f122c9a42f3b113d1c95
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/18/2021
+ms.openlocfilehash: 27eac9cefe645087cae43c34cb6503b562fb7c07
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047323"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656316"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Skapa en Log Analytics-arbetsyta i Azure-portalen
 Använd menyn **Log Analytics arbets ytor** för att skapa en arbets yta för Log Analytics med hjälp av Azure Portal. En Log Analytics-arbetsyta är en unik miljö för Azure Monitor loggdata. Varje arbets yta har sin egen data lagrings plats och konfiguration, och data källor och lösningar har kon figurer ATS för att lagra data i en viss arbets yta. Du behöver en Log Analytics arbets yta om du vill samla in data från följande källor:
@@ -32,23 +32,24 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Skapa en arbetsyta
-1. Klicka på **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Log Analytics**. När du börjar skriva filtreras listan baserat på det du skriver. Välj **Log Analytics arbets ytor**.
+Klicka på **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Log Analytics**. När du börjar skriva filtreras listan baserat på det du skriver. Välj **Log Analytics arbets ytor**.
 
-    ![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
+![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
   
-2. Klicka på **Lägg till** och välj sedan alternativ för följande objekt:
+Klicka på **Lägg till** och ange värden för följande alternativ:
 
-   * Ange ett namn för den nya **Log Analytics-arbetsytan**, som *DefaultLAWorkspace*. Det här namnet måste vara globalt unikt för alla Azure Monitor prenumerationer.
    * Välj en **prenumeration** att länka till genom att välja från den listrutan om standardvalet inte är lämpligt.
    * För **resurs grupp** väljer du att använda en befintlig resurs grupp som redan har kon figurer ATS eller skapa en ny.  
-   * Välj en tillgänglig **plats**.  Mer information finns i vilka [regioner Log Analytics är tillgängliga i](https://azure.microsoft.com/regions/services/) och söka efter Azure Monitor från fältet **Sök efter ett produkt** .  
-   * Om du skapar en arbetsyta i en ny prenumeration som skapats efter 2 april 2018 används prisplanen *Per GB* automatiskt och alternativet för att välja en prisnivå är inte tillgängligt.  Om du skapar en arbets yta för en befintlig prenumeration som skapats före 2 april eller prenumeration som var kopplad till en befintlig Enterprise-avtal-registrering (EA), väljer du önskad pris nivå.  Mer information om de specifika nivåerna finns [Log Analytics pris information](https://azure.microsoft.com/pricing/details/log-analytics/).
+   * Ange ett namn för den nya **Log Analytics-arbetsytan**, som *DefaultLAWorkspace*. Det här namnet måste vara globalt unikt för alla Azure Monitor prenumerationer.
+   * Välj en tillgänglig **region**.  Mer information finns i vilka [regioner Log Analytics är tillgängliga i](https://azure.microsoft.com/regions/services/) och söka efter Azure Monitor från fältet **Sök efter ett produkt** .  
 
-        ![Skapa Log Analytics resurs bladet](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
-3. När du har angett den nödvändiga informationen i fönsterrutan **Log Analytics-arbetsyta** klickar du på **OK**.  
+        ![Skapa Log Analytics resurs bladet](media/quick-create-workspace/create-workspace.png)  
 
-När informationen har verifierats och arbetsytan skapas, kan du spåra förloppet under **Meddelanden** på menyn. 
+
+Klicka på **Granska + skapa** för att granska inställningarna och **skapa** sedan för att skapa arbets ytan. Detta väljer en standard pris nivå med betala per användning, vilket inte innebär några ändringar förrän du börjar samla in en tillräckligt stor mängd data. Mer information om andra pris nivåer finns [Log Analytics pris information](https://azure.microsoft.com/pricing/details/log-analytics/).
+
+
 
 ## <a name="troubleshooting"></a>Felsökning
 När du skapar en arbets yta som har tagits bort under de senaste 14 dagarna och i [läget för mjuk borttagning](../logs/delete-workspace.md#soft-delete-behavior)kan åtgärden ha olika resultat beroende på konfigurationen för arbets ytan:

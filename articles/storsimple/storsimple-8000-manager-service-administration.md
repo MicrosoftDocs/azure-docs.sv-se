@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967983"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656829"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Använd tjänsten StorSimple Enhetshanteraren för att administrera din StorSimple-enhet
 
@@ -47,6 +47,8 @@ Tjänsten StorSimple Enhetshanteraren körs i Microsoft Azure och ansluter till 
 I följande tabell visas en översikt över alla vanliga hanterings uppgifter och komplexa arbets flöden som kan utföras i StorSimple-Enhetshanteraren tjänstens användar gränssnitt. De här uppgifterna organiseras baserat på de GRÄNSSNITTs blad som de initieras på.
 
 Klicka på lämplig procedur i tabellen om du vill ha mer information om varje arbets flöde.
+
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple Enhetshanteraren arbets flöden
 

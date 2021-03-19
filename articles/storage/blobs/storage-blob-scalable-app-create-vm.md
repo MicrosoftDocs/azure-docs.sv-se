@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4b8c52b03cb6dec6096565e9eac26b7b2c4a30e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89073275"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Skapa en virtuell dator och ett lagringskonto för ett skalbart program
@@ -22,7 +22,7 @@ Den här självstudien ingår i en serie. Den här självstudien visar hur du di
 I del ett i den här serien lärde du dig att:
 
 > [!div class="checklist"]
-> * skapar ett lagringskonto
+> * Skapa ett lagringskonto
 > * Skapa en virtuell dator
 > * Konfigurera ett anpassat skripttillägg
 
@@ -42,7 +42,7 @@ Skapa en Azure-resursgrupp med [New-AzResourceGroup](/powershell/module/az.resou
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
  
 I exemplet laddas 50 stora filer upp till en blobcontainer på ett Azure Storage-konto. Ett Azure-lagringskonto tillhandahåller en unik namnrymd där du kan lagra och få åtkomst till dina Azure-lagringdataobjekt. Skapa ett lagringskonto i resursgruppen som du skapade med kommandot [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount).
 
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 I del ett av serien lärde du dig att skapa ett lagringskonto, distribuera en virtuell dator och konfigurera den virtuella datorn med nödvändiga förutsättningar, till exempel:
 
 > [!div class="checklist"]
-> * skapar ett lagringskonto
+> * Skapa ett lagringskonto
 > * Skapa en virtuell dator
 > * Konfigurera ett anpassat skripttillägg
 

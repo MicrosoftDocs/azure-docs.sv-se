@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 02/02/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079871"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>PowerShell-skript för att ta bort en fil resurs som tagits bort av misstag
@@ -153,7 +153,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ## <a name="how-to-use-the-script-in-different-scenarios"></a>Så här använder du skriptet i olika scenarier
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 1. Installera de senaste Azure PowerShell AZ-modulerna från [den här länken](/powershell/azure/install-az-ps) innan du kör skriptet.
 2. Behåll följande information när du behöver skicka dem som värden för olika parametrar i skriptet:

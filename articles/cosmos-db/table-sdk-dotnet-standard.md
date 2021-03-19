@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: eee59d906da46e315ede52796bd89c7827833ede
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f41a895aef3476386b8b530fc3e265ffaa21e8c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095738"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597612"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabell .NET standard-API: Hämta och viktig information
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,10 +26,10 @@ ms.locfileid: "93095738"
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
 
-|   |   |
+|   | Länkar  |
 |---|---|
 |**SDK-nedladdning**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**Urvalsundersökningar**|[Cosmos DB Tabell-API .NET-exempel](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Exempel**|[Cosmos DB Tabell-API .NET-exempel](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
 |**Snabbstart**|[Snabbstart](create-table-dotnet.md)|
 |**Självstudie**|[Självstudie](tutorial-develop-table-dotnet.md)|
 |**Aktuellt ramverk som stöds**|[Microsoft .NET standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|

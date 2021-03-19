@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84690310"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurera meddelanden och e-postmallar i Azure API Management
 
 API Management ger möjlighet att konfigurera meddelanden för vissa händelser och konfigurera e-postmallarna som används för att kommunicera med administratörer och utvecklare av en API Management instans. Den här artikeln visar hur du konfigurerar meddelanden för de tillgängliga händelserna och ger en översikt över hur du konfigurerar e-postmallarna som används för dessa händelser.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har en API Management tjänst instans slutför du följande snabb start: [skapa en Azure API Management-instans](get-started-create-service-instance.md).
 
@@ -75,7 +75,7 @@ API Management innehåller aviserings mallar för e-postmeddelanden som skickas 
 
 Dessa mallar kan ändras efter behov.
 
-Klicka på **mallar för meddelanden**om du vill visa och konfigurera e-postmallarna för din API Management instans.
+Klicka på **mallar för meddelanden** om du vill visa och konfigurera e-postmallarna för din API Management instans.
 
 ![E-postmallar][api-management-email-templates]
 
@@ -88,7 +88,7 @@ Varje e-postmall har ett ämne i oformaterad text och en brödtext definition i 
 > [!NOTE]
 > Parametrarna ersätts inte med faktiska värden vid för hands visning eller sändning av ett test.
 
-Spara ändringarna i e-postmallen genom att klicka på **Spara**eller avbryta ändringarna genom att klicka på **Ignorera**.
+Spara ändringarna i e-postmallen genom att klicka på **Spara** eller avbryta ändringarna genom att klicka på **Ignorera**.
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png

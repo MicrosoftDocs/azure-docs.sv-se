@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694996"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596424"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Virtual Machines för skalnings uppsättningar för virtuella datorer 
 
@@ -46,7 +46,7 @@ Följande [typer av erbjudanden](https://azure.microsoft.com/support/legal/offer
 -   Enterprise-avtal
 -   Erbjudande för betala per användning-kod 003P
 -   Sponsrat
-- För Cloud Service Provider (CSP), se [partner Center](https://docs.microsoft.com/partner-center/azure-plan-get-started) eller kontakta din partner direkt.
+- För Cloud Service Provider (CSP), se [partner Center](/partner-center/azure-plan-get-started) eller kontakta din partner direkt.
 
 ## <a name="eviction-policy"></a>Avlägsnandeprincip
 
@@ -202,7 +202,7 @@ Lägg till `priority` - `evictionPolicy` och- `billingProfile` egenskaperna i `"
 
 ## <a name="simulate-an-eviction"></a>Simulera en avtagning
 
-Du kan [simulera en avlägsnande](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) av en virtuell Azure-dator för att testa hur bra ditt program kommer att reagera på en plötslig avlägsning. 
+Du kan [simulera en avlägsnande](/rest/api/compute/virtualmachines/simulateeviction) av en virtuell Azure-dator för att testa hur bra ditt program kommer att reagera på en plötslig avlägsning. 
 
 Ersätt följande med din information: 
 

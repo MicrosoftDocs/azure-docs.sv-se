@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601023"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578506"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Felkoder för Azure AD-autentisering och -auktorisering
 
@@ -269,6 +269,7 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS90094 | AdminConsentRequired-administratörs medgivande krävs. |
 | AADSTS900382 | Konfidentiell klient stöds inte i en begäran mellan moln. |
 | AADSTS90099 | Programmet {appId} ({appName}) har inte auktoriserats i klient organisationen {Tenant}. Program måste ha behörighet att få åtkomst till kund innehavaren innan administratörer kan använda dem. Ge ett för hands godkännande eller kör lämpligt Partner Center-API för att auktorisera programmet. |
+| AADSTS900971| Ingen svars adress har angetts.|
 | AADSTS90100 | InvalidRequestParameter-parametern är tom eller ogiltig. |
 | AADSTS901002 | AADSTS901002: parametern resurs begär ande stöds inte. |
 | AADSTS90101 | InvalidEmailAddress – de angivna data är inte en giltig e-postadress. E-postadressen måste anges i formatet `someone@example.com` . |

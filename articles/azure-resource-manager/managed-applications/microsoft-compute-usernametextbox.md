@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 82478f322e1df22bde50769b90f0424140920e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063590"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>GRÄNSSNITTs element för Microsoft. Compute. UserNameTextBox
@@ -47,7 +47,7 @@ En text Rute kontroll med inbyggd verifiering för Windows-och Linux-användarna
 
 ## <a name="remarks"></a>Kommentarer
 
-- Om `constraints.required` är inställt på **Sant**måste text rutan ha ett värde för att kunna verifiera. Standardvärdet är **True**.
+- Om `constraints.required` är inställt på **Sant** måste text rutan ha ett värde för att kunna verifiera. Standardvärdet är **True**.
 - `osPlatform` måste anges och kan vara antingen **Windows** eller **Linux**.
 - `constraints.regex` är ett mönster för reguljära JavaScript-uttryck. Om det här alternativet anges måste text rutans värde matcha mönstret för att kunna verifieras. Standardvärdet är **Null**.
 - `constraints.validationMessage` är en sträng som ska visas när text rutans värde inte klarar den verifiering som anges av `constraints.regex` . Om inget värde anges används text rutans inbyggda verifierings meddelanden. Standardvärdet är **Null**.

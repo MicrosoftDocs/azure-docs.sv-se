@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75645471"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Övervaka och diagnostisera bearbetning av begär anden i den omvända proxyn
@@ -77,7 +77,7 @@ Här följer några exempel på hur du tolkar de vanliga fel loggar som en kan s
     
     Här är en exempel händelse där omvänd proxy returnerar 404 sedan det inte gick att hitta matchande tjänst slut punkt.
     Följande nytto Last poster är:
-   * **processRequestPhase**: anger fasen vid bearbetning av begäran när felet inträffade, ***TryGetEndpoint*** , dvs. vid försök att hämta slut punkten för tjänsten att vidarebefordra till. 
+   * **processRequestPhase**: anger fasen vid bearbetning av begäran när felet inträffade, **_TryGetEndpoint_** , dvs. vid försök att hämta slut punkten för tjänsten att vidarebefordra till. 
    * **errorDetails**: visar slut punkts Sök kriterierna. Här kan du se att listenerName anges = **FrontEndListener** , medan replik slut punkts listan endast innehåller en lyssnare med namnet **OldListener**.
     
      ```

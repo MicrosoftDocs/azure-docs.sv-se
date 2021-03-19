@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, sensor, SDK, djup, RGB, inspelning, uppspelning, Matroska, MKV
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277467"
 ---
 # <a name="the-azure-kinect-playback-api"></a>API för Azure Kinect-uppspelning
@@ -134,24 +134,24 @@ Nedan visas en lista över alla standardtaggar som kan ingå i en inspelnings fi
 
 Om det inte finns någon tagg antas det att ha standardvärdet.
 
-| Taggnamn                     | Standardvärde      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html) Sidfält | Obs!     |
+| Taggnamn                     | Standardvärde      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html) Sidfält | Kommentarer     |
 |------------------------------|--------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `K4A_COLOR_MODE`             | Rund              | `color_format` / `color_resolution`  | Möjliga värden: "OFF", "MJPG_1080P", "NV12_720P", "YUY2_720P" och så vidare                                      |
 | `K4A_DEPTH_MODE`             | Rund              | `depth_mode` / `depth_track_enabled` | Möjliga värden: "OFF," NFOV_UNBINNED "," PASSIVE_IR "och så vidare                                                |
 | `K4A_IR_MODE`                | Rund              | `depth_mode` / `ir_track_enabled`    | Möjliga värden: "OFF", "ACTIVE", "passiv"                                                                    |
 | `K4A_IMU_MODE`               | Rund              | `imu_track_enabled`                  | Möjliga värden: "på", "OFF"                                                                                   |
-| `K4A_CALIBRATION_FILE`       | "calibration.jspå" | E.t.                                  | Kontakta [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
+| `K4A_CALIBRATION_FILE`       | "calibration.jspå" | Ej tillämpligt                                  | Kontakta [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
 | `K4A_DEPTH_DELAY_NS`         | 0,0                | `depth_delay_off_color_usec`         | Värdet lagras i nanosekunder, API innehåller mikrosekunder.                                                        |
 | `K4A_WIRED_SYNC_MODE`        | INSTALLATIONS       | `wired_sync_mode`                    | Möjliga värden: "fristående", "MASTER", "underordnad"                                                         |
 | `K4A_SUBORDINATE_DELAY_NS`   | 0,0                | `subordinate_delay_off_master_usec`  | Värdet lagras i nanosekunder, API innehåller mikrosekunder.                                                        |
-| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | E.t.                                  | Version för inbyggd enhets färg, till exempel "1. x. xx"                                                            |
-| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | E.t.                                  | Version för enhets djupets inbyggd program vara, till exempel "1. x. xx"                                                            |
-| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | E.t.                                  | Registrerar enhetens serie nummer                                                                                 |
+| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | Ej tillämpligt                                  | Version för inbyggd enhets färg, till exempel "1. x. xx"                                                            |
+| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | Ej tillämpligt                                  | Version för enhets djupets inbyggd program vara, till exempel "1. x. xx"                                                            |
+| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | Ej tillämpligt                                  | Registrerar enhetens serie nummer                                                                                 |
 | `K4A_START_OFFSET_NS`        | 0,0                | `start_timestamp_offset_usec`        | Se [synkronisering av tidsstämpel](record-playback-api.md#timestamp-synchronization) nedan.                       |
-| `K4A_COLOR_TRACK`            | Inget               | E.t.                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
-| `K4A_DEPTH_TRACK`            | Inget               | E.t.                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
-| `K4A_IR_TRACK`               | Inget               | E.t.                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
-| `K4A_IMU_TRACK`              | Inget               | E.t.                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
+| `K4A_COLOR_TRACK`            | Inget               | Ej tillämpligt                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
+| `K4A_DEPTH_TRACK`            | Inget               | Ej tillämpligt                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
+| `K4A_IR_TRACK`               | Inget               | Ej tillämpligt                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
+| `K4A_IMU_TRACK`              | Inget               | Ej tillämpligt                                  | Se [spela in fil format – identifiera spår](record-file-format.md#identifying-tracks).                     |
 
 ## <a name="timestamp-synchronization"></a>Tidsstämpel-synkronisering
 

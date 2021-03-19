@@ -4,10 +4,10 @@ description: Guide för att tillåta migrering av befintliga Azure Service Bus s
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85340742"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrera befintliga Azure Service Bus standard namn områden till Premium-nivån
@@ -25,7 +25,7 @@ Några av punkterna att Observera:
 - **Premium** -namnområdet får **inte ha några entiteter** för att migreringen ska lyckas.
 - Alla **entiteter** i standard namn området **kopieras** till Premium-namnområdet under migreringsprocessen.
 - Migrering stöder **1 000 entiteter per meddelande enhet** på Premium-nivån. För att identifiera hur många meddelande enheter du behöver börjar du med antalet entiteter som du har på din aktuella standard namn område.
-- Du kan inte direkt migrera från **Basic-nivån** till Premium- **nivån** , men du kan göra detta indirekt genom att migrera från Basic till standard först och sedan från standard till Premium i nästa steg.
+- Du kan inte direkt migrera från **Basic-nivån** till Premium- **nivån**, men du kan göra detta indirekt genom att migrera från Basic till standard först och sedan från standard till Premium i nästa steg.
 
 ## <a name="migration-steps"></a>Migreringsanvisningar
 

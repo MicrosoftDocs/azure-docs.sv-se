@@ -4,17 +4,17 @@ description: Anslut privat till en webbapp med hjälp av privat Azure-slutpunkt
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/09/2020
+ms.date: 03/16/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563619"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655911"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Använda privata slutpunkter för Azure Web Apps
 
@@ -117,8 +117,6 @@ Pris information finns i [priser för privata Azure-länkar][pricing].
 När du använder Azure Function i elastisk Premium-plan med privat slut punkt, för att köra eller köra funktionen i Azure-webbportalen, måste du ha direkt åtkomst till nätverket eller så får du ett HTTP 403-fel. Med andra ord måste webbläsaren kunna komma åt den privata slut punkten för att köra funktionen från Azure-webbportalen. 
 
 Du kan ansluta upp till 100 privata slut punkter till en viss webbapp.
-
-Platser kan inte använda privat slut punkt.
 
 Fjärr fel söknings funktionen är inte tillgänglig när privat slut punkt har Aktiver ATS för webb programmet. Rekommendationen är att distribuera koden till en plats och fjärran sluten fel sökning där.
 

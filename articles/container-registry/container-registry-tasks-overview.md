@@ -3,12 +3,12 @@ title: Översikt över ACR-uppgifter
 description: En introduktion till ACR-aktiviteter, en uppsättning funktioner i Azure Container Registry som tillhandahåller säker, automatiserad version av behållar avbildning, hantering och korrigeringar i molnet.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562862"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606794"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisera behållar avbildnings versioner och underhåll med ACR-uppgifter
 
@@ -39,7 +39,7 @@ Utvecklings cykeln för inre slingor, den iterativa processen med att skriva kod
 
 Innan du genomför din första kodrad kan ACR-aktiviteternas [snabb uppgift](container-registry-tutorial-quick-task.md) tillhandahålla en integrerad utvecklings upplevelse genom att avlasta dina behållar avbildningar till Azure. Med snabb uppgifter kan du verifiera dina automatiserade versions definitioner och fånga eventuella problem innan du genomför din kod.
 
-Med det välkända `docker build` formatet tar [AZ ACR build][az-acr-build] -kommandot i Azure CLI en [kontext](#context-locations) (uppsättningen filer som ska skapas), skickar ACR uppgifter och skickar som standard den inbyggda avbildningen till registret när den har slutförts.
+Med det välkända `docker build` formatet tar [AZ ACR build][az-acr-build] -kommandot i Azure CLI en [kontext](#context-locations) (uppsättningen filer som ska skapas), skickar den till ACR-uppgifter och skickar som standard den inbyggda avbildningen till registret när den har slutförts.
 
 En introduktion finns i snabb starten för att [skapa och köra en behållar avbildning](container-registry-quickstart-task-cli.md) i Azure Container Registry.  
 

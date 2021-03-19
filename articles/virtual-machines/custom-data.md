@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87284922"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Anpassade data och Cloud-Init på Azure Virtual Machines
@@ -80,7 +80,7 @@ Om du vill felsöka anpassad data körning granskar du */var/log/waagent.log*
 Om du vill felsöka anpassad data körning läser du fel söknings [dokumentationen](./linux/using-cloud-init.md#troubleshooting-cloud-init).
 
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Kan jag uppdatera anpassade data när den virtuella datorn har skapats?
 För enskilda virtuella datorer går det inte att uppdatera anpassade data i VM-modellen, men för VMSS kan du uppdatera VMSS anpassade data via [REST API](/rest/api/compute/virtualmachinescalesets/update) (inte tillämpligt för PS-eller AZ CLI-klienter). När du uppdaterar anpassade data i VMSS-modellen:
 * Befintliga instanser i VMSS kommer inte att hämta uppdaterade anpassade data, bara tills de har återställts på avbildningen.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73647758"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Märka bilder snabbare med Smart Labeler
@@ -47,7 +47,7 @@ Följande steg visar hur du använder Smart Labeler:
 1. I popup-fönstret som visas anger du antalet bilder som du vill ha förslag på. Du bör bara hämta inledande märkes förslag för en del av de otaggade bilderna. Du får bättre märkes förslag när du itererar genom den här processen.
 1. Bekräfta de föreslagna taggarna och åtgärda eventuella fel.
     > [!TIP]
-    > Bilder med föreslagna Taggar sorteras efter deras förutsägelse osäkerhet (lägre värden visar högre tillförlitlighet). Du kan ändra sorterings ordningen med alternativet **Sortera efter osäkerhet** . Om du ställer in ordningen på **hög till låg**kan du korrigera högosäkerhets förutsägelserna först och sedan snabbt bekräfta de låga osäkerheterna.
+    > Bilder med föreslagna Taggar sorteras efter deras förutsägelse osäkerhet (lägre värden visar högre tillförlitlighet). Du kan ändra sorterings ordningen med alternativet **Sortera efter osäkerhet** . Om du ställer in ordningen på **hög till låg** kan du korrigera högosäkerhets förutsägelserna först och sedan snabbt bekräfta de låga osäkerheterna.
     * I bild klassificerings projekt kan du välja och bekräfta Taggar i batchar. Filtrera vyn efter en angiven föreslagen tagg, avmarkera bilder som är felaktigt taggade och bekräfta resten i en batch.
         > [!div class="mx-imgBorder"]
         > ![Föreslagna taggar visas i batch-läge för IC med filter.](./media/suggested-tags/ic-batch-mode.png)

@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 03/16/2021
 ms.author: radeltch
-ms.openlocfilehash: 817a17de240ee10966a6cd20d758def7c2ab9c87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669676"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576413"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hög tillgänglighet för SAP HANA på virtuella Azure-datorer på SUSE Linux Enterprise Server
 
@@ -592,6 +592,115 @@ Kontrol lera att klustrets status är OK och att alla resurser har startats. Det
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 #     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurera HANA aktiv/Läs aktive rad system replikering i pacemaker-kluster
+
+Från och med SAP HANA 2,0 SPS 01 SAP tillåts aktiv/Read-aktiverad installation av SAP HANA system replikering där de sekundära systemen i SAP HANA systemreplikering kan användas aktivt för Läs intensiva arbets belastningar. För att stödja den här installationen i ett kluster krävs en andra virtuell IP-adress som gör att klienterna kan komma åt den sekundära Read-aktiverade SAP HANA databasen. För att säkerställa att den sekundära replikerings platsen fortfarande kan nås efter det att ett övertag har inträffat måste klustret flytta den virtuella IP-adressen med den sekundära av SAPHana-resursen.
+
+I det här avsnittet beskrivs de ytterligare steg som krävs för att hantera HANA aktiv/läsning aktive rad system replikering i ett SUSEt kluster med hög tillgänglighet med andra virtuella IP-adresser.    
+Innan du fortsätter bör du kontrol lera att du har konfigurerat ett kluster med hög tillgänglighet för SUSEt med hög tillgänglighet för att hantera SAP HANA databasen, enligt beskrivningen ovan i dokumentationen.  
+
+![SAP HANA hög tillgänglighet med Read-aktiverad sekundär](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>Ytterligare konfiguration i Azure Load Balancer för aktiv/Read-aktiverad installation
+
+Om du vill fortsätta med ytterligare steg om hur du konfigurerar andra virtuella IP-adresser kontrollerar du att du har konfigurerat Azure Load Balancer enligt beskrivningen i avsnittet [manuell distribution](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#manual-deployment) .
+
+1. För en **standard** belastningsutjämnare följer du de ytterligare stegen nedan på samma belastningsutjämnare som du skapade i föregående avsnitt.
+
+   a. Skapa en andra IP-adresspool på klient sidan: 
+
+   - Öppna belastningsutjämnaren, Välj **klient delens IP-pool** och välj **Lägg till**.
+   - Ange namnet på den andra frontend-IP-poolen (till exempel **Hana-secondaryIP**).
+   - Ange **tilldelningen** till **statisk** och ange IP-adressen (till exempel **10.0.0.14**).
+   - Välj **OK**.
+   - När den nya frontend-IP-poolen har skapats noterar du klient delens IP-adress.
+
+   b. Skapa sedan en hälso avsökning:
+
+   - Öppna belastningsutjämnaren, Välj **hälso avsökningar** och välj **Lägg till**.
+   - Ange namnet på den nya hälso avsökningen (till exempel **Hana-secondaryhp**).
+   - Välj **TCP** som protokoll och port **62603**. Behåll värdet för **Interval** inställt på 5 och **tröskelvärdet för tröskelvärdet** har värdet 2.
+   - Välj **OK**.
+
+   c. Skapa sedan reglerna för belastnings utjämning:
+
+   - Öppna belastningsutjämnaren, Välj **belastnings Utjämnings regler** och välj **Lägg till**.
+   - Ange namnet på den nya belastnings Utjämnings regeln (till exempel **Hana-secondarylb**).
+   - Välj IP-adressen för klient delen, backend-poolen och hälso avsökningen som du skapade tidigare (till exempel **Hana-secondaryIP**, **Hana-backend** och **Hana-secondaryhp**).
+   - Välj **ha-portar**.
+   - Öka **tids gränsen för inaktivitet** till 30 minuter.
+   - Se till att **Aktivera flytande IP**.
+   - Välj **OK**.
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>Konfigurera HANA aktiv/läsning aktive rad system replikering
+
+Stegen för att konfigurera HANA-systemreplikering beskrivs i avsnittet [konfigurera SAP HANA 2,0-system replikering](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#configure-sap-hana-20-system-replication) . Om du distribuerar Read-aktiverad sekundärt scenario, medan du konfigurerar systemreplikering på den andra noden, kör du följande kommando som **hanasid** ADM:
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>Lägga till en sekundär virtuell IP-adressresurs för en aktiv/Read-aktiverad installation
+
+Den andra virtuella IP-adressen och lämplig samplacerings begränsning kan konfigureras med följande kommandon:
+
+```
+crm configure property maintenance-mode=true
+
+crm configure primitive rsc_secip_HN1_HDB03 ocf:heartbeat:IPaddr2 \
+ meta target-role="Started" \
+ operations \$id="rsc_secip_HN1_HDB03-operations" \
+ op monitor interval="10s" timeout="20s" \
+ params ip="10.0.0.14"
+
+crm configure primitive rsc_secnc_HN1_HDB03 azure-lb port=62603 \
+ meta resource-stickiness=0
+
+crm configure group g_secip_HN1_HDB03 rsc_secip_HN1_HDB03 rsc_secnc_HN1_HDB03
+
+crm configure colocation col_saphana_secip_HN1_HDB03 4000: g_secip_HN1_HDB03:Started \
+ msl_SAPHana_HN1_HDB03:Slave 
+
+crm configure property maintenance-mode=false
+```
+Kontrol lera att klustrets status är OK och att alla resurser har startats. Den andra virtuella IP-adressen kommer att köras på den sekundära platsen tillsammans med den sekundära SAPHana-resursen.
+
+```
+sudo crm_mon -r
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full list of resources:
+#
+# stonith-sbd     (stonith:external/sbd): Started hn1-db-0
+# Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
+#     Started: [ hn1-db-0 hn1-db-1 ]
+# Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+# Resource Group: g_ip_HN1_HDB03
+#     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
+# Resource Group: g_secip_HN1_HDB03:
+#     rsc_secip_HN1_HDB03       (ocf::heartbeat:IPaddr2):        Started hn1-db-1
+#     rsc_secnc_HN1_HDB03       (ocf::heartbeat:azure-lb):       Started hn1-db-1
+
+```
+
+I nästa avsnitt hittar du en typisk uppsättning redundanstest som du kan köra.
+
+Tänk på det andra virtuella IP-beteendet, samtidigt som du testar ett HANA-kluster som kon figurer ATS med Read-aktiverad sekundär:
+
+1. När du migrerar **SAPHana_HN1_HDB03** kluster resurs till **HN1-DB-1** flyttas den andra virtuella IP-adressen till den andra servern **HN1-dB-0**. Om du har konfigurerat AUTOMATED_REGISTER = "falskt" och HANA-systemreplikering inte registreras automatiskt, kommer den andra virtuella IP-adressen att köras på **HN1-dB-0,** eftersom servern är tillgänglig och kluster tjänsterna är online.  
+
+2. När du testar en server krasch körs de andra virtuella IP-resurserna (**rsc_secip_HN1_HDB03**) och Azure Load Balancer-port resursen (**rsc_secnc_HN1_HDB03**) på den primära servern tillsammans med de primära virtuella IP-resurserna. Även om den sekundära servern inte är igång, kommer de program som är anslutna till den Read-aktiverade HANA-databasen att ansluta till den primära HANA-databasen. Beteendet förväntas eftersom du inte vill att program som är anslutna till den Read-aktiverade HANA-databasen ska vara otillgängliga när den sekundära servern inte är tillgänglig.
+  
+3. När den sekundära servern är tillgänglig och kluster tjänsterna är online flyttas den andra virtuella IP-adressen och port resurserna automatiskt till den sekundära servern, även om HANA-systemreplikeringen kanske inte registreras som sekundär. Du måste se till att du registrerar den sekundära HANA-databasen som skrivskyddad innan du startar kluster tjänsterna på den servern. Du kan konfigurera HANA-instansens kluster resurs för att automatiskt registrera den sekundära genom att ange parametern AUTOMATED_REGISTER = True.       
+
+4. Under redundansväxling och återställning kan befintliga anslutningar för program med hjälp av den andra virtuella IP-adressen för att ansluta till HANA-databasen avbrytas.  
 
 ## <a name="test-the-cluster-setup"></a>Testa kluster konfigurationen
 

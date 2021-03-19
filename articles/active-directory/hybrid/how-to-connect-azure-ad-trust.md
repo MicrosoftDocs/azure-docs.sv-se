@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360103"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Hantera AD FS-förtroende med Azure AD med hjälp av Azure AD Connect
@@ -39,7 +39,7 @@ Azure AD Connect kan hantera federation mellan lokala Active Directory Federatio
 
 Azure AD Connect hanterar **endast** inställningar som rör Azure AD-förtroende. Azure AD Connect ändrar inte några inställningar på andra förlitande parters förtroenden i AD FS. Följande tabell visar inställningar som styrs av Azure AD Connect.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 | :--- | :--- |
 | Token signerings certifikat | Azure AD Connect kan användas för att återställa och återskapa förtroendet med Azure AD. Azure AD Connect sker en omedelbar förnyelse av token signerings certifikat för AD FS och uppdaterar Azure AD-domänens Federations inställningar.|
 | Algoritm för tokensignering | Microsoft rekommenderar att du använder SHA-256 som algoritm för Token-signering. Azure AD Connect kan identifiera om algoritmen för tokensignering har angetts till ett värde som är mindre säkert än SHA-256. Inställningen uppdateras till SHA-256 i nästa möjliga konfigurations åtgärd. Andra förlitande parters förtroende måste uppdateras för att använda det nya token signerings certifikatet. |

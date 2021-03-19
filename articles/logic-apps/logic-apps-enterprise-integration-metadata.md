@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792466"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Hantera metadata för artefakter i integrationskonton med Azure Logic Apps och Enterprise-integrationspaket
@@ -63,7 +63,7 @@ Du kan definiera anpassade metadata för artefakter på integrationskonton och h
 
    | Egenskap | Krävs | Värde | Beskrivning | 
    |----------|---------|-------|-------------| 
-   | **Artefakt typ** | Ja | **Schema**, **kartor**, **partner**, **avtal**eller en anpassad typ | Typen för artefakten som du vill använda | 
+   | **Artefakt typ** | Ja | **Schema**, **kartor**, **partner**, **avtal** eller en anpassad typ | Typen för artefakten som du vill använda | 
    | **Artefakt namn** | Ja | <*artefakt-namn*> | Namnet på artefakten som du vill använda | 
    ||| 
 
@@ -73,9 +73,9 @@ Du kan definiera anpassade metadata för artefakter på integrationskonton och h
 
 1. Lägg till den åtgärd som du vill använda för att hantera dessa metadata, till exempel:
 
-   1. Under sökåtgärden **integrations konto artefakt** väljer du **Nästa steg**och väljer **Lägg till en åtgärd**. 
+   1. Under sökåtgärden **integrations konto artefakt** väljer du **Nästa steg** och väljer **Lägg till en åtgärd**. 
 
-   1. Skriv "http" i rutan Sök. Välj **inbyggda moduler**under sökrutan och välj den här åtgärden: **http-http**
+   1. Skriv "http" i rutan Sök. Välj **inbyggda moduler** under sökrutan och välj den här åtgärden: **http-http**
 
       ![Lägg till HTTP-åtgärd](media/logic-apps-enterprise-integration-metadata/http-action.png)
 
@@ -88,7 +88,7 @@ Du kan definiera anpassade metadata för artefakter på integrationskonton och h
       | **Metod** | Ja | <*åtgärd att köra*> | HTTP-åtgärden som ska köras på artefakten. Den här HTTP-åtgärden använder till exempel metoden **Get** . | 
       | **URI** | Ja | <*metadata-plats*> | Om du vill komma åt `routingUrl` metadata-värdet från den artefakt du hämtade kan du använda ett uttryck, till exempel: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **Sidhuvuden** | Inga | <*rubrik – värden*> | Eventuella sidhuvuds utdata från den utlösare som du vill skicka till HTTP-åtgärden. Om du till exempel vill skicka utlösarens `headers` egenskaps värde: du kan använda ett uttryck, till exempel: <p>`@triggeroutputs()['headers']` | 
-      | **Brödtext** | Inga | <*brödtext – innehåll*> | Annat innehåll som du vill skicka genom HTTP-åtgärdens `body` egenskap. I det här exemplet överförs artefaktens `properties` värden till HTTP-åtgärden: <p>1. Klicka inuti egenskapen **brödtext** så att listan med dynamiskt innehåll visas. Om inga egenskaper visas väljer du **Visa fler**. <br>2. gå till listan med dynamiskt innehåll och välj **Egenskaper**under **integrations kontots artefakt sökning**. | 
+      | **Brödtext** | Inga | <*brödtext – innehåll*> | Annat innehåll som du vill skicka genom HTTP-åtgärdens `body` egenskap. I det här exemplet överförs artefaktens `properties` värden till HTTP-åtgärden: <p>1. Klicka inuti egenskapen **brödtext** så att listan med dynamiskt innehåll visas. Om inga egenskaper visas väljer du **Visa fler**. <br>2. gå till listan med dynamiskt innehåll och välj **Egenskaper** under **integrations kontots artefakt sökning**. | 
       |||| 
 
       Exempel:

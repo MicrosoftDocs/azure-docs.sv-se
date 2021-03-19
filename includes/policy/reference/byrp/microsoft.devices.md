@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 260bf28899740155b5530145ad297601d6878b2c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 82c61910696162e3707f477454c97fb3b70e54a5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616505"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596910"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure IoT Hub bör använda kundhanterad nyckel för att kryptera data i vila](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Kryptering av data i vila i IoT Hub med kundhanterad nyckel lägger till ett sekundärt krypterings lager överst i standard tjänst hanterade nycklar, aktiverar kundstyr nycklar, anpassade rotations principer och möjlighet att hantera åtkomst till data via nyckel åtkomst kontroll. Kundhanterade nycklar måste konfigureras när IoT Hub skapas. Mer information om hur du konfigurerar Kundhanterade nycklar finns i [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[Konfigurera IoT Hub enhets etablerings tjänst instanser för att inaktivera offentlig nätverks åtkomst](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |Inaktivera offentlig nätverks åtkomst för din IoT Hub enhets etablerings instans så att den inte är tillgänglig via det offentliga Internet. Detta kan minska risken för data läckage. Läs mer på: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |Ändra, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |
