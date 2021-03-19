@@ -1,20 +1,20 @@
 ---
-title: Så här konfigurerar du OpenVPN på Azure VPN Gateway
-description: Lär dig hur du använder PowerShell för att aktivera OpenVPN-protokoll på Azure VPN Gateway för en punkt-till-plats-miljö.
+title: Så här konfigurerar du OpenVPN för Azure VPN Gateway
+description: Lär dig hur du aktiverar OpenVPN-protokoll på Azure VPN Gateway för en punkt-till-plats-miljö.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4b48e98ab35b620030b15165d4c9341c0f11b440
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 137e4e1372ef1af3319c0b9af7ba965fffcb9e34
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393283"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584048"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Konfigurera OpenVPN för Azure-punkt-till-plats-VPN Gateway
+# <a name="configure-openvpn-for-point-to-site-vpn-gateways"></a>Konfigurera OpenVPN för punkt-till-plats-VPN-gatewayer
 
 Den här artikeln hjälper dig att konfigurera **OpenVPN® protokoll** på Azure VPN gateway. Du kan använda antingen portalen eller PowerShell-instruktionerna.
 
@@ -28,7 +28,7 @@ Den här artikeln hjälper dig att konfigurera **OpenVPN® protokoll** på Azure
 
 * Kontrol lera att VPN-gatewayen inte använder den grundläggande SKU: n. Bas-SKU: n stöds inte för OpenVPN.
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 1. I portalen navigerar du till din **virtuella nätverksgateway – > punkt-till-plats-konfiguration**.
 1. För **tunnel typ** väljer du **OpenVPN (SSL)** i list rutan.
@@ -36,7 +36,7 @@ Den här artikeln hjälper dig att konfigurera **OpenVPN® protokoll** på Azure
    :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="Välj OpenVPN SSL i list rutan":::
 1. Spara ändringarna och fortsätt med **Nästa steg**.
 
-## <a name="enable-openvpn-on-your-gateway-using-powershell"></a>Aktivera OpenVPN på din gateway med hjälp av PowerShell.
+## <a name="powershell"></a>PowerShell
 
 1. Aktivera OpenVPN på din gateway med hjälp av följande exempel:
 

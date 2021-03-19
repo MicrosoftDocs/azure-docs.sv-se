@@ -4,16 +4,16 @@ description: Lär dig hur du konfigurerar ett säkert Service Fabric kluster i A
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563734"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Skapa ett Service Fabric kluster i Azure med hjälp av Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure-portalen](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -112,7 +112,7 @@ Konfigurera klusternoderna. Nodtyper definierar VM-storlekar, antalet virtuella 
 7. **Aktivera omvänd proxy**.  [Service Fabric omvänd proxy](service-fabric-reverseproxy.md) hjälper mikrotjänster som körs i ett Service Fabric-kluster att identifiera och kommunicera med andra tjänster som har http-slutpunkter.
 8. Gå tillbaka till bladet **kluster konfiguration** under **+ Visa valfria inställningar**, konfigurera kluster **diagnos**. Som standard är diagnostik aktiverat på klustret för att hjälpa till med fel söknings problem. Om du vill inaktivera diagnostik ändrar du **statusen** växla till **av**. Du rekommenderas **inte** att stänga av diagnostik. Om du redan har skapat Application Insights projekt kan du ge dess nyckel, så att program spårningarna dirigeras till den.
 9. **Ta med DNS-tjänst**.  [DNS-tjänsten](service-fabric-dnsservice.md) en valfri tjänst som gör att du kan hitta andra tjänster med hjälp av DNS-protokollet.
-10. Välj det **uppgraderings läge för Fabric** som du vill konfigurera klustret till. Välj **Automatisk**om du vill att systemet automatiskt ska hämta den senaste tillgängliga versionen och försöka uppgradera klustret till det. Ange läget **manuellt**om du vill välja en version som stöds. Mer information om uppgraderings läget för Fabric finns i [Service Fabric Cluster Upgrade Document.][service-fabric-cluster-upgrade]
+10. Välj det **uppgraderings läge för Fabric** som du vill konfigurera klustret till. Välj **Automatisk** om du vill att systemet automatiskt ska hämta den senaste tillgängliga versionen och försöka uppgradera klustret till det. Ange läget **manuellt** om du vill välja en version som stöds. Mer information om uppgraderings läget för Fabric finns i [Service Fabric Cluster Upgrade Document.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Vi stöder bara kluster som kör Service Fabric-versioner som stöds. Genom att välja det **manuella** läget tar du ansvar för att uppgradera klustret till en version som stöds.
@@ -134,7 +134,7 @@ Nu när nyckel valvet har skapats redigerar du åtkomst principerna för nyckel 
 
 ![Skärm bild som visar fönstret Skapa Service Fabric kluster med alternativ 3 säkerhet markerat och en förklaring till att nyckel valvet inte har Aktiver ATS.][CreateKeyVault2]
 
-Klicka på **Redigera åtkomst principer**och Visa sedan **avancerade åtkomst principer** och aktivera åtkomst till Azure-Virtual Machines för distribution. Vi rekommenderar att du aktiverar mall distributionen också. När du har gjort dina val ska du inte glömma att klicka på knappen **Spara** och stänga av fönstret **åtkomst principer** .
+Klicka på **Redigera åtkomst principer** och Visa sedan **avancerade åtkomst principer** och aktivera åtkomst till Azure-Virtual Machines för distribution. Vi rekommenderar att du aktiverar mall distributionen också. När du har gjort dina val ska du inte glömma att klicka på knappen **Spara** och stänga av fönstret **åtkomst principer** .
 
 ![Skärm bild som visar fönstret Skapa Service Fabric kluster med fönstret säkerhet öppet och fönstret åtkomst principer öppen.][CreateKeyVault3]
 
@@ -171,7 +171,7 @@ Markera kryss rutan **Konfigurera avancerade inställningar** om du vill ange kl
 
 Nu är du redo att distribuera klustret. Innan du gör det kan du hämta certifikatet och titta i den stora informations rutan för länken. Se till att hålla certifikatet på en säker plats. du behöver den för att ansluta till klustret. Eftersom det certifikat du hämtade inte har ett lösen ord, bör du lägga till ett.
 
-Klicka på **skapa**om du vill slutföra skapandet av klustret. Du kan också hämta mallen.
+Klicka på **skapa** om du vill slutföra skapandet av klustret. Du kan också hämta mallen.
 
 ![Skärm bild som visar sidan Skapa Service Fabric kluster Sammanfattning med en länk för att visa och hämta ett certifikat.][Summary]
 

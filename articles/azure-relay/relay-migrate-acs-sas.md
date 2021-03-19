@@ -4,10 +4,10 @@ description: Beskriver hur du migrerar Azure Relay-program från att använda Az
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87532874"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-migrera från Azure Active Directory Access Control Service till signaturen för delad åtkomst
@@ -30,7 +30,7 @@ Migreringen hamnar i tre olika kategorier:
 
 1.  **Oförändrade standardvärden**. Vissa kunder använder ett [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) -objekt, skickar den automatiskt genererade identiteten för **ägar** tjänsten och den hemliga nyckeln för ACS-namnrymden, tillsammans med relä namn området och lägger inte till nya regler.
 
-2.  **Anpassade tjänst identiteter med enkla regler**. Vissa kunder lägger till nya tjänst identiteter och beviljar varje ny tjänst identitet **Skicka**, **Lyssna**och **Hantera** behörigheter för en viss entitet.
+2.  **Anpassade tjänst identiteter med enkla regler**. Vissa kunder lägger till nya tjänst identiteter och beviljar varje ny tjänst identitet **Skicka**, **Lyssna** och **Hantera** behörigheter för en viss entitet.
 
 3.  **Anpassade tjänst identiteter med komplexa regler**. Mycket få kunder har komplexa regel uppsättningar där externt utfärdade token mappas till rättigheter för relä eller där en enskild tjänst identitet tilldelas differentierade rättigheter på flera namn områdes sökvägar genom flera regler.
 

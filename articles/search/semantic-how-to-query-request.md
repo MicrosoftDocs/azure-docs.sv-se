@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/18/2021
+ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418886"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654670"
 ---
-# <a name="create-a-semantic-query-in-cognitive-search"></a>Skapa en semantisk fråga i Kognitiv sökning
+# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Skapa en fråga för semantiska under texter i Kognitiv sökning
 
 > [!IMPORTANT]
-> Typen av semantisk fråga finns i en offentlig för hands version, som är tillgänglig via REST API och Azure Portal för för hands versionen. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
+> Semantisk sökning finns i en offentlig för hands version, som är tillgänglig via förhands granskning REST API och Azure Portal. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dessa funktioner är fakturerbara. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
-I den här artikeln får du lära dig att formulera en sökbegäran som använder semantisk rangordning. Begäran kommer att returnera semantiska beskrivningar och eventuellt [semantiska svar](semantic-answers.md), med högdagrar över de mest relevanta termerna och fraserna.
+I den här artikeln får du lära dig att formulera en sökbegäran som använder semantisk rangordning och returnerar semantiska beskrivningar (och eventuellt [semantiska svar](semantic-answers.md)), med högdagrar som visar de mest relevanta termerna och fraserna. Både under texter och svar returneras i frågor som formuleras med typen "semantisk".
 
-Både bild texter och svar extraheras orda Grant från text i Sök dokumentet. Det semantiska under systemet avgör vilket innehåll som har egenskaperna för en under text eller ett svar, men det skapar inte nya meningar eller fraser. Av den anledningen fungerar innehåll som innehåller förklaringar eller definitioner bäst för semantisk sökning.
+Under texter och svar extraheras orda Grant från text i Sök dokumentet. Det semantiska under systemet avgör vilken del av ditt innehåll som har egenskaperna för en under text eller ett svar, men de skapar inte nya meningar eller fraser. Av den anledningen fungerar innehåll som innehåller förklaringar eller definitioner bäst för semantisk sökning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -34,7 +34,7 @@ Både bild texter och svar extraheras orda Grant från text i Sök dokumentet. D
 
 + En Sök klient för att skicka frågor
 
-  Sök klienten måste ha stöd för för hands versioner av REST-API: er i förfrågan. Du kan använda [Postman](search-get-started-rest.md), [Visual Studio-kod](search-get-started-vs-code.md)eller kod som du har ändrat för att göra rest-anrop till för hands versions-API: erna. Du kan också använda [Sök Utforskaren](search-explorer.md) i Azure Portal för att skicka en semantisk fråga.
+  Sök klienten måste ha stöd för för hands versioner av REST-API: er i förfrågan. Du kan använda [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)eller Code som gör rest-anrop till för hands versions-API: erna. Du kan också använda [Sök Utforskaren](search-explorer.md) i Azure Portal för att skicka en semantisk fråga.
 
 + En [fråge förfrågan](/rest/api/searchservice/preview-api/search-documents) måste innehålla semantiskt alternativ och andra parametrar som beskrivs i den här artikeln.
 
@@ -62,9 +62,13 @@ Endast de översta 50-matchningarna från de första resultaten kan semantiskt r
 
 ## <a name="query-with-search-explorer"></a>Fråga med Sökutforskaren
 
-[Sök Utforskaren](search-explorer.md) har uppdaterats för att inkludera alternativ för semantiska frågor. De här alternativen blir synliga i portalen när du får åtkomst till förhands granskningen. Frågealternativen kan aktivera semantiska frågor, searchFields och stavnings korrigering.
+[Sök Utforskaren](search-explorer.md) har uppdaterats för att inkludera alternativ för semantiska frågor. De här alternativen blir synliga i portalen när du har slutfört följande steg:
 
-Du kan också klistra in de obligatoriska frågeparametrarna i frågesträngen.
+1. [Registrera dig och tilldela](https://aka.ms/SemanticSearchPreviewSignup) din Sök tjänst till för hands versions programmet
+
+1. Öppna portalen med följande syntax: `https://portal.azure.com/?feature.semanticSearch=true`
+
+Frågealternativen innehåller växlar för att aktivera semantiska frågor, searchFields och stavnings korrigering. Du kan också klistra in de obligatoriska frågeparametrarna i frågesträngen.
 
 :::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Frågealternativ i Sök Utforskaren" border="true":::
 
@@ -98,7 +102,7 @@ I följande tabell sammanfattas frågeparametrar som används i en semantisk fr�
 |-----------|-------|-------------|
 | queryType | Sträng | Giltiga värden är enkel, fullständig och semantisk. Värdet "semantisk" krävs för semantiska frågor. |
 | queryLanguage | Sträng | Krävs för semantiska frågor. För närvarande är endast "en-US" implementerad. |
-| searchFields | Sträng | En kommaavgränsad lista över sökbara fält. Valfritt men rekommenderas. Anger de fält över vilka semantisk rangordning inträffar. </br></br>I motsats till enkla och fullständiga frågetyper, bestämmer ordningen i vilka fält som är prioritet. Mer information om användning finns i [steg 2: Ange searchFields](#searchfields). |
+| searchFields | Sträng | En kommaavgränsad lista över sökbara fält. Anger de fält över vilka semantisk rangordning inträffar, från vilken under texter och svar extraheras. </br></br>I motsats till enkla och fullständiga frågetyper, bestämmer ordningen i vilka fält som är prioritet. Mer information om användning finns i [steg 2: Ange searchFields](#searchfields). |
 | stavningskontroll | Sträng | Valfri parameter, inte bara för semantiska frågor, som korrigerar felstavade villkor innan de når sökmotorn. Mer information finns i [lägga till stavnings korrigering i frågor](speller-how-to-add.md). |
 | svar |Sträng | Valfria parametrar som anger om semantiska svar ingår i resultatet. För närvarande implementeras endast "extraktion". Svar kan konfigureras för att returnera högst fem. Standardvärdet är ett. Det här exemplet visar antalet tre svar: "extraherings \| count3". Mer information finns i [returnera semantiska svar](semantic-answers.md).|
 
@@ -125,13 +129,11 @@ Om du också använder [stavnings korrigering](speller-how-to-add.md)i en förfr
 
 #### <a name="step-2-set-searchfields"></a>Steg 2: Ange searchFields
 
-Den här parametern är valfri i att det inte finns något fel om du lämnar den, men om du anger en ordnad lista med fält rekommenderar vi att både bild texter och svar används.
-
 Parametern searchFields används för att identifiera passager som ska utvärderas för "semantisk likhet" i frågan. För för hands versionen rekommenderar vi inte att du lämnar searchFields tomt eftersom modellen kräver ett tips för vilka fält som är viktigast att bearbeta.
 
-SearchFields-ordningen är kritisk. Om du redan använder searchFields i befintliga enkla eller fullständiga Lucene-frågor måste du gå tillbaka till den här parametern för att kontrol lera om det finns fält ordning när du växlar till en semantisk frågetyp.
+SearchFields-ordningen är kritisk. Om du redan använder searchFields i befintlig kod för enkla eller fullständiga Lucene-frågor kan du gå tillbaka till den här parametern för att söka efter fält ordning när du växlar till en semantisk frågetyp.
 
-Följ dessa rikt linjer för att säkerställa optimala resultat när två eller fler searchFields har angetts:
+För två eller fler searchFields:
 
 + Inkludera endast sträng fält och toppnivå sträng fält i samlingar. Om du råkar ta med fält som inte är strängar eller fält på lägre nivåer i en samling, finns det inga fel, men dessa fält används inte i semantisk rangordning.
 
@@ -141,7 +143,7 @@ Följ dessa rikt linjer för att säkerställa optimala resultat när två eller
 
 + Följ dessa fält genom beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument.
 
-Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. Välj ett fält som tillhandahåller tillräckligt med innehåll. För att säkerställa bearbetnings tiden kan endast cirka 8 000 tokens av det samlade innehållet i searchFields genomgå semantisk utvärdering och rangordning.
+Om bara ett fält har angetts använder du ett beskrivande fält där svaret på semantiska frågor kan hittas, till exempel huvud innehållet i ett dokument. 
 
 #### <a name="step-3-remove-orderby-clauses"></a>Steg 3: ta bort orderBy-satser
 
@@ -191,7 +193,7 @@ Svaret för exempel frågan ovan returnerar följande matchning som den översta
 Kom ihåg att semantisk rangordning och svar skapas över en första resultat uppsättning. All logik som förbättrar kvaliteten på de första resultaten kommer att överföras till semantisk sökning. I nästa steg ska du gå igenom de funktioner som bidrar till de första resultaten, inklusive analys verktyg som påverkar hur strängarna är tokens, bedömnings profiler som kan justera resultat och standardalgoritmen för relevans.
 
 + [Analys verktyg för text bearbetning](search-analyzers.md)
-+ [Likhet och poängsättning i Kognitiv sökning](index-similarity-and-scoring.md)
-+ [Lägga till rankningsprofiler](index-add-scoring-profiles.md)
++ [Algoritm för rangordning av likhets sätt](index-similarity-and-scoring.md)
++ [Poängprofiler](index-add-scoring-profiles.md)
 + [Översikt över semantisk sökning](semantic-search-overview.md)
-+ [Lägg till stavnings kontroll i sökord](speller-how-to-add.md)
++ [Algoritm för semantisk rangordning](semantic-ranking.md)

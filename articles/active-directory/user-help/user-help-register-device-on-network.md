@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033055"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrera din personliga enhet i din organisations nätverk
@@ -41,28 +41,28 @@ När du registrerar din enhet i din organisations nätverk sker följande åtgä
 
 Följ de här stegen för att registrera din personliga enhet i nätverket.
 
-1. Öppna **Inställningar**och välj sedan **konton**.
+1. Öppna **Inställningar** och välj sedan **konton**.
 
     ![Konton på skärmen Inställningar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Välj **åtkomst till arbete eller skola**och välj sedan **Anslut** från skärmen för **åtkomst till arbetet eller skolan** .
+2. Välj **åtkomst till arbete eller skola** och välj sedan **Anslut** från skärmen för **åtkomst till arbetet eller skolan** .
 
     ![Åtkomst till arbets-eller skol skärm med alternativet Anslut markerat](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. På skärmen **Lägg till ett arbets-eller skol konto** skriver du in din e-postadress för ditt arbets-eller skol konto och väljer sedan **Nästa**. Exempelvis alain@contoso.com.
+3. På skärmen **Lägg till ett arbets-eller skol konto** skriver du in din e-postadress för ditt arbets-eller skol konto och väljer sedan **Nästa**. Till exempel alain@contoso.com.
 
-4. Logga in på ditt arbets-eller skol konto och välj sedan **Logga**in.
+4. Logga in på ditt arbets-eller skol konto och välj sedan **Logga** in.
 
 5. Slutför resten av registrerings processen, inklusive att godkänna din begäran om identitets verifiering (om du använder tvåstegsverifiering) och konfigurera Windows Hello (om det behövs).
 
 ## <a name="to-verify-that-youre-registered"></a>För att kontrol lera att du är registrerad
 Du kan se till att du har registrerat dig genom att titta på dina inställningar.
 
-1. Öppna **Inställningar**och välj sedan **konton**.
+1. Öppna **Inställningar** och välj sedan **konton**.
 
     ![Konton på skärmen Inställningar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Välj **åtkomst till arbete eller skola**och se till att du ser ditt arbets-eller skol konto.
+2. Välj **åtkomst till arbete eller skola** och se till att du ser ditt arbets-eller skol konto.
 
     ![Få åtkomst till arbets-eller skol skärmen med det anslutna contoso-kontot](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 

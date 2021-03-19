@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 1455259bc42aea9d506a9a2a19d725cac3d643f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87562777"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Ändra pris nivå för ett namn område för Azure Notification Hub
 
-Notification Hubs erbjuds på tre nivåer: **kostnads fri**, **Basic**och **standard**. Den här artikeln visar hur du ändrar pris nivån för ett Azure Notification Hubs-namnområde.
+Notification Hubs erbjuds på tre nivåer: **kostnads fri**, **Basic** och **standard**. Den här artikeln visar hur du ändrar pris nivån för ett Azure Notification Hubs-namnområde.
 
 ## <a name="overview"></a>Översikt
 
@@ -30,7 +30,7 @@ I Azure Notification Hubs är en *Notification Hub* den minsta resursen/entitete
 
 Ett *namn område* är en samling Notification Hub. Varje namnrymd består vanligt vis av hubbar som är relaterade till och används för ett specifikt syfte. Du kan till exempel ha tre olika namn områden för utveckling, testning och produktions syfte.
 
-Du kan associera ett namn område med pris nivåerna **kostnads fri**, **Basic**eller **standard** . För alla namn områden kan du använda den nivå som passar dina krav. I följande avsnitt visas hur du ändrar pris nivån för ett Notification Hubs namn område.
+Du kan associera ett namn område med pris nivåerna **kostnads fri**, **Basic** eller **standard** . För alla namn områden kan du använda den nivå som passar dina krav. I följande avsnitt visas hur du ändrar pris nivån för ett Notification Hubs namn område.
 
 ## <a name="use-azure-portal"></a>Använda Azure-portalen
 
@@ -42,7 +42,7 @@ Följande procedur visar hur du ändrar pris nivån för ett namn område på na
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **alla tjänster** på den vänstra menyn.
-3. Välj **namn rymder för Notification Hub** i avsnittet **Sakernas Internet** . Om du väljer asterisken ( `*` ) bredvid texten läggs den till i det vänstra navigerings fältet under **Favoriter**. Detta hjälper dig att komma åt sidan namn områden snabbare nästa gång. När du har lagt till den i **Favoriter**väljer du **namn områden för Notification Hub**.
+3. Välj **namn rymder för Notification Hub** i avsnittet **Sakernas Internet** . Om du väljer asterisken ( `*` ) bredvid texten läggs den till i det vänstra navigerings fältet under **Favoriter**. Detta hjälper dig att komma åt sidan namn områden snabbare nästa gång. När du har lagt till den i **Favoriter** väljer du **namn områden för Notification Hub**.
 
     ![Alla tjänster-> Notification Hub-namnrymder](./media/change-pricing-tier/all-services-nhub.png)
 

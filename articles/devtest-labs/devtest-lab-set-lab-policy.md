@@ -4,10 +4,10 @@ description: Lär dig hur du definierar labb principer som VM-storlekar, maximal
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530360"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Hantera alla principer för ett labb i Azure DevTest Labs
@@ -38,9 +38,9 @@ Med principen för **virtuella datorer per användare** kan du ange antalet virt
    
     ![Virtuella datorer per användare](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. Välj **Ja** om du vill begränsa antalet virtuella datorer per användare. Om du inte vill begränsa antalet virtuella datorer per användare väljer du **Nej**. Om du väljer **Ja**anger du ett numeriskt värde som anger antalet virtuella datorer som kan skapas eller begäras av en användare. 
+1. Välj **Ja** om du vill begränsa antalet virtuella datorer per användare. Om du inte vill begränsa antalet virtuella datorer per användare väljer du **Nej**. Om du väljer **Ja** anger du ett numeriskt värde som anger antalet virtuella datorer som kan skapas eller begäras av en användare. 
 
-1. Välj **Ja** om du vill begränsa antalet virtuella datorer som kan använda SSD (solid-state disk). Om du inte vill begränsa antalet virtuella datorer som kan använda SSD väljer du **Nej**. Om du väljer **Ja**anger du ett värde som anger hur många virtuella datorer som kan skapas med SSD. 
+1. Välj **Ja** om du vill begränsa antalet virtuella datorer som kan använda SSD (solid-state disk). Om du inte vill begränsa antalet virtuella datorer som kan använda SSD väljer du **Nej**. Om du väljer **Ja** anger du ett värde som anger hur många virtuella datorer som kan skapas med SSD. 
 
 1. Välj **Spara**.
 
@@ -51,9 +51,9 @@ Med principen för **virtuella datorer per labb** kan du ange antalet virtuella 
    
     ![Virtuella datorer per labb](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
 
-1. Välj **Ja** om du vill begränsa antalet virtuella datorer per labb. Om du inte vill begränsa antalet virtuella datorer per labb väljer du **Nej**. Om du väljer **Ja**anger du ett numeriskt värde som anger antalet virtuella datorer som kan skapas eller begäras av en användare. 
+1. Välj **Ja** om du vill begränsa antalet virtuella datorer per labb. Om du inte vill begränsa antalet virtuella datorer per labb väljer du **Nej**. Om du väljer **Ja** anger du ett numeriskt värde som anger antalet virtuella datorer som kan skapas eller begäras av en användare. 
 
-1. Välj **Ja** om du vill begränsa antalet virtuella datorer som kan använda SSD (solid-state disk). Om du inte vill begränsa antalet virtuella datorer som kan använda SSD väljer du **Nej**. Om du väljer **Ja**anger du ett värde som anger hur många virtuella datorer som kan skapas med SSD. 
+1. Välj **Ja** om du vill begränsa antalet virtuella datorer som kan använda SSD (solid-state disk). Om du inte vill begränsa antalet virtuella datorer som kan använda SSD väljer du **Nej**. Om du väljer **Ja** anger du ett värde som anger hur många virtuella datorer som kan skapas med SSD. 
 
 1. Välj **Spara**.
 
@@ -68,7 +68,7 @@ Principen för automatisk avstängning hjälper till att minimera labb avfall ge
 
 1. Om du aktiverar den här principen anger du tid (och tidszon) för att stänga av alla virtuella datorer i det aktuella labbet.
 
-1. Ange **Ja** eller **Nej** om du vill skicka ett meddelande 15 minuter före den angivna automatiska avstängnings tiden. Om du väljer **Ja**anger du en webhook-URL-slutpunkt eller en e-postadress som anger var du vill att meddelandet ska publiceras eller skickas. Användaren får ett meddelande och det ges möjlighet att skjuta upp avstängningen.
+1. Ange **Ja** eller **Nej** om du vill skicka ett meddelande 15 minuter före den angivna automatiska avstängnings tiden. Om du väljer **Ja** anger du en webhook-URL-slutpunkt eller en e-postadress som anger var du vill att meddelandet ska publiceras eller skickas. Användaren får ett meddelande och det ges möjlighet att skjuta upp avstängningen.
 
    Mer information om Webhooks finns i [skapa en webhook eller API Azure-funktion](../azure-functions/functions-bindings-http-webhook.md). 
 
@@ -116,7 +116,7 @@ Med principen Autostart kan du ange när de virtuella datorerna i det aktuella l
 När den här principen är aktive rad tillämpas den inte automatiskt på virtuella datorer i det aktuella labbet. Om du vill använda den här inställningen för en speciell virtuell dator öppnar du hanterings fönstret för den virtuella datorn och ändrar inställningen för **Autostart** .
 
 ## <a name="set-expiration-date"></a>Ange förfallo datum
-Du kan ange ett förfallo datum när du [skapar den virtuella datorn](devtest-lab-add-vm.md). I **Avancerade inställningar**väljer du kalender ikonen för att ange ett datum då den virtuella datorn tas bort automatiskt. Den virtuella datorn upphör som standard aldrig att gälla.
+Du kan ange ett förfallo datum när du [skapar den virtuella datorn](devtest-lab-add-vm.md). I **Avancerade inställningar** väljer du kalender ikonen för att ange ett datum då den virtuella datorn tas bort automatiskt. Den virtuella datorn upphör som standard aldrig att gälla.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

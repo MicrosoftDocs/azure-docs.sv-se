@@ -4,10 +4,10 @@ description: Använd ett PowerShell-skript för att installera Azure Backup Serv
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74172248"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Köra en obevakad installation av Azure Backup Server
@@ -60,6 +60,6 @@ Du kan använda dessa flaggor för installationen:</br>
 När du har installerat säkerhets kopierings servern lär du dig hur du förbereder servern eller börjar skydda en arbets belastning.
 
 - [Förbered arbets belastningar för säkerhets kopierings Server](backup-azure-microsoft-azure-backup.md)
-- [Säkerhetskopiera en VMware-Server med hjälp av backup server](backup-azure-backup-server-vmware.md)
-- [Använd backup server för att säkerhetskopiera SQL Server](backup-azure-sql-mabs.md)
-- [Lägg till Modern Backup Storage på säkerhets kopierings Server](backup-mabs-add-storage.md)
+- [Säkerhetskopiera en VMware-server med hjälp av Backup Server](backup-azure-backup-server-vmware.md)
+- [Säkerhetskopiera SQL Server med hjälp av Backup Server](backup-azure-sql-mabs.md)
+- [Lägga till Modern Backup Storage på Backup Server](backup-mabs-add-storage.md)

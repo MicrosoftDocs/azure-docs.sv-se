@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372798"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655108"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snabbstart: Skapa en datafabrik via gränssnittet i Azure Data Factory 
 
@@ -39,7 +39,8 @@ Om du tittar på den här videon får du hjälp med att förstå Data Factory-an
 1. I menyn i Azure-portalen väljer du **Skapa en resurs**.
 1. Välj **integration** och välj sedan **Data Factory**. 
    
-   ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Data Factory valet i det nya fönstret.":::
+
 1. På sidan **skapa Data Factory** under fliken **grundläggande** väljer du din Azure- **prenumeration** där du vill skapa data fabriken.
 1. Gör något av följande för **Resursgrupp**:
 
@@ -55,8 +56,8 @@ Om du tittar på den här videon får du hjälp med att förstå Data Factory-an
  
 1. Som **namn** anger du **ADFTutorialDataFactory**.
    Namnet på Azure Data Factory måste vara *globalt unikt*. Om du ser följande fel ändrar du namnet på data fabriken (till exempel **&lt; dittnamn &gt; ADFTutorialDataFactory**) och försöker skapa igen. Namngivningsregler för Data Factory-artefakter finns i artikeln [Data Factory – namnregler](naming-rules.md).
-  
-   ![Fel när ett namn inte är tillgängligt](./media/doc-common-process/name-not-available-error.png)
+
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fel meddelande för ny data fabrik för dubblettnamn.":::
 
 1. För **Version** väljer du **V2**.
 
@@ -66,7 +67,7 @@ Om du tittar på den här videon får du hjälp med att förstå Data Factory-an
 
 1. Välj panelen **författare & Monitor** för att starta programmet Azure Data Factory användar gränssnitt (UI) på en separat flik i webbläsaren.
    
-   ![Startsidan för datafabriken med panelen Författare och övervakare](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Start sidan för Azure Data Factory, med panel för författar & övervakning.":::
    
    > [!NOTE]
    > Om du ser att webbläsaren har fastnat vid "auktorisering" avmarkerar du kryss rutan **blockera cookies från tredje part och plats data** . Eller behåll det markerat, skapa ett undantag för **login.microsoftonline.com** och försök sedan att öppna appen igen.
@@ -79,7 +80,7 @@ I den här proceduren skapar du en länkad tjänst för att länka ditt Azure St
 
 1. På sidan länkade tjänster väljer du **+ ny** för att skapa en ny länkad tjänst.
 
-   ![Ny länkad tjänst](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Ny länkad tjänst.":::
    
 1. På sidan **New Linked Service** (Ny länkad tjänst) väljer du **Azure Blob Storage** och klickar på **Fortsätt**. 
 
@@ -93,7 +94,7 @@ I den här proceduren skapar du en länkad tjänst för att länka ditt Azure St
 
    d. Välj **skapa** för att spara den länkade tjänsten. 
 
-      ![Länkad tjänst](./media/quickstart-create-data-factory-portal/linked-service.png)
+      :::image type="content" source="./media/quickstart-create-data-factory-portal/linked-service.png" alt-text="Länkad tjänst.":::
 
 
 ## <a name="create-datasets"></a>Skapa datauppsättningar
@@ -109,13 +110,13 @@ I de länkade tjänst inställningarna angav du det Azure Storage konto som inne
 
 1. Välj **+** knappen (plus) och välj sedan **data uppsättning**.
 
-   ![Meny för att skapa en datauppsättning](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-dataset-menu.png" alt-text="Meny för att skapa en data uppsättning.":::
 
 1. På sidan **ny data uppsättning** väljer du **Azure Blob Storage** och väljer sedan **Fortsätt**. 
 
 1. På sidan **Välj format** väljer du format typ för dina data och väljer sedan **Fortsätt**. I det här fallet väljer du **binär** när du kopierar filer som-är utan att parsa innehållet.
 
-   ![Välj format](./media/quickstart-create-data-factory-portal/select-format.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/select-format.png" alt-text="Välj format.":::   
    
 1. På sidan **Ange egenskaper** slutför du följande steg:
 
@@ -129,7 +130,8 @@ I de länkade tjänst inställningarna angav du det Azure Storage konto som inne
     
     e. Välj **OK**.   
 
-    ![Ange egenskaper för InputDataset](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png" alt-text="Ange egenskaper för InputDataset.":::
+
 1. Upprepa stegen för att skapa datauppsättningen för utdata:  
 
     a. Välj **+** knappen (plus) och välj sedan **data uppsättning**.
@@ -144,7 +146,7 @@ I de länkade tjänst inställningarna angav du det Azure Storage konto som inne
 
     f. Välj **OK**.   
 
-    ![Ange egenskaper för OutputDataset](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png" alt-text="Ange egenskaper för OutputDataset.":::    
 
 ## <a name="create-a-pipeline"></a>Skapa en pipeline 
 I den här proceduren skapar och verifierar du en pipeline med en kopieringsaktivitet som använder uppsättningar för indata och utdata. Kopieringsaktiviteten kopierar data från filen som anges i inställningarna för datauppsättningen för indata till filen som anges i inställningarna för datauppsättningen för utdata. Om datauppsättningen för indata endast anger en mapp (inte filnamnet) kopierar kopieringsaktiviteten alla filer i källmappen till målet. 
@@ -155,7 +157,7 @@ I den här proceduren skapar och verifierar du en pipeline med en kopieringsakti
 
 1. Gå till verktygsfältet **Aktiviteter** och expandera **Flytta och transformera**. Dra aktiviteten **Kopiera data** från **aktivitets verktygs lådan** till pipelinens designer-yta. Du kan också söka efter aktiviteter i verktygslådan **Aktiviteter**. Ange **CopyFromBlobToBlob** som **Namn**.
 
-   ![Skapa en kopierings data aktivitet](./media/quickstart-create-data-factory-portal/copy-activity.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-activity.png" alt-text="Skapa en kopierings data aktivitet.":::   
 
 1. Växla till fliken **Källa** i inställningarna för kopieringsaktiviteten och välj **InputDataset** som **Källdatauppsättning**.
 
@@ -163,7 +165,7 @@ I den här proceduren skapar och verifierar du en pipeline med en kopieringsakti
 
 1. Verifiera pipelineinställningarna genom att klicka på **Verifiera** i verktygsfältet för pipelinen. Bekräfta att pipelinen har verifierats. Om du vill stänga verifierings resultatet väljer du verifierings knappen i det övre högra hörnet. 
 
-   ![Verifiera en pipeline](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-validate.png"   alt-text="Verifiera en pipeline.":::
 
 ## <a name="debug-the-pipeline"></a>Felsöka pipeline
 I det här steget felsöker du pipelinen innan du distribuerar den till Data Factory. 
@@ -172,7 +174,7 @@ I det här steget felsöker du pipelinen innan du distribuerar den till Data Fac
     
 1. Bekräfta att du ser status för pipelinekörningen på fliken **Utdata** i pipelineinställningarna längst ner. 
  
-    ![Kör utdata för pipeline](./media/quickstart-create-data-factory-portal/pipeline-output.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-output.png" alt-text="Kör utdata för pipeline":::
 
 1. Bekräfta att du ser en utdatafil i **outputfolder** för containern **adftutorial**. Om mappen utdata inte finns skapas den automatiskt av Data Factory tjänsten. 
 
@@ -181,7 +183,7 @@ I den här proceduren distribuerar du entiteter (länkade tjänster, datauppsät
 
 1. Innan du utlöser en pipeline måste du publicera entiteter i Data Factory. Om du vill publicera väljer du **publicera alla** överst. 
 
-    ![Publicera alla](./media/quickstart-create-data-factory-portal/publish-all.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/publish-all.png" alt-text="Publicera alla.":::    
 
 1. Om du vill utlösa pipelinen manuellt väljer du **Lägg till utlösare** i pipeline-verktygsfältet och väljer sedan **Utlös nu**. På sidan för **pipeline-körning** väljer du **OK**.
 
@@ -189,12 +191,12 @@ I den här proceduren distribuerar du entiteter (länkade tjänster, datauppsät
 
 1. Växla till fliken **Övervaka** till vänster. Du kan uppdatera listan med knappen **Uppdatera**.
 
-   ![Fliken för övervakning av pipeline-körningar](./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png" alt-text="Fliken för övervakning av pipeline-körningar"::: 
 1. Välj **CopyPipeline** -länken så ser du status för kopierings aktiviteten som körs på den här sidan. 
 
 1. Om du vill visa information om kopierings åtgärden väljer du länken **information** (glasögon image). Mer information om egenskaperna finns i [Copy Activity overview](copy-activity-overview.md) (Översikt över kopieringsaktivitet). 
 
-   ![Detaljerad information om kopieringsåtgärden](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-operation-details.png" alt-text="Information om kopierings åtgärden.":::
 1. Bekräfta att du ser en ny fil i **utdatamappen**. 
 1. Du kan gå tillbaka till **pipeline-körningar** från vyn **aktivitets körningar** genom att välja länken **alla pipeline-körningar** . 
 
@@ -213,7 +215,7 @@ Den här proceduren är valfri i den här självstudien. Du kan skapa en *schema
 
 1. På sidan **Ny utlösare** markerar du kryss rutan **aktive rad** och väljer sedan **OK**. 
 
-   ![Ny Utlösar inställning](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/trigger-settings-next.png" alt-text="Ny utlösare inställning.":::   
 1. Läs varnings meddelandet och välj **OK**.
 
 1. Välj **publicera allt** för att publicera ändringar i Data Factory. 

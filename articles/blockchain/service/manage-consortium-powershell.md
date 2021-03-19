@@ -5,17 +5,17 @@ ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
 ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85211348"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Hantera konsortiums medlemmar i Azure blockchain-tjänsten med hjälp av PowerShell
 
 Du kan använda PowerShell för att hantera blockchain Consortium-medlemmar för din Azure blockchain-tjänst. Medlemmar som har administratörs behörighet kan bjuda in, lägga till, ta bort och ändra roller för alla deltagare i blockchain-konsortiet. Medlemmar som har användar behörighet kan visa alla deltagare i blockchain-konsortiet och ändra deras medlems visnings namn.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Skapa en blockchain-medlem med hjälp av [Azure Portal](create-member.md).
 * Mer information om konsortier, medlemmar och noder finns i [Azure blockchain service Consortium](consortium.md).
@@ -66,7 +66,7 @@ Hitta de andra värdena i Azure Portal:
 
     Ersätt *\<Member account\>* och *\<RootContract address\>* med värdena från portalen.
 
-1. För slut punkts adress väljer du **Transaction**Nodes och väljer sedan **noden standard transaktion**. Standardnoden har samma namn som blockchain-medlemmen.
+1. För slut punkts adress väljer du **Transaction** Nodes och väljer sedan **noden standard transaktion**. Standardnoden har samma namn som blockchain-medlemmen.
 1. Välj **anslutnings strängar**.
 
     ![Anslutningssträngar](./media/manage-consortium-powershell/connection-strings.png)

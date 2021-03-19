@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90708214"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Snabb start: skapa en ny instans av Azure API Management-tjänsten med hjälp av Azure Portal
@@ -26,26 +26,26 @@ I den här snabbstarten beskrivs stegen för att skapa en ny API Management-inst
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
-Logga in på [Azure Portal](https://portal.azure.com).
+Logga in på [Azure-portalen](https://portal.azure.com).
 
 ## <a name="create-a-new-service"></a>Skapa en ny tjänst
 
 1. I menyn i Azure-portalen väljer du **Skapa en resurs**. Du kan också välja **skapa en resurs** på Azures **Start** sida. 
    
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="API Management instans":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Välj Skapa en resurs":::
 
    
 1. På sidan **ny** väljer du **integration**  >  **API Management**.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="API Management instans":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Ny Azure API Management-instans":::
    
 1. På sidan **API Management tjänst** anger du inställningar.
 
-   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="API Management instans":::
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Ny instans":::
    
    | Inställning                 | Beskrivning   |                                                                     
    |-------------------------|-----------------------------------------------|
-   | **Namn**                | Ett unikt namn för din API Management-tjänst. Namnet kan inte ändras senare. Tjänst namnet avser både tjänsten och motsvarande Azure-resurs. <br/> Tjänst namnet används för att generera ett standard domän namn: * \<name\> . Azure-API.net.* Om du vill använda ett anpassat domännamn läser du [Konfigurera ett anpassat domännamn](configure-custom-domain.md). |
+   | **Namn**                | Ett unikt namn för din API Management-tjänst. Namnet kan inte ändras senare. Tjänst namnet avser både tjänsten och motsvarande Azure-resurs. <br/> Tjänst namnet används för att generera ett standard domän namn: *\<name\> . Azure-API.net.* Om du vill använda ett anpassat domännamn läser du [Konfigurera ett anpassat domännamn](configure-custom-domain.md). |
    | **Prenumeration**          | Den prenumeration som den här nya tjänstinstansen kommer att skapas för.   |
    | **Resursgrupp**      |  Välj en ny eller befintlig resurs grupp. En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. |
    | **Plats**          | Välj en geografisk region nära dig från tillgängliga API Management tjänst platser. | 
@@ -72,17 +72,17 @@ När den inte längre behövs kan följande steg användas för att ta bort resu
 
 1. I Azure Portal söker du efter och väljer **resurs grupper**. Du kan också välja **resurs grupper** på **Start** sidan. 
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="API Management instans":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Navigering för resurs grupp":::
 
 1. På sidan **resurs grupper** väljer du din resurs grupp.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="API Management instans":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Välj resursgrupp":::
 
 1. På sidan resurs grupp väljer du **ta bort resurs grupp**. 
    
 1. Skriv namnet på resurs gruppen och välj sedan **ta bort**.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="API Management instans":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Ta bort resursgrupp":::
 
 ## <a name="next-steps"></a>Nästa steg
 

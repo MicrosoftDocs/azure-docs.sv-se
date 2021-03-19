@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87474333"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Flera webbplatser i Application Gateway
@@ -31,11 +31,11 @@ På samma sätt kan du vara värd för flera under domäner för samma överordn
 
 ## <a name="wildcard-host-names-in-listener-preview"></a>Jokertecken värd namn i lyssnare (förhands granskning)
 
-Application Gateway tillåter värdbaserad routning med HTTP (S)-lyssnare för flera platser. Nu kan du använda jokertecken som asterisk (*) och frågetecken (?) i värd namnet och upp till 5 värdnamn per HTTP (S)-lyssnare för flera platser. Exempelvis `*.contoso.com`.
+Application Gateway tillåter värdbaserad routning med HTTP (S)-lyssnare för flera platser. Nu kan du använda jokertecken som asterisk (*) och frågetecken (?) i värd namnet och upp till 5 värdnamn per HTTP (S)-lyssnare för flera platser. Till exempel `*.contoso.com`.
 
 Med ett jokertecken i värd namnet kan du matcha flera värdnamn i en enda lyssnare. Kan till exempel `*.contoso.com` Matcha med `ecom.contoso.com` , `b2b.contoso.com` `customer1.b2b.contoso.com` och så vidare. Med hjälp av en matris med värdnamn kan du konfigurera fler än ett värdnamn för en lyssnare, för att dirigera begär anden till en backend-pool. En lyssnare kan till exempel innehålla `contoso.com, fabrikam.com` som kommer att godkänna begär Anden för båda värd namnen.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Application Gateway för flera platser":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Lyssnare med jokertecken":::
 
 >[!NOTE]
 > Den här funktionen är i för hands version och är endast tillgänglig för Standard_v2 och WAF_v2 SKU för Application Gateway. Läs mer om för hands versionerna i [användnings villkor här](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

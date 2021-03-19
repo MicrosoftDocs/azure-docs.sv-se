@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84806782"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Så här uppgraderar du en inkommande Application Gateway-styrenhet med hjälp av Helm 
@@ -82,7 +82,7 @@ Innan du påbörjar uppgraderings proceduren måste du kontrol lera att du har l
         --version 0.9.0-rc2
     ```
 
-## <a name="rollback"></a>Ånger
+## <a name="rollback"></a>Återställning
 
 Om distributionen av Helm skulle fungera kan du återställa till en tidigare version.
 

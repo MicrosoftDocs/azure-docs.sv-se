@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2020
+ms.date: 03/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: d85d7ef37536b54ecfc1b65d19eafd1d499ca050
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609096"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104603351"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Wdesk
 
@@ -26,9 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Wdesk med Azure Act
 * Gör det möjligt för användarna att logga in automatiskt till Wdesk med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -39,26 +37,25 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Wdesk stöder **SP** -och **IDP** -initierad SSO
-* När du har konfigurerat Wdesk kan du framtvinga sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* Wdesk stöder **SP** -och **IDP** -initierad SSO.
 
-## <a name="adding-wdesk-from-the-gallery"></a>Lägga till Wdesk från galleriet
+## <a name="add-wdesk-from-the-gallery"></a>Lägg till Wdesk från galleriet
 
 Om du vill konfigurera integreringen av Wdesk i Azure AD måste du lägga till Wdesk från galleriet i listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Wdesk** i sökrutan.
 1. Välj **Wdesk** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-wdesk"></a>Konfigurera och testa Azure AD SSO för Wdesk
 
 I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Wdesk baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Wdesk upprättas.
 
-Om du vill konfigurera och testa Azure AD SSO med Wdesk, slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Wdesk:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -67,35 +64,23 @@ Om du vill konfigurera och testa Azure AD SSO med Wdesk, slutför du följande B
     1. **[Skapa Wdesk test User](#create-wdesk-test-user)** -om du vill ha en motsvarighet till B. Simon i Wdesk som är länkad till Azure AD-representation av användare.
 1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
+Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-Utför följande steg för att konfigurera enkel inloggning med Wdesk i Azure AD:
+1. I Azure Portal går du till sidan för program integrering i **Wdesk** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-1. Välj **enkel inloggning** på sidan **Wdesk** Application Integration i [Azure Portal](https://portal.azure.com/).
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
-
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
-
-    ![Skärm bild som visar den grundläggande SAML-konfigurationen, där du kan ange identifierare, svara U R L och välja Spara.](common/idp-intiated.png)
 
     a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
-
-    ![Skärm bild som visar ytterligare U R LS där du kan ange ett tecken på U R L.](common/metadata-upload-additional-signon.png)
 
     I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
@@ -110,61 +95,30 @@ Utför följande steg för att konfigurera enkel inloggning med Wdesk i Azure AD
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
-
-    b. Azure AD-identifierare
-
-    c. Utloggnings-URL
-
+    
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Wdesk.
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Wdesk.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Wdesk**.
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-
-2. I listan program väljer du **Wdesk**.
-
-    ![Wdesk-länken i program listan](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper**.
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **Wdesk**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-wdesk-sso"></a>Konfigurera Wdesk SSO
 
@@ -172,11 +126,11 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 1. Längst ned till vänster klickar du på **admin** och väljer **konto administratör**:
  
-    ![Skärm bild som visar konto administratör som valts på administratörs menyn.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+    ![Skärm bild som visar konto administratör som valts på administratörs menyn.](./media/wdesk-tutorial/account.png)
 
 1. I Wdesk-administratör navigerar du till **säkerhet**, sedan **SAML**  >  **SAML Settings**:
 
-    ![Skärm bild som visar de SAML-inställningar som valts från fliken SAML.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![Skärm bild som visar de SAML-inställningar som valts från fliken SAML.](./media/wdesk-tutorial/settings.png)
 
 1. Under **Inställningar för SAML-användar-ID**, kontrol lera **SAML User ID är Wdesk username**.
 
@@ -184,11 +138,11 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 4. Under **allmänna inställningar** markerar du **aktivera enkel inloggning med SAML**:
 
-    ![Skärm bild som visar Redigera SAML-inställningar där du kan välja Aktivera enkel inloggning med SAML.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![Skärm bild som visar Redigera SAML-inställningar där du kan välja Aktivera enkel inloggning med SAML.](./media/wdesk-tutorial/user-settings.png)
 
 5. Utför följande steg under **tjänst leverantörs information**:
 
-    ![Skärm bild som visar information om tjänst leverantör där du kan ange de värden som beskrivs.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![Skärm bild som visar information om tjänst leverantör där du kan ange de värden som beskrivs.](./media/wdesk-tutorial/service-provider.png)
 
     1. Kopiera **inloggnings-URL** och klistra in den i text rutan för **inloggnings-URL** i Azure Portal.
 
@@ -200,11 +154,11 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 1. Klicka på **Konfigurera IDP inställningar** för att öppna dialog rutan **Redigera inställningar för IDP** . Klicka på **Välj fil** för att hitta **Metadata.xml** filen som du sparade från Azure Portal och ladda sedan upp den.
     
-    ![Skärm bild som visar redigera I d P-inställningar där du kan ladda upp metadata.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![Skärm bild som visar redigera I d P-inställningar där du kan ladda upp metadata.](./media/wdesk-tutorial/metadata.png)
   
 1. Klicka på **Spara ändringar**.
 
-    ![Skärm bild som visar knappen Spara ändringar.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![Skärm bild som visar knappen Spara ändringar.](./media/wdesk-tutorial/save.png)
 
 ### <a name="create-wdesk-test-user"></a>Skapa Wdesk test användare
 
@@ -216,21 +170,21 @@ Om du vill att Azure AD-användare ska kunna logga in på Wdesk måste de tillha
 
 2. Gå till **Administratörs**  >  **konto administratör**.
 
-     ![Skärm bild som visar konto administratör som valts på administratörs menyn.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Skärm bild som visar konto administratör som valts på administratörs menyn.](./media/wdesk-tutorial/account.png)
 
 3. Klicka på **medlemmar** under **personer**.
 
 4. Klicka nu på **Lägg till medlem** för att öppna dialog rutan **Lägg till medlem** . 
    
-    ![Skärm bild som visar fliken medlemmar där du kan välja Lägg till medlem.](./media/wdesk-tutorial/createuser1.png)  
+    ![Skärm bild som visar fliken medlemmar där du kan välja Lägg till medlem.](./media/wdesk-tutorial/create-user-1.png)  
 
 5. I text rutan **användare** anger du användar namnet för användaren, till exempel b.simon@contoso.com och klickar på knappen **Fortsätt** .
 
-    ![Skärm bild som visar dialog rutan Lägg till medlem där du kan ange en användare.](./media/wdesk-tutorial/createuser3.png)
+    ![Skärm bild som visar dialog rutan Lägg till medlem där du kan ange en användare.](./media/wdesk-tutorial/create-user-3.png)
 
 6.  Ange informationen på det sätt som visas nedan:
   
-    ![Skärm bild som visar dialog rutan Lägg till medlem där du kan lägga till grundläggande information för en användare.](./media/wdesk-tutorial/createuser4.png)
+    ![Skärm bild som visar dialog rutan Lägg till medlem där du kan lägga till grundläggande information för en användare.](./media/wdesk-tutorial/create-user-4.png)
  
     a. I text rutan **e-postadress** anger du e-postadressen till användaren b.simon@contoso.com .
 
@@ -240,20 +194,24 @@ Om du vill att Azure AD-användare ska kunna logga in på Wdesk måste de tillha
 
 7. Klicka på knappen **Spara medlem** .  
 
-    ![Skärm bild som visar skicka Välkommen-e-post med knappen Spara medlem.](./media/wdesk-tutorial/createuser5.png)
+    ![Skärm bild som visar skicka Välkommen-e-post med knappen Spara medlem.](./media/wdesk-tutorial/create-user-5.png)
 
-### <a name="test-sso"></a>Testa SSO 
+## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på panelen Wdesk på åtkomst panelen, bör du loggas in automatiskt på den Wdesk som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Wdesk-inloggnings-URL där du kan starta inloggnings flödet.  
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Gå till Wdesk-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den Wdesk som du ställer in SSO för. 
 
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen Wdesk i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på Wdesk som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat Wdesk kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87327369"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Utveckla Java Service Fabric-program med Visual Studio Code
@@ -83,7 +83,7 @@ Kommentera ut kommandot på rad 6 (Använd ' # ') och Lägg till följande komma
    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingDataService.jar
    ```
 
-2. Uppdatera *röstnings-VotingApplication/ApplicationManifest.xml- * filen. Ange attributen **MinReplicaSetSize** och **TargetReplicaSetSize** till "1" i elementet **StatefulService** :
+2. Uppdatera *röstnings-VotingApplication/ApplicationManifest.xml-* filen. Ange attributen **MinReplicaSetSize** och **TargetReplicaSetSize** till "1" i elementet **StatefulService** :
    
    ```xml
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">

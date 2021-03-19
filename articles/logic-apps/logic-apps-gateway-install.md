@@ -4,18 +4,18 @@ description: Innan du kan komma åt data lokalt från Azure Logic Apps kan du h�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 05/15/2020
-ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: 4b2559ad20036870c6df5c0662bb973f35155bfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054779"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576806"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installera lokal datagateway för Azure Logic Apps
 
-Innan du kan [ansluta till lokala data källor från Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)kan du hämta och installera den lokala [datagatewayen](https://aka.ms/on-premises-data-gateway-installer) på en lokal dator. Gatewayen fungerar som en brygga som ger snabb dataöverföring och kryptering mellan lokala datakällor och dina logikappar. Du kan använda samma Gateway-installation med andra moln tjänster, till exempel Power BI, energi automatisering, Power Apps och Azure Analysis Services. Information om hur du använder gatewayen med dessa tjänster finns i följande artiklar:
+Innan du kan [ansluta till lokala data källor från Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)kan du hämta och installera den lokala [datagatewayen](https://aka.ms/on-premises-data-gateway-installer) på en lokal dator. Gatewayen fungerar som en brygga som ger snabb dataöverföring och kryptering mellan lokala datakällor och dina logikappar. Du kan använda samma Gateway-installation med andra moln tjänster, t. ex. energi automatisering, Power BI, Power Apps och Azure Analysis Services. Information om hur du använder gatewayen med dessa tjänster finns i följande artiklar:
 
 * [Microsoft Power automatisering av lokal datagateway](/power-automate/gateway-reference)
 * [Microsoft Power BI lokal datagateway](/power-bi/service-gateway-onprem)
@@ -71,7 +71,12 @@ Den här artikeln visar hur du hämtar, installerar och konfigurerar din lokala 
 
   * Om du planerar att använda Windows-autentisering kontrollerar du att du installerar gatewayen på en dator som är medlem i samma Active Directory-miljö som dina data källor.
 
-  * Den region som du väljer för din gateway-installation är samma plats som du måste välja när du senare skapar Azure Gateway-resursen för din Logic app. Som standard är den här regionen samma plats som din Azure AD-klient som hanterar ditt Azure-konto. Du kan dock ändra platsen under Gateway-installationen.
+  * Den region som du väljer för din gateway-installation är samma plats som du måste välja när du senare skapar Azure Gateway-resursen för din Logic app. Som standard är den här regionen samma plats som din Azure AD-klient som hanterar ditt Azure-användarkonto. Du kan dock ändra platsen under installationen av gatewayen eller senare.
+
+    > [!IMPORTANT]
+    > Under Gateway-installationen är kommandot **ändra region** inte tillgängligt om du har loggat in med ditt Azure Government-konto, som är associerat med en Azure Active Directory-klient (Azure AD) i [Azure Government molnet](../azure-government/compare-azure-government-global-azure.md). Gatewayen använder automatiskt samma region som användar kontots Azure AD-klient.
+    > 
+    > Om du vill fortsätta använda ditt Azure Government-konto, men konfigurera gatewayen att fungera i det globala Azure-molnet för flera innehavare i stället, måste du först logga in under Gateway-installationen med `prod@microsoft.com` användar namnet. Den här lösningen tvingar gatewayen att använda det globala Azure-molnet för flera innehavare, men du kan fortfarande fortsätta att använda ditt Azure Government-konto.
 
   * Om du uppdaterar din gateway-installation måste du först avinstallera din aktuella Gateway för att få en renare upplevelse.
 

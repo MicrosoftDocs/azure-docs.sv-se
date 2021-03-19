@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792158"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Verifiera XML för B2B-företagsintegrering i Azure Logic Apps med Enterprise-integrationspaket
@@ -37,7 +37,7 @@ I B2B-scenarier måste handels partner i ett avtal ofta se till att de meddeland
 
    Om du vill lägga till en åtgärd mellan befintliga steg flyttar du pekaren över pilen som kopplar stegen så att plus tecknet ( **+** ) visas. Välj plus tecknet och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**väljer du **inbyggt**. I rutan Sök anger `xml validation` du som filter. I listan åtgärder väljer du **XML-validering**.
+1. Under **Välj en åtgärd** väljer du **inbyggt**. I rutan Sök anger `xml validation` du som filter. I listan åtgärder väljer du **XML-validering**.
 
    ![Sök och Välj åtgärden "XML-verifiering"](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 

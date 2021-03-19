@@ -4,10 +4,10 @@ description: Lista över Service Bus undantag som har inAzure Resource Manager o
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a0b0338da0f002c7b667748ffd2bf5a40c91c580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85336968"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Undantag för Service Bus Resource Manager
@@ -29,7 +29,7 @@ Nedan visas de olika undantag/fel som finns på Azure Resource Manager.
 | Felaktig begäran | 40000 | Subcode = 40000. Det går inte att ändra värdet för egenskapen "requiresDuplicateDetection" för en befintlig kö (eller ämne). | Dubblettidentifiering måste aktive ras/inaktive ras när entiteten skapas. Det går inte att ändra konfigurations parametern för dubblettidentifiering när den har skapats. | Om du vill aktivera dubblettidentifiering i en tidigare skapad kö/ett ämne kan du skapa en ny kö/ett ämne med dubblettidentifiering och sedan vidarebefordra från den ursprungliga kön till den nya kön/det nya avsnittet. |
 | Felaktig begäran | 40000 | Subcode = 40000. Det angivna värdet 16384 är ogiltigt. Egenskapen MaxSizeInMegabytes måste vara något av följande värden: 1024; 2048; 3072; 4096; 5 120. | MaxSizeInMegabytes-värdet är ogiltigt. | Se till att MaxSizeInMegabytes är en av följande: 1024, 2048, 3072, 4096, 5120. |
 | Felaktig begäran | 40000 | Subcode = 40000. Det går inte att ändra partitionering för kö/ämne. | Det går inte att ändra partitionering för entiteten. | Skapa en ny entitet (kö eller ämne) och aktivera partitioner. | 
-| Felaktig begäran | ingen | Namn *områdets namn område* finns inte. | Namn området finns inte i din Azure-prenumeration. | Försök att lösa det här felet <ul> <li> Se till att Azure-prenumerationen är korrekt. </li> <li> Se till att namn området finns. </li> <li> Kontrol lera att namn områdets namn är korrekt (inga stavfel eller null-strängar). </li> </ul> | 
+| Felaktig begäran | inget | Namn *områdets namn område* finns inte. | Namn området finns inte i din Azure-prenumeration. | Försök att lösa det här felet <ul> <li> Se till att Azure-prenumerationen är korrekt. </li> <li> Se till att namn området finns. </li> <li> Kontrol lera att namn områdets namn är korrekt (inga stavfel eller null-strängar). </li> </ul> | 
 | Felaktig begäran | 40400 | Subcode = 40400. Målentiteten för automatisk vidarebefordran finns inte. | Mål enheten för den vidarebefordrande målentiteten finns inte. | Målentiteten (kö eller ämne) måste finnas innan källan skapas. Försök igen när du har skapat målentiteten. |
 | Felaktig begäran | 40000 | Subcode = 40000. Den angivna lås tiden överskrider den tillåtna max längden på 5 minuter. | Den tid som ett meddelande kan låsas upp måste vara mellan 1 minut (minst) och 5 minuter (max). | Se till att den angivna lås tiden är mellan 1 min och 5 minuter. |
 | Felaktig begäran | 40000 | Subcode = 40000. Det går inte att aktivera både DelayedPersistence och RequiresDuplicateDetection-egenskapen tillsammans. | Entiteter med dubblettidentifiering aktiverat på dem måste vara permanenta, så persistence kan inte fördröjas. | Läs mer om [dubblettidentifiering](duplicate-detection.md) |
@@ -48,7 +48,7 @@ Precis som i HTTP visar "Felkod 429" för många begär Anden. Det innebär att 
 | 429 | 40900 | Subcode = 40900. Uppstod. Du begär en åtgärd som inte är tillåten i resursens aktuella tillstånd. | Detta tillstånd kan uppstå när flera begär Anden görs för att utföra åtgärderna på samma entitet (kö, ämne, prenumeration eller regel) på samma gång. | Vänta några sekunder och försök igen |
 | 429 | 40901 | Begäran om enhets *enhets namn* står i konflikt med en annan begäran | En annan motstridig åtgärd pågår på samma resurs/entitet | Vänta tills den föregående åtgärden har slutförts innan du försöker igen |
 | 429 | 40901 | En annan uppdateringsbegäran pågår för entitetens *enhets namn*. | En annan motstridig åtgärd pågår på samma resurs/entitet | Vänta tills den föregående åtgärden har slutförts innan du försöker igen |
-| 429 | ingen | Resurs konflikt uppstod. En annan motstridig åtgärd kanske pågår. Om det här är ett nytt försök för den misslyckade åtgärden, väntar det fortfarande på att rensa i bakgrunden. Försök igen senare. | Detta tillstånd kan uppstå när det finns en väntande åtgärd mot samma entitet. | Vänta tills den föregående åtgärden har slutförts innan du försöker igen. |
+| 429 | inget | Resurs konflikt uppstod. En annan motstridig åtgärd kanske pågår. Om det här är ett nytt försök för den misslyckade åtgärden, väntar det fortfarande på att rensa i bakgrunden. Försök igen senare. | Detta tillstånd kan uppstå när det finns en väntande åtgärd mot samma entitet. | Vänta tills den föregående åtgärden har slutförts innan du försöker igen. |
 
 
 ## <a name="error-code-not-found"></a>Felkod: hittades inte
@@ -57,10 +57,10 @@ Den här fel klassen anger att resursen inte hittades.
 
 | Felkod | Fel under kod | Felmeddelande | Beskrivning | Rekommendation |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Hittades inte | ingen | Det gick inte att hitta entitetens *enhets namn* . | Den entitet som åtgärden inte hittades mot. | Kontrol lera att entiteten finns och försök igen. |
-| Hittades inte | ingen | Hittades inte. Åtgärden finns inte. | Åtgärden som du försöker utföra finns inte. | Kontrol lera åtgärden och försök igen. |
-| Hittades inte | ingen | Den inkommande begäran identifieras inte som en begäran om att lagra en namn områdes princip. | Den inkommande begär ande texten är null och kan därför inte köras som en begäran. | Kontrol lera begär ande texten och se till att den inte är null. | 
-| Hittades inte | ingen | Det gick inte att hitta *enhets namnet* för meddelande enheten. | Det gick inte att hitta den entitet som du försöker köra åtgärden mot. | Kontrol lera om entiteten finns och försök sedan igen. |
+| Hittades inte | inget | Det gick inte att hitta entitetens *enhets namn* . | Den entitet som åtgärden inte hittades mot. | Kontrol lera att entiteten finns och försök igen. |
+| Hittades inte | inget | Hittades inte. Åtgärden finns inte. | Åtgärden som du försöker utföra finns inte. | Kontrol lera åtgärden och försök igen. |
+| Hittades inte | inget | Den inkommande begäran identifieras inte som en begäran om att lagra en namn områdes princip. | Den inkommande begär ande texten är null och kan därför inte köras som en begäran. | Kontrol lera begär ande texten och se till att den inte är null. | 
+| Hittades inte | inget | Det gick inte att hitta *enhets namnet* för meddelande enheten. | Det gick inte att hitta den entitet som du försöker köra åtgärden mot. | Kontrol lera om entiteten finns och försök sedan igen. |
 
 ## <a name="error-code-internal-server-error"></a>Felkod: internt Server fel
 
@@ -76,5 +76,5 @@ Den här fel klassen indikerar frånvaron av auktorisering för att köra komman
 
 | Felkod | Fel under kod | Felmeddelande | Beskrivning | Rekommendation |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Behörighet saknas | ingen | Ogiltig åtgärd för sekundärt namn område. Det sekundära namn området är skrivskyddat. | Åtgärden utfördes mot det sekundära namn området, som installeras som en skrivskyddad namnrymd. | Gör om kommandot mot det primära namn området. Läs mer om [sekundär namnrymd](service-bus-geo-dr.md) |
-| Behörighet saknas | ingen | MissingToken: det gick inte att hitta Authorization-huvudet. | Felet uppstår när auktoriseringen har null eller felaktiga värden. | Se till att det token-värde som anges i Authorization-huvudet är korrekt och inte null. |
+| Behörighet saknas | inget | Ogiltig åtgärd för sekundärt namn område. Det sekundära namn området är skrivskyddat. | Åtgärden utfördes mot det sekundära namn området, som installeras som en skrivskyddad namnrymd. | Gör om kommandot mot det primära namn området. Läs mer om [sekundär namnrymd](service-bus-geo-dr.md) |
+| Behörighet saknas | inget | MissingToken: det gick inte att hitta Authorization-huvudet. | Felet uppstår när auktoriseringen har null eller felaktiga värden. | Se till att det token-värde som anges i Authorization-huvudet är korrekt och inte null. |

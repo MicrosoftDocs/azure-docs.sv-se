@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898187"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654738"
 ---
 # <a name="train-clustering-model"></a>Träna klustringsmodellen
 
@@ -35,7 +35,7 @@ Modulen tar en modell för en modell som inte är tränad och som du redan har k
     
 3.  Koppla en data uppsättning för träning till den högra indatan i **träna kluster modellen**.
   
-5.  I **kolumn uppsättning**väljer du de kolumner från data uppsättningen som ska användas för att skapa kluster. Se till att välja kolumner som gör lämpliga funktioner: Undvik till exempel att använda ID: n eller andra kolumner som har unika värden, eller kolumner som har samma värden.
+5.  I **kolumn uppsättning** väljer du de kolumner från data uppsättningen som ska användas för att skapa kluster. Se till att välja kolumner som gör lämpliga funktioner: Undvik till exempel att använda ID: n eller andra kolumner som har unika värden, eller kolumner som har samma värden.
 
     Om en etikett är tillgänglig kan du antingen använda den som en funktion eller lämna den.  
   
@@ -52,6 +52,9 @@ När utbildningen har slutförts:
 + Om du vill spara en ögonblicks bild av den tränade modellen väljer du fliken **utdata** i den högra panelen i modulen **träna modell** . Välj ikonen **registrera data uppsättning** för att spara modellen som en återanvändbar modul.
 
 + Använd [tilldela data till kluster](assign-data-to-clusters.md)om du vill generera Poäng från modellen.
+
+> [!NOTE]
+> Om du behöver distribuera den tränade modellen i designern kontrollerar du att [tilldela data till kluster](assign-data-to-clusters.md) i stället för **Poäng modell** är anslutna till indata för [webb tjänstens output-modul](web-service-input-output.md) i härlednings pipeline.
 
 ## <a name="next-steps"></a>Nästa steg
 

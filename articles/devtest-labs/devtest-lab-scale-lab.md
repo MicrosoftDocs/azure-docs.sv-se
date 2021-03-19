@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs hur du kan skala ditt labb i Azure Dev
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87533962"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalnings kvoter och begränsningar i DevTest Labs
@@ -26,7 +26,7 @@ Varje prenumeration har till exempel en standard kvot på 20 kärnor. Så om du 
 De här stegen visar hur du visar de aktuella kvoterna i din prenumeration för vissa Azure-resurser och hur många procent av varje kvot du har använt.
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **fler tjänster**och välj sedan **fakturering** i listan.
+1. Välj **fler tjänster** och välj sedan **fakturering** i listan.
 1. Välj en prenumeration på bladet fakturering.
 4. Välj **användning + kvoter**.
 
@@ -41,7 +41,7 @@ Om du når en kvot gräns kan standard gränsen för en resurs i en prenumeratio
 
 De här stegen visar hur du begär en kvot ökning via [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Välj **fler tjänster**, Välj **fakturering**och välj sedan **användning + kvoter**.
+1. Välj **fler tjänster**, Välj **fakturering** och välj sedan **användning + kvoter**.
 1. På bladet användning och kvoter väljer du knappen för att **öka begäran** .
 
    ![Begär öknings knapp](./media/devtest-lab-scale-lab/devtestlab-request-increase-new.png)

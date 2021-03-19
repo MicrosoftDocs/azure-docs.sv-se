@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67187374"
 ---
-| **Gräns för identifierare** | **Gräns** | **Kommentarer** |
+| **Gräns för identifierare** | **Gränserna** | **Kommentarer** |
 | --- | --- | --- |
 | Total kapacitet (inklusive moln) |Upp till 64 TB per virtuell enhet |Du kan redundansväxla en fullständig virtuell StorSimple-matris till en annan tom matris. Om du försöker återställa till samma enhet måste du kontrol lera att det finns tillräckligt med utrymme på enheten för att slutföra den här åtgärden. När du har överskridit 32 TB kan du inte återställa till samma enhet. |
 | Maximalt antal autentiseringsuppgifter per enhet för lagrings konto |1 | |

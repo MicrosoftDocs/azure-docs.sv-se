@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/1/2016
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cb5b6b1a2d890fe49d78da17d549c5676557b971
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967099"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654259"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Använd tjänsten StorSimple Enhetshanteraren för att administrera din StorSimple virtuella matris
 ![konfigurations process flöde](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -35,14 +35,12 @@ När du har läst den här artikeln får du veta hur du:
 
 > [!NOTE]
 > Om du vill visa de hanterings alternativ som är tillgängliga för enheten StorSimple 8000-serien går du till [använda StorSimple Manager-tjänsten för att administrera StorSimple-enheten](./storsimple-8000-manager-service-administration.md).
-> 
-> 
 
 ## <a name="connect-to-the-storsimple-device-manager-service"></a>Ansluta till StorSimple-Enhetshanteraren tjänsten
 Tjänsten StorSimple Enhetshanteraren körs i Microsoft Azure och ansluter till flera virtuella StorSimple-matriser. Du kan använda en central Microsoft Azure-portalen som körs i en webbläsare för att hantera dessa enheter. Gör så här för att ansluta till StorSimple-Enhetshanteraren tjänsten:
 
 #### <a name="to-connect-to-the-service"></a>Så här ansluter du till tjänsten
-1. Gå till [https://ms.portal.azure.com](https://ms.portal.azure.com).
+1. Gå till [https://portal.azure.com](https://portal.azure.com).
 2. Logga in på Microsoft Azure-portalen (som finns längst upp till höger i fönstret) med dina Microsoft-konto autentiseringsuppgifter.
 3. Navigera till Browse--> ' filter ' på StorSimple Device Managers om du vill visa alla enhets hanterare i en specifik prenumeration.
 
@@ -50,6 +48,8 @@ Tjänsten StorSimple Enhetshanteraren körs i Microsoft Azure och ansluter till 
 I följande tabell visas en översikt över alla vanliga hanterings uppgifter och komplexa arbets flöden som kan utföras på bladet StorSimple Enhetshanteraren tjänst Sammanfattning. De här uppgifterna är organiserade baserat på de blad där de initieras.
 
 Klicka på lämplig procedur i tabellen om du vill ha mer information om varje arbets flöde.
+
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple Enhetshanteraren arbets flöden
 | Om du vill göra det här... | Använd den här proceduren |

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
 ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87810232"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Växlar från Express.js till Azure Functions
@@ -20,7 +20,7 @@ När du migrerar kod till en server lös arkitektur, påverkar omfabriker Expres
 
 - **Mellanprogram**: Express.js innehåller en robust samling av mellanprogram. Många mellanliggande moduler krävs inte längre med hänsyn till Azure Functions och [Azure API Management](../api-management/api-management-key-concepts.md) -funktioner. Se till att du kan replikera eller ersätta all logik som hanteras av grundläggande mellanprogram innan du migrerar slut punkter.
 
-- **Olika API: er**som används för att bearbeta både förfrågningar och svar skiljer sig mellan Azure Functions och Express.js. I följande exempel beskrivs de nödvändiga ändringarna.
+- **Olika API: er** som används för att bearbeta både förfrågningar och svar skiljer sig mellan Azure Functions och Express.js. I följande exempel beskrivs de nödvändiga ändringarna.
 
 - **Standard väg**: Azure Functions slut punkter visas som standard under `api` vägen. Routningsregler kan konfigureras via [ `routePrefix` i _host.jsi_ filen](./functions-bindings-http-webhook-output.md#hostjson-settings).
 

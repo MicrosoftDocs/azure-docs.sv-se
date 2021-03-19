@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74184256"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Vanliga frågor och svar om Azure Internet Analyzer (för hands version)
@@ -26,7 +26,7 @@ För hands versionen är tillgänglig för utvalda kunder. Om du är intresse ra
 2. Gå till **prenumerations** sidan.
 3. Klicka på den Azure-prenumeration som du planerar att använda Internet Analyzer med.
 4. Gå till **resurs leverantörs** inställningarna för prenumerationen.
-5. Sök efter **Microsoft. Network** och klicka på knappen **Registrera** (eller **Registrera**om).
+5. Sök efter **Microsoft. Network** och klicka på knappen **Registrera** (eller **Registrera** om).
 ![åtkomstbegäran](./media/ia-faq/request-preview-access.png)
 
 6. [Begär godkännande](https://aka.ms/internetAnalyzerContact) genom att ange din e-postadress och det ID för Azure-prenumeration som användes för att göra åtkomstbegäran.
@@ -71,7 +71,7 @@ Följande förkonfigurerade slut punkter är tillgängliga under för hands vers
     * Asien, östra
     * East US
     * Japan, västra
-    * Norra Europa
+    * Europa, norra
     * Sydafrika, norra
     * Sydostasien
     * Förenade Arabemiraten, norra

@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85201216"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en teknisk profil för anspråks omvandling i en Azure Active Directory B2C anpassad princip
@@ -82,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-Den tekniska profilen för anspråks omvandling gör att du kan köra en anspråks omvandling från varje användar resas Dirigerings steg. I följande exempel anropar Orchestration-steget ett av de tekniska profilerna för att ta bort länkar, till exempel **Unlink-Facebook-OAuth**. Den här tekniska profilen anropar **RemoveAlternativeSecurityIdByIdentityProvider**för anspråk omvandling, som genererar ett nytt **AlternativeSecurityIds2** -anspråk som innehåller en lista över sociala identiteter för användare, samtidigt som Facebook-identiteten tas bort från samlingarna.
+Den tekniska profilen för anspråks omvandling gör att du kan köra en anspråks omvandling från varje användar resas Dirigerings steg. I följande exempel anropar Orchestration-steget ett av de tekniska profilerna för att ta bort länkar, till exempel **Unlink-Facebook-OAuth**. Den här tekniska profilen anropar **RemoveAlternativeSecurityIdByIdentityProvider** för anspråk omvandling, som genererar ett nytt **AlternativeSecurityIds2** -anspråk som innehåller en lista över sociala identiteter för användare, samtidigt som Facebook-identiteten tas bort från samlingarna.
 
 ```xml
 <UserJourney Id="AccountUnLink">
@@ -104,11 +104,11 @@ Den tekniska profilen för anspråks omvandling gör att du kan köra en ansprå
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | Inga | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false`   (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
+| IncludeClaimResolvingInClaimsHandling  | Inga | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
 
 ## <a name="use-a-validation-technical-profile"></a>Använd en teknisk verifierings profil
 
-En teknisk profil för anspråks omvandling kan användas för att validera information. I följande exempel ber den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md) med namnet **LocalAccountSignUpWithLogonEmail** användaren att ange e-postmeddelandet två gånger och anropar sedan den [tekniska profilen](validation-technical-profile.md) med namnet **validate-email** för att verifiera e-postmeddelandena. Den tekniska profilen för **validerings-e-post** anropar **AssertEmailAreEqual** för anspråk och jämför de två **e-postmeddelandena** och **emailRepeat**och genererar ett undantag om de inte är lika enligt den angivna jämförelsen.
+En teknisk profil för anspråks omvandling kan användas för att validera information. I följande exempel ber den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md) med namnet **LocalAccountSignUpWithLogonEmail** användaren att ange e-postmeddelandet två gånger och anropar sedan den [tekniska profilen](validation-technical-profile.md) med namnet **validate-email** för att verifiera e-postmeddelandena. Den tekniska profilen för **validerings-e-post** anropar **AssertEmailAreEqual** för anspråk och jämför de två **e-postmeddelandena** och **emailRepeat** och genererar ett undantag om de inte är lika enligt den angivna jämförelsen.
 
 ```xml
 <ClaimsTransformations>

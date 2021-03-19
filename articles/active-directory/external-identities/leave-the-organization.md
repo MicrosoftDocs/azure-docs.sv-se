@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910078"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Lämna en organisation som en gästanvändare
@@ -32,12 +32,12 @@ Följ dessa steg om du vill lämna en organisation.
 1. Gå till profil sidan för åtkomst panelen genom att utföra något av följande steg:
    
    - Klicka på ditt namn längst upp till höger i [Azure Portal](https://portal.azure.com)och välj **Visa konto**.
-   - Öppna [åtkomst panelen](https://myapps.microsoft.com), klicka på ditt namn längst upp till höger och bredvid **organisationer**väljer du inställnings ikonen (kugg hjul).
+   - Öppna [åtkomst panelen](https://myapps.microsoft.com), klicka på ditt namn längst upp till höger och bredvid **organisationer** väljer du inställnings ikonen (kugg hjul).
  
    ![Skärm bild som visar användar inställningar i åtkomst panelen](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > Om du inte redan har loggat in på den organisation som du vill lämna klickar du på Logga in **för att lämna organisations** länken bredvid organisationens namn under **organisationer**. När du har loggat in klickar du på ditt namn i det övre högra hörnet och bredvid **organisationer**väljer du inställnings ikonen (kugg hjul).
+   > Om du inte redan har loggat in på den organisation som du vill lämna klickar du på Logga in **för att lämna organisations** länken bredvid organisationens namn under **organisationer**. När du har loggat in klickar du på ditt namn i det övre högra hörnet och bredvid **organisationer** väljer du inställnings ikonen (kugg hjul).
 
 3. Under **organisationer**, leta upp den organisation som du vill lämna och välj **lämna organisation**.
 

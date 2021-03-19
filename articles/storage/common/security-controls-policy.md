@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Storage
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Storage. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3f3e8bda82e2fc700fa5cfb881d82abd79258f1e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: e906be2b6cfb74b22f0db6debe64e12f03b2e06a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634096"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576498"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Azure Policy kontroll av efterlevnad för Azure Storage
 

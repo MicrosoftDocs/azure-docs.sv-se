@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87495987"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurera haveriberedskap för virtuella Hyper-V-datorer till en sekundär lokal plats
@@ -112,7 +112,7 @@ Installera Azure Site Recovery-providern på VMM-servrarna och identifiera och r
 
 Välj VMM-målservern och molnet:
 
-1. Klicka på **Förbered infrastruktur**  >  **mål**och välj mål-VMM-servern.
+1. Klicka på **Förbered infrastruktur**  >  **mål** och välj mål-VMM-servern.
 2. VMM-moln som är synkroniserade med Site Recovery visas. Välj målmolnet.
 
    ![Skärm bild av målets VMM-Server och moln val.](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
@@ -123,13 +123,13 @@ Välj VMM-målservern och molnet:
 Innan du börjar bör du se till att alla värdar som använder principen har samma operativsystem. Om värdarna kör olika versioner av Windows Server behöver du flera replikeringsprinciper.
 
 1. Skapa en ny replikeringsprincip genom att klicka på **Förbered infrastruktur**  >  **replikeringsinställningar**  >  **+ skapa och koppla**.
-2. I **skapa och associera princip**anger du ett princip namn. Käll- och måltypen ska vara **Hyper-V**.
+2. I **skapa och associera princip** anger du ett princip namn. Käll- och måltypen ska vara **Hyper-V**.
 3. I **Hyper-V-värdversion** väljer du vilket operativsystem som körs på värden.
 4. I **Autentiseringstyp** och **Autentiseringsport** anger du hur trafik autentiseras mellan primär- och återställnings-Hyper-V-värdservrarna.
     - Välj **Certifikat** såvida du inte har en fungerande Kerberos-miljö. Azure Site Recovery kommer automatiskt att konfigurera certifikat för HTTPS-autentisering. Du behöver inte göra något manuellt.
     - Som standard öppnas port 8083 och 8084 (för certifikat) i Windows-brandväggen på Hyper-V-värdservrarna.
     - Om du väljer **Kerberos** används en Kerberos-biljett för ömsesidig autentisering av värdservrarna. Kerberos är endast relevant för Hyper-V-värdservrar som körs på Windows Server 2012 R2 eller senare.
-1. I **kopierings frekvens**anger du hur ofta du vill replikera delta data efter den inledande replikeringen (var 30: e sekund, 5 eller 15 minuter).
+1. I **kopierings frekvens** anger du hur ofta du vill replikera delta data efter den inledande replikeringen (var 30: e sekund, 5 eller 15 minuter).
 2. I **Kvarhållning av återställningspunkt** anger du hur länge (i antal timmar) kvarhållningsperioden för varje återställningspunkt ska vara. Replikerade datorer kan återställas till valfri punkt inom en period.
 3. I **Appkompatibel ögonblicksbildsfrekvens** anger du hur ofta (1–12 timmar) återställningspunkter som innehåller programkonsekventa ögonblicksbilder skapas. Hyper-V använder två typer av ögonblicksbilder:
     - **Standardögonblicksbild**: tillhandahåller en inkrementell ögonblicksbild av hela den virtuella datorn.

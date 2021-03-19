@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530445"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Snabb start: använda MetaMask för att ansluta och distribuera ett smart kontrakt
@@ -27,7 +27,7 @@ I den här snabb starten ska du använda MetaMask för att ansluta till ett Azur
 
 Du behöver Azure blockchain-tjänstens slut punkts adress för att ansluta till blockchain-nätverket. Slut punkts adressen och åtkomst nycklarna finns i Azure Portal.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Navigera till din Azure blockchain service-medlem.
 1. Välj **Transactions-noder** och noden standard transaktions nod.
 
@@ -45,7 +45,7 @@ Du behöver Azure blockchain-tjänstens slut punkts adress för att ansluta till
 
     ![Anpassat RPC](./media/connect-metamask/custom-rpc.png)
 
-1. I **nytt nätverk > ny RPC-URL**klistrar du in slut punkts adressen som du kopierade ovan.
+1. I **nytt nätverk > ny RPC-URL** klistrar du in slut punkts adressen som du kopierade ovan.
 1. Välj **Spara**.
 
     Om anslutningen lyckades visas det privata nätverket i list rutan nätverk.
@@ -104,7 +104,7 @@ Remix är en webbläsarbaserad utvecklings miljö. Med MetaMask och Remix tillsa
 
     För ett offentligt blockchain nätverk skulle du behöva betala för transaktions kostnaden. Eftersom det här är ett privat nätverk i ett konsortium kan du ställa in gas priset på noll.
 
-1.  Välj **gas avgift > redigera > Avancerat**och Ställ in **gas priset** på 0.
+1.  Välj **gas avgift > redigera > Avancerat** och Ställ in **gas priset** på 0.
 
     ![Gas pris](./media/connect-metamask/gas-price.png)
 
@@ -130,7 +130,7 @@ Fel söknings fönstret för Remix visar information om transaktionerna på bloc
 
 ![Fel söknings historik](./media/connect-metamask/debug.png)
 
-Du kan se det **enkla** uppdraget att skapa, transaktioner för **enkel. Lägg till**och anropa **enkel. get**.
+Du kan se det **enkla** uppdraget att skapa, transaktioner för **enkel. Lägg till** och anropa **enkel. get**.
 
 Om du vill se transaktions historiken i MetaMask öppnar du MetaMask Browser-tillägget och tittar i avsnittet **Historik** för en logg över det distribuerade kontraktet och transaktionerna.
 

@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 4adfb63ecab72eb42e188af472bb5387a0276a79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723783"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596016"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regioner och Tillgänglighetszoner i Azure
 
@@ -23,7 +23,7 @@ Microsoft Azure-tjänster är tillgängliga globalt för att driva moln åtgärd
 
 För att bättre förstå regioner och Tillgänglighetszoner i Azure, hjälper det till att förstå viktiga termer eller begrepp.
 
-| Term eller begrepp | Beskrivning |
+| Term eller begrepp | Description |
 | --- | --- |
 | region | En uppsättning data Center som distribueras inom en latens-definierad perimeter och är anslutna via ett dedikerat regionalt nätverk med låg latens. |
 | geography | Ett område i världen som innehåller minst en Azure-region. Geografiska områden definierar en diskret marknad som bevarar data placering och kontroll gränser. Geografiska områden hjälper kunder med specifika behov kring dataplacering och regelefterlevnad att hålla sina data och program nära. De geografiska områdena är feltoleranta för att motstå ett fullständigt fel i regionen via anslutningen till vår dedikerade nätverks infrastruktur med hög kapacitet. |
@@ -82,7 +82,7 @@ Om ett tjänst erbjudande inte är tillgängligt i en speciell region kan du del
 | Rekommenderas | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | :heavy_check_mark: | :heavy_check_mark: |
 | Alternativa | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | Demand-driven | Ej tillämpligt | :heavy_check_mark: |
 
-### <a name="services-by-category-with-availability-zones"></a>Tjänster efter kategori med Tillgänglighetszoner
+### <a name="services-by-category"></a>Tjänster efter kategori
 
 Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundläggande, traditionell och specialiserad. Tjänste kategorier tilldelas allmänt tillgängliga. Ofta startar tjänster deras livs cykel som en specialiserad tjänst och när efter frågan och användnings ökningar kan befordras till vanlig eller grundläggande. I följande tabell visas kategorin för tjänster som grundläggande, traditionell. Tänk på följande om tabellen:
 
@@ -101,7 +101,7 @@ Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundlägga
 > | Azure ExpressRoute                     | Azure Bastion                                     | 
 > | Azure Public IP                        | Azure Cache for Redis                             | 
 > | Azure SQL Database                     | Azure Cognitive Search                            | 
-> | Azure SQL: hanterad instans           | Azure Cognitive Services                          | 
+> | Azure SQL Managed Instance             | Azure Cognitive Services                          | 
 > | Disklagring                           | Azure Cognitive Services: Visuellt innehåll         | 
 > | Event Hubs                             | Azure-Cognitive Services: Content Moderator       | 
 > | Key Vault                              | Azure Cognitive Services: ansikte                    | 
@@ -172,7 +172,7 @@ Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundlägga
 > | Azure Database Migration Service                     |
 > | Dedikerad HSM i Azure                                  |
 > | Azure Digital Twins                                  |
-> | Azure Health-robot                                     |
+> | Azure Health Bot                                     |
 > | Azure HPC Cache                                      |
 > | Azure Lab Services                                   |
 > | Azure NetApp Files                                   |

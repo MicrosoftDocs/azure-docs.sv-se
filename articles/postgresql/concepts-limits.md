@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fa6e108550b1417f736d1caff5cafd3e16f63a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707531"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595013"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Gränser i Azure Database for PostgreSQL-enskild server
 I följande avsnitt beskrivs kapacitets-och funktions gränser i databas tjänsten. Om du vill lära dig mer om resurs (beräknings-, minnes-, lagrings-) nivåer, se artikeln [pris nivåer](concepts-pricing-tiers.md) .
@@ -23,8 +23,8 @@ Det maximala antalet anslutningar per pris nivå och virtuella kärnor visas ned
 
 |**Prisnivå**| **vCore (s)**| **Max antal anslutningar** | **Maximalt antal användar anslutningar** |
 |---|---|---|---|
-|Basic| 1| 55 | 50|
-|Basic| 2| 105 | 100|
+|Grundläggande| 1| 55 | 50|
+|Grundläggande| 2| 105 | 100|
 |Generell användning| 2| 150| 145|
 |Generell användning| 4| 250| 245|
 |Generell användning| 8| 480| 475|
@@ -68,9 +68,12 @@ En PostgreSQL-anslutning, även inaktiv, kan uppta cirka 10 MB minne. Det tar oc
 - I vissa fall stöds inte UTF-8-tecken fullständigt i PostgreSQL med öppen källkod i Windows, vilket påverkar Azure Database for PostgreSQL. Mer information hittar du i tråden on [bugg #15476 i postgresql-Archive](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) .
 
 ### <a name="gss-error"></a>GSS-fel
-Om du ser ett fel relaterat till **GSS**, använder du förmodligen en nyare klient/driv rutins version som Azure postgres-servern ännu inte har fullständigt stöd för. Det här felet är känt för att påverka [JDBC driv rutins versioner 42.2.15 och 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868).
-   - Vi planerar att slutföra uppdateringen senast i slutet av november. Överväg att använda en fungerande driv rutins version under tiden.
-   - Eller också kan du inaktivera GSS-begäran.  Använd en anslutnings parameter som `gssEncMode=disable` .
+Om du ser ett fel som är relaterat till **GSS** använder du förmodligen en nyare klient-/drivrutinsversion som Azure Postgres – enskild server inte har fullständigt stöd för än. Det här felet är känt för att påverka [JDBC-drivrutinsversion 42.2.15 och 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868).
+   - Uppdateringen förväntas vara klar i slutet av november. Använd en fungerande drivrutinsversion tills dess.
+   - Eller också kan du inaktivera GSS-begäran.  Använd en anslutningsparameter som `gssEncMode=disable`.
+
+### <a name="storage-size-reduction"></a>Minska lagrings storlek
+Lagrings storleken kan inte minskas. Du måste skapa en ny server med önskad lagrings storlek, utföra manuell [dumpning och återställa](./howto-migrate-using-dump-and-restore.md) och migrera dina databaser till den nya servern.
 
 ## <a name="next-steps"></a>Nästa steg
 - Förstå [vad som är tillgängligt på varje pris nivå](concepts-pricing-tiers.md)

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90562527"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Distribuera en Internetbaserad lösning för belastnings utjämning med IPv6 med hjälp av en mall
@@ -72,7 +72,7 @@ Den här artikeln hänvisar till en mall som publiceras i galleriet för [Azure 
 
     ![Skärm bilden visar det Fire-ste steget i en anpassad distribution, vilket är Redigera mall.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Klicka på Redigera parametrar. I bladet parametrar anger du värdena per vägledning i avsnittet mallparametrar och klickar sedan på Spara för att stänga bladet parametrar. På bladet anpassad distribution väljer du din prenumeration, en befintlig resurs grupp eller skapar en. Om du skapar en resurs grupp väljer du en plats för resurs gruppen. Klicka sedan på **juridiska villkor**och sedan på **köp** för de juridiska villkoren. Azure börjar distribuera resurserna. Det tar flera minuter att distribuera alla resurser.
+6. Klicka på Redigera parametrar. I bladet parametrar anger du värdena per vägledning i avsnittet mallparametrar och klickar sedan på Spara för att stänga bladet parametrar. På bladet anpassad distribution väljer du din prenumeration, en befintlig resurs grupp eller skapar en. Om du skapar en resurs grupp väljer du en plats för resurs gruppen. Klicka sedan på **juridiska villkor** och sedan på **köp** för de juridiska villkoren. Azure börjar distribuera resurserna. Det tar flera minuter att distribuera alla resurser.
 
     ![Skärm bild som visar de steg som ingår i den anpassade distributionen och som börjar med att ange parameter värden för mallen.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
@@ -111,7 +111,7 @@ En Azure Resource Manager-mall innehåller flera variabler och parametrar som du
 
 Exempel mal len som används i den här artikeln innehåller följande variabler och parametrar:
 
-| Parameter/variabel | Obs! |
+| Parameter/variabel | Kommentarer |
 | --- | --- |
 | adminUsername |Ange namnet på det administratörs konto som används för att logga in på de virtuella datorerna med. |
 | adminPassword |Ange lösen ordet för det administratörs konto som används för att logga in på de virtuella datorerna med. |

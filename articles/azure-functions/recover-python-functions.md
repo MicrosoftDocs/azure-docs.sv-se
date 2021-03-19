@@ -7,13 +7,13 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87846045"
 ---
-# <a name="troubleshoot-python-errors-in-azure-functions"></a>Felsök python-fel i Azure Functions
+# <a name="troubleshoot-python-errors-in-azure-functions"></a>Felsöka Python-fel i Azure Functions
 
 Följande är en lista över fel söknings guider för vanliga problem i python-funktioner:
 
@@ -59,7 +59,7 @@ Se [Aktivera fjärran sluten build](#enable-remote-build) eller [skapa egna bero
 
 #### <a name="the-package-isnt-resolved-with-proper-linux-wheel"></a>Paketet är inte löst med rätt Linux-hjul
 
-Gå till `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` eller `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . Använd din favorit text redigerare för att öppna **hjul** filen och kontrol lera avsnittet **tag:** . Om taggens värde inte innehåller **Linux**kan detta vara ett problem.
+Gå till `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` eller `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . Använd din favorit text redigerare för att öppna **hjul** filen och kontrol lera avsnittet **tag:** . Om taggens värde inte innehåller **Linux** kan detta vara ett problem.
 
 Python-funktioner körs bara på Linux i Azure: Functions runtime v2. x körs på Debian utsträckt och v3. x-körningsmiljön på Debian Buster. Artefakten förväntas innehålla rätt Linux-binärfiler. Om `--build local` du använder flagga i Core-verktyg, tredje part eller inaktuella verktyg kan det leda till att äldre binärfiler används.
 
@@ -69,7 +69,7 @@ Se [Aktivera fjärran sluten build](#enable-remote-build) eller [skapa egna bero
 
 Gå till `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` eller `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . Öppna METADATAFILEN i en text redigerare och kontrol lera avsnittet **klassificerare:** . Om avsnittet inte innehåller `Python :: 3` , `Python :: 3.6` , `Python :: 3.7` eller `Python :: 3.8` , innebär det att paket versionen är antingen för gammal eller förmodligen är paketet redan i underhålls läge.
 
-Du kan kontrol lera python-versionen av din Function-app från [Azure Portal](https://portal.azure.com). Navigera till din Function-app, Välj **resurs Utforskaren**och välj **gå**.
+Du kan kontrol lera python-versionen av din Function-app från [Azure Portal](https://portal.azure.com). Navigera till din Function-app, Välj **resurs Utforskaren** och välj **gå**.
 
 :::image type="content" source="media/recover-module-not-found/resource-explorer.png" alt-text="Öppna appen Resursläsaren för Function-appen i portalen":::
 

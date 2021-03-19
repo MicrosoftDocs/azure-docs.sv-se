@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708109"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654534"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Samla in insikter om din DNS-infrastruktur med DNS-analys för hands versions lösning
 
@@ -54,7 +54,7 @@ Lösningen börjar samla in data utan att behöva ytterligare konfiguration. Du 
 
 ### <a name="configure-the-solution"></a>Konfigurera lösningen
 
-På instrument panelen för lösningen klickar du på **konfiguration** för att öppna sidan DNS-analys konfiguration. Det finns två typer av konfigurations ändringar som du kan göra:
+I arbets ytan Log Analytics i Azure Portal väljer du **arbets ytans Sammanfattning** och klickar sedan på panelen **DNS-analys** . På instrument panelen för lösningen klickar du på **konfiguration** för att öppna sidan DNS-analys konfiguration. Det finns två typer av konfigurations ändringar som du kan göra:
 
 - **Allowlisted domän namn**. Lösningen bearbetar inte alla söknings frågor. Den underhåller en tillåten av domänsuffix. Sök frågor som matchar domän namn som matchar domänsuffix i denna tillåten bearbetas inte av lösningen. Om du inte bearbetar allowlisted domän namn kan du optimera data som skickas till Azure Monitor. Standard-tillåten innehåller populära offentliga domän namn, till exempel www.google.com och www.facebook.com. Du kan visa den fullständiga standard listan genom att bläddra.
 

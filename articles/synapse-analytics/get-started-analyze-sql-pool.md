@@ -9,18 +9,34 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/18/2020
+ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654636"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysera data med dedikerade SQL-pooler
 
-Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild SQL-pool. I den här självstudien använder du NYC taxi-data för att utforska en dedikerad SQL-Pools funktioner.
+I den här självstudien använder du NYC taxi-data för att utforska en dedikerad SQL-Pools funktioner.
 
+## <a name="create-a-dedicated-sql-pool"></a>Skapa en dedikerad SQL-pool
+
+1. I Synapse Studio väljer du **Hantera**  >  **SQL-pooler** i det vänstra fönstret.
+1. Välj **nytt**
+1. Välj **SQLPOOL1** för **SQL-poolnamn**
+1. Välj **DW100C** för **prestanda nivå**
+1. Välj **Granska + skapa** > **Skapa**. Din dedikerade SQL-pool är klar om några minuter. 
+
+Din dedikerade SQL-pool är kopplad till en SQL-databas som också kallas **SQLPOOL1**.
+1. Navigera till **data**  >  **arbets ytan**.
+1. Du bör se en databas med namnet **SQLPOOL1**. Om du inte ser det klickar du på **Uppdatera**.
+
+En dedikerad SQL-pool förbrukar fakturerbara resurser så länge den är aktiv. Du kan pausa poolen senare för att minska kostnaderna.
+
+> [!NOTE] 
+> När du skapar en ny dedikerad SQL-pool (tidigare SQL DW) på din arbets yta öppnas sidan dedikerad etablering av SQL-pool. Etableringen sker på den logiska SQL-servern.
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Läs in NYC taxi-data till SQLPOOL1
 
 1. Navigera till **utveckla** hubben i Synapse Studio, klicka på **+** knappen för att lägga till en ny resurs och skapa sedan ett nytt SQL-skript.
@@ -77,7 +93,6 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Utforska NYC taxi-data i den dedikerade SQL-poolen
 
 1. Gå till **datahubben** i Synapse Studio.
-1. Du bör se en databas med namnet **SQLPOOL1**. Om du inte ser det klickar du på **Uppdatera**.
 1. Gå till **SQLPOOL1**-  >  **tabeller**. 
 3. Högerklicka på **dbo. Rese** tabell och välj **nytt SQL-skript**  >  **Markera de 100 översta raderna**.
 4. Vänta medan ett nytt SQL-skript skapas och körs.
@@ -103,4 +118,4 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Analysera med Spark](get-started-analyze-spark.md)
+> [Analysera data i ett Azure Storage konto](get-started-analyze-storage.md)

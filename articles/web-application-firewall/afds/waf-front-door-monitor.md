@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84808959"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Övervakning och loggning av brand vägg för Azure-webbprogram
@@ -22,7 +22,7 @@ ms.locfileid: "84808959"
 
 WAF med ytterdörr-loggen är integrerad med [Azure Monitor](../../azure-monitor/overview.md). Med Azure Monitor kan du spåra diagnostikinformation, inklusive WAF-aviseringar och loggar. Du kan konfigurera WAF övervakning i den främre dörren i portalen under fliken **diagnostik** eller via tjänsten Azure Monitor direkt.
 
-Från Azure Portal går du till resurs typen frontend-dörr. Från fliken **övervakning** / av**mått** till vänster kan du lägga till **WebApplicationFirewallRequestCount** för att spåra antalet förfrågningar som matchar WAF-regler. Anpassade filter kan skapas baserat på åtgärds typer och regel namn.
+Från Azure Portal går du till resurs typen frontend-dörr. Från fliken **övervakning** / av **mått** till vänster kan du lägga till **WebApplicationFirewallRequestCount** för att spåra antalet förfrågningar som matchar WAF-regler. Anpassade filter kan skapas baserat på åtgärds typer och regel namn.
 
 :::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics ":::
 
@@ -43,7 +43,7 @@ WAF med front dörren ger detaljerad rapportering om varje hot som identifieras.
 || matchVariableName: http-parameter namn för begäran matchad, till exempel rubrik namn|
 || matchVariableValue: värden som utlöste matchningen|
 | Värd | Värd rubriken för matchande begäran |
-| Princip | Namnet på den WAF-princip som begäran matchade. |
+| Policy | Namnet på den WAF-princip som begäran matchade. |
 | PolicyMode | Operations mode i WAF-principen. Möjliga värden är "förebyggande" och "identifiering" |
 | RequestUri | Fullständig URI för matchad begäran. |
 | RuleName | Namnet på WAF-regeln som begäran matchade. |

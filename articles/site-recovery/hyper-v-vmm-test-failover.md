@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sideeksh
 ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87420421"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Köra en DR-granskning för virtuella Hyper-V-datorer till en sekundär plats
@@ -45,7 +45,7 @@ När du kör ett redundanstest uppmanas du att välja nätverks inställningar f
 
 | **Alternativ** | **Information** | |
 | --- | --- | --- |
-| **Inga** | Den virtuella test datorn skapas på den värd där den virtuella replik datorn finns. Den har inte lagts till i molnet och är inte ansluten till något nätverk.<br/><br/> Du kan ansluta datorn till ett virtuellt dator nätverk när det har skapats.| |
+| **Ingen** | Den virtuella test datorn skapas på den värd där den virtuella replik datorn finns. Den har inte lagts till i molnet och är inte ansluten till något nätverk.<br/><br/> Du kan ansluta datorn till ett virtuellt dator nätverk när det har skapats.| |
 | **Använd befintlig** | Den virtuella test datorn skapas på den värd där den virtuella replik datorn finns. Den har inte lagts till i molnet.<br/><br/>Skapa ett virtuellt dator nätverk som är isolerat från produktions nätverket.<br/><br/>Om du använder ett VLAN-baserat nätverk rekommenderar vi att du skapar ett separat logiskt nätverk (som inte används i produktion) i VMM för detta ändamål. Det här logiska nätverket används för att skapa virtuella dator nätverk för redundanstest.<br/><br/>Det logiska nätverket måste vara kopplat till minst ett av nätverkskorten för alla Hyper-V-servrar som är värdar för virtuella datorer.<br/><br/>För logiska VLAN-nätverk ska de nätverks platser som du lägger till i det logiska nätverket isoleras.<br/><br/>Om du använder ett logiskt nätverk för Windows-nätverksvirtualisering skapas automatiskt isolerade virtuella dator nätverk i Azure Site Recovery. | |
 | **Skapa ett nätverk** | Ett tillfälligt test nätverk skapas automatiskt baserat på den inställning som du anger i det **logiska nätverket** och dess relaterade nätverks platser.<br/><br/> Redundansväxling kontrollerar att virtuella datorer har skapats.<br/><br/> Du bör använda det här alternativet om en återställnings plan använder mer än ett virtuellt dator nätverk.<br/><br/> Om du använder Windows-nätverk för nätverksvirtualisering kan det här alternativet automatiskt skapa virtuella dator nätverk med samma inställningar (undernät och IP-adresspooler) i nätverket på den virtuella replik datorn. Dessa virtuella dator nätverk rensas automatiskt när redundanstestning är klar.<br/><br/> Den virtuella test datorn skapas på den värd där den virtuella replik datorn finns. Den har inte lagts till i molnet.|
 
@@ -119,7 +119,7 @@ Förbered en DNS-server för redundanstest enligt följande:
 
 Den här proceduren beskriver hur du kör ett redundanstest för en återställnings plan. Du kan också köra redundansväxlingen för en enskild virtuell dator på fliken **Virtual Machines** .
 
-1. Välj **återställnings planer**  >  *recoveryplan_name*. Klicka på redundanstest för **redundans**  >  **Test Failover**.
+1. Välj **återställnings planer**  >  *recoveryplan_name*. Klicka på redundanstest för **redundans**  >  .
 2. På bladet **redundanstest** anger du hur virtuella repliker ska anslutas till nätverk efter redundanstest.
 3. Spåra förlopp för redundansväxling på fliken **jobb** .
 4. När redundansväxlingen är klar kontrollerar du att de virtuella datorerna har startats.

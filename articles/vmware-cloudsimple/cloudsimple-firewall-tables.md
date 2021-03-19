@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140878"
 ---
 # <a name="firewall-tables-overview"></a>Översikt över brand Väggs tabeller
@@ -55,10 +55,10 @@ Följande standard regler skapas i alla brand Väggs tabeller.
 
 |Prioritet|Namn|Tillstånds spårning|Riktning|Trafik typ|Protokoll|Källa|Källport|Mål|Målport|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|Tillåt-allt-till-Internet|Tillståndskänsliga|Outbound (Utgående)|Offentlig IP-eller Internet trafik|Alla|Alla|Alla|Alla|Alla|Tillåt|
-|65001|neka-alla-från-Internet|Tillståndskänsliga|Inbound (Inkommande)|Offentlig IP-eller Internet trafik|Alla|Alla|Alla|Alla|Alla|Neka|
-|65002|Tillåt-allt-till-intranät|Tillståndslös|Outbound (Utgående)|Intern eller VPN-trafik i privat moln|Alla|Alla|Alla|Alla|Alla|Tillåt|
-|65003|Tillåt-allt-från-intranät|Tillståndslös|Inbound (Inkommande)|Intern eller VPN-trafik i privat moln|Alla|Alla|Alla|Alla|Alla|Tillåt|
+|65000|Tillåt-allt-till-Internet|Tillståndskänsliga|Utgående|Offentlig IP-eller Internet trafik|Alla|Valfri|Valfri|Valfri|Valfri|Tillåt|
+|65001|neka-alla-från-Internet|Tillståndskänsliga|Inkommande|Offentlig IP-eller Internet trafik|Alla|Valfri|Valfri|Valfri|Valfri|Neka|
+|65002|Tillåt-allt-till-intranät|Tillståndslös|Utgående|Intern eller VPN-trafik i privat moln|Alla|Valfri|Valfri|Valfri|Valfri|Tillåt|
+|65003|Tillåt-allt-från-intranät|Tillståndslös|Inkommande|Intern eller VPN-trafik i privat moln|Alla|Valfri|Valfri|Valfri|Valfri|Tillåt|
 
 ## <a name="next-steps"></a>Nästa steg
 

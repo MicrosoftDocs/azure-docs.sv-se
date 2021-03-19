@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055001"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Använda StorSimple Snapshot Manager för att hantera säkerhets kopierings katalogen
@@ -37,7 +37,7 @@ I den här självstudien beskrivs hur du kan använda noden **Säkerhetskopiera 
 Du kan visa säkerhets kopierings katalogen genom att expandera noden **säkerhets kopierings katalog** i fönstret **omfattning** och sedan expandera volym gruppen.
 
 * Om du klickar på volym gruppens namn visas antalet lokala ögonblicks bilder och moln ögonblicks bilder som är tillgängliga för volym gruppen i **resultat** fönstret. 
-* Om du klickar på **lokal ögonblicks bild** eller **moln ögonblicks bild**visar **resultat** fönstret följande information om varje ögonblicks bild av säkerhets kopian (beroende på dina **visnings** inställningar):
+* Om du klickar på **lokal ögonblicks bild** eller **moln ögonblicks bild** visar **resultat** fönstret följande information om varje ögonblicks bild av säkerhets kopian (beroende på dina **visnings** inställningar):
   
   * **Namn** – tidpunkten då ögonblicks bilden togs.
   * **Typ** – om detta är en lokal ögonblicks bild eller en ögonblicks bild av molnet.
@@ -46,7 +46,7 @@ Du kan visa säkerhets kopierings katalogen genom att expandera noden **säkerhe
   * **Importerad** – om säkerhets kopian har importer ATS. **True** anger att säkerhets kopian har importer ATS från tjänsten StorSimple Enhetshanteraren när enheten konfigurerades i StorSimple Snapshot Manager; **False** anger att den inte har importer ATS, men skapades av StorSimple Snapshot Manager. (Du kan enkelt identifiera en importerad volym grupp eftersom ett suffix läggs till som identifierar den enhet som volym gruppen importerades från.)
     
     ![Säkerhets kopierings katalog](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
-* Om du expanderar en **lokal ögonblicks** bild eller en **ögonblicks bild av molnet**och klickar sedan på ett enskilt namn på ögonblicks bilden visar **resultat** fönstret följande information om den ögonblicks bild som du valde:
+* Om du expanderar en **lokal ögonblicks** bild eller en **ögonblicks bild av molnet** och klickar sedan på ett enskilt namn på ögonblicks bilden visar **resultat** fönstret följande information om den ögonblicks bild som du valde:
   
   * **Namn** – den volym som identifieras av enhets beteckningen. 
   * **Lokalt namn** – enhetens lokala namn (om tillgängligt). 
@@ -74,7 +74,7 @@ StorSimple Snapshot Manager visar följande meddelande när säkerhets kopiering
 3. Leta upp den säkerhets kopia som du vill återställa, högerklicka på och klicka sedan på **Återställ**.
    
     ![Återställa säkerhets kopierings katalog](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. På sidan bekräftelse granskar du informationen, skriver **Bekräfta**och klickar sedan på **OK**. StorSimple Snapshot Manager använder säkerhets kopian för att återställa volymen.
+4. På sidan bekräftelse granskar du informationen, skriver **Bekräfta** och klickar sedan på **OK**. StorSimple Snapshot Manager använder säkerhets kopian för att återställa volymen.
    
     ![Bekräftelse meddelande för återställning](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
 5. Du kan övervaka återställnings åtgärden när den körs. I fönstret **omfattning** expanderar du noden **jobb** och klickar sedan på **Kör**. Jobb informationen visas i **resultat** fönstret. När återställnings jobbet är klart överförs jobb informationen till listan **senaste 24 timmarna** .
@@ -91,7 +91,7 @@ Använd följande procedur för att skapa en dubblett (klon) av en volym eller v
 4. Slutför dialog rutan **klona moln ögonblicks bilder** enligt följande: 
    
    1. I text rutan **namn** anger du ett namn för den klonade volymen. Det här namnet visas i noden **volymer** . 
-   2. (Valfritt) Välj **enhet**och välj sedan en enhets beteckning i list rutan.
+   2. (Valfritt) Välj **enhet** och välj sedan en enhets beteckning i list rutan.
    3. (Valfritt) Välj **mapp (NTFS)** och ange en mappsökväg eller klicka på Bläddra och välj en plats för mappen. 
    4. Klicka på **Skapa**.
 5. När klonings processen är färdig måste du initiera den klonade volymen. Starta Serverhanteraren och starta disk hantering. Detaljerade anvisningar finns i [montera volymer](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). När den har initierats visas volymen under noden **volymer** i fönstret **omfång** . Om du inte ser den volym som visas i listan uppdaterar du listan med volymer (Högerklicka på noden **volymer** och klicka sedan på **Uppdatera**).
@@ -124,7 +124,7 @@ Innan du börjar ska du kontrol lera att du har en aktuell säkerhets kopia av v
 4. Slutför dialog rutan **klona moln ögonblicks bilder** enligt följande: 
    
    1. I text rutan **namn** anger du ett namn för den klonade volymen. Det här namnet visas i noden **volymer** . 
-   2. Valfritt Välj **enhet**och välj sedan en enhets beteckning i list rutan. 
+   2. Valfritt Välj **enhet** och välj sedan en enhets beteckning i list rutan. 
    3. Valfritt Välj **mapp (NTFS)** och ange en mappsökväg eller klicka på **Bläddra** och välj en plats för mappen. 
    4. Klicka på **Skapa**. 
 5. När klonings processen är färdig måste du initiera den klonade volymen. Starta Serverhanteraren och starta disk hantering. Detaljerade anvisningar finns i [montera volymer](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). När den har initierats visas volymen under noden **volymer** i fönstret **omfång** . 
@@ -140,9 +140,9 @@ Du bör regelbundet säkerhetskopiera StorSimple Snapshot Manager-databasen på 
 1. Stoppa Microsoft StorSimple Management Service:
    
    1. Starta Serverhanteraren.
-   2. På instrument panelen för Serverhanteraren väljer du **tjänster**på **verktyg** -menyn.
+   2. På instrument panelen för Serverhanteraren väljer du **tjänster** på **verktyg** -menyn.
    3. I fönstret **tjänster** väljer du **hanterings tjänsten för Microsoft-StorSimple**.
-   4. Klicka på **stoppa tjänsten**under **Microsoft StorSimple Management Service**i den högra rutan.
+   4. Klicka på **stoppa tjänsten** under **Microsoft StorSimple Management Service** i den högra rutan.
 2. På värddatorn bläddrar du till C:\ProgramData\Microsoft\StorSimple\BACatalog. 
    
    > [!NOTE]
@@ -154,9 +154,9 @@ Du bör regelbundet säkerhetskopiera StorSimple Snapshot Manager-databasen på 
     ![Katalog fil för Azure StorSimple backup](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
 4. Starta om Microsoft StorSimple Management-tjänsten: 
    
-   1. På instrument panelen för Serverhanteraren väljer du **tjänster**på **verktyg** -menyn.
+   1. På instrument panelen för Serverhanteraren väljer du **tjänster** på **verktyg** -menyn.
    2. I fönstret **tjänster** väljer du **hanterings tjänsten för Microsoft-StorSimple**.
-   3. Klicka på **starta om tjänsten**under **Microsoft StorSimple Management Service**i den högra rutan.
+   3. Klicka på **starta om tjänsten** under **Microsoft StorSimple Management Service** i den högra rutan.
 5. På värddatorn bläddrar du till C:\ProgramData\Microsoft\StorSimple\BACatalog. 
 6. Ta bort XML-filen för katalogen och ersätt den med den version av säkerhets kopian som du skapade. 
 7. Starta StorSimple Snapshot Manager genom att klicka på ikonen Skriv bords StorSimple Snapshot Manager. 

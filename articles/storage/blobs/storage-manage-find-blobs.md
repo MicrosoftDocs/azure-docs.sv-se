@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431762"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593228"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Hantera och hitta Azure blob-data med blobb index Taggar (för hands version)
 
@@ -289,12 +289,7 @@ BLOB index-taggar är bara tillgängliga på Generell användning v2-konton (GPv
 
 Index Taggar stöds inte för Premium Storage-konton. Mer information om lagrings konton finns i [Översikt över Azure Storage-konto](../common/storage-account-overview.md).
 
-I en offentlig för hands version är BLOB index-Taggar endast tillgängliga i följande regioner:
-
-- Kanada, centrala
-- Kanada, östra
-- Frankrike, centrala
-- Frankrike, södra
+BLOB index-taggar är för närvarande tillgängliga i alla offentliga regioner.
 
 Om du vill komma igång läser du [använda taggar för BLOB-index för att hantera och söka efter data](storage-blob-index-how-to.md).
 

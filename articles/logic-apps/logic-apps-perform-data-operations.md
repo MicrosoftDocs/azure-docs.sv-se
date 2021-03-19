@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84710379"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Utföra data åtgärder i Azure Logic Apps
@@ -34,8 +34,8 @@ Med de här åtgärderna kan du arbeta med data i matriser.
 | [**Skapa CSV-tabell**](#create-csv-table-action) | Skapa en kommaavgränsad tabell (CSV) från en matris. |
 | [**Skapa HTML-tabell**](#create-html-table-action) | Skapa en HTML-tabell från en matris. |
 | [**Filtrera matris**](#filter-array-action) | Skapa en mat ris del uppsättning från en matris baserat på det angivna filtret eller villkoret. |
-| [**Slå ihop**](#join-action) | Skapa en sträng från alla objekt i en matris och avgränsa varje objekt med det angivna specialtecknet. |
-| [**Select**](#select-action) | Skapa en matris från de angivna egenskaperna för alla objekt i en annan matris. |
+| [**Ansluta**](#join-action) | Skapa en sträng från alla objekt i en matris och avgränsa varje objekt med det angivna specialtecknet. |
+| [**Välj**](#select-action) | Skapa en matris från de angivna egenskaperna för alla objekt i en annan matris. |
 ||| 
 
 **JSON-åtgärder**
@@ -86,13 +86,13 @@ Följ dessa steg med hjälp av Logic Apps designer för att prova ett exempel. O
 
 1. Gör något av följande i din Logic-app där du vill skapa utdata: 
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Välj "nytt steg" för åtgärden "Skriv"](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
    * Om du vill lägga till en åtgärd mellan stegen flyttar du musen över den anslutande pilen så att plus tecknet ( **+** ) visas. Välj plus tecknet och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**går du till rutan Sök och anger `compose` som ditt filter. I listan åtgärder väljer du åtgärden **Skriv** .
+1. Under **Välj en åtgärd** går du till rutan Sök och anger `compose` som ditt filter. I listan åtgärder väljer du åtgärden **Skriv** .
 
    ![Välj åtgärden "Skriv"](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -144,13 +144,13 @@ Om du föredrar att arbeta i kodvyn kan du Kopiera exemplet **Skapa CSV-tabell**
 
 1. Gör något av följande i din Logic-app där du vill skapa en CSV-tabell: 
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Välj "nytt steg" för åtgärden "Skapa CSV-tabell"](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Om du vill lägga till en åtgärd mellan stegen flyttar du musen över den anslutande pilen så att plus tecknet ( **+** ) visas. Välj plus tecknet och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**går du till rutan Sök och anger `create csv table` som ditt filter. I listan åtgärder väljer du åtgärden **Skapa CSV-tabell** .
+1. Under **Välj en åtgärd** går du till rutan Sök och anger `create csv table` som ditt filter. I listan åtgärder väljer du åtgärden **Skapa CSV-tabell** .
 
    ![Välj åtgärden "Skapa CSV-tabell"](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -295,13 +295,13 @@ Om du föredrar att arbeta i kodvyn kan du Kopiera exemplet **skapa HTML-tabell*
 
 1. Gör något av följande i din Logic-app där du vill skapa en HTML-tabell:
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Välj "nytt steg" för åtgärden "skapa HTML-tabell"](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Om du vill lägga till en åtgärd mellan stegen flyttar du musen över den anslutande pilen så att plus tecknet ( **+** ) visas. Välj plus tecknet och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**går du till rutan Sök och anger `create html table` som ditt filter. I listan åtgärder väljer du åtgärden **skapa HTML-tabell** .
+1. Under **Välj en åtgärd** går du till rutan Sök och anger `create html table` som ditt filter. I listan åtgärder väljer du åtgärden **skapa HTML-tabell** .
 
    ![Välj åtgärden "skapa HTML-tabell"](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -460,7 +460,7 @@ Om du föredrar att arbeta i kodvyn kan du kopiera exempel **filter mat ris** oc
 
 1. Gör något av följande i din Logic-app där du vill skapa den filtrerade matrisen: 
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Välj "nytt steg" för "Filtrera matris"-åtgärd](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
@@ -522,7 +522,7 @@ Om du föredrar att arbeta i kodvyn kan du Kopiera exemplet **Anslut** till och 
 
 1. Gör något av följande i din Logic-app där du vill skapa strängen från en matris:
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![SSelect "nytt steg" för "koppla"-åtgärd](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
@@ -554,7 +554,7 @@ Du kan kontrol lera om **kopplings** åtgärden skapar förväntade resultat gen
 
 1. I din Logic app lägger du till en åtgärd som kan skicka resultatet från **kopplings** åtgärden.
 
-1. I den åtgärden klickar du på var du vill att resultaten ska visas. När listan med dynamiskt innehåll öppnas väljer du **utdata**under **kopplings** åtgärden. 
+1. I den åtgärden klickar du på var du vill att resultaten ska visas. När listan med dynamiskt innehåll öppnas väljer du **utdata** under **kopplings** åtgärden. 
 
    I det här exemplet används Office 365 Outlook för att **skicka en e-** poståtgärd och innehåller fältet **utdata** i e-postmeddelandets brödtext:
 
@@ -582,7 +582,7 @@ Om du föredrar att arbeta i kodvyn kan du Kopiera exemplet **parsa JSON** och *
 
 1. Gör något av följande i din Logic-app där du vill parsa JSON-innehållet:
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Välj "nytt steg" för "parsa JSON"-åtgärd](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
@@ -604,7 +604,7 @@ Om du föredrar att arbeta i kodvyn kan du Kopiera exemplet **parsa JSON** och *
 
    ![Ange JSON-schema för det JSON-objekt som du vill parsa](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
 
-   Om du inte har schemat kan du generera schemat från JSON-innehållet eller *nytto lasten*som du tolkar. 
+   Om du inte har schemat kan du generera schemat från JSON-innehållet eller *nytto lasten* som du tolkar. 
    
    1. I åtgärden **parsa JSON** väljer **du Använd exempel nytto last för att generera schemat**.
 
@@ -624,7 +624,7 @@ Du kan kontrol lera om åtgärden **parsa JSON** skapar förväntade resultat ge
 
 1. I den åtgärden klickar du på var du vill att resultaten ska visas. När listan med dynamiskt innehåll öppnas under åtgärden **parsa JSON** kan du nu välja egenskaper från det parsade JSON-innehållet.
 
-   I det här exemplet används Office 365 Outlook för att **skicka en e-** poståtgärd och innehåller fälten **förnamn**, **efter namn**och **e-post** i e-postmeddelandets brödtext:
+   I det här exemplet används Office 365 Outlook för att **skicka en e-** poståtgärd och innehåller fälten **förnamn**, **efter namn** och **e-post** i e-postmeddelandets brödtext:
 
    ![JSON-egenskaper i åtgärden "Skicka ett e-postmeddelande"](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
@@ -657,13 +657,13 @@ Om du föredrar att arbeta i kodvyn kan du Kopiera exemplet **Välj** och initie
 
 1. Gör något av följande i din Logic-app där du vill skapa matrisen: 
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Välj "nytt steg" för "Välj"-åtgärd](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
    * Om du vill lägga till en åtgärd mellan stegen flyttar du musen över den anslutande pilen så att plus tecknet ( **+** ) visas. Välj plus tecknet och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**väljer du **inbyggt**. I rutan Sök anger `select` du som filter. I listan åtgärder väljer du åtgärden **Välj** .
+1. Under **Välj en åtgärd** väljer du **inbyggt**. I rutan Sök anger `select` du som filter. I listan åtgärder väljer du åtgärden **Välj** .
 
    ![Välj åtgärden "Välj"](./media/logic-apps-perform-data-operations/select-select-action.png)
 

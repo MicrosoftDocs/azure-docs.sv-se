@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746128"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583759"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera G Suite för automatisk användar etablering
 
@@ -33,7 +33,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både G-serien o
 > * Etablera grupper och grupp medlemskap i G Suite
 > * [Enkel inloggning](./google-apps-tutorial.md) till G Suite (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -273,6 +273,7 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 * 10/17/2020 – stöd har lagts till för ytterligare användare i G Suite-användare och-grupp.
 * 10/17/2020 – de G Suite-attributens målnamn har uppdaterats för att matcha vad som definieras [här](https://developers.google.com/admin-sdk/directory).
 * 10/17/2020 – uppdaterade standardattribut-mappningar.
+* 03/18/2021-Manager-e-post synkroniseras nu i stället för ID för alla nya användare. För alla befintliga användare som har tillhandahållits med en chef som ett ID kan du göra en omstart genom att [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) med omfånget "fullständig" för att säkerställa att e-postmeddelandet har tillhandahållits. Den här ändringen påverkar endast GSuite etablerings jobbet och inte det äldre probisioning-jobbet som börjar med Goov2OutDelta. Obs! Manager-e-postmeddelandet är etablerad när användaren först skapas eller när chefen ändras. Manager-e-postmeddelandet är inte etablerad om chefen ändrar sin e-postadress. 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

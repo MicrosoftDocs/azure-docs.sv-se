@@ -4,10 +4,10 @@ description: 'Snabb start: den här artikeln innehåller en genom gång av hur d
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85315662"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Snabb start: skicka händelser till Azure Event Hubs med C
@@ -18,7 +18,7 @@ Azure Event Hubs är en strömningstjänst för stordata och händelseinmatnings
 I den här självstudien beskrivs hur du skickar händelser till en Event Hub med ett konsol program i C. 
 
 ## <a name="prerequisites"></a>Förutsättningar
-För att kunna genomföra den här kursen behöver du följande:
+För att göra den här självstudien behöver du följande:
 
 * En C-utvecklings miljö. Den här självstudien förutsätter gcc-stacken på en virtuell Azure Linux-dator med Ubuntu 14,04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
