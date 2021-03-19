@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: de0a23ca9dea210d91fe259b06622226549ba3b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890439"
 ---
 # <a name="normalize-data-module"></a>Normalisera datamodul
@@ -41,7 +41,7 @@ I den här modulen finns flera alternativ för att transformera numeriska data:
 
 Du kan bara använda en normaliserings metod i taget med den här modulen. Därför används samma normaliserings metod för alla kolumner som du väljer. Om du vill använda olika normaliserings metoder använder du en andra instans av **normalisering av data**.
 
-1. Lägg till modulen **normalisera data** i din pipeline. Du hittar modulen i Azure Machine Learning under **data omvandling**i kategorin **skala och minska** .
+1. Lägg till modulen **normalisera data** i din pipeline. Du hittar modulen i Azure Machine Learning under **data omvandling** i kategorin **skala och minska** .
 
 2. Anslut en data uppsättning som innehåller minst en kolumn med alla tal.
 

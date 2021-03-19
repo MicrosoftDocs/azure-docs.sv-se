@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653978"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Metod tips för lagring och säkerhets kopiering i Azure Kubernetes service (AKS)
@@ -82,7 +82,7 @@ Begrepp för hur du skapar och använder volymer dynamiskt finns i anspråk på 
 
 Information om hur du visar dessa volymer finns i så här skapar och använder du en permanent volym med [Azure-diskar][dynamic-disks] eller [Azure Files][dynamic-files].
 
-Ange lämplig *reclaimPolicy*som en del av definitionerna för lagrings klass. Den här reclaimPolicy styr beteendet för den underliggande Azure Storage-resursen när Pod tas bort och den permanenta volymen kanske inte längre krävs. Den underliggande lagrings resursen kan tas bort eller sparas för användning med en framtida pod. ReclaimPolicy kan ställas in för att *behålla* eller *ta bort*. Förstå dina program behov och implementera regelbundna kontroller för lagring som hålls kvar för att minimera mängden ej använda lagrings utrymme som används och faktureras.
+Ange lämplig *reclaimPolicy* som en del av definitionerna för lagrings klass. Den här reclaimPolicy styr beteendet för den underliggande Azure Storage-resursen när Pod tas bort och den permanenta volymen kanske inte längre krävs. Den underliggande lagrings resursen kan tas bort eller sparas för användning med en framtida pod. ReclaimPolicy kan ställas in för att *behålla* eller *ta bort*. Förstå dina program behov och implementera regelbundna kontroller för lagring som hålls kvar för att minimera mängden ej använda lagrings utrymme som används och faktureras.
 
 Mer information om alternativ för lagrings klass finns i principer för att [frigöra lagrings utrymme][reclaim-policy].
 

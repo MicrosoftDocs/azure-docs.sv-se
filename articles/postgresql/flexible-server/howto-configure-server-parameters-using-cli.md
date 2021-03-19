@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942128"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>Anpassa Server parametrar för Azure Database for PostgreSQL-flexibel server med Azure CLI
@@ -61,7 +61,7 @@ Om du vill återställa värdet för en parameter väljer du bara att lämna den
 az postgres flexible-server parameter set --name log_min_messages --resource-group myresourcegroup --server-name mydemoserver
 ```
 
-Det här kommandot återställer parametern **för \_ minsta antal \_ meddelanden** till **varningen**standardvärdet. Mer information om Server parametrar och tillåtna värden finns i PostgreSQL-dokumentation om hur du [ställer in parametrar](https://www.postgresql.org/docs/12/config-setting.html).
+Det här kommandot återställer parametern **för \_ minsta antal \_ meddelanden** till **varningen** standardvärdet. Mer information om Server parametrar och tillåtna värden finns i PostgreSQL-dokumentation om hur du [ställer in parametrar](https://www.postgresql.org/docs/12/config-setting.html).
 
 ## <a name="next-steps"></a>Nästa steg
 

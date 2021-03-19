@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636631"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577110"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>System krav för Azure Stack Edge Pro med GPU 
 
-I den här artikeln beskrivs viktiga system krav för din Microsoft Azure Stack Edge Pro-lösning och för klienter som ansluter till Azure Stack Edge Pro. Vi rekommenderar att du läser informationen noggrant innan du distribuerar din Azure Stack Edge Pro. Du kan referera tillbaka till den här informationen vid behov under distributionen och efterföljande åtgärder.
+I den här artikeln beskrivs viktiga system krav för din Microsoft Azure Stack Edge Pro GPU-lösning och för klienter som ansluter till Azure Stack Edge Pro. Vi rekommenderar att du läser informationen noggrant innan du distribuerar din Azure Stack Edge Pro. Du kan referera tillbaka till den här informationen vid behov under distributionen och efterföljande åtgärder.
 
 System kraven för Azure Stack Edge Pro är:
 
@@ -81,7 +82,7 @@ Använd följande tabell för port konfiguration för servrar som är värdar f�
 
 | Port nr. | In eller ut | Port omfång | Obligatorisk | Vägledning |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ut       | WAN        | Ja      | Utgående öppen för IoT Edge etablering. Den här konfigurationen krävs när du använder manuella skript eller DPS (Azure IoT Device Provisioning service).|
+| TCP 443 (HTTPS)| Ut       | WAN        | Yes      | Utgående öppen för IoT Edge etablering. Den här konfigurationen krävs när du använder manuella skript eller DPS (Azure IoT Device Provisioning service).|
 
 Fullständig information finns i [brand Väggs-och port konfigurations regler för IoT Edge distribution](../iot-edge/troubleshoot.md).
 

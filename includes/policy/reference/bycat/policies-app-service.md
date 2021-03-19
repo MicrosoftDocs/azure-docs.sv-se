@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b54811b875db5c2fcf682d63154d2c38b39e4bc5
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 2c3b73f07f1d8bf1d118e6ca23bfe64ca412d064
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611028"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605660"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[API-appen bör bara vara tillgänglig via HTTPS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |Användning av HTTPS garanterar serverautentisering och skyddar data i överföring från angrepp på nätverks nivå. |Granskning, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json) |
 |[API Apps bör använda en Azure-filresurs för innehålls katalogen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F324c7761-08db-4474-9661-d1039abc92ee) |Innehålls katalogen i en API-app bör finnas på en Azure-filresurs. Lagrings konto informationen för fil resursen måste anges före eventuell publicerings aktivitet. Mer information om hur du använder Azure Files för att vara värd för App Service-innehåll hittar du i [https://go.microsoft.com/fwlink/?linkid=2151594](https://go.microsoft.com/fwlink/?linkid=2151594) . |Granskning, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_StorageAccountRequired_Audit.json) |

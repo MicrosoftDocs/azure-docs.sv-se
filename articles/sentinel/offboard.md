@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90885833"
 ---
-# <a name="remove-azure-sentinel-from-your-workspace"></a>Ta bort Azure Sentinel från din arbets yta
+# <a name="remove-azure-sentinel-from-your-workspace"></a>Ta bort Azure Sentinel från din arbetsyta
 
 Om du inte längre vill använda Azure Sentinel förklarar den här artikeln hur du tar bort den från din arbets yta.
 
@@ -29,7 +29,7 @@ Om du inte längre vill använda Azure Sentinel förklarar den här artikeln hur
 
 Följ den här processen för att ta bort Azure Sentinel från din arbets yta:
 
-1. Gå till **Azure Sentinel**, följt av **inställningarna**och välj fliken **ta bort Azure Sentinel**.
+1. Gå till **Azure Sentinel**, följt av **inställningarna** och välj fliken **ta bort Azure Sentinel**.
 
 1. Innan du tar bort Azure Sentinel ska du använda kryss rutorna för att berätta varför du tar bort den.
 
@@ -62,16 +62,16 @@ Inom de första 48 timmarna går det inte längre att komma åt data-och analys 
 
 -   Incidenter (inklusive undersöknings-metadata)
 
--   Analys regler
+-   Analysregler
 
 -   Bokmärken
 
-Din spel böcker, sparade arbets böcker, sparade jakt frågor och antecknings böcker tas inte bort. **Vissa kan brytas på grund av borttagna data. Du kan ta bort dem manuellt.**
+Dina spelböcker, sparade arbetsböcker, sparade jaktfrågor och anteckningsböcker tas inte bort. **Vissa kan brytas på grund av borttagna data. Du kan ta bort dem manuellt.**
 
 När du har tagit bort tjänsten finns det en respitperiod på 30 dagar då du kan återaktivera lösningen och dina data och analys regler återställs, men de konfigurerade anslutningarna som kopplades från måste återanslutas.
 
 > [!NOTE]
-> Om du tar bort lösningen fortsätter prenumerationen att registreras med Azure Sentinel Resource Provider. **Du kan ta bort den manuellt.**
+> Om du tar bort lösningen fortsätter prenumerationen att vara registrerad med Azure Sentinel-resursprovidern. **Du kan ta bort den manuellt.**
 
 
 

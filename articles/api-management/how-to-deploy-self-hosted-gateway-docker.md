@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82205097"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Distribuera en Azure API Management egen värd-Gateway till Docker
@@ -24,7 +24,7 @@ Den här artikeln innehåller steg för att distribuera den lokala gateway-kompo
 > [!NOTE]
 > Värd tjänster för egen värd i Docker passar bäst för utvärderings-och utvecklings användnings fall. Kubernetes rekommenderas för produktions användning. Se [det här](how-to-deploy-self-hosted-gateway-kubernetes.md) dokumentet för att lära dig hur du distribuerar en lokal gateway till Kubernetes.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Slutför följande snabbstart: [Skapa en Azure API Management-instans](get-started-create-service-instance.md)
 - Skapa en Docker-miljö. [Docker för skriv bord](https://www.docker.com/products/docker-desktop) är ett utmärkt alternativ för utveckling och utvärdering. Se [Docker-dokumentationen](https://docs.docker.com) för information om alla Docker-versioner, deras funktioner och omfattande dokumentation på Docker.

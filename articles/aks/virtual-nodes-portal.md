@@ -3,14 +3,14 @@ title: Skapa virtuella noder med portalen i Azure Kubernetes Services (AKS)
 description: Lär dig hur du använder Azure Portal för att skapa ett AKS-kluster (Azure Kubernetes Services) som använder virtuella noder för att köra poddar.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/15/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501812"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577841"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Skapa och konfigurera ett Azure Kubernetes Services-kluster (AKS) för att använda virtuella noder i Azure Portal
 
@@ -54,15 +54,15 @@ I det övre vänstra hörnet av Azure Portal väljer du **skapa en resurs**  >  
 På sidan **Grunder** konfigurerar du följande alternativ:
 
 - *PROJEKTINFORMATION*: Välj en Azure-prenumeration och välj sedan eller skapa en Azure-resursgrupp, till exempel *myResourceGroup*. Ange ett **Kubernetes-klusternamn**, till exempel *myAKSCluster*.
-- *KLUSTERINFORMATION*: Välj en region, en Kubernetes-version och ett DNS-namnprefix för AKS-klustret.
+- *Kluster information*: Välj en region och en Kubernetes-version för AKS-klustret.
 - *Primär Node-pool*: Välj en VM-storlek för AKS-noderna. VM-storleken **kan inte** ändras efter att ett AKS-kluster har distribuerats.
      - Välj även det antal noder som ska distribueras till klustret. I den här artikeln ställer du in **antal noder** på *1*. Antalet noder **kan** justeras efter att klustret har distribuerats.
 
-Klicka på **Nästa: skala**.
+Klicka på **Nästa: Node-pooler**.
 
-På sidan **skala** väljer du *aktive rad* under **virtuella noder**.
+På sidan **Node-pooler** väljer du *Aktivera virtuella noder*.
 
-![Skapa AKS-kluster och aktivera de virtuella noderna](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="I en webbläsare visas hur du skapar ett kluster med virtuella noder aktiverade på Azure Portal. Alternativet Aktivera virtuella noder är markerat.":::
 
 Som standard skapas en kluster identitet. Den här kluster identiteten används för kluster kommunikation och integrering med andra Azure-tjänster. Som standard är den här kluster identiteten en hanterad identitet. Mer information finns i [använda hanterade identiteter](use-managed-identity.md). Du kan också använda ett tjänst huvud namn som kluster identitet.
 
@@ -158,7 +158,7 @@ Pod tilldelas en intern IP-adress från Azure Virtual Network-undernätet delege
 Om du vill testa Pod som körs på den virtuella noden bläddrar du till demonstrations programmet med en webb klient. När Pod tilldelas en intern IP-adress kan du snabbt testa den här anslutningen från en annan Pod i AKS-klustret. Skapa en test-Pod och koppla en terminalsession till den:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Installera `curl` i pod med `apt-get` :

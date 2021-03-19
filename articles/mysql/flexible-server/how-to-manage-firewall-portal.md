@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 132319575147c2ff1075881b1f1faec8bc5029f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942033"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Skapa och hantera brand Väggs regler för Azure Database for MySQL-flexibel server med hjälp av Azure Portal
@@ -32,7 +32,7 @@ I den här artikeln fokuserar vi på att skapa MySQL-server med **offentlig åtk
 3. Välj **flexibel Server** som distributions alternativ.
 4. Fyll i formuläret **grundläggande** information.
 5. Gå till fliken **nätverk** för att konfigurera hur du vill ansluta till servern.
-6. I **anslutnings metoden**väljer du *offentlig åtkomst (tillåtna IP-adresser)*. Om du vill skapa **brand Väggs regler**anger du brand Väggs regelns namn och en enskild IP-adress eller ett adress intervall. Om du vill begränsa regeln till en enskild IP-adress skriver du samma adress i fältet för Start-IP-adress och slut-IP-adress. Genom att öppna brand väggen kan administratörer, användare och program få åtkomst till alla databaser på MySQL-servern som de har giltiga autentiseringsuppgifter för.
+6. I **anslutnings metoden** väljer du *offentlig åtkomst (tillåtna IP-adresser)*. Om du vill skapa **brand Väggs regler** anger du brand Väggs regelns namn och en enskild IP-adress eller ett adress intervall. Om du vill begränsa regeln till en enskild IP-adress skriver du samma adress i fältet för Start-IP-adress och slut-IP-adress. Genom att öppna brand väggen kan administratörer, användare och program få åtkomst till alla databaser på MySQL-servern som de har giltiga autentiseringsuppgifter för.
    > [!Note]
    > Azure Database for MySQL flexibel Server skapar en brand vägg på server nivå. Den förhindrar att externa program och verktyg ansluter till servern eller databaser på servern, om du inte konfigurerar en regel som öppnar brandväggen för specifika IP-adresser.
 
@@ -48,21 +48,21 @@ I den här artikeln fokuserar vi på att skapa MySQL-server med **offentlig åtk
 
 3. Klicka på **Lägg till aktuell klient-IP-adress** i brand Väggs reglerna. Detta skapar automatiskt en brand Väggs regel med den offentliga IP-adressen för datorn, som den uppfattas av Azure-systemet.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Add My IP":::-->
 
 4. Verifiera din IP-adress innan du sparar konfigurationen. I vissa situationer skiljer sig IP-adressen som observerats av Azure Portal från den IP-adress som användes vid åtkomst till Internet-och Azure-servrar. Därför kan du behöva ändra den första IP-adressen och den sista IP-adressen för att regeln ska fungera som förväntat.
 
    Du kan använda en sökmotor eller ett annat online verktyg för att kontrol lera din egen IP-adress. Sök till exempel efter "What ' min IP".
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Bing search for What is my IP":::-->
 
 5. Lägg till ytterligare adress intervall. I brand Väggs reglerna för den Azure Database for MySQL flexibla servern kan du ange en enskild IP-adress eller ett adress intervall. Om du vill begränsa regeln till en enskild IP-adress skriver du samma adress i fältet för Start-IP-adress och slut-IP-adress. Genom att öppna brand väggen kan administratörer, användare och program få åtkomst till alla databaser på MySQL-servern som de har giltiga autentiseringsuppgifter för.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - firewall rules":::-->
 
 6. Klicka på **Spara** i verktygsfältet för att spara brand Väggs regeln. Vänta tills den bekräftelse att uppdateringen av brand Väggs reglerna har slutförts.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Save":::-->
 
 ## <a name="connect-from-azure"></a>Anslut från Azure
 

@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87003329"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure blockchain Workbench-databasvyer
@@ -287,7 +287,7 @@ Den här vyn representerar merparten av information som rör ett särskilt avtal
 
 Den här vyn innehåller information om de konsortier-medlemmar som är etablerade att använda Azure blockchain Workbench. Som standard fylls data i genom den första etableringen av användaren.
 
-| Namn               | Typ          | Kan vara null | Beskrivning                                                                                                                                                                                                                               |
+| Namn               | Typ          | Kan vara null | Description                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | Inga          | En unik identifierare för en användare |
 | ExternalID         | nvarchar (255) | Inga          | En extern identifierare för en användare. Som standard är detta ID det GUID som representerar Azure Active Directory-ID: t för användaren. |

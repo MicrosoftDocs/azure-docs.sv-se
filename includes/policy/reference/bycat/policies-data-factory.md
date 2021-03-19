@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f6e77b69bf85d65bc759aea83c40f1e08c17ebd8
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1f2b7f575e21f9d691f611c3c7402501818d873a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611124"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605691"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure-datafabriker bör krypteras med en kundhanterad nyckel](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ec52d6d-beb7-40c4-9a9e-fe753254690e) |Använd Kundhanterade nycklar för att hantera krypteringen i resten av Azure Data Factory. Som standard krypteras kund information med tjänst hanterade nycklar, men Kundhanterade nycklar krävs ofta för att uppfylla gällande regler för efterlevnad. Kundhanterade nycklar gör det möjligt att kryptera data med en Azure Key Vault-nyckel som skapats och ägs av dig. Du har fullständig kontroll och ansvar för nyckel livs cykeln, inklusive rotation och hantering. Läs mer på [https://aka.ms/adf-cmk](https://aka.ms/adf-cmk) . |Granska, neka, inaktive rad |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_CustomerManagedKey_Audit.json) |
 |[\[För hands version \] : Azure Data Factory integration runtime ska ha en gräns för antalet kärnor](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F85bb39b5-2f66-49f8-9306-77da3ac5130f) |Om du vill hantera resurser och kostnader begränsar du antalet kärnor för en integration Runtime. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/IR_Core_Count_Exceeds_Audit.json) |

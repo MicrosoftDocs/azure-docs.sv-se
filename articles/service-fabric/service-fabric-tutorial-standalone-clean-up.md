@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842894"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Självstudier: Rensa fristående kluster
@@ -56,7 +56,7 @@ I den här artikeln får du lära dig att:
 
 ## <a name="delete-azure-resources"></a>Ta bort Azure-resurser
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 2. Gå till avsnittet **Virtual Machines** .
 3. Markera kryss rutorna för de tre noder som du skapade i del ett av självstudien.
 4. Välj **Ta bort**.

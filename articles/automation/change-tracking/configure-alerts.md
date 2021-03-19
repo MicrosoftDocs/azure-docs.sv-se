@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91be2f8641a061d009962cdcd03a8d56048594da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585909"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594513"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>Skapa aviseringar för Ändringsspårning och inventering
 
@@ -50,11 +50,11 @@ När du har konfigurerat dina aviseringar kan du konfigurera en åtgärds grupp,
 
 3. Under **åtgärder** anger du ett namn som anger åtgärden, till exempel **e-postavisering**.
 
-4. För **Åtgärds typ** väljer du lämplig typ, till exempel **e-post/SMS/push/röst**.
+4. För **Åtgärds typ** väljer du lämplig typ, till exempel **e-post/SMS-meddelande/push/röst**.
 
-5. Välj **Redigera information**.
+5. Välj Penn ikonen för att redigera åtgärds informationen.
 
-6. Fyll i fönstret för åtgärds typen. Om du till exempel använder **e-post/SMS/push/röst** anger du ett åtgärds namn, markerar kryss rutan **e-** postadress, anger en giltig e-postadress och väljer sedan **OK**.
+6. Fyll i fönstret för åtgärds typen. Om du till exempel använder **e-post/SMS-meddelande/push/röst** för att skicka ett e-postmeddelande, anger du ett namn på åtgärden, markerar kryss rutan **e-** postadress, anger en giltig e-postadress och väljer sedan **OK**.
 
     ![Konfigurera en e-poståtgärdsgrupp](./media/configure-alerts/configure-email-action-group.png)
 

@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72249168"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Skicka ett arbetsflöde med en BAM-fil som indata
@@ -21,7 +21,7 @@ ms.locfileid: "72249168"
 Den här artikeln visar hur du skickar ett arbets flöde till Microsoft Genomics tjänsten om indatafilen är en enskild BAM-fil. I det här avsnittet förutsätts det att du redan har installerat och kört `msgen`-klienten och att du vet hur du använder Azure Storage. Om du har skickat ett arbets flöde med hjälp av de tillhandahållna exempel data, är du redo att fortsätta med den här artikeln. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Förberedelse: Överför BAM-filen till Azure Storage
-Vi antar att du har en enskild BAM-fil, *reads.bam*, och du har laddat upp den till ditt lagringskonto *myaccount* i Azure som **https://<span></span>myaccount.BLOB.Core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. Du har API-URL och din åtkomstnyckel. Du vill ha utdata i **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
+Vi antar att du har en enskild BAM-fil, *reads.bam*, och du har laddat upp den till ditt lagringskonto *myaccount* i Azure som **https://<span></span>myaccount.BLOB.Core <span></span>.windows <span></span>.net <span></span>/inputs/reads <span></span>.bam <span></span>**. Du har API-URL och din åtkomstnyckel. Du vill ha utdata i **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>**.
 
 
 

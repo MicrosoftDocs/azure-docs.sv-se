@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
 ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90893707"
 ---
 # <a name="score-svd-recommender"></a>Poäng för SVD-rekommenderare
@@ -45,7 +45,7 @@ När du förutsäger klassificeringarna beräknar modellen hur en användare kom
 
 1. Lägg till en utbildad rekommendations modell i din pipeline och Anslut den till **tränad SVD-rekommendation**. Du måste skapa modellen med hjälp av modulen [träna SVD-rekommendation](train-SVD-recommender.md) .
 
-2. För **rekommendations förutsägelse typ**väljer du **bedömnings förutsägelse**. Inga andra parametrar krävs.
+2. För **rekommendations förutsägelse typ** väljer du **bedömnings förutsägelse**. Inga andra parametrar krävs.
 
 3. Lägg till de data som du vill göra förutsägelser för och Anslut den till **data uppsättningen för att få poäng**.
 
@@ -77,7 +77,7 @@ För att rekommendera objekt för användare, ange en lista med användare och o
 
 4. Lägg till den data uppsättning som du vill göra förutsägelser för och Anslut den till **data uppsättningen för att få poäng**.
 
-    - För **från alla objekt**ska indata-datauppsättningen bestå av en kolumn. Det innehåller identifierarna för de användare som du vill ha rekommendationer för.
+    - För **från alla objekt** ska indata-datauppsättningen bestå av en kolumn. Det innehåller identifierarna för de användare som du vill ha rekommendationer för.
 
       Data uppsättningen kan innehålla ytterligare två kolumner med objekt identifierare och klassificeringar, men dessa två kolumner ignoreras. 
 

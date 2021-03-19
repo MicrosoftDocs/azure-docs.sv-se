@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644127"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577996"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Självstudie: Konfigurera anslutna Azure Active Directory-hybridenheter manuellt
 
@@ -74,6 +74,9 @@ Om din organisation använder hanterad (icke-federerad) konfiguration med lokal 
 För Windows 10-enheter med version 1703 eller tidigare måste du implementera Web Proxy Auto-Discovery (WPAD) för att göra det möjligt för Windows 10-datorer att registreras till Azure AD om din organisation kräver åtkomst till Internet via en utgående proxy.
 
 Från och med Windows 10 1803 försöker enheten att slutföra Azure AD-hybridanslutningen med hjälp av den synkroniserade datorn/enheten även om ett försök till en Azure AD-hybridanslutning från en enhet i en federerad domän via AD FS misslyckas, och om Azure AD Connect är konfigurerat för att synkronisera dator-/enhetsobjekten till Azure AD.
+
+> [!NOTE]
+> Om du vill hämta synkroniseringen av enhets registrering för att lyckas, som en del av enhets registrerings konfigurationen, ska du inte utesluta standardattributen för enheten från Azure AD Connect Sync-konfigurationen. Om du vill veta mer om standardenhets-attribut som synkroniseras till Azure AD, se [attribut som synkroniseras med Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 För att kontrol lera om enheten har åtkomst till ovanstående Microsoft-resurser under system kontot kan du använda anslutnings skriptet för [test av enhets registrering](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
 

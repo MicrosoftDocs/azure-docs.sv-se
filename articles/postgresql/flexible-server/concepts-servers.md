@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 5cd4454d5b77d18940f6693a25a691a01f4fedec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90942012"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>Servrar-Azure Database for PostgreSQL – flexibel Server
@@ -71,5 +71,5 @@ Som en hanterad tjänst för postgres, är de konfigurerbara parametrarna i Azur
 ## <a name="next-steps"></a>Nästa steg
 
 - En översikt över tjänsten finns i [Azure Database for PostgreSQL översikt](overview.md).
-- Information om vissa resurs kvoter och begränsningar utifrån **konfigurationen**finns i [alternativ för beräkning och lagring](concepts-compute-storage.md).
+- Information om vissa resurs kvoter och begränsningar utifrån **konfigurationen** finns i [alternativ för beräkning och lagring](concepts-compute-storage.md).
 - Visa och redigera Server parametrar via [Azure Portal](howto-configure-server-parameters-using-portal.md) eller [Azure CLI](howto-configure-server-parameters-using-cli.md).

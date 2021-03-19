@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a455e1ee6f8f714cf50ebdf6a59dab568489ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 221b7bdbb8ab5d0121e9c8032be8f18d8ae60d1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646307"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578064"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Självstudier: Konfigurera Hybrid Azure Active Directory-anslutningar för federerade domäner
 
@@ -85,6 +85,9 @@ Hybrid Azure AD-anslutning kräver att enheter har åtkomst till följande Micro
 > Om din organisation använder proxyservrar som fångar upp SSL-trafik för scenarier som förebyggande av data förlust eller begränsningar för Azure AD-innehavare, kontrollerar du att trafik till ( https://device.login.microsoftonline.com ) är exkluderad från TLS-och-undersök. Det går inte att utesluta " https://device.login.microsoftonline.com " kan orsaka störningar med autentisering av klient certifikat, vilket orsakar problem med enhets registrering och enhets-baserad villkorlig åtkomst.
 
 Från och med Windows AD FS 10 1803 förlitar vi sig på Azure AD Connect för att synkronisera datorobjektet i Azure AD som sedan används för att slutföra enhets registreringen för Hybrid Azure AD Join. Kontrol lera att Azure AD Connect har synkroniserat dator objekt för de enheter som du vill ska vara hybrid Azure AD-anslutna till Azure AD. Om datorns objekt tillhör vissa organisationsenheter (OU) måste du även konfigurera organisationsenheterna för synkronisering i Azure AD Connect. Mer information om hur du synkroniserar dator objekt med hjälp av Azure AD Connect finns i [Konfigurera filtrering med hjälp av Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
+
+> [!NOTE]
+> Om du vill hämta synkroniseringen av enhets registrering för att lyckas, som en del av enhets registrerings konfigurationen, ska du inte utesluta standardattributen för enheten från Azure AD Connect Sync-konfigurationen. Om du vill veta mer om standardenhets-attribut som synkroniseras till AAD, se [attribut som synkroniseras med Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 Om din organisation kräver åtkomst till Internet via en utgående proxy rekommenderar Microsoft att [implementera WPAD (Web Proxy Auto-Discovery)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) för att aktivera Windows 10-datorer för enhets registrering med Azure AD. Om du stöter på problem med att konfigurera och hantera WPAD, se [Felsöka automatisk identifiering](/previous-versions/tn-archive/cc302643(v=technet.10)). 
 

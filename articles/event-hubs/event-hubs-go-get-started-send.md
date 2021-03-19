@@ -4,10 +4,10 @@ description: 'Snabb start: den här artikeln innehåller en genom gång av hur d
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87002462"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Snabb start: skicka händelser till eller ta emot händelser från Event Hubs med go
@@ -31,7 +31,7 @@ Det här avsnittet visar hur du skapar ett Go-program för att skicka händelser
 
 ### <a name="install-go-package"></a>Installera go-paket
 
-Hämta go-paketet för Event Hubs med `go get` eller `dep` . Till exempel:
+Hämta go-paketet för Event Hubs med `go get` eller `dep` . Exempel:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -209,7 +209,7 @@ if err != nil {
 
 ### <a name="create-a-check-pointer-and-a-leaser"></a>Skapa en check pekare och en låne 
 
-Skapa en **låne**ansvarig för att leasa en partition till en viss mottagare och en **kontroll pekare**som ansvarar för att skriva kontroll punkter för meddelande strömmen så att andra mottagare kan börja läsa från rätt förskjutning.
+Skapa en **låne** ansvarig för att leasa en partition till en viss mottagare och en **kontroll pekare** som ansvarar för att skriva kontroll punkter för meddelande strömmen så att andra mottagare kan börja läsa från rätt förskjutning.
 
 För närvarande finns det en enda **StorageLeaserCheckpointer** som använder samma lagrings behållare för att hantera både lån och kontroll punkter. Förutom lagrings kontot och behållar namn måste **StorageLeaserCheckpointer** ha de autentiseringsuppgifter som skapades i föregående steg och Azure-miljön för att få åtkomst till behållaren korrekt.
 

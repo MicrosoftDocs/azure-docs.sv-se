@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 06/30/2020
 ms.prod: azure
 ms.openlocfilehash: bc289baff977817ad552fef3c5fd00342465b57a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86537384"
 ---
 Om du behöver hjälp med att logga in, konfigurera eller använda Azure dev tools för undervisning går du till [prenumerations support](https://azureforeducation.microsoft.com/institutions/Contact) och letar rätt på din region.

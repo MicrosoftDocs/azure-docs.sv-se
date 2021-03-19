@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953182"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Använd Cloud Explorer för Visual Studio för Azure IoT Hub enhets hantering
@@ -79,7 +79,7 @@ Gör så här om du vill använda direkta metoder:
 
 1. Högerklicka på enheten och välj **anropa Device Direct-metod**.
 
-1. Ange metod namnet och nytto lasten i **metoden Invoke Direct**och välj sedan **OK**.
+1. Ange metod namnet och nytto lasten i **metoden Invoke Direct** och välj sedan **OK**.
 
     Resultaten visas i **utdata**.
 

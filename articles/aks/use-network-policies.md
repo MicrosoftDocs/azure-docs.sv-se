@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Lär dig hur du skyddar trafik som flödar in och ut ur poddar med Kubernetes-nätverks principer i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 4b72c5551d6ed33deb4df40a60215aed8071141d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 17e14859ecdfe11872d5b0526d755d01bc1b034a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178906"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577860"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Skydda trafik mellan poddar med hjälp av nätverks principer i Azure Kubernetes service (AKS)
 
@@ -181,9 +181,13 @@ Calico nätverks principer med Windows-noder är för närvarande en för hands 
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-```azurecli
-PASSWORD_WIN="P@ssw0rd1234"
+Skapa ett användar namn som ska användas som administratörsautentiseringsuppgifter för dina Windows Server-behållare i klustret. I följande kommandon uppmanas du att ange ett användar namn och ange det WINDOWS_USERNAME för användning i ett senare kommando (kom ihåg att kommandona i den här artikeln anges i ett BASH-gränssnitt).
 
+```azurecli-interactive
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
@@ -195,8 +199,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --kubernetes-version 1.20.2 \
     --network-plugin azure \
@@ -222,7 +225,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>Neka all inkommande trafik till en POD
 
-Innan du definierar regler för att tillåta speciell nätverks trafik måste du först skapa en nätverks princip för att neka all trafik. Den här principen ger dig en start punkt för att börja skapa en lista över tillåtna för den önskade trafiken. Du kan också tydligt se att trafiken bryts när nätverks principen tillämpas.
+Innan du definierar regler för att tillåta speciell nätverks trafik måste du först skapa en nätverks princip för att neka all trafik. Den här principen ger dig en start punkt för att börja skapa en tillåten för enbart den önskade trafiken. Du kan också tydligt se att trafiken bryts när nätverks principen tillämpas.
 
 För exempel programmets miljö och trafik regler ska vi först skapa ett namn område som heter *utveckling* för att köra exemplet poddar:
 
@@ -234,13 +237,13 @@ kubectl label namespace/development purpose=development
 Skapa en exempel Server dels Pod som kör NGINX. Den här backend-Pod kan användas för att simulera ett exempel på ett webbaserat program för Server delen. Skapa den här Pod i namn området för *utveckling* och öppna port *80* för att hantera webb trafik. Märk Pod med *app = webapp, Role = Server* del så att vi kan rikta den mot en nätverks princip i nästa avsnitt:
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
+kubectl run backend --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 Skapa en annan Pod och koppla en terminalsession för att testa att du kan nå standard webb sidan NGINX:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 I Shell-prompten använder `wget` du för att bekräfta att du har åtkomst till standard webb sidan för nginx:
@@ -296,7 +299,7 @@ kubectl apply -f backend-policy.yaml
 Låt oss se om du kan använda webb sidan NGINX på backend-Pod igen. Skapa en annan test-Pod och koppla en terminalsession:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 I Shell-prompten använder `wget` du för att se om du kan komma åt standard webb sidan för nginx. Den här gången anger du ett timeout-värde till *2* sekunder. Nätverks principen blockerar nu all inkommande trafik, så det går inte att läsa in sidan, som du ser i följande exempel:
@@ -353,7 +356,7 @@ kubectl apply -f backend-policy.yaml
 Schemalägg en pod som är märkt som *app = webapp, Role = frontend* och koppla en terminalsession:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 I Shell-prompten använder `wget` du för att se om du kan komma åt standard webb sidan för nginx:
@@ -383,7 +386,7 @@ exit
 Nätverks principen tillåter trafik från poddar-märkta *appar: webapp, Role: frontend*, men bör neka all annan trafik. Vi testar att se om en annan Pod utan dessa etiketter kan komma åt backend-NGINX pod. Skapa en annan test-Pod och koppla en terminalsession:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 I Shell-prompten använder `wget` du för att se om du kan komma åt standard webb sidan för nginx. Nätverks principen blockerar inkommande trafik, så det går inte att läsa in sidan, som du ser i följande exempel:
@@ -416,7 +419,7 @@ kubectl label namespace/production purpose=production
 Schemalägg en test-Pod i namn området för *produktion* som är märkt som *app = webapp, Role = frontend*. Koppla en terminalsession:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 I Shell-prompten använder `wget` du för att bekräfta att du har åtkomst till standard webb sidan för nginx:
@@ -480,7 +483,7 @@ kubectl apply -f backend-policy.yaml
 Schemalägg en annan Pod i *produktions* namn rymden och koppla en terminalserversession:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 I Shell-prompten använder `wget` du för att se att nätverks principen nu nekar trafik:
@@ -502,7 +505,7 @@ exit
 När trafik nekas från namn området för *produktion* , Schemalägg en test-Pod tillbaka i *utvecklings* namn rymden och koppla en terminalsession:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 I Shell-prompten använder `wget` du för att se att nätverks principen tillåter trafiken:

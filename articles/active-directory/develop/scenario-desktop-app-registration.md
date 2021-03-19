@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517744"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578353"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Skriv bords app som anropar webb-API: registrera appar
 
@@ -40,10 +40,14 @@ Om ditt Skriv bords program använder interaktiv autentisering kan du logga in a
 
 De omdirigerings-URI: er som ska användas i ett Skriv bords program beror på det flöde som du vill använda.
 
-- Om du använder interaktiv autentisering eller enhets kod flöde använder du `https://login.microsoftonline.com/common/oauth2/nativeclient` . Välj motsvarande URL i avsnittet **autentisering** för ditt program för att uppnå den här konfigurationen.
+Ange omdirigerings-URI för appen genom [att konfigurera plattforms inställningarna](quickstart-register-app.md#add-a-redirect-uri) för appen i **Appregistreringar** i Azure Portal.
+
+- För appar som använder interaktiv autentisering:
+  - Appar som använder inbäddade webbläsare: `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  - Appar som använder system webbläsare: `http://localhost`
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Att använda som omdirigerings-URI rekommenderas som bästa säkerhets praxis.  Om ingen omdirigerings-URI anges används MSAL.NET som `urn:ietf:wg:oauth:2.0:oob` standard, vilket inte rekommenderas.  Det här standardvärdet kommer att uppdateras som en viktig ändring i nästa större version.
+  > Av säkerhets skäl rekommenderar vi att du uttryckligen ställer in `https://login.microsoftonline.com/common/oauth2/nativeclient` eller `http://localhost` som omdirigerings-URI. Vissa autentiseringsscheman som MSAL.NET använder ett standardvärde för `urn:ietf:wg:oauth:2.0:oob` när ingen annan omdirigerings-URI anges, vilket inte rekommenderas. Det här standardvärdet kommer att uppdateras som en viktig ändring i nästa större version.
 
 - Om du skapar en ursprunglig mål-C-eller Swift-app för macOS registrerar du omdirigerings-URI: n baserat på programmets paket identifierare i följande format: `msauth.<your.app.bundle.id>://auth` . Ersätt `<your.app.bundle.id>` med programmets paket-ID.
 - Om din app endast använder integrerad Windows-autentisering eller ett användar namn och ett lösen ord, behöver du inte registrera en omdirigerings-URI för programmet. Dessa flöden gör en tur och retur till Microsoft Identity Platform v 2.0-slutpunkten. Programmet kommer inte att anropas igen på någon specifik URI.

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90937309"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Skapa och hantera virtuella nätverk för Azure Database for MySQL flexibel server med hjälp av Azure Portal
@@ -42,7 +42,7 @@ Om du vill skapa en flexibel server i ett virtuellt nätverk behöver du:
 3. Välj **flexibel Server** som distributions alternativ.
 4. Fyll i formuläret **grundläggande** information.
 5. Gå till fliken **nätverk** för att konfigurera hur du vill ansluta till servern.
-6. I **anslutnings metoden**väljer du **privat åtkomst (VNet-integrering)**. Gå till **Virtual Network** och välj det redan befintliga *virtuella nätverket* och *under nätet* som skapats som en del av kraven ovan.
+6. I **anslutnings metoden** väljer du **privat åtkomst (VNet-integrering)**. Gå till **Virtual Network** och välj det redan befintliga *virtuella nätverket* och *under nätet* som skapats som en del av kraven ovan.
 7. Välj **Granska + skapa** för att granska din flexibla Server konfiguration.
 8. Välj **Skapa** för att etablera servern. Etableringen kan ta några minuter.
 

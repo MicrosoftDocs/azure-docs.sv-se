@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: iot-hub
 author: chrissie926
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68883727"
 ---
 ## <a name="create-a-module-identity"></a>Skapa en modulidentitet
@@ -23,7 +23,7 @@ När du kör den här konsolappen, genereras ett unikt ID och en unik nyckel fö
 
 1. Öppna Visual Studio och välj **skapa ett nytt projekt**.
 
-1. I **skapa ett nytt projekt**väljer du **konsol program (.NET Framework)**.
+1. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)**.
 
 1. Välj **Nästa** för att öppna **Konfigurera det nya projektet**. Ge projektet namnet *CreateIdentities* och lösningen namnet *IoTHubGetStarted*. Kontrollera att .NET Framework-versionen är 4.6.1 eller senare.
 
@@ -35,7 +35,7 @@ När du kör den här konsolappen, genereras ett unikt ID och en unik nyckel fö
 
     ![Installera den aktuella versionen av Azure IoT Hub .NET service SDK](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
    ```csharp
    using Microsoft.Azure.Devices;

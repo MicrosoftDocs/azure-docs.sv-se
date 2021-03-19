@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898466"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>Modul för PCA-Based avvikelse identifiering
@@ -46,7 +46,7 @@ Mer information om hur PCA fungerar och om implementeringen av avvikelse identif
 
     Om du vet hur du vill konfigurera modellen väljer du alternativet **enskild parameter** och anger en viss uppsättning värden som argument.
 
-3. För **antalet komponenter som ska användas i PCA**anger du antalet utgångs funktioner eller komponenter som du vill använda.
+3. För **antalet komponenter som ska användas i PCA** anger du antalet utgångs funktioner eller komponenter som du vill använda.
 
     Beslutet om hur många komponenter som ska ingå är en viktig del av experiment design som använder PCA. Allmän vägledning är att du inte bör inkludera samma antal PCA-komponenter eftersom det finns variabler. I stället bör du börja med ett mindre antal komponenter och öka antalet komponenter tills villkoret är uppfyllt.
 
@@ -54,7 +54,7 @@ Mer information om hur PCA fungerar och om implementeringen av avvikelse identif
 
 4. Ange mängden översampling som ska utföras under slumpmässig PCA-utbildning. Vid problem med avvikelse identifiering gör disbalanserade data det svårt att tillämpa standard PCA-tekniker. Genom att ange en mängd översampling kan du öka antalet mål instanser.
 
-    Om du anger **1**utförs ingen översampling. Om du anger ett värde som är högre än **1**genereras ytterligare exempel för användning i träna modellen.
+    Om du anger **1** utförs ingen översampling. Om du anger ett värde som är högre än **1** genereras ytterligare exempel för användning i träna modellen.
 
     Det finns två alternativ, beroende på om du använder en parameter Svep eller inte:
 
@@ -69,7 +69,7 @@ Mer information om hur PCA fungerar och om implementeringen av avvikelse identif
 
 6. Anslut en data uppsättning för Taggad utbildning och en av inlärnings modulerna.
 
-   Om du ställer in alternativet **skapa utbildare läge** för **en enskild parameter**använder du modulen [träna avvikelse identifiering modell](train-anomaly-detection-model.md) .
+   Om du ställer in alternativet **skapa utbildare läge** för **en enskild parameter** använder du modulen [träna avvikelse identifiering modell](train-anomaly-detection-model.md) .
 
 7. Skicka pipelinen.
 
@@ -87,7 +87,7 @@ Utvärdera resultatet av en modell för avvikelse identifiering:
 
     Ibland tas de metadata som är kopplade till etikett-kolumnen bort i pipeline-diagrammet. Om det händer kan du, när du använder modulen [utvärdera modell](evaluate-model.md) för att jämföra resultaten av två avvikelse identifierings modeller, få felet "det finns ingen etikett kolumn i den returnerade data uppsättningen". Eller så kanske du får felet "det finns ingen etikett kolumn i den returnerade data uppsättningen som ska jämföras".
 
-    Du kan undvika de här felen genom att lägga till modulen [Redigera metadata](edit-metadata.md) innan du kan [utvärdera modell](evaluate-model.md) -modulen. Använd kolumn väljaren för att välja klass kolumnen och välj sedan **etikett**i listan **fält** .
+    Du kan undvika de här felen genom att lägga till modulen [Redigera metadata](edit-metadata.md) innan du kan [utvärdera modell](evaluate-model.md) -modulen. Använd kolumn väljaren för att välja klass kolumnen och välj sedan **etikett** i listan **fält** .
 
 3. Använd modulen [Kör Python-skript](execute-python-script.md) för att justera etikett kolumn kategorier som **1 (positiv, normal)** och **0 (negativt, onormalt)**.
 

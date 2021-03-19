@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907853"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Tilldelnings modul för latend Dirichlet
@@ -30,7 +30,7 @@ Den här modulen tar en kolumn med text och genererar dessa utdata:
 
 + En omvandling, som du kan spara och återanvända för ny text som används som indata
 
-I den här modulen används scikit – lär dig biblioteket. Mer information om scikit-information finns i GitHub- [lagringsplatsen](https://github.com/scikit-learn/scikit-learn), som innehåller självstudier och en förklaring av algoritmen.
+I den här modulen används scikit – lär dig biblioteket. Mer information om scikit-information finns i GitHub- [lagringsplatsen](https://github.com/scikit-learn/scikit-learn), som innehåller självstudier och en förklaring av algoritmen.
 
 ## <a name="more-about-latent-dirichlet-allocation"></a>Mer om Latend Dirichlet-allokering
 
@@ -52,7 +52,7 @@ Den här modulen kräver en data uppsättning som innehåller en kolumn med text
 
 2. Som indata för modulen anger du en data uppsättning som innehåller en eller flera text kolumner.
 
-3. För **mål kolumner**väljer du en eller flera kolumner som innehåller text att analysera.
+3. För **mål kolumner** väljer du en eller flera kolumner som innehåller text att analysera.
 
     Du kan välja flera kolumner, men de måste vara av data typen **String** .
 
@@ -62,7 +62,7 @@ Den här modulen kräver en data uppsättning som innehåller en kolumn med text
 
     Som standard skapas 5 ämnen.
 
-5. För **n-gram**anger du den maximala längden för n-g som genereras under hashing.
+5. För **n-gram** anger du den maximala längden för n-g som genereras under hashing.
 
     Standardvärdet är 2, vilket innebär att både 2 gram och unigrams genereras.
 
@@ -77,7 +77,7 @@ Den här modulen kräver en data uppsättning som innehåller en kolumn med text
     > [!NOTE] 
     > I Azure Machine Learning Designer stöder biblioteket inte längre scikit *doc_topic_distr* utdata från version 0,19. I den här modulen kan **normaliserings** parametern endast användas för *mat ris utdata i funktions ämnet* . *Transformerade data uppsättnings* utdata är alltid normaliserade.
 
-7. Välj alternativet **Visa alla alternativ**och ställ sedan in det på **Sant** om du vill ange följande avancerade parametrar.
+7. Välj alternativet **Visa alla alternativ** och ställ sedan in det på **Sant** om du vill ange följande avancerade parametrar.
 
     Dessa parametrar är speciella för scikit-lär implementeringen av LDA. Det finns några bra självstudier om LDA i scikit-och det officiella [scikit-dokumentet](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html).
 
@@ -95,7 +95,7 @@ Den här modulen kräver en data uppsättning som innehåller en kolumn med text
 
     + **Antal pass över data**. Ange det maximala antalet gånger som algoritmen ska gå över data. Den här parametern motsvarar `max_iter` parametern i scikit-lär.
 
-8. Välj alternativet **build-ordlista för ngrams** eller **build-ordlista för ngrams före LDA**om du vill skapa en n-gram-lista i ett första pass innan du klassificerar text.
+8. Välj alternativet **build-ordlista för ngrams** eller **build-ordlista för ngrams före LDA** om du vill skapa en n-gram-lista i ett första pass innan du klassificerar text.
 
     Om du skapar den första ord listan i förväg kan du senare använda ord listan när modellen granskas. Att kunna mappa resultat till text i stället för numeriska index är vanligt vis enklare för tolkning. Det tar dock längre tid att spara ord listan att använda ytterligare lagrings utrymme.
 
@@ -156,7 +156,7 @@ I designern kan du också använda R-eller Python-bibliotek för text bearbetnin
 
 Det här avsnittet innehåller implementerings information, tips och svar på vanliga frågor.
 
-### <a name="implementation-details"></a>Implementerings information
+### <a name="implementation-details"></a>Implementeringsdetaljer
 
 Som standard normaliseras distributioner av utdata för en transformerad data uppsättning och funktions avsnitts mat ris som sannolikhet:
 
@@ -181,13 +181,13 @@ När term indexen har beräknats jämför ett avstånds beroende likhets mått e
 
 ###  <a name="module-parameters"></a>Parametrar för modul
 
-|Namn|Typ|Intervall|Valfritt|Default|Beskrivning|  
+|Namn|Typ|Intervall|Valfritt|Standardvärde|Beskrivning|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
-|Mål kolumn (er)|Kolumn val||Krävs|StringFeature|Mål kolumn namn eller index.|  
-|Antal ämnen som ska modelleras|Integer|[1; 1000]|Krävs|5|Modellera dokument distributionen mot N ämnen.|  
-|N-gram|Integer|[1; 10]|Krävs|2|Ordningen för N-gram genereras under hashing.|  
-|Normalisera|Boolesk|Sant eller falskt|Krävs|true|Normalisera utdata till sannolikhet.  Den transformerade data uppsättningen kommer att vara P (ämne&#124;dokument) och matrisen för funktions ämnet är P (Word&#124;-avsnittet).|  
-|Visa alla alternativ|Boolesk|Sant eller falskt|Krävs|Falskt|Visar ytterligare parametrar som är speciella för scikit – lära online-LDA.|  
+|Mål kolumn (er)|Kolumn val||Obligatorisk|StringFeature|Mål kolumn namn eller index.|  
+|Antal ämnen som ska modelleras|Integer|[1; 1000]|Obligatorisk|5|Modellera dokument distributionen mot N ämnen.|  
+|N-gram|Integer|[1; 10]|Obligatorisk|2|Ordningen för N-gram genereras under hashing.|  
+|Normalisera|Boolesk|Sant eller falskt|Obligatorisk|true|Normalisera utdata till sannolikhet.  Den transformerade data uppsättningen kommer att vara P (ämne&#124;dokument) och matrisen för funktions ämnet är P (Word&#124;-avsnittet).|  
+|Visa alla alternativ|Boolesk|Sant eller falskt|Obligatorisk|Falskt|Visar ytterligare parametrar som är speciella för scikit – lära online-LDA.|  
 |Rho-parameter|Float|[0.00001; 1.0]|Gäller när kryss rutan **Visa alla alternativ** är markerad|0,01|Avsnittet Word föregående distribution.|  
 |Alpha-parameter|Float|[0.00001; 1.0]|Gäller när kryss rutan **Visa alla alternativ** är markerad|0,01|Dokument ämnet tidigare distribution.|  
 |Uppskattat antal dokument|Integer|[1; int. MaxValue|Gäller när kryss rutan **Visa alla alternativ** är markerad|1000|Uppskattat antal dokument. Motsvarar `total_samples` parametern.|  

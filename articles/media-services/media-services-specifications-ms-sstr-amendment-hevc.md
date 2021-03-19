@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87053043"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) ändring för HEVC 
@@ -365,7 +365,7 @@ TimeScale = 90000
 ## <a name="52-index-of-security-parameters"></a>5,2 index för säkerhets parametrar 
 
 
-| **Säkerhets parameter**  | **Section**         |
+| **Säkerhets parameter**  | **Avsnitt**         |
 |-------------------------|---------------------|
 | ProtectionElement       | *2.2.2.2*           |
 | Common Encryption rutor | *[ISO/IEC 23001-7]* |

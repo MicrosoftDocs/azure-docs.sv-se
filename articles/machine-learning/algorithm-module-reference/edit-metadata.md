@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
 ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908042"
 ---
 # <a name="edit-metadata-module"></a>Redigera metadata-modul
@@ -46,7 +46,7 @@ Typiska metadata-ändringar kan innehålla:
   
 1. Välj alternativet **datatyp** om du behöver tilldela en annan datatyp till de markerade kolumnerna. Du kan behöva ändra data typen för vissa åtgärder. Om din käll data uppsättning exempelvis har tal som hanteras som text, måste du ändra dem till en numerisk datatyp innan du använder matematiska åtgärder.
 
-    + De data typer som stöds är **sträng**, **heltal**, **Double**, **Boolean**och **datetime**.
+    + De data typer som stöds är **sträng**, **heltal**, **Double**, **Boolean** och **datetime**.
 
     + Om du väljer flera kolumner måste du tillämpa metadata-ändringarna på *alla* valda kolumner. Anta till exempel att du väljer två eller tre numeriska kolumner. Du kan ändra dem till en sträng data typ och byta namn på dem i en enda åtgärd. Du kan dock inte ändra en kolumn till en sträng data typ och en annan kolumn från ett flyttal till ett heltal.
   
@@ -87,7 +87,7 @@ Typiska metadata-ändringar kan innehålla:
   
          Du kan för närvarande inte uttryckligen Markera en kolumn som en poäng i Azure Machine Learning. Vissa åtgärder resulterar dock i en kolumn som flaggas som ett resultat internt. Dessutom kan en anpassad R-modul returnera Poäng värden.
 
-1. För **nya kolumn namn**anger du det nya namnet på den markerade kolumnen eller kolumnerna.  
+1. För **nya kolumn namn** anger du det nya namnet på den markerade kolumnen eller kolumnerna.  
   
     + Kolumn namn får endast använda tecken som stöds av UTF-8-kodning. Tomma strängar, null-värden eller namn som består av enbart blank steg är inte tillåtna.  
   

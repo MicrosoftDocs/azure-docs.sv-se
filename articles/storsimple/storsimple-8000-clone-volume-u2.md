@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91767573"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Använda StorSimple Device Manager-tjänsten på Azure-portalen för att klona en volym
@@ -66,7 +66,7 @@ Utför följande steg för att skapa en klon av din volym från säkerhets kopie
    
       ![Lista över säkerhets kopiering 2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Expandera säkerhets kopian om du vill visa den associerade volymen och välj en volym i en säkerhets kopia. Högerklicka och välj sedan **klona**på snabb menyn.
+3. Expandera säkerhets kopian om du vill visa den associerade volymen och välj en volym i en säkerhets kopia. Högerklicka och välj sedan **klona** på snabb menyn.
 
    ![Lista över säkerhets kopior 3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
@@ -82,7 +82,7 @@ Utför följande steg för att skapa en klon av din volym från säkerhets kopie
        > [!NOTE]
        > Fältet **klona volym som** visas i **nivå** även om du klonar en lokalt fäst volym. Du kan inte ändra den här inställningen. men om du vill att den klonade volymen ska fästa lokalt kan du konvertera klonen till en lokalt fäst volym när du har skapat klonen. Information om hur du konverterar en nivå volym till en lokalt fäst volym finns i [ändra volym typ](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
           
-   3. Under **anslutna värdar**anger du en åtkomst kontroll post (ACR) för klonen. Du kan lägga till en ny ACR eller välja från den befintliga listan. ACR avgör vilka värdar som har åtkomst till den här klonen.
+   3. Under **anslutna värdar** anger du en åtkomst kontroll post (ACR) för klonen. Du kan lägga till en ny ACR eller välja från den befintliga listan. ACR avgör vilka värdar som har åtkomst till den här klonen.
       
        ![Lista över säkerhets kopior 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 

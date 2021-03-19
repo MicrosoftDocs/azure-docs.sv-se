@@ -8,10 +8,10 @@ ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 5ca8f2b003b7f2142da329a07f929ecf31fee627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908259"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Bind en Azure Database for MySQL-instans till ditt Azure våren Cloud-program 
@@ -46,9 +46,9 @@ Om du inte har en distribuerad Azure våren-moln instans följer du anvisningarn
 
 1. Uppdatera den aktuella distributionen genom `az spring-cloud app update` att köra eller skapa en ny distribution för den här ändringen genom att köra `az spring-cloud app deployment create` .  Dessa kommandon antingen uppdaterar eller skapar programmet med det nya beroendet.
 
-1. På sidan Azure Portal på sidan **Azure våren Cloud** Service letar du reda på **program instrument panelen**och väljer sedan det program som du vill binda till Azure Database for MySQL instansen.  Detta är samma program som du uppdaterade eller distribuerade i föregående steg. 
+1. På sidan Azure Portal på sidan **Azure våren Cloud** Service letar du reda på **program instrument panelen** och väljer sedan det program som du vill binda till Azure Database for MySQL instansen.  Detta är samma program som du uppdaterade eller distribuerade i föregående steg. 
 
-1. Välj **tjänst bindning**och välj sedan knappen **skapa bindning för tjänst** . 
+1. Välj **tjänst bindning** och välj sedan knappen **skapa bindning för tjänst** . 
 
 1. Fyll i formuläret, Välj **Azure MySQL** som **bindnings typ**, med samma databas namn som du använde tidigare och Använd samma användar namn och lösen ord som du antecknade i det första steget.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039622"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586343"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Data insamlings regler i Azure Monitor (för hands version)
 Data insamlings regler (DCR) definierar data som kommer till Azure Monitor och anger var data ska skickas eller lagras. Den här artikeln innehåller en översikt över data insamlings regler, inklusive deras innehåll och struktur och hur du kan skapa och arbeta med dem.
@@ -39,7 +39,7 @@ Följande diagram visar komponenterna i en data insamlings regel och deras relat
 ### <a name="data-source-types"></a>Typer av datakälla
 Varje data källa har en typ av data källa. Varje typ definierar en unik uppsättning egenskaper som måste anges för varje data källa. De data käll typer som är tillgängliga visas i följande tabell.
 
-| Typ av data Källa | Beskrivning | 
+| Typ av data Källa | Description | 
 |:---|:---|
 | utöka | VM-baserad data Källa |
 | performanceCounters | Prestanda räknare för både Windows och Linux |
@@ -81,6 +81,10 @@ Exempel data insamlings regeln nedan är för virtuella datorer med Azures hante
   - Samlar in aviseringar, kritiska händelser och nöd händelser från syslog-anläggningen.
 - Mål
   - Skickar alla data till en Log Analytics arbets yta med namnet centralWorkspace.
+
+> [!NOTE]
+> En förklaring av XPath-objekt som används för att ange händelse insamling i data insamlings regler finns i [Begränsa data insamling med anpassade XPath-frågor](data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)
+
 
 ```json
 {

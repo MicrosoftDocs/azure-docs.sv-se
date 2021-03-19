@@ -3,12 +3,12 @@ title: Flytta åtgärds stöd efter resurs typ
 description: Visar en lista över de Azure-resurs typer som kan flyttas till en ny resurs grupp eller prenumeration.
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: ae59bcc65f296a10c68b88f5f6a1ecbc923f8856
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 3a15ddc62c19d74871de33003d46ec2fc5437f51
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232604"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584694"
 ---
 # <a name="move-operation-support-for-resources"></a>Åtgärds stöd för flytt av resurser
 
@@ -850,7 +850,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > [!div class="mx-tableFixed"]
 > | Resurstyp | Resursgrupp | Prenumeration |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | Ja | Ja |
+> | flexibleServers | Inga | Inga |
 > | brygghuvudservrar | Ja | Ja |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL

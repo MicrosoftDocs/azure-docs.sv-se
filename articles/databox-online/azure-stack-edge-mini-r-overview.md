@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 7c28eb604de4f6e23f37b6ca2fcab3fdc976f237
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 14a425c3aca3a1c296b96855b2c920d558e89f9e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125208"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585986"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Vad är Azure Stack Edge Mini R?
 
@@ -79,6 +79,7 @@ Azure Stack Edge Mini R fysisk enhet, Azure-resurs och mål lagrings konto som d
 
 - **Destinationslagringskonton** – de lagringskonton som lagrar data som är tillgängliga i alla Azure-regioner. De regioner där lagrings kontona lagrar Azure Stack Edge-Mini R-data ska ligga nära den plats där enheten befinner sig för optimala prestanda. Ett lagringskonto som är långt från enheten leder till långa svarstider och långsammare prestanda.
 
+Azure Stack Edge-tjänsten är en icke-regional tjänst. Mer information finns i [regioner och Tillgänglighetszoner i Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Azure Stack Edge-tjänsten är inte beroende av en speciell Azure-region, vilket gör det flexibelt för globala avbrott och drift avbrott i hela regionen.
 
 ## <a name="next-steps"></a>Nästa steg
 

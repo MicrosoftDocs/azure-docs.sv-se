@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561829"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584711"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Guide för att köra funktioner på .NET 5,0 i Azure
 
@@ -47,7 +47,7 @@ Ett projekt med en isolerad .NET-funktion är i princip ett .NET-konsol program 
 + [host.jspå](functions-host-json.md) fil.
 + [local.settings.jspå](functions-run-local.md#local-settings-file) fil.
 + C#-projekt fil (. CSPROJ) som definierar projektet och beroenden.
-+ Program.cs-filen är start punkten för appen.
++ Filen program. cs som är start punkten för appen.
 
 ## <a name="package-references"></a>Paket referenser
 
@@ -68,7 +68,7 @@ Du hittar dessa tilläggs paket under [Microsoft. Azure. functions. Worker. Exte
 
 ## <a name="start-up-and-configuration"></a>Start och konfiguration 
 
-När du använder de isolerade .NET-funktionerna har du åtkomst till start av din Function-app, som vanligt vis finns i Program.cs. Du är ansvarig för att skapa och starta en egen värd instans. Därför har du också direkt åtkomst till konfigurations pipelinen för din app. Du kan enkelt mata in beroenden och köra mellanprogram när du kör processen utanför processen. 
+När du använder de isolerade .NET-funktionerna har du åtkomst till start av din Function-app, som vanligt vis finns i program. cs. Du är ansvarig för att skapa och starta en egen värd instans. Därför har du också direkt åtkomst till konfigurations pipelinen för din app. Du kan enkelt mata in beroenden och köra mellanprogram när du kör processen utanför processen. 
 
 Följande kod visar ett exempel på en `HostBuilder` pipeline:
 

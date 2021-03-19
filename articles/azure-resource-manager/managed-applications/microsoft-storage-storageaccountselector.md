@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: fe70c42387e9dedea8943b5dcce04a1f9ded5190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87033313"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>GRÄNSSNITTs element för Microsoft. Storage. StorageAccountSelector
@@ -65,7 +65,7 @@ Kontrollen gör det möjligt för användaren att skapa ett nytt lagrings konto 
 - Om det här värdet anges `defaultValue.name` verifieras automatiskt för unikhet. Om lagrings konto namnet inte är unikt måste användaren ange ett annat namn eller välja ett befintligt lagrings konto.
 - Standardvärdet för `defaultValue.type` är **Premium_LRS**.
 - Alla typer som inte anges i `constraints.allowedTypes` är dolda och alla typer som inte anges i `constraints.excludedTypes` visas. `constraints.allowedTypes` och `constraints.excludedTypes` är både valfria, men kan inte användas samtidigt.
-- Om `options.hideExisting` är **Sant**kan användaren inte välja ett befintligt lagrings konto. Standardvärdet är **falskt**.
+- Om `options.hideExisting` är **Sant** kan användaren inte välja ett befintligt lagrings konto. Standardvärdet är **falskt**.
 
 ## <a name="next-steps"></a>Nästa steg
 * En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md).

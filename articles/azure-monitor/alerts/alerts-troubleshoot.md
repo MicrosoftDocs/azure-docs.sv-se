@@ -5,12 +5,12 @@ author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: d65fa03a183c15022535debee6476844192ec6bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ac23fbb29829bf2a7a46e41f9a7f646ad97915
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037854"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586326"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Felsöka problem i Azure Monitor aviseringar
 
@@ -21,7 +21,7 @@ Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i din
 Om du har problem med att en avisering ska uppstå eller inte uppstår när du förväntar dig, se artiklarna nedan. Du kan se "utlöst" aviseringar i Azure Portal.
 
 - [Felsöka Azure Monitor mått varningar i Microsoft Azure](alerts-troubleshoot-metric.md)  
-- [Felsöka Azure Monitor logg aviseringar i Microsoft Azure](alerts-troubleshoot-metric.md)
+- [Felsöka Azure Monitor logg aviseringar i Microsoft Azure](alerts-troubleshoot-log.md)
 
 Om aviseringen utlöses enligt Azure Portal men det inte går att utföra rätt meddelanden använder du informationen i resten av den här artikeln för att felsöka problemet.
 

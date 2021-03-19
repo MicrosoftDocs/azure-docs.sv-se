@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87047338"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Jämför Azure Media Services v3 för inställningar och Video Indexer 
@@ -31,7 +31,7 @@ För närvarande finns det en överlappning mellan funktioner som erbjuds av [vi
 
 |Funktion|Video Indexer-API: er |Inställningar för video analys och ljud analys<br/>i Media Services v3-API: er|
 |---|---|---|
-|Medie insikter|[Optimerad](video-indexer-output-json-v2.md) |[Grunderna](../latest/analyzing-video-audio-files-concept.md)|
+|Medie insikter|[Optimerad](video-indexer-output-json-v2.md) |[Grunder](../latest/analyzing-video-audio-files-concept.md)|
 |Erfarenheter|Se den fullständiga listan över funktioner som stöds: <br/> [Översikt](video-indexer-overview.md)|Returnerar endast video insikter|
 |Fakturering|[Media Services priser](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services priser](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Efterlevnad|För de mest aktuella uppdateringarna går du till [Azure compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) och söker efter "video Indexer" för att se om det överensstämmer med ett intresse bevis.|För de mest aktuella uppdateringarna går du till [Azure compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) och söker efter "Media Services" för att se om det överensstämmer med ett intresse bevis.|

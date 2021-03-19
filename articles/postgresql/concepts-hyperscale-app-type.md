@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90895959"
 ---
 # <a name="determining-application-type"></a>Bestämmer program typ
@@ -22,12 +22,12 @@ Det finns många olika typer av program som fungerar bra på citus (i stor skala
 
 ## <a name="at-a-glance"></a>Snabbt
 
-| Program med flera klienter                                 | Real-Time program                                |
+| Program med flera klienter                                 | Realtidsprogram                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
-| Ibland dussin tals eller hundratals tabeller i schemat          | Litet antal tabeller                                |
-| Frågor som rör en klient organisation (företag/butik) i taget | Relativt enkla analys frågor med agg regeringar |
-| OLTP-arbetsbelastningar för att betjäna webb klienter                    | Hög inmatnings volym av främst oföränderliga data           |
-| OLAP-arbetsbelastningar som betjänar analys frågor per klient   | Centrera ofta runt stor tabell med händelser            |
+| Ibland dussintals eller hundratals tabeller i ett schema          | Små antal tabeller                                |
+| Frågor som rör en klient organisation (företag/butik) i taget | Relativt enkla analysfrågor med sammansättningar |
+| OLTP-arbetsbelastningar för att betjäna webbklienter                    | Hög inmatningsvolym av främst oföränderliga data           |
+| OLAP-arbetsbelastningar som betjänar analysfrågor per klient   | Centreras ofta runt stor händelsetabell            |
 
 ## <a name="examples-and-characteristics"></a>Exempel och egenskaper
 

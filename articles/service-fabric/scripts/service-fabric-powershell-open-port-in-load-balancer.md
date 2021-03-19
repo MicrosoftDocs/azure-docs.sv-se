@@ -15,10 +15,10 @@ ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 4be9944a53aaf0c697d55ff567dee7f2fbb3ed85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87038128"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>Öppna en programport i Azure-lastbalanseraren
@@ -37,7 +37,7 @@ Installera, om så behövs, Service Fabric PowerShell-modulen installeras med [S
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Hämtar en Azure-resurs.  |
 | [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) | Hämtar Azure Load Balancer. |

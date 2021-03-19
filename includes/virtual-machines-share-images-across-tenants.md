@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73903686"
 ---
 Men om du vill dela avbildningar utanför Azure-klienten, i skala, bör du skapa en app-registrering för att under lätta delningen.  Genom att använda en app-registrering kan du aktivera mer komplexa delnings scenarier, till exempel: 
@@ -26,12 +26,12 @@ Men om du vill dela avbildningar utanför Azure-klienten, i skala, bör du skapa
 Skapa en program registrering som ska användas av båda klienterna för att dela avbildnings Galleri resurserna.
 1. Öppna [Appregistreringar (för hands version) i Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
 1. Välj **ny registrering** på menyn längst upp på sidan.
-1. Skriv *myGalleryApp*i **namn**.
-1. I **konto typer som stöds**väljer du **konton i valfri organisations katalog och personliga Microsoft-konton**.
-1. I **omdirigerings-URI**skriver *https://www.microsoft.com* du och väljer sedan **Registrera**. När appens registrering har skapats öppnas översikts sidan.
+1. Skriv *myGalleryApp* i **namn**.
+1. I **konto typer som stöds** väljer du **konton i valfri organisations katalog och personliga Microsoft-konton**.
+1. I **omdirigerings-URI** skriver *https://www.microsoft.com* du och väljer sedan **Registrera**. När appens registrering har skapats öppnas översikts sidan.
 1. På sidan Översikt kopierar du **programmet (klienten) ID** och sparar för användning senare.   
-1. Välj **certifikat & hemligheter**och välj sedan **ny klient hemlighet**.
-1. I **Beskrivning**skriver du *Shared Image Gallery Cross-Tenant app Secret*.
+1. Välj **certifikat & hemligheter** och välj sedan **ny klient hemlighet**.
+1. I **Beskrivning** skriver du *Shared Image Gallery Cross-Tenant app Secret*.
 1. Lämna **förfaller**, lämna standardvärdet på **1 år** och välj sedan **Lägg till**.
 1. Kopiera värdet för hemligheten och spara det på en säker plats. Du kan inte hämta det när du har lämnat sidan.
 
@@ -39,9 +39,9 @@ Skapa en program registrering som ska användas av båda klienterna för att del
 Ge appens registrerings behörighet att använda det delade avbildnings galleriet.
 1. I Azure Portal väljer du det delade avbildnings galleri som du vill dela med en annan klient.
 1. Välj **Välj åtkomst kontroll (IAM)** och under **Lägg till roll tilldelning** väljer du *Lägg till*. 
-1. Välj **läsare**under **roll**.
+1. Välj **läsare** under **roll**.
 1. Under **tilldela åtkomst till:**, lämna det här som **Azure AD-användare,-grupp eller tjänstens huvud namn**.
-1. Under **Välj**skriver du *myGalleryApp* och väljer den när den visas i listan. När du är klar väljer du **Spara**.
+1. Under **Välj** skriver du *myGalleryApp* och väljer den när den visas i listan. När du är klar väljer du **Spara**.
 
 
 ## <a name="give-tenant-2-access"></a>Ge klient organisation 2 åtkomst
@@ -55,7 +55,7 @@ https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Appl
 I [Azure Portal](https://portal.azure.com) loggar du in som klient 2 och ger appens registrerings åtkomst till den resurs grupp där du vill skapa den virtuella datorn.
 
 1. Välj resurs gruppen och välj sedan **åtkomst kontroll (IAM)**. Under **Lägg till roll tilldelning** väljer du **Lägg till**. 
-1. Under **roll**skriver du **Contributor**.
+1. Under **roll** skriver du **Contributor**.
 1. Under **tilldela åtkomst till:**, lämna det här som **Azure AD-användare,-grupp eller tjänstens huvud namn**.
 1. Under **Välj** typ *myGalleryApp* väljer du den när den visas i listan. När du är klar väljer du **Spara**.
 

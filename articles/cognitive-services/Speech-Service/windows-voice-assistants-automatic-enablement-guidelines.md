@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987402"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Sekretess rikt linjer för röst assistenter i Windows
@@ -50,7 +50,7 @@ Om något av ovanstående är identifierat kan Microsoft ta bort en assistent fr
 
 Assistent författare som vill göra det enklare och smidigare för användarna att välja röst aktivering kan göra detta genom att uppfylla ytterligare krav på korrekt uppfyllande av information och medgivande utan en extra resa till inställnings sidan. När den har godkänts blir röst aktiveringen tillgänglig omedelbart när en användare ger till gång till ett mikrofon program. För att kunna göra detta måste ett assistent program göra följande **innan** du uppmanas att ange ett mikrofon godkännande (till exempel genom att använda `AppCapability.RequestAccessAsync` API: et):
 
-1. Ge tydliga och framträdande uppgifter om användaren att programmet vill lyssna på användarens röst för ett nyckelord, *även om programmet inte körs*och vill att användarens samtycke
+1. Ge tydliga och framträdande uppgifter om användaren att programmet vill lyssna på användarens röst för ett nyckelord, *även om programmet inte körs* och vill att användarens samtycke
 1. Ta med relevant information om principer för data användning och sekretess, till exempel en länk till en officiell sekretess policy
 1. Undvik alla direktiv eller inledande orda lydelse (till exempel "Klicka på Ja i följande prompt") i upplevelse flödet som avbildar ljud tagnings beteendet
 

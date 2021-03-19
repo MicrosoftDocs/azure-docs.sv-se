@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70935123"
 ---
 1. Logga in på [Firebase-konsolen](https://firebase.google.com/console/). Skapa ett nytt Firebase-projekt om du inte redan har ett.
@@ -20,7 +20,7 @@ ms.locfileid: "70935123"
 
     ![Lägg till Firebase till din Android-app](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
 3. Utför följande steg på sidan **Lägg till Firebase på din Android-app** : 
-    1. För **namn på Android-paket**kopierar du värdet för din **applicationId** i programmets build. gradle-fil. I det här exemplet är det `com.fabrikam.fcmtutorial1app` . 
+    1. För **namn på Android-paket** kopierar du värdet för din **applicationId** i programmets build. gradle-fil. I det här exemplet är det `com.fabrikam.fcmtutorial1app` . 
 
         ![Ange paket namnet](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
     2. Välj **Registrera app**. 
@@ -33,7 +33,7 @@ ms.locfileid: "70935123"
         ```
         classpath 'com.google.gms:google-services:4.0.1'
         ```
-    2. Lägg till följande-instruktioner i avsnittet beroenden i filen build. gradle för app-nivå ( &lt; Project &gt; / &lt; app-module &gt; /build.gradle). **dependencies** 
+    2. Lägg till följande-instruktioner i avsnittet beroenden i filen build. gradle för app-nivå ( &lt; Project &gt; / &lt; app-module &gt; /build.gradle).  
 
         ```
         implementation 'com.google.firebase:firebase-core:16.0.8'

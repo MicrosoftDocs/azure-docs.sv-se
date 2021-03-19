@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82838509"
 ---
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Vanliga frågor om Analysis Services-nätverksanslutning
@@ -24,7 +24,7 @@ Den här artikeln innehåller svar på vanliga frågor om att ansluta till lagri
 **Svars** Azure Analysis Services använder inte fasta IP-adresser eller service märken. Intervallet av IP-adresser som Analysis Services servrar använder kan vara vad som helst i intervallet av IP-adresser för *Azure-regionen*. Eftersom serverns IP-adresser är variabla och kan ändras över tid, måste brand Väggs reglerna tillåtas för hela intervallet av IP-adresser för Azure-regioner som servern finns i.
 
 **Fråga** – mitt Azure Storage-konto finns i en annan region än min Analysis Services-server. Hur gör jag för att konfigurera brand Väggs inställningar för lagrings kontot?   
-**Svar** – om lagrings kontot finns i en annan region konfigurerar du inställningarna för lagrings konto brand väggen för att tillåta åtkomst från **valda nätverk**. I brand Väggs **adress intervall**anger du IP-adressintervallet för den region som Analysis Services-servern finns i. För att hämta IP-intervall för Azure-regioner, se [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). Det finns stöd för att konfigurera brand Väggs inställningar för lagrings konto för att tillåta åtkomst från alla nätverk, men att välja valda nätverk och ange ett IP-adressintervall rekommenderas. 
+**Svar** – om lagrings kontot finns i en annan region konfigurerar du inställningarna för lagrings konto brand väggen för att tillåta åtkomst från **valda nätverk**. I brand Väggs **adress intervall** anger du IP-adressintervallet för den region som Analysis Services-servern finns i. För att hämta IP-intervall för Azure-regioner, se [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). Det finns stöd för att konfigurera brand Väggs inställningar för lagrings konto för att tillåta åtkomst från alla nätverk, men att välja valda nätverk och ange ett IP-adressintervall rekommenderas. 
 
 **Fråga** – mitt Azure Storage-konto finns i samma region som min Analysis Services-server. Hur kan jag konfigurera brand Väggs inställningar för lagrings kontot?   
 **Svar** – eftersom din Analysis Services-server och lagrings konto finns i samma region, använder kommunikationen mellan dem interna IP-adressintervall, vilket innebär att en brand vägg kan använda valda nätverk och ange ett IP-adressintervall som inte stöds. Om organisations principer kräver en brand vägg måste den konfigureras för att tillåta åtkomst från alla nätverk.

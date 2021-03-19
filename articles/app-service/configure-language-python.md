@@ -2,15 +2,15 @@
 title: Konfigurera Linux python-appar
 description: Lär dig hur du konfigurerar python-behållaren där webbappar körs, med hjälp av både Azure Portal och Azure CLI.
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709095"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577620"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurera en Linux python-app för Azure App Service
 
@@ -373,6 +373,7 @@ I följande avsnitt finns ytterligare vägledning för specifika problem.
 - [Appen visas inte-meddelandet "tjänsten är inte tillgänglig"](#service-unavailable)
 - [Det gick inte att hitta setup.py eller requirements.txt](#could-not-find-setuppy-or-requirementstxt)
 - [ModuleNotFoundError vid start](#modulenotfounderror-when-app-starts)
+- [Databasen är låst](#database-is-locked)
 - [Lösen ord visas inte i SSH-sessionen när de skrivs](#other-issues)
 - [Kommandon i SSH-sessionen förefaller vara avhuggna](#other-issues)
 - [Statiska till gångar visas inte i en django-app](#other-issues)
@@ -409,6 +410,14 @@ I följande avsnitt finns ytterligare vägledning för specifika problem.
 #### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError när appen startar
 
 Om du ser ett fel som `ModuleNotFoundError: No module named 'example'` det innebär att python inte kunde hitta en eller flera av dina moduler när programmet startade. Detta inträffar oftast om du distribuerar den virtuella miljön med din kod. Virtuella miljöer är inte bärbara, så en virtuell miljö bör inte distribueras med program koden. Låt Oryx skapa en virtuell miljö och installera dina paket på webbappen genom att skapa en app-inställning, `SCM_DO_BUILD_DURING_DEPLOYMENT` och Ställ in den på `1` . Detta tvingar Oryx att installera dina paket när du distribuerar till App Service. Mer information finns i [den här artikeln om virtuell Miljös portabilitet](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
+
+### <a name="database-is-locked"></a>Databasen är låst
+
+När du försöker köra databas migreringar med en django-app kan du se "sqlite3. OperationalError: databasen är låst. " Felet indikerar att programmet använder en SQLite-databas där django är konfigurerat som standard, i stället för att använda en moln databas som PostgreSQL för Azure.
+
+Kontrol lera `DATABASES` variabeln i appens *Settings.py* -fil för att säkerställa att din app använder en moln databas i stället för sqlite.
+
+Om du stöter på det här felet med exemplet i [Självstudier: Distribuera en django-webbapp med postgresql](tutorial-python-postgresql-app.md), kontrollerar du att du har slutfört stegen i [Konfigurera miljövariabler för att ansluta databasen](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database).
 
 #### <a name="other-issues"></a>Andra problem
 

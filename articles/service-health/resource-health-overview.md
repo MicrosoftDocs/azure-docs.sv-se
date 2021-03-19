@@ -4,10 +4,10 @@ description: Lär dig hur Azure Resource Health hjälper dig att diagnostisera o
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967871"
 ---
 # <a name="resource-health-overview"></a>Översikt över Resource Health
@@ -32,7 +32,7 @@ Hälso tillståndet för en resurs visas som en av följande status värden.
 
 ![Status för * tillgängligt * för en virtuell dator som har meddelandet "nyligen löst"](./media/resource-health-overview/Available.png)
 
-### <a name="unavailable"></a>Ej tillgänglig
+### <a name="unavailable"></a>Inte tillgänglig
 
 *Otillgänglig* innebär att tjänsten har identifierat en pågående plattforms-eller icke-plattforms händelse som påverkar resursens hälso tillstånd.
 
@@ -84,9 +84,9 @@ Du kan komma åt upp till 30 dagars historik i avsnittet **hälso historik** i R
 
 Öppna Resource Health för en resurs:
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 2. Bläddra till resursen.
-3. Välj **resurs hälsa**på resurs menyn i det vänstra fönstret.
+3. Välj **resurs hälsa** på resurs menyn i det vänstra fönstret.
 
 ![Öppna Resource Health från resursvyn](./media/resource-health-overview/from-resource-blade.png)
 
