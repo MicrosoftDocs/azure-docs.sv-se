@@ -53,11 +53,11 @@
         - name: Säljsamarbeta med Microsoft
           items:
             - name: Översikt över Co-försäljning
-              href: marketplace-co-sell.md
+              href: co-sell-overview.md
             - name: Krav för samförsäljning
               href: co-sell-requirements.md
             - name: Konfigurera Co-försäljning
-              href: commercial-marketplace-co-sell.md
+              href: co-sell-configure.md
             - name: Verifiera medförsäljnings status
               href: co-sell-status.md
             - name: Migrera lösningar för säljsamarbete från OCP GTM

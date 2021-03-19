@@ -718,12 +718,16 @@
                       href: app/java-in-process-agent.md
                     - name: Konfigurationsalternativ
                       href: app/java-standalone-config.md
-                    - name: Telemetriprocessorer
+                    - name: Avancerade konfigurationer
                       items:
-                        - name: Översikt
-                          href: app/java-standalone-telemetry-processors.md
-                        - name: Exempel
-                          href: app/java-standalone-telemetry-processors-examples.md
+                        - name: JMX mått
+                          href: app/java-jmx-metrics-configuration.md
+                        - name: Telemetriprocessorer
+                          items:
+                            - name: Översikt
+                              href: app/java-standalone-telemetry-processors.md
+                            - name: Exempel
+                              href: app/java-standalone-telemetry-processors-examples.md
                     - name: Konfiguration av JVM-argument
                       href: app/java-standalone-arguments.md
                     - name: Uppgradera från 2.x SDK
@@ -1126,6 +1130,18 @@
           href: insights/network-insights-overview.md
         - name: Key Vault
           href: insights/key-vault-insights-overview.md
+        - name: SQL Insights (förhands granskning)
+          items:
+            - name: Översikt
+              href: insights/sql-insights-overview.md
+            - name: VANLIGA FRÅGOR OCH SVAR
+              href: faq.md#sql-insights-preview
+            - name: Aktivera
+              href: insights/sql-insights-enable.md
+            - name: Aviseringar
+              href: insights/sql-insights-alerts.md
+            - name: Felsöka
+              href: insights/sql-insights-troubleshoot.md
         - name: Storage
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md

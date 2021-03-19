@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051352"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577792"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Lägg till ett TLS-/SSL-certifikat i Azure App Service
 
@@ -119,7 +119,7 @@ Använd följande tabell som hjälp för att konfigurera certifikatet. Klicka p�
 
 | Inställning | Beskrivning |
 |-|-|
-| Namn | Ett eget namn på ditt App Service certifikat. |
+| Name | Ett eget namn på ditt App Service certifikat. |
 | Värddator namn för blott-domän | Ange rot domänen här. Det utfärdade certifikatet skyddar *både* rot domänen och under `www` domänen. I det utfärdade certifikatet innehåller fältet eget namn rot domänen och fältet Alternativt namn på certifikat mottagare innehåller `www` domänen. Om du bara vill skydda en under domän anger du det fullständigt kvalificerade domän namnet för under domänen här (till exempel `mysubdomain.contoso.com` ).|
 | Prenumeration | Den prenumeration som ska innehålla certifikatet. |
 | Resursgrupp | Den resurs grupp som ska innehålla certifikatet. Du kan använda en ny resurs grupp eller välja samma resurs grupp som App Service-appen, till exempel. |
@@ -144,7 +144,7 @@ På sidan **Key Vault status** klickar du på **Key Vault lagrings plats** för 
 
 | Inställning | Beskrivning |
 |-|-|
-| Namn | Ett unikt namn som består av alfanumeriska tecken och bindestreck. |
+| Name | Ett unikt namn som består av alfanumeriska tecken och bindestreck. |
 | Resursgrupp | Som en rekommendation väljer du samma resurs grupp som ditt App Service certifikat. |
 | Location | Välj samma plats som App Service-appen. |
 | Prisnivå | Mer information finns [Azure Key Vault pris information](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -331,7 +331,7 @@ När uppdaterings åtgärden har slutförts klickar du på **Synkronisera**. Syn
 
 Om du vill aktivera automatisk förnyelse av certifikatet väljer du certifikatet på sidan [app service certifikat](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) och klickar sedan på **Inställningar för automatisk förnyelse** i det vänstra navigerings fältet. App Service certifikat har som standard en giltighets tid på ett år.
 
-Välj **på** och klicka på **Spara**. Certifikat kan börja förnyas automatiskt 60 dagar före förfallo datum om du har aktiverat automatisk förnyelse.
+Välj **på** och klicka på **Spara**. Certifikaten kan börja förnyas automatiskt 30 dagar före förfallo datum om du har aktiverat automatisk förnyelse.
 
 ![Förnya App Service certifikat automatiskt](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 

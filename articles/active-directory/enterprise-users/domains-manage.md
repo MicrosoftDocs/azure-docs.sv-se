@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/20/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47c991457925664c82baed1a47d89f77a323ff45
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561542"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577979"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Hantera anpassade domän namn i Azure Active Directory
 
@@ -43,7 +43,7 @@ Du kan ändra det primära domän namnet för din organisation till valfri verif
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Lägg till anpassade domän namn i din Azure AD-organisation
 
-Du kan lägga till upp till 900 hanterade domän namn. Om du konfigurerar alla domäner för federation med lokala Active Directory kan du lägga till upp till 450 domän namn i varje organisation.
+Du kan lägga till upp till 5000 hanterade domän namn. Om du konfigurerar alla domäner för federation med lokala Active Directory kan du lägga till upp till 2500 domän namn i varje organisation.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Lägg till under domäner i en anpassad domän
 

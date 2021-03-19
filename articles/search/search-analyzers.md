@@ -7,27 +7,29 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 03/17/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: d40dd0b91f9dcfb7bf5b6e8f084f25ee4f90d780
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694300"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596560"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analys verktyg för text bearbetning i Azure Kognitiv sökning
 
-En *Analyzer* är en komponent i den [fullständiga texts öknings motorn](search-lucene-query-architecture.md) som ansvarar för bearbetning av text i frågesträngar och indexerade dokument. Text bearbetning (kallas även för en lexikal analys) är transformativa och ändrar en sträng genom åtgärder som dessa:
+En *analys* är en komponent i [full texts ökning](search-lucene-query-architecture.md) som ansvarar för bearbetning av text i frågesträngar och indexerade dokument. Text bearbetning (kallas även för en lexikal analys) är transformativa och ändrar en frågesträng genom åtgärder som dessa:
 
 + Ta bort icke-grundläggande ord (stoppord) och interpunktion
 + Dela upp fraser och avstavade ord i komponent delar
 + Gemener, versaler och gemener
 + Minska ord i primitiva rot formulär för lagrings effektivitet och så att matchningar kan hittas oavsett om de är på flera nivåer
 
-Analysen gäller för `Edm.String` fält som marker ATS som "sökbara", vilket innebär full texts ökning. För fält med den här konfigurationen sker analysen under indexeringen när tokens skapas och sedan igen vid frågekörningen när frågor parsas och motorn söker efter matchande token. Det är mer troligt att en matchning inträffar när samma analys används för både indexering och frågor, men du kan ställa in analys för varje arbets belastning oberoende av varandra, beroende på dina behov.
+Analysen gäller för `Edm.String` fält som marker ATS som "sökbara", vilket innebär full texts ökning. 
 
-Frågetyper som inte är full texts ökning, till exempel reguljära uttryck eller fuzzy-sökning, går inte genom analys fasen på fråge sidan. I stället skickar parsern dessa strängar direkt till sökmotorn med det mönster som du anger som bas för matchningen. Vanligt vis kräver dessa fråge formulär hela-sträng-token för att skapa mönster matchnings arbete. Om du vill hämta token för hela termer under indexering kan du behöva [Anpassade analyser](index-add-custom-analyzers.md). Mer information om när och varför sökord analyseras finns i [fullständig texts ökning i Azure kognitiv sökning](search-lucene-query-architecture.md).
+För fält med den här konfigurationen sker analysen under indexeringen när tokens skapas och sedan igen vid frågekörningen när frågor parsas och motorn söker efter matchande token. Det är mer troligt att en matchning inträffar när samma analys används för både indexering och frågor, men du kan ställa in analys för varje arbets belastning oberoende av varandra, beroende på dina behov.
+
+Frågetyper som *inte* är full texts ökning, till exempel filter eller fuzzy-sökning, går inte genom analys fasen på fråge sidan. I stället skickar parsern dessa strängar direkt till sökmotorn med det mönster som du anger som bas för matchningen. Vanligt vis kräver dessa fråge formulär hela-sträng-token för att skapa mönster matchnings arbete. Om du vill säkerställa hela token för token under indexering kan du behöva [Anpassade analyser](index-add-custom-analyzers.md). Mer information om när och varför sökord analyseras finns i [fullständig texts ökning i Azure kognitiv sökning](search-lucene-query-architecture.md).
 
 Mer bakgrunds information om lexikal analys finns i följande videoklipp med en kort förklaring.
 
@@ -39,7 +41,7 @@ I Azure Kognitiv sökning-frågor anropas en analys automatiskt i alla sträng f
 
 Som standard använder Azure Kognitiv sökning [Apache Lucene standard Analyzer (standard Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)som delar upp text i element enligt reglerna för [Unicode-text segment](https://unicode.org/reports/tr29/) . Dessutom konverterar standard analys alla tecken till gemener. Både indexerade dokument och Sök termer går igenom analysen vid indexering och bearbetning av frågor.  
 
-Du kan åsidosätta standardvärdet för fält-för-fält. Alternativa analys verktyg kan vara [språk analys](index-add-language-analyzers.md) för språklig bearbetning, en [anpassad analys](index-add-custom-analyzers.md)eller en fördefinierad analys från [listan över tillgängliga analyser](index-add-custom-analyzers.md#AnalyzerTable).
+Du kan åsidosätta standardvärdet för fält-för-fält. Alternativa analys verktyg kan vara [språk analys](index-add-language-analyzers.md) för språklig bearbetning, en [anpassad analys](index-add-custom-analyzers.md)eller en inbyggd analys från [listan över tillgängliga analyser](index-add-custom-analyzers.md#built-in-analyzers).
 
 ## <a name="types-of-analyzers"></a>Typer av analys verktyg
 
@@ -48,16 +50,16 @@ I följande lista beskrivs vilka analys verktyg som är tillgängliga i Azure Ko
 | Kategori | Beskrivning |
 |----------|-------------|
 | [Standard Lucene Analyzer](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Ingen specifikation eller konfiguration krävs. Den här generella analysen fungerar bra för många språk och scenarier.|
-| Fördefinierade analys verktyg | Erbjuds som en färdig produkt som är avsedd att användas i befintligt skick. <br/>Det finns två typer: specialiserade och språk. Vad gör dem "fördefinierade" är att du refererar till dem efter namn, utan konfiguration eller anpassning. <br/><br/>[Specialiserade oberoende-analyser (Language-)](index-add-custom-analyzers.md#AnalyzerTable) används när text inmatningar kräver specialiserad bearbetning eller minimal bearbetning. Icke-språkdefinierade analys verktyg omfattar **Asciifolding**, **nyckelord**, **mönster**, **enkel**, **stopp**, **blank steg**.<br/><br/>[Språk analys](index-add-language-analyzers.md) verktyg används när du behöver omfattande språk stöd för enskilda språk. Azure Kognitiv sökning stöder 35 Lucene-språkanalyser och 50 Microsoft Natural Language Processing-analyser. |
+| Inbyggda analyser | Används i befintligt skick och refereras till efter namn. Det finns två typer: språk-och språk-oberoende. </br></br>[Specialiserade oberoende-analyser (Language-)](index-add-custom-analyzers.md#built-in-analyzers) används när text inmatningar kräver specialiserad bearbetning eller minimal bearbetning. Exempel på analys verktyg i den här kategorin är **Asciifolding**, **nyckelord**, **mönster**, **enkel**, **stopp**, **blank steg**. </br></br>[Språk analys](index-add-language-analyzers.md) verktyg används när du behöver omfattande språk stöd för enskilda språk. Azure Kognitiv sökning stöder 35 Lucene-språkanalyser och 50 Microsoft Natural Language Processing-analyser. |
 |[Anpassade analysverktyg](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Refererar till en användardefinierad konfiguration av en kombination av befintliga element, som består av ett tokenizer (obligatoriskt) och valfria filter (Char eller token).|
 
-Några fördefinierade analyser, till exempel **mönster** eller **stopp**, stöder en begränsad uppsättning konfigurations alternativ. Om du vill ange de här alternativen skapar du en anpassad analys som består av den fördefinierade analysen och ett av de alternativa alternativen som dokumenteras i den [fördefinierade analys referensen](index-add-custom-analyzers.md#AnalyzerTable). Som med valfri anpassad konfiguration kan du ange en ny konfiguration med ett namn, till exempel *myPatternAnalyzer* , för att skilja den från Lucene Pattern Analyzer.
+Några inbyggda analyser, till exempel **mönster** eller **stopp**, stöder en begränsad uppsättning konfigurations alternativ. Om du vill ange de här alternativen skapar du en anpassad analys som består av inbyggda analyser och ett av de alternativa alternativen som dokumenteras i [inbyggda analyser](index-add-custom-analyzers.md#built-in-analyzers). Som med valfri anpassad konfiguration kan du ange en ny konfiguration med ett namn, till exempel *myPatternAnalyzer* , för att skilja den från Lucene Pattern Analyzer.
 
 ## <a name="how-to-specify-analyzers"></a>Ange analys verktyg
 
 Att ställa in en analys är valfritt. Som en allmän regel kan du prova att använda standard standard-Lucene Analyzer först för att se hur det fungerar. Om frågor inte kan returnera de förväntade resultaten är det ofta rätt lösning att växla till en annan analys.
 
-1. När du skapar en fält definition i [indexet](/rest/api/searchservice/create-index)ställer du in egenskapen  **Analyzer** på något av följande: en [fördefinierad analys](index-add-custom-analyzers.md#AnalyzerTable) , till exempel, `keyword` en [språk analys](index-add-language-analyzers.md) , till exempel `en.microsoft` eller en anpassad analys (definieras i samma index schema).  
+1. När du skapar en fält definition i [indexet](/rest/api/searchservice/create-index)ställer du in egenskapen "Analyzer" på något av följande: en [inbyggd analys](index-add-custom-analyzers.md#built-in-analyzers) , till exempel **nyckelord**, [språk analys](index-add-language-analyzers.md) , till exempel `en.microsoft` eller en anpassad analys (definieras i samma index schema).  
  
    ```json
      "fields": [
@@ -72,20 +74,20 @@ Att ställa in en analys är valfritt. Som en allmän regel kan du prova att anv
     },
    ```
 
-   Om du använder en [språk analys](index-add-language-analyzers.md)måste du använda **Analyzer** -egenskapen för att ange den. **SearchAnalyzer** -och **indexAnalyzer** -egenskaperna har inte stöd för språk analys verktyg.
+   Om du använder en [språk analys](index-add-language-analyzers.md)måste du använda egenskapen "Analyzer" för att ange den. Egenskaperna "searchAnalyzer" och "indexAnalyzer" gäller inte för språk analys verktyg.
 
-1. Du kan också ställa in **indexAnalyzer** och **searchAnalyzer** för att variera analys funktionen för varje arbets belastning. Dessa egenskaper ställs in tillsammans och ersätter egenskapen **Analyzer** , som måste vara null. Du kan använda olika analys verktyg för förberedelse av data och hämtning om någon av dessa aktiviteter kräver en särskild omvandling som inte behövs av den andra.
+1. Du kan också ange "indexAnalyzer" och "searchAnalyzer" för att variera analys funktionen för varje arbets belastning. Dessa egenskaper ställs in tillsammans och ersätter egenskapen "Analyzer", som måste vara null. Du kan använda olika analyser för indexering och frågor om någon av dessa aktiviteter kräver en särskild omvandling som inte behövs av den andra.
 
    ```json
      "fields": [
     {
-      "name": "Description",
+      "name": "ProductGroup",
       "type": "Edm.String",
       "retrievable": true,
       "searchable": true,
       "analyzer": null,
       "indexAnalyzer": "keyword",
-      "searchAnalyzer": "whitespace"
+      "searchAnalyzer": "standard"
     },
    ```
 
@@ -95,13 +97,13 @@ Att ställa in en analys är valfritt. Som en allmän regel kan du prova att anv
 
 Den bästa tiden för att lägga till och tilldela analyserare är under aktiv utveckling, när du släpper och återskapar index är rutinmässig.
 
-Eftersom analys verktyg används för att Tokenize villkor, bör du tilldela en analys när fältet har skapats. I själva verket är det inte tillåtet att tilldela **Analyzer** -eller **indexAnalyzer** till ett fält som redan har skapats fysiskt (men du kan ändra egenskapen **searchAnalyzer** när som helst utan att påverka indexet).
+Eftersom analys verktyg används för att Tokenize villkor, bör du tilldela en analys när fältet har skapats. I själva verket är det inte tillåtet att tilldela en analys eller indexAnalyzer till ett fält som redan har skapats fysiskt (men du kan ändra egenskapen searchAnalyzer när som helst utan att påverka indexet).
 
 Om du vill ändra Analyzer för ett befintligt fält måste du [återskapa indexet helt](search-howto-reindex.md) (du kan inte återskapa enskilda fält). För index i produktion kan du skjuta upp en ny version genom att skapa ett nytt fält med den nya Analyzer-tilldelningen och börja använda den i stället för den gamla. Använd [Uppdatera index](/rest/api/searchservice/update-index) för att lägga till det nya fältet och [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) för att fylla det. Som en del av den planerade indexerings servicen kan du senare rensa indexet för att ta bort föråldrade fält.
 
 För att lägga till ett nytt fält i ett befintligt index, anropa [uppdaterings index](/rest/api/searchservice/update-index) för att lägga till fältet och [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) för att fylla det.
 
-För att lägga till en anpassad analys i ett befintligt index, skicka flaggan **allowIndexDowntime** i [Update index](/rest/api/searchservice/update-index) om du vill undvika det här felet:
+Om du vill undvika det här felet kan du lägga till en anpassad analys i ett befintligt index genom att skicka flaggan "allowIndexDowntime" i [uppdaterings indexet](/rest/api/searchservice/update-index) :
 
 *"Index uppdatering tillåts inte eftersom det skulle orsaka drift stopp. För att lägga till nya analys verktyg, tokenizers, token-filter eller Character-filter i ett befintligt index ställer du in frågeparametern "allowIndexDowntime" till "true" i begäran om index uppdatering. Observera att den här åtgärden kommer att spara indexet offline under minst några sekunder, vilket gör att dina indexerings-och fråge begär Anden Miss söker. Prestanda-och skrivnings tillgänglighet för indexet kan vara försämrade i flera minuter efter att indexet har uppdaterats, eller längre för mycket stora index. "*
 
@@ -111,7 +113,7 @@ Det här avsnittet innehåller råd om hur du arbetar med analyser.
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>En analys för Läs-och skriv åtgärder om du inte har särskilda krav
 
-Med Azure Kognitiv sökning kan du ange olika analys verktyg för indexering och sökning via ytterligare **indexAnalyzer** och **searchAnalyzer** fält egenskaper. Om inget anges används analys uppsättningen med **Analyzer** -egenskapen för både indexering och sökning. Om **Analyzer** inte anges används standard standard-Lucene Analyzer.
+Med Azure Kognitiv sökning kan du ange olika analys verktyg för indexering och sökning via ytterligare indexAnalyzer och searchAnalyzer fält egenskaper. Om inget anges används analys uppsättningen med Analyzer-egenskapen för både indexering och sökning. Om Analyzer-värdet inte anges används standard standard Lucene Analyzer.
 
 En allmän regel är att använda samma analys för både indexering och frågor, om inte särskilda krav anger något annat. Se till att testa noggrant. När text bearbetning skiljer sig vid sökning och indexerings tiden, kan du köra risken för matchning mellan sökord och indexerade villkor när konfigurationerna för sökning och indexerings analys inte är justerade.
 
@@ -142,10 +144,13 @@ Det här exemplet illustrerar en analys definition med anpassade alternativ. Anp
 
 Genom det här exemplet:
 
-* Analys verktyg är en egenskap för fält klassen för ett sökbart fält.
-* En anpassad analys är en del av en index definition. Det kan vara lätt att anpassa (till exempel anpassa ett enda alternativ i ett filter) eller anpassas på flera platser.
-* I det här fallet är den anpassade analysen "my_analyzer", som i sin tur använder en anpassad standard-tokenizer "my_standard_tokenizer" och två token-filter: gement och anpassat asciifolding filter "my_asciifolding".
-* Den definierar också två anpassade tecken filter "map_dash" och "remove_whitespace". Den första ersätter alla streck med under streck medan den andra tar bort alla blank steg. Blank stegen måste vara UTF-8-kodade i mappnings reglerna. Char-filtren tillämpas före tokenisering och kommer att påverka de resulterande token (standard tokenizer pauser på streck och blank steg, men inte på under streck).
++ Analys verktyg är en egenskap för fält klassen för ett sökbart fält.
+
++ En anpassad analys är en del av en index definition. Det kan vara lätt att anpassa (till exempel anpassa ett enda alternativ i ett filter) eller anpassas på flera platser.
+
++ I det här fallet är den anpassade analysen "my_analyzer", som i sin tur använder en anpassad standard-tokenizer "my_standard_tokenizer" och två token-filter: gement och anpassat asciifolding filter "my_asciifolding".
+
++ Den definierar också två anpassade tecken filter "map_dash" och "remove_whitespace". Den första ersätter alla streck med under streck medan den andra tar bort alla blank steg. Blank stegen måste vara UTF-8-kodade i mappnings reglerna. Char-filtren tillämpas före tokenisering och kommer att påverka de resulterande token (standard tokenizer pauser på streck och blank steg, men inte på under streck).
 
 ```json
   {
@@ -245,7 +250,7 @@ Elementet "Analyzer" åsidosätter standard analys baserat på fält-för-fält.
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Mixa analyser för indexerings-och Sök åtgärder
 
-API: erna inkluderar ytterligare index-attribut för att ange olika analyser för indexering och sökning. Attributen **searchAnalyzer** och **indexAnalyzer** måste anges som ett par, vilket ersätter attributet Single **Analyzer** .
+API: erna inkluderar ytterligare index-attribut för att ange olika analyser för indexering och sökning. Attributen searchAnalyzer och indexAnalyzer måste anges som ett par, vilket ersätter attributet Single Analyzer.
 
 
 ```json
@@ -369,27 +374,15 @@ private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 }
 ```
 
-Fler exempel finns i [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Fler exempel finns i [CustomAnalyzerTests. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ## <a name="next-steps"></a>Nästa steg
 
-+ Läs vår omfattande förklaring av [hur full texts ökning fungerar i Azure kognitiv sökning](search-lucene-query-architecture.md). I den här artikeln används exempel för att förklara vilka beteenden som kan vara till hjälp för den aktuella ytan.
+En detaljerad beskrivning av frågekörningen finns i [fullständig texts ökning i Azure kognitiv sökning](search-lucene-query-architecture.md). I artikeln används exempel för att förklara vilka beteenden som kan vara mest förståeliga på ytan.
 
-+ Försök med ytterligare frågesyntax från avsnittet [Sök efter dokument](/rest/api/searchservice/search-documents#bkmk_examples) exempel eller från [enkel frågesyntax](query-simple-syntax.md) i Sök Utforskaren i portalen.
+Mer information om analys verktyg finns i följande artiklar:
 
-+ Lär dig hur du använder [språkspecifika lexikala analyser](index-add-language-analyzers.md).
-
-+ [Konfigurera anpassade analys](index-add-custom-analyzers.md) verktyg för minimal bearbetning eller specialiserad bearbetning på enskilda fält.
-
-## <a name="see-also"></a>Se även
-
- [REST API för dokumentsökning](/rest/api/searchservice/search-documents) 
-
- [Enkel frågesyntax](query-simple-syntax.md) 
-
- [Fullständig Lucene-frågesyntax](query-lucene-syntax.md) 
- 
- [Hantera sökresultat](search-pagination-page-layout.md)
-
-<!--Image references-->
-[1]: ./media/search-lucene-query-architecture/architecture-diagram2.png
++ [Språkanalysverktyg](index-add-language-analyzers.md)
++ [Anpassade analysverktyg](index-add-custom-analyzers.md)
++ [Skapa ett sökindex](search-what-is-an-index.md)
++ [Skapa ett index för flera språk](search-language-support.md)

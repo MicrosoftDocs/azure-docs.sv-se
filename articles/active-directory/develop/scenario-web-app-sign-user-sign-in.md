@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937846"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578251"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webbapp som loggar in användare: inloggning och utloggning
 
@@ -95,6 +95,16 @@ I vår Java snabb start finns inloggnings knappen i [main/Resources/templates/in
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+I snabb starten för Node.js finns det ingen inloggnings knapp. Bakomliggande kod efterfrågar automatiskt användaren för inloggning när den når webbappens rot.
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 I python-snabb starten finns det ingen inloggnings knapp. Bakomliggande kod efterfrågar automatiskt användaren för inloggning när den når webbappens rot. Se [app. py # L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18).
@@ -113,7 +123,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-I ASP.NET utlöser  `SignIn` åtgärden på kontroll panelen genom att välja inloggnings knappen i webbappen `AccountController` . I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bäddats in med webbappen. Det är inte längre fallet eftersom kontrollanten nu är en del av NuGet **-paketet Microsoft. Identity. Web. UI** . Se [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) för mer information.
+I ASP.NET utlöser  `SignIn` åtgärden på kontroll panelen genom att välja inloggnings knappen i webbappen `AccountController` . I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bäddats in med webbappen. Det är inte längre fallet eftersom kontrollanten nu är en del av NuGet **-paketet Microsoft. Identity. Web. UI** . Mer information finns i [AccountController. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 Den här styrenheten hanterar också Azure AD B2C program.
 
@@ -158,6 +168,43 @@ public class AuthPageController {
     }
 
     // More code omitted for simplicity
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Till skillnad från andra plattformar, tar MSAL-noden dig noga med att låta användaren logga in från inloggnings sidan.
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -229,6 +276,10 @@ Under program registreringen registrerar du en utloggnings-URL för frontend-kan
 Under program registreringen behöver du inte registrera en extra start-URL för klient delen. Appen kommer att anropas igen på huvud-URL: en. 
 
 # <a name="java"></a>[Java](#tab/java)
+
+Ingen loggnings-URL för klient sidan krävs i program registreringen.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Ingen loggnings-URL för klient sidan krävs i program registreringen.
 
@@ -305,6 +356,10 @@ I vår Java snabb start finns knappen Logga ut i Main/Resources/templates/auth_p
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Det här exempel programmet implementerar inte utloggning.
+
 # <a name="python"></a>[Python](#tab/python)
 
 I python-snabb starten finns knappen Logga ut i filen [templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) .
@@ -330,13 +385,13 @@ I python-snabb starten finns knappen Logga ut i filen [templates/index.html # L1
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bäddats in med webbappen. Det är inte längre fallet eftersom kontrollanten nu är en del av NuGet **-paketet Microsoft. Identity. Web. UI** . Se [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) för mer information.
+I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bäddats in med webbappen. Det är inte längre fallet eftersom kontrollanten nu är en del av NuGet **-paketet Microsoft. Identity. Web. UI** . Mer information finns i [AccountController. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 - Ställer in en OpenID omdirigerings-URI till `/Account/SignedOut` så att styrenheten rings tillbaka när Azure AD har slutfört utloggningen.
 - Anrop `Signout()` , som låter OpenID ansluta mellanprogram kontakta Microsoft Identity Platform- `logout` slutpunkten. Slut punkten sedan:
 
   - Tar bort sessions-cookien från webbläsaren.
-  - Anropar omdirigerings-URI för efter utloggning. Som standard visar omdirigerings-URI: n för den inloggade [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)på sidan. Den här sidan tillhandahålls också som en del av Microsoft. Identity. Web.
+  - Anropar omdirigerings-URI för efter utloggning. Som standard visar omdirigerings-URI: n som är inloggad vy sidan [signerad. cshtml. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs). Den här sidan tillhandahålls också som en del av Microsoft. Identity. Web.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -376,6 +431,10 @@ I Java hanteras utloggning genom att anropa Microsoft Identity Platform- `logout
                 URLEncoder.encode(redirectUrl, "UTF-8"));
     }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Det här exempel programmet implementerar inte utloggning.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 I Java-snabb starten visar omstarts-URI för omutloggning bara sidan index.html.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Det här exempel programmet implementerar inte utloggning.
 
 # <a name="python"></a>[Python](#tab/python)
 

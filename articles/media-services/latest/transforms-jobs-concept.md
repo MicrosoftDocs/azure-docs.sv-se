@@ -3,7 +3,7 @@
 rubrik: transformeringar och jobb i Media Services: Azure Media Services Beskrivning: Lär dig hur du skapar en transformering för att beskriva reglerna för att bearbeta dina videor i Azure Media Services.
 tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 08/19/2019 MS. author: inhenkel
+MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 03/17/2021 MS. author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Transformeringar och jobb i Media Services
@@ -77,7 +77,7 @@ Använd [till gång som indata för jobb](job-input-from-local-file-how-to.md) o
 
 ### <a name="checking-job-progress"></a>Kontrollerar jobb förlopp
 
-Jobbets förlopp och tillstånd kan hämtas genom att övervaka händelser med Event Grid. Mer information finns i [övervaka händelser med hjälp av EventGrid](job-state-events-cli-how-to.md).
+Jobbets förlopp och tillstånd kan hämtas genom att övervaka händelser med Event Grid. Mer information finns i [övervaka händelser med hjälp av EventGrid](monitoring/job-state-events-cli-how-to.md).
 
 ### <a name="updating-jobs"></a>Uppdaterar jobb
 

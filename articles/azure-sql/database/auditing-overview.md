@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551662"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577766"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Granskning för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ Granskning gör även följande:
 
 - Det hjälper dig att upprätthålla regelefterlevnad, förstå databasaktiviteter och få insikter om i avvikelser och fel som kan tyda på affärsproblem eller potentiella säkerhetsöverträdelser.
 
-- Det främjar och underlättar uppfyllandet av efterlevnadsstandarder, även om det inte garanterar efterlevnad. Mer information om Azure-program som stöder standardkompatibilitet finns i [Azure Säkerhetscenter](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) där du hittar den mest aktuella listan med certifieringar för Azure SQL-kompatibilitet.
+- Det främjar och underlättar uppfyllandet av efterlevnadsstandarder, även om det inte garanterar efterlevnad. Mer information om Azure-program som har stöd för standardefterlevnad finns i [Azure Säkerhetscenter](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), där du hittar den senaste listan över Azure SQL-efterlevnadscertifieringar.
 
 > [!NOTE]
 > Information om granskning av Azure SQL-hanterad instans finns i följande artikel, [Kom igång med SQL-hanterad instans granskning](../managed-instance/auditing-configure.md).
@@ -99,7 +99,7 @@ Azure SQL Database och Azure Synapse audit lagrar 4000 tecken data för tecken f
 I följande avsnitt beskrivs konfigurationen av granskning med hjälp av Azure Portal.
 
   > [!NOTE]
-  > - Det går inte att aktivera granskning på en pausad dedikerad SQL-pool. Om du vill aktivera granskning avbryter du den dedikerade SQL-poolen. Läs mer om [dedikerad SQL-pool](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Det går inte att aktivera granskning på en pausad dedikerad SQL-pool. Om du vill aktivera granskning avbryter du den dedikerade SQL-poolen. Läs mer om [dedikerad SQL-pool](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
   > - När granskning har kon figurer ATS till en Log Analytics-arbetsyta eller till ett jämnt nav-mål via Azure Portal eller PowerShell-cmdleten skapas en [diagnostisk inställning](../../azure-monitor/essentials/diagnostic-settings.md) med "SQLSecurityAuditEvents"-kategorin aktive rad.
 
 1. Gå till [Azure-portalen](https://portal.azure.com).
@@ -134,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Granska till lagrings mål
 
-Om du vill konfigurera att skriva gransknings loggar till ett lagrings konto väljer du **lagring** och öppna **lagrings information**. Välj det Azure Storage-konto där loggar ska sparas och välj sedan kvarhållningsperioden. Klicka sedan på **OK**. Loggar som är äldre än kvarhållningsperioden tas bort.
+Om du vill konfigurera att skriva gransknings loggar till ett lagrings konto väljer du **lagring** när du kommer till **gransknings** avsnittet. Välj det Azure Storage-konto där loggar ska sparas och välj sedan kvarhållningsperioden genom att öppna **avancerade egenskaper**. Klicka sedan på **Spara**. Loggar som är äldre än kvarhållningsperioden tas bort.
 
-- Standardvärdet för kvarhållningsperiod är 0 (obegränsad kvarhållning). Du kan ändra det här värdet genom att flytta skjutreglaget för **kvarhållning (dagar)** i **lagrings inställningarna** när du konfigurerar lagrings kontot för granskning.
+- Standardvärdet för kvarhållningsperiod är 0 (obegränsad kvarhållning). Du kan ändra det här värdet genom att flytta skjutreglaget för **kvarhållning (dagar)** i **avancerade egenskaper** när du konfigurerar lagrings kontot för granskning.
   - Om du ändrar kvarhållningsperioden från 0 (obegränsad kvarhållning) till ett annat värde, Observera att kvarhållning endast kommer att gälla för loggar som skrivits efter att kvarhållning har ändrats (loggar som skrivits under perioden när kvarhållning hade värdet obegränsat bevaras, även efter att kvarhållning har Aktiver ATS).
 
   ![storage account](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Granska till Log Analytics destination
   
-Om du vill konfigurera att skriva gransknings loggar till en Log Analytics arbets yta väljer du **Log Analytics** och öppnar **Log Analytics information**. Välj eller skapa arbets ytan Log Analytics där loggarna ska skrivas och klicka sedan på **OK**.
+Om du vill konfigurera att skriva gransknings loggar till en Log Analytics arbets yta väljer du **Log Analytics** och öppnar **Log Analytics information**. Välj Log Analytics arbets ytan där loggar ska skrivas och klicka sedan på **OK**. Om du inte har skapat en Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../../azure-monitor/logs/quick-create-workspace.md).
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ Mer information om Azure Monitor Log Analytics arbets ytan finns i [utforma dist
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Granska till Event Hub-målet
 
-Om du vill konfigurera att skriva gransknings loggar till en händelsehubben väljer du **händelsehubben** och **information om** öppna händelsehubben. Välj den händelsehubben där loggar ska skrivas och klicka sedan på **OK**. Se till att händelsehubben är i samma region som din databas och server.
+Om du vill konfigurera att skriva gransknings loggar till en händelsehubben väljer du **Event Hub**. Välj den händelsehubben där loggar ska skrivas och klicka sedan på **Spara**. Se till att händelsehubben är i samma region som din databas och server.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -191,13 +191,12 @@ Om du väljer att skriva gransknings loggar till ett Azure Storage-konto finns d
 
 - Använd [Azure-portalen](https://portal.azure.com).  Öppna relevant databas. Klicka på **Visa gransknings loggar** överst i databasens **gransknings** sida.
 
-    ![Skärm bild som visar knappen Visa gransknings loggar markerad på sidan databas granskning.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Visa gransknings loggar](./media/auditing-overview/auditing-view-audit-logs.png)
 
     **Gransknings poster** öppnas där du kan visa loggarna.
 
   - Du kan visa vissa datum genom att klicka på **filter** överst på sidan **gransknings poster** .
   - Du kan växla mellan gransknings poster som har skapats av *Server gransknings principen* och *databas gransknings principen* genom att växla **gransknings källa**.
-  - Du kan bara visa SQL-injektering relaterade gransknings poster genom att markera kryss rutan  **Visa endast gransknings poster för SQL-injektering** .
 
        ![Skärm bild som visar alternativen för att Visa gransknings posterna.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -242,7 +241,7 @@ När du aktiverar granskning på den primära databasen med geo-replikerade data
 
 I produktion är det troligt att du uppdaterar dina lagrings nycklar med jämna mellanrum. När du skriver gransknings loggar till Azure Storage måste du spara om gransknings principen när du uppdaterar dina nycklar. Processen ser ut så här:
 
-1. Öppna **lagrings information**. I rutan **lagrings åtkomst nyckel** väljer du **sekundär** och klickar på **OK**. Klicka sedan på **Spara** högst upp på sidan gransknings konfiguration.
+1. Öppna **avancerade egenskaper** under **lagring**. I rutan **lagrings åtkomst nyckel** väljer du **sekundär**. Klicka sedan på **Spara** högst upp på sidan gransknings konfiguration.
 
     ![Skärm bild som visar processen för att välja en sekundär lagrings åtkomst nyckel.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Gå till sidan lagrings konfiguration och återskapa den primära åtkomst nyckeln.

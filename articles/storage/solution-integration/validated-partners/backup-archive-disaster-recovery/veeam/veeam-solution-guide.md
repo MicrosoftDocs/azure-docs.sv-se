@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 15ab808bcb8521b0bd3a5ebd0f56bf336571d676
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0b8bc0defd3314fcff691a049323201732644ff3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562033"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589913"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Säkerhetskopiera till Azure med Veeam
 
@@ -47,7 +47,7 @@ En lite första planering hjälper dig att använda Azure som en säkerhets kopi
 
 ### <a name="get-started-with-azure"></a>Komma igång med Azure
 
-Microsoft erbjuder ett ramverk som följer för att komma igång med Azure. [Cloud adoption Framework](https://docs.microsoft.com/azure/architecture/cloud-adoption/) (CAF) är en detaljerad metod för digital transformering i företag och omfattande vägledning för att planera ett moln införande i produktions klass. CAF innehåller en steg-för-steg- [Guide för Azure-installationen](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/) som hjälper dig att komma igång snabbt och säkert. Du kan hitta en interaktiv version i [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade). Du hittar exempel arkitekturer, metod tips för att distribuera program och kostnads fria utbildnings resurser som du kan använda för att få information om sökvägen till Azures expertis.
+Microsoft erbjuder ett ramverk som följer för att komma igång med Azure. [Cloud adoption Framework](/azure/architecture/cloud-adoption/) (CAF) är en detaljerad metod för digital transformering i företag och omfattande vägledning för att planera ett moln införande i produktions klass. CAF innehåller en steg-för-steg- [Guide för Azure-installationen](/azure/cloud-adoption-framework/ready/azure-setup-guide/) som hjälper dig att komma igång snabbt och säkert. Du kan hitta en interaktiv version i [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade). Du hittar exempel arkitekturer, metod tips för att distribuera program och kostnads fria utbildnings resurser som du kan använda för att få information om sökvägen till Azures expertis.
 
 ### <a name="consider-the-network-between-your-location-and-azure"></a>Överväg nätverket mellan din plats och Azure
 
@@ -202,7 +202,7 @@ Vi rekommenderar att du övervakar både dina Azure-resurser och Veeam för att 
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Azure tillhandahåller en robust övervaknings lösning i form av [Azure Monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md). Du kan [konfigurera Azure Monitor](../../../../common/monitor-storage.md) att spåra Azure Storage kapacitet, transaktioner, tillgänglighet, autentisering med mera. Du kan hitta en fullständig referens till mått som spåras [här](../../../../blobs/monitor-blob-storage-reference.md). Några användbara mått för att spåra är BlobCapacity – för att se till att du är kvar under den maximala [kapacitets gränsen för lagrings kontot](../../../../common/scalability-targets-standard-account.md), ingress och utgångs läge, för att spåra hur mycket data som skrivs till och läses från ditt Azure Storage-konto och SuccessE2ELatency – för att spåra tur och retur-tiden för förfrågningar till och från Azure Storage och din MediaAgent.
+Azure tillhandahåller en robust övervaknings lösning i form av [Azure Monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md). Du kan [konfigurera Azure Monitor](../../../../blobs/monitor-blob-storage.md) att spåra Azure Storage kapacitet, transaktioner, tillgänglighet, autentisering med mera. Du kan hitta en fullständig referens till mått som spåras [här](../../../../blobs/monitor-blob-storage-reference.md). Några användbara mått för att spåra är BlobCapacity – för att se till att du är kvar under den maximala [kapacitets gränsen för lagrings kontot](../../../../common/scalability-targets-standard-account.md), ingress och utgångs läge, för att spåra hur mycket data som skrivs till och läses från ditt Azure Storage-konto och SuccessE2ELatency – för att spåra tur och retur-tiden för förfrågningar till och från Azure Storage och din MediaAgent.
 
 Du kan också [Skapa logg aviseringar](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) för att spåra Azure Storage tjänstens hälsa och se [Azures status instrument panel](https://status.azure.com/status) när som helst.
 

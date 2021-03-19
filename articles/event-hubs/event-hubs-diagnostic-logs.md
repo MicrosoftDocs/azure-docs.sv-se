@@ -3,12 +3,12 @@ title: Konfigurera diagnostikloggar – Azure Event Hub | Microsoft Docs
 description: Lär dig hur du konfigurerar aktivitets loggar och diagnostikloggar för Event Hub i Azure.
 ms.topic: article
 ms.date: 02/25/2021
-ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5067a2962693ee1c1955aa90e61b43358495585a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742542"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602612"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Konfigurera diagnostikloggar för en Azure-händelsehubb
 
@@ -59,7 +59,7 @@ Alla loggar lagras i JavaScript Object Notation (JSON)-format. Varje post inneh�
 
 Arkiv loggens JSON-strängar innehåller element som anges i följande tabell:
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 `TaskName` | Beskrivning av uppgiften som misslyckades
 `ActivityId` | Internt ID som används för spårning
@@ -97,7 +97,7 @@ Följande kod är ett exempel på en logg-JSON-sträng för Arkiv logg:
 
 I den operativa loggens JSON-strängar ingår element som anges i följande tabell:
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 `ActivityId` | Internt ID, används i spårnings syfte |
 `EventName` | Åtgärdsnamn. En lista över värden för det här elementet finns i [händelse namn](#event-names) |
@@ -136,7 +136,7 @@ Händelse namnet är ifyllt som åtgärds typ + resurs typ från följande uppr�
 ## <a name="autoscale-logs-schema"></a>Schema för autoskalning av loggar
 Autoskalning log JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- | 
 | `TrackingId` | Internt ID, som används för spårnings syfte |
 | `ResourceId` | Azure Resource Manager resurs-ID. |
@@ -155,7 +155,7 @@ Här är ett exempel på en autoskalning-händelse:
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka-koordinator loggar schema
 Kafka Coordinator log JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- | 
 | `RequestId` | ID för begäran som används för spårnings syfte |
 | `ResourceId` | Resurs-ID för Azure Resource Manager |
@@ -183,7 +183,7 @@ Kafka Coordinator log JSON innehåller element som anges i följande tabell:
 ## <a name="kafka-user-error-logs-schema"></a>Schema för Kafka-användar fel loggar
 Kafka user error log JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- |
 | `TrackingId` | Spårnings-ID, som används för spårnings syfte. |
 | `NamespaceName` | Namn på namnområde |
@@ -197,7 +197,7 @@ Kafka user error log JSON innehåller element som anges i följande tabell:
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Händelse schema för Event Hubs virtuell nätverks anslutning
 Event Hubs virtuellt nätverk (VNet) Connection Event JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---  | ----------- | 
 | `SubscriptionId` | ID för Azure-prenumeration |
 | `NamespaceName` | Namn på namnområde |
@@ -227,7 +227,7 @@ Virtuella nätverks loggar skapas endast om namn området tillåter åtkomst fr�
 ## <a name="customer-managed-key-user-logs"></a>Kund hanterade nyckel användar loggar
 Kund hanterad nyckel användar logg JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- | 
 | `Category` | Typ av kategori för ett meddelande. Det är ett av följande värden: **fel** och **information** |
 | `ResourceId` | Internt resurs-ID, som innehåller ID för Azure-prenumeration och namn område |
@@ -247,4 +247,4 @@ Kund hanterad nyckel användar logg JSON innehåller element som anges i följan
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)

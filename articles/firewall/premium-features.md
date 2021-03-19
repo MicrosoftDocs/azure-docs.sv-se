@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419957"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590457"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>För hands versions funktioner för Azure Firewall Premium
 
@@ -157,8 +157,7 @@ Ej betrodda kund signerade certifikat|Kundens signerade certifikat är inte betr
 |Certifikat spridning|När ett CA-certifikat används i brand väggen kan det ta mellan 5-10 minuter innan certifikatet börjar gälla.|Åtgärd har schemalagts för GA.|
 |Kringgå IDP: er|Kringgå IDP: er fungerar inte för utgående trafik i TLS, och käll-IP-adress och käll-IP-grupper stöds inte.|Åtgärd har schemalagts för GA.|
 |Stöd för TLS 1,3|TLS 1,3 stöds delvis. TLS-tunneln från klient till brand väggen baseras på TLS 1,2 och från brand väggen till den externa webb servern baseras på TLS 1,3.|Uppdateringar unders öks.|
-
-
+|Privat slut punkt för nyckel valv|Nyckel valvet stöder åtkomst till privat slut punkt för att begränsa nätverks exponeringen. Betrodda Azure-tjänster kan kringgå den här begränsningen om ett undantag har kon figurer ATS enligt beskrivningen i dokumentationen för nyckel [valvet](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services). Azure-brandväggen är för närvarande inte registrerad som betrodd tjänst och kan inte komma åt Key Vault.|Åtgärd har schemalagts för GA.|
 
 
 ## <a name="next-steps"></a>Nästa steg

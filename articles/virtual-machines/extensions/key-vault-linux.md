@@ -10,16 +10,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 23a0d7cd45ceef8f97bb56d65f4807f8d60735dc
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601057"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582178"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault tillägg för virtuell dator för Linux
 
-Key Vault VM-tillägget ger automatisk uppdatering av certifikat som lagras i ett Azure Key Vault. Mer specifikt övervakar tillägget en lista över observerade certifikat som lagras i nyckel valv.  Vid identifiering av en ändring, hämtar tillägget och installerar motsvarande certifikat. Tillägget installerar den fullständiga certifikat kedjan på den virtuella datorn. Key Vault VM-tillägget publiceras och stöds av Microsoft, för närvarande på virtuella Linux-datorer. Det här dokumentet innehåller information om plattformar, konfigurationer och distributions alternativ som stöds för Key Vault VM-tillägget för Linux. 
+Key Vault VM-tillägget ger automatisk uppdatering av certifikat som lagras i ett Azure Key Vault. Mer specifikt övervakar tillägget en lista över observerade certifikat som lagras i nyckel valv.  Vid identifiering av en ändring, hämtar tillägget och installerar motsvarande certifikat. Key Vault VM-tillägget publiceras och stöds av Microsoft, för närvarande på virtuella Linux-datorer. Det här dokumentet innehåller information om plattformar, konfigurationer och distributions alternativ som stöds för Key Vault VM-tillägget för Linux. 
 
 ### <a name="operating-system"></a>Operativsystem
 
@@ -36,6 +36,7 @@ Key Vault VM-tillägget stöder dessa Linux-distributioner:
 
 - PKCS-#12
 - PEM
+
 
 ## <a name="prerequisities"></a>Prerequisities
   - Key Vault instans med certifikat. Se [skapa en Key Vault](../../key-vault/general/quick-create-portal.md)
@@ -56,6 +57,20 @@ Key Vault VM-tillägget stöder dessa Linux-distributioner:
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
                   }
    `
+## <a name="key-vault-vm-extension-version"></a>Version för Key Vault VM-tillägg
+* Ubuntu-18,04-och SUSE-15-användare kan välja att uppgradera sin version av nyckel valvets VM-tillägg till en `V2.0` fullständig hämtnings funktion för certifikat kedjan. Utfärdarens certifikat (mellanliggande och rot) läggs till i bladet PEM i filen.
+
+* Om du vill uppgradera till `v2.0` måste du ta bort `v1.0` först och sedan installera `v2.0` .
+```
+  az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 2.0
+```  
+  Flaggan--version 2,0 är valfri eftersom den senaste versionen ska installeras som standard.   
+
+* Om den virtuella datorn har certifikat som hämtats med v 1.0, tas inte de hämtade certifikaten bort om du tar bort v 1.0 AKVVM-tillägget.  När du har installerat v 2.0 kommer de befintliga certifikaten inte att ändras.  Du måste ta bort certifikatfiler eller förnya certifikatet för att hämta PEM-filen med fullständig kedja på den virtuella datorn.
+
+
+
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
@@ -72,7 +87,7 @@ Följande JSON visar schemat för Key Vault VM-tillägget. Tillägget kräver in
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -109,7 +124,7 @@ Följande JSON visar schemat för Key Vault VM-tillägget. Tillägget kräver in
 | apiVersion | 2019-07-01 | date |
 | utgivare | Microsoft.Azure.KeyVault | sträng |
 | typ | KeyVaultForLinux | sträng |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 2.0 | int |
 | pollingIntervalInS | 3600 | sträng |
 | Certifikat Arkiv | Den ignoreras i Linux | sträng |
 | linkOnRenewal | falskt | boolean |
@@ -142,7 +157,7 @@ JSON-konfigurationen för ett tillägg för virtuell dator måste kapslas i den 
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -189,7 +204,7 @@ Azure PowerShell kan användas för att distribuera Key Vault VM-tillägget till
        
     
         # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+        Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -209,7 +224,7 @@ Azure PowerShell kan användas för att distribuera Key Vault VM-tillägget till
         
         # Add Extension to VMSS
         $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
 
         # Start the deployment
         Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -228,6 +243,7 @@ Azure CLI kan användas för att distribuera Key Vault VM-tillägget till en bef
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
+         --version 2.0 `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
@@ -239,6 +255,7 @@ Azure CLI kan användas för att distribuera Key Vault VM-tillägget till en bef
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vmss-name "<vmssName>" `
+        --version 2.0 `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Observera följande begränsningar/krav:

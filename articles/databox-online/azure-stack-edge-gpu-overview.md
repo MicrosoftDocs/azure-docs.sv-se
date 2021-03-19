@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 8e829d149e96cf658c7a5aaf37291e84def2061e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570107"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602663"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Vad är Azure Stack Edge Pro med GPU?
 
@@ -76,6 +76,8 @@ Azure Stack fysisk enhet i Edge Pro, Azure-resursen och mål lagrings kontot som
 - **Enhets tillgänglighet** – för en lista över alla länder/regioner där Azure Stack Edge Pro-enheten är tillgänglig går du till avsnittet **tillgänglighet** på fliken **Azure Stack Edge Pro** för [Azure Stack Edge Pro-prissättning](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
     
 - **Destinationslagringskonton** – de lagringskonton som lagrar data som är tillgängliga i alla Azure-regioner. De regioner där lagrings konton lagrar Azure Stack Edge Pro-data bör ligga nära den plats där enheten befinner sig för optimala prestanda. Ett lagringskonto som är långt från enheten leder till långa svarstider och långsammare prestanda.
+
+Azure Stack Edge-tjänsten är en icke-regional tjänst. Mer information finns i [regioner och Tillgänglighetszoner i Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Azure Stack Edge-tjänsten är inte beroende av en speciell Azure-region, vilket gör det flexibelt för globala avbrott och drift avbrott i hela regionen.
 
 ## <a name="next-steps"></a>Nästa steg
 

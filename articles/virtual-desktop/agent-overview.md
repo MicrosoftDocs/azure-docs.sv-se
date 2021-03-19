@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601235"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601898"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Kom igång med Windows Virtual Desktop-agenten
 
@@ -32,7 +32,10 @@ Windows-agenten för virtuella skriv bord installeras på ett av två sätt. Om 
 
 ## <a name="agent-update-process"></a>Process för agent uppdatering
 
-Tjänsten Windows Virtual Desktop uppdaterar automatiskt agenten när en uppdatering blir tillgänglig. Agent uppdateringar kan innehålla nya funktioner eller åtgärda tidigare problem. När den ursprungliga versionen av Windows Virtual Desktop-agenten har installerats frågar agenten regelbundet efter Windows Virtual Desktop-tjänsten för att avgöra om det finns en nyare version av agenten och dess komponenter är tillgängliga. Om det finns en ny version hämtar agentens start program automatiskt den senaste versionen av agenten, stacken sida vid sida och Genèvekonventionen övervaknings agent.
+Tjänsten Windows Virtual Desktop uppdaterar agenten när en uppdatering blir tillgänglig. Agent uppdateringar kan innehålla nya funktioner eller korrigeringar för tidigare problem. När den ursprungliga versionen av Windows Virtual Desktop-agenten har installerats frågar agenten regelbundet efter Windows Virtual Desktop-tjänsten för att avgöra om det finns en nyare version av agent-, stack-eller övervaknings komponenten tillgänglig. Om en nyare version av någon av komponenterna redan har distribuerats installeras den uppdaterade komponenten automatiskt.
+
+Nya versioner av agenten distribueras med jämna mellanrum i weeklong-perioder till alla Azure-prenumerationer. Dessa uppdaterings perioder kallas "flygningar". När en flygning inträffar kan det hända att virtuella datorer i din värd pool får agent uppdateringen vid olika tidpunkter. Alla VM-agenter i alla prenumerationer kommer att uppdateras i slutet av distributions perioden. Flight-systemet för Windows Virtual Desktop förbättrar tillförlitligheten för tjänsten genom att uppdatera agent uppdateringens stabilitet och kvalitet.
+
 
 >[!NOTE]
 >- När Genève Monitoring Agent uppdaterar till den senaste versionen, finns den gamla GenevaTask-aktiviteten och inaktive rad innan du skapar en ny uppgift för den nya övervaknings agenten. Den tidigare versionen av övervaknings agenten tas inte bort om den senaste versionen av övervaknings agenten har ett problem som kräver återställning till den tidigare versionen för att åtgärda problemet. Om den senaste versionen har ett problem kommer den gamla övervaknings agenten att aktive ras igen för att fortsätta leverera övervaknings data. Alla versioner av övervakaren som är tidigare än den sista som du installerade innan uppdateringen tas bort från den virtuella datorn.

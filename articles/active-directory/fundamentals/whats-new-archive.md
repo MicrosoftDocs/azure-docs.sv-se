@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfd0fe8cf1d26ccf96a8a27985e456b4e0e67c
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: e820194d36d2b80fcd28de7972dd5abe8a746345
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633486"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592958"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Vill du arkivera vad som är nytt i Azure Active Directory?
 
@@ -926,7 +926,7 @@ I [bladet ny princip information](../conditional-access/troubleshoot-conditional
 
 I april 2020 har vi lagt till dessa 31 nya appar med stöd för federation i app-galleriet: 
 
-[SincroPool-appar](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT anskaffnings Svit](../saas-apps/iwt-procurement-suite-tutorial.md) [](/azure/active-directory/saas-apps/trend-micro-tutorial) , Lunni, [EasySSO för JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 flytta](https://app.mover.io/login), [högtalare](https://speakerengage.com/login.php), [belys](../saas-apps/honestly-tutorial.md) [, Ally, DutyFlow](../saas-apps/ally-tutorial.md) [, AlertMedia](https://app.dutyflow.nl/) [, gr8](../saas-apps/alertmedia-tutorial.md), Pendo [,](../saas-apps/highground-tutorial.md)Highground [,](../saas-apps/harmony-tutorial.md)Timetabling [, SynchroNet](../saas-apps/timetabling-solutions-tutorial.md), [Fortes](../saas-apps/synchronet-click-tutorial.md), [Litmus, GroupTalk](../saas-apps/gr8-people-tutorial.md) [, Frontify](../saas-apps/pendo-tutorial.md), MongoDB, TickitLMS, Coco [, Nitro](../saas-apps/frontify-tutorial.md), TMWS [](https://www.made-in-office.com/en/) [,](../saas-apps/nitro-productivity-suite-tutorial.md) [,](../saas-apps/fortes-change-cloud-tutorial.md), [](https://recorder.grouptalk.com/),, [,](../saas-apps/mongodb-cloud-tutorial.md) [](../saas-apps/tickitlms-learn-tutorial.md) [,,](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [,](../saas-apps/litmus-tutorial.md), [](https://lunni.fi/)
+[SincroPool-appar](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT anskaffnings Svit](../saas-apps/iwt-procurement-suite-tutorial.md) [](../saas-apps/trend-micro-tutorial.md) , Lunni, [EasySSO för JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 flytta](https://app.mover.io/login), [högtalare](https://speakerengage.com/login.php), [belys](../saas-apps/honestly-tutorial.md) [, Ally, DutyFlow](../saas-apps/ally-tutorial.md) [, AlertMedia](https://app.dutyflow.nl/) [, gr8](../saas-apps/alertmedia-tutorial.md), Pendo [,](../saas-apps/highground-tutorial.md)Highground [,](../saas-apps/harmony-tutorial.md)Timetabling [, SynchroNet](../saas-apps/timetabling-solutions-tutorial.md), [Fortes](../saas-apps/synchronet-click-tutorial.md), [Litmus, GroupTalk](../saas-apps/gr8-people-tutorial.md) [, Frontify](../saas-apps/pendo-tutorial.md), MongoDB, TickitLMS, Coco [, Nitro](../saas-apps/frontify-tutorial.md), TMWS [](https://www.made-in-office.com/en/) [,](../saas-apps/nitro-productivity-suite-tutorial.md) [,](../saas-apps/fortes-change-cloud-tutorial.md), [](https://recorder.grouptalk.com/),, [,](../saas-apps/mongodb-cloud-tutorial.md) [](../saas-apps/tickitlms-learn-tutorial.md) [,,](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [,](../saas-apps/litmus-tutorial.md), [](https://lunni.fi/)
 
 Mer information om apparna finns i [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Mer information om hur du visar ditt program i Azure AD App-galleriet finns i [lista ditt program i Azure Active Directory program galleriet](../develop/v2-howto-app-gallery-listing.md).
 
@@ -2372,7 +2372,7 @@ Mer information finns i [Aktivera säkerhets granskningar för Azure AD Domain S
 
 De nya autentiseringsmetoderna för användning & insikter kan hjälpa dig att förstå hur funktioner som Azure AD Multi-Factor Authentication och återställning av lösen ord för självbetjäning registreras och används i din organisation, inklusive antalet registrerade användare för varje funktion, hur ofta lösen ords återställning via självbetjäning används för att återställa lösen ord och med vilken metod som återställningen sker.
 
-Mer information finns i [användning av autentiseringsmetoder & insikter (för hands version)](../authentication/howto-authentication-methods-usage-insights.md).
+Mer information finns i [användning av autentiseringsmetoder & insikter (för hands version)](../authentication/howto-authentication-methods-activity.md).
 
 ---
 
@@ -4727,7 +4727,7 @@ Mer information finns i:
 
 Nu kan du gå till åtkomst panelen och Visa användnings villkoren som du har accepterat tidigare.
 
-Gör så här:
+Följ de här stegen:
 
 1. Gå till portalen för mina [appar](https://myapps.microsoft.com)och logga in.
 

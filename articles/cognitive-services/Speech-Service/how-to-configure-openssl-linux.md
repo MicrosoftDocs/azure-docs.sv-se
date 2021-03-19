@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: a6225fec30a87ca0bbe57e414733bc21489f87ad
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577452"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurera OpenSSL för Linux
 
@@ -50,6 +51,97 @@ Ange en miljö variabel `SSL_CERT_FILE` för att peka på den filen innan du kö
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+
+## <a name="certificate-revocation-checks"></a>Kontroller av återkallade certifikat
+När du ansluter till tal tjänsten verifierar talet SDK att TLS-certifikatet som används av tal tjänsten inte har återkallats. För att genomföra den här kontrollen behöver tal-SDK: n åtkomst till distributions platserna för återkallade certifikat för certifikat utfärdare som används av Azure. Du hittar en lista över möjliga hämtnings platser för CRL: er i [det här dokumentet](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes). Om ett certifikat har återkallats eller om CRL: en inte kan laddas ned, avbryts anslutningen och den annullerade händelsen stoppas av tal-SDK: n.
+
+I händelse av att det nätverk där tal-SDK används från har kon figurer ATS på ett sätt som inte tillåter åtkomst till listan över återkallade certifikat, kan CRL-kontrollen antingen inaktive ras eller ställas in på att Miss Missing om det inte går att hämta CRL: en. Den här konfigurationen görs via konfigurationsobjektet som används för att skapa ett tolknings objekt.
+
+Om du vill fortsätta med anslutningen när det inte går att hämta en CRL ställer du in egenskapen OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE.
+
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE"];
+```
+
+::: zone-end
+Om det är inställt på "true" ett försök görs att hämta listan över återkallade certifikat och om hämtningen lyckas, kontrol leras om certifikatet har återkallats, om det Miss lyckas, kommer anslutningen att kunna fortsätta.
+
+Om du vill inaktivera kontroller av återkallade certifikat fullständigt, ställer du in egenskapen OPENSSL_DISABLE_CRL_CHECK på "true".
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_DISABLE_CRL_CHECK"];
+```
+
+::: zone-end
+
+
 > [!NOTE]
 > Det är också värt att notera att vissa distributioner av Linux inte har en definierad TMP-eller TMPDIR-miljö. Detta leder till att tal-SDK: n hämtar listan över återkallade certifikat (CRL) varje gång, i stället för att cachelagra CRL: en på disken för åter användning tills de går ut. För att förbättra den första anslutnings prestandan kan du [skapa en miljö variabel med namnet tmpdir och ange den som sökväg till den temporära katalog som du har valt.](https://help.ubuntu.com/community/EnvironmentVariables)
 

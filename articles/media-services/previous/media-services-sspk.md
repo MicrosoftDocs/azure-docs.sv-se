@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: f7e371f892fb0796a310be46a402781e8eb57e1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 36e5b020241f7be33aa4cfa473222ad301d18fbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103009427"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581107"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licens för Microsoft &reg; Smooth Streaming client porting kit
 
@@ -32,7 +32,7 @@ Nedan följer en övergripande arkitektur och en IIS Smooth Streaming porting Ki
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Beskrivning
+## <a name="description"></a>Description
 SSPK är licensierad för villkor som erbjuder utmärkt affärs värde. SSPK-licensen ger branschen:
 
 * Smooth Streaming porting kit-källa i C++ 
@@ -149,7 +149,6 @@ Tillfälliga och slutgiltiga SSPK-licenser kan skicka tekniska frågor till [smo
 * Sichuan Changhong Electric Co., Ltd.
 * SKARDIN-industriella Corp.
 * Himmelsblå CP Ltd
-* Himmelsblå Deutschland Fernsehen GmbH & co. KG
 * SMARDTV GLOBALA SAS
 * SoftAtHome
 * Sony Corporation

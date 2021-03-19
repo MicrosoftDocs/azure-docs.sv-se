@@ -1,14 +1,14 @@
 ---
 title: Information om initiativ definitions strukturen
 description: Beskriver hur definitioner av policy initiativ används för att gruppera princip definitioner för distribution till Azure-resurser i din organisation.
-ms.date: 10/07/2020
+ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876183"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587227"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Definitions struktur för Azure Policy initiativ
 
@@ -17,7 +17,7 @@ Med initiativ kan du gruppera flera relaterade princip definitioner för att fö
 Du använder JSON för att skapa en princip initiativ definition. Definitionen av policy initiativ innehåller element för:
 
 - visningsnamn
-- description
+- beskrivning
 - metadata
 - parametrar
 - princip definitioner
@@ -134,7 +134,7 @@ Parametrar fungerar på samma sätt när du skapar princip initiativ. Genom att 
 En parameter har följande egenskaper som används i definitionen av policy initiativ:
 
 - `name`: Namnet på din parameter. Används av `parameters` distributions funktionen i princip regeln. Mer information finns i [använda ett parameter värde](#passing-a-parameter-value-to-a-policy-definition).
-- `type`: Anger om parametern är en **sträng**, en **matris**, ett **objekt**, ett **booleskt värde** **, ett** **flyttal**eller en **datetime**.
+- `type`: Anger om parametern är en **sträng**, en **matris**, ett **objekt**, ett **booleskt värde** **, ett** **flyttal** eller en **datetime**.
 - `metadata`: Definierar under egenskaper som främst används av Azure Portal för att Visa användarvänlig information:
   - `description`: En förklaring av vad parametern används för. Kan användas för att ge exempel på acceptabla värden.
   - `displayName`: Det egna namnet visas i portalen för parametern.
@@ -282,7 +282,7 @@ Regler för regelefterlevnad som skapats av Microsoft har ytterligare informatio
 Den här informationen är:
 
 - Visas i Azure Portal i Översikt över en **kontroll** på ett reglerings initiativ för regelefterlevnad.
-- Tillgängligt via REST API. Se `Microsoft.PolicyInsights` resurs leverantören och policyMetadata- [Åtgärds gruppen](/rest/api/policy-insights/policymetadata/getresource).
+- Tillgängligt via REST API. Se `Microsoft.PolicyInsights` resurs leverantören och policyMetadata- [Åtgärds gruppen](/rest/api/policy/policymetadata/getresource).
 - Tillgängligt via Azure CLI. Se kommandot [metadata för AZ-princip](/cli/azure/policy/metadata) .
 
 > [!IMPORTANT]

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e8410b4e0997798eba5ee91f361c3a5f1ce47ef1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356760"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586309"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrera logg disken till Ultra disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Följ dessa steg om du vill aktivera kompatibilitet:
 
 1. Välj **Ja** om du vill **Aktivera Ultra disk-kompatibilitet**. 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Skärm bild som visar alternativet Ja.":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png" alt-text="Skärm bild som visar alternativet Ja.":::
 
 1. Välj **Spara**. 
 

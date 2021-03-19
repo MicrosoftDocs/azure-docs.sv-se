@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500300"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579798"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Arkose Labs med Azure Active Directory B2C
 
@@ -81,13 +81,13 @@ Följ dessa steg om du vill skapa ett anpassat attribut:
 
 5. Välj **Skapa**
 
-Läs mer om [anpassade attribut](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow).
+Läs mer om [anpassade attribut](./user-flow-custom-attributes.md?pivots=b2c-user-flow).
 
 ### <a name="part-2---create-a-user-flow"></a>Del 2 – Skapa ett användar flöde
 
 Användar flödet kan vara antingen för **registrering** och **inloggning** eller bara **registrering**. Användar flödet Arkose Labs visas bara vid registrering.
 
-1. Se [anvisningarna](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) för att skapa ett användar flöde. Om du använder ett befintligt användar flöde måste det vara av den rekommenderade versions typen **(nästa generations förhands granskning)** .
+1. Se [anvisningarna](./tutorial-create-user-flows.md) för att skapa ett användar flöde. Om du använder ett befintligt användar flöde måste det vara av den rekommenderade versions typen **(nästa generations förhands granskning)** .
 
 2. I inställningarna för användar flödet går du till **användarattribut** och väljer **ArkoseSessionToken** -anspråket.
 
@@ -109,7 +109,7 @@ Följ de steg som nämns för att använda anpassad HTML och Java Script för di
 
 1. Ändra [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) -filen så att `<ARKOSE_PUBLIC_KEY>` matchar det värde som du skapade för verifiering på klient sidan och används för att läsa in Arkose Labs-skriptet för ditt konto.
 
-2. Placera HTML-sidan på en CORS-aktiverad webb slut punkt (Cross-Origin Resource Sharing). [Skapa ett Azure Blob Storage-konto](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) och [Konfigurera CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
+2. Placera HTML-sidan på en CORS-aktiverad webb slut punkt (Cross-Origin Resource Sharing). [Skapa ett Azure Blob Storage-konto](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) och [Konfigurera CORS](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
   >[!NOTE]
   >Om du har en egen anpassad HTML-kod kopierar du och klistrar in `<script>` elementen på HTML-sidan.
@@ -132,7 +132,7 @@ Följ de steg som nämns för att använda anpassad HTML och Java Script för di
 
    ![bild som visar sidlayouter](media/partner-arkose-labs/page-layouts.png)
 
-4. Från ditt användar flöde går du till **Egenskaper** och väljer **Aktivera Java Script** -Tvingad Sidlayout (för hands version). Läs den här [artikeln](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow) om du vill veta mer.
+4. Från ditt användar flöde går du till **Egenskaper** och väljer **Aktivera Java Script** -Tvingad Sidlayout (för hands version). Läs den här [artikeln](./javascript-and-page-layout.md?pivots=b2c-user-flow) om du vill veta mer.
 
 ### <a name="part-4---create-and-deploy-your-api"></a>Del 4 – Skapa och distribuera ditt API
 
@@ -157,7 +157,7 @@ Upprepa steg 1 till 4 för att distribuera om den lokala instansen under testnin
 
 Det här exemplet skyddar webb-API-slutpunkten med hjälp av [http Basic-autentisering](https://tools.ietf.org/html/rfc7617).
 
-Användar namn och lösen ord lagras som miljövariabler och inte som en del av lagrings platsen. Mer information finns i [local.settings.jspå](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) fil.
+Användar namn och lösen ord lagras som miljövariabler och inte som en del av lagrings platsen. Mer information finns i [local.settings.jspå](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) fil.
 
 1. Skapa en local.settings.jspå en fil i rotmappen
 
@@ -186,15 +186,15 @@ Värdena för **BASIC_AUTH_USERNAME** och **BASIC_AUTH_PASSWORD** ska vara de au
 
 #### <a name="deploy-the-application-to-the-web"></a>Distribuera programmet till webben
 
-1. Följ de steg som beskrivs i [den här](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) guiden för att distribuera Azure-funktionen till molnet. Kopiera slut punktens webb-URL för din Azure-funktion.
+1. Följ de steg som beskrivs i [den här](/azure/javascript/tutorial-vscode-serverless-node-04) guiden för att distribuera Azure-funktionen till molnet. Kopiera slut punktens webb-URL för din Azure-funktion.
 
-2. När du har distribuerat väljer du alternativet **överför inställningar** . De kommer att överföra miljövariablerna till [program inställningarna](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) för App Service. Dessa program inställningar kan också konfigureras eller [hanteras via Azure Portal.](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)
+2. När du har distribuerat väljer du alternativet **överför inställningar** . De kommer att överföra miljövariablerna till [program inställningarna](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure) för App Service. Dessa program inställningar kan också konfigureras eller [hanteras via Azure Portal.](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
 
-I [den här artikeln](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files) får du lära dig mer om Visual Studio Code development för Azure Functions.
+I [den här artikeln](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files) får du lära dig mer om Visual Studio Code development för Azure Functions.
 
 #### <a name="configure-and-enable-the-api-connector"></a>Konfigurera och aktivera API-anslutningen
 
-[Skapa en API-anslutning](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) och aktivera den för ditt användar flöde. Din API Connector-konfiguration bör se ut så här:
+[Skapa en API-anslutning](./add-api-connector.md) och aktivera den för ditt användar flöde. Din API Connector-konfiguration bör se ut så här:
 
 ![Bild som visar hur du konfigurerar API-koppling](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ Om du vill aktivera API-anslutningen går du till inställningarna för **API-an
 
 - [Exempel koder](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) för Azure AD B2C registrering av användar flöde
 
-- [Anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

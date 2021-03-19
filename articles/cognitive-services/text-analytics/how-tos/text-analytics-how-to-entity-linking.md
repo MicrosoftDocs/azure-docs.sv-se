@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710353"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599008"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Använda namngiven enhets igenkänning i Textanalys
 
@@ -35,7 +35,7 @@ Funktionen PII är en del av NER och kan identifiera och redigera känsliga enti
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Funktioner och versioner för namngiven enhets igenkänning
 
-| Funktion                                                         | NER v 3.0 | NER v 3.1 – för hands version. 3 |
+| Funktion                                                         | NER v 3.0 | NER v 3.1 – för hands version. 4 |
 |-----------------------------------------------------------------|--------|----------|
 | Metoder för enkel-och batch-begäranden                          | X      | X        |
 | Utökad enhets igenkänning över flera kategorier           | X      | X        |
@@ -47,8 +47,8 @@ Mer information finns i [språk stöd](../language-support.md) .
 
 Med namnet entitets igenkänning v3 får du utökad identifiering över flera typer. För närvarande kan NER v 3.0 identifiera entiteter i [kategorin Allmänt entiteter](../named-entity-types.md).
 
-Namngiven entitets igenkänning v 3.1 – för hands version. 3 innehåller identifierings funktionerna i v 3.0 och: 
-* Möjlighet att identifiera personlig information ( `PII` ) med hjälp av `v3.1-preview.3/entities/recognition/pii` slut punkten. 
+Namngiven enhets igenkänning v 3.1 – för hands version 4 innehåller identifierings funktionerna i v 3.0 och: 
+* Möjlighet att identifiera personlig information ( `PII` ) med hjälp av `v3.1-preview.4/entities/recognition/pii` slut punkten. 
 * En valfri `domain=phi` parameter för att identifiera konfidentiell hälso information ( `PHI` ).
 * [Asynkron åtgärd](text-analytics-how-to-call-api.md) med `/analyze` slut punkten.
 
@@ -72,36 +72,40 @@ Skicka en POST-begäran. Du kan [använda Postman](text-analytics-how-to-call-ap
 
 ### <a name="request-endpoints"></a>Begär slut punkter
 
-#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-preview)
+#### <a name="version-31-preview"></a>[Version 3,1 – för hands version](#tab/version-3-preview)
 
-Igenkänning av namngivna enheter `v3.1-preview.3` använder separata slut punkter för ner, personligt identifierbarhet och begär Anden om att länka entiteter. Använd ett URL-format nedan baserat på din begäran.
+Igenkänning av namngivna enheter `v3.1-preview.4` använder separata slut punkter för ner, personligt identifierbarhet och begär Anden om att länka entiteter. Använd ett URL-format nedan baserat på din begäran.
 
 **Länkning av entitet**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
 
-[Namngiven enhets igenkännings version 3,1 – för hands versions referens för `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
+[Namngiven enhets igenkännings version 3,1 – för hands versions referens för `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
 
 **Igenkänning av namngiven enhet**
-* Allmänna entiteter – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
+* Allmänna entiteter – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
 
-[Namngiven enhets igenkännings version 3,1 – för hands versions referens för `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
+[Namngiven enhets igenkännings version 3,1 – för hands versions referens för `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
 
 **Personligt identifierbar information (PII)**
-* Personlig ( `PII` ) information – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
+* Personlig ( `PII` ) information – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
 
 Du kan också använda den valfria `domain=phi` parametern för att identifiera hälso `PHI` information () i text. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
 
-Från `v3.1-preview.3` och med, innehåller JSON-svaret en `redactedText` egenskap som innehåller den ändrade indatamängden där de IDENTIFIERAde PII-enheterna ersätts av ett `*` för varje tecken i entiteterna.
+Från `v3.1-preview.4` och med, innehåller JSON-svaret en `redactedText` egenskap som innehåller den ändrade indatamängden där de IDENTIFIERAde PII-enheterna ersätts av ett `*` för varje tecken i entiteterna.
 
-[Namngiven enhets igenkännings version 3,1 – för hands versions referens för `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
+[Namngiven enhets igenkännings version 3,1 – för hands versions referens för `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+
+API: et försöker identifiera [enhets kategorierna som visas](../named-entity-types.md?tabs=personal) för ett givet dokument språk. Om du vill ange vilka entiteter som ska identifieras och returneras använder du parametern valfri PII-kategori med lämpliga enhets kategorier. Med den här parametern kan du också identifiera entiteter som inte är aktiverade som standard för ditt dokument språk. Till exempel, en fransk driv rutins licens nummer som kan förekomma i engelsk text.
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **Asynkron åtgärd**
 
-Från `v3.1-preview.3` och med kan du skicka ner-begäranden asynkront med `/analyze` slut punkten.
+Från och `v3.1-preview.4` med kan du skicka begär Anden om ner och entitets länkning asynkront med `/analyze` slut punkten.
 
-* Asynkron åtgärd- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+* Asynkron åtgärd- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
 
 Information om hur du skickar asynkrona förfrågningar finns i [så här anropar du API för textanalys](text-analytics-how-to-call-api.md) .
 

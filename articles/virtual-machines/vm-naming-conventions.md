@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 98d35821c884ba25a109f929556087ff6ecba0ca
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 2fa362a56eb1246381fcc944e82ea85d31ff3d39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551022"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599909"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Namngivnings konventioner för virtuella Azure-datorer
 
@@ -28,7 +28,7 @@ Den här sidan beskriver namngivnings konventionerna som används för virtuella
 | Familj | Anger serien för VM-serien| 
 | * Under serie | Används endast för specialiserade VM-differentieringar|
 | antal virtuella processorer| Anger antalet virtuella processorer för den virtuella datorn |
-| * Begränsat virtuella processorer| Används endast för vissa VM-storlekar. Anger antalet virtuella processorer för den [begränsade vCPU-kompatibla storleken](https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu) |
+| * Begränsat virtuella processorer| Används endast för vissa VM-storlekar. Anger antalet virtuella processorer för den [begränsade vCPU-kompatibla storleken](./constrained-vcpu.md) |
 | Additiva funktioner | En eller flera gemener anger additiva funktioner, till exempel: <br> a = AMD-baserad processor <br> d = disk (lokal temporär disk finns); Det här är för nya virtuella Azure-datorer, se [Ddv4 och Ddsv4-serien](./ddv4-ddsv4-series.md) <br> h = stöd för vilo läge <br> i = isolerad storlek <br> l = ont om minne; en mindre mängd minne än minnes intensiv storlek <br> m = minnes intensiv; den största mängden minne i en viss storlek <br> t = litet minne; den minsta mängden minne i en viss storlek <br> r = RDMA-kompatibel <br> s = Premium Storage möjligt, inklusive eventuell användning av [Ultra SSD](./disks-types.md#ultra-disk) (Obs! vissa nyare storlekar utan attributet för s kan fortfarande stödja Premium Storage, t. ex. M128, M64 osv.)<br> |
 | * Typ av Accelerator | Anger typen av maskin varu Accelerator i specialiserade/GPU-SKU: er. Endast de nya specialiserade/GPU-SKU: er som lanserats från Q3 2020 kommer att ha maskin varu acceleratorn i namnet. |
 | Version | Anger versionen för VM-serien |
@@ -79,4 +79,4 @@ Den här sidan beskriver namngivnings konventionerna som används för virtuella
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om tillgängliga [VM-storlekar](./sizes.md) i Azure. 
+Läs mer om tillgängliga [VM-storlekar](./sizes.md) i Azure.

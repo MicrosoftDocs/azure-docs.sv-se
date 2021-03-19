@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cc862759ce28c4d23dbc2197f63311e29ba82709
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225038"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607511"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>För hands version: Orchestration-lägen för skalnings uppsättningar för virtuella datorer i Azure 
 
@@ -85,7 +85,7 @@ Använd standard kommandona för virtuella datorer för att starta, stoppa, star
 Med övervakning av program hälsa kan ditt program tillhandahålla Azure med ett pulsslag för att avgöra om ditt program är felfritt eller dåligt. Azure kan automatiskt ersätta VM-instanser som inte är felfria. För flexibla skalnings uppsättnings instanser måste du installera och konfigurera program hälso tillägget på den virtuella datorn. För enhetlig skalnings uppsättnings instanser kan du antingen använda program hälso tillägget eller mäta hälsan med en Azure Load Balancer anpassad hälso avsökning. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Visa skalnings uppsättningar för VM-API-ändringar 
-Med Virtual Machine Scale Sets kan du Visa en lista över de instanser som tillhör skalnings uppsättningen. Med flexibel dirigering innehåller List Virtual Machine Scale Sets VM-kommandot en lista över skalnings uppsättningar VM-ID: n. Du kan sedan anropa kommandot GET Virtual Machine Scale Sets VM-kommandon för att få mer information om hur skalnings uppsättningen fungerar med den virtuella dator instansen. Om du vill få fullständig information om den virtuella datorn använder du standard kommandona GET VM eller [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview). 
+Med Virtual Machine Scale Sets kan du Visa en lista över de instanser som tillhör skalnings uppsättningen. Med flexibel dirigering innehåller List Virtual Machine Scale Sets VM-kommandot en lista över skalnings uppsättningar VM-ID: n. Du kan sedan anropa kommandot GET Virtual Machine Scale Sets VM-kommandon för att få mer information om hur skalnings uppsättningen fungerar med den virtuella dator instansen. Om du vill få fullständig information om den virtuella datorn använder du standard kommandona GET VM eller [Azure Resource Graph](../governance/resource-graph/overview.md). 
 
 ### <a name="retrieve-boot-diagnostics-data"></a>Hämta Boot Diagnostics-data 
 Använd standard-API: erna och kommandona för virtuella datorer för att hämta instanser av instansen av startdiagnostik. API: er och kommandon i Virtual Machine Scale Sets VM-startdiagnostik används inte med flexibla Orchestration mode-instanser.
@@ -102,11 +102,11 @@ I följande tabell jämförs det flexibla Orchestration-läget, ett enhetligt Or
 |         Typ av virtuell dator  | Standard Azure IaaS VM (Microsoft. Compute/virtualmachines)  | Skalnings uppsättning för vissa virtuella datorer (Microsoft. Compute/virtualmachinescalesets/virtualmachines)  | Standard Azure IaaS VM (Microsoft. Compute/virtualmachines)  |
 |         SKU: er som stöds  |            D-serien, E-serien, F-serien, A-serien, B-serien, Intel, AMD  |            Alla SKU: er  |            Alla SKU: er  |
 |         Tillgänglighetszoner  |            Du kan också ange alla instanser i en enda tillgänglighets zon |            Ange instanser i 1, 2 eller 3 tillgänglighets zoner  |            Stöds inte  |
-|         Fullständig kontroll över virtuell dator, nätverkskort, diskar  |            Ja  |            Begränsad kontroll med Virtual Machine Scale Sets VM-API  |            Ja  |
+|         Fullständig kontroll över virtuell dator, nätverkskort, diskar  |            Yes  |            Begränsad kontroll med Virtual Machine Scale Sets VM-API  |            Yes  |
 |         Automatisk skalning  |            Inga  |            Ja  |            Inga  |
 |         Tilldela en virtuell dator till en angiven fel domän  |            Ja  |             Inga   |            Inga  |
 |         Ta bort nätverkskort och diskar när du tar bort VM-instanser  |            Inga  |            Ja  |            Inga  |
-|         Uppgraderings princip (VM Scale set) |            Inga  |            Automatisk, rullande, manuell  |            Ej tillämpligt  |
+|         Uppgraderings princip (VM Scale set) |            No  |            Automatisk, rullande, manuell  |            Ej tillämpligt  |
 |         Automatiska OS-uppdateringar (VM Scale set) |            Inga  |            Ja  |            Ej tillämpligt  |
 |         I säkerhets korrigering av gäst  |            Ja  |            Inga  |            Ja  |
 |         Avsluta meddelanden (VM Scale set) |            Inga  |            Ja  |            Ej tillämpligt  |
@@ -115,8 +115,8 @@ I följande tabell jämförs det flexibla Orchestration-läget, ett enhetligt Or
 |         Punkt instanser och priser   |            Ja, du kan ha både plats-och prioritets instanser  |            Ja, instanserna måste antingen vara hela eller vanliga  |            Nej, endast antal instanser med normal prioritet  |
 |         Blanda operativ system  |            Ja, Linux och Windows kan finnas i samma flexibla skalnings uppsättning |            Nej, instanserna är samma operativ system  |               Ja, Linux och Windows kan finnas i samma flexibla skalnings uppsättning |
 |         Övervaka program hälsa  |            Program hälso tillägg  |            Avsökning av program hälso tillägg eller Azure Load Balancer  |            Program hälso tillägg  |
-|         UltraSSD diskar   |            Ja  |            Ja, endast för zonindelade-distributioner  |            Inga  |
-|         InfiniBand   |            Inga  |            Ja, endast en placerings grupp  |            Ja  |
+|         UltraSSD diskar   |            Yes  |            Ja, endast för zonindelade-distributioner  |            No  |
+|         InfiniBand   |            No  |            Ja, endast en placerings grupp  |            Yes  |
 |         Skrivningsaccelerator   |            Inga  |            Ja  |            Ja  |
 |         Placerings grupper för närhet   |            Ja  |            Ja  |            Ja  |
 |         Dedikerade Azure-värdar   |            Inga  |            Ja  |            Ja  |
@@ -269,7 +269,7 @@ zones = ["1"]
 
 2. Lägg till virtuella datorer i skalnings uppsättningen.
     1. Tilldela `virtualMachineScaleSet` egenskapen till den skalnings uppsättning som du skapade tidigare. Du måste ange `virtualMachineScaleSet` egenskapen vid tidpunkten för skapandet av den virtuella datorn. 
-    1. Du kan använda funktionen **Kopiera ()** Azure Resource Manager-mall för att skapa flera virtuella datorer samtidigt. Se [resurs upprepning](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources#iteration-for-a-child-resource) i Azure Resource Manager mallar. 
+    1. Du kan använda funktionen **Kopiera ()** Azure Resource Manager-mall för att skapa flera virtuella datorer samtidigt. Se [resurs upprepning](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) i Azure Resource Manager mallar. 
 
     ```json
     {

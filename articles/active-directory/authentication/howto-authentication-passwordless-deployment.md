@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651135"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579373"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planera distribution av lösenordsskyddad autentisering i Azure Active Directory
 
@@ -292,7 +292,7 @@ Följ stegen som är anpassade till den valda metoden nedan.
 
 ### <a name="required-administrative-roles"></a>Administrativa roller som krävs
 
-| Azure AD-roll | Beskrivning |
+| Azure AD-roll | Description |
 | --- | --- |
 | Global administratör|Minst privilegie rad roll kan implementera kombinerad registrerings upplevelse. |
 | Administratör för autentisering | Minst privilegie rad roll kan implementera och hantera autentiseringsmetoder. |
@@ -330,4 +330,4 @@ Följ stegen i artikeln, [Aktivera lösen ords lös säkerhets nyckel logga in f
 
 - [Aktivera lösen ords skydds nycklar för inloggning för Azure AD](howto-authentication-passwordless-security-key.md)
 - [Aktivera inloggning med lösen ord med Microsoft Authenticator-appen](howto-authentication-passwordless-phone.md)
-- [Lär dig mer om autentiseringsmetoder användning & insikter](howto-authentication-methods-usage-insights.md)
+- [Lär dig mer om autentiseringsmetoder användning & insikter](./howto-authentication-methods-activity.md)

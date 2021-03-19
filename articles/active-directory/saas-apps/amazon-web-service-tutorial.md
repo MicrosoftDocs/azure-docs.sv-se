@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f217a13ce68b42d3f9ee2dec4bfae47a0b64b0ca
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e390eb62f64c9ec55605525828790f15633e5f14
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200040"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med AWS Single-Account åtkomst
 
@@ -31,11 +31,11 @@ Använd informationen nedan för att fatta ett beslut mellan att använda AWS-Si
 
 **AWS enkel inloggning**
 
-[AWS för enkel inloggning](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) lades till i Azure AD-programgalleriet i februari 2021. Det gör det enkelt att hantera åtkomst centralt till flera AWS-konton och AWS-program, med inloggning via Microsoft Azure AD. Federera Microsoft Azure AD med AWS SSO en gång och Använd AWS SSO för att hantera behörigheter för alla dina AWS-konton från en och samma plats. AWS SSO etablerar behörigheter automatiskt och behåller dem aktuella när du uppdaterar principer och åtkomst tilldelningar. Slutanvändare kan autentisera med sina autentiseringsuppgifter för Azure AD för att få åtkomst till AWS-konsolen, kommando rads gränssnittet och AWS SSO-integrerade program.
+[AWS för enkel inloggning](./aws-single-sign-on-tutorial.md) lades till i Azure AD-programgalleriet i februari 2021. Det gör det enkelt att hantera åtkomst centralt till flera AWS-konton och AWS-program, med inloggning via Microsoft Azure AD. Federera Microsoft Azure AD med AWS SSO en gång och Använd AWS SSO för att hantera behörigheter för alla dina AWS-konton från en och samma plats. AWS SSO etablerar behörigheter automatiskt och behåller dem aktuella när du uppdaterar principer och åtkomst tilldelningar. Slutanvändare kan autentisera med sina autentiseringsuppgifter för Azure AD för att få åtkomst till AWS-konsolen, kommando rads gränssnittet och AWS SSO-integrerade program.
 
 **AWS Single-Account åtkomst**
 
-[AWS Single-Account åtkomst](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) har använts av kunder under de senaste åren och gör det möjligt att federera Azure AD till ett enda AWS-konto och använda Azure AD för att hantera åtkomst till AWS IAM-roller. AWS IAM-administratörer definierar roller och principer i varje AWS-konto. För varje AWS-konto federerar Azure AD-administratörerna till AWS IAM, tilldelar användare eller grupper till kontot och konfigurerar Azure AD för att skicka kontroller som godkänner roll åtkomst.  
+[AWS Single-Account åtkomst]() har använts av kunder under de senaste åren och gör det möjligt att federera Azure AD till ett enda AWS-konto och använda Azure AD för att hantera åtkomst till AWS IAM-roller. AWS IAM-administratörer definierar roller och principer i varje AWS-konto. För varje AWS-konto federerar Azure AD-administratörerna till AWS IAM, tilldelar användare eller grupper till kontot och konfigurerar Azure AD för att skicka kontroller som godkänner roll åtkomst.  
 
 | Funktion | AWS enkla Sign-On | AWS Single-Account åtkomst |
 |:--- |:---:|:---:|

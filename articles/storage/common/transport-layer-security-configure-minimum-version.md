@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3a44466f04e598080662599e785eb71698265f87
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 257cd8dce2a080203f116a6f0d5b7c7ebd6d13f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592331"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593184"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Framtvinga en minsta version av Transport Layer Security (TLS) som krävs för begär anden till ett lagrings konto
 
@@ -254,22 +254,24 @@ Följ dessa steg om du vill skapa en princip med en gransknings funktion för de
 
     ```json
     {
-      "if": {
-        "allOf": [
-          {
-            "field": "type",
-            "equals": "Microsoft.Storage/storageAccounts"
-          },
-          {
-            "not": {
-              "field":"Microsoft.Storage/storageAccounts/minimumTlsVersion",
-              "equals": "TLS1_2"
+      "policyRule": {
+        "if": {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.Storage/storageAccounts"
+            },
+            {
+              "not": {
+                "field": "Microsoft.Storage/storageAccounts/minimumTlsVersion",
+                "equals": "TLS1_2"
+              }
             }
-          }
-        ]
-      },
-      "then": {
-        "effect": "audit"
+          ]
+        },
+        "then": {
+          "effect": "audit"
+        }
       }
     }
     ```
@@ -316,22 +318,24 @@ Om du vill skapa en princip med en neka-påverkan för en lägsta TLS-version so
 
 ```json
 {
-  "if": {
-    "allOf": [
-      {
-        "field": "type",
-        "equals": "Microsoft.Storage/storageAccounts"
-      },
-      {
-        "not": {
-          "field":"Microsoft.Storage/storageAccounts/minimumTlsVersion",
-          "equals": "TLS1_2"
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Storage/storageAccounts"
+        },
+        {
+          "not": {
+            "field": "Microsoft.Storage/storageAccounts/minimumTlsVersion",
+            "equals": "TLS1_2"
+          }
         }
-      }
-    ]
-  },
-  "then": {
-    "effect": "deny"
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
   }
 }
 ```

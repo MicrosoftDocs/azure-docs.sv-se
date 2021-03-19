@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Data Lake Analytics
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Data Lake Analytics. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-lake-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f7d7e662de9215b836e1346f10da122901944473
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a6f077f3fcfeb0bde73c14142262915571502425
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635184"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590606"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-analytics"></a>Azure Policy kontroll av efterlevnad för Azure Data Lake Analytics
 

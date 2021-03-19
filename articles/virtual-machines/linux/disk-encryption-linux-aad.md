@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558413"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601798"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Aktivera Azure Disk Encryption med Azure AD på virtuella Linux-datorer (tidigare version)
 
@@ -210,7 +210,7 @@ Vi rekommenderar en LVM-in-Encrypt-installation. I följande exempel ersätter d
 - Lägg till de data diskar som ska skapa den virtuella datorn.
 - Formatera, montera och Lägg till de här diskarna i fstab-filen.
 
-    1. Formatera den nyligen tillagda disken. Vi använder symlinks som genererats av Azure här. Om du använder symlinks undviker du problem som rör ändring av enhets namn. Mer information finns i [Felsöka enhets namns problem](../troubleshooting/troubleshoot-device-names-problems.md).
+    1. Formatera den nyligen tillagda disken. Vi använder symlinks som genererats av Azure här. Om du använder symlinks undviker du problem som rör ändring av enhets namn. Mer information finns i [Felsöka enhets namns problem](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -266,7 +266,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 Du kan lägga till en ny datadisk genom att använda [AZ VM disk Attach](add-disk.md) eller [Azure Portal](attach-disk-portal.md). Innan du kan kryptera måste du montera den nyligen anslutna data disken först. Du måste begära kryptering av data enheten eftersom enheten kan vara oanvändbar medan kryptering pågår. 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>Aktivera kryptering på en nyligen tillagd disk med Azure CLI
- Om den virtuella datorn tidigare har krypterats med "alla", ska parametern--volym typ vara kvar. Alla omfattar både OS-och data diskar. Om den virtuella datorn tidigare har krypterats med volym typen "OS", ska parametern--type ändras till alla så att både operativ systemet och den nya datadisken tas med. Om den virtuella datorn har krypterats med endast volym typen "data" kan den vara data som visas här. Att lägga till och bifoga en ny datadisk till en virtuell dator är inte tillräckligt med förberedelse för kryptering. Den nyligen anslutna disken måste också formateras och monteras korrekt på den virtuella datorn innan du aktiverar kryptering. På Linux måste disken monteras i/etc/fstab med ett [beständigt block enhets namn](../troubleshooting/troubleshoot-device-names-problems.md). 
+ Om den virtuella datorn tidigare har krypterats med "alla", ska parametern--volym typ vara kvar. Alla omfattar både OS-och data diskar. Om den virtuella datorn tidigare har krypterats med volym typen "OS", ska parametern--type ändras till alla så att både operativ systemet och den nya datadisken tas med. Om den virtuella datorn har krypterats med endast volym typen "data" kan den vara data som visas här. Att lägga till och bifoga en ny datadisk till en virtuell dator är inte tillräckligt med förberedelse för kryptering. Den nyligen anslutna disken måste också formateras och monteras korrekt på den virtuella datorn innan du aktiverar kryptering. På Linux måste disken monteras i/etc/fstab med ett [beständigt block enhets namn](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems). 
 
 Till skillnad från PowerShell-syntaxen kräver CLI inte att du anger en unik sekvens-version när du aktiverar kryptering. CLI genererar automatiskt och använder sitt eget unika sekvens versions värde.
 

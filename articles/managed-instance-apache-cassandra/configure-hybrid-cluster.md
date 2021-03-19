@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 11daa548e90aa1906ba87e081fa1e0be6fe6aff8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6c6bbdefe666cf0dd2f1c96d783917e1874ae93d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430776"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588706"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Snabb start: Konfigurera ett hybrid kluster med en Azure-hanterad instans för Apache Cassandra (för hands version)
 
@@ -48,16 +48,17 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
    > [!NOTE]
    > `assignee`Värdena och `role` i föregående kommando är fasta tjänst principer respektive roll identifierare.
 
-1. Nu ska vi konfigurera resurser för vårt hybrid kluster. Eftersom du redan har ett kluster, är kluster namnet här bara en logisk resurs för att identifiera namnet på ditt befintliga kluster. Se till att använda namnet på ditt befintliga kluster när du definierar `clusterName` och `clusterNameOverride` variabler i följande skript.
+1. Nu ska vi konfigurera resurser för vårt hybrid kluster. Eftersom du redan har ett kluster, är kluster namnet här bara en logisk resurs för att identifiera namnet på ditt befintliga kluster. Se till att använda namnet på ditt befintliga kluster när du definierar `clusterName` och `clusterNameOverride` variabler i följande skript. Du behöver också startnoder, offentliga klient certifikat (om du har konfigurerat en offentlig/privat nyckel på din Cassandra-slutpunkt) och Gossip-certifikat för det befintliga klustret.
 
-   Du behöver också startnoder, offentliga klient certifikat (om du har konfigurerat en offentlig/privat nyckel på din Cassandra-slutpunkt) och Gossip-certifikat för det befintliga klustret. Du måste också använda det resurs-ID som du kopierade ovan för att definiera `delegatedManagementSubnetId` variabeln.
+   > [!NOTE]
+   > Värdet för `delegatedManagementSubnetId` variabeln som du anger nedan är exakt detsamma som värdet för `--scope` som du angav i kommandot ovan:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
    clusterName='cassandra-hybrid-cluster-legal-name'
    clusterNameOverride='cassandra-hybrid-cluster-illegal-name'
    location='eastus2'
-   delegatedManagementSubnetId='<Resource ID>'
+   delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
     
    # You can override the cluster name if the original name is not legal for an Azure resource:
    # overrideClusterName='ClusterNameIllegalForAzureResource'
@@ -99,14 +100,13 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
    clusterName='cassandra-hybrid-cluster'
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId= '<Resource ID>'
     
    az managed-cassandra datacenter create \
        --resource-group $resourceGroupName \
        --cluster-name $clusterName \
        --data-center-name $dataCenterName \
        --data-center-location $dataCenterLocation \
-       --delegated-subnet-id $delegatedSubnetId \
+       --delegated-subnet-id $delegatedManagementSubnetId \
        --node-count 9 
    ```
 
@@ -141,6 +141,15 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
    ```bash
     ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3}
    ```
+
+## <a name="troubleshooting"></a>Felsökning
+
+Om det uppstår ett fel när du tillämpar behörigheter på Virtual Network, till exempel *inte kan hitta användare eller tjänstens huvud namn i graf-databasen för "e5007d2c-4b13-4a74-9b6a-605d99f03501"*, kan du använda samma behörighet manuellt från Azure Portal. Om du vill tillämpa behörigheter från portalen går du till fönstret **åtkomst kontroll (IAM)** i ditt befintliga virtuella nätverk och lägger till en roll tilldelning för "Azure Cosmos dB" i rollen "nätverks administratör". Om två poster visas när du söker efter "Azure Cosmos DB" lägger du till båda posterna som visas i följande bild: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Tillämpa behörigheter" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Roll tilldelningen Azure Cosmos DB används endast i distributions syfte. Azure-hanterad instans för Apache Cassandra har inga Server dels beroenden på Azure Cosmos DB.  
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

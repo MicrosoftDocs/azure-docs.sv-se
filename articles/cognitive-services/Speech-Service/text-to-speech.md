@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: text till tal
-ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: fec90b3257ffafaf2919d2f0a41c2ade6fbc1f64
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599539"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597682"
 ---
 # <a name="what-is-text-to-speech"></a>Vad är text-till-tal?
 
@@ -40,6 +40,8 @@ I den här översikten får du lära dig om fördelarna och funktionerna i tjän
 * Neurala-röster – djup neurala nätverk används för att undvika gränserna för traditionella tal syntes med avseende på stress och intonation i talade språk. Prosody förutsägelse och röst syntes utförs samtidigt, vilket resulterar i mer Fluida och naturliga ljud. Neurala röster kan användas för att göra interaktioner med chattrobotar och röst assistenter mer naturligt och engagerande, konvertera digitala texter som e-böcker till Audiobooks och förbättra navigerings systemen i bilen. Med den humana naturliga prosody och tydligare utsättande av ord, minskar neurala-röster avsevärt lyssnings utmattning när du interagerar med AI-system. En fullständig lista över neurala-röster finns i [språk som stöds](language-support.md#text-to-speech).
 
 * Ändra tal format med SSML-SSML (Speech syntes Markup Language) är ett XML-baserat kodspråk som används för att anpassa tal till text-utdata. Med SSML kan du justera bredden, lägga till pauser, förbättra uttal, påskynda eller sakta ned tal frekvens, öka eller minska volymen och attributa flera röster till ett enda dokument. Se [instruktionen så att du kan](speech-synthesis-markup.md) justera tal formatet.
+
+* Visemes- [Visemes](how-to-speech-synthesis-viseme.md) används för att representera viktiga attityder i observerat tal (t. ex. läpparnas position, Jaw och tunga när man skapar en viss fonem). Det har en stark korrelation med röster och fonem. Med Viseme i tal-SDK kan du skapa ansikts Animations data som vanligt vis används för animerade Lip-läsa kommunikation, utbildning, underhållning och kund tjänst. 
 
 ## <a name="get-started"></a>Kom igång
 

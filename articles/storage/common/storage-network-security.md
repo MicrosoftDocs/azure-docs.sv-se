@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3d71a7ad2507909dacf54e7f1c49b6e768033113
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601975"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600487"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -244,24 +244,31 @@ Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal,
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Bevilja åtkomst från ett IP-intervall på internet
 
-Du kan konfigurera lagrings konton så att de tillåter åtkomst från vissa offentliga IP-adressintervall för Internet. Den här konfigurationen beviljar åtkomst till vissa Internetbaserade tjänster och lokala nätverk och blockerar allmän Internet trafik.
+Du kan använda IP-nätverksanslutningar för att tillåta åtkomst från vissa offentliga Internet-IP-adressintervall genom att skapa IP-nätverks regler. Varje lagrings konto har stöd för upp till 200 regler. Dessa regler ger åtkomst till vissa Internetbaserade tjänster och lokala nätverk och blockerar allmän Internet trafik.
 
-Tillhandahålla tillåtna Internet adress intervall med [CIDR-notering](https://tools.ietf.org/html/rfc4632) i formatet *16.17.18.0/24* eller enskilda IP-adresser som *16.17.18.19*.
+Följande begränsningar gäller för IP-adressintervall.
 
-   > [!NOTE]
-   > Små adress intervall som använder sig av prefixlängden "/31" eller "/32" stöds inte. Dessa intervall ska konfigureras med hjälp av enskilda IP-adressintervall.
+- IP-nätverks regler tillåts endast för **offentliga Internet** -IP-adresser. 
 
-IP-nätverks regler tillåts endast för **offentliga Internet** -IP-adresser. IP-adressintervall som är reserverade för privata nätverk (enligt definitionen i [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) tillåts inte i IP-regler. Privata nätverk innehåller adresser som börjar med _10. *_, _172,16. *_  -  _172,31. *_ och _192,168. *_.
+  IP-adressintervall som är reserverade för privata nätverk (enligt definitionen i [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) tillåts inte i IP-regler. Privata nätverk innehåller adresser som börjar med _10. *_, _172,16. *_  -  _172,31. *_ och _192,168. *_.
 
-   > [!NOTE]
-   > IP-nätverksanslutningar har ingen påverkan på begär Anden som kommer från samma Azure-region som lagrings kontot. Använd [regler för virtuella nätverk](#grant-access-from-a-virtual-network) för att tillåta begäran om samma region.
+- Du måste tillhandahålla tillåtna Internet adress intervall med [CIDR-notering](https://tools.ietf.org/html/rfc4632) i formatet *16.17.18.0/24* eller enskilda IP-adresser som *16.17.18.19*. 
 
-  > [!NOTE]
-  > Tjänster som distribueras i samma region som lagrings kontot använder privata Azure IP-adresser för kommunikation. Därför kan du inte begränsa åtkomsten till vissa Azure-tjänster baserat på deras offentliga utgående IP-adressintervall.
+- Små adress intervall som använder sig av prefixlängden "/31" eller "/32" stöds inte. Dessa intervall ska konfigureras med hjälp av enskilda IP-adressintervall. 
 
-Endast IPV4-adresser stöds för konfiguration av lagrings brand Väggs regler.
+- Endast IPV4-adresser stöds för konfiguration av lagrings brand Väggs regler.
 
-Varje lagrings konto har stöd för upp till 200 IP-nätverksanslutningar.
+Det går inte att använda IP-nätverks regler i följande fall:
+
+- För att begränsa åtkomsten till klienter i samma Azure-region som lagrings kontot.
+  
+  IP-nätverksanslutningar har ingen påverkan på begär Anden som kommer från samma Azure-region som lagrings kontot. Använd [regler för virtuella nätverk](#grant-access-from-a-virtual-network) för att tillåta begäran om samma region. 
+
+- För att begränsa åtkomsten till klienter i en [kopplad region](../../best-practices-availability-paired-regions.md) som finns i ett VNet som har en tjänst slut punkt.
+
+- För att begränsa åtkomsten till Azure-tjänster som distribueras i samma region som lagrings kontot.
+
+  Tjänster som distribueras i samma region som lagrings kontot använder privata Azure IP-adresser för kommunikation. Därför kan du inte begränsa åtkomsten till vissa Azure-tjänster baserat på deras offentliga utgående IP-adressintervall.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurera åtkomst från lokala nätverk
 

@@ -2,21 +2,21 @@
 title: Azure Advisor rekommendationer för dedikerad SQL-pool
 description: Lär dig mer om Synapse SQL-rekommendationer och hur de genereras
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 06/26/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 698c14d23e8e64c777260410c625129cd87d49b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685284"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585714"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor rekommendationer för dedikerad SQL-pool i Azure Synapse Analytics
 

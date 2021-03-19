@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d86ddd8d0fe53599e9dce3d2fc5fa7682f2aed08
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2566b427777aec273df17863f06040de20649d97
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897066"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581855"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Lägg till Azure Active Directory B2B-samarbets användare i Azure Portal
 
-Som en användare som har tilldelats någon av de begränsade administratörs katalog rollerna kan du använda Azure Portal för att bjuda in B2B-samarbets användare. Du kan bjuda in gäst användare till katalogen, till en grupp eller till ett program. När du har bjudit in en användare med någon av dessa metoder läggs den inbjudna användarens konto till i Azure Active Directory (Azure AD), med en användar typ av *gäst* . Gäst användaren måste sedan lösa in sin inbjudan för att få åtkomst till resurser. Ingen inbjudan av en användare upphör att gälla.
+Som en användare som har tilldelats någon av de begränsade administratörs katalog rollerna kan du använda Azure Portal för att bjuda in B2B-samarbets användare. Du kan bjuda in gäst användare till katalogen, till en grupp eller till ett program. När du har bjudit in en användare med någon av dessa metoder läggs den inbjudna användarens konto till i Azure Active Directory (Azure AD), med en användar typ av *gäst*. Gäst användaren måste sedan lösa in sin inbjudan för att få åtkomst till resurser. Ingen inbjudan av en användare upphör att gälla.
 
 När du har lagt till en gäst användare i katalogen kan du antingen skicka gäst användaren en direkt länk till en delad app, eller gäst användaren kan klicka på inlösnings-URL: en i inbjudan via e-post. Mer information om inlösnings processen finns i [B2B-samverkan med inbjudan](redemption-experience.md).
 
@@ -37,8 +37,8 @@ Följ dessa steg om du vill lägga till B2B-samarbets användare i katalogen:
 
 1. Logga in på [Azure Portal](https://portal.azure.com) som en användare som har tilldelats en begränsad administratörs katalog roll eller rollen som gäst deltagare.
 2. Sök efter och välj **Azure Active Directory** från vilken sida som helst.
-3. Under **Hantera** väljer du  **Användare** .
-4. Välj **Ny gästanvändare** .
+3. Under **Hantera** väljer du **Användare**.
+4. Välj **Ny gästanvändare**.
 
    ![Visar var nya gäst användare finns i användar gränssnittet](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
@@ -48,10 +48,10 @@ Följ dessa steg om du vill lägga till B2B-samarbets användare i katalogen:
     > Gruppens e-postadresser stöds inte. Ange en persons e-postadress. Vissa e-postleverantörer låter också användare lägga till plus tecken (+) och ytterligare text till sina e-postadresser för att hjälpa till med saker som filtrering av Inkorgen. Azure AD stöder dock för närvarande inte plus tecken i e-postadresser. Undvik leverans problem genom att utelämna plus symbolen och eventuella tecken som följer det upp till @-symbolen.
 
    - **Namn.** Det första och sista namnet på gäst användaren.
-   - **E-postadress (krävs)** . E-postadressen till gäst användaren.
+   - **E-postadress (krävs)**. E-postadressen till gäst användaren.
    - **Personligt meddelande (valfritt)** Ta med ett personligt välkomst meddelande till gäst användaren.
-   - **Grupper** : du kan lägga till gäst användaren i en eller flera befintliga grupper, eller så kan du göra det senare.
-   - **Katalog roll** : om du kräver administratörs behörighet för Azure AD för användaren kan du lägga till dem i en Azure AD-roll. 
+   - **Grupper**: du kan lägga till gäst användaren i en eller flera befintliga grupper, eller så kan du göra det senare.
+   - **Katalog roll**: om du kräver administratörs behörighet för Azure AD för användaren kan du lägga till dem i en Azure AD-roll. 
 
 7. Välj **Bjud in** för att skicka inbjudan till gästanvändaren automatiskt. 
  
@@ -65,12 +65,12 @@ Följ dessa steg om du behöver lägga till B2B-samarbets användare manuellt i 
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Sök efter och välj **Azure Active Directory** från vilken sida som helst.
-3. Under **Hantera** väljer du **grupper** .
+3. Under **Hantera** väljer du **grupper**.
 4. Välj en grupp (eller klicka på **ny grupp** för att skapa en ny). Det är en bra idé att inkludera i grupp beskrivningen att gruppen innehåller B2B-gäst användare.
-5. Välj **medlemmar** . 
+5. Välj **medlemmar**. 
 6. Gör något av följande:
    - Om gäst användaren redan finns i katalogen söker du efter B2B-användaren. Välj användaren och klicka sedan på **Välj** för att lägga till användaren i gruppen.
-   - Om gäst användaren inte redan finns i katalogen, Bjud in dem till gruppen genom att skriva deras e-postadress i sökrutan, skriva ett valfritt personligt meddelande och sedan klicka på **Välj** . Inbjudan skickas automatiskt till den inbjudna användaren.
+   - Om gäst användaren inte redan finns i katalogen, Bjud in dem till gruppen genom att skriva deras e-postadress i sökrutan, skriva ett valfritt personligt meddelande och sedan klicka på **Välj**. Inbjudan skickas automatiskt till den inbjudna användaren.
      
      ![Knappen Lägg till inbjudan för att lägga till gäst medlemmar](./media/add-users-administrator/GroupInvite.png)
    
@@ -82,27 +82,27 @@ Följ dessa steg om du vill lägga till B2B-samarbets användare till ett progra
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Sök efter och välj **Azure Active Directory** från vilken sida som helst.
-3. Under **Hantera** väljer du **företags program**  >  **alla program** .
+3. Under **Hantera** väljer du **företags program**  >  **alla program**.
 4. Välj det program som du vill lägga till gäst användare i.
 5. På programmets instrument panel väljer du **Totalt antal användare** för att öppna fönstret **användare och grupper** .
 
     ![Knappen totalt antal användare för att lägga till öppna användare och grupper](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. Välj **Lägg till användare** .
-7. Under **Lägg till tilldelning** väljer du **användare och grupper** .
+6. Välj **Lägg till användare**.
+7. Under **Lägg till tilldelning** väljer du **användare och grupper**.
 8. Gör något av följande:
    - Om gäst användaren redan finns i katalogen söker du efter B2B-användaren. Välj användaren, klicka på **Välj** och sedan på **tilldela** för att lägga till användaren i appen.
-   - Om gäst användaren inte redan finns i katalogen, under **Välj medlem eller Bjud in en extern användare** , anger du användarens e-postadress. Skriv ett valfritt personligt meddelande i rutan meddelande. Klicka på **Bjud in** i rutan meddelande.
+   - Om gäst användaren inte redan finns i katalogen, under **Välj medlem eller Bjud in en extern användare**, anger du användarens e-postadress. Skriv ett valfritt personligt meddelande i rutan meddelande. Klicka på **Bjud in** i rutan meddelande.
            
        ![Skärm bild som visar var du kan lägga till användarens e-postadress, det anpassade meddelandet och markerar knappen Bjud in.](./media/add-users-administrator/AppInviteUsers.png)
    
       Klicka på **Välj** och sedan på **tilldela** för att lägga till användaren i appen. En inbjudan skickas automatiskt till den inbjudna användaren.
 
-9. Gäst användaren visas i listan över program **användare och grupper** med den tilldelade rollen som **standard åtkomst** . Om du vill ändra rollen gör du följande:
-   - Välj gäst användaren och välj sedan **Redigera** . 
+9. Gäst användaren visas i listan över program **användare och grupper** med den tilldelade rollen som **standard åtkomst**. Om du vill ändra rollen gör du följande:
+   - Välj gäst användaren och välj sedan **Redigera**. 
    - Under **Redigera tilldelning** klickar du på **Välj roll** och väljer den roll som du vill tilldela den valda användaren.
-   - Klicka på **Välj** .
-   - Klicka på **Tilldela** .
+   - Klicka på **Välj**.
+   - Klicka på **Tilldela**.
  
 ## <a name="resend-invitations-to-guest-users"></a>Skicka om inbjudningar till gästanvändare
 
@@ -110,15 +110,14 @@ Om en gäst användare ännu inte har löst in sin inbjudan kan du skicka e-post
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Sök efter och välj **Azure Active Directory** från vilken sida som helst.
-3. Under **Hantera** väljer du  **Användare** .
-5. Välj användar kontot.
-6. Under **Hantera** väljer du **profil** .
-7. Om användaren inte har accepterat inbjudan än, är alternativet **skicka om inbjudan** tillgängligt. Välj den här knappen för att skicka igen.
-
-   ![Skicka Inbjudnings alternativ i användar profilen](./media/add-users-administrator/b2b-user-resend-invitation.png)
+3. Under **Hantera** väljer du **Användare**.
+5. Välj användarkontot.
+6. Under **Hantera** väljer du **profil**.
+7. Om användaren ännu inte har accepterat inbjudan i avsnittet **identitet** , kommer inbjudan att **accepteras** att anges till **Nej**. Om du vill skicka inbjudan igen väljer du **(hantera)**. På sidan **Hantera inbjudningar** bredvid * * skickar du inbjudan igen. Välj **Ja** och välj **färdig**.
 
 > [!NOTE]
 > Om du skickar en inbjudan som ursprungligen dirigerade användaren till en speciell app förstår du att länken i den nya inbjudan tar användaren till den översta åtkomst panelen i stället.
+> Dessutom kan endast användare med bjuda in behörigheter skicka inbjudningar igen.
 
 ## <a name="next-steps"></a>Nästa steg
 
