@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563870"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect synkronisering: förstå arkitekturen
@@ -173,7 +173,7 @@ För varje objekt som anges i anslutningen försöker Synkroniseringsmotorn för
 När Synkroniseringsmotorn hittar ett mellanlagringsplats som matchar med unikt namn men inte av ankare, inträffar följande särskilda beteenden:
 
 * Om objektet som finns på kopplings området inte har något ankare, tar Synkroniseringsmotorn bort objektet från anslutnings utrymmet och markerar metaversum-objektet som det är länkat till som **försök att etablering vid nästa synkronisering**. Sedan skapas det nya import-objektet.
-* Om objektet som finns på kopplings utrymmet har ett ankare, förutsätter Synkroniseringsmotorn att objektet antingen har bytt namn eller tagits bort i den anslutna katalogen. Det tilldelar ett tillfälligt, nytt unikt namn för objektet Connector-utrymme så att det kan mellanlagra det inkommande objektet. Det gamla objektet blir **tillfälligt övergående**och väntar på att anslutningen ska importera namnbytet eller borttagningen för att lösa problemet.
+* Om objektet som finns på kopplings utrymmet har ett ankare, förutsätter Synkroniseringsmotorn att objektet antingen har bytt namn eller tagits bort i den anslutna katalogen. Det tilldelar ett tillfälligt, nytt unikt namn för objektet Connector-utrymme så att det kan mellanlagra det inkommande objektet. Det gamla objektet blir **tillfälligt övergående** och väntar på att anslutningen ska importera namnbytet eller borttagningen för att lösa problemet.
 
 Om Synkroniseringsmotorn hittar ett mellanlagringsplats objekt som motsvarar det objekt som anges i anslutningen, avgör det vilken typ av ändringar som ska tillämpas. Till exempel kan Synkroniseringsmotorn byta namn på eller ta bort objektet i den anslutna data källan, eller så kan det bara uppdatera objektets attributvärden.
 
@@ -182,7 +182,7 @@ Mellanlagring av objekt med uppdaterade data markeras som väntande import. Olik
 * **Ingen**. Inga ändringar av attributen för mellanlagringsplatsen är tillgängliga. Synkroniseringsmotorn flaggar inte den här typen som väntande import.
 * **Lägg till**. Mellanlagringsplatsen är ett nytt import objekt i anslutnings utrymmet. Synkroniseringsmotorn flaggar den här typen som väntande import för ytterligare bearbetning i metaversum.
 * **Uppdatera**. Synkroniseringsmotorn hittar ett motsvarande mellanlagrings objekt i anslutnings utrymmet och flaggar den här typen som väntande import så att uppdateringar av attributen kan bearbetas i metaversum. Uppdateringarna innehåller namnbyte för objekt.
-* **Ta bort**. Synkroniseringsmotorn hittar ett motsvarande mellanlagrings objekt i anslutnings utrymmet och flaggar den här typen som väntande import så att det anslutna objektet kan tas bort.
+* **Delete** (Ta bort). Synkroniseringsmotorn hittar ett motsvarande mellanlagrings objekt i anslutnings utrymmet och flaggar den här typen som väntande import så att det anslutna objektet kan tas bort.
 * **Ta bort/Lägg till**. Synkroniseringsmotorn hittar ett motsvarande mellanlagrings objekt i anslutnings utrymmet, men objekt typerna stämmer inte överens. I det här fallet mellanlagras en ändring av borttagnings tillägg. En borttagning – Lägg till-ändring anger till Synkroniseringsmotorn att en fullständig omsynkronisering av det här objektet måste inträffa på grund av att olika uppsättningar regler gäller för objektet när objekt typen ändras.
 
 Genom att ange status för väntande import för ett mellanlagringsplats är det möjligt att minska mängden data som bearbetas under synkroniseringen, eftersom det gör att systemet endast bearbetar de objekt som har uppdaterade data.

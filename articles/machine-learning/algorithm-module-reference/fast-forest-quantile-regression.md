@@ -1,6 +1,6 @@
 ---
 title: 'Snabb skog Quantile regression: modulreferens'
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure Machine Learning
 description: Lär dig hur du använder den snabba Quantile regression-modulen i skogar för att skapa en Regressions modell som kan förutsäga värden för ett angivet antal quantiles.
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907962"
 ---
 # <a name="fast-forest-quantile-regression"></a>Fast Forest Quantile Regression
@@ -36,14 +36,14 @@ Det finns många olika typer av regression. Bara genom att använda regression i
 
 Den enklaste definitionen av *quantile* är ett värde som delar upp en uppsättning data i grupper med samma storlek. Därför markerar quantile-värdena gränserna mellan grupper. Quantiles är värden som tas med jämna mellanrum från inversen av den kumulativa fördelnings funktionen (CDF) i en slumpmässig variabel.
 
-Med linjära Regressions modeller görs ett försök att förutsäga värdet för en numerisk variabel med en enda uppskattning, vilket *innebär*att du ibland måste förutsäga intervallet eller hela fördelningen av mål variabeln. Tekniker som Bayesian regression och quantile regression har utvecklats för detta ändamål.
+Med linjära Regressions modeller görs ett försök att förutsäga värdet för en numerisk variabel med en enda uppskattning, vilket *innebär* att du ibland måste förutsäga intervallet eller hela fördelningen av mål variabeln. Tekniker som Bayesian regression och quantile regression har utvecklats för detta ändamål.
 
 Quantile regression hjälper dig att förstå distributionen av det förväntade värdet. Tree-baserade quantile Regressions modeller, till exempel den som används i den här modulen, har den extra fördelen att de kan användas för att förutsäga icke-parameter distributioner.
 
   
 ## <a name="how-to-configure-fast-forest-quantile-regression"></a>Konfigurera en fast skog Quantile regression
 
-1. Lägg till den **snabbt Quantile regression** -modulen i din pipeline i designern. Du hittar den här modulen under **Machine Learning algoritmer**i **Regressions** kategorin.
+1. Lägg till den **snabbt Quantile regression** -modulen i din pipeline i designern. Du hittar den här modulen under **Machine Learning algoritmer** i **Regressions** kategorin.
 
 2. I den högra rutan i den **snabba skogen Quantile regression** -modulen anger du hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .  
   
@@ -63,7 +63,7 @@ Quantile regression hjälper dig att förstå distributionen av det förväntade
 
 7. **Delat bråk**, ange ett tal mellan 0 och 1 som representerar delar av de funktioner som ska användas i varje delning av trädet. De funktioner som används är alltid slumpmässigt markerade.
 
-8. **Quantiles som ska uppskattas**skriver du en semikolonavgränsad lista med de Quantiles som du vill att modellen ska träna och skapa förutsägelser för.
+8. **Quantiles som ska uppskattas** skriver du en semikolonavgränsad lista med de Quantiles som du vill att modellen ska träna och skapa förutsägelser för.
   
      Om du till exempel vill bygga en modell som uppskattar för kvartilen skriver du `0.25; 0.5; 0.75` .  
 
@@ -73,9 +73,9 @@ Quantile regression hjälper dig att förstå distributionen av det förväntade
 
 10. Anslut inlärnings data uppsättningen och den inte tränade modellen till någon av inlärnings modulerna: 
 
-    - Om du ställer in **skapa utbildare** för **en parameter**använder du modulen [träna modell](train-model.md) .
+    - Om du ställer in **skapa utbildare** för **en parameter** använder du modulen [träna modell](train-model.md) .
 
-    - Om du ställer in **skapa utbildare läge** till **parameter intervall**använder du modulen för att [finjustera modellens egenskaper](tune-model-hyperparameters.md) .
+    - Om du ställer in **skapa utbildare läge** till **parameter intervall** använder du modulen för att [finjustera modellens egenskaper](tune-model-hyperparameters.md) .
 
     > [!WARNING]
     > 

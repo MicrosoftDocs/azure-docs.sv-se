@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88654386"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrera ExpressRoute med haveri beredskap för virtuella Azure-datorer
@@ -28,7 +28,7 @@ Site Recovery möjliggör haveri beredskap för virtuella Azure-datorer genom at
 
 Med ExpressRoute kan du utöka lokala nätverk till Microsoft Azure molnet över en privat anslutning, vilket fören klar av en anslutnings leverantör. Om du har konfigurerat ExpressRoute integreras det med Site Recovery enligt följande:
 
-- **Vid replikering mellan Azure-regioner**är replikeringstrafik för haveri beredskap i Azure VM bara inom Azure och ExpressRoute behövs inte eller används för replikering. Men om du ansluter från en lokal plats till de virtuella Azure-datorerna på den primära Azure-platsen, finns det ett antal problem som du bör känna till när du konfigurerar haveri beredskap för de virtuella Azure-datorerna.
+- **Vid replikering mellan Azure-regioner** är replikeringstrafik för haveri beredskap i Azure VM bara inom Azure och ExpressRoute behövs inte eller används för replikering. Men om du ansluter från en lokal plats till de virtuella Azure-datorerna på den primära Azure-platsen, finns det ett antal problem som du bör känna till när du konfigurerar haveri beredskap för de virtuella Azure-datorerna.
 - **Redundans mellan Azure-regioner**: när avbrott uppstår växlar du över virtuella Azure-datorer från den primära till den sekundära Azure-regionen. Efter växling till en sekundär region finns det ett antal steg att vidta för att få åtkomst till de virtuella Azure-datorerna i den sekundära regionen med ExpressRoute.
 
 

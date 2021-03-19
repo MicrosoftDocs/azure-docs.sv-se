@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87019683"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect-synkronisering: Tekniska begrepp
@@ -34,13 +34,13 @@ När du bygger på MIIS (Microsoft Identity Integration Server), ILM (identitets
 
 I följande avsnitt finns mer information om följande aspekter av FIM-synkroniseringstjänsten:
 
-* Anslutningsprogram
+* Anslutning
 * Attributflöde
 * Kopplings utrymme
 * Metaversum
 * Etablering
 
-## <a name="connector"></a>Anslutningsprogram
+## <a name="connector"></a>Anslutning
 Kodmoduler som används för att kommunicera med en ansluten katalog kallas för kopplingar (tidigare kallade hanterings agenter (MAs)).
 
 De installeras på datorn som kör Azure AD Connect Sync. Anslutningarna ger agenten möjlighet att omvända med hjälp av fjärrsystemets protokoll i stället för att använda sig av distribution av specialiserade agenter. Detta innebär minskad risk och distributions tider, särskilt när du hanterar kritiska program och system.

@@ -6,73 +6,65 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e0ad6aeb6110d04d9c2a8ff5b3e30726d9de03f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490610"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656115"
 ---
-# <a name="chat-client-library-overview"></a>Översikt över klientbiblioteket för chatt
+# <a name="chat-client-library-overview"></a>Översikt över klientbiblioteket för chatt  
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
 Azure Communication Services Chat-klient bibliotek kan användas för att lägga till omfattande chatt i real tid till dina program.
+    
+## <a name="chat-client-library-capabilities"></a>Funktioner i chatt-klient bibliotek 
 
-## <a name="chat-client-library-capabilities"></a>Funktioner i chatt-klient bibliotek
+I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i kommunikations tjänstens klient bibliotek för kommunikations tjänster.  
 
-I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i kommunikations tjänstens klient bibliotek för kommunikations tjänster.
+| Grupp med funktioner | Funktion | JavaScript  | Java | .NET | Python | iOS | Android |
+|-----------------|-------------------|---|-----|----|-----|----|----|
+| Kärn funktioner | Skapa en chatt-tråd mellan två eller flera användare (upp till 250 användare)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+|                   | Uppdatera ämnet i en chatt-tråd                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Lägga till eller ta bort deltagare från en chatt-tråd                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Välj om du vill dela chatt meddelande historik med deltagaren som läggs till                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | Hämta en lista över deltagare i en chatt-tråd                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   | 
+|                   | Ta bort en chatt-tråd                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | Med en kommunikations användare får du en lista över chatt-trådar som användaren ingår i                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Hämta information om en viss chatt-tråd                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Skicka och ta emot meddelanden i en chatt-tråd                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Redigera innehållet i ett skickat meddelande                                                                                | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Ta bort ett meddelande                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Läs kvitton för meddelanden som har lästs av andra deltagare i en chatt <br/> *Inte tillgängligt när det finns fler än 20 deltagare i en chatt-tråd*    | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Få ett meddelande när deltagare aktivt skriver ett meddelande i en chatt-tråd <br/> *Inte tillgängligt när det finns fler än 20 medlemmar i en chatt-tråd*      | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Hämta alla meddelanden i en chatt-tråd <br/>                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Skicka Unicode-emojis som en del av meddelande innehållet                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|Real tids signalering (aktive rad av patentskyddat signal paket * *)|  Prenumerera för att få uppdateringar i real tid för inkommande meddelanden och andra åtgärder i chatt-appen. Om du vill se en lista över uppdateringar som stöds för real tids signalering, se [chatt-koncept](concepts.md#real-time-signaling)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  |    
+| Event Grid support             | Använd integration med Azure Event Grid och konfigurera kommunikations tjänsten att köra affärs logik baserat på Chat-aktivitet eller ansluta en anpassad Push Notification-tjänst   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+| Övervakning        | Använd Mät värdena för API-begäranden som släpps i Azure Portal för att skapa instrument paneler, övervaka hälso tillståndet för chatt-appen och ange aviseringar för att identifiera avvikelser      | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | Konfigurera kommunikations tjänst resursen för att ta emot chatt-operativa loggar för övervakning och diagnostik          | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 
-| Grupp med funktioner | Funktion                                                                                                          | JS  | Java | .NET | Python |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- | --- | ----- | ---- | -----  |
-| Kärn funktioner | Skapa en chatt-tråd mellan två eller flera användare (upp till 250 användare)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |
-|                   | Uppdatera ämnet i en chatt-tråd                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |
-|                   | Lägga till eller ta bort medlemmar från en chatt-tråd                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Välj om du vill dela chatt meddelande historik med nyligen tillagda medlemmar – *alla/inga/upp till en viss tid* | ✔️   | ✔️   | ✔️    | ✔️  |
-|                   | Hämta en lista över alla chatt-medlemmars trådar                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Ta bort en chatt-tråd                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Hämta en lista över en användares tråd medlemskap i chatten                                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Hämta information om en viss chatt-tråd                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Skicka och ta emot meddelanden i en chatt-tråd                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |
-|                   | Redigera innehållet i ett meddelande efter att det har skickats                                                                   | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Ta bort ett meddelande                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Tagga ett meddelande med prioritet som normal eller hög vid tidpunkten för sändning                                               | ✔️   | ✔️  | ✔️    | ✔️   |
-|                   | Skicka och ta emot Läs kvitton för meddelanden som har lästs av medlemmar <br/> *Inte tillgängligt när det finns fler än 20 medlemmar i en chatt-tråd*    | ✔️   | ✔️  | ✔️    | ✔️   |
-|                   | Skicka och ta emot Skriv meddelanden när en medlem aktivt skriver ett meddelande i en chatt-tråd <br/> *Inte tillgängligt när det finns fler än 20 medlemmar i en chatt-tråd*      | ✔️   | ✔️   | ✔️    | ✔️    |
-|                   | Hämta alla meddelanden i en chatt-tråd <br/> *Unicode-emojis stöds*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Skicka emojis som en del av meddelande innehållet                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Real tids signalering (aktive rad av patentskyddat signal paket * *)| Få ett meddelande när en användare får ett nytt meddelande i en chatt-tråd som de är medlem i                                     | ✔️   | ❌    | ❌  | ❌  |
-|                    | Få ett meddelande när ett meddelande har redigerats av en annan medlem i en chatt-tråd som de är medlem i                | ✔️   | ❌    | ❌    | ❌  |
-|                    | Få ett meddelande när ett meddelande har tagits bort av en annan medlem i en chatt-tråd som de är medlem i                | ✔️   | ❌    | ❌    | ❌  |
-|                    | Få ett meddelande när en annan Chat-tråd medlem skriver                                                             | ✔️   | ❌    | ❌    | ❌  |
-|                    | Få ett meddelande när en annan medlem har läst ett meddelande (Läs kvitto) i Chat-tråden                               | ✔️   | ❌    | ❌    | ❌  |
-| Händelser             | Använd Event Grid för att prenumerera på användar aktivitet i Chat-trådar och integrera anpassade meddelande tjänster eller affärs logik     | ✔️   | ✔️  | ✔️    | ✔️  |
-| Övervakning        | Övervaka användning avseende meddelanden som skickas                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
-|                    | Övervaka kvalitet och status för API-begäranden som görs av din app och konfigurera aviseringar via portalen                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
-|Ytterligare funktioner | Använd [API:er för Cognitive Services](../../../cognitive-services/index.yml) tillsammans med klient biblioteket i Chat för att aktivera intelligenta funktioner – *språk översättning & sentiment analys av det inkommande meddelandet på en klient, tal till text konvertering för att skapa ett meddelande när medlemmen pratar, osv.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 
-* * Det tillverkarspecifika signal paketet implementeras med hjälp av Web Sockets. Det kommer att återgå till lång avsökning om Web Sockets inte stöds.
+* * Det tillverkarspecifika signal paketet implementeras med hjälp av Web Sockets. Det kommer att återgå till lång avsökning om Web Sockets inte stöds.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Java Script Chat-klient bibliotek stöd av OS och webbläsare
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Java Script Chat-klient bibliotek stöd av OS och webbläsare 
 
 Följande tabell visar en uppsättning webbläsare och versioner som stöds och som är tillgängliga för tillfället.
-
+    
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+|--------------------------------|----------------|--------------|-------|------|------|------|-------|
 | **Klient bibliotek för chat** | Firefox *, Chrome*, ny kant | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
 
+* Observera att den senaste versionen stöds utöver de tidigare två versionerna.<br/>   
 
-* Observera att den senaste versionen stöds utöver de tidigare två versionerna.<br/>
+## <a name="next-steps"></a>Nästa steg   
 
-## <a name="next-steps"></a>Nästa steg
+> [!div class="nextstepaction"] 
+> [Kom igång med chatt](../../quickstarts/chat/get-started.md)    
 
-> [!div class="nextstepaction"]
-> [Kom igång med chatt](../../quickstarts/chat/get-started.md)
-
-Följande dokument kan vara intressanta för dig:
-
+Följande dokument kan vara intressanta för dig:  
 - Bekanta dig med [chatt-koncept](../chat/concepts.md)

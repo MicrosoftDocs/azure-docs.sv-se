@@ -4,10 +4,10 @@ description: Lär dig hur du använder Azure Portal för att säkerhetskopiera A
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88890356"
 ---
 # <a name="back-up-azure-file-shares"></a>Säkerhetskopiera Azure-filresurser
@@ -51,7 +51,7 @@ Följande steg beskriver hur du kan konfigurera säkerhets kopiering för flera 
 
           ![Välj säkerhets kopiering för att associera Azure-filresursen med valvet](./media/backup-afs/register-extension.png)
 
-1. När du har valt **säkerhets kopiering**öppnas fönstret **säkerhets kopiering** . Välj det lagrings konto som är värd för den fil resurs som du vill skydda genom att välja länken **Välj** länk under text rutan **lagrings konto** .
+1. När du har valt **säkerhets kopiering** öppnas fönstret **säkerhets kopiering** . Välj det lagrings konto som är värd för den fil resurs som du vill skydda genom att välja länken **Välj** länk under text rutan **lagrings konto** .
 
    ![Välj länken Välj](./media/backup-afs/choose-select-link.png)
 
@@ -74,7 +74,7 @@ Följande steg beskriver hur du kan konfigurera säkerhets kopiering för flera 
 1. Du kan välja en säkerhets kopierings princip för fil resursen med tre alternativ:
 
    * Välj standard principen.<br>
-   Med det här alternativet kan du aktivera daglig säkerhets kopiering som ska behållas i 30 dagar. Om du inte har en befintlig säkerhets kopierings princip i valvet öppnas säkerhets kopierings fönstret med standard princip inställningarna. Om du vill välja standardinställningar kan du välja **Aktivera säkerhets kopiering**direkt.
+   Med det här alternativet kan du aktivera daglig säkerhets kopiering som ska behållas i 30 dagar. Om du inte har en befintlig säkerhets kopierings princip i valvet öppnas säkerhets kopierings fönstret med standard princip inställningarna. Om du vill välja standardinställningar kan du välja **Aktivera säkerhets kopiering** direkt.
 
    * Skapa en ny policy <br>
 
@@ -174,7 +174,7 @@ Ibland kanske du vill skapa en ögonblicks bild av en säkerhets kopia eller åt
 
    ![Välj säkerhets kopierings objekt](./media/backup-afs/backup-items.png)
 
-1. När du har valt **säkerhets kopierings objekt**visas ett nytt fönster med en lista med alla **typer av säkerhets kopierings hantering** bredvid **översikts** fönstret.
+1. När du har valt **säkerhets kopierings objekt** visas ett nytt fönster med en lista med alla **typer av säkerhets kopierings hantering** bredvid **översikts** fönstret.
 
    ![Lista över säkerhets kopierings hanterings typer](./media/backup-afs/backup-management-types.png)
 
@@ -192,7 +192,7 @@ Ibland kanske du vill skapa en ögonblicks bild av en säkerhets kopia eller åt
 
 1. Välj **OK** för att bekräfta säkerhets kopierings jobbet på begäran som körs.
 
-1. Övervaka Portal meddelanden för att hålla reda på hur du slutför körningen av säkerhets kopierings jobb. Du kan övervaka jobb förloppet i valv-instrumentpanelen. Välj **pågående säkerhets kopierings jobb**  >  **In progress**.
+1. Övervaka Portal meddelanden för att hålla reda på hur du slutför körningen av säkerhets kopierings jobb. Du kan övervaka jobb förloppet i valv-instrumentpanelen. Välj **pågående säkerhets kopierings jobb**  >  .
 
 ### <a name="from-the-file-share-pane"></a>Från rutan fil resurs
 

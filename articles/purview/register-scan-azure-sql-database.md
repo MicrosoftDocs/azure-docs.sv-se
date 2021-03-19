@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 11ce7b3da0d33fbe7f1229cbc00246da00858ec5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a708f0c1884073a2f2ea73092d25006415c59d5f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598226"
+ms.locfileid: "104655231"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrera och skanna en Azure SQL Database
 
@@ -157,8 +157,8 @@ Gör följande på skärmen **Registrera källor (Azure SQL Database)** :
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 > [!NOTE]
-> Om du tar bort din sökning raderas inte dina till gångar från tidigare Azure SQL Database genomsökningar.
-> Till gången kommer inte längre att uppdateras med schema ändringar om din käll tabell ändras och skannar om käll tabellen när du har redigerat beskrivningen på fliken schema i avdelningens kontroll.
+> * Om du tar bort din sökning raderas inte dina till gångar från tidigare Azure SQL Database genomsökningar.
+> * Till gången kommer inte längre att uppdateras med schema ändringar om din käll tabell ändras och skannar om käll tabellen när du har redigerat beskrivningen på fliken schema i avdelningens kontroll.
 
 ## <a name="next-steps"></a>Nästa steg
 

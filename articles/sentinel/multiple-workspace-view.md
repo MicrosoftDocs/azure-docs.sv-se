@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83124199"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Arbeta med incidenter i flera arbets ytor samtidigt 
@@ -40,17 +40,17 @@ Observera att du kan se katalogen, prenumerationen, platsen och resurs gruppen s
 
 ## <a name="working-with-incidents"></a>Arbeta med incidenter
 
-I **vyn flera arbets ytor**är endast fönstret **incidenter** tillgängligt för tillfället. Den ser ut och fungerar på de flesta sätt som skärmen vanliga **incidenter** . Det finns några viktiga skillnader, men:
+I **vyn flera arbets ytor** är endast fönstret **incidenter** tillgängligt för tillfället. Den ser ut och fungerar på de flesta sätt som skärmen vanliga **incidenter** . Det finns några viktiga skillnader, men:
 
    ![Visa incidenter i flera arbets ytor](./media/multiple-workspace-view/incidents.png)
 
-- Räknarna överst i de *Öppna incidenterna*, *nya incidenter*, *pågår*osv. – visar numren för alla valda arbets ytor gemensamt.
+- Räknarna överst i de *Öppna incidenterna*, *nya incidenter*, *pågår* osv. – visar numren för alla valda arbets ytor gemensamt.
 
 - Du ser incidenter från alla valda arbets ytor och kataloger (klienter) i en enda enhetlig lista. Du kan filtrera listan efter arbets yta och katalog, förutom filter från skärmen vanliga **incidenter** .
 
 - Du måste ha läs-och Skriv behörighet för alla arbets ytor som du har valt incidenter från. Om du bara har Läs behörighet på vissa arbets ytor visas varnings meddelanden om du väljer incidenter på dessa arbets ytor. Du kan inte ändra dessa incidenter eller andra som du har valt tillsammans med dem (även om du har behörighet för de andra).
 
-- Om du väljer en enda incident och klickar på **Visa fullständig information** eller **Undersök**kommer du från sedan att finnas i data kontexten för den incidentens arbets yta och inga andra.
+- Om du väljer en enda incident och klickar på **Visa fullständig information** eller **Undersök** kommer du från sedan att finnas i data kontexten för den incidentens arbets yta och inga andra.
 
 ## <a name="next-steps"></a>Nästa steg
 I det här dokumentet har du lärt dig hur du visar och arbetar med incidenter i flera Azure Sentinel-arbetsytor samtidigt. Mer information om Azure Sentinel finns i följande artiklar:

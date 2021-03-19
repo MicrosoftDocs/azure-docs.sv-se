@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371842"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Lägg till eller ta bort grupp medlemmar med Azure Active Directory
@@ -27,7 +27,7 @@ Med hjälp av Azure Active Directory kan du fortsätta att lägga till och ta bo
 
 1. Logga in på [Azure-portalen](https://portal.azure.com) med ett Globalt administratörskonto för katalogen.
 
-2. Välj **Azure Active Directory**och välj sedan **grupper**.
+2. Välj **Azure Active Directory** och välj sedan **grupper**.
 
 3. Från sidan **grupper – alla grupper** söker du efter och väljer den grupp som du vill lägga till medlemmen i. I det här fallet använder du vår tidigare skapade grupp, **MDM-princip – väst**.
 
@@ -37,7 +37,7 @@ Med hjälp av Azure Active Directory kan du fortsätta att lägga till och ta bo
 
     ![MDM-princip – västra översikts sida med alternativet medlemmar markerat](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. Välj **Lägg till medlemmar**och Sök sedan efter och välj var och en av de medlemmar som du vill lägga till i gruppen. Välj sedan **Välj**.
+5. Välj **Lägg till medlemmar** och Sök sedan efter och välj var och en av de medlemmar som du vill lägga till i gruppen. Välj sedan **Välj**.
 
     Du får ett meddelande som säger att medlemmarna har lagts till.
 

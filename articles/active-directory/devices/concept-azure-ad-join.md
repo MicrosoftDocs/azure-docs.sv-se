@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601460"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-anslutna enheter
@@ -34,7 +34,7 @@ Azure AD Join är avsett för organisationer som bara vill vara molnbaserade ell
 |   | Massregistrering |
 |   | Windows Autopilot |
 | **Alternativ för enhets inloggning** | Organisations konton med: |
-|   | lösenordsinställning |
+|   | Lösenord |
 |   | Windows Hello för företag |
 |   | FIDO 2.0-säkerhets nycklar (för hands version) |
 | **Enhetshantering** | Hantering av mobila enheter (exempel: Microsoft Intune) |

@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91762508"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Anropa logikappar från Power Automate och Power Apps
@@ -42,7 +42,7 @@ Innan du kan anropa din Logi Kap par från Power-eller Power Apps-appar måste d
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Skriv i rutan Azure Portal Sök `Logic Apps` . I resultaten under **tjänster**väljer du **Logic Apps**.
+1. Skriv i rutan Azure Portal Sök `Logic Apps` . I resultaten under **tjänster** väljer du **Logic Apps**.
 
 1. Välj den Logic-app som du vill exportera.
 
@@ -52,7 +52,7 @@ Innan du kan anropa din Logi Kap par från Power-eller Power Apps-appar måste d
 
 1. I rutan **Exportera** anger du ett namn för det anpassade anslutnings programmet till din Logic app i **namn**. I listan **miljö** väljer du den Energis par-eller Power Apps-miljö som du vill anropa din Logic app från. När du är klar väljer du **Ok**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Skärm bild av sidan för logi Kap par i Azure Portal, som visar menyn med knappen Exportera markerad.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Skärm bild av export fönstret för Logic app, som visar obligatoriska fält för namn och miljö för anpassade anslutningar.":::
 
 1. Kontrol lera att din Logic app har exporter ATS genom att kontrol lera aviserings fönstret.
 
@@ -70,7 +70,7 @@ Så här ansluter du till den Logic-app som du har exporterat med ditt energi au
 
 1. Logga in för att [Automatisera energi](https://flow.microsoft.com).
 
-1. Välj **mina flöden**på menyn Start sida för **Automatisk** start.
+1. Välj **mina flöden** på menyn Start sida för **Automatisk** start.
 
 1. På sidan **flöden** väljer du det flöde som du vill ansluta till din Logic app.
 
@@ -78,15 +78,15 @@ Så här ansluter du till den Logic-app som du har exporterat med ditt energi au
 
 1. I flödes redigeraren väljer du **&#43; nytt steg**.
 
-1. Under **Välj en åtgärd**i sökrutan anger du namnet på din Logic app Connector. Om du vill visa enbart de anpassade anslutningarna i din miljö filtrerar du resultaten genom att välja fliken **anpassad** .
+1. Under **Välj en åtgärd** i sökrutan anger du namnet på din Logic app Connector. Om du vill visa enbart de anpassade anslutningarna i din miljö filtrerar du resultaten genom att välja fliken **anpassad** .
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Skärm bild av sidan för logi Kap par i Azure Portal, som visar menyn med knappen Exportera markerad.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Skärm bild av Powerally Flow Editor som visar ett nytt steg som läggs till för det anpassade anslutnings programmet och tillgängliga åtgärder.":::
 
 1. Välj den åtgärd som du vill vidta med din Logic app-anslutning. 
 
 1. Ange den information som åtgärden skickar till Logic app Connector.
 
-1. Spara ändringarna genom att välja **Spara**på menyn Power autoredigerare.
+1. Spara ändringarna genom att välja **Spara** på menyn Power autoredigerare.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
@@ -98,11 +98,11 @@ Så här ansluter du till den Logic-app som du har exporterat med ditt energi au
 
 1. Logga in för att [Automatisera energi](https://flow.microsoft.com).
 
-1. På Start sidan för **Automatisk** Start, väljer du **Data** &gt; **anpassade anslutningar** för data på menyn.
+1. På Start sidan för **Automatisk** Start, väljer du  &gt; **anpassade anslutningar** för data på menyn.
 
 1. Leta upp ditt anpassade anslutnings program i listan och välj ellipserna (**...**) knappen &gt; **ta bort**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Skärm bild av sidan för logi Kap par i Azure Portal, som visar menyn med knappen Exportera markerad.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Skärm bild av sidan anpassade anslutnings anslutningar med logi Kap par knappar för hantering av anpassade anslutningar.":::
 
 1. Bekräfta borttagningen genom att välja **OK**.
 
@@ -122,7 +122,7 @@ Så här ansluter du till den Logic-app som du har exporterat med Power Apps-fl�
 
 1. Under **Välj en åtgärd** i det nya steget anger du namnet på din Logic app Connector i sökrutan. Du kan också filtrera resultaten på fliken **anpassad** om du bara vill se anpassade anslutningar i din miljö.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Skärm bild av sidan för logi Kap par i Azure Portal, som visar menyn med knappen Exportera markerad.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Skärm bild av flödes redigeraren för Power Apps, med ett nytt steg som läggs till för den anpassade anslutningen och tillgängliga åtgärder.":::
 
 1. Välj den åtgärd som du vill vidta med anslutningen. 
 
@@ -144,7 +144,7 @@ Så här ansluter du till den Logic-app som du har exporterat med Power Apps-fl�
 
 1. Leta upp ditt anpassade anslutnings program i listan och välj ellipserna (**...**) knappen &gt; **ta bort**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Skärm bild av sidan för logi Kap par i Azure Portal, som visar menyn med knappen Exportera markerad.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Skärm bild av sidan för Power Apps-anpassade anslutningar, som visar Logi Kap par knappar för hantering av anpassade anslutningar.":::
 
 1. Bekräfta borttagningen genom att välja **OK**.
 

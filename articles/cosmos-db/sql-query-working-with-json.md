@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
 ms.openlocfilehash: 9a9300db1adc3ff238c44887012400702690b0e8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93337837"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Arbeta med JSON i Azure Cosmos DB
@@ -306,5 +306,5 @@ Här är ett exempel:
 ## <a name="next-steps"></a>Nästa steg
 
 - [Komma igång](sql-query-getting-started.md)
-- [SELECT-satsen](sql-query-select.md)
+- [SELECT-sats](sql-query-select.md)
 - [WHERE-satsen](sql-query-where.md)

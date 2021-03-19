@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342424"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Distribuera vFXT-klustret
 
-Den här proceduren vägleder dig genom att använda distributions guiden som finns på Azure Marketplace. Guiden distribuerar automatiskt klustret med hjälp av en Azure Resource Manager mall. När du har angett parametrarna i formuläret och klickar på **skapa**slutförs automatiskt följande uppgifter i Azure:
+Den här proceduren vägleder dig genom att använda distributions guiden som finns på Azure Marketplace. Guiden distribuerar automatiskt klustret med hjälp av en Azure Resource Manager mall. När du har angett parametrarna i formuläret och klickar på **skapa** slutförs automatiskt följande uppgifter i Azure:
 
 * Skapar kluster styrenheten, som är en grundläggande virtuell dator som innehåller den program vara som krävs för att distribuera och hantera klustret.
 * Konfigurerar resurs grupp och virtuell nätverks infrastruktur, inklusive att skapa nya element.
@@ -147,7 +147,7 @@ Så här hittar du informationen:
 
 1. Gå till resurs gruppen för kluster styrenheten.
 
-1. På vänster sida klickar du på **distributioner**och sedan **Microsoft-AVERT. vfxt-Template**.
+1. På vänster sida klickar du på **distributioner** och sedan **Microsoft-AVERT. vfxt-Template**.
 
    ![Sidan resurs grupp Portal med distributioner markerat till vänster och Microsoft-AVERT. vfxt – mall som visas i en tabell under distributions namn](media/avere-vfxt-outputs-deployments.png)
 

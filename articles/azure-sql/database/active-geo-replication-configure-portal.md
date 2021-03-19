@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673264"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Självstudie: Konfigurera aktiv geo-replikering och redundans i Azure Portal (Azure SQL Database)
@@ -70,8 +70,8 @@ När den sekundära har skapats och dirigerats påbörjar data replikeringen fr�
 Den sekundära databasen kan växlas till den primära.  
 
 1. I [Azure Portal](https://portal.azure.com)bläddrar du till den primära databasen i partnerskapet för geo-replikering.
-2. På bladet SQL Database väljer du **alla inställningar**  >  **geo-replikering** .
-3. I listan **sekundära** väljer du den databas som du vill bli den nya primära och klickar på **Framtvinga redundans** .
+2. På bladet SQL Database väljer du **alla inställningar**  >  **geo-replikering**.
+3. I listan **sekundära** väljer du den databas som du vill bli den nya primära och klickar på **Framtvinga redundans**.
 
     ![redundans](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Klicka på **Ja** för att starta redundansväxlingen.
@@ -88,9 +88,9 @@ Det finns en kort period under vilken båda databaserna inte är tillgängliga (
 Den här åtgärden avslutar replikeringen till den sekundära databasen permanent och ändrar rollen för den sekundära till en vanlig Läs-och skriv databas. Om anslutningen till den sekundära databasen bryts, lyckas kommandot men den sekundära blir inte skrivskyddad förrän anslutningen har återställts.  
 
 1. I [Azure Portal](https://portal.azure.com)bläddrar du till den primära databasen i partnerskapet för geo-replikering.
-2. På SQL Database-sidan väljer du **geo-replikering** .
+2. På SQL Database-sidan väljer du **geo-replikering**.
 3. I listan **sekundära** väljer du den databas som du vill ta bort från partnerskapet för geo-replikering.
-4. Klicka på **stoppa replikering** .
+4. Klicka på **stoppa replikering**.
 
     ![Ta bort sekundär](./media/active-geo-replication-configure-portal/remove-secondary.png)
 5. Ett bekräftelse fönster öppnas. Klicka på **Ja** om du vill ta bort databasen från partnerskapet för geo-replikering. (Ange den som en skrivskyddad databas som inte tillhör någon replikering.)

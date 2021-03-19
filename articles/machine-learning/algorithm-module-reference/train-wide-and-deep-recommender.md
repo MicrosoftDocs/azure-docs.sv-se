@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: ce713167272c9e97754fdf6f6d065519aaea3d15
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d7dd7105ddb0d6503faefb996b84c0e53a62ce49
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421183"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655384"
 ---
 # <a name="train-wide--deep-recommender"></a>Träna bred & djup rekommendation
 Den här artikeln beskriver hur du använder modulen **träna Wide & djup rekommenderar** i Azure Machine Learning designer för att träna en rekommendations modell. Den här modulen baseras på bred & djup inlärning, som föreslås av Google.
@@ -28,7 +28,7 @@ Det huvudsakliga syftet med ett rekommendations system är att rekommendera ett 
 Det finns två huvudsakliga metoder för rekommenderade system. 
 
 + Den första är den **innehållsbaserade** metoden, som använder funktioner för både användare och objekt. Användare kan beskrivas av egenskaper som ålder och kön, och objekt kan beskrivas av egenskaper som författare och tillverkare. Vanliga exempel på innehållsbaserade rekommendations system finns på sociala matchmaking-webbplatser. 
-+ Den andra metoden är samordnad **filtrering** , som endast använder identifierare för användarna och objekten och hämtar implicit information om dessa entiteter från en (sparse) mat ris av klassificeringar som ges av användarna till objekten. Vi kan lära dig om en användare från de objekt som de har klassificerat och från andra användare som har betygsatt samma objekt.  
++ Den andra metoden är samordnad **filtrering**, som endast använder identifierare för användarna och objekten och hämtar implicit information om dessa entiteter från en (sparse) mat ris av klassificeringar som ges av användarna till objekten. Vi kan lära dig om en användare från de objekt som de har klassificerat och från andra användare som har betygsatt samma objekt.  
 
 Den breda & djup rekommenderarare kombinerar dessa metoder med hjälp av samarbetes filtrering med en innehålls baserad metod. Det anses därför vara en **hybrid-rekommendation**. 
 
@@ -66,7 +66,7 @@ Data uppsättningen för **användar funktioner** måste innehålla identifierar
 
 En typisk uppsättning användar funktioner kan till exempel se ut så här: 
 
-|UserId|Ålder|Kön|Intressanta|Plats|
+|UserId|Ålder|Kön|Intressanta|Location|
 |------------|--------------|-----------------------|---------------|------------|
 |1|25|man| Drama    |Europa|
 |223|40|kvinna|Madrid|Asien|
@@ -88,54 +88,58 @@ Ett exempel på en typisk uppsättning objekt funktioner kan se ut så här:
   
 2. Om du har en separat data uppsättning för antingen användar funktioner och/eller objekt funktioner, kan du ansluta dem till modulen **träna bred och djup rekommenderar** .  
   
-    - **Data uppsättning för användar funktioner** : Anslut den data uppsättning som beskriver användare till den andra indatan.
-    - **Data uppsättning för objekt funktioner** : Anslut data uppsättningen som beskriver objekt till den tredje indatan.  
+    - **Data uppsättning för användar funktioner**: Anslut den data uppsättning som beskriver användare till den andra indatan.
+    - **Data uppsättning för objekt funktioner**: Anslut data uppsättningen som beskriver objekt till den tredje indatan.  
     
-3.  **Epoker** : Ange hur många gånger algoritmen ska bearbeta hela tränings data. 
+3.  **Epoker**: Ange hur många gånger algoritmen ska bearbeta hela tränings data. 
 
     Ju högre siffra, desto mer adekvat träning. men utbildningar kostar mer tid och kan leda till överanpassning.
 
-4. **Batchstorlek** : Ange antalet inlärnings exempel som används i ett övnings steg. 
+4. **Batchstorlek**: Ange antalet inlärnings exempel som används i ett övnings steg. 
 
      Den här parametern kan påverka inlärnings hastigheten. En högre batch-storlek leder till en mindre kostnads period, men kan öka konvergens tiden. Om batch är för stor för att rymma GPU/CPU kan ett minnes fel uppstå.
 
-5.  **Bred del optimering** : Välj en optimering för att applicera övertoningar på den breda delen av modellen.
+5.  **Bred del optimering**: Välj en optimering för att applicera övertoningar på den breda delen av modellen.
 
-6.  **Bred optimerings inlärnings takt** : Ange ett tal mellan 0,0 och 2,0 som definierar inlärnings graden för bred dels optimering.
+6.  **Bred optimerings inlärnings takt**: Ange ett tal mellan 0,0 och 2,0 som definierar inlärnings graden för bred dels optimering.
 
     Den här parametern avgör steg storleken i varje övnings steg samtidigt som den flyttas till en minimum av förlust funktionen. En för stor inlärnings takt kan orsaka att inlärningen hoppar över minimi, medan en för liten inlärnings takt kan orsaka konvergens problem.
 
-7.  **Korsad funktions dimension** : Ange dimensionen genom att ange önskade användar-ID och objekt-ID-funktioner. 
+7.  **Korsad funktions dimension**: Ange dimensionen genom att ange önskade användar-ID och objekt-ID-funktioner. 
 
     Den breda & djup rekommenderarre utför kors produkt Transformation över användar-ID och objekt-ID-funktioner som standard. Det korsade resultatet kommer att hashas enligt detta nummer för att säkerställa att dimensionen.
 
-8.  **Djup del optimering** : Välj en optimering för att applicera övertoningar på den djupgående delen av modellen.
+8.  **Djup del optimering**: Välj en optimering för att applicera övertoningar på den djupgående delen av modellen.
 
-9.  **Inlärnings takt för djup optimering** : Ange ett tal mellan 0,0 och 2,0 som definierar inlärnings graden för optimering av djup del.
+9.  **Inlärnings takt för djup optimering**: Ange ett tal mellan 0,0 och 2,0 som definierar inlärnings graden för optimering av djup del.
 
-10.  **Användar inbäddnings dimension** : Ange ett heltal för att ange dimension för inbäddning av användar-ID.
+10.  **Användar inbäddnings dimension**: Ange ett heltal för att ange dimension för inbäddning av användar-ID.
 
      Den breda & djup rekommenderarare skapar inbäddningar av delade användar-ID och objekt-ID för både bred och djup del.
 
-11.  **Objekt inbäddnings dimension** : Ange ett heltal för att ange dimension för objekt-ID-inbäddning.
+11.  **Objekt inbäddnings dimension**: Ange ett heltal för att ange dimension för objekt-ID-inbäddning.
 
-12.  **Kategoriska features inbäddnings dimension** : Ange ett heltal för att ange dimensionerna för kategoriska funktions inbäddningar.
+12.  **Kategoriska features inbäddnings dimension**: Ange ett heltal för att ange dimensionerna för kategoriska funktions inbäddningar.
 
      I en djup komponent i wide & djupgående rekommenderar vi att du har en inbäddad Vector för varje kategoriska-funktion. Och dessa inbäddnings vektorer delar samma dimension.
 
-13.  **Dolda enheter** : Ange antalet dolda noder i djup komponenten. Nodernas nummer i varje skikt avgränsas med kommatecken. Genom att skriva "1 000 500 100" kan du till exempel ange att djup komponenten har tre lager, med det första skiktet, de sista har 1000 noder, 500 noder och 100 noder.
+13.  **Dolda enheter**: Ange antalet dolda noder i djup komponenten. Nodernas nummer i varje skikt avgränsas med kommatecken. Genom att skriva "1 000 500 100" kan du till exempel ange att djup komponenten har tre lager, med det första skiktet, de sista har 1000 noder, 500 noder och 100 noder.
 
-14.  **Aktiverings funktion** : Välj en aktiverings funktion som tillämpas på varje skikt. standardvärdet är ReLU.
+14.  **Aktiverings funktion**: Välj en aktiverings funktion som tillämpas på varje skikt. standardvärdet är ReLU.
 
-15.  **Dropout** : Ange ett tal mellan 0,0 och 1,0 för att fastställa sannolikheten för att utdata ska släppas i varje lager under träningen.
+15.  **Dropout**: Ange ett tal mellan 0,0 och 1,0 för att fastställa sannolikheten för att utdata ska släppas i varje lager under träningen.
 
      Dropout är en regulariseringshastigheten-metod för att förhindra att neurala-nätverk översätts. Ett vanligt beslut för det här värdet är att börja med 0,5, vilket förefaller vara nära optimalt för ett brett utbud av nätverk och uppgifter.
 
-16.  **Batch-normalisering** : Välj det här alternativet om du vill använda batch-normalisering efter varje dolt lager i djup komponenten.
+16.  **Batch-normalisering**: Välj det här alternativet om du vill använda batch-normalisering efter varje dolt lager i djup komponenten.
 
      Batch-normalisering är en teknik för att bekämpa internt covariate-problem under nätverkets utbildning. I allmänhet kan den hjälpa till att förbättra nätverkets hastighet, prestanda och stabilitet. 
 
 17.  Köra en pipeline.
+
+## <a name="results"></a>Resultat
+
+När pipeline-körningen har slutförts ska du använda modellen för att göra en bedömning av den [tränade och djupgående rekommendationen](train-wide-and-deep-recommender.md) för att få en [bred och djup rekommendation](score-wide-and-deep-recommender.md), för att förutsäga värden för nya exempel på ingångar.
 
 ##  <a name="technical-notes"></a>Tekniska anteckningar
 

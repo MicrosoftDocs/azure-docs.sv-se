@@ -4,10 +4,10 @@ description: 'Snabb start: den här artikeln innehåller information om hur du t
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87087585"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Snabb start: ta emot händelser från Event Hubs med Apache Storm
@@ -30,13 +30,13 @@ I den här självstudien används en [HDInsight Storm][HDInsight Storm] -install
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Skapa ett nytt Maven-projekt i Sol förmörkelse (klicka på **Arkiv**, sedan på **nytt**och sedan på **projekt**).
+4. Skapa ett nytt Maven-projekt i Sol förmörkelse (klicka på **Arkiv**, sedan på **nytt** och sedan på **projekt**).
    
     ![Fil-> projekt med ny >][12]
-5. Välj **Använd standard plats för arbets yta**och klicka sedan på **Nästa**
+5. Välj **Använd standard plats för arbets yta** och klicka sedan på **Nästa**
 6. Välj **maven-archetype-snabb start** archetype och klicka sedan på **Nästa**
-7. Infoga ett **GroupId** **ArtifactId**och klicka sedan på **Slutför**
-8. I **pom.xml**lägger du till följande beroenden i `<dependency>` noden.
+7. Infoga ett  **ArtifactId** och klicka sedan på **Slutför**
+8. I **pom.xml** lägger du till följande beroenden i `<dependency>` noden.
 
     ```xml  
     <dependency>
@@ -234,7 +234,7 @@ I den här självstudien används en [HDInsight Storm][HDInsight Storm] -install
 Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
 
 * [Översikt över Event Hubs][Event Hubs overview]
-* [Skapa en händelsehubb](event-hubs-create.md)
+* [Skapa en händelsehubben](event-hubs-create.md)
 * [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)
 
 <!-- Links -->

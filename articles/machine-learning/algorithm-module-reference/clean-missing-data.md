@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898824"
 ---
 # <a name="clean-missing-data-module"></a>Rensa data modul som saknas
@@ -52,13 +52,13 @@ Varje gången du använder modulen  [Rensa data som saknas](./clean-missing-data
 
 1.  Lägg till modulen [Rensa data som saknas](./clean-missing-data.md) i pipelinen och Anslut den data uppsättning som saknar värden.  
   
-2.  För **kolumner som ska rensas**väljer du de kolumner som innehåller de saknade värden som du vill ändra. Du kan välja flera kolumner, men du måste använda samma ersättnings metod i alla valda kolumner. Därför behöver du vanligt vis rensa sträng kolumner och numeriska kolumner separat.
+2.  För **kolumner som ska rensas** väljer du de kolumner som innehåller de saknade värden som du vill ändra. Du kan välja flera kolumner, men du måste använda samma ersättnings metod i alla valda kolumner. Därför behöver du vanligt vis rensa sträng kolumner och numeriska kolumner separat.
 
     Om du till exempel vill söka efter saknade värden i alla numeriska kolumner:
 
     1. Välj modulen **Rensa data som saknas** och klicka på **Redigera kolumn** i den högra panelen i modulen.
 
-    3. För **Inkludera**väljer du **kolumn typer** i list rutan och väljer sedan **numerisk**. 
+    3. För **Inkludera** väljer du **kolumn typer** i list rutan och väljer sedan **numerisk**. 
   
     Eventuella rensnings-eller ersättnings metoder som du väljer måste vara tillämpliga på **alla** kolumner i markeringen. Om data i en kolumn inte är kompatibla med den angivna åtgärden returnerar modulen ett fel och stoppar pipelinen.
   
@@ -81,7 +81,7 @@ Varje gången du använder modulen  [Rensa data som saknas](./clean-missing-data
   
    
   
-5. För **rengörings läge**väljer du något av följande alternativ för att ersätta eller ta bort värden som saknas:  
+5. För **rengörings läge** väljer du något av följande alternativ för att ersätta eller ta bort värden som saknas:  
   
   
     + **Anpassat ersättnings värde**: Använd det här alternativet för att ange ett plats hållarens värde (t. ex. 0 eller na) som gäller för alla saknade värden. Det värde som du anger som ersättning måste vara kompatibelt med data typen för kolumnen.

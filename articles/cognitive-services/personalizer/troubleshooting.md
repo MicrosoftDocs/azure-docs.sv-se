@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777283"
 ---
 # <a name="personalizer-troubleshooting"></a>Fel sökning av personanpassa
@@ -66,7 +66,7 @@ När den nya uppdaterings perioden börjar används den uppdaterade modellen och
 
 ### <a name="how-do-i-know-that-the-learning-loop-is-getting-updated-regularly-and-is-used-to-score-my-data"></a>Hur gör jag för att vet du att inlärnings slingan uppdateras regelbundet och används för att räkna data?
 
-Du hittar tiden då modellen senast uppdaterades på sidan **modell-och inlärnings inställningar** i Azure Portal. Om du ser en gammal tidsstämpel är det troligt att du inte skickar rang-och belönings samtal. Om tjänsten inte har några inkommande data uppdateras inte inlärningen. Om inlärnings-slingan inte uppdateras tillräckligt ofta kan du redigera **uppdaterings frekvensen**för loopen.
+Du hittar tiden då modellen senast uppdaterades på sidan **modell-och inlärnings inställningar** i Azure Portal. Om du ser en gammal tidsstämpel är det troligt att du inte skickar rang-och belönings samtal. Om tjänsten inte har några inkommande data uppdateras inte inlärningen. Om inlärnings-slingan inte uppdateras tillräckligt ofta kan du redigera **uppdaterings frekvensen** för loopen.
 
 ## <a name="offline-evaluations"></a>Offlineutvärderingar
 

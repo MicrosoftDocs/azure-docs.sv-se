@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88261913"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Säkerhetskopiera Windows Server till Azure
@@ -114,7 +114,7 @@ Du använder Microsoft Azure Recovery Services-agenten för att schemalägga nä
 
 8. Välj på samma sätt säkerhetskopieringsschema och kvarhållningsprincip för valda filer och mappar.
 
-9. På sidan **Välj första säkerhets kopierings typ** väljer du **automatiskt över nätverket**och väljer **sedan nästa**.
+9. På sidan **Välj första säkerhets kopierings typ** väljer du **automatiskt över nätverket** och väljer **sedan nästa**.
 
 10. På sidan **bekräftelse** granskar du informationen och väljer **Slutför**.
 

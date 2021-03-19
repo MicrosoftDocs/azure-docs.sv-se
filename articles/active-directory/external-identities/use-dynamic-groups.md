@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92441563"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamiska grupper och Azure Active Directory B2B-samarbete
@@ -30,9 +30,9 @@ Du kan skapa en grupp som innehåller alla användare i en klient som använder 
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med ett konto som är tilldelat rollen global administratör eller användar administratör i klienten.
 1. Välj **Azure Active Directory**.
-2. Under **Hantera**, Välj **grupper**och välj sedan **ny grupp**.
-1. Välj **säkerhet**under **grupptyp**på sidan **ny grupp** . Ange ett **gruppnamn** och en **gruppbeskrivning** för den nya gruppen. 
-2. Under **medlemskaps typ**väljer du **dynamisk användare**och väljer sedan **Lägg till dynamisk fråga**. 
+2. Under **Hantera**, Välj **grupper** och välj sedan **ny grupp**.
+1. Välj **säkerhet** under **grupptyp** på sidan **ny grupp** . Ange ett **gruppnamn** och en **gruppbeskrivning** för den nya gruppen. 
+2. Under **medlemskaps typ** väljer du **dynamisk användare** och väljer sedan **Lägg till dynamisk fråga**. 
 4. I text rutan **syntax för regel** väljer du **Redigera**. På sidan **Redigera regeltyp** skriver du följande uttryck i text rutan:
 
    ```

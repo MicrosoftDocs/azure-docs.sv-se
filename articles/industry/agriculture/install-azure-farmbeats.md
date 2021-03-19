@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 5863dcc20fb13f1bb203c68ad168655371130601
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674565"
 ---
 # <a name="install-azure-farmbeats"></a>Installera Azure FarmBeats
@@ -18,9 +18,9 @@ Den här artikeln beskriver hur du installerar Azure-FarmBeats i din Azure-prenu
 
 Azure FarmBeats är ett affärs-till-affärs erbjudande som är tillgängligt på Azure Marketplace. Det möjliggör agg regering av data uppsättningar i jordbruket mellan leverantörer och generering av åtgärds bara insikter. Azure FarmBeats gör detta genom att göra det möjligt för dig att bygga artificiell intelligens (AI) eller Machine Learning-modeller (ML) baserat på säkrade data uppsättningar. De två huvud komponenterna i Azure FarmBeats är:
 
-- **Datahub** : ett API-lager som möjliggör agg regerings-, normaliserings-och contextualization för olika jordbruks data uppsättningar mellan olika leverantörer.
+- **Datahub**: ett API-lager som möjliggör agg regerings-, normaliserings-och contextualization för olika jordbruks data uppsättningar mellan olika leverantörer.
 
-- **Accelerator** : webb program som byggts ovanpå Datahub. Den hoppar – startar din modell utveckling och visualisering. Acceleratorn använder Azure FarmBeats-API: er för att demonstrera visualisering av inmatade sensor data som diagram och visualisering av modellens utdata som Maps.
+- **Accelerator**: webb program som byggts ovanpå Datahub. Den hoppar – startar din modell utveckling och visualisering. Acceleratorn använder Azure FarmBeats-API: er för att demonstrera visualisering av inmatade sensor data som diagram och visualisering av modellens utdata som Maps.
 
 ## <a name="general-information"></a>Allmän information
 
@@ -62,7 +62,7 @@ Azure-FarmBeats stöds för närvarande i offentliga moln miljöer i följande r
 - USA, östra 2
 - USA, västra
 - USA, västra 2
-- Norra Europa
+- Europa, norra
 - Europa, västra
 - Asien, östra
 - Asien, Sydostasien
@@ -93,7 +93,7 @@ Du kan kontrol lera åtkomst behörigheterna i Azure Portal genom att följa anv
 
 Du behöver ID för Azure-prenumeration och den region där du vill installera Azure-FarmBeats. Välj en av de regioner som anges i avsnittet [regioner som stöds](#regions-supported) .
 
-Anteckna **ID för Azure-prenumerationen** och Azure- **regionen** .
+Anteckna **ID för Azure-prenumerationen** och Azure- **regionen**.
 
 ### <a name="create-an-aad-application"></a>Skapa ett AAD-program
 
@@ -124,11 +124,11 @@ Kör följande steg i en Cloud Shell-instans med hjälp av PowerShell-miljön. F
 
 4. Skriptet frågar efter följande tre indata:
 
-    - **FarmBeats webbplats namn** : det här är det unika URL-prefixet för ditt FarmBeats-webbprogram. Om prefixet redan används, kommer skriptet att fel. När din FarmBeats-distribution har installerats kan du komma åt den från https:// \<FarmBeats-website-name> . azurewebsites.net och Swagger-API: erna kommer att finnas på https:// \<FarmBeats-website-name> -API.azurewebsites.net
+    - **FarmBeats webbplats namn**: det här är det unika URL-prefixet för ditt FarmBeats-webbprogram. Om prefixet redan används, kommer skriptet att fel. När din FarmBeats-distribution har installerats kan du komma åt den från https:// \<FarmBeats-website-name> . azurewebsites.net och Swagger-API: erna kommer att finnas på https:// \<FarmBeats-website-name> -API.azurewebsites.net
 
-    - **Azure-inloggnings-ID** : Ange Azures inloggnings-ID för den användare som du vill lägga till som administratör för FarmBeats. Den här användaren kan sedan ge åtkomst till FarmBeats-webbprogram till andra användare. Inloggnings-ID: t är vanligt vis formuläret john.doe@domain.com . Azure UPN stöds också.
+    - **Azure-inloggnings-ID**: Ange Azures inloggnings-ID för den användare som du vill lägga till som administratör för FarmBeats. Den här användaren kan sedan ge åtkomst till FarmBeats-webbprogram till andra användare. Inloggnings-ID: t är vanligt vis formuläret john.doe@domain.com . Azure UPN stöds också.
 
-    - **Prenumerations-ID** : Detta är ID: t för den prenumeration som du vill installera Azure-FarmBeats i
+    - **Prenumerations-ID**: Detta är ID: t för den prenumeration som du vill installera Azure-FarmBeats i
 
 5. AAD-skriptet tar cirka 2 minuter att köra och matar ut värden på skärmen samt till en JSON-fil i samma katalog. Om du har någon annan som kör skriptet ber du dem att dela dessa utdata med dig.
 
@@ -142,7 +142,7 @@ Följ stegen för att skapa ett kostnads fritt konto med Sentinel:
 2. Ange nödvändig information (förnamn, efter namn, användar namn, lösen ord och e-post-ID) och fyll i formuläret.
 3. En verifierings länk skickas till det registrerade e-post-ID: t. Välj länken som finns i e-postmeddelandet och slutför verifieringen.
 
-Registrerings processen har slutförts. Anteckna ditt **Sentinel-användarnamn** och **kontroll lösen ord** , när verifieringen också har slutförts.
+Registrerings processen har slutförts. Anteckna ditt **Sentinel-användarnamn** och **kontroll lösen ord**, när verifieringen också har slutförts.
 
 ## <a name="install"></a>Installera
 
@@ -152,7 +152,7 @@ Du är nu redo att installera FarmBeats. Starta installationen genom att följa 
 
 2. Gå till Azure Marketplace i portalen och Sök efter **Azure-FarmBeats** på Marketplace.
 
-3. Ett nytt fönster med en översikt över Azure-FarmBeats visas. Välj **Skapa** .
+3. Ett nytt fönster med en översikt över Azure-FarmBeats visas. Välj **Skapa**.
 
 4. Ett nytt fönster visas. Slutför registrerings processen genom att välja rätt prenumeration, resurs grupp och plats där du vill installera Azure-FarmBeats.
 
@@ -166,13 +166,13 @@ Du är nu redo att installera FarmBeats. Starta installationen genom att följa 
 
     ![Fliken beroenden](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
-8. När den angivna informationen har verifierats väljer du **OK** . Sidan Användningsvillkor visas. Granska villkoren och välj **skapa** för att starta installationen. Du kommer att omdirigeras till sidan där du kan följa installations förloppet.
+8. När den angivna informationen har verifierats väljer du **OK**. Sidan Användningsvillkor visas. Granska villkoren och välj **skapa** för att starta installationen. Du kommer att omdirigeras till sidan där du kan följa installations förloppet.
 
 När installationen är klar kan du verifiera installationen och börja använda FarmBeats-portalen genom att gå till namnet på webbplatsen som du angav under installationen: https:// \<FarmBeats-website-name> . azurewebsites.net. Du bör se FarmBeats-användargränssnittet med ett alternativ för att skapa Server grupper.
 
 **Datahub** finns på https:// \<FarmBeats-website-name> -API.azurewebsites.net/Swagger. Här visas de olika FarmBeats API-objekten och utför REST-åtgärder på API: erna.
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Uppgradera
 
 Om du vill uppgradera FarmBeats till den senaste versionen kör du följande steg i en Cloud Shell instans med hjälp av PowerShell-miljön. Användaren måste vara ägare till den prenumeration där FarmBeats är installerad.
 

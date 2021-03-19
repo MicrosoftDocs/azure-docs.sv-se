@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 497b171cad956dee23139bcfb0ec76fad82bfb33
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 490880e4a37711a92b44a0ffe01315edfa6ddb26
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488976"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580138"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurera inloggning för en speciell Azure Active Directory organisation i Azure Active Directory B2C
 
@@ -106,6 +106,8 @@ Om du vill hämta `family_name` och `given_name` anspråk från Azure AD kan du 
 1. Välj **Spara**.
 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Lägga till Azure AD Identity Provider i ett användar flöde 
+
+Azure AD-identitetsprovider har nu kon figurer ATS, men den är inte tillgänglig ännu på någon av inloggnings sidorna. Så här lägger du till Azure AD Identity-providern i ett användar flöde:
 
 1. Välj **användar flöden** i Azure AD B2C klient.
 1. Klicka på det användar flöde som du vill lägga till Azure AD Identity-providern.

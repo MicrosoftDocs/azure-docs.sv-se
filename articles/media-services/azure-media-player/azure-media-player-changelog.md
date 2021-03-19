@@ -6,11 +6,11 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370584"
 ---
 # <a name="changelog"></a>Ändringslogg
@@ -198,7 +198,7 @@ Returnera meningsfulla fel leverans fel för att anropa program
 
 ### <a name="changes"></a>Ändringar ###
 
-- Ändrade [Direkt textning] API-namnet för CEA-textning har ändrats från 608 till 708. Mer information finns i [Inställningar för CEA708-textning](/javascript/api/azuremediaplayer/cea708captionssettings)-->
+- Ändrade [Direkt textning] API-namnet för CEA-textning har ändrats från 608 till 708. Mer information finns i [Inställningar för CEA708-textning](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (officiell utgåva) ##
 
@@ -727,7 +727,7 @@ Returnera meningsfulla fel leverans fel för att anropa program
 - [Fel korrigering] Uppdaterad UI inläsnings upplevelse för läget för automatisk uppspelning
 - [Fel korrigering] Problem vid inläsning av AMD-inläsare och definiera metod
 - [Fel korrigering] WP 8,1 Cordova app inläsnings problem
-- [Fel korrigering] Skyddat innehåll frågar plattform/Tech-skydds typ som stöds för att välja lämplig Tech för uppspelning.  Korrigeringar av tidigare känt problem med_PlayReady-innehåll på Chrome (Desktop)/Safari 8 (på OSX Yosemite) återgår för närvarande inte till Silverlight Player_
+- [Fel korrigering] Skyddat innehåll frågar plattform/Tech-skydds typ som stöds för att välja lämplig Tech för uppspelning.  Korrigeringar av tidigare känt problem med _PlayReady-innehåll på Chrome (Desktop)/Safari 8 (på OSX Yosemite) återgår för närvarande inte till Silverlight Player_
 - [Fel korrigering] ett undantags fel har inträffat i WinServer 2012 R2 på grund av att Media Foundation inte installerats på datorn som standard.  Försök att använda HTML-video märknings-API: er, som inte har implementerats, och därmed utlöser ett fel. Aktuell minskning är att fånga felet och returnera falskt i stället för att returnera felet.
 - [Fel korrigering] Hämta alltid init-segmentet efter sökning eller HTTP-fel för att förhindra problem under uppspelningen
 - [Fel korrigering] Stäng av spåra simulerade förlopp och timeupdates när ett fel har uppstått.

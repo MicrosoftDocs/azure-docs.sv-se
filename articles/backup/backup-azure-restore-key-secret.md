@@ -4,10 +4,10 @@ description: Lär dig hur du återställer Key Vault nyckel och hemlighet i Azur
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88827094"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Återställa nyckel och hemlighet för Key Vault för krypterade virtuella datorer med Azure Backup
@@ -60,7 +60,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 ## <a name="restore-secret"></a>Återställ hemlighet
 
-Använd den JSON-fil som genererades ovan för att hämta hemligt namn och värde och ange en hemlig cmdlet för att placera hemligheten (BEK) igen i nyckel valvet.Använd de här cmdletarna om den **virtuella datorn är krypterad med Bek och KEK**.
+Använd den JSON-fil som genererades ovan för att hämta hemligt namn och värde och ange en hemlig cmdlet för att placera hemligheten (BEK) igen i nyckel valvet. Använd de här cmdletarna om den **virtuella datorn är krypterad med Bek och KEK**.
 
 **Använd dessa cmdlets om din virtuella Windows-dator krypteras med hjälp av BEK och KEK.**
 
@@ -82,7 +82,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Använd den JSON-fil som genererades ovan för att hämta hemligt namn och värde och ange en hemlig cmdlet för att placera hemligheten (BEK) igen i nyckel valvet.Använd de här cmdletarna om den **virtuella datorn är krypterad med Bek** .
+Använd den JSON-fil som genererades ovan för att hämta hemligt namn och värde och ange en hemlig cmdlet för att placera hemligheten (BEK) igen i nyckel valvet. Använd de här cmdletarna om den **virtuella datorn är krypterad med Bek** .
 
 ```powershell
 $secretDestination = 'C:\secret.blob'

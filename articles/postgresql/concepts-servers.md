@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: c8ae129cbad56e3bb63e055f9d843cac1da22fb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91710472"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – enskild server
@@ -41,7 +41,7 @@ Följande element hjälper till att säkerställa säker åtkomst till databasen
 | **Autentisering och auktorisering** | Azure Database for PostgreSQL-server stöder ursprunglig PostgreSQL-autentisering. Du kan ansluta och autentisera till servern med serverns administratörsinloggning. |
 | **Protokoll** | Tjänsten stöder ett Message-baserat protokoll som används av PostgreSQL. |
 | **TCP/IP** | Protokollet stöds över TCP/IP och över UNIX-domänsuffix. |
-| **Brandvägg** | För att skydda dina data förhindrar en brand Väggs regel all åtkomst till servern och dess databaser tills du anger vilka datorer som har behörighet. Se [Azure Database for postgresql server brand Väggs regler](concepts-firewall-rules.md). |
+| **Brandvägg** | För att skydda dina data förhindrar en brand Väggs regel all åtkomst till servern och dess databaser tills du anger vilka datorer som har behörighet. Se [Azure Database for postgresql server brand Väggs regler](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Hantera servern
 Du kan hantera Azure Database for PostgreSQL-servrar med hjälp av [Azure Portal](https://portal.azure.com) eller [Azure CLI](/cli/azure/postgres).
@@ -63,7 +63,7 @@ Som en hanterad tjänst för postgres, är de konfigurerbara parametrarna i Azur
 
 
 ## <a name="next-steps"></a>Nästa steg
-- En översikt över tjänsten finns i [Azure Database for PostgreSQL översikt](overview.md).
-- Information om vilka resurs kvoter och begränsningar som baseras på **tjänst nivån**finns i [tjänst nivåer](concepts-pricing-tiers.md).
-- Information om hur du ansluter till tjänsten finns i [anslutnings bibliotek för Azure Database for PostgreSQL](concepts-connection-libraries.md).
+- En översikt över tjänsten finns i [Azure Database for PostgreSQL översikt](overview.md).
+- Information om vilka resurs kvoter och begränsningar som baseras på **tjänst nivån** finns i [tjänst nivåer](concepts-pricing-tiers.md).
+- Information om hur du ansluter till tjänsten finns i [anslutnings bibliotek för Azure Database for PostgreSQL](concepts-connection-libraries.md).
 - Visa och redigera Server parametrar via [Azure Portal](howto-configure-server-parameters-using-portal.md) eller [Azure CLI](howto-configure-server-parameters-using-cli.md).

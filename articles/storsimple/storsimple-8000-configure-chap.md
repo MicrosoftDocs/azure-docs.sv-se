@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91766501"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurera CHAP för din StorSimple-enhet
@@ -45,7 +45,7 @@ I enkelriktad autentisering autentiserar målet initieraren. Den här autentiser
 
 #### <a name="to-configure-your-device-for-one-way-authentication"></a>Konfigurera enheten för enkelriktad autentisering
 
-1. I Azure Portal går du till din StorSimple Enhetshanteraren-tjänst. Klicka på **enheter** och markera och klicka på en enhet som du vill konfigurera CHAP för. Gå till **enhets inställningar > säkerhet**. Klicka på **CHAP**i bladet **säkerhets inställningar** .
+1. I Azure Portal går du till din StorSimple Enhetshanteraren-tjänst. Klicka på **enheter** och markera och klicka på en enhet som du vill konfigurera CHAP för. Gå till **enhets inställningar > säkerhet**. Klicka på **CHAP** i bladet **säkerhets inställningar** .
    
     ![CHAP-initierare](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. I **CHAP** -bladet och i avsnittet **CHAP Initiator** :
@@ -98,7 +98,7 @@ Vid dubbelriktad autentisering autentiserar målet initieraren och sedan autenti
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>Så här konfigurerar du enheten för ömsesidig autentisering
 
-1. I Azure Portal går du till din StorSimple Enhetshanteraren-tjänst. Klicka på **enheter** och markera och klicka på en enhet som du vill konfigurera CHAP för. Gå till **enhets inställningar > säkerhet**. Klicka på **CHAP**i bladet **säkerhets inställningar** .
+1. I Azure Portal går du till din StorSimple Enhetshanteraren-tjänst. Klicka på **enheter** och markera och klicka på en enhet som du vill konfigurera CHAP för. Gå till **enhets inställningar > säkerhet**. Klicka på **CHAP** i bladet **säkerhets inställningar** .
    
     ![CHAP-mål](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. Rulla nedåt på den här sidan och i avsnittet **CHAP-mål** :

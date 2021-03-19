@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: tisande
 ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336222"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indexera geospatiala data med Azure Cosmos DB
@@ -19,7 +19,7 @@ ms.locfileid: "93336222"
 
 Vi utformade Azure Cosmos DB databas motorn så att den verkligen är schema-oberoende och ger första klass stöd för JSON. Den Write-optimerade databas motorn i Azure Cosmos DB internt förstår spatialdata som representeras i standarden för polyjson.
 
-I en kortfattat så Jenkins projiceras geometrin från Geodetic-koordinater till ett 2D-plan och delas sedan progressivt i cellerna med hjälp av en **quadtree**. Dessa celler mappas till 1D baserat på cellens position inom en **Fyllnings kurva för Hilbert utrymme** , som bevarar platsens plats. När plats data indexeras går de igenom en process som kallas **mosaik** , det vill säga att alla celler som korsar en plats identifieras och lagras som nycklar i Azure Cosmos DB indexet. Vid fråge tillfället är argument som punkter och polygoner också tessellated för att extrahera relevanta cell-ID-intervall och sedan använda för att hämta data från indexet.
+I en kortfattat så Jenkins projiceras geometrin från Geodetic-koordinater till ett 2D-plan och delas sedan progressivt i cellerna med hjälp av en **quadtree**. Dessa celler mappas till 1D baserat på cellens position inom en **Fyllnings kurva för Hilbert utrymme**, som bevarar platsens plats. När plats data indexeras går de igenom en process som kallas **mosaik**, det vill säga att alla celler som korsar en plats identifieras och lagras som nycklar i Azure Cosmos DB indexet. Vid fråge tillfället är argument som punkter och polygoner också tessellated för att extrahera relevanta cell-ID-intervall och sedan använda för att hämta data från indexet.
 
 Om du anger en indexerings princip som innehåller ett rums index för `/*` (alla sökvägar) indexeras alla data som finns i behållaren för effektiva rums frågor.
 
@@ -36,11 +36,11 @@ Så här ställer du in den **geospatiala konfigurationen** i **datautforskaren*
 
 :::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Ställer in Geospatial konfiguration":::
 
-Du kan också ändra `geospatialConfig` i .NET SDK för att justera den **geospatiala konfigurationen** :
+Du kan också ändra `geospatialConfig` i .NET SDK för att justera den **geospatiala konfigurationen**:
 
 Om inget `geospatialConfig` värde anges används geografi data typen som standard. När du ändrar `geospatialConfig` , kommer alla befintliga geospatiala data i behållaren att indexeras om.
 
-Här är ett exempel på hur du ändrar den geospatiala data typen till `geometry` genom att ange `geospatialConfig` egenskapen och lägga till en **boundingBox** :
+Här är ett exempel på hur du ändrar den geospatiala data typen till `geometry` genom att ange `geospatialConfig` egenskapen och lägga till en **boundingBox**:
 
 ```csharp
     //Retrieve the container's details
@@ -111,10 +111,10 @@ Med data typen **Geometry** , som liknar data typen geografi, måste du ange rel
 
 Avgränsnings rutan består av följande egenskaper:
 
-- **xMin** : den minsta indexerade x-koordinaten
-- **yMin** : den minsta indexerade y-koordinaten
-- **Xmax** : den maximalt indexerade x-koordinaten
-- **yMax** : den maximalt indexerade y-koordinaten
+- **xMin**: den minsta indexerade x-koordinaten
+- **yMin**: den minsta indexerade y-koordinaten
+- **Xmax**: den maximalt indexerade x-koordinaten
+- **yMax**: den maximalt indexerade y-koordinaten
 
 En avgränsnings ruta krävs eftersom geometriska data upptar ett plan som kan vara oändligt. Rums index kräver dock ett begränsat utrymme. För **geografi** data typen är jordens kant linjen och du behöver inte ange någon avgränsnings ruta.
 

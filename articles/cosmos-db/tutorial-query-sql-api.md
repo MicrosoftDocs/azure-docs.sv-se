@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: c206b68495b09988e49f37433ccd5616acd29cb7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93337786"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Självstudie: Fråga Azure Cosmos DB med hjälp av SQL API
@@ -66,7 +66,7 @@ Du kan köra frågor med Datautforskaren i Azure-portalen via [REST-API och SDK]
 Mer information om SQL-frågor finns i:
 * [SQL-fråga och SQL-syntax](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här självstudien förutsätter att du har ett konto för Azure Cosmos DB och en samling. Har du inga av dessa resurser? Slutför [Snabbstart på 5 minuter](create-cosmosdb-resources-portal.md).
 

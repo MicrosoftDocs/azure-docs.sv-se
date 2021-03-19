@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: text till tal
-ms.openlocfilehash: fec90b3257ffafaf2919d2f0a41c2ade6fbc1f64
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7722c9387e8d6475c6da4c771e9a0e355a4ac0af
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597682"
+ms.locfileid: "104654857"
 ---
 # <a name="what-is-text-to-speech"></a>Vad är text-till-tal?
 
@@ -41,7 +41,7 @@ I den här översikten får du lära dig om fördelarna och funktionerna i tjän
 
 * Ändra tal format med SSML-SSML (Speech syntes Markup Language) är ett XML-baserat kodspråk som används för att anpassa tal till text-utdata. Med SSML kan du justera bredden, lägga till pauser, förbättra uttal, påskynda eller sakta ned tal frekvens, öka eller minska volymen och attributa flera röster till ett enda dokument. Se [instruktionen så att du kan](speech-synthesis-markup.md) justera tal formatet.
 
-* Visemes- [Visemes](how-to-speech-synthesis-viseme.md) används för att representera viktiga attityder i observerat tal (t. ex. läpparnas position, Jaw och tunga när man skapar en viss fonem). Det har en stark korrelation med röster och fonem. Med Viseme i tal-SDK kan du skapa ansikts Animations data som vanligt vis används för animerade Lip-läsa kommunikation, utbildning, underhållning och kund tjänst. 
+* Visemes – [Visemes](how-to-speech-synthesis-viseme.md) är nyckeln i observerat tal, inklusive positionen för Lip, Jaw och tunga när man skapar en viss fonem. Visemes har en stark korrelation med röster och fonem. Med viseme-händelser i tal-SDK kan du skapa ansikts Animations data som kan användas för att animera ansikten i Lip-läsning av kommunikation, utbildning, underhållning och kund tjänst. 
 
 ## <a name="get-started"></a>Kom igång
 

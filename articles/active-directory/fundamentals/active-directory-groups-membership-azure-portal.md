@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371808"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Lägg till eller ta bort en grupp från en annan grupp med hjälp av Azure Active Directory
@@ -36,7 +36,7 @@ Du kan lägga till en befintlig säkerhets grupp till en annan befintlig säkerh
 
 1. Logga in på [Azure-portalen](https://portal.azure.com) med ett Globalt administratörskonto för katalogen.
 
-2. Välj **Azure Active Directory**och välj sedan **grupper**.
+2. Välj **Azure Active Directory** och välj sedan **grupper**.
 
 3. På sidan **grupper – alla grupper** söker du efter och väljer den grupp som ska bli medlem i en annan grupp. I den här övningen använder vi gruppen **MDM policy – västra** .
 

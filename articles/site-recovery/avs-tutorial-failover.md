@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 60c268ba837540eda86a4cbaf6e0ab1c425d90b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91814583"
 ---
 # <a name="fail-over--azure-vmware-solution-vms"></a>Redundansväxla virtuella datorer i Azure VMware-lösningen
@@ -48,11 +48,11 @@ Innan du kör en redundansväxling kontrollerar du VM-egenskaperna för att se t
 
 Verifiera egenskaperna enligt följande:
 
-1. I **skyddade objekt**väljer du **replikerade objekt**och väljer sedan den virtuella dator som du vill verifiera.
+1. I **skyddade objekt** väljer du **replikerade objekt** och väljer sedan den virtuella dator som du vill verifiera.
 
 2. I fönstret **Replikerade objekt** finns det en sammanfattning av VM-informationen, hälsostatus och de senaste tillgängliga återställningspunkterna. Välj **Egenskaper** om du vill visa mer information.
 
-3. I **beräkning och nätverk**kan du ändra dessa egenskaper efter behov:
+3. I **beräkning och nätverk** kan du ändra dessa egenskaper efter behov:
     * Azure-namn
     * Resursgrupp
     * Mål storlek
@@ -68,7 +68,7 @@ Verifiera egenskaperna enligt följande:
 
 ## <a name="run-a-failover-to-azure"></a>Köra en redundans i Azure
 
-1. I **Inställningar**  >  **replikerade objekt**väljer du den virtuella dator som du vill redundansväxla och väljer sedan **redundans**.
+1. I **Inställningar**  >  **replikerade objekt** väljer du den virtuella dator som du vill redundansväxla och väljer sedan **redundans**.
 2. I **Redundans** väljer du en **återställningspunkt** att redundansväxla till. Du kan välja något av följande alternativ:
    * **Senaste**: Det här alternativet bearbetar först alla data som skickas till Site Recovery. Det ger det lägsta återställnings punkt målet, eftersom den virtuella Azure-datorn som skapas efter redundansväxlingen har alla data som repliker ATS till Site Recovery När redundansväxlingen utlöstes.
    * **Senaste bearbetning**: det här alternativet Miss lyckas den virtuella datorn över till den senaste återställnings punkten som bearbetades av Site Recovery. Det här alternativet ger en låg RTO (återställnings tid) eftersom ingen tid har använts för bearbetning av obearbetade data.

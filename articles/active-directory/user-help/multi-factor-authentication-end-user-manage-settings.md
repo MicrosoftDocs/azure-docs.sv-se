@@ -13,10 +13,10 @@ ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
 ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88798388"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Ändra metod och inställningar för en tvåfaktorautentisering
@@ -128,7 +128,7 @@ Beroende på dina organisations inställningar kan en kryss ruta visas som säge
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>Så här gör du om du vill aktivera tvåstegsverifiering på enheter
 
-På sidan [ **ytterligare säkerhets verifiering** ](#to-get-to-the-additional-security-verification-page)väljer du **Återställ Multi-Factor Authentication på tidigare betrodda enheter**. Nästa gången du loggar in på en enhet uppmanas du att utföra tvåstegsverifiering.
+På sidan [ **ytterligare säkerhets verifiering**](#to-get-to-the-additional-security-verification-page)väljer du **Återställ Multi-Factor Authentication på tidigare betrodda enheter**. Nästa gången du loggar in på en enhet uppmanas du att utföra tvåstegsverifiering.
 
 ## <a name="next-steps"></a>Nästa steg
 

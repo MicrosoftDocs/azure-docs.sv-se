@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898265"
 ---
 # <a name="smote"></a>SMOTE
@@ -52,7 +52,7 @@ Om du vill öka antalet fall kan du ange värdet **SMOTE procent**, genom att an
   
 ## <a name="how-to-configure-smote"></a>Så här konfigurerar du SMOTE
   
-1.  Lägg till SMOTE-modulen i din pipeline. Du hittar modulen under **datatransformering-moduler**i kategorin **modifiering** .
+1.  Lägg till SMOTE-modulen i din pipeline. Du hittar modulen under **datatransformering-moduler** i kategorin **modifiering** .
 
 2. Anslut den data uppsättning som du vill öka. Om du vill ange funktions utrymmet för att skapa nya ärenden, antingen genom att endast använda vissa kolumner eller utesluta vissa, använder du modulen [Välj kolumner i data uppsättning](select-columns-in-dataset.md) . Du kan sedan isolera de kolumner som du vill använda innan du använder SMOTE.
   

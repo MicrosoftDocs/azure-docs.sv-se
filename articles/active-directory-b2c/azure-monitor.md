@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573001"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580189"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Övervaka Azure AD B2C med Azure Monitor
 
@@ -46,7 +46,7 @@ Följande diagram visar de komponenter som du konfigurerar i Azure AD och Azure 
 
 ![Projektion av resurs grupp](./media/azure-monitor/resource-group-projection.png)
 
-Under den här distributionen konfigurerar du både din Azure AD B2C-klient och Azure AD-klient där Log Analytics-arbetsytan kommer att vara värd. Det konto som används för att köra distributionen måste tilldelas rollen som [Global administratör](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) i båda dessa klienter. Det är också viktigt att se till att du är inloggad i rätt katalog när du Slutför varje steg enligt beskrivningen.
+Under den här distributionen konfigurerar du både din Azure AD B2C-klient och Azure AD-klient där Log Analytics-arbetsytan kommer att vara värd. Azure AD B2C kontot bör tilldelas rollen som [Global administratör](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) på Azure AD B2C klienten. Det Azure AD-konto som används för att köra distributionen måste tilldelas [ägar](../role-based-access-control/built-in-roles.md#owner) rollen i Azure AD-prenumerationen. Det är också viktigt att se till att du är inloggad i rätt katalog när du Slutför varje steg enligt beskrivningen.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. skapa eller Välj en resurs grupp
 
@@ -97,7 +97,7 @@ Därefter skapar du en Azure Resource Manager-mall som ger Azure AD B2C åtkomst
 2. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller din **Azure AD** -klient.
 3. Använd knappen **distribuera till Azure** för att öppna Azure Portal och distribuera mallen direkt i portalen. Mer information finns i [skapa en Azure Resource Manager mall](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
-   [![Distribuera till Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![Distribuera till Azure](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
 5. På sidan **Anpassad distribution** anger du följande information:
 

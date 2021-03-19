@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040987"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-funktioner
@@ -49,7 +49,7 @@ Dessa funktioner kan användas med samlingar, t. ex. JSON-strängar, matriser oc
 * [Mappa](create-ui-definition-collection-functions.md#map)
 * [Ignorera](create-ui-definition-collection-functions.md#skip)
 * [del](create-ui-definition-collection-functions.md#split)
-* [take](create-ui-definition-collection-functions.md#take)
+* [gå](create-ui-definition-collection-functions.md#take)
 
 ## <a name="conversion-functions"></a>Konverteringsfunktioner
 
@@ -62,8 +62,8 @@ Dessa funktioner kan användas för att konvertera värden mellan JSON-datatyper
 * [encodeUriComponent](create-ui-definition-conversion-functions.md#encodeuricomponent)
 * [float](create-ui-definition-conversion-functions.md#float)
 * [int](create-ui-definition-conversion-functions.md#int)
-* [inte](create-ui-definition-conversion-functions.md#parse)
-* [nollängd](create-ui-definition-conversion-functions.md#string)
+* [parse](create-ui-definition-conversion-functions.md#parse)
+* [sträng](create-ui-definition-conversion-functions.md#string)
 
 ## <a name="date-functions"></a>Datumfunktioner
 
@@ -82,14 +82,14 @@ Dessa funktioner kan användas i villkor. Vissa funktioner kanske inte stöder a
 * [större än](create-ui-definition-logical-functions.md#greater)
 * [större än eller lika med](create-ui-definition-logical-functions.md#greaterorequals)
 * [eventuella](create-ui-definition-logical-functions.md#if)
-* [mindre än](create-ui-definition-logical-functions.md#less)
+* [minskad](create-ui-definition-logical-functions.md#less)
 * [mindre än eller lika med](create-ui-definition-logical-functions.md#lessorequals)
 * [Ogiltigt](create-ui-definition-logical-functions.md#not)
 * [eller](create-ui-definition-logical-functions.md#or)
 
 ## <a name="math-functions"></a>Matematiska funktioner
 
-* [skapa](create-ui-definition-math-functions.md#add)
+* [add](create-ui-definition-math-functions.md#add)
 * [ceil](create-ui-definition-math-functions.md#ceil)
 * [div](create-ui-definition-math-functions.md#div)
 * [maximal](create-ui-definition-math-functions.md#floor)

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88566139"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Hantera användarkonton i Azure API Management
@@ -42,7 +42,7 @@ Följ stegen i det här avsnittet om du vill lägga till en ny användare:
 
     ![Lägga till en ny användare](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Som standard är nya skapade utvecklarresurser **aktiva**och kopplade till gruppen **utvecklare** . De utvecklar konton som är i ett **aktivt** tillstånd kan användas för att få åtkomst till alla API: er som de har prenumerationer för. Information om hur du associerar nya utvecklare med ytterligare grupper finns i [så här associerar du grupper med utvecklare][How to associate groups with developers].
+Som standard är nya skapade utvecklarresurser **aktiva** och kopplade till gruppen **utvecklare** . De utvecklar konton som är i ett **aktivt** tillstånd kan användas för att få åtkomst till alla API: er som de har prenumerationer för. Information om hur du associerar nya utvecklare med ytterligare grupper finns i [så här associerar du grupper med utvecklare][How to associate groups with developers].
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>Bjud in en utvecklare
 Om du vill bjuda in en utvecklare följer du stegen i det här avsnittet:
@@ -56,9 +56,9 @@ När en utvecklare bjuds in skickas ett e-postmeddelande till utvecklaren. Det h
 
 När inbjudan godkänns blir kontot aktivt.
 
-## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Inaktivera eller återaktivera ett Developer-konto
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"></a> Inaktivera eller återaktivera ett Developer-konto
 
-Som standard är de nyligen skapade eller inbjudna utvecklarnas konton **aktiva**. Klicka på **blockera**om du vill inaktivera ett Developer-konto. Återaktivera ett blockerat utvecklarresurser genom att klicka på **Aktivera**. Ett blockerat konto för utvecklare kan inte komma åt Developer-portalen eller anropa API: er. Klicka på **ta bort**om du vill ta bort ett användar konto.
+Som standard är de nyligen skapade eller inbjudna utvecklarnas konton **aktiva**. Klicka på **blockera** om du vill inaktivera ett Developer-konto. Återaktivera ett blockerat utvecklarresurser genom att klicka på **Aktivera**. Ett blockerat konto för utvecklare kan inte komma åt Developer-portalen eller anropa API: er. Klicka på **ta bort** om du vill ta bort ett användar konto.
 
 Följ stegen nedan om du vill blockera en användare.
 

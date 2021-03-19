@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382403"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581651"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Skala en Azure-cache för Redis-instans
 Azure cache för Redis har olika cache-erbjudanden, vilket ger flexibilitet i valet av cache-storlek och-funktioner. För en Basic-, standard-eller Premium-cache kan du ändra storlek och nivå när den har skapats för att hålla dig uppdaterad med dina program behov. Den här artikeln visar hur du skalar cacheminnet med hjälp av Azure Portal och verktyg som Azure PowerShell och Azure CLI.
@@ -45,7 +45,7 @@ Du kan skala till en annan pris nivå med följande begränsningar:
   * Du kan inte skala från **en** standardcache till en **grundläggande** cache.
 * Du kan skala från en **grundläggande** **cache till en** standardcache, men du kan inte ändra storlek på samma tid. Om du behöver en annan storlek kan du utföra en efterföljande skalnings åtgärd till önskad storlek.
 * Du kan inte skala från en **grundläggande** cache direkt till en **Premium** -cache. Börja med att skala från **Basic** till **standard** i en skalnings åtgärd och sedan från **standard** till **Premium** i en efterföljande skalnings åtgärd.
-* Du kan inte skala från en större storlek till storleken på **C0 (250 MB)** .
+* Du kan inte skala från en större storlek till storleken på **C0 (250 MB)** . Du kan dock skala ned till en annan storlek inom samma pris nivå. Du kan till exempel skala ned från C5 standard till C1 standard.
  
 Medan cachen skalas till den nya pris nivån visas en **skalnings** status i bladet **Azure cache för Redis** .
 

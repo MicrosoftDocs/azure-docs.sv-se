@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 011b50449f0a02b128bc000535f93e1809fd9777
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673888"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Tilldela Azure-resurs roller i Privileged Identity Management
@@ -43,9 +43,9 @@ Följ dessa steg om du vill göra en användare tillgänglig för en Azure-resur
 
     Information om hur du beviljar en annan administratörs åtkomst till att hantera Privileged Identity Management finns i [bevilja åtkomst till andra administratörer för att hantera Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
-1. Öppna **Azure AD Privileged Identity Management** .
+1. Öppna **Azure AD Privileged Identity Management**.
 
-1. Välj **Azure-resurser** .
+1. Välj **Azure-resurser**.
 
 1. Använd resurs filtret för att hitta de hanterade resurser som du letar efter.
 
@@ -63,15 +63,15 @@ Följ dessa steg om du vill göra en användare tillgänglig för en Azure-resur
 
     ![Nytt tilldelnings fönster](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Välj en roll som du vill tilldela och klicka sedan på **Välj** .
+1. Välj en roll som du vill tilldela och klicka sedan på **Välj**.
 
     Fönstret **Välj en medlem eller grupp** öppnas.
 
-1. Välj en medlem eller grupp som du vill tilldela rollen och klicka sedan på **Välj** .
+1. Välj en medlem eller grupp som du vill tilldela rollen och klicka sedan på **Välj**.
 
     ![Välj en medlem eller grupp fönster](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-1. På fliken **Inställningar** går du till listan **tilldelnings typ** och väljer **kvalificerad** eller **aktiv** .
+1. På fliken **Inställningar** går du till listan **tilldelnings typ** och väljer **kvalificerad** eller **aktiv**.
 
     ![Fönstret medlemskaps inställningar](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,7 +83,7 @@ Följ dessa steg om du vill göra en användare tillgänglig för en Azure-resur
 
 1. Om du vill ange en varaktighet för en tilldelning ändrar du Start-och slutdatum och tider.
 
-1. När du är färdig väljer du **tilldela** .
+1. När du är färdig väljer du **tilldela**.
 
 1. När den nya roll tilldelningen har skapats visas ett status meddelande.
 
@@ -93,9 +93,9 @@ Följ dessa steg om du vill göra en användare tillgänglig för en Azure-resur
 
 Följ dessa steg om du vill uppdatera eller ta bort en befintlig roll tilldelning.
 
-1. Öppna **Azure AD Privileged Identity Management** .
+1. Öppna **Azure AD Privileged Identity Management**.
 
-1. Välj **Azure-resurser** .
+1. Välj **Azure-resurser**.
 
 1. Välj den resurs som du vill hantera för att öppna dess översikts sida.
 

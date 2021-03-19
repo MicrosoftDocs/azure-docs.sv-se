@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088384"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Vanliga PowerShell-kommandon för virtuella Azure-nätverk
@@ -29,8 +29,8 @@ Vissa variabler kan vara användbara för dig om du kör fler än ett av kommand
 
 | Uppgift | Kommando |
 | ---- | ------- |
-| Skapa undernätskonfigurationer |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Ett vanligt nätverk kan ha ett undernät för en [belastningsutjämnare mot Internet](../../load-balancer/load-balancer-overview.md) och ett separat undernät för en [intern belastningsutjämnare](../../load-balancer/load-balancer-overview.md). |
-| Skapa ett virtuellt nätverk |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-location $location-AddressPrefix xx. X. X. X/XX-undernät $subnet 1, $subnet 2 |
+| Skapa undernätskonfigurationer |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix xx. X. X. x/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Ett vanligt nätverk kan ha ett undernät för en [belastningsutjämnare mot Internet](../../load-balancer/load-balancer-overview.md) och ett separat undernät för en [intern belastningsutjämnare](../../load-balancer/load-balancer-overview.md). |
+| Skapa ett virtuellt nätverk |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-location $location-AddressPrefix xx. X. X. x/XX-Subnet $Subnet 1, $Subnet 2 |
 | Testa ett unikt domän namn |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" – plats $location<BR><BR>Du kan ange ett DNS-domännamn för en [offentlig IP-resurs](../../virtual-network/public-ip-addresses.md), vilket skapar en mappning för DomainName.location.cloudapp.Azure.com till den offentliga IP-adressen i de Azure-HANTERAde DNS-servrarna. Namnet får endast innehålla bokstäver, siffror och bindestreck. Det första och sista tecknet måste vara en bokstav eller en siffra och domän namnet måste vara unikt inom dess Azure-plats. Om **Sant** returneras är det föreslagna namnet globalt unikt. |
 | Skapa en offentlig IP-adress |$pip = [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp"-ResourceGroupName $MyResourceGroup-DomainNameLabel "myDNS" – location $location-AllocationMethod Dynamic<BR><BR>Den offentliga IP-adressen använder det domän namn som du tidigare har testat och används av belastningsutjämnarens konfiguration av klient delen. |
 | Skapa en IP-konfiguration för klient delen |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP"-PublicIpAddress $pip<BR><BR>Klient dels konfigurationen omfattar den offentliga IP-adress som du skapade tidigare för inkommande nätverks trafik. |
@@ -39,7 +39,7 @@ Vissa variabler kan vara användbara för dig om du kör fler än ett av kommand
 | Skapa en belastnings Utjämnings regel |$lbRule = [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) -Name http-FrontendIpConfiguration $FrontendIP-BackendAddressPool $BeAddressPool-PROBE $HealthProbe-Protocol TCP-FrontendPort 80-BackendPort 80<BR><BR>Innehåller regler som tilldelar en offentlig port på belastningsutjämnaren till en port i backend-adresspoolen. |
 | Skapa en inkommande NAT-regel |$inboundNATRule = [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -Name "myInboundRule1"-FrontendIpConfiguration $FrontendIP-Protocol TCP-FrontendPort 3441-BackendPort 3389<BR><BR>Innehåller regler som mappar en offentlig port på belastningsutjämnaren till en port för en speciell virtuell dator i backend-adresspoolen. |
 | Skapa en lastbalanserare |$loadBalancer = [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-Name "myLoadBalancer"-location $location-FrontendIpConfiguration $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $BeAddressPool-PROBE $healthProbe |
-| Skapa ett nätverks gränssnitt |$nic 1 = [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC" – location $location-PrivateIpAddress xx. X. X. X-undernät $subnet 2-LoadBalancerBackendAddressPool $loadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $loadBalancer. InboundNatRules [0]<BR><BR>Skapa ett nätverks gränssnitt med den offentliga IP-adressen och det virtuella nätverks under nätet som du skapade tidigare. |
+| Skapa ett nätverks gränssnitt |$nic 1 = [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC"-location $location-PrivateIpAddress xx. X. X. x-Subnet $Subnet 2-LoadBalancerBackendAddressPool $Loadbalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $Loadbalancer. InboundNatRules [0]<BR><BR>Skapa ett nätverks gränssnitt med den offentliga IP-adressen och det virtuella nätverks under nätet som du skapade tidigare. |
 
 ## <a name="get-information-about-network-resources"></a>Hämta information om nätverks resurser
 
@@ -59,9 +59,9 @@ Vissa variabler kan vara användbara för dig om du kör fler än ett av kommand
 
 | Uppgift | Kommando |
 | ---- | ------- |
-| Lägga till ett undernät i ett virtuellt nätverk |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix xx. X. X. X/XX-Name "mySubnet1"-VirtualNetwork $vnet<BR><BR>Lägger till ett undernät i ett befintligt virtuellt nätverk. $Vnet-värdet representerar det objekt som returneras av Get-AzVirtualNetwork. |
+| Lägga till ett undernät i ett virtuellt nätverk |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix xx. X. X. x/XX-Name "mySubnet1"-VirtualNetwork $VNet<BR><BR>Lägger till ett undernät i ett befintligt virtuellt nätverk. $Vnet-värdet representerar det objekt som returneras av Get-AzVirtualNetwork. |
 | Ta bort ett virtuellt nätverk |[Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $myResourceGroup<BR><BR>Tar bort det angivna virtuella nätverket från resurs gruppen. |
-| Ta bort ett nätverks gränssnitt |[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface) -Name "myNIC"-ResourceGroupName $myResourceGroup<BR><BR>Tar bort det angivna nätverks gränssnittet från resurs gruppen. |
+| Ta bort ett nätverksgränssnitt |[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface) -Name "myNIC"-ResourceGroupName $myResourceGroup<BR><BR>Tar bort det angivna nätverks gränssnittet från resurs gruppen. |
 | Ta bort en lastbalanserare |[Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) -Name "myLoadBalancer"-ResourceGroupName $myResourceGroup<BR><BR>Tar bort den angivna belastningsutjämnaren från resurs gruppen. |
 | Ta bort en offentlig IP-adress |[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress)-Name "unipaddress"-ResourceGroupName $myResourceGroup<BR><BR>Tar bort den angivna offentliga IP-adressen från resurs gruppen. |
 

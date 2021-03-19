@@ -7,13 +7,13 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83659785"
 ---
-# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Distribuera och anropa anpassade API: er från arbets flöden i Azure Logic Apps
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Distribuera och anropa anpassade API:er från arbetsflöden i Azure Logic Apps
 
 När du har [skapat dina egna API: er](./logic-apps-create-api-app.md) som ska användas i dina Logic app-arbetsflöden måste du distribuera dessa API: er innan du kan anropa dem. Du kan distribuera dina API: er som [webbappar](../app-service/overview.md), men du bör överväga att distribuera dina API: er som [API Apps](../app-service/app-service-web-tutorial-rest-api.md), vilket gör jobbet enklare när du skapar, är värd för och använder API: er i molnet och lokalt. Du behöver inte ändra någon kod i dina API: er – distribuera bara din kod till en API-app. Du kan vara värd för dina API: er på [Azure App Service](../app-service/overview.md), ett PaaS-erbjudande (Platform-as-a-Service) som ger mycket skalbara, enkla API-värdar.
 
@@ -25,13 +25,13 @@ Innan du kan anropa ditt anpassade API från en Logic app kan du distribuera dit
 
 1. I [Azure Portal](https://portal.azure.com)väljer du webbappen eller API-appen.
 
-2. I menyn app som öppnas under **API**väljer du API- **definition**. Ange **platsen för API-definition** till URL: en för din swagger.jsi filen.
+2. I menyn app som öppnas under **API** väljer du API- **definition**. Ange **platsen för API-definition** till URL: en för din swagger.jsi filen.
 
    Normalt visas URL: en i följande format: `https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![Länk till Swagger-dokument för ditt anpassade API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. Under **API**väljer du **CORS**. Ange CORS-principen för **tillåtna ursprung** till **"*"** (Tillåt alla).
+3. Under **API** väljer du **CORS**. Ange CORS-principen för **tillåtna ursprung** till **"*"** (Tillåt alla).
 
    Den här inställningen tillåter förfrågningar från Logic App Designer.
 

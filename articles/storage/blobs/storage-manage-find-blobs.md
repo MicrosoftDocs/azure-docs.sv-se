@@ -3,18 +3,18 @@ title: Hantera och hitta Azure blob-data med blobb index Taggar (för hands vers
 description: Lär dig hur du använder BLOB-taggar för att kategorisera, hantera och fråga efter BLOB-objekt.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/05/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 540f6ca165c80dd90f5004fb53e1577cdc35d770
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593228"
+ms.locfileid: "104656047"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Hantera och hitta Azure blob-data med blobb index Taggar (för hands version)
 
@@ -30,7 +30,7 @@ Med blobb index taggar kan du:
 Tänk dig ett scenario där du har miljon tals blobbar i ditt lagrings konto, som används av många olika program. Du vill hitta alla relaterade data från ett enda projekt. Du är inte säker på vad som är inom ramen för att data kan spridas över flera behållare med olika namngivnings konventioner. Programmen laddar dock upp alla data med Taggar baserat på deras projekt. I stället för att söka igenom miljon tals blobbar och jämföra namn och egenskaper kan du använda `Project = Contoso` som identifierings villkor. BLOB-index filtrerar alla behållare över hela lagrings kontot för att snabbt hitta och returnera bara uppsättningen av 50 blobbar från `Project = Contoso` .
 
 > [!IMPORTANT]
-> Blobb index taggar är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+> BLOB index-taggar finns för närvarande i för **hands version** och är tillgängliga i alla offentliga regioner. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
 
 Information om hur du kommer igång med exempel på hur du använder BLOB-index finns i [använda BLOB-taggar för att hantera och söka efter data](storage-blob-index-how-to.md).
 

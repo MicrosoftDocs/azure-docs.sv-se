@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272458"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform och OAuth 2,0-enhetens Authorization-flöde
@@ -51,11 +51,11 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parameter | Condition (Väderförhållanden) | Beskrivning |
+| Parameter | Villkor | Beskrivning |
 | --- | --- | --- |
 | `tenant` | Krävs | Kan vara/vanliga,/consumers eller/organizations.  Det kan också vara den katalog klient som du vill begära behörighet från i GUID eller eget namn format.  |
-| `client_id` | Krävs | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app. |
-| `scope` | Krävs | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md) som du vill att användaren ska godkänna.  |
+| `client_id` | Obligatorisk | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app. |
+| `scope` | Obligatorisk | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md) som du vill att användaren ska godkänna.  |
 
 ### <a name="device-authorization-response"></a>Svar på enhets auktorisering
 
@@ -93,9 +93,9 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | Parameter | Krävs | Beskrivning|
 | -------- | -------- | ---------- |
 | `tenant`  | Krävs | Samma klient organisation eller klient Ali Aset som används i den första begäran. |
-| `grant_type` | Krävs | Måste vara `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Krävs | Måste matcha det `client_id` som används i den första begäran. |
-| `device_code`| Krävs | `device_code`Returnerade i begäran om enhets godkännande.  |
+| `grant_type` | Obligatorisk | Måste vara `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Obligatorisk | Måste matcha det `client_id` som används i den första begäran. |
+| `device_code`| Obligatorisk | `device_code`Returnerade i begäran om enhets godkännande.  |
 
 ### <a name="expected-errors"></a>Förväntade fel
 

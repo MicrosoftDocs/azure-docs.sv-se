@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs vanliga uppgifter för att hantera och
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88757633"
 ---
 # <a name="manage-azure-file-share-backups"></a>Hantera säkerhetskopior av Azure-filresurser
@@ -24,7 +24,7 @@ När du utlöser en säkerhets kopierings-eller återställnings åtgärd skapar
 
    ![Säkerhets kopierings jobb i avsnittet övervakning](./media/manage-afs-backup/backup-jobs.png)
 
-1. När du har valt **OK**visar fönstret **säkerhets kopierings jobb** status för alla jobb. Välj det arbets belastnings namn som motsvarar den fil resurs som du vill övervaka.
+1. När du har valt **OK** visar fönstret **säkerhets kopierings jobb** status för alla jobb. Välj det arbets belastnings namn som motsvarar den fil resurs som du vill övervaka.
 
    ![Arbets belastnings namn](./media/manage-afs-backup/workload-name.png)
 
@@ -38,7 +38,7 @@ Så här visar du befintliga säkerhets kopierings principer:
 
    ![Alla säkerhets kopierings principer](./media/manage-afs-backup/all-backup-policies.png)
 
-1. Om du vill visa principer som är speciella för **Azure-filresursen**väljer du **Azure-filresurs** i list rutan längst upp till höger.
+1. Om du vill visa principer som är speciella för **Azure-filresursen** väljer du **Azure-filresurs** i list rutan längst upp till höger.
 
    ![Välj Azure-filresurs](./media/manage-afs-backup/azure-file-share.png)
 
@@ -158,7 +158,7 @@ Så här avregistrerar du lagrings kontot:
 
    ![Välj lagrings konton](./media/manage-afs-backup/storage-accounts.png)
 
-1. När du har valt **lagrings konton**visas en lista över lagrings konton som registrerats med valvet.
+1. När du har valt **lagrings konton** visas en lista över lagrings konton som registrerats med valvet.
 1. Högerklicka på det lagrings konto som du vill avregistrera och välj **avregistrera**.
 
    ![Välj avregistrera](./media/manage-afs-backup/select-unregister.png)

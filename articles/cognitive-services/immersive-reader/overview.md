@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: läsare, språk information, Visa bilder, förbättra läsning, läsa innehåll, Översätt
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599535"
 ---
 # <a name="what-is-immersive-reader"></a>Vad är Avancerad läsare?
 
 [Avancerad läsare](https://www.onenote.com/learningtools) är ett särskilt utformat verktyg som implementerar beprövade tekniker för att förbättra Läs förståelse för nya läsare, språkutbildningar och personer med inlärnings skillnader som Dyslexia. Med klient biblioteket för avancerad läsare kan du använda samma teknik som används i Microsoft Word och Microsoft en anteckning för att förbättra dina webb program. 
+
+Den här dokumentationen innehåller följande typer av artiklar:  
+
+* **[Snabb starter](quickstarts/client-libraries.md)** är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat.
+* **[Instruktions guider](how-to-create-immersive-reader.md)** innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Använd avancerad läsare för att förbättra läsnings hjälpmedel 
 
@@ -72,10 +77,3 @@ Avancerad läsare är ett fristående webb program. När det anropas med klient 
 Klient biblioteket för avancerad läsare är tillgängligt i C#, Java Script, Java (Android), Kotlin (Android) och SWIFT (iOS). Kom igång med:
 
 * [Snabb start: Använd klient biblioteket för avancerad läsare](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>Nästa steg
-
-Kom igång med Avancerad läsare:
-
-* Läs [klient biblioteks referensen för avancerad läsare](./reference.md)
-* Utforska [klient biblioteket för fördjupade läsare på GitHub](https://github.com/microsoft/immersive-reader-sdk)

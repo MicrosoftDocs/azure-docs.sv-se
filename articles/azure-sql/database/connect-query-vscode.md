@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672484"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Snabb start: Använd Visual Studio Code för att ansluta och fråga 
@@ -29,7 +29,7 @@ ms.locfileid: "92672484"
 
 - En databas i Azure SQL Database eller Azure SQL-hanterad instans. Du kan använda någon av dessa snabbstarter för att skapa och därefter konfigurera en databas i Azure SQL Database:
 
-  | Åtgärd | Azure SQL Database | Hanterad Azure SQL-instans |
+  | Action | Azure SQL Database | Hanterad Azure SQL-instans |
   |:--- |:--- |:---|
   | Skapa| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -51,7 +51,7 @@ Kontrollera att du har installerat den senaste versionen av [Visual Studio Code]
 
 ### <a name="macos"></a>**macOS**
 
-För macOS måste du installera OpenSSL, som är en förutsättning för .NET Core som MSSQL-tillägget använder. Ange följande kommandon för att installera **brew** och **OpenSSL** .
+För macOS måste du installera OpenSSL, som är en förutsättning för .NET Core som MSSQL-tillägget använder. Ange följande kommandon för att installera **brew** och **OpenSSL**.
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -78,7 +78,7 @@ Hämta den anslutnings information som du behöver för att ansluta till Azure S
 
 2. Gå till sidan **SQL-databaser**  eller **SQL-hanterade instanser** .
 
-3. På sidan **Översikt** granskar du det fullständigt kvalificerade Server namnet bredvid **server namnet** för SQL Database eller det fullständigt kvalificerade Server namnet bredvid **värd** för en SQL-hanterad instans. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera** .
+3. På sidan **Översikt** granskar du det fullständigt kvalificerade Server namnet bredvid **server namnet** för SQL Database eller det fullständigt kvalificerade Server namnet bredvid **värd** för en SQL-hanterad instans. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera**.
 
 ## <a name="set-language-mode-to-sql"></a>Ange språkläge till SQL
 
@@ -86,7 +86,7 @@ Ställ in språkläget på **SQL** i Visual Studio Code för att aktivera mssql-
 
 1. Öppna ett Visual Studio Code-fönster.
 
-2. Tryck på **CTRL** + **N** . En ny oformaterad textfil öppnas.
+2. Tryck på **CTRL** + **N**. En ny oformaterad textfil öppnas.
 
 3. Välj **Oformaterad text** nere till höger i statusfältet.
 
@@ -99,17 +99,17 @@ Använd Visual Studio Code för att upprätta en anslutning till servern.
 > [!IMPORTANT]
 > Kontrollera att du har din server- och inloggningsinformation till hands innan du fortsätter. Om du ändrar fokus från Visual Studio Code när du har börjat ange information om anslutningsprofilen måste du börja om med att skapa profilen.
 
-1. I Visual Studio Code trycker du på **Ctrl+Shift+P** (eller **F1** ) för att öppna kommandopaletten.
+1. I Visual Studio Code trycker du på **Ctrl+Shift+P** (eller **F1**) för att öppna kommandopaletten.
 
-2. Välj **MS SQL:Anslut** och välj **Retur** .
+2. Välj **MS SQL:Anslut** och välj **Retur**.
 
-3. Välj **Skapa anslutningsprofil** .
+3. Välj **Skapa anslutningsprofil**.
 
 4. Följ anvisningarna för att ange anslutningsegenskaper för den nya profilen. När du har angett varje värde så väljer du **Retur** för att fortsätta.
 
    | Egenskap       | Föreslaget värde | Beskrivning |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servernamn** | Fullständigt kvalificerat servernamn | Ungefär så här: **mynewserver20170313.database.windows.net** . |
+   | **Servernamn** | Fullständigt kvalificerat servernamn | Ungefär så här: **mynewserver20170313.database.windows.net**. |
    | **Databasnamn** | mySampleDatabase | Databasen du ska ansluta till. |
    | **Autentisering** | SQL-inloggning| Den här självstudien använder SQL-autentisering. |
    | **Användarnamn** | Användarnamn | Användarnamnet från det serveradministratörskonto som användes när servern skapades. |
