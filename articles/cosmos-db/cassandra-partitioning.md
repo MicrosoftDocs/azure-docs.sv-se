@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087646"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitionering i Azure Cosmos DB API för Cassandra
@@ -84,11 +84,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 När data returneras sorteras de efter kluster nyckeln, som förväntas i Apache Cassandra:
 
-:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="partitioner":::
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="Skärm bild som visar returnerade data som sorteras efter kluster nyckeln.":::
 
 Med data som modelleras på det här sättet kan flera poster tilldelas till varje partition, grupperade efter användare. Vi kan därmed utfärda en fråga som effektivt dirigeras av `partition key` (i det här fallet `user` ) för att hämta alla meddelanden för en specifik användare. 
 
-:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="partitioner" border="false":::
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="Diagram som visar hur flera poster kan tilldelas varje partition, grupperade efter användare." border="false":::
 
 
 ## <a name="composite-partition-key"></a>Sammansatt partitionsnyckel

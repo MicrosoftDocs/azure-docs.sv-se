@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941460"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Återställning av en flexibel Server vid en viss tidpunkt
@@ -30,7 +30,7 @@ För att slutföra den här instruktions guiden behöver du:
 
 Följ de här stegen för att återställa din flexibla server med en tidigare befintlig säkerhets kopia.
 
-1.  I [Azure Portal](https://portal.azure.com/)väljer du den flexibla server som du vill återställa säkerhets kopian från.
+1.  I [Azure Portal](https://portal.azure.com/)väljer du den flexibla server som du vill återställa säkerhets kopian från.
 
 2.  Klicka på **Översikt** i den vänstra panelen och klicka på **Återställ**
    
@@ -40,7 +40,7 @@ Följ de här stegen för att återställa din flexibla server med en tidigare b
 
 4.  Välj **tidigaste återställnings punkt** och ange ett nytt Server namn i fältet **Återställ till ny server** . Den tidigaste tidsstämpeln som du kan återställa till visas. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Återställa översikt":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Tidigaste återställnings tid":::
 
 5.  Klicka på **OK**.
 
@@ -50,7 +50,7 @@ Följ de här stegen för att återställa din flexibla server med en tidigare b
 
 Följ de här stegen för att återställa din flexibla server med en tidigare befintlig säkerhets kopia.
 
-1.  I [Azure Portal](https://portal.azure.com/)väljer du den flexibla server som du vill återställa säkerhets kopian från.
+1.  I [Azure Portal](https://portal.azure.com/)väljer du den flexibla server som du vill återställa säkerhets kopian från.
 
 2.  På sidan Översikt klickar du på **Återställ**.
  :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Återställa översikt":::
@@ -61,7 +61,7 @@ Följ de här stegen för att återställa din flexibla server med en tidigare b
 
 5.  Välj datum och tid och ange ett nytt Server namn i fältet **Återställ till ny server** . 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Återställa översikt":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Anpassad återställnings tid":::
  
 6.  Klicka på **OK**.
 
@@ -70,5 +70,5 @@ Följ de här stegen för att återställa din flexibla server med en tidigare b
 ## <a name="next-steps"></a>Nästa steg
 
 -   Lär dig mer om [verksamhets kontinuitet](./concepts-business-continuity.md)
--   Lär dig mer om [Zone-redundant hög tillgänglighet](./concepts-high-availability.md)
+-   Lär dig mer om [Zone-redundant hög tillgänglighet](./concepts-high-availability.md)
 -   Läs mer om [säkerhets kopiering och återställning](./concepts-backup-restore.md)

@@ -4,13 +4,13 @@ description: Referens för autoskalning av batch-pool, som genereras när en Poo
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: e548ed484e5f683a8f79434ce4095ac66900f01a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91852177"
 ---
-# <a name="pool-autoscale-event"></a>Händelse för autoskalning i pool
+# <a name="pool-autoscale-event"></a>Händelse för poolautoskalning
 
  Den här händelsen genereras när en automatisk skalning av pooler körs. Innehållet i loggen kommer att visa den automatiska skalnings formeln och utvärderings resultatet för poolen.
 
@@ -34,7 +34,7 @@ ms.locfileid: "91852177"
 }
 ```
 
-|Element|Typ|Obs!|
+|Element|Typ|Kommentarer|
 |-------------|----------|-----------|
 |`id`|Sträng|Poolens ID.|
 |`timestamp`|DateTime|Tidsstämpeln när automatisk skalning körs.|
@@ -44,7 +44,7 @@ ms.locfileid: "91852177"
 
 ###  <a name="error"></a><a name="error"></a> Fels
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`code`|Sträng|En identifierare för det automatiska skalnings felet. Koder är invarianter och är avsedda att konsumeras program mässigt.|
 |`message`|Sträng|Ett meddelande som beskriver felet för automatisk skalning som är avsett att vara lämpligt för visning i ett användar gränssnitt.|

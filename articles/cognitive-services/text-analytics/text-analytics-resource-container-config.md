@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83590562"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurera Textanalys Docker-behållare
@@ -43,13 +43,13 @@ Du hittar den här inställningen på följande plats:
 
 ## <a name="billing-configuration-setting"></a>Konfigurations inställning för fakturering
 
-`Billing`Inställningen anger slut punkts-URI för den _textanalys_ resursen på Azure som används för att mäta fakturerings information för behållaren. Du måste ange ett värde för den här konfigurations inställningen och värdet måste vara en giltig slut punkts-URI för en __textanalys_ -resurs på Azure. Behållar rapporteringen visar var 10 till 15: e minut.
+`Billing`Inställningen anger slut punkts-URI för den _textanalys_ resursen på Azure som används för att mäta fakturerings information för behållaren. Du måste ange ett värde för den här konfigurations inställningen och värdet måste vara en giltig slut punkts-URI för en _ _textanalys_ -resurs på Azure. Behållar rapporteringen visar var 10 till 15: e minut.
 
 Du hittar den här inställningen på följande plats:
 
 * Azure Portal: **textanalys** översikt, etiketterad `Endpoint`
 
-|Krävs| Name | Datatyp | Beskrivning |
+|Obligatorisk| Name | Datatyp | Beskrivning |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Sträng | URI för fakturerings slut punkt. Mer information om hur du skaffar fakturerings-URI: n finns i [samla in obligatoriska parametrar](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Mer information och en fullständig lista över regionala slut punkter finns i [anpassade under domän namn för Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -79,7 +79,7 @@ Den exakta syntaxen för värd monterings platsen varierar beroende på värd op
 
 |Valfritt| Name | Datatyp | Beskrivning |
 |-------|------|-----------|-------------|
-|Inte tillåtet| `Input` | Sträng | Textanalys behållare använder inte detta.|
+|Inte tillåten| `Input` | Sträng | Textanalys behållare använder inte detta.|
 |Valfritt| `Output` | Sträng | Målet för utmatnings monteringen. Standardvärdet är `/output`. Detta är platsen för loggarna. Detta inkluderar behållar loggar. <br><br>Exempel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="next-steps"></a>Nästa steg

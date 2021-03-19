@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87086684"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Pivot-transformering i data flöde för mappning
@@ -41,7 +41,7 @@ Det här avsnittet är valfritt. Om ingen grupp efter kolumner har marker ATS ag
 
 Pivot-tangenten är den kolumn vars rad värden får pivoteras i nya kolumner. Som standard skapas en ny kolumn för varje unikt rad värde i Pivot-transformeringen.
 
-I avsnittet med namnet **värde**kan du ange vissa rad värden som ska pivoteras. Endast de rad värden som anges i det här avsnittet kommer att pivoteras. Om **null-värdet** aktive ras skapas en pivotad kolumn för null-värden i kolumnen.
+I avsnittet med namnet **värde** kan du ange vissa rad värden som ska pivoteras. Endast de rad värden som anges i det här avsnittet kommer att pivoteras. Om **null-värdet** aktive ras skapas en pivotad kolumn för null-värden i kolumnen.
 
 ### <a name="pivoted-columns"></a>Pivoterade kolumner
 
@@ -71,7 +71,7 @@ Om de angivna värdena för en piltangent anges visas de pivoterade kolumnerna i
 
 Pivot genererar nya kolumn namn dynamiskt baserat på rad värden. Du kan lägga till dessa nya kolumner i metadata som kan refereras till senare i ditt data flöde. Om du vill göra det använder du åtgärden [Mappa](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) åtgärdad snabb åtgärd i data förhands granskning. 
 
-![Pivotera kolumner](media/data-flow/newpivot1.png "Mappa uppstaplade Pivot-kolumner")
+![Pivotkolumner](media/data-flow/newpivot1.png "Mappa uppstaplade Pivot-kolumner")
 
 ### <a name="sinking-pivoted-columns"></a>Handfat med pivoterade kolumner
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82982640"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Exists-transformering i mappnings data flödet
@@ -27,7 +27,7 @@ Exists-omvandlingen är en omvandling för rad filtrering som kontrollerar om di
 
 1. Välj vilken data ström du vill söka efter i list rutan till **höger ström** .
 1. Ange om du vill att data ska finnas eller inte finns i inställningen för **exist-typ** .
-1. Välj om du vill använda ett **anpassat uttryck**eller inte.
+1. Välj om du vill använda ett **anpassat uttryck** eller inte.
 1. Välj vilka nyckel kolumner du vill jämföra som dina villkor. Som standard söker data flödet efter likhet mellan en kolumn i varje data ström. Om du vill jämföra via ett beräknat värde hovrar du över kolumn List rutan och väljer **beräknad kolumn**.
 
 ![Finns inställningar](media/data-flow/exists.png "finns 1")
@@ -48,7 +48,7 @@ Om du vill skapa ett uttryck för en fri form som innehåller andra operatorer �
 
 ![Sändnings anslutning](media/data-flow/broadcast.png "Sändnings anslutning")
 
-I kopplingar, sökningar och exists-omvandling, om en eller båda data strömmar får plats i arbetsnodens minne, kan du optimera prestandan genom att aktivera **sändning**. Som standard bestämmer Spark-motorn om en sida ska sändas automatiskt eller inte. Välj **fast**om du vill välja vilken sida som ska sändas manuellt.
+I kopplingar, sökningar och exists-omvandling, om en eller båda data strömmar får plats i arbetsnodens minne, kan du optimera prestandan genom att aktivera **sändning**. Som standard bestämmer Spark-motorn om en sida ska sändas automatiskt eller inte. Välj **fast** om du vill välja vilken sida som ska sändas manuellt.
 
 Vi rekommenderar inte att du inaktiverar sändning via alternativet **inaktivera** om inte dina kopplingar körs i tids gräns fel.
 

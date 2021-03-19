@@ -4,10 +4,10 @@ description: Lär dig hur du aktiverar en bevarande princip i ditt Azure Contain
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83683454"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Ange en bevarande princip för otaggade manifest
@@ -86,16 +86,16 @@ Du kan också ange ett registers bevarande princip i [Azure Portal](https://port
 
 ### <a name="enable-a-retention-policy"></a>Aktivera en bevarande princip
 
-1. Navigera till ditt Azure Container Registry. Under **principer**väljer du **kvarhållning** (för hands version).
-1. I **status**väljer du **aktive rad**.
+1. Navigera till ditt Azure Container Registry. Under **principer** väljer du **kvarhållning** (för hands version).
+1. I **status** väljer du **aktive rad**.
 1. Välj ett antal dagar mellan 0 och 365 för att behålla de otaggade manifesten. Välj **Spara**.
 
 ![Aktivera en bevarande princip i Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
 ### <a name="disable-a-retention-policy"></a>Inaktivera en bevarande princip
 
-1. Navigera till ditt Azure Container Registry. Under **principer**väljer du **kvarhållning** (för hands version).
-1. I **status**väljer du **inaktive rad**. Välj **Spara**.
+1. Navigera till ditt Azure Container Registry. Under **principer** väljer du **kvarhållning** (för hands version).
+1. I **status** väljer du **inaktive rad**. Välj **Spara**.
 
 ## <a name="next-steps"></a>Nästa steg
 

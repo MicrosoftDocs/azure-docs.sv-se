@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
 ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83681796"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
@@ -18,7 +18,7 @@ Azure Service Fabric-kommandoradsgränssnittet (CLI) är ett kommandoradsverktyg
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrollera att din miljö har både Python och pip installerade före installationen. Mer information finns i [snabbstartdokumentationen för pip](https://pip.pypa.io/en/latest/quickstart/) och den officiella [dokumentationen för installation av Python](https://wiki.python.org/moin/BeginnersGuide/Download).
 
@@ -62,7 +62,7 @@ I Windows 10, Windows Server 2016 och Windows Server 2012 R2 använder du de off
 
 2. Starta installationsprogrammet.
 
-3. Klicka på **Lägg till Python 3,7 i sökvägen**längst ned i prompten.
+3. Klicka på **Lägg till Python 3,7 i sökvägen** längst ned i prompten.
 
 4. Välj **Installera nu** och slutför installationen.
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/09/2021
 ms.author: aahi
 keywords: text utvinning, sentiment-analys, text analys
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722287"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598974"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Vad är API för textanalys?
 
@@ -33,7 +33,7 @@ Använd [sentiment-analys](how-tos/text-analytics-how-to-sentiment-analysis.md) 
 
 Funktionen ger sentiment-etiketter (till exempel "negativa", "neutral" och "positiv") baserat på de högsta förtroende poängen som tjänsten har hittat på en mening och dokument nivå. Den här funktionen returnerar även konfidens resultat mellan 0 och 1 för varje dokument & meningar i den för positiva, neutrala och negativa sentiment. Du kan också köra tjänsten lokalt [med en behållare](how-tos/text-analytics-how-to-install-containers.md).
 
-Från och med v 3.1-förhands granskningen är utgångs punkt en funktion i Attitydanalys. Den här funktionen är även känd som Aspect-baserad Attitydanalys i naturlig språk bearbetning (NLP) och ger mer detaljerad information om de åsikter som rör aspekter (till exempel attributen för produkter eller tjänster) i text.
+Från och med v 3.1-förhands granskningen är utgångs punkt en funktion i Attitydanalys. Den här funktionen är även känd som Aspect-baserad Attitydanalys i naturlig språk bearbetning (NLP) och innehåller mer detaljerad information om de åsikter som rör ord (till exempel attributen för produkter eller tjänster) i text.
 
 ## <a name="key-phrase-extraction"></a>Extrahering av nyckelfraser
 

@@ -5,10 +5,10 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824420"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Övervaka säkerhets kopieringar med Backup Explorer
@@ -54,19 +54,19 @@ På fliken **Sammanfattning** får du en snabb överblick över det övergripand
 
 ### <a name="the-backup-items-tab"></a>Fliken säkerhets kopierings objekt
 
-Du kan filtrera och Visa var och en av dina säkerhets kopierings objekt efter prenumeration, valv och andra egenskaper. Genom att välja namnet på ett säkerhets kopierings objekt kan du öppna fönstret Azure för objektet. Från tabellen kan du till exempel Observera att den senaste säkerhets kopieringen misslyckades för objektet *X*. Genom att välja *X*kan du öppna fönstret objekt **säkerhets kopiering** där du kan utlösa en säkerhets kopiering på begäran.
+Du kan filtrera och Visa var och en av dina säkerhets kopierings objekt efter prenumeration, valv och andra egenskaper. Genom att välja namnet på ett säkerhets kopierings objekt kan du öppna fönstret Azure för objektet. Från tabellen kan du till exempel Observera att den senaste säkerhets kopieringen misslyckades för objektet *X*. Genom att välja *X* kan du öppna fönstret objekt **säkerhets kopiering** där du kan utlösa en säkerhets kopiering på begäran.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
 ### <a name="the-jobs-tab"></a>Fliken jobb
 
-Välj fliken **jobb** om du vill visa information om alla jobb som har utlösts under de senaste 7 dagarna. Här kan du filtrera efter *jobb åtgärd*, *jobb status*och *Felkod* (för misslyckade jobb).
+Välj fliken **jobb** om du vill visa information om alla jobb som har utlösts under de senaste 7 dagarna. Här kan du filtrera efter *jobb åtgärd*, *jobb status* och *Felkod* (för misslyckade jobb).
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
 ### <a name="the-alerts-tab"></a>Fliken aviseringar
 
-Välj fliken **aviseringar** om du vill visa information om alla aviseringar som har genererats på dina valv under de senaste 7 dagarna. Du kan filtrera aviseringar efter typ *(fel vid säkerhets kopiering* eller *återställning*), aktuell status (*aktiv* eller *löst*) och allvarlighets grad (*kritisk*, *Varning*eller *information*). Du kan också välja en länk för att gå till den virtuella Azure-datorn och vidta nödvändiga åtgärder.
+Välj fliken **aviseringar** om du vill visa information om alla aviseringar som har genererats på dina valv under de senaste 7 dagarna. Du kan filtrera aviseringar efter typ *(fel vid säkerhets kopiering* eller *återställning*), aktuell status (*aktiv* eller *löst*) och allvarlighets grad (*kritisk*, *Varning* eller *information*). Du kan också välja en länk för att gå till den virtuella Azure-datorn och vidta nödvändiga åtgärder.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 

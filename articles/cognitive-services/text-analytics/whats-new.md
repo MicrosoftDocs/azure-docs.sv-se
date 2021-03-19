@@ -8,19 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 03/18/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736651"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598906"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
 API för textanalys uppdateras regelbundet. Den här artikeln innehåller information om nya versioner och funktioner för att hålla dig uppdaterad med den senaste utvecklingen.
+
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="general-api-updates"></a>Allmänna API-uppdateringar
+* Version av New API v 3.1 – för hands version 4 som innehåller 
+   * Ändringar i avyttrandet av utryckets JSON-svars text: 
+      * `aspects` är nu `targets` och `opinions` är nu `assessments` . 
+   * Ändringar i JSON-svars texten för det värdbaserade webb-API: t för Textanalys för hälso tillstånd: 
+      * Det `isNegated` booleska namnet för ett identifierat enhets objekt för negation är inaktuellt och ersätts av kontroll av kontroll.
+      * En ny egenskap `role` som heter är nu en del av den extraherade relationen mellan ett attribut och en entitet samt relationen mellan entiteter.  Detta lägger till information till den identifierade Relations typen.
+   * Enhets länkning är nu tillgängligt som en asynkron aktivitet i `/analyze` slut punkten.
+   * En ny `pii-categories` parameter är nu tillgänglig i `/pii` slut punkten.
+      * Med den här parametern kan du ange Välj PII-entiteter och de som inte stöds som standard för inspråket.
+* Uppdaterade klient bibliotek, som inkluderar asynkron analys och Textanalys för hälso åtgärder. Du kan hitta exempel på GitHub:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript)
+    
+> [!div class="nextstepaction"]
+> [Läs mer om API för textanalys v 3.1 – för hands version. 4](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
+
+### <a name="text-analytics-for-health-updates"></a>Textanalys för hälso uppdateringar
+
+* En ny modell version `2021-03-01` för `/health` slut punkten och den lokala behållaren som tillhandahåller
+    * Ett namnbyte på `Gene` enhets typen till `GeneOrProtein` .
+    * En ny `Date` entitetstyp.
+    * Kontroll av identifiering som ersätter negation identifiering (endast tillgängligt i API v 3.1 – för hands version. 4).
+    * En ny önskad `name` egenskap för länkade entiteter som normaliseras från olika Ontologies-och kodnings system (endast tillgängligt i API v 3.1 – för hands version. 4). 
+* En ny behållar avbildning med tagg `3.0.015370001-onprem-amd64` och den nya modell versionen `2021-03-01` har frigjorts till behållar förhands gransknings databasen. 
+* Textanalys för hälso behållar avbildningen kommer att flyttas till en ny databas nästa månad.  Se efter om det finns en e-postkommunikation på platsen för dess nya hem.
+> [!div class="nextstepaction"]
+> [Läs mer om Textanalys för hälsa](how-tos/text-analytics-for-health.md)
+>
+
+### <a name="text-analytics-resource-portal-update"></a>Uppdatera Textanalys resurs Portal
+* **Bearbetade text poster** är nu tillgängliga som ett mått i avsnittet **övervakning** för din Textanalys-resurs i Azure Portal.  
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -46,7 +84,7 @@ Dessa modell versioner är för närvarande inte tillgängliga i regionen USA, �
 
 ## <a name="december-2020"></a>December 2020
 
-* [Uppdaterad pris](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) information för API för textanalys
+* [Uppdaterad pris](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) information för API för textanalys.
 
 ## <a name="november-2020"></a>November 2020
 
@@ -59,8 +97,7 @@ Dessa modell versioner är för närvarande inte tillgängliga i regionen USA, �
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
-
-
+    * 
 > [!div class="nextstepaction"]
 > [Läs mer om API för textanalys v 3.1 – för hands version. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 

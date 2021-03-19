@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983650"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Visa effektiva vägar för virtuell hubb
@@ -39,7 +39,7 @@ Värdena i följande exempel tabell innebär att den virtuella Hub-anslutningen 
 
 Använd rullnings listen längst ned i tabellen om du vill visa "AS-sökväg".
 
-| **Protokollprefixet** |  **Nästa hopp typ** | **Nästa hopp** |  **Flödes ursprung** |**SOM sökväg** |
+| **Prefix** |  **Nästa hopptyp** | **Nästa hopp** |  **Flödes ursprung** |**SOM sökväg** |
 | ---        | ---                | ---          | ---               | ---         |
 | 10.2.0.0/24| VPN_S2S_Gateway |/Subscriptions/ `<sub id>` /resourceGroups/- `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw|/Subscriptions/ `<sub id>` /resourceGroups/- `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 

@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91930279"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Självstudie: hantera program grupper med Azure Portal
@@ -53,7 +53,7 @@ Om du redan har skapat en adresspool och en session som är värd för en virtue
     > [!div class="mx-imgBorder"]
     > ![En skärm bild av fliken grundläggande i Azure Portal.](media/basics-tab.png)
 
-6. Välj **RemoteApp** under **program grupps typ**och ange ett namn för RemoteApp.
+6. Välj **RemoteApp** under **program grupps typ** och ange ett namn för RemoteApp.
 
       > [!div class="mx-imgBorder"]
       > ![En skärm bild av fälten för program grupp typ. "RemoteApp" är markerat.](media/remoteapp-button.png)
@@ -73,22 +73,22 @@ Om du redan har skapat en adresspool och en session som är värd för en virtue
 
 12.  Så här lägger du till ett program på Start-menyn:
 
-      - Under **program källa**väljer du **Start-menyn** på den nedrullningsbara menyn. Välj sedan programmet i den nedrullningsbara menyn under **program**.
+      - Under **program källa** väljer du **Start-menyn** på den nedrullningsbara menyn. Välj sedan programmet i den nedrullningsbara menyn under **program**.
 
      > [!div class="mx-imgBorder"]
      > ![En skärm bild av skärmen Lägg till program med Start-menyn markerad.](media/add-app-start.png)
 
-      - I **visnings namn**anger du namnet på det program som ska visas för användaren på klienten.
+      - I **visnings namn** anger du namnet på det program som ska visas för användaren på klienten.
 
       - Lämna de andra alternativen som de är och välj **Spara**.
 
 13.  Så här lägger du till ett program från en specifik fil Sök väg:
 
-      - Under **program källa**väljer du **fil Sök väg** på den nedrullningsbara menyn.
+      - Under **program källa** väljer du **fil Sök väg** på den nedrullningsbara menyn.
 
-      - I **program Sök väg**anger du sökvägen till programmet på den värd för sessionen som registrerats för den associerade poolen.
+      - I **program Sök väg** anger du sökvägen till programmet på den värd för sessionen som registrerats för den associerade poolen.
 
-      - Ange programmets information i fälten **program namn**, **visnings namn**, **sökväg**och **ikon index** .
+      - Ange programmets information i fälten **program namn**, **visnings namn**, **sökväg** och **ikon index** .
 
       - Välj **Spara**.
 
@@ -97,11 +97,11 @@ Om du redan har skapat en adresspool och en session som är värd för en virtue
 
 14.  Upprepa den här processen för alla program som du vill lägga till i program gruppen.
 
-15.  Välj nästa **: >arbets yta **.
+15.  Välj nästa **: >arbets yta**.
 
 16.  Om du vill registrera app-gruppen på en arbets yta väljer du **Ja** för **Registrera program grupp**. Om du hellre vill registrera app-gruppen vid ett senare tillfälle väljer du **Nej**.
 
-17.  Om du väljer **Ja**kan du välja en befintlig arbets yta för att registrera din app-grupp på.
+17.  Om du väljer **Ja** kan du välja en befintlig arbets yta för att registrera din app-grupp på.
 
        >[!NOTE]
        >Du kan bara registrera app-gruppen på arbets ytor som har skapats på samma plats som poolen. Dessutom. Om du tidigare har registrerat en annan app-grupp från samma adresspool som den nya app-gruppen till en arbets yta, kommer den att markeras och du kan inte redigera den. Alla app-grupper från en adresspool måste vara registrerade på samma arbets yta.

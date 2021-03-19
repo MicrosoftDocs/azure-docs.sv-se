@@ -14,15 +14,15 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88799425"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Eventuella korrigeringar för fel meddelandet "du kan inte ta dig dit härifrån"
 
-Vid åtkomst till din organisations interna webbappar eller tjänster kan du få ett fel meddelande som säger att **du inte kan komma dit**härifrån. Det här meddelandet innebär att din organisation har placerat en princip på plats som hindrar enheten från att komma åt din organisations resurser. Du kanske måste kontakta supportavdelningen för att åtgärda problemet. här är några saker som du kan prova först.
+Vid åtkomst till din organisations interna webbappar eller tjänster kan du få ett fel meddelande som säger att **du inte kan komma dit** härifrån. Det här meddelandet innebär att din organisation har placerat en princip på plats som hindrar enheten från att komma åt din organisations resurser. Du kanske måste kontakta supportavdelningen för att åtgärda problemet. här är några saker som du kan prova först.
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>Kontrol lera att du använder en webbläsare som stöds
 Om du får det **här meddelandet kan du inte se** att du försöker komma åt din organisations webbplatser från en webbläsare som inte stöds, kontrol lera vilken webbläsare som körs.
@@ -50,7 +50,7 @@ Om du får det **här meddelandet kan du inte se** att enheten är inkompatibel 
 ![Fel meddelande som rör om du är i nätverket](media/user-help-device-remediation/network-version.png)
 
 ### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Kontrol lera om enheten är ansluten till nätverket
-1. Logga in i Windows med ditt arbets-eller skol konto. Exempelvis alain@contoso.com.
+1. Logga in i Windows med ditt arbets-eller skol konto. Till exempel alain@contoso.com.
 
 2. Anslut till din organisations nätverk via ett virtuellt privat nätverk (VPN) eller DirectAccess.
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87001493"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Koda och avkoda flata filer i Azure Logic Apps med Enterprise-integrationspaketet
@@ -35,12 +35,12 @@ Innan du skickar XML-innehåll till en affärs partner i ett affärs-till-föret
 
 1. I [Azure Portal](https://portal.azure.com)öppnar du din Logic app i Logic Apps designer.
 
-1. Under utlösare eller åtgärd i din Logic app väljer du **nytt steg**  >  **Lägg till en åtgärd**. I det här exemplet används utlösaren för förfrågningar, som namnges **när en HTTP-begäran tas emot**och hanterar inkommande förfrågningar från utanför Logic-appen.
+1. Under utlösare eller åtgärd i din Logic app väljer du **nytt steg**  >  **Lägg till en åtgärd**. I det här exemplet används utlösaren för förfrågningar, som namnges **när en HTTP-begäran tas emot** och hanterar inkommande förfrågningar från utanför Logic-appen.
 
    > [!TIP]
    > Det är valfritt att ange ett JSON-schema. Om du har ett exempel på en nytto Last från den inkommande begäran väljer du **Använd exempel nytto last för att skapa schema**, anger exempel nytto last och väljer sedan **slutfört**. Schemat visas i rutan **JSON-schema för begär ande text** .
 
-1. Under **Välj en åtgärd**anger du `flat file` . I listan åtgärder väljer du den här åtgärden: **flat fil kodning**
+1. Under **Välj en åtgärd** anger du `flat file` . I listan åtgärder väljer du den här åtgärden: **flat fil kodning**
 
    ![Välj åtgärden "flat fil encoding"](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -67,12 +67,12 @@ Nu är du klar med att ställa in din Flat File encoding-åtgärd. I en verklig 
 
 1. I [Azure Portal](https://portal.azure.com)öppnar du din Logic app i Logic Apps designer.
 
-1. Under utlösare eller åtgärd i din Logic app väljer du **nytt steg**  >  **Lägg till en åtgärd**. I det här exemplet används utlösaren för förfrågningar, som namnges **när en HTTP-begäran tas emot**och hanterar inkommande förfrågningar från utanför Logic-appen.
+1. Under utlösare eller åtgärd i din Logic app väljer du **nytt steg**  >  **Lägg till en åtgärd**. I det här exemplet används utlösaren för förfrågningar, som namnges **när en HTTP-begäran tas emot** och hanterar inkommande förfrågningar från utanför Logic-appen.
 
    > [!TIP]
    > Det är valfritt att ange ett JSON-schema. Om du har ett exempel på en nytto Last från den inkommande begäran väljer du **Använd exempel nytto last för att skapa schema**, anger exempel nytto last och väljer sedan **slutfört**. Schemat visas i rutan **JSON-schema för begär ande text** .
 
-1. Under **Välj en åtgärd**anger du `flat file` . I listan åtgärder väljer du den här åtgärden: **flat fil avkodning**
+1. Under **Välj en åtgärd** anger du `flat file` . I listan åtgärder väljer du den här åtgärden: **flat fil avkodning**
 
    ![Välj åtgärden "flat fil avkodning"](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

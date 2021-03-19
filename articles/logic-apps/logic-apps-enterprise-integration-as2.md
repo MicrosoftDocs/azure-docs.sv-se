@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91856678"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Utbyta AS2-meddelanden för B2B-företagsintegrering i Azure Logic Apps med Enterprise-integrationspaket
@@ -63,7 +63,7 @@ Den här artikeln visar hur du lägger till AS2-kodning och avkodnings åtgärde
 
 * Om du använder [Azure Key Vault](../key-vault/general/overview.md) för certifikat hantering kontrollerar du att dina valv nycklar tillåter åtgärder för att **kryptera** och **dekryptera** . Annars fungerar inte kodnings-och avkodnings åtgärderna.
 
-  I Azure Portal går du till nyckeln i ditt nyckel valv, granskar nyckelns **tillåtna åtgärder**och bekräftar att åtgärderna **kryptera** och **dekryptera** är markerade, till exempel:
+  I Azure Portal går du till nyckeln i ditt nyckel valv, granskar nyckelns **tillåtna åtgärder** och bekräftar att åtgärderna **kryptera** och **dekryptera** är markerade, till exempel:
 
   ![Kontrol lera valv nyckel åtgärder](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 

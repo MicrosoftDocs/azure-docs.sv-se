@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: eefc42fb8e66e66c6388599df65c59ff642a6b59
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124116"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654381"
 ---
 # <a name="about-expressroute-fastpath"></a>Om ExpressRoute FastPath
 
@@ -42,7 +42,7 @@ Om du vill konfigurera FastPath måste den virtuella Nätverksgatewayen vara ant
 
 Även om FastPath har stöd för de flesta konfigurationer, stöder den inte följande funktioner:
 
-* UDR i Gateway-undernätet: om du tillämpar en UDR på Gateway-undernätet för det virtuella nätverket, kommer nätverks trafiken från ditt lokala nätverk även att skickas till den virtuella Nätverksgatewayen.
+* UDR i Gateway-undernätet: den här UDR har ingen inverkan på nätverks trafiken som FastPath skickar direkt från ditt lokala nätverk till de virtuella datorerna i Azure Virtual Network. 
 
 * VNet-peering: om du har andra virtuella nätverk som är peer-anslutna med det som är anslutet till ExpressRoute kommer nätverks trafiken från ditt lokala nätverk till de andra virtuella nätverken (d.v.s. det kallas "ekrar"-virtuella nätverk) att skickas vidare till den virtuella Nätverksgatewayen. Lösningen är att ansluta alla virtuella nätverk till ExpressRoute-kretsen direkt.
 

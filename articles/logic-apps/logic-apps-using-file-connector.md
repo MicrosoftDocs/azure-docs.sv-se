@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91873242"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Ansluta till lokala filsystem med Azure Logic Apps
@@ -76,7 +76,7 @@ Den här artikeln visar hur du kan ansluta till ett lokalt fil system enligt bes
    | **Anslutnings namn** | Ja | <*anslutnings namn*> | Det namn som du vill använda för anslutningen |
    | **Rotmapp** | Ja | <*rot-mapp-namn*> | Rotmappen för ditt fil system, till exempel om du har installerat din lokala datagateway, till exempel en lokal mapp på datorn där den lokala datagatewayen är installerad, eller mappen för en nätverks resurs som datorn har åtkomst till. <p>Exempelvis: `\\PublicShare\\DropboxFiles` <p>Rotmappen är den överordnade huvudmappen som används för relativa sökvägar för alla filrelaterade åtgärder. |
    | **Autentiseringstyp** | Inga | <*typ av autentisering*> | Den typ av autentisering som fil systemet använder: **Windows** |
-   | **Användarnamn** | Ja | <*domain* > \\ domän < *användar namn*> <p>\- eller - <p><*lokal* > \\ dator < *användar namn*> | Användar namnet för den dator där du har fil systemets mapp. <p>Om din fil system katalog finns på samma dator som den lokala datagatewayen kan du använda <användar namn för *lokal dator* > \\ < *username*>. |
+   | **Användarnamn** | Ja | < > \\ domän < *användar namn*> <p>\- eller - <p><*lokal* > \\ dator < *användar namn*> | Användar namnet för den dator där du har fil systemets mapp. <p>Om din fil system katalog finns på samma dator som den lokala datagatewayen kan du använda <användar namn för *lokal dator* > \\ < >. |
    | **Lösenord** | Ja | <*ditt lösen ord*> | Lösen ordet för datorn där du har fil systemet |
    | **nyckeln** | Ja | <*installerat – Gateway-namn*> | Namnet på din tidigare installerade Gateway |
    |||||

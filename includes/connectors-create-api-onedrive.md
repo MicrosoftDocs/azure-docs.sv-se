@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 07/21/2020
 ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040236"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
@@ -19,9 +19,9 @@ Innan du kan använda ditt OneDrive-konto med Logic Apps måste du auktorisera L
 
 Följ de här stegen för att auktorisera Logic Apps att ansluta till ditt OneDrive-konto:  
 
-1. Logga in på Azure Portal. 
+1. Logga in på Azure-portalen. 
 
-1. Under **Azure-tjänster**väljer du **Logic Apps**. Välj sedan namnet på din Logic-app i listan.
+1. Under **Azure-tjänster** väljer du **Logic Apps**. Välj sedan namnet på din Logic-app i listan.
 
 1. På din Logic Apps-meny väljer du **Logic Apps designer** under **utvecklingsverktyg**.
 
@@ -33,7 +33,7 @@ Följ de här stegen för att auktorisera Logic Apps att ansluta till ditt OneDr
 
    ![Skärm bild av Logic Apps designer som visar inloggnings tolken för OneDrive API.](./media/connectors-create-api-onedrive/onedrive-2.png)
 
-3. Välj **Logga**in och ange ditt användar namn och lösen ord. Välj **Logga**in: 
+3. Välj **Logga** in och ange ditt användar namn och lösen ord. Välj **Logga** in: 
 
    ![Skärm bild av Microsoft-konto inloggnings sida för OneDrive API-auktorisering.](./media/connectors-create-api-onedrive/onedrive-3.png)   
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063805"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>GRÄNSSNITTs element för Microsoft. Compute. CredentialsCombo
@@ -58,7 +58,7 @@ För Windows använder du följande schema:
 }
 ```
 
-För **Linux**använder du följande schema:
+För **Linux** använder du följande schema:
 
 ```json
 {
@@ -112,9 +112,9 @@ Om `osPlatform` är **Linux** och användaren TILLHANDAHÖLL en offentlig SSH-ny
 ## <a name="remarks"></a>Kommentarer
 
 - `osPlatform` måste anges och kan vara antingen **Windows** eller **Linux**.
-- Om `constraints.required` är inställt på **Sant**måste text rutorna lösen ord eller SSH-offentlig nyckel ha värden för att kunna verifiera. Standardvärdet är **True**.
-- Om `options.hideConfirmation` är inställt på **Sant**döljs den andra text rutan för att bekräfta användarens lösen ord. Standardvärdet är **falskt**.
-- Om `options.hidePassword` är inställt på **Sant**är alternativet för att använda lösenordsautentisering dolt. Den kan endast användas när `osPlatform` är **Linux**. Standardvärdet är **falskt**.
+- Om `constraints.required` är inställt på **Sant** måste text rutorna lösen ord eller SSH-offentlig nyckel ha värden för att kunna verifiera. Standardvärdet är **True**.
+- Om `options.hideConfirmation` är inställt på **Sant** döljs den andra text rutan för att bekräfta användarens lösen ord. Standardvärdet är **falskt**.
+- Om `options.hidePassword` är inställt på **Sant** är alternativet för att använda lösenordsautentisering dolt. Den kan endast användas när `osPlatform` är **Linux**. Standardvärdet är **falskt**.
 - Ytterligare begränsningar för tillåtna lösen ord kan implementeras med hjälp av `customPasswordRegex` egenskapen. Strängen i `customValidationMessage` visas när ett lösen ord Miss lyckas med anpassad verifiering. Standardvärdet för båda egenskaperna är **Null**.
 
 ## <a name="next-steps"></a>Nästa steg

@@ -5,10 +5,10 @@ ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073072"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Konfigurations referens för Azure blockchain Workbench
@@ -33,7 +33,7 @@ I varje definierat arbets flöde anges följande:
 
 Ett blockchain-program innehåller konfigurations-metadata, arbets flöden och användar roller som kan agera eller delta i programmet.
 
-| Field | Beskrivning | Krävs |
+| Fält | Beskrivning | Krävs |
 |-------|-------------|:--------:|
 | ApplicationName | Unikt program namn. Motsvarande Smart kontrakt måste använda samma **ApplicationName** för den aktuella kontrakts klassen.  | Ja |
 | DisplayName | Eget visnings namn för programmet. | Ja |
@@ -47,9 +47,9 @@ Ett exempel finns i [konfigurations filen exempel](#configuration-file-example).
 
 Ett programs affärs logik kan modelleras som en tillstånds dator där en åtgärd gör att affärs logikens flöde flyttas från ett tillstånd till ett annat. Ett arbets flöde är en samling av sådana tillstånd och åtgärder. Varje arbets flöde består av ett eller flera smarta kontrakt, som representerar affärs logiken i kod filer. Ett körbart kontrakt är en instans av ett arbets flöde.
 
-| Field | Beskrivning | Krävs | Högsta längd |
+| Fält | Beskrivning | Krävs | Högsta längd |
 |-------|-------------|:--------:|-----------:|
-| Namn | Unikt arbets flödes namn. Motsvarande smarta kontrakt måste använda samma **namn** för den aktuella kontrakts klassen. | Ja | 50 |
+| Name | Unikt arbets flödes namn. Motsvarande smarta kontrakt måste använda samma **namn** för den aktuella kontrakts klassen. | Ja | 50 |
 | DisplayName | Eget visnings namn för arbets flödet. | Ja | 255 |
 | Beskrivning | Beskrivning av arbets flödet. | Inga | 255 |
 | Initierare | Samling av [ApplicationRoles](#application-roles). Roller som tilldelas till användare som har behörighet att skapa kontrakt i arbets flödet. | Ja | |
@@ -168,7 +168,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 Definierar indataparametrar för en instans av ett arbets flöde.
 
-| Field | Beskrivning | Krävs |
+| Fält | Beskrivning | Krävs |
 |-------|-------------|:--------:|
 | Parametrar | Samling [identifierare](#identifiers) som krävs för att initiera ett smart kontrakt. | Ja |
 
@@ -201,9 +201,9 @@ Definierar indataparametrar för en instans av ett arbets flöde.
 
 Definierar funktioner som kan köras i arbets flödet.
 
-| Field | Beskrivning | Krävs | Högsta längd |
+| Fält | Beskrivning | Krävs | Högsta längd |
 |-------|-------------|:--------:|-----------:|
-| Namn | Funktionens unika namn. Motsvarande smarta kontrakt måste använda samma **namn** för den aktuella funktionen. | Ja | 50 |
+| Name | Funktionens unika namn. Motsvarande smarta kontrakt måste använda samma **namn** för den aktuella funktionen. | Ja | 50 |
 | DisplayName | Användarvänligt visnings namn för funktionen. | Ja | 255 |
 | Beskrivning | Beskrivning av funktionen | Inga | 255 |
 | Parametrar | Samling [identifierare](#identifiers) som motsvarar parametrarna i funktionen. | Ja | |
@@ -249,9 +249,9 @@ Definierar funktioner som kan köras i arbets flödet.
 
 En samling av unika tillstånd i ett arbets flöde. Varje tillstånd fångar ett steg i affärs logikens kontroll flöde. 
 
-| Field | Beskrivning | Krävs | Högsta längd |
+| Fält | Beskrivning | Krävs | Högsta längd |
 |-------|-------------|:--------:|-----------:|
-| Namn | Unikt namn för tillstånd. Motsvarande Smart kontrakt måste använda samma **namn** för det aktuella läget. | Ja | 50 |
+| Name | Unikt namn för tillstånd. Motsvarande Smart kontrakt måste använda samma **namn** för det aktuella läget. | Ja | 50 |
 | DisplayName | Eget visnings namn för tillstånd. | Ja | 255 |
 | Beskrivning | Beskrivning av tillstånd. | Inga | 255 |
 | Procent | Ett heltals värde som visas i användar gränssnittet för blockchain Workbench för att visa förloppet i affärs logikens kontroll flöde. | Ja | |
@@ -318,7 +318,7 @@ En samling av unika tillstånd i ett arbets flöde. Varje tillstånd fångar ett
 
 Tillgängliga åtgärder till nästa tillstånd. En eller flera användar roller kan utföra en åtgärd i varje tillstånd, där en åtgärd kan övergå till ett tillstånd till ett annat tillstånd i arbets flödet. 
 
-| Field | Beskrivning | Krävs |
+| Fält | Beskrivning | Krävs |
 |-------|-------------|:--------:|
 | AllowedRoles | Lista över program roller som tillåts att initiera över gången. Alla användare av den angivna rollen kan kunna utföra åtgärden. | Inga |
 | AllowedInstanceRoles | Lista med användar roller som ingår eller anges i det smarta kontrakt som tillåts initiera över gången. Instans roller definieras i **Egenskaper** i arbets flöden. AllowedInstanceRoles representerar en användare som deltar i en instans av ett smart kontrakt. AllowedInstanceRoles ger dig möjlighet att begränsa åtgärden med en användar roll i en avtals instans.  Till exempel kanske du bara vill tillåta att användaren som skapade kontraktet (InstanceOwner) kan avsluta i stället för alla användare i roll typ (ägare) om du har angett rollen i AllowedRoles. | Inga |
@@ -363,9 +363,9 @@ Tillgängliga åtgärder till nästa tillstånd. En eller flera användar roller
 
 Program roller definierar en uppsättning roller som kan tilldelas till användare som vill agera eller delta i programmet. Program roller kan användas för att begränsa åtgärder och deltagande i blockchain-programmet och motsvarande arbets flöden. 
 
-| Field | Beskrivning | Krävs | Högsta längd |
+| Fält | Beskrivning | Krävs | Högsta längd |
 |-------|-------------|:--------:|-----------:|
-| Namn | Program rollens unika namn. Motsvarande Smart kontrakt måste använda samma **namn** för den aktuella rollen. Namnet på bastypen är reserverat. Det går inte att namnge en program roll med samma namn som [typen](#type)| Ja | 50 |
+| Name | Program rollens unika namn. Motsvarande Smart kontrakt måste använda samma **namn** för den aktuella rollen. Namnet på bastypen är reserverat. Det går inte att namnge en program roll med samma namn som [typen](#type)| Ja | 50 |
 | Beskrivning | Beskrivning av program rollen. | Inga | 255 |
 
 ### <a name="application-roles-example"></a>Exempel på program roller
@@ -386,9 +386,9 @@ Program roller definierar en uppsättning roller som kan tilldelas till använda
 
 Identifierare representerar en samling information som används för att beskriva arbets flödes egenskaper, konstruktorer och funktions parametrar. 
 
-| Field | Beskrivning | Krävs | Högsta längd |
+| Fält | Beskrivning | Krävs | Högsta längd |
 |-------|-------------|:--------:|-----------:|
-| Namn | Egenskapens eller parameterns unika namn. Motsvarande smarta kontrakt måste använda samma **namn** för den aktuella egenskapen eller parametern. | Ja | 50 |
+| Name | Egenskapens eller parameterns unika namn. Motsvarande smarta kontrakt måste använda samma **namn** för den aktuella egenskapen eller parametern. | Ja | 50 |
 | DisplayName | Eget visnings namn för egenskapen eller parametern. | Ja | 255 |
 | Beskrivning | Beskrivning av egenskapen eller parametern. | Inga | 255 |
 | Typ | Egenskaps [data typ](#type). | Ja |
@@ -418,7 +418,7 @@ Identifierare representerar en samling information som används för att beskriv
 
 ## <a name="configuration-file-example"></a>Exempel på konfigurations fil
 
-Till gångs överföring är ett smart kontrakt scenario för att köpa och sälja höga värde till gångar, vilket kräver en inspektör och en bedömning. Säljare kan lista sina till gångar genom att instansiera ett smart kontrakt för till gångs överföring. Köparna kan erbjuda erbjudanden genom att vidta åtgärder i det smarta avtalet och andra parter kan vidta åtgärder för att inspektera eller bedöma till gången. När till gången har marker ATS som både inspekterad och uppfyllt, kommer köparen och säljaren att bekräfta försäljningen igen innan kontraktet har angetts vara slutfört. Vid varje punkt i processen har alla deltagare insyn i kontraktets status när de uppdateras. 
+Till gångs överföring är ett smart kontrakt scenario för att köpa och sälja höga värde till gångar, vilket kräver en inspektör och en bedömning. Säljare kan lista sina till gångar genom att instansiera ett smart kontrakt för till gångs överföring. Köparna kan erbjuda erbjudanden genom att vidta åtgärder i det smarta avtalet och andra parter kan vidta åtgärder för att inspektera eller bedöma till gången. När till gången har marker ATS som både inspekterad och uppfyllt, kommer köparen och säljaren att bekräfta försäljningen igen innan kontraktet har angetts vara slutfört. Vid varje punkt i processen har alla deltagare insyn i kontraktets status när de uppdateras. 
 
 Mer information, inklusive kod filerna, finns i [exempel på till gångs överföring för Azure blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
 

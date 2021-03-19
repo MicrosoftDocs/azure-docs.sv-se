@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93074805"
 ---
 # <a name="overview-of-the-developer-portal"></a>Översikt över Developer-portalen
@@ -62,7 +62,7 @@ När du först startade för hands versionen av Developer-portalen etablerade du
 
 Om du har anpassat din portal baserat på för hands versionen av innehållet kan du fortsätta att använda den som den är och placera nya widgetar manuellt på portalens sidor. Annars rekommenderar vi att du ersätter portalens innehåll med det nya standard innehållet.
 
-Om du vill återställa innehållet i en hanterad Portal väljer du **Återställ innehåll** i menyn **åtgärder** . Den här åtgärden tar bort allt innehåll i portalen och etablerar nytt standard innehåll. Du kommer att förlora alla anpassningar och ändringar i utvecklings portalen. Det **går inte att ångra den här åtgärden** .
+Om du vill återställa innehållet i en hanterad Portal väljer du **Återställ innehåll** i menyn **åtgärder** . Den här åtgärden tar bort allt innehåll i portalen och etablerar nytt standard innehåll. Du kommer att förlora alla anpassningar och ändringar i utvecklings portalen. Det **går inte att ångra den här åtgärden**.
 
 ![Återställ Portal innehåll](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -196,7 +196,7 @@ Anrops felen kan också orsakas av ett TLS/SSL-certifikat, som är tilldelat en 
 | Apple Safari                | Ja<sup>1</sup> |
 | Google Chrome               | Ja<sup>1</sup> |
 | Microsoft Edge              | Ja<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Inga              |
 | Mozilla Firefox             | Ja<sup>1</sup> |
 
  <small><sup>1</sup> stöds i de två senaste produktions versionerna.</small>

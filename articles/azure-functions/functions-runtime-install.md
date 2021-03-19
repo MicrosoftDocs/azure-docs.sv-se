@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540391"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installera Körmiljö för Azure Functions för hands version 2
@@ -25,7 +25,7 @@ Följ dessa steg om du vill installera Körmiljö för Azure Functions Preview 2
 1. Slutför konfigurationen av Körmiljö för Azure Functions för hands version 2.
 1. Skapa din första funktion i Körmiljö för Azure Functions för hands version
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du installerar Körmiljö för Azure Functions för hands versionen måste du ha följande resurser tillgängliga:
 
@@ -47,7 +47,7 @@ Installations programmet för förhands granskning Körmiljö för Azure Functio
     ![Körmiljö för Azure Functions för hands versions installation][1]
 
 1. Klicka på **Nästa**.
-1. När du har läst villkoren i **licens avtalet**markerar du **kryss rutan** för att godkänna villkoren och klickar sedan på **Nästa** för att gå vidare.
+1. När du har läst villkoren i **licens avtalet** markerar du **kryss rutan** för att godkänna villkoren och klickar sedan på **Nästa** för att gå vidare.
 1. Välj de roller som du vill installera på den här datorn **funktions hanterings roll** och/eller **Functions Worker-roll** och klicka på **Nästa**.
 
     ![Körmiljö för Azure Functions för hands version-roll val][3]
@@ -75,7 +75,7 @@ För att slutföra installationen av Körmiljö för Azure Functions måste du s
 
     ![Körmiljö för Azure Functions förhandsgranska databas konfiguration][8]
 
-1. Klicka på fliken **autentiseringsuppgifter** .  Här måste du skapa två nya autentiseringsuppgifter för användning med en fil resurs som är värd för alla dina funktions program.  Ange kombinationer av **användar namn** och **lösen ord** för **fil resursens ägare** och för **fil resurs användaren**och klicka sedan på **Använd**.
+1. Klicka på fliken **autentiseringsuppgifter** .  Här måste du skapa två nya autentiseringsuppgifter för användning med en fil resurs som är värd för alla dina funktions program.  Ange kombinationer av **användar namn** och **lösen ord** för **fil resursens ägare** och för **fil resurs användaren** och klicka sedan på **Använd**.
 
     ![Körmiljö för Azure Functions för hands versions inloggning][9]
 
@@ -101,7 +101,7 @@ Skapa din första funktion i Körmiljö för Azure Functions för hands version
 
 1. Bläddra till **körmiljö för Azure Functions Portal** till `https://<machinename>.<domain>` exempel `https://mycomputer.mydomain.com` .
 
-1. Du uppmanas att **Logga**in, om distribuerat i en domän använder ditt domän konto användar namn och lösen ord, annars använder du ditt lokala konto användar namn och lösen ord för att logga in på portalen.
+1. Du uppmanas att **Logga** in, om distribuerat i en domän använder ditt domän konto användar namn och lösen ord, annars använder du ditt lokala konto användar namn och lösen ord för att logga in på portalen.
 
     ![Körmiljö för Azure Functions förhandsgranska Portal inloggning][14]
 

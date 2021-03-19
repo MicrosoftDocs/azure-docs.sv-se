@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -10,10 +10,10 @@ ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 7709f26b30d41b932569227b8b6f05b5725dc98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88815680"
 ---
 När du publicerar ditt erbjudande på den kommersiella Marketplace via partner Center måste du ansluta ditt erbjudande till ditt CRM-system. På så sätt kan du ta emot kund kontakt uppgifter direkt efter att en kund har fått ett intresse eller distribuerar din produkt.

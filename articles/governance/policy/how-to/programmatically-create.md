@@ -1,14 +1,14 @@
 ---
 title: Skapa principer programmässigt
 description: Den här artikeln vägleder dig genom program mässigt skapa och hantera principer för Azure Policy med Azure CLI, Azure PowerShell och REST API.
-ms.date: 08/17/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033871"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598498"
 ---
 # <a name="programmatically-create-policies"></a>Skapa principer programmässigt
 
@@ -244,5 +244,5 @@ Läs följande artiklar om du vill ha mer information om kommandon och frågor i
 - [Azure REST API-resurser](/rest/api/resources/)
 - [Azure PowerShell moduler](/powershell/module/az.resources/#policy)
 - [Azure CLI-princip kommandon](/cli/azure/policy)
-- [Azure Policy insikter Resource Provider REST API referens](/rest/api/policy-insights)
+- [REST API referens för Azure Policy Resource Provider](/rest/api/policy)
 - [Organisera dina resurser i Azure-hanteringsgrupper](../../management-groups/overview.md).

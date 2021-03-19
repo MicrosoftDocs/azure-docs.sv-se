@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83123705"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Löpande distribution för Azure Functions
@@ -36,13 +36,13 @@ För att kontinuerlig distribution ska lyckas måste katalog strukturen vara kom
 
 Slutför de här stegen för att konfigurera kontinuerlig distribution för en befintlig Function-app. Stegen demonstrerar integreringen med en GitHub-lagringsplats, men liknande steg gäller för Azure databaser eller andra käll kods centraler.
 
-1. I din Function-app i [Azure Portal](https://portal.azure.com)väljer du **Deployment Center**, väljer **GitHub**och väljer sedan **auktorisera**. Om du redan har auktoriserat GitHub väljer du **Fortsätt** och hoppar över nästa steg. 
+1. I din Function-app i [Azure Portal](https://portal.azure.com)väljer du **Deployment Center**, väljer **GitHub** och väljer sedan **auktorisera**. Om du redan har auktoriserat GitHub väljer du **Fortsätt** och hoppar över nästa steg. 
 
     :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Azure App Service distributions Center":::
 
 3. I GitHub väljer du **auktorisera AzureAppService**.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service distributions Center":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Auktorisera Azure App Service":::
 
     Ange ditt GitHub-lösenord och välj sedan **Fortsätt**.
 
@@ -53,9 +53,9 @@ Slutför de här stegen för att konfigurera kontinuerlig distribution för en b
 
     Välj **Fortsätt**.
 
-5. Konfigurera information som är specifik för det alternativ för käll kontroll som du har angett. För GitHub måste du ange eller välja värden för **organisation**, **lagrings plats**och **gren**. Värdena baseras på kodens plats. Välj sedan **Fortsätt**.
+5. Konfigurera information som är specifik för det alternativ för käll kontroll som du har angett. För GitHub måste du ange eller välja värden för **organisation**, **lagrings plats** och **gren**. Värdena baseras på kodens plats. Välj sedan **Fortsätt**.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service distributions Center":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Konfigurera GitHub":::
 
 6. Granska all information och välj sedan **Slutför** för att slutföra distributions konfigurationen.
 

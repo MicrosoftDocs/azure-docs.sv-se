@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: 77407f253bb347160ea331bd7384d8085f21b040
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890239"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654466"
 ---
 # <a name="train-svd-recommender"></a>Träna SVD-rekommenderare
 
 Den här artikeln beskriver hur du använder modulen träna SVD-rekommendation i Azure Machine Learning designer. Använd den här modulen för att träna en rekommendations modell baserat på SVD-algoritmen (Single Value diskomposition).  
 
-Modulen för att träna SVD-rekommendation läser en data uppsättning av tredubbla användar objekts bedömningar. Den returnerar en utbildad SVD-rekommendation. Du kan sedan använda den tränade modellen för att förutsäga klassificeringar eller skapa rekommendationer med hjälp av funktionen [Scores i SvD-rekommenderat](score-svd-recommender.md) läge.  
+Modulen för att träna SVD-rekommendation läser en data uppsättning av tredubbla användar objekts bedömningar. Den returnerar en utbildad SVD-rekommendation. Du kan sedan använda den tränade modellen för att förutsäga betyg eller skapa rekommendationer genom [att ansluta till den.](score-svd-recommender.md)  
 
 
   
@@ -58,18 +58,21 @@ Från det här exemplet kan du se att en enskild användare har betygsatt flera 
 
 1.  Lägg till modulen för att träna SVD-rekommenderat i din pipeline i designern och Anslut den till tränings data.  
    
-2.  För **antal faktorer**anger du antalet faktorer som ska användas med rekommendationen.  
+2.  För **antal faktorer** anger du antalet faktorer som ska användas med rekommendationen.  
     
     Varje faktor mäter hur mycket användaren är relaterad till objektet. Antalet faktorer är också dimensionalitet för latent faktor utrymme. När antalet användare och objekt ökar är det bättre att ange ett större antal faktorer. Men om antalet är för stort kan prestanda släppas.
     
 3.  **Antalet iterationer av rekommendations algoritm** anger hur många gånger algoritmen ska bearbeta indata. Ju högre siffra är, desto mer exakta förutsägelserna. Ett högre antal innebär dock lägre utbildning. Standardvärdet är 30.
 
-4.  För **inlärnings hastighet**anger du ett tal mellan 0,0 och 2,0 som definierar steg storleken för inlärningen.
+4.  För **inlärnings hastighet** anger du ett tal mellan 0,0 och 2,0 som definierar steg storleken för inlärningen.
 
     Inlärnings frekvensen avgör storleken på steget vid varje iteration. Om steg storleken är för stor kan du överskrida den optimala lösningen. Om steg storleken är för liten tar det längre tid att hitta den bästa lösningen genom inlärningen. 
   
 5.  Skicka pipelinen.  
 
+## <a name="results"></a>Resultat
+
+När pipeline-körningen har slutförts, för att använda modellen för att bedöma, ansluter du [träna SVD-rekommenderat](train-svd-recommender.md) för att visa [SVD-rekommenderat](score-svd-recommender.md), för att förutsäga värden för nya exempel på ingångar.
 
 ## <a name="next-steps"></a>Nästa steg
 

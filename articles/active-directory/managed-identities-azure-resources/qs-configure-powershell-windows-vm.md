@@ -16,10 +16,10 @@ ms.date: 08/19/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b4209ce159c9d0bbee01dd422b98832f6bb5713
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968989"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med PowerShell
@@ -122,7 +122,7 @@ För att tilldela en användardefinierad identitet till en virtuell dator måste
 
 1. Se något av följande snabb starter för Azure VM, som endast fyller i de nödvändiga avsnitten ("logga in på Azure", "skapa resurs grupp", "skapa nätverks grupp", "skapa den virtuella datorn").
 
-    När du kommer till avsnittet "skapa den virtuella datorn" gör du en liten ändring av [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet-syntaxen. Lägg till `-IdentityType UserAssigned` `-IdentityID` parametrarna och för att etablera den virtuella datorn med en tilldelad identitet.  Ersätt `<VM NAME>` , `<SUBSCRIPTION ID>` , `<RESROURCE GROUP>` och `<USER ASSIGNED IDENTITY NAME>` med dina egna värden.  Till exempel:
+    När du kommer till avsnittet "skapa den virtuella datorn" gör du en liten ändring av [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet-syntaxen. Lägg till `-IdentityType UserAssigned` `-IdentityID` parametrarna och för att etablera den virtuella datorn med en tilldelad identitet.  Ersätt `<VM NAME>` , `<SUBSCRIPTION ID>` , `<RESROURCE GROUP>` och `<USER ASSIGNED IDENTITY NAME>` med dina egna värden.  Exempel:
 
     ```azurepowershell-interactive
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."

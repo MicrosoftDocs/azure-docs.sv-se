@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91892718"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Support principer för Azure Kubernetes-tjänsten
@@ -106,7 +106,7 @@ På samma sätt släpper AKS regelbundet nya Kubernetes-korrigeringsfiler och de
 > [!NOTE]
 > AKS agent-noder visas i Azure Portal som vanliga Azure IaaS-resurser. Men de här virtuella datorerna distribueras till en anpassad Azure-resurs grupp (vanligt vis föregås av MC_ \* ). Du kan inte ändra bas operativ system avbildningen eller göra några direkta anpassningar till dessa noder med IaaS-API: erna eller resurser. Eventuella anpassade ändringar som inte görs via AKS-API: et behålls inte genom en uppgradering, skalning, uppdatering eller omstart. Undvik att utföra ändringar av agent noderna om Microsoft Support dirigerar dig om att göra ändringar.
 
-AKS hanterar livs cykeln och åtgärder för agent-noderna för din räkning – det **går inte**att ändra de IaaS-resurser som är kopplade till agent-noderna. Ett exempel på en åtgärd som inte stöds är att anpassa skalnings uppsättningen för en virtuell dator i en pool genom att manuellt ändra konfigurationerna via den virtuella datorns skal uppsättnings portal eller API.
+AKS hanterar livs cykeln och åtgärder för agent-noderna för din räkning – det **går inte** att ändra de IaaS-resurser som är kopplade till agent-noderna. Ett exempel på en åtgärd som inte stöds är att anpassa skalnings uppsättningen för en virtuell dator i en pool genom att manuellt ändra konfigurationerna via den virtuella datorns skal uppsättnings portal eller API.
  
 AKS rekommenderar att du använder [Kubernetes `daemon sets` ](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)för arbets belastnings bara konfigurationer eller paket.
 

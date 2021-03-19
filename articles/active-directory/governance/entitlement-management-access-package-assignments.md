@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980058"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Visa, lägga till och ta bort tilldelningar för ett Access-paket i hantering av Azure AD-rättigheter
@@ -54,7 +54,7 @@ Om du vill använda hantering av Azure AD-rättigheter och tilldela användare �
 
 1. Om du vill se förfallna tilldelningar klickar du på filter status och väljer **upphör att gälla**.
 
-1. Klicka på **Hämta**om du vill ladda ned en CSV-fil för den filtrerade listan.
+1. Klicka på **Hämta** om du vill ladda ned en CSV-fil för den filtrerade listan.
 
 ### <a name="viewing-assignments-programmatically"></a>Visa tilldelningar program mässigt
 
@@ -70,7 +70,7 @@ I vissa fall kanske du vill tilldela vissa användare direkt till ett Access-pak
 
 1. I den vänstra menyn klickar du på **åtkomst paket** och öppnar sedan Access-paketet.
 
-1. Klicka på **tilldelningar**på den vänstra menyn.
+1. Klicka på **tilldelningar** på den vänstra menyn.
 
 1. Klicka på **ny tilldelning** för att öppna Lägg till användare för att komma åt paketet.
 
@@ -100,7 +100,7 @@ Du kan också tilldela en användare direkt till ett Access-paket med hjälp av 
 
 1. I den vänstra menyn klickar du på **åtkomst paket** och öppnar sedan Access-paketet.
 
-1. Klicka på **tilldelningar**på den vänstra menyn.
+1. Klicka på **tilldelningar** på den vänstra menyn.
  
 1. Klicka på kryss rutan bredvid den användare vars tilldelning du vill ta bort från åtkomst paketet. 
 

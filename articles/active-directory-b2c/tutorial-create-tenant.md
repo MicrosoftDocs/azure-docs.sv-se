@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 673e2260f358332de00a15b29729f14d62fe82a4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aa91851787bbb0f5570a4f439f794ee352bf0625
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518015"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579696"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Självstudie: Skapa en klientorganisation i Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Innan dina program kan interagera med Azure Active Directory B2C (Azure AD B2C) 
 > [!NOTE]
 > Du kan skapa upp till 20 klienter per prenumeration. Den här gränsen hjälper till att skydda mot hot mot dina resurser, till exempel DOS-attacker (Denial-of-Service) och framtvingas i både Azure Portal och den underliggande API: n för skapande av klient organisationer. Om du behöver skapa fler än 20 klienter kontaktar du [Microsoft Support](support-options.md).
 > 
-> Om du vill återanvända ett klient namn som du tidigare försökte ta bort, men om du ser felet "används redan av en annan katalog" när du anger domän namnet, måste du [följa dessa steg för att helt ta bort klient organisationen först](https://docs.microsoft.com/azure/active-directory-b2c/faq?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). En roll av minst en prenumerations administratör krävs. När du har tagit bort klienten kan du även behöva logga ut och logga in igen innan du kan återanvända domän namnet.
+> Om du vill återanvända ett klient namn som du tidigare försökte ta bort, men om du ser felet "används redan av en annan katalog" när du anger domän namnet, måste du [följa dessa steg för att helt ta bort klient organisationen först](./faq.md?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). En roll av minst en prenumerations administratör krävs. När du har tagit bort klienten kan du även behöva logga ut och logga in igen innan du kan återanvända domän namnet.
 
 I den här artikeln kan du se hur du:
 

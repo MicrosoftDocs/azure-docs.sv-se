@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929464"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Vanliga frågor och svar om SMB-prestanda för Azure NetApp Files
@@ -122,7 +122,7 @@ Följande diagram visar resultaten för sekventiella I/O:
 
 En strategi som används för testning med FIO är att ställa in `numjobs=16` . Genom att göra så förgreningar varje jobb in i 16 angivna instanser för att maximera Microsoft Hyper-V nätverkskortet.
 
-Du kan söka efter aktivitet på varje kort i prestanda övervakaren i Windows genom att välja **prestanda övervakaren > lägga till räknare > nätverks gränssnittet > Microsoft Hyper-V**nätverkskortet.
+Du kan söka efter aktivitet på varje kort i prestanda övervakaren i Windows genom att välja **prestanda övervakaren > lägga till räknare > nätverks gränssnittet > Microsoft Hyper-V** nätverkskortet.
 
 ![Skärm bild som visar prestanda övervakaren Lägg till räknar gränssnitt.](../media/azure-netapp-files/smb-performance-performance-monitor-add-counter.png)
 

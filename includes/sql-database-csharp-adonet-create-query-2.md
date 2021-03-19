@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86544046"
 ---
 ## <a name="c-program-example"></a>C#-programexempel
@@ -37,7 +37,7 @@ ERD visar relationen mellan de två tabellerna. Värdena i den *underordnade* ko
 
 C#-programmet är logiskt en .cs-fil och fysiskt uppdelad i flera kodblock som gör det enklare att förstå varje block. Gör följande för att kompilera och köra programmet:
 
-1. Skapa C#-projektet i Visual Studio. Projekttyp ska vara *Konsol*, som finns under **Mallar** > **Visual C# ** > **Windows Desktop** > **Konsolprogram (.NET Framework)**.
+1. Skapa C#-projektet i Visual Studio. Projekttyp ska vara *Konsol*, som finns under **Mallar** > **Visual C#** > **Windows Desktop** > **Konsolprogram (.NET Framework)**.
 
 1. I filen *Program.cs* ersätter du kodens startlinjer med följande steg:
 

@@ -8,17 +8,17 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 5a29fa8d60d3c581a502cded1a7e04026f768667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540702"
 ---
 # <a name="managing-your-academic-grant"></a>Hantera ditt akademiska bidrag
 
 Din huvud landnings sida i Azure-Education Hub är översikts sidan. Den här sidan innehåller all relevant information om ditt akademiska bidrag, till exempel antalet klasser som du har upprättat och din totala löpande kredit som har tilldelats och används från dessa klasser. Den visar även genvägar till andra förmåner som tillhandahålls av Education Hub: program vara, inlärning och snabb starts mallar.
 
-## <a name="overview-page"></a>Översikts sida
+## <a name="overview-page"></a>Översiktssidan
 :::image type="content" source="media/hub-overview-page/overview.png" alt-text="Fel meddelande för inloggning." border="false":::
 
 1. **Kurserna** visar det totala antalet aktiva kurser på instruktörens konto.

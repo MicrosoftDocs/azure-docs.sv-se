@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980676"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Översikt över Threat Modeling Tool funktioner
@@ -120,7 +120,7 @@ Hovra över **öppna en modell** för att visa två alternativ: **öppna från d
 
 ### <a name="feedback-suggestions-and-issues"></a>Feedback, förslag och problem
 
-När du väljer **feedback, förslag och problem**går du till MSDN-forumet för sdl-verktyg. Du kan läsa vad andra personer säger om verktyget, inklusive lösningar och nya idéer.
+När du väljer **feedback, förslag och problem** går du till MSDN-forumet för sdl-verktyg. Du kan läsa vad andra personer säger om verktyget, inklusive lösningar och nya idéer.
 
 ![Skärm bild som visar en knapp med feedback, förslag och problem för texten.](./media/threat-modeling-tool-feature-overview/feedback.png)
 
@@ -160,7 +160,7 @@ Om du skapar en hot modell och glömmer att ansluta data flöden till element f�
 
 ![Skärm bild som visar en hot modell koppling som inte är ansluten till element, med ett meddelande om att problemet uppstår.](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>Obs!
+### <a name="notes"></a>Kommentarer
 
 Om du vill lägga till anteckningar i diagrammet växlar du från fliken **meddelanden** till fliken **anteckningar** .
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 16d1547b81f48b0525c667262a7a903d747a40dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 5db18b36464e51d8832e0879e55cfe6f0f73eab5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435720"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597805"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exceedai"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Exceed.ai
 
@@ -125,11 +125,9 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Exceed.ai-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Exceed.ai i Mina appar omdirigeras det till Exceed.ai-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Exceed.ai i Mina appar omdirigeras det till Exceed.ai-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Exceed.ai kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+När du har konfigurerat Exceed.ai kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

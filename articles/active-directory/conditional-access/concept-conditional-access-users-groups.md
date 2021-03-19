@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630885"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579067"
 ---
 # <a name="conditional-access-users-and-groups"></a>Villkorlig åtkomst: användare och grupper
 
-En princip för villkorlig åtkomst måste innehålla en användar tilldelning som en av signalerna i besluts processen. Användare kan tas med eller undantas från principer för villkorlig åtkomst. Azure Active Directory utvärderar alla principer och säkerställer att alla krav uppfylls innan åtkomst beviljas till användaren. Förutom den här artikeln har vi en video om hur du [tar med eller undantar användare från principer för villkorlig åtkomst](https://www.youtube.com/watch?v=5DsW1hB3Jqs) som vägleder dig genom processen som beskrivs nedan. 
+En princip för villkorlig åtkomst måste innehålla en användar tilldelning som en av signalerna i besluts processen. Användare kan tas med eller undantas från principer för villkorlig åtkomst. Azure Active Directory utvärderar alla principer och säkerställer att alla krav uppfylls innan åtkomst beviljas till användaren. 
 
-![Användare som en signal i besluten som fattas av villkorlig åtkomst](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>Inkludera användare
 
@@ -77,7 +77,7 @@ Som standard tillhandahåller principen ett alternativ för att undanta den aktu
 
 ![Varning, Lås inte ut!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[Vad ska jag göra om du är utelåst från Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+Om du inte hittar dig själv låst[vad du kan göra om du är utelåst från Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Nästa steg
 
