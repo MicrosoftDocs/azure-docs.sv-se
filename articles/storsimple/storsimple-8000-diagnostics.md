@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954077"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Använd verktyget StorSimple Diagnostics för att felsöka enhets problem i 8000-serien
@@ -417,7 +417,7 @@ Här är en tabell som beskriver de olika Windows PowerShell-parametrarna i syst
 | PowerShell-parameter    | Beskrivning  |
 |-------------------------|------------------|
 | Instance ID             | Varje styrenhet har en unik identifierare eller ett GUID som är associerat med den.|
-| Namn                    | Det egna namnet på enheten enligt konfigurationen i Azure Portal under enhets distributionen. Det egna standard namnet är enhetens serie nummer. |
+| Name                    | Det egna namnet på enheten enligt konfigurationen i Azure Portal under enhets distributionen. Det egna standard namnet är enhetens serie nummer. |
 | Modell                   | Modellen för din enhet med StorSimple 8000-serien. Modellen kan vara 8100 eller 8600.|
 | Serienummer            | Enhetens serie nummer tilldelas till fabriken och är 15 tecken långt. Till exempel visar 8600-SHX0991003G44HT:<br> 8600 – är enhets modellen.<br>SHX – är webbplatsen för produktion.<br> 0991003 – är en enskild produkt. <br> G44HT – de sista 5 siffrorna ökar för att skapa unika serie nummer. Det får inte vara en sekventiell uppsättning.|
 | TimeZone                | Enhetens tidszon enligt konfigurationen i Azure Portal under enhets distributionen.|

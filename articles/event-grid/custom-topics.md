@@ -4,10 +4,10 @@ description: Beskriver anpassade ämnen i Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86113793"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Anpassade ämnen i Azure Event Grid
@@ -15,7 +15,7 @@ Ett event Grid-ämne innehåller en slut punkt där källan skickar händelser. 
 
 **Anpassade ämnen** är program-och tredje parts ämnen. När du skapar eller tilldelas åtkomst till ett anpassat ämne visas detta anpassade ämne i din prenumeration. 
 
-När du designar ditt program är du flexibel när du bestämmer hur många ämnen som ska skapas. Skapa ett **anpassat ämne** för **varje kategori av relaterade händelser**för stora lösningar. Tänk dig ett program som skickar händelser som handlar om att ändra användarkonton och bearbeta beställningar. Det är osannolikt alla händelsehanteraren vill ha båda händelsekategorier. Skapa två anpassade ämnen och låt händelsehanteraren prenumerera på det mest relevanta. För små lösningar kanske du föredrar att skicka alla händelser till ett enda ämne. Händelse prenumeranter kan filtrera efter de händelse typer som de vill ha.
+När du designar ditt program är du flexibel när du bestämmer hur många ämnen som ska skapas. Skapa ett **anpassat ämne** för **varje kategori av relaterade händelser** för stora lösningar. Tänk dig ett program som skickar händelser som handlar om att ändra användarkonton och bearbeta beställningar. Det är osannolikt alla händelsehanteraren vill ha båda händelsekategorier. Skapa två anpassade ämnen och låt händelsehanteraren prenumerera på det mest relevanta. För små lösningar kanske du föredrar att skicka alla händelser till ett enda ämne. Händelse prenumeranter kan filtrera efter de händelse typer som de vill ha.
 
 ## <a name="event-schema"></a>Händelseschema
 En detaljerad översikt över händelse schema finns i [Azure Event Grid Event schema](event-schema.md). För anpassade ämnen bestämmer händelse utgivaren **dataobjektet** . Data på den översta nivån ska ha samma fält som standard resurs definierade händelser.

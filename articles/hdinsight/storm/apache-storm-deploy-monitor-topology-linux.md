@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929179"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Distribuera och hantera Apache Storm topologier på Azure HDInsight
@@ -169,7 +169,7 @@ Storm-ANVÄNDARGRÄNSSNITTET tillhandahåller ett webb gränssnitt för att arbe
 
 Huvud sidan i storm-ANVÄNDARGRÄNSSNITTET innehåller följande information:
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 | --- | --- |
 | Klustersammanfattning| Grundläggande information om Storm-klustret. |
 | Sammanfattning av Nimbus | En lista med grundläggande Nimbus-information. |
@@ -185,7 +185,7 @@ Huvud sidan för Storm-gränssnittet liknar den här webb sidan:
 
 Om du väljer en länk från avsnittet **topologi Sammanfattning** visas följande information om topologin:
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 | --- | --- |
 | Översikt över topologi | Grundläggande information om topologin. |
 | Åtgärder för topologi| Hanterings åtgärder som du kan utföra för topologin. De tillgängliga åtgärderna beskrivs senare i det här avsnittet. |
@@ -202,13 +202,13 @@ Sammanfattnings sidan för Storm-topologin liknar den här webb sidan:
 
 I avsnittet **topologi åtgärder** kan du välja följande knappar för att utföra en åtgärd:
 
-| Button (Knapp) | Description |
+| Button (Knapp) | Beskrivning |
 | --- | --- |
 | Aktivera | Återupptar bearbetning av en inaktive rad topologi. |
 | Inaktivera | Pausar en topologi som körs. |
 | Balansera om | Justerar topologins parallellitet. Du bör balansera om topologier som körs när du har ändrat antalet noder i klustret. Med den här åtgärden kan topologin justera parallellt för att kompensera för det ytterligare eller minskade antalet noder i klustret.<br/><br/>Mer information finns i <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">förstå parallellitet för en Apache Storm topologi</a>.
 | Döda | Avslutar en Storm-topologi efter den angivna tids gränsen. |
-| Felsökning | Startar en felsökningssession för den topologi som körs. |
+| Felsöka | Startar en felsökningssession för den topologi som körs. |
 | Stoppa fel sökning | Avslutar felsökningssessionen för den topologi som körs. |
 | Ändra loggnings nivå | Ändrar fel söknings logg nivån. |
 
@@ -216,7 +216,7 @@ I avsnittet **topologi åtgärder** kan du välja följande knappar för att utf
 
 Om du väljer en kanalen i avsnittet **kanaler** eller **bultar** visas följande information om det valda objektet:
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 | --- | --- |
 | Sammanfattning av komponent | Grundläggande information om kanalen eller bult. |
 | Komponent åtgärder | **Felsök** och **stoppa fel söknings** knapparna. |
@@ -246,7 +246,7 @@ Bas-URI: n för REST API på Linux-baserade HDInsight-kluster finns i URL-adress
 
 Du kan hitta det fullständigt kvalificerade domän namnet (FQDN) för noden kluster huvud på flera sätt:
 
-| Identifierings metod för fullständigt domän namn | Description |
+| Identifierings metod för fullständigt domän namn | Beskrivning |
 | --- | --- |
 | SSH-session | Använd kommandot `headnode -f` från en SSH-session till klustret. |
 | Ambari-webb | På Ambari-klustrets webb sida ( `https://CLUSTERNAME.azurehdinsight.net` ) väljer du **tjänster** överst på sidan och väljer sedan **Storm**. Välj **Storm UI Server** på fliken **Sammanfattning** . FQDN för den nod som är värd för Storm-ANVÄNDARGRÄNSSNITTET och REST API visas längst upp på sidan. |

@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar kryptering av en Azure-lagring som anv
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149318"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Kryptera Azure Storage som används av ett labb i Azure DevTest Labs
@@ -28,10 +28,10 @@ Alla labb som skapats i Azure DevTest Labs skapas med ett associerat Azure Stora
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Välj resurs grupp på sidan Översikt":::
 1. Välj Azure Storage-kontot för labbet. Namn konventionen för labb lagrings kontot är: `a<labNameWithoutInvalidCharacters><4-digit number>` . Om Lab-namnet t. ex. är det `contosolab` kan lagrings konto namnet vara `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Välj resurs grupp på sidan Översikt":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Välj lagrings konto i resurs gruppen i labbet":::
 3. På sidan **lagrings konto** väljer du **Storage Explorer (för hands version)** på den vänstra menyn och väljer sedan **BLOB-behållare** för att hitta relevant labb relaterat innehåll. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Välj resurs grupp på sidan Översikt" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Lagringsutforskaren (förhandsversion)" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>Kryptera ditt labb lagrings konto
 Azure Storage krypterar dina data automatiskt när de sparas i molnet. Azure Storage kryptering skyddar dina data och hjälper dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Mer information finns i [Azure Storage kryptering för vilande data](../storage/common/storage-service-encryption.md).

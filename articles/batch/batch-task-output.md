@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85965118"
 ---
 # <a name="persist-job-and-task-output"></a>Bevara jobb- och uppgiftsutdata
@@ -73,7 +73,7 @@ När du designar din batch-lösning bör du tänka på följande faktorer som r�
 
 - **Hämtning av utdata**: du kan hämta Uppgiftsutdata direkt från Compute-noderna i poolen, eller från Azure Storage eller ett annat data lager om du har sparat Uppgiftsutdata. Om du vill hämta en aktivitets utdata direkt från en Compute-nod behöver du fil namnet och dess utmatnings plats på noden. Om du sparar Uppgiftsutdata till Azure Storage måste du använda den fullständiga sökvägen till filen i Azure Storage för att ladda ned utdatafilerna med Azure Storage SDK.
 
-- **Visa utdata**: när du navigerar till en batch-aktivitet i Azure Portal och väljer **filer på noden**visas alla filer som är associerade med uppgiften, inte bara de utdatafiler som du är intresse rad av. Filerna på Compute-noder är bara tillgängliga medan noden finns och endast inom den kvarhållna fil lagrings tid som du har angett för aktiviteten. Om du vill visa Uppgiftsutdata som du har sparat för att Azure Storage kan du använda Azure Portal eller ett Azure Storage-klient program som [Azure Storage Explorer][storage_explorer]. Om du vill visa utdata i Azure Storage med portalen eller något annat verktyg måste du känna till filens plats och navigera till den direkt.
+- **Visa utdata**: när du navigerar till en batch-aktivitet i Azure Portal och väljer **filer på noden** visas alla filer som är associerade med uppgiften, inte bara de utdatafiler som du är intresse rad av. Filerna på Compute-noder är bara tillgängliga medan noden finns och endast inom den kvarhållna fil lagrings tid som du har angett för aktiviteten. Om du vill visa Uppgiftsutdata som du har sparat för att Azure Storage kan du använda Azure Portal eller ett Azure Storage-klient program som [Azure Storage Explorer][storage_explorer]. Om du vill visa utdata i Azure Storage med portalen eller något annat verktyg måste du känna till filens plats och navigera till den direkt.
 
 ## <a name="next-steps"></a>Nästa steg
 

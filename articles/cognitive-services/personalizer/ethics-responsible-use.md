@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005987"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Rikt linjer för ansvarig implementering av Personanpassare
@@ -119,7 +119,7 @@ Följande är design områden för ansvariga implementeringar av AI. Lär dig me
 
 ![AI-värden från framtida Beräknad](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>Ansvarstagande
+### <a name="accountability"></a>Ansvar
 *Personer som utformar och distribuerar AI-system måste vara konto bara för hur deras system ska användas*.
 
 * Skapa interna rikt linjer för hur du implementerar Personanpassare, dokument och kommunicerar med ditt team, chefer och leverantörer.

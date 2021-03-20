@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86243162"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Data modell referens för Azure API Management-mall
@@ -38,10 +38,10 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
 -   [Kodexempel](#Sample)  
 -   [Kommentar](#Comment)  
 -   [Filtrering](#Filtering)  
--   [Sidfot](#Header)  
+-   [Huvud](#Header)  
 -   [HTTP-begäran](#HTTPRequest)  
 -   [HTTP-svar](#HTTPResponse)  
--   [Problem](#Issue)  
+-   [Ge](#Issue)  
 -   [Åtgärd](#Operation)  
 -   [Åtgärds meny](#Menu)  
 -   [Meny alternativ för åtgärd](#MenuItem)  
@@ -90,9 +90,9 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
 |`Url`|URI|URI för programmet.|  
 |`Version`|sträng|Versions information för programmet.|  
 |`Requirements`|sträng|En beskrivning av kraven för programmet.|  
-|`State`|nummer|Programmets aktuella tillstånd.<br /><br /> -0-registrerad<br /><br /> -1 – skickad<br /><br /> -2-publicerad<br /><br /> -3-avvisad<br /><br /> -4-opublicerad|  
+|`State`|antal|Programmets aktuella tillstånd.<br /><br /> -0-registrerad<br /><br /> -1 – skickad<br /><br /> -2-publicerad<br /><br /> -3-avvisad<br /><br /> -4-opublicerad|  
 |`RegistrationDate`|DateTime|Datum och tidpunkt då programmet registrerades.|  
-|`CategoryId`|nummer|Programmets kategori (finans, underhållning osv.)|  
+|`CategoryId`|antal|Programmets kategori (finans, underhållning osv.)|  
 |`DeveloperId`|sträng|Den unika identifieraren för den utvecklare som skickade programmet.|  
 |`Attachments`|Samling av [bilage](#Attachment) enheter.|Bifogade filer för programmet, till exempel skärm bilder eller ikoner.|  
 |`Icon`|[Bilaga](#Attachment)|Ikonen för programmet.|  
@@ -129,7 +129,7 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|`Id`|nummer|Kommentarens ID.|  
+|`Id`|antal|Kommentarens ID.|  
 |`CommentText`|sträng|Kommentarens brödtext. Kan innehålla HTML.|  
 |`DeveloperCompany`|sträng|Företags namnet för utvecklaren.|  
 |`PostedOn`|DateTime|Datum och tid då kommentaren publicerades.|  
@@ -229,11 +229,11 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|`Page`|nummer|Det aktuella sid numret.|  
-|`PageSize`|nummer|Det högsta antalet resultat som ska visas på en enda sida.|  
-|`TotalItemCount`|nummer|Antalet objekt som ska visas.|  
+|`Page`|antal|Det aktuella sid numret.|  
+|`PageSize`|antal|Det högsta antalet resultat som ska visas på en enda sida.|  
+|`TotalItemCount`|antal|Antalet objekt som ska visas.|  
 |`ShowAll`|boolean|Om alla resultat ska visas på en enda sida.|  
-|`PageCount`|nummer|Antalet resultat sidor.|  
+|`PageCount`|antal|Antalet resultat sidor.|  
   
 ##  <a name="parameter"></a><a name="Parameter"></a> ProfileServiceApplicationProxy  
  I det här avsnittet beskrivs `parameter` åter givningen.  
@@ -245,7 +245,7 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
 |`value`|sträng|Parameter värde.|  
 |`options`|strängmatris|Värden som definierats för parameter värden för frågor.|  
 |`required`|boolean|Anger om parametern är obligatorisk eller inte.|  
-|`kind`|nummer|Om den här parametern är en Sök vägs parameter (1) eller en QueryString-parameter (2).|  
+|`kind`|antal|Om den här parametern är en Sök vägs parameter (1) eller en QueryString-parameter (2).|  
 |`typeName`|sträng|Parameter typ.|  
   
 ##  <a name="product"></a><a name="Product"></a> Momsproduktbokföringsmallar  
@@ -257,9 +257,9 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
 |`Title`|sträng|Namn på produkten. Får inte vara tomt. Maximal längd är 100 tecken.|  
 |`Description`|sträng|Beskrivning av produkten. Får inte vara tomt. Kan innehålla HTML-taggar. Maximal längd är 1000 tecken.|  
 |`Terms`|sträng|Produkt användnings villkor. Utvecklare som försöker prenumerera på produkten visas och krävs för att acceptera dessa villkor innan prenumerations processen kan slutföras.|  
-|`ProductState`|nummer|Anger om produkten har publicerats eller inte. Publicerade produkter kan upptäckas av utvecklare på Developer-portalen. Icke-publicerade produkter visas bara för administratörer.<br /><br /> Tillåtna värden för produkt tillstånd är:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|`ProductState`|antal|Anger om produkten har publicerats eller inte. Publicerade produkter kan upptäckas av utvecklare på Developer-portalen. Icke-publicerade produkter visas bara för administratörer.<br /><br /> Tillåtna värden för produkt tillstånd är:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |`AllowMultipleSubscriptions`|boolean|Anger om en användare kan ha flera prenumerationer på produkten samtidigt.|  
-|`MultipleSubscriptionsCount`|nummer|Maximalt antal prenumerationer för den här produkten som en användare får ha på samma gång.|  
+|`MultipleSubscriptionsCount`|antal|Maximalt antal prenumerationer för den här produkten som en användare får ha på samma gång.|  
   
 ##  <a name="provider"></a><a name="Provider"></a> CSP  
  `provider`Entiteten har följande egenskaper:  
@@ -350,9 +350,9 @@ I det här avsnittet beskrivs entitets-och typ representationer för vanliga obj
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boolean|Värde som används av registrerings registreringen för [registrering](api-management-page-controls.md#sign-up).|  
 |`Password`|sträng|Användar kontots lösen ord.|  
-|`PasswordVerdictLevel`|nummer|Värde som används av registrerings registreringen för [registrering](api-management-page-controls.md#sign-up).|  
+|`PasswordVerdictLevel`|antal|Värde som används av registrerings registreringen för [registrering](api-management-page-controls.md#sign-up).|  
 |`UserRegistrationTerms`|sträng|Villkor som en användare måste samtycka till innan de kan logga in.|  
-|`UserRegistrationTermsOptions`|nummer|Värde som används av registrerings registreringen för [registrering](api-management-page-controls.md#sign-up).|  
+|`UserRegistrationTermsOptions`|antal|Värde som används av registrerings registreringen för [registrering](api-management-page-controls.md#sign-up).|  
 |`ConsentAccepted`|boolean|Värde som används av registrerings registreringen för [registrering](api-management-page-controls.md#sign-up).|  
 |`Email`|sträng|E-postadress. Får inte vara tom och måste vara unikt inom tjänst instansen. Maximal längd är 254 tecken.|  
 |`FirstName`|sträng|Förnamn. Får inte vara tomt. Maximal längd är 100 tecken.|  

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87319141"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Vägledning för kommunikation från enhet till moln
@@ -39,7 +39,7 @@ Här är en detaljerad jämförelse av de olika alternativen för kommunikation 
 | Scenario | Tids serier och aviseringar för telemetri. Till exempel är 256 KB-sensor data-batchar skickade var 5: e minut. | Tillgängliga funktioner och villkor. Till exempel det aktuella anslutnings läget för enhet, till exempel mobil nät eller WiFi. Synkronisering av tids krävande arbets flöden, till exempel konfigurations-och program uppdateringar. | Mediafiler. Stora (vanligt vis komprimerade) telemetri-batchar. |
 | Lagring och hämtning | Lagras tillfälligt med IoT Hub, upp till 7 dagar. Endast sekventiell läsning. | Lagras av IoT Hub i enheten. Hämtnings bara med [IoT Hub frågespråk](iot-hub-devguide-query-language.md). | Lagrat i Azure Storage konto för användare. |
 | Storlek | Upp till 256 KB-meddelanden. | Maximalt antal rapporterade egenskaper är 32 KB. | Maximal fil storlek som stöds av Azure Blob Storage. |
-| Frequency | Hög. Mer information finns i [IoT Hub gränser](iot-hub-devguide-quotas-throttling.md). | Medel. Mer information finns i [IoT Hub gränser](iot-hub-devguide-quotas-throttling.md). | Låg. Mer information finns i [IoT Hub gränser](iot-hub-devguide-quotas-throttling.md). |
+| Frekvens | Hög. Mer information finns i [IoT Hub gränser](iot-hub-devguide-quotas-throttling.md). | Medium. Mer information finns i [IoT Hub gränser](iot-hub-devguide-quotas-throttling.md). | Låg. Mer information finns i [IoT Hub gränser](iot-hub-devguide-quotas-throttling.md). |
 | Protokoll | Tillgängligt på alla protokoll. | Tillgängligt med MQTT eller AMQP. | Tillgängligt när du använder valfritt protokoll, men kräver HTTPS på enheten. |
 
 Ett program kan behöva skicka information både som en tids serie för telemetri eller en avisering och göra den tillgänglig på enheten. I det här scenariot kan du välja något av följande alternativ:

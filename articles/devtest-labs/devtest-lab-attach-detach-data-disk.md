@@ -4,10 +4,10 @@ description: Lär dig hur du ansluter eller kopplar från en datadisk till en vi
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91328521"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Koppla eller koppla från en datadisk till en virtuell dator i Azure DevTest Labs
@@ -25,9 +25,9 @@ Innan du ansluter en datadisk till en virtuell dator bör du läsa följande tip
 Följ de här stegen för att skapa och ansluta en ny hanterad datadisk till en virtuell dator i Azure DevTest Labs.
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du önskat labb. 
-1. I listan med **virtuella datorer**väljer du en virtuell dator som körs.
+1. I listan med **virtuella datorer** väljer du en virtuell dator som körs.
 1. Från menyn till vänster väljer du **diskar**.
 1. Välj **bifoga ny** för att skapa en ny datadisk och koppla den till den virtuella datorn.
 
@@ -62,7 +62,7 @@ Om du vill använda befintliga data på disken igen kan du ansluta den till samm
 ### <a name="detach-from-the-vms-management-pane"></a>Koppla från den virtuella datorns hanterings fönster
 1. Välj en virtuell dator som har en ansluten datadisk i listan över virtuella datorer.
 1. Från menyn till vänster väljer du **diskar**.
-1. I listan över **data diskar**väljer du den datadisk som du vill koppla från.
+1. I listan över **data diskar** väljer du den datadisk som du vill koppla från.
 
     ![Välj data diskar för en virtuell dator](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. Välj **koppla** från överst i diskens informations fönster.

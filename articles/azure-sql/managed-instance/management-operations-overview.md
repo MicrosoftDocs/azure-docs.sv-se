@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
 ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323200"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Översikt över hanteringsåtgärder för Azure SQL Managed Instance
@@ -69,7 +69,7 @@ Följande tabeller sammanfattar åtgärder och typiska övergripande varaktighet
 
 |Åtgärd  |Tids krävande segment  |Uppskattad varaktighet  |
 |---------|---------|---------|
-|Ändring av instans egenskap (administratörs lösen ord, Azure AD-inloggning, Azure Hybrid-förmån flagga)|E.t.|Upp till 1 minut.|
+|Ändring av instans egenskap (administratörs lösen ord, Azure AD-inloggning, Azure Hybrid-förmån flagga)|Ej tillämpligt|Upp till 1 minut.|
 |Skalning av instans lagring upp/ned (Generell användning tjänst nivå)|Bifoga databasfiler|90% av åtgärderna har slutförts på 5 minuter.|
 |Skalning av instans lagring upp/ned (Affärskritisk tjänst nivå)|-Storleks ändring av virtuellt kluster<br>-Always on-tillgänglighets grupps dirigering|90% av åtgärderna har slutförts i 2,5 timmar + tid för att dirigera alla databaser (220 GB/timme).|
 |Virtuella kärnor (Instance Compute) skalar upp och ned (Generell användning)|-Storleks ändring av virtuellt kluster<br>-Bifoga databasfiler|90% av åtgärderna har slutförts om 2,5 timmar.|
@@ -116,7 +116,7 @@ Hanterings åtgärder består av flera steg. Med [Operations-API introducerade](
 |Storleks ändring/skapande av virtuellt kluster |Beroende på under nätets tillstånd går det att skapa eller ändra storlek på det virtuella klustret. |
 |Start av ny SQL-instans | SQL-processen har startats på det distribuerade virtuella klustret. |
 |Dirigera databasfiler/bifoga databasfiler |Beroende på vilken typ av uppdatering som utförts, utförs antingen databasens Dirigerings-eller kopplings databas. |
-|Förbereda redundans och redundans |När data har dirigerats eller databasfiler har återanslutits förbereds systemet för redundansväxlingen. När allt är inställt utförs redundans **med en kort stillestånds**tid. |
+|Förbereda redundans och redundans |När data har dirigerats eller databasfiler har återanslutits förbereds systemet för redundansväxlingen. När allt är inställt utförs redundans **med en kort stillestånds** tid. |
 |Gammal SQL-instans rensa |Tar bort gammal SQL-process från det virtuella klustret |
 
 > [!NOTE]

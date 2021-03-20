@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753781"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Förbered för att arbeta med ett ISV-verktyg eller en arbets kraft
@@ -39,7 +39,7 @@ I din Azure-prenumeration måste ditt konto ha **Microsoft. Authorization/*/Writ
 1. Öppna **Prenumerationer** i Azure-portalen.
 2. Välj relevant prenumeration. Om du inte ser det väljer du **filtret globala prenumerationer**. 
 3. Välj **mina behörigheter**. Välj sedan **Klicka här om du vill visa fullständig åtkomst information för den här prenumerationen**.
-4. **Role assignments**  >  Kontrol lera behörigheterna i **vyn** roll tilldelningar. Om ditt konto inte har behörigheter ber du prenumerations administratören att lägga till dig i rollen som [administratör för användar åtkomst](../role-based-access-control/built-in-roles.md#user-access-administrator) eller [ägar](../role-based-access-control/built-in-roles.md#owner) rollen.
+4.   >  Kontrol lera behörigheterna i **vyn** roll tilldelningar. Om ditt konto inte har behörigheter ber du prenumerations administratören att lägga till dig i rollen som [administratör för användar åtkomst](../role-based-access-control/built-in-roles.md#user-access-administrator) eller [ägar](../role-based-access-control/built-in-roles.md#owner) rollen.
 
 ## <a name="allow-access-to-urls"></a>Tillåt åtkomst till webbadresser
 

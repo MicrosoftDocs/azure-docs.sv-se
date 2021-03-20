@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93040239"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Välj omvandling i data flöde för mappning
@@ -44,7 +44,7 @@ Fasta mappningar kan användas för att mappa en under kolumn i en hierarkisk ko
 
 Om du vill mappa många kolumner samtidigt eller skicka efterföljande kolumner, använder du regelbaserade mappningar för att definiera dina mappningar med hjälp av kolumn mönster. Matchning baserat på `name` `type` kolumnerna,, `stream` och `position` . Du kan ha en kombination av fasta och regelbaserade mappningar. Som standard är alla projektioner med fler än 50 kolumner som standard en regelbaserade mappning som matchar i varje kolumn och som utvärderar det angivna namnet. 
 
-Om du vill lägga till en regelbaserade mappning klickar du på **Lägg till mappning** och väljer **regel baserad mappning** .
+Om du vill lägga till en regelbaserade mappning klickar du på **Lägg till mappning** och väljer **regel baserad mappning**.
 
 ![Skärm bild som visar regel baserad mappning som valts från Lägg till mappning.](media/data-flow/rule2.png "Regel baserad mappning")
 

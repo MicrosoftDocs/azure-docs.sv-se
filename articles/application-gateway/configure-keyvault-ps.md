@@ -9,23 +9,23 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
 ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323432"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurera TLS-avslutning med Key Vault certifikat med Azure PowerShell
 
 [Azure Key Vault](../key-vault/general/overview.md) är ett plattforms hanterat hemligt arkiv som du kan använda för att skydda hemligheter, nycklar och TLS/SSL-certifikat. Azure Application Gateway stöder integrering med Key Vault för Server certifikat som är anslutna till HTTPS-aktiverade lyssnare. Detta stöd är begränsat till Application Gateway v2-SKU: n.
 
-Mer information finns i [TLS-terminering med Key Vault certifikat](key-vault-certs.md).
+Läs mer i [TLS-avslutning med Key Vault-certifikat](key-vault-certs.md).
 
 Den här artikeln visar hur du använder ett Azure PowerShell-skript för att integrera nyckel valvet med din Application Gateway för certifikat för TLS/SSL-avslutning.
 
 Den här artikeln kräver Azure PowerShell module version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du vill köra kommandona i den här artikeln måste du också skapa en anslutning till Azure genom att köra `Connect-AzAccount` .
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -39,7 +39,7 @@ Select-AzSubscription -Subscription <your subscription>
 
 ## <a name="example-script"></a>Exempelskript
 
-### <a name="set-up-variables"></a>Konfigurera variabler
+### <a name="set-up-variables"></a>Skapa variabler
 
 ```azurepowershell
 $rgname = "KeyVaultTest"

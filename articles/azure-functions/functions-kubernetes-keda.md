@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927540"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions på Kubernetes med KEDA
@@ -18,7 +18,7 @@ Azure Functions runtime ger flexibilitet i värd och hur du vill.  [KEDA](https:
 
 ## <a name="how-kubernetes-based-functions-work"></a>Hur Kubernetes-baserade funktioner fungerar
 
-Azure Functionss tjänsten består av två viktiga komponenter: en körnings miljö och en skalnings styrenhet.  Functions-körningen körs och kör koden.  Körningen innehåller logik för att utlösa, logga och hantera funktions körningar.  Azure Functions körningen kan köras *var som helst* .  Den andra komponenten är en skalnings styrenhet.  Skalnings styrenheten övervakar händelse frekvensen som är riktad mot din funktion och skalar i proaktivt antalet instanser som kör din app.  Läs mer i [Azure Functions skala och vara värd](functions-scale.md).
+Azure Functionss tjänsten består av två viktiga komponenter: en körnings miljö och en skalnings styrenhet.  Functions-körningen körs och kör koden.  Körningen innehåller logik för att utlösa, logga och hantera funktions körningar.  Azure Functions körningen kan köras *var som helst*.  Den andra komponenten är en skalnings styrenhet.  Skalnings styrenheten övervakar händelse frekvensen som är riktad mot din funktion och skalar i proaktivt antalet instanser som kör din app.  Läs mer i [Azure Functions skala och vara värd](functions-scale.md).
 
 Kubernetes-baserade funktioner tillhandahåller Functions-körning i en [Docker-behållare](functions-create-function-linux-custom-image.md) med händelse driven skalning via KEDA.  KEDA kan skala in till 0 instanser (när inga händelser inträffar) och ut till *n* -instanser. Detta sker genom att de anpassade måtten exponeras för Kubernetes autoskalning (horisontell Pod autoskalning).  Med hjälp av Functions-behållare med KEDA kan du replikera Server lös funktions funktioner i ett Kubernetes-kluster.  Dessa funktioner kan också distribueras med funktionen [virtuella AKS-noder (Azure Kubernetes Services)](../aks/virtual-nodes-cli.md) för Server lös infrastruktur.
 
@@ -80,7 +80,7 @@ Steg för att avinstallera KEDA dokumenteras [på KEDA-webbplatsen](https://keda
 KEDA har stöd för följande Azure Function-utlösare:
 
 * [Azure Storage-köer](functions-bindings-storage-queue.md)
-* [Azure Service Bus köer](functions-bindings-service-bus.md)
+* [Azure Service Bus-köer](functions-bindings-service-bus.md)
 * [Azure Event/IoT-hubbar](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
 * [RabbitMQ-kö](https://github.com/azure/azure-functions-rabbitmq-extension)

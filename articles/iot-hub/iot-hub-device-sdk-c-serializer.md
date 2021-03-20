@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152228"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT-enhetens SDK för C – mer om serialiserare
@@ -26,7 +26,7 @@ Den inledande artikeln beskriver hur du använder **serialiserar** -biblioteket 
 
 Slutligen kommer artikeln att gå vidare till vissa avsnitt som beskrivs i föregående artiklar, till exempel meddelande-och egenskaps hantering. Som vi lär dig fungerar dessa funktioner på samma sätt med hjälp av **serialiserar** -biblioteket som i **IoTHubClient** -biblioteket.
 
-Allt som beskrivs i den här artikeln baseras på SDK-exemplen för **serialiseraren** . Om du vill följa med, se simplesample- ** \_ AMQP** och **simplesample \_ http-** program som ingår i Azure IoT-enhetens SDK för C.
+Allt som beskrivs i den här artikeln baseras på SDK-exemplen för **serialiseraren** . Om du vill följa med, se simplesample- **\_ AMQP** och **simplesample \_ http-** program som ingår i Azure IoT-enhetens SDK för C.
 
 Du hittar [**Azure IoT-enhetens SDK för c**](https://github.com/Azure/azure-iot-sdk-c) GitHub-lagringsplatsen och visar information om API: et i [C API-referensen](/azure/iot-hub/iot-c-sdk-ref/).
 
@@ -279,7 +279,7 @@ När vi kör föregående kod för att skicka temperatur händelsen skickas denn
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Vi skickar en temperatur som är av typen **TemperatureEvent**och den strukturen innehåller en **temperatur** och en **tids** medlem. Detta återspeglas direkt i serialiserade data.
+Vi skickar en temperatur som är av typen **TemperatureEvent** och den strukturen innehåller en **temperatur** och en **tids** medlem. Detta återspeglas direkt i serialiserade data.
 
 På samma sätt kan vi skicka en fuktighets händelse med den här koden:
 
@@ -300,7 +300,7 @@ Det serialiserade formuläret som skickas till IoT Hub visas på följande sätt
 
 Detta är som förväntat.
 
-Med den här modellen kan du föreställa dig hur du enkelt kan lägga till ytterligare händelser. Du definierar fler strukturer med hjälp av **Declare \_ struct**och inkluderar motsvarande händelse i modellen med hjälp **av \_ data**.
+Med den här modellen kan du föreställa dig hur du enkelt kan lägga till ytterligare händelser. Du definierar fler strukturer med hjälp av **Declare \_ struct** och inkluderar motsvarande händelse i modellen med hjälp **av \_ data**.
 
 Nu ska vi ändra modellen så att den innehåller samma data men med en annan struktur.
 
@@ -316,7 +316,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-I det här fallet har vi eliminerat **deklarerar \_ ** vi åtgärds-makron och definierar bara data objekt från vårt scenario med enkla typer från modellerings språket.
+I det här fallet har vi eliminerat **deklarerar \_** vi åtgärds-makron och definierar bara data objekt från vårt scenario med enkla typer från modellerings språket.
 
 För tillfället ska du ignorera **tids** händelsen. Det här är koden för att ingressa **temperatur**:
 
@@ -588,7 +588,7 @@ Parametern **nArithmetic** är mer om det interna arbetet i makro språket än d
 
 Om du vill ändra de här parametrarna ändrar du värdena i makrots \_ utils.tt-fil, kompilerar om Macro \_ -filen med \_ \_ SLN-generatorn och kör det kompilerade programmet. När du gör det skapas en ny \_ . h-fil för makron skapas och placeras i. \\ gemensamma \\ Inc-katalogen.
 
-För att kunna använda den nya versionen av Macro \_ utils. h tar du bort **serialiseraren** NuGet-paketet från din lösning och i dess ställe ingår **serialiseraren** Visual Studio-projektet. Detta gör att din kod kan kompileras mot käll koden i serialiseraren. Detta inkluderar det uppdaterade makrots \_ utils. h. Om du vill göra detta för **simplesample- \_ AMQP**börjar du med att ta bort NuGet-paketet för serialiseraren från lösningen:
+För att kunna använda den nya versionen av Macro \_ utils. h tar du bort **serialiseraren** NuGet-paketet från din lösning och i dess ställe ingår **serialiseraren** Visual Studio-projektet. Detta gör att din kod kan kompileras mot käll koden i serialiseraren. Detta inkluderar det uppdaterade makrots \_ utils. h. Om du vill göra detta för **simplesample- \_ AMQP** börjar du med att ta bort NuGet-paketet för serialiseraren från lösningen:
 
    ![Skärm bild av borttagning av NuGet-paketet för serialiserar-biblioteket](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
 
@@ -642,7 +642,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Huruvida händelsen genererades från **serialiserar** biblioteket eller skapats manuellt med **IoTHubClient** -biblioteket spelar ingen roll.
 
-För de alternativa autentiseringsuppgifterna för enheten, ** \_ \_ skapar IoTHubClient lla** både och **IoTHubClient \_ CreateFromConnectionString** för att allokera en **IOTHUB \_ klient \_ referens**.
+För de alternativa autentiseringsuppgifterna för enheten, **\_ \_ skapar IoTHubClient lla** både och **IoTHubClient \_ CreateFromConnectionString** för att allokera en **IOTHUB \_ klient \_ referens**.
 
 Slutligen, om du använder **serialiseraren** , kan du ange konfigurations alternativ med **IoTHubClient \_ lla \_ SetOption** precis som du gjorde när du använde **IoTHubClient** -biblioteket.
 

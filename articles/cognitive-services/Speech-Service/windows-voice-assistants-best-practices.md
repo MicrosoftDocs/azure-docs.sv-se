@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92165153"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Design assistents upplevelser för Windows 10
@@ -145,7 +145,7 @@ Contoso-assistenten har ett start i aktivitets fältet: deras virvel, cirkulära
 
 ![Skärm bild av röst assistenten i Windows som en ikon före aktivering i aktivitets fältet](media/voice-assistants/windows_voice_assistant/pre_compact_view.png)
 
-**När aktiveringen fortskrider**begär assistenten bakgrunds aktivering. Assistenten har fått ett litet förhands gransknings fönster (standard bredden 408 och height: 248). Om röst aktiveringen på Server sidan avgör att signalen var falsk positivt, kan den här vyn ignoreras för minimalt avbrott.
+**När aktiveringen fortskrider** begär assistenten bakgrunds aktivering. Assistenten har fått ett litet förhands gransknings fönster (standard bredden 408 och height: 248). Om röst aktiveringen på Server sidan avgör att signalen var falsk positivt, kan den här vyn ignoreras för minimalt avbrott.
 
 ![Skärm bild av röst assistenten i Windows i kompakt vy vid verifiering av aktivering](media/voice-assistants/windows_voice_assistant/compact_view_activating.png)
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86231717"
 ---
 # <a name="virtual-appliance-scenario"></a>Scenario för Virtual-apparat
@@ -42,7 +42,7 @@ I lösningen nedan används virtuella brand väggar för att implementera ett pe
 Du kan distribuera miljön som beskrivs ovan i Azure med hjälp av olika funktioner som är tillgängliga idag, enligt följande.
 
 * **Virtuellt nätverk (VNet)** . Ett Azure VNet fungerar på samma sätt som ett lokalt nätverk och kan delas upp i ett eller flera undernät för att ge trafik isolering och separering av problem.
-* **Virtuell**installation. Flera partner tillhandahåller virtuella enheter i Azure Marketplace som kan användas för de tre brand väggarna som beskrivs ovan. 
+* **Virtuell** installation. Flera partner tillhandahåller virtuella enheter i Azure Marketplace som kan användas för de tre brand väggarna som beskrivs ovan. 
 * **Användardefinierade vägar (UDR)**. Routningstabeller kan innehålla UDR som används av Azure-nätverk för att styra flödet av paket i ett VNet. Dessa routningstabeller kan tillämpas på undernät. En av de nyaste funktionerna i Azure är möjligheten att tillämpa en routningstabell på GatewaySubnet, vilket ger möjlighet att vidarebefordra all trafik som kommer till Azure VNet från en hybrid anslutning till en virtuell installation.
 * **IP-vidarebefordring**. Som standard vidarebefordrar Azure Networking-paket till virtuella nätverkskort endast om paketets mål-IP-adress matchar NÄTVERKSKORTets IP-adress. Om en UDR definierar att ett paket måste skickas till en specifik virtuell installation, skulle Azure Networking-motorn därför släppa paketet. För att se till att paketet levereras till en virtuell dator (i det här fallet en virtuell installation) som inte är målet för paketet måste du aktivera IP-vidarebefordran för den virtuella installationen.
 * **Nätverks säkerhets grupper (NSG: er)**. Exemplet nedan använder inte NSG: er, men du kan använda NSG: er som tillämpas på undernät och/eller nätverkskort i den här lösningen för att ytterligare filtrera trafiken i och ut ur dessa undernät och nätverkskort.
@@ -75,7 +75,7 @@ Varje undernät i Azure kan länkas till en UDR-tabell som används för att def
 För att säkerställa att kommunikationen sker via rätt brand Väggs program, baserat på det senaste kravet ovan, måste du skapa följande routningstabell som innehåller UDR i **azurevnet**.
 
 ### <a name="azgwudr"></a>azgwudr
-I det här scenariot används den enda trafiken som flödar från lokalt till Azure för att hantera brand väggarna genom att ansluta till **AZF3**och trafiken måste gå igenom den interna brand väggen, **AZF2**. Därför är det bara en väg som krävs i **GatewaySubnet** som visas nedan.
+I det här scenariot används den enda trafiken som flödar från lokalt till Azure för att hantera brand väggarna genom att ansluta till **AZF3** och trafiken måste gå igenom den interna brand väggen, **AZF2**. Därför är det bara en väg som krävs i **GatewaySubnet** som visas nedan.
 
 | Mål | Nästa hopp | Förklaring |
 | --- | --- | --- |
@@ -125,7 +125,7 @@ Utan IP-vidarebefordring aktive rad för **OPFW**, tar Azure Virtual Networking-
 
 Med IP-vidarebefordring vidarebefordrar den virtuella Azure-nätverks logiken paketen till OPFW utan att ändra den ursprungliga mål adressen. **OPFW** måste hantera paketen och bestämma vad som ska göras med dem.
 
-För scenariot ovan att fungera måste du aktivera IP-vidarebefordring på nätverkskorten för **OPFW**, **AZF1**, **AZF2**och **AZF3** som används för routning (alla nätverkskort förutom de som är länkade till hanterings under nätet). 
+För scenariot ovan att fungera måste du aktivera IP-vidarebefordring på nätverkskorten för **OPFW**, **AZF1**, **AZF2** och **AZF3** som används för routning (alla nätverkskort förutom de som är länkade till hanterings under nätet). 
 
 ## <a name="firewall-rules"></a>Brandväggsregler
 Som det beskrivs ovan garanterar IP-vidarebefordring endast paket som skickas till de virtuella enheterna. Din apparat måste fortfarande bestämma vad som ska göras med dessa paket. I scenariot ovan måste du skapa följande regler i dina enheter:

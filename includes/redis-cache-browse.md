@@ -9,17 +9,17 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67187913"
 ---
-Om du inte har fäst cacheminnet på instrumentpanelen hittar du det i [Azure Portal](https://portal.azure.com) med hjälp av **Alla tjänster** .
+Om du inte har fäst cacheminnet på instrumentpanelen hittar du det i [Azure Portal](https://portal.azure.com) med hjälp av **Alla tjänster**.
 
 ![Bladet bläddra i Azure cache för Redis](media/redis-cache-browse/redis-cache-browse.png)
 
-Om du vill visa dina cacheminnen klickar du på **alla tjänster** och söker efter **Azure cache för Redis** . 
+Om du vill visa dina cacheminnen klickar du på **alla tjänster** och söker efter **Azure cache för Redis**. 
 
 Välj önskat cache för visning och konfigurera inställningarna för detta cache.
 

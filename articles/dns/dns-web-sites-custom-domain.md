@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94952955"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Självstudie: Skapa DNS-poster i en anpassad domän för en webbapp 
@@ -38,7 +38,7 @@ I den här guiden får du lära dig att:
 > * Lägg till anpassade värdnamn i din webbapp
 > * Testa de anpassade domännamnen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 

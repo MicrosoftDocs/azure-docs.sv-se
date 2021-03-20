@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954519"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Värd belastnings utjämning av Azure-Webbappar i zon Apex
@@ -26,7 +26,7 @@ I den här artikeln får du lära dig hur du skapar en aliasresurspost för din 
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du måste ha ett domännamn tillgängligt som du kan ha i Azure DNS för att testa med. Du måste ha fullständig kontroll över den här domänen. Fullständig behörighet omfattar möjligheten att ange namnserverposter (NS-poster) för domänen.
 
@@ -43,7 +43,7 @@ Skapa en resurs grupp som innehåller alla resurser som används i den här arti
 Skapa två Webb App Services planer i resurs gruppen med hjälp av följande tabell för konfigurations information. Mer information om hur du skapar en App Service plan finns i [hantera ett App Service plan i Azure](../app-service/app-service-plan-manage.md).
 
 
-|Namn  |Operativsystem  |Plats  |Prisnivå  |
+|Name  |Operativsystem  |Location  |Prisnivå  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|East US|D1-Shared för utveckling/testning|
 |ASP-02     |Windows|Central US|D1-Shared för utveckling/testning|
@@ -58,7 +58,7 @@ Skapa två webb program, en i varje App Service plan.
 4. Välj **Skapa**.
 5. Acceptera standardinställningarna och Använd följande tabell för att konfigurera de två webbapparna:
 
-   |Namn<br>(måste vara unikt inom. azurewebsites.net)|Resursgrupp |Körningsstack|Region|App Service plan/plats
+   |Name<br>(måste vara unikt inom. azurewebsites.net)|Resursgrupp |Körningsstack|Region|App Service plan/plats
    |---------|---------|-|-|-------|
    |App-01|Använd befintlig<br>Välj din resursgrupp|.NET Core 2.2|East US|ASP-01 (D1)|
    |App-02|Använd befintlig<br>Välj din resursgrupp|.NET Core 2.2|Central US|ASP-02 (D1)|
@@ -87,7 +87,7 @@ Nu kan du skapa slut punkter för de två webbapparna.
 3. Välj **Lägg till**.
 4. Använd följande tabell för att konfigurera slut punkterna:
 
-   |Typ  |Namn  |Mål  |Plats  |Anpassade huvud inställningar|
+   |Typ  |Name  |Mål  |Location  |Anpassade huvud inställningar|
    |---------|---------|---------|---------|---------|
    |Extern slut punkt     |Slut – 01|IP-adress som du har spelat in för app-01|East US|värd\<the URL you recorded for App-01\><br>Exempel: **värd: app-01.azurewebsites.net**|
    |Extern slut punkt     |Slut punkt 02|IP-adress som du har spelat in för app-02|Central US|värd\<the URL you recorded for App-02\><br>Exempel: **värd: app-02.azurewebsites.net**

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87337236"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Skapa webhook-åtgärder för regler i Azure IoT Central
@@ -111,7 +111,7 @@ Om regeln övervakar aggregerad telemetri under en viss tids period, kommer nytt
 
 ## <a name="data-format-change-notice"></a>Ändrings meddelande för data format
 
-Om du har en eller flera Webhooks skapade och sparade före **3 April 2020**måste du ta bort webhooken och skapa en ny webhook. Detta beror på att äldre Webhooks använder ett gammalt nytto Last format som kommer att bli inaktuellt i framtiden.
+Om du har en eller flera Webhooks skapade och sparade före **3 April 2020** måste du ta bort webhooken och skapa en ny webhook. Detta beror på att äldre Webhooks använder ett gammalt nytto Last format som kommer att bli inaktuellt i framtiden.
 
 ### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook-nyttolast (format föråldras från och med 3 april 2020)
 

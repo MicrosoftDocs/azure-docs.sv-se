@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86247429"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Övervaka och diagnostisera tjänster i en konfiguration för utveckling lokalt
@@ -43,15 +43,15 @@ Service Fabric Visual Studio-projektmallar innehåller exempel kod. Koden visar 
 För projekt som skapats från **tjänstmallar** (tillstånds lösa eller tillstånds känsliga) söker du bara efter `RunAsync` implementeringen:
 
 1. Anropet till `ServiceEventSource.Current.ServiceMessage` i- `RunAsync` metoden visar ett exempel på en anpassad ETW-spårning från program koden.
-2. I **ServiceEventSource.cs** -filen hittar du en överlagring för `ServiceEventSource.ServiceMessage` metoden som ska användas för händelser med hög frekvens på grund av prestanda skäl.
+2. I filen **ServiceEventSource. cs** hittar du en överlagring för `ServiceEventSource.ServiceMessage` metoden som ska användas för händelser med hög frekvens på grund av prestanda skäl.
 
 För projekt som skapats från **aktörens mallar** (tillstånds lös eller tillstånds känslig):
 
 1. Öppna filen **"ProjectName". CS "** där *ProjectName* är det namn som du valde för ditt Visual Studio-projekt.  
 2. Hitta koden `ActorEventSource.Current.ActorMessage(this, "Doing Work");` i *DoWorkAsync* -metoden.  Detta är ett exempel på en anpassad ETW-spårning skriven från program kod.  
-3. I filen **ActorEventSource.cs**hittar du en överlagring för `ActorEventSource.ActorMessage` metoden som ska användas för händelser med hög frekvens på grund av prestanda skäl.
+3. I filen **ActorEventSource. cs** hittar du en överlagring för `ActorEventSource.ActorMessage` metoden som ska användas för händelser med hög frekvens på grund av prestanda skäl.
 
-När du har lagt till anpassad ETW-spårning till din service kod kan du skapa, distribuera och köra programmet igen för att se dina händelser i visnings programmet för diagnostiska händelser. Om du felsöker programmet med **F5**öppnas fönstret diagnostiska händelser automatiskt.
+När du har lagt till anpassad ETW-spårning till din service kod kan du skapa, distribuera och köra programmet igen för att se dina händelser i visnings programmet för diagnostiska händelser. Om du felsöker programmet med **F5** öppnas fönstret diagnostiska händelser automatiskt.
 
 ## <a name="next-steps"></a>Nästa steg
 Samma spårnings kod som du har lagt till i programmet ovan för lokal diagnostik fungerar med verktyg som du kan använda för att visa dessa händelser när du kör programmet i ett Azure-kluster. Kolla in de här artiklarna som diskuterar de olika alternativen för verktygen och beskriver hur du kan ställa in dem.

@@ -4,10 +4,10 @@ description: Den här artikeln kan användas som felsökningsinformation om det 
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376986"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Felsöka problem vid säkerhets kopiering av Azure-filresurser
@@ -51,7 +51,7 @@ Försök att registrera igen. Kontakta supporten om problemet kvarstår.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Det gick inte att ta bort Recovery Services valvet efter borttagning av skydd för en fil resurs
 
-I Azure Portal öppnar du ditt **valv**  >  **Backup Infrastructure**  >  **lagrings konton**för säkerhets kopierings infrastruktur. Välj **avregistrera** för att ta bort lagrings kontona från Recovery Servicess valvet.
+I Azure Portal öppnar du ditt **valv**  >    >  **lagrings konton** för säkerhets kopierings infrastruktur. Välj **avregistrera** för att ta bort lagrings kontona från Recovery Servicess valvet.
 
 >[!NOTE]
 >Ett Recovery Services-valv kan bara tas bort när alla lagrings konton som registrerats med valvet har avregistrerats.
@@ -261,7 +261,7 @@ Felkod: UserErrorAnotherRestoreInProgressOnSameTarget
 
 Fel meddelande: ett annat återställnings jobb pågår på samma mål fil resurs
 
-Använd en annan mål fil resurs. Alternativt kan du avbryta eller vänta tills den andra återställningen har slutförts.
+Använd en annan mål fil resurs. Alternativt avbryter du åtgärden eller väntar tills den andra återställningen är klar.
 
 ## <a name="common-modify-policy-errors"></a>Vanliga ändringar av princip fel
 

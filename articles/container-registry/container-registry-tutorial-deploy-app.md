@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148421"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Självstudie: Distribuera en webbapp från ett geo-replikerat Azure Container Registry
@@ -50,7 +50,7 @@ Ange följande värden för varje inställning under **Web App for Containers**,
 | **Webbplatsnamn** | Ett globalt unikt namn för webbappen. I det här exemplet använder vi formatet `<acrName>-westus` för att lätt kunna identifiera det register och den region som webbappen distribueras från. |
 | **Resursgrupp** | **Använd befintlig** > `myResourceGroup` |
 | **App Service-plan/plats** | Skapa ett nytt schema med namnet `plan-westus` i regionen **USA, västra**. |
-| **Avbildning** | `acr-helloworld:v1` |
+| **Bild** | `acr-helloworld:v1` |
 | **Operativsystem** | Linux |
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Distribuera en andra webbapp till regionen *USA, östra* med den procedur som be
 | **Webbplatsnamn** | Ett globalt unikt namn för webbappen. I det här exemplet använder vi formatet `<acrName>-eastus` för att lätt kunna identifiera det register och den region som webbappen distribueras från. |
 | **Resursgrupp** | **Använd befintlig** > `myResourceGroup` |
 | **App Service-plan/plats** | Skapa ett nytt schema med namnet `plan-eastus` i regionen **USA, östra**. |
-| **Avbildning** | `acr-helloworld:v1` |
+| **Bild** | `acr-helloworld:v1` |
 | **Operativsystem** | Linux |
 
 Etablera webbappen i regionen *USA, östra* genom att välja **Skapa**.

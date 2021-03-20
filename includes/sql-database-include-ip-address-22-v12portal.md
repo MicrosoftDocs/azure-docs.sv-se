@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67187422"
 ---
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
@@ -28,7 +28,7 @@ ms.locfileid: "67187422"
 
 6. Välj raden för servern. Ett blad för servern visas.
 
-7. Välj **Inställningar**på Server bladet.
+7. Välj **Inställningar** på Server bladet.
 
 8. Välj **brand vägg**.
 
