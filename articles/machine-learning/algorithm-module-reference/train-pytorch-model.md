@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420673"
 ---
 # <a name="train-pytorch-model"></a>Träna Pytorch-modell
@@ -58,7 +58,7 @@ När pipeline-körningen har slutförts ska du använda modellen för att skapa 
 ## <a name="technical-notes"></a>Tekniska anteckningar
 ###  <a name="expected-inputs"></a>Förväntade indata  
 
-| Namn               | Typ                    | Description                              |
+| Namn               | Typ                    | Beskrivning                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Modell som inte är tränad    | UntrainedModelDirectory | Modell som inte är tränad, kräver pytorch         |
 | Data uppsättning för utbildning   | ImageDirect          | Data uppsättning för utbildning                         |
@@ -66,7 +66,7 @@ När pipeline-körningen har slutförts ska du använda modellen för att skapa 
 
 ###  <a name="module-parameters"></a>Parametrar för modul  
 
-| Name          | Intervall            | Typ    | Standard | Description                              |
+| Name          | Intervall            | Typ    | Standardvärde | Beskrivning                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epoker        | > 0               | Integer | 5       | Markera den kolumn som innehåller etiketten eller resultat kolumnen |
 | Batchstorlek    | > 0               | Integer | 16      | Hur många instanser som ska tränas i en batch   |
@@ -76,7 +76,7 @@ När pipeline-körningen har slutförts ska du använda modellen för att skapa 
 
 ###  <a name="outputs"></a>Utdata  
 
-| Namn          | Typ           | Description   |
+| Namn          | Typ           | Beskrivning   |
 | ------------- | -------------- | ------------- |
 | Tränad modell | ModelDirectory | Tränad modell |
 

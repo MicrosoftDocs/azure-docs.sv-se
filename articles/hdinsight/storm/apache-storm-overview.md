@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98928902"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Vad är Apache Storm på Azure HDInsight?
@@ -60,7 +60,7 @@ Standardkonfigurationen för Apache Storm är att bara ha en Nimbus-nod. Storm p
 
 ## <a name="ease-of-use"></a>Enkel att använda
 
-|Användning |Description |
+|Användning |Beskrivning |
 |---|---|
 |Secure Shell (SSH)-anslutning|Du kan komma åt huvudnoderna i ditt Storm-kluster via Internet med hjälp av SSH. Du kan köra kommandon direkt i klustret med hjälp av SSH. Mer information finns i [använda SSH med HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Webb anslutning|Alla HDInsight-kluster tillhandahåller Ambari-webbgränssnittet. Du kan enkelt övervaka, konfigurera och hantera tjänster i klustret med hjälp av Ambari-webbanvändargränssnittet. Storm-kluster ger också Storm-användargränssnitt. Du kan övervaka och hantera Storm-topologier som körs från din webbläsare med hjälp av Storm-användargränssnittet. Mer information finns i [Hantera HDInsight med hjälp av Apache Ambari-WEBBgränssnittet](../hdinsight-hadoop-manage-ambari.md) och [övervaka och hantera med hjälp av Apache Storm UI](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) -dokument.|

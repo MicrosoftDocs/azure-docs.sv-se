@@ -4,10 +4,10 @@ description: Lär dig hur du felsöker problem som inträffar när du använder 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483201"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Felsöka problem när du använder artefakter på en Azure DevTest Labs virtuell dator
@@ -22,7 +22,7 @@ Om du behöver mer hjälp när som helst i den här artikeln kan du kontakta exp
 Kontrol lera att den virtuella datorn körs. DevTest Labs kräver att den virtuella datorn körs och att den [Microsoft Azure virtuella dator agenten (VM-agenten)](../virtual-machines/extensions/agent-windows.md) är installerad och klar.
 
 > [!TIP]
-> I **Azure Portal**navigerar du till sidan **Hantera artefakter** för den virtuella datorn för att se om den virtuella datorn är redo för att tillämpa artefakter. Du ser ett meddelande längst upp på sidan. 
+> I **Azure Portal** navigerar du till sidan **Hantera artefakter** för den virtuella datorn för att se om den virtuella datorn är redo för att tillämpa artefakter. Du ser ett meddelande längst upp på sidan. 
 > 
 > Med hjälp av **Azure PowerShell**, inspektera flaggan **canApplyArtifacts**, som endast returneras när du expanderar en get-åtgärd. Se följande exempel kommando:
 

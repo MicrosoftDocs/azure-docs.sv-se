@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100418111"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformera data i delta Lake med hjälp av att mappa data flöden

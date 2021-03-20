@@ -4,10 +4,10 @@ description: Lär dig hur du skapar en fil resurs i ett labb och monterar den p�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87282253"
 ---
 # <a name="test-your-app-in-azure"></a>Testa appen i Azure 
@@ -18,7 +18,7 @@ Den här artikeln innehåller steg för att testa ditt program i Azure med DevTe
 ## <a name="prerequisites"></a>Förutsättningar 
 1. [Skapa en Azure-prenumeration](https://azure.microsoft.com/free/) om du inte redan har en och logga in på [Azure Portal](https://portal.azure.com).
 2. Följ anvisningarna i [den här artikeln](devtest-lab-create-lab.md) för att skapa ett labb med hjälp av Azure DevTest Labs. Fäst labbet på instrument panelen så att du enkelt kan hitta den nästa gången du loggar in. Med Azure DevTest Labs kan du snabbt skapa resurser i Azure genom att minimera spill och kontrol lera kostnaden. Mer information om DevTest Labs finns i [Översikt](devtest-lab-overview.md). 
-3. Skapa ett Azure Storage-konto i Labbets resurs grupp genom att följa anvisningarna i artikeln [skapa ett lagrings konto](../storage/common/storage-account-create.md) . På sidan **skapa lagrings konto** väljer du **Använd befintlig** för **resurs grupp**och väljer sedan **Labbets resurs grupp**. 
+3. Skapa ett Azure Storage-konto i Labbets resurs grupp genom att följa anvisningarna i artikeln [skapa ett lagrings konto](../storage/common/storage-account-create.md) . På sidan **skapa lagrings konto** väljer du **Använd befintlig** för **resurs grupp** och väljer sedan **Labbets resurs grupp**. 
 4. Skapa en fil resurs i Azure Storage genom att följa anvisningarna i artikeln [skapa en fil resurs i Azure Files](../storage/files/storage-how-to-create-file-share.md) . 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Montera fil resursen på den lokala datorn
@@ -37,10 +37,10 @@ Den här artikeln innehåller steg för att testa ditt program i Azure med DevTe
 3. På **DevTest Lab** -sidan för ditt labb väljer du **+ Lägg till** i verktygsfältet. 
 
     ![Knappen Lägg till för labbet](media/test-app-in-azure/add-button-in-lab.png)
-4. På sidan **Välj en bassida** söker du efter **smalldisk**och väljer **[Smalldisk] Windows Server 2016 Data Center**. 
+4. På sidan **Välj en bassida** söker du efter **smalldisk** och väljer **[Smalldisk] Windows Server 2016 Data Center**. 
 
     ![Välj liten disk Windows Server](media/test-app-in-azure/choose-small-disk-windows-server.png)
-5. På sidan **virtuell dator** anger du namnet på den **virtuella datorn**, **användar namn**, **lösen ord**och väljer **skapa**.    
+5. På sidan **virtuell dator** anger du namnet på den **virtuella datorn**, **användar namn**, **lösen ord** och väljer **skapa**.    
     
     ![Sidan Skapa virtuell dator](media/test-app-in-azure/create-virtual-machine-page.png)    
 
@@ -57,8 +57,8 @@ I det här avsnittet ska du publicera din app från Visual Studio till en virtue
 
 1. Skapa ett skriv bord/webb program med hjälp av Visual Studio 2019.
 2. Skapa din app.
-3. Om du vill publicera din app högerklickar du på projektet i **Solution Explorer**och väljer **publicera**. 
-4. I **publicerings guiden**anger du den **enhet** som är mappad till fil resursen.
+3. Om du vill publicera din app högerklickar du på projektet i **Solution Explorer** och väljer **publicera**. 
+4. I **publicerings guiden** anger du den **enhet** som är mappad till fil resursen.
 
     **Desktop-app:**
 
@@ -78,7 +78,7 @@ I det här avsnittet ska du publicera din app från Visual Studio till en virtue
 3. Välj **Anslut**.
 
     ![Sidan virtuell dator](media/test-app-in-azure/virtual-machine-page.png)
-4. Starta **Utforskaren**på den virtuella datorn och välj **den här datorn** för att hitta fil resursen.
+4. Starta **Utforskaren** på den virtuella datorn och välj **den här datorn** för att hitta fil resursen.
 
     ![Hitta resurs på virtuell dator](media/test-app-in-azure/find-share-on-vm.png)
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514087"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Ersätta en Controller-modul på din StorSimple-enhet
@@ -78,7 +78,7 @@ Utför följande steg om en av styrenheterna i Microsoft Azure StorSimple enhete
 
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>Ta bort en enskild felande Controller-modul
-1. I Azure Portal går du till tjänsten StorSimple Enhetshanteraren, klickar på **enheter**och klickar sedan på namnet på den enhet som du vill övervaka.
+1. I Azure Portal går du till tjänsten StorSimple Enhetshanteraren, klickar på **enheter** och klickar sedan på namnet på den enhet som du vill övervaka.
 2. Gå till **övervaka > maskin varu hälsa**. Status för antingen Controller 0 eller Controller 1 måste vara röd, vilket tyder på ett haveri.
    
    > [!NOTE]
@@ -195,7 +195,7 @@ Använd följande procedur för att installera en modul som är en fabriks kontr
    > [!NOTE]
    > Det kan ta upp till 5 minuter för styrenheten och LYSDIODen att aktivera.
   
-5. Verifiera att ersättningen lyckades genom att gå till din enhet i Azure Portal och sedan gå till **övervaka**  >  **maskin varu hälsa**och kontrol lera att både styrenhet 0 och styrenhet 1 är felfria (status är grön).
+5. Verifiera att ersättningen lyckades genom att gå till din enhet i Azure Portal och sedan gå till **övervaka**  >  **maskin varu hälsa** och kontrol lera att både styrenhet 0 och styrenhet 1 är felfria (status är grön).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>Identifiera den aktiva kontrollanten på enheten
 Det finns många situationer, till exempel första enhets registrering eller styrenhets ersättning, som kräver att du hittar den aktiva styrenheten på en StorSimple-enhet. Den aktiva styrenheten bearbetar all inbyggd disk-och nätverks åtgärder. Du kan använda någon av följande metoder för att identifiera den aktiva styrenheten:
@@ -207,7 +207,7 @@ Det finns många situationer, till exempel första enhets registrering eller sty
 Var och en av dessa procedurer beskrivs härnäst.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>Använd Azure Portal för att identifiera den aktiva kontrollanten
-I Azure Portal navigerar du till enheten och **övervakar**  >  **maskin varu hälsan**och bläddrar till avsnittet **kontrollanter** . Här kan du kontrol lera vilken kontrollant som är aktiv.
+I Azure Portal navigerar du till enheten och **övervakar**  >  **maskin varu hälsan** och bläddrar till avsnittet **kontrollanter** . Här kan du kontrol lera vilken kontrollant som är aktiv.
 
 ![Identifiera aktiv kontrollant i Azure Portal](./media/storsimple-controller-replacement/IC752072.png)
 

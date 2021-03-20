@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316451"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Begrepp för att aktivera aktiv inlärning genom att granska slut punkts yttranden
@@ -24,7 +24,7 @@ LUIS lägger till yttranden i gransknings listan när den främsta stängnings m
 ## <a name="single-pool-for-utterances-per-app"></a>En pool för yttranden per app
 Yttranden-listan för **gransknings slut punkten** ändras inte utifrån versionen. Det finns en enstaka pool med yttranden att granska, oavsett versionen av de yttranden du aktivt redigerar eller versionen av den app som publicerades på slutpunkten.
 
-I [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)är versions namnet obligatoriskt och måste finnas i programmet, men används inte utöver den verifieringen. Gransknings yttranden gäller för hela programmet. Om du tar bort yttranden från en _version_påverkas alla versioner.
+I [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)är versions namnet obligatoriskt och måste finnas i programmet, men används inte utöver den verifieringen. Gransknings yttranden gäller för hela programmet. Om du tar bort yttranden från en _version_ påverkas alla versioner.
 
 ## <a name="where-are-the-utterances-from"></a>Var finns yttranden från
 Slut punkts yttranden hämtas från slut användar frågor på programmets HTTP-slutpunkt. Om din app inte har publicerats eller inte har fått några träffar än, har du inga yttranden att granska. Om inga slut punkts träffar tas emot för en speciell avsikt eller entitet har du inte yttranden att granska de som innehåller dem.

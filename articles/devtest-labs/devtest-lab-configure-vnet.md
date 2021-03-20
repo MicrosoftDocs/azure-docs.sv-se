@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar ett befintligt virtuellt nätverk och 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283562"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurera ett virtuellt nätverk i Azure DevTest Labs
@@ -22,9 +22,9 @@ I den här artikeln beskrivs hur du lägger till ditt befintliga virtuella nätv
 Följande steg beskriver hur du lägger till ett befintligt virtuellt nätverk (och undernät) i ett labb så att det kan användas när du skapar en virtuell dator i samma labb. 
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du önskat labb. 
-1. Välj **konfiguration och principer**i Labbets huvud fönster.
+1. Välj **konfiguration och principer** i Labbets huvud fönster.
 
     ![Få till gång till Labbets konfiguration och principer](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. I avsnittet **externa resurser** väljer du **virtuella nätverk**. En lista över virtuella nätverk som har kon figurer ATS för det aktuella labbet visas samt det virtuella standard nätverk som har skapats för ditt labb. 

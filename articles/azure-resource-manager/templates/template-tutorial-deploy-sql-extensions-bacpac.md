@@ -6,10 +6,10 @@ ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 1bd9f7408baf40791c31626ea9e87a73c65b999c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97964005"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Självstudie: importera SQL BACPAC-filer med ARM-mallar
@@ -30,7 +30,7 @@ Den här självstudien omfattar följande uppgifter:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 

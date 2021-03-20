@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
 ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352277"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Markdown-format som stöds i QnA Maker svars text
@@ -37,8 +37,8 @@ En ny rad mellan 2 meningar.|`\n\n`|`How can I create a bot with \n\n QnA Maker?
 |URL för länk|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![format för URL (hyperlänk)](./media/qnamaker-concepts-datasources/format-url.png)|
 |* URL för offentlig bild|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![format för offentlig bild-URL ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |Genomstruken|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![format för genomstruken](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|Fet och kursiv stil|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![format för fet och kursiv stil](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|Fet URL för länk|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![format för fet URL](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Fet och kursiv stil|`***text**_`|`How can I create a _*_QnA Maker_** bot?`|![format för fet och kursiv stil](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Fet URL för länk|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![format för fet URL](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |URL för kursiv stil för länk|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![format för kursiv stil-URL](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Escape-markdown symboler|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Format för Escape-markdown symboler.](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Ordnad lista|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>I föregående exempel används automatisk numrering som är inbyggd i markdown.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>I föregående exempel används explicit numrering.|![format för ordnad lista](./media/qnamaker-concepts-datasources/format-ordered-list.png)|

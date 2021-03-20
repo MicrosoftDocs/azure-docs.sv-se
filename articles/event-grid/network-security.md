@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
 ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917536"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Nätverks säkerhet för Azure Event Grid resurser
@@ -27,7 +27,7 @@ Du kan använda service märken för att definiera nätverks åtkomst kontroller
 
 | Tjänsttagg | Syfte | Kan använda inkommande eller utgående? | Kan regionala? | Kan använda med Azure-brandväggen? |
 | --- | -------- |:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. | Båda | Nej | Nej |
+| AzureEventGrid | Azure Event Grid. | Båda | Inga | Inga |
 
 
 ## <a name="ip-firewall"></a>IP-brandvägg 
@@ -37,7 +37,7 @@ Som standard är ämne och domän tillgängligt från Internet så länge förfr
 
 Steg-för-steg-instruktioner för att konfigurera IP-brandvägg för ämnen och domäner finns i [Konfigurera IP-brandvägg](configure-firewall.md).
 
-## <a name="private-endpoints"></a>Privata slut punkter
+## <a name="private-endpoints"></a>Privata slutpunkter
 Du kan använda [privata slut punkter](../private-link/private-endpoint-overview.md) för att tillåta ingress av händelser direkt från ditt virtuella nätverk till dina ämnen och domäner på ett säkert sätt över en [privat länk](../private-link/private-link-overview.md) utan att gå via det offentliga Internet. En privat slut punkt är ett särskilt nätverks gränssnitt för en Azure-tjänst i ditt VNet. När du skapar en privat slut punkt för ditt ämne eller din domän ger den säker anslutning mellan klienter i ditt VNet och din Event Grid-resurs. Den privata slut punkten tilldelas en IP-adress från det virtuella nätverkets IP-adressintervall. Anslutningen mellan den privata slut punkten och Event Grid tjänsten använder en säker privat länk.
 
 ![Arkitekturdiagram](./media/network-security/architecture-diagram.png)
@@ -84,9 +84,9 @@ I följande tabell beskrivs olika tillstånd för den privata slut punkts anslut
 | Anslutnings status   |  Publiceringen lyckades (Ja/Nej) |
 | ------------------ | -------------------------------|
 | Godkända           | Ja                            |
-| Avslagen           | Nej                             |
-| Väntar            | Nej                             |
-| Frånkopplad       | Nej                             |
+| Avslagen           | Inga                             |
+| Väntar            | Inga                             |
+| Frånkopplad       | Inga                             |
 
 För att publiceringen ska lyckas bör anslutnings statusen för den privata slut punkten **godkännas**. Om en anslutning avvisas kan den inte godkännas med hjälp av Azure Portal. Den enda möjligheten är att ta bort anslutningen och skapa en ny i stället.
 

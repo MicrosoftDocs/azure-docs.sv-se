@@ -11,10 +11,10 @@ ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97629365"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Översikt över Azure Page blobbar
@@ -39,7 +39,7 @@ Första parts Microsoft-tjänster som Azure Site Recovery, Azure Backup, och må
 * Direktmigrering av program och data från lokalt till molnet: Kopiera lokala data och Använd REST-API: er för att skriva direkt till en Azure Page-BLOB medan den lokala virtuella datorn fortsätter att köras. När målet har skapats kan du snabbt redundansväxla till virtuell Azure-dator med dessa data. På så sätt kan du migrera dina virtuella datorer och virtuella diskar från lokalt till molnet med minimal stillestånds tid eftersom datamigreringen sker i bakgrunden medan du fortsätter att använda den virtuella datorn och avbrotts tiden som krävs för redundans kommer att vara kort (i minuter).
 * [SAS-baserad](../common/storage-sas-overview.md) delad åtkomst, som möjliggör scenarier som flera läsare och en enskild skrivare med stöd för samtidiga kontroller.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Båda typerna av lagring som erbjuds med Page blobbar har sin egen pris modell. Premium Page-blobbar följer pris modellen för Managed disks, medan standard sid blobbar faktureras på använt storlek och för varje transaktion. Mer information finns på sidan med [priser för Azure Page blobbar](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 

@@ -11,10 +11,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89018407"
 ---
 # <a name="get-started-with-device-management-net"></a>Kom igång med enhets hantering (.NET)
@@ -43,7 +43,7 @@ I slutet av den här självstudiekursen har du två .NET-konsolappar:
 
 * Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här artikeln använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -63,21 +63,21 @@ I det här avsnittet skapar du en .NET-konsol app med C# som initierar en fjärr
 
 1. I Visual Studio väljer du **skapa ett nytt projekt**.
 
-1. I **skapa ett nytt projekt**söker du efter och väljer projekt mal len **konsol program (.NET Framework)** och väljer sedan **Nästa**.
+1. I **skapa ett nytt projekt** söker du efter och väljer projekt mal len **konsol program (.NET Framework)** och väljer sedan **Nästa**.
 
-1. I **Konfigurera ditt nya projekt**namnger du projektet *TriggerReboot*och väljer .NET Framework version 4.5.1 eller senare. Välj **Skapa**.
+1. I **Konfigurera ditt nya projekt** namnger du projektet *TriggerReboot* och väljer .NET Framework version 4.5.1 eller senare. Välj **Skapa**.
 
     ![Nytt Visual C# Windows Classic Desktop-projekt](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. I **Solution Explorer**högerklickar du på projektet **TriggerReboot** och väljer sedan **Hantera NuGet-paket**.
+1. I **Solution Explorer** högerklickar du på projektet **TriggerReboot** och väljer sedan **Hantera NuGet-paket**.
 
-1. Välj **Bläddra**och Sök sedan efter och välj **Microsoft. Azure. Devices**. Välj **Installera** för att installera **Microsoft. Azure. Devices** -paketet.
+1. Välj **Bläddra** och Sök sedan efter och välj **Microsoft. Azure. Devices**. Välj **Installera** för att installera **Microsoft. Azure. Devices** -paketet.
 
     ![Fönstret för NuGet-pakethanteraren](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
 
    I det här steget hämtas, installeras och läggs en referens till i [Azure IoT service SDK NuGet-](https://www.nuget.org/packages/Microsoft.Azure.Devices/) paketet och dess beroenden.
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -146,21 +146,21 @@ I det här avsnittet får du:
 
 Följ dessa steg om du vill skapa en simulerad enhets app:
 
-1. I Visual Studio, i TriggerReboot-lösningen som du redan har skapat, väljer du **fil**  >  **nytt**  >  **projekt**. I **skapa ett nytt projekt**söker du efter och väljer projekt mal len **konsol program (.NET Framework)** och väljer sedan **Nästa**.
+1. I Visual Studio, i TriggerReboot-lösningen som du redan har skapat, väljer du **fil**  >  **nytt**  >  **projekt**. I **skapa ett nytt projekt** söker du efter och väljer projekt mal len **konsol program (.NET Framework)** och väljer sedan **Nästa**.
 
-1. I **Konfigurera ditt nya projekt**namnger du projektet *SimulateManagedDevice*och väljer **Lägg till i lösning**för **lösning**. Välj **Skapa**.
+1. I **Konfigurera ditt nya projekt** namnger du projektet *SimulateManagedDevice* och väljer **Lägg till i lösning** för **lösning**. Välj **Skapa**.
 
     ![Namnge och Lägg till ditt projekt i lösningen](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
 1. I Solution Explorer högerklickar du på det nya **SimulateManagedDevice** -projektet och väljer sedan **Hantera NuGet-paket**.
 
-1. Välj **Bläddra**och Sök efter och välj **Microsoft. Azure. devices. client**. Välj **installera**.
+1. Välj **Bläddra** och Sök efter och välj **Microsoft. Azure. devices. client**. Välj **installera**.
 
     ![NuGet paket hanterarens fönster klient program](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
    I det här steget hämtas, installeras och läggs en referens till i [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-paketet och dess beroenden.
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -237,7 +237,7 @@ Följ dessa steg om du vill skapa en simulerad enhets app:
 
 1. Högerklicka på din lösning i Solution Explorer och välj **Ange start projekt**.
 
-1. För **vanliga egenskaper**  >  **Start projekt**väljer du **enstaka start projekt**och väljer sedan **SimulateManagedDevice** -projektet. Klicka på **OK** för att spara ändringarna.
+1. För **vanliga egenskaper**  >  **Start projekt** väljer du **enstaka start projekt** och väljer sedan **SimulateManagedDevice** -projektet. Klicka på **OK** för att spara ändringarna.
 
 1. Välj **bygge**  >  **build-lösning**.
 
@@ -248,9 +248,9 @@ Följ dessa steg om du vill skapa en simulerad enhets app:
 
 Du är nu redo att köra apparna.
 
-1. Om du vill köra .NET-enhets appens **SimulateManagedDevice**högerklickar du på projektet **SimulateManagedDevice** i Solution Explorer, väljer **Felsök**och väljer sedan **Starta ny instans**. Appen ska börja lyssna efter metod anrop från IoT Hub.
+1. Om du vill köra .NET-enhets appens **SimulateManagedDevice** högerklickar du på projektet **SimulateManagedDevice** i Solution Explorer, väljer **Felsök** och väljer sedan **Starta ny instans**. Appen ska börja lyssna efter metod anrop från IoT Hub.
 
-1. När enheten är ansluten och väntar på metod anrop högerklickar du på projektet **TriggerReboot** , väljer **Felsök**och väljer sedan **Starta ny instans**.
+1. När enheten är ansluten och väntar på metod anrop högerklickar du på projektet **TriggerReboot** , väljer **Felsök** och väljer sedan **Starta ny instans**.
 
    Du bör se "starta om!" Skrivet i **SimulatedManagedDevice** -konsolen och de rapporterade egenskaperna för enheten, som innehåller den senaste omstarts tiden, skrivet i **TriggerReboot** -konsolen.
 

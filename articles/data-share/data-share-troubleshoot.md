@@ -8,10 +8,10 @@ ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97964515"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>Felsök vanliga problem i Azure Data Share 
@@ -50,7 +50,7 @@ Följande fel kan uppstå när du skapar en ny resurs, lägger till data uppsät
 * Du har inte rätt behörighet till x.
 * Det gick inte att lägga till Skriv behörigheter för Azure Data Share-kontot till en eller flera av de valda resurserna.
 
-Du kan se något av dessa fel om du har otillräckliga behörigheter för Azure Data Store. Mer information finns i [roller och krav](concepts-roles-permissions.md). 
+Du kan se något av dessa fel om du har otillräckliga behörigheter för Azure Data Store. Mer information finns i [Roller och förutsättningar](concepts-roles-permissions.md). 
 
 Du behöver Skriv behörighet för att dela eller ta emot data från ett Azure-datalager. Den här behörigheten är vanligt vis en del av deltagar rollen. 
 
@@ -65,7 +65,7 @@ En ögonblicks bild kan inte utföras av olika orsaker. Öppna ett detaljerat fe
 
 Ögonblicks bilder fungerar ofta inte av följande anledningar:
 
-* Data dela saknar behörighet att läsa från käll data lagret eller skriva till mål data lagret. Mer information finns i [roller och krav](concepts-roles-permissions.md). Om du tar en ögonblicks bild för första gången kan data resurs resursen behöva några minuter för att få åtkomst till Azure Data Store. Försök igen om några minuter.
+* Data dela saknar behörighet att läsa från käll data lagret eller skriva till mål data lagret. Mer information finns i [Roller och förutsättningar](concepts-roles-permissions.md). Om du tar en ögonblicks bild för första gången kan data resurs resursen behöva några minuter för att få åtkomst till Azure Data Store. Försök igen om några minuter.
 * Data delnings anslutningen till käll data lagret eller mål data lagret blockeras av en brand vägg.
 * En delad data mängd, käll data lager eller mål data lager har tagits bort.
 

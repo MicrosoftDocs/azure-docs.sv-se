@@ -7,17 +7,17 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92899795"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Självstudie: skapa en grafisk Runbook
 
 Den här självstudien beskriver steg för steg hur du skapar en [grafisk runbook](../automation-runbook-types.md#graphical-runbooks) i Azure Automation. Du kan skapa och redigera grafiska och grafiska PowerShell Workflow-Runbooks med hjälp av den grafiska redigeraren i Azure Portal. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en enkel grafisk Runbook
@@ -66,7 +66,7 @@ Du kan lägga till aktiviteter i din runbook med hjälp av bibliotekskontrollen 
 
 3. Klicka på aktiviteten **Write-Output** på arbetsytan. Den här åtgärden öppnar sidan konfigurations kontroll där du kan konfigurera aktiviteten.
 
-4. **Etikett** fältet är som standard namnet på cmdleten, men du kan ändra det till något mer användarvänligt. Ändra den till `Write Hello World to output` .
+4. **Etikett** fältet är som standard namnet på cmdleten, men du kan ändra det till något mer användarvänligt. Ändra den till `Write Hello World to output`.
 
 5. Klicka på **Parametrar** för att ange värden för cmdletens parametrar.
 
@@ -299,7 +299,7 @@ Nu kan du ändra runbooken så att den bara försöker starta den virtuella dato
 
 7. Under **data källa** för **namn** väljer du **indata för Runbook** och sedan **VMName**. Klicka på **OK**.
 
-8. Under **data källa** för **ResourceGroupName** , väljer du **indata för Runbook** och sedan **ResourceGroupName**. Klicka på **OK**.
+8. Under **data källa** för **ResourceGroupName**, väljer du **indata för Runbook** och sedan **ResourceGroupName**. Klicka på **OK**.
 
 9. Under **data källa** för **status** väljer du **konstant värde** och sedan **Sant**. Klicka på **OK**.
 

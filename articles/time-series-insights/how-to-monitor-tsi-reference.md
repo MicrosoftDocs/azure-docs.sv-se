@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
 ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591386"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Övervaknings Azure Time Series Insights data referens
@@ -28,7 +28,7 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 
 ### <a name="ingress"></a>Ingress
  
-|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
 |---|---|---|---|---|
 |IngressReceivedBytes|Inkommande mottagna byte|Byte|Totalt|Antal byte som lästs från händelse källan|
 |IngressReceivedInvalidMessages|Inkommande mottagna ogiltiga meddelanden|Antal|Totalt|Antal ogiltiga meddelanden som lästs från händelse källan|
@@ -40,7 +40,7 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 
 ### <a name="storage"></a>Storage
 
-|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|Maximalt antal egenskaper för varmt lagring|Antal|Maximal|Maximalt antal egenskaper som används av miljön för S1/S2 SKU och maximalt antal egenskaper som tillåts av varmt Arkiv för PAYG SKU|
 |WarmStorageUsedProperties|Egenskaper för varm lagring som används |Antal|Maximal|Antalet egenskaper som används av miljön för S1/S2 SKU och antalet egenskaper som används av varmt Arkiv för PAYG SKU|

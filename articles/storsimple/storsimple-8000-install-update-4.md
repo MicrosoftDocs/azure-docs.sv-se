@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514313"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Installera uppdatering 4 på din StorSimple-enhet
@@ -74,7 +74,7 @@ Snabb korrigerings metoden omfattar följande tre steg:
 
 Du måste ladda ned och installera följande snabb korrigeringar i den angivna ordningen och de föreslagna mapparna:
 
-| Beställa | KB | Beskrivning | Uppdateringstyp | Installationstid |Installera i mapp|
+| Beställning | KB | Beskrivning | Uppdateringstyp | Installationstid |Installera i mapp|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Program uppdatering |Återkommande <br></br>Icke-störande |~ 25 minuter |FirstOrderUpdate|
 | blankett. |KB4011841 <br> KB4011842 |Uppdatering av LSI-drivrutin och inbyggd program vara <br> Uppdatering av USM POLICYEGENSKAPER inbyggd program vara (version 3,38) |Återkommande <br></br>Icke-störande |~ 3 timmar <br> (inkluderar 2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Du måste ladda ned och installera följande snabb korrigeringar i den angivna o
 
 Du kan också behöva installera uppdateringar av inbyggd disk på alla uppdateringar som visas i föregående tabeller. Du kan kontrol lera om du behöver diskens inbyggda program varu uppdateringar genom att köra `Get-HcsFirmwareVersion` cmdleten. Om du kör dessa versioner av inbyggd program vara:,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` , behöver du inte installera dessa uppdateringar.
 
-| Beställa | KB | Beskrivning | Uppdateringstyp | Installationstid | Installera i mapp|
+| Beställning | KB | Beskrivning | Uppdateringstyp | Installationstid | Installera i mapp|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Inbyggd disk |Underhåll <br></br>Störande |~ 30 minuter | ThirdOrderUpdate |
 

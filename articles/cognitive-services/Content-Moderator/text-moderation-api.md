@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912913"
 ---
 # <a name="learn-text-moderation-concepts"></a>Lär dig om text moderator koncept
@@ -47,7 +47,7 @@ Om API: n identifierar eventuella svordomar i något av de [språk som stöds](.
 ```
 
 > [!NOTE]
-> För parametern **språk** , tilldelar `eng` eller lämnar du den tom för att se det omhjälpande **klassificerings** svaret (förhands gransknings funktion). **Den här funktionen stöder enbart engelska** .
+> För parametern **språk** , tilldelar `eng` eller lämnar du den tom för att se det omhjälpande **klassificerings** svaret (förhands gransknings funktion). **Den här funktionen stöder enbart engelska**.
 >
 > För identifiering av **svordomar** kan du använda [ISO 639-3-koden](http://www-01.sil.org/iso639-3/codes.asp) för de språk som stöds i den här artikeln eller lämna det tomt.
 
@@ -142,7 +142,7 @@ Om du ber om automatisk korrigering innehåller svaret den korrigerade versionen
 Standardinställningen är att den globala listan över termer fungerar bra i de flesta fall, men du kanske vill skärmen mot de villkor som är specifika för dina affärs behov. Du kanske till exempel vill filtrera bort eventuella konkurrens märkes namn från inlägg av användare.
 
 > [!NOTE]
-> Det finns en maxgräns på **5 termlistor** där varje lista kan innehålla **högst 10 000 termer** .
+> Det finns en maxgräns på **5 termlistor** där varje lista kan innehålla **högst 10 000 termer**.
 >
 
 I följande exempel visas matchnings List-ID:

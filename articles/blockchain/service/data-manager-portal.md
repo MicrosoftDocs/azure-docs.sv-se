@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85200689"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurera Blockchain Data Manager med Azure-portalen
@@ -20,7 +20,7 @@ Om du vill konfigurera en blockchain Data Manager instans:
 * Skapa en blockchain Data Manager instans för en Azure blockchain service Transaction-nod
 * Lägg till dina blockchain-program
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför [snabb start: skapa en blockchain-medlem med hjälp av Azure Portal](create-member.md) eller [snabb start: skapa en Azure blockchain service blockchain-medlem med Azure CLI](create-member-cli.md). *Standard* nivån för Azure blockchain service rekommenderas när du använder blockchain Data Manager.
 * Skapa ett [Event Grid ämne](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -38,9 +38,9 @@ En utgående anslutning skickar blockchain-data till Azure Event Grid. Du konfig
 
     ![Lägg till blockchain Data Manager](./media/data-manager-portal/add-instance.png)
 
-    Ange följande uppgifter:
+    Ange följande information:
 
-    Inställningen | Beskrivning
+    Inställning | Beskrivning
     --------|------------
     Name | Ange ett unikt namn för en ansluten blockchain Data Manager. Namnet på blockchain Data Manager får innehålla gemener och siffror och får innehålla högst 20 tecken.
     Transaction Node | Välj en Transaction-nod. Endast transaktionsloggfiler som du har Läs behörighet visas.
@@ -108,7 +108,7 @@ Blockchain Data Manager kräver att kontrakts ABI och bytekod-filerna kan nås a
 
     ![Skapa en lagrings konto behållare](./media/data-manager-portal/create-container.png)
 
-    | Field | Beskrivning |
+    | Fält | Beskrivning |
     |-------|-------------|
     | Name  | Ge containern ett namn. Till exempel *smartcontract* |
     | Offentlig åtkomstnivå | Välj *privat (ingen anonym åtkomst)* |
@@ -144,7 +144,7 @@ Generera en signatur för delad åtkomst för varje blob.
 
     Ange namnet på blockchain-programmet och URL: en för smart kontrakt ABI och bytekod.
 
-    Inställningen | Beskrivning
+    Inställning | Beskrivning
     --------|------------
     Name | Ange ett unikt namn för blockchain-programmet som ska spåras.
     Kontrakt ABI | URL-sökväg till kontraktets ABI-fil. Mer information finns i [skapa kontrakts ABI och BYTEKOD URL](#create-contract-abi-and-bytecode-url).

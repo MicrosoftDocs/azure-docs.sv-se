@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317495"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Felsöka ett attribut som inte synkroniseras i Azure AD Connect
@@ -57,7 +57,7 @@ Innan du undersöker synkroniseringsproblem, ska vi förstå **Azure AD Connect*
 
   ![Starta Synchronization Service Manager](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* Välj **metaversum-sökningen**på **Synchronization Service Manager**, Välj **omfång efter objekt typ**, välj objektet med ett attribut och klicka på knappen **Sök** .
+* Välj **metaversum-sökningen** på **Synchronization Service Manager**, Välj **omfång efter objekt typ**, välj objektet med ett attribut och klicka på knappen **Sök** .
 
   ![Metaversum-sökning](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 

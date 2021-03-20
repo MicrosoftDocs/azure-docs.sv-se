@@ -4,10 +4,10 @@ description: Lär dig hur du lägger till en artefakt till en virtuell dator i e
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483898"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Lägg till en artefakt till en virtuell dator
@@ -21,7 +21,7 @@ Information om hur du skapar anpassade artefakter finns i artikeln: [skapa anpas
 
 ## <a name="use-azure-portal"></a>Använda Azure-portalen 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du det labb som innehåller den virtuella dator som du vill arbeta med.  
 1. Välj **mina virtuella datorer**.
 1. Välj önskad virtuell dator.

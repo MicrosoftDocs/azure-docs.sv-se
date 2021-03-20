@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079599"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Distribuera din app i VM-skalningsuppsättningar
@@ -82,7 +82,7 @@ Update-AzVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-Om uppgraderings principen på din skalnings uppsättning är *manuell*uppdaterar du VM-instanserna med [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). Denna cmdlet tillämpar den uppdaterade skalnings uppsättnings konfigurationen på VM-instanserna och installerar programmet.
+Om uppgraderings principen på din skalnings uppsättning är *manuell* uppdaterar du VM-instanserna med [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). Denna cmdlet tillämpar den uppdaterade skalnings uppsättnings konfigurationen på VM-instanserna och installerar programmet.
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Installera en app på en virtuell Linux-dator med Cloud-Init

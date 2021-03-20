@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357519"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Ändra AD DS-kontolösenordet
@@ -42,7 +42,7 @@ Så här uppdaterar du synkroniseringstjänsten med det nya lösen ordet:
 
 3. Välj den **AD-anslutning** som motsvarar det AD DS-konto som lösen ordet har ändrats för.
 
-4. Under **åtgärder**väljer du **Egenskaper**.
+4. Under **åtgärder** väljer du **Egenskaper**.
 
 5. I popup-dialogrutan väljer **du Anslut till Active Directory skog**:
 
@@ -55,6 +55,6 @@ Så här uppdaterar du synkroniseringstjänsten med det nya lösen ordet:
 ## <a name="next-steps"></a>Nästa steg
 **Översikts avsnitt**
 
-* [Azure AD Connect synkronisering: förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
+* [Azure AD Connect-synkronisering: Förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
 
 * [Integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md)

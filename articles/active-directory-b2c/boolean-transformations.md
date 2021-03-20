@@ -12,10 +12,10 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85201284"
 ---
 # <a name="boolean-claims-transformations"></a>Omvandlingar med booleska anspråk
@@ -28,7 +28,7 @@ Den här artikeln innehåller exempel på hur du använder booleska anspråks om
 
 Utför en och-åtgärd av två booleska inputClaims och anger outputClaim med resultatet av åtgärden.
 
-| Objekt  | TransformationClaimType  | Datatyp  | Obs! |
+| Objekt  | TransformationClaimType  | Datatyp  | Kommentarer |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | Den första ClaimType som ska utvärderas. |
 | InputClaim | inputClaim2  | boolean | Den andra ClaimType som ska utvärderas. |
@@ -61,7 +61,7 @@ Följande anspråks omvandling visar hur du och två booleska ClaimTypes: `isEma
 
 Kontrollerar att booleska värden för två anspråk är lika och genererar ett undantag om de inte är det.
 
-| Objekt | TransformationClaimType  | Datatyp  | Obs! |
+| Objekt | TransformationClaimType  | Datatyp  | Kommentarer |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | Den ClaimType som ska försäkras. |
 | InputParameter |valueToCompareTo | boolean | Värdet som ska jämföras (sant eller falskt). |
@@ -119,7 +119,7 @@ Den självkontrollerade tekniska profilen anropar verifierings **inloggningen-in
 
 Kontrollerar att det booleska värdet för ett anspråk är lika med `true` eller `false` och returnerar resultatet av komprimeringen.
 
-| Objekt | TransformationClaimType  | Datatyp  | Obs! |
+| Objekt | TransformationClaimType  | Datatyp  | Kommentarer |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | Den ClaimType som ska försäkras. |
 | InputParameter |valueToCompareTo | boolean | Värdet som ska jämföras (sant eller falskt). |
@@ -154,7 +154,7 @@ Följande anspråks omvandling visar hur du kontrollerar värdet för en boolesk
 
 Utför en not-åtgärd för den booleska inputClaim och ställer in outputClaim med resultatet av åtgärden.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | Det anspråk som ska användas. |
 | OutputClaim | outputClaim | boolean | ClaimTypes som skapas efter att denna ClaimsTransformation har anropats (sant eller falskt). |
@@ -183,7 +183,7 @@ Använd den här anspråks omvandlingen för att utföra logisk negation på ett
 
 Beräknar en eller två booleska inputClaims och anger outputClaim med resultatet av åtgärden.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | Den första ClaimType som ska utvärderas. |
 | InputClaim | inputClaim2 | boolean | Den andra ClaimType som ska utvärderas. |

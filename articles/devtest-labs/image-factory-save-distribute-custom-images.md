@@ -4,16 +4,16 @@ description: Den här artikeln innehåller anvisningar för hur du sparar anpass
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476248"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Spara anpassade avbildningar och distribuera till flera labb
 Den här artikeln innehåller anvisningar för hur du sparar anpassade avbildningar från redan skapade virtuella datorer (VM). Det beskriver också hur du distribuerar dessa anpassade avbildningar till andra DevTest Labs i organisationen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Följande objekt bör redan vara på plats:
 
 - Ett labb för avbildnings fabriken i Azure DevTest Labs.

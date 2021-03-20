@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85477744"
 ---
 # <a name="configure-keychain"></a>Konfigurera nyckelring
@@ -32,7 +32,7 @@ Den här artikeln beskriver hur du konfigurerar app-rättigheter så att MSAL ka
 
 MSAL på iOS använder `com.microsoft.adalcache` åtkomst gruppen som standard. Det här är den delade åtkomst gruppen som används av både MSAL-och ADAL-SDK: er (Azure AD Authentication Library) och säkerställer den bästa funktionen för enkel inloggning mellan flera appar från samma utgivare.
 
-På iOS lägger du till `com.microsoft.adalcache` nyckel rings gruppen i appens rättighet i Xcode under **projekt inställningar**  >  **kapacitet**för  >  **nyckel delning**
+På iOS lägger du till `com.microsoft.adalcache` nyckel rings gruppen i appens rättighet i Xcode under **projekt inställningar**  >  **kapacitet** för  >  **nyckel delning**
 
 ### <a name="macos"></a>macOS
 

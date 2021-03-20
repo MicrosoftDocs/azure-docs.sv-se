@@ -8,15 +8,15 @@ ms.topic: troubleshooting
 ms.date: 01/31/2018
 ms.author: cherylmc
 ms.openlocfilehash: 0718a1b211fe6365af30a330fe6a3742cff2ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84984429"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>Felsöka VPN Gateway
 
-VPN Gateway anslutningar kan inte utföras av olika orsaker. Den här artikeln innehåller länkar för att komma igång med fel sökning. En fullständig lista finns i artiklarna i innehålls förteckningen under **fel sökning**till vänster på den här sidan.
+VPN Gateway anslutningar kan inte utföras av olika orsaker. Den här artikeln innehåller länkar för att komma igång med fel sökning. En fullständig lista finns i artiklarna i innehålls förteckningen under **fel sökning** till vänster på den här sidan.
 
 ## <a name="troubleshooting-scenarios-and-solutions"></a>Fel söknings scenarier och lösningar
 

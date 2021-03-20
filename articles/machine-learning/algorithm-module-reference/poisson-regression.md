@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420707"
 ---
 # <a name="poisson-regression"></a>Poisson-regression
@@ -57,13 +57,13 @@ Eftersom Response-variabeln har en Poisson-distribution, gör modellen olika ant
 
 3. I den högra rutan i **Poisson regression** -modulen anger du hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .  
   
-    - **Enskild parameter** : Ange en viss uppsättning värden som argument om du vet hur du vill konfigurera modellen.
+    - **Enskild parameter**: Ange en viss uppsättning värden som argument om du vet hur du vill konfigurera modellen.
   
-    - **Parameter intervall** : om du inte är säker på de bästa parametrarna gör du en parameter rensning med hjälp av modulen för att [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Utbildaren itererar över flera värden som du anger för att hitta den optimala konfigurationen.
+    - **Parameter intervall**: om du inte är säker på de bästa parametrarna gör du en parameter rensning med hjälp av modulen för att [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Utbildaren itererar över flera värden som du anger för att hitta den optimala konfigurationen.
   
-4. **Optimerings tolerans** : Ange ett värde som definierar tolerans intervallet under optimeringen. Ju lägre värde, desto långsammare och mer korrekt passning.
+4. **Optimerings tolerans**: Ange ett värde som definierar tolerans intervallet under optimeringen. Ju lägre värde, desto långsammare och mer korrekt passning.
 
-5. **L1-regulariseringshastigheten vikt** och **L2-regulariseringshastigheten vikt** : Ange värden som ska användas för L1-och L2-regulariseringshastigheten. *Regulariseringshastigheten* lägger till begränsningar i algoritmen för aspekter av modellen som är oberoende av tränings data. Regulariseringshastigheten används ofta för att undvika överanpassning. 
+5. **L1-regulariseringshastigheten vikt** och **L2-regulariseringshastigheten vikt**: Ange värden som ska användas för L1-och L2-regulariseringshastigheten. *Regulariseringshastigheten* lägger till begränsningar i algoritmen för aspekter av modellen som är oberoende av tränings data. Regulariseringshastigheten används ofta för att undvika överanpassning. 
 
     - L1-regulariseringshastigheten är användbart om målet är att ha en modell som är så sparse som möjligt.
 
@@ -75,7 +75,7 @@ Eftersom Response-variabeln har en Poisson-distribution, gör modellen olika ant
 
     En felfri diskussion om L1-och L2-regulariseringshastigheten finns i [L1-och L2-regulariseringshastigheten för Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. **Minnes storlek för L-BFGS** : Ange mängden minne som ska reserveras för modell anpassning och optimering.
+6. **Minnes storlek för L-BFGS**: Ange mängden minne som ska reserveras för modell anpassning och optimering.
 
      L-BFGS är en metod för optimering baserat på algoritmen Broyden – Fletcher – Goldfarb – Shanno (BFGS). Metoden använder en begränsad mängd minne (L) för att beräkna nästa steg riktning.
 

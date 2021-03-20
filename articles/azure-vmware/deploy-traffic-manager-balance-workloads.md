@@ -4,10 +4,10 @@ description: Lär dig att integrera Traffic Manager med Azure VMware-lösningen 
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988593"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Distribuera Traffic Manager för att balansera arbets belastningar för Azure VMware-lösningar
@@ -106,7 +106,7 @@ Följande steg kontrollerar konfigurationen av NSX-T-segmentet i Azure VMware-l�
 
 1. Ange nödvändig information för var och en av de externa slut punkterna i de olika regionerna och välj sedan **Lägg till**: 
    - Typ
-   - Namn
+   - Name
    - Fullständigt kvalificerat domän namn (FQDN) eller IP
    - Vikt (tilldela en vikt på 1 till varje slut punkt). 
 

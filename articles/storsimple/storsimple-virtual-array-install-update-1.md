@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: d05395f97aded0b57780f898e9cba6ddca491f95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005833"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Installera uppdatering 1,0 på din virtuella StorSimple-matris
@@ -104,7 +104,7 @@ Den här proceduren tar cirka 4 minuter att slutföra. Utför följande steg fö
    
     ![Skärm bild som visar den program uppdatering som valts på menyn underhåll.](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. I **Uppdatera fil Sök väg** anger du fil namnet för uppdateringen eller snabb korrigeringen. Du kan också bläddra till installations filen för uppdateringen eller hotfixen om den placeras på en nätverks resurs. Klicka på **Använd**.
+2. I **Uppdatera fil Sök väg** anger du fil namnet för uppdateringen eller snabb korrigeringen. Du kan också bläddra till installations filen för uppdateringen eller hotfixen om den placeras på en nätverks resurs. Klicka på **Applicera**.
    
     ![Skärm bild som visar den aktuella program versionen och text rutan Sökväg för uppdaterings fil på program Uppdaterings sidan.](./media/storsimple-virtual-array-install-update-1/update2m.png)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94950762"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Installera och använda din StorSimple-enhet på ett säkert sätt
@@ -37,7 +37,7 @@ Här följer de ikoner som du hittar när du granskar de säkerhets åtgärder s
 | ![Varnings ikon varning ](./media/storsimple-safety/IC740879.png) **!** |Indikerar en farlig situation som, om de inte undviks, kan leda till mindre eller måttlig skada. |
 | ![Meddelande Ikons ](./media/storsimple-safety/IC740881.png) **meddelande:** |Anger information som anses viktig, men inte risk relaterad. |
 | ![Elektrisk stötande stöt vid ](./media/storsimple-safety/IC740882.png) **fara** |Hög spänning |
-| ![](./media/storsimple-safety/IC740883.png) **Heavy Weight** Extrafet vikt ikon | |
+| ![](./media/storsimple-safety/IC740883.png)  Extrafet vikt ikon | |
 | ![Ingen User serviceable parts-ikon ](./media/storsimple-safety/IC740879.png) **saknar användar tjänst delar** |Få inte åtkomst om den inte är korrekt utbildad. |
 | ![Läs säkerhets meddelande ikonen](./media/storsimple-safety/IC740885.png)**Läs alla instruktioner först** | |
 | ![Tips risk ikon ](./media/storsimple-safety/IC740886.png) **tips** | |

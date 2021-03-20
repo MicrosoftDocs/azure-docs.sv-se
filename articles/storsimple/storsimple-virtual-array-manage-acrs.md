@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85507627"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Använd StorSimple Enhetshanteraren för att hantera åtkomst kontroll poster för StorSimple virtuella matris
@@ -63,13 +63,13 @@ Utför följande steg för att lägga till en ACR.
 
 #### <a name="to-add-an-acr"></a>Lägga till en ACR
 
-1. På sidan landning av tjänst väljer du din tjänst, dubbelklickar på tjänstens namn och klickar sedan på **åtkomst kontroll poster**i avsnittet **konfiguration** .
+1. På sidan landning av tjänst väljer du din tjänst, dubbelklickar på tjänstens namn och klickar sedan på **åtkomst kontroll poster** i avsnittet **konfiguration** .
 2. I bladet **åtkomst kontroll poster** klickar du på **Lägg till**.
 3. Gör följande på bladet **Lägg till ACR** :
    
     1. Ange ett **namn** för din ACR.
     
-    2. Under **iSCSI-initierarens namn**anger du IQN-namnet för din Windows-värd. Gör följande för att hämta IQN för Windows Server-värden:
+    2. Under **iSCSI-initierarens namn** anger du IQN-namnet för din Windows-värd. Gör följande för att hämta IQN för Windows Server-värden:
    
     3. Starta Microsoft iSCSI-initieraren på din Windows-värd. I fönstret för iSCSI-initieraregenskaper, fliken **Konfiguration**, markerar och kopierar du strängen från fältet **Namn på initieraren**.
     Klistra in den här strängen i fältet **IQN** i bladet **Lägg till ACR** .

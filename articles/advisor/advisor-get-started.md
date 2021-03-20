@@ -4,10 +4,10 @@ description: Kom igång med Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85117870"
 ---
 # <a name="get-started-with-azure-advisor"></a>Kom igång med Azure Advisor
@@ -27,7 +27,7 @@ Lär dig hur du får åtkomst till Advisor via Azure Portal, får rekommendation
 
 1. Advisor-instrumentpanelen visar en sammanfattning av dina rekommendationer för alla valda prenumerationer.  Du kan välja de prenumerationer som du vill att rekommendationerna ska visas för i listrutan prenumerationsfilter.
 
-1. Klicka på någon av flikarna om du vill ha rekommendationer för en viss kategori: **tillförlitlighet**, **säkerhet**, **prestanda**eller **kostnad**. 
+1. Klicka på någon av flikarna om du vill ha rekommendationer för en viss kategori: **tillförlitlighet**, **säkerhet**, **prestanda** eller **kostnad**. 
 
    ![Azure Advisor instrument panel](./media/advisor-overview/advisor-dashboard.png)
 

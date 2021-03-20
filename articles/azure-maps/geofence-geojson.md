@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92897202"
 ---
 # <a name="geofencing-geojson-data"></a>Polystaket, polyjson-data
@@ -30,7 +30,7 @@ Data för avgränsning eller uppsättning av gränser representeras av `Feature`
 * `expiredTime`Är förfallo datum och-tid för avgränsning av data. Om värdet för `userTime` i begäran är senare än det här värdet betraktas motsvarande avgränsnings data som utgångna data och inte efter frågas. Då kommer geometryId för dessa avgränsnings data att ingå i `expiredGeofenceGeometryId` matrisen inom ett gräns värde.
 * `validityPeriod`Är en lista över tids perioden för giltighets tiden för den här gränsen. Om värdet för `userTime` i begäran faller utanför giltighets perioden betraktas motsvarande avgränsnings information som ogiltig och kommer inte att frågas. GeometryId för dessa avgränsnings data ingår i `invalidPeriodGeofenceGeometryId` matrisen inom ett gräns värde. I följande tabell visas egenskaperna för validityPeriod-elementet.
 
-| Namn | Typ | Krävs  | Beskrivning |
+| Namn | Typ | Obligatorisk  | Beskrivning |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datumtid  | true | Start datum tiden för giltighets tids perioden. |
 | endTime   | Datumtid  | true |  Slutdatumet för giltighets tids perioden. |

@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97964441"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Skapa planer för ett erbjudande för virtuell dator
@@ -116,7 +116,7 @@ När du tar bort en marknad kommer kunder från den marknaden som använder akti
 
 Fortsätt genom att välja **Spara** .
 
-### <a name="pricing"></a>Prissättning
+### <a name="pricing"></a>Priser
 
 För **licens modellen** väljer du Använd **månatlig månatlig fakturerings plan** för att konfigurera prissättningen för den här planen eller **Bring Your Own License** så att kunderna kan använda den här planen med sin befintliga licens.
 

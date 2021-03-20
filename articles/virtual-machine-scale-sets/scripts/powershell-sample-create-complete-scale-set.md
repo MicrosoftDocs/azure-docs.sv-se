@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurepowershell
 ms.openlocfilehash: d37f5f624459db6bc336884987a16c60503492a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078511"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Skapa en fullständig VM-skalningsuppsättning med PowerShell
@@ -39,7 +39,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="script-explanation"></a>Förklaring av skript
 Det här skriptet använder följande kommandon för att skapa distributionen. Varje post i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Skapar en resursgrupp där alla resurser lagras. |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Skapar en undernätskonfiguration. Den här konfigurationen används med skapandeprocessen för virtuella nätverk. |

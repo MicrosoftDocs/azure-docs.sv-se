@@ -7,10 +7,10 @@ ms.date: 6/12/2017
 ms.author: lemai
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89021263"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Ersätta startnoden och stoppa Node-API: er med nodens över gångs-API
@@ -37,7 +37,7 @@ Vi har åtgärdat problemen ovan i en ny uppsättning API: er.  Den nya noden ö
 Om nodens över gångs-API inte genererar ett undantag när det anropas, har systemet godkänt den asynkrona åtgärden och kör den.  Ett lyckat anrop innebär inte att åtgärden har slutförts ännu.  Om du vill hämta information om åtgärdens aktuella tillstånd anropar du nodens förlopps-API (hanterad: [GetNodeTransitionProgressAsync ()][gntp]) med det GUID som användes när du anropar nodens över gångs-API för den här åtgärden.  Nodens över gångs förlopps-API returnerar ett NodeTransitionProgress-objekt.  Egenskapen State för det här objektet anger åtgärdens aktuella tillstånd.  Om status är "körs" körs åtgärden.  Om det är klart slutförs åtgärden utan fel.  Om det är fel har det uppstått ett problem med att köra åtgärden.  Resultat egenskapens undantags egenskap indikerar vad problemet var.  Se https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate för mer information om egenskapen State och avsnittet "exempel användning" nedan för kod exempel.
 
 
-**Differentiering mellan en stoppad nod och en nod** Om en nod *stoppas* med hjälp av noden över gångs-API, visar utdata för en Node-fråga (hanterad: [GetNodeListAsync ()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) att den här noden har ett värde för egenskapen *IsStopped* True.  Observera att detta skiljer sig från värdet för egenskapen *NodeStatus* , som kommer att säga *nedåt*.  Om egenskapen *NodeStatus* har värdet *Down*, men *IsStopped* är false, stoppades inte noden med nodens över gångs-API och är *avstängd* på grund av någon annan orsak.  Om egenskapen *IsStopped* är true och egenskapen *NodeStatus* är *nere*stoppades den med nodens över gångs-API.
+**Differentiering mellan en stoppad nod och en nod** Om en nod *stoppas* med hjälp av noden över gångs-API, visar utdata för en Node-fråga (hanterad: [GetNodeListAsync ()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) att den här noden har ett värde för egenskapen *IsStopped* True.  Observera att detta skiljer sig från värdet för egenskapen *NodeStatus* , som kommer att säga *nedåt*.  Om egenskapen *NodeStatus* har värdet *Down*, men *IsStopped* är false, stoppades inte noden med nodens över gångs-API och är *avstängd* på grund av någon annan orsak.  Om egenskapen *IsStopped* är true och egenskapen *NodeStatus* är *nere* stoppades den med nodens över gångs-API.
 
 Om du startar en *stoppad* nod med nodens över gångs-API kommer den att fungera som en normal medlem i klustret igen.  Utdata från API: t för Node-frågor visar *IsStopped* som falskt och *NodeStatus* som något som inte är nere (till exempel upp).
 

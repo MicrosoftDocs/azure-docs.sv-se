@@ -11,10 +11,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94949504"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Genom gång: Lägg till REST API Claims-utbyten till anpassade principer i Azure Active Directory B2C
@@ -27,7 +27,7 @@ I det här scenariot kan vi utöka användarens token-data genom att integrera m
 
 Du kan också utforma interaktionen som en teknisk profil för validering. Detta är lämpligt när REST API kommer att verifiera data på skärmen och returnera anspråk. Mer information finns i [genom gång: integrera REST API Claims-utbyten i Azure AD B2C användar resa för att verifiera användarindata](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Slutför stegen i [Kom igång med anpassade principer](custom-policy-get-started.md). Du bör ha en fungerande anpassad princip för registrering och inloggning med lokala konton.
 - Lär dig hur du [integrerar REST API Claims-utbyten i din Azure AD B2C anpassade princip](custom-policy-rest-api-intro.md).
@@ -127,7 +127,7 @@ Kommentarerna ovan `AuthenticationType` och `AllowInsecureAuthInProduction` ange
 
 ## <a name="add-an-orchestration-step"></a>Lägg till ett Orchestration-steg
 
-[Användar resan](userjourneys.md) anger explicita sökvägar genom vilka en princip tillåter ett förlitande parts program att hämta önskade anspråk för en användare. En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. Du kan lägga till eller ta bort Orchestration-steg. I det här fallet lägger du till ett nytt Orchestration-steg som används för att utöka den information som ges till programmet efter att användaren loggat in eller loggar in via REST API-anropet.
+[Användarresor](userjourneys.md) anger explicita sökvägar genom vilka en princip tillåter att ett anspråksbaserat program hämtar önskade anspråk för en användare. En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. Du kan lägga till eller ta bort Orchestration-steg. I det här fallet lägger du till ett nytt Orchestration-steg som används för att utöka den information som ges till programmet efter att användaren loggat in eller loggar in via REST API-anropet.
 
 1. Öppna bas filen för din princip. Till exempel <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
 1. Sök efter `<UserJourneys>` elementet. Kopiera hela elementet och ta sedan bort det.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912029"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurera granskningsverktyget
@@ -35,7 +35,7 @@ I det här avsnittet beskrivs hur du skapar under grupper och snabbt tilldelar r
 
 ### <a name="create-a-subteam"></a>Skapa ett under team
 
-Gå till avsnittet under **grupper** och klicka på **Lägg till under team** . Ange ditt under grupp namn i dialog rutan och klicka på **Spara** .
+Gå till avsnittet under **grupper** och klicka på **Lägg till under team**. Ange ditt under grupp namn i dialog rutan och klicka på **Spara**.
 
 ![Namn på under grupp](images/1-Teams-2.PNG)
 
@@ -60,13 +60,13 @@ Om du vill tilldela innehåll till ett under team klickar du på ellipsen i det 
 
 ### <a name="switch-between-subteams"></a>Växla mellan under grupper
 
-Om du är medlem i fler än ett under team kan du växla mellan dessa under grupper för att ändra vilka innehålls granskningar som visas för dig. På fliken **Granska** väljer du den nedrullningsbara menyn med etiketten **standard** och väljer **Välj under team** . Du kan visa innehålls granskningarna för olika under grupper, men bara de som är medlemmar.
+Om du är medlem i fler än ett under team kan du växla mellan dessa under grupper för att ändra vilka innehålls granskningar som visas för dig. På fliken **Granska** väljer du den nedrullningsbara menyn med etiketten **standard** och väljer **Välj under team**. Du kan visa innehålls granskningarna för olika under grupper, men bara de som är medlemmar.
 
 ![Växla mellan under grupper](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Taggar
 
-På fliken **taggar** kan du definiera anpassade moderatorer utöver de två standard redigerings taggarna &mdash; **isadult** ( **a** ) och **isracy** ( **r** ). När du skapar en anpassad tagg blir den tillgänglig i granskningar tillsammans med Standardtaggarna. Du kan ändra vilka taggar som ska visas i granskningarna genom att växla deras Synlighets inställningar.
+På fliken **taggar** kan du definiera anpassade moderatorer utöver de två standard redigerings taggarna &mdash; **isadult** (**a**) och **isracy** (**r**). När du skapar en anpassad tagg blir den tillgänglig i granskningar tillsammans med Standardtaggarna. Du kan ändra vilka taggar som ska visas i granskningarna genom att växla deras Synlighets inställningar.
 
 ![Vyn taggar, inklusive kryss rutorna "är synliga"](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ På fliken **taggar** kan du definiera anpassade moderatorer utöver de två sta
 
 Om du vill skapa en ny tagg måste du ange en kort kod, ett namn och en beskrivning i respektive fält.
 
-- **Kort kod** : Ange en kod med två bokstäver för taggen. Exempel: **CB**
-- **Namn** : Ange ett kort och beskrivande taggnamn i gemener utan blank steg. Exempel: **isbullying** .
-- **Beskrivning** : (valfritt) ange en beskrivning av den typ av innehåll som taggen riktas mot. Exempel: **skildringar eller instanser av cyberhot bullying** .
+- **Kort kod**: Ange en kod med två bokstäver för taggen. Exempel: **CB**
+- **Namn**: Ange ett kort och beskrivande taggnamn i gemener utan blank steg. Exempel: **isbullying**.
+- **Beskrivning**: (valfritt) ange en beskrivning av den typ av innehåll som taggen riktas mot. Exempel: **skildringar eller instanser av cyberhot bullying**.
 
 Klicka på **Lägg** till för att lägga till en tagg och klicka på **Spara** när du är klar med att skapa taggar.
 
@@ -86,11 +86,11 @@ Klicka på **Lägg** till för att lägga till en tagg och klicka på **Spara** 
 
 Du kan ta bort anpassade taggar genom att välja pappers korgs ikonen bredvid posterna i listan Taggar, men du kan inte ta bort Standardtaggarna.
 
-## <a name="connectors"></a>Anslutningar
+## <a name="connectors"></a>Anslutningsappar
 
 På fliken **anslutningar** kan du hantera dina anslutningar, som är tjänstespecific plugin-program som kan bearbeta innehåll på olika sätt som en del av innehålls [arbets flöden](../review-api.md#workflows).
 
-Standard anslutnings programmet när du skapar ett arbets flöde är Content Moderator koppling, som kan markera innehåll som **vuxen** eller **vågat** , hitta svordomar och så vidare. Du kan dock använda andra anslutningar som visas här, så länge du har autentiseringsuppgifter för sina respektive tjänster (för att använda ansikts kopplingen, till exempel måste du hämta en [ansikts](../../face/overview.md) prenumerations nyckel).
+Standard anslutnings programmet när du skapar ett arbets flöde är Content Moderator koppling, som kan markera innehåll som **vuxen** eller **vågat**, hitta svordomar och så vidare. Du kan dock använda andra anslutningar som visas här, så länge du har autentiseringsuppgifter för sina respektive tjänster (för att använda ansikts kopplingen, till exempel måste du hämta en [ansikts](../../face/overview.md) prenumerations nyckel).
 
 [Gransknings verktyget](./human-in-the-loop.md) innehåller följande kopplingar:
 

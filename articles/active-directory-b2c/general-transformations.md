@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202228"
 ---
 # <a name="general-claims-transformations"></a>Allmänna anspråks omvandlingar
@@ -28,7 +28,7 @@ Den här artikeln innehåller exempel på hur du använder allmänna anspråks o
 
 Kopiera värdet för ett anspråk till ett annat. Båda anspråk måste vara av samma typ.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | sträng, heltal | Anspråks typen som ska kopieras. |
 | OutputClaim | outputClaim | sträng, heltal | Den ClaimType som skapas efter att denna ClaimsTransformation har anropats. |
@@ -57,9 +57,9 @@ Använd den här anspråks omvandlingen för att kopiera ett värde från en str
 
 Kontrollerar om **inputClaim** finns eller inte och anger **outputClaim** till true eller false.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |Alla | Det ingångs anspråk vars existens måste verifieras. |
+| InputClaim | inputClaim |Valfri | Det ingångs anspråk vars existens måste verifieras. |
 | OutputClaim | outputClaim | boolean | Den ClaimType som skapas efter att denna ClaimsTransformation har anropats. |
 
 Använd den här anspråks omvandlingen för att kontrol lera om det finns ett anspråk eller innehåller något värde. Returvärdet är ett booleskt värde som anger om anspråk finns. Följande exempel kontrollerar om e-postadressen finns.
@@ -86,11 +86,11 @@ Använd den här anspråks omvandlingen för att kontrol lera om det finns ett a
 
 Hash-värde för den angivna oformaterade texten med salt och en hemlighet. Den hash-algoritm som används är SHA-256.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | överför | sträng | Det inmatade anspråk som ska krypteras |
 | InputClaim | våt | sträng | Salt parameter. Du kan skapa ett slumpmässigt värde med hjälp av `CreateRandomString` anspråks omvandling. |
-| InputParameter | randomizerSecret | sträng | Pekar på en befintlig Azure AD B2C- **princip nyckel**. Om du vill skapa en ny princip nyckel: i Azure AD B2C klient, under **Hantera**, väljer du **Identity Experience Framework**. Välj **princip nycklar** för att visa de nycklar som är tillgängliga i din klient organisation. Välj **Lägg till**. För **alternativ**väljer du **manuell**. Ange ett namn (prefixet *B2C_1A_* kan läggas till automatiskt.). I rutan **hemlig** text anger du vilken hemlighet du vill använda, till exempel 1234567890. För **nyckel användning**väljer du **signatur**. Välj **Skapa**. |
+| InputParameter | randomizerSecret | sträng | Pekar på en befintlig Azure AD B2C- **princip nyckel**. Om du vill skapa en ny princip nyckel: i Azure AD B2C klient, under **Hantera**, väljer du **Identity Experience Framework**. Välj **princip nycklar** för att visa de nycklar som är tillgängliga i din klient organisation. Välj **Lägg till**. För **alternativ** väljer du **manuell**. Ange ett namn (prefixet *B2C_1A_* kan läggas till automatiskt.). I rutan **hemlig** text anger du vilken hemlighet du vill använda, till exempel 1234567890. För **nyckel användning** väljer du **signatur**. Välj **Skapa**. |
 | OutputClaim | hash | sträng | Den ClaimType som skapas efter att den här anspråks omvandlingen har anropats. Anspråket som kon figurer ATS i `plaintext` inputClaim. |
 
 ```xml

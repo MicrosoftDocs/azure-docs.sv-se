@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: justinha
 ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97615826"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Design överväganden för virtuellt nätverk och konfigurations alternativ för Azure Active Directory Domain Services
@@ -108,9 +108,9 @@ En [nätverks säkerhets grupp (NSG)](../virtual-network/network-security-groups
 
 Följande regler för nätverks säkerhets grupper krävs för att den hanterade domänen ska kunna tillhandahålla autentiserings-och hanterings tjänster. Redigera inte eller ta bort dessa regler för nätverks säkerhets grupper för det virtuella nätverkets undernät som din hanterade domän distribueras till.
 
-| Portnummer | Protokoll | Källa                             | Mål | Åtgärd | Obligatorisk | Syfte |
+| Portnummer | Protokoll | Källa                             | Mål | Action | Obligatorisk | Syfte |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Valfri         | Tillåt  | Yes      | Hantering av din domän. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Valfri         | Tillåt  | Ja      | Hantering av din domän. |
 | 3389        | TCP      | CorpNetSaw                         | Valfri         | Tillåt  | Valfritt      | Fel sökning för support. |
 
 En Azure standard Load Balancer skapas som kräver att dessa regler placeras. Den här nätverks säkerhets gruppen säkrar Azure AD DS och krävs för att den hanterade domänen ska fungera korrekt. Ta inte bort den här nätverks säkerhets gruppen. Belastningsutjämnaren fungerar inte korrekt utan den.
