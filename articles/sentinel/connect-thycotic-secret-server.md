@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2020
 ms.author: yelevin
 ms.openlocfilehash: a0056391dddec25511deb7033d37f59db3d835c8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567988"
 ---
 # <a name="connect-your-thycotic-secret-server-to-azure-sentinel"></a>Anslut din Thycotic-hemliga server till Azure Sentinel
@@ -31,7 +31,7 @@ Den här artikeln förklarar hur du ansluter din Thycotic-hemliga server till Az
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 

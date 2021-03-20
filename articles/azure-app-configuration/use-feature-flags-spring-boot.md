@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077838"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Självstudie: använda funktions flaggor i en våren Boot-app
@@ -75,7 +75,7 @@ Det enklaste sättet att ansluta ditt våren Boot-program till app-konfiguration
 
 Varje funktions flagga har två delar: ett namn och en lista med ett eller flera filter som används för att utvärdera om en funktions status är *på* (det vill säga när dess värde är `True` ). Ett filter definierar ett användnings fall för när en funktion ska aktive ras.
 
-När en funktions flagga har flera filter, så genomsöks filter listan i ordning tills ett av filtren bestämmer att funktionen ska aktive ras. Nu är funktions flaggan *på*och eventuella kvarvarande filter resultat hoppas över. Om inget filter anger att funktionen ska aktive ras, är funktions flaggan *avstängd*.
+När en funktions flagga har flera filter, så genomsöks filter listan i ordning tills ett av filtren bestämmer att funktionen ska aktive ras. Nu är funktions flaggan *på* och eventuella kvarvarande filter resultat hoppas över. Om inget filter anger att funktionen ska aktive ras, är funktions flaggan *avstängd*.
 
 Funktions hanteraren stöder *Application. yml* som en konfigurations källa för funktions flaggor. I följande exempel visas hur du ställer in funktions flaggor i en YAML-fil:
 
@@ -128,7 +128,7 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Åtgärder för styrenhet
 
-I MVC-styrenheter använder du `@FeatureGate` attributet för att kontrol lera om en speciell åtgärd är aktive rad. Följande `Index` åtgärd måste `feature-a` finnas innan den *on* kan köras:
+I MVC-styrenheter använder du `@FeatureGate` attributet för att kontrol lera om en speciell åtgärd är aktive rad. Följande `Index` åtgärd måste `feature-a` finnas innan den  kan köras:
 
 ```java
 @GetMapping("/")

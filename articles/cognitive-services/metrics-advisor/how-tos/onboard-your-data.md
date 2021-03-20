@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043227"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Anvisningar: publicera dina mått data till Metrics Advisor
@@ -75,12 +75,12 @@ Om tidsstämpeln för en data punkt utelämnas, använder Metric Advisor tidsst�
 |Urval  |Beskrivning  |Kommentarer  |
 |---------|---------|---------|
 | **Visnings namn** | Namn som ska visas i din arbets yta i stället för det ursprungliga kolumn namnet. | |
-|**Timestamp**     | Tidsstämpeln för en data punkt. Om detta utelämnas använder Metric Advisor tidsstämpeln när data punkten matas in i stället. För varje datafeed kan du ange högst en kolumn som tidstämpel.        | Valfritt. Ska anges med högst en kolumn. Om du får en **kolumn som inte kan anges som tidsstämpel** -fel, kontrollerar du frågan eller data källan för dubbla tidsstämplar.      |
+|**Tidsstämpel**     | Tidsstämpeln för en data punkt. Om detta utelämnas använder Metric Advisor tidsstämpeln när data punkten matas in i stället. För varje datafeed kan du ange högst en kolumn som tidstämpel.        | Valfritt. Ska anges med högst en kolumn. Om du får en **kolumn som inte kan anges som tidsstämpel** -fel, kontrollerar du frågan eller data källan för dubbla tidsstämplar.      |
 |**Mått**     |  De numeriska värdena i datafeeden. För varje datafeed kan du ange flera mått, men minst en kolumn ska vara markerad som mått.        | Måste anges med minst en kolumn.        |
 |**Dimension**     | Kategoriska-värden. En kombination av olika värden identifierar en viss tids serie för en dimension, till exempel: land, språk, klient organisation. Du kan välja noll eller flera kolumner som dimensioner. Obs: var försiktig när du väljer en kolumn som inte är en sträng som en dimension. | Valfritt.        |
 |**Ignorera**     | Ignorera den markerade kolumnen.        | Valfritt. Se nedanstående text.       |
 
-Om du vill ignorera kolumner rekommenderar vi att du uppdaterar din fråga eller data källa för att undanta dessa kolumner. Du kan också ignorera kolumner med **Ignorera kolumner** och sedan **Ignorera** de angivna kolumnerna. Om en kolumn ska vara en dimension och anges felvärdet som *ignorerad*kan Metric Advisor komma att mata in ofullständiga data. Anta till exempel att data från din fråga är följande:
+Om du vill ignorera kolumner rekommenderar vi att du uppdaterar din fråga eller data källa för att undanta dessa kolumner. Du kan också ignorera kolumner med **Ignorera kolumner** och sedan **Ignorera** de angivna kolumnerna. Om en kolumn ska vara en dimension och anges felvärdet som *ignorerad* kan Metric Advisor komma att mata in ofullständiga data. Anta till exempel att data från din fråga är följande:
 
 | Rad-ID | Timestamp | Land | Språk | Inkomst |
 | --- | --- | --- | --- | --- |
@@ -99,7 +99,7 @@ Om *land* är en dimension och ett *språk* anges som *ignorerat*, kommer de fö
 
 Mått Advisor kan automatiskt utföra Aggregation (till exempel SUM, MAX, MIN) för varje dimension under inmatningen, och skapar sedan en hierarki som ska användas i grund ärende analys och andra diagnostiska funktioner. 
 
-Fundera över följande scenarier:
+Beakta följande scenarier:
 
 * *Jag behöver inte inkludera sammanslagnings analys för mina data.*
 
@@ -107,7 +107,7 @@ Fundera över följande scenarier:
 
 * *Mina data har redan samlats in och dimension svärdet representeras av: NULL eller tomt (standard), endast NULL, andra.*
 
-    Det här alternativet innebär att Metric Advisor inte behöver samla in data eftersom raderna redan har Summer ATS. Om du till exempel väljer *endast null*visas den andra data raden i exemplet nedan som en agg regering av alla länder och språk *en-US*. den fjärde data raden som har ett tomt värde för *landet* visas dock som en vanlig rad som kan indikera ofullständiga data.
+    Det här alternativet innebär att Metric Advisor inte behöver samla in data eftersom raderna redan har Summer ATS. Om du till exempel väljer *endast null* visas den andra data raden i exemplet nedan som en agg regering av alla länder och språk *en-US*. den fjärde data raden som har ett tomt värde för *landet* visas dock som en vanlig rad som kan indikera ofullständiga data.
     
     | Land | Språk | Inkomst |
     |---------|----------|--------|
@@ -130,7 +130,7 @@ Fundera över följande scenarier:
     | USA | Montana          | 100   |
 
 
-    När du har aktiverat automatisk sammanslagning med *Sum*beräknar mått Advisor dimensions kombinationerna och summerar måtten under data inmatningen. Resultatet kan vara:
+    När du har aktiverat automatisk sammanslagning med *Sum* beräknar mått Advisor dimensions kombinationerna och summerar måtten under data inmatningen. Resultatet kan vara:
 
     | Country       | Region           | Sales |
     | ------------ | --------------- | ---- |
@@ -188,7 +188,7 @@ Så här kontrollerar du information om inläsnings problem:
 2. Klicka på **status** och välj sedan **misslyckades** eller **fel**.
 3. Hovra över en misslyckad inmatning och visa det informations meddelande som visas.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Förlopps indikator för inmatning":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Kontrol lera misslyckad inmatning":::
 
 Status för *misslyckad* innebär att inmatningen för data källan kommer att göras senare.
 En *fel* status indikerar att måtten Advisor inte försöker igen för data källan. Om du vill läsa in data på nytt måste du utlösa en bakfyllning/Läs in manuellt.

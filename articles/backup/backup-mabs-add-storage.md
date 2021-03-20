@@ -4,10 +4,10 @@ description: Lär dig mer om de nya funktionerna i Azure Backup Server. Den här
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292905"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Lägga till lagringsutrymme på Azure Backup Server
@@ -36,7 +36,7 @@ Backup server v2 eller senare accepterar lagrings volymer. När du lägger till 
 
 Genom att använda backup server v2 eller senare med volymer som disk lagring kan du behålla kontrollen över lagringen. En volym kan vara en enskild disk. Men om du vill utöka lagringen i framtiden kan du skapa en volym från en disk som skapats med hjälp av lagrings utrymmen. Detta kan hjälpa dig om du vill expandera volymen för lagring av säkerhets kopior. Det här avsnittet innehåller metod tips för att skapa en volym med den här installationen.
 
-1. I Serverhanteraren väljer du **fil-och lagrings tjänst**  >  **volymer**  >  **lagringspooler**. Under **fysiska diskar**väljer du **ny lagringspool**.
+1. I Serverhanteraren väljer du **fil-och lagrings tjänst**  >  **volymer**  >  **lagringspooler**. Under **fysiska diskar** väljer du **ny lagringspool**.
 
     ![Skapa en ny lagringspool](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -125,12 +125,12 @@ Lägga till disklagring:
 
 2. I dialog rutan **Lägg till disklagring** väljer du **Lägg till diskar**.
 
-3. I listan över tillgängliga diskar väljer du de diskar som du vill lägga till, väljer **Lägg till**och väljer sedan **OK**.
+3. I listan över tillgängliga diskar väljer du de diskar som du vill lägga till, väljer **Lägg till** och väljer sedan **OK**.
 
 ## <a name="next-steps"></a>Nästa steg
 
 När du har installerat säkerhets kopierings servern lär du dig hur du förbereder servern eller börjar skydda en arbets belastning.
 
 - [Förbered arbets belastningar för säkerhets kopierings Server](backup-azure-microsoft-azure-backup.md)
-- [Säkerhetskopiera en VMware-Server med hjälp av backup server](backup-azure-backup-server-vmware.md)
-- [Använd backup server för att säkerhetskopiera SQL Server](backup-azure-sql-mabs.md)
+- [Säkerhetskopiera en VMware-server med hjälp av Backup Server](backup-azure-backup-server-vmware.md)
+- [Säkerhetskopiera SQL Server med hjälp av Backup Server](backup-azure-sql-mabs.md)

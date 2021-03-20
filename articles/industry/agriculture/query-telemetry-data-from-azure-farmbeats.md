@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677491"
 ---
 # <a name="query-ingested-telemetry-data"></a>Fråga inmatade telemetridata
@@ -24,7 +24,7 @@ Innan du fortsätter med den här artikeln måste du kontrol lera att du har ins
 
 Om du vill mata in information om sensor telemetri kan du besöka Hämta [historiska telemetridata](ingest-historical-telemetry-data-in-azure-farmbeats.md)
 
-Innan du fortsätter måste du också se till att du är bekant med FarmBeats REST API: er eftersom du kommer att fråga inmatad telemetri med hjälp av API: erna. Mer information om FarmBeats-API: er finns i [FARMBEATS REST-API: er](rest-api-in-azure-farmbeats.md). **Se till att du kan göra API-begäranden till din FarmBeats Datahub-slutpunkt** .
+Innan du fortsätter måste du också se till att du är bekant med FarmBeats REST API: er eftersom du kommer att fråga inmatad telemetri med hjälp av API: erna. Mer information om FarmBeats-API: er finns i [FARMBEATS REST-API: er](rest-api-in-azure-farmbeats.md). **Se till att du kan göra API-begäranden till din FarmBeats Datahub-slutpunkt**.
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>Fråga inmatade sensorer för telemetri
 
@@ -115,8 +115,8 @@ Telemetridata tas emot på en EventHub och sedan bearbetas och skickas till en T
 
 Följ stegen för att visualisera data i TSD:
 
-1. Gå till **Azure Portal**  >  **FarmBeats DataHub-resurs grupp** > Välj **Time Series Insights** miljö (TSD-xxxx) > **principer för data åtkomst** . Lägg till användare med läsare eller deltagar åtkomst.
-2. Gå till sidan **Översikt** i **Time Series Insights** Environment (TSD-xxxx) och välj **URL: en för Time Series Insights Explorer** . Nu kan du visualisera den inmatade Telemetrin.
+1. Gå till **Azure Portal**  >  **FarmBeats DataHub-resurs grupp** > Välj **Time Series Insights** miljö (TSD-xxxx) > **principer för data åtkomst**. Lägg till användare med läsare eller deltagar åtkomst.
+2. Gå till sidan **Översikt** i **Time Series Insights** Environment (TSD-xxxx) och välj **URL: en för Time Series Insights Explorer**. Nu kan du visualisera den inmatade Telemetrin.
 
 Förutom att lagra, fråga och visualisering av telemetri kan TSD också integreras med en Power BI instrument panel. Mer information finns [här]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

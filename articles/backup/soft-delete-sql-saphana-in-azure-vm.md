@@ -4,10 +4,10 @@ description: Lär dig hur mjuk borttagning för SQL Server i Azure VM och SAP HA
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254303"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Mjuk borttagning för SQL Server i Azure VM och SAP HANA i Azure VM-arbetsbelastningar
@@ -25,7 +25,7 @@ Azure Backup tillhandahåller nu mjuk borttagning för SQL Server i virtuella Az
 
    ![Stoppa säkerhets kopiering](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 
-2. I följande fönster kan du välja att ta bort eller behålla säkerhetskopierade data. Om du väljer **ta bort säkerhets kopierings data**tas inte säkerhets kopian av databasen bort permanent. I stället behålls säkerhets kopierings data i 14 dagar i läget Soft Deleted. Borttagningen skjuts upp fram till den 15: e dagen med regelbundna aviseringar via e-post på den första, tolfte och 15: e dagen som informerar om säkerhets kopierings status för databasen till användaren.
+2. I följande fönster kan du välja att ta bort eller behålla säkerhetskopierade data. Om du väljer **ta bort säkerhets kopierings data** tas inte säkerhets kopian av databasen bort permanent. I stället behålls säkerhets kopierings data i 14 dagar i läget Soft Deleted. Borttagningen skjuts upp fram till den 15: e dagen med regelbundna aviseringar via e-post på den första, tolfte och 15: e dagen som informerar om säkerhets kopierings status för databasen till användaren.
 
    ![Ta bort säkerhetskopieringsdata](./media/soft-delete-sql-saphana-in-azure-vm/delete-backup-data.png)
 

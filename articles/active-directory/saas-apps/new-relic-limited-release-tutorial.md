@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 29e19eea51b5ee55831bf1d694a9a6473a62d471
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med nya Relic
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera nya Relic med Azure Act
 
 Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att komma igång:
 
@@ -103,7 +103,7 @@ Så här skapar du en test användare i Azure Portal som kallas B. Simon.
 1. Välj **Azure Active Directory** från Azure Portal.
 1. Välj **användare**  >  **ny användare**.
 1. På sidan **ny användare** :
-   1. I fältet **användar namn** anger du `username@companydomain.extension` . Ett exempel är `b.simon@contoso.com`. Detta bör matcha e-postadressen som du kommer att använda på den nya Relic-sidan.
+   1. I fältet **användar namn** anger du `username@companydomain.extension` . Till exempel `b.simon@contoso.com`. Detta bör matcha e-postadressen som du kommer att använda på den nya Relic-sidan.
    1. I **Namn**-fältet skriver du `B.Simon`.  
    1. Välj **Visa lösen ord** och spara sedan värdet som visas.
    1. Välj **Skapa**.

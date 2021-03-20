@@ -5,10 +5,10 @@ services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76024705"
 ---
 # <a name="service-fabric-architecture"></a>Arkitektur för Service Fabric
@@ -36,7 +36,7 @@ Om du vill ha en uppsättning noder i ett distribuerat system måste du ha en ko
 
 ## <a name="reliability-subsystem"></a>Tillförlitlighets under system
 
-Under systemet tillförlitlighet är en mekanism för att göra en Service Fabric tjänst hög tillgänglig genom att använda *replikerare*, *Redundanshanteraren*och *resurs utjämning*.
+Under systemet tillförlitlighet är en mekanism för att göra en Service Fabric tjänst hög tillgänglig genom att använda *replikerare*, *Redundanshanteraren* och *resurs utjämning*.
 
 * Replikeraren säkerställer att tillstånds ändringar i den primära tjänst repliken replikeras automatiskt till sekundära repliker, vilket upprätthåller konsekvens mellan de primära och sekundära replikerna i en tjänst replik uppsättning. Replikeringen ansvarar för kvorumkonfigurationen mellan replikerna i replik uppsättningen. Den interagerar med enheten för växling vid fel för att hämta listan över åtgärder som ska replikeras och omkonfigurations agenten ger den konfigurationen av replik uppsättningen. Den konfigurationen anger vilka repliker som åtgärderna behöver replikeras till. Service Fabric tillhandahåller en standardreplikering som heter Fabric Replicator, som kan användas av programmerings modellens API för att göra tjänstens tillstånd hög tillgängligt och tillförlitligt.
 * Redundanshanteraren säkerställer att belastningen distribueras automatiskt över tillgängliga noder när noder läggs till eller tas bort från klustret. Om en nod i klustret Miss lyckas, kommer klustret automatiskt att konfigurera om tjänst replikerna för att upprätthålla tillgänglighet.

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057628"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Felsöka sessioner i Azure Kognitiv sökning
@@ -51,13 +51,13 @@ Vyn **kunskaps diagram** innehåller en hierarkisk och visuell representation av
 
 Om du väljer en färdighet i diagrammet markeras de kunskaper som är anslutna till den, noderna som skapar indata och de noder som accepterar dess utdata. Varje kvalifikations nod visar dess typ, fel eller varningar och antalet körningar. **Kunskaps diagrammet** är där du väljer vilken kunskap som ska felsöka eller förbättra. När du väljer en färdighet visas informationen i fönstret kunskaps information till höger om diagrammet.
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Skapa en felsökningssession":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Kunskaps diagram":::
 
 ## <a name="skill-details"></a>Kunskaps information
 
 I fönstret kunskaps information visas en uppsättning områden för att arbeta med en speciell färdighet, när den här kunskapen är markerad i **färdighets diagrammet**. Du kan granska och redigera information om färdighetens inställningar. Färdighetens JSON-definition tillhandahålls. Information om färdighets körningen och felen och varningarna visas också. Fliken **skicklighets inställningar** & **FÄRDIGHETs-JSON-redigeraren** tillåter direkt redigering av kunskapen. I [`</>`](#expression-evaluator) fönstret öppnas ett fönster för att visa och redigera uttrycken för kunskaper och utdata.
 
-Kapslade inmatnings kontroller i fönstret kunskaps inställningar kan användas för att bygga komplexa former för projektioner, fält mappningar för utdata för ett komplext typ fält eller indata till en färdighet. När de används med **uttrycks utvärderaren**ger kapslade indata ett enkelt test och validera uttrycks verktyg.
+Kapslade inmatnings kontroller i fönstret kunskaps inställningar kan användas för att bygga komplexa former för projektioner, fält mappningar för utdata för ett komplext typ fält eller indata till en färdighet. När de används med **uttrycks utvärderaren** ger kapslade indata ett enkelt test och validera uttrycks verktyg.
 
 ## <a name="skill-execution-history"></a>Historik för körning av kunskaper
 
@@ -73,7 +73,7 @@ När du skapar en anpassad färdighet eller felsöker ett fel med en anpassad ku
 
 I fönstret fördelad **data struktur** visas dokumentets berikning genom färdigheter, som innehåller information om sammanhanget för varje anrikning och den ursprungliga kunskapen. **Uttrycks utvärderaren** kan också användas för att visa innehållet för varje berikning.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Skapa en felsökningssession":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Omfattande data struktur":::
 
 ## <a name="expression-evaluator"></a>Uttrycks utvärderare
 

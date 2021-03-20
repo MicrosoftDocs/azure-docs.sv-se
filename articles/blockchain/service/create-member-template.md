@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
 ms.date: 09/16/2020
 ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292769"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Snabb start: skapa en Azure blockchain service-medlem med en ARM-mall
@@ -49,14 +49,14 @@ Azure-resurser som definierats i mallen:
     --------|------------
     Prenumeration | Välj den Azure-prenumeration som du vill använda för din tjänst. Om du har flera prenumerationer väljer du den prenumeration som resursen ska debiteras till.
     Resursgrupp | Skapa ett nytt resurs grupp namn eller Välj en befintlig från din prenumeration.
-    Region | Välj en region för att skapa resurs gruppen. Alla medlemmar i konsortiet måste finnas på samma plats. Tillgängliga platser för distributionen är *westeurope, öster, Sydostasien, westeurope, europanorra, westus2*och *japanöstra*. Funktioner kanske inte är tillgängliga i vissa regioner. Azure blockchain Data Manager finns i följande Azure-regioner: USA, östra och Västeuropa.
+    Region | Välj en region för att skapa resurs gruppen. Alla medlemmar i konsortiet måste finnas på samma plats. Tillgängliga platser för distributionen är *westeurope, öster, Sydostasien, westeurope, europanorra, westus2* och *japanöstra*. Funktioner kanske inte är tillgängliga i vissa regioner. Azure blockchain Data Manager finns i följande Azure-regioner: USA, östra och Västeuropa.
     BC-medlems namn | Välj ett unikt namn för Azure blockchain service-medlemmen. Blockchain-medlems namnet får bara innehålla gemena bokstäver och siffror. Det första tecknet måste vara en bokstav. Värdet måste vara mellan 2 och 20 tecken långt.
     Namn på konsortium | Ange ett unikt namn. Mer information om konsortier finns i [Azure blockchain service Consortium](consortium.md).
     Medlems lösen ord | Lösen ordet för medlemmens standard transaktions nod. Använd lösen ordet för grundläggande autentisering vid anslutning till blockchain-medlemmens offentliga standard transaktions nod.
     Konto lösen ord för konsortiets hantering | Konto lösen ordet för konsortiet används för att kryptera den privata nyckeln för det Ethereum-konto som skapas för din medlem. Den används för hantering av konsortier.
     SKU-nivå | Pris nivån för den nya tjänsten. Välj mellan **standard** -och **Basic** -nivåer. Använd *Basic* -nivån för utveckling, testning och bevis på koncept. Använd *standard* nivån för distributioner av produktions nivåer. Använd även *standard* -nivån om du använder blockchain Data Manager eller skickar en stor mängd privata transaktioner. Det finns inte stöd för att ändra pris nivån mellan Basic och standard när medlems skapande har skapats.
     SKU-namn | Nodens konfiguration och kostnad för den nya tjänsten. Använd **B0** för Basic och **S0** för standard.
-    Plats | Välj en plats där du vill skapa medlemmen. Som standard används resurs gruppens plats `[resourceGroup().location]` . Alla medlemmar i konsortiet måste finnas på samma plats. Tillgängliga platser för distributionen är *westeurope, öster, Sydostasien, westeurope, europanorra, westus2*och *japanöstra*. Funktioner kanske inte är tillgängliga i vissa regioner. Azure blockchain Data Manager finns i följande Azure-regioner: USA, östra och Västeuropa.
+    Location | Välj en plats där du vill skapa medlemmen. Som standard används resurs gruppens plats `[resourceGroup().location]` . Alla medlemmar i konsortiet måste finnas på samma plats. Tillgängliga platser för distributionen är *westeurope, öster, Sydostasien, westeurope, europanorra, westus2* och *japanöstra*. Funktioner kanske inte är tillgängliga i vissa regioner. Azure blockchain Data Manager finns i följande Azure-regioner: USA, östra och Västeuropa.
 
 1. Välj **Granska + skapa** för att verifiera och distribuera mallen.
 

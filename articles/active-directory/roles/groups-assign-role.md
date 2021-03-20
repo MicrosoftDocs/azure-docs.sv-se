@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742955"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Tilldela en roll till en moln grupp i Azure Active Directory
@@ -32,7 +32,7 @@ Att tilldela en grupp till en Azure AD-roll liknar att tilldela användare och t
 
 1. Välj **Azure Active Directory**  >  **roller och administratörer** och välj den roll som du vill tilldela.
 
-1. På sidan **_roll namn_*_ väljer du > _* Lägg till tilldelning**.
+1. På sidan ***roll namn** _ _ väljer du > _ * Lägg till tilldelning * *.
 
    ![Lägg till den nya roll tilldelningen](./media/groups-assign-role/add-assignment.png)
 

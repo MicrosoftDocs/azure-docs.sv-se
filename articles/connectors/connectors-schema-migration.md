@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: 114b8b32d4abb1fd9b7e641625cd1b132470bafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87281454"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>Migrera Logic Apps till den senaste schema versionen
@@ -19,10 +19,10 @@ Följ dessa steg om du vill flytta dina befintliga Logic Apps till det nyaste sc
 
 1. I [Azure Portal](https://portal.azure.com)öppnar du din Logic app i Logic Apps designer.
 
-2. På din Logic Apps-meny väljer du **Översikt**. Välj **Uppdatera schema**i verktygsfältet.
+2. På din Logic Apps-meny väljer du **Översikt**. Välj **Uppdatera schema** i verktygsfältet.
 
    > [!NOTE]
-   > När du väljer **Uppdatera schema**kör Azure Logic Apps automatiskt migreringen och ger dig kod resultatet. Du kan använda dessa utdata för att uppdatera din Logic app-definition. Tänk dock på att följa bästa praxis enligt beskrivningen i följande **metod tips** .
+   > När du väljer **Uppdatera schema** kör Azure Logic Apps automatiskt migreringen och ger dig kod resultatet. Du kan använda dessa utdata för att uppdatera din Logic app-definition. Tänk dock på att följa bästa praxis enligt beskrivningen i följande **metod tips** .
 
    ![Uppdatera schema](./media/connectors-schema-migration/update-schema.png)
 

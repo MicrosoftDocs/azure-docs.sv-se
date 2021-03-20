@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
 ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230797"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Snabb start: skapa en server ARM-mall
@@ -49,7 +49,7 @@ En enkel [Microsoft. AnalysisServices/servers-](/azure/templates/microsoft.analy
     Om inget annat anges använder du standardvärdena.
 
     * **Prenumeration**: Välj en Azure-prenumeration.
-    * **Resurs grupp**: Klicka på **Skapa ny**och ange sedan ett unikt namn för den nya resurs gruppen.
+    * **Resurs grupp**: Klicka på **Skapa ny** och ange sedan ett unikt namn för den nya resurs gruppen.
     * **Plats**: Välj en standard plats för resurser som skapats i resurs gruppen.
     * **Server namn**: Ange ett namn för Server resursen. 
     * **Plats**: ignorera för Analysis Services. Platsen anges på Server platsen.
@@ -106,4 +106,4 @@ Write-Host "Press [ENTER] to continue..."
 I den här snabb starten använde du en ARM-mall för att skapa en ny resurs grupp och en Azure Analysis Services server resurs. När du har skapat en server resurs med hjälp av mallen bör du tänka på följande:
 
 > [!div class="nextstepaction"]
-> [Snabbstart: Konfigurera serverbrandvägg – portalen](analysis-services-qs-firewall.md)   
+> [Snabbstart: Konfigurera serverbrandväggen – portalen](analysis-services-qs-firewall.md)   

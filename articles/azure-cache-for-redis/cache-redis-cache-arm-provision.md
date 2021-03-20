@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
 ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92735972"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Snabb start: skapa en Azure-cache för Redis med en ARM-mall
@@ -20,14 +20,14 @@ Lär dig hur du skapar en Azure Resource Manager mall (ARM-mall) som distribuera
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Krav
 
-* **Azure-prenumeration** : Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
-* **Ett lagrings konto** : om du vill skapa ett, se [skapa ett Azure Storage konto](../storage/common/storage-account-create.md?tabs=azure-portal). Lagrings kontot används för diagnostikdata.
+* **Azure-prenumeration**: Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+* **Ett lagrings konto**: om du vill skapa ett, se [skapa ett Azure Storage konto](../storage/common/storage-account-create.md?tabs=azure-portal). Lagrings kontot används för diagnostikdata.
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -46,7 +46,7 @@ Resource Manager-mallar för den nya [Premium-nivån](cache-overview.md#service-
 * [Skapa Premium Azure-cache för Redis med data persistence](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Skapa Premium-Redis Cache distribueras till en Virtual Network](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-Du kan söka efter de senaste mallarna i [Azure snabb starts mallar](https://azure.microsoft.com/documentation/templates/) och söka efter _Azure cache för Redis_ .
+Du kan söka efter de senaste mallarna i [Azure snabb starts mallar](https://azure.microsoft.com/documentation/templates/) och söka efter _Azure cache för Redis_.
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -55,14 +55,14 @@ Du kan söka efter de senaste mallarna i [Azure snabb starts mallar](https://azu
     [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. Välj eller ange följande värden:
 
-    * **Prenumeration** : Välj en Azure-prenumeration som används för att skapa data resursen och de andra resurserna.
-    * **Resurs grupp** : Välj **Skapa ny** för att skapa en ny resurs grupp eller Välj en befintlig resurs grupp.
-    * **Plats** : Välj en plats för resursgruppen. Lagrings kontot och Redis-cachen måste vara i samma region. Som standard använder Redis-cachen samma plats som resurs gruppen. Ange därför samma plats som lagrings kontot.
-    * **Redis cache namn** : Ange ett namn för Redis-cachen.
-    * **Befintligt diagnostik-lagrings konto** : Ange resurs-ID för ett lagrings konto. Syntax: `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
+    * **Prenumeration**: Välj en Azure-prenumeration som används för att skapa data resursen och de andra resurserna.
+    * **Resurs grupp**: Välj **Skapa ny** för att skapa en ny resurs grupp eller Välj en befintlig resurs grupp.
+    * **Plats**: Välj en plats för resursgruppen. Lagrings kontot och Redis-cachen måste vara i samma region. Som standard använder Redis-cachen samma plats som resurs gruppen. Ange därför samma plats som lagrings kontot.
+    * **Redis cache namn**: Ange ett namn för Redis-cachen.
+    * **Befintligt diagnostik-lagrings konto**: Ange resurs-ID för ett lagrings konto. Syntax: `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
     Använd standardvärdet för resten av inställningarna.
-1. Välj **Jag accepterar de villkor som anges ovan** och välj **köp** .
+1. Välj **Jag accepterar de villkor som anges ovan** och välj **köp**.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 

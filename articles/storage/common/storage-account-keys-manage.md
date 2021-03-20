@@ -10,10 +10,10 @@ ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069667"
 ---
 # <a name="manage-storage-account-access-keys"></a>Hantera åtkomst nycklar för lagrings konton
@@ -34,7 +34,7 @@ Visa och kopiera åtkomst nycklar för lagrings kontot eller anslutnings sträng
 
 1. Navigera till ditt lagrings konto i [Azure Portal](https://portal.azure.com).
 1. Gå till **Inställningar** och välj **Åtkomstnycklar**. Åtkomstnycklarna för kontot visas, samt den fullständiga anslutningssträngen för varje nyckel.
-1. Leta upp **nyckelvärdet** under **KEY1**och klicka på knappen **Kopiera** för att kopiera konto nyckeln.
+1. Leta upp **nyckelvärdet** under **KEY1** och klicka på knappen **Kopiera** för att kopiera konto nyckeln.
 1. Alternativt kan du kopiera hela anslutnings strängen. Sök efter värdet för **Anslutningssträng** under **key1** och kopiera anslutningssträngen genom att klicka på **Kopiera**.
 
     :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Skärm bild som visar hur du visar åtkomst nycklar i Azure Portal":::
@@ -66,7 +66,7 @@ az storage account keys list \
 
 Du kan använda någon av de två nycklarna för att komma åt Azure Storage, men i allmänhet är det en bra idé att använda den första nyckeln och reservera användningen av den andra nyckeln för när du roterar nycklar.
 
-Om du vill visa eller läsa ett kontos åtkomst nycklar måste användaren antingen vara tjänst administratör eller ha tilldelats en Azure-roll som innehåller **Microsoft. Storage/storageAccounts/listnycklar/Action**. Vissa inbyggda Azure-roller som innehåller den här åtgärden är roll rollerna **ägare**, **deltagare**och **lagrings konto nyckel operatörer** . Mer information om tjänst administratörs rollen finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md). Detaljerad information om inbyggda roller för Azure Storage finns i avsnittet **Storage** i [inbyggda Azure-roller för Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Om du vill visa eller läsa ett kontos åtkomst nycklar måste användaren antingen vara tjänst administratör eller ha tilldelats en Azure-roll som innehåller **Microsoft. Storage/storageAccounts/listnycklar/Action**. Vissa inbyggda Azure-roller som innehåller den här åtgärden är roll rollerna **ägare**, **deltagare** och **lagrings konto nyckel operatörer** . Mer information om tjänst administratörs rollen finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md). Detaljerad information om inbyggda roller för Azure Storage finns i avsnittet **Storage** i [inbyggda Azure-roller för Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Använd Azure Key Vault för att hantera dina åtkomst nycklar
 
@@ -133,7 +133,7 @@ Så här roterar du dina åtkomst nycklar för lagrings konton med Azure CLI:
 > [!NOTE]
 > Microsoft rekommenderar att du bara använder en av nycklarna i alla dina program på samma tidpunkt. Om du använder nyckel 1 på vissa platser och nyckel 2 i andra kommer du inte att kunna rotera dina nycklar utan att några program förlorar åtkomst.
 
-Användaren måste antingen vara tjänst administratör eller ha tilldelats en Azure-roll som innehåller **Microsoft. Storage/storageAccounts/regeneratekey/åtgärd**för att kunna rotera ett kontos åtkomst nycklar. Vissa inbyggda Azure-roller som innehåller den här åtgärden är roll rollerna **ägare**, **deltagare**och **lagrings konto nyckel operatörer** . Mer information om tjänst administratörs rollen finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md). Detaljerad information om inbyggda Azure-roller för Azure Storage finns i avsnittet **Storage** i [inbyggda Azure-roller för Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Användaren måste antingen vara tjänst administratör eller ha tilldelats en Azure-roll som innehåller **Microsoft. Storage/storageAccounts/regeneratekey/åtgärd** för att kunna rotera ett kontos åtkomst nycklar. Vissa inbyggda Azure-roller som innehåller den här åtgärden är roll rollerna **ägare**, **deltagare** och **lagrings konto nyckel operatörer** . Mer information om tjänst administratörs rollen finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md). Detaljerad information om inbyggda Azure-roller för Azure Storage finns i avsnittet **Storage** i [inbyggda Azure-roller för Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>Nästa steg
 

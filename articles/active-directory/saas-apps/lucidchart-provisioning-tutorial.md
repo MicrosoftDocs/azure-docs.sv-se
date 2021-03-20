@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: e7447a8d742caef7a2c2ff0211e7e8002307b9e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178037"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Lucidchart för automatisk användar etablering

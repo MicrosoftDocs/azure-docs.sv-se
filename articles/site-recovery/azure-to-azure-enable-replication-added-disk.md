@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75973799"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Aktivera replikering för en disk som lagts till i en virtuell Azure-dator
@@ -37,9 +37,9 @@ Den här artikeln förutsätter att du redan har konfigurerat en katastrof åter
 
 Gör så här om du vill aktivera replikering för en tillagd disk:
 
-1. I valvet > **replikerade objekt**klickar du på den virtuella dator som du har lagt till disken i.
-2. Klicka på **diskar**och välj sedan den datadisk som du vill aktivera replikering för (diskarna har statusen **inte skyddad** ).
-3.  I **disk information**klickar du på **Aktivera replikering**.
+1. I valvet > **replikerade objekt** klickar du på den virtuella dator som du har lagt till disken i.
+2. Klicka på **diskar** och välj sedan den datadisk som du vill aktivera replikering för (diskarna har statusen **inte skyddad** ).
+3.  I **disk information** klickar du på **Aktivera replikering**.
 
     ![Aktivera replikering för tillagd disk](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 

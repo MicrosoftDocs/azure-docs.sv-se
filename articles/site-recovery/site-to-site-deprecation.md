@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: sharrai
 ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87421849"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Utfasning av haveri beredskap mellan Kundhanterade platser (med VMM) med hjälp av Azure Site Recovery
@@ -57,8 +57,8 @@ Om du väljer att gå med alternativ 1 ska du köra följande steg:
 
 Om du väljer att gå med alternativ 2 för att använda Hyper-V-replikering utför du följande steg:
 
-1. I **skyddade objekt**  >  **replikerade objekt**högerklickar du på datorn > **inaktiverar replikering**.
-2. I **inaktivera replikering**väljer du **ta bort**.
+1. I **skyddade objekt**  >  **replikerade objekt** högerklickar du på datorn > **inaktiverar replikering**.
+2. I **inaktivera replikering** väljer du **ta bort**.
 
     Detta tar bort det replikerade objektet från Azure Site Recovery (faktureringen stoppas). Det **går inte** att rensa konfigurationen på den lokala virtuella datorn. 
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: allensu
 ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747207"
 ---
 # <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Konfigurera TCP-återställning och tids gräns för inaktivitet för Azure Load Balancer
@@ -33,7 +33,7 @@ I följande avsnitt beskrivs hur du ändrar inställningarna för inaktiv tids g
 
 ## <a name="set-tcp-reset-and-idle-timeout"></a>Ange TCP-återställning och tids gräns för inaktivitet
 ---
-# <a name="portal"></a>[**Portalen**](#tab/tcp-reset-idle-portal)
+# <a name="portal"></a>[**Portal**](#tab/tcp-reset-idle-portal)
 
 Om du vill ange tids gräns för inaktivitet och TCP-återställning för en belastningsutjämnare redigerar du den belastningsutjämnade regeln. 
 
@@ -41,23 +41,23 @@ Om du vill ange tids gräns för inaktivitet och TCP-återställning för en bel
 
 2. Välj **resurs grupper** på den vänstra menyn.
 
-3. Välj resurs grupp för belastningsutjämnaren. I det här exemplet heter resurs gruppen **myResourceGroup** .
+3. Välj resurs grupp för belastningsutjämnaren. I det här exemplet heter resurs gruppen **myResourceGroup**.
 
-4. Välj din lastbalanserare. I det här exemplet heter belastningsutjämnaren **myLoadBalancer** .
+4. Välj din lastbalanserare. I det här exemplet heter belastningsutjämnaren **myLoadBalancer**.
 
-5. I **Inställningar** väljer du **belastnings Utjämnings regler** .
+5. I **Inställningar** väljer du **belastnings Utjämnings regler**.
 
      :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="Redigera regler för belastnings utjämning." border="true":::
 
-6. Välj din belastnings Utjämnings regel. I det här exemplet heter belastnings Utjämnings regeln **myLBrule** .
+6. Välj din belastnings Utjämnings regel. I det här exemplet heter belastnings Utjämnings regeln **myLBrule**.
 
 7. I belastnings Utjämnings regeln flyttar du skjutreglaget i **tids gräns för inaktivitet (minuter)** till ditt timeout-värde.  
 
-8. Under **TCP-återställning** väljer du **aktive rad** .
+8. Under **TCP-återställning** väljer du **aktive rad**.
 
-   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Redigera regler för belastnings utjämning." border="true":::
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Ange tids gräns för inaktivitet och TCP-återställning." border="true":::
 
-9. Välj **Spara** .
+9. Välj **Spara**.
 
 # <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
 

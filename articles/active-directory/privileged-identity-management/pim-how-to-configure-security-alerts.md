@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180497"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurera säkerhets aviseringar för Azure AD-roller i Privileged Identity Management
@@ -82,7 +82,7 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 | | |
 | --- | --- |
-| **Allvarlighetsgrad** | Medium |
+| **Allvarlighetsgrad** | Medel |
 | **Varför får jag den här aviseringen?** | Konton i en privilegie rad roll har inte ändrat sitt lösen ord under de senaste 90 dagarna. Dessa konton kan vara tjänst eller delade konton som inte underhålls och är utsatta för angripare. |
 | **Så här löser du?** | Granska kontona i listan. Om de inte längre behöver åtkomst tar du bort dem från deras privilegierade roller. |
 | **Prevention (Skydd)** | Se till att konton som delas roterar starka lösen ord när det sker en ändring i användare som känner till lösen ordet. </br>Granska regelbundet konton med privilegierade roller med [åtkomst granskningar](pim-how-to-start-security-review.md) och ta bort roll tilldelningar som inte längre behövs. |
@@ -93,7 +93,7 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 | | |
 | --- | --- |
-| **Allvarlighetsgrad** | Hög |
+| **Allvarlighetsgrad** | Högt |
 | **Varför får jag den här aviseringen?** | Privilegierade roll tilldelningar som görs utanför Privileged Identity Management övervakas inte korrekt och kan tyda på en aktiv attack. |
 | **Så här löser du?** | Granska användarna i listan och ta bort dem från privilegierade roller som tilldelats utanför Privileged Identity Management. |
 | **Prevention (Skydd)** | Undersök var användarna tilldelas privilegierade roller utanför Privileged Identity Management och förhindra framtida tilldelningar därifrån. |
@@ -120,7 +120,7 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 | **Varför får jag den här aviseringen?** | Flera aktiveringar till samma privilegierade roll av samma användare är ett tecken på ett angrepp. |
 | **Så här löser du?** | Granska användarna i listan och kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för deras privilegierade roll är tillräckligt lång för att de ska kunna utföra sina uppgifter. |
 | **Prevention (Skydd)** | Kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för privilegierade roller är tillräckligt lång för att användarna ska kunna utföra sina uppgifter.</br>[Kräv Multi-Factor Authentication](pim-how-to-change-default-settings.md) för privilegierade roller som har konton som delas av flera administratörer. |
-| **Åtgärd som åtgärdar åtgärder i portalen** | E.t. |
+| **Åtgärd som åtgärdar åtgärder i portalen** | Ej tillämpligt |
 | **Utlösare** | Utlöses om en användare aktiverar samma privilegierade roll flera gånger inom en angiven period. Du kan konfigurera både tids perioden och antalet aktiveringar. |
 | **Tidsram för aktiverings förnyelse** | Den här inställningen anger i dagar, timmar, minuter och sekund den tids period som du vill använda för att spåra misstänkta förnyelser. |
 | **Antal aktiverings förnyelser** | Den här inställningen anger antalet aktiveringar från 2 till 100, där du vill bli meddelad inom den tidsram som du har valt. Du kan ändra den här inställningen genom att flytta skjutreglaget eller skriva ett tal i text rutan. |
@@ -181,7 +181,7 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 | | |
 | --- | --- |
-| **Allvarlighetsgrad** | Medium |
+| **Allvarlighetsgrad** | Medel |
 | **Varför får jag den här aviseringen?** | Konton i en privilegie rad roll har inte ändrat sitt lösen ord under de senaste 90 dagarna. Dessa konton kan vara tjänst eller delade konton som inte underhålls och är utsatta för angripare. |
 | **Så här löser du?** | Granska kontona i listan. Om de inte längre behöver åtkomst tar du bort dem från deras privilegierade roller. |
 | **Prevention (Skydd)** | Se till att konton som delas roterar starka lösen ord när det sker en ändring i användare som känner till lösen ordet. </br>Granska regelbundet konton med privilegierade roller med [åtkomst granskningar](pim-how-to-start-security-review.md) och ta bort roll tilldelningar som inte längre behövs. |
@@ -192,7 +192,7 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 
 | | |
 | --- | --- |
-| **Allvarlighetsgrad** | Hög |
+| **Allvarlighetsgrad** | Högt |
 | **Varför får jag den här aviseringen?** | Privilegierade roll tilldelningar som görs utanför Privileged Identity Management övervakas inte korrekt och kan tyda på en aktiv attack. |
 | **Så här löser du?** | Granska användarna i listan och ta bort dem från privilegierade roller som tilldelats utanför Privileged Identity Management. |
 | **Prevention (Skydd)** | Undersök var användarna tilldelas privilegierade roller utanför Privileged Identity Management och förhindra framtida tilldelningar därifrån. |
@@ -219,7 +219,7 @@ I det här avsnittet visas alla säkerhets aviseringar för Azure AD-roller, til
 | **Varför får jag den här aviseringen?** | Flera aktiveringar till samma privilegierade roll av samma användare är ett tecken på ett angrepp. |
 | **Så här löser du?** | Granska användarna i listan och kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för deras privilegierade roll är tillräckligt lång för att de ska kunna utföra sina uppgifter. |
 | **Prevention (Skydd)** | Kontrol lera att [aktiverings tiden](pim-how-to-change-default-settings.md) för privilegierade roller är tillräckligt lång för att användarna ska kunna utföra sina uppgifter.</br>[Kräv Multi-Factor Authentication](pim-how-to-change-default-settings.md) för privilegierade roller som har konton som delas av flera administratörer. |
-| **Åtgärd som åtgärdar åtgärder i portalen** | E.t. |
+| **Åtgärd som åtgärdar åtgärder i portalen** | Ej tillämpligt |
 | **Utlösare** | Utlöses om en användare aktiverar samma privilegierade roll flera gånger inom en angiven period. Du kan konfigurera både tids perioden och antalet aktiveringar. |
 | **Tidsram för aktiverings förnyelse** | Den här inställningen anger i dagar, timmar, minuter och sekund den tids period som du vill använda för att spåra misstänkta förnyelser. |
 | **Antal aktiverings förnyelser** | Den här inställningen anger antalet aktiveringar från 2 till 100, där du vill bli meddelad inom den tidsram som du har valt. Du kan ändra den här inställningen genom att flytta skjutreglaget eller skriva ett tal i text rutan. |

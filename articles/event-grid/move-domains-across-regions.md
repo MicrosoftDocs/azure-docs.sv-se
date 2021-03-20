@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89087213"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Flytta Azure Event Grid domäner till en annan region
@@ -32,15 +32,15 @@ Här följer de övergripande steg som beskrivs i den här artikeln:
 Kom igång genom att exportera en Resource Manager-mall för domänen. 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. I Sök fältet skriver du **Event Grid domäner**och väljer **Event Grid domäner** i resultat listan. 
+2. I Sök fältet skriver du **Event Grid domäner** och väljer **Event Grid domäner** i resultat listan. 
 
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="Sök efter och välj Event Grid domäner":::
 3. Välj den **domän** som du vill exportera till en Resource Manager-mall. 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Sök efter och välj Event Grid domäner":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Välj domän":::   
 4. På sidan **Event Grid domän** väljer du **Exportera mall** under **Inställningar** på den vänstra menyn och väljer sedan **Hämta** i verktygsfältet. 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Sök efter och välj Event Grid domäner" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Exportera mall – > hämtning" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > Avsnitt om domäner och domäner exporteras. Prenumerationer för avsnitt om domäner exporteras inte. Så du måste skapa prenumerationer för domän ämnen när du har flyttat domän ämnen. 
@@ -60,20 +60,20 @@ Kom igång genom att exportera en Resource Manager-mall för domänen.
 Distribuera mallen för att skapa domän-och domän ämnen i mål regionen. 
 
 1. I Azure Portal väljer du **skapa en resurs**.
-2. I **Sök på Marketplace**skriver du **mall distribution**och trycker sedan på **RETUR**.
+2. I **Sök på Marketplace** skriver du **mall distribution** och trycker sedan på **RETUR**.
 3. Välj **malldistribution**.
 4. Välj **Skapa**.
 5. Välj **Bygg en egen mall i redigeraren**.
-6. Välj **Läs in fil**och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
+6. Välj **Läs in fil** och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
 7. Spara mallen genom att välja **Spara** . 
 8. Följ dessa steg på sidan **Anpassad distribution** :
     1. Välj en Azure- **prenumeration**. 
     1. Välj en befintlig **resurs grupp** i mål regionen eller skapa en. 
-    1. För **region**väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad. 
+    1. För **region** väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad. 
     1. Ange ett nytt namn för domänen för **domän namnet**. 
     1. Välj **Granska + skapa**. 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Sök efter och välj Event Grid domäner":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Distribuera mallen":::        
     1. När verifieringen av mallen lyckas väljer du **skapa** längst ned på sidan för att distribuera resursen. 
     1. När distributionen har slutförts väljer du **gå till resurs grupp** för att navigera till resurs grupp sidan. Bekräfta att det finns en domän i resurs gruppen. Välj domän. Bekräfta att det finns domän ämnen i domänen. 
 
@@ -84,13 +84,13 @@ Om du vill börja om tar du bort domänen i mål regionen och upprepar stegen i 
 
 Så här tar du bort en domän med hjälp av Azure Portal:
 
-1. I fönstret Sök högst upp i Azure Portal, skriver du **Event Grid domäner**och väljer **Event Grid domäner** från Sök resultat. 
+1. I fönstret Sök högst upp i Azure Portal, skriver du **Event Grid domäner** och väljer **Event Grid domäner** från Sök resultat. 
 2. Välj den domän som du vill ta bort och välj **ta bort** från verktygsfältet. 
 3. På sidan bekräftelse anger du namnet på resurs gruppen och väljer **ta bort**.  
 
 Ta bort resurs gruppen som innehåller domänen med hjälp av Azure Portal:
 
-1. I fönstret Sök högst upp i Azure Portal, Skriv **resurs grupper**och välj **resurs grupper** från Sök resultat. 
+1. I fönstret Sök högst upp i Azure Portal, Skriv **resurs grupper** och välj **resurs grupper** från Sök resultat. 
 2. Välj den resurs grupp som ska tas bort och välj **ta bort** från verktygsfältet. 
 3. På sidan bekräftelse anger du namnet på resurs gruppen och väljer **ta bort**.  
 

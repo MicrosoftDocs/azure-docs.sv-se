@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Självstudie: Azure Active Directory integrering med verktyg för att tänka på verktyg
@@ -52,7 +52,7 @@ Om du vill konfigurera en integrering av verktyg för att skapa en integrering i
 1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I navigerings fönstret längst till vänster väljer du tjänsten **Azure Active Directory** .
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , ange **verktyg Toolkit** i rutan Sök.
 1. Välj **verktyg** för att tänka på verktyg från Sök resultaten och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -90,7 +90,7 @@ I det här avsnittet konfigurerar du enkel inloggning med Azure AD med verktyg f
     > [!NOTE]
     > **Inloggnings-URL** -värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL: en. Kontakta The for [Tools Toolkit-klientens support team](mailto:support@goodpractice.com) för att hämta värdet.
 
-1. Gå till avsnittet **SAML-signeringscertifikat** på sidan **Konfigurera en Sign-On med SAML** . Till höger om **XML för federationsmetadata**väljer du **Ladda ned** för att ladda ned XML-texten och spara den på din dator. XML-innehållet beror på vilka alternativ du väljer.
+1. Gå till avsnittet **SAML-signeringscertifikat** på sidan **Konfigurera en Sign-On med SAML** . Till höger om **XML för federationsmetadata** väljer du **Ladda ned** för att ladda ned XML-texten och spara den på din dator. XML-innehållet beror på vilka alternativ du väljer.
 
     ![Avsnittet SAML-signeringscertifikat med hämtning har marker ATS bredvid XML för federationsmetadata](common/metadataxml.png)
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806078"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snabb start: Lägg till funktions flaggor i en ASP.NET Core app
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Få åtkomst till den här hemligheten med API för .NET Core-konfiguration. Ett kolon ( `:` ) fungerar i konfigurations namnet med Konfigurations-API: et på alla plattformar som stöds. Mer information finns i [konfigurations nycklar och värden](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. I *program.cs* uppdaterar du `CreateWebHostBuilder` metoden för att använda app-konfiguration genom att anropa `AddAzureAppConfiguration` metoden.
+1. I *program. cs* uppdaterar du `CreateWebHostBuilder` metoden för att använda app-konfiguration genom att anropa `AddAzureAppConfiguration` metoden.
 
     > [!IMPORTANT]
     > `CreateHostBuilder` ersätter `CreateWebHostBuilder` i .net Core 3. x. Välj rätt syntax baserat på din miljö.
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Med den föregående ändringen har [konfigurations leverantören för app-konfigurationen](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) registrerats med API för .net Core-konfiguration.
 
-1. I *startup.cs* lägger du till en referens till .net Core Feature Manager:
+1. I *startup. cs* lägger du till en referens till .net Core Feature Manager:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -163,7 +163,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-1. Lägg till en *MyFeatureFlags.cs* -fil i rot projekt katalogen med följande kod:
+1. Lägg till en *MyFeatureFlags. cs* -fil i rot projekt katalogen med följande kod:
 
     ```csharp
     namespace TestFeatureFlags
@@ -175,7 +175,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. Lägg till en *BetaController.cs* -fil i katalogen *controllers* med följande kod:
+1. Lägg till en *BetaController. cs* -fil i katalogen *controllers* med följande kod:
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;

@@ -4,10 +4,10 @@ description: Lär dig hur du publicerar en intern support policy till ett labb i
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480481"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Lägg till en intern support policy i ett labb i Azure DevTest Labs
@@ -21,13 +21,13 @@ Du kan enkelt inaktivera eller redigera en support instruktion när den inte lä
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Steg för att lägga till ett support uttryck i ett befintligt labb
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Om det behövs väljer du **alla tjänster**och väljer sedan **DevTest Labs** i listan. (Ditt labb kanske redan visas på instrument panelen under **alla resurser**).
+1. Om det behövs väljer du **alla tjänster** och väljer sedan **DevTest Labs** i listan. (Ditt labb kanske redan visas på instrument panelen under **alla resurser**).
 1. I listan med labb väljer du det labb som du vill lägga till ett support meddelande i.  
 1. I labb **översikts** avsnittet väljer du **konfiguration och principer**.  
 
     ![Knappen konfiguration och principer](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. Välj **intern support**till vänster under **Inställningar**.
+1. Välj **intern support** till vänster under **Inställningar**.
 
     ![Knapp för intern support](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 

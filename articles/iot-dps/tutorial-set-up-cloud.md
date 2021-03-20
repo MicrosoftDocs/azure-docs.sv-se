@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316077"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Självstudie: Konfigurera moln resurser för enhets etablering med IoT Hub Device Provisioning Service
@@ -21,13 +21,13 @@ Den här självstudien visar hur du konfigurerar molnet för en automatisk enhet
 
 > [!div class="checklist"]
 > * Använd Azure-portalen för att skapa en IoT Hub Device Provisioning-tjänst och hämta ID-omfånget
-> * Skapa en IoT-hubb
+> * Skapa en IoT Hub
 > * Länka IoT-hubben till Device Provisioning-tjänsten
 > * Ange allokeringsprincip för enhetsetableringstjänsten
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Logga in på [Azure-portalen](https://portal.azure.com/).
 
@@ -35,7 +35,7 @@ Logga in på [Azure-portalen](https://portal.azure.com/).
 
 Följ de här stegen för att skapa en ny Device Provisioning-tjänstinstans.
 
-1. Klicka på **skapa en resurs**i det övre vänstra hörnet av Azure Portal.
+1. Klicka på **skapa en resurs** i det övre vänstra hörnet av Azure Portal.
 
 2. I sökrutan skriver du **enhetsetablering**. 
 
@@ -58,7 +58,7 @@ Följ de här stegen för att skapa en ny Device Provisioning-tjänstinstans.
 
 7. Kopiera även **Tjänstslutpunkten** värde för senare användning. 
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -90,11 +90,11 @@ Nästa steg är att länka Device Provisioning-tjänsten och IoT Hub så att IoT
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Ange allokeringsprincip för enhetsetableringstjänsten
 
-Allokeringsregeln är en IoT Hub Device Provisioning Service inställning som avgör hur enheter tilldelas till en IoT-hubb. Det finns tre allokeringsprinciper som stöds: 
+Allokeringsregeln är en IoT Hub Device Provisioning Service inställning som avgör hur enheter tilldelas till en IoT-hubb. Det finns tre allokeringsprinciper som stöds: 
 
 1. **Kortast svarstid**: Enheter etableras till en IoT-hubb baserat på hubben med kortast svarstid till enheten.
 
-2. **Jämnt viktad distribution** (standard): Det är lika sannolikt att länkade IoT-hubbar får enheter etablerade till sig. Den här inställningen är standardinställningen. Om du endast etablerar enheter till en IoT-hubb kan du behålla den här inställningen. 
+2. **Jämnt viktad distribution** (standard): Det är lika sannolikt att länkade IoT-hubbar får enheter etablerade till sig. Den här inställningen är standardinställningen. Om du endast etablerar enheter till en IoT-hubb kan du behålla den här inställningen. 
 
 3. **Statisk konfiguration via registreringslistan**: Specificering av den önskade IoT-hubben på registreringslistan har högre prioritet än allokeringsprincipen på Device Provisioning-tjänstnivå.
 
@@ -116,7 +116,7 @@ I den här självstudiekursen lärde du dig att:
 
 > [!div class="checklist"]
 > * Använd Azure-portalen för att skapa en IoT Hub Device Provisioning-tjänst och hämta ID-omfånget
-> * Skapa en IoT-hubb
+> * Skapa en IoT Hub
 > * Länka IoT-hubben till Device Provisioning-tjänsten
 > * Ange allokeringsprincip för enhetsetableringstjänsten
 

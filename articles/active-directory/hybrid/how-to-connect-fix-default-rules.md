@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91320055"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Korrigera ändrade standard regler i Azure AD Connect
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) Connect använder standard regler för synkron
 > Det finns inte stöd för att ändra befintliga standard regler för att uppnå nödvändig anpassning. Om du gör det förhindrar den att du uppdaterar dessa regler till den senaste versionen i framtida versioner. Du får inte de fel korrigeringar du behöver eller nya funktioner. I det här dokumentet beskrivs hur du uppnår samma resultat utan att ändra de befintliga standard reglerna. 
 
 ## <a name="how-to-identify-modified-default-rules"></a>Så här identifierar du ändrade standard regler
-Från och med version 1.3.7.0 av Azure AD Connect är det enkelt att identifiera den ändrade standard regeln. Gå till **appar på Skriv bordet**och välj **Redigeraren för regler för synkronisering**.
+Från och med version 1.3.7.0 av Azure AD Connect är det enkelt att identifiera den ändrade standard regeln. Gå till **appar på Skriv bordet** och välj **Redigeraren för regler för synkronisering**.
 
 ![Azure AD Connect, med redigeraren för regler för synkronisering](media/how-to-connect-fix-default-rules/default1.png)
 
@@ -81,9 +81,9 @@ Namnge regeln genom att följa din egen namngivnings konvention. Här använder 
 
 Ange en egen beskrivning av regeln, så att framtida underhåll av regeln är enkelt. Beskrivningen kan till exempel baseras på vad målet med regeln är och varför det behövs.
 
-Gör dina val för fälten **ansluten system**, **ansluten system objekt typ**och **metaversum objekt typ** .
+Gör dina val för fälten **ansluten system**, **ansluten system objekt typ** och **metaversum objekt typ** .
 
-Ange prioritet svärdet från 0 till 99 (ju lägre siffra, desto högre prioritet). För **taggen**aktiverar du **synkronisering av lösen ord**och **inaktiverade** fält, använder standard alternativen.
+Ange prioritet svärdet från 0 till 99 (ju lägre siffra, desto högre prioritet). För **taggen** aktiverar du **synkronisering av lösen ord** och **inaktiverade** fält, använder standard alternativen.
 
 Behåll **omfångs filter** tomt. Det innebär att regeln gäller för alla objekt som är anslutna mellan Active Directory anslutna systemet och metaversum.
 
@@ -92,7 +92,7 @@ Behåll **kopplings regler** tomma. Det innebär att regeln använder det koppli
 Lägg till lämpliga omvandlingar för attributet. Du kan tilldela en konstant för att göra ett konstant värde flöde till målattributet. Du kan använda direkt mappning mellan käll-eller mål-attributet. Du kan också använda ett uttryck för attributet. Här är olika [uttrycks funktioner](./reference-connect-sync-functions-reference.md) som du kan använda.
 
 #### <a name="add-an-outbound-sync-rule"></a>Lägg till en regel för utgående synkronisering
-Om du vill länka attributet till mål katalogen måste du skapa en utgående regel. Det innebär att källan är metaversum och att målet är det anslutna systemet. Om du vill skapa en utgående regel startar du **Redigeraren för regler för synkronisering**, ändrar **riktningen** till **utgående**och väljer **Lägg till ny regel**. 
+Om du vill länka attributet till mål katalogen måste du skapa en utgående regel. Det innebär att källan är metaversum och att målet är det anslutna systemet. Om du vill skapa en utgående regel startar du **Redigeraren för regler för synkronisering**, ändrar **riktningen** till **utgående** och väljer **Lägg till ny regel**. 
 
 ![Redigerare för regler för synkronisering](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -162,11 +162,11 @@ Du kan validera den nyligen tillagda synkroniseringsregeln med hjälp av funktio
 
 ![Azure AD Connect med markerad synkroniseringstjänst](media/how-to-connect-fix-default-rules/default10.png)
 
-Välj **metaversum-sökning**. Välj scope-objektet som **person**, Välj **Lägg till sats**och ange Sök kriterierna. Välj sedan **Sök**och dubbelklicka på objektet i Sök resultatet. Se till att dina data i Azure AD Connect är uppdaterade för det objektet genom att köra import och synkronisering i skogen innan du kör det här steget.
+Välj **metaversum-sökning**. Välj scope-objektet som **person**, Välj **Lägg till sats** och ange Sök kriterierna. Välj sedan **Sök** och dubbelklicka på objektet i Sök resultatet. Se till att dina data i Azure AD Connect är uppdaterade för det objektet genom att köra import och synkronisering i skogen innan du kör det här steget.
 
 ![Synchronization Service Manager](media/how-to-connect-fix-default-rules/default11.png)
 
-På **metaversum objekt egenskaper**väljer du **kopplingar**, väljer objektet i motsvarande koppling (skog) och väljer **Egenskaper.**...
+På **metaversum objekt egenskaper** väljer du **kopplingar**, väljer objektet i motsvarande koppling (skog) och väljer **Egenskaper.**...
 
 ![Egenskaper för metaversum-objekt](media/how-to-connect-fix-default-rules/default12.png)
 

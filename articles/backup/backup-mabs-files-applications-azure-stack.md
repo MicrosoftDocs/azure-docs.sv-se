@@ -4,10 +4,10 @@ description: Använd Azure Backup för att säkerhetskopiera och återställa Az
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180991"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Säkerhetskopiera filer och program på Azure Stack
@@ -50,7 +50,7 @@ Om du vill konfigurera Azure Backup Server för att skydda filer i Azure Stack v
 
     ![Välj data skydds metod](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Om du vill välja att **Jag vill ha onlineskydd**måste du först välja **Jag vill ha kortvarigt skydd med:** disk. Azure Backup Server skyddar inte till band, så disk är det enda alternativet för kortsiktigt skydd.
+    Om du vill välja att **Jag vill ha onlineskydd** måste du först välja **Jag vill ha kortvarigt skydd med:** disk. Azure Backup Server skyddar inte till band, så disk är det enda alternativet för kortsiktigt skydd.
 
 5. På skärmen **ange Short-Term mål** väljer du hur länge du vill behålla återställnings punkterna som sparas på disk och när du ska spara stegvisa säkerhets kopior. Välj **Nästa**.
 
@@ -68,22 +68,22 @@ Om du vill konfigurera Azure Backup Server för att skydda filer i Azure Stack v
 
     **Total data storlek** är storleken på de data som du vill säkerhetskopiera och **disk utrymmet som ska tillhandahållas** på Azure Backup Server är det rekommenderade utrymmet för skydds gruppen. Azure Backup Server väljer den ideala säkerhets kopierings volymen baserat på inställningarna. Du kan dock redigera valen av säkerhetskopieringsvolym under Disk allocation details (Diskallokeringsdetaljer). Välj önskad lagringsplats för arbetsbelastningarna i den nedrullningsbara menyn. Redigeringarna ändrar värdena för Totalt lagringsutrymme och Ledigt lagringsutrymme i fönstret Tillgängligt disklagringsutrymme. Underetablerat utrymme är mängden lagrings Azure Backup Server föreslår att du lägger till volymen, för att fortsätta med säkerhets kopieringar smidigt i framtiden.
 
-7. I **Välj metod för skapande av replik**väljer du hur du vill hantera den första fullständiga datareplikeringen. Om du väljer att replikera över nätverket rekommenderar Azure att du väljer en tid med låg belastning. Överväg att replikera data med hjälp av flyttbara media för stora mängder data eller mindre än optimala nätverks förhållanden.
+7. I **Välj metod för skapande av replik** väljer du hur du vill hantera den första fullständiga datareplikeringen. Om du väljer att replikera över nätverket rekommenderar Azure att du väljer en tid med låg belastning. Överväg att replikera data med hjälp av flyttbara media för stora mängder data eller mindre än optimala nätverks förhållanden.
 
 8. I **Välj alternativ för konsekvenskontroll** väljer du hur du vill automatisera konsekvenskontroller. Aktivera konsekvens kontroller för att endast köra när datareplikeringen blir inkonsekvent eller enligt ett schema. Om du inte vill konfigurera automatisk konsekvens kontroll kör du en manuell kontroll när som helst genom att:
     * I **skydds** delen i Azure Backup Server-konsolen högerklickar du på skydds gruppen och väljer **utför konsekvens kontroll**.
 
 9. Om du väljer att säkerhetskopiera till Azure, på sidan **ange data för onlineskydd** , se till att de arbets belastningar som du vill säkerhetskopiera till Azure är markerade.
 
-10. I **Ange schema för onlinesäkerhetskopiering**anger du när stegvisa säkerhets kopieringar till Azure ska ske.
+10. I **Ange schema för onlinesäkerhetskopiering** anger du när stegvisa säkerhets kopieringar till Azure ska ske.
 
     Du kan schemalägga säkerhetskopieringar så att de körs varje dag/vecka/månad/år och ange vilken tid/datum de ska köras. Säkerhetskopieringar kan göras upp till två gånger per dag. Varje gång ett säkerhets kopierings jobb körs skapas en data återställnings punkt i Azure från kopian av säkerhetskopierade data som lagras på den Azure Backup Server disken.
 
 11. Ange hur återställnings punkterna som skapas med säkerhets kopiorna per dag/vecka/månad/år ska behållas i Azure i **Ange bevarande princip för online**.
 
-12. I **Välj online-replikering**anger du hur den första fullständiga replikeringen av data ska ske.
+12. I **Välj online-replikering** anger du hur den första fullständiga replikeringen av data ska ske.
 
-13. Granska inställningarna i **Sammanfattning**. När du väljer **Skapa grupp**sker den första datareplikeringen. När datareplikeringen är klar visas skydds gruppens status som **OK**på sidan **status** . Det första säkerhets kopierings jobbet sker i enlighet med inställningarna för skydds gruppen.
+13. Granska inställningarna i **Sammanfattning**. När du väljer **Skapa grupp** sker den första datareplikeringen. När datareplikeringen är klar visas skydds gruppens status som **OK** på sidan **status** . Det första säkerhets kopierings jobbet sker i enlighet med inställningarna för skydds gruppen.
 
 ## <a name="recover-file-data"></a>Återställa fildata
 
@@ -104,10 +104,10 @@ Använd Azure Backup Server-konsolen för att återställa data till den virtuel
 
 6. Ange återställnings alternativ:
 
-    * För **återställning av befintliga versioner**väljer du **Skapa kopia**, **hoppa över**eller **Skriv över**. Överskrivning är bara tillgängligt när du återställer till den ursprungliga platsen.
-    * För **återställning av säkerhet**väljer du **tillämpa inställningar på mål datorn** eller **tillämpar säkerhets inställningarna för återställnings punkt versionen**.
-    * För **begränsning av nätverks bandbredd**väljer du **ändra** för att aktivera begränsning av nätverks bandbredd.
-    * **Meddelande** Välj **Skicka ett e-postmeddelande när återställningen är slutförd**och ange de mottagare som ska ta emot meddelandet. Avgränsa e-postadresserna med kommatecken.
+    * För **återställning av befintliga versioner** väljer du **Skapa kopia**, **hoppa över** eller **Skriv över**. Överskrivning är bara tillgängligt när du återställer till den ursprungliga platsen.
+    * För **återställning av säkerhet** väljer du **tillämpa inställningar på mål datorn** eller **tillämpar säkerhets inställningarna för återställnings punkt versionen**.
+    * För **begränsning av nätverks bandbredd** väljer du **ändra** för att aktivera begränsning av nätverks bandbredd.
+    * **Meddelande** Välj **Skicka ett e-postmeddelande när återställningen är slutförd** och ange de mottagare som ska ta emot meddelandet. Avgränsa e-postadresserna med kommatecken.
     * När du har gjort valen väljer du **Nästa**
 
 7. Granska återställnings inställningarna och välj **Återställ**.

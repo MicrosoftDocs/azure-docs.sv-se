@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
 ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89145492"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Montera ett virtuellt fil system i en batch-pool
@@ -78,7 +78,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob File System
 
-Ett annat alternativ är att använda Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Att montera ett BLOB-filsystem kräver ett `AccountKey` eller `SasKey` för ditt lagrings konto. Information om hur du hämtar dessa nycklar finns i [Hantera åtkomst nycklar för lagrings konton](../storage/common/storage-account-keys-manage.md)eller [använda signaturer för delad åtkomst (SAS)](../storage/common/storage-sas-overview.md). Mer information om hur du använder blobfuse finns i blobfuse [Felsöka vanliga frågor och svar](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Kör uppgiften som **administratör**för att få standard åtkomst till den blobfuse monterade katalogen. Blobfuse monterar katalogen i användar utrymmet och när poolen skapas monteras den som rot. I Linux är alla **Administratörs** aktiviteter rot. Alla alternativ för den säkra modulen beskrivs på [referens sidan för säkring](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Ett annat alternativ är att använda Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Att montera ett BLOB-filsystem kräver ett `AccountKey` eller `SasKey` för ditt lagrings konto. Information om hur du hämtar dessa nycklar finns i [Hantera åtkomst nycklar för lagrings konton](../storage/common/storage-account-keys-manage.md)eller [använda signaturer för delad åtkomst (SAS)](../storage/common/storage-sas-overview.md). Mer information om hur du använder blobfuse finns i blobfuse [Felsöka vanliga frågor och svar](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Kör uppgiften som **administratör** för att få standard åtkomst till den blobfuse monterade katalogen. Blobfuse monterar katalogen i användar utrymmet och när poolen skapas monteras den som rot. I Linux är alla **Administratörs** aktiviteter rot. Alla alternativ för den säkra modulen beskrivs på [referens sidan för säkring](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Förutom fel söknings guiden är GitHub-problem i blobfuse-lagringsplatsen ett bra sätt att kontrol lera aktuella blobfuse-problem och lösningar. Mer information finns i [blobfuse-problem](https://github.com/Azure/azure-storage-fuse/issues).
 
@@ -167,13 +167,13 @@ Om du vill hämta loggfilerna för fel sökning använder du [OutputFiles](batch
 | Credativ | Debian | 8| :heavy_check_mark: | röntgen | :heavy_check_mark: | :heavy_check_mark: |
 | Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Ads | Linux-data-science-VM | linuxdsvm | :heavy_check_mark: <br>Obs: kompatibel med CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft – Azure-Batch | CentOS-container | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Microsoft – Azure-Batch | CentOS-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft – Azure-Batch | CentOS-container-RDMA | 7,4 | :heavy_check_mark: <br>Obs: stöder A_8-eller 9-lagring</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft – Azure-Batch | Ubuntu-Server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-dsvm | Linux-data-science-VM-Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS – HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7,6 | röntgen | röntgen | röntgen | röntgen |
+| Oracle | Oracle-Linux | 7.6 | röntgen | röntgen | röntgen | röntgen |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | röntgen | röntgen | röntgen |
 
 ## <a name="next-steps"></a>Nästa steg

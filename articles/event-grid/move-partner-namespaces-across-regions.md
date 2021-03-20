@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89087212"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Flytta Azure Event Grid partner namn områden till en annan region
@@ -31,7 +31,7 @@ Här följer de övergripande steg som beskrivs i den här artikeln:
 Kom igång genom att exportera en Resource Manager-mall för partner namn området. 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. I Sök fältet högst upp skriver du **Event Grid partner namnrum**och väljer **Event Grid partner namn rymder** från resultat listan. 
+2. I Sök fältet högst upp skriver du **Event Grid partner namnrum** och väljer **Event Grid partner namn rymder** från resultat listan. 
 3. Välj det **partner namn område** som du vill exportera till en Resource Manager-mall. 
 4. På sidan **Event Grid partner namn område** väljer du **Exportera mall** under **Inställningar** på den vänstra menyn och väljer sedan **Hämta** i verktygsfältet. 
 
@@ -57,17 +57,17 @@ Kom igång genom att exportera en Resource Manager-mall för partner namn områd
 Distribuera mallen för att skapa ett namn område för partner i mål regionen. 
 
 1. I Azure Portal väljer du **skapa en resurs**.
-2. I **Sök på Marketplace**skriver du **mall distribution**och trycker sedan på **RETUR**.
+2. I **Sök på Marketplace** skriver du **mall distribution** och trycker sedan på **RETUR**.
 3. Välj **malldistribution**.
 4. Välj **Skapa**.
 5. Välj **Bygg en egen mall i redigeraren**.
-6. Välj **Läs in fil**och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
+6. Välj **Läs in fil** och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
 7. Spara mallen genom att välja **Spara** . 
 8. Följ dessa steg på sidan **Anpassad distribution** : 
     1. Välj en Azure- **prenumeration**. 
     1. Välj en befintlig **resurs grupp** i mål regionen eller skapa en. 
-    1. För **plats**väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad. 
-    1. För **namnet på partner namn området**anger du ett namn för den nya partnerns namn område. 
+    1. För **plats** väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad. 
+    1. För **namnet på partner namn området** anger du ett namn för den nya partnerns namn område. 
     1. För partner registreringens externa ID anger du resurs-ID för partner registreringen i följande format: `/subscriptions/<Azure subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.EventGrid/partnerRegistrations/<Partner registration name>` .
     1. Markera kryss rutan **Jag accepterar villkoren som anges ovan** .     
     1. Välj **Granska + skapa** för att starta distributions processen. 
@@ -80,7 +80,7 @@ Om du vill börja om tar du bort partner namn området i mål regionen och uppre
 
 Ta bort ett partner namn område med hjälp av Azure Portal:
 
-1. I fönstret Sök högst upp i Azure Portal, skriver du **Event Grid partners namnrum**och väljer **Event Grid partner namn rymder** från Sök resultat. 
+1. I fönstret Sök högst upp i Azure Portal, skriver du **Event Grid partners namnrum** och väljer **Event Grid partner namn rymder** från Sök resultat. 
 2. Välj den partner namn område som ska tas bort och välj **ta bort** från verktygsfältet. 
 3. **Bekräfta** borttagningen för att ta bort partner namn området. 
 

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, inbyggd program vara, uppdatering
 ms.openlocfilehash: f8b89751d27fb5a4b18d635f45f63f4f36bd05f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277678"
 ---
 # <a name="azure-kinect-dk-firmware-tool"></a>Verktyget Azure Kinect DK firmware
@@ -61,7 +61,7 @@ Om det finns fler än en ansluten enhet kan du ange vilken enhet du vill fråga 
 
 `AzureKinectFirmwareTool.exe -u firmware\AzureKinectDK_Fw_1.5.926614.bin 000036590812`
 
-## <a name="reset-device"></a>Återställa enhet
+## <a name="reset-device"></a>Återställ enhet
 
 En ansluten Azure Kinect DK kan återställas med alternativet-r, om du måste få enheten i ett känt tillstånd.
 

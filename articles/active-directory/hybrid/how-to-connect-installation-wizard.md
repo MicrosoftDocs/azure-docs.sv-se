@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91306131"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synkronisering: kör installations guiden en gång till
@@ -52,7 +52,7 @@ Med det här alternativet får du en snabb överblick över dina för tillfälle
 
 ![Sida med en lista över alla alternativ och deras status](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-Klicka på **föregående** för att gå tillbaka. Om du väljer **Avsluta**stänger du installations guiden.
+Klicka på **föregående** för att gå tillbaka. Om du väljer **Avsluta** stänger du installations guiden.
 
 ## <a name="customize-synchronization-options"></a>Anpassa synkroniseringsalternativ
 Det här alternativet används för att göra ändringar i Sync-konfigurationen. Du ser en delmängd av alternativen i installations Sök vägen för anpassad konfiguration. Du ser det här alternativet även om du använde Express installation från början.
@@ -94,5 +94,5 @@ Mer information om det här alternativet finns i [användar inloggning](plan-con
 
 **Översikts avsnitt**
 
-* [Azure AD Connect synkronisering: förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
+* [Azure AD Connect-synkronisering: Förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
 * [Integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md)

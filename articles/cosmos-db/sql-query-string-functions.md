@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545289"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Sträng funktioner (Azure Cosmos DB)
@@ -35,7 +35,7 @@ Följande skalära funktioner utför en åtgärd på ett sträng indatavärde oc
 * [REGEXMATCH](sql-query-regexmatch.md)
 * [REPLACE](sql-query-replace.md)
 * [REPLIKERA](sql-query-replicate.md)
-* [REVERSE](sql-query-reverse.md)
+* [ÅTERFÖR](sql-query-reverse.md)
 * [RIGHT](sql-query-right.md)
 * [RTRIM](sql-query-rtrim.md)
 * [STARTSWITH](sql-query-startswith.md)
@@ -44,7 +44,7 @@ Följande skalära funktioner utför en åtgärd på ett sträng indatavärde oc
 * [StringToNull](sql-query-stringtonull.md)
 * [StringToNumber](sql-query-stringtonumber.md)
 * [StringToObject](sql-query-stringtoobject.md)
-* [SUBSTRING](sql-query-substring.md)
+* [UNDER sträng](sql-query-substring.md)
 * [ToString](sql-query-tostring.md)
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)

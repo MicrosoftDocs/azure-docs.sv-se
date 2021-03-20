@@ -4,10 +4,10 @@ description: Den här artikeln beskriver alla förberedelser som behövs för at
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476146"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Köra en avbildningsfabrik från Azure DevOps
@@ -26,7 +26,7 @@ Nästa steg i att anta avbildnings fabriken för ditt team är att förstå vad 
     - Inställningarna. Indata till avbildnings fabriken
         - GoldenImages. Den här mappen innehåller JSON-filer som representerar definitionerna för anpassade avbildningar.
         - Labs.jspå. Fil där team registrerar sig för att ta emot vissa anpassade avbildningar.
-- Skript. Avbildnings fabrikens motor.
+- Alfabet. Avbildnings fabrikens motor.
 
 Artiklarna i det här avsnittet innehåller mer information om dessa skript och mallar.
 
@@ -94,7 +94,7 @@ Nästa steg är att konfigurera tjänstens huvud namn. Detta är en identitet i 
 Det snabbaste sättet att konfigurera ett huvud namn för tjänsten är att låta Azure DevOps göra det åt oss.
 
 1. Välj den **uppgift** som du nyss lade till.
-2. För **Anslutnings typ för Azure**väljer du **Azure Resource Manager**.
+2. För **Anslutnings typ för Azure** väljer du **Azure Resource Manager**.
 3. Välj länken **Hantera** för att konfigurera tjänstens huvud namn.
 
 Se det här [blogginlägget](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) för mer information. När du väljer länken **Hantera** hamnar du på rätt plats i DevOps (andra skärm bilden i blogg inlägget) för att konfigurera anslutningen till Azure. Se till att välja **Azure Resource Manager tjänst slut punkt** när du konfigurerar den här inställningen.
@@ -105,7 +105,7 @@ Om du väljer build-uppgiften visas all information i den högra rutan som ska f
 1. Börja med att namnge build-uppgiften: **skapa Virtual Machines**.
 2. Välj **tjänstens huvud namn** som du skapade genom att välja **Azure Resource Manager**
 3. Välj **tjänstens slut punkt**.
-4. För **skript Sök väg**väljer du **... (tre punkter)** till höger.
+4. För **skript Sök väg** väljer du **... (tre punkter)** till höger.
 5. Navigera till **MakeGoldenImageVMs.ps1** skript.
 6. Skript parametrar bör se ut så här: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 

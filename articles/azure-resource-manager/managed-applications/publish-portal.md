@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651727"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Publicera ett tjänst katalog program via Azure Portal
 
 Du kan använda Azure Portal för att publicera [hanterade program](overview.md) som är avsedda för medlemmar i din organisation. En IT-avdelning kan exempelvis publicera hanterade program som säkerställer efterlevnaden av organisationens standarder. Dessa hanterade program är tillgängliga via tjänstkatalogen, inte på Azure Marketplace.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 När du publicerar ett hanterat program kan du ange en identitet för att hantera resurserna. Vi rekommenderar att du anger en Azure Active Directory användar grupp. Om du vill skapa en Azure Active Directory användar grupp, se [skapa en grupp och lägga till medlemmar i Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). 
 
@@ -30,7 +30,7 @@ Zip-filen som innehåller definitionen för det hanterade programmet måste vara
 
 1. Sök efter **tjänst katalog**.
 
-1. Rulla tills du hittar **tjänst katalogens hanterade program definition**i resultatet. Välj den.
+1. Rulla tills du hittar **tjänst katalogens hanterade program definition** i resultatet. Välj den.
 
    ![Sök efter definitioner för hanterade program](./media/publish-portal/select-managed-apps-definition.png)
 

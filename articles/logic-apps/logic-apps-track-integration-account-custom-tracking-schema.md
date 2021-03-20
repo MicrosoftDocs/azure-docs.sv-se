@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76903064"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Skapa anpassade spårnings scheman som övervakar arbets flöden från slut punkt till slut punkt i Azure Logic A
@@ -59,7 +59,7 @@ Azure Logic Apps har inbyggd spårning som du kan aktivera för delar av arbets 
 | runId | Ja | Sträng | Körnings-ID för Logic app |
 | operationName | Ja | Sträng | Namn på åtgärden, till exempel åtgärd eller utlösare |
 | repeatItemScopeName | Ja | Sträng | Upprepa objekt namn om åtgärden finns inuti en `foreach` or- `until` slinga |
-| repeatItemIndex | Ja | Heltal | Anger att åtgärden finns inuti en `foreach` eller- `until` slinga och är det upprepade objekt indexet. |
+| repeatItemIndex | Ja | Integer | Anger att åtgärden finns inuti en `foreach` eller- `until` slinga och är det upprepade objekt indexet. |
 | trackingId | Inga | Sträng | Spårnings-ID för att korrelera meddelandena |
 | correlationId | Inga | Sträng | Korrelations-ID för att korrelera meddelandena |
 | clientRequestId | Inga | Sträng | Klienten kan fylla i den här egenskapen för att korrelera meddelanden |

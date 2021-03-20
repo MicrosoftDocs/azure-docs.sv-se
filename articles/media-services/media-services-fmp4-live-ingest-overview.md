@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019519"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services-specifikation för fragmenterad MP4 Live 
@@ -44,7 +44,7 @@ Följande diagram visar den övergripande arkitekturen i Live streaming service 
 ### <a name="live-ingest-format-definitions"></a>Format definitioner för Live-intag
 I följande lista beskrivs särskilda format definitioner som gäller för Live-inmatning i Azure Media Services:
 
-1. Rutorna **ftyp**, **Live Server-manifest**och **Moov** måste skickas med varje begäran (http post). De här rutorna måste skickas i början av data strömmen och varje gång kodaren måste återanslutas för att återuppta strömningen. Mer information finns i avsnitt 6 i [1].
+1. Rutorna **ftyp**, **Live Server-manifest** och **Moov** måste skickas med varje begäran (http post). De här rutorna måste skickas i början av data strömmen och varje gång kodaren måste återanslutas för att återuppta strömningen. Mer information finns i avsnitt 6 i [1].
 1. Avsnitt 3.3.2 i [1] definierar en valfri ruta med namnet **StreamManifestBox** för direktsänd inmatning. På grund av cirkulations logiken för Azure Load Balancer är den här rutan föråldrad. Rutan bör inte finnas när du matar in till Media Services. Om den här rutan är tillgänglig ignorerar Media Services tyst.
 1. Rutan **TrackFragmentExtendedHeaderBox** som definieras i 3.2.3.2 i [1] måste finnas för varje fragment.
 1. Version 2 av rutan **TRACKFRAGMENTEXTENDEDHEADERBOX** ska användas för att generera medie segment som har identiska URL: er i flera data Center. Fältet fragment index krävs för redundans av över-datacenter i indexbaserade strömnings format, till exempel Apple-HLS och indexbaserade MPEG-streck. Om du vill aktivera redundans i flera data Center måste fragment-indexet synkroniseras över flera kodare och ökas med 1 för varje efterföljande medie fragment, även om omstarter eller fel uppstår i en kodare.
@@ -54,7 +54,7 @@ I följande lista beskrivs särskilda format definitioner som gäller för Live-
 1. Tidsstämplar för MP4-fragment och index (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` och `fragment_index` ) bör komma i stigande ordning. Även om Media Services är elastiskt till dubbletter av fragment, har det begränsad möjlighet att ändra ordning på fragmenten enligt medie tids linjen.
 
 ## <a name="4-protocol-format--http"></a>4. protokoll format – HTTP
-ISO-fragmenterad MP4-baserad Live-inmatning för Media Services använder en standard-lång HTTP POST-begäran för att överföra kodade medie data som är förpackade i fragmenterat MP4-format till tjänsten. Varje HTTP POST skickar ett fullständigt fragmenterat MP4-Bitstream ("Stream"), som börjar från början med sidhuvud-rutor (**ftyp**, **Live Server manifest Box**och **Moov** ) och fortsätter med en sekvens med fragment (**moof** och **mdat** -rutor). URL-syntax för HTTP POST-begäran finns i avsnitt 9,2 i [1]. Ett exempel på POST-URL: en är: 
+ISO-fragmenterad MP4-baserad Live-inmatning för Media Services använder en standard-lång HTTP POST-begäran för att överföra kodade medie data som är förpackade i fragmenterat MP4-format till tjänsten. Varje HTTP POST skickar ett fullständigt fragmenterat MP4-Bitstream ("Stream"), som börjar från början med sidhuvud-rutor (**ftyp**, **Live Server manifest Box** och **Moov** ) och fortsätter med en sekvens med fragment (**moof** och **mdat** -rutor). URL-syntax för HTTP POST-begäran finns i avsnitt 9,2 i [1]. Ett exempel på POST-URL: en är: 
 
 `http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
@@ -63,7 +63,7 @@ Här följer de detaljerade kraven:
 
 1. Kodaren ska starta sändningen genom att skicka en HTTP POST-begäran med en tom "brödtext" (noll innehålls längd) genom att använda samma inmatnings-URL. Detta kan hjälpa kodaren att snabbt identifiera om slut punkten för direkt inmatningen är giltig och om det finns någon autentisering eller andra villkor som krävs. Per HTTP-protokoll kan servern inte skicka tillbaka ett HTTP-svar förrän hela begäran, inklusive INLÄGGs texten, tas emot. Med tanke på långvarig natur som en Live-händelse, utan det här steget, kanske kodaren inte kan upptäcka några fel förrän den har slutfört sändningen av alla data.
 1. Kodaren måste hantera eventuella fel eller autentiseringsbegäranden på grund av (1). Om (1) lyckas med ett 200-svar fortsätter du.
-1. Kodaren måste starta en ny HTTP POST-begäran med den fragmenterade MP4-strömmen. Nytto lasten måste börja med rubrik rutorna följt av fragment. Observera att rutorna **ftyp**, **Live Server manifest**och **Moov** (i den här ordningen) måste skickas med varje begäran, även om kodaren måste återansluta på grund av att den tidigare begäran avbröts innan strömmens slut. 
+1. Kodaren måste starta en ny HTTP POST-begäran med den fragmenterade MP4-strömmen. Nytto lasten måste börja med rubrik rutorna följt av fragment. Observera att rutorna **ftyp**, **Live Server manifest** och **Moov** (i den här ordningen) måste skickas med varje begäran, även om kodaren måste återansluta på grund av att den tidigare begäran avbröts innan strömmens slut. 
 1. Kodaren måste använda Chunked Transfer Encoding för överföring, eftersom det är omöjligt att förutsäga hela innehålls längden för Live-händelsen.
 1. När händelsen är över, efter att det sista fragmentet har skickats, måste kodaren avsluta den segmenterade överförings meddelande sekvensen (de flesta HTTP-klienter hanterar den automatiskt). Kodaren måste vänta på att tjänsten returnerar slut svars koden och sedan avsluta anslutningen. 
 1. Kodaren får inte använda `Events()` Substantiv enligt beskrivningen i 9,2 i [1] för direkt inmatning i Media Services.
@@ -116,7 +116,7 @@ I det här avsnittet diskuterar vi scenarier för tjänst växling. I det här f
 
     b. Den nya HTTP POST-URL: en måste vara samma som den första POST-URL: en.
   
-    c. Det nya HTTP-inlägget måste innehålla data Ströms rubriker (**ftyp**, **Live Server manifest Box**och **Moov** rutor) som är identiska med data ström rubrikerna i det första inlägget.
+    c. Det nya HTTP-inlägget måste innehålla data Ströms rubriker (**ftyp**, **Live Server manifest Box** och **Moov** rutor) som är identiska med data ström rubrikerna i det första inlägget.
   
     d. De sista två fragmenten som skickats för varje spår måste skickas igen och streaming måste återupptas utan att det införs någon avvikelse i medie tids linjen. Tidsstämplar för MP4-fragment måste öka kontinuerligt, även över HTTP POST-begäranden.
 1. Kodaren ska avsluta HTTP POST-begäran om data inte skickas enligt en hastighet som motsvarar MP4-Fragmentets varaktighet.  En HTTP POST-begäran som inte skickar data kan förhindra att Media Services snabbt kopplar från kodaren i händelse av en tjänst uppdatering. Därför bör HTTP POST för sparse-spår (AD-signal) vara kort livs längd och avslutas så snart den glesa fragmenten skickas.
@@ -159,7 +159,7 @@ Följande steg är en rekommenderad implementering för att mata in ett sparse-s
 
 1. Skapa en separat fragmenterad MP4-Bitstream som bara innehåller null-optimerade spår, utan ljud-/video spår.
 1. I **rutan Live Server manifest** , som definieras i avsnitt 6 i [1], använder du parametern *parentTrackName* för att ange namnet på det överordnade spåret. Mer information finns i avsnittet 4.2.1.2.1.2 i [1].
-1. I **rutan Live Server-manifest**måste **manifestOutput** vara inställt på **True**.
+1. I **rutan Live Server-manifest** måste **manifestOutput** vara inställt på **True**.
 1. Med tanke på signal händelsens sparse-typ rekommenderar vi följande:
    
     a. I början av Live-händelsen skickar kodaren de inledande rubrik rutorna till tjänsten, vilket gör att tjänsten kan registrera den sparse-spårningen i klient manifestet.

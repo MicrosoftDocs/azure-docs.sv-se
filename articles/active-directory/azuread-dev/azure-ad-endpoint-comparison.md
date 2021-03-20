@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92055298"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Varför uppdatera till Microsoft-identitetsplattformen (v2.0)?
@@ -56,7 +56,7 @@ Administratörs medgivande som gjorts för en organisations räkning kräver for
 
 ## <a name="scopes-not-resources"></a>Omfattningar, inte resurser
 
-För appar som använder v 1.0-slutpunkten kan en app beter sig som en **resurs**eller en mottagare av tokens. En resurs kan definiera ett antal **omfattningar** eller **oAuth2Permissions** som den förstår, vilket gör det möjligt för klient program att begära token från den resursen för en viss uppsättning omfång. Överväg Microsoft Graph-API: et som ett exempel på en resurs:
+För appar som använder v 1.0-slutpunkten kan en app beter sig som en **resurs** eller en mottagare av tokens. En resurs kan definiera ett antal **omfattningar** eller **oAuth2Permissions** som den förstår, vilket gör det möjligt för klient program att begära token från den resursen för en viss uppsättning omfång. Överväg Microsoft Graph-API: et som ett exempel på en resurs:
 
 * Resurs-ID eller `AppID URI` : `https://graph.microsoft.com/`
 * Omfattningar, eller `oAuth2Permissions` : `Directory.Read` , `Directory.Write` , och så vidare.

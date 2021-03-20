@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 0133d6cc54038a56847556a83242114c78e09321
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 4a75931017bbde24c17ecdc0da498547c6088682
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574416"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581532"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-anslutningspartner och peering-platser
 
@@ -87,6 +87,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Stöds |Stöds |Kapstaden, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Stöds |Stöds |Montreal, Toronto, Quebec City |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Stöds |Stöds |Amsterdam, Amsterdam2, Chicago, Hong Kong SAR, Johannesburg, London, London2, Newport (Wales), Paris, Sao Paulo, Silicon dal, Singapore, Sydney, Tokyo, Washington DC |
+| **[BSNL](https://www.bsnl.co.in/opencms/bsnl/BSNL/services/enterprises/cloudway.html)** |Stöds |Stöds |Chennai, Mumbai |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Stöds |Stöds |Miami |
 | **CDC** | Stöds | Stöds | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Stöds |Stöds |Amsterdam2, Chicago, Dublin, Frankfurt, Hongkong, Las Vegas, London2, New York, Paris, San-Antonio, Silicon dal, Tokyo, Toronto, Washington DC, Washington DC2 |
@@ -148,7 +149,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Optus](https://www.optus.com.au/enterprise/)** |Stöds |Stöds |Melbourne, Sydney |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Stöds |Stöds |Amsterdam, Amsterdam2, Dubai2, Frankfurt, Hong Kong SAR, Johannesburg, London, Paris, Sao Paulo, Silicon dal, Singapore, Sydney, Tokyo, Washington DC |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Stöds | Stöds | Dubai2 |
-| **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Stöds |Stöds |Chicago, Las Vegas, Silicon dal, Washington DC |
+| **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Stöds |Stöds |Chicago, Borås, Las Vegas, Silicon dal, Washington DC |
 | **[PCCW globalt begränsad](https://consoleconnect.com/clouds/#azureRegions)** |Stöds |Stöds |Chicago, Hongkong, Hong Kong2, London, Singapore2 |
 | **[REANNZ](https://www.reannz.co.nz/products-and-services/cloud-connect/)** | Stöds | Stöds | Auckland |
 | **[Retelit](https://www.retelit.it/EN/Home.aspx)** | Stöds | Stöds | Milano | 

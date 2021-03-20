@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339639"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalära uttryck i Azure Cosmos DB SQL-frågor
@@ -57,7 +57,7 @@ ms.locfileid: "93339639"
 - `input_alias`  
   
    Representerar ett värde som definieras av `input_alias` introduceraren i- `FROM` satsen.  
-  Det här värdet är inte **odefinierat** – **odefinierade** värden i inaktuella inaktuella värden hoppas över.  
+  Det här värdet är inte **odefinierat** –**odefinierade** värden i inaktuella inaktuella värden hoppas över.  
   
 - `<scalar_expression>.property_name`  
   

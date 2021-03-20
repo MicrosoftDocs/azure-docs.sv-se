@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur en labb konto administratör kan l�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444207"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Tillåt labb skapare att välja plats för labbet i Azure Lab Services
@@ -16,7 +16,7 @@ I Azure Lab Services kan en labb konto ägare tillåta labb skapare (lärare) at
 Som labb konto ägare kan du välja alternativet **Tillåt labb skapare att välja labb plats** när du skapar ett labb konto och när du har skapat labb kontot (eller ett befintligt labb konto). 
 
 ## <a name="at-the-time-of-lab-account-creation"></a>När labb kontot skapas
-När du skapar ett labb konto ser du det här alternativet på den första skärmen (fliken**grundläggande** ). 
+När du skapar ett labb konto ser du det här alternativet på den första skärmen (fliken **grundläggande** ). 
 
 ![Aktivera alternativet vid tidpunkten för att skapa labbet](./media/allow-lab-creator-pick-lab-location/create-lab-account.png)
 

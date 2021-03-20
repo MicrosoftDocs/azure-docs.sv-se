@@ -4,10 +4,10 @@ description: Jämför Azure DevTest Labs och Azure Lab Services.
 ms.topic: overview
 ms.date: 06/26/2020
 ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480090"
 ---
 # <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Jämför Azure DevTest Labs och Azure Lab Services
@@ -66,9 +66,9 @@ Följande avsnitt innehåller mer information om dessa labb.
 ## <a name="managed-lab-types"></a>Hanterade labbtyper
 Med Azure Lab Services kan du skapa laboratorier vars infrastruktur hanteras av Azure. I den här artikeln kallas de för hanterade labbtyper. Hanterade labbtyper erbjuder olika typer av labb som passar dina specifika behov. Den enda hanterade labbtypen som stöds för närvarande är **klassrumslabb**. 
 
-Med hanterade labbtyper kommer du igång direkt med minimal konfigurering. Tjänsten hanterar all infrastrukturhantering för labbet, från att skapa virtuella datorer till att hantera fel och skala infrastrukturen.För att kunna skapa en hanterad labbtyp, till exempel ett klassrumslabb, måste du först skapa ett labbkonto för din organisation. Labbkontot fungerar som det centrala kontot där alla labb i organisationen hanteras. 
+Med hanterade labbtyper kommer du igång direkt med minimal konfigurering. Tjänsten hanterar all infrastrukturhantering för labbet, från att skapa virtuella datorer till att hantera fel och skala infrastrukturen. För att kunna skapa en hanterad labbtyp, till exempel ett klassrumslabb, måste du först skapa ett labbkonto för din organisation. Labbkontot fungerar som det centrala kontot där alla labb i organisationen hanteras. 
 
-När du skapar och använder Azure-resurser i dessa hanterade labbtyper skapar och hanterar tjänsten resurser i interna Microsoft-prenumerationer. De skapas inte i din egen Azure-prenumeration. Tjänsten håller reda på användningen av dessa resurser i interna Microsoft-prenumerationer. Denna användning faktureras tillbaka till din Azure-prenumeration som innehåller labbkontot.   
+När du skapar och använder Azure-resurser i dessa hanterade labbtyper skapar och hanterar tjänsten resurser i interna Microsoft-prenumerationer. De skapas inte i din egen Azure-prenumeration. Tjänsten håller reda på användningen av dessa resurser i interna Microsoft-prenumerationer. Denna användning faktureras tillbaka till din Azure-prenumeration som innehåller labbkontot.   
 
 Här följer några av **användningsfallen för hanterade labbtyper**: 
 
@@ -79,7 +79,7 @@ Här följer några av **användningsfallen för hanterade labbtyper**:
 
 
 ## <a name="devtest-labs"></a>DevTest Labs
-Du kan ha scenarier där du vill hantera hela infrastrukturen och konfigurationen själv, inom ramarna för din egen prenumeration. Om du vill göra det kan du skapa ett labb med Azure DevTest Labs i Azure-portalen.För de här labben behöver du inte skapa ett labbkonto. De här labben visas inte på labbkontot (som finns till för de hanterade labbtyperna).  
+Du kan ha scenarier där du vill hantera hela infrastrukturen och konfigurationen själv, inom ramarna för din egen prenumeration. Om du vill göra det kan du skapa ett labb med Azure DevTest Labs i Azure-portalen. För de här labben behöver du inte skapa ett labbkonto. De här labben visas inte på labbkontot (som finns till för de hanterade labbtyperna).  
 
 Här följer några **användnings fall för att använda DevTest Labs**: 
 
@@ -96,10 +96,10 @@ I följande tabell jämförs två typer av labb som stöds av Azure Lab Services
 
 | Funktioner | Hanterade labbtyper | DevTest Labs |
 | -------- | ----------------- | ---------- |
-| Hantering av Azure-infrastrukturen i labbet |  Hanteras automatiskt av tjänsten | Du hanterar på egen hand  |
-| Inbyggd motståndskraft mot infrastruktursproblem | Hanteras automatiskt av tjänsten | Du hanterar på egen hand  |
+| Hantering av Azure-infrastrukturen i labbet |  Hanteras automatiskt av tjänsten | Du hanterar på egen hand  |
+| Inbyggd motståndskraft mot infrastruktursproblem | Hanteras automatiskt av tjänsten | Du hanterar på egen hand  |
 | Prenumerationshantering | Tjänsten hanterar tilldelning av resurser i Microsoft-prenumerationer som stöder tjänsten. Skalning hanteras automatiskt av tjänsten | Du hanterar det på egen hand i din egen Azure-prenumeration. Ingen automatisk skalning av prenumerationer. |
-| Azure Resource Manager-distribution i labbet | Inte tillgängligt | Tillgänglig |
+| Azure Resource Manager-distribution i labbet | Inte tillgängligt | Tillgänglig |
 
 ## <a name="next-steps"></a>Nästa steg
 
