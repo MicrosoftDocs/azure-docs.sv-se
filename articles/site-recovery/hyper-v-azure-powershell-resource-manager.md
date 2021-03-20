@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132512"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurera haveriberedskap till Azure för virtuella Hyper-V-datorer med PowerShell och Azure Resource Manager
@@ -59,7 +59,7 @@ Dessutom har det särskilda exemplet som beskrivs i den här artikeln följande 
    Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices
    ```
 
-1. Kontrol lera att **RegistrationState** är inställt på **registrerad**i kommandot utdata. du kan gå vidare till steg 2. Annars bör du registrera den saknade providern i din prenumeration genom att köra följande kommandon:
+1. Kontrol lera att **RegistrationState** är inställt på **registrerad** i kommandot utdata. du kan gå vidare till steg 2. Annars bör du registrera den saknade providern i din prenumeration genom att köra följande kommandon:
 
    ```azurepowershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices

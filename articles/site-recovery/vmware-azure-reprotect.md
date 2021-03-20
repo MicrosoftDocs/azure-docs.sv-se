@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89441501"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Skydda datorer igen från Azure till lokalt
@@ -60,8 +60,8 @@ Aktivera skydd på följande sätt:
 
 1. Välj **valv**  >  **replikerade objekt**. Högerklicka på den virtuella datorn som har redundansväxlats och välj sedan **skydda igen**. Eller välj datorn från kommando knapparna och välj sedan **skydda igen**.
 2. Kontrol lera att skydds riktningen för **Azure till lokal** riktning är vald.
-3. I **huvud mål server** och **processerver**väljer du den lokala huvud mål servern och processervern.  
-4. För **data lager**väljer du det data lager som du vill återställa diskarna till lokalt. Det här alternativet används när den lokala virtuella datorn tas bort och du måste skapa nya diskar. Det här alternativet ignoreras om diskarna redan finns. Du måste fortfarande ange ett värde.
+3. I **huvud mål server** och **processerver** väljer du den lokala huvud mål servern och processervern.  
+4. För **data lager** väljer du det data lager som du vill återställa diskarna till lokalt. Det här alternativet används när den lokala virtuella datorn tas bort och du måste skapa nya diskar. Det här alternativet ignoreras om diskarna redan finns. Du måste fortfarande ange ett värde.
 5. Välj lagrings enhet.
 6. Failback-principen väljs automatiskt.
 7. Välj **OK** för att starta skyddet.

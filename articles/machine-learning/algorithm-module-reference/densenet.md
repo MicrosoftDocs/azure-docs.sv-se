@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421336"
 ---
 # <a name="densenet"></a>DenseNet
@@ -54,7 +54,7 @@ När pipeline-körningen har slutförts ska du använda modellen för att skapa 
 
 ###  <a name="module-parameters"></a>Parametrar för modul  
 
-| Name             | Intervall | Typ    | Standard     | Description                              |
+| Name             | Intervall | Typ    | Standardvärde     | Beskrivning                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modellnamn       | Valfri   | Läge    | densenet201 | Namn på en viss DenseNet-struktur     |
 | Tränats       | Valfri   | Boolesk | Sant        | Om du vill använda en förtränad modell på ImageNet |
@@ -62,7 +62,7 @@ När pipeline-körningen har slutförts ska du använda modellen för att skapa 
 
 ###  <a name="output"></a>Utdata  
 
-| Namn            | Typ                    | Description                              |
+| Namn            | Typ                    | Beskrivning                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Modell som inte är tränad | UntrainedModelDirectory | En DenseNet modell som kan anslutas till träna Pytorch-modellen. |
 

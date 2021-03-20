@@ -11,10 +11,10 @@ ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953363"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Översikt över princip nycklar i Azure Active Directory B2C
@@ -39,8 +39,8 @@ Resursen på den översta nivån för princip nycklar i Azure AD B2C är behåll
 | Attribut |  Obligatorisk | Kommentarer |
 | --- | --- |--- |
 | `use` | Ja | Användning: identifierar den avsedda användningen av den offentliga nyckeln. Kryptera data `enc` eller verifiera signaturen på data `sig` .|
-| `nbf`| Nej | Datum och tid för aktivering. |
-| `exp`| Nej | Förfallo datum och-tid. |
+| `nbf`| Inga | Datum och tid för aktivering. |
+| `exp`| Inga | Förfallo datum och-tid. |
 
 Vi rekommenderar att du ställer in värdena för nyckel aktivering och förfallo datum enligt dina PKI-standarder. Du kan behöva rotera certifikaten regelbundet för säkerhets-eller princip orsaker. Du kan till exempel ha en princip för att rotera alla dina certifikat varje år.
 

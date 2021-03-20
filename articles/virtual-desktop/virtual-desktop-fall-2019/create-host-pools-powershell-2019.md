@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88003546"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Skapa en värdbaserad pool i Windows Virtual Desktop (klassisk) med PowerShell
@@ -82,7 +82,7 @@ För att lyckas med domän koppling gör du följande på varje virtuell dator:
 
 1. [Anslut till den virtuella datorn](../../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) med de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 2. Starta **kontroll panelen** på den virtuella datorn och välj **system**.
-3. Välj **dator namn**, Välj **ändra inställningar**och välj sedan **ändra...**
+3. Välj **dator namn**, Välj **ändra inställningar** och välj sedan **ändra...**
 4. Välj **domän** och ange sedan Active Directory domän i det virtuella nätverket.
 5. Autentisera med ett domän konto som har behörighet att ansluta till datorer med domän anslutning.
 
@@ -98,11 +98,11 @@ Registrera Windows-agenter för virtuella skriv bord genom att göra följande p
 1. [Anslut till den virtuella datorn](../../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) med de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 2. Ladda ned och installera Windows-agenten för virtuella skriv bord.
    - Hämta [Windows-agenten för virtuella skriv bord](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
-   - Högerklicka på det nedladdade installations programmet, Välj **Egenskaper**, Välj **avblockera**och välj sedan **OK**. Detta gör att systemet kan lita på installations programmet.
+   - Högerklicka på det nedladdade installations programmet, Välj **Egenskaper**, Välj **avblockera** och välj sedan **OK**. Detta gör att systemet kan lita på installations programmet.
    - Kör installationsprogrammet. När du uppmanas att ange registrerings-token anger du det värde som du fick från cmdleten **export-RdsRegistrationInfo** .
 3. Ladda ned och installera Windows Virtual Desktop agent start program.
    - Hämta [Start programmet för Windows Virtual Desktop agent](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
-   - Högerklicka på det nedladdade installations programmet, Välj **Egenskaper**, Välj **avblockera**och välj sedan **OK**. Detta gör att systemet kan lita på installations programmet.
+   - Högerklicka på det nedladdade installations programmet, Välj **Egenskaper**, Välj **avblockera** och välj sedan **OK**. Detta gör att systemet kan lita på installations programmet.
    - Kör installationsprogrammet.
 
 >[!IMPORTANT]

@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 author: SnehaGunda
 ms.author: sngun
 ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081849"
 ---
 # <a name="system-document-properties"></a>System dokument egenskaper
@@ -35,7 +35,7 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 Om insamlingen av dokument har förfallit och dokument har en ```ttl``` egenskap som har angetts för dem, blir den här egenskapen tillgänglig i Gremlin Traversal som en vanlig hörn-eller kant egenskap. ```ProjectionStrategy``` är inte nödvändigt för att aktivera exponering för TTL (Time to Live).
 
-Hörn som skapats med bläddringen nedan tas automatiskt bort efter **123 sekunder** .
+Hörn som skapats med bläddringen nedan tas automatiskt bort efter **123 sekunder**.
 
 ```
 g.addV('vertex-one').property('ttl', 123)

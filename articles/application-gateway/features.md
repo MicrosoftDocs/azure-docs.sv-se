@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355745"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-funktioner
@@ -149,13 +149,13 @@ Mer information finns i [skriva om HTTP-sidhuvuden och URL: en](rewrite-http-hea
 
 Application Gateway Standard_v2 kan konfigureras för automatisk skalning eller distributioner med fast storlek. V2-SKU: n erbjuder inte olika instans storlekar. Mer information om v2-prestanda och priser finns i [autoskalning v2](application-gateway-autoscaling-zone-redundant.md) och [förstå prissättning](understanding-pricing.md).
 
-Application Gateway standard (v1) erbjuds i tre storlekar: **liten**, **medel**och **stor**. Smål instansstorlekar är avsedda för utvecklings- och testningsscenarier.
+Application Gateway standard (v1) erbjuds i tre storlekar: **liten**, **medel** och **stor**. Smål instansstorlekar är avsedda för utvecklings- och testningsscenarier.
 
 En fullständig lista över gränserna för programgateways finns i avsnittet om [gränser för Application Gateway-tjänsten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
 I följande tabell visas ett genomsnittligt prestanda data flöde för varje Application Gateway v1-instans med SSL-avlastning aktive rad:
 
-| Genomsnittligt sidsvarsstorlek för serverdel | Liten | Medium | Stor |
+| Genomsnittligt sidsvarsstorlek för serverdel | Liten | Medel | Stor |
 | --- | --- | --- | --- |
 | 6 kB |7.5 Mbit/s |13 Mbit/s |50 Mbit/s |
 | 100 kB |35 Mbit/s |100 Mbit/s |200 Mbit/s |

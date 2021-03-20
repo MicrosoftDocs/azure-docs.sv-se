@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89418892"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Anslut Azure VPN-gatewayer till flera lokala principbaserade VPN-enheter med hjälp av PowerShell
@@ -38,7 +38,7 @@ För närvarande stöder Azure båda lägena för VPN-gatewayer: routning-basera
 
 | Kategori | Principbaserad VPN Gateway | Routningsbaserad VPN Gateway | Routningsbaserad VPN Gateway |
 | -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
-| **Azure Gateway-SKU**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
+| **Azure Gateway-SKU**    | Grundläggande                       | Grundläggande                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE-version**          | IKEv1                       | IKEv2                            | IKEv1 och IKEv2                         |
 | **Högsta antal S2S-anslutningar** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |

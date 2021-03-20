@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100517594"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Omträna och distribuera en maskin inlärnings modell
@@ -66,7 +66,7 @@ Använd följande steg för att anropa API: erna för omträning:
 1. Klicka på den webb tjänst som du arbetar med.
 1. Klicka på **förbruka**.
 1. Klicka på **batch** i avsnittet **exempel kod** längst ned på sidan **förbrukare** .
-1. Kopiera exempel koden C# för batch-körning och klistra in den i Program.cs-filen. Se till att namn området förblir intakt.
+1. Kopiera exempel koden C# för batch-körning och klistra in den i filen program. cs. Se till att namn området förblir intakt.
 
 Lägg till NuGet-paketet Microsoft. ASPNET. WebApi. client enligt vad som anges i kommentarerna. Om du vill lägga till referensen i Microsoft.WindowsAzure.Storage.dll kan du behöva installera [klient biblioteket för Azure Storage-tjänster](https://www.nuget.org/packages/WindowsAzure.Storage).
 

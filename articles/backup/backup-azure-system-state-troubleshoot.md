@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376289"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Felsöka säkerhets kopiering av system tillstånd
@@ -22,7 +22,7 @@ Vi rekommenderar att du utför följande verifierings steg innan du börjar fels
 - [Se till att Microsoft Azure Recovery Services (MARS) Agent är uppdaterad](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Se till att det finns en nätverks anslutning mellan MARS-agenten och Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Kontrollera att Microsoft Azure Recovery Services körs (i tjänstkonsolen). Om det behövs startar du om och försöker igen
-- [Kontrollera att det finns 5–10 % ledigt utrymme i den tillfälliga mappen](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Se till att det finns 5-10% ledigt volym utrymme på platsen för mappens virtuella platser](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Kontrollera att inte andra processer eller antivirusprogram stör Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [Schemalagd säkerhetskopiering misslyckas, men manuell säkerhetskopiering fungerar](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - Kontrollera att ditt operativsystem har de senaste uppdateringarna
@@ -52,7 +52,7 @@ Se till att Windows Server Backup är installerat och aktiverat på servern. Om 
 Get-WindowsFeature Windows-Server-Backup
  ```
 
-Om utdata visar **installations status** som **tillgänglig**innebär det att Windows Server Backup-funktionen är tillgänglig för installationen men inte är installerad på servern. Men om Windows Server Backup inte är installerat kan du använda någon av metoderna nedan för att installera den.
+Om utdata visar **installations status** som **tillgänglig** innebär det att Windows Server Backup-funktionen är tillgänglig för installationen men inte är installerad på servern. Men om Windows Server Backup inte är installerat kan du använda någon av metoderna nedan för att installera den.
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>Metod 1: installera Windows Server Backup med PowerShell
 
@@ -66,7 +66,7 @@ Kör följande kommando för att installera Windows Server Backup med PowerShell
 
 Utför följande steg för att installera Windows Server Backup med hjälp av Serverhanteraren:
 
-1. I **Server hanteraren**väljer du **Lägg till roller och funktioner**. **Guiden Lägg till roller och funktioner** visas.
+1. I **Server hanteraren** väljer du **Lägg till roller och funktioner**. **Guiden Lägg till roller och funktioner** visas.
 
     ![Instrumentpanel](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 

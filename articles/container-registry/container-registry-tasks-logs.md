@@ -4,10 +4,10 @@ description: Visa och hantera körnings loggar som genereras av ACR-aktiviteter.
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027184"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Visa och hantera aktivitets körnings loggar
@@ -65,14 +65,14 @@ Om en aktivitet utlöses automatiskt, till exempel vid en uppdatering av en käl
 Så här visar du körnings loggar i portalen:
 
 1. Navigera till behållar registret.
-1. I **tjänster** väljer du **aktiviteter**  >  **körs** .
+1. I **tjänster** väljer du **aktiviteter**  >  **körs**.
 1. Välj ett **körnings-ID** för att Visa körnings status och körnings loggar. Loggen innehåller samma information som en strömmande logg, om en sådan skapas.
 
 ![Visa aktivitets körning inloggnings Portal](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 Om du vill visa en logg med hjälp av Azure CLI kör du [AZ ACR-aktivitets loggar](/cli/azure/acr/task#az-acr-task-logs) och anger ett körnings-ID, ett uppgifts namn eller en angiven avbildning som skapas av en build-uppgift. Om ett aktivitets namn anges visar kommandot loggen för den senaste skapade körningen.
 
-I följande exempel visas loggen för funktionen kör med ID *CF4* :
+I följande exempel visas loggen för funktionen kör med ID *CF4*:
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \

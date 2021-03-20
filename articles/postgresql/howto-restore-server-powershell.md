@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489769"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Säkerhetskopiera och återställa en Azure Database for PostgreSQL-server med hjälp av PowerShell
@@ -41,7 +41,7 @@ När servern har skapats kan du välja mellan att konfigurera servern för antin
 > [!NOTE]
 > När en server har skapats har den typ av redundans som den har, geografiskt redundant vs lokalt redundant, inte ändrats.
 
-När du skapar en server via `New-AzPostgreSqlServer` kommandot, bestämmer **GeoRedundantBackup** -parametern säkerhets kopians redundans alternativ. Om **aktive rad**tas geo-redundanta säkerhets kopieringar. Eller om den är **inaktive rad**tas lokalt redundanta säkerhets kopieringar.
+När du skapar en server via `New-AzPostgreSqlServer` kommandot, bestämmer **GeoRedundantBackup** -parametern säkerhets kopians redundans alternativ. Om **aktive rad** tas geo-redundanta säkerhets kopieringar. Eller om den är **inaktive rad** tas lokalt redundanta säkerhets kopieringar.
 
 Kvarhållningsperioden för säkerhets kopior anges av parametern **BackupRetentionDay** .
 
@@ -78,7 +78,7 @@ Parameter uppsättningen **PointInTimeRestore** för `Restore-AzPostgreSqlServer
 | Inställning | Föreslaget värde | Beskrivning  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där käll servern finns.  |
-| Namn | mydemoserver-restored | Namnet på den nya server som skapas med kommandot restore. |
+| Name | mydemoserver-restored | Namnet på den nya server som skapas med kommandot restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Välj en tidpunkt för återställning. Datumet och tiden måste finnas inom källserverns kvarhållningsperiod för säkerhetskopiering. Använd ISO8601 datum-och tids format. Du kan till exempel använda din egen lokala tidszon som **2020-03-13T05:59:00-08:00**. Du kan också använda formatet UTC-Zulu, till exempel **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Använd punkt-i-Time-läge för att återställa. |
 
@@ -120,8 +120,8 @@ Parameter **uppsättningen för den här** `Restore-AzPostgreSqlServer` cmdleten
 | Inställning | Föreslaget värde | Beskrivning  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Namnet på den resurs grupp som den nya servern tillhör.|
-|Namn | mydemoserver – omåterställd | Namnet på den nya servern. |
-|Plats | USA, östra | Platsen för den nya servern. |
+|Name | mydemoserver – omåterställd | Namnet på den nya servern. |
+|Location | USA, östra | Platsen för den nya servern. |
 |UseGeoRestore | `<SwitchParameter>` | Använd geo-läge för att återställa. |
 
 När du skapar en ny server med geo Restore ärver den samma lagrings storlek och pris nivå som käll servern om inte parametern **SKU** anges.

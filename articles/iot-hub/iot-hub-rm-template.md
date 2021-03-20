@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: db4b676e65d36a9476fd72b66cc8ccfa38af4d85
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144494"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Skapa en IoT-hubb med Azure Resource Manager mall (.NET)
@@ -43,11 +43,11 @@ För att göra den här självstudien behöver du följande:
 
 2. I Solution Explorer högerklickar du på projektet och klickar sedan på **Hantera NuGet-paket**.
 
-3. I NuGet Package Manager markerar du **Inkludera för hands version**och på sidan **Bläddra** i Sök efter **Microsoft. Azure. Management. ResourceManager**. Välj paketet, klicka på **Installera**, klicka på **OK**i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licenserna.
+3. I NuGet Package Manager markerar du **Inkludera för hands version** och på sidan **Bläddra** i Sök efter **Microsoft. Azure. Management. ResourceManager**. Välj paketet, klicka på **Installera**, klicka på **OK** i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licenserna.
 
-4. Sök efter **Microsoft. IdentityModel. clients. ActiveDirectory**i NuGet Package Manager.  Klicka på **Installera**, klicka på **OK**i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licensen.
+4. Sök efter **Microsoft. IdentityModel. clients. ActiveDirectory** i NuGet Package Manager.  Klicka på **Installera**, klicka på **OK** i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licensen.
 
-5. I Program.cs ersätter du de befintliga **using** -satserna med följande kod:
+5. Ersätt den befintliga **using** -satserna med följande kod i program. CS:
 
     ```csharp
     using System;
@@ -57,7 +57,7 @@ För att göra den här självstudien behöver du följande:
     using Microsoft.Rest;
     ```
 
-6. I Program.cs lägger du till följande statiska variabler som ersätter plats hållar värden. Du har gjort en anteckning om **ApplicationId**, **SubscriptionId**, **TenantId**och **lösen ord** tidigare i den här självstudien. **Ditt Azure Storage konto namn** är namnet på det Azure Storage-konto där du lagrar Azure Resource Manager mallfiler. **Resurs gruppens namn** är namnet på den resurs grupp som du använder när du skapar IoT-hubben. Namnet kan vara en befintlig eller ny resurs grupp. **Distributions namnet** är ett namn för distributionen, t. ex. **Deployment_01**.
+6. I program. cs lägger du till följande statiska variabler som ersätter plats hållar värden. Du har gjort en anteckning om **ApplicationId**, **SubscriptionId**, **TenantId** och **lösen ord** tidigare i den här självstudien. **Ditt Azure Storage konto namn** är namnet på det Azure Storage-konto där du lagrar Azure Resource Manager mallfiler. **Resurs gruppens namn** är namnet på den resurs grupp som du använder när du skapar IoT-hubben. Namnet kan vara en befintlig eller ny resurs grupp. **Distributions namnet** är ett namn för distributionen, t. ex. **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -75,7 +75,7 @@ För att göra den här självstudien behöver du följande:
 
 Använd en JSON-mall och parameter fil för att skapa en IoT-hubb i din resurs grupp. Du kan också använda en Azure Resource Manager mall för att göra ändringar i en befintlig IoT-hubb.
 
-1. I Solution Explorer högerklickar du på projektet, klickar på **Lägg till**och sedan på **nytt objekt**. Lägg till en JSON-fil med namnet **template.jspå** i projektet.
+1. I Solution Explorer högerklickar du på projektet, klickar på **Lägg till** och sedan på **nytt objekt**. Lägg till en JSON-fil med namnet **template.jspå** i projektet.
 
 2. Om du vill lägga till en standard IoT-hubb till regionen **USA, östra** , ersätter du innehållet i **template.jspå** med följande resurs definition. För den aktuella listan över regioner som stöder IoT Hub se [Azure-status][lnk-status]:
 
@@ -113,7 +113,7 @@ Använd en JSON-mall och parameter fil för att skapa en IoT-hubb i din resurs g
     }
     ```
 
-3. I Solution Explorer högerklickar du på projektet, klickar på **Lägg till**och sedan på **nytt objekt**. Lägg till en JSON-fil med namnet **parameters.jspå** i projektet.
+3. I Solution Explorer högerklickar du på projektet, klickar på **Lägg till** och sedan på **nytt objekt**. Lägg till en JSON-fil med namnet **parameters.jspå** i projektet.
 
 4. Ersätt innehållet i **parameters.jspå** med följande parameter information som anger ett namn för den nya IoT-hubben, till exempel **{dina initialer} mynewiothub**. IoT Hub-namnet måste vara globalt unikt så att det ska innehålla ditt namn eller dina initialer:
 
@@ -128,15 +128,15 @@ Använd en JSON-mall och parameter fil för att skapa en IoT-hubb i din resurs g
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. I **Server Explorer**ansluter du till din Azure-prenumeration och i ditt Azure Storage-konto skapar du en behållare som heter **templates**. I panelen **Egenskaper** anger du **offentlig Läs** behörighet för **mall** -behållaren till **BLOB**.
+5. I **Server Explorer** ansluter du till din Azure-prenumeration och i ditt Azure Storage-konto skapar du en behållare som heter **templates**. I panelen **Egenskaper** anger du **offentlig Läs** behörighet för **mall** -behållaren till **BLOB**.
 
-6. I **Server Explorer**högerklickar du på behållaren **mallar** och klickar sedan på **Visa BLOB-behållare**. Klicka på knappen **Ladda upp BLOB** , Välj de två filerna **parameters.jspå** och **templates.jspå**och klicka sedan på **Öppna** för att överföra JSON-filerna till behållaren **mallar** . URL: erna för de blobbar som innehåller JSON-data är:
+6. I **Server Explorer** högerklickar du på behållaren **mallar** och klickar sedan på **Visa BLOB-behållare**. Klicka på knappen **Ladda upp BLOB** , Välj de två filerna **parameters.jspå** och **templates.jspå** och klicka sedan på **Öppna** för att överföra JSON-filerna till behållaren **mallar** . URL: erna för de blobbar som innehåller JSON-data är:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. Lägg till följande metod i Program.cs:
+7. Lägg till följande metod i program. CS:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)

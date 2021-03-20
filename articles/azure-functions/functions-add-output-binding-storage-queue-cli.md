@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 6d0d559579e841553e04c26bf4dcc78934de3e95
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94920210"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Ansluta Azure Functions till Azure Storage med hjälp av kommando rads verktyg
@@ -122,7 +122,7 @@ mvn azure-functions:deploy
 
     ![Resultatet av funktionen körs på Azure i en webbläsare](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
-    # <a name="curl"></a>[klammerparentes](#tab/curl)
+    # <a name="curl"></a>[curl](#tab/curl)
     
     Kör [`curl`](https://curl.haxx.se/) med **anrops-URL: en** och Lägg till parametern `&name=Functions` . Kommandots utdata ska vara texten, "Hello Functions".
     

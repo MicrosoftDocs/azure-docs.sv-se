@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171575"
 ---
 # <a name="event-schemas"></a>Händelsescheman
@@ -22,7 +22,7 @@ Event Grid-modulen accepterar och levererar händelser i JSON-format. Det finns 
 * **CustomSchema**
 * **CloudEventSchema**
 
-Du kan konfigurera det schema som en utgivare måste följa när ämnet skapas. Om inget värde anges används **EventGridSchema**som standard. Händelser som inte följer det förväntade schemat avvisas.
+Du kan konfigurera det schema som en utgivare måste följa när ämnet skapas. Om inget värde anges används **EventGridSchema** som standard. Händelser som inte följer det förväntade schemat avvisas.
 
 Prenumeranter kan också konfigurera det schema som de vill att de levererade händelserna ska skickas till. Om inget värde anges är standardvärdet för ämnets schema.
 Schemat för prenumerations leverans måste matcha dess ämnes schema. 
@@ -52,10 +52,10 @@ EventGrid-schemat består av en uppsättning obligatoriska egenskaper som en pub
 
 Alla händelser har följande data på översta nivån:
 
-| Egenskap | Typ | Krävs | Beskrivning |
+| Egenskap | Typ | Obligatorisk | Beskrivning |
 | -------- | ---- | ----------- |-----------
 | ämne | sträng | No | Ska matcha avsnittet som det publiceras på. Event Grid fyller i den med namnet på ämnet som det publiceras på om det inte har angetts. |
-| motiv | sträng | Ja | Utgivardefinierad sökväg till händelseobjektet. |
+| Ämne | sträng | Ja | Utgivardefinierad sökväg till händelseobjektet. |
 | Händelsetyp | sträng | Ja | Händelse typ för den här händelse källan, till exempel BlobCreated. |
 | Händelsetid | sträng | Ja | Tiden då händelsen genereras baserat på providerns UTC-tid. |
 | ID | sträng | No | Unikt ID för händelsen. |

@@ -7,10 +7,10 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88002579"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Skapa en profilcontainer för en värdpool med hjälp av en filresurs
@@ -34,7 +34,7 @@ När du har skapat den virtuella datorn ansluter du den till domänen genom att 
 
 1. [Anslut till den virtuella datorn](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) med de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 2. Starta **kontroll panelen** på den virtuella datorn och välj **system**.
-3. Välj **dator namn**, Välj **ändra inställningar**och välj sedan **ändra...**
+3. Välj **dator namn**, Välj **ändra inställningar** och välj sedan **ändra...**
 4. Välj **domän** och ange sedan Active Directory domän i det virtuella nätverket.
 5. Autentisera med ett domän konto som har behörighet att ansluta till datorer med domän anslutning.
 
@@ -45,10 +45,10 @@ Här följer allmänna anvisningar om hur du förbereder en virtuell dator så a
 1. Lägg till den virtuella Windows-skrivbordet Active Directory användare i en [Active Directory säkerhets grupp](/windows/security/identity-protection/access-control/active-directory-security-groups/). Den här säkerhets gruppen används för att autentisera virtuella Windows-skrivbordet användare till den virtuella dator resursen som du nyss skapade.
 2. [Anslut till den virtuella datorn för fil resursen](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine).
 3. På den virtuella datorn fil resurs skapar du en mapp på **C-enheten** som ska användas som profil resurs.
-4. Högerklicka på den nya mappen, Välj **Egenskaper**, Välj **delning**och välj sedan **Avancerad delning..**..
+4. Högerklicka på den nya mappen, Välj **Egenskaper**, Välj **delning** och välj sedan **Avancerad delning..**..
 5. Välj **dela den här mappen**, Välj **behörigheter..**. och välj sedan **Lägg till.**...
 6. Sök efter säkerhets gruppen där du lade till de virtuella Windows-användarna och kontrol lera att gruppen har **fullständig behörighet**.
-7. När du har lagt till säkerhets gruppen högerklickar du på mappen, väljer **Egenskaper**, väljer **delning**och kopierar sedan **nätverks Sök vägen** för senare användning.
+7. När du har lagt till säkerhets gruppen högerklickar du på mappen, väljer **Egenskaper**, väljer **delning** och kopierar sedan **nätverks Sök vägen** för senare användning.
 
 Mer information om behörigheter finns i FSLogix- [dokumentationen](/fslogix/fslogix-storage-config-ht/).
 

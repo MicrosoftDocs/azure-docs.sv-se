@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489752"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Flytta en Azure Database för Azure Database for PostgreSQL-enskild server till en annan region med hjälp av Azure Portal
@@ -33,10 +33,10 @@ Du kan använda en Azure Database for PostgreSQL [över flera regioner](concepts
 
 Gör så här för att förbereda käll servern för replikering med hjälp av Azure Portal: 
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Välj den befintliga Azure Database for PostgreSQL-server som du vill använda som käll Server. Den här åtgärden öppnar **översikts** sidan.
-1. Från menyn på servern väljer du **replikering**. Om support för Azure Replication har angetts till minst **replik**kan du skapa Läs repliker. 
-1. Om stöd för Azure Replication inte är inställt på minst **replik**anger du det. Välj **Spara**.
+1. Från menyn på servern väljer du **replikering**. Om support för Azure Replication har angetts till minst **replik** kan du skapa Läs repliker. 
+1. Om stöd för Azure Replication inte är inställt på minst **replik** anger du det. Välj **Spara**.
 1. Starta om servern för att tillämpa ändringen genom att välja **Ja**.
 1. Du får två Azure Portal-meddelanden när åtgärden har slutförts. Det finns ett meddelande om att uppdatera Server parametern. Det finns ett annat meddelande för omstart av servern som följer omedelbart.
 1. Uppdatera den Azure Portal sidan om du vill uppdatera verktygsfältet replikering. Nu kan du skapa Läs repliker för den här servern.

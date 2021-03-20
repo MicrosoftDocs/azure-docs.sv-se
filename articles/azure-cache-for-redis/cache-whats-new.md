@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
 ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91492541"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Vad är nytt i Azure cache för Redis
@@ -32,8 +32,8 @@ Följande tabell innehåller information om de certifikat som har registrerats. 
 
 | CA-typ | Aktuellt | Post valsning (12 oktober 2020) | Action |
 | ----- | ----- | ----- | ----- |
-| Rot | Tumavtryck: d4de20d05e66fc53fe1a50882c78db2852cae474<br><br> Utgångs datum: måndag, 12 maj 2025, 4:59:00 PM<br><br> Ämnesnamn:<br> CN = Baltimore CyberTrust-rot<br> OU = CyberTrust<br> O = Baltimore<br> C = IE | Ändra inte | Inget |
-| Mellanprodukter | Tumavtrycken<br> CN = Microsoft IT TLS CA 1<br> Tumavtryck: 417e225037fbfaa4f95761d5ae729e1aea7e3a42<br><br> CN = Microsoft IT TLS CA 2<br> Tumavtryck: 54d9d20239080c32316ed9ff980a48988f4adf2d<br><br> CN = Microsoft IT TLS CA 4<br> Tumavtryck: 8a38755d0996823fe8fa3116a277ce446eac4e99<br><br> CN = Microsoft IT TLS CA 5<br> Tumavtryck: Ad898ac73df333eb60ac1f5fc6c4b2219ddb79b7<br><br> Förfallo datum: fredag 20 maj 2024 5:52:38 AM<br><br> Ämnesnamn:<br> OU = Microsoft IT<br> O = Microsoft Corporation<br> L = Redmond<br> S = Washington<br> C = US<br> | Tumavtrycken<br> CN = Microsoft RSA TLS CA 01<br> Tumavtryck: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a<br><br> CN = Microsoft RSA TLS CA 02<br> Tumavtryck: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75<br><br> Förfallo datum: tisdag 8 oktober 2024 12:00:00 AM;<br><br> Ämnesnamn:<br> O = Microsoft Corporation<br> C = US<br> | Krävs |
+| Rot | Tumavtryck: d4de20d05e66fc53fe1a50882c78db2852cae474<br><br> Utgångs datum: måndag, 12 maj 2025, 4:59:00 PM<br><br> Ämnes namn:<br> CN = Baltimore CyberTrust-rot<br> OU = CyberTrust<br> O = Baltimore<br> C = IE | Ändra inte | Inget |
+| Mellanprodukter | Tumavtrycken<br> CN = Microsoft IT TLS CA 1<br> Tumavtryck: 417e225037fbfaa4f95761d5ae729e1aea7e3a42<br><br> CN = Microsoft IT TLS CA 2<br> Tumavtryck: 54d9d20239080c32316ed9ff980a48988f4adf2d<br><br> CN = Microsoft IT TLS CA 4<br> Tumavtryck: 8a38755d0996823fe8fa3116a277ce446eac4e99<br><br> CN = Microsoft IT TLS CA 5<br> Tumavtryck: Ad898ac73df333eb60ac1f5fc6c4b2219ddb79b7<br><br> Förfallo datum: fredag 20 maj 2024 5:52:38 AM<br><br> Ämnes namn:<br> OU = Microsoft IT<br> O = Microsoft Corporation<br> L = Redmond<br> S = Washington<br> C = US<br> | Tumavtrycken<br> CN = Microsoft RSA TLS CA 01<br> Tumavtryck: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a<br><br> CN = Microsoft RSA TLS CA 02<br> Tumavtryck: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75<br><br> Förfallo datum: tisdag 8 oktober 2024 12:00:00 AM;<br><br> Ämnes namn:<br> O = Microsoft Corporation<br> C = US<br> | Obligatorisk |
 
 ### <a name="what-actions-should-i-take"></a>Vilka åtgärder ska jag göra?
 

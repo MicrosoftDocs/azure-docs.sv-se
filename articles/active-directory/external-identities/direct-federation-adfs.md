@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910196"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Exempel: direkt Federation med Active Directory Federation Services (AD FS) (AD FS) (för hands version)
@@ -59,7 +59,7 @@ En AD FS server måste redan vara konfigurerad och fungerande innan du påbörja
 
 1. På AD FS-servern väljer du **verktyg**  >  **AD FS hantering**.
 2. I navigerings fönstret väljer du beskrivningar av **service**  >  **anspråks beskrivningar**.
-3. Under **åtgärder**väljer du **Lägg till anspråks Beskrivning**.
+3. Under **åtgärder** väljer du **Lägg till anspråks Beskrivning**.
 4. I fönstret **Lägg till en anspråks Beskrivning** anger du följande värden:
 
    - **Visnings namn**: beständig identifierare
@@ -73,11 +73,11 @@ En AD FS server måste redan vara konfigurerad och fungerande innan du påbörja
 
 1. På AD FS-servern går du till **verktyg**  >  **AD FS hantering**.
 2. I navigerings fönstret väljer du **förtroende relationer**  >  **förlitande part förtroenden**.
-3. Under **åtgärder**väljer du **Lägg till förtroende för förlitande part**. 
-4. I guiden Lägg till förlitande part förtroende för **Välj data källa**använder du alternativet **Importera data om den förlitande parten som publicerats online eller i ett lokalt nätverk**. Ange URL för federationsmetadata – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Lämna andra standard val. Välj **Stäng**.
+3. Under **åtgärder** väljer du **Lägg till förtroende för förlitande part**. 
+4. I guiden Lägg till förlitande part förtroende för **Välj data källa** använder du alternativet **Importera data om den förlitande parten som publicerats online eller i ett lokalt nätverk**. Ange URL för federationsmetadata – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Lämna andra standard val. Välj **Stäng**.
 5. Guiden **Redigera anspråks regler** öppnas.
-6. I guiden **Redigera anspråks regler** väljer du **Lägg till regel**. I **Välj regeltyp**väljer du **Skicka LDAP-attribut som anspråk**. Välj **Nästa**.
-7. I **Konfigurera anspråks regel**anger du följande värden: 
+6. I guiden **Redigera anspråks regler** väljer du **Lägg till regel**. I **Välj regeltyp** väljer du **Skicka LDAP-attribut som anspråk**. Välj **Nästa**.
+7. I **Konfigurera anspråks regel** anger du följande värden: 
 
    - **Namn på anspråks regel**: regel för e-postanspråk 
    - **Attributarkiv**: Active Directory 
@@ -89,8 +89,8 @@ En AD FS server måste redan vara konfigurerad och fungerande innan du påbörja
 10. Klicka på **OK**.  
 
 ### <a name="create-an-email-transform-rule"></a>Skapa en regel för e-posttransformering
-1. Gå till **Redigera anspråks regler** och klicka på **Lägg till regel**. I **Välj regeltyp**väljer du **transformera ett inkommande anspråk** och klickar på **Nästa**. 
-2. I **Konfigurera anspråks regel**anger du följande värden: 
+1. Gå till **Redigera anspråks regler** och klicka på **Lägg till regel**. I **Välj regeltyp** väljer du **transformera ett inkommande anspråk** och klickar på **Nästa**. 
+2. I **Konfigurera anspråks regel** anger du följande värden: 
 
    - **Anspråks regel namn**: e-posttransformerings regel 
    - **Inkommande anspråks typ**: e-postadress 
@@ -129,19 +129,19 @@ En AD FS server måste redan vara konfigurerad och fungerande innan du påbörja
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>Lägg till förtroende för förlitande part och anspråks regler 
 1. På AD FS-servern går du till **verktyg**  >  **AD FS hantering**. 
 1. I navigerings fönstret väljer du **förtroende relationer**  >  **förlitande part förtroenden**. 
-1. Under **åtgärder**väljer du **Lägg till förtroende för förlitande part**.  
+1. Under **åtgärder** väljer du **Lägg till förtroende för förlitande part**.  
 1. I guiden Lägg till förlitande part förtroende, för **Välj data källa**, använder du alternativet **Importera data om den förlitande parten som publicerats online eller i ett lokalt nätverk**. Ange den här URL: en för federationsmetadata: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Lämna andra standard val. Välj **Stäng**.
 1. Guiden **Redigera anspråks regler** öppnas. 
-1. I guiden **Redigera anspråks regler** väljer du **Lägg till regel**. I **Välj regeltyp**väljer du **skicka anspråk med en anpassad regel**. Välj *Nästa*. 
-1. I **Konfigurera anspråks regel**anger du följande värden:
+1. I guiden **Redigera anspråks regler** väljer du **Lägg till regel**. I **Välj regeltyp** väljer du **skicka anspråk med en anpassad regel**. Välj *Nästa*. 
+1. I **Konfigurera anspråks regel** anger du följande värden:
 
    - **Namn på anspråks regel**: utfärda oföränderligt ID  
    - **Anpassad regel**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Välj **Slutför**. 
 1. I fönstret **Redigera anspråks regler** visas den nya regeln. Klicka på **Applicera**.  
-1. I guiden **Redigera anspråks regler** väljer du **Lägg till regel**. I **typ av inslang-regel**väljer du **Skicka LDAP-attribut som anspråk**. Välj **Nästa**.
-1. I **Konfigurera anspråks regel**anger du följande värden: 
+1. I guiden **Redigera anspråks regler** väljer du **Lägg till regel**. I **typ av inslang-regel** väljer du **Skicka LDAP-attribut som anspråk**. Välj **Nästa**.
+1. I **Konfigurera anspråks regel** anger du följande värden: 
 
    - **Namn på anspråks regel**: regel för e-postanspråk  
    - **Attributarkiv**: Active Directory  

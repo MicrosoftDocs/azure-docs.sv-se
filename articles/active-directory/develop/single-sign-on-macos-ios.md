@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80881256"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Gör så här: Konfigurera SSO på macOS och iOS
@@ -137,7 +137,7 @@ do {
 > Detta är särskilt användbart om du har program som förlitar sig på att token ska fungera i bakgrunden.
 > Att dela en nyckel Ring innebär att du måste vara mycket försiktig när appen använder Microsoft Identity SDK Remove-åtgärder.
 
-Det är allt. Microsoft Identity SDK kommer nu att dela autentiseringsuppgifter för alla dina program. Konto listan kommer också att delas mellan program instanser.
+Klart! Microsoft Identity SDK kommer nu att dela autentiseringsuppgifter för alla dina program. Konto listan kommer också att delas mellan program instanser.
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>SSO via Authentication Broker på iOS
 
@@ -183,7 +183,7 @@ Följande steg är hur du aktiverar SSO med en autentiseringsprovider för din a
     }
     ```
     
-**Om du använder Xcode 11**bör du placera MSAL-återanrop i `SceneDelegate` filen i stället.
+**Om du använder Xcode 11** bör du placera MSAL-återanrop i `SceneDelegate` filen i stället.
 Om du har stöd för både UISceneDelegate och UIApplicationDelegate för kompatibilitet med äldre iOS måste MSAL-återanropet placeras i båda filerna.
 
 Mål-C:

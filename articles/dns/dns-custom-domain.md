@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487406"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Använd Azure DNS för att tillhandahålla anpassade domän inställningar för en Azure-tjänst
@@ -40,13 +40,13 @@ Gå till din DNS-zon och klicka på **+ post uppsättning**. Fyll i följande in
 
 |Egenskap  |Värde  |Beskrivning  |
 |---------|---------|---------|
-|Namn     | myfunctionapp        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
+|Name     | myfunctionapp        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
 |Typ     | CNAME        | Använd en CNAME-post med ett alias.        |
 |TTL-värde     | 1        | 1 används i 1 timme        |
 |TTL-enhet     | Tider        | Timmar används som tids mått         |
 |Alias     | adatumfunction.azurewebsites.net        | Det DNS-namn som du skapar alias för, i det här exemplet är det DNS-namnet för adatumfunction.azurewebsites.net som tillhandahålls som standard till Function-appen.        |
 
-Gå tillbaka till din Function-app, klicka på **plattforms funktioner**och under **nätverk** klickar du på **anpassade domäner**. under **anpassade värdnamn** klickar du på **+ Lägg till värdnamn**.
+Gå tillbaka till din Function-app, klicka på **plattforms funktioner** och under **nätverk** klickar du på **anpassade domäner**. under **anpassade värdnamn** klickar du på **+ Lägg till värdnamn**.
 
 På bladet **Lägg till värdnamn** anger du CNAME-posten i textfältet **hostname** och klickar på **Verifiera**. Om posten hittas visas knappen **Lägg till värdnamn** . Klicka på **Lägg till värdnamn** för att lägga till aliaset.
 
@@ -65,7 +65,7 @@ Gå till din DNS-zon och klicka på **+ post uppsättning**. Fyll i följande in
 
 |Egenskap  |Värde  |Beskrivning  |
 |---------|---------|---------|
-|Namn     | mywebserver        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
+|Name     | mywebserver        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
 |Typ     | A        | Använd en A-post eftersom resursen är en IP-adress.        |
 |TTL-värde     | 1        | 1 används i 1 timme        |
 |TTL-enhet     | Tider        | Timmar används som tids mått         |
@@ -92,7 +92,7 @@ Gå till din DNS-zon och klicka på **+ post uppsättning**. Fyll i följande in
 
 |Egenskap  |Värde  |Beskrivning  |
 |---------|---------|---------|
-|Namn     | mywebserver        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
+|Name     | mywebserver        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
 |Typ     | CNAME        | Använd en CNAME-post med ett alias. Om resursen använde en IP-adress används en A-post.        |
 |TTL-värde     | 1        | 1 används i 1 timme        |
 |TTL-enhet     | Tider        | Timmar används som tids mått         |
@@ -101,7 +101,7 @@ Gå till din DNS-zon och klicka på **+ post uppsättning**. Fyll i följande in
 
 ![skapa en CNAME-post](./media/dns-custom-domain/createcnamerecord.png)
 
-Gå tillbaka till App Service som har kon figurer ATS för det anpassade domän namnet. Klicka på **anpassade domäner**och sedan på **värd namn**. Klicka på **+ Lägg till värdnamn**om du vill lägga till en CNAME-post som du har skapat.
+Gå tillbaka till App Service som har kon figurer ATS för det anpassade domän namnet. Klicka på **anpassade domäner** och sedan på **värd namn**. Klicka på **+ Lägg till värdnamn** om du vill lägga till en CNAME-post som du har skapat.
 
 ![Skärm bild som visar knappen + Lägg till värddator namn.](./media/dns-custom-domain/figure1.png)
 
@@ -128,13 +128,13 @@ Gå till din DNS-zon och klicka på **+ post uppsättning**. Fyll i följande in
 
 |Egenskap  |Värde  |Beskrivning  |
 |---------|---------|---------|
-|Namn     | verifiera. mystorageaccount        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
+|Name     | verifiera. mystorageaccount        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
 |Typ     | CNAME        | Använd en CNAME-post med ett alias.        |
 |TTL-värde     | 1        | 1 används i 1 timme        |
 |TTL-enhet     | Tider        | Timmar används som tids mått         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Det DNS-namn som du skapar alias för, i det här exemplet är det DNS-namnet för asverify.adatumfunctiona9ed.blob.core.windows.net som anges som standard för lagrings kontot.        |
 
-Gå tillbaka till ditt lagrings konto genom att klicka på **lagrings**  >  **lagrings konton**, Välj ditt lagrings konto och klicka på **anpassad domän**. Skriv in det alias som du skapade utan prefixet för att verifiera i text rutan, markera **Använd indirekt CNAME-validering**och klicka på **Spara**. När det här steget har slutförts går du tillbaka till DNS-zonen och skapar en CNAME-post utan prefixet verify.  Efter den tidpunkten är det säkert att ta bort CNAME-posten med cdnverify-prefixet.
+Gå tillbaka till ditt lagrings konto genom att klicka på **lagrings**  >  **lagrings konton**, Välj ditt lagrings konto och klicka på **anpassad domän**. Skriv in det alias som du skapade utan prefixet för att verifiera i text rutan, markera **Använd indirekt CNAME-validering** och klicka på **Spara**. När det här steget har slutförts går du tillbaka till DNS-zonen och skapar en CNAME-post utan prefixet verify.  Efter den tidpunkten är det säkert att ta bort CNAME-posten med cdnverify-prefixet.
 
 ![Skärm bild som visar sidan anpassad domän.](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -146,7 +146,7 @@ Mer information om hur du mappar en anpassad domän till en Blob Storage-slutpun
 
 Följande steg beskriver hur du konfigurerar en CNAME-post för en CDN-slutpunkt med cdnverify-metoden. Den här metoden säkerställer att det inte finns någon stillestånds tid.
 
-Navigera till **nätverks**  >  -**CDN-profiler**och välj din CDN-profil.
+Navigera till **nätverks**  >  -**CDN-profiler** och välj din CDN-profil.
 
 Välj den slut punkt som du arbetar med och klicka på **+ anpassad domän**. Observera **slut punkts namnet** som det här värdet är den post som CNAME-posten pekar på.
 
@@ -156,13 +156,13 @@ Gå till din DNS-zon och klicka på **+ post uppsättning**. Fyll i följande in
 
 |Egenskap  |Värde  |Beskrivning  |
 |---------|---------|---------|
-|Namn     | cdnverify. mycdnendpoint        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
+|Name     | cdnverify. mycdnendpoint        | Det här värdet tillsammans med domän namns etiketten är FQDN för det anpassade domän namnet.        |
 |Typ     | CNAME        | Använd en CNAME-post med ett alias.        |
 |TTL-värde     | 1        | 1 används i 1 timme        |
 |TTL-enhet     | Tider        | Timmar används som tids mått         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Det DNS-namn som du skapar alias för, i det här exemplet är det DNS-namnet för cdnverify.adatumcdnendpoint.azureedge.net som anges som standard för lagrings kontot.        |
 
-Gå tillbaka till CDN-slutpunkten genom att klicka på **Network**  >  **CDN-profiler**och välj din CDN-profil. Klicka på **+ anpassad domän** och ange ditt CNAME-postalias utan cdnverify-prefixet och klicka på **Lägg till**.
+Gå tillbaka till CDN-slutpunkten genom att klicka på **Network**  >  **CDN-profiler** och välj din CDN-profil. Klicka på **+ anpassad domän** och ange ditt CNAME-postalias utan cdnverify-prefixet och klicka på **Lägg till**.
 
 När det här steget har slutförts går du tillbaka till DNS-zonen och skapar en CNAME-post utan prefixet cdnverify.  Efter den tidpunkten är det säkert att ta bort CNAME-posten med cdnverify-prefixet. Mer information om CDN och hur du konfigurerar en anpassad domän utan mellanliggande registrerings steg finns i [mappa Azure CDN innehåll till en anpassad domän](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 

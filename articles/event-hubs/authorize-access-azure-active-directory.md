@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om hur du auktoriserar å
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910805"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Ge åtkomst till Event Hubs resurser med Azure Active Directory
@@ -46,11 +46,11 @@ Innan du tilldelar en Azure-roll till ett säkerhets objekt bör du bestämma om
 
 I följande lista beskrivs de nivåer där du kan begränsa åtkomsten till Event Hubs resurser, från och med det smala omfång:
 
-- **Konsument grupp** : i det här området gäller roll tilldelningen enbart för den här entiteten. För närvarande har Azure Portal inte stöd för att tilldela en Azure-roll till ett säkerhets objekt på den här nivån. 
-- **Event Hub** : roll tilldelningen gäller för entiteten Event Hub och gruppen konsument under den.
-- **Namnrymd** : roll tilldelningen sträcker sig över hela topologin av Event Hubs under namn området och till den konsument grupp som är kopplad till den.
-- **Resurs grupp** : roll tilldelningen gäller för alla Event Hubs resurser under resurs gruppen.
-- **Prenumeration** : roll tilldelningen gäller för alla Event Hubs resurser i alla resurs grupper i prenumerationen.
+- **Konsument grupp**: i det här området gäller roll tilldelningen enbart för den här entiteten. För närvarande har Azure Portal inte stöd för att tilldela en Azure-roll till ett säkerhets objekt på den här nivån. 
+- **Event Hub**: roll tilldelningen gäller för entiteten Event Hub och gruppen konsument under den.
+- **Namnrymd**: roll tilldelningen sträcker sig över hela topologin av Event Hubs under namn området och till den konsument grupp som är kopplad till den.
+- **Resurs grupp**: roll tilldelningen gäller för alla Event Hubs resurser under resurs gruppen.
+- **Prenumeration**: roll tilldelningen gäller för alla Event Hubs resurser i alla resurs grupper i prenumerationen.
 
 > [!NOTE]
 > - Tänk på att det kan ta upp till fem minuter för Azure Role-tilldelningar att spridas. 

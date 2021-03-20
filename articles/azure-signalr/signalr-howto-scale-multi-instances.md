@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89439222"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hur skalar jag SignalR-tjänsten med flera instanser?
@@ -220,13 +220,13 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `primary` slut punkter är önskade slut punkter för att ta emot klient trafik och anses ha mer pålitliga nätverks anslutningar. `secondary` slut punkter anses ha mindre pålitliga nätverks anslutningar och används endast för att ta server till klient trafik, till exempel broadcast-meddelanden, inte för att ta klient till Server trafik.
 
-I frågor över flera regioner kan nätverket vara instabilt. För en app-server i *östra USA*kan SignalR service-slutpunkten i samma region i *östra USA* konfigureras som `primary` och slut punkter i andra regioner som har marker ATS som `secondary` . I den här konfigurationen kan tjänst slut punkter i andra regioner **ta emot** meddelanden från den här *amerikanska* app-servern, men det finns inga klienter **över flera regioner** som skickas till den här program servern. Arkitekturen visas i diagrammet nedan:
+I frågor över flera regioner kan nätverket vara instabilt. För en app-server i *östra USA* kan SignalR service-slutpunkten i samma region i *östra USA* konfigureras som `primary` och slut punkter i andra regioner som har marker ATS som `secondary` . I den här konfigurationen kan tjänst slut punkter i andra regioner **ta emot** meddelanden från den här *amerikanska* app-servern, men det finns inga klienter **över flera regioner** som skickas till den här program servern. Arkitekturen visas i diagrammet nedan:
 
 ![Mellan geo-infraröd](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
 När en klient försöker `/negotiate` med app-servern, med standardroutern, **väljer SDK slumpmässigt** en slut punkt från uppsättningen tillgängliga `primary` slut punkter. När den primära slut punkten inte är tillgänglig väljer SDK **slumpmässigt** från alla tillgängliga `secondary` slut punkter. Slut punkten är markerad som **tillgänglig** när anslutningen mellan servern och tjänst slut punkten är Alive.
 
-När en klient försöker `/negotiate` med den app-server som finns i *östra USA*som standard, returnerar den alltid den `primary` slut punkt som finns i samma region. När alla slut punkter för *östra USA* inte är tillgängliga omdirigeras klienten till slut punkter i andra regioner. I avsnittet redundans beskrivs scenariot i detalj.
+När en klient försöker `/negotiate` med den app-server som finns i *östra USA* som standard, returnerar den alltid den `primary` slut punkt som finns i samma region. När alla slut punkter för *östra USA* inte är tillgängliga omdirigeras klienten till slut punkter i andra regioner. I avsnittet redundans beskrivs scenariot i detalj.
 
 ![Normal förhandling](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 

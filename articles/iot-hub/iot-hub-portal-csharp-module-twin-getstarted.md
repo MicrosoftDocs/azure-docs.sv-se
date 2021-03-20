@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: 0d16d7a6dbf903ae790015c12e3d34e4a2a553d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92139352"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Kom igång med IoT Hub-modulidentitet och modultvilling med portalen och .NET-enhet
@@ -73,9 +73,9 @@ Du har skapat modulidentiteten i din IoT Hub. Försök kommunicera till molnet f
 
 Följ dessa steg om du vill skapa en app som uppdaterar modulens dubbla rapporterade egenskaper:
 
-1. I Visual Studio väljer du **skapa ett nytt projekt**och väljer sedan **konsol program (.NET Framework)** och väljer **Nästa**.
+1. I Visual Studio väljer du **skapa ett nytt projekt** och väljer sedan **konsol program (.NET Framework)** och väljer **Nästa**.
 
-1. I **Konfigurera ditt nya projekt**anger du *UpdateModuleTwinReportedProperties* som **projekt namn**. Fortsätt genom att välja **skapa** .
+1. I **Konfigurera ditt nya projekt** anger du *UpdateModuleTwinReportedProperties* som **projekt namn**. Fortsätt genom att välja **skapa** .
 
     ![Konfigurera att du är ett Visual Studio-projekt](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
@@ -85,7 +85,7 @@ Modulens identitet och modul är i offentlig för hands version. Den är endast 
 
 1. I Visual Studio öppnar du **verktyg**  >  **NuGet Package Manager**  >  **Hantera NuGet-paket för lösningen**.
 
-1. Välj **Bläddra**och välj sedan **Inkludera för hands version**. Sök efter *Microsoft. Azure. devices. client*. Välj den senaste versionen och installera.
+1. Välj **Bläddra** och välj sedan **Inkludera för hands version**. Sök efter *Microsoft. Azure. devices. client*. Välj den senaste versionen och installera.
 
     ![Installera Azure IoT Hub .NET service SDK Preview](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
@@ -99,7 +99,7 @@ Du behöver modulens anslutnings sträng för konsol programmet. Gör så här:
 
 1. Navigera till din IoT-hubb och välj **IoT-enheter**. Öppna **t myfirstdevice** så ser du att **myFirstModule** har skapats.
 
-1. Välj **myFirstModule** under **modul identiteter**. I **modulens identitets information**kopierar du **anslutnings strängen (primär nyckel)**.
+1. Välj **myFirstModule** under **modul identiteter**. I **modulens identitets information** kopierar du **anslutnings strängen (primär nyckel)**.
 
     ![Information om Azure-portalmodulen](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
@@ -107,7 +107,7 @@ Du behöver modulens anslutnings sträng för konsol programmet. Gör så här:
 
 Följ dessa steg om du vill skapa din app:
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

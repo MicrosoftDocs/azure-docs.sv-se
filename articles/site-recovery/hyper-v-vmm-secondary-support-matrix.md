@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86131167"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Supportmatris för haveriberedskap av virtuella Hyper-V-datorer till en sekundär webbplats
@@ -51,7 +51,7 @@ Endast Linux-datorer med följande lagring kan replikeras:
 
 ## <a name="network-configuration---hostguest-vm"></a>Nätverks konfiguration – värd/gäst-VM
 
-**Konfiguration** | **Tillåtna**  
+**Konfiguration** | **Stöds**  
 --- | --- 
 Värd-NIC-teamning | Ja 
 Värd-VLAN | Ja 
@@ -68,26 +68,26 @@ Gäst-VM-Multi-NIC | Ja
 
 ### <a name="host-storage"></a>Värd lagring
 
-**Lagring (värd)** | **Tillåtna**
+**Lagring (värd)** | **Stöds**
 --- | --- 
-NFS | E.t.
+NFS | Ej tillämpligt
 SMB 3.0 |  Ja
 SAN (ISCSI) | Ja
 Multipath (MPIO) | Ja
 
 ### <a name="guest-or-physical-server-storage"></a>Gäst eller fysisk server lagring
 
-**Konfiguration** | **Tillåtna**
+**Konfiguration** | **Stöds**
 --- | --- | 
-VMDK |  E.t.
+VMDK |  Ej tillämpligt
 VHD/VHDX | Ja (upp till 16 diskar)
 Generation 2 VM | Ja
 Delad kluster disk | Inga
 Krypterad disk | Inga
-UEFI| E.t.
+UEFI| Ej tillämpligt
 NFS | Inga
 SMB 3.0 | Inga
-RDM | E.t.
+RDM | Ej tillämpligt
 Disk > 1 TB | Ja
 Volym med Striped disk > 1 TB<br/><br/> LVM | Ja
 Lagringsutrymmen | Ja
@@ -97,7 +97,7 @@ Multipath (MPIO) | Ja
 
 ## <a name="vaults"></a>Valv
 
-**Åtgärd** | **Tillåtna**
+**Åtgärd** | **Stöds**
 --- | --- 
 Flytta valv över resurs grupper (inom eller mellan prenumerationer) |  Inga
 Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | Inga
@@ -106,7 +106,7 @@ Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom ell
 
 Providern samordnar kommunikationen mellan VMM-servrar. 
 
-**Senast** | **Uppdateringar**
+**Nya** | **Uppdateringar**
 --- | --- 
 5.1.19 ([tillgängligt från portalen](https://aka.ms/downloaddra) | [Senaste funktioner och korrigeringar](https://support.microsoft.com/kb/3155002)
 

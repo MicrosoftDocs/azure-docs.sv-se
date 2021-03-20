@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: e664055893bbdef0f7090811b8a160a1b8a4a1fd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92124056"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Självstudie: Använd tjänsten data kopiering för att kopiera data till Azure Data Box (för hands version)
@@ -25,7 +25,7 @@ Använd datakopieringstjänsten:
 - I NAS miljöer där mellanliggande värdar kanske inte är tillgängliga.
 - Med små filer som kräver veckor för inmatning och uppladdning av data. Datakopieringstjänsten förbättrar avsevärt tiden för inmatning och uppladdning för små filer.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -69,7 +69,7 @@ För att kopiera data med hjälp av datakopieringstjänsten behöver du skapa et
     |**Användarnamn**                       |Användarnamn i `\\<DomainName><UserName>`-format för åtkomst till datakällan. Om en lokal administratör ansluter behöver de uttryckliga säkerhets behörigheter. Högerklicka på mappen, Välj **Egenskaper** och välj sedan **säkerhet**. Detta bör lägga till den lokala administratören på fliken **säkerhet** .       |
     |**Lösenord**                       |Lösenord för åtkomst till datakällan.           |
     |**Mållagringskonto**    |Välj mållagringskonto för uppladdning av data från listan.         |
-    |**Måltyp**       |Välj mål lagrings typ i listan: **Block-Blob**, **Page BLOB**eller **Azure Files**.        |
+    |**Måltyp**       |Välj mål lagrings typ i listan: **Block-Blob**, **Page BLOB** eller **Azure Files**.        |
     |**Målcontainer/-resurs**    |Ange namnet på den container eller resurs som du vill ladda upp data till i ditt mållagringskonto. Namnet kan vara ett resursnamn eller ett containernamn. Använd till exempel `myshare` eller `mycontainer`. Du kan även ange namnet i formatet `sharename\directory_name` eller `containername\virtual_directory_name`.        |
     |**Matchningsmönster för filkopiering**    | Du kan ange matchningsmönstret för filnamn på följande två sätt:<ul><li>**Använd jokertecken:** Endast `*` och `?` stöds i jokertecken. Till exempel matchar uttrycket `*.vhd` alla filer som har filnamnstillägget `.vhd`. På ett liknande sätt matchar `*.dl?` alla filer med antingen filnamnstillägget `.dl` eller som börjar med `.dl`, till exempel `.dll`. Och `*foo` matchar alla filer vars namn slutar med `foo`.<br>Du kan ange uttrycket med jokertecken direkt i fältet. Som standard behandlas det värde som du anger i fältet som ett uttryck med jokertecken.</li><li>**Använd reguljära uttryck:** POSIX-baserade reguljära uttryck stöds. Till exempel matchar det reguljära uttrycket `.*\.vhd` alla filer som har filnamnstillägget `.vhd`. För reguljära uttryck anger du `<pattern>` direkt som `regex(<pattern>)`. Mer information om reguljära uttryck finns i [snabbreferensen för reguljära uttryck](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Filoptimering**              |När den här funktionen är aktiverad packas filer som är mindre än 1 MB under inmatning. Paketeringen gör datakopieringen snabbare för små filer. Den sparar även betydande tid när antalet filer långt överstiger antalet kataloger.        |
@@ -120,7 +120,7 @@ För att kopiera data med hjälp av datakopieringstjänsten behöver du skapa et
 
     - I kolumnen **Status** kan du visa statusen för kopieringsjobbet. Statusen kan vara:
         - **Körs**
-        - **Bröt**
+        - **Misslyckades**
         - **Brutit**
         - **Pausar**
         - **Pausat**

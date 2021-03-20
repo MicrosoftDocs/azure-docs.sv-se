@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: ramamill
 ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89424879"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Lägga till Azure Automation Runbook-rutiner i återställningsplaner
@@ -115,14 +115,14 @@ Aman- [Sharma finns ett](http://harvestingclouds.com) användbart exempel på et
 ## <a name="customize-the-recovery-plan"></a>Anpassa återställnings planen
 
 1. I valvet väljer du **återställnings planer (Site Recovery)**
-2. Klicka på **+ återställnings plan**för att skapa en återställnings plan. [Läs mer](site-recovery-create-recovery-plans.md). Om du redan har en återställnings plan väljer du att öppna den.
+2. Klicka på **+ återställnings plan** för att skapa en återställnings plan. [Läs mer](site-recovery-create-recovery-plans.md). Om du redan har en återställnings plan väljer du att öppna den.
 3. På sidan återställnings plan klickar du på **Anpassa**.
 
     ![Klicka på knappen anpassa](media/site-recovery-runbook-automation-new/custom-rp.png)
 
 2. Klicka på ellipserna (...) bredvid **grupp 1: starta**  >  **Lägg till post-åtgärd**.
-3. I **Infoga åtgärd**kontrollerar du att **skript** är markerat och anger ett namn för skriptet (**Hello World**).
-4. Ange ett Automation-konto och välj en Runbook. Klicka på **OK**om du vill spara skriptet. Skriptet läggs till i **grupp 1: post-steg**.
+3. I **Infoga åtgärd** kontrollerar du att **skript** är markerat och anger ett namn för skriptet (**Hello World**).
+4. Ange ett Automation-konto och välj en Runbook. Klicka på **OK** om du vill spara skriptet. Skriptet läggs till i **grupp 1: post-steg**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Återanvänd ett Runbook-skript

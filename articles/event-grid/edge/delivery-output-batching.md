@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171643"
 ---
 # <a name="output-batching"></a>Batchbearbetning av utdata
@@ -75,7 +75,7 @@ Event Gridens batching-beteende kan anpassas per prenumerant genom att ändra f�
 
 Följande distributions tids inställningar styr det högsta tillåtna värdet när en händelse prenumeration skapas.
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Högsta tillåtna värde för `PreferredBatchSizeInKilobytes` ratten. Standard `1033` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Högsta tillåtna värde för `MaxEventsPerBatch` ratten. Standard `50` .
@@ -84,7 +84,7 @@ Följande distributions tids inställningar styr det högsta tillåtna värdet n
 
 Följande distributions tids inställningar styr körnings standardvärdet för varje ratt när det inte anges i händelse prenumerationen. För att kunna upprepas måste minst en ratt anges för händelse prenumerationen för att aktivera batching-beteendet.
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | Maximal storlek för leverans begär anden när endast `MaxEventsPerBatch` anges. Standard `1_058_576` .
 | `broker__defaultMaxEventsPerBatch` | Maximalt antal händelser som ska läggas till i en batch när endast `MaxBatchSizeInBytes` anges. Standard `10` .

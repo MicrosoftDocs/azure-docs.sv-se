@@ -8,10 +8,10 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489582"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snabb start: skapa och hantera Azure Files resurs med virtuella Windows-datorer
@@ -31,7 +31,7 @@ I den här snabbstarten konfigurerar du följande objekt:
 - Skapa ett Azure-lagringskonto och en Azure-filresurs
 - En virtuell Windows Server 2016 Datacenter-dator
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Innan du kan arbeta med en Azure-filresurs måste du skapa ett Azure-lagringskonto. Ett v2-lagringskonto för generell användning ger åtkomst till alla Azure Storage-tjänster: blobar, filer, köer och tabeller. Snabbstarten skapar ett v2-lagringskonto för generell användning, men stegen för att skapa alla typer av lagringskonton liknar dessa. Ett lagringskonto kan innehålla ett obegränsat antal resurser. En resurs kan lagra ett obegränsat antal filer, upp till kapacitetsbegränsningen för lagringskontot.
 
@@ -63,7 +63,7 @@ Nu har du skapat ett Azure Storage-konto och en filresurs med en fil i Azure. D�
 ### <a name="deploy-a-vm"></a>Distribuera en virtuell dator
 
 1. Expandera sedan menyn till vänster om portalen och välj **Skapa en resurs** i det övre vänstra hörnet i Azure-portalen.
-1. Sök efter och välj **Windows Server 2016 Data Center**i sökrutan ovanför **Azure Marketplace** -resurser och välj sedan **skapa**.
+1. Sök efter och välj **Windows Server 2016 Data Center** i sökrutan ovanför **Azure Marketplace** -resurser och välj sedan **skapa**.
 1. På fliken **Grundinställningar** under **Projektinformation** väljer du den resursgrupp som du skapade för snabbstarten.
 
    ![Ange grundläggande information om de virtuella datorerna på portalens blad](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
@@ -101,7 +101,7 @@ Nu har du skapat en ny virtuell dator och anslutit en datadisk. Nu måste du ans
    ![Skärm bild som visar innehållet i rutan sekunder som ska kopieras och klistras in i anteckningar.](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. I den virtuella datorn öppnar du **Utforskaren** och väljer **Den här datorn** i fönstret. Detta ändrar menyerna i menyfliksområdet. Under menyn **Dator** väljer du **Mappa nätverksenhet**.
-1. Välj enhetsbeteckningen och ange UNC-sökvägen. Om du har följt namn förslaget i den här snabb starten kopierar du * \\ qsstorageacct. File. Core. Windows. Net\qsfileshare* från **anteckningar**.
+1. Välj enhetsbeteckningen och ange UNC-sökvägen. Om du har följt namn förslaget i den här snabb starten kopierar du *\\ qsstorageacct. File. Core. Windows. Net\qsfileshare* från **anteckningar**.
 
    Kontrollera att båda kryssrutorna är markerade.
 

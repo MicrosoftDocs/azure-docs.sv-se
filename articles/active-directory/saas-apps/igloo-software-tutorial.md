@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Självstudie: Azure Active Directory integrering med Igloo-programvara
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Igloo-programvara i Azure AD:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **Igloo Software** integration.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **Igloo Software** integration.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -155,15 +155,15 @@ Utför följande steg för att konfigurera enkel inloggning med Igloo-programvar
 
     e. Öppna ditt **bas-64-** kodade certifikat i anteckningar som hämtats från Azure Portal, kopiera innehållet i det till Urklipp och klistra in det i text rutan för **offentligt certifikat** .
 
-6. I **konfiguration av svar och autentisering**utför du följande steg:
+6. I **konfiguration av svar och autentisering** utför du följande steg:
 
     ![Konfiguration av svar och autentisering](./media/igloo-software-tutorial/IC783971.png "Konfiguration av svar och autentisering")
   
-    a. Som **identitetsprovider**väljer du **Microsoft ADFS**.
+    a. Som **identitetsprovider** väljer du **Microsoft ADFS**.
 
-    b. Som **typ av identifierare**väljer du **e-postadress**. 
+    b. Som **typ av identifierare** väljer du **e-postadress**. 
 
-    c. Skriv **EmailAddress**i text rutan för **e-postattribut** .
+    c. Skriv **EmailAddress** i text rutan för **e-postattribut** .
 
     d. I text rutan för det **första** namnattributet skriver du **givenName**.
 
@@ -173,9 +173,9 @@ Utför följande steg för att konfigurera enkel inloggning med Igloo-programvar
 
     ![Skapa användare vid inloggning](./media/igloo-software-tutorial/IC783972.png "Skapa användare vid inloggning") 
 
-    a. När **användaren skapar loggar in**väljer du **skapa en ny användare på platsen när han eller hon loggar**in.
+    a. När **användaren skapar loggar in** väljer du **skapa en ny användare på platsen när han eller hon loggar** in.
 
-    b. Som **inloggnings inställningar**väljer du **Använd SAML-knappen på "logga in"-skärmen**.
+    b. Som **inloggnings inställningar** väljer du **Använd SAML-knappen på "logga in"-skärmen**.
 
     c. Klicka på **Spara**.
 
@@ -208,7 +208,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Igloo-programvaran.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Igloo-programvara**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Igloo-programvara**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

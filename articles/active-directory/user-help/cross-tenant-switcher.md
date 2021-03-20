@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913253"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Byta organisationer i en portal
@@ -30,7 +30,7 @@ Organisationens växlaren är tillgänglig i följande portaler:
 - [**Min åtkomst**](https://myaccess.microsoft.com)
 - [**Min personal**](https://mystaff.microsoft.com)
 
-Växlings organisationer är inte tillgängligt för **Mina inloggningar** , **säkerhets information** eller **Mina grupper** .
+Växlings organisationer är inte tillgängligt för **Mina inloggningar**, **säkerhets information** eller **Mina grupper**.
 
 ## <a name="switch-organizations"></a>Växla organisationer
 
@@ -39,7 +39,7 @@ Så här byter du till en annan organisation. I det här exemplet används **min
 1. Logga in på ditt arbets-eller skol konto och öppna sidan [mitt konto](https://myaccount.microsoft.com) .
 1. Välj organisationen växlaren :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="ikonen för organisationens växlaren"::: överst på sidan bredvid ditt konto foto.
 
-    :::image type="content" source="media/cross-tenant-switcher/switcher-location.png" alt-text="ikonen för organisationens växlaren":::
+    :::image type="content" source="media/cross-tenant-switcher/switcher-location.png" alt-text="Den meny med organisationer som du kan växla till":::
 
 1. Välj den organisation som du vill växla till. Du växlar automatiskt till den organisation som du har valt.
 

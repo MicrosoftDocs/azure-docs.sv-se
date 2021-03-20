@@ -7,10 +7,10 @@ ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400644"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Ansluta till virtuella Windows-datorer med webb klienten
@@ -27,7 +27,7 @@ Med webb klienten kan du komma åt dina Windows-resurser för virtuella skriv bo
 
 Även om en HTML5-kompatibel webbläsare ska fungera, har vi officiellt stöd för följande operativ system och webbläsare.
 
-| Webbläsare           | Operativ system som stöds                     | Obs!               |
+| Webbläsare           | Operativsystem som stöds                     | Kommentarer               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          | Version 11 eller senare |

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008601"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Självstudie: skapa en värdbaserad pool i Windows Virtual Desktop (klassisk)
@@ -50,9 +50,9 @@ Logga in på [Azure-portalen](https://portal.azure.com).
 
 Så här kör du Azure Marketplace-erbjudandet för att etablera en ny adresspool:
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
 1. Ange **virtuellt Windows-skrivbord** i fönstret Marketplace search.
-1. Välj **Windows Virtual Desktop – etablera en adresspool**och välj sedan **skapa**.
+1. Välj **Windows Virtual Desktop – etablera en adresspool** och välj sedan **skapa**.
 
 Efter det följer du anvisningarna i nästa avsnitt för att ange informationen för lämpliga flikar.
 
@@ -61,12 +61,12 @@ Efter det följer du anvisningarna i nästa avsnitt för att ange informationen 
 Det här kan du göra på fliken **grundläggande** :
 
 1. Välj en **prenumeration**.
-1. För **resurs grupp**väljer du **Skapa ny** och anger ett namn för den nya resurs gruppen.
+1. För **resurs grupp** väljer du **Skapa ny** och anger ett namn för den nya resurs gruppen.
 1. Välj en **region**.
 1. Ange ett namn för den värdbaserade poolen som är unik i Windows-klienten för virtuella skriv bord.
 1. Välj **typ av skriv bord**. Om du väljer **privat**, tilldelas varje användare som ansluter till den här poolen permanent till en virtuell dator.
 1. Ange användare som kan logga in på Windows-klienter för virtuella skriv bord och få åtkomst till ett skriv bord. Använd en kommaavgränsad lista. Om du till exempel vill tilldela `user1@contoso.com` och `user2@contoso.com` komma åt anger du *`user1@contoso.com,user2@contoso.com`*
-1. För **platsen för tjänstens metadata**väljer du samma plats som det virtuella nätverk som har anslutning till Active Directory servern.
+1. För **platsen för tjänstens metadata** väljer du samma plats som det virtuella nätverk som har anslutning till Active Directory servern.
 
    >[!IMPORTANT]
    >Om du använder en ren Azure Active Directory Domain Services-lösning (Azure AD DS) och Azure Active Directory (Azure AD) måste du distribuera din adresspool i samma region som din Azure AD DS för att undvika fel i domän anslutning och autentiseringsuppgifter.
@@ -82,14 +82,14 @@ För fliken **Konfigurera virtuella datorer** :
     >[!NOTE]
     >Om den angivna storleken på den virtuella datorn som du söker efter inte visas i storleks väljaren, beror det på att vi inte har publicerat den på Azure Marketplace-verktyget ännu. Om du vill begära en storlek skapar du en begäran eller avröstar en befintlig begäran i [Windows Virtual Desktop UserVoice-forumet](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
-1. Ange ett prefix för namnen på de virtuella datorerna. Om du till exempel anger *prefix*kommer de virtuella datorerna att kallas **prefix-0**, **prefix-1**och så vidare.
+1. Ange ett prefix för namnen på de virtuella datorerna. Om du till exempel anger *prefix* kommer de virtuella datorerna att kallas **prefix-0**, **prefix-1** och så vidare.
 1. Välj **Nästa: inställningar för virtuella datorer**.
 
 ### <a name="virtual-machine-settings"></a>Inställningar för virtuella datorer
 
 För fliken **Inställningar för virtuell dator** :
 
-1. För **avbildnings källa**väljer du källan och anger den information som krävs för att hitta den och hur den ska lagras. Alternativen skiljer sig åt för blob-lagring, hanterad avbildning och Galleri.
+1. För **avbildnings källa** väljer du källan och anger den information som krävs för att hitta den och hur den ska lagras. Alternativen skiljer sig åt för blob-lagring, hanterad avbildning och Galleri.
 
    Om du väljer att inte använda hanterade diskar väljer du det lagrings konto som innehåller *VHD* -filen.
 1. Ange User Principal Name och lösen ord. Kontot måste vara det domän konto som ska ansluta till de virtuella datorerna till den Active Directory domänen. Samma användar namn och lösen ord kommer att skapas på de virtuella datorerna som ett lokalt konto. Du kan återställa de här lokala kontona senare.
@@ -112,7 +112,7 @@ På fliken **Windows-klient för virtuella Skriv bords information** :
 
    Om du har slutfört [guiden skapa tjänst huvud namn och roll tilldelningar med PowerShell](create-service-principal-role-powershell.md)väljer du **tjänstens huvud namn**.
 
-1. För **tjänstens huvud namn**anger du administratörs kontot för Azure AD-instansen som innehåller tjänstens huvud namn för klient **-ID för Azure AD**. Det finns bara stöd för tjänst huvud namn med autentiseringsuppgifter för lösen ord.
+1. För **tjänstens huvud namn** anger du administratörs kontot för Azure AD-instansen som innehåller tjänstens huvud namn för klient **-ID för Azure AD**. Det finns bara stöd för tjänst huvud namn med autentiseringsuppgifter för lösen ord.
 1. Välj **Nästa: Granska + skapa**.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Slutför installationen och skapa den virtuella datorn

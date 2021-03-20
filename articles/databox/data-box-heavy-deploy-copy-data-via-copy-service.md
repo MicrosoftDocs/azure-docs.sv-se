@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006567"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Självstudie: Använd tjänsten data kopiering för att kopiera data till Azure Data Box Heavy (för hands version)
@@ -24,7 +24,7 @@ Använd datakopieringstjänsten:
 - I NAS miljöer där mellanliggande värdar kanske inte är tillgängliga.
 - Med små filer som kräver veckor för inmatning och uppladdning av data. Datakopieringstjänsten förbättrar avsevärt tiden för inmatning och uppladdning för små filer.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Kopiera data till Data Box Heavy
@@ -113,8 +113,8 @@ För att kopiera data med hjälp av datakopieringstjänsten behöver du skapa et
 
     - I kolumnen **Status** kan du visa statusen för kopieringsjobbet. Statusen kan vara:
         - **Körs**
-        - **Misslyckad**
-        - **Lyckades**
+        - **Misslyckades**
+        - **Brutit**
         - **Pausar**
         - **Pausat**
         - **Avbryts**

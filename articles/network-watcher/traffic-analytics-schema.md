@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98017790"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema-och data agg regering i Trafikanalys
@@ -176,5 +176,5 @@ Nedan visas fälten i schemat och vad de betecknar
 1. Okänd – det går inte att mappa någon av IP-adresserna i flödena med kundens topologi i Azure och lokalt (plats).
 1. Vissa fält namn läggs till i \_ s eller \_ d. Dessa säger inte källa och mål, men anger sträng och decimaler för data typerna.
 
-### <a name="next-steps"></a>Efterföljande moment
+### <a name="next-steps"></a>Nästa steg
 För att få svar på vanliga frågor, se [vanliga frågor och svar om trafik analys](traffic-analytics-faq.md) för att se information om funktioner, se [Traffic Analytics-dokumentation](traffic-analytics.md)
