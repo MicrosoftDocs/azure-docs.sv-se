@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872187"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurera VPN-gatewayöverföring för peer-kopplade virtuella nätverk
@@ -44,8 +44,8 @@ Innan du börjar ska du kontrol lera att du har följande virtuella nätverk och
 |Virtuellt nätverk|Distributionsmodell| Virtuell nätverksgateway|
 |---|---|---|---|
 | Hub-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Ja](tutorial-create-gateway-portal.md)|
-| Eker-RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Nej |
-| Spoke-Classic | [Form](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Nej |
+| Eker-RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Inga |
+| Spoke-Classic | [Form](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Inga |
 
 ### <a name="permissions"></a><a name="permissions"></a>Behörigheter
 

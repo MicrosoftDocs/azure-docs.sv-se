@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536852"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Självstudiekurs: Skapa en cache-aside-resultattavla för ASP.NET
@@ -40,12 +40,12 @@ För att kunna slutföra den här självstudien behöver du följande:
 
 ## <a name="add-a-leaderboard-to-the-project"></a>Lägga till en resultattavla i projektet
 
-I det här avsnittet av kursen konfigurerar du *ContosoTeamStats* -projektet med en resultattavla som rapporterar statistik för vinster, förluster och oavgjort för en lista med fiktiva team.
+I det här avsnittet av kursen konfigurerar du *ContosoTeamStats*-projektet med en resultattavla som rapporterar statistik för vinster, förluster och oavgjort för en lista med fiktiva team.
 
 ### <a name="add-the-entity-framework-to-the-project"></a>Lägga till Entity Framework i projektet
 
-1. Öppna i Visual Studio den *ContosoTeamStats* -lösning som du skapade i [ASP.NET-snabbstarten för Azure Cache for Redis](cache-web-app-howto.md).
-2. Klicka på **Verktyg > NuGet Package Manager > Package Manager Console** .
+1. Öppna i Visual Studio den *ContosoTeamStats*-lösning som du skapade i [ASP.NET-snabbstarten för Azure Cache for Redis](cache-web-app-howto.md).
+2. Klicka på **Verktyg > NuGet Package Manager > Package Manager Console**.
 3. Kör följande kommando via fönstret för **Package Manager-konsolen** för att installera EntityFramework:
 
     ```powershell
@@ -56,9 +56,9 @@ Mer information om det här paketet finns i NuGet-paketet [EntityFramework](http
 
 ### <a name="add-the-team-model"></a>Lägga till Team-modellen
 
-1. Högerklicka på **Modeller** i **Solution Explorer** och välj **Lägg till** , **Klass** .
+1. Högerklicka på **Modeller** i **Solution Explorer** och välj **Lägg till**, **Klass**.
 
-1. Ange `Team` som klassnamn och klicka på **Lägg till** .
+1. Ange `Team` som klassnamn och klicka på **Lägg till**.
 
     ![Lägg till modellklass](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
@@ -173,13 +173,13 @@ Mer information om det här paketet finns i NuGet-paketet [EntityFramework](http
 
 1. Skapa projektet i Visual Studio. 
 
-1. I **Solution Explorer** högerklickar du på mappen **Kontrollanter** . Klicka sedan på **Lägg till** och på **Kontrollant** .
+1. I **Solution Explorer** högerklickar du på mappen **Kontrollanter**. Klicka sedan på **Lägg till** och på **Kontrollant**.
 
-1. Välj **MVC 5-kontrollant med vyer, med hjälp av Entity Framework** och klicka på **Lägg till** . Om du får ett fel när du klickar på **Lägg till** , kontrollerar du att du har skapat projektet först.
+1. Välj **MVC 5-kontrollant med vyer, med hjälp av Entity Framework** och klicka på **Lägg till**. Om du får ett fel när du klickar på **Lägg till**, kontrollerar du att du har skapat projektet först.
 
     ![Lägga till en kontrollantklass](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. Välj **Team (ContosoTeamStats.Models)** från listrutan **Modellklass** . Välj **TeamContext (ContosoTeamStats.Models)** från listrutan **Datakontextklass** . Skriv `TeamsController` i textrutan **Kontrollant** (om den inte automatiskt har fyllts i). Klicka på **Lägg till** för att skapa kontrollantklassen och lägga till standardvyerna.
+1. Välj **Team (ContosoTeamStats.Models)** från listrutan **Modellklass**. Välj **TeamContext (ContosoTeamStats.Models)** från listrutan **Datakontextklass**. Skriv `TeamsController` i textrutan **Kontrollant** (om den inte automatiskt har fyllts i). Klicka på **Lägg till** för att skapa kontrollantklassen och lägga till standardvyerna.
 
     ![Konfigurera kontrollanten](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
@@ -216,7 +216,7 @@ Mer information om det här paketet finns i NuGet-paketet [EntityFramework](http
 
 ### <a name="configure-the-layout-view"></a>Konfigurera vyn Layout
 
-1. I **Solution Explorer** expanderar du mappen **Vyer** och sedan mappen **Delad** . Dubbelklicka på **_Layout.cshtml** . 
+1. I **Solution Explorer** expanderar du mappen **Vyer** och sedan mappen **Delad**. Dubbelklicka på **_Layout.cshtml**. 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -226,7 +226,7 @@ Mer information om det här paketet finns i NuGet-paketet [EntityFramework](http
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. I avsnittet `body` lägger du till följande nya `Html.ActionLink`-uttryck för *Contoso Team Stats* under länken för *Azure Cache for Redis-test* .
+1. I avsnittet `body` lägger du till följande nya `Html.ActionLink`-uttryck för *Contoso Team Stats* under länken för *Azure Cache for Redis-test*.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,7 +234,7 @@ Mer information om det här paketet finns i NuGet-paketet [EntityFramework](http
 
     ![Kodändringar](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Tryck på **Ctrl+F5** för att skapa och köra programmet. Den här versionen av programmet läser resultaten direkt från databasen. Observera att åtgärderna **Skapa nytt** , **Redigera** , **Information** och **Ta bort** har lagts till automatiskt till programmet av **MVC 5-kontrollanten med vyer, med hjälp av Entity Framework** -autogenerering. I nästa avsnitt i självstudien lägger du till Azure Cache for Redis för att optimera dataåtkomst och ange ytterligare funktioner i programmet.
+1. Tryck på **Ctrl+F5** för att skapa och köra programmet. Den här versionen av programmet läser resultaten direkt från databasen. Observera att åtgärderna **Skapa nytt**, **Redigera**, **Information** och **Ta bort** har lagts till automatiskt till programmet av **MVC 5-kontrollanten med vyer, med hjälp av Entity Framework**-autogenerering. I nästa avsnitt i självstudien lägger du till Azure Cache for Redis för att optimera dataåtkomst och ange ytterligare funktioner i programmet.
 
     ![Startprogram](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -244,13 +244,13 @@ I det här avsnittet av självstudien konfigurerar du exempelprogrammet till att
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Lägga till en cacheanslutning till Teams Controller
 
-Du har redan installerat *StackExchange.Redis* -klientbibliotekspaketet i snabbstarten. Du har också redan konfigurerat *CacheConnection* -appinställningen som ska användas lokalt och med den publicerade apptjänsten. Använd samma klientbibliotek och *CacheConnection* -information i *TeamsController* .
+Du har redan installerat *StackExchange.Redis*-klientbibliotekspaketet i snabbstarten. Du har också redan konfigurerat *CacheConnection*-appinställningen som ska användas lokalt och med den publicerade apptjänsten. Använd samma klientbibliotek och *CacheConnection*-information i *TeamsController*.
 
 1. I **Solution Explorer** expanderar du mappen **Kontrollanter** och sedan dubbelklickar du på filen **TeamController.cs** för att öppna den.
 
     ![Teamkontrollant](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Lägg till följande två `using`-satser i **TeamsController.cs** :
+1. Lägg till följande två `using`-satser i **TeamsController.cs**:
 
     ```csharp
     using System.Configuration;
@@ -574,7 +574,7 @@ Den autogenererade kod som skapats som en del av det här exemplet innehåller m
 
 ### <a name="add-caching-methods-to-the-teams-index-view"></a>Lägga till cachelagringsmetoder i teamindexvyn
 
-1. I **Solution Explorer** expanderar du mappen **Vyer** och sedan mappen **Team** . Dubbelklicka på **Index.cshtml** .
+1. I **Solution Explorer** expanderar du mappen **Vyer** och sedan mappen **Team**. Dubbelklicka på **Index.cshtml**.
 
     ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
@@ -646,9 +646,9 @@ Köra appen lokalt:
 
 I det här avsnittet ska du etablera en ny databas i SQL Database för appen att använda medan den är värd i Azure.
 
-1. Klicka på [Skapa en resurs](https://portal.azure.com/) längst upp till vänster i **Azure Portal** .
+1. Klicka på [Skapa en resurs](https://portal.azure.com/) längst upp till vänster i **Azure Portal**.
 
-1. På sidan **Nytt** klickar du på **Databaser** > **SQL Database** .
+1. På sidan **Nytt** klickar du på **Databaser** > **SQL Database**.
 
 1. Använd följande inställningar för den nya SQL-databasen:
 
@@ -659,7 +659,7 @@ I det här avsnittet ska du etablera en ny databas i SQL Database för appen att
    | **Resursgrupp**  | *TestResourceGroup* | Klicka på **Använda befintlig** och använd samma resursgrupp där du har placerat din cache och apptjänst. |
    | **Välj källa** | **Tom databas** | Börja med en tom databas. |
 
-1. Under **Server** klickar du på **Konfigurera nödvändiga inställningar** > **Skapa en ny server** och ange följande information och klicka sedan på knappen **Välj** :
+1. Under **Server** klickar du på **Konfigurera nödvändiga inställningar** > **Skapa en ny server** och ange följande information och klicka sedan på knappen **Välj**:
 
    | Inställning       | Föreslaget värde | Beskrivning |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -670,13 +670,13 @@ I det här avsnittet ska du etablera en ny databas i SQL Database för appen att
 
 1. Klicka på **Fäst på instrumentpanelen** och sedan på **Skapa** för att skapa den nya databasen och servern.
 
-1. När den nya databasen har skapats klickar du på **Visa databasanslutningssträngar** och kopierar **ADO.NET** -anslutningssträngen.
+1. När den nya databasen har skapats klickar du på **Visa databasanslutningssträngar** och kopierar **ADO.NET**-anslutningssträngen.
 
     ![Visa anslutningssträngar](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
 1. Navigera till apptjänsten i Azure Portal och klicka på **Programinställningar** och sedan på **Lägg till ny anslutningssträng** under avsnittet Anslutningssträngar.
 
-1. Lägg till en ny anslutningssträng med namnet *TeamContext* så att det matchar Entity Framework-databaskontextklassen. Klistra in anslutningssträngen för den nya databasen som värde. Se till att ersätta följande platshållare i anslutningssträngen och klicka på **Spara** :
+1. Lägg till en ny anslutningssträng med namnet *TeamContext* så att det matchar Entity Framework-databaskontextklassen. Klistra in anslutningssträngen för den nya databasen som värde. Se till att ersätta följande platshållare i anslutningssträngen och klicka på **Spara**:
 
     | Platshållare | Föreslaget värde |
     | --- | --- |
@@ -689,7 +689,7 @@ I det här avsnittet ska du etablera en ny databas i SQL Database för appen att
 
 I det här steget i självstudien publicerar du programuppdateringarna i Azure för att köra det i molnet.
 
-1. Högerklicka på projektet **ContosoTeamStats** i Visual Studio och välj **Publicera** .
+1. Högerklicka på projektet **ContosoTeamStats** i Visual Studio och välj **Publicera**.
 
     ![Publicera](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
@@ -717,19 +717,19 @@ Klicka på några åtgärder och experimentera med att hämta data från olika k
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar med självstudiens exempelprogram kan du ta bort Azure-resurserna som användes för att spara kostnad och resurser. Alla dina resurser bör finnas i samma resursgrupp. Du kan ta bort dem tillsammans i en enda åtgärd genom att ta bort resursgruppen. Anvisningarna för det här avsnittet används en resursgrupp med namnet *TestResources* .
+När du är klar med självstudiens exempelprogram kan du ta bort Azure-resurserna som användes för att spara kostnad och resurser. Alla dina resurser bör finnas i samma resursgrupp. Du kan ta bort dem tillsammans i en enda åtgärd genom att ta bort resursgruppen. Anvisningarna för det här avsnittet används en resursgrupp med namnet *TestResources*.
 
 > [!IMPORTANT]
 > Det går inte att ångra borttagningen av en resursgrupp och att resursgruppen och alla resurser i den tas bort permanent. Kontrollera att du inte av misstag tar bort fel resursgrupp eller resurser. Om du har skapat resurserna som värd för det här exemplet i en befintlig resursgrupp som innehåller resurser som du vill behålla, kan du ta bort varje resurs separat från deras respektive blad.
 >
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och klicka på **Resursgrupper** .
-2. Skriv namnet på din resursgrupp i textrutan **Filtrera objekt...** .
-3. Klicka på **...** till höger om resursgruppen och klicka på **Ta bort resursgrupp** .
+1. Logga in på [Azure Portal](https://portal.azure.com) och klicka på **Resursgrupper**.
+2. Skriv namnet på din resursgrupp i textrutan **Filtrera objekt...**.
+3. Klicka på **...** till höger om resursgruppen och klicka på **Ta bort resursgrupp**.
 
     ![Ta bort](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. Du blir ombedd att bekräfta borttagningen av resursgruppen. Skriv namnet på din resursgrupp för att bekräfta och klicka på **Ta bort** .
+4. Du blir ombedd att bekräfta borttagningen av resursgruppen. Skriv namnet på din resursgrupp för att bekräfta och klicka på **Ta bort**.
 
     Efter en liten stund tas resursgruppen och resurser som finns i den bort.
 

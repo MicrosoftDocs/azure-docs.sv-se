@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91839647"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrera till Azure Virtual WAN
@@ -33,7 +33,7 @@ Contoso är en global finansiell organisation med kontor i både Europa och Asie
 
 Följande bild visar en övergripande vy över det befintliga globala nätverket, inklusive anslutning till flera Azure-regioner.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png" alt-text="Contoso befintlig nätverkstopologi":::
 **Bild: contoso befintlig nätverkstopologi**
 
 Följande punkter kan förstås från den befintliga nätverk sto pol Ogin:
@@ -61,7 +61,7 @@ Nätverks teamet har fått en uppgift om att leverera en global nätverks modell
 
 Följande bild visar en övergripande vy av den uppdaterade måldomänkontrollanten med Azure Virtual WAN för att uppfylla kraven som beskrivs i föregående avsnitt.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/vwan-architecture.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/vwan-architecture.png" alt-text="Contoso Virtual WAN-arkitektur":::
 **Bild: Azure Virtual WAN-arkitektur**
 
 Sammanfattning:
@@ -82,7 +82,7 @@ Det här avsnittet visar de olika stegen för att migrera till Azure Virtual WAN
 
 Följande bild visar en topologi för en enda region för Contoso innan du inför distributionen av Azure Virtual WAN:
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure1.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure1.png" alt-text="Topologi för enskild region":::
 **Bild 1: manuell hubb för en region och ekrar**
 
 I enlighet med hubb-och eker-metoden innehåller det virtuella kund hanterade Hubbs nätverket flera funktions block:
@@ -103,14 +103,14 @@ Distribuera en virtuell WAN-hubb i varje region. Konfigurera den virtuella WAN-h
 > Azure Virtual WAN måste använda standard-SKU: n för att aktivera vissa trafik Sök vägar som visas i den här artikeln.
 >
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="Distribuera virtuella WAN-hubbar":::
 **Bild 2: Kundhanterade nav-och-eker till virtuell WAN-migrering**
 
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>Steg 3: ansluta fjärranslutna platser (ExpressRoute och VPN) till virtuellt WAN
 
 Anslut den virtuella WAN-hubben till de befintliga ExpressRoute-kretsarna och Ställ in plats-till-plats-VPN via Internet till alla fjärranslutna grenar.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="Ansluta fjärranslutna platser till virtuella WAN-nätverk":::
 **Figur 3: kundhanterad hubb-och-eker till virtuell WAN-migrering**
 
 I det här läget börjar den lokala nätverks utrustningen ta emot vägar som motsvarar IP-adressutrymmet som tilldelats det virtuella WAN-hanterade hubb-nätverket. Fjärr-VPN-anslutna grenar i det här skedet kommer att se två sökvägar till alla befintliga program i ekrarnas virtuella nätverk. De här enheterna bör konfigureras att fortsätta använda tunneln till den Kundhanterade hubben för att säkerställa symmetrisk routning under över gångs fasen.
@@ -119,14 +119,14 @@ I det här läget börjar den lokala nätverks utrustningen ta emot vägar som m
 
 Innan du använder den hanterade virtuella WAN-hubben för produktions anslutning, rekommenderar vi att du skapar ett virtuellt nätverk för testning av ekrar och virtuell WAN-anslutning. Verifiera att anslutningar till den här test miljön fungerar via ExpressRoute och plats till plats-VPN innan du fortsätter med nästa steg.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure4.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure4.png" alt-text="Testa hybrid anslutning via virtuellt WAN":::
 **Figur 4: Kundhanterade nav-och-eker till virtuell WAN-migrering**
 
 I det här skedet är det viktigt att känna till att både det ursprungliga kund hanterade hubb nätverket och det nya virtuella WAN-navet är anslutna till samma ExpressRoute-krets. På grund av detta har vi en trafik Sök väg som kan användas för att aktivera ekrar i båda miljöerna för att kommunicera. Trafik från en eker som är kopplad till den Kundhanterade hubben i det virtuella nätverket kommer till exempel att söka igenom de MSEE: N enheter som används för ExpressRoute-kretsen för att komma åt ekrar som är anslutna via en VNet-anslutning till den nya virtuella WAN-hubben. Detta möjliggör mellanlagrad migrering av ekrar i steg 5.
 
 ### <a name="step-5-transition-connectivity-to-virtual-wan-hub"></a>Steg 5: över gångs anslutning till Virtual WAN Hub
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure5.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure5.png" alt-text="Över gångs anslutning till virtuell WAN-hubb":::
 **Figur 5: kundhanterad hubb-och-eker till virtuell WAN-migrering**
 
 **a**. Ta bort befintliga peering-anslutningar från ekrar virtuella nätverk till den gamla kund hanterade hubben. Åtkomst till program i ekrar virtuella nätverk är inte tillgänglig förrän steg a-c har slutförts.
@@ -143,7 +143,7 @@ I det här skedet är det viktigt att känna till att både det ursprungliga kun
 
 Nu har vi gjort om vårt Azure-nätverk för att göra den virtuella WAN-hubben till den centrala punkten i vår nya topologi.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure6.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure6.png" alt-text="Den gamla hubben blir delade tjänster eker":::
 **Figur 6: Kundhanterade nav-och-eker till virtuell WAN-migrering**
 
 Eftersom den virtuella WAN-hubben är en hanterad entitet och inte tillåter distribution av anpassade resurser, t. ex. virtuella datorer, finns inte blocket Shared Services som ett eker-virtuellt nätverk och fungerar som Internet-inkommande trafik via Azure Application Gateway eller virtualiserad nätverks installation. Trafik mellan de delade tjänsterna och de virtuella datorerna i drifts miljön överför nu den virtuella WAN-hanterade hubben.
@@ -152,7 +152,7 @@ Eftersom den virtuella WAN-hubben är en hanterad entitet och inte tillåter dis
 
 I det här skedet har contoso främst slutfört sina migreringar av affärs program i Microsoft Cloud, med bara några få äldre program kvar i den lokala DOMÄNKONTROLLANTen.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure7.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure7.png" alt-text="Optimera lokal anslutning för att utnyttja virtuellt WAN":::
 **Figur 7: Kundhanterade nav-och-eker till virtuell WAN-migrering**
 
 För att kunna utnyttja alla funktioner i Azure Virtual WAN väljer contoso att inaktivera sina äldre lokala VPN-anslutningar. Alla grenar som fortsätter att komma åt HQ eller DC-nätverk kan överföra Microsofts globala nätverk med hjälp av den inbyggda överförings dirigeringen för Azure Virtual WAN.
@@ -163,7 +163,7 @@ För att kunna utnyttja alla funktioner i Azure Virtual WAN väljer contoso att 
 
 ## <a name="end-state-architecture-and-traffic-paths"></a>Slut tillstånds arkitektur och trafik Sök vägar
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure8.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure8.png" alt-text="Slut tillstånds arkitektur och trafik Sök vägar":::
 **Bild: virtuell WAN-WAN med dubbla regioner**
 
 Det här avsnittet innehåller en översikt över hur den här topologin uppfyller de ursprungliga kraven genom att titta på några exempel på trafikflöden.
@@ -178,7 +178,7 @@ Trafiken dirigeras enligt följande:
 
 * Virtuellt WAN-nav i Asien dirigerar trafik lokalt till anslutna VNet.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="Flöde 1":::
 
 ### <a name="path-2"></a>Sökväg 2
 
@@ -190,7 +190,7 @@ Trafiken dirigeras enligt följande:
 
 * Global WAN Hub-till-hubb global anslutning möjliggör trafik överföring till VNet som är anslutet i fjärrregionen.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="Flöde 2":::
 
 ### <a name="path-3"></a>Sökväg 3
 
@@ -204,7 +204,7 @@ Trafiken dirigeras enligt följande:
 
 * Virtuell WAN Hub-till-hubb global anslutning möjliggör trafik överföring.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="Flöde 3":::
 
 ### <a name="path-4"></a>Sökväg 4
 
@@ -214,7 +214,7 @@ Trafiken dirigeras enligt följande:
 
 * Global WAN Hub-till-hubb global anslutning möjliggör inbyggd transitering av alla anslutna Azure-virtuella nätverk utan ytterligare användar konfiguration.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="Flöde 4":::
 
 ### <a name="path-5"></a>Sökväg 5
 
@@ -226,13 +226,13 @@ Trafiken dirigeras enligt följande:
 
 * Den virtuella WAN-hubben i Västeuropa dirigerar trafik lokalt till anslutna VNet.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="Flöde 5":::
 
 ## <a name="security-and-policy-control-via-azure-firewall"></a>Säkerhet och princip kontroll via Azure-brandväggen
 
 Contoso har nu verifierat anslutningen mellan alla grenar och virtuella nätverk i enlighet med kraven som beskrivs ovan i den här artikeln. För att uppfylla kraven för säkerhets kontroll och nätverks isolering måste de fortsätta att separera och logga trafik via hubb nätverket. Tidigare utfördes den här funktionen av en virtuell nätverks installation (NVA). Contoso vill också inaktivera sina befintliga proxy Services och använda interna Azure-tjänster för utgående Internet filtrering.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/security-policy.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/security-policy.png" alt-text="Säkerhet och princip kontroll via Azure-brandväggen":::
 **Bild: Azure-brandvägg i virtuellt WAN-nätverk (säker virtuell hubb)**
 
 Följande avancerade steg krävs för att presentera Azure-brandväggen i de virtuella WAN-hubbarna för att aktivera en enhetlig punkt för princip kontroll. Mer information om den här processen och begreppet säkra virtuella hubbar finns i [Azure Firewall Manager](../firewall-manager/index.yml).
@@ -256,7 +256,7 @@ Trafiken dirigeras enligt följande:
 
 * Azure-brandväggen kan använda principer för dessa flöden.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="Flöde 6":::
 
 ### <a name="path-7"></a>Sökväg 7
 
@@ -268,7 +268,7 @@ Trafiken dirigeras enligt följande:
 
 * Trafiken kan filtreras lokalt med hjälp av Azure Firewall FQDN-regler eller skickas till en säkerhets tjänst från tredje part för inspektion.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="Flow 7":::
 
 ### <a name="path-8"></a>Sökväg 8
 
@@ -280,7 +280,7 @@ Trafiken dirigeras enligt följande:
 
 * Trafiken kan filtreras lokalt med hjälp av Azure Firewall FQDN-regler eller skickas till en säkerhets tjänst från tredje part för inspektion.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="hubb och eker":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="Flöde 8":::
 
 ## <a name="next-steps"></a>Nästa steg
 

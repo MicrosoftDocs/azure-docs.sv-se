@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330503"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry i Event Hubs (förhandsversion)
@@ -17,7 +17,7 @@ I många händelse strömnings-och meddelande scenarier innehåller händelse-oc
 **Azure schema Registry** är en funktion i Event Hubs, som tillhandahåller en central lagrings plats för schema dokument för händelse drivna och meddelandebaserade program. Det ger dig flexibiliteten för dina tillverkare och konsument program att utbyta data utan att behöva hantera och dela schemat mellan dem och även för att utveckla i olika takt. Schema registret ger också ett enkelt styrnings ramverk för återanvändbara scheman och definierar relationen mellan scheman genom en grupperings-konstruktion (schema grupper).
 
 > [!NOTE]
-> - **Schema register** funktionen är för närvarande en för **hands version**och rekommenderas inte för produktions arbets belastningar.
+> - **Schema register** funktionen är för närvarande en för **hands version** och rekommenderas inte för produktions arbets belastningar.
 > - Funktionen är endast tillgänglig på **standard** -och **dedikerade** nivåer, inte i **Basic** -nivån.
 
 Med schema drivna serialiserade ramverk som Apache Avro, kan externa serialiserings-metadata till delade scheman också hjälpa till att avsevärt minska antalet per meddelande för typ information och fält namn som ingår i varje data uppsättning som det är fallet med taggade format som JSON. Om du har scheman lagrade i intill händelserna och inifrån händelse infrastrukturen säkerställer du att de metadata som krävs för serialisering/deserialisering alltid finns i räckvidden och att scheman inte får plats. 

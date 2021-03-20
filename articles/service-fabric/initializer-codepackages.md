@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258969"
 ---
 # <a name="initializer-codepackages"></a>Initierare för CodePackages
@@ -28,7 +28,7 @@ En initierare CodePackage förväntas köras för att **slutföras klart (slutko
 ## <a name="specifying-initializer-codepackages"></a>Ange initierare CodePackages
 Du kan markera en CodePackage som initierare genom att ange attributet **initierare** till **Sant** i ServiceManifest. När det finns flera initierare-CodePackages kan deras ordning för körning anges via attributet **ExecOrder** . **ExecOrder** måste vara ett icke-negativt heltal och är bara giltigt för CodePackages för initierare. CodePackages för initierare med lägre värden för **ExecOrder** körs först. Om **ExecOrder** inte har angetts för en initierare CodePackage antas standardvärdet 0. Den relativa körnings ordningen för initieraren CodePackages med samma värde för **ExecOrder** har inte angetts.
 
-Följande ServiceManifest-kodfragment beskriver tre CodePackages två av som har marker ATS som initierare. När detta ServicePack aktive ras körs *InitCodePackage0* först eftersom det har det lägsta värdet för **ExecOrder**. Vid lyckad slut för ande (slutkod 0) av *InitCodePackage0*körs *InitCodePackage1* . Slutligen körs *WorkloadCodePackage* vid lyckad slut för ande av *InitCodePackage1*.
+Följande ServiceManifest-kodfragment beskriver tre CodePackages två av som har marker ATS som initierare. När detta ServicePack aktive ras körs *InitCodePackage0* först eftersom det har det lägsta värdet för **ExecOrder**. Vid lyckad slut för ande (slutkod 0) av *InitCodePackage0* körs *InitCodePackage1* . Slutligen körs *WorkloadCodePackage* vid lyckad slut för ande av *InitCodePackage1*.
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">

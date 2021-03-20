@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92329533"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Självstudier: Övervaka ändringar av virtuella maskiner med Azure Event Grid och Logic Apps
@@ -106,8 +106,8 @@ Lägg nu till den Event Grid utlösare som du använder för att övervaka resur
    | **Prenumeration** | Ja | <*händelse-utgivare-Azure-Subscription-namn*> | Välj namnet på den Azure-prenumeration som är associerad med *händelse utgivaren*. I den här självstudien väljer du namnet på Azure-prenumerationen för den virtuella datorn. |
    | **Resurstyp** | Ja | <*händelse – utgivare – Azure-resurs-typ*> | Välj resurs typen Azure för händelse utgivaren. Mer information om resurs typer i Azure finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md). I den här självstudien väljer du `Microsoft.Resources.ResourceGroups` värdet för att övervaka Azures resurs grupper. |
    | **Resursnamn** |  Ja | <*händelse – utgivare – Azure-resurs-namn*> | Välj Azure-resursens namn för händelse utgivaren. Den här listan varierar beroende på vilken resurs typ du har valt. I den här självstudien väljer du namnet på den Azure-resurs grupp som innehåller den virtuella datorn. |
-   | **Objekt i händelse typ** |  Nej | <*händelse typer*> | Välj en eller flera speciella händelse typer som ska filtreras och skickas till Event Grid. Du kan till exempel lägga till dessa händelse typer för att upptäcka när resurser ändras eller tas bort: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Mer information finns i de här ämnena: <p><p>- [Azure Event Grid händelse schema för resurs grupper](../event-grid/event-schema-resource-groups.md) <br>- [Förstå händelse filtrering](../event-grid/event-filtering.md) <br>- [Filtrera händelser för Event Grid](../event-grid/how-to-filter-events.md) |
-   | Om du vill lägga till valfria egenskaper väljer du **Lägg till ny parameter**och väljer sedan de egenskaper som du vill använda. | Nej | {se beskrivningar} | * **Prefix filter**: i den här självstudien lämnar du den här egenskapen tom. Standardbeteendet matchar alla värden. Du kan dock ange en prefixsträng som ett filter, till exempel en sökväg och en parameter för en specifik resurs. <p>* **Suffix filter**: i den här självstudien lämnar du den här egenskapen tom. Standardbeteendet matchar alla värden. Du kan dock ange en suffixsträng som ett filter, till exempel ett filnamnstillägg, om du bara vill använda specifika filtyper. <p>* **Prenumerations namn**: i den här självstudien kan du ange ett unikt namn för din händelse prenumeration. |
+   | **Objekt i händelse typ** |  Inga | <*händelse typer*> | Välj en eller flera speciella händelse typer som ska filtreras och skickas till Event Grid. Du kan till exempel lägga till dessa händelse typer för att upptäcka när resurser ändras eller tas bort: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Mer information finns i de här ämnena: <p><p>- [Azure Event Grid händelse schema för resurs grupper](../event-grid/event-schema-resource-groups.md) <br>- [Förstå händelse filtrering](../event-grid/event-filtering.md) <br>- [Filtrera händelser för Event Grid](../event-grid/how-to-filter-events.md) |
+   | Om du vill lägga till valfria egenskaper väljer du **Lägg till ny parameter** och väljer sedan de egenskaper som du vill använda. | Inga | {se beskrivningar} | * **Prefix filter**: i den här självstudien lämnar du den här egenskapen tom. Standardbeteendet matchar alla värden. Du kan dock ange en prefixsträng som ett filter, till exempel en sökväg och en parameter för en specifik resurs. <p>* **Suffix filter**: i den här självstudien lämnar du den här egenskapen tom. Standardbeteendet matchar alla värden. Du kan dock ange en suffixsträng som ett filter, till exempel ett filnamnstillägg, om du bara vill använda specifika filtyper. <p>* **Prenumerations namn**: i den här självstudien kan du ange ett unikt namn för din händelse prenumeration. |
    |||
 
 1. Spara logikappen. I verktygsfältet designer väljer du **Spara**. Om du vill komprimera och dölja en åtgärds information i din Logic app väljer du åtgärdens namn List.
@@ -126,7 +126,7 @@ Om du vill att din Logi Kap par endast ska köras när en händelse eller åtgä
 
    ![Skärm bild av Logic Apps designer, som visar knappen för att lägga till ett nytt steg i arbets flödet.](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
-1. Under **Välj en åtgärd**går du till rutan Sök och anger `condition` som ditt filter. I listan åtgärder väljer du **villkors** åtgärden.
+1. Under **Välj en åtgärd** går du till rutan Sök och anger `condition` som ditt filter. I listan åtgärder väljer du **villkors** åtgärden.
 
    ![Skärm bild av Logic Apps designer, som visar knappen för att lägga till en villkors åtgärd.](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
@@ -176,7 +176,7 @@ Lägg nu till en [*åtgärd*](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Skärm bild av villkors redigeraren för Logic Apps designer som visar knappen för att lägga till en åtgärd när villkoret är sant.](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. Under **Välj en åtgärd**går du till rutan Sök och anger `send an email` som ditt filter. Baserat på din e-leverantör söker du och väljer matchande anslutningsapp. Välj sedan åtgärden "send email" (skicka e-post) för anslutningsappen. Exempel:
+1. Under **Välj en åtgärd** går du till rutan Sök och anger `send an email` som ditt filter. Baserat på din e-leverantör söker du och väljer matchande anslutningsapp. Välj sedan åtgärden "send email" (skicka e-post) för anslutningsappen. Exempel:
 
    * För ett arbets- eller skolkonto i Azure väljer du anslutningsappen Office 365 Outlook.
 
@@ -201,9 +201,9 @@ Lägg nu till en [*åtgärd*](../logic-apps/logic-apps-overview.md#logic-app-con
 
    | Egenskap | Krävs | Värde | Beskrivning |
    | -------- | -------- | ----- | ----------- |
-   | **Om du vill** | Ja | <*mottagar \@ domän*> | Ange mottagarens e-postadress. I testsyfte kan du använda din egen e-postadress. |
-   | **Ämne** | Ja | `Resource updated:` **Ämne** | Ange innehållet för e-postmeddelandets ämne. I den här självstudien anger du den angivna texten och väljer händelsens **ämnes** fält. Här innehåller e-postmeddelandets ämne namnet på den uppdaterade resursen (virtuell dator). |
-   | **Brödtext** | Ja | `Resource:` **Avsnitt** <p>`Event type:` **Händelsetyp**<p>`Event ID:` **ID**<p>`Time:`**Tid för händelsen** | Ange innehållet för e-postmeddelandets ämne. I den här självstudien anger du den angivna texten och väljer händelsens **ämne**, **händelse typ**, **ID**och **tids** fält för händelsen så att din e-post innehåller den resurs som utlöste händelsen, händelse typen, händelsens tidstämpel och händelse-ID för uppdateringen. I den här självstudien är resursen den Azure-resurs grupp som valts i utlösaren. <p>Tryck på Skift+Retur om du vill lägga till tomma rader i innehållet. |
+   | **Till** | Ja | <*mottagar \@ domän*> | Ange mottagarens e-postadress. I testsyfte kan du använda din egen e-postadress. |
+   | **Ämne** | Ja | `Resource updated:`**Ämne** | Ange innehållet för e-postmeddelandets ämne. I den här självstudien anger du den angivna texten och väljer händelsens **ämnes** fält. Här innehåller e-postmeddelandets ämne namnet på den uppdaterade resursen (virtuell dator). |
+   | **Brödtext** | Ja | `Resource:` **Avsnitt** <p>`Event type:` **Händelsetyp**<p>`Event ID:` **ID**<p>`Time:`**Tid för händelsen** | Ange innehållet för e-postmeddelandets ämne. I den här självstudien anger du den angivna texten och väljer händelsens **ämne**, **händelse typ**, **ID** och **tids** fält för händelsen så att din e-post innehåller den resurs som utlöste händelsen, händelse typen, händelsens tidstämpel och händelse-ID för uppdateringen. I den här självstudien är resursen den Azure-resurs grupp som valts i utlösaren. <p>Tryck på Skift+Retur om du vill lägga till tomma rader i innehållet. |
    ||||
 
    > [!NOTE]
@@ -231,7 +231,7 @@ Lägg nu till en [*åtgärd*](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Skärm bild av exempel på Outlook-e-post, med information om uppdatering av virtuella datorer.](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
-1. Om du vill granska körnings-och utlösnings historiken för din Logic app väljer du **Översikt**på din Logic app-meny. Om du vill visa mer information om en körning väljer du raden för den körningen.
+1. Om du vill granska körnings-och utlösnings historiken för din Logic app väljer du **Översikt** på din Logic app-meny. Om du vill visa mer information om en körning väljer du raden för den körningen.
 
    ![Skärm bild av sidan Översikt över Logi Kap par som visar att en lyckad körning har valts.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history.png)
 
@@ -252,14 +252,14 @@ Du kan övervaka andra konfigurationsändringar med händelserutnät och logikap
 
 Den här självstudien använder resurser och utför åtgärder som medför avgifter i din Azure-prenumeration. När du är klar med självstudiekursen och testningen bör du därför inaktivera eller ta bort resurser som du inte vill betala för.
 
-* Om du vill sluta köra din logikapp utan att ta bort ditt arbete inaktiverar du appen. På din Logic app-meny väljer du **Översikt**. Välj **inaktivera**i verktygsfältet.
+* Om du vill sluta köra din logikapp utan att ta bort ditt arbete inaktiverar du appen. På din Logic app-meny väljer du **Översikt**. Välj **inaktivera** i verktygsfältet.
 
   ![Skärm bild av Logic Apps-översikt, visar knappen Inaktivera som är markerad för att inaktivera Logic app.](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
   > Om du inte ser logikappmenyn kan du försöka återgå till Azure-instrumentpanelen och öppna logikappen på nytt.
 
-* Om du vill ta bort din Logic app permanent går du till menyn Logic app och väljer **Översikt**. Välj **ta bort**i verktygsfältet. Bekräfta att du vill ta bort din Logic app och välj **ta bort**.
+* Om du vill ta bort din Logic app permanent går du till menyn Logic app och väljer **Översikt**. Välj **ta bort** i verktygsfältet. Bekräfta att du vill ta bort din Logic app och välj **ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 

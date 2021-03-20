@@ -7,10 +7,10 @@ ms.date: 10/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9bab2a11ff9e7907621087e5027929e3e42eaf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744983"
 ---
 # <a name="connect-with-the-microsoft-store-client"></a>Ansluta med Microsoft Store-klienten
@@ -33,7 +33,7 @@ Prenumerera på arbets ytan som administratören har fått för att hämta lista
 
 Så här prenumererar du på en arbets yta:
 
-1. I fönstret anslutnings Center trycker du på **+ Lägg till**och sedan på **arbets ytor**.
+1. I fönstret anslutnings Center trycker du på **+ Lägg till** och sedan på **arbets ytor**.
 2. Ange arbets ytans URL i URL-fältet för arbets ytan som du fick av administratören. URL: en för arbets ytan kan vara antingen en URL eller en e-postadress.
    
    - Om du använder en arbetsyte-URL använder du den URL som din administratör fick dig.

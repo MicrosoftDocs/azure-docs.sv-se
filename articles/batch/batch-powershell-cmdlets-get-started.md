@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.custom: seodec18, devx-track-azurepowershell
 ms.openlocfilehash: 2b51a2a7852df82625fb342bbbbc4a3a1cbf72a3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685518"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Hantera Batch-resurser med PowerShell-cmdletar
@@ -39,13 +39,13 @@ Vi rekommenderar att du uppdaterar Azure PowerShell-moduler ofta för att dra ny
 
 ### <a name="create-a-batch-account"></a>Skapa ett Batch-konto
 
-**New-AzBatchAccount** skapar ett Batch-konto i en angiven resursgrupp. Om du inte redan har en resursgrupp skapar du en genom att köra cmdleten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Ange ett av Azure-områdena i parametern **Plats**, till exempel "USA, centrala". Till exempel:
+**New-AzBatchAccount** skapar ett Batch-konto i en angiven resursgrupp. Om du inte redan har en resursgrupp skapar du en genom att köra cmdleten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Ange ett av Azure-områdena i parametern **Plats**, till exempel "USA, centrala". Exempel:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Skapa sedan ett Batch-konto i resursgruppen. Ange ett namn för kontot i <*account_name*>, och platsen och namnet för resursgruppen. Det kan ta en stund innan skapandet av Batch-kontot har slutförts. Till exempel:
+Skapa sedan ett Batch-konto i resursgruppen. Ange ett namn för kontot i <*account_name*>, och platsen och namnet för resursgruppen. Det kan ta en stund innan skapandet av Batch-kontot har slutförts. Exempel:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Ta bort ett Batch-konto
 
-**Remove-AzBatchAccount** tar bort ett Batch-konto. Till exempel:
+**Remove-AzBatchAccount** tar bort ett Batch-konto. Exempel:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -164,7 +164,7 @@ Parametern **Id** stöder endast sökningar efter fullständiga ID:n, inte joker
 
 ### <a name="use-the-maxcount-parameter"></a>Använda parametern MaxCount
 
-Som standard returnerar varje cmdlet högst 1 000 objekt. Om du når den här gränsen kan du antingen förfina filtret så att färre objekt returneras eller uttryckligen ställa in ett högsta antal med parametern **MaxCount**. Till exempel:
+Som standard returnerar varje cmdlet högst 1 000 objekt. Om du når den här gränsen kan du antingen förfina filtret så att färre objekt returneras eller uttryckligen ställa in ett högsta antal med parametern **MaxCount**. Exempel:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context

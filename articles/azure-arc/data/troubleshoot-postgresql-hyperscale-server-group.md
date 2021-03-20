@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320219"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Felsöka PostgreSQL för storskaliga Server grupper
@@ -97,7 +97,7 @@ Implementera stegen som beskrivs i  [033-Manage-postgres-with-AzureDataStudio.MD
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio – öppna PostgreSQL fel söknings antecknings bok":::
 
-**TSG100 – Azure-bågen aktive rad postgresql-felsöknings antecknings bok** öppnas: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – öppna PostgreSQL fel söknings antecknings bok":::
+**TSG100 – Azure-bågen aktive rad postgresql-felsöknings antecknings bok** öppnas: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – använda postgresql fel söknings dator":::
 
 #### <a name="run-the-scripts"></a>Kör skripten
 Välj knappen Kör alla längst upp för att köra antecknings boken på en gång, eller så kan du gå igenom och köra varje kod cell en i taget.

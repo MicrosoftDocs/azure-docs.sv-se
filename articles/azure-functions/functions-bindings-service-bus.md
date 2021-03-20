@@ -8,17 +8,17 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104452"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindningar för Azure Functions
 
 Azure Functions integreras med [Azure Service Bus](https://azure.microsoft.com/services/service-bus) via [utlösare och bindningar](./functions-triggers-bindings.md). Genom att integrera med Service Bus kan du bygga funktioner som reagerar på och skickar kö-eller ämnes meddelanden.
 
-| Åtgärd | Typ |
+| Action | Typ |
 |---------|---------|
 | Köra en funktion när en Service Bus kö eller ett ämnes meddelande skapas | [Utlösare](./functions-bindings-service-bus-trigger.md) |
 | Skicka Azure Service Bus meddelanden |[Utgående bindning](./functions-bindings-service-bus-output.md) |

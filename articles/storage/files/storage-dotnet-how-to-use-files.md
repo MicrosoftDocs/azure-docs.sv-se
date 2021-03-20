@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492207"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Utveckla för Azure Files med .NET
@@ -54,7 +54,7 @@ Skapa ett nytt Windows-konsolprogram i Visual Studio. Följande steg visar hur d
 1. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)** för C# och väljer sedan **Nästa**.
 1. I **Konfigurera ditt nya projekt** anger du ett namn för appen och väljer **skapa**.
 
-Lägg till alla kod exempel i den här artikeln till- `Program` klassen i *program.cs* -filen.
+Lägg till alla kod exempel i den här artikeln till- `Program` klassen i filen *program. cs* .
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Använd NuGet för att installera de paket som behövs
 
@@ -67,7 +67,7 @@ Referera till dessa paket i projektet:
 - [Azure Storage-klient bibliotek för .net](https://www.nuget.org/packages/Azure.Storage.Files.Shares/): det här paketet ger programmatisk åtkomst till fil resurser i ditt lagrings konto.
 - [System Configuration Manager bibliotek för .net](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): det här paketet innehåller en klass som lagrar och hämtar värden i en konfigurations fil.
 
-Du kan använda NuGet för att hämta paketen. Gör så här:
+Du kan använda NuGet för att hämta paketen. Följ de här stegen:
 
 1. I **Solution Explorer** högerklickar du på projektet och väljer **Hantera NuGet-paket**.
 1. I **NuGet Package Manager** väljer du **Bläddra**. Sök sedan efter och välj **Azure. Core** och välj sedan **Installera**.
@@ -87,7 +87,7 @@ Du kan använda NuGet för att hämta paketen. Gör så här:
 - [Microsoft Azure Storage fil bibliotek för .net](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/): det här paketet ger programmatisk åtkomst till fil resurser i ditt lagrings konto.
 - [Microsoft Azure Configuration Manager bibliotek för .net](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): det här paketet innehåller en klass för parsning av en anslutnings sträng i en konfigurations fil, oavsett var ditt program körs.
 
-Du kan använda NuGet för att hämta paketen. Gör så här:
+Du kan använda NuGet för att hämta paketen. Följ de här stegen:
 
 1. I **Solution Explorer** högerklickar du på projektet och väljer **Hantera NuGet-paket**.
 1. I **NuGet Package Manager** väljer du **Bläddra**. Sök sedan efter och välj **Microsoft. Azure. Storage. blob** och välj sedan **Installera**.
@@ -135,7 +135,7 @@ Ersätt `myaccount` med ditt lagrings konto namn och `StorageAccountKeyEndingIn=
 
 ## <a name="add-using-directives"></a>Lägga till med hjälp av direktiv
 
-Öppna filen *program.cs* i **Solution Explorer** och Lägg till följande med hjälp av direktiv överst i filen.
+Öppna filen *program. cs* i **Solution Explorer** och Lägg till följande med hjälp av direktiv överst i filen.
 
 # <a name="net-v12"></a>[\.NET-V12](#tab/dotnet)
 
@@ -156,7 +156,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Ansluta till filresursen via programmering
 
-I *program.cs* -filen lägger du till följande kod för att få åtkomst till fil resursen program mässigt.
+I filen *program. cs* lägger du till följande kod för att få åtkomst till fil resursen program mässigt.
 
 # <a name="net-v12"></a>[\.NET-V12](#tab/dotnet)
 
@@ -559,7 +559,7 @@ Följande kod exempel visar hur du använder .NET-klient biblioteket för att ak
 
 # <a name="net-v11"></a>[\.NET-v11](#tab/dotnetv11)
 
-Lägg först till följande `using` direktiv i din *program.cs* -fil, tillsammans med de som du lade till ovan:
+Lägg först till följande `using` direktiv i filen *program. cs* , tillsammans med de som du lade till ovan:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;

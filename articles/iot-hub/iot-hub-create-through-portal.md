@@ -10,10 +10,10 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536053"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Skapa en IoT-hubb med hjälp av Azure Portal
@@ -36,13 +36,13 @@ Du kan ändra inställningarna för en befintlig IoT-hubb när den har skapats f
 
 Här följer några av de egenskaper som du kan ange för en IoT-hubb:
 
-**Priser och skala** : du kan använda den här egenskapen för att migrera till en annan nivå eller ange antalet IoT Hub enheter. 
+**Priser och skala**: du kan använda den här egenskapen för att migrera till en annan nivå eller ange antalet IoT Hub enheter. 
 
-**Drift övervakning** : Aktivera eller inaktivera olika övervaknings kategorier, till exempel loggning av händelser relaterade till meddelanden från enhet till moln eller meddelanden från moln till enhet.
+**Drift övervakning**: Aktivera eller inaktivera olika övervaknings kategorier, till exempel loggning av händelser relaterade till meddelanden från enhet till moln eller meddelanden från moln till enhet.
 
-**IP-filter** : Ange ett intervall med IP-adresser som ska godkännas eller avvisas av IoT Hub.
+**IP-filter**: Ange ett intervall med IP-adresser som ska godkännas eller avvisas av IoT Hub.
 
-**Egenskaper** : innehåller en lista över egenskaper som du kan kopiera och använda någon annan stans, till exempel resurs-ID, resurs grupp, plats och så vidare.
+**Egenskaper**: innehåller en lista över egenskaper som du kan kopiera och använda någon annan stans, till exempel resurs-ID, resurs grupp, plats och så vidare.
 
 ### <a name="shared-access-policies"></a>Principer för delad åtkomst
 
@@ -74,13 +74,13 @@ Klicka **på meddelanderoutning** under **meddelanden** för att se fönstret me
 
 ### <a name="routes"></a>Vägar
 
-Vägar är den första fliken i fönstret meddelanderoutning. Klicka på + **Lägg** till för att lägga till en ny väg. Följande skärm visas. 
+Vägar är den första fliken i fönstret meddelanderoutning. Klicka på +**Lägg** till för att lägga till en ny väg. Följande skärm visas. 
 
 ![Skärm bild som visar hur du lägger till en ny väg](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
 Namnge din väg. Väg namnet måste vara unikt inom listan över vägar för den hubben. 
 
-För **slut punkt** kan du välja en i list rutan eller lägga till en ny. I det här exemplet finns redan ett lagrings konto och en behållare. Klicka på + **Lägg** till bredvid List rutan slut punkt och välj **Blob Storage** om du vill lägga till dem som en slut punkt. Följande skärm bild visar var lagrings kontot och containern har angetts.
+För **slut punkt** kan du välja en i list rutan eller lägga till en ny. I det här exemplet finns redan ett lagrings konto och en behållare. Klicka på +**Lägg** till bredvid List rutan slut punkt och välj **Blob Storage** om du vill lägga till dem som en slut punkt. Följande skärm bild visar var lagrings kontot och containern har angetts.
 
 ![Skärm bild som visar hur du lägger till en lagrings slut punkt för Routningsprincipen](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
@@ -114,7 +114,7 @@ Här följer två sätt att hitta en speciell IoT-hubb i din prenumeration:
 
 1. Om du känner till resurs gruppen som IoT-hubben tillhör, klickar du på **resurs grupper** och väljer sedan resurs gruppen i listan. På skärmen resurs grupp visas alla resurser i gruppen, inklusive IoT-hubbar. Klicka på den hubb som du vill se.
 
-2. Klicka på **Alla resurser** . I rutan **alla resurser** finns en listruta som är standard för `All types` . Klicka på list rutan och avmarkera `Select all` . Leta upp `IoT Hub` och markera det. Klicka på list rutan för att stänga den, så kommer posterna att filtreras så att de bara visar dina IoT-hubbar.
+2. Klicka på **Alla resurser**. I rutan **alla resurser** finns en listruta som är standard för `All types` . Klicka på list rutan och avmarkera `Select all` . Leta upp `IoT Hub` och markera det. Klicka på list rutan för att stänga den, så kommer posterna att filtreras så att de bara visar dina IoT-hubbar.
 
 ## <a name="delete-the-iot-hub"></a>Ta bort IoT-hubben
 

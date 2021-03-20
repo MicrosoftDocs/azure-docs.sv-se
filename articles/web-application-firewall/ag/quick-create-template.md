@@ -10,10 +10,10 @@ ms.date: 09/16/2020
 ms.author: victorh
 ms.custom: subject-armqs
 ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091329"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Snabb start: skapa en Azure WAF v2 på Application Gateway med en ARM-mall

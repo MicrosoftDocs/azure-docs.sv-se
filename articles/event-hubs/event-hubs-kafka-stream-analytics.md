@@ -4,10 +4,10 @@ description: 'Självstudie: den här artikeln visar hur du bearbetar Kafka-händ
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319383"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Självstudie: bearbeta Apache Kafka för Event Hubs händelser med Stream Analytics 
@@ -63,7 +63,7 @@ När du skapar en **standard** nivå Event Hubs-namnrymd aktive ras Kafka-slutpu
     ```
 
     Den här koden skickar händelse data i **JSON** -format. När du konfigurerar indata för ett Stream Analytics jobb anger du JSON som format för indata. 
-7. **Kör producenten** och strömma till Event Hubs. När du använder en **Node.js kommando tolk**på en Windows-dator växlar du till `azure-event-hubs-for-kafka/quickstart/java/producer` mappen innan du kör kommandona. 
+7. **Kör producenten** och strömma till Event Hubs. När du använder en **Node.js kommando tolk** på en Windows-dator växlar du till `azure-event-hubs-for-kafka/quickstart/java/producer` mappen innan du kör kommandona. 
    
     ```shell
     mvn clean package
@@ -101,7 +101,7 @@ Frågan i Stream Analyticss jobbet passerar data utan att utföra någon analys.
 
 1. I aviserings meddelandet väljer du **gå till resurs** för att se sidan **Stream Analytics jobb** . 
 2. Välj **indata** i **jobb sto pol** section på den vänstra menyn.
-3. Välj **Lägg till Stream-indata**och välj sedan **Event Hub**. 
+3. Välj **Lägg till Stream-indata** och välj sedan **Event Hub**. 
 
     ![Lägg till händelsehubben som inmatad](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
 4. Gör följande på sidan konfiguration av **Event Hub-ingångs** konfiguration: 

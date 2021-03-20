@@ -4,10 +4,10 @@ description: Lär dig hur du publicerar ett hanterat tjänst erbjudande som inte
 ms.date: 02/17/2021
 ms.topic: how-to
 ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101092141"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publicera ett hanterat tjänst erbjudande på Azure Marketplace
@@ -26,13 +26,13 @@ Följande tabell kan hjälpa dig att avgöra om du ska publicera kunder genom at
 
 |**Att tänka på**  |**Erbjudande för hanterad tjänst**  |**ARM-mallar**  |
 |---------|---------|---------|
-|Kräver [partner Center-konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nej        |
-|Kräver [plattforms-eller guld plattforms kompetens nivå](/partner-center/learn-about-competencies) eller [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nej         |
-|Tillgängligt för nya kunder via Azure Marketplace     |Ja     |Nej       |
-|Kan begränsa erbjudandet till vissa kunder     |Ja (endast med privata erbjudanden som inte kan användas med prenumerationer som upprättats via en åter försäljare av leverantören av moln lösningar (CSP))         |Yes         |
-|Kräver kund godkännande i Azure Portal     |Ja     |Nej   |
-|Kan använda Automation för att publicera flera prenumerationer, resurs grupper eller kunder |Nej     |Ja    |
-|Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Yes         |
+|Kräver [partner Center-konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Inga        |
+|Kräver [plattforms-eller guld plattforms kompetens nivå](/partner-center/learn-about-competencies) eller [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Inga         |
+|Tillgängligt för nya kunder via Azure Marketplace     |Ja     |Inga       |
+|Kan begränsa erbjudandet till vissa kunder     |Ja (endast med privata erbjudanden som inte kan användas med prenumerationer som upprättats via en åter försäljare av leverantören av moln lösningar (CSP))         |Ja         |
+|Kräver kund godkännande i Azure Portal     |Ja     |Inga   |
+|Kan använda Automation för att publicera flera prenumerationer, resurs grupper eller kunder |Inga     |Ja    |
+|Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Ja         |
 
 > [!NOTE]
 > Hanterade tjänst erbjudanden kanske inte är tillgängliga i Azure Government och andra nationella moln.

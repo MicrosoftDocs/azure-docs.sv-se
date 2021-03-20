@@ -4,10 +4,10 @@ description: Lär dig hur du konverterar grupprincip från säkerhets bas linjen
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348652"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Så här skapar du princip definitioner för gäst konfiguration från grupprincip bas linje för Windows
@@ -29,7 +29,7 @@ I den här guiden går vi igenom processen för att skapa ett Azure Policy gäst
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Hämta säkerhets bas linjen för Windows Server 2019 och installera relaterade PowerShell-moduler
 
-Så här installerar du **DSC** , **GuestConfiguration** , **bas linje hantering** och relaterade Azure-moduler i PowerShell:
+Så här installerar du **DSC**, **GuestConfiguration**, **bas linje hantering** och relaterade Azure-moduler i PowerShell:
 
 1. Kör följande kommando från en PowerShell-kommandotolk:
 

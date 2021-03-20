@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565267"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Förbättra säkerheten för B2B-meddelanden med hjälp av certifikat
@@ -38,11 +38,11 @@ Om du vill använda ett *offentligt certifikat* i Logi Kap par som har B2B-funkt
 
    ![Hitta och välj ditt integrations konto](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
-2. Under **komponenter**väljer du panelen **certifikat** .
+2. Under **komponenter** väljer du panelen **certifikat** .
 
    ![Välj certifikat](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-3. Under **certifikat**väljer du **Lägg till**. Under **Lägg till certifikat**, ange den här informationen för ditt certifikat. När du är klar väljer du **OK**.
+3. Under **certifikat** väljer du **Lägg till**. Under **Lägg till certifikat**, ange den här informationen för ditt certifikat. När du är klar väljer du **OK**.
 
    | Egenskap | Värde | Beskrivning | 
    |----------|-------|-------------|
@@ -77,16 +77,16 @@ När du har definierat egenskaperna i de [avtal](logic-apps-enterprise-integrati
 
    ![Hitta ditt integrations konto](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
-4. Under **komponenter**väljer du panelen **certifikat** .  
+4. Under **komponenter** väljer du panelen **certifikat** .  
 
    ![Välj panelen certifikat](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-5. Under **certifikat**väljer du **Lägg till**. Under **Lägg till certifikat**, ange den här informationen för ditt certifikat. När du är klar väljer du **OK**.
+5. Under **certifikat** väljer du **Lägg till**. Under **Lägg till certifikat**, ange den här informationen för ditt certifikat. När du är klar väljer du **OK**.
 
    | Egenskap | Värde | Beskrivning | 
    |----------|-------|-------------|
    | **Namn** | <*certifikat-namn*> | Certifikatets namn, som är "privateCert" i det här exemplet | 
-   | **Certifikat typ** | Privata | Ditt certifikats typ |
+   | **Certifikat typ** | Privat | Ditt certifikats typ |
    | **Certifikat** | <*certifikat-fil namn*> | Om du vill söka efter och välja den certifikat fil som du vill överföra väljer du mappikonen bredvid rutan **certifikat** . När du använder ett nyckel valv för den privata nyckeln är den överförda filen det offentliga certifikatet. | 
    | **Resursgrupp** | <*integrering – konto – resurs grupp*> | Integrations kontots resurs grupp, som är "MyResourceGroup" i det här exemplet | 
    | **Key Vault** | <*Key-valv-namn*> | Ditt Azure Key Vault-namn |

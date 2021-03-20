@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: 4dbda13ffe04e0a4214b24ccaca2b8103a39b9f2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536070"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurera IoT Hub fil överföringar med Azure CLI
@@ -89,15 +89,15 @@ Nu kan du konfigurera din IoT Hub så att du kan [Ladda upp filer till IoT Hub](
 
 Konfigurationen kräver följande värden:
 
-* **Lagrings behållare** : en BLOB-behållare i ett Azure Storage-konto i din aktuella Azure-prenumeration som ska associeras med IoT-hubben. Du har hämtat den nödvändiga lagrings konto informationen i föregående avsnitt. IoT Hub skapar automatiskt SAS-URI: er med Skriv behörighet till den här BLOB-behållaren för enheter som ska användas när de laddar upp filer.
+* **Lagrings behållare**: en BLOB-behållare i ett Azure Storage-konto i din aktuella Azure-prenumeration som ska associeras med IoT-hubben. Du har hämtat den nödvändiga lagrings konto informationen i föregående avsnitt. IoT Hub skapar automatiskt SAS-URI: er med Skriv behörighet till den här BLOB-behållaren för enheter som ska användas när de laddar upp filer.
 
-* **Ta emot meddelanden om överförda filer** : Aktivera eller inaktivera meddelanden om fil uppladdning.
+* **Ta emot meddelanden om överförda filer**: Aktivera eller inaktivera meddelanden om fil uppladdning.
 
-* **SAS-TTL** : den här inställningen är TTL-värdet för de SAS-URI: er som returnerades till enheten med IoT Hub. Ange en timme som standard.
+* **SAS-TTL**: den här inställningen är TTL-värdet för de SAS-URI: er som returnerades till enheten med IoT Hub. Ange en timme som standard.
 
 * **Inställningar för fil meddelanden standard TTL: TTL-värde** för fil överföring innan det upphör att gälla. Ange en dag som standard.
 
-* **Maximalt antal leveranser för fil meddelanden** : antalet gånger som IoT Hub försöker leverera ett meddelande om fil överföring. Ange till 10 som standard.
+* **Maximalt antal leveranser för fil meddelanden**: antalet gånger som IoT Hub försöker leverera ett meddelande om fil överföring. Ange till 10 som standard.
 
 Använd följande Azure CLI-kommandon för att konfigurera fil överförings inställningarna på din IoT-hubb:
 

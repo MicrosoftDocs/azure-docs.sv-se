@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879300"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planera ett Azure Application erbjudande för den kommersiella marknads platsen
@@ -121,7 +121,7 @@ När du skapar ett nytt Azure Application erbjudande i Partner Center, kommer du
 5. Sekretess policy adress (länk)
 6. Erbjudandets namn
 7. Sammanfattning
-8. Description
+8. Beskrivning
 9. Skärm bilder/videor
 
 Följande skärm bild visar hur information om erbjudandet visas i Azure Portal:

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
 ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100571688"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeta med den tidigare versionen av Azure Migrate
@@ -85,7 +85,7 @@ En dator flyttas bara till ett senare steg om den tidigare har passerat. Om en d
 
 Vyn för Azure-beredskap i utvärderingen visar beredskapsstatus för varje virtuell dator.
 
-**Beredskap** | **Stat** | **Information**
+**Beredskap** | **Tillstånd** | **Information**
 --- | --- | ---
 Redo för Azure | Inga kompatibilitetsproblem. Datorn kan migreras med Azure, och den kommer att startas i Azure med fullständig support för Azure. | För förberedda virtuella datorer rekommenderar Azure Migrate en VM-storlek i Azure.
 Villkorligt redo för Azure | Datorn kan starta i Azure, men kanske inte har fullständig support för Azure. Till exempel en dator med en äldre version av Windows Server som inte stöds i Azure. | Azure Migrate förklarar beredskaps problemen och ger åtgärder.

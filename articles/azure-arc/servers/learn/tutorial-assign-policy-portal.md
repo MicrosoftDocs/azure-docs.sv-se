@@ -4,10 +4,10 @@ description: I den här självstudien använder du Azure Portal för att skapa e
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91826590"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Självstudie: skapa en princip tilldelning för att identifiera icke-kompatibla resurser
@@ -16,13 +16,13 @@ Det första steget mot att förstå kompatibilitet i Azure är att identifiera d
 
 I slutet av den här processen kommer du att kunna identifiera datorer som inte har Log Analytics agent för Windows eller Linux installerat. De är _inkompatibla_ med principtilldelningen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
 ## <a name="create-a-policy-assignment"></a>Skapa en principtilldelning
 
-I den här självstudien skapar du en princip tilldelning och tilldelar _ \[ förhands granskningen]: Log Analytics-agenten ska installeras på princip definitionen för Linux Azure-Arc-datorer_ .
+I den här självstudien skapar du en princip tilldelning och tilldelar _\[ förhands granskningen]: Log Analytics-agenten ska installeras på princip definitionen för Linux Azure-Arc-datorer_ .
 
 1. Starta Azure Policy-tjänsten i Azure Portal genom att klicka på **Alla tjänster** och sedan söka efter och välja **Princip**.
 
@@ -30,11 +30,11 @@ I den här självstudien skapar du en princip tilldelning och tilldelar _ \[ fö
 
 1. Välj **Tilldelningar** till vänster på sidan Azure Policy. En tilldelning är en princip som tilldelats ett specifikt område.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Sök efter princip i alla tjänster" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Sidan Välj tilldelningar från sidan princip översikt" border="false":::
 
 1. Välj **Tilldela princip** längst upp på sidan **Princip – Tilldelningar**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Sök efter princip i alla tjänster" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Tilldela en princip definition från sidan tilldelningar" border="false":::
 
 1. På sidan **Tilldela princip** väljer du **Omfång** genom att klicka på ellipsen och antingen välja en hanteringsgrupp eller en prenumeration. Du kan även välja en resursgrupp. Ett omfång avgör vilka resurser eller grupper med resurser som principtilldelningen används i. Klicka sedan på **Välj** längst ned på sidan **Omfång**.
 
@@ -50,11 +50,11 @@ I den här självstudien skapar du en princip tilldelning och tilldelar _ \[ fö
 
    En lista över tillgängliga inbyggda principer finns i [Azure policy exempel](../../../governance/policy/samples/index.md).
 
-1. Sök igenom listan princip definitioner för att hitta _ \[ förhands granskningen]: Log Analytics agenten ska installeras på Windows Azure Arc Machines_ -definitionen om du har aktiverat agenten för Arc-aktiverade servrar på en Windows-baserad dator. För en Linux-baserad dator hittar du motsvarande för _ \[ hands version]: Log Analytics agenten ska installeras på princip definitionen för Linux-datorer i Linux_ . Klicka på principen och sedan på **Välj**.
+1. Sök igenom listan princip definitioner för att hitta _\[ förhands granskningen]: Log Analytics agenten ska installeras på Windows Azure Arc Machines_ -definitionen om du har aktiverat agenten för Arc-aktiverade servrar på en Windows-baserad dator. För en Linux-baserad dator hittar du motsvarande för _\[ hands version]: Log Analytics agenten ska installeras på princip definitionen för Linux-datorer i Linux_ . Klicka på principen och sedan på **Välj**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Sök efter princip i alla tjänster" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Hitta rätt principdefinition" border="false":::
 
-1. **Tilldelningsnamn** fylls i automatiskt med namnet på principen som du valde, men du kan ändra det om du vill. I det här exemplet lämnar du _ \[ förhands granskning]: Log Analytics agenten ska installeras på dina Windows Azure Arc-datorer_ eller för _ \[ hands version]: Log Analytics agenten ska installeras på dina Linux Azure Arc-datorer_ beroende på vilken du har valt. Du kan också lägga till en valfri **Beskrivning**. Beskrivningen innehåller information om den här principtilldelningen.
+1. **Tilldelningsnamn** fylls i automatiskt med namnet på principen som du valde, men du kan ändra det om du vill. I det här exemplet lämnar du _\[ förhands granskning]: Log Analytics agenten ska installeras på dina Windows Azure Arc-datorer_ eller för _\[ hands version]: Log Analytics agenten ska installeras på dina Linux Azure Arc-datorer_ beroende på vilken du har valt. Du kan också lägga till en valfri **Beskrivning**. Beskrivningen innehåller information om den här principtilldelningen.
    **Assigned by** (Tilldelats av) anges automatiskt baserat på vem som är inloggad. Det här fältet är valfritt, så du kan ange anpassade värden.
 
 1. Lämna **Skapa en hanterad identitet** avmarkerat. Den här rutan _måste_ markeras när principen eller initiativet omfattar en princip med effekten [deployIfNotExists](../../../governance/policy/concepts/effects.md#deployifnotexists). Eftersom principen som används för den här snabbstarten inte gör det kan du lämna det tomt. Mer information finns i avsnitten om [hanterade identiteter](../../../active-directory/managed-identities-azure-resources/overview.md) och [hur reparationssäkerhet fungerar](../../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works).
@@ -65,9 +65,9 @@ Du är nu redo att identifiera icke-kompatibla resurser för att förstå miljö
 
 ## <a name="identify-non-compliant-resources"></a>Identifiera icke-kompatibla resurser
 
-Välj **Efterlevnad** till vänster på sidan. Leta sedan reda på för ** \[ hands versionen]: Log Analytics-agenten ska installeras på dina Windows Azure Arc-datorer eller för** ** \[ hands version]: Log Analytics agenten bör installeras på den princip tilldelning för Linux-datorer i Linux** som du har skapat.
+Välj **Efterlevnad** till vänster på sidan. Leta sedan reda på för **\[ hands versionen]: Log Analytics-agenten ska installeras på dina Windows Azure Arc-datorer eller för** **\[ hands version]: Log Analytics agenten bör installeras på den princip tilldelning för Linux-datorer i Linux** som du har skapat.
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Sök efter princip i alla tjänster" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Information om efterlevnad på sidan efterlevnadsprincip" border="false":::
 
 Om det finns befintliga resurser som inte är kompatibla med denna nya tilldelning visas de under **Icke-kompatibla resurser**.
 
@@ -87,11 +87,11 @@ När ett villkor utvärderas mot de befintliga resurserna och visas vara korrekt
 
 Följ dessa steg för att ta bort tilldelningen som skapades:
 
-1. Välj **efterlevnad** (eller **tilldelningar**) till vänster på sidan Azure policy och leta upp ** \[ förhands granskningen]: Log Analytics agenten ska installeras på dina Windows Azure Arc-datorer eller för** ** \[ hands version]: Log Analytics agenten ska installeras på din Linux Azure Arc-dator** princip tilldelning som du har skapat.
+1. Välj **efterlevnad** (eller **tilldelningar**) till vänster på sidan Azure policy och leta upp **\[ förhands granskningen]: Log Analytics agenten ska installeras på dina Windows Azure Arc-datorer eller för** **\[ hands version]: Log Analytics agenten ska installeras på din Linux Azure Arc-dator** princip tilldelning som du har skapat.
 
 1. Högerklicka på princip tilldelningen och välj **ta bort tilldelning**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Sök efter princip i alla tjänster" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Ta bort en tilldelning från sidan efterlevnad" border="false":::
 
 ## <a name="next-steps"></a>Nästa steg
 

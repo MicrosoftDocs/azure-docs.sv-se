@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103500"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Konto hanterings åtgärder på Azure Data Lake Storage Gen1 med REST API
@@ -23,7 +23,7 @@ ms.locfileid: "92103500"
 
 I den här artikeln får du lära dig hur du utför konto hanterings åtgärder på Azure Data Lake Storage Gen1 med hjälp av REST API. Konto hanterings åtgärder omfattar att skapa ett Data Lake Storage Gen1 konto, ta bort ett Data Lake Storage Gen1-konto osv. Instruktioner för hur du utför fil Systems åtgärder på Data Lake Storage Gen1 att använda REST API finns i [fil Systems åtgärder på data Lake Storage gen1 med REST API](data-lake-store-data-operations-rest-api.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * **[sväng](https://curl.haxx.se/)**. I den här artikeln används en sväng för att demonstrera hur du gör REST API anrop mot ett Data Lake Storage Gen1-konto.

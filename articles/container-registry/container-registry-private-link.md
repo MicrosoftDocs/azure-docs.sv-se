@@ -4,10 +4,10 @@ description: Konfigurera en privat slut punkt i ett behållar register och aktiv
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93342308"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Anslut privat till ett Azure Container Registry med hjälp av Azure Private Link
@@ -50,7 +50,7 @@ VM_NAME=<virtual-machine-name>
 
 Om du inte redan har dem behöver du namnen på ett virtuellt nätverk och undernät för att skapa en privat länk. I det här exemplet använder du samma undernät för den virtuella datorn och registrets privata slut punkt. I många scenarier skulle du dock konfigurera slut punkten i ett separat undernät. 
 
-När du skapar en virtuell dator skapar Azure som standard ett virtuellt nätverk i samma resurs grupp. Namnet på det virtuella nätverket baseras på namnet på den virtuella datorn. Om du till exempel namnger din virtuella dator *myDockerVM* är det virtuella standard nätverks namnet *myDockerVMVNET* , med ett undernät som heter *myDockerVMSubnet*. Ange dessa värden i miljövariabler genom att köra kommandot [AZ Network VNet List][az-network-vnet-list] :
+När du skapar en virtuell dator skapar Azure som standard ett virtuellt nätverk i samma resurs grupp. Namnet på det virtuella nätverket baseras på namnet på den virtuella datorn. Om du till exempel namnger din virtuella dator *myDockerVM* är det virtuella standard nätverks namnet *myDockerVMVNET*, med ett undernät som heter *myDockerVMSubnet*. Ange dessa värden i miljövariabler genom att köra kommandot [AZ Network VNet List][az-network-vnet-list] :
 
 ```azurecli
 NETWORK_NAME=$(az network vnet list \
@@ -205,7 +205,7 @@ Konfigurera en privat länk när du skapar ett register eller Lägg till en priv
 ### <a name="create-a-private-endpoint---new-registry"></a>Skapa en privat slut punkt – nytt register
 
 1. När du skapar ett register i portalen väljer du **Premium** i **SKU** på fliken **grundläggande** .
-1. Välj fliken **nätverk** .
+1. Välj fliken **Nätverk**.
 1. I **nätverks anslutning** väljer du **privat slut punkt**  >  **+ Lägg till**.
 1. Ange eller Välj följande information:
 
@@ -213,7 +213,7 @@ Konfigurera en privat länk när du skapar ett register eller Lägg till en priv
     | ------- | ----- |
     | Prenumeration | Välj din prenumeration. |
     | Resursgrupp | Ange namnet på en befintlig grupp eller skapa en ny.|
-    | Namn | Ange ett unikt namn. |
+    | Name | Ange ett unikt namn. |
     | Underresurs |Välj **register**|
     | **Nätverk** | |
     | Virtuellt nätverk| Välj det virtuella nätverk där den virtuella datorn distribueras, till exempel *myDockerVMVNET*. |
@@ -298,7 +298,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Inaktivera offentlig åtkomst – Portal
 
 1. I portalen navigerar du till ditt behållar register och väljer **inställningar > nätverk**.
-1. På fliken **offentlig åtkomst** , i **Tillåt offentligt nätverks åtkomst** , väljer du **inaktive rad**. Välj sedan **Spara**.
+1. På fliken **offentlig åtkomst** , i **Tillåt offentligt nätverks åtkomst**, väljer du **inaktive rad**. Välj sedan **Spara**.
 
 ## <a name="validate-private-link-connection"></a>Verifiera anslutning till privat länk
 

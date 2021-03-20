@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
 ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565419"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Konfigurera katastrof återställning mellan regioner för integrations konton i Azure Logic Apps
@@ -89,7 +89,7 @@ Om du vill aktivera haveri beredskap för inkommande meddelanden väljer du de d
 
 1. Skapa en [logisk app](../logic-apps/quickstart-create-first-logic-app-workflow.md) i en sekundär region.    
 
-2. Sök på **X12**och välj **X12 – när ett kontroll nummer ändras**.   
+2. Sök på **X12** och välj **X12 – när ett kontroll nummer ändras**.   
 
    ![Sök efter X12](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
@@ -100,7 +100,7 @@ Om du vill aktivera haveri beredskap för inkommande meddelanden väljer du de d
 
    ![Skärm bild som visar var du anger ett namn på anslutningen och väljer ditt integrations konto för den primära regionen. ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. Inställningen **datetime för start av kontroll numret** är valfri. **Frekvensen** kan anges till **dag**, **timme**, **minut**eller **sekund** med ett intervall.   
+4. Inställningen **datetime för start av kontroll numret** är valfri. **Frekvensen** kan anges till **dag**, **timme**, **minut** eller **sekund** med ett intervall.   
 
    ![Skärm bild som visar inställningen DateTime för att starta kontroll nummerens synkronisering.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
@@ -108,7 +108,7 @@ Om du vill aktivera haveri beredskap för inkommande meddelanden väljer du de d
 
    ![Skärm bild som visar knappen Nytt steg och alternativet Lägg till en åtgärd.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. Sök på **X12**och välj **X12 – Lägg till eller uppdatera kontroll nummer**.   
+6. Sök på **X12** och välj **X12 – Lägg till eller uppdatera kontroll nummer**.   
 
    ![Lägg till eller uppdatera kontroll nummer](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
@@ -144,7 +144,7 @@ Om du vill aktivera haveri beredskap för inkommande meddelanden väljer du de d
 
 1. Skapa en [logisk app](../logic-apps/quickstart-create-first-logic-app-workflow.md) i en sekundär region.    
 
-2. Sök på **EDIFACT**och välj **EDIFACT – när ett kontroll nummer ändras**.
+2. Sök på **EDIFACT** och välj **EDIFACT – när ett kontroll nummer ändras**.
 
    ![Sök efter EDIFACT](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
@@ -155,7 +155,7 @@ Om du vill aktivera haveri beredskap för inkommande meddelanden väljer du de d
 
    ![Namn på integrations konto för primär region](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. Inställningen **datetime för start av kontroll numret** är valfri. **Frekvensen** kan anges till **dag**, **timme**, **minut**eller **sekund** med ett intervall.    
+4. Inställningen **datetime för start av kontroll numret** är valfri. **Frekvensen** kan anges till **dag**, **timme**, **minut** eller **sekund** med ett intervall.    
 
    ![Skärm bild som visar inställningarna för datum/tid och frekvens.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
@@ -163,7 +163,7 @@ Om du vill aktivera haveri beredskap för inkommande meddelanden väljer du de d
 
    ![Skärm bild som visar var du väljer Lägg till en åtgärd.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. Sök på **EDIFACT**och välj **EDIFACT – Lägg till eller uppdatera kontroll nummer**.   
+7. Sök på **EDIFACT** och välj **EDIFACT – Lägg till eller uppdatera kontroll nummer**.   
 
    ![Skärm bild som visar var du kan lägga till eller uppdatera kontroll nummer.](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
@@ -196,7 +196,7 @@ Affärs kontinuitet för dokument som använder AS2-protokollet baseras på medd
 
 1. Skapa en [Logic-app](../logic-apps/quickstart-create-first-logic-app-workflow.md) i den sekundära regionen.  
 
-2. Sök på **AS2**och välj **AS2 – när ett MIC-värde skapas**.   
+2. Sök på **AS2** och välj **AS2 – när ett MIC-värde skapas**.   
 
    ![Sök efter AS2](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
@@ -207,7 +207,7 @@ Affärs kontinuitet för dokument som använder AS2-protokollet baseras på medd
 
    ![Skärm bild som visar var du anger ett anslutnings namn när ett MIC-värde skapas.](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. Inställningen **datetime för start av mikrofon värde** är valfri. **Frekvensen** kan anges till **dag**, **timme**, **minut**eller **sekund** med ett intervall.   
+4. Inställningen **datetime för start av mikrofon värde** är valfri. **Frekvensen** kan anges till **dag**, **timme**, **minut** eller **sekund** med ett intervall.   
 
    ![DateTime och frekvens](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
@@ -215,7 +215,7 @@ Affärs kontinuitet för dokument som använder AS2-protokollet baseras på medd
 
    ![Nytt steg, Lägg till en åtgärd](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. Sök på **AS2**och välj **AS2 – Lägg till eller uppdatera MIC-innehåll**.  
+6. Sök på **AS2** och välj **AS2 – Lägg till eller uppdatera MIC-innehåll**.  
 
    ![Tillägg eller uppdatering av MIC](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 

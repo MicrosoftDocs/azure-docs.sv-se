@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9caf63fc90be7bae0461ddc24c94594a32199765
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91812782"
 ---
 #### <a name="microsoft-windows"></a>Microsoft Windows
@@ -31,6 +31,6 @@ ms.locfileid: "91812782"
 ##### <a name="ikev2"></a>IKEv2
 
 1. Välj de VPN-klientkonfigurationsfiler som motsvarar Windows-datorns arkitektur. Välj ”VpnClientSetupAmd64”-installationspaketet för en 64-bitars processorarkitektur. Välj ”VpnClientSetupX86”-installationspaketet för en 32-bitars processorarkitektur.
-1. Dubbelklicka på paketet för att installera det. Om du ser ett SmartScreen-fönster väljer du **Mer information**och **kör ändå**.
+1. Dubbelklicka på paketet för att installera det. Om du ser ett SmartScreen-fönster väljer du **Mer information** och **kör ändå**.
 1. På klient datorn går du till **nätverks inställningar** och väljer **VPN**. VPN-anslutningen visar namnet på det virtuella nätverk som den ansluter till.
 1. Innan du försöker ansluta kontrollerar du att du har installerat ett klientcertifikat på klientdatorn. Ett klientcertifikat krävs för autentisering när du använder den interna Azure-certifikatautentiseringstypen. Mer information om hur du skapar certifikat finns i [Skapa certifikat](../articles/virtual-wan/certificates-point-to-site.md). Information om hur du installerar ett klient certifikat finns i [Installera ett klient certifikat](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md).

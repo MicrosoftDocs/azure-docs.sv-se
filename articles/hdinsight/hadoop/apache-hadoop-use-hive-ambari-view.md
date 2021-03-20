@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944872"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Använd Apache Ambari Hive-vyn med Apache Hadoop i HDInsight
@@ -145,7 +145,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-Du kan sedan använda UDF-filen i din fråga. Ett exempel är `SELECT myawesomeudf(name) FROM people;`.
+Du kan sedan använda UDF-filen i din fråga. Till exempel `SELECT myawesomeudf(name) FROM people;`.
 
 Mer information om hur du använder UDF: er med Hive i HDInsight finns i följande artiklar:
 

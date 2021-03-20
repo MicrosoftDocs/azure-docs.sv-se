@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
 ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100571630"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Övervaknings data referens för Azure Blob Storage
@@ -64,7 +64,7 @@ Azure Storage stöder följande dimensioner för mått i Azure Monitor.
 
 ### <a name="dimensions-specific-to-blob-storage"></a>Dimensioner som är speciella för Blob Storage
 
-| Dimensions namn | Description |
+| Dimensions namn | Beskrivning |
 | ------------------- | ----------------- |
 | **BlobType** | Typ av BLOB för BLOB-mått. De värden som stöds är **BlockBlob**, **PageBlob** och **Azure Data Lake Storage**. Bifogade blobbar ingår i **BlockBlob**. |
 | **BlobTier** | Azure Storage erbjuder olika åtkomst nivåer, vilket gör att du kan lagra BLOB-Datadata på det mest kostnads effektiva sättet. Läs mer i [Azure Storage BLOB-nivå](../blobs/storage-blob-storage-tiers.md). De värden som stöds är: <br/> <li>Frekvent **: frekvent** nivå</li> <li>Låg **frekvent: låg** frekvent nivå</li> <li>**Arkiv**: Arkiv lag ring</li> <li>**Premium**: Premium-nivån för Block-Blob</li> <li>**P4/P6/P10/p15/P20/P30/P40/P50/P60**: nivå typer för Premium Page-BLOB</li> <li>**Standard**: nivå typ för standard sid-BLOB</li> <li>Inte i **nivå**: nivå typ för generell användning v1 lagrings konto</li> |

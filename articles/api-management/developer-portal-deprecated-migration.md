@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92326028"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Migrera till den nya Developer-portalen
@@ -57,7 +57,7 @@ När du migrerar från den inaktuella portalen bör du tänka på följande änd
 - Om du har ändrat standardmallarna för e-postaviseringar som innehåller en explicit definierad föråldrad portal-URL, ändrar du dem till antingen använda portalens URL-parameter eller pekar på den nya portalens URL. Om mallarna använder den inbyggda portal-URL-parametern i stället krävs inga ändringar.
 - *Problem* och *program* stöds inte i den nya Developer-portalen.
 - Direkt integrering med Facebook, Microsoft, Twitter och Google som identitets leverantörer stöds inte i den nya Developer-portalen. Du kan integrera med dessa leverantörer via Azure AD B2C.
-- Om du använder delegering ändrar du retur-URL: en i dina program och använder [API-slutpunkten *Hämta delad åtkomsttoken* ](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) i stället för URL-slutpunkten *generera SSO* .
+- Om du använder delegering ändrar du retur-URL: en i dina program och använder [API-slutpunkten *Hämta delad åtkomsttoken*](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) i stället för URL-slutpunkten *generera SSO* .
 - Om du använder Azure AD som identitets leverantör:
 
     - Ändra retur-URL: en i programmet så att den pekar på den nya Developer Portal-domänen.
@@ -82,5 +82,5 @@ När du migrerar från den inaktuella portalen bör du tänka på följande änd
 
 Läs mer om Developer-portalen:
 
-- [Översikt över Azure API Management Developer-portalen](api-management-howto-developer-portal.md)
+- [Översikt över Azure API Management-utvecklarportalen](api-management-howto-developer-portal.md)
 - [Komma åt och anpassa Developer-portalen](api-management-howto-developer-portal-customize.md)

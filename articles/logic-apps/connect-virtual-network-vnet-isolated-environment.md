@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97739747"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Ansluta till virtuella Azure-nätverk från Azure Logic Apps med hjälp av en integrerings tjänst miljö (ISE)
@@ -104,7 +104,7 @@ I den här tabellen beskrivs de portar som din ISE måste ha åtkomst till och s
 
 #### <a name="inbound-security-rules"></a>Ingående säkerhetsregler
 
-| Syfte | Käll tjänst tag gen eller IP-adresser | Källportar | Mål service tag eller IP-adresser | Målportar | Obs! |
+| Syfte | Käll tjänst tag gen eller IP-adresser | Källportar | Mål service tag eller IP-adresser | Målportar | Kommentarer |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Kommunikation mellan undernät i det virtuella nätverket | Adress utrymme för det virtuella nätverket med ISE-undernät | * | Adress utrymme för det virtuella nätverket med ISE-undernät | * | Krävs för att trafik ska flöda *mellan* under näten i det virtuella nätverket. <p><p>**Viktigt**: för att trafik ska flöda mellan *komponenterna* i varje undernät, se till att du öppnar alla portar i varje undernät. |
 | Båda: <p>Kommunikation till din Logic app <p><p>Kör historik för Logic app| Intern ISE: <br>**VirtualNetwork** <p><p>Extern ISE: **Internet** eller se **kommentarer** | * | **VirtualNetwork** | 443 | I stället för att använda taggen **Internet** service kan du ange käll-IP-adressen för följande objekt: <p><p>– Datorn eller tjänsten som anropar alla begär ande utlösare eller Webhooks i din Logic app <p>– Datorn eller tjänsten som du vill få åtkomst till kör historik för Logic app <p><p>**Viktigt**: om du stänger eller blockerar den här porten förhindras anrop till Logic Apps som har begär ande utlösare eller Webhooks. Du hindras också från att komma åt indata och utdata för varje steg i körnings historiken. Du kommer dock inte hindras från att komma åt körnings historiken för Logic app.|
@@ -119,7 +119,7 @@ I den här tabellen beskrivs de portar som din ISE måste ha åtkomst till och s
 
 #### <a name="outbound-security-rules"></a>Säkerhetsregler för utgående trafik
 
-| Syfte | Käll tjänst tag gen eller IP-adresser | Källportar | Mål service tag eller IP-adresser | Målportar | Obs! |
+| Syfte | Käll tjänst tag gen eller IP-adresser | Källportar | Mål service tag eller IP-adresser | Målportar | Kommentarer |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Kommunikation mellan undernät i det virtuella nätverket | Adress utrymme för det virtuella nätverket med ISE-undernät | * | Adress utrymme för det virtuella nätverket med ISE-undernät | * | Krävs för att trafik ska flöda *mellan* under näten i det virtuella nätverket. <p><p>**Viktigt**: för att trafik ska flöda mellan *komponenterna* i varje undernät, se till att du öppnar alla portar i varje undernät. |
 | Kommunikation från din Logic app | **VirtualNetwork** | * | Varierar beroende på mål | 80, 443 | Målet varierar beroende på slut punkterna för den externa tjänst som din Logic app behöver för att kommunicera med. |
@@ -286,7 +286,7 @@ Om du inte tillåter åtkomst för dessa beroenden Miss lyckas din ISE-distribut
    
    1. Baserat på följande information lägger du till en inkommande säkerhets regel för de offentliga utgående IP-adresser som du kopierade. Mer information finns i [Självstudier: filtrera nätverks trafik med en nätverks säkerhets grupp med hjälp av Azure Portal](../virtual-network/tutorial-filter-network-traffic.md#create-a-network-security-group).
 
-      | Syfte | Käll tjänst tag gen eller IP-adresser | Källportar | Mål service tag eller IP-adresser | Målportar | Obs! |
+      | Syfte | Käll tjänst tag gen eller IP-adresser | Källportar | Mål service tag eller IP-adresser | Målportar | Kommentarer |
       |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
       | Tillåt trafik från utgående IP-adresser för anslutningar | <*anslutnings-offentlig-utgående IP-adresser*> | * | Adress utrymme för det virtuella nätverket med ISE-undernät | * | |
       |||||||
@@ -299,7 +299,7 @@ Om du inte tillåter åtkomst för dessa beroenden Miss lyckas din ISE-distribut
    > Mer information finns i de här ämnena:
    >
    > * [Översikt över Azure App Service diagnostik](../app-service/overview-diagnostics.md)
-   > * [Meddelande loggning för Azure App Service-miljön](../app-service/environment/using-an-ase.md#logging)
+   > * [Meddelande loggning för Azure App Service Environment](../app-service/environment/using-an-ase.md#logging)
 
 1. Information om hur du börjar skapa Logi Kap par och andra artefakter i din ISE finns i [lägga till resurser i integrerings tjänst miljöer](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 

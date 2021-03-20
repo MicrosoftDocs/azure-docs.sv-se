@@ -4,10 +4,10 @@ description: Beskriver parametrar för att uppgradera ett Service Fabric program
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018485"
 ---
 # <a name="application-upgrade-parameters"></a>Programuppgraderingsparametrar
@@ -33,7 +33,7 @@ Visual Studio Service Fabric program uppgraderings parametrar anges via dialog r
 ### <a name="required-parameters"></a>Obligatoriska parametrar
 (PS = PowerShell, VS = Visual Studio)
 
-| Parameter | Gäller för | Description |
+| Parameter | Gäller för | Beskrivning |
 | --- | --- | --- |
 ApplicationName |PS| Namnet på det program som uppgraderas. Exempel: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|Den version av program typen som uppgraderings målen gäller. |
@@ -48,7 +48,7 @@ UnmonitoredManual | PS | Anger att uppgraderings läget är oövervakad manuell.
 Parametrarna för hälso utvärdering är valfria. Om villkoren för hälso utvärdering inte anges när en uppgradering startar, använder Service Fabric de program hälso principer som anges i ApplicationManifest.xml i program instansen.
 
 > [!div class="mx-tdBreakAll"]
-> | Parameter | Gäller för | Description |
+> | Parameter | Gäller för | Beskrivning |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Anger åsidosättningar för program parametrar.<br>PowerShell-programparametrar anges som hash-namn/värdepar. Till exempel @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Visual Studio-programparametrar kan anges i dialog rutan publicera Service Fabric program i fältet **program parameter fil** .
 > | Bekräfta |PS| Tillåtna värden är **True** och **false**. Du uppmanas att bekräfta innan du kör cmdleten. |

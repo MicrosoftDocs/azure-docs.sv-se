@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360707"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Distribuera StorSimple Enhetshanteraren-tjänsten för enheter med StorSimple 8000-serien
@@ -58,7 +58,7 @@ Utför följande steg för att skapa en tjänst.
 Följande attribut finns för varje StorSimple Enhetshanteraren-tjänst:
 
 * **Namn** – det namn som har tilldelats till din StorSimple Enhetshanteraren-tjänst när den skapades. **Det går inte att ändra tjänst namnet när tjänsten har skapats. Detta gäller även för andra entiteter, till exempel enheter, volymer, volym behållare och säkerhets kopierings principer som inte kan byta namn på Azure Portal.**
-* **Status** – tjänstens status, som kan vara **aktiv** , **skapas** eller **online**.
+* **Status** – tjänstens status, som kan vara **aktiv**, **skapas** eller **online**.
 * **Plats** – den geografiska plats där StorSimple-enheten kommer att distribueras.
 * **Prenumeration** – den fakturerings prenumeration som är associerad med din tjänst.
 
@@ -196,16 +196,16 @@ I Azure Portal stöds endast de StorSimple-enheter som kör uppdatering 5,0 och 
 | Skanna, ladda ned och installera uppdateringar                                                                                             | Ja            |
 | Inaktivera enhet                                                                                                               | Ja            |
 | Ta bort enhet                                                                                                                   | Ja            |
-| Skapa, ändra och ta bort en volym behållare                                                                                   | Nej             |
-| Skapa, ändra och ta bort en volym                                                                                             | Nej             |
-| Skapa, ändra och ta bort en princip för säkerhets kopiering                                                                                      | Nej             |
-| Gör en manuell säkerhets kopiering                                                                                                            | Nej             |
+| Skapa, ändra och ta bort en volym behållare                                                                                   | Inga             |
+| Skapa, ändra och ta bort en volym                                                                                             | Inga             |
+| Skapa, ändra och ta bort en princip för säkerhets kopiering                                                                                      | Inga             |
+| Gör en manuell säkerhets kopiering                                                                                                            | Inga             |
 | Gör en schemalagd säkerhets kopiering                                                                                                         | Inte tillämpligt |
-| Återställ från en säkerhets kopian                                                                                                        | Nej             |
+| Återställ från en säkerhets kopian                                                                                                        | Inga             |
 | Klona till en enhet som kör uppdatering 3,0 och senare <br> Käll enheten kör version före uppdatering 3,0.                                | Ja            |
-| Klona till en enhet som kör versioner före uppdateringen 3,0                                                                          | Nej             |
+| Klona till en enhet som kör versioner före uppdateringen 3,0                                                                          | Inga             |
 | Redundans som käll enhet <br> (från en enhet som kör version före uppdatering 3,0 till en enhet som kör uppdatering 3,0 och senare)                                                               | Ja            |
-| Redundansväxling som mål enhet <br> (till en enhet som kör program varu version före uppdatering 3,0)                                                                                   | Nej             |
+| Redundansväxling som mål enhet <br> (till en enhet som kör program varu version före uppdatering 3,0)                                                                                   | Inga             |
 | Rensa en avisering                                                                                                                  | Ja            |
 | Visa säkerhets kopierings principer, säkerhets kopierings katalog, volymer, volym behållare, övervaknings diagram, jobb och aviseringar som skapats i den klassiska portalen | Ja            |
 | Aktivera och inaktivera enhets styrenheter                                                                                              | Ja            |

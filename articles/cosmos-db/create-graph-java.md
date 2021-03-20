@@ -10,10 +10,10 @@ ms.date: 03/26/2019
 ms.author: chrande
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 5a793eb69b344e361679759e46db47c78885831e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360980"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Snabb start: bygga en graf-databas med Java SDK och Azure Cosmos DB Gremlin-API: et
@@ -168,7 +168,7 @@ Gå nu tillbaka till Azure Portal för att hämta anslutningsinformation och kop
 
 Nu kan du gå tillbaka till datautforskaren och se de hörn som lagts till i grafen, och lägga till ytterligare datapunkter.
 
-1. I ditt Azure Cosmos DB konto i Azure Portal väljer du **datautforskaren** , expanderar **exempel diagram** , väljer **diagram** och väljer sedan **Använd filter**. 
+1. I ditt Azure Cosmos DB konto i Azure Portal väljer du **datautforskaren**, expanderar **exempel diagram**, väljer **diagram** och väljer sedan **Använd filter**. 
 
    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Skärm bild som visar diagram som valts från en P I med alternativet att tillämpa filter.":::
 

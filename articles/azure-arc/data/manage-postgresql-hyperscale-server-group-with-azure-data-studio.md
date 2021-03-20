@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320241"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Använd Azure Data Studio för att hantera Azure Arc-aktiverade PostgreSQL-Server gruppen
@@ -68,7 +68,7 @@ Det innehåller flera instrument paneler som visas på vänster sida i fönstret
 
 ## <a name="work-with-your-data-and-schema"></a>Arbeta med dina data och ditt schema
 
-Expandera noden **servrar**till vänster i Azure Data Studios fönstret:
+Expandera noden **servrar** till vänster i Azure Data Studios fönstret:
 
 Och välj [Lägg till anslutning] och fyll i anslutnings informationen till din PostgreSQL-instans:
 - **Anslutnings typ:** PostgreSQL

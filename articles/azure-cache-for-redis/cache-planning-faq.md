@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537413"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Vanliga frågor och svar om Azure cache för Redis-planering
@@ -44,7 +44,7 @@ I den här tabellen kan vi Rita följande slut satser:
 | --- | --- | --- | --- | --- | --- |
 | **Standardcache-storlekar** | | |**Megabit per sekund (MB/s)/megabyte per sekund (MB/s)** |**Begär Anden per sekund (RPS) icke-SSL** |**Begär Anden per sekund (RPS) SSL** |
 | CO | 250 MB | Delad | 100/12,5  |  15 000 |   7 500 |
-| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
+| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
 | C3 |   6 GB | 4      | 1000/125  | 100 000 |  90 000 |
 | C4 |  13 GB | 2      | 500/62,5  |  60 000 |  55 000 |

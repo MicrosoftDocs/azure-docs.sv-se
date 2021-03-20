@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98683750"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassa en HTTP-slutpunkt i Azure Functions
@@ -37,7 +37,7 @@ Som standard är din HTTP-utlösare konfigurerad att godkänna alla HTTP-metoder
 
 1. Använd inställningarna för HTTP-utlösare som anges i följande tabell.
 
-    | Fält | Exempelvärde | Description |
+    | Fält | Exempelvärde | Beskrivning |
     |---|---|---|
     | Flödesmall | /hello | Avgör vilket flöde som används för att anropa den här funktionen |
     | Auktoriseringsnivå | Anonym | Valfritt: Gör din funktion tillgänglig utan API-nyckel |
@@ -62,7 +62,7 @@ Testa sedan din funktion för att se hur den fungerar med den nya API-ytan:
  
 1. Lägg till parametrar i frågesträngen i din URL. 
 
-   Ett exempel är `/api/hello/?name=John`.
+   Till exempel `/api/hello/?name=John`.
  
 1. Tryck på RETUR för att bekräfta att det fungerar. Svaret "*Hej John*" bör visas.
 

@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320579"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Självstudie: skicka meddelanden till vissa enheter som kör Universell Windows-plattform program
@@ -81,7 +81,7 @@ Det första steget är att lägga till UI-element till din befintliga huvudsida 
     </Grid>
     ```
 
-1. I **Solution Explorer**högerklickar du på projektet och väljer **Lägg till**  >  **klass**. I **Lägg till nytt objekt**namnger du klass *meddelanden*och väljer **Lägg till**. Om det behövs lägger du till `public` modifieraren i klass definitionen.
+1. I **Solution Explorer** högerklickar du på projektet och väljer **Lägg till**  >  **klass**. I **Lägg till nytt objekt** namnger du klass *meddelanden* och väljer **Lägg till**. Om det behövs lägger du till `public` modifieraren i klass definitionen.
 
 1. Lägg till följande- `using` instruktioner i den nya filen:
 
@@ -143,7 +143,7 @@ Det första steget är att lägga till UI-element till din befintliga huvudsida 
 
     Mer information finns i [Mallar](notification-hubs-templates-cross-platform-push-messages.md).
 
-1. I projekt filen *app.XAML.cs* lägger du till följande egenskap i `App` klassen:
+1. I projekt filen *app. XAML. cs* lägger du till följande egenskap i `App` klassen:
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -154,15 +154,15 @@ Det första steget är att lägga till UI-element till din befintliga huvudsida 
     Ersätt platshållarna `<hub name>` och `<connection string with listen access>` i koden med namnet på din meddelandehubb och anslutningssträngen för **DefaultListenSharedAccessSignature** som du fick tidigare.
 
    > [!NOTE]
-   > Eftersom autentiseringsuppgifterna som distribueras med ett klientprogram vanligtvis inte är säkra så distribuera bara nyckeln för *lyssnings*åtkomst med din klientapp. Med lyssna-åtkomst kan du registrera din app för meddelanden, men befintliga registreringar kan inte ändras och meddelanden kan inte skickas. Nyckelln för fullständig åtkomst används i en skyddad serverdelstjänst för att skicka meddelanden och ändra befintliga registreringar.
+   > Eftersom autentiseringsuppgifterna som distribueras med ett klientprogram vanligtvis inte är säkra så distribuera bara nyckeln för *lyssnings* åtkomst med din klientapp. Med lyssna-åtkomst kan du registrera din app för meddelanden, men befintliga registreringar kan inte ändras och meddelanden kan inte skickas. Nyckelln för fullständig åtkomst används i en skyddad serverdelstjänst för att skicka meddelanden och ändra befintliga registreringar.
 
-1. Lägg till följande rad i *mainpage.XAML.cs* -filen:
+1. Lägg till följande rad i filen *mainpage. XAML. cs* :
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-1. Lägg till följande metod i *mainpage.XAML.cs* -filen:
+1. Lägg till följande metod i filen *mainpage. XAML. cs* :
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -194,7 +194,7 @@ I det här avsnittet registrerar du med meddelandehubben vid start med hjälp av
 > [!NOTE]
 > Eftersom den kanal-URI som tilldelats av Windows Notification Service (WNS) kan ändras när som helst bör du ofta registrera dig för meddelanden för att undvika meddelandefel. Det här exemplet registrerar för meddelande varje gång som appen startas. För appar som du kör ofta, eller mer än en gång om dagen, kan du förmodligen hoppa över registreringen för att bevara bandbredden om mindre än en dag har passerat sedan den tidigare registreringen.
 
-1. Om du vill använda `notifications` -klassen för att prenumerera baserat på kategorier öppnar du filen *app.XAML.cs* och uppdaterar sedan `InitNotificationsAsync` metoden.
+1. Om du vill använda `notifications` -klassen för att prenumerera baserat på kategorier öppnar du filen *app. XAML. cs* och uppdaterar sedan `InitNotificationsAsync` metoden.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -206,7 +206,7 @@ I det här avsnittet registrerar du med meddelandehubben vid start med hjälp av
     ```
 
     Den här processen säkerställer att när appen startar hämtas kategorierna från den lokala lagrings platsen. Den begär sedan registrering av dessa kategorier. Du har skapat `InitNotificationsAsync` metoden som en del av guiden [skicka meddelanden till universell Windows-plattform appar med hjälp av Azure Notification Hubs][get-started] -självstudier.
-2. I *mainpage.XAML.cs* -projekt filen lägger du till följande kod i- `OnNavigatedTo` metoden:
+2. I projekt filen *mainpage. XAML. cs* lägger du till följande kod i- `OnNavigatedTo` metoden:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)

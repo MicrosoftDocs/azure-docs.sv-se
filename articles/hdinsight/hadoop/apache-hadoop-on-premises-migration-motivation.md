@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943256"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight – motivation och fördelar
@@ -127,7 +127,7 @@ Det här avsnittet innehåller fråge formulär för mallar som hjälper dig att
 |Strukturerade strömmande jobb|5 jobb – varje minut||
 |ML modell utbildnings jobb|2 jobb – en gång i veckan||
 |Programmeringsspråk|Python, Scala, Java||
-|Använda skript|Shell, python||
+|Skript|Shell, python||
 |**Ämne**: **data**|||
 |Datakällor|Flata filer, JSON, Kafka, RDBMS||
 |Data dirigering|Oozie-arbetsflöden, luft flöde||
