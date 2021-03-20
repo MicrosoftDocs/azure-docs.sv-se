@@ -5,10 +5,10 @@ ms.date: 05/26/2020
 ms.topic: quickstart
 ms.reviewer: maheshna
 ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83994797"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Snabb start: Använd Geth för att ansluta till en Azure blockchain service Transaction-nod
@@ -26,7 +26,7 @@ I den här snabb starten använder du Geth-klienten för att ansluta till en Get
 
 Du kan hämta anslutnings strängen Geth för en Azure blockchain service Transaction-nod i Azure Portal.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Gå till din Azure blockchain service-medlem. Välj **Transactions-noder** och noden standard transaktions nod.
 
     ![Välj noden standard transaktion](./media/connect-geth/transaction-nodes.png)
@@ -39,7 +39,7 @@ Du kan hämta anslutnings strängen Geth för en Azure blockchain service Transa
 ## <a name="connect-to-geth"></a>Anslut till Geth
 
 1. Öppna en kommando tolk eller ett gränssnitt.
-1. Använd Geth Attach-underkommandot för att koppla till den aktiva Geth-instansen på Transaction-noden. Klistra in anslutnings strängen som ett argument för under kommandot Attach. Till exempel:
+1. Använd Geth Attach-underkommandot för att koppla till den aktiva Geth-instansen på Transaction-noden. Klistra in anslutnings strängen som ett argument för under kommandot Attach. Exempel:
 
     ``` bash
     geth attach <connection string>

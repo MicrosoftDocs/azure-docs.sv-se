@@ -4,10 +4,10 @@ description: I det här avsnittet beskrivs modul dubbla JSON-scheman för video 
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87053065"
 ---
 # <a name="module-twin-json-schema"></a>Modul, dubbla JSON-schema
@@ -34,10 +34,10 @@ Video analys i real tid på IoT Edge visar följande modul, dubbla egenskaper.
 |aadEndpoint |Inga |Inga |Molnbaserad Azure AD-slutpunkt. <br/>Objekt `https://login.microsoftonline.com` |
 |aadResourceId |Inga |Inga |Molnbaserad Azure AD-Audience/resurs-ID <br/>Objekt `https://management.core.windows.net/` |
 |armEndpoint |Inga |Inga |Molnbaserad Azure Resource Manage-slutpunkt. <br/>Objekt `https://management.azure.com/` |
-|diagnosticsLevel |Inga |Ja |Utförlig händelse: <br/>Information & # x02758; Varning & # x02758; Fel & # x02758; Kritiskt & # x02758; Alternativet |
+|diagnosticsLevel |Inga |Ja |Utförlig händelse: <br/>Information &#x02758; Varning &#x02758; Fel &#x02758; Kritiskt &#x02758; Alternativet |
 |diagnosticsEventsOutputName |Inga |Ja |NAV-utdata för diagnostiska händelser. <br/>(Tom innebär att diagnostik inte publiceras)|
 |operationalEventsOutputName|Inga|Ja|NAV-utdata för drift händelser.<br/>(Tom innebär att operativa händelser inte publiceras)
-|logLevel|Inga|Ja|Något av följande: <br/>& # x000B7; Utförlig<br/>& # x000B7; Information (standard)<br/>& # x000B7; Honom<br/>& # x000B7; Fels<br/>& # x000B7; Alternativet|
+|logLevel|Inga|Ja|Något av följande: <br/>&#x000B7; Utförlig<br/>&#x000B7; Information (standard)<br/>&#x000B7; Honom<br/>&#x000B7; Fels<br/>&#x000B7; Alternativet|
 |logCategories|Inga|Ja|En kommaavgränsad lista över följande: program, MediaPipeline, händelser <br/>Standard: program, händelser|
 |debugLogsDirectory|Inga|Ja|Katalog för fel söknings loggar. Om nuvarande loggar genereras inaktive ras om inte några fel söknings loggar har inaktiverats.
 

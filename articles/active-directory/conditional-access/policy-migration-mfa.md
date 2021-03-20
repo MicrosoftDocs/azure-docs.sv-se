@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87027401"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Migrera en klassisk princip i Azure Portal
@@ -46,7 +46,7 @@ Migreringsprocessen består av följande steg:
 1. På sidan **nytt** i text rutan **namn** anger du ett namn för principen.
 1. I avsnittet **tilldelningar** klickar du på **användare och grupper**.
    1. Om du har valt alla användare i den klassiska principen klickar du på **alla användare**. 
-   1. Om du har valt grupper i den klassiska principen klickar du på **Välj användare och grupper**och väljer sedan de användare och grupper som krävs.
+   1. Om du har valt grupper i den klassiska principen klickar du på **Välj användare och grupper** och väljer sedan de användare och grupper som krävs.
    1. Om du har exkluderade grupper klickar du på fliken **exkludera** och väljer sedan de användare och grupper som krävs. 
    1. Välj **färdig**
 1. I avsnittet **tilldelning** klickar du på **molnappar eller åtgärder**.
@@ -57,7 +57,7 @@ Migreringsprocessen består av följande steg:
    1. På sidan **molnappar** klickar du på **Slutför**.
 1. Om du **behöver Multi-Factor Authentication** markerat:
    1. I avsnittet **åtkomst kontroller** klickar du på **bevilja**.
-   1. På sidan **bevilja** klickar du på **bevilja åtkomst**och klickar sedan på **Kräv Multi-Factor Authentication**.
+   1. På sidan **bevilja** klickar du på **bevilja åtkomst** och klickar sedan på **Kräv Multi-Factor Authentication**.
    1. Klicka på **Välj**.
 1. Klicka **på på** för att aktivera principen och välj sedan **Spara**.
 

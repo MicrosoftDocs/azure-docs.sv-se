@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0e1cb33ca0a5fb9a1c7ddb2c4625dfef4acd3a1e
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627406"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate support mat ris
@@ -23,7 +23,7 @@ Tabellen sammanfattar scenarier för identifiering, utvärdering och migrering s
 
 **Distribution** | **Information** 
 --- | --- 
-**Identifikation** | Du kan identifiera datorns metadata och dynamiska prestanda data.
+**Identifiering** | Du kan identifiera datorns metadata och dynamiska prestanda data.
 **App-Discovery** | Du kan identifiera appar, roller och funktioner som körs på virtuella VMware-datorer. För närvarande är den här funktionen begränsad till enbart identifiering. Utvärderingen är för närvarande på dator nivå. Vi erbjuder ännu inte app-, roll-eller funktionsbaserade utvärderingar. 
 **Utvärdering** | Utvärdera lokala arbets belastningar och data som körs på virtuella VMware-datorer, virtuella Hyper-V-datorer och fysiska servrar. Utvärdera med Azure Migrate: Server utvärdering, Microsoft Data Migration Assistant (DMA), samt andra verktyg och ISV-erbjudanden.
 **Migrering** | Migrera arbets belastningar och data som körs på fysiska servrar, virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska servrar och molnbaserade virtuella datorer till Azure. Migrera med Azure Migrate: Server utvärdering och Azure Database Migration Service (DMS) och även andra verktyg och ISV-erbjudanden.

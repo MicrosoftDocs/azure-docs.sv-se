@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343225"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-Specific HTTP-huvuden för Azure CDN-regel motor
@@ -42,7 +42,7 @@ X-värd | Anger begärans värdnamn. | cdn.mydomain.com
 X-Midgress | Anger om begäran anropades via en ytterligare CDN-Server. Till exempel en POP server till ursprungs skärm Server eller en POP server-to-och gateway-server. <br />Den här rubriken läggs endast till i begäran när midgress-trafiken äger rum. I det här fallet är sidhuvudet inställt på 1 för att indikera att begäran har anropats via en ytterligare CDN-Server.| 1
 [Värd](#host-request-header) | Identifierar värden och porten där det begärda innehållet kan hittas. | marketing.mydomain.com:80
 [X-Gateway-lista](#x-gateway-list-request-header) | OCH: identifierar listan över växling vid fel för och gateway-servrar som tilldelats ett kund ursprung. <br />Ursprungs skärm: anger den uppsättning ursprungs Skölds servrar som tilldelats ett kund ursprung. | `icn1,hhp1,hnd1`
-X-EC-_ &lt; namn &gt; _ | Begärandehuvuden som börjar med *X-EG* (till exempel x-EG-tag, [x-EG-debug](cdn-http-debug-headers.md)) är reserverade för användning av CDN.| WAF – produktion
+X-EC-_&lt; namn &gt;_ | Begärandehuvuden som börjar med *X-EG* (till exempel x-EG-tag, [x-EG-debug](cdn-http-debug-headers.md)) är reserverade för användning av CDN.| WAF – produktion
 
 ## <a name="via-request-header"></a>Via begär ande huvud
 Det format som rubriken för `Via` begäran identifierar en pop-server i, anges med följande syntax:

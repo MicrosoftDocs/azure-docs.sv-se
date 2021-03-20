@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: a07c6ac524aa213519ace1ae204ac2d76db802aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83836710"
 ---
 # <a name="create-an-azure-automation-account"></a>Skapa ett Azure Automation-konto
@@ -21,7 +21,7 @@ I den här snabb starten får du hjälp med att skapa ett Automation-konto och k
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
-[Logga in på Azure](https://portal.azure.com).
+[Logga in i Azure](https://portal.azure.com).
 
 ## <a name="create-automation-account"></a>Skapa ett Automation-konto
 
@@ -32,7 +32,7 @@ I den här snabb starten får du hjälp med att skapa ett Automation-konto och k
 
 2. Klicka på knappen **skapa en resurs** som finns i det övre vänstra hörnet i Azure Portal.
 
-3. Välj **den & hanterings verktyg**och välj sedan **Automation**.
+3. Välj **den & hanterings verktyg** och välj sedan **Automation**.
 
 4. Ange konto informationen, inklusive det valda konto namnet. För **Skapa Kör som-konto i Azure**, väljer du **Ja** så att artefakterna för att förenkla autentisering till Azure aktiveras automatiskt. När informationen är klar klickar du på **skapa** för att starta distributionen av Automation-kontot.
 

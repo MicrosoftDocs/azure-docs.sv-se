@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993176"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Öka säkerheten för anrop till anpassade API: er från Azure Logic Apps
@@ -199,11 +199,11 @@ Det här avsnittet har redan kon figurer ATS för föregående mall, men om du r
 
 | Egenskap | Krävs | Beskrivning | 
 | -------- | -------- | ----------- | 
-| tenant | Yes | GUID för Azure AD-klienten | 
-| filmen | Yes | GUID för den mål resurs som du vill få åtkomst till, vilket är klient-ID: t från program identiteten för din webbapp eller API-app | 
-| ClientID | Yes | GUID för klienten som begär åtkomst, vilket är klient-ID: t från program identiteten för din Logic app | 
-| hemlighet | Yes | Nyckeln eller lösen ordet från program identiteten för klienten som begär åtkomsttoken | 
-| typ | Yes | Autentiseringstypen. För ActiveDirectoryOAuth-autentisering är värdet `ActiveDirectoryOAuth` . | 
+| tenant | Ja | GUID för Azure AD-klienten | 
+| filmen | Ja | GUID för den mål resurs som du vill få åtkomst till, vilket är klient-ID: t från program identiteten för din webbapp eller API-app | 
+| ClientID | Ja | GUID för klienten som begär åtkomst, vilket är klient-ID: t från program identiteten för din Logic app | 
+| hemlighet | Ja | Nyckeln eller lösen ordet från program identiteten för klienten som begär åtkomsttoken | 
+| typ | Ja | Autentiseringstypen. För ActiveDirectoryOAuth-autentisering är värdet `ActiveDirectoryOAuth` . | 
 |||| 
 
 Exempel:
@@ -251,8 +251,8 @@ I avsnittet **auktorisering** inkluderar du följande egenskaper:
 | Egenskap | Krävs | Beskrivning |
 | -------- | -------- | ----------- |
 | `type` | Ja | Autentiseringstypen. För TLS/SSL-klientcertifikat måste värdet vara `ClientCertificate` . |
-| `password` | No | Lösen ordet för att komma åt klient certifikatet (PFX-filen) |
-| `pfx` | Yes | Det Base64-kodade innehållet i klient certifikatet (PFX-filen) |
+| `password` | Inga | Lösen ordet för att komma åt klient certifikatet (PFX-filen) |
+| `pfx` | Ja | Det Base64-kodade innehållet i klient certifikatet (PFX-filen) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +273,9 @@ I avsnittet **auktorisering** inkluderar du följande egenskaper:
 
 | Egenskap | Krävs | Beskrivning | 
 | -------- | -------- | ----------- | 
-| typ | Yes | Autentiseringstypen som du vill använda. För grundläggande autentisering måste värdet vara `Basic` . | 
-| användarnamn | Yes | Det användar namn som du vill använda för autentisering | 
-| password | Yes | Det lösen ord som du vill använda för autentisering | 
+| typ | Ja | Autentiseringstypen som du vill använda. För grundläggande autentisering måste värdet vara `Basic` . | 
+| användarnamn | Ja | Det användar namn som du vill använda för autentisering | 
+| password | Ja | Det lösen ord som du vill använda för autentisering | 
 |||| 
 
 <a name="azure-ad-code"></a>

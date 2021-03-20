@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar ett labb som fokuserar på djup inlär
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 01199e76b7b9cb1a6360b5aba010d0cfd8936c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251464"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Konfigurera ett labb som fokuserar på djup inlärning i naturlig språk bearbetning med hjälp av Azure Lab Services
@@ -36,7 +36,7 @@ Följ [den här självstudien](tutorial-setup-classroom-lab.md) för att skapa e
 
 Data Science Virtual Machine för Linux-avbildningen ger de nödvändiga djup inlärnings ramverk och verktyg som krävs för den här typen av klass. När du har skapat mallen behöver du alltså inte anpassa den ytterligare. Det kan publiceras för studenter att använda. Klicka på knappen **publicera** på mallsida för att publicera mallen i labbet.  
 
-## <a name="cost"></a>Kostnad
+## <a name="cost"></a>Cost
 Om du vill uppskatta kostnaden för det här labbet kan du använda följande exempel: 
 
 För en klass med 25 studenter med 20 timmar schemalagda klass tider och 10 timmars kvot för läxor eller tilldelningar, skulle priset för labbet vara-25 studenter * (20 + 10) timmar * 139 lab-enheter * 0,01 USD per timme = 1042,5 USD

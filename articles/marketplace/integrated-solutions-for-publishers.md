@@ -8,10 +8,10 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
 ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880278"
 ---
 # <a name="publish-an-integrated-solution"></a>Publicera en integrerad lösning
@@ -63,7 +63,7 @@ När din utnämning har godkänts använder du de länkade program resurserna f�
     * Omfång
     * Rikta kunder
     * Värde förslag
-    * Prissättning
+    * Priser
     * Licensiering
     * Villkor
     * Support metod

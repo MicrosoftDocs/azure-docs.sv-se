@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677063"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Felsöka Azure AD-anslutning
@@ -117,7 +117,7 @@ Om du har följt alla dessa föregående steg och fortfarande inte kan ansluta k
 * Slut punkterna adminwebservice och provisioningapi är identifierings slut punkter och används för att hitta den faktiska slut punkten som ska användas. Dessa slut punkter skiljer sig åt beroende på din region.
 
 ### <a name="reference-proxy-logs"></a>Referenser för proxy
-Här är en dumpning från en faktisk proxy-logg och sidan installations guide från den plats där den togs (dubbla poster till samma slut punkt har tagits bort). Det här avsnittet kan användas som referens för dina egna proxy-och nätverks loggar. De faktiska slut punkterna kan vara olika i din miljö (särskilt dessa URL: er i *kursiv stil* ).
+Här är en dumpning från en faktisk proxy-logg och sidan installations guide från den plats där den togs (dubbla poster till samma slut punkt har tagits bort). Det här avsnittet kan användas som referens för dina egna proxy-och nätverks loggar. De faktiska slut punkterna kan vara olika i din miljö (särskilt dessa URL: er i *kursiv stil*).
 
 **Anslut till Azure AD**
 
@@ -125,26 +125,26 @@ Här är en dumpning från en faktisk proxy-logg och sidan installations guide f
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect:// *bba800-Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800-Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect:// *bwsc02-Relay* . microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://*bwsc02-Relay*. microsoftonline.com:443 |
 
 **I**
 
 | Tid | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect:// *bba800-Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800-Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba900-Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900-Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba800-Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800-Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect:// *bwsc02-Relay* . microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://*bwsc02-Relay*. microsoftonline.com:443 |
 
 **Inledande synkronisering**
 
@@ -152,8 +152,8 @@ Här är en dumpning från en faktisk proxy-logg och sidan installations guide f
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba900-Anchor* . microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba800-Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900-Anchor*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800-Anchor*. microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Autentiseringsfel
 I det här avsnittet beskrivs fel som kan returneras från ADAL (det autentiseringspaket som används av Azure AD Connect) och PowerShell. Fel förklaringen bör hjälpa dig att förstå dina nästa steg.
@@ -227,7 +227,7 @@ Autentiseringen lyckades. Det gick inte att hämta företags information från A
 Autentiseringen lyckades. Det gick inte att hämta domän information från Azure AD.
 
 ### <a name="unspecified-authentication-failure"></a>Ospecificerat autentiseringsfel
-Visas som ett oväntat fel i installations guiden. Kan inträffa om du försöker använda ett **Microsoft-konto** i stället för ett **skol-eller organisations konto** .
+Visas som ett oväntat fel i installations guiden. Kan inträffa om du försöker använda ett **Microsoft-konto** i stället för ett **skol-eller organisations konto**.
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Fel söknings steg för tidigare versioner.
 Med versioner som börjar med build Number 1.1.105.0 (lanserades februari 2016) drogs inloggnings assistenten tillbaka. Det här avsnittet och konfigurationen ska inte längre krävas, utan behålls som referens.

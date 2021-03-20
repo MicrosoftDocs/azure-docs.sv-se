@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91871821"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Packa upp, rack montering och kabel din StorSimple 8600-enhet
@@ -110,7 +110,7 @@ En uppsättning monterings skenor kommer att tillhandahållas för användning m
    | --- | --- |
    |  1 |M 3x4 knapp – huvud skruvar |
    |  2 |Chassi bilder |
-2. Koppla de vänstra och högra järnvägs sammansättningarna till rack skåpets lodräta medlemmar. Hakparenteserna är märkta som **LH**, **RH**och **den här sidan upp** för att vägleda dig genom rätt orientering.
+2. Koppla de vänstra och högra järnvägs sammansättningarna till rack skåpets lodräta medlemmar. Hakparenteserna är märkta som **LH**, **RH** och **den här sidan upp** för att vägleda dig genom rätt orientering.
 3. Leta upp spårstiften på framsidan och baksidan av spårenheten. Utöka spåret så att det passar mellan rack inläggen och Lägg till stiften i främre och bakre racket posts vertikala medlems hål. Se till att järn vägs sammansättningen är nivå.
 4. Skydda järnvägs sammansättningen till rackets vertikala medlemmar genom att använda två av de mät skruvarna som tillhandahålls. Använd en skruv på bak sidan och en på bak sidan.
 5. Upprepa de här stegen för den andra järnvägs sammansättningen.
@@ -164,7 +164,7 @@ Nästa steg är att ansluta enheten till strömförsörjning, nätverk och serie
 ## <a name="cable-your-storsimple-8600-device"></a>Kabelansluta en StorSimple 8600-enhet
 Följande procedurer beskriver hur du kan ansluta din StorSimple 8600-enhet för strömförsörjning, nätverk och seriella anslutningar.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 Innan du börjar kabeln till enheten behöver du:
 
 * Ditt primära hölje och EBOD-höljet, helt packas upp

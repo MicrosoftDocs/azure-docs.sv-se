@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 136853182e353ad5cd71981db5935fc3babe162e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339617"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrera data till Azure Cosmos DB SQL API-konto med Striims
@@ -30,13 +30,13 @@ Den här artikeln visar hur du använder Striims för att migrera data från en 
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Distribuera Striims Marketplace-lösningen
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Välj **skapa en resurs** och Sök efter **striims** på Azure Marketplace. Välj det första alternativet och **skapa**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Hitta Striims Marketplace-objekt":::
 
-1. Ange sedan konfigurations egenskaperna för Striims-instansen. Striims-miljön har distribuerats på en virtuell dator. I fönstret **grundläggande** anger du **användar namnet för den virtuella datorn** , **lösen ord för virtuell dator** (detta lösen ord används för att använda SSH i den virtuella datorn). Välj din **prenumeration** , **resurs grupp** och **plats information** där du vill distribuera striims. När du är klar väljer du **OK**.
+1. Ange sedan konfigurations egenskaperna för Striims-instansen. Striims-miljön har distribuerats på en virtuell dator. I fönstret **grundläggande** anger du **användar namnet för den virtuella datorn**, **lösen ord för virtuell dator** (detta lösen ord används för att använda SSH i den virtuella datorn). Välj din **prenumeration**, **resurs grupp** och **plats information** där du vill distribuera striims. När du är klar väljer du **OK**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Konfigurera grundläggande inställningar för Striims":::
 
@@ -50,7 +50,7 @@ Den här artikeln visar hur du använder Striims för att migrera data från en 
 
    När du har fyllt formuläret väljer du **OK** för att fortsätta.
 
-1. I fönstret **åtkomst inställningar för striims** konfigurerar du den **offentliga IP-adressen** (Välj standardvärden), **domän namn för striims** , **Administratörs lösen ord** som du vill använda för att logga in på striims-användargränssnittet. Konfigurera ett VNET och undernät (Välj standardvärden). När du har fyllt i informationen väljer du **OK** för att fortsätta.
+1. I fönstret **åtkomst inställningar för striims** konfigurerar du den **offentliga IP-adressen** (Välj standardvärden), **domän namn för striims**, **Administratörs lösen ord** som du vill använda för att logga in på striims-användargränssnittet. Konfigurera ett VNET och undernät (Välj standardvärden). När du har fyllt i informationen väljer du **OK** för att fortsätta.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Åtkomst inställningar för striims":::
 
@@ -130,7 +130,7 @@ I det här avsnittet ska du konfigurera Azure Cosmos DB SQL API-konto som mål f
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Logga in på Striims":::
 
-1. Nu kommer du till start sidan för Striims. Det finns tre olika fönster – **instrument paneler** , **appar** och **SourcePreview**. I fönstret instrument paneler kan du flytta data i real tid och visualisera dem. Fönstret appar innehåller pipelines för strömmande data eller data flöden. Till höger på sidan finns SourcePreview där du kan förhandsgranska dina data innan du flyttar dem.
+1. Nu kommer du till start sidan för Striims. Det finns tre olika fönster – **instrument paneler**, **appar** och **SourcePreview**. I fönstret instrument paneler kan du flytta data i real tid och visualisera dem. Fönstret appar innehåller pipelines för strömmande data eller data flöden. Till höger på sidan finns SourcePreview där du kan förhandsgranska dina data innan du flyttar dem.
 
 1. Välj fönstret **appar** , vi fokuserar på det här fönstret för tillfället. Det finns en mängd olika exempel på appar som du kan använda för att lära dig mer om Striims, men i den här artikeln skapar du vår egen. Välj knappen **Lägg till app** i det övre högra hörnet.
 
@@ -146,7 +146,7 @@ I det här avsnittet ska du konfigurera Azure Cosmos DB SQL API-konto som mål f
 
 1. På nästa sida namnger du ditt program. Du kan ange ett namn som **oraToCosmosDB** och sedan välja **Spara**.
 
-1. Ange sedan käll konfigurationen för din käll-Oracle-instans. Ange ett värde för **källans namn**. Käll namnet är bara en namn konvention för Striims-programmet. du kan använda något som liknar **src_onPremOracle**. Ange värden för resten av käll parametrarna **URL** , **användar namn** , **lösen ord** och välj **LogMiner** som läsare för att läsa data från Oracle. Fortsätt genom att välja **Nästa**.
+1. Ange sedan käll konfigurationen för din käll-Oracle-instans. Ange ett värde för **källans namn**. Käll namnet är bara en namn konvention för Striims-programmet. du kan använda något som liknar **src_onPremOracle**. Ange värden för resten av käll parametrarna **URL**, **användar namn**, **lösen ord** och välj **LogMiner** som läsare för att läsa data från Oracle. Fortsätt genom att välja **Nästa**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png" alt-text="Konfigurera käll parametrar":::
 
@@ -164,7 +164,7 @@ I det här avsnittet ska du konfigurera Azure Cosmos DB SQL API-konto som mål f
 
    * **Målnamn** – ange ett eget namn för målet. 
    * **Mata in från** – från List rutan väljer du den indataströmmen som du skapade i käll-Oracle-konfigurationen. 
-   * **Samlingar** – ange konfigurations egenskaperna för mål Azure Cosmos dB. Collection-syntaxen är **SourceSchema. SourceTable, TargetDatabase. TargetContainer**. I det här exemplet är värdet "SYSTEM. ORDER, StriimDemo. Orders ". 
+   * **Samlingar**– ange konfigurations egenskaperna för mål Azure Cosmos dB. Collection-syntaxen är **SourceSchema. SourceTable, TargetDatabase. TargetContainer**. I det här exemplet är värdet "SYSTEM. ORDER, StriimDemo. Orders ". 
    * **Accesskey** – PrimaryKey för ditt Azure Cosmos-konto.
    * **ServiceEndpoint** – URI för ditt Azure Cosmos-konto finns i avsnittet **nycklar** i Azure Portal. 
 

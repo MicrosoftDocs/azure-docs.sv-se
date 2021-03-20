@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,10 +11,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91257085"
 ---
 Om du inte har använt identitets-och åtkomst hantering (IAM) med OAuth 2,0 och OpenID Connect, eller till och med bara nya till IAM på Microsoft Identity Platform, bör följande artiklar vara höga i din läslista.

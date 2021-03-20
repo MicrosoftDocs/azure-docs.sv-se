@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880143"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Exempel: skapa en anpassad färdighet för formulär igenkänning
@@ -43,7 +43,7 @@ Lägg först till miljövariabler på projekt nivå. Leta upp projektet **Analyz
 * `FORMS_RECOGNIZER_RETRY_DELAY` med värdet inställt på 1000. Det här värdet är den tid i millisekunder som programmet väntar innan den försöker köra frågan igen.
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS` med värdet inställt på 100. Det här värdet är antalet gånger som programmet kommer att fråga tjänsten vid försök att få ett lyckat svar.
 
-Öppna sedan _AnalyzeForm.cs_ och hitta `fieldMappings` variabeln som refererar till *field-mappings.jspå* filen. Den här filen (och variabeln som refererar till den) definierar listan över nycklar som du vill extrahera från formulären och en anpassad etikett för varje nyckel. Ett värde på innebär till exempel att `{ "Address:", "address" }, { "Invoice For:", "recipient" }` skriptet bara sparar värdena för fälten identifierad och som `Address:` `Invoice For:` kommer att märka dessa värden med respektive `"address"` `"recipient"` .
+Öppna sedan _AnalyzeForm. cs_ och hitta `fieldMappings` variabeln som refererar till *field-mappings.jsi* filen. Den här filen (och variabeln som refererar till den) definierar listan över nycklar som du vill extrahera från formulären och en anpassad etikett för varje nyckel. Ett värde på innebär till exempel att `{ "Address:", "address" }, { "Invoice For:", "recipient" }` skriptet bara sparar värdena för fälten identifierad och som `Address:` `Invoice For:` kommer att märka dessa värden med respektive `"address"` `"recipient"` .
 
 Observera slutligen `contentType` variabeln. Det här skriptet kör den angivna formulär tolknings modellen på fjärrdokument som refereras till av webb adressen, så innehålls typen är `application/json` . Om du vill analysera lokala filer genom att inkludera sina byte-strömmar i HTTP-begärandena måste du ändra `contentType` till rätt [MIME-typ](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) för filen.
 

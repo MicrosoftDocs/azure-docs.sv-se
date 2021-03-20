@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, jämförelse, SDK, skillnader, maskin vara, program vara
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87031583"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Jämförelse av Azure Kinect och Kinect i Windows v2
@@ -31,7 +31,7 @@ Hög nivå skillnader mellan Azure Kinect Development Kit och Kinect för Window
 |                   | Lösning | 640 x 576 BPT @30 fps | 512 x 424 BPT @ 30 fps |
 |                   |            | 512 x 512 BPT @30 fps |                       |
 |                   |            | 1024x1024 BPT- @15 fps |                       |
-| **Anslutning** | Data | USB 3.1 gen 1 med typ USB-C  | USB 3,1 gen 1|
+| **Anslutningsmöjligheter** | Data | USB 3.1 gen 1 med typ USB-C  | USB 3,1 gen 1|
 |  | Ström | Extern PSU eller USB-C | Extern PSU |
 |  | Synkronisering | RGB & djup internt, extern enhet-till-enhet| RGB & djup endast internt |
 | **Urbenat** | Dimensioner | 103 × 39 × 126 mm | 249 x 66 x 67 mm |
@@ -71,7 +71,7 @@ Azure Kinect SDK funktions uppsättningen skiljer sig från Kinect för Windows 
 | | BodyIndexFrame | Body tracking SDK  |
 | Koordinera mappning|CoordinateMapper| [Sensor-SDK – bild omvandlingar](use-image-transformation.md) |
 |Ansikts spårning | FaceFrame | [Cognitive Services: ansikte](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Tal igenkänning    |    E.t.                      |    [Cognitive Services: tal](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Tal igenkänning    |    Ej tillämpligt                      |    [Cognitive Services: tal](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>Nästa steg
 

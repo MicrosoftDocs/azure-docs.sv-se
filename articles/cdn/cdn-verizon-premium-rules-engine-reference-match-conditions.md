@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: efd6e6a93cd4ca79e6c4b6de69f8514e2d71b252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84323322"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN från Verizon Premium-regel motor matchnings villkor
@@ -35,7 +35,7 @@ Du kan till exempel använda ett matchnings villkor för att:
 * [Förfrågan](#request)
 * [URL](#url)
 
-### <a name="always"></a><a name="always"></a>Alltid
+### <a name="always"></a><a name="always"></a>Always
 
 [Villkoret Always match](https://docs.vdms.com/cdn/Content/HRE/M/Always.htm) är utformat för att tillämpa en standard uppsättning funktioner för alla begär Anden.
 
@@ -67,7 +67,7 @@ Dessa matchnings villkor är utformade för att identifiera begär Anden baserat
 | Mobil webbläsarens version | Identifierar förfrågningar efter om enhetens webbläsare version matchar en: <br> **-** Angivet värde ([mobil webbläsarens versions sträng](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Version-Literal.htm)) <br> **-** Reguljärt uttryck ([mobil webbläsare version regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Version-Regex.htm)) <br> **-** Speciellt mönster ([jokertecken för mobil webbläsare version](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Version-Wildcard.htm)) |
 | Modell namn | Identifierar förfrågningar efter om enhetens modell namn matchar en: <br> **-** Speciellt värde ([modell namn sträng](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Literal.htm)) <br> **-** Reguljärt uttryck ([modell namns regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Regex.htm)) <br> **-** Speciellt mönster ([jokertecken för modell namn](https://docs.vdms.com/cdn/Content/HRE/M/D-Model-Name-Wildcard.htm)) |
 | [Progressiv nedladdning?](https://docs.vdms.com/cdn/Content/HRE/M/D-Progressive-Download.htm) | Identifierar förfrågningar efter om enheten har stöd för progressiv nedladdning. |
-| Lanserings datum | Identifierar förfrågningar efter om enhetens utgivnings datum matchar ett: <br> **-** Visst värde ([exakt versions datum](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Literal.htm)) <br> **-** Reguljärt uttryck ([versions datum regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Regex.htm)) <br> **-** Visst mönster ([jokertecken för versions datum](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Wildcard.htm)) |
+| Utgivningsdatum | Identifierar förfrågningar efter om enhetens utgivnings datum matchar ett: <br> **-** Visst värde ([exakt versions datum](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Literal.htm)) <br> **-** Reguljärt uttryck ([versions datum regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Regex.htm)) <br> **-** Visst mönster ([jokertecken för versions datum](https://docs.vdms.com/cdn/Content/HRE/M/D-Release-Date-Wildcard.htm)) |
 | [Lösnings höjd](https://docs.vdms.com/cdn/Content/HRE/M/D-Resolution-Height.htm) | Identifierar förfrågningar efter enhetens höjd. |
 | [Lösnings bredd](https://docs.vdms.com/cdn/Content/HRE/M/D-Resolution-Width.htm) | Identifierar förfrågningar efter enhetens bredd. |
 
@@ -82,12 +82,12 @@ Dessa matchnings villkor är utformade för att identifiera begär Anden utifrå
 | [SOM nummer](https://docs.vdms.com/cdn/Content/HRE/M/AS-Number.htm) | Identifierar begär Anden som kommer från ett visst nätverk. |
 | Orts namn | Identifierar begär Anden efter om de härstammar från en stad vars namn matchar en: <br> **-** Angivet värde ([Orts namn literal](https://docs.vdms.com/cdn/Content/HRE/M/City-Name-Literal.htm)) <br> **-** Reguljärt uttryck ([Orts namn regex](https://docs.vdms.com/cdn/Content/HRE/M/City-Name-Regex.htm)) |
 | [Kontinent](https://docs.vdms.com/cdn/Content/HRE/M/Continent.htm) | Identifierar begär Anden som kommer från de angivna kontinenterna. |
-| [Ursprungslandet](https://docs.vdms.com/cdn/Content/HRE/M/Country.htm) | Identifierar begär Anden som kommer från de angivna länderna. |
+| [Land](https://docs.vdms.com/cdn/Content/HRE/M/Country.htm) | Identifierar begär Anden som kommer från de angivna länderna. |
 | [DMA-kod](https://docs.vdms.com/cdn/Content/HRE/M/DMA-Code.htm) | Identifierar begär Anden som kommer från angiven Metros (utsedda marknads områden). |
 | [Latitud](https://docs.vdms.com/cdn/Content/HRE/M/Latitude.htm) | Identifierar begär Anden som kommer från angivna latituder. |
 | [Long](https://docs.vdms.com/cdn/Content/HRE/M/Longitude.htm) | Identifierar begär Anden som kommer från angivna longituder. |
 | [Tunnelbane kod](https://docs.vdms.com/cdn/Content/HRE/M/Metro-Code.htm) | Identifierar begär Anden som kommer från angiven Metros (utsedda marknads områden). |
-| [Post nummer](https://docs.vdms.com/cdn/Content/HRE/M/Postal-Code.htm) | Identifierar begär Anden som kommer från angivna post nummer. |
+| [Postnummer](https://docs.vdms.com/cdn/Content/HRE/M/Postal-Code.htm) | Identifierar begär Anden som kommer från angivna post nummer. |
 | [Regions kod](https://docs.vdms.com/cdn/Content/HRE/M/Region-Code.htm) | Identifierar begär Anden som kommer från de angivna regionerna. |
 
 > [!NOTE]

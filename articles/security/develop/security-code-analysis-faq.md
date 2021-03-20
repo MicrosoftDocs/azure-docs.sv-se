@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879923"
 ---
 # <a name="frequently-asked-questions"></a>Vanliga frågor och svar
@@ -192,11 +192,11 @@ En innehålls sökre definieras enligt följande:
 
 #### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Vad är vanliga fel när du använder Roslyn för analys av uppgifter?
 
-##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Projektet återställdes med fel version av Microsoft. NetCore. app
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Projektet återställdes med fel Microsoft.NETCore.App-version
 
 Det fullständiga fel meddelandet:
 
-"Fel: projektet har återställts med Microsoft. NetCore. app version *x.* x, men med de aktuella inställningarna används version *y. y. y* i stället. Lös problemet genom att kontrol lera att samma inställningar används för återställning och för efterföljande åtgärder, till exempel build eller Publish. Det här problemet kan vanligt vis uppstå om egenskapen RuntimeIdentifier anges under build eller Publish men inte under återställningen. "
+"Fel: projektet återställdes med Microsoft.NETCore.App-version *x. x*, men med aktuella inställningar används version *y. y. y* i stället. Lös problemet genom att kontrol lera att samma inställningar används för återställning och för efterföljande åtgärder, till exempel build eller Publish. Det här problemet kan vanligt vis uppstå om egenskapen RuntimeIdentifier anges under build eller Publish men inte under återställningen. "
 
 Eftersom Roslyn-uppgifter körs som en del av kompileringen måste käll trädet på Build-datorn vara i ett build-tillstånd.
 

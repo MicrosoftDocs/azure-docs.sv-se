@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97108424"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikat och PredicateValidations
@@ -46,14 +46,14 @@ I följande diagram visas relationen mellan elementen:
 | --------- | -------- | ----------- |
 | Id | Ja | En identifierare som används för predikatet. Andra element kan använda den här identifieraren i principen. |
 | Metod | Ja | Den typ av metod som ska användas för verifiering. Möjliga värden: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)eller [IsDateRange](#isdaterange).  |
-| HelpText | Nej | Ett fel meddelande för användare om kontrollen Miss lyckas. Den här strängen kan lokaliseras med hjälp av [språk anpassning](localization.md) |
+| HelpText | Inga | Ett fel meddelande för användare om kontrollen Miss lyckas. Den här strängen kan lokaliseras med hjälp av [språk anpassning](localization.md) |
 
 **Predikatet predikat** innehåller följande element:
 
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Föråldrad Ett fel meddelande för användare om kontrollen Miss lyckas. |
-| Parameters (Parametrar) | 1:1 | Parametrarna för metod typen för sträng validering. |
+| Parametrar | 1:1 | Parametrarna för metod typen för sträng validering. |
 
 Elementet **Parameters** innehåller följande element:
 
@@ -211,7 +211,7 @@ I följande exempel visas en `IsDateRange` metod med parametrarna `Minimum` och 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nej | Anger att värdet måste matcha minst det antal predikat som ska godkännas. Om inget värde anges måste värdet matcha alla predikat-definitioner. |
+| MatchAtLeast | Inga | Anger att värdet måste matcha minst det antal predikat som ska godkännas. Om inget värde anges måste värdet matcha alla predikat-definitioner. |
 
 **PredicateReferences** -elementet innehåller följande element:
 

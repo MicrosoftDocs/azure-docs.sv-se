@@ -9,14 +9,14 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87021485"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Distribuera StorSimple Virtual Array-etablera i VMware
-![Diagram som visar de steg som krävs för att distribuera en virtuell matris.Den andra delen av det andra steget är märkt etablera i VMware och är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
+![Diagram som visar de steg som krävs för att distribuera en virtuell matris. Den andra delen av det andra steget är märkt etablera i VMware och är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Översikt
 
@@ -83,7 +83,7 @@ Utför följande steg för att etablera en virtuell enhet i ditt hypervisor-prog
 3. I vSphere-klienten i avsnittet inventering i det vänstra fönstret väljer du ESXi-servern.
 
    ![Skärm bild av vSphere-klientens huvud sida. I avsnittet inventering markeras ESXi-servern.](./media/storsimple-virtual-array-deploy2-provision-vmware/image2.png)
-4. Ladda upp VMDK till ESXi-servern. Gå till fliken **konfiguration** i den högra rutan. Under **maskin vara**väljer du **lagring**.
+4. Ladda upp VMDK till ESXi-servern. Gå till fliken **konfiguration** i den högra rutan. Under **maskin vara** väljer du **lagring**.
 
    ![Skärm bild som visar fliken Konfiguration i vSphere-klienten. I avsnittet maskin vara är lagring markerat.](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
 5. I det högra fönstret, under **Datastores** (Datalager), väljer du det datalager där du vill ladda upp VMDK. Data lagret måste ha tillräckligt med ledigt utrymme för operativ system och data diskar.
@@ -127,7 +127,7 @@ Utför följande steg för att etablera en virtuell enhet i ditt hypervisor-prog
 18. På sidan **version av virtuell dator** väljer du **version för virtuell dator: 8**.
 
     ![Skärm bild av sidan version av virtuell dator. Alternativet för virtuell dator version 8 är markerat och knappen Nästa är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. På sidan **gäst operativ system** väljer du **gäst operativ systemet** som **Windows**. För **version**väljer du **Microsoft Windows Server 2012 (64-bitars)** i list rutan.
+19. På sidan **gäst operativ system** väljer du **gäst operativ systemet** som **Windows**. För **version** väljer du **Microsoft Windows Server 2012 (64-bitars)** i list rutan.
 
     ![Skärm bild av sidan gäst operativ system med Windows valt, versionen har angetts till Microsoft Windows Server 2012 (64-bitars) och nästa är markerat.](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. På sidan **processorer** justerar du **antalet virtuella Sockets** och **antalet kärnor per virtuell socket** så att det **totala antalet kärnor** är 4 (eller mer). Klicka på **Nästa**.
@@ -157,13 +157,13 @@ Utför följande steg för att etablera en virtuell enhet i ditt hypervisor-prog
 28. På sidan **Virtual Machines egenskaper** går du till fliken **maskin vara** och letar upp enhetens maskin vara. Välj **ny hård disk**. Klicka på **Lägg till**.
 
     ![Skärm bild av fliken maskin vara på sidan Virtual Machines egenskaper. Ny hård disk väljs i listan maskin vara. Knappen Lägg till är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
-29. Du ser ett fönster för att **lägga till maskin vara** . Välj **hård disk**under **Välj den typ av enhet som du vill lägga till**på sidan **enhets typ** och klicka på **Nästa**.
+29. Du ser ett fönster för att **lägga till maskin vara** . Välj **hård disk** under **Välj den typ av enhet som du vill lägga till** på sidan **enhets typ** och klicka på **Nästa**.
 
     ![Skärm bild av sidan enhets typ i fönstret Lägg till maskin vara. Hård disk enheten är markerad och knappen Nästa är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
 30. På sidan **Välj en disk** väljer du **skapa en ny virtuell disk**. Klicka på **Nästa**.
 
     ![Skärm bild av sidan Välj en disk. Alternativet Skapa en ny virtuell disk är markerat och knappen Nästa är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. På sidan **skapa en disk** ändrar du **Disk storleken** till 500 GB (eller mer). Även om 500 GB är minimi kravet, kan du alltid etablera en större disk. Observera att det inte går att utöka eller krympa disken när den har allokerats. Mer information om storleken på disken som ska etableras finns i avsnittet storlek i [dokumentet metod tips](storsimple-ova-best-practices.md). Under **disk etablering**väljer du **tunn etablering**. Klicka på **Nästa**.
+31. På sidan **skapa en disk** ändrar du **Disk storleken** till 500 GB (eller mer). Även om 500 GB är minimi kravet, kan du alltid etablera en större disk. Observera att det inte går att utöka eller krympa disken när den har allokerats. Mer information om storleken på disken som ska etableras finns i avsnittet storlek i [dokumentet metod tips](storsimple-ova-best-practices.md). Under **disk etablering** väljer du **tunn etablering**. Klicka på **Nästa**.
 
     ![Skärm bild av sidan Skapa en disk. Disk storleken är inställd på 500 GB, alternativet tunt etablering är markerat och knappen Nästa är markerad.](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. På sidan **Avancerade alternativ** godkänner du standardvärdet.

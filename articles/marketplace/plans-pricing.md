@@ -8,10 +8,10 @@ author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
 ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91858180"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Planer och priser för kommersiella Marketplace-erbjudanden
@@ -115,12 +115,12 @@ Granska dina priser noggrant innan du publicerar, eftersom det finns vissa begr�
 Priserna som anges i USA dollar (USD) konverteras till den lokala valutan för alla valda marknader med de aktuella växelkurserna när de sparas. Validera dessa priser innan du publicerar genom att exportera pris kalkyl bladet och granska priset på varje marknad som du har valt.
 
 1. Du måste först spara dina pris ändringar för att möjliggöra export av pris information. Nästan längst ned på fliken **priser och tillgänglighet** väljer du **Spara utkast**.
-1. Under **prissättning**väljer du länken **Exportera pris data** .
+1. Under **prissättning** väljer du länken **Exportera pris data** .
 1. Öppna exportedPrice.xlsx-filen i Microsoft Excel.
 1. I kalkyl bladet gör du de uppdateringar som du vill ha på din pris information och sparar sedan. CSV-fil.
     > [!NOTE]
     > Du kan behöva aktivera redigering i Excel innan du kan uppdatera filen.
-1. På fliken **priser och tillgänglighet** under **prissättning**väljer du länken **Importera prissättnings data** .
+1. På fliken **priser och tillgänglighet** under **prissättning** väljer du länken **Importera prissättnings data** .
 1. I dialog rutan som visas väljer du **Ja**.
 1. Välj den exportedPrice.xlsx filen som du uppdaterade och välj sedan **Öppna**.
 

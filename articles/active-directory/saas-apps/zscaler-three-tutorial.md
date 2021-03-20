@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 75d95ff77b48e7b1102900bc103e6930282e21e3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98726286"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Zscaler tre
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig att integrera Zscaler tre med Azure A
 * Hantera dina konton på en central plats – Azure Portal.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -112,7 +112,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -142,7 +142,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 2. När du har lagt till tillägg i webbläsaren kan du klicka på **Konfigurera Zscaler tre** för att dirigera dig till Zscaler tre-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Zscaler tre. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-6.
 
-    ![Installation](common/setup-sso.png)
+    ![Konfiguration](common/setup-sso.png)
 
 3. Om du vill konfigurera Zscaler tre manuellt öppnar du ett nytt webbläsarfönster och loggar in på din Zscaler tre företags webbplats som administratör och utför följande steg:
 

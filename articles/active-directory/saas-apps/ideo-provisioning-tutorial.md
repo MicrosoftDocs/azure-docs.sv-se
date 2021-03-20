@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: Zhchia
 ms.openlocfilehash: 4d877468e87edb11b606668739d8d539ef0cc1dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180863"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Självstudie: Konfigurera IDEO för automatisk användar etablering

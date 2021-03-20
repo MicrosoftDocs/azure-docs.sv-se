@@ -15,13 +15,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950677"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Single Sign-On SAML-protokoll
+# <a name="single-sign-on-saml-protocol"></a>SAML-protokoll för enkel inloggning
 
 Den här artikeln beskriver SAML 2,0-autentiseringsbegäranden och svar som Azure Active Directory (Azure AD) stöder för enskilda Sign-On (SSO).
 
@@ -46,11 +46,11 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parameter | Typ | Beskrivning |
+| Parameter | Typ | Description |
 | --- | --- | --- |
-| ID | Krävs | Azure AD använder det här attributet för att fylla `InResponseTo` attributet för det returnerade svaret. ID får inte börja med en siffra, så en gemensam strategi är att lägga en sträng som "ID" till sträng representationen av ett GUID. Till exempel `id6c1c178c166d486687be4aaf5e482730` är ett giltigt ID. |
-| Version | Krävs | Den här parametern ska vara inställd på **2,0**. |
-| IssueInstant | Krävs | Detta är en DateTime-sträng med ett UTC-värde och [tur och retur-format ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD förväntar sig ett DateTime-värde av den här typen, men utvärderar eller använder inte värdet. |
+| ID | Obligatorisk | Azure AD använder det här attributet för att fylla `InResponseTo` attributet för det returnerade svaret. ID får inte börja med en siffra, så en gemensam strategi är att lägga en sträng som "ID" till sträng representationen av ett GUID. Till exempel `id6c1c178c166d486687be4aaf5e482730` är ett giltigt ID. |
+| Version | Obligatorisk | Den här parametern ska vara inställd på **2,0**. |
+| IssueInstant | Obligatorisk | Detta är en DateTime-sträng med ett UTC-värde och [tur och retur-format ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD förväntar sig ett DateTime-värde av den här typen, men utvärderar eller använder inte värdet. |
 | AssertionConsumerServiceURL | Valfritt | Om den här parametern anges måste den matcha `RedirectUri` moln tjänsten i Azure AD. |
 | ForceAuthn | Valfritt | Detta är ett booleskt värde. Om värdet är true innebär det att användaren tvingas att autentiseras på nytt, även om de har en giltig session med Azure AD. |
 | IsPassive | Valfritt | Detta är ett booleskt värde som anger om Azure AD ska autentisera användaren tyst, utan användar interaktion, med hjälp av sessionens cookie om en sådan finns. Om detta är sant försöker Azure AD autentisera användaren med hjälp av sessions-cookien. |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75707194"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Hantera e-post, kalendrar och kontakter i Outlook.com med hjälp av Azure Logic Apps
@@ -27,7 +27,7 @@ Du kan använda en utlösare för att starta arbets flödet, till exempel när e
 > [!NOTE]
 > Om du vill automatisera uppgifter för ett Microsoft Work-konto, till exempel @fabrikam.onmicrosoft.com , använder du [Office 365 Outlook Connector](../connectors/connectors-create-api-office365-outlook.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett [Outlook.com-konto](https://outlook.live.com/owa/)
 
@@ -47,7 +47,7 @@ En [utlösare](../logic-apps/logic-apps-overview.md#logic-app-concepts) är en h
 
 1. Ange **frekvens** -och **intervall** värden i utlösaren.
 
-   Om du till exempel vill att utlösaren ska avsöka var 15: e minut ställer du in **frekvensen** på **minut**och anger **intervallet** till **15**.
+   Om du till exempel vill att utlösaren ska avsöka var 15: e minut ställer du in **frekvensen** på **minut** och anger **intervallet** till **15**.
 
 1. I verktygsfältet designer väljer du **Spara**, som sparar din Logic app.
 

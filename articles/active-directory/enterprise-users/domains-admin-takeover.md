@@ -14,10 +14,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0af74967e2de47afeb357e2ac31b1a0ee849ef36
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547108"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Ta över en ohanterad katalog som administratör i Azure Active Directory
@@ -45,7 +45,7 @@ Vissa produkter som innehåller SharePoint och OneDrive, till exempel Microsoft 
   
    ![första skärm bilden för att bli administratör](./media/domains-admin-takeover/become-admin-first.png)
   
-5. Lägg till TXT-posten för att bevisa att du äger domän namnet **fourthcoffee. xyz** på domän namns registratorn. I det här exemplet är det GoDaddy.com.
+5. Lägg till TXT-posten för att bevisa att du äger domän namnet **fourthcoffee.xyz** på din domän namns registrator. I det här exemplet är det GoDaddy.com.
   
    ![Lägg till en TXT-post för domän namnet](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -71,7 +71,7 @@ När du har slutfört föregående steg är du nu den globala administratören f
    ![domän verifierad som tillagd i Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Alla användare av Power BI-eller Azure Rights Management-tjänster som har licenser som tilldelats i Microsoft 365 organisation måste spara sina instrument paneler om domän namnet tas bort. De måste logga in med ett användar namn som *användarens \@ fourthcoffeexyz.onmicrosoft.com* i stället för *User \@ fourthcoffee. xyz*.
+> Alla användare av Power BI-eller Azure Rights Management-tjänster som har licenser som tilldelats i Microsoft 365 organisation måste spara sina instrument paneler om domän namnet tas bort. De måste logga in med ett användar namn som *användarens \@ fourthcoffeexyz.onmicrosoft.com* i stället för *User \@ fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Externt övertagande av administratörsrollen
 

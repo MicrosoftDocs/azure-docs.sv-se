@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75692587"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Skapa ett lagringskonto för Event Processor Host
@@ -22,7 +22,7 @@ Event Processor Host är en smart agent som gör det enklare att ta emot händel
 
     ![Skapa ett resurs meny objekt Microsoft Azure-portalen](./media/event-hubs-create-storage/create-resource.png)
 
-2. Välj **Storage** > **Lagringskonto**.
+2. Välj **Lagring** > **Lagringskonto**.
    
     ![Välj lagrings konto Microsoft Azure-portalen](./media/event-hubs-create-storage/select-storage-account.png)
 
