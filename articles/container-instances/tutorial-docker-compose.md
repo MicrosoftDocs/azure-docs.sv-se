@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
 ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913848"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Självstudie: Distribuera en grupp med flera behållare med hjälp av Docker Compose 
@@ -86,7 +86,7 @@ services:
 
 `azure-vote-front`Gör följande två ändringar i konfigurationen:
 
-1. Uppdatera `image` egenskapen i `azure-vote-front` tjänsten. Prefix namnet på avbildningen med inloggnings Server namnet för ditt Azure Container Registry, \<acrName\> . azurecr.io. Om registret till exempel heter *registret* , är namnet på inloggnings servern *myregistry.azurecr.io* (alla gemener) och egenskapen image är sedan `myregistry.azurecr.io/azure-vote-front` .
+1. Uppdatera `image` egenskapen i `azure-vote-front` tjänsten. Prefix namnet på avbildningen med inloggnings Server namnet för ditt Azure Container Registry, \<acrName\> . azurecr.io. Om registret till exempel heter *registret*, är namnet på inloggnings servern *myregistry.azurecr.io* (alla gemener) och egenskapen image är sedan `myregistry.azurecr.io/azure-vote-front` .
 1. Ändra `ports` mappningen till `80:80` . Spara filen.
 
 Den uppdaterade filen bör se ut ungefär så här:
@@ -216,9 +216,9 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 Om du vill se det program som körs i molnet anger du den visade IP-adressen i en lokal webbläsare. I det här exemplet anger du `52.179.23.131` . Exempelprogrammet läses in, som du ser i följande exempel:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Bild av röstnings app":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Bild av röstnings app i ACI":::
 
-Om du vill se loggarna för klient dels behållaren kör du kommandot [Docker-loggar](https://docs.docker.com/engine/reference/commandline/logs) . Till exempel:
+Om du vill se loggarna för klient dels behållaren kör du kommandot [Docker-loggar](https://docs.docker.com/engine/reference/commandline/logs) . Exempel:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front

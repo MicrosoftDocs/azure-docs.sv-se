@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92146319"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Säkerhet i Azure Data Lake Storage Gen1
@@ -99,7 +99,7 @@ För att följa regler kan en organisation kräva tillräckliga gransknings hist
 
 Visa och välj de kolumner som du vill logga i gransknings historiken för konto hantering. Du kan också exportera aktivitets loggar till Azure Storage.
 
-![Aktivitets logg](./media/data-lake-store-security-overview/activity-logs.png "Aktivitetslogg")
+![Aktivitetslogg](./media/data-lake-store-security-overview/activity-logs.png "Aktivitetslogg")
 
 Mer information om hur du arbetar med aktivitets loggar finns i [Visa aktivitets loggar för att granska åtgärder på resurser](../azure-resource-manager/management/view-activity-logs.md).
 

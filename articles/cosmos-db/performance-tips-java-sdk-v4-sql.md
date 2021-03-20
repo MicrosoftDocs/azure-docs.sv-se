@@ -10,10 +10,10 @@ ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: 8aad9df4720c833a74659b5cd36b7f5aafdf9b60
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631847"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Prestandatips för Azure Cosmos DB Java SDK v4
@@ -150,21 +150,21 @@ Som standard görs direkt läge Cosmos DB begär Anden via TCP när du använder
 
 I Azure Cosmos DB Java SDK V4 är Direct-läget det bästa valet för att förbättra databasens prestanda med de flesta arbets belastningar. 
 
-* ***Översikt över direkt läge** _
+* ***Översikt över direkt läge***
 
 :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Bild av arkitekturen för direkt läge" border="false":::
 
-Arkitekturen på klient sidan som används i direkt läge möjliggör förutsägbar nätverks användning och multiplex-åtkomst till Azure Cosmos DB repliker. Diagrammet ovan visar hur Direct-läge dirigerar klient begär anden till repliker i Cosmos DB-backend-servern. Arkitekturen för direkt läge allokerar upp till 10 _ *kanaler** på klient sidan per DB-replik. En kanal är en TCP-anslutning som föregås av en buffert för begäran, som är en djup på 30 begär Anden. Kanaler som tillhör en replik allokeras dynamiskt efter behov av replikens **tjänst slut punkt**. När användaren utfärdar en begäran i direkt läge dirigerar **TransportClient** begäran till rätt tjänst slut punkt utifrån partitionsnyckel. **Begär ande kön** buffrar begär Anden före tjänst slut punkten.
+Arkitekturen på klient sidan som används i direkt läge möjliggör förutsägbar nätverks användning och multiplex-åtkomst till Azure Cosmos DB repliker. Diagrammet ovan visar hur Direct-läge dirigerar klient begär anden till repliker i Cosmos DB-backend-servern. Arkitekturen för direkt läge allokerar upp till 10 **kanaler** på klient sidan per DB-replik. En kanal är en TCP-anslutning som föregås av en buffert för begäran, som är en djup på 30 begär Anden. Kanaler som tillhör en replik allokeras dynamiskt efter behov av replikens **tjänst slut punkt**. När användaren utfärdar en begäran i direkt läge dirigerar **TransportClient** begäran till rätt tjänst slut punkt utifrån partitionsnyckel. **Begär ande kön** buffrar begär Anden före tjänst slut punkten.
 
-* ***Konfigurations alternativ för direkt läge** _
+* ***Konfigurations alternativ för direkt läge***
 
-Om ett beteende som inte är standard för direkt läge önskas, skapar du en _DirectConnectionConfig *-instans och anpassar dess egenskaper och skickar sedan den anpassade egenskaps instansen till metoden *directMode ()* i Azure Cosmos DB client Builder.
+Om ett beteende som inte är standard för direkt läge önskas, skapar du en *DirectConnectionConfig* -instans och anpassar dess egenskaper och skickar sedan den anpassade egenskaps instansen till *directMode ()-* metoden i Azure Cosmos DB client Builder.
 
 Dessa konfigurations inställningar styr beteendet för den underliggande direkta läges arkitekturen som beskrivs ovan.
 
 I det första steget använder du följande rekommenderade konfigurations inställningar nedan. Dessa *DirectConnectionConfig* -alternativ är avancerade konfigurations inställningar som kan påverka SDK-prestanda på oväntade sätt. Vi rekommenderar att användarna undviker att ändra dem om de inte känner sig för att förstå kompromisserna och det är absolut nödvändigt. Kontakta Azure Cosmos DB- [teamet](mailto:CosmosDBPerformanceSupport@service.microsoft.com) om du stöter på problem på det här specifika ämnet.
 
-| Konfigurations alternativ       | Standard   |
+| Konfigurations alternativ       | Standardvärde   |
 | :------------------:       | :-----:   |
 | idleConnectionTimeout      | "PT0"     |
 | maxConnectionsPerEndpoint  | "130"     |
@@ -176,19 +176,19 @@ I det första steget använder du följande rekommenderade konfigurations instä
 
 Azure Cosmos DB Java SDK v4 stöder parallella frågor som gör att du kan fråga en partitionerad samling parallellt. Mer information finns i [kod exempel](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) för att arbeta med Azure Cosmos DB Java SDK v4. Parallella frågor är utformade för att förbättra svars tid och data flöde för deras serie motsvarighet.
 
-* ***Justera setMaxDegreeOfParallelism \:** _
+* ***Justera setMaxDegreeOfParallelism\:***
     
 Parallella frågor fungerar genom att fråga flera partitioner parallellt. Data från en enskild partitionerad samling hämtas dock i serie med avseende på frågan. Använd setMaxDegreeOfParallelism för att ställa in antalet partitioner som har maximal chans att uppnå den mest utförda frågan, förutsatt att alla andra system villkor är desamma. Om du inte känner till antalet partitioner kan du använda setMaxDegreeOfParallelism för att ange ett högt antal, och systemet väljer det lägsta (antal partitioner, indata från användaren) som den högsta graden av parallellitet.
 
 Det är viktigt att Observera att parallella frågor ger de bästa fördelarna om data är jämnt fördelade över alla partitioner med avseende på frågan. Om den partitionerade samlingen är partitionerad, så att alla eller en majoritet av de data som returneras av en fråga är koncentrerade i några partitioner (en partition i värsta fall), skulle prestandan för frågan bli Flask hals av dessa partitioner.
 
-_ ***Justering setMaxBufferedItemCount \:** _
+* ***Justera setMaxBufferedItemCount\:***
     
 Parallell fråga är utformad för att hämta resultat när den aktuella gruppen med resultat bearbetas av klienten. För hämtning bidrar till den totala tids fördröjnings förbättringen av en fråga. setMaxBufferedItemCount begränsar antalet i förväg hämtade resultat. Om du anger setMaxBufferedItemCount till det förväntade antalet returnerade resultat (eller en högre siffra) kan frågan ta emot maximal nytta av för hämtning.
 
 För hämtning fungerar på samma sätt oavsett MaxDegreeOfParallelism, och det finns en enda buffert för data från alla partitioner.
 
-_ **Skala ut din klient-arbets belastning**
+* **Skala ut din klient arbets belastning**
 
 Om du testar på hög data flödes nivå kan klient programmet bli Flask halsen på grund av att datorn capping ut på processor-eller nätverks användning. Om du når den här punkten kan du fortsätta att skicka det Azure Cosmos DB kontot ytterligare genom att skala ut dina klient program över flera servrar.
 
@@ -233,11 +233,11 @@ Mer information om Azure Cosmos DB Java SDK v4 finns i [Cosmos DB Directory för
 
 Av olika orsaker kanske du vill eller behöver lägga till loggning i en tråd som genererar hög data flöde för begäran. Om målet är att helt fylla en behållares etablerade data flöde med begär Anden som genereras av den här tråden, kan loggnings optimeringar förbättra prestanda avsevärt.
 
-* ***Konfigurera en asynkron loggning** _
+* ***Konfigurera en asynkron loggning***
 
 Svars tiden för en synkron loggning är nödvändigt vis faktorer i den övergripande svars tids beräkningen för tråden för att skapa förfrågningar. En asynkron loggning, till exempel [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) , rekommenderas för att koppla från loggnings resurser från dina program trådar med höga prestanda.
 
-_ ***Inaktivera nettning loggning** _
+* ***Inaktivera loggning av netttjänster***
 
 Loggning av Netstore-bibliotek är chatt och måste stängas av (under tryckning av inloggnings konfigurationen kanske inte räcker) för att undvika ytterligare processor kostnader. Om du inte är i fel söknings läge inaktiverar du nett loggning helt. Så om du använder Log4J för att ta bort de ytterligare CPU-kostnader som uppstår vid ``org.apache.log4j.Category.callAppenders()`` nettning lägger du till följande rad i kodbasen:
 
@@ -245,7 +245,7 @@ Loggning av Netstore-bibliotek är chatt och måste stängas av (under tryckning
 org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
 ```
 
- _ **Öppna filer resurs gräns för operativ system**
+ * **Resurs gräns för öppna filer i operativ systemet**
  
 Vissa Linux-system (till exempel Red Hat) har en övre gräns för antalet öppna filer och så det totala antalet anslutningar. Kör följande för att visa de aktuella gränserna:
 
@@ -361,7 +361,7 @@ Om du har mer än en klient ackumulerad på ett konsekvent sätt över begär an
 
 Även om det automatiserade återförsöket hjälper till att förbättra återhämtning och användbarhet för de flesta program, kan det komma på strider när du gör prestanda mått, särskilt när du mäter svars tid. Den klientbaserade svars tiden kommer att inaktive ras om experimentet träffar Server begränsningen och gör att klient-SDK: n kan försöka tyst igen. För att undvika fördröjningar vid prestanda experiment kan du mäta den avgift som returneras av varje åtgärd och se till att förfrågningarna fungerar under den reserverade begär ande frekvensen. Mer information finns i [enheter för programbegäran](request-units.md).
 
-* **Design för mindre dokument för högre data flöde**
+* **Utforma för mindre dokument för högre dataflöde**
 
 Begär ande avgiften (bearbetnings kostnaden för begäran) för en specifik åtgärd är direkt korrelerad med dokumentets storlek. Åtgärder i stora dokument kostar mer än åtgärder för små dokument. Det bästa är att skapa ditt program och dina arbets flöden så att objektets storlek är ~ 1 KB eller liknande ordning eller storlek. För fördröjnings känsliga program bör stora objekt undvikas – multi-MB dokument kommer att sakta ned ditt program.
 

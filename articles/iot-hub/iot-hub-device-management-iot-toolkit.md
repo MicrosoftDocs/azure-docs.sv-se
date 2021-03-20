@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81688101"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Använda Azure IoT-verktyg för Visual Studio Code för Azure IoT Hub enhets hantering
@@ -71,7 +71,7 @@ Kör Azure IoT-verktyg för Visual Studio Code med olika hanterings alternativ.
 
 2. Ange metod namn och nytto Last i inmatade rutan.
 
-3. Resultaten visas i vyn **utdata**i  >  **Azure IoT Hub** .
+3. Resultaten visas i vyn **utdata** i  >  **Azure IoT Hub** .
 
 ## <a name="read-device-twin"></a>Läs enhetens dubbla
 
@@ -95,7 +95,7 @@ Följ dessa steg om du vill skicka ett meddelande från din IoT-hubb till din en
 
 2. Ange meddelandet i rutan indatamängd.
 
-3. Resultaten visas i vyn **utdata**i  >  **Azure IoT Hub** .
+3. Resultaten visas i vyn **utdata** i  >  **Azure IoT Hub** .
 
 ## <a name="next-steps"></a>Nästa steg
 

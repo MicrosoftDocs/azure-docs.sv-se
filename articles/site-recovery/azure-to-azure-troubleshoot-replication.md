@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96007366"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Felsöka replikering i haveri beredskap för virtuella Azure-datorer
@@ -65,7 +65,7 @@ Azure Site Recovery har gränser för data ändrings hastigheter, beroende på t
 En insamling i data ändrings takt kan komma från en tillfällig data burst. Om data ändrings takten är större än 10 MB/s (för Premium) eller 2 MB/s (för standard) och är nere, kommer replikeringen att fångas upp. Överväg något av följande alternativ om omsättningen är konsekvent väl efter den gräns som stöds:
 
 - Undanta disken som orsakar en hög data ändrings hastighet: först inaktiverar du replikeringen. Sedan kan du undanta disken med hjälp av [PowerShell](azure-to-azure-exclude-disks.md).
-- Ändra nivån på lagrings disken för haveri beredskap: det här alternativet är endast möjligt om disk data omsättningen är mindre än 20 MB/s. Till exempel har en virtuell dator med en P10-disk en data omsättning på mer än 8 MB/s men mindre än 10 MB/s. Om kunden kan använda en P30-disk för mål lagring under skyddet kan problemet lösas. Den här lösningen är bara möjlig för datorer som använder Premium-Managed diskar. Gör så här:
+- Ändra nivån på lagrings disken för haveri beredskap: det här alternativet är endast möjligt om disk data omsättningen är mindre än 20 MB/s. Till exempel har en virtuell dator med en P10-disk en data omsättning på mer än 8 MB/s men mindre än 10 MB/s. Om kunden kan använda en P30-disk för mål lagring under skyddet kan problemet lösas. Den här lösningen är bara möjlig för datorer som använder Premium-Managed diskar. Följ de här stegen:
 
   1. Gå till **diskarna** på den berörda replikerade datorn och kopiera replik diskens namn.
   1. Gå till den här repliken av den hanterade disken.

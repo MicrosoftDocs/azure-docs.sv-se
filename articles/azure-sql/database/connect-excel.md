@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91444038"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Anslut Excel till en databas i Azure SQL Database eller Azure SQL-hanterad instans och skapa en rapport
@@ -48,7 +48,7 @@ Du kommer också behöva en kopia av Excel. Den här artikeln använder [Microso
    > [!TIP]
    > Beroende på din nätverks miljö kanske du inte kan ansluta eller så kan du förlora anslutningen om servern inte tillåter trafik från din klient-IP-adress. Gå till [Azure-portalen](https://portal.azure.com/), klicka på SQL-servrar, klicka på din server, klicka på brandvägg under inställningar och lägg till din klient-IP-adress. Se [Så här konfigurerar du brandväggsinställningar](firewall-configure.md) för mer information.
 
-5. I **navigerings**fönstret väljer du den databas som du vill arbeta med i listan, väljer de tabeller eller vyer som du vill arbeta med (vi valde **vGetAllCategories**) och väljer sedan **load** för att flytta data från databasen till ditt Excel-kalkylblad.
+5. I **navigerings** fönstret väljer du den databas som du vill arbeta med i listan, väljer de tabeller eller vyer som du vill arbeta med (vi valde **vGetAllCategories**) och väljer sedan **load** för att flytta data från databasen till ditt Excel-kalkylblad.
 
     ![Välj en databas och en tabell.](./media/connect-excel/select-database-and-table.png)
 
@@ -56,7 +56,7 @@ Du kommer också behöva en kopia av Excel. Den här artikeln använder [Microso
 
 Nu när du har upprättat anslutningen har du flera olika alternativ för hur du läser in data. Följande steg skapar till exempel ett pivot-diagram baserat på de data som finns i databasen i SQL Database.
 
-1. Följ stegen i föregående avsnitt, men i stället för att välja **Läs**in väljer **du Läs in till** **från List rutan för inläsning.**
+1. Följ stegen i föregående avsnitt, men i stället för att välja **Läs** in väljer **du Läs in till** **från List rutan för inläsning.**
 2. Välj sedan hur du vill visa data i din arbets bok. Vi valde **PivotChart**. Du kan också välja att skapa ett **Nytt kalkylblad** eller **Lägg till den här datan i en Datamodell**. Mer information om datamodeller finns i [Skapa en datamodell i Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).
 
     ![Välja dataformat i Excel](./media/connect-excel/import-data.png)
@@ -80,14 +80,14 @@ Om du vill spara anslutnings informationen permanent kan du skapa en. ODC-fil oc
 
       ![Dialog rutan ny anslutning](./media/connect-excel/new-connection.png)
 
-2. I **guiden data anslutning**anger du Server namnet och dina SQL Database autentiseringsuppgifter. Välj **Nästa**.
+2. I **guiden data anslutning** anger du Server namnet och dina SQL Database autentiseringsuppgifter. Välj **Nästa**.
    1. Välj den databas som innehåller dina data från List rutan.
    2. Välj den tabell eller vy som du är intresse rad av. Vi valde vGetAllCategories.
    3. Välj **Nästa**.
 
       ![Guiden data anslutning](./media/connect-excel/data-connection-wizard.png)
 
-3. Välj platsen för filen, **fil namnet**och det **egna namnet** på nästa skärm i guiden data anslutning. Du kan också välja att spara lösen ordet i filen, men det kan eventuellt exponera dina data till oönskad åtkomst. Välj **Slutför** när du är klar.
+3. Välj platsen för filen, **fil namnet** och det **egna namnet** på nästa skärm i guiden data anslutning. Du kan också välja att spara lösen ordet i filen, men det kan eventuellt exponera dina data till oönskad åtkomst. Välj **Slutför** när du är klar.
 
     ![Spara data anslutning](./media/connect-excel/save-data-connection.png)
 

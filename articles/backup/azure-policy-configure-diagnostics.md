@@ -4,10 +4,10 @@ description: Konfigurera inställningar för Log Analytics diagnostik för alla 
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171523"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurera inställningar för valv diagnostik i skala
@@ -22,7 +22,7 @@ För att förenkla skapandet av diagnostikinställningar i skala (med LA som må
 
 * Du kan tillämpa principen på en gång för alla Recovery Services valv i en viss prenumeration (eller till en resurs grupp i prenumerationen). Användaren som tilldelar principen måste ha **ägar** åtkomst till den prenumeration som principen är tilldelad till.
 
-* Arbets ytan LA som anges av användaren (som diagnostikdata ska skickas till) kan finnas i en annan prenumeration än de valv som principen är tilldelad till. Användaren måste ha **läsare**, **deltagare**eller **ägar** åtkomst till den prenumeration där den angivna La-arbetsytan finns.
+* Arbets ytan LA som anges av användaren (som diagnostikdata ska skickas till) kan finnas i en annan prenumeration än de valv som principen är tilldelad till. Användaren måste ha **läsare**, **deltagare** eller **ägar** åtkomst till den prenumeration där den angivna La-arbetsytan finns.
 
 * Hanterings gruppens omfång stöds inte för tillfället.
 
@@ -46,11 +46,11 @@ Följ stegen nedan om du vill tilldela principen för valv i det begärda omfån
 
 5. Välj knappen **tilldela** högst upp i fönstret. Detta omdirigerar dig till fönstret **tilldela princip** .
 
-6. Under **grunderna**väljer du de tre punkterna bredvid fältet **omfång** . Det här öppnar ett höger kontext fönster där du kan välja prenumerationen för den princip som ska tillämpas på. Du kan också välja en resurs grupp, så att principen endast tillämpas för valv i en viss resurs grupp.
+6. Under **grunderna** väljer du de tre punkterna bredvid fältet **omfång** . Det här öppnar ett höger kontext fönster där du kan välja prenumerationen för den princip som ska tillämpas på. Du kan också välja en resurs grupp, så att principen endast tillämpas för valv i en viss resurs grupp.
 
     ![Grundläggande princip tilldelning](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
-7. Under **parametrar**anger du följande information:
+7. Under **parametrar** anger du följande information:
 
     * **Profil namn** – namnet som ska tilldelas till diagnostikinställningar som skapats av principen.
     * **Log Analytics arbets yta** – Log Analytics arbets ytan som diagnostikinställningar ska associeras med. Diagnostikdata för alla valv i omfånget för princip tilldelningen flyttas till den angivna LA-arbetsytan.
@@ -84,7 +84,7 @@ Om en användare har ett valv med endast en delmängd av de sex resursbaserade h
 >
 > Observera att reparations aktiviteten **inte** Miss fungerar om den befintliga diagnostik inställningen bara är AzureBackupReport aktive rad med arbets ytan X som mål, eftersom det i detta fall inte överlappar de händelser som Aktiver ATS av den befintliga inställningen och de händelser som aktive ras av den inställning som skapats av reparations aktiviteten.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 * [Lär dig hur du använder säkerhets kopierings rapporter](./configure-reports.md)
 * [Läs mer om Azure Policy](../governance/policy/index.yml)

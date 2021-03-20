@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89179614"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Skapa principer för Azure Recovery Services säkerhets kopiering med REST API
@@ -29,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Om du till exempel vill skapa en princip för säkerhets kopiering av virtuella Azure-datorer, följer du komponenterna i begär ande texten.
 
-|Namn  |Krävs  |Typ  |Beskrivning  |
+|Name  |Krävs  |Typ  |Beskrivning  |
 |---------|---------|---------|---------|
 |properties     |   Sant      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Egenskaper för ProtectionPolicyResource        |
 |tags     |         | Objekt        |  Resurstaggar       |

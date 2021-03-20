@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92926418"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Använd certifikat hanterings tjänsten för OPC Vault
@@ -40,7 +40,7 @@ Om du inte redan har gjort det skapar du certifikat UTFÄRDARens certifikat. Mer
 > Skrivar rollen krävs för att registrera ett program.
 
 1. Öppna certifikat tjänsten på `https://myResourceGroup-app.azurewebsites.net` och logga in.
-2. Gå till **Registrera ny** . För en program registrering måste användaren ha minst en tilldelad skrivar roll.
+2. Gå till **Registrera ny**. För en program registrering måste användaren ha minst en tilldelad skrivar roll.
 2. Post formuläret följer namngivnings konventioner i OPC UA. I följande skärm bild visas till exempel inställningarna för [OPC UA Reference Server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) som exempel i OPC UA .net-standard stack:
 
    ![Skärm bild av UA-referens Server registrering](media/howto-opc-vault-secure/reference-server-registration.png "Registrering av UA-referens Server")
@@ -53,7 +53,7 @@ Skydda ditt OPC UA-program genom att utfärda ett signerat certifikat baserat p�
 
 #### <a name="request-a-new-certificate-with-a-new-keypair"></a>Begär ett nytt certifikat med ett nytt nyckel par
 
-1. Gå till **program** .
+1. Gå till **program**.
 3. Välj **ny begäran** för ett program i listan.
 
    ![Skärm bild av nytt begär ande certifikat](media/howto-opc-vault-secure/request-new-certificate.png "Begär nytt certifikat")
@@ -71,14 +71,14 @@ Skydda ditt OPC UA-program genom att utfärda ett signerat certifikat baserat p�
    ![Skärm bild av Visa information om certifikatbegäran med godkännande meddelande längst ned](media/howto-opc-vault-secure/view-key-pair.png "Visa nyckel par")
 
 7. Den resulterande privata nyckeln (PFX eller PEM) och Certificate (DER) kan hämtas härifrån i det format som valts som binär fil hämtning. En Base64-kodad version är också tillgänglig, till exempel för att kopiera och klistra in certifikatet till en kommando rad eller text inmatning. 
-8. När den privata nyckeln har hämtats och lagrats på ett säkert sätt kan du välja **ta bort privat nyckel** . Certifikatet med den offentliga nyckeln är fortfarande tillgängligt för framtida bruk.
+8. När den privata nyckeln har hämtats och lagrats på ett säkert sätt kan du välja **ta bort privat nyckel**. Certifikatet med den offentliga nyckeln är fortfarande tillgängligt för framtida bruk.
 9. På grund av användningen av ett signerat certifikat för certifikat utfärdare bör certifikat utfärdaren och listan över återkallade certifikat (CRL) också hämtas här.
 
 Det beror nu på den OPC UA-enhet som används för att tillämpa det nya nyckel paret. Vanligt vis kopieras certifikat utfärdarens certifikat och CRL till en `trusted` mapp, medan offentliga och privata nycklar för program certifikatet används i en `own` mapp i certifikat arkivet. Vissa enheter kanske redan har stöd för Server-push för certifikat uppdateringar. Se dokumentationen för din OPC UA-enhet.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Begär ett nytt certifikat med en CSR 
 
-1. Gå till **program** .
+1. Gå till **program**.
 3. Välj **ny begäran** för ett program i listan.
 
    ![Skärm bild av nytt begär ande certifikat](media/howto-opc-vault-secure/request-new-certificate.png "Begär nytt certifikat")
@@ -87,7 +87,7 @@ Det beror nu på den OPC UA-enhet som används för att tillämpa det nya nyckel
 
    ![Skärm bild av skapa ett nytt certifikat](media/howto-opc-vault-secure/generate-new-certificate.png "Skapa nytt certifikat")
 
-4. Ladda upp CSR genom att välja en lokal fil eller genom att klistra in en Base64-kodad CSR i formuläret. Välj **Skapa nytt certifikat** .
+4. Ladda upp CSR genom att välja en lokal fil eller genom att klistra in en Base64-kodad CSR i formuläret. Välj **Skapa nytt certifikat**.
 
    ![Skärm bild av Visa information om certifikatbegäran](media/howto-opc-vault-secure/approve-reject-csr.png "Godkänn CSR")
 
@@ -96,7 +96,7 @@ Det beror nu på den OPC UA-enhet som används för att tillämpa det nya nyckel
    ![Skärm bild som visar information om Visa certifikat förfrågningar och innehåller ett godkännande meddelande längst ned.](media/howto-opc-vault-secure/view-cert-csr.png "Visa certifikat")
 
 6. Det resulterande certifikatet (DER) kan laddas ned härifrån som en binär fil. En Base64-kodad version är också tillgänglig, till exempel för att kopiera och klistra in certifikatet till en kommando rad eller text inmatning. 
-10. När certifikatet har hämtats och lagrats på ett säkert sätt kan du välja **ta bort certifikat** .
+10. När certifikatet har hämtats och lagrats på ett säkert sätt kan du välja **ta bort certifikat**.
 11. På grund av användningen av ett signerat certifikat från en certifikat utfärdare, ska CA-certifikatet och CRL: en även hämtas här.
 
 Det beror nu på den OPC UA-enhet som används för att tillämpa det nya certifikatet. Vanligt vis kopieras certifikat utfärdarens certifikat och CRL till en `trusted` mapp, medan program certifikatet används i en `own` mapp i certifikat arkivet. Vissa enheter kanske redan har stöd för Server-push för certifikat uppdateringar. Se dokumentationen för din OPC UA-enhet.

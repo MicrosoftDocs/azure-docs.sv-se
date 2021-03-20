@@ -1,7 +1,7 @@
 ---
-title: inkludera fil
+title: ta med fil
 titleSuffix: Azure
-description: inkludera fil
+description: ta med fil
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 268703081a2a40e8bcc665889eaeaf8edd673bfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81680960"
 ---
 1. På sidan **skapa en peering** på fliken **konfiguration** fyller du i rutorna som visas.
@@ -20,7 +20,7 @@ ms.locfileid: "81680960"
     > [!div class="mx-imgBorder"]
     > ![Skapa en peering-sida Exchange peering-typ](../media/setup-exchange-conf-tab.png)
 
-    * För **peering-typ**väljer du **Exchange**.
+    * För **peering-typ** väljer du **Exchange**.
     * Välj **SKU** som **standard kostnads fritt**.
     * Välj den **tunnelbane** plats där du vill konfigurera peering.
 
@@ -28,7 +28,7 @@ ms.locfileid: "81680960"
         > Om du redan har peering-anslutningar med Microsoft på den valda platsen för **tunnelbane linje** och du använder portalen för första gången för att konfigurera peering på den platsen, visas dina befintliga peering-anslutningar i avsnittet **peering Connections** (se). Microsoft kommer automatiskt att konvertera peering-anslutningarna till en Azure-resurs så att du kan hantera dem tillsammans med de nya anslutningarna på ett och samma ställe. Mer information finns i [konvertera en äldre Exchange-peering till en Azure-resurs med hjälp av portalen](../howto-legacy-exchange-portal.md).
         >
 
-1. Under **peering-anslutningar**väljer du **Skapa ny** för att lägga till en rad för varje ny anslutning som du vill konfigurera.
+1. Under **peering-anslutningar** väljer du **Skapa ny** för att lägga till en rad för varje ny anslutning som du vill konfigurera.
 
     * Om du vill konfigurera eller ändra anslutnings inställningarna väljer du knappen Redigera för en rad.
 
@@ -62,7 +62,7 @@ ms.locfileid: "81680960"
     > [!div class="mx-imgBorder"]
     > ![Fliken peering-verifiering](../media/setup-direct-review-tab-validation.png)
 
-1. När meddelandet har ändrats till *verifieringen*verifierar du din information. Skicka begäran genom att välja **skapa**. Om du vill ändra din begäran väljer du **föregående** och upprepar stegen.
+1. När meddelandet har ändrats till *verifieringen* verifierar du din information. Skicka begäran genom att välja **skapa**. Om du vill ändra din begäran väljer du **föregående** och upprepar stegen.
 
     > [!div class="mx-imgBorder"]
     > ![Överföring av peering](../media/setup-exchange-review-tab-submit.png)

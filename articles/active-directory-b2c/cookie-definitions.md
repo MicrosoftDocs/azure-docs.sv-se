@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85389351"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Cookies-definitioner för Azure AD B2C
@@ -39,7 +39,7 @@ Mer information finns i:
 
 I följande tabell visas de cookies som används i Azure AD B2C.
 
-| Name | Domän | Förfallodatum | Syfte |
+| Name | Domain | Förfallodatum | Syfte |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Avsluta [webbläsarsessionen](session-behavior.md) | Innehåller användar medlemskaps data mellan klienter. Klienterna som en användare är medlem av och medlemskaps nivån (administratör eller användare). |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, anpassad domän | Avsluta [webbläsarsessionen](session-behavior.md) | Används för att dirigera begär anden till lämplig produktions instans. |

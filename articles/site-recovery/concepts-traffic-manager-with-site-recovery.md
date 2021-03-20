@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134964"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager med Azure Site Recovery
@@ -87,7 +87,7 @@ Globala företag förbättrar ofta kund upplevelsen genom att skräddarsy sina p
 
 Nu ska vi tänka på ett exempel där **företag D** har delat sin program slut punkter för att separat betjäna Tyskland och resten av världen. **Företag D** använder Azure Traffic Managers [geografiska](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) routningsmetod för att konfigurera detta. All trafik som härstammar från Tyskland dirigeras till **slut punkt 1** och all trafik som härstammar utanför Tyskland dirigeras till **slut punkt 2**.
 
-Problemet med installationen är att om **slut punkten 1** slutar fungera av någon anledning sker ingen omdirigering av trafik till **slut punkt 2**. Trafik från Tyskland fortsätter att dirigeras till **slut punkt 1** oavsett tillståndet för slut punkten och lämnar tyska användare utan åtkomst till **företagets D**-program. På samma sätt sker det ingen omdirigering av trafik till **slut punkt 1**om **slut punkt 2** går offline.
+Problemet med installationen är att om **slut punkten 1** slutar fungera av någon anledning sker ingen omdirigering av trafik till **slut punkt 2**. Trafik från Tyskland fortsätter att dirigeras till **slut punkt 1** oavsett tillståndet för slut punkten och lämnar tyska användare utan åtkomst till **företagets D**-program. På samma sätt sker det ingen omdirigering av trafik till **slut punkt 1** om **slut punkt 2** går offline.
 
 ![Program med flera regioner innan](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
 

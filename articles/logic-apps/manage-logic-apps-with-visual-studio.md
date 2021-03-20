@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87280774"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Hantera Logic Apps i Visual Studio
@@ -75,7 +75,7 @@ I Visual Studio kan du hitta alla Logic Apps som är associerade med din Azure-p
 
    ![Välj "konto hantering"](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-1. Välj **resurs typer**bredvid ikonen **konto hantering** . Under din Azure-prenumeration expanderar du **Logic Apps** så att du kan visa alla distribuerade Logic-appar som är associerade med din prenumeration.
+1. Välj **resurs typer** bredvid ikonen **konto hantering** . Under din Azure-prenumeration expanderar du **Logic Apps** så att du kan visa alla distribuerade Logic-appar som är associerade med din prenumeration.
 
 Öppna sedan din Logic-app i Logic app-redigeraren.
 
@@ -212,7 +212,7 @@ Om du redigerar din Logi Kap par i Azure Portal och vill behålla ändringarna, 
 
 ## <a name="publish-logic-app-updates"></a>Publicera uppdateringar av logikappen
 
-När du är redo att distribuera dina Logic app-uppdateringar från Visual Studio till Azure väljer du **publicera**i Logic App Designer-verktygsfältet.
+När du är redo att distribuera dina Logic app-uppdateringar från Visual Studio till Azure väljer du **publicera** i Logic App Designer-verktygsfältet.
 
 ![Publicera uppdaterad Logic app till Azure Portal](./media/manage-logic-apps-with-visual-studio/publish-logic-app-to-azure-portal.png)
 

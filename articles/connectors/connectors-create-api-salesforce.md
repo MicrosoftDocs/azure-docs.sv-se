@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 9950951ab5189c8c7b72de78bca9465ec5f22748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87290591"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Övervaka, skapa och hantera Salesforce-resurser med hjälp av Azure Logic Apps
@@ -46,7 +46,7 @@ Du kan använda Salesforce-utlösare som får svar från Salesforce och göra ut
 
      \- eller -
 
-   * För befintliga Logi Kap par väljer du **nytt steg**under steget där du vill lägga till en åtgärd. Skriv "Salesforce" som filter i rutan Sök. Under listan åtgärder väljer du den åtgärd som du vill använda.
+   * För befintliga Logi Kap par väljer du **nytt steg** under steget där du vill lägga till en åtgärd. Skriv "Salesforce" som filter i rutan Sök. Under listan åtgärder väljer du den åtgärd som du vill använda.
 
 1. Om du uppmanas att logga in på Salesforce loggar du in nu och tillåter åtkomst.
 

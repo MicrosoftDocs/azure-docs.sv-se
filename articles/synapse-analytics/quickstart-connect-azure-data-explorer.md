@@ -10,13 +10,13 @@ ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
 ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172269"
 ---
-# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Ansluta till Azure Datautforskaren med Apache Spark för Azure Synapse Analytics
+# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Ansluta till Azure Data Explorer med Apache Spark för Azure Synapse Analytics
 
 Den här artikeln beskriver hur du får åtkomst till en Azure Datautforskaren-databas från Synapse Studio med Apache Spark för Azure Synapse Analytics.
 

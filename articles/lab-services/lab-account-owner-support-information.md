@@ -4,10 +4,10 @@ description: Beskriver hur en labb konto ägare kan ange support kontakt informa
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445091"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Konfigurera support information (labb konto ägare i Azure Lab Services)
@@ -22,7 +22,7 @@ Support informationen innehåller:
 
 ## <a name="specify-support-information"></a>Ange supportinformation
 1. Logga in på [Azure Portal](https://portal.azure.com).
-2. I Sök fältet, anger du **labb tjänster**och väljer **labb tjänster** i Sök resultaten. 
+2. I Sök fältet, anger du **labb tjänster** och väljer **labb tjänster** i Sök resultaten. 
 3. Välj ditt labb konto i listan med labb konton. 
 4. Växla till sidan för **intern support** , utför följande steg:
     1. Ange **Support-URL: en**. 

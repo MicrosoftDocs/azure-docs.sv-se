@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d465419dfe36fd5dd67abdef22a6f54fba69a98e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89267470"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Självstudier: Använda systemtilldelad hanterad identitet för en virtuell Linux-dator för åtkomst till Azure Data Lake Store
@@ -34,7 +34,7 @@ I den här guiden får du lära dig att:
 > * Bevilja din virtuella dator åtkomst till Azure Data Lake Store.
 > * Få en åtkomsttoken genom att använda den virtuella datorns systemtilldelade hanterade identitet för åtkomst till Azure Data Lake Store.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154737"
 ---
 # <a name="what-is-authentication"></a>Vad är autentisering?
@@ -137,7 +137,7 @@ En kort beskrivning av varje typ av anspråk som genereras av Azure AD finns i t
 | Roller | Innehåller egna namn på Azure AD-programroller som användaren har beviljats. |
 | Omfång | Anger de behörigheter som beviljats för klientprogrammet. |
 | Ämne | Anger huvudnamnet som token kontrollerar information om. |
-| Klientorganisations-ID | Innehåller ett oföränderlig, unik identifierare för katalogklientorganisationen som har utfärdat token. |
+| Klient-ID:t | Innehåller ett oföränderlig, unik identifierare för katalogklientorganisationen som har utfärdat token. |
 | Tokenlivstid | Definierar tidsintervallet då token är giltig. |
 | UPN (User Principal Name) | Innehåller UPN för subjektet. |
 | Version | Innehåller versionsnumret för token. |

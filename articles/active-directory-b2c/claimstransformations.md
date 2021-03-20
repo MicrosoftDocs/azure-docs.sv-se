@@ -11,17 +11,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202967"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsTransformations** -elementet innehåller en lista över anspråks omvandlings funktioner som kan användas i användar resor som en del av en [anpassad princip](custom-policy-overview.md). En anspråks omvandling konverterar ett angivet anspråk till ett annat. I omvandlings deklarationen anger du metoden Transform, till exempel lägger till ett objekt i en sträng samling eller ändrar Skift läge för en sträng.
+**ClaimsTransformations** -elementet innehåller en lista över anspråks omvandlings funktioner som kan användas i användar resor som en del av en [anpassad princip](custom-policy-overview.md). En anspråkstransformering konverterar ett specifikt anspråk till ett annat. I omvandlings deklarationen anger du metoden Transform, till exempel lägger till ett objekt i en sträng samling eller ändrar Skift läge för en sträng.
 
 Om du vill lägga till en lista över anspråksmedvetna omvandlings funktioner som kan användas i användar resan, måste ett ClaimsTransformations XML-element deklareras under BuildingBlocks-avsnittet i principen.
 
@@ -161,7 +161,7 @@ Exempel på anspråks omvandlingar finns i följande referens sidor:
 
 - [Boolesk](boolean-transformations.md)
 - [Datum](date-transformations.md)
-- [Heltal](integer-transformations.md)
+- [Integer](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Telefonnummer](phone-number-claims-transformations.md)
 - [Allmänt](general-transformations.md)

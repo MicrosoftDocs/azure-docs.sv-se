@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910550"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Så här lägger du till data uppsättningar till en befintlig resurs i Azure Data Share
@@ -25,7 +25,7 @@ Gå till den skickade resursen i Azure Data Share och välj fliken **data uppsä
 
 ![Skärm bild som visar Lägg till markerade data uppsättningar.](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-I panelen till höger väljer du den data uppsättnings typ som du vill lägga till och klickar sedan på **Nästa** . Välj prenumerationen och resurs gruppen för de data som du vill lägga till. Använd de nedrullningsbara pilarna och leta upp och markera kryss rutan bredvid de data som ska läggas till.
+I panelen till höger väljer du den data uppsättnings typ som du vill lägga till och klickar sedan på **Nästa**. Välj prenumerationen och resurs gruppen för de data som du vill lägga till. Använd de nedrullningsbara pilarna och leta upp och markera kryss rutan bredvid de data som ska läggas till.
 
 ![Skärm bild som visar fönstret Lägg till Blob Storage där du kan välja data.](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 

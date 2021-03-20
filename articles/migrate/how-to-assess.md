@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752268"
 ---
 # <a name="add-assessment-tools"></a>Lägga till utvärderingsverktyg
@@ -57,7 +57,7 @@ Den här artikeln beskriver hur du lägger till bedömnings verktyg i [Azure Mig
 
     - Om du har skapat ett Azure Migrate-projekt med hjälp av alternativet **utvärdera och migrera databas** i portalen läggs verktyget för databas bedömning automatiskt till i projektet. Om du vill lägga till ytterligare utvärderings verktyg väljer du **Lägg till fler verktyg** i **databaser** bredvid **bedömnings verktyg**.
 
-    - Om du har skapat ett projekt med ett annat alternativ och ännu inte har några verktyg för databas utvärdering, i verktyg för utvärdering av **databaser**  >  **Assessment tools**, väljer du **Klicka här**.
+    - Om du har skapat ett projekt med ett annat alternativ och ännu inte har några verktyg för databas utvärdering, i verktyg för utvärdering av **databaser**  >  , väljer du **Klicka här**.
 
 2. I **Azure Migrate**  >  **Lägg till verktyg** väljer du de verktyg som du vill lägga till. Välj sedan **Lägg till verktyg**.
 
@@ -69,7 +69,7 @@ Den här artikeln beskriver hur du lägger till bedömnings verktyg i [Azure Mig
 Om du har skapat ett Azure Migrate-projekt med hjälp av alternativet **utforska fler**  >  **webapps** i portalen läggs verktyget för webbappens bedömning automatiskt till i projektet. 
 
 
-1. Om verktyget Web App Assessment inte finns i projektet **Web Apps**  >  väljer du **Klicka här** i Web Apps **utvärderings verktyg**.
+1. Om verktyget Web App Assessment inte finns i projektet   >  väljer du **Klicka här** i Web Apps **utvärderings verktyg**.
     
     ![Lägg till verktyg för webb program utvärdering](./media/how-to-assess/no-web-app-assessment-tool.png)
 

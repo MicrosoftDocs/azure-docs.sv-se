@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3507aacc68de25f7368cbe3cda917077564c56eb
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96356252"
 ---
 1. Gå till **resurs grupper** och välj den resurs grupp som du valde när du skapade **peering** -resursen. Använd **filter** rutan om du har för många resurs grupper.

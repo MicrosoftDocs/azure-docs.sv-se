@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 542fadd5e5ab91be7b7113064bf8c998dae08d12
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912947"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Måttliga bilder från API-konsolen
@@ -40,7 +40,7 @@ Innan du kan testa API: et i online-konsolen behöver du din prenumerations nyck
 
 4. I rutan **begär ande innehåll** använder du standard exempel bilden eller anger en bild som ska genomsökas. Du kan skicka själva avbildningen som binära bit data eller ange en offentligt tillgänglig URL för en avbildning. 
 
-   I det här exemplet använder du den sökväg som anges i rutan **begär text** och väljer sedan **Skicka** . 
+   I det här exemplet använder du den sökväg som anges i rutan **begär text** och väljer sedan **Skicka**. 
 
    ![Prova avbildning – utvärdera begär ande text för konsolen](images/try-image-api-2.PNG)
 
@@ -48,9 +48,9 @@ Innan du kan testa API: et i online-konsolen behöver du din prenumerations nyck
 
    ![Prova avbildning – utvärdera konsol exempel bild](images/sample-image.jpg) 
 
-5. Välj **Skicka** .
+5. Välj **Skicka**.
 
-6. API: et returnerar ett sannolikhets Poäng för varje klassificering. Den returnerar också en bestämning av om bilden uppfyller villkoren ( **Sant** eller **falskt** ). 
+6. API: et returnerar ett sannolikhets Poäng för varje klassificering. Den returnerar också en bestämning av om bilden uppfyller villkoren (**Sant** eller **falskt**). 
 
    ![Prova avbildning – utvärdera sannolikhets Poäng för konsol och villkors bestämning](images/try-image-api-3.PNG)
 
@@ -58,7 +58,7 @@ Innan du kan testa API: et i online-konsolen behöver du din prenumerations nyck
 
 Du kan använda bild redigerings-API: et för att hitta ansikten i en bild. Det här alternativet kan vara användbart när du har sekretess frågor och vill förhindra att en speciell ansikte publiceras på din plattform. 
 
-1. I [referens-API-referensen för bild redigering](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), i den vänstra menyn, under **bild** , väljer du **hitta ansikten** . 
+1. I [referens-API-referensen för bild redigering](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), i den vänstra menyn, under **bild**, väljer du **hitta ansikten**. 
 
    Sidan **bilder – hitta ansikten** öppnas.
 
@@ -74,7 +74,7 @@ Du kan använda bild redigerings-API: et för att hitta ansikten i en bild. Det 
 
    ![Prova en bild – hitta ansikten exempel begär Anden](images/try-image-api-face-request.png)
 
-4. Välj **Skicka** . I det här exemplet hittar API: t två ansikten och returnerar deras koordinater i bilden.
+4. Välj **Skicka**. I det här exemplet hittar API: t två ansikten och returnerar deras koordinater i bilden.
 
    ![Prova rutan för att hitta ansikten exempel svar innehåll](images/try-image-api-face-response.png)
 
@@ -82,7 +82,7 @@ Du kan använda bild redigerings-API: et för att hitta ansikten i en bild. Det 
 
 Du kan använda den Content Moderator OCR-funktionen för att identifiera text i bilder.
 
-1. I [referens-API-referensen för bild redigering](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), i den vänstra menyn, under **bild** , väljer du **OCR** . 
+1. I [referens-API-referensen för bild redigering](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), i den vänstra menyn, under **bild**, väljer du **OCR**. 
 
    Sidan **bild-OCR** öppnas.
 
@@ -96,7 +96,7 @@ Du kan använda den Content Moderator OCR-funktionen för att identifiera text i
 
 4. I rutan **begär ande innehåll** använder du standard exempel bilden. Detta är samma bild som används i föregående avsnitt.
 
-5. Välj **Skicka** . Den extraherade texten visas i JSON:
+5. Välj **Skicka**. Den extraherade texten visas i JSON:
 
    ![Bild – innehålls rutan OCR-exempel svar](images/try-image-api-ocr.PNG)
 

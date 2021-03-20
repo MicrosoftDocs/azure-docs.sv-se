@@ -4,10 +4,10 @@ description: 'Den här artikeln visar hur lärare kan komma åt sina elev-VM: ar
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445108"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Få åtkomst till virtuella datorer som student från lärare-vyn
@@ -25,7 +25,7 @@ Här är ett scenario där den här funktionen kommer att hjälpa dig. En underv
 ## <a name="next-steps"></a>Nästa steg
 Se följande artiklar:
 
-- [Ansluta till en virtuell dator](how-to-use-classroom-lab.md#connect-to-the-vm)
+- [Anslut till en virtuell dator](how-to-use-classroom-lab.md#connect-to-the-vm)
 - [Ansluta till en virtuell dator med RDP på en Mac](connect-virtual-machine-mac-remote-desktop.md)
 - [Ansluta till en virtuell dator med RDP på en Chromebook](connect-virtual-machine-chromebook-remote-desktop.md)
 - [Använd fjärr skrivbord för virtuella Linux-datorer](how-to-use-remote-desktop-linux-student.md)

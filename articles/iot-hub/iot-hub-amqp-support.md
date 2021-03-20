@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81730756"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunicera med din IoT Hub med hjälp av AMQP-protokollet
@@ -131,7 +131,7 @@ for msg in batch:
 
 Som du ser i föregående kod har ett meddelande om att en moln-till-enhet-feedback har en innehålls typ för *program/vnd.microsoft.iothub.feedback.js*. Du kan använda egenskaperna i meddelandets JSON-brödtext för att härleda leverans status för det ursprungliga meddelandet:
 
-* Nyckeln `statusCode` i feedback-texten har något av följande värden: *lyckades*, *har upphört att gälla*, *DeliveryCountExceeded*, *avvisats*eller *rensats*.
+* Nyckeln `statusCode` i feedback-texten har något av följande värden: *lyckades*, *har upphört att gälla*, *DeliveryCountExceeded*, *avvisats* eller *rensats*.
 
 * Nyckeln `deviceId` i feedback-texten har ID för mål enheten.
 
@@ -264,9 +264,9 @@ Följande länk Sök vägar stöds som enhets åtgärder:
 
 | Skapades av | Länktyp | Länk Sök väg | Beskrivning |
 |------------|-----------|-----------|-------------|
-| Egenskaper | Mottagar länk | `/devices/<deviceID>/messages/devicebound` | Meddelanden från moln till enhet som är avsedda för enheter tas emot på den här länken av varje mål enhet. |
-| Egenskaper | Sender-länk | `/devices/<deviceID>/messages/events` | Meddelanden från enhet till moln som skickas från en enhet skickas via den här länken. |
-| Egenskaper | Sender-länk | `/messages/serviceBound/feedback` | Feedback från moln till enhet skickas till tjänsten via den här länken av enheter. |
+| Enheter | Mottagar länk | `/devices/<deviceID>/messages/devicebound` | Meddelanden från moln till enhet som är avsedda för enheter tas emot på den här länken av varje mål enhet. |
+| Enheter | Sender-länk | `/devices/<deviceID>/messages/events` | Meddelanden från enhet till moln som skickas från en enhet skickas via den här länken. |
+| Enheter | Sender-länk | `/messages/serviceBound/feedback` | Feedback från moln till enhet skickas till tjänsten via den här länken av enheter. |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Ta emot kommandon från moln till enhet (enhets klient)
 

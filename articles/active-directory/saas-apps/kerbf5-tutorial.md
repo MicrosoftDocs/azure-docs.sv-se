@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 2fd96c47e98a6f8a66a5fda555304c4448d772e0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med F5
@@ -345,8 +345,8 @@ Du konfigurerar en Active Directory AAA-server i Access Policy Manager (APM) fö
     * Entitets-ID *: https://kerb-app.com.cutestat.com
     * Inställningar för SP-namn
     * Schema: https
-    * Värd: kerbapp200. superdemo. Live
-    * Beskrivning: kerbapp200. superdemo. Live
+    * Värd: kerbapp200.superdemo.live
+    * Beskrivning: kerbapp200.superdemo.live
 
      ![Skärm bild som visar fönstret "redigera S A M L S P service" med "allmänna inställningar" valt.](./media/kerbf5-tutorial/configure25.png)
 
@@ -382,7 +382,7 @@ Du konfigurerar en Active Directory AAA-server i Access Policy Manager (APM) fö
 
 1. Klicka på namnet KerbApp200, Slutför följande information och klicka på **Uppdatera**.
 
-    * Domän-cookie: superdemo. Live
+    * Domän-cookie: superdemo.live
     * SSO-konfiguration: KerAppSSO_sso
 
         ![Skärm bild som visar sidan "S S D/auth-domäner" med list rutan "domän-cookie" och "S S O-konfiguration" markerat och knappen "uppdatera" är markerad.](./media/kerbf5-tutorial/configure31.png)
@@ -397,7 +397,7 @@ Du konfigurerar en Active Directory AAA-server i Access Policy Manager (APM) fö
 
     * **session. logon. senaste. usernameUPN uttryck {[mcget {session. SAML. Last. Identity}]}**
 
-    * **session. AD. lastactualdomain TEXT superdemo. Live**
+    * **session. AD. lastactualdomain TEXT superdemo.live**
 
         ![Skärm bild som visar sidan "åtkomst princip" och dialog rutan "Active Directory" med text rutan "SearchFilter" markerad.](./media/kerbf5-tutorial/configure35.png)
 
@@ -452,7 +452,7 @@ Du konfigurerar en Active Directory AAA-server i Access Policy Manager (APM) fö
 *  **Steg 1:** Skapa ett Delegerings konto
 
     **Exempel:**
-    * Domän namn: **superdemo. live**
+    * Domän namn: **superdemo.live**
 
     * Sam-konto namn: **Big-ipuser**
 

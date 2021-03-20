@@ -1,7 +1,7 @@
 ---
-title: inkludera fil
+title: ta med fil
 titleSuffix: Azure
-description: inkludera fil
+description: ta med fil
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: fda22346a44388248e37473bc7891b8a130569c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81681032"
 ---
 1. På sidan **skapa en peering** på fliken **konfiguration** fyller du i rutorna som visas här.
 
-    * För **peering-typ**väljer du **Direct**.
-    * För **Microsoft Network**väljer du **AS8075**. Skapa inte peering med ASN 8069. Den är reserverad för särskilda program och används endast av [Microsoft-peering](mailto:peering@microsoft.com).
+    * För **peering-typ** väljer du **Direct**.
+    * För **Microsoft Network** väljer du **AS8075**. Skapa inte peering med ASN 8069. Den är reserverad för särskilda program och används endast av [Microsoft-peering](mailto:peering@microsoft.com).
     * Välj **SKU** som **standard kostnads fritt**. Välj inte Premium kostnads fritt eftersom det är reserverat för särskilda program.
     * Välj den **tunnelbane** plats där du vill konfigurera peering.
 
@@ -26,7 +26,7 @@ ms.locfileid: "81681032"
         > Om du redan har peering-anslutningar med Microsoft på den valda platsen för **tunnelbane linje** och du använder Azure Portal för första gången för att konfigurera peering på den platsen, visas dina befintliga peering-anslutningar i avsnittet **peering Connections** (se). Microsoft kommer automatiskt att konvertera peering-anslutningarna till en Azure-resurs så att du kan hantera dem alla, tillsammans med de nya anslutningarna på ett och samma ställe. Mer information finns i [konvertera en äldre direkt peering till en Azure-resurs med hjälp av portalen](../howto-legacy-direct-portal.md).
         >
 
-1. Under **peering-anslutningar**väljer du **Skapa ny** för att lägga till en rad för varje ny anslutning som du vill konfigurera.
+1. Under **peering-anslutningar** väljer du **Skapa ny** för att lägga till en rad för varje ny anslutning som du vill konfigurera.
 
     * Om du vill konfigurera eller ändra anslutnings inställningarna väljer du knappen Redigera för en rad.
 
@@ -45,7 +45,7 @@ ms.locfileid: "81681032"
 
         1. Välj **peering-funktionen** där anslutningen måste konfigureras.
         1. **Session Address Provider** används för att fastställa vem som tillhandahåller det undernät som krävs för att konfigurera BGP-sessionen mellan ditt nätverk och Microsoft. Om du kan ange under nätet väljer du **peer**. Annars kontaktar du **Microsoft** och [Microsoft-peering](mailto:peering@microsoft.com) kommer att kontakta dig. Att välja det här alternativet tar längre tid för Microsoft att bearbeta peering-begäran. I vissa fall kanske Microsoft inte kan tillhandahålla undernät, vilket leder till att begäran nekas.
-        1. Om du har valt alternativet för **sessions-providern** som **peer**anger du IPv4-och IPv6-adresserna tillsammans med rutorna för prefixet **IPv4 prefix** och **session IPv6** .
+        1. Om du har valt alternativet för **sessions-providern** som **peer** anger du IPv4-och IPv6-adresserna tillsammans med rutorna för prefixet **IPv4 prefix** och **session IPv6** .
         1. Ange antalet IPv4-och IPv6-prefix som du kommer att annonsera i rutorna **maximalt annonserade IPv4-adresser** och **maximalt annonserade IPv6-adresser** .
         1. Justera skjutreglaget för **total bandbredd** för att avspegla bandbredden för anslutningen.
         1. Välj **Spara** för att spara dina anslutnings inställningar.
@@ -62,7 +62,7 @@ ms.locfileid: "81681032"
     > [!div class="mx-imgBorder"]
     > ![Fliken peering-verifiering](../media/setup-direct-review-tab-validation.png)
 
-1. När meddelandet har ändrats till *verifieringen*verifierar du din information. Skicka begäran genom att välja **skapa**. Om du vill ändra din begäran väljer du **föregående** och upprepar stegen.
+1. När meddelandet har ändrats till *verifieringen* verifierar du din information. Skicka begäran genom att välja **skapa**. Om du vill ändra din begäran väljer du **föregående** och upprepar stegen.
 
     > [!div class="mx-imgBorder"]
     > ![Överföring av peering](../media/setup-direct-review-tab-submit.png)

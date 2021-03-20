@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/10/2019
 ms.openlocfilehash: 92c275ee3f8e00e71b80e448c9adb94f0b6d21dc
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753730"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Utvärdera ett stort antal virtuella Hyper-V-datorer för migrering till Azure
@@ -43,7 +43,7 @@ När du planerar för utvärdering av ett stort antal virtuella Hyper-V-datorer 
  
 Använd de gränser som sammanfattas i den här tabellen för planering.
 
-**Planering** | **Begränsningar**
+**Planering** | **Gränser**
 --- | --- 
 **Azure Migrate projekt** | Utvärdera upp till 35 000 virtuella datorer i ett projekt.
 **Azure Migrate-installation** | En apparat kan identifiera upp till 5000 virtuella datorer.<br/> En apparat kan ansluta till upp till 300 Hyper-V-värdar.<br/> En installation kan bara associeras med ett enda Azure Migrate-projekt.<br/> Ett valfritt antal enheter kan associeras med ett enda Azure Migrate-projekt. <br/><br/> 

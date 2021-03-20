@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 927e945a0d045abcd1caa2951dbd484224b2f425
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100519549"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data plattformar som stöds på Data Science Virtual Machine
@@ -36,7 +36,7 @@ Följande data plattforms verktyg stöds på DSVM.
 > SQL Server Developer Edition kan endast användas i utvecklings-och test syfte. Du behöver en licens eller någon av de virtuella datorerna SQL Server för att köra den i produktion.
 
 
-### <a name="setup"></a>Installation
+### <a name="setup"></a>Konfiguration
 
 Databas servern är redan förkonfigurerad och Windows-tjänster som är relaterade till SQL Server (som `SQL Server (MSSQLSERVER)` ) är inställda på att köras automatiskt. Det enda manuella steget innebär att du aktiverar databas analyser med hjälp av Microsoft Machine Learning Server. Du kan aktivera analys genom att köra följande kommando som en engångs åtgärd i SQL Server Management Studio (SSMS). Kör det här kommandot när du har loggat in som dator administratör, öppna en ny fråga i SSMS och kontrol lera att den valda databasen är `master` :
 
@@ -74,7 +74,7 @@ Du kan skicka Spark-jobb på kommando raden genom att köra `spark-submit` `pysp
 
 Du kan använda Spark från R genom att använda bibliotek som sparker, Sparklyr och Microsoft Machine Learning Server, som är tillgängliga på DSVM. Se pekare till exempel i föregående tabell.
 
-### <a name="setup"></a>Installation
+### <a name="setup"></a>Konfiguration
 Innan du kör i en spark-kontext i Microsoft Machine Learning Server på Ubuntu Linux DSVM-versionen måste du slutföra ett engångs inställnings steg för att aktivera en lokal enskild nod Hadoop HDFS-och garn-instans. Hadoop-tjänster installeras som standard men inaktive ras på DSVM. Om du vill aktivera dem kör du följande kommandon som rot första gången:
 
 ```bash

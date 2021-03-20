@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 2a1744feedc3e0ffae6cf2cd45cd090a6c2f06d5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422101"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Konfigurera en Indexer-anslutning till en Cosmos DB-databas med hjälp av en hanterad identitet
@@ -84,8 +84,8 @@ Bröd texten i begäran innehåller definitionen av data källan, som ska inneh�
 |---------|-------------|
 | **Namn** | Krävs. Välj ett namn som ska representera ditt data käll objekt. |
 |**bastyp**| Krävs. Måste vara `cosmosdb` . |
-|**klientautentiseringsuppgifter** | Krävs. <br/><br/>När du ansluter med en hanterad identitet ska formatet för **autentiseringsuppgifter** vara: *databas = [databas namn]; ResourceId = [resurs-ID-sträng];(ApiKind = [API-kind];)*<br/> <br/>ResourceId-formatet: *ResourceID =/Subscriptions/ **ditt prenumerations-ID** /resourceGroups/ **resurs gruppens namn** /providers/Microsoft.DocumentDB/databaseAccounts/ **ditt Cosmos DB-kontonamn** /;*<br/><br/>Anslutnings strängen kräver ingen ApiKind för SQL-samlingar.<br/><br/>För MongoDB-samlingar lägger du till **ApiKind = MongoDB** i anslutnings strängen. <br/><br/>Registrera dig för för [hands versionen](https://aka.ms/azure-cognitive-search/indexer-preview) av Gremlin-diagram och Cassandra-tabeller för att få åtkomst till för hands versionen och information om hur du formaterar autentiseringsuppgifterna.<br/>|
-| **fönster** | Innehåller följande element: <br/>**namn** : obligatoriskt. Ange ID för den databas samling som ska indexeras.<br/>**fråga** : valfritt. Du kan ange en fråga för att förenkla ett godtyckligt JSON-dokument till ett plant schema som Azure Kognitiv sökning kan indexera.<br/>För API: et för MongoDB, Gremlin API och API för Cassandra, stöds inte frågor. |
+|**klientautentiseringsuppgifter** | Krävs. <br/><br/>När du ansluter med en hanterad identitet ska formatet för **autentiseringsuppgifter** vara: *databas = [databas namn]; ResourceId = [resurs-ID-sträng];(ApiKind = [API-kind];)*<br/> <br/>ResourceId-formatet: *ResourceID =/Subscriptions/**ditt prenumerations-ID**/resourceGroups/**resurs gruppens namn**/providers/Microsoft.DocumentDB/databaseAccounts/**ditt Cosmos DB-kontonamn**/;*<br/><br/>Anslutnings strängen kräver ingen ApiKind för SQL-samlingar.<br/><br/>För MongoDB-samlingar lägger du till **ApiKind = MongoDB** i anslutnings strängen. <br/><br/>Registrera dig för för [hands versionen](https://aka.ms/azure-cognitive-search/indexer-preview) av Gremlin-diagram och Cassandra-tabeller för att få åtkomst till för hands versionen och information om hur du formaterar autentiseringsuppgifterna.<br/>|
+| **fönster** | Innehåller följande element: <br/>**namn**: obligatoriskt. Ange ID för den databas samling som ska indexeras.<br/>**fråga**: valfritt. Du kan ange en fråga för att förenkla ett godtyckligt JSON-dokument till ett plant schema som Azure Kognitiv sökning kan indexera.<br/>För API: et för MongoDB, Gremlin API och API för Cassandra, stöds inte frågor. |
 | **dataChangeDetectionPolicy** | Rekommenderas |
 |**dataDeletionDetectionPolicy** | Valfritt |
 

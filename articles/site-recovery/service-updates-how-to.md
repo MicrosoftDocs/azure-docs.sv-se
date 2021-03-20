@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: ramamill
 ms.openlocfilehash: a1ea8b6fb9800d796670161288be0d86ce6ffc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89424947"
 ---
 # <a name="service-updates-in-site-recovery"></a>Tjänst uppdateringar i Site Recovery
@@ -92,7 +92,7 @@ I det här scenariot rekommenderar vi starkt att du [aktiverar automatiska uppda
 
 Om du vill hantera uppdateringar manuellt kan du välja något av följande alternativ:
 
-1. När en ny agent uppdatering är tillgänglig tillhandahåller Site Recovery ett meddelande i valvet mot sidans överkant. I valvet > **replikerade objekt**klickar du på det här meddelandet överst på skärmen: 
+1. När en ny agent uppdatering är tillgänglig tillhandahåller Site Recovery ett meddelande i valvet mot sidans överkant. I valvet > **replikerade objekt** klickar du på det här meddelandet överst på skärmen: 
     
     **Det finns en ny Site Recovery uppdatering av replikeringsprincipen. Klicka om du vill installera >** <br/><br/>Välj de virtuella datorer som du vill använda uppdateringen för och klicka sedan på **OK**.
 

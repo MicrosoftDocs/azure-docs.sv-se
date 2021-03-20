@@ -4,10 +4,10 @@ description: Lär dig hur du anger en resurs grupp för virtuella datorer i ett 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483371"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Ange en resurs grupp för virtuella labb datorer i Azure DevTest Labs
@@ -105,7 +105,7 @@ Den här inställningen gäller för nya virtuella datorer som skapats i labbet.
 Så här använder du detta API:
 - Använd API-version **2018_10_15_preview**.
 - Om du anger en ny resurs grupp måste du kontrol lera att du har **Skriv behörighet för resurs grupper** i din prenumeration. Om du saknar Skriv behörighet kommer du inte att kunna skapa nya virtuella datorer i den angivna resurs gruppen.
-- Skicka i det **fullständiga resurs grupps-ID: t**när du använder API: et. Exempel: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Se till att resurs gruppen finns i samma prenumeration som labbet. 
+- Skicka i det **fullständiga resurs grupps-ID: t** när du använder API: et. Exempel: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Se till att resurs gruppen finns i samma prenumeration som labbet. 
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400576"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Använda PowerShell för att hantera Traffic Manager
@@ -61,11 +61,11 @@ Följande tabell beskriver parametrarna:
 
 | Parameter | Beskrivning |
 | --- | --- |
-| Namn |Resurs namnet för den Traffic Manager profil resursen. Profiler i samma resurs grupp måste ha unika namn. Det här namnet är skilt från DNS-namnet som används för DNS-frågor. |
+| Name |Resurs namnet för den Traffic Manager profil resursen. Profiler i samma resurs grupp måste ha unika namn. Det här namnet är skilt från DNS-namnet som används för DNS-frågor. |
 | ResourceGroupName |Namnet på den resurs grupp som innehåller profil resursen. |
 | TrafficRoutingMethod |Anger den metod för trafikroutning som används för att avgöra vilken slut punkt som returneras som svar på en DNS-fråga. Möjliga värden är "prestanda", "viktad" eller "prioritet". |
 | RelativeDnsName |Anger hostname-delen av DNS-namnet som anges av den här Traffic Manager profilen. Det här värdet kombineras med DNS-domännamnet som används av Azure-Traffic Manager för att forma det fullständiga domän namnet (FQDN) för profilen. Om du till exempel anger värdet "contoso" blir "contoso.trafficmanager.net". |
-| TTL-värde |Anger TTL-värdet (Time-to-Live) för DNS i sekunder. Detta TTL-värde informerar de lokala DNS-matcharna och DNS-klienter så länge DNS-svar för den här Traffic Manager profilen ska cachelagras. |
+| TTL |Anger TTL-värdet (Time-to-Live) för DNS i sekunder. Detta TTL-värde informerar de lokala DNS-matcharna och DNS-klienter så länge DNS-svar för den här Traffic Manager profilen ska cachelagras. |
 | MonitorProtocol |Anger det protokoll som ska användas för att övervaka slut punktens hälsa. Möjliga värden är HTTP och HTTPS. |
 | MonitorPort |Anger den TCP-port som används för att övervaka slut punktens hälsa. |
 | MonitorPath |Anger sökvägen i förhållande till slut punkts domänens namn som används för att avsöka för slut punkts hälsa. |

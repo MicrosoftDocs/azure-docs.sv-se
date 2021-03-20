@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602141"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Planera och hantera kostnader för Azure Cosmos DB
@@ -83,7 +83,7 @@ När du använder kostnads analys kan du Visa Azure Cosmos DB kostnader i grafer
 
 Så här visar du Azure Cosmos DB kostnader i kostnads analys:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 1. Öppna omfånget i Azure Portal och välj **kostnads analys** i menyn. Gå till exempel till **prenumerationer**, Välj en prenumeration i listan och välj sedan  **kostnads analys** i menyn. Välj **omfång** för att växla till ett annat omfång i kostnads analys.
 
@@ -112,7 +112,7 @@ I följande artiklar finns mer information om hur priser fungerar i Azure Cosmos
 * [Prismodell i Azure Cosmos DB](how-pricing-works.md)
 * [Optimera kostnaden för etablerat dataflöde i Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optimera kostnaden för frågor i Azure Cosmos DB](./optimize-cost-reads-writes.md)
-* [Optimera lagrings kostnaden i Azure Cosmos DB](optimize-cost-storage.md)
+* [Optimera kostnader för lagring i Azure Cosmos DB](optimize-cost-storage.md)
 * Lär dig [hur du optimerar din moln investering med Azure Cost Management](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * Lär dig mer om att hantera kostnader med [kostnads analys](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * Lär dig mer om att [förhindra oväntade kostnader](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

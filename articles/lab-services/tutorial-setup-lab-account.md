@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar ett labb konto med Azure Lab Services,
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445074"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Självstudie: Konfigurera ett labbkonto med Azure Lab Services
@@ -25,7 +25,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 Följande steg visar hur du använder Azure Portal till att skapa ett labbkonto med Azure Lab Services. 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. På menyn till vänster väljer du **Alla tjänster**. Välj **DevOps** från **Kategorier**. Välj sedan **labb tjänster**. Om du väljer Star ( `*` ) bredvid **labb tjänster**läggs den till i avsnittet **Favoriter** på den vänstra menyn. I nästa steg kan du välja **labb tjänster** under **Favoriter**.
+2. På menyn till vänster väljer du **Alla tjänster**. Välj **DevOps** från **Kategorier**. Välj sedan **labb tjänster**. Om du väljer Star ( `*` ) bredvid **labb tjänster** läggs den till i avsnittet **Favoriter** på den vänstra menyn. I nästa steg kan du välja **labb tjänster** under **Favoriter**.
 
     ![Alla tjänster – > Lab-tjänster](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. På sidan **labb tjänster** väljer du **Lägg till** i verktygsfältet eller så väljer du knappen **Skapa labb konto** på sidan. 
@@ -34,15 +34,15 @@ Följande steg visar hur du använder Azure Portal till att skapa ett labbkonto 
 4. På fliken **grundläggande** på sidan **skapa ett labb konto** gör du följande: 
     1. För **namnet på labbkontot** anger du ett namn. 
     2. Välj den **Azure-prenumeration** där du vill skapa labbkontot.
-    3. För **resurs grupp**väljer du en befintlig resurs grupp eller väljer **Skapa ny**, och anger ett namn för resurs gruppen.
-    4. För **plats**väljer du en plats/region där du vill skapa labb kontot. 
+    3. För **resurs grupp** väljer du en befintlig resurs grupp eller väljer **Skapa ny**, och anger ett namn för resurs gruppen.
+    4. För **plats** väljer du en plats/region där du vill skapa labb kontot. 
 
         ![Labb konto – sidan grunder](./media/tutorial-setup-lab-account/lab-account-basics-page.png)
     5. Välj **Granska + skapa**.
     6. Granska sammanfattningen och välj **skapa**. 
 
         ![Granska + skapa – > skapa](./media/tutorial-setup-lab-account/create-button.png)    
-5. När distributionen är klar expanderar du **Nästa steg**och väljer **gå till resurs**. 
+5. När distributionen är klar expanderar du **Nästa steg** och väljer **gå till resurs**. 
 
     ![Sidan gå till labb konto](./media/tutorial-setup-lab-account/go-to-lab-account.png)
 6. Bekräfta att du ser sidan **labb konto** . 

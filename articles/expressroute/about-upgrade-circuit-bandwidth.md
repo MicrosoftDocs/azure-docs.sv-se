@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: duau
 ms.openlocfilehash: 7831e7944321e074c312853e1534c47970ebdfdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89397958"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>Om att uppgradera ExpressRoute-kretsens bandbredd
@@ -24,7 +24,7 @@ För att kunna uppgradera krets bandbredden måste ExpressRoute Direct-eller Exp
 
 Om kapaciteten är tillgänglig kan du uppgradera kretsen med följande metoder:
 
-* [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md#modify)
+* [Azure-portalen](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [PowerShell](expressroute-howto-circuit-arm.md#modify)
 * [Azure CLI](howto-circuit-cli.md#modify)
 
