@@ -4,13 +4,13 @@ description: Den här artikeln innehåller en översikt över hur du utvecklar a
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: 4db151f54a2ad236ba937b005ba6a1fd3edd5967
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97657594"
 ---
-# <a name="message-replication-tasks-and-applications"></a>Aktiviteter och program för meddelande replikering
+# <a name="message-replication-tasks-and-applications"></a>Aktiviteter och program för meddelandereplikering
 
 Som förklaras i [Federations artikeln för meddelande replikering och över flera regioner](service-bus-federation-overview.md) , är replikering av meddelande sekvenser mellan par av Service Bus entiteter och mellan Service Bus och andra meddelande källor och mål i allmänhet lean på Azure Functions.
 

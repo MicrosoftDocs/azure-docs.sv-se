@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 42bac2df7abe00be8c0e6ffddcc9bef7ef28ba9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93309524"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Flytta data till en Azure SQL Database för Azure Machine Learning
@@ -39,7 +39,7 @@ De procedurer som beskrivs här kräver att du har:
 * Åtkomst till en **Azure SQL Database**. Om du måste konfigurera en Azure SQL Database ger [komma igång med Microsoft Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md) information om hur du etablerar en ny instans av en Azure SQL Database.
 * Installerat och konfigurerat **Azure PowerShell** lokalt. Instruktioner finns i [så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/).
 
-**Data** : migreringsprocessen visas med hjälp av [NYC taxi-datauppsättningen](https://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxi-datauppsättningen innehåller information om rese data och mässor och finns i Azure Blob Storage: [NYC taxi-data](https://www.andresmh.com/nyctaxitrips/). Ett exempel på och en beskrivning av dessa filer finns i [Beskrivning av NYC taxi TRIPs-data uppsättning](sql-walkthrough.md#dataset).
+**Data**: migreringsprocessen visas med hjälp av [NYC taxi-datauppsättningen](https://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxi-datauppsättningen innehåller information om rese data och mässor och finns i Azure Blob Storage: [NYC taxi-data](https://www.andresmh.com/nyctaxitrips/). Ett exempel på och en beskrivning av dessa filer finns i [Beskrivning av NYC taxi TRIPs-data uppsättning](sql-walkthrough.md#dataset).
 
 Du kan antingen anpassa de procedurer som beskrivs här till en uppsättning dina egna data eller följa stegen som beskrivs i använda NYC taxi-datauppsättningen. Om du vill överföra NYC taxi-datauppsättningen till SQL Server databasen följer du proceduren som beskrivs i [Mass import av data i SQL Server Database](sql-walkthrough.md#dbload).
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Självstudie: Azure Active Directory integrering med mänskligheten
@@ -137,7 +137,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Human
 
     ![Skärm bild som visar det enkla Sign-On avsnittet där du kan ange de värden som beskrivs.](./media/shiftplanning-tutorial/iC786905.png "för Aha!")
 
-    a. Välj **SAML-aktiverat **.
+    a. Välj **SAML-aktiverat**.
 
     b. Välj **Allow Password Login** (Tillåt inloggning med lösenord).
 
@@ -224,7 +224,7 @@ För att göra det möjligt för Azure AD-användare att logga in på Humanity m
 
     ![Spara medarbetare](./media/shiftplanning-tutorial/iC786625.png "Spara medarbetare")
 
-    a. Ange **förnamn**, **efter namn**och **e-postadress** för ett giltigt Azure AD-konto som du vill etablera i de relaterade text rutorna.
+    a. Ange **förnamn**, **efter namn** och **e-postadress** för ett giltigt Azure AD-konto som du vill etablera i de relaterade text rutorna.
 
     b. Klicka på **Save Employees** (Spara medarbetare).
 

@@ -8,10 +8,10 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.openlocfilehash: de8405477611d62b8a46e8b6b645887cc4d30099
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784249"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>Planera och hantera kostnader för Azure-ExpressRoute
@@ -22,7 +22,7 @@ När du har börjat använda ExpressRoute-resurser använder du Cost Management 
 
 Tänk på att kostnader för ExpressRoute bara är en del av månads kostnaderna på din Azure-faktura. Även om den här artikeln förklarar hur du planerar för och hanterar kostnader för ExpressRoute debiteras du för alla Azure-tjänster och-resurser som används i din Azure-prenumeration, inklusive tjänster från tredje part.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kostnads analys i Cost Management stöder de flesta typer av Azure-konton, men inte alla. Om du vill se hela listan med kontotyper som stöds kan du läsa [Förstå Cost Management-data](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Om du vill visa kostnads data måste du ha minst Läs behörighet för ett Azure-konto. 
 

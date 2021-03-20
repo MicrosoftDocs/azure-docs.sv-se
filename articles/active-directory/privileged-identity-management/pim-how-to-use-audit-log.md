@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370839"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Visa gransknings historik för Azure AD-roller i Privileged Identity Management
@@ -91,14 +91,14 @@ Följ dessa steg om du vill visa gransknings historiken för Azure AD-roller.
     | Kolumn | Beskrivning |
     | --- | --- |
     | Tid | När åtgärden utfördes. |
-    | Requestor | Användare som begärde roll aktiveringen eller ändringen. Om värdet är **Azure-system**kontrollerar du Azures gransknings historik för mer information. |
-    | Åtgärd | Åtgärder som vidtas av begär Ande. Åtgärder kan omfatta tilldela, ta bort, aktivera, inaktivera eller AddedOutsidePIM. |
+    | Requestor | Användare som begärde roll aktiveringen eller ändringen. Om värdet är **Azure-system** kontrollerar du Azures gransknings historik för mer information. |
+    | Action | Åtgärder som vidtas av begär Ande. Åtgärder kan omfatta tilldela, ta bort, aktivera, inaktivera eller AddedOutsidePIM. |
     | Medlem | Användare som aktiverar eller har tilldelats en roll. |
     | Roll | Roll som tilldelats eller Aktiver ATS av användaren. |
     | REA soning | Text som angavs i orsaks fältet under aktiveringen. |
     | Förfallodatum | När en aktive rad roll upphör att gälla. Gäller endast berättigade roll tilldelningar. |
 
-1. Sortera gransknings historiken genom att klicka på knapparna **tid**, **åtgärd**och **roll** .
+1. Sortera gransknings historiken genom att klicka på knapparna **tid**, **åtgärd** och **roll** .
 
 ## <a name="filter-audit-history"></a>Filtrera gransknings historik
 
@@ -106,9 +106,9 @@ Följ dessa steg om du vill visa gransknings historiken för Azure AD-roller.
 
     Fönstret **Parametrar för uppdaterings diagram** visas.
 
-1. I **tidsintervall**väljer du ett tidsintervall.
+1. I **tidsintervall** väljer du ett tidsintervall.
 
-1. I **roller**markerar du kryss rutorna för att ange de roller som du vill visa.
+1. I **roller** markerar du kryss rutorna för att ange de roller som du vill visa.
 
     ![Fönstret uppdatera diagram parametrar](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 

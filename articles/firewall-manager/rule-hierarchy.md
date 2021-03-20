@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331744"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Använd Azures brand Väggs princip för att definiera en regelmall
@@ -48,7 +48,7 @@ Skapa principer för var och en av program teamen:
 - En princip för brand vägg för databas. Principen för databas brand väggen ärver bas brand Väggs principen.
 - En ingenjörs brand Väggs princip. Den tekniska brand Väggs principen ärver också den grundläggande brand Väggs principen.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Team och krav" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Principmall" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Skapa anpassade roller för att få åtkomst till regel samlings grupper 
 
@@ -91,13 +91,13 @@ Använd följande övergripande procedur för att definiera anpassade roller:
    `*/read", "Microsoft.Network/*/read", "Microsoft.Network/firewallPolicies/ruleCollectionGroups/write` 
 
    åtgärd till egenskapen **åtgärder**   . Se till att inkludera ett kommatecken efter läsåtgärden. Med den här åtgärden kan användaren skapa och uppdatera regel samlings grupper.
-6. I **AssignableScopes**lägger du till ditt PRENUMERATIONS-ID med följande format: 
+6. I **AssignableScopes** lägger du till ditt PRENUMERATIONS-ID med följande format: 
 
    `/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx`
 
    Du måste lägga till explicita prenumerations-ID:n; annars tillåts du inte importera rollen i din prenumeration.
-7. Ta bort **Id**   egenskaps raden för ID och ändra egenskapen **IsCustom**   till true.
-8. Ändra **Name**   egenskaperna för namn och **Beskrivning**   till *AZFM för regel samlings grupp* och *användare med den här rollen kan redigera regel samlings grupper för brand Väggs principer*
+7. Ta bort ****   egenskaps raden för ID och ändra egenskapen **IsCustom**   till true.
+8. Ändra  ****   egenskaperna för namn och  **Beskrivning**   till *AZFM för regel samlings grupp* och *användare med den här rollen kan redigera regel samlings grupper för brand Väggs principer*
 
 Din JSON-fil bör se ut ungefär som i följande exempel:
 
@@ -134,9 +134,9 @@ Om du vill visa en lista över alla anpassade roller kan du använda kommandot G
 
 Du kan också se de anpassade rollerna i Azure Portal. Gå till din prenumeration, Välj **åtkomst kontroll (IAM)**, **roller**.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Team och krav":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Team och krav":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Läs behörighet för SalesAppPolicy":::
 
 Mer information finns i [Självstudier: skapa en anpassad Azure-roll med hjälp av Azure PowerShell](../role-based-access-control/tutorial-custom-role-powershell.md).
 

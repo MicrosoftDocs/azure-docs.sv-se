@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Självstudie: Azure Active Directory integrering med Uberflip
@@ -63,7 +63,7 @@ Om du vill konfigurera integreringen av Uberflip i Azure AD måste du lägga til
 
    ![Alternativet nytt program](common/add-new-app.png)
 
-1. Skriv **Uberflip**i rutan Sök. I Sök resultaten väljer du **Uberflip**och väljer sedan **Lägg till** för att lägga till programmet.
+1. Skriv **Uberflip** i rutan Sök. I Sök resultaten väljer du **Uberflip** och väljer sedan **Lägg till** för att lägga till programmet.
 
    ![Uberflip i resultat listan](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Uberflip i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Uberflip** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Uberflip** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera alternativ för enkel inloggning](common/select-sso.png)
 
@@ -109,7 +109,7 @@ Utför följande steg för att konfigurera enkel inloggning med Uberflip i Azure
      > [!NOTE]
      > Värdet är inte verkligt. Uppdatera det här värdet med den faktiska svars-URL: en. Kontakta [Uberflip support-teamet](mailto:support@uberflip.com)för att få det faktiska värdet. Du kan också se de mönster som visas i fönstret **grundläggande konfiguration av SAML** i Azure Portal.
 
-   * Om du vill konfigurera programmet i SP-initierat SSO-läge väljer du **Ange ytterligare URL: er**i rutan **inloggnings-URL** :
+   * Om du vill konfigurera programmet i SP-initierat SSO-läge väljer du **Ange ytterligare URL: er** i rutan **inloggnings-URL** :
 
      `https://app.uberflip.com/users/login`
 
@@ -149,7 +149,7 @@ I det här avsnittet skapar du en test användare med namnet B. Simon i Azure Po
 
     1. I rutan **namn** anger du **BSimon**.
   
-    1. I rutan **användar namn** anger du **BSimon \@ \<yourcompanydomain> . \<extension> **. Till exempel **BSimon \@ contoso.com**.
+    1. I rutan **användar namn** anger du **BSimon \@ \<yourcompanydomain> . \<extension>**. Till exempel **BSimon \@ contoso.com**.
 
     1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 
@@ -167,11 +167,11 @@ I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning me
 
     ![Uberflip i listan program](common/all-applications.png)
 
-1. I den vänstra rutan under **Hantera**väljer **du användare och grupper**.
+1. I den vänstra rutan under **Hantera** väljer **du användare och grupper**.
 
     ![Alternativet "användare och grupper"](common/users-groups-blade.png)
 
-1. Välj **+ Lägg till användare**och välj sedan **användare och grupper** i fönstret **Lägg till tilldelning** .
+1. Välj **+ Lägg till användare** och välj sedan **användare och grupper** i fönstret **Lägg till tilldelning** .
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518984"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>Rollbaserad åtkomst kontroll i Azure för StorSimple
@@ -58,7 +58,7 @@ I följande exempel börjar vi med den inbyggda roll **läsaren** som gör att a
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Öppna JSON-filen i Visual Studio. Du ser att en typisk Azure-roll består av tre huvud avsnitt, **åtgärder**, **NotActions**och **AssignableScopes**.
+4. Öppna JSON-filen i Visual Studio. Du ser att en typisk Azure-roll består av tre huvud avsnitt, **åtgärder**, **NotActions** och **AssignableScopes**.
 
     I avsnittet **åtgärd** visas alla tillåtna åtgärder för den här rollen. Varje åtgärd tilldelas från en resurs leverantör. För en infrastruktur administratör för StorSimple använder du `Microsoft.StorSimple` resurs leverantören.
 

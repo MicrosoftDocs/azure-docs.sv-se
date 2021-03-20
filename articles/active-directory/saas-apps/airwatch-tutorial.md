@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
 ms.openlocfilehash: 4955062e6f0d0c231d09964c985df12284e3733c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653345"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Självstudie: integrera en Azure Active Directory
@@ -88,7 +88,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** så redigerar du anspråken genom att använda **Redigera-ikonen** eller lägga till anspråken genom att använda **Lägg till nytt anspråk** för att konfigurera SAML-tokenattribut som det visas i bilden ovan och utföra följande steg:
 
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     |---------------|----------------|
     | UID | user.userprincipalname |
     | | |

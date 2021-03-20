@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 12/01/2020
 ms.openlocfilehash: 1425003c718ca52c0bea712e9d25cd3e4c035cf1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453959"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Konfigurera Avancerat skydd för Azure SQL Database
@@ -28,7 +28,7 @@ Du kan få meddelanden om identifierade hot via [e-postmeddelanden](threat-detec
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Konfigurera Avancerat skydd i Azure Portal
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Gå till konfigurations sidan för den server som du vill skydda. I säkerhets inställningarna väljer du **Security Center**.
 3. På konfigurations sidan för **Azure Defender för SQL** :
 

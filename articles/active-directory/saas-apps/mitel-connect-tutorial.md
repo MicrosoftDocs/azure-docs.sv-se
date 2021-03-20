@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Självstudie: Azure Active Directory integrering med MiCloud Connect eller CloudLink Platform
@@ -168,7 +168,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I fältet **namn** skriver du **BrittaSimon**.
   
-    1. I fältet **användar namn** skriver du brittasimon@ \<yourcompanydomain\> . \<extension\> .  Exempelvis BrittaSimon@contoso.com.
+    1. I fältet **användar namn** skriver du brittasimon@ \<yourcompanydomain\> . \<extension\> .  Till exempel BrittaSimon@contoso.com.
 
     1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned värdet som visas i rutan **lösen ord** .
 
@@ -323,7 +323,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I fältet **namn** skriver du **BrittaSimon**.
   
-    1. I fältet **användar namn** skriver du brittasimon@ \<yourcompanydomain\> . \<extension\> .  Exempelvis BrittaSimon@contoso.com.
+    1. I fältet **användar namn** skriver du brittasimon@ \<yourcompanydomain\> . \<extension\> .  Till exempel BrittaSimon@contoso.com.
 
     1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned värdet som visas i rutan **lösen ord** .
 

@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370703"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Skydda data som lagras i Azure Data Lake Storage Gen1
@@ -29,7 +29,7 @@ Att skydda data i Azure Data Lake Storage Gen1 är en metod i tre steg.  Både A
 
 Den här artikeln innehåller anvisningar om hur du använder Azure Portal för att utföra ovanstående uppgifter. För detaljerad information om hur Data Lake Storage Gen1 implementerar säkerhet på konto-och data nivån, se [säkerhet i Azure Data Lake Storage gen1](data-lake-store-security-overview.md). Detaljerad information om hur ACL: er implementeras i Data Lake Storage Gen1 finns i [Översikt över Access Control i data Lake Storage gen1](data-lake-store-access-control.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Innan du påbörjar de här självstudierna måste du ha:
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -53,7 +53,7 @@ Instruktioner för hur du skapar Azure AD-säkerhetsgrupper och hur du lägger t
 ## <a name="assign-users-or-security-groups-to-data-lake-storage-gen1-accounts"></a>Tilldela användare eller säkerhets grupper till Data Lake Storage Gen1 konton
 När du tilldelar användare eller säkerhets grupper till Data Lake Storage Gen1 konton styr du åtkomsten till hanterings åtgärderna för kontot med hjälp av Azure Portal-och Azure Resource Manager-API: er. 
 
-1. Öppna ett Data Lake Storage Gen1-konto. Klicka på **alla resurser**i den vänstra rutan, och klicka sedan på det konto namn som du vill tilldela en användare eller säkerhets grupp från bladet alla resurser.
+1. Öppna ett Data Lake Storage Gen1-konto. Klicka på **alla resurser** i den vänstra rutan, och klicka sedan på det konto namn som du vill tilldela en användare eller säkerhets grupp från bladet alla resurser.
 
 2. I bladet Data Lake Storage Gen1 konto klickar du på **Access Control (IAM)**. Bladet som standard visar prenumerations ägarna som ägare.
    
@@ -68,7 +68,7 @@ När du tilldelar användare eller säkerhets grupper till Data Lake Storage Gen
     För data åtgärder definierar enskilda fil Systems behörigheter vad användarna kan göra. En användare som har en läsar roll kan därför bara se administrativa inställningar som är associerade med kontot, men kan läsa och skriva data baserat på de behörigheter som tilldelats av fil systemet. Data Lake Storage Gen1 behörigheter för fil systemet beskrivs i [tilldela säkerhets grupp som ACL: er till fil systemet Azure Data Lake Storage gen1](#filepermissions).
 
     > [!IMPORTANT]
-    > Endast **ägar** rollen aktiverar fil system åtkomst automatiskt. **Deltagare**, **läsare**och alla andra roller kräver ACL: er för att ge alla åtkomst nivåer till mappar och filer.  **Ägar** rollen tillhandahåller fil-och mappbehörigheter för superanvändare som inte kan åsidosättas via ACL: er. Mer information om hur Azure RBAC-principer mappar till data åtkomst finns i [Azure RBAC för konto hantering](data-lake-store-security-overview.md#azure-rbac-for-account-management).
+    > Endast **ägar** rollen aktiverar fil system åtkomst automatiskt. **Deltagare**, **läsare** och alla andra roller kräver ACL: er för att ge alla åtkomst nivåer till mappar och filer.  **Ägar** rollen tillhandahåller fil-och mappbehörigheter för superanvändare som inte kan åsidosättas via ACL: er. Mer information om hur Azure RBAC-principer mappar till data åtkomst finns i [Azure RBAC för konto hantering](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. Om du vill lägga till en grupp/användare som inte visas på bladet **Lägg till behörigheter** , kan du bjuda in dem genom att skriva deras e-postadress i rutan **Markera** text och sedan välja dem i listan.
    
@@ -99,7 +99,7 @@ Genom att tilldela användar-/säkerhets grupper till Data Lake Storage Gen1 fil
    * **Tilldelade behörigheter** motsvarar POSIX-ACL: er som gör att du kan ange behörigheter för vissa namngivna användare eller grupper utöver filens ägare eller grupp. 
      
      Mer information finns i [HDFS ACL: er](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Mer information om hur ACL: er implementeras i Data Lake Storage Gen1 finns [Access Control i data Lake Storage gen1](data-lake-store-access-control.md).
-4. Klicka på ikonen **Lägg till** för att öppna bladet **tilldela behörigheter** . I det här bladet klickar du på **Välj användare eller grupp**och letar sedan efter säkerhets gruppen som du skapade tidigare i Azure Active Directory i bladet **Välj användare eller grupp** . Om du har många grupper att söka från använder du text rutan överst för att filtrera efter grupp namnet. Klicka på den grupp som du vill lägga till och klicka sedan på **Välj**.
+4. Klicka på ikonen **Lägg till** för att öppna bladet **tilldela behörigheter** . I det här bladet klickar du på **Välj användare eller grupp** och letar sedan efter säkerhets gruppen som du skapade tidigare i Azure Active Directory i bladet **Välj användare eller grupp** . Om du har många grupper att söka från använder du text rutan överst för att filtrera efter grupp namnet. Klicka på den grupp som du vill lägga till och klicka sedan på **Välj**.
    
     ![Lägg till en grupp](./media/data-lake-store-secure-data/adl.acl.3.png "Lägg till en grupp")
 5. Klicka på **Välj behörigheter**, Välj behörigheter, om behörigheterna ska tillämpas rekursivt, och om du vill tilldela behörigheterna som åtkomst-ACL, standard-ACL eller båda. Klicka på **OK**.
@@ -143,7 +143,7 @@ När du tar bort ACL: er för säkerhets grupper från ett Data Lake Storage Gen
 2. Klicka på den mapp som du vill ta bort ACL: en för i bladet **datautforskaren** och klicka sedan på **åtkomst**. Om du vill ta bort ACL: er för en fil måste du först klicka på filen för att förhandsgranska den och sedan klicka på **åtkomst** från bladet för **fil granskning** . 
    
     ![Ange ACL: er på Data Lake Storage Gen1 fil system](./media/data-lake-store-secure-data/adl.acl.1.png "Ange ACL: er på Data Lake Storage Gen1 fil system")
-3. I **Access** -bladet klickar du på säkerhets gruppen som du vill ta bort. Klicka på **ta bort**på bladet **åtkomst information** .
+3. I **Access** -bladet klickar du på säkerhets gruppen som du vill ta bort. Klicka på **ta bort** på bladet **åtkomst information** .
    
     ![Skärm bild av Access-bladet med alternativet för data teknik som anropas och bladet åtkomst information med alternativet ta bort som kallas för.](./media/data-lake-store-secure-data/adl.remove.acl.png "Tilldela behörigheter till grupp")
 

@@ -4,10 +4,10 @@ description: Lär dig hur du ställer in en princip för automatisk avstängning
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93318972"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurera automatisk avstängning för labb-och beräknings virtuella datorer i Azure DevTest Labs
@@ -72,7 +72,7 @@ Om du ställer in labbet på den här principen kan inte labb användare åsidos
 
 1. På sidan **virtuell dator** väljer du **Automatisk avstängning** på den vänstra menyn i avsnittet **åtgärder** .
 2. På sidan **Automatisk avstängning** väljer du **på** för att aktivera den här principen och inaktivera **för att** inaktivera den.
-3. Om du aktiverar den här principen anger du den **tid** ( **och tidszon** ) som den virtuella datorn ska stängas av.
+3. Om du aktiverar den här principen anger du den **tid** ( **och tidszon**) som den virtuella datorn ska stängas av.
 4. Välj **Ja** eller **Nej** om du vill skicka ett meddelande 30 minuter före den angivna tiden för automatisk avstängning. Om du väljer **Ja** anger du en webhook-URL-slutpunkt eller en e-postadress som anger var du vill att meddelandet ska publiceras eller skickas. Användaren får ett meddelande och det ges möjlighet att fördröja avstängningen. Mer information finns i avsnittet om [meddelanden](#notifications) .
 5. Välj **Spara**.
 

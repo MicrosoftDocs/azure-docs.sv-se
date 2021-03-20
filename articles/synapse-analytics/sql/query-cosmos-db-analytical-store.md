@@ -10,10 +10,10 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694367"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i Azure Synapse-länk

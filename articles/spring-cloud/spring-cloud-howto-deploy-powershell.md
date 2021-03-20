@@ -9,13 +9,13 @@ ms.devlang: azurepowershell
 ms.date: 11/16/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3cb320a37818084f2fbcad22a3cc992655b19c3d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95550120"
 ---
-# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Distribuera Azure våren Cloud med Azure PowerShell
+# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Distribuera Azure Spring Cloud med Azure PowerShell
 
 Den här artikeln beskriver hur du kan skapa en instans av Azure våren Cloud med PowerShell-modulen [AZ. SpringCloud](/powershell/module/Az.SpringCloud) .
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver hur du kan skapa en instans av Azure våren Cloud me
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Även om **AZ. SpringCloud** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När den här PowerShell-modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av AZ PowerShell-modulen och är tillgängliga som standard i Azure Cloud Shell.
+  > Även om **AZ. SpringCloud** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.SpringCloud

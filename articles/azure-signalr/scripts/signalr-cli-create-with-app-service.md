@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 673a3583b1ec80fb3ad61ec35a1786a59939f6e8
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94563332"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Skapa en SignalR Service med en App Service
@@ -27,7 +27,7 @@ Det här exempelskriptet skapar en ny Azure SignalR Service-resurs som används 
 
 ## <a name="sample-script"></a>Exempelskript
 
-Det här skriptet använder tillägget *signalr* för Azure CLI. Utför följande kommando för att installera *signalr* -tillägget för Azure CLI innan du använder det här exempelskriptet:
+Det här skriptet använder tillägget *signalr* för Azure CLI. Utför följande kommando för att installera *signalr*-tillägget för Azure CLI innan du använder det här exempelskriptet:
 
 ```azurecli-interactive
 #!/bin/bash

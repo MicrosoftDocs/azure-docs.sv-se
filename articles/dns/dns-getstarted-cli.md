@@ -10,10 +10,10 @@ ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94561377"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Snabbstart: Skapa en Azure DNS-zon och post med Azure CLI
@@ -42,7 +42,7 @@ az group create --name MyResourceGroup --location "East US"
 
 En DNS-zon skapas med hjälp av kommandot `az network dns zone create`. Om du vill se hjälpen för det här kommandot skriver du `az network dns zone create -h`.
 
-I följande exempel skapas en DNS-zon med namnet *contoso. xyz* i resurs gruppen *MyResourceGroup*. Använd exemplet när du vill skapa en DNS-zon, och ersätt värdena med dina egna.
+I följande exempel skapas en DNS-zon med namnet *contoso.xyz* i resurs gruppen *MyResourceGroup*. Använd exemplet när du vill skapa en DNS-zon, och ersätt värdena med dina egna.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -52,7 +52,7 @@ az network dns zone create -g MyResourceGroup -n contoso.xyz
 
 Skapa en DNS-post genom att använda kommandot `az network dns record-set [record type] add-record`. Hjälp om A-poster finns i `azure network dns record-set A add-record -h`.
 
-I följande exempel skapas en post med det relativa namnet "www" i DNS-zonen "contoso. xyz" i resurs gruppen "MyResourceGroup". Det fullständigt kvalificerade namnet på post uppsättningen är "www. contoso. xyz". Post typen är "A", med IP-adressen "10.10.10.10" och en standard-TTL på 3600 sekunder (1 timme).
+I följande exempel skapas en post med det relativa namnet "www" i DNS-zonen "contoso.xyz" i resurs gruppen "MyResourceGroup". Det fullständigt kvalificerade namnet på post uppsättningen är "www.contoso.xyz". Post typen är "A", med IP-adressen "10.10.10.10" och en standard-TTL på 3600 sekunder (1 timme).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
@@ -96,7 +96,7 @@ Nu när du har en DNS-testzon med en ”A”-testpost kan du testa namnmatchning
 
    ![Skärm bild som visar ett kommando tolks fönster med ett n s lookup-kommando och-värden för Server, adress, namn och adress.](media/dns-getstarted-portal/nslookup.PNG)
 
-Värd namnet **www \. contoso. xyz** matchas till **10.10.10.10** , precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt.
+Det värdnamn som **www- \. contoso.xyz** matchar **10.10.10.10**, precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
 ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452999"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>Vad är rätt IoT-lösning för ditt företag?
@@ -47,7 +47,7 @@ Vilka element i din lösning vill du anpassa?
 
 - Välj den hanterade appens plattforms metod för anpassning, instrument paneler, användar roller, enheter och telemetri. Du vill dock inte hantera den underliggande IoT System Management-omkostnaderna.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Vilken pris struktur passar bäst för dina behov?
 

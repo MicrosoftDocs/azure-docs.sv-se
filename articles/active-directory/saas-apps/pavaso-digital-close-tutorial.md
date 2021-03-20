@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c08555120758584f41587bd96d754b325cdc48b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>Självstudie: Azure Active Directory integrering med Pavaso Digital Close
@@ -41,7 +41,7 @@ För att konfigurera Azure AD-integrering med Pavaso Digital Close behöver du f
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Pavaso Digital Close stöder **IDP** -initierad enkel inloggning
+* Pavaso Digital Close stöder **IDP**-initierad enkel inloggning
 
 ## <a name="adding-pavaso-digital-close-from-the-gallery"></a>Lägga till Pavaso Digital Close från galleriet
 
@@ -49,11 +49,11 @@ För att konfigurera integreringen av Pavaso Digital Close till Azure AD behöve
 
 **Lägg till Pavaso Digital Close från galleriet genom att utföra följande steg:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ För att konfigurera integreringen av Pavaso Digital Close till Azure AD behöve
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan skriver du **Pavaso Digital Close** , väljer **Pavaso Digital Close** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **Pavaso Digital Close**, väljer **Pavaso Digital Close** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
      ![Pavaso Digital Close i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning Azure AD med [programnamn] baserat på en testanvändare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning Azure AD med [programnamn] baserat på en testanvändare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i [Programnamn] upprättas.
 
 För att konfigurera och testa enkel inloggning med Azure AD med [Programnamn] behöver du utföra följande byggstenar:
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra följande steg:
 
-1. På [Azure-portalen](https://portal.azure.com/) går du till sidan för **Pavaso Digital Close** -programintegrering och väljer **Enkel inloggning** .
+1. På [Azure-portalen](https://portal.azure.com/) går du till sidan för **Pavaso Digital Close**-programintegrering och väljer **Enkel inloggning**.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -93,7 +93,7 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -105,7 +105,7 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.pavaso.com/AuthServices/Acs`
 
-5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     I textrutan **Inloggnings-URL** skriver du en URL med följande mönster: `https://<SUBDOMAIN>.pavaso.com`.
 
@@ -130,13 +130,13 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
 
 ### <a name="configure-pavaso-digital-close-single-sign-on"></a>Konfigurera enkel inloggning för Pavaso Digital Close
 
-För att konfigurera enkel inloggning på **Pavaso Digital Close** -sidan behöver du skicka det nedladdade **Federation Metadata-XML** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Pavaso Digital Close](mailto:support@pavaso.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+För att konfigurera enkel inloggning på **Pavaso Digital Close**-sidan behöver du skicka det nedladdade **Federation Metadata-XML** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Pavaso Digital Close](mailto:support@pavaso.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -148,32 +148,32 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ser du till att Britta Simon ska kunna använda enkel inloggning i Azure genom att bevilja åtkomst till Pavaso Digital Close.
 
-1. På Azure-portalen väljer du **Företagsprogram** , **Alla program** och sedan **Pavaso Digital Close** .
+1. På Azure-portalen väljer du **Företagsprogram**, **Alla program** och sedan **Pavaso Digital Close**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I programlistan väljer du **Pavaso Digital Close** .
+2. I programlistan väljer du **Pavaso Digital Close**.
 
     ![Pavaso Digital Close-länken i programlistan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -181,7 +181,7 @@ I det här avsnittet ser du till att Britta Simon ska kunna använda enkel inlog
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-pavaso-digital-close-test-user"></a>Skapa Pavaso Digital Close-testanvändare
 

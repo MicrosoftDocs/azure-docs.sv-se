@@ -8,10 +8,10 @@ ms.date: 11/10/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: 1b98948100c06868cd14f636f2049ca515fec18d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94564818"
 ---
 # <a name="commercial-marketplace-analytics-common-questions"></a>Vanliga frågor om kommersiella Marketplace-analyser
@@ -30,7 +30,7 @@ Du kanske ser det här meddelandet:
 
 - Det finns för närvarande inga förvärv för dina publicerade erbjudanden i den kommersiella marknads platsen. Detta kan betyda att dina erbjudanden är Live på den kommersiella marknaden och att kunderna visar dina produkt registrerings sidor, men kunderna inte har vidtagit åtgärder för att köpa och distribuera dem.
 - Ditt erbjudande kanske håller på att publiceras men är inte aktivt än. Endast Live-erbjudanden kan förvärvas av kunder. Om du vill kontrol lera statusen för dina erbjudanden, se sidan **Sammanfattning** på [instrument panelen analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Mer information finns i [Översikt över instrument panelen i marknads plats analys](summary-dashboard.md).
-- Dina erbjudanden kan visas som **kontakta mig** , som endast är listade erbjudanden och som inte kan köpas av kunder på den kommersiella Marketplace. Även om dessa erbjudanden genererar leads och delas med dig, skapas inga beställningar för dessa erbjudanden eftersom de inte kan köpas. Om du vill kontrol lera typen av erbjudande lista går du till installations sidan för ditt erbjudande.
+- Dina erbjudanden kan visas som **kontakta mig**, som endast är listade erbjudanden och som inte kan köpas av kunder på den kommersiella Marketplace. Även om dessa erbjudanden genererar leads och delas med dig, skapas inga beställningar för dessa erbjudanden eftersom de inte kan köpas. Om du vill kontrol lera typen av erbjudande lista går du till installations sidan för ditt erbjudande.
 
 ### <a name="i-know-i-have-analytics-data-so-why-does-the-no-analytics-available-message-appear"></a>Jag vet att jag har analys data, så varför visas inte det tillgängliga analys meddelandet?
 

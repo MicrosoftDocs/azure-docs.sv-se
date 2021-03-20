@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306912"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Utför Azure Table Storage-åtgärder med Azure PowerShell 
@@ -38,7 +38,7 @@ I exemplen krävs AZ PowerShell-moduler `Az.Storage (1.1.0 or greater)` och `Az.
 > Om du använder den här Azure-funktionen från PowerShell måste du ha `Az` installerat modulen. Den aktuella versionen av `AzTable` är inte kompatibel med den äldre AzureRM-modulen.
 > Följ de [senaste installations anvisningarna för att installera AZ-modulen](/powershell/azure/install-az-ps) om det behövs.
 
-När Azure PowerShell har installerats eller uppdaterats måste du installera module **AzTable** , som har kommandon för att hantera entiteterna. Om du vill installera den här modulen kör du PowerShell som administratör och använder kommandot **install-module** .
+När Azure PowerShell har installerats eller uppdaterats måste du installera module **AzTable**, som har kommandon för att hantera entiteterna. Om du vill installera den här modulen kör du PowerShell som administratör och använder kommandot **install-module** .
 
 > [!IMPORTANT]
 > För kompatibilitetsproblem kan vi fortfarande publicera samma modul under det gamla namnet `AzureRmStorageTables` i PowerShell-galleriet. Det här dokumentet refererar endast till det nya namnet.

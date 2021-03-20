@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om att autentisera ett pr
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518236"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Autentisera och auktorisera ett program med Azure Active Directory åtkomst till Azure Service Bus entiteter
@@ -43,7 +43,7 @@ Innan du tilldelar en Azure-roll till ett säkerhets objekt bör du bestämma om
 
 I följande lista beskrivs de nivåer där du kan begränsa åtkomsten till Service Bus resurser, från och med det smala omfång:
 
-- **Kö**, **ämne**eller **prenumeration**: roll tilldelningen gäller för den angivna Service Bus entiteten. För närvarande har Azure Portal inte stöd för att tilldela användare/grupper/hanterade identiteter till Service Bus Azure-roller på prenumerations nivån. 
+- **Kö**, **ämne** eller **prenumeration**: roll tilldelningen gäller för den angivna Service Bus entiteten. För närvarande har Azure Portal inte stöd för att tilldela användare/grupper/hanterade identiteter till Service Bus Azure-roller på prenumerations nivån. 
 - **Service Bus namnrymd**: roll tilldelningen sträcker sig över hela topologin av Service Bus under namn området och till den konsument grupp som är kopplad till den.
 - **Resurs grupp**: roll tilldelningen gäller för alla Service Bus resurser under resurs gruppen.
 - **Prenumeration**: roll tilldelningen gäller för alla Service Bus resurser i alla resurs grupper i prenumerationen.
@@ -112,7 +112,7 @@ Programmet behöver en klient hemlighet för att bevisa sin identitet när en to
 
 1. Navigera till din app-registrering i Azure Portal om du inte redan är på sidan.
 1. Välj **certifikat & hemligheter** på den vänstra menyn.
-1. Under **klient hemligheter**väljer du **ny klient hemlighet** för att skapa en ny hemlighet.
+1. Under **klient hemligheter** väljer du **ny klient hemlighet** för att skapa en ny hemlighet.
 
     ![Ny klient hemlighet – knapp](./media/authenticate-application/new-client-secret-button.png)
 1. Ange en beskrivning av hemligheten och välj önskat utgångs intervall och välj sedan **Lägg till**.

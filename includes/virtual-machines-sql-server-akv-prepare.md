@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95557498"
 ---
 ## <a name="prepare-for-akv-integration"></a>Förbered för AKV-integrering
@@ -25,7 +25,7 @@ För att kunna använda Azure Key Vault-integrering för att konfigurera SQL Ser
 
 1. [Installera Azure PowerShell](#install)
 2. [Skapa en Azure Active Directory](#register)
-3. [Skapa ett nyckel valv](#createkeyvault)
+3. [Skapa ett nyckelvalv](#createkeyvault)
 
 I följande avsnitt beskrivs dessa krav och den information som du behöver samla in för att köra PowerShell-cmdletar senare.
 

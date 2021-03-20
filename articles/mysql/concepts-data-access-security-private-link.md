@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 1ae35d1ac35dacfab2690980d57973dce050382b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242865"
 ---
-# <a name="private-link-for-azure-database-for-mysql"></a>Privat länk för Azure Database for MySQL
+# <a name="private-link-for-azure-database-for-mysql"></a>Private Link för Azure Database for MySQL
 
 Med Private Link kan du ansluta till olika PaaS-tjänster i Azure via en privat slutpunkt. Azure Private Link ger dig tillgång till Azure-tjänster i ditt privata virtuella nätverk (VNet). PaaS-resurser kan nås med hjälp av den privata IP-adressen precis som vilken annan resurs som helst i VNet.
 
@@ -115,7 +115,7 @@ Följande situationer och resultat är möjliga när du använder en privat län
 
 Om du bara vill använda privata slut punkter för att komma åt sina Azure Database for MySQL, kan du inaktivera inställningen alla offentliga slut punkter (t. ex. [brand Väggs regler](concepts-firewall-rules.md) och [VNet-slutpunkter](concepts-data-access-and-security-vnet.md)) genom att ange den **nekade konfigurationen för offentlig nätverks åtkomst** på databas servern. 
 
-När den här inställningen är inställd på *Ja* , tillåts bara anslutningar via privata slut punkter till din Azure Database for MySQL. När den här inställningen är inställd på *Nej* kan klienter ansluta till din Azure Database for MySQL baserat på inställningarna för brand väggen eller VNet-tjänstens slut punkt. När värdet för åtkomst till privat nätverk har angetts kan kunder dessutom inte lägga till och/eller uppdatera befintliga brand Väggs regler och VNet-tjänstens slut punkts regler.
+När den här inställningen är inställd på *Ja*, tillåts bara anslutningar via privata slut punkter till din Azure Database for MySQL. När den här inställningen är inställd på *Nej* kan klienter ansluta till din Azure Database for MySQL baserat på inställningarna för brand väggen eller VNet-tjänstens slut punkt. När värdet för åtkomst till privat nätverk har angetts kan kunder dessutom inte lägga till och/eller uppdatera befintliga brand Väggs regler och VNet-tjänstens slut punkts regler.
 
 > [!Note]
 > Den här funktionen är tillgänglig i alla Azure-regioner där Azure Database for PostgreSQL-enskild server stöder Generell användning och minnesoptimerade pris nivåer.

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861127"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hur och varför program läggs till i Azure AD
@@ -105,7 +105,7 @@ Program som du lägger till själv (representeras som **app (dina)** i diagramme
   * Mappningar av attribut (användar etablering)
 * Mer detaljerad information om tjänstens huvud namn och program objekt finns i referens dokumentationen för Microsoft Graph API:
   * [Program](/graph/api/resources/application)
-  * [Tjänstens huvud namn](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Tjänstens huvudnamn](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Varför integreras program med Azure AD?
 

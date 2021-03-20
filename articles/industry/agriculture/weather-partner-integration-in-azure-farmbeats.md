@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93147087"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>Väder partner integrering med FarmBeats
@@ -75,7 +75,7 @@ API-tjänsten serialiserar den här dikteringen och lagrar den i ett [nyckel val
 
 [Azure Data Factory](../../data-factory/introduction.md) används för att dirigera väder jobb. Det ökar resurser för att köra Docker-koden. Data Factory tillhandahåller också en mekanism för att skicka data säkert till den virtuella dator där Docker-jobbet körs. API-autentiseringsuppgifterna lagras sedan säkert i nyckel valvet. 
 
-Autentiseringsuppgifterna läses som säkra strängar från nyckel valvet. De tillhandahålls som utökade egenskaper i arbets katalogen i Docker-behållaren. Deras fil Sök väg är */mnt/working_dir/activity.jspå* . 
+Autentiseringsuppgifterna läses som säkra strängar från nyckel valvet. De tillhandahålls som utökade egenskaper i arbets katalogen i Docker-behållaren. Deras fil Sök väg är */mnt/working_dir/activity.jspå*. 
 
 Docker-koden kan läsa autentiseringsuppgifterna från *activity.jsvid* kör tid för att få åtkomst till API: er för partner sidan för kunden. I JSON-filen ser autentiseringsuppgifterna ut som följande kod exempel:
 
@@ -99,7 +99,7 @@ Mer information om hur Data Factory pipelines och aktiviteter fungerar finns i [
 
 I följande tabell visas de vanligaste begärandehuvuden som du måste ange när du gör ett API-anrop till FarmBeats.
 
-Sidhuvud | Beskrivning och exempel
+Huvud | Beskrivning och exempel
 --- | ---
 Content-Type | Formatet för begäran. Exempel: `Content-Type: application/<format>` <br/>För FarmBeats Datahub-API: er är formatet JSON. Exempel: ` Content-Type: application/json`
 Auktorisering | Den åtkomsttoken som krävs för att göra ett API-anrop. Exempel: `Authorization: Bearer <Access-Token>`
@@ -117,8 +117,8 @@ Docker-programmet behöver två komponenter: Start och jobb. Programmet kan ha m
 
 Start komponenten ska köras när kunden startar Docker-registreringen på FarmBeats. Följande argument ( `arg1` och `arg2` ) skickas till programmet:
 
-- **FARMBEATS API-slutpunkt** : FarmBeats API-slutpunkt för API-begäranden. Den här slut punkten gör API-anrop till FarmBeats-distributionen.
-- **Azure Functions-URL** : en egen slut punkt. Den här URL: en ger din åtkomsttoken för FarmBeats-API: er. Du kan anropa den `GET` här URL: en för att hämta åtkomsttoken.
+- **FARMBEATS API-slutpunkt**: FarmBeats API-slutpunkt för API-begäranden. Den här slut punkten gör API-anrop till FarmBeats-distributionen.
+- **Azure Functions-URL**: en egen slut punkt. Den här URL: en ger din åtkomsttoken för FarmBeats-API: er. Du kan anropa den `GET` här URL: en för att hämta åtkomsttoken.
 
 Start programmet skapar de metadata som användarna behöver för att köra dina jobb för att få väder data. Mer information finns i [referens implementeringen](https://github.com/azurefarmbeats/noaa_docker). 
 
@@ -127,8 +127,8 @@ Om du anpassar *bootstrap_manifest.jspå* filen skapar referens programmet start
  > [!NOTE]
  > Om du uppdaterar *bootstrap_manifest.jspå* filen eftersom [referens implementeringen](https://github.com/azurefarmbeats/noaa_docker) beskriver, behöver du inte skapa följande metadata. Start programmet kommer att använda manifest filen för att skapa nödvändiga metadata.
 
-- /**WeatherDataModel** : WeatherDataModel metadata representerar väder data. Det motsvarar data uppsättningar som källan tillhandahåller. Till exempel kan en DailyForecastSimpleModel tillhandahålla genomsnittlig temperatur, fuktighet och utfällnings information en gång om dagen. En DailyForecastAdvancedModel kan däremot ge mycket mer information om varje timme. Du kan skapa valfritt antal data modeller för väder.
-- /**JobType** : FarmBeats har ett utöknings Bart jobb hanterings system. Som väder data leverantör har du olika data uppsättningar och API: er (till exempel GetDailyForecasts). Du kan aktivera dessa data uppsättningar och API: er i FarmBeats genom att använda JobType. När en jobbtyp har skapats kan en kund utlösa jobb av den typen för att hämta väder data för deras plats eller deras intresse grupp. Mer information finns i JobType och jobb-API: er i [FarmBeats-Swagger](https://aka.ms/farmbeatsswagger).
+- /**WeatherDataModel**: WeatherDataModel metadata representerar väder data. Det motsvarar data uppsättningar som källan tillhandahåller. Till exempel kan en DailyForecastSimpleModel tillhandahålla genomsnittlig temperatur, fuktighet och utfällnings information en gång om dagen. En DailyForecastAdvancedModel kan däremot ge mycket mer information om varje timme. Du kan skapa valfritt antal data modeller för väder.
+- /**JobType**: FarmBeats har ett utöknings Bart jobb hanterings system. Som väder data leverantör har du olika data uppsättningar och API: er (till exempel GetDailyForecasts). Du kan aktivera dessa data uppsättningar och API: er i FarmBeats genom att använda JobType. När en jobbtyp har skapats kan en kund utlösa jobb av den typen för att hämta väder data för deras plats eller deras intresse grupp. Mer information finns i JobType och jobb-API: er i [FarmBeats-Swagger](https://aka.ms/farmbeatsswagger).
 
 ### <a name="jobs"></a>Jobb
 
@@ -142,7 +142,7 @@ Som en del av jobbet måste programmet skapa en/WeatherDataLocation baserat på/
 
 WeatherDataModel | Beskrivning |
 --- | ---
-Namn  | Namnet på väder data modellen. |
+Name  | Namnet på väder data modellen. |
 Beskrivning  | En meningsfull beskrivning av modellen. |
 Egenskaper  | Ytterligare egenskaper som definieras av data leverantören. |
 weatherMeasures > namn  | Namnet på väder måttet. Till exempel humidity_max. |
@@ -156,7 +156,7 @@ Beskrivning av weatherMeasures->  | En meningsfull beskrivning av måttet.
 
 JobType | Beskrivning |
 --- | ---
-Namn  | Jobbets namn. Till exempel Get_Daily_Forecast. Kunden kommer att köra jobbet för att få väder data.|
+Name  | Jobbets namn. Till exempel Get_Daily_Forecast. Kunden kommer att köra jobbet för att få väder data.|
 pipelineDetails > parametrar > namn  | Parameterns namn. |
 pipelineDetails > parametrar > typ | Parameter typen. Möjliga värden är String, int, Float, bool och array. |
 pipelineDetails > parametrar > parametrarna isrequired | Parameterns booleska värde. Värdet är true om parametern är obligatorisk. Annars är värdet FALSKT. Standardvärdet är true. |
@@ -169,7 +169,7 @@ WeatherDataLocation | Beskrivning |
 --- | ---
 weatherDataModelId  | ID för motsvarande WeatherDataModel som skapades under start processen.|
 location  | Latitud, longitud och höjning. |
-Namn | Objektets namn. |
+Name | Objektets namn. |
 Beskrivning | Beskrivning av väder data platsen. |
 farmId | Valfritt ID för Server gruppen. Kunden tillhandahåller detta ID som en del av jobb parametern. |
 Egenskaper  | Ytterligare egenskaper från tillverkaren.

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100521687"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödesloggning för nätverkssäkerhetsgrupper
@@ -404,7 +404,7 @@ Ibland visas inte loggar om dina virtuella datorer inte är aktiva eller om det 
 
 Stöd för automatisering via ARM-mallar är för närvarande inte tillgängligt för NSG-flödesloggar. Mer information finns i [funktions meddelandet](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Vad gör NSG Flow-loggarna?**
 
@@ -434,7 +434,7 @@ NSG flödes loggar är kompatibla med tjänst slut punkter utan att kräva någo
 
 Flödes loggar version 2 introducerar konceptet _flödes tillstånd_ & lagrar information om byte och paket som överförs. [Läs mer](#log-format)
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 NSG flödes loggar debiteras per GB insamlade loggar och levereras med en kostnads fri nivå på 5 GB/månad per prenumeration. För aktuell prissättning i din region, se [sidan Network Watcher prissättning](https://azure.microsoft.com/pricing/details/network-watcher/).
 

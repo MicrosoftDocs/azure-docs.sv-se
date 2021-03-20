@@ -9,10 +9,10 @@ ms.date: 02/19/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741964"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Självstudie: Distribuera och konfigurera Azure Firewall via Azure Portal
@@ -137,7 +137,7 @@ Distribuera brandväggen till det virtuella nätverket.
    |---------|---------|
    |Prenumeration     |\<your subscription\>|
    |Resursgrupp     |**Test-VB-RG** |
-   |Namn     |**Test-FW01**|
+   |Name     |**Test-FW01**|
    |Region     |Välj samma plats som tidigare|
    |Brand Väggs hantering|**Använd brand Väggs regler (klassisk) för att hantera den här brand väggen**|
    |Välj ett virtuellt nätverk     |**Använd befintlig**: **test-VB-VN**|

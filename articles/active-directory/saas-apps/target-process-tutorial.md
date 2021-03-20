@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: ef21ba46ff64ec2b3c47e9659660fd51f84fbf2e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Självstudie: Azure Active Directory integrering med TargetProcess
@@ -139,7 +139,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure ADmed Target
 
 1. I menyn längst upp klickar du på **Konfiguration**.
 
-    ![Installation](./media/target-process-tutorial/tutorial_target_process_05.png)
+    ![Konfiguration](./media/target-process-tutorial/tutorial_target_process_05.png)
 
 1. Klicka på fliken **Inställningar** .
 

@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 480af87519f8e11c14f009058b0f518bdfc34a1b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026275"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Självstudie: utforma en instrument panel med real tids analys med Azure Database for PostgreSQL – storskalig (citus)
@@ -130,7 +130,7 @@ Frågan infogar ungefär åtta rader varje sekund. Raderna lagras på olika arbe
    > Lämna frågan för generering av data som körs och öppna en andra psql-anslutning för de återstående kommandona i den här självstudien.
    >
 
-## <a name="query"></a>Söka i data
+## <a name="query"></a>Fråga
 
 Med alternativet för skalnings värd kan flera noder bearbeta frågor parallellt för hastighet. Databasen beräknar till exempel agg regeringar som SUM och COUNT på arbetsnoder och kombinerar resultaten till ett slutligt svar.
 

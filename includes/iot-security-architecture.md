@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95559199"
 ---
 När du designar ett system är det viktigt att förstå de potentiella hoten mot systemet och lägga till lämpliga försvar i enlighet med detta, eftersom systemet är utformat och konstruerat. Det är viktigt att utforma produkten från början med säkerhet i åtanke eftersom du förstår hur en angripare kan kompromettera ett system och se till att lämpliga åtgärder är på plats från början.
@@ -177,7 +177,7 @@ I var och en av de kategorier som beskrivs i Azure IoT-arkitekturen försöker d
 
 **Utökade privilegier (E)**: en enhet som har en speciell funktion kan tvingas att göra något annat. Till exempel kan en ventil som är programmerad med öppen hälft vara svår att öppna på hela vägen.
 
-| **Komponent** | **Hot** | **Minskning** | **Risk** | **Implementering** |
+| **Komponent** | **Hot** | **Åtgärd** | **Risk** | **Implementering** |
 | --- | --- | --- | --- | --- |
 | Enhet |S |Tilldela identitet till enheten och autentisera enheten |Ersätta enheten eller delar av enheten med en annan enhet. Hur vet du att du pratar med rätt enhet? |Autentisera enheten med hjälp av Transport Layer Security (TLS) eller IPSec. Infrastrukturen bör ha stöd för användning av i förväg delad nyckel (PSK) på de enheter som inte kan hantera fullständig asymmetrisk kryptering. Utnyttja Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Tillämpa tamperproof-mekanismer på enheten, till exempel genom att göra det svårt att extrahera nycklar och annat kryptografiskt material från enheten. |Risken är att någon manipulerar enheten (fysisk interferens). Hur vill du att enheten inte har manipulerats. |Den mest effektiva minskningen är en TPM-kapacitet (Trusted Platform Module) som gör det möjligt att lagra nycklar i särskilda chip som nycklarna inte kan läsas från, men som bara kan användas för kryptografiska åtgärder som använder nyckeln men som aldrig lämnar nyckeln. Minnes kryptering för enheten. Nyckel hantering för enheten. Signerar koden. |
@@ -220,7 +220,7 @@ Här följer några exempel på hot i den här kategorin:
 
 Hot kring kommunikations vägen mellan enheter, enheter och fält-gatewayer samt enhets-och moln-Gateway. Följande tabell innehåller en vägledning kring Open Sockets på enheten/VPN:
 
-| **Komponent** | **Hot** | **Minskning** | **Risk** | **Implementering** |
+| **Komponent** | **Hot** | **Åtgärd** | **Risk** | **Implementering** |
 | --- | --- | --- | --- | --- |
 | Enhets IoT Hub |BEKRÄFTA |Styr TLS (PSK/RSA) för att kryptera trafiken |Avlyssning eller störande kommunikation mellan enheten och gatewayen |Säkerhet på protokoll nivå. Med anpassade protokoll måste du ta reda på hur du skyddar dem. I de flesta fall sker kommunikationen från enheten till den IoT Hub (enheten initierar anslutningen). |
 | Enhet till enhet |BEKRÄFTA |Styr TLS (PSK/RSA) för att kryptera trafiken. |Läser in data i överföring mellan enheter. Manipulering av data. Överbelasta enheten med nya anslutningar |Säkerhet på protokoll nivå (MQTT/AMQP/HTTP/CoAP. Med anpassade protokoll måste du ta reda på hur du skyddar dem. Minskningen av DoS-hotet är att peer-enheter via en moln-eller fält-gateway och att de endast fungerar som klienter i nätverket. Peer koppling kan resultera i en direkt anslutning mellan peer-datorerna när den har frisläppts av gatewayen |
@@ -244,7 +244,7 @@ Här följer några exempel på hot i den här kategorin:
 
 Varje enhet och fält-Gateway har någon form av lagring (temporär för köer data, operativ system avbildnings lagring).
 
-| **Komponent** | **Hot** | **Minskning** | **Risk** | **Implementering** |
+| **Komponent** | **Hot** | **Åtgärd** | **Risk** | **Implementering** |
 | --- | --- | --- | --- | --- |
 | Enhets lagring |TRID |Lagrings kryptering, signering av loggar |Läsning av data från lagrings platsen (PII-data), manipulering av telemetridata. Manipulering av data för kommando kontroll i kö eller cache. Manipulering av konfigurations paket eller uppdaterings paket för inbyggd program vara när cachelagrade eller köade lokalt kan leda till att OS och/eller system komponenter komprometteras |Kryptering, Message Authentication Code (MAC) eller digital signatur. Där det är möjligt, stark åtkomst kontroll via listor över åtkomst kontrol listor (ACL: er) eller behörigheter. |
 | Enhets operativ system avbildning |TRID | |Manipulering av OS-/Replacing OS-komponenter |Skrivskyddad OS-partition, signerad OS-avbildning, kryptering |

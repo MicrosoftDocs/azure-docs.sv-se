@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: fc6b90be8e951c0e30c99d0bb16f85e49cf991f2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Självstudie: Azure Active Directory integrering med organisations schema nu
@@ -61,7 +61,7 @@ Du måste lägga till ett organisations schema nu från galleriet till din lista
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **org nu**och väljer sedan **organisations schema nu** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **org nu** och väljer sedan **organisations schema nu** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![Organisations schema nu i resultat listan](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning för Azure AD med organisations schema:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan för program integrering på **org** .
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan för program integrering på **org** .
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -159,7 +159,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till organisations schema nu.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **konverterare nu**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **konverterare nu**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

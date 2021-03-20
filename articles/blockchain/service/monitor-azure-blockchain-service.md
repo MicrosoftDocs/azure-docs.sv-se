@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 05147f48c4cde4cc97bf6cc9cae5c8220a389ebd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594923"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Övervaka Azure blockchain-tjänsten via Azure Monitor  
@@ -79,7 +79,7 @@ Alla resurs loggar delar ett gemensamt schema på översta nivån med få unika 
 I följande tabell visas egenskaperna för Azure blockchain proxy-loggar när de samlas in i Azure Monitor loggar eller Azure Storage.  
 
 
-| Egenskapsnamn  | Description |
+| Egenskapsnamn  | Beskrivning |
 |:---|:---|
 | time | Datum och tid (UTC) när åtgärden utfördes. |
 | resourceID  | Azure blockchain-Tjänsteresursen för vilka loggar är aktiverade.  |
@@ -105,7 +105,7 @@ I följande tabell visas egenskaperna för Azure blockchain proxy-loggar när de
 I följande tabell visas egenskaperna för program loggarna för Azure blockchain.
 
 
-| Egenskapsnamn  | Description |
+| Egenskapsnamn  | Beskrivning |
 |:---|:---|
 | time | Datum och tid (UTC) när åtgärden utfördes. |
 | resourceID  | Azure blockchain-Tjänsteresursen för vilka loggar är aktiverade.|
@@ -131,7 +131,7 @@ En lista över alla Azure Monitor mått som stöds (inklusive Azure blockchain-t
 Följande tabell innehåller en lista över blockchain-mått som samlas in för Azure blockchain-tjänstens medlems resurs.
 
 
-| Måttnamn | Enhet  |  Sammansättningstyp| Description   |
+| Måttnamn | Enhet  |  Sammansättningstyp| Beskrivning   |
 |---|---|---|---|
 | Väntande transaktioner   | Antal  |  Genomsnitt | Antalet transaktioner som väntar på att bli används.   |
 | Bearbetade block   | Antal  | Sum  |  Antalet behandlade block under varje tidsintervall. För närvarande är block storleken 5 sekunder, vilket innebär att varje nod i minuten bearbetar 12 block och 60 block på 5 minuter.   |
@@ -143,7 +143,7 @@ Följande tabell innehåller en lista över blockchain-mått som samlas in för 
 I följande tabell visas de olika anslutnings mått som samlas in för Azure blockchain-tjänstens medlems resurs. Detta är NGINX.
 
 
-| Måttnamn | Enhet  |  Sammansättningstyp| Description |
+| Måttnamn | Enhet  |  Sammansättningstyp| Beskrivning |
 |---|---|---|---|
 | Godkända anslutningar   | Antal  |  Sum | Det totala antalet godkända klient anslutningar.   |
 | Aktiva anslutningar  | Antal  | Genomsnitt  |  Aktuellt antal aktiva klient anslutningar, inklusive väntande anslutningar.    |
@@ -156,7 +156,7 @@ I följande tabell visas de olika anslutnings mått som samlas in för Azure blo
 I följande tabell visas de prestanda mått som samlas in för varje nod i Azure blockchain member-resursen.  
 
 
-| Måttnamn | Enhet  |  Sammansättningstyp| Description   |
+| Måttnamn | Enhet  |  Sammansättningstyp| Beskrivning   |
 |---|---|---|---|
 | Procent andel CPU-användning   | Procent  |  Max | Procent andel av CPU-användningen.     |
 | Lästa byte i IO   | Kilobyte   | Sum  |  Summan av IO-lästa byte över alla noder i blockchain-medlems resursen.      |

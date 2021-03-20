@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 314c9d6629c74aa7b593d24d503d195b3401f4e7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Självstudie: Azure Active Directory integrering med Showpad
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Showpad i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Showpad** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Showpad** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -141,11 +141,11 @@ Utför följande steg för att konfigurera enkel inloggning med Showpad i Azure 
 
     a. I text rutan **namn** skriver du namnet på ID-providern (till exempel: företagets namn).
 
-    b. Som **metadata källa**väljer du **XML**.
+    b. Som **metadata källa** väljer du **XML**.
 
     c. Kopiera innehållet i XML-filen med metadata som du har laddat ned från Azure Portal och klistra in den i text rutan **metadata-XML** .
 
-    d. Välj **konton för automatisk etablering för nya användare när de loggar**in.
+    d. Välj **konton för automatisk etablering för nya användare när de loggar** in.
 
     e. Klicka på **Skicka**.
 
@@ -178,7 +178,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Showpad.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Showpad**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Showpad**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

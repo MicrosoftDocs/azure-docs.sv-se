@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: f44a67b4943c6897f82aedf47d493b36e5e2d3b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Självstudie: Azure Active Directory integration med T&E Express
@@ -165,7 +165,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till T&E Express.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **T&E Express**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **T&E Express**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

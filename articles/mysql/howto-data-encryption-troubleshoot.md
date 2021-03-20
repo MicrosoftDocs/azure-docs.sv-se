@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: 95b5a7650e0990f13149daeed87da8e261ec37e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241131"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Felsöka data kryptering i Azure Database for MySQL
@@ -19,7 +19,7 @@ Den här artikeln beskriver hur du identifierar och löser vanliga problem som k
 
 ## <a name="introduction"></a>Introduktion
 
-När du konfigurerar data kryptering för att använda en kundhanterad nyckel i Azure Key Vault kräver servrar kontinuerlig åtkomst till nyckeln. Om servern förlorar åtkomsten till den Kundhanterade nyckeln i Azure Key Vault nekar den alla anslutningar, returnerar lämpligt fel meddelande och ändrar dess tillstånd till * **oåtkomlig** _ i Azure Portal.
+När du konfigurerar data kryptering för att använda en kundhanterad nyckel i Azure Key Vault kräver servrar kontinuerlig åtkomst till nyckeln. Om servern förlorar åtkomsten till den Kundhanterade nyckeln i Azure Key Vault nekar den alla anslutningar, returnerar lämpligt fel meddelande och ändrar dess tillstånd till ***otillgängligt*** i Azure Portal.
 
 Om du inte längre behöver en oåtkomlig Azure Database for MySQL-server kan du ta bort den för att stoppa kostnaderna. Inga andra åtgärder på servern tillåts förrän åtkomst till nyckel valvet har återställts och servern är tillgänglig. Det går inte heller att ändra data krypterings alternativet från `Yes` (kundhanterad) till `No` (service-hanterat) på en oåtkomlig server när den är krypterad med en kundhanterad nyckel. Du måste validera nyckeln manuellt innan servern kan nås igen. Den här åtgärden är nödvändig för att skydda data från obehörig åtkomst medan behörigheter till kundhanterad nyckel återkallas.
 
@@ -44,12 +44,12 @@ Följande fel konfigurationer orsakar de flesta problem med data kryptering som 
 #### <a name="disabled-key-vault"></a>Inaktiverat nyckel valv
 
 - `AzureKeyVaultKeyDisabledMessage`
-- _ * Förklaring * *: det gick inte att slutföra åtgärden på servern eftersom Azure Key Vault nyckeln är inaktive rad.
+- **Förklaring**: det gick inte att slutföra åtgärden på servern på grund av att Azure Key Vault nyckeln är inaktive rad.
 
 #### <a name="missing-key-vault-permissions"></a>Nyckel valv saknar behörigheter
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Förklaring** : servern har inte behörighet att hämta, flytta och packa upp Azure Key Vault. Bevilja alla saknade behörigheter till tjänstens huvud namn med ID.
+- **Förklaring**: servern har inte behörighet att hämta, flytta och packa upp Azure Key Vault. Bevilja alla saknade behörigheter till tjänstens huvud namn med ID.
 
 ### <a name="mitigation"></a>Åtgärd
 

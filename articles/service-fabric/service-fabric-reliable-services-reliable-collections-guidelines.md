@@ -4,10 +4,10 @@ description: Rikt linjer och rekommendationer för att använda Service Fabric p
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784333"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Rikt linjer och rekommendationer för tillförlitliga samlingar i Azure Service Fabric
@@ -58,7 +58,7 @@ När du bestämmer dig för att använda volatile Reliable Collections bör du t
 * [Arbeta med Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transaktioner och lås](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Hantera data
-  * [Säkerhetskopiera och återställ](service-fabric-reliable-services-backup-restore.md)
+  * [Säkerhets kopiering och återställning](service-fabric-reliable-services-backup-restore.md)
   * [Aviseringar](service-fabric-reliable-services-notifications.md)
   * [Serialisering och uppgradering](service-fabric-application-upgrade-data-serialization.md)
   * [Tillförlitlig tillstånds hanterarens konfiguration](service-fabric-reliable-services-configuration.md)
