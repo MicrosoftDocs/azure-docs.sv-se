@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171677"
 ---
 # <a name="event-grid-configuration"></a>Event Grid konfiguration
@@ -22,7 +22,7 @@ Event Grid innehåller många konfigurationer som kan ändras per miljö. Följa
 
 Mer information om klientautentisering i allmänhet finns i [säkerhet och autentisering](security-authentication.md). Exempel på användningen finns i [den här artikeln](configure-api-protocol.md).
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 |`inbound__serverAuth__tlsPolicy`| TLS-princip för Event Grid-modulen. Standardvärdet är endast HTTPS.
 |`inbound__serverAuth__serverCert__source`| Källa för Server certifikat som används av Event Grid-modulen för dess TLS-konfiguration. Standardvärdet är IoT Edge.
@@ -31,7 +31,7 @@ Mer information om klientautentisering i allmänhet finns i [säkerhet och auten
 
 Mer information om klientautentisering i allmänhet finns i [säkerhet och autentisering](security-authentication.md). Du hittar exempel i [den här artikeln](configure-client-auth.md).
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 |`inbound__clientAuth__clientCert__enabled`| Aktivera/inaktivera certifikatbaserad klientautentisering. Standardvärdet är True.
 |`inbound__clientAuth__clientCert__source`| Källa för validering av klient certifikat. Standardvärdet är IoT Edge.
@@ -43,7 +43,7 @@ Mer information om klientautentisering i allmänhet finns i [säkerhet och auten
 ## <a name="outgoing-client-authentication"></a>Utgående klientautentisering
 Mer information om klientautentisering i allmänhet finns i [säkerhet och autentisering](security-authentication.md). Du hittar exempel i [den här artikeln](configure-identity-auth.md).
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 |`outbound__clientAuth__clientCert__enabled`| Aktivera/inaktivera anslutning av ett identitets certifikat för utgående begär Anden. Standardvärdet är True.
 |`outbound__clientAuth__clientCert__source`| Källa för att hämta Event Grid modulens utgående certifikat. Standardvärdet är IoT Edge.
@@ -52,7 +52,7 @@ Mer information om klientautentisering i allmänhet finns i [säkerhet och auten
 
 Mer information om klientautentisering i allmänhet finns i [säkerhet och autentisering](security-authentication.md). Du hittar exempel i [den här artikeln](configure-webhook-subscriber-auth.md).
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 |`outbound__webhook__httpsOnly`| Princip för att kontrol lera om endast HTTPS-prenumeranter kommer att tillåtas. Standardvärdet är sant (endast HTTPS).
 |`outbound__webhook__skipServerCertValidation`| Flagga för att kontrol lera om prenumerantens certifikat ska verifieras. Standardvärdet är True.
@@ -62,7 +62,7 @@ Mer information om klientautentisering i allmänhet finns i [säkerhet och auten
 
 Läs mer om den här funktionen i allmänhet i avsnittet om [leverans och försök igen](delivery-retry.md).
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Maximalt antal försök att leverera en händelse. Standardvärdet är 30.
 | `broker__defaultEventTimeToLiveInSeconds` | TTL (Time-to-Live) i sekunder efter vilken en händelse tas bort om den inte levereras. Standardvärdet är  **7200** sekunder
@@ -71,7 +71,7 @@ Läs mer om den här funktionen i allmänhet i avsnittet om [leverans och förs�
 
 Om du vill lära dig mer om den här funktionen i allmänhet, se [leverans-och utmatnings batch](delivery-output-batching.md).
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 | `api__deliveryPolicyLimits__maxBatchSizeInBytes` | Högsta tillåtna värde för `ApproxBatchSizeInBytes` ratten. Standardvärdet är `1_058_576`.
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Högsta tillåtna värde för `MaxEventsPerBatch` ratten. Standardvärdet är `50`.
@@ -82,6 +82,6 @@ Om du vill lära dig mer om den här funktionen i allmänhet, se [leverans-och u
 
 Information om hur du använder mått med Event Grid på IoT Edge finns i [övervaka ämnen och prenumerationer](monitor-topics-subscriptions.md)
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 | `metrics__reporterType` | Rapporterings typ för Mät slut punkt. Standardvärdet är `none` och inaktiverar mått. Inställning för att `prometheus` Aktivera Mät värden i Prometheus-format.

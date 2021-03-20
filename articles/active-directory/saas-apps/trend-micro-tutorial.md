@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Trend Micro Web Security (TMWS)
@@ -116,7 +116,7 @@ I det här avsnittet ska du skapa en test användare som heter B. Simon i Azure 
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I rutan **namn** anger du `B.Simon` .  
-   1. I rutan **användar namn** anger du **_username_ @* companydomain *.* tillägg * * *. Exempelvis `B.Simon@contoso.com`.
+   1. I rutan **användar namn** anger du **_username_ @* companydomain *.* tillägg * * *. Till exempel `B.Simon@contoso.com`.
    1. Välj **Visa lösen ord** och skriv sedan ned värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 
@@ -144,7 +144,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Under **Hantera** väljer du **Appregistreringar** och väljer sedan ditt nya företags program under **alla program**.
 
-1. Under **Hantera** väljer du **certifikat & hemligheter**.
+1. Välj **Certifikat och hemligheter** under **Hantera**.
 
 1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet**.
 

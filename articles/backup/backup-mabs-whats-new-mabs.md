@@ -4,10 +4,10 @@ description: Microsoft Azure Backup Server ger dig förbättrade säkerhets kopi
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332771"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Vad är nytt i Microsoft Azure Backup Server (MABS)
@@ -128,6 +128,6 @@ Mer information om installations-och uppgraderings stegen för MABS finns [här]
 Lär dig hur du förbereder servern eller börjar skydda en arbets belastning:
 
 * [Förbered arbets belastningar för säkerhets kopierings Server](backup-azure-microsoft-azure-backup.md)
-* [Säkerhetskopiera en VMware-Server med hjälp av backup server](backup-azure-backup-server-vmware.md)
-* [Använd backup server för att säkerhetskopiera SQL Server](backup-azure-sql-mabs.md)
+* [Säkerhetskopiera en VMware-server med hjälp av Backup Server](backup-azure-backup-server-vmware.md)
+* [Säkerhetskopiera SQL Server med hjälp av Backup Server](backup-azure-sql-mabs.md)
 * [Använd Modern Backup Storage med säkerhets kopierings Server](backup-mabs-add-storage.md)

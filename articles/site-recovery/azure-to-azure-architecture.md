@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652253"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Haveriberedskapsarkitektur för Azure till Azure
@@ -43,7 +43,7 @@ När du aktiverar replikering för en virtuell dator ger Site Recovery dig möjl
 **Målresurs** | **Standardinställning**
 --- | ---
 **Mål prenumeration** | Samma som käll prenumerationen.
-**Mål resurs grupp** | Resurs gruppen som de virtuella datorerna tillhör efter redundansväxlingen.<br/><br/> Det kan finnas i alla Azure-regioner utom käll regionen.<br/><br/> Site Recovery skapar en ny resurs grupp i mål regionen, med ett "ASR"-suffix.<br/><br/>
+**Målresursgrupp** | Resurs gruppen som de virtuella datorerna tillhör efter redundansväxlingen.<br/><br/> Det kan finnas i alla Azure-regioner utom käll regionen.<br/><br/> Site Recovery skapar en ny resurs grupp i mål regionen, med ett "ASR"-suffix.<br/><br/>
 **Mål-VNet** | Det virtuella nätverk (VNet) i vilket replikerade virtuella datorer finns efter en redundansväxling. En nätverks mappning skapas mellan käll-och mål nätverk och vice versa.<br/><br/> Site Recovery skapar ett nytt VNet och undernät med suffixet "ASR".
 **Mål lagrings konto** |  Om den virtuella datorn inte använder en hanterad disk är detta det lagrings konto som data replikeras till.<br/><br/> Site Recovery skapar ett nytt lagrings konto i mål regionen för att spegla käll lagrings kontot.
 **Replik Managed disks** | Om den virtuella datorn använder en hanterad disk, är detta de hanterade diskar som data replikeras till.<br/><br/> Site Recovery skapar en replik som Managed disks i lagrings regionen för att spegla källan.
@@ -62,7 +62,7 @@ Du kan hantera mål resurser på följande sätt:
 
 När du aktiverar Azure VM-replikering skapar Site Recovery en ny replikeringsprincip med de standardinställningar som sammanfattas i tabellen.
 
-**Principinställning** | **Information** | **Objekt**
+**Principinställning** | **Information** | **Standardvärde**
 --- | --- | ---
 **Kvarhållning av återställnings punkt** | Anger hur länge Site Recovery behåller återställnings punkter | 24 timmar
 **Frekvens för programkonsekventa ögonblicks bilder** | Hur ofta Site Recovery tar en programkonsekvent ögonblicks bild. | Var fjärde timme
@@ -128,7 +128,7 @@ När du aktiverar replikering för en virtuell Azure-dator händer följande:
 
 Om utgående åtkomst för virtuella datorer styrs med URL: er, Tillåt dessa URL: er.
 
-| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Tillhandahåller auktorisering och autentisering för Site Recovery-tjänstens webbadresser. |
@@ -146,7 +146,7 @@ Observera att information om nätverks anslutningens krav finns i [nätverks Whi
 
 **Regel** |  **Information** | **Tjänsttagg**
 --- | --- | --- 
-Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i käll regionen | Lagring.\<region-name>
+Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i käll regionen | Lagrings.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Active Directory (Azure AD)  | AzureActiveDirectory
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Event Hub i mål regionen. | EventsHub.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Site Recovery  | AzureSiteRecovery
@@ -157,7 +157,7 @@ Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Automa
 
 **Regel** |  **Information** | **Tjänsttagg**
 --- | --- | --- 
-Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i mål regionen | Lagring.\<region-name>
+Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i mål regionen | Lagrings.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure AD  | AzureActiveDirectory
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Event Hub i käll regionen. | EventsHub.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Site Recovery  | AzureSiteRecovery

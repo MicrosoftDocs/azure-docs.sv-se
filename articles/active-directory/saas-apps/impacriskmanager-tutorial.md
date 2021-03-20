@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 1462e815b5f045ab9d52bdea59b78b12ff77c19b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Självstudie: Azure Active Directory integration med IMPAC risk hanteraren
@@ -30,7 +30,7 @@ Genom att integrera IMPAC risk Manager med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med IMPAC-riskhantering behöver du följande objekt:
 
@@ -61,7 +61,7 @@ Om du vill konfigurera integreringen av IMPAC-riskhantering i Azure AD måste du
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. Skriv **IMPAC riskhantering**i rutan Sök och välj **IMPAC riskhantering** från resultat panelen och klicka sedan på **Lägg till** för att lägga till programmet.
+4. Skriv **IMPAC riskhantering** i rutan Sök och välj **IMPAC riskhantering** från resultat panelen och klicka sedan på **Lägg till** för att lägga till programmet.
 
     ![IMPAC risk hanteraren i resultat listan](common/search-new-app.png)
 
@@ -179,7 +179,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till IMPAC risk Manager.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **IMPAC risk Manager**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **IMPAC risk Manager**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

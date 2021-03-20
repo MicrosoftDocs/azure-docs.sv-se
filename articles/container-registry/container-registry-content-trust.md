@@ -4,10 +4,10 @@ description: Lär dig hur du aktiverar innehålls förtroende för Azure Contain
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148582"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Innehållsförtroende i Azure Container Registry
@@ -38,7 +38,7 @@ Innehållsförtroende hanteras genom användning av en uppsättning kryptografis
 
 Första steget är att aktivera innehållsförtroende på registernivån. När du har aktiverat innehållsförtroende kan klienter (användare eller tjänster) överföra signerade avbildningar till ditt register. Aktivering av innehållsförtroende i ditt register begränsar inte registeranvändning till endast konsumenter med innehållsförtroende aktiverat. Konsumenter utan innehållsförtroende aktiverat kan fortsätta att använda ditt register som vanligt. Konsumenter som har aktiverat innehållsförtroende i sina klienter kan dock *endast* se signerade avbildningar i ditt register.
 
-Om du vill aktivera innehållsförtroende för ditt register navigerar du först till registret i Azure-portalen. Under **principer**väljer du **innehålls förtroende**  >  **aktiverat**  >  **Spara**. Du kan också använda kommandot [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] i Azure CLI.
+Om du vill aktivera innehållsförtroende för ditt register navigerar du först till registret i Azure-portalen. Under **principer** väljer du **innehålls förtroende**  >  **aktiverat**  >  **Spara**. Du kan också använda kommandot [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] i Azure CLI.
 
 ![Skärm bild som visar aktivering av innehålls förtroende för ett register i Azure Portal.][content-trust-01-portal]
 
@@ -195,7 +195,7 @@ Om du förlorar åtkomst till din rotnyckel förlorar du åtkomsten till de sign
 > [!WARNING]
 > Om du inaktiverar och återaktiverar innehållsförtroende i registret **tas alla förtroendedata bort för alla signerade taggar i alla lagringsplats i registret**. Den här åtgärden går inte att ångra – Azure Container Registry kan inte återställa borttagna förtroendedata. Inaktivering av innehållsförtroende tar inte bort själva avbildningarna.
 
-Om du vill inaktivera innehållsförtroende för ditt register navigerar du till registret i Azure-portalen. Under **principer**väljer du **innehålls förtroende**  >  **inaktiverat**  >  **Spara**. Du får en varning om förlust av alla signaturer i registret. Välj **OK** om du vill ta bort alla signaturer i registret permanent.
+Om du vill inaktivera innehållsförtroende för ditt register navigerar du till registret i Azure-portalen. Under **principer** väljer du **innehålls förtroende**  >  **inaktiverat**  >  **Spara**. Du får en varning om förlust av alla signaturer i registret. Välj **OK** om du vill ta bort alla signaturer i registret permanent.
 
 ![Inaktivera innehållsförtroende för ett register i Azure-portalen][content-trust-03-portal]
 

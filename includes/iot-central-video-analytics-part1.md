@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2f3e4bf640b8da31a7fa4d818b94b0372d3026b8
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96763437"
 ---
 Exempel programmet innehåller två simulerade enheter och en IoT Edge Gateway. Följande självstudier visar två metoder för att experimentera med och förstå funktionerna i gatewayen:

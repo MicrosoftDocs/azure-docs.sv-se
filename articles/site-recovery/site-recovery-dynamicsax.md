@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86133826"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurera katastrof återställning för ett Dynamics AX-program med flera nivåer   
@@ -25,7 +25,7 @@ Den här artikeln förklarar hur du kan skapa en katastrof återställnings lös
 
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Att implementera haveri beredskap för Dynamics AX-program genom att använda Site Recovery kräver följande krav:
 
@@ -99,7 +99,7 @@ Du kan skapa en återställnings plan i Site Recovery för att automatisera redu
 
 1. Välj Site Recovery valv i prenumerationen och välj panelen **återställnings planer** .
 
-2. Välj **+ återställnings plan**och ange ett namn.
+2. Välj **+ återställnings plan** och ange ett namn.
 
 3. Välj **källa** och **mål**. Målet kan vara Azure eller en sekundär plats. Om du väljer Azure måste du ange distributions modellen.
 
@@ -153,7 +153,7 @@ Mer information om hur du utför redundanstest finns i [testa redundans till Azu
 
 2. Välj den återställnings plan som skapats för Dynamics AX.
 
-3. Välj **redundans**och välj **redundans**.
+3. Välj **redundans** och välj **redundans**.
 
 4. Välj mål nätverket och välj **✓** för att starta redundansväxlingen.
 
@@ -167,7 +167,7 @@ Information om hur du SQL Server under återställning efter fel finns i [Replik
 
 2. Välj den återställnings plan som skapats för Dynamics AX.
 
-3. Välj **redundans**och välj **redundans**.
+3. Välj **redundans** och välj **redundans**.
 
 4. Välj **ändra riktning**.
 

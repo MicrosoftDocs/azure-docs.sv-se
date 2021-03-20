@@ -1,5 +1,5 @@
 ---
-title: Dela din anpassade sökning Anpassad sökning i Bing
+title: Dela din anpassade sökning Anpassad Bing-sökning
 titleSuffix: Azure Cognitive Services
 description: Gör det enkelt att samar beta med att redigera och testa din instans genom att dela den med medlemmar i ditt team.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 6141bd67681df757536792981d47756a20ed33db
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353331"
 ---
 # <a name="share-your-custom-search-instance"></a>Dela din anpassade Sök instans

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88009179"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Expandera en befintlig adresspool med nya sessionsbaserade värdar i Windows Virtual Desktop (klassisk)
@@ -57,7 +57,7 @@ Så här distribuerar du om Azure Resource Manager-mallen för att expandera en 
 6. Välj **omdistribuera**.
 
      >[!NOTE]
-     >Om mallen inte distribueras om automatiskt när du väljer **distribuera**om väljer du **mall** i panelen till vänster i webbläsaren och väljer sedan **distribuera**.
+     >Om mallen inte distribueras om automatiskt när du väljer **distribuera** om väljer du **mall** i panelen till vänster i webbläsaren och väljer sedan **distribuera**.
 
 7. Välj den resurs grupp som innehåller aktuella virtuella dator värdar i den befintliga poolen.
 
@@ -78,16 +78,16 @@ Följ anvisningarna i [skapa en adresspool med hjälp av Azure Marketplace](crea
 
 Alla värden i det här avsnittet ska matcha det du angav när du först skapade värddatorn och de virtuella datorerna i sessionen, förutom användare som är *Standard användare*:
 
-1.    För *prenumeration*väljer du den prenumeration där du först skapade värd-poolen.
-2.    För *resurs grupp*väljer du samma resurs grupp där de befintliga virtuella datorerna för anslutningspoolen värdar finns.
-3.    För *region*väljer du samma region där de befintliga virtuella datorerna för anslutningspoolen värd för värdar finns.
-4.    För *Hostpool-namn*anger du namnet på den befintliga poolen.
-5.    För *Skriv bords typ*väljer du den Skriv bords typ som matchar den befintliga poolen.
-6.    För *standard Skriv bords användare*anger du en kommaavgränsad lista över alla ytterligare användare som du vill logga in på de virtuella Windows-klienterna och får åtkomst till en stationär dator när Azure Marketplace-erbjudandet har slutförts. Om du till exempel vill tilldela user3@contoso.com och user4@contoso.com komma åt, anger du user3@contoso.com , user4@contoso.com .
+1.    För *prenumeration* väljer du den prenumeration där du först skapade värd-poolen.
+2.    För *resurs grupp* väljer du samma resurs grupp där de befintliga virtuella datorerna för anslutningspoolen värdar finns.
+3.    För *region* väljer du samma region där de befintliga virtuella datorerna för anslutningspoolen värd för värdar finns.
+4.    För *Hostpool-namn* anger du namnet på den befintliga poolen.
+5.    För *Skriv bords typ* väljer du den Skriv bords typ som matchar den befintliga poolen.
+6.    För *standard Skriv bords användare* anger du en kommaavgränsad lista över alla ytterligare användare som du vill logga in på de virtuella Windows-klienterna och får åtkomst till en stationär dator när Azure Marketplace-erbjudandet har slutförts. Om du till exempel vill tilldela user3@contoso.com och user4@contoso.com komma åt, anger du user3@contoso.com , user4@contoso.com .
 7.    Välj **Nästa: Konfigurera virtuell dator**.
 
 >[!NOTE]
->Förutom för *Standard användare av Skriv bordet*måste alla fält matcha exakt vad som har kon figurer ATS i den befintliga poolen. Om det finns ett matchnings fel som leder till en ny adresspool.
+>Förutom för *Standard användare av Skriv bordet* måste alla fält matcha exakt vad som har kon figurer ATS i den befintliga poolen. Om det finns ett matchnings fel som leder till en ny adresspool.
 
 ### <a name="configure-virtual-machines"></a>Konfigurera virtuella datorer
 
@@ -98,7 +98,7 @@ Alla parameter värden i det här avsnittet ska överensstämma med vad du angav
     >[!NOTE]
     >Om den angivna virtuella dator storleken som du söker efter inte visas i storleks väljaren för virtuell dator, beror det på att vi inte har publicerat den på Azure Marketplace-verktyget ännu. Om du vill begära en VM-storlek skapar du en begäran eller avröstar en befintlig begäran i [Windows Virtual Desktop UserVoice-forumet](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
-2. Anpassa *användnings profilen*, det *totala antalet användare*och *antalet virtuella dator* parametrar för att välja det totala antalet Sessionsgränser som du vill ha i din värddator. Om du till exempel expanderar din värddator från fem värddatorer till åtta kan du konfigurera de här alternativen för att komma till 8 virtuella datorer.
+2. Anpassa *användnings profilen*, det *totala antalet användare* och *antalet virtuella dator* parametrar för att välja det totala antalet Sessionsgränser som du vill ha i din värddator. Om du till exempel expanderar din värddator från fem värddatorer till åtta kan du konfigurera de här alternativen för att komma till 8 virtuella datorer.
 3. Ange ett prefix för namnen på de virtuella datorerna. Om du till exempel anger namnet "prefix" kommer de virtuella datorerna att kallas "prefix-0," prefix-1, "och så vidare.
 4. Välj **Nästa: inställningar för virtuella datorer**.
 
@@ -106,7 +106,7 @@ Alla parameter värden i det här avsnittet ska överensstämma med vad du angav
 
 Alla parameter värden i det här avsnittet ska överensstämma med vad du angav när du först skapade värddatorn och de virtuella datorerna i sessionen.
 
-1. För *avbildnings källa* och *avbildnings-OS-version*anger du samma information som du angav när du först skapade Host-poolen.
+1. För *avbildnings källa* och *avbildnings-OS-version* anger du samma information som du angav när du först skapade Host-poolen.
 2. Ange samma information som du angav när du först skapade den för att ansluta till de virtuella datorerna till Active Directory-domänen för *AD-domän anslutningens UPN* och de associerade lösen orden. Dessa autentiseringsuppgifter kommer att användas för att skapa ett lokalt konto på dina virtuella datorer. Du kan återställa de här lokala kontona om du vill ändra autentiseringsuppgifterna senare.
 3. För information om det virtuella nätverket väljer du samma virtuella nätverk och undernät där dina befintliga VM-värdar för fjärrskrivbordssessioner finns.
 4. Välj **Nästa: Konfigurera information om virtuella Windows-datorer**.

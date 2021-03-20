@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: data-factory
 author: memildin
 ms.service: data-factory
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400970"
 ---
 ```json
@@ -58,7 +58,7 @@ ms.locfileid: "91400970"
 
 ### <a name="the-data-model-of-the-schema"></a>Data modellen för schemat
 
-|Field|Datatyp|Beskrivning|
+|Fält|Datatyp|Beskrivning|
 |----|----|----|
 |**AlertDisplayName**|Sträng|Aviseringens visnings namn.|
 |**AlertType**|Sträng|Typ av avisering. Aviseringar av samma typ ska ha samma värde. Det här fältet är en nyckelbaserad sträng som representerar typen av avisering och inte en varnings instans. Alla varnings instanser från samma identifierings logik/analys bör ha samma värde för varnings typen.|

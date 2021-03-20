@@ -4,10 +4,10 @@ description: Lär dig hur Azure Backup innehåller band som liknar semantik som 
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.openlocfilehash: 695cc2644521384527ecd871f3613a078e987aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89378448"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Flytta långsiktig lagring från band till Azure-molnet

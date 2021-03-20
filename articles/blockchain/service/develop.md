@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80348385"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Översikt över Azure blockchain service-utveckling
@@ -19,7 +19,7 @@ Med Azure blockchain-tjänsten kan du skapa konsortier blockchain-nätverk för 
 
 Det finns olika typer av klienter för blockchain-nätverk, inklusive fullständiga noder, lätta noder och fjärrklienter. Azure blockchain service skapar ett blockchain-nätverk som innehåller noder. Du kan använda olika klienter som din gateway till Azure blockchain-tjänsten för blockchain-utveckling. Azure blockchain-tjänsten erbjuder grundläggande autentisering eller åtkomst nyckel som en utvecklings slut punkt. Följande är populära klienter som du kan använda Connect.
 
-### <a name="visual-studio-code"></a>Visual Studio-koden
+### <a name="visual-studio-code"></a>Visuell Studio-kod
 
 Du kan ansluta till medlemmar i konsortiet med Visual Studio Code-tillägget för Azure blockchain Development Kit. När du har anslutit till ett konsortium kan du kompilera, bygga och distribuera smarta kontrakt till en Azure blockchain service Consortium-medlem.
 
@@ -29,7 +29,7 @@ Mer information finns i [snabb start: använda Visual Studio Code för att anslu
 
 ### <a name="metamask"></a>MetaMask
 
-MetaMask är en webbläsarbaserad plån boks tjänst (fjärrklient), RPC-klient och grundläggande kontrakts Utforskare. Till skillnad från andra webb läsar-plåner, infogar MetaMask en Web3-instans i webbläsarens JavaScript-kontext, som fungerar som en RPC-klient som ansluter till en rad olika Ethereum Blockchains (*mainnet*, *Ropsten*testnet, *Kovan testnet*, Local RPC Node osv.). Du kan enkelt konfigurera anpassade RPC för att ansluta till Azure blockchain-tjänsten och starta blockchain-utveckling med Remix.
+MetaMask är en webbläsarbaserad plån boks tjänst (fjärrklient), RPC-klient och grundläggande kontrakts Utforskare. Till skillnad från andra webb läsar-plåner, infogar MetaMask en Web3-instans i webbläsarens JavaScript-kontext, som fungerar som en RPC-klient som ansluter till en rad olika Ethereum Blockchains (*mainnet*, *Ropsten* testnet, *Kovan testnet*, Local RPC Node osv.). Du kan enkelt konfigurera anpassade RPC för att ansluta till Azure blockchain-tjänsten och starta blockchain-utveckling med Remix.
 
 Mer information finns i [snabb start: använda MetaMask för att ansluta och distribuera ett smart kontrakt](connect-metamask.md)
 
@@ -44,7 +44,7 @@ Mer information finns i [snabb start: använda Geth för att ansluta till en Azu
 Kvorum är ett Ethereum distribuerat redovisnings protokoll med transaktion plus avtals sekretess och nya enighets metoder. Viktiga förbättringar jämfört med Go-Ethereum:
 
 * **Sekretess** -kvorum stöder privata transaktioner och privata kontrakt via offentlig och privat delstats delning och använder sig av peer-to-peer-krypterade meddelande utbyten för riktad överföring av privata data till nätverks deltagare.
-* **Alternativa vedertagna mekanismer** – bevis-från-arbete eller bevis på att det inte behövs något som har behörighet för ett nätverk. Kvorum har flera sammanställda mekanismer som är utformade för konsortier som RAFT och IBFT.I Azure blockchain service används den IBFTa enighets metoden.
+* **Alternativa vedertagna mekanismer** – bevis-från-arbete eller bevis på att det inte behövs något som har behörighet för ett nätverk. Kvorum har flera sammanställda mekanismer som är utformade för konsortier som RAFT och IBFT.  I Azure blockchain service används den IBFTa enighets metoden.
 * **Peer-behörighet** – nod-och peer-behörighet med smarta kontrakt garanterar att endast kända parter kan ansluta till nätverket.
 * **Högre prestanda** – kvorum ger högre prestanda än offentliga Geth.
 

@@ -4,10 +4,10 @@ description: Använd Azure Event Grid som en modul på IoT Edge för att vidareb
 ms.topic: overview
 ms.date: 07/08/2020
 ms.openlocfilehash: 82a68f6ab32d8ad18c3af506c810b01d12cf794d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171524"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Vad är Azure Event Grid på Azure IoT Edge?
@@ -75,7 +75,7 @@ Det finns fem koncept i Azure Event Grid som gör att du kan komma igång:
 
 Event Grid på IoT Edge är gratis under den offentliga för hands versionen.
 
-## <a name="issues"></a>Problem
+## <a name="issues"></a>Ärenden
 Rapportera eventuella problem med att använda Event Grid på IoT Edge på [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .
 
 ## <a name="next-steps"></a>Nästa steg

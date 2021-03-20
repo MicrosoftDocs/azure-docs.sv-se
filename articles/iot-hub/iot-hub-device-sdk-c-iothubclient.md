@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149141"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT-enhetens SDK för C – mer om IoTHubClient
@@ -26,13 +26,13 @@ Föregående artikel som beskriver hur du använder **IoTHubClient** -biblioteke
 
 Artikeln avslutas genom att omfatta ett par olika ämnen, inklusive mer information om autentiseringsuppgifter för enheten och hur du ändrar beteendet för **IoTHubClient** via konfigurations alternativ.
 
-Vi använder **IoTHubClient** SDK-exemplen för att förklara dessa ämnen. Om du vill följa med i **iothub \_ \_ -klient exemplet \_ http-** och iothub-klient exempel program som ingår i Azure IoT-enhetens SDK för C. allt som beskrivs i följande avsnitt visas i exemplen. ** \_ \_ \_ **
+Vi använder **IoTHubClient** SDK-exemplen för att förklara dessa ämnen. Om du vill följa med i **iothub \_ \_ -klient exemplet \_ http-** och iothub-klient exempel program som ingår i Azure IoT-enhetens SDK för C. allt som beskrivs i följande avsnitt visas i exemplen. **\_ \_ \_**
 
 Du hittar [**Azure IoT-enhetens SDK för c**](https://github.com/Azure/azure-iot-sdk-c) GitHub-lagringsplatsen och visar information om API: et i [C API-referensen](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-lower-level-apis"></a>API: er på lägre nivå
 
-I föregående artikel beskrivs den grundläggande åtgärden i **IotHubClient** inom kontexten för AMQP- **programmet \_ iothub \_ client \_ ** . Till exempel förklaras hur du initierar biblioteket med hjälp av den här koden.
+I föregående artikel beskrivs den grundläggande åtgärden i **IotHubClient** inom kontexten för AMQP- **programmet \_ iothub \_ client \_** . Till exempel förklaras hur du initierar biblioteket med hjälp av den här koden.
 
 ```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
@@ -67,11 +67,11 @@ Det finns funktioner för var och en av dessa API: er:
 
 Dessa funktioner alla inkluderar **lla** i API-namnet. Andra delar **av** namnet, parametrarna för var och en av dessa funktioner är identiska med de övriga motsvarigheterna till varandra. Beteendet för dessa funktioner är dock annorlunda på ett viktigt sätt.
 
-När du anropar **IoTHubClient \_ CreateFromConnectionString**skapar de underliggande biblioteken en ny tråd som körs i bakgrunden. Den här tråden skickar händelser till och tar emot meddelanden från IoT Hub. Ingen sådan tråd skapas när du arbetar med **lla** API: er. Att skapa en bakgrunds tråd är en bekvämlighet för utvecklaren. Du behöver inte bekymra dig om att uttryckligen skicka händelser och ta emot meddelanden från IoT Hub – det sker automatiskt i bakgrunden. Dessutom ger **lla** API: er en uttrycklig kontroll över kommunikationen med IoT Hub, om du behöver den.
+När du anropar **IoTHubClient \_ CreateFromConnectionString** skapar de underliggande biblioteken en ny tråd som körs i bakgrunden. Den här tråden skickar händelser till och tar emot meddelanden från IoT Hub. Ingen sådan tråd skapas när du arbetar med **lla** API: er. Att skapa en bakgrunds tråd är en bekvämlighet för utvecklaren. Du behöver inte bekymra dig om att uttryckligen skicka händelser och ta emot meddelanden från IoT Hub – det sker automatiskt i bakgrunden. Dessutom ger **lla** API: er en uttrycklig kontroll över kommunikationen med IoT Hub, om du behöver den.
 
 För att förstå det här konceptet bättre, ska vi titta på ett exempel:
 
-När du anropar **IoTHubClient \_ SendEventAsync**placerar du händelsen i en buffert. Den bakgrunds tråd som skapas när du anropar **IoTHubClient \_ CreateFromConnectionString** övervakar hela tiden den här bufferten och skickar alla data som den innehåller för att IoT Hub. Detta sker i bakgrunden på samma gång som huvud tråden utför annat arbete.
+När du anropar **IoTHubClient \_ SendEventAsync** placerar du händelsen i en buffert. Den bakgrunds tråd som skapas när du anropar **IoTHubClient \_ CreateFromConnectionString** övervakar hela tiden den här bufferten och skickar alla data som den innehåller för att IoT Hub. Detta sker i bakgrunden på samma gång som huvud tråden utför annat arbete.
 
 När du registrerar en callback-funktion för meddelanden med hjälp av **IoTHubClient \_ SetMessageCallback**, instrueras du till SDK att låta bakgrunds tråden anropa motringningsfunktionen när ett meddelande tas emot, oberoende av huvud tråden.
 
@@ -132,7 +132,7 @@ Oavsett vilken modell du väljer, måste du se till att du är konsekvent med vi
 * IoTHubClient \_ lla att \_ förstöra
 * IoTHubClient \_ lla \_ DoWork
 
-Det motsatta är också sant. Om du börjar med **IoTHubClient \_ CreateFromConnectionString**kan du använda de icke-lla API: erna för ytterligare bearbetning.
+Det motsatta är också sant. Om du börjar med **IoTHubClient \_ CreateFromConnectionString** kan du använda de icke-lla API: erna för ytterligare bearbetning.
 
 I Azure IoT-enhetens SDK för C, se **iothub \_ -klientens \_ exempel \_ -http-** program för ett komplett exempel på de lågnivå-API: erna. **Iothub- \_ \_ \_ AMQP** program kan refereras till i ett fullständigt exempel på icke-lla API: er.
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Vi börjar med att anropa **IoTHubMessage- \_ Egenskaper** och skickar det till meddelandet. Vad vi får tillbaka är en **referens \_ till karta** som gör att vi kan börja lägga till egenskaper. Den senare åstadkommer du genom att anropa **Map- \_ AddOrUpdate**, som tar en referens till ett kart \_ handtag, egenskaps namnet och egenskap svärdet. Med detta API kan vi lägga till så många egenskaper som vi vill.
 
-När händelsen läses från **Event Hubs**kan mottagaren räkna upp egenskaperna och hämta motsvarande värden. I .NET kan du till exempel åstadkomma detta genom att öppna [egenskaps samlingen på EventData-objektet](/dotnet/api/microsoft.servicebus.messaging.eventdata).
+När händelsen läses från **Event Hubs** kan mottagaren räkna upp egenskaperna och hämta motsvarande värden. I .NET kan du till exempel åstadkomma detta genom att öppna [egenskaps samlingen på EventData-objektet](/dotnet/api/microsoft.servicebus.messaging.eventdata).
 
 I föregående exempel kopplar vi egenskaper till en händelse som vi skickar till IoT Hub. Egenskaper kan också bifogas till meddelanden som tas emot från IoT Hub. Om vi vill hämta egenskaper från ett meddelande kan vi använda kod som följande i funktionen motringning av meddelande:
 
@@ -191,7 +191,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Anropet till **IoTHubMessage- \_ Egenskaper** Returnerar referensen för referensen till **kartan \_ ** . Därefter skickar vi en referens till **Map- \_ GetInternals** för att få en referens till en matris med namn/värde-par (samt antalet egenskaper). I det här läget är det enkelt att räkna upp egenskaperna för att komma till de värden som vi vill ha.
+Anropet till **IoTHubMessage- \_ Egenskaper** Returnerar referensen för referensen till **kartan \_** . Därefter skickar vi en referens till **Map- \_ GetInternals** för att få en referens till en matris med namn/värde-par (samt antalet egenskaper). I det här läget är det enkelt att räkna upp egenskaperna för att komma till de värden som vi vill ha.
 
 Du behöver inte använda egenskaper i ditt program. Men om du behöver ange dem för händelser eller hämta dem från meddelanden gör **IoTHubClient** -biblioteket det enkelt.
 
@@ -238,7 +238,7 @@ HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSK
 
 Det finns fyra delar av informationen i den här strängen: IoT Hub namn, IoT Hub suffix, enhets-ID och delad åtkomst nyckel. Du får det fullständigt kvalificerade domän namnet (FQDN) för en IoT-hubb när du skapar din IoT Hub-instans i Azure Portal – detta ger IoT Hub-namnet (den första delen av FQDN) och IoT Hub-suffixet (resten av FQDN). Du får enhets-ID och den delade åtkomst nyckeln när du registrerar din enhet med IoT Hub (enligt beskrivningen i [föregående artikel](iot-hub-device-sdk-c-intro.md)).
 
-**IoTHubClient \_ CreateFromConnectionString** ger dig ett sätt att initiera biblioteket. Om du vill kan du skapa en ny ** \_ klient \_ referens för IOTHUB** med hjälp av dessa enskilda parametrar i stället för enhets anslutnings strängen. Detta uppnås med följande kod:
+**IoTHubClient \_ CreateFromConnectionString** ger dig ett sätt att initiera biblioteket. Om du vill kan du skapa en ny **\_ klient \_ referens för IOTHUB** med hjälp av dessa enskilda parametrar i stället för enhets anslutnings strängen. Detta uppnås med följande kod:
 
 ```C
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -265,11 +265,11 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Det finns ett par alternativ som ofta används:
 
-* **SetBatching** (bool) – om **värdet är true**skickas data som skickas till IoT Hub i batchar. Om **värdet är false**skickas meddelanden individuellt. Standardvärdet är **false**. Batching över AMQP/AMQP-WS, samt att lägga till system egenskaper på D2C-meddelanden, stöds.
+* **SetBatching** (bool) – om **värdet är true** skickas data som skickas till IoT Hub i batchar. Om **värdet är false** skickas meddelanden individuellt. Standardvärdet är **false**. Batching över AMQP/AMQP-WS, samt att lägga till system egenskaper på D2C-meddelanden, stöds.
 
 * **Tids gräns** (osignerad int) – det här värdet representeras i millisekunder. Om det tar längre tid att skicka en HTTPS-begäran eller ta emot ett svar tar det längre tid att ansluta till anslutnings tiden.
 
-Batch-alternativet är viktigt. Som standard tar biblioteket ingående händelser individuellt (en enda händelse är vad du skickar till **IoTHubClient \_ lla \_ SendEventAsync**). Om batch-alternativet är **Sant**samlar biblioteket in så många händelser som möjligt från bufferten (upp till den maximala meddelande storlek som IoT Hub accepterar).  Händelse batchen skickas till IoT Hub i ett enda HTTPS-anrop (de enskilda händelserna paketeras i en JSON-matris). Att aktivera batchbearbetning ger normalt stora prestanda vinster eftersom du minskar antalet nätverks fördröjningar. Det minskar också avsevärt bandbredden eftersom du skickar en uppsättning med HTTPS-huvuden med en händelse grupp i stället för en uppsättning huvuden för varje enskild händelse. Om du inte har en annan anledning att göra det, vanligt vis vill du aktivera batching.
+Batch-alternativet är viktigt. Som standard tar biblioteket ingående händelser individuellt (en enda händelse är vad du skickar till **IoTHubClient \_ lla \_ SendEventAsync**). Om batch-alternativet är **Sant** samlar biblioteket in så många händelser som möjligt från bufferten (upp till den maximala meddelande storlek som IoT Hub accepterar).  Händelse batchen skickas till IoT Hub i ett enda HTTPS-anrop (de enskilda händelserna paketeras i en JSON-matris). Att aktivera batchbearbetning ger normalt stora prestanda vinster eftersom du minskar antalet nätverks fördröjningar. Det minskar också avsevärt bandbredden eftersom du skickar en uppsättning med HTTPS-huvuden med en händelse grupp i stället för en uppsättning huvuden för varje enskild händelse. Om du inte har en annan anledning att göra det, vanligt vis vill du aktivera batching.
 
 ## <a name="next-steps"></a>Nästa steg
 

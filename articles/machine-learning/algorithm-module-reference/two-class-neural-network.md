@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421166"
 ---
 # <a name="two-class-neural-network-module"></a>Two-Class neurala-nätverksmapp
@@ -38,17 +38,17 @@ För att beräkna nätverkets utdata för ett visst indata beräknas ett värde 
   
 ## <a name="how-to-configure"></a>Så här konfigurerar du
 
-1.  Lägg till **neurala-modulen i två klasser** i din pipeline. Du kan hitta den här modulen under **Machine Learning** , **initiera** i **klassificerings** kategorin.  
+1.  Lägg till **neurala-modulen i två klasser** i din pipeline. Du kan hitta den här modulen under **Machine Learning**, **initiera** i **klassificerings** kategorin.  
   
 2.  Ange hur du vill att modellen ska tränas genom att ställa in alternativet **skapa utbildare läge** .  
   
-    -   **Enda parameter** : Välj det här alternativet om du redan vet hur du vill konfigurera modellen.
+    -   **Enda parameter**: Välj det här alternativet om du redan vet hur du vill konfigurera modellen.
 
-    -   **Parameter intervall** : om du inte är säker på de bästa parametrarna kan du hitta de optimala parametrarna med hjälp av modulen [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Du anger några värden och utbildaren upprepas över flera kombinationer av inställningarna för att avgöra vilken kombination av värden som ger bäst resultat.  
+    -   **Parameter intervall**: om du inte är säker på de bästa parametrarna kan du hitta de optimala parametrarna med hjälp av modulen [finjustera modellens standardparametrar](tune-model-hyperparameters.md) . Du anger några värden och utbildaren upprepas över flera kombinationer av inställningarna för att avgöra vilken kombination av värden som ger bäst resultat.  
 
 3.  För **dolda lager specifikation** väljer du vilken typ av nätverks arkitektur som ska skapas.  
   
-    -   **Fullständigt anslutet ärende** : använder standard nätverks arkitekturen neurala, som definieras för neurala-nätverk i två klasser enligt följande:
+    -   **Fullständigt anslutet ärende**: använder standard nätverks arkitekturen neurala, som definieras för neurala-nätverk i två klasser enligt följande:
   
         -   Har ett dolt lager.
   

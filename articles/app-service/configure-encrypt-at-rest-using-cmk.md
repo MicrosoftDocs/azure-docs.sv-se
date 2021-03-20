@@ -4,10 +4,10 @@ description: Lär dig hur du krypterar dina program data i Azure Storage och dis
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92146040"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Kryptering i vila med Kundhanterade nycklar
@@ -71,7 +71,7 @@ Att uppdatera den här program inställningen gör att din webbapp startar om. N
 
 Vi rekommenderar att du regelbundet roterar SAS-nyckeln för ditt lagrings konto. För att säkerställa att webbappen inte oavsiktligt löst åtkomst måste du också uppdatera SAS-URL: en i Key Vault.
 
-1. Rotera SAS-nyckeln genom att gå till ditt lagrings konto i Azure Portal. Under **Inställningar**  >  **åtkomst nycklar**klickar du på ikonen för att rotera SAS-nyckeln.
+1. Rotera SAS-nyckeln genom att gå till ditt lagrings konto i Azure Portal. Under **Inställningar**  >  **åtkomst nycklar** klickar du på ikonen för att rotera SAS-nyckeln.
 
 1. Kopiera den nya SAS-webbadressen och Använd följande kommando för att ange den uppdaterade SAS-URL: en i ditt nyckel valv:
 

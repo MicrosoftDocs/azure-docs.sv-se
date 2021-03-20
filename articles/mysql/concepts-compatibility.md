@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100006861"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-drivrutiner och hanterings verktyg som är kompatibla med Azure Database for MySQL
@@ -50,7 +50,7 @@ Fördelen med kompatibilitet är också till för databas hanterings verktyg. Di
 | **Automatisk komplettering av SQL-fråga** | X | X |  | X |
 | **Importera och exportera data** | X | X | X | X |
 | **Exportera till flera format** | X | X | X | X |
-| **Säkerhetskopiera och återställ** |  | X |  | X |
+| **Säkerhets kopiering och återställning** |  | X |  | X |
 | **Visa Server parametrar** | X | X | X | X |
 | **Visa klient anslutningar** | X | X | X | X |
 

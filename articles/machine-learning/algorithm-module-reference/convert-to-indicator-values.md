@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420860"
 ---
 # <a name="convert-to-indicator-values"></a>Konvertera till indikatorvärden
@@ -48,10 +48,10 @@ Anta att du har en kolumn med poäng som anger om en server har hög, medel elle
 | Server-ID | Felaktiga Poäng |
 | --------- | ------------- |
 | 10301     | Låg           |
-| 10302     | Medium        |
-| 10303     | Hög          |
+| 10302     | Medel        |
+| 10303     | Högt          |
 
-När du använder **konvertera till indikator värden** , konverterar designern en enda kolumn med etiketter till flera kolumner som innehåller booleska värden:  
+När du använder **konvertera till indikator värden**, konverterar designern en enda kolumn med etiketter till flera kolumner som innehåller booleska värden:  
 
 | Server-ID | Felpoäng – låg | Felpoäng – medels Tor | Felaktiga resultat – hög |
 | --------- | ------------------- | ---------------------- | -------------------- |
@@ -71,8 +71,8 @@ Du kan nu använda de tre indikator kolumnerna som funktioner i en Machine Learn
 
 Modulen returnerar två utdata:
 
-- **Resultat data uppsättning** : en data uppsättning med konverterade indikator värden kolumner. Kolumner som inte har valts för rengöring är också "passerade".
-- **Omvandling av indikator värden** : en datatransformering som används för att konvertera till indikator värden, som kan sparas i din arbets yta och tillämpas på nya data senare.
+- **Resultat data uppsättning**: en data uppsättning med konverterade indikator värden kolumner. Kolumner som inte har valts för rengöring är också "passerade".
+- **Omvandling av indikator värden**: en datatransformering som används för att konvertera till indikator värden, som kan sparas i din arbets yta och tillämpas på nya data senare.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Använd en sparad indikator värdes åtgärd för nya data
 

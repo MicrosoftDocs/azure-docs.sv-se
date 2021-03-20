@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: chrpap
 ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88163585"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Så här tar du bort en Service Fabric Node-typ
@@ -183,7 +183,7 @@ När du tar bort en nodtyp som är brons går alla noder i nodtypen omedelbart n
     - Ta bort den virtuella datorns skalnings uppsättning och andra resurser som är relaterade till nodtypen från mallen.
     - Distribuera ändringarna.
 
-    Efter det:
+    Sedan:
     - Vänta tills distributionen har slutförts.
     
 10. Ta bort resurser som är relaterade till nodtypen som inte längre används. Exempel Load Balancer och offentlig IP-adress. 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134738"
 ---
 # <a name="monitor-the-process-server"></a>Övervaka processervern
@@ -77,11 +77,11 @@ Processervern genererar ett antal hälso aviseringar som sammanfattas i följand
 Du kan övervaka hälso tillståndet för dina process servrar på följande sätt: 
 
 1. Om du vill övervaka hälso tillståndet och statusen för en replikerad dator, och dess processerver, i valv > **replikerade objekt**, klickar du på den dator som du vill övervaka.
-2. I **replikeringstillståndet**kan du övervaka hälso tillståndet för den virtuella datorn. Klicka på status för att öka detalj nivån för fel information.
+2. I **replikeringstillståndet** kan du övervaka hälso tillståndet för den virtuella datorn. Klicka på status för att öka detalj nivån för fel information.
 
     ![Bearbeta Server hälsa på VM-instrumentpanelen](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. I **process Server hälsa**kan du övervaka process serverns status. Öka detalj nivån för mer information.
+4. I **process Server hälsa** kan du övervaka process serverns status. Öka detalj nivån för mer information.
 
     ![Information om processerver på VM-instrumentpanelen](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
@@ -90,7 +90,7 @@ Du kan övervaka hälso tillståndet för dina process servrar på följande sä
     - Om processervern körs i standard distributionen på konfigurations servern markeras konfigurations servern i enlighet därmed.
     - Klicka på konfigurations servern eller processervern för att öka detalj nivån. Anteckna eventuella problem och eventuella reparations rekommendationer.
 
-Du kan också övervaka process servrar i valvet under **Site Recovery-infrastruktur**. I **Hantera din Site Recovery-infrastruktur klickar du**på **konfigurations servrar**. Välj den konfigurations server som är kopplad till processervern och öka detalj nivån till process Server.
+Du kan också övervaka process servrar i valvet under **Site Recovery-infrastruktur**. I **Hantera din Site Recovery-infrastruktur klickar du** på **konfigurations servrar**. Välj den konfigurations server som är kopplad till processervern och öka detalj nivån till process Server.
 
 
 ## <a name="next-steps"></a>Nästa steg

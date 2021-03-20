@@ -4,10 +4,10 @@ description: 'Lär dig hur du använder Azure DevTest Labs i pipeline: build och
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080342"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Använda DevTest Labs i Build and Release-pipelines i Azure Pipelines
@@ -81,7 +81,7 @@ Du skapar en versions pipeline med två uppgifter: **Azure-distribution: skapa e
 
 För den första aktiviteten anger du namn och plats för resurs gruppen. Sökvägen är en länkad artefakt. Om Resource Manager-mallen innehåller länkade mallar måste en anpassad distribution av resurs grupper implementeras. Mallen finns i den publicerade Drop-artefakten. Åsidosätt mallparametrar för Resource Manager-mallen. Du kan lämna kvar de återstående inställningarna med standardvärdena. 
 
-För den andra aktiviteten **distribuerar Azure App Service**anger du Azure-prenumerationen, väljer **webbapp** för **typ av app**och **$ (webbplats)** för **App Service namn**. Du kan lämna kvar de återstående inställningarna med standardvärdena. 
+För den andra aktiviteten **distribuerar Azure App Service** anger du Azure-prenumerationen, väljer **webbapp** för **typ av app** och **$ (webbplats)** för **App Service namn**. Du kan lämna kvar de återstående inställningarna med standardvärdena. 
 
 ## <a name="test-run"></a>Kör test
 Nu när båda pipelinen har kon figurer ATS kan du skapa en version i kö manuellt och se hur det fungerar. Nästa steg är att ange lämplig utlösare för build och ansluta till versions pipelinen.

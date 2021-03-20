@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953312"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Logga in med ett iOS-program
@@ -40,7 +40,7 @@ Registrera sedan ett program i Azure AD B2C klient organisationen. Det ger Azure
 
 Registrera **program-ID: t (Client)** för användning i ett senare steg.
 
-Registrera även en anpassad omdirigerings-URI för användning i ett senare steg. Exempelvis `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Registrera även en anpassad omdirigerings-URI för användning i ett senare steg. Till exempel `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Skapa dina användar flöden
 I Azure AD B2C definieras varje användar upplevelse av ett [användar flöde](user-flow-overview.md). Det här programmet innehåller en identitets upplevelse: en kombinerad inloggning och registrering. När du skapar användar flödet måste du se till att:
@@ -92,8 +92,8 @@ OIDServiceConfiguration *configuration =
 
 När du har konfigurerat eller hämtat en Authorization service-konfiguration kan en auktoriseringsbegäran konstrueras. Om du vill skapa begäran behöver du följande information:
 
-* Klient-ID (program-ID) som du registrerade tidigare. Exempelvis `00000000-0000-0000-0000-000000000000`.
-* Anpassad omdirigerings-URI som du registrerade tidigare. Exempelvis `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+* Klient-ID (program-ID) som du registrerade tidigare. Till exempel `00000000-0000-0000-0000-000000000000`.
+* Anpassad omdirigerings-URI som du registrerade tidigare. Till exempel `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 Båda objekten bör ha sparats när du [registrerade appen](#create-an-application).
 

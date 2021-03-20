@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Självstudie: Azure Active Directory integrering med InsideView
@@ -48,7 +48,7 @@ I den här självstudien konfigurerar och testar du enkel inloggning i Azure AD 
 
 Om du vill ställa in integreringen av InsideView i Azure AD måste du lägga till InsideView från galleriet i listan över hanterade SaaS-appar.
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory**i den vänstra rutan:
+1. I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory** i den vänstra rutan:
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
@@ -60,7 +60,7 @@ Om du vill ställa in integreringen av InsideView i Azure AD måste du lägga ti
 
     ![Välj nytt program](common/add-new-app.png)
 
-4. Skriv **InsideView**i rutan Sök. Välj **InsideView** i Sök resultaten och välj sedan **Lägg till**.
+4. Skriv **InsideView** i rutan Sök. Välj **InsideView** i Sök resultaten och välj sedan **Lägg till**.
 
     ![Sökresultat](common/search-new-app.png)
 
@@ -125,7 +125,7 @@ Utför följande steg för att konfigurera enkel inloggning med InsideView i Azu
 
 1. I ett nytt webbläsarfönster loggar du in på din InsideView-företags webbplats som administratör.
 
-1. Längst upp i fönstret väljer du **admin**, SingleSignOn- **Inställningar**och **lägger sedan till SAML**.
+1. Längst upp i fönstret väljer du **admin**, SingleSignOn- **Inställningar** och **lägger sedan till SAML**.
    
    ![Inställningar för enkel inloggning med SAML](./media/insideview-tutorial/ic794135.png "Inställningar för enkel inloggning med SAML")
 
@@ -153,7 +153,7 @@ Utför följande steg för att konfigurera enkel inloggning med InsideView i Azu
 
 I det här avsnittet ska du skapa en test användare med namnet Britta Simon i Azure Portal.
 
-1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare**och väljer sedan **alla användare**:
+1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare** och väljer sedan **alla användare**:
 
     ![Välj alla användare](common/users.png)
 
@@ -167,9 +167,9 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Till exempel BrittaSimon@contoso.com .)
 
-    1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
+    1. Välj **Visa lösen ord** och skriv sedan ned värdet i rutan **lösen ord** .
 
     1. Välj **Skapa**.
 
@@ -177,7 +177,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure genom att ge hennes åtkomst till InsideView.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **InsideView**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **InsideView**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

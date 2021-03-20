@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144879"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Metodtips för Azure App Service
@@ -66,7 +66,7 @@ När säkerhets kopierings felen inträffar granskar du de senaste resultaten f�
 Azure App Service standard konfigurationen för Node.js appar är avsedd att bäst passa behoven hos de vanligaste apparna. Om konfigurationen för din Node.js-appen skulle dra nytta av anpassad justering för att förbättra prestandan eller optimera resursanvändningen för processor-/minnes-/nätverks resurser, se [metod tips och fel söknings guide för Node-program på Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Den här artikeln beskriver de iisnode-inställningar som du kan behöva konfigurera för din Node.js-app, beskriver de olika scenarier eller problem som din app kan vara riktade till och visar hur du kan åtgärda problemen.
 
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 Mer information om bästa praxis finns i [App Service Diagnostics](./overview-diagnostics.md) för att ta reda på vilka metod tips som är lämpliga för din resurs.
 
 - Navigera till din webbapp i [Azure Portal](https://portal.azure.com).

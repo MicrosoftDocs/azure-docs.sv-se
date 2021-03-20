@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80398466"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Översikt över Azures anpassade resurs leverantörer
@@ -37,11 +37,11 @@ Här följer några exempel på vad du kan uppnå med Azures anpassade resurs le
 
 ## <a name="what-is-a-custom-resource-provider"></a>Vad är en anpassad resurs leverantör
 
-Azures anpassade resurs leverantörer görs genom att skapa ett kontrakt mellan Azure och en slut punkt. Detta kontrakt definierar en lista över nya resurser och åtgärder via en ny resurs, **Microsoft. CustomProviders/resourceProviders**. Den anpassade resurs leverantören kommer sedan att exponera dessa nya API: er i Azure. Azures anpassade resurs leverantörer består av tre delar: anpassad Resource Provider, **slut punkter**och anpassade resurser.
+Azures anpassade resurs leverantörer görs genom att skapa ett kontrakt mellan Azure och en slut punkt. Detta kontrakt definierar en lista över nya resurser och åtgärder via en ny resurs, **Microsoft. CustomProviders/resourceProviders**. Den anpassade resurs leverantören kommer sedan att exponera dessa nya API: er i Azure. Azures anpassade resurs leverantörer består av tre delar: anpassad Resource Provider, **slut punkter** och anpassade resurser.
 
 ## <a name="how-to-build-custom-resource-providers"></a>Så här skapar du anpassade resurs leverantörer
 
-Anpassade resurs leverantörer är en lista över kontrakt mellan Azure och slut punkter. Detta avtal beskriver hur Azure ska interagera med en slut punkt. Resurs leverantören fungerar som en proxy och vidarebefordrar begär Anden och svar till och från den angivna **slut punkten**. En resurs leverantör kan ange två typer av kontrakt: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) och [**åtgärder**](./custom-providers-action-endpoint-how-to.md). Dessa är aktiverade genom slut punkts definitioner. En slut punkts definition består av tre fält: **Name**, **routingType**och **Endpoint**.
+Anpassade resurs leverantörer är en lista över kontrakt mellan Azure och slut punkter. Detta avtal beskriver hur Azure ska interagera med en slut punkt. Resurs leverantören fungerar som en proxy och vidarebefordrar begär Anden och svar till och från den angivna **slut punkten**. En resurs leverantör kan ange två typer av kontrakt: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) och [**åtgärder**](./custom-providers-action-endpoint-how-to.md). Dessa är aktiverade genom slut punkts definitioner. En slut punkts definition består av tre fält: **Name**, **routingType** och **Endpoint**.
 
 Exempel slut punkt:
 

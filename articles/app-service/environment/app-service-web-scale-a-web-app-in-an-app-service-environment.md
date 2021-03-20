@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86220566"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Skala appar i en App Service-miljön v1
@@ -39,11 +39,11 @@ Du kan skapa flera App Service-planer med hjälp av beräknings resurser från o
 ### <a name="scaling-the-number-of-instances"></a>Skala antalet instanser
 Första gången du skapar en webbapp i en App Service-miljön börjar den med 1 instans.  Du kan sedan skala ut till ytterligare instanser för att tillhandahålla ytterligare beräknings resurser för din app.   
 
-Om din ASE har tillräckligt med kapacitet är detta ganska enkelt.  Du går till App Services plan som innehåller de platser som du vill skala upp och välja skala.  Detta öppnar användar gränssnittet där du kan ställa in skalan manuellt för ASP eller konfigurera regler för autoskalning för ASP.  Om du vill skala din app manuellt ställer du bara in ***skala med*** till ***ett instans antal som jag anger manuellt***.  Härifrån kan du antingen dra skjutreglaget till önskad kvantitet eller ange det i rutan bredvid skjutreglaget.  
+Om din ASE har tillräckligt med kapacitet är detta ganska enkelt.  Du går till App Services plan som innehåller de platser som du vill skala upp och välja skala.  Detta öppnar användar gränssnittet där du kan ställa in skalan manuellt för ASP eller konfigurera regler för autoskalning för ASP.  Om du vill skala din app manuellt anger du ***skala enligt** _ till _ *_ett instans antal som jag anger manuellt_* *.  Härifrån kan du antingen dra skjutreglaget till önskad kvantitet eller ange det i rutan bredvid skjutreglaget.  
 
 ![Skärm bild som visar var du kan ställa in skalningen för ASP eller konfigurera regler för autoskalning för din ASP.][2] 
 
-Reglerna för autoskalning för en ASP-ASE fungerar på samma sätt som de gör normalt.  Du kan välja ***processor procent*** under ***skala efter*** och skapa regler för autoskalning för din ASP baserat på processor procent, eller så kan du skapa mer komplexa regler med hjälp av ***schema-och prestanda regler***.  Om du vill se mer information om hur du konfigurerar autoskalning använder du guiden här för att [skala en app i Azure App Service][AppScale]. 
+Reglerna för autoskalning för en ASP-ASE fungerar på samma sätt som de gör normalt.  Du kan välja ***CPU-procent** _ under _*_skala efter_*_ och skapa regler för autoskalning för din ASP baserat på processor procent, eller så kan du skapa mer komplexa regler med _ *_schema-och prestanda regler_* *.  Om du vill se mer information om hur du konfigurerar autoskalning använder du guiden här för att [skala en app i Azure App Service][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Val av arbets grupp
 Som tidigare nämnts kan valet av arbets grupp nås från ASP-ANVÄNDARGRÄNSSNITTET.  Öppna bladet för den ASP-server som du vill skala och välj arbets grupp.  Du ser alla Worker-pooler som du har konfigurerat i App Service-miljön.  Om du bara har en pool visas bara den enda poolen.  Om du vill ändra vilken resurspool din ASP är i väljer du bara den arbets grupp som du vill att App Service planen ska flyttas till.  
