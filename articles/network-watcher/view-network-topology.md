@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737537"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Visa topologin för ett virtuellt Azure-nätverk
@@ -32,7 +32,7 @@ Du kan använda [Azure Portal](#azure-portal), [Azure CLI](#azure-cli)eller [Pow
 2. I det övre vänstra hörnet i portalen väljer du **alla tjänster**.
 3. I rutan **alla tjänster** filter anger du *Network Watcher*. När **Network Watcher** visas i resultatet markerar du det.
 4. Välj **Topologi**. Att skapa en topologi kräver en nätverks övervakare i samma region som det virtuella nätverk som du vill skapa topologin för finns i. Om du inte har en nätverks övervakare aktive rad i den region där det virtuella nätverket som du vill skapa en topologi för finns i, skapas Network Watcher automatiskt i alla regioner. Nätverks bevakarna skapas i en resurs grupp med namnet **NetworkWatcherRG**.
-5. Välj en prenumeration, resurs gruppen för ett virtuellt nätverk som du vill visa topologin för och välj sedan det virtuella nätverket. I följande bild visas en topologi för ett virtuellt nätverk med namnet *MyVnet*i resurs gruppen med namnet *MyResourceGroup*:
+5. Välj en prenumeration, resurs gruppen för ett virtuellt nätverk som du vill visa topologin för och välj sedan det virtuella nätverket. I följande bild visas en topologi för ett virtuellt nätverk med namnet *MyVnet* i resurs gruppen med namnet *MyResourceGroup*:
 
     ![Visa topologi](./media/view-network-topology/view-topology.png)
 
@@ -41,7 +41,7 @@ Du kan använda [Azure Portal](#azure-portal), [Azure CLI](#azure-cli)eller [Pow
     - I samma resurs grupp och region som det virtuella *myVnet* -nätverket. Till exempel visas inte en nätverks säkerhets grupp som finns i en annan resurs grupp än *MyResourceGroup*, även om nätverks säkerhets gruppen är kopplad till ett undernät i det virtuella *MyVnet* -nätverket.
     - I, eller är kopplade till resurser inom, *myVnet* virtuella nätverk. En nätverks säkerhets grupp som inte är kopplad till ett undernät eller ett nätverks gränssnitt i det virtuella *myVnet* -nätverket visas till exempel inte, även om nätverks säkerhets gruppen finns i resurs gruppen *MyResourceGroup* .
 
-   Den topologi som visas i bilden är för det virtuella nätverk som skapas när du har distribuerat **väg trafiken via ett skript exempel för virtuella nätverk**som du kan distribuera med hjälp av [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)eller [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+   Den topologi som visas i bilden är för det virtuella nätverk som skapas när du har distribuerat **väg trafiken via ett skript exempel för virtuella nätverk** som du kan distribuera med hjälp av [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)eller [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 6. Välj **Hämta topologi** för att ladda ned bilden som en redigerbar fil i SVG-format.
 

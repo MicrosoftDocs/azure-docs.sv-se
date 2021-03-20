@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343028"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-felsöka HTTP-huvuden för Azure CDN-regel motor
@@ -54,7 +54,7 @@ Felsök cache-svarshuvuden kan begäras genom att inkludera följande rubrik och
 ## <a name="cache-status-code-information"></a>Information om cache status kod
 Svars huvudet för X-EG-debug kan identifiera en server och hur den hanterar svaret genom följande direktiv:
 
-Sidhuvud | Beskrivning
+Huvud | Beskrivning
 -------|------------
 X-EG-debug: x-EC-cache | Den här rubriken rapporteras när innehållet dirigeras via CDN. Den identifierar den POP-server som uppfyllde begäran.
 X-EG-debug: x-EC-cache-Remote | Den här rubriken rapporteras endast när det begärda innehållet cachelagrades på en ursprungs skärms Server eller en och gateway-server.

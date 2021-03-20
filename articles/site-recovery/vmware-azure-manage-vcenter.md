@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84692531"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Hantera VMware vCenter Server
@@ -38,7 +38,7 @@ När du konfigurerar haveri beredskap för lokala virtuella VMware-datorer behö
 
 ### <a name="account-permissions"></a>Konto behörigheter
 
-|**Uppgift** | **Konto** | **Behörigheter** | **Information**|
+|**Uppgift** | **Redovisning** | **Behörigheter** | **Information**|
 |--- | --- | --- | ---|
 |**Identifiering/migrering av virtuell dator (utan återställning)** | Minst ett skrivskyddat användar konto. | Data Center-objekt –> Sprid till underordnat objekt, roll = skrivskyddad | Användaren tilldelas på datacenternivå och har åtkomst till alla objekt i datacentret.<br/><br/> Om du vill begränsa åtkomsten tilldelar du rollen **Ingen åtkomst** med objektet **Sprid till underordnad** till underordnade objekt (vSphere-värdar, data lager, virtuella datorer och nätverk).|
 |**Replikering/redundans** | Minst ett skrivskyddat användar konto. | Data Center-objekt –> Sprid till underordnat objekt, roll = skrivskyddad | Användaren tilldelas på datacenternivå och har åtkomst till alla objekt i datacentret.<br/><br/> Om du vill begränsa åtkomsten tilldelar du rollen **Ingen åtkomst** med **spridning till underordnat** objekt till underordnade objekt (vSphere-värdar, data lager, virtuella datorer och nätverk).<br/><br/> Användbart för migrering, men inte fullständig replikering, redundans och återställning efter fel.|
@@ -48,9 +48,9 @@ När du konfigurerar haveri beredskap för lokala virtuella VMware-datorer behö
 
 När du konfigurerar haveri beredskap för lokala virtuella VMware-datorer lägger du till vCenter Server/vSphere-värden som du identifierar virtuella datorer i Site Recovery valvet på följande sätt:
 
-1. Öppna konfigurations servern i valv > **Site Recovery infrastruktur**  >  **konfigurations**servrar.
-1. Klicka på **vCenter**på sidan **information** .
-1. I **Lägg till vCenter**anger du ett eget namn för vSphere-värden eller vCenter-servern.
+1. Öppna konfigurations servern i valv > **Site Recovery infrastruktur**  >  **konfigurations** servrar.
+1. Klicka på **vCenter** på sidan **information** .
+1. I **Lägg till vCenter** anger du ett eget namn för vSphere-värden eller vCenter-servern.
 1. Ange IP-adressen eller det fullständiga domän namnet för servern.
 1. Lämna porten som 443 om inte dina VMware-servrar är konfigurerade för att lyssna efter begäranden på en annan port.
 1. Välj det konto som används för att ansluta till VMware vCenter-eller vSphere ESXi-servern. Klicka sedan på **OK**.
@@ -66,16 +66,16 @@ Om det behövs kan du ändra autentiseringsuppgifterna som används för att ans
    ![Lägg till konto](./media/vmware-azure-manage-vcenter/addaccount.png)
 
 1. Ange den nya konto informationen och klicka på **OK**. Kontot måste ha de behörigheter som anges i tabellen [konto behörighet](#account-permissions) .
-1. Öppna konfigurations servern i valvet > **Site Recovery infrastruktur**  >  **konfigurations**servrar.
-1. Klicka på **Uppdatera server**i **information**.
+1. Öppna konfigurations servern i valvet > **Site Recovery infrastruktur**  >  **konfigurations** servrar.
+1. Klicka på **Uppdatera server** i **information**.
 1. När jobbet uppdaterings Server har slutförts väljer du vCenter Server.
-1. I **Sammanfattning**väljer du det nyligen tillagda kontot i **vCenter Server/vSphere Host-konto**och klickar på **Spara**.
+1. I **Sammanfattning** väljer du det nyligen tillagda kontot i **vCenter Server/vSphere Host-konto** och klickar på **Spara**.
 
    ![Ändra-konto](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>Ta bort en vCenter Server
 
-1. Öppna konfigurations servern i valvet > **Site Recovery infrastruktur**  >  **konfigurations**servrar.
+1. Öppna konfigurations servern i valvet > **Site Recovery infrastruktur**  >  **konfigurations** servrar.
 1. På sidan **information** väljer du vCenter-servern.
 1. Klicka på knappen **ta bort** .
 
@@ -85,9 +85,9 @@ Om det behövs kan du ändra autentiseringsuppgifterna som används för att ans
 
 Du kan ändra IP-adressen för vCenter Server eller portarna som används för kommunikation mellan-servern och Site Recovery. Som standard har Site Recovery åtkomst till vCenter Server/vSphere-värd information via port 443.
 
-1. I valvet > **Site Recovery infrastruktur**  >  **konfigurations servrar**klickar du på den konfigurations server som vCenter Server läggs till i.
-1. I **vCenter-servrar**klickar du på vCenter Server som du vill ändra.
-1. I **Sammanfattning**uppdaterar du IP-adressen och porten och sparar ändringarna.
+1. I valvet > **Site Recovery infrastruktur**  >  **konfigurations servrar** klickar du på den konfigurations server som vCenter Server läggs till i.
+1. I **vCenter-servrar** klickar du på vCenter Server som du vill ändra.
+1. I **Sammanfattning** uppdaterar du IP-adressen och porten och sparar ändringarna.
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 
@@ -97,9 +97,9 @@ Du kan ändra IP-adressen för vCenter Server eller portarna som används för k
 
 Om du vill migrera alla virtuella datorer för att använda en ny vCenter Server behöver du bara uppdatera IP-adressen som tilldelats vCenter Server. Lägg inte till något annat VMware-konto eftersom det kan leda till dubbla poster. Uppdatera adressen enligt följande:
 
-1. I valvet > **Site Recovery infrastruktur**  >  **konfigurations servrar**klickar du på den konfigurations server som vCenter Server läggs till i.
+1. I valvet > **Site Recovery infrastruktur**  >  **konfigurations servrar** klickar du på den konfigurations server som vCenter Server läggs till i.
 1. I avsnittet **vCenter-servrar** klickar du på den vCenter Server som du vill migrera från.
-1. I **Sammanfattning**uppdaterar du IP-adressen till den nya vCenter Server och sparar ändringarna.
+1. I **Sammanfattning** uppdaterar du IP-adressen till den nya vCenter Server och sparar ändringarna.
 1. Så fort IP-adressen uppdateras börjar Site Recovery ta emot identifierings information för virtuella datorer från den nya vCenter Server. Detta påverkar inte pågående replikerings aktiviteter.
 
 ## <a name="migrate-a-few-vms-to-a-new-server"></a>Migrera några virtuella datorer till en ny server

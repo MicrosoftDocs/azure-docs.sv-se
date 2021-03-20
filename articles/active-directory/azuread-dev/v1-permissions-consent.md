@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366402"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Behörigheter och medgivande i Azure Active Directory v 1.0-slutpunkten
@@ -61,7 +61,7 @@ Behörigheter i Azure AD har ett antal egenskaper som hjälper användare, admin
 | --- | --- | --- |
 | `ID` | Ett GUID-värde som ger en unik identifiering av behörigheten. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | Anger om den här behörigheten är tillgänglig för användning. | true |
-| `Type` | Anger om den här behörigheten kräver ett godkännande av användaren eller administratören. | Användare |
+| `Type` | Anger om den här behörigheten kräver ett godkännande av användaren eller administratören. | User |
 | `AdminConsentDescription` | En beskrivning som visas för administratörer vid administratörsmedgivanden | Tillåter att appen läser e-post i användarnas postlådor. |
 | `AdminConsentDisplayName` | Ett eget namn som visas för administratörer vid administratörsmedgivanden. | Läsa användarnas e-post |
 | `UserConsentDescription` | En beskrivning som visas för användarna vid ett användargodkännande. |  Tillåter att appen läser e-post i din postlåda. |

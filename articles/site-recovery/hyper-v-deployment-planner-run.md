@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082606"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Köra Distributionshanteraren för Azure Site Recovery för Hyper-V-haveriberedskap till Azure
@@ -157,7 +157,7 @@ När du skickar namn och nyckel för ett lagringskonto mäter verktyget dataflö
 Azure Site Recovery stöder inte virtuella datorer som har iSCSI-och direkt lagrings diskar. Verktyget kan inte identifiera och profilera iSCSI-och direkt lagrings diskar som är anslutna till virtuella datorer.
 
 ## <a name="generate-a-report"></a>Generera en rapport
-Verktyget genererar en makroaktiverad Microsoft Excel-fil (XLSM) som rapportutdata. Där sammanfattas alla distributionsrekommendationer. Rapporten heter DeploymentPlannerReport_*unik numerisk identifierare*. xlsm och placeras i den angivna katalogen.
+Verktyget genererar en makroaktiverad Microsoft Excel-fil (XLSM) som rapportutdata. Där sammanfattas alla distributionsrekommendationer. Rapporten heter DeploymentPlannerReport_ *unik numerisk identifierare*. xlsm och placeras i den angivna katalogen.
 
 När profileringen är färdig kan köra du verktyget i läget för rapportgenerering. 
 
@@ -292,7 +292,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 
 ### <a name="throughput-considerations"></a>Överväganden för dataflöde
 
-Verktyget skapar flera 64 MB stora filer med namnet asrvhdfile*tal*.vhd (där *tal* är antalet filer) i den angivna katalogen. Verktyget överför filerna till lagringskontot när dataflödet ska beräknas. När dataflödet har beräknats tar verktyget bort alla filer både från lagringskontot och från den lokala servern. Om verktyget avslutas av någon anledning medan det beräknar dataflödet tar det inte bort filerna från lagringskontot eller från den lokala servern. Du måste ta bort dem manuellt.
+Verktyget skapar flera 64 MB stora filer med namnet asrvhdfile *tal*.vhd (där *tal* är antalet filer) i den angivna katalogen. Verktyget överför filerna till lagringskontot när dataflödet ska beräknas. När dataflödet har beräknats tar verktyget bort alla filer både från lagringskontot och från den lokala servern. Om verktyget avslutas av någon anledning medan det beräknar dataflödet tar det inte bort filerna från lagringskontot eller från den lokala servern. Du måste ta bort dem manuellt.
 
 Dataflödet mäts vid en angiven tidpunkt. Det är det maximala dataflöde som Azure Site Recovery kan uppnå vid replikering, om alla andra faktorer är desamma. Om ett annat program till exempel börjar förbruka mer bandbredd i samma nätverk kommer det faktiska dataflödet att variera under replikeringen. Resultatet av det uppmätta dataflödet ser annorlunda ut om GetThroughput-åtgärden körs när de skyddade virtuella datorerna har hög dataomsättning. 
 

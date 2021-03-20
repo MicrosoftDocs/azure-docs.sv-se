@@ -4,10 +4,10 @@ description: Lär dig hur du lagrar Helm-diagram för dina Kubernetes-program me
 ms.topic: article
 ms.date: 06/12/2020
 ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86537875"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Push-och pull-Helm diagram till ett Azure Container Registry
@@ -33,7 +33,7 @@ Helm 3 ska användas som värd för Helm-diagram i Azure Container Registry. Med
 > [!NOTE]
 > Från och med Helm 3 är [AZ ACR Helm][az-acr-helm] -kommandon för användning med Helm 2-klienten inaktuella. Se [produkt översikten](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Om du tidigare har distribuerat Helm 2-diagram, se [migrera Helm v2 till v3](https://helm.sh/docs/topics/v2_v3_migration/).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande resurser krävs för scenariot i den här artikeln:
 
@@ -93,7 +93,7 @@ Mer information om hur du skapar och kör det här exemplet finns [komma igång]
 
 Ändra katalog till under `hello-world` katalogen. Sedan kör `helm chart save` du för att spara en kopia av diagrammet lokalt och även skapa ett alias med det fullständigt kvalificerade namnet på registret (alla gemener) och mål databasen och taggen. 
 
-I följande exempel är register namnet *mycontainerregistry*, mål lagrings platsen är *Hello-World*och mål diagram tag gen är *v1*, men ersätter värden för din miljö:
+I följande exempel är register namnet *mycontainerregistry*, mål lagrings platsen är *Hello-World* och mål diagram tag gen är *v1*, men ersätter värden för din miljö:
 
 ```console
 cd ..

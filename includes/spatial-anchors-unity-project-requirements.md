@@ -2,20 +2,25 @@
 author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 2/4/21
+ms.date: 03/18/2021
 ms.author: parkerra
-ms.openlocfilehash: 47893bac827393787b78c608022719a8cfcb713d
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1c2eb0b4350f24ed1b7c4d0f662c7afec3feffeb
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575424"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669611"
 ---
-Azures spatiala fäst punkter SDK bör konfigureras i <a href="https://unity.com/releases/2019-lts" target="_blank">unity 2019,4 (LTS)</a> med följande paket:
-- AR-grund: <a href="https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@3.1/manual/index.html" target="_blank">3.1.3</a>
-- Windows-Mixad verklighet: <a href="https://docs.unity3d.com/Packages/com.unity.xr.windowsmr.metro@4.2/manual/index.html" target="_blank">4.2.1</a>
-- ARCore XR-plugin-program (för Android-enhets stöd): <a href="https://docs.unity3d.com/Packages/com.unity.xr.arcore@3.1/manual/index.html" target="_blank">3.1.3</a>
-- ARKit XR-plugin-program (för iOS-enhets stöd): <a href="https://docs.unity3d.com/Packages/com.unity.xr.arkit@3.1/manual/index.html" target="_blank">3.1.3</a>
+Azures spatiala ankare SDK för version 2,9 eller senare bör konfigureras i [union 2020,3 (LTS)](https://unity3d.com/unity/whats-new/2020.3.0) med [ramverket Unity XR-plugin-programmet](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) med följande paket:
 
-> [!NOTE]
-> ASA SDK stöder för närvarande inte <a href="https://docs.unity3d.com/Manual/XRPluginArchitecture.html" target="_blank">Unit XR-plugin-ramverket</a>
+- AR-grund: [4.0.12](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.0/manual/index.html)
+- Windows XR-plugin-program (för HoloLens-enhets support): [4.4.1](https://docs.unity3d.com/Packages/com.unity.xr.windowsmr@4.4/manual/index.html)
+- ARCore XR-plugin-program (för Android-enhets stöd): [4.0.12](https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.0/manual/index.html)
+- ARKit XR-plugin-program (för iOS-enhets stöd): [4.0.12](https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.0/manual/index.html)
+
+Azures spatiala ankare SDK-versioner 2,8 eller tidigare har inte stöd för [ramverket Unit XR-plugin](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) och bör konfigureras i [Unity 2019,4 (LTS)](https://unity.com/releases/2019-lts) med följande paket:
+
+- AR-grund: [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@3.1/manual/index.html)
+- Windows Mixed Reality (för HoloLens-enhetens stöd): [4.2.1](https://docs.unity3d.com/Packages/com.unity.xr.windowsmr.metro@4.2/manual/index.html)
+- ARCore XR-plugin-program (för Android-enhets stöd): [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arcore@3.1/manual/index.html)
+- ARKit XR-plugin-program (för iOS-enhets stöd): [3.1.3](https://docs.unity3d.com/Packages/com.unity.xr.arkit@3.1/manual/index.html)

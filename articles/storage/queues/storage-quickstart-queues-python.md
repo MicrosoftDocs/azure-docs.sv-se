@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
 ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97585504"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Snabb start: Azure Queue Storage klient bibliotek V12 för python
@@ -36,7 +36,7 @@ Ytterligare resurser:
 - [Paket (python-paket index)](https://pypi.org/project/azure-storage-queue/)
 - [Exempel](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - Azure Storage konto – [skapa ett lagrings konto](../common/storage-account-create.md)

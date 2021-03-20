@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84235611"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Översikt över resursögonblicksbilder för Azure Files
@@ -63,7 +63,7 @@ För att spara utrymme kan du ta bort resurs ögonblicks bilden för den period 
 
 Ögonblicks bilder räknas inte mot din gräns för 5 TB-resursen. Det finns ingen gräns för hur mycket utrymmes resurs ögonblicks bilder som upptas totalt. Lagrings konto gränser gäller fortfarande.
 
-## <a name="limits"></a>Begränsningar
+## <a name="limits"></a>Gränser
 
 Det maximala antalet resurs ögonblicks bilder som Azure Files tillåter idag är 200. Efter 200 resurs ögonblicks bilder måste du ta bort gamla ögonblicks bilder av resurser för att skapa nya. 
 

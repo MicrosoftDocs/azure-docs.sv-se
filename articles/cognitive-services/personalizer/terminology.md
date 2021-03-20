@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: cd0d85be5447aad0f2a3c37041e7d5d5d047a468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777300"
 ---
 # <a name="personalizer-terminology"></a>Terminologi för anpassning
@@ -80,7 +80,7 @@ Personanpassaren har kon figurer ATS från [Azure Portal](https://portal.azure.c
 
 * **Utvärdering**: en offline-utvärdering avgör den bästa inlärnings principen för din loop baserat på programmets data.
 
-* **Inlärnings princip**: hur personanpassare en modell i varje händelse kommer att fastställas av vissa parametrar som påverkar hur Machine Learning-algoritmen fungerar. En ny inlärnings slinga börjar med en standard **inlärnings princip**som kan ge måttliga prestanda. När du kör [utvärderingarna](concepts-offline-evaluation.md)skapar personanpassaren nya inlärnings principer som är specifikt optimerade för användnings fall i slingan. Personanpassaren kommer att utföra avsevärt bättre med principer som är optimerade för varje enskild slinga, som genereras under utvärderingen. Inlärnings policyn heter _utbildnings inställningar_ på **modell-och utbildnings inställningarna** för personanpassa-resursen i Azure Portal.
+* **Inlärnings princip**: hur personanpassare en modell i varje händelse kommer att fastställas av vissa parametrar som påverkar hur Machine Learning-algoritmen fungerar. En ny inlärnings slinga börjar med en standard **inlärnings princip** som kan ge måttliga prestanda. När du kör [utvärderingarna](concepts-offline-evaluation.md)skapar personanpassaren nya inlärnings principer som är specifikt optimerade för användnings fall i slingan. Personanpassaren kommer att utföra avsevärt bättre med principer som är optimerade för varje enskild slinga, som genereras under utvärderingen. Inlärnings policyn heter _utbildnings inställningar_ på **modell-och utbildnings inställningarna** för personanpassa-resursen i Azure Portal.
 
 ### <a name="apprentice-mode-evaluations"></a>Utvärdering av lärlings läge
 

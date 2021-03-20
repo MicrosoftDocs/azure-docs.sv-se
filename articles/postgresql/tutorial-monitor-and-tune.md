@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: a12068259d82e833826bcac5e6c58059fb51c56c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336987"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Självstudie: övervaka och finjustera Azure Database for PostgreSQL-enskild server
@@ -23,11 +23,11 @@ Azure Database for PostgreSQL har funktioner som hjälper dig att förstå och f
 > * analyserar en databas för att få prestandarekommendationer
 > * Tillämpa prestandarekommendationer
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Du behöver en Azure Database for PostgreSQL-server med PostgreSQL version 9.6 eller 10. Du kan följa stegen i [självstudien för att skapa en server](tutorial-design-database-using-azure-portal.md) för att skapa en server.
 
 > [!IMPORTANT]
-> **Query Store** , **Query Performance Insight** och **prestandarekommendation** finns i en allmänt tillgänglig förhandsversion.
+> **Query Store**, **Query Performance Insight** och **prestandarekommendation** finns i en allmänt tillgänglig förhandsversion.
 
 ## <a name="enabling-data-collection"></a>Aktivera datainsamling
 I [Query Store](concepts-query-store.md) finns en historik över fråge- och väntestatistik på din server och den lagras i databasen **azure_sys** på servern. Det är en valbar funktion. För att aktivera den:
@@ -83,7 +83,7 @@ Funktionen [Prestandarekommendationer](concepts-performance-recommendations.md) 
 
 4. I fönstret **Prestandarekommendationer** visas en lista över rekommendationer om sådana hittas. 
 
-5. En rekommendation visar information om relevant **databas** , **tabell** , **kolumn** och **indexstorlek**.
+5. En rekommendation visar information om relevant **databas**, **tabell**, **kolumn** och **indexstorlek**.
 
    :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Resultat av prestandarekommendationer":::
 

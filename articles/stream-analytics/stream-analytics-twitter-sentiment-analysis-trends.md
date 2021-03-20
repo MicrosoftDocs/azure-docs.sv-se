@@ -1,21 +1,21 @@
 ---
-title: Real tids analys av Twitter-sentiment med Azure Stream Analytics
-description: I den här artikeln beskrivs hur du använder Stream Analytics för analys av Twitter-sentiment i real tid. Steg-för-steg-anvisningar från Event-generering till data på en Live-instrumentpanel.
+title: Analys av sociala medier med Azure Stream Analytics
+description: Den här artikeln beskriver hur du använder Stream Analytics för analys av sociala medier med Twitter-klientens API. Steg-för-steg-anvisningar från Event-generering till data på en Live-instrumentpanel.
 services: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734853"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589675"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Attitydanalys för Twitter i realtid i Azure Stream Analytics
+# <a name="social-media-analysis-with-azure-stream-analytics"></a>Analys av sociala medier med Azure Stream Analytics
 
 Den här artikeln lär dig hur du skapar en sentiment analys lösning för sociala medier genom att ta real tids händelser i real tid till Azure Event Hubs. Du skriver en Azure Stream Analytics fråga för att analysera data och lagra resultatet för senare användning eller skapa en [Power BI](https://powerbi.com/) instrument panel för att ge insikter i real tid.
 
@@ -29,7 +29,7 @@ Ett företag som har en nyhets medie webbplats är intresse rad av att få en f�
 
 För att kunna identifiera trender i ämnen i real tid på Twitter behöver företaget real tids analys av tweet-volymen och sentiment för viktiga ämnen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 I den här instruktions guiden använder du ett klient program som ansluter till Twitter och letar efter Tweets som har vissa hashtagg (som du kan ställa in). Om du vill köra programmet och analysera tweets med Azure streaming Analytics måste du ha följande:
 

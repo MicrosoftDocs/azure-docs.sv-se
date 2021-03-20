@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541954"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Skapa och hantera Läs repliker i Azure Database for MySQL med PowerShell
@@ -54,10 +54,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlReplica`Kommandot kräver följande parametrar:
 
-| Inställningen | Exempelvärde | Beskrivning  |
+| Inställning | Exempelvärde | Beskrivning  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där replik servern skapas.  |
-| Namn | mydemoreplicaserver | Namnet på den nya replik servern som skapas. |
+| Name | mydemoreplicaserver | Namnet på den nya replik servern som skapas. |
 
 Om du vill skapa en skrivskyddad replik av en kors region använder du parametern **location** . I följande exempel skapas en replik i regionen **USA, västra** .
 
@@ -83,7 +83,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica`Kommandot kräver följande parametrar:
 
-| Inställningen | Exempelvärde | Beskrivning  |
+| Inställning | Exempelvärde | Beskrivning  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där replik servern ska skapas.  |
 | ServerName | mydemoserver | Namnet eller ID: t för käll servern. |

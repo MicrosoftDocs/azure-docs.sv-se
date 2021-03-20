@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073917"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snabb start – konfigurera en privat moln miljö
@@ -37,7 +37,7 @@ Privata moln hanteras via CloudSimple-portalen. De har sina egna vCenter-servrar
 1. Välj **Alla tjänster**.
 2. Sök efter **CloudSimple-tjänster**.
 3. Välj den CloudSimple-tjänst som du vill skapa ditt privata moln på.
-4. Från **Översikt**klickar du på **skapa privat moln** för att öppna en ny flik i webbläsaren för CloudSimple-portalen.  Logga in med dina inloggnings uppgifter för Azure om du uppmanas till detta.  
+4. Från **Översikt** klickar du på **skapa privat moln** för att öppna en ny flik i webbläsaren för CloudSimple-portalen.  Logga in med dina inloggnings uppgifter för Azure om du uppmanas till detta.  
 
     ![Skapa ett privat moln från Azure](media/create-private-cloud-from-azure.png)
 
@@ -85,14 +85,14 @@ En punkt-till-plats-VPN-anslutning är det enklaste sättet att ansluta till dit
 
     ![Skapa VPN-gateway](media/create-vpn-gateway.png)
 
-4. För **gateway-konfiguration**anger du följande inställningar och klickar på **Nästa**.
+4. För **gateway-konfiguration** anger du följande inställningar och klickar på **Nästa**.
 
     * Välj **punkt-till-plats-VPN** som gateway-typ.
     * Ange ett namn för att identifiera gatewayen.
     * Välj den Azure-plats där din CloudSimple-tjänst har distribuerats.
     * Ange klient under nätet för punkt-till-plats-Gateway.  DHCP-adresser tilldelas från det här under nätet när du ansluter.
 
-5. För **anslutning/användare**anger du följande inställningar och klickar på **Nästa**.
+5. För **anslutning/användare** anger du följande inställningar och klickar på **Nästa**.
 
     * Om du automatiskt vill tillåta alla aktuella och framtida användare åtkomst till det privata molnet via den här punkt-till-plats-gatewayen väljer du **Lägg automatiskt till alla användare**. När du väljer det här alternativet markeras alla användare i användar listan automatiskt. Du kan åsidosätta det automatiska alternativet genom att avmarkera enskilda användare i listan.
     * Om du bara vill välja enskilda användare klickar du på kryss rutorna i användar listan.

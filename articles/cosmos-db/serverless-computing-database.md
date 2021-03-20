@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334085"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Databas bearbetning utan server med hjälp av Azure Cosmos DB och Azure Functions
@@ -124,7 +124,7 @@ Azure Functions ger möjlighet att skapa skalbara arbets enheter eller korta del
 
 Azure Cosmos DB är den rekommenderade databasen för din server lös data behandlings arkitektur av följande anledningar:
 
-* **Omedelbar åtkomst till alla dina data** : du har detaljerad åtkomst till alla värden som lagras eftersom Azure Cosmos DB [automatiskt indexerar](index-policy.md) alla data som standard och gör dessa index omedelbart tillgängliga. Det innebär att du kan fråga, uppdatera och lägga till nya objekt i databasen och få omedelbar åtkomst via Azure Functions.
+* **Omedelbar åtkomst till alla dina data**: du har detaljerad åtkomst till alla värden som lagras eftersom Azure Cosmos DB [automatiskt indexerar](index-policy.md) alla data som standard och gör dessa index omedelbart tillgängliga. Det innebär att du kan fråga, uppdatera och lägga till nya objekt i databasen och få omedelbar åtkomst via Azure Functions.
 
 * **Schema** lös. Azure Cosmos DB är schema lös – så att det är unikt att hantera data utdata från en Azure-funktion. Detta "hanterar alla"-tillvägagångs sätt gör det enkelt att skapa en rad funktioner som alla utdata till Azure Cosmos DB.
 

@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87117439"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>Felsöka: gransknings data på verifierad domän ändring 
@@ -33,7 +33,7 @@ Jag kontrollerar Azure AD audit-loggarna och ser flera användar uppdateringar s
 
 ### <a name="cause"></a>Orsak
 
- En vanlig orsak bakom ändringar i Mass objekt är en icke-synkron Server dels åtgärd som kallas **ProxyCalc**.  **ProxyCalc** är den logik som avgör lämpliga **userPrincipalName** -och **PROXYADRESSER**som uppdateras i Azure AD-användare, grupper eller kontakter. Designen bakom **ProxyCalc** är att se till att alla **userPrincipalName** -och **proxyadresser-adresser** är konsekventa i Azure AD när som helst. **ProxyCalc** måste utlösas av en explicit ändring som en verifierad domän ändring och körs inte permanent i bakgrunden som en uppgift. 
+ En vanlig orsak bakom ändringar i Mass objekt är en icke-synkron Server dels åtgärd som kallas **ProxyCalc**.  **ProxyCalc** är den logik som avgör lämpliga **userPrincipalName** -och **PROXYADRESSER** som uppdateras i Azure AD-användare, grupper eller kontakter. Designen bakom **ProxyCalc** är att se till att alla **userPrincipalName** -och **proxyadresser-adresser** är konsekventa i Azure AD när som helst. **ProxyCalc** måste utlösas av en explicit ändring som en verifierad domän ändring och körs inte permanent i bakgrunden som en uppgift. 
 
   
 

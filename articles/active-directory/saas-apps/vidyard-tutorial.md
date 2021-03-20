@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4176c92d48b67b9f9207f22ebd8939b5ec1437ee
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Självstudie: Azure Active Directory integrering med Vidyard
@@ -51,11 +51,11 @@ Om du vill konfigurera integreringen av Vidyard i Azure AD måste du lägga till
 
 **Utför följande steg för att lägga till Vidyard från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -63,13 +63,13 @@ Om du vill konfigurera integreringen av Vidyard i Azure AD måste du lägga till
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **Vidyard** , väljer **Vidyard** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **Vidyard**, väljer **Vidyard** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![Vidyard i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Vidyard baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Vidyard baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Vidyard upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med Vidyard i Azure AD måste du slutföra följande Bygg stenar:
@@ -95,7 +95,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://secure.vidyard.com/sso/saml/<unique id>/consume`
 
-5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP** -initierat läge:
+5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Skärm bild som visar ytterligare U R LS där du kan ange ett tecken på U R L.](common/metadata-upload-additional-signon.png)
 
@@ -116,7 +116,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
     > [!NOTE]
     > Dessa värden är inte verkliga. Du kommer att uppdatera dessa värden med den faktiska identifieraren, svars-URL: en och Sign-On URL, som beskrivs senare i självstudien. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** , klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
+6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
     ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
@@ -158,7 +158,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
     f. I text rutan **URL för SAML-slutpunkt** klistrar du in värdet för **inloggnings-URL: en** som kopierats från Azure Portal
 
-    ex. Klicka på **Bekräfta** .
+    ex. Klicka på **Bekräfta**.
 
 5. På fliken enkel inloggning väljer du **tilldela** bredvid en befintlig profil
 
@@ -167,11 +167,11 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
     > [!NOTE]
     > När du har skapat en SSO-profil tilldelar du den till alla grupper som användare behöver åtkomst via Azure. Om användaren inte finns i den grupp som de har tilldelats, skapar Vidyard automatiskt ett användar konto och tilldelar deras roll i real tid.
 
-6. Välj din organisations grupp, som är synlig i de **grupper som är tillgängliga för tilldelning** .
+6. Välj din organisations grupp, som är synlig i de **grupper som är tillgängliga för tilldelning**.
 
     ![Skärm bild som visar avsnittet Tilldela SAML-konfiguration till organisationer där du kan välja din grupp.](./media/vidyard-tutorial/configure5.png)
 
-7. Du kan se de tilldelade grupperna under de **grupper som för närvarande är tilldelade** . Välj en roll för gruppen per organisation och klicka på **Bekräfta** .
+7. Du kan se de tilldelade grupperna under de **grupper som för närvarande är tilldelade**. Välj en roll för gruppen per organisation och klicka på **Bekräfta**.
 
     ![Skärm bild som visar avsnittet Tilldela SAML-konfiguration till organisationer där du kan välja en roll.](./media/vidyard-tutorial/configure6.png)
 
@@ -182,7 +182,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -194,31 +194,31 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Vidyard.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **Vidyard** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Vidyard**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **Vidyard** .
+2. I listan program väljer du **Vidyard**.
 
     ![Vidyard-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -226,7 +226,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-vidyard-test-user"></a>Skapa Vidyard test användare
 

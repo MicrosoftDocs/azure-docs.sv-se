@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699132"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Packa upp, rack montering och kabel din StorSimple 8100-enhet
@@ -109,7 +109,7 @@ En uppsättning monterings skenor tillhandahålls för användning med 19-tums r
     1     | M 3x4 knapp – huvud skruvar
     2     | Chassi bilder
 
-2. Koppla de yttre vänster järnvägarna och de yttre högra järnvägs sammansättningarna till rack skåpets lodräta medlemmar. Hakparenteserna är märkta som **LH**, **RH**och **den här sidan upp** för att vägleda dig genom rätt orientering.
+2. Koppla de yttre vänster järnvägarna och de yttre högra järnvägs sammansättningarna till rack skåpets lodräta medlemmar. Hakparenteserna är märkta som **LH**, **RH** och **den här sidan upp** för att vägleda dig genom rätt orientering.
 3. Leta upp spårstiften på framsidan och baksidan av spårenheten. Utöka spåret så att det passar mellan rack inläggen och Lägg till stiften i det främre och bakre racket posts vertikala medlems hål. Se till att järn vägs sammansättningen är nivå.
 4. Använd två av de tillhandahållna måtten skruvarna för att skydda järnvägs sammansättningen med rackets lodräta medlemmar. Använd en skruv på bak sidan och en på bak sidan.
 5. Upprepa de här stegen för den andra järnvägs sammansättningen.<br/>
@@ -153,7 +153,7 @@ Nästa steg är att ansluta enheten till strömförsörjning, nätverk och serie
 ## <a name="cable-your-storsimple-8100-device"></a>Kabelansluta en StorSimple 8100-enhet
 Följande procedurer beskriver hur du kan ansluta din StorSimple 8100-enhet för strömförsörjning, nätverk och seriella anslutningar.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 Innan du börjar kabelansluta enheten behöver du:
 
 * Lagrings enheten, helt uppackat och rack montering.

@@ -1,7 +1,7 @@
 ---
-title: inkludera fil
+title: ta med fil
 titleSuffix: Azure
-description: inkludera fil
+description: ta med fil
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83846194"
 ---
 1. Välj **skapa en resurs**  >  **Se alla**.
@@ -36,7 +36,7 @@ ms.locfileid: "83846194"
     > ![Fliken peering-grundläggande](../media/setup-basics-tab.png)
 
     * Välj din Azure- **prenumeration**.
-    * För **resurs grupp**kan du antingen välja en befintlig resurs grupp i list rutan eller skapa en ny grupp genom att välja **Skapa ny**. Vi ska skapa en ny resurs grupp för det här exemplet.
+    * För **resurs grupp** kan du antingen välja en befintlig resurs grupp i list rutan eller skapa en ny grupp genom att välja **Skapa ny**. Vi ska skapa en ny resurs grupp för det här exemplet.
     * **Namnet** motsvarar resurs namnet och kan vara allt du väljer.
     * **Regionen** markeras autoom du väljer en befintlig resurs grupp. Om du väljer att skapa en ny resurs grupp måste du också välja den Azure-region där du vill att resursen ska finnas.
 

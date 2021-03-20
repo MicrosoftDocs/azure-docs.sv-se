@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048224"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580716"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Behörigheter i Azure Sentinel
 
@@ -41,6 +41,8 @@ Det finns tre dedikerade inbyggda Azure Sentinel-roller.
 - [Azure Sentinel-svarare](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) kan, förutom ovanstående, hantera incidenter (tilldela, ignorera osv.)
 
 - [Azure Sentinel-deltagare](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) kan, förutom ovanstående, skapa och redigera arbets böcker, analys regler och andra Azure Sentinel-resurser.
+
+- [Azure Sentinel Automation-deltagare](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) gör det möjligt för Azure Sentinel att lägga till spel böcker i Automation-regler. Det är inte avsett för användar konton.
 
 > [!NOTE]
 >

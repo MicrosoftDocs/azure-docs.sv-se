@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 680e22974aa85ae2d179f0b927a44b3471b4939d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102262"
 ---
 # <a name="what-is-azure-dev-tools-for-teaching"></a>Vad är Azure-utvecklarverktyg för utbildning?
@@ -26,7 +26,7 @@ Som administratör för Azure dev tools för att under Visa prenumerationen kan 
 
 ## <a name="program-details"></a>Programinformation
 
-Vi har utformat Azure dev tools för att lära sig om en mer inriktad instruktion. Alla kurs kurser som fokuserar på vetenskap, teknik, teknik eller matematik är berättigade till att använda Azure dev tools för att under lätta för undervisning och studenter att lära sig mer effektivt. 
+Vi har utformat Azure-utvecklarverktyg för utbildning inom teknikvetenskaper (STEM). Alla kursplaner som fokuserar på naturorienterad vetenskap, teknik, ingenjörsvetenskap eller matematik är berättigade att använda Azure-utvecklarverktyg för utbildning för att underlätta en mer effektiv undervisning för både lärare och studenter. 
 
 Dina Microsoft Azure dev tools för att under Visa prenumerationen ger dig till gång till vissa verktyg för programutvecklare. Dessa verktyg är tillgängliga för hämtning utan kostnad. Om du är en fakultets medlem som är registrerad i en godkänd kurs, är du berättigad till att installera Azure dev tools för att lära sig program vara på din egen dator för icke-kommersiell användning.
 

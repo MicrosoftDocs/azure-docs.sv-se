@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 8c107b88f964d8e657d6833fc3a2e8425d9053ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90936924"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Skapa och hantera brand Väggs regler för Azure Database for PostgreSQL-flexibel server med hjälp av Azure Portal
@@ -32,7 +32,7 @@ I den här artikeln fokuserar vi på att skapa en PostgreSQL-server med **offent
 3. Välj **flexibel Server** som distributions alternativ.
 4. Fyll i formuläret **grundläggande** information.
 5. Gå till fliken **nätverk** för att konfigurera hur du vill ansluta till servern.
-6. I **anslutnings metoden**väljer du *offentlig åtkomst (tillåtna IP-adresser)*. Om du vill skapa **brand Väggs regler**anger du brand Väggs regelns namn och en enskild IP-adress eller ett adress intervall. Om du vill begränsa regeln till en enskild IP-adress skriver du samma adress i fältet för Start-IP-adress och slut-IP-adress. Genom att öppna brand väggen kan administratörer, användare och program få åtkomst till alla databaser på PostgreSQL-servern som de har giltiga autentiseringsuppgifter för.
+6. I **anslutnings metoden** väljer du *offentlig åtkomst (tillåtna IP-adresser)*. Om du vill skapa **brand Väggs regler** anger du brand Väggs regelns namn och en enskild IP-adress eller ett adress intervall. Om du vill begränsa regeln till en enskild IP-adress skriver du samma adress i fältet för Start-IP-adress och slut-IP-adress. Genom att öppna brand väggen kan administratörer, användare och program få åtkomst till alla databaser på PostgreSQL-servern som de har giltiga autentiseringsuppgifter för.
    > [!Note]
    > Azure Database for PostgreSQL-flexibel Server skapar en brand vägg på server nivå. Den förhindrar att externa program och verktyg ansluter till servern eller databaser på servern, om du inte konfigurerar en regel som öppnar brandväggen för specifika IP-adresser.
 7. Välj **Granska + skapa** för att granska din flexibla Server konfiguration.

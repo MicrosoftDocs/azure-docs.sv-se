@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
 ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708041"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Så här köper du program vara på Microsoft AppSource
@@ -65,4 +65,4 @@ För företags produkter [kontaktar du hjälp här](/office365/admin/contact-sup
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Kund dokumentation för Microsoft Marketplace](/marketplace/)
+- [Kunddokumentation för Microsoft Marketplace](/marketplace/)

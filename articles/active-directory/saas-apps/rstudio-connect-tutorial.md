@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 84e8c7fc1d2655ea0685ac79841a9c467bf766cf
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect-saml-authentication"></a>Självstudie: Azure Active Directory integration med RStudio Connect SAML-autentisering
@@ -110,7 +110,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

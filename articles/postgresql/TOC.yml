@@ -27,6 +27,8 @@
         - name: Minimal stilleståndstid vid migrering med Azure Database Migration Service
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+        - name: Migrera från Oracle
+          href: howto-migrate-from-oracle.md
     - name: Versionspolicy
       href: concepts-version-policy.md
       displayName: 'version, postgresql'

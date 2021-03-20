@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
 ms.openlocfilehash: 857210efdc5740defcde4187b7b04cce55215325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87071614"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>Använd PowerShell för att skapa en Azure Notification Hub
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 I det här skriptet används följande kommandon:
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Skapar en resursgrupp där alla resurser lagras. |
 | [New-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | Skapar ett namn område för Notification Hub. |

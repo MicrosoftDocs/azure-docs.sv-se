@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699625"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Köra ett programåterställningstest till Azure
@@ -47,7 +47,7 @@ Kontrollera den virtuella datorns egenskaper innan du kör ett redundanstest, oc
 
 1. I **Skyddade objekt** klickar du på **Replikerade objekt** > och VM.
 2. I fönstret **Replikerade objekt** finns det en sammanfattning av VM-informationen, hälsostatus och de senaste tillgängliga återställningspunkterna. Klicka på **Egenskaper** för att se mer information.
-3. I **beräkning och nätverk**kan du ändra Azure-namn, resurs grupp, mål storlek, tillgänglighets uppsättning och hanterade disk inställningar.
+3. I **beräkning och nätverk** kan du ändra Azure-namn, resurs grupp, mål storlek, tillgänglighets uppsättning och hanterade disk inställningar.
 4. Du kan visa och ändra inställningar för nätverk, inklusive det nätverk/undernät där den virtuella Azure-datorn kommer att finnas efter redundansen och den IP-adress som kommer att tilldelas till den.
 5. I **Diskar** kan du se information om operativsystemet och vilka datadiskar som finns på den virtuella datorn.
 
@@ -69,7 +69,7 @@ När du kör ett redundanstest händer följande:
 
 Kör redundanstestet på följande sätt:
 
-1. I **Inställningar**  >  **replikerade objekt**klickar du på den virtuella datorn > **+ testa redundansväxlingen**.
+1. I **Inställningar**  >  **replikerade objekt** klickar du på den virtuella datorn > **+ testa redundansväxlingen**.
 2. Välj återställningspunkten **Senast bearbetade** för den här självstudien. Då redundansväxlar den virtuella datorn till den senast tillgängliga tidpunkten. Tidsstämpeln visas. Med det här alternativet läggs ingen tid på bearbetning av data, så den ger ett lågt RTO (mål för återställningstid).
 3. I **Redundanstest** väljer du det Azure-målnätverk som de virtuella Azure-datorerna ska ansluta till efter redundans.
 4. Starta redundansväxlingen genom att klicka på **OK**. Du kan följa förloppet genom att klicka på den virtuella datorn för att öppna dess egenskaper. Du kan också klicka på jobbet **Testa redundans** i valvnamnet > **Inställningar** > **Jobb** >

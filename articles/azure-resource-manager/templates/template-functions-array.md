@@ -4,10 +4,10 @@ description: Beskriver de funktioner som används i en Azure Resource Manager ma
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920550"
 ---
 # <a name="array-functions-for-arm-templates"></a>Mat ris funktioner för ARM-mallar
@@ -27,7 +27,7 @@ Resource Manager innehåller flera funktioner för att arbeta med matriser i din
 * [min](#min)
 * [intervall](#range)
 * [Ignorera](#skip)
-* [take](#take)
+* [gå](#take)
 * [Union](#union)
 
 Om du vill hämta en matris med sträng värden som är avgränsade med ett värde, se [dela](template-functions-string.md#split).

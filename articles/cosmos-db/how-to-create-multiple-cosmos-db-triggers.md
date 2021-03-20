@@ -9,10 +9,10 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336698"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Skapa flera Azure Functions utlösare för Cosmos DB
@@ -34,7 +34,7 @@ Med tanke på *kraven* i Azure Functions-utlösaren för Cosmos DB behöver vi e
 
 Här har du två alternativ:
 
-* Skapa **en container container per funktion** : den här metoden kan översättas till ytterligare kostnader, om du inte använder en [delad data flödes databas](./set-throughput.md#set-throughput-on-a-database). Kom ihåg att det lägsta data flödet på behållar nivån är 400 [enheter för programbegäran](./request-units.md), och när det gäller leasing behållaren, används den bara för att ange en kontroll punkt för status och underhåll.
+* Skapa **en container container per funktion**: den här metoden kan översättas till ytterligare kostnader, om du inte använder en [delad data flödes databas](./set-throughput.md#set-throughput-on-a-database). Kom ihåg att det lägsta data flödet på behållar nivån är 400 [enheter för programbegäran](./request-units.md), och när det gäller leasing behållaren, används den bara för att ange en kontroll punkt för status och underhåll.
 * Ha **en container och dela den** för alla dina funktioner: det andra alternativet gör att de allokerade enheterna i behållaren bättre används, eftersom det gör att flera Azure Functions kan dela och använda samma allokerade data flöde.
 
 Syftet med den här artikeln är att hjälpa dig att utföra det andra alternativet.

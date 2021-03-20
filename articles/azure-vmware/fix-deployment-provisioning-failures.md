@@ -4,10 +4,10 @@ description: Hämta information från ditt privata moln i Azure VMware-lösninge
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542413"
 ---
 # <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Öppna en supportbegäran för en Azure VMware-lösning distribution eller ett etablerings problem
@@ -55,7 +55,7 @@ För att få åtkomst till distributions loggen:
 
    :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Skärm bild som visar meddelande ikonen i Azure Portal.":::
 
-1. I fönstret **meddelanden** väljer du **Fler händelser i aktivitets loggen** :
+1. I fönstret **meddelanden** väljer du **Fler händelser i aktivitets loggen**:
 
     :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Skärm bild som visar fler händelser i aktivitets logg länken som marker ATS i fönstret meddelanden.":::
 
@@ -84,7 +84,7 @@ Du kanske försöker skala eller peera ett befintligt privat moln med ExpressRou
 Så här kopierar du ExpressRoute-ID:
 
 1. I Azure Portal väljer du ditt privata moln.
-1. På den vänstra menyn, under **Hantera** , väljer du **anslutning**. 
+1. På den vänstra menyn, under **Hantera**, väljer du **anslutning**. 
 1. Välj fliken **ExpressRoute** i den högra rutan.
 1. Välj kopierings ikonen för **ExpressRoute-ID** och spara värdet som ska användas i support förfrågan.
  
@@ -96,7 +96,7 @@ Om verifieringen av det privata molnet misslyckades (före distributionen) har e
 
 - Fel-och fel meddelanden. Dessa meddelanden kan vara till hjälp i många fel, till exempel för problem som rör kvoter. Det är viktigt att du kopierar dessa meddelanden och inkluderar dem i support förfrågan, enligt beskrivningen i den här artikeln.
 - Information som du använde för att skapa ett privat moln i Azure VMware-lösningen, inklusive:
-  - Plats
+  - Location
   - Resursgrupp
   - Resursnamn
 
@@ -112,7 +112,7 @@ Så här skapar du en support förfrågan om distribution av Azure VMware-lösni
 
 1. Ange eller Välj den information som krävs:
 
-   1. På fliken **Grunder** :
+   1. På fliken **Grunder**:
 
       1. För **problem typ** väljer du **konfigurations-och installations problem**.
 

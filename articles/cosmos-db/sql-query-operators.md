@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335455"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operatorer i Azure Cosmos DB
@@ -23,14 +23,14 @@ Den här artikeln beskriver de olika operatörer som stöds av Azure Cosmos DB.
 
 I följande tabell visas resultatet av likhetsjämförelser i SQL API mellan två godtyckliga JSON-typer.
 
-| **Op** | **Odefinierad** | **Null** | **Boolesk** | **Nummer** | **Sträng** | **Jobbobjektet** | **Lagringsmatriser** |
+| **Op** | **Odefinierad** | **Null** | **Boolesk** | **Nummer** | **Sträng** | **Objekt** | **Lagringsmatriser** |
 |---|---|---|---|---|---|---|---|
 | **Odefinierad** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) |
 | **Null** | Undefined (Odefinierad) | **Okej** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) |
 | **Boolesk** | Undefined (Odefinierad) | Undefined (Odefinierad) | **Okej** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) |
 | **Nummer** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | **Okej** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) |
 | **Sträng** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | **Okej** | Undefined (Odefinierad) | Undefined (Odefinierad) |
-| **Jobbobjektet** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | **Okej** | Undefined (Odefinierad) |
+| **Objekt** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | **Okej** | Undefined (Odefinierad) |
 | **Lagringsmatriser** | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | Undefined (Odefinierad) | **Okej** |
 
 Jämförelse operatorer som `>` ,, `>=` , `!=` `<` och `<=` , jämförelse mellan typer eller mellan två objekt eller matriser skapar `Undefined` .  
@@ -124,4 +124,4 @@ Använd?? operatör för att effektivt söka efter en egenskap i ett objekt vid 
 
 - [Azure Cosmos DB .NET-exempel](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Nyckelord](sql-query-keywords.md)
-- [SELECT-satsen](sql-query-select.md)
+- [SELECT-sats](sql-query-select.md)

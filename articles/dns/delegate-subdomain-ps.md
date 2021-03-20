@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712555"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Delegera en Azure DNS under domän med hjälp av Azure PowerShell
@@ -27,7 +27,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill delegera en Azure DNS under domän måste du först delegera din offentliga domän till Azure DNS. Mer information om hur du konfigurerar namnservrar för delegering finns i [delegera en domän till Azure DNS](./dns-delegate-domain-azure-dns.md) . När din domän har delegerats till din Azure DNS zon kan du delegera din under domän.
 

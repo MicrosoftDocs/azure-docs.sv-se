@@ -27,6 +27,8 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: Skapa och verifiera en NAT-gateway
       href: tutorial-create-nat-gateway-portal.md
+    - name: Integrera offentlig belastningsutjämnare för NAT-gateway
+      href: tutorial-nat-gateway-load-balancer-public-portal.md
 - name: Exempel
   items:
     - name: Azure CLI

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84705057"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnostisera ett problem med Routning av virtuell dator
@@ -30,19 +30,19 @@ I den här artikeln får du lära dig hur du diagnostiserar ett problem med Rout
 
 Du försöker ansluta till en virtuell dator, men anslutningen Miss lyckas. För att avgöra varför du inte kan ansluta till den virtuella datorn kan du Visa effektiva vägar för ett nätverks gränssnitt med hjälp av Azure [Portal](#diagnose-using-azure-portal), [POWERSHELL](#diagnose-using-powershell)eller [Azure CLI](#diagnose-using-azure-cli).
 
-Stegen nedan förutsätter att du har en befintlig virtuell dator för att Visa effektiva vägar för. Om du inte har en befintlig virtuell dator distribuerar du först en [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -eller [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -dator för att slutföra uppgifterna i den här artikeln med. Exemplen i den här artikeln gäller för en virtuell dator med namnet *myVM* med ett nätverks gränssnitt med namnet *myVMNic1*. Den virtuella datorn och nätverks gränssnittet finns i en resurs grupp med namnet *myResourceGroup*och finns i regionen *USA, östra* . Ändra värdena i stegen efter behov för den virtuella dator som du diagnostiserar problemet för.
+Stegen nedan förutsätter att du har en befintlig virtuell dator för att Visa effektiva vägar för. Om du inte har en befintlig virtuell dator distribuerar du först en [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -eller [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -dator för att slutföra uppgifterna i den här artikeln med. Exemplen i den här artikeln gäller för en virtuell dator med namnet *myVM* med ett nätverks gränssnitt med namnet *myVMNic1*. Den virtuella datorn och nätverks gränssnittet finns i en resurs grupp med namnet *myResourceGroup* och finns i regionen *USA, östra* . Ändra värdena i stegen efter behov för den virtuella dator som du diagnostiserar problemet för.
 
 ## <a name="diagnose-using-azure-portal"></a>Diagnostisera med Azure Portal
 
 1. Logga in på Azure [Portal](https://portal.azure.com) med ett Azure-konto som har de [behörigheter som krävs](virtual-network-network-interface.md#permissions).
 2. Överst i Azure Portal anger du namnet på en virtuell dator som körs i rutan Sök. När namnet på den virtuella datorn visas i Sök resultatet väljer du det.
-3. Under **Inställningar** till vänster väljer du **nätverk**och navigerar till nätverks gränssnitts resursen genom att välja dess namn.
+3. Under **Inställningar** till vänster väljer du **nätverk** och navigerar till nätverks gränssnitts resursen genom att välja dess namn.
      ![Visa nätverks gränssnitt](./media/diagnose-network-routing-problem/view-nics.png)
-4. Välj **effektiva vägar**till vänster. De effektiva vägarna för ett nätverks gränssnitt med namnet **myVMNic1** visas i följande bild: ![ Visa effektiva vägar](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. Välj **effektiva vägar** till vänster. De effektiva vägarna för ett nätverks gränssnitt med namnet **myVMNic1** visas i följande bild: ![ Visa effektiva vägar](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     Om det finns flera nätverks gränssnitt som är anslutna till den virtuella datorn kan du Visa effektiva vägar för alla nätverks gränssnitt genom att välja det. Eftersom varje nätverks gränssnitt kan finnas i ett annat undernät kan varje nätverks gränssnitt ha olika effektiva vägar.
 
-    I exemplet som visas i föregående bild är de listade vägarna standard vägar som Azure skapar för varje undernät. Listan har minst dessa vägar, men kan ha ytterligare vägar, beroende på vilka funktioner du kan ha aktiverat för det virtuella nätverket, till exempel att det är peer-kopplat med ett annat virtuellt nätverk eller anslutit till ditt lokala nätverk via en Azure VPN-gateway. Om du vill veta mer om varje väg och andra vägar som du kan se för ditt nätverks gränssnitt kan du läsa mer i [trafik routning för virtuella nätverk](virtual-networks-udr-overview.md). Om listan har ett stort antal vägar, kan det vara lättare att välja **Hämta**för att ladda ned en CSV-fil med en lista över vägar.
+    I exemplet som visas i föregående bild är de listade vägarna standard vägar som Azure skapar för varje undernät. Listan har minst dessa vägar, men kan ha ytterligare vägar, beroende på vilka funktioner du kan ha aktiverat för det virtuella nätverket, till exempel att det är peer-kopplat med ett annat virtuellt nätverk eller anslutit till ditt lokala nätverk via en Azure VPN-gateway. Om du vill veta mer om varje väg och andra vägar som du kan se för ditt nätverks gränssnitt kan du läsa mer i [trafik routning för virtuella nätverk](virtual-networks-udr-overview.md). Om listan har ett stort antal vägar, kan det vara lättare att välja **Hämta** för att ladda ned en CSV-fil med en lista över vägar.
 
 Trots att effektiva vägar har visats via den virtuella datorn i föregående steg, kan du också Visa effektiva vägar via en:
 - **Enskilt nätverks gränssnitt**: Lär dig hur du [visar ett nätverks gränssnitt](virtual-network-network-interface.md#view-network-interface-settings).

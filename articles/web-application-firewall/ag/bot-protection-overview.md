@@ -9,10 +9,10 @@ ms.date: 05/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83714907"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Översikt över Azure Web Application-brandvägg på Azure Application Gateway-skydd
@@ -26,7 +26,7 @@ Du kan aktivera en hanterad skyddsregeluppsättning för din chattrobot så att 
 
 ## <a name="use-with-owasp-rulesets"></a>Använd med OWASP rulesets
 
-Du kan använda skyddsregeluppsättningen tillsammans med valfri OWASP-regeluppsättning (2.2.9, 3.0 och 3.1). Du kan bara använda en OWASP-regeluppsättning åt gången. Skyddsregeluppsättningen innehåller en ytterligare regel som visas i den egna regeluppsättningen. Den heter **Microsoft_BotManagerRuleSet_0**1 och du kan aktivera eller inaktivera den som de andra OWASP-reglerna.
+Du kan använda skyddsregeluppsättningen tillsammans med valfri OWASP-regeluppsättning (2.2.9, 3.0 och 3.1). Du kan bara använda en OWASP-regeluppsättning åt gången. Skyddsregeluppsättningen innehåller en ytterligare regel som visas i den egna regeluppsättningen. Den heter **Microsoft_BotManagerRuleSet_0** 1 och du kan aktivera eller inaktivera den som de andra OWASP-reglerna.
 
 ![Bot ruleset](../media/bot-protection-overview/bot-ruleset.png)
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542175"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Snabb start: skapa en Azure Database for MySQL med ett enkelt Azure CLI-kommando – AZ MySQL up (för hands version)
@@ -63,7 +63,7 @@ resource-group | Genereras av systemet | En ny Azure-resurs grupp.
 sku-name | GP_Gen5_2 | Namnet på SKU:n. Följer konventionen {prisnivå}\_{beräkningsgenerering}\_{vCores} i snabbformat. Standardvärdet är en Generell användning Gen5-server med 2 virtuella kärnor. På vår [prissättnings sida](https://azure.microsoft.com/pricing/details/mysql/) finns mer information om nivåerna.
 backup-retention | 7 | Hur länge en säkerhetskopia ska behållas. Enheten är dagar.
 geo-redundant-backup | Inaktiverad | Huruvida geo-redundanta säkerhetskopieringar ska aktiveras för den här servern eller inte.
-location | westus2 | Azure-platsen för servern.
+location | USA, västra 2 | Azure-platsen för servern.
 ssl-enforcement | Enabled | Om SSL ska vara aktiverat eller inte för den här servern.
 storage-size | 5120 | Serverns lagringskapacitet (enheten är megabyte).
 version | 5.7 | Huvudversion för MySQL.

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/06/2020
 ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91826973"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Snabb start: skapa ett geo-replikerat behållar register med en ARM-mall
@@ -61,11 +61,11 @@ Du hittar fler Azure Container Registry mal sampel i [galleriet snabb starts mal
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Mallegenskaper":::
 
-1. Välj **Granska + skapa**och granska sedan de allmänna villkoren. Om du samtycker väljer du **skapa**.
+1. Välj **Granska + skapa** och granska sedan de allmänna villkoren. Om du samtycker väljer du **skapa**.
 
 1. När du har skapat registret får du ett meddelande:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Mallegenskaper":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Portal meddelande":::
 
  Azure-portalen används för att distribuera mallen. Förutom Azure Portal kan du använda Azure PowerShell, Azure CLI och REST API. Mer information om andra distributions metoder finns i [distribuera mallar](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -77,17 +77,17 @@ Använd Azure Portal eller ett verktyg som Azure CLI för att granska egenskaper
 
 1. Notera **inloggnings servern** för registret på sidan **Översikt** . Använd den här URI: n när du använder Docker för att tagga och skicka avbildningar till registret. Mer information finns i [skicka din första avbildning med hjälp av Docker CLI](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Mallegenskaper":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Register översikt":::
 
 1. På sidan **replikeringar** bekräftar du platserna för hem repliken och repliken som lagts till via mallen. Om du vill kan du lägga till fler repliker på den här sidan.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Mallegenskaper":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Register-replikeringar":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När du inte längre behöver dem tar du bort resurs gruppen, registret och register repliken. Om du vill göra det går du till Azure Portal, väljer den resurs grupp som innehåller registret och väljer sedan **ta bort resurs grupp**.
 
-:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Mallegenskaper":::
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Ta bort resursgrupp":::
 
 ## <a name="next-steps"></a>Nästa steg
 
