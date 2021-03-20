@@ -8,17 +8,17 @@ ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97862396"
 ---
 # <a name="introduction-to-azure-functions"></a>Introduktion till Azure Functions
 
 Azure Functions är en server lös lösning som gör att du kan skriva mindre kod, upprätthålla mindre infrastruktur och spara pengar. I stället för att oroa dig för att distribuera och underhålla servrar tillhandahåller moln infrastrukturen alla uppdaterade resurser som behövs för att se till att dina program körs.
 
-Du fokuserar på de delar av koden som är viktigast för dig och Azure Functions hanterar resten.<br /><br />
+Du fokuserar på de delar av koden som är viktigast för dig så hanterar Azure Functions resten.<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 

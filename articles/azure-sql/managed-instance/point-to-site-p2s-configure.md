@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788374"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Snabb start: Konfigurera en punkt-till-plats-anslutning till en Azure SQL-hanterad instans från den lokala platsen
@@ -67,12 +67,12 @@ Den här snabbstarten:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Öppna resurs gruppen där du skapade den virtuella Nätverksgatewayen och öppna sedan resursen för den virtuella Nätverksgatewayen.
-3. Välj **punkt-till-plats-konfiguration** och välj sedan **Ladda ned VPN-klient** .
+3. Välj **punkt-till-plats-konfiguration** och välj sedan **Ladda ned VPN-klient**.
 
     ![Ladda ned VPN-klient](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. Extrahera filerna från zip-filen på den lokala klient datorn och öppna sedan mappen med de extraherade filerna.
 5. Öppna mappen **WindowsAmd64** och öppna filen **VpnClientSetupAmd64.exe** .
-6. Om du får ett **Windows-skyddat dator** meddelande klickar du på **mer info** och sedan på **kör ändå** .
+6. Om du får ett **Windows-skyddat dator** meddelande klickar du på **mer info** och sedan på **kör ändå**.
 
     ![Installera VPN-klient](./media/point-to-site-p2s-configure/vpn-client-defender.png)
 7. Klicka på **Ja** i dialogrutan User Account Control om du vill fortsätta.
@@ -80,14 +80,14 @@ Den här snabbstarten:
 
 ## <a name="connect-to-the-vpn-connection"></a>Anslut till VPN-anslutningen
 
-1. Gå till **VPN** i **nätverk & Internet** på din lokala klient dator och välj det virtuella SQL Managed instance-nätverket för att upprätta en anslutning till det här virtuella nätverket. I följande bild heter VNet **MyNewVNet** .
+1. Gå till **VPN** i **nätverk & Internet** på din lokala klient dator och välj det virtuella SQL Managed instance-nätverket för att upprätta en anslutning till det här virtuella nätverket. I följande bild heter VNet **MyNewVNet**.
 
     ![VPN-anslutning](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Välj **Anslut** .
-3. I dialog rutan väljer du **Anslut** .
+2. Välj **Anslut**.
+3. I dialog rutan väljer du **Anslut**.
 
     ![Skärm bild som visar knappen Anslut.](./media/point-to-site-p2s-configure/vpn-connection2.png)  
-4. När du uppmanas att anslutnings hanteraren behöver förhöjd behörighet för att uppdatera routningstabellen väljer du **Fortsätt** .
+4. När du uppmanas att anslutnings hanteraren behöver förhöjd behörighet för att uppdatera routningstabellen väljer du **Fortsätt**.
 5. Välj **Ja** i dialog rutan User Account Control för att fortsätta.
 
    Du har upprättat en VPN-anslutning till ditt SQL-hanterade instans-VNet.
@@ -98,7 +98,7 @@ Den här snabbstarten:
 
 1. Öppna SQL Server Management Studio på den lokala klient datorn.
 2. I dialog rutan **Anslut till Server** anger du det fullständigt kvalificerade **värd namnet** för din hanterade instans i rutan **Server namn** .
-3. Välj **SQL Server autentisering** , ange ditt användar namn och lösen ord och välj sedan **Anslut** .
+3. Välj **SQL Server autentisering**, ange ditt användar namn och lösen ord och välj sedan **Anslut**.
 
     ![SSMS ansluta](./media/point-to-site-p2s-configure/ssms-connect.png)  
 

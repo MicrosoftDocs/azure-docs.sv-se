@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: ff5da4b87589889172a9518fd67486fe14451630
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Självstudie: Azure Active Directory integration med dokumentation
@@ -170,7 +170,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till dokumentationen.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **dokumentation**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **dokumentation**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

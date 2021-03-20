@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050436"
 ---
 I den här proceduren kommer du att:
@@ -38,7 +38,7 @@ I den här proceduren kommer du att:
 
     `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. På front webb servern, under **Central administration**, redigerar du de **allmänna inställningarna för webb programmet** för den önskade innehålls databasen för att tillfälligt inaktivera pappers korgen. Den här åtgärden tömmer också pappers korgen för alla relaterade webbplats samlingar. Det gör du genom att klicka på hantering av **centrala administrations**  ->  **program**för  ->  **webb program (hantera webb program)**  ->  **SharePoint-80**  ->  **allmänna program inställningar**. Ange **statusen för pappers korgen** till **av**.
+2. På front webb servern, under **Central administration**, redigerar du de **allmänna inställningarna för webb programmet** för den önskade innehålls databasen för att tillfälligt inaktivera pappers korgen. Den här åtgärden tömmer också pappers korgen för alla relaterade webbplats samlingar. Det gör du genom att klicka på hantering av **centrala administrations**  ->  **program** för  ->  **webb program (hantera webb program)**  ->  **SharePoint-80**  ->  **allmänna program inställningar**. Ange **statusen för pappers korgen** till **av**.
    
     ![Allmänna inställningar för webb program](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -62,5 +62,5 @@ I den här proceduren kommer du att:
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. På front webb servern, i **Central administration**, redigerar du de **allmänna inställningarna för webb programmet** för den önskade innehålls databasen för att återaktivera pappers korgen. Det gör du genom att klicka på hantering av **centrala administrations**  ->  **program**för  ->  **webb program (hantera webb program)**  ->  **SharePoint-80**  ->  **allmänna program inställningar**. Ange statusen för pappers korgen till **på**.
+2. På front webb servern, i **Central administration**, redigerar du de **allmänna inställningarna för webb programmet** för den önskade innehålls databasen för att återaktivera pappers korgen. Det gör du genom att klicka på hantering av **centrala administrations**  ->  **program** för  ->  **webb program (hantera webb program)**  ->  **SharePoint-80**  ->  **allmänna program inställningar**. Ange statusen för pappers korgen till **på**.
 

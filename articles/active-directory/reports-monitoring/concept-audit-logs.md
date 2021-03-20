@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995989"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Granska aktivitetsrapporter i Azure Active Directory-portalen 
@@ -34,7 +34,7 @@ Rapporterings arkitekturen består av följande komponenter:
 
 - **Aktivitet** 
     - **Inloggningar** – [inloggnings rapporten](concept-sign-ins.md) innehåller information om användningen av hanterade program och användar inloggnings aktiviteter.
-    - **Granskningsloggar** – Ger spårbarhet via loggar för alla ändringar som gjorts via olika funktioner i Azure AD. Exempel på gransknings loggar är ändringar som har gjorts i alla resurser i Azure AD, till exempel att lägga till eller ta bort användare, appar, grupper, roller och principer.
+    - **Gransknings loggar** – ger spårning genom loggar för alla ändringar som gjorts av olika funktioner i Azure AD. Exempel på granskningsloggar är de resursändringar som görs i Azure AD, som att lägga till eller ta bort användare, appar, grupper, roller och principer.
     - **Etablerings loggar**  -  Med [etablerings loggar](./concept-provisioning-logs.md) kan kunder övervaka aktivitet från etablerings tjänsten, till exempel skapa en grupp i ServiceNow eller en användare som importer ATS från Workday. 
 - **Säkerhet** 
     - **Riskfyllda inloggningar** – en [riskfylld inloggning](../identity-protection/overview-identity-protection.md) är en indikator för ett inloggnings försök som kan ha utförts av någon som inte är en legitim ägare till ett användar konto. 
@@ -191,7 +191,7 @@ Med användar- och gruppbaserade granskningsrapporter kan du få svar på frågo
 
 Om du bara vill granska gransknings data som är relaterade till användare kan du hitta en filtrerad vy under **gransknings loggar** i avsnittet **övervakning** på fliken **användare** . Den här start punkten har **UserManagement** som förvalt kategori.
 
-![Användare](./media/concept-audit-logs/users.png "Användare")
+![Användare](./media/concept-audit-logs/users.png "User")
 
 Om du bara vill granska gransknings data som är relaterade till grupper kan du hitta en filtrerad vy under **gransknings loggar** i avsnittet **övervakning** på fliken **grupper** . Den här start punkten har **GroupManagement** som förvalt kategori.
 

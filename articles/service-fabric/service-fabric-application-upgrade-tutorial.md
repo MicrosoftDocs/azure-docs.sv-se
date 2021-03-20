@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du distribuerar ett Service Fabric 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996244"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Själv studie kurs om Service Fabric program uppgradering med Visual Studio
@@ -37,7 +37,7 @@ Nu kan du klicka på **publicera** i dialog rutan. Du kan använda [Service Fabr
 ## <a name="step-2-update-the-visual-objects-sample"></a>Steg 2: uppdatera det visuella objekt exemplet
 Du kanske märker att de visuella objekten inte roterar med den version som distribuerades i steg 1. Vi ska uppgradera det här programmet till ett ställe där de visuella objekten också roterar.
 
-Välj VisualObjects. ActorService-projektet i VisualObjects-lösningen och öppna **VisualObjectActor.cs** -filen. I den filen går du till metoden `MoveObject` , kommentera ut och ta bort `visualObject.Move(false)` kommentaren `visualObject.Move(true)` . Den här kod ändringen roterar objekten när tjänsten har uppgraderats.  **Nu kan du bygga (inte återskapa) lösningen**, som bygger de ändrade projekten. Om du väljer *återskapa alla* måste du uppdatera versionerna för alla projekt.
+Välj VisualObjects. ActorService-projektet i VisualObjects-lösningen och öppna filen **VisualObjectActor. cs** . I den filen går du till metoden `MoveObject` , kommentera ut och ta bort `visualObject.Move(false)` kommentaren `visualObject.Move(true)` . Den här kod ändringen roterar objekten när tjänsten har uppgraderats.  **Nu kan du bygga (inte återskapa) lösningen**, som bygger de ändrade projekten. Om du väljer *återskapa alla* måste du uppdatera versionerna för alla projekt.
 
 Vi behöver också version av programmet. Om du vill göra versionen ändringar när du högerklickar på **VisualObjects** -projektet kan du använda alternativet Visual Studio **Edit manifest versions** . Om du väljer det här alternativet visas dialog rutan för versions versioner på följande sätt:
 

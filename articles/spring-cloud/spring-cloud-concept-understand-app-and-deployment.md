@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323645"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Förstå appar och distribution i Azure våren Cloud
 
 **Den här artikeln gäller för:** ✔️ Java ✔️ C #
 
-**App** och **distribution** är de två viktiga begreppen i resurs modellen i Azure våren Cloud. I Azure våren Cloud är en *app* en abstraktion av en affärsappar eller en mikrotjänst.  En version av kod eller binär distribution som *appen* körs i en *distribution*.  Appar körs i en *Azure våren moln tjänst instans*eller bara *tjänst instans*, som du ser härnäst.
+**App** och **distribution** är de två viktiga begreppen i resurs modellen i Azure våren Cloud. I Azure våren Cloud är en *app* en abstraktion av en affärsappar eller en mikrotjänst.  En version av kod eller binär distribution som *appen* körs i en *distribution*.  Appar körs i en *Azure våren moln tjänst instans* eller bara *tjänst instans*, som du ser härnäst.
 
  ![Appar och distributioner](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
 
@@ -32,9 +32,9 @@ Följande funktioner/egenskaper definieras på App-nivå.
 | Funktioner | Beskrivning |
 |:--|:----------------|
 | Offentliga</br>Slutpunkt | URL: en för att komma åt appen |
-| Anpassad</br>Domän | CNAME-post som skyddar den anpassade domänen |
+| Anpassat</br>Domain | CNAME-post som skyddar den anpassade domänen |
 | Tjänst</br>Bindning | Anslutning med andra Azure-tjänster ur Box |
-| Hanterade</br>Identitet | Hanterad identitet med Azure Active Directory gör att din app enkelt kan komma åt andra Azure AD-skyddade resurser som Azure Key Vault |
+| Hanterad</br>Identitet | Hanterad identitet med Azure Active Directory gör att din app enkelt kan komma åt andra Azure AD-skyddade resurser som Azure Key Vault |
 | Permanent</br>Storage | Inställning som gör att data kan sparas efter omstart av appar |
 
 ## <a name="deployment"></a>Distribution
@@ -49,7 +49,7 @@ Följande funktioner/egenskaper definieras på distributions nivå och kommer at
 | Automatisk skalning | Skala instans antal automatiskt baserat på fördefinierade regler och scheman |
 | JVM</br>Alternativ | Ange JVM-alternativ  |
 | Miljö</br>Variabler | Ställa in miljövariabler |
-| Körmiljö</br>Version | Java 8/Java 11|
+| Körning</br>Version | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Begränsningar
 

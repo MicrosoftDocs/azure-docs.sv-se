@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882390"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-lagring: design för hög prestanda
@@ -119,7 +119,7 @@ Det bästa sättet att mäta prestanda kraven för ditt program är att använda
 
 PerfMon-räknarna är tillgängliga för processor, minne och, varje logisk disk och fysisk disk på servern. När du använder Premium Storage-diskar med en virtuell dator är räknarna för fysiska diskar för varje Premium Storage-disk och räknare för logiska diskar för varje volym som skapas på Premium Storage-diskarna. Du måste samla in värdena för diskarna som är värdar för din program arbets belastning. Om det finns en till en mappning mellan logiska och fysiska diskar kan du referera till fysiska disk räknare. Se i övrigt räknare för logiska diskar. I Linux genererar kommandot iostat en processor-och disk användnings rapport. Disk användnings rapporten innehåller statistik per fysisk enhet eller partition. Om du har en databas server med data och loggar på separata diskar samlar du in dessa data för båda diskarna. I tabellen nedan beskrivs räknare för diskar, processorer och minne:
 
-| Räknare | Description | PerfMon | Iostat |
+| Räknare | Beskrivning | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS eller transaktioner per sekund** |Antalet I/O-begäranden som har utfärdats till lagrings disken per sekund. |Disk läsningar/SEK <br> Disk skrivningar/SEK |TPS <br> r/s <br> w/s |
 | **Disk läsningar och skrivningar** |% av Läs-och skriv åtgärder som utförts på disken. |% Disk Läs tid <br> Disk skrivnings tid i procent |r/s <br> w/s |
@@ -155,7 +155,7 @@ Mer information om storlekar på virtuella datorer och om IOPS, data flöde och 
 | **Disk storlek** |Använd en disk storlek som erbjuder IOPS som är större än ditt program krav. |Använd en disk storlek med data flödes gräns som är större än ditt program krav. |Använd en disk storlek som ger större skalnings gränser än ditt program krav. |
 | **Begränsningar för virtuell dator och disk skala** |IOPS-gränsen för den valda virtuella dator storleken ska vara större än det totala antalet IOPS som är kopplade till den. |Data flödes gränsen för den valda virtuella dator storleken ska vara större än det totala data flödet som styrs av Premium Storage-diskar som är anslutna till den |Skalnings gränserna för den valda virtuella dator storleken måste vara större än de sammanlagda skalnings gränserna för anslutna Premium Storage-diskar. |
 | **Diskcachelagring** |Aktivera ReadOnly-cache på Premium Storage-diskar med Läs tung-åtgärder för att få högre Läs-IOPS. | &nbsp; |Aktivera ReadOnly-cache på Premium Storage-diskar med klara tung åtgärder för att få mycket låg Läs fördröjning. |
-| **Disk randning** |Använd flera diskar och ta bort dem tillsammans för att få en kombination av högre IOPS och data flödes gräns. Den kombinerade gränsen per virtuell dator måste vara högre än de sammanlagda gränserna för anslutna Premium diskar. | &nbsp; | &nbsp; |
+| **Diskstrimling** |Använd flera diskar och ta bort dem tillsammans för att få en kombination av högre IOPS och data flödes gräns. Den kombinerade gränsen per virtuell dator måste vara högre än de sammanlagda gränserna för anslutna Premium diskar. | &nbsp; | &nbsp; |
 | **Rand storlek** |Mindre rand storlek för slumpmässiga små IO-mönster som visas i OLTP-program. Använd till exempel stripe-storlek på 64 KB för SQL Server OLTP-program. |Större rand storlek för sekventiellt stort IO-mönster visas i data lager program. Använd till exempel 256 KB stripe-storlek för SQL Server data lager program. | &nbsp; |
 | **Flertrådsteknik** |Använd flera trådar för att push-överföra fler begär anden till Premium Storage som leder till högre IOPS och data flöde. På SQL Server till exempel ange ett högt MAXDOP-värde för att allokera fler processorer till SQL Server. | &nbsp; | &nbsp; |
 | **Ködjup** |Större ködjup ger högre IOPS. |Större ködjup ger högre genomflöde. |Mindre ködjup ger lägre fördröjning. |

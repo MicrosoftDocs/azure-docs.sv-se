@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230789"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Snabbstart: Skapa en server – portalen
@@ -32,7 +32,7 @@ Den här snabbstarten beskriver hur du skapar en Analysis Services-serverresurs 
 
 1. Klicka på **+ skapa en resurs**  >  **analys**  >  **Analysis Services**.
 
-    ![Portalen](./media/analysis-services-create-server/aas-create-server-portal.png)
+    ![Portal](./media/analysis-services-create-server/aas-create-server-portal.png)
 
 2. I **Analysis Services** fyller du i de fält som krävs och trycker sedan på **Skapa**.
    
@@ -58,4 +58,4 @@ Ta bort servern när den inte längre behövs. I serverns **Översikt** klickar 
 I den här snabbstarten har du lärt dig hur du skapar en server i Azure-prenumerationen. Nu när du har en server kan du skydda den genom att konfigurera en serverbrandvägg (valfritt). Du kan även lägga till en grundläggande exempeldatamodell till servern direkt från portalen. Att använda en exempelmodell är en bra idé om du vill lära dig mer om hur man konfigurerar modelldatabasroller och testar klientanslutningar. Fortsätt till och lägg till en exempelmodell om du vill lära dig mer.
 
 > [!div class="nextstepaction"]
-> [Snabbstart: Konfigurera serverbrandvägg – portalen](analysis-services-qs-firewall.md)   
+> [Snabbstart: Konfigurera serverbrandväggen – portalen](analysis-services-qs-firewall.md)   

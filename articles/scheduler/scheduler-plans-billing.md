@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78898478"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Planer och fakturering för Azure Scheduler
@@ -26,7 +26,7 @@ ms.locfileid: "78898478"
 
 I Azure Scheduler innehåller en jobb samling ett särskilt antal jobb. Jobb samlingen är den fakturerbara entiteten och ingår i standard-, P10 Premium-och P20 Premium-planerna, som beskrivs här: 
 
-| Jobb samlings plan | Maximalt antal jobb per samling | Max upprepning | Högsta antal jobb samlingar per prenumeration | Begränsningar | 
+| Jobb samlings plan | Maximalt antal jobb per samling | Max upprepning | Högsta antal jobb samlingar per prenumeration | Gränser | 
 |:--- |:--- |:--- |:--- |:--- |
 | **Standard** | 50 jobb per samling | En per minut. Det går inte att köra jobb oftare än ett per minut. | Varje Azure-prenumeration kan ha upp till 100 standard jobb samlingar. | Åtkomst till fullständig funktions uppsättning i Scheduler | 
 | **P10 Premium** | 50 jobb per samling | En per minut. Det går inte att köra jobb oftare än ett per minut. | Varje Azure-prenumeration kan ha upp till 10 000 P10 Premium-jobb samlingar. <a href="mailto:wapteams@microsoft.com">Kontakta oss</a>om du vill ha fler samlingar. | Åtkomst till fullständig funktions uppsättning i Scheduler |

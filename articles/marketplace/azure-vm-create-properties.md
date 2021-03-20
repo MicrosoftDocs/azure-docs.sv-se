@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629537"
 ---
 # <a name="how-to-configure-virtual-machine-offer-properties"></a>Så här konfigurerar du egenskaper för erbjudande för virtuell dator
@@ -30,7 +30,7 @@ Se den fullständiga listan över kategorier och under Kategorier i [erbjudande 
 
 ## <a name="provide-terms-and-conditions"></a>Ange villkor
 
-Under **juridisk** , ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
+Under **juridisk**, ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
 
 - [Använd standard kontraktet med valfria ändringar](#use-the-standard-contract)
 - [Använd egna villkor](#use-your-own-terms-and-conditions)
@@ -77,7 +77,7 @@ I **villkoren för Universal-ändringar till standard kontraktet för Microsofts
 
 Du kan välja att ange egna villkor, i stället för standard kontraktet. Kunderna måste acceptera dessa villkor innan de kan testa ditt erbjudande.
 
-1. Under **Legal** , avmarkerar du kryss rutan **Använd standard kontraktet för Microsofts kommersiella Marketplace** .
+1. Under **Legal**, avmarkerar du kryss rutan **Använd standard kontraktet för Microsofts kommersiella Marketplace** .
 1. I rutan **allmänna villkor** anger du upp till 10 000 tecken text.
 
    > [!NOTE]

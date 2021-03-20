@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
 ms.openlocfilehash: 8b391438d8d6605e7ef493a6552af634db840ad5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96555159"
 ---
 # <a name="understand-business-glossary-features-in-azure-purview"></a>Förstå företags ord listans funktioner i Azure avdelningens kontroll
 
 Den här artikeln innehåller en översikt över funktionen företags ord lista i Azure avdelningens kontroll. 
 
-## <a name="business-glossary"></a>Affärs ord lista
+## <a name="business-glossary"></a>Företagsordlistan
 
 En ord lista innehåller vokabulär för företags användare.  Det består av affärs villkor som kan vara relaterade till varandra och som kan kategoriseras så att de kan tolkas i olika sammanhang. Dessa villkor kan sedan mappas till till gångar som en databas, tabeller, kolumner osv. Detta hjälper till att sammanfatta de tekniska jargong som är associerade med data lagringen och gör det möjligt för företags användaren att upptäcka och arbeta med data i ord listan som är mer bekanta.
 
@@ -33,7 +33,7 @@ Samma villkor kan också innebära flera affärs objekt. Det är viktigt att var
 ## <a name="custom-attributes"></a>Anpassade attribut
 
 Azure avdelningens kontroll stöder åtta out-of-Box-attribut för valfri affärs ord lista:
-- Namn
+- Name
 - Definition
 - Data vård
 - Data experter

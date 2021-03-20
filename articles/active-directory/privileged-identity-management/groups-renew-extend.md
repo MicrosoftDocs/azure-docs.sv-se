@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87505996"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Utöka eller förnya privilegierade åtkomst grupp tilldelningar (för hands version) i Privileged Identity Management
@@ -72,7 +72,7 @@ Förutom att använda följande länk från e-post kan administratörer godkänn
 
 ![Grupp tilldelningar för privilegie rad åtkomst – sidan Godkänn begär Anden visar begär Anden och länkar till Godkänn eller neka](media/groups-renew-extend/group-assignment-extend-admin-approve.png)
 
-När en administratör väljer **Godkänn** eller **neka**visas information om begäran, tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
+När en administratör väljer **Godkänn** eller **neka** visas information om begäran, tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
 
 ![Godkänn grupp tilldelnings förfrågan med en begär ande orsak, tilldelnings typ, start tid, slut tid och orsak](media/groups-renew-extend/group-assignment-extend-admin-approve-reason.png)
 
@@ -108,7 +108,7 @@ När begäran har skickats meddelas resurs administratörer om en väntande beg�
 
 Resurs administratörer kan komma åt begäran om förnyelse från länken i e-postaviseringen eller genom att komma åt Privileged Identity Management från Azure Portal och välja **Godkänn förfrågningar** i den vänstra rutan.
 
-När en administratör väljer **Godkänn** eller **neka**visas information om begäran tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
+När en administratör väljer **Godkänn** eller **neka** visas information om begäran tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
 
 När en begäran om att förnya en grupp tilldelning godkänns måste resurs administratörer ange ett nytt start datum, slutdatum och tilldelnings typ.
 

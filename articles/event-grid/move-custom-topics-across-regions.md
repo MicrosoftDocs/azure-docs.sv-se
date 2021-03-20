@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89145355"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Flytta Azure Event Grid anpassade ämnen till en annan region
@@ -33,15 +33,27 @@ Här följer de övergripande steg som beskrivs i den här artikeln:
 Kom igång genom att exportera en Resource Manager-mall för det anpassade ämnet. 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. I Sök fältet skriver du **Event Grid ämnen**och väljer **Event Grid ämnen** i resultat listan. 
+2. I Sök fältet skriver du **Event Grid ämnen** och väljer **Event Grid ämnen** i resultat listan. 
 
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Sök efter och välj Event Grid ämnen":::
 3. Välj det **avsnitt** som du vill exportera till en Resource Manager-mall. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Sök efter och välj Event Grid ämnen":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Välj det anpassade ämnet":::   
 4. På sidan **Event Grid ämne** väljer du **Exportera mall** under **Inställningar** på den vänstra menyn och väljer sedan **Hämta** i verktygsfältet. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Sök efter och välj Event Grid ämnen"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Exportera mall – > hämtning":::   
+
+    > [!IMPORTANT]
+    > Endast avsnittet exporteras till mallen. Prenumerationer för ämnet exporteras inte. Du måste därför skapa prenumerationer för ämnet när du har flyttat avsnittet till mål regionen. 
+5. Leta upp **zip** -filen som du laddade ned från portalen och zippa upp filen till en valfri mapp. Den här zip-filen innehåller mallar och parametrar JSON-filer. 
+1. Öppna **template.js** i valfritt redigerings program. 
+8. Uppdatering `location` för **ämnes** resursen till mål regionen eller platsen. För att hämta plats koder, se [Azure-platser](https://azure.microsoft.com/global-infrastructure/locations/). Koden för en region är region namnet utan mellanslag, till exempel `West US` är lika med `westus` .
+
+    ```json
+    "type": "Microsoft.EventGrid/topics",
+    "apiVersion": "2020-06-01",
+    "name": "[parameters('topics_mytopic0130_name')]",
+    "location": "westus"
     ```
 1. **Spara** mallen. 
 
@@ -49,27 +61,27 @@ Kom igång genom att exportera en Resource Manager-mall för det anpassade ämne
 Distribuera mallen för att skapa ett anpassat ämne i mål regionen. 
 
 1. I Azure Portal väljer du **skapa en resurs**.
-2. I **Sök på Marketplace**skriver du **mall distribution**och trycker sedan på **RETUR**.
+2. I **Sök på Marketplace** skriver du **mall distribution** och trycker sedan på **RETUR**.
 3. Välj **malldistribution**.
 4. Välj **Skapa**.
 5. Välj **Bygg en egen mall i redigeraren**.
-6. Välj **Läs in fil**och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
+6. Välj **Läs in fil** och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
 7. Spara mallen genom att välja **Spara** . 
 8. Följ dessa steg på sidan **Anpassad distribution** : 
     1. Välj en Azure- **prenumeration**. 
     1. Välj en befintlig **resurs grupp** i mål regionen eller skapa en. 
-    1. För **region**väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad. 
-    1. För **ämnes namnet**anger du ett nytt namn för ämnet. 
+    1. För **region** väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad. 
+    1. För **ämnes namnet** anger du ett nytt namn för ämnet. 
     1. Välj **Granska + skapa** längst ned på sidan. 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Sök efter och välj Event Grid ämnen":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Anpassad distribution":::
     1. På sidan **Granska + skapa** granskar du inställningarna och väljer **skapa**. 
 
 ## <a name="verify"></a>Verifiera
 
 1. När distributionen har slutförts väljer **du gå till resurs**. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Sök efter och välj Event Grid ämnen":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Gå till resurs":::
 1. Bekräfta att du ser sidan **Event Grid ämne** för det anpassade ämnet.   
 1. Följ stegen i skicka [anpassade händelser till en webb slut punkt](custom-event-quickstart-portal.md#send-an-event-to-your-topic) för att skicka händelser till ämnet. Verifiera att händelse hanteraren för webhook anropas. 
 
@@ -80,13 +92,13 @@ Om du vill börja om tar du bort avsnittet i mål regionen och upprepar stegen i
 
 Ta bort ett anpassat ämne med hjälp av Azure Portal:
 
-1. Skriv **Event Grid ämnen**i fönstret Sök högst upp i Azure Portal och välj **Event Grid ämnen** från Sök resultat. 
+1. Skriv **Event Grid ämnen** i fönstret Sök högst upp i Azure Portal och välj **Event Grid ämnen** från Sök resultat. 
 2. Välj det ämne som du vill ta bort och välj **ta bort** från verktygsfältet. 
 3. På sidan bekräftelse anger du namnet på resurs gruppen och väljer **ta bort**.  
 
 Ta bort resurs gruppen som innehåller det anpassade ämnet med hjälp av Azure Portal:
 
-1. I fönstret Sök högst upp i Azure Portal, Skriv **resurs grupper**och välj **resurs grupper** från Sök resultat. 
+1. I fönstret Sök högst upp i Azure Portal, Skriv **resurs grupper** och välj **resurs grupper** från Sök resultat. 
 2. Välj den resurs grupp som ska tas bort och välj **ta bort** från verktygsfältet. 
 3. På sidan bekräftelse anger du namnet på resurs gruppen och väljer **ta bort**.  
 

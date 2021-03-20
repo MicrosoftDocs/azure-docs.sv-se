@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87504236"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Konfigurera haveriberedskap för lokala virtuella Hyper-V-datorer till Azure
@@ -44,7 +44,7 @@ Detta är den tredje självstudien i en serie. Det förutsätter att du redan ha
 ## <a name="select-a-replication-goal"></a>Väljer ett replikeringsmål
 
 1. I Azure Portal går du till **Recovery Services valv** och väljer valvet. Vi för beredde valvet **ContosoVMVault** i föregående självstudie.
-2. I **komma igång**väljer du **Site Recovery**och väljer sedan **Förbered infrastruktur**.
+2. I **komma igång** väljer du **Site Recovery** och väljer sedan **Förbered infrastruktur**.
 3. I **skydds mål**  >  **där finns datorerna?** väljer du **lokalt**.
 4. I **var vill du replikera dina datorer?** väljer **du till Azure**.
 5. **Är dina datorer virtualiserade? väljer du** **Ja, med Hyper-V**.
@@ -56,7 +56,7 @@ Detta är den tredje självstudien i en serie. Det förutsätter att du redan ha
 ## <a name="confirm-deployment-planning"></a>Bekräfta distributionsplanering
 
 1. Om du planerar en stor distribution i **planerings planeringen**, laddar du ned distributions planeraren för Hyper-V från länken på sidan. [Läs mer](hyper-v-deployment-planner-overview.md) om planering av distribution av Hyper-V.
-2. I den här självstudien behöver vi inte distributions planeraren. **Har du slutfört distributions planeringen?** väljer du **Jag vill göra det senare**och väljer sedan **OK**.
+2. I den här självstudien behöver vi inte distributions planeraren. **Har du slutfört distributions planeringen?** väljer du **Jag vill göra det senare** och väljer sedan **OK**.
 
     ![Skärm bild av alternativen för distributions planering i förbereda infrastrukturen.](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
@@ -64,13 +64,13 @@ Detta är den tredje självstudien i en serie. Det förutsätter att du redan ha
 
 Om du vill konfigurera käll miljön skapar du en Hyper-V-plats och lägger till den på den platsen de Hyper-V-värdar som innehåller de virtuella datorer som du vill replikera. Sedan laddar du ned och installerar Azure Site Recovery-providern och Azure Recovery Services-agenten på varje värd och registrerar Hyper-V-platsen i valvet.
 
-1. Under **Förbered infrastruktur**väljer du **källa**.
-2. I **Förbered källa**väljer du **+ Hyper-V-plats**.
+1. Under **Förbered infrastruktur** väljer du **källa**.
+2. I **Förbered källa** väljer du **+ Hyper-V-plats**.
 3. Ange plats namnet i **skapa Hyper-V-webbplats**. Vi använder **ContosoHyperVSite**.
 
     ![Skärm bild av val av Hyper-V-plats i Förbered infrastruktur.](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
-4. När platsen har skapats går du till **Förbered källa**  >  **steg 1: Välj Hyper-V-plats**och välj den plats som du skapade.
+4. När platsen har skapats går du till **Förbered källa**  >  **steg 1: Välj Hyper-V-plats** och välj den plats som du skapade.
 5. Välj **+ Hyper-V-server**.
 
     ![Skärm bild av val av Hyper-V-server i Förbered infrastruktur.](./media/hyper-v-azure-tutorial/hyperv-server.png)
@@ -87,8 +87,8 @@ Installera den nedladdade installations filen (AzureSiteRecoveryProvider.exe) p�
 
 1. Kör installations filen.
 2. I installationsguiden för Azure Site Recovery-providern > **Microsoft Update** väljer du att använda Microsoft Update för att söka efter uppdateringar för providern.
-3. I **installationen**accepterar du standard installations platsen för providern och agenten och väljer **Installera**.
-4. Efter installationen går du till guiden Microsoft Azure Site Recovery registrering > **valv inställningar**, väljer **Bläddra**och i **nyckel fil**väljer du den valv nyckel fil som du laddade ned.
+3. I **installationen** accepterar du standard installations platsen för providern och agenten och väljer **Installera**.
+4. Efter installationen går du till guiden Microsoft Azure Site Recovery registrering > **valv inställningar**, väljer **Bläddra** och i **nyckel fil** väljer du den valv nyckel fil som du laddade ned.
 5. Ange Azure Site Recovery-prenumerationen, valvnamnet (**ContosoVMVault**) och Hyper-V-platsen (**ContosoHyperVSite**) som Hyper-V-servern tillhör.
 6. I **Proxyinställningar** väljer du **Anslut direkt till Azure Site Recovery utan proxyserver**.
 7. I **registreringen**, efter att servern har registrerats i valvet, väljer du **Slutför**.
@@ -124,7 +124,7 @@ Site Recovery kontrollerar att du har ett eller flera kompatibla Azure-lagringsk
 ## <a name="set-up-a-replication-policy"></a>Konfigurerar en replikeringsprincip
 
 1. Välj **Förbered replikering av infrastruktur**  >  **Inställningar**  >  **+ skapa och koppla**.
-2. I **skapa och associera princip**anger du ett princip namn. Vi använder **ContosoReplicationPolicy**.
+2. I **skapa och associera princip** anger du ett princip namn. Vi använder **ContosoReplicationPolicy**.
 3. I den här självstudien lämnar vi standardinställningarna:
     - **Kopierings frekvensen** anger hur ofta delta data (efter den inledande replikeringen) kommer att replikeras. Standard frekvensen är var femte minut.
     - **Kvarhållning av återställnings** punkter anger att återställnings punkter kommer att behållas i två timmar. Det högsta tillåtna värdet för kvarhållning när du skyddar virtuella datorer som finns på Hyper-V-värdar är 24 timmar.
@@ -136,11 +136,11 @@ Site Recovery kontrollerar att du har ett eller flera kompatibla Azure-lagringsk
 
 ## <a name="enable-replication"></a>Aktivera replikering
 
-1. I **Replikera program**väljer du **källa**.
+1. I **Replikera program** väljer du **källa**.
 2. I **Källa** väljer du platsen **ContosoHyperVSite**. Välj sedan **OK**.
-3. I **mål**kontrollerar du målet (Azure), valv prenumerationen och distributions modellen för **Resource Manager** .
+3. I **mål** kontrollerar du målet (Azure), valv prenumerationen och distributions modellen för **Resource Manager** .
 4. Om du använder själv studie inställningarna väljer du det lagrings konto för **contosovmsacct1910171607** som skapades i föregående självstudie för replikerade data. Välj också det **ContosoASRnet** -nätverk där virtuella Azure-datorer ska finnas efter redundansväxlingen.
-5. I **virtuella datorer**  >  **väljer**du den virtuella dator som du vill replikera. Välj sedan **OK**.
+5. I **virtuella datorer**  >  **väljer** du den virtuella dator som du vill replikera. Välj sedan **OK**.
 
    Du kan följa förloppet för åtgärden **Aktivera skydd** under **Jobb** > **Site Recovery-jobb**. När jobbet **Slutför skydd** är klart slutförs den inledande replikeringen och den virtuella datorn är klar för redundans.
 

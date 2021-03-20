@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313628"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synkronisering: förstå deklarativ etablering
@@ -105,7 +105,7 @@ I attributet flöden finns det en inställning för att avgöra om flervärdesat
 
 Det finns också **sammanfognings** -och **MergeCaseInsensitive**. Med de här alternativen kan du sammanfoga värden från olika källor. Den kan till exempel användas för att sammanfoga medlems-eller proxyAddresses-attributet från flera olika skogar. När du använder det här alternativet måste alla synkroniserade regler i omfånget för ett objekt använda samma kopplings typ. Du kan inte definiera **uppdatering** från en koppling och **koppla** från en annan. Om du försöker igen visas ett fel meddelande.
 
-Skillnaden mellan **sammanfognings** -och **MergeCaseInsensitive** är hur man bearbetar duplicerade attributvärden. Synkroniseringsmotorn ser till att dubblettvärden inte infogas i målattributet. Med **MergeCaseInsensitive**kommer duplicerade värden med bara en skillnad i fallet inte att vara närvarande. Du bör till exempel inte se både " SMTP:bob@contoso.com " och " smtp:bob@contoso.com " i målattributet. **Sammanslagning** tittar bara på exakta värden och flera värden där det bara finns en skillnad i vad som kan förekomma.
+Skillnaden mellan **sammanfognings** -och **MergeCaseInsensitive** är hur man bearbetar duplicerade attributvärden. Synkroniseringsmotorn ser till att dubblettvärden inte infogas i målattributet. Med **MergeCaseInsensitive** kommer duplicerade värden med bara en skillnad i fallet inte att vara närvarande. Du bör till exempel inte se både " SMTP:bob@contoso.com " och " smtp:bob@contoso.com " i målattributet. **Sammanslagning** tittar bara på exakta värden och flera värden där det bara finns en skillnad i vad som kan förekomma.
 
 Alternativet **Ersätt** är detsamma som vid **uppdatering**, men används inte.
 
@@ -159,7 +159,7 @@ I det här scenariot måste du ändra omfånget för reglerna för synkroniserin
 
 **Översikts avsnitt**
 
-* [Azure AD Connect synkronisering: förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
+* [Azure AD Connect-synkronisering: Förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
 * [Integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md)
 
 **Referensämnen**

@@ -4,10 +4,10 @@ description: I den här artikeln får du lära dig mer om schema för data härl
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019502"
 ---
 # <a name="inference-metadata-schema"></a>Schema för slutsatsdragning av metadata 
@@ -20,7 +20,7 @@ Varje Härlednings objekt oavsett om du använder HTTP-baserat kontrakt eller gR
  
 |Typdefinition|Beskrivning|
 |---|---|
-|Tagga|Tagg eller etikett som är associerad med resultatet. Alng med taggning kan du även hämta det konfidens värde som är associerat med taggen.|
+|Tagg|Tagg eller etikett som är associerad med resultatet. Alng med taggning kan du även hämta det konfidens värde som är associerat med taggen.|
 |Attribut|Ytterligare attribut som är associerade med resultatet. Du kan lägga till nya attribut som du får från inferencing-motorn tillsammans med konfidens värdet.|
 |Attributlistan|Lista över valfria attribut.|
 |Rektangel|Rektangulär region i förhållande till bildens övre vänstra hörn. De obligatoriska egenskaperna är "Length", "width", height "och" övre kant avstånd från ursprunget ".|

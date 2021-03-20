@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: glenga
 ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78190931"
 ---
 I ett C#-klass biblioteks projekt definieras bindningarna som binding-attribut i funktions metoden. Den *function.js* filen som krävs av Functions genereras sedan automatiskt baserat på dessa attribut.
 
-Öppna projekt filen *HttpExample.cs* och Lägg till följande parameter i `Run` metod definitionen:
+Öppna projekt filen *HttpExample. cs* och Lägg till följande parameter i `Run` metod definitionen:
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 

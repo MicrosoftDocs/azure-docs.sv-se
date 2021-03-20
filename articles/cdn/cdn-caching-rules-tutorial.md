@@ -15,10 +15,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779245"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Självstudie: Konfigurera Azure CDN-cachelagringsregler
@@ -32,7 +32,7 @@ Den här självstudien beskriver hur du kan använda cachelagringsregler i Azure
 
 - Anpassade cachelagringsregler: Du kan ange en eller flera anpassade cachelagringsregler för varje slutpunkt i din profil. Anpassade cachelagringsregler matchar specifika sökvägar och filnamnstillägg, bearbetas i ordning och åsidosätter den globala cacheregeln om sådan finns. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Öppna sidan för cachelagringsregler.
 > - Skapa en global cachelagringsregel.
@@ -48,7 +48,7 @@ Innan du kan slutföra stegen i den här kursen måste du först skapa en CDN-pr
 
 1. I [Azure Portal](https://portal.azure.com), välj en CDN-profil och sedan väljer du en slutpunkt.
 
-2. I det vänstra fönstret under inställningar, väljer du **Cachelagringsregler** .
+2. I det vänstra fönstret under inställningar, väljer du **Cachelagringsregler**.
 
    ![Knappen CDN-cachelagringsregler](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
@@ -61,11 +61,11 @@ Innan du kan slutföra stegen i den här kursen måste du först skapa en CDN-pr
 
 Skapa en global cachelagringsregel enligt följande:
 
-1. Under **Globala cachelagringsregler** , ange **Frågesträng för cachelagringsbeteende** till **Ignorera frågesträngar** .
+1. Under **Globala cachelagringsregler**, ange **Frågesträng för cachelagringsbeteende** till **Ignorera frågesträngar**.
 
-2. Ange **Cachelagringsbeteende** till **Ange om det saknas** .
+2. Ange **Cachelagringsbeteende** till **Ange om det saknas**.
        
-3. För **Giltighetstid för cache** , skriver du 10 i fältet **Dagar** .
+3. För **Giltighetstid för cache**, skriver du 10 i fältet **Dagar**.
 
     Den globala cacheregeln påverkar alla förfrågningar till slutpunkten. Den här regeln godkänner ursprungliga huvuden för cache-direktiv, om de finns (`Cache-Control` eller `Expires`), annars, om de inte har angetts, anges cachen till 10 dagar. 
 
@@ -75,9 +75,9 @@ Skapa en global cachelagringsregel enligt följande:
 
 Skapa en anpassad cachelagringsregel enligt följande:
 
-1. Under **Anpassade cachelagringsregler** , ange **Matchar villkor** till **Sökväg** och **Matcha värdet** till `/images/*.jpg`.
+1. Under **Anpassade cachelagringsregler**, ange **Matchar villkor** till **Sökväg** och **Matcha värdet** till `/images/*.jpg`.
     
-2. Ange **Cachelagringsbeteende** till **Åsidosätt** och ange 30 i fältet **Dagar** .
+2. Ange **Cachelagringsbeteende** till **Åsidosätt** och ange 30 i fältet **Dagar**.
        
     Den här anpassade cacheregeln anger cachevaraktighet på 30 dagar på alla `.jpg`-bildfiler i `/images`-mappen för din slutpunkt. Den åsidosätter eventuella `Cache-Control` -eller `Expires`-HTTP-huvuden som skickats av den ursprungliga servern.
 
@@ -90,15 +90,15 @@ I föregående steg skapade du cachelagringsregler. Om du inte längre vill anv�
  
 1. Välj en CDN-profil, och välj sedan den slutpunkt med cachelagringsregler som du vill ta bort.
 
-2. I det vänstra fönstret under inställningar, väljer du **Cachelagringsregler** .
+2. I det vänstra fönstret under inställningar, väljer du **Cachelagringsregler**.
 
-3. Under **Globala cachelagringsregler** , ange **Cachelagringsbeteende** till **Inte angivet** .
+3. Under **Globala cachelagringsregler**, ange **Cachelagringsbeteende** till **Inte angivet**.
  
-4. Under **Anpassade cachelagringsregler** , markera kryssrutan bredvid den regel som du vill ta bort.
+4. Under **Anpassade cachelagringsregler**, markera kryssrutan bredvid den regel som du vill ta bort.
 
-5. Välj **Ta bort** .
+5. Välj **Ta bort**.
 
-6. Överst på sidan väljer du **Spara** .
+6. Överst på sidan väljer du **Spara**.
 
 
 ## <a name="next-steps"></a>Nästa steg

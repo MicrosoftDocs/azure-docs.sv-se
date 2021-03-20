@@ -4,10 +4,10 @@ description: Ange attribut för en behållar avbildning eller lagrings plats så
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77659704"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Låsa en behållar avbildning i ett Azure Container Registry
@@ -59,7 +59,7 @@ az acr repository show \
 
 ### <a name="lock-an-image-by-tag"></a>Lås en bild efter tagg
 
-För att låsa *myrepo/min avbildning: tag* -bilden i *registret*kör du följande [AZ ACR-plats uppdaterings][az-acr-repository-update] kommando:
+För att låsa *myrepo/min avbildning: tag* -bilden i *registret* kör du följande [AZ ACR-plats uppdaterings][az-acr-repository-update] kommando:
 
 ```azurecli
 az acr repository update \

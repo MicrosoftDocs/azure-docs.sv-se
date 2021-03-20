@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89226037"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Utveckla och distribuera WebJobs med Visual Studio
@@ -71,7 +71,7 @@ Du kan välja mellan två alternativ:
 
 #### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Aktivera automatisk distribution av WebJobs med ett webb projekt
 
-1. Högerklicka på webb projektet i **Solution Explorer**och välj sedan **Lägg till**  >  **befintligt projekt som Azure-webbjobb**.
+1. Högerklicka på webb projektet i **Solution Explorer** och välj sedan **Lägg till**  >  **befintligt projekt som Azure-webbjobb**.
    
     ![Befintligt projekt som Azure-webbjobb](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -82,7 +82,7 @@ Du kan välja mellan två alternativ:
 3. Slutför dialog rutan [Lägg till Azure-webbjobb](#configure) och välj sedan **OK**. 
 
 #### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> Aktivera distribution av WebJobs utan ett webb projekt
-1. Högerklicka på projektet för konsol programmet i **Solution Explorer**och välj sedan **Publicera som Azure-webbjobb**. 
+1. Högerklicka på projektet för konsol programmet i **Solution Explorer** och välj sedan **Publicera som Azure-webbjobb**. 
    
     ![Publicera som Azure-webbjobb](./media/webjobs-dotnet-deploy-vs/paw.png)
    
@@ -102,7 +102,7 @@ Om du vill skapa ett nytt WebJobs-aktiverat projekt använder du projekt mal len
     Skapa ett projekt som är konfigurerat för att distribuera automatiskt som ett webb jobb när du distribuerar ett webb projekt i samma lösning. Använd det här alternativet om du vill köra ditt webb jobb i samma webbapp som du kör det relaterade webb programmet i.
 
 > [!NOTE]
-> Med mallen WebJobs New-Project installeras automatiskt NuGet-paket och innehåller kod i *program.cs* för [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Om du inte vill använda WebJobs SDK tar du bort eller ändrar `host.RunAndBlock` instruktionen i *program.cs*.
+> Med mallen WebJobs New-Project installeras automatiskt NuGet-paket och innehåller kod i *program. cs* för [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Om du inte vill använda WebJobs SDK tar du bort eller ändrar `host.RunAndBlock` instruktionen i *program. cs*.
 > 
 > 
 
@@ -112,7 +112,7 @@ Om du vill skapa ett nytt WebJobs-aktiverat projekt använder du projekt mal len
 2. Följ föregående anvisningar om du vill [göra ett projekt i en oberoende WebJobs](#convertnolink)-projekt.
 
 #### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> Använd mallen WebJobs New-Project för ett webb jobb som är länkat till ett webb projekt
-1. Högerklicka på webb projektet i **Solution Explorer**och välj sedan **Lägg till**  >  **nytt Azure-webbjobb-projekt**.
+1. Högerklicka på webb projektet i **Solution Explorer** och välj sedan **Lägg till**  >  **nytt Azure-webbjobb-projekt**.
    
     ![Nytt projekt meny alternativ för Azure-webbjobb](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -233,7 +233,7 @@ Om du aktiverar **Always on** i Azure kan du använda Visual Studio för att än
 
 1. På fliken **publicera** väljer du **Redigera**. 
 
-1. I dialog rutan **profil inställningar** väljer du **kontinuerlig** för **jobb typ**och väljer sedan **Spara**.
+1. I dialog rutan **profil inställningar** väljer du **kontinuerlig** för **jobb typ** och väljer sedan **Spara**.
 
     ![Dialog rutan publicera inställningar för ett webb jobb](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
 

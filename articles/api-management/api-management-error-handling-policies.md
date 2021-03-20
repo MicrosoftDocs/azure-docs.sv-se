@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070953"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Felhantering i API Management-principer
@@ -82,13 +82,13 @@ När ett fel uppstår och styr hopp till `on-error` princip avsnittet lagras fel
 
 | Namn       | Typ   | Beskrivning                                                                                               | Krävs |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | sträng | Namnger elementet där felet inträffade. Kan vara antingen en princip eller ett inbyggt steg namn för pipelinen.      | Yes      |
-| `Reason`   | sträng | Maskin vänlig felkod som kan användas vid fel hantering.                                       | No       |
-| `Message`  | sträng | Fel Beskrivning av människo läsbarhet.                                                                         | Yes      |
-| `Scope`    | sträng | Namnet på det omfång där felet inträffade och kan vara en av "global", "Product", "API" eller "operation" | No       |
-| `Section`  | sträng | Avsnitts namn där fel uppstod. Möjliga värden: "inkommande", "backend", "utgående" eller "på-fel".      | No       |
-| `Path`     | sträng | Anger kapslad princip, till exempel "Välj [3]/when [2]".                                                 | No       |
-| `PolicyId` | sträng | Värdet för `id` attributet, om det anges av kunden, på principen där felet uppstod             | No       |
+| `Source`   | sträng | Namnger elementet där felet inträffade. Kan vara antingen en princip eller ett inbyggt steg namn för pipelinen.      | Ja      |
+| `Reason`   | sträng | Maskin vänlig felkod som kan användas vid fel hantering.                                       | Inga       |
+| `Message`  | sträng | Fel Beskrivning av människo läsbarhet.                                                                         | Ja      |
+| `Scope`    | sträng | Namnet på det omfång där felet inträffade och kan vara en av "global", "Product", "API" eller "operation" | Inga       |
+| `Section`  | sträng | Avsnitts namn där fel uppstod. Möjliga värden: "inkommande", "backend", "utgående" eller "på-fel".      | Inga       |
+| `Path`     | sträng | Anger kapslad princip, till exempel "Välj [3]/when [2]".                                                 | Inga       |
+| `PolicyId` | sträng | Värdet för `id` attributet, om det anges av kunden, på principen där felet uppstod             | Inga       |
 
 > [!TIP]
 > Du kan komma åt status koden via kontexten. Response. StatusCode.
@@ -100,7 +100,7 @@ När ett fel uppstår och styr hopp till `on-error` princip avsnittet lagras fel
 
 Följande fel är fördefinierade för fel villkor som kan uppstå under utvärderingen av de inbyggda bearbetnings stegen.
 
-| Källa        | Condition (Väderförhållanden)                                 | Orsak                  | Meddelande                                                                                                                |
+| Källa        | Villkor                                 | Anledning                  | Meddelande                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | konfiguration | URI: n matchar inte någon API eller åtgärd | OperationNotFound       | Det gick inte att matcha inkommande begäran till en åtgärd.                                                                      |
 | auktorisering | Ingen prenumerations nyckel har angetts             | SubscriptionKeyNotFound | Åtkomst nekad på grund av saknad prenumerations nyckel. Se till att inkludera prenumerations nyckel när du gör förfrågningar till detta API. |
@@ -113,7 +113,7 @@ Följande fel är fördefinierade för fel villkor som kan uppstå under utvärd
 
 Följande fel är fördefinierade för fel villkor som kan uppstå under utvärdering av principer.
 
-| Källa       | Condition (Väderförhållanden)                                                       | Orsak                    | Meddelande                                                                                                                              |
+| Källa       | Villkor                                                       | Anledning                    | Meddelande                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | hastighets begränsning   | Hastighets gränsen har överskridits                                             | RateLimitExceeded         | Hastighets gränsen har överskridits                                                                                                               |
 | kvot        | Kvoten överskreds                                                  | QuotaExceeded             | Slut på kvot för samtalsvolym. Kvoten kommer att fyllas i XX: XX: xx. -eller-slut på bandbredds kvot. Kvoten kommer att fyllas i XX: XX: xx. |
@@ -190,4 +190,4 @@ Mer information om hur du arbetar med principer finns i:
 -   [Principer i API Management](api-management-howto-policies.md)
 -   [Transformera API: er](transform-api.md)
 -   [Princip referens](./api-management-policies.md) för en fullständig lista över princip satser och deras inställningar
--   [Princip exempel](./policy-reference.md)
+-   [Principexempel](./policy-reference.md)

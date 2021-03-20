@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89268612"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivera enterprise tillståndsväxling i Azure Active Directory
@@ -58,7 +58,7 @@ Följ de här stegen om du vill visa en status rapport för synkronisering av en
 1. Logga in på [Azure AD administrations Center](https://aad.portal.azure.com/).
 1. Välj **Azure Active Directory**  >  **användare**  >  **alla användare**.
 1. Välj användaren och välj sedan **enheter**.
-1. Under **Visa**väljer du **enheter synkroniserar inställningar och AppData** för att Visa synkroniseringsstatus.
+1. Under **Visa** väljer du **enheter synkroniserar inställningar och AppData** för att Visa synkroniseringsstatus.
   
    ![bild av inställningen synkronisering av enhets data](./media/enterprise-state-roaming-enable/sync-status.png)
   

@@ -6,10 +6,10 @@ documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97882219"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Översikt över Service Fabric kluster i Azure
@@ -96,15 +96,15 @@ Du kan skapa kluster på virtuella datorer som kör dessa operativ system:
 
 | Operativsystem | Tidigaste Service Fabric version som stöds | Senaste Service Fabric-version som stöds |
 | --- | --- | --- | 
-| Windows Server 2019 | 6.4.654.9590 | Saknas |
-| Windows Server 2016 | Alla versioner | Saknas |
-| Windows Server-20H2 | 7.2.445.9590 | Saknas |
+| Windows Server 2019 | 6.4.654.9590 | Ej tillämpligt |
+| Windows Server 2016 | Alla versioner | Ej tillämpligt |
+| Windows Server-20H2 | 7.2.445.9590 | Ej tillämpligt |
 | Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
 | Windows Server 1803 | 6.4 | 7.2.445.9590 |
 | Windows Server 1709 | 6.0 | 7.2.445.9590 |
-| Windows Server 2012 | Alla versioner | Saknas | 
-| Linux Ubuntu 16,04 | 6.0 | Saknas |
-| Linux Ubuntu 18,04 | 7.1 | Saknas |
+| Windows Server 2012 | Alla versioner | Ej tillämpligt | 
+| Linux Ubuntu 16,04 | 6.0 | Ej tillämpligt |
+| Linux Ubuntu 18,04 | 7.1 | Ej tillämpligt |
 
 Mer information finns i [kluster versioner som stöds i Azure](./service-fabric-versions.md#supported-operating-systems)
 

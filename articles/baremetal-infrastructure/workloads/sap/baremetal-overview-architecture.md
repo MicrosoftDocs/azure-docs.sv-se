@@ -5,10 +5,10 @@ ms.custom: references_regions
 ms.topic: conceptual
 ms.date: 1/4/2021
 ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97860988"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Vad är BareMetal Infrastructure Preview på Azure?
@@ -20,7 +20,7 @@ BareMetal-infrastrukturen tillhandahåller en sökväg för att modernisera din 
 ## <a name="sku-availability-in-azure-regions"></a>SKU-tillgänglighet i Azure-regioner
 BareMetal-infrastruktur för specialiserade och allmänna arbets belastningar är tillgänglig, från och med fyra regioner baserade på revision 4,2-stämplar (rev 4,2):
 - Europa, västra
-- Norra Europa
+- Europa, norra
 - USA, östra 2
 - USA, södra centrala
 
@@ -71,7 +71,7 @@ De tillgängliga Linux OS-versionerna är:
    - SLES 12 SP5
    - SLES 15 SP1
 
-## <a name="storage"></a>Lagring
+## <a name="storage"></a>Storage
 BareMetal-instanser baserat på en speciell SKU-typ levereras med fördefinierad NFS-lagring för den aktuella arbets belastnings typen. När du etablerar BareMetal kan du etablera mer lagrings utrymme baserat på din beräknade tillväxt genom att skicka en supportbegäran. All lagring levereras med en allt-flash-disk i revision 4,2 med stöd för NFSv3 och NFSv4. Den nyare versionen 4,5 NVMe SSD är tillgänglig. Mer information om lagrings storlek finns i avsnittet [BareMetal arbets belastnings typ](../../../virtual-machines/workloads/sap/get-started.md) .
 
 >[!NOTE]

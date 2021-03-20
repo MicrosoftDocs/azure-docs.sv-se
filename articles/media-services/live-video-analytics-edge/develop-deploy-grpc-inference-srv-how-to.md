@@ -4,10 +4,10 @@ description: Den här artikeln innehåller rikt linjer för hur du utvecklar och
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881660"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Instruktions guide – utveckla och distribuera en gRPC-härlednings Server
@@ -148,7 +148,7 @@ Vi går igenom vårt kod exempel om du vill veta mer om hur gRPC-servern utveckl
 1. Starta VSCode och navigera till mappen/src/edge/modules/grpcExtension.
 1. Vi gör en snabb genom gång av filerna:
 
-    1. **Program.cs**: det här är start punkten för programmet. Den ansvarar för att initiera och hantera gRPC-servern, som fungerar som en värd. I vårt exempel är porten för att lyssna efter inkommande gRPC-meddelanden från en gRPC-klient (till exempel Real Video Analytics) på som anges av grpcBindings konfigurations element i AppConfig.jspå.
+    1. **Program. cs**: Detta är start punkten för programmet. Den ansvarar för att initiera och hantera gRPC-servern, som fungerar som en värd. I vårt exempel är porten för att lyssna efter inkommande gRPC-meddelanden från en gRPC-klient (till exempel Real Video Analytics) på som anges av grpcBindings konfigurations element i AppConfig.jspå.
     
         ```json    
         {
@@ -191,7 +191,7 @@ Nu när vi har konfigurerat och initierat portarna för gRPC-servern, ska vi tit
               }
             }
             ```
-        * Beroende på värdet för batchSize i Appconfig.jspå, kommer vår server att fortsätta att ta emot meddelanden och lagra video bild rutorna i en lista. När gränsen för batchSize har nåtts anropar funktionen funktionen eller filen som ska bearbeta avbildningen. I vårt fall anropar metoden en fil med namnet BatchImageProcessor.cs
+        * Beroende på värdet för batchSize i Appconfig.jspå, kommer vår server att fortsätta att ta emot meddelanden och lagra video bild rutorna i en lista. När gränsen för batchSize har nåtts anropar funktionen funktionen eller filen som ska bearbeta avbildningen. I vårt fall anropar metoden en fil med namnet BatchImageProcessor. CS
     1. **Processors\BatchImageProcessor.cs**: den här klassen ansvarar för bearbetning av avbildningarna. Vi har använt en bild klassificerings modell i det här exemplet. Algoritmen som används för varje bild som ska bearbetas är följande:
 
         1. Konvertera avbildningen i en byte mat ris för bearbetning. Se metod: `GetBytes(Bitmap image)`
@@ -207,7 +207,7 @@ Nu när vi har konfigurerat och initierat portarna för gRPC-servern, ska vi tit
     IEnumerable<Inference> ProcessImage(List<Image> images) 
     ```
 
-    När du har lagt till den nya klassen måste du uppdatera MediaGraphExtensionService.cs så att den instansierar klassen och anropar metoden ProcessImage på den för att köra bearbetnings logiken. 
+    När du har lagt till den nya klassen måste du uppdatera MediaGraphExtensionService. cs så att den instansierar klassen och anropar metoden ProcessImage på den för att köra bearbetnings logiken. 
 
 ## <a name="connect-with-live-video-analytics-module"></a>Ansluta med Live Video Analytics-modulen
 
@@ -228,7 +228,7 @@ Nu när du har skapat din gRPC-utöknings modul kommer vi nu att skapa och distr
 
     * C2D-console-app. CSPROJ – projekt filen för Visual Studio Code.
     * operations.jsen lista över de åtgärder som du vill att programmet ska köra.
-    * Program.cs – exempel koden. Den här koden:
+    * Program. cs-kod för exempel program. Den här koden:
 
         * Läser in appinställningar.
         * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess [direkta metoder](direct-methods.md).

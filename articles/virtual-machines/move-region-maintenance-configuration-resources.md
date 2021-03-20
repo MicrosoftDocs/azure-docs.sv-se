@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730514"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Flytta resurser i en underhålls kontroll konfiguration till en annan region
@@ -23,7 +23,7 @@ Med [underhålls kontroll](maintenance-control.md), med anpassade underhålls ko
 - Följ [dessa instruktioner](move-region-maintenance-configuration.md)om du vill flytta din konfiguration för underhålls kontroll, men inte de resurser som är associerade med konfigurationen.
 - Följ [dessa instruktioner](move-region-maintenance-configuration.md)för att flytta både underhålls konfigurationen och de resurser som är kopplade till den. Följ sedan instruktionerna i den här artikeln.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar flytta resurserna som är associerade med en underhålls kontroll konfiguration:
 

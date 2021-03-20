@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800156"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Måttlig med anpassade bild listor i API-konsolen
@@ -42,11 +42,11 @@ Innan du kan testa API: et i online-konsolen behöver du din prenumerations nyck
 
 När du har gjort ändringar i en avbildnings lista måste du uppdatera dess index för att ändringarna ska ingå i framtida genomsökningar. Det här steget påminner om hur en sökmotor på Skriv bordet (om den är aktive rad) eller en Webbs öknings motor kontinuerligt uppdaterar sitt index för att inkludera nya filer eller sidor.
 
-1. I [list hanterings-API-referensen bild lista](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)väljer du **bild listor**på den vänstra menyn och väljer sedan **Uppdatera Sök index**.
+1. I [list hanterings-API-referensen bild lista](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)väljer du **bild listor** på den vänstra menyn och väljer sedan **Uppdatera Sök index**.
 
    Sidan **avbildnings listor – uppdatera Sök index** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
  
     ![Bild listor – uppdatera Sök index sidan Val av område](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ När du har gjort ändringar i en avbildnings lista måste du uppdatera dess ind
 
    Sidan **avbildnings listor – skapa** öppnas. 
 
-3. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats.
+3. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats.
 
    ![Bild listor – skapa val av sid region](images/test-drive-region.png)
 
@@ -95,11 +95,11 @@ När du har gjort ändringar i en avbildnings lista måste du uppdatera dess ind
 
    ![Bild listor – innehålls rutan skapa konsol svar visar List-ID](images/try-terms-list-create-2.png)
  
-8. Lägg sedan till avbildningar i listan. Välj **bild**på menyn till vänster och välj sedan **Lägg till bild**.
+8. Lägg sedan till avbildningar i listan. Välj **bild** på menyn till vänster och välj sedan **Lägg till bild**.
 
    Sidan **avbildning – Lägg till bild** öppnas. 
 
-9. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats.
+9. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats.
 
    ![Bild – Lägg till val av sid region för bild](images/test-drive-region.png)
 
@@ -107,7 +107,7 @@ När du har gjort ändringar i en avbildnings lista måste du uppdatera dess ind
  
 10. I rutan **listId** anger du det List-ID som du genererade och anger sedan URL: en för den avbildning som du vill lägga till. Ange din prenumerations nyckel och välj sedan **Skicka**.
 
-11. Om du vill kontrol lera att avbildningen har lagts till i listan väljer du **bild**på den vänstra menyn och väljer **Hämta alla bild-ID**.
+11. Om du vill kontrol lera att avbildningen har lagts till i listan väljer du **bild** på den vänstra menyn och väljer **Hämta alla bild-ID**.
 
     API **-konsolen bild-hämta alla bild-ID** : n öppnas.
   
@@ -127,11 +127,11 @@ Det är enkelt att ta bort en bild eller en lista. Du kan använda API: et för 
 
 Det här exemplet tar bort en enskild avbildning:
 
-1. I [bild listans hanterings-API-referens](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)väljer du **bild**på den vänstra menyn och väljer sedan **ta bort**. 
+1. I [bild listans hanterings-API-referens](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)väljer du **bild** på den vänstra menyn och väljer sedan **ta bort**. 
 
    Sidan **avbildnings borttagning** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
 
    ![Bild-ta bort val av sid region](images/test-drive-region.png)
  
@@ -149,11 +149,11 @@ I vårt exempel är List-ID **58953**, värdet för **ContentSource**. Avbildnin
 
 Du kan redigera en listas namn och beskrivning och lägga till objekt i metadata.
 
-1. I [list hanterings-API-referensen bild lista](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)väljer du **bild listor**på den vänstra menyn och väljer sedan **uppdaterings information**. 
+1. I [list hanterings-API-referensen bild lista](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)väljer du **bild listor** på den vänstra menyn och väljer sedan **uppdaterings information**. 
 
    Sidan **avbildnings listor – uppdaterings information** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats.  
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats.  
 
     ![Bild listor – val av sid region för uppdaterings information](images/test-drive-region.png)
 

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079140"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Snabb start: skapa en Azure Firewall och IP-grupper – ARM-mall
@@ -59,7 +59,7 @@ Distribuera ARM-mallen till Azure:
 
 2. I portalen, på sidan **skapa en Azure-brandvägg med IpGroups** , skriver eller väljer du följande värden:
    - Prenumeration: Välj från befintliga prenumerationer 
-   - Resurs grupp: Välj från befintliga resurs grupper eller Välj **Skapa ny**och välj **OK**.
+   - Resurs grupp: Välj från befintliga resurs grupper eller Välj **Skapa ny** och välj **OK**.
    - Plats: Välj en plats
    - Virtual Network namn: Ange ett namn för det nya virtuella nätverket (VNet) 
    - IP-grupp namn 1: typ namn för IP-grupp 1 
@@ -76,7 +76,7 @@ I Azure Portal granskar du de distribuerade resurserna, särskilt de brand Vägg
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP-grupper.":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP-grupper.":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Nätverks regler.":::
 
 Mer information om JSON-syntaxen och egenskaperna för en brand vägg i en mall finns i [Microsoft. Network azureFirewalls Template Reference](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls).
 

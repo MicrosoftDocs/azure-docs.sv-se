@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92784107"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Lista över Azure Storage-resurser i C++
@@ -59,8 +59,8 @@ Det är därför opraktiskt att lista alla objekt i ett enda svar. I stället ka
 
 Svaret på en segmenterad registrerings åtgärd inkluderar:
 
-* *_segment* , som innehåller den uppsättning resultat som returneras för ett enda anrop till List-API: et.
-* *continuation_token* , som skickas till nästa anrop för att få nästa resultat sida. Om det inte finns några fler resultat att returnera, är den fortsättnings-token null.
+* *_segment*, som innehåller den uppsättning resultat som returneras för ett enda anrop till List-API: et.
+* *continuation_token*, som skickas till nästa anrop för att få nästa resultat sida. Om det inte finns några fler resultat att returnera, är den fortsättnings-token null.
 
 Till exempel kan ett typiskt anrop för att lista alla blobbar i en behållare se ut som i följande kodfragment. Koden är tillgänglig i våra [exempel](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp):
 

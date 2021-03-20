@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 3280c97e735e68aa36f018a8de59964ade9567b7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181925"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Nitro Productivity Suite
@@ -114,7 +114,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Förutom föregående attribut förväntar sig Nitro Productivity Suite-programmet några fler attribut att skickas tillbaka i SAML-svaret. Dessa attribut fylls i i förväg, men du kan granska dem efter dina behov.
     
-    | Namn  |  Källattribut|
+    | Name  |  Källattribut|
     | ---------------| --------------- |
     | employeeNumber |  user.objectid |
 
@@ -127,7 +127,7 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan lösen ordet.
    1. Välj **Skapa**.
 
