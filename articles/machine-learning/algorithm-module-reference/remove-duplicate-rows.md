@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905217"
 ---
 # <a name="remove-duplicate-rows-module"></a>Ta bort modul för dubbla rader
@@ -42,7 +42,7 @@ Detta exempel har flera kolumner med data som kan dupliceras. Oavsett om de egen
 
 + Alternativt kan du välja att tillåta dubbletter i fältet ID och använda någon annan kombination av filer för att hitta unika poster, till exempel förnamn, efter namn, ålder och kön.  
 
-Om du vill ange villkor för om en rad är en dubblett eller inte, anger du en enskild kolumn eller en uppsättning kolumner som ska användas som **nycklar**. Två rader betraktas som dubbletter endast när värdena i **alla** nyckel kolumner är lika. Om en rad saknar värde för **nycklar**betraktas de inte som dubbletter av rader. Om t. ex. kön och ålder har angetts som nycklar i tabellen ovan, är rad 6 och 7 inte duplicerade rader, förutsatt att de saknar värde i ålder.
+Om du vill ange villkor för om en rad är en dubblett eller inte, anger du en enskild kolumn eller en uppsättning kolumner som ska användas som **nycklar**. Två rader betraktas som dubbletter endast när värdena i **alla** nyckel kolumner är lika. Om en rad saknar värde för **nycklar** betraktas de inte som dubbletter av rader. Om t. ex. kön och ålder har angetts som nycklar i tabellen ovan, är rad 6 och 7 inte duplicerade rader, förutsatt att de saknar värde i ålder.
 
 När du kör modulen skapar den en Candidate-datauppsättning och returnerar en uppsättning rader som inte har några dubbletter i den kolumn uppsättning som du har angett.
 
@@ -55,7 +55,7 @@ När du kör modulen skapar den en Candidate-datauppsättning och returnerar en 
 
 2. Anslut den data uppsättning som du vill söka efter dubbletter av rader.
 
-3. I fönstret **Egenskaper** , under **nyckel kolumn urval filter uttryck**, klickar du på **Starta kolumn väljaren**för att välja kolumner som ska användas vid identifiering av dubbletter.
+3. I fönstret **Egenskaper** , under **nyckel kolumn urval filter uttryck**, klickar du på **Starta kolumn väljaren** för att välja kolumner som ska användas vid identifiering av dubbletter.
 
     I det här sammanhanget betyder inte **nyckeln** en unik identifierare. Alla kolumner som du väljer med kolumn väljaren anges som **nyckel kolumner**. Alla omarkerade kolumner betraktas som icke-nyckel kolumner. Kombinationen av kolumner som du väljer som nycklar bestämmer hur poster ska vara unika. (Tänk på det som ett SQL-uttryck som använder flera likhets kopplingar.)
 

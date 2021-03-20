@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394738"
 ---
 # <a name="email-notifications-in-pim"></a>E-postmeddelanden i PIM
@@ -48,11 +48,11 @@ Privileged Identity Management skickar e-postmeddelanden när följande händels
 
 Vem som får dessa e-postmeddelanden för Azure AD-roller beror på din roll, händelsen och meddelande inställningen:
 
-| Användare | Roll aktiveringen väntar på godkännande | Begäran om roll aktivering har slutförts | PIM är aktiverat |
+| User | Roll aktiveringen väntar på godkännande | Begäran om roll aktivering har slutförts | PIM är aktiverat |
 | --- | --- | --- | --- |
-| Privilegie rad roll administratör</br>(Aktive rad/berättigad) | Yes</br>(endast om inga uttryckliga god kännare har angetts) | Ja* | Yes |
-| Säkerhetsadministratör</br>(Aktive rad/berättigad) | No | Ja* | Yes |
-| Global administratör</br>(Aktive rad/berättigad) | No | Ja* | Yes |
+| Privilegie rad roll administratör</br>(Aktive rad/berättigad) | Ja</br>(endast om inga uttryckliga god kännare har angetts) | Ja* | Ja |
+| Säkerhetsadministratör</br>(Aktive rad/berättigad) | Inga | Ja* | Ja |
+| Global administratör</br>(Aktive rad/berättigad) | Inga | Ja* | Ja |
 
 \*Om inställningen [ **meddelanden**](pim-how-to-change-default-settings.md#notifications) är inställd på **Aktivera**.
 
@@ -68,7 +68,7 @@ Ett vecko Privileged Identity Management Sammanfattning av e-post för Azure AD-
 
 E-postmeddelandet innehåller fyra paneler:
 
-| Panel | Description |
+| Panel | Beskrivning |
 | --- | --- |
 | **Användare aktiverade** | Antal gånger som användare har aktiverat sin berättigade roll i organisationen. |
 | **Användare som gjorts permanenta** | Antalet gånger som användare med en berättigad tilldelning görs permanenta. |

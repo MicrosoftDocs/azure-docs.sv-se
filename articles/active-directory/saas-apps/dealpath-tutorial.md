@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 82fd49f8cb488a77ad379a4bcbffca154cd7610a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Självstudie: Azure Active Directory integrering med Dealpath
@@ -138,7 +138,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Dealp
 
     b. I text rutan för **identitets leverantörs utfärdare** klistrar du in värdet för **Azure AD-identifierare**, som du har kopierat från Azure Portal.
 
-    c. Kopiera innehållet från den nedladdade **certifikat**filen (Base64) i Anteckningar och klistra in den i textrutan **Offentligt certifikat**.
+    c. Kopiera innehållet från den nedladdade **certifikat** filen (Base64) i Anteckningar och klistra in den i textrutan **Offentligt certifikat**.
 
     d. Klicka på **Uppdatera inställningar**.
 

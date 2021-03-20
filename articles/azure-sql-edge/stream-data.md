@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392120"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Data strömning i Azure SQL Edge
@@ -35,15 +35,15 @@ T-SQL streaming fungerar på exakt samma sätt som [Azure Stream Analytics](../s
 
 Ett Stream Analytics-jobb består av:
 
-- **Stream-indata** : Detta definierar de anslutningar till en data källa som data strömmen ska läsas från. Azure SQL Edge stöder för närvarande följande data ström typer:
+- **Stream-indata**: Detta definierar de anslutningar till en data källa som data strömmen ska läsas från. Azure SQL Edge stöder för närvarande följande data ström typer:
     - Edge Hub
     - Kafka (stöd för Kafka-indata är för närvarande bara tillgängligt i Intel/AMD64-versioner av Azure SQL Edge.)
 
-- **Strömma utdata** : Detta definierar de anslutningar till en data källa som data strömmen ska skrivas till. Azure SQL Edge har för närvarande stöd för följande strömmar av utdata
+- **Strömma utdata**: Detta definierar de anslutningar till en data källa som data strömmen ska skrivas till. Azure SQL Edge har för närvarande stöd för följande strömmar av utdata
     - Edge Hub
     - SQL (SQL-utdata kan vara en lokal databas inom instansen av Azure SQL Edge, eller en fjärran sluten SQL Server eller Azure SQL Database.) 
 
-- **Stream-fråga** : Detta definierar omvandlingen, sammansättningar, filtrering, sortering och kopplingar som ska tillämpas på indataströmmen innan de skrivs till Stream-utdata. Data ström frågan baseras på samma frågespråk som används av Stream Analytics. Mer information finns i [Stream Analytics frågespråk](/stream-analytics-query/stream-analytics-query-language-reference).
+- **Stream-fråga**: Detta definierar omvandlingen, sammansättningar, filtrering, sortering och kopplingar som ska tillämpas på indataströmmen innan de skrivs till Stream-utdata. Data ström frågan baseras på samma frågespråk som används av Stream Analytics. Mer information finns i [Stream Analytics frågespråk](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
 > T-SQL streaming, till skillnad från Stream Analytics, stöder för närvarande inte [användning av referens data för sökningar](../stream-analytics/stream-analytics-use-reference-data.md) eller [användning av UDF-och Uda i ett Stream-jobb](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).

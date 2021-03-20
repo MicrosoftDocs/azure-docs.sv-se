@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: eddb0c8339069025f0742e9bcbc371efbef094ee
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793338"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Etablera och katalogisera nya klienter i ett SaaS-program med shardade för flera innehavare Azure SQL Database
@@ -109,13 +109,13 @@ Klient etablerings skripten i den här självstudien har stöd för båda följa
 - Etablering av en klient organisation i en befintlig databas som delas med andra klienter.
 - Etablering av en klient organisation i en egen databas.
 
-Klient data initieras sedan och registreras i katalogen Shard-kartan. I exempel appen ges databaser som innehåller flera klienter ett generiskt namn, till exempel *tenants1* eller *tenants2* . Databaser som innehåller en enda klient tilldelas klientens namn. De angivna namngivnings konventionerna som används i exemplet är inte en kritisk del av mönstret, eftersom användningen av en katalog tillåter att alla namn tilldelas till databasen.
+Klient data initieras sedan och registreras i katalogen Shard-kartan. I exempel appen ges databaser som innehåller flera klienter ett generiskt namn, till exempel *tenants1* eller *tenants2*. Databaser som innehåller en enda klient tilldelas klientens namn. De angivna namngivnings konventionerna som används i exemplet är inte en kritisk del av mönstret, eftersom användningen av en katalog tillåter att alla namn tilldelas till databasen.
 
 <a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>Självstudie börjar
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Etablera en klient organisation i en databas för flera innehavare
@@ -143,12 +143,12 @@ I det här avsnittet visas en lista över de viktigaste åtgärderna för etable
 
 Följande är viktiga element i det etablerings arbets flöde som du steg för steg:
 
-- **Beräkna den nya klient nyckeln** : en hash-funktion används för att skapa klient nyckeln från klient namnet.
-- **Kontrol lera att klient nyckeln redan finns** : katalogen kontrol leras för att se till att nyckeln inte redan har registrerats.
-- **Initiera klienten i standard klient databasen** : klient databasen uppdateras för att lägga till den nya klient informationen.
-- **Registrera klient i katalogen** : mappningen mellan den nya klient nyckeln och den befintliga tenants1-databasen läggs till i katalogen.
-- **Lägg till klientens namn i en katalog tilläggs tabell** : plats namnet läggs till i tabellen innehavare i katalogen.  Det här tillägget visar hur katalog databasen kan utökas för att stödja ytterligare programspecifika data.
-- **Öppna sidan händelser för den nya klienten** : sidan *Bushwillow blåa* händelser öppnas i webbläsaren.
+- **Beräkna den nya klient nyckeln**: en hash-funktion används för att skapa klient nyckeln från klient namnet.
+- **Kontrol lera att klient nyckeln redan finns**: katalogen kontrol leras för att se till att nyckeln inte redan har registrerats.
+- **Initiera klienten i standard klient databasen**: klient databasen uppdateras för att lägga till den nya klient informationen.
+- **Registrera klient i katalogen**: mappningen mellan den nya klient nyckeln och den befintliga tenants1-databasen läggs till i katalogen.
+- **Lägg till klientens namn i en katalog tilläggs tabell**: plats namnet läggs till i tabellen innehavare i katalogen.  Det här tillägget visar hur katalog databasen kan utökas för att stödja ytterligare programspecifika data.
+- **Öppna sidan händelser för den nya klienten**: sidan *Bushwillow blåa* händelser öppnas i webbläsaren.
 
    ![Skärm bild som visar sidan händelser för en ny klient.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
@@ -157,21 +157,21 @@ Följande är viktiga element i det etablerings arbets flöde som du steg för s
 För att förstå hur Wingtip-appen implementerar ny klient etablering i en delad databas, lägger du till en Bryt punkt och steg i arbets flödet:
 
 1. I *POWERSHELL ISE* öppnar du... \\ \\ProvisionTenants \\ *Demo-ProvisionTenants.ps1* och ange följande parametrar:
-   - **$TenantName**  =  **Bushwillow blått** , namnet på ett nytt evenemang.
-   - **$VenueType**  =  **blått** , en av de fördefinierade plats typerna: blått, ClassicalMusic, kontrollen åt, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotboll (gemener, inga blank steg).
+   - **$TenantName**  =  **Bushwillow blått**, namnet på ett nytt evenemang.
+   - **$VenueType**  =  **blått**, en av de fördefinierade plats typerna: blått, ClassicalMusic, kontrollen åt, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotboll (gemener, inga blank steg).
    - **$DemoScenario**  =  **1** för att etablera en klient i en delad databas med andra klienter.
 
-2. Lägg till en Bryt punkt genom att placera markören var som helst på rad 38, raden med texten: *New-Tenant* , och tryck sedan på **F9** .
+2. Lägg till en Bryt punkt genom att placera markören var som helst på rad 38, raden med texten: *New-Tenant*, och tryck sedan på **F9**.
 
    ![Skärm bild som visar den rad som innehåller ny klient.](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
-3. Kör skriptet genom att trycka på **F5** .
+3. Kör skriptet genom att trycka på **F5**.
 
 4. När skript körningen stoppas vid Bryt punkten trycker du på **F11** för att stega in i koden.
 
    ![Skärm bild som visar Windows PowerShell ISE med fel söknings menyn öppen och steget är markerat.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
-5. Spåra skript körningen med hjälp av meny alternativen för **fel sökning** , **F10** och **F11** , för att gå över eller till anropade funktioner.
+5. Spåra skript körningen med hjälp av meny alternativen för **fel sökning** , **F10** och **F11**, för att gå över eller till anropade funktioner.
 
 Mer information om hur du felsöker PowerShell-skript finns i [tips om att arbeta med och felsöka PowerShell-skript](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
@@ -181,14 +181,14 @@ Mer information om hur du felsöker PowerShell-skript finns i [tips om att arbet
 
 Följande är viktiga element i arbets flödet som du går igenom när du spårar skriptet:
 
-- **Beräkna den nya klient nyckeln** : en hash-funktion används för att skapa klient nyckeln från klient namnet.
-- **Kontrol lera att klient nyckeln redan finns** : katalogen kontrol leras för att se till att nyckeln inte redan har registrerats.
-- **Skapa en ny klient databas** : databasen skapas genom att du kopierar *basetenantdb* -databasen med hjälp av en Resource Manager-mall.  Det nya databas namnet baseras på klientens namn.
-- **Lägg till databas i katalog** : den nya klient organisations databasen registreras som en Shard i katalogen.
-- **Initiera klienten i standard klient databasen** : klient databasen uppdateras för att lägga till den nya klient informationen.
-- **Registrera klient organisation i katalogen** : mappningen mellan den nya klient nyckeln och *sequoiasoccer* -databasen läggs till i katalogen.
-- **Klient organisationens namn läggs till i katalogen** : plats namnet läggs till i tilläggs tabellen innehavare i katalogen.
-- **Öppna sidan händelser för den nya klienten** : sidan *Sequoia fotboll* Events öppnas i webbläsaren.
+- **Beräkna den nya klient nyckeln**: en hash-funktion används för att skapa klient nyckeln från klient namnet.
+- **Kontrol lera att klient nyckeln redan finns**: katalogen kontrol leras för att se till att nyckeln inte redan har registrerats.
+- **Skapa en ny klient databas**: databasen skapas genom att du kopierar *basetenantdb* -databasen med hjälp av en Resource Manager-mall.  Det nya databas namnet baseras på klientens namn.
+- **Lägg till databas i katalog**: den nya klient organisations databasen registreras som en Shard i katalogen.
+- **Initiera klienten i standard klient databasen**: klient databasen uppdateras för att lägga till den nya klient informationen.
+- **Registrera klient organisation i katalogen**: mappningen mellan den nya klient nyckeln och *sequoiasoccer* -databasen läggs till i katalogen.
+- **Klient organisationens namn läggs till i katalogen**: plats namnet läggs till i tilläggs tabellen innehavare i katalogen.
+- **Öppna sidan händelser för den nya klienten**: sidan *Sequoia fotboll* Events öppnas i webbläsaren.
 
    ![händelser](./media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
@@ -197,15 +197,15 @@ Följande är viktiga element i arbets flödet som du går igenom när du spåra
 Gå igenom skript processen när du skapar en klient i en egen databas:
 
 1. Fortfarande i... \\ \\ProvisionTenants \\ *Demo-ProvisionTenants.ps1* ange följande parametrar:
-   - **$TenantName**  =  **Sequoia fotboll** , namnet på ett nytt evenemang.
-   - **$VenueType**  =  **fotboll** , en av de fördefinierade plats typerna: blått, ClassicalMusic, kontrollen åt, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotboll (gemener, inga blank steg).
+   - **$TenantName**  =  **Sequoia fotboll**, namnet på ett nytt evenemang.
+   - **$VenueType**  =  **fotboll**, en av de fördefinierade plats typerna: blått, ClassicalMusic, kontrollen åt, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotboll (gemener, inga blank steg).
    - **$DemoScenario**  =  **2** för att etablera en klient organisation i en egen databas.
 
-2. Lägg till en ny Bryt punkt genom att placera markören var som helst på rad 57, raden med texten: *& &nbsp; $PSScriptRoot \new-tenantanddatabase '* och tryck på **F9** .
+2. Lägg till en ny Bryt punkt genom att placera markören var som helst på rad 57, raden med texten: *& &nbsp; $PSScriptRoot \new-tenantanddatabase '* och tryck på **F9**.
 
    ![brytpunkt](./media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
-3. Kör skriptet genom att trycka på **F5** .
+3. Kör skriptet genom att trycka på **F5**.
 
 4. När skript körningen stoppas vid Bryt punkten trycker du på **F11** för att stega in i koden.  Använd **F10** och **F11** för att gå över och stega till funktioner för att spåra körningen.
 
@@ -237,13 +237,13 @@ En fullständig lista över klienter och motsvarande databas för var och en fin
 - Klient namnet lagras i tabellen klient organisationer.
 - Databas namnet lagras i Shard hanterings tabeller.
 
-1. I SQL Server Management Studio (SSMS) ansluter du till klient servern på **katalogen – MT. \<USER\> .. database.windows.net** , med login = **Developer** och Password **= \@ P ssword1**
+1. I SQL Server Management Studio (SSMS) ansluter du till klient servern på **katalogen – MT. \<USER\> .. database.windows.net**, med login = **Developer** och Password **= \@ P ssword1**
 
     ![Dialog ruta för SSMS-anslutning](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
 2. I SSMS Object Explorer bläddrar du till vyerna i *tenantcatalog* -databasen.
 
-3. Högerklicka på vyn *TenantsExtended* och välj **välj de översta 1000 raderna** . Observera mappningen mellan klient organisations namn och databas för de olika klient organisationerna.
+3. Högerklicka på vyn *TenantsExtended* och välj **välj de översta 1000 raderna**. Observera mappningen mellan klient organisations namn och databas för de olika klient organisationerna.
 
     ![ExtendedTenants-vy i SSMS](./media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
 

@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: data-factory
 author: memildin
 ms.service: data-factory
@@ -9,15 +9,15 @@ ms.date: 03/17/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 7d81799f7fbdb2b41db421daa1a85ec8cde511eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "79538836"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Data modellen för schemat
 
-|Field|Beskrivning|
+|Fält|Beskrivning|
 |----|----|
 |**AlertName**|Visnings namn för avisering|
 |**AlertType**|unikt aviserings-ID|

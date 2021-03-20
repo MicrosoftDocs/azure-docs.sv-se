@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82137594"
 ---
 # <a name="liveness-probe"></a>Direktmigreringens avsökning
@@ -40,7 +40,7 @@ Dessutom kommer Service Fabric att öka följande [hälso rapporter][health-intr
 
 * `OK`: Avsökningen slutförs för det värde som anges i **successThreshold**.
 
-* `Error`: Avsökningen **failureCount**  ==   **failureThreshold**innan behållaren startas om.
+* `Error`: Avsökningen **failureCount**  ==   **failureThreshold** innan behållaren startas om.
 
 * `Warning`: 
     * Avsökningen Miss lyckas och **failureCount**  <  **failureThreshold**. Hälso rapporten är kvar tills **failureCount** når värdet som anges i **failureThreshold** eller **successThreshold**.

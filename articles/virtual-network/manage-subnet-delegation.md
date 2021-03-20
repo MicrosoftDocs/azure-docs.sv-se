@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
 ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943666"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Lägga till eller ta bort en under näts delegering
 
 Under näts delegering ger explicita behörigheter till tjänsten för att skapa tjänstespecifika resurser i under nätet med en unik identifierare när tjänsten distribueras. Den här artikeln beskriver hur du lägger till eller tar bort ett delegerat undernät för en Azure-tjänst.
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 ### <a name="sign-in-to-azure"></a>Logga in på Azure
 

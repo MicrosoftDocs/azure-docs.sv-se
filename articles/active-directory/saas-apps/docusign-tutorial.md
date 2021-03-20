@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454702"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med DocuSign
@@ -55,7 +55,7 @@ Om du vill konfigurera integreringen av DocuSign i Azure AD måste du lägga til
 1. Logga in på Azure Portal med ett arbets-eller skol konto, eller genom att använda en personlig Microsoft-konto.
 1. I navigerings fönstret till vänster väljer du tjänsten **Azure Active Directory** .
 1. Gå till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **DocuSign** i sökrutan.
 1. Välj **DocuSign** på panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -115,11 +115,11 @@ Följ dessa steg om du vill aktivera Azure AD SSO i Azure Portal:
 
 I det här avsnittet ska du skapa en test användare med namnet B. Simon i Azure Portal.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Överst på skärmen väljer du **ny användare**.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I fältet **namn** anger du **B. Simon**.  
-   1. I fältet **användar namn** anger du `<username>@<companydomain>.<extension>` . Till exempel: `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du `<username>@<companydomain>.<extension>` . Exempel: `B.Simon@contoso.com`.
    1. Markera kryss rutan **Visa lösen ord** och anteckna värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 
@@ -127,10 +127,10 @@ I det här avsnittet ska du skapa en test användare med namnet B. Simon i Azure
 
 I det här avsnittet beviljar du B. Simon-åtkomst till DocuSign så att den här användaren kan använda enkel inloggning i Azure.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **DocuSign**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-1. Välj **Lägg till användare**och välj sedan **användare och grupper**i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan **användare** och trycker sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. I dialog rutan **Lägg till tilldelning** väljer du knappen **tilldela** .
@@ -177,17 +177,17 @@ I det här avsnittet beviljar du B. Simon-åtkomst till DocuSign så att den hä
 
     a. I rutan **namn** anger du ett unikt namn för din konfiguration. Använd inte blank steg.
 
-    b. I **rutan utfärdande av identitets leverantör**klistrar du in värdet för **Azure AD-identifieraren** , som du kopierade från Azure Portal.
+    b. I **rutan utfärdande av identitets leverantör** klistrar du in värdet för **Azure AD-identifieraren** , som du kopierade från Azure Portal.
 
     c. I rutan **inloggnings webb adress för identitets leverantör** klistrar du in värdet för **inloggnings-URL** , som du kopierade från Azure Portal.
 
-    d. I rutan **Logga in URL för identitets leverantör** klistrar du in värdet för **URL för utloggning**som du kopierade från Azure Portal.
+    d. I rutan **Logga in URL för identitets leverantör** klistrar du in värdet för **URL för utloggning** som du kopierade från Azure Portal.
 
     e. Välj **signera authn-begäran**.
 
-    f. För **Skicka authn-begäran av**väljer du **post**.
+    f. För **Skicka authn-begäran av** väljer du **post**.
 
-    ex. För **Skicka utloggnings förfrågan från**väljer du **Hämta**.
+    ex. För **Skicka utloggnings förfrågan från** väljer du **Hämta**.
 
     h. I avsnittet **Mappning av anpassade attribut** väljer du **Lägg till ny mappning**.
 
@@ -204,7 +204,7 @@ I det här avsnittet beviljar du B. Simon-åtkomst till DocuSign så att den hä
 
        ![Certifikat för identitets leverantör/Lägg till certifikat][58]
 
-    k. I avsnittet **identitets leverantörer** väljer du **åtgärder**och väljer sedan **slut punkter**.
+    k. I avsnittet **identitets leverantörer** väljer du **åtgärder** och väljer sedan **slut punkter**.
 
        ![Identitets leverantörer/slut punkter][59]
 
@@ -212,11 +212,11 @@ I det här avsnittet beviljar du B. Simon-åtkomst till DocuSign så att den hä
 
        ![Visa SAML 2,0-slutpunkter][60]
        
-       1. Kopiera **URL: en för service providerns utfärdare**och klistra in den i rutan **identifierare** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+       1. Kopiera **URL: en för service providerns utfärdare** och klistra in den i rutan **identifierare** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
        
-       1. Kopiera **URL: en till tjänste leverantörens intyg om försäkrans konsument tjänst**och klistra in den i rutan **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+       1. Kopiera **URL: en till tjänste leverantörens intyg om försäkrans konsument tjänst** och klistra in den i rutan **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
        
-       1. Kopiera **inloggnings-URL: en för tjänst leverantören**och klistra in den i rutan för **INLOGGNINGs-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal. I slutet av **inloggnings-URL: en för tjänst leverantören** får du IDPID-värdet.
+       1. Kopiera **inloggnings-URL: en för tjänst leverantören** och klistra in den i rutan för **INLOGGNINGs-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal. I slutet av **inloggnings-URL: en för tjänst leverantören** får du IDPID-värdet.
 
        1. Välj **Stäng**.
 
@@ -238,7 +238,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 3. Du kan använda Microsoft Access-panelen. När du klickar på panelen DocuSign på åtkomst panelen, bör du loggas in automatiskt på den DocuSign som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 När du har konfigurerat DocuSign kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 

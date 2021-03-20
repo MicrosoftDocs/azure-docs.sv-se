@@ -11,10 +11,10 @@ ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 3aedef8452ad3e972f78958fc0765639692d76d6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98121064"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace: ett indexerings under system för Apache Spark
@@ -32,7 +32,7 @@ Du kanske vill övervaka dina arbets belastningar noga och avgöra om indexering
 
 Det här dokumentet är också tillgängligt i anteckningsbok-formulär för [python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)och [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb).
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Börja med genom att starta en ny Spark-session. Eftersom det här dokumentet är en själv studie kurs som bara illustrerar vad hyperspace kan erbjuda, gör du en konfigurations ändring som gör att vi kan markera vilka hyperspace som gör i små data uppsättningar. 
 

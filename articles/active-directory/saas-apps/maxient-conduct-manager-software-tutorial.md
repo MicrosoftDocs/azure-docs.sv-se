@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458208"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Maxient utföra Manager-programvara
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Maxient med program
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -52,7 +52,7 @@ Om du vill konfigurera integrering av Maxient med Manager-programvara i Azure AD
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **Maxient Driver Manager-programvara** i sökrutan.
 1. Välj **Maxient utför Manager-programvara** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -94,13 +94,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet får du beviljar åtkomst för alla konton att autentisera med hjälp av Azure-systemet för Maxient utföra Manager-programvaran.  Det är viktigt att Observera att det här steget **krävs** för att Maxient ska fungera korrekt.  Maxient utnyttjar ditt Azure AD-system för att *autentisera* användare. *Auktoriseringen* av användare utförs i Maxient-systemet för den specifika funktion som de försöker utföra. Maxient använder inte attribut från din katalog för att fatta beslut.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Maxient Driver Manager-programvara**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360317"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Skapa en programgateway som är värd för flera webbplatser med Azure PowerShell
@@ -31,7 +31,7 @@ I den här artikeln kan du se hur du:
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Application Gateway för flera platser":::
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

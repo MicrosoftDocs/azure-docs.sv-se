@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793236"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>SaaS-databas för flera klient organisationer
@@ -185,8 +185,8 @@ I följande tabell sammanfattas skillnaderna mellan de huvudsakliga innehavande 
 
 | Mått | Fristående app | Databas per klient | Shardade flera innehavare |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Skala | Medium<br />1-100s | Mycket hög <br />1 – 100, tal | Obegränsat<br />1 – 1 000, tal |
-| Isolering av klientorganisation | Mycket hög  | Hög | Börjar Förutom för en enskild klient (som är ensam i en MT dB). |
+| Skala | Medel<br />1-100s | Mycket hög <br />1 – 100, tal | Obegränsat<br />1 – 1 000, tal |
+| Isolering av klientorganisation | Mycket hög  | Högt | Börjar Förutom för en enskild klient (som är ensam i en MT dB). |
 | Databas kostnad per klient | Högt storlek för toppar. | Börjar pooler som används. | Lägsta, för små klienter i MT databaser. |
 | Prestanda övervakning och hantering | Endast per klient | Aggregera + per-klient | Mängden även om det bara är per klient för Singles. |
 | Utvecklings komplexitet | Låg | Låg | Säker på grund av horisontell partitionering. |

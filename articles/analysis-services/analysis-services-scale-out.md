@@ -8,10 +8,10 @@ ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019449"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Utskalning för Azure Analysis Services
@@ -84,10 +84,10 @@ Ett annat mått att titta på är genomsnittlig QPU av ServerResourceType. Det h
 
 **Konfigurera QPU av ServerResourceType**
 
-1. Klicka på **Lägg till mått**i ett mått linje diagram. 
-2. I **resurs**väljer du din server, sedan i **mått namn område**, väljer **Analysis Services standard mått**, sedan i **mått**väljer du **QPU**och väljer sedan **Gmsn**i **agg regering**. 
+1. Klicka på **Lägg till mått** i ett mått linje diagram. 
+2. I **resurs** väljer du din server, sedan i **mått namn område**, väljer **Analysis Services standard mått**, sedan i **mått** väljer du **QPU** och väljer sedan **Gmsn** i **agg regering**. 
 3. Klicka på **Använd delning**. 
-4. I **värden**väljer du **ServerResourceType**.  
+4. I **värden** väljer du **ServerResourceType**.  
 
 ### <a name="detailed-diagnostic-logging"></a>Detaljerad diagnostisk loggning
 
@@ -100,7 +100,7 @@ Använd Azure Monitor loggar för mer detaljerad diagnostik för skalbara server
 
 1. I portalen klickar du på **skala ut**. Använd skjutreglaget för att välja antalet replik servrar. Antalet repliker som du väljer är utöver den befintliga servern.  
 
-2. I **separera bearbetnings servern från den aktuella poolen**väljer du Ja för att utesluta bearbetnings servern från fråga servrar. Klient [anslutningar](#connections) som använder standard anslutnings strängen (utan `:rw` ) omdirigeras till repliker i frågesyntaxen. 
+2. I **separera bearbetnings servern från den aktuella poolen** väljer du Ja för att utesluta bearbetnings servern från fråga servrar. Klient [anslutningar](#connections) som använder standard anslutnings strängen (utan `:rw` ) omdirigeras till repliker i frågesyntaxen. 
 
    ![Skjutreglage för skala ut](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -139,7 +139,7 @@ Retur status koder:
 |0     | Replikera        |
 |1     |  Återuppväcks       |
 |2     |   Slutförd       |
-|3     |   Misslyckades      |
+|3     |   Misslyckad      |
 |4     |    Slutför     |
 |||
 

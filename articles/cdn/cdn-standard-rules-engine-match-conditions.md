@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81259942"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Matchnings villkor i standard regel motorn för Azure CDN
@@ -97,10 +97,10 @@ Identifierar förfrågningar baserat på beställarens plats eller IP-adress.
 
 Operator | Värden som stöds
 ---------|-----------------
-Alla | E.t.
+Valfri | Ej tillämpligt
 Geo-matchning | Landskod
 IP-matchning | IP-adress (blankstegsavgränsad)
-Inte alla | E.t.
+Inte alla | Ej tillämpligt
 Ingen geo-matchning | Landskod
 Inte IP-matchning | IP-adress (blankstegsavgränsad)
 
@@ -170,7 +170,7 @@ Operator | Begärans-URL | Skift läges omvandling
 
 #### <a name="key-information"></a>Viktig information
 
-- När du använder det här regel villkoret ska du se till att inkludera protokoll information. Exempel: * https://www . \<yourdomain\> . com*.
+- När du använder det här regel villkoret ska du se till att inkludera protokoll information. Exempel: *https://www . \<yourdomain\> . com*.
 
 ### <a name="url-file-extension"></a>URL-filtillägg
 
@@ -220,7 +220,7 @@ Operator | Värde | Skift läges omvandling
 
 Följande operatorer är giltiga för regler som accepterar värden från standard operator listan:
 
-- Alla
+- Valfri
 - Lika med 
 - Innehåller 
 - Börjar med 

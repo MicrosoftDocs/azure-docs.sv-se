@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945156"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Associera en offentlig IP-adress till en virtuell dator
@@ -26,7 +26,7 @@ I den här artikeln får du lära dig hur du associerar en offentlig IP-adress t
 
 Du kan använda [Azure Portal](#azure-portal), Azures [kommando rads gränssnitt](#azure-cli) (CLI) eller [PowerShell](#powershell) för att associera en offentlig IP-adress till en virtuell dator.
 
-## <a name="azure-portal"></a>Azure-portalen
+## <a name="azure-portal"></a>Azure Portal
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Bläddra till eller Sök efter den virtuella dator som du vill lägga till den offentliga IP-adressen till och välj sedan den.

@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212913"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Skapa en OpenAPI-definition för ett Server lös API med hjälp av Azure API Management
@@ -41,20 +41,20 @@ Den här självstudien använder en HTTP-utlöst funktion som tar två parametra
 
 Funktionen beräknar sedan hur mycket en reparation kostar och hur mycket pengar turbinen kan göra under en 24-timmarsperiod. För att skapa funktionen HTTP-utlöst i [Azure Portal](https://portal.azure.com):
 
-1. På den vänstra menyn i appen Functions väljer du **Functions**och väljer sedan **Lägg till** på den översta menyn.
+1. På den vänstra menyn i appen Functions väljer du **Functions** och väljer sedan **Lägg till** på den översta menyn.
 
 1. I fönstret **ny funktion** väljer du **http-utlösare**.
 
-1. För **ny funktion**anger du `TurbineRepair` . 
+1. För **ny funktion** anger du `TurbineRepair` . 
 
 1. Välj **funktion** i list rutan **[Autentiseringsnivå](functions-bindings-http-webhook-trigger.md#http-auth)** och välj sedan **skapa funktion**.
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Skapa HTTP-funktion för OpenAPI&quot;:::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Skapa HTTP-funktion för OpenAPI":::
 
-1. Välj **kod + test**och välj sedan **Kör. CSX** i list rutan. Ersätt innehållet i C#-skript filen Run. CSX med följande kod och välj sedan **Spara**:
+1. Välj **kod + test** och välj sedan **Kör. CSX** i list rutan. Ersätt innehållet i C#-skript filen Run. CSX med följande kod och välj sedan **Spara**:
 
     ```csharp
-    #r &quot;Newtonsoft.Json"
+    #r "Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -106,7 +106,7 @@ Funktionen beräknar sedan hur mycket en reparation kostar och hur mycket pengar
 
     Den här funktions koden returnerar ett meddelande om `Yes` eller `No` för att indikera om en nöd reparation är kostnads effektiv. Det returnerar också den intäkts möjlighet som turbinen representerar och kostnaden för att åtgärda turbinen.
 
-1. Om du vill testa funktionen väljer du **test**, väljer fliken **inmatare** , anger följande ininformation för **bröd texten**och väljer sedan **Kör**:
+1. Om du vill testa funktionen väljer du **test**, väljer fliken **inmatare** , anger följande ininformation för **bröd texten** och väljer sedan **Kör**:
 
     ```json
     {
@@ -115,12 +115,7 @@ Funktionen beräknar sedan hur mycket en reparation kostar och hur mycket pengar
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Skapa HTTP-funktion för OpenAPI&quot;:::
-
-1. Välj **kod + test**och välj sedan **Kör. CSX** i list rutan. Ersätt innehållet i C#-skript filen Run. CSX med följande kod och välj sedan **Spara**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Testa funktionen i Azure Portal":::
 
     Följande utdata returneras i fliken **utdata** :
 
@@ -136,12 +131,7 @@ Så här genererar du OpenAPI-definitionen:
 
 1. Välj Function-appen, Välj **API Management** på menyn till vänster och välj sedan **skapa ny** under **API Management**.
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Skapa HTTP-funktion för OpenAPI&quot;:::
-
-1. Välj **kod + test**och välj sedan **Kör. CSX** i list rutan. Ersätt innehållet i C#-skript filen Run. CSX med följande kod och välj sedan **Spara**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Välj API Management":::
 
 
 1. Använd API Management inställningar som anges i följande tabell:
@@ -150,7 +140,7 @@ Så här genererar du OpenAPI-definitionen:
     | ------------ |  ------- | -------------------------------------------------- |
     | **Namn** | Globalt unikt namn | Ett namn genereras baserat på namnet på din Function-app. |
     | **Prenumeration** | Din prenumeration | Prenumerationen som den här nya resursen skapas under. |  
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Samma resurs som din Function-app, som ska ställas in för dig. |
+    | **[Resursgrupp](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Samma resurs som din Function-app, som ska ställas in för dig. |
     | **Plats** | USA, västra | Välj platsen för västra USA. |
     | **Organisationsnamn** | Contoso | Namnet på organisationen som används i Developer-portalen och för e-postaviseringar. |
     | **E-postadress för administratör** | din e-post | E-post som tog emot system meddelanden från API Management. |
@@ -168,12 +158,7 @@ Så här genererar du OpenAPI-definitionen:
 
 1. På sidan **skapa från Funktionsapp** godkänner du standardvärdena och väljer sedan **skapa**.
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Skapa HTTP-funktion för OpenAPI&quot;:::
-
-1. Välj **kod + test**och välj sedan **Kör. CSX** i list rutan. Ersätt innehållet i C#-skript filen Run. CSX med följande kod och välj sedan **Spara**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Skapa från Funktionsapp":::
 
     Azure skapar API: t för funktionen.
 
@@ -192,14 +177,9 @@ Innan du använder OpenAPI-definitionen bör du kontrol lera att API: et fungera
     }
     ```
 
-1. Välj **Skicka**och visa **http-svaret**.
+1. Välj **Skicka** och visa **http-svaret**.
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Skapa HTTP-funktion för OpenAPI&quot;:::
-
-1. Välj **kod + test**och välj sedan **Kör. CSX** i list rutan. Ersätt innehållet i C#-skript filen Run. CSX med följande kod och välj sedan **Spara**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="API för test funktion":::
 
 ## <a name="download-the-openapi-definition"></a>Hämta OpenAPI-definitionen
 

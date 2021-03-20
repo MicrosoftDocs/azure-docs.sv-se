@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073739"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Flytta en App Service app till en annan region
@@ -27,7 +27,7 @@ Identifiera alla App Service resurser som den berörda appen använder för när
 
 - App Service-appar
 - [App Service-planer](overview-hosting-plans.md)
-- [Distributionsplatser](deploy-staging-slots.md)
+- [Distributionsfack](deploy-staging-slots.md)
 - [Anpassade domäner som köpts i Azure](manage-custom-dns-buy-domain.md)
 - [SSL-certifikat](configure-ssl-certificate.md)
 - [Azure Virtual Network-integrering](web-sites-integrate-with-vnet.md)
@@ -45,9 +45,9 @@ Vissa resurser, t. ex. importerade certifikat eller hybrid anslutningar, innehå
 
     ![Skärm bild av sidan för den påverkade appen. Ett varnings meddelande visas som beskriver situationen och innehåller en länk till att återställa appen.](media/manage-disaster-recovery/restore-start.png)
 
-1. På sidan **Återställ säkerhets kopia** konfigurerar du återställnings åtgärden enligt följande tabell. Klicka på **OK**när du är färdig.
+1. På sidan **Återställ säkerhets kopia** konfigurerar du återställnings åtgärden enligt följande tabell. Klicka på **OK** när du är färdig.
 
-   | Inställningen | Värde | Beskrivning |
+   | Inställning | Värde | Beskrivning |
    |-|-|-|
    | **Ögonblicks bild (för hands version)** | Välj en ögonblicks bild. | De två senaste ögonblicks bilderna är tillgängliga. |
    | **Återställ mål** | **Befintlig app** | Klicka på kommentaren nedan om **du vill ändra appen för återställnings mål** och välja mål programmet. I ett katastrof scenario kan du bara återställa ögonblicks bilden till en app i en annan Azure-region. |

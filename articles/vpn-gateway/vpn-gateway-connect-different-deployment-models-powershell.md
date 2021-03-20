@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 7012a696684a4e7bc1d3b52943b11ba413c43037
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376496"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Anslut virtuella nätverk från olika distributionsmodeller med hjälp av PowerShell

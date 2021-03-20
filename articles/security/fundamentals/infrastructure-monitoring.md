@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7b75c9dc874a41d4221c55a8b00dd12d943e80fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87542950"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Övervakning av Azure-infrastruktur   
@@ -32,7 +32,7 @@ De grundläggande konfigurationerna som krävs för Azure-baserade tjänster gra
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 Hantering av säkerhets uppdateringar hjälper till att skydda system från kända sårbarheter. Azure använder integrerade distributions system för att hantera distribution och installation av säkerhets uppdateringar för Microsoft-programvara. Azure kan även rita på resurserna i Microsoft Security Response Center (MSRC). MSRC identifierar, övervakar, svarar på och löser säkerhets incidenter och moln sårbarheter dygnet runt, varje dag på året.
 
-## <a name="vulnerability-scanning"></a>Sårbarhets sökning
+## <a name="vulnerability-scanning"></a>Sårbarhetsgenomsökning
 Sårbarhets sökning utförs på serveroperativ system, databaser och nätverks enheter. Sårbarhets genomsökningarna utförs varje kvartal som minst en gång. Azure-kontrakt med oberoende utvärderare för att utföra inträngande tester av Azure-gränser. Röda-team-övningar utförs också rutinmässigt och resultaten används för att förbättra säkerheten.
 
 ## <a name="protective-monitoring"></a>Skydds övervakning

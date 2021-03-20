@@ -4,10 +4,10 @@ description: Skapa en SSL-eller TLS-slutpunkt för en behållar grupp som körs 
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558087"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Aktivera en TLS-slutpunkt i en sidvagn-behållare

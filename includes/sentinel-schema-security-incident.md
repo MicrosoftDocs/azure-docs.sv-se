@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: azure-sentinel
 author: yelevin
 ms.service: azure-sentinel
@@ -9,15 +9,15 @@ ms.date: 06/28/2020
 ms.author: yelevin
 ms.custom: include file
 ms.openlocfilehash: 63cb53dc60a718892d4bf86140e7fd51303bd61c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88761735"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Data modellen för schemat
 
-| Field | Datatyp | Beskrivning |
+| Fält | Datatyp | Beskrivning |
 | ---- | ---- | ---- |
 | **AdditionalData** | dynamisk | Antal varningar, antal bok märken, antal kommentarer, namn på aviserings produkter och taktiker |
 | **AlertIds** | dynamisk | Aviseringar från vilka incidenten skapades |

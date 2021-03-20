@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184254"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Hämta information om en Azure-cache för Redis
@@ -30,7 +30,7 @@ I det här scenariot får du lära dig hur du hämtar information om en Azure-ca
 
 I det här skriptet används följande kommandon för att hämta information om en Azure-cache för Redis-instansen. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [AZ Redis show](/cli/azure/redis) | Hämta information om en Azure-cache för Redis-instansen. |
 

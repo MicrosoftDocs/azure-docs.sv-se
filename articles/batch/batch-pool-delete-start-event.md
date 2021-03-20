@@ -4,10 +4,10 @@ description: Referens för start händelse för borttagning av batch-pool. Den h
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: 86f6eb8e7b269cb45f692398e9e60390375ca073
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97803756"
 ---
 # <a name="pool-delete-start-event"></a>Starthändelse för borttagning av pool
@@ -22,6 +22,6 @@ ms.locfileid: "97803756"
 }
 ```
 
-|Element|Typ|Obs!|
+|Element|Typ|Kommentarer|
 |-------------|----------|-----------|
 |`id`|Sträng|Poolens ID.|

@@ -4,10 +4,10 @@ description: Referens för att definiera aktiviteter i YAML för ACR-aktiviteter
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067591"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referens för ACR-uppgifter: YAML
@@ -20,7 +20,7 @@ Den här artikeln innehåller information om hur du skapar YAML-filer med flera 
 
 ACR-aktiviteter har stöd för en aktivitets deklaration med flera steg i standardsyntaxen för YAML. Du definierar en aktivitets steg i en YAML-fil. Du kan sedan köra aktiviteten manuellt genom att skicka filen till kommandot [AZ ACR Run][az-acr-run] . Du kan också använda filen för att skapa en uppgift med [AZ ACR Task Create][az-acr-task-create] som utlöses automatiskt vid en git-incheckning, en bas avbildnings uppdatering eller ett schema. Även om den här artikeln refererar till `acr-task.yaml` som den fil som innehåller stegen, stöder ACR-aktiviteter alla giltiga fil namns namn med ett [tillägg som stöds](#supported-task-filename-extensions).
 
-De översta topparna `acr-task.yaml` är **aktivitets egenskaper**, **steg typer**och **steg egenskaper**:
+De översta topparna `acr-task.yaml` är **aktivitets egenskaper**, **steg typer** och **steg egenskaper**:
 
 * [Aktivitets egenskaperna](#task-properties) gäller för alla steg i uppgifts körningen. Det finns flera globala aktivitets egenskaper, inklusive:
   * `version`

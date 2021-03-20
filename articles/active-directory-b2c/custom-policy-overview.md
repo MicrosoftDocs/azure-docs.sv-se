@@ -12,17 +12,17 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 043cf83d804803e1b5b47d3ac51bbccaa06e4e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87116425"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Anpassade principer i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Anpassade principer är konfigurationsfiler som definierar beteendet för din Azure Active Directory B2C (Azure AD B2C)-klient. Användar flöden är fördefinierade i Azure AD B2C Portal för de vanligaste identitets uppgifterna. Anpassade principer kan redige ras fullständigt av en identitets utvecklare för att utföra många olika uppgifter.
+Anpassade principer är konfigurationsfiler som definierar beteendet för din Azure Active Directory B2C-klientorganisation (Azure AD B2C). Användarflöden för de vanligaste identitetsuppgifterna är fördefinierade i Azure AD B2C-portalen. Identitetsutvecklare kan redigera anpassade principer för att utföra många olika uppgifter.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Jämföra användar flöden och anpassade principer
 

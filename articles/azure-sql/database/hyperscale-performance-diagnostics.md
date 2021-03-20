@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791723"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL-storskalig prestanda vid fel sökning av diagnostik
@@ -97,7 +97,7 @@ Förhållandet mellan läsningar som gjorts på RBPEX till sammanställda läsni
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Data-i/o i statistik över resursutnyttjande
 
-I en icke-storskalig databas rapporteras kombinerad läsning och skrivning av IOPS mot datafiler, i förhållande till den [resurs styrningens](./resource-limits-logical-server.md#resource-governance) IOPS-gräns, i [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) och [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vyer i `avg_data_io_percent` kolumnen. Samma värde rapporteras i procent av Azure Portal som _data-IO_ .
+I en icke-storskalig databas rapporteras kombinerad läsning och skrivning av IOPS mot datafiler, i förhållande till den [resurs styrningens](./resource-limits-logical-server.md#resource-governance) IOPS-gräns, i [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) och [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vyer i `avg_data_io_percent` kolumnen. Samma värde rapporteras i procent av Azure Portal som _data-IO_.
 
 I en storskalig databas rapporterar den här kolumnen om data-IOPS-användning i förhållande till gränsen för lokal lagring på beräknings replik, särskilt i/o mot RBPEX och `tempdb` . Ett värde på 100% i den här kolumnen visar att resurs styrning begränsar lokal lagrings-IOPS. Om detta korreleras med ett prestanda problem kan du justera arbets belastningen för att generera mindre IO eller öka databas tjänst målet för att öka resurs styrningens _maximala IOPS_ - [gräns](resource-limits-vcore-single-databases.md). För resurs styrning av RBPEX-läsningar och skrivningar räknar systemet enskilda 8 KB-IOs i stället för större IOs som kan utfärdas av den SQL Server databas motorn.
 

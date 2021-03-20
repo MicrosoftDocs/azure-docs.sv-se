@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907400"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Konfigurera storskalig (citus) hög tillgänglighet
@@ -29,7 +29,7 @@ Klicka på knappen **Spara** för att tillämpa ditt val. Det kan ta lite tid at
 
 Fliken **Översikt** för Server gruppen visar en lista över alla noder och deras vänte läge, tillsammans med en kolumn med **hög tillgänglighet** som visar om ha Aktiver ATS för varje nod.
 
-:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="ha-skjutreglage":::
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="kolumnen ha i Server grupp översikt":::
 
 ### <a name="next-steps"></a>Nästa steg
 

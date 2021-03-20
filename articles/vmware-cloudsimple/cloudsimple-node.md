@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140844"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Översikt över CloudSimple-noder
@@ -45,7 +45,7 @@ Följande typer av noder är tillgängliga för etablering eller reservation.
 | Kapacitets disk | 5,625 TB RAW                | 11,25 TB RAW                | 15,36 TB RAW                |
 | Lagringstyp  | Alla Flash                   | Alla Flash                   | Alla Flash                   |
 
-## <a name="limits"></a>Begränsningar
+## <a name="limits"></a>Gränser
 
 Följande Node-gränser gäller för privata moln.
 

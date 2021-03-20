@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88749370"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Använd Azure Storage Explorer för att hantera Azure Managed disks
@@ -33,7 +33,7 @@ Om din Storage Explorer inte är ansluten till Azure, kan du inte använda den f
 
     ![Klicka på plugin-ikonen](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 
-1. Välj **Lägg till ett Azure-konto**och klicka sedan på **Nästa**.
+1. Välj **Lägg till ett Azure-konto** och klicka sedan på **Nästa**.
 
     ![Lägga till ett Azure-konto](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
 
@@ -121,7 +121,7 @@ Med Storage Explorer kan du kopiera en hanterade-disk inom eller mellan regioner
 
     ![Skapa en ögonblicksbild](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. I **skapa ögonblicks bild**anger du namnet på ögonblicks bilden och den resurs grupp som du vill skapa den i. Välj sedan **Skapa**.
+1. I **skapa ögonblicks bild** anger du namnet på ögonblicks bilden och den resurs grupp som du vill skapa den i. Välj sedan **Skapa**.
 
     ![Dialog rutan skapa ögonblicks bild](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

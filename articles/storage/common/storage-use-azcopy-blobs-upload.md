@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358766"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>Ladda upp filer till Azure Blob Storage med hjälp av AzCopy v10
@@ -28,7 +28,7 @@ Se artikeln [Kom igång med AZCopy](storage-use-azcopy-v10.md) för att ladda ne
 > [!NOTE] 
 > I exemplen i den här artikeln förutsätter vi att du har angett autentiseringsuppgifter för auktorisering genom att använda Azure Active Directory (Azure AD).
 >
-> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Till exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Skapa en container
 

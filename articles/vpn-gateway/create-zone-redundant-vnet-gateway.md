@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2eaf1470e2d861ecfc1c1bc96f6040a1c3e0a644
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89425236"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Skapa en zon – redundant virtuell nätverksgateway i Azure-tillgänglighetszoner
@@ -126,7 +126,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
-## <a name="faq"></a><a name="faq"></a>ASSURANCE
+## <a name="faq"></a><a name="faq"></a>Vanliga frågor
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Vad kommer att ändras när jag distribuerar dessa nya SKU: er?
 
