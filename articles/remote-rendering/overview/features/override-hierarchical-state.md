@@ -7,10 +7,10 @@ ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94445162"
 ---
 # <a name="hierarchical-state-override"></a>Åsidosätta hierarkiskt tillstånd
@@ -28,32 +28,32 @@ Du kan till exempel överväga modellen för en bil och du vill byta hela bilen 
 
 Den fasta uppsättning tillstånd som kan åsidosättas är:
 
-* **`Hidden`** : Respektive maskor i scen diagrammet är dolda eller visas.
-* **`Tint color`** : Ett renderat objekt kan färgtonas med dess enskilda färg och färgton. Bilden nedan visar färg tonens RIM i ett hjul.
+* **`Hidden`**: Respektive maskor i scen diagrammet är dolda eller visas.
+* **`Tint color`**: Ett renderat objekt kan färgtonas med dess enskilda färg och färgton. Bilden nedan visar färg tonens RIM i ett hjul.
   
   ![Färg tons färg som används för att omvandla ett objekt till grönt](./media/color-tint.png)
 
-* **`See-through`** : Geometrin återges som överordnad, till exempel för att visa de inre delarna av ett objekt. Följande bild visar hela bilen som återges i se-läge, förutom den röda bromsen Caliper:
+* **`See-through`**: Geometrin återges som överordnad, till exempel för att visa de inre delarna av ett objekt. Följande bild visar hela bilen som återges i se-läge, förutom den röda bromsen Caliper:
 
   ![Se läge som används för att göra markerade objekt transparenta](./media/see-through.png)
 
   > [!IMPORTANT]
   > Alternativet för att se igenom fungerar bara när *TileBasedComposition* [åter givnings läge](../../concepts/rendering-modes.md) används.
 
-* **`Shell`** : Geometrin återges som ett transparent, inmätt gränssnitt. Det här läget gör det möjligt att tona bort icke-viktiga delar av en scen och samtidigt behålla en uppfattning om form och relativ placering. Om du vill ändra skal åter givnings utseendet använder du [ShellRenderingSettings](shell-effect.md) -läget. Se följande bild för bilens modell som helt återges, förutom de blå fjädrarna:
+* **`Shell`**: Geometrin återges som ett transparent, inmätt gränssnitt. Det här läget gör det möjligt att tona bort icke-viktiga delar av en scen och samtidigt behålla en uppfattning om form och relativ placering. Om du vill ändra skal åter givnings utseendet använder du [ShellRenderingSettings](shell-effect.md) -läget. Se följande bild för bilens modell som helt återges, förutom de blå fjädrarna:
 
   ![Shell-läge som används för att tona ut vissa objekt](./media/shell.png)
 
   > [!IMPORTANT]
   > Gränssnitts effekterna fungerar endast när *TileBasedComposition* [åter givnings läge](../../concepts/rendering-modes.md) används.
 
-* **`Selected`** : Geometrin återges med en [markerings disposition](outlines.md).
+* **`Selected`**: Geometrin återges med en [markerings disposition](outlines.md).
 
   ![Alternativet disposition som används för att markera en markerad del](./media/selection-outline.png)
 
-* **`DisableCollision`** : Geometrin är undantagen från [rums frågor](spatial-queries.md). **`Hidden`** Flaggan påverkar inte flaggan kollisioner, så dessa två flaggor anges ofta tillsammans.
+* **`DisableCollision`**: Geometrin är undantagen från [rums frågor](spatial-queries.md). **`Hidden`** Flaggan påverkar inte flaggan kollisioner, så dessa två flaggor anges ofta tillsammans.
 
-* **`UseCutPlaneFilterMask`** : Använd en enskild filter bit mask för att kontrol lera det avskurna planet valet. Den här flaggan avgör om den enskilda filter masken ska användas eller ärvas från den överordnade. Själva filtrets bitmask anges via `CutPlaneFilterMask` egenskapen. Detaljerad information om hur filtreringen fungerar finns i [stycket selektivt avskurna plan](cut-planes.md#selective-cut-planes). Se följande exempel där endast Tire och RIM klipps ut medan resten av scenen förblir opåverkade.
+* **`UseCutPlaneFilterMask`**: Använd en enskild filter bit mask för att kontrol lera det avskurna planet valet. Den här flaggan avgör om den enskilda filter masken ska användas eller ärvas från den överordnade. Själva filtrets bitmask anges via `CutPlaneFilterMask` egenskapen. Detaljerad information om hur filtreringen fungerar finns i [stycket selektivt avskurna plan](cut-planes.md#selective-cut-planes). Se följande exempel där endast Tire och RIM klipps ut medan resten av scenen förblir opåverkade.
 ![Selektiva klipp ut plan](./media/selective-cut-planes-hierarchical-override.png)
 
 

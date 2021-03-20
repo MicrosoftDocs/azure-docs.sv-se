@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097166"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark Connector for Core (SQL) API: viktig information och resurser
@@ -44,7 +44,7 @@ Du kan använda anslutningen med [Azure Databricks](https://azure.microsoft.com/
 
 | Komponent | Version |
 |---------|-------|
-| Apache Spark | 2,4. *x* , 2,3. *x* , 2,2. *x* och 2,1. *x* |
+| Apache Spark | 2,4.*x*, 2,3. *x*, 2,2. *x* och 2,1. *x* |
 | Scala | 2,11 |
 | Azure Databricks (körnings version) | Senare än 3,4 |
 
@@ -119,7 +119,7 @@ Du kan använda anslutningen med [Azure Databricks](https://azure.microsoft.com/
 #### <a name="new-features"></a>Nya funktioner
 * Förbättrar anslutnings hanteringen och anslutningspoolen för att minska antalet metadata-anrop.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Nästa steg

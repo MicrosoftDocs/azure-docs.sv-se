@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151429"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Schema-och sändnings jobb (Node.js)
@@ -130,7 +130,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som svarar på en direkt
    });
    ```
 
-8. Spara och Stäng **simDevice.jss ** filen.
+8. Spara och Stäng **simDevice.jss** filen.
 
 > [!NOTE]
 > För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktions koden bör du implementera principer för omförsök (till exempel en exponentiell backoff), enligt förslag i artikeln, [hantering av tillfälliga fel](/azure/architecture/best-practices/transient-faults).
@@ -266,7 +266,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärra
     });
     ```
 
-9. Spara och Stäng **scheduleJobService.jss ** filen.
+9. Spara och Stäng **scheduleJobService.jss** filen.
 
 ## <a name="run-the-applications"></a>Köra programmen
 

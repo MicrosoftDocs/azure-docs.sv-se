@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94445225"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Hanterade HSM-lokala RBAC-inbyggda roller
@@ -21,7 +21,7 @@ Hanterad HSM lokal RBAC har flera inbyggda roller som du kan tilldela till anvä
 
 ## <a name="built-in-roles"></a>Inbyggda roller
 
-|Rollnamn|Beskrivning|ID|
+|Rollnamn|Description|ID|
 |---|---|---|
 |Hanterad HSM-administratör| Ger fullständig åtkomst till alla data åtgärder.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Hanterad HSM-kryptografisk tjänsteman| Ger fullständig åtkomst till all nyckel hantering och kryptografiska krypterings åtgärder|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|

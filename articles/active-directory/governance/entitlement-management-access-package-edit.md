@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22aa97c6e627c2072636ca2e079877ff0f608b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798808"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Dölja eller ta bort ett Access-paket i hantering av Azure AD-rättigheter
@@ -43,9 +43,9 @@ Följ dessa steg om du vill ändra den **dolda** inställningen för ett Access-
 
 1. Ange den **dolda** inställningen.
 
-    Om värdet är **Nej**visas Access-paketet i användarens Mina åtkomst Portal.
+    Om värdet är **Nej** visas Access-paketet i användarens Mina åtkomst Portal.
 
-    Om det är inställt på **Ja**visas inte Access-paketet i användarens min åtkomst Portal. Det enda sättet som en användare kan visa åtkomst paketet är om de har länken Direct **My Access Portal** till Access-paketet. Mer information finns i [Dela länk för att begära ett Access-paket](entitlement-management-access-package-settings.md).
+    Om det är inställt på **Ja** visas inte Access-paketet i användarens min åtkomst Portal. Det enda sättet som en användare kan visa åtkomst paketet är om de har länken Direct **My Access Portal** till Access-paketet. Mer information finns i [Dela länk för att begära ett Access-paket](entitlement-management-access-package-settings.md).
 
 ## <a name="delete-an-access-package"></a>Ta bort ett Access-paket
 
@@ -61,7 +61,7 @@ Ett Access-paket kan bara tas bort om det inte har några aktiva användar tilld
 
 1. I den vänstra menyn klickar du på **Översikt** och sedan på **ta bort**.
 
-1. Klicka på **Ja**i det borttagnings meddelande som visas.
+1. Klicka på **Ja** i det borttagnings meddelande som visas.
 
 ## <a name="next-steps"></a>Nästa steg
 

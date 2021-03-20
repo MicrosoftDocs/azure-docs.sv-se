@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743142"
 ---
 # <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure Cloud Services (klassisk) definition WorkerRole-schema
@@ -349,7 +349,7 @@ I följande tabell beskrivs attributen för- `NetFxEntryPoint` elementet.
 | Attribut | Typ | Beskrivning |
 | --------- | ---- | ----------- |
 |assemblyName|sträng|Krävs. Sökväg och fil namn för sammansättningen som innehåller start punkten. Sökvägen är relativ i mappen **\\ %ROLEROOT%\Approot** (ange inte **\\ %ROLEROOT%\Approot** i `commandLine` , den antas). **% ROLEROOT%** är en miljö variabel som underhålls av Azure och den representerar rot katalogen för din roll. Mappen **\\ %ROLEROOT%\Approot** representerar programmappen för din roll.|
-|targetFrameworkVersion|sträng|Krävs. Den version av .NET Framework som sammansättningen skapats på. Ett exempel är `targetFrameworkVersion="v4.0"`.|
+|targetFrameworkVersion|sträng|Krävs. Den version av .NET Framework som sammansättningen skapats på. Till exempel `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a> ProgramEntryPoint
 `ProgramEntryPoint`Elementet anger vilket program som ska köras för en roll. Med- `ProgramEntryPoint` elementet kan du ange en program start punkt som inte baseras på en .net-sammansättning.

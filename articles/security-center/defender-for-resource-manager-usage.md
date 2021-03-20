@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 54790795aab8aac247e17198159130d7139dd38c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754745"
 ---
-# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Svara på Azure Defender för Resource Manager-aviseringar
+# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Svara på aviseringar från Azure Defender för Resource Manager
 
 När du får en avisering från Azure Defender för Resource Manager rekommenderar vi att du undersöker och svarar på aviseringen enligt beskrivningen nedan. Azure Defender för Resource Manager skyddar alla anslutna resurser, så även om du är van vid det program eller den användare som utlöste aviseringen, är det viktigt att kontrol lera att situationen omger varje avisering.  
 

@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/01/2019
 ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754240"
 ---
 # <a name="scale-migration-of-vms"></a>Skala migrering av virtuella datorer 
@@ -25,7 +25,7 @@ Site Recovery skript är tillgängliga för nedladdning vid [Azure PowerShell ex
 
 ## <a name="how-does-it-work"></a>Hur fungerar det?
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 Innan du börjar måste du utföra följande steg:
 - Se till att Site Recoverys valvet har skapats i din Azure-prenumeration
 - Kontrol lera att konfigurations servern och processervern är installerade i käll miljön och att valvet kan identifiera miljön

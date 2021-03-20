@@ -11,10 +11,10 @@ ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147903"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Skaka, skaka om för en tweet--hämta ett Twitter-meddelande med Azure Functions
@@ -50,10 +50,10 @@ Börja med att öppna projektmappen.
 
 ### <a name="open-the-arduino-examples-folder"></a>Öppna mappen Arduino exempel
 
-Expandera avsnittet exempel på vänster sida **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > AzureIoT**och välj **ShakeShake**. Ett nytt VS Code-fönster öppnas och mappen Project visas. Om du inte kan se avsnittet MXCHIP AZ3166 kontrollerar du att enheten är korrekt ansluten och startar om Visual Studio Code.  
+Expandera avsnittet exempel på vänster sida **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > AzureIoT** och välj **ShakeShake**. Ett nytt VS Code-fönster öppnas och mappen Project visas. Om du inte kan se avsnittet MXCHIP AZ3166 kontrollerar du att enheten är korrekt ansluten och startar om Visual Studio Code.  
 ![mini-lösningen-exempel](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Du kan också öppna exempel projektet från kommando paletten. Klicka på `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino**och leta upp och välj **Arduino: exempel**.
+Du kan också öppna exempel projektet från kommando paletten. Klicka på `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino** och leta upp och välj **Arduino: exempel**.
 
 ## <a name="provision-azure-services"></a>Etablera Azure-tjänster
 

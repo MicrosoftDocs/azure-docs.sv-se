@@ -10,10 +10,10 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600911"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimera kostnader för blobblagring med reserverad kapacitet
@@ -88,7 +88,7 @@ Följ dessa steg för att köpa reserverad kapacitet:
    | **Redundans** | Alternativet redundans för reservationen. Alternativen inkluderar *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS* och *ra-GZRS*. Mer information om redundans alternativ finns [Azure Storage redundans](../common/storage-redundancy.md). |
    | **Fakturerings frekvens** | Anger hur ofta kontot debiteras för reservationen. Alternativen omfattar *varje månad* eller i *förskott*. |
    | **Storlek** | Mängden kapacitet som ska reserveras. |
-   |**Term**  | Ett år eller tre år.   |
+   |**Period**  | Ett år eller tre år.   |
 
 1. När du har valt parametrar för din reservation, visar Azure Portal kostnaden. Portalen visar också rabatt procenten för betalning per användning.
 

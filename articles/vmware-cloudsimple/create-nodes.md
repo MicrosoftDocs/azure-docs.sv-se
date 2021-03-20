@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140742"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Etablera noder för Azure VMware-lösningen av CloudSimple
@@ -43,7 +43,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 10. Välj [nodtyp](cloudsimple-node.md).
 11. Välj antalet noder som ska etableras.
 12. Välj **Granska + skapa**.
-13. Granska inställningarna. Klicka på **föregående**om du vill ändra inställningarna.
+13. Granska inställningarna. Klicka på **föregående** om du vill ändra inställningarna.
 14. Välj **Skapa**.
 
 ## <a name="next-steps"></a>Nästa steg

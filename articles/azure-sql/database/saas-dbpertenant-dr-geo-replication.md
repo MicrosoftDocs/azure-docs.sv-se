@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: d2c1ddd1e0b5a080050e1ffeb28eded98dbfea3f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652117"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Haveri beredskap för ett SaaS-program för flera innehavare med hjälp av databas geo-replikering
@@ -52,7 +52,7 @@ En DR-plan baserad på geo-replikering består av tre distinkta delar:
 
 Alla delar måste beaktas noggrant, särskilt om de körs i stor skala. Som helhet måste planen utföra flera mål:
 
-* Installation
+* Konfiguration
     * Upprätta och underhålla en spegel avbildnings miljö i återställnings regionen. Att skapa elastiska pooler och replikera alla databaser i den här återställnings miljön reserverar kapaciteten i återställnings regionen. Att underhålla den här miljön innefattar att replikera nya klient databaser när de är etablerade.  
 * Återställning
     * Om en skalad återställnings miljö används för att minimera dagliga kostnader måste pooler och databaser skalas upp för att få full drift kapacitet i återställnings regionen

@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98601303"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Planera och hantera kostnader för Azure Blob Storage
@@ -88,7 +88,7 @@ När du använder kostnads analys kan du Visa Azure Storage kostnader i grafer o
 
 Så här visar du Azure Storage kostnader i kostnads analys:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 2. Öppna fönstret **Cost Management + fakturering** , Välj **kostnads hantering** på menyn och välj sedan **kostnads analys**. Du kan sedan ändra omfånget för en speciell prenumeration från List rutan **omfattning** .
 

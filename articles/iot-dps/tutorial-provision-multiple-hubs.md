@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316008"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Självstudie: etablera enheter över belastningsutjämnade IoT-hubbar
@@ -25,9 +25,9 @@ Den här självstudien visar hur du etablerar enheter för flera belastningsutj�
 > * Ange allokeringsprincipen för enhetsetableringstjänsten till **jämn distribution**
 > * Länka den nya IoT-hubben till enhetsetableringstjänsten
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här självstudien bygger på den tidigare självstudien [Etablera enhet till en hubb](tutorial-provision-device-to-hub.md).
 
@@ -45,10 +45,10 @@ Registreringslistan anger för enhetsetableringstjänsten vilken attesteringsmet
 
 ## <a name="set-the-device-provisioning-service-allocation-policy"></a>Ange allokeringsprincipen för enhetsetableringstjänsten
 
-Allokeringsprincipen är en inställning för enhetsetableringstjänsten som bestämmer hur enheter tilldelas till en IoT-hubb. Det finns tre allokeringsprinciper som stöds: 
+Allokeringsprincipen är en inställning för enhetsetableringstjänsten som bestämmer hur enheter tilldelas till en IoT-hubb. Det finns tre allokeringsprinciper som stöds: 
 
 1. **Kortast svarstid**: Enheter etableras till en IoT-hubb baserat på hubben med kortast svarstid till enheten.
-2. **Jämnt viktad distribution** (standard): Det är lika sannolikt att länkade IoT-hubbar får enheter etablerade till sig. Det här är standardinställningen. Om du endast etablerar enheter till en IoT-hubb kan du behålla den här inställningen. 
+2. **Jämnt viktad distribution** (standard): Det är lika sannolikt att länkade IoT-hubbar får enheter etablerade till sig. Det här är standardinställningen. Om du endast etablerar enheter till en IoT-hubb kan du behålla den här inställningen. 
 3. **Statisk konfiguration via registreringslistan**: Specificering av den önskade IoT-hubben på registreringslistan har högre prioritet än allokeringsprincipen på Device Provisioning-tjänstnivå.
 
 Följ dessa steg om du vill ange allokeringsprincipen:

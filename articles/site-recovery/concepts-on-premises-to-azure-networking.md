@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568786"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Ansluta till virtuella Azure-datorer efter redundansväxling från lokal plats 
@@ -96,7 +96,7 @@ Att behålla IP-adresser kräver följande steg:
 
 ### <a name="failover-example"></a>Exempel på redundans
 
-Vi tittar på ett exempel.
+Låt oss ta en titt på ett exempel.
 
 - Det fiktiva företagets Sparbanken är värd för sina affärsappar lokalt som de är värdar för sina mobilappar i Azure.
 - De ansluter lokalt till Azure via plats-till-plats-VPN. 
@@ -137,11 +137,11 @@ För att behålla adresserna är det här det som de gör.
 
 Före redundans anger du nätverks inställningar och IP-adress för den virtuella Azure-datorn.
 
-1.  I Recovery Services valv – > **replikerade objekt**väljer du den lokala datorn.
-2. På sidan **beräkning och nätverk** för datorn klickar du på **Redigera**för att konfigurera nätverks-och nätverkskorts inställningar för den virtuella Azure-datorn.
-3. I **nätverks egenskaper**väljer du det mål nätverk där den virtuella Azure-datorn ska placeras när den har skapats efter redundansväxlingen.
-4. I **nätverks gränssnitt**konfigurerar du nätverkskorten i mål nätverket. Som standard visar Site Recovery alla identifierade nätverkskort på den lokala datorn.
-    - I **mål nätverks gränssnitts typ** kan du ange varje nätverkskort som **primär**, **sekundär**eller **skapa inte** om du inte behöver det specifika nätverkskortet i mål nätverket. Ett nätverkskort måste anges som primärt för redundans. Observera att ändringar i mål nätverket påverkar alla nätverkskort för den virtuella Azure-datorn.
+1.  I Recovery Services valv – > **replikerade objekt** väljer du den lokala datorn.
+2. På sidan **beräkning och nätverk** för datorn klickar du på **Redigera** för att konfigurera nätverks-och nätverkskorts inställningar för den virtuella Azure-datorn.
+3. I **nätverks egenskaper** väljer du det mål nätverk där den virtuella Azure-datorn ska placeras när den har skapats efter redundansväxlingen.
+4. I **nätverks gränssnitt** konfigurerar du nätverkskorten i mål nätverket. Som standard visar Site Recovery alla identifierade nätverkskort på den lokala datorn.
+    - I **mål nätverks gränssnitts typ** kan du ange varje nätverkskort som **primär**, **sekundär** eller **skapa inte** om du inte behöver det specifika nätverkskortet i mål nätverket. Ett nätverkskort måste anges som primärt för redundans. Observera att ändringar i mål nätverket påverkar alla nätverkskort för den virtuella Azure-datorn.
     - Klicka på nätverkskort namnet för att ange under nätet där den virtuella Azure-datorn ska distribueras.
     - Skriv över **dynamisk** med den privata IP-adress som du vill tilldela till målet för virtuella Azure-datorer. Om en IP-adress inte anges Site Recovery tilldelar nätverkskortet nästa tillgängliga IP-adress i under nätet till nätverkskortet vid redundansväxling.
     - [Lär dig mer](site-recovery-manage-network-interfaces-on-premises-to-azure.md) om att hantera nätverkskort för lokal redundans till Azure.

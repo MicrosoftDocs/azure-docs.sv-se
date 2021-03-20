@@ -7,22 +7,22 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400765"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Principer för data säkerhet och sekretess för Google-anslutningar i Azure Logic Apps
 
-Från och med den **1 maj 2020**kan ändringar på grund av Googles [principer för data säkerhet och sekretess](https://www.blog.google/technology/safety-security/project-strobe/) påverka dina Logic app-arbetsflöden som använder [Gmail-anslutningen](/connectors/gmail/). Om dina Logi Kap par använder Gmail-anslutningen med ett Gmail-användarkonto (e-postadress som slutar med @gmail.com eller @googlemail.com ) kan dina Logi Kap par endast använda vissa [Google-godkända utlösare, åtgärder och anslutningar](#approved-connectors).
+Från och med den **1 maj 2020** kan ändringar på grund av Googles [principer för data säkerhet och sekretess](https://www.blog.google/technology/safety-security/project-strobe/) påverka dina Logic app-arbetsflöden som använder [Gmail-anslutningen](/connectors/gmail/). Om dina Logi Kap par använder Gmail-anslutningen med ett Gmail-användarkonto (e-postadress som slutar med @gmail.com eller @googlemail.com ) kan dina Logi Kap par endast använda vissa [Google-godkända utlösare, åtgärder och anslutningar](#approved-connectors).
 
 > [!NOTE]
 > Om dina Logi Kap par använder Gmail-anslutningen med ett företags konto i G-svit (e-postadress med en anpassad domän), påverkas inte dina Logi Kap par och har inga begränsningar för att använda Gmail-anslutningsprogrammet.
 
 ## <a name="affected-logic-apps"></a>Berörda Logic Apps
 
-Om du har Logi Kap par som använder Gmail Connector får du ett e-postmeddelande om potentiellt inaktuella Logic Apps. Men från och med den **15 juni 2020**inaktive ras alla icke-kompatibla arbets flöden. Du kan vidta någon av följande åtgärder:
+Om du har Logi Kap par som använder Gmail Connector får du ett e-postmeddelande om potentiellt inaktuella Logic Apps. Men från och med den **15 juni 2020** inaktive ras alla icke-kompatibla arbets flöden. Du kan vidta någon av följande åtgärder:
 
 * Uppdatera de berörda Logic Apps genom [att följa stegen i det här avsnittet](#update-affected-workflows). Du måste skapa en Google client-app, som innehåller ett klient-ID och klient hemlighet som du använder för autentisering i din Gmail-utlösare eller åtgärd.
 
@@ -102,10 +102,10 @@ Följ dessa steg om du vill använda klient-ID och klient hemlighet från din Go
    |----------|-------|-------------|
    | **Autentiseringstyp** | **Ta med ditt eget program** | Anger att du ska använda din egen klient-app för autentisering. |
    | **Klient-ID** | <*klient-ID*> | Klient-ID från din Google client-app |
-   | **Client Secret (Klienthemlighet)** | <*klient hemlighet*> | Klient hemligheten från din Google client-app |
+   | **Klient hemlighet** | <*klient hemlighet*> | Klient hemligheten från din Google client-app |
    ||||
 
-1. När du är klar väljer du **Logga**in.
+1. När du är klar väljer du **Logga** in.
 
    En sida visas som visar den klient app som du har skapat. Om du använder ett Gmail-användarkonto kan du få en sida som visar att din klient app inte verifieras av Google och du uppmanas att först tillåta åtkomst till ditt Google-konto.
 

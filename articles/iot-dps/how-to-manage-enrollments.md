@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010970"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Hantera enhets registreringar med Azure Portal
@@ -66,7 +66,7 @@ Det finns två sätt att registrera enheter med etablerings tjänsten:
     
         | Fält | Beskrivning |
         | :--- | :--- |
-        | **Tillhandahållande** | Välj **X. 509**, **TPM** eller **symmetrisk nyckel** för mekanismen som ska användas beroende på vilken attesterings metod som enheterna ska använda. |
+        | **Mekanism** | Välj **X. 509**, **TPM** eller **symmetrisk nyckel** för mekanismen som ska användas beroende på vilken attesterings metod som enheterna ska använda. |
         | Inställningar för attestering | Stegvisa instruktioner om hur du skapar och använder enskilda registreringar med symmetriska nycklar eller X. 509-certifikat finns i en av de [tillhandahållna en symmetrisk enhet](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment) eller [etablera en X. 509 certifikats enhets](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry) snabb starter.<br><br>Stegvisa instruktioner om hur du skapar och använder enskilda registreringar med TPM-attestering finns i en av de [tillhandahållna en simulerad TPM-enhet](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry) exempel.|
         | **IoT Hub enhets-ID** |  Detta ID representerar din enhet. Det måste följa reglerna för ett enhets-ID. Mer information finns i [Egenskaper för enhets identitet](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).<br><br>När du använder X. 509-certifikat måste den här texten vara ämnes namnet för enhets certifikatet som du laddar upp för registreringen. Ämnes namnet måste följa reglerna för ett enhets-ID.|
             

@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du konfigurerar åtkomst från priv
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011004"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Nätverks säkerhet för Azure Event Hubs 
@@ -16,7 +16,7 @@ I den här artikeln beskrivs hur du använder följande säkerhetsfunktioner med
 - Tjänsttaggar
 - Regler för IP-brandvägg
 - Nätverks tjänst slut punkter
-- Privata slut punkter
+- Privata slutpunkter
 
 
 ## <a name="service-tags"></a>Tjänsttaggar
@@ -66,7 +66,7 @@ Den virtuella nätverks regeln är en associering av Event Hubs-namnrymden med e
 
 Mer information finns i [Konfigurera tjänst slut punkter för virtuella nätverk för en Event Hub](event-hubs-service-endpoints.md)
 
-## <a name="private-endpoints"></a>Privata slut punkter
+## <a name="private-endpoints"></a>Privata slutpunkter
 
 [Azure Private Link service](../private-link/private-link-overview.md) ger dig åtkomst till Azure-tjänster (till exempel Azure Event Hubs, Azure Storage och Azure Cosmos dB) och Azure-värdbaserade kund-/partner tjänster via en **privat slut punkt** i det virtuella nätverket.
 

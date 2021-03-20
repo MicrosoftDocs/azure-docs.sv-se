@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89653024"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>Application Gateway konfiguration av HTTP-inställningar
@@ -76,7 +76,7 @@ Med den här inställningen kan du konfigurera en valfri anpassad vidarebefordri
 
 ## <a name="use-for-app-service"></a>Använd för App Service
 
-Det här är endast ett användar gränssnitt som väljer de två nödvändiga inställningarna för Azure App Service server del. Det aktiverar **Välj värd namnet från backend-adressen**och skapar en ny anpassad avsökning om du inte redan har en. (Mer information finns i avsnittet [Välj värdnamn från backend-adress](#pick-host-name-from-back-end-address)i den här artikeln.) En ny avsökning skapas och avsöknings huvudet plockas från Server delens medlem adress.
+Det här är endast ett användar gränssnitt som väljer de två nödvändiga inställningarna för Azure App Service server del. Det aktiverar **Välj värd namnet från backend-adressen** och skapar en ny anpassad avsökning om du inte redan har en. (Mer information finns i avsnittet [Välj värdnamn från backend-adress](#pick-host-name-from-back-end-address)i den här artikeln.) En ny avsökning skapas och avsöknings huvudet plockas från Server delens medlem adress.
 
 ## <a name="use-custom-probe"></a>Använd anpassad avsökning
 

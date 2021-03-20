@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 6f92c138a02c9dbdc1d22ca04c733cfbee69dcd0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94488527"
 ---
 # <a name="how-to-configure-your-azure-application-offer-properties"></a>Så här konfigurerar du egenskaper för Azure Applications erbjudande
@@ -27,7 +27,7 @@ Under **Kategorier** väljer du länken **Kategorier** och väljer sedan minst e
 
 ## <a name="provide-terms-and-conditions"></a>Ange villkor
 
-Under **juridisk** , ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
+Under **juridisk**, ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
 
 - [Använd standard kontraktet med valfria ändringar](#use-the-standard-contract)
 - [Använd egna villkor](#use-your-own-terms-and-conditions)

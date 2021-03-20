@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397376"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Design mönster för SaaS-program med flera innehavare och Azure Kognitiv sökning
@@ -41,7 +41,7 @@ Genom att lägga till och ta bort partitioner och repliker på kan du öka kapac
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Tjänst-och index gränser i Azure Kognitiv sökning
 Det finns några olika [pris nivåer](https://azure.microsoft.com/pricing/details/search/) i Azure kognitiv sökning, var och en av nivåerna har olika [gränser och kvoter](search-limits-quotas-capacity.md). Några av dessa begränsningar finns på tjänst nivå, vissa finns på index-nivå och några finns på partition-nivå.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Grundläggande | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | **Maximalt antal repliker per tjänst** |3 |12 |12 |12 |12 |
 | **Maximalt antal partitioner per tjänst** |1 |12 |12 |12 |3 |
@@ -95,7 +95,7 @@ Om det totala antalet index blir för stort för en enskild tjänst, måste en a
 
 ## <a name="2-service-per-tenant"></a>2. tjänst per klient
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="En portrayal av modellen index-per-klient" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="En portrayal av modellen för tjänst per klient" border="false":::
 
 I en arkitektur för tjänst per klient organisation har varje klient organisation sin egen Sök tjänst.
 

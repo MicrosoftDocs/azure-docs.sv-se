@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91321687"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Designa globalt tillgängliga tjänster med hjälp av Azure SQL Database
@@ -36,7 +36,7 @@ I det här scenariot har programmen följande egenskaper:
 * Webb nivån och data nivån måste vara samordnad för att minska svars tid och trafik kostnader
 * I grunden är nedtid en högre affärs risk för dessa program än data förlust
 
-I det här fallet är program distributionens topologi optimerad för att hantera regionala haverier när alla program komponenter behöver växlas över tillsammans. Diagrammet nedan visar topologin. För geografisk redundans distribueras programmets resurser till region A och B. Men resurserna i region B används inte förrän regionen A Miss lyckas. En failover-grupp konfigureras mellan de två regionerna för att hantera databas anslutning, replikering och redundans. Webb tjänsten i båda regionerna har kon figurer ATS för åtkomst till databasen via Read-Write Listener ** &lt; redundans-Group-name &gt; . Database.Windows.net** (1). Azure Traffic Manager har kon figurer ATS för att använda [prioritets cirkulations metod](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+I det här fallet är program distributionens topologi optimerad för att hantera regionala haverier när alla program komponenter behöver växlas över tillsammans. Diagrammet nedan visar topologin. För geografisk redundans distribueras programmets resurser till region A och B. Men resurserna i region B används inte förrän regionen A Miss lyckas. En failover-grupp konfigureras mellan de två regionerna för att hantera databas anslutning, replikering och redundans. Webb tjänsten i båda regionerna har kon figurer ATS för åtkomst till databasen via Read-Write Listener **&lt; redundans-Group-name &gt; . Database.Windows.net** (1). Azure Traffic Manager har kon figurer ATS för att använda [prioritets cirkulations metod](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
 > [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) används endast i den här artikeln för illustrations syfte. Du kan använda valfri belastnings Utjämnings lösning som stöder metoden prioriterad routning.
@@ -119,7 +119,7 @@ I det här scenariot har programmet följande egenskaper:
 
 För att uppfylla dessa krav måste du garantera att användar enheten **alltid** ansluter till programmet som distribueras i samma geografi för de skrivskyddade åtgärderna, till exempel att bläddra bland data, analyser osv. OLTP-åtgärderna bearbetas i samma geografi som det **mesta av tiden**. Till exempel under dagen då OLTP-åtgärder bearbetas i samma geografi, men under de tids perioder som de kunde bearbetas i en annan geografi. Om slut användar aktiviteten oftast sker under arbets tiden kan du garantera optimala prestanda för de flesta av användarna. Följande diagram visar den här topologin.
 
-Programmets resurser bör distribueras i varje geografiskt område där du har avsevärd användning efter frågan. Om ditt program till exempel används aktivt i USA, måste Europeiska unionen och Asien, sydöstra programmet distribueras till alla dessa geografiska områden. Den primära databasen ska växlas dynamiskt från en geografi till nästa i slutet av arbets tiden. Den här metoden kallas "Följ solen". OLTP-arbetsbelastningen ansluter alltid till databasen via Read-Write Listener ** &lt; redundans-Group-name &gt; . Database.Windows.net** (1). Den skrivskyddade arbets belastningen ansluter till den lokala databasen direkt med databaserna Server slut punkts ** &lt; server-name &gt; . Database.Windows.net** (2). Traffic Manager konfigureras med [routningsmetod för prestanda](../../traffic-manager/traffic-manager-configure-performance-routing-method.md). Det garanterar att slutanvändarens enhet är ansluten till webb tjänsten i den närmaste regionen. Traffic Manager konfigureras med slut punkts övervakning aktiverat för varje slut punkt för webb tjänst (3).
+Programmets resurser bör distribueras i varje geografiskt område där du har avsevärd användning efter frågan. Om ditt program till exempel används aktivt i USA, måste Europeiska unionen och Asien, sydöstra programmet distribueras till alla dessa geografiska områden. Den primära databasen ska växlas dynamiskt från en geografi till nästa i slutet av arbets tiden. Den här metoden kallas "Följ solen". OLTP-arbetsbelastningen ansluter alltid till databasen via Read-Write Listener **&lt; redundans-Group-name &gt; . Database.Windows.net** (1). Den skrivskyddade arbets belastningen ansluter till den lokala databasen direkt med databaserna Server slut punkts **&lt; server-name &gt; . Database.Windows.net** (2). Traffic Manager konfigureras med [routningsmetod för prestanda](../../traffic-manager/traffic-manager-configure-performance-routing-method.md). Det garanterar att slutanvändarens enhet är ansluten till webb tjänsten i den närmaste regionen. Traffic Manager konfigureras med slut punkts övervakning aktiverat för varje slut punkt för webb tjänst (3).
 
 > [!NOTE]
 > Konfigurationen av redundanskonfiguration definierar vilken region som används för redundans. Eftersom den nya primären finns i en annan geografi, resulterar redundansväxlingen i längre latens för både OLTP-och skrivskyddade arbets belastningar tills den berörda regionen är online igen.

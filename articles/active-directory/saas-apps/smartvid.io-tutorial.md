@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 40579331630eb62fc7b34d63e9945c90db2214f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartvidio"></a>Självstudie: Azure Active Directory integrering med smartvid.io

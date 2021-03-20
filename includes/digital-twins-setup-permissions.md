@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: baanders
 ms.openlocfilehash: 919cc934920d922a82ceb9e30630006627af44e9
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205510"
 ---
 ## <a name="prerequisites-permission-requirements"></a>Krav: behörighets krav
@@ -18,7 +18,7 @@ För att kunna slutföra alla steg i den här artikeln måste du ha en [roll i d
 * Skapa och hantera Azure-resurser
 * Hantera användar åtkomst till Azure-resurser (inklusive beviljande och delegering av behörigheter)
 
-Vanliga roller som uppfyller detta krav är *ägare* , *konto administratör* eller kombinationen av *användar åtkomst administratör* och *deltagare* . En fullständig förklaring av roller och behörigheter, inklusive vilka behörigheter som ingår i andra roller, finns i [*klassiska prenumerations administratörs roller, Azure-roller och Azure AD-roller*](../articles/role-based-access-control/rbac-and-directory-admin-roles.md) i Azure RBAC-dokumentationen.
+Vanliga roller som uppfyller detta krav är *ägare*, *konto administratör* eller kombinationen av *användar åtkomst administratör* och *deltagare*. En fullständig förklaring av roller och behörigheter, inklusive vilka behörigheter som ingår i andra roller, finns i [*klassiska prenumerations administratörs roller, Azure-roller och Azure AD-roller*](../articles/role-based-access-control/rbac-and-directory-admin-roles.md) i Azure RBAC-dokumentationen.
 
 Om du vill visa din roll i din prenumeration går du till [sidan prenumerationer](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i Azure Portal (du kan använda den här länken eller leta efter *prenumerationer* med Portal Sök fältet). Leta efter namnet på den prenumeration som du använder och Visa rollen för den i kolumnen *min roll* :
 

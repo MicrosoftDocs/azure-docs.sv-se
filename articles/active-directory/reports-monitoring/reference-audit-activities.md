@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231154"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referens över granskningsaktiviteter i Azure AD
@@ -32,11 +32,11 @@ Rapporteringsarkitekturen i Azure AD består av följande komponenter:
 
 - **Aktivitetsrapporter** 
     - [Inloggningar](concept-sign-ins.md) – ger information om användningen av hanterade program och användar inloggnings aktiviteter
-    - [Granskningsloggar](concept-audit-logs.md) – Ger spårbarhet via loggar för alla ändringar som gjorts via olika funktioner i Azure AD. 
+    - [Gransknings loggar](concept-audit-logs.md) – ger spårning genom loggar för alla ändringar som gjorts av olika funktioner i Azure AD. 
     
 - **Säkerhetsrapporter** 
-    - [Riskfyllda inloggningar](../identity-protection/overview-identity-protection.md) – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare. 
-    - [Användare som har flaggats för risk](../identity-protection/overview-identity-protection.md) – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats. 
+    - [Riskfyllda inloggningar](../identity-protection/overview-identity-protection.md) – en riskfylld inloggning är en indikator för ett inloggnings försök som kan ha utförts av någon som inte är en legitim ägare till ett användar konto. 
+    - [Användare som har flaggats för risk](../identity-protection/overview-identity-protection.md) – en riskfylld användare är en indikator för ett användar konto som kan ha komprometterats. 
 
 I den här artikeln står vilka granskningsaktiviteter som kan loggas in dina granskningsloggar.
 
@@ -256,17 +256,17 @@ I den här artikeln står vilka granskningsaktiviteter som kan loggas in dina gr
 |Kataloghantering|Hämta klientinfo|
 |Kataloghantering|Hämta klienttillåtna funktioner|
 |Kataloghantering|Hämta tenantDomains|
-|Tangent|Hämtar typ av klient|
-|Tangent|Kontrollera om B2C-funktionen är aktiverad|
-|Tangent|Verifiera om funktionen är aktive rad|
-|Tangent|Lägg till partner till företag|
-|Tangent|Lägg till overifierad domän|
-|Tangent|Lägg till verifierad domän|
-|Tangent|Skapa företag|
-|Tangent|Skapa företagsinställningar|
-|Tangent|Ta bort företagsinställningar|
-|Tangent|Flytta ned partner|
-|Tangent|Katalog borttagen|
+|Nyckel|Hämtar typ av klient|
+|Nyckel|Kontrollera om B2C-funktionen är aktiverad|
+|Nyckel|Verifiera om funktionen är aktive rad|
+|Nyckel|Lägg till partner till företag|
+|Nyckel|Lägg till overifierad domän|
+|Nyckel|Lägg till verifierad domän|
+|Nyckel|Skapa företag|
+|Nyckel|Skapa företagsinställningar|
+|Nyckel|Ta bort företagsinställningar|
+|Nyckel|Flytta ned partner|
+|Nyckel|Katalog borttagen|
 |Övrigt|Katalog borttagen permanent|
 |Övrigt|Katalog schemalagd för borttagning|
 |Resurs|Flytta upp företag till partner|

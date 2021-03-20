@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7195a126938deabf542e6fa3e52b72c2efdddac2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Självstudie: Azure Active Directory integration med identifiera
@@ -137,7 +137,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med ide
 
 1. I ett annat webbläsarfönster loggar du in på din identifierande klient organisation som administratör.
 
-2. Klicka på **meny**i det övre högra hörnet. Gå till **företags administratör**.
+2. Klicka på **meny** i det övre högra hörnet. Gå till **företags administratör**.
    
     ![Skärm bild som visar företags administratör som valts på menyn Inställningar.](./media/recognize-tutorial/tutorial_recognize_000.png)
 
@@ -149,7 +149,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med ide
    
     ![Skärm bild som visar S S O-inställningar där du kan ange de värden som beskrivs.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. Som **Aktivera SSO**väljer du **på**.
+    a. Som **Aktivera SSO** väljer du **på**.
 
     b. I text rutan för **entitets-ID för IDP** klistrar du in värdet för **Azure AD-identifieraren** som du kopierade från Azure Portal.
     
@@ -197,7 +197,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till att identifiera.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **identifiera**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **identifiera**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -229,7 +229,7 @@ Den här appen har inte stöd för SCIM-etablering men har en alternativ använd
 
 1. Logga in på företags webbplatsen för igenkänning som administratör.
 
-2. Klicka på **meny**i det övre högra hörnet. Gå till **företags administratör**.
+2. Klicka på **meny** i det övre högra hörnet. Gå till **företags administratör**.
 
 3. I det vänstra navigeringsfönstret klickar du på **Inställningar**.
 
@@ -237,9 +237,9 @@ Den här appen har inte stöd för SCIM-etablering men har en alternativ använd
    
     ![Ny användare](./media/recognize-tutorial/tutorial_recognize_005.png "Ny användare")
    
-    a. När **synkronisering är aktiverat**väljer du **på**.
+    a. När **synkronisering är aktiverat** väljer du **på**.
    
-    b. Som **Välj Sync-Provider**väljer du **Microsoft/Office 365**.
+    b. Som **Välj Sync-Provider** väljer du **Microsoft/Office 365**.
    
     c. Klicka på **Kör användar synkronisering**.
 

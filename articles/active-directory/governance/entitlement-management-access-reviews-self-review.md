@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31c44f2423cdc5c43638fe2515757bcb11a9814c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798451"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Själv granskning av ett Access-paket i hantering av Azure AD-rättigheter
@@ -54,7 +54,7 @@ När du har öppnat åtkomst granskningen kan du se din åtkomst. Använd följa
     >[!NOTE]
     >Om du angav att du inte längre behöver åtkomst, tas du inte bort från Access-paketet direkt. Du kommer att tas bort från åtkomst paketet när granskningen upphör eller om en administratör stoppar granskningen.
 
-1.  Om du klickade på **Ja**kan du behöva ta med en motiverings instruktion i rutan **orsak** .
+1.  Om du klickade på **Ja** kan du behöva ta med en motiverings instruktion i rutan **orsak** .
 
 1.  Klicka på **Skicka**.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 202c9d8075a45b1c5479d9cd1fc9f3392ba026f9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Självstudie: Azure Active Directory integrering med belönings-Gateway
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning för Azure AD med belöna Gateway:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **belöna Gateway** Application Integration.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **belöna Gateway** Application Integration.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -165,7 +165,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till belöna Gateway.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **belöna Gateway**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **belöna Gateway**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

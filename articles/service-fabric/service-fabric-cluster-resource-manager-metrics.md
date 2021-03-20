@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173004"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Hantera resursförbrukning och belastning i Service Fabric med mått
@@ -25,10 +25,10 @@ Anta att du vill komma igång med att skriva och distribuera tjänsten. I det h�
   - ReplicaCount-antal av den totala tillstånds känsliga replikerna på noden
   - Count-Count för alla tjänst objekt (tillstånds lösa och tillstånds känsliga) på noden
 
-| Mått | Tillstånds lös instans inläsning | Tillstånds känslig sekundär belastning | Tillstånds känslig primär belastning | Vikt |
+| Metric | Tillstånds lös instans inläsning | Tillstånds känslig sekundär belastning | Tillstånds känslig primär belastning | Vikt |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Hög |
-| ReplicaCount |0 |1 |1 |Medium |
+| PrimaryCount |0 |0 |1 |Högt |
+| ReplicaCount |0 |1 |1 |Medel |
 | Antal |1 |1 |1 |Låg |
 
 
@@ -236,7 +236,7 @@ OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
         cancellationToken);
 ```
 
-I det här exemplet ska du utföra en uppdatering av den senast rapporterade inläsningen för en partition _53df3d7f-5471-403b-B736-bde6ad584f42_. Primär replik belastning för en mått _CustomMetricName0_ kommer att uppdateras med värdet 100. Samtidigt kommer belastningen för samma mått för en speciell sekundär replik som finns på noden _NodeName0_att uppdateras med värdet 200.
+I det här exemplet ska du utföra en uppdatering av den senast rapporterade inläsningen för en partition _53df3d7f-5471-403b-B736-bde6ad584f42_. Primär replik belastning för en mått _CustomMetricName0_ kommer att uppdateras med värdet 100. Samtidigt kommer belastningen för samma mått för en speciell sekundär replik som finns på noden _NodeName0_ att uppdateras med värdet 200.
 
 ### <a name="updating-a-services-metric-configuration"></a>Uppdatera en tjänsts mått konfiguration
 Listan över mått som är associerade med tjänsten och egenskaperna för dessa mått kan uppdateras dynamiskt när tjänsten är Live. Detta möjliggör experimentering och flexibilitet. Några exempel på när detta är användbart är:

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: af4359efb48898c12bb8ee7ffb882448b5012d19
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151355"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurera framtvingad tunneling med den klassiska distributionsmodellen
@@ -23,7 +23,7 @@ Med tvingad tunneltrafik kan du omdirigera eller ”tvinga” all Internetbunden
 Den här artikeln beskriver hur du konfigurerar Tvingad tunnel trafik för virtuella nätverk som skapats med den klassiska distributions modellen. Tvingad tunnel trafik kan konfigureras med hjälp av PowerShell, inte via portalen. Om du vill konfigurera Tvingad tunnel trafik för distributions modellen för Resource Manager väljer du Resource Manager-artikel i följande listruta:
 
 > [!div class="op_single_selector"]
-> * [Klassisk](vpn-gateway-about-forced-tunneling.md)
+> * [Form](vpn-gateway-about-forced-tunneling.md)
 > * [Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 > 
 

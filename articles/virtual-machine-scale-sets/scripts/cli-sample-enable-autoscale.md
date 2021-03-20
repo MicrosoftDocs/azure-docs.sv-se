@@ -11,10 +11,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8e8118a32da296d090ba22122b5188f941419e94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87502145"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Skala automatiskt en VM-skalningsuppsättning med Azure CLI
@@ -37,7 +37,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>Förklaring av skript
 Det här skriptet använder följande kommandon för att skapa en resursgrupp, en VM-skalningsuppsättning och alla relaterade resurser. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [az group create](/cli/azure/ad/group) | Skapar en resursgrupp där alla resurser lagras. |
 | [az vmss create](/cli/azure/vmss) | Skapar VM-skalningsuppsättningen och ansluter den till det virtuella nätverket, undernätet och nätverkssäkerhetsgruppen. En lastbalanserare skapas även för att distribuera trafik till flera virtuella datorinstanser. Det här kommandot anger även den virtuella datoravbildning som ska användas samt administrativa autentiseringsuppgifter.  |

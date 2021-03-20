@@ -4,10 +4,10 @@ description: I den här självstudien ska du ansluta till ett Service Fabric han
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91410475"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>Självstudie: Distribuera en app till ett Service Fabric hanterat kluster (för hands version)
@@ -28,7 +28,7 @@ Den här delen av serien handlar om hur du:
 > * Instansiera ett program i ett kluster
 > * Ta bort ett program från ett kluster
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Service Fabric hanterat kluster (se [*distribuera ett hanterat kluster*](tutorial-managed-cluster-deploy.md)).
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96779523"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Felsöka vanliga problem med Azure Container Instances
@@ -28,7 +28,7 @@ När du definierar din behållar specifikation kräver vissa parametrar att namn
 | Container portar | Mellan 1 och 65535 |Integer |Heltal mellan 1 och 65535 |`<port-number>` |`443` |
 | DNS-namnetikett | 5-63 |Skiftlägesokänsligt |Alfanumeriskt och bindestreck var som helst förutom det första eller sista tecken |`<name>` |`frontend-site1` |
 | Miljövariabel | 1–63 |Skiftlägesokänsligt |Alfanumeriskt och under streck (_) var som helst förutom det första eller sista tecknet |`<name>` |`MY_VARIABLE` |
-| Volym namn | 5-63 |Gemener |Alfanumeriskt och bindestreck var som helst utom det första eller sista. Får inte innehålla två bindestreck i följd. |`<name>` |`batch-output-volume` |
+| Volymnamn | 5-63 |Gemener |Alfanumeriskt och bindestreck var som helst utom det första eller sista. Får inte innehålla två bindestreck i följd. |`<name>` |`batch-output-volume` |
 
 <sup>1</sup> Begränsning för behållar grupp namn när de inte anges oberoende av behållar instanser, till exempel med `az container create` kommando distributioner.
 

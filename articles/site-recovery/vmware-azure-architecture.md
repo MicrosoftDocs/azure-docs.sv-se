@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652236"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Haveriberedskapsarkitektur för VMware till Azure
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Katastrof återställnings arkitektur för VMware till Azure
 
 Den här artikeln beskriver arkitekturen och processerna som används när du distribuerar haveri beredskap, redundans och återställning av virtuella VMware-datorer mellan en lokal VMware-plats och Azure med hjälp av tjänsten [Azure Site Recovery](site-recovery-overview.md) .
 
@@ -43,7 +43,7 @@ För att Site Recovery ska fungera som förväntat måste du ändra den utgåend
 
 Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutning ger du åtkomst till följande URL: er:
 
-| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Tillhandahåller auktorisering och autentisering för Site Recovery-tjänstens webbadresser. |
@@ -89,7 +89,7 @@ För en fullständig lista över URL: er som ska filtreras för kommunikation me
 
 När du aktiverar Azure VM-replikering skapar Site Recovery en ny replikeringsprincip med de standardinställningar som sammanfattas i tabellen.
 
-**Principinställning** | **Information** | **Objekt**
+**Principinställning** | **Information** | **Standardvärde**
 --- | --- | ---
 **Kvarhållning av återställnings punkt** | Anger hur länge Site Recovery behåller återställnings punkter | 24 timmar
 **Frekvens för programkonsekventa ögonblicks bilder** | Hur ofta Site Recovery tar en programkonsekvent ögonblicks bild. | Var fjärde timme

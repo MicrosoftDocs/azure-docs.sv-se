@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012367"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Snabb start: skapa ett Azure Stream Analytics jobb med hjälp av Visual Studio
@@ -131,7 +131,7 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
    |**Inställning**  |**Föreslaget värde**  |**Beskrivning**   |
    |---------|---------|---------|
-   |Utdataalias  |  Resultat   |  Ange ett namn som identifierar jobbets utdata.   |
+   |Utdataalias  |  Utdata   |  Ange ett namn som identifierar jobbets utdata.   |
    |Kanalmottagare   |  Blob Storage |  Välj lämplig kanalmottagare.    |
    |Resurs  |  Ange inställningar för datakälla manuellt |  Välj att ange data manuellt eller välj ett befintligt konto.   |
    |Prenumeration  |  \<Your subscription\>   | Välj den Azure-prenumeration där det lagringskonto som du skapade finns. Lagringskontot kan vara i samma eller en annan prenumeration. I det här exemplet förutsätts att du har skapat lagringskontot i samma prenumeration.   |

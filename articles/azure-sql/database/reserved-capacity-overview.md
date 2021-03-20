@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
 ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602518"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Spara kostnader för resurser med reserverad kapacitet – Azure SQL Database & SQL-hanterad instans
@@ -57,13 +57,13 @@ Anta till exempel att du kör ett allmänt syfte, Gen5 – 16 vCore elastisk poo
     
     | Fält      | Beskrivning|
     |------------|--------------|
-    |Prenumeration|Prenumerationen som används för att betala för kapacitets reservationen. Betalnings metoden för prenumerationen debiteras för reservationens start kostnader. Prenumerations typen måste vara ett Enterprise Agreement (erbjudande nummer MS-AZR-0017P eller MS-AZR-0148P) eller ett enskilt avtal med priser enligt principen betala per användning (erbjudande nummer MS-AZR-0003P eller MS-AZR-0023P). För en företags prenumeration dras avgifterna från registreringen för förskotts betalning i Azure (tidigare kallat betalnings åtagande) eller debiteras som överanvändning. För en enskild prenumeration med priset betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.|
+    |Prenumeration|Prenumerationen som används för att betala för kapacitets reservationen. Betalnings metoden för prenumerationen debiteras för reservationens start kostnader. Prenumerations typen måste vara ett Enterprise Agreement (erbjudande nummer MS-AZR-0017P eller MS-AZR-0148P) eller ett enskilt avtal med priser enligt principen betala per användning (erbjudande nummer MS-AZR-0003P eller MS-AZR-0023P). För företagsprenumerationer dras avgifterna från registreringens saldo för Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande) eller debiteras som överförbrukning. För en enskild prenumeration med priset betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.|
     |Omfång       |VCore-reservationens omfång kan omfatta en prenumeration eller flera prenumerationer (delad omfattning). Om du väljer  <br/><br/>**Delat** används reservations rabatten för vCore på databasen eller den hanterade instans som körs i alla prenumerationer i din fakturerings kontext. För företags kunder är det delade omfånget registreringen och innehåller alla prenumerationer i registreringen. För Betala per användning-kunder gäller den delade omfattningen samtliga Betala per användning-prenumerationer som kontoadministratören har skapat.<br/><br/>**Enskild prenumeration** tillämpas reservations rabatten för vCore på databaserna eller hanterade instanser i den här prenumerationen. <br/><br/>**En enda resurs grupp**, reservations rabatten tillämpas på instanserna av databaser eller hanterade instanser i den valda prenumerationen och den valda resurs gruppen i den prenumerationen.|
     |Region      |Den Azure-region som omfattas av kapacitets reservationen.|
     |Distributions typ|Den SQL-resurs typ som du vill köpa reservationen för.|
     |Prestanda nivå|Tjänst nivån för databaserna eller hanterade instanser. |
-    |Term        |Ett år eller tre år.|
-    |Antal    |Mängden data bearbetnings resurser som köps i kapacitets reservationen. Antalet är ett antal virtuella kärnor i den valda Azure-regionen och prestanda nivån som reserveras och kommer att få fakturerings rabatten. Om du till exempel kör eller planerar att köra flera databaser med den totala beräknings kapaciteten för Gen5 16 virtuella kärnor i regionen USA, östra, anger du kvantiteten som 16 för att maximera förmånen för alla databaser. |
+    |Period        |Ett år eller tre år.|
+    |Kvantitet    |Mängden data bearbetnings resurser som köps i kapacitets reservationen. Antalet är ett antal virtuella kärnor i den valda Azure-regionen och prestanda nivån som reserveras och kommer att få fakturerings rabatten. Om du till exempel kör eller planerar att köra flera databaser med den totala beräknings kapaciteten för Gen5 16 virtuella kärnor i regionen USA, östra, anger du kvantiteten som 16 för att maximera förmånen för alla databaser. |
 
 1. Granska kostnaden för kapacitets reservationen i avsnittet **kostnader** .
 1. Välj **Köp**.
@@ -91,7 +91,7 @@ Reservations rabatten för vCore tillämpas automatiskt på antalet databaser el
 
 Information om hur du hanterar kapacitets reservationen finns i [Hantera reserverad kapacitet](../../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
-Du kan läsa mer om Azure-reservationer i följande artiklar:
+Mer information om Azure-reservationer finns i följande artiklar:
 
 - [Vad är Azure-reservationer?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Hantera Azure Reservations](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
