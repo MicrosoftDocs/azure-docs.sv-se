@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98875457"
 ---
 # <a name="manage-your-function-app"></a>Hantera din Function-app 
@@ -92,7 +92,7 @@ Du kan bestämma vilken typ av plan som används av din Function-app från Azure
 
 Följande värden anger plan typen:
 
-| Plantyp | Portalen | Azure CLI/PowerShell |
+| Plantyp | Portal | Azure CLI/PowerShell |
 | --- | --- | --- |
 | [Förbrukning](consumption-plan.md) | **Förbrukning** | `Dynamic` |
 | [Premium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
@@ -252,7 +252,7 @@ När du använder en käll kontroll lösning för att utveckla och underhålla d
 
 För att förhindra körning av skadlig kod på klienten blockerar moderna webbläsare förfrågningar från webb program till resurser som körs i en separat domän. Med [resurs delning mellan ursprung (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) kan en `Access-Control-Allow-Origin` rubrik deklarera vilka ursprung som får anropa slut punkter i din Function-app.
 
-#### <a name="portal"></a>Portalen
+#### <a name="portal"></a>Portal
 
 När du konfigurerar listan över **tillåtna ursprung** för din Function-app `Access-Control-Allow-Origin` läggs rubriken automatiskt till i alla svar från http-slutpunkter i din Function-app. 
 

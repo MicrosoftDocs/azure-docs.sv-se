@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 6ea9be8e7e67a8e52412e7011cfb1d33c9929191
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97486776"
 ---
 Som en del av kraven för den här snabb starten laddade du ned exempel koden till en mapp. Följ dessa steg om du vill undersöka och redigera exempel koden.
@@ -12,10 +12,10 @@ Som en del av kraven för den här snabb starten laddade du ned exempel koden ti
 
     Distributions mal len refererar till distributions manifestet för gräns enheten, där variabler används för vissa egenskaper. *. Miljö* filen innehåller värdena för variablerna.
 1. Gå till mappen *src/Cloud-to-Device-console-app* . Här ser du *appsettings.jspå* filen och några andra filer:
-    * ***operations.jspå** _ – den lista över åtgärder som du vill att programmet ska köra.
-    _ ***main.py** _ – exempel koden. Den här koden:
+    * ***operations.jsi*** listan över åtgärder som du vill att programmet ska köra.
+    * ***main.py*** – exempel koden. Den här koden:
 
-        _ Läser in appinställningar.
+        * Läser in appinställningar.
         * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess [direkta metoder](../../../direct-methods.md). 
         * Pausar så att du kan granska utdata från programmet i **terminalfönstret** och granska de händelser som genererats av modulen i fönstret **utdata** .
         * Anropar direkta metoder för att rensa resurser.

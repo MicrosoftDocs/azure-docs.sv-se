@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23f88a783ca257090fc607cc9a16ec457c7e9c8c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90016596"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Vad är synkronisering av lösenordshash med Azure AD?
@@ -51,7 +51,7 @@ Mer information finns i [Vad är hybrididentitet?](whatis-hybrid-identity.md).
 
 
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 - [Vad är hybrididentitet?](whatis-hybrid-identity.md)
 - [Vad är Azure AD Connect och Connect Health?](whatis-azure-ad-connect.md)

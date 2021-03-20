@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92204647"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Verifiera ExpressRoute-anslutning
@@ -36,7 +36,7 @@ Syftet med det här dokumentet är att hjälpa användarna att identifiera om oc
 
 ## <a name="overview"></a>Översikt
 Följande diagram visar den logiska anslutningen för ett kund nätverk till Microsoft-nätverk med ExpressRoute.
-[![1]][1]
+[![81.1]][1]
 
 I föregående diagram indikerar talen viktiga nätverks punkter. Dessa nätverks platser refereras i den här artikeln vid tidpunkten med deras associerade nummer. Beroende på ExpressRoute-anslutnings modell – molnets Exchange-samplacering, punkt-till-punkt-Ethernet-anslutning eller alla-till-alla (IPVPN)--nätverks punkterna 3 och 4 kan vara växlar (skikt 2 enheter) eller routrar (Layer 3-enheter). Det finns inga nätverks punkter 3 och 4 i den direkta anslutnings modellen. i stället är CEs (2) direkt ansluten till msee via mörk fiber. De viktiga nätverks punkterna illustreras på följande sätt:
 
@@ -165,7 +165,7 @@ I Azure Portal kan status för en peering för en ExpressRoute-krets kontrol ler
 I föregående exempel, som noterade att Azures privata peering har tillhandahållits, medan Azures offentliga och Microsoft-peering inte har tillhandahållits. En etablerad peering-kontext har även de primära och sekundära punkt-till-punkt-undernät som anges. /30-undernät används för IP-adressen för gränssnittet msee och CEs/PE-msee. För peering som har tillhandahållits, Visar listan även vem som senast ändrade konfigurationen. 
 
 > [!NOTE]
-> Om det inte går att aktivera en peering, kontrollerar du om de primära och sekundära undernät som har tilldelats matchar konfigurationen på den länkade CE/PE-MSEE: N. Kontrol lera också om rätt *VlanId* , *AzureASN* och *PeerASN* används på msee och om dessa värden mappar till de som används i den länkade CE/PE-msee: n. Om du väljer MD5-hash ska den delade nyckeln vara densamma på MSEE: N och PE-MSEE: N/CE-paret. Den tidigare konfigurerade delade nyckeln visas inte av säkerhets skäl. Om du behöver ändra någon av dessa konfigurationer på en MSEE: N-router, se [skapa och ändra routning för en ExpressRoute-krets][CreatePeering].  
+> Om det inte går att aktivera en peering, kontrollerar du om de primära och sekundära undernät som har tilldelats matchar konfigurationen på den länkade CE/PE-MSEE: N. Kontrol lera också om rätt *VlanId*, *AzureASN* och *PeerASN* används på msee och om dessa värden mappar till de som används i den länkade CE/PE-msee: n. Om du väljer MD5-hash ska den delade nyckeln vara densamma på MSEE: N och PE-MSEE: N/CE-paret. Den tidigare konfigurerade delade nyckeln visas inte av säkerhets skäl. Om du behöver ändra någon av dessa konfigurationer på en MSEE: N-router, se [skapa och ändra routning för en ExpressRoute-krets][CreatePeering].  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> Om det inte går att aktivera en peering, kontrollerar du om de primära och sekundära undernät som har tilldelats matchar konfigurationen på den länkade CE/PE-MSEE: N. Kontrol lera också om rätt *VlanId* , *AzureASN* och *PeerASN* används på msee och om dessa värden mappar till de som används i den länkade CE/PE-msee: n. Om du väljer MD5-hash ska den delade nyckeln vara densamma på MSEE: N och PE-MSEE: N/CE-paret. Den tidigare konfigurerade delade nyckeln visas inte av säkerhets skäl. Om du behöver ändra någon av dessa konfigurationer på en MSEE: N-router, se [skapa och ändra routning för en ExpressRoute-krets][CreatePeering].  
+> Om det inte går att aktivera en peering, kontrollerar du om de primära och sekundära undernät som har tilldelats matchar konfigurationen på den länkade CE/PE-MSEE: N. Kontrol lera också om rätt *VlanId*, *AzureASN* och *PeerASN* används på msee och om dessa värden mappar till de som används i den länkade CE/PE-msee: n. Om du väljer MD5-hash ska den delade nyckeln vara densamma på MSEE: N och PE-MSEE: N/CE-paret. Den tidigare konfigurerade delade nyckeln visas inte av säkerhets skäl. Om du behöver ändra någon av dessa konfigurationer på en MSEE: N-router, se [skapa och ändra routning för en ExpressRoute-krets][CreatePeering].  
 >
 >
 
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> Om tillståndet för en eBGP-peering mellan en MSEE: N och en CE/PE-MSEE: N är aktiv eller inaktiv, kontrollerar du om de primära och sekundära peer-undernät som har tilldelats matchar konfigurationen på den länkade CE/PE-MSEE: N. Kontrol lera också om rätt *VlanId* , *AzureAsn* och *PeerAsn* används på msee och om dessa värden mappar till dem som används i den länkade PE-msee: n/CE. Om du väljer MD5-hash ska den delade nyckeln vara densamma på MSEE: N-och CE/PE-MSEE: N-paret. Om du behöver ändra någon av dessa konfigurationer på en MSEE: N-router, se [skapa och ändra routning för en ExpressRoute-krets][CreatePeering].
+> Om tillståndet för en eBGP-peering mellan en MSEE: N och en CE/PE-MSEE: N är aktiv eller inaktiv, kontrollerar du om de primära och sekundära peer-undernät som har tilldelats matchar konfigurationen på den länkade CE/PE-MSEE: N. Kontrol lera också om rätt *VlanId*, *AzureAsn* och *PeerAsn* används på msee och om dessa värden mappar till dem som används i den länkade PE-msee: n/CE. Om du väljer MD5-hash ska den delade nyckeln vara densamma på MSEE: N-och CE/PE-MSEE: N-paret. Om du behöver ändra någon av dessa konfigurationer på en MSEE: N-router, se [skapa och ändra routning för en ExpressRoute-krets][CreatePeering].
 >
 
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893805"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med skärm utsändning-O-Matic
@@ -48,14 +48,14 @@ Om du vill konfigurera integrationen av skärm utsändning-O-Matic i Azure AD m�
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **skärm utsändning-O-Matic** i rutan Sök.
 1. Välj **skärm utsändning-O-Matic** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Konfigurera och testa enkel inloggning med Azure AD för skärm utsändning-O-Matic
 
-Konfigurera och testa Azure AD SSO med skärm utsändning-O-Matic med en test användare som kallas **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i skärm utsändning-O-Matic.
+Konfigurera och testa Azure AD SSO med skärm utsändning-O-Matic med en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i skärm utsändning-O-Matic.
 
 Om du vill konfigurera och testa Azure AD SSO med skärm utsändning-O-Matic, slutför du följande Bygg stenar:
 
@@ -70,8 +70,8 @@ Om du vill konfigurera och testa Azure AD SSO med skärm utsändning-O-Matic, sl
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan skärm bilds **-O-Matic** program integrering letar du upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. I [Azure Portal](https://portal.azure.com/)på sidan skärm bilds **-O-Matic** program integrering letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -95,21 +95,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till skärm utsändning-O-Matic.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan program väljer du **skärm utsändning-O-Matic** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **skärm utsändning-O-Matic**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -123,7 +123,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-screencast-o-matic-sso"></a>Konfigurera skärm utsändning – O-Matic SSO
 
-1. Om du vill automatisera konfigurationen i skärm bilds-O-Matic måste du installera **webb läsar tillägget Mina appar med säker inloggning** genom att klicka på **installera tillägget** .
+1. Om du vill automatisera konfigurationen i skärm bilds-O-Matic måste du installera **webb läsar tillägget Mina appar med säker inloggning** genom att klicka på **installera tillägget**.
 
     ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
 
@@ -133,15 +133,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Om du vill konfigurera skärm läsaren-O-Matic manuellt öppnar du ett nytt webbläsarfönster och loggar in på din skärm bild för O-Matic företags plats som administratör och utför följande steg:
 
-1. Klicka på **prenumerationen** .
+1. Klicka på **prenumerationen**.
 
     ![Prenumerationen](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-1. Under avsnittet **åtkomst sida** klickar du på **installation** .
+1. Under avsnittet **åtkomst sida** klickar du på **installation**.
 
     ![Skärm bild som visar avsnittet "åtkomst sidan" med knappen "Konfigurera" valt.](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
-1. Utför följande steg på **sidan Konfigurera åtkomst** .
+1. Utför följande steg på **sidan Konfigurera åtkomst**.
 
 1. Under avsnittet **åtkomst-URL** , anger du ditt instancename i den angivna text rutan.
 
@@ -151,7 +151,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Under **överför IDP metadata XML-fil** klickar du på **Välj fil** för att ladda upp de metadata som du har laddat ned från Azure Portal.
 
-1. Klicka på **OK** .
+1. Klicka på **OK**.
 
     ![Åtkomst](./media/screencast-tutorial/tutorial_screencast_save.png)
 

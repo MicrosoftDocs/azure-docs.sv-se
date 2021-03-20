@@ -11,15 +11,15 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97386875"
 ---
 # <a name="sub-journeys"></a>Under transporter
 
-Under transporter kan användas för att organisera och förenkla flödet av Orchestration-steg i en användar resa. [Användar resan](userjourneys.md) anger explicita sökvägar genom vilka en princip tillåter ett förlitande parts program att hämta önskade anspråk för en användare. Användaren tas via dessa sökvägar för att hämta de anspråk som ska visas för den förlitande parten. Med andra ord definierar användar resan affärs logiken för vad en användare går igenom när ramverket för Azure AD B2C Identity Experience bearbetar begäran. En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. [ClaimsExchange](userjourneys.md#claimsexchanges) -elementet i ett Orchestration-steg är knutet till en enskild [teknisk profil](technicalprofiles.md) som körs.
+Under transporter kan användas för att organisera och förenkla flödet av Orchestration-steg i en användar resa. [Användarresor](userjourneys.md) anger explicita sökvägar genom vilka en princip tillåter att ett anspråksbaserat program hämtar önskade anspråk för en användare. Via dessa sökvägar kan användaren hämta de anspråk som ska presenteras för den förlitande parten. Med andra ord definierar användar resan affärs logiken för vad en användare går igenom när ramverket för Azure AD B2C Identity Experience bearbetar begäran. En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. [ClaimsExchange](userjourneys.md#claimsexchanges) -elementet i ett Orchestration-steg är knutet till en enskild [teknisk profil](technicalprofiles.md) som körs.
 
 En under resa är en gruppering av Orchestration-steg som kan anropas när som helst inom en användar resa. Du kan använda under transporter för att skapa återanvändbara steg sekvenser eller implementera branchning för att bättre representera affärs logiken.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92894924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Självstudie: Azure Active Directory integrering med XaitPorter
@@ -49,11 +49,11 @@ Om du vill konfigurera integreringen av XaitPorter i Azure AD måste du lägga t
 
 **Utför följande steg för att lägga till XaitPorter från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Om du vill konfigurera integreringen av XaitPorter i Azure AD måste du lägga t
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **XaitPorter** , väljer **XaitPorter** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **XaitPorter**, väljer **XaitPorter** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![XaitPorter i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med XaitPorter baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med XaitPorter baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i XaitPorter upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med XaitPorter i Azure AD måste du slutföra följande Bygg stenar:
@@ -93,7 +93,7 @@ Utför följande steg för att konfigurera enkel inloggning med XaitPorter i Azu
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ Utför följande steg för att konfigurera enkel inloggning med XaitPorter i Azu
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Konfigurera XaitPorter Single Sign-On
 
-1. Om du vill automatisera konfigurationen i XaitPorter måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget** .
+1. Om du vill automatisera konfigurationen i XaitPorter måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
 
     ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
 
@@ -126,7 +126,7 @@ Utför följande steg för att konfigurera enkel inloggning med XaitPorter i Azu
 
 3. Om du vill konfigurera XaitPorter manuellt öppnar du ett nytt webbläsarfönster och loggar in på din XaitPorter-företags webbplats som administratör och utför följande steg:
 
-4. Klicka på **administratör** .
+4. Klicka på **administratör**.
 
     ![Skärm bild som visar den administratör som valts på XaitPorter-webbplatsen.](./media/xaitporter-tutorial/user1.png)
 
@@ -138,19 +138,19 @@ Utför följande steg för att konfigurera enkel inloggning med XaitPorter i Azu
 
     ![Skärm bild som visar avsnittet hantera enkel inloggning där du kan utföra de här stegen.](./media/xaitporter-tutorial/user3.png)
 
-    a. Välj **aktivera enkel Sign-On autentisering** .
+    a. Välj **aktivera enkel Sign-On autentisering**.
 
-    b. I text rutan för **Inställningar för identitetsprovider** klistrar du in **URL för app Federation-Metadata** som du har kopierat från Azure Portal och klickar på **Hämta** .
+    b. I text rutan för **Inställningar för identitetsprovider** klistrar du in **URL för app Federation-Metadata** som du har kopierat från Azure Portal och klickar på **Hämta**.
 
-    c. Välj **Aktivera skapande av användare** .
+    c. Välj **Aktivera skapande av användare**.
 
-    d. Klicka på **OK** .
+    d. Klicka på **OK**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -162,31 +162,31 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till XaitPorter.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **XaitPorter** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **XaitPorter**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **XaitPorter** .
+2. I listan program väljer du **XaitPorter**.
 
     ![XaitPorter-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -194,7 +194,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-xaitporter-test-user"></a>Skapa XaitPorter test användare
 

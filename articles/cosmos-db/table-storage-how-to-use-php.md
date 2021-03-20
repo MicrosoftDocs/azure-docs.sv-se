@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
 ms.openlocfilehash: 9d059c899e4a64d4d2c1b880b2a1d0f89258f33b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079639"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Använda tjänsten Azure Storage Table eller Azure Cosmos DB Table-API:et från PHP
@@ -21,7 +21,7 @@ ms.locfileid: "93079639"
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Den här artikeln visar hur du skapar tabeller, lagrar data och utför CRUD-åtgärder på data. Välj antingen Azure-Table service eller Azure Cosmos DB Tabell-API. Exemplen är skrivna i PHP och använder [PHP-klientbiblioteket för Azure Storage Table][download]. Guiden innehåller scenarier som beskriver hur du **skapar och tar bort en tabell** och hur du **infogar, tar bort och kör frågor mot entiteter i en tabell** . Mer information om Azure Table-tjänsten finns under [Nästa steg](#next-steps).
+Den här artikeln visar hur du skapar tabeller, lagrar data och utför CRUD-åtgärder på data. Välj antingen Azure-Table service eller Azure Cosmos DB Tabell-API. Exemplen är skrivna i PHP och använder [PHP-klientbiblioteket för Azure Storage Table][download]. Guiden innehåller scenarier som beskriver hur du **skapar och tar bort en tabell** och hur du **infogar, tar bort och kör frågor mot entiteter i en tabell**. Mer information om Azure Table-tjänsten finns under [Nästa steg](#next-steps).
 
 ## <a name="create-an-azure-service-account"></a>Skapa ett Azure-tjänstkonto
 
@@ -65,7 +65,7 @@ För att kunna använda Storage Table-tjänsten eller Azure Cosmos DB-API:er må
 * Referera till autoloader-filen med hjälp av instruktionen [require_once][require_once] och
 * Referera till de klasser som du använder.
 
-Följande exempel beskriver hur du lägger till autoloader-filen och refererar till klassen **TableRestProxy** .
+Följande exempel beskriver hur du lägger till autoloader-filen och refererar till klassen **TableRestProxy**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -102,10 +102,10 @@ För att instantiera en Azure Cosmos DB Table-klient behöver du en giltig anslu
 $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-När du skapar en Azure Table Storage-klient eller Azure Cosmos DB-klient måste du använda klassen **TableRestProxy** . Du kan:
+När du skapar en Azure Table Storage-klient eller Azure Cosmos DB-klient måste du använda klassen **TableRestProxy**. Du kan:
 
 * Ange anslutningssträngen direkt i klassen eller
-* Hämta anslutningssträngen från externa källor med hjälp av **CloudConfigurationManager (CCM)** :
+* Hämta anslutningssträngen från externa källor med hjälp av **CloudConfigurationManager (CCM)**:
   * Som standard finns stöd för en extern källa – miljövariabler.
   * Du kan lägga till nya källor genom att utöka `ConnectionStringSource`-klassen.
 
@@ -121,7 +121,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 
 ## <a name="create-a-table"></a>Skapa en tabell
 
-Med **TableRestProxy** -objektet kan du skapa en tabell med metoden **createTable** . När du skapar en tabell kan du ange ett timeout-värde för Table Storage-tjänsten. (Mer information om tidsgränser för Table Storage finns i [Setting Timeouts for Table Service Operations][table-service-timeouts] (Konfigurera tidsgränser för åtgärder i Table Storage).)
+Med **TableRestProxy**-objektet kan du skapa en tabell med metoden **createTable**. När du skapar en tabell kan du ange ett timeout-värde för Table Storage-tjänsten. (Mer information om tidsgränser för Table Storage finns i [Setting Timeouts for Table Service Operations][table-service-timeouts] (Konfigurera tidsgränser för åtgärder i Table Storage).)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -149,7 +149,7 @@ Mer information om begränsningar för tabellnamn finns i [Understanding the Tab
 
 ## <a name="add-an-entity-to-a-table"></a>Lägga till en entitet i en tabell
 
-Du lägger till en entitet i en tabell genom att skapa ett nytt **Entity** -objekt och skicka det till **TableRestProxy->insertEntity** . Observera att du måste ange `PartitionKey` och `RowKey` när du skapar en entitet. Det här är entitetens unika identifierare. Du kan fråga dessa värden mycket snabbare än andra entitetsegenskaper. `PartitionKey` används för att automatiskt distribuera tabellens entiteter mellan flera Storage-noder. Entiteter med samma `PartitionKey` lagras på samma nod. (Åtgärder på flera entiteter som lagras på samma nod fungerar bättre än för entiteter som lagras på olika noder.) `RowKey` Är det unika ID: t för en entitet i en partition.
+Du lägger till en entitet i en tabell genom att skapa ett nytt **Entity**-objekt och skicka det till **TableRestProxy->insertEntity**. Observera att du måste ange `PartitionKey` och `RowKey` när du skapar en entitet. Det här är entitetens unika identifierare. Du kan fråga dessa värden mycket snabbare än andra entitetsegenskaper. `PartitionKey` används för att automatiskt distribuera tabellens entiteter mellan flera Storage-noder. Entiteter med samma `PartitionKey` lagras på samma nod. (Åtgärder på flera entiteter som lagras på samma nod fungerar bättre än för entiteter som lagras på olika noder.) `RowKey` Är det unika ID: t för en entitet i en partition.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -185,7 +185,7 @@ catch(ServiceException $e){
 
 Information om tabellegenskaper och tabelltyper finns i [Understanding the Table Service Data Model][table-data-model] (Så här fungerar datamodellen för Table Storage).
 
-Klassen **TableRestProxy** har två alternativa metoder som kan användas för att infoga entiteter: **insertOrMergeEntity** och **insertOrReplaceEntity** . Om du vill använda dessa metoder skapar du en ny **entitet** och skickar den som en parameter till någon av metoderna. Båda metoderna infogar entiteten om den inte finns. Om entiteten redan finns uppdaterar **insertOrMergeEntity** egenskapsvärdena om egenskaperna redan finns och lägger till nya egenskaper om de inte finns, medan **insertOrReplaceEntity** helt ersätter en befintlig entitet. Följande exempel visar hur du använder **insertOrMergeEntity** . Om entiteten med `PartitionKey` "tasksSeattle" och `RowKey` "1" inte redan finns, infogas den. Om den däremot redan har infogats tidigare (som i exemplet ovan), uppdateras egenskapen `DueDate` och egenskapen `Status` läggs till. Egenskaperna `Description` och `Location` uppdateras också, men med värden som inte ändrar dem. Om dessa sista två egenskaper inte läggs till (som i exemplet), men de finns på målentiteten, så ändras inte deras befintliga värden.
+Klassen **TableRestProxy** har två alternativa metoder som kan användas för att infoga entiteter: **insertOrMergeEntity** och **insertOrReplaceEntity**. Om du vill använda dessa metoder skapar du en ny **entitet** och skickar den som en parameter till någon av metoderna. Båda metoderna infogar entiteten om den inte finns. Om entiteten redan finns uppdaterar **insertOrMergeEntity** egenskapsvärdena om egenskaperna redan finns och lägger till nya egenskaper om de inte finns, medan **insertOrReplaceEntity** helt ersätter en befintlig entitet. Följande exempel visar hur du använder **insertOrMergeEntity**. Om entiteten med `PartitionKey` "tasksSeattle" och `RowKey` "1" inte redan finns, infogas den. Om den däremot redan har infogats tidigare (som i exemplet ovan), uppdateras egenskapen `DueDate` och egenskapen `Status` läggs till. Egenskaperna `Description` och `Location` uppdateras också, men med värden som inte ändrar dem. Om dessa sista två egenskaper inte läggs till (som i exemplet), men de finns på målentiteten, så ändras inte deras befintliga värden.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -229,7 +229,7 @@ catch(ServiceException $e){
 
 ## <a name="retrieve-a-single-entity"></a>Hämta en enda entitet
 
-Med metoden **TableRestProxy->getEntity** kan du hämta en enskild entitet genom att fråga efter dess `PartitionKey` och `RowKey`. I exemplet nedan anges partitionsnyckeln `tasksSeattle` och radnyckeln `1` i metoden **getEntity** .
+Med metoden **TableRestProxy->getEntity** kan du hämta en enskild entitet genom att fråga efter dess `PartitionKey` och `RowKey`. I exemplet nedan anges partitionsnyckeln `tasksSeattle` och radnyckeln `1` i metoden **getEntity**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -259,7 +259,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Hämta alla entiteter i en partition
 
-Entitetsfrågor skapas med hjälp av filter (mer information finns i [Querying Tables and Entities][filters] (Köra frågor mot tabeller och entiteter)). Om du vill hämta alla entiteter i en partition använder du filtret ”PartitionKey eq *partitionens_namn* ”. I följande exempel beskriver vi hur du hämtar alla entiteter i partitionen `tasksSeattle` genom att ange ett filter i metoden **queryEntities** .
+Entitetsfrågor skapas med hjälp av filter (mer information finns i [Querying Tables and Entities][filters] (Köra frågor mot tabeller och entiteter)). Om du vill hämta alla entiteter i en partition använder du filtret ”PartitionKey eq *partitionens_namn*”. I följande exempel beskriver vi hur du hämtar alla entiteter i partitionen `tasksSeattle` genom att ange ett filter i metoden **queryEntities**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -328,7 +328,7 @@ foreach($entities as $entity){
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Hämta en deluppsättning entitetsegenskaper
 
-En fråga kan hämta en deluppsättning entitetsegenskaper. Den här tekniken kallas *projektion* , minskar bandbredden och kan förbättra frågans prestanda, särskilt för stora entiteter. Du anger en egenskap som ska hämtas genom att skicka namnet på egenskapen till metoden **Query->addSelectField** . Du kan anropa den här metoden flera gånger om du vill lägga till fler egenskaper. När du har kört **TableRestProxy->queryEntities** har entiteterna som returneras endast de valda egenskaperna. (Om du vill returnera en deluppsättning tabellentiteter använder du ett filter som i frågorna ovan.)
+En fråga kan hämta en deluppsättning entitetsegenskaper. Den här tekniken kallas *projektion*, minskar bandbredden och kan förbättra frågans prestanda, särskilt för stora entiteter. Du anger en egenskap som ska hämtas genom att skicka namnet på egenskapen till metoden **Query->addSelectField**. Du kan anropa den här metoden flera gånger om du vill lägga till fler egenskaper. När du har kört **TableRestProxy->queryEntities** har entiteterna som returneras endast de valda egenskaperna. (Om du vill returnera en deluppsättning tabellentiteter använder du ett filter som i frågorna ovan.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -368,7 +368,7 @@ foreach($entities as $entity){
 
 ## <a name="update-an-entity"></a>Uppdatera en entitet
 
-Du kan uppdatera en befintlig entitet genom att använda metoderna **Entity->setProperty** och **Entity->addProperty** för entiteten och sedan anropa **TableRestProxy->updateEntity** . Koden i följande exempel hämtar en entitet, ändrar en egenskap, tar bort en annan egenskap och lägger till en ny egenskap. Observera att du kan ta bort en egenskap genom att ange dess värde till **null** .
+Du kan uppdatera en befintlig entitet genom att använda metoderna **Entity->setProperty** och **Entity->addProperty** för entiteten och sedan anropa **TableRestProxy->updateEntity**. Koden i följande exempel hämtar en entitet, ändrar en egenskap, tar bort en annan egenskap och lägger till en ny egenskap. Observera att du kan ta bort en egenskap genom att ange dess värde till **null**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -403,7 +403,7 @@ catch(ServiceException $e){
 
 ## <a name="delete-an-entity"></a>Ta bort en entitet
 
-Om du vill ta bort en entitet anger du tabellnamnet och entitetens `PartitionKey` och `RowKey` i metoden **TableRestProxy->deleteEntity** .
+Om du vill ta bort en entitet anger du tabellnamnet och entitetens `PartitionKey` och `RowKey` i metoden **TableRestProxy->deleteEntity**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -428,11 +428,11 @@ catch(ServiceException $e){
 }
 ```
 
-För samtidighetskontroller kan du ange Etag för en entitet som ska tas bort med hjälp av metoden **DeleteEntityOptions->setEtag** och skicka **DeleteEntityOptions** -objektet till **deleteEntity** som en fjärde parameter.
+För samtidighetskontroller kan du ange Etag för en entitet som ska tas bort med hjälp av metoden **DeleteEntityOptions->setEtag** och skicka **DeleteEntityOptions**-objektet till **deleteEntity** som en fjärde parameter.
 
 ## <a name="batch-table-operations"></a>Tabellåtgärder i batchar
 
-Med metoden **TableRestProxy->batch** kan du köra flera åtgärder i en enda begäran. Med det här mönstret lägger du till åtgärder i **BatchRequest** -objektet och lägger sedan till **BatchRequest** -objektet i metoden **TableRestProxy->batch** . Du lägger till en åtgärd i ett **BatchRequest** -objekt genom att anropa någon av följande metoder flera gånger:
+Med metoden **TableRestProxy->batch** kan du köra flera åtgärder i en enda begäran. Med det här mönstret lägger du till åtgärder i **BatchRequest**-objektet och lägger sedan till **BatchRequest**-objektet i metoden **TableRestProxy->batch**. Du lägger till en åtgärd i ett **BatchRequest**-objekt genom att anropa någon av följande metoder flera gånger:
 
 * **addInsertEntity** (lägger till en insertEntity-åtgärd)
 * **addUpdateEntity** (lägger till en updateEntity-åtgärd)
@@ -441,7 +441,7 @@ Med metoden **TableRestProxy->batch** kan du köra flera åtgärder i en enda be
 * **addInsertOrMergeEntity** (lägger till en insertOrMergeEntity-åtgärd)
 * **addDeleteEntity** (lägger till en deleteEntity-åtgärd)
 
-Följande exempel visar hur du kör **insertEntity** - och **deleteEntity** -åtgärder i en enda begäran. 
+Följande exempel visar hur du kör **insertEntity**- och **deleteEntity**-åtgärder i en enda begäran. 
 
 ```php
 require_once 'vendor/autoload.php';
@@ -493,7 +493,7 @@ Mer information om batchbearbetning av tabellåtgärder finns i [Utföra entitet
 
 ## <a name="delete-a-table"></a>Ta bort en tabell
 
-Om du vill ta bort en tabell anger du tabellnamnet i metoden **TableRestProxy->deleteTable** .
+Om du vill ta bort en tabell anger du tabellnamnet i metoden **TableRestProxy->deleteTable**.
 
 ```php
 require_once 'vendor/autoload.php';

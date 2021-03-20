@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: be63ea7ebf905b825ffe73dfc2b37dcdc3bb88fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507626"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Moxtra
@@ -51,7 +51,7 @@ Om du vill konfigurera integreringen av Moxtra i Azure AD måste du lägga till 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Moxtra** i sökrutan.
 1. Välj **Moxtra** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -83,13 +83,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     Skriv en URL i text rutan **inloggnings-URL** :  `https://www.moxtra.com/service/#login`
 
-1. Moxtra-programmet förväntar sig SAML-intyg i ett särskilt format, vilket innebär att du kan lägga till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+1. Moxtra-programmet förväntar sig SAML-intyg i ett särskilt format, vilket innebär att du kan lägga till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialogrutan Användarattribut.
 
     ![image](common/edit-attribute.png)
 
 1. Utöver ovan förväntar sig Moxtra-programmet att fler attribut skickas tillbaka i SAML-svar. I avsnittet Användaranspråk i dialogrutan Användarattribut utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ------------------- | -------------------- |    
     | förnamn | user.givenname |
     | efternamn | user.surname |
@@ -124,7 +124,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -136,13 +136,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Moxtra.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Moxtra**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -154,7 +154,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på din Moxtra företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. I verktygsfältet till vänster klickar du på **administrations konsol > SAML enkel inloggning**och klickar sedan på **ny**.
+2. I verktygsfältet till vänster klickar du på **administrations konsol > SAML enkel inloggning** och klickar sedan på **ny**.
    
     ![Skärm bild som visar sidan för enkel inloggning med SAML med alternativet att skapa en ny enkel inloggning med SAML.](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
@@ -189,21 +189,21 @@ Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i 
 
 1. Logga in på din Moxtra-företags webbplats som administratör.
 
-1. I verktygsfältet till vänster klickar du på **Administratörs konsol > användar hantering**och lägger sedan **till användare**.
+1. I verktygsfältet till vänster klickar du på **Administratörs konsol > användar hantering** och lägger sedan **till användare**.
    
     ![Skärm bild som visar sidan användar hantering med Lägg till användare vald.](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. I dialogrutan **Lägg till användare** utför du följande steg:
   
-    a. Skriv **B**i text rutan **förnamn** .
+    a. Skriv **B** i text rutan **förnamn** .
   
-    b. Skriv **Simon**i text rutan **efter namn** .
+    b. Skriv **Simon** i text rutan **efter namn** .
   
     c. I text rutan **e-post** skriver du B. Simons e-postadress som på Azure Portal.
   
-    d. Skriv **dev**i text rutan **indelning** .
+    d. Skriv **dev** i text rutan **indelning** .
   
-    e. Skriv **det**i text rutan **avdelning** .
+    e. Skriv **det** i text rutan **avdelning** .
   
     f. Välj **administratör**.
   

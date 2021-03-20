@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944298"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Vad är Apache Hive och HiveQL på Azure HDInsight?
@@ -20,7 +20,7 @@ Med Hive kan du projicera strukturen på mycket ostrukturerade data. När du har
 
 HDInsight tillhandahåller flera kluster typer, som är anpassade för vissa arbets belastningar. Följande kluster typer används oftast för Hive-frågor:
 
-|Kluster typ |Description|
+|Kluster typ |Beskrivning|
 |---|---|
 |Interaktiv fråga|Ett Hadoop-kluster som tillhandahåller [LLAP-funktioner (Low latens Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) för att förbättra svars tiderna för interaktiva frågor. Mer information finns i dokumentet [starta med interaktiv fråga i HDInsight](../interactive-query/apache-interactive-query-get-started.md) .|
 |Hadoop|Ett Hadoop-kluster som är anpassat för arbets belastningar för batch-bearbetning. Mer information finns i dokumentet [starta med Apache Hadoop i HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .|

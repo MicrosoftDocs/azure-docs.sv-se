@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503495"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Indexerare får åtkomst till innehåll som skyddas av Azure Network Security-funktioner (Azure Kognitiv sökning)
@@ -119,7 +119,7 @@ Om du vill aktivera indexerare för att få åtkomst till resurser via anslutnin
 De här stegen beskrivs mer detaljerat i [Indexer-anslutningar via en privat slut punkt](search-indexer-howto-access-private.md).
 När du har en godkänd privat slut punkt till en resurs får indexerare som är inställt för *privata* försök att få åtkomst via anslutningen till den privata slut punkten.
 
-### <a name="limits"></a>Begränsningar
+### <a name="limits"></a>Gränser
 
 För att säkerställa optimala prestanda och stabilitet för Sök tjänsten införs begränsningar (av Sök tjänst nivån) på följande dimensioner:
 

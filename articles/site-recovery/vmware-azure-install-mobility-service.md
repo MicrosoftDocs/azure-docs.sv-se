@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90525005"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Förbered käll datorn för push-installation av mobilitets agenten
@@ -53,7 +53,7 @@ Gör följande på varje Linux-dator som du vill skydda:
 4. Aktivera SFTP-undersystem och lösenordsautentisering i sshd_config-filen. Det gör du genom att logga in som **rot**.
 5. I **/etc/ssh/sshd_config** -filen letar du reda på raden som börjar med **PasswordAuthentication**.
 6. Ta bort kommentaren till raden och ändra värdet till **Ja**.
-7. Hitta raden som börjar med **under systemet**och ta bort kommentaren mellan linjen.
+7. Hitta raden som börjar med **under systemet** och ta bort kommentaren mellan linjen.
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 

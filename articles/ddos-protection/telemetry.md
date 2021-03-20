@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716201"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Visa och konfigurera telemetri för DDoS-skydd
@@ -42,9 +42,9 @@ Följande [mått](../azure-monitor/essentials/metrics-supported.md#microsoftnetw
 | BytesDroppedDDoS | Ignorerade inkommande byte DDoS | BytesPerSecond | Maximal | Ignorerade inkommande byte DDoS| 
 | BytesForwardedDDoS | Inkommande byte, vidarebefordrade DDoS | BytesPerSecond | Maximal | Inkommande byte, vidarebefordrade DDoS |
 | BytesInDDoS | DDoS för inkommande byte | BytesPerSecond | Maximal | DDoS för inkommande byte |
-| DDoSTriggerSYNPackets | Inkommande SYN paket för att utlösa DDoS-minskning | CountPerSecond | Maximal | Inkommande SYN paket för att utlösa DDoS-minskning |
-| DDoSTriggerTCPPackets | Inkommande TCP-paket för att utlösa DDoS-minskning | CountPerSecond | Maximal | Inkommande TCP-paket för att utlösa DDoS-minskning |
-| DDoSTriggerUDPPackets | Ingående UDP-paket för att utlösa DDoS-minskning | CountPerSecond | Maximal | Ingående UDP-paket för att utlösa DDoS-minskning |
+| DDoSTriggerSYNPackets | Inkommande SYN-paket som ska utlösa DDoS-åtgärd | CountPerSecond | Maximal | Inkommande SYN-paket som ska utlösa DDoS-åtgärd |
+| DDoSTriggerTCPPackets | Inkommande TCP-paket som ska utlösa DDoS-åtgärd | CountPerSecond | Maximal | Inkommande TCP-paket som ska utlösa DDoS-åtgärd |
+| DDoSTriggerUDPPackets | Inkommande UDP-paket som ska utlösa DDoS-åtgärd | CountPerSecond | Maximal | Inkommande UDP-paket som ska utlösa DDoS-åtgärd |
 | IfUnderDDoSAttack | Under DDoS-attack eller inte | Antal | Maximal | Under DDoS-attack eller inte |
 | PacketsDroppedDDoS | Inkommande paket som släppts DDoS | CountPerSecond | Maximal | Inkommande paket som släppts DDoS |
 | PacketsForwardedDDoS | Vidarebefordrade inkommande paket DDoS | CountPerSecond | Maximal | Vidarebefordrade inkommande paket DDoS |

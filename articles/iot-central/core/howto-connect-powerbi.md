@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123345"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Visualisera och analysera dina Azure IoT Central-data på en Power BI-instrumentpanel
@@ -31,7 +31,7 @@ Den här lösningen konfigurerar en pipeline som läser data från ditt [kontinu
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 Konfigurationen av lösningen kräver följande resurser:
 
@@ -47,7 +47,7 @@ Konfigurationen av lösningen kräver följande resurser:
 
 ## <a name="install"></a>Installera
 
-Om du vill konfigurera pipelinen navigerar du till sidan [Power BI lösning för Azure IoT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) på **Microsoft AppSource** -platsen. Välj **Hämta nu**och följ instruktionerna.
+Om du vill konfigurera pipelinen navigerar du till sidan [Power BI lösning för Azure IoT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) på **Microsoft AppSource** -platsen. Välj **Hämta nu** och följ instruktionerna.
 
 När du öppnar PBIX-filen måste du se till att läsa och följa instruktionerna på försättsbladet. De här anvisningarna beskriver hur du ansluter din rapport till din SQL-databas.
 
@@ -55,13 +55,13 @@ När du öppnar PBIX-filen måste du se till att läsa och följa instruktionern
 
 PBIX-filen innehåller rapporten **enheter och telemetri** som visar en historisk vy över telemetri som har skickats av enheter. Det ger en analys av de olika typerna av telemetri och visar även den senaste telemetri som skickas av enheter.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Pipeline för Power BI lösning":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Rapporten Power BI enheter och telemetri":::
 
 ## <a name="pipeline-resources"></a>Pipeline-resurser
 
 Du kan komma åt alla Azure-resurser som utgör pipelinen i Azure Portal. Alla resurser finns i resurs gruppen som du skapade när du konfigurerade pipelinen.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Pipeline för Power BI lösning":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Azure Portal visning av resurs grupp":::
 
 I följande lista beskrivs rollen för varje resurs i pipelinen:
 

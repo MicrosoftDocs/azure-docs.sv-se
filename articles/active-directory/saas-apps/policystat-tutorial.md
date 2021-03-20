@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Självstudie: Azure Active Directory integrering med PolicyStat
@@ -54,11 +54,11 @@ Om du vill konfigurera integreringen av PolicyStat i Azure AD måste du lägga t
 
 **Utför följande steg för att lägga till PolicyStat från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -66,13 +66,13 @@ Om du vill konfigurera integreringen av PolicyStat i Azure AD måste du lägga t
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **PolicyStat** , väljer **PolicyStat** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **PolicyStat**, väljer **PolicyStat** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
      ![PolicyStat i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med PolicyStat baserat på en test användare som kallas **Britta Simon** .
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med PolicyStat baserat på en test användare som kallas **Britta Simon**.
 För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i PolicyStat upprättas.
 
 Om du vill konfigurera och testa enkel inloggning med PolicyStat i Azure AD måste du slutföra följande Bygg stenar:
@@ -97,7 +97,7 @@ Utför följande steg för att konfigurera enkel inloggning med PolicyStat i Azu
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -122,11 +122,11 @@ Utför följande steg för att konfigurera enkel inloggning med PolicyStat i Azu
 
 6. Utöver ovan förväntar sig PolicyStat-programmet att fler attribut skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Namn | Källattribut |
+    | Name | Källattribut |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix ([mail]) |
 
-    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk** .
+    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
     
     ![Skärm bild som visar avsnittet "användar anspråk" med åtgärderna "Lägg till nytt anspråk" och "Spara" markerade.](common/new-save-attribute.png)
 
@@ -136,13 +136,13 @@ Utför följande steg för att konfigurera enkel inloggning med PolicyStat i Azu
 
     c. Lämna **Namnrymd** tom.
 
-    d. Välj källa som **omvandling** .
+    d. Välj källa som **omvandling**.
 
     e. Skriv det attributvärde som visas för raden i listan **omvandling** .
     
     f. I listan **parameter 1** skriver du det attributvärde som visas för raden.
 
-    ex. Klicka på **Spara** .
+    ex. Klicka på **Spara**.
 
 7. I avsnittet **Konfigurera PolicyStat** kopierar du lämpliga URL: er enligt ditt krav.
 
@@ -168,11 +168,11 @@ Utför följande steg för att konfigurera enkel inloggning med PolicyStat i Azu
    
     a. Öppna den hämtade metadatafilen, kopiera innehållet och klistra in den i text rutan för **din identitetsprovider** .
 
-    b. Klicka på **Spara ändringar** .
+    b. Klicka på **Spara ändringar**.
 
 4. Klicka på **Konfigurera attribut** och utför sedan följande steg i avsnittet **Konfigurera attribut** :
    
-    a. I text rutan **attribut för användar namn** skriver du **UID** .
+    a. I text rutan **attribut för användar namn** skriver du **UID**.
 
     b. I text rutan för det **första** namnattributet skriver du ditt förnamn för attributet anspråk från Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
@@ -180,9 +180,9 @@ Utför följande steg för att konfigurera enkel inloggning med PolicyStat i Azu
 
     d. I text rutan **email-attribut** skriver du ditt e-postattribut anspråks namn från Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    e. Klicka på **Spara ändringar** .
+    e. Klicka på **Spara ändringar**.
 
-5. I avsnittet **installation** väljer du **Aktivera integrering av enkel inloggning** .
+5. I avsnittet **installation** väljer du **Aktivera integrering av enkel inloggning**.
    
     ![Konfiguration av enskild Sign-On](./media/policystat-tutorial/ic808634.png "Konfiguration av enskild Sign-On")
 
@@ -191,19 +191,19 @@ Utför följande steg för att konfigurera enkel inloggning med PolicyStat i Azu
 
 I det här avsnittet aktiverar du ditt eget konto för att använda enkel inloggning med Azure genom att bevilja åtkomst till PolicyStat.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **PolicyStat** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **PolicyStat**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **PolicyStat** .
+2. I listan program väljer du **PolicyStat**.
 
     ![PolicyStat-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -211,7 +211,7 @@ I det här avsnittet aktiverar du ditt eget konto för att använda enkel inlogg
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-policystat-test-user"></a>Skapa PolicyStat test användare
 

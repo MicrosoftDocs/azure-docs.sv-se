@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: chrande
 ms.openlocfilehash: 20cb4cea52317022aea8a5b9e4b8280f8b88ff85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361519"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Snabbstart: Skapa, köra frågor mot och gå igenom en Azure Cosmos DB-grafdatabas med hjälp av Gremlin-konsolen
@@ -53,22 +53,22 @@ Du måste också installera [Gremlin-konsolen](https://tinkerpop.apache.org/down
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Anslut till din app service/Graf
 
 1. Innan du startar Gremlin-konsolen ska du skapa eller ändra konfigurationsfilen remote-secure.yaml i katalogen `apache-tinkerpop-gremlin-console-3.2.5/conf`.
-2. Fyll i konfigurationen för *värd* , *port* , *användarnamn* , *lösenord* , *anslutningspool* och *serialiserare* enligt definitionerna i följande tabell:
+2. Fyll i konfigurationen för *värd*, *port*, *användarnamn*, *lösenord*, *anslutningspool* och *serialiserare* enligt definitionerna i följande tabell:
 
     Inställning|Föreslaget värde|Beskrivning
     ---|---|---
-    värdar|[ *konto namn*. **Gremlin**. Cosmos.Azure.com]|Se följande skärmbild. Detta är **GREMLIN URI** -värdet på översikts sidan för Azure Portal, inom hakparenteser, med efterföljande: 443/borttaget. Obs! se till att använda Gremlin-värdet och **inte** URI: n som slutar med [ *Account-name*. Documents.Azure.com] vilket troligen skulle resultera i att "värden inte svarade i tid"-undantag vid försök att köra Gremlin-frågor senare. 
+    värdar|[*konto namn*. **Gremlin**. Cosmos.Azure.com]|Se följande skärmbild. Detta är **GREMLIN URI** -värdet på översikts sidan för Azure Portal, inom hakparenteser, med efterföljande: 443/borttaget. Obs! se till att använda Gremlin-värdet och **inte** URI: n som slutar med [*Account-name*. Documents.Azure.com] vilket troligen skulle resultera i att "värden inte svarade i tid"-undantag vid försök att köra Gremlin-frågor senare. 
     port|443|Ställ in på 443.
     användarnamn|*Ditt användarnamn*|Resursen i formuläret `/dbs/<db>/colls/<coll>` där `<db>` är databasnamnet och `<coll>` är samlingens namn.
     password|*Din primärnyckel*| Se andra skärmbilden nedan. Det här är din primärnyckel som du kan hämta från sidan Nycklar i Azure-portalen i rutan Primärnyckel. Använd kopieringsknappen till vänster om rutan för att kopiera värdet.
     ConnectionPool|{enableSsl: true}|Inställningen för anslutningspoolen för TLS.
     Serialiserare|{ className: org.apache.tinkerpop.gremlin.<br>driv rutin. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Ange detta värde och ta bort alla `\n`-radbrytningar när du klistrar in värdet.
 
-   Som Värd kopierar du värdet **Gremlin-URI** från **översiktssidan** :
+   Som Värd kopierar du värdet **Gremlin-URI** från **översiktssidan**:
 
    :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Visa och kopiera värdet för Gremlin-URI på översiktssidan i Azure Portal":::
 
-   Som lösenordsvärde kopierar du **primärnyckeln** från sidan **Nycklar** :
+   Som lösenordsvärde kopierar du **primärnyckeln** från sidan **Nycklar**:
 
    :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Visa och kopiera din primärnyckel i Azure Portal på sidan Nycklar":::
 
@@ -109,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Skapa hörn och gränser
 
-Vi börjar med att lägga till fem personhörn för *Thomas* , *Mary Kay* , *Robin* , *Ben* och *Jack*.
+Vi börjar med att lägga till fem personhörn för *Thomas*, *Mary Kay*, *Robin*, *Ben* och *Jack*.
 
 Indata (Thomas):
 

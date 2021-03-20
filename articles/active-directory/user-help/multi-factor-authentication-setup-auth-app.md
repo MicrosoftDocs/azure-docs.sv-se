@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530348"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Konfigurera en Authenticator-app som metod med tvåstegsverifiering
@@ -52,7 +52,7 @@ Du kan ställa in en Authenticator-app för att skicka ett meddelande till din m
 
     Authenticator-appen skickar ett meddelande till din mobila enhet som ett test.
 
-6. Välj **Godkänn**på din mobila enhet.
+6. Välj **Godkänn** på din mobila enhet.
 
 7. På din dator lägger du till din mobilen hets telefonnummer i **steg 3: om du förlorar åtkomsten till modulen mobilapp** och väljer sedan **Nästa**.
 
@@ -65,7 +65,7 @@ Du kan ställa in en Authenticator-app för att skicka ett meddelande till din m
     >[!Note]
     >Information om hur du använder applösenord med dina äldre appar finns i [Hantera applösenord](multi-factor-authentication-end-user-app-passwords.md). Du behöver bara använda applösenord om du fortsätter att använda äldre appar som inte stöder tvåstegsverifiering.
 
-9. Välj **Done** (Klar).
+9. Välj **Klar**.
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Konfigurera appen Microsoft Authenticator att använda verifierings koder
 
@@ -107,7 +107,7 @@ Du kan ställa in en Authenticator-app för att skicka ett meddelande till din m
     >[!Note]
     >Information om hur du använder applösenord med dina äldre appar finns i [Hantera applösenord](multi-factor-authentication-end-user-app-passwords.md). Du behöver bara använda applösenord om du fortsätter att använda äldre appar som inte stöder tvåstegsverifiering.
 
-9. Välj **Done** (Klar).
+9. Välj **Klar**.
 
 ## <a name="next-steps"></a>Nästa steg
 

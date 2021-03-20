@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89662385"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect synkronisering: förstå och anpassa synkronisering
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect-synkronisering: Förstå och anpassa synkronisering
 Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) är en huvud del av Azure AD Connect. Det tar hand om alla åtgärder som är relaterade till synkronisering av identitets data mellan din lokala miljö och Azure AD. Azure AD Connect Sync är efterföljaren till DirSync, Azure AD Sync och Forefront Identity Manager med den Azure Active Directory-anslutning som kon figurer ATS.
 
 Det här avsnittet är start för **Azure AD Connect Sync** (kallas även **Synkroniseringsmotorn**) och listar länkar till alla andra avsnitt som är relaterade till det. Länkar till Azure AD Connect finns i [integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md).
@@ -64,7 +64,7 @@ Synkroniseringstjänsten består av två komponenter, den lokala **Azure AD Conn
 | **Mer information och referenser** | |
 | [Portar](reference-connect-ports.md) |Visar vilka portar du måste öppna mellan Synkroniseringsmotorn och dina lokala kataloger och Azure AD. |
 | [Attribut som synkroniseras till Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Visar en lista över alla attribut som synkroniseras mellan lokala AD och Azure AD. |
-| [Functions-referens](reference-connect-sync-functions-reference.md) |Visar en lista över alla funktioner som är tillgängliga i deklarativ etablering. |
+| [Referens för funktioner](reference-connect-sync-functions-reference.md) |Visar en lista över alla funktioner som är tillgängliga i deklarativ etablering. |
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 * [Integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md)

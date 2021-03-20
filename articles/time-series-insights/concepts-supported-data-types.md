@@ -10,10 +10,10 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: b0536a152797d17cba0930b3a142a7fb92eaf5ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685165"
 ---
 # <a name="supported-data-types"></a>Datatyper som stöds
@@ -26,7 +26,7 @@ I följande tabell visas de data typer som stöds av Azure Time Series Insights 
 | **datetime** | Representerar en omedelbar tid, vanligt vis uttryckt som datum och tid på dagen. Uttryckt i [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -format. Datetime-egenskaper lagras alltid i UTC-format. Tids zons förskjutningar, om det är korrekt formaterat, används och sedan värden som lagras i UTC. Se [det här](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) avsnittet för mer information om miljöns tidstämpel egenskap och datetime-förskjutningar | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Om "eventProcessedLocalTime" är tids stämpling för händelse källan: `$event.$ts` . Om det är en annan JSON-egenskap: `$event.eventProcessedLocalTime.DateTime` eller `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Ett tal med dubbel precision 64-bit  | `"value": 31.0482941` | `$event.value.Double` eller `$event['value'].Double` |  `value_double`
 | **long** | Ett signerat 64-bitars heltal  | `"value" : 31` | `$event.value.Long` eller `$event['value'].Long` |  `value_long`
-| **nollängd** | Text värden måste bestå av giltig UTF-8. Null-och tomma strängar behandlas likadant. |  `"site": "DIM_MLGGG"`| `$event.site.String` eller `$event['site'].String`| `site_string`
+| **sträng** | Text värden måste bestå av giltig UTF-8. Null-och tomma strängar behandlas likadant. |  `"site": "DIM_MLGGG"`| `$event.site.String` eller `$event['site'].String`| `site_string`
 | **dynamisk** | En komplex (icke-primitiv) typ som består av antingen en matris eller en egenskaps uppsättning (ord lista). För närvarande lagras bara JSON-matriser med primitiver eller matriser med objekt som inte innehåller något av de TS-ID: n eller Tidsstämpelns egenskaper som är dynamiska. Läs den här [artikeln](./concepts-json-flattening-escaping-rules.md) för att förstå hur objekt kommer att förenklas och matriser kan vara avregistrerade. Nytto Last egenskaper som lagras som den här typen är bara tillgängliga genom att välja `Explore Events` i Time Series Insights Explorer för att Visa obehandlade händelser eller via [`GetEvents`](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API: t för klient sidans tolkning. |  `"values": "[197, 194, 189, 188]"` | Det finns ännu inte stöd för att referera till dynamiska typer i ett Time Series-uttryck | `values_dynamic`
 
 > [!NOTE]

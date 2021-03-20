@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100651382"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Snabb start: Konfigurera ett klient program för att få åtkomst till ett webb-API
@@ -78,7 +78,7 @@ Konfigurera delegerad behörighet till Microsoft Graph så att ditt klient progr
 1. Välj **delegerade behörigheter**. Microsoft Graph visar många behörigheter, med de vanligaste som visas överst i listan.
 1. Under **Välj behörigheter** väljer du följande behörigheter:
 
-    | Behörighet       | Description                                         |
+    | Behörighet       | Beskrivning                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Visa användarnas e-postadress                           |
     | `offline_access` | Behåll åtkomst till data som du har gett dem åtkomst till |

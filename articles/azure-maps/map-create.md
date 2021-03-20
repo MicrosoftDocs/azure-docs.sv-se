@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890929"
 ---
 # <a name="create-a-map"></a>Skapa en karta
@@ -130,7 +130,7 @@ I följande kod skapar det första kod blocket en karta och anger kart formaten 
 
 ## <a name="request-transforms"></a>Begär transformeringar
 
-Ibland är det praktiskt att kunna ändra HTTP-begäranden som görs av kart kontrollen. Till exempel:
+Ibland är det praktiskt att kunna ändra HTTP-begäranden som görs av kart kontrollen. Exempel:
 
 - Lägg till ytterligare rubriker i panel begär Anden. Detta görs ofta för lösenordsskyddade tjänster.
 - Ändra URL: er för att köra begär Anden via en proxy-tjänst.
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>Testa koden
 
-Titta på kod exemplen. Du kan redigera JavaScript-koden inuti **fliken JS** och se ändringarna i Map-vyn på **fliken resultat** . Du kan också klicka på **Redigera på CodePen** , i det övre högra hörnet och ändra koden i CodePen.
+Titta på kod exemplen. Du kan redigera JavaScript-koden inuti **fliken JS** och se ändringarna i Map-vyn på **fliken resultat**. Du kan också klicka på **Redigera på CodePen**, i det övre högra hörnet och ändra koden i CodePen.
 
 <a id="relatedReference"></a>
 

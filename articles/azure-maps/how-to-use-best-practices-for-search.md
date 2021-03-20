@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11c1938c3c1ccba533f52336fad81ebeaae53b24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895485"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Metod tips för Azure Maps Search Service
@@ -35,7 +35,7 @@ I den här artikeln används [Postman-appen](https://www.postman.com/downloads/)
 
 ## <a name="best-practices-to-geocode-addresses"></a>Metod tips för adresser för att koda
 
-När du söker efter en fullständig eller partiell adress med hjälp av Azure Maps Search Service läser API: et nyckelord från din Sök fråga. Sedan returnerar den longitud-och latitud-koordinaterna för adressen. Den här processen kallas för *kodning* .
+När du söker efter en fullständig eller partiell adress med hjälp av Azure Maps Search Service läser API: et nyckelord från din Sök fråga. Sedan returnerar den longitud-och latitud-koordinaterna för adressen. Den här processen kallas för *kodning*.
 
 Möjligheten att koda i ett land/en region beror på tillgängligheten för väg data och att det är en bra kodning av tjänsten. Mer information om Azure Maps funktioner för att koda efter land eller region finns i lands [kodnings täckning](./geocoding-coverage.md).
 
@@ -50,7 +50,7 @@ Möjligheten att koda i ett land/en region beror på tillgängligheten för väg
 
 Om du vill göra ett neutralt resultat till det relevanta område för din användare ska du alltid lägga till så många plats detaljer som möjligt. Du kanske vill begränsa Sök resultaten genom att ange några typer av indata:
 
-* Ange `countrySet` parametern. Du kan till exempel ställa in den till `US,FR` . Som standard söker API: t igenom hela världen, så att den kan returnera onödiga resultat. Om frågan saknar parameter kan `countrySet` sökningen returnera felaktiga resultat. En sökning efter en stad med namnet *Bellevue* returnerar till exempel resultat från USA och Frankrike eftersom båda länderna/regionerna innehåller en stad med namnet *Bellevue* .
+* Ange `countrySet` parametern. Du kan till exempel ställa in den till `US,FR` . Som standard söker API: t igenom hela världen, så att den kan returnera onödiga resultat. Om frågan saknar parameter kan `countrySet` sökningen returnera felaktiga resultat. En sökning efter en stad med namnet *Bellevue* returnerar till exempel resultat från USA och Frankrike eftersom båda länderna/regionerna innehåller en stad med namnet *Bellevue*.
 
 * Du kan använda `btmRight` parametrarna och `topleft` för att ange avgränsnings rutan. Dessa parametrar begränsar sökningen till ett angivet område på kartan.
 
@@ -59,20 +59,20 @@ Om du vill göra ett neutralt resultat till det relevanta område för din anvä
 
 #### <a name="fuzzy-search-parameters"></a>Parametrar för fuzzy-sökning
 
-Vi rekommenderar att du använder Azure Maps [Sök i fuzzy API](/rest/api/maps/search/getsearchfuzzy) när du inte känner till dina användar indata för en Sök fråga. Till exempel kan indata från användaren vara en adress eller typ av intresse (POI), som *shopping-mall* . API: n kombinerar POI-sökning och-kodning i en kanonisk *enkel sökning* : 
+Vi rekommenderar att du använder Azure Maps [Sök i fuzzy API](/rest/api/maps/search/getsearchfuzzy) när du inte känner till dina användar indata för en Sök fråga. Till exempel kan indata från användaren vara en adress eller typ av intresse (POI), som *shopping-mall*. API: n kombinerar POI-sökning och-kodning i en kanonisk *enkel sökning*: 
 
 * `minFuzzyLevel`Parametrarna och `maxFuzzyLevel` hjälper till att returnera relevanta matchningar även när frågeparametrar inte exakt matchar den information som användaren vill. För att maximera prestandan och minska ovanliga resultat ställer du in Sök frågor till standardvärdena `minFuzzyLevel=1` och `maxFuzzyLevel=2` . 
 
-    Om till exempel `maxFuzzyLevel` parametern är inställd på 2 matchas Sök termen *restrant* till *restaurang* . Du kan åsidosätta standard nivåer för fuzzy när du behöver. 
+    Om till exempel `maxFuzzyLevel` parametern är inställd på 2 matchas Sök termen *restrant* till *restaurang*. Du kan åsidosätta standard nivåer för fuzzy när du behöver. 
 
 * Använd `idxSet` parametern för att prioritera den exakta uppsättningen av resultat typer. Om du vill prioritera en exakt uppsättning resultat kan du skicka en kommaavgränsad lista över index. Objekt ordningen spelar ingen roll i listan. Azure Maps stöder följande index:
 
-* `Addr` - **Adress intervall** : adress punkter som interpoleras från början och slutet av gatan. Dessa punkter visas som adress intervall.
+* `Addr` - **Adress intervall**: adress punkter som interpoleras från början och slutet av gatan. Dessa punkter visas som adress intervall.
 * `Geo` - **Geografiska** områden: administrativa indelningar av mark. En geografi kan till exempel vara land/region, delstat eller stad.
-* `PAD` - **Adress adresser** : adresser som innehåller gatu namn och nummer. Punkt adresser kan hittas i ett index. Ett exempel är *Soquel Dr 2501* . En punkt adress ger den högsta möjliga noggrannhets nivån för adresser.  
-* `POI` - **Punkter av intresse** : punkter på en karta som anses vara värda eller som kan vara intressanta. [Sök adressens API](/rest/api/maps/search/getsearchaddress) returnerar inte POI: er.  
-* `Str` - **Streets** : gator på kartan.
-* `XStr` - **Kors gator eller korsningar** : Knut punkter eller platser där två gator korsar varandra.
+* `PAD` - **Adress adresser**: adresser som innehåller gatu namn och nummer. Punkt adresser kan hittas i ett index. Ett exempel är *Soquel Dr 2501*. En punkt adress ger den högsta möjliga noggrannhets nivån för adresser.  
+* `POI` - **Punkter av intresse**: punkter på en karta som anses vara värda eller som kan vara intressanta. [Sök adressens API](/rest/api/maps/search/getsearchaddress) returnerar inte POI: er.  
+* `Str` - **Streets**: gator på kartan.
+* `XStr` - **Kors gator eller korsningar**: Knut punkter eller platser där två gator korsar varandra.
 
 
 #### <a name="usage-examples"></a>Användningsexempel
@@ -85,7 +85,7 @@ Vi rekommenderar att du använder Azure Maps [Sök i fuzzy API](/rest/api/maps/s
 
 När du gör en omvänd kod sökning i [omvänt API för Sök adressen](/rest/api/maps/search/getsearchaddressreverse)kan tjänsten returnera polygoner för administrativa områden. Du kanske exempelvis vill hämta områdes polygonen för en stad. Du kan begränsa sökningen till specifika geografi-entitetstyper genom att inkludera `entityType` parametern i dina begär Anden. 
 
-Det resulterande svaret innehåller geografi-ID: t och entitetstypen som matchades. Om du anger mer än en entitet returnerar slut punkten den *minsta tillgängliga entiteten* . Du kan använda det returnerade geometri-ID: t för att hämta geografins geometri genom [tjänsten search polygon](/rest/api/maps/search/getsearchpolygon).
+Det resulterande svaret innehåller geografi-ID: t och entitetstypen som matchades. Om du anger mer än en entitet returnerar slut punkten den *minsta tillgängliga entiteten*. Du kan använda det returnerade geometri-ID: t för att hämta geografins geometri genom [tjänsten search polygon](/rest/api/maps/search/getsearchpolygon).
 
 #### <a name="sample-request"></a>Exempel förfrågan
 
@@ -137,7 +137,7 @@ Mer information finns i [Azure Maps språk som stöds](./supported-languages.md)
 
 Om du vill hitta fler matchningar för partiella frågor anger du `typeahead` parametern till `true` . Den här frågan tolkas som en del Indatatyp och sökningen går in i förutsägande läge. Om du inte anger `typeahead` parametern till `true` förutsätter tjänsten att all relevant information har skickats in.
 
-I följande exempel fråga frågar Sök adress tjänsten efter *mi* . Här har `typeahead` parametern angetts till `true` . Svaret visar att Sök tjänsten tolkade frågan som partiell fråga. Svaret innehåller resultat för en automatiskt föreslagen fråga.
+I följande exempel fråga frågar Sök adress tjänsten efter *mi*. Här har `typeahead` parametern angetts till `true` . Svaret visar att Sök tjänsten tolkade frågan som partiell fråga. Svaret innehåller resultat för en automatiskt föreslagen fråga.
 
 #### <a name="sample-query"></a>Exempelfråga
 
@@ -405,7 +405,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>Koda en URI för att hantera specialtecken 
 
-Om du vill hitta kors adresser måste du koda URI: n för att hantera specialtecken i adressen. Tänk på följande adress exempel: *1st minimering & union gata, Seattle* . Här kodar du et-tecknet ( `&` ) innan du skickar begäran. 
+Om du vill hitta kors adresser måste du koda URI: n för att hantera specialtecken i adressen. Tänk på följande adress exempel: *1st minimering & union gata, Seattle*. Här kodar du et-tecknet ( `&` ) innan du skickar begäran. 
 
 Vi rekommenderar att du kodar tecken data i en URI. I en URI kodar du alla tecken genom att använda ett procent tecken ( `%` ) och ett hexadecimalt värde på två tecken som motsvarar tecknens UTF-8-kod.
 
@@ -763,17 +763,17 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="supported-types-of-results"></a>Typer av resultat som stöds
 
-* **Punkt adress** : punkter på en karta som har en viss adress med gatu namn och nummer. Punkt adress ger den högsta noggrannhets nivån för adresser. 
+* **Punkt adress**: punkter på en karta som har en viss adress med gatu namn och nummer. Punkt adress ger den högsta noggrannhets nivån för adresser. 
 
-* **Adress intervall** : det intervall av adress punkter som interpoleras från början och slutet av gatan.  
+* **Adress intervall**: det intervall av adress punkter som interpoleras från början och slutet av gatan.  
 
-* **Geografi** : områden på en karta som representerar administrativa indelningar av en mark, till exempel land/region, delstat eller stad. 
+* **Geografi**: områden på en karta som representerar administrativa indelningar av en mark, till exempel land/region, delstat eller stad. 
 
-* **POI** : punkter på en karta som är värda och som kan vara intressanta.
+* **POI**: punkter på en karta som är värda och som kan vara intressanta.
 
-* **Gata** : gator på kartan. Adresser matchas mot de latitud-och longitud koordinater för gatan som innehåller adressen. Hus numret kanske inte bearbetas. 
+* **Gata**: gator på kartan. Adresser matchas mot de latitud-och longitud koordinater för gatan som innehåller adressen. Hus numret kanske inte bearbetas. 
 
-* **Kors gatan** : skärnings punkter. Kors gator representerar Knut punkter där två gator korsar varandra.
+* **Kors gatan**: skärnings punkter. Kors gator representerar Knut punkter där två gator korsar varandra.
 
 ### <a name="response"></a>Svarsåtgärder
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67188013"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Ange struktur definition för rektangulära data uppsättningar
@@ -16,7 +16,7 @@ Struktur avsnittet i data uppsättnings-JSON är ett **valfritt** avsnitt för r
 
 Varje kolumn innehåller följande egenskaper:
 
-| Egenskap | Beskrivning | Krävs |
+| Egenskap | Beskrivning | Obligatorisk |
 | --- | --- | --- |
 | name |Kolumnens namn. |Ja |
 | typ |Kolumnens datatyp. Se avsnittet typ konverteringar nedan för mer information om när ska du ange typ information |Inga |

@@ -9,13 +9,13 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92479586"
 ---
-1. Öppna sidan för din virtuella nätverksgateway. Du kan navigera till gatewayen genom att gå till **namnet på din VNet-> översikt – > anslutna enheter – > namnet på din gateway** , även om det finns flera andra sätt att navigera till.
+1. Öppna sidan för din virtuella nätverksgateway. Du kan navigera till gatewayen genom att gå till **namnet på din VNet-> översikt – > anslutna enheter – > namnet på din gateway**, även om det finns flera andra sätt att navigera till.
 1. Välj **anslutningar** på sidan för gatewayen. Längst upp på sidan anslutningar väljer du **+ Lägg** till för att öppna sidan **Lägg till anslutning** .
 
    :::image type="content" source="./media/vpn-gateway-add-site-to-site-connection-portal-include/connection.png" alt-text="Plats-till-plats-anslutning":::
@@ -29,7 +29,7 @@ ms.locfileid: "92479586"
    * Lämna alternativet **Använd Azures privata IP-adress** avmarkerat.
    * Låt **Enable BGP** vara avmarkerat.
    * Välj **IKEv2**.
-   * De återstående värdena för **Prenumeration** , **Resursgrupp** och **Plats** är låsta.
+   * De återstående värdena för **Prenumeration**, **Resursgrupp** och **Plats** är låsta.
 
 1. Välj **OK** för att skapa anslutningen. Du kommer att se *Skapar anslutningen* blinka fram på skärmen.
 1. Anslutningen visas på sidan **Anslutningar** för den virtuella nätverksgatewayen. Statusen kommer att gå från *Okänd* till *Ansluter* och sedan till *Klar*.

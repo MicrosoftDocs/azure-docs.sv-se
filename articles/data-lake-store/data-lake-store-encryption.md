@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109161"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Kryptering av data i Azure Data Lake Storage Gen1
@@ -56,7 +56,7 @@ Här är en kort jämförelse av funktionerna som tillhandahålls i de två läg
 | -------- | -------------------- | --------------------- |
 |Hur lagras data?|Data krypteras alltid innan de lagras.|Data krypteras alltid innan de lagras.|
 |Var lagras huvudkrypteringsnyckeln?|Key Vault|Key Vault|
-|Finns det krypteringsnycklar som lagras i klartext utanför Key Vault? |Nej|Nej|
+|Finns det krypteringsnycklar som lagras i klartext utanför Key Vault? |Inga|Inga|
 |Kan huvudkrypteringsnyckeln hämtas från Key Vault?|Nej. När den har lagrats i Key Vault kan den endast användas för kryptering och dekryptering.|Nej. När den har lagrats i Key Vault kan den endast användas för kryptering och dekryptering.|
 |Vem äger Key Vault-instansen och huvudkrypteringsnyckeln?|Tjänsten Data Lake Storage Gen1|Du äger nyckelvalvsinstansen som ingår i din Azure-prenumeration. Huvudkrypteringsnyckeln i Key Vault kan hanteras av programvara eller maskinvara.|
 |Kan du återkalla åtkomsten till huvud krypterings nyckeln för den Data Lake Storage Gen1 tjänsten?|Nej|Ja. Du kan hantera åtkomst kontrol listor i Key Vault och ta bort åtkomst kontroll poster för tjänst identiteten för tjänsten Data Lake Storage Gen1.|
@@ -78,7 +78,7 @@ Det finns tre typer av nycklar som används i utformningen av datakryptering. I 
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Huvudkrypteringsnyckel | MEK          | Ett Data Lake Storage Gen1 konto | Key Vault                              | Asymmetrisk | Den kan hanteras av Data Lake Storage Gen1 eller dig.                                                              |
 | Datakrypteringsnyckel   | DEK          | Ett Data Lake Storage Gen1 konto | Beständig lagring som hanteras av den Data Lake Storage Gen1 tjänsten | Symmetrisk  | DEK krypteras av MEK. Den krypterade DEK lagras på permanenta medier. |
-| Blockkrypteringsnyckel  | BEK          | Ett datablock | Inga                                         | Symmetrisk  | BEK härleds från DEK och datablocket.                                                      |
+| Blockkrypteringsnyckel  | BEK          | Ett datablock | Inget                                         | Symmetrisk  | BEK härleds från DEK och datablocket.                                                      |
 
 Följande diagram illustrerar dessa begrepp:
 
@@ -107,7 +107,7 @@ Följande diagram illustrerar dessa begrepp:
 
 När du använder kundhanterade nycklar kan du rotera huvudkrypteringsnyckeln. Information om hur du konfigurerar ett Data Lake Storage Gen1 konto med Kundhanterade nycklar finns i [komma igång](./data-lake-store-get-started-portal.md).
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 När du konfigurerar Data Lake Storage Gen1 kontot har du valt att använda dina egna nycklar. Det här alternativet kan inte ändras efter att kontot har skapats. I anvisningarna nedan antas att du använder kundhanterade nycklar (att du valt egna nycklar från ditt nyckelvalv).
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: charwen
 ms.openlocfilehash: 001d2ff6789ec4cfcc391171f0859b67ab1ee0a5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077787"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Ansluta till en skalnings uppsättning för virtuella datorer med hjälp av Azure skydds
@@ -30,7 +30,7 @@ Kontrol lera att du har konfigurerat en Azure skydds-värd för det virtuella n�
 2. Gå till den instans av skalnings uppsättningen för virtuell dator som du vill ansluta till och välj sedan **Anslut**. När du använder en RDP-anslutning bör skalnings uppsättningen för den virtuella datorn vara en skalnings uppsättning för virtuella Windows-datorer.
 
    ![skalnings uppsättning för virtuell dator](./media/bastion-connect-vm-scale-set/2.png)
-3. När du har valt **Anslut**visas ett sido fält med tre flikar – RDP, SSH och skydds. Välj fliken **skydds** i sido fältet. Om du inte etablerar skydds för det virtuella nätverket kan du välja länken för att konfigurera skydds. Konfigurations anvisningar finns i [Konfigurera skydds](./tutorial-create-host-portal.md).
+3. När du har valt **Anslut** visas ett sido fält med tre flikar – RDP, SSH och skydds. Välj fliken **skydds** i sido fältet. Om du inte etablerar skydds för det virtuella nätverket kan du välja länken för att konfigurera skydds. Konfigurations anvisningar finns i [Konfigurera skydds](./tutorial-create-host-portal.md).
 
    ![Fliken skydds](./media/bastion-connect-vm-scale-set/3.png)
 4. På fliken skydds anger du användar namn och lösen ord för skalnings uppsättningen för den virtuella datorn och väljer sedan **Anslut**.

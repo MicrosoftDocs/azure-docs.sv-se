@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: b61590fd001264d5cc9201fe1678396201e14cc8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Självstudie: Azure Active Directory integrering med Moxi engagera
@@ -153,7 +153,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Moxi-engagemang.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Moxi engagera**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Moxi engagera**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

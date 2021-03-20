@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86262101"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>Förstå skikt i Azure Maps Power BI visuella objekt
@@ -41,7 +41,7 @@ Den andra typen av lager ansluter ytterligare externa data källor som ska mappa
 
 :::row:::
     :::column span="":::
-        **Referens skikt**
+        **Referensskikt**
 
         Överlappa en uppladdad polyjson-fil ovanpå kartan.
 
@@ -71,7 +71,7 @@ Dessa lager har också ett alternativ som placeras i förhållande till andra la
 
 Avsnittet Allmänt lager i fönstret **format** är vanliga inställningar som gäller för de lager som är anslutna till Power BI data uppsättning i fönstret **fält** (bubbeldiagram, stapeldiagram).
 
-| Inställningen     | Beskrivning   |
+| Inställning     | Beskrivning   |
 |-------------|---------------|
 | Omarkerad genomskinlighet | Transparensen för former som inte är markerade, när en eller flera former är markerade.  |
 | Visa nollor              | Anger om punkter som har ett storleks värde på noll ska visas på kartan med minsta radie. |

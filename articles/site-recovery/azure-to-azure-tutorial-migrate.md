@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394840"
 ---
 # <a name="move-vms-to-another-azure-region"></a>Flytta virtuella datorer till en annan Azure-region
@@ -100,7 +100,7 @@ Följande steg visar hur du förbereder den virtuella datorn för flytt med Azur
 1. I **Namn** anger du det egna namnet **ContosoVMVault**. Om du har mer än en prenumeration väljer du den lämpligaste.
 1. Skapa resurs gruppen **conto sorg**.
 1. Ange en Azure-region. Om du vill kontrol lera regioner som stöds, se geografisk tillgänglighet i [Azure Site Recovery pris information](https://azure.microsoft.com/pricing/details/site-recovery/).
-1. Välj **ContosoVMVault** **Recovery Services vaults**  >  **replikerade objekt**  >  **+ Replikera** i Recovery Services valv.
+1. Välj **ContosoVMVault**   >  **replikerade objekt**  >  **+ Replikera** i Recovery Services valv.
 1. I list rutan väljer du **Azure Virtual Machines**.
 1. I **Källplats** väljer du den Azure källregion där de virtuella datorerna körs just nu.
 1. Välj Resource Manager-distributionsmodellen. Välj sedan **källprenumerationen** och **källresursgruppen**.
@@ -135,7 +135,7 @@ Om du har markerat den flyttade virtuella datorn och behöver göra ändringen t
 
 ## <a name="commit"></a>Checka in 
 
-När du har checkat in den flyttade virtuella datorn och är redo att genomföra ändringen i de **replikerade objekten** , högerklickar du på den virtuella datorn > **genomför**. I det här steget slutförs flyttnings processen till mål regionen. Vänta tills commit-jobbet har slutförts.
+När du har checkat in den flyttade virtuella datorn och är redo att genomföra ändringen i de **replikerade objekten**, högerklickar du på den virtuella datorn > **genomför**. I det här steget slutförs flyttnings processen till mål regionen. Vänta tills commit-jobbet har slutförts.
 
 ## <a name="clean-up"></a>Rensa
 

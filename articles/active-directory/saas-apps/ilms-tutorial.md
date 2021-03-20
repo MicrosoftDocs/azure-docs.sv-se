@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 7289fe2ec1f39679dcec95f1f48a6efa9ed0cdfc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460350"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Självstudie: integrera iLMS med Azure Active Directory
@@ -46,7 +46,7 @@ Om du vill konfigurera integreringen av iLMS i Azure AD måste du lägga till iL
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **iLMS** i sökrutan.
 1. Välj **iLMS** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -83,7 +83,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     I text rutan **inloggnings-URL** klistrar du in värdet för **slut punkt (URL)** som du kopierar från **Service Provider** -avsnittet i SAML-inställningar i iLMS Admin portal som `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
-1. Om du vill aktivera JIT-etablering förväntar ditt iLMS-program SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+1. Om du vill aktivera JIT-etablering förväntar ditt iLMS-program SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialogrutan Användarattribut.
 
     > [!NOTE]
     > Du måste aktivera **skapa oidentifierat användar konto** i iLMS för att mappa dessa attribut. Följ anvisningarna [här](https://support.inspiredelearning.com/help/adding-updating-and-managing-users#just-in-time-provisioning-with-saml-single-signon) för att få en uppfattning om attributets konfiguration.
@@ -136,7 +136,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Skärm bild som visar SAML-inställningar där du kan hämta värdena.](./media/ilms-tutorial/2.png) 
 
-4. Klicka på **Importera metadata**under avsnittet **identitets leverantör** .
+4. Klicka på **Importera metadata** under avsnittet **identitets leverantör** .
 
 5. Välj den **federationsmetadata** som hämtades från Azure Portal från certifikat avsnittet **SAML-signering** .
 
@@ -170,7 +170,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas Britta Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `Britta Simon`.  
@@ -182,13 +182,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till iLMS.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **iLMS**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

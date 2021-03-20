@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080481"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Vanliga frågor om distribution för Web Apps i Azure
@@ -73,7 +73,7 @@ Så här löser du FTP-problem:
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Hur gör jag för att publicera min kod till App Service?
 
-Azure snabb starten är utformad för att hjälpa dig att distribuera din app med hjälp av distributions stacken och den metod som du väljer. Om du vill använda Azure Portal snabb starten går du till App Service under **distribution**och väljer **snabb start**.
+Azure snabb starten är utformad för att hjälpa dig att distribuera din app med hjälp av distributions stacken och den metod som du väljer. Om du vill använda Azure Portal snabb starten går du till App Service under **distribution** och väljer **snabb start**.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Varför startar min app ibland om efter distributionen till App Service?
 

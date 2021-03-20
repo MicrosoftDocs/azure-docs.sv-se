@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98180106"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Snabb start: skapa ett sökindex med hjälp av klient biblioteket för Azure.Search.Documents
@@ -26,7 +26,7 @@ Du kan [Ladda ned käll koden](https://github.com/Azure-Samples/azure-search-dot
 > [!NOTE]
 > Letar du efter en tidigare version? Se [skapa ett sökindex med hjälp av Microsoft. Azure. search v10](search-get-started-dotnet-v10.md) i stället.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar har du följande verktyg och tjänster:
 
@@ -74,7 +74,7 @@ När projektet har skapats lägger du till klient biblioteket. [Azure.Search.Doc
 
 ### <a name="create-a-search-client"></a>Skapa en sökklient
 
-1. I **program.cs** ändrar du namn området till `AzureSearch.SDK.Quickstart.v11` och lägger sedan till följande `using` direktiv.
+1. I **program. cs** ändrar du namn området till `AzureSearch.SDK.Quickstart.v11` och lägger sedan till följande `using` direktiv.
 
    ```csharp
    using Azure;
@@ -108,9 +108,9 @@ Den här snabb starten skapar ett hotell index som du läser in med hotell data 
 
 I det här exemplet används synkrona metoder för Azure.Search.Documents-biblioteket för enkelhet och läsbarhet. I produktions scenarier bör du dock använda asynkrona metoder för att hålla din app skalbar och svarar. Du kan till exempel använda [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) i stället för [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex).
 
-1. Lägg till en tom klass definition i projektet: **Hotel.cs**
+1. Lägg till en tom klass definition i projektet: **hotell. cs**
 
-1. Kopiera följande kod till **Hotel.cs** för att definiera strukturen för ett hotell dokument. Attributen i fältet avgör hur det används i ett program. Till exempel `IsFilterable` måste attributet tilldelas till alla fält som har stöd för ett filter uttryck.
+1. Kopiera följande kod till **hotell. cs** för att definiera strukturen för ett hotell dokument. Attributen i fältet avgör hur det används i ett program. Till exempel `IsFilterable` måste attributet tilldelas till alla fält som har stöd för ett filter uttryck.
 
     ```csharp
     using System;
@@ -158,13 +158,13 @@ I det här exemplet används synkrona metoder för Azure.Search.Documents-biblio
 
    I klient biblioteket för Azure.Search.Documents kan du använda [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) och [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) för att förenkla fält definitionerna. Båda är derivat av en [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) och kan eventuellt förenkla koden:
 
-   + `SimpleField` kan vara vilken datatyp som helst, är alltid icke-sökbar (ignoreras för fullständiga texts öknings frågor) och kan hämtas (den är inte dold). Andra attribut är inaktiverade som standard, men kan aktive ras. Du kan använda en `SimpleField` för dokument-ID: n eller fält som endast används i filter, ansikts eller bedömnings profiler. I så fall, se till att använda alla attribut som krävs för scenariot, till exempel `IsKey = true` för ett dokument-ID. Mer information finns i [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) i käll koden.
+   + `SimpleField` kan vara vilken datatyp som helst, är alltid icke-sökbar (ignoreras för fullständiga texts öknings frågor) och kan hämtas (den är inte dold). Andra attribut är inaktiverade som standard, men kan aktive ras. Du kan använda en `SimpleField` för dokument-ID: n eller fält som endast används i filter, ansikts eller bedömnings profiler. I så fall, se till att använda alla attribut som krävs för scenariot, till exempel `IsKey = true` för ett dokument-ID. Mer information finns i [SimpleFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) i käll koden.
 
-   + `SearchableField` måste vara en sträng och är alltid sökbar och hämtnings bar. Andra attribut är inaktiverade som standard, men kan aktive ras. Eftersom den här fält typen är sökbar, stöder den synonymer och hela komplementet till analys egenskaperna. Mer information finns i [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) i käll koden.
+   + `SearchableField` måste vara en sträng och är alltid sökbar och hämtnings bar. Andra attribut är inaktiverade som standard, men kan aktive ras. Eftersom den här fält typen är sökbar, stöder den synonymer och hela komplementet till analys egenskaperna. Mer information finns i [SearchableFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) i käll koden.
 
    Oavsett om du använder Basic `SearchField` -API: et eller någon av hjälp modeller måste du uttryckligen aktivera attributen filter, aspekt och sortering. Till exempel måste [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)och [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) uttryckligen vara attribut som visas i exemplet ovan. 
 
-1. Lägg till en andra tom klass definition i projektet: **address.cs**.  Kopiera följande kod till-klassen.
+1. Lägg till en andra tom klass definition i projektet: **address. cs**.  Kopiera följande kod till-klassen.
 
    ```csharp
    using Azure.Search.Documents.Indexes;
@@ -191,9 +191,9 @@ I det här exemplet används synkrona metoder för Azure.Search.Documents-biblio
     }
    ```
 
-1. Skapa två fler klasser: **Hotel.Methods.cs** och **address.Methods.cs** för toString () åsidosättningar. Dessa klasser används för att återge Sök resultat i konsolens utdata.  Innehållet i dessa klasser anges inte i den här artikeln, men du kan kopiera koden från [filer i GitHub](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11).
+1. Skapa två fler klasser: **hotell. Methods. cs** och **address. Methods. cs** för toString () åsidosättningar. Dessa klasser används för att återge Sök resultat i konsolens utdata.  Innehållet i dessa klasser anges inte i den här artikeln, men du kan kopiera koden från [filer i GitHub](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11).
 
-1. I **program.cs** skapar du ett [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) -objekt och anropar sedan [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) -metoden för att uttrycka indexet i din Sök tjänst. Indexet innehåller också en [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) för att aktivera Autoavsluta för de angivna fälten.
+1. Skapa ett [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) -objekt i **program. cs** och anropa sedan [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) -metoden för att uttrycka indexet i din Sök tjänst. Indexet innehåller också en [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) för att aktivera Autoavsluta för de angivna fälten.
 
    ```csharp
     // Create hotels-quickstart index
@@ -221,7 +221,7 @@ I Azure Kognitiv sökning är Sök dokument data strukturer som båda är indata
 
 När du överför dokument måste du använda ett [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) -objekt. Ett `IndexDocumentsBatch` -objekt innehåller en samling [åtgärder](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)som innehåller ett dokument och en egenskap som talar om för Azure kognitiv sökning vilken åtgärd som ska utföras ([Ladda upp, sammanfoga, ta bort och mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. I **program.cs** skapar du en matris med dokument-och index åtgärder och skickar sedan matrisen till `IndexDocumentsBatch` . Dokumenten nedan följer hotell-snabb starts indexet, som definieras av hotellet-klassen.
+1. Skapa en matris med dokument och index åtgärder i **program. cs** och skicka sedan matrisen till `IndexDocumentsBatch` . Dokumenten nedan följer hotell-snabb starts indexet, som definieras av hotellet-klassen.
 
     ```csharp
     // Upload documents in a single Upload request.
@@ -357,7 +357,7 @@ I det här avsnittet läggs två delar av funktionalitet: fråga efter logik och
 
 [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) -klassen representerar resultatet.
 
-1. I **program.cs** skapar du en **WriteDocuments** -metod som skriver ut Sök resultat till-konsolen.
+1. I **program. cs** skapar du en **WriteDocuments** -metod som skriver ut Sök resultat till-konsolen.
 
     ```csharp
     // Write search results to console

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0650e77b2207c71e9ef8d91b659aba570a6bc702
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455858"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>Självstudie: integrera smarta Nelly med Azure Active Directory
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera smarta-Nelly med Azure 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -46,7 +46,7 @@ Om du vill konfigurera integreringen av smarta-Nelly i Azure AD måste du lägga
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **smarta Nelly** i sökrutan.
 1. Välj **smarta Nelly** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -80,7 +80,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     | Miljö | URL-mönster |
     | - | - |
-    | Testa | `https://test.elephantsdontforget.com/plato`|
+    | Test | `https://test.elephantsdontforget.com/plato`|
     | Produktion | `https://secure.elephantsdontforget.com/plato` |
     | | |
 
@@ -88,7 +88,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     | Miljö | URL-mönster |
     | - | - |
-    | Testa | `https://test.elephantsdontforget.com/plato/callback?client_name=SAML2Client`|
+    | Test | `https://test.elephantsdontforget.com/plato/callback?client_name=SAML2Client`|
     | Produktion | `https://secure.elephantsdontforget.com/plato/callback?client_name=SAML2Client` |
     | | |
 
@@ -98,7 +98,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     | Miljö | URL-mönster |
     | - | - |
-    | Testa | `https://test.elephantsdontforget.com/plato/sso/microsoft/index.xhtml`|
+    | Test | `https://test.elephantsdontforget.com/plato/sso/microsoft/index.xhtml`|
     | Produktion | `https://secure.elephantsdontforget.com/plato/sso/microsoft/index.xhtml` |
     | | |
 
@@ -117,7 +117,7 @@ Om du vill konfigurera enkel inloggning på **smarta Nelly** -sidan måste du sk
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -129,13 +129,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till smarta Nelly.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **smarta Nelly**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

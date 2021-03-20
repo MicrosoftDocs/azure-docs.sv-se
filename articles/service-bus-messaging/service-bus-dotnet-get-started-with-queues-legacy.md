@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652997"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Komma igång med Service Bus-köer
@@ -48,7 +48,7 @@ Starta Visual Studio och skapa ett nytt **konsol program (.net Core)-** projekt 
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Skriva kod för att skicka meddelanden till kön
 
-1. I *program.cs* lägger du till följande- `using` instruktioner överst i namn områdes definitionen, före klass deklarationen:
+1. I *program. cs* lägger du till följande- `using` instruktioner överst i namn områdes definitionen, före klass deklarationen:
 
     ```csharp
     using System.Text;
@@ -114,7 +114,7 @@ Starta Visual Studio och skapa ett nytt **konsol program (.net Core)-** projekt 
     }
     ```
 
-Så här bör din *program.cs* -fil se ut.
+Så här ser din *program. cs* -fil att se ut.
 
 ```csharp
 namespace CoreSenderApp
@@ -194,7 +194,7 @@ Om du vill ta emot de meddelanden som du har skickat skapar du ett annat **konso
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Skriva kod för att ta emot meddelanden från kön
 
-1. I *program.cs* lägger du till följande- `using` instruktioner överst i namn områdes definitionen, före klass deklarationen:
+1. I *program. cs* lägger du till följande- `using` instruktioner överst i namn områdes definitionen, före klass deklarationen:
 
     ```csharp
     using System;
@@ -295,7 +295,7 @@ Om du vill ta emot de meddelanden som du har skickat skapar du ett annat **konso
     }
     ```
 
-Så här bör din *program.cs* -fil se ut:
+Så här ser din *program. cs* -fil att se ut så här:
 
 ```csharp
 namespace CoreReceiverApp
