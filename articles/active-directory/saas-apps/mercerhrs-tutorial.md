@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: fc60b838219e73b008f82271353ca75d0d24d2e3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Självstudie: Azure Active Directory integrering med Mercer BenefitsCentral (av MBC)
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Mercer BenefitsCentral (av MBC).
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Mercer BenefitsCentral (av MBC)**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Mercer BenefitsCentral (av MBC)**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

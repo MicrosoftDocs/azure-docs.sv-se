@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919552"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Kom igång med Elastic Database verktyg
@@ -104,13 +104,13 @@ Grattis! Du har skapat och kört ditt första shardade-program genom att använd
 
 ## <a name="key-pieces-of-the-code-sample"></a>Huvud delar av kod exemplet
 
-* **Hantera Shards-och Shard Maps**: koden visar hur du arbetar med Shards, intervall och mappningar i *ShardManagementUtils.cs* -filen. Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).  
+* **Hantera Shards-och Shard Maps**: koden illustrerar hur du arbetar med Shards, intervall och mappningar i filen *ShardManagementUtils. cs* . Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).  
 
-* **Data beroende routning**: routning av transaktioner till rätt Shard visas i *DataDependentRoutingSample.cs* -filen. Mer information finns i [data beroende routning](https://go.microsoft.com/?linkid=9862596).
+* **Data beroende routning**: routning av transaktioner till rätt Shard visas i filen *DataDependentRoutingSample. cs* . Mer information finns i [data beroende routning](https://go.microsoft.com/?linkid=9862596).
 
-* **Fråga över flera Shards**: frågor över Shards illustreras i *MultiShardQuerySample.cs* -filen. Mer information finns i [multi-Shard-frågor](https://go.microsoft.com/?linkid=9862597).
+* **Fråga över flera Shards**: frågor över Shards illustreras i filen *MultiShardQuerySample. cs* . Mer information finns i [multi-Shard-frågor](https://go.microsoft.com/?linkid=9862597).
 
-* **Lägger till Tom Shards**: upprepnings tillägg av ny tom Shards utförs av koden i *CreateShardSample.cs* -filen. Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).
+* **Lägger till Tom Shards**: upprepnings tillägg av ny tom Shards utförs av koden i filen *CreateShardSample. cs* . Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Andra elastiska skalnings åtgärder
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99218170"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Kod exempel för .NET (C#) för Azure Kognitiv sökning
@@ -30,7 +30,7 @@ Lär dig mer om C#-kod exemplen som demonstrerar funktionerna och arbets flödet
 
 Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hittar dessa exempel i [**Azure/Azure-SDK-för-net/tree/master/SDK/search/Azure.Search.Documents/samples**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/) on GitHub.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | ["Hello World", synkront](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01a_HelloWorld.md) | Visar hur du skapar en klient, autentiserar och hanterar fel med hjälp av synkrona metoder.|
 | ["Hello World", asynkront](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01b_HelloWorldAsync.md) | Visar hur du skapar en klient, autentiserar och hanterar fel med hjälp av asynkrona metoder.  |
@@ -63,7 +63,7 @@ Kod exempel från Kognitiv sökning team demonstrerar funktioner och arbets flö
 
 Följande exempel publiceras också av Kognitiv sökning-teamet, men det finns inga referenser till dokumentationen. Tillhör ande README-filer innehåller användnings instruktioner.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |---------|-------------|
 | [Azure-Search – Power-färdigheter](https://github.com/Azure-Samples/azure-search-power-skills)  | Källkod för förbrukade anpassade kunskaper som du kan använda i dina vunna lösningar.  |
 | [Lösningsaccelerator för kunskapsutvinning](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Innehåller mallar, stödfiler och analys rapporter som hjälper dig att prototypa en lösning för kunskaps utvinning från slut punkt till slut punkt.  |

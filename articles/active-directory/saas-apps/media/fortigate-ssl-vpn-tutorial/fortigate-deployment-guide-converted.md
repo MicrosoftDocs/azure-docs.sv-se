@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
 ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025525"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>Distributions guide för FortiGate Azure Virtual Machine
@@ -161,12 +161,12 @@ Du kanske vill konfigurera den virtuella datorn FortiGate med ditt eget SSL-cert
 2. Fortsätt förbi eventuella certifikat fel.
 3. Logga in med de administratörsautentiseringsuppgifter som angavs under distributionen av virtuella FortiGate-datorer.
 4. På den vänstra menyn väljer du **system**  >  **certifikat**.
-5. Välj **Importera**  >  **Local Certificate**  >  **PKCS #12-certifikat** för lokal certifikat.
+5. Välj **Importera**  >    >  **PKCS #12-certifikat** för lokal certifikat.
 6. Bläddra till. PFX-fil som innehåller SSL-certifikatet och den privata nyckeln.
 7. Ange. PFX-lösenord och ett beskrivande namn för certifikatet. Välj sedan **OK**.
 8. På den vänstra **menyn väljer du**  >  **Systeminställningar**.
 9. Under **administrations inställningar** expanderar du listan bredvid **https-servercertifikat** och väljer det SSL-certifikat som importerades tidigare.
-10. Välj **Tillämpa**.
+10. Välj **Använd**.
 11. Stäng webbläsarfönstret och gå till `https://<address>:8443` .
 12. Logga in med autentiseringsuppgifterna för FortiGate-administratören. Nu bör du se rätt SSL-certifikat som används.
 

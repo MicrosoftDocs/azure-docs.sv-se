@@ -9,10 +9,10 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101654"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Skapa en behållare i Azure Cosmos DB API för Cassandra
@@ -31,13 +31,13 @@ I den här artikeln beskrivs olika sätt att skapa en behållare i Azure Cosmos 
 
 1. [Skapa ett nytt Azure Cosmos-konto](create-cassandra-dotnet.md#create-a-database-account)eller Välj ett befintligt konto.
 
-1. Öppna rutan **Datautforskaren** och välj **Ny tabell** . Ange därefter följande information:
+1. Öppna rutan **Datautforskaren** och välj **Ny tabell**. Ange därefter följande information:
 
    * Ange om du skapar ett nytt nyckelutrymme eller använder ett befintligt.
    * Ange ett tabellnamn.
    * Ange egenskaper och ange en primärnyckel.
    * Ange ett data flöde som ska tillhandahållas (till exempel 1000 ru: er).
-   * Välj **OK** .
+   * Välj **OK**.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Skärmbild av API för Cassandra, dialogrutan Lägg till tabell":::
 

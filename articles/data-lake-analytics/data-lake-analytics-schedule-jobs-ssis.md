@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/17/2018
 ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221459"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Schemalägg U-SQL-jobb med SQL Server Integration Services (SSIS)
@@ -35,7 +35,7 @@ Du kan hämta U-SQL-skriptet från olika platser med hjälp av inbyggda funktion
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Scenario 1 – använda infogade skript anrop tvfs och lagrade processer
 
-I Azure Data Lake Analytics aktivitets redigeraren konfigurerar du **SourceType** som **DirectInput**och sätter U-SQL-uttrycken i **USQLStatement**.
+I Azure Data Lake Analytics aktivitets redigeraren konfigurerar du **SourceType** som **DirectInput** och sätter U-SQL-uttrycken i **USQLStatement**.
 
 För enkel underhåll och kod hantering är det bara att använda korta U-SQL-skript som infogade skript, till exempel kan du anropa befintliga tabell värdes funktioner och lagrade procedurer i dina U-SQL-databaser. 
 
@@ -89,13 +89,13 @@ I SSIS-paketets designvy lägger du till en **Azure Data Lake Store fil system a
     Så här skapar du den här fil anslutningen:
 
    1. Välj **\<New Connection...>** i FileConnection-inställningen.
-   2. Ange **användnings typ** till en **befintlig fil**och ange **filen** till en befintlig fils sökväg.
+   2. Ange **användnings typ** till en **befintlig fil** och ange **filen** till en befintlig fils sökväg.
 
        ![Skärm bild som visar fil anslutnings hanterarens redigerare med "befintlig fil" vald för "användnings typ".](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. I vyn **anslutnings hanterare** högerklickar du på fil anslutningen som skapats just nu och väljer **Egenskaper**.
 
-   4. I fönstret **Egenskaper** expanderar du **uttryck**och ställer in **ConnectionString** till variabeln som definierats i förgrunds sling-behållaren, till exempel `@[User::FileName]` .
+   4. I fönstret **Egenskaper** expanderar du **uttryck** och ställer in **ConnectionString** till variabeln som definierats i förgrunds sling-behållaren, till exempel `@[User::FileName]` .
 
        ![Konfigurera behållare för förgrunds slingor](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -128,7 +128,7 @@ Förutom att använda U-SQL-filer som lagras i molnet kan du också använda fil
 
 2. Välj **filtyp** och klicka på **Lägg till.**...
 
-3. Ange **användnings typ** till **befintlig fil**och ange **filen** till filen på den lokala datorn.
+3. Ange **användnings typ** till **befintlig fil** och ange **filen** till filen på den lokala datorn.
 
     ![Lägg till fil anslutning till den lokala filen](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 

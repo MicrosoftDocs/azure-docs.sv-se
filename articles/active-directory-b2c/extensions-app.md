@@ -11,15 +11,15 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94560868"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: tillägg-appen
 
-När en Azure AD B2C katalog skapas, skapas automatiskt en app `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` som heter i den nya katalogen. Den här appen, som kallas **B2C-Extensions-app** , är synlig i *Appregistreringar*. Den används av tjänsten Azure AD B2C för att lagra information om användare och anpassade attribut. Om appen tas bort kommer Azure AD B2C inte att fungera korrekt och produktions miljön kommer att påverkas.
+När en Azure AD B2C katalog skapas, skapas automatiskt en app `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` som heter i den nya katalogen. Den här appen, som kallas **B2C-Extensions-app**, är synlig i *Appregistreringar*. Den används av tjänsten Azure AD B2C för att lagra information om användare och anpassade attribut. Om appen tas bort kommer Azure AD B2C inte att fungera korrekt och produktionsmiljön kommer att påverkas.
 
 > [!IMPORTANT]
 > Ta inte bort B2C-Extensions-appen om du inte planerar att omedelbart ta bort din klient. Om appen fortfarande tas bort i mer än 30 dagar kommer användar informationen att gå förlorad permanent.

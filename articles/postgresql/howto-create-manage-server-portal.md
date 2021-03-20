@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.openlocfilehash: 393e67d1b690f7231b5bf298b44f4db7c489d184
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91704522"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Hantera en Azure Database for PostgreSQL-server med hjälp av Azure Portal
@@ -50,7 +50,7 @@ Du kan skala från Generell användning till Minnesoptimerade och tvärtom. Det 
 
 2. Ändra **vCore** -inställningen genom att flytta skjutreglaget till önskat värde.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Skärm bild av Azure Portal att välja alternativet vCore i Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Vid skalning av virtuella kärnor sker en omstart av servern.
@@ -63,7 +63,7 @@ Du kan skala från Generell användning till Minnesoptimerade och tvärtom. Det 
 
 2. Ändra **lagrings** inställningen genom att flytta skjutreglaget uppåt till önskat värde.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Skärm bild av Azure Portal för att välja lagrings skala i Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Det går inte att skala upp lagrings utrymmet.
@@ -74,13 +74,13 @@ Du kan skala från Generell användning till Minnesoptimerade och tvärtom. Det 
 
 Du kan ändra administratörs rollens lösen ord med hjälp av Azure Portal.
 
-1. Välj din server i Azure Portal. Välj **Återställ lösen ord**i **översikts** fönstret.
+1. Välj din server i Azure Portal. Välj **Återställ lösen ord** i **översikts** fönstret.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Skärm bild av Azure Portal för att återställa lösen ordet i Azure Database for PostgreSQL":::
 
 2. Ange ett nytt lösen ord och bekräfta lösen ordet. I text rutan visas ett varnings krav för lösen ords komplexitet.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Skärm bild av Azure Portal för att återställa ditt lösen ord och spara i Azure Database for PostgreSQL":::
 
 3. Välj **OK** för att spara det nya lösen ordet.
 
@@ -90,11 +90,11 @@ Du kan ta bort servern om du inte längre behöver den.
 
 1. Välj din server i Azure Portal. I **översikts** fönstret väljer du **ta bort**.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Skärm bild av Azure Portal att ta bort servern i Azure Database for PostgreSQL":::
 
 2. Skriv namnet på servern i indatatypen för att bekräfta att det är den server som du vill ta bort.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Skärm bild av Azure Portal för att bekräfta att servern tas bort i Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Det går inte att ångra borttagningen av en server.

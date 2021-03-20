@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631375"
 ---
 # <a name="common-errors"></a>Vanliga fel
@@ -25,9 +25,9 @@ Ovanstående fel inträffar efter lyckad inloggning men innan ett kommando körs
 
 Det finns vissa Server parametrar som require_secure_transport som inte stöds på sessionstillståndet och som därför försöker ändra värdena för dessa parametrar med hjälp av init_connect kan resultera i fel 1184 vid anslutning till MySQL-servern enligt nedan
 
-MySQL> Visa databaser; FEL 2006 (HY000): MySQL-servern har borta ingen anslutning. Försöker återansluta... Anslutnings-ID: 64897 aktuell databas: * * * ingen * * _ fel 1184 (08S01): avbruten anslutning 22 till DB: ' DB-Name ' User: ' User ' värd: ' hostIP ' (init_connect kommando misslyckades)
+MySQL> Visa databaser; FEL 2006 (HY000): MySQL-servern har borta ingen anslutning. Försöker återansluta... Anslutnings-ID: 64897 aktuell databas: * * * ingen * * * fel 1184 (08S01): avbruten anslutning 22 till DB: ' DB-Name ' User: ' User ' värd: ' hostIP ' (init_connect kommando misslyckades)
 
-_ *Resolution**: du bör återställa init_connect värde på fliken Server parametrar i Azure Portal och bara ange de Server parametrar som stöds med hjälp av init_connect-parameter. 
+**Lösning** : du bör återställa init_connect värde på fliken Server parametrar i Azure Portal och bara ange de Server parametrar som stöds med hjälp av init_connect-parameter. 
 
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Fel på grund av brist på SUPER-privilegium och DBA-roll

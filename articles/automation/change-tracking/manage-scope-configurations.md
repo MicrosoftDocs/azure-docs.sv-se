@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6eb9a20920f0a340491459f0875fc85b90dfa193
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209993"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Begränsa Ändringsspårning och distributions omfång för inventering
@@ -40,7 +40,7 @@ Begränsa omfånget för din Ändringsspårning-och inventerings distribution:
 
 8. I redigerings fönstret väljer du **Välj dator grupper**. I fönstret dator grupper visas sparade sökningar som används för att skapa omfattnings konfigurationen. Den sparade sökningen som används av Ändringsspårning och inventering är:
 
-    |Namn     |Kategori  |Alias  |
+    |Name     |Kategori  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

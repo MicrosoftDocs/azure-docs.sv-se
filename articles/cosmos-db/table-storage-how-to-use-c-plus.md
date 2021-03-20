@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489887"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Använda Azure Table Storage och Azure Cosmos DB Table-API:et med C++
@@ -500,10 +500,10 @@ else
 
 ## <a name="troubleshooting"></a>Felsökning
 
-För Visual Studio Community Edition, om ditt projekt får build-fel på grund av include-filerna *storage_account. h* och *Table. h* , tar du bort växeln **/permissive-** compiler:
+För Visual Studio Community Edition, om ditt projekt får build-fel på grund av include-filerna *storage_account. h* och *Table. h*, tar du bort växeln **/permissive-** compiler:
 
 1. Högerklicka på projektet i **Solution Explorer** och välj **Egenskaper**.
-1. Expandera **Konfigurationsegenskaper** i dialogrutan **Egenskapssidor** , expandera **C/C++** och välj **Språk**.
+1. Expandera **Konfigurationsegenskaper** i dialogrutan **Egenskapssidor**, expandera **C/C++** och välj **Språk**.
 1. Ändra **Conformance mode** (Konformitetsläge) till **Nej**.
 
 ## <a name="next-steps"></a>Nästa steg

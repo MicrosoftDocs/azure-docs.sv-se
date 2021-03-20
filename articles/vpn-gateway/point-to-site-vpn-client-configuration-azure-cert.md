@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94556216"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Skapa och installera konfigurationsfiler för VPN-klienten för interna P2S-konfigurationer för Azure-certifikatautentisering
@@ -34,8 +34,8 @@ Innan du börjar ska du kontrol lera att alla anslutna användare har ett giltig
 
 Du kan generera konfigurationsfiler för klienter med hjälp av PowerShell, eller med hjälp av Azure Portal. Båda metoderna returnerar samma zip-fil. Zippa upp filen om du vill visa följande mappar:
 
-* **WindowsAmd64** och **WindowsX86** , som innehåller installations paket för Windows 32-bitars och 64-bitars. **WindowsAmd64** Installer-paketet är för alla 64-bitars Windows-klienter som stöds, inte bara AMD.
-* **Generisk** , som innehåller allmän information som används för att skapa en egen VPN-klientkonfiguration. Den allmänna mappen anges om IKEv2 eller SSTP + IKEv2 har kon figurer ATS på gatewayen. Om endast SSTP har kon figurer ATS finns inte den generiska mappen.
+* **WindowsAmd64** och **WindowsX86**, som innehåller installations paket för Windows 32-bitars och 64-bitars. **WindowsAmd64** Installer-paketet är för alla 64-bitars Windows-klienter som stöds, inte bara AMD.
+* **Generisk**, som innehåller allmän information som används för att skapa en egen VPN-klientkonfiguration. Den allmänna mappen anges om IKEv2 eller SSTP + IKEv2 har kon figurer ATS på gatewayen. Om endast SSTP har kon figurer ATS finns inte den generiska mappen.
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Skapa filer med hjälp av Azure Portal
 
@@ -66,8 +66,8 @@ Du kan generera konfigurationsfiler för klienter med hjälp av PowerShell, elle
 
  Du måste konfigurera den inbyggda IKEv2 VPN-klienten manuellt på varje Mac som ska ansluta till Azure. Azure tillhandahåller inte mobileconfig-filen för intern Azure-certifikatautentisering. Den **generiska** innehåller all information som du behöver för konfigurationen. Om du inte ser mappen Generic i nedladdningen beror det antagligen på att du inte valde IKEv2 som tunneltyp. Observera att VPN gateway Basic SKU inte stöder IKEv2. När du har valt IKEv2 genererar du ZIP-filen igen för att hämta mappen Generic.<br>Mappen Generic innehåller följande filer:
 
-* **VpnSettings.xml** , som innehåller viktiga inställningar som server adress och tunnel typ. 
-* **VpnServerRoot. cer** , som innehåller rot certifikatet som krävs för att verifiera Azure-VPN gateway under installationen av P2s-anslutningen.
+* **VpnSettings.xml**, som innehåller viktiga inställningar som server adress och tunnel typ. 
+* **VpnServerRoot. cer**, som innehåller rot certifikatet som krävs för att verifiera Azure-VPN gateway under installationen av P2s-anslutningen.
 
 Använd följande steg för att konfigurera den inbyggda VPN-klienten på Mac för certifikatautentisering. Du måste utföra de här stegen på varje Mac som ska ansluta till Azure:
 
@@ -144,7 +144,7 @@ Följande instruktioner skapades på Ubuntu 18.0.4. Ubuntu-16.0.10 stöder inte 
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/vpn-server.png" alt-text="Skärm bild som visar kopiera data.":::
 1. Klistra in namnet i fältet **adress** i den nya VPN-anslutningen i **Gateway** -avsnittet. Sedan väljer du mappikonen i slutet av fältet **certifikat** , bläddrar till den **allmänna** mappen och väljer filen **VpnServerRoot** .
-1. I avsnittet **klient** i anslutningen, för **autentisering** , väljer du **certifikat/privat nyckel**. För **certifikat** och **privat nyckel** väljer du certifikatet och den privata nyckeln som skapades tidigare. I **alternativ** väljer du **begär en inre IP-adress**. Välj sedan **Lägg till**.
+1. I avsnittet **klient** i anslutningen, för **autentisering**, väljer du **certifikat/privat nyckel**. För **certifikat** och **privat nyckel** väljer du certifikatet och den privata nyckeln som skapades tidigare. I **alternativ** väljer du **begär en inre IP-adress**. Välj sedan **Lägg till**.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/ip-request.png" alt-text="Skärm bild som visar begäran om en inre IP-adress.":::
 

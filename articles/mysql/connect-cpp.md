@@ -9,10 +9,10 @@ ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: e8b2842300e43a9de88cc0b9b3ae9ce6cd754612
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535851"
 ---
 # <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Snabb start: Använd Connector/C++ för att ansluta och fråga efter data i Azure Database for MySQL
@@ -54,7 +54,7 @@ Stegen i det här avsnittet förutsätter att du är van att utveckla med .NET.
 Skaffa den information som du behöver för att ansluta till Azure Database för MySQL. Du behöver det fullständiga servernamnet och inloggningsuppgifter.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver** ).
+2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver**).
 3. Klicka på servernamnet.
 4. På serverpanelen **Översikt** antecknar du **Servernamn** och **Inloggningsnamn för serveradministratören**. Om du glömmer lösenordet kan du även återställa det på den här panelen.
  :::image type="content" source="./media/connect-cpp/1_server-overview-name-login.png" alt-text="Azure Database för MySQL-servernamn":::
@@ -134,7 +134,7 @@ int main()
 
 ## <a name="read-data"></a>Läsa data
 
-Använd följande kod för att ansluta och läsa data med en **SELECT** -SQL-instruktion. Koden använder klassen sql::Driver med metoden connect() för att upprätta en anslutning till MySQL. Sedan används metoden prepareStatement() och executeQuery() för att köra de valda kommandona. Härnäst använder koden next () för att gå vidare till posterna i resultaten. Slutligen använder koden getInt() och getString() för att parsa värdena i posten.
+Använd följande kod för att ansluta och läsa data med en **SELECT**-SQL-instruktion. Koden använder klassen sql::Driver med metoden connect() för att upprätta en anslutning till MySQL. Sedan används metoden prepareStatement() och executeQuery() för att köra de valda kommandona. Härnäst använder koden next () för att gå vidare till posterna i resultaten. Slutligen använder koden getInt() och getString() för att parsa värdena i posten.
 
 Ersätt parametrarna Host, DBName, User och Password. Du kan ersätta parametrarna med de värden som du angav när du skapade servern och databasen. 
 
@@ -251,7 +251,7 @@ int main()
 
 
 ## <a name="delete-data"></a>Ta bort data
-Använd följande kod för att ansluta och läsa data med en **DELETE** -SQL-instruktion. Koden använder klassen sql::Driver med metoden connect() för att upprätta en anslutning till MySQL. Sedan används metoden prepareStatement() och executeQuery() för att köra borttagningskommandona.
+Använd följande kod för att ansluta och läsa data med en **DELETE**-SQL-instruktion. Koden använder klassen sql::Driver med metoden connect() för att upprätta en anslutning till MySQL. Sedan används metoden prepareStatement() och executeQuery() för att köra borttagningskommandona.
 
 Ersätt parametrarna Host, DBName, User och Password. Du kan ersätta parametrarna med de värden som du angav när du skapade servern och databasen. 
 

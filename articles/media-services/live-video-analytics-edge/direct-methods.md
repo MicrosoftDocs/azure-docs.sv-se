@@ -4,10 +4,10 @@ description: Live video analys på IoT Edge visar flera direkta metoder. De dire
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656248"
 ---
 # <a name="direct-methods"></a>Direkta metoder
@@ -287,7 +287,7 @@ Hämtar en lista över alla Graph-topologier som matchar filter kriterierna.
 
 | Villkor | Statuskod | Detaljerad felkod |
 |--|--|--|
-| Success | 200 | Ej tillämpligt |
+| Klart | 200 | Ej tillämpligt |
 | Allmänna användar fel | 400 intervall |  |
 | Allmänna Server fel | 500 intervall |  |
 
@@ -474,7 +474,7 @@ Hämtar en lista över alla grafer-instanser som matchar filter kriterierna.
 
 | Villkor | Statuskod | Detaljerad felkod |
 |--|--|--|
-| Success | 200 | Ej tillämpligt |
+| Klart | 200 | Ej tillämpligt |
 | Allmänna användar fel | 400 intervall |  |
 | Allmänna Server fel | 500 intervall |  |
 

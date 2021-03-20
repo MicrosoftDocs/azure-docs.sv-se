@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015204"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-meddelanden för B2B Enterprise-integration i Azure Logic Apps med Enterprise-integrationspaket
@@ -316,7 +316,7 @@ När du arbetar med HIPAA-scheman och meddelande typerna 277 eller 837 måste du
 
 I den här tabellen visas de typer av meddelanden som påverkas, alla varianter och dokument versions nummer som mappas till dessa meddelande typer:
 
-| Meddelande typ eller variant |  Description | Dokument versions nummer (GS8) |
+| Meddelande typ eller variant |  Beskrivning | Dokument versions nummer (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Status meddelande för hälso vårds information | 005010X212 |
 | 837_I | Hälso vårds anspråk institutionellt | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |

@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: d9969cf0fa453f857de421dd10934f63f5773f6c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516755"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Självstudie: Installera program i VM-skalningsuppsättningar med Azure CLI
@@ -78,7 +78,7 @@ Det tar några minuter att skapa och konfigurera alla skalningsuppsättningsresu
 
 
 ## <a name="apply-the-custom-script-extension"></a>Tillämpa det anpassade skripttillägget
-Tillämpa konfigurationen för det anpassade skripttillägget till de virtuella datorinstanserna i din skalningsuppsättning med [az vmss extension set](/cli/azure/vmss/extension). Följande exempel tillämpar konfigurationen *customConfig.json* till de virtuella datorinstanserna *myScaleSet* i resursgruppen med namnet *myResourceGroup* :
+Tillämpa konfigurationen för det anpassade skripttillägget till de virtuella datorinstanserna i din skalningsuppsättning med [az vmss extension set](/cli/azure/vmss/extension). Följande exempel tillämpar konfigurationen *customConfig.json* till de virtuella datorinstanserna *myScaleSet* i resursgruppen med namnet *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -94,7 +94,7 @@ Varje virtuell datorinstans i skalningsuppsättningen laddar ned och kör skript
 
 
 ## <a name="test-your-scale-set"></a>Testa din skalningsuppsättning
-Skapa en regel för lastbalanserare med [az network lb rule create](/cli/azure/network/lb/rule) för att tillåta trafik till webbservern. I följande exempel skapas en regel med namnet *myLoadBalancerRuleWeb* :
+Skapa en regel för lastbalanserare med [az network lb rule create](/cli/azure/network/lb/rule) för att tillåta trafik till webbservern. I följande exempel skapas en regel med namnet *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -128,7 +128,7 @@ Lämna webbläsaren öppen så att du kan se en uppdaterad version i nästa steg
 ## <a name="update-app-deployment"></a>Uppdatera appdistributionen
 Under livscykeln för en skalningsuppsättning, kan du behöva distribuera en uppdaterad version av ditt program. Med det anpassade skripttillägget, kan du referera till ett uppdaterat distributionsskript och sedan tillämpa tillägget till din skalningsuppsättning igen. När skalnings uppsättningen skapades i ett föregående steg `--upgrade-policy-mode` angavs värdet *automatiskt*. Den här inställningen låter virtuella datorinstanser i skalningsuppsättningen att automatiskt uppdatera och tillämpa den senaste versionen av ditt program.
 
-I ditt nuvarande gränssnitt, skapar du en fil med namnet *cusomConfigv2.json* och klistrar in följande konfiguration. Den här definitionen kör en uppdaterad *v2* -version av installationsskriptet för programmet:
+I ditt nuvarande gränssnitt, skapar du en fil med namnet *cusomConfigv2.json* och klistrar in följande konfiguration. Den här definitionen kör en uppdaterad *v2*-version av installationsskriptet för programmet:
 
 ```json
 {

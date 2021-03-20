@@ -7,10 +7,10 @@ ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98629682"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Konfigurera Kundhanterade nycklar för att kryptera data i vila för integrerings tjänst miljöer (ISEs) i Azure Logic Apps
@@ -51,7 +51,7 @@ Det här avsnittet visar hur du konfigurerar och anger din egen krypterings nyck
   |----------|-------|
   | **Nyckel typ** | RSA |
   | **Nyckel storlek för RSA** | 2048 |
-  | **Aktiverad** | Yes |
+  | **Aktiverad** | Ja |
   |||
 
   ![Skapa din kund hanterade krypterings nyckel](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)

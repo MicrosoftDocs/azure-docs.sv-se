@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 7c4d32dd63120a52fd7351977943574455e5cfad
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146662"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Exportera API: er från Azure API Management till Power Platform 
@@ -35,12 +35,12 @@ Den här artikeln vägleder dig genom stegen för att exportera API: er från AP
 
 1. Gå till din API Management-tjänst i Azure Portal och välj **API: er** på menyn.
 2. Klicka på de tre punkterna bredvid det API som du vill exportera. 
-3. Välj **Exportera** .
-4. Välj **Power Apps och automatisera energi spar läge** .
+3. Välj **Exportera**.
+4. Välj **Power Apps och automatisera energi spar läge**.
 5. Välj en miljö att exportera API: t till. 
 6. Ange ett visnings namn som ska användas som namn på det anpassade anslutnings programmet.  
 7. Valfritt, om API: t skyddas av en OAuth 2,0-server, måste du också ange ytterligare information, inklusive `Client ID` ,,, `Client secret` `Authorization URL` `Token URL` och `Refresh URL` .  
-8. Välj **Exportera** . 
+8. Välj **Exportera**. 
 
 När exporten är klar navigerar du till din Power app eller Energis par miljö. API: et visas som en anpassad anslutning.
 

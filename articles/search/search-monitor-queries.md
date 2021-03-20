@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100592386"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Övervaka fråge förfrågningar i Azure Kognitiv sökning
@@ -36,7 +36,7 @@ Volymen mäts som **Sök frågor per sekund** (frågor per sekund), ett inbyggt 
 
 Det är vanligt att frågor körs i millisekunder, så endast frågor som mäter hur många sekunder visas i mått.
 
-| Sammansättningstyp | Description |
+| Sammansättningstyp | Beskrivning |
 |------------------|-------------|
 | Genomsnitt | Genomsnittligt antal sekunder inom en minut under vilken frågekörningen genomfördes.|
 | Antal | Antalet mått som har spridits till loggen inom en minuters intervall. |

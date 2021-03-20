@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 64e40341ec56a2e1c561b2bcbb5e584830c14015
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145590"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Översikt över stöd för flera innehavare för haveri beredskap i VMware till Azure med CSP
@@ -24,11 +24,11 @@ Den här artikeln innehåller en översikt över hur du implementerar och hanter
 
 Det finns tre större modeller med flera klienter:
 
-* **HSP (Shared Hosting Services Provider)** : partnern äger den fysiska infrastrukturen och använder delade resurser (vCenter, data Center, fysisk lagring osv.) som värd för flera virtuella klient datorer i samma infrastruktur. Partnern kan tillhandahålla hantering av haveri beredskap som en hanterad tjänst, eller så kan klienten utföra en egen haveri beredskap som en självbetjänings lösning.
+* **HSP (Shared Hosting Services Provider)**: partnern äger den fysiska infrastrukturen och använder delade resurser (vCenter, data Center, fysisk lagring osv.) som värd för flera virtuella klient datorer i samma infrastruktur. Partnern kan tillhandahålla hantering av haveri beredskap som en hanterad tjänst, eller så kan klienten utföra en egen haveri beredskap som en självbetjänings lösning.
 
-* **Dedikerad värd tjänst leverantör** : partnern äger den fysiska infrastrukturen, men använder dedikerade resurser (flera vCenter, fysiska data lager och så vidare) som värd för varje klients virtuella datorer på en separat infrastruktur. Partnern kan tillhandahålla hantering av katastrof återställning som en hanterad tjänst, eller så kan klienten äga den som en självbetjänings lösning.
+* **Dedikerad värd tjänst leverantör**: partnern äger den fysiska infrastrukturen, men använder dedikerade resurser (flera vCenter, fysiska data lager och så vidare) som värd för varje klients virtuella datorer på en separat infrastruktur. Partnern kan tillhandahålla hantering av katastrof återställning som en hanterad tjänst, eller så kan klienten äga den som en självbetjänings lösning.
 
-* **(Managed Services Provider)** : kunden äger den fysiska infrastruktur som är värd för de virtuella datorerna och partnern tillhandahåller haveri beredskap och hantering.
+* **(Managed Services Provider)**: kunden äger den fysiska infrastruktur som är värd för de virtuella datorerna och partnern tillhandahåller haveri beredskap och hantering.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>HSP (Shared Hosting Services Provider)
 
@@ -56,9 +56,9 @@ En separat uppskalad processerver ingår också i partnerns kontroll.
 
 Varje konfigurations server i scenariot för flera innehavare använder två konton:
 
-- **vCenter-åtkomst konto** : det här kontot används för att identifiera virtuella klient datorer. Den har tilldelats åtkomst behörigheter för vCenter. För att undvika åtkomst läckor rekommenderar vi att partners anger dessa autentiseringsuppgifter själva i konfigurations verktyget.
+- **vCenter-åtkomst konto**: det här kontot används för att identifiera virtuella klient datorer. Den har tilldelats åtkomst behörigheter för vCenter. För att undvika åtkomst läckor rekommenderar vi att partners anger dessa autentiseringsuppgifter själva i konfigurations verktyget.
 
-- **Åtkomst konto för virtuell dator** : det här kontot används för att installera mobilitets tjänst agenten på virtuella klient datorer, med en automatisk push. Det är vanligt vis ett domän konto som en klient kan ge till en partner, eller ett konto som partnern kan hantera direkt. Om en klient inte vill dela informationen med partnern direkt, kan de ange autentiseringsuppgifterna via begränsad åtkomst till konfigurations servern. Eller, med partnerns hjälp, kan de installera mobilitets tjänst agenten manuellt.
+- **Åtkomst konto för virtuell dator**: det här kontot används för att installera mobilitets tjänst agenten på virtuella klient datorer, med en automatisk push. Det är vanligt vis ett domän konto som en klient kan ge till en partner, eller ett konto som partnern kan hantera direkt. Om en klient inte vill dela informationen med partnern direkt, kan de ange autentiseringsuppgifterna via begränsad åtkomst till konfigurations servern. Eller, med partnerns hjälp, kan de installera mobilitets tjänst agenten manuellt.
 
 ## <a name="vcenter-account-requirements"></a>krav för vCenter-konto
 
@@ -75,11 +75,11 @@ Konfigurera konfigurations servern med ett konto som har en särskild roll tilld
 1. Skapa en ny roll genom att klona den fördefinierade *skrivskyddade* rollen och ge den ett bekvämt namn (till exempel Azure_Site_Recovery, som du ser i det här exemplet).
 2. Tilldela följande behörigheter till den här rollen:
 
-   * **Data lager** : allokera utrymme, bläddra i data lager, lågnivå fil åtgärder, ta bort fil, uppdatera filer för virtuella datorer
-   * **Nätverk** : nätverks tilldelning
-   * **Resurs** : tilldela en virtuell dator till en resurspool, migrera avstängd virtuell dator, migrera från virtuell dator
-   * **Aktiviteter** : Skapa uppgift, uppdatera uppgift
-   * **VM-konfiguration** : alla
+   * **Data lager**: allokera utrymme, bläddra i data lager, lågnivå fil åtgärder, ta bort fil, uppdatera filer för virtuella datorer
+   * **Nätverk**: nätverks tilldelning
+   * **Resurs**: tilldela en virtuell dator till en resurspool, migrera avstängd virtuell dator, migrera från virtuell dator
+   * **Aktiviteter**: Skapa uppgift, uppdatera uppgift
+   * **VM-konfiguration**: alla
    * **VM-interaktion** > svars fråga, enhets anslutning, konfigurera CD-medium, konfigurera diskett medium, Stäng av, slå på, VMware-verktyg installera
    * **VM-inventering** > skapa från en befintlig, skapa ny, registrera, avregistrera
    * **VM-etablering** > Tillåt nedladdning av virtuell dator, Tillåt uppladdning av filer för virtuella datorer
@@ -120,7 +120,7 @@ För att begränsa haveri beredskaps åtgärder upp till endast växling vid fel
 
 1. I det Azure Portal i valvet som du skapade tidigare registrerar du vCenter-servern på konfigurations servern med det vCenter-konto som du skapade.
 2. Slutför processen "prepare Infrastructure" för Site Recovery per den vanliga processen.
-3. De virtuella datorerna är nu redo att replikeras. Kontrol lera att bara klientens virtuella datorer visas i **Replikera**  >  **Välj virtuella datorer** .
+3. De virtuella datorerna är nu redo att replikeras. Kontrol lera att bara klientens virtuella datorer visas i **Replikera**  >  **Välj virtuella datorer**.
 
 ## <a name="dedicated-hosting-solution"></a>Dedikerad värd lösning
 

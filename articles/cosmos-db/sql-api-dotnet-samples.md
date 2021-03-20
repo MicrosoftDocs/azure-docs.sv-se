@@ -9,10 +9,10 @@ ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 2e7bfd3735a57ddfa5d6100e18cf7a5676c1b9b1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019048"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-exempel för SQL API
@@ -56,7 +56,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="database-examples"></a>Databasexempel
 [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) -metoden för exempel *DatabaseManagement* -projektet visar hur du utför följande uppgifter. Om du vill veta mer om Azure Cosmos-databaser innan du kör följande exempel kan du läsa [arbeta med databaser, behållare och objekt](account-databases-containers-items.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Skapa en databas](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DatabaseManagement/Program.cs#L77) |[DocumentClient. CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync) |
 | [Läsa en databas via ID](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DatabaseManagement/Program.cs#L79) |[DocumentClient.ReadDatabaseAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdatabaseasync) |
@@ -66,7 +66,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="collection-examples"></a>Samlingsexempel
 [RunCollectionDemo](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) -metoden för exempel *CollectionManagement* -projektet visar hur du utför följande uppgifter. Om du vill veta mer om Azure Cosmos-samlingar innan du kör följande exempel kan du läsa [arbeta med databaser, behållare och objekt](account-databases-containers-items.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Skapa en samling](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/CollectionManagement/Program.cs#L109) |[DocumentClient. CreateDocumentCollectionIfNotExistsAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync) 
 | [Ändra konfigurerade prestanda i en samling](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/CollectionManagement/Program.cs#L190) |[DocumentClient.ReplaceOfferAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync) |
@@ -77,7 +77,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="document-examples"></a>Exempel på dokument
 [RunDocumentsDemo](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) -metoden för exempel *DocumentManagement* -projektet visar hur du utför följande uppgifter. Om du vill veta mer om Azure Cosmos-dokument innan du kör följande exempel kan du läsa [arbeta med databaser, behållare och objekt](account-databases-containers-items.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Skapa ett dokument](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DocumentManagement/Program.cs#L154) |[DocumentClient.CreateDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync) |
 | [Läsa ett dokument efter ID](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DocumentManagement/Program.cs#L168) |[DocumentClient.ReadDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentasync) |
@@ -93,7 +93,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="indexing-examples"></a>Indexeringsexempel
 [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) -metoden för exempel *IndexManagement* -projektet visar hur du utför följande uppgifter. Om du vill veta mer om indexering i Azure Cosmos DB innan du kör följande exempel, se [index principer](index-policy.md), [index typer](index-overview.md#index-types)och [index Sök vägar](index-policy.md#include-exclude-paths). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Undanta ett dokument från indexet](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/IndexManagement/Program.cs#L123-L162) |[IndexingDirective.Exclude](/dotnet/api/microsoft.azure.documents.indexingdirective) |
 | [Använd Lazy-indexering](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/IndexManagement/Program.cs#L174-L192) |[IndexingPolicy.IndexingMode](/dotnet/api/microsoft.azure.documents.indexingpolicy.indexingmode) |
@@ -105,7 +105,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="geospatial-examples"></a>Geospatiala exempel
 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/Geospatial/Program.cs#L94-L139) -metoden för det *geospatiala* exempel projektet visar hur du utför följande uppgifter.  Om du vill veta mer om geospatiala och geospatiala data innan du kör följande exempel kan du läsa [Använd data från Geospatial och geolokalisering](./sql-query-geospatial-intro.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Aktivera geospatial indexering på en ny samling](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/Geospatial/Program.cs#L48) |[IndexingPolicy](/dotnet/api/microsoft.azure.documents.indexingpolicy) <br> [IndexKind.Spatial](/dotnet/api/microsoft.azure.documents.indexkind) <br>[DataType.Point](/dotnet/api/microsoft.azure.documents.datatype) |
 | [Infoga dokument med GeoJSON-punkter](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/Geospatial/Program.cs#L104-L114) |[DocumentClient.CreateDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync) </br> [DataType.Point](/dotnet/api/microsoft.azure.documents.datatype) |
@@ -117,7 +117,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="query-examples"></a>Exempelfrågor
 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/Queries/Program.cs#L64-L129) -metoden i exempel *frågan* Project visar hur du utför följande uppgifter med hjälp av SQL Query-grammatik, LINQ-providern med Query och lambda. Om du vill veta mer om SQL-frågan i Azure Cosmos DB innan du kör följande exempel kan du läsa [mer i SQL-fr åga for Azure Cosmos DB](./sql-query-getting-started.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Fråga för alla dokument](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/Queries/Program.cs#L131-L147) |[DocumentQueryable.CreateDocumentQuery](/previous-versions/azure/dn850285(v=azure.100)) |
 | [Fråga för likhet med ==](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/Queries/Program.cs#L186-L198) |[DocumentQueryable.CreateDocumentQuery](/previous-versions/azure/dn850285(v=azure.100)) |
@@ -137,7 +137,7 @@ En Azure-prenumeration eller ett kostnads fritt Cosmos DB utvärderings konto
 ## <a name="change-feed-examples"></a>Exempel på ändringsflöde 
 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/ChangeFeed/Program.cs#L54-L97) -metoden för exempel *ChangeFeed* -projektet visar hur du utför följande uppgifter. Information om hur du ändrar feed i Azure Cosmos DB innan du kör följande exempel finns i [läsa Azure Cosmos DB ändra feed](read-change-feed.md) och [ändra feed-processor](change-feed-processor.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Läsa ändringsflöde](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [Läsa partitionsnyckelintervall](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
@@ -147,7 +147,7 @@ I exemplet Change container processor, [ChangeFeedMigrationTool](https://github.
 ## <a name="server-side-programming-examples"></a>Programmeringsexempel på serversidan
 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) -metoden för exempel *ServerSideScripts* -projektet visar hur du utför följande uppgifter. Om du vill lära dig mer om Server sidans programmering i Azure Cosmos DB innan du kör följande exempel, se [lagrade procedurer, utlösare och användardefinierade funktioner](stored-procedures-triggers-udfs.md). 
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Skapa en lagrad procedur](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L110) |[DocumentClient.CreateStoredProcedureAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createstoredprocedureasync) |
 | [Köra en lagrad procedur](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L125) |[DocumentClient.ExecuteStoredProcedureAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.executestoredprocedureasync) |
@@ -160,7 +160,7 @@ I exemplet Change container processor, [ChangeFeedMigrationTool](https://github.
 ## <a name="user-management-examples"></a>Exempel för användarhantering
 [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/UserManagement/Program.cs#L55-L129) -metoden för exempel *UserManagement* -projektet visar hur du utför följande uppgifter:
 
-| Aktivitet | API-referens |
+| Uppgift | API-referens |
 | --- | --- |
 | [Skapa en användare](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L93) |[DocumentClient.CreateUserAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createuserasync) |
 | [Ange behörigheter för en samling eller dokument](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L97) |[DocumentClient.CreatePermissionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createpermissionasync) |

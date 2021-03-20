@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098671"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Självstudie: Skapa en Node.js-konsolapp med JavaScript SDK för att hantera data från SQL-API:et för Azure Cosmos DB
@@ -28,7 +28,7 @@ ms.locfileid: "93098671"
 
 Som utvecklare kan du ha program som använder NoSQL-dokumentdata. Du kan använda ett SQL API-konto i Azure Cosmos DB till att lagra och komma åt dessa dokumentdata. Den här självstudien visar hur du skapar ett Node.js-konsolprogram som skapar Azure Cosmos DB-resurser och skickar frågor mot dem.
 
-I den här självstudien kommer vi att:
+I de här självstudierna får du:
 
 > [!div class="checklist"]
 > * Skapa och ansluta till ett Azure Cosmos DB-konto.
@@ -86,7 +86,7 @@ Nu när din app finns behöver du se till att den kan kommunicera med Azure Cosm
 
 1. Öppna *config.js* -filen i din favorit text redigerare.
 
-1. Kopiera och klistra in följande kodfragment i *config.js* -filen och ange egenskaperna `endpoint` och `key` till din Azure Cosmos DB slut punkts-URI och primär nyckel. Databasen, behållar namn anges till **uppgifter** och **objekt** . Den partitionsnyckel som du ska använda för det här programmet är **/Category** .
+1. Kopiera och klistra in följande kodfragment i *config.js* -filen och ange egenskaperna `endpoint` och `key` till din Azure Cosmos DB slut punkts-URI och primär nyckel. Databasen, behållar namn anges till **uppgifter** och **objekt**. Den partitionsnyckel som du ska använda för det här programmet är **/Category**.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -94,7 +94,7 @@ Nu när din app finns behöver du se till att den kan kommunicera med Azure Cosm
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Hämta nycklar från Azure-portalen, skärmbild":::
 
-Java Script SDK använder *behållaren* för allmänna villkor och *objektet* . En container kan vara en samling, ett diagram eller en tabell. Ett objekt kan vara ett dokument, en kant/ett hörn eller en rad, och är innehållet i en container. I föregående kodfragment `module.exports = config;` används koden för att exportera config-objektet, så att du kan referera till det i *app.js* -filen.
+Java Script SDK använder *behållaren* för allmänna villkor och *objektet*. En container kan vara en samling, ett diagram eller en tabell. Ett objekt kan vara ett dokument, en kant/ett hörn eller en rad, och är innehållet i en container. I föregående kodfragment `module.exports = config;` används koden för att exportera config-objektet, så att du kan referera till det i *app.js* -filen.
 
 ## <a name="create-a-database-and-a-container"></a>Skapa en databas och en container
 
