@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311140"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurera ett anpassat domän namn för Azure API Management-instansen
@@ -64,8 +64,8 @@ För att utföra stegen som beskrivs i den här artikeln måste du ha:
 1. Välj den slut punkt som du vill uppdatera.
 1. I fönstret till höger klickar du på **anpassad**.
 
-    - I det **anpassade domän namnet**anger du det namn som du vill använda. Exempelvis `api.contoso.com`.
-    - I **certifikatet**väljer du ett certifikat från Key Vault. Du kan också ladda upp en giltig. PFX-fil och ange **lösen ord**, om certifikatet är skyddat med ett lösen ord.
+    - I det **anpassade domän namnet** anger du det namn som du vill använda. Till exempel `api.contoso.com`.
+    - I **certifikatet** väljer du ett certifikat från Key Vault. Du kan också ladda upp en giltig. PFX-fil och ange **lösen ord**, om certifikatet är skyddat med ett lösen ord.
 
     > [!NOTE]
     > Domän namn för jokertecken, t. ex. `*.contoso.com` stöds i alla nivåer förutom förbruknings nivån.
@@ -78,7 +78,7 @@ För att utföra stegen som beskrivs i den här artikeln måste du ha:
     >
     > Om certifikatet är inställt på automatisk förnyelse, kommer API Management automatiskt att hämta den senaste versionen utan drift avbrott till tjänsten (om din API Management-nivå har SLA-i. e. i alla nivåer förutom utvecklings nivån).
 
-1. Klicka på Använd.
+1. Klicka på Applicera.
 
     > [!NOTE]
     > Processen för att tilldela certifikatet kan ta 15 minuter eller mer beroende på storleken på distributionen. Developer SKU: n har avbrott, Basic och högre SKU: er har inte någon nedtid.

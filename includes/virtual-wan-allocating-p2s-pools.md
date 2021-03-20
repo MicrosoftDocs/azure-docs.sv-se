@@ -9,10 +9,10 @@ ms.date: 01/12/2021
 ms.author: wellee
 ms.custom: include file
 ms.openlocfilehash: 67a996dbe1eb7090ea5f9ee9f0880698f4ba74a3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919083"
 ---
 Det här avsnittet beskriver rikt linjer och krav för att allokera klient adress utrymmen där det valda virtuella WAN Hub-VPN Gateway skalnings enhet är större än eller lika med 40.

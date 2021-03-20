@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96437248"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Snabb start: skapa en ny klient i Azure Active Directory
@@ -24,7 +24,7 @@ Du kan utföra alla administrativa aktiviteter med hjälp av Azure Active Direct
 
 I den här snabbstarten får du lära dig hur du kommer till Azure-portalen och Azure Active Directory och du får lära dig hur du skapar en grundläggande klient för din organisation.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Så här skapar du en ny klient för din organisation
 När du har loggat in på Azure-portalen kan du skapa en ny klient för din organisation. Den nya klientorganisationen representerar din organisation och hjälper dig att hantera en specifik instans av Microsoft-molntjänster för dina interna och externa användare.

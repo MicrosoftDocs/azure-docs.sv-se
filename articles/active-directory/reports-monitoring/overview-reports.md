@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91566830"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Vad är rapporter i Azure Active Directory?
@@ -63,9 +63,9 @@ Alla utgåvor av Azure AD ger rapporter över användare som har flaggats för r
 
 Aktivitetsrapporter hjälper dig att förstå beteendet för användare i din organisation. Det finns två typer av aktivitetsrapporter i Azure AD:
 
-- **Granskningsloggar** – [aktivitetsrapport för granskningsloggar ](concept-audit-logs.md) ger dig tillgång till historiken för varje aktivitet i din klient.
+- **Granskningsloggar** – [aktivitetsrapport för granskningsloggar](concept-audit-logs.md) ger dig tillgång till historiken för varje aktivitet i din klient.
 
-- **Inloggningar** – med [aktivitetsrapport för inloggningar ](concept-sign-ins.md) kan du bestämma vem som har utfört de uppgifter som rapporteras i granskningsloggarna.
+- **Inloggningar** – med [aktivitetsrapport för inloggningar](concept-sign-ins.md) kan du bestämma vem som har utfört de uppgifter som rapporteras i granskningsloggarna.
 
 
 

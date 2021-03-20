@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852260"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Översikt över Azure App Service lokal cache
@@ -40,7 +40,7 @@ Den Azure App Service Local cache-funktionen tillhandahåller en webbrolls visni
 * Den lokala cachen har Läs-och Skriv behörighet. Alla ändringar tas dock bort när appen flyttar virtuella datorer eller startas om. Använd inte det lokala cacheminnet för appar som lagrar verksamhets kritiska data i innehålls lagringen.
 * _D:\home\LogFiles_ och _D:\home\Data_ innehåller loggfiler och appdata. De två undermapparna lagras lokalt på den virtuella dator instansen och kopieras till den delade innehålls lagringen med jämna mellanrum. Appar kan spara loggfiler och data genom att skriva dem till dessa mappar. Kopieringen till den delade innehålls lagringen är dock bästa möjliga, så det är möjligt att loggfiler och data går förlorade på grund av en plötslig krasch i en VM-instans.
 * [Logg strömning](troubleshoot-diagnostic-logs.md#stream-logs) påverkas av den bästa kopieringen. Du kan se en fördröjning på en minut i strömmarna loggar.
-* I det delade innehålls arkivet finns en ändring i mappstrukturen för _loggfiler_ och datamappar för _Data_ appar som använder den lokala cachen. Det finns nu undermappar som följer namngivnings mönstret för "unik identifierare" + tidsstämpel. Var och en av undermapparna motsvarar en VM-instans där appen körs eller har körts.
+* I det delade innehålls arkivet finns en ändring i mappstrukturen för _loggfiler_ och datamappar för  appar som använder den lokala cachen. Det finns nu undermappar som följer namngivnings mönstret för "unik identifierare" + tidsstämpel. Var och en av undermapparna motsvarar en VM-instans där appen körs eller har körts.
 * Andra mappar i _D:\home_ finns kvar i det lokala cacheminnet och kopieras inte till den delade innehålls lagringen.
 * Program distribution via en metod som stöds publicerar direkt till den varaktigt delade innehålls lagringen. Om du vill uppdatera _D:\home\site_ -och _D:\home\siteextensions_ -mapparna i det lokala cacheminnet måste appen startas om. Om du vill göra livs cykeln sömlös kan du läsa mer i informationen längre fram i den här artikeln.
 * Standard innehålls visningen av SCM-platsen fortsätter att vara den som finns i det delade innehålls arkivet.
@@ -98,7 +98,7 @@ Vi rekommenderar att du använder lokal cache tillsammans med funktionen för [m
 * När du är klar utfärdar du en [växlings åtgärd](../app-service/deploy-staging-slots.md#Swap) mellan dina mellanlagrings-och produktions platser.  
 * Tröga inställningar är namn och fästis till en plats. Så när mellanlagringsplatsen har växlats till produktion, ärver den de lokala cache-apparna. Den nyligen utbytta produktions platsen kommer att köras mot den lokala cachen efter några minuter och kommer att värmas upp som en del av plats uppvärmnings efter växling. När plats växlingen är klar körs din produktions plats mot det lokala cacheminnet.
 
-## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar
+## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
 
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hur kan jag se om det lokala cacheminnet gäller för min app?
 Om din app behöver ett högpresterande, tillförlitligt innehålls lager, använder inte innehålls lagringen för att skriva kritiska data vid körning och är mindre än 2 GB i Total storlek, och svaret är "Ja"! Om du vill få Total storlek på dina/installation-och/siteextensions-mappar kan du använda webbplats tillägget "Azure Web Apps disk Usage".

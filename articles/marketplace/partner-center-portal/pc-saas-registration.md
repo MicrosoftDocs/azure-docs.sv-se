@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130025"
 ---
 # <a name="register-a-saas-application"></a>Registrera ett SaaS-program
@@ -28,22 +28,22 @@ Alla program som vill använda funktionerna i Azure AD måste först registreras
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Om ditt konto ger dig åtkomst till mer än ett, klickar du på ditt konto i det övre högra hörnet och ställer in din portal-session till önskad Azure AD-klient.
-3. I det vänstra navigerings fönstret klickar du på **Azure Active Directory** tjänst, klickar på **Appregistreringar** och klickar på **ny program registrering** .
+3. I det vänstra navigerings fönstret klickar du på **Azure Active Directory** tjänst, klickar på **Appregistreringar** och klickar på **ny program registrering**.
 
     ![SaaS AD App-registreringar](./media/saas-offer-app-registration-v1.png)
 
 4. På sidan Skapa anger du din program \' s registrerings information:
-    -   **Namn** : Ange ett meningsfullt program namn
-    -   **Program typ** :  
+    -   **Namn**: Ange ett meningsfullt program namn
+    -   **Program typ**:  
         
         Välj **webbapp/API** för [klient program](../../active-directory/develop/developer-glossary.md#client-application)) och [resurs/API-program](../../active-directory/develop/developer-glossary.md#resource-server)som är installerade på en säker server. Den här inställningen används för OAuth-konfidentiella [webb klienter](../../active-directory/develop/developer-glossary.md#web-client)) och offentliga [användare-agentbaserade klienter](../../active-directory/develop/developer-glossary.md#user-agent-based-client)).
         Samma program kan även visa både en klient och resurs/API.
 
         För särskilda exempel på webb program, se de guidade installations guiderna som finns i avsnittet [komma igång](../../active-directory/develop/quickstart-create-new-tenant.md) i [Azure AD-utvecklare](../../active-directory/develop/index.yml).
 
-5. När du är färdig klickar du på **Registrera** .  Azure AD tilldelar ett unikt *program-ID* till det nya programmet. Vi rekommenderar att du registrerar en app som endast har åtkomst till API: et och som en enda klient.
+5. När du är färdig klickar du på **Registrera**.  Azure AD tilldelar ett unikt *program-ID* till det nya programmet. Vi rekommenderar att du registrerar en app som endast har åtkomst till API: et och som en enda klient.
 
-6. Om du vill skapa klient hemlighet navigerar du till **sidan certifikat & hemligheter** och klickar på **+ ny klient hemlighet** .  Se till att kopiera det hemliga värdet för att använda det i din kod.
+6. Om du vill skapa klient hemlighet navigerar du till **sidan certifikat & hemligheter** och klickar på **+ ny klient hemlighet**.  Se till att kopiera det hemliga värdet för att använda det i din kod.
 
 **Azure AD App-ID: t** är associerat med ditt UTGIVAR-ID, så se till att samma *app-ID* används i alla dina erbjudanden.
 

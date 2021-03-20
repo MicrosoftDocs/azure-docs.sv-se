@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
 ms.openlocfilehash: c2875afe597bd111f091ee1e4a53265154ca66b3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>Självstudie: Azure Active Directory integrering med META4 Global HR
@@ -162,7 +162,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till META4 global personal.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **META4 global personal**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **META4 global personal**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

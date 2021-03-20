@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
 ms.openlocfilehash: ddf4d17cd2631f5bc299e392c46bd9065bb13744
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146645"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator gransknings verktyget
@@ -47,7 +47,7 @@ Om du klickar på texten i det övre högra hörnet på instrument panelen visas
 
 ## <a name="review-tool-credentials"></a>Granska autentiseringsuppgifterna för verktyget
 
-När du registrerar dig med [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com)uppmanas du att välja en Azure-region för ditt konto. Detta beror på att [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com) genererar en kostnads fri utvärderings nyckel för Azure Content moderator Services. Du behöver den här nyckeln för att få åtkomst till alla tjänster från ett REST-anrop eller klient-SDK. Du kan visa URL: en för din nyckel och API-slutpunkt genom att välja **admin** -  >  **autentiseringsuppgifter** .
+När du registrerar dig med [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com)uppmanas du att välja en Azure-region för ditt konto. Detta beror på att [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com) genererar en kostnads fri utvärderings nyckel för Azure Content moderator Services. Du behöver den här nyckeln för att få åtkomst till alla tjänster från ett REST-anrop eller klient-SDK. Du kan visa URL: en för din nyckel och API-slutpunkt genom att välja **admin**-  >  **autentiseringsuppgifter**.
 
 > [!div class="mx-imgBorder"]
 > ![Content Moderator autentiseringsuppgifter](images/settings-6-credentials.png)

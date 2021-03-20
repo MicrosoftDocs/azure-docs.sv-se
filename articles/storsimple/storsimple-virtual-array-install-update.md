@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3bd6f298ad2bb01503492b52c2d50dec82ec0ca5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534057"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Installera uppdateringar på din virtuella StorSimple-matris – Azure Portal
@@ -79,7 +79,7 @@ Använd den här metoden för att installera uppdateringar på en enhet som kör
    
     ![Skärm bild som visar den program uppdatering som valts på menyn underhåll.](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. I **Uppdatera fil Sök väg** anger du fil namnet för uppdateringen eller snabb korrigeringen. Du kan också bläddra till installations filen för uppdateringen eller hotfixen om den placeras på en nätverks resurs. Klicka på **Använd**.
+2. I **Uppdatera fil Sök väg** anger du fil namnet för uppdateringen eller snabb korrigeringen. Du kan också bläddra till installations filen för uppdateringen eller hotfixen om den placeras på en nätverks resurs. Klicka på **Applicera**.
    
     ![Skärm bild som visar text rutan Sökväg till uppdaterings fil på sidan program uppdatering.](./media/storsimple-virtual-array-install-update/update2m.png)
 

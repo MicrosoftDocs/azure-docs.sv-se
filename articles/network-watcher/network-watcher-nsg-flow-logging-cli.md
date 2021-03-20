@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 46d12db413fdf01995bc84ae018065e877afb15e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98017824"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurera flödes loggar för nätverks säkerhets grupper med Azure CLI
@@ -72,7 +72,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du [visualiserar dina NSG Flow-loggar med PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

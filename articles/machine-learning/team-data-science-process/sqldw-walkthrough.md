@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93316008"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team data science-processen i praktiken: använda Azure Synapse Analytics
@@ -63,7 +63,7 @@ Den **unika nyckel** som används för att ansluta rese \_ data och rese \_ pris
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Adressera tre typer av förutsägelse aktiviteter
 Vi formulerar tre förutsägelse problem baserat på *tips \_ mängden* för att illustrera tre typer av modellerings aktiviteter:
 
-1. **Binära klassificering** : för att förutsäga om ett tips har betalats för en resa, det vill säga ett *Tip- \_ belopp* som är större än $0 är ett positivt exempel, medan ett *Tip- \_ värde* på $0 är ett negativt exempel.
+1. **Binära klassificering**: för att förutsäga om ett tips har betalats för en resa, det vill säga ett *Tip- \_ belopp* som är större än $0 är ett positivt exempel, medan ett *Tip- \_ värde* på $0 är ett negativt exempel.
 2. **Klassificering** av flera klasser: för att förutsäga det tips som du betalar för resan. Vi delar upp *Tip- \_ beloppet* i fem lager platser eller klasser:
 
 `Class 0 : tip_amount = $0`
@@ -76,14 +76,14 @@ Vi formulerar tre förutsägelse problem baserat på *tips \_ mängden* för att
 
 `Class 4 : tip_amount > $20`
 
-3. **Regressions uppgift** : för att förutsäga hur mycket tips du betalar för en resa.
+3. **Regressions uppgift**: för att förutsäga hur mycket tips du betalar för en resa.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Konfigurera Azure Data Science-miljön för avancerad analys
 Följ dessa steg om du vill konfigurera din Azure Data Science-miljö.
 
 **Skapa ditt eget Azure Blob Storage-konto**
 
-* När du etablerar en egen Azure Blob-lagring väljer du en Geo-plats för Azure Blob Storage i eller så nära Central USA som möjligt till **södra centrala USA** , som är den plats där NYC taxi-data lagras. Data kommer att kopieras med AzCopy från den offentliga Blob storage-behållaren till en behållare i ditt eget lagrings konto. Ju närmare din Azure Blob-lagring är till södra centrala USA, desto snabbare kommer uppgiften (steg 4) att utföras.
+* När du etablerar en egen Azure Blob-lagring väljer du en Geo-plats för Azure Blob Storage i eller så nära Central USA som möjligt till **södra centrala USA**, som är den plats där NYC taxi-data lagras. Data kommer att kopieras med AzCopy från den offentliga Blob storage-behållaren till en behållare i ditt eget lagrings konto. Ju närmare din Azure Blob-lagring är till södra centrala USA, desto snabbare kommer uppgiften (steg 4) att utföras.
 * Om du vill skapa ett eget Azure Storage konto följer du stegen som beskrivs i [om Azure Storage-konton](../../storage/common/storage-account-create.md). Se till att anteckna värdena för följande autentiseringsuppgifter för lagrings kontot eftersom de kommer att behövas senare i den här genom gången.
 
   * **Lagrings konto namn**
@@ -93,7 +93,7 @@ Följ dessa steg om du vill konfigurera din Azure Data Science-miljö.
 **Etablera Azure Synapse Analytics-instansen.**
 Följ dokumentationen i [create och fråga en Azure Synapse-analys i Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) för att etablera en Azure Synapse Analytics-instans. Se till att du gör ett format på följande autentiseringsuppgifter för Azure Synapse Analytics som ska användas i senare steg.
 
-* **Server namn** : \<server Name> . Database.Windows.net
+* **Server namn**: \<server Name> . Database.Windows.net
 * **Namn på SQLDW (databas)**
 * **Användarnamn**
 * **Lösenord**
@@ -154,7 +154,7 @@ När PowerShell-skriptet körs för första gången uppmanas du att ange informa
 
 Den här **PowerShell-skriptfilen** Slutför följande uppgifter:
 
-* **Hämtar och installerar AzCopy** , om AzCopy inte redan har installerats
+* **Hämtar och installerar AzCopy**, om AzCopy inte redan har installerats
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Bygg modeller i Azure Machine Learning
 Vi är nu redo att gå vidare till modell utveckling och modell distribution i [Azure Machine Learning](https://studio.azureml.net). Data är redo att användas i något av de förutsägelse problem som identifierats tidigare, nämligen:
 
-1. **Binära klassificering** : för att förutsäga om ett tips har betalats för en resa.
+1. **Binära klassificering**: för att förutsäga om ett tips har betalats för en resa.
 2. **Klassificering** av flera klasser: för att förutsäga det tips som betalas, enligt de tidigare definierade klasserna.
-3. **Regressions uppgift** : för att förutsäga hur mycket tips du betalar för en resa.
+3. **Regressions uppgift**: för att förutsäga hur mycket tips du betalar för en resa.
 
 Om du vill påbörja modelleringen av modellering loggar du in på arbets ytan **Azure Machine Learning (klassisk)** . Om du ännu inte har skapat en Machine Learning-arbetsyta, se [skapa en Azure Machine Learning Studio (klassisk)-arbets yta](../classic/create-workspace.md).
 
@@ -976,7 +976,7 @@ Ett exempel på ett binära klassificerings experiment som läser data direkt fr
 ![Azure ML-tåg][10]
 
 > [!IMPORTANT]
-> I exemplen för att extrahera data och samplings frågor i föregående avsnitt, **ingår alla etiketter för de tre modell övningarna i frågan**. Ett viktigt (obligatoriskt) steg i varje modell övning är att **utesluta** onödiga etiketter för de andra två problemen och andra **mål läckor**. Om du t. ex. använder binär klassificering använder du etiketten **lutad** och utelämnar fält **Tip- \_ klassen** , **Tip- \_ beloppet** och **total \_ beloppet**. De sistnämnda är mål läckor eftersom de innebär att tipset betalas.
+> I exemplen för att extrahera data och samplings frågor i föregående avsnitt, **ingår alla etiketter för de tre modell övningarna i frågan**. Ett viktigt (obligatoriskt) steg i varje modell övning är att **utesluta** onödiga etiketter för de andra två problemen och andra **mål läckor**. Om du t. ex. använder binär klassificering använder du etiketten **lutad** och utelämnar fält **Tip- \_ klassen**, **Tip- \_ beloppet** och **total \_ beloppet**. De sistnämnda är mål läckor eftersom de innebär att tipset betalas.
 >
 > Om du vill undanta onödiga kolumner eller mål läckor kan du använda modulen [Välj kolumner i data uppsättning][select-columns] eller [Redigera metadata][edit-metadata]. Mer information finns i avsnittet [Välj kolumner i data uppsättning][select-columns] och [Redigera metadata][edit-metadata] referens sidor.
 >

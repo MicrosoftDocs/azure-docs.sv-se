@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305604"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Livs cykeln för team data science process
@@ -43,9 +43,9 @@ TDSP-livscykeln modelleras som en sekvens av upprepade steg som ger vägledning 
 
 För varje steg tillhandahåller vi följande information:
 
-   * **Mål** : de speciella målen.
-   * **Gör så här** : en översikt över de olika aktiviteterna och rikt linjerna för hur du utför dem.
-   * **Artefakter** : slut produkter och support för att skapa dem.
+   * **Mål**: de speciella målen.
+   * **Gör så här**: en översikt över de olika aktiviteterna och rikt linjerna för hur du utför dem.
+   * **Artefakter**: slut produkter och support för att skapa dem.
 
 ## <a name="next-steps"></a>Nästa steg
 

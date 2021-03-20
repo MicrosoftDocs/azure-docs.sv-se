@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92281879"
 ---
 # <a name="about-site-recovery"></a>Om Site Recovery
@@ -29,7 +29,7 @@ Site Recovery kan hantera replikering för:
 
 ## <a name="what-does-site-recovery-provide"></a>Vad tillhandahåller Site Recovery?
 
-**Funktion** | **Detaljer**
+**Funktion** | **Information**
 --- | ---
 **Enkel BCDR-lösning** | Med Site Recovery kan du konfigurera och hantera replikering, redundans och återställning från en enda plats i Azure-portalen.
 **Replikering av virtuella Azure-datorer** | Du kan konfigurera återställning av virtuella Azure-datorer från en primär region till en sekundär region.
@@ -47,7 +47,7 @@ Site Recovery kan hantera replikering för:
 
 ## <a name="what-can-i-replicate"></a>Vad kan jag replikera?
 
-**Stöds** | **Detaljer**
+**Stöds** | **Information**
 --- | ---
 **Replikeringsscenarier** | Replikera virtuella Azure-datorer från en Azure-region till en annan.<br/><br/>  Replikera lokala, virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska servrar (Windows och Linux) samt virtuella Azure Stack-datorer till Azure.<br/><br/> Replikera AWS Windows-instanser till Azure.<br/><br/> Replikera lokala virtuella VMware-datorer, virtuella Hyper-V-datorer som hanteras av System Center VMM och fysiska servrar till en sekundär plats.
 **Regioner** | Kontrollera [regioner som stöds](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery) för Site Recovery. |

@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs funktioner för nätverks säkerhet, t
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310467"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Nätverks säkerhet för Azure Service Bus 
@@ -16,7 +16,7 @@ I den här artikeln beskrivs hur du använder följande säkerhetsfunktioner med
 - Tjänsttaggar
 - Regler för IP-brandvägg
 - Nätverks tjänst slut punkter
-- Privata slut punkter
+- Privata slutpunkter
 
 
 ## <a name="service-tags"></a>Tjänsttaggar
@@ -26,11 +26,11 @@ Du kan använda service märken för att definiera nätverks åtkomst kontroller
 
 | Tjänsttagg | Syfte | Kan använda inkommande eller utgående? | Kan regionala? | Kan använda med Azure-brandväggen? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | Azure Service Bus trafik som använder Premium-tjänstens nivå. | Outbound (Utgående) | Ja | Ja |
+| **ServiceBus** | Azure Service Bus trafik som använder Premium-tjänstens nivå. | Utgående | Ja | Ja |
 
 
 > [!NOTE]
-> Du kan endast använda service märken för **Premium** -namnområden. Om du använder ett **standard** namn område använder du den IP-adress som du ser när du kör följande kommando: `nslookup <host name for the namespace>` . Till exempel: `nslookup contosons.servicebus.windows.net`. 
+> Du kan endast använda service märken för **Premium** -namnområden. Om du använder ett **standard** namn område använder du den IP-adress som du ser när du kör följande kommando: `nslookup <host name for the namespace>` . Exempel: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>IP-brandvägg 
 Som standard är Service Bus-namnrymder tillgängliga från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -71,7 +71,7 @@ Den virtuella nätverks regeln är en associering av Service Bus-namnrymden med 
 
 Mer information finns i [Konfigurera tjänst slut punkter för virtuella nätverk för ett Service Bus-namnområde](service-bus-service-endpoints.md)
 
-## <a name="private-endpoints"></a>Privata slut punkter
+## <a name="private-endpoints"></a>Privata slutpunkter
 
 Azure Private Link service ger dig åtkomst till Azure-tjänster (till exempel Azure Service Bus, Azure Storage och Azure Cosmos DB) och Azure-värdbaserade kund-/partner tjänster via en **privat slut punkt** i det virtuella nätverket.
 

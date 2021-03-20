@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240587"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Verifierar data kryptering för Azure Database for PostgreSQL
@@ -27,7 +27,7 @@ Den här artikeln hjälper dig att kontrol lera att data kryptering med kund han
     * Välj den nyckel som används för server kryptering.
     * Ange status för nyckeln som **är aktive rad** till **Nej**.
   
-       Efter en stund ( **~ 15 min** ) ska Azure Database for postgresql server **status** vara **otillgänglig**. Alla I/O-åtgärder som utförts mot servern Miss Miss kan verifiera att servern verkligen är krypterad med kund nyckeln och att nyckeln inte är giltig för tillfället.
+       Efter en stund (**~ 15 min**) ska Azure Database for postgresql server **status** vara **otillgänglig**. Alla I/O-åtgärder som utförts mot servern Miss Miss kan verifiera att servern verkligen är krypterad med kund nyckeln och att nyckeln inte är giltig för tillfället.
     
         För att göra servern **tillgänglig** för kan du verifiera om nyckeln. 
     

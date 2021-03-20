@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
 ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100097644"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Säkerhets översikt för Azure Kognitiv sökning
@@ -98,7 +98,7 @@ Till följd av "säkerhet på radnivå", stöds inte behörighet till innehåll 
 
 Lösningar för lösningar som kräver "säkerhet på radnivå" inkluderar att skapa ett fält i data källan som representerar en säkerhets grupp eller användar identitet och sedan använda filter i Kognitiv sökning för att selektivt trimma Sök Resultat från dokument och innehåll baserat på identiteter. I följande tabell beskrivs två metoder för att trimma Sök Resultat av obehörigt innehåll.
 
-| Metod | Description |
+| Metod | Beskrivning |
 |----------|-------------|
 |[Säkerhets trimning baserat på identitets filter](search-security-trimming-for-azure-search.md)  | Dokumenterar det grundläggande arbets flödet för att implementera åtkomst kontroll för användar identitet. Det omfattar att lägga till säkerhets identifierare i ett index och sedan förklarar filtreringen för fältet för att trimma resultat från otillåtet innehåll. |
 |[Säkerhets trimning baserat på Azure Active Directory identiteter](search-security-trimming-for-azure-search-with-aad.md)  | Den här artikeln visar hur du hämtar identiteter från Azure Active Directory (Azure AD), en av de [kostnads fria tjänsterna](https://azure.microsoft.com/free/) i Azure Cloud Platform. |
@@ -181,5 +181,5 @@ För Azure Kognitiv sökning finns det för närvarande en inbyggd definition. D
 ## <a name="see-also"></a>Se även
 
 + [Grunderna i Azure-säkerhet](../security/fundamentals/index.yml)
-+ [Azure-säkerhet](https://azure.microsoft.com/overview/security)
++ [Säkerhet i Azure](https://azure.microsoft.com/overview/security)
 + [Azure Security Center](../security-center/index.yml)

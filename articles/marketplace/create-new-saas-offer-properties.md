@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94492131"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>Så här konfigurerar du egenskaperna för SaaS-erbjudandet
@@ -43,7 +43,7 @@ Under **branscher** kan du välja upp till två branscher och upp till två unde
 
 ## <a name="provide-terms-and-conditions"></a>Ange villkor
 
-Under **juridisk** , ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
+Under **juridisk**, ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
 
 - [Använd standard kontraktet med valfria ändringar](#use-the-standard-contract)
 - [Använd egna villkor](#use-your-own-terms-and-conditions)

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542044"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Självstudie: skapa en klient i Windows Virtual Desktop (klassisk)
@@ -79,7 +79,7 @@ Så här tilldelar du program rollen TenantCreator:
    > [!div class="mx-imgBorder"]
    > ![Skärm bild av sökning efter företags program i Azure Portal](../media/azure-portal-enterprise-applications.png)
 
-2. Sök efter **Windows Virtual Desktop**i **företags program**. Du ser de två program som du tillhandahöll medgivande för i föregående avsnitt. Av dessa två appar väljer du **virtuellt Windows-skrivbord**.
+2. Sök efter **Windows Virtual Desktop** i **företags program**. Du ser de två program som du tillhandahöll medgivande för i föregående avsnitt. Av dessa två appar väljer du **virtuellt Windows-skrivbord**.
 
    > [!div class="mx-imgBorder"]
    > ![En skärm bild av Sök resultaten vid sökning efter "Windows Virtual Desktop" i "företags program". Appen med namnet "Windows Virtual Desktop" är markerad.](../media/tenant-enterprise-app.png)
@@ -89,7 +89,7 @@ Så här tilldelar du program rollen TenantCreator:
    > [!div class="mx-imgBorder"]
    > ![En skärm bild av de användare och grupper som har tilldelats för att hantera företags programmet "Windows Virtual Desktop". Skärm bilden visar bara en tilldelning, vilket är för "standard åtkomst".](../media/tenant-default-access.png)
 
-4. Välj **Lägg till användare**och välj sedan **användare och grupper** på fliken **Lägg till tilldelning** .
+4. Välj **Lägg till användare** och välj sedan **användare och grupper** på fliken **Lägg till tilldelning** .
 5. Sök efter ett användar konto som ska skapa din Windows-klient för virtuella skriv bord. För enkelhetens skull kan detta vara det globala administratörs kontot.
    - Om du använder en Microsoft Identity-Provider som contosoadmin@live.com eller contosoadmin@outlook.com , kanske du inte kan logga in på det virtuella Windows-skrivbordet. Vi rekommenderar att du använder ett domänbaserat konto som admin@contoso.com eller admin@contoso.onmicrosoft.com i stället.
 
@@ -116,8 +116,8 @@ Så här hittar du Azure Active Directory klient-ID (eller **katalog-ID**):
    > [!div class="mx-imgBorder"]
    > ![En skärm bild av Sök resultaten för "Azure Active Directory" i Azure Portal. Sök resultatet under "tjänster" är markerat.](../media/tenant-search-azure-active-directory.png)
 
-2. Rulla nedåt tills du hittar **Egenskaper**och markera den.
-3. Leta efter **katalog-ID**och välj sedan ikonen Urklipp. Klistra in det på en praktisk plats så att du kan använda det senare som **AadTenantId** -värde.
+2. Rulla nedåt tills du hittar **Egenskaper** och markera den.
+3. Leta efter **katalog-ID** och välj sedan ikonen Urklipp. Klistra in det på en praktisk plats så att du kan använda det senare som **AadTenantId** -värde.
 
    > [!div class="mx-imgBorder"]
    > ![En skärm bild av Azure Active Directory egenskaper. Musen hovrar över urklipps ikonen för "katalog-ID" för att kopiera och klistra in.](../media/tenant-directory-id.png)
@@ -129,7 +129,7 @@ Så här hittar du ditt Azure-prenumerations-ID:
    > ![En skärm bild av Sök resultaten för "Azure Active Directory" i Azure Portal. Sök resultatet för "tjänster" är markerat.](../media/tenant-search-subscription.png)
 
 2. Välj den Azure-prenumeration som du vill använda för att ta emot Windows-aviseringar för virtuella skriv bord.
-3. Leta efter **prenumerations-ID**och hovra sedan över värdet tills en urklipps ikon visas. Välj urklipps ikonen och klistra in den på en praktisk plats så att du kan använda den senare som **AzureSubscriptionId** -värde.
+3. Leta efter **prenumerations-ID** och hovra sedan över värdet tills en urklipps ikon visas. Välj urklipps ikonen och klistra in den på en praktisk plats så att du kan använda den senare som **AzureSubscriptionId** -värde.
 
    > [!div class="mx-imgBorder"]
    > ![En skärm bild av egenskaperna för Azure-prenumerationen. Musen hovrar över urklipps ikonen för "prenumerations-ID" för att kopiera och klistra in.](../media/tenant-subscription-id.png)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241743"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Hantera redundanta zoner med hög tillgänglighet i Azure Database for MySQL flexibel Server (för hands version)
@@ -32,7 +32,7 @@ Den här sidan innehåller rikt linjer för hur du kan aktivera eller inaktivera
 
 Det här avsnittet innehåller information som är specifik för de fält som är relaterade till. Du kan följa de här stegen för att distribuera hög tillgänglighet när du skapar en flexibel Server.
 
-1.  I [Azure Portal](https://portal.azure.com/)väljer du flexibel Server och klickar på **skapa**.  Mer information om hur du fyller i information som **prenumeration** , **resurs grupp** , **Server namn** , **region** och andra fält finns i instruktions dokumentation för att skapa servern.
+1.  I [Azure Portal](https://portal.azure.com/)väljer du flexibel Server och klickar på **skapa**.  Mer information om hur du fyller i information som **prenumeration**, **resurs grupp**, **Server namn**, **region** och andra fält finns i instruktions dokumentation för att skapa servern.
 
 2.  Klicka på kryss rutan för **zonen redundant hög tillgänglighet** i tillgänglighets alternativet.
 
@@ -41,9 +41,9 @@ Det här avsnittet innehåller information som är specifik för de fält som ä
 4.  Om alternativet för hög tillgänglighet är markerat är den Burstable nivån inte tillgänglig för att välja. Du kan välja antingen **generell användning** eller **minnesoptimerade** beräknings nivåer.
 
     > [!IMPORTANT]
-    > Vi stöder bara zonens redundanta hög tillgänglighet för det * *_generella syftet_* _*__ och den minnesoptimerade pris_*_ nivån.
+    > Vi stöder bara Zone-redundant hög tillgänglighet för det ***generella syftet** _ och _ *_Memory_* Optimized * pris nivå.
 
-5.  Välj _ *Compute-storlek* * för ditt val i list rutan.
+5.  Välj **beräknings storlek** för ditt val i list rutan.
 
 6.  Välj **lagrings storlek** i GIB med hjälp av glidande stapel och välj **tids perioden för kvarhållning av säkerhets kopior** mellan 7 dagar och 35 dagar.   
 

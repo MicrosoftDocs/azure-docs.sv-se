@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578588"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Kom igång med Azure Data Lake Storage Gen1 med hjälp av Azure Portal
@@ -47,7 +47,7 @@ Innan du börjar den här självstudiekursen behöver du följande:
    * **Krypterings inställningar**. Det finns tre alternativ:
 
      * **Aktivera inte kryptering**.
-     * **Använd nycklar som hanteras av data Lake Storage gen1**om du vill data Lake Storage gen1 hantera dina krypterings nycklar.
+     * **Använd nycklar som hanteras av data Lake Storage gen1** om du vill data Lake Storage gen1 hantera dina krypterings nycklar.
      * **Välj nycklar från ditt eget nyckelvalv**. Du kan välja ett befintligt Azure Key Vault eller skapa ett nytt nyckelvalv. Om du vill använda nycklar från en Key Vault måste du tilldela behörighet för Data Lake Storage Gen1-kontot för att få åtkomst till Azure Key Vault. Anvisningar finns i [Tilldela behörigheter till Azure Key Vault](#assign-permissions-to-azure-key-vault).
 
         ![Skärm bild av bladet nya Data Lake Storage gen 1-blad och krypterings inställningar.](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 kryptering")
@@ -84,7 +84,7 @@ Om du använde nycklar från en Azure Key Vault för att konfigurera kryptering 
 
 Du kan skapa mappar under ditt Data Lake Storage Gen1 konto för att hantera och lagra data.
 
-1. Öppna det Data Lake Storage Gen1 konto som du har skapat. Klicka på **alla resurser**i den vänstra rutan, och klicka sedan på det konto namn under vilket du vill skapa mappar från bladet **alla resurser** . Om du fäst kontot på startsidan klickar du på kontoikonen.
+1. Öppna det Data Lake Storage Gen1 konto som du har skapat. Klicka på **alla resurser** i den vänstra rutan, och klicka sedan på det konto namn under vilket du vill skapa mappar från bladet **alla resurser** . Om du fäst kontot på startsidan klickar du på kontoikonen.
 2. I bladet Data Lake Storage Gen1 konto klickar du på **datautforskaren**.
 
     ![Skärm bild av bladet Data Lake Storage gen 1-konto med alternativet data Explorer inringat.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Skapa mappar i ett Data Lake Storage Gen1 konto")

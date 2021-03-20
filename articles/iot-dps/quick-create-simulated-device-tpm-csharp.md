@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90528428"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en simulerad TPM-enhet med C#-enhets-SDK för IoT Hub Device Provisioning Service
@@ -49,7 +49,7 @@ Den här artikeln visar enskilda registreringar.
 
 ## <a name="provision-the-simulated-device"></a>Etablera den simulerade enheten
 
-1. Logga in på Azure Portal. Välj knappen **alla resurser** i den vänstra menyn och öppna Device Provisioning-tjänsten. På bladet **Översikt** noterar du värdet för **_ID-omfång_** .
+1. Logga in på Azure-portalen. Välj knappen **alla resurser** i den vänstra menyn och öppna Device Provisioning-tjänsten. På bladet **Översikt** noterar du värdet för **_ID-omfång_** .
 
     ![Kopiera omfångs-ID för etableringstjänsten från portalbladet](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -73,7 +73,7 @@ Den här artikeln visar enskilda registreringar.
 
     ![Utdata från fönstret Kommando](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
-1. I Azure Portal väljer du **Hantera registreringar**från menyn Device Provisioning-tjänst. Välj fliken **enskilda registreringar** och välj knappen **Lägg till individuell registrering** överst. 
+1. I Azure Portal väljer du **Hantera registreringar** från menyn Device Provisioning-tjänst. Välj fliken **enskilda registreringar** och välj knappen **Lägg till individuell registrering** överst. 
 
 1. Ange följande information på panelen **Lägg till registrering** :
    - Välj **TPM** som identitet för bestyrkande *mekanism*.

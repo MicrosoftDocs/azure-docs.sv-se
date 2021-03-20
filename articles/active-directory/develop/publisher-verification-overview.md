@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308771"
 ---
 # <a name="publisher-verification"></a>Verifiering av utgivare
@@ -33,11 +33,11 @@ Den här funktionen är främst avsedd för utvecklare som skapar appar för fle
 
 ## <a name="benefits"></a>Fördelar
 Utgivar verifieringen ger följande fördelar:
-- **Ökad transparens och risk minskning för kunder** – den här funktionen hjälper kunder att förstå vilka appar som används i sina organisationer publiceras av utvecklare som de litar på. 
+- **Ökad transparens och risk minskning för kunder**– den här funktionen hjälper kunder att förstå vilka appar som används i sina organisationer publiceras av utvecklare som de litar på. 
 
-- **Förbättrat varumärke** – ett "verifierat"-märke visas på sidan Azure AD [medgivande](application-consent-experience.md), sidan företags appar och ytterligare UX-ytor som används av slutanvändare och administratörer. 
+- **Förbättrat varumärke**– ett "verifierat"-märke visas på sidan Azure AD [medgivande](application-consent-experience.md), sidan företags appar och ytterligare UX-ytor som används av slutanvändare och administratörer. 
 
-- **Smidigare företags införande** – administratörer kan konfigurera [principer för användar medgivande](../manage-apps/configure-user-consent.md), med status för utgivarens verifierings status som ett av de primära princip villkoren.
+- **Smidigare företags införande**– administratörer kan konfigurera [principer för användar medgivande](../manage-apps/configure-user-consent.md), med status för utgivarens verifierings status som ett av de primära princip villkoren.
 
 > [!NOTE]
 > Från och med november 2020 kan slutanvändare inte längre bevilja medgivande till de senast registrerade apparna för flera klient organisationer utan verifierade utgivare. Detta gäller för appar som registrerats efter den 8 november 2020, använder OAuth 2.0 för att begära behörigheter bortom Basic-inloggning och läsa användar profil och begära medgivande från användare i olika klienter än den som appen är registrerad i. En varning visas på skärmen medgivande som informerar användarna om att dessa appar är riskfyllda och kommer från ej verifierade utgivare.    

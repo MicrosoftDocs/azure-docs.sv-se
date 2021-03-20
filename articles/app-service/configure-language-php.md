@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055307"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurera en PHP-app för Azure App Service
@@ -332,7 +332,7 @@ php_value upload_max_filesize 10M
 
 Distribuera om din app med ändringarna och starta om den. Om du distribuerar den med kudu (till exempel med hjälp av [git](deploy-local-git.md)) startas den om automatiskt efter distributionen.
 
-Som ett alternativ till att använda *. htaccess*kan du använda [ini_set ()](https://www.php.net/manual/function.ini-set.php) i appen för att anpassa de här icke-PHP_INI_SYSTEM direktiven.
+Som ett alternativ till att använda *. htaccess* kan du använda [ini_set ()](https://www.php.net/manual/function.ini-set.php) i appen för att anpassa de här icke-PHP_INI_SYSTEM direktiven.
 
 ::: zone-end
 
@@ -470,7 +470,7 @@ Prova följande när en fungerande PHP-app fungerar annorlunda i App Service ell
 
 - [Åtkomst till logg strömmen](#access-diagnostic-logs).
 - Testa appen lokalt i produktions läge. App Service kör din app i produktions läge, så du måste se till att projektet fungerar som förväntat i produktions läge lokalt. Exempel:
-    - Beroende på din *composer.js*kan olika paket installeras i produktions läge ( `require` vs. `require-dev` ).
+    - Beroende på din *composer.js* kan olika paket installeras i produktions läge ( `require` vs. `require-dev` ).
     - Vissa webb ramverk kan distribuera statiska filer på ett annat sätt i produktions läge.
     - Vissa webb ramverk kan använda anpassade Start skript när de körs i produktions läge.
 - Kör appen i App Service i fel söknings läge. I [Laravel](https://meanjs.org/)kan du till exempel konfigurera appen så att den utvärderar fel söknings meddelanden i produktion genom [att ställa in `APP_DEBUG` appens inställning på `true` ](configure-common.md#configure-app-settings).

@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282158"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Snabb start: skapa en Azure DNS zon och en post med hjälp av Azure Portal
 
-Du kan konfigurera Azure DNS för att matcha värdnamn i din offentliga domän. Om du till exempel har köpt *contoso. xyz* -domännamnet från en domän namns registrator kan du konfigurera Azure DNS att vara värd för *contoso. xyz* -domänen och matcha *`www.contoso.xyz`* IP-adressen för din webb server eller webbapp.
+Du kan konfigurera Azure DNS för att matcha värdnamn i din offentliga domän. Om du till exempel har köpt *contoso.xyz* -domännamnet från en domän namns registrator kan du konfigurera Azure DNS att vara värd för *contoso.xyz* -domänen och matcha *`www.contoso.xyz`* IP-adressen för din webb server eller webbapp.
 
 I den här snabbstarten skapar du en testdomän och skapar sedan en adresspost för att matcha *www* mot IP-adressen *10.10.10.10*.
 
@@ -51,7 +51,7 @@ En DNS-zon innehåller DNS-poster för en domän. Om du vill låta Azure DNS var
 1. På sidan **Skapa DNS-zon** skriver eller väljer du följande värden:
 
    - **Namn**: Skriv *contoso.xyz* för det här snabbstartsexemplet. DNS-zonens namn kan vara valfritt värde som inte redan har konfigurerats på Azure DNS-servrarna. Ett verkligt värde skulle vara en domän som du har köpt från en domännamnsregistrator.
-   - **Resurs grupp**: Välj **Skapa ny**, ange *MyResourceGroup*och välj **OK**. Resursgruppens namn måste vara unikt inom Azure-prenumerationen. 
+   - **Resurs grupp**: Välj **Skapa ny**, ange *MyResourceGroup* och välj **OK**. Resursgruppens namn måste vara unikt inom Azure-prenumerationen. 
 
 1. Välj **Skapa**.
 
@@ -65,7 +65,7 @@ Du skapar DNS-poster för din domän inuti DNS-zonen. Skapa en ny adresspost ell
 
 **Så här skapar du en ”A”-post:**
 
-1. I Azure Portal, under **alla resurser**, öppnar du DNS-zonen **contoso. xyz** i resurs gruppen **MyResourceGroup** . Du kan ange *contoso.xyz* i rutan **Filtrera efter namn** för att hitta det enklare.
+1. I Azure Portal, under **alla resurser**, öppnar du DNS-zonen **contoso.xyz** i resurs gruppen **MyResourceGroup** . Du kan ange *contoso.xyz* i rutan **Filtrera efter namn** för att hitta det enklare.
 
 1. Längst upp på sidan **DNS-zon** väljer du **+ Postuppsättning**.
 
@@ -85,7 +85,7 @@ Nu när du har en DNS-testzon med en ”A”-testpost kan du testa namnmatchning
 
 **Så här testar du DNS-namnmatchning:**
 
-1. I Azure Portal, under **alla resurser**, öppnar du DNS-zonen **contoso. xyz** i resurs gruppen **MyResourceGroup** . Du kan ange *contoso.xyz* i rutan **Filtrera efter namn** för att hitta det enklare.
+1. I Azure Portal, under **alla resurser**, öppnar du DNS-zonen **contoso.xyz** i resurs gruppen **MyResourceGroup** . Du kan ange *contoso.xyz* i rutan **Filtrera efter namn** för att hitta det enklare.
 
 1. Kopiera ett av namnservernamnen från namnlistan på sidan **Översikt**. 
 
@@ -107,7 +107,7 @@ Nu när du har en DNS-testzon med en ”A”-testpost kan du testa namnmatchning
 
    ![Skärm bild som visar ett kommando tolks fönster med ett n s lookup-kommando och-värden för Server, adress, namn och adress.](media/dns-getstarted-portal/nslookup.PNG)
 
-Värd namnet **www \. contoso. xyz** matchas till **10.10.10.10**, precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt. 
+Det värdnamn som **www- \. contoso.xyz** matchar **10.10.10.10**, precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt. 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

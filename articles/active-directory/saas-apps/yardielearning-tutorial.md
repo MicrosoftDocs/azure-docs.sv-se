@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: cf7c37cb8a8a7c2fbf8b41b75b9559868568ff2f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Självstudie: Azure Active Directory integrering med Varvi eLearning
@@ -87,7 +87,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med eLearning i Azure AD med Varvi:
 
-1. Välj **enkel inloggning**på sidan för **eLearning** program integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan för **eLearning** program integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -156,7 +156,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Gårdi eLearning.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och sedan **Varvi eLearning**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och sedan **Varvi eLearning**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

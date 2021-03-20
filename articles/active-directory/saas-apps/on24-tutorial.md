@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 30fd3843b50ac6b075d33e961986b94ee2496fef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Självstudie: Azure Active Directory integration med SAML-anslutning för virtuell ON24-miljö
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Azure AD med ON24 virtuell miljö SAML-anslutning:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **ON24 virtuell miljö SAML-anslutning** program integration.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **ON24 virtuell miljö SAML-anslutning** program integration.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -201,7 +201,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till ON24 virtuella miljö SAML-anslutning.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **ON24 virtuell miljö SAML-anslutning**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **ON24 virtuell miljö SAML-anslutning**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

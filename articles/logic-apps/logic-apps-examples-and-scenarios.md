@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92317380"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Vanliga scenarier, exempel, självstudier och genom gångar för Azure Logic Apps
@@ -117,7 +117,7 @@ Du kan helt utveckla och distribuera Logi Kap par med Visual Studio, Azure DevOp
 * [Skapa och hantera integrations konton för B2B Enterprise-integrationer](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Hantera integrerings tjänst miljö (ISE) i Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Övervaka
+### <a name="monitor"></a>Monitor
 
 * [Övervaka körningsstatus, granska utlösarhistorik och konfigurera aviseringar för Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Konfigurera Azure Monitor loggar och samla in diagnostikdata för Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)

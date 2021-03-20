@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220915"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Hantera Azure Data Lake Analytics med en .NET-app
@@ -217,7 +217,7 @@ if (adlaClient.Account.Exists(rg, adla))
 Data Lake Analytics stöder för närvarande följande data Källor:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage-konto](../storage/common/storage-introduction.md)
+* [Azure Storage konto](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>Länka till ett Azure Storage konto
 

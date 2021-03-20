@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: sudbalas
 ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93287466"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault säkerhets kopiering
@@ -46,7 +46,7 @@ Tänk också på följande konsekvenser:
 
 När du säkerhetskopierar ett nyckel valvs objekt, t. ex. en hemlighet, nyckel eller certifikat, laddar säkerhets kopierings åtgärden objektet som en krypterad blob. Denna BLOB kan inte dekrypteras utanför Azure. Om du vill hämta användbara data från denna BLOB måste du återställa blobben till ett nyckel valv i samma Azure-prenumeration och [Azure geografi](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill säkerhetskopiera ett Key Vault-objekt måste du ha: 
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86bc72f69903134afa3750ad6b72486a713b6cc0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011922"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Snabbstart: Ladda ned en inloggningsrapport med Azure-portalen
@@ -43,7 +43,7 @@ Du behöver:
 4. Välj **senaste 24 timmarna** i filterlistrutan **datum** och välj **Tillämpa** för att visa inloggningsloggarna för de senaste 24 timmarna. 
 5. Välj knappen **Ladda ned** , Välj **CSV** som fil format och ange ett fil namn för att ladda ned en CSV-fil som innehåller de filtrerade posterna. 
 
-![Rapportering](./media/quickstart-download-sign-in-report/download-sign-ins.png)
+![Rapportera](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

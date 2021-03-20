@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131283"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Ta bort virtuella datorer från Ändringsspårning och inventering
@@ -30,7 +30,7 @@ Logga in på [Azure-portalen](https://portal.azure.com).
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. I Azure Portal navigerar du till **Log Analytics arbets ytor** . Välj din arbets yta i listan.
+3. I Azure Portal navigerar du till **Log Analytics arbets ytor**. Välj din arbets yta i listan.
 
 4. I arbets ytan Log Analytics väljer du **loggar** och väljer sedan **query Explorer** på menyn med de vanligaste åtgärderna.
 

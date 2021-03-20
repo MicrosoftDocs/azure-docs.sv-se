@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91628272"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Villkorlig åtkomst: inloggnings risk baserad villkorlig åtkomst
@@ -33,29 +33,29 @@ Det finns två platser där denna policy kan tilldelas. Organisationer bör väl
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
 1. Under **Tilldelningar** väljer du **Användare och grupper**.
-   1. Under **Inkludera**väljer du **alla användare**.
-   1. Under **exkludera**väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
-   1. Välj **Done** (Klar).
-1. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **alla molnappar**.
-1. Under **villkor**  >  **inloggnings risk**anger du **Konfigurera** till **Ja**. Under **Välj den inloggnings risk nivå som den här principen ska tillämpas på** 
+   1. Under **Inkludera** väljer du **alla användare**.
+   1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **alla molnappar**.
+1. Under **villkor**  >  **inloggnings risk** anger du **Konfigurera** till **Ja**. Under **Välj den inloggnings risk nivå som den här principen ska tillämpas på** 
    1. Välj **hög** och **medel**.
-   1. Välj **Done** (Klar).
-1. Under **åtkomst kontroller**  >  **tilldelar**väljer du **bevilja åtkomst**, **kräver Multi-Factor Authentication**och väljer **Välj**.
+   1. Välj **Klar**.
+1. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver Multi-Factor Authentication** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa för att aktivera principen.
 
 ## <a name="enable-through-identity-protection"></a>Aktivera via identitets skydd
 
 1. Logga in på **Azure-portalen**.
-1. Välj **alla tjänster**och bläddra sedan till **Azure AD Identity Protection**.
+1. Välj **alla tjänster** och bläddra sedan till **Azure AD Identity Protection**.
 1. Välj **princip för inloggnings risk**.
-1. Under **tilldelningar**väljer **du användare**.
-   1. Under **Inkludera**väljer du **alla användare**.
-   1. Under **exkludera**väljer du **Välj exkluderade användare**, väljer din organisations nödfalls åtkomst eller rast glass konton och väljer **Välj**.
-   1. Välj **Done** (Klar).
-1. Under **villkor**väljer du **inloggnings risk**och väljer sedan **medel och över**.
-   1. Välj **Välj**och sedan **Slutför**.
-1. Under **kontroller**  >  **åtkomst**väljer du **Tillåt åtkomst**och väljer sedan **Kräv Multi-Factor Authentication**.
+1. Under **tilldelningar** väljer **du användare**.
+   1. Under **Inkludera** väljer du **alla användare**.
+   1. Under **exkludera** väljer du **Välj exkluderade användare**, väljer din organisations nödfalls åtkomst eller rast glass konton och väljer **Välj**.
+   1. Välj **Klar**.
+1. Under **villkor** väljer du **inloggnings risk** och väljer sedan **medel och över**.
+   1. Välj **Välj** och sedan **Slutför**.
+1. Under **kontroller**  >  **åtkomst** väljer du **Tillåt åtkomst** och väljer sedan **Kräv Multi-Factor Authentication**.
    1. Välj **Välj**.
 1. Ange **tillämpa principen** på **på**.
 1. Välj **Spara**.

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240774"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Säkerhets kopiering och återställning i Azure Database for MySQL flexibel Server (för hands version)
@@ -18,7 +18,7 @@ ms.locfileid: "93240774"
 > [!IMPORTANT] 
 > Azure Database for MySQL-flexibel Server är för närvarande en offentlig för hands version.
 
-Azure Database for MySQL flexibel Server skapar automatiskt Server säkerhets kopior och lagrar dem på ett säkert sätt i den lokala redundanta lagringen i regionen. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhets kopiering och återställning är en viktig del av en strategi för affärs kontinuitet eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
+Azure Database for MySQL flexibel Server skapar automatiskt Server säkerhets kopior och lagrar dem på ett säkert sätt i den lokala redundanta lagringen i regionen. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhetskopiering och återställning är en viktig del i strategin för affärskontinuitet, eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
 
 ## <a name="backup-overview"></a>Översikt över Backup
 
@@ -68,8 +68,8 @@ I Azure Database for MySQL flexibel Server skapar en återställning vid en viss
 
 Du kan välja mellan en senaste återställnings punkt och en anpassad återställnings punkt via [Azure Portal](how-to-restore-server-portal.md).
 
--   **Senaste återställnings punkt** : den senaste återställnings punkten hjälper dig att återställa servern till den senaste säkerhets kopieringen som utförts på käll servern. Tidsstämpeln för återställning visas också på portalen. Det här alternativet är användbart för att snabbt återställa servern till det mest uppdaterade läget.
--   **Anpassad återställnings punkt** : med det här alternativet kan du välja vilken tidpunkt som helst inom den kvarhållningsperiod som definierats för den här flexibla servern. Det här alternativet är användbart för att återställa servern vid den exakta tidpunkten för att återställa från ett användar fel.
+-   **Senaste återställnings punkt**: den senaste återställnings punkten hjälper dig att återställa servern till den senaste säkerhets kopieringen som utförts på käll servern. Tidsstämpeln för återställning visas också på portalen. Det här alternativet är användbart för att snabbt återställa servern till det mest uppdaterade läget.
+-   **Anpassad återställnings punkt**: med det här alternativet kan du välja vilken tidpunkt som helst inom den kvarhållningsperiod som definierats för den här flexibla servern. Det här alternativet är användbart för att återställa servern vid den exakta tidpunkten för att återställa från ett användar fel.
 
 Den uppskattade återställnings tiden beror på flera faktorer, till exempel databas storlek, säkerhets kopierings storlek för transaktions logg, beräknings storlek för SKU: n och även tiden för återställningen. Återställningen av transaktions loggen är den mest tids krävande delen av återställnings processen. Om återställnings tiden väljs närmare säkerhets kopierings schema för fullständig eller differentiell ögonblicks bild är återställningarna snabbare eftersom transaktions logg programmet är minimalt. För att uppskatta den korrekta återställnings tiden för servern rekommenderar vi starkt att du testar den i din miljö eftersom den har för många miljövariabler.
 

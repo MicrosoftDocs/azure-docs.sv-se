@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e76386c8c276c6c8c07751474b3718f98af18f4b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Självstudie: Azure Active Directory integrering med sprinkler
@@ -156,9 +156,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med sp
 
     ex. Klistra in **URL** -värdet för utloggning som du har kopierat från Azure Portal till text rutan för **inloggade URL för identitets leverantör** .
 
-    h. Som **SAML-användarens ID-typ**väljer du **Assertion innehåller användarens Sprinklr.com användar namn**.
+    h. Som **SAML-användarens ID-typ** väljer du **Assertion innehåller användarens Sprinklr.com användar namn**.
 
-    i. Som **SAML-användar-ID-plats**väljer du **användar-ID finns i elementets namn identifierare i ämnes instruktionen**.
+    i. Som **SAML-användar-ID-plats** väljer du **användar-ID finns i elementets namn identifierare i ämnes instruktionen**.
 
     j. Klicka på **Spara**.
 
@@ -193,7 +193,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till sprinkler.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **sprinkler**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **sprinkler**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -248,11 +248,11 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
     > [!IMPORTANT]
     > Det **inaktiverade lösen ordet** måste väljas för att en användare ska kunna logga in via en identitets leverantör. 
 
-1. Gå till **roll**och utför sedan följande steg:
+1. Gå till **roll** och utför sedan följande steg:
 
     ![Partner roller](./media/sprinklr-tutorial/ic782917.png "Partner roller")
 
-    a. Välj **ALL_Permissions**i listan **Global** .  
+    a. Välj **ALL_Permissions** i listan **Global** .  
 
     b. Klicka på **Uppdatera**.
 

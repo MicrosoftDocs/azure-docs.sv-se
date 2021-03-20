@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 0cdad245981ad02d3cdaefba447d131c775e242f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145777"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassa stilen på utvecklings portalens sidor
@@ -45,7 +45,7 @@ I den här artikeln får du lära dig hur du anpassar formatet för element på 
 
 ## <a name="customize-the-developer-portal"></a>Anpassa Developer-portalen
 
-1. Välj **Översikt** .
+1. Välj **Översikt**.
 2. Klicka på knappen **Developer portal (bakåtkompatibelt)** överst i **översikts** fönstret.
 3. Upptill på den vänstra sidan av skärmen visas en ikon med två penslar. Hovra över ikonen för att öppna menyn för anpassning av portalen.
 

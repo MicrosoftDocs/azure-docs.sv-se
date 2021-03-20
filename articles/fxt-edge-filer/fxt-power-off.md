@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: 01c34304ac0e3e7faa42611758d77893e149a2f8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218739"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Hur man på ett säkert sätt stänger av maskin vara från Azure FXT Edge-filer

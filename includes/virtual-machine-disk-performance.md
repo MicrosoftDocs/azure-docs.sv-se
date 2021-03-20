@@ -9,10 +9,10 @@ ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 4770ac0181c64ef800aa02ba87284c8add357e36
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518088"
 ---
 Den här artikeln hjälper till att klargöra disk prestanda och hur det fungerar när du kombinerar Azure Virtual Machines och Azure-diskar. Det beskriver också hur du kan diagnostisera Flask halsar för disk-i/o och de ändringar som du kan göra för att optimera prestanda.

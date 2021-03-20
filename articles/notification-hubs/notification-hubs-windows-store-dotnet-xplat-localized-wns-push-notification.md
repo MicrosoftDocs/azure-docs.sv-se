@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: d91320d8f78942ca916084cbf29a88818d95f531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92314627"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Självstudie: skicka lokaliserade push-meddelanden till Windows-appar med hjälp av Azure Notification Hubs
@@ -50,7 +50,7 @@ I den här guiden får du lära dig att:
 
 Slutför [Självstudier: Skicka meddelanden till specifika enheter (Universal Windows Platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
-I [Självstudier: Skicka meddelanden till specifika enheter (Universal Windows Platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) har du skapat en app som använde **taggar** att prenumerera på meddelanden för olika nyhets**kategorier**. I den här självstudiekursen använder du **mall**funktion i Notification Hubs till att enkelt leverera **lokaliserade** nyhetsmeddelanden.
+I [Självstudier: Skicka meddelanden till specifika enheter (Universal Windows Platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) har du skapat en app som använde **taggar** att prenumerera på meddelanden för olika nyhets **kategorier**. I den här självstudiekursen använder du **mall** funktion i Notification Hubs till att enkelt leverera **lokaliserade** nyhetsmeddelanden.
 
 På en hög nivå är mallar ett sätt att ange i vilket format en specifik enhet bör ta emot ett meddelande. Mallen anger det exakta nyttolastformatet genom att referera till egenskaper som ingår i meddelandet som skickas av appserverdelen. I den här självstudiekursen skickar serverdelsprogrammet ett språkvariantsoberoende meddelande som innehåller alla språk som stöds:
 

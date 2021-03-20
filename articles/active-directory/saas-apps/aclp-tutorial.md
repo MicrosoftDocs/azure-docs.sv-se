@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: bb91322df315d60adddf184905d0c619f5be8d6a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aclp"></a>Självstudie: Azure Active Directory integrering med ACLP
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med ACLP i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **ACLP** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **ACLP** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -142,7 +142,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till ACLP.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **ACLP**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **ACLP**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -166,7 +166,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 ### <a name="create-aclp-test-user"></a>Skapa ACLP test användare
 
-I det här avsnittet skapar du en användare som heter Britta Simon i ACLP. Arbeta med [ACLP support team](mailto:mrichards@sans.org) för att lägga till användare i ACLP-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare som heter Britta Simon i ACLP. Arbeta med [ACLP support team](mailto:mrichards@sans.org) för att lägga till användare i ACLP-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

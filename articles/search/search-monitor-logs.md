@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100592470"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Samla in och analysera loggdata för Azure Kognitiv sökning
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 Loggade händelser som registrerats av Azure Monitor inkluderar de som är relaterade till indexering och frågor. **AzureDiagnostics** -tabellen i Log Analytics samlar in drift data som rör frågor och indexering.
 
-| OperationName | Description |
+| OperationName | Beskrivning |
 |---------------|-------------|
 | ServiceStats | Den här åtgärden är ett rutin anrop för att [Hämta tjänst statistik](/rest/api/searchservice/get-service-statistics), antingen kallat direkt eller implicit för att fylla i en portal översikts sida när den läses in eller uppdateras. |
 | Fråga. search |  Fråga begär Anden mot ett index se [övervaka frågor](search-monitor-queries.md) för information om loggade frågor.|

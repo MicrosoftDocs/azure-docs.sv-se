@@ -1,18 +1,18 @@
 ---
-title: Konfigurera Windows Update inställningar för Azure Automation Uppdateringshantering
+title: Konfigurera Windows Update-inställningar för Uppdateringshantering i Azure Automation
 description: Den här artikeln beskriver hur du konfigurerar Windows Update inställningar så att de fungerar med Azure Automation Uppdateringshantering.
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: a1f95ca856223628974a9519b7c4811bde43965e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222425"
 ---
-# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Konfigurera Windows Update inställningar för Azure Automation Uppdateringshantering
+# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Konfigurera Windows Update-inställningar för Uppdateringshantering i Azure Automation
 
 Azure Automation Uppdateringshantering använder [Windows Update-klienten](/windows/deployment/update/windows-update-overview) för att ladda ned och installera Windows-uppdateringar. Det finns vissa inställningar som används av den Windows Update klienten vid anslutning till Windows Server Update Services (WSUS) eller Windows Update. Många av de här inställningarna kan hanteras med:
 

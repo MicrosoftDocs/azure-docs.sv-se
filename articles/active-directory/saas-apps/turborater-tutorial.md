@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Självstudie: Azure Active Directory integrering med TurboRater
@@ -60,7 +60,7 @@ Om du vill konfigurera integreringen av TurboRater i Azure AD måste du lägga t
 
     ![Alternativet nytt program](common/add-new-app.png)
 
-1. Skriv **TurboRater**i rutan Sök. I Sök resultaten väljer du **TurboRater**och väljer sedan **Lägg till** för att lägga till programmet.
+1. Skriv **TurboRater** i rutan Sök. I Sök resultaten väljer du **TurboRater** och väljer sedan **Lägg till** för att lägga till programmet.
 
     ![TurboRater i resultat listan](common/search-new-app.png)
 
@@ -83,7 +83,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med TurboRater i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **TurboRater** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **TurboRater** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera alternativ för enkel inloggning](common/select-sso.png)
 
@@ -107,7 +107,7 @@ Utför följande steg för att konfigurera enkel inloggning med TurboRater i Azu
 
        | Miljö | URL |
        | ---------------| --------------- |
-       | Testa  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Test  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Direktsändning  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
@@ -147,7 +147,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
     1. I rutan **namn** anger du **BSimon**.
   
-    1. I rutan **användar namn** anger du **BSimon \@ \<yourcompanydomain> . \<extension> **. Till exempel **BSimon \@ contoso.com**.
+    1. I rutan **användar namn** anger du **BSimon \@ \<yourcompanydomain> . \<extension>**. Till exempel **BSimon \@ contoso.com**.
 
     1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 
@@ -165,11 +165,11 @@ I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning me
 
     ![TurboRater i listan program](common/all-applications.png)
 
-1. I den vänstra rutan under **Hantera**väljer **du användare och grupper**.
+1. I den vänstra rutan under **Hantera** väljer **du användare och grupper**.
 
     ![Alternativet "användare och grupper"](common/users-groups-blade.png)
 
-1. Välj **+ Lägg till användare**och välj sedan **användare och grupper** i fönstret **Lägg till tilldelning** .
+1. Välj **+ Lägg till användare** och välj sedan **användare och grupper** i fönstret **Lägg till tilldelning** .
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 

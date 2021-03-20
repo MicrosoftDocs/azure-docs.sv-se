@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654140"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Skapa kartor som transformerar XML mellan format i Azure Logic Apps med Enterprise-integrationspaket
@@ -30,7 +30,7 @@ När du har överfört transformeringen/kartan till ditt integrations konto kan 
 
 **Här följer stegen för att använda en transformering**:
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 * Skapa ett integrations konto och Lägg till en karta  
 

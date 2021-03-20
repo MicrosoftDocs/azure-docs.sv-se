@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018164"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Läs in inläsningar i alla format med anpassade .NET-deserialiserare
@@ -226,7 +226,7 @@ Följande JavaScript-kod är ett exempel på formatet .NET deserialiserare när 
 Den här funktionen är tillgänglig i följande regioner:
 
 * USA, västra centrala
-* Norra Europa
+* Europa, norra
 * East US
 * USA, västra
 * USA, östra 2
@@ -252,6 +252,6 @@ När du har implementerat deserialiseraren kan du hjälpa andra genom att dela d
 
 Om du har angett protobuf-format med ett schema som innehåller `MapField` typ kommer du inte att kunna implementera en anpassad deserialiserare. Dessutom stöder inte anpassade deserialiserade exempel data eller för hands versions data. 
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 * [.NET-anpassade deserialiserare för Azure Stream Analytics moln jobb](custom-deserializer.md)

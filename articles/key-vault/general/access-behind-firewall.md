@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
 ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289173"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Få åtkomst till Azure Key Vault bakom en brandvägg
@@ -56,7 +56,7 @@ För hantering av Nyckelvalv (CRUD och inställning av åtkomstprincip) måste k
 
 ## <a name="key-vault-operations"></a>Åtgärder i Nyckelvalv
 
-Vid all hantering och kryptografiska åtgärder för nyckelvalvsobjekt (nycklar och hemligheter) måste klientprogrammet för nyckelvalv ha åtkomst till slutpunkten för nyckelvalvet. Slutpunktens DNS-suffix är olika beroende på placeringen av ditt nyckelvalv. Slutpunkten för Nyckelvalv har följande format: *valvnamn*. *regionsspecifikt dns-suffix* som beskrivs i följande tabell.  
+Vid all hantering och kryptografiska åtgärder för nyckelvalvsobjekt (nycklar och hemligheter) måste klientprogrammet för nyckelvalv ha åtkomst till slutpunkten för nyckelvalvet. Slutpunktens DNS-suffix är olika beroende på placeringen av ditt nyckelvalv. Slutpunkten för Nyckelvalv har följande format: *valvnamn*.*regionsspecifikt dns-suffix* som beskrivs i följande tabell.  
 
 | Typ av åtgärd | Slutpunkt:port |
 | --- | --- |

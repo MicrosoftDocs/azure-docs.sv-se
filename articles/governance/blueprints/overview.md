@@ -4,10 +4,10 @@ description: Förstå hur tjänsten Azure-ritningar ger dig möjlighet att skapa
 ms.date: 01/27/2021
 ms.topic: overview
 ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919350"
 ---
 # <a name="what-is-azure-blueprints"></a>Vad är Azure Blueprint?
@@ -47,7 +47,7 @@ En princip kan inkluderas som en av många _artefakter_ i en skiss definition. M
 
 En skiss består av _artefakter_. Azure-ritningar stöder för närvarande följande resurser som artefakter:
 
-|Resurs  | Hierarkialternativ| Description  |
+|Resurs  | Hierarkialternativ| Beskrivning  |
 |---------|---------|---------|
 |Resursgrupper | Prenumeration | Skapa en ny resursgrupp för användning av andra artefakter i skissen.  Dessa resurs grupper för plats hållare gör det möjligt att organisera resurser exakt som du vill att de ska vara strukturerade och ger en omfattnings gräns för inkluderade principer och roll tilldelnings artefakter och ARM-mallar. |
 |ARM-mall | Prenumeration, resursgrupp | Mallar, inklusive kapslade och länkade mallar, används för att skapa komplexa miljöer. Exempelmiljöer: en SharePoint-servergrupp, Azure Automation State Configuration eller en Log Analytics-arbetsyta. |
@@ -108,7 +108,7 @@ Om du vill tilldela eller ta bort tilldelningar av skisser måste ditt konto ha 
 
 Följande inbyggda roller är tillgängliga:
 
-|Azure-roll | Description |
+|Azure-roll | Beskrivning |
 |-|-|
 |[Ägare](../../role-based-access-control/built-in-roles.md#owner) | Förutom andra behörigheter innehåller alla Azure Blueprint-relaterade behörigheter. |
 |[Deltagare](../../role-based-access-control/built-in-roles.md#contributor) | Förutom andra behörigheter kan skapa och ta bort skiss definitioner, men har inte behörighet för skiss tilldelning. |

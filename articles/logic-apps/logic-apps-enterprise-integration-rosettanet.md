@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565113"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-meddelanden för B2B Enterprise-integration i Azure Logic Apps
@@ -75,7 +75,7 @@ Följ dessa steg om du vill lägga till en PIP-process konfiguration till ditt i
 
    ![Välj RosettaNet panel](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
 
-1. Under **ROSETTANET pip**väljer du **Lägg till**. Ange din PIP-information.
+1. Under **ROSETTANET pip** väljer du **Lägg till**. Ange din PIP-information.
 
    ![Lägg till RosettaNet PIP-information](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
@@ -106,7 +106,7 @@ Följ dessa steg om du vill lägga till en PIP-process konfiguration till ditt i
 
    ![Välj avtals panel](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
 
-1. Välj **Lägg till**under **avtal**. Ange din avtals information.
+1. Välj **Lägg till** under **avtal**. Ange din avtals information.
 
    ![Lägg till avtals information](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
@@ -143,7 +143,7 @@ Följ dessa steg om du vill lägga till en PIP-process konfiguration till ditt i
 
    ![Skicka inställningar](media/logic-apps-enterprise-integration-rosettanet/add-agreement-send-details.png)
 
-   1. Om du vill aktivera signering eller kryptering för utgående meddelanden går du till **meddelanden**och väljer **Aktivera meddelande signering** eller **Aktivera meddelande kryptering** . Under varje val väljer du den respektive algoritm och det [certifikat](./logic-apps-enterprise-integration-certificates.md)som du tidigare lagt till i ditt integrations konto för att använda för signering eller kryptering.
+   1. Om du vill aktivera signering eller kryptering för utgående meddelanden går du till **meddelanden** och väljer **Aktivera meddelande signering** eller **Aktivera meddelande kryptering** . Under varje val väljer du den respektive algoritm och det [certifikat](./logic-apps-enterprise-integration-certificates.md)som du tidigare lagt till i ditt integrations konto för att använda för signering eller kryptering.
 
       | Egenskap | Krävs | Beskrivning |
       |----------|----------|-------------|
@@ -155,7 +155,7 @@ Följ dessa steg om du vill lägga till en PIP-process konfiguration till ditt i
       | **Certifikat** | Ja, om kryptering är aktiverat | Certifikatet som ska användas för kryptering |
       ||||
 
-   1. Under **slut punkter**anger du de obligatoriska URL: er som ska användas för att skicka åtgärds meddelanden och bekräftelser.
+   1. Under **slut punkter** anger du de obligatoriska URL: er som ska användas för att skicka åtgärds meddelanden och bekräftelser.
 
       | Egenskap | Krävs | Beskrivning |
       |----------|----------|-------------|
@@ -163,7 +163,7 @@ Följ dessa steg om du vill lägga till en PIP-process konfiguration till ditt i
       | **Bekräftelse-URL** | Ja | Den URL som ska användas för att skicka bekräftelse meddelanden. URL: en är ett obligatoriskt fält för asynkrona meddelanden. |
       ||||
 
-1. Om du vill konfigurera ditt avtal med RosettaNet PIP-referenser för partner väljer du **ROSETTANET pip-referenser**. Under **pip namn**väljer du namnet på din tidigare skapade pip.
+1. Om du vill konfigurera ditt avtal med RosettaNet PIP-referenser för partner väljer du **ROSETTANET pip-referenser**. Under **pip namn** väljer du namnet på din tidigare skapade pip.
 
    ![PIP-referenser](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
 
@@ -202,7 +202,7 @@ För att påskynda utvecklingen och rekommendera integrations mönster kan du an
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
    | **Meddelande** | Ja | RosettaNet-meddelandet att avkoda  |
-   | **Rubriker** | Ja | HTTP-huvuden som innehåller värdena för-versionen, som är RNIF-versionen och svars typen, som anger kommunikations typen mellan partnerna och kan vara synkron eller asynkron |
+   | **Sidhuvuden** | Ja | HTTP-huvuden som innehåller värdena för-versionen, som är RNIF-versionen och svars typen, som anger kommunikations typen mellan partnerna och kan vara synkron eller asynkron |
    | **Role** | Ja | Rollen som värd partner i PIP |
    ||||
 

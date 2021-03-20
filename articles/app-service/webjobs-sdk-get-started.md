@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91652048"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Komma igång med Azure WebJobs SDK för händelsedriven bakgrundsbearbetning
@@ -32,7 +32,7 @@ Den här artikeln visar hur du distribuerar WebJobs som en .NET Core-konsolprogr
 
 2. Välj **konsol program (.net Core)**.
 
-3. Ge projektet namnet *WebJobsSDKSample*och välj sedan **skapa**.
+3. Ge projektet namnet *WebJobsSDKSample* och välj sedan **skapa**.
 
    ![Dialogrutan Nytt projekt](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -52,7 +52,7 @@ Den här artikeln visar hur du distribuerar WebJobs som en .NET Core-konsolprogr
 
 Värden är körnings behållare för funktioner som lyssnar efter utlösare och anropar funktioner. Följande steg skapar en värd som implementerar [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost) , som är den allmänna värden i ASP.net Core.
 
-1. I *program.cs*lägger du till följande `using` uttryck:
+1. Lägg till följande instruktioner i *program. cs* `using` :
 
     ```cs
     using System.Threading.Tasks;
@@ -92,7 +92,7 @@ I det här avsnittet ställer du in konsol loggning som använder [ASP.net Core 
    ```
    I det här kommandot ersätter `<3_X_VERSION>` du med en 3. x-version som stöds av paketet.
 
-1. I *program.cs*lägger du till en `using` instruktion:
+1. Lägg till en instruktion i *program. cs* `using` :
 
    ```cs
    using Microsoft.Extensions.Logging;
@@ -162,9 +162,9 @@ Från och med version 3. x måste du uttryckligen installera lagrings bindnings 
 
 ## <a name="create-a-function"></a>Skapa en funktion
 
-1. Högerklicka på projektet, Välj **Lägg till**  >  **nytt objekt...**, Välj **klass**, namnge den nya C#-klass filen *functions.cs*och välj **Lägg till**.
+1. Högerklicka på projektet, Välj **Lägg till**  >  **nytt objekt...**, Välj **klass**, namnge den nya C#-klass filen *functions. cs* och välj **Lägg till**.
 
-1. I Functions.cs ersätter du den genererade mallen med följande kod:
+1. I functions. cs ersätter du den genererade mallen med följande kod:
     
     ```cs
     using Microsoft.Azure.WebJobs;
@@ -186,7 +186,7 @@ Från och med version 3. x måste du uttryckligen installera lagrings bindnings 
 
    `message`Parametern behöver inte vara en sträng. Du kan också binda till ett JSON-objekt, en byte mat ris eller ett [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -objekt. [Se användning av kö-utlösare](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage). Varje bindnings typ (till exempel köer, blobbar eller tabeller) har en annan uppsättning parameter typer som du kan binda till.
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Azure Storage emulatorn som körs lokalt har inte alla funktioner som WebJobs-SDK: n behöver. Så i det här avsnittet skapar du ett lagrings konto i Azure och konfigurerar projektet att använda det. Om du redan har ett lagrings konto går du vidare till steg 6.
 
@@ -194,7 +194,7 @@ Azure Storage emulatorn som körs lokalt har inte alla funktioner som WebJobs-SD
 
    ![Logga in på Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. Under **Azure** -noden i **Server Explorer**högerklickar du på **lagring**och väljer sedan **skapa lagrings konto**.
+1. Under **Azure** -noden i **Server Explorer** högerklickar du på **lagring** och väljer sedan **skapa lagrings konto**.
 
    ![Menyn skapa lagrings konto](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
@@ -206,7 +206,7 @@ Azure Storage emulatorn som körs lokalt har inte alla funktioner som WebJobs-SD
 
    ![Skapa lagrings konto](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. Under noden **lagring** i **Server Explorer**väljer du det nya lagrings kontot. I fönstret **Egenskaper** väljer du ellipsen (**...**) till höger om värde fältet för **anslutnings strängen** .
+1. Under noden **lagring** i **Server Explorer** väljer du det nya lagrings kontot. I fönstret **Egenskaper** väljer du ellipsen (**...**) till höger om värde fältet för **anslutnings strängen** .
 
    ![Anslutnings sträng, ellips](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
@@ -272,7 +272,7 @@ I det här avsnittet ska du skapa och köra projektet lokalt och utlösa funktio
 
    ![Skärm bild som visar ikonen Lägg till meddelande.](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. I dialog rutan **Lägg till meddelande** anger du *Hello World!* som **meddelande text**och välj sedan **OK**. Nu finns det ett meddelande i kön.
+1. I dialog rutan **Lägg till meddelande** anger du *Hello World!* som **meddelande text** och välj sedan **OK**. Nu finns det ett meddelande i kön.
 
    ![Skapa kö](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -313,7 +313,7 @@ I det här avsnittet ska du utföra följande åtgärder för att konfigurera Ap
 
 1. Om du inte redan har en App Service app som du kan använda [skapar du en](quickstart-dotnet-framework.md). När du skapar din app kan du också skapa en ansluten Application Insights-resurs. När du gör det är det `APPINSIGHTS_INSTRUMENTATIONKEY` konfigurerat för dig i din app.
 
-1. Om du inte redan har en Application Insights resurs som du kan använda [skapar du en](../azure-monitor/app/create-new-resource.md ). Ange **program typen** **Allmänt**och hoppa över avsnitten som följer **Kopiera Instrumentation-nyckeln**.
+1. Om du inte redan har en Application Insights resurs som du kan använda [skapar du en](../azure-monitor/app/create-new-resource.md ). Ange **program typen** **Allmänt** och hoppa över avsnitten som följer **Kopiera Instrumentation-nyckeln**.
 
 1. Om du redan har en Application Insights resurs som du vill använda kopierar du [Instrumentation-tangenten](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key).
 
@@ -327,13 +327,13 @@ I det här avsnittet ska du utföra följande åtgärder för att konfigurera Ap
 
 1. I rutan **anslutnings strängar** lägger du till följande post.
 
-   |Namn  |anslutnings sträng  |Databas typ|
+   |Name  |anslutnings sträng  |Databas typ|
    |---------|---------|------|
-   |AzureWebJobsStorage | {anslutnings strängen för lagring som du kopierade tidigare}|Anpassad|
+   |AzureWebJobsStorage | {anslutnings strängen för lagring som du kopierade tidigare}|Anpassat|
 
 1. Om rutan **program inställningar** inte har en Application Insights Instrumentation-nyckel, lägger du till den som du kopierade tidigare. (Instrumentation-nyckeln kanske redan finns där, beroende på hur du skapade App Service-appen.)
 
-   |Namn  |Värde  |
+   |Name  |Värde  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentation-nyckel} |
 
@@ -370,7 +370,7 @@ Om du vill dra nytta av [Application Insights](../azure-monitor/app/app-insights
    ```
     Ersätt `<3_X_VERSION>` med en version av paketet som stöds i det här kommandot.
 
-1. Öppna *program.cs* och Ersätt koden i- `Main` metoden med följande kod:
+1. Öppna *programmet. cs* och Ersätt koden i- `Main` metoden med följande kod:
 
     ```cs
     static async Task Main()
@@ -460,7 +460,7 @@ Under distributionen skapar du en app service-instans där funktionerna ska kör
 
 Data bindningar fören klar kod som läser data. I det här exemplet är Queue-meddelandet ett BLOB-namn och du använder BLOB-namnet för att hitta och läsa en BLOB i Azure Storage.
 
-1. I *functions.cs*ersätter du `ProcessQueueMessage` metoden med följande kod:
+1. I *functions. cs* ersätter du `ProcessQueueMessage` metoden med följande kod:
 
    ```cs
    public static void ProcessQueueMessage(
@@ -482,23 +482,23 @@ Data bindningar fören klar kod som läser data. I det här exemplet är Queue-m
 
 1. Skapa en BLOB-behållare i ditt lagrings konto.
 
-   a. I **Server Explorer** i Visual Studio expanderar du noden för ditt lagrings konto, högerklickar på **blobbar**och väljer sedan **skapa BLOB-behållare**.
+   a. I **Server Explorer** i Visual Studio expanderar du noden för ditt lagrings konto, högerklickar på **blobbar** och väljer sedan **skapa BLOB-behållare**.
 
    b. I dialog rutan **skapa BLOB-behållare** anger du *container* som behållar namn och klickar sedan på **OK**.
 
-1. Ladda upp *program.cs* -filen till BLOB-behållaren. (Filen används här som ett exempel. du kan ladda upp en textfil och skapa ett Queue-meddelande med filens namn.)
+1. Ladda upp filen *program. cs* till BLOB-behållaren. (Filen används här som ett exempel. du kan ladda upp en textfil och skapa ett Queue-meddelande med filens namn.)
 
-   a. I **Server Explorer**dubbelklickar du på noden för den behållare som du skapade.
+   a. I **Server Explorer** dubbelklickar du på noden för den behållare som du skapade.
 
    b. I fönstret **behållare** väljer du knappen **överför** .
 
    ![Knappen BLOB-uppladdning](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
-   c. Leta upp och välj *program.cs*och välj sedan **OK**.
+   c. Leta upp och välj *program. cs* och välj sedan **OK**.
 
-1. Skapa ett Queue-meddelande i kön som du skapade tidigare, med *program.cs* som meddelande text.
+1. Skapa ett Queue-meddelande i kön som du skapade tidigare, med *programmet. cs* som meddelande text.
 
-   ![Program.cs för köa meddelande](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
+   ![Köa meddelande program. CS](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
 1. Kör projektet lokalt.
 
@@ -532,11 +532,11 @@ Utgående bindningar fören klar kod som skriver data. Det här exemplet ändrar
    }
    ```
 
-1. Skapa ett annat Queue-meddelande med *program.cs* som meddelande text.
+1. Skapa ett annat Queue-meddelande med *program. cs* som meddelande text.
 
 1. Kör projektet lokalt.
 
-   Queue-meddelandet utlöser funktionen, som sedan läser bloben, loggar dess längd och skapar en ny blob. Konsolens utdata är samma, men när du går till fönstret BLOB container och väljer **Uppdatera**visas en ny BLOB med namnet *copy-program.cs.*
+   Queue-meddelandet utlöser funktionen, som sedan läser bloben, loggar dess längd och skapar en ny blob. Konsolens utdata är samma, men när du går till fönstret BLOB container och väljer **Uppdatera** visas en ny BLOB med namnet *copy-program. cs.*
 
 ## <a name="republish-the-updates-to-azure"></a>Publicera uppdateringarna på Azure igen
 

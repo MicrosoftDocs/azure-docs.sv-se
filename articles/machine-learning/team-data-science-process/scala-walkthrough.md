@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321380"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Datavetenskap med Scala och Spark på Azure
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | lutad |
 | --- | --- | --- | --- |
-|        13,5 |1,0 |2.9 |1,0 |
-|        16,0 |2.0 |3.4 |1,0 |
-|        10.5 |2.0 |1,0 |1,0 |
+|        13,5 |1.0 |2.9 |1.0 |
+|        16,0 |2.0 |3.4 |1.0 |
+|        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Data utforskning och visualisering
 När du hämtar data till Spark är nästa steg i data vetenskaps processen att få en djupare förståelse för data genom utforskning och visualisering. I det här avsnittet undersöker du taxi-data med hjälp av SQL-frågor. Importera sedan resultaten till en data ram för att rita upp målvärdena och potentiella funktioner för visuell granskning med hjälp av funktionen för automatisk visualiserings Jupyter.
@@ -300,7 +300,7 @@ sqlResults
 
  Spark-kärnan visualiserar automatiskt utdata från SQL-frågor (HiveQL) när du har kört koden. Du kan välja mellan flera olika typer av visualiseringar:
 
-* Tabeller
+* Tabell
 * Cirkel
 * Linje
 * Område
@@ -922,7 +922,7 @@ I det här avsnittet ska du använda Machine Learning-verktyg som utvecklare oft
 * Optimera modellen med hjälp av Cross-Validation och rensning av Hyper-parameter med Spark ML CrossValidator-funktion (binära klassificering)
 * Optimera modellen med hjälp av anpassad kod för kors validering och parameter rensning för att använda valfri maskin inlärnings funktion och parameter uppsättning (linjär regression)
 
-**Kors validering** är en teknik som utvärderar hur väl en modell som är utbildad på en känd uppsättning data generaliseras för att förutsäga funktionerna i data uppsättningar som inte har tränats. Den allmänna idén bakom den här metoden är att en modell har tränats på en data uppsättning kända data och att dess noggrannhet testas mot en oberoende data uppsättning. En vanlig implementering är att dela upp en data uppsättning i *k* -vikning och sedan träna modellen i en Round-Robin på alla utom en av vikningarna.
+**Kors validering** är en teknik som utvärderar hur väl en modell som är utbildad på en känd uppsättning data generaliseras för att förutsäga funktionerna i data uppsättningar som inte har tränats. Den allmänna idén bakom den här metoden är att en modell har tränats på en data uppsättning kända data och att dess noggrannhet testas mot en oberoende data uppsättning. En vanlig implementering är att dela upp en data uppsättning i *k*-vikning och sedan träna modellen i en Round-Robin på alla utom en av vikningarna.
 
 **Optimering av Hyper-parameter** är ett problem med att välja en uppsättning Hyper-Parameters för en Learning-algoritm, vanligt vis med målet att optimera ett mått på algoritmens prestanda på en oberoende data uppsättning. En Hyper-parameter är ett värde som du måste ange utanför modell inlärnings proceduren. Antaganden om Hyper-parameter-värden kan påverka modellens flexibilitet och noggrannhet. Besluts träd har Hyper-Parameters, till exempel, till exempel det önskade djupet och antalet löv i trädet. Du måste ange en straff period för en felklassificering för en support vektor dator (SVM).
 

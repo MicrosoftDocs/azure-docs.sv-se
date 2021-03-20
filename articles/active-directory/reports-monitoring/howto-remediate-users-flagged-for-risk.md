@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92308948"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Åtgärda användare som flaggats för risk i Azure Active Directory-portalen
@@ -51,7 +51,7 @@ För att få åtkomst till de användare som har **flaggats för risk** rapporte
 1.  I navigerings menyn på vänster sida väljer du **administrations Center**. 
 2.  Välj **Azure AD**.
 3.  Logga in på **Azure Active Directory-administratörcentret**.
-4.  Om en banderoll visas överst på sidan som visar en **titt på den nya portalen**väljer du länken.
+4.  Om en banderoll visas överst på sidan som visar en **titt på den nya portalen** väljer du länken.
 4.  I navigerings menyn på vänster sida väljer du **Azure Active Directory**. 
 5.  I navigerings fönstret väljer **du användare som har flaggats för risk** i avsnittet **säkerhet** .
 
@@ -91,5 +91,5 @@ Dessutom bör du:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Identitetsskydd för Azure Active Directory](../identity-protection/overview-identity-protection.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 * [Användare som har flaggats för risk](../identity-protection/overview-identity-protection.md)

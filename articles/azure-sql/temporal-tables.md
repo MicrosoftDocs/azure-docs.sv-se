@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: ea037d12417c8fad9d80b77df69285ed2c8df31b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618666"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Komma igång med temporala tabeller i Azure SQL Database och Azure SQL-hanterad instans
@@ -27,7 +27,7 @@ Temporala tabeller är en programmerings funktion i Azure SQL Database och Azure
 
 Den här artikeln beskriver hur du använder temporala tabeller i ett program scenario. Anta att du vill spåra användar aktiviteter på en ny webbplats som har utvecklats från början eller på en befintlig webbplats som du vill utöka med användar aktivitets analys. I det här förenklade exemplet förutsätter vi att antalet besökta webb sidor under en tids period är en indikator som måste fångas och övervakas i webbplats databasen som finns på Azure SQL Database eller Azure SQL-hanterad instans. Målet med den historiska analysen av användar aktivitet är att hämta indata till omdesignering av webbplatser och ge besökarna bättre upplevelse.
 
-Databas modellen för det här scenariot är mycket enkelt-användares aktivitets mått representeras av ett enda heltals fält, **PageVisited**och samlas in tillsammans med grundläggande information om användar profilen. För tidsbaserad analys skulle du dessutom ha en serie rader för varje användare, där varje rad representerar antalet sidor som en viss användare besökt inom en viss tids period.
+Databas modellen för det här scenariot är mycket enkelt-användares aktivitets mått representeras av ett enda heltals fält, **PageVisited** och samlas in tillsammans med grundläggande information om användar profilen. För tidsbaserad analys skulle du dessutom ha en serie rader för varje användare, där varje rad representerar antalet sidor som en viss användare besökt inom en viss tids period.
 
 ![Schema](./media/temporal-tables/AzureTemporal1.png)
 

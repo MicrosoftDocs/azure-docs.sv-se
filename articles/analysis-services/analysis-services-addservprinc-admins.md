@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100736"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Lägg till ett huvud namn för tjänsten i Server administratörs rollen 
@@ -33,12 +33,12 @@ Innan du slutför den här uppgiften måste du ha ett huvud namn för tjänsten 
 Du kan konfigurera Server administratörer med SQL Server Management Studio (SSMS). För att slutföra den här uppgiften måste du ha [Server administratörs](analysis-services-server-admins.md) behörighet på Azure as Server. 
 
 1. I SSMS ansluter du till din Azure AS-Server.
-2. I **Server egenskaper**  >  **säkerhet** klickar du på **Lägg till** .
-3. I **Välj en användare eller grupp** söker du efter din registrerade app efter namn, väljer och klickar sedan på **Lägg till** .
+2. I **Server egenskaper**  >  **säkerhet** klickar du på **Lägg till**.
+3. I **Välj en användare eller grupp** söker du efter din registrerade app efter namn, väljer och klickar sedan på **Lägg till**.
 
     ![Sök efter tjänstens huvud konto](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Kontrol lera konto-ID för tjänstens huvud namn och klicka sedan på **OK** .
+4. Kontrol lera konto-ID för tjänstens huvud namn och klicka sedan på **OK**.
     
     ![Skärm bild som visar konto-ID för tjänstens huvud namn och markerar knappen OK.](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 

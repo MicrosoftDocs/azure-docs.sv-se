@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: bd7d6ae1af85bd483c96c8425c55c3c92a1b8ec2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Självstudie: Azure Active Directory integrering med Skilljar
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Skilljar i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Skilljar** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Skilljar** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -125,7 +125,7 @@ Utför följande steg för att konfigurera enkel inloggning med Skilljar i Azure
 
 ### <a name="configure-skilljar-single-sign-on"></a>Konfigurera Skilljar Single Sign-On
 
-Om du vill konfigurera enkel inloggning på **Skilljar** sida måste du skicka den hämtade XML- **koden för federationsmetadata**och **namn identifierare format Value-urn: Oasis: namn: TC: SAML: 1.1: NameID-format: EmailAddress** till [Skilljar support team](https://support.skilljar.com/hc/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+Om du vill konfigurera enkel inloggning på **Skilljar** sida måste du skicka den hämtade XML- **koden för federationsmetadata** och **namn identifierare format Value-urn: Oasis: namn: TC: SAML: 1.1: NameID-format: EmailAddress** till [Skilljar support team](https://support.skilljar.com/hc/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -156,7 +156,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Skilljar.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Skilljar**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Skilljar**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
