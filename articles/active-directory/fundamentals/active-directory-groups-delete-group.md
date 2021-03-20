@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371825"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Ta bort en grupp med Azure Active Directory
@@ -32,7 +32,7 @@ Du kan ta bort en Azure Active Directory (Azure AD) grupp av valfritt antal orsa
 ## <a name="to-delete-a-group"></a>Ta bort en grupp
 1. Logga in på [Azure-portalen](https://portal.azure.com) med ett Globalt administratörskonto för katalogen.
 
-2. Välj **Azure Active Directory**och välj sedan **grupper**.
+2. Välj **Azure Active Directory** och välj sedan **grupper**.
 
 3. Från sidan **grupper – alla grupper** söker du efter och väljer den grupp som du vill ta bort. I de här stegen använder vi **MDM-princip – öst**.
 

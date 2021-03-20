@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Självstudie: Azure Active Directory integrering med Mindflash
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Mindflash i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Mindflash** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Mindflash** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Mindflash.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Mindflash**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Mindflash**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -189,7 +189,7 @@ För att Azure AD-användare ska kunna logga in på Mindflash måste de tillhand
    
     ![Hantera användare](./media/mindflash-tutorial/ic787140.png "Hantera användare")
 
-1. Klicka på **Lägg till användare**och klicka sedan på **ny**.
+1. Klicka på **Lägg till användare** och klicka sedan på **ny**.
 
 1. I avsnittet **Lägg till nya användare** utför du följande steg för ett giltigt Azure AD-konto som du vill etablera:
    

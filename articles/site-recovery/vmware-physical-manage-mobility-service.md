@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530173"
 ---
 # <a name="manage-the-mobility-agent"></a>Hantera mobilitetsagenten 
@@ -27,12 +27,12 @@ Du konfigurerar mobilitets agenten på servern när du använder Azure Site Reco
 
 1. Innan du börjar kontrollerar du att konfigurations servern, skalbara process servrar och alla huvud mål servrar som ingår i distributionen uppdateras innan du uppdaterar mobilitets tjänsten på skyddade datorer.
     1. Från och med 9,36-versionen, för SUSE Linux Enterprise Server 11 SP3, RHEL 5, CentOS 5, Debian 7 Se till att det senaste installations programmet är [tillgängligt på konfigurations servern och den skalbara processervern](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
-1. Öppna valvet > **replikerade objekt**i portalen.
+1. Öppna valvet > **replikerade objekt** i portalen.
 1. Om konfigurations servern är den senaste versionen visas ett meddelande som läser "det går inte att uppdatera den nya Site Recovery-agenten. Klicka om du vill installera. "
 
      ![Fönstret replikerade objekt](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Klicka på meddelandet och i **agent uppdatering**väljer du de datorer som du vill uppgradera mobilitets tjänsten till. Klicka sedan på **OK**.
+4. Klicka på meddelandet och i **agent uppdatering** väljer du de datorer som du vill uppgradera mobilitets tjänsten till. Klicka sedan på **OK**.
 
      ![Lista över replikerade objekt för virtuella datorer](./media/vmware-azure-install-mobility-service/update-okpng.png)
 

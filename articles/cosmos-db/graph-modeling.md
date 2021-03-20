@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
 ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93357053"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Diagram data modellering för Azure Cosmos DB Gremlin-API
@@ -36,7 +36,7 @@ En diagram databas lösning kan tillämpas optimalt om entiteterna och relatione
 * Det finns **många-till-många-relationer** mellan entiteter.
 * Det finns **Skriv-och Läs krav för både entiteter och relationer**. 
 
-Om ovanstående villkor är uppfyllt är det troligt att en diagram databas metod ger fördelar för att **fråga komplexitet** , **skalbarhet för data modeller** och **fråga om prestanda**.
+Om ovanstående villkor är uppfyllt är det troligt att en diagram databas metod ger fördelar för att **fråga komplexitet**, **skalbarhet för data modeller** och **fråga om prestanda**.
 
 Nästa steg är att avgöra om grafen ska användas för analys-eller transaktions syfte. Om grafen är avsedd att användas för tung beräkning och data bearbetnings arbets belastningar, skulle det vara värt att utforska [Cosmos DB Spark-anslutaren](./spark-connector.md) och användningen av [Graphx-biblioteket](https://spark.apache.org/graphx/). 
 
@@ -72,11 +72,11 @@ Det första steget för en diagram data modell är att mappa varje identifierad 
 
 En gemensam Pitfall är att mappa egenskaper för en enskild entitet som separata hörn. Tänk på exemplet nedan, där samma entitet representeras på två olika sätt:
 
-* **Hörnbaserade egenskaper** : i den här metoden använder entiteten tre separata hörn och två kanter för att beskriva dess egenskaper. Även om den här metoden kan minska redundansen ökar modell komplexiteten. En ökning av modell komplexiteten kan leda till ökad latens, fråga om komplexitet och beräknings kostnader. Den här modellen kan också presentera utmaningar vid partitionering.
+* **Hörnbaserade egenskaper**: i den här metoden använder entiteten tre separata hörn och två kanter för att beskriva dess egenskaper. Även om den här metoden kan minska redundansen ökar modell komplexiteten. En ökning av modell komplexiteten kan leda till ökad latens, fråga om komplexitet och beräknings kostnader. Den här modellen kan också presentera utmaningar vid partitionering.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Enhets modell med hörn för egenskaper." border="false":::
 
-* **Egenskap – inbäddade hörn** : den här metoden utnyttjar nyckel värde par listan för att representera alla egenskaper för entiteten i ett hörn. Den här metoden ger minskad modell komplexitet, vilket leder till enklare frågor och kostnads effektiva bläddringskontroll.
+* **Egenskap – inbäddade hörn**: den här metoden utnyttjar nyckel värde par listan för att representera alla egenskaper för entiteten i ett hörn. Den här metoden ger minskad modell komplexitet, vilket leder till enklare frågor och kostnads effektiva bläddringskontroll.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Diagram visar Luis-hörnen från föregående diagram med i/d, etikett och egenskaper." border="false":::
 

@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98131533"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Hantera variabler i Azure Automation
@@ -65,7 +65,7 @@ Cmdletarna i följande tabell skapar och hanterar Automation-variabler med Power
 
 De interna cmdletarna i följande tabell används för att få åtkomst till variabler i dina runbooks och DSC-konfigurationer. Dessa cmdletar levereras med den globala modulen `Orchestrator.AssetManagement.Cmdlets` . Mer information finns i [interna cmdletar](modules.md#internal-cmdlets).
 
-| Intern cmdlet | Description |
+| Intern cmdlet | Beskrivning |
 |:---|:---|
 |`Get-AutomationVariable`|Hämtar värdet för en befintlig variabel.|
 |`Set-AutomationVariable`|Ställer in värdet för en befintlig variabel.|
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Funktionerna i följande tabell används för att få åtkomst till variabler i en python 2-eller 3-Runbook. Python 3-Runbooks är för närvarande en för hands version.
 
-|Python-funktioner|Description|
+|Python-funktioner|Beskrivning|
 |:---|:---|
 |`automationassets.get_automation_variable`|Hämtar värdet för en befintlig variabel. |
 |`automationassets.set_automation_variable`|Ställer in värdet för en befintlig variabel. |

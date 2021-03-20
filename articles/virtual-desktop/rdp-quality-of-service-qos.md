@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94639427"
 ---
 # <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Implementera tjänst kvalitet (QoS) för Windows Virtual Desktop (för hands version)
@@ -87,7 +87,7 @@ Du kan använda principbaserad tjänst kvalitet (QoS) i grupprincip för att ang
 
 Om du vill skapa en QoS-princip för domänanslutna sessionsbaserade värdar loggar du först in på en dator där grupprincip hantering har installerats. Öppna grupprincip hantering (Välj Start, peka på administrations verktyg och välj sedan grupprincip hantering) och utför sedan följande steg:
 
-1. Leta upp den behållare där den nya principen ska skapas i grupprincip hantering. Om till exempel alla din session är värd för datorer i en ORGANISATIONSENHET med namnet **"sessioner"** , ska den nya principen skapas i sessionen är värd för organisationsenheten.
+1. Leta upp den behållare där den nya principen ska skapas i grupprincip hantering. Om till exempel alla din session är värd för datorer i en ORGANISATIONSENHET med namnet **"sessioner"**, ska den nya principen skapas i sessionen är värd för organisationsenheten.
 
 2. Högerklicka på lämplig behållare och välj sedan **skapa ett grup princip objekt i den här domänen och länka det här**.
 
@@ -95,7 +95,7 @@ Om du vill skapa en QoS-princip för domänanslutna sessionsbaserade värdar log
 
 4. Högerklicka på den nyligen skapade principen och välj sedan **Redigera**.
 
-5. I Redigeraren Grupprinciphantering expanderar du **dator konfiguration** , expanderar **Windows-inställningar** , högerklickar på **Principbaserad QoS** och väljer sedan **Skapa ny princip**.
+5. I Redigeraren Grupprinciphantering expanderar du **dator konfiguration**, expanderar **Windows-inställningar**, högerklickar på **Principbaserad QoS** och väljer sedan **Skapa ny princip**.
 
 6. I dialog rutan **Principbaserad QoS** anger du ett namn för den nya principen i rutan **namn** på sidan öppna. Välj **Ange DSCP-värde** och Ställ in värdet på **46**. Lämna **ange utgående begränsnings avgift** omarkerad och välj sedan **Nästa**.
 
@@ -109,7 +109,7 @@ Om du vill skapa en QoS-princip för domänanslutna sessionsbaserade värdar log
 
 De nya principerna som du har skapat börjar inte gälla förrän grupprincip har uppdaterats på datorns värddatorer för sessionen. Även om grupprincip uppdateras regelbundet, kan du framtvinga en omedelbar uppdatering genom att följa dessa steg:
 
-1. Öppna en kommando tolk som administratör ( *Kör som administratör* ) på varje värd för sessionen som du vill uppdatera Grupprincip.
+1. Öppna en kommando tolk som administratör (*Kör som administratör*) på varje värd för sessionen som du vill uppdatera Grupprincip.
 
 1. I kommando tolken anger du
 

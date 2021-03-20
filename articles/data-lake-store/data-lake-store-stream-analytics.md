@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91576225"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Strömma data från Azure Storage Blob till Azure Data Lake Storage Gen1 med Azure Stream Analytics
@@ -30,7 +30,7 @@ Du börjar med att skapa ett Stream Analytics jobb som innehåller en indatakäl
 
 1. Logga in på [Azure Portal](https://portal.azure.com).
 
-2. Klicka på **Stream Analytics jobb**i den vänstra rutan och klicka sedan på **Lägg till**.
+2. Klicka på **Stream Analytics jobb** i den vänstra rutan och klicka sedan på **Lägg till**.
 
     ![Skapa ett Stream Analytics jobb](./media/data-lake-store-stream-analytics/create.job.png "Skapa ett Stream Analytics-jobb")
 
@@ -49,21 +49,21 @@ Du börjar med att skapa ett Stream Analytics jobb som innehåller en indatakäl
     ![Skärm bild av bladet Blob Storage – nytt indata.](./media/data-lake-store-stream-analytics/create.input.2.png "Lägg till inmatade jobb")
 
    * Ange ett unikt namn för indatamängden för **inmatat alias**.
-   * I **typ av källa**väljer du **data ström**.
-   * I **källa**väljer du **Blob Storage**.
-   * För **prenumeration**väljer du **Använd Blob Storage från aktuell prenumeration**.
-   * För **lagrings konto**väljer du det lagrings konto som du skapade som en del av förutsättningarna. 
-   * För **behållare**väljer du den behållare som du skapade i det valda lagrings kontot.
-   * I **format för händelse serialisering**väljer du **CSV**.
-   * För **avgränsare**väljer du **flik**.
-   * För **kodning**väljer du **UTF-8**.
+   * I **typ av källa** väljer du **data ström**.
+   * I **källa** väljer du **Blob Storage**.
+   * För **prenumeration** väljer du **Använd Blob Storage från aktuell prenumeration**.
+   * För **lagrings konto** väljer du det lagrings konto som du skapade som en del av förutsättningarna. 
+   * För **behållare** väljer du den behållare som du skapade i det valda lagrings kontot.
+   * I **format för händelse serialisering** väljer du **CSV**.
+   * För **avgränsare** väljer du **flik**.
+   * För **kodning** väljer du **UTF-8**.
 
      Klicka på **Skapa**. Portalen lägger nu till inmatade och testar anslutningen till den.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Skapa en Data Lake Storage Gen1 utdata för jobbet
 
-1. Öppna sidan för Stream Analytics jobb, klicka på fliken **utdata** , klicka på **Lägg till**och välj **data Lake Storage gen1**.
+1. Öppna sidan för Stream Analytics jobb, klicka på fliken **utdata** , klicka på **Lägg till** och välj **data Lake Storage gen1**.
 
     ![Skärm bild av bladet Stream Analytics jobb med alternativet utdata, Lägg till alternativ och Data Lake Storage gen 1-alternativ som kallas.](./media/data-lake-store-stream-analytics/create.output.1.png "Lägga till utdata i jobbet")
 
@@ -78,13 +78,13 @@ Du börjar med att skapa ett Stream Analytics jobb som innehåller en indatakäl
 
     ![Skärm bild av bladet Data Lake Storage gen 1-nya utdata.](./media/data-lake-store-stream-analytics/create.output.3.png "Lägga till utdata i jobbet")
 
-   * För **konto namn**väljer du det data Lake Storage gen1 konto som du redan har skapat där du vill att jobbets utdata ska skickas till.
-   * För **mönster för sökvägar**anger du en fil Sök väg som används för att skriva filer inom det angivna data Lake Storage gen1 kontot.
-   * Om du använder ett datum-token i prefixets sökväg i **datum format**kan du välja det datum format som filerna är ordnade i.
+   * För **konto namn** väljer du det data Lake Storage gen1 konto som du redan har skapat där du vill att jobbets utdata ska skickas till.
+   * För **mönster för sökvägar** anger du en fil Sök väg som används för att skriva filer inom det angivna data Lake Storage gen1 kontot.
+   * Om du använder ett datum-token i prefixets sökväg i **datum format** kan du välja det datum format som filerna är ordnade i.
    * Om du har använt en tidstoken i prefixets sökväg anger du tids formatet som dina filer är ordnade i **tids format**.
-   * I **format för händelse serialisering**väljer du **CSV**.
-   * För **avgränsare**väljer du **flik**.
-   * För **kodning**väljer du **UTF-8**.
+   * I **format för händelse serialisering** väljer du **CSV**.
+   * För **avgränsare** väljer du **flik**.
+   * För **kodning** väljer du **UTF-8**.
     
      Klicka på **Skapa**. Portalen lägger nu till utdata och testar anslutningen till den.
     
@@ -94,7 +94,7 @@ Du börjar med att skapa ett Stream Analytics jobb som innehåller en indatakäl
 
     ![Kör fråga](./media/data-lake-store-stream-analytics/run.query.png "Kör frågan")
 
-2. Klicka på **Spara** längst upp på skärmen och klicka sedan på **Start**på fliken **Översikt** . I dialog rutan väljer du **anpassad tid**och anger sedan aktuellt datum och tid.
+2. Klicka på **Spara** längst upp på skärmen och klicka sedan på **Start** på fliken **Översikt** . I dialog rutan väljer du **anpassad tid** och anger sedan aktuellt datum och tid.
 
     ![Ange jobb tid](./media/data-lake-store-stream-analytics/run.query.2.png "Ange jobb tid")
 

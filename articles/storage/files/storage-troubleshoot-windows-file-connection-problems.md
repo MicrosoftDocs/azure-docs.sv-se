@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878518"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Felsöka Azure Files problem i Windows (SMB)
@@ -210,7 +210,7 @@ Använd PowerShell-cmdleten [Close-AzStorageFileHandle](/powershell/module/az.st
 > De Get-AzStorageFileHandle-och Close-AzStorageFileHandle-cmdletarna ingår i AZ PowerShell-modul version 2,4 eller senare. Information om hur du installerar den senaste AZ PowerShell-modulen finns i [installera Azure PowerShell-modulen](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>Orsak 2
-Ett fil lån förhindrar att en fil ändras eller tas bort. Du kan kontrol lera om en fil har ett fil lån med följande PowerShell, ersätta `<resource-group>` , `<storage-account>` , `<file-share>` och `<path-to-file>` med lämpliga värden för din miljö:
+Ett fillån förhindrar att en fil ändras eller tas bort. Du kan kontrol lera om en fil har ett fil lån med följande PowerShell, ersätta `<resource-group>` , `<storage-account>` , `<file-share>` och `<path-to-file>` med lämpliga värden för din miljö:
 
 ```PowerShell
 # Set variables 
@@ -236,7 +236,7 @@ $fileClient = $file.ShareFileClient
 $fileClient.GetProperties().Value
 ```
 
-Om en fil har ett lån måste det returnerade objektet innehålla följande egenskaper:
+Om en fil har ett lån, måste det returnerade objektet innehålla följande egenskaper:
 
 ```Output
 LeaseDuration         : Infinite
@@ -245,7 +245,7 @@ LeaseStatus           : Locked
 ```
 
 ### <a name="solution-2"></a>Lösning 2
-Om du vill ta bort ett lån från en fil kan du frigöra lånet eller avbryta lånet. Om du vill frigöra lånet behöver du LeaseId för lånet som du anger när du skapar lånet. Du behöver inte LeaseId för att avbryta lånet.
+Om du vill ta bort ett lån från en fil kan du frigöra lånet eller avbryta lånet. Om du vill frigöra lånet behöver du lånets LeaseId, vilket du anger när du skapar lånet. Du behöver inte något LeaseId för att avbryta lånet.
 
 I följande exempel visas hur du bryter lånet för filen som anges i orsak 2 (det här exemplet fortsätter med PowerShell-variablerna från orsak 2):
 

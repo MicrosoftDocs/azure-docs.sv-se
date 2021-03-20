@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.openlocfilehash: 2080139732d71aa5df9a9d4ad13fcc4545128dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541925"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Lägg till fördefinierade modeller för vanliga användnings scenarier
@@ -57,7 +57,7 @@ LUIS innehåller en uppsättning förbyggda modeller för att snabbt lägga till
     > [!div class="mx-imgBorder"]
     > ![Dialog rutan Lägg till fördefinierad entitet](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. Välj **Done** (Klar). När entiteten har lagts till behöver du inte träna appen.
+1. Välj **Klar**. När entiteten har lagts till behöver du inte träna appen.
 
 ## <a name="add-a-prebuilt-domain-entity"></a>Lägg till en fördefinierad domän entitet
 1. Logga in på [Luis-portalen](https://www.luis.ai)och välj din **prenumerations** -och **redigerings resurs** för att se vilka appar som tilldelats den här redigerings resursen.
@@ -68,7 +68,7 @@ LUIS innehåller en uppsättning förbyggda modeller för att snabbt lägga till
 
 1. I dialog rutan **Lägg till fördefinierade domän modeller** väljer du den fördefinierade domänen entitet.
 
-1. Välj **Done** (Klar). När entiteten har lagts till behöver du inte träna appen.
+1. Välj **Klar**. När entiteten har lagts till behöver du inte träna appen.
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Publicera för att Visa fördefinierad modell från förutsägelse slut punkt
 

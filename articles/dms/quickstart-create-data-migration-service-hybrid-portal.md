@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331812"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Snabb start: skapa en instans i hybrid läge med Azure Portal & Azure Database Migration Service
@@ -55,7 +55,7 @@ Registrera Microsoft. data migration-resurs leverantören innan du skapar din f�
 
     ![Sök efter resurs leverantör](media/quickstart-create-data-migration-service-hybrid-portal/dms-portal-search-resource-provider.png)
 
-2. Sök efter migrering och välj sedan **Registrera**till höger om **Microsoft. data migration**.
+2. Sök efter migrering och välj sedan **Registrera** till höger om **Microsoft. data migration**.
 
     ![Registrera resursprovider](media/quickstart-create-data-migration-service-hybrid-portal/dms-portal-register-resource-provider.png)
 
@@ -63,7 +63,7 @@ Registrera Microsoft. data migration-resurs leverantören innan du skapar din f�
 
 1. Välj +**skapa en resurs** för att skapa en instans av Azure Database migration service.
 
-2. Sök på Marketplace efter "migrering", Välj **Azure Database migration service**och välj sedan **skapa**på skärmen **Azure Database migration service** .
+2. Sök på Marketplace efter "migrering", Välj **Azure Database migration service** och välj sedan **skapa** på skärmen **Azure Database migration service** .
 
 3. På skärmen **Skapa migreringstjänst**:
 
@@ -71,7 +71,7 @@ Registrera Microsoft. data migration-resurs leverantören innan du skapar din f�
     - Välj den Azure-**prenumeration** där du vill skapa instansen.
     - Välj en befintlig **resurs grupp** eller skapa en ny.
     - Välj den **plats** som ligger närmast din käll- eller målserver.
-    - För **tjänst läge**väljer du **hybrid (för hands version)**.
+    - För **tjänst läge** väljer du **hybrid (för hands version)**.
 
          ![Skapa migration service – grundläggande information](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
@@ -85,7 +85,7 @@ Registrera Microsoft. data migration-resurs leverantören innan du skapar din f�
 
     ![Azure Database Migration Service hybrid läges instans](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode.png)
 
-6. När tjänsten har skapats väljer du **Egenskaper**och kopierar sedan värdet som visas i rutan **resurs-ID** , som du kommer att använda för att installera Azure Database migration service hybrid Worker.
+6. När tjänsten har skapats väljer du **Egenskaper** och kopierar sedan värdet som visas i rutan **resurs-ID** , som du kommer att använda för att installera Azure Database migration service hybrid Worker.
 
     ![Egenskaper för Azure Database Migration Service hybrid läge](media/quickstart-create-data-migration-service-hybrid-portal/dms-copy-resource-id.png)
 
@@ -93,7 +93,7 @@ Registrera Microsoft. data migration-resurs leverantören innan du skapar din f�
 
 Du måste skapa ett Azure App registrerings-ID som den lokala hybrid Worker kan använda för att kommunicera med Azure Database Migration Service i molnet.
 
-1. I Azure Portal väljer du **Azure Active Directory**, väljer **Appregistreringar**och väljer sedan **ny registrering**.
+1. I Azure Portal väljer du **Azure Active Directory**, väljer **Appregistreringar** och väljer sedan **ny registrering**.
 2. Ange ett namn för programmet och välj den typ av konton som du vill ge stöd för att ange vem som kan använda programmet under **typer av konto typer som stöds**.
 
     ![Register program för Azure Database Migration Service hybrid läge](media/quickstart-create-data-migration-service-hybrid-portal/dms-register-application.png)
@@ -106,7 +106,7 @@ Du måste skapa ett Azure App registrerings-ID som den lokala hybrid Worker kan 
 
     ![Azure Database Migration Service hybrid läge tilldela deltagar rollen](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-assign-contributor.png)
 
-6. Välj **deltagare** som roll, tilldela åtkomst till **Azure AD-användare eller tjänstens huvud**namn och välj sedan appens id-namn.
+6. Välj **deltagare** som roll, tilldela åtkomst till **Azure AD-användare eller tjänstens huvud** namn och välj sedan appens id-namn.
 
     ![Azure Database Migration Service hybrid läge tilldela deltagar roll information](media/quickstart-create-data-migration-service-hybrid-portal/dms-add-role-assignment.png)
 
@@ -116,7 +116,7 @@ Du måste skapa ett Azure App registrerings-ID som den lokala hybrid Worker kan 
 
 1. I Azure Portal navigerar du till din instans av Azure Database Migration Service.
 
-2. Under **Inställningar**väljer du **hybrid**och väljer sedan **installations programmet Ladda** ned för att ladda ned hybrid Worker.
+2. Under **Inställningar** väljer du **hybrid** och väljer sedan **installations programmet Ladda** ned för att ladda ned hybrid Worker.
 
     ![Azure Database Migration Service hybrid Worker-hämtning](media/quickstart-create-data-migration-service-hybrid-portal/dms-installer-download.png)
 
@@ -125,7 +125,7 @@ Du måste skapa ett Azure App registrerings-ID som den lokala hybrid Worker kan 
     > [!IMPORTANT]
     > Den Azure Database Migration Service hybrid installations programmet kräver .NET 4.7.2 eller senare. Du hittar de senaste versionerna av .NET på sidan [hämta .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
 
-4. I mappen installera, leta upp och öppna filen **dmsSettings.jspå** , ange **ApplicationId** och **resourceId**och spara sedan filen.
+4. I mappen installera, leta upp och öppna filen **dmsSettings.jspå** , ange **ApplicationId** och **resourceId** och spara sedan filen.
 
     ![Azure Database Migration Service hybrid Worker-inställningar](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 
@@ -139,7 +139,7 @@ Du måste skapa ett Azure App registrerings-ID som den lokala hybrid Worker kan 
 
     ![Azure Database Migration Service hybrid Worker-certifikat](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. I Azure Portal navigerar du till app-ID: t under **Hantera**, väljer **certifikat & hemligheter**och väljer sedan **Ladda upp certifikat** för att välja det offentliga certifikat som du skapade.
+6. I Azure Portal navigerar du till app-ID: t under **Hantera**, väljer **certifikat & hemligheter** och väljer sedan **Ladda upp certifikat** för att välja det offentliga certifikat som du skapade.
 
     ![Azure Database Migration Service hybrid Worker Certificate upload](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

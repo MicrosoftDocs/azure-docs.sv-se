@@ -4,10 +4,10 @@ description: Detta Azure Policy mönster innehåller ett exempel på hur du dist
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649987"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy mönster: distribuera resurser
@@ -16,7 +16,7 @@ Med [deployIfNotExists](../concepts/effects.md#deployifnotexists) -effekterna ka
 
 ## <a name="sample-policy-definition"></a>Exempel på princip definition
 
-Den här princip definitionen använder **fält** operatorn för att utvärdera `type` resursen som skapats eller uppdaterats. När resursen är en _Microsoft. Network/virtualNetworks_söker principen efter en nätverks övervakare på platsen för den nya eller uppdaterade resursen. Om en matchande nätverks bevakare inte finns distribueras ARM-mallen för att skapa den resurs som saknas.
+Den här princip definitionen använder **fält** operatorn för att utvärdera `type` resursen som skapats eller uppdaterats. När resursen är en _Microsoft. Network/virtualNetworks_ söker principen efter en nätverks övervakare på platsen för den nya eller uppdaterade resursen. Om en matchande nätverks bevakare inte finns distribueras ARM-mallen för att skapa den resurs som saknas.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 

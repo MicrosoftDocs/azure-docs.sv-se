@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91569404"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Konfigurera kvarhållning i Azure Time Series Insights gen1
@@ -28,7 +28,7 @@ Den här artikeln beskriver hur du konfigurerar **tiden för datakvarhållning**
 
 Varje Azure Time Series Insights miljö har en inställning för att konfigurera **data lagrings tid**. Värdet sträcker sig från 1 till 400 dagar. Data tas bort baserat på miljöns lagrings kapacitet eller varaktigheten för kvarhållning (1-400), beroende på vilket som kommer först.
 
-Varje Azure Time Series Insights miljö har en ytterligare **gräns för lagrings utrymme**som har överskridits. Den här inställningen styr ingångs-och rensnings beteende när den maximala kapaciteten för en miljö nås. Du kan välja mellan två beteenden:
+Varje Azure Time Series Insights miljö har en ytterligare **gräns för lagrings utrymme** som har överskridits. Den här inställningen styr ingångs-och rensnings beteende när den maximala kapaciteten för en miljö nås. Du kan välja mellan två beteenden:
 
 - **Rensa gamla data** (standard)
 - **Pausa ingress**

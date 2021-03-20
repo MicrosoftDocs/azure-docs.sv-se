@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93376091"
 ---
 #### <a name="to-create-a-manual-backup"></a>Så här skapar du en manuell säkerhetskopia
@@ -19,7 +19,7 @@ ms.locfileid: "93376091"
 
     ![Skapa en manuell säkerhetskopia](./media/storsimple-8000-create-manual-backup/createmanualbu1.png)
 
-3. Utför följande steg på bladet **Säkerhetskopiera nu** :
+3. Utför följande steg på bladet **Säkerhetskopiera nu**:
 
     1. Välj lämplig **Typ av ögonblicksbild** i listrutan: **Lokal ögonblicksbild** eller **Ögonblicksbild av molndata**. Välj lokal ögonblicksbild för snabbare säkerhetskopieringar eller återställningar, och ögonblicksbild av molndata för dataåterhämtning.
 

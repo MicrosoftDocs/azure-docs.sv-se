@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: sharrai
 ms.openlocfilehash: 5860928d71c0e7431190908d5df5d7496e8ffb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89426324"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Utfasning av Site Recovery data krypterings funktion
@@ -29,7 +29,7 @@ Observera att om du är en befintlig kund som använder den här funktionen, sku
 
 ## <a name="what-are-the-implications"></a>Vilka är följderna?
 
-Från och med den **30 April 2022**kommer alla virtuella datorer som fortfarande använder den inaktuella krypterings funktionen inte att kunna utföra redundans. 
+Från och med den **30 April 2022** kommer alla virtuella datorer som fortfarande använder den inaktuella krypterings funktionen inte att kunna utföra redundans. 
 
 ## <a name="required-action"></a>Nödvändig åtgärd
 Om du vill fortsätta med redundansväxlingen och replikeringar följer du stegen som beskrivs nedan:

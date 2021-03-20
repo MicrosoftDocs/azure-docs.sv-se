@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018230"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Använd en extern Redis-kompatibel cache i Azure API Management
@@ -52,7 +52,7 @@ Det här avsnittet beskriver hur du skapar en Azure Cache for Redis i Azure. Om 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"> </a> Distribuera Redis cache till Kubernetes
+## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"></a> Distribuera Redis cache till Kubernetes
 
 För cachelagring är lokala gatewayer exklusivt beroende av externa cacheminnen. För att cachelagring ska vara effektiva gateways och det cacheminne som de förlitar sig på måste ligga nära varandra för att minimera sökningen och lagra fördröjning. Att distribuera en Redis-cache till samma Kubernetes-kluster eller i ett separat kluster i närheten är de bästa alternativen. Följ den här [länken](https://github.com/kubernetes/examples/tree/master/guestbook) om du vill lära dig hur du distribuerar Redis cache till ett Kubernetes-kluster.
 

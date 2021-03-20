@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358464"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Skapa loopar som upprepar arbetsflödesåtgärder eller processmatriser i Azure Logic Apps
@@ -124,7 +124,7 @@ Om du arbetar i kodvyn för din Logi Kap par kan du definiera `Foreach` slingan 
 
 Som standard körs cykler i en "förgrunds" loop parallellt. Om du vill köra varje cykel sekventiellt ställer du in loopens **sekventiella** alternativ. "Förgrunds" slingor måste köras sekventiellt när du har kapslade slingor eller variabler inuti slingor där du förväntar sig förutsägbara resultat. 
 
-1. I loopens övre högra hörn väljer du **ellipser** ( **...** ) > **Inställningar**.
+1. I loopens övre högra hörn väljer du **ellipser** (**...**) > **Inställningar**.
 
    ![I "förgrunds"-loopen väljer du "..." > "Inställningar"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
@@ -234,7 +234,7 @@ Från och med 8:00 varje dag, ökar den här exempel Logic app en variabel tills
 
       | Egenskap | Värde | Beskrivning |
       | -------- | ----- | ----------- | 
-      | **Att** | *\<email-address\@domain>* | Mottagarens e-postadress. För testning använder du din egen e-postadress. | 
+      | **Till** | *\<email-address\@domain>* | Mottagarens e-postadress. För testning använder du din egen e-postadress. | 
       | **Ämne** | Det aktuella värdet för "Limit" är **begränsat** | Ange e-postmeddelandets ämne. I det här exemplet ska du se till att du inkluderar **Limit** -variabeln. | 
       | **Brödtext** | <*e-post – innehåll*> | Ange det e-postmeddelande innehåll som du vill skicka. I det här exemplet anger du vilken text du vill. | 
       |||| 
@@ -251,9 +251,9 @@ Från och med 8:00 varje dag, ökar den här exempel Logic app en variabel tills
 
 Loopen "tills" stoppar körningen baserat på dessa egenskaper, så se till att du ställer in värdena enligt följande:
 
-* **Count** : det här värdet är det högsta antalet slingor som körs innan loopen avslutas. För standard-och Max gränsen för antalet "till"-slingor som en Logic app-körning kan ha, se [samtidighets-, loop-och avbatchorders gränser](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Count**: det här värdet är det högsta antalet slingor som körs innan loopen avslutas. För standard-och Max gränsen för antalet "till"-slingor som en Logic app-körning kan ha, se [samtidighets-, loop-och avbatchorders gränser](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-* **Timeout** : det här värdet är den längsta tid som loopen körs innan den avslutas och anges i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601). För standardvärdet och Max gränsen för **timeout** -värdet, se [samtidighets-, loop-och debatch-gränser](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Timeout**: det här värdet är den längsta tid som loopen körs innan den avslutas och anges i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601). För standardvärdet och Max gränsen för **timeout** -värdet, se [samtidighets-, loop-och debatch-gränser](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
   Timeout-värdet utvärderas för varje loop-cykel. Om en åtgärd i slingan tar längre tid än tids gränsen, stoppas inte den aktuella cykeln. Nästa cykel startar dock inte eftersom gräns villkoret inte är uppfyllt.
 

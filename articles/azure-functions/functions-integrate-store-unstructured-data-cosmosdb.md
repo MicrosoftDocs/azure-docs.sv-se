@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91661167"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Lagra ostrukturerade data i Azure Functions och Azure Cosmos DB
@@ -36,17 +36,17 @@ Du måste ha ett Azure Cosmos DB-konto som använder SQL API innan du skapar utd
 
 1. I Azure Portal navigerar du till och väljer den Function-app som du skapade tidigare.
 
-1. Välj **Functions och välj sedan**funktionen HttpTrigger.
+1. Välj **Functions och välj sedan** funktionen HttpTrigger.
 
     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-select-http-function.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
 
 1. Välj **integrering** och **Lägg till utdata**.
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Lägg till en Azure Cosmos DB utgående bindning." border="true":::
 
 1. Använd inställningarna för att **skapa utdata** som anges i tabellen:
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Konfigurera Azure Cosmos DB utgående bindning." border="true":::
 
     | Inställning      | Föreslaget värde  | Beskrivning                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -132,29 +132,29 @@ Det här kodexemplet läser frågesträngarna i HTTP-begäran och tilldelar dem 
 
 ## <a name="test-the-function-and-database"></a>Testa funktionen och databasen
 
-1. Välj **test/kör**. Under **fråga**väljer du **+ Lägg till parameter** och lägger till följande parametrar i frågesträngen:
+1. Välj **Testa/kör**. Under **fråga** väljer du **+ Lägg till parameter** och lägger till följande parametrar i frågesträngen:
 
     + `name`
     + `task`
     + `duedate`
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="Testa funktionen." border="true":::
 
 
 1. Välj **Kör** och kontrol lera att en 200-status returneras.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Skärm bild som visar statusen för HTTP-svarskod 200 markerad när du har valt kör." border="true":::
 
 
 1. I Azure Portal söker du efter och väljer **Azure Cosmos DB**.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Sök efter tjänsten Cosmos DB." border="true":::
 
 1. Välj ditt Azure Cosmos DB konto och välj sedan  **datautforskaren**.
 
 1. Expandera **TaskCollection** -noderna, Välj det nya dokumentet och bekräfta att dokumentet innehåller dina frågesträngs värden, tillsammans med ytterligare metadata.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Välj http-funktionen i Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Verifiera sträng värden i dokumentet." border="true":::
 
 Du har lagt till en bindning till din HTTP-utlösare för att lagra ostrukturerade data i en Azure Cosmos DB.
 

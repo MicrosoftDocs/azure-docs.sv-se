@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
 ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180028"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Autentisera batch service-lösningar med Active Directory
@@ -110,7 +110,7 @@ Följ dessa steg i Azure-portalen:
 
 ### <a name="assign-azure-rbac-to-your-application"></a>Tilldela Azure RBAC till ditt program
 
-Om du vill autentisera med ett huvud namn för tjänsten måste du tilldela Azure RBAC till ditt program. Gör så här:
+Om du vill autentisera med ett huvud namn för tjänsten måste du tilldela Azure RBAC till ditt program. Följ de här stegen:
 
 1. I Azure Portal navigerar du till det batch-konto som används av ditt program.
 1. I avsnittet **Inställningar** i batch-kontot väljer du **Access Control (IAM)**.

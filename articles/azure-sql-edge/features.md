@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392035"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Funktioner som stöds i Azure SQL Edge 
@@ -74,7 +74,7 @@ I följande lista finns SQL Server 2019 på Linux-funktioner som inte stöds fö
 | &nbsp; | Automatisk krympning av databas. Egenskapen automatisk krympning för en databas kan anges med hjälp av `ALTER DATABASE <database_name> SET AUTO_SHRINK ON` kommandot, men ändringen har ingen påverkan. Den automatiska krympningen kommer inte att köras mot databasen. Användare kan fortfarande krympa databasfilerna med hjälp av DBCC-kommandon. |
 | &nbsp; | Databas ögonblicks bilder. |
 | &nbsp; | Stöd för beständigt minne. |
-| &nbsp; | Microsoft koordinator för distribuerad transaktion. |
+| &nbsp; | Microsoft Distributed Transaction Coordinator. |
 | &nbsp; | Styrning av resurs styrning och IO-resurser. |
 | &nbsp; | Buffertpooltillägget. |
 | &nbsp; | Distribuerad fråga med anslutningar från tredje part. |

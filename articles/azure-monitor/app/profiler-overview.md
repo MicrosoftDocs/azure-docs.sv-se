@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499400"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilera produktions program i Azure med Application Insights
@@ -30,9 +30,9 @@ Om du har aktiverat profiler men inte ser spår, se vår [fel söknings guide](p
 
 ## <a name="view-profiler-data"></a>Visa profiler-data
 
-För att profiler ska kunna överföra spår måste ditt program aktivt hantera förfrågningar. Om du gör ett experiment kan du generera förfrågningar till din webbapp genom att använda [Application Insights prestanda testning](/vsts/load-test/app-service-web-app-performance-test). Om du nyligen har aktiverat profiler kan du köra ett kort belastnings test. När belastnings testet körs väljer du knappen **profil nu** i fönstret Profiler [ **Inställningar** ](profiler-settings.md). När profiler körs slumpmässigt en gång per timme och under en varaktighet på två minuter. Om ditt program hanterar en stadig ström med begär Anden, laddar profileringen spår varje timme.
+För att profiler ska kunna överföra spår måste ditt program aktivt hantera förfrågningar. Om du gör ett experiment kan du generera förfrågningar till din webbapp genom att använda [Application Insights prestanda testning](/vsts/load-test/app-service-web-app-performance-test). Om du nyligen har aktiverat profiler kan du köra ett kort belastnings test. När belastnings testet körs väljer du knappen **profil nu** i fönstret Profiler [ **Inställningar**](profiler-settings.md). När profiler körs slumpmässigt en gång per timme och under en varaktighet på två minuter. Om ditt program hanterar en stadig ström med begär Anden, laddar profileringen spår varje timme.
 
-När programmet har tagit emot viss trafik och profileraren har tid att ladda upp spårningarna bör du ha spår att visa. Den här processen kan ta 5 till 10 minuter. Om du vill visa spårningar väljer du **vidta åtgärder**i fönstret **prestanda** och väljer sedan **spårnings** knappen för profiler.
+När programmet har tagit emot viss trafik och profileraren har tid att ladda upp spårningarna bör du ha spår att visa. Den här processen kan ta 5 till 10 minuter. Om du vill visa spårningar väljer du **vidta åtgärder** i fönstret **prestanda** och väljer sedan **spårnings** knappen för profiler.
 
 ![Förhands granskning av profiler i Application Insights prestanda fönstret][performance-blade]
 
@@ -44,7 +44,7 @@ Spårnings Utforskaren visar följande information:
 
 * **Visa frekvent sökväg**: öppnar den största lövnoder-noden eller minst något nära. I de flesta fall är den här noden nära en prestanda Flask hals.
 * **Etikett**: namnet på funktionen eller händelsen. Trädet visar en blandning av kod och händelser som har inträffat, till exempel SQL-och HTTP-händelser. Den översta händelsen representerar den övergripande varaktigheten för begäran.
-* **Förfluten**tid: tidsintervall mellan åtgärdens början och åtgärdens slut.
+* **Förfluten** tid: tidsintervall mellan åtgärdens början och åtgärdens slut.
 * **När**: tiden då funktionen eller händelsen kördes i förhållande till andra funktioner.
 
 ## <a name="how-to-read-performance-data"></a>Läsa prestanda data

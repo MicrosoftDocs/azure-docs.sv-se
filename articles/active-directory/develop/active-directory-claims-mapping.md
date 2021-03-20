@@ -14,10 +14,10 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647604"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gör så här: anpassa anspråk som skickas i token för en angiven app i en klient (för hands version)
@@ -44,7 +44,7 @@ En princip för anspråks mappning är en typ av **princip** objekt som ändrar 
 
 Det finns vissa uppsättningar med anspråk som definierar hur och när de används i tokens.
 
-| Anspråks uppsättning | Description |
+| Anspråks uppsättning | Beskrivning |
 |---|---|
 | Uppsättning Core-anspråk | Förekommer i varje token oavsett principen. Dessa anspråk anses också vara begränsade och kan inte ändras. |
 | Grundläggande anspråks uppsättning | Innehåller de anspråk som genereras som standard för token (utöver uppsättningen med kärn anspråk). Du kan utelämna eller ändra grundläggande anspråk genom att använda anspråks mappnings principerna. |
@@ -287,48 +287,48 @@ ID-elementet identifierar vilken egenskap på källan som innehåller värdet f�
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabell 3: giltiga ID-värden per källa
 
-| Källa | ID | Description |
+| Källa | ID | Beskrivning |
 |-----|-----|-----|
-| Användare | surname | Familje namn |
-| Användare | givenname | Förnamn |
-| Användare | displayname (visningsnamn) | Visningsnamn |
-| Användare | objectID | ObjectID |
-| Användare | e-post | E-postadress |
-| Användare | userPrincipalName | UPN (User Principal Name) |
-| Användare | avdelning|Avdelning|
-| Användare | egna namnet onpremisessamaccountname | Namn på lokal SAM-konto |
-| Användare | NetbiosName| NetBios-namn |
-| Användare | dnsdomainname | DNS-domännamn |
-| Användare | onpremisesecurityidentifier | Lokal säkerhets identifierare |
-| Användare | CompanyName| Organisationsnamn |
-| Användare | streetaddress | Gatuadress |
-| Användare | post nummer | Postnummer |
-| Användare | preferredlanguage | Önskat språk |
-| Användare | onpremisesuserprincipalname | Lokalt UPN |*
-| Användare | MailNickName | E-postsmek namn |
-| Användare | extensionattribute1 | Attribut 1 för tillägg |
-| Användare | extensionattribute2 | Attribut för tillägg 2 |
-| Användare | extensionattribute3 | Attribut för tillägg 3 |
-| Användare | extensionattribute4 | Attribut för tillägg 4 |
-| Användare | extensionattribute5 | Attribut för tillägg 5 |
-| Användare | extensionattribute6 | Attribut för tillägg 6 |
-| Användare | extensionattribute7 | Attribut för tillägg 7 |
-| Användare | extensionattribute8 | Attribut för tillägg 8 |
-| Användare | extensionattribute9 | Attribut för tillägg 9 |
-| Användare | extensionattribute10 | Attribut för tillägg 10 |
-| Användare | extensionattribute11 | Attribut för tillägg 11 |
-| Användare | extensionattribute12 | Attribut för tillägg 12 |
-| Användare | extensionattribute13 | Attribut för tillägg 13 |
-| Användare | extensionattribute14 | Attribut för tillägg 14 |
-| Användare | extensionattribute15 | Attribut för tillägg 15 |
-| Användare | othermail | Annan e-post |
-| Användare | land | Land/region |
-| Användare | city | City |
-| Användare | state | Tillstånd |
-| Användare | befattning | Befattning |
-| Användare | employeeid | Anställnings-ID |
-| Användare | facsimiletelephonenumber | Facsimile-telefonnummer |
-| Användare | assignedroles | lista över app-roller tilldelade till användare|
+| User | surname | Familje namn |
+| User | givenname | Förnamn |
+| User | displayname (visningsnamn) | Visningsnamn |
+| User | objectID | ObjectID |
+| User | e-post | E-postadress |
+| User | userPrincipalName | UPN (User Principal Name) |
+| User | avdelning|Avdelning|
+| User | egna namnet onpremisessamaccountname | Namn på lokal SAM-konto |
+| User | NetbiosName| NetBios-namn |
+| User | dnsdomainname | DNS-domännamn |
+| User | onpremisesecurityidentifier | Lokal säkerhets identifierare |
+| User | CompanyName| Organisationsnamn |
+| User | streetaddress | Gatuadress |
+| User | post nummer | Postnummer |
+| User | preferredlanguage | Önskat språk |
+| User | onpremisesuserprincipalname | Lokalt UPN |*
+| User | MailNickName | E-postsmek namn |
+| User | extensionattribute1 | Attribut 1 för tillägg |
+| User | extensionattribute2 | Attribut för tillägg 2 |
+| User | extensionattribute3 | Attribut för tillägg 3 |
+| User | extensionattribute4 | Attribut för tillägg 4 |
+| User | extensionattribute5 | Attribut för tillägg 5 |
+| User | extensionattribute6 | Attribut för tillägg 6 |
+| User | extensionattribute7 | Attribut för tillägg 7 |
+| User | extensionattribute8 | Attribut för tillägg 8 |
+| User | extensionattribute9 | Attribut för tillägg 9 |
+| User | extensionattribute10 | Attribut för tillägg 10 |
+| User | extensionattribute11 | Attribut för tillägg 11 |
+| User | extensionattribute12 | Attribut för tillägg 12 |
+| User | extensionattribute13 | Attribut för tillägg 13 |
+| User | extensionattribute14 | Attribut för tillägg 14 |
+| User | extensionattribute15 | Attribut för tillägg 15 |
+| User | othermail | Annan e-post |
+| User | land | Land/region |
+| User | city | City |
+| User | state | Tillstånd |
+| User | befattning | Befattning |
+| User | employeeid | Anställnings-ID |
+| User | facsimiletelephonenumber | Facsimile-telefonnummer |
+| User | assignedroles | lista över app-roller tilldelade till användare|
 | program, resurs, mål grupp | displayname (visningsnamn) | Visningsnamn |
 | program, resurs, mål grupp | objectID | ObjectID |
 | program, resurs, mål grupp | tags | Tjänstens huvud namns etikett |
@@ -364,9 +364,9 @@ Baserat på den valda metoden förväntas en uppsättning indata och utdata. Def
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabell 4: omvandlings metoder och förväntade indata och utdata
 
-|TransformationMethod|Förväntad Indatatyp|Förväntad utdata|Description|
+|TransformationMethod|Förväntad Indatatyp|Förväntad utdata|Beskrivning|
 |-----|-----|-----|-----|
-|Slå ihop|sträng1, sträng2, avgränsare|outputClaim|Kopplar ihop inmatade strängar med hjälp av en avgränsare mellan. Till exempel: sträng1: " foo@bar.com ", sträng2: "sandbox", avgränsare: "." resulterar i outputClaim: " foo@bar.com.sandbox "|
+|Anslut|sträng1, sträng2, avgränsare|outputClaim|Kopplar ihop inmatade strängar med hjälp av en avgränsare mellan. Till exempel: sträng1: " foo@bar.com ", sträng2: "sandbox", avgränsare: "." resulterar i outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-post eller UPN|extraherad sträng|ExtensionAttributes 1-15 eller andra schema tillägg som lagrar ett UPN-eller e-postadress värde för användaren, t. ex. johndoe@contoso.com . Extraherar den lokala delen av en e-postadress. Exempel: mail: " foo@bar.com " resulterar i outputClaim: "foo". Om det inte finns något \@ tecken returneras den ursprungliga Indatasträngen som den är.|
 
 **InputClaims:** Använd ett InputClaims-element för att skicka data från en anspråks schema post till en omvandling. Det har två attribut: **ClaimTypeReferenceId** och **TransformationClaimType**.
@@ -390,34 +390,34 @@ Baserat på den valda metoden förväntas en uppsättning indata och utdata. Def
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabell 5: attribut som tillåts som data källa för SAML-NameID
 
-|Källa|ID|Description|
+|Källa|ID|Beskrivning|
 |-----|-----|-----|
-| Användare | e-post|E-postadress|
-| Användare | userPrincipalName|UPN (User Principal Name)|
-| Användare | egna namnet onpremisessamaccountname|Namn på lokal SAM-konto|
-| Användare | employeeid|Anställnings-ID|
-| Användare | extensionattribute1 | Attribut 1 för tillägg |
-| Användare | extensionattribute2 | Attribut för tillägg 2 |
-| Användare | extensionattribute3 | Attribut för tillägg 3 |
-| Användare | extensionattribute4 | Attribut för tillägg 4 |
-| Användare | extensionattribute5 | Attribut för tillägg 5 |
-| Användare | extensionattribute6 | Attribut för tillägg 6 |
-| Användare | extensionattribute7 | Attribut för tillägg 7 |
-| Användare | extensionattribute8 | Attribut för tillägg 8 |
-| Användare | extensionattribute9 | Attribut för tillägg 9 |
-| Användare | extensionattribute10 | Attribut för tillägg 10 |
-| Användare | extensionattribute11 | Attribut för tillägg 11 |
-| Användare | extensionattribute12 | Attribut för tillägg 12 |
-| Användare | extensionattribute13 | Attribut för tillägg 13 |
-| Användare | extensionattribute14 | Attribut för tillägg 14 |
-| Användare | extensionattribute15 | Attribut för tillägg 15 |
+| User | e-post|E-postadress|
+| User | userPrincipalName|UPN (User Principal Name)|
+| User | egna namnet onpremisessamaccountname|Namn på lokal SAM-konto|
+| User | employeeid|Anställnings-ID|
+| User | extensionattribute1 | Attribut 1 för tillägg |
+| User | extensionattribute2 | Attribut för tillägg 2 |
+| User | extensionattribute3 | Attribut för tillägg 3 |
+| User | extensionattribute4 | Attribut för tillägg 4 |
+| User | extensionattribute5 | Attribut för tillägg 5 |
+| User | extensionattribute6 | Attribut för tillägg 6 |
+| User | extensionattribute7 | Attribut för tillägg 7 |
+| User | extensionattribute8 | Attribut för tillägg 8 |
+| User | extensionattribute9 | Attribut för tillägg 9 |
+| User | extensionattribute10 | Attribut för tillägg 10 |
+| User | extensionattribute11 | Attribut för tillägg 11 |
+| User | extensionattribute12 | Attribut för tillägg 12 |
+| User | extensionattribute13 | Attribut för tillägg 13 |
+| User | extensionattribute14 | Attribut för tillägg 14 |
+| User | extensionattribute15 | Attribut för tillägg 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabell 6: omvandlings metoder som tillåts för SAML-NameID
 
 | TransformationMethod | Begränsningar |
 | ----- | ----- |
 | ExtractMailPrefix | Inget |
-| Slå ihop | Det suffix som anslöts måste vara en verifierad domän för resurs klienten. |
+| Anslut | Det suffix som anslöts måste vara en verifierad domän för resurs klienten. |
 
 ### <a name="custom-signing-key"></a>Anpassad signerings nyckel
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90007646"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Flytta Azure-resurser mellan regioner
@@ -27,7 +27,7 @@ När du har distribuerat resurser i en särskild Azure-region finns det ett anta
 - **Justera mot närhet**: flytta resurser till en region som är lokal för din verksamhet.
 - **Uppfylla data kraven**: flytta resurser så att de överensstämmer med data placering-krav eller data klassificerings behov. [Läs mer](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
 - **Svara på distributions krav**: flytta resurser som har distribuerats i fel eller flytta som svar på kapacitets behoven. 
-- **Svara på**inaktive ring: flytta resurser på grund av inaktive ring av regioner.
+- **Svara på** inaktive ring: flytta resurser på grund av inaktive ring av regioner.
 
 ## <a name="move-resources-with-resource-mover"></a>Flytta resurser med resurs förflyttning
 

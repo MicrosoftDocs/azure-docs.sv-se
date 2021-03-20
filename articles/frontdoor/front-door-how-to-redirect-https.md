@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626650"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Skapa en frontend-dörr med HTTP till HTTPS-omdirigering med hjälp av Azure Portal
@@ -35,21 +35,21 @@ Du kan använda Azure Portal för att [skapa en frontend-dörr](quickstart-creat
 
 1. Konfigurationen för front dörren sker i tre steg – lägga till en standard klient dels värd, lägga till Server delar i en backend-pool och sedan skapa routningsregler för att mappa routnings beteendet för klient dels värden. Välj **+** ikonen på _klient dels värdarna_ för att skapa en klient dels värd.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Konfigurera grunderna för ny front dörr":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Konfigurations design för front dörr":::
 
 1. Ange ett globalt unikt namn för din standard klient värd för din front dörr. Välj **Lägg till** för att fortsätta till nästa steg.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Konfigurera grunderna för ny front dörr":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Lägg till en klient dels värd":::
 
 ### <a name="create-backend-pool"></a>Skapa backend-pool
 
-1. Välj **+** ikonen i _backend-poolerna_ för att skapa en backend-pool. Ange ett namn för backend-poolen och välj sedan **Lägg till en server**del.
+1. Välj **+** ikonen i _backend-poolerna_ för att skapa en backend-pool. Ange ett namn för backend-poolen och välj sedan **Lägg till en server** del.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Konfigurera grunderna för ny front dörr":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Backend-pool för konfigurations design för front dörr":::
 
 1. Välj server dels värd typen som _App Service_. Välj den prenumeration där din webbapp finns och välj sedan den aktuella webbappen i list rutan för **Server dels värdens namn**.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Konfigurera grunderna för ny front dörr":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Lägg till en server del i en backend-pool":::
 
 1. Välj **Lägg till** för att spara Server delen och välj **Lägg till** igen för att spara konfiguration av backend-poolen. 
 
@@ -57,11 +57,11 @@ Du kan använda Azure Portal för att [skapa en frontend-dörr](quickstart-creat
 
 1. Välj **+** ikonen i *routningsregler* för att skapa en väg. Ange ett namn för vägen, till exempel ' HttpToHttpsRedirect ', och ange sedan fältet *godkänt protokoll* till **"endast http"**. Kontrol lera att rätt *klient del/domäner* är markerade.  
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Konfigurera grunderna för ny front dörr":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Regel för design av front dörrs konfiguration":::
 
 1. Under avsnittet *flödes information* anger du den *väg typ* som ska **omdirigeras**. Se till att *omdirigerings typen* get anges till **found (302)** och *omdirigerade Protocol* get set till **endast https**. 
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Konfigurera grunderna för ny front dörr":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Lägg till en HTTP till HTTPS-Omdirigerad väg":::
 
 1. Välj **Lägg till** för att spara regeln för omdirigering av http till https.
 
@@ -71,11 +71,11 @@ Du kan använda Azure Portal för att [skapa en frontend-dörr](quickstart-creat
 
 1. I avsnittet flödes information anger du vilken *typ av väg* som ska **vidarebefordras**. Kontrol lera att rätt backend-pool väljs och att *vidarebefordrings protokollet* är inställt på **endast https**. 
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Konfigurera grunderna för ny front dörr" border="false":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Lägg till en vidarebefordrande väg för HTTPS-trafik" border="false":::
 
 1. Välj **Lägg till** för att spara regeln för vidarebefordran av förfrågningar.
 
-1. Välj **Granska + skapa** och sedan **skapa**för att skapa din profil för din front dörr. Gå till resursen när den har skapats.
+1. Välj **Granska + skapa** och sedan **skapa** för att skapa din profil för din front dörr. Gå till resursen när den har skapats.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 242700c05053aa9d07e3a561a21986c8451a46c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91612452"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Kontrol lera den senaste synkroniseringstid-egenskapen för ett lagrings konto
@@ -63,6 +63,6 @@ $lastSyncTime=$(az storage account show \
 
 ## <a name="see-also"></a>Se även
 
-- [Azure Storage redundans](storage-redundancy.md)
+- [Redundans i Azure Storage](storage-redundancy.md)
 - [Ändra redundans alternativ för ett lagrings konto](redundancy-migration.md)
 - [Använd GEO-redundans för att skapa program med hög tillgänglighet](geo-redundant-design.md)

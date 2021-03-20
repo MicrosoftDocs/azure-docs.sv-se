@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88205503"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Övervaka dina API: er med Azure API Management, Event Hubs och Moesif
@@ -295,7 +295,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor`Drar nytta av ett [C# API-bibliotek för Moesif](https://www.moesif.com/docs/api?csharp#events) som gör det enkelt att skicka http-Datadata till deras tjänster. Du behöver ett konto och ett program-ID för att kunna skicka HTTP-data till Moesif Collector-API: et. Du får ett Moesif program-ID genom att skapa ett konto på [Moesif-webbplatsen](https://www.moesif.com) och gå sedan till den _översta högra menyn_för att  ->  _ställa in appar_.
+`MoesifHttpMessageProcessor`Drar nytta av ett [C# API-bibliotek för Moesif](https://www.moesif.com/docs/api?csharp#events) som gör det enkelt att skicka http-Datadata till deras tjänster. Du behöver ett konto och ett program-ID för att kunna skicka HTTP-data till Moesif Collector-API: et. Du får ett Moesif program-ID genom att skapa ett konto på [Moesif-webbplatsen](https://www.moesif.com) och gå sedan till den _översta högra menyn_ för att  ->  _ställa in appar_.
 
 ## <a name="complete-sample"></a>Fullständigt exempel
 [Käll koden](https://github.com/dgilling/ApimEventProcessor) och testerna för exemplet finns på GitHub. Du behöver en [API Management tjänst](get-started-create-service-instance.md), [en ansluten Händelsehubben](api-management-howto-log-event-hubs.md)och ett [lagrings konto](../storage/common/storage-account-create.md) för att köra exemplet själv.   

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084744"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect sync: Scheduler
@@ -169,7 +169,7 @@ När en synkroniseringsanslutning körs kan du inte göra konfigurations ändrin
 
    ![Skärm bild som visar Synchronization Service Manager med valda kopplingar och en aktiv koppling är markerad med åtgärden stoppa markerad.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
 
-   * Starta **synkroniseringstjänsten** från Start-menyn. Gå till **kopplingar**, markera kopplingen med det tillstånd som **körs**och välj **stoppa** från åtgärderna.
+   * Starta **synkroniseringstjänsten** från Start-menyn. Gå till **kopplingar**, markera kopplingen med det tillstånd som **körs** och välj **stoppa** från åtgärderna.
 
 Scheduler är fortfarande aktiv och startar igen vid nästa tillfälle.
 
