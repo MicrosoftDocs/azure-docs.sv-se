@@ -4,10 +4,10 @@ description: Azure-delegerad resurs hantering är en viktig del av Azure Lightho
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92203865"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure-delegerad resurshantering
@@ -43,7 +43,7 @@ Så här fungerar Azure-delegerad resurs hantering på hög nivå:
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Stöd för Azure-delegerad resurs hantering
 
-Om du behöver hjälp som rör Azure-delegerad resurs hantering kan du öppna en supportbegäran i Azure Portal. Välj **teknisk**för **typ av problem**. Välj en prenumeration och välj sedan **Lighthouse** (under **övervakning & hantering**).
+Om du behöver hjälp som rör Azure-delegerad resurs hantering kan du öppna en supportbegäran i Azure Portal. Välj **teknisk** för **typ av problem**. Välj en prenumeration och välj sedan **Lighthouse** (under **övervakning & hantering**).
 
 ## <a name="next-steps"></a>Nästa steg
 

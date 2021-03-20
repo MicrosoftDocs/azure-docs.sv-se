@@ -5,10 +5,10 @@ ms.date: 09/24/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91349095"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med hjälp av Java Script
@@ -115,7 +115,7 @@ Föregående kommandon använder följande information:
 - **Beskrivning** – en djupare förklaring av vad principen gör eller varför den är tilldelad till det här omfånget.
 - **omfång** – en omfattning avgör vilka resurser eller grupper av resurser som princip tilldelningen tillämpas på. Det kan vara ett intervall från en hanterings grupp till en enskild resurs. Se till att ersätta `{scope}` med något av följande mönster:
   - Hanterings grupp: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Prenumerera `/subscriptions/{subscriptionId}`
+  - Prenumeration: `/subscriptions/{subscriptionId}`
   - Resursgrupp: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Klusterresursen `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 

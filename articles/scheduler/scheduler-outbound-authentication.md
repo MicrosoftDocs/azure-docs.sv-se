@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878977"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Utgående autentisering för Azure Scheduler
@@ -159,7 +159,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Basic
+## <a name="basic"></a>Grundläggande
 
 ### <a name="request-body---basic"></a>Brödtext i begäran – grundläggande
 
@@ -290,7 +290,7 @@ När du lägger till autentisering med `ActiveDirectoryOAuth` modellen, anger du
 | **tenant** | Ja | Klient-ID för Azure AD-klienten. Du hittar klient-ID: t för Azure AD-klienten genom att köra `Get-AzureAccount` i Azure PowerShell. |
 | **filmen** | Ja | Det här värdet är inställt på `https://management.core.windows.net/` . | 
 | **clientId** | Ja | Klient-ID för Azure AD-programmet | 
-| **icke** | Ja | Hemligheten för klienten som begär token | 
+| **hemlighet** | Ja | Hemligheten för klienten som begär token | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Svars text – Active Directory OAuth

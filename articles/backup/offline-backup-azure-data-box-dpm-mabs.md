@@ -4,10 +4,10 @@ description: Du kan använda Azure Data Box för att dirigera inledande säkerhe
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752557"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Seeding offline med Azure Data Box för DPM och MABS (för hands version)

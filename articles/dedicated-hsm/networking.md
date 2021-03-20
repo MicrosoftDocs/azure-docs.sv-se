@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91359162"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure Dedicated HSM-nätverk
@@ -66,7 +66,7 @@ Ett plats-till-plats-virtuellt privat nätverk möjliggör säker kommunikation 
 
 En typisk distributions arkitektur för dedikerad HSM kommer att starta med ett enda virtuellt nätverk och motsvarande undernät där HSM-enheterna skapas och tillhandahålls. Inom samma region kan det vara bra att ha ytterligare virtuella nätverk och undernät för program komponenter som använder dedikerad HSM. För att aktivera kommunikation mellan dessa nätverk använder vi Virtual Network-peering.
 
-### <a name="virtual-network-peering"></a>Peering för virtuella nätverk
+### <a name="virtual-network-peering"></a>Virtuell nätverkspeering
 
 Om det finns flera virtuella nätverk i en region som behöver åtkomst till var and ras resurser, kan Virtual Network peering användas för att skapa säkra kommunikations kanaler mellan dem.  Peering av virtuella nätverk ger inte bara säker kommunikation utan garanterar också en låg latens och anslutningar med hög bandbredd mellan resurserna i Azure.
 

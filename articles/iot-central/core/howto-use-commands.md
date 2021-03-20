@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611006"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Använda kommandon i en Azure IoT Central-lösning
@@ -43,7 +43,7 @@ I följande tabell visas konfigurations inställningarna för en kommando funkti
 | Name            | Kommandots namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. Enhets koden använder detta **namn** värde.|
 | Typ av kapacitet | Kommandoprompt.|
 | Köa om offline | Om kommandot ska göras till *offline* . |
-| Description     | En beskrivning av kommando funktionen.|
+| Beskrivning     | En beskrivning av kommando funktionen.|
 | Kommentar     | Eventuella kommentarer om kommando funktionen.|
 | Förfrågan     | Enhets kommandots nytto Last.|
 | Svarsåtgärder     | Nytto lasten för enhetens kommando svar.|

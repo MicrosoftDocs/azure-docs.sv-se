@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151760"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Skicka meddelanden till en MQTT-Server
@@ -46,10 +46,10 @@ Slutför [komma igång guiden](./iot-hub-arduino-iot-devkit-az3166-get-started.m
 
 ## <a name="open-the-mqttclient-sample"></a>Öppna exemplet MQTTClient
 
-Expandera exempel avsnittet för vänster **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > MQTT**och välj **MQTTClient**. Ett nytt VS Code-fönster öppnas med en projektmapp i den.
+Expandera exempel avsnittet för vänster **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > MQTT** och välj **MQTTClient**. Ett nytt VS Code-fönster öppnas med en projektmapp i den.
 
 > [!NOTE]
-> Du kan också öppna exempel från kommando paletten. Använd `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino**och leta upp och välj **Arduino: exempel**.
+> Du kan också öppna exempel från kommando paletten. Använd `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino** och leta upp och välj **Arduino: exempel**.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Bygg och överför Arduino-skissen till DevKit
 

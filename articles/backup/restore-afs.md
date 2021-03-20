@@ -4,10 +4,10 @@ description: Lär dig hur du använder Azure Portal för att återställa en hel
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376782"
 ---
 # <a name="restore-azure-file-shares"></a>Återställa Azure-filresurser
@@ -32,11 +32,11 @@ Följ dessa steg om du vill utföra en återställnings åtgärd.
 
     ![Välj säkerhets kopierings objekt](./media/restore-afs/backup-items.png)
 
-1. När du har valt **säkerhets kopierings objekt**öppnas ett nytt fönster som visar alla typer av säkerhets kopierings hantering bredvid översikts fönstret.
+1. När du har valt **säkerhets kopierings objekt** öppnas ett nytt fönster som visar alla typer av säkerhets kopierings hantering bredvid översikts fönstret.
 
     ![Typer av säkerhets kopierings hantering](./media/restore-afs/backup-management.png)
 
-1. I rutan **säkerhets kopierings objekt** under **säkerhets kopierings hanterings typ**väljer du **Azure Storage (Azure Files)**. Du ser en lista över alla fil resurser och deras motsvarande lagrings konton som har säkerhetskopierats med hjälp av det här valvet.
+1. I rutan **säkerhets kopierings objekt** under **säkerhets kopierings hanterings typ** väljer du **Azure Storage (Azure Files)**. Du ser en lista över alla fil resurser och deras motsvarande lagrings konton som har säkerhetskopierats med hjälp av det här valvet.
 
     ![Lista över alla fil resurser](./media/restore-afs/file-shares.png)
 
@@ -50,7 +50,7 @@ Du kan använda det här alternativet för återställning för att återställa
 
    ![Välj återställnings resurs](./media/restore-afs/restore-share.png)
 
-1. När du har valt **återställnings resurs**öppnas fönstret **Återställ** . Välj den återställnings punkt som du vill använda för att utföra återställnings åtgärden genom att välja text rutan **Välj** länk under text rutan **återställnings punkt** .
+1. När du har valt **återställnings resurs** öppnas fönstret **Återställ** . Välj den återställnings punkt som du vill använda för att utföra återställnings åtgärden genom att välja text rutan **Välj** länk under text rutan **återställnings punkt** .
 
     ![Välj återställnings punkt genom att välja Välj](./media/restore-afs/select-restore-point.png)
 
@@ -68,7 +68,7 @@ Du kan använda det här alternativet för återställning för att återställa
 
 #### <a name="restore-to-the-original-location-full-share-recovery"></a>Återställa till den ursprungliga platsen (fullständig delning)
 
-1. Välj den **ursprungliga platsen** som **återställnings mål**och välj om du vill hoppa över eller skriva över om det finns konflikter, genom att välja lämpligt alternativ i list rutan **i händelse av konflikter** .
+1. Välj den **ursprungliga platsen** som **återställnings mål** och välj om du vill hoppa över eller skriva över om det finns konflikter, genom att välja lämpligt alternativ i list rutan **i händelse av konflikter** .
 
 1. Starta återställnings åtgärden genom att välja **Återställ** .
 
@@ -93,7 +93,7 @@ Du kan använda det här alternativet för återställning om du vill återstäl
 
     ![Välj fil återställning](./media/restore-afs/file-recovery.png)
 
-1. När du har valt **fil återställning**öppnas fönstret **Återställ** . Välj den återställnings punkt som du vill använda för att utföra återställnings åtgärden genom att markera text rutan **Välj** länk under text rutan **återställnings punkt** .
+1. När du har valt **fil återställning** öppnas fönstret **Återställ** . Välj den återställnings punkt som du vill använda för att utföra återställnings åtgärden genom att markera text rutan **Välj** länk under text rutan **återställnings punkt** .
 
     ![Välj återställnings punkt genom att välja länken Välj](./media/restore-afs/select-restore-point.png)
 
@@ -108,7 +108,7 @@ Du kan använda det här alternativet för återställning om du vill återstäl
 
 #### <a name="restore-to-the-original-location-item-level-recovery"></a>Återställ till den ursprungliga platsen (återställning på objekt nivå)
 
-1. Välj den **ursprungliga platsen** som **återställnings mål**och välj om du vill hoppa över eller skriva över om det finns konflikter genom att välja lämpligt alternativ i list rutan **i händelse av konflikter** .
+1. Välj den **ursprungliga platsen** som **återställnings mål** och välj om du vill hoppa över eller skriva över om det finns konflikter genom att välja lämpligt alternativ i list rutan **i händelse av konflikter** .
 
     ![Ursprunglig plats för återställning på objekt nivå](./media/restore-afs/original-location-item-level.png)
 

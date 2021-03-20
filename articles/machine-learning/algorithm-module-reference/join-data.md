@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420758"
 ---
 # <a name="join-data"></a>Koppla data
@@ -47,17 +47,17 @@ Om du vill utföra en koppling på två data uppsättningar ska de relateras av 
    
 1. Använd List rutan **kopplings typ** för att ange hur data uppsättningarna ska kombineras.  
   
-    * **Inre koppling** : en *inre koppling* är den vanligaste kopplings åtgärden. Den returnerar de kombinerade raderna endast när värdena för nyckel kolumnerna matchar.  
+    * **Inre koppling**: en *inre koppling* är den vanligaste kopplings åtgärden. Den returnerar de kombinerade raderna endast när värdena för nyckel kolumnerna matchar.  
   
-    * **Vänster yttre koppling** : en *vänster yttre koppling* returnerar kopplade rader för alla rader från den vänstra tabellen. När en rad i den vänstra tabellen inte har några matchande rader i den högra tabellen, innehåller den returnerade raden värden som saknas för alla kolumner som kommer från den högra tabellen. Du kan också ange ett ersättnings värde för saknade värden.  
+    * **Vänster yttre koppling**: en *vänster yttre koppling* returnerar kopplade rader för alla rader från den vänstra tabellen. När en rad i den vänstra tabellen inte har några matchande rader i den högra tabellen, innehåller den returnerade raden värden som saknas för alla kolumner som kommer från den högra tabellen. Du kan också ange ett ersättnings värde för saknade värden.  
   
-    * **Fullständig yttre koppling** : en *fullständig yttre koppling* returnerar alla rader från den vänstra tabellen ( **TABLE1** ) och från den högra tabellen ( **tabell2** ).  
+    * **Fullständig yttre koppling**: en *fullständig yttre koppling* returnerar alla rader från den vänstra tabellen (**TABLE1**) och från den högra tabellen (**tabell2**).  
   
          För varje rad i en tabell som inte har några matchande rader i den andra, innehåller resultatet en rad som innehåller värden som saknas.  
   
-    * **Vänster halv koppling** : en *vänster halv koppling* returnerar bara värdena från den vänstra tabellen när värdena för nyckel kolumnerna matchar.  
+    * **Vänster halv koppling**: en *vänster halv koppling* returnerar bara värdena från den vänstra tabellen när värdena för nyckel kolumnerna matchar.  
 
-1. För alternativet **Behåll rätt nyckel kolumner i en sammanfogad tabell** :
+1. För alternativet **Behåll rätt nyckel kolumner i en sammanfogad tabell**:
 
     * Välj det här alternativet om du vill visa nycklarna från båda ingångs tabellerna.
     * Avmarkera för att endast returnera nyckel kolumnerna från den vänstra indatatypen.

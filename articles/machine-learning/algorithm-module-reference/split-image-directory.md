@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 3ee4dd9b2e344ecb3e1a6424ce7310270e7cd076
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421200"
 ---
 # <a name="split-image-directory"></a>Dela bildkatalog
@@ -35,19 +35,19 @@ Den här modulen är särskilt användbar när du behöver separera bilddata til
 
 ### <a name="expected-inputs"></a>Förväntade indata
 
-| Namn                  | Typ           | Description              |
+| Namn                  | Typ           | Beskrivning              |
 | --------------------- | -------------- | ------------------------ |
 | Avbildnings katalog för indata | ImageDirect | Avbildnings katalog att dela |
 
 ### <a name="module-parameters"></a>Parametrar för modul
 
-| Namn                                   | Typ  | Intervall | Valfritt | Description                            | Standard |
+| Namn                                   | Typ  | Intervall | Valfritt | Beskrivning                            | Standardvärde |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Delar av bilder i de första utdata | Float | 0-1   | Obligatorisk | Delar av bilder i de första utdata | 0,9     |
 
 ### <a name="outputs"></a>Utdata
 
-| Namn                    | Typ           | Description                              |
+| Namn                    | Typ           | Beskrivning                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Directory1 för utgående bild | ImageDirect | Avbildnings katalog som innehåller valda bilder |
 | Directory2 för utgående bild | ImageDirect | Avbildnings katalog som innehåller alla andra bilder |

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005060"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Distribuera en virtuell Windows 7-dator på Windows Virtual Desktop (klassisk)
@@ -37,7 +37,7 @@ Konfigurera en virtuell Windows 7-dator på Windows Virtual Desktop:
 5. Gå till Windows Update på den virtuella datorn.
 6. Installera alla Windows-uppdateringar i den viktiga kategorin.
 7. Installera alla Windows-uppdateringar i den valfria kategorin (exklusive språk paket). Detta installerar Remote Desktop Protocol 8,0-uppdateringen ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) som du behöver för att slutföra de här instruktionerna.
-8. Öppna redigerare för lokalt grupprincipobjekt och navigera till **dator konfiguration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **fjärrskrivbordssessionen**  >  **Remote Session Environment**för fjärrskrivbordssessioner.
+8. Öppna redigerare för lokalt grupprincipobjekt och navigera till **dator konfiguration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **fjärrskrivbordssessionen**  >  för fjärrskrivbordssessioner.
 9. Aktivera Remote Desktop Protocol 8,0-principen.
 10. Anslut den här virtuella datorn till din Active Directory-domän.
 11. Starta om den virtuella datorn genom att köra följande kommando:

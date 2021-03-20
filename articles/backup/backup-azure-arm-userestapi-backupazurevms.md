@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171464"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Säkerhetskopiera en virtuell Azure-dator med hjälp av Azure Backup via REST API
@@ -299,7 +299,7 @@ I begär ande texten ovan finns listan över diskar som ska säkerhets kopie ras
 |Egenskap  |Värde  |
 |---------|---------|
 |diskLunList     | Listan disk-LUN är en lista över *LUN för data diskar*. **OS-disken säkerhets kopie ras alltid och behöver inte anges**.        |
-|IsInclusionList     | Bör vara **Sant** för de LUN som ska tas med under säkerhets kopieringen. Om det är **falskt**kommer de ovan nämnda LUN att undantas.         |
+|IsInclusionList     | Bör vara **Sant** för de LUN som ska tas med under säkerhets kopieringen. Om det är **falskt** kommer de ovan nämnda LUN att undantas.         |
 
 Så om kravet bara är att säkerhetskopiera OS-disken ska _alla_ data diskar undantas. Ett enklare sätt är att säga att inga data diskar ska tas med. Diskens LUN-lista är tom och **IsInclusionList** är **sann**. På samma sätt kan du tänka på vad som är det enklaste sättet att välja en delmängd: ett fåtal diskar bör alltid undantas eller så bör ett fåtal diskar alltid inkluderas. Välj LUN-listan och värdet för den booleska variabeln.
 

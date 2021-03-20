@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80985447"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Självstudie: Konfigurera en aliaspost för att referera till en offentlig IP-adress i Azure 
@@ -27,7 +27,7 @@ I den här guiden får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Du måste ha ett domännamn tillgängligt som du kan ha i Azure DNS för att testa med. Du måste ha fullständig kontroll över den här domänen. Fullständig behörighet omfattar möjligheten att ange namnserverposter (NS-poster) för domänen.
 
 Anvisningar för att vara värd för din domän i Azure DNS finns i [Självstudie: var värd för din domän i Azure DNS](dns-delegate-domain-azure-dns.md).
@@ -54,7 +54,7 @@ Den här proceduren tar några minuter att slutföra. Den virtuella datorn har e
 
 Installera IIS på **Web-01**.
 
-1. Anslut till **Web-01**och logga in.
+1. Anslut till **Web-01** och logga in.
 2. På instrumentpanelen **Serverhanteraren** väljer du **Lägg till roller och funktioner**.
 3. Välj **Nästa** tre gånger. Välj **Webbserver (IIS)** på sidan **Serverroller**.
 4. Välj **Lägg till funktioner** och sedan **Nästa**.

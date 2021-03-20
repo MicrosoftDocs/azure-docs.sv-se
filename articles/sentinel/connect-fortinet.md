@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92914001"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Anslut Fortinet till Azure Sentinel
@@ -47,10 +47,10 @@ Konfigurera Fortinet så att syslog-meddelanden vidarebefordras i CEF-format til
 
     - Ersätt serverns **IP-adress** med AGENTens IP-adress.
     - Ställ in **syslog-porten** på **514** eller port uppsättningen på agenten.
-    - Om du vill aktivera CEF-format i tidiga FortiOS-versioner kan du behöva köra kommandot **CSV Disable** .
+    - Om du vill aktivera CEF-format i tidiga FortiOS-versioner kan du behöva köra kommandot **CSV Disable**.
  
    > [!NOTE] 
-   > Mer information finns i [Fortinet-dokumentbiblioteket](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Välj din version och Använd referensen **handböcker** och **logg meddelande** .
+   > Mer information finns i [Fortinet-dokumentbiblioteket](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Välj din version och Använd referensen **handböcker** och **logg meddelande**.
 
 1. Om du vill använda det relevanta schemat i Azure Monitor Log Analytics för Fortinet-händelserna söker du efter `CommonSecurityLog` .
 

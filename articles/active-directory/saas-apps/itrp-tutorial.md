@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Självstudie: Azure Active Directory integrering med ITRP
@@ -31,7 +31,7 @@ Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i 
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ITRP måste du ha:
 
@@ -225,7 +225,7 @@ Gör så här för att skapa ett användar konto:
 
 1. Välj plus tecknet ( **+** ) för att lägga till en ny person:
 
-    ![Välj plus tecknet](./media/itrp-tutorial/ic775576.png "Välj plus tecknet")
+    ![Klicka på plustecknet](./media/itrp-tutorial/ic775576.png "Klicka på plustecknet")
 
 1. I dialog rutan **Lägg till ny person** gör du följande:
 

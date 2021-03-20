@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92150910"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Självstudier: Azure SignalR Service-autentisering med Azure Functions
@@ -58,16 +58,16 @@ Du kan skapa och testa Azure Functions-appen lokalt. Appen använder en SignalR 
 
 1. Ange följande information.
 
-    | Namn | Värde |
+    | Name | Värde |
     |---|---|
     | Resursnamn | Ett unikt namn för SignalR Service-instansen |
     | Resursgrupp | Skapa en ny resurs grupp med ett unikt namn |
-    | Plats | Välj en plats nära dig |
+    | Location | Välj en plats nära dig |
     | Prisnivå | Kostnadsfri |
 
 1. Klicka på **Skapa**.
 
-1. När instansen har distribuerats öppnar du den i portalen och letar upp dess inställnings sida. Ändra inställningen för tjänst läge till *Server*lös.
+1. När instansen har distribuerats öppnar du den i portalen och letar upp dess inställnings sida. Ändra inställningen för tjänst läge till *Server* lös.
 
     ![SignalR service läge](media/signalr-concept-azure-functions/signalr-service-mode.png)
     
@@ -327,18 +327,18 @@ Ett Azure Storage konto krävs av en Function-app som körs i Azure. Du kommer o
 
 1. Ange följande information.
 
-    | Namn | Värde |
+    | Name | Värde |
     |---|---|
     | Prenumeration | Välj den prenumeration som innehåller SignalR tjänst instansen |
     | Resursgrupp | Välj samma resurs grupp |
     | Resursnamn | Ett unikt namn för lagrings kontot |
-    | Plats | Välj samma plats som dina andra resurser |
+    | Location | Välj samma plats som dina andra resurser |
     | Prestanda | Standard |
     | Typ av konto | StorageV2 (generell användning v2) |
     | Replikering | Lokalt redundant lagring (LRS) |
     | Åtkomst nivå | Frekvent |
 
-1. Klicka på **Granska + skapa**och sedan på **skapa**.
+1. Klicka på **Granska + skapa** och sedan på **skapa**.
 
 ### <a name="configure-static-websites"></a>Konfigurera statiska webbplatser
 
@@ -348,7 +348,7 @@ Ett Azure Storage konto krävs av en Function-app som körs i Azure. Du kommer o
 
 1. Välj **aktive rad** för att aktivera funktionen för statisk webbplats.
 
-1. I **index dokument namn**anger *index.html*.
+1. I **index dokument namn** anger *index.html*.
 
 1. Klicka på **Spara**.
 
@@ -461,7 +461,7 @@ Webbprogrammet ska hanteras av funktionen för statiska webbplatser i Azure Blob
 
 1. Ange följande värden:
 
-    | Namn | Värde |
+    | Name | Värde |
     |---|---|
     | Prenumeration | Välj din prenumeration |
     | Lagringskonto | Välj det lagrings konto som du skapade tidigare |

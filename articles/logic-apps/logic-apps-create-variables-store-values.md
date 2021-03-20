@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333910"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Lagra och hantera värden med variabler i Azure Logic Apps
@@ -53,13 +53,13 @@ Du kan skapa en variabel och deklarera dess datatyp och initialt värde – alla
 
 1. I din Logic app, under steget där du vill lägga till en variabel, följer du något av följande steg: 
 
-   * Välj **nytt steg**för att lägga till en åtgärd under det sista steget.
+   * Välj **nytt steg** för att lägga till en åtgärd under det sista steget.
 
      ![Skärm bild som visar åtgärden "nytt steg" som valts på sidan "Logic App Designer".](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Om du vill lägga till en åtgärd mellan stegen flyttar du musen över den anslutande pilen så att plus tecknet ( **+** ) visas. Välj plus tecknet och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**går du till rutan Sök och anger `variables` som ditt filter. I listan åtgärder väljer du **initiera variabel**.
+1. Under **Välj en åtgärd** går du till rutan Sök och anger `variables` som ditt filter. I listan åtgärder väljer du **initiera variabel**.
 
    ![Välj åtgärd](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
@@ -76,7 +76,7 @@ Du kan skapa en variabel och deklarera dess datatyp och initialt värde – alla
 
    ![Initiera variabel](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-1. Fortsätt nu med att lägga till de åtgärder som du vill använda. När du är klar väljer du **Spara**i verktygsfältet designer.
+1. Fortsätt nu med att lägga till de åtgärder som du vill använda. När du är klar väljer du **Spara** i verktygsfältet designer.
 
 Om du växlar från designern till kodvyn visas här hur åtgärden **initiera variabeln** visas i din Logic app-definition, som är i JavaScript Object Notation (JSON)-format:
 
@@ -215,7 +215,7 @@ Om du vill öka eller *öka* en variabel med ett konstant värde lägger du till
 
    ![Exempel på värde för ökning](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
-1. När du är klar väljer du **Spara**i verktygsfältet designer.
+1. När du är klar väljer du **Spara** i verktygsfältet designer.
 
 Om du växlar från designern till kodvyn visas här hur den **stegvisa variabel** åtgärden visas i din Logic app-definition, som är i JSON-format:
 
@@ -247,7 +247,7 @@ Variabler används ofta för att räkna antalet gånger som en slinga körs. Det
 
    ![Sök efter och inkludera bifogade filer](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Lägg till [åtgärden **initiera variabel** ](#create-variable). Skapa en heltals variabel med namnet `Count` som har ett start värde som är noll.
+1. Lägg till [åtgärden **initiera variabel**](#create-variable). Skapa en heltals variabel med namnet `Count` som har ett start värde som är noll.
 
    ![Lägg till åtgärd för "initiera variabel"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -255,7 +255,7 @@ Variabler används ofta för att räkna antalet gånger som en slinga körs. Det
 
    1. Under åtgärden **initiera variabel** väljer du **nytt steg**.
 
-   1. Under **Välj en åtgärd**väljer du **inbyggt**. I rutan Sök anger `for each` du som Sök filter och väljer **för varje**.
+   1. Under **Välj en åtgärd** väljer du **inbyggt**. I rutan Sök anger `for each` du som Sök filter och väljer **för varje**.
 
       ![Lägg till en "för varje"-slinga](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -286,7 +286,7 @@ Variabler används ofta för att räkna antalet gånger som en slinga körs. Det
 
 ### <a name="test-your-logic-app"></a>Testa din Logic app
 
-1. Om din Logic app inte är aktive rad väljer du **Översikt**på din Logic app-meny. Välj **Aktivera**i verktygsfältet.
+1. Om din Logic app inte är aktive rad väljer du **Översikt** på din Logic app-meny. Välj **Aktivera** i verktygsfältet.
 
 1. I verktygsfältet Logic App Designer väljer du **Kör**. Det här steget startar din Logic app manuellt.
 
@@ -370,7 +370,7 @@ Här följer egenskaperna för åtgärden **ange variabel** :
 >
 > 1. I loopens övre högra hörn väljer du knappen med tre punkter (**...**) och väljer sedan **Inställningar**.
 > 
-> 2. Under **concurrency-kontroll**ändrar du **Åsidosätt standardinställningen** till **på**.
+> 2. Under **concurrency-kontroll** ändrar du **Åsidosätt standardinställningen** till **på**.
 >
 > 3. Dra skjutreglaget **för parallellitet** till **1**.
 

@@ -4,10 +4,10 @@ description: Lär dig hur du säkerhetskopierar Microsoft Azure Backup Server (M
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172120"
 ---
 # <a name="back-up-the-mabs-server"></a>Säkerhetskopiera MABS-servern
@@ -72,7 +72,7 @@ Du kan återställa databasen från Azure med hjälp av en MABS-server som är r
 
 2. Ange autentiseringsuppgifter för valvet (Ladda ned från Azure Backup-valvet). Observera att autentiseringsuppgifterna bara är giltiga i två dagar.
 
-3. I **Välj externa Mabs för återställning**väljer du den Mabs-server som du vill återställa databasen för, skriver in krypterings lösen frasen och väljer **OK.**
+3. I **Välj externa Mabs för återställning** väljer du den Mabs-server som du vill återställa databasen för, skriver in krypterings lösen frasen och väljer **OK.**
 
 4. Välj den återställningspunkt som du vill använda från listan över tillgängliga punkter. Välj **Rensa externa Mabs** för att återgå till den lokala Mabs-vyn.
 
@@ -194,7 +194,7 @@ Det här säkerhets kopierings alternativet använder inbyggd SQL för att säke
 
 ### <a name="before-you-start"></a>Innan du börjar
 
-1. På SQL Server, gör du en mapp på en enhet med tillräckligt mycket ledigt utrymme för att lagra en enda kopia av en säkerhets kopia. Till exempel: `C:\MABSBACKUP`.
+1. På SQL Server, gör du en mapp på en enhet med tillräckligt mycket ledigt utrymme för att lagra en enda kopia av en säkerhets kopia. Exempel: `C:\MABSBACKUP`.
 
 1. Dela mappen. Dela till exempel `C:\MABSBACKUP` mappen som *DPMBackup*.
 
@@ -226,7 +226,7 @@ Det här säkerhets kopierings alternativet använder inbyggd SQL för att säke
 
 1. Om du inte aktiverar självbetjänings återställning behöver du några ytterligare steg för att dela mappen MABSBACKUP på repliken:
 
-    1. I MABS-konsolen > **skydd**letar du upp data källan MABSBACKUP och markerar den. I avsnittet information väljer **du klicka för att visa information** om länken till replik Sök vägen och kopierar sökvägen till anteckningar. Ta bort källsökvägen och behåll målsökvägen. Sökvägen bör se ut ungefär så här: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
+    1. I MABS-konsolen > **skydd** letar du upp data källan MABSBACKUP och markerar den. I avsnittet information väljer **du klicka för att visa information** om länken till replik Sök vägen och kopierar sökvägen till anteckningar. Ta bort källsökvägen och behåll målsökvägen. Sökvägen bör se ut ungefär så här: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
 
     2. Gör en resurs till den sökvägen med hjälp av resurs namnet **MABSSERVERNAME-DPMDB**. Du kan använda kommandot Net Share nedan från en administrativ kommandotolk.
 
@@ -287,7 +287,7 @@ Du kan säkerhetskopiera MABS-databasen på samma sätt som andra SQL Server-dat
 | Parameter      | Beskrivning    |
 |----------------|-----------------------------|
 | **– RestoreDb**                       | Återställer en MABS-databas från en angiven plats.|
-| **-Synkronisera**                            | Synkroniserar återställda databaser. Du måste köra **DpmSync – sync** när du har återställt databaserna. När du har kört **DpmSync – sync**kan vissa repliker fortfarande markeras som saknade. |
+| **-Synkronisera**                            | Synkroniserar återställda databaser. Du måste köra **DpmSync – sync** när du har återställt databaserna. När du har kört **DpmSync – sync** kan vissa repliker fortfarande markeras som saknade. |
 | **– DbLoc-** *plats*                | Identifierar platsen för säkerhets kopieringen av MABS-databasen.|
 | **-InstanceName** <br/>*server\instance*     | Instans som DPMDB måste återställas till.|
 | **– ReallocateReplica**         | Allokerar om alla replik volymer som saknas utan synkronisering. |

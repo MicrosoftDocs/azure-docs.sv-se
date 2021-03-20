@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: fc0eb196ed24e413c35d64f0571ff29dc3725032
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421285"
 ---
 # <a name="init-image-transformation"></a>Initiera bildtransformering
@@ -24,9 +24,9 @@ Den här artikeln beskriver hur du använder modulen **init-avbildnings-omvandli
 
 1.  Lägg till modulen **init-avbildnings omvandling** i din pipeline i designern. 
 
-2.  För **storleks ändring** anger du om du vill ändra storlek på pil-bilden för indata till den angivna storleken. Om du väljer sant kan du ange önskad storlek för bild storleken i **storlek** , som standard 256. 
+2.  För **storleks ändring** anger du om du vill ändra storlek på pil-bilden för indata till den angivna storleken. Om du väljer sant kan du ange önskad storlek för bild storleken i **storlek**, som standard 256. 
 
-3.  För **Center-beskärning** anger du om du vill beskära den aktuella pil-bilden i mitten. Om du väljer "sant" kan du ange önskad storlek för den resulterande bilden i **beskärnings storlek** , som standard 224.  
+3.  För **Center-beskärning** anger du om du vill beskära den aktuella pil-bilden i mitten. Om du väljer "sant" kan du ange önskad storlek för den resulterande bilden i **beskärnings storlek**, som standard 224.  
 
 4.  Ange om du vill fylla den aktuella PIL-bilden på alla sidor med pad-värdet 0 för **pad**. Om du väljer sant kan du ange utfyllnad (hur många bild punkter som ska läggas till) för varje kant linje i **utfyllnaden**.
 
@@ -35,17 +35,17 @@ Den här artikeln beskriver hur du använder modulen **init-avbildnings-omvandli
 6.  I **gråskala** anger du om du vill konvertera bilden till gråskala.
 
 7.  Ange om du vill beskära den aktuella PIL-bilden till slumpmässig storlek och proportioner för slumpmässig storleks **ändring**. En beskärning av slumpmässig storlek (mellan 0,08 och 1,0) för den ursprungliga storleken och ett slumpmässigt höjd förhållande (mellan 3/4 och 4/3) för det ursprungliga höjd förhållandet. Den här beskärningen ändrar storlek till den storlek som anges.
-    Detta används vanligt vis för att träna inverkande nätverk. Om du väljer sant kan du ange den förväntade utmatnings storleken för varje kant i **slumpmässig storlek** , som standard 256.
+    Detta används vanligt vis för att träna inverkande nätverk. Om du väljer sant kan du ange den förväntade utmatnings storleken för varje kant i **slumpmässig storlek**, som standard 256.
 
-8.  För **slumpmässig beskärning** anger du om du vill beskära den aktuella pil-bilden på en slumpmässig plats. Om du väljer sant kan du ange önskad utmatnings storlek för beskärningen i **slumpmässig beskärnings storlek** , som standard 224.
+8.  För **slumpmässig beskärning** anger du om du vill beskära den aktuella pil-bilden på en slumpmässig plats. Om du väljer sant kan du ange önskad utmatnings storlek för beskärningen i **slumpmässig beskärnings storlek**, som standard 224.
 
 9.  För **slumpmässig vågrät vändning** anger du om du vill vända den aktuella pil-bilden vågrätt slumpmässigt med sannolikhet 0,5.
 
 10.  För **slumpmässig lodrät vändning** anger du om du vill vända den aktuella pil-bilden lodrätt slumpmässigt med sannolikhet 0,5.
 
-11.  För **slumpmässig rotation** anger du om du vill rotera bilden efter vinkel. Om du väljer sant kan du ange en omfattning i grader genom att ange **slumpmässiga rotations grader** , vilket innebär (-grader, + grader), som standard 0.
+11.  För **slumpmässig rotation** anger du om du vill rotera bilden efter vinkel. Om du väljer sant kan du ange en omfattning i grader genom att ange **slumpmässiga rotations grader**, vilket innebär (-grader, + grader), som standard 0.
 
-12.  För **slumpmässig tillhörighet** anger du om du vill slumpmässigt skapa en slumpmässig tilldelning av avbildningens behållar Center-variant. Om du väljer "sant" kan du ange i ett intervall med grader som du vill välja bland i **slumpmässiga tillhörighets grader** , vilket innebär (-grader, + grader), som standard 0.
+12.  För **slumpmässig tillhörighet** anger du om du vill slumpmässigt skapa en slumpmässig tilldelning av avbildningens behållar Center-variant. Om du väljer "sant" kan du ange i ett intervall med grader som du vill välja bland i **slumpmässiga tillhörighets grader**, vilket innebär (-grader, + grader), som standard 0.
 
 13.  För **slumpmässig gråskala** anger du om du vill konvertera bilden slumpmässigt till gråskala med sannolikhet 0,1.
 
@@ -67,7 +67,7 @@ Se [https://pytorch.org/docs/stable/torchvision/transforms.html](https://pytorch
 
 ###  <a name="module-parameters"></a>Parametrar för modul  
 
-| Name                    | Intervall   | Typ    | Standard | Description                              |
+| Name                    | Intervall   | Typ    | Standardvärde | Beskrivning                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Ändra storlek                  | Valfri     | Boolesk | Sant    | Ändra storlek på PIL-avbildningen till den angivna storleken |
 | Storlek                    | >= 1     | Integer | 256     | Ange önskad storlek på utdata          |
@@ -93,7 +93,7 @@ Se [https://pytorch.org/docs/stable/torchvision/transforms.html](https://pytorch
 
 ###  <a name="output"></a>Utdata  
 
-| Namn                        | Typ                    | Description                              |
+| Namn                        | Typ                    | Beskrivning                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Transformering av utgående avbildning | TransformationDirectory | Transformering av utgående avbildning som kan anslutas till **Använd bild-Transformation** . |
 

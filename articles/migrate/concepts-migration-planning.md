@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753866"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Skapa migreringsplan med Azure Migrate
@@ -23,7 +23,7 @@ Innan du börjar, kan det vara bra att förstå och utvärdera dina [motivation]
 
 **Affärs händelse** | **Migrerings resultat**
 --- | ---
-Avsluta data Center | Kostnad 
+Avsluta data Center | Cost 
 Sammanslagning, förvärv eller Divestiture | Minskning av leverantör/teknisk komplexitet
 Minskning av kapital kostnader | Optimering av interna åtgärder
 Slut på support för verksamhets kritiska tekniker | Öka flexibiliteten i verksamheten
@@ -116,7 +116,7 @@ Några rekommendationer:
 
 - **Prioritera snabb WINS**: Använd utvärderings rapporterna för att identifiera låg hängande frukt, inklusive servrar och databaser som är helt klara och som kräver minimal ansträngning för att migrera till Azure. I tabellen sammanfattas några sätt att göra detta.
 
-    **Stat** | **Åtgärd**
+    **Tillstånd** | **Åtgärd**
     --- | ---
     **Azure-klara virtuella datorer** | Exportera utvärderings rapporten och filtrera alla datorer med tillstånd *redo för Azure*. Det kan vara den första gruppen av datorer som du lyfter och flyttar till Azure med hjälp av [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-migration-tool) .
     **Operativ system som stöder support** | Exportera utvärderings rapporten och filtrera alla datorer som kör Windows Server 2008 R2/Windows Server 2008. Dessa operativ system är i slutet av supporten och endast Azure tillhandahåller ett kostnads fritt tre års säkerhets uppdateringar när du migrerar dem till Azure. Om du kombinerar Azure Hybrid-förmån och använder Fjärrinstallationstjänster kan besparingarna vara mycket högre.

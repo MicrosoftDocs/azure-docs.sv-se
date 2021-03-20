@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
 ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913763"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Använd privat länk i virtuellt WAN
@@ -38,11 +38,11 @@ Du kan skapa en privat länk slut punkt för många olika tjänster. I det här 
 
 När du har skapat Azure SQL Database kan du kontrol lera den privata slut punktens IP-adress bläddra bland dina privata slut punkter:
 
-:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="Skapa privat länk" lightbox="./media/howto-private-link/endpoints.png":::
+:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="private endpoints" lightbox="./media/howto-private-link/endpoints.png":::
 
 När du klickar på den privata slut punkten som vi har skapat bör du se dess privata IP-adress, samt dess fullständigt kvalificerade domän namn (FQDN). Observera att den privata slut punkten har en IP-adress i intervallet för det VNet där den har distribuerats (10.1.3.0/24):
 
-:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="Skapa privat länk" lightbox="./media/howto-private-link/sql-endpoint.png":::
+:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="SQL-slutpunkt" lightbox="./media/howto-private-link/sql-endpoint.png":::
 
 ## <a name="verify-connectivity-from-the-same-vnet"></a><a name="connectivity"></a>Kontrol lera anslutningen från samma VNet
 
@@ -61,7 +61,7 @@ Address: 10.1.3.228
 
 Som du kan se i föregående utdata `wantest.database.windows.net` mappas FQDN till `wantest.privatelink.database.windows.net` , som den privata DNS-zon som skapats längs den privata slut punkten kommer att matcha till den privata IP-adressen `10.1.3.228` . Om du tittar på den privata DNS-zonen bekräftas att det finns en post för den privata slut punkten som är mappad till den privata IP-adressen:
 
-:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="Skapa privat länk" lightbox="./media/howto-private-link/dns-zone.png":::
+:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="DNS-zon" lightbox="./media/howto-private-link/dns-zone.png":::
 
 När du har verifierat rätt DNS-matchning kan vi försöka ansluta till databasen:
 
@@ -87,7 +87,7 @@ När du har anslutit till VNet eller grenen till det virtuella nätverk där den
 
 I det här exemplet ansluter vi från ett annat virtuellt nätverk, så vi ska först koppla den privata DNS-zonen till det nya virtuella nätverket så att dess arbets belastningar kan matcha det Azure SQL Database fullständiga domän namnet till den privata IP-adressen. Detta görs genom länkning av den privata DNS-zonen till det nya VNet:
 
-:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="Skapa privat länk" lightbox="./media/howto-private-link/dns-link.png":::
+:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="DNS-länk" lightbox="./media/howto-private-link/dns-link.png":::
 
 Nu bör den virtuella datorn i det anslutna VNet-nätverket matcha Azure SQL Database FQDN till den privata länkens privata IP-adress:
 
@@ -104,7 +104,7 @@ Address: 10.1.3.228
 
 För att kunna kontrol lera att detta VNet (10.1.1.0/24) har anslutning till det ursprungliga VNet där den privata slut punkten har kon figurer ATS (10.1.3.0/24), kan du kontrol lera den effektiva routningstabellen i alla virtuella datorer i VNet:
 
-:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="Skapa privat länk" lightbox="./media/howto-private-link/effective-routes.png":::
+:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="effektiva vägar" lightbox="./media/howto-private-link/effective-routes.png":::
 
 Som du kan se finns en väg som pekar på VNet-10.1.3.0/24 som injiceras av Virtual Network gateways i Azure Virtual WAN. Nu kan vi slutligen testa anslutningen till databasen:
 

@@ -18,10 +18,10 @@ ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014509"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Självstudie: Diagnostisera problem med nätverksroutning i Azure Portal
@@ -55,7 +55,7 @@ Logga in på Azure Portal på https://portal.azure.com.
     |Lösenord| Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Prenumeration| Välj din prenumeration.|
     |Resursgrupp| Välj **Skapa ny** och skriv **myResourceGroup**.|
-    |Plats| Välj **USA, östra**|
+    |Location| Välj **USA, östra**|
 
 4. Välj en storlek för den virtuella datorn och sedan **Välj**.
 5. Acceptera standardinställningarna under **Inställningar** och välj **OK**.

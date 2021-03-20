@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 97051e97ec9868f6941b579241e16e62fdd2162b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96751792"
 ---
 # <a name="add-migration-tools"></a>Lägga till migreringsverktyg
@@ -41,7 +41,7 @@ I den här artikeln beskrivs hur du lägger till Migreringsverktyg i [Azure Migr
     
          ![Knapp för att lägga till ytterligare Migreringsverktyg](./media/how-to-migrate/add-migration-tools.png)
 
-    - Om du har skapat ett projekt med ett annat alternativ och ännu inte har några Migreringsverktyg, i Migreringsverktyg för **servrar**  >  **Migration tools**, väljer du **Klicka här**.
+    - Om du har skapat ett projekt med ett annat alternativ och ännu inte har några Migreringsverktyg, i Migreringsverktyg för **servrar**  >  , väljer du **Klicka här**.
 
     ![Knapp för att lägga till verktyg för första migrering](./media/how-to-migrate/no-migration-tool.png)
 
@@ -54,7 +54,7 @@ I den här artikeln beskrivs hur du lägger till Migreringsverktyg i [Azure Migr
 
 Om du har skapat ett Azure Migrate-projekt med hjälp av alternativet **utvärdera och migrera databas** i portalen läggs Migreringsverktyget för databas automatiskt till i projektet. 
 
-1. Om migreringen av databasen inte finns i projektet väljer du **Databases**  >  **Klicka här** i **utvärderings verktyg** för databaser.
+1. Om migreringen av databasen inte finns i projektet väljer du   >  **Klicka här** i **utvärderings verktyg** för databaser.
     
     ![Lägga till Migreringsverktyg för databas](./media/how-to-migrate/no-database-migration-tool.png)
 

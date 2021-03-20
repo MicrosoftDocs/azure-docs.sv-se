@@ -4,10 +4,10 @@ description: Den här artikeln innehåller information om hur du autentiserar et
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913321"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Autentisera ett program med Azure Active Directory för att få åtkomst till Event Hubs resurser
@@ -48,7 +48,7 @@ Följande bilder visar steg för att registrera ett webb program:
 > [!Note]
 > Om du registrerar ditt program som ett internt program kan du ange en giltig URI för omdirigerings-URI: n. För interna program behöver det här värdet inte vara en riktig URL. För webb program måste omdirigerings-URI: n vara en giltig URI, eftersom den anger den URL till vilken tokens anges.
 
-När du har registrerat ditt program visas **program-ID: t (klient)** under **Inställningar** :
+När du har registrerat ditt program visas **program-ID: t (klient)** under **Inställningar**:
 
 ![Program-ID för det registrerade programmet](./media/authenticate-application/application-id.png)
 
@@ -75,7 +75,7 @@ När du har registrerat programmet tilldelar du programmets tjänst huvud namn t
 
     ![Välj händelsehubben](./media/authenticate-application/select-event-hub.png)
 1. Välj **Access Control (IAM)** om du vill visa inställningar för åtkomst kontroll för händelsehubben. 
-1. Välj fliken **roll tilldelningar** om du vill se en lista över roll tilldelningar. Välj knappen **Lägg till** i verktygsfältet och välj sedan **Lägg till roll tilldelning** . 
+1. Välj fliken **roll tilldelningar** om du vill se en lista över roll tilldelningar. Välj knappen **Lägg till** i verktygsfältet och välj sedan **Lägg till roll tilldelning**. 
 
     ![Knappen Lägg till i verktygsfältet](./media/authenticate-application/role-assignments-add-button.png)
 1. Utför följande steg på sidan **Lägg till roll tilldelning** :
