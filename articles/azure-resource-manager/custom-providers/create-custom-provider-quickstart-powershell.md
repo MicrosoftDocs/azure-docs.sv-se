@@ -8,10 +8,10 @@ ms.devlang: azurepowershell
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6912f7f6fdc88c5d611bfbfd78f15e5f7a949f70
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951850"
 ---
 # <a name="quickstart-create-an-azure-custom-resource-provider-with-azure-powershell"></a>Snabb start: skapa en Azure-anpassad resurs leverantör med Azure PowerShell
@@ -19,7 +19,7 @@ ms.locfileid: "91951850"
 I den här snabb starten får du lära dig hur du skapar en egen Azure-anpassad resurs leverantör med hjälp av PowerShell-modulen [AZ. CustomProviders](/powershell/module/az.customproviders) .
 
 > [!CAUTION]
-> Azure-anpassade leverantörer är för närvarande en offentlig för hands version. Den här för hands versionen tillhandahålls utan service nivå avtal. Det rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure-anpassade leverantörer är för närvarande en offentlig för hands version. Förhandsversionen tillhandahålls utan serviceavtal. Den rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Krav
 

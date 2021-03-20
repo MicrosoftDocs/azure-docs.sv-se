@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923406"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-språk översikt för `$filter` , `$orderby` och `$select` i Azure kognitiv sökning
 
-Azure Kognitiv sökning stöder en delmängd av OData-uttryckets syntax för **$filter**, **$OrderBy**och **$Select** uttryck. Filter uttryck utvärderas under analys av frågor, vilket begränsar sökningen till vissa fält eller lägger till matchnings villkor som används vid index genomsökningar. Order by-uttryck används som ett steg efter bearbetning över en resultat uppsättning för att sortera de dokument som returneras. Välj uttryck avgör vilka dokument fält som ska ingå i resultat uppsättningen. Syntaxen för dessa uttryck skiljer sig från den [enkla](query-simple-syntax.md) eller [fullständiga](query-lucene-syntax.md) frågesyntaxen som används i **Sök** parametern, men det finns vissa överlappande i syntaxen för att referera till fält.
+Azure Kognitiv sökning stöder en delmängd av OData-uttryckets syntax för **$filter**, **$OrderBy** och **$Select** uttryck. Filter uttryck utvärderas under analys av frågor, vilket begränsar sökningen till vissa fält eller lägger till matchnings villkor som används vid index genomsökningar. Order by-uttryck används som ett steg efter bearbetning över en resultat uppsättning för att sortera de dokument som returneras. Välj uttryck avgör vilka dokument fält som ska ingå i resultat uppsättningen. Syntaxen för dessa uttryck skiljer sig från den [enkla](query-simple-syntax.md) eller [fullständiga](query-lucene-syntax.md) frågesyntaxen som används i **Sök** parametern, men det finns vissa överlappande i syntaxen för att referera till fält.
 
 Den här artikeln innehåller en översikt över det OData Expression-språk som används i filter, order by och SELECT-uttryck. Språket visas som "bottom-up", som börjar med de mest grundläggande elementen och bygger på dem. Syntaxen på den översta nivån för varje parameter beskrivs i en separat artikel:
 
@@ -79,7 +79,7 @@ Exempel på fält Sök vägar visas i följande tabell:
 | `room/Type` | Refererar till `Type` under fältet för `room` variabeln Range, till exempel i filter uttrycket `Rooms/any(room: room/Type eq 'deluxe')` |
 | `store/Address/Country` | Refererar till `Country` under fältet i `Address` under fältet för `store` variabeln Range, till exempel i filter uttrycket `Stores/any(store: store/Address/Country eq 'Canada')` |
 
-Betydelsen av en fält Sök väg varierar beroende på kontexten. I filter refererar en fält Sök väg till värdet för en *enda instans* av ett fält i det aktuella dokumentet. I andra sammanhang, t. ex. **$OrderBy**, **$Select**eller i [fältet sökning i den fullständiga Lucene-syntaxen](query-lucene-syntax.md#bkmk_fields), refererar en fält Sök väg till själva fältet. Denna skillnad har vissa följder för hur du använder fält Sök vägar i filter.
+Betydelsen av en fält Sök väg varierar beroende på kontexten. I filter refererar en fält Sök väg till värdet för en *enda instans* av ett fält i det aktuella dokumentet. I andra sammanhang, t. ex. **$OrderBy**, **$Select** eller i [fältet sökning i den fullständiga Lucene-syntaxen](query-lucene-syntax.md#bkmk_fields), refererar en fält Sök väg till själva fältet. Denna skillnad har vissa följder för hur du använder fält Sök vägar i filter.
 
 Överväg fält Sök vägen `Address/City` . I ett filter refererar detta till en enda stad för det aktuella dokumentet, t. ex. "San Francisco". `Rooms/Type`Till skillnad från, refererar till `Type` under fältet för många rum (som "standard" för det första rummet, "Deluxe" för det andra rummet osv.). Eftersom `Rooms/Type` inte refererar till en *enskild instans* av det underordnade fältet `Type` , kan den inte användas direkt i ett filter. Om du i stället vill filtrera efter rums typ använder du ett [lambda-uttryck](search-query-odata-collection-operators.md) med en intervall variabel, så här:
 
@@ -211,7 +211,7 @@ Fält Sök vägar och konstanter är den mest grundläggande delen av ett OData-
 
 I de flesta fall behöver du dock mer komplexa uttryck som refererar till mer än ett fält och konstant. Dessa uttryck är inbyggda på olika sätt beroende på parametern.
 
-Följande EBNF ([utökad Backus-Naur form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definierar grammatiken för parametrarna **$filter**, **$OrderBy**och **$Select** . Dessa är skapade med enklare uttryck som refererar till fält Sök vägar och konstanter:
+Följande EBNF ([utökad Backus-Naur form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definierar grammatiken för parametrarna **$filter**, **$OrderBy** och **$Select** . Dessa är skapade med enklare uttryck som refererar till fält Sök vägar och konstanter:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -233,7 +233,7 @@ Ett interaktivt syntax diagram är också tillgängligt:
 
 Parametrarna **$OrderBy** och **$Select** är båda kommaavgränsade listor med enklare uttryck. Parametern **$filter** är ett booleskt uttryck som består av enklare del uttryck. Dessa under uttryck kombineras med logiska operatorer som [ `and` , `or` , `not` och ](search-query-odata-logical-operators.md), jämförelse operatorer som [ `eq` ,, `lt` `gt` och så](search-query-odata-comparison-operators.md)vidare, och samlings operatorer som [ `any` och `all` ](search-query-odata-collection-operators.md).
 
-Parametrarna **$filter**, **$OrderBy**och **$Select** visas mer ingående i följande artiklar:
+Parametrarna **$filter**, **$OrderBy** och **$Select** visas mer ingående i följande artiklar:
 
 - [OData $filter-syntax i Azure Kognitiv sökning](search-query-odata-filter.md)
 - [OData $orderby-syntax i Azure Kognitiv sökning](search-query-odata-orderby.md)

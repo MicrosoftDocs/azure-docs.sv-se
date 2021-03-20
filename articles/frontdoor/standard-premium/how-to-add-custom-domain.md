@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 164e06024844fb5262586450b737db9c807e373a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100456"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588757"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Skapa en anpassad domän i Azure frontend standard/Premium SKU (för hands version) med hjälp av Azure Portal
 
@@ -38,6 +38,9 @@ När du har skapat en standard-/Premium-profil för Azure-dörren har standard k
 * Om du använder Azure som värd för dina [DNS-domäner](../../dns/dns-overview.md)måste du delegera DOMÄNens DNS-domännamn (Domain Name System) till en Azure DNS. Mer information finns i [delegera en domän till Azure DNS](../../dns/dns-delegate-domain-azure-dns.md). Annars, om du använder en domän leverantör för att hantera DNS-domänen, måste du verifiera domänen manuellt genom att ange de begärda DNS-TXT-posterna.
 
 ## <a name="add-a-new-custom-domain"></a>Lägg till en ny anpassad domän
+
+> [!NOTE]
+> I den offentliga för hands versionen kan du inte använda Azure DNS för att skapa Apex-domäner i Azures främre dörr standard/Premium. Det finns andra DNS-leverantörer som stöder CNAME-förenkling eller DNS-jaga som gör det möjligt att använda APEX-domäner för Azures främre dörr standard/Premium.
 
 Avsnittet för en anpassad domän hanteras av domäner i portalen. En anpassad domän kan skapas och verifieras före en koppling till en slut punkt. En anpassad domän och dess under domäner kan bara associeras med en enda slut punkt i taget. Du kan dock använda olika under domäner från samma anpassade domän för olika front dörrar. Du kan också mappa anpassade domäner med olika under domäner till samma front dörrs slut punkt.
 

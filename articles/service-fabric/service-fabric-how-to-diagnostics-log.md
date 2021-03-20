@@ -7,10 +7,10 @@ ms.date: 03/27/2018
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89011488"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Lägga till loggning för ditt Service Fabric-program
@@ -126,7 +126,7 @@ ASP.NET Core loggning ([Microsoft. Extensions. logging NuGet-paketet](https://ww
 
 Vissa leverantörer av tredje part använder den metod som beskrivs i föregående avsnitt, inklusive [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/)och [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Du kan ansluta var och en av dessa till ASP.NET Core loggning, eller så kan du använda dem separat. Serilog har en funktion som berikar alla meddelanden som skickas från en loggare. Den här funktionen kan vara användbar för att mata ut tjänst namn, typ och partitionsinformation. Gör så här för att använda den här funktionen i ASP.NET Core-infrastrukturen:
 
-1. Lägg till **Serilog**, **Serilog. Extensions. logging**, **Serilog. sinks. translittererad**och **Serilog. sinks.** det går att lägga till NuGet-paket i projektet. 
+1. Lägg till **Serilog**, **Serilog. Extensions. logging**, **Serilog. sinks. translittererad** och **Serilog. sinks.** det går att lägga till NuGet-paket i projektet. 
 2. Skapa en `LoggerConfiguration` och logg instansen.
 
    ```csharp
@@ -139,7 +139,7 @@ Vissa leverantörer av tredje part använder den metod som beskrivs i föregåen
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. I konstruktorn för tjänster skapas egenskaper för **ServiceTypeName**, **ServiceName**, **PartitionID**och **InstanceID**.
+4. I konstruktorn för tjänster skapas egenskaper för **ServiceTypeName**, **ServiceName**, **PartitionID** och **InstanceID**.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)

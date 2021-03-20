@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 1f7eb3b38b4ae04e81839fce2b14c1a84f3f0204
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564602"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580376"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Installera och konfigurera xrdp för att använda fjärr skrivbord med Ubuntu
 
@@ -138,7 +138,7 @@ tail -f /var/log/syslog
 
 Andra Linux-distributioner som Red Hat Enterprise Linux och SUSE kan ha olika sätt att starta om tjänster och alternativa logg fils platser att granska.
 
-Om du inte får några svar på fjärr skrivbords klienten och inte ser några händelser i system loggen visar det här beteendet att fjärr skrivbords trafik inte kan komma åt den virtuella datorn. Granska reglerna för nätverks säkerhets gruppen så att du har en regel för att tillåta TCP på port 3389. Mer information finns i [Felsöka problem med program anslutningen](../troubleshooting/troubleshoot-app-connection.md).
+Om du inte får några svar på fjärr skrivbords klienten och inte ser några händelser i system loggen visar det här beteendet att fjärr skrivbords trafik inte kan komma åt den virtuella datorn. Granska reglerna för nätverks säkerhets gruppen så att du har en regel för att tillåta TCP på port 3389. Mer information finns i [Felsöka problem med program anslutningen](/troubleshoot/azure/virtual-machines/troubleshoot-app-connection).
 
 
 ## <a name="next-steps"></a>Nästa steg

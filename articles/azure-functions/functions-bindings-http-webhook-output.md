@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697450"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions HTTP-utgående bindningar
@@ -64,9 +64,9 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 }
 ```
 
-|Egenskap  |Default | Beskrivning |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------| 
-| customHeaders|ingen|Gör att du kan ange anpassade rubriker i HTTP-svaret. I föregående exempel läggs `X-Content-Type-Options` rubriken till i svaret för att undvika avlyssning av innehålls typ. |
+| customHeaders|inget|Gör att du kan ange anpassade rubriker i HTTP-svaret. I föregående exempel läggs `X-Content-Type-Options` rubriken till i svaret för att undvika avlyssning av innehålls typ. |
 |dynamicThrottlesEnabled|värdet<sup>\*</sup>|När den här inställningen är aktive rad kommer pipeline för bearbetning av begär Anden att regelbundet kontrol lera system prestanda räknare `connections/threads/processes/memory/cpu/etc` , som och om någon av dessa räknare är över en inbyggd hög tröskel (80%), avvisas begär Anden med ett `429 "Too Busy"` svar tills räknarna återgår till normala nivåer.<br/><sup>\*</sup>Standardvärdet i en förbruknings plan är `true` . Standardvärdet i en dedikerad plan är `false` .|
 |HSTS|inte aktiverat|När `isEnabled` är inställt på `true` , tillämpas [http Strict Transport Security (HSTS)-beteendet för .net Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) enligt definitionen i [ `HstsOptions` klassen](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). I exemplet ovan anges också [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) egenskapen till 10 dagar. Följande egenskaper stöds `hsts` : <table><tr><th>Egenskap</th><th>Beskrivning</th></tr><tr><td>excludedHosts</td><td>En sträng mat ris med värd namn som HSTS-huvudet inte har lagts till för.</td></tr><tr><td>includeSubDomains</td><td>Booleskt värde som anger om parametern includeSubDomain för rubriken Strict-Transport-Security är aktive rad.</td></tr><tr><td>maxAge</td><td>Sträng som definierar Max-ålders parametern för huvudet Strict-Transport-Security.</td></tr><tr><td>preload</td><td>Booleskt värde som anger om preload-parametern för ett strikt-Transport-Security-huvud är aktive rad.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Maximalt antal HTTP-funktioner som körs parallellt. Med det här värdet kan du kontrol lera samtidighet, vilket kan hjälpa dig att hantera resursutnyttjande. Du kan till exempel ha en HTTP-funktion som använder ett stort antal system resurser (minne/processor/Sockets) så att den orsakar problem när samtidigheten är för hög. Eller så kanske du har en funktion som gör utgående begär anden till en tjänst från tredje part, och dessa anrop måste vara begränsade. I dessa fall kan det hjälpa att tillämpa en begränsning. <br/><sup>*</sup>Standardvärdet för en förbruknings plan är 100. Standardvärdet för en dedikerad plan är obundet ( `-1` ).|

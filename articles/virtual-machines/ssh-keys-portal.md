@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88929454"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Skapa och lagra SSH-nycklar i Azure Portal
@@ -28,7 +28,7 @@ Mer detaljerad information om hur du skapar och använder SSH-nycklar med virtue
 
 1. Öppna [Azure-portalen](https://portal.azure.com).
 
-1. Skriv *SSH* att söka efter längst upp på sidan. Under **Marketplace**väljer du **SSH-nycklar**.
+1. Skriv *SSH* att söka efter längst upp på sidan. Under **Marketplace** väljer du **SSH-nycklar**.
 
 1. På sidan **SSH-nyckel** väljer du **skapa**.
 
@@ -40,7 +40,7 @@ Mer detaljerad information om hur du skapar och använder SSH-nycklar med virtue
 
 1. Ange ett namn för nyckeln i **nyckel par namn**.
 
-1. I **källa för offentlig SSH-nyckel**väljer du **generera källa för offentlig nyckel**. 
+1. I **källa för offentlig SSH-nyckel** väljer du **generera källa för offentlig nyckel**. 
 
 1. När du är färdig väljer du **Granska + skapa**.
 
@@ -48,7 +48,7 @@ Mer detaljerad information om hur du skapar och använder SSH-nycklar med virtue
 
 1. Sedan kan du hämta ett popup-fönster till, välja **Hämta privat nyckel och skapa resurs**. SSH-nyckeln överförs som en. PEM-fil.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Skapa en ny resurs grupp och generera ett SSH-nyckelpar":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Hämta den privata nyckeln som en. PEM-fil":::
 
 1. När. pem-filen har hämtats kanske du vill flytta den någonstans på datorn där det är enkelt att peka på från SSH-klienten.
 
@@ -70,11 +70,11 @@ Du kan också ladda upp en offentlig SSH-nyckel för att lagra i Azure. Informat
 
 1. Öppna [Azure-portalen](https://portal.azure.com).
 
-1. Skriv *SSH* att söka efter längst upp på sidan. Under **Marketplace*väljer du **SSH-nycklar**.
+1. Skriv *SSH* att söka efter längst upp på sidan. Under **Marketplace* väljer du **SSH-nycklar**.
 
 1. På sidan **SSH-nyckel** väljer du **skapa**.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Skapa en ny resurs grupp och generera ett SSH-nyckelpar":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Ladda upp en offentlig SSH-nyckel som ska lagras i Azure":::
 
 1. I **resurs grupp** väljer du **Skapa nytt** för att skapa en ny resurs grupp för att lagra dina nycklar. Skriv ett namn för resurs gruppen och välj **OK**.
 
@@ -82,7 +82,7 @@ Du kan också ladda upp en offentlig SSH-nyckel för att lagra i Azure. Informat
 
 1. Ange ett namn för nyckeln i **nyckel par namn**.
 
-1. I **källa för offentlig SSH-nyckel**väljer du **Ladda upp befintlig offentlig nyckel**. 
+1. I **källa för offentlig SSH-nyckel** väljer du **Ladda upp befintlig offentlig nyckel**. 
 
 1. Klistra in det fullständiga innehållet i den offentliga nyckeln i **överförings nyckeln** och välj sedan **Granska + skapa**.
 
@@ -98,7 +98,7 @@ SSH-nycklar som skapas i portalen lagras som resurser, så du kan filtrera vyn r
 1. I filtren väljer du **typ**, avmarkerar alternativet **Välj alla** för att rensa listan.
 1. Skriv **SSH** i filtret och välj **SSH-nyckel**.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Skapa en ny resurs grupp och generera ett SSH-nyckelpar":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Skärm bild av hur du filtrerar listan för att se alla dina SSH-nycklar.":::
 
 ## <a name="get-the-public-key"></a>Hämta den offentliga nyckeln
 

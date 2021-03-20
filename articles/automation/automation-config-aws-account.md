@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83837201"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Autentisera runbooks med Amazon Web Services (AWS)
@@ -33,7 +33,7 @@ Du måste lagra AWS-autentiseringsuppgifterna som till gångar i Azure Automatio
 
 När du har skapat och kopierat AWS-säkerhetsnycklarna måste du skapa en inloggnings till gång med Automation-kontot. Med till gången kan du lagra AWS-nycklarna på ett säkert sätt och referera till dem i dina runbooks. Se [skapa en ny inloggnings till gång med Azure Portal](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal). Ange följande AWS-information i de angivna fälten:
     
-* **Namn**  -  **AWScred**eller ett lämpligt värde efter dina namngivnings standarder
+* **Namn**  -  **AWScred** eller ett lämpligt värde efter dina namngivnings standarder
 * **Användar namn** – ditt åtkomst-ID
 * **Lösen ord** – namnet på den hemliga nyckeln 
 

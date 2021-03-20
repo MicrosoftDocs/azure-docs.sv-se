@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 948ca820347c7cdcd560ade46e850f66b25bc88e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987293"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Skapa en Azure Automation-runbook
@@ -55,7 +55,7 @@ Skapa en runbook först. Exempelrunbooken som skapas i den här snabbstarten mat
 
 1. Klicka på **Spara** för att spara en utkast kopia av runbooken.
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook.":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook med ett kod exempel i det högra fönstret.":::
 
 ## <a name="test-the-runbook"></a>Testa runbooken
 
@@ -65,13 +65,13 @@ När runbooken har skapats måste du testa runbooken för att kontrol lera att d
 
 1. Ange ett värde för **Namn** och klicka på **Starta**. Testjobbet startar och jobbstatus och utdata visas.
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook.":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Skärm bild av test fönstret med ett exempel värde i fältet namn.":::
 
 1. Stäng test fönstret genom att klicka på **X** i det övre högra hörnet. Välj **OK** i popup-fönstret som visas.
 
 1. På sidan Redigera PowerShell-runbook klickar du på **Publicera** för att publicera runbooken som den officiella versionen av runbooken på kontot.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook med knappen publicera vald.":::
 
 ## <a name="run-the-runbook"></a>Köra runbooken
 
@@ -79,15 +79,15 @@ När runbooken har publicerats visas översiktssidan.
 
 1. På översiktssidan i runbooken klickar du på **Starta** för att öppna konfigurationssidan Starta runbook för denna runbook.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Skärm bild av sidan starta Runbook-konfiguration.":::
 
 1. Lämna **Namn** tomt, så standardvärdet används, och klicka på **OK**. Runbook-jobbet skickas och sidan jobb visas.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Skärm bild av jobb sidan som visar knappen utdata vald.":::
 
 1. När jobbets status är `Running` eller `Completed` klickar du på **utdata** för att öppna fönstret utdata och Visa Runbook-utdata.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Skärm bild av sidan Redigera PowerShell-Runbook.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Skärm bild av fönstret utdata som visar Runbook-utdata.":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

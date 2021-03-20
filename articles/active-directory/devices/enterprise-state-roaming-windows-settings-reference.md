@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85252975"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referens för Windows 10-växlingsinställningar
@@ -26,7 +26,7 @@ Följande är en lista över de inställningar som kommer att roamas eller säke
 
 I följande tabell finns en sammanfattning av de enheter och konto typer som stöds av ramverket för synkronisering, säkerhets kopiering och återställning i Windows 10.
 
-| Konto typ och åtgärd | Skrivbord | Mobil |
+| Konto typ och åtgärd | Skrivbord | Mobilt |
 | --- | --- | --- |
 | Azure Active Directory: synkronisera |Ja |Inga |
 | Azure Active Directory: säkerhets kopiering/återställning |Inga |Inga |
@@ -69,7 +69,7 @@ I följande tabell refererar andra poster i kolumnen inställnings grupp till in
 Interna poster i kolumnen Settings Group avser inställningar och appar som bara kan inaktive ras från synkronisering i själva appen eller genom att inaktivera synkronisering för hela enheten med hantering av mobila enheter (MDM) eller grupprincip inställningar.
 Inställningar som inte är roaming eller synkronisering tillhör inte någon grupp.
 
-| Inställningar | Skrivbord | Mobil | Group |
+| Inställningar | Skrivbord | Mobilt | Group |
 | --- | --- | --- | --- |
 | **Konton**: konto bild |sync |X |Tema |
 | **Konton**: andra konto inställningar |X |X | |

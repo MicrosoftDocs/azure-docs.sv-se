@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383707"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gör så här: aktivera enkel inloggning mellan appar på iOS med ADAL
@@ -39,7 +39,7 @@ Den här instruktionen gäller för:
 * Azure Active Directory B2B
 * Azure Active Directory villkorlig åtkomst
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här instruktionen förutsätter att du vet hur du:
 
@@ -239,7 +239,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > När du delar en nyckel Ring i dina program kan alla program ta bort användare eller förvärra alla tokens i programmet. Detta är särskilt katastrofal om du har program som är beroende av att token ska fungera i bakgrunden. Delning av en nyckel Ring innebär att du måste vara mycket försiktig i alla och alla borttagnings åtgärder via identitets-SDK: er.
 
-Det är allt. SDK kommer nu att dela autentiseringsuppgifter för alla dina program. Användar listan kommer också att delas mellan program instanser.
+Klart! SDK kommer nu att dela autentiseringsuppgifter för alla dina program. Användar listan kommer också att delas mellan program instanser.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Aktivera SSO för Service Broker via enkel inloggning
 

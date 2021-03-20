@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
 ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92676008"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Snabb start: skapa en Traffic Manager profil med en ARM-mall
@@ -21,7 +21,7 @@ I den här snabb starten beskrivs hur du använder en Azure Resource Manager mal
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-traffic-manager-external-endpoint%2Fazuredeploy.json)
 
@@ -62,11 +62,11 @@ Du hittar fler mallar som är relaterade till Azure Traffic Manager i [Azure sna
 
 1. Kopiera PowerShell-skriptet genom att välja **Kopiera** från föregående kodblock.
 
-1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in** .
+1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in**.
 
 1. Ange värdena.
 
-    Mallen för distribution skapar en profil med två externa slut punkter. **Endpoint1** använder en mål slut punkt `www.microsoft.com` med platsen i **Nord Europa** . **Endpoint2** använder en mål slut punkt med `docs.microsoft.com` platsen i **södra centrala USA** .
+    Mallen för distribution skapar en profil med två externa slut punkter. **Endpoint1** använder en mål slut punkt `www.microsoft.com` med platsen i **Nord Europa**. **Endpoint2** använder en mål slut punkt med `docs.microsoft.com` platsen i **södra centrala USA**.
 
     Resurs gruppens namn är projekt namnet med **RG** tillagt.
 

@@ -9,10 +9,10 @@ ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
 ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91997472"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Snabb start: skapa en python-app med Azure App konfiguration
@@ -36,7 +36,7 @@ I den här snabb starten ska du använda Azure App konfiguration för att centra
 
     Lämna **etiketten** och **innehålls typen** tom för tillfället.
 
-8. Välj **Tillämpa**.
+8. Välj **Använd**.
 
 ## <a name="setting-up-the-python-app"></a>Konfigurera python-appen
 
@@ -77,7 +77,7 @@ I den här snabb starten ska du använda Azure App konfiguration för att centra
 
 ## <a name="configure-your-app-configuration-connection-string"></a>Konfigurera anslutnings strängen för din app-konfiguration
 
-1. Ange en miljö variabel med namnet **AZURE_APP_CONFIG_CONNECTION_STRING**och ange den som åtkomst nyckel till appens konfigurations arkiv. Kör följande kommando på kommando raden:
+1. Ange en miljö variabel med namnet **AZURE_APP_CONFIG_CONNECTION_STRING** och ange den som åtkomst nyckel till appens konfigurations arkiv. Kör följande kommando på kommando raden:
 
     ```cmd
     setx AZURE_APP_CONFIG_CONNECTION_STRING "connection-string-of-your-app-configuration-store"

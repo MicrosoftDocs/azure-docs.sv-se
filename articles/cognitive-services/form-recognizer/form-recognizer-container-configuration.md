@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86538011"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurera formulär igenkännings behållare
@@ -35,7 +35,7 @@ Du konfigurerar körnings miljön för formulär igenkännings behållare med hj
 
 `ApiKey`Inställningen anger den Azure-resurs nyckel som används för att spåra fakturerings information för behållaren. Värdet för ApiKey måste vara en giltig nyckel för _formulär igenkännings_ resursen som anges `Billing` i avsnittet "konfigurations inställning för fakturering".
 
-Du hittar den här inställningen i Azure Portal i **formulär igenkännings resurs hantering**under **nycklar**.
+Du hittar den här inställningen i Azure Portal i **formulär igenkännings resurs hantering** under **nycklar**.
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-inställning
 
@@ -47,7 +47,7 @@ Du hittar den här inställningen i Azure Portal i **formulär igenkännings res
 
 Du hittar den här inställningen i rutan Azure Portal, i **formulär igenkännings översikt**, under **slut punkt**.
 
-|Krävs| Namn | Datatyp | Beskrivning |
+|Obligatorisk| Name | Datatyp | Beskrivning |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Sträng | URI för fakturerings slut punkt. Mer information om hur du skaffar fakturerings-URI: n finns i [samla in obligatoriska parametrar](form-recognizer-container-howto.md#gathering-required-parameters). Mer information och en fullständig lista över regionala slut punkter finns i [anpassade under domän namn för Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -76,10 +76,10 @@ Formulär identifierarens behållare kräver en indata montering och en utgåend
 
 Den exakta syntaxen för värd monterings platsen varierar beroende på värd operativ systemet. Dessutom kanske [värd datorns](form-recognizer-container-howto.md#the-host-computer) monterings plats inte är tillgänglig på grund av en konflikt mellan Docker-tjänstens konto behörigheter och värd monterings platsens behörigheter.
 
-|Valfritt| Namn | Datatyp | Beskrivning |
+|Valfritt| Name | Datatyp | Beskrivning |
 |-------|------|-----------|-------------|
 |Krävs| `Input` | Sträng | Målet för den inmatade monteringen. Standardvärdet är `/input`.    <br><br>Exempel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Krävs| `Output` | Sträng | Målet för utmatnings monteringen. Standardvärdet är `/output`.  <br><br>Exempel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Obligatorisk| `Output` | Sträng | Målet för utmatnings monteringen. Standardvärdet är `/output`.  <br><br>Exempel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Exempel på Docker-körnings kommandon
 

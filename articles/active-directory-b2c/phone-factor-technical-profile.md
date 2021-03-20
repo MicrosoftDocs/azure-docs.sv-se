@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 322e4b78fbfb38f1822fb7a7cdcdbfcc0738b303
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950405"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en teknisk profil för telefon faktor i en Azure Active Directory B2C anpassad princip
@@ -93,9 +93,9 @@ OutputClaimsTransformations-elementet kan innehålla en samling av OutputClaimsT
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | Ja | Identifieraren för den [innehålls definition](contentdefinitions.md) som är associerad med den här tekniska profilen. |
-| ManualPhoneNumberEntryAllowed| Nej | Ange om en användare får ange ett telefonnummer manuellt. Möjliga värden: `true` , eller `false` (standard).|
-| anger. authenticationMode | Nej | Metoden för att verifiera telefonnumret. Möjliga värden: `sms` , `phone` eller `mixed` (standard).|
-| anger. AutoDial| Nej| Ange om den tekniska profilen ska Ring upp automatiskt eller automatiskt skicka ett SMS. Möjliga värden: `true` , eller `false` (standard). Automatisk uppringning kräver att `setting.authenticationMode` metadata anges till `sms` eller `phone` . Insamlings anspråket måste ha ett enda telefonnummer. |
+| ManualPhoneNumberEntryAllowed| Inga | Ange om en användare får ange ett telefonnummer manuellt. Möjliga värden: `true` , eller `false` (standard).|
+| anger. authenticationMode | Inga | Metoden för att verifiera telefonnumret. Möjliga värden: `sms` , `phone` eller `mixed` (standard).|
+| anger. AutoDial| Inga| Ange om den tekniska profilen ska Ring upp automatiskt eller automatiskt skicka ett SMS. Möjliga värden: `true` , eller `false` (standard). Automatisk uppringning kräver att `setting.authenticationMode` metadata anges till `sms` eller `phone` . Insamlings anspråket måste ha ett enda telefonnummer. |
 
 ### <a name="ui-elements"></a>Element för användargränssnitt
 

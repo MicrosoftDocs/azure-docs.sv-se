@@ -4,10 +4,10 @@ description: Azure Service Fabric accepterar Docker-format för att göra det en
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84691296"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker skapa distributions stöd i Azure Service Fabric (för hands version)
@@ -127,8 +127,8 @@ Konfigurera klustret för tvingande resurs gränser enligt beskrivningen i [Serv
 ### <a name="ports-section"></a>Port avsnitt
 
 Ange antingen http-eller HTTPS-protokollet i avsnittet portar som ska användas av den Service Fabric tjänst lyssnaren. Detta säkerställer att slut punkts protokollet publiceras korrekt med namngivnings tjänsten för att tillåta omvänd proxy att vidarebefordra begär Anden:
-* Ange **/http**för att dirigera till oskyddade Service Fabric Skriv tjänster. Till exempel – **"80:80/http"**.
-* Ange **/https**för att dirigera till säkra Service Fabric Skriv tjänster. Till exempel – **"443:443/https"**.
+* Ange **/http** för att dirigera till oskyddade Service Fabric Skriv tjänster. Till exempel – **"80:80/http"**.
+* Ange **/https** för att dirigera till säkra Service Fabric Skriv tjänster. Till exempel – **"443:443/https"**.
 
 > [!NOTE]
 > /Http och/https ports section-syntax är särskilt Service Fabric för att registrera rätt Service Fabric lyssnar-URL.  Om Docker-filsyntaxen är program mässigt verifierad kan det orsaka ett verifierings fel.

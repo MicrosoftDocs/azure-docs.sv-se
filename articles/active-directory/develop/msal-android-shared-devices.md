@@ -1,7 +1,7 @@
 ---
 title: Läge för delad enhet för Android-enheter
 titleSuffix: Microsoft identity platform | Azure
-description: Lär dig hur du aktiverar delad enhets läge så att firstline arbetare kan dela en Android-enhet
+description: Lär dig hur du aktiverar delad enhets läge så att Frontline arbetare kan dela en Android-enhet
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: a67e0d851ab544f737097eff9a884752cff9f5fc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: bafd6dade626376f216a271c7b3cadc9b429989a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491568"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578829"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Läge för delad enhet för Android-enheter
 
-Firstline-anställda som detalj handels företag, flyg besättnings medlemmar och fält tjänst arbetare använder ofta en delad mobil enhet för att utföra sitt arbete. Det är problematiskt när de börjar dela lösen ord eller PIN-nummer för att komma åt kund-och affärs data på den delade enheten.
+Frontline-anställda som detalj handels företag, flyg besättnings medlemmar och fält tjänst arbetare använder ofta en delad mobil enhet för att utföra sitt arbete. Det är problematiskt när de börjar dela lösen ord eller PIN-nummer för att komma åt kund-och affärs data på den delade enheten.
 
 Med delad enhets läge kan du konfigurera en Android-enhet så att den enkelt kan delas av flera anställda. Anställda kan snabbt logga in och komma åt kund information. När de har slutförts med Skift eller uppgift kan de logga ut från enheten och det är omedelbart klart för nästa medarbetare att använda.
 
@@ -85,7 +85,7 @@ Följande skillnader gäller beroende på om din app körs på en delad eller pe
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Därför kanske du bara vill ha stöd för enanvändarläge
 
-Om du skriver en app som endast ska användas för firstline-anställda som använder en delad enhet rekommenderar vi att du skriver ditt program så att det endast stöder enanvändarläge. Detta inkluderar de flesta program som är aktiviteter fokuserade som medicinska register appar, faktura program och de flesta branschspecifika appar. Endast stöd för enskilda konton fören klar utvecklingen eftersom du inte behöver implementera de ytterligare funktioner som ingår i flera konton.
+Om du skriver en app som endast ska användas för Frontline-anställda som använder en delad enhet rekommenderar vi att du skriver ditt program så att det endast stöder enanvändarläge. Detta inkluderar de flesta program som är aktiviteter fokuserade som medicinska register appar, faktura program och de flesta branschspecifika appar. Endast stöd för enskilda konton fören klar utvecklingen eftersom du inte behöver implementera de ytterligare funktioner som ingår i flera konton.
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>Vad händer när enhets läget ändras
 
@@ -103,4 +103,4 @@ Följande diagram visar den övergripande livs cykeln för appar och vanliga hä
 
 ## <a name="next-steps"></a>Nästa steg
 
-Prova [läget Använd delad enhet i din Android-](tutorial-v2-shared-device-mode.md) programsjälvstudie som visar hur du kör en firstline Worker-app på en Android-enhet i delat läge.
+Prova [läget Använd delad enhet i din Android-](tutorial-v2-shared-device-mode.md) programsjälvstudie som visar hur du kör en Frontline Worker-app på en Android-enhet i delat läge.

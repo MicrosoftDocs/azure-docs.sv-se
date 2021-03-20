@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274120"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Hantera och anpassa Active Directory Federation Services (AD FS) med Azure AD Connect
@@ -58,7 +58,7 @@ Du kan använda Azure AD Connect för att kontrol lera den aktuella hälsan för
 
    ![Skärm bild som visar sidan "autentiseringsuppgifter för fjärråtkomst" med exempel uppgifter som angetts.](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    När du har klickat på **nästa**Azure AD Connect kontrollerar om det finns certifikat hälsa och eventuella problem visas.
+    När du har klickat på **nästa** Azure AD Connect kontrollerar om det finns certifikat hälsa och eventuella problem visas.
 
     ![Tillstånd för certifikat](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
@@ -92,7 +92,7 @@ Konfigurering av alternativt inloggnings-ID för AD FS består av två huvud ste
 > [!NOTE]
 > För att lägga till en AD FS-server kräver Azure AD Connect PFX-certifikatet. Därför kan du bara utföra den här åtgärden om du har konfigurerat AD FS-servergruppen med hjälp av Azure AD Connect.
 
-1. Välj **distribuera ytterligare en Federations Server**och klicka på **Nästa**.
+1. Välj **distribuera ytterligare en Federations Server** och klicka på **Nästa**.
 
    ![Ytterligare Federations Server](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
@@ -114,7 +114,7 @@ Konfigurering av alternativt inloggnings-ID för AD FS består av två huvud ste
 
    ![AD FS servrar](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. Klicka på **Nästa**och gå igenom den sista **konfigurations** sidan. När Azure AD Connect har lagt till servrarna i AD FS-gruppen får du alternativet att verifiera anslutningen.
+6. Klicka på **Nästa** och gå igenom den sista **konfigurations** sidan. När Azure AD Connect har lagt till servrarna i AD FS-gruppen får du alternativet att verifiera anslutningen.
 
    ![Skärm bild som visar sidan "klar att konfigurera" med en lista över åtgärder som ska utföras när du klickar på "installera".](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
@@ -200,7 +200,7 @@ Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 > Parametern *TargetName* måste anges. Standard temat som släpps med AD FS heter default.
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Lägg till en inloggnings Beskrivning 
-Om du vill lägga till en beskrivning av inloggnings sidan på **inloggnings sidan**använder du följande Windows PowerShell-cmdlet och syntax.
+Om du vill lägga till en beskrivning av inloggnings sidan på **inloggnings sidan** använder du följande Windows PowerShell-cmdlet och syntax.
 
 ```azurepowershell-interactive
 Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
@@ -225,7 +225,7 @@ c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccou
 
 I den här regeln ska du fråga värdena för **MS-DS-consistencyguid** och **objectGUID** för användaren från Active Directory. Ändra lagrings namnet till ett lämpligt Arkiv namn i din AD FS-distribution. Ändra även anspråks typen till en lämplig anspråks typ för din Federation, enligt definitionen för **objectGUID** och **MS-DS-consistencyguid**.
 
-Genom att använda **Lägg till** och inte **problem**undviker du att lägga till ett utgående problem för entiteten och kan använda värdena som mellanliggande värden. Du kommer att utfärda anspråket i en senare regel när du har fastställt vilket värde som ska användas som oföränderligt ID.
+Genom att använda **Lägg till** och inte **problem** undviker du att lägga till ett utgående problem för entiteten och kan använda värdena som mellanliggande värden. Du kommer att utfärda anspråket i en senare regel när du har fastställt vilket värde som ska användas som oföränderligt ID.
 
 **Regel 2: kontrol lera om ms-DS-consistencyguid finns för användaren**
 

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339673"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Snabb start: skapa en Azure Cosmos DB och en behållare med en ARM-mall
@@ -27,7 +27,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Distribuera till Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En Azure-prenumeration eller ett kostnads fritt Azure Cosmos DB utvärderings konto
 
@@ -63,20 +63,20 @@ Du hittar fler Azure Cosmos DB mal sampel i [galleriet snabb starts mal len](htt
 
     Om den inte anges använder du standardvärdena för att skapa Azure Cosmos-resurser.
 
-    * **Prenumeration** : välj en Azure-prenumeration.
-    * **Resurs grupp** : Välj **Skapa ny** , ange ett unikt namn för resurs gruppen och klicka sedan på **OK**.
-    * **Plats** : välj en plats.  Välj till exempel **USA, centrala**.
-    * **Konto namn** : Ange ett namn för Azure Cosmos-kontot. Det måste vara globalt unikt.
-    * **Plats** : Ange en plats där du vill skapa ditt Azure Cosmos-konto. Azure Cosmos-kontot kan finnas på samma plats som resurs gruppen.
-    * **Primär region** : det primära replik området för Azure Cosmos-kontot.
-    * **Sekundär region** : det sekundära replik området för Azure Cosmos-kontot.
-    * **Standard konsekvens nivå** : standard konsekvens nivån för Azure Cosmos-kontot.
-    * **Högsta föråldrade prefix** : högsta antal inaktuella begär Anden. Krävs för BoundedStaleness.
-    * **Max intervall i sekunder** : maximal fördröjning. Krävs för BoundedStaleness.
-    * **Databas namn** : namnet på Azure Cosmos-databasen.
-    * **Behållar namn** : namnet på Azure Cosmos-behållaren.
-    * **Data flöde** : data flödet för behållaren, minsta data flöde svärdet är 400 ru/s.
-    * **Jag godkänner villkoren ovan** : Välj.
+    * **Prenumeration**: välj en Azure-prenumeration.
+    * **Resurs grupp**: Välj **Skapa ny**, ange ett unikt namn för resurs gruppen och klicka sedan på **OK**.
+    * **Plats**: välj en plats.  Välj till exempel **USA, centrala**.
+    * **Konto namn**: Ange ett namn för Azure Cosmos-kontot. Det måste vara globalt unikt.
+    * **Plats**: Ange en plats där du vill skapa ditt Azure Cosmos-konto. Azure Cosmos-kontot kan finnas på samma plats som resurs gruppen.
+    * **Primär region**: det primära replik området för Azure Cosmos-kontot.
+    * **Sekundär region**: det sekundära replik området för Azure Cosmos-kontot.
+    * **Standard konsekvens nivå**: standard konsekvens nivån för Azure Cosmos-kontot.
+    * **Högsta föråldrade prefix**: högsta antal inaktuella begär Anden. Krävs för BoundedStaleness.
+    * **Max intervall i sekunder**: maximal fördröjning. Krävs för BoundedStaleness.
+    * **Databas namn**: namnet på Azure Cosmos-databasen.
+    * **Behållar namn**: namnet på Azure Cosmos-behållaren.
+    * **Data flöde**: data flödet för behållaren, minsta data flöde svärdet är 400 ru/s.
+    * **Jag godkänner villkoren ovan**: Välj.
 
 3. Välj **Köp**. När du har distribuerat Azure Cosmos-kontot får du ett meddelande:
 

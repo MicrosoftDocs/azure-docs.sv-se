@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/16/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 1255c4962de1fce19efa9c0b0e1d28fc348463ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573072"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580155"
 ---
 # <a name="embedded-sign-in-experience"></a>Inbäddad inloggnings upplevelse
 
@@ -35,7 +36,7 @@ Tänk på följande när du använder iframe:
 - Inbäddad inloggning stöder endast lokala konton. De flesta sociala identitets leverantörer (till exempel Google och Facebook) blockerar sina inloggnings sidor från att återges i infogade ramar.
 - Eftersom Azure AD B2C sessionscookies i en iframe betraktas som cookies från tredje part, kan vissa webbläsare (till exempel Safari eller Chrome i Incognito-läge) antingen blockera eller rensa dessa cookies, vilket resulterar i en oönskad användar upplevelse. Undvik det här problemet genom att kontrol lera att ditt program domän namn och din Azure AD B2C domän har *samma ursprung*. Om du vill använda samma ursprung [aktiverar du anpassade domäner](custom-domain.md) för Azure AD B2C klient och konfigurerar sedan din webbapp med samma ursprung. Till exempel har ett program som finns på https://app.contoso.com samma ursprung som Azure AD B2C körs på https://login.contoso.com .
 
-## <a name="perquisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför stegen i avsnittet [komma igång med anpassade principer i Active Directory B2C](custom-policy-get-started.md).
 * [Aktivera anpassade domäner](custom-domain.md) för dina principer.
@@ -87,7 +88,7 @@ div.api_container{
 
 I vissa fall kanske du vill meddela till ditt program som Azure AD B2C sidan visas för tillfället. När en användare exempelvis väljer alternativet registrera kanske du vill att programmet ska svara genom att dölja länkarna för att logga in med ett socialt konto eller justera iframe-storleken.
 
-Om du vill meddela ditt program om sidan nuvarande Azure AD B2C [aktiverar du principen för Java Script](javascript-samples.md)och använder sedan HTML5 post meddelanden. Följande JavaScript-kod skickar ett post-meddelande till appen med `signUp` :
+Om du vill meddela ditt program om sidan nuvarande Azure AD B2C [aktiverar du principen för Java Script](./javascript-and-page-layout.md)och använder sedan HTML5 post meddelanden. Följande JavaScript-kod skickar ett post-meddelande till appen med `signUp` :
 
 ```javascript
 window.parent.postMessage("signUp", '*');
@@ -155,5 +156,5 @@ Se följande relaterade artiklar:
 
 - [Anpassning av användargränssnittet](customize-ui.md)
 - [RelyingParty](relyingparty.md) element referens
-- [Aktivera din princip för Java Script](javascript-samples.md)
+- [Aktivera din princip för Java Script](./javascript-and-page-layout.md)
 - [Kodexempel](code-samples.md)

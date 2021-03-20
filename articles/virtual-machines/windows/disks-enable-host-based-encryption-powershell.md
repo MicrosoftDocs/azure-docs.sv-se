@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e56473ae935ec58a6cf6f0ea30fe5f7ccfec3f80
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: f82169c084fc65fd483119bb84f29198ed288019
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017213"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580325"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Använd Azure PowerShell-modulen för att aktivera kryptering från slut punkt till slut punkt med kryptering på värden
 
@@ -32,7 +32,20 @@ Du kan också hitta VM-storlekar program mässigt. Information om hur du hämtar
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft.com med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer.
+Du måste aktivera funktionen för din prenumeration innan du använder egenskapen EncryptionAtHost för din VM/VMSS. Följ stegen nedan för att aktivera funktionen för din prenumeration:
+
+1.  Kör följande kommando för att registrera funktionen för din prenumeration
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+2.  Kontrol lera att registrerings statusen är registrerad (tar några minuter) med kommandot nedan innan du testar funktionen.
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Skapa en Azure Key Vault-och DiskEncryptionSet
 

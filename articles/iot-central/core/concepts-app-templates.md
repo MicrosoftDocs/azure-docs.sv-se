@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797136"
 ---
 # <a name="what-are-application-templates"></a>Vad är programmallar?
@@ -36,7 +36,7 @@ Om du vill skapa ditt program från grunden väljer du en av mallarna för **anp
 
 Azure IoT Central är en plattform för oberoende-program. Programmallar är bransch fokuserade exempel som är tillgängliga för dessa branscher idag, med mer att komma i framtiden:
 
-- [Detaljhandeln](../retail/overview-iot-central-retail.md)
+- [Retail](../retail/overview-iot-central-retail.md)
   - Ansluten logistik
   - Digitalt distributionscenter
   - In-Store Analytics – villkors övervakning
@@ -46,7 +46,7 @@ Azure IoT Central är en plattform för oberoende-program. Programmallar är bra
 - [Energi](../energy/overview-iot-central-energy.md)
   - Övervakning av smart mätare
   - Övervakning på Sol panelen
-- [Government](../government/overview-iot-central-government.md)
+- [Myndigheter](../government/overview-iot-central-government.md)
   - Ansluten avfalls hantering
   - Övervakning av vatten förbrukning
   - Övervakning av vatten kvalitet

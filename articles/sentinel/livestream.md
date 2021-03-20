@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 06/14/2020
 ms.author: yelevin
 ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84783171"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Använd jakt liveström i Azure Sentinel för att identifiera hot
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Identifiera hot med hjälp av jakt-livestream i Azure Sentinel
 
 Använd jakt liveström för att skapa interaktiva sessioner som gör det möjligt att testa nyligen skapade frågor när händelser inträffar, få meddelanden från sessionerna när en matchning hittas och starta undersökningar vid behov. Du kan snabbt skapa en liveström-session med valfri Log Analytics fråga.
 
@@ -72,7 +72,7 @@ Du kan skapa en liveström-session från en befintlig jakt fråga eller skapa di
 
 1. Välj **Spara** i kommando fältet.
     
-    Om du inte väljer **pausa**fortsätter sessionen att köras tills du är utloggad från Azure Portal.
+    Om du inte väljer **pausa** fortsätter sessionen att köras tills du är utloggad från Azure Portal.
 
 ## <a name="view-your-livestream-sessions"></a>Visa dina liveström-sessioner
 

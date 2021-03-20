@@ -9,10 +9,10 @@ description: Använd en anpassad NuGet-feed för att få åtkomst till och anvä
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, behållare
 manager: gwallace
 ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960226"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Använda en anpassad NuGet-feed med Azure dev Spaces
@@ -23,7 +23,7 @@ En NuGet-feed är ett bekvämt sätt att inkludera paket källor i ett projekt. 
 
 ## <a name="set-up-a-nuget-feed"></a>Konfigurera en NuGet-feed
 
-Lägg till en [paket referens](/nuget/consume-packages/package-references-in-project-files) för ditt beroende i `*.csproj` filen under `PackageReference` noden. Till exempel:
+Lägg till en [paket referens](/nuget/consume-packages/package-references-in-project-files) för ditt beroende i `*.csproj` filen under `PackageReference` noden. Exempel:
 
 ```xml
 <ItemGroup>
@@ -33,7 +33,7 @@ Lägg till en [paket referens](/nuget/consume-packages/package-references-in-pro
 </ItemGroup>
 ```
 
-Skapa en [NuGet.Config](/nuget/reference/nuget-config-file) -fil i projektmappen och ange `packageSources` `packageSourceCredentials` avsnitten och för din NuGet-feed. `packageSources`Avsnittet innehåller din feed-URL, som måste vara tillgänglig från ditt AKS-kluster. `packageSourceCredentials`Är autentiseringsuppgifterna för att komma åt feeden. Till exempel:
+Skapa en [NuGet.Config](/nuget/reference/nuget-config-file) -fil i projektmappen och ange `packageSources` `packageSourceCredentials` avsnitten och för din NuGet-feed. `packageSources`Avsnittet innehåller din feed-URL, som måste vara tillgänglig från ditt AKS-kluster. `packageSourceCredentials`Är autentiseringsuppgifterna för att komma åt feeden. Exempel:
 
 ```xml
 <packageSources>
@@ -48,7 +48,7 @@ Skapa en [NuGet.Config](/nuget/reference/nuget-config-file) -fil i projektmappen
 </packageSourceCredentials>
 ```
 
-Uppdatera Dockerfiles för att kopiera `NuGet.Config` filen till avbildningen. Till exempel:
+Uppdatera Dockerfiles för att kopiera `NuGet.Config` filen till avbildningen. Exempel:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]

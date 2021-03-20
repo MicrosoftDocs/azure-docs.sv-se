@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92000073"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>Så här återställer du X. 509 enhets certifikat i IoT Central program
@@ -31,7 +31,7 @@ Om du vill uppdatera en grupp registrering som svar på en säkerhets överträd
 
 1. Navigera till **Administration**  i det vänstra fönstret och välj **enhets anslutning**.
 
-2. Välj **registrerings grupper**och Välj grupp namnet i listan.
+2. Välj **registrerings grupper** och Välj grupp namnet i listan.
 
 3. För certifikat uppdatering väljer du **Hantera primär** eller **Hantera sekundär**.
 
@@ -45,7 +45,7 @@ Om du rullar certifikat för att hantera certifikat upphör ande använder du f�
 
 1. Navigera till **Administration**  i det vänstra fönstret och välj **enhets anslutning**.
 
-2. Välj **registrerings grupper**och Välj grupp namnet i listan.
+2. Välj **registrerings grupper** och Välj grupp namnet i listan.
 
 3. För certifikat uppdatering väljer du **Hantera primär**.
 
@@ -57,9 +57,9 @@ Om du rullar certifikat för att hantera certifikat upphör ande använder du f�
 
 Om du rullar certifikat som svar på en säkerhets överträdelse kan du använda följande metod för att uppdatera det aktuella certifikatet omedelbart:
 
-1. Välj **enheter**och välj enheten.
+1. Välj **enheter** och välj enheten.
 
-2. Välj **Anslut**och Välj Anslut metod som **enskild registrering**
+2. Välj **Anslut** och Välj Anslut metod som **enskild registrering**
 
 3. Välj **certifikat (X. 509)** som mekanism.
 
@@ -75,9 +75,9 @@ Om du rullar certifikat för att hantera certifikat upphör ande bör du använd
 
 När det sekundära certifikatet snart upphör att gälla och måste återställas, kan du rotera till att använda den primära konfigurationen. Att rotera mellan de primära och sekundära certifikaten på det här sättet minskar stillestånds tiden för enheter som försöker etablera.
 
-1. Välj **enheter**och välj enheten.
+1. Välj **enheter** och välj enheten.
 
-2. Välj **Anslut**och Välj Anslut metod som **enskild registrering**
+2. Välj **Anslut** och Välj Anslut metod som **enskild registrering**
 
 3. Välj **certifikat (X. 509)** som mekanism.
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002801"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementera fasettisk navigering i Azure Kognitiv sökning
@@ -283,7 +283,7 @@ I fasetter kan du vanligt vis bara inkludera dokument som har fasett svärdet i 
 
 **Trimma fasett-resultat med fler filter**
 
-Fasett-resultat är dokument som finns i Sök resultaten som matchar en fasett-term. I följande exempel i Sök Resultat för *molnbaserad data behandling*har 254-objekt även *intern specifikation* som en innehålls typ. Objekt är inte alltid ömsesidigt uteslutande. Om ett objekt uppfyller kriterierna för båda filtren räknas det i vart och ett. Den här dupliceringen är möjlig vid aspektering av `Collection(Edm.String)` fält som ofta används för att implementera dokument taggning.
+Fasett-resultat är dokument som finns i Sök resultaten som matchar en fasett-term. I följande exempel i Sök Resultat för *molnbaserad data behandling* har 254-objekt även *intern specifikation* som en innehålls typ. Objekt är inte alltid ömsesidigt uteslutande. Om ett objekt uppfyller kriterierna för båda filtren räknas det i vart och ett. Den här dupliceringen är möjlig vid aspektering av `Collection(Edm.String)` fält som ofta används för att implementera dokument taggning.
 
 ```output
 Search term: "cloud computing"

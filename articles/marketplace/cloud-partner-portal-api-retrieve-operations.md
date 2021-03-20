@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87271951"
 ---
 # <a name="retrieve-operations"></a>Hämta åtgärder
@@ -36,10 +36,10 @@ Hämtar alla åtgärder för erbjudandet eller för att få en viss åtgärd fö
 |  publisherId       |  Utgivar identifierare, till exempel `Contoso`                                                                   |  Sträng       |
 |  offerId           |  Erbjudande-ID                                                                                              |  Sträng       |
 |  operationId       |  GUID som unikt identifierar åtgärden för erbjudandet. OperationId kan hämtas med hjälp av det här API: et och returneras också i HTTP-huvudet för svaret för en tids krävande åtgärd, t. ex. API för [publicerings erbjudande](./cloud-partner-portal-api-publish-offer.md) .  |   GUID   |
-|  api-version       | Senaste versionen av API |    Date      |
+|  api-version       | Senaste versionen av API |    Datum      |
 |  |  |  |
 
-## <a name="header"></a>Sidhuvud
+## <a name="header"></a>Huvud
 
 |  **Namn**          |  **Värde**           |
 |  ---------------   | -------------------- |
@@ -185,7 +185,7 @@ Hämtar alla åtgärder för erbjudandet eller för att få en viss åtgärd fö
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | Den uppskattade varaktigheten för den här åtgärden |
 | id | Den unika identifieraren för steg processen |
-| description | Beskrivning av steget |
+| beskrivning | Beskrivning av steget |
 | stepName | Det egna namnet för steget |
 | status | Status för steget, antingen `notStarted` \| `running` \| `failed` \|`completed` |
 | meddelanden | Eventuella meddelanden eller varningar som påträffades under steget. Strängmatris |

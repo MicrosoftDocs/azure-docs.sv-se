@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078188"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Skala Windows Virtual Desktop (klassiska)-sessionsbaserade med Azure Automation
@@ -44,7 +44,7 @@ Under den högsta användnings tiden bestämmer jobbet hur många VM-sessioner s
 >[!NOTE]
 >Om du ställer in sessionens värddator för virtuella datorer manuellt i dränerings läge, hanterar inte jobbet den virtuella datorns VM för sessionen. Om den virtuella datorns värd för sessionen körs och är inställt på dränerings läge behandlas den som otillgänglig, vilket gör att jobbet startar ytterligare virtuella datorer för att hantera belastningen. Vi rekommenderar att du taggar alla virtuella Azure-datorer innan du anger dem till dränerings läge manuellt. Du kan namnge taggen med parametern *MaintenanceTagName* när du skapar Schemaläggaren för Azure Logic app senare. Taggar hjälper dig att skilja de virtuella datorerna från dem som skalnings verktyget hanterar. Att ställa in en underhålls tagg förhindrar även skalnings verktyget från att göra ändringar i den virtuella datorn tills du tar bort taggen.
 
-Om du ställer in parametern *LimitSecondsToForceLogOffUser* på noll tillåter jobbet konfigurations inställningen för sessionen i angivna grup principer för att hantera signering av användarsessioner. Om du vill se dessa grup principer går du till **dator konfiguration**  >  **principer**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **Remote Desktop Session Host**  >  **Session Time Limits**sessionsvärdservern för fjärrskrivbordssession. Om det finns aktiva sessioner på en virtuell dator för en virtuell dator kommer jobbet att lämna den virtuella dator som körs på sessionen. Om det inte finns några aktiva sessioner stängs jobbet av den virtuella datorns sessions värd.
+Om du ställer in parametern *LimitSecondsToForceLogOffUser* på noll tillåter jobbet konfigurations inställningen för sessionen i angivna grup principer för att hantera signering av användarsessioner. Om du vill se dessa grup principer går du till **dator konfiguration**  >  **principer**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >    >  sessionsvärdservern för fjärrskrivbordssession. Om det finns aktiva sessioner på en virtuell dator för en virtuell dator kommer jobbet att lämna den virtuella dator som körs på sessionen. Om det inte finns några aktiva sessioner stängs jobbet av den virtuella datorns sessions värd.
 
 När som helst tar jobbet också med *MaxSessionLimit* i kontot för att avgöra om det aktuella antalet sessioner är mer än 90% av den maximala kapaciteten. Om så är fallet kommer jobbet att starta ytterligare virtuella datorer i sessions värden.
 

@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018703"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Självstudie: Konfigurera serveradministratörs- och användarroller
@@ -52,7 +52,7 @@ För de återstående uppgifterna använder du SSMS för att ansluta till och ha
 
 1. I SSMS > **Object Explorer** klickar du på **Anslut** > **Analysis Services**.
 
-    ![Anslut](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Ansluta](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. I **Server name** (Servernamn) i dialogrutan **Connect to Server** (Anslut till server) klistrar du in servernamnet som du kopierade från Portal. I **Authentication** (Autentisering) väljer du **Active Directory Universal with MFA Support** (Active Directory Universal med MFA-stöd). Ange ditt användarkonto och tryck sedan på **Connect** (Anslut).
    

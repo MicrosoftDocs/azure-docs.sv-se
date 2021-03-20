@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275191"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indexera tabeller från Azure Table Storage med Azure Kognitiv sökning
@@ -24,7 +24,7 @@ Den här artikeln visar hur du använder Azure Kognitiv sökning för att indexe
 
 Du kan konfigurera en Azure Table Storage-indexerare med hjälp av följande resurser:
 
-* [Azure Portal](https://ms.portal.azure.com)
+* [Azure-portalen](https://ms.portal.azure.com)
 * Azure Kognitiv sökning [REST API](/rest/api/searchservice/Indexer-operations)
 * Azure Kognitiv sökning [.NET SDK](/dotnet/api/overview/azure/search)
 
@@ -70,9 +70,9 @@ Mer information om API för att skapa data källor finns i [skapa data källa](/
 Du kan ange autentiseringsuppgifterna för tabellen på något av följande sätt: 
 
 - **Anslutnings sträng för hanterad identitet**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` den här anslutnings strängen kräver ingen konto nyckel, men du måste följa instruktionerna för [att konfigurera en anslutning till ett Azure Storage konto med hjälp av en hanterad identitet](search-howto-managed-identities-storage.md).
-- **Anslutnings sträng för lagrings konto med fullständig åtkomst**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` du kan hämta anslutnings strängen från Azure Portal genom att gå till **bladet lagrings konto blad**  >  **Inställningar**  >  **Keys** (för klassiska lagrings konton) eller **Settings**  >  **åtkomst nycklar** för inställningar (för Azure Resource Manager lagrings konton).
+- **Anslutnings sträng för lagrings konto med fullständig åtkomst**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` du kan hämta anslutnings strängen från Azure Portal genom att gå till **bladet lagrings konto blad**  >  **Inställningar**  >   (för klassiska lagrings konton) eller   >  **åtkomst nycklar** för inställningar (för Azure Resource Manager lagrings konton).
 - **Anslutnings sträng för signatur för delad åtkomst till lagrings konto**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` signaturen för delad åtkomst ska ha listan och Läs behörigheter för behållare (tabeller i det här fallet) och objekt (tabell rader).
--  **Signatur för delad**åtkomst för tabell: signaturen för `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` delad åtkomst ska ha Läs behörighet för den här tabellen.
+-  **Signatur för delad** åtkomst för tabell: signaturen för `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` delad åtkomst ska ha Läs behörighet för den här tabellen.
 
 Mer information om signaturer för delad åtkomst för lagring finns i [använda signaturer för delad åtkomst](../storage/common/storage-sas-overview.md).
 

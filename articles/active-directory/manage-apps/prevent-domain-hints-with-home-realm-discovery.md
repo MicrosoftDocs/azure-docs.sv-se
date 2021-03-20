@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: hirsin
-ms.openlocfilehash: 67cb1003e139a085d45d01617cd44647bad420f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 53dfdfaf37695059d6d52428c2ba109970d9f7f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589386"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Inaktivera automatisk acceleration till en federerad IDP under användar inloggning med princip för identifiering av start sfär
 
-HRD ( [Home sfär Discovery policy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) ) erbjuder administratörer flera sätt att styra hur och var deras användare autentiseras. `domainHintPolicy`Avsnittet i HRD-principen används för att hjälpa till att migrera federerade användare till moln hanterade autentiseringsuppgifter som [Fido](../authentication/howto-authentication-passwordless-security-key.md), genom att se till att de alltid besöker inloggnings sidan för Azure AD och inte accelererar automatiskt till en federerad IDP på grund av domän tips.
+HRD ( [Home sfär Discovery policy](/graph/api/resources/homeRealmDiscoveryPolicy) ) erbjuder administratörer flera sätt att styra hur och var deras användare autentiseras. `domainHintPolicy`Avsnittet i HRD-principen används för att hjälpa till att migrera federerade användare till moln hanterade autentiseringsuppgifter som [Fido](../authentication/howto-authentication-passwordless-security-key.md), genom att se till att de alltid besöker inloggnings sidan för Azure AD och inte accelererar automatiskt till en federerad IDP på grund av domän tips.
 
 Den här principen behövs i situationer där program en administratör inte kan styra eller uppdatera Lägg till domän tips under inloggningen.  Till exempel `outlook.com/contoso.com` skickar användaren till en inloggnings sida med `&domain_hint=contoso.com` parametern append, för att automatiskt påskynda användaren direkt till den federerade IDP för `contoso.com` domänen. Användare med hanterade autentiseringsuppgifter som skickas till en federerad IDP kan inte logga in med sina hanterade autentiseringsuppgifter, vilket minskar säkerheten och frustrerande användare med slumpmässiga inloggnings upplevelser. Administratörer som hanterar hanterade autentiseringsuppgifter [bör också konfigurera den här principen](#suggested-use-within-a-tenant) för att säkerställa att användarna alltid kan använda sina hanterade autentiseringsuppgifter.
 
@@ -101,7 +101,7 @@ När steg 4 har slutförts för alla användare, förutom de i `guestHandlingDom
 
 ## <a name="configuring-policy-through-graph-explorer"></a>Konfigurera principer via Graph Explorer
 
-Ange [HRD-principen](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) som vanligt, med hjälp av Microsoft Graph.  
+Ange [HRD-principen](/graph/api/resources/homeRealmDiscoveryPolicy) som vanligt, med hjälp av Microsoft Graph.  
 
 1. Bevilja behörigheten policy. ReadWrite. ApplicationConfiguration i [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).  
 1. Använd URL: en `https://graph.microsoft.com/v1.0/policies/homeRealmDiscoveryPolicies`

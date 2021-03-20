@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91969100"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Snabb start: skapa och ändra en ExpressRoute-krets med Azure CLI
@@ -112,7 +112,7 @@ Svaret liknar följande exempel:
 
 Kontrol lera svaret för att se om din anslutnings leverantör visas. Anteckna följande information som du behöver när du skapar en krets:
 
-* Namn
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88926838"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby-syntax i Azure Kognitiv sökning
@@ -58,7 +58,7 @@ Om flera dokument har samma sorterings villkor och `search.score` funktionen int
 
 Du kan ange flera sorterings villkor. Ordningen på uttryck avgör den slutliga sorterings ordningen. Om du till exempel vill sortera fallande efter poäng, följt av klassificering, skulle syntaxen vara `$orderby=search.score() desc,Rating desc` .
 
-Syntaxen för `geo.distance` i **$OrderBy** är samma som i **$filter**. När du använder `geo.distance` i **$OrderBy**måste det fält som det gäller för vara av typen `Edm.GeographyPoint` och det måste också vara `sortable` .
+Syntaxen för `geo.distance` i **$OrderBy** är samma som i **$filter**. När du använder `geo.distance` i **$OrderBy** måste det fält som det gäller för vara av typen `Edm.GeographyPoint` och det måste också vara `sortable` .
 
 Syntaxen för `search.score` i **$OrderBy** är `search.score()` . Funktionen `search.score` tar inga parametrar.
 

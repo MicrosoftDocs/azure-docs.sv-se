@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000444"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580965"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Använda Twilio för röst-och SMS-funktioner i python
 Den här guiden visar hur du utför vanliga programmerings åtgärder med Twilio API-tjänsten på Azure. Scenarierna som ingår är att ringa ett telefonsamtal och skicka ett SMS-meddelande (Short Message Service). Mer information om Twilio och hur du använder röst-och SMS i dina program finns i avsnittet [Nästa steg](#NextSteps) .
@@ -86,7 +86,7 @@ Börja med att konfigurera en ny virtuell Azure Linux-dator] [azure_vm_setup] at
 ### <a name="add-an-incoming-rule"></a>Lägg till en inkommande regel
   1. Gå till sidan [nätverks säkerhets grupp] [azure_nsg].
   2. Välj den nätverks säkerhets grupp som motsvarar den virtuella datorn.
-  3. Lägg till och **utgående regel** för **port 80**. Se till att tillåta inkommande från vilken adress som helst.
+  3. Lägg till en **utgående regel** för **port 80**. Se till att tillåta inkommande från vilken adress som helst.
 
 ### <a name="set-the-dns-name-label"></a>Ange DNS-namnets etikett
   1. Gå till sidan [offentliga IP-adresser] [azure_ips].
@@ -151,6 +151,9 @@ call = client.calls.create(to=to_number,
                            url=url + urlencode({'Message': message}))
 print(call.sid)
 ```
+
+> [!IMPORTANT]
+> Telefonnummer måste formateras med en +-och en landskod. Till exempel + 16175551212 (E. 164-format). Twilio kommer också att acceptera oformaterade amerikanska tal. Till exempel (415) 555-1212 eller 415-555-1212.
 
 Som nämnts använder den här koden en Twilio plats för att returnera TwiML-svaret. Du kan i stället använda din egen webbplats för att tillhandahålla TwiML-svaret. Mer information finns i [så här ger du TwiML svar från din egen webbplats](#howto_provide_twiml_responses).
 

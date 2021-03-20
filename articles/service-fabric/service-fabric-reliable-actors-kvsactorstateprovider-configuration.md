@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75609782"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurera Reliable Actors--KVSActorStateProvider
@@ -44,7 +44,7 @@ Standard konfigurationen genereras av Visual Studio-mallen och bör vara tillrä
 | Name | Enhet | Standardvärde | Kommentarer |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunder |0,015 |Den tids period som replikeraren på den sekundära väntar efter att ha tagit emot en åtgärd innan en bekräftelse skickas till den primära. Alla andra bekräftelser som ska skickas för åtgärder som bearbetas inom detta intervall skickas som ett svar. |
-| ReplicatorEndpoint |E.t. |Ingen standard-obligatorisk parameter |IP-adress och port som den primära/sekundära replikeraren ska använda för att kommunicera med andra replikeringar i replik uppsättningen. Detta bör referera till en slut punkt för en TCP-resurs i tjänst manifestet. Se [tjänst manifest resurser](service-fabric-service-manifest-resources.md) för att läsa mer om hur du definierar slut punkts resurser i tjänst manifestet. |
+| ReplicatorEndpoint |Ej tillämpligt |Ingen standard-obligatorisk parameter |IP-adress och port som den primära/sekundära replikeraren ska använda för att kommunicera med andra replikeringar i replik uppsättningen. Detta bör referera till en slut punkt för en TCP-resurs i tjänst manifestet. Se [tjänst manifest resurser](service-fabric-service-manifest-resources.md) för att läsa mer om hur du definierar slut punkts resurser i tjänst manifestet. |
 | RetryInterval |Sekunder |5 |Tids period efter vilken rereplikeringen skickar ett meddelande igen om den inte får någon bekräftelse för en åtgärd. |
 | MaxReplicationMessageSize |Byte |50 MB |Maximal storlek på replikeringsdata som kan överföras i ett enda meddelande. |
 | MaxPrimaryReplicationQueueSize |Antal åtgärder |1024 |Maximalt antal åtgärder i den primära kön. En åtgärd frigörs efter att den primära replikeraren får en bekräftelse från alla sekundära replikeringar. Värdet måste vara större än 64 och en potens på 2. |

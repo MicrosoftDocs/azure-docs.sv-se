@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91281923"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Hantera certifikat tjänsten för OPC-valvet
@@ -31,7 +31,7 @@ När du har distribuerat OPC-valvet måste du skapa rot certifikat utfärdarens 
 1. Öppna certifikat tjänsten på `https://myResourceGroup-app.azurewebsites.net` och logga in.
 2. Gå till **certifikat grupper**.
 3. Det finns en lista över standard certifikat. Välj **Redigera**.
-4. I **Redigera certifikat grupps information**kan du ändra ämnes namn och livs längd för certifikat utfärdaren och program certifikaten. Ämnet och livs längden bör endast anges en gång innan det första CA-certifikatet utfärdas. Livs längds ändringar under åtgärder kan resultera i inkonsekventa livs längder för utfärdade certifikat och CRL: er.
+4. I **Redigera certifikat grupps information** kan du ändra ämnes namn och livs längd för certifikat utfärdaren och program certifikaten. Ämnet och livs längden bör endast anges en gång innan det första CA-certifikatet utfärdas. Livs längds ändringar under åtgärder kan resultera i inkonsekventa livs längder för utfärdade certifikat och CRL: er.
 5. Ange ett giltigt ämne (till exempel `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
    > Om du ändrar ämnet måste du förnya utfärdarens certifikat, annars kommer tjänsten inte att kunna signera program certifikat. Syftet med konfigurationen kontrol leras mot ämnet för det aktiva utfärdarcertifikatet. Om ämnena inte matchar, nekas certifikat signering.
@@ -101,11 +101,11 @@ Som standard har tjänst identiteten endast begränsade behörigheter att komma 
 4. Gå till **åtkomst principer**.
 5. Välj **Lägg till ny**.
 6. Hoppa över mallen. Det finns ingen mall som matchar kraven.
-7. Välj **Välj huvud**konto och välj den användare som ska läggas till eller bjuda in en ny användare till klienten.
-8. Välj följande **nyckel behörigheter**: **Get**, **list**och **Sign**.
-9. Välj följande **hemliga behörigheter**: **Get**, **list**, **set**och **Delete**.
+7. Välj **Välj huvud** konto och välj den användare som ska läggas till eller bjuda in en ny användare till klienten.
+8. Välj följande **nyckel behörigheter**: **Get**, **list** och **Sign**.
+9. Välj följande **hemliga behörigheter**: **Get**, **list**, **set** och **Delete**.
 10. Välj följande **certifikat behörigheter**: **Get** och **list**.
-11. Välj **OK**och välj **Spara**.
+11. Välj **OK** och välj **Spara**.
 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>För en administratörs roll måste följande behörigheter läggas till i Key Vault
 
@@ -115,11 +115,11 @@ Som standard har tjänst identiteten endast begränsade behörigheter att komma 
 4. Gå till **åtkomst principer**.
 5. Välj **Lägg till ny**.
 6. Hoppa över mallen. Det finns ingen mall som matchar kraven.
-7. Välj **Välj huvud**konto och välj den användare som ska läggas till eller bjuda in en ny användare till klienten.
-8. Välj följande **nyckel behörigheter**: **Get**, **list**och **Sign**.
-9. Välj följande **hemliga behörigheter**: **Get**, **list**, **set**och **Delete**.
-10. Välj följande **certifikat behörigheter**: **Hämta**, **lista**, **Uppdatera**, **skapa**och **Importera**.
-11. Välj **OK**och välj **Spara**.
+7. Välj **Välj huvud** konto och välj den användare som ska läggas till eller bjuda in en ny användare till klienten.
+8. Välj följande **nyckel behörigheter**: **Get**, **list** och **Sign**.
+9. Välj följande **hemliga behörigheter**: **Get**, **list**, **set** och **Delete**.
+10. Välj följande **certifikat behörigheter**: **Hämta**, **lista**, **Uppdatera**, **skapa** och **Importera**.
+11. Välj **OK** och välj **Spara**.
 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Ta bort princip för användar åtkomst från Azure Key Vault
 

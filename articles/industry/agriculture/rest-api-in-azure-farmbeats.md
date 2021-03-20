@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674518"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats-API: er
@@ -68,7 +68,7 @@ headers = {"Authorization": "Bearer " + **access_token**}
 Här är de vanligaste begärandehuvuden som du måste ange när du gör ett API-anrop till Azure FarmBeats Datahub.
 
 
-**Sidfot** | **Beskrivning och exempel**
+**Huvud** | **Beskrivning och exempel**
 --- | ---
 Content-Type  | Formatet för begäran (Content-Type: Application/ <format> ). För Azure FarmBeats Datahub-API: er är formatet JSON. Innehålls typ: Application/JSON
 Auktorisering  | Anger den åtkomsttoken som krävs för att göra ett API-anrop. Auktorisering: Bearer <Access-Token>
@@ -143,23 +143,23 @@ I det här exemplet har det obligatoriska fältet "namn" inte angetts i nytto la
 
 Azure FarmBeats-API: er kan nås av en användare eller en app-registrering i Azure Active Directory. Följ dessa steg om du vill skapa en app-registrering i Azure Active Directory:
 
-1. Gå till [Azure Portal](https://portal.azure.com)och välj **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering** . Du kan också använda ett befintligt konto.
+1. Gå till [Azure Portal](https://portal.azure.com)och välj **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering**. Du kan också använda ett befintligt konto.
 2. För ett nytt konto gör du följande:
 
     - Ange ett namn.
-    - Välj **konton endast i den här organisations katalogen (en enda klient)** .
+    - Välj **konton endast i den här organisations katalogen (en enda klient)**.
     - Använd standardvärdena i resten av fälten.
     - Välj **Register** (Registrera).
 
 3. Gör följande i **översikts** fönstret ny och befintlig app Registration:
 
-    - Avbilda **klient-ID och klient** **-ID** .
-    - Gå till **certifikat och hemligheter** för att generera en ny klient hemlighet och avbilda **klient hemligheten** .
-    - Gå tillbaka till **Översikt** och välj länken bredvid **hantera program i den lokala katalogen** .
-    - Gå till **Egenskaper** för att avbilda **objekt-ID: t** .
+    - Avbilda **klient-ID och klient** **-ID**.
+    - Gå till **certifikat och hemligheter** för att generera en ny klient hemlighet och avbilda **klient hemligheten**.
+    - Gå tillbaka till **Översikt** och välj länken bredvid **hantera program i den lokala katalogen**.
+    - Gå till **Egenskaper** för att avbilda **objekt-ID: t**.
 
 4. Gå till din Datahub-Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) och gör följande:
-    - Gå till **RoleAssignment-API: et** .
+    - Gå till **RoleAssignment-API: et**.
     - Utför ett inlägg för att skapa ett **RoleAssignment** -objekt för det **objekt-ID** som du nyss skapade.
  
 ```json

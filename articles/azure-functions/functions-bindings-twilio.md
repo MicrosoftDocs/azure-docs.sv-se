@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999277"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-bindning för Azure Functions
@@ -334,8 +334,8 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 |**Namn**|**Namn**| Variabel namn som används i funktions kod för SMS-textmeddelandet för Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Värdet måste anges till namnet på en app-inställning som innehåller ditt Twilio-konto-sid ( `TwilioAccountSid` ). Om den inte anges är standardinställnings namnet för appen "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Värdet måste anges till namnet på en app-inställning som innehåller din Twilio-autentiseringstoken ( `TwilioAccountAuthToken` ). Om den inte anges är standardinställnings namnet för appen "AzureWebJobsTwilioAuthToken". |
-|**att**| Ej tillämpligt – ange i kod | **Om du vill**| Det här värdet anges till det telefonnummer som SMS-texten skickas till.|
-|**som**|**som** | **Som**| Det här värdet anges till det telefonnummer som SMS-texten skickas från.|
+|**på**| Ej tillämpligt – ange i kod | **Till**| Det här värdet anges till det telefonnummer som SMS-texten skickas till.|
+|**som**|**som** | **From**| Det här värdet anges till det telefonnummer som SMS-texten skickas från.|
 |**brödtext**|**brödtext** | **Brödtext**| Det här värdet kan användas för att hårdkoda SMS-textmeddelandet om du inte behöver ange det dynamiskt i koden för din funktion. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

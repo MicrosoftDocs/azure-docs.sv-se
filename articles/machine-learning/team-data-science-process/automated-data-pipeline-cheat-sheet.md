@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250648"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Facit för en automatiserad datapipeline för Azure Machine Learning-förutsägelser
@@ -27,7 +27,7 @@ Det här lathund-bladet vägleder dig genom de beslut du behöver göra, och det
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Ladda ned lathund-bladet Machine Learning för automatisk data pipeline
 När du har hämtat lathund-bladet kan du skriva ut det i tabloid-storlek (11 x 17 tum).
 
-Hämta lathund-bladet här: ** [Microsoft Azure Machine Learning automatisk datapipeline lathund blad](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Hämta lathund-bladet här: **[Microsoft Azure Machine Learning automatisk datapipeline lathund blad](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Översikt över funktioner i Microsoft Azure Machine Learning Studio (klassisk)][op-cheat-sheet]
 

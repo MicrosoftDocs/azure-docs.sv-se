@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du använder brand Väggs regler f�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999497"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurera IP-brandvägg för ett Azure Relay-namnområde
@@ -32,7 +32,7 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandv�
     ![Skärm bild som visar sidan nätverk med alternativet alla nätverk valt.](./media/ip-firewall/all-networks-selected.png)
 1. Om du vill begränsa åtkomsten till vissa nätverk och IP-adresser väljer du alternativet **valda nätverk** . I avsnittet **brand vägg** följer du dessa steg:
     1. Välj alternativet **Lägg till klientens IP-adress** för att ge din aktuella klient-IP åtkomst till namn området. 
-    2. För **adress intervall**anger du en angiven IPv4-adress eller ett intervall med IPv4-adresser i CIDR-notering. 
+    2. För **adress intervall** anger du en angiven IPv4-adress eller ett intervall med IPv4-adresser i CIDR-notering. 
 
         ![Brand vägg – alternativet alla nätverk är valt](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. Spara inställningarna genom att välja **Spara** i verktygsfältet. Vänta några minuter tills bekräftelsen visas på Portal meddelandena.

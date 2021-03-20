@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: 459bd8511577067766cf488f53df57c1dc33fad1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93338310"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>OFFSET LIMIT-sats i Azure Cosmos DB
@@ -89,5 +89,5 @@ Resultatet är:
 ## <a name="next-steps"></a>Nästa steg
 
 - [Komma igång](sql-query-getting-started.md)
-- [SELECT-satsen](sql-query-select.md)
+- [SELECT-sats](sql-query-select.md)
 - [ORDER BY-sats](sql-query-order-by.md)

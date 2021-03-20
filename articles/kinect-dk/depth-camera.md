@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, sensor, SDK, djup kamera, TOF, principer, prestanda, ogiltighet
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277509"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK djup kamera
@@ -56,7 +56,7 @@ Systematiskt fel definieras som skillnaden mellan det uppmätta djupet efter bor
 
 ![Systematiskt djup fel](./media/concepts/depth-camera-systematic-error.png)
 
-Där *d<sub>t</sub> * anger mått djupet vid tid *t*, *N* , är antalet bild rutor som används i genomsnitts proceduren och *d<sub>gt</sub> * är sanningen djup.
+Där *d <sub>t</sub>* anger mått djupet vid tid *t*, *N* , är antalet bild rutor som används i genomsnitts proceduren och *d <sub>gt</sub>* är sanningen djup.
 
 Den systematiska fel specifikationen för djup kameran är exklusive MPI (Multiple Path interferens). MPI är när en sensor pixel integrerar ljus som reflekteras av mer än ett objekt. MPI begränsas delvis i vår djup kamera med högre modulerings frekvens, tillsammans med djupet djupet, som vi kommer att introducera senare.
 
@@ -66,7 +66,7 @@ Vi antar att vi tar 100 bilder av samma objekt utan att flytta kameran. Objektet
 
 ![Slumpmässigt djup fel](./media/concepts/depth-camera-random-error.png)
 
-Om *N* anger antalet djup mätningar, visar *d<sub>t</sub> * att djup måttet vid tid *t* och *d* anger att medelvärdet beräknas för alla djup mätningar *d<sub>t</sub>*.
+Om *N* anger antalet djup mätningar, visar *d <sub>t</sub>* att djup måttet vid tid *t* och *d* anger att medelvärdet beräknas för alla djup mätningar *d <sub>t</sub>*.
 
 ## <a name="invalidation"></a>Ogiltig förklarade
 

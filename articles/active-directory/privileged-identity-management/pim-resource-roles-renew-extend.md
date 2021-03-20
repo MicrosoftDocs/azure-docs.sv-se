@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f0d22fc540aae448a3da731b709a3b4ea13a69d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84742241"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Utöka eller förnya Azures resurs roll tilldelningar i Privileged Identity Management
@@ -78,7 +78,7 @@ Förutom att använda följande länk från e-post kan administratörer godkänn
 
 ![Azure-resurser – sidan Godkänn begär Anden visar begär Anden och länkar till Godkänn eller neka](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-När en administratör väljer **Godkänn** eller **neka**visas information om begäran, tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
+När en administratör väljer **Godkänn** eller **neka** visas information om begäran, tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
 
 ![Godkänn begäran om roll tilldelning med begär ande orsak, tilldelnings typ, start tid, slut tid och orsak](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
@@ -116,7 +116,7 @@ Resurs administratörer kan komma åt begäran om förnyelse från länken i e-p
 
 ![Azure-resurser – sidan Godkänn begär Anden visar begär Anden och länkar till Godkänn eller neka](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-När en administratör väljer **Godkänn** eller **neka**visas information om begäran tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
+När en administratör väljer **Godkänn** eller **neka** visas information om begäran tillsammans med ett fält för att ge en affärs motivering för gransknings loggarna.
 
 ![Godkänn begäran om roll tilldelning med begär ande orsak, tilldelnings typ, start tid, slut tid och orsak](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 

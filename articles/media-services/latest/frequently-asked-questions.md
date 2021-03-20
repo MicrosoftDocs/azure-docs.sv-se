@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505774"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581124"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Vanliga frågor och svar om Media Services v3
 
@@ -86,12 +86,12 @@ Ditt webb program bör fråga användaren om de vill avsluta sändningen när we
 
 #### <a name="server-side"></a>Server sida
 
-Du kan övervaka Live-händelser genom att prenumerera på Azure Event Grid händelser. Mer information finns i [händelse schema för EventGrid](media-services-event-schemas.md#live-event-types).
+Du kan övervaka Live-händelser genom att prenumerera på Azure Event Grid händelser. Mer information finns i [händelse schema för EventGrid](monitoring/media-services-event-schemas.md#live-event-types).
 
 Du kan antingen:
 
-* [Prenumerera](reacting-to-media-services-events.md) på data strömmens [Microsoft. Media. LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) -händelser och övervaka att det inte finns några åter anslutningar i ett tag för att stoppa och ta bort din Live-händelse.
-* [Prenumerera](reacting-to-media-services-events.md) på händelser på spår nivåns [pulsslag](media-services-event-schemas.md#liveeventingestheartbeat) . Om alla spår har en inkommande bit hastighet som släpps till 0 eller om den sista tidsstämpeln inte längre ökar, kan du stänga av direkt sändningen på ett säkert sätt. Pulsslags händelserna kommer in var 20: e sekund för varje spår, så det kan vara en bit utförlig.
+* [Prenumerera](monitoring/reacting-to-media-services-events.md) på data strömmens [Microsoft. Media. LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) -händelser och övervaka att det inte finns några åter anslutningar i ett tag för att stoppa och ta bort din Live-händelse.
+* [Prenumerera](monitoring/reacting-to-media-services-events.md) på händelser på spår nivåns [pulsslag](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) . Om alla spår har en inkommande bit hastighet som släpps till 0 eller om den sista tidsstämpeln inte längre ökar, kan du stänga av direkt sändningen på ett säkert sätt. Pulsslags händelserna kommer in var 20: e sekund för varje spår, så det kan vara en bit utförlig.
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Hur gör jag för att infoga brytningar/videor och bildfärgare under en Live-ström?
 
@@ -117,7 +117,7 @@ Mer information finns i [skydda ditt innehåll med hjälp av Media Services dyna
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hur och var fick jag en JWT-token innan jag använder den för att begära en licens eller nyckel?
 
-För produktion måste du ha en säker token-tjänst (det vill säga en webb tjänst), som utfärdar en JWT-token vid en HTTPS-begäran. För test kan du använda koden som visas i den `GetTokenAsync` metod som definierats i [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+För produktion måste du ha en säker token-tjänst (det vill säga en webb tjänst), som utfärdar en JWT-token vid en HTTPS-begäran. För test kan du använda koden som visas i den `GetTokenAsync` metod som definierats i [programmet. cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 
 Spelaren gör en begäran, efter att en användare har autentiserats, till STS för en sådan token och tilldelar den som token-värde. Du kan använda [Azure Media Player-API: et](https://amp.azure.net/libs/amp/latest/docs/).
 
