@@ -10,10 +10,10 @@ ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92777749"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Redundans över flera slut punkter med Azure Traffic Manager
@@ -62,20 +62,20 @@ Skapa en Azure Traffic Manager-profil och konfigurera belastnings utjämning fö
 
 1. Skapa en Azure Traffic Manager-profil genom att följa stegen i [skapa en Traffic Manager profil](../traffic-manager/quickstart-create-traffic-manager-profile.md). 
 
-    * **Routningsmetod** väljer du **prioritet** .
+    * **Routningsmetod** väljer du **prioritet**.
 
 2. Lägg till dina CDN-slutpunkter i din Traffic Manager profil genom att följa stegen i [Lägg till Traffic Manager slut punkter](../traffic-manager/quickstart-create-traffic-manager-profile.md#add-traffic-manager-endpoints)
 
-    * **Typ** , Välj **externa slut punkter** .
+    * **Typ**, Välj **externa slut punkter**.
     * **Prioritet** anger du ett tal.
 
-    Skapa till exempel **cdndemo101akamai.azureedge.net** med prioritet **1** och **cdndemo101verizon.azureedge.net** med prioritet **2** .
+    Skapa till exempel **cdndemo101akamai.azureedge.net** med prioritet **1** och **cdndemo101verizon.azureedge.net** med prioritet **2**.
 
    ![CDN Traffic Manager-slutpunkter](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
 
 
 ## <a name="configure-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Konfigurera anpassad domän på Azure CDN och Azure Traffic Manager
-När du har konfigurerat CDN och Traffic Manager profiler följer du dessa steg för att lägga till DNS-mappning och registrera anpassad domän i CDN-slutpunkterna. I det här exemplet är det anpassade domän namnet **cdndemo101. dustydogpetcare. online** .
+När du har konfigurerat CDN och Traffic Manager profiler följer du dessa steg för att lägga till DNS-mappning och registrera anpassad domän i CDN-slutpunkterna. I det här exemplet är det anpassade domän namnet **cdndemo101.dustydogpetcare.online**.
 
 1. Gå till webbplatsen för domän leverantören för din anpassade domän, till exempel GoDaddy, och skapa två CNAME-poster för DNS. 
 
@@ -96,7 +96,7 @@ När du har konfigurerat CDN och Traffic Manager profiler följer du dessa steg 
     >
 
 
-2.  Välj den första CDN-slutpunkten (Akamai) från din Azure CDN profil. Välj **Lägg till anpassad domän** och indatamängd **cdndemo101. dustydogpetcare. online** . Kontrol lera att kryss rutan kontrol lera att den anpassade domänen är grön. 
+2.  Välj den första CDN-slutpunkten (Akamai) från din Azure CDN profil. Välj **Lägg till anpassad domän** och **cdndemo101.dustydogpetcare.online** för indatamängd. Kontrol lera att kryss rutan kontrol lera att den anpassade domänen är grön. 
 
     Azure CDN använder under domänen **cdnverify** för att verifiera DNS-mappningen för att slutföra den här registrerings processen. Mer information finns i [skapa en CNAME DNS-post](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Det här steget gör det möjligt Azure CDN att identifiera den anpassade domänen så att den kan svara på begär Anden.
     
@@ -110,7 +110,7 @@ När du har konfigurerat CDN och Traffic Manager profiler följer du dessa steg 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Välj den andra CDN-slutpunkten (Verizon) från din Azure CDN profil och upprepa steg 2. Välj **Lägg till anpassad domän** och ange **cdndemo101. dustydogpetcare. online** .
+4. Välj den andra CDN-slutpunkten (Verizon) från din Azure CDN profil och upprepa steg 2. Välj **Lägg till anpassad domän** och ange **cdndemo101.dustydogpetcare.online**.
  
 När du har slutfört de här stegen konfigureras tjänsten multi-CDN med funktioner för redundans med Azure Traffic Manager. 
 

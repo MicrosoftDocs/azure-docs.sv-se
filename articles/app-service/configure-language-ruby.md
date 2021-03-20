@@ -6,10 +6,10 @@ ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92743693"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurera en Linux Ruby-app för Azure App Service
@@ -65,7 +65,7 @@ ENV['WEBSITE_SITE_NAME']
 
 När du distribuerar en [Git-lagringsplats](deploy-local-git.md) eller ett [Zip-paket](deploy-zip.md) med produktionsprocesser påslaget, kör distributionsmotorn (Kudu) automatiskt följande steg efter distributionen som standard:
 
-1. Kontrollera om det finns en *Gemfile* .
+1. Kontrollera om det finns en *Gemfile*.
 1. Kör `bundle clean`. 
 1. Kör `bundle install --path "vendor/bundle"`.
 1. Kör `bundle package` för att paketera gems i mappen leverantör/cache.
@@ -96,8 +96,8 @@ Som standard startar Ruby-containern Rails-servern i följande ordning (mer info
 
 1. Generera ett [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security)-värde, om det inte redan finns ett. Det här värdet krävs för att appen ska kunna köras i produktionsläge.
 1. Ange miljövariabeln `RAILS_ENV` till `production`.
-1. Ta bort eventuella *.pid* -filer i katalogen *tmp/pids* som kan ha lämnats kvar av en Rails-server som har körts tidigare.
-1. Kontrollera att alla beroenden har installerats. Annars kan du försöka installera gems från den lokala katalogen *leverantör/cache* .
+1. Ta bort eventuella *.pid*-filer i katalogen *tmp/pids* som kan ha lämnats kvar av en Rails-server som har körts tidigare.
+1. Kontrollera att alla beroenden har installerats. Annars kan du försöka installera gems från den lokala katalogen *leverantör/cache*.
 1. Kör `rails server -e $RAILS_ENV`.
 
 Du kan anpassa startprocessen på följande sätt:

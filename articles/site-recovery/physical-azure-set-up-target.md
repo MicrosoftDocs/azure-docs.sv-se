@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953906"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Förbered mål (VMware till Azure)
 
 Den här artikeln beskriver hur du förbereder Azure-miljön för att börja replikera fysiska servrar (x64) som kör Windows eller Linux till Azure.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Artikeln förutsätter:
 - Du har skapat ett Recovery Services valv för att skydda dina fysiska servrar. Du kan skapa ett Recovery Services valv från [Azure Portal](https://portal.azure.com "Azure Portal").
@@ -26,7 +26,7 @@ Artikeln förutsätter:
 
 ## <a name="prepare-target"></a>Förbered målet
 
-När du har slutfört **steg 1: Välj skydds mål** och **steg 2: förbereda källan**går du till **steg 3: mål**
+När du har slutfört **steg 1: Välj skydds mål** och **steg 2: förbereda källan** går du till **steg 3: mål**
 
 ![Förbered målet](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 

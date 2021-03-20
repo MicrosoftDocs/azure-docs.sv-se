@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929599"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Expandera en befintlig adresspool med nya värdbaserade sessioner
@@ -26,7 +26,7 @@ I den här artikeln får du lära dig hur du kan expandera en befintlig adresspo
 
 Innan du börjar ska du kontrol lera att du har skapat en adresspool och en sessions värd för virtuella datorer (VM) med någon av följande metoder:
 
-- [Azure Portal](./create-host-pools-azure-marketplace.md)
+- [Azure-portalen](./create-host-pools-azure-marketplace.md)
 - [Skapa en värdpool med PowerShell](./create-host-pools-powershell.md)
 
 Du behöver också följande information från första gången du skapade värddatorn och de virtuella datorerna i sessionen:
@@ -39,11 +39,11 @@ Du behöver också följande information från första gången du skapade värdd
 
 Expandera din värddator genom att lägga till virtuella datorer:
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 
 2. Sök efter och välj **virtuellt skriv bord i Windows**.
 
-3. I menyn till vänster på skärmen väljer du **lagringspooler**och väljer sedan namnet på den värddator som du vill lägga till virtuella datorer i.
+3. I menyn till vänster på skärmen väljer du **lagringspooler** och väljer sedan namnet på den värddator som du vill lägga till virtuella datorer i.
 
 4. Välj **sessions-värdar** på menyn till vänster på skärmen.
 
@@ -58,9 +58,9 @@ Expandera din värddator genom att lägga till virtuella datorer:
     >[!NOTE]
     >Även om det är möjligt att redigera avbildningen och prefixet för de virtuella datorerna, rekommenderar vi inte att du redigerar dem om du har virtuella datorer med olika avbildningar i samma adresspool. Redigera bara avbildningen och prefixet om du planerar att ta bort virtuella datorer med äldre avbildningar från den berörda poolen.
 
-9. För information om det **virtuella nätverket**väljer du det virtuella nätverk och undernät som du vill att de virtuella datorerna ska anslutas till. Du kan välja samma virtuella nätverk som befintliga datorer som används eller välja en annan som passar den region som du valde i steg 7.
+9. För information om det **virtuella nätverket** väljer du det virtuella nätverk och undernät som du vill att de virtuella datorerna ska anslutas till. Du kan välja samma virtuella nätverk som befintliga datorer som används eller välja en annan som passar den region som du valde i steg 7.
 
-10. För **Administratörs kontot**anger du Active Directory domän användar namn och lösen ord som är associerat med det virtuella nätverk som du har valt. Dessa autentiseringsuppgifter används för att ansluta de virtuella datorerna till det virtuella nätverket.
+10. För **Administratörs kontot** anger du Active Directory domän användar namn och lösen ord som är associerat med det virtuella nätverk som du har valt. Dessa autentiseringsuppgifter används för att ansluta de virtuella datorerna till det virtuella nätverket.
 
       >[!NOTE]
       >Se till att dina administratörs namn överensstämmer med informationen som lämnas här. Och det finns inget MFA aktiverat för kontot.

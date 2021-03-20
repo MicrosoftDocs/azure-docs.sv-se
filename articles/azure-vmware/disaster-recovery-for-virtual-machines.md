@@ -4,10 +4,10 @@ description: Den här artikeln visar hur du utför haveri beredskap för virtuel
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779619"
 ---
 # <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Fullständig haveri beredskap för virtuella datorer med Azure VMware-lösning
@@ -38,17 +38,17 @@ Den här guiden omfattar följande scenarier för replikering:
 
 ## <a name="protect-vms"></a>Skydda virtuella datorer
 
-1. Logga in på **vSphere-klienten** på käll platsen och få åtkomst till HCX-plugin- **programmet** .
+1. Logga in på **vSphere-klienten** på käll platsen och få åtkomst till HCX-plugin- **programmet**.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="Alternativet HCX i vSphere" border="true":::
 
-1. Ange **katastrof återställnings** ytan och välj **skydda virtuella datorer** .
+1. Ange **katastrof återställnings** ytan och välj **skydda virtuella datorer**.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="Välj skydda virtuella datorer" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
 
 1. Välj källa och fjärranslutna platser. Fjärrplatsen i det här fallet bör vara det privata molnet för Azure VMware-lösningen.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="Alternativet HCX i vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="fönstret skydda virtuella datorer" border="true":::
 
 1. Om det behövs väljer du **standard** alternativ för replikering:
 
@@ -68,21 +68,21 @@ Den här guiden omfattar följande scenarier för replikering:
 
    - **Antal ögonblicks bilder:** Totalt antal ögonblicks bilder inom det konfigurerade intervallet för ögonblicks bilder.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png" alt-text="skydda alternativ för virtuella datorer" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png":::
 
 1. Välj en eller flera virtuella datorer i listan och konfigurera de replikeringsalternativ som behövs.
 
    Som standard ärver de virtuella datorerna den globala inställnings principen som kon figurer ATS i standardreplikerings alternativen. För varje nätverks gränssnitt i den valda virtuella datorn konfigurerar du den fjärranslutna **nätverks port gruppen** och väljer **Slutför** för att starta skydds processen.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="alternativ för nätverks gränssnitt" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
 
 1. Övervaka processen för var och en av de valda virtuella datorerna i samma katastrof återställnings plats.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png" alt-text="övervaka förloppet för skydd" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png":::
 
 1. När den virtuella datorn har skyddats kan du Visa de olika ögonblicks bilderna på fliken **ögonblicks bilder** .
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="lista över ögonblicks bilder" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
 
    Den gula triangeln innebär att ögonblicks bilderna och de virtuella datorerna inte har testats i en test återställnings åtgärd.
 
@@ -91,55 +91,55 @@ Den här guiden omfattar följande scenarier för replikering:
 ## <a name="complete-a-test-recover-of-vms"></a>Slutför en test återställning av virtuella datorer
 
 1. Logga in på **vSphere-klienten** på fjärrplatsen, som är det privata molnet för Azure VMware-lösningen. 
-1. I **HCX-plugin-programmet** i Disaster Recovery-avsnittet väljer du de lodräta ellipserna på valfri virtuell dator för att Visa menyn åtgärder och väljer sedan **testa återställning av virtuell dator** .
+1. I **HCX-plugin-programmet** i Disaster Recovery-avsnittet väljer du de lodräta ellipserna på valfri virtuell dator för att Visa menyn åtgärder och väljer sedan **testa återställning av virtuell dator**.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="Alternativet HCX i vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="Välj Testa återställning av virtuell dator" border="true":::
 
 1. Välj alternativ för testet och den ögonblicks bild som du vill använda för att testa olika tillstånd för den virtuella datorn.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="Alternativet HCX i vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="Välj en ögonblicks bild och välj test" border="true":::
 
 1. När du har valt **testet** börjar återställnings åtgärden.
 
 1. När du är färdig kan du kontrol lera den nya virtuella datorn i Azure VMware-lösningen privat moln vCenter.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/verify-test-recovery.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/verify-test-recovery.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/verify-test-recovery.png" alt-text="kontrol lera återställnings åtgärden" border="true" lightbox="./media/disaster-recovery-virtual-machines/verify-test-recovery.png":::
 
 1. När testningen har utförts på den virtuella datorn eller ett program som körs på den, gör du en rensning för att ta bort test instansen.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png" alt-text="Rensa test instans" border="true" lightbox="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png":::
 
 ## <a name="recover-vms"></a>Återställa virtuella datorer
 
-1. Logga in på **vSphere-klienten** på fjärrplatsen, som är Azure VMware-lösningens privata moln, och få åtkomst till HCX-plugin- **programmet** .
+1. Logga in på **vSphere-klienten** på fjärrplatsen, som är Azure VMware-lösningens privata moln, och få åtkomst till HCX-plugin- **programmet**.
 
    För återställnings scenariot används en grupp med virtuella datorer i det här exemplet.
 
-1. Välj den virtuella dator som ska återställas i listan, öppna menyn **åtgärder** och välj **Återställ virtuella datorer** .
+1. Välj den virtuella dator som ska återställas i listan, öppna menyn **åtgärder** och välj **Återställ virtuella datorer**.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="Alternativet HCX i vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="återställa virtuella datorer" border="true":::
 
 1. Konfigurera återställnings alternativen för varje instans och välj **Återställ** för att starta återställnings åtgärden.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines-confirm.png" alt-text="Alternativet HCX i vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines-confirm.png" alt-text="bekräfta återställning av virtuella datorer" border="true":::
 
 1. När återställningen har slutförts visas de nya virtuella datorerna i den fjärranslutna vCenter Server inventeringen.
 
 ## <a name="complete-a-reverse-replication-on-vms"></a>Slutför en omvänd replikering på virtuella datorer
 
-1. Logga in på **vSphere-klienten** i ditt privata moln i Azure VMware-lösningen och få åtkomst till HCX-plugin- **programmet** .
+1. Logga in på **vSphere-klienten** i ditt privata moln i Azure VMware-lösningen och få åtkomst till HCX-plugin- **programmet**.
    
    >[!NOTE]
    > Se till att de ursprungliga virtuella datorerna på käll platsen är avstängda innan du startar den omvända replikeringen. Åtgärden kan inte utföras om de virtuella datorerna inte är avstängd.
 
-1. I listan väljer du de virtuella datorer som ska replikeras tillbaka till käll platsen, öppnar menyn **åtgärder** och väljer **Omvänd** . 
+1. I listan väljer du de virtuella datorer som ska replikeras tillbaka till käll platsen, öppnar menyn **åtgärder** och väljer **Omvänd**. 
 1. Välj **Omvänd** för att starta replikeringen.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="Alternativet HCX i vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="Välj Omvänd åtgärd under skydda åtgärder" border="true":::
 
 1. Övervaka i avsnittet information om varje virtuell dator.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/review-reverse-operation.png" alt-text="Alternativet HCX i vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/review-reverse-operation.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/review-reverse-operation.png" alt-text="granska resultatet av en omvänd åtgärd" border="true" lightbox="./media/disaster-recovery-virtual-machines/review-reverse-operation.png":::
 
 ## <a name="disaster-recovery-plan-automation"></a>Automatisering av katastrof återställnings plan
 
@@ -149,7 +149,7 @@ Dessa API: er behandlar följande åtgärder vid haveri beredskap.
 
 - Skydda
 
-- Återställ
+- Återställa
 
 - Testa återställning
 
@@ -157,7 +157,7 @@ Dessa API: er behandlar följande åtgärder vid haveri beredskap.
 
 - Reverse
 
-- Söka i data
+- Fråga
 
 - Test rensning
 

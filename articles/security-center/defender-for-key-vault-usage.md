@@ -1,5 +1,5 @@
 ---
-title: Så här svarar du på Azure Defender för Key Vault aviseringar
+title: Svara på Azure Defender för Key Vault-aviseringar
 description: Lär dig mer om de steg som krävs för att svara på aviseringar från Azure Defender för Key Vault.
 author: memildin
 ms.author: memildin
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96122207"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Svara på Azure Defender för Key Vault-aviseringar
-När du får en avisering från Azure Defender för Key Vault rekommenderar vi att du undersöker och svarar på aviseringen enligt beskrivningen nedan. Azure Defender för Key Vault skyddar program och autentiseringsuppgifter, så även om du är van vid det program eller den användare som utlöste aviseringen är det viktigt att kontrol lera att situationen omger varje avisering.  
+När du får en avisering från Azure Defender för Key Vault rekommenderar vi att du undersöker och svarar på aviseringen enligt beskrivningen nedan. Azure Defender för Key Vault skyddar program och autentiseringsuppgifter, så även om du är van vid det program eller den användare som utlöste aviseringen är det viktigt att kontrollera situationen som omger varje avisering.  
 
 Varje avisering från Azure Defender för Key Vault innehåller följande element:
 
@@ -23,7 +23,7 @@ Varje avisering från Azure Defender för Key Vault innehåller följande elemen
 - Användarens huvud namn eller IP-adress för den misstänkta resursen
 
 > [!TIP]
-> Vissa fält är kanske inte tillgängliga, baserat på vilken *typ* av åtkomst som har inträffat. Om ditt nyckel valv till exempel har öppnats av ett program ser du inte ett associerat användar huvud namn. Om trafiken kommer från utanför Azure visas inget objekt-ID.
+> Vissa fält är kanske inte tillgängliga, baserat på vilken *typ* av åtkomst som har inträffat. Om ditt nyckelvalv till exempel har öppnats av ett program ser du inte ett associerat User Principal Name. Om trafiken kommer från en plats utanför Azure visas inget objekt-ID.
 
 ## <a name="step-1-contact"></a>Steg 1. Kontakt
 

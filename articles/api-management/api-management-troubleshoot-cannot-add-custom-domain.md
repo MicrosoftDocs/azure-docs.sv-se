@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75430580"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Det gick inte att uppdatera API Management tjänst värdnamn
@@ -41,11 +41,11 @@ Följ dessa anvisningar för att lösa problemet:
 1. Gå till [Azure Portal](Https://portal.azure.com), Välj API Management-instansen och välj sedan **hanterade identiteter**. Kontrol lera att alternativet **registrera med Azure Active Directory** är inställt på **Ja**. 
     ![Registrera med Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
 1. I Azure Portal öppnar du tjänsten **Key Vaults** och väljer det nyckel valv som du vill använda för den anpassade domänen.
-1. Välj **åtkomst principer**och kontrol lera om det finns ett huvud namn för tjänsten som matchar namnet på API Management tjänst instansen. Om det finns väljer du tjänstens huvud namn och kontrollerar att det har behörigheten **Hämta** under **hemliga behörigheter**.  
+1. Välj **åtkomst principer** och kontrol lera om det finns ett huvud namn för tjänsten som matchar namnet på API Management tjänst instansen. Om det finns väljer du tjänstens huvud namn och kontrollerar att det har behörigheten **Hämta** under **hemliga behörigheter**.  
     ![Lägger till åtkomst princip för tjänstens huvud namn](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
-1. Om API Management-tjänsten inte finns i listan väljer du **Lägg till åtkomst princip**och skapar sedan följande åtkomst princip:
+1. Om API Management-tjänsten inte finns i listan väljer du **Lägg till åtkomst princip** och skapar sedan följande åtkomst princip:
     - **Konfigurera från mall**: ingen
-    - **Välj huvud**namn: sök efter API Management tjänstens namn och välj det sedan i listan
+    - **Välj huvud** namn: sök efter API Management tjänstens namn och välj det sedan i listan
     - **Nyckel behörigheter**: ingen
     - **Hemliga behörigheter**: Hämta
     - **Certifikat behörigheter**: ingen

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082566"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Förbereda nätverks mappning för haveri beredskap för virtuella Hyper-V-datorer till Azure
@@ -104,7 +104,7 @@ Om mål nätverket har flera undernät och ett av dessa undernät har samma namn
 Om du vill se vad som händer vid återställning efter fel (omvänd replikering) ska vi anta att VMNetwork1-NewYork mappas till VMNetwork1-Chicago, med följande inställningar.
 
 
-**DATORN** | **Ansluten till virtuellt dator nätverk**
+**Virtuell dator** | **Ansluten till virtuellt dator nätverk**
 ---|---
 VM1 | VMNetwork1-Network
 VM2 (replik av VM1) | VMNetwork1-Chicago

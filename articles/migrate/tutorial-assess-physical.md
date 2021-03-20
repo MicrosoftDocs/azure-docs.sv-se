@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: b8e59e96d5ecb65933120ecaa4aa43fe4d59d367
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567545"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Självstudie: utvärdera fysiska servrar för migrering till Azure
@@ -21,7 +21,7 @@ Som en del av migreringen till Azure bedömer du dina lokala arbets belastningar
 Den här artikeln visar hur du bedömer lokala fysiska servrar för migrering till Azure med hjälp av verktyget Azure Migrate: Server bedömning.
 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 - Kör en utvärdering baserat på datorns metadata och konfigurations information.
 - Kör en utvärdering baserat på prestanda data.

@@ -4,10 +4,10 @@ description: Referensinformation för start händelse för batch-aktivitet. Den 
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91851024"
 ---
 # <a name="task-start-event"></a>Starthändelse för uppgift
@@ -40,7 +40,7 @@ ms.locfileid: "91851024"
 }
 ```
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`jobId`|Sträng|ID för jobbet som innehåller uppgiften.|
 |`id`|Sträng|Aktivitetens ID.|
@@ -54,25 +54,25 @@ ms.locfileid: "91851024"
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`poolId`|Sträng|ID för den pool där aktiviteten kördes.|
 |`nodeId`|Sträng|ID: t för noden som aktiviteten kördes på.|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|Antalet Compute-noder som aktiviteten kräver.|
 
 ###  <a name="constraints"></a><a name="constraints"></a> begränsningar
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Det maximala antalet gånger som aktiviteten kan göras om. Batch-tjänsten försöker igen med en aktivitet om dess slutkod är skilt från noll.<br /><br /> Observera att det här värdet specifikt styr antalet återförsök. Batch-tjänsten kommer att försöka utföra åtgärden en gång och kan sedan försöka igen till den här gränsen. Om till exempel det maximala antalet försök är 3, försöker batch utföra en aktivitet upp till fyra gånger (ett första försök och tre försök).<br /><br /> Om det maximala antalet försök är 0, gör batch-tjänsten inte om aktiviteterna.<br /><br /> Om det maximala antalet försök är-1, kommer batch-tjänsten att försöka utföra aktiviteter utan begränsning.<br /><br /> Standardvärdet är 0 (inga återförsök).|
 
 ###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`retryCount`|Int32|Antalet gånger som aktiviteten har fått nytt försök av batch-tjänsten. Aktiviteten provas igen om den avslutas med en slutkod som inte är noll, upp till den angivna MaxTaskRetryCount|

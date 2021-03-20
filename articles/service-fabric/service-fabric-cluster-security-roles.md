@@ -4,10 +4,10 @@ description: Den här artikeln beskriver de två klient rollerna och de behörig
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451901"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Rollbaserad åtkomst kontroll för Service Fabric klienter
@@ -89,7 +89,7 @@ Typen av användar åtkomst kontroll är som standard begränsad till följande 
 Administratörs åtkomst kontrollen har även åtkomst till föregående åtgärder.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Ändra standardinställningarna för klient roller
-I kluster manifest filen kan du ge administratörs funktioner till klienten om det behövs. Du kan ändra standardinställningarna genom att gå till alternativet för **infrastruktur inställningar** när [klustret skapas](service-fabric-cluster-creation-via-portal.md)och ange föregående inställningar i fälten **namn**, **admin**, **användare**och **värde** .
+I kluster manifest filen kan du ge administratörs funktioner till klienten om det behövs. Du kan ändra standardinställningarna genom att gå till alternativet för **infrastruktur inställningar** när [klustret skapas](service-fabric-cluster-creation-via-portal.md)och ange föregående inställningar i fälten **namn**, **admin**, **användare** och **värde** .
 
 ## <a name="next-steps"></a>Nästa steg
 [Service Fabric kluster säkerhet](service-fabric-cluster-security.md)

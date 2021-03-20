@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91310177"
 ---
 # <a name="supported-data-format-details"></a>Information om dataformat som stöds
@@ -23,7 +23,7 @@ Den här artikeln innehåller information om Läs-och skriv stöd för alla XML-
 
 Den spatiala IO-modulen stöder XML-taggar från följande namn rymder.
 
-| Namnområdesprefix | Namnområdes-URI   | Obs!                                                                    |
+| Namnområdesprefix | Namnområdes-URI   | Kommentarer                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Skrivskyddad support i GeoRSS-filer.           |
@@ -45,7 +45,7 @@ Den spatiala IO-modulen har stöd för följande XML-element. Alla XML-taggar so
 
 Den spatiala IO-modulen har stöd för följande KML-element.
 
-| Elementnamn         | Läsa    | Skriva   | Obs!                                                                                                                      |
+| Elementnamn         | Läsa    | Skriva   | Kommentarer                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | signatur | ja     | Objektet är parsat men används inte för placering av form.                                                                    |
 | `AddressDetails`     | signatur | nej      | Objektet är parsat men används inte för placering av form.                                                                    |
@@ -131,7 +131,7 @@ Den spatiala IO-modulen har stöd för följande KML-element.
 
 Den spatiala IO-modulen har stöd för följande GeoRSS-element.
 
-| Elementnamn             | Läsa    | Skriva | Obs!                                                                                          |
+| Elementnamn             | Läsa    | Skriva | Kommentarer                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | ja     | ja   |                                                                                                |
 | `atom:category`          | ja     | ja   |                                                                                                |
@@ -203,7 +203,7 @@ Den spatiala IO-modulen har stöd för följande GeoRSS-element.
 
 Den spatiala IO-modulen har stöd för följande GML-element. 
 
-| Elementnamn            | Läsa | Skriva | Obs!                                                                                  |
+| Elementnamn            | Läsa | Skriva | Kommentarer                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | ja  | nej    | Skrivs som `gml:posList` .                                                              |
 | `gml:curveMember`       | ja  | nej    |                                                                                        |
@@ -254,7 +254,7 @@ Den spatiala IO-modulen har stöd för följande GML-element.
 
 Den spatiala IO-modulen har stöd för följande GPX-element.
 
-| Elementnamn             | Läsa    | Skriva   | Obs!                                                                                       |
+| Elementnamn             | Läsa    | Skriva   | Kommentarer                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | ja     | ja     |                                                                                             |
 | `gpx:author`             | ja     | ja     |                                                                                             |
@@ -399,7 +399,7 @@ När du skannar rubrik raden kommer all typ information som finns i kolumn namne
 - EDM. Double
 - flyt
 - double
-- nummer
+- antal
 
 #### <a name="booleans"></a>Booleska värden
 

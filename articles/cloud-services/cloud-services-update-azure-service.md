@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741119"
 ---
 # <a name="how-to-update-an-azure-cloud-service-classic"></a>Så här uppdaterar du en Azure Cloud Service (klassisk)
@@ -57,7 +57,7 @@ I följande tabell visas de tillåtna ändringarna av en tjänst under en uppdat
 | Inställningar för lokal lagring |Öka bara<sup>2</sup> |Ja |Ja |
 | Lägga till eller ta bort roller i en tjänst |Ja |Ja |Ja |
 | Antal instanser av en viss roll |Ja |Ja |Ja |
-| Antal eller typ av slut punkter för en tjänst |Ja<sup>2</sup> |Nej |Ja |
+| Antal eller typ av slut punkter för en tjänst |Ja<sup>2</sup> |Inga |Ja |
 | Namn och värden för konfigurations inställningar |Ja |Ja |Ja |
 | Värden (men inte namn) för konfigurations inställningar |Ja |Ja |Ja |
 | Lägg till nya certifikat |Ja |Ja |Ja |

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 11/09/2020
-ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.date: 03/16/2020
+ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986132"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600891"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Konfigurera en Azure Marketplace-prenumeration för värdbaserade test enheter
 
@@ -43,26 +43,18 @@ Den här artikeln förklarar hur du konfigurerar en Azure Marketplace-prenumerat
     5. Under konto typer som stöds väljer du **konto i valfri organisations katalog och personliga Microsoft-konton**.
     6. Välj **skapa** och vänta tills appen har skapats.
     7. När appen har skapats noterar du det **program-ID** som visas på översikts skärmen. Du behöver det här värdet senare när du konfigurerar test enheten.
-    8. Om du vill lägga till en omdirigerings-URI för nativeclient väljer du bladet **autentisering** . Under **plattforms konfiguration** väljer du rutan **Lägg till plattform**  >  **mobil**  >  **dator** program. Välj omdirigerings-URI för **nativeclient** och välj **Konfigurera**.
-
-        :::image type="content" source="./media/test-drive/configure-desktop-devices.png" alt-text="Lägger till en omdirigerings-URI för nativeclient.":::
-
-    9. Under **hantera program** väljer du **API-behörigheter**.
-    10. Välj **Lägg till en behörighet** och sedan **Microsoft Graph-API**.
-    11. Välj kategorin **program** behörighet och sedan **katalogen. Read. all** och **Directory. readwrite. all** behörighet.
+    8. Under **hantera program** väljer du **API-behörigheter**.
+    9. Välj **Lägg till en behörighet** och sedan **Microsoft Graph-API**.
+    10. Välj kategorin **program** behörighet och sedan **User. readwrite. all**, **Directory. Read. all** och **Directory. readwrite. all** behörighet.
 
         :::image type="content" source="./media/test-drive/microsoft-graph.png" alt-text="Ange program behörigheter.":::
 
-    12. Om du vill lägga till åtkomst till **Dynamics CRM – användar personifiering** för Azure AD-appen väljer du **Lägg till behörighet** igen.
-
-        :::image type="content" source="./media/test-drive/request-api-permissions.png" alt-text="Begär program behörigheter.":::
-
-    13. När du har lagt till behörigheten väljer du **bevilja administrativt godkännande för Microsoft**.
-    14. Välj **Ja** i meddelande aviseringen.
+    11. När du har lagt till behörigheten väljer du **bevilja administrativt godkännande för Microsoft**.
+    12. Välj **Ja** i meddelande aviseringen.
 
         [![Visar program behörigheter som har beviljats.](media/test-drive/api-permissions-confirmation-customer.png)](media/test-drive/api-permissions-confirmation-customer.png#lightbox)
 
-    15. Så här skapar du en hemlighet för Azure AD App:
+    13. Så här skapar du en hemlighet för Azure AD App:
         1. Välj **certifikat och hemligheter** från **hantera program**.
         2. Under klient hemligheter väljer du **ny klient hemlighet**.
         3. Ange en beskrivning, till exempel *Testkör*, och välj lämplig varaktighet. Test enheten avbryts när den här nyckeln går ut, då du måste generera och ange AppSource en ny nyckel.
@@ -70,8 +62,7 @@ Den här artikeln förklarar hur du konfigurerar en Azure Marketplace-prenumerat
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Lägga till en klient hemlighet.":::
 
-5. Ibland tar det längre tid än förväntat att synkronisera en användare från Azure AD till en CRM-instans. För att hjälpa med detta lade vi till en process för att tvinga fram synkronisering av användare, men den kräver att Azure AD-programmet allowlisted av Partner Center. Information om hur du gör detta finns i [användar synkronisering till kund Engagement-instansen](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md).
-6. Lägg till rollen tjänstens huvud namn i programmet så att Azure AD-appen kan ta bort användare från din Azure-klient.
+5. Lägg till rollen tjänstens huvud namn i programmet så att Azure AD-appen kan ta bort användare från din Azure-klient.
     1. Öppna en PowerShell-kommandotolk på administratörs nivå.
     2. Install-Module MSOnline (kör detta kommando om MSOnline inte är installerat).
     3. Connect-MsolService (ett popup-fönster visas. Logga in med den nya organisations klienten).
@@ -81,7 +72,7 @@ Den här artikeln förklarar hur du konfigurerar en Azure Marketplace-prenumerat
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="Logga in på ditt konto.":::
 
-7. Lägg till den tidigare skapade Azure-appen som en program användare till din test enhet CRM-instans.
+6. Lägg till den tidigare skapade Azure-appen som en program användare till din test enhet CRM-instans.
     1. Lägg till en ny användare i **Azure Active Directory**. Endast **namn** -och **användar namns** värden (som tillhör samma klient) krävs för att skapa den här användaren, lämna övriga fält som standard. Kopiera värdet username.
     2. Logga in på **CRM-instansen** och välj **Ange**  >  **säkerhets**  >  **användare**.
     3. Ändra vyn till **program användare**.
@@ -97,7 +88,8 @@ Den här artikeln förklarar hur du konfigurerar en Azure Marketplace-prenumerat
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="Välja roll behörighet.":::
 
-    10. Tilldela program användaren den anpassade säkerhets roll som du skapade för test enheten.
+    10. Aktivera också **åtgärden för en annan användares** behörighet.
+    11. Tilldela program användaren den anpassade säkerhets roll som du skapade för test enheten.
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>Konfigurera för Dynamics 365 för åtgärder
 

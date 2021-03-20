@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91291851"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Kända problem/migrerings begränsningar med hybrid läge
@@ -73,9 +73,9 @@ Som standard körs tjänsten Azure Database Migration Service hybrid Worker som 
     - Installations nyckel för DMS Hybrid Worker
     - Nyckel par för DMS scenario motor
 
-    b. Högerklicka på posten **DMS hybrid app Key** , peka på **alla aktiviteter**och välj sedan **hantera privata nycklar**.
+    b. Högerklicka på posten **DMS hybrid app Key** , peka på **alla aktiviteter** och välj sedan **hantera privata nycklar**.
 
-    c. På fliken **säkerhet** väljer du **Lägg till**och anger sedan namnet på kontot.
+    c. På fliken **säkerhet** väljer du **Lägg till** och anger sedan namnet på kontot.
 
     d. Använd samma steg för att bevilja behörighet för privat nyckel för det nya kontot till det nya kontot i **DMS-scenariot motor nyckel par** .
 
@@ -99,4 +99,4 @@ I avsnitten nedan beskrivs problem som är specifika för scenarier som rör anv
 
 **Problem**: vid online-migrering till SQL-hanterad instans kommer datorn som kör hybrid Worker att uppleva hög CPU-användning om det finns för många säkerhets kopior eller om säkerhets kopieringarna är för stora.
 
-Lösning **: lös**problemet genom att använda komprimerade säkerhets kopior, dela migreringen så att den använder flera resurser eller skala upp datorn som kör hybrid Worker.
+Lösning **: lös** problemet genom att använda komprimerade säkerhets kopior, dela migreringen så att den använder flera resurser eller skala upp datorn som kör hybrid Worker.

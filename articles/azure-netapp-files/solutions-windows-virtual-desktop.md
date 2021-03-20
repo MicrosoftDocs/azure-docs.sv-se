@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
 ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91932472"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Fördelar med att använda Azure NetApp Files med Windows Virtual Desktop 
@@ -35,7 +35,7 @@ Följande exempel ritningar visar integrationen av virtuella Windows-datorer med
 
 I det poolbaserade scenariot [rekommenderar](/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) Windows Virtual Desktop-teamet följande vägledning genom antal användare till vCPU. Observera att ingen virtuell dator storlek anges i den här rekommendationen.
 
-|     Arbets belastnings typ     |     Ljus    |     Medium    |     Tung    |
+|     Arbets belastnings typ     |     Ljus    |     Medel    |     Tung    |
 |-----------------------|--------------|---------------|--------------|
 |     Användare per vCPU    |     6        |     4         |     2        |
 

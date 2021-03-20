@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84887247"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Aviseringar i real tid i Microsoft Azure CDN
@@ -53,7 +53,7 @@ I det här dokumentet förklaras aviseringar i real tid i Microsoft Azure CDN. D
     Ett formulär för att skapa en ny avisering visas.
    
     ![Nytt aviserings formulär](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. Om du vill att den här aviseringen ska vara aktiv när du klickar på **Spara**markerar du kryss rutan **avisering aktive rad** .
+5. Om du vill att den här aviseringen ska vara aktiv när du klickar på **Spara** markerar du kryss rutan **avisering aktive rad** .
 6. Ange ett beskrivande namn för aviseringen i fältet **namn** .
 7. I list rutan **medietyp** väljer du **http-stort objekt**.
    
@@ -63,16 +63,16 @@ I det här dokumentet förklaras aviseringar i real tid i Microsoft Azure CDN. D
    > Du måste välja ett **stort http-objekt** som **medietyp**.  De andra alternativen används inte av **Azure CDN från Verizon**.  Om du inte väljer ett **stort http-objekt** utlöses aviseringen aldrig.
    > 
    > 
-8. Skapa ett **uttryck** som ska övervakas genom att välja ett **mått**, en **operator**och ett **Utlösar-värde**.
+8. Skapa ett **uttryck** som ska övervakas genom att välja ett **mått**, en **operator** och ett **Utlösar-värde**.
    
-   * För **mått**väljer du den typ av villkor som du vill övervaka.  **Bandbredd Mbit/** s är mängden bandbredds användning i megabit per sekund.  **Totalt antal anslutningar** är antalet samtidiga http-anslutningar till våra Edge-servrar.  Definitioner av olika cache-statusar och status koder finns i [Azure CDN cache status koder](/previous-versions/azure/mt759237(v=azure.100)) och [Azure CDN HTTP-statuskod](/previous-versions/azure/mt759238(v=azure.100))
+   * För **mått** väljer du den typ av villkor som du vill övervaka.  **Bandbredd Mbit/** s är mängden bandbredds användning i megabit per sekund.  **Totalt antal anslutningar** är antalet samtidiga http-anslutningar till våra Edge-servrar.  Definitioner av olika cache-statusar och status koder finns i [Azure CDN cache status koder](/previous-versions/azure/mt759237(v=azure.100)) och [Azure CDN HTTP-statuskod](/previous-versions/azure/mt759238(v=azure.100))
    * **Operatorn** är den matematiska operator som upprättar relationen mellan måttet och Utlösar svärdet.
    * **Utlösarens värde** är tröskelvärdet som måste uppfyllas innan ett meddelande skickas.
      
      I följande exempel anger uttrycket CREATE att ett meddelande skickas när antalet status koder för 404 är större än 25.
      
      ![Exempel uttryck i real tids avisering](./media/cdn-real-time-alerts/cdn-expression.png)
-9. För **intervall**anger du hur ofta du vill att uttrycket ska utvärderas.
+9. För **intervall** anger du hur ofta du vill att uttrycket ska utvärderas.
 10. I list rutan **meddela om** väljer du när du vill bli meddelad när uttrycket är sant.
     
     * **Villkors start** anger att ett meddelande skickas när det angivna villkoret identifieras första gången.
@@ -83,7 +83,7 @@ I det här dokumentet förklaras aviseringar i real tid i Microsoft Azure CDN. D
     
     ![Meddela per e-postformulär](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    I fältet **till** anger du den e-postadress som du vill att meddelanden ska skickas till. För **ämne** och **brödtext**kan du lämna standardvärdet, eller så kan du anpassa meddelandet med hjälp av listan **tillgängliga nyckelord** för att dynamiskt infoga aviserings data när meddelandet skickas.
+    I fältet **till** anger du den e-postadress som du vill att meddelanden ska skickas till. För **ämne** och **brödtext** kan du lämna standardvärdet, eller så kan du anpassa meddelandet med hjälp av listan **tillgängliga nyckelord** för att dynamiskt infoga aviserings data när meddelandet skickas.
     
     > [!NOTE]
     > Du kan testa e-postmeddelandet genom att klicka på knappen **testa aviseringen** , men endast efter att aviserings konfigurationen har sparats.
@@ -93,7 +93,7 @@ I det här dokumentet förklaras aviseringar i real tid i Microsoft Azure CDN. D
     
     ![Meddela efter HTTP post-formulär](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    I fältet **URL** anger du den URL som du vill att http-meddelandet ska skickas till. I text rutan **sidhuvud** anger du de HTTP-huvuden som ska skickas i begäran.  För **brödtext**kan du anpassa meddelandet genom att använda listan **tillgängliga nyckelord** för att dynamiskt infoga aviserings data när meddelandet skickas.  **Sidhuvud** och **brödtext** som standard till en XML-nyttolast som liknar följande exempel:
+    I fältet **URL** anger du den URL som du vill att http-meddelandet ska skickas till. I text rutan **sidhuvud** anger du de HTTP-huvuden som ska skickas i begäran.  För **brödtext** kan du anpassa meddelandet genom att använda listan **tillgängliga nyckelord** för att dynamiskt infoga aviserings data när meddelandet skickas.  **Sidhuvud** och **brödtext** som standard till en XML-nyttolast som liknar följande exempel:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">

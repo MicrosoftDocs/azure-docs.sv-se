@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: baanders
 ms.openlocfilehash: 3550ac294988e72f0cdda4fac91eb0ed7d3436a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85362839"
 ---
-| Meddelandetyp | Namn på dirigerings källa | Genererad från...  |
+| Meddelandetyp | Namn på routningskälla | Genererad från...  |
 | --- | --- | --- |
-| Digitalt meddelande om ändring av dubbla meddelanden | Digitalt meddelande om ändring av dubbla meddelanden    | en digital, dubbel egenskaps ändring |
-| Avisering om digital e-livscykel | Avisering om digital e-livscykel    | en digital, dubbel Create-eller Delete-åtgärd |
-| Digitalt meddelande om ändring av dubbla relationer    | Digitalt meddelande om ändring av dubbla relationer    | en digital, dubbel Relations ändring |
-| Digitala meddelanden med dubbla telemetri|     Telemetri-meddelanden | telemetri-meddelande |
+| Ändringsmeddelande för digital tvilling | Ändringsmeddelande för digital tvilling    | en digital, dubbel egenskaps ändring |
+| Livscykelmeddelande för digital tvilling | Livscykelmeddelande för digital tvilling    | en digital, dubbel Create-eller Delete-åtgärd |
+| Ändringsmeddelande för digital tvilling-relation    | Ändringsmeddelande för digital tvilling-relation    | en digital, dubbel Relations ändring |
+| Telemetrimeddelanden för digital tvilling|     Telemetrimeddelanden | telemetri-meddelande |

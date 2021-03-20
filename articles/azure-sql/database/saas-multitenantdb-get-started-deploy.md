@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790975"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Distribuera och utforska ett shardade-program för flera innehavare
@@ -41,7 +41,7 @@ Vem som helst kan ladda ned C#-och PowerShell-källkoden för Wingtip-biljetter 
 > - Så här distribuerar du Wingtip Ticket SaaS-program.
 > - Var du får program käll koden och hanterings skript.
 > - Om de servrar och databaser som utgör appen.
-> - Hur klienter mappas till sina data med *katalogen* .
+> - Hur klienter mappas till sina data med *katalogen*.
 > - Så här etablerar du en ny klient.
 > - Övervaka klient aktivitet i appen.
 
@@ -73,19 +73,19 @@ Välj dina namn nu och skriv ned dem.
 1. Ange de parameter värden som krävs för distributionen.
 
     > [!IMPORTANT]
-    > I den här demonstrationen ska du inte använda några befintliga resurs grupper, servrar eller pooler. Välj i stället **skapa en ny resurs grupp** . Ta bort den här resursgruppen när du är klar med att programmet för att stoppa relaterad fakturering.
+    > I den här demonstrationen ska du inte använda några befintliga resurs grupper, servrar eller pooler. Välj i stället **skapa en ny resurs grupp**. Ta bort den här resursgruppen när du är klar med att programmet för att stoppa relaterad fakturering.
     > Använd inte det här programmet eller några resurser som skapas för produktion. Vissa aspekter av autentiseringen och inställningarna för Server brand väggen är avsiktligt oskyddade i appen för att under lätta demonstrationen.
 
     - För **resurs grupp** – Välj **Skapa ny** och ange ett **namn** för resurs gruppen (Skift läges känsligt).
         - Välj en **plats** i list rutan.
     - För **användare** – vi rekommenderar att du väljer ett kort **användar** värde.
 
-1. **Distribuera programmet** .
+1. **Distribuera programmet**.
 
     - Klicka om du vill godkänna de allmänna villkoren.
-    - Klicka på **Köp** .
+    - Klicka på **Köp**.
 
-1. Övervaka distributions status genom att klicka på **meddelanden** , som är klock ikonen till höger om sökrutan. Distribution av Wingtip-appen tar cirka fem minuter.
+1. Övervaka distributions status genom att klicka på **meddelanden**, som är klock ikonen till höger om sökrutan. Distribution av Wingtip-appen tar cirka fem minuter.
 
    ![distributionen lyckades](./media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
@@ -97,11 +97,11 @@ När programmet distribueras laddar du ned program käll koden och hanterings sk
 > Körbart innehåll (skript, DLL-filer) kan blockeras av Windows när zip-filer laddas ned från en extern källa och extraheras. När du extraherar skripten från en zip-fil kan du använda följande steg för att avblockera zip-filen innan du extraherar. Genom att avblockera. zip-filen ser du till att skripten tillåts köra.
 
 1. Bläddra till [WingtipTicketsSaaS-MultiTenantDb GitHub lagrings platsen](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
-2. Klicka på **klona eller hämta** .
+2. Klicka på **klona eller hämta**.
 3. Klicka på **Hämta zip** och spara filen.
-4. Högerklicka på **WingtipTicketsSaaS-MultiTenantDb-master.zip** -filen och välj **Egenskaper** .
-5. På fliken **Allmänt** väljer du **avblockera** och klickar på **Använd** .
-6. Klicka på **OK** .
+4. Högerklicka på **WingtipTicketsSaaS-MultiTenantDb-master.zip** -filen och välj **Egenskaper**.
+5. På fliken **Allmänt** väljer du **avblockera** och klickar på **Använd**.
+6. Klicka på **OK**.
 7. Extrahera filerna.
 
 Skripten finns i *... \\ WingtipTicketsSaaS – MultiTenantDb-Master \\ Learning moduless \\ -* mappen.
@@ -110,7 +110,7 @@ Skripten finns i *... \\ WingtipTicketsSaaS – MultiTenantDb-Master \\ Learning
 
 Ange *resurs grupp* och *användar* värden i **userconfig. psm1** innan du kör skript. Ange dessa variabler till samma värden som du angav under distributionen.
 
-1. Öppna... \\ Learning-moduler \\ *userconfig. Psm1* i *PowerShell ISE* .
+1. Öppna... \\ Learning-moduler \\ *userconfig. Psm1* i *PowerShell ISE*.
 2. Uppdatera *ResourceGroupName* och *namn* med de angivna värdena för din distribution (endast på raderna 10 och 11).
 3. Spara ändringarna.
 
@@ -129,7 +129,7 @@ En webb sida för central **evenemangs hubb** innehåller en lista över länkar
 
      ![evenemangshubben](./media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
-2. Klicka på **Fabrikam Jazzklubb** i **evenemangshubben** .
+2. Klicka på **Fabrikam Jazzklubb** i **evenemangshubben**.
 
    ![Händelser](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
@@ -137,7 +137,7 @@ En webb sida för central **evenemangs hubb** innehåller en lista över länkar
 
 Wingtip-appen använder [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)för att kontrol lera distributionen av inkommande begär Anden. Sidan händelser för varje klient innehåller klient namnet i URL: en. Varje URL innehåller också ditt speciella användar värde. Varje URL lyder under det visade formatet med hjälp av följande steg:
 
-- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.net/ *fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.net/*fabrikamjazzclub*
 
 1. I appen händelser parsas klient namnet från URL: en. Klient namnet är *fabrikamjazzclub* i föregående exempel-URL.
 2. Appen hashar sedan klient namnet för att skapa en nyckel för att få åtkomst till en katalog med hjälp av [Shard Map Management](elastic-scale-shard-map-management.md).
@@ -170,13 +170,13 @@ Du kanske vill starta om belastnings Generator-sessionen för att använda olika
 
 Den första distributionen innehåller tre exempel klienter i *Tenants1* -databasen. Nu ska vi skapa en annan klient och observera dess effekter på det distribuerade programmet. I det här steget trycker du på en nyckel för att skapa en ny klient:
 
-1. Öppna... \\ Inlärnings moduler \\ tillhandahåller och katalogiserar \\ *Demo-ProvisionTenants.ps1* i *PowerShell ISE* .
-2. Tryck på **F5** (inte **F8** ) för att köra skriptet (lämna standardvärdena för tillfället).
+1. Öppna... \\ Inlärnings moduler \\ tillhandahåller och katalogiserar \\ *Demo-ProvisionTenants.ps1* i *PowerShell ISE*.
+2. Tryck på **F5** (inte **F8**) för att köra skriptet (lämna standardvärdena för tillfället).
 
    > [!NOTE]
    > Du måste bara köra PowerShell-skripten genom att trycka på **F5** , inte genom att trycka på **F8** för att köra en markerad del av skriptet. Problemet med **F8** är att variabeln *$PSScriptRoot* inte utvärderas. Den här variabeln krävs av många skript för att navigera bland mappar, anropa andra skript eller importera moduler.
 
-Den nya röda Tenants1-klienten läggs till i *Tenants1* -databasen och registreras i katalogen. Den nya klient organisationens biljett försäljnings **evenemang** öppnas i webbläsaren:
+Den nya röda Tenants1-klienten läggs till i  -databasen och registreras i katalogen. Den nya klient organisationens biljett försäljnings **evenemang** öppnas i webbläsaren:
 
 ![Ny klient](./media/saas-multitenantdb-get-started-deploy/red-maple-racing.png)
 
@@ -193,7 +193,7 @@ Du kan välja att publicera kostnads fria utvärderings kunder eller ekonomi kun
 
 Sedan etablerar vi en annan klient, den här gången i en egen databas:
 
-1. I... \\ Lär dig \\ att etablera och katalogisera \\ *Demo-ProvisionTenants.ps1* , ändra *$TenantName* till **Salix salsa** , *$VenueType* till **kontrollen åt** och *$scenario* till **2** .
+1. I... \\ Lär dig \\ att etablera och katalogisera \\ *Demo-ProvisionTenants.ps1*, ändra *$TenantName* till **Salix salsa**, *$VenueType* till **kontrollen åt** och *$scenario* till **2**.
 
 2. Tryck på **F5** för att köra skriptet igen.
     - Den här **F5** -tryckningen etablerar den nya klienten i en separat databas. Databasen och klient organisationen är registrerade i katalogen. Sedan öppnas webbläsaren på sidan händelser för klient organisationen.
@@ -212,7 +212,7 @@ Nu tittar vi på några av de resurser som har distribuerats:
 
    ![Resursgrupp](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klicka på **katalog- &lt; MT &gt; användar** Server. Katalog servern innehåller två databaser med namnet *tenantcatalog* och *basetenantdb* . *Basetenantdb* -databasen är en tom mall databas. Den kopieras för att skapa en ny klient databas, oavsett om den används för många klienter eller bara en klient.
+2. Klicka på **katalog- &lt; MT &gt; användar** Server. Katalog servern innehåller två databaser med namnet *tenantcatalog* och *basetenantdb*. *Basetenantdb* -databasen är en tom mall databas. Den kopieras för att skapa en ny klient databas, oavsett om den används för många klienter eller bara en klient.
 
    ![katalogserver](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -260,7 +260,7 @@ I den här guiden har du lärt dig:
 > [!div class="checklist"]
 > - Så här distribuerar du Wingtip-biljetterna SaaS-databasen för flera klient organisationer.
 > - Om de servrar och databaser som utgör appen.
-> - Klienter mappas till sina data med *katalogen* .
+> - Klienter mappas till sina data med *katalogen*.
 > - Hur du etablerar nya klienter i en databas för flera klienter och en databas med en enda klient.
 > - Så här visar du användningen av poolen för att övervaka klient aktivitet.
 > - Så här tar du bort exempel resurser för att stoppa relaterad fakturering.

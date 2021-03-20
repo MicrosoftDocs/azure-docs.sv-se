@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/09/2020
 ms.openlocfilehash: 1610c51b613712c06410247e2eb673a50a9988b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792250"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-an-arm-template"></a>Snabb start: skapa en ny Azure API Management-tjänstinstans med en ARM-mall
@@ -21,7 +21,7 @@ I den här snabb starten beskrivs hur du använder en Azure Resource Manager mal
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-api-management-create%2Fazuredeploy.json)
 
@@ -50,25 +50,25 @@ Fler mallar för Azure API Management-mallar finns i [Azures snabb starts mallar
     I det här exemplet är instansen konfigurerad på nivån utvecklare, ett ekonomiskt alternativ för att utvärdera Azure API Management. Den här nivån är inte för produktions användning. Mer information om att skala API Management-nivåerna finns i avsnittet [Uppgradera och skala](upgrade-and-scale.md).
 
 1. Välj eller ange följande värden.
-    - **Prenumeration** : välj en Azure-prenumeration.
-    - **Resurs grupp** : Välj **Skapa ny** , ange ett unikt namn för resurs gruppen och välj sedan **OK** .
-    - **Region** : Välj en plats för resurs gruppen. Exempel: **centrala USA** .
-    - **E-post i Publisher** : Ange en e-postadress för att ta emot meddelanden.
-    - **Utgivar namn** : Ange ett namn som du väljer för API-utgivaren.
-    - **SKU** : Acceptera standardvärdet för **Developer** .
-    - **SKU-antal** : Acceptera standardvärdet.
-    - **Plats** : acceptera den genererade platsen för API Managements tjänsten.
+    - **Prenumeration**: välj en Azure-prenumeration.
+    - **Resurs grupp**: Välj **Skapa ny**, ange ett unikt namn för resurs gruppen och välj sedan **OK**.
+    - **Region**: Välj en plats för resurs gruppen. Exempel: **centrala USA**.
+    - **E-post i Publisher**: Ange en e-postadress för att ta emot meddelanden.
+    - **Utgivar namn**: Ange ett namn som du väljer för API-utgivaren.
+    - **SKU**: Acceptera standardvärdet för **Developer**.
+    - **SKU-antal**: Acceptera standardvärdet.
+    - **Plats**: acceptera den genererade platsen för API Managements tjänsten.
 
     :::image type="content" source="media/quickstart-arm-template/create-instance-template.png" alt-text="Egenskaper för API Management mall":::
 
-1. Välj **Granska + skapa** och granska sedan de allmänna villkoren. Om du samtycker väljer du **skapa** .
+1. Välj **Granska + skapa** och granska sedan de allmänna villkoren. Om du samtycker väljer du **skapa**.
 
     > [!TIP]
     >  Det kan ta mellan 30 och 40 minuter att skapa och aktivera en API Management-tjänst på Developer-nivån.
 
 1. När instansen har skapats visas ett meddelande:
 
-    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="Egenskaper för API Management mall":::
+    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="Distributionsmeddelande":::
 
  Azure-portalen används för att distribuera mallen. Förutom Azure Portal kan du också använda Azure PowerShell, Azure CLI och REST API. Mer information om andra distributions metoder finns i [distribuera mallar](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -79,7 +79,7 @@ Använd Azure Portal för att kontrol lera de distribuerade resurserna eller Anv
 1. I [Azure Portal](https://portal.azure.com)söker du efter och väljer **API Management tjänster** och väljer den tjänst instans som du skapade.
 1. Granska egenskaperna för din tjänst på **översikts** sidan.
 
-:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="Egenskaper för API Management mall":::
+:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="Sidan tjänst översikt":::
 
 När din API Management tjänst instans är online är du redo att använda den. Börja med självstudien för att [Importera och publicera](import-and-publish.md) ditt första API.
 
@@ -87,12 +87,12 @@ När din API Management tjänst instans är online är du redo att använda den.
 
 Om du planerar att fortsätta arbeta med efterföljande självstudier kanske du vill lämna API Management-instansen på plats. När de inte längre behövs tar du bort resurs gruppen, som tar bort resurserna i resurs gruppen.
 
-1. I [Azure Portal](https://portal.azure.com)söker du efter och väljer **resurs grupper** . Du kan också välja **resurs grupper** på **Start** sidan.
+1. I [Azure Portal](https://portal.azure.com)söker du efter och väljer **resurs grupper**. Du kan också välja **resurs grupper** på **Start** sidan.
 1. På sidan **resurs grupper** väljer du din resurs grupp.
-1. På sidan resurs grupp väljer du **ta bort resurs grupp** .
+1. På sidan resurs grupp väljer du **ta bort resurs grupp**.
 
-    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="Egenskaper för API Management mall":::
-1. Skriv namnet på resurs gruppen och välj sedan **ta bort** .
+    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="Ta bort resursgrupp":::
+1. Skriv namnet på resurs gruppen och välj sedan **ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 

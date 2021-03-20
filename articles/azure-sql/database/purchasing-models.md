@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788833"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Välj mellan vCore-och DTU-inköps modeller – Azure SQL Database-och SQL-hanterad instans
@@ -162,11 +162,11 @@ Kunder med arbets belastningar som är känsliga för maskin varu förändringar
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Måste jag ta mitt program offline för att konvertera från en DTU-baserad tjänst nivå till en vCore tjänst nivå?
 
-Nej. Du behöver inte göra programmet offline. De nya tjänst nivåerna erbjuder en enkel online-konverterings metod som liknar den befintliga processen för att uppgradera databaser från standard till Premium service-nivån och det andra sättet. Du kan starta konverteringen med hjälp av Azure Portal, PowerShell, Azure CLI, T-SQL eller REST API. Se [hantera enskilda databaser](single-database-scale.md) och [Hantera elastiska pooler](elastic-pool-overview.md).
+Nej. Du behöver inte göra programmet offline. De nya tjänst nivåerna erbjuder en enkel online-konverterings metod som liknar den befintliga processen för att uppgradera databaser från standard till Premium service-nivån och det andra sättet. Du kan starta konverteringen med hjälp av Azure Portal, PowerShell, Azure CLI, T-SQL eller REST API. Se [Hantera enskilda databaser](single-database-scale.md) och [Hantera elastiska pooler](elastic-pool-overview.md).
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Kan jag konvertera en databas från en tjänst nivå i den vCore-baserade inköps modellen till en tjänst nivå i den DTU-baserade inköps modellen?
 
-Ja, du kan enkelt konvertera databasen till alla prestanda mål som stöds med hjälp av Azure Portal, PowerShell, Azure CLI, T-SQL eller REST API. Se [hantera enskilda databaser](single-database-scale.md) och [Hantera elastiska pooler](elastic-pool-overview.md).
+Ja, du kan enkelt konvertera databasen till alla prestanda mål som stöds med hjälp av Azure Portal, PowerShell, Azure CLI, T-SQL eller REST API. Se [Hantera enskilda databaser](single-database-scale.md) och [Hantera elastiska pooler](elastic-pool-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

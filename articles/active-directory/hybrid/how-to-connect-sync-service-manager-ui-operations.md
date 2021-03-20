@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357111"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Använda fliken Synkronisera Service Manager åtgärder
@@ -43,7 +43,7 @@ Kolumnen **status** är den viktigaste informationen och visar det allvarligaste
 | slutförd- \* -varningar |Körningen slutfördes, men vissa data är inte i förväntat tillstånd. Om du har fel är det här meddelandet vanligt vis bara ett problem. Du bör inte undersöka varningar förrän du har åtgärdat fel. |
 | lyckades |Inga problem. |
 
-När du väljer en rad uppdateras de nedersta uppdateringarna för att visa information om den här körningen. Längst till vänster längst ned kan du ha en lista som säger **steg #**. Den här listan visas bara om du har flera domäner i din skog där varje domän representeras av ett steg. Du kan hitta domän namnet under Heading- **partitionen**. Under **synkroniserings statistik**kan du hitta mer information om antalet ändringar som har bearbetats. Du kan klicka på länkarna för att hämta en lista över de ändrade objekten. Om du har objekt med fel visas dessa fel under **synkroniseringsfel**.
+När du väljer en rad uppdateras de nedersta uppdateringarna för att visa information om den här körningen. Längst till vänster längst ned kan du ha en lista som säger **steg #**. Den här listan visas bara om du har flera domäner i din skog där varje domän representeras av ett steg. Du kan hitta domän namnet under Heading- **partitionen**. Under **synkroniserings statistik** kan du hitta mer information om antalet ändringar som har bearbetats. Du kan klicka på länkarna för att hämta en lista över de ändrade objekten. Om du har objekt med fel visas dessa fel under **synkroniseringsfel**.
 
 Mer information finns i [Felsöka ett objekt som inte synkroniseras](tshoot-connect-object-not-syncing.md)
 

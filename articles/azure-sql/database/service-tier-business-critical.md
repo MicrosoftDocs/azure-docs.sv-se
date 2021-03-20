@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: 830ecc44d0def13e51cb06704bef429bb8860cd6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780231"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Affärskritisk nivå – Azure SQL Database och Azure SQL-hanterad instans 
@@ -50,12 +50,12 @@ Affärskritisk tjänst nivå är utformad för program som kräver svar med låg
 
 Den viktigaste anledningen till varför du bör välja Affärskritisk tjänst nivå i stället för Generell användning nivå är:
 -   **Krav för låg I/O-latens** – arbets belastningar som behöver ett snabbt svar från lagrings skiktet (1-2 millisekunder i genomsnitt) bör använda affärskritisk nivån. 
--   **Frekvent kommunikation mellan program och databas** . Program som inte kan utnyttja cachelagring av program lager eller [begära batchbearbetning](../performance-improve-use-batching.md) och behöver skicka många SQL-frågor som måste bearbetas snabbt är bra kandidater för affärskritisk nivån.
+-   **Frekvent kommunikation mellan program och databas**. Program som inte kan utnyttja cachelagring av program lager eller [begära batchbearbetning](../performance-improve-use-batching.md) och behöver skicka många SQL-frågor som måste bearbetas snabbt är bra kandidater för affärskritisk nivån.
 -   **Stort antal uppdateringar** – INSERT-, Update-och Delete-åtgärder ändra data sidorna i minnet (skadad sida) som måste sparas till datafiler med `CHECKPOINT` åtgärd. Eventuell databas motor process krasch eller en redundansväxling av databasen med ett stort antal skadade sidor kan öka återställnings tiden i Generell användning nivån. Använd Affärskritisk nivå om du har en arbets belastning som orsakar många minnes ändringar. 
--   **Tids krävande transaktioner som ändrar data** . Transaktioner som öppnas under en längre tid förhindrar att logg filen trunkeras, vilket kan öka logg storleken och antalet [virtuella loggfiler (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Ett stort antal VLFs kan sakta ned återställning av databasen efter redundansväxlingen.
+-   **Tids krävande transaktioner som ändrar data**. Transaktioner som öppnas under en längre tid förhindrar att logg filen trunkeras, vilket kan öka logg storleken och antalet [virtuella loggfiler (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Ett stort antal VLFs kan sakta ned återställning av databasen efter redundansväxlingen.
 -   **Arbets belastning med rapporterings-och analys frågor** som kan omdirigeras till den kostnads fria sekundära skrivskyddade repliken.
-- **Högre återhämtning och snabbare återställning från haverier** . Om det uppstår systemfel kommer databasen på den primära instansen att inaktive ras och en av de sekundära replikerna kommer omedelbart att bli en ny skrivskyddad primär databas som är redo att bearbeta frågor. Databas motorn behöver inte analysera och göra om transaktioner från logg filen och läsa in alla data i minnesbufferten.
-- **Skydd för avancerad data skada** . Affärskritisk-nivån utnyttjar databas repliker bakom affärs kontinuiteten och så att tjänsten även utnyttjar automatisk sid reparation, vilket är samma teknik som används för att SQL Server databas [speglings-och tillgänglighets grupper](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Om en replik inte kan läsa en sida på grund av ett data integritets problem hämtas en ny kopia av sidan från en annan replik, vilket ersätter den oläsbarde sidan utan data förlust eller kund avbrott. Den här funktionen gäller i Generell användning nivå om databasen har geo-sekundär replik.
+- **Högre återhämtning och snabbare återställning från haverier**. Om det uppstår systemfel kommer databasen på den primära instansen att inaktive ras och en av de sekundära replikerna kommer omedelbart att bli en ny skrivskyddad primär databas som är redo att bearbeta frågor. Databas motorn behöver inte analysera och göra om transaktioner från logg filen och läsa in alla data i minnesbufferten.
+- **Skydd för avancerad data skada**. Affärskritisk-nivån utnyttjar databas repliker bakom affärs kontinuiteten och så att tjänsten även utnyttjar automatisk sid reparation, vilket är samma teknik som används för att SQL Server databas [speglings-och tillgänglighets grupper](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Om en replik inte kan läsa en sida på grund av ett data integritets problem hämtas en ny kopia av sidan från en annan replik, vilket ersätter den oläsbarde sidan utan data förlust eller kund avbrott. Den här funktionen gäller i Generell användning nivå om databasen har geo-sekundär replik.
 - **Högre tillgänglighet** – affärskritisk nivån i multi-AZ-konfigurationen garanterar 99,995% tillgänglighet, jämfört med 99,99% av generell användning nivån.
 - **Snabb geo-återställning** – affärskritisk nivå som kon figurer ATS med geo-replikering har en garanterad återställnings punkt mål på 5 SEK och återställnings tid (RTO) på 30 sek i 100% av de distribuerade timmarna.
 

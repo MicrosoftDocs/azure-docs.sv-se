@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941809"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Koncept för att distribuera data med ARC Enabled PostgreSQL Scale Server Group
@@ -46,7 +46,7 @@ Mer information finns på [noder och tabeller i Azure Database for PostgreSQL �
 ## <a name="determine-the-application-type"></a>Fastställa program typen
 Det är tydligt att identifiera vilken typ av program som du skapar. Varför? Eftersom körningen av effektiva frågor på en Azure-Arc-aktiverad PostgreSQL-Server grupp kräver att tabellerna distribueras på rätt sätt mellan servrar. Den rekommenderade distributionen varierar beroende på typ av program och dess fråge mönster. Det finns många olika typer av program som fungerar bra på Azure Arc-aktiverade postgres-skalning:
 - Program med flera klienter
-- Real-Time program
+- Realtidsprogram
 
 Det första steget i data modellering är att identifiera vilket av dem som liknar ditt program.
 

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781234"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Rapport över utskalade moln databaser (förhands granskning)
@@ -37,7 +37,7 @@ Här kommer du att skapa en Shard Map Manager tillsammans med flera Shards, föl
 1. Skapa och kör exempel programmet för att **komma igång med Elastic Database verktyg** genom att följa stegen i artikel avsnittet [Hämta och köra exempel appen](elastic-scale-get-started.md#download-and-run-the-sample-app-1). När du har slutfört alla steg visas följande kommando tolk:
 
     ![kommando tolk][1]
-2. Skriv "1" i kommando fönstret och tryck på **RETUR** . Detta skapar Shard Map Manager och lägger till två Shards på servern. Skriv "3" och tryck på **RETUR** ; Upprepa åtgärden fyra gånger. Detta infogar exempel data rader i din Shards.
+2. Skriv "1" i kommando fönstret och tryck på **RETUR**. Detta skapar Shard Map Manager och lägger till två Shards på servern. Skriv "3" och tryck på **RETUR**; Upprepa åtgärden fyra gånger. Detta infogar exempel data rader i din Shards.
 3. [Azure Portal](https://portal.azure.com) ska visa tre nya databaser på servern:
 
    ![Visual Studio-bekräftelse][2]
@@ -74,7 +74,7 @@ Dessa används för att ansluta till Shard Map Manager och Shards:
 
     "username" och "Password" måste vara samma som inloggnings information som används i steg 3 i avsnittet [Ladda ned och köra exempel appen](elastic-scale-get-started.md#download-and-run-the-sample-app) i artikeln **komma igång med Elastic Database verktyg** .
 
-### <a name="external-data-sources"></a>Externa data källor
+### <a name="external-data-sources"></a>Externa datakällor
 Om du vill skapa en extern data källa kör du följande kommando på ElasticDBQuery-databasen:
 
 ```tsql
@@ -121,19 +121,19 @@ Du kommer att märka att frågan sammanställer resultat från alla Shards och g
 
 1. Starta Excel 2013.
 2. Navigera till menyfliksområdet **data** .
-3. Klicka på **från andra källor** och klicka på **från SQL Server** .
+3. Klicka på **från andra källor** och klicka på **från SQL Server**.
 
    ![Excel-import från andra källor][5]
-4. I **guiden data anslutning** anger du Server namnet och inloggnings uppgifterna. Klicka på **Nästa** .
+4. I **guiden data anslutning** anger du Server namnet och inloggnings uppgifterna. Klicka på **Nästa**.
 5. Välj den **databas som innehåller de data du vill använda** i dialog rutan och välj **ElasticDBQuery** -databasen.
-6. Välj tabellen **kunder** i listvyn och klicka på **Nästa** . Klicka sedan på **Slutför** .
-7. I formuläret **Importera data** under **Välj hur du vill visa data i din arbets bok väljer du** **tabell** och klickar på **OK** .
+6. Välj tabellen **kunder** i listvyn och klicka på **Nästa**. Klicka sedan på **Slutför**.
+7. I formuläret **Importera data** under **Välj hur du vill visa data i din arbets bok väljer du** **tabell** och klickar på **OK**.
 
 Alla rader från tabellen **kunder** , lagrade i olika Shards, fyller i Excel-bladet.
 
 Nu kan du använda Excels kraftfulla funktioner för data visualisering. Du kan använda anslutnings strängen med Server namnet, databas namnet och autentiseringsuppgifterna för att ansluta dina BI-och data integrerings verktyg till Elastic Query-databasen. Kontrol lera att SQL Server stöds som data källa för ditt verktyg. Du kan referera till Elastic Query-databasen och externa tabeller precis som andra SQL Server databas-och SQL Server tabeller som du ansluter till med ditt verktyg.
 
-### <a name="cost"></a>Kostnad
+### <a name="cost"></a>Cost
 Det kostar inget extra att använda funktionen Elastic Database fråga.
 
 Pris information finns [SQL Database pris information](https://azure.microsoft.com/pricing/details/sql-database/).

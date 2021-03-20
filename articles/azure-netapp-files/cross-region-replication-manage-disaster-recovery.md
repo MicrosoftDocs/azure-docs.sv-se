@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243213"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591001"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Hantera haveri beredskap med replikering över flera regioner 
 
@@ -38,10 +38,10 @@ När du behöver aktivera mål volymen (till exempel när du vill redundansväxl
 1. Om du vill avbryta replikerings-peering väljer du mål volymen. Klicka på **replikering** under lagrings tjänst.  
 
 2.  Kontrol lera följande fält innan du fortsätter:  
-    * Se till att speglings status visar ***speglade** _.   
-        Försök inte att avbryta replikerings-peering om speglings status visar _Uninitialized *.
-    * Se till att Relations status visar ***inaktiv** _.   
-        Försök inte att avbryta replikerings-peering om Relations status visar _Transferring *.   
+    * Kontrol lera att speglings statusen visas som ***speglad***.   
+        Försök inte att avbryta replikerings-peering om speglings status visar *oinitierad*.
+    * Se till att Relations status visar ***inaktiv***.   
+        Försök inte att avbryta replikerings-peering om Relations status visar *överföring*.   
 
     Se [Visa hälso status för replikeringsrelation](cross-region-replication-display-health-status.md). 
 
@@ -80,10 +80,10 @@ När omsynkroniseringen har slutförts från målet till källan måste du bryta
 1. Bryt peering-replikeringen:  
     a. Välj *mål* volym. Klicka på **replikering** under lagrings tjänst.  
     b. Kontrol lera följande fält innan du fortsätter:   
-    * Se till att speglings status visar ***speglade** _.   
-    Försök inte att avbryta replikerings-peering om speglings status visar _uninitialized *.  
-    * Se till att Relations status visar ***inaktiv** _.   
-    Försök inte att avbryta replikerings-peering om Relations status visar _transferring *.    
+    * Kontrol lera att speglings statusen visas som ***speglad***.   
+    Försök inte att avbryta replikerings-peering om speglings status visar *oinitierad*.  
+    * Se till att Relations status visar ***inaktiv***.   
+    Försök inte att avbryta replikerings-peering om Relations status visar *överföring*.    
 
         Se [Visa hälso status för replikeringsrelation](cross-region-replication-display-health-status.md). 
 
@@ -102,7 +102,8 @@ När omsynkroniseringen har slutförts från målet till källan måste du bryta
 * [Replikering mellan regioner](cross-region-replication-introduction.md)
 * [Krav och överväganden för att använda replikering över flera regioner](cross-region-replication-requirements-considerations.md)
 * [Visa hälsostatus för replikeringsrelation](cross-region-replication-display-health-status.md)
+* [Ändra storlek på en mål volym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Mått för volym replikering](azure-netapp-files-metrics.md#replication)
-* [Ta bort volymer eller volymer](cross-region-replication-delete.md)
+* [Ta bort volymreplikeringar eller volymer](cross-region-replication-delete.md)
 * [Felsöka replikering mellan regioner](troubleshoot-cross-region-replication.md)
 

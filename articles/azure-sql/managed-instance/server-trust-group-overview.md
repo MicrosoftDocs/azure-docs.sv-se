@@ -13,10 +13,10 @@ ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
 ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790737"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Använd Server förtroende grupper för att konfigurera och hantera förtroende mellan SQL-hanterade instanser
@@ -42,13 +42,13 @@ I följande avsnitt beskrivs hur du installerar Server förtroende grupp.
 
 4. På sidan konfiguration av Server förtroende grupp väljer du ikonen **ny grupp** .
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Serverförtroendegrupper":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Ny grupp":::
 
-5. Ange **grupp namnet** i bladet **SQL Trust Group** Create. Det måste vara unikt i alla regioner där grupp medlemmarna finns. **Förtroende omfång** definierar typen av kors instans scenario som aktive ras med Server förtroende gruppen. I för hands versionen är endast tillämpligt förtroende omfång **distribuerade transaktioner** , så det är förvalt och kan inte ändras. Alla **grupp medlemmar** måste tillhöra samma **prenumeration** , men de kan vara under olika resurs grupper. Välj **resurs grupp** och **SQL Server/instans** för att välja den Azure SQL-hanterade instans som ska vara medlem i gruppen.
+5. Ange **grupp namnet** i bladet **SQL Trust Group** Create. Det måste vara unikt i alla regioner där grupp medlemmarna finns. **Förtroende omfång** definierar typen av kors instans scenario som aktive ras med Server förtroende gruppen. I för hands versionen är endast tillämpligt förtroende omfång **distribuerade transaktioner**, så det är förvalt och kan inte ändras. Alla **grupp medlemmar** måste tillhöra samma **prenumeration** , men de kan vara under olika resurs grupper. Välj **resurs grupp** och **SQL Server/instans** för att välja den Azure SQL-hanterade instans som ska vara medlem i gruppen.
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Serverförtroendegrupper":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Bladet skapa server förtroende grupp":::
 
-6. När alla obligatoriska fält har fyllts i klickar du på **Spara** .
+6. När alla obligatoriska fält har fyllts i klickar du på **Spara**.
 
 ## <a name="server-trust-group-maintenance-and-deletion"></a>Underhåll och borttagning av Server förtroende grupp
 
@@ -59,11 +59,11 @@ I följande avsnitt beskrivs borttagnings processen för en server betrodd grupp
 2. Navigera till en hanterad instans som tillhör förtroende gruppen.
 3. Välj fliken **SQL-förtroende grupper** på **säkerhets** inställningarna.
 4. Välj den förtroende grupp som du vill ta bort.
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Serverförtroendegrupper":::
-5. Klicka på **ta bort grupp** .
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Serverförtroendegrupper":::
-6. Skriv in namnet på Server förtroende gruppen för att bekräfta borttagningen och klicka på **ta bort** .
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Serverförtroendegrupper":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Välj server förtroende grupp":::
+5. Klicka på **ta bort grupp**.
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Ta bort Server förtroende grupp":::
+6. Skriv in namnet på Server förtroende gruppen för att bekräfta borttagningen och klicka på **ta bort**.
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Bekräfta borttagning av Server förtroende grupp":::
 
 > [!NOTE]
 > Att ta bort Server förtroende gruppen kanske inte omedelbart tar bort förtroendet mellan de två hanterade instanserna. Borttagning av förtroenden kan verkställas genom att anropa en [redundansväxling](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) av hanterade instanser. Kontrol lera de [kända problemen](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues) för de senaste uppdateringarna på detta.

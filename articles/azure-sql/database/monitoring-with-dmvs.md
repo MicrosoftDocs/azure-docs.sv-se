@@ -11,13 +11,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/15/2021
+ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219139"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592174"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Övervaka prestanda för Microsoft Azure SQL Database och Azure SQL Managed Instance med hjälp av dynamiska hanteringsvyer
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,6 +31,10 @@ Microsoft Azure SQL Database och Azure SQL Managed instance stöder delvis tre k
 - Transaktionsskyddade vyer för dynamisk hantering.
 
 Detaljerad information om vyer för dynamisk hantering finns i [vyer och funktioner i dynamisk hantering (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+
+## <a name="monitor-with-sql-insights"></a>Övervaka med SQL Insights
+
+[Azure Monitor SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) är ett verktyg för att övervaka Azure SQL-hanterade instanser, Azure SQL-databaser och SQL Server instanser i virtuella Azure SQL-datorer. Den här tjänsten använder en fjärragent för att samla in data från DMV: er (Dynamic Management views) och dirigera data till Azure Log Analytics, där de kan övervakas och analyseras. Du kan visa dessa data från [Azure Monitor](../../azure-monitor/overview.md) i angivna vyer eller komma åt loggdata direkt för att köra frågor och analysera trender. Om du vill börja använda Azure Monitor SQL Insights, se [Aktivera SQL Insights](../../azure-monitor/insights/sql-insights-enable.md).
 
 ## <a name="permissions"></a>Behörigheter
 

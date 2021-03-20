@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678332"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Utveckla C# Service Fabric-program med Visual Studio Code
@@ -34,7 +34,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 ## <a name="open-the-application-in-vs-code"></a>Öppna programmet i VS Code
 
 ### <a name="windows"></a>Windows
-Högerklicka på VS Code-ikonen på Start-menyn och välj **Kör som administratör** . Om du vill koppla fel sökaren till dina tjänster måste du köra VS Code som administratör.
+Högerklicka på VS Code-ikonen på Start-menyn och välj **Kör som administratör**. Om du vill koppla fel sökaren till dina tjänster måste du köra VS Code som administratör.
 
 ### <a name="linux"></a>Linux
 Använd terminalen och navigera till sökvägen/service-fabric-dotnet-core-getting-started/Services/CounterService från katalogen som programmet klonades till lokalt.
@@ -57,7 +57,7 @@ Programmet bör nu visas i din VS Code-arbetsyta.
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Distribuera programmet till det lokala klustret
 När du har skapat programmet kan du distribuera det till det lokala klustret. 
 
-1. Välj **kommandot Service Fabric: distribuera program (localhost)** från **kommando paletten** . Utdata från installations processen skickas till den integrerade terminalen.
+1. Välj **kommandot Service Fabric: distribuera program (localhost)** från **kommando paletten**. Utdata från installations processen skickas till den integrerade terminalen.
 
    ![Distribuera program kommando i VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +74,7 @@ Förutom att distribuera programmet till det lokala klustret kan du också publi
 
 1. Se till att du har skapat ditt program med hjälp av anvisningarna ovan. Uppdatera den genererade konfigurations filen `Cloud.json` med information om det fjärrkluster som du vill publicera till.
 
-2. Välj **kommandot Service Fabric: publicera program** från **kommando paletten** . Utdata från installations processen skickas till den integrerade terminalen.
+2. Välj **kommandot Service Fabric: publicera program** från **kommando paletten**. Utdata från installations processen skickas till den integrerade terminalen.
 
    ![Kommandot Publicera program i VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
@@ -101,7 +101,7 @@ Utför följande steg för att ange en Bryt punkt och fel sökning:
 
    ![Primär process](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. Bryt punkten i *CounterService.cs* -filen kommer snart att gå ut. Du kan sedan utforska värdena för de lokala variablerna. Använd fel söknings verktygsfältet överst i VS Code för att fortsätta körningen, steg för steg över rader, stega till metoder eller Stega ut ur den aktuella metoden. 
+5. Bryt punkten i filen *CounterService. cs* kommer snart att gå ut. Du kan sedan utforska värdena för de lokala variablerna. Använd fel söknings verktygsfältet överst i VS Code för att fortsätta körningen, steg för steg över rader, stega till metoder eller Stega ut ur den aktuella metoden. 
 
    ![Fel söknings värden](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 

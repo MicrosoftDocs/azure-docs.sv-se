@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2dba9e4f727b56e5093171c2ea59382075563f31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374787"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592072"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipeline-körning och utlösare i Azure Data Factory
 
@@ -231,7 +231,7 @@ Om du vill att schemautlösaren ska starta en pipelinekörning tar du med en pip
 ### <a name="schema-overview"></a>Översikt över schema
 I följande tabell ges en översikt över de viktigaste schemaelementen relaterade till upprepning och schemaläggning i en utlösare:
 
-| JSON-egenskap | Beskrivning |
+| JSON-egenskap | Description |
 | --- | --- |
 | **/St** | Ett datum/tid-värde. För grundläggande scheman gäller värdet för egenskapen **startTime** den första förekomsten. För komplexa scheman startar utlösaren tidigast vid det angivna värdet för **startTime**. |
 | **Slut** | Slutdatum och tidpunkt för utlösaren. Utlösaren körs inte efter angivet slutdatum och sluttid. Värdet för egenskapen kan inte ha passerat. <!-- This property is optional. --> |
@@ -279,11 +279,11 @@ I följande tabell ges en översikt över de viktigaste schemaelementen relatera
 
 | JSON-egenskap | Typ | Obligatorisk | Standardvärde | Giltiga värden | Exempel |
 | --- | --- | --- | --- | --- | --- |
-| **/St** | sträng | Ja | Inget | ISO 8601 datum/tid | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **mönster** | objekt | Ja | Inget | Ett upprepningsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **intervall** | antal | Inga | 1 | 1 till 1000 | `"interval":10` |
-| **Slut** | sträng | Ja | Inget | Ett datum/tid-värde som representerar en tidpunkt i framtiden | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **Ange** | objekt | Inga | Inget | Ett schemaobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **/St** | sträng | Yes | Inget | ISO 8601 datum/tid | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **mönster** | objekt | Yes | Inget | Ett upprepningsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **intervall** | antal | No | 1 | 1 till 1000 | `"interval":10` |
+| **Slut** | sträng | Yes | Inget | Ett datum/tid-värde som representerar en tidpunkt i framtiden | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **Ange** | objekt | No | Inget | Ett schemaobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Egenskapen startTime
 I följande tabell visas hur egenskapen **startTime** styr körningen av en utlösare:
@@ -310,7 +310,7 @@ Om flera **schema** element anges är utvärderings ordningen från den största
 
 I följande tabell beskrivs **schedule**-elementen i detalj:
 
-| JSON-element | Beskrivning | Giltiga värden |
+| JSON-element | Description | Giltiga värden |
 | --- | --- | --- |
 | **fördröjning** | Minuter för den timme då utlösaren körs. |– Heltal<br />– Heltalsmatris |
 | **timmarna** | Timmar på dagen då utlösaren körs. |– Heltal<br />– Heltalsmatris |
@@ -323,18 +323,13 @@ Utlösare för rullande fönster är en typ av utlösare som går igång med jä
 
 Mer information om utlösare för rullande fönster och exempel finns i [skapa en utlösare för rullande fönster](how-to-create-tumbling-window-trigger.md).
 
-## <a name="event-based-trigger"></a>Händelsebaserad utlösare
-
-En händelsebaserade utlösare kör pipeliner som svar på en händelse, till exempel när en fil anländer eller när en fil tas bort i Azure Blob Storage.
-
-Läs mer om händelsebaserade utlösare i [Skapa en utlösare som kör en pipeline som svar på en händelse](how-to-create-event-trigger.md).
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Exempel på scheman för upprepning av utlösare
+
 Det här avsnittet innehåller exempel på återkommande scheman. Det fokuserar på de objektet **schema** och dess element.
 
 I exemplen förutsätts att **intervallvärdet** är 1 och att värdet för **frekvens** är korrekt enligt schema definitionen. Du kan till exempel inte använda **frequency**-värdet ”day” och samtidigt ha en **monthDays**-modifiering i **schedule**-objektet. Dessa typer av begränsningar beskrivs i tabellen i föregående avsnitt.
 
-| Exempel | Beskrivning |
+| Exempel | Description |
 | --- | --- |
 | `{"hours":[5]}` | Kör kl. 05.00 varje dag. |
 | `{"minutes":[15], "hours":[5]}` | Kör kl. 05.15 varje dag. |
@@ -364,6 +359,7 @@ I exemplen förutsätts att **intervallvärdet** är 1 och att värdet för **fr
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Körs 05.15, 05.45, 17.15 och 17.45 den tredje onsdagen varje månad. |
 
 ## <a name="trigger-type-comparison"></a>Jämförelse av olika utlösare
+
 Både utlösare för rullande fönster och schemautlösare körs vid specifika tidpunkter. Hur skiljer de sig åt?
 
 > [!NOTE]
@@ -380,9 +376,19 @@ I följande tabell ges en jämförelse av utlösare för rullande fönster och s
 | **Systemvariabler** | Tillsammans med @trigger (). scheduledTime och @trigger (). StartTime, stöder den också användningen av systemvariablerna **WindowStart** och **WindowEnd** . Användare kan komma åt `trigger().outputs.windowStartTime` och `trigger().outputs.windowEndTime` som systemvariabler för utlösaren i definitionen av utlösaren. Värdena används som start- respektive sluttid för fönstret. För en utlösare för rullande fönster som körs timme i fönstret 01.00 till 02.00 är till exempel definitionen `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` och `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`. | Stöder endast standard @trigger -(). scheduledTime-och @trigger (). StartTime-variabler. |
 | **Relation pipeline-till-utlösare** | Har stöd för en 1:1-relation. Endast en pipeline kan utlösas. | Har stöd för många:många-relationer. Flera utlösare kan starta en pipeline. En enskild utlösare kan starta flera pipeliner. |
 
+## <a name="event-based-trigger"></a>Händelsebaserad utlösare
+
+En Event-baserad utlösare kör pipeliner som svar på en händelse. Det finns två varianter av event-baserade utlösare.
+
+* _Utlösare för lagrings händelser_ kör en pipeline mot händelser som sker i ett lagrings konto, till exempel när en fil tas emot eller när en fil tas bort i Azure Blob Storage-kontot.
+* _Anpassade händelse utlösare_ bearbetar och hanterar [anpassade ämnen](../event-grid/custom-topics.md) i Event Grid
+
+Mer information om händelsebaserade utlösare finns i utlösare för [lagrings händelser](how-to-create-event-trigger.md) och [Anpassad händelse utlösare](how-to-create-custom-event-trigger.md).
+
 ## <a name="next-steps"></a>Nästa steg
+
 Se följande självstudiekurser:
 
 - [Snabbstart: skapa en datafabrik med hjälp av .NET SDK](quickstart-create-data-factory-dot-net.md)
-- [Skapa en schemautlösare](how-to-create-schedule-trigger.md)
+- [Skapa en schema utlösare](how-to-create-schedule-trigger.md)
 - [Skapa en utlösare för rullande fönster](how-to-create-tumbling-window-trigger.md)

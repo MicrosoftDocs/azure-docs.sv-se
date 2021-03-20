@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 686e342eb68e2e5c97bdbae9cd11bdff5819b5d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98927593"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Kontinuerlig distribution med Azure DevOps
@@ -110,7 +110,7 @@ Skripten finns i [Cognitive Services röst assistenten-anpassade kommandon](http
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Argument | Description |
+    | Argument | Beskrivning |
     | ------- | --------------- | ----------- |
     | region | regionen för programmet, t. ex. westus2. |
     | subscriptionkey | prenumerations nyckel för din tal resurs. |

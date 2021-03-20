@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
 ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070664"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Sök efter Resource Health händelser som påverkar ditt AKS-kluster (för hands version)
@@ -39,7 +39,7 @@ När du kör behållar arbets belastningar på AKS vill du se till att du kan fe
 
 Azure Resource Health hjälper dig att diagnostisera och få support för tjänst problem som påverkar dina Azure-resurser. Resource Health rapporter om resursernas aktuella och tidigare hälsa och hjälper dig att avgöra om problemet orsakas av en åtgärd som initierats av användaren eller en plattforms händelse.
 
-Resource Health tar emot signaler för ditt hanterade kluster för att fastställa hälso tillståndet för klustret. Den undersöker hälso tillståndet för ditt AKS-kluster och rapporterar åtgärder som krävs för varje hälso signal. Dessa signaler sträcker sig från lösningar för automatisk lösning, planerade uppdateringar, oplanerade hälso händelser och avtillgänglighet som orsakas av åtgärder som initierats av användaren. Dessa signaler klassificeras med hjälp av Azure Resource Healthens hälso status: tillgänglig *,* *otillgänglig*, *okänd*och *försämrad*.
+Resource Health tar emot signaler för ditt hanterade kluster för att fastställa hälso tillståndet för klustret. Den undersöker hälso tillståndet för ditt AKS-kluster och rapporterar åtgärder som krävs för varje hälso signal. Dessa signaler sträcker sig från lösningar för automatisk lösning, planerade uppdateringar, oplanerade hälso händelser och avtillgänglighet som orsakas av åtgärder som initierats av användaren. Dessa signaler klassificeras med hjälp av Azure Resource Healthens hälso status: tillgänglig *,* *otillgänglig*, *okänd* och *försämrad*.
 
 - **Tillgängligt**: när det inte finns några kända problem som påverkar klustrets hälsa Resource Health rapporterar klustret som *tillgängligt*.
 

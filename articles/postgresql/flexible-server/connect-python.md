@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90948488"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Snabb start: Använd python för att ansluta och fråga efter data i Azure Database for PostgreSQL-flexibel Server
@@ -44,7 +44,7 @@ Installera `psycopg2` genom att öppna en terminal eller kommando tolk och köra
 Att ansluta till en Azure Database for PostgreSQL-flexibel Server kräver det fullständigt kvalificerade Server namnet och inloggnings uppgifterna. Du kan hämta den här informationen från Azure Portal.
 
 1. I [Azure Portal](https://portal.azure.com/)söker du efter och väljer ditt flexibla Server namn. 
-2. På sidan **Översikt** för servern kopierar du det fullständigt kvalificerade **Server namnet** och **administratörens användar namn**. Det fullständigt kvalificerade **Server namnet** är alltid av formatet * \<my-server-name> . postgres.Database.Azure.com*.
+2. På sidan **Översikt** för servern kopierar du det fullständigt kvalificerade **Server namnet** och **administratörens användar namn**. Det fullständigt kvalificerade **Server namnet** är alltid av formatet *\<my-server-name> . postgres.Database.Azure.com*.
 
    Du behöver också ditt administratörs lösen ord. Om du glömmer bort det kan du återställa det från översikts sidan. 
 

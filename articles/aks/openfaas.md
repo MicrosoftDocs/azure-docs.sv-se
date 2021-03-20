@@ -7,10 +7,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747764"
 ---
 # <a name="using-openfaas-on-aks"></a>Använda OpenFaaS på AKS
@@ -132,7 +132,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 Nu när OpenFaaS fungerar skapar du en funktion med hjälp av OpenFaas-portalen.
 
-Klicka på **distribuera ny funktion** och Sök efter **figlet** . Välj funktionen figlet och klicka på **distribuera** .
+Klicka på **distribuera ny funktion** och Sök efter **figlet**. Välj funktionen figlet och klicka på **distribuera**.
 
 ![Skärm bild som visar dialog rutan distribuera en ny funktion med texten figlet på Sök raden.](media/container-service-serverless/figlet.png)
 
@@ -245,7 +245,7 @@ Du kan också testa funktionen i OpenFaaS-ANVÄNDARGRÄNSSNITTET.
 
 ![alternativ text](media/container-service-serverless/OpenFaaSUI.png)
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Du kan fortsätta att lära dig med OpenFaaS-workshopen genom en uppsättning praktiska labb övningar som beskriver ämnen, till exempel hur du skapar din egen GitHub-robot, använder hemligheter, visar mått och automatisk skalning.
 

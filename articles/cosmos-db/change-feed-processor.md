@@ -11,10 +11,10 @@ ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340234"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Ändringsflödesprocessorn i Azure Cosmos DB
@@ -84,7 +84,7 @@ Du kan till exempel ha en distributions enhet som utlöser ett externt API när 
 
 Som nämnts tidigare kan du ha en eller flera instanser inom en distributions enhet. För att kunna dra nytta av beräknings distributionen inom distributions enheten är de enda viktiga kraven:
 
-1. Alla instanser bör ha samma konfiguration för låne behållare.
+1. Alla instanser ska ha samma lånecontainerkonfiguration.
 1. Alla instanser bör ha samma `processorName` .
 1. Varje instans måste ha ett unikt instansnamn (`WithInstanceName`).
 
@@ -106,7 +106,7 @@ Som standard när en ändrings flödes processor startar första gången initier
 
 ### <a name="reading-from-a-previous-date-and-time"></a>Läser från ett tidigare datum och en tidigare tidpunkt
 
-Det är möjligt att initiera processen för att ändra feed för att läsa ändringar som börjar vid ett **visst datum och en angiven tidpunkt** , genom att skicka en instans av en `DateTime` till `WithStartTime` Builder-tillägget:
+Det är möjligt att initiera processen för att ändra feed för att läsa ändringar som börjar vid ett **visst datum och en angiven tidpunkt**, genom att skicka en instans av en `DateTime` till `WithStartTime` Builder-tillägget:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 

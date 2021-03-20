@@ -11,10 +11,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579342"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Hämta lagrings konto typ och SKU-namn med .NET
@@ -23,9 +23,9 @@ Den här artikeln visar hur du hämtar Azure Storage konto typ och SKU-namn för
 
 ## <a name="about-account-type-and-sku-name"></a>Om kontotyp och SKU-namn
 
-**Kontotyp** : giltiga konto typer är,,,, `BlobStorage` `BlockBlobStorage` `FileStorage` `Storage` och `StorageV2` . [Översikt över Azure Storage-kontot](storage-account-overview.md) innehåller mer information, inklusive beskrivningar av de olika lagrings kontona.
+**Kontotyp**: giltiga konto typer är,,,, `BlobStorage` `BlockBlobStorage` `FileStorage` `Storage` och `StorageV2` . [Översikt över Azure Storage-kontot](storage-account-overview.md) innehåller mer information, inklusive beskrivningar av de olika lagrings kontona.
 
-**SKU-namn** : giltiga SKU-namn är,,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` och `Standard_ZRS` . SKU-namn är Skift läges känsliga och är sträng fält i [klassen SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname).
+**SKU-namn**: giltiga SKU-namn är,,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` och `Standard_ZRS` . SKU-namn är Skift läges känsliga och är sträng fält i [klassen SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname).
 
 ## <a name="retrieve-account-information"></a>Hämta konto information
 

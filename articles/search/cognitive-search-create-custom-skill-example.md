@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89020192"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Exempel: skapa en anpassad kunskap med hjälp av API för entitetsökning i Bing
@@ -34,7 +34,7 @@ I det här exemplet används en Azure-funktion som värd för ett webb-API, men 
 
 ### <a name="create-a-function-app"></a>Skapa en funktionsapp
 
-1. I Visual Studio väljer du **nytt**  >  **projekt** på Arkiv-menyn.
+1. Välj **Nytt** > **Projekt** på Arkiv-menyn i Visual Studio.
 
 1. I dialog rutan nytt projekt väljer du **installerad**, expanderar **Visual C#**  >  -**moln**, väljer **Azure Functions**, skriver ett namn för projektet och väljer **OK**. Namnet på Function-appen måste vara giltigt som C#-namn område, så Använd inte under streck, bindestreck eller andra icke-alfanumeriska tecken.
 
@@ -42,7 +42,7 @@ I det här exemplet används en Azure-funktion som värd för ett webb-API, men 
 
 1. Välj den typ som ska vara **http-utlösare**
 
-1. För lagrings kontot kan du välja **ingen**eftersom du inte behöver något lagrings utrymme för den här funktionen.
+1. För lagrings kontot kan du välja **ingen** eftersom du inte behöver något lagrings utrymme för den här funktionen.
 
 1. Välj **OK** för att skapa funktionen projekt och http-utlöst funktion.
 
@@ -50,7 +50,7 @@ I det här exemplet används en Azure-funktion som värd för ett webb-API, men 
 
 Visual Studio skapar ett projekt och i det en klass som innehåller formaterad exempelkod för den valda typen. Attributet *FunctionName* i metoden anger namnet på funktionen. Attributet *HttpTrigger* anger att funktionen utlöses av en HTTP-förfrågan.
 
-Ersätt nu allt innehåll i filen *Function1.cs* med följande kod:
+Ersätt nu allt innehåll i filen *Function1. cs* med följande kod:
 
 ```csharp
 using System;
