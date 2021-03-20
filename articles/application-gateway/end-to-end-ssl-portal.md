@@ -10,20 +10,20 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397509"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurera end-to-end-TLS genom att använda Application Gateway med portalen
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurera SSL från slutpunkt till slutpunkt i Application Gateway via Azure-portalen
 
 Den här artikeln beskriver hur du använder Azure Portal för att konfigurera kryptering från slut punkt till slut Transport Layer Security punkt (TLS), tidigare känt som Secure Sockets Layer (SSL)-kryptering via Azure Application Gateway v1 SKU.
 
 > [!NOTE]
 > Application Gateway v2-SKU: n kräver betrodda rot certifikat för att aktivera konfiguration från slut punkt till slut punkt.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -45,7 +45,7 @@ Läs mer i [Aktivera TLS-avslutning när du skapar en ny Application Gateway](./
 
 1. Välj **Alla resurser** och välj sedan **myAppGateway**.
 
-2. Välj **http-inställningar** på menyn på den vänstra sidan. Azure skapade automatiskt en standard-HTTP-inställning, **appGatewayBackendHttpSettings** , när du skapade Application Gateway. 
+2. Välj **http-inställningar** på menyn på den vänstra sidan. Azure skapade automatiskt en standard-HTTP-inställning, **appGatewayBackendHttpSettings**, när du skapade Application Gateway. 
 
 3. Välj **appGatewayBackendHttpSettings**.
 
@@ -91,7 +91,7 @@ Om du väljer det senare alternativet ska du följa stegen i följande procedur.
    > [!NOTE]
    > I test syfte kan du använda ett självsignerat certifikat. Detta rekommenderas dock inte för produktions arbets belastningar eftersom de är svårare att hantera och inte är helt säkra. Mer information finns i [skapa ett självsignerat certifikat](./create-ssl-portal.md#create-a-self-signed-certificate).
 
-6. Lägg till andra nödvändiga inställningar för **lyssnaren** , beroende på dina behov.
+6. Lägg till andra nödvändiga inställningar för **lyssnaren**, beroende på dina behov.
 
 7. Välj **OK** för att spara.
 
@@ -99,7 +99,7 @@ Om du väljer det senare alternativet ska du följa stegen i följande procedur.
 
 1. Välj **Alla resurser** och välj sedan **myAppGateway**.
 
-2. Välj **http-inställningar** på menyn på den vänstra sidan. Du kan antingen lägga till certifikat i en befintlig server dels-HTTP-inställning på listan Betrodda mottagare eller skapa en ny HTTP-inställning. (I nästa steg läggs certifikatet för standard-HTTP-inställningen, **appGatewayBackendHttpSettings** , till i listan över betrodda mottagare.)
+2. Välj **http-inställningar** på menyn på den vänstra sidan. Du kan antingen lägga till certifikat i en befintlig server dels-HTTP-inställning på listan Betrodda mottagare eller skapa en ny HTTP-inställning. (I nästa steg läggs certifikatet för standard-HTTP-inställningen, **appGatewayBackendHttpSettings**, till i listan över betrodda mottagare.)
 
 3. Välj **appGatewayBackendHttpSettings**.
 

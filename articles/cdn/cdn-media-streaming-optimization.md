@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192610"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimering av medie direkt uppspelning med Azure CDN 
@@ -67,7 +67,7 @@ De allmänna optimerings typerna för medie leverans eller video på begäran an
  
 Du kan konfigurera din CDN-slutpunkt (Content Delivery Network) för att optimera leveransen för stora filer via Azure Portal. Du kan också använda REST-API: erna eller klient-SDK: er för att göra detta. Följande steg visar processen via Azure Portal för en **Azure CDN Standard från Akamai** profil:
 
-1. Om du vill lägga till en ny slut punkt väljer du **slut punkt**på sidan Akamai **CDN Profile** .
+1. Om du vill lägga till en ny slut punkt väljer du **slut punkt** på sidan Akamai **CDN Profile** .
   
     ![Ny slut punkt](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
@@ -77,13 +77,13 @@ Du kan konfigurera din CDN-slutpunkt (Content Delivery Network) för att optimer
  
 När du har skapat slut punkten tillämpar den optimeringen för alla filer som matchar vissa villkor. I följande avsnitt beskrivs den här processen. 
 
-### <a name="caching"></a>Caching
+### <a name="caching"></a>Cachelagring
 
 Om **Azure CDN Standard från Akamai** upptäcker att till gången är ett strömmande manifest eller fragment, använder den olika utgångs tider för cachelagring från allmän webb leverans. (Se den fullständiga listan i följande tabell.) Som alltid är Cache-Control eller Expires-huvuden som skickas från ursprunget. Om till gången inte är en medie till gång cachelagras den med hjälp av förfallo tiderna för allmän webb leverans.
 
 Tiden för kort negativ cachelagring är användbar för ursprungs avlastning när många användare begär ett fragment som inte finns än. Ett exempel är en Live-ström där paketen inte är tillgängliga från ursprunget som andra. Det längre intervallet för cachelagring hjälper också till att avlasta begär Anden från ursprunget, eftersom video innehållet normalt inte ändras.
 
-| Caching  | Allmän webb leverans | Allmän medie direkt uppspelning | Video-on-demand-mediedirektuppspelning  
+| Cachelagring  | Allmän webb leverans | Allmän medie direkt uppspelning | Video-on-demand-mediedirektuppspelning  
 |--- | --- | --- | ---
 | Cachelagring: positiv <br> HTTP 200, 203, 300, <br> 301, 302 och 410 | 7 dagar |365 dagar | 365 dagar   
 | Cachelagring: negativ <br> HTTP 204, 305, 404, <br> och 405 | Inget | 1 sekund | 1 sekund

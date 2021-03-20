@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168349"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>GRÄNSSNITTs element för Microsoft. Common. list rutan
@@ -26,19 +26,19 @@ När endast ett enda objekt tillåts för markering visas kontrollen som:
 
 När beskrivningar ingår visas kontrollen som:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. list Rute enkel markering":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. list Rute enkel markering med beskrivningar":::
 
 När du har aktiverat flera val lägger kontrollen till alternativet **Välj alla** och kryss rutor för att markera fler än ett objekt:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. list Rute enkel markering":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. listen Multi-SELECT":::
 
 Beskrivningar kan inkluderas med flera SELECT-aktiverade.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. list Rute enkel markering":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Skärm bild som visar hur beskrivningar kan inkluderas med Multi-SELECT aktiverat":::
 
 När filtrering är aktiverat innehåller kontrollen en text ruta för att lägga till filtrering svärdet.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. list Rute enkel markering":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. listruta Multi-SELECT med beskrivningar":::
 
 ## <a name="schema"></a>Schema
 

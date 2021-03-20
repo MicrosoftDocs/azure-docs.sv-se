@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 3ac1f5bd3d44b7f98284cead60b34689f3d7be30
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395503"
 ---
 # <a name="setup-azure-site-recovery-for-azure-vmware-solution-vms"></a>Installations Azure Site Recovery för virtuella Azure VMware-lösningar
@@ -63,8 +63,8 @@ Slutför de föregående självstudierna:
 I din käll miljö behöver du en enda, lokal dator med hög tillgänglighet som värd för dessa lokala Site Recovery-komponenter:
 
 - **Konfigurations** Server: konfigurations servern samordnar kommunikationen mellan Azure VMware-lösningens privata moln och Azure och hanterar datareplikering.
-- **Processerver** : processervern fungerar som en gateway för replikering. Den tar emot replikeringsdata; optimerar den med cachelagring, komprimering och kryptering och skickar den till ett cache Storage-konto i Azure. Processervern installerar också mobilitets tjänst agenten på de virtuella datorer som du vill replikera och utför automatisk identifiering av virtuella datorer i Azure VMware-lösningen.
-- **Huvud mål server** : huvud mål servern hanterar replikeringsdata under återställning efter fel från Azure.
+- **Processerver**: processervern fungerar som en gateway för replikering. Den tar emot replikeringsdata; optimerar den med cachelagring, komprimering och kryptering och skickar den till ett cache Storage-konto i Azure. Processervern installerar också mobilitets tjänst agenten på de virtuella datorer som du vill replikera och utför automatisk identifiering av virtuella datorer i Azure VMware-lösningen.
+- **Huvud mål server**: huvud mål servern hanterar replikeringsdata under återställning efter fel från Azure.
 
 
 Alla dessa komponenter installeras tillsammans på en enda Azure VMware-lösning som kallas *konfigurations servern*. Som standard ställer vi in konfigurations servern som en virtuell VMware-dator med hög tillgänglighet för haveri beredskap för Azure VMware-lösningen. Om du vill göra detta laddar du ned en för beredd mall för öppen Virtualization-app (ägg) och importerar mallen till VMware för att skapa den virtuella datorn.
@@ -160,7 +160,7 @@ Välj och kontrollera målresurserna.
 ## <a name="create-a-replication-policy"></a>Skapa replikeringsprincip
 
 1. Öppna [Azure-portalen](https://portal.azure.com). Sök efter och välj **Recovery Services valv**.
-2. Välj Recovery Services-valvet ( **ContosoVMVault** i den här självstudien).
+2. Välj Recovery Services-valvet (**ContosoVMVault** i den här självstudien).
 3. Om du vill skapa en replikeringsprincip väljer du **Site Recovery Infrastructure**  >  **Replication policys**  >  **+ replikeringsprincip**.
 4. I **Skapa replikeringsprincip** anger du principnamnet. Vi använder **VMwareRepPolicy**.
 5. I **Tröskelvärde för återställningspunktmål** använder du standardvärdet 60 minuter. Det här värdet anger hur ofta återställningspunkter skapas. En avisering genereras när den kontinuerliga replikeringen överskrider den här gränsen.

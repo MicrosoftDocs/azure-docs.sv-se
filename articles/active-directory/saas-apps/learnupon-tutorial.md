@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Självstudie: Azure Active Directory integrering med LearnUpon
@@ -30,7 +30,7 @@ Genom att integrera LearnUpon med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med LearnUpon behöver du följande objekt:
 
@@ -89,7 +89,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med LearnUpon i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **LearnUpon** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **LearnUpon** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -132,7 +132,7 @@ Utför följande steg för att konfigurera enkel inloggning med LearnUpon i Azur
 
     ![Skärm bild som visar fliken Inställningar.](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
-1. Klicka på **enkel inloggning på SAML**och klicka sedan på **allmänna inställningar** för att konfigurera SAML-inställningar.
+1. Klicka på **enkel inloggning på SAML** och klicka sedan på **allmänna inställningar** för att konfigurera SAML-inställningar.
    
     ![Skärm bild som visar enkel inloggning – SAML markerat med allmänna inställningar valda.](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
@@ -154,9 +154,9 @@ Utför följande steg för att konfigurera enkel inloggning med LearnUpon i Azur
   
     ex. I text rutan **Logga ut URL** klistrar du in URL-värdet för **utloggning** , som du har kopierat från Azure Portal.
 
-    h. Klicka på **Hantera finger avtryck**och överför sedan finger utskriften av ditt hämtade certifikat.
+    h. Klicka på **Hantera finger avtryck** och överför sedan finger utskriften av ditt hämtade certifikat.
 
-1. Klicka på **användar inställningar**och utför sedan följande steg:
+1. Klicka på **användar inställningar** och utför sedan följande steg:
 
      ![Skärm bild som visar avsnittet användar inställningar där du kan ange de värden som beskrivs.](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
@@ -192,7 +192,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till LearnUpon.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **LearnUpon**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **LearnUpon**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

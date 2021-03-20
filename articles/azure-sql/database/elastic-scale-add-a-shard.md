@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792063"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Lägga till en Shard med hjälp av Elastic Database verktyg
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Viktigt** : Använd bara den här tekniken om du är säker på att intervallet för den uppdaterade mappningen är tomt.  Föregående metoder kontrollerar inte data för det område som flyttas, så det är bäst att inkludera kontroller i koden.  Om det finns rader i det område som flyttas matchar den faktiska data distributionen inte den uppdaterade Shard-kartan. Använd [verktyget Dela-sammanslagning](elastic-scale-overview-split-and-merge.md) för att utföra åtgärden i stället i dessa fall.  
+**Viktigt**: Använd bara den här tekniken om du är säker på att intervallet för den uppdaterade mappningen är tomt.  Föregående metoder kontrollerar inte data för det område som flyttas, så det är bäst att inkludera kontroller i koden.  Om det finns rader i det område som flyttas matchar den faktiska data distributionen inte den uppdaterade Shard-kartan. Använd [verktyget Dela-sammanslagning](elastic-scale-overview-split-and-merge.md) för att utföra åtgärden i stället i dessa fall.  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

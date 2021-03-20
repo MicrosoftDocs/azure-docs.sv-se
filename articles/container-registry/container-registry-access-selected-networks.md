@@ -4,10 +4,10 @@ description: Konfigurera IP-regler för att aktivera åtkomst till ett Azure Con
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89488770"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurera regler för offentliga IP-nätverk
@@ -46,9 +46,9 @@ az acr network-rule add \
 ## <a name="access-from-selected-public-network---portal"></a>Åtkomst från valt offentligt nätverk – Portal
 
 1. I portalen navigerar du till behållar registret.
-1. Under **Inställningar**väljer du **nätverk**.
+1. Under **Inställningar** väljer du **nätverk**.
 1. På fliken **offentlig åtkomst** väljer du om du vill tillåta offentlig åtkomst från **valda nätverk**.
-1. Under **brand vägg**anger du en offentlig IP-adress, till exempel den offentliga IP-adressen för en virtuell dator i ett virtuellt nätverk. Eller ange ett adress intervall i CIDR-notation som innehåller den virtuella datorns IP-adress.
+1. Under **brand vägg** anger du en offentlig IP-adress, till exempel den offentliga IP-adressen för en virtuell dator i ett virtuellt nätverk. Eller ange ett adress intervall i CIDR-notation som innehåller den virtuella datorns IP-adress.
 1. Välj **Spara**.
 
 ![Konfigurera brand Väggs regel för container Registry][acr-access-selected-networks]

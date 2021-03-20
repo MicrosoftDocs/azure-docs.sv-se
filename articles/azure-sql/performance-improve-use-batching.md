@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792607"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Använda batching för att förbättra Azure SQL Database och prestanda för Azure SQL-hanterad instans program
@@ -42,7 +42,7 @@ Den första delen av den här artikeln granskar olika batching-tekniker för .NE
 ### <a name="note-about-timing-results-in-this-article"></a>Information om tidtagnings resultat i den här artikeln
 
 > [!NOTE]
-> Resultaten är inte benchmarks, men är avsedda att visa **relativa prestanda** . Tids inställningarna baseras på ett genomsnitt av minst 10 test körningar. Åtgärder infogas i en tom tabell. De här testerna mättes i förväg V12 och de motsvarar inte nödvändigt vis det data flöde som du kan uppleva i en V12-databas med hjälp av de nya [nivåerna för DTU-tjänsten](database/service-tiers-dtu.md) eller [vCore-tjänsten](database/service-tiers-vcore.md). Den relativa fördelen med batch-tekniken bör vara liknande.
+> Resultaten är inte benchmarks, men är avsedda att visa **relativa prestanda**. Tids inställningarna baseras på ett genomsnitt av minst 10 test körningar. Åtgärder infogas i en tom tabell. De här testerna mättes i förväg V12 och de motsvarar inte nödvändigt vis det data flöde som du kan uppleva i en V12-databas med hjälp av de nya [nivåerna för DTU-tjänsten](database/service-tiers-dtu.md) eller [vCore-tjänsten](database/service-tiers-vcore.md). Den relativa fördelen med batch-tekniken bör vara liknande.
 
 ### <a name="transactions"></a>Transaktioner
 
@@ -97,18 +97,18 @@ Transaktioner används faktiskt i båda dessa exempel. I det första exemplet ä
 
 I följande tabell visas några ad hoc-testnings resultat. Testerna utförde samma sekventiella infogningar med och utan transaktioner. För mer perspektiv kördes den första uppsättningen tester från en bärbar dator till databasen i Microsoft Azure. Den andra uppsättningen tester kördes från en moln tjänst och databas som båda finns i samma Microsoft Azure Data Center (västra USA). I följande tabell visas varaktigheten i millisekunder av sekventiella infogningar med och utan transaktioner.
 
-**Lokalt till Azure** :
+**Lokalt till Azure**:
 
-| Åtgärder | Ingen transaktion (MS) | Transaktion (MS) |
+| Operations | Ingen transaktion (MS) | Transaktion (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure till Azure (samma data Center)** :
+**Azure till Azure (samma data Center)**:
 
-| Åtgärder | Ingen transaktion (MS) | Transaktion (MS) |
+| Operations | Ingen transaktion (MS) | Transaktion (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -128,7 +128,7 @@ Mer information om transaktioner i ADO.NET finns i [lokala transaktioner i ADO.n
 
 ### <a name="table-valued-parameters"></a>Tabellvärdesparametrar
 
-Tabell värdes parametrar stöder användardefinierade tabell typer som parametrar i Transact-SQL-uttryck, lagrade procedurer och funktioner. Med den här batching-tekniken på klient sidan kan du skicka flera rader med data i tabell värdes parametern. Om du vill använda tabell värdes parametrar definierar du först en tabell typ. Följande Transact-SQL-instruktion skapar en tabell typ med namnet **MyTableType** .
+Tabell värdes parametrar stöder användardefinierade tabell typer som parametrar i Transact-SQL-uttryck, lagrade procedurer och funktioner. Med den här batching-tekniken på klient sidan kan du skicka flera rader med data i tabell värdes parametern. Om du vill använda tabell värdes parametrar definierar du först en tabell typ. Följande Transact-SQL-instruktion skapar en tabell typ med namnet **MyTableType**.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-I föregående exempel infogar objektet **SqlCommand** rader från en tabell värdes parameter, **\@ TestTvp** . Det tidigare skapade **DataTable** -objektet har tilldelats till den här parametern med metoden **SqlCommand. Parameters. Add** . Batching av infogningar i ett anrop ökar markant prestanda över sekventiella infogningar.
+I föregående exempel infogar objektet **SqlCommand** rader från en tabell värdes parameter, **\@ TestTvp**. Det tidigare skapade **DataTable** -objektet har tilldelats till den här parametern med metoden **SqlCommand. Parameters. Add** . Batching av infogningar i ett anrop ökar markant prestanda över sekventiella infogningar.
 
 Om du vill förbättra det tidigare exemplet ytterligare använder du en lagrad procedur i stället för ett textbaserat kommando. Följande Transact-SQL-kommando skapar en lagrad procedur som tar **SimpleTestTableType** tabell värdes parameter.
 
@@ -195,7 +195,7 @@ I de flesta fall har tabell värdes parametrar motsvarande eller bättre prestan
 
 I följande tabell visas ad hoc-testresultat för användning av tabell värdes parametrar i millisekunder.
 
-| Åtgärder | Lokalt till Azure (MS) | Azure-samma data Center (MS) |
+| Operations | Lokalt till Azure (MS) | Azure-samma data Center (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -212,7 +212,7 @@ Mer information om tabell värdes parametrar finns i [tabell värdes parametrar]
 
 ### <a name="sql-bulk-copy"></a>SQL Mass kopiering
 
-SQL Mass kopiering är ett annat sätt att infoga stora mängder data i en mål databas. .NET-program kan använda **SqlBulkCopy** -klassen för att utföra Mass infognings åtgärder. **SqlBulkCopy** liknar kommando rads verktyget **Bcp.exe** eller Transact-SQL-instruktionen **bulk INSERT** . I följande kod exempel visas hur du kopierar raderna i käll- **DataTable** -tabellen till mål tabellen, tabellen.
+SQL Mass kopiering är ett annat sätt att infoga stora mängder data i en mål databas. .NET-program kan använda **SqlBulkCopy** -klassen för att utföra Mass infognings åtgärder. **SqlBulkCopy** liknar kommando rads verktyget **Bcp.exe** eller Transact-SQL-instruktionen **bulk INSERT**. I följande kod exempel visas hur du kopierar raderna i käll- **DataTable**-tabellen till mål tabellen, tabellen.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -233,7 +233,7 @@ Det finns vissa fall där Mass kopiering föredras över tabell värdes parametr
 
 Följande ad hoc-testresultat visar prestanda för batch-körning med **SqlBulkCopy** i millisekunder.
 
-| Åtgärder | Lokalt till Azure (MS) | Azure-samma data Center (MS) |
+| Operations | Lokalt till Azure (MS) | Azure-samma data Center (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Det här exemplet är tänkt att visa det grundläggande konceptet. Ett mer real
 
 Följande ad hoc-testresultat visar prestandan för den här typen av INSERT-instruktion i millisekunder.
 
-| Åtgärder | Tabell värdes parametrar (MS) | Infoga en sats (MS) |
+| Operations | Tabell värdes parametrar (MS) | Infoga en sats (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |

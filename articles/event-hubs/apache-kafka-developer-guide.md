@@ -4,10 +4,10 @@ description: Den här artikeln innehåller länkar till artiklar som beskriver h
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90061741"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka Developer Guide för Azure Event Hubs
@@ -42,7 +42,7 @@ Se snabb start: [data strömning med Event Hubs att använda Kafka-protokollet](
 ### <a name="tutorials-in-github"></a>Självstudier i GitHub
 Se följande självstudier på GitHub:
 
-| Självstudier | Beskrivning | 
+| Självstudie | Beskrivning | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Den här självstudien visar hur du ansluter Akka-strömmar till Kafka-aktiverade Event Hubs utan att ändra protokoll klienter eller köra egna kluster. Det finns två separata självstudier med hjälp av **Java** -och **Scala** -programmeringsspråk. | 
 | [Anslut](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Det här dokumentet beskriver hur du integrerar Kafka med Azure Event Hubs och distribuerar grundläggande FileStreamSource-och FileStreamSink-kopplingar. Även om dessa anslutningar inte är avsedda för användning i produktion, visar de ett Kafka-scenario från slut punkt till slut punkt där Azure Event Hubs imiteras som en Kafka-Broker.| 

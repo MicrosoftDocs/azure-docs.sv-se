@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
 ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103789"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Autentisering med slutanvändare med Azure Data Lake Storage Gen1 med hjälp av Azure Active Directory
@@ -28,7 +28,7 @@ Azure Data Lake Storage Gen1 använder Azure Active Directory för autentisering
 
 Båda dessa alternativ resulterar i att ditt program tillhandahålls med en OAuth 2,0-token som kopplas till varje begäran som görs till Data Lake Storage Gen1 eller Azure Data Lake Analytics.
 
-Den här artikeln handlar om hur du skapar ett **internt Azure AD-program för**slutanvändare-autentisering. Instruktioner för Azure AD-programkonfiguration för tjänst-till-tjänst-autentisering finns i [tjänst-till-tjänst-autentisering med data Lake Storage gen1 som använder Azure Active Directory](./data-lake-store-service-to-service-authenticate-using-active-directory.md).
+Den här artikeln handlar om hur du skapar ett **internt Azure AD-program för** slutanvändare-autentisering. Instruktioner för Azure AD-programkonfiguration för tjänst-till-tjänst-autentisering finns i [tjänst-till-tjänst-autentisering med data Lake Storage gen1 som använder Azure Active Directory](./data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 * En Azure-prenumeration. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -37,7 +37,7 @@ Den här artikeln handlar om hur du skapar ett **internt Azure AD-program för**
 
     ![Hämta prenumerations-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Ditt Azure AD-domännamn. Du kan hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. I skärm bilden nedan är domän namnet **contoso.onmicrosoft.com**och GUID inom hakparenteser är klient-ID: t.
+* Ditt Azure AD-domännamn. Du kan hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. I skärm bilden nedan är domän namnet **contoso.onmicrosoft.com** och GUID inom hakparenteser är klient-ID: t.
 
     ![Hämta AAD-domän](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
@@ -82,7 +82,7 @@ Läs [Hämta program-ID](../active-directory/develop/howto-create-service-princi
 
 Utför följande steg för att hämta omdirigerings-URI: n.
 
-1. Välj **Azure Active Directory**från Azure Portal, klicka på **Appregistreringar**och leta sedan reda på och klicka på det inbyggda Azure AD-programmet som du skapade.
+1. Välj **Azure Active Directory** från Azure Portal, klicka på **Appregistreringar** och leta sedan reda på och klicka på det inbyggda Azure AD-programmet som du skapade.
 
 2. Från bladet **Inställningar** för programmet klickar du på **omdirigering av URI: er**.
 
@@ -93,17 +93,17 @@ Utför följande steg för att hämta omdirigerings-URI: n.
 
 ## <a name="step-3-set-permissions"></a>Steg 3: ange behörigheter
 
-1. Välj **Azure Active Directory**från Azure Portal, klicka på **Appregistreringar**och leta sedan reda på och klicka på det inbyggda Azure AD-programmet som du skapade.
+1. Välj **Azure Active Directory** från Azure Portal, klicka på **Appregistreringar** och leta sedan reda på och klicka på det inbyggda Azure AD-programmet som du skapade.
 
-2. Klicka på **nödvändiga behörigheter**på bladet **Inställningar** för programmet och klicka sedan på **Lägg till**.
+2. Klicka på **nödvändiga behörigheter** på bladet **Inställningar** för programmet och klicka sedan på **Lägg till**.
 
     ![Skärm bild av bladet inställningar med alternativet omdirigering U R I rutan ut och bladet omdirigering U R i bladet med det faktiska U R jag anropade.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
-3. Klicka på **Välj ett API**i bladet **Lägg till API-åtkomst** , klicka på **Azure Data Lake**och klicka sedan på **Välj**.
+3. Klicka på **Välj ett API** i bladet **Lägg till API-åtkomst** , klicka på **Azure Data Lake** och klicka sedan på **Välj**.
 
     ![Skärm bild av bladet Lägg till API-åtkomst med alternativet Välj ett API som kallas för och välj ett API-blad med alternativet Azure Data Lake och alternativet Välj som kallas.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
-4.  I bladet **Lägg till API-åtkomst** klickar du på **Välj behörigheter**, markerar kryss rutan för att ge **fullständig åtkomst till data Lake Store**och klickar sedan på **Välj**.
+4.  I bladet **Lägg till API-åtkomst** klickar du på **Välj behörigheter**, markerar kryss rutan för att ge **fullständig åtkomst till data Lake Store** och klickar sedan på **Välj**.
 
     ![Skärm bild av bladet Lägg till API-åtkomst med alternativet Välj behörigheter som anropas och bladet aktivera åtkomst med alternativet ge fullständig åtkomst till Azure Data Lake tjänsten och alternativet Välj som kallas för.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 

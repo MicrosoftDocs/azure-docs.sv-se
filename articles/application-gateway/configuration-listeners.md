@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397651"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway Listener-konfiguration
@@ -20,7 +20,7 @@ ms.locfileid: "93397651"
 
 En lyssnare är en logisk entitet som söker efter inkommande anslutnings begär Anden med hjälp av port, protokoll, värd och IP-adress. När du konfigurerar lyssnaren måste du ange värden för de som matchar motsvarande värden i den inkommande begäran på gatewayen.
 
-När du skapar en Programgateway med hjälp av Azure Portal skapar du också en standard lyssnare genom att välja protokoll och port för lyssnaren. Du kan välja om du vill aktivera HTTP2-stöd för lyssnaren. När du har skapat programgatewayen kan du redigera inställningarna för den standard-lyssnare ( *appGatewayHttpListener* ) eller skapa nya lyssnare.
+När du skapar en Programgateway med hjälp av Azure Portal skapar du också en standard lyssnare genom att välja protokoll och port för lyssnaren. Du kan välja om du vill aktivera HTTP2-stöd för lyssnaren. När du har skapat programgatewayen kan du redigera inställningarna för den standard-lyssnare (*appGatewayHttpListener*) eller skapa nya lyssnare.
 
 ## <a name="listener-type"></a>Typ av lyssnare
 
@@ -87,7 +87,7 @@ Information om hur du konfigurerar en global anpassad felsida finns i [Azure Pow
 
 ## <a name="tls-policy"></a>TLS-princip
 
-Du kan centralisera TLS/SSL-certifikat hantering och minska belastningen på krypterings-dekryptering för en Server grupp på Server sidan. Med centraliserad TLS-hantering kan du också ange en central TLS-princip som passar dina säkerhets krav. Du kan välja *standard* , *fördefinierad* eller *anpassad* TLS-princip.
+Du kan centralisera TLS/SSL-certifikat hantering och minska belastningen på krypterings-dekryptering för en Server grupp på Server sidan. Med centraliserad TLS-hantering kan du också ange en central TLS-princip som passar dina säkerhets krav. Du kan välja *standard*, *fördefinierad* eller *anpassad* TLS-princip.
 
 Du konfigurerar TLS-principen för att kontrol lera TLS-protokoll versioner. Du kan konfigurera en Programgateway att använda en minimi protokoll version för TLS-handskakning från TLS 1.0, TLS 1.1 och TLS 1.2. Som standard är SSL 2,0 och 3,0 inaktiverade och kan inte konfigureras. Mer information finns i [Översikt över Application Gateway TLS-princip](./application-gateway-ssl-policy-overview.md).
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183140"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Hantera metoder för användarautentisering för Azure AD Multi-Factor Authentication
@@ -44,7 +44,7 @@ Du kan lägga till autentiseringsmetoder för en användare via Azure Portal ell
 
 Så här lägger du till autentiseringsmetoder för en användare via Azure Portal:  
 
-1. Logga in på **Azure Portal**. 
+1. Logga in på **Azure-portalen**. 
 1. Bläddra till **Azure Active Directory**  >  **användare**  >  **alla användare**. 
 1. Välj den användare som du vill lägga till en autentiseringsmetod för och välj **autentiseringsmetoder**.  
 1. Längst upp i fönstret väljer du **+ Lägg till autentiseringsmetod**.

@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685569"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Välja rätt integrerings- och automationstjänster i Azure
@@ -56,7 +56,7 @@ Du kan kombinera tjänsterna när du skapar en orkestrering och anropa funktione
 | **Utveckling** | Kod först (imperativt) | Design först (deklarativt) |
 | **Anslutningsmöjligheter** | [Om ett dussin inbyggda bindnings typer](functions-triggers-bindings.md#supported-bindings)skriver du kod för anpassade bindningar | [Stor mängd anslutningar](../connectors/apis-list.md), [Enterprise-integrationspaket för B2B-scenarier](../logic-apps/logic-apps-enterprise-integration-overview.md), [Bygg anpassade anslutningar](../logic-apps/custom-connector-overview.md) |
 | **Åtgärder** | Varje åtgärd är en Azure-funktion. Skriv kod för åtgärdsfunktioner |[Stor samling färdiga åtgärder](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Övervakning** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) [Azure Monitor loggar](../logic-apps/monitor-logic-apps.md)|
+| **Övervakning** | [Azure Application insikter](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) [Azure Monitor loggar](../logic-apps/monitor-logic-apps.md)|
 | **Hantering** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Körningskontext** | Kan köras [lokalt](functions-runtime-overview.md) eller i molnet | Körs bara i molnet|
 

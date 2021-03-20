@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123328"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Använd arbets flöden för att integrera ditt Azure IoT Central-program med andra moln tjänster
@@ -27,7 +27,7 @@ Med Azure IoT Central v3-anslutaren för automatisk energi och Azure Logic Apps 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 För att konfigurera lösningen krävs ett IoT Central-program för version 3. Information om hur du kontrollerar program versionen finns i [om ditt program](./howto-get-app-info.md). Information om hur du skapar ett IoT Central program finns i [skapa ett Azure IoT Central-program](./quick-deploy-iot-central.md).
 
@@ -41,15 +41,15 @@ Innan du kan utlösa ett arbets flöde i Energis par-eller Azure Logic Apps mås
 Så här lägger du till **Azure IoT Central v3 – för hands versions** koppling som en utlösare i energi automatisering:
 
 1. I energi spar läge väljer du **+ skapa**, väljer fliken **anpassad** .
-1. Sök efter *IoT Central*och välj **Azure IoT Central v3 – för hands versions** anslutning.
+1. Sök efter *IoT Central* och välj **Azure IoT Central v3 – för hands versions** anslutning.
 1. I listan över utlösare väljer du **när en regel utlöses (för hands version)**.
 1. I steget **när en regel utlöses** väljer du ditt IoT Central-program och den regel som du använder.
 
 Så här lägger du till **Azure IoT Central v3 – för hands versions** koppling som en utlösare i Azure Logic Apps:
 
-1. I **Logic Apps designer**väljer du den **tomma Logic app** -mallen.
+1. I **Logic Apps designer** väljer du den **tomma Logic app** -mallen.
 1. I designern väljer du fliken **anpassad** .
-1. Sök efter *IoT Central*och välj **Azure IoT Central v3 – för hands versions** anslutning.
+1. Sök efter *IoT Central* och välj **Azure IoT Central v3 – för hands versions** anslutning.
 1. I listan över utlösare väljer du **när en regel utlöses (för hands version)**.
 1. I steget **när en regel utlöses** väljer du ditt IoT Central-program och den regel som du använder.
 
@@ -70,12 +70,12 @@ Så här lägger du till **Azure IoT Central v3 – för hands versions** koppli
 
 Så här lägger du till **Azure IoT Central v3 – för hands versions** koppling som åtgärd i Azure Logic Apps:
 
-1. I **Logic Apps designer**väljer du fliken **anpassad** i panelen **Välj en åtgärd** .
-1. Sök efter *IoT Central*och välj **Azure IoT Central v3 – för hands versions** anslutning.
+1. I **Logic Apps designer** väljer du fliken **anpassad** i panelen **Välj en åtgärd** .
+1. Sök efter *IoT Central* och välj **Azure IoT Central v3 – för hands versions** anslutning.
 1. I listan med åtgärder väljer du den IoT Central åtgärd som du vill använda.
 1. I åtgärds steget Slutför du konfigurationen för den åtgärd som du har valt. Välj sedan **Spara**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Hitta Azure IoT Central – för hands versions koppling och välj utlösaren":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Hitta Azure IoT Central v3-anslutningen och välj en åtgärd":::
 
 ## <a name="list-of-actions"></a>Lista med åtgärder
 
@@ -129,7 +129,7 @@ Använd den här åtgärden för att hämta enhetens information.
 | Program | Välj i listan med IoT Central-program. |
 | Enhet | Unikt ID för den enhet som ska tas bort. |
 
-Du kan använda den returnerade informationen i de dynamiska uttrycken i andra åtgärder. Enhets informationen som returnerades är: **godkänd**, **Body**, **enhets Beskrivning**, **enhets namn**, **enhets mal len**, **etablerad**och **simulerad**.
+Du kan använda den returnerade informationen i de dynamiska uttrycken i andra åtgärder. Enhets informationen som returnerades är: **godkänd**, **Body**, **enhets Beskrivning**, **enhets namn**, **enhets mal len**, **etablerad** och **simulerad**.
 
 ### <a name="get-device-cloud-properties"></a>Hämta egenskaper för enhets moln
 

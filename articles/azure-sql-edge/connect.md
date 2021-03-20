@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395214"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Anslut och fråga Azure SQL Edge
@@ -36,8 +36,8 @@ Du kan ansluta till en instans av Azure SQL Edge-instansen från något av dessa
 
 Om du vill ansluta till en Azure SQL Edge-databasmotor från en nätverks dator behöver du följande:
 
-- **IP-adress eller nätverks namn för värddatorn** : det här är värd datorn där Azure SQL Edge-behållaren körs.
-- **Port mappning för Azure SQL Edge-container** : Detta är mappningen för Docker-containerns port till en port på värden. I behållaren mappas Azure SQL Edge alltid till port 1433. Du kan ändra detta om du vill. Om du vill ändra port numret uppdaterar du alternativet för att **skapa behållare** för Azure SQL Edge-modulen i Azure IoT Edge. I följande exempel mappas port 1433 i behållaren till port 1600 på värden.
+- **IP-adress eller nätverks namn för värddatorn**: det här är värd datorn där Azure SQL Edge-behållaren körs.
+- **Port mappning för Azure SQL Edge-container**: Detta är mappningen för Docker-containerns port till en port på värden. I behållaren mappas Azure SQL Edge alltid till port 1433. Du kan ändra detta om du vill. Om du vill ändra port numret uppdaterar du alternativet för att **skapa behållare** för Azure SQL Edge-modulen i Azure IoT Edge. I följande exempel mappas port 1433 i behållaren till port 1600 på värden.
 
     ```JSON
     {
@@ -51,7 +51,7 @@ Om du vill ansluta till en Azure SQL Edge-databasmotor från en nätverks dator 
     }
     ```
 
-- **Sa-lösenord för Azure SQL Edge-instansen** : Detta är det värde som anges för `SA_PASSWORD` miljövariabeln under distributionen av Azure SQL Edge.
+- **Sa-lösenord för Azure SQL Edge-instansen**: Detta är det värde som anges för `SA_PASSWORD` miljövariabeln under distributionen av Azure SQL Edge.
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Ansluta till databas motorn inifrån behållaren
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Ansluta till Azure SQL Edge från en annan nätverks dator
 
-Du kanske vill ansluta till instansen av Azure SQL Edge från en annan dator i nätverket. Det gör du genom att använda IP-adressen för Docker-värden och den värd port som Azure SQL Edge-behållaren är mappad till. Om t. ex. IP-adressen för Docker-värden är *xxx.xxx.xxx.xxx* och Azure SQL Edge-behållaren mappas till värd port *1600* , skulle Server adressen för instansen av Azure SQL Edge vara *xxx. xxx. xxx. xxx, 1600*. Det uppdaterade python-skriptet är:
+Du kanske vill ansluta till instansen av Azure SQL Edge från en annan dator i nätverket. Det gör du genom att använda IP-adressen för Docker-värden och den värd port som Azure SQL Edge-behållaren är mappad till. Om t. ex. IP-adressen för Docker-värden är *xxx.xxx.xxx.xxx* och Azure SQL Edge-behållaren mappas till värd port *1600*, skulle Server adressen för instansen av Azure SQL Edge vara *xxx. xxx. xxx. xxx, 1600*. Det uppdaterade python-skriptet är:
 
 ```python
 

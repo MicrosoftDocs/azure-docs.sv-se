@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89594194"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrera REST API Claims-utbyten i Azure AD B2C anpassad princip
@@ -68,9 +68,9 @@ I [RESTful tekniska profil](restful-technical-profile.md) `InputClaims` innehål
 
 Du kan konfigurera hur inloggade anspråk skickas till RESTful-anspråks leverantören med hjälp av SendClaimsIn-attributet. Möjliga värden är:
 
-- **Brödtext**som skickas i meddelandet HTTP POST-begäran i JSON-format.
-- **Formulär**som skickas i meddelandet HTTP post-begär Ande i ett et-tecken ("&").
-- **Sidhuvud**som skickas i HTTP Get-begärans huvud.
+- **Brödtext** som skickas i meddelandet HTTP POST-begäran i JSON-format.
+- **Formulär** som skickas i meddelandet HTTP post-begär Ande i ett et-tecken ("&").
+- **Sidhuvud** som skickas i HTTP Get-begärans huvud.
 - **QueryString**, som skickats i HTTP GET-förfrågan frågesträng.
 
 När du har konfigurerat **Body** -alternativet kan du med REST API teknisk profil skicka en komplex JSON-nyttolast till en slut punkt. Mer information finns i [skicka en JSON-nyttolast](restful-technical-profile.md#send-a-json-payload).

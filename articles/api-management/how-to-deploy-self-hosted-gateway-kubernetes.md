@@ -10,10 +10,10 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89500138"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Distribuera en gateway med egen värd till Kubernetes
@@ -35,7 +35,7 @@ Den här artikeln beskriver stegen för att distribuera den lokala gateway-kompo
 3. Välj **distribution**.
 4. En åtkomsttoken i text rutan **token** genererades automatiskt åt dig, baserat på standardvärden för **förfallo datum** och **hemlig nyckel** . Om det behövs väljer du värden i någon av eller båda kontrollerna för att generera en ny token.
 5. Välj fliken **Kubernetes** under **distributions skript**.
-6. Välj länk för ** \<gateway-name\> . yml** -filen och ladda ned yaml-filen.
+6. Välj länk för **\<gateway-name\> . yml** -filen och ladda ned yaml-filen.
 7. Välj **kopierings** ikonen **i det nedre** högra hörnet i text rutan för att spara `kubectl` kommandona i Urklipp.
 8. Klistra in kommandon i terminalfönstret (eller kommando fönstret). Det första kommandot skapar en Kubernetes-hemlighet som innehåller den åtkomsttoken som genererades i steg 4. Det andra kommandot tillämpar konfigurations filen som hämtades i steg 6 till Kubernetes-klustret och förväntar sig att filen är i den aktuella katalogen.
 9. Kör kommandona för att skapa de nödvändiga Kubernetes-objekten i [standard namn området](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) och starta poddar för egen värd från [behållar avbildningen](https://aka.ms/apim/sputnik/dhub) som hämtats från Microsoft container Registry.
@@ -112,7 +112,7 @@ YAML-filen som tillhandahölls i fältet Azure Portals uppsättningar `externalT
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Anpassade domän namn och SSL-certifikat
 
-Om du använder anpassade domän namn för API Management slut punkter, särskilt om du använder ett anpassat domän namn för hanterings slut punkten, kan du behöva uppdatera värdet `config.service.endpoint` i ** \<gateway-name\> . yaml** -filen för att ersätta standard domän namnet med det anpassade domän namnet. Se till att hanterings slut punkten kan nås från POD för den egen värdbaserade gatewayen i Kubernetes-klustret.
+Om du använder anpassade domän namn för API Management slut punkter, särskilt om du använder ett anpassat domän namn för hanterings slut punkten, kan du behöva uppdatera värdet `config.service.endpoint` i **\<gateway-name\> . yaml** -filen för att ersätta standard domän namnet med det anpassade domän namnet. Se till att hanterings slut punkten kan nås från POD för den egen värdbaserade gatewayen i Kubernetes-klustret.
 
 I det här scenariot, om SSL-certifikatet som används av hanterings slut punkten inte har signerats av ett välkänt CA-certifikat, måste du se till att CA-certifikatet är betrott av Pod för den egna värdbaserade gatewayen.
 

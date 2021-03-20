@@ -4,10 +4,10 @@ description: Lär dig hur du paketerar ett befintligt program som en körbar gä
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86259262"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Paketera och distribuera en befintlig körbar fil till Service Fabric
@@ -22,7 +22,7 @@ När du packar en befintlig körbar fil som en [gäst fil](service-fabric-guest-
 
 I Visual Studio finns en Service Fabric tjänstmall som hjälper dig att distribuera en körbar gäst fil till ett Service Fabric-kluster.
 
-1. Välj **Arkiv**  >  **nytt projekt**och skapa ett Service Fabric-program.
+1. Välj **Arkiv**  >  **nytt projekt** och skapa ett Service Fabric-program.
 2. Välj **gäst-körbara filer** som tjänst mal len.
 3. Klicka på **Bläddra** för att välja mappen med den körbara filen och fyll i resten av parametrarna för att skapa tjänsten.
    * *Kod pakets beteende*. Kan ställas in så att allt innehåll i din mapp kopieras till Visual Studio-projektet, vilket är användbart om den körbara filen inte ändras. Om du förväntar dig att den körbara filen ska ändras och du vill kunna hämta nya versioner dynamiskt, kan du välja att länka till mappen i stället. Du kan använda länkade mappar när du skapar programprojektet i Visual Studio. Detta länkar till käll platsen inifrån projektet, vilket gör det möjligt för dig att uppdatera den körbara gäst filen på käll platsen. Dessa uppdateringar blir en del av programpaketet när de skapas.
@@ -178,7 +178,7 @@ I föregående exempel kör SetupEntryPoint en kommando fil `LaunchConfig.cmd` s
 
 `EntryPoint`Elementet i tjänst manifest filen används för att ange hur tjänsten ska startas.
 
-`ExeHost`Elementet anger den körbara filen (och argument) som ska användas för att starta tjänsten. Du kan också lägga till `IsExternalExecutable="true"` attributet för `ExeHost` att ange att programmet är en extern körbar fil utanför kod paketet. Exempelvis `<ExeHost IsExternalExecutable="true">`.
+`ExeHost`Elementet anger den körbara filen (och argument) som ska användas för att starta tjänsten. Du kan också lägga till `IsExternalExecutable="true"` attributet för `ExeHost` att ange att programmet är en extern körbar fil utanför kod paketet. Till exempel `<ExeHost IsExternalExecutable="true">`.
 
 * `Program` Anger namnet på den körbara fil som ska starta tjänsten.
 * `Arguments` anger de argument som ska skickas till den körbara filen. Det kan vara en lista över parametrar med argument.

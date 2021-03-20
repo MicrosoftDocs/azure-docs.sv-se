@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657387"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Skapa villkorliga uttryck som styr arbets flödes åtgärder i Azure Logic Apps
 
-Lägg till en *villkors instruktion*för att köra specifika åtgärder i din Logic app enbart efter att ha överfört ett angivet villkor. Den här kontrollstrukturen jämför data i arbetsflödet med vissa värden eller fält. Du kan sedan ange olika åtgärder som körs baserat på om data uppfyller villkoret eller inte. Du kan kapsla villkor inuti varandra.
+Lägg till en *villkors instruktion* för att köra specifika åtgärder i din Logic app enbart efter att ha överfört ett angivet villkor. Den här kontrollstrukturen jämför data i arbetsflödet med vissa värden eller fält. Du kan sedan ange olika åtgärder som körs baserat på om data uppfyller villkoret eller inte. Du kan kapsla villkor inuti varandra.
 
 Anta till exempel att du har en logisk app som skickar för många e-postmeddelanden när nya objekt visas på en webbplats RSS-flöde. Du kan lägga till en villkorlig instruktion för att endast skicka e-post när det nya objektet innehåller en speciell sträng. 
 
@@ -40,7 +40,7 @@ Anta till exempel att du har en logisk app som skickar för många e-postmeddela
 
    ![Lägg till åtgärd mellan steg](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   När du vill lägga till ett villkor i slutet av arbets flödet väljer du  **nytt steg** > **Lägg till en åtgärd**längst ned i din Logic app.
+   När du vill lägga till ett villkor i slutet av arbets flödet väljer du  **nytt steg** > **Lägg till en åtgärd** längst ned i din Logic app.
 
 1. I rutan Sök anger du "Condition" som filter. Välj den här åtgärden: **villkor-kontroll**
 

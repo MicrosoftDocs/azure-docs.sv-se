@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 1/12/2021
 ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98165619"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Konfigurations alternativ för Azure Database for PostgreSQL – citus-storlek
@@ -123,7 +123,7 @@ Upp till 2 TiB-lagring stöds för koordinator-och arbetsnoder. Se tillgängliga
 
 Azure Portal innehåller autentiseringsuppgifter för att ansluta till exakt en databas per storskalig (citus) Server grupp, `citus` databasen. Det går inte att skapa en annan databas för tillfället, och kommandot Skapa databas kommer inte att fungera med ett fel.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/postgresql/)information för tjänsten.
 Om du vill se kostnaden för den konfiguration du vill använda visar [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) månads kostnaden på fliken **Konfigurera** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer du **Lägg till objekt**, expanderar kategorin **databaser** och väljer **Azure Database for PostgreSQL – citus)** för att anpassa alternativen.
  

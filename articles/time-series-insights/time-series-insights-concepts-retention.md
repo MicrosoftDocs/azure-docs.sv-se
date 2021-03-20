@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91535697"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Förstå data kvarhållning i Azure Time Series Insights gen1
@@ -39,7 +39,7 @@ Dessutom har Azure Time Series Insights miljön en gräns för **lagrings gräns
 - **Pausa ingress**
 
 > [!NOTE]
-> Som standard konfigureras kvarhållning för att **Rensa gamla data**när du skapar en ny miljö. Den här inställningen kan växlas efter behov efter att du skapat den Azure Portal, på sidan **Konfigurera** i Azure Time Series Insightss miljön.
+> Som standard konfigureras kvarhållning för att **Rensa gamla data** när du skapar en ny miljö. Den här inställningen kan växlas efter behov efter att du skapat den Azure Portal, på sidan **Konfigurera** i Azure Time Series Insightss miljön.
 >
 > - Information om hur du konfigurerar bevarande principer finns [i Konfigurera kvarhållning i Azure Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
@@ -78,7 +78,7 @@ När den här miljöns dagliga ingångs hastighet överskrider 0,166 GB per dag,
 
 ### <a name="example-three"></a>Exempel tre
 
-Överväg en miljö med kvarhållning som kon figurer ATS för att **pausa**ingångar. I det här exemplet är **datakvarhållning-perioden** inställd på 60 dagar. **Kapaciteten** anges till tre (3) enheter av S1. Anta att den här miljön har ingress av data på 2 GB varje dag. I den här miljön pausas ingressen när den maximala kapaciteten har nåtts.
+Överväg en miljö med kvarhållning som kon figurer ATS för att **pausa** ingångar. I det här exemplet är **datakvarhållning-perioden** inställd på 60 dagar. **Kapaciteten** anges till tre (3) enheter av S1. Anta att den här miljön har ingress av data på 2 GB varje dag. I den här miljön pausas ingressen när den maximala kapaciteten har nåtts.
 
 Vid detta tillfälle visar miljön samma data uppsättning tills ingressen återupptas eller tills **fortsatt** inaktivitet är aktiverat (vilket skulle rensa äldre data för att göra plats för nya data).
 

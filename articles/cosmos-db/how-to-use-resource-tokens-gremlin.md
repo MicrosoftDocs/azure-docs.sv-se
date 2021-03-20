@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361701"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Använd Azure Cosmos DB-Gremlin med SDK för
@@ -101,7 +101,7 @@ Med ett enda Gremlin-konto kan du utfärda ett obegränsat antal tokens. Du kan 
 
 ## <a name="permission"></a>Behörighet
 
-Ett vanligt fel som uppstår när de använder resurs-token är "otillräcklig behörighet i Authorization-huvudet för motsvarande begäran. Försök igen med ett annat Authorization-huvud. " Det här felet returneras när en Gremlin-överträdelse försöker skriva en gräns eller ett hörn, men resurs-token beviljar endast *Läs* behörighet. Granska din genom gång för att se om den innehåller något av följande steg: *. addV ()* , *. addE ()* , *. drop ()* eller *. Property ()*.
+Ett vanligt fel som uppstår när de använder resurs-token är "otillräcklig behörighet i Authorization-huvudet för motsvarande begäran. Försök igen med ett annat Authorization-huvud. " Det här felet returneras när en Gremlin-överträdelse försöker skriva en gräns eller ett hörn, men resurs-token beviljar endast *Läs* behörighet. Granska din genom gång för att se om den innehåller något av följande steg: *. addV ()*, *. addE ()*, *. drop ()* eller *. Property ()*.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](role-based-access-control.md) i Azure Cosmos DB

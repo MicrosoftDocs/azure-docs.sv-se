@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397543"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Regler för routning av Application Gateway-begäran
 
-När du skapar en Programgateway med hjälp av Azure Portal skapar du en standard regel ( *regel 1* ). Den här regeln binder standard avlyssningen ( *appGatewayHttpListener* ) med standard server delen ( *appGatewayBackendPool* ) och standardvärdet för Server delens http-inställningar ( *appGatewayBackendHttpSettings* ). När du har skapat gatewayen kan du redigera inställningarna för standard regeln eller skapa nya regler.
+När du skapar en Programgateway med hjälp av Azure Portal skapar du en standard regel (*regel 1*). Den här regeln binder standard avlyssningen (*appGatewayHttpListener*) med standard server delen (*appGatewayBackendPool*) och standardvärdet för Server delens http-inställningar (*appGatewayBackendHttpSettings*). När du har skapat gatewayen kan du redigera inställningarna för standard regeln eller skapa nya regler.
 
 ## <a name="rule-type"></a>Regeltyp
 
@@ -57,7 +57,7 @@ Mer information om omdirigering finns i [Application Gateway omdirigerings över
 
 ### <a name="redirection-type"></a>Typ av omdirigering
 
-Välj den typ av omdirigering som krävs: *permanent (301)* , *temporär (307)* , *found (302)* eller *Se övrigt (303)*.
+Välj den typ av omdirigering som krävs: *permanent (301)*, *temporär (307)*, *found (302)* eller *Se övrigt (303)*.
 
 ### <a name="redirection-target"></a>Omdirigerings mål
 

@@ -6,10 +6,10 @@ ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 640a70c2bb419e65620c19f6dc986b0c602bf1e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89481721"
 ---
 Rubriken för varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **princip version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).

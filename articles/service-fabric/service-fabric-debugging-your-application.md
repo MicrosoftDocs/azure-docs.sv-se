@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576323"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Felsöka ditt Service Fabric-program med Visual Studio
@@ -39,7 +39,7 @@ Du kan spara tid och pengar genom att distribuera och felsöka ditt Azure Servic
     ![Öppna fönstret diagnostiska händelser][viewdiagnosticevents]
    
     Om du vill filtrera spårningarna till en specifik tjänst eller ett program aktiverar du strömmande spårningar för den specifika tjänsten eller programmet.
-6. Diagnostiska händelser kan visas i den automatiskt genererade **ServiceEventSource.cs** -filen och anropas från program koden.
+6. Diagnostiska händelser kan visas i den automatiskt genererade **ServiceEventSource. cs** -filen och anropas från program koden.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103228"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurera en VNet-till-VNet-anslutning (klassisk)
@@ -26,7 +26,7 @@ Den här artikeln hjälper dig att skapa en VPN gateway-anslutning mellan virtue
 Stegen i den här artikeln gäller den klassiska distributions modellen och Azure Portal. Du kan också skapa den här konfigurationen med ett annat distributionsverktyg eller en annan distributionsmodell genom att välja ett annat alternativ i listan nedan:
 
 > [!div class="op_single_selector"]
-> * [Klassisk](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Form](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Resource Manager](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Anslut virtuella nätverk i olika distributions modeller](vpn-gateway-connect-different-deployment-models-portal.md)
 >
@@ -38,7 +38,7 @@ Att ansluta ett virtuellt nätverk till ett annat virtuellt nätverk (VNet-till-
 
 Virtuella nätverk du ansluter kan finnas i olika prenumerationer och i olika regioner. Du kan kombinera VNet till VNet-kommunikation med konfigurationer för flera platser. Det innebär att du kan etablera nätverkstopologier som kombinerar anslutningen för flera platser med en intern virtuell nätverksanslutning.
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Diagram över klassisk VNet-till-VNet-arkitektur":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Diagram över anslutningar":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>Varför ska man ansluta virtuella nätverk?
 
@@ -58,7 +58,7 @@ Du kan vilja ansluta virtuella nätverk av följande skäl:
 
 Mer information om VNet-till-VNet-anslutningar finns i [Att tänka på när du använder VNet-till-VNet](#faq) i slutet av den här artikeln.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi använder portalen för de flesta av stegen, men du måste använda PowerShell för att skapa anslutningarna mellan virtuella nätverk. Du kan inte skapa anslutningar med hjälp av Azure Portal eftersom det inte finns något sätt att ange den delade nyckeln i portalen. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -99,7 +99,7 @@ Den lokala platsen för varje VNet är det andra virtuella nätverket. Följande
 
 **Exempel**
 
-| Virtual Network | Adressutrymme | Plats | Ansluter till den lokala nätverks platsen |
+| Virtual Network | Adressutrymme | Location | Ansluter till den lokala nätverks platsen |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |SiteVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA, västra |SiteVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -136,7 +136,7 @@ Till exempel ansluter TestVNet1 till en lokal nätverks plats som du skapar med 
 
 Tänk på att den lokala platsen för varje VNet är det andra virtuella nätverket.
 
-| Virtual Network | Adressutrymme | Plats | Ansluter till den lokala nätverks platsen |
+| Virtual Network | Adressutrymme | Location | Ansluter till den lokala nätverks platsen |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |SiteVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA, västra |SiteVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -145,9 +145,9 @@ Tänk på att den lokala platsen för varje VNet är det andra virtuella nätver
 
 Den lokala platsen avser vanligtvis din lokala plats. Den innehåller IP-adressen för den VPN-enhet som du skapar en anslutning till och IP-adressintervallen som ska dirigeras via VPN-gatewayen till VPN-enheten.
 
-1. Välj **plats-till-plats-anslutningar**under **Inställningar**på sidan för ditt VNet.
+1. Välj **plats-till-plats-anslutningar** under **Inställningar** på sidan för ditt VNet.
 1. På sidan plats-till-plats-anslutningar väljer du **+ Lägg till**.
-1. På sidan **Konfigurera en VPN-anslutning och gateway** för **Anslutnings typ**lämnar **du plats-till-plats-** vald.
+1. På sidan **Konfigurera en VPN-anslutning och gateway** för **Anslutnings typ** lämnar **du plats-till-plats-** vald.
 
    * **IP-adress till VPN-gateway:** Det här är den offentliga IP-adressen till VPN-enheten för ditt lokala nätverk. I den här övningen kan du ange en dummy-adress eftersom du ännu inte har IP-adressen för VPN-gatewayen för den andra platsen. Till exempel 5.4.3.2. När du senare har konfigurerat gatewayen för det andra virtuella nätverket kan du justera det här värdet.
 

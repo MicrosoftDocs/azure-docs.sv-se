@@ -4,10 +4,10 @@ description: Lär dig mer om miljövariabler i Azure Service Fabric. Innehåller
 ms.topic: reference
 ms.date: 12/07/2017
 ms.openlocfilehash: b70249daa439b5a631b5a84b10c47f082ce75985
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574589"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric miljövariabler
@@ -19,7 +19,7 @@ Service Fabric har inbyggda miljövariabler som är inställda för varje tjäns
 | Fabric_ApplicationName                       | Infrastrukturens URI-namn för programmet                                 | infrastruktur resurser:/mina program                                                |
 | Fabric_CodePackageName                       | Namnet på det kod paket som processen tillhör              | Kod                                                                 |
 | Fabric_Endpoint \_ IPOrFQDN \_ *ServiceEndpointName*     | Slut punktens IP-adress eller fullständiga domän namn                                 | 10.0.0.1                                                     |
-| ServiceEndpointName för infrastruktur resurs \_ slut punkt \_ *ServiceEndpointName*              | Port nummer för slut punkten                                  | 8234                                                                 |
+| ServiceEndpointName för infrastruktur resurs \_ slut punkt \_               | Port nummer för slut punkten                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | Loggmappen                                                             | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ logg      |
 | Fabric_Folder_App_Temp                       | Temp-mapp                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ Temp     |
 | Fabric_Folder_App_Work                       | Arbetsmapp                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ arbete     |

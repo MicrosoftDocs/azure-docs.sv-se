@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.openlocfilehash: 6463f30bc79d937bd5a51a5c8c78fbdd72954b1e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97364621"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-postgresql"></a>Metod tips för att skapa ett program med Azure Database for PostgreSQL
@@ -49,7 +49,7 @@ Ditt program kan uppleva tillfälliga fel där anslutningar till databasen släp
 Du kan använda [datareplikering](./concepts-read-replicas.md) för scenarier med växling vid fel. När du använder Läs repliker sker ingen automatisk redundans mellan käll-och replik servrar. Du ser en fördröjning mellan källan och repliken eftersom replikeringen är asynkron. Nätverks fördröjning kan påverkas av många faktorer, t. ex. storleken på arbets belastningen som körs på käll servern och fördröjningen mellan data Center. I de flesta fall är replik fördröjningen från några sekunder till några minuter.
 
 
-## <a name="database-deployment"></a>Databas distribution
+## <a name="database-deployment"></a>Databasdistribution
 
 ### <a name="configure-cicd-deployment-pipeline"></a>Konfigurera en pipeline för CI/CD-distribution
 Ibland måste du distribuera ändringar i databasen. I sådana fall kan du använda kontinuerlig integrering (CI) genom [GitHub-åtgärder](https://github.com/Azure/postgresql/blob/master/README.md) för postgresql-servern för att uppdatera databasen genom att köra ett anpassat skript mot den.

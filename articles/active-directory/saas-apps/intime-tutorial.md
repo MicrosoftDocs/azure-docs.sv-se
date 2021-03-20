@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6cc6922fb2c5c7c8b4a1bad94006acbda2d6bb2e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>Självstudie: Azure Active Directory integration med tid
@@ -156,7 +156,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till ingången.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **inaktivitet**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **inaktivitet**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

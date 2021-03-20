@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94693757"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Flytta en extern belastningsutjämnare till en annan region med hjälp av Azure Portal
@@ -143,7 +143,7 @@ Följande procedurer visar hur du förbereder den externa belastningsutjämnaren
 
 14. Välj **grundläggande**  >  **prenumeration** för att välja den prenumeration där den offentliga mål-IP-adressen ska distribueras.
 
-15. Välj **BASICS**  >  **resurs gruppen** grundläggande för att välja den resurs grupp där den offentliga mål-IP-adressen ska distribueras. Du kan välja **Skapa ny** för att skapa en ny resurs grupp för den offentliga IP-adressen. Kontrol lera att namnet inte är samma som käll resurs gruppen för den befintliga offentliga IP-adressen.
+15. Välj   >  **resurs gruppen** grundläggande för att välja den resurs grupp där den offentliga mål-IP-adressen ska distribueras. Du kan välja **Skapa ny** för att skapa en ny resurs grupp för den offentliga IP-adressen. Kontrol lera att namnet inte är samma som käll resurs gruppen för den befintliga offentliga IP-adressen.
 
 16. Kontrol lera att **grundläggande**  >  **platser** är inställt på den mål plats där du vill att den offentliga IP-adressen ska distribueras.
 
@@ -391,7 +391,7 @@ Följande procedurer visar hur du förbereder den externa belastningsutjämnaren
 
 13. Välj **grundläggande**  >  **prenumeration** för att välja den prenumeration där den externa mål belastnings balansen ska distribueras.
 
-15. Välj **BASICS**  >  **resurs gruppen** grundläggande för att välja resurs gruppen där mål belastnings utjämningen ska distribueras. Du kan välja **Skapa ny** för att skapa en ny resurs grupp för den externa mål belastnings utjämningen. Eller så kan du välja den befintliga resurs grupp som du skapade tidigare för den offentliga IP-adressen. Kontrol lera att namnet inte är samma som käll resurs gruppen för den befintliga externa käll belastningsutjämnaren.
+15. Välj   >  **resurs gruppen** grundläggande för att välja resurs gruppen där mål belastnings utjämningen ska distribueras. Du kan välja **Skapa ny** för att skapa en ny resurs grupp för den externa mål belastnings utjämningen. Eller så kan du välja den befintliga resurs grupp som du skapade tidigare för den offentliga IP-adressen. Kontrol lera att namnet inte är samma som käll resurs gruppen för den befintliga externa käll belastningsutjämnaren.
 
 16. Kontrol lera att **grundläggande**  >  **platser** är inställt på den mål plats där du vill att den externa belastningsutjämnaren ska distribueras.
 

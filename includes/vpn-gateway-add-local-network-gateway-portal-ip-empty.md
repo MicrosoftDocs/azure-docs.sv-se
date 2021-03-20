@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c538c510eeafacd1596fdeb1b4593919e6236cf0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487083"
 ---
 1. Från [Azure Portal](https://portal.azure.com), i **Sök resurser, tjänster och dokument (G +/)** , skriver du **lokal nätverksgateway**. Leta upp **lokal** nätverksgateway under **Marketplace** i Sök resultaten och markera den. Då öppnas sidan **skapa lokal** nätverksgateway.

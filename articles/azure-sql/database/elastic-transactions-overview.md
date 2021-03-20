@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793355"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Distribuerade transaktioner mellan olika molndatabaser (förhandsversion)
@@ -24,7 +24,7 @@ ms.locfileid: "92793355"
 Elastic Database-transaktioner för Azure SQL Database och Azure SQL-hanterad instans gör att du kan köra transaktioner som sträcker sig över flera databaser. Elastic Database-transaktioner är tillgängliga för .NET-program med ADO.NET och integreras med den välbekanta programmerings upplevelsen med [system. Transaction](/dotnet/api/system.transactions) -klasser. Information om hur du hämtar biblioteket finns i [.NET Framework 4.6.1 (webb installations program)](https://www.microsoft.com/download/details.aspx?id=49981).
 Dessutom finns distribuerade distribuerade instanser av hanterade instanser i [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
 
-I ett sådant scenario kräver det vanligt vis att du kör Microsoft koordinator för distribuerad transaktion (MSDTC). Eftersom MSDTC inte är tillgängligt för plattforms-som-tjänstprogram i Azure är möjligheten att koordinera distribuerade transaktioner nu direkt integrerad med SQL Database eller hanterad instans. Program kan ansluta till en databas för att starta distribuerade transaktioner och en av databaserna eller servrarna översätts transparent till den distribuerade transaktionen, som visas i följande bild.
+I ett sådant scenario kräver det vanligt vis att du kör Microsoft Distributed Transaction Coordinator (MSDTC). Eftersom MSDTC inte är tillgängligt för plattforms-som-tjänstprogram i Azure är möjligheten att koordinera distribuerade transaktioner nu direkt integrerad med SQL Database eller hanterad instans. Program kan ansluta till en databas för att starta distribuerade transaktioner och en av databaserna eller servrarna översätts transparent till den distribuerade transaktionen, som visas i följande bild.
 
 I det här dokumentet betraktas "distribuerade transaktioner" och "Elastic Database Transactions" som synonymer och kommer att användas utbytbart.
 
@@ -238,9 +238,9 @@ Elastiska databas transaktioner stöds på olika servrar i Azure SQL Database. N
 
 Använd följande PowerShell-cmdletar för att hantera kommunikation mellan servrar för elastiska databas transaktioner:
 
-* **New-AzSqlServerCommunicationLink** : Använd denna cmdlet för att skapa en ny kommunikations relation mellan två servrar i Azure SQL Database. Relationen är symmetrisk, vilket innebär att båda servrarna kan initiera transaktioner med den andra servern.
-* **Get-AzSqlServerCommunicationLink** : Använd denna cmdlet för att hämta befintliga kommunikations relationer och deras egenskaper.
-* **Remove-AzSqlServerCommunicationLink** : Använd denna cmdlet för att ta bort en befintlig kommunikations relation.
+* **New-AzSqlServerCommunicationLink**: Använd denna cmdlet för att skapa en ny kommunikations relation mellan två servrar i Azure SQL Database. Relationen är symmetrisk, vilket innebär att båda servrarna kan initiera transaktioner med den andra servern.
+* **Get-AzSqlServerCommunicationLink**: Använd denna cmdlet för att hämta befintliga kommunikations relationer och deras egenskaper.
+* **Remove-AzSqlServerCommunicationLink**: Använd denna cmdlet för att ta bort en befintlig kommunikations relation.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Transaktioner över flera servrar för Azure SQL-hanterad instans
 
@@ -258,9 +258,9 @@ Använd DMV: er (Dynamic Management views) för att övervaka status och förlop
 
 Dessa DMV: er är särskilt användbara:
 
-* **sys.DM för att \_ omlasta \_ aktiva \_ transaktioner** : Visar aktiva transaktioner och deras status. I kolumnen UOW (enhets arbete) kan du identifiera de olika underordnade transaktioner som tillhör samma distribuerade transaktion. Alla transaktioner inom samma distribuerade transaktion bär samma UOW-värde. Mer information finns i dokumentationen för [DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
+* **sys.DM för att \_ omlasta \_ aktiva \_ transaktioner**: Visar aktiva transaktioner och deras status. I kolumnen UOW (enhets arbete) kan du identifiera de olika underordnade transaktioner som tillhör samma distribuerade transaktion. Alla transaktioner inom samma distribuerade transaktion bär samma UOW-värde. Mer information finns i dokumentationen för [DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
 * **sys.DM \_ : \_ \_** ger ytterligare information om transaktioner, till exempel placering av transaktionen i loggen. Mer information finns i dokumentationen för [DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
-* **sys.DM \_ - \_ startlås** : innehåller information om de lås som för närvarande innehas av pågående transaktioner. Mer information finns i dokumentationen för [DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+* **sys.DM \_ - \_ startlås**: innehåller information om de lås som för närvarande innehas av pågående transaktioner. Mer information finns i dokumentationen för [DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
 
 ## <a name="limitations"></a>Begränsningar
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94695001"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Konfiguration för lastbalanserare med ”endast utgående”
@@ -80,7 +80,7 @@ Skapa en virtuell dator i det nya virtuella nätverket.
 
 4. På fliken **IP-adresser** anger du den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | IPv4-adressutrymme | Ange **10.1.0.0/16** |
 
@@ -88,7 +88,7 @@ Skapa en virtuell dator i det nya virtuella nätverket.
 
 6. I **Redigera undernät** anger du den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | Namn på undernät | Ange **myBackendSubnet** |
     | Adressintervall för undernätet | Ange **10.1.0.0/24** |
@@ -99,7 +99,7 @@ Skapa en virtuell dator i det nya virtuella nätverket.
 
 9. Under **BastionHost** väljer du **Aktivera**. Ange den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | Skydds namn | Ange **myBastionHost** |
     | AzureBastionSubnet-adressutrymme | Ange **10.1.1.0/24** |
@@ -116,7 +116,7 @@ Skapa en virtuell dator i det nya virtuella nätverket.
    
 2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
 
-    | Inställningen | Värde                                          |
+    | Inställning | Värde                                          |
     |-----------------------|----------------------------------|
     | **Projekt information** |  |
     | Prenumeration | Välj din Azure-prenumeration |
@@ -140,7 +140,7 @@ Skapa en virtuell dator i det nya virtuella nätverket.
   
 4. På fliken nätverk väljer eller anger du:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     |-----|------------|
     | **Nätverksgränssnitt** |  |
     | Virtuellt nätverk | **myVNet** |
@@ -153,7 +153,7 @@ Skapa en virtuell dator i det nya virtuella nätverket.
 
 6. På fliken **hantering** väljer eller anger du:
     
-    | Inställningen | Värde |
+    | Inställning | Värde |
     |-|-|
     | **Övervakning** |  |
     | Startdiagnostik | Välj **av** |
@@ -177,11 +177,11 @@ Lägg till din skapade virtuella dator i Server delens pool.  Sedan konfigurerar
 
 2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
-    | Inställningen                 | Värde                                              |
+    | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **myResourceGroupLB** som skapades i föregående steg.|
-    | Namn                   | Ange **myInternalLoadBalancer**                                   |
+    | Name                   | Ange **myInternalLoadBalancer**                                   |
     | Region         | Välj **USA, östra 2**.                                        |
     | Typ          | Välj **Intern**.                                        |
     | SKU           | Välj **standard** |
@@ -199,11 +199,11 @@ Lägg till din skapade virtuella dator i Server delens pool.  Sedan konfigurerar
 
 2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
-    | Inställningen                 | Värde                                              |
+    | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa nytt** och ange **myResourceGroupLB** i text rutan.|
-    | Namn                   | Ange **myPublicLoadBalancer**                                   |
+    | Name                   | Ange **myPublicLoadBalancer**                                   |
     | Region         | Välj **USA, östra 2**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
     | SKU           | Välj **standard** |
@@ -272,7 +272,7 @@ Skapa **myPublicBackendPool** för backend-adresspoolen:
 
 3. Använd de här värdena för att konfigurera de utgående reglerna:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | Namn | Ange **myOutboundRule**. |
     | IP-adress för klient del | Välj **LoadBalancerFrontEnd**.|

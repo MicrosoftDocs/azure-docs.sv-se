@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: 0bae8946b7d81fbf45698cefe7c8b00bbc94d00c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168126"
 ---
 #### <a name="determine-memory-usage"></a>Fastställa minnes användning 
 
-Under **övervakning**väljer du **loggar (analys)** och kopierar sedan följande telemetri-fråga och klistrar in den i frågefönstret och väljer **Kör**. Den här frågan returnerar den totala minnes användningen vid varje prov tid.
+Under **övervakning** väljer du **loggar (analys)** och kopierar sedan följande telemetri-fråga och klistrar in den i frågefönstret och väljer **Kör**. Den här frågan returnerar den totala minnes användningen vid varje prov tid.
 
 ```
 performanceCounters

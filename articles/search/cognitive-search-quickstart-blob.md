@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 01/12/2021
 ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98179273"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Snabb start: skapa en färdigheter för Azure Kognitiv sökning kognitivt i Azure Portal
@@ -21,7 +21,7 @@ En färdigheter är en AI-baserad funktion som använder djup inlärnings modell
 
 I den här snabb starten ska du kombinera tjänster och data i Azure-molnet för att skapa färdigheter. När allt är på plats kör du guiden **Importera data** i Azure Portal för att hämta allt tillsammans. Slut resultatet är ett sökbart index som är ifyllt med data som skapats av AI-bearbetning som du kan fråga i portalen ([Sök Utforskaren](search-explorer.md)).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar måste du ha följande krav på plats:
 
