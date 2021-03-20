@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 5d7d232ada814d5d3c30e7b012c6289f847d641f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395096"
 ---
 # <a name="deploy-azure-sql-edge"></a>Distribuera Azure SQL Edge 
@@ -23,7 +23,7 @@ Azure SQL Edge är en Relations databas motor som är optimerad för IoT och Azu
 ## <a name="before-you-begin"></a>Innan du börjar
 
 * Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/).
-* Logga in i [Azure-portalen](https://portal.azure.com/).
+* Logga in på [Azure-portalen](https://portal.azure.com/).
 * Skapa ett [Azure-IoT Hub](../iot-hub/iot-hub-create-through-portal.md).
 * Skapa en [Azure IoT Edge enhet](../iot-edge/how-to-install-iot-edge.md).
 
@@ -52,7 +52,7 @@ Azure Marketplace är ett online-program och tjänster för tjänster där du ka
 
 4. På sidan **Ange moduler på enheten:** klickar du på modulen Azure SQL Edge under **IoT Edge moduler**. Standardmodulens namn är inställt på *AzureSQLEdge*. 
 
-5. I avsnittet *Modulnamn* i bladet **Uppdatera IoT Edge modul** anger du önskade värden för namnet på IoT Edge- *modulen* , *startar om principen* och *önskad status*. 
+5. I avsnittet *Modulnamn* i bladet **Uppdatera IoT Edge modul** anger du önskade värden för namnet på IoT Edge- *modulen*, *startar om principen* och *önskad status*. 
 
    > [!IMPORTANT]    
    > Ändra eller uppdatera inte bild- **URI** -inställningarna i modulen.
@@ -112,7 +112,7 @@ Azure Marketplace är ett online-program och tjänster för tjänster där du ka
 
 ## <a name="connect-to-azure-sql-edge"></a>Ansluta till Azure SQL Edge
 
-I följande steg används kommando rads verktyget för Azure SQL Edge, **SQLCMD** , inuti behållaren för att ansluta till Azure SQL Edge.
+I följande steg används kommando rads verktyget för Azure SQL Edge, **SQLCMD**, inuti behållaren för att ansluta till Azure SQL Edge.
 
 > [!NOTE]      
 > SQL Command line tools (SQLCMD) är inte tillgängliga i ARM64-versionen av Azure SQL Edge-behållare.

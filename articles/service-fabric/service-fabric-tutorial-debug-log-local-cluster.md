@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531998"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Självstudier: Felsöka en Java-tillämpning som distribuerats i ett lokalt Service Fabric-kluster
@@ -30,7 +30,7 @@ I del två i serien lär du dig hur du:
 > * Omdirigera loggar till en plats som kan konfigureras
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 
@@ -88,7 +88,7 @@ Nu kan du använda samma steg för att felsöka alla Service Fabric program i So
 
 Följande steg guidar dig igenom dirigering av programloggar från standardplatsen */var/log/syslog* plats till en anpassad plats.
 
-1. För närvarande stöder program som körs i Service Fabric Linux-kluster bara plockning av en enda loggfil. Om du vill konfigurera ett program så att loggarna alltid går till */tmp/mysfapp0.0.log*skapar du en fil med namnet Logging. properties i följande plats *röstning/VotingApplication/VotingWebPkg/Code/Logging. Properties* och lägger till följande innehåll.
+1. För närvarande stöder program som körs i Service Fabric Linux-kluster bara plockning av en enda loggfil. Om du vill konfigurera ett program så att loggarna alltid går till */tmp/mysfapp0.0.log* skapar du en fil med namnet Logging. properties i följande plats *röstning/VotingApplication/VotingWebPkg/Code/Logging. Properties* och lägger till följande innehåll.
 
     ```
     handlers = java.util.logging.FileHandler

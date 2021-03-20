@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212220"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs utgående bindning för Azure Functions
@@ -250,9 +250,9 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 |function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
-|**bastyp** |Saknas| Måste anges till `notificationHub` . |
-|**position** |Saknas| Måste anges till `out` . | 
-|**Namn** |Saknas| Variabel namn som används i funktions koden för Notification Hub-meddelandet. |
+|**bastyp** |saknas| Måste anges till `notificationHub` . |
+|**position** |saknas| Måste anges till `out` . | 
+|**Namn** |saknas| Variabel namn som används i funktions koden för Notification Hub-meddelandet. |
 |**tagExpression** |**TagExpression** | Med tagg uttryck kan du ange att meddelanden ska skickas till en uppsättning enheter som har registrerats för att ta emot meddelanden som matchar etikett uttrycket.  Mer information finns i avsnittet om [Routning och tagg uttryck](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Namnet på resursen för Notification Hub i Azure Portal. |
 |**anslutningen** | **ConnectionStringSetting** | Namnet på en app-inställning som innehåller en Notification Hubs anslutnings sträng.  Anslutnings strängen måste anges till *DefaultFullSharedAccessSignature* -värdet för Notification Hub. Se [installationen av anslutnings strängen](#connection-string-setup) senare i den här artikeln.|
@@ -287,7 +287,7 @@ Om du vill använda en utgående bindning för Notification Hub måste du konfig
 
 Så här konfigurerar du anslutnings strängen till en befintlig Notification Hub:
 
-1. Navigera till Notification Hub i [Azure Portal](https://portal.azure.com), Välj **åtkomst principer**och välj sedan knappen Kopiera bredvid **DefaultFullSharedAccessSignature** -principen. Detta kopierar anslutnings strängen för *DefaultFullSharedAccessSignature* -principen till Notification Hub. Med den här anslutnings strängen kan funktionen skicka meddelanden till hubben.
+1. Navigera till Notification Hub i [Azure Portal](https://portal.azure.com), Välj **åtkomst principer** och välj sedan knappen Kopiera bredvid **DefaultFullSharedAccessSignature** -principen. Detta kopierar anslutnings strängen för *DefaultFullSharedAccessSignature* -principen till Notification Hub. Med den här anslutnings strängen kan funktionen skicka meddelanden till hubben.
     ![Kopiera anslutnings strängen för Notification Hub](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
 1. Navigera till din Function-app i Azure Portal, Välj **program inställningar**, Lägg till en nyckel, till exempel **MyHubConnectionString**, klistra in den kopierade *DefaultFullSharedAccessSignature*  för Notification Hub som värde och klicka sedan på **Spara**.
 
@@ -299,7 +299,7 @@ Namnet på den här program inställningen är vad som händer i anslutnings ins
 
 | Bindning | Referens |
 |---|---|
-| Notification Hub | [Drift guide](/rest/api/notificationhubs/) |
+| Notification Hubs | [Drift guide](/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>Nästa steg
 

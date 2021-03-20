@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792097"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Fråga över moln databaser med olika scheman (förhands granskning)
@@ -63,7 +63,7 @@ Syntax:
     CREDENTIAL = <credential_name>) [;]
 
 > [!IMPORTANT]
-> TYP parametern måste anges som **RDBMS** .
+> TYP parametern måste anges som **RDBMS**.
 
 ### <a name="example"></a>Exempel
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 Elastisk fråga utökar den befintliga syntaxen för den externa tabellen för att definiera externa tabeller som använder externa data källor av typen RDBMS. En extern tabell definition för vertikal partitionering omfattar följande aspekter:
 
-* **Schema** : DDL: en för den externa tabellen definierar ett schema som dina frågor kan använda. Det schema som anges i den externa tabell definitionen måste matcha schemat för tabellerna i fjärrdatabasen där faktiska data lagras.
-* **Fjärran sluten databas referens** : det externa tabell-DDL: en refererar till en extern data källa. Den externa data källan anger Server namnet och databas namnet för fjärrdatabasen där de faktiska tabell data lagras.
+* **Schema**: DDL: en för den externa tabellen definierar ett schema som dina frågor kan använda. Det schema som anges i den externa tabell definitionen måste matcha schemat för tabellerna i fjärrdatabasen där faktiska data lagras.
+* **Fjärran sluten databas referens**: det externa tabell-DDL: en refererar till en extern data källa. Den externa data källan anger Server namnet och databas namnet för fjärrdatabasen där de faktiska tabell data lagras.
 
 Med hjälp av en extern data källa som beskrivs i föregående avsnitt är syntaxen för att skapa externa tabeller följande:
 
@@ -135,7 +135,7 @@ Följande DDL-instruktion släpper en befintlig extern tabell definition från d
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**Behörigheter för att skapa/släppa extern tabell** : ändra behörigheter för externa data källor krävs för extern tabell-DDL, vilket också krävs för att referera till den underliggande data källan.  
+**Behörigheter för att skapa/släppa extern tabell**: ändra behörigheter för externa data källor krävs för extern tabell-DDL, vilket också krävs för att referera till den underliggande data källan.  
 
 ## <a name="security-considerations"></a>Säkerhetsöverväganden
 

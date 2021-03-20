@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: 5c127010a7988bf08c77340a4fc10bb32dc76f87
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393944"
 ---
 # <a name="tutorial-fail-back-azure-vm-to-the-primary-region"></a>Självstudie: återställa virtuella Azure-datorer till den primära regionen
@@ -49,10 +49,10 @@ När de virtuella datorerna har återskyddats kan du växla tillbaka till den pr
     [Sida som visar att vi samtycker till att köra redundans utan redundanstest](./media/azure-to-azure-tutorial-failback/no-test.png)
 
 4. I **redundans** noterar du riktningen från sekundär till primär och väljer en återställnings punkt. Den virtuella Azure-datorn i målet (primär region) skapas med hjälp av data från den här platsen.
-   - **Senast bearbetade** : använder den senaste återställnings punkten som bearbetats av Site Recovery. Tidsstämpeln visas. Ingen tid för bearbetning av data, så det ger ett litet återställnings tids mål (RTO).
-   -  **Senaste** : bearbetar alla data som skickas till Site Recovery, så att du kan skapa en återställnings punkt för varje virtuell dator innan du växlar över till den. Tillhandahåller lägsta återställnings punkt mål (återställnings punkt) eftersom alla data replikeras till Site Recovery När redundansväxlingen utlöses.
-   - **Senaste appen – konsekvent** : det här alternativet växlar över virtuella datorer till den senaste programkonsekventa återställnings punkten. Tidsstämpeln visas.
-   - **Anpassad** : redundansväxla till viss återställnings punkt. Anpassad är endast tillgängligt om du växlar över en enskild virtuell dator och inte använder en återställnings plan.
+   - **Senast bearbetade**: använder den senaste återställnings punkten som bearbetats av Site Recovery. Tidsstämpeln visas. Ingen tid för bearbetning av data, så det ger ett litet återställnings tids mål (RTO).
+   -  **Senaste**: bearbetar alla data som skickas till Site Recovery, så att du kan skapa en återställnings punkt för varje virtuell dator innan du växlar över till den. Tillhandahåller lägsta återställnings punkt mål (återställnings punkt) eftersom alla data replikeras till Site Recovery När redundansväxlingen utlöses.
+   - **Senaste appen – konsekvent**: det här alternativet växlar över virtuella datorer till den senaste programkonsekventa återställnings punkten. Tidsstämpeln visas.
+   - **Anpassad**: redundansväxla till viss återställnings punkt. Anpassad är endast tillgängligt om du växlar över en enskild virtuell dator och inte använder en återställnings plan.
 
     > [!NOTE]
     > Om du växlar över en virtuell dator som du har lagt till en disk efter att du har aktiverat replikering för den virtuella datorn, visar replikerings platserna de diskar som är tillgängliga för återställning. Till exempel visas en plats för replikering som skapades innan du lade till en andra disk som "1 av 2 diskar".
@@ -82,7 +82,7 @@ När du har återställt de virtuella datorerna till den primära regionen måst
 
 4. Övervaka återställnings förloppet i aviseringar. 
 
-    ![Skydds ](./media/azure-to-azure-tutorial-failback/notification-reprotect-start.png) [Reprotect progress notification](./media/azure-to-azure-tutorial-failback/notification-reprotect-finish.png) meddelande om att skydda förloppet
+    ![Skydds ](./media/azure-to-azure-tutorial-failback/notification-reprotect-start.png) [](./media/azure-to-azure-tutorial-failback/notification-reprotect-finish.png) meddelande om att skydda förloppet
     
   
 

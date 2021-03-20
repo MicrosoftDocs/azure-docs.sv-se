@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: e4328be0aade0658dedb034dbbb6980b810f771a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793202"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Hantera schemat i ett SaaS-program med hjälp av mönstret för databas per klient med Azure SQL Database
@@ -62,14 +62,14 @@ Programmets käll kod och hanterings skript är tillgängliga i [WingtipTicketsS
 
 I den här självstudien krävs att du använder PowerShell för att skapa en jobb agent och dess agent databas för återställning av jobb. Jobb Agent databasen innehåller jobb definitioner, jobb status och historik. När jobb agenten och databasen har skapats kan du skapa och övervaka jobb direkt.
 
-1. **I POWERSHELL ISE** öppnar du... \\ Modulerna \\ schema hantering för inlärning \\ *Demo-SchemaManagement.ps1* .
+1. **I POWERSHELL ISE** öppnar du... \\ Modulerna \\ schema hantering för inlärning \\ *Demo-SchemaManagement.ps1*.
 1. Tryck **F5** för att köra skriptet.
 
 *Demo-SchemaManagement.ps1* skriptet anropar *Deploy-SchemaManagement.ps1* -skriptet för att skapa en databas med namnet *osagent* på katalog servern. Sedan skapas jobb agenten med hjälp av-databasen som en parameter.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Skapa ett jobb för att distribuera nya referensdata till alla klienter
 
-I Wingtip biljetter-appen innehåller varje klient databas en uppsättning plats typer som stöds. Varje plats är av en viss platstyp, som definierar vilken typ av händelser som kan hanteras och anger bakgrunds bilden som används i appen. För att programmet ska stödja nya typer av händelser måste dessa referens data uppdateras och nya plats typer läggs till.  I den här övningen, distribuerar du en uppdatering till alla klientdatabaser för att lägga till två ytterligare platstyper: *Motorcycle Racing* och *Swimming Club* .
+I Wingtip biljetter-appen innehåller varje klient databas en uppsättning plats typer som stöds. Varje plats är av en viss platstyp, som definierar vilken typ av händelser som kan hanteras och anger bakgrunds bilden som används i appen. För att programmet ska stödja nya typer av händelser måste dessa referens data uppdateras och nya plats typer läggs till.  I den här övningen, distribuerar du en uppdatering till alla klientdatabaser för att lägga till två ytterligare platstyper: *Motorcycle Racing* och *Swimming Club*.
 
 Börja med att granska de plats typer som ingår i varje klient databas. Anslut till en av klient databaserna i SQL Server Management Studio (SSMS) och granska VenueTypes-tabellen.  Du kan också fråga den här tabellen i Frågeredigeraren i Azure Portal, som öppnas från databas sidan. 
 
@@ -88,7 +88,7 @@ Om du vill skapa ett nytt jobb använder du en uppsättning jobb system lagrade 
 Observera följande element i *DeployReferenceData. SQL* -skriptet:
 * **SP \_ Add \_ target \_ Group** skapar mål grupp namnet DemoServerGroup.
 * **SP \_ Lägg till \_ mål \_ grupp \_ medlem** används för att definiera uppsättningen med mål databaser.  Först _tenants1-DPT- &lt; User &gt;_ server läggs till.  Om du lägger till servern som ett mål kommer databaserna på den servern när jobb körningen ska inkluderas i jobbet. Sedan läggs _basetenantdb_ -databasen och *AdHocReporting* -databasen (används i en senare självstudie) som mål.
-* **SP \_ Add \_ Job** skapar ett jobb med namnet _referens data distribution_ .
+* **SP \_ Add \_ Job** skapar ett jobb med namnet _referens data distribution_.
 * **SP \_ Add \_ Jobstep** skapar det jobb steg som innehåller T-SQL-kommando texten för att uppdatera referens tabellen, VenueTypes.
 * De återstående vyerna i skriptet visar att jobbet finns och övervakar jobbkörningen. Använd de här frågorna för att granska status värdet i kolumnen **livs cykel** för att fastställa när jobbet har avslut ATS på alla mål databaser.
 

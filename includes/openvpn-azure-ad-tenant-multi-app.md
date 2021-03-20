@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3236f9c60cb359349d96e93f674c3e278e44f1e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93376118"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Skapa Azure AD-klienten
@@ -31,7 +31,7 @@ Skapa en Azure AD-klient med hjälp av stegen i artikeln [skapa en ny klient org
 I det här steget skapar du två Azure AD-klient användare: ett globalt administratörs konto och ett huvud användar konto. Huvud användar kontot används som ditt huvud inbäddnings konto (tjänst konto). När du skapar ett användar konto för Azure AD-klienten justerar du katalog rollen för den typ av användare som du vill skapa. Följ stegen i [den här artikeln](../articles/active-directory/fundamentals/add-users-azure-active-directory.md) för att skapa minst två användare för din Azure AD-klient. Se till att ändra **katalog rollen** för att skapa konto typerna:
 
 * Global administratör
-* Användare
+* User
 
 ## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3. registrera VPN-klienten
 
@@ -140,6 +140,6 @@ Tilldela användarna till dina program.
 
     ![Azure VPN 9](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. Under **Lägg till tilldelning** , klickar **du på användare och grupper**. Välj de användare som du vill ska kunna komma åt det här VPN-programmet. Klicka på **Välj**.
+3. Under **Lägg till tilldelning**, klickar **du på användare och grupper**. Välj de användare som du vill ska kunna komma åt det här VPN-programmet. Klicka på **Välj**.
 
     ![Azure VPN 10](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

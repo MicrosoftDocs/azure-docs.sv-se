@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91445379"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Aktivera och arbeta med Bastion-resursloggar
@@ -23,7 +23,7 @@ När användarna ansluter till arbets belastningar med hjälp av Azure-skydds ka
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din Azure skydds-resurs och väljer **diagnostikinställningar** på sidan Azure skydds.
 
    ![Skärm bild som visar sidan "diagnostikinställningar".](./media/diagnostic-logs/1diagnostics-settings.png)
-2. Välj **diagnostikinställningar**och välj sedan **+ Lägg till diagnostisk inställning** för att lägga till ett mål för loggarna.
+2. Välj **diagnostikinställningar** och välj sedan **+ Lägg till diagnostisk inställning** för att lägga till ett mål för loggarna.
 
    ![Skärm bild som visar sidan "diagnostikinställningar" med knappen "Lägg till diagnostikinställningar" vald.](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. På sidan **diagnostikinställningar** väljer du den typ av lagrings konto som ska användas för att lagra diagnostikloggar.

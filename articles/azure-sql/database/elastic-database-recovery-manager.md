@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792233"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Korrigera shard-kartproblem med RecoveryManager-klassen
@@ -33,11 +33,11 @@ För term definitioner, se [Elastic Database tools-ordlista](elastic-scale-gloss
 
 ## <a name="why-use-the-recovery-manager"></a>Varför använda återställnings hanteraren
 
-I en shardade Database-miljö finns det en klient per databas och många databaser per server. Det kan också finnas många servrar i miljön. Varje databas mappas i Shard-kartan så anrop kan dirigeras till rätt server och databas. Databaser spåras enligt en horisontell partitionering- **nyckel** och varje Shard tilldelas ett **intervall med nyckel värden** . Till exempel kan en horisontell partitionering-nyckel representera kundens namn från "D" till "F". Mappningen av alla Shards (även kallat databaser) och deras mappnings intervall finns i **Global Shard Map (GSM)** . Varje databas innehåller också en karta över de intervall som finns på den Shard som kallas för den **lokala Shard-kartan (LSM)** . När en app ansluter till en Shard cachelagras mappningen med appen för snabb hämtning. LSM används för att validera cachelagrade data.
+I en shardade Database-miljö finns det en klient per databas och många databaser per server. Det kan också finnas många servrar i miljön. Varje databas mappas i Shard-kartan så anrop kan dirigeras till rätt server och databas. Databaser spåras enligt en horisontell partitionering- **nyckel** och varje Shard tilldelas ett **intervall med nyckel värden**. Till exempel kan en horisontell partitionering-nyckel representera kundens namn från "D" till "F". Mappningen av alla Shards (även kallat databaser) och deras mappnings intervall finns i **Global Shard Map (GSM)**. Varje databas innehåller också en karta över de intervall som finns på den Shard som kallas för den **lokala Shard-kartan (LSM)**. När en app ansluter till en Shard cachelagras mappningen med appen för snabb hämtning. LSM används för att validera cachelagrade data.
 
 GSM-och LSM kan bli osynkroniserade av följande orsaker:
 
-1. Borttagning av en Shard vars intervall förväntas användas eller byter namn på en Shard. Om du tar bort ett Shard resulterar det i en **överbliven Shard-mappning** . På samma sätt kan en omdöpt databas orsaka en överblivna Shard-mappning. Beroende på syftet med ändringen kan Shard behöva tas bort eller så måste Shard-platsen uppdateras. Information om hur du återställer en borttagen databas finns i [återställa en borttagen](recovery-using-backups.md)databas.
+1. Borttagning av en Shard vars intervall förväntas användas eller byter namn på en Shard. Om du tar bort ett Shard resulterar det i en **överbliven Shard-mappning**. På samma sätt kan en omdöpt databas orsaka en överblivna Shard-mappning. Beroende på syftet med ändringen kan Shard behöva tas bort eller så måste Shard-platsen uppdateras. Information om hur du återställer en borttagen databas finns i [återställa en borttagen](recovery-using-backups.md)databas.
 2. En händelse för GEO-redundans inträffar. Om du vill fortsätta måste en uppdatera Server namnet och databas namnet för Shard Map Manager i programmet och sedan uppdatera Shard-mappnings informationen för alla Shards i en Shard-karta. Om det finns en geo-redundansväxling bör sådan återställnings logik automatiseras inom arbets flödet för redundansväxling. Automatisering av återställnings åtgärder möjliggör en friktions fri hanterbarhet för geo-aktiverade databaser och förhindrar manuella mänsklig åtgärder. Om du vill veta mer om alternativ för att återställa en databas om det uppstår avbrott i data centret kan du läsa mer i [verksamhets kontinuitet](business-continuity-high-availability-disaster-recover-hadr-overview.md) och [haveri beredskap](disaster-recovery-guidance.md).
 3. Antingen en Shard eller ShardMapManager-databasen återställs till en tidigare tidpunkt. Om du vill veta mer om tidpunkts återställning med hjälp av säkerhets kopior, se [återställning med säkerhets kopiering](recovery-using-backups.md).
 

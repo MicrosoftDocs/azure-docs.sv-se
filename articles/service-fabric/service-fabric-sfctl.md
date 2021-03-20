@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257061"
 ---
 # <a name="sfctl"></a>sfctl
@@ -24,11 +24,11 @@ Kommandon följer mönstret Substantiv-verb. Se under grupper för mer informati
 | [kaos](service-fabric-sfctl-chaos.md) | Starta, stoppa och rapportera om kaos test service. |
 | [flernodskluster](service-fabric-sfctl-cluster.md) | Välj, hantera och använda Service Fabric kluster. |
 | [utgör](service-fabric-sfctl-compose.md) | Skapa, ta bort och hantera Docker Compose-program. |
-| [container](service-fabric-sfctl-container.md) | Kör behållar relaterade kommandon på en klusternod. |
+| [fönster](service-fabric-sfctl-container.md) | Kör behållar relaterade kommandon på en klusternod. |
 | [planering](service-fabric-sfctl-events.md) | Hämta händelser från händelse lagret (om EventStore-tjänsten redan är installerad). |
 | [utgör](service-fabric-sfctl-is.md) | Fråga och skicka kommandon till infrastruktur tjänsten. |
 | [ruta](service-fabric-sfctl-mesh.md) | Ta bort och hantera Service Fabric nät-program. |
-| [nodfel](service-fabric-sfctl-node.md) | Hantera noderna som utgör ett kluster. |
+| [node](service-fabric-sfctl-node.md) | Hantera noderna som utgör ett kluster. |
 | [partitionstabellen](service-fabric-sfctl-partition.md) | Fråga och hantera partitioner för alla tjänster. |
 | [immaterialrätt](service-fabric-sfctl-property.md) | Lagra och fråga efter egenskaper under Service Fabric namn. |
 | [Replica](service-fabric-sfctl-replica.md) | Hantera de repliker som hör till-tjänstepartitioner. |

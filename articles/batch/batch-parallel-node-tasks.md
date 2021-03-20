@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92102973"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Kör uppgifter samtidigt för att maximera användningen av batch Compute-noder
@@ -46,7 +46,7 @@ När du aktiverar samtidiga uppgifter är det viktigt att ange hur du vill att a
 
 Genom att använda egenskapen [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) kan du ange att aktiviteterna ska tilldelas jämnt över alla noder i poolen ("spridning"). Du kan också ange att så många aktiviteter som möjligt ska tilldelas varje nod innan aktiviteter tilldelas till en annan nod i poolen ("packning").
 
-Anta till exempel poolen med [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -noder (i exemplet ovan) som är konfigurerad med ett [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) -värde på 16. Om [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) har kon figurer ATS med [ett ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) - *paket*skulle det maximera användningen av alla 16 kärnor i varje nod och tillåta att en [pool](batch-automatic-scaling.md) för automatisk skalning tar bort oanvända noder (noder utan tilldelade aktiviteter) från poolen. Detta minimerar resursanvändningen och sparar pengar.
+Anta till exempel poolen med [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -noder (i exemplet ovan) som är konfigurerad med ett [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) -värde på 16. Om [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) har kon figurer ATS med [ett ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) - *paket* skulle det maximera användningen av alla 16 kärnor i varje nod och tillåta att en [pool](batch-automatic-scaling.md) för automatisk skalning tar bort oanvända noder (noder utan tilldelade aktiviteter) från poolen. Detta minimerar resursanvändningen och sparar pengar.
 
 ## <a name="define-variable-slots-per-task"></a>Definiera variabla platser per uppgift
 

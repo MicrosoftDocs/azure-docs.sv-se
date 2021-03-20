@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100651734"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Konfiguration av Azure Firewall Threat Intelligence
@@ -26,7 +26,7 @@ Om du har konfigurerat Threat Intelligence-baserad filtrering bearbetas de assoc
 
 Du kan konfigurera Hot information i något av de tre lägena som beskrivs i följande tabell. Som standard är Hot information-baserad filtrering aktive rad i varnings läge.
 
-|Läge |Description  |
+|Läge |Beskrivning  |
 |---------|---------|
 |`Off`     | Funktionen Hot information är inte aktive rad för brand väggen. |
 |`Alert only`     | Du får aviseringar med hög exakthet för trafik som går genom brand väggen till eller från kända skadliga IP-adresser och domäner. |

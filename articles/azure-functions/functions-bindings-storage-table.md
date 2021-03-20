@@ -7,17 +7,17 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4f2b890dc60cd50b5fcaefabe8d418268b738c20
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92096733"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindningar för Azure Functions
 
 Azure Functions integreras med [Azure Storage](../storage/index.yml) via [utlösare och bindningar](./functions-triggers-bindings.md). Genom att integrera med Table Storage kan du skapa funktioner som läser och skriver tabell lagrings data.
 
-| Åtgärd | Typ |
+| Action | Typ |
 |---------|---------|
 | Läsa tabell lagrings data i en funktion | [Binda in](./functions-bindings-storage-table-input.md) |
 | Tillåt en funktion att skriva tabell lagrings data |[Utgående bindning](./functions-bindings-storage-table-output.md) |

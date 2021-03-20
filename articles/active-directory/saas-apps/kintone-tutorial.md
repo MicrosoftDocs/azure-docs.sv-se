@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 96ea3423d3c2dff2c8ba8c82b4c26d318c47211f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Självstudie: Azure Active Directory integrering med Kintone
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Kintone i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Kintone** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Kintone** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -188,7 +188,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Kintone.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Kintone**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Kintone**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -226,7 +226,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Kintone måste de till
 
     ![Användare & system administration](./media/kintone-tutorial/ic785880.png "Användare & system administration")
 
-1. Under **användar administration**klickar du på **avdelningar & användare**.
+1. Under **användar administration** klickar du på **avdelningar & användare**.
 
     ![Avdelnings & användare](./media/kintone-tutorial/ic785888.png "Avdelnings & användare")
 
@@ -238,7 +238,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Kintone måste de till
 
     ![Nya användare](./media/kintone-tutorial/ic785890.png "Nya användare")
 
-    a. Ange ett **visnings namn**, **inloggnings namn**, **nytt lösen ord**, **Bekräfta lösen ord**, **e-postadress**och annan information om ett giltigt Azure AD-konto som du vill etablera i de relaterade text rutorna.
+    a. Ange ett **visnings namn**, **inloggnings namn**, **nytt lösen ord**, **Bekräfta lösen ord**, **e-postadress** och annan information om ett giltigt Azure AD-konto som du vill etablera i de relaterade text rutorna.
 
     b. Klicka på **Spara**.
 

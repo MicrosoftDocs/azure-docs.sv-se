@@ -4,10 +4,10 @@ description: Konfigurera omvänd proxy för att aktivera säker kommunikation fr
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86256143"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Ansluta till en säker tjänst med omvänd proxy
@@ -20,7 +20,7 @@ Den här artikeln förklarar hur du upprättar en säker anslutning mellan omvä
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Upprätta säker anslutning mellan omvänd proxy och tjänster 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Omvänd proxy-autentisering till tjänster:
-Den omvända proxyn identifierar sig själv för tjänster med hjälp av certifikatet. För Azure-kluster anges certifikatet med egenskapen ***reverseProxyCertificate*** i [resurs typ avsnittet](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/Clusters**](/azure/templates/microsoft.servicefabric/clusters) i Resource Manager-mallen. För fristående kluster anges certifikatet med egenskapen ***ReverseProxyCertificate*** eller egenskapen ***ReverseProxyCertificateCommonNames*** i avsnittet **säkerhet** i ClusterConfig.jspå. Läs mer i [Aktivera omvänd proxy i fristående kluster](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Den omvända proxyn identifierar sig själv för tjänster med hjälp av certifikatet. För Azure-kluster anges certifikatet med ***reverseProxyCertificate** _ egenskap i [resurs typ avsnittet](../azure-resource-manager/templates/template-syntax.md) [_ *Microsoft. ServiceFabric* * /Clusters](/azure/templates/microsoft.servicefabric/clusters) i Resource Manager-mallen. För fristående kluster anges certifikatet med **egenskapen _ReverseProxyCertificate_*_ eller _*_ReverseProxyCertificateCommonNames_*_ _ i avsnittet _* säkerhet** i ClusterConfig.jspå. Läs mer i [Aktivera omvänd proxy i fristående kluster](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Tjänster kan implementera logiken för att verifiera certifikatet som presenteras av den omvända proxyn. Tjänsterna kan ange information om godkända klient certifikat som konfigurations inställningar i konfigurations paketet. Detta kan läsas vid körning och används för att validera certifikatet som presenteras av den omvända proxyn. Se [hantera program parametrar](service-fabric-manage-multiple-environment-app-configuration.md) för att lägga till konfigurations inställningarna. 
 
@@ -168,15 +168,15 @@ Omvänd proxy väljer en av slut punkterna för att vidarebefordra begäran base
 ```
 
 > [!NOTE]
-> Om en klient har angett en ListenerName som motsvarar en HTTP-slutpunkt (ej skyddad) i **SecureOnlyMode**, och om en klient har angett en **ListenerName** som motsvarar en http-slutpunkt (ej skyddad), Miss lyckas begäran med en http-statuskod på 404
+> Om en klient har angett en ListenerName som motsvarar en HTTP-slutpunkt (ej skyddad) i **SecureOnlyMode**, och om en klient har angett en  som motsvarar en http-slutpunkt (ej skyddad), Miss lyckas begäran med en http-statuskod på 404
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Konfigurera autentisering av klient certifikat via omvänd proxy
 TLS-avslutning sker på den omvända proxyn och alla klient certifikat data går förlorade. För tjänsterna för att utföra autentisering av klient certifikat anger du inställningen **ForwardClientCertificate** i avsnittet [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
-1. När **ForwardClientCertificate** är inställt på **false**kommer omvänd proxy inte att begära klient certifikatet under dess TLS-handskakning med-klienten.
+1. När **ForwardClientCertificate** är inställt på **false** kommer omvänd proxy inte att begära klient certifikatet under dess TLS-handskakning med-klienten.
 Det här är standardbeteendet.
 
-2. När **ForwardClientCertificate** är inställt på **True**begär omvänd proxy klientens certifikat under sin TLS-handskakning med-klienten.
+2. När **ForwardClientCertificate** är inställt på **True** begär omvänd proxy klientens certifikat under sin TLS-handskakning med-klienten.
 Sedan vidarebefordras klient certifikat data i ett anpassat HTTP-huvud med namnet **X-client-Certificate**. Head-värdet är Base64-kodad PEM-format sträng för klientens certifikat. Tjänsten kan lyckas eller Miss lyckas med lämplig status kod efter att ha kontrollerat certifikat data.
 Om klienten inte visar ett certifikat vidarebefordrar omvänd proxy en tom rubrik och låter tjänsten hantera ärendet.
 

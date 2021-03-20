@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499417"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurera Application Insights Profiler
@@ -48,7 +48,7 @@ För att en användare ska kunna utlösa en profilerad session manuellt, kräver
 
 Om du klickar på knappen utlösare på Meny raden öppnas rutan Utlös ande inställningar. Du kan ställa in utlösare för att starta profilering när procent andelen processor-eller minnes användning träffar den nivå som du har angett.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |-|-|
 På/av-knapp | På: profiler kan startas av den här utlösaren. Off: profiler startas inte av den här utlösaren.
 Minnes tröskel | När den här procent andelen av minnet används startas profileraren.
@@ -58,7 +58,7 @@ Cooldown | Anger hur lång tid profiler ska vänta innan den söker efter minne 
 ## <a name="recent-profiling-sessions"></a>Senaste profilerings sessioner
 I det här avsnittet av sidan visas information om de senaste profilerings sessionerna. En profilerings session representerar den tids period då profilerings agenten tog en profil på en av datorerna som är värd för ditt program. Du kan öppna profilerna från en session genom att klicka på en av raderna. För varje session visar vi:
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |-|-|
 Utlöst av | Hur sessionen startades, antingen genom en utlösare, profil nu eller standard sampling. 
 Appnamn | Namnet på det program som profilerades.

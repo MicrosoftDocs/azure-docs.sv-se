@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792386"
 ---
 # <a name="key-vault-versions"></a>Key Vault-versioner
@@ -55,7 +55,7 @@ Nya funktioner som lanseras i år:
 ## <a name="2015"></a>2015
 
 Nya funktioner som lanseras i år:
-- Certifikathantering. Lades till som en funktion i GA version 2015-06-01 den 26 september 2016.
+- Certifikat hantering. Lades till som en funktion i GA version 2015-06-01 den 26 september 2016.
 
 Allmän tillgänglighet (version 2015-06-01) presenterades den 24 juni 2015. Följande ändringar har gjorts i den här versionen: 
 - Ta bort ett fält för nyckel användning borttaget.

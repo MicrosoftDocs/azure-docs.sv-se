@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 12951f25feb6f3710b8d35fbc682caeeb480e788
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555615"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Självstudier: Bevilja åtkomst till ett Node.js-webb-API från en skrivbordsapp med Azure Active Directory B2C
@@ -88,7 +88,7 @@ Nu när webb-API: et är registrerat och du har konfigurerat scope och behörigh
 I ett krav för den här artikeln ändrade du ett [WPF Desktop-program](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) för att aktivera inloggning med ett användar flöde i din Azure AD B2C klient. I det här avsnittet uppdaterar du samma program för att referera till webb-API: t som du registrerade tidigare, *webapi1*.
 
 1. Öppna **Active-Directory-B2C-WPF-** lösningen ( `active-directory-b2c-wpf.sln` ) i Visual Studio.
-1. Öppna *app.XAML.cs* -filen i **Active-Directory-B2C-WPF-** projektet och leta upp följande variabel definitioner.
+1. Öppna filen *app. XAML. cs* i **Active-Directory-B2C-WPF-** projektet och leta upp följande variabel definitioner.
     1. Ersätt värdet för `ApiScopes` variabeln med värdet du registrerade tidigare när du definierade **demonstrationen. Läs** omfattning.
     1. Ersätt värdet för `ApiEndpoint` variabeln med den **omdirigerings-URI** som du registrerade tidigare när du registrerade webb-API: t (till exempel *webapi1*) i din klient organisation.
 

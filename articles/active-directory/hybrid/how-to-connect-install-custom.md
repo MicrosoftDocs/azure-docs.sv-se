@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92096359"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Anpassad installation av Azure Active Directory Connect
@@ -49,7 +49,7 @@ När du installerar Synchronization Services kan du lämna det valfria konfigura
 | Valfri konfiguration | Beskrivning |
 | --- | --- |
 |Ange en anpassad installations plats| Gör att du kan ändra standard installations Sök vägen för Azure AD Connect.|
-| Använda en befintlig SQL-server |Gör att du kan ange SQL Server namn och instans namn. Välj det här alternativet om du redan har en databas server som du vill använda. Vid **instans namn**anger du namnet på instansen, ett kommatecken och port numret om SQL Server instansen inte har aktiverat bläddring.  Ange sedan namnet på den Azure AD Connect databasen.  SQL-privilegierna avgör om en ny databas kan skapas eller om SQL-administratören måste skapa databasen i förväg.  Om du har SQL Server administratörs behörighet (SA), se [installera Azure AD Connect med hjälp av en befintlig databas](how-to-connect-install-existing-database.md).  Om du har delegerad behörighet (DBO), se [installera Azure AD Connect med hjälp av SQL-delegerad administratörs behörighet](how-to-connect-install-sql-delegation.md). |
+| Använda en befintlig SQL-server |Gör att du kan ange SQL Server namn och instans namn. Välj det här alternativet om du redan har en databas server som du vill använda. Vid **instans namn** anger du namnet på instansen, ett kommatecken och port numret om SQL Server instansen inte har aktiverat bläddring.  Ange sedan namnet på den Azure AD Connect databasen.  SQL-privilegierna avgör om en ny databas kan skapas eller om SQL-administratören måste skapa databasen i förväg.  Om du har SQL Server administratörs behörighet (SA), se [installera Azure AD Connect med hjälp av en befintlig databas](how-to-connect-install-existing-database.md).  Om du har delegerad behörighet (DBO), se [installera Azure AD Connect med hjälp av SQL-delegerad administratörs behörighet](how-to-connect-install-sql-delegation.md). |
 | Använda ett befintligt tjänstkonto |Som standard tillhandahåller Azure AD Connect ett virtuellt tjänst konto för synkroniseringstjänsten. Om du använder en fjärrinstans av SQL Server eller använder en proxy som kräver autentisering, kan du använda ett *hanterat tjänst konto* eller ett lösenordsskyddat tjänst konto i domänen. I dessa fall anger du det konto som du vill använda. Om du vill köra installationen måste du vara en SA i SQL så att du kan skapa inloggnings uppgifter för tjänst kontot. Mer information finns i [Azure AD Connect konton och behörigheter](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>Med den senaste versionen kan SQL-administratören nu etablera databasen out-of-band. Sedan kan Azure AD Connect-administratören installera den med databas ägar rättigheter.  Mer information finns i [installera Azure AD Connect med hjälp av SQL-delegerad administratörs behörighet](how-to-connect-install-sql-delegation.md).|
 | Ange anpassade synkroniseringsgrupper |När Sync-tjänsterna är installerade skapar Azure AD Connect fyra grupper som är lokala för-servern som standard. De här grupperna är administratörer, operatörer, bläddra och lösen ords återställning. Du kan ange dina egna grupper här. Grupperna måste vara lokala på servern. De kan inte hittas i domänen. |
 |Importera synkroniseringsinställningar (för hands version)|Gör att du kan importera inställningar från andra versioner av Azure AD Connect.  Mer information finns i [Importera och exportera Azure AD Connect konfigurations inställningar](how-to-connect-import-export-config.md).|
@@ -92,7 +92,7 @@ För att ansluta till Active Directory Domain Services (Azure AD DS) behöver Az
 
 ![Skärm bild som visar sidan "Anslut dina kataloger".](./media/how-to-connect-install-custom/connectdir01.png)
 
-När du har angett skogs namnet och väljer  **Lägg till katalog**visas ett fönster. I följande tabell beskrivs dina alternativ.
+När du har angett skogs namnet och väljer  **Lägg till katalog** visas ett fönster. I följande tabell beskrivs dina alternativ.
 
 | Alternativ | Beskrivning |
 | --- | --- |
@@ -102,7 +102,7 @@ När du har angett skogs namnet och väljer  **Lägg till katalog**visas ett fö
 ![Skärm bild som visar sidan "Anslut katalog" och fönstret ett D-skogs konto där du kan välja att skapa ett nytt konto eller använda ett befintligt konto.](./media/how-to-connect-install-custom/connectdir02.png)
 
 >[!NOTE]
-> Från och med build 1.4.18.0 kan du inte använda ett företags administratörs konto eller ett domän administratörs konto som Azure AD DS-konto. Om du försöker ange ett företags administratörs konto eller ett domän administratörs **konto visas följande**fel meddelande: "det är inte tillåtet att använda ett företags-eller domän administratörs konto för ditt Ad-skogs konto. Låt Azure AD Connect skapa kontot åt dig eller ange ett konto för synkronisering med rätt behörigheter. "
+> Från och med build 1.4.18.0 kan du inte använda ett företags administratörs konto eller ett domän administratörs konto som Azure AD DS-konto. Om du försöker ange ett företags administratörs konto eller ett domän administratörs **konto visas följande** fel meddelande: "det är inte tillåtet att använda ett företags-eller domän administratörs konto för ditt Ad-skogs konto. Låt Azure AD Connect skapa kontot åt dig eller ange ett konto för synkronisering med rätt behörigheter. "
 >
 
 ### <a name="azure-ad-sign-in-configuration"></a>Inloggningskonfiguration för Azure AD
@@ -230,7 +230,7 @@ Baserat på de tjänster som du valde i föregående steg visar den här sidan a
 >
 
 ### <a name="directory-extension-attribute-sync"></a>Synkronisering av katalogtilläggsattribut
-Du kan utöka schemat i Azure AD med hjälp av anpassade attribut som organisationen lagt till eller med hjälp av andra attribut i Active Directory. Om du vill använda den här funktionen väljer du **katalog tilläggets attribut**på sidan **valfria funktioner** . På sidan **katalog tillägg** kan du välja fler attribut som ska synkroniseras.
+Du kan utöka schemat i Azure AD med hjälp av anpassade attribut som organisationen lagt till eller med hjälp av andra attribut i Active Directory. Om du vill använda den här funktionen väljer du **katalog tilläggets attribut** på sidan **valfria funktioner** . På sidan **katalog tillägg** kan du välja fler attribut som ska synkroniseras.
 
 >[!NOTE]
 >Fältet **tillgängliga attribut** är Skift läges känsligt.
@@ -260,7 +260,7 @@ På en dator som har grupprincip hanterings verktyg:
 
 1.  Öppna grupprincip hanterings verktyg.
 2.  Redigera grup principen som ska tillämpas på alla användare. Till exempel standard domän principen.
-3.  Gå till **användar konfiguration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Internet Explorer Internet Explorer**på  >  säkerhets sidan för**Internet kontroll panelen**  >  **Security Page**. Välj sedan **plats till zon tilldelnings lista**.
+3.  Gå till **användar konfiguration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **Internet Explorer Internet Explorer** på  >  säkerhets sidan för **Internet kontroll panelen**  >  . Välj sedan **plats till zon tilldelnings lista**.
 4.  Aktivera principen. I dialog rutan anger du sedan värde namnet `https://autologon.microsoftazuread-sso.com` och värdet `1` . Installations programmet bör se ut som på följande bild.
   
     ![Skärm bild som visar intranäts zoner.](./media/how-to-connect-install-custom/sitezone.png)

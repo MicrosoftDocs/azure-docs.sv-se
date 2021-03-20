@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: eb8d0c229ed5f41dcb5999243a57ee19c2b67f74
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458735"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Självstudie: Azure Active Directory integrering med Learningpool Act
@@ -30,7 +30,7 @@ Integreringen av Learningpool Act med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Learningpool Act behöver du följande:
 
@@ -113,7 +113,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Learn
     > [!NOTE]
     > Identifierarvärdet är inte verkligt. Uppdatera det här värdet med den faktiska identifieraren. Kontakta [kundsupporten för Learningpool Act](https://www.learningpool.com/support) och be om det här värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-5. Learningpool Act-programmet förväntar sig SAML-försäkringarna i ett visst format, vilket innebär att du måste lägga till anpassade attributmappningar i din konfiguration av SAML-tokenattribut. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+5. Learningpool Act-programmet förväntar sig SAML-försäkringarna i ett visst format, vilket innebär att du måste lägga till anpassade attributmappningar i din konfiguration av SAML-tokenattribut. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialogrutan Användarattribut.
 
     ![Skärm bild som visar användarattribut med redigerings ikonen vald.](common/edit-attribute.png)
 

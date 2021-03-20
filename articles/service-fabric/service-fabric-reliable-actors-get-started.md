@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573469"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Komma igång med Reliable Actors
@@ -18,7 +18,7 @@ ms.locfileid: "96573469"
 
 Den här artikeln beskriver hur du skapar och felsöker ett enkelt tillförlitligt aktörs program i Visual Studio. Mer information om Reliable Actors finns i [Introduktion till Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du se till att du har Service Fabric utvecklings miljö, inklusive Visual Studio, konfigurerat på din dator. Mer information finns i [så här konfigurerar du utvecklings miljön](service-fabric-get-started.md).
 
@@ -44,15 +44,15 @@ Lösningen innehåller tre projekt:
 
 * **Gränssnitts projektet (HelloWorld. Interfaces)**. Det här projektet innehåller en gränssnitts definition för aktören. Aktörs gränssnitt kan definieras i alla projekt med namn.  Gränssnittet definierar det aktörs avtal som delas av aktörs implementeringen och klienter som anropar aktören.  Eftersom klient projekt kan vara beroende av det, är det vanligt vis klokt att definiera det i en sammansättning som är separat från aktörs implementeringen.
 
-* **Aktörs tjänst projektet (HelloWorld)**. Det här projektet definierar den Service Fabric tjänst som ska vara värd för aktören. Den innehåller implementeringen av aktören *HelloWorld.cs*. En aktörs implementering är en klass som härleds från bastypen `Actor` och implementerar de gränssnitt som definierats i projektet för *teleaktör. gränssnitt* . En aktörs klass måste också implementera en konstruktor som accepterar en `ActorService` instans och en `ActorId` och skickar dem till Bask `Actor` Lassen.
+* **Aktörs tjänst projektet (HelloWorld)**. Det här projektet definierar den Service Fabric tjänst som ska vara värd för aktören. Den innehåller implementeringen av aktören *HelloWorld. cs*. En aktörs implementering är en klass som härleds från bastypen `Actor` och implementerar de gränssnitt som definierats i projektet för *teleaktör. gränssnitt* . En aktörs klass måste också implementera en konstruktor som accepterar en `ActorService` instans och en `ActorId` och skickar dem till Bask `Actor` Lassen.
     
-    Det här projektet innehåller också *program.cs*, som registrerar aktörs klasser med Service Fabric runtime med hjälp av `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Klassen är redan registrerad. Eventuella ytterligare aktörs implementeringar som läggs till projektet måste också registreras i- `Main()` metoden.
+    Det här projektet innehåller också *program. cs*, som registrerar aktörs klasser med Service Fabric runtime med hjälp av `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Klassen är redan registrerad. Eventuella ytterligare aktörs implementeringar som läggs till projektet måste också registreras i- `Main()` metoden.
 
 ## <a name="customize-the-helloworld-actor"></a>Anpassa din HelloWorld-aktör
 
 Projekt mal len definierar vissa metoder i `IHelloWorld` gränssnittet och implementerar dem i `HelloWorld` aktörs implementeringen.  Ersätt dessa metoder så att aktörs tjänsten returnerar en enkel "Hello World"-sträng.
 
-I projektet *HelloWorld. Interfaces* , i *IHelloWorld.cs* -filen, ersätter du gränssnitts definitionen enligt följande:
+I projektet *HelloWorld. Interfaces* , i filen *IHelloWorld. cs* , ersätter du gränssnitts definitionen enligt följande:
 
 ```csharp
 public interface IHelloWorld : IActor
@@ -61,7 +61,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-Ersätt hela klass definitionen i **HelloWorld.cs** i projektet **HelloWorld** enligt följande:
+I projektet **HelloWorld** , i **HelloWorld. cs**, ersätter du hela klass definitionen enligt följande:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -110,7 +110,7 @@ Skapa ett enkelt konsol program för att anropa aktörs tjänsten.
     
     ![Dialog rutan Lägg till referens][7]
 
-6. I ActorClient-projektet ersätter du hela innehållet i *program.cs* med följande kod:
+6. Ersätt hela innehållet i *program. cs* med följande kod i ActorClient-projektet:
     
     ```csharp
     using System;

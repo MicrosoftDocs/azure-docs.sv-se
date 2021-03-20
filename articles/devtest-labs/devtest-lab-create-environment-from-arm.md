@@ -4,10 +4,10 @@ description: Lär dig att skapa miljöer med flera virtuella datorer och PaaS-re
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88182416"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Skapa miljöer med flera virtuella datorer och PaaS-resurser med Azure Resource Manager-mallar
@@ -63,7 +63,7 @@ Det finns flera regler att följa för att organisera Azure Resource Manager mal
 När du har skapat och konfigurerat din lagrings plats kan du lägga till den i labbet med hjälp av Azure Portal:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du det labb du vill ha.
 1. I labb **översikts** fönstret väljer du **konfiguration och principer**.
 
@@ -71,7 +71,7 @@ När du har skapat och konfigurerat din lagrings plats kan du lägga till den i 
 
 1. I listan **konfiguration och principer** inställningar väljer du **Arkiv**. Den **offentliga artefakt lagrings platsen** -lagringsplatsen genereras automatiskt för alla labb och ansluter till den [offentliga GitHub-lagringsplatsen för DevTest Labs](https://github.com/Azure/azure-devtestlab).
 
-1. Välj **Lägg till**för att lägga till din Azure Resource Manager mall-lagringsplats.
+1. Välj **Lägg till** för att lägga till din Azure Resource Manager mall-lagringsplats.
 
    ![Offentlig lagrings platsen](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
@@ -80,10 +80,10 @@ När du har skapat och konfigurerat din lagrings plats kan du lägga till den i 
    - **Namn**: Ange ett namn på databasen som ska användas i labbet.
    - **Git-klon-URL**: Ange git https-klonings-URL: en från GitHub eller Azure databaser.
    - **Gren** (valfritt): Ange namnet på grenen för att komma åt dina definitioner för Azure Resource Manager mal len.
-   - **Personlig**åtkomsttoken: Ange den personliga åtkomsttoken som används för säker åtkomst till lagrings platsen.
-     - Om du vill hämta din token från Azure databaser väljer du **användar inställningar**  >  **säkerhet**  >  **personliga**åtkomsttoken under din profil.
-     - För att hämta din token från GitHub, under din profil, väljer du **Inställningar inställningar**för  >  **utvecklare**  >  **personliga åtkomsttoken**.
-   - **Mappsökvägar: Ange**den mappsökväg som är relativ till din git-klon-URI för antingen dina artefakt definitioner eller dina definitioner för Azure Resource Manager mal len.
+   - **Personlig** åtkomsttoken: Ange den personliga åtkomsttoken som används för säker åtkomst till lagrings platsen.
+     - Om du vill hämta din token från Azure databaser väljer du **användar inställningar**  >  **säkerhet**  >  **personliga** åtkomsttoken under din profil.
+     - För att hämta din token från GitHub, under din profil, väljer du **Inställningar inställningar** för  >  **utvecklare**  >  **personliga åtkomsttoken**.
+   - **Mappsökvägar: Ange** den mappsökväg som är relativ till din git-klon-URI för antingen dina artefakt definitioner eller dina definitioner för Azure Resource Manager mal len.
 
 1. Välj **Spara**.
 
@@ -97,9 +97,9 @@ Labb användare har rollen **läsare** som standard, så att de inte kan ändra 
 
 Följ dessa steg om du vill ge dina labb användare **deltagar** rollen så att de kan redigera resurserna i sina miljöer:
 
-1. I rutan [Azure Portal](https://portal.azure.com)väljer du **konfiguration och principer**i din labb **Översikt** och väljer sedan **labb inställningar**.
+1. I rutan [Azure Portal](https://portal.azure.com)väljer du **konfiguration och principer** i din labb **Översikt** och väljer sedan **labb inställningar**.
 
-1. I rutan **labb inställningar** väljer du **deltagare**och väljer sedan **Spara** för att bevilja Skriv behörighet till labb användare.
+1. I rutan **labb inställningar** väljer du **deltagare** och väljer sedan **Spara** för att bevilja Skriv behörighet till labb användare.
 
    ![Konfigurera åtkomst behörighet för labb användare](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
 
@@ -111,7 +111,7 @@ När du lägger till en Azure Resource Manager-mall i labbet kan dina labb anvä
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 
 1. I listan med labb väljer du det labb du vill ha.
 
@@ -125,7 +125,7 @@ När du lägger till en Azure Resource Manager-mall i labbet kan dina labb anvä
 
    Azure Resource Manager mal len definierar resten av inmatade fält. Om mallen *azuredeploy.parameter.jsi* filen definierar standardvärden, visar indata fälten dessa värden.
 
-   För parametrar av typen *säker sträng*kan du använda hemligheter från Azure Key Vault. Information om hur du lagrar hemligheter i ett nyckel valv och använder dem när du skapar labb resurser finns i [lagra hemligheter i Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).  
+   För parametrar av typen *säker sträng* kan du använda hemligheter från Azure Key Vault. Information om hur du lagrar hemligheter i ett nyckel valv och använder dem när du skapar labb resurser finns i [lagra hemligheter i Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).  
 
    ![Lägg till fönster](./media/devtest-lab-create-environment-from-arm/add.png)
 

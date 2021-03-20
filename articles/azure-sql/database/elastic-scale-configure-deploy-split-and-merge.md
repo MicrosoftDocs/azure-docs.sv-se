@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792080"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Distribuera en tjänst för delad sammanslagning för att flytta data mellan shardade-databaser
@@ -39,9 +39,9 @@ Filerna placeras i en katalog med namnet **Microsoft. Azure. SqlDatabase. Elasti
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Skapa en Azure SQL Database-databas som ska användas som databas för delad sammanslagnings status. Gå till [Azure-portalen](https://portal.azure.com). Skapa en ny **SQL Database** . Ge databasen ett namn och skapa en ny administratör och ett nytt lösen ord. Se till att du registrerar namnet och lösen ordet för senare användning.
+1. Skapa en Azure SQL Database-databas som ska användas som databas för delad sammanslagnings status. Gå till [Azure-portalen](https://portal.azure.com). Skapa en ny **SQL Database**. Ge databasen ett namn och skapa en ny administratör och ett nytt lösen ord. Se till att du registrerar namnet och lösen ordet för senare användning.
 
-1. Kontrol lera att din server tillåter att Azure-tjänster ansluter till den. I **brand Väggs inställningarna** i portalen kontrollerar du att inställningen **Tillåt åtkomst till Azure-tjänster** är inställd på **på** . Klicka på ikonen "Spara".
+1. Kontrol lera att din server tillåter att Azure-tjänster ansluter till den. I **brand Väggs inställningarna** i portalen kontrollerar du att inställningen **Tillåt åtkomst till Azure-tjänster** är inställd på **på**. Klicka på ikonen "Spara".
 
 1. Skapa ett Azure Storage-konto för diagnostiska utdata.
 
@@ -51,7 +51,7 @@ Filerna placeras i en katalog med namnet **Microsoft. Azure. SqlDatabase. Elasti
 
 ### <a name="split-merge-service-configuration"></a>Split-Merge tjänst konfiguration
 
-1. I den mapp där du laddade ned Split-Merge sammansättningarna skapar du en kopia av filen *ServiceConfiguration. template. cscfg* som levererades tillsammans med *SplitMergeService. cspkg* och byter namn på den *ServiceConfiguration. cscfg* .
+1. I den mapp där du laddade ned Split-Merge sammansättningarna skapar du en kopia av filen *ServiceConfiguration. template. cscfg* som levererades tillsammans med *SplitMergeService. cspkg* och byter namn på den *ServiceConfiguration. cscfg*.
 
 1. Öppna *ServiceConfiguration. cscfg* i en text redigerare, till exempel Visual Studio som validerar indata, till exempel formatet på certifikat tumavtrycken.
 
@@ -99,17 +99,17 @@ Kör följande kommando från samma fönster där MakeCert kördes. Använd samm
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>Importera klient certifikatet till det personliga arkivet
 
-1. I Utforskaren dubbelklickar du på *cert. pfx* .
-2. Välj **Aktuell användare** i **guiden Importera certifikat** och klicka på **Nästa** .
-3. Bekräfta sökvägen till filen och klicka på **Nästa** .
-4. Skriv lösen ordet, lämna **ta med alla utökade egenskaper** markerade och klicka på **Nästa** .
-5. Lämna **automatiskt certifikat arkivet [...]** markerat och klicka på **Nästa** .
-6. Klicka på **Slutför** och **OK** .
+1. I Utforskaren dubbelklickar du på *cert. pfx*.
+2. Välj **Aktuell användare** i **guiden Importera certifikat** och klicka på **Nästa**.
+3. Bekräfta sökvägen till filen och klicka på **Nästa**.
+4. Skriv lösen ordet, lämna **ta med alla utökade egenskaper** markerade och klicka på **Nästa**.
+5. Lämna **automatiskt certifikat arkivet [...]** markerat och klicka på **Nästa**.
+6. Klicka på **Slutför** och **OK**.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Överför PFX-filen till moln tjänsten
 
 1. Gå till [Azure-portalen](https://portal.azure.com).
-2. Välj **Cloud Services** .
+2. Välj **Cloud Services**.
 3. Välj den moln tjänst som du skapade ovan för delnings-/sammanslagnings tjänsten.
 4. Klicka på **certifikat** på den översta menyn.
 5. Klicka på **överför** i det nedre fältet.
@@ -143,8 +143,8 @@ Observera att för produktions distributioner bör separata certifikat användas
 
 1. Gå till [Azure Portal](https://portal.azure.com)
 2. Välj den moln tjänst som du skapade tidigare.
-3. Klicka på **Översikt** .
-4. Välj mellanlagrings miljö och klicka sedan på **Ladda upp** .
+3. Klicka på **Översikt**.
+4. Välj mellanlagrings miljö och klicka sedan på **Ladda upp**.
 5. I dialog rutan anger du en distributions etikett. För både "paket" och "konfiguration" klickar du på "från lokal" och väljer filen *SplitMergeService. cspkg* och din cscfg-fil som du konfigurerade tidigare.
 6. Kontrol lera att kryss rutan **distribuera även om en eller flera roller innehåller en enda instans** har marker ATS.
 7. Tryck på knappen för skal streck längst ned till höger för att starta distributionen. Det tar några minuter att slutföra det.
@@ -161,7 +161,7 @@ Om din arbets roll inte kan anslutas, men din webb roll lyckas, är det förmodl
 
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-- Se till att Server namnet inte börjar med **https://** .
+- Se till att Server namnet inte börjar med **https://**.
 - Kontrol lera att din server tillåter att Azure-tjänster ansluter till den. Det gör du genom att öppna din databas i portalen och kontrol lera att inställningen **Tillåt åtkomst till Azure-tjänster** är inställd på * * på * * * *.
 
 ## <a name="test-the-service-deployment"></a>Testa tjänst distributionen
@@ -324,7 +324,7 @@ För att kunna utföra en delnings sammanslagning måste du deklarera de shardad
 1. För varje shardade-tabell skapar du ett **ShardedTableInfo** -objekt som beskriver tabellens överordnade schema namn (valfritt, standardvärdet "dbo"), tabell namnet och kolumn namnet i den tabellen som innehåller horisontell partitionering-nyckeln.
 2. Skapa ett **ReferenceTableInfo** -objekt som beskriver tabellens överordnade schema namn (valfritt, standard är "dbo") och tabell namnet för varje referens tabell.
 3. Lägg till ovanstående TableInfo-objekt i ett nytt **SchemaInfo** -objekt.
-4. Hämta en referens till ett **ShardMapManager** -objekt och anropa **GetSchemaInfoCollection** .
+4. Hämta en referens till ett **ShardMapManager** -objekt och anropa **GetSchemaInfoCollection**.
 5. Lägg till **SchemaInfo** i **SchemaInfoCollection** och ange namnet på Shard-kartan.
 
 Ett exempel på detta kan visas i SetupSampleSplitMergeEnvironment.ps1-skriptet.
@@ -343,7 +343,7 @@ Om du inte kan skicka begär Anden kan du se följande:
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-I det här fallet kontrollerar du konfigurations filen, i synnerhet inställningen för **WorkerRoleSynchronizationStorageAccountConnectionString** . Det här felet indikerar vanligt vis att arbets rollen inte kunde initiera metadata-databasen vid första användningen.
+I det här fallet kontrollerar du konfigurations filen, i synnerhet inställningen för **WorkerRoleSynchronizationStorageAccountConnectionString**. Det här felet indikerar vanligt vis att arbets rollen inte kunde initiera metadata-databasen vid första användningen.
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

@@ -7,10 +7,10 @@ ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007598"
 ---
 # <a name="delete-a-host-pool"></a>Ta bort en värdpool
@@ -49,7 +49,7 @@ Så här tar du bort en adresspool i Azure Portal:
 
 6. När du har tagit bort app-grupperna går du till menyn till vänster på sidan och väljer **Översikt**.
 
-7. Välj **ta bort**.
+7. Välj **Ta bort**.
 
 8. Om det finns värddatorer i den modempool som du tar bort visas ett meddelande som ber om din tillåtelse att fortsätta. Välj **Ja**.
 

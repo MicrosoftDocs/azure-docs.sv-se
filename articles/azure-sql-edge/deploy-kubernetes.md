@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395299"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Distribuera en Azure SQL Edge-behållare i Kubernetes
@@ -108,7 +108,7 @@ Konfigurera en [beständig volym](https://kubernetes.io/docs/concepts/storage/pe
          storage: 8Gi
    ```
 
-   Spara filen (till exempel **PVC. yaml** ).
+   Spara filen (till exempel **PVC. yaml**).
 
 2. Skapa ett beständigt volym anspråk i Kubernetes.
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >Genom att använda `LoadBalancer` tjänst typen kan Azure SQL Edge-instansen nås via fjärr anslutning (via Internet) på port 1433.
 
-   Spara filen (till exempel **sqledgedeploy. yaml** ).
+   Spara filen (till exempel **sqledgedeploy. yaml**).
 
 2. Skapa distributionen.
 

@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192438"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Snabbstart: Konfigurera serverbrandvägg – portalen
@@ -34,7 +34,7 @@ Den här snabbstarten hjälper dig att konfigurera en brandvägg för Azure Anal
 
 1. Öppna sidan Översikt genom att klicka på servern. 
 2. I **Inställningar**  >  **brand vägg**  >  **Aktivera brand vägg**, väljer du **på**.
-3. Om du vill aktivera anslutningar från Power BI och Power BI Premium väljer du **på**i **tillåt åtkomst från Power BI**.  
+3. Om du vill aktivera anslutningar från Power BI och Power BI Premium väljer du **på** i **tillåt åtkomst från Power BI**.  
 4. (Valfritt) Ange ett eller flera IP-adressintervall. Ange ett namn, och start- och slut-IP-adress för varje intervall. Brand Väggs regelns namn får inte vara längre än 128 tecken och får bara innehålla versaler, gemener, siffror, under streck och bindestreck. Blank steg och andra specialtecken är inte tillåtna.
 5. Klicka på **Spara**.
 
