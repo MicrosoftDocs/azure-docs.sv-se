@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91576106"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Tjänst-till-tjänst-autentisering med Azure Data Lake Storage Gen1 som använder Azure Active Directory
@@ -60,7 +60,7 @@ När program mässigt logga in måste du ha ID: t för ditt program. Om programm
 4. **Access** -bladet visar standard åtkomst och anpassad åtkomst som redan har tilldelats till roten. Klicka på ikonen **Lägg** till för att lägga till ACL: er för anpassad nivå.
    
     ![Lista standard och anpassad åtkomst](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "Lista standard och anpassad åtkomst")
-5. Klicka på ikonen **Lägg** till för att öppna bladet **Lägg till anpassad åtkomst** . I det här bladet klickar du på **Välj användare eller grupp**och letar sedan efter det Azure Active Directory program som du skapade tidigare i **Välj användare eller grupp** blad. Om du har många grupper att söka från använder du text rutan överst för att filtrera efter grupp namnet. Klicka på den grupp som du vill lägga till och klicka sedan på **Välj**.
+5. Klicka på ikonen **Lägg** till för att öppna bladet **Lägg till anpassad åtkomst** . I det här bladet klickar du på **Välj användare eller grupp** och letar sedan efter det Azure Active Directory program som du skapade tidigare i **Välj användare eller grupp** blad. Om du har många grupper att söka från använder du text rutan överst för att filtrera efter grupp namnet. Klicka på den grupp som du vill lägga till och klicka sedan på **Välj**.
    
     ![Lägg till en grupp](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Lägg till en grupp")
 6. Klicka på **Välj behörigheter**, Välj behörigheter och ange om du vill tilldela behörighet som standard-ACL, åtkomst-ACL eller båda. Klicka på **OK**.
@@ -84,9 +84,9 @@ När program mässigt logga in måste du ha ID: t för ditt program. Om programm
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och klicka på Active Directory i det vänstra fönstret.
 
-2. Klicka på **Appregistreringar**i det vänstra fönstret.
+2. Klicka på **Appregistreringar** i det vänstra fönstret.
 
-3. Klicka på **slut punkter**överst på Appregistreringar bladet.
+3. Klicka på **slut punkter** överst på Appregistreringar bladet.
 
     ![Skärm bild av Active Directory med alternativet Appregistreringar och alternativet slut punkter som kallas för.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth token-slutpunkt")
 

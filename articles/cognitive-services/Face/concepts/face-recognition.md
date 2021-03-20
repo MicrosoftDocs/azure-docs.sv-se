@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518814"
 ---
 # <a name="face-recognition-concepts"></a>Koncept för ansikts igenkänning
@@ -25,7 +25,7 @@ I den här artikeln beskrivs begreppen för att kontrol lera, hitta liknande, gr
 
 Igenkännings åtgärderna använder huvudsakligen följande data strukturer. Dessa objekt lagras i molnet och kan refereras till av deras ID-strängar. ID-strängar är alltid unika i en prenumeration. Namn fält kan dupliceras.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |:--|:--|
 |DetectedFace| Den här enskilda ansikts representationen hämtas av [ansikts identifierings](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) åtgärden. Dess ID upphör att gälla 24 timmar efter att det har skapats.|
 |PersistedFace| När DetectedFace-objekt läggs till i en grupp, till exempel FaceList eller person, blir de PersistedFace objekt. De kan [hämtas](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) när som helst och upphör inte att gälla.|

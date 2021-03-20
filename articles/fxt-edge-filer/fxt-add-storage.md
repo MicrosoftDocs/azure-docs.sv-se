@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217532"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Självstudie: Lägg till Server dels lagring och konfigurera det virtuella namn området
@@ -142,7 +142,7 @@ Du kan använda det här systemet för att förenkla den sökväg som används i
 
 ![Guiden Lägg till ny Knut sida med inställningar ifyllda](media/fxt-cluster-config/add-junction-full.png)
 
-Mer information om hur du skapar en namn områdes Knut punkt finns i [ **vserver**-  >  **namnrymden** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) i kluster konfigurations guiden.
+Mer information om hur du skapar en namn områdes Knut punkt finns i [ **vserver**-  >  **namnrymden**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) i kluster konfigurations guiden.
 
 ![Sidan VServer > namn områdes inställningar som visar information om en förgrening](media/fxt-cluster-config/namespace-populated.png)
 

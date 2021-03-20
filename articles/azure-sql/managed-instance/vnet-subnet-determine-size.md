@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
 ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012468"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Bestäm nödvändig under näts storlek & intervall för Azure SQL-hanterad instans
@@ -52,14 +52,14 @@ En hanterad instans behöver minst 32 IP-adresser i ett undernät. Därför kan
 
 GP = generell användning; BC = affärs kritisk; VC = virtuellt kluster
 
-| **Maskin gen** | **Prisnivå** | **Azure-användning** | **VC-användning** | **Instans användning** | **Totalt** _ |
+| **Maskin gen** | **Prisnivå** | **Azure-användning** | **VC-användning** | **Instans användning** | **Totalt*** |
 | --- | --- | --- | --- | --- | --- |
 | Gen4 | GP | 5 | 1 | 5 | 11 |
 | Gen4 | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \_ Kolumn summan visar antalet adresser som ska vidtas när en instans distribueras i under nätet. Varje ytterligare instans i under nätet lägger till antalet adresser som representeras med kolumnen instans användning. Adresser som representeras med Azure Usage-kolumnen delas över flera virtuella kluster, medan adresser som representeras med VC Usage-kolumnen delas mellan instanser som placeras i det virtuella klustret.
+  \* Kolumn summan visar antalet adresser som ska vidtas när en instans distribueras i under nätet. Varje ytterligare instans i under nätet lägger till antalet adresser som representeras med kolumnen instans användning. Adresser som representeras med Azure Usage-kolumnen delas över flera virtuella kluster, medan adresser som representeras med VC Usage-kolumnen delas mellan instanser som placeras i det virtuella klustret.
 
 Uppdaterings åtgärden kräver vanligt vis storleks ändring av virtuellt kluster. Under vissa omständigheter kräver uppdaterings åtgärden att virtuella kluster skapas (mer information om [hanterings åtgärder](sql-managed-instance-paas-overview.md#management-operations)för mer information). Om det virtuella klustret skapas, är antalet ytterligare adresser som krävs lika med antalet adresser som representeras av kolumnen VC-användning summerade med adresser som krävs för instanser som placerats i det virtuella klustret (instans användnings kolumnen).
 
@@ -74,12 +74,12 @@ Som nämnts ovan kräver uppdaterings åtgärden att virtuella kluster skapas. D
 
 Vid skalnings åtgärds instanser kräver tillfälligt ytterligare IP-kapacitet som är beroende av pris nivå och maskin varu generering
 
-| **Maskin gen** | **Prisnivå** | **Scenario** | **Ytterligare adresser** _ |
+| **Maskin gen** | **Prisnivå** | **Scenario** | **Ytterligare adresser*** |
 | --- | --- | --- | --- |
 | Gen4 | GP eller BC | Skalar virtuella kärnor | 5 |
 | Gen4 | GP eller BC | Skala lagring | 5 |
 | Gen4 | GP eller BC | Växla från GP till BC eller BC till GP | 5 |
-| Gen4 | GP | Växlar till Gen5_ | 9 |
+| Gen4 | GP | Växlar till Gen5 * | 9 |
 | Gen4 | BC | Växlar till Gen5 * | 11 |
 | Gen5 | GP | Skalar virtuella kärnor | 3 |
 | Gen5 | GP | Skala lagring | 0 |

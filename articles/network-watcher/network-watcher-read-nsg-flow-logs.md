@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593052"
 ---
 # <a name="read-nsg-flow-logs"></a>Läs NSG-flödesloggar
@@ -31,7 +31,7 @@ NSG flödes loggar lagras i ett lagrings konto i [block-blobbar](/rest/api/stora
 
 I följande scenario har du en exempel flödes logg som lagras i ett lagrings konto. Du lär dig hur du selektivt läser de senaste händelserna i NSG Flow-loggar. I den här artikeln använder du PowerShell, men begreppen som beskrivs i artikeln är inte begränsade till programmeringsspråket och gäller för alla språk som stöds av Azure Storage API: er.
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 Innan du börjar måste du ha nätverks säkerhets gruppens flödes loggning aktiverat på en eller flera nätverks säkerhets grupper i ditt konto. Anvisningar om hur du aktiverar nätverks säkerhets flödes loggar finns i följande artikel: [Introduktion till flödes loggning för nätverks säkerhets grupper](network-watcher-nsg-flow-logging-overview.md).
 

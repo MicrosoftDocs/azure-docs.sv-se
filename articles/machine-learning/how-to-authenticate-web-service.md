@@ -12,10 +12,10 @@ ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94447780"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>Konfigurera autentisering för modeller som distribueras som webb tjänster
@@ -24,8 +24,8 @@ Med Azure Machine Learning kan du distribuera dina utbildade maskin inlärnings 
 
 Modell distributioner som skapas av Azure Machine Learning kan konfigureras för att använda en av två autentiseringsmetoder:
 
-* **nyckelbaserad** : en statisk nyckel används för att autentisera till webb tjänsten.
-* **tokenbaserad** : en tillfällig token måste hämtas från Azure Machine Learning arbets ytan (med Azure Active Directory) och användas för att autentisera till webb tjänsten. Denna token upphör att gälla efter en viss tids period och måste uppdateras för att fortsätta arbeta med webb tjänsten.
+* **nyckelbaserad**: en statisk nyckel används för att autentisera till webb tjänsten.
+* **tokenbaserad**: en tillfällig token måste hämtas från Azure Machine Learning arbets ytan (med Azure Active Directory) och användas för att autentisera till webb tjänsten. Denna token upphör att gälla efter en viss tids period och måste uppdateras för att fortsätta arbeta med webb tjänsten.
 
     > [!NOTE]
     > Tokenbaserad autentisering är endast tillgängligt när du distribuerar till Azure Kubernetes-tjänsten.

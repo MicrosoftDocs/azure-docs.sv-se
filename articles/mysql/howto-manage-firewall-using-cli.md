@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: eaddd8b2979b30251301ad041ea4b872c23d680b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541342"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Skapa och hantera Azure Database for MySQL brand Väggs regler med hjälp av Azure CLI
@@ -28,11 +28,11 @@ Virtual Network-regler (VNet) kan också användas för att skydda åtkomsten ti
 Kommandot **AZ MySQL server Firewall-Rule** används från Azure CLI för att skapa, ta bort, lista, Visa och uppdatera brand Väggs regler.
 
 Kommandon:
-- **skapa** : skapa en brand Väggs regel för Azure MySQL server.
-- **ta bort** : ta bort en regel för Azure MySQL server-brandvägg.
-- **lista** : visar en lista över Azure MySQL-serverns brand Väggs regler.
-- **Visa** : Visa information om en regel för Azure MySQL server-brandvägg.
-- **uppdatering** : uppdatera en brand Väggs regel för Azure MySQL server.
+- **skapa**: skapa en brand Väggs regel för Azure MySQL server.
+- **ta bort**: ta bort en regel för Azure MySQL server-brandvägg.
+- **lista**: visar en lista över Azure MySQL-serverns brand Väggs regler.
+- **Visa**: Visa information om en regel för Azure MySQL server-brandvägg.
+- **uppdatering**: uppdatera en brand Väggs regel för Azure MySQL server.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Logga in på Azure och lista dina Azure Database for MySQL-servrar
 Anslut säkert Azure CLI med ditt Azure-konto med hjälp av kommandot **AZ login** .

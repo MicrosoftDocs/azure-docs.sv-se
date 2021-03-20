@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94538316"
 ---
 # <a name="detect-domain-specific-content"></a>Identifiera domänspecifikt innehåll
@@ -100,7 +100,7 @@ Följande JSON-svar visar hur domänbaserad analys kan tas med `detail` i noden 
 
 Visuellt innehåll stöder för närvarande följande företagsspecifika modeller:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 |------|-------------|
 | kändisar | Kändis-igenkänning, stöds för bilder som klassificeras i `people_` kategorin |
 | landmärken | Landmärkes igenkänning, stöds för bilder som klassificeras i `outdoor_` `building_` kategorierna eller |

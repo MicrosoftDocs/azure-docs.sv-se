@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215781"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Skriv om URL: en med Azure Application Gateway – Azure Portal (för hands version)
@@ -37,7 +37,7 @@ I exemplet nedan när URL: en för begäran innehåller */article*, skrivs URL-s
 
 `contoso.com/article/123/fabrikam` -> `contoso.com/article.aspx?id=123&title=fabrikam`
 
-1. Välj **alla resurser**och välj sedan din Application Gateway.
+1. Välj **alla resurser** och välj sedan din Application Gateway.
 
 2. Välj **omarbetningar** i det vänstra fönstret.
 
@@ -53,13 +53,13 @@ I exemplet nedan när URL: en för begäran innehåller */article*, skrivs URL-s
     
     c. Välj **Nästa**.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Lägg till Skriv över uppsättning":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Associera till en regel":::
 
 5. Skapa en omskrivnings regel:
 
     a. Välj **Lägg till omskrivning av regel**.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Lägg till Skriv över uppsättning":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Skärm bild som visar lägga till en omskriven regel.":::
     
     b. Ange ett namn för omarbetnings regeln i rutan **Skriv om regel namn** . Ange ett tal i rutan **regelmall** .
 
@@ -67,11 +67,11 @@ I exemplet nedan när URL: en för begäran innehåller */article*, skrivs URL-s
 
     a. Välj **Lägg till villkor** och markera sedan rutan som innehåller **instruktioner för** att expandera den.
     
-    b. Eftersom vi i det här exemplet vill kontrol lera mönstret */article* i URL-sökvägen väljer du **Server variabel**i listan **typ av variabel att checka** in.
+    b. Eftersom vi i det här exemplet vill kontrol lera mönstret */article* i URL-sökvägen väljer du **Server variabel** i listan **typ av variabel att checka** in.
     
     c. I listan **Server variabel** väljer du uri_path
     
-    d. Under **SKIFT**läges känslig väljer du **Nej**.
+    d. Under **SKIFT** läges känslig väljer du **Nej**.
     
     e. I listan **operator** väljer du **lika med (=)**.
     
@@ -81,33 +81,33 @@ I exemplet nedan när URL: en för begäran innehåller */article*, skrivs URL-s
 
     ex. Välj **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Lägg till Skriv över uppsättning":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
 
  
 
 7. Lägg till en åtgärd för att skriva om URL: en och URL-sökvägen
 
-   a. Välj **URL**i listan **typ av omskrivning** .
+   a. Välj **URL** i listan **typ av omskrivning** .
 
    b. I listan **Åtgärds typ** väljer du **Ange**.
 
-   c. Under **komponenter**väljer du **både URL-sökväg och URL-frågesträng**
+   c. Under **komponenter** väljer du **både URL-sökväg och URL-frågesträng**
 
    d. Ange det nya värdet för sökvägen i **värdet för URL-sökvägen**. I det här exemplet ska vi använda **/article.aspx** 
 
-   e. I **URL-värdet för URL-fråga**anger du det nya värdet för URL-frågesträngen. I det här exemplet ska vi använda **ID = {var_uri_path_1} &title = {var_uri_path_2}**
+   e. I **URL-värdet för URL-fråga** anger du det nya värdet för URL-frågesträngen. I det här exemplet ska vi använda **ID = {var_uri_path_1} &title = {var_uri_path_2}**
     
     `{var_uri_path_1}` och `{var_uri_path_1}` används för att hämta de del strängar som fångats när villkoret utvärderas i det här uttrycket `.*article/(.*)/(.*)`
     
    f. Välj **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Lägg till Skriv över uppsättning":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Åtgärd":::
 
 8. Klicka på **skapa** för att skapa en omskrivnings uppsättning.
 
 9. Kontrol lera att den nya omarbetnings uppsättningen visas i listan över återskrivna uppsättningar
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Lägg till Skriv över uppsättning":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Lägg till omskrivnings regel":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>Verifiera URL-omskrivning via åtkomst loggar
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: b7de874cc074faa63203c58638fb04cc5cb2282b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Självstudie: Azure Active Directory integrering med SmartRecruiters
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med SmartRecruiters i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **SmartRecruiters** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **SmartRecruiters** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -144,7 +144,7 @@ Utför följande steg för att konfigurera enkel inloggning med SmartRecruiters 
 
     ![Skärm bild som visar den aktivera webb S O-kontroll.](./media/smartrecruiters-tutorial/configure2.png)
 
-1. I **konfiguration av identitetsprovider**utför du följande steg:
+1. I **konfiguration av identitetsprovider** utför du följande steg:
 
     ![Skärm bild som visar Identity Provider-konfiguration där du kan ange de värden som beskrivs.](./media/smartrecruiters-tutorial/configure4.png)
 
@@ -183,7 +183,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till SmartRecruiters.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **SmartRecruiters**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **SmartRecruiters**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

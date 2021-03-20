@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93331904"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Självstudie: utforma en Azure Database for PostgreSQL-enskild server med Azure CLI 
@@ -28,7 +28,7 @@ I den här självstudien kommer du att använda Azure CLI (kommandoradsgränssni
 
 Du kan använda Azure Cloud Shell i webbläsaren eller [installera Azure CLI ]( /cli/azure/install-azure-cli) lokalt när du ska köra kommandon i den här självstudiekursen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
@@ -63,7 +63,7 @@ Se dokumentationen om [prisnivåer](./concepts-pricing-tiers.md) för mer inform
 > [!IMPORTANT]
 > Det användarnamn och lösenord för serveradministration du anger här krävs för inloggning på servern och databaserna senare i den här snabbstarten. Kom ihåg eller skriv ned den här informationen så att du kan använda den senare.
 
-Som standard skapas **postgres** -databasen under din server. [Postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html)-databasen är en standarddatabas som är avsedd för användare, verktyg och tredje parts program. 
+Som standard skapas **postgres**-databasen under din server. [Postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html)-databasen är en standarddatabas som är avsedd för användare, verktyg och tredje parts program. 
 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurera en brandväggsregel på servernivå
@@ -121,7 +121,7 @@ Resultatet är i JSON-format. Anteckna **administratorLogin** och **fullyQualifi
 ```
 
 ## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>Ansluta till Azure Database for PostgreSQL-databas med psql
-Om din klientdator har PostgreSQL installerat kan du använda en lokal instans av [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) eller Azure Cloud Console för att ansluta till en Azure PostgreSQL-server. Nu använder vi psql-kommandoradsverktyget för att ansluta till Azure Database för PostgreSQL-servern.
+Om din klient dator har PostgreSQL installerat kan du använda en lokal instans av [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html)eller Azures moln konsol för att ansluta till en Azure postgresql-server. Nu använder vi psql-kommandoradsverktyget för att ansluta till Azure Database för PostgreSQL-servern.
 
 1. Kör följande psql-kommando för att ansluta till en Azure Database for PostgreSQL-databas:
    ```
@@ -145,7 +145,7 @@ Om din klientdator har PostgreSQL installerat kan du använda en lokal instans a
    CREATE DATABASE mypgsqldb;
    ```
 
-3. I prompten, kör du följande kommando för att växla anslutning till den nyligen skapade databasen **mypgsqldb** :
+3. I prompten, kör du följande kommando för att växla anslutning till den nyligen skapade databasen **mypgsqldb**:
    ```sql
    \c mypgsqldb
    ```

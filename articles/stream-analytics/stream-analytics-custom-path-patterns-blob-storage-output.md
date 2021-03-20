@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014044"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics partitionering av anpassad BLOB-utdata
@@ -72,7 +72,7 @@ Observera att varje post i blobben har en **client_id** kolumn som matchar mappn
 
 ## <a name="custom-datetime-path-patterns"></a>Anpassade mönster för DateTime-sökväg
 
-Med anpassade mönster för DateTime-sökväg kan du ange ett utdataformat som är anpassat till Hive-konventioner för direkt uppspelning, vilket ger Azure Stream Analytics möjligheten att skicka data till Azure HDInsight och Azure Databricks för bearbetning under bearbetning. Anpassade mönster för datum/tid-sökväg implementeras enkelt med hjälp av `datetime` nyckelordet i fältet Path (prefix) i BLOB-utdata, tillsammans med format specificeraren. Ett exempel är `{datetime:yyyy}`.
+Med anpassade mönster för DateTime-sökväg kan du ange ett utdataformat som är anpassat till Hive-konventioner för direkt uppspelning, vilket ger Azure Stream Analytics möjligheten att skicka data till Azure HDInsight och Azure Databricks för bearbetning under bearbetning. Anpassade mönster för datum/tid-sökväg implementeras enkelt med hjälp av `datetime` nyckelordet i fältet Path (prefix) i BLOB-utdata, tillsammans med format specificeraren. Till exempel `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Token som stöds
 
@@ -110,7 +110,7 @@ Du kan använda samma format specifikation flera gånger i Path-prefixet. Token 
 
 Anpassade Sök vägs mönster för Blob Storage kan användas med registrerings konventionen för Hive, som förväntar sig att mappar etiketteras med `column=` i mappnamnet.
 
-Ett exempel är `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
+Till exempel `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 
 Anpassade utdata eliminerar besväret med att ändra tabeller och manuellt lägga till partitioner i Port data mellan Azure Stream Analytics och Hive. I stället kan många mappar läggas till automatiskt med:
 

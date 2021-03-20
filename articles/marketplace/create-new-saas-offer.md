@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130076"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Så här skapar du ett SaaS-erbjudande på den kommersiella Marketplace
@@ -26,32 +26,32 @@ Om du inte redan har gjort det, Läs [planera ett SaaS-erbjudande för den komme
 ## <a name="create-a-new-saas-offer"></a>Skapa ett nytt SaaS-erbjudande
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
-1. På den vänstra navigerings menyn väljer du **kommersiell Marketplace** -  >  **Översikt** .
-1. På fliken **Översikt** väljer du **+ ny erbjudande**  >  **program vara som en tjänst** .
+1. På den vänstra navigerings menyn väljer du **kommersiell Marketplace**-  >  **Översikt**.
+1. På fliken **Översikt** väljer du **+ ny erbjudande**  >  **program vara som en tjänst**.
 
    :::image type="content" source="media/new-offer-saas.png" alt-text="Visar den vänstra navigerings menyn och den nya erbjudande listan.":::
 
-1. I dialog rutan **nytt erbjudande** anger du ett **erbjudande-ID** . Detta ID visas i URL: en för den kommersiella Marketplace-listan och Azure Resource Manager mallar, om tillämpligt. Om du till exempel anger **test-erbjudande-1** i den här rutan, är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+1. I dialog rutan **nytt erbjudande** anger du ett **erbjudande-ID**. Detta ID visas i URL: en för den kommersiella Marketplace-listan och Azure Resource Manager mallar, om tillämpligt. Om du till exempel anger **test-erbjudande-1** i den här rutan, är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
    + Varje erbjudande i ditt konto måste ha ett unikt erbjudande-ID.
    + Använd bara gemena bokstäver och siffror. Det kan innehålla bindestreck och under streck, men inte blank steg, och är begränsat till 50 tecken.
-   + Erbjudande-ID: t kan inte ändras när du har valt **skapa** .
+   + Erbjudande-ID: t kan inte ändras när du har valt **skapa**.
 
-1. Ange ett **erbjudande alias** . Detta är det namn som används för erbjudandet i Partner Center.
+1. Ange ett **erbjudande alias**. Detta är det namn som används för erbjudandet i Partner Center.
 
    + Det här namnet visas inte i den kommersiella marknads platsen och det skiljer sig från namnet på erbjudandet och andra värden som visas för kunderna.
-   + Det går inte att ändra namnet på erbjudandet när du har valt **skapa** .
-1. Om du vill generera erbjudandet och fortsätta väljer du **skapa** .
+   + Det går inte att ändra namnet på erbjudandet när du har valt **skapa**.
+1. Om du vill generera erbjudandet och fortsätta väljer du **skapa**.
 
 ## <a name="configure-your-saas-offer-setup-details"></a>Konfigurera konfigurations information för SaaS-erbjudandet
 
-På fliken **erbjudande konfiguration** , under **installations information** , väljer du om du vill sälja ditt erbjudande via Microsoft eller hantera dina transaktioner oberoende av varandra. Erbjudanden som säljs via Microsoft kallas för _transacte erbjudanden_ , vilket innebär att Microsoft underlättar utbytet av pengar för en program varu licens för utgivarens räkning. Mer information om de här alternativen finns i [list alternativ](plan-saas-offer.md#listing-options) och [avgör publicerings alternativet](determine-your-listing-type.md).
+På fliken **erbjudande konfiguration** , under **installations information**, väljer du om du vill sälja ditt erbjudande via Microsoft eller hantera dina transaktioner oberoende av varandra. Erbjudanden som säljs via Microsoft kallas för _transacte erbjudanden_, vilket innebär att Microsoft underlättar utbytet av pengar för en program varu licens för utgivarens räkning. Mer information om de här alternativen finns i [list alternativ](plan-saas-offer.md#listing-options) och [avgör publicerings alternativet](determine-your-listing-type.md).
 
-1. Om du vill sälja via Microsoft och få oss att förenkla transaktionerna väljer du **Ja** . Fortsätt att [Aktivera en testen het](#enable-a-test-drive-optional).
+1. Om du vill sälja via Microsoft och få oss att förenkla transaktionerna väljer du **Ja**. Fortsätt att [Aktivera en testen het](#enable-a-test-drive-optional).
 
 1. Om du vill visa ditt erbjudande via de kommersiella marknads marknads platser och bearbeta transaktioner oberoende av varandra väljer du **Nej** och gör sedan något av följande:
-   + Om du vill tillhandahålla en kostnads fri prenumeration för ditt erbjudande väljer du **Hämta nu (kostnads fri)** . I rutan **erbjudande-URL** som visas anger du URL: en (från och med *http* eller *https* ) där kunderna kan få en utvärderings version genom att [använda Azure Active Directory (Azure AD)](azure-ad-saas.md). Till exempel `https://contoso.com/saas-app`.
-   + Om du vill tillhandahålla en 30-dagars kostnads fri utvärderings version väljer du den **kostnads fria utvärderings** versionen. i rutan **utvärderings-URL** som visas anger du URL (från och med *http* eller *https* ) där kunder kan komma åt din kostnads fria utvärderings version genom att [använda Azure Active Directory (Azure AD)](azure-ad-saas.md). Till exempel `https://contoso.com/trial/saas-app`.
-   + Om du vill få potentiella kunder att kontakta dig för att köpa ditt erbjudande väljer du **kontakta mig** .
+   + Om du vill tillhandahålla en kostnads fri prenumeration för ditt erbjudande väljer du **Hämta nu (kostnads fri)**. I rutan **erbjudande-URL** som visas anger du URL: en (från och med *http* eller *https*) där kunderna kan få en utvärderings version genom att [använda Azure Active Directory (Azure AD)](azure-ad-saas.md). Till exempel `https://contoso.com/saas-app`.
+   + Om du vill tillhandahålla en 30-dagars kostnads fri utvärderings version väljer du den **kostnads fria utvärderings** versionen. i rutan **utvärderings-URL** som visas anger du URL (från och med *http* eller *https*) där kunder kan komma åt din kostnads fria utvärderings version genom att [använda Azure Active Directory (Azure AD)](azure-ad-saas.md). Till exempel `https://contoso.com/trial/saas-app`.
+   + Om du vill få potentiella kunder att kontakta dig för att köpa ditt erbjudande väljer du **kontakta mig**.
 
 ### <a name="enable-a-test-drive-optional"></a>Aktivera en testen het (valfritt)
 
@@ -84,7 +84,7 @@ Anslut ditt CRM-system (Customer Relations hip Management) till ditt kommersiell
    - [Konfigurera ditt erbjudande för att skicka leads till Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. Om du vill verifiera konfigurationen som du har angett väljer du länken **Verifiera** .
-1. Stäng dialog rutan genom att välja **OK** .
+1. Stäng dialog rutan genom att välja **OK**.
 
 ## <a name="next-steps"></a>Nästa steg
 

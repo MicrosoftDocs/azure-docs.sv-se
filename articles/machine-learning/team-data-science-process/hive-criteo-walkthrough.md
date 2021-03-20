@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305944"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team data science-processen i praktiken – använda ett Azure HDInsight Hadoop-kluster på en data uppsättning på 1 TB
@@ -50,11 +50,11 @@ Det finns saknade värden i båda kolumnerna numeric och kategoriska i den här 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Exempel på förutsägelse aktiviteter
 I den här genom gången är två exempel på förutsägelse problem:
 
-1. **Binära klassificering** : förutsäger om en användare har klickat på Lägg till:
+1. **Binära klassificering**: förutsäger om en användare har klickat på Lägg till:
 
    * Klass 0: inget klick
    * Klass 1: Klicka på
-2. **Regression** : förutsäger sannolikheten för att en annons klickar på användar funktioner.
+2. **Regression**: förutsäger sannolikheten för att en annons klickar på användar funktioner.
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>Konfigurera ett HDInsight Hadoop-kluster för data vetenskap
 > [!NOTE]
@@ -99,7 +99,7 @@ Till vänster visas "Hadoop kommando rad", som är vår WorkHorse för data utfo
 Nu är du redo att börja första delen av genom gången: data utforskning med Hive och hämtning av data som är redo för Azure Machine Learning.
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Skapa Hive-databas och tabeller
-Om du vill skapa Hive-tabeller för vår Criteo-datauppsättning öppnar du * *_Hadoop kommando rad_* _ på Skriv bordet för Head-noden och anger Hive-katalogen genom att ange kommandot
+Om du vill skapa Hive-tabeller för vår Criteo-datauppsättning öppnar du ***kommando raden för Hadoop*** på Skriv bordet för Head-noden och anger Hive-katalogen genom att ange kommandot
 
 ```console
 cd %hive_home%\bin
@@ -118,7 +118,7 @@ När Hive-REPL visas med ett "Hive >"-tecken kan du helt enkelt klippa ut och kl
 
 Följande kod skapar en databas "Criteo" och genererar sedan fyra tabeller:
 
-_ en *tabell för generering av antal* som skapats på dagar dag \_ 00 till dag \_ 20,
+* en *tabell för generering av antal* som skapats på dagar \_ till dag \_ 20,
 * en *tabell som används som tågets data uppsättning* byggd dag \_ 21 och
 * två *tabeller som ska användas som test data uppsättningar* byggda dag \_ 22 respektive dag \_ 23.
 
@@ -161,7 +161,7 @@ Alla dessa tabeller är externa så att du kan peka på deras Azure Blob Storage
 
 **Det finns två sätt att köra en Hive-fråga:**
 
-* **Med hjälp av kommando raden för Hive-repl** : det första är att utfärda ett Hive-kommando och kopiera och klistra in en fråga på HIVE-repl kommando rad:
+* **Med hjälp av kommando raden för Hive-repl**: det första är att utfärda ett Hive-kommando och kopiera och klistra in en fråga på HIVE-repl kommando rad:
 
   ```console
   cd %hive_home%\bin
@@ -169,7 +169,7 @@ Alla dessa tabeller är externa så att du kan peka på deras Azure Blob Storage
   ```
 
      Nu körs den här frågan på kommando raden för REPL och inklistringen klistras in.
-* **Spara frågor till en fil och köra kommandot** : det andra är att spara frågorna till en. HQL-fil ( [exempel&#95;hive&#95;skapa&#95;criteo&#95;database&#95;och&#95;tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) och utfärda sedan följande kommando för att köra frågan:
+* **Spara frågor till en fil och köra kommandot**: det andra är att spara frågorna till en. HQL-fil ([exempel&#95;hive&#95;skapa&#95;criteo&#95;database&#95;och&#95;tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) och utfärda sedan följande kommando för att köra frågan:
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -502,13 +502,13 @@ För modulen **Importera data** är värdena för de parametrar som anges i graf
 
 1. Välj Hive-fråga för **data källa**
 2. I rutan **Hive-databasfrågor** , en enkel Select * från <ditt \_ databas \_ namn. \_ tabell \_ namnet>-är tillräckligt.
-3. **HCatalog Server-URI** : om klustret är "ABC" är detta bara: https: \/ /ABC.azurehdinsight.net
-4. **Hadoop-användar konto namn** : det användar namn som valdes vid tidpunkten för att ställa in klustret. (Inte användar namn för fjärråtkomst!)
-5. **Lösen ord för Hadoop-användarkonto** : lösen ordet för det användar namn som valts vid tiden för klustret. (Inte lösen ordet för fjärråtkomst!)
-6. **Plats för utgående data** : Välj "Azure"
-7. **Azure Storage konto namn** : det lagrings konto som är kopplat till klustret
-8. **Azure Storage konto nyckel** : nyckeln för det lagrings konto som är kopplat till klustret.
-9. **Namn på Azure-behållare** : om kluster namnet är "ABC" är detta bara "ABC", vanligt vis.
+3. **HCatalog Server-URI**: om klustret är "ABC" är detta bara: https: \/ /ABC.azurehdinsight.net
+4. **Hadoop-användar konto namn**: det användar namn som valdes vid tidpunkten för att ställa in klustret. (Inte användar namn för fjärråtkomst!)
+5. **Lösen ord för Hadoop-användarkonto**: lösen ordet för det användar namn som valts vid tiden för klustret. (Inte lösen ordet för fjärråtkomst!)
+6. **Plats för utgående data**: Välj "Azure"
+7. **Azure Storage konto namn**: det lagrings konto som är kopplat till klustret
+8. **Azure Storage konto nyckel**: nyckeln för det lagrings konto som är kopplat till klustret.
+9. **Namn på Azure-behållare**: om kluster namnet är "ABC" är detta bara "ABC", vanligt vis.
 
 När data har hämtats av **importen** (du ser det gröna skalet i modulen) sparar du dessa data som en data uppsättning (med ett namn som du väljer). Så här ser det ut:
 

@@ -12,10 +12,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: 8aa0ea4b1e01cc7363f49d5897695c7c237b339b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535596"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Snabb start: Använd python för att ansluta och fråga efter data i Azure Database for MySQL
@@ -29,11 +29,11 @@ För den här snabb starten behöver du:
 - Skapa en Azure Database for MySQL enskild server med [Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) <br/> eller [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) om du inte har något.
 - Baserat på om du använder offentlig eller privat åtkomst utför du **en** av åtgärderna nedan för att aktivera anslutningen.
 
-   |Åtgärd| Anslutningsmetod|Instruktionsguide|
+   |Action| Anslutningsmetod|Instruktionsguide|
    |:--------- |:--------- |:--------- |
    | **Konfigurera brandväggsregler** | Offentliga | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
    | **Konfigurera tjänstens slut punkt** | Offentliga | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)| 
-   | **Konfigurera privat länk** | Privata | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) | 
+   | **Konfigurera privat länk** | Privat | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) | 
 
 - [Skapa en databas och icke-administratörs användare](./howto-create-users.md)
 
@@ -141,7 +141,7 @@ else:
 
 ## <a name="step-2-read-data"></a>Steg 2: Läs data
 
-Använd följande kod för att ansluta och läsa data med en **SELECT** -SQL-instruktion. Koden importerar MySQL. Connector-biblioteket och använder [cursor.exesöta ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) -metoden kör SQL-frågan mot MySQL-databasen. 
+Använd följande kod för att ansluta och läsa data med en **SELECT**-SQL-instruktion. Koden importerar MySQL. Connector-biblioteket och använder [cursor.exesöta ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) -metoden kör SQL-frågan mot MySQL-databasen. 
 
 Koden läser data rader med hjälp av metoden [fetchall ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) , behåller resultat uppsättningen i en samlings rad och använder en `for` iterator för att loopa över raderna.
 
@@ -159,7 +159,7 @@ Koden läser data rader med hjälp av metoden [fetchall ()](https://dev.mysql.co
 
 ## <a name="step-3-update-data"></a>Steg 3: uppdatera data
 
-Använd följande kod för att ansluta och uppdatera data med en **UPDATE** -SQL-instruktion. Koden importerar MySQL. Connector-biblioteket och använder [cursor.exesöta ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) -metoden kör SQL-frågan mot MySQL-databasen. 
+Använd följande kod för att ansluta och uppdatera data med en **UPDATE**-SQL-instruktion. Koden importerar MySQL. Connector-biblioteket och använder [cursor.exesöta ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) -metoden kör SQL-frågan mot MySQL-databasen. 
 
 ```python
   # Update a data row in the table
@@ -169,7 +169,7 @@ Använd följande kod för att ansluta och uppdatera data med en **UPDATE** -SQL
 
 ## <a name="step-4-delete-data"></a>Steg 4: ta bort data
 
-Använd följande kod för att ansluta och ta bort data med en **DELETE** -SQL-instruktion. Koden importerar MySQL. Connector-biblioteket och använder [cursor.exesöta ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) -metoden kör SQL-frågan mot MySQL-databasen. 
+Använd följande kod för att ansluta och ta bort data med en **DELETE**-SQL-instruktion. Koden importerar MySQL. Connector-biblioteket och använder [cursor.exesöta ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) -metoden kör SQL-frågan mot MySQL-databasen. 
 
 ```python
 

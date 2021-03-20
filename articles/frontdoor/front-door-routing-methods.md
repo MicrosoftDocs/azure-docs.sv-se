@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449144"
 ---
 # <a name="front-door-routing-methods"></a>Metoder för routning av front dörr
@@ -24,10 +24,10 @@ Azures front dörr stöder olika typer av metoder för trafik cirkulation för a
 
 Det finns fyra metoder för trafikroutning som är tillgängliga i front dörren:
 
-* ** [Svars tid](#latency):** Latens-baserad routning ser till att begär Anden skickas till de lägsta svars tiderna som accepteras inom ett känslighets intervall. I princip skickas dina användar förfrågningar till "närmsta" uppsättning Server delar i förhållande till nätverks fördröjningen.
-* ** [Prioritet](#priority):** Du kan tilldela prioriteter till dina Server delar när du vill konfigurera en primär server del för att betjäna all trafik. Den sekundära Server delen kan vara en säkerhets kopia om den primära server delen inte är tillgänglig.
-* ** [Viktat](#weighted):** Du kan tilldela vikter till dina Server delar när du vill distribuera trafik över en uppsättning Server delar. Om du vill fördela eller enligt vikt koefficienter jämnt.
-* ** [Tillhörighet mellan sessioner](#affinity):** Du kan konfigurera sessionens tillhörighet för klient dels värdarna eller domänerna för att se till att förfrågningar från samma användare skickas till samma server del.
+* **[Svars tid](#latency):** Latens-baserad routning ser till att begär Anden skickas till de lägsta svars tiderna som accepteras inom ett känslighets intervall. I princip skickas dina användar förfrågningar till "närmsta" uppsättning Server delar i förhållande till nätverks fördröjningen.
+* **[Prioritet](#priority):** Du kan tilldela prioriteter till dina Server delar när du vill konfigurera en primär server del för att betjäna all trafik. Den sekundära Server delen kan vara en säkerhets kopia om den primära server delen inte är tillgänglig.
+* **[Viktat](#weighted):** Du kan tilldela vikter till dina Server delar när du vill distribuera trafik över en uppsättning Server delar. Om du vill fördela eller enligt vikt koefficienter jämnt.
+* **[Tillhörighet mellan sessioner](#affinity):** Du kan konfigurera sessionens tillhörighet för klient dels värdarna eller domänerna för att se till att förfrågningar från samma användare skickas till samma server del.
 
 I alla Front Door-konfigurationer ingår övervakning av hälsotillståndet på serverdelen och automatiserad omedelbar global redundans. Mer information finns i [övervakning av front dörrs Server](front-door-health-probes.md)del. Din front dörr kan fungera baserat på en enda routningsmetod. Beroende på dina program behov kan du också kombinera flera metoder för routning för att bygga en optimal crawltopologi.
 

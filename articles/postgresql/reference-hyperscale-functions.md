@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026241"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funktioner i den storskaliga (citus) SQL API
@@ -46,7 +46,7 @@ Om en ny distribuerad tabell inte är relaterad till andra tabeller, är det bä
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -70,7 +70,7 @@ Funktionen Create \_ Reference \_ Table () används för att definiera en liten 
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -90,7 +90,7 @@ Funktionen Upgrade \_ to \_ Reference \_ Table () använder en befintlig distrib
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -152,7 +152,7 @@ Sök vägen för postgres har inte spridits från koordinatorn till arbetare vid
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -359,7 +359,7 @@ Den här funktionen fungerar oberoende av `pg_stat_statements_reset()` . Om du v
 
 #### <a name="arguments"></a>Argument
 
-E.t.
+Ej tillämpligt
 
 #### <a name="return-value"></a>Returvärde
 
@@ -387,7 +387,7 @@ För att reparera en Shard släpper funktionen först den felaktiga Shard-placer
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -427,7 +427,7 @@ Efter en lyckad flytt åtgärd tas Shards i Källnoden bort. Om flyttningen Miss
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -477,7 +477,7 @@ Om argumentet utelämnas väljer funktionen standard strategin som anges i tabel
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -520,7 +520,7 @@ När en Shard balansering börjar `get_rebalance_progress()` visas en lista öve
 
 #### <a name="arguments"></a>Argument
 
-E.t.
+Ej tillämpligt
 
 #### <a name="return-value"></a>Returvärde
 
@@ -575,7 +575,7 @@ Mer information om dessa argument finns i motsvarande kolumn värden i `pg_dist_
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus \_ ange \_ standard \_ strategi för ombalansering \_
 
@@ -587,7 +587,7 @@ Uppdatera [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalanc
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -601,7 +601,7 @@ Funktionen citus \_ fjärr \_ anslutning \_ statistik () visar antalet aktiva an
 
 #### <a name="arguments"></a>Argument
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -637,7 +637,7 @@ Om argumentet utelämnas väljer funktionen standard strategin som anges i tabel
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="example"></a>Exempel
 
@@ -687,7 +687,7 @@ När du tömmer flera noder rekommenderar vi att du använder [rebalance_table_s
 
 #### <a name="return-value"></a>Returvärde
 
-E.t.
+Ej tillämpligt
 
 #### <a name="examples"></a>Exempel
 

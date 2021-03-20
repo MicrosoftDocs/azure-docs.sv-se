@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ffe1a4b9b32223cc57c6a6399fdc074a9d51d714
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322394"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Så här identifierar du scenarier och planerar för avancerade analyser vid databearbetning
@@ -56,7 +56,7 @@ Var måste dina data vara för bearbetning eller modellering?
 
 * Azure Blob Storage
 * SQL Azure-databaser
-* SQL Server på virtuella Azure-datorer
+* SQL Server på virtuell Azure-dator
 * HDInsight (Hadoop på Azure) eller Hive-tabeller
 * Azure Machine Learning
 * Monterings bara virtuella hård diskar i Azure

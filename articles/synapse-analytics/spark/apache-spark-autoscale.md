@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
 ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93313634"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Skala automatiskt Apache Spark pooler i Azure Synapse Analytics
 
-Apache Spark funktionen för automatisk skalning i Azure Synapse Analytics skalar automatiskt antalet noder i en kluster instans upp och ned. När du skapar en ny Apache Spark för Azure Synapse Analytics-poolen kan du ange ett minsta och högsta antal noder när autoskalning är markerat. Autoskalning övervakar sedan resurs kraven för belastningen och skalar antalet noder uppåt eller nedåt. Den här funktionen kostar inget extra.
+Funktionen för automatisk skalning i Apache Spark för Azure Synapse Analytics-poolen skalar automatiskt antalet noder i en klusterinstans uppåt och nedåt. När du skapar en ny Apache Spark för Azure Synapse Analytics-poolen kan du ange ett minsta och högsta antal noder när du ställer in autoskalning. Autoskalningen övervakar sedan resurskraven för belastningen och skalar antalet noder uppåt eller nedåt. Inga extra kostnader tillkommer för den här funktionen.
 
 ## <a name="metrics-monitoring"></a>Mått övervakning
 
 Autoskalning övervakar kontinuerligt instansen av Spark-instansen och samlar in följande mått:
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |---|---|
 |Total väntande processor|Det totala antalet kärnor som krävs för att starta körningen av alla väntande noder.|
 |Totalt väntande minne|Det totala minne (i MB) som krävs för att starta körningen av alla väntande noder.|

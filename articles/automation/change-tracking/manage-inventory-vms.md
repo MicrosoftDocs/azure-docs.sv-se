@@ -7,10 +7,10 @@ keywords: inventory, automation, change, tracking
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2acf22ba76acdfa6152ef8966f4000aa325a9e91
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209909"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Hantera inventeringsinsamling från virtuella datorer
@@ -36,7 +36,7 @@ Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. I rutan till vänster på Azure Portal väljer du **Virtuella datorer**.
 2. Välj en dator i listan över virtuella datorer.
-3. Välj **inventering**under **åtgärder**på **resurs** -menyn.
+3. Välj **inventering** under **åtgärder** på **resurs** -menyn.
 4. Välj en Log Analytics arbets yta för att lagra dina data loggar.
     Om det inte finns några tillgängliga arbetsytor för dig för en regionen uppmanas du att skapa en standardarbetsyta och ett Automation-konto.
 5. Om du vill börja aktivera datorn väljer du **Aktivera**.
@@ -54,7 +54,7 @@ När distributionen är klar försvinner statusfältet. Systemet samlar fortfara
 Som standard konfigureras programvara, Windows-tjänster och Linux-daemon för insamling. Om du vill inventera Windows-registret och filer kan du konfigurera inställningarna för inventeringsinsamling.
 
 1. På sidan inventering klickar du på **Redigera inställningar** högst upp på sidan.
-2. Om du vill lägga till en ny samlings inställning går du till inställnings kategorin som du vill lägga till genom att välja fliken **Windows-register**, **Windows-filer**eller Linux- **filer** .
+2. Om du vill lägga till en ny samlings inställning går du till inställnings kategorin som du vill lägga till genom att välja fliken **Windows-register**, **Windows-filer** eller Linux- **filer** .
 3. Välj lämplig kategori och klicka på **Lägg till** överst på sidan.
 
 I följande avsnitt finns information om varje egenskap som kan konfigureras för olika kategorier.
@@ -114,7 +114,7 @@ Om du vill skapa en ny dator grupp klickar du på **+ skapa en dator grupp**. De
 
 Ta bort den virtuella datorn från Ändringsspårning och inventerings hantering:
 
-1. I den vänstra rutan i Azure Portal väljer du **Log Analytics**och väljer sedan den arbets yta som du använde när du aktiverade den virtuella datorn för ändringsspårning och inventering.
+1. I den vänstra rutan i Azure Portal väljer du **Log Analytics** och väljer sedan den arbets yta som du använde när du aktiverade den virtuella datorn för ändringsspårning och inventering.
 2. Öppna menyn **resurs** på sidan **Log Analytics** .
 3. Välj **Virtual Machines** under **arbets ytans data källor**.
 4. I listan väljer du den virtuella dator som du vill koppla från. Datorn har en grön bock bredvid **den här arbets ytan** i kolumnen **OMS-anslutning** .
@@ -122,7 +122,7 @@ Ta bort den virtuella datorn från Ändringsspårning och inventerings hantering
    >[!NOTE]
    >Operations Management Suite (OMS) kallas nu Azure Monitor loggar.
 
-5. Klicka på **Koppla från**överst på nästa sida.
+5. Klicka på **Koppla från** överst på nästa sida.
 6. I bekräftelse fönstret klickar du på **Ja** för att koppla bort datorn från hantering.
 
 >[!NOTE]

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440294"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Smidig utveckling av data vetenskaps projekt
@@ -35,7 +35,7 @@ Följande bild illustrerar ett typiskt arbets flöde för Sprint planering, kodn
 
 ##  <a name="work-item-types"></a><a name='Terminology-1'></a>Arbets objekts typer
 
-I TDSP Sprint planerings ramverk finns fyra typer av *arbets objekt* som används ofta: *funktioner*, *användar berättelser*, *uppgifter*och *buggar*. Efter släpning för alla arbets uppgifter finns på projekt nivå, inte på git-lagringsplatsen. 
+I TDSP Sprint planerings ramverk finns fyra typer av *arbets objekt* som används ofta: *funktioner*, *användar berättelser*, *uppgifter* och *buggar*. Efter släpning för alla arbets uppgifter finns på projekt nivå, inte på git-lagringsplatsen. 
 
 Här är definitionerna för arbets objekts typerna:
 
@@ -132,40 +132,40 @@ Data experter kan känna sig smidigare med en flexibel mall som ersätter funkti
    
 1. I **organisations inställningarna** till vänster navigering, under **kort**, väljer du **process**. 
    
-1. I fönstret **alla processer** väljer du **...** bredvid **Agile**och väljer sedan **skapa ärvd process**.
+1. I fönstret **alla processer** väljer du **...** bredvid **Agile** och väljer sedan **skapa ärvd process**.
    
    ![Skapa ärvd process från Agile](./media/agile-development/10-settings.png) 
    
-1. I dialog rutan **skapa ärvd process från Agile** anger du namnet *AgileDataScienceProcess*och väljer **Skapa process**.
+1. I dialog rutan **skapa ärvd process från Agile** anger du namnet *AgileDataScienceProcess* och väljer **Skapa process**.
    
    ![Skapa AgileDataScienceProcess-process](./media/agile-development/11-agileds.png)
    
-1. I **alla processer**väljer du den nya **AgileDataScienceProcess**. 
+1. I **alla processer** väljer du den nya **AgileDataScienceProcess**. 
    
-1. På fliken **arbets objekts typer** inaktiverar du **episka**, **funktion**, **användar berättelse**och **uppgift** genom att markera **...** bredvid varje objekt och sedan välja **inaktivera**. 
+1. På fliken **arbets objekts typer** inaktiverar du **episka**, **funktion**, **användar berättelse** och **uppgift** genom att markera **...** bredvid varje objekt och sedan välja **inaktivera**. 
    
    ![Inaktivera arbets objekts typer](./media/agile-development/12-disable.png)
    
-1. I **alla processer**väljer du fliken efter **släpning** . Under **portföljer-avloggar**väljer du **...** bredvid **episka (inaktive rad)** och väljer sedan **Redigera/Byt namn**. 
+1. I **alla processer** väljer du fliken efter **släpning** . Under **portföljer-avloggar** väljer du **...** bredvid **episka (inaktive rad)** och väljer sedan **Redigera/Byt namn**. 
    
 1. I dialog rutan **Redigera efter släpning** :
-   1. Ersätt **episka** med *TDSP-projekt*under **namn**. 
-   1. Under **arbets objekts typer på den här nivån för efter släpning**väljer du **ny typ av arbets objekt**, anger *TDSP-projekt*och väljer **Lägg till**. 
+   1. Ersätt **episka** med *TDSP-projekt* under **namn**. 
+   1. Under **arbets objekts typer på den här nivån för efter släpning** väljer du **ny typ av arbets objekt**, anger *TDSP-projekt* och väljer **Lägg till**. 
    1. Under **standard arbets objekts typ**, släpp och välj **TDSP-projekt**. 
    1. Välj **Spara**.
    
    ![Ange efter släpning-nivå för portföljen](./media/agile-development/13-rename.png)  
    
-1. Följ samma steg för att byta namn på **funktioner** till *TDSP-faser*och Lägg till följande nya arbets objekts typer:
+1. Följ samma steg för att byta namn på **funktioner** till *TDSP-faser* och Lägg till följande nya arbets objekts typer:
    
    - *Affärs förståelse*
    - *Data hämtning*
    - *Modellering*
    - *Distribution*
    
-1. Under **krav på efter släpning**, byter du namn på **berättelser** till *TDSP under steg*, lägger till den nya arbets objekt typen *TDSP under steget*och anger standard typen av arbets objekt till **TDSP under steg**.
+1. Under **krav på efter släpning**, byter du namn på **berättelser** till *TDSP under steg*, lägger till den nya arbets objekt typen *TDSP under steget* och anger standard typen av arbets objekt till **TDSP under steg**.
    
-1. Lägg till en ny arbets objekt typ *TDSP uppgift*under **iteration efter släpning**och Ställ in den som standard typ av arbets objekt. 
+1. Lägg till en ny arbets objekt typ *TDSP uppgift* under **iteration efter släpning** och Ställ in den som standard typ av arbets objekt. 
    
 När du har slutfört stegen bör du se efter i efter släpande nivåer:
    
@@ -179,7 +179,7 @@ Du kan använda mallen för data vetenskaps process för att skapa TDSP-projekt 
    
 1. I dialog rutan **Skapa nytt projekt** ger du ditt projekt ett namn och väljer sedan **Avancerat**. 
    
-1. Under **arbets uppgifts process**klickar du på list rutan och väljer **AgileDataScienceProcess**. Välj sedan **skapa**.
+1. Under **arbets uppgifts process** klickar du på list rutan och väljer **AgileDataScienceProcess**. Välj sedan **skapa**.
    
    ![Skapa ett TDSP-projekt](./media/agile-development/15-newproject.png)
    

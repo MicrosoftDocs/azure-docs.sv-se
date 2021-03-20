@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084617"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-synkronisering: Förhindra oavsiktliga borttagningar
@@ -53,8 +53,8 @@ Om detta var oväntat undersöker du och vidtar lämpliga åtgärder. Gör så h
 1. Starta **synkroniseringstjänsten** från Start-menyn.
 2. Gå till **kopplingar**.
 3. Välj kopplingen med typen **Azure Active Directory**.
-4. Välj **search Connector Space**under **åtgärder** till höger.
-5. I popup-fönstret under **omfång**väljer du **frånkopplat sedan** och väljer en tid i det förflutna. Klicka på **Sök**. Den här sidan innehåller en vy över alla objekt som ska tas bort. Genom att klicka på varje objekt kan du få mer information om objektet. Du kan också klicka på **kolumn inställning** för att lägga till ytterligare attribut som ska visas i rutnätet.
+4. Välj **search Connector Space** under **åtgärder** till höger.
+5. I popup-fönstret under **omfång** väljer du **frånkopplat sedan** och väljer en tid i det förflutna. Klicka på **Sök**. Den här sidan innehåller en vy över alla objekt som ska tas bort. Genom att klicka på varje objekt kan du få mer information om objektet. Du kan också klicka på **kolumn inställning** för att lägga till ytterligare attribut som ska visas i rutnätet.
 
 ![Sök efter anslutnings utrymme](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
@@ -72,5 +72,5 @@ Om alla borttagningar önskas gör du följande:
 ## <a name="next-steps"></a>Nästa steg
 **Översikts avsnitt**
 
-* [Azure AD Connect synkronisering: förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
+* [Azure AD Connect-synkronisering: Förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)
 * [Integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md)

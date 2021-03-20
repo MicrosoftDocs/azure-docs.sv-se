@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: fe17fa4349085be47201974b418493fe8d912ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527402"
 ---
 # <a name="view-or-delete-user-data-in-custom-vision"></a>Visa eller ta bort användar data i Custom Vision
@@ -32,6 +32,6 @@ Information om hur du visar och tar bort användar data i Custom Vision finns i 
 | Upprepnings prestanda information | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Lista över iterationer | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
 | Projekt-och projekt information | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) och [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Bildtaggar | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) och [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Avbildningstaggar | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) och [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Avbildningar | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (tillhandahåller URI för avbildnings hämtning) och [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (tillhandahåller URI för avbildnings hämtning) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Exporterade iterationer | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Borttagen vid borttagning av konto |

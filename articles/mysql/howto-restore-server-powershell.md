@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94539064"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Säkerhetskopiera och återställa en Azure Database for MySQL-server med hjälp av PowerShell
@@ -78,7 +78,7 @@ Parameter uppsättningen **PointInTimeRestore** för `Restore-AzMySqlServer` cmd
 | Inställning | Föreslaget värde | Beskrivning  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där käll servern finns.  |
-| Namn | mydemoserver-restored | Namnet på den nya server som skapas med kommandot restore. |
+| Name | mydemoserver-restored | Namnet på den nya server som skapas med kommandot restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Välj en tidpunkt för återställning. Datumet och tiden måste finnas inom källserverns kvarhållningsperiod för säkerhetskopiering. Använd ISO8601 datum-och tids format. Du kan till exempel använda din egen lokala tidszon som **2020-03-13T05:59:00-08:00**. Du kan också använda formatet UTC-Zulu, till exempel **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Använd punkt-i-Time-läge för att återställa. |
 
@@ -106,7 +106,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-I det här exemplet skapas en ny server med namnet **mydemoserver-långsiktig återställning** i regionen USA, östra som tillhör **myresourcegroup**. Det är en Generell användning, gen 5-Server med 8 virtuella kärnor. Servern skapas från den geo-redundanta säkerhets kopieringen av **mydemoserver** , även i resurs gruppen **myresourcegroup**.
+I det här exemplet skapas en ny server med namnet **mydemoserver-långsiktig återställning** i regionen USA, östra som tillhör **myresourcegroup**. Det är en Generell användning, gen 5-Server med 8 virtuella kärnor. Servern skapas från den geo-redundanta säkerhets kopieringen av **mydemoserver**, även i resurs gruppen **myresourcegroup**.
 
 Om du vill skapa den nya servern i en annan resurs grupp än den befintliga servern anger du det nya resurs grupps namnet med hjälp av parametern **ResourceGroupName** , som du ser i följande exempel:
 
@@ -120,8 +120,8 @@ Parameter **uppsättningen för den här** `Restore-AzMySqlServer` cmdleten mås
 | Inställning | Föreslaget värde | Beskrivning  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Namnet på den resurs grupp som den nya servern tillhör.|
-|Namn | mydemoserver – omåterställd | Namnet på den nya servern. |
-|Plats | USA, östra | Platsen för den nya servern. |
+|Name | mydemoserver – omåterställd | Namnet på den nya servern. |
+|Location | USA, östra | Platsen för den nya servern. |
 |UseGeoRestore | `<SwitchParameter>` | Använd geo-läge för att återställa. |
 
 När du skapar en ny server med geo Restore ärver den samma lagrings storlek och pris nivå som käll servern om inte parametern **SKU** anges.

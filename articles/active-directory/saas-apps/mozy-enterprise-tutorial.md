@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Självstudie: Azure Active Directory integrering med Mozy Enterprise
@@ -124,7 +124,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Mo
 
 1. Logga in på företagets företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. Klicka på **autentiseringsprincip**i avsnittet **konfiguration** .
+2. Klicka på **autentiseringsprincip** i avsnittet **konfiguration** .
    
     ![Skärm bild som visar en autentiseringsprincip som valts från konfigurationen.](./media/mozy-enterprise-tutorial/ic777314.png "Autentiseringsprincip")
 
@@ -177,7 +177,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Mozy Enterprise.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Mozy Enterprise**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Mozy Enterprise**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -210,7 +210,7 @@ För att Azure AD-användarna ska kunna logga in på Mozy Enterprise måste de t
 
 1. Logga in på din **Mozy Enterprise** -klient.
 
-2. Klicka på **användare**och sedan på **Lägg till ny användare**.
+2. Klicka på **användare** och sedan på **Lägg till ny användare**.
    
     ![Användare](./media/mozy-enterprise-tutorial/ic777317.png "Användare")
    

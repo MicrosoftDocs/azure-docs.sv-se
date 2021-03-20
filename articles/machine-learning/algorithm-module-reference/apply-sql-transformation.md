@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555608"
 ---
 # <a name="apply-sql-transformation"></a>Använda SQL-transformering
@@ -36,7 +36,7 @@ Med hjälp av modulen Använd SQL-omvandling kan du:
 
 Modulen kan ta upp till tre data uppsättningar som indata. När du refererar till data uppsättningarna som är anslutna till varje indataport måste du använda namnen `t1` , `t2` och `t3` . Tabell numret anger indataportens index.  
 
-Följande är exempel kod som visar hur du kopplar ihop två tabeller. T1 och T2 är två data uppsättningar anslutna till vänster och mittersta indataportar i **Apply SQL-omvandlingen** :
+Följande är exempel kod som visar hur du kopplar ihop två tabeller. T1 och T2 är två data uppsättningar anslutna till vänster och mittersta indataportar i **Apply SQL-omvandlingen**:
 
 ```sql
 SELECT t1.*

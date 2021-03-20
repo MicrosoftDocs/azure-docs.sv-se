@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
 ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89442828"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Konfigurera haveriberedskap för lokala virtuella Hyper-V-datorer i VMM-moln till Azure
@@ -27,7 +27,7 @@ I den här guiden får du lära dig att:
 > [!NOTE]
 > Självstudier visar den enklaste distributions vägen för ett scenario. De använder standardalternativ där så är möjligt och visar inte alla möjliga inställningar och sökvägar. Detaljerade anvisningar finns i artiklarna i avsnittet om **att gå till guider** i [Site Recovery-dokumentationen](./index.yml).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här självstudien förutsätter att du redan har slutfört följande Självstudier:
 
@@ -37,7 +37,7 @@ Den här självstudien förutsätter att du redan har slutfört följande Själv
 ## <a name="select-a-replication-goal"></a>Väljer ett replikeringsmål
 
 1. I Azure Portal går du till **Recovery Services valv** och väljer det **ContosoVMVault** -valv som skapades i guiden [Förbered Azure](tutorial-prepare-azure.md#create-a-recovery-services-vault) .
-1. Från **komma igång**väljer du **Site Recovery**  >  **Förbered infrastruktur** och konfigurerar följande inställningar:
+1. Från **komma igång** väljer du **Site Recovery**  >  **Förbered infrastruktur** och konfigurerar följande inställningar:
     1. **Skydds mål**  >  **Var finns dina datorer?**, Välj **lokalt**.
     1. **Var vill du replikera dina datorer?**, Välj **till Azure**.
     1. **Är dina datorer virtualiserade?**, Välj **Ja, med Hyper-V**.
@@ -49,7 +49,7 @@ Den här självstudien förutsätter att du redan har slutfört följande Själv
 ## <a name="confirm-deployment-planning"></a>Bekräfta distributionsplanering
 
 1. Om du planerar en stor distribution i **planerings planeringen**, laddar du ned distributions planeraren för Hyper-V från länken på sidan. [Läs mer](hyper-v-deployment-planner-overview.md) om planering av distribution av Hyper-V.
-1. I den här självstudien behöver vi inte distributions planeraren. **Har du slutfört distributions planeringen?** väljer du **Jag vill göra det senare**och väljer sedan **OK**.
+1. I den här självstudien behöver vi inte distributions planeraren. **Har du slutfört distributions planeringen?** väljer du **Jag vill göra det senare** och väljer sedan **OK**.
 
 ## <a name="set-up-the-source-environment"></a>Konfigurera källmiljön
 
@@ -67,7 +67,7 @@ När du konfigurerar käll miljön installerar du Azure Site Recovery-providern 
 
 1. I installations guiden för Azure Site Recovery Provider **Microsoft Update**. Välj att använda Microsoft Update för att söka efter leverantörs uppdateringar.
 1. **Installation**. Godkänn standard installations platsen för providern och välj **Installera**.
-1. Efter installationen, i guiden Microsoft Azure Site Recovery registrering väljer du **valv inställningar**, **bläddrar**och i **nyckel fil**, väljer du den valv nyckel fil som du laddade ned.
+1. Efter installationen, i guiden Microsoft Azure Site Recovery registrering väljer du **valv inställningar**, **bläddrar** och i **nyckel fil**, väljer du den valv nyckel fil som du laddade ned.
 1. Ange Azure Site Recovery prenumerationen och valv namnet (**ContosoVMVault**). Ange ett eget namn på VMM-servern för att identifiera den i valvet.
 1. **Proxyinställningar**. Välj **Anslut direkt till Azure Site Recovery utan proxyserver**.
 1. Acceptera standard platsen för certifikatet som används för att kryptera data. Krypterade data dekrypteras när du växlar över.
@@ -103,7 +103,7 @@ Site Recovery kontrollerar att det finns ett eller flera kompatibla Azure Storag
 ## <a name="configure-network-mapping"></a>Konfigurera nätverksmappning
 
 1. **Site Recovery infrastruktur**  >  **Nätverks mappningar**  >  **Nätverks mappning**. Välj ikonen **+ nätverks mappning** .
-1. **Lägg till nätverks mappning**. Välj **käll System Center VMM** -Server. För **målet**väljer du Azure.
+1. **Lägg till nätverks mappning**. Välj **käll System Center VMM** -Server. För **målet** väljer du Azure.
 1. Kontrollera prenumerationen och distributionsmodellen efter redundansväxling.
 1. **Käll nätverk**. Välj det lokala virtuella dator nätverket.
 1. **Mål nätverk**. Välj det Azure-nätverk där replikerade virtuella Azure-datorer ska placeras när de skapas efter en redundansväxling. Välj sedan **OK**.
@@ -113,7 +113,7 @@ Site Recovery kontrollerar att det finns ett eller flera kompatibla Azure Storag
 ## <a name="set-up-a-replication-policy"></a>Konfigurerar en replikeringsprincip
 
 1. Välj **Förbered replikering av infrastruktur**  >  **Inställningar**  >  **+ skapa och koppla**.
-1. I **skapa och associera princip**anger du ett princip namn. Vi använder **ContosoReplicationPolicy**.
+1. I **skapa och associera princip** anger du ett princip namn. Vi använder **ContosoReplicationPolicy**.
 1. Godkänn standardinställningarna och välj **OK**:
    - **Kopierings frekvensen** visar att delta data kommer att replikeras var femte minut efter den inledande replikeringen.
    - **Kvarhållning av återställnings punkter** anger att varje återställnings punkt kommer att behållas i två timmar.

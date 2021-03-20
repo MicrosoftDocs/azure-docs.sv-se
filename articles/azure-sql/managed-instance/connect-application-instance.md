@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692835"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Anslut ditt program till Azure SQL Managed Instance
@@ -139,7 +139,7 @@ För fel sökning av anslutnings problem, se följande:
 
 - Om du använder peering för virtuella nätverk för att ansluta ett Azure App Service värdbaserade program och det virtuella SQL-hanterade instans nätverket har ett offentligt IP-adressintervall, kontrollerar du att dina värd program inställningar tillåter att den utgående trafiken dirigeras till offentliga IP-nätverk. Följ instruktionerna i [regional integrering av virtuella nätverk](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration).
 
-## <a name="required-versions-of-drivers-and-tools"></a>Nödvändiga versioner av driv rutiner och verktyg
+## <a name="required-versions-of-drivers-and-tools"></a>Nödvändiga versioner av drivrutiner och verktyg
 
 Följande minimala versioner av verktygen och driv rutinerna rekommenderas om du vill ansluta till SQL-hanterad instans:
 

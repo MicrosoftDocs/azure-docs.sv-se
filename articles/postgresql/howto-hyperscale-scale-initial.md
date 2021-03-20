@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 7e68e9f8caad7d7e4bc44bc4e1e55150a78b4a98
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026411"
 ---
 # <a name="pick-initial-size-for-hyperscale-citus-server-group"></a>Välj ursprunglig storlek för citus-Server grupp
@@ -29,7 +29,7 @@ Koordinator-noden kräver inte lika mycket RAM som arbetare, men det finns inget
 
 Totalt antal virtuella kärnor: när du arbetar med data i RAM-minnet kan du förvänta en linjär prestanda förbättring på storskaligheten (citus) som är proportionell mot antalet arbets kärnor. Om du vill fastställa rätt antal virtuella kärnor för dina behov kan du tänka på den aktuella svars tiden för frågor i databasen med en nod och den svars tid som krävs i storskalig (citus). Dela den nuvarande svarstiden med den önskade svarstiden och avrunda resultatet.
 
-RAM-arbetsminne: det bästa är att ha så mycket minne att majoriteten av arbetsuppsättningen får plats i minnet. Vilken typ av frågor som programmet använder påverkar minnes kraven. Du kan köra FÖRKLARINGs analys av en fråga för att avgöra hur mycket minne som krävs. Kom ihåg att virtuella kärnor och RAM skalas tillsammans enligt beskrivningen i artikeln om [konfigurations alternativ för storskaliga (citus)](concepts-hyperscale-configuration-options.md) .
+RAM-arbetsminne: det bästa är att ha så mycket minne att majoriteten av arbetsuppsättningen får plats i minnet. Vilken typ av frågor som programmet använder påverkar minneskraven. Du kan köra FÖRKLARINGs analys av en fråga för att avgöra hur mycket minne som krävs. Kom ihåg att virtuella kärnor och RAM skalas tillsammans enligt beskrivningen i artikeln om [konfigurations alternativ för storskaliga (citus)](concepts-hyperscale-configuration-options.md) .
 
 ## <a name="next-steps"></a>Nästa steg
 

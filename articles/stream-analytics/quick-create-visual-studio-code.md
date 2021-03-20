@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014619"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Snabb start: skapa ett Azure Stream Analytics jobb i Visual Studio Code (för hands version)
@@ -43,7 +43,7 @@ Den här snabb starten visar hur du skapar och kör ett Azure Stream Analytics j
 
 1. Välj **Azure** -ikonen i aktivitets fältet i Visual Studio Code. Under **Stream Analytics** på sido fältet väljer **du logga in på Azure**.
 
-   ![Logga in på Azure i Visual Studio Code](./media/quick-create-visual-studio-code/azure-sign-in.png)
+   ![Logga in till Azure i Visual Studio Code](./media/quick-create-visual-studio-code/azure-sign-in.png)
 
 2. När du är inloggad visas namnet på ditt Azure-konto i statusfältet i det nedre vänstra hörnet i Visual Studio Code-fönstret.
 
@@ -170,7 +170,7 @@ Innan du definierar Stream Analytics jobb bör du förbereda de data som senare 
 
    |Inställning|Föreslaget värde|Beskrivning|
    |-------|---------------|-----------|
-   |Namn|Indata|Ange ett namn för att identifiera jobbets indatatyper.|
+   |Name|Indata|Ange ett namn för att identifiera jobbets indatatyper.|
    |IotHubNamespace|MyASAIoTHub|Välj eller ange namnet på din IoT Hub. Namn på IoT Hub identifieras automatiskt om de har skapats i samma prenumeration.|
    |SharedAccessPolicyName|iothubowner| |
 
@@ -202,7 +202,7 @@ Välj **Förhandsgranska data** i **IoTHub1.jspå** den översta raden. Vissa in
 
    |Inställning|Föreslaget värde|Beskrivning|
    |-------|---------------|-----------|
-   |Namn|Resultat| Ange ett namn för att identifiera jobbets utdata.|
+   |Name|Utdata| Ange ett namn för att identifiera jobbets utdata.|
    |Lagringskonto|asaquickstartstorage|Välj eller ange namnet på ditt lagrings konto. Lagrings konto namn identifieras automatiskt om de har skapats i samma prenumeration.|
    |Container|container1|Välj en befintlig container som du skapade i ditt lagringskonto.|
    |Sökvägsmönster|utdata|Ange namnet för en sökväg som ska skapas i containern.|

@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536978"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Anslut din arbets enhet till din organisations nätverk
@@ -57,11 +57,11 @@ Om enheten är helt ny och inte har kon figurer ATS ännu kan du gå igenom OOBE
 ## <a name="to-make-sure-youre-joined-new-device"></a>För att se till att du är ansluten (ny enhet)
 Du kan se till att du är ansluten genom att titta på dina inställningar.
 
-1. Öppna **Inställningar**och välj sedan **konton**.
+1. Öppna **Inställningar** och välj sedan **konton**.
 
     ![Konton på skärmen Inställningar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Välj **åtkomst till arbete eller skola**och se till att du ser text som säger något som är **ansluten till *\<your_organization>* Azure AD**.
+2. Välj **åtkomst till arbete eller skola** och se till att du ser text som säger något som är **ansluten till *\<your_organization>* Azure AD**.
 
     ![Skärm bild som visar fönstret "åtkomst till arbets plats eller skola" med kontot "ansluten till (din organisation) Azure AD" valt.](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -69,9 +69,9 @@ Du kan se till att du är ansluten genom att titta på dina inställningar.
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Så här ansluter du en redan konfigurerad Windows 10-enhet
 Om du har haft enheten en stund och den redan har kon figurer ATS, kan du följa dessa steg för att ansluta enheten till nätverket.
 
-1. Öppna **Inställningar**och välj sedan **konton**.
+1. Öppna **Inställningar** och välj sedan **konton**.
 
-2. Välj **åtkomst till arbete eller skola**och välj sedan **Anslut**.
+2. Välj **åtkomst till arbete eller skola** och välj sedan **Anslut**.
 
     ![Åtkomst till arbets-eller skol-och anslutnings länkar](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
@@ -83,7 +83,7 @@ Om du har haft enheten en stund och den redan har kon figurer ATS, kan du följa
 
     ![Låt oss bli inloggad på skärmen](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. På skärmen **Ange lösen ord** skriver du ditt lösen ord och väljer sedan **Logga**in.
+5. På skärmen **Ange lösen ord** skriver du ditt lösen ord och väljer sedan **Logga** in.
 
     ![Ange lösenord](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
@@ -95,18 +95,18 @@ Om du har haft enheten en stund och den redan har kon figurer ATS, kan du följa
 
     ![Kontrol lera att det här är din organisations verifierings skärm](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. Klicka på **klar**på skärmen **allt är** klart.
+8. Klicka på **klar** på skärmen **allt är** klart.
 
     ![Allt är klart](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
 ## <a name="to-make-sure-youre-joined"></a>För att se till att du är ansluten
 Du kan se till att du är ansluten genom att titta på dina inställningar.
 
-1. Öppna **Inställningar**och välj sedan **konton**.
+1. Öppna **Inställningar** och välj sedan **konton**.
 
     ![Konton på skärmen Inställningar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Välj **åtkomst till arbete eller skola**och se till att du ser text som säger något som är **ansluten till *\<your_organization>* Azure AD**.
+2. Välj **åtkomst till arbete eller skola** och se till att du ser text som säger något som är **ansluten till *\<your_organization>* Azure AD**.
 
     ![Få åtkomst till arbets-eller skol skärmen med det anslutna contoso-kontot](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

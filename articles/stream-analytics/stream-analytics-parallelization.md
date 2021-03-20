@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 9149413d070bbb5eb8d0f8d0c99fe5ff705bcefb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012333"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Använd Query parallellisering i Azure Stream Analytics
@@ -207,7 +207,7 @@ När en fråga är partitionerad, bearbetas inmatnings händelser och sammanstä
 Alla icke-partitionerade steg kan skala upp till sex strömnings enheter (SUs) för ett Stream Analytics jobb. Förutom detta kan du lägga till 6 SUs för varje partition i ett partitionerat steg.
 Du kan se några **exempel** i tabellen nedan.
 
-| Söka i data                                               | Max SUs för jobbet |
+| Fråga                                               | Max SUs för jobbet |
 | --------------------------------------------------- | ------------------- |
 | <ul><li>Frågan innehåller ett steg.</li><li>Steget är inte partitionerat.</li></ul> | 6 |
 | <ul><li>Indata-dataströmmen partitioneras av 16.</li><li>Frågan innehåller ett steg.</li><li>Steget är partitionerat.</li></ul> | 96 (6 * 16 partitioner) |

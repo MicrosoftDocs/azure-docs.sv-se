@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 12e9bec0c560f1b068b07a1b6afe218a112e439f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553196"
 ---
 När du har skapat ett självsignerat rot certifikat exporterar du rot certifikatet offentlig nyckel. cer-fil (inte den privata nyckeln). Du kommer senare att ladda upp den här filen till Azure. Med följande steg kan du exportera. CER-filen för ditt självsignerade rot certifikat:
@@ -29,7 +29,7 @@ När du har skapat ett självsignerat rot certifikat exporterar du rot certifika
 4. På sidan **Filformat för export** väljer du **Base 64-kodad X.509 (. CER).** och klickar sedan på **Nästa**.
 
    ![Base – 64-kodad](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. För **fil som ska exporteras** **bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa**.
+5. För **fil som ska exporteras** **bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa.**
 
    ![Skärm bild som visar guiden Exportera certifikat med text rutan fil namn och ett alternativ för bläddring.](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Klicka på **Slutför** för att exportera certifikatet.

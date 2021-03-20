@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522401"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Styr vilken trafik som övervakas
@@ -295,7 +295,7 @@ Visa genomsöknings resultat:
 
 1. När genomsökningen är färdig väljer du **Visa Sök Resultat** i fönstret **åtgärder** . CSV-filen med genomsöknings resultaten hämtas till datorn.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  [Undersök sensor identifieringar i enhets kartan](how-to-work-with-the-sensor-device-map.md)

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657462"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Skapa switch-instruktioner som kör arbets flödes åtgärder baserat på vissa värden i Azure Logic Apps
@@ -34,13 +34,13 @@ Anta till exempel att du vill ha en Logic-app som tar olika steg baserat på ett
      ![Välj "Skicka ett e-postmeddelande om godkännande"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
   1. Ange de obligatoriska fälten, t. ex. e-postadressen för den person som får e-postmeddelandet. 
-  Under **användar alternativ**anger du "Godkänn, avvisa".
+  Under **användar alternativ** anger du "Godkänn, avvisa".
 
      ![Ange e-postinformation](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
 ## <a name="add-switch-statement"></a>Lägg till Switch-instruktion
 
-1. I det här exemplet lägger du till en switch-instruktion i slutet av exempel arbets flödet. Välj **nytt steg**efter det sista steget.
+1. I det här exemplet lägger du till en switch-instruktion i slutet av exempel arbets flödet. Välj **nytt steg** efter det sista steget.
 
    När du vill lägga till en switch-sats mellan stegen flyttar du pekaren över den pil där du vill lägga till Switch-instruktionen. Välj **plus tecknet** ( **+** ) som visas och välj sedan **Lägg till en åtgärd**.
 
@@ -67,7 +67,7 @@ Anta till exempel att du vill ha en Logic-app som tar olika steg baserat på ett
    |--------|--------------------|--------|
    | Fall 1 | **Godkänn** | Lägg till Outlook **skicka en e-** poståtgärd för att skicka information om RSS-objektet endast när god kännaren valt **Godkänn**. |
    | Fall 2 | **Avvisa** | Lägg till Outlook **skicka en e-** poståtgärd för att meddela andra god kännare om att RSS-objektet avvisades. |
-   | Default | Inget | Ingen åtgärd krävs. I det här exemplet är **standard** fallet tomt eftersom **SelectedOption** bara har två alternativ. |
+   | Standardvärde | Inget | Ingen åtgärd krävs. I det här exemplet är **standard** fallet tomt eftersom **SelectedOption** bara har två alternativ. |
    |||
 
    ![Instruktionen avslutad switch](./media/logic-apps-control-flow-switch-statement/finished-switch.png)

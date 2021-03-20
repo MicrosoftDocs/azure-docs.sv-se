@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029914"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98600126"
 ---
 # <a name="what-are-security-defaults"></a>Vad är säkerhets inställningar?
 
@@ -76,7 +76,7 @@ Vi tenderar att tro att administratörs konton är de enda konton som behöver e
 
 När angripare får åtkomst kan de begära åtkomst till privilegie rad information å den ursprungliga konto innehavarens vägnar. De kan till och med Ladda ned hela katalogen för att utföra en nätfiske-attack på hela organisationen. 
 
-En gemensam metod för att förbättra skyddet för alla användare är att kräva en starkare form av konto verifiering, till exempel Multi-Factor Authentication, för alla. När användarna har slutfört Multi-Factor Authentication registreringen uppmanas de att ange ytterligare autentisering när det behövs. Den här funktionen skyddar alla program som är registrerade i Azure AD, inklusive SaaS-program.
+En gemensam metod för att förbättra skyddet för alla användare är att kräva en starkare form av konto verifiering, till exempel Multi-Factor Authentication, för alla. När användarna har slutfört Multi-Factor Authentication registreringen uppmanas de att ange ytterligare autentisering när det behövs. Användarna uppmanas främst när de autentiserar med hjälp av en ny enhet eller ett program, eller när de utför viktiga roller och uppgifter. Den här funktionen skyddar alla program som är registrerade i Azure AD, inklusive SaaS-program.
 
 ### <a name="blocking-legacy-authentication"></a>Blockerar äldre autentisering
 
@@ -128,14 +128,14 @@ Dessa kostnads fria säkerhets standarder tillåter registrering och användning
 | Verifierings kod från mobilapp eller maskinvaru-token | X * * | X |
 | Textmeddelande till telefon |   | X |
 | Ring till telefon |   | X |
-| Applösenord |   | X * * _ |
+| Applösenord |   | X * * * |
 
-- _ * Användare kan använda verifierings koder från Microsoft Authenticator-appen, men kan bara registreras med meddelande alternativet.
-- * * _ Applösenord är bara tillgängliga i MFA per användare med äldre autentiseringar endast om de aktive ras av administratörer.
+- * * Användare kan använda verifierings koder från Microsoft Authenticator-appen, men kan bara registreras med meddelande alternativet.
+- Applösenord är bara tillgängliga i MFA per användare med äldre autentiseringar endast om de aktive ras av administratörer.
 
 ### <a name="disabled-mfa-status"></a>Inaktiverat MFA-status
 
-Om din organisation är en tidigare användare av per-baserad Azure AD-Multi-Factor Authentication ska du inte varnas för att inte se användare i a _ *Enabled** eller **framtvingad** status om du tittar på sidan Multi-factor auth-status. **Disabled** är rätt status för användare som använder säkerhets standarder eller villkorlig åtkomst baserat Azure AD Multi-Factor Authentication.
+Om din organisation är en tidigare användare av per-User-baserad Azure AD-Multi-Factor Authentication ska du inte varnas för att inte se användare i en **aktive rad** eller **framtvingad** status om du tittar på sidan Multi-factor auth-status. **Disabled** är rätt status för användare som använder säkerhets standarder eller villkorlig åtkomst baserat Azure AD Multi-Factor Authentication.
 
 ### <a name="conditional-access"></a>Villkorlig åtkomst
 
