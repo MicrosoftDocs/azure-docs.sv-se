@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: c7cd1898f27f3b7255009efb40f6bcc8938dbf9e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395658"
 ---
 # <a name="tutorial-run-a-disaster-recovery-drill-for-azure-vms"></a>Självstudie: köra en granskning av haveri beredskap för virtuella Azure-datorer
@@ -54,10 +54,10 @@ Innan du börjar den här självstudien måste du aktivera haveri beredskap för
 
 2. I **testa redundans** väljer du en återställnings punkt. Den virtuella Azure-datorn i mål regionen skapas med hjälp av data från den här återställnings punkten.
   
-   - **Senast bearbetade** : använder den senaste återställnings punkten som bearbetats av Site Recovery. Tidsstämpeln visas. Ingen tid för bearbetning av data, så det ger ett litet återställnings tids mål (RTO).
-   -  **Senaste** : bearbetar alla data som skickas till Site Recovery, så att du kan skapa en återställnings punkt för varje virtuell dator innan du växlar över till den. Tillhandahåller lägsta återställnings punkt mål (återställnings punkt) eftersom alla data replikeras till Site Recovery När redundansväxlingen utlöses.
-   - **Senaste appen – konsekvent** : det här alternativet växlar över virtuella datorer till den senaste programkonsekventa återställnings punkten. Tidsstämpeln visas.
-   - **Anpassad** : redundansväxla till viss återställnings punkt. Anpassad är endast tillgängligt om du växlar över en enskild virtuell dator och inte använder en återställnings plan.
+   - **Senast bearbetade**: använder den senaste återställnings punkten som bearbetats av Site Recovery. Tidsstämpeln visas. Ingen tid för bearbetning av data, så det ger ett litet återställnings tids mål (RTO).
+   -  **Senaste**: bearbetar alla data som skickas till Site Recovery, så att du kan skapa en återställnings punkt för varje virtuell dator innan du växlar över till den. Tillhandahåller lägsta återställnings punkt mål (återställnings punkt) eftersom alla data replikeras till Site Recovery När redundansväxlingen utlöses.
+   - **Senaste appen – konsekvent**: det här alternativet växlar över virtuella datorer till den senaste programkonsekventa återställnings punkten. Tidsstämpeln visas.
+   - **Anpassad**: redundansväxla till viss återställnings punkt. Anpassad är endast tillgängligt om du växlar över en enskild virtuell dator och inte använder en återställnings plan.
 
 3. I **Azure Virtual Network** väljer du det mål nätverk där du vill placera virtuella Azure-datorer som skapats efter redundansväxlingen. Välj ett nätverk som inte är för produktion om det är möjligt och inte nätverket som skapades när du aktiverade replikeringen.
 

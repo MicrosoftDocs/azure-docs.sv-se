@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541057"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Bygg en LUIS-app program mässigt med hjälp av Node.js
@@ -179,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>Öppna appen LUIS
-När skriptet har slutförts kan du logga in på [Luis](luis-reference-regions.md) och se Luis-appen som du skapade under **Mina appar**. Du bör kunna se yttranden som du har lagt till i **TurnON**, **TurnOff**och **none** -avsikter.
+När skriptet har slutförts kan du logga in på [Luis](luis-reference-regions.md) och se Luis-appen som du skapade under **Mina appar**. Du bör kunna se yttranden som du har lagt till i **TurnON**, **TurnOff** och **none** -avsikter.
 
 ![TurnOn avsikt](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 

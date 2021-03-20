@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578010"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Självstudie: skicka platsbaserade push-meddelanden med Notification Hubs data och Bing-spatialdata
@@ -37,7 +37,7 @@ I den här självstudien gör du följande:
 > * Konfigurera serverdelen
 > * Testa push-meddelanden i appen Universal Windows Platform (UWP)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **Azure-prenumeration**. Om du inte har en Azure-prenumeration kan du  [skapa ett kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) eller senare ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)).
@@ -70,7 +70,7 @@ I den här självstudien gör du följande:
    3. Välj knappen **Ladda upp**.
 
       > [!NOTE]
-      > Du kan uppmanas att ange en ny nyckel för **huvudnyckel**n. Denna skiljer sig från **frågenyckeln**. Du behöver bara skapa en ny nyckel via instrumentpanelen och uppdatera överföringssidan för datakällan.
+      > Du kan uppmanas att ange en ny nyckel för **huvudnyckel** n. Denna skiljer sig från **frågenyckeln**. Du behöver bara skapa en ny nyckel via instrumentpanelen och uppdatera överföringssidan för datakällan.
 6. När du har laddat upp datafilen måste du se till att publicera datakällan. Välj **data källor**  ->  **Hantera data källor** som du gjorde tidigare.
 7. Markera datakällan i listan och välj **Publicera** i kolumnen **Åtgärder**.
 

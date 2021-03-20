@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944785"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrera Azure HDInsight 3,6 Apache Storm till HDInsight 4,0 Apache Spark
@@ -64,7 +64,7 @@ Storm-topologier består av flera komponenter som är ordnade i en riktad acykli
 
 Storm består av följande tre daemonar som håller Storm-klustret fungerande.
 
-|Program |Description |
+|Program |Beskrivning |
 |---|---|
 |Nimbus|I likhet med Hadoop JobTracker ansvarar det att distribuera kod runt klustret och tilldela uppgifter till datorer och övervakning av fel.|
 |Zookeeper|Används för kluster samordning.|

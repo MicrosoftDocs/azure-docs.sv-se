@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 63b633ed67c03a006a154bc69a1aafb4cb4aa6d0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086286"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-cassandra-api-resources"></a>Etablera databas, behållare eller autoskalning av data flöde på Azure Cosmos DB API för Cassandra resurser
@@ -28,13 +28,13 @@ Om du använder ett annat API, se [SQL API](how-to-provision-container-throughpu
 
 1. [Skapa ett nytt Azure Cosmos-konto](create-mongodb-dotnet.md#create-a-database-account)eller Välj ett befintligt Azure Cosmos-konto.
 
-1. Öppna rutan **Datautforskaren** och välj **Ny tabell** . Ange därefter följande information:
+1. Öppna rutan **Datautforskaren** och välj **Ny tabell**. Ange därefter följande information:
 
    * Ange om du skapar ett nytt disk utrymme eller använder ett befintligt. Välj **data flödes alternativet etablera databas** om du vill etablera data flöde på den här nivån.
    * Ange tabell-ID i CQL-kommandot.
    * Ange ett primär nyckel värde (till exempel `/userrID` ).
    * Ange ett data flöde som du vill etablera (till exempel 1000 ru: er).
-   * Välj **OK** .
+   * Välj **OK**.
 
     :::image type="content" source="./media/how-to-provision-throughput-cassandra/provision-table-throughput-portal-cassandra-api.png" alt-text="Skärm bild av Datautforskaren när du skapar en ny samling med data flöde på databas nivå":::
 

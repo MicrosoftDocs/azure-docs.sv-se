@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: e3af713d6e120e66a0cde5116f4556bb8caedf55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097863"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Skapa en Angular-app med Azure Cosmos DB:s API för MongoDB – skapa en Node.js Express-app
@@ -82,9 +82,9 @@ Den här kursen kräver även följande:
 
 ## <a name="build-the-app-using-the-express-framework"></a>Utveckla appen med hjälp av Express-ramverket
 
-1. Högerklicka på mappen **src** i **Explorer** -fönstret i Visual Studio Code, klicka på **Ny mapp** och ge den nya mappen namnet *server* .
+1. Högerklicka på mappen **src** i **Explorer**-fönstret i Visual Studio Code, klicka på **Ny mapp** och ge den nya mappen namnet *server*.
 
-2. Högerklicka på mappen **server** i **Explorer** -fönstret, klicka på **Ny fil** och ge den nya filen namnet *index.js* .
+2. Högerklicka på mappen **server** i **Explorer**-fönstret, klicka på **Ny fil** och ge den nya filen namnet *index.js*.
 
 3. Tillbaka i kommandotolken installerar du body-parser genom att köra följande kommando. På så sätt kan appen parsa JSON-data som skickas via API:erna.
 
@@ -126,9 +126,9 @@ Den här kursen kräver även följande:
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. Högerklicka på mappen **server** i **Explorer** -fönstret i Visual Studio Code och klicka på **Ny fil** . Ge den nya filen namnet *routes.js* . 
+5. Högerklicka på mappen **server** i **Explorer**-fönstret i Visual Studio Code och klicka på **Ny fil**. Ge den nya filen namnet *routes.js*. 
 
-6. Kopiera följande kod till **routes.js** . Den här koden:
+6. Kopiera följande kod till **routes.js**. Den här koden:
    * Refererar till Express-routern
    * Hämtar heroes-komponenterna
    * Skickar tillbaka JSON för en definierad hero-komponent

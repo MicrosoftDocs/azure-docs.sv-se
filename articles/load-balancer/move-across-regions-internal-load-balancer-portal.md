@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698505"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Flytta interna Azure-Load Balancer till en annan region med hjälp av Azure Portal
@@ -45,7 +45,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
 1. Logga in på [Azure Portal](https://portal.azure.com)  >  **resurs grupper**.
 2. Leta upp resurs gruppen som innehåller det virtuella käll nätverket och klicka på den.
-3. Välj **Settings**  >  **Exportera mall** för > inställningar.
+3. Välj   >  **Exportera mall** för > inställningar.
 4. Välj **distribuera** på bladet **Exportera mall** .
 5. Klicka på **mall**  >  **Redigera parametrar** för att öppna **parameters.jspå** filen i redigeraren online.
 6. Om du vill redigera parametern för det virtuella nätverks namnet ändrar du egenskapen **Value** under **parametrar**:
@@ -196,7 +196,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
 1. Logga in på [Azure Portal](https://portal.azure.com)  >  **resurs grupper**.
 2. Leta upp resurs gruppen som innehåller den interna belastningsutjämnaren och klicka på den.
-3. Välj **Settings**  >  **Exportera mall** för > inställningar.
+3. Välj   >  **Exportera mall** för > inställningar.
 4. Välj **distribuera** på bladet **Exportera mall** .
 5. Klicka på **mall**  >  **Redigera parametrar** för att öppna **parameters.jspå** filen i redigeraren online.
 
@@ -259,7 +259,7 @@ Följande steg visar hur du förbereder den interna belastningsutjämnaren för 
 
 10. Du kan också ändra andra parametrar i mallen om du väljer, och de är valfria beroende på dina krav:
 
-    * **SKU** – du kan ändra SKU: n för den interna belastningsutjämnaren i konfigurationen från standard till Basic eller Basic till standard genom att ändra egenskapen SKU- **sku**  >  **namn** i **template.jspå** filen:
+    * **SKU** – du kan ändra SKU: n för den interna belastningsutjämnaren i konfigurationen från standard till Basic eller Basic till standard genom att ändra egenskapen SKU-   >  **namn** i **template.jspå** filen:
 
         ```json
         "resources": [

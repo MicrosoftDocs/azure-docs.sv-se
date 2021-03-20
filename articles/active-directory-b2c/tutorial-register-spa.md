@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503869"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Självstudie: registrera ett program med en sida (SPA) i Azure Active Directory B2C
@@ -56,10 +56,10 @@ Om du inte redan har skapat din egen [Azure AD B2C-klient](tutorial-create-tenan
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller Azure AD B2C klienten.
 1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
-1. Välj **Appregistreringar**och välj sedan **ny registrering**.
+1. Välj **Appregistreringar** och välj sedan **ny registrering**.
 1. Ange ett **namn** för programmet. Till exempel *spaapp1*.
-1. Under **konto typer som stöds**väljer du **konton i valfri identitets leverantör eller organisations katalog (för autentisering av användare med användar flöden)**
-1. Under **omdirigerings-URI**väljer du **en Enkels Ides applikation (Spa)** och anger sedan `https://jwt.ms` i text rutan URL.
+1. Under **konto typer som stöds** väljer du **konton i valfri identitets leverantör eller organisations katalog (för autentisering av användare med användar flöden)**
+1. Under **omdirigerings-URI** väljer du **en Enkels Ides applikation (Spa)** och anger sedan `https://jwt.ms` i text rutan URL.
 
     Omdirigerings-URI: n är den slut punkt som användaren skickas till av auktoriseringsservern (Azure AD B2C i det här fallet) när dess interaktion med användaren har slutförts och till vilken en åtkomsttoken eller auktoriseringskod skickas vid lyckad auktorisering. I ett produktions program är det vanligt vis en offentligt tillgänglig slut punkt där appen körs, t `https://contoso.com/auth-response` . ex.. För testnings ändamål som den här självstudien kan du ställa in den till `https://jwt.ms` , ett Microsoft-ägda webb program som visar det avkodade innehållet i en token (innehållet i token aldrig lämnar webbläsaren). Under utveckling av appar kan du lägga till slut punkten där ditt program lyssnar lokalt, t `http://localhost:5000` . ex.. Du kan när som helst lägga till och ändra omdirigerings-URI: er i dina registrerade program.
 
@@ -68,7 +68,7 @@ Om du inte redan har skapat din egen [Azure AD B2C-klient](tutorial-create-tenan
     * Svars-URL: en måste börja med schemat `https` , om du inte använder `localhost` .
     * Svars-URL: en är Skift läges känslig. Dess fall måste matcha fallet med URL-sökvägen till det program som körs. Om ditt program t. ex. ingår som en del av sökvägen `.../abc/response-oidc` ska du inte ange `.../ABC/response-oidc` i svars-URL: en. Eftersom webbläsaren behandlar sökvägar som Skift läges känsliga, kan cookies som är kopplade till `.../abc/response-oidc` uteslutas om de omdirigeras till den Skift läges fel matchnings bara `.../ABC/response-oidc` URL: en.
 
-1. Under **behörigheter**markerar du kryss rutan *bevilja administratörs medgivande till OpenID och offline_access behörighet* .
+1. Under **behörigheter** markerar du kryss rutan *bevilja administratörs medgivande till OpenID och offline_access behörighet* .
 1. Välj **Register** (Registrera).
 
 
@@ -76,7 +76,7 @@ Om du inte redan har skapat din egen [Azure AD B2C-klient](tutorial-create-tenan
 Om du använder det implicita flödet måste du aktivera det implicita tilldelnings flödet i appens registrering.
 
 1. På den vänstra menyn, under **Hantera**, väljer du **autentisering**.
-1. Under **implicit beviljande**väljer du kryss rutorna för **åtkomst-tokens** och **ID-token** .
+1. Under **implicit beviljande** väljer du kryss rutorna för **åtkomst-tokens** och **ID-token** .
 1. Välj **Spara**.
 
 ## <a name="migrate-from-the-implicit-flow"></a>Migrera från det implicita flödet

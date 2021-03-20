@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542010"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteter per kultur i din LUIS-modell
@@ -28,7 +28,7 @@ Det går inte att ändra beteendet för förbyggda entiteter, men du kan förbä
 ## <a name="availability"></a>Tillgänglighet
 Om inget annat anges är fördefinierade entiteter tillgängliga i alla LUIS program-språkområden (kulturer). I följande tabell visas de fördefinierade entiteter som stöds för varje kultur.
 
-|Kultur|Underkulturer|Obs!|
+|Kultur|Underkulturer|Kommentarer|
 |--|--|--|
 |Kinesiska|[zh-CN](#chinese-entity-support)||
 |Nederländska|[nl-NL](#dutch-entity-support)||
@@ -62,7 +62,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -84,7 +84,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -106,7 +106,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -128,7 +128,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -150,7 +150,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -172,7 +172,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -196,7 +196,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -218,7 +218,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2,-   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2,-   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2,-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2,-   |
@@ -240,7 +240,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    -   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    -   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    -   |
@@ -262,7 +262,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -284,7 +284,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    V2, V3   |
@@ -306,7 +306,7 @@ Följande entiteter stöds:
 [Nummer](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Ordningstal](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentandel](luis-reference-prebuilt-percentage.md)   |    -   |
+[Procent](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Temperatur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>grader<br>rankine<br>delisle<br>Celsius   |    -   |

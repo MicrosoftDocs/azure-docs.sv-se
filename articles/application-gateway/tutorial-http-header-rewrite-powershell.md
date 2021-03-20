@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396863"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Skapa en Application Gateway och skriv om HTTP-huvuden
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 Konfigurera de nya objekt som krävs för att skriva om HTTP-huvudena:
 
-- **RequestHeaderConfiguration** : det här objektet används för att ange de begär ande huvud fält som du tänker skriva om och det nya värdet som de ursprungliga huvudena måste skrivas om till.
-- **ResponseHeaderConfiguration** : det här objektet används för att ange de svars huvud fält som du tänker skriva om och det nya värdet som de ursprungliga huvudena måste skrivas om till.
-- **ActionSet** : det här objektet innehåller konfigurationerna för de begär ande och svars rubriker som anges ovan. 
-- **RewriteRule** : det här objektet innehåller alla *actionSets* som anges ovan. 
-- **RewriteRuleSet** – det här objektet innehåller alla *rewriteRules* och måste kopplas till en regel för routning av förfrågningar – Basic eller Path-based.
+- **RequestHeaderConfiguration**: det här objektet används för att ange de begär ande huvud fält som du tänker skriva om och det nya värdet som de ursprungliga huvudena måste skrivas om till.
+- **ResponseHeaderConfiguration**: det här objektet används för att ange de svars huvud fält som du tänker skriva om och det nya värdet som de ursprungliga huvudena måste skrivas om till.
+- **ActionSet**: det här objektet innehåller konfigurationerna för de begär ande och svars rubriker som anges ovan. 
+- **RewriteRule**: det här objektet innehåller alla *actionSets* som anges ovan. 
+- **RewriteRuleSet**– det här objektet innehåller alla *rewriteRules* och måste kopplas till en regel för routning av förfrågningar – Basic eller Path-based.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

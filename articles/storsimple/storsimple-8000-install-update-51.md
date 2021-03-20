@@ -13,10 +13,10 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91575970"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Installera uppdatering 5,1 på din StorSimple-enhet
@@ -62,11 +62,11 @@ Utför följande steg för att uppdatera enheten till [uppdatering 5,1](storsimp
 
     ![Skärm bild av bladet inställningar med alternativet enhets uppdateringar som kallas för.](./media/storsimple-8000-install-update-51/update2.png)
 
-3. Ett meddelande visas om nya uppdateringar är tillgängliga. Alternativt klickar du på **Sök efter uppdateringar**på bladet **enhets uppdateringar** . Det skapas ett jobb för att söka efter tillgängliga uppdateringar. Du meddelas när jobbet har slutförts.
+3. Ett meddelande visas om nya uppdateringar är tillgängliga. Alternativt klickar du på **Sök efter uppdateringar** på bladet **enhets uppdateringar** . Det skapas ett jobb för att söka efter tillgängliga uppdateringar. Du meddelas när jobbet har slutförts.
 
     ![Skärm bild av bladet inställningar med alternativet för enhets uppdateringar som anropas och bladet med enhets uppdateringar med nya regelbundna uppdateringar är tillgängligt.](./media/storsimple-8000-install-update-51/update3.png)
 
-4. Vi rekommenderar att du läser den viktiga informationen innan du installerar en uppdatering på enheten. Klicka på **Installera uppdateringar**om du vill tillämpa uppdateringar. På bladet **Bekräfta vanliga uppdateringar** kontrollerar du att kraven är uppfyllda innan du installerar uppdateringarna. Markera kryss rutan för att ange att du är redo att uppdatera enheten och klicka sedan på **Installera**.
+4. Vi rekommenderar att du läser den viktiga informationen innan du installerar en uppdatering på enheten. Klicka på **Installera uppdateringar** om du vill tillämpa uppdateringar. På bladet **Bekräfta vanliga uppdateringar** kontrollerar du att kraven är uppfyllda innan du installerar uppdateringarna. Markera kryss rutan för att ange att du är redo att uppdatera enheten och klicka sedan på **Installera**.
 
     ![Skärm bild av bladet med enhets uppdateringar med alternativet Installera uppdateringar som kallas för och bekräfta vanliga uppdateringar med alternativet för att godkänna och installera som kallas.](./media/storsimple-8000-install-update-51/update4.png)
 

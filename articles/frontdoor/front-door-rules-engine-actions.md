@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91569779"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Åtgärder för Azure Front Door-regelmotorn
@@ -59,7 +59,7 @@ Använd den här åtgärden för att omdirigera klienter till en ny URL.
 
 #### <a name="required-fields"></a>Obligatoriska fält
 
-Field | Beskrivning 
+Fält | Beskrivning 
 ------|------------
 Omdirigera typ | Välj den svarstyp som ska returneras till begär ande: hittas (302), flyttad (301), tillfällig omdirigering (307) och permanent omdirigering (308).
 Omdirigera protokoll | Matcha begäran, HTTP, HTTPS.
@@ -73,22 +73,22 @@ Målcachen | Definiera det fragment som ska användas i omdirigeringen. Lämna t
 
 Använd den här åtgärden för att vidarebefordra klienter till en ny URL. Den här åtgärden innehåller även under åtgärder för URL-omskrivning och cachelagring. 
 
-Field | Beskrivning 
+Fält | Beskrivning 
 ------|------------
 Serverdelspool | Välj den backend-pool som ska åsidosättas och betjänar begär Anden. då visas även alla förkonfigurerade backend-pooler i din profil för din front dörr. 
 Protokoll för vidarebefordran | Matcha begäran, HTTP, HTTPS.
 URL-omskrivning | Använd den här åtgärden för att skriva om sökvägen för en begäran som är en väg till ditt ursprung. Om aktive rad, se följande ytterligare fält som krävs
-Caching | Aktiverad, inaktiverad. Se följande ytterligare fält som krävs om det är aktiverat. 
+Cachelagring | Aktiverad, inaktiverad. Se följande ytterligare fält som krävs om det är aktiverat. 
 
 #### <a name="url-rewrite"></a>URL-omskrivning
 
 Använd den här inställningen om du vill konfigurera en valfri **anpassad vidarebefordrings Sök väg** som ska användas för att skapa begäran att vidarebefordra till Server delen.
 
-Field | Beskrivning 
+Fält | Beskrivning 
 ------|------------
 Anpassad vidarebefordrings Sök väg | Definiera sökvägen för att vidarebefordra begär anden till. 
 
-#### <a name="caching"></a>Caching
+#### <a name="caching"></a>Cachelagring
 
 Använd de här inställningarna för att styra hur filer cachelagras för förfrågningar som innehåller frågesträngar. Om ditt innehåll ska cachelagras baserat på alla parametrar eller på valda parametrar. Du kan använda ytterligare inställningar för att skriva över TTL-värdet (Time to Live) för att styra hur lång tid innehållet förblir i cacheminnet. Om du vill framtvinga cachelagring som åtgärd anger du fältet cachelagring till "Enabled". När du framtvingar cachelagring visas följande alternativ: 
 

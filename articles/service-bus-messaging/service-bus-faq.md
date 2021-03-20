@@ -4,10 +4,10 @@ description: Den här artikeln innehåller svar på några vanliga frågor och s
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98693417"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Service Bus
@@ -108,7 +108,7 @@ Följande egenskaper för en kö och ämnen kan inte ändras. Ta hänsyn till de
 * Dubblettidentifiering
 * Express entitet
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 I det här avsnittet besvaras några vanliga frågor om Service Bus prissättnings struktur.
 
 I artikeln [Service Bus priser och fakturering](https://azure.microsoft.com/pricing/details/service-bus/) förklaras fakturerings mätare i Service Bus. Mer information om Service Bus pris alternativ finns i [Service Bus pris information](https://azure.microsoft.com/pricing/details/service-bus/).
@@ -153,7 +153,7 @@ Signaturer för delad åtkomst är en autentiseringsmekanism som baseras på SHA
 
 Du kan flytta ett namn område från en Azure-prenumeration till en annan med hjälp av antingen [Azure Portal](https://portal.azure.com) -eller PowerShell-kommandon. För att kunna utföra åtgärden måste namn området redan vara aktivt. Användaren som kör kommandona måste vara administratör både på käll-och mål prenumerationerna.
 
-#### <a name="portal"></a>Portalen
+#### <a name="portal"></a>Portal
 
 Om du vill använda Azure Portal för att migrera Service Bus namnrum till en annan prenumeration följer du anvisningarna [här](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 

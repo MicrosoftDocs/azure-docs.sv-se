@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
 ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090213"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Snabb start: Använd Node.js för att ansluta och fråga efter data från Azure Cosmos DB SQL API-konto
@@ -48,7 +48,7 @@ I det här snabb starts syftet kan du använda alternativet [prova Azure Cosmos 
 
 1. Gå till sidan [prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/) .
 
-1. Välj **SQL** API-konto och välj **skapa** . Logga in med din Microsoft-konto.
+1. Välj **SQL** API-konto och välj **skapa**. Logga in med din Microsoft-konto.
 
 1. När inloggningen är klar bör ditt Azure Cosmos-konto vara klart. Öppna det nyligen skapade kontot genom att välja **Öppna i Azure Portal** .
 
@@ -58,7 +58,7 @@ Alternativet "prova Azure Cosmos DB gratis" kräver ingen Azure-prenumeration oc
 
 Du kan nu använda Datautforskaren-verktyget i Azure Portal för att skapa en databas och behållare.
 
-1. Välj **datautforskaren**  >  **ny behållare** .
+1. Välj **datautforskaren**  >  **ny behållare**.
 
    Avsnittet **Lägg till behållare** visas längst till höger. du kan behöva rulla åt höger för att se det.
 
@@ -68,14 +68,14 @@ Du kan nu använda Datautforskaren-verktyget i Azure Portal för att skapa en da
 
    | Inställning           | Föreslaget värde | Beskrivning                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Databas-ID**   | Aktiviteter           | Ange _Uppgifter_ som namn på den nya databasen. Databasnamn måste innehålla 1–255 tecken och får inte innehålla `/, \\, #, ?`, eller avslutande blanksteg. Kontrol lera **data flödes alternativet etablera databas** så att du kan dela det data flöde som har etablerats till databasen över alla behållare i databasen. Det här alternativet hjälper också till med kostnads besparingar. |
+   | **Databas-ID**   | Uppgifter           | Ange _Uppgifter_ som namn på den nya databasen. Databasnamn måste innehålla 1–255 tecken och får inte innehålla `/, \\, #, ?`, eller avslutande blanksteg. Kontrol lera **data flödes alternativet etablera databas** så att du kan dela det data flöde som har etablerats till databasen över alla behållare i databasen. Det här alternativet hjälper också till med kostnads besparingar. |
    | **Dataflöde**    | 400             | Lämna data flödet på 400 enheter för programbegäran per sekund (RU/s). Du kan skala upp dataflödet senare om du vill minska svarstiden.                                                                                                                                                                                                                                                    |
    | **Container-ID**  | Poster           | Ange _objekt_ som namn på den nya behållaren. För container-ID:n gäller samma teckenkrav som för databasnamn.                                                                                                                                                                                                                                                               |
    | **Partitionsnyckel** | /category       | Exemplet som beskrivs i den här artikeln använder _/Category_ som partitionsnyckel.                                                                                                                                                                                                                                                                                                           |
 
    Förutom de föregående inställningarna kan du också lägga till **unika nycklar** för behållaren. Vi lämnar fältet tomt i det här exemplet. Unika nycklar ger utvecklarna möjlighet att lägga till ett lager med dataintegritet till databasen. Genom att skapa en unik nyckel princip när du skapar en behållare, säkerställer du att ett eller flera värden är unika per partitionsnyckel. Läs mer i artikeln om [unika nycklar i Azure Cosmos DB](unique-keys.md).
 
-   Välj **OK** . Datautforskaren visar den nya databasen och containern.
+   Välj **OK**. Datautforskaren visar den nya databasen och containern.
 
 ## <a name="add-sample-data"></a>Lägga till exempeldata
 
@@ -99,7 +99,7 @@ Nu ska vi klona en Node.js app från GitHub, ange anslutnings strängen och kör
 
 Det här är valfritt. Om du är intresse rad av att lära dig hur Azure Cosmos Database-resurserna skapas i koden kan du läsa följande kodfragment. Annars kan du gå vidare till [Uppdatera din anslutningssträng](#update-your-connection-string).
 
-Om du är bekant med den tidigare versionen av SQL JavaScript SDK kan du använda den för att Visa villkors _samlingen_ och _dokumentet_ . Eftersom Azure Cosmos DB stöder [flera API-modeller](introduction.md), använder [version 2.0 + av JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) en _behållare_ för generiska termer, som kan vara en samling, Graf eller tabell och _objekt_ för att beskriva behållarens innehåll.
+Om du är bekant med den tidigare versionen av SQL JavaScript SDK kan du använda den för att Visa villkors _samlingen_ och _dokumentet_. Eftersom Azure Cosmos DB stöder [flera API-modeller](introduction.md), använder [version 2.0 + av JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) en _behållare_ för generiska termer, som kan vara en samling, Graf eller tabell och _objekt_ för att beskriva behållarens innehåll.
 
 Cosmos DB JavaScript SDK kallas " @azure/cosmos " och kan installeras från NPM...
 
@@ -107,7 +107,7 @@ Cosmos DB JavaScript SDK kallas " @azure/cosmos " och kan installeras från NPM.
 npm install @azure/cosmos
 ```
 
-Följande kodfragment är alla hämtade från filen _app.js_ .
+Följande kodfragment är alla hämtade från filen _app.js_.
 
 - `CosmosClient`Importeras från `@azure/cosmos` NPM-paketet.
 
@@ -176,17 +176,17 @@ Följande kodfragment är alla hämtade från filen _app.js_ .
 
 Gå tillbaka till Azure Portal för att hämta information om anslutnings strängen för ditt Azure Cosmos-konto. Kopiera anslutnings strängen till appen så att den kan ansluta till databasen.
 
-1. I ditt Azure Cosmos DB konto i [Azure Portal](https://portal.azure.com/)väljer du **nycklar** i det vänstra navigerings fältet och väljer sedan **Läs-och skriv nycklar** . Använd kopierings knapparna till höger på skärmen för att kopiera URI: n och primär nyckeln till _app.js_ -filen i nästa steg.
+1. I ditt Azure Cosmos DB konto i [Azure Portal](https://portal.azure.com/)väljer du **nycklar** i det vänstra navigerings fältet och väljer sedan **Läs-och skriv nycklar**. Använd kopierings knapparna till höger på skärmen för att kopiera URI: n och primär nyckeln till _app.js_ -filen i nästa steg.
 
-   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Datautforskaren på Azure-portalen, fönstret Lägg till container":::
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Visa och kopiera en åtkomstnyckel i Azure Portal, bladet Nycklar":::
 
 2. I öppnar du _config.js_ -filen.
 
-3. Kopiera ditt URI-värde från portalen (med kopierings knappen) och gör det till värdet för slut punkts nyckeln i _config.js_ .
+3. Kopiera ditt URI-värde från portalen (med kopierings knappen) och gör det till värdet för slut punkts nyckeln i _config.js_.
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Kopiera sedan värdet för primär nyckeln från portalen och gör det till värdet för `config.key` i _config.js_ . Du har nu uppdaterat appen med all information som behövs för kommunikation med Azure Cosmos DB.
+4. Kopiera sedan värdet för primär nyckeln från portalen och gör det till värdet för `config.key` i _config.js_. Du har nu uppdaterat appen med all information som behövs för kommunikation med Azure Cosmos DB.
 
    `key: "<Your Azure Cosmos account key>"`
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570777"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformera XML med kartor i Azure Logic Apps med Enterprise-integrationspaket
@@ -40,7 +40,7 @@ För begränsningar som rör integrations konton och artefakter som Maps, se [gr
     |------|-------------|
     | [Azure Storage-konto](../storage/common/storage-account-overview.md) | Skapa en Azure Blob-behållare för din sammansättning i det här kontot. Lär dig [hur du skapar ett lagrings konto](../storage/common/storage-account-create.md). |
     | Blobcontainer | I den här behållaren kan du ladda upp din sammansättning. Du behöver också den här behållarens plats när du lägger till sammansättningen i integrations kontot. Lär dig hur du [skapar en BLOB-behållare](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Med det här verktyget kan du enklare hantera lagrings konton och blob-behållare. Om du vill använda Storage Explorer [laddar du ned och installerar Azure Storage Explorer](https://www.storageexplorer.com/). Anslut sedan Storage Explorer till ditt lagrings konto genom att följa stegen i [komma igång med Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Mer information finns i [snabb start: skapa en BLOB i objekt lagring med Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Du kan också söka efter och välja ditt lagrings konto i Azure Portal. Från menyn lagrings konto väljer du **Storage Explorer**. |
+    | [Azure Lagringsutforskaren](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Med det här verktyget kan du enklare hantera lagrings konton och blob-behållare. Om du vill använda Storage Explorer [laddar du ned och installerar Azure Storage Explorer](https://www.storageexplorer.com/). Anslut sedan Storage Explorer till ditt lagrings konto genom att följa stegen i [komma igång med Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Mer information finns i [snabb start: skapa en BLOB i objekt lagring med Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Du kan också söka efter och välja ditt lagrings konto i Azure Portal. Från menyn lagrings konto väljer du **Storage Explorer**. |
     |||
 
   * För Maps kan du för närvarande lägga till större kartor genom att använda [Azure Logic Apps REST API-Maps](/rest/api/logic/maps/createorupdate).
@@ -53,7 +53,7 @@ Du behöver inte en logisk app när du skapar och lägger till Maps. Men om du v
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med autentiseringsuppgifterna för ditt Azure-konto.
 
-1. Om du vill söka efter och öppna ditt integrations konto väljer du **alla tjänster**på huvud menyn i Azure. 
+1. Om du vill söka efter och öppna ditt integrations konto väljer du **alla tjänster** på huvud menyn i Azure. 
    I rutan Sök anger du "integrations konto". 
    Välj **integrations konton**.
 
@@ -81,7 +81,7 @@ För begränsningar av sammansättnings mängder i integrations konton, se [grä
 
 ### <a name="add-assemblies-up-to-2-mb"></a>Lägg till sammansättningar upp till 2 MB
 
-1. Under **Lägg till sammansättning**anger du ett namn för sammansättningen. Se till att **små filer** är markerade. Välj mappikonen bredvid rutan **sammansättning** . Sök efter och välj den sammansättning som du överför, till exempel:
+1. Under **Lägg till sammansättning** anger du ett namn för sammansättningen. Se till att **små filer** är markerade. Välj mappikonen bredvid rutan **sammansättning** . Sök efter och välj den sammansättning som du överför, till exempel:
 
    ![Ladda upp mindre sammansättning](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
@@ -111,11 +111,11 @@ Om du vill lägga till större sammansättningar kan du ladda upp din sammansät
 
 1. Från BLOB-behållarens snabb meny väljer du **Ange offentlig åtkomst nivå**.
 
-   * Om din BLOB-behållare har minst offentlig åtkomst väljer du **Avbryt**och följer dessa steg senare på den här sidan: [Ladda upp till behållare med offentlig åtkomst](#public-access-assemblies)
+   * Om din BLOB-behållare har minst offentlig åtkomst väljer du **Avbryt** och följer dessa steg senare på den här sidan: [Ladda upp till behållare med offentlig åtkomst](#public-access-assemblies)
 
      ![Offentlig åtkomst](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Om BLOB-behållaren inte har offentlig åtkomst väljer du **Avbryt**och följer de här stegen senare på den här sidan: [Ladda upp till behållare utan offentlig åtkomst](#no-public-access-assemblies)
+   * Om BLOB-behållaren inte har offentlig åtkomst väljer du **Avbryt** och följer de här stegen senare på den här sidan: [Ladda upp till behållare utan offentlig åtkomst](#no-public-access-assemblies)
 
      ![Ingen offentlig åtkomst](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -150,8 +150,8 @@ På sidan **Översikt** för integrations kontot, under **komponenter**, visar p
 1. När du har slutfört överföringen genererar du en signatur för delad åtkomst (SAS) för din sammansättning. 
    Från din sammansättnings snabb meny väljer du **Hämta signatur för delad åtkomst**.
 
-1. I fönstret **signatur för delad åtkomst** väljer du skapa **signatur-URI för delad åtkomst för container nivå**  >  **Create**. 
-   När SAS-URL: en har genererats väljer du **Kopiera**bredvid rutan **URL** .
+1. I fönstret **signatur för delad åtkomst** väljer du skapa **signatur-URI för delad åtkomst för container nivå**  >  . 
+   När SAS-URL: en har genererats väljer du **Kopiera** bredvid rutan **URL** .
 
 1. Gå tillbaka till Azure Portal där fönstret **Lägg till sammansättning** är öppet. 
    Ange ett namn för sammansättningen. 
@@ -174,7 +174,7 @@ När du har laddat upp sammansättningar som kartan refererar till kan du ladda 
 
 1. Om du inte redan har loggat in loggar du in på [Azure Portal](https://portal.azure.com) med dina autentiseringsuppgifter för Azure-kontot. 
 
-1. Om ditt integrations konto inte redan är öppet väljer du **alla tjänster**på huvud menyn i Azure. 
+1. Om ditt integrations konto inte redan är öppet väljer du **alla tjänster** på huvud menyn i Azure. 
    I rutan Sök anger du "integrations konto". 
    Välj **integrations konton**.
 
@@ -184,7 +184,7 @@ När du har laddat upp sammansättningar som kartan refererar till kan du ladda 
 
    ![Välj integrations konto](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. På sidan **Översikt** för integrations kontot under **komponenter**väljer du panelen **kartor** .
+1. På sidan **Översikt** för integrations kontot under **komponenter** väljer du panelen **kartor** .
 
    ![Välj "Maps"](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
@@ -196,9 +196,9 @@ När du har laddat upp sammansättningar som kartan refererar till kan du ladda 
 
 ### <a name="add-maps-up-to-2-mb"></a>Lägg till kartor upp till 2 MB
 
-1. Under **Lägg till karta**anger du ett namn för kartan. 
+1. Under **Lägg till karta** anger du ett namn för kartan. 
 
-1. Under **kart typ**väljer du typ, till exempel: **flytande**, **XSLT**, **XSLT 2,0**eller **XSLT 3,0**.
+1. Under **kart typ** väljer du typ, till exempel: **flytande**, **XSLT**, **XSLT 2,0** eller **XSLT 3,0**.
 
 1. Se till att **små filer** är markerade. Välj mappikonen bredvid rutan **karta** . Sök efter och välj den karta som du överför, till exempel:
 
@@ -318,10 +318,10 @@ Om du vill uppdatera en befintlig karta måste du ladda upp en ny mappnings fil 
 
 1. Välj det integrations konto där du vill uppdatera kartan.
 
-1. På sidan **Översikt** för integrations kontot under **komponenter**väljer du panelen **kartor** .
+1. På sidan **Översikt** för integrations kontot under **komponenter** väljer du panelen **kartor** .
 
 1. När sidan **kartor** öppnas väljer du kartan. 
-   Hämta och redigera kartan först genom att välja **Hämta**och spara kartan.
+   Hämta och redigera kartan först genom att välja **Hämta** och spara kartan.
 
 1. När du är redo att ladda upp den uppdaterade kartan väljer du den mapp som du vill uppdatera på sidan **kartor** och väljer **Uppdatera**.
 
@@ -338,7 +338,7 @@ Om du vill uppdatera en befintlig karta måste du ladda upp en ny mappnings fil 
 
 1. Välj det integrations konto där du vill ta bort kartan.
 
-1. På sidan **Översikt** för integrations kontot under **komponenter**väljer du panelen **kartor** .
+1. På sidan **Översikt** för integrations kontot under **komponenter** väljer du panelen **kartor** .
 
 1. När sidan **kartor** öppnas väljer du kartan och sedan **ta bort**.
 

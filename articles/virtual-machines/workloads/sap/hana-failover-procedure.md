@@ -14,10 +14,10 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2a33340524556f5da1703cae3532f053fbe8ba13
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101670992"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Redundans för haveriberedskap
@@ -104,7 +104,7 @@ Du kan växla tillbaka från en DR till en produktions plats. Nu ska vi titta p�
 
 Du har kört din arbets belastning för SAP-produktion för en stund på webbplatsen för haveri beredskap. När problemen i produktions platsen är lösta vill du växla tillbaka till produktions platsen. Eftersom du inte kan förlora data inkluderar steget tillbaka till produktions platsen flera steg och nära samarbete med SAP HANA i Azure Operations-teamet. Det är upp till dig att utlösa drifts teamet för att börja synkronisera tillbaka till produktions platsen när problemen har lösts.
 
-Gör så här:
+Följ de här stegen:
 
 1. SAP HANA på Azure Operations-teamet hämtar utlösaren för att synkronisera produktions lagrings volymerna från lagrings volymerna för haveri beredskap, som nu representerar produktions status. I det här läget stängs den stora instans enheten HANA på produktions platsen.
 1. SAP HANA i Azure Operations-teamet övervakar replikeringen och ser till att den fångas upp innan de informerar dig.

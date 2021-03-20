@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 5ae930240872c00c8dbb45857e4e77d82766eadf
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398070"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Flytta virtuella Azure-datorer till en annan Azure-region
@@ -109,9 +109,9 @@ Site Recovery hämtar en lista över de virtuella datorer som är associerade me
 1. Gå till valvet. I **Inställningar**  >  **replikerade objekt** väljer du den virtuella dator som du vill flytta till mål regionen. Välj sedan **testa redundans**.
 2. I **testa redundans** väljer du en återställnings punkt som ska användas för redundansväxlingen:
 
-   - **Senaste bearbetade** : Redundansväxlar den virtuella datorn till den senaste återställningspunkten som bearbetades av Site Recovery-tjänsten. Tidsstämpeln visas. Ingen tid för bearbetning av data, så det här alternativet ger ett litet återställnings tids mål (RTO).
-   - **Senaste program – konsekvent** : växlar över alla virtuella datorer till den senaste programkonsekventa återställnings punkten. Tidsstämpeln visas.
-   - **Anpassad** : Välj annan återställningspunkt.
+   - **Senaste bearbetade**: Redundansväxlar den virtuella datorn till den senaste återställningspunkten som bearbetades av Site Recovery-tjänsten. Tidsstämpeln visas. Ingen tid för bearbetning av data, så det här alternativet ger ett litet återställnings tids mål (RTO).
+   - **Senaste program – konsekvent**: växlar över alla virtuella datorer till den senaste programkonsekventa återställnings punkten. Tidsstämpeln visas.
+   - **Anpassad**: Välj annan återställningspunkt.
 
 3. Välj målets virtuella Azure-nätverk, dit du vill flytta de virtuella Azure-datorerna för att testa konfigurationen.
 
@@ -124,7 +124,7 @@ Site Recovery hämtar en lista över de virtuella datorer som är associerade me
 
 ## <a name="perform-the-move-and-confirm"></a>Utföra flytt och bekräfta
 
-1. Gå till valvet i **Inställningar**  >  **replikerade objekt** , Välj den virtuella datorn och välj sedan **redundans**.
+1. Gå till valvet i **Inställningar**  >  **replikerade objekt**, Välj den virtuella datorn och välj sedan **redundans**.
 1. Välj **senaste** för **redundans**. 
 2. Välj **Stäng datorn innan du påbörjar redundans**. Site Recovery försöker stänga av den virtuella käll datorn innan redundansväxlingen utlöses. Men redundansväxlingen fortsätter även om avstängningen Miss lyckas. Du kan följa förloppet för redundansväxlingen på **jobb** sidan.
 3. När jobbet är klart kontrollerar du att den virtuella datorn visas i Azure-regionen som förväntat.

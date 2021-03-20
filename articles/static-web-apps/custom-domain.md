@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173690"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Konfigurera en anpassad domän i förhandsversionen av Azure Static Web Apps
@@ -57,7 +57,7 @@ En CNAME-post mappar en domän till en annan. Du kan använda en CNAME-post för
 
 2. Sök upp sidan för hantering av DNS-poster. Leverantören för varje domän har sitt eget DNS-postgränssnitt, så läs leverantörens dokumentation. Leta efter områden på webbplatsen med namnet **Domännamn**, **DNS**, eller **Namnserverhantering**.
 
-3. Du kan ofta hitta sidan med DNS-poster genom att visa din kontoinformation och sedan söka efter en länk som heter exempelvis **Mina domäner**. Gå till sidan och leta efter en länk som har samma namn som **zonfilen**, **DNS-poster**eller **Avancerad konfiguration**.
+3. Du kan ofta hitta sidan med DNS-poster genom att visa din kontoinformation och sedan söka efter en länk som heter exempelvis **Mina domäner**. Gå till sidan och leta efter en länk som har samma namn som **zonfilen**, **DNS-poster** eller **Avancerad konfiguration**.
 
     Skärmbilden nedan är ett exempel på en sida med DNS-poster:
 
@@ -102,7 +102,7 @@ Ibland vill du att all trafik som skickas till en under domän ska dirigeras til
 
 2. Sök upp sidan för hantering av DNS-poster. Leverantören för varje domän har sitt eget DNS-postgränssnitt, så läs leverantörens dokumentation. Leta efter områden på webbplatsen med namnet **Domännamn**, **DNS**, eller **Namnserverhantering**.
 
-3. Du kan ofta hitta sidan med DNS-poster genom att visa din kontoinformation och sedan söka efter en länk som heter exempelvis **Mina domäner**. Gå till sidan och leta efter en länk som heter liknar **zonfilen**, **DNS-poster**eller **Avancerad konfiguration**.
+3. Du kan ofta hitta sidan med DNS-poster genom att visa din kontoinformation och sedan söka efter en länk som heter exempelvis **Mina domäner**. Gå till sidan och leta efter en länk som heter liknar **zonfilen**, **DNS-poster** eller **Avancerad konfiguration**.
 
     Skärmbilden nedan är ett exempel på en sida med DNS-poster:
 

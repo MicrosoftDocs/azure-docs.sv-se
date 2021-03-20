@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578162"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Hantera flera klienter i Azure Sentinel som en MSSP
@@ -33,17 +33,17 @@ Om du är en hanterad säkerhets tjänst leverantör (MSSP) och använder [Azure
 
     1. Välj **prenumerationer** från Azure Portal och välj sedan en relevant prenumeration på menyn.
 
-    1. I navigerings menyn på prenumerations skärmen under **Inställningar**väljer du **resurs leverantörer**.
+    1. I navigerings menyn på prenumerations skärmen under **Inställningar** väljer du **resurs leverantörer**.
 
-    1. Från ** *prenumerations namnet* | Fönstret resurs leverantörer** , Sök efter och välj *Microsoft. OperationalInsights* och *Microsoft. SecurityInsights*och kontrol lera kolumnen **status** . Om leverantörens status är *NotRegistered*väljer du **Registrera**.
+    1. Från ***prenumerations namnet* | Fönstret resurs leverantörer** , Sök efter och välj *Microsoft. OperationalInsights* och *Microsoft. SecurityInsights* och kontrol lera kolumnen **status** . Om leverantörens status är *NotRegistered* väljer du **Registrera**.
     
         :::image type="content" source="media/multiple-tenants-service-providers/check-resource-provider.png" alt-text="Kontrol lera resurs leverantörer":::
 
 ## <a name="how-to-access-azure-sentinel-in-managed-tenants"></a>Få åtkomst till Azure Sentinel i hanterade klienter
 
-1. Under **katalog + prenumeration**väljer du de delegerade katalogerna (Directory = Tenant) och de prenumerationer där kundens Azure Sentinel-arbetsytor finns.
+1. Under **katalog + prenumeration** väljer du de delegerade katalogerna (Directory = Tenant) och de prenumerationer där kundens Azure Sentinel-arbetsytor finns.
 
-    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Kontrol lera resurs leverantörer":::
+    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Välj innehavare och prenumerationer":::
 
 1. Öppna Azure Sentinel. Du ser alla arbets ytor i de valda prenumerationerna och du kommer att kunna arbeta med dem sömlöst, som alla arbets ytor i din egen klient organisation.
 

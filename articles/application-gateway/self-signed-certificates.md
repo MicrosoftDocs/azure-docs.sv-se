@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396948"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generera ett självsignerat certifikat för Azure Application Gateway med en anpassad rot certifikat utfärdare
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generera ett självsignerat certifikat för Azure Application Gateway med en egen rotcertifikatutfärdare
 
 Application Gateway v2-SKU: n introducerar användningen av betrodda rot certifikat för att tillåta backend-servrar. Detta tar bort autentiseringscertifikat som krävs i v1 SKU. *Rot certifikatet* är en Base-64-kodad X. 509 (. CER) formatera rot certifikat från Server dels certifikat servern. Den identifierar rot certifikat utfärdaren (CA) som utfärdade Server certifikatet och Server certifikatet används sedan för TLS/SSL-kommunikation.
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Om du vill överföra certifikatet i Application Gateway måste du exportera. CRT-certifikatet till ett. cer-format Base-64-kodat. Eftersom. CRT redan innehåller den offentliga nyckeln i formatet Base-64-kodat byter du bara namn på fil namns tillägget från. CRT till. cer. 
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Om du vill ladda upp det betrodda rot certifikatet från portalen väljer du **http-inställningar** och sedan **https** -protokollet.
 

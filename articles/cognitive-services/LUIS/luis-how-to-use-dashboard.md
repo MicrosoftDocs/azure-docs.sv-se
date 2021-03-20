@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541415"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Hur du använder instrument panelen för att förbättra din app
@@ -32,7 +32,7 @@ De tre problemen som åtgärdas i instrument panelen är:
 |--|--|--|
 |Data obalans|-|Detta inträffar när antalet exempel yttranden varierar kraftigt. Alla avsikter måste ha _ungefär_ samma antal exempel yttranden – förutom ingen avsikt. Det bör bara ha 10% – 15% av den totala antalet yttranden i appen.<br><br> Om data är obalanserade men noggrannhets noggrannheten är högre än vissa tröskelvärde rapporteras inte den här obalansen som ett problem.<br><br>**Börja med det här problemet – det kan vara rotor saken till de andra problemen.**|
 |Ta bort förutsägelser|Orange|Detta inträffar när den främsta avsikten och nästa avsikts resultat är tillräckligt nära att de kan vända sig på nästa utbildning, på grund av en [negativ sampling](luis-how-to-train.md#train-with-all-data) eller fler exempel på yttranden som har lagts till i avsikten. |
-|Felaktiga förutsägelser|Röd|Detta inträffar när ett exempel på en uttryck inte förutsägs för den märkta avsikten (det som är i).|
+|Felaktiga förutsägelser|Red|Detta inträffar när ett exempel på en uttryck inte förutsägs för den märkta avsikten (det som är i).|
 
 Korrekta förutsägelser visas med blå färg.
 
@@ -152,7 +152,7 @@ Fastställ de procent andelen av tröskelvärdet som du är van vid för ditt f�
 
 Med filtret kan du hitta avsikter med ett speciellt problem:
 
-|Filter|Föreslagen procent|Syfte|
+|Filtrera|Föreslagen procent|Syfte|
 |--|--|--|
 |De flesta problematiska avsikter|-|**Börja här** – åtgärda yttranden i det här syftet är att förbättra appen mer än andra korrigeringar.|
 |Korrigera förutsägelser nedan|60 %|Detta är den procentuella andelen yttranden i vald avsikt som är korrekt men har en förtroende poäng under tröskelvärdet. |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94701848"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Snabb start: skapa ett Sök index med hjälp av det äldre klient biblioteket Microsoft. Azure. search v10
@@ -106,19 +106,19 @@ För det här projektet använder du version 10 av `Microsoft.Azure.Search` NuGe
 
 Det här steget krävs för att skapa meningsfulla utdata i-konsolen. När du skriver ut resultat till konsol fönstret måste enskilda fält från hotell-objektet returneras som strängar. I det här steget implementeras [toString ()](/dotnet/api/system.object.tostring) för att utföra den här uppgiften, vilket du gör genom att kopiera den nödvändiga koden till två nya filer.
 
-1. Lägg till två tomma klass definitioner i projektet: Address.Methods.cs, Hotel.Methods.cs
+1. Lägg till två tomma klass definitioner i projektet: address. Methods. CS, hotell. Methods. CS
 
-1. Skriv över standard innehållet i Address.Methods.cs med följande kod, [rader 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
+1. I address. Methods. CS skriver över standard innehållet med följande kod, [rader 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. Kopiera [raderna 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)i Hotel.Methods.cs.
+1. I hotell. Methods. CS, kopierar du [raderna 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1 – Skapa index
 
 Hotell indexet består av enkla och komplexa fält där ett enkelt fält är "HotelName" eller "Description", och komplexa fält är en adress med under fält eller en samling med rum. När ett index innehåller komplexa typer isolerar du de komplexa fält definitionerna i separata klasser.
 
-1. Lägg till två tomma klass definitioner i projektet: Address.cs, Hotel.cs
+1. Lägg till två tomma klass definitioner i projektet: address. CS, hotell. CS
 
-1. Skriv över standard innehållet i Address.cs med följande kod:
+1. Skriv över standard innehållet med följande kod i address. CS:
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ Hotell indexet består av enkla och komplexa fält där ett enkelt fält är "Ho
     }
     ```
 
-1. I Hotel.cs definierar klassen den övergripande strukturen för indexet, inklusive referenser till klassen address.
+1. I hotell. cs definierar klassen den övergripande strukturen för indexet, inklusive referenser till klassen address.
 
     ```csharp
     namespace AzureSearchQuickstart
@@ -203,9 +203,9 @@ Hotell indexet består av enkla och komplexa fält där ett enkelt fält är "Ho
 
     Exakt ett fält i indexet av typen `string` måste vara *nyckel* fältet och unikt identifiera varje dokument. I det här schemat är nyckeln `HotelId` .
 
-    I det här indexet använder beskrivnings fälten den valfria [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) egenskapen som anges när du vill åsidosätta standard standard Lucene Analyzer. I `description_fr` fältet används den franska Lucene Analyzer ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) eftersom den innehåller fransk text. `description`Använder den valfria Microsoft Language Analyzer (Microsoft)[EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft).
+    I det här indexet använder beskrivnings fälten den valfria [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) egenskapen som anges när du vill åsidosätta standard standard Lucene Analyzer. I `description_fr` fältet används den franska Lucene Analyzer ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) eftersom den innehåller fransk text. `description`Använder den valfria Microsoft Language Analyzer (Microsoft)[](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft).
 
-1. I Program.cs skapar du en instans av [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) klassen för att ansluta till tjänsten med hjälp av värden som lagras i programmets konfigurations fil (appsettings.jspå). 
+1. I program. cs skapar du en instans av [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) klassen för att ansluta till tjänsten med värden som lagras i programmets konfigurations fil (appsettings.jspå). 
 
    `SearchServiceClient` har en [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes) egenskap som ger alla metoder som du behöver för att skapa, Visa, uppdatera eller ta bort Azure kognitiv sökning-index. 
 
@@ -309,7 +309,7 @@ I Azure Kognitiv sökning är dokument data strukturer som båda är indata för
 
 När du överför dokument måste du använda ett- [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch) objekt. En `IndexBatch` innehåller en samling [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction) objekt, som var och en innehåller ett dokument och en egenskap som talar om för Azure kognitiv sökning vilka åtgärder som ska utföras ([Ladda upp, sammanfoga, ta bort och mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. I Program.cs skapar du en matris med dokument-och index åtgärder och skickar sedan matrisen till `IndexBatch` . Dokumenten nedan överensstämmer med det hotell-snabb start index som definieras av hotell-och adress klasserna.
+1. Skapa en matris med dokument och index åtgärder i program. CS och skicka sedan matrisen till `IndexBatch` . Dokumenten nedan överensstämmer med det hotell-snabb start index som definieras av hotell-och adress klasserna.
 
     ```csharp
     // Upload documents as a batch
@@ -435,7 +435,7 @@ När du överför dokument måste du använda ett- [`IndexBatch`](/dotnet/api/mi
 
     Den 2 sekunderade fördröjningen kompenserar för indexering, som är asynkron, så att alla dokument kan indexeras innan frågorna körs. Att koda i en fördröjning är vanligt vis bara nödvändigt i demonstrationer, tester och exempel program.
 
-1. I Program.cs kan du, i största, ta bort kommentarer till raderna för "2-Läs dokument". 
+1. I program. CS, i största, kommenterar du raderna för "2-Läs dokument". 
 
     ```csharp
     // Uncomment next 3 lines in "2 - Load documents"
@@ -458,7 +458,7 @@ I det här avsnittet läggs två delar av funktionalitet: fråga efter logik och
 [`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)Klassen representerar resultatet.
 
 
-1. I Program.cs skapar du en WriteDocuments-metod som skriver ut Sök resultat till-konsolen.
+1. I program. cs skapar du en WriteDocuments-metod som skriver ut Sök resultat till-konsolen.
 
     ```csharp
     private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -540,7 +540,7 @@ I det här avsnittet läggs två delar av funktionalitet: fråga efter logik och
 
     Både sökningar och filtreringar utförs med hjälp av metoden `Documents.Search`. En sökfråga kan skickas i parametern `searchText`, medan ett filteruttryck kan skickas i `Filter`-egenskapen för klassen `SearchParameters`. Om du vill filtrera utan sökning skickar du bara `"*"` för `searchText`-parametern. Om du vill söka utan filtrering lämnar du bara `Filter`-egenskapen odefinierad eller väljer att inte skicka den i en `SearchParameters`-instans över huvud taget.
 
-1. I Program.cs, i största, tar du bort kommentaren till raderna för "3-search". 
+1. I program. CS, i huvud, tar du bort kommentaren till raderna för "3-search". 
 
     ```csharp
     // Uncomment next 2 lines in "3 - Search an index"

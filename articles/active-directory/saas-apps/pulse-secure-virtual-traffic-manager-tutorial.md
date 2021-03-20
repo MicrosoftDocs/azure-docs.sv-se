@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505754"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Pulse Secure Virtual Traffic Manager
@@ -46,7 +46,7 @@ Du måste lägga till en säker virtuell Traffic Manager från galleriet till di
 1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **Pulse Secure Virtual Traffic Manager** i sökrutan.
 1. Välj **Pulse Secure Virtual Traffic Manager** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -97,7 +97,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -109,10 +109,10 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till en säker virtuell Traffic Manager.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Pulse Secure Virtual Traffic Manager**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
@@ -159,9 +159,9 @@ c. Konfigurera följande autentiseringsinställningar för den virtuella servern
 
     ![autentiseringsinställningar för virtuell server](./media/pulse-secure-virtual-traffic-manager-tutorial/authentication-1.png)
 
-    a. I **auth!-typen**väljer du **SAML-tjänstprovider** 
+    a. I **auth!-typen** väljer du **SAML-tjänstprovider** 
 
-    b. I **auth! verbose**ställer du in på "Ja" för att felsöka eventuella autentiseringsproblem, annars lämnar du standardvärdet som "nej" 
+    b. I **auth! verbose** ställer du in på "Ja" för att felsöka eventuella autentiseringsproblem, annars lämnar du standardvärdet som "nej" 
 
 2. Hantering av autentiserings-session –
 
@@ -171,9 +171,9 @@ c. Konfigurera följande autentiseringsinställningar för den virtuella servern
 
     b. För **auth! session! timeout**, lämna standardvärdet till "7200" 
 
-    c. I **auth! session! log_external_state**anger du till "Ja" för att felsöka eventuella autentiseringsproblem, annars lämnar du standardvärdet som "nej" 
+    c. I **auth! session! log_external_state** anger du till "Ja" för att felsöka eventuella autentiseringsproblem, annars lämnar du standardvärdet som "nej" 
 
-    d. I **auth! session! cookie_attributes**ändrar du till "HTTPOnly" 
+    d. I **auth! session! cookie_attributes** ändrar du till "HTTPOnly" 
 
 3. SAML-tjänstprovider –
 
@@ -181,9 +181,9 @@ c. Konfigurera följande autentiseringsinställningar för den virtuella servern
 
     a. I text rutan **auth! SAML! sp_entity_id** anger du samma URL som används som konfigurations identifierare för enkel inloggning i Azure AD (enhets-ID). Som `https://pulseweb.labb.info/saml/metadata` . 
 
-    b. I **autentiseringen auth! SAML! sp_acs_url**anger du samma URL som används som Azure AD-konfiguration för enkel inloggning i Azure AD-URL (intyg om försäkrans konsument tjänst). Som `https://pulseweb.labb.info/saml/consume` . 
+    b. I **autentiseringen auth! SAML! sp_acs_url** anger du samma URL som används som Azure AD-konfiguration för enkel inloggning i Azure AD-URL (intyg om försäkrans konsument tjänst). Som `https://pulseweb.labb.info/saml/consume` . 
 
-    c. I **auth! SAML!-IDP**väljer du den **betrodda identitets leverantör** som du skapade i föregående steg. 
+    c. I **auth! SAML!-IDP** väljer du den **betrodda identitets leverantör** som du skapade i föregående steg. 
 
     d. I auth! SAML! time_tolerance lämnar du standardvärdet 5 sekunder. 
 

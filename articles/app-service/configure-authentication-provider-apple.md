@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
 ms.openlocfilehash: b77e0613f502d003b5e4651e34be4cadbd4209a9
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96603364"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Konfigurera App Service-eller Azure Functions-appen för att logga in med en inloggning med Apple Provider (för hands version)
@@ -39,7 +39,7 @@ Du måste skapa ett app-ID och ett tjänst-ID i Apple Developer-portalen.
 ![Registrera en ny tjänst identifierare i Apple Developer-portalen](media/configure-authentication-provider-apple/apple-register-service.jpg)
 8. På sidan **Registrera ett tjänste-ID** anger du en beskrivning och en identifierare. Beskrivningen är vad som visas för användaren på godkännande skärmen. Identifieraren är ditt klient-ID som används för att konfigurera Apple-providern med din app service. Välj sedan **Konfigurera**.
 ![Ange en beskrivning och en identifierare](media/configure-authentication-provider-apple/apple-configure-service-1.jpg)
-9. I popup-fönstret anger du det primära app-ID: t till det app-ID som du skapade tidigare. Ange programmets domän i avsnittet domän. Använd URL: en för retur-URL: en `<app-url>/.auth/login/apple/callback` . Exempelvis `https://contoso.azurewebsites.net/.auth/login/apple/callback`. Välj sedan **Lägg till** och **Spara**.
+9. I popup-fönstret anger du det primära app-ID: t till det app-ID som du skapade tidigare. Ange programmets domän i avsnittet domän. Använd URL: en för retur-URL: en `<app-url>/.auth/login/apple/callback` . Till exempel `https://contoso.azurewebsites.net/.auth/login/apple/callback`. Välj sedan **Lägg till** och **Spara**.
 ![Ange domänen och retur-URL: en för registreringen](media/configure-authentication-provider-apple/apple-configure-service-2.jpg)
 10. Granska tjänst registrerings informationen och välj **Spara**.
 

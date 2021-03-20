@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835330"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurera anpassade Azure AD-roller i Privileged Identity Management
@@ -64,7 +64,7 @@ Du kan också välja något av dessa alternativ för varaktighet för *aktiv* ti
 - **Tillåt permanent aktiv tilldelning**: administratörer kan tilldela permanenta aktiva medlemskap.
 - Den **aktiva tilldelningen upphör att gälla efter**: administratörer kan kräva att alla aktiva tilldelningar har ett angivet start-och slutdatum.
 
-### <a name="require-azure-ad-multi-factor-authentication"></a>Kräv Azure AD-Multi-Factor Authentication
+### <a name="require-azure-ad-multi-factor-authentication"></a>Kräv Azure AD-multifaktorautentisering
 
 Privileged Identity Management tillhandahåller en valfri tillämpning av Azure AD Multi-Factor Authentication för två olika scenarier.
 

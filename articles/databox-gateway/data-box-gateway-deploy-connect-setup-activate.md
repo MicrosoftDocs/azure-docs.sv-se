@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96583691"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Självstudie: Ansluta, konfigurera och aktivera Azure Data Box Gateway
@@ -29,7 +29,7 @@ I den här guiden får du lära dig att:
 > * Ansluta till en virtuell enhet
 > * Konfigurera och aktivera den virtuella enheten
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du konfigurerar och konfigurerar Data Box Gateway bör du kontrol lera att:
 
@@ -53,7 +53,7 @@ Innan du konfigurerar och konfigurerar Data Box Gateway bör du kontrol lera att
    
     ![Logga in på lokalt webb gränssnitt](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-4. Ändra enhetens lösen ord vid prompten. Det nya lösen ordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla 3 av följande: versaler, gemener, siffror och specialtecken.
+4. Ändra enhetens lösen ord vid prompten. Det nya lösenordet måste innehålla mellan 8 och 16 tecken. Det måste innehålla 3 av följande: versaler, gemener, siffror och specialtecken.
 
     ![Ändra enhetens lösenord](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
@@ -89,7 +89,7 @@ På instrument panelen visas de olika inställningar som krävs för att konfigu
    På sidan **webbproxy** gör du följande:
    
    1. I rutan **webbproxy-URL** anger du webb adressen i följande format: `http://&lt;host-IP address or FQDN&gt;:Port number` . Du kan inte använda HTTPS-adresser.
-   2. Under **autentisering** väljer du **ingen** eller **NTLM**.
+   2. Välj **Ingen** eller **NTLM** under **Autentisering**.
    3. Om du använder autentisering anger du ett **användar namn** och **lösen ord**.
    4. Om du vill validera och tillämpa de konfigurerade webbproxyinställningarna väljer du **tillämpa**.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: faea5fdc7fdab11c630f24dbb8527e5bf198765c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459160"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Självstudie: Azure Active Directory integrering med IBM Kenexa Survey Enterprise
@@ -161,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till IBM Kenexa Survey Enterprise.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **IBM Kenexa Survey Enterprise**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **IBM Kenexa Survey Enterprise**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

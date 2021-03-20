@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: 8550c795e222e72fe423e8bc60669a78921a6fcd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100570693"
 ---
 # <a name="azure-operational-security-checklist"></a>Check lista för Azures drift säkerhet
@@ -37,7 +37,7 @@ Azure tillhandahåller en uppsättning infrastruktur tjänster som du kan använ
 
 Den här check listan är avsedd att hjälpa företag att tänka igenom olika operativa säkerhets aspekter när de distribuerar avancerade företags program i Azure. Det kan också användas för att bygga en säker molnbaserad migrering och åtgärds strategi för din organisation.
 
-|Check lista kategori| Description|
+|Check lista kategori| Beskrivning|
 | ------------ | -------- |
 | [<br>Säkerhets roller & åtkomst kontroller](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>Använd [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) för att ge användarspecifika användar specifika behörigheter som används för att tilldela behörigheter till användare, grupper och program i ett visst omfång.</li></ul> |
 | [<br>Data insamling & lagring](../../storage/blobs/security-recommendations.md)|<ul><li>Använd hanterings plan säkerhet för att skydda ditt lagrings konto med hjälp av [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).</li><li>Säkerhet för data planet för att skydda åtkomsten till dina data med hjälp av [signaturer för delad åtkomst (SAS)](../../storage/common/storage-sas-overview.md) och lagrade åtkomst principer.</li><li>Använd Transport-Level kryptering – med HTTPS och kryptering som används av [SMB-protokoll (Server Message Block) 3,0](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) för [Azure-filresurser](../../storage/files/storage-dotnet-how-to-use-files.md).</li><li>Använd [kryptering på klient sidan](../../storage/common/storage-client-side-encryption.md) för att skydda data som du skickar till lagrings konton när du behöver ensam kontroll över krypterings nycklar. </li><li>Använd [kryptering för lagringstjänst (SSE)](../../storage/common/storage-service-encryption.md)  för att automatiskt kryptera data i Azure Storage och [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) för att kryptera virtuella datorers DISKPARTITIONer för operativ system-och data diskar.</li><li>Använd Azure [Lagringsanalys](/rest/api/storageservices/storage-analytics) för att övervaka typ av auktorisering; precis som med Blob Storage kan du se om användarna har använt en signatur för delad åtkomst eller lagrings konto nycklar.</li><li>Använd [resurs delning mellan ursprung (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) för att få åtkomst till lagrings resurser från olika domäner.</li></ul> |

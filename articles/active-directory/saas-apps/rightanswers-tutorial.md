@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 1dca5d704fae976798e767f3c02bf8f145fee3d0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Självstudie: Azure Active Directory integrering med RightAnswers
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med RightAnswers i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **RightAnswers** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **RightAnswers** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -158,7 +158,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till RightAnswers.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **RightAnswers**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **RightAnswers**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835874"
 ---
 # <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>Gör så här: Konfigurera Azure AD-Multi-Factor Authentication registrerings princip
@@ -59,4 +59,4 @@ En översikt över den relaterade användar upplevelsen finns i:
 
 - [Aktivera återställning av lösen ord för självbetjäning i Azure AD](../authentication/howto-sspr-deployment.md)
 
-- [Aktivera Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Aktivera Azure AD-multifaktorautentisering](../authentication/howto-mfa-getstarted.md)

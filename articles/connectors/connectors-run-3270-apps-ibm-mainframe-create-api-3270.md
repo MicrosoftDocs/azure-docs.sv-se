@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/03/2021
 tags: connectors
 ms.openlocfilehash: 7873076618125241d9bdf4f225c194572553d060
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99573440"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrera 3270-skärm drivna appar i IBM-stordatorer med Azure med hjälp av Azure Logic Apps och IBM 3270-anslutning
@@ -178,7 +178,7 @@ I det här läget definierar du flödet eller stegen för att navigera genom din
 
 1. Under **Välj nytt plan namn** anger du ett namn för din plan. I listan **typ** väljer du typ av prenumeration:
 
-   | Plantyp | Description |
+   | Plantyp | Beskrivning |
    |-----------|-------------|
    | **Process** | För fristående eller kombinerade planer |
    | **Anslut** | För Connect-planer |
@@ -355,16 +355,16 @@ När du har slutfört alla dessa steg kan du använda den åtgärd som du skapar
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Anslutnings namn** | Yes | <*anslutnings namn*> | Namnet på anslutningen |
-   | **Integrations konto-ID** | Yes | <*integration – konto namn*> | Integrations kontots namn |
-   | **SAS-URL för integrations konto** | Yes | <*integration – konto – SAS-URL*> | Ditt integrations kontos URL för signatur för delad åtkomst (SAS), som du kan generera från integrations kontots inställningar i Azure Portal. <p>1. i menyn integrations konto **väljer du** **återanrops-URL**. <br>2. i den högra rutan kopierar du det **genererade URL** -värdet för motringning. |
-   | **Server** | Yes | <*TN3270-Server namn*> | Server namnet för din TN3270-tjänst |
-   | **Port** | No | <*TN3270-server-port*> | Porten som används av TN3270-servern. Om det lämnas tomt används anslutningen `23` som standardvärde. |
-   | **Enhetstyp** | No | <*IBM-Terminal-Model*> | Modell namnet eller numret för den IBM-Terminal som ska emuleras. Om det lämnas tomt används standardvärden av kopplings funktionen. |
-   | **Kodsida** | No | <*kod-sid nummer*> | Värdens tecken tabell nummer. Om det lämnas tomt används anslutningen `37` som standardvärde. |
-   | **Namn på logisk enhet** | No | <*logiskt-enhets namn*> | Den angivna logiska enhetens namn som ska begäras från värden |
-   | **Vill du aktivera SSL?** | No | På eller av | Aktivera eller inaktivera TLS-kryptering. |
-   | **Verifiera SSL-certifikatet på värden?** | No | På eller av | Aktivera eller inaktivera verifiering för Server certifikatet. |
+   | **Anslutnings namn** | Ja | <*anslutnings namn*> | Namnet på anslutningen |
+   | **Integrations konto-ID** | Ja | <*integration – konto namn*> | Integrations kontots namn |
+   | **SAS-URL för integrations konto** | Ja | <*integration – konto – SAS-URL*> | Ditt integrations kontos URL för signatur för delad åtkomst (SAS), som du kan generera från integrations kontots inställningar i Azure Portal. <p>1. i menyn integrations konto **väljer du** **återanrops-URL**. <br>2. i den högra rutan kopierar du det **genererade URL** -värdet för motringning. |
+   | **Server** | Ja | <*TN3270-Server namn*> | Server namnet för din TN3270-tjänst |
+   | **Port** | Inga | <*TN3270-server-port*> | Porten som används av TN3270-servern. Om det lämnas tomt används anslutningen `23` som standardvärde. |
+   | **Enhetstyp** | Inga | <*IBM-Terminal-Model*> | Modell namnet eller numret för den IBM-Terminal som ska emuleras. Om det lämnas tomt används standardvärden av kopplings funktionen. |
+   | **Kodsida** | Inga | <*kod-sid nummer*> | Värdens tecken tabell nummer. Om det lämnas tomt används anslutningen `37` som standardvärde. |
+   | **Namn på logisk enhet** | Inga | <*logiskt-enhets namn*> | Den angivna logiska enhetens namn som ska begäras från värden |
+   | **Vill du aktivera SSL?** | Inga | På eller av | Aktivera eller inaktivera TLS-kryptering. |
+   | **Verifiera SSL-certifikatet på värden?** | Inga | På eller av | Aktivera eller inaktivera verifiering för Server certifikatet. |
    ||||
 
    Exempel:
@@ -375,8 +375,8 @@ När du har slutfört alla dessa steg kan du använda den åtgärd som du skapar
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **HIDX namn** | Yes | <*HIDX – fil namn*> | Välj den 3270 HIDX-fil som du vill använda. |
-   | **Metodnamn** | Yes | <*metod namn*> | Välj metoden i den HIDX-fil som du vill använda. När du har valt en metod visas listan **Lägg till ny parameter** så att du kan välja parametrar som ska användas med den metoden. |
+   | **HIDX namn** | Ja | <*HIDX – fil namn*> | Välj den 3270 HIDX-fil som du vill använda. |
+   | **Metodnamn** | Ja | <*metod namn*> | Välj metoden i den HIDX-fil som du vill använda. När du har valt en metod visas listan **Lägg till ny parameter** så att du kan välja parametrar som ska användas med den metoden. |
    ||||
 
    Exempel:

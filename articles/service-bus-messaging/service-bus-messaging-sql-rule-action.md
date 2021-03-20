@@ -4,10 +4,10 @@ description: Den här artikeln innehåller en referens för syntax för SQL-rege
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652844"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Action-syntax för prenumerations regel

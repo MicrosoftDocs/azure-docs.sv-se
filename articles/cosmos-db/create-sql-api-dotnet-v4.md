@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 224a1b67ff0282c216763229593fcfed81d7567b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090111"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Snabb start: Bygg en konsol app med hjälp av .NET v4 SDK för att hantera Azure Cosmos DB SQL API-konto resurser.
@@ -50,7 +50,7 @@ Det här avsnittet beskriver hur du skapar ett Azure Cosmos-konto och konfigurer
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Skapa ett Azure Cosmos-konto
 
-Om du använder alternativet [prova Azure Cosmos dB för kostnads fri](https://azure.microsoft.com/try/cosmosdb/) för att skapa ett Azure Cosmos-konto måste du skapa ett Azure Cosmos DB konto av typen **SQL API** . Ett Azure Cosmos DB test konto har redan skapats åt dig. Du behöver inte skapa kontot explicit, så du kan hoppa över det här avsnittet och gå vidare till nästa avsnitt.
+Om du använder alternativet [prova Azure Cosmos dB för kostnads fri](https://azure.microsoft.com/try/cosmosdb/) för att skapa ett Azure Cosmos-konto måste du skapa ett Azure Cosmos DB konto av typen **SQL API**. Ett Azure Cosmos DB test konto har redan skapats åt dig. Du behöver inte skapa kontot explicit, så du kan hoppa över det här avsnittet och gå vidare till nästa avsnitt.
 
 Om du har en egen Azure-prenumeration eller skapat en prenumeration kostnads fritt bör du skapa ett Azure Cosmos-konto explicit. Följande kod skapar ett Azure Cosmos-konto med konsekvens i sessionen. Kontot replikeras i `South Central US` och `North Central US` .  
 
@@ -137,7 +137,7 @@ Innan du börjar skapa programmet ska vi titta närmare på hierarkin över resu
 
 * Azure Cosmos-konto 
 * Databaser 
-* Containrar 
+* Containers 
 * Poster
 
 Mer information om hierarkin för olika entiteter finns i [arbeta med databaser, behållare och objekt i Azure Cosmos DB](account-databases-containers-items.md) artikel. Du kommer att använda följande .NET-klasser för att interagera med dessa resurser:

@@ -8,10 +8,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000359"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: Undantagshantering och felloggning för logikappar
@@ -404,7 +404,7 @@ Om du vill visa felen kan du skapa en MVC-webbapp för att visa fel posterna fr�
 Följande är exempel på information om MVC-appar som skapats med den tidigare beskrivna metoden.
 
 #### <a name="error-management-list"></a>Lista över fel hantering
-![Fellista](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
+![fellista](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
 
 #### <a name="error-management-detail-view"></a>Detaljerad vy för fel hantering
 ![Information om fel](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
@@ -481,5 +481,5 @@ Käll koden för API-programmet för Logic Apps undantags hantering finns i den 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Visa fler exempel och scenarier för Logic-appar](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Övervaka Logic Apps](../logic-apps/monitor-logic-apps.md)
+* [Övervaka logikappar](../logic-apps/monitor-logic-apps.md)
 * [Automatisera distributionen av logikappar](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
