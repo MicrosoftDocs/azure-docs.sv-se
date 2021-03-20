@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96446118"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Ny DBA i molnet – Hantera Azure SQL Database efter migrering
@@ -63,9 +63,9 @@ Med affärs kontinuitet och haveri beredskap kan du fortsätta din verksamhet, s
 
 Du skapar inga säkerhets kopior på Azure SQL Database och det beror på att du inte behöver. SQL Database säkerhetskopierar automatiskt databaser åt dig, så att du inte längre behöver bekymra dig om schemaläggning, insamling och hantering av säkerhets kopior. Plattformen tar en fullständig säkerhets kopia varje vecka, differentiell säkerhets kopiering med några timmar och en logg säkerhets kopia var femte minut för att säkerställa att haveri beredskap är effektiv och data förlusten är minimal. Den första fullständiga säkerhets kopieringen sker så snart du skapar en databas. Dessa säkerhets kopior är tillgängliga för dig under en viss period med namnet "kvarhållningsperiod" och varierar beroende på vilken tjänst nivå du väljer. SQL Database ger dig möjlighet att återställa till vilken tidpunkt som helst inom denna kvarhållningsperiod med hjälp av återställning av tidpunkt [(PITR)](recovery-using-backups.md#point-in-time-restore).
 
-|Tjänstnivå|Kvarhållningsperiod i dagar|
+|Tjänstenivå|Kvarhållningsperiod i dagar|
 |---|:---:|
-|Basic|7|
+|Grundläggande|7|
 |Standard|35|
 |Premium|35|
 |||
@@ -169,10 +169,10 @@ Kryptering ger en kraftfull mekanism för att skydda och skydda känsliga data f
 I SQL Database är som standard dina data i vila i data-och loggfilerna på underlag rings systemet fullständigt och alltid krypterade via [Transparent datakryptering [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Dina säkerhets kopior krypteras också. Med TDE finns det inga ändringar som krävs på din program sida som har åtkomst till dessa data. Kryptering och dekryptering sker transparent; Därför är namnet.
 För att skydda känsliga data i flygning och i vila tillhandahåller SQL Database en funktion som kallas [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE är en form av kryptering på klient sidan som krypterar känsliga kolumner i databasen (så att de finns i chiffertexten till databas administratörer och obehöriga användare). Servern tar emot krypterade data att börja med. Nyckeln för Always Encrypted lagras också på klient sidan så att endast auktoriserade klienter kan dekryptera känsliga kolumner. Server-och data administratörer kan inte se känsliga data eftersom krypterings nycklarna lagras på klienten. AE krypterar känsliga kolumner i tabellen från slut punkt till slut punkt från obehöriga klienter till den fysiska disken. AE stöder likhets jämförelser idag, så databas administratörer kan fortsätta att fråga krypterade kolumner som en del av deras SQL-kommandon. Always Encrypted kan användas med en rad olika alternativ för nyckel lagring, till exempel [Azure Key Vault](always-encrypted-azure-key-vault-configure.md), Windows certifikat Arkiv och lokala säkerhetsmoduler för maskin vara.
 
-|**Kännetecken**|**Alltid krypterad**|**transparent datakryptering**|
+|**Kännetecken**|**Alltid krypterad**|**Transparent datakryptering**|
 |---|---|---|
 |**Krypterings omfång**|Slut punkt till slut punkt|Vilande data|
-|**Servern kan komma åt känsliga data**|No|Ja, eftersom krypteringen är för vilande data|
+|**Servern kan komma åt känsliga data**|Inga|Ja, eftersom krypteringen är för vilande data|
 |**Tillåtna T-SQL-åtgärder**|Likhets jämförelse|Alla ytor i T-SQL är tillgängligt|
 |**App-ändringar krävs för att använda funktionen**|Minimal|Mycket minimal|
 |**Krypterings precision**|Kolumn nivå|databasnivå|
@@ -199,7 +199,7 @@ Det finns en hierarki med två nycklar i TDE – data i varje användar databas 
 
 Som standard hanteras huvud nyckeln för transparent datakryptering av SQL Databases tjänsten för enkelhetens skull. Om din organisation vill ha kontroll över huvud nyckeln, finns det ett alternativ att använda Azure Key Vault] (Always-Encrypted-Azure-Key-Valve-configure.md) som nyckel arkiv. Genom att använda Azure Key Vault antar din organisation kontroll över nyckel etablering, rotation och behörighets kontroller. [Rotation eller växling av typen för en TDE huvud nyckel](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) är snabb, eftersom den bara krypterar om Dek. För organisationer med separering av roller mellan säkerhets-och data hantering kan en säkerhets administratör tillhandahålla nyckel materialet för huvud nyckeln TDE i Azure Key Vault och ange en Azure Key Vault nyckel identifierare till databas administratören som ska användas för kryptering i vila på en server. Key Vault är utformad så att Microsoft inte kan se eller extrahera några krypterings nycklar. Du får också en centraliserad hantering av nycklar för din organisation.
 
-#### <a name="always-encrypted"></a>Alltid krypterad
+#### <a name="always-encrypted"></a>Always Encrypted
 
 Det finns också en [hierarki med två nycklar](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) i Always Encrypted – en kolumn med känsliga data krypteras med en AES 256-kolumn krypterings nyckel (CEK), som i sin tur krypteras av en kolumn huvud nyckel (CMK). De angivna klient driv rutinerna för Always Encrypted har inga begränsningar för längden på CMKs. Det krypterade värdet för CEK lagras i databasen och CMK lagras i ett betrott nyckel lager, t. ex. Windows certifikat Arkiv, Azure Key Vault eller en modul för maskin varu säkerhet.
 
@@ -301,11 +301,11 @@ En omfattande uppsättning rekommendationer för att justera prestanda problem f
 
 SQL Database erbjuder olika tjänst nivåer Basic, standard och Premium. Varje tjänst nivå får du en garanterad förutsägbar prestanda som är kopplad till tjänst nivån. Beroende på din arbets belastning kan du ha mellanstora aktiviteter där resursutnyttjande kan träffa taket för den aktuella beräknings storlek som du befinner dig i. I sådana fall är det bra att först börja med att utvärdera om någon justering kan hjälpa (till exempel att lägga till eller ändra ett index osv.). Om du fortfarande stöter på gräns problem bör du överväga att flytta till en högre tjänst nivå eller en beräknings storlek.
 
-|**Tjänstnivå**|**Vanliga scenarier för användnings fall**|
+|**Tjänstenivå**|**Vanliga scenarier för användnings fall**|
 |---|---|
 |**Basic**|Program med fåtal-användare och en databas som inte har höga samtidighets-, skalnings-och prestanda krav. |
 |**Standard**|Program med avsevärda samtidighets-, skalnings-och prestanda krav i kombination med låg till medelhög IO-krav. |
-|**Denaturering**|Program med många samtidiga användare, höga processor/minne och höga IO-krav. Hög samtidighet, högt data flöde och svars tids känsliga appar kan utnyttja Premium nivån. |
+|**Premium**|Program med många samtidiga användare, höga processor/minne och höga IO-krav. Hög samtidighet, högt data flöde och svars tids känsliga appar kan utnyttja Premium nivån. |
 |||
 
 För att se till att du har rätt beräknings storlek kan du övervaka din fråga och databas resursförbrukning genom att använda ett av ovanstående sätt i "Hur gör jag för att övervaka prestanda-och resursutnyttjande i SQL Database". Om du upptäcker att dina frågor/databaser körs konsekvent på processor/minne osv. kan du skala upp till en högre beräknings storlek. På samma sätt verkar du inte använda resurserna lika mycket, om du är medveten om att även under dina arbets belastningar. Överväg att skala ned från den aktuella beräknings storleken.

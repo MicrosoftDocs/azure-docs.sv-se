@@ -8,10 +8,10 @@ ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: b418a9cae6f6d58dbe82babcfe6fe1e1a5027d43
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97657081"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Strategier för att autentisera service för Marketplace-mätning
@@ -66,7 +66,7 @@ Mer information om dessa tokens finns [Azure Active Directory åtkomsttoken](../
 
 #### <a name="request-body"></a>*Brödtext i begäran*
 
-|  **Egenskapsnamn**  |  **Obligatoriskt**  |  **Beskrivning**          |
+|  **Egenskaps namn**  |  **Obligatoriskt**  |  **Beskrivning**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `Grant_type`       |   Sant         | Typ av beviljande. Använd `client_credentials`. |
 |  `Client_id`        |   Sant         | Klient/app-identifierare som är associerad med Azure AD-appen.|
@@ -114,7 +114,7 @@ Följ till exempel stegen nedan för att autentisera med en virtuell Windows-dat
     * [Azure Portal användar gränssnitt](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Azure Resource Manager-mall](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Azure Resource Manager mall](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Azure-SDK:er](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 

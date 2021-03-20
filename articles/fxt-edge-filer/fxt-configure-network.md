@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220779"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Självstudie: Konfigurera klustrets nätverks inställningar
@@ -139,7 +139,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>Aktivera DNS i klustret
 
-Ange den DNS-server som klustret använder på sidan Inställningar för **kluster**för  >  **administrativa nätverk** . Inställningarna på sidan är:
+Ange den DNS-server som klustret använder på sidan Inställningar för **kluster** för  >  **administrativa nätverk** . Inställningarna på sidan är:
 
 * DNS-serveradress
 * DNS-domännamn

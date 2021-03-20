@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451622"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Ansluta till Synapse-SQL med SQL Server Management Studio (SSMS)
@@ -21,7 +21,7 @@ ms.locfileid: "96451622"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [SQLCMD](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
@@ -43,7 +43,7 @@ Innan du börjar måste du kontrol lera att du har följande krav:
 * För dedikerad SQL-pool behöver du ett befintligt informations lager. Om du vill skapa en, se [skapa en dedikerad SQL-pool](../quickstart-create-sql-pool-portal.md). För en server utan SQL-pool är en redan etablerad, namngiven inbyggda, i din arbets yta när den skapades. 
 * Det fullständigt kvalificerade SQL Server namnet. Du hittar det här namnet i [Anslut till SYNAPSE SQL](connect-overview.md).
 
-## <a name="connect"></a>Anslut
+## <a name="connect"></a>Ansluta
 
 ### <a name="dedicated-sql-pool"></a>Dedikerad SQL-pool
 

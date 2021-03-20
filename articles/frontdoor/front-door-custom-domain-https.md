@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740791"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Självstudiekurs: Konfigurera HTTPS på en anpassad Front Door-domän
@@ -133,7 +133,12 @@ Ge Azures frontend-behörighet för att komma åt certifikaten i ditt Azure Key 
     Azure-front dörren visar följande information: 
     - Nyckelvalvskonton för ditt prenumerations-ID. 
     - Certifikaten (hemligheterna) i det valda nyckelvalvet. 
-    - Tillgängliga certifikatversioner.
+    - Tillgängliga certifikatversioner. 
+
+> [!NOTE]
+> Om du lämnar certifikat versionen som Tom leder det till:
+> - Den senaste versionen av certifikatet som har marker ATS.
+> - Automatisk rotation av certifikat till den senaste versionen när en nyare version av certifikatet är tillgänglig i din Key Vault.
  
 5. Domänverifiering krävs inte om du använder ett eget certifikat. Gå vidare till [Vänta på spridning](#wait-for-propagation).
 
@@ -275,7 +280,7 @@ I den här självstudiekursen lärde du dig att:
 * Verifiera en domän.
 * Aktivera HTTPS för din anpassade domän.
 
-Fortsätt till nästa självstudie om du vill lära dig hur du konfigurerar en princip för geo-filtrering för din frontend-dörr.
+Fortsätt till nästa självstudie om du vill veta hur du konfigurerar en princip för geo-filtrering för din frontend-dörr.
 
 > [!div class="nextstepaction"]
 > [Konfigurera en princip för geo-filtrering](front-door-geo-filtering.md)

@@ -9,13 +9,13 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557851"
 ---
-# <a name="project-cerberus"></a>Project-Cerberus
+# <a name="project-cerberus"></a>Project Cerberus
 
 Cerberus är en NIST 800-193-kompatibel maskin varu rot med en identitet som inte kan klonas. Cerberus är utformat för att ytterligare öka säkerheten position i Azure-infrastrukturen genom att tillhandahålla ett starkt förtroende för den inbyggda program varans integritet.
 
@@ -44,7 +44,7 @@ Tillsammans med tjänsten för värd attestering har Cerberus funktioner förbä
 ## <a name="next-steps"></a>Nästa steg
 Mer information om vad vi gör för att driva plattforms integritet och säkerhet finns i:
 
-- [Säkerhet för inbyggd program vara](firmware.md)
+- [Säkerhet för inbyggd programvara](firmware.md)
 - [Säker start](secure-boot.md)
 - [Uppmätt start-och värd attestering](measured-boot-host-attestation.md)
 - [Kryptering i vila](encryption-atrest.md)

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
 ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656877"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Självstudie: Konfigurera haveri beredskap för virtuella Azure-datorer
@@ -28,7 +28,7 @@ När du aktiverar replikering för en virtuell dator för att konfigurera haveri
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 
@@ -77,7 +77,7 @@ Virtuella datorer som du vill replikera behöver utgående nätverks anslutning.
 
 Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutning ger du åtkomst till följande URL: er:
 
-| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Tillhandahåller auktorisering och autentisering för Site Recovery-tjänstens webbadresser. |
@@ -123,7 +123,7 @@ Skapa ett Recovery Services-valv i vilken region som helst, förutom i käll reg
 
    ![Valv inställningar på sidan för att skapa ett nytt valv](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 
-9. I **Granska + skapa**, väljer du **skapa**.
+9. I **Granska + skapa** väljer du **Skapa**.
 
 10. Valv distributionen börjar. Följ förloppet i aviseringarna.
 11. När valvet har distribuerats väljer du **Fäst på instrument panelen** för att spara den för snabb referens. Välj **gå till resurs** för att öppna det nya valvet. 

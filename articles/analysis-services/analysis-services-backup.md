@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013011"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Säkerhets kopiering och återställning av Analysis Services databasen
@@ -107,6 +107,6 @@ Använd [restore-Database-](/powershell/module/sqlserver/restore-asdatabase) cmd
 
 ## <a name="related-information"></a>Relaterad information
 
-[Azure Storage-konton](../storage/common/storage-account-create.md)  
+[Azure-lagringskonton](../storage/common/storage-account-create.md)  
 [Hög tillgänglighet](analysis-services-bcdr.md)      
 [Vanliga frågor och svar om nätverks anslutning Analysis Services](analysis-services-network-faq.md)

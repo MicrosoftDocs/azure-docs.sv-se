@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240978"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Hantera utgång av webbinnehåll i Azure CDN
@@ -30,7 +30,7 @@ ms.locfileid: "93240978"
 
 Filer från offentligt tillgängliga ursprungs webb servrar kan cachelagras i Azure Content Delivery Network (CDN) tills deras TTL-värde (Time to Live) förflutit. TTL-värdet bestäms av `Cache-Control` huvudet i HTTP-svaret från ursprungs servern. I den här artikeln beskrivs hur du ställer in `Cache-Control` rubriker för Web Apps funktionen i Microsoft Azure App Service, Azure Cloud Services, ASP.NET-program och Internet Information Services (IIS)-platser som alla har kon figurer ATS på samma sätt. Du kan ange `Cache-Control` sidhuvudet antingen med hjälp av konfigurationsfiler eller program mässigt. 
 
-Du kan också styra cacheinställningar från Azure Portal genom att ange [regler för CDN-cachelagring](cdn-caching-rules.md). Om du skapar en eller flera regler för cachelagring och ställer in deras beteende för att **åsidosätta** eller **kringgå cache** , ignoreras de cacheinställningar som anges i den här artikeln. Information om allmänna cachelagring av koncept finns i [så här fungerar cachelagring](cdn-how-caching-works.md).
+Du kan också styra cacheinställningar från Azure Portal genom att ange [regler för CDN-cachelagring](cdn-caching-rules.md). Om du skapar en eller flera regler för cachelagring och ställer in deras beteende för att **åsidosätta** eller **kringgå cache**, ignoreras de cacheinställningar som anges i den här artikeln. Information om allmänna cachelagring av koncept finns i [så här fungerar cachelagring](cdn-how-caching-works.md).
 
 > [!TIP]
 > Du kan välja att ange inget TTL-värde för en fil. I det här fallet tillämpar Azure CDN automatiskt en standard-TTL på sju dagar, om du inte har konfigurerat reglerna för cachelagring i Azure Portal. Detta standard-TTL gäller endast för allmänna webb leverans optimeringar. För stora fil optimeringar är standard-TTL en dag och för optimering av medie direkt uppspelning är standard-TTL ett år.
@@ -44,7 +44,7 @@ Den bästa metoden för att ställa in en webb servers `Cache-Control` huvud är
 > [!NOTE] 
 > Reglerna för cachelagring är bara tillgängliga för **Azure CDN Standard från Verizon** och **Azure CDN Standard från Akamai** -profiler. För **Azure CDN Premium från Verizon** -profiler måste du använda [Azure CDN-regel motorn](./cdn-verizon-premium-rules-engine.md) i **hanterings** portalen för liknande funktioner.
 
-**Så här navigerar du till sidan regler för CDN-cachelagring** :
+**Så här navigerar du till sidan regler för CDN-cachelagring**:
 
 1. I Azure Portal väljer du en CDN-profil och väljer sedan slut punkten för webb servern.
 
@@ -59,7 +59,7 @@ Den bästa metoden för att ställa in en webb servers `Cache-Control` huvud är
 
 **Ange en webb servers Cache-Control rubriker med globala regler för cachelagring:**
 
-1. Under **globala regler för cachelagring** , **ställer du in** **beteende för cachelagring av frågesträngar** för att **Ignorera frågesträngar** och ställa in **beteende för cachelagring**
+1. Under **globala regler för cachelagring**, **ställer du in** **beteende för cachelagring av frågesträngar** för att **Ignorera frågesträngar** och ställa in **beteende för cachelagring**
       
 1. Vid **förfallo tid för cache** anger du 3600 i rutan **sekunder** eller 1 i rutan **timmar** . 
 
@@ -71,7 +71,7 @@ Den bästa metoden för att ställa in en webb servers `Cache-Control` huvud är
 
 **Så här ställer du in en webb servers fils Cache-Control rubriker med anpassade regler för cachelagring:**
 
-1. Skapa två matchnings villkor under **anpassade regler för cachelagring** :
+1. Skapa två matchnings villkor under **anpassade regler för cachelagring**:
 
      a. För det första matchnings villkoret anger du **matcha villkor** till **sökväg** och anger `/webfolder1/*` för **matchnings värde**. Ange **beteende för cachelagring** för att **åsidosätta** och ange 4 i rutan **dagar** .
 
@@ -129,7 +129,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>Testa Cache-Control huvud
-Du kan enkelt verifiera TTL-inställningarna för ditt webb innehåll. Testa att ditt webb innehåll innehåller svars huvudet med webbläsarens [utvecklingsverktyg](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) `Cache-Control` . Du kan också använda ett verktyg som **wget** , [Postman](https://www.getpostman.com/)eller [Fiddler](https://www.telerik.com/fiddler) för att undersöka svarshuvuden.
+Du kan enkelt verifiera TTL-inställningarna för ditt webb innehåll. Testa att ditt webb innehåll innehåller svars huvudet med webbläsarens [utvecklingsverktyg](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) `Cache-Control` . Du kan också använda ett verktyg som **wget**, [Postman](https://www.getpostman.com/)eller [Fiddler](https://www.telerik.com/fiddler) för att undersöka svarshuvuden.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Läs mer om **clientCache** -elementet](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)

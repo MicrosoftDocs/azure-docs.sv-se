@@ -4,10 +4,10 @@ description: Använd Azure Resource Manager för att flytta virtuella datorer ti
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104917"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Flytta vägledning för virtuella datorer
@@ -60,7 +60,7 @@ Om du vill flytta virtuella datorer som kon figurer ATS med Azure Backup måste 
 
 Om [mjuk borttagning](../../../backup/soft-delete-virtual-machines.md) är aktiverat för den virtuella datorn kan du inte flytta den virtuella datorn medan återställnings punkterna behålls. [Inaktivera mjuk borttagning](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) eller vänta 14 dagar efter att återställnings punkterna har tagits bort.
 
-### <a name="portal"></a>Portalen
+### <a name="portal"></a>Portal
 
 1. Stoppa säkerhets kopieringen tillfälligt och behåll säkerhets kopierings data.
 2. Gör så här om du vill flytta virtuella datorer som kon figurer ATS med Azure Backup:

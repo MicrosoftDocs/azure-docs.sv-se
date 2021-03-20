@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93310467"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Ta emot och bekräfta B2B AS2-meddelanden med hjälp av Azure Logic Apps och Enterprise-integrationspaket
@@ -73,11 +73,11 @@ Lägg nu till de B2B-åtgärder som du vill använda. I det här exemplet använ
 
 1. För egenskapen **meddelande att avkoda** anger du indatamängden som du vill att AS2-åtgärden ska avkoda, vilket är det `body` innehåll som tas emot av utlösaren för http-begäran. Det finns flera sätt att ange det här innehållet som indatatyp, antingen från listan med dynamiskt innehåll eller som ett uttryck:
 
-   * Om du vill välja från en lista som visar tillgängliga utlösare klickar du i rutan **meddelande att avkoda** . När listan med dynamiskt innehåll visas, under **när en HTTP-begäran tas emot** , väljer du **text** egenskaps värde, till exempel:
+   * Om du vill välja från en lista som visar tillgängliga utlösare klickar du i rutan **meddelande att avkoda** . När listan med dynamiskt innehåll visas, under **när en HTTP-begäran tas emot**, väljer du **text** egenskaps värde, till exempel:
 
      ![Välj "Body"-värde från utlösaren](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Om du vill ange ett uttryck som refererar till utlösaren `body` utdata klickar du i rutan **meddelande att avkoda** . När listan med dynamiskt innehåll visas väljer du **uttryck**. I uttrycks redigeraren anger du uttrycket här och väljer **OK** :
+   * Om du vill ange ett uttryck som refererar till utlösaren `body` utdata klickar du i rutan **meddelande att avkoda** . När listan med dynamiskt innehåll visas väljer du **uttryck**. I uttrycks redigeraren anger du uttrycket här och väljer **OK**:
 
      `triggerOutputs()['body']`
 
@@ -95,7 +95,7 @@ Lägg nu till de B2B-åtgärder som du vill använda. I det här exemplet använ
 
       ![Skärm bild som visar "växla meddelandehuvuden till text läge" markerat.](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   1. Klicka **i rutan** meddelandehuvuden. När listan med dynamiskt innehåll visas väljer du **uttryck**. I uttrycks redigeraren anger du uttrycket här och väljer **OK** :
+   1. Klicka **i rutan** meddelandehuvuden. När listan med dynamiskt innehåll visas väljer du **uttryck**. I uttrycks redigeraren anger du uttrycket här och väljer **OK**:
 
       `triggerOutputs()['Headers']`
 

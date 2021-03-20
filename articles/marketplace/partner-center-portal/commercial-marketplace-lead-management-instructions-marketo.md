@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491083"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Använd Marketo för att hantera affärs marknads platser
@@ -79,7 +79,7 @@ När du är redo att konfigurera ledar hanterings informationen för ditt erbjud
 
     ![Välj ett mål för lead](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-1. Ange **Server-ID** , **Munchkin-konto-ID** och **formulär-ID**.
+1. Ange **Server-ID**, **Munchkin-konto-ID** och **formulär-ID**.
 
     > [!NOTE]
     > Du måste slutföra konfigurationen av resten av erbjudandet och publicera den innan du kan ta emot leads för erbjudandet. 

@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: 4755bc19a645d196487f0b8e0f4d1ef2120723ca
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94558052"
 ---
 # <a name="platform-integrity-and-security-overview"></a>Plattforms integritet och säkerhets översikt
@@ -21,10 +21,10 @@ Azure-flottan består av miljon tals servrar (värdar) med tusentals ytterligare
 ## <a name="securing-azure-hardware-and-firmware"></a>Skydda Azure-maskinvara och inbyggd program vara
 I den här artikel serien beskrivs hur Microsoft garanterar integritet och säkerhet för värdar genom olika stadier i livs cykeln, från tillverkning till solnedgång. Artikel adressen:
  
-- [Säkerhet för inbyggd program vara](firmware.md)
+- [Säkerhet för inbyggd programvara](firmware.md)
 - [UEFI säker start](secure-boot.md)
 - [Uppmätt start-och värd attestering](measured-boot-host-attestation.md)
-- [Project-Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Kryptering i vila](encryption-atrest.md)
 - [Hypervisor-säkerhet](hypervisor.md)
  

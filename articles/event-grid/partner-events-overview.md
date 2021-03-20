@@ -4,10 +4,10 @@ description: Skicka händelser från tredjeparts Event Grid SaaS-och PaaS-partne
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94506154"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partner händelser i Azure Event Grid (förhands granskning)
@@ -58,7 +58,7 @@ Om du vill att en tjänst från tredje part ska exponera sina händelser via Eve
 ## <a name="resources-managed-by-event-publishers"></a>Resurser som hanteras av händelse utgivare
 Händelse utgivare skapar och hanterar följande resurser:
 
-### <a name="partner-registration"></a>Partner registrering
+### <a name="partner-registration"></a>Partnerregistrering
 En registrering innehåller allmän information som rör en utgivare. Den definierar en typ av partner ämne som visas i Azure Portal som ett alternativ när användare försöker skapa ett partner ämne. En utgivare kan exponera mer än en eller flera partner ämnes typer för att passa behoven hos sina prenumeranter. Det innebär att en utgivare kan skapa separata registreringar (ämnes typer för partner) för händelser från olika tjänster. För personal tjänsten personal kan du till exempel definiera ett partner ämne för händelser som till exempel anställd, personal som marknadsförs och anställd till vänster i företaget. 
 
 Tänk på följande punkter:
@@ -83,14 +83,14 @@ Följande bild visar flödet av kontroll Plans åtgärder.
 1. Publisher skapar en **partner registrering**. Partner registreringar är globala. Det innebär att de inte är associerade med en viss Azure-region. Det här är valfritt.
 1. Publisher skapar ett **partner namn område** i en angiven region.
 1. När prenumeranten 1 försöker skapa ett partner ämne skapas en **händelse** kanal, händelse kanal 1, i utgivarens Azure-prenumeration först.
-1. Sedan är ett **partner ämne** , partner ämne 1, skapas i prenumerantens Azure-prenumeration. Prenumeranten måste aktivera partner ämnet. 
+1. Sedan är ett **partner ämne**, partner ämne 1, skapas i prenumerantens Azure-prenumeration. Prenumeranten måste aktivera partner ämnet. 
 1. Prenumerant 1 skapar en **Azure Logic Apps-prenumeration** för partner ämne 1.
 1. Prenumerant 1 skapar en **Azure Blob Storage-prenumeration** på partner ämne 1. 
 1. När prenumeranten 2 försöker skapa ett partner ämne skapas en annan **händelse** kanal, händelse kanal 2, i utgivarens Azure-prenumeration först. 
 1. Därefter skapas **partner** ämnet, partner ämne 2, i den andra prenumerantens Azure-prenumeration. Prenumeranten måste aktivera partner ämnet. 
 1. Prenumerant 2 skapar en **Azure Functions-prenumeration** för partner ämne 2. 
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 Partner ämnen debiteras genom antalet åtgärder som utförs när du använder Event Grid. Mer information om alla typer av åtgärder som används som grund för fakturering och detaljerad pris information finns i [Event Grid prissättning](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="limits"></a>Gränser

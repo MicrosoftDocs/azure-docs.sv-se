@@ -11,10 +11,10 @@ ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289896"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Hantera Key Vault med Azure CLI 
@@ -39,7 +39,7 @@ Azure Key Vault är tillgängligt i de flesta regioner. Mer information finns p�
 
 En översikt över Azure Key Vault finns i [Vad är Azure Key Vault?](overview.md)) Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda Azure CLI-kommandona i den här artikeln måste du ha följande objekt:
 
@@ -120,7 +120,7 @@ az provider register -n Microsoft.KeyVault
 
 Använd `az keyvault create` kommandot för att skapa ett nyckel valv. Det här skriptet har tre obligatoriska parametrar: ett resurs grupps namn, ett nyckel valv namn och den geografiska platsen.
 
-Om du vill skapa ett nytt valv med namnet **ContosoKeyVault** i resurs gruppen  **ContosoResourceGroup** , som finns på **Asien, östra** plats, skriver du: 
+Om du vill skapa ett nytt valv med namnet **ContosoKeyVault** i resurs gruppen  **ContosoResourceGroup**, som finns på **Asien, östra** plats, skriver du: 
 
 ```azurecli
 az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
@@ -128,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 Utdata från det här kommandot visar egenskaper för nyckel valvet som du har skapat. De två viktigaste egenskaperna är:
 
-* **namn** : i exemplet är namnet ContosoKeyVault. Du kommer att använda det här namnet för andra Key Vault-kommandon.
-* **vaultUri** : i exemplet är URI: n https://contosokeyvault.vault.azure.net . Program som använder ditt valv via dess REST-API måste använda denna URI.
+* **namn**: i exemplet är namnet ContosoKeyVault. Du kommer att använda det här namnet för andra Key Vault-kommandon.
+* **vaultUri**: i exemplet är URI: n https://contosokeyvault.vault.azure.net . Program som använder ditt valv via dess REST-API måste använda denna URI.
 
 Nu har ditt Azure-konto behörighet att utföra åtgärder i det här nyckelvalvet. Från och med har ingen annan behörighet.
 

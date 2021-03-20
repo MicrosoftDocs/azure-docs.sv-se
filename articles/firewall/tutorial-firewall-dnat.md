@@ -9,10 +9,10 @@ ms.date: 03/01/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: a1d3bdae1e870b094472a63d4b808d9df95c129d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741913"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Självstudie: filtrera inkommande Internet trafik med Azure Firewall DNAT med hjälp av Azure Portal
@@ -153,7 +153,7 @@ När distributionen är klar antecknar du den privata IP-adressen för den virtu
    |---------|---------|
    |Prenumeration     |\<your subscription\>|
    |Resursgrupp     |Välj **RG-DNAt-test** |
-   |Namn     |**FW-DNAT-test**|
+   |Name     |**FW-DNAT-test**|
    |Region     |Välj samma plats som tidigare|
    |Brand Väggs hantering|**Använd brand Väggs regler (klassisk) för att hantera den här brand väggen**|
    |Välj ett virtuellt nätverk     |**Använd befintlig**: VN-Hub|

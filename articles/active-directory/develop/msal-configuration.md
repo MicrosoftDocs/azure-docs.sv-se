@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92275609"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurations fil för Android Microsoft Authentication Library
@@ -30,15 +30,15 @@ I den här artikeln får du hjälp att förstå de olika inställningarna i konf
 
 ### <a name="general-settings"></a>Allmänna inställningar
 
-| Egenskap | Datatyp | Krävs | Kommentarer |
+| Egenskap | Datatyp | Obligatorisk | Kommentarer |
 |-----------|------------|-------------|-------|
 | `client_id` | Sträng | Ja | Appens klient-ID från [sidan program registrering](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Sträng | Ja | Appens omdirigerings-URI från [program registrerings sidan](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `broker_redirect_uri_registered` | Boolesk | Nej | Möjliga värden: `true` , `false` |
-| `authorities` | Lista\<Authority> | Nej | Listan över myndigheter som appen behöver |
-| `authorization_user_agent` | AuthorizationAgent (Enum) | Nej | Möjliga värden: `DEFAULT` , `BROWSER` , `WEBVIEW` |
-| `http` | HttpConfiguration | Nej | Konfigurera `HttpUrlConnection` `connect_timeout` och `read_timeout` |
-| `logging` | LoggingConfiguration | Nej | Anger nivån för loggnings information. Valfria konfigurationer är: `pii_enabled` , som tar ett booleskt värde och `log_level` , som tar `ERROR` , `WARNING` , `INFO` eller `VERBOSE` . |
+| `broker_redirect_uri_registered` | Boolesk | Inga | Möjliga värden: `true` , `false` |
+| `authorities` | Lista\<Authority> | Inga | Listan över myndigheter som appen behöver |
+| `authorization_user_agent` | AuthorizationAgent (Enum) | Inga | Möjliga värden: `DEFAULT` , `BROWSER` , `WEBVIEW` |
+| `http` | HttpConfiguration | Inga | Konfigurera `HttpUrlConnection` `connect_timeout` och `read_timeout` |
+| `logging` | LoggingConfiguration | Inga | Anger nivån för loggnings information. Valfria konfigurationer är: `pii_enabled` , som tar ett booleskt värde och `log_level` , som tar `ERROR` , `WARNING` , `INFO` eller `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -91,7 +91,7 @@ Listan över utfärdade myndigheter som är kända och betrodda av dig. Utöver 
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>Mappa AAD-auktoritet & mål grupp till Microsoft Identity Platform-slutpunkter
 
-| Typ | Målgrupp | Klientorganisations-ID | Authority_Url | Resulterande slut punkt | Kommentarer |
+| Typ | Målgrupp | Klient-ID:t | Authority_Url | Resulterande slut punkt | Kommentarer |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` är ett klient Ali Aset för var kontot finns. Till exempel en speciell Azure Active Directory klient organisation eller Microsoft-konto systemet. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Endast konton som finns i contoso.com kan hämta en token. En verifierad domän eller klient-GUID kan användas som klient-ID. |
@@ -107,16 +107,16 @@ Listan över utfärdade myndigheter som är kända och betrodda av dig. Utöver 
 
 #### <a name="authority-properties"></a>Egenskaper för utfärdare
 
-| Egenskap | Datatyp  | Krävs | Kommentarer |
+| Egenskap | Datatyp  | Obligatorisk | Kommentarer |
 |-----------|-------------|-----------|--------|
 | `type` | Sträng | Ja | Speglar mål gruppen eller konto typen för appens mål. Möjliga värden: `AAD` , `B2C` |
-| `audience` | Objekt | Nej | Gäller endast när Type = `AAD` . Anger den identitet som appen är mål för. Använd värdet från din app-registrering |
+| `audience` | Objekt | Inga | Gäller endast när Type = `AAD` . Anger den identitet som appen är mål för. Använd värdet från din app-registrering |
 | `authority_url` | Sträng | Ja | Krävs endast när Type = `B2C` . Anger auktoritets-URL eller princip som din app ska använda  |
 | `default` | boolean | Ja | En enskild `"default":true` krävs när en eller flera utfärdare har angetts. |
 
 #### <a name="audience-properties"></a>Egenskaper för publik
 
-| Egenskap | Datatyp  | Krävs | Kommentarer |
+| Egenskap | Datatyp  | Obligatorisk | Kommentarer |
 |-----------|-------------|------------|-------|
 | `type` | Sträng | Ja | Anger den mål grupp som appen vill rikta sig mot. Möjliga värden: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
 | `tenant_id` | Sträng | Ja | Krävs endast när `"type":"AzureADMyOrg"` . Valfritt för andra `type` värden. Detta kan vara en klient domän, till exempel `contoso.com` eller ett klient-ID som till exempel `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
@@ -144,20 +144,20 @@ Om du använder AAD-utfärdaren som är inställd på `"MicrosoftPersonalAccount
 
 Konfigurera globala inställningar för HTTP-timeout, till exempel:
 
-| Egenskap | Datatyp | Krävs | Kommentarer |
+| Egenskap | Datatyp | Obligatorisk | Kommentarer |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Nej | Tid i millisekunder |
-| `read_timeout` | int | Nej | Tid i millisekunder |
+| `connect_timeout` | int | Inga | Tid i millisekunder |
+| `read_timeout` | int | Inga | Tid i millisekunder |
 
 ### <a name="logging"></a>logging
 
 Följande globala inställningar gäller för loggning:
 
-| Egenskap | Datatyp  | Krävs | Kommentarer |
+| Egenskap | Datatyp  | Obligatorisk | Kommentarer |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | Nej | Om du vill generera personliga data |
+| `pii_enabled`  | boolean | Inga | Om du vill generera personliga data |
 | `log_level`   | sträng | No | Vilka logg meddelanden som ska matas ut. De logg nivåer som stöds är `ERROR` , `WARNING` , `INFO` och `VERBOSE` . |
-| `logcat_enabled` | boolean | Nej | Om du vill skriva utdata till log katt förutom loggnings gränssnittet |
+| `logcat_enabled` | boolean | Inga | Om du vill skriva utdata till log katt förutom loggnings gränssnittet |
 
 ### <a name="account_mode"></a>account_mode
 

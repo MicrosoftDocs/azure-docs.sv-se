@@ -13,10 +13,10 @@ ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
 ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756161"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Självstudie: Logga in användare och anropa Microsoft Graph-API: et från ett särskilt program på en sida
@@ -32,7 +32,7 @@ I de här självstudierna har du
 > * Lägg till kod för anrop Microsoft Graph API
 > * Testa appen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Node.js](https://nodejs.org/en/download/) för att köra en lokal webb server.
 * [Visual Studio Code](https://code.visualstudio.com/download) eller annan redigerare för att ändra projektfiler.
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 I den koden `scopes` innehåller omfattningar som begärs att returneras i åtkomsttoken för API: et.
 
-Ett exempel:
+Exempel:
 
 * `["user.read"]` för Microsoft Graph
 * `["<Application ID URL>/scope"]` för anpassade webb-API: er (dvs. `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Ibland behöver du användaren för att kunna interagera med Microsoft Identity Platform. Ett exempel:
+Ibland behöver du användaren för att kunna interagera med Microsoft Identity Platform. Exempel:
 
 * Användare kan behöva ange sina autentiseringsuppgifter på grund av att deras lösen ord har upphört att gälla.
 * Ditt program begär åtkomst till ytterligare resurs omfattningar som användaren behöver godkänna.

@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255381"
 ---
-# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Skydda användar konton mot attacker med Azure Active Directory Smart utelåsning
+# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Skydda användarkonton mot attacker med smart utlåsning i Azure Active Directory
 
-Smart utelåsning hjälper till att låsa Felaktiga aktörer som försöker gissa dina användares lösen ord eller använda råa metoder för att komma igång. Smart utelåsning kan identifiera inloggningar som kommer från giltiga användare och behandla dem på olika sätt än de som är angripare och andra okända källor. Angripare låser sig ut, medan användarna fortsätter att komma åt sina konton och vara produktiva.
+Smart utlåsning hjälper till att låsa ute illasinnade aktörer som försöker gissa dina användares lösenord eller använda råstyrkemetoder för att komma in. Smart utlåsning kan identifiera inloggningar som kommer från giltiga användare och behandla dem på ett annat sätt än angripare och andra okända källor. Angripare blir utelåsta medan användarna kan komma åt sina konton och vara produktiva.
 
 ## <a name="how-smart-lockout-works"></a>Så här fungerar Smart utelåsning
 

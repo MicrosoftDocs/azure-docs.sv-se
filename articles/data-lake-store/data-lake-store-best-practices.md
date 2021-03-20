@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452220"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Metod tips för att använda Azure Data Lake Storage Gen1
@@ -102,7 +102,7 @@ Nedan visas de tre vanligaste alternativen för att dirigera replikering mellan 
 |---------|---------|---------|---------|
 |**Skalnings gränser**     | Begränsas av arbetsnoder        | Begränsas av max enheter för data förflyttning i molnet        | Begränsas av Analytics-enheter        |
 |**Stöder kopiering av delta**     |   Ja      | Inga         | Inga         |
-|**Inbyggd dirigering**     |  Nej (Använd Oozie-flöde eller cron-jobb)       | Yes        | Nej (Använd Azure Automation-eller Windows-Schemaläggaren)         |
+|**Inbyggd dirigering**     |  Nej (Använd Oozie-flöde eller cron-jobb)       | Ja        | Nej (Använd Azure Automation-eller Windows-Schemaläggaren)         |
 |**Fil system som stöds**     | ADL, HDFS, WASB, S3, GS, CFS        |Flera, se [kopplingar](../data-factory/connector-azure-blob-storage.md).         | ADL till ADL, WASB till ADL (endast samma region)        |
 |**OS-stöd**     |Alla operativ system som kör Hadoop         | Ej tillämpligt          | Windows 10         |
 

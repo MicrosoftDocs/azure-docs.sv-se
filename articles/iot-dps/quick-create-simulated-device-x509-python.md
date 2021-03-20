@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: c151f78c6164cc62aac618a141a26eb1da574e3c
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99218390"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en simulerad X. 509-enhet med python-enhets-SDK för IoT Hub Device Provisioning Service
@@ -109,7 +109,7 @@ Den här artikeln visar en enskild registrering för en enskild enhet som ska ti
 
 I python-etablerings exemplet [provision_x509. py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/provision_x509.py) finns i `azure-iot-sdk-python/azure-iot-device/samples/async-hub-scenarios` katalogen. I det här exemplet används sex miljövariabler för att autentisera och etablera en IoT-enhet med hjälp av DPS. Följande miljövariabler är:
 
-| Variabelnamn              | Description                                     |
+| Variabelnamn              | Beskrivning                                     |
 | :------------------------- | :---------------------------------------------- |
 | `PROVISIONING_HOST`        |  Det här värdet är den globala slut punkt som används för att ansluta till din DPS-resurs |    
 | `PROVISIONING_IDSCOPE`     |  Det här värdet är ID-omfånget för din DPS-resurs |    

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019456"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Felsöka Azure Stream Analytics frågor lokalt med hjälp av jobb diagram i Visual Studio
@@ -51,7 +51,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 
 ![Jobb diagram Live ingångs källor](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |-|-|
 |**TaxiRide**| Namnet på indatamängden.|
 |**Händelsehubb** | Typ av indatakälla.|
@@ -67,7 +67,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 
 ![Jobb diagram lokala ingångs källor](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |-|-|
 |**TaxiRide**| Namnet på indatamängden.|
 |**Radantal**| Antalet rader som genereras från steget.|
@@ -78,7 +78,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 
 ![Frågeresultat för jobb diagram](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |-|-|
 |**TripData**|Namnet på den tillfälliga resultat uppsättningen.|
 |**Radantal**| Antalet rader som genereras från steget.|
@@ -88,7 +88,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 
 ![Jobb diagram som visar de lokala sinkarna för utdata.](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |-|-|
 |**regionaggEH**|Namnet på utdata.|
 |**Händelser**|Antalet händelser som ska matas till sinks.|
@@ -97,7 +97,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 
 ![Data mottagare för lokalt utgående jobb diagram](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |-|-|
 |**regionaggEH**|Namnet på utdata.|
 |**Lokal utdata**| Resultat av utdata till en lokal fil.|

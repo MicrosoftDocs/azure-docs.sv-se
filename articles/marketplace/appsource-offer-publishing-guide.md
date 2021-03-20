@@ -8,17 +8,17 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491162"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Erbjudande publicerings guide för Microsoft 365, Dynamics 365, Power Apps och Power BI
 
 Microsoft AppSource innehåller erbjudanden som bygger på eller utökar Microsoft 365, Dynamics 365, Power Apps och Power BI. Var och en av dessa produkter har en detaljerad dokumentation som hjälper dig i publicerings processen. 
 
-AppSource har betalat, lista och utvärderings erbjudanden, med list alternativen *Hämta det nu* , *kontakta mig* och *prova nu*.
+AppSource har betalat, lista och utvärderings erbjudanden, med list alternativen *Hämta det nu*, *kontakta mig* och *prova nu*.
 
 ## <a name="product-specific-guides"></a>Produktspecifika guider
 

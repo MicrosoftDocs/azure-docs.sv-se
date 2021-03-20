@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220813"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Självstudie: Skapa Azure FXT Edge-kluster
@@ -205,7 +205,7 @@ Inställningarna i avsnittet **hantering** är för det nätverk som ger adminis
 
 * **Hanterings-IP** – ange den IP-adress som du ska använda för att få åtkomst till kluster kontroll panelen. Den här adressen kommer att begäras av klustrets primära nod, men den flyttas automatiskt till en felfri nod om den ursprungliga primära noden blir otillgänglig.
 
-  De flesta kluster använder bara en IP-adress för hantering. Om du vill ha mer än en kan du lägga till dem när du har skapat klustret med hjälp av sidan **kluster**  >  Inställningar för**nätverks administration** . Läs mer i [guiden kluster konfiguration](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
+  De flesta kluster använder bara en IP-adress för hantering. Om du vill ha mer än en kan du lägga till dem när du har skapat klustret med hjälp av sidan **kluster**  >  Inställningar för **nätverks administration** . Läs mer i [guiden kluster konfiguration](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
 
 * **Nätmask** – ange nät masken för hanterings nätverket.
 
@@ -378,7 +378,7 @@ Följ de här stegen för att konfigurera support överföringar.
 1. Klicka på triangeln till vänster om **kund information** för att expandera avsnittet.
 1. Klicka på knappen **Verifiera om upload information** .
 1. Ange klustrets support namn i **unikt kluster namn** – se till att det unikt identifierar klustret så att det stöder personal.
-1. Markera kryss rutorna för **statistik övervakning**, **allmän informations uppladdning**och **krasch informations uppladdning**.
+1. Markera kryss rutorna för **statistik övervakning**, **allmän informations uppladdning** och **krasch informations uppladdning**.
 1. Klicka på **Skicka**.  
 
    ![Skärm bild som innehåller avsnittet om slutförd kund information på sidan support inställningar](media/fxt-cluster-create/fxt-support-info.png)

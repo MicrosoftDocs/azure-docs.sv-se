@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93309215"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopiera data från Azure Cosmos DB till en dedikerad SQL-pool med Apache Spark
@@ -50,7 +50,7 @@ I det exemplet använder vi en HTAP-behållare som heter **RetailSales**. Den ä
 * weekStarting: långt (Nullable = true)
 * _etag: sträng (Nullable = true)
 
-Vi sammanställer försäljningen ( *kvantitet* , *intäkt* (pris × kvantitet) av *ProductCode* och *weekStarting* för rapportering. Slutligen ska vi exportera dessa data till en dedikerad SQL-pool med namnet **dbo. productsales**.
+Vi sammanställer försäljningen (*kvantitet*, *intäkt* (pris × kvantitet) av *ProductCode* och *weekStarting* för rapportering. Slutligen ska vi exportera dessa data till en dedikerad SQL-pool med namnet **dbo. productsales**.
 
 ## <a name="configure-a-spark-notebook"></a>Konfigurera en spark-anteckningsbok
 Skapa en spark-anteckningsbok med Scala som Spark (Scala) som huvud språk. Vi använder antecknings bokens standardinställning för sessionen.

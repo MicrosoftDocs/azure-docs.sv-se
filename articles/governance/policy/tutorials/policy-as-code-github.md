@@ -4,10 +4,10 @@ description: I den här självstudien implementerar du ett Azure Policy som kod 
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92326174"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>Självstudie: implementera Azure Policy som kod med GitHub
@@ -79,7 +79,7 @@ Azure Policy resurserna exporteras till följande struktur i den valda GitHub-la
 
 1. Den här arbets flödes filen använder åtgärden [hantera Azure policy](https://github.com/marketplace/actions/manage-azure-policy) för att skicka ändringar som gjorts i de exporterade princip objekten i GitHub-lagringsplatsen tillbaka till Azure policy. Som standard betraktar åtgärden och synkroniserar bara de filer som skiljer sig från de som finns i Azure. Du kan också använda `assignments` parametern i åtgärden för att bara synkronisera ändringar som gjorts till vissa uppdragsfiler. Den här parametern kan endast användas för att tillämpa princip tilldelningar för en speciell miljö. Mer information finns i Readme- [filen för att hantera Azure policy-lagringsplats](https://github.com/Azure/manage-azure-policy).
 
-1. Som standard måste arbets flödet utlösas manuellt. Det gör du med hjälp av **åtgärderna** i GitHub, väljer `manage-azure-policy-<randomLetters>` arbets flödet, väljer **Kör arbets flöde**och **kör sedan arbets flödet** igen.
+1. Som standard måste arbets flödet utlösas manuellt. Det gör du med hjälp av **åtgärderna** i GitHub, väljer `manage-azure-policy-<randomLetters>` arbets flödet, väljer **Kör arbets flöde** och **kör sedan arbets flödet** igen.
 
    :::image type="content" source="../media/policy-as-code-github/manually-trigger-workflow.png" alt-text="Skärm bild av knapparna åtgärd, arbets flöde och kör arbets flöde i GitHub-webbgränssnittet.":::
 
@@ -88,11 +88,11 @@ Azure Policy resurserna exporteras till följande struktur i den valda GitHub-la
 
 1. Arbets flödet synkroniserar ändringarna som görs i princip objekt med Azure och ger dig status i loggarna.
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Skärm bild av knapparna åtgärd, arbets flöde och kör arbets flöde i GitHub-webbgränssnittet.":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Skärm bild av arbets flödet i åtgärds-och loggad information i loggarna.":::
 
 1. Arbets flödet lägger också till information i Azure Policy objekt `properties.metadata` som du kan spåra.
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Skärm bild av knapparna åtgärd, arbets flöde och kör arbets flöde i GitHub-webbgränssnittet.":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Skärm bild av Azure Policys definitionen i Azure Portal uppdaterad med metadata som är särskilt för GitHub-åtgärden.":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>Utlös genomsökning av kompatibilitet med GitHub-åtgärd
 

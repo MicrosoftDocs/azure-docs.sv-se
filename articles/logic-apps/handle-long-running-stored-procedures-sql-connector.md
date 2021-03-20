@@ -7,10 +7,10 @@ ms.reviewer: camerost, logicappspm
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.openlocfilehash: f5b04c563dc81497f591788dc4890d379c0f898f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93103111"
 ---
 # <a name="handle-stored-procedure-timeouts-in-the-sql-connector-for-azure-logic-apps"></a>Hantera tids gränser för lagrade procedurer i SQL-anslutningen för Azure Logic Apps
@@ -37,10 +37,10 @@ BEGIN
 END
 ```
 
-I stället för att direkt anropa den lagrade proceduren kan du köra proceduren asynkront i bakgrunden med hjälp av en *jobb agent* . Du kan lagra indata och utdata i en tillstånds tabell som du sedan kan interagera med via din Logic app. Om du inte behöver indata och utdata, eller om du redan har skrivit resultatet i en tabell i den lagrade proceduren, kan du förenkla den här metoden.
+I stället för att direkt anropa den lagrade proceduren kan du köra proceduren asynkront i bakgrunden med hjälp av en *jobb agent*. Du kan lagra indata och utdata i en tillstånds tabell som du sedan kan interagera med via din Logic app. Om du inte behöver indata och utdata, eller om du redan har skrivit resultatet i en tabell i den lagrade proceduren, kan du förenkla den här metoden.
 
 > [!IMPORTANT]
-> Se till att din lagrade procedur och alla jobb är *idempotenta* , vilket innebär att de kan köras flera gånger utan att det påverkar resultatet. Om den asynkrona bearbetningen Miss lyckas eller om tids gränsen uppnås kan jobb agenten försöka utföra steget igen och därmed lagrad procedur flera gånger. Du kan undvika duplicering av utdata innan du skapar några objekt genom att granska dessa [metod tips och metoder](../azure-sql/database/elastic-jobs-overview.md#idempotent-scripts).
+> Se till att din lagrade procedur och alla jobb är *idempotenta*, vilket innebär att de kan köras flera gånger utan att det påverkar resultatet. Om den asynkrona bearbetningen Miss lyckas eller om tids gränsen uppnås kan jobb agenten försöka utföra steget igen och därmed lagrad procedur flera gånger. Du kan undvika duplicering av utdata innan du skapar några objekt genom att granska dessa [metod tips och metoder](../azure-sql/database/elastic-jobs-overview.md#idempotent-scripts).
 
 I nästa avsnitt beskrivs hur du kan använda Azure elastiska jobb agent för Azure SQL Database. Du kan använda SQL Server Agent för SQL Server och Azure SQL-hanterad instans. Vissa hanterings uppgifter skiljer sig, men de grundläggande stegen är desamma som när du konfigurerar en jobb agent för Azure SQL Database.
 
@@ -48,7 +48,7 @@ I nästa avsnitt beskrivs hur du kan använda Azure elastiska jobb agent för Az
 
 ## <a name="job-agent-for-azure-sql-database"></a>Jobb agent för Azure SQL Database
 
-Om du vill skapa ett jobb som kan köra den lagrade proceduren för [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)använder du [Azures elastiska jobb agent](../azure-sql/database/elastic-jobs-overview.md). Skapa din jobb agent i Azure Portal. Med den här metoden kan du lägga till flera lagrade procedurer i databasen som används av agenten, även kallat *Agent databasen* . Du kan sedan skapa ett jobb som kör din lagrade procedur i mål databasen och avbilda utdata när det är klart.
+Om du vill skapa ett jobb som kan köra den lagrade proceduren för [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)använder du [Azures elastiska jobb agent](../azure-sql/database/elastic-jobs-overview.md). Skapa din jobb agent i Azure Portal. Med den här metoden kan du lägga till flera lagrade procedurer i databasen som används av agenten, även kallat *Agent databasen*. Du kan sedan skapa ett jobb som kör din lagrade procedur i mål databasen och avbilda utdata när det är klart.
 
 Innan du kan skapa jobbet måste du konfigurera behörigheter, grupper och mål enligt beskrivningen i den [fullständiga dokumentationen för Azure elastiska jobb agenten](../azure-sql/database/elastic-jobs-overview.md). Du måste också skapa en stödjande tabell i mål databasen enligt beskrivningen i följande avsnitt.
 
