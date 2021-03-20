@@ -4,16 +4,16 @@ description: Den här artikeln beskriver hur du konfigurerar automatisk avstäng
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91650042"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Konfigurera automatisk avstängning av virtuella datorer för ett labb konto
 
 Du kan aktivera flera kostnads styrnings funktioner för automatisk avstängning för att proaktivt förhindra ytterligare kostnader när de virtuella datorerna inte används aktivt. Kombinationen av följande tre funktioner för automatisk avstängning och från koppling fångar upp de flesta fall där användare av misstag lämnar sina virtuella datorer som kör:
- 
+ 
 - Koppla automatiskt bort användare från virtuella datorer som operativ systemet bedömer inaktivt.
 - Stäng virtuella datorer automatiskt när användarna kopplar från.
 - Stäng av virtuella datorer som har startats automatiskt, men som inte ansluter till dem.

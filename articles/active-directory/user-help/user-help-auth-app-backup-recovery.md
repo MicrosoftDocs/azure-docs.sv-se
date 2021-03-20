@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530909"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Säkerhetskopiera och återställa autentiseringsuppgifter för kontot med hjälp av Microsoft Authenticator-appen
@@ -43,7 +43,7 @@ Innan du kan säkerhetskopiera dina autentiseringsuppgifter måste du ha:
 
 ### <a name="to-turn-on-cloud-backup-for-ios-devices"></a>Aktivera moln säkerhets kopiering för iOS-enheter
 
-- På din iOS-enhet väljer du **Inställningar**, **säkerhets kopiering**och aktiverar sedan **iCloud-säkerhetskopiering**.
+- På din iOS-enhet väljer du **Inställningar**, **säkerhets kopiering** och aktiverar sedan **iCloud-säkerhetskopiering**.
 
     Autentiseringsuppgifterna för ditt konto säkerhets kopie ras till ditt iCloud-konto.
 
@@ -51,7 +51,7 @@ Innan du kan säkerhetskopiera dina autentiseringsuppgifter måste du ha:
 
 ### <a name="to-turn-on-cloud-backup-for-android-devices"></a>Aktivera moln säkerhets kopiering för Android-enheter
 
-- På din Android-enhet väljer du **Inställningar**, **säkerhets kopiering**och aktiverar sedan **moln säkerhets kopiering**.
+- På din Android-enhet väljer du **Inställningar**, **säkerhets kopiering** och aktiverar sedan **moln säkerhets kopiering**.
 
     Autentiseringsuppgifterna för ditt konto säkerhets kopie ras till ditt moln konto.
 
@@ -87,17 +87,17 @@ För personliga Microsoft-konton kan du bevisa din identitet genom att ange ditt
 
 1. Tryck på panelen för det konto som du återställer och tryck sedan på alternativet för att logga in för att återställa. Ange ditt lösen ord och bekräfta din e-postadress eller ditt telefonnummer som ytterligare verifiering.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Skärm bild som visar Microsoft Authenticator-appen med de tillgängliga konto panelerna." border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Skärm bild som visar Microsoft Authenticator lösen ords kod med eng ång slö sen ord." border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>För att ge mer verifiering för arbets-eller skol konton
 
 1. På skärmen **konton** i Microsoft Authenticator-appen trycker du på det konto som du vill återställa för att öppna hela skärm visningen av kontot.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Skärm bild som visar Microsoft Authenticator-appen med de tillgängliga konto panelerna." border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator app, som visar panelerna tillgängliga konton" border="true":::
 
 1. I hel skärms läge trycker du på alternativet för att skanna en QR-kod för att helt återställa.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Skärm bild som visar Microsoft Authenticator-appen med de tillgängliga konto panelerna." border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Autentiseraren visar ett eng ång slö sen ord som en verifierings kod" border="true":::
 
 >[!NOTE]
 >Mer information om QR-koder och hur du hämtar ett finns i [Kom igång med Microsoft Authenticator-appen](./user-help-auth-app-download-install.md) eller [Konfigurera säkerhets information för att använda en Authenticator-app](./security-info-setup-auth-app.md), baserat på om din administratör har aktiverat säkerhets information.

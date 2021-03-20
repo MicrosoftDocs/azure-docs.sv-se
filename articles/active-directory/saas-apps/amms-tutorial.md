@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fdfe26104e4b69212b7bf6870582ef4cbb4de2b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amms"></a>Självstudie: Azure Active Directory integrering med AMMS
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med AMMS i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **AMMS** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **AMMS** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -144,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till AMMS.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **AMMS**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **AMMS**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -168,7 +168,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 ### <a name="create-amms-test-user"></a>Skapa AMMS test användare
 
-I det här avsnittet skapar du en användare som heter Britta Simon i AMMS. Arbeta med [AMMS support team](mailto:techsupport@microwestsoftware.com) för att lägga till användare i AMMS-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare som heter Britta Simon i AMMS. Arbeta med [AMMS support team](mailto:techsupport@microwestsoftware.com) för att lägga till användare i AMMS-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

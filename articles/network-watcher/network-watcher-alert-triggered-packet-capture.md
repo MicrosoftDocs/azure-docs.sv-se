@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100570982"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Använda paket fångst för proaktiv nätverks övervakning med aviseringar och Azure Functions
@@ -81,7 +81,7 @@ Det första steget är att skapa en Azure-funktion för att bearbeta aviseringen
     |**Resursgrupp**|PacketCaptureRG|Resurs gruppen som innehåller Function-appen.|
     |**Värdplan**|Förbrukningsplan| Typ av plan som din Function-app använder. Alternativen är förbruknings-eller Azure App Services planer. |
     |**Plats**|Central US| Den region där du vill skapa Function-appen.|
-    |**Lagringskonto**|automatiskt skapade texter| Det lagrings konto som Azure Functions behöver för allmän lagring.|
+    |**Lagrings konto**|automatiskt skapade texter| Det lagrings konto som Azure Functions behöver för allmän lagring.|
 
 3. På bladet **PacketCaptureExample Function-appar** väljer **du**  >  **anpassad funktion**  > **+** .
 

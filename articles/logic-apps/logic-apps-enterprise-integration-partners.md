@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565079"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Lägga till handelspartner till integrationskonton för Azure Logic Apps
@@ -41,7 +41,7 @@ I ett avtal anger du information om hur du hanterar inkommande och utgående med
 
    ![Välj integrations konton](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-1. Under **integrations konton**väljer du det integrations konto där du vill lägga till dina partner.
+1. Under **integrations konton** väljer du det integrations konto där du vill lägga till dina partner.
 
    ![Välj integrations konto](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
@@ -49,7 +49,7 @@ I ett avtal anger du information om hur du hanterar inkommande och utgående med
 
    ![Skärm bild som visar panelen partner.](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-1. Under **partner**väljer du **Lägg till**. Under **Lägg till partner**anger du partnerns information som beskrivs i tabellen nedan.
+1. Under **partner** väljer du **Lägg till**. Under **Lägg till partner** anger du partnerns information som beskrivs i tabellen nedan.
 
    ![Välj "Lägg till" och ange partner information](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
@@ -78,7 +78,7 @@ Välj panelen **partner** .
 
    ![Välj panelen partner](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-1. Under **partner**väljer du den partner som du vill redigera och väljer **Redigera**. Under **Redigera**, gör du ändringarna.
+1. Under **partner** väljer du den partner som du vill redigera och väljer **Redigera**. Under **Redigera**, gör du ändringarna.
 
    ![Gör och spara dina ändringar](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
@@ -102,7 +102,7 @@ Välj panelen **partner** .
 
    ![Skärm bild som visar panelen partner som du väljer när du vill ta bort en partner.](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
-1. Under **partner**väljer du den partner som du vill ta bort. Välj **Ta bort**.
+1. Under **partner** väljer du den partner som du vill ta bort. Välj **Ta bort**.
 
    ![Ta bort partner](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566103"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Skicka anpassade kommandon-aktivitet till klient program
@@ -57,7 +57,7 @@ Du utför följande aktiviteter:
 
 I [anvisningar: Konfigurera klient program med Speech SDK (för hands version)](./how-to-custom-commands-setup-speech-sdk.md)har du skapat ett UWP-klientprogram med tal-SDK som hanterade kommandon som `turn on the tv` , `turn off the fan` . Med vissa visuella objekt tillagda kan du se resultatet av dessa kommandon.
 
-Om du vill lägga till etiketterade rutor med text som visar **på** eller **av** , lägger du till följande XML-block med StackPanel i `MainPage.xaml` .
+Om du vill lägga till etiketterade rutor med text som visar **på** eller **av**, lägger du till följande XML-block med StackPanel i `MainPage.xaml` .
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -85,8 +85,8 @@ Om du vill lägga till etiketterade rutor med text som visar **på** eller **av*
 Eftersom du har skapat en JSON-nyttolast måste du lägga till en referens i [JSON.net](https://www.newtonsoft.com/json) -biblioteket för att hantera deserialisering.
 
 1. Rätt-klient din lösning.
-1. Välj **Hantera NuGet-paket för lösningen** , Välj **Bläddra** 
-1. Om du redan har installerat **Newtonsoft.jspå** kontrollerar du att dess version är minst 12.0.3. Om inte går du till **Hantera NuGet-paket för lösning – uppdateringar** , sök efter **Newtonsoft.jspå** för att uppdatera den. Den här guiden använder version 12.0.3.
+1. Välj **Hantera NuGet-paket för lösningen**, Välj **Bläddra** 
+1. Om du redan har installerat **Newtonsoft.jspå** kontrollerar du att dess version är minst 12.0.3. Om inte går du till **Hantera NuGet-paket för lösning – uppdateringar**, sök efter **Newtonsoft.jspå** för att uppdatera den. Den här guiden använder version 12.0.3.
 
     > [!div class="mx-imgBorder"]
     > ![Skicka aktivitetens nytto Last](media/custom-commands/send-activity-to-client-json-nuget.png)

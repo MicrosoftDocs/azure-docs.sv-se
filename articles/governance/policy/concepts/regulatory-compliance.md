@@ -4,10 +4,10 @@ description: Beskriver hur du använder en initiativ definition för att grupper
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89645525"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Regelefterlevnad i Azure Policy
@@ -40,11 +40,11 @@ Om du väljer en **kontroll** öppnas en sida med information om den kontrollen.
 > [!NOTE]
 > En utvärderings typ av **Microsoft Managed** är för en [statisk](./definition-structure.md#type) princip definition `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Skärm bild av översikten över regelefterlevnad för NIST SP 800-53 R4 inbyggd definition som visar kompatibla och icke-kompatibla kontroller.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Skärm bild av detaljerad information om efterlevnad för den begränsande skydds kontrollen för NIST SP 800-53 R4 inbyggd definition.":::
 
-Från samma **kontroll** sida visas alla resurser som den här **kontrollens**princip definitioner inkluderar på fliken för **resurs efterlevnad** . Filter är tillgängliga för namn eller ID, kompatibilitetstillstånd, resurs typ och plats.
+Från samma **kontroll** sida visas alla resurser som den här **kontrollens** princip definitioner inkluderar på fliken för **resurs efterlevnad** . Filter är tillgängliga för namn eller ID, kompatibilitetstillstånd, resurs typ och plats.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Skärm bild av översikten över regelefterlevnad för NIST SP 800-53 R4 inbyggd definition som visar kompatibla och icke-kompatibla kontroller.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Skärm bild av resursens efterlevnad av gränserna för skydds kontrollen av NIST SP 800-53 R4 inbyggd definition.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Regelefterlevnad i SDK
 

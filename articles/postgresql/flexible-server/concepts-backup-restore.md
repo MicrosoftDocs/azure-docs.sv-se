@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92532653"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Säkerhets kopiering och återställning i Azure Database for PostgreSQL-flexibel Server
@@ -71,9 +71,9 @@ De fysiska databasfilerna återställs först från ögonblicks säkerhets kopio
 
 Du kan välja mellan en tidigaste återställnings punkt och en anpassad återställnings punkt.
 
--   **Tidigaste återställnings punkt** : beroende på din kvarhållningsperiod, är det den tidigaste tiden som du kan återställa. Den äldsta säkerhets kopierings tiden kommer automatiskt att väljas och visas på portalen. Detta är användbart om du vill undersöka eller göra några tester som startar den tidpunkten.
+-   **Tidigaste återställnings punkt**: beroende på din kvarhållningsperiod, är det den tidigaste tiden som du kan återställa. Den äldsta säkerhets kopierings tiden kommer automatiskt att väljas och visas på portalen. Detta är användbart om du vill undersöka eller göra några tester som startar den tidpunkten.
 
--   **Anpassad återställnings punkt** : med det här alternativet kan du välja vilken tidpunkt som helst inom den kvarhållningsperiod som definierats för den här flexibla servern. Som standard väljs den senaste tiden i UTC automatiskt och är användbar om du vill återställa till den senaste genomförda transaktionen för ditt test syfte. Du kan också välja andra dagar och tidpunkter. 
+-   **Anpassad återställnings punkt**: med det här alternativet kan du välja vilken tidpunkt som helst inom den kvarhållningsperiod som definierats för den här flexibla servern. Som standard väljs den senaste tiden i UTC automatiskt och är användbar om du vill återställa till den senaste genomförda transaktionen för ditt test syfte. Du kan också välja andra dagar och tidpunkter. 
 
 Den uppskattade tiden som ska återställas beror på flera faktorer, till exempel databas storlek, volym för transaktions loggar som ska bearbetas, nätverks bandbredden och det totala antalet databaser som återställs i samma region på samma gång. Den totala återställnings tiden tar vanligt vis från några minuter upp till några timmar.
 

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: victorh
 ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89536011"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Självstudie: skydda din virtuella hubb med Azure Firewall Manager
@@ -46,16 +46,16 @@ Skapa först ekrar virtuella nätverk där du kan placera dina servrar.
 De två virtuella nätverken kommer att ha en arbets belastnings Server och skyddas av brand väggen.
 
 1. På Start sidan Azure Portal väljer du **skapa en resurs**.
-2. Välj **virtuellt nätverk**under **nätverk**.
+2. Välj **virtuellt nätverk** under **nätverk**.
 2. I fältet **Prenumeration** väljer du din prenumeration.
-1. För **resurs grupp**väljer du **Skapa ny**och skriver **VB-Manager** som namn och väljer **OK**.
-2. Som **namn**skriver du **ekrar-01**.
-3. För **region**väljer du **(US) USA, östra**.
+1. För **resurs grupp** väljer du **Skapa ny** och skriver **VB-Manager** som namn och väljer **OK**.
+2. Som **namn** skriver du **ekrar-01**.
+3. För **region** väljer du **(US) USA, östra**.
 4. Välj **Nästa: IP-adresser**.
-1. Skriv **10.1.0.0/16**för **adress utrymme**.
+1. Skriv **10.1.0.0/16** för **adress utrymme**.
 3. Välj **Lägg till undernät**.
 4. Skriv **arbets belastning – 01-SN**.
-5. Skriv **10.1.1.0/24**för **under nätets adress intervall**.
+5. Skriv **10.1.1.0/24** för **under nätets adress intervall**.
 6. Välj **Lägg till**.
 1. Välj **Granska + skapa**.
 2. Välj **Skapa**.
@@ -75,10 +75,10 @@ Skapa din säkra virtuella hubb med hjälp av brand Väggs hanteraren.
 2. I rutan Sök skriver du **Firewall Manager** och väljer **brand Väggs hanteraren**.
 3. På sidan **Firewall Manager** väljer du **Visa skyddade virtuella nav**.
 4. I **brand Väggs hanteraren | Sidan skyddade virtuella hubbar** väljer du **Skapa ny säker virtuell hubb**.
-5. För **resurs grupp**väljer du **VB-Manager**.
-7. För **region**väljer du **östra USA**.
-1. För namnet på den **säkra virtuella hubben**skriver du **Hub-01**.
-2. För **nav adress utrymme**skriver du **10.0.0.0/16**.
+5. För **resurs grupp** väljer du **VB-Manager**.
+7. För **region** väljer du **östra USA**.
+1. För namnet på den **säkra virtuella hubben** skriver du **Hub-01**.
+2. För **nav adress utrymme** skriver du **10.0.0.0/16**.
 3. För det nya vWAN-namnet skriver du **vWAN-01**.
 4. Lämna kryss rutan **Inkludera VPN-gateway för att aktivera betrodda säkerhets partner** avmarkerad.
 5. Välj **Nästa: Azure-brandvägg**.
@@ -88,7 +88,7 @@ Skapa din säkra virtuella hubb med hjälp av brand Väggs hanteraren.
 
 Nu kan du hämta brand väggens offentliga IP-adress.
 
-1. När distributionen är klar väljer du **alla tjänster**på Azure Portal.
+1. När distributionen är klar väljer du **alla tjänster** på Azure Portal.
 1. Skriv **Firewall Manager** och välj sedan **Firewall Manager**.
 2. Välj **skyddade virtuella hubbar**.
 3. Välj **hubb – 01**.
@@ -100,12 +100,12 @@ Nu kan du hämta brand väggens offentliga IP-adress.
 Nu kan du peer-koppla hubben och Ekers virtuella nätverk.
 
 1. Välj resurs gruppen **VB-Manager** och välj sedan det virtuella WAN **-nätverket Vwan-01** .
-2. Under **anslutning**väljer du **virtuella nätverks anslutningar**.
+2. Under **anslutning** väljer du **virtuella nätverks anslutningar**.
 3. Välj **Lägg till anslutning**.
-4. För **anslutnings namn**skriver du **Hub-eker-01**.
-5. För **hubbar**väljer du **hubb-01**.
-6. För **resurs grupp**väljer du **VB-Manager**.
-7. För **virtuellt nätverk**väljer du **eker-01**.
+4. För **anslutnings namn** skriver du **Hub-eker-01**.
+5. För **hubbar** väljer du **hubb-01**.
+6. För **resurs grupp** väljer du **VB-Manager**.
+7. För **virtuellt nätverk** väljer du **eker-01**.
 8. Välj **Skapa**.
 
 Upprepa för att ansluta det **ekrar-02** virtuella nätverket: anslutnings namn – **hubb-eker-02**
@@ -116,26 +116,26 @@ Upprepa för att ansluta det **ekrar-02** virtuella nätverket: anslutnings namn
 2. Välj **Windows Server 2016 Data Center** i listan **populär** .
 3. Ange följande värden för den virtuella datorn:
 
-   |Inställningen  |Värde  |
+   |Inställning  |Värde  |
    |---------|---------|
    |Resursgrupp     |**VB-chef**|
    |Namn på virtuell dator     |**SRV-arbets belastning – 01**|
    |Region     |**USA USA, östra)**|
    |Administratörens användar namn     |Ange ett användar namn|
-   |lösenordsinställning     |Ange ett lösen ord|
+   |Lösenord     |Ange ett lösen ord|
 
-4. Under **regler för inkommande port**för **offentliga inkommande portar**väljer du **ingen**.
+4. Under **regler för inkommande port** för **offentliga inkommande portar** väljer du **ingen**.
 6. Godkänn de andra standardinställningarna och välj **Nästa: diskar**.
 7. Acceptera standardvärdena för disken och välj **Nästa: nätverk**.
 8. Välj **ekrar – 01** för det virtuella nätverket och välj **arbets belastning – 01-SN** för under nätet.
-9. För **offentlig IP-adress**väljer du **ingen**.
+9. För **offentlig IP-adress** väljer du **ingen**.
 11. Godkänn övriga standardvärden och välj **Nästa: hantering**.
 12. Välj **av** om du vill inaktivera startdiagnostik. Godkänn de andra standardinställningarna och välj **Granska + skapa**.
 13. Granska inställningarna på sidan Sammanfattning och välj sedan **skapa**.
 
 Använd informationen i följande tabell för att konfigurera en annan virtuell dator med namnet **SRV-arbetsbelastning-02**. Resten av konfigurationen är samma som den virtuella datorn för **SRV-arbetsbelastnings 01** .
 
-|Inställningen  |Värde  |
+|Inställning  |Värde  |
 |---------|---------|
 |Virtuellt nätverk|**Eker-02**|
 |Undernät|**Arbets belastning-02-SN**|
@@ -153,47 +153,47 @@ En brand Väggs princip definierar samlingar av regler för att dirigera trafik 
 1. Välj **Nästa: regler**.
 2. På fliken **regler** väljer du **Lägg till en regel samling**.
 3. På sidan **Lägg till regel samling** skriver du **app-RC-01** som **namn**.
-4. För **regel samlings typ**väljer du **program**.
+4. För **regel samlings typ** väljer du **program**.
 5. För **prioritet**, Skriv **100**.
 6. Se till att **regel samlings åtgärden** är **tillåten**.
 7. För regel **namn** typen **Allow-MSFT**.
-8. För **typ av källa**väljer du **IP-adress**.
-9. Som **källa**skriver du **\*** .
+8. För **typ av källa** väljer du **IP-adress**.
+9. Som **källa** skriver du **\*** .
 10. För **protokoll**, Skriv **http, https**.
 11. Se till att **måltypen** är ett **fullständigt domän namn**.
-12. För **mål**skriver du ** \* . Microsoft.com**.
+12. För **mål** skriver du **\* . Microsoft.com**.
 13. Välj **Lägg till**.
 
 Lägg till en DNAT-regel så att du kan ansluta ett fjärr skrivbord till den virtuella **SRV-arbets belastnings 01-** datorn.
 
 1. Välj **Lägg till en regel samling**.
-2. I **namn**skriver du **DNAt-RDP**.
-3. För **regel samlings typ**väljer du **DNAt**.
+2. I **namn** skriver du **DNAt-RDP**.
+3. För **regel samlings typ** väljer du **DNAt**.
 4. För **prioritet**, Skriv **100**.
 5. Som regel **namn** skriver du **Tillåt-RDP**.
-6. För **typ av källa**väljer du **IP-adress**.
-7. Som **källa**skriver du **\*** .
+6. För **typ av källa** väljer du **IP-adress**.
+7. Som **källa** skriver du **\*** .
 8. I fältet **Protokoll** väljer du **TCP**.
-9. För **mål portar**skriver du **3389**.
-10. För **måltyp**väljer du **IP-adress**.
-11. För **mål**anger du den offentliga IP-adress för brand väggen som du antecknade tidigare.
-12. För **översatt adress**anger du den privata IP-adressen för **SRV-arbetsbelastning – 01** som du antecknade tidigare.
+9. För **mål portar** skriver du **3389**.
+10. För **måltyp** väljer du **IP-adress**.
+11. För **mål** anger du den offentliga IP-adress för brand väggen som du antecknade tidigare.
+12. För **översatt adress** anger du den privata IP-adressen för **SRV-arbetsbelastning – 01** som du antecknade tidigare.
 13. I fältet **Översatt port** skriver du **3389**.
 14. Välj **Lägg till**.
 
 Lägg till en nätverks regel så att du kan ansluta ett fjärr skrivbord från **SRV-arbetsbelastning – 01** till **SRV-arbets belastning-02**.
 
 1. Välj **Lägg till en regel samling**.
-2. För **namn**skriver du **VNet-RDP**.
-3. För **regel samlings typ**väljer du **nätverk**.
+2. För **namn** skriver du **VNet-RDP**.
+3. För **regel samlings typ** väljer du **nätverk**.
 4. För **prioritet**, Skriv **100**.
 5. För regel **namn** skriver du **Allow-VNet**.
-6. För **typ av källa**väljer du **IP-adress**.
-7. Som **källa**skriver du **\*** .
+6. För **typ av källa** väljer du **IP-adress**.
+7. Som **källa** skriver du **\*** .
 8. I fältet **Protokoll** väljer du **TCP**.
-9. För **mål portar**skriver du **3389**.
-9. För **måltyp**väljer du **IP-adress**.
-10. För **mål**anger du den **SRV-arbetsbelastnings 02-** privata IP-adress som du antecknade tidigare.
+9. För **mål portar** skriver du **3389**.
+9. För **måltyp** väljer du **IP-adress**.
+10. För **mål** anger du den **SRV-arbetsbelastnings 02-** privata IP-adress som du antecknade tidigare.
 11. Välj **Lägg till**.
 1. Välj **Nästa: Hot information**.
 2. Välj **Nästa: hubbar**.
@@ -210,9 +210,9 @@ Nu måste du se till att nätverks trafiken dirigeras genom brand väggen.
 
 1. I brand Väggs hanteraren väljer du **skyddade virtuella nav**.
 2. Välj **hubb – 01**.
-3. Under **Inställningar**väljer du **säkerhets konfiguration**.
-4. Under **Internet trafik**väljer du **Azure-brandvägg**.
-5. Under **privat trafik**väljer du **Skicka via Azure-brandvägg**.
+3. Under **Inställningar** väljer du **säkerhets konfiguration**.
+4. Under **Internet trafik** väljer du **Azure-brandvägg**.
+5. Under **privat trafik** väljer du **Skicka via Azure-brandvägg**.
 10. Kontrol lera att **Hub-eker-** anslutningen visar **Internet trafik** som **skyddad**.
 11. Välj **Spara**.
 

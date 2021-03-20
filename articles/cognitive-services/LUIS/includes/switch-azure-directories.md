@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.date: 12/08/2020
 ms.topic: include
 ms.openlocfilehash: 515d58e49d17dbd615bc88b7c29aebf60b9566da
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97007982"
 ---
 Om du inte ser en app som har skapats av dig eller delats med dig kan du behöva byta till en annan Azure-katalog.

@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89393147"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurera en plats-till-plats-VPN via ExpressRoute Microsoft-peering
@@ -239,7 +239,7 @@ Tilldela en offentlig IP-adress för varje instans av en VPN-gateway.
 
 ### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3,4 Ange den lokala VPN-tunnelns avslutning (lokal nätverksgateway)
 
-Lokala VPN-enheter kallas **lokal**nätverksgateway. Följande JSON-kodfragment anger också information om fjärrdatorns BGP-peer:
+Lokala VPN-enheter kallas **lokal** nätverksgateway. Följande JSON-kodfragment anger också information om fjärrdatorns BGP-peer:
 
 ```json
 {

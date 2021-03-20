@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993395"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET för cachelagring för Azure cache för Redis
@@ -52,7 +52,7 @@ NuGet-paketet hämtar och lägger till de sammansättnings referenser som krävs
 
 Konfigurera attributen med värdena från ditt cache-blad i Microsoft Azure-portalen och konfigurera de andra värdena efter behov. Anvisningar om hur du kommer åt dina cache-egenskaper finns i [Konfigurera Azure cache för Redis-inställningar](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Attribut | Typ | Standardvärde | Description |
+| Attribut | Typ | Standardvärde | Beskrivning |
 | --------- | ---- | ------- | ----------- |
 | *värd* | sträng | värd | IP-adressen eller värd namnet för Redis-servern |
 | *lastning* | positivt heltal | 6379 (ej TLS/SSL)<br/>6380 (TLS/SSL) | Redis server-port |

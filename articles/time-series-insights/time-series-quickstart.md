@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/30/2020
 ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91613789"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Snabb start: utforska Azure Time Series Insights gen1
@@ -55,7 +55,7 @@ Den här snabb starten i Azure Time Series Insights Explorer innehåller en guid
 
    Azure Time Series Insights visar en diagram visualisering för den tidsram som du har angett. Du kan utföra olika åtgärder i linje diagrammet. Du kan till exempel filtrera, fästa, sortera och stapla.
 
-   Gå tillbaka till **panelen för val av tid**genom att välja nedåtpilen som visas:
+   Gå tillbaka till **panelen för val av tid** genom att välja nedåtpilen som visas:
 
    [![Diagram](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 

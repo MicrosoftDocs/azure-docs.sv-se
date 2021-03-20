@@ -9,10 +9,10 @@ ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 649c5805c600b6282be6d05fefb59cecaf249f4f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92526138"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Stöds BGP på alla Azure VPN Gateway-SKU:er?
@@ -45,7 +45,7 @@ Dessa ASN: er är inte reserverade för IANA eller Azure för användning och ka
 
 ### <a name="what-address-does-vpn-gateway-use-for-bgp-peer-ip"></a>Vilken adress använder VPN Gateway för BGP-peer-IP?
 
-Som standard allokerar VPN Gateway en enskild IP-adress från *GatewaySubnet* -INTERVALLET för VPN-gatewayer med aktiv vänte läge eller två IP-adresser för aktiva, aktiva VPN-gatewayer. De här adresserna tilldelas automatiskt när du skapar VPN-gatewayen. Du kan få den faktiska BGP-IP-adress som allokeras med hjälp av PowerShell eller genom att leta upp den i Azure Portal. I PowerShell använder du **Get-AzVirtualNetworkGateway**och letar efter egenskapen **bgpPeeringAddress** . I Azure Portal på sidan Gateway- **konfiguration** tittar du under egenskapen **Konfigurera BGP ASN** .
+Som standard allokerar VPN Gateway en enskild IP-adress från *GatewaySubnet* -INTERVALLET för VPN-gatewayer med aktiv vänte läge eller två IP-adresser för aktiva, aktiva VPN-gatewayer. De här adresserna tilldelas automatiskt när du skapar VPN-gatewayen. Du kan få den faktiska BGP-IP-adress som allokeras med hjälp av PowerShell eller genom att leta upp den i Azure Portal. I PowerShell använder du **Get-AzVirtualNetworkGateway** och letar efter egenskapen **bgpPeeringAddress** . I Azure Portal på sidan Gateway- **konfiguration** tittar du under egenskapen **Konfigurera BGP ASN** .
 
 Om dina lokala VPN-routrar använder **APIPA** IP-adresser (169.254. x. x) som BGP-IP-adresser, måste du ange ytterligare en **Azure APIPA BGP-IP-adress** på din Azure VPN-gateway. Azure VPN Gateway väljer APIPA-adressen som ska användas med den lokala APIPA BGP-peer som anges i den lokala Nätverksgatewayen eller den privata IP-adressen för en lokal BGP-peer som inte är APIPA. Mer information finns i [Configure BGP](../articles/vpn-gateway/bgp-howto.md).
 

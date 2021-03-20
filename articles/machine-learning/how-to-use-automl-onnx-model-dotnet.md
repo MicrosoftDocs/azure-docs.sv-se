@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to, automl
 ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358821"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Göra förutsägelser med en AutoML ONNX-modell i .NET
@@ -50,7 +50,7 @@ I det här exemplet använder du .NET Core CLI för att skapa programmet, men du
 
 ## <a name="add-software-packages"></a>Lägg till program varu paket
 
-1. Installera **Microsoft.ml** , **Microsoft. ml. OnnxRuntime** och **Microsoft. ml. OnnxTransformer** NuGet-paketen med hjälp av .net Core cli.
+1. Installera **Microsoft.ml**, **Microsoft. ml. OnnxRuntime** och **Microsoft. ml. OnnxTransformer** NuGet-paketen med hjälp av .net Core cli.
 
     ```dotnetcli
     dotnet add package Microsoft.ML
@@ -60,7 +60,7 @@ I det här exemplet använder du .NET Core CLI för att skapa programmet, men du
 
     Dessa paket innehåller de beroenden som krävs för att använda en ONNX-modell i ett .NET-program. ML.NET tillhandahåller ett API som använder [ONNX runtime](https://github.com/Microsoft/onnxruntime) för förutsägelser.
 
-1. Öppna filen *program.cs* och Lägg till följande- `using` instruktioner högst upp för att referera till lämpliga paket.
+1. Öppna filen *program. cs* och Lägg till följande- `using` instruktioner överst för att referera till lämpliga paket.
 
     ```csharp
     using System.Linq;
@@ -88,7 +88,7 @@ Lägg till en referens till din ONNX-modell fil i ditt program
 
     I det här fallet är namnet på ONNX Model *-filen automl-Model. ONNX*.
 
-1. Öppna filen *program.cs* och Lägg till följande rad inuti `Program` klassen.
+1. Öppna filen *program. cs* och Lägg till följande rad inuti `Program` klassen.
 
     ```csharp
     static string ONNX_MODEL_PATH = "automl-model.onnx";
@@ -130,7 +130,7 @@ Använd ett verktyg som Netron för att kontrol lera din modells indata och utda
 
 ### <a name="define-model-input-schema"></a>Definiera schema för modell inflöde
 
-Skapa en ny klass `OnnxInput` som kallas med följande egenskaper i *program.cs* -filen.
+Skapa en ny klass `OnnxInput` som kallas med följande egenskaper i filen *program. cs* .
 
 ```csharp
 public class OnnxInput
@@ -165,7 +165,7 @@ Läs mer om dataattribut i [ml.net load data guide](/dotnet/machine-learning/how
 
 ### <a name="define-model-output-schema"></a>Definiera schema för modell utdata
 
-När data har bearbetats skapas utdata av ett visst format. Definiera schemat för datautdata. Skapa en ny klass `OnnxOutput` som kallas med följande egenskaper i *program.cs* -filen.
+När data har bearbetats skapas utdata av ett visst format. Definiera schemat för datautdata. Skapa en ny klass `OnnxOutput` som kallas med följande egenskaper i filen *program. cs* .
 
 ```csharp
 public class OnnxOutput

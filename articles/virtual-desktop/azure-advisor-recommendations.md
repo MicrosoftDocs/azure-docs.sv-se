@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033038"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Så här löser du Azure Advisor rekommendationer
@@ -34,7 +34,7 @@ Så här aktiverar du en validerings miljö:
 
 2. Välj sedan den modempool som du vill ändra från en produktions miljö till en validerings miljö.
 
-3. I din värddator väljer du **Egenskaper** i den vänstra kolumnen. Bläddra sedan nedåt tills du ser "validerings miljö". Välj **Ja**och välj sedan **Använd**.
+3. I din värddator väljer du **Egenskaper** i den vänstra kolumnen. Bläddra sedan nedåt tills du ser "validerings miljö". Välj **Ja** och välj sedan **Använd**.
 
 >[!div class="mx-imgBorder"]
 >![En skärm bild av menyn egenskaper. "Validerings miljön" är markerad i rött och bubblan "Ja" är markerad.](media/validation-yes.png)
@@ -58,7 +58,7 @@ Så här löser du den här varningen:
 
 2. Välj de lagringspooler som du vill ändra från validering till produktion.
 
-3. I din värddator väljer du fliken **Egenskaper** i kolumnen på höger sida av skärmen. Bläddra sedan nedåt tills du ser "validerings miljö". Välj **Nej**och välj sedan **Använd**.
+3. I din värddator väljer du fliken **Egenskaper** i kolumnen på höger sida av skärmen. Bläddra sedan nedåt tills du ser "validerings miljö". Välj **Nej** och välj sedan **Använd**.
 
 >[!div class="mx-imgBorder"]
 >![En skärm bild av menyn egenskaper. "Validerings miljön" är markerad i rött och bubblan "No" är markerad.](media/validation-no.png)

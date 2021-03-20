@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179756"
 ---
 # <a name="sensor-partner-integration"></a>Sensorpartnerintegration
@@ -137,7 +137,7 @@ FarmBeats Datahub har följande API: er som gör det möjligt för enhets partne
   Tillverkare  | Tillverkarens namn |
   ProductCode  | Enhetens produkt kod eller modell namn eller nummer. Till exempel EnviroMonitor # 6800. |
   Portar  | Port namn och-typ, som är digital eller analog.  |
-  Namn  | Namn för att identifiera resursen. Till exempel modell namn eller produkt namn. |
+  Name  | Namn för att identifiera resursen. Till exempel modell namn eller produkt namn. |
   Beskrivning  | Ange en meningsfull beskrivning av modellen. |
   Egenskaper  | Ytterligare egenskaper från tillverkaren. |
   **Enhet** | **Beskrivning** |
@@ -146,7 +146,7 @@ FarmBeats Datahub har följande API: er som gör det möjligt för enhets partne
   ReportingInterval |Rapport intervall i sekunder. |
   Location    |Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
   ParentDeviceId | ID för den överordnade enhet som enheten är ansluten till. Om en nod till exempel är ansluten till en gateway har noden parentDeviceID som gateway. |
-  Namn  | Namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på enhets partner sidan. Om enhetens namn är användardefinierat på enhets partner sidan, ska samma användardefinierade namn spridas till FarmBeats.  |
+  Name  | Namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på enhets partner sidan. Om enhetens namn är användardefinierat på enhets partner sidan, ska samma användardefinierade namn spridas till FarmBeats.  |
   Beskrivning  | Ange en meningsfull beskrivning.  |
   Egenskaper  |Ytterligare egenskaper från tillverkaren.  |
   **SensorModel** | **Beskrivning** |
@@ -160,7 +160,7 @@ FarmBeats Datahub har följande API: er som gör det möjligt för enhets partne
   SensorMeasures > AggregationType  | Antingen ingen, genomsnitt, högsta, lägsta eller StandardDeviation.
   SensorMeasures > djup  | Sensorns djup i centimeter. Till exempel mätningen av fukt 10 cm under marken.
   Beskrivning av SensorMeasures->  | Ge en meningsfull beskrivning av måttet.
-  Namn  | Namn för att identifiera resursen. Till exempel modell namnet eller produkt namnet.
+  Name  | Namn för att identifiera resursen. Till exempel modell namnet eller produkt namnet.
   Beskrivning  | Ange en meningsfull beskrivning av modellen.
   Egenskaper  | Ytterligare egenskaper från tillverkaren.
   **Mäta**  | **Beskrivning** |
@@ -169,7 +169,7 @@ FarmBeats Datahub har följande API: er som gör det möjligt för enhets partne
   Location  | Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter).
   Port > namn  |Namn och typ för den port som sensorn är ansluten till på enheten. Det måste vara samma namn som definieras i enhets modellen.
   DeviceId  | ID för den enhet som sensorn är ansluten till.
-  Namn  | Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod.
+  Name  | Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod.
   Beskrivning  | Ange en meningsfull beskrivning.
   Egenskaper  | Ytterligare egenskaper från tillverkaren.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98127795"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Uppgradera och skala en Azure API Management-instans  
@@ -67,7 +67,7 @@ Du kan uppgradera och nedgradera till och från valfri nivå. Uppgradering eller
 2. Välj **platser** på menyn.
 3. Klicka på raden med den plats som du vill skala.
 4. Ange det nya antalet **enheter** – Använd antingen skjutreglaget eller Skriv in numret.
-5. Klicka på **Godkänn**.
+5. Klicka på **Applicera**.
 
 ## <a name="change-your-api-management-service-tier"></a>Ändra API Management tjänst nivå
 

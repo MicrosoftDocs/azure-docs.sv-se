@@ -12,13 +12,13 @@ ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537012"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Skapa applösenord från sidan säkerhets information (förhands granskning)
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Skapa applösenord på sidan Säkerhetsinformation (förhandsversion)
 
 Vissa appar, till exempel Outlook 2010, stöder inte tvåstegsverifiering. Detta saknar stöd innebär att om du använder tvåstegsverifiering i din organisation fungerar inte appen. För att komma runt det här problemet kan du skapa ett automatiskt genererat lösen ord som ska användas med varje annan app än en webbläsare, separat från ditt normala lösen ord.
 

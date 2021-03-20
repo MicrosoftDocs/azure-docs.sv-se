@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80437899"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Styra Azure App Service trafik med Azure Traffic Manager
@@ -24,10 +24,10 @@ Du kan använda Azure Traffic Manager för att styra hur begäranden från webbk
 ## <a name="routing-methods"></a>Routningsmetoder
 Azure Traffic Manager använder fyra olika metoder för routning. Dessa metoder beskrivs i följande lista som de gäller för Azure App Service.
 
-* ** [Prioritet](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** Använd en primär app för all trafik och ange säkerhets kopior om den primära appen eller säkerhets kopierings programmen inte är tillgängliga.
-* ** [Viktat](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribuera trafik över en uppsättning appar, antingen jämnt eller enligt de vikter som du definierar.
-* ** [Prestanda](../traffic-manager/traffic-manager-routing-methods.md#performance):** när du har appar på olika geografiska platser använder du den "närmast" appen med avseende på den lägsta nätverks fördröjningen.
-* ** [Geografisk](../traffic-manager/traffic-manager-routing-methods.md#geographic):** dirigera användare till specifika appar baserat på vilken geografisk plats deras DNS-fråga kommer från. 
+* **[Prioritet](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** Använd en primär app för all trafik och ange säkerhets kopior om den primära appen eller säkerhets kopierings programmen inte är tillgängliga.
+* **[Viktat](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribuera trafik över en uppsättning appar, antingen jämnt eller enligt de vikter som du definierar.
+* **[Prestanda](../traffic-manager/traffic-manager-routing-methods.md#performance):** när du har appar på olika geografiska platser använder du den "närmast" appen med avseende på den lägsta nätverks fördröjningen.
+* **[Geografisk](../traffic-manager/traffic-manager-routing-methods.md#geographic):** dirigera användare till specifika appar baserat på vilken geografisk plats deras DNS-fråga kommer från. 
 
 Mer information finns i [Traffic Manager metoder för routning](../traffic-manager/traffic-manager-routing-methods.md).
 

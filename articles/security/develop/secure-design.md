@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487685"
 ---
 # <a name="design-secure-applications-on-azure"></a>Utforma säkra program på Azure
@@ -158,7 +158,7 @@ Att modellera program designen och räkna upp [kliv](https://docs.google.com/vie
 | Avvislighet            | Oavvislighet       | Aktivera [övervakning och diagnostik](/azure/architecture/best-practices/monitoring)i Azure.|
 | Avslöjande av information | Konfidentialitet       | Kryptera känsliga data i [vila](../fundamentals/encryption-atrest.md) och [under överföring](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
 | Denial of Service      | Tillgänglighet          | Övervaka prestanda mått för potentiella denial of service-villkor. Implementera anslutnings filter. [Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md#next-steps), kombinerat med bästa praxis för program design, ger skydd mot DDoS-attacker.|
-| Höjning av privilegier | Auktorisering         | Använd Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
+| Höjning av privilegier | Auktorisering         | Använd Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
 
 ### <a name="reduce-your-attack-surface"></a>Minska attack ytan
 

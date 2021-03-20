@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99550750"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagerar på Azure App konfigurations händelser
@@ -29,7 +29,7 @@ Ta en titt på [använd Event Grid för meddelanden om data ändring](./howto-ap
 ## <a name="available-azure-app-configuration-events"></a>Tillgängliga Azure App konfigurations händelser
 Event Grid använder [händelse prenumerationer](../event-grid/concepts.md#event-subscriptions) för att dirigera händelse meddelanden till prenumeranter. Azure App konfigurations händelse prenumerationer kan innehålla två typer av händelser:  
 
-> |Händelsenamn|Description|
+> |Händelsenamn|Beskrivning|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Utlöses när ett nyckel värde skapas eller ersätts|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Utlöses när ett nyckel värde tas bort|
@@ -37,7 +37,7 @@ Event Grid använder [händelse prenumerationer](../event-grid/concepts.md#event
 ## <a name="event-schema"></a>Händelseschema
 Azure App konfigurations händelser innehåller all information som du behöver för att svara på ändringar i dina data. Du kan identifiera en konfigurations händelse för appen eftersom egenskapen eventType börjar med "Microsoft. AppConfiguration". Ytterligare information om användningen av Event Grid händelse egenskaper dokumenteras i [Event Grid händelse schema](../event-grid/event-schema.md).  
 
-> |Egenskap|Typ|Description|
+> |Egenskap|Typ|Beskrivning|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |ämne|sträng|Fullständigt Azure Resource Manager-ID för den app-konfiguration som utsänder händelsen.|
 > |Ämne|sträng|URI för det nyckel värde som är ämnet för händelsen.|

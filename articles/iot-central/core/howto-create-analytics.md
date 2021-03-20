@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 8f329b6377915a3df6e3f3e212cbd8d41f9ed80d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90017668"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Använda analys för att analysera enhets data
@@ -35,7 +35,7 @@ Analytics User Interface består av tre huvud komponenter:
 
 ## <a name="querying-your-data"></a>Fråga dina data
 
-Du måste starta genom att välja en **enhets grupp**och den telemetri som du vill analysera. När du är klar väljer du **analysera** för att börja visualisera dina data.
+Du måste starta genom att välja en **enhets grupp** och den telemetri som du vill analysera. När du är klar väljer du **analysera** för att börja visualisera dina data.
 
 - **Enhets grupp:** En [enhets grupp](tutorial-use-device-groups.md) är en användardefinierad grupp av dina enheter. Till exempel alla kyl skåp i Oakland eller alla version 2,0 lindnings turbiner.
 

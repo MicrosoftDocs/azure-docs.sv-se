@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336213"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Felsöka problem med replikering för virtuella VMware-datorer och fysiska servrar
@@ -47,7 +47,7 @@ När du försöker välja käll datorn för att aktivera replikering med hjälp 
 * **Azure Site Recovery hanterings servrar**: om den virtuella datorn används som hanterings Server under en eller flera av följande roller – konfigurations servern/Scale-Out processervern/huvud mål servern, kan du inte välja den virtuella datorn från portalen. Hanterings servrar kan inte replikeras.
 * **Redan skyddad/misslyckad via Azure Site Recovery Services**: om den virtuella datorn redan är skyddad eller misslyckad via Site Recovery, är den virtuella datorn inte tillgänglig för att välja skydd i portalen. Se till att den virtuella dator som du söker efter i portalen inte redan skyddas av någon annan användare eller under en annan prenumeration.
 * **vCenter är inte ansluten**: kontrol lera om vCenter är i anslutet tillstånd. För att verifiera går du till Recovery Services valv > Site Recovery infrastruktur > konfigurations servrar > klickar på respektive konfigurations Server > ett blad öppnas till höger med information om associerade servrar. Kontrol lera om vCenter är ansluten. Om det är i läget "inte ansluten" löser du problemet och [uppdaterar sedan konfigurations servern](vmware-azure-manage-configuration-server.md#refresh-configuration-server) på portalen. Därefter visas den virtuella datorn i portalen.
-* **ESXi**avstängd: om ESXi-värden som den virtuella datorn finns i är avstängd, kommer den virtuella datorn inte att listas eller går inte att välja i Azure Portal. Starta ESXi-värden och [Uppdatera konfigurations servern](vmware-azure-manage-configuration-server.md#refresh-configuration-server) på portalen. Därefter visas den virtuella datorn i portalen.
+* **ESXi** avstängd: om ESXi-värden som den virtuella datorn finns i är avstängd, kommer den virtuella datorn inte att listas eller går inte att välja i Azure Portal. Starta ESXi-värden och [Uppdatera konfigurations servern](vmware-azure-manage-configuration-server.md#refresh-configuration-server) på portalen. Därefter visas den virtuella datorn i portalen.
 * **Väntar på omstart**: om det finns en väntande omstart på den virtuella datorn kommer du inte att kunna välja datorn på Azure Portal. Se till att slutföra de väntande omstarts aktiviteterna, [Uppdatera konfigurations servern](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Därefter visas den virtuella datorn i portalen.
 * **IP hittades inte**: om den virtuella datorn inte har en giltig IP-adress som är kopplad till den, kan du inte välja datorn på Azure Portal. Se till att tilldela en giltig IP-adress till den virtuella datorn och [Uppdatera konfigurations servern](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Därefter visas den virtuella datorn i portalen.
 
@@ -118,7 +118,7 @@ Lös problemet genom att följa stegen nedan för att kontrol lera tjänst statu
     - Fel information finns i loggarna på platsen:
 
         *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
-3. Om du vill registrera huvud målet med konfigurations servern navigerar du till mappen **%programdata%\ASR\Agent**och kör följande kommando tolk:
+3. Om du vill registrera huvud målet med konfigurations servern navigerar du till mappen **%programdata%\ASR\Agent** och kör följande kommando tolk:
    ```
    cmd
    cdpcli.exe --registermt
@@ -164,12 +164,12 @@ I ovanstående exempel **2147754994** är felkoden som visar dig om felet som vi
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS-skrivaren är inte installerad-fel 2147221164
 
-*Så här åtgärdar*du: om du vill skapa en program konsekvenss etikett använder Azure Site Recovery Microsoft Volume Shadow Copy Service (VSS). Den installerar en VSS-Provider för åtgärden att ta ögonblicks bilder av program konsekvens. Den här VSS-providern installeras som en tjänst. Om tjänsten VSS Provider inte är installerad, Miss lyckas skapandet av program konsekvensen med fel-ID 0x80040154 "-klassen har inte registrerats". </br>
+*Så här åtgärdar* du: om du vill skapa en program konsekvenss etikett använder Azure Site Recovery Microsoft Volume Shadow Copy Service (VSS). Den installerar en VSS-Provider för åtgärden att ta ögonblicks bilder av program konsekvens. Den här VSS-providern installeras som en tjänst. Om tjänsten VSS Provider inte är installerad, Miss lyckas skapandet av program konsekvensen med fel-ID 0x80040154 "-klassen har inte registrerats". </br>
 Se [artikeln om fel sökning av VSS Writer-installation](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS-skrivaren är inaktive rad-fel 2147943458
 
-**Så här åtgärdar**du: om du vill skapa en program konsekvenss etikett använder Azure Site Recovery Microsoft Volume Shadow Copy Service (VSS). Den installerar en VSS-Provider för åtgärden att ta ögonblicks bilder av program konsekvens. Den här VSS-providern installeras som en tjänst. Om tjänsten VSS Provider är inaktive rad kan inte skapandet av program konsekvens skapas med fel-ID: t "den angivna tjänsten är inaktive rad och kan inte startas (0x80070422)". </br>
+**Så här åtgärdar** du: om du vill skapa en program konsekvenss etikett använder Azure Site Recovery Microsoft Volume Shadow Copy Service (VSS). Den installerar en VSS-Provider för åtgärden att ta ögonblicks bilder av program konsekvens. Den här VSS-providern installeras som en tjänst. Om tjänsten VSS Provider är inaktive rad kan inte skapandet av program konsekvens skapas med fel-ID: t "den angivna tjänsten är inaktive rad och kan inte startas (0x80070422)". </br>
 
 - Om VSS är inaktiverat
     - Kontrol lera att start typen för tjänsten VSS Provider är inställd på **Automatisk**.
@@ -180,7 +180,7 @@ Se [artikeln om fel sökning av VSS Writer-installation](./vmware-azure-troubles
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS-PROVIDER NOT_REGISTERED-fel 2147754756
 
-**Så här åtgärdar**du: om du vill skapa en program konsekvenss etikett använder Azure Site Recovery Microsoft Volume Shadow Copy Service (VSS).
+**Så här åtgärdar** du: om du vill skapa en program konsekvenss etikett använder Azure Site Recovery Microsoft Volume Shadow Copy Service (VSS).
 Kontrol lera om tjänsten Azure Site Recovery VSS Provider är installerad eller inte. </br>
 
 - Försök att installera providern med följande kommandon:

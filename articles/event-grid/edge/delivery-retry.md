@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171626"
 ---
 # <a name="delivery-and-retry"></a>Leverans och nytt försök
@@ -52,7 +52,7 @@ En händelse tas bort om någon av gränserna för principen för återförsök 
 
 Det finns två egenskaper: `brokers__defaultMaxDeliveryAttempts` och `broker__defaultEventTimeToLiveInSeconds` som kan konfigureras som en del av event Grid-distributionen, som kontrollerar princip inställningarna för återförsök för alla prenumeranter.
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapens namn | Beskrivning |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Maximalt antal försök att leverera en händelse. Standardvärde: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | TTL för händelse i sekunder efter vilken en händelse tas bort om den inte levereras. Standardvärde: **7200** sekunder

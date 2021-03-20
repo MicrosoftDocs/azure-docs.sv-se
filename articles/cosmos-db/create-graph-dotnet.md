@@ -10,10 +10,10 @@ ms.date: 02/21/2020
 ms.author: chrande
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 1953f4a21df6f550320592fbe009834a7b573887
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360538"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Snabb start: bygga ett .NET Framework-eller kärn program med hjälp av Azure Cosmos DB Gremlin API-konto
@@ -124,7 +124,7 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Öppna *program.cs* -filen och uppdatera variablerna "databas och container" med databasen och behållaren (som också är graf-namn) som skapats ovan.
+1. Öppna filen *program. cs* och uppdatera variablerna "databas och container" med databasen och behållaren (som också är graf-namn) som du skapade ovan.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 

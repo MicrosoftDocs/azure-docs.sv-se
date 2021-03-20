@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: fc2a2c557ff9738051b9d9f38ad8947d2edd6a36
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Självstudie: Azure Active Directory integrering med 10, 000ft-planer
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till 10 000ft-planer.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **10, 000ft planer**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **10, 000ft planer**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

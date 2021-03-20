@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
 ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536740"
 ---
 # <a name="convert-word-to-vector-module"></a>Konvertera Word till Vector-modul
@@ -51,11 +51,11 @@ Den här modulen kräver en data uppsättning som innehåller en kolumn med text
 
 2. Som indata för modulen anger du en data uppsättning som innehåller en eller flera text kolumner.
 
-3. För **mål kolumn**väljer du bara en kolumn som innehåller text att bearbeta.
+3. För **mål kolumn** väljer du bara en kolumn som innehåller text att bearbeta.
 
     Eftersom den här modulen skapar en vokabulär från text, är innehållet i kolumner olika, vilket leder till olika vokabulär innehåll. Därför accepterar modulen bara en mål kolumn.
 
-4. För  **Word2Vec-strategin**väljer du **från assisterad för förtränad engelsk modell**, **Gensim Word2Vec**och **Gensim Fasttext**.
+4. För  **Word2Vec-strategin** väljer du **från assisterad för förtränad engelsk modell**, **Gensim Word2Vec** och **Gensim Fasttext**.
 
 5. Om **Word2Vec-strategin** är **Gensim Word2Vec** eller **Gensim Fasttext**:
 
@@ -67,15 +67,15 @@ Den här modulen kräver en data uppsättning som innehåller en kolumn med text
 
         Standard inbäddnings storleken är 100.
 
-    + För **Sammanhangs fönster storlek**anger du det maximala avståndet mellan ordet som förutsägs och det aktuella ordet. Den här inställningen motsvarar `window` parametern i Gensim.
+    + För **Sammanhangs fönster storlek** anger du det maximala avståndet mellan ordet som förutsägs och det aktuella ordet. Den här inställningen motsvarar `window` parametern i Gensim.
 
         Standard fönster storleken är 5.
 
-    + För **antal epoker**anger du antalet epoker (iterationer) över sökkorpus. Motsvarar `iter` parametern i Gensim.
+    + För **antal epoker** anger du antalet epoker (iterationer) över sökkorpus. Motsvarar `iter` parametern i Gensim.
 
         Standardvärdet för epok är 5.
 
-6. För **maximal vokabulär storlek**anger du det maximala antalet ord i den genererade ord listan.
+6. För **maximal vokabulär storlek** anger du det maximala antalet ord i den genererade ord listan.
 
     Om det finns mer unika ord än den maximala storleken kan du rensa de ovanliga.
 

@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91534428"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Tilldela berättigande till en privilegie rad åtkomst grupp (för hands version) i Privileged Identity Management
@@ -64,7 +64,7 @@ Följ de här stegen för att göra en användare berättigad att vara medlem el
 
 1. När du är färdig väljer du **tilldela**.
 
-1. Välj **Lägg till**för att skapa den nya roll tilldelningen. Ett meddelande om status visas.
+1. Välj **Lägg till** för att skapa den nya roll tilldelningen. Ett meddelande om status visas.
 
     ![Ny tilldelning – meddelande](./media/groups-assign-member-owner/groups-assignment-notification.png)
 

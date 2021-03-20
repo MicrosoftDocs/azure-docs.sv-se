@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994901"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Dirigera trafik till specifika slutpunkter baserat på användares undernät med Traffic Manager
@@ -44,7 +44,7 @@ I det här avsnittet skapar du två webbplatsinstanser som tillhandahåller två
 2. Installera IIS-servern på de båda virtuella datorerna och uppdatera standardwebbsidan som beskriver namnet på den virtuella datorn som en användare är ansluten när webbplatsen besöks.
 
 #### <a name="create-vms-for-running-websites"></a>Skapa virtuella datorer för att köra webbplatser
-I det här avsnittet skapar du två virtuella datorer *myEndpointVMEastUS* och *myEndpointVMWEurope* i Azure-regionerna **USA, östra** och Västeuropa. **West Europe**
+I det här avsnittet skapar du två virtuella datorer *myEndpointVMEastUS* och *myEndpointVMWEurope* i Azure-regionerna **USA, östra** och Västeuropa. 
 
 1. I det övre vänstra hörnet av Azure Portal väljer du **skapa en resurs**  >  **Compute**  >  **Windows Server 2016 VM**.
 2. Ange eller välj följande information för **Grundinställningar**, acceptera standardinställningarna för återstående inställningar och välj sedan **Skapa**:
@@ -55,7 +55,7 @@ I det här avsnittet skapar du två virtuella datorer *myEndpointVMEastUS* och *
     |Användarnamn| Ange ett valfritt användarnamn.|
     |Lösenord| Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Resursgrupp| Välj **ny** och skriv sedan *myResourceGroupTM1*.|
-    |Plats| Välj **USA, östra**.|
+    |Location| Välj **USA, östra**.|
     |||
 
 4. Välj en VM-storlek i **Välj en storlek**.
@@ -75,7 +75,7 @@ I det här avsnittet skapar du två virtuella datorer *myEndpointVMEastUS* och *
     |Inställning|Värde|
     |---|---|
     |Resursgrupp | Välj **Ny** och skriv sedan *myResourceGroupTM2*|
-    |Plats|Europa, västra|
+    |Location|Europa, västra|
     |Namn på virtuell dator | myIISVMWEurope|
     |Virtuellt nätverk | Välj **Virtuellt nätverk** i **Skapa virtuellt nätverk**. För **Namn** anger du *myVNet2* och för undernätet anger du *mySubnet*.|
     |||

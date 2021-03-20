@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531657"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Övervaka och minimera begränsningen för att minska svars tiden i Azure Time Series Insights gen1
@@ -59,17 +59,17 @@ Aviseringar kan hjälpa dig att diagnostisera och minimera latens problem som up
 
    Därifrån kan du konfigurera aviseringar med några av följande villkor:
 
-   |Mått  |Beskrivning  |
+   |Metric  |Beskrivning  |
    |---------|---------|
    |**Inkommande mottagna byte**     | Antal obehandlade byte som lästs från händelse källor. RAW Count inkluderar vanligt vis egenskaps namn och-värde.  |  
    |**Inkommande mottagna ogiltiga meddelanden**     | Antalet ogiltiga meddelanden som lästs från alla Azure Event Hubs-eller Azure IoT Hub-händelseloggen.      |
    |**Ingress mottagna meddelanden**   | Antal meddelanden som lästs från alla händelse källor för Event Hubs eller IoT Hub.        |
    |**Inkommande lagrade byte**     | Total storlek på händelser som lagras och är tillgängliga för fråga. Storleken beräknas bara för egenskap svärdet.        |
-   |**Ingress lagrade händelser**    |   Antal utplattade händelser som lagras och är tillgängliga för fråga.      |
-   |**Mottagnings tids fördröjning för inkommande meddelanden**   |  Skillnaden i sekunder mellan den tid som meddelandet står i kö i händelse källan och den tid det bearbetas i ingress.      |
-   |**Antal inkommande mottagna meddelanden**   |  Skillnaden mellan sekvensnumret för det senaste köade meddelandet i en partition för händelse källan och sekvensnummer för det meddelande som bearbetas i ingress.      |
+   |**Ingress lagrade händelser**     |   Antal utplattade händelser som lagras och är tillgängliga för fråga.      |
+   |**Mottagnings tids fördröjning för inkommande meddelanden**    |  Skillnaden i sekunder mellan den tid som meddelandet står i kö i händelse källan och den tid det bearbetas i ingress.      |
+   |**Antal inkommande mottagna meddelanden**    |  Skillnaden mellan sekvensnumret för det senaste köade meddelandet i en partition för händelse källan och sekvensnummer för det meddelande som bearbetas i ingress.      |
 
-   Välj **Done** (Klar).
+   Välj **Klar**.
 
 1. När du har konfigurerat den önskade signal logiken granskar du den valda aviserings regeln visuellt.
 

@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943924"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Vad är ML-tjänster i Azure HDInsight
@@ -55,7 +55,7 @@ ML-tjänster i HDInsight ger följande fördelar:
 
 Följande funktioner ingår i ML-tjänster i HDInsight.
 
-| Funktions kategori | Description |
+| Funktions kategori | Beskrivning |
 |------------------|-------------|
 | R-aktiverad | [R-paket](/machine-learning-server/r-reference/introducing-r-server-r-package-reference) för lösningar som är skrivna i R, med en distribution med öppen källkod av R och körnings infrastruktur för skript körning. |
 | Python-aktiverat | [Python-moduler](/machine-learning-server/python-reference/introducing-python-package-reference) för lösningar som skrivits i python, med en distribution med öppen källkod av python och körnings infrastruktur för skript körning.
@@ -133,7 +133,7 @@ En Desktop IDE kan komma åt klustret via en fjärran sluten MapReduce eller Spa
 
 Öppna R-konsolen på Edge-noden genom att skriva **R** i kommando tolken. När du använder-konsol gränssnittet är det praktiskt att utveckla R-skript i en text redigerare. Klipp ut och klistra in avsnitt i skriptet i R-konsolen efter behov.
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Priserna som är associerade med ett ML-kluster med ML-tjänster struktureras på samma sätt som andra typer av HDInsight-kluster. De baseras på storleken på de underliggande virtuella datorerna över namn-, data-och Edge-noderna. Core – timme lyfter också. Mer information finns i avsnittet om [priser för HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 

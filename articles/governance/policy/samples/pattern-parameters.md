@@ -4,10 +4,10 @@ description: Detta Azure Policy mönster innehåller ett exempel på hur du anv�
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649953"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy mönster: parametrar
@@ -43,7 +43,7 @@ Den här princip definitionen använder en enda parameter, **listOfBandwidthinMb
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="6-12":::
 
-I den här delen av princip definitionen definieras parametern **listOfBandwidthinMbps** som en _matris_ och en beskrivning anges för dess användning. Som en _matris_har den flera värden att matcha.
+I den här delen av princip definitionen definieras parametern **listOfBandwidthinMbps** som en _matris_ och en beskrivning anges för dess användning. Som en _matris_ har den flera värden att matcha.
 
 Parametern används sedan i **policyRule. if** -block. Som en _mat ris_ parameter måste ett _mat ris_ 
  [villkor](../concepts/definition-structure.md#conditions) **i** eller **notIn** användas.

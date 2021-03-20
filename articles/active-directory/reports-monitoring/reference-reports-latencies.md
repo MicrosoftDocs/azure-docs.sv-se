@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231069"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory-rapporteringssvarstider
@@ -54,8 +54,8 @@ Om du redan har aktivitets data med din kostnads fria licens kan du se den direk
 
 Det finns två typer av säkerhetsrapporter:
 
-- [Riskfyllda inloggningar](../identity-protection/overview-identity-protection.md) – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare. 
-- [Användare som har flaggats för risk](../identity-protection/overview-identity-protection.md) – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats. 
+- [Riskfyllda inloggningar](../identity-protection/overview-identity-protection.md) – en riskfylld inloggning är en indikator för ett inloggnings försök som kan ha utförts av någon som inte är en legitim ägare till ett användar konto. 
+- [Användare som har flaggats för risk](../identity-protection/overview-identity-protection.md) – en riskfylld användare är en indikator för ett användar konto som kan ha komprometterats. 
 
 I följande tabell visas svars tids informationen för säkerhets rapporter.
 

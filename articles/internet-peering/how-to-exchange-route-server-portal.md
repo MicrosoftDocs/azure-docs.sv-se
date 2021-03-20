@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537199"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Skapa eller ändra en Exchange-peering med Route server i Azure Portal
@@ -69,9 +69,9 @@ Som en Internet Exchange-Provider kan du skapa en Exchange peering-begäran geno
     * Välj SKU som **standard kostnads fritt**. Välj inte Premium kostnads fritt eftersom det är reserverat för särskilda program.
     * Välj den **tunnelbane** plats där du vill konfigurera peering.
 
-1. Under **peering-anslutningar**väljer du **Skapa ny**
+1. Under **peering-anslutningar** väljer du **Skapa ny**
 
-1.  Under **direkt peering-anslutning**fyller du i följande information om BGP-sessioner:
+1.  Under **direkt peering-anslutning** fyller du i följande information om BGP-sessioner:
 
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar fönstret direkt peering-anslutning med information tillagda.](./media/setup-exchange-conf-tab-direct-route.png)
@@ -86,7 +86,7 @@ Som en Internet Exchange-Provider kan du skapa en Exchange peering-begäran geno
      * Maximalt annonseringat IPv4-prefix kan vara upp till 20000. 
      * Använd för peering-tjänsten är inaktive rad som standard. Det kan aktive ras när Exchange-providern har signerat ett peering service-avtal med Microsoft.
 
-1. Klicka på **Spara**när du är klar. 
+1. Klicka på **Spara** när du är klar. 
 
 1. Under skapa en peering ser du att verifieringen är klar. När verifieringen har slutförts klickar du på **skapa**
 

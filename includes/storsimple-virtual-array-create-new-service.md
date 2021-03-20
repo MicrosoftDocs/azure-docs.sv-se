@@ -9,17 +9,17 @@ ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 1be6a654962b513cfcf755d45e562b86067e7b25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995034"
 ---
 #### <a name="to-create-a-new-service"></a>Skapa en ny tjänst
 
 1.  Logga in på Azure Portal på den här URL: en med hjälp av dina Microsoft-konto autentiseringsuppgifter <https://portal.azure.com/> . Om du distribuerar enheten i myndighets portalen loggar du in på: <https://portal.azure.us/>
 
-2.  I Azure Portal klickar du på **+ skapa en** &gt; **Storage** &gt; **virtuell serie** för resurs lagring StorSimple.
+2.  I Azure Portal klickar du på **+ skapa en** &gt;  &gt; **virtuell serie** för resurs lagring StorSimple.
 
     ![Skapa ny tjänst](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

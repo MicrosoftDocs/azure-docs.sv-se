@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335899"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Köra frågor mot en Azure Cosmos-container
@@ -59,9 +59,9 @@ Azure Cosmos DB SDK:erna 1.9.0 och senare stöder alternativ för parallell frå
 
 Du kan hantera parallell frågekörning genom att justera följande parametrar:
 
-- **MaxConcurrency** : anger det högsta antalet samtidiga nätverks anslutningar till behållarens partitioner. Om du ställer in den här egenskapen på `-1` , hanterar SDK graden av parallellitet. Om det  `MaxConcurrency` är inställt på `0` , finns det en enda nätverks anslutning till behållarens partitioner.
+- **MaxConcurrency**: anger det högsta antalet samtidiga nätverks anslutningar till behållarens partitioner. Om du ställer in den här egenskapen på `-1` , hanterar SDK graden av parallellitet. Om det  `MaxConcurrency` är inställt på `0` , finns det en enda nätverks anslutning till behållarens partitioner.
 
-- **MaxBufferedItemCount** : Avväger frågesvarstid kontra minnesanvändning på klientsidan. Om det här alternativet utelämnas eller anges till -1 hanterar SDK:n antalet objekt som buffras under en parallell frågekörning.
+- **MaxBufferedItemCount**: Avväger frågesvarstid kontra minnesanvändning på klientsidan. Om det här alternativet utelämnas eller anges till -1 hanterar SDK:n antalet objekt som buffras under en parallell frågekörning.
 
 På grund av Azure Cosmos DBs möjlighet att parallellisera frågor över olika partitioner, kommer fråge svars tiden ofta att skalas och systemet lägger till [fysiska partitioner](partitioning-overview.md#physical-partitions). Avgifterna för RU kommer dock att öka markant eftersom det totala antalet fysiska partitioner ökar.
 
