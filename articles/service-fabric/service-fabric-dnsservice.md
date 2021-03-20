@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91268051"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-tjänsten i Azure Service Fabric
@@ -171,7 +171,7 @@ DNS-frågor som riktar sig mot en partition formateras enligt följande:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Där:
+Plats:
 
 - Den första delen av *partitioned-service-DNSName* är den första delen av TJÄNSTens DNS-namn.
 - *PartitionPrefix* är ett värde som kan anges i avsnittet DNS service i kluster manifestet eller via klustrets Resource Manager-mall. Standardvärdet är "--". Mer information finns i  [Inställningar för DNS-tjänsten](./service-fabric-cluster-fabric-settings.md#dnsservice).

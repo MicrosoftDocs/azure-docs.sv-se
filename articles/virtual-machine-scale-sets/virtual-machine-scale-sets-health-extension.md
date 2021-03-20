@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84783052"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Använda tillägget för programmets hälsotillstånd med VM-skalningsuppsättningar
@@ -21,7 +21,7 @@ ms.locfileid: "84783052"
 
 I den här artikeln beskrivs hur du kan använda tillägget för program hälsa för att övervaka hälso tillståndet för dina program som distribueras på virtuella datorers skalnings uppsättningar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Den här artikeln förutsätter att du är bekant med:
 -   [Tillägg](../virtual-machines/extensions/overview.md) för virtuella Azure-datorer
 -   [Ändra](virtual-machine-scale-sets-upgrade-scale-set.md) skalnings uppsättningar för virtuella datorer

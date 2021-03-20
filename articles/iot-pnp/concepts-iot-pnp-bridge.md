@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: a45efd90043ecb4d457db7ed39651f1a9b5bbd4d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98890615"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-brygga
@@ -29,8 +29,8 @@ IoT Plug and Play Bridge stöder följande typer av kring utrustning som standar
 
 |Routrar|Windows|Linux|
 |---------|---------|---------|
-|[Bluetooth-sensor](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md) ansluter identifierade Bluetooth låg energi-aktiverade sensorer.       |Ja|Nej|
-|[Kamera styrenheten](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md) ansluter kameror på en Windows 10-enhet.               |Ja|Nej|
+|[Bluetooth-sensor](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md) ansluter identifierade Bluetooth låg energi-aktiverade sensorer.       |Ja|Inga|
+|[Kamera styrenheten](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md) ansluter kameror på en Windows 10-enhet.               |Ja|Inga|
 |[Modbus adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) ansluter sensorer på en Modbus-enhet.              |Ja|Ja|
 |[MQTT adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) ansluter enheter som använder en MQTT-Broker.                  |Ja|Ja|
 |[SerialPnP adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) ansluter enheter som kommunicerar via en seriell anslutning.               |Ja|Ja|

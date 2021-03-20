@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445006"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>Konfigurera ett labb för att lära sig MATLAB
@@ -36,7 +36,7 @@ Om du vill skapa ett nytt labb, följer du anvisningarna i [klass rummet labb](t
 
 | Storlek för virtuell dator | Bild |
 | -------------------- | ----- |
-| Medium | Windows 10 |
+| Medel | Windows 10 |
 
 MATLAB stöds på fler operativ system.  Se [MATLAB-systemets krav](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) för mer information.
 
@@ -59,13 +59,13 @@ Du måste vara licens administratör för att kunna hämta installationsfilerna 
 1. Logga in på ditt konto för [https://www.mathworks.com](https://www.mathworks.com) .
 2. Välj **mitt konto**.
 3. Under avsnittet **min program vara** på sidan konto klickar du på licensen som är kopplad till installations programmet för nätverks licens hanteraren för labbet.
-4. Klicka på **Ladda ned produkter**på sidan licens information.
+4. Klicka på **Ladda ned produkter** på sidan licens information.
 5. Vänta tills installations programmet har extraherat.
 6. Starta installationsprogrammet.  
 7. På sidan **Logga in på ditt MathWorks-konto** anger du ditt MathWorks-konto.
 8. Godkänn termen på sidan **MathWorks licens avtal** och klicka på knappen **Nästa** .
 9. Klicka på list rutan **Avancerade alternativ** och välj **Jag vill hämta utan att installera**.
-10. I **Välj målmapp**klickar du på **Nästa**.
+10. I **Välj målmapp** klickar du på **Nästa**.
 11. Välj **Windows** som plattform för den dator som du ska installera MATLAB.
 12. På sidan **Välj produkt** ser du till att MATLAB är markerat tillsammans med andra MathWorks-produkter som du vill installera.
 13. På sidan **Bekräfta val och hämtning** klickar du på **starta nedladdning**.  

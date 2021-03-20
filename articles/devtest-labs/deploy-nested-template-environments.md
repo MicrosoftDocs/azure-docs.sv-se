@@ -4,10 +4,10 @@ description: Lär dig hur du distribuerar kapslade Azure Resource Manager mallar
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481348"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Distribuera kapslade Azure Resource Manager mallar för test miljöer
@@ -57,7 +57,7 @@ Här är ett enkelt exempel på en kapslad distribution:
 "outputs": {}
 ```
 
-Mappen i lagrings platsen som innehåller den här mallen har en undermapp `nestedtemplates` med filerna **NestOne.jspå** och **NestOne.parameters.jspå**. I **azuredeploy.jspå**skapas URI för mallen med hjälp av platsen för artefakter, kapslad mall, fil namn för kapslad mall. På samma sätt skapas URI för parametrarna med platsen för artefakter, den kapslade mallen och parameter filen för den kapslade mallen. 
+Mappen i lagrings platsen som innehåller den här mallen har en undermapp `nestedtemplates` med filerna **NestOne.jspå** och **NestOne.parameters.jspå**. I **azuredeploy.jspå** skapas URI för mallen med hjälp av platsen för artefakter, kapslad mall, fil namn för kapslad mall. På samma sätt skapas URI för parametrarna med platsen för artefakter, den kapslade mallen och parameter filen för den kapslade mallen. 
 
 Här är en bild av samma projekt struktur i Visual Studio: 
 

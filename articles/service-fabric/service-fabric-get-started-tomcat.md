@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 3de97bc277195dff2daf5868c0eb9aec5d6e27c0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96534037"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Skapa Service Fabric behållare som kör Apache Tomcat server på Linux
@@ -16,7 +16,7 @@ Apache Tomcat är en populär implementering av Java-servlet och Java-serverns t
 
 Mer information om Apache Tomcat finns på [Start sidan för Apache Tomcat](https://tomcat.apache.org/). 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * En utvecklingsdator som kör:
   * [Service Fabric SDK och verktyg](service-fabric-get-started-linux.md).
   * [Docker CE för Linux](https://docs.docker.com/engine/installation/#prior-releases). 

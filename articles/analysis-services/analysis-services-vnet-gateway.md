@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 912dab16cd854ae940b7bbdfe88a8da7adf1c5e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84197198"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Använda gateway för datakällor på ett virtuellt Azure-nätverk
@@ -29,8 +29,8 @@ Data källor i Azure SQL-hanterade instanser körs i Azure VNet med en privat IP
 
 ## <a name="configure-alwaysusegateway-property"></a>Konfigurera egenskapen AlwaysUseGateway
 
-1. I SSMS > Server > **Egenskaper**  >  **Allmänt**väljer du **Visa avancerade egenskaper (alla)**.
-2. I **ASPaaS\AlwaysUseGateway**väljer du **Sant**.
+1. I SSMS > Server > **Egenskaper**  >  **Allmänt** väljer du **Visa avancerade egenskaper (alla)**.
+2. I **ASPaaS\AlwaysUseGateway** väljer du **Sant**.
 
     ![Använd alltid Gateway-egenskap](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 

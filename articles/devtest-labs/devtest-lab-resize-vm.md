@@ -4,10 +4,10 @@ description: Lär dig hur du ändrar storleken på en virtuell dator (VM) i Azur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482028"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Ändra storlek på en virtuell dator i ett labb i Azure DevTest Labs
@@ -21,7 +21,7 @@ Gör så här om du vill ändra storlek på en virtuell dator i ett labb i Azure
 > Om du är ansluten till den virtuella datorn via en fjärrskrivbordssession, sparar du ditt arbete och kopplar från den virtuella datorn innan du ändrar storlek på den.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du labbet som innehåller den virtuella dator som du vill ändra storlek på.  
 4. I den vänstra panelen väljer du **mina Virtual Machines**. 
 5. Välj en virtuell dator i listan över virtuella datorer.

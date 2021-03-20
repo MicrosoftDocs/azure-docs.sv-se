@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91283469"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Självstudie: Använd blockchain Data Manager för att skicka data till Azure Cosmos DB
@@ -29,7 +29,7 @@ I den här kursen får du:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför [snabb start: skapa en blockchain-medlem med hjälp av Azure Portal](create-member.md) eller [snabb start: skapa en Azure blockchain service blockchain-medlem med Azure CLI](create-member-cli.md)
 * Slutför [snabb start: Använd Visual Studio Code för att ansluta till ett Azure blockchain service Consortium-nätverk](connect-vscode.md). Snabb starten guidar dig när du installerar [Azure blockchain Development Kit för Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) och ställer in din blockchain Development-miljö.
@@ -47,9 +47,9 @@ En blockchain Data Manager-instans ansluter och övervakar en Azure blockchain s
 
     ![Lägg till blockchain Data Manager](./media/data-manager-cosmosdb/add-instance.png)
 
-    Ange följande uppgifter:
+    Ange följande information:
 
-    Inställningen | Exempel | Beskrivning
+    Inställning | Exempel | Beskrivning
     --------|---------|------------
     Name | Watcher | Ange ett unikt namn för en ansluten blockchain Data Manager.
     Transaction Node | myblockchainmember | Välj noden standard transaktion för den Azure blockchain service-medlem som du skapade i förutsättningen.
@@ -108,7 +108,7 @@ Blockchain Data Manager kräver att kontrakts ABI och bytekod-filerna kan nås a
 
     ![Skapa en lagrings konto behållare](./media/data-manager-cosmosdb/create-container.png)
 
-    | Inställningen | Beskrivning |
+    | Inställning | Beskrivning |
     |---------|-------------|
     | Name  | Ge containern ett namn. Till exempel *smartcontract* |
     | Offentlig åtkomstnivå | Välj *privat (ingen anonym åtkomst)* |
@@ -144,7 +144,7 @@ Generera en signatur för delad åtkomst för varje blob.
 
     Ange namnet på blockchain-programmet och URL: en för smart kontrakt ABI och bytekod.
 
-    Inställningen | Beskrivning
+    Inställning | Beskrivning
     --------|------------
     Name | Ange ett unikt namn för blockchain-programmet som ska spåras.
     Kontrakt ABI | URL-sökväg till kontraktets ABI-fil. Mer information finns i [skapa kontrakts ABI och BYTEKOD URL](#create-contract-abi-and-bytecode-url).
@@ -171,7 +171,7 @@ Du kan använda Datautforskaren i Azure Portal för att skapa en databas och beh
 
     ![Lägg till behållar inställningar](./media/data-manager-cosmosdb/add-container.png)
 
-    | Inställningen | Beskrivning
+    | Inställning | Beskrivning
     |---------|-------------|
     | Databas-id | Ange **blockchain-data** som namn på den nya databasen. |
     | Dataflöde | Lämna data flödet på **400** enheter för programbegäran per sekund (ru/s). Du kan skala upp dataflödet senare om du vill minska svarstiden.|
@@ -190,19 +190,19 @@ Azure Logic Apps hjälper dig att schemalägga och automatisera affärs processe
     Mer information om hur du skapar Logic Apps finns i [skapa automatiserade arbets flöden med Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 1. När Azure har distribuerat din app väljer du din Logic app-resurs.
-1. I Logic Apps designer väljer du **Tom Logic app**under **mallar**.
+1. I Logic Apps designer väljer du **Tom Logic app** under **mallar**.
 
 ### <a name="add-event-grid-trigger"></a>Lägg till Event Grid-utlösare
 
 Varje logikapp måste börja med en utlösare som utlöses när en specifik händelse sker eller när ett särskilt villkor uppfylls. Varje gång utlösaren körs skapar Logic Apps-motorn en logikappinstans som startar och kör ditt arbetsflöde. Använd en Azure Event Grid-utlösare för att skicka blockchain transaktions data från Event Grid till Cosmos DB.
 
 1. I Logic Apps designer söker du efter och väljer **Azure Event Grid** -anslutningen.
-1. Välj **när en resurs händelse inträffar**från fliken **utlösare** .
+1. Välj **när en resurs händelse inträffar** från fliken **utlösare** .
 1. Skapa en API-anslutning till Event Grid ämnet.
 
     ![Inställningar för Event Grid-utlösare](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
-    | Inställningen | Beskrivning
+    | Inställning | Beskrivning
     |---------|-------------|
     | Prenumeration | Välj den prenumeration som innehåller Event Grid ämnet. |
     | Resurstyp | Välj **Microsoft. EventGrid. ämnen**. |
@@ -213,13 +213,13 @@ Varje logikapp måste börja med en utlösare som utlöses när en specifik hän
 Lägg till en åtgärd för att skapa ett dokument i Cosmos DB för varje transaktion. Använd transaktions meddelande typen som partitionsnyckel för att kategorisera meddelandena.
 
 1. Välj **Nytt steg**.
-1. I **Välj en åtgärd**söker du efter **Azure Cosmos DB**.
+1. I **Välj en åtgärd** söker du efter **Azure Cosmos DB**.
 1. Välj **Azure Cosmos DB > åtgärder > Skapa eller uppdatera dokument**.
 1. Skapa en API-anslutning till Cosmos DB databasen.
 
     ![Cosmos DB anslutnings inställningar](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
-    | Inställningen | Beskrivning
+    | Inställning | Beskrivning
     |---------|-------------|
     | Anslutningsnamn | Välj den prenumeration som innehåller Event Grid ämnet. |
     | DocumentDB-konto | Välj det DocumentDB-konto som du skapade i avsnittet [skapa Azure Cosmos DB konto](#create-azure-cosmos-db) . |

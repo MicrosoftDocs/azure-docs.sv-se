@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: a6ffcbf5a8c36958dd3ea74de4d826fe25a1139c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87126471"
 ---
 Du kan visa information om Azure Maps-kontots autentisering i Azure Portal. I ditt konto går du till menyn **Inställningar** och väljer **autentisering**.
 
-![Information om autentisering](../media/how-to-manage-authentication/how-to-view-auth.png)
+![Autentiseringsinformation](../media/how-to-manage-authentication/how-to-view-auth.png)
 
 När ett Azure Maps-konto har skapats finns Azure Maps- `x-ms-client-id` värdet på sidan Azure Portal information om autentisering. Det här värdet representerar kontot som ska användas för REST API begär Anden. Det här värdet ska lagras i program konfigurationen och hämtas innan du gör HTTP-förfrågningar när du använder Azure AD-autentisering med Azure Maps.

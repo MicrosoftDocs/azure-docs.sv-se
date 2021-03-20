@@ -4,10 +4,10 @@ description: Den här artikeln innehåller en översikt över replikering av hä
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880835"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>Meddelandereplikering och federation mellan regioner

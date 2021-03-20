@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347820"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsekvensnivåer i Azure Cosmos DB
@@ -24,7 +24,7 @@ De flesta kommersiellt tillgängliga distribuerade NoSQL-databaser som är tillg
 - *Begränsad föråldrad*
 - *Session*
 - *Konsekvent prefix*
-- *Slutliga*
+- *Slutlig*
 
 Varje nivå ger kompromisser om tillgänglighet och prestanda. Följande bild visar olika konsekvens nivåer som ett spektrum.
 
@@ -146,10 +146,10 @@ Den exakta svars tiden för försvars tid är en funktion av hastigheten-lätt a
 |**Konsekvensnivå**|**Kvorum läsningar**|**Skrivningar till kvorum**|
 |--|--|--|
 |**Stark**|Lokal minoritet|Global majoritet|
-|**Begränsad föråldrad**|Lokal minoritet|Lokal majoritet|
+|**Begränsad föråldring**|Lokal minoritet|Lokal majoritet|
 |**Session**|Enskild replik (med sessionstoken)|Lokal majoritet|
 |**Konsekvent prefix**|Enskild replik|Lokal majoritet|
-|**Slutliga**|Enskild replik|Lokal majoritet|
+|**Slutlig**|Enskild replik|Lokal majoritet|
 
 > [!NOTE]
 > RU/s-kostnaden för läsningar av lokala minoritets läsningar är två gånger för svagare konsekvens nivåer eftersom läsningar görs från två repliker för att ge konsekvens garantier för stark och begränsad föråldrad.

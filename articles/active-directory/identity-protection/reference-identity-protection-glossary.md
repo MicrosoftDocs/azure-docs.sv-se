@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88949182"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection ord lista
@@ -160,4 +160,4 @@ En konfiguration eller ett villkor i Azure Active Directory, vilket gör att kat
 
 ## <a name="see-also"></a>Se även
 
-- [Identitetsskydd för Azure Active Directory](./overview-identity-protection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

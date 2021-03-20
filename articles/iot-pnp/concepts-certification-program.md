@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92048108"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Vad är Azure Certified Device-programmet?
@@ -45,7 +45,7 @@ Om du vill certifiera dina enheter på [Azure-certifierad enhets Portal](https:/
 
 ### <a name="company-profile"></a>Företags profil
 
-Välj **företags profil**för att hantera företagets profil på Azure-certifierad enhets Portal. Företags profilen innehåller företagets URL, e-postadress och logo typ. Godkänn program avtalet på den här sidan innan du fortsätter med eventuella certifierings åtgärder.
+Välj **företags profil** för att hantera företagets profil på Azure-certifierad enhets Portal. Företags profilen innehåller företagets URL, e-postadress och logo typ. Godkänn program avtalet på den här sidan innan du fortsätter med eventuella certifierings åtgärder.
 
 Sidan enhets beskrivning i Azure-certifierad enhets katalog använder företags profil informationen.
 

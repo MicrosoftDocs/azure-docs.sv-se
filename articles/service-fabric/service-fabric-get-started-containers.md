@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533782"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Skapa din första Service Fabric-containerapp i Windows
@@ -25,7 +25,7 @@ Du behöver inga göra några ändringar i din app för att köra en befintlig a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En utvecklingsdator som kör:
   * Visual Studio 2015 eller Visual Studio 2019.
@@ -324,7 +324,7 @@ Om du vill inaktivera integrering av **HEALTHCHECK** för hela Service Fabric-kl
 ## <a name="deploy-the-container-application"></a>Distribuera containerappen
 Spara alla dina ändringar och skapa programmet. Om du vill publicera appen högerklickar du på **MyFirstContainer** i Solution Explorer och väljer **Publish** (Publicera).
 
-I **anslutningsslutpunkten** anger du hanteringsslutpunkten för klustret. Exempelvis `containercluster.westus2.cloudapp.azure.com:19000`. Slutpunkten för klientanslutningen finns på översiktsfliken för ditt kluster i [Azure Portal](https://portal.azure.com).
+I **anslutningsslutpunkten** anger du hanteringsslutpunkten för klustret. Till exempel `containercluster.westus2.cloudapp.azure.com:19000`. Slutpunkten för klientanslutningen finns på översiktsfliken för ditt kluster i [Azure Portal](https://portal.azure.com).
 
 Klicka på **Publicera**.
 

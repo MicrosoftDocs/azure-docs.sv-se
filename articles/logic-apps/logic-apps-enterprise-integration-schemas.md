@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75979366"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Validera XML med scheman i Azure Logic Apps med Enterprise-integrationspaket
@@ -52,7 +52,7 @@ Du behöver inte en logisk app när du skapar och lägger till scheman. Men om d
 
 1. Logga in på <a href="https://portal.azure.com" target="_blank">Azure Portal</a> med autentiseringsuppgifterna för ditt Azure-konto.
 
-1. Om du vill söka efter och öppna ditt integrations konto väljer du **alla tjänster**på huvud menyn i Azure. I rutan Sök anger du "integrations konto". Välj **integrations konton**.
+1. Om du vill söka efter och öppna ditt integrations konto väljer du **alla tjänster** på huvud menyn i Azure. I rutan Sök anger du "integrations konto". Välj **integrations konton**.
 
    ![Hitta integrations konto](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
@@ -74,7 +74,7 @@ Baserat på schema filens storlek (XSD) följer du stegen för att ladda upp ett
 
 ### <a name="add-schemas-up-to-2-mb"></a>Lägg till scheman upp till 2 MB
 
-1. Under **Lägg till schema**anger du ett namn för schemat. 
+1. Under **Lägg till schema** anger du ett namn för schemat. 
    Se till att **små filer** är markerade. Välj mappikonen bredvid rutan **schema** . Sök efter och välj det schema som du överför, till exempel:
 
    ![Ladda upp mindre schema](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
@@ -97,11 +97,11 @@ Om du vill lägga till större scheman kan du ladda upp schemat till en Azure Bl
 
 1. Från BLOB-behållarens snabb meny väljer du **Ange offentlig åtkomst nivå**.
 
-   * Om din BLOB-behållare har minst offentlig åtkomst väljer du **Avbryt**och följer dessa steg senare på den här sidan: [Ladda upp till behållare med offentlig åtkomst](#public-access)
+   * Om din BLOB-behållare har minst offentlig åtkomst väljer du **Avbryt** och följer dessa steg senare på den här sidan: [Ladda upp till behållare med offentlig åtkomst](#public-access)
 
      ![Offentlig åtkomst](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Om BLOB-behållaren inte har offentlig åtkomst väljer du **Avbryt**och följer de här stegen senare på den här sidan: [Ladda upp till behållare utan offentlig åtkomst](#public-access)
+   * Om BLOB-behållaren inte har offentlig åtkomst väljer du **Avbryt** och följer de här stegen senare på den här sidan: [Ladda upp till behållare utan offentlig åtkomst](#public-access)
 
      ![Ingen offentlig åtkomst](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -135,8 +135,8 @@ När schemat har slutfört överföringen visas schemat i listan **scheman** . P
 1. När du har slutfört överföringen genererar du en signatur för delad åtkomst (SAS) för schemat. 
    Från schemats snabb meny väljer du **Hämta signatur för delad åtkomst**.
 
-1. I fönstret **signatur för delad åtkomst** väljer du skapa **signatur-URI för delad åtkomst för container nivå**  >  **Create**. 
-   När SAS-URL: en har genererats väljer du **Kopiera**bredvid rutan **URL** .
+1. I fönstret **signatur för delad åtkomst** väljer du skapa **signatur-URI för delad åtkomst för container nivå**  >  . 
+   När SAS-URL: en har genererats väljer du **Kopiera** bredvid rutan **URL** .
 
 1. Gå tillbaka till Azure Portal där fönstret **Lägg till schema** är öppet. Välj **stor fil**.
 
@@ -161,7 +161,7 @@ Om du vill uppdatera ett befintligt schema måste du ladda upp en ny schema fil 
 1. På sidan **Översikt** för integrations kontot, under **komponenter**, väljer du panelen **scheman** .
 
 1. När sidan **scheman** öppnas väljer du ditt schema. 
-   Hämta och redigera schemat först genom att välja **Hämta**och spara schemat.
+   Hämta och redigera schemat först genom att välja **Hämta** och spara schemat.
 
 1. När du är redo att ladda upp det uppdaterade schemat väljer du det schema som du vill uppdatera på sidan **scheman** och väljer **Uppdatera**.
 

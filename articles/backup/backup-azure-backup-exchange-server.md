@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91271655"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Säkerhetskopiera en Exchange-server till Azure Backup med System Center 2012 R2 DPM
@@ -43,7 +43,7 @@ Följ dessa steg om du vill installera DPM-skyddsagenten på Exchange-servern:
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Skapa en skydds grupp för Exchange-servern
 
-1. I DPM-administratörskonsol väljer du **skydd**och väljer sedan **nytt** i menyfliksområdet verktyg för att öppna guiden **Skapa ny skydds grupp** .
+1. I DPM-administratörskonsol väljer du **skydd** och väljer sedan **nytt** i menyfliksområdet verktyg för att öppna guiden **Skapa ny skydds grupp** .
 2. På **välkomst** skärmen i guiden väljer du **Nästa**.
 3. På skärmen **Välj typ av skydds grupp** väljer du **servrar** och väljer **Nästa**.
 4. Välj den Exchange Server-databas som du vill skydda och välj **Nästa**.
@@ -73,20 +73,20 @@ Följ dessa steg om du vill installera DPM-skyddsagenten på Exchange-servern:
    >
    >
 8. Välj **Nästa**.
-9. Välj databasen för kopiering av **säkerhets kopia**och välj sedan **Nästa**.
+9. Välj databasen för kopiering av **säkerhets kopia** och välj sedan **Nästa**.
 
    > [!NOTE]
    > Om du inte väljer fullständig säkerhets kopiering för minst en DAG kopia av en databas trunkeras inte loggarna.
    >
    >
-10. Konfigurera målen för **kortsiktig säkerhets kopiering**och välj sedan **Nästa**.
+10. Konfigurera målen för **kortsiktig säkerhets kopiering** och välj sedan **Nästa**.
 11. Granska tillgängligt disk utrymme och välj sedan **Nästa**.
 12. Välj den tid då DPM-servern ska skapa den inledande replikeringen och välj sedan **Nästa**.
 13. Välj alternativ för konsekvens kontroll och välj sedan **Nästa**.
 14. Välj den databas som du vill säkerhetskopiera till Azure och välj sedan **Nästa**. Exempel:
 
     ![Ange skydds data online](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definiera schemat för **Azure Backup**och välj sedan **Nästa**. Exempel:
+15. Definiera schemat för **Azure Backup** och välj sedan **Nästa**. Exempel:
 
     ![Ange schemat för onlinesäkerhetskopiering](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -94,7 +94,7 @@ Följ dessa steg om du vill installera DPM-skyddsagenten på Exchange-servern:
     > Antecknings återställnings punkter baseras på snabba och fullständiga återställnings punkter. Därför måste du schemalägga onlineåterställningspunkt efter den tid som har angetts för den fullständiga snabb återställnings punkten.
     >
     >
-16. Konfigurera bevarande principen för **Azure Backup**och välj sedan **Nästa**.
+16. Konfigurera bevarande principen för **Azure Backup** och välj sedan **Nästa**.
 17. Välj ett alternativ för replikering online och välj **Nästa**.
 
     Om du har en stor databas kan det ta lång tid för den första säkerhets kopieringen att skapas över nätverket. För att undvika det här problemet kan du skapa en säkerhets kopiering offline.  

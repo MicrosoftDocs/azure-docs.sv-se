@@ -4,10 +4,10 @@ description: En översikt över säkerhets kopierings valv.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091295"
 ---
 # <a name="backup-vaults-overview"></a>Översikt över säkerhets kopierings valv
@@ -47,13 +47,13 @@ Logga in på Azure Portal på <https://portal.azure.com>.
 ### <a name="create-backup-vault"></a>Skapa säkerhets kopierings valv
 
 1. Skriv **säkerhets kopierings valv** i sökrutan.
-1. Under **tjänster**väljer du **säkerhets kopierings valv**.
+1. Under **tjänster** väljer du **säkerhets kopierings valv**.
 1. På sidan **säkerhets kopierings valv** väljer du **Lägg till**.
 1. På **fliken grundläggande**, under **projekt information**, se till att rätt prenumeration är markerad och välj sedan **Skapa ny** resurs grupp. Skriv *myResourceGroup* som namn.
 
   ![Skapa ny resurs grupp](./media/backup-vault-overview/new-resource-group.png)
 
-1. Under **instans information**skriver du ett *valv* för **namnet på säkerhets kopierings valvet** och väljer din region som du väljer, i det här fallet, *östra USA* för din **region**.
+1. Under **instans information** skriver du ett *valv* för **namnet på säkerhets kopierings valvet** och väljer din region som du väljer, i det här fallet, *östra USA* för din **region**.
 1. Nu ska du välja **lagrings redundans**. Det går inte att ändra lagrings utrymmet när objekt har skyddats i valvet.
 1. Vi rekommenderar att om du använder Azure som primär slut punkt för lagring av säkerhets kopior fortsätter du att använda standardvärdet **Geo-redundant** .
 1. Om du inte använder Azure som primär slutpunkt för lagring av säkerhetskopior väljer du **Lokalt redundant**, vilket minskar kostnaderna för Azure-lagring.

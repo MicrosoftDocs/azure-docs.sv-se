@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: alkohli
 ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950320"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Bevara fil-ACL: er, attribut och tidsstämplar med Azure Data Box
@@ -68,7 +68,7 @@ ACL: er överförs inte under data kopior över Network File System (nter) och n
 Överföring av ACL: er är aktiverat som standard. Du kanske vill inaktivera den här inställningen i det lokala webb gränssnittet på din Data Box-enhet. Mer information finns i [använda det lokala webb gränssnittet för att administrera data Box-enhet och data Box Heavy](./data-box-local-web-ui-admin.md).
 
 > [!NOTE]
-> Filer med ACL: er som innehåller strängar för villkorlig åtkomst kontroll post (ACE) kopieras inte. Detta är ett känt fel. Undvik detta genom att kopiera filerna till den Azure Files resursen manuellt genom att montera resursen och sedan använda ett kopierings verktyg som stöder kopiering av ACL: er.
+> Filer med ACL: er som innehåller strängar för villkorlig åtkomst kontroll post (ACE) kopieras inte. Detta är ett känt problem. Undvik detta genom att kopiera filerna till den Azure Files resursen manuellt genom att montera resursen och sedan använda ett kopierings verktyg som stöder kopiering av ACL: er.
 
 ## <a name="copying-data-and-metadata"></a>Kopiera data och metadata
 

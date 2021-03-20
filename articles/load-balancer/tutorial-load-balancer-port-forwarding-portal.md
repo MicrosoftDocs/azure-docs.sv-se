@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 63d1a08dc588f0303ccb1ae13bd4c28af2a393c7
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043661"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Självstudie: Konfigurera vidarebefordran av portar i Azure Load Balancer med hjälp av portalen
@@ -36,7 +36,7 @@ I den här självstudien får du ställa in portvidarebefordran i Azure Load Bal
 > * Skapa inkommande NAT-portvidarebefordringsregler för en lastbalanserare.
 > * Installera och konfigurera IIS på de virtuella datorerna för att visa belastningsutjämning och portvidarebefordran i praktiken.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar. 
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar. 
 
 För alla steg i den här självstudien loggar du in på Azure Portal på [https://portal.azure.com](https://portal.azure.com) .
 
@@ -48,10 +48,10 @@ För alla steg i den här självstudien loggar du in på Azure Portal på [https
 
 Börja med att skapa en offentlig standardlastbalanserare som kan balansera trafik över virtuella datorer. En Standard Load Balancer stöder endast offentliga IP-standardadresser. När du skapar en Standard Load Balancer, och även måste skapa en ny offentlig IP-standardadress som är konfigurerad som klientdelen med namnet **LoadBalancerFrontend** som standard. 
 
-1. Klicka på **skapa en resurs**  >  **nätverk**  >  **Load Balancer**på den övre vänstra sidan av skärmen.
+1. Klicka på **skapa en resurs**  >  **nätverk**  >  **Load Balancer** på den övre vänstra sidan av skärmen.
 2. På fliken **Grundläggande inställningar** på sidan **Skapa lastbalanserare** anger eller väljer du följande information, accepterar standardinställningarna för de återstående inställningarna och väljer sedan **Granska + skapa**:
 
-    | Inställningen                 | Värde                                              |
+    | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och skriv *MyResourceGroupLB* i textrutan.|
@@ -173,7 +173,7 @@ Du skapade din serverdelspool för lastbalanseraren och lade till virtuella dato
 
 1. Välj **Alla resurser** på den vänstra menyn och välj sedan **MyLoadBalancer** i resurslistan.
    
-1. Under **Inställningar**väljer du **backend-pooler**.
+1. Under **Inställningar** väljer du **backend-pooler**.
    
 1. På sidan **Serverdelspooler** expanderar du **MyBackendPool** och kontrollerar att både **VM1** och **VM2** visas.
 
@@ -191,7 +191,7 @@ Om du vill att lastbalanseraren ska övervaka VM-status använder du en hälsoav
    
 1. Under **Inställningar** väljer du **Hälsoavsökningar** och sedan **Lägg till**.
    
-1. På sidan **Lägg till en hälsoavsökning ** skriver eller väljer du följande värden:
+1. På sidan **Lägg till en hälsoavsökning** skriver eller väljer du följande värden:
    
    - **Namn**: Skriv *MyHealthProbe*.
    - **Protokoll**: I listrutan väljer du **HTTP**. 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84707760"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy system krav
@@ -48,7 +48,7 @@ Program varu kraven innehåller information om de operativ system som stöds, vi
 
 [!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
-## <a name="networking-requirements"></a>Nätverks krav
+## <a name="networking-requirements"></a>Nätverkskrav
 
 Datacentret måste ha höghastighetsnätverk. För snabbaste kopierings hastigheter kan 2 40-GbE-anslutningar användas parallellt (en per nod). Om du inte har 40-GbE tillgängligt rekommenderar vi att du har minst 2 10-GbE-anslutningar (en per nod).
 

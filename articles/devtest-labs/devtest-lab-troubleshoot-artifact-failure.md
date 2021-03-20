@@ -4,10 +4,10 @@ description: DevTest Labs tillhandahåller information som du kan använda för 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480821"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostisera artefakt fel i labbet 
@@ -23,7 +23,7 @@ När du har skapat en artefakt kan du kontrol lera om den har lyckats eller miss
 
 1. I listan över resurser i Azure Portal väljer du ditt labb.
 2. Välj den virtuella Windows-dator som innehåller den artefakt som du vill undersöka.
-3. I den vänstra panelen under **Allmänt**väljer du **artefakter**. En lista över artefakter som är associerade med den virtuella datorn visas. Namnet på artefakten och artefakt statusen anges.
+3. I den vänstra panelen under **Allmänt** väljer du **artefakter**. En lista över artefakter som är associerade med den virtuella datorn visas. Namnet på artefakten och artefakt statusen anges.
 
    ![Artefaktstatus](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure-new.png)
 

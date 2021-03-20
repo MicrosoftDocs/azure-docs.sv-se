@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677646"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Samsara
@@ -49,7 +49,7 @@ Om du vill konfigurera integreringen av Samsara i Azure AD måste du lägga till
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
     
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Om du vill konfigurera integreringen av Samsara i Azure AD måste du lägga till
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsara"></a>Konfigurera och testa Azure AD SSO för Samsara
 
-Konfigurera och testa Azure AD SSO med Samsara med hjälp av en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Samsara.
+Konfigurera och testa Azure AD SSO med Samsara med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Samsara.
 
 Utför följande steg för att konfigurera och testa Azure AD SSO med Samsara:
 
@@ -81,11 +81,11 @@ Utför följande steg för att konfigurera och testa Azure AD SSO med Samsara:
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I Azure Portal går du till sidan för program integrering i **Samsara** , letar upp avsnittet **Hantera** och väljer **enkel inloggning** .
+1. I Azure Portal går du till sidan för program integrering i **Samsara** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
@@ -116,21 +116,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
+   1. I **Namn**-fältet skriver du `B.Simon`.  
    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Samsara.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan program väljer du **Samsara** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **Samsara**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.

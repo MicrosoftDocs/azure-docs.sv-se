@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: 2476d60cacc9690c24d7d3d2f7e21f04c6811500
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754609"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-listing-details"></a>Så här konfigurerar du information om erbjudanden för konsult tjänster
@@ -29,11 +29,11 @@ Ange den information som beskrivs nedan på sidan **erbjudande lista** . Om du v
 1.  Rutan **namn** fylls i i förväg med det namn som du angav tidigare i dialog rutan **nytt erbjudande** , men du kan ändra det när du vill. Namnet visas som rubrik på din erbjudande lista i onlinebutiken.
 
     > [!IMPORTANT]
-    > Namnet på erbjudandet måste vara i formatet *Namn: duration + typ* . Mer information finns i [erbjudande List information](./plan-consulting-service-offer.md#offer-listing-details).
+    > Namnet på erbjudandet måste vara i formatet *Namn: duration + typ*. Mer information finns i [erbjudande List information](./plan-consulting-service-offer.md#offer-listing-details).
 
 2. Beskriv syftet eller målet med ditt erbjudande på högst 200 tecken i rutan **Sammanfattning av Sök Resultat** .
 3. Beskriv ditt konsult tjänst erbjudande i fältet **Beskrivning** . Du kan använda HTML-taggar för att formatera beskrivningen. Du kan ange upp till 2 000 tecken text i den här rutan, inklusive HTML-taggar och blank steg. Information om HTML-formatering finns [i HTML-taggar som stöds i erbjudandena beskrivningar](./supported-html-tags.md).
-4. Du kan ange upp till tre **Sök Nyckelord** . Dessa nyckelord hjälper kunderna att hitta ditt erbjudande i onlinebutiken. Du behöver inte inkludera erbjudandets namn och beskrivning.
+4. Du kan ange upp till tre **Sök Nyckelord**. Dessa nyckelord hjälper kunderna att hitta ditt erbjudande i onlinebutiken. Du behöver inte inkludera erbjudandets namn och beskrivning.
 5. Ange den förväntade varaktigheten för din konsult tjänst i list rutan **varaktighet** . Den varaktighet du väljer måste matcha den varaktighet som du har angett i namnet på erbjudandet.
 
 ## <a name="contact-information"></a>Kontaktinformation
@@ -62,8 +62,8 @@ De två logo typernas storlek används på olika platser i onlinebutiker:
 
 Lägg till minst en och upp till fem avbildningar som demonstrerar ditt erbjudande. Alla bilder måste vara 1280 x 720 bild punkter i storlek och i. PNG-format.
 
-1. Dra och släpp i **skärm bilder** . PNG-fil till **skärm bild** rutan.
-2.  Välj ikonen **Redigera** bredvid **Lägg till bild text** .
+1. Dra och släpp i **skärm bilder**. PNG-fil till **skärm bild** rutan.
+2.  Välj ikonen **Redigera** bredvid **Lägg till bild text**.
 3.  I dialog rutan som visas anger du en beskrivning.
 4.  Upprepa steg 1 till 3 för att lägga till ytterligare skärm bilder
 
@@ -76,7 +76,7 @@ Du kan lägga till länkar till YouTube eller Vimeo-videor som demonstrerar ditt
 3.  Dra och släpp en. PNG-fil (1280 x 720 pixlar) till den grå miniatyr rutan.
 4.  Upprepa steg 1 till 3 för att lägga till en annan video.
 
-Välj **Spara utkast** innan du fortsätter till nästa flik: **priser och tillgänglighet** .
+Välj **Spara utkast** innan du fortsätter till nästa flik: **priser och tillgänglighet**.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 5e76c87da1dc9ab7d4adeb0e964ae5a3248b8431
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347667"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Självstudie: Bygg en Node.js-och MongoDB-app i Azure
@@ -84,7 +84,7 @@ git clone https://github.com/Azure-Samples/meanjs.git
 
 Den här exempellagringsplatsen innehåller en kopia av [MEAN.js-lagringsplatsen](https://github.com/meanjs/mean). Den ändras för att köras på App Service (mer information finns [filen Viktigt](https://github.com/Azure-Samples/meanjs/blob/master/README.md) för MEAN.js-lagringsplatsen).
 
-### <a name="run-the-application"></a>Köra appen
+### <a name="run-the-application"></a>Kör programmet
 
 Kör följande kommandon för att installera de nödvändiga paketen och starta programmet.
 
@@ -305,7 +305,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
 Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done.
 Total 5 (delta 3), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '6c7c716eee'.
 remote: Running custom deployment command...
@@ -316,7 +316,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 Du kanske märker att distributionsprocessen kör [Gulp](https://gulpjs.com/) efter `npm install`. App Service kör inte Gulp- eller Grunt-uppgifter under distributionen. Den här exempellagringsplatsen har två extra filer i rotkatalogen för detta: 
@@ -467,7 +467,7 @@ I det lokala terminalfönstret sparar du ändringarna i Git och push-överför s
 
 ```bash
 git commit -am "added article comment"
-git push azure master
+git push azure main
 ```
 
 När `git push` har slutförts kan du gå till Azure-appen och prova att använda de nya funktionerna.

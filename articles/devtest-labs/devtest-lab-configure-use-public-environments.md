@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du konfigurerar och använder offen
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482674"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Konfigurera och använda offentliga miljöer i Azure DevTest Labs
@@ -25,7 +25,7 @@ Du kan aktivera/inaktivera offentliga miljöer för ditt labb och även göra en
 
 1. Välj **konfiguration och principer** för ditt labb. 
 2. I avsnittet **Virtual Machine Bases** väljer du **offentliga miljöer**.
-3. Välj **Ja**om du vill aktivera offentliga miljöer för labbet. Annars väljer du **Nej**. 
+3. Välj **Ja** om du vill aktivera offentliga miljöer för labbet. Annars väljer du **Nej**. 
 4. Om du har aktiverat offentliga miljöer är alla miljöer i lagrings platsen aktiverade som standard. Du kan välja en miljö för att göra den inte tillgänglig för dina labb användare. 
 
 ![Sidan offentliga miljöer](media/devtest-lab-configure-use-public-environments/public-environments-page.png)

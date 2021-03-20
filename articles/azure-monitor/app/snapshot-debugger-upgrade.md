@@ -7,10 +7,10 @@ ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77671400"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>Uppgradera Snapshot Debugger
@@ -25,7 +25,7 @@ För att tillhandahålla bästa möjliga säkerhet för dina data, flyttas Micro
 
 Om du har aktiverat fel sökning av ögonblicks bilder med hjälp av webbplats tillägget kan du uppgradera med hjälp av följande procedur:
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 2. Navigera till din resurs som har Application Insights och ögonblicks bilds fel sökning aktive rad. För en webbapp går du till exempel till App Service resurs:
 
    ![Skärm bild av enskild App Service resurs med namnet DiagService01](./media/snapshot-debugger-upgrade/app-service-resource.png)
@@ -50,7 +50,7 @@ Om du har aktiverat fel sökning av ögonblicks bilder med hjälp av webbplats t
 
    ![Skärm bild av sidan Application Insights App Service konfiguration med knappen Använd markerad i rött](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
-8. När du klickar på **Verkställ**uppmanas du att bekräfta ändringarna.
+8. När du klickar på **Verkställ** uppmanas du att bekräfta ändringarna.
 
     > [!NOTE]
     > Platsen kommer att startas om som en del av uppgraderings processen.

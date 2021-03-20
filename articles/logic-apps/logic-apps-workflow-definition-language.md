@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87078150"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Schema referens guide för språket för arbets flödes definition i Azure Logic Apps
@@ -178,7 +178,7 @@ Med JSON kan du ha exakta värden som finns i design läge, till exempel:
 "rainbowColorsCount": 7
 ```
 
-Du kan också ha värden som inte finns förrän kör tid. För att representera dessa värden kan du använda *uttryck*som utvärderas vid körning. Ett uttryck är en sekvens som kan innehålla en eller flera [funktioner](#functions), [operatorer](#operators), [variabler](./logic-apps-create-variables-store-values.md), explicita värden eller konstanter. I arbets flödes definitionen kan du använda ett uttryck var som helst i ett JSON-sträng värde genom att använda prefixet med at-sign ( \@ ). När du utvärderar ett uttryck som representerar ett JSON-värde extraheras uttrycks texten genom att det tas bort \@ och alltid resulterar i ett annat JSON-värde.
+Du kan också ha värden som inte finns förrän kör tid. För att representera dessa värden kan du använda *uttryck* som utvärderas vid körning. Ett uttryck är en sekvens som kan innehålla en eller flera [funktioner](#functions), [operatorer](#operators), [variabler](./logic-apps-create-variables-store-values.md), explicita värden eller konstanter. I arbets flödes definitionen kan du använda ett uttryck var som helst i ett JSON-sträng värde genom att använda prefixet med at-sign ( \@ ). När du utvärderar ett uttryck som representerar ett JSON-värde extraheras uttrycks texten genom att det tas bort \@ och alltid resulterar i ett annat JSON-värde.
 
 För den tidigare definierade `customerName` egenskapen kan du till exempel hämta egenskap svärdet genom att använda funktionen [Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) i ett uttryck och tilldela värdet till `accountName` egenskapen:
 

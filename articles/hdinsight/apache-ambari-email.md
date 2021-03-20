@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946976"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Självstudie: Konfigurera Apache Ambari-e-postmeddelanden i Azure HDInsight
@@ -60,7 +60,7 @@ I den här guiden får du lära dig att:
     |Name|Ange ett namn för meddelandet.|
     |Grupper|Konfigurera efter behov.|
     |Allvarlighetsgrad|Konfigurera efter behov.|
-    |Description|Valfritt.|
+    |Beskrivning|Valfritt.|
     |Metod|Lämna kvar **via e-post**.|
     |E-postmeddelande till|Ange e-postmeddelanden som ska ta emot meddelanden, avgränsade med kommatecken.|
     |SMTP-Server|`smtp.sendgrid.net`|

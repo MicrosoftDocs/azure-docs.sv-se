@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743685"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Granska åtkomst till Azures resurs roller i Privileged Identity Management
@@ -44,7 +44,7 @@ Följ de här stegen för att hitta och slutföra åtkomst granskningen:
    ![Skärm bild av Privileged Identity Management program, med bladet granska åtkomst valt](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 1. Välj den granskning som du vill slutföra.
-1. Välj **Godkänn** eller **neka**. I **rutan Ange en orsak**anger du en affärs motivering för ditt beslut om det behövs.
+1. Välj **Godkänn** eller **neka**. I **rutan Ange en orsak** anger du en affärs motivering för ditt beslut om det behövs.
 
    ![Skärm bild av sidan gransknings information](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 

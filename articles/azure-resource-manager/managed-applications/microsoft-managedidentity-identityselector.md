@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063346"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>GRÄNSSNITTs element för Microsoft. ManagedIdentity. IdentitySelector
@@ -22,7 +22,7 @@ Kontrollen består av följande element:
 
 ![Första steget i Microsoft. ManagedIdentity. IdentitySelector](./media/managed-application-elements/microsoft-managedidentity-identityselector-1.png)
 
-När användaren väljer **Lägg till**öppnas följande formulär. Användaren kan välja en eller flera användar-tilldelade identiteter för resursen.
+När användaren väljer **Lägg till** öppnas följande formulär. Användaren kan välja en eller flera användar-tilldelade identiteter för resursen.
 
 ![Andra steg för Microsoft. ManagedIdentity. IdentitySelector](./media/managed-application-elements/microsoft-managedidentity-identityselector-2.png)
 
@@ -75,8 +75,8 @@ De valda identiteterna visas i tabellen. Användaren kan lägga till eller ta bo
   - **OnOnly** – en tilldelad dator identitet tilldelas till resursen. Användare kan inte redigera det här värdet under distributionen.
   - **OffOnly** – en tilldelad system identitet är inte tilldelad till resursen. Användare kan inte redigera det här värdet under distributionen.
 
-- Om **Options. hideSystemAssignedIdentity** har angetts till **True**visas inte gränssnittet för att konfigurera den tilldelade identiteten. Standardvärdet för det här alternativet är **false**.
-- Om **Options. hideUserAssignedIdentity** har angetts till **True**visas inte användar gränssnittet för att konfigurera den tilldelade identiteten. Resursen har inte tilldelats någon tilldelad identitet. Standardvärdet för det här alternativet är **false**.
+- Om **Options. hideSystemAssignedIdentity** har angetts till **True** visas inte gränssnittet för att konfigurera den tilldelade identiteten. Standardvärdet för det här alternativet är **false**.
+- Om **Options. hideUserAssignedIdentity** har angetts till **True** visas inte användar gränssnittet för att konfigurera den tilldelade identiteten. Resursen har inte tilldelats någon tilldelad identitet. Standardvärdet för det här alternativet är **false**.
 
 ## <a name="next-steps"></a>Nästa steg
 

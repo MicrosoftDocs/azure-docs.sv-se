@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e2a1f38918b2ea6af8a334b6648a463753f5c7b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91295217"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Självstudie: hantera program grupper för Windows Virtual Desktop (klassisk)
@@ -46,7 +46,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsAppGroup <tenantname> <hostpoolname>
    ```
 
-3. Kör följande cmdlet för att hämta en lista över **Start** -menyns appar på värddatorns avbildning av den virtuella datorn. Skriv ned värdena för **sökväg**, **IconPath**, **IconIndex**och annan viktig information för det program som du vill publicera.
+3. Kör följande cmdlet för att hämta en lista över **Start** -menyns appar på värddatorns avbildning av den virtuella datorn. Skriv ned värdena för **sökväg**, **IconPath**, **IconIndex** och annan viktig information för det program som du vill publicera.
 
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>

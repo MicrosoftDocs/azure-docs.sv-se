@@ -8,10 +8,10 @@ ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881711"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Vad är Azure Spring Cloud?
@@ -52,7 +52,7 @@ Den här dokumentationen innehåller avsnitt som förklarar hur du kommer igång
     * [Lansera din första app](spring-cloud-quickstart.md)
     * [Etablera en moln tjänst för Azure våren](spring-cloud-quickstart-provision-service-instance.md)
     * [Konfigurera konfigurations servern]()
-    * [Skapa och distribuera appar](spring-cloud-quickstart-deploy-apps.md)
+    * [Bygg och distribuera appar](spring-cloud-quickstart-deploy-apps.md)
     * [Använd loggar mått och spårning](spring-cloud-quickstart-logs-metrics-tracing.md)
 * Så här gör du
     * [Utveckla](spring-cloud-tutorial-prepare-app-deployment.md): Förbered ett befintligt Java våren-program för distribution till Azure våren Cloud. När Azure våren Cloud har kon figurer ATS korrekt tillhandahåller robusta tjänster för att övervaka, skala och uppdatera Java våren Cloud-program.
