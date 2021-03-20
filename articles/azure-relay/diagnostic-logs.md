@@ -4,10 +4,10 @@ description: Den här artikeln innehåller en översikt över alla aktiviteter o
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590874"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Aktivera diagnostikloggar för Azure Relay Hybridanslutningar
@@ -80,7 +80,7 @@ Här är ett exempel på en hybrid anslutnings händelse i JSON-format.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Händelser och åtgärder som har registrerats i diagnostikloggar
 
-| Åtgärd | Description | 
+| Åtgärd | Beskrivning | 
 | --------- | ----------- | 
 | AuthorizationFailed | Auktoriseringen misslyckades.|
 | InvalidSasToken | Ogiltig SAS-token. | 

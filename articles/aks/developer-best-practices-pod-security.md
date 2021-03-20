@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92900820"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Metod tips för Pod-säkerhet i Azure Kubernetes service (AKS)
@@ -29,13 +29,13 @@ Du kan också läsa metod tips för [kluster säkerhet][best-practices-cluster-s
 
 **Rekommendationer om bästa praxis** – att köra som en annan användare eller grupp och begränsa åtkomsten till de underliggande nodernas processer och tjänster, definiera Pod säkerhets kontext inställningar. Tilldela det lägsta antalet behörigheter som krävs.
 
-För att dina program ska kunna köras korrekt ska poddar köras som en definierad användare eller grupp och inte som *rot* . Med `securityContext` POD eller container kan du definiera inställningar som *RunAsUser* eller *fsGroup* för att anta lämpliga behörigheter. Tilldela bara de nödvändiga användar-eller grupp behörigheterna och Använd inte säkerhets kontexten som ett sätt att anta ytterligare behörigheter. *RunAsUser* , behörighets eskalering och andra inställningar för Linux-funktioner är bara tillgängliga på Linux-noder och poddar.
+För att dina program ska kunna köras korrekt ska poddar köras som en definierad användare eller grupp och inte som *rot*. Med `securityContext` POD eller container kan du definiera inställningar som *RunAsUser* eller *fsGroup* för att anta lämpliga behörigheter. Tilldela bara de nödvändiga användar-eller grupp behörigheterna och Använd inte säkerhets kontexten som ett sätt att anta ytterligare behörigheter. *RunAsUser*, behörighets eskalering och andra inställningar för Linux-funktioner är bara tillgängliga på Linux-noder och poddar.
 
 När du kör som en icke-rot användare kan behållare inte bindas till de privilegierade portarna under 1024. I det här scenariot kan Kubernetes-tjänster användas för att dölja det faktum att en app körs på en viss port.
 
 En POD säkerhets kontext kan också definiera ytterligare funktioner eller behörigheter för åtkomst till processer och tjänster. Följande definitioner av vanliga säkerhets kontexter kan anges:
 
-* **allowPrivilegeEscalation** definierar om Pod kan anta *rot* privilegier. Utforma dina program så att den här inställningen alltid är inställd på *falskt* .
+* **allowPrivilegeEscalation** definierar om Pod kan anta *rot* privilegier. Utforma dina program så att den här inställningen alltid är inställd på *falskt*.
 * **Linux-funktioner** låter Pod komma åt underliggande noder. Ta hand om att tilldela dessa funktioner. Tilldela det lägsta antalet behörigheter som krävs. Mer information finns i [Linux-funktioner][linux-capabilities].
 * **SELinux-etiketter** är en Linux-modul för kernel-säkerhet som gör att du kan definiera åtkomst principer för tjänster, processer och fil åtkomst program. Ange det lägsta antalet behörigheter som krävs. Mer information finns i [SELinux-alternativ i Kubernetes][selinux-labels]
 
@@ -97,7 +97,7 @@ Med Pod Identity Project kan du autentisera mot stöd för Azure-tjänster. För
 
 När program behöver en autentiseringsuppgift kommunicerar de med det digitala valvet, hämtar det senaste hemliga innehållet och ansluter sedan till den tjänst som krävs. Azure Key Vault kan vara det här digitala valvet. Det förenklade arbets flödet för att hämta autentiseringsuppgifter från Azure Key Vault med Pod-hanterade identiteter visas i följande diagram:
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Förenklat arbets flöde för Pod-hanterad identitet i Azure":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Förenklat arbets flöde för att hämta autentiseringsuppgifter från Key Vault med en POD-hanterad identitet":::
 
 Med Key Vault kan du lagra och regelbundet rotera hemligheter som autentiseringsuppgifter, lagrings konto nycklar eller certifikat. Du kan integrera Azure Key Vault med ett AKS-kluster med hjälp av [Azure Key Vault providern för hemligheter från CSI-drivrutinen](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Med hemligheter för att lagra CSI-drivrutinen kan AKS-klustret Hämta hemligt innehåll från Key Vault och på ett säkert sätt tillhandahålla dem till den begär ande pod. Samar beta med din kluster operatör för att distribuera hemligheter för att lagra CSI-drivrutinen på AKS Worker-noder. Du kan använda en POD-hanterad identitet för att begära åtkomst till Key Vault och hämta det hemliga innehåll som behövs via filen CSI-driv rutinen för hemligheter.
 

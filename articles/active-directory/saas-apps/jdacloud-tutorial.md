@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: aab43f15b8c31e089e51cc4610f7f48fdb29e583
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>Självstudie: Azure Active Directory integrering med JDA Cloud
@@ -161,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till JDA-molnet.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **JDA Cloud**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **JDA Cloud**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

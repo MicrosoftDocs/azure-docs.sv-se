@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135798"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikera Azure Disk Encryption-aktiverade virtuella datorer till en annan Azure-region
@@ -42,7 +42,7 @@ Om du vill aktivera replikering av disk kryptering – aktiverade virtuella dato
 
 Om du vill hantera behörigheter går du till Key Vault-resursen i portalen. Lägg till de behörigheter som krävs för användaren. I följande exempel visas hur du aktiverar behörigheter till Key Vault- *ContosoWeb2Keyvault*, som finns i käll regionen.
 
-1. Gå till **Start**-  >  **Keyvaults**  >  **ContosoWeb2KeyVault > åtkomst principer**.
+1. Gå till **Start**-  >    >  **ContosoWeb2KeyVault > åtkomst principer**.
 
    ![Fönstret behörigheter för nyckel valv](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -86,9 +86,9 @@ I det här exemplet är den primära Azure-regionen Asien, östra och den sekund
     - **Käll prenumeration**: den prenumeration som dina virtuella käll datorer tillhör. Det kan vara vilken prenumeration som helst i samma Azure Active Directory klient organisation som Recovery Services-valvet.
     - **Resurs grupp**: resurs gruppen som de virtuella käll datorerna tillhör. Alla virtuella datorer i den valda resurs gruppen visas som skydd i nästa steg.
 
-3. I **Virtual Machines**  >  **Välj virtuella datorer**väljer du varje virtuell dator som du vill replikera. Du kan bara välja datorer som stöder replikering. Välj sedan **OK**.
+3. I **Virtual Machines**  >  **Välj virtuella datorer** väljer du varje virtuell dator som du vill replikera. Du kan bara välja datorer som stöder replikering. Välj sedan **OK**.
 
-4. I **Inställningar**kan du konfigurera följande inställningar för mål platsen.
+4. I **Inställningar** kan du konfigurera följande inställningar för mål platsen.
 
     - **Målplats**: den plats där dina virtuella käll dator data kommer att replikeras. Site Recovery innehåller en lista över lämpliga mål regioner baserade på den valda datorns plats. Vi rekommenderar att du använder samma plats som Recovery Services valvets plats.
     - **Mål prenumeration**: den mål prenumeration som används för haveri beredskap. Som standard är mål prenumerationen densamma som käll prenumerationen.
@@ -109,13 +109,13 @@ Följ dessa steg om du vill ändra Site Recovery inställningarna för standard 
 1. Välj **Anpassa** bredvid "mål prenumeration" om du vill ändra standard mål prenumerationen. Välj prenumerationen i listan över prenumerationer som är tillgängliga i Azure AD-klienten.
 
 2. Välj **Anpassa** bredvid "resurs grupp, nätverk, lagring och tillgänglighets uppsättningar" för att ändra följande standardinställningar:
-    - För **mål resurs grupp**väljer du resurs gruppen i listan över resurs grupper på mål platsen för prenumerationen.
-    - För **virtuellt mål nätverk**väljer du nätverket från en lista över virtuella nätverk på mål platsen.
-    - För **tillgänglighets uppsättning**kan du lägga till inställningar för tillgänglighets uppsättningar på den virtuella datorn, om de är en del av en tillgänglighets uppsättning i käll regionen.
-    - För **mål lagrings konton**väljer du det konto som ska användas.
+    - För **mål resurs grupp** väljer du resurs gruppen i listan över resurs grupper på mål platsen för prenumerationen.
+    - För **virtuellt mål nätverk** väljer du nätverket från en lista över virtuella nätverk på mål platsen.
+    - För **tillgänglighets uppsättning** kan du lägga till inställningar för tillgänglighets uppsättningar på den virtuella datorn, om de är en del av en tillgänglighets uppsättning i käll regionen.
+    - För **mål lagrings konton** väljer du det konto som ska användas.
 
 2. Ändra följande standardinställningar genom att välja **Anpassa** bredvid "krypterings inställningar":
-   - För **mål diskens krypterings nyckel valv**väljer du mål diskens krypterings nyckel valv i listan över nyckel valv i prenumerationens mål plats.
+   - För **mål diskens krypterings nyckel valv** väljer du mål diskens krypterings nyckel valv i listan över nyckel valv i prenumerationens mål plats.
    - Välj nyckel valv för nyckel valv i listan över nyckel valv på mål platsen för prenumerationen för nyckel **valv för mål nyckel**.
 
 3. Välj **skapa mål resurs**  >  **Aktivera replikering**.
@@ -153,7 +153,7 @@ Du har alla behörigheter för käll region nyckel valvet. Men under skyddet vä
 
 Behörighet krävs för [mål nyckel valvet](#required-user-permissions)
 
-**Så här åtgärdar du:** Gå till **Start**-  >  **Keyvaults**  >  **ContosotargetKeyvault**  >  **åtkomst principer** och Lägg till lämpliga behörigheter.
+**Så här åtgärdar du:** Gå till **Start**-  >    >  **ContosotargetKeyvault**  >  **åtkomst principer** och Lägg till lämpliga behörigheter.
 
 ## <a name="next-steps"></a>Nästa steg
 

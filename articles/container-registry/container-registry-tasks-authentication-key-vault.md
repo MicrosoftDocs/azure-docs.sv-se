@@ -4,10 +4,10 @@ description: Konfigurera en Azure Container Registry aktivitet (ACR Task) för a
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86058137"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Extern autentisering i en ACR-aktivitet med hjälp av en Azure-hanterad identitet 
@@ -26,7 +26,7 @@ Det här exemplet visar steg som använder antingen en användardefinierad eller
 
 I ett verkligt scenario kan ett företag publicera avbildningar till en privat lagrings platsen i Docker-hubben som en del av en build-process. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver ett Azure Container Registry som du kör aktiviteten i. I den här *artikeln kallas registret för registret.* Ersätt med ditt eget register namn i senare steg.
 

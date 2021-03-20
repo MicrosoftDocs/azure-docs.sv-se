@@ -7,10 +7,10 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007174"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostisera problem med grafik prestanda i fjärr skrivbord
@@ -34,7 +34,7 @@ Du behöver Fjärrsessionens namn för att identifiera grafik prestanda räknarn
 När du har bestämt namnet på fjärrsessionen följer du dessa anvisningar för att samla in prestanda räknare för RemoteFX-bilder för din fjärrsession.
 
 1. Välj **Starta**  >  **administrations verktyg**  >  **prestanda övervakaren**.
-2. I dialog rutan **prestanda övervakaren** expanderar du **övervaknings verktyg**, väljer **prestanda övervakare**och väljer sedan **Lägg till**.
+2. I dialog rutan **prestanda övervakaren** expanderar du **övervaknings verktyg**, väljer **prestanda övervakare** och väljer sedan **Lägg till**.
 3. I dialog rutan **Lägg till räknare** , i listan **tillgängliga räknare** , expanderar du avsnittet för RemoteFX-grafik.
 4. Välj de räknare som ska övervakas.
 5. I listan **instanser av valt objekt** väljer du de instanser som ska övervakas för de valda räknarna och väljer sedan **Lägg till**. Om du vill välja alla tillgängliga räknar instanser väljer du **alla instanser**.

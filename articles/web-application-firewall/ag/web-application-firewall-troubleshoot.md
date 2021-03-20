@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92131844"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Felsöka brand vägg för webbaserade program (WAF) för Azure Application Gateway
@@ -297,11 +297,11 @@ Den andra (regel 942130) är den intressanta en. Du kan se information om att de
 
 ## <a name="finding-request-header-names"></a>Söker efter begärans huvud namn
 
-Fiddler är ett användbart verktyg en gång till för att hitta rubrik namn för begäran. I följande skärm bild kan du se huvudena för GET-begäran, som innehåller *innehålls typ*, *användar agent*och så vidare.
+Fiddler är ett användbart verktyg en gång till för att hitta rubrik namn för begäran. I följande skärm bild kan du se huvudena för GET-begäran, som innehåller *innehålls typ*, *användar agent* och så vidare.
 
 :::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Skärm bild av Telerik-Fiddler för webb fel sökning. På fliken RAW visas information om begär ande rubrik som anslutning, innehålls typ och användar agent." border="false":::
 
-Ett annat sätt att Visa begäran och svarshuvuden är att titta närmare på utvecklarverktyg i Chrome. Du kan trycka på F12 eller högerklicka – > **inspektera**  ->  **utvecklarverktyg**och välj fliken **nätverk** . Läs in en webb sida och klicka på den begäran som du vill granska.
+Ett annat sätt att Visa begäran och svarshuvuden är att titta närmare på utvecklarverktyg i Chrome. Du kan trycka på F12 eller högerklicka – > **inspektera**  ->  **utvecklarverktyg** och välj fliken **nätverk** . Läs in en webb sida och klicka på den begäran som du vill granska.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

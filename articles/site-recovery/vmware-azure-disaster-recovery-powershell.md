@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86129903"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurera haveriberedskap för virtuella VMware-datorer till Azure med PowerShell
@@ -31,7 +31,7 @@ Lär dig att:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar:
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Ange valv kontexten med hjälp av Set-ASRVaultContext-cmdleten. När du har angett utförs efterföljande Azure Site Recovery åtgärder i PowerShell-sessionen i kontexten för det valda valvet.
 
 > [!TIP]
-> Azure Site Recovery PowerShell-modulen (AZ. RecoveryServices Module) har lätt att använda alias för de flesta cmdletar. Cmdletarna i modulen har formatet * \<Operation> - **AzRecoveryServicesAsr** \<Object> * och har motsvarande alias som gör att formatet * \<Operation> - **ASR** \<Object> *fungerar. Du kan ersätta cmdlet-aliasen för enkel användning.
+> Azure Site Recovery PowerShell-modulen (AZ. RecoveryServices Module) har lätt att använda alias för de flesta cmdletar. Cmdletarna i modulen har formatet *\<Operation> - **AzRecoveryServicesAsr** \<Object>* och har motsvarande alias som gör att formatet *\<Operation> - **ASR** \<Object>* fungerar. Du kan ersätta cmdlet-aliasen för enkel användning.
 
 I exemplet nedan används valv informationen från variabeln $vault för att ange valv kontexten för PowerShell-sessionen.
 
@@ -172,7 +172,7 @@ I det här exemplet har vi följande:
    1     ConfigurationServer
    ```
 
-   Från utdata ovan ***$ProcessServers [0]*** motsvarar *skalnings-ProcessServer* och ***$ProcessServers [1]*** motsvarar process Server rollen på *ConfigurationServer*
+   Från utdata ovan ***$ProcessServers [0]** _ motsvarar _skalnings-ProcessServer * och ***$ProcessServers [1]**_ motsvarar process Server rollen på _ConfigurationServer *
 
 3. Identifiera konton som har kon figurer ATS på konfigurations servern.
 
@@ -189,7 +189,7 @@ I det här exemplet har vi följande:
    3         LinuxAccount
    ```
 
-   Från utdata ovan ***$AccountHandles [0]*** motsvarar konto *vCenter_account*, ***$AccountHandles [1]*** till account *WindowsAccount*och ***$AccountHandles [2]*** till konto *LinuxAccount*
+   Från utdata ovan ***$AccountHandles [0]** _ motsvarar konto _vCenter_account *, ***$AccountHandles [1]**_ för kontot _WindowsAccount * och ***$AccountHandles [2]**_ till konto _LinuxAccount *
 
 ## <a name="create-a-replication-policy"></a>Skapa replikeringsprincip
 
@@ -342,7 +342,7 @@ Du behöver följande information för att skydda en identifierad virtuell dator
 * Det skydds bara objekt som ska replikeras.
 * Lagrings kontot för att replikera den virtuella datorn till (endast om du replikerar till lagrings kontot). 
 * En logg lagring krävs för att skydda virtuella datorer till ett Premium Storage-konto eller till en hanterad disk.
-* Den Processerver som ska användas för replikering. Listan över tillgängliga processerver har hämtats och sparats i ***$ProcessServers [0]***  *(skalnings-ProcessServer)* och ***$ProcessServers*** *-variabler (ConfigurationServer)* .
+* Den Processerver som ska användas för replikering. Listan över tillgängliga process servrar har hämtats och sparats i ***$ProcessServers [0]** _ _(Scale-ProcessServer) * och ***$ProcessServers [1]**_ _ (ConfigurationServer) * variabler.
 * Det konto som ska användas för push-installation av mobilitets tjänst programmet på datorerna. Listan över tillgängliga konton har hämtats och lagrats i ***$AccountHandles*** -variabeln.
 * Skydds behållar mappningen för den replikeringsprincip som ska användas för replikering.
 * Resurs gruppen där de virtuella datorerna måste skapas vid redundans.
@@ -351,11 +351,11 @@ Du behöver följande information för att skydda en identifierad virtuell dator
 Replikera nu följande virtuella datorer med de inställningar som anges i den här tabellen
 
 
-|Virtuell dator  |Processerver        |Lagringskonto              |Logg lagrings konto  |Princip           |Konto för mobilitets tjänst installation|Mål resurs grupp  | Virtuellt mål nätverk  |Mål under nät  |
+|Virtuell dator  |Processerver        |Lagringskonto              |Logg lagrings konto  |Policy           |Konto för mobilitets tjänst installation|Målresursgrupp  | Virtuellt mål nätverk  |Mål under nät  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |E.t.| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Undernät-1       |
+|CentOSVM1       |ConfigurationServer   |Ej tillämpligt| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Undernät-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Undernät-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| E.t.                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Undernät-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Ej tillämpligt                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Undernät-1       |   
 
 
 ```azurepowershell

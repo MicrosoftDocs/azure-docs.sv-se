@@ -4,10 +4,10 @@ description: Referens för skapa händelse för batch-pool, som genereras när e
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97609011"
 ---
 # <a name="pool-create-event"></a>Händelse för skapande av pool
@@ -49,7 +49,7 @@ ms.locfileid: "97609011"
 }
 ```
 
-|Element|Typ|Obs!|
+|Element|Typ|Kommentarer|
 |-------------|----------|-----------|
 |`id`|Sträng|Poolens ID.|
 |`displayName`|Sträng|Visnings namnet för poolen.|
@@ -69,14 +69,14 @@ ms.locfileid: "97609011"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`osFamily`|Sträng|Azure-gästens OS-familj som ska installeras på de virtuella datorerna i poolen.<br /><br /> Möjliga värden:<br /><br /> **2** – OS-serien 2, som motsvarar Windows Server 2008 R2 SP1.<br /><br /> **3** – OS Family 3, motsvarar Windows Server 2012.<br /><br /> **4** – OS Family 4, motsvarande Windows Server 2012 R2.<br /><br /> Mer information finns i [Azure Guest OS-versioner](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 |`targetOSVersion`|Sträng|Azure-gästens OS-version som ska installeras på de virtuella datorerna i poolen.<br /><br /> Standardvärdet är **\*** som anger den senaste versionen av operativ systemet för den angivna familjen.<br /><br /> För andra tillåtna värden, se [Azure-gästens OS-versioner](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|Komplex typ|Anger information om den plattform eller Marketplace-avbildning som ska användas.|
 |`nodeAgentId`|Sträng|SKU: n för batch-nodens agent som har allokerats på Compute-noden.|
@@ -84,7 +84,7 @@ ms.locfileid: "97609011"
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a> imageReference
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`publisher`|Sträng|Avbildningens utgivare.|
 |`offer`|Sträng|Bildens erbjudande.|
@@ -93,12 +93,12 @@ ms.locfileid: "97609011"
 
 ###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Boolesk|Anger om den virtuella datorn är aktive rad för automatiska uppdateringar. Om den här egenskapen inte anges är standardvärdet sant.|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 
-|Elementnamn|Typ|Obs!|
+|Elementnamn|Typ|Kommentarer|
 |------------------|--------------|----------|
 |`subnetId`|Sträng|Anger resurs-ID för under nätet där poolens Compute-noder skapas.|

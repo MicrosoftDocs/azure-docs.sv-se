@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591702"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostisera vanliga kod paket fel med hjälp av Service Fabric
@@ -41,7 +41,7 @@ Service Fabric kan vara ansvarig för att avsluta ditt kod paket av olika orsake
 >[!NOTE]
 > Om din process eller behållare slutar med en annan slutkod än koden i följande tabell, är Service Fabric inte ansvarig för att avsluta den.
 
-Slutkod | Description
+Slutkod | Beskrivning
 --------- | -----------
 7147 | Indikerar att Service Fabric stänga av processen eller behållaren korrekt genom att skicka en CTRL + C-signal.
 7148 | Anger att Service Fabric avslutade processen eller containern. Den här felkoden indikerar ibland att processen eller containern inte svarade i tid efter att ha skickat en CTRL + C-signal och måste avslutas.

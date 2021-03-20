@@ -4,10 +4,10 @@ description: Använd aktivitets loggarna om du vill granska användar åtgärder
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91371600"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Visa aktivitets loggar för att övervaka åtgärder på resurser
@@ -30,7 +30,7 @@ Du kan hämta information från aktivitets loggarna via portalen, PowerShell, Az
 
 Följ dessa steg om du vill visa aktivitets loggarna via portalen:
 
-1. På Azure Portal-menyn väljer du **övervaka**eller Sök efter och välj **övervakare** från valfri sida.
+1. På Azure Portal-menyn väljer du **övervaka** eller Sök efter och välj **övervakare** från valfri sida.
 
     ![Välj övervakare](./media/view-activity-logs/select-monitor-from-menu.png)
 

@@ -10,10 +10,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142511"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Kom igång med IoT Hub modulens identitet och modul, dubbla (.NET)
@@ -54,25 +54,25 @@ I slutet av den här självstudiekursen har du två .NET-konsolappar:
 
 I det här avsnittet skapar du en .NET-konsolapp på din simulerade enhet som uppdaterar modultvillingens rapporterade egenskaper.
 
-Innan du börjar ska du hämta anslutnings strängen för din modul. Logga in på [Azure-portalen](https://portal.azure.com/). Navigera till din hubb och välj **IoT-enheter**. Hitta **t myfirstdevice**. Välj **t myfirstdevice** för att öppna den och välj sedan **myFirstModule** för att öppna den. I **modulens identitets information**kopierar du **anslutnings strängen (primär nyckel)** vid behov i följande procedur.
+Innan du börjar ska du hämta anslutnings strängen för din modul. Logga in på [Azure-portalen](https://portal.azure.com/). Navigera till din hubb och välj **IoT-enheter**. Hitta **t myfirstdevice**. Välj **t myfirstdevice** för att öppna den och välj sedan **myFirstModule** för att öppna den. I **modulens identitets information** kopierar du **anslutnings strängen (primär nyckel)** vid behov i följande procedur.
 
    ![Information om Azure-portalmodulen](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
 1. I Visual Studio lägger du till ett nytt projekt i lösningen genom att välja **Arkiv**  >  **nytt**  >  **projekt**. I skapa ett nytt projekt väljer du **konsol program (.NET Framework)** och väljer **Nästa**.
 
-1. Ge projektet namnet *UpdateModuleTwinReportedProperties*. För **lösning**väljer **du Lägg till i lösning**. Kontrollera att .NET Framework-versionen är 4.6.1 eller senare.
+1. Ge projektet namnet *UpdateModuleTwinReportedProperties*. För **lösning** väljer **du Lägg till i lösning**. Kontrollera att .NET Framework-versionen är 4.6.1 eller senare.
 
     ![Skapa ett Visual Studio-projekt](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-1. Välj **skapa** för att skapa ditt projekt.
+1. Skapa projektet genom att välja **Skapa**.
 
 1. I Visual Studio öppnar du **verktyg**  >  **NuGet Package Manager**  >  **Hantera NuGet-paket för lösningen**. Välj fliken **Bläddra**.
 
-1. Sök efter och välj **Microsoft. Azure. devices. client**och välj sedan **Installera**.
+1. Sök efter och välj **Microsoft. Azure. devices. client** och välj sedan **Installera**.
 
     ![Skärm bild som visar "Microsoft. Azure. devices. Client" och knappen "installera" markerad.](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -167,11 +167,11 @@ Innan du börjar ska du hämta anslutnings strängen för din modul. Logga in p�
 
 Nu kan du köra apparna.
 
-1. Högerklicka på din lösning i **Solution Explorer**i Visual Studio och välj sedan **Ange start projekt**.
+1. Högerklicka på din lösning i **Solution Explorer** i Visual Studio och välj sedan **Ange start projekt**.
 
-1. Under **gemensamma egenskaper**väljer du **Start projekt.**
+1. Under **gemensamma egenskaper** väljer du **Start projekt.**
 
-1. Välj **flera start projekt**och välj sedan **Starta** som åtgärd för apparna och **OK** för att acceptera ändringarna.
+1. Välj **flera start projekt** och välj sedan **Starta** som åtgärd för apparna och **OK** för att acceptera ändringarna.
 
 1. Tryck på **F5** för att starta apparna.
 

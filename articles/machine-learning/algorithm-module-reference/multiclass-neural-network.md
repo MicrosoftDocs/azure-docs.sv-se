@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: a4f7f8a7793f31ffbf2099cbfb314fc5097319f5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421268"
 ---
 # <a name="multiclass-neural-network-module"></a>Neurala för multiklass
@@ -40,17 +40,17 @@ För att beräkna nätverkets utdata för ett visst indata beräknas ett värde 
 
 ## <a name="configure-multiclass-neural-network"></a>Konfigurera neurala nätverk i multiklass
 
-1. Lägg till neurala-modulen för **multiklass** i din pipeline i designern. Du kan hitta den här modulen under **Machine Learning** , **initiera** i **klassificerings** kategorin.
+1. Lägg till neurala-modulen för **multiklass** i din pipeline i designern. Du kan hitta den här modulen under **Machine Learning**, **initiera** i **klassificerings** kategorin.
 
-2. **Skapa utbildare läge** : Använd det här alternativet för att ange hur du vill att modellen ska tränas:
+2. **Skapa utbildare läge**: Använd det här alternativet för att ange hur du vill att modellen ska tränas:
 
-    - **Enda parameter** : Välj det här alternativet om du redan vet hur du vill konfigurera modellen.
+    - **Enda parameter**: Välj det här alternativet om du redan vet hur du vill konfigurera modellen.
 
-    - **Parameter intervall** : Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.  
+    - **Parameter intervall**: Välj det här alternativet om du inte är säker på de bästa parametrarna och vill köra en parameter rensning. Välj ett värde intervall som du vill iterera över, och de [finjusterande modellens egenskaper](tune-model-hyperparameters.md) upprepas över alla möjliga kombinationer av de inställningar som du angav för att fastställa de egenskaper som ger optimala resultat.  
 
-3. **Specifikation för dolda lager** : Välj den typ av nätverks arkitektur som ska skapas.
+3. **Specifikation för dolda lager**: Välj den typ av nätverks arkitektur som ska skapas.
 
-    - **Fullständigt anslutet** : Välj det här alternativet om du vill skapa en modell med standard nätverks arkitekturen för neurala. För neurala nätverks modeller i multiklass är standardvärdena följande:
+    - **Fullständigt anslutet**: Välj det här alternativet om du vill skapa en modell med standard nätverks arkitekturen för neurala. För neurala nätverks modeller i multiklass är standardvärdena följande:
 
         - Ett dolt lager
         - Utmatnings lagret är fullständigt anslutet till det dolda lagret.
@@ -61,21 +61,21 @@ För att beräkna nätverkets utdata för ett visst indata beräknas ett värde 
   
    
 
-5. **Antal dolda noder** : med det här alternativet kan du anpassa antalet dolda noder i standard arkitekturen. Ange antalet dolda noder. Standardvärdet är ett dolt lager med 100 noder.
+5. **Antal dolda noder**: med det här alternativet kan du anpassa antalet dolda noder i standard arkitekturen. Ange antalet dolda noder. Standardvärdet är ett dolt lager med 100 noder.
 
-6. **Inlärnings takten** : definiera storleken på steget som tas vid varje iteration, före korrigeringen. Ett större värde för inlärnings frekvensen kan göra att modellen konvergerar snabbare, men den kan överskotta lokala minimi.
+6. **Inlärnings takten**: definiera storleken på steget som tas vid varje iteration, före korrigeringen. Ett större värde för inlärnings frekvensen kan göra att modellen konvergerar snabbare, men den kan överskotta lokala minimi.
 
-7. **Antal inlärnings iterationer** : Ange det maximala antalet gånger som algoritmen ska bearbeta inlärnings fallen.
+7. **Antal inlärnings iterationer**: Ange det maximala antalet gånger som algoritmen ska bearbeta inlärnings fallen.
 
-8. **Diametern för inledande inlärnings vikt** : Ange nodens vikt i början av inlärnings processen.
+8. **Diametern för inledande inlärnings vikt**: Ange nodens vikt i början av inlärnings processen.
 
-9. **Momentet** : Ange en vikt att tillämpa vid inlärning till noder från föregående iterationer.
+9. **Momentet**: Ange en vikt att tillämpa vid inlärning till noder från föregående iterationer.
   
-11. **Blanda exempel** : Välj det här alternativet om du vill blanda fall mellan iterationer.
+11. **Blanda exempel**: Välj det här alternativet om du vill blanda fall mellan iterationer.
 
     Om du avmarkerar det här alternativet bearbetas ärenden i exakt samma ordning varje gång du kör pipelinen.
 
-12. Värde för **slumpmässig siffra** : Ange ett värde som ska användas som dirigering, om du vill säkerställa repeterbarhet i flera körningar av samma pipeline.
+12. Värde för **slumpmässig siffra**: Ange ett värde som ska användas som dirigering, om du vill säkerställa repeterbarhet i flera körningar av samma pipeline.
 
 14. Träna modellen:
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91363213"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Auktorisera utvecklarkonton med Azure Active Directory i Azure API Management
@@ -38,11 +38,11 @@ Den här artikeln visar hur du aktiverar åtkomst till Developer-portalen för a
 3. Skriv **API** i sökrutan.
 4. Välj **API Management tjänster**.
 5. Välj API Management-tjänstinstansen.
-6. Välj **identiteter**under **Developer Portal**.
+6. Välj **identiteter** under **Developer Portal**.
 7. Välj **+ Lägg till** överst.
 
     Fönstret **Lägg till identitetsprovider** visas till höger.
-8. Under **providertyp**väljer du **Azure Active Directory**.
+8. Under **providertyp** väljer du **Azure Active Directory**.
 
     Kontroller som gör att du kan ange annan information som krävs visas i fönstret. Kontrollerna omfattar **klient-ID** och **klient hemlighet**. (Du får information om de här kontrollerna senare i artikeln.)
 9. Anteckna innehållet i **omdirigerings-URL:** en.
@@ -61,7 +61,7 @@ Den här artikeln visar hur du aktiverar åtkomst till Developer-portalen för a
 14.  När programmet har registrerats kopierar du **program-ID: t (klient)-ID: t** från **översikts** sidan. 
 15. Gå tillbaka till API Management-instansen. I fönstret **Lägg till identitetsprovider** klistrar du in **programmets (klient) ID-** värde i rutan **klient-ID** .
 16. Växla tillbaka till Azure AD-konfigurationen, Välj **certifikat & hemligheter** under **Hantera**. Klicka på knappen **Ny klienthemlighet**. Ange ett värde i **Beskrivning**, välj ett alternativ för **Förfaller** och välj **Lägg till**. Kopiera klientens hemliga värde innan du lämnar sidan. Du behöver den i nästa steg. 
-17. Under **Hantera**väljer du **autentisering** och väljer sedan **ID-token** under **implicit beviljande**
+17. Under **Hantera** väljer du **autentisering** och väljer sedan **ID-token** under **implicit beviljande**
 18. Gå tillbaka till API Management instansen och klistra in hemligheten i rutan **klient hemlighet** .
 
     > [!IMPORTANT]
@@ -87,8 +87,8 @@ När du har aktiverat åtkomst för användare i en Azure AD-klient kan du lägg
 Om du vill lägga till en extern Azure AD-grupp i APIM måste du först slutföra det föregående avsnittet. Dessutom måste det program som du har registrerat beviljas åtkomst till Microsoft Graph-API: et med `Directory.Read.All` behörighet genom att följa dessa steg: 
 
 1. Gå tillbaka till din app-registrering som skapades i föregående avsnitt.
-2. Välj **API-behörigheter**och klicka sedan på **+ Lägg till en behörighet**. 
-3. I rutan **begär API-behörigheter** väljer du fliken **Microsoft API: er** , bläddrar nedåt och väljer sedan panelen **Azure Active Directory diagram** . Välj **program behörigheter**, Sök efter **katalog**och välj sedan **katalogen. Read. all** behörighet. 
+2. Välj **API-behörigheter** och klicka sedan på **+ Lägg till en behörighet**. 
+3. I rutan **begär API-behörigheter** väljer du fliken **Microsoft API: er** , bläddrar nedåt och väljer sedan panelen **Azure Active Directory diagram** . Välj **program behörigheter**, Sök efter **katalog** och välj sedan **katalogen. Read. all** behörighet. 
 4. Klicka på **Lägg till behörigheter** längst ned i fönstret och klicka sedan på **bevilja administrativt medgivande för {tenantname}** så att du beviljar åtkomst för alla användare i den här katalogen. 
 
 Nu kan du lägga till externa Azure AD-grupper från fliken **grupper** i API Management-instansen.
@@ -124,7 +124,7 @@ Logga in på Developer-portalen genom att använda ett Azure AD-konto som du kon
 
    ![Inloggnings sida][api-management-dev-portal-signin]
 
-1. Ange autentiseringsuppgifterna för en av användarna i Azure AD och välj **Logga**in.
+1. Ange autentiseringsuppgifterna för en av användarna i Azure AD och välj **Logga** in.
 
    ![Logga in med användar namn och lösen ord][api-management-aad-signin]
 

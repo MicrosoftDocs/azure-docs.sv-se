@@ -12,15 +12,15 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147681"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Läsa meddelanden från enhet till moln från den inbyggda slutpunkten
 
-Som standard dirigeras meddelanden till den inbyggda slut punkten för servicen (**meddelanden/händelser**) som är kompatibel med [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Den här slut punkten exponeras för närvarande endast med [AMQP](https://www.amqp.org/) -protokollet på port 5671. En IoT-hubb visar följande egenskaper så att du kan kontrol lera de inbyggda Event Hub- **meddelanden/händelser**som är kompatibla med meddelande slut punkter.
+Som standard dirigeras meddelanden till den inbyggda slut punkten för servicen (**meddelanden/händelser**) som är kompatibel med [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Den här slut punkten exponeras för närvarande endast med [AMQP](https://www.amqp.org/) -protokollet på port 5671. En IoT-hubb visar följande egenskaper så att du kan kontrol lera de inbyggda Event Hub- **meddelanden/händelser** som är kompatibla med meddelande slut punkter.
 
 | Egenskap            | Beskrivning |
 | ------------------- | ----------- |
@@ -47,13 +47,13 @@ När du använder Event Hubs SDK: er eller produkt integrationer som inte är Io
 
 2. Klicka på **inbyggda slut punkter**.
 
-3. Avsnittet **Events** innehåller följande värden: **partitioner**, **Event Hub-kompatibla namn**, **Event Hub-kompatibel slut punkt**, **kvarhållningsperiod**och **konsument grupper**.
+3. Avsnittet **Events** innehåller följande värden: **partitioner**, **Event Hub-kompatibla namn**, **Event Hub-kompatibel slut punkt**, **kvarhållningsperiod** och **konsument grupper**.
 
     ![Inställningar för enhet till moln](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 I portalen innehåller fältet Event Hub-kompatibel slut punkt en fullständig Event Hubs anslutnings sträng som ser ut så här: **slut punkt = SB://abcd1234namespace.ServiceBus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-ehub-ABCD-1234-123456**. Om SDK: n som du använder kräver andra värden blir de:
 
-| Namn | Värde |
+| Name | Värde |
 | ---- | ----- |
 | Slutpunkt | sb://abcd1234namespace.servicebus.windows.net/ |
 | Värdnamn | abcd1234namespace.servicebus.windows.net |

@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142461"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Schema-och sändnings jobb (.NET)
@@ -70,21 +70,21 @@ I slutet av den här självstudien har du två .NET-konsol program (C#):
 
 I det här avsnittet skapar du en .NET-konsol app som svarar på en direkt metod som anropas av lösningens Server del.
 
-1. I Visual Studio väljer du **skapa ett nytt projekt**och klickar sedan på projekt mal len **konsol program (.NET Framework)** . Fortsätt genom att välja **Nästa**.
+1. I Visual Studio väljer du **skapa ett nytt projekt** och klickar sedan på projekt mal len **konsol program (.NET Framework)** . Fortsätt genom att välja **Nästa**.
 
-1. I **Konfigurera ditt nya projekt**namnger du projektet *SimulateDeviceMethods*och väljer sedan **skapa**.
+1. I **Konfigurera ditt nya projekt** namnger du projektet *SimulateDeviceMethods* och väljer sedan **skapa**.
 
     ![Konfigurera ditt SimulateDeviceMethods-projekt](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
 1. I Solution Explorer högerklickar du på projektet **SimulateDeviceMethods** och väljer sedan **Hantera NuGet-paket**.
 
-1. I **NuGet Package Manager**väljer du **Bläddra** och söker efter och väljer **Microsoft. Azure. devices. client**. Välj **installera**.
+1. I **NuGet Package Manager** väljer du **Bläddra** och söker efter och väljer **Microsoft. Azure. devices. client**. Välj **installera**.
 
     ![NuGet paket hanterarens fönster klient program](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
     I det här steget hämtas, installeras och läggs en referens till i [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-paketet och dess beroenden.
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -167,19 +167,19 @@ I det här avsnittet skapar du en .NET-konsol app som svarar på en direkt metod
 
 I det här avsnittet skapar du en .NET-konsol app (med C#) som använder jobb för att anropa metoden **LockDoor** Direct och skicka önskade egenskaps uppdateringar till flera enheter.
 
-1. I Visual Studio väljer du **fil**  >  **nytt**  >  **projekt**. I **skapa ett nytt projekt**väljer du **konsol program (.NET Framework)** och väljer sedan **Nästa**.
+1. I Visual Studio väljer du **fil**  >  **nytt**  >  **projekt**. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)** och väljer sedan **Nästa**.
 
-1. I **Konfigurera ditt nya projekt**namnger du projektet *ScheduleJob*. För **lösning**väljer **du Lägg till i lösning**och väljer sedan **skapa**.
+1. I **Konfigurera ditt nya projekt** namnger du projektet *ScheduleJob*. För **lösning** väljer **du Lägg till i lösning** och väljer sedan **skapa**.
 
     ![Namnge och konfigurera ScheduleJob-projekt](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
 1. I Solution Explorer högerklickar du på projektet **ScheduleJob** och väljer sedan **Hantera NuGet-paket**.
 
-1. I **NuGet Package Manager**väljer du **Bläddra**, söker efter och väljer **Microsoft. Azure. Devices**och väljer sedan **Installera**.
+1. I **NuGet Package Manager** väljer du **Bläddra**, söker efter och väljer **Microsoft. Azure. Devices** och väljer sedan **Installera**.
 
    I det här steget hämtas, installeras och läggs en referens till i [Azure IoT service SDK NuGet-](https://www.nuget.org/packages/Microsoft.Azure.Devices/) paketet och dess beroenden.
 
-1. Lägg till följande- `using` instruktioner överst i **program.cs** -filen:
+1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
 
     ```csharp
     using Microsoft.Azure.Devices;
@@ -295,7 +295,7 @@ Nu är det dags att köra apparna.
 
 1. Högerklicka på din lösning i Visual Studio-Solution Explorer och välj **Ange start projekt**.
 
-1. Välj **vanliga egenskaper**  >  **Start projekt**och välj sedan **flera start projekt**.
+1. Välj **vanliga egenskaper**  >  **Start projekt** och välj sedan **flera start projekt**.
 
 1. Se till att `SimulateDeviceMethods` visas överst i listan följt av `ScheduleJob` . Ange båda åtgärderna för att **Starta** och välj **OK**.
 

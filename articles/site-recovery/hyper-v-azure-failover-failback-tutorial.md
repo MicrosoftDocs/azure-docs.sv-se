@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132466"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Redundansväxla virtuella Hyper-V-datorer till Azure
@@ -58,7 +58,7 @@ I **Skyddade objekt** klickar du på **Replikerade objekt** > VM.
 
 ## <a name="fail-over-to-azure"></a>Redundansväxla till Azure
 
-1. I **Inställningar**  >  **replikerade objekt**klickar du på den virtuella datorn > **redundans**.
+1. I **Inställningar**  >  **replikerade objekt** klickar du på den virtuella datorn > **redundans**.
 2. I **Redundans** väljer du den **senaste** återställningspunkten. 
 3. Välj **Stäng datorn innan du påbörjar redundans**. Site Recovery försöker att stänga av den virtuella källdatorn innan redundansen utlöses. Redundansväxlingen fortsätter även om avstängningen misslyckas. Du kan följa förloppet för redundansväxlingen på **jobb** sidan.
 4. När du har verifierat redundansväxlingen väljer du **Genomför**. Detta raderar alla tillgängliga återställningspunkter.

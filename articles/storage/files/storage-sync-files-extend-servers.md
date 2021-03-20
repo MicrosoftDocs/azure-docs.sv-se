@@ -8,10 +8,10 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91329472"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Självstudie: Utöka Windows-filservrar med Azure File Sync
@@ -44,7 +44,7 @@ För den här självstudien behöver du göra följande innan du kan distribuera
 
 På en lokal dator skapar du en mapp med namnet _FilesToSync_ och lägger till en textfil med namnet _mytestdoc.txt_. Du laddar upp den filen till filresursen senare i den här självstudien.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -79,7 +79,7 @@ Nu har du skapat ett lagringskonto och en filresurs med en fil i det. Nu ska du 
 
 1. Gå till Azure-portalen och expandera menyn till vänster. Välj **Skapa en resurs** i det övre vänstra hörnet.
 1. I sökrutan ovanför listan över **Azure Marketplace**-resurser söker du efter **Windows Server 2016 Datacenter** och väljer det bland resultaten. Välj **Skapa**.
-1. Gå till fliken **grundläggande** . Under **projekt information**väljer du den resurs grupp som du skapade för den här självstudien.
+1. Gå till fliken **grundläggande** . Under **projekt information** väljer du den resurs grupp som du skapade för den här självstudien.
 
    ![Ange grundläggande information om din virtuella datorer på portalbladet](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
@@ -119,7 +119,7 @@ Nu har du skapat en ny virtuell dator och anslutit en datadisk. Nu kommer du att
 
    ![Ansluta till en virtuell Azure-dator från portalen](./media/storage-sync-files-extend-servers/connect-vm.png)
 
-1. På sidan **Anslut till den virtuella datorn** behåller du standardalternativen för att ansluta via **IP-adress** via port 3389. Välj **Ladda ned RDP-fil**.
+1. På sidan **Anslut till den virtuella datorn** behåller du standardalternativen för att ansluta via **IP-adress** via port 3389. Välj **Hämta RDP-fil**.
 
    ![Ladda ned RDP-filen](./media/storage-sync-files-extend-servers/download-rdp.png)
 
@@ -238,7 +238,7 @@ Azure File Sync-agenten är ett nedladdningsbart paket som möjliggör att Windo
 
    ![Välja agent](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. Välj **Tillåt när**  >  **körningen**är  >  **öppen**.
+1. Välj **Tillåt när**  >  **körningen** är  >  **öppen**.
 1. Stäng PowerShell-fönstret, om du inte redan har gjort det.
 1. Acceptera standardinställningarna i **konfigurationsguiden för lagringssynkroniseringsagenten**.
 1. Välj **installera**.
@@ -281,7 +281,7 @@ En synkroniseringsgrupp definierar synkroniseringstopologin för en uppsättning
 
    | Värde | Beskrivning |
    | ----- | ----- |
-   | **Namn på synkroniseringsgrupp** | Det här namnet måste vara unikt i tjänsten för synkronisering av lagring men kan vara vilket namn som helst som är logiskt för dig. Använd *afssyncgroup* för den här självstudien.|
+   | **Sync-gruppens namn** | Det här namnet måste vara unikt i tjänsten för synkronisering av lagring men kan vara vilket namn som helst som är logiskt för dig. Använd *afssyncgroup* för den här självstudien.|
    | **Prenumeration** | Prenumerationen där du har distribuerat tjänsten för synkronisering av lagring för den här kursen. |
    | **Lagringskonto** | Välj **Välj lagringskonto**. I det fönster som visas väljer du det lagringskonto som har den Azure-filresurs du har skapade. Använd *afsstoracct101918* för den här självstudien. |
    | **Azure-filresurs** | Namnet på den Azure-filresurs som du skapade. Använd *afsfileshare* för den här självstudien. |

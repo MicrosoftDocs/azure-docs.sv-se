@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94920448"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Kom igång med Key Vault-certifikat
@@ -37,7 +37,7 @@ Certifikat består av tre relaterade resurser som är länkade tillsammans som e
 
 **Steg 1** – certifikat utfärdare (ca)  
 -   Som IT-administratör, PKI-administratör eller någon som hanterar konton med certifikat utfärdare, för ett specifikt företag (t. ex. Contoso) är ett krav för att använda Key Vault certifikat.  
-    Följande ca: er är de aktuella partner leverantörer som har Key Vault. Lär dig mer [här](./create-certificate.md#partnered-ca-providers)   
+    Följande ca: er är de aktuella partner leverantörer som har Key Vault. Läs mer [här](./create-certificate.md#partnered-ca-providers)   
     -   DigiCert-Key Vault erbjuder OV TLS/SSL-certifikat med DigiCert.  
     -   GlobalSign-Key Vault erbjuder OV TLS/SSL-certifikat med GlobalSign.  
 
@@ -46,7 +46,7 @@ Certifikat består av tre relaterade resurser som är länkade tillsammans som e
 **Steg 3** – en Contoso-administratör, tillsammans med en Contoso-anställd (Key Vault användare) som äger certifikat, beroende på certifikat utfärdaren, kan hämta ett certifikat från administratören eller direkt från kontot med certifikat utfärdaren.  
 
 - Påbörja åtgärden Lägg till autentiseringsuppgift till ett nyckel valv genom att [Ange en resurs för certifikat utfärdare](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) . En certifikat utfärdare är en entitet som representeras i Azure Key Vault (KV) som en CertificateIssuer-resurs. Den används för att tillhandahålla information om källan till ett KV-certifikat; utfärdarens namn, Provider, autentiseringsuppgifter och annan administrativ information.
-  - Till exempel MyDigiCertIssuer  
+  - t.ex. MyDigiCertIssuer  
     -   Leverantör  
     -   Autentiseringsuppgifter – autentiseringsuppgifter för CA-konto. Varje certifikat utfärdare har sina egna specifika data.  
 
@@ -96,7 +96,7 @@ Key Vault tjänsten skickar förfrågningar till CA: n (utgående trafik). Därf
 
 -   Om det inte finns några ytterligare åtgärder skickas ett meddelande om att det första är Key Vault. 
 
--   Användaren kan också redigera principen, som fungerar vid tidpunkten för importen, men som innehåller standardinställningar där ingen information har angetts vid import. Till exempel ingen information om utfärdare  
+-   Användaren kan också redigera principen, som fungerar vid tidpunkten för importen, men som innehåller standardinställningar där ingen information har angetts vid import. t.ex. ingen information om utfärdare  
 
 ### <a name="formats-of-import-we-support"></a>Format för import vi stöder
 Azure Key Vault stöder. pem-och. pfx-certifikatfiler för att importera certifikat till Key Vault.

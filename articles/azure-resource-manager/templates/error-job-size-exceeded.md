@@ -4,10 +4,10 @@ description: Beskriver hur du felsöker fel när jobb storleken eller mallen är
 ms.topic: troubleshooting
 ms.date: 01/19/2021
 ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610411"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Fel för jobb storleken har överskridits
@@ -22,10 +22,10 @@ När du distribuerar en mall får du ett fel meddelande om att distributionen ha
 
 Du får det här felet när distributionen överskrider en av de tillåtna gränserna. Normalt visas det här felet när din mall eller det jobb som kör distributionen är för stort.
 
-Distributions jobbet får inte överstiga 1 MB. Jobbet innehåller metadata om begäran. För stora mallar kan metadata som kombineras med mallen överskrida den tillåtna storleken för ett jobb.
+Distributions jobbet får inte överstiga 1 MB. Jobbet innehåller metadata om förfrågan. För stora mallar kan metadata tillsammans med mallen överskrida den tillåtna storleksgränsen för jobb.
 
 
-Mallen får inte överstiga 4 MB. Gränsen på 4 MB gäller för mallens slutliga tillstånd när den har expanderats för resurs definitioner som använder [copy](copy-resources.md) för att skapa många instanser. Det slutliga läget innehåller också de matchade värdena för variabler och parametrar.
+Mallen får inte överstiga 4 MB. Gränsen på 4 MB gäller för mallens slutliga tillstånd när den har expanderats för resurs definitioner som använder [copy](copy-resources.md) för att skapa många instanser. Sluttillståndet omfattar även matchade värden för variabler och parametrar.
 
 Andra gränser för mallen är:
 

@@ -1,5 +1,5 @@
 ---
-title: Definiera anpassade förslag för automatiska förslag – Anpassad sökning i Bing
+title: Definiera anpassade förslag för automatiska förslag – Anpassad Bing-sökning
 titleSuffix: Azure Cognitive Services
 description: Anpassad automatiska förslag returnerar en lista med föreslagna Sök frågesträngar som är relevanta för din Sök funktion.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 986a7c8f1282b76c2ae94eebcc2c31dc3b3e7cad
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352022"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurera din anpassade automatiska förslags upplevelse

@@ -4,10 +4,10 @@ description: Den här artikeln visar hur du flyttar ett dedikerat Azure Event Hu
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89381089"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Flytta ett dedikerat Azure Event Hubs-kluster till en annan region
@@ -23,7 +23,7 @@ Kom igång genom att exportera en Resource Manager-mall. Den här mallen innehå
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **alla resurser** och välj sedan Event Hubs dedikerat kluster.
-3. Välj **Settings**  >  **Exportera mall**för > inställningar.
+3. Välj   >  **Exportera mall** för > inställningar.
 4. Välj **Hämta** på sidan **Exportera mall** .
 
     :::image type="content" source="./media/move-cluster-across-regions/download-template.png" alt-text="Ladda ned Resource Manager-mall" lightbox="./media/move-cluster-across-regions/download-template.png":::
@@ -38,9 +38,9 @@ Distribuera mallen för att skapa ett Event Hubs dedikerat kluster i mål region
 
 
 1. I Azure Portal väljer du **skapa en resurs**.
-2. I **Sök på Marketplace**skriver du **mall distribution**och väljer **malldistribution (distribuera med anpassade mallar)**.
+2. I **Sök på Marketplace** skriver du **mall distribution** och väljer **malldistribution (distribuera med anpassade mallar)**.
 5. Välj **Bygg en egen mall i redigeraren**.
-6. Välj **Läs in fil**och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
+6. Välj **Läs in fil** och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
 1. Uppdatera värdet för `location` egenskapen så att den pekar på den nya regionen. För att hämta plats koder, se [Azure-platser](https://azure.microsoft.com/global-infrastructure/locations/). Koden för en region är region namnet utan mellanslag, till exempel `West US` är lika med `westus` .
 1. Spara mallen genom att välja **Spara** . 
 1. Följ dessa steg på sidan **Anpassad distribution** : 
@@ -50,20 +50,20 @@ Distribuera mallen för att skapa ett Event Hubs dedikerat kluster i mål region
     4. Utför följande steg i avsnittet **Inställningar** :    
         1. Ange det nya **kluster namnet**. 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Ladda ned Resource Manager-mall":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Distribuera Resource Manager-mall":::
     5. Välj **Granska + skapa** längst ned på sidan. 
     1. På sidan **Granska + skapa** granskar du inställningarna och väljer sedan **skapa**.  
 
 ## <a name="discard-or-clean-up"></a>Ta bort eller rensa
-Efter distributionen kan du, om du vill börja om, ta bort **mål Event Hubs dedikerat kluster**och upprepa stegen som beskrivs i avsnittet [förbereda](#prepare) och [Flytta](#move) i den här artikeln.
+Efter distributionen kan du, om du vill börja om, ta bort **mål Event Hubs dedikerat kluster** och upprepa stegen som beskrivs i avsnittet [förbereda](#prepare) och [Flytta](#move) i den här artikeln.
 
 Om du vill genomföra ändringarna och slutföra flytten av ett Event Hubs kluster tar du bort **Event Hubs klustret** i den ursprungliga regionen. 
 
 Ta bort ett Event Hubs kluster (källa eller mål) med hjälp av Azure Portal:
 
-1. I fönstret Sök högst upp i Azure Portal, skriver du **Event Hubs kluster**och väljer **Event Hubs kluster** från Sök resultat. Du ser Event Hubs-klustret i en lista.
+1. I fönstret Sök högst upp i Azure Portal, skriver du **Event Hubs kluster** och väljer **Event Hubs kluster** från Sök resultat. Du ser Event Hubs-klustret i en lista.
 2. Välj det kluster som du vill ta bort och välj **ta bort** från verktygsfältet. 
-3. Bekräfta borttagningen genom att skriva **kluster namnet**på sidan **ta bort kluster** och välj sedan **ta bort**. 
+3. Bekräfta borttagningen genom att skriva **kluster namnet** på sidan **ta bort kluster** och välj sedan **ta bort**. 
 
 ## <a name="next-steps"></a>Nästa steg
 I den här självstudien har du lärt dig hur du flyttar ett Event Hubs dedikerat kluster från en region till en annan. 

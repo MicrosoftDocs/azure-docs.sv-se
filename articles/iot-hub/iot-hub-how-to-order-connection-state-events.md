@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147268"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Begär enhetsanslutningshändelser från Azure IoT Hub med hjälp av Azure Cosmos DB
@@ -153,7 +153,7 @@ Börja med att skapa en logikapp och lägg till en utlösare för händelserutn�
    > [!NOTE]
    > Om du vill hitta och öppna din Logic app igen väljer du **resurs grupper** och väljer den resurs grupp som du använder för den här instruktionen. Välj sedan den nya Logic-appen. Då öppnas Logic Apps designer.
 
-4. I Logic Apps designer rullar du åt höger tills du ser vanliga utlösare. Under **mallar**väljer du **Tom Logic app** så att du kan bygga din Logic app från grunden.
+4. I Logic Apps designer rullar du åt höger tills du ser vanliga utlösare. Under **mallar** väljer du **Tom Logic app** så att du kan bygga din Logic app från grunden.
 
 ### <a name="select-a-trigger"></a>Välj en utlösare
 
@@ -201,7 +201,7 @@ En utlösare är en specifik händelse som startar din logikapp. I den här sjä
 
 I ditt Logic app-arbetsflöde kan villkor hjälpa dig att köra vissa åtgärder när du har överfört det aktuella villkoret. När villkoret är uppfyllt kan en önskad åtgärd definieras. I den här självstudien är villkoret att kontrol lera om eventType är enhet ansluten eller om enheten är frånkopplad. Åtgärden kommer att utföra den lagrade proceduren i databasen.
 
-1. Välj **+ nytt steg** sedan **inbyggd**och sedan Sök och välj **villkor**. Klicka på **Välj ett värde** så visas en ruta med det dynamiska innehållet – fälten som kan väljas. Fyll i fälten så som visas nedan för att endast köra detta för enhet anslutna och frånkopplade enhets händelser:
+1. Välj **+ nytt steg** sedan **inbyggd** och sedan Sök och välj **villkor**. Klicka på **Välj ett värde** så visas en ruta med det dynamiska innehållet – fälten som kan väljas. Fyll i fälten så som visas nedan för att endast köra detta för enhet anslutna och frånkopplade enhets händelser:
 
    * Välj ett värde: **eventType** --Välj detta från fälten i det dynamiska innehåll som visas när du klickar på det här fältet.
    * Ändra "är lika med" som **slutar med**.
@@ -257,7 +257,7 @@ I det här avsnittet ska du konfigurera din IoT-hubb så att den publicerar hän
 
 1. Gå till din IoT-hubb på Azure Portal.
 
-2. Välj **händelser**.
+2. Välj **Händelser**.
 
    ![Öppna Event Grid-informationen](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
 
@@ -271,7 +271,7 @@ I det här avsnittet ska du konfigurera din IoT-hubb så att den publicerar hän
 
    ![Ange händelse typer som ska sökas efter](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. För **slut punkts information**väljer du slut punkts typ som **Web Hook** och klickar på Välj slut punkt och klistrar in den URL som du kopierade från din Logic app och bekräftar valet.
+6. För **slut punkts information** väljer du slut punkts typ som **Web Hook** och klickar på Välj slut punkt och klistrar in den URL som du kopierade från din Logic app och bekräftar valet.
 
    ![Välj slut punkts-URL](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
@@ -351,7 +351,7 @@ Om du inte vill förlora det arbete du gjort i logikappen inaktiverar du den i s
 
 3. Gå till IoT-hubben.
 
-4. Välj **ta bort**på bladet **Översikt** .
+4. Välj **ta bort** på bladet **Översikt** .
 
     Även om du behåller din IoT-hubb kanske du vill ta bort händelseprenumerationen som du skapade.
 

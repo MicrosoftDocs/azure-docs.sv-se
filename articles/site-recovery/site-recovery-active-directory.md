@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132318"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurera katastrof återställning för Active Directory och DNS
@@ -22,7 +22,7 @@ Du kan använda [Site Recovery](site-recovery-overview.md) för att skapa en kat
 
 Den här artikeln beskriver hur du skapar en katastrof återställnings lösning för Active Directory. Det innehåller nödvändiga komponenter och instruktioner för redundans. Du bör vara bekant med Active Directory och Site Recovery innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Om du replikerar till Azure förbereder du [Azure-resurser](tutorial-prepare-azure.md), inklusive en prenumeration, ett Azure-Virtual Network, ett lagrings konto och ett Recovery Services-valv.
 - Granska [support kraven](./vmware-physical-azure-support-matrix.md) för alla komponenter.
@@ -79,7 +79,7 @@ De flesta program kräver närvaro av en domänkontrollant eller en DNS-server. 
 1. Skapa ett isolerat nätverk. Alla virtuella nätverk som du skapar i Azure är isolerade från andra nätverk som standard. Vi rekommenderar att du använder samma IP-adressintervall för det här nätverket som du använder i produktions nätverket. Aktivera inte plats-till-plats-anslutning i det här nätverket.
 1. Ange en DNS-IP-adress i det isolerade nätverket. Använd IP-adressen som du förväntar dig att den virtuella DNS-datorn ska hämta. Om du replikerar till Azure anger du IP-adressen för den virtuella dator som används vid redundansväxling. Ange IP-adressen i den replikerade virtuella datorn i inställningarna för **beräkning och nätverk** genom att välja **mål-IP-** inställningar.
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure-nätverk":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure test Network":::
 
    > [!TIP]
    > Site Recovery försöker skapa virtuella test datorer i ett undernät med samma namn och genom att använda samma IP-adress som anges i **beräknings-och nätverks** inställningarna för den virtuella datorn. Om ett undernät med samma namn inte är tillgängligt i det virtuella Azure-nätverket som anges för redundanstest, skapas den virtuella test datorn i det alfabetiskt första under nätet.
@@ -118,21 +118,21 @@ Om Virtualization-skydd utlöses efter ett redundanstest, kan ett eller flera av
 
 - **GenerationID** -värdet ändras:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure-nätverk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Ändring av generations-ID":::
 
 - **InvocationID** -värdet ändras:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure-nätverk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Ändring av anrops-ID":::
 
 - `SYSVOL` mappen och `NETLOGON` resurserna är inte tillgängliga.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure-nätverk":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Resurs för SYSVOL-mapp":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure-nätverk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL-mapp":::
 
 - DFSR-databaser tas bort.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure-nätverk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR-databaser tas bort":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Felsöka problem med domänkontrollanten under testning av redundans
 

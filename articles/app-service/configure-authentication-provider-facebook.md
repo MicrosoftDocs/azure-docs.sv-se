@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519960"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Facebook-inloggning
@@ -35,8 +35,8 @@ För att kunna slutföra proceduren i den här artikeln behöver du ett Facebook
    1. Slutför säkerhets kontrollen.
 
    Developer-instrumentpanelen för din nya Facebook-app öppnas.
-1. Välj **Dashboard**  >  **Facebook**  >  -kontrollpanel-inloggning**Konfigurera**  >  **webb**.
-1. I det vänstra navigerings fältet under **Facebook-inloggning**väljer du **Inställningar**.
+1. Välj   >  **Facebook**  >  -kontrollpanel-inloggning **Konfigurera**  >  **webb**.
+1. I det vänstra navigerings fältet under **Facebook-inloggning** väljer du **Inställningar**.
 1. I fältet **giltiga OAuth-omdirigerings-URI** anger du `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` . Kom ihåg att ersätta `<app-name>` med namnet på din Azure App Service-app.
 1. Välj **Spara ändringar**.
 1. I det vänstra fönstret väljer du **Inställningar**  >  **Basic**. 
@@ -48,13 +48,13 @@ För att kunna slutföra proceduren i den här artikeln behöver du ett Facebook
 
 1. Det Facebook-konto som du använde för att registrera programmet är en administratör för appen. I det här läget kan endast administratörer logga in till det här programmet.
 
-   Om du vill autentisera andra Facebook-konton väljer du **granskning av program** och gör det möjligt för allmänheten att göra det möjligt för allmänheten att komma åt appen med hjälp av Facebook-autentisering. ** \<your-app-name> **
+   Om du vill autentisera andra Facebook-konton väljer du **granskning av program** och gör det möjligt för allmänheten att göra det möjligt för allmänheten att komma åt appen med hjälp av Facebook-autentisering. **\<your-app-name>**
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Lägga till Facebook-information i ditt program
 
 1. Logga in på [Azure Portal] och navigera till din app service-app.
-1. Välj **Inställningar**  >  **autentisering/auktorisering**och se till att **App Service autentisering** är **aktiverat**.
-1. Välj **Facebook**och klistra in i app-ID och appens hemliga värden som du har fått tidigare. Aktivera alla omfattningar som krävs av ditt program.
+1. Välj **Inställningar**  >  **autentisering/auktorisering** och se till att **App Service autentisering** är **aktiverat**.
+1. Välj **Facebook** och klistra in i app-ID och appens hemliga värden som du har fått tidigare. Aktivera alla omfattningar som krävs av ditt program.
 1. Välj **OK**.
 
    ![Skärm bild av Facebook-inställningar för mobilapp][0]
@@ -80,4 +80,4 @@ Du är nu redo att använda Facebook för autentisering i din app.
 [Facebook-utvecklare]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure Portal]: https://portal.azure.com/
+[Azure-portalen]: https://portal.azure.com/

@@ -7,10 +7,10 @@ ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008372"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Ansluta till Windows Desktop-klienten (klassisk)
@@ -52,7 +52,7 @@ Du kan prenumerera på en arbets yta på två sätt. Klienten kan försöka iden
 
 ### <a name="subscribe-with-a-user-account"></a>Prenumerera med ett användar konto
 
-1. Välj **Prenumerera**på klientens huvud sida.
+1. Välj **Prenumerera** på klientens huvud sida.
 2. Logga in med ditt användar konto när du uppmanas till det.
 3. Resurserna kommer att visas i anslutnings Center och grupperas efter arbets yta.
 
@@ -60,7 +60,7 @@ Du kan prenumerera på en arbets yta på två sätt. Klienten kan försöka iden
 
 1. Från klientens huvud sida väljer du **Prenumerera med URL**.
 2. Ange arbets ytans URL eller din e-post adress:
-   - Om du använder **URL: en för arbets ytan**använder du den som din administratör fick. Om du får åtkomst till resurser från virtuella Windows-datorer kan du använda någon av följande URL: er:
+   - Om du använder **URL: en för arbets ytan** använder du den som din administratör fick. Om du får åtkomst till resurser från virtuella Windows-datorer kan du använda någon av följande URL: er:
      - Windows Virtual Desktop (klassisk): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Virtuellt Windows-skrivbord: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Om du använder **e-** postfältet i stället anger du din e-postadress. Detta instruerar klienten att söka efter en URL som är kopplad till din e-postadress om din administratör har konfigurerat [identifiering av e-post](/windows-server/remote/remote-desktop-services/rds-email-discovery).

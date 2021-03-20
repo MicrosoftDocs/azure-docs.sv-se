@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91403015"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Felsöka Azure Backup Server
@@ -22,7 +22,7 @@ Vi rekommenderar att du utför följande verifiering innan du börjar felsöka M
 - [Se till att Microsoft Azure Recovery Services (MARS) Agent är uppdaterad](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Se till att det finns en nätverks anslutning mellan MARS-agenten och Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Kontrollera att Microsoft Azure Recovery Services körs (i tjänstkonsolen). Om det behövs startar du om och försöker igen
-- [Kontrollera att det finns 5–10 % ledigt utrymme i den tillfälliga mappen](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Se till att det finns 5-10% ledigt volym utrymme på platsen för mappens virtuella platser](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - Om registreringen inte fungerar kontrollerar du att den server som du försöker installera Azure Backup Server inte redan har registrerats med ett annat valv
 - Kontrollera om DPM-agenten redan finns om push-överföringen misslyckas. Om den gör det avinstallerar du agenten och provar att installera igen
 - [Se till att inga andra processer eller antivirusprogram stör Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
@@ -126,7 +126,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
 | Backup | Ett oväntat fel uppstod när jobbet kördes. Enheten är inte klar. | **Utför följande steg om den rekommenderade åtgärden som visas i produkten inte fungerar:** <br> <ul><li>Ange lagrings utrymmet för skugg kopian till obegränsade för objekten i skydds gruppen och kör sedan konsekvens kontrollen.<br></li> ELLER <li>Försök att ta bort den befintliga skydds gruppen och skapa flera nya grupper. Varje ny skydds grupp måste ha ett enskilt objekt.</li></ul> |
-| Backup | Om du bara säkerhetskopierar system tillstånd kontrollerar du att det finns tillräckligt med ledigt utrymme på den skyddade datorn för att lagra säkerhets kopian av system tillstånd. | <ol><li>Kontrol lera att Windows Server Backup är installerat på den skyddade datorn.</li><li>Kontrol lera att det finns tillräckligt med utrymme på den skyddade datorn för system tillstånd. Det enklaste sättet att kontrol lera detta är att gå till den skyddade datorn, öppna Windows Server Backup, klicka igenom valen och sedan välja BMR. Användar gränssnittet visar sedan hur mycket utrymme som krävs. Öppna **WSB**, lokal säkerhets kopiering schema för säkerhets kopiering  >  **Local backup**  >  **Backup schedule**  >  **Välj säkerhets kopierings konfiguration**  >  **fullständig Server** (storleken visas). Använd den här storleken för verifiering.</li></ol>
+| Backup | Om du bara säkerhetskopierar system tillstånd kontrollerar du att det finns tillräckligt med ledigt utrymme på den skyddade datorn för att lagra säkerhets kopian av system tillstånd. | <ol><li>Kontrol lera att Windows Server Backup är installerat på den skyddade datorn.</li><li>Kontrol lera att det finns tillräckligt med utrymme på den skyddade datorn för system tillstånd. Det enklaste sättet att kontrol lera detta är att gå till den skyddade datorn, öppna Windows Server Backup, klicka igenom valen och sedan välja BMR. Användar gränssnittet visar sedan hur mycket utrymme som krävs. Öppna **WSB**, lokal säkerhets kopiering schema för säkerhets kopiering  >    >    >  **Välj säkerhets kopierings konfiguration**  >  **fullständig Server** (storleken visas). Använd den här storleken för verifiering.</li></ol>
 | Backup | Säkerhets kopierings problem för BMR | Om storleken på BMR är stor flyttar du några programfiler till OS-enheten och försöker igen. |
 | Backup | Alternativet för att skydda en virtuell VMware-dator på en ny Microsoft Azure Backup Server visas inte som tillgänglig för att lägga till. | VMware-egenskaper pekas på en gammal, tillbakadragen instans av Microsoft Azure Backup Server. Lös problemet så här:<br><ol><li>I VCenter (SC-VMM-motsvarighet) går du till fliken **Sammanfattning** och sedan till **anpassade attribut**.</li>  <li>Ta bort det gamla Microsoft Azure Backup Server namnet från **Dpmserver** -värdet.</li>  <li>Gå tillbaka till den nya Microsoft Azure Backup servern och ändra PG.  När du har valt knappen **Uppdatera** visas den virtuella datorn med en kryss ruta som tillgänglig för att lägga till i skyddet.</li></ol> |
 | Backup | Fel vid åtkomst till filer/delade mappar | Försök att ändra Antivirus inställningarna enligt rekommendationerna i den här artikeln [köra antivirus program på DPM-servern](/system-center/dpm/run-antivirus-server).|

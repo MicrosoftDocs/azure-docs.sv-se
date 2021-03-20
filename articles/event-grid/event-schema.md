@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid händelse schema
-description: Beskriver de egenskaper och schema som finns för alla händelser.Händelser består av en uppsättning av fem obligatoriska sträng egenskaper och ett obligatoriskt data objekt.
+description: Beskriver de egenskaper och schema som finns för alla händelser. Händelser består av en uppsättning av fem obligatoriska sträng egenskaper och ett obligatoriskt data objekt.
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86105888"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid händelse schema
 
-I den här artikeln beskrivs de egenskaper och schema som finns för alla händelser.Händelser består av en uppsättning av fem obligatoriska sträng egenskaper och ett obligatoriskt data objekt. Egenskaperna är gemensamma för alla händelser från vilken utgivare som helst. Dataobjektet har egenskaper som är speciella för varje utgivare. För system ämnen är dessa egenskaper specifika för resurs leverantören, till exempel Azure Storage eller Azure Event Hubs.
+I den här artikeln beskrivs de egenskaper och schema som finns för alla händelser. Händelser består av en uppsättning av fem obligatoriska sträng egenskaper och ett obligatoriskt data objekt. Egenskaperna är gemensamma för alla händelser från vilken utgivare som helst. Dataobjektet har egenskaper som är speciella för varje utgivare. För system ämnen är dessa egenskaper specifika för resurs leverantören, till exempel Azure Storage eller Azure Event Hubs.
 
 Händelse källor skickar händelser till Azure Event Grid i en matris som kan ha flera händelse objekt. När du publicerar händelser i ett event Grid-ämne kan matrisen ha en total storlek på upp till 1 MB. Varje händelse i matrisen är begränsad till 1 MB. Om en händelse eller matrisen är större än storleks gränserna får du svar 413- **nytto lasten för stor**. Åtgärder debiteras i steg om 64 KB. Händelser över 64 KB kommer därför att debiteras som om de var flera händelser. En händelse som är 130 KB skulle till exempel kunna medföra åtgärder som om det var tre separata händelser.
 
@@ -75,7 +75,7 @@ Till exempel är schemat som publicerats för en Azure Blob Storage-händelse:
 
 Alla händelser har samma följande toppnivå data:
 
-| Egenskap | Typ | Krävs | Beskrivning |
+| Egenskap | Typ | Obligatorisk | Beskrivning |
 | -------- | ---- | -------- | ----------- |
 | ämne | sträng | Nej, men om det ingår måste det matcha Event Grid avsnittet Azure Resource Manager ID exakt. Om den inte ingår stämplas Event Grid in på händelsen. | Fullständig resurs Sök väg till händelse källan. Det går inte att skriva till det här fältet. Event Grid ger det här värdet. |
 | Ämne | sträng | Ja | Utgivardefinierad sökväg till händelseobjektet. |

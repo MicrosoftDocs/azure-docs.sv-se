@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148789"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -44,16 +44,16 @@ Du kan använda det här exemplet för att övervaka MXChip IoT DevKit WiFi-info
 
 2. Din förloppet visas under fliken **Terminal** i **välkomst** panelen.
 
-3. När du tillfrågas om meddelandet *vilken prenumeration vill du välja väljer du*en prenumeration.
+3. När du tillfrågas om meddelandet *vilken prenumeration vill du välja väljer du* en prenumeration.
 
 4. Välj eller Välj en resurs grupp. 
  
    > [!NOTE]
    > Om du redan har ett kostnads fritt IoT Hub kan du hoppa över det här steget.
 
-5. När du tillfrågas om meddelandet *vad IoT Hub vill du välja*eller skapa en IoT Hub.
+5. När du tillfrågas om meddelandet *vad IoT Hub vill du välja* eller skapa en IoT Hub.
 
-6. Något liknar *Function-appen: Function-appens namn: xxx*visas. Anteckna namnet på appens funktion. den kommer att användas i ett senare steg.
+6. Något liknar *Function-appen: Function-appens namn: xxx* visas. Anteckna namnet på appens funktion. den kommer att användas i ett senare steg.
 
 7. Vänta tills distribution av Azure Resource Manager mal len har slutförts, vilket anges när distributionen av Message *Resource Manager-mall: klar* visas.
 
@@ -69,7 +69,7 @@ Du kan använda det här exemplet för att övervaka MXChip IoT DevKit WiFi-info
 
 2. Klicka på den nedrullningsbara menyn **aktiviteter** i Visual Studio Code och välj **Kör aktivitet...**  -  **konfiguration – enhets anslutning**
 
-3. Tryck på och håll ned knapp **a**på MXChip IoT-DevKit, tryck på **återställnings** knappen och släpp sedan knappen **A** för att göra DekKit att ange konfigurations läge.
+3. Tryck på och håll ned knapp **a** på MXChip IoT-DevKit, tryck på **återställnings** knappen och släpp sedan knappen **A** för att göra DekKit att ange konfigurations läge.
 
 4. Vänta tills konfigurations processen för anslutnings strängen har slutförts.
 

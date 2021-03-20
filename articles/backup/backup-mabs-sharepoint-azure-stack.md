@@ -4,10 +4,10 @@ description: Använd Azure Backup Server för att säkerhetskopiera och återst�
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89378329"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Säkerhetskopiera en SharePoint-grupp på Azure Stack
@@ -42,7 +42,7 @@ Ytterligare krav och begränsningar:
 
 * Du kan inte skydda SharePoint-databaser som en SQL Server-datakälla. Du kan återställa enskilda databaser från en säkerhetskopia i servergruppen.
 
-* Kom ihåg att MABS körs som **lokalt system**, och för att säkerhetskopiera SQL Server-databaser måste den ha sysadmin-behörighet för det kontot för SQL Server. Ange NT instans\system som **sysadmin**på den SQL Server du vill säkerhetskopiera.
+* Kom ihåg att MABS körs som **lokalt system**, och för att säkerhetskopiera SQL Server-databaser måste den ha sysadmin-behörighet för det kontot för SQL Server. Ange NT instans\system som **sysadmin** på den SQL Server du vill säkerhetskopiera.
 
 * För varje 10 000 000-objekt i Server gruppen måste det finnas minst 2 GB utrymme på den volym där MABS-mappen finns. Detta utrymme krävs för kataloggenerering. För att du ska kunna använda MABS för att utföra en viss återställning av objekt (webbplats samlingar, webbplatser, listor, dokument bibliotek, mappar, enskilda dokument och list objekt) skapar katalog skapande en lista över de URL: er som finns i varje innehålls databas. Du kan visa listan över URL: er i fönstret återställnings Bart objekt i återställnings aktivitets avsnittet i MABS Administratörskonsol.
 
@@ -62,7 +62,7 @@ Om du vill säkerhetskopiera SharePoint-servergruppen konfigurerar du skyddet f�
 
         * **EnableSharePointProtection** aktiverar skydd av SharePoint-servergruppen, aktiverar VSS-skrivaren och registrerar identiteten för DCOM-programmet WssCmdletsWrapper att köras som en användare vars autentiseringsuppgifter har angetts med det här alternativet. Det här kontot ska vara en administratör för servergruppen och lokal administratör på klientwebbservern.
 
-        * **** EnableSPSearchProtection\\ aktiverar skydd av WSS 3.0 SP Search genom att använda registernyckeln SharePointSearchEnumerationEnabled under HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\- på klientwebbservern och registrerar identiteten för DCOM-programmet WssCmdletsWrapper för körning som en användare vars autentiseringsuppgifter har angetts med det här alternativet. Det här kontot ska vara en administratör för servergruppen och lokal administratör på klientwebbservern.
+        * EnableSPSearchProtection\\ aktiverar skydd av WSS 3.0 SP Search genom att använda registernyckeln SharePointSearchEnumerationEnabled under HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\- på klientwebbservern och registrerar identiteten för DCOM-programmet WssCmdletsWrapper för körning som en användare vars autentiseringsuppgifter har angetts med det här alternativet. Det här kontot ska vara en administratör för servergruppen och lokal administratör på klientwebbservern.
 
         * **ResolveAllSQLAliases** visar alla alias som rapporteras av VSS-skrivaren för SharePoint och matchar dem mot motsvarande SQL-server. Dessutom visas matchade instansnamn. Om servrarna är speglade visas också den speglade servern. Den rapporterar alla alias som inte matchas till en SQL Server.
 
@@ -78,33 +78,33 @@ Om du vill säkerhetskopiera SharePoint-servergruppen konfigurerar du skyddet f�
 
 1. Om du vill skapa en skydds grupp väljer du **skydds**  >  **åtgärder**  >  **skapa skydds grupp** för att öppna guiden **Skapa ny skydds grupp** i Mabs-konsolen.
 
-1. I **Välj typ av skydds grupp**väljer du **servrar**.
+1. I **Välj typ av skydds grupp** väljer du **servrar**.
 
-1. I **Välj grupp medlemmar**expanderar du den server som innehåller WFE-rollen. Om det finns fler än en WFE-server väljer du den som du installerade ConfigureSharePoint.exe på.
+1. I **Välj grupp medlemmar** expanderar du den server som innehåller WFE-rollen. Om det finns fler än en WFE-server väljer du den som du installerade ConfigureSharePoint.exe på.
 
     När du expanderar MABS frågor för SharePoint Server VSS för att se vilka data MABS kan skydda.  Om SharePoint-databasen är fjärr anslutning MABS ansluts till den. Om SharePoint-datakällor inte visas kontrollerar du att VSS-skrivaren körs på SharePoint-servern och alla fjärrSQL Serverer och kontrollerar att MABS-agenten är installerad på både SharePoint-servern och fjärrSQL Server. Se också till att SharePoint-databaser inte skyddas på andra platser som SQL Server databaser.
 
-1. I **Välj data skydds metod**anger du hur du vill hantera kort och långsiktig \- säkerhets kopiering. Kortsiktig \- säkerhets kopiering är alltid till disk först, med alternativet att säkerhetskopiera från disken till Azure-molnet med Azure Backup \( för kort eller lång \- sikt \) .
+1. I **Välj data skydds metod** anger du hur du vill hantera kort och långsiktig \- säkerhets kopiering. Kortsiktig \- säkerhets kopiering är alltid till disk först, med alternativet att säkerhetskopiera från disken till Azure-molnet med Azure Backup \( för kort eller lång \- sikt \) .
 
-1. I **Välj kortsiktiga \- mål**anger du hur du vill säkerhetskopiera till kortsiktig \- lagring på disk.   I **kvarhållningsintervall** anger du hur länge du vill behålla data på disken. I **Synkroniseringsfrekvens**anger du hur ofta du vill köra en stegvis säkerhets kopiering på disk. Om du inte vill ange ett intervall för säkerhets kopiering kan du kontrol lera precis innan en återställnings punkt så att MABS kör en fullständig snabb säkerhets kopiering precis innan varje återställnings punkt schemaläggs.
+1. I **Välj kortsiktiga \- mål** anger du hur du vill säkerhetskopiera till kortsiktig \- lagring på disk.   I **kvarhållningsintervall** anger du hur länge du vill behålla data på disken. I **Synkroniseringsfrekvens** anger du hur ofta du vill köra en stegvis säkerhets kopiering på disk. Om du inte vill ange ett intervall för säkerhets kopiering kan du kontrol lera precis innan en återställnings punkt så att MABS kör en fullständig snabb säkerhets kopiering precis innan varje återställnings punkt schemaläggs.
 
 1. På sidan Granska diskallokering granskar du allokerat disk utrymme för lagringspoolen för skydds gruppen.
 
     **Total data storlek** är storleken på de data som du vill säkerhetskopiera och **disk utrymme som ska tillhandahållas på Mabs** är det utrymme som Mabs rekommenderar för skydds gruppen. MABS väljer den ideala säkerhets kopierings volymen baserat på inställningarna. Du kan dock redigera valen av säkerhetskopieringsvolym under **Disk allocation details (Diskallokeringsdetaljer)**. Välj önskad lagringsplats för arbetsbelastningarna i den nedrullningsbara menyn. Redigeringarna ändrar värdena för **Totalt lagringsutrymme** och **Ledigt lagringsutrymme** i fönstret **Tillgängligt disklagringsutrymme**. Underetablerat utrymme är mängden lagrings MABS som föreslår att du lägger till volymen, för att fortsätta med säkerhets kopieringar smidigt i framtiden.
 
-1. I **Välj metod för skapande av replik**väljer du hur du vill hantera den första fullständiga datareplikeringen.  Om du väljer att replikera över nätverket rekommenderar vi att du väljer en tid med låg belastning. Överväg att replikera data offline med hjälp av ett flyttbart medium vid stora mängder data eller bristfälliga nätverksförhållanden.
+1. I **Välj metod för skapande av replik** väljer du hur du vill hantera den första fullständiga datareplikeringen.  Om du väljer att replikera över nätverket rekommenderar vi att du väljer en tid med låg belastning. Överväg att replikera data offline med hjälp av ett flyttbart medium vid stora mängder data eller bristfälliga nätverksförhållanden.
 
 1. I **Välj alternativ för konsekvenskontroll** väljer du hur du vill automatisera konsekvenskontroller. Du kan aktivera att en kontroll endast körs när replikdata blir inkonsekvent, eller enligt ett schema. Om du inte vill konfigurera automatisk konsekvens kontroll kan du när som helst köra en manuell kontroll genom att högerklicka på skydds gruppen i **skydds** delen i Mabs-konsolen och välja **utför konsekvens kontroll**.
 
 1. Om du har valt att säkerhetskopiera till molnet med Azure Backup ser du till att de arbetsbelastningar som du vill säkerhetskopiera till Azure är valda på sidan **Ange onlineskyddsdata**.
 
-1. I **Ange schema för onlinesäkerhetskopiering**anger du hur ofta stegvisa säkerhets kopieringar ska ske i Azure. Du kan schemalägga säkerhetskopieringar så att de körs varje dag/vecka/månad/år och ange vilken tid/datum de ska köras. Säkerhetskopieringar kan göras upp till två gånger per dag. Varje gång en säkerhets kopiering körs skapas en data återställnings punkt i Azure från kopian av säkerhetskopierade data som lagras på MABS-disken.
+1. I **Ange schema för onlinesäkerhetskopiering** anger du hur ofta stegvisa säkerhets kopieringar ska ske i Azure. Du kan schemalägga säkerhetskopieringar så att de körs varje dag/vecka/månad/år och ange vilken tid/datum de ska köras. Säkerhetskopieringar kan göras upp till två gånger per dag. Varje gång en säkerhets kopiering körs skapas en data återställnings punkt i Azure från kopian av säkerhetskopierade data som lagras på MABS-disken.
 
-1. I **Ange bevarande princip för onlinenivå**kan du ange hur de återställnings punkter som skapas med säkerhets kopiorna per dag/vecka/månad/år ska behållas i Azure.
+1. I **Ange bevarande princip för onlinenivå** kan du ange hur de återställnings punkter som skapas med säkerhets kopiorna per dag/vecka/månad/år ska behållas i Azure.
 
 1. I **Välj online-replikering**, anger du hur den första fullständiga replikeringen av data ska ske. Du kan replikera via nätverket eller göra en offlinesäkerhetskopiering (offlineseeding). Vid offlinesäkerhetskopiering används funktionen Azure Import. [Läs mer](./backup-azure-backup-import-export.md).
 
-1. På sidan  **Sammanfattning** granskar du inställningarna. När du har valt **Skapa grupp**sker inledande replikering av data. När den är klar visas skydds gruppens status som **OK** på sidan **status** . Säkerhetskopieringen sker sedan i enlighet med skyddsgruppens inställningar.
+1. På sidan  **Sammanfattning** granskar du inställningarna. När du har valt **Skapa grupp** sker inledande replikering av data. När den är klar visas skydds gruppens status som **OK** på sidan **status** . Säkerhetskopieringen sker sedan i enlighet med skyddsgruppens inställningar.
 
 ## <a name="monitoring"></a>Övervakning
 
@@ -120,7 +120,7 @@ När skydds gruppen har skapats sker den inledande replikeringen och MABS börja
 
 2. Välj **SMTP-server**, ange Server namn, port och e-postadress som meddelanden ska skickas från. Adressen måste vara giltig.
 
-3. I **autentiserad SMTP-server**anger du ett användar namn och lösen ord. Användar namnet och lösen ordet måste vara domän konto namnet för den person vars "från"-adress beskrivs i föregående steg. Annars Miss lyckas meddelande leveransen.
+3. I **autentiserad SMTP-server** anger du ett användar namn och lösen ord. Användar namnet och lösen ordet måste vara domän konto namnet för den person vars "från"-adress beskrivs i föregående steg. Annars Miss lyckas meddelande leveransen.
 
 4. Testa inställningarna för SMTP-servern genom att välja **Skicka test-e-post**, ange den e-postadress som du vill att Mabs ska skicka test meddelandet till och välj sedan **OK**. Välj **alternativ**  >  **meddelanden** och välj de typer av aviseringar som mottagarna vill meddelas om. I **mottagare** anger du e-postadressen för varje mottagare som du vill att Mabs ska skicka kopior av meddelanden till.
 
@@ -128,7 +128,7 @@ När skydds gruppen har skapats sker den inledande replikeringen och MABS börja
 
 1. I Mabs administratörskonsol väljer du **övervaknings**  >  **Åtgärds**  >  **alternativ**  >  **avisering publicering**  >  **publicera aktiva aviseringar**
 
-2. När du har aktiverat **aviserings publicering**publiceras alla befintliga Mabs-aviseringar som kan kräva en användar åtgärd i händelse loggen för **Mabs-aviseringar** . Operations Manager agenten som är installerad på MABS-servern publicerar sedan aviseringarna till Operations Manager och fortsätter att uppdatera konsolen när nya aviseringar genereras.
+2. När du har aktiverat **aviserings publicering** publiceras alla befintliga Mabs-aviseringar som kan kräva en användar åtgärd i händelse loggen för **Mabs-aviseringar** . Operations Manager agenten som är installerad på MABS-servern publicerar sedan aviseringarna till Operations Manager och fortsätter att uppdatera konsolen när nya aviseringar genereras.
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Återställa ett SharePoint-objekt från en disk med hjälp av MABS
 
@@ -145,7 +145,7 @@ I följande exempel har den återställda *SharePoint-objektet* tagits bort av m
 
     ![MABS SharePoint-Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
 4. Välj lämplig återställnings punkt i Sök resultaten, högerklicka på objektet och välj sedan **Återställ**.
-5. Du kan också bläddra igenom olika återställnings punkter och välja en databas eller ett objekt som ska återställas. Välj **datum > återställnings tid**och välj sedan rätt **databas > SharePoint-servergrupp > återställnings punkt > objekt**.
+5. Du kan också bläddra igenom olika återställnings punkter och välja en databas eller ett objekt som ska återställas. Välj **datum > återställnings tid** och välj sedan rätt **databas > SharePoint-servergrupp > återställnings punkt > objekt**.
 
     ![MABS SharePoint-Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
 6. Högerklicka på objektet och välj sedan **Återställ** för att öppna **återställnings guiden**. Välj **Nästa**.
@@ -172,7 +172,7 @@ I följande exempel har den återställda *SharePoint-objektet* tagits bort av m
     MABS bifogar innehålls databasen som är värd för SharePoint-objektet till den tillfälliga SQL Server-instansen. Från innehålls databasen återställer den objektet och placerar det på mellanlagringsplatsen på MABS. Det återställda objektet som finns på mellanlagringsplatsen måste nu exporteras till mellanlagringsplatsen i SharePoint-servergruppen.
 
     ![Location2 för mellanlagring](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Välj **Ange återställnings alternativ**och tillämpa säkerhets inställningar på SharePoint-servergruppen eller tillämpa säkerhets inställningarna för återställnings punkten. Välj **Nästa**.
+10. Välj **Ange återställnings alternativ** och tillämpa säkerhets inställningar på SharePoint-servergruppen eller tillämpa säkerhets inställningarna för återställnings punkten. Välj **Nästa**.
 
     ![Återställnings alternativ](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -236,7 +236,7 @@ I följande procedur används exemplet på en Server grupp med två frontend-web
     stsadm -o unregisterwsswriter
     ```
 
-1. Öppna Registereditorn på *server1*och navigera till följande nyckel:
+1. Öppna Registereditorn på *server1* och navigera till följande nyckel:
 
    **HKLM\System\CCS\Services\VSS\VssAccessControl**
 

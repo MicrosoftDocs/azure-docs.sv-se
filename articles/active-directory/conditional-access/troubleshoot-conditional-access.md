@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145097"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Felsöka inloggningsproblem med villkorsstyrd åtkomst
@@ -71,7 +71,7 @@ Så här tar du reda på vilka principer för villkorlig åtkomst som tillämpas
 1. När inloggnings händelsen som motsvarar användarens inloggnings försök har hittats väljer du fliken **villkorlig åtkomst** . På fliken villkorsstyrd åtkomst visas en eller fler principer som resulterade i inloggnings avbrott.
    1. Information på fliken **fel sökning och support** kan ge en tydlig anledning till varför en inloggning misslyckades, till exempel en enhet som inte uppfyller kraven för efterlevnad.
    1. Om du vill undersöka ytterligare kan du öka detalj nivån i konfigurationen av principerna genom att klicka på **namnet på principen**. Om du klickar på **princip namnet** visas användar gränssnittet för princip konfiguration för den valda principen för granskning och redigering.
-   1. **Klientens användar** -och **enhets information** som användes för utvärderingen av principen för villkorlig åtkomst är också tillgänglig i flikarna **grundläggande information**, **plats**, **enhets information**, **autentiseringsinformation**och **Ytterligare information** för inloggnings händelsen.
+   1. **Klientens användar** -och **enhets information** som användes för utvärderingen av principen för villkorlig åtkomst är också tillgänglig i flikarna **grundläggande information**, **plats**, **enhets information**, **autentiseringsinformation** och **Ytterligare information** för inloggnings händelsen.
 
 ### <a name="policy-details"></a>Princip information
 

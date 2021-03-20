@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151656"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Så här klonar du en Azure IoT-hubb till en annan region
@@ -107,7 +107,7 @@ Det här avsnittet innehåller information om hur du migrerar hubben.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Hitta den ursprungliga hubben och exportera den till en resurs mal len.
 
-1. Logga in på [Azure Portal](https://portal.azure.com). 
+1. Logga in på [Azure-portalen](https://portal.azure.com). 
 
 1. Gå till **resurs grupper** och välj den resurs grupp som innehåller den hubb som du vill flytta. Du kan också gå till **resurser** och hitta hubben på det sättet. Välj hubben.
 
@@ -300,7 +300,7 @@ När du exporterar Resource Manager-mallen för en hubb som har konfigurerat rou
 
 1. Hämta de nycklar som krävs för någon av vägvals resurserna och Lägg dem i mallen. Du kan hämta nyckel (er) från resursen i [Azure Portal](https://portal.azure.com). 
 
-   Om du till exempel dirigerar meddelanden till en lagrings behållare söker du efter lagrings kontot i portalen. Under avsnittet Inställningar väljer du **åtkomst nycklar**och kopierar sedan en av nycklarna. Så här ser nyckeln ut när du först exporterar mallen:
+   Om du till exempel dirigerar meddelanden till en lagrings behållare söker du efter lagrings kontot i portalen. Under avsnittet Inställningar väljer du **åtkomst nycklar** och kopierar sedan en av nycklarna. Så här ser nyckeln ut när du först exporterar mallen:
 
    ```json
    "connectionString": "DefaultEndpointsProtocol=https;
@@ -347,7 +347,7 @@ Nu har du en mall som kommer att skapa en ny hubb som ser nästan precis likadan
 
 Skapa den nya hubben på den nya platsen med hjälp av mallen. Om du har cirkulations resurser som ska flyttas bör resurserna konfigureras på den nya platsen och referenserna i mallen har uppdaterats för att matcha. Om du inte flyttar cirkulations resurserna bör de finnas i mallen med de uppdaterade nycklarna.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 1. Välj **Skapa en resurs**. 
 
@@ -526,7 +526,7 @@ Nu har du miljövariabler i en fil med SET-kommandon och du vet vad kommando rad
     
 1. Högerklicka på projektet *ImportExportDevicesSample* och välj **Ange som start projekt**.    
     
-1. Ange variablerna överst i Program.cs i mappen ImportExportDevicesSample för de fem alternativen.
+1. Ange variablerna överst i program. cs i mappen ImportExportDevicesSample för de fem alternativen.
 
    ``` csharp
    // Add randomly created devices to the source hub.

@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: fef3e3cc63fb9e1ca6aa64cf799a620f187db76f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744747"
 ---
 # <a name="azure-cloud-services-extended-support-definition-webrole-schema"></a>Schema för definition av webrollen Azure Cloud Services (utökad support)
@@ -360,7 +360,7 @@ I följande tabell beskrivs attributen för- `NetFxEntryPoint` elementet.
 | Attribut | Typ | Beskrivning |  
 | --------- | ---- | ----------- |  
 |assemblyName|sträng|Krävs. Sökväg och fil namn för sammansättningen som innehåller start punkten. Sökvägen är relativ i mappen **\\ %ROLEROOT%\Approot** (ange inte **\\ %ROLEROOT%\Approot** i `commandLine` , den antas). **% ROLEROOT%** är en miljö variabel som underhålls av Azure och den representerar rot katalogen för din roll. Mappen **\\ %ROLEROOT%\Approot** representerar programmappen för din roll.<br /><br /> För INSTANSEN-roller är sökvägen alltid relativ i förhållande till mappen **\\ %ROLEROOT%\Approot\bin** .<br /><br /> För fullständiga IIS-och IIS Express-webbroller, om det inte går att hitta sammansättningen i förhållande till **\\ %ROLEROOT%\Approot** -mappen, genomsöks **\\ %ROLEROOT%\Approot\bin** .<br /><br /> Detta beteende för fullständig IIS är inte en rekommenderad metod och kan komma att tas bort i framtida versioner.|  
-|targetFrameworkVersion|sträng|Krävs. Den version av .NET Framework som sammansättningen skapats på. Ett exempel är `targetFrameworkVersion="v4.0"`.|  
+|targetFrameworkVersion|sträng|Krävs. Den version av .NET Framework som sammansättningen skapats på. Till exempel `targetFrameworkVersion="v4.0"`.|  
 
 ##  <a name="sites"></a><a name="Sites"></a> Stationer  
 - `Sites` Elementet beskriver en samling webbplatser och webb program som finns i en webbroll. Det här elementet är överordnat `Site` elementet. Om du inte anger något `Sites` -element är webb rollen som en äldre webb roll och du kan bara ha en webbplats som finns i din webb roll. Det här elementet är valfritt och en roll kan bara ha ett blockerade platser.

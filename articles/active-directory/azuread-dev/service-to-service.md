@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154771"
 ---
 # <a name="service-to-service-apps"></a>Tjänst-till-tjänst-appar
@@ -61,7 +61,7 @@ Se kod exemplen för daemon eller Server program till webb-API-scenarier: [Serve
 
 ## <a name="app-registration"></a>Appregistrering
 
-* En enskild klient – både för program identiteten och den delegerade användarens identitets fall, måste daemon-eller Server programmet vara registrerat i samma katalog i Azure AD. Webb-API: et kan konfigureras för att visa en uppsättning behörigheter som används för att begränsa daemon eller serverns åtkomst till resurserna. Om en delegerad användar identitets typ används måste serverprogrammet välja önskade behörigheter. På sidan **API-behörighet** för program registreringen när du har valt **Lägg till en behörighet** och valt API-serien väljer du **delegerade behörigheter**och väljer sedan behörigheter. Det här steget krävs inte om program identitets typen används.
+* En enskild klient – både för program identiteten och den delegerade användarens identitets fall, måste daemon-eller Server programmet vara registrerat i samma katalog i Azure AD. Webb-API: et kan konfigureras för att visa en uppsättning behörigheter som används för att begränsa daemon eller serverns åtkomst till resurserna. Om en delegerad användar identitets typ används måste serverprogrammet välja önskade behörigheter. På sidan **API-behörighet** för program registreringen när du har valt **Lägg till en behörighet** och valt API-serien väljer du **delegerade behörigheter** och väljer sedan behörigheter. Det här steget krävs inte om program identitets typen används.
 * Daemon-eller serverprogram har kon figurer ATS för att ange de behörigheter som krävs för att fungera med flera klient organisationer. Den här listan över nödvändiga behörigheter visas i en dialog ruta när en användare eller administratör i mål katalogen ger tillåtelse till programmet, vilket gör det tillgängligt för deras organisation. Vissa program kräver bara behörigheter på användar nivå, som alla användare i organisationen kan godkänna. Andra program kräver behörigheter på administratörs nivå, som en användare i organisationen inte kan godkänna. Endast en katalog administratör kan ge medgivande till program som kräver den här nivån av behörigheter. När användaren eller administratören samtycks, registreras båda webb-API: erna i katalogen.
 
 ## <a name="token-expiration"></a>Förfallo datum för token

@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910482"
 ---
 # <a name="monitor-azure-data-share"></a>Övervaka Azure Data Share  
@@ -36,7 +36,7 @@ Din inbjudan kan vara i tre lägen:
 
 ## <a name="monitor-share-subscriptions"></a>Övervaka resurs prenumerationer
 
-Visa statusen för dina resurs prenumerationer genom att navigera till skickade resurser-> dela prenumerationer. Detta ger dig information om aktiva prenumerationer som skapats av dina data konsumenter när du har accepterat din inbjudan. Du kan stoppa framtida uppdateringar av din data konsument genom att välja resurs prenumerationen och välja *återkalla* . 
+Visa statusen för dina resurs prenumerationer genom att navigera till skickade resurser-> dela prenumerationer. Detta ger dig information om aktiva prenumerationer som skapats av dina data konsumenter när du har accepterat din inbjudan. Du kan stoppa framtida uppdateringar av din data konsument genom att välja resurs prenumerationen och välja *återkalla*. 
 
 ## <a name="snapshot-history"></a>Ögonblicks bilds historik 
 
@@ -50,7 +50,7 @@ Upp till 30 dagar efter ögonblicks bilds historik visas. Om du behöver spara o
 
 ## <a name="diagnostic-setting"></a>Diagnostisk inställning
 
-Du kan konfigurera diagnostikinställningar för att spara loggdata eller händelser. Navigera till övervakning – > diagnostikinställningar och välj **Lägg till diagnostisk inställning** . Välj de logg data eller händelser som du är intresse rad av och var du vill lagra eller skicka dem. 
+Du kan konfigurera diagnostikinställningar för att spara loggdata eller händelser. Navigera till övervakning – > diagnostikinställningar och välj **Lägg till diagnostisk inställning**. Välj de logg data eller händelser som du är intresse rad av och var du vill lagra eller skicka dem. 
 
 ![Skärm bild som visar sidan diagnostikinställningar i Azure Portal.](./media/diagnostic-settings.png "Diagnostikinställningar") 
 

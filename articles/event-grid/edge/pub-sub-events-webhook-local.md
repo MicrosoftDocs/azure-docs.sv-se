@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171456"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Självstudie: publicera, prenumerera på händelser lokalt
@@ -21,7 +21,7 @@ Den här artikeln vägleder dig igenom alla steg som behövs för att publicera 
 > [!NOTE]
 > Mer information om Azure Event Grid ämnen och prenumerationer finns i [Event Grid begrepp](concepts.md).
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 För att kunna slutföra den här självstudien behöver du:
 
 * **Azure-prenumeration** – skapa ett [kostnads fritt konto](https://azure.microsoft.com/free) om du inte redan har ett. 
@@ -45,7 +45,7 @@ Det finns flera sätt att distribuera moduler till en IoT Edge-enhet och alla fu
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurera ett distributions manifest
 
-Ett distributions manifest är ett JSON-dokument som beskriver vilka moduler som ska distribueras, hur data flödar mellan moduler och önskade egenskaper för modulen. Azure Portal har en guide som vägleder dig genom att skapa ett distributions manifest i stället för att skapa JSON-dokumentet manuellt.  Det finns tre steg: **Lägg till moduler**, **Ange vägar**och **Granska distribution**.
+Ett distributions manifest är ett JSON-dokument som beskriver vilka moduler som ska distribueras, hur data flödar mellan moduler och önskade egenskaper för modulen. Azure Portal har en guide som vägleder dig genom att skapa ett distributions manifest i stället för att skapa JSON-dokumentet manuellt.  Det finns tre steg: **Lägg till moduler**, **Ange vägar** och **Granska distribution**.
 
 ### <a name="add-modules"></a>Lägga till moduler
 
@@ -108,7 +108,7 @@ Behåll standard vägarna och välj **Nästa** för att fortsätta till granskni
 
 1. I avsnittet granska visas JSON-distributions manifestet som skapades utifrån dina val i föregående avsnitt. Bekräfta att du ser båda modulerna: **eventgridmodule** och **prenumeranter** som anges i JSON. 
 1. Granska distributions informationen och välj sedan **Skicka**. När du har skickat distributionen kommer du tillbaka till sidan **enhet** .
-1. I **avsnittet moduler**kontrollerar du att både **eventgrid** -och **Subscriber** -moduler visas. Och kontrol lera att den **angivna i distributionen** och **rapporteras av enhets** kolumner är inställd på **Ja**.
+1. I **avsnittet moduler** kontrollerar du att både **eventgrid** -och **Subscriber** -moduler visas. Och kontrol lera att den **angivna i distributionen** och **rapporteras av enhets** kolumner är inställd på **Ja**.
 
     Det kan ta en stund innan modulen har startats på enheten och sedan rapporteras tillbaka till IoT Hub. Uppdatera sidan om du vill se en uppdaterad status.
 

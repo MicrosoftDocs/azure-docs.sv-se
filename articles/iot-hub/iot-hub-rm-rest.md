@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144434"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Skapa en IoT-hubb med hjälp av Resource Provider REST API (.NET)
@@ -40,11 +40,11 @@ För att göra den här självstudien behöver du följande:
 
 2. I Solution Explorer högerklickar du på projektet och klickar sedan på **Hantera NuGet-paket**.
 
-3. I NuGet Package Manager markerar du **Inkludera för hands version**och på sidan **Bläddra** i Sök efter **Microsoft. Azure. Management. ResourceManager**. Välj paketet, klicka på **Installera**, klicka på **OK**i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licenserna.
+3. I NuGet Package Manager markerar du **Inkludera för hands version** och på sidan **Bläddra** i Sök efter **Microsoft. Azure. Management. ResourceManager**. Välj paketet, klicka på **Installera**, klicka på **OK** i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licenserna.
 
-4. Sök efter **Microsoft. IdentityModel. clients. ActiveDirectory**i NuGet Package Manager.  Klicka på **Installera**, klicka på **OK**i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licensen.
+4. Sök efter **Microsoft. IdentityModel. clients. ActiveDirectory** i NuGet Package Manager.  Klicka på **Installera**, klicka på **OK** i **Granska ändringar** och klicka sedan på **Jag accepterar** för att acceptera licensen.
 
-5. I Program.cs ersätter du de befintliga **using** -satserna med följande kod:
+5. Ersätt den befintliga **using** -satserna med följande kod i program. CS:
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ För att göra den här självstudien behöver du följande:
     using System.Threading;
     ```
 
-6. I Program.cs lägger du till följande statiska variabler som ersätter plats hållar värden. Du har gjort en anteckning om **ApplicationId**, **SubscriptionId**, **TenantId**och **lösen ord** tidigare i den här självstudien. **Resurs gruppens namn** är namnet på den resurs grupp som du använder när du skapar IoT-hubben. Du kan använda en befintlig eller en ny resurs grupp. **IoT Hub namn** är namnet på det IoT Hub som du skapar, till exempel **MyIoTHub**. Namnet på din IoT Hub måste vara globalt unikt. **Distributions namnet** är ett namn för distributionen, t. ex. **Deployment_01**.
+6. I program. cs lägger du till följande statiska variabler som ersätter plats hållar värden. Du har gjort en anteckning om **ApplicationId**, **SubscriptionId**, **TenantId** och **lösen ord** tidigare i den här självstudien. **Resurs gruppens namn** är namnet på den resurs grupp som du använder när du skapar IoT-hubben. Du kan använda en befintlig eller en ny resurs grupp. **IoT Hub namn** är namnet på det IoT Hub som du skapar, till exempel **MyIoTHub**. Namnet på din IoT Hub måste vara globalt unikt. **Distributions namnet** är ett namn för distributionen, t. ex. **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -80,7 +80,7 @@ För att göra den här självstudien behöver du följande:
 
 Använd [IoT Hub Resource provider REST API](/rest/api/iothub/iothubresource) för att skapa en IoT-hubb i din resurs grupp. Du kan också använda resurs leverantörs REST API för att göra ändringar i en befintlig IoT-hubb.
 
-1. Lägg till följande metod i Program.cs:
+1. Lägg till följande metod i program. CS:
 
     ```csharp
     static void CreateIoTHub(string token)

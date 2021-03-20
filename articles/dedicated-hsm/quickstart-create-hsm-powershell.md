@@ -1,6 +1,6 @@
 ---
 title: 'Snabb start: skapa en Azure-dedikerad HSM med Azure PowerShell'
-description: Skapa en dedikerad HSM med Azure PowerShell
+description: Skapa en Azure Dedicated HSM med Azure PowerShell
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
@@ -10,10 +10,10 @@ ms.devlang: azurepowershell
 ms.date: 11/13/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94905627"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Snabb start: skapa en Azure-dedikerad HSM med Azure PowerShell
@@ -27,7 +27,7 @@ I den här artikeln beskrivs hur du kan skapa en Azure-dedikerad HSM med PowerSh
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Även om **AZ. DedicatedHsm** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När den här PowerShell-modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av AZ PowerShell-modulen och är tillgängliga som standard i Azure Cloud Shell.
+  > Även om **AZ. DedicatedHsm** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.DedicatedHsm

@@ -4,10 +4,10 @@ description: Beskriver hur du söker efter resurs egenskaper.
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91327756"
 ---
 # <a name="discover-resource-properties"></a>Identifiera resurs egenskaper
@@ -41,7 +41,7 @@ Tillägget innehåller också en lista med alternativ för konfigurations egensk
 Referensen till Azure Resource Manager mal len är den mest omfattande resursen för mall-schemat. Du kan hitta API-versioner, mallformat och egenskaps information.
 
 1. Bläddra till [Azure Resource Manager mal len referens](/azure/templates/).
-1. Välj **Storage**i det vänstra navigerings fältet och välj sedan **alla resurser**. Sidan alla resurser sammanfattar resurs typerna och versionerna.
+1. Välj **Storage** i det vänstra navigerings fältet och välj sedan **alla resurser**. Sidan alla resurser sammanfattar resurs typerna och versionerna.
 
     ![referens resurs versioner för mall](./media/view-resources/resource-manager-template-reference-resource-versions.png)
 
@@ -72,16 +72,16 @@ Resursläsaren är inbäddat i Azure Portal. Innan du använder den här metoden
 [![Distribuera till Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. I rutan Sök anger du **resurs läsaren**och väljer sedan **Resursläsaren**.
+1. I rutan Sök anger du **resurs läsaren** och väljer sedan **Resursläsaren**.
 
     ![Skärm bild som visar sökning efter Resursläsaren i Azure Portal.](./media/view-resources/azure-portal-resource-explorer.png)
 
-1. Från vänster expanderar du **prenumerationer**och expanderar sedan din Azure-prenumeration. Du kan hitta lagrings kontot under antingen **providers** eller **ResourceGroups**.
+1. Från vänster expanderar du **prenumerationer** och expanderar sedan din Azure-prenumeration. Du kan hitta lagrings kontot under antingen **providers** eller **ResourceGroups**.
 
     ![Azure Portal Resursläsaren](./media/view-resources/azure-portal-resource-explorer-home.png)
 
-    - **Providers**: Expandera **providers**  ->  **Microsoft. Storage**  ->  **storageAccounts**och välj sedan ditt lagrings konto.
-    - **ResourceGroups**: Välj den resurs grupp som innehåller lagrings kontot, Välj **resurser**och välj sedan lagrings kontot.
+    - **Providers**: Expandera **providers**  ->  **Microsoft. Storage**  ->  **storageAccounts** och välj sedan ditt lagrings konto.
+    - **ResourceGroups**: Välj den resurs grupp som innehåller lagrings kontot, Välj **resurser** och välj sedan lagrings kontot.
 
     Till höger ser du SKU-konfigurationen för det befintliga lagrings kontot som liknar:
 
@@ -105,9 +105,9 @@ Du behöver ett lagrings konto för att demonstrera hur du hämtar schema inform
     ![resource.azure.com API-mappning](./media/view-resources/resources-azure-com-api-mapping.png)
 
     Noden till vänster matchar API-anropet till höger. Du kan göra API-anropet genom att välja knappen **Hämta** .
-1. Från vänster expanderar du **prenumerationer**och expanderar sedan din Azure-prenumeration. Du kan hitta lagrings kontot under antingen **providers** eller **ResourceGroups**.
+1. Från vänster expanderar du **prenumerationer** och expanderar sedan din Azure-prenumeration. Du kan hitta lagrings kontot under antingen **providers** eller **ResourceGroups**.
 
-    - **Providers**: Expandera **providers**  ->  **Microsoft. Storage**  ->  **storageAccounts**och bläddra sedan till lagrings kontot.
+    - **Providers**: Expandera **providers**  ->  **Microsoft. Storage**  ->  **storageAccounts** och bläddra sedan till lagrings kontot.
     - **ResourceGroups**: Välj den resurs grupp som innehåller lagrings kontot och välj sedan **resurser**.
 
     Till höger ser du SKU-konfigurationen för det befintliga lagrings kontot som liknar:

@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591880"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Visa och konfigurera diagnostisk loggning för DDoS-skydd
 
-Azure DDoS Protection standard ger detaljerad information om angrepp och visualisering med DDoS-attack analys. Kunder som skyddar sina virtuella nätverk mot DDoS-attacker har detaljerad insyn i attack trafik och åtgärder som vidtas för att minska risken för angrepp med hjälp av angrepps minsknings rapporter & skydds flödes loggar. Avancerad telemetri exponeras via Azure Monitor inklusive detaljerade mått under ett DDoS-angrepp. Aviseringar kan konfigureras för alla Azure Monitor mått som visas av DDoS Protection. Loggning kan integreras ytterligare med [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics och Azure Storage för avancerad analys via Azure Monitor Diagnostics-gränssnittet.
+Azure DDoS Protection standard ger detaljerad information om angrepp och visualisering med DDoS-attack analys. Kunder som skyddar sina virtuella nätverk mot DDoS-attacker har detaljerad insyn i attack trafik och åtgärder som vidtas för att minska risken för angrepp med hjälp av angrepps minsknings rapporter & skydds flödes loggar. Avancerad telemetri exponeras via Azure Monitor inklusive detaljerade mått under ett DDoS-angrepp. Aviseringar kan konfigureras för alla Azure Monitor-mått som visas av DDoS Protection. Loggning kan integreras ytterligare med [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics och Azure Storage för avancerad analys via Azure Monitor Diagnostics-gränssnittet.
 
 Följande diagnostikloggar är tillgängliga för Azure DDoS Protection standard: 
 
@@ -46,12 +46,12 @@ I den här självstudien får du lära dig att:
 
 Om du vill aktivera diagnostikloggning automatiskt på alla offentliga IP-adresser i en miljö, kan du hoppa över att [Aktivera diagnostikloggning på alla offentliga IP-adresser](#enable-diagnostic-logging-on-all-public-ips).
 
-1. Välj **alla tjänster** längst upp till vänster i portalen.
-2. Ange *Monitor* i **filter** rutan. När **övervakaren** visas i resultaten väljer du den.
-3. Under **Inställningar** väljer du **diagnostikinställningar**.
-4. Välj den **prenumeration** och **resurs grupp** som innehåller den offentliga IP-adress som du vill logga.
+1. Välj **Alla tjänster** längst upp till vänster i portalen.
+2. Ange *Övervakare* i rutan **Filter**. Välj **Övervakare** i sökresultatet.
+3. Välj **Diagnostikinställningar** under **Inställningar**.
+4. Välj den **prenumeration** och **resursgrupp** som innehåller den offentliga IP-adress du vill logga.
 5. Välj **offentlig IP-adress** för **resurs typ** och välj sedan den angivna offentliga IP-adress som du vill aktivera loggar för.
-6. Välj **Lägg till diagnostikinställning**. Under **kategori Detaljer** väljer du så många av följande alternativ du behöver och väljer sedan **Spara**.
+6. Välj **Lägg till diagnostikinställning**. Under **Kategoridetaljer** väljer du bland följande alternativ och väljer sedan **Spara**.
 
     ![DDoS diagnostikinställningar](./media/ddos-attack-telemetry/ddos-diagnostic-settings.png)
 
@@ -67,7 +67,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när meddelandet skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -83,7 +83,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när flödes loggen skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -102,7 +102,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när rapporten skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |

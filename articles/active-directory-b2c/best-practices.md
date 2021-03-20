@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96750228"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Rekommendationer och metod tips för Azure Active Directory B2C
@@ -24,17 +24,17 @@ Följande metod tips och rekommendationer beskriver några av de viktigaste aspe
 
 ## <a name="fundamentals"></a>Grunder
 
-| Regelverk | Beskrivning |
+| Bästa praxis | Beskrivning |
 |--|--|
 | Välj användar flöden för de flesta scenarier | Azure AD B2C av identitets erfarenhets ramverket för är tjänstens kärn styrka. Principer beskriver fullständigt identitets upplevelser som registrering, inloggning eller profil redigering. För att hjälpa dig att skapa de vanligaste identitets uppgifterna innehåller Azure AD B2C portalen fördefinierade, konfigurerbara principer som kallas användar flöden. Med användar flöden kan du skapa fantastiska användar upplevelser på några minuter, med bara några få klick. [Lär dig när du ska använda användar flöden jämfört med anpassade principer](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | Appregistreringar | Varje program (webb, ursprunglig) och API som skyddas måste registreras i Azure AD B2C. Om en app har både en webb-och en ursprunglig version av iOS och Android kan du registrera dem som ett program i Azure AD B2C med samma klient-ID. Lär dig hur du [registrerar OIDC-, SAML-, webb-och interna appar](./tutorial-register-applications.md?tabs=applications). Läs mer om [program typer som kan användas i Azure AD B2C](./application-types.md). |
-| Flytta till månatliga aktiva användare fakturering | Azure AD B2C har flyttat från månatlig aktiv autentisering till månatliga aktiva användare (MAU) fakturering. De flesta kunder kommer att hitta den här modellen kostnads effektivt. [Lär dig mer om fakturering av månatliga aktiva användare](https://azure.microsoft.com/updates/mau-billing/). [Spara den här länken](b2clogin.md) |
+| Flytta till månatliga aktiva användare fakturering | Azure AD B2C har flyttat från månatlig aktiv autentisering till månatliga aktiva användare (MAU) fakturering. De flesta kunder kommer att hitta den här modellen kostnads effektivt. [Lär dig mer om fakturering av månatliga aktiva användare](https://azure.microsoft.com/updates/mau-billing/). |
 
 ## <a name="planning-and-design"></a>Planering och design
 
 Definiera din program-och tjänst arkitektur, inventera aktuella system och Planera migreringen till Azure AD B2C.
 
-| Regelverk | Beskrivning |
+| Bästa praxis | Beskrivning |
 |--|--|
 | Skapa en lösning från slut punkt till slut punkt | Ta med alla dina program beroenden när du planerar en Azure AD B2C-integrering. Överväg alla tjänster och produkter som för närvarande finns i din miljö eller som kan behöva läggas till i lösningen, till exempel Azure Functions, CRM-system (Customer Relations hip Management), Azure API Management Gateway och lagrings tjänster. Ta hänsyn till säkerhet och skalbarhet för alla tjänster. |
 | Dokumentera användarnas upplevelser | Beskriv all den användare som dina kunder kan uppleva i ditt program. Ta med varje skärm och eventuella förgreningar som de kan stöta på när du interagerar med identitets-och profil aspekterna i ditt program. Inkludera användbarhet, tillgänglighet och lokalisering i planeringen. |
@@ -50,7 +50,7 @@ Definiera din program-och tjänst arkitektur, inventera aktuella system och Plan
 
 Beakta följande rekommendationer under implementerings fasen.
 
-| Regelverk | Beskrivning |
+| Bästa praxis | Beskrivning |
 |--|--|
 | Redigera anpassade principer med Azure AD B2C-tillägget för Visual Studio Code | Hämta Visual Studio Code och detta community-integrerade [tillägg från Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). Även om det inte är en officiell Microsoft-produkt innehåller Azure AD B2C tillägget för Visual Studio Code flera funktioner som hjälper dig att arbeta med anpassade principer enklare. |
 | Lär dig hur du felsöker Azure AD B2C | Lär dig hur du [felsöker anpassade principer](./troubleshoot-custom-policies.md?tabs=applications) under utveckling. Lär dig hur ett normalt autentiseringsschema ser ut och använder verktyg för att identifiera avvikelser och fel. Använd till exempel [Application Insights](troubleshoot-with-application-insights.md) för att granska utgående loggar för användar resor. |
@@ -60,7 +60,7 @@ Beakta följande rekommendationer under implementerings fasen.
 
 Testa och automatisera implementeringen av Azure AD B2C.
 
-| Regelverk | Beskrivning |
+| Bästa praxis | Beskrivning |
 |--|--|
 | Konto för global trafik | Använd trafik källor från en annan global adress för att testa kraven på prestanda och lokalisering. Se till att alla HTML-, CSS-och-beroenden kan uppfylla dina prestanda behov. |
 | Funktionella och UI-testning | Testa att användaren flödar från slut punkt till slut punkt. Lägg till syntetiska tester i några minuter med hjälp av selen, VS Web test osv. |
@@ -74,7 +74,7 @@ Testa och automatisera implementeringen av Azure AD B2C.
 
 Hantera din Azure AD B2Cs miljö.
 
-| Regelverk | Beskrivning |
+| Bästa praxis | Beskrivning |
 |--|--|
 | Skapa flera miljöer | För enklare drift och distribution kan du skapa separata miljöer för utveckling, testning, för produktion och produktion. Skapa Azure AD B2C klienter för var och en. |
 | Använd versions kontroll för dina anpassade principer | Överväg att använda GitHub, Azure databaser eller något annat molnbaserad versions kontroll system för dina Azure AD B2C anpassade principer. |
@@ -84,10 +84,10 @@ Hantera din Azure AD B2Cs miljö.
 | Konfigurera aktiv avisering och övervakning | [Spåra användar beteende](./analytics-with-application-insights.md) i Azure AD B2C att använda Application Insights. |
 
 ## <a name="support-and-status-updates"></a>Support-och status uppdateringar
-## <a name="todays-support-and-status-updates"></a>Support-och status uppdateringar i dag
+
 Håll dig uppdaterad med tjänstens tillstånd och hitta support alternativ.
 
-| Regelverk | Beskrivning |
+| Bästa praxis | Beskrivning |
 |--|--|
 | [Tjänstuppdateringar](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Håll dig uppdaterad med Azure AD B2C produkt uppdateringar och meddelanden. |
 | [Microsoft Support](support-options.md) | Skicka en supportbegäran till Azure AD B2C tekniska problem. Support för fakturering och prenumerations hantering ges utan kostnad. |

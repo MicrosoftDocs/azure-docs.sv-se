@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: mbullwin
 ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420967"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Vanliga frågor och svar om mått rådgivare
@@ -109,7 +109,7 @@ Mer information finns i [konfigurationer för avvikelse identifiering](how-tos/c
 
 1.  En användare med administratörs behörighet för prenumeration eller resurs grupp måste gå till den Metric Advisor-resurs som skapades i Azure Portal och välja fliken **åtkomst kontroll (IAM)** . 
 2.  Välj **Lägg till roll tilldelningar**
-3.  Välj en roll för **Cognitive Services Metrics Advisor-administratör** , Välj ditt konto som i bilden nedan.
+3.  Välj en roll för **Cognitive Services Metrics Advisor-administratör**, Välj ditt konto som i bilden nedan.
 4.  Klicka på knappen **Spara** , sedan har du lagt till som administratör för Metrics Advisor-resursen. Observera att alla åtgärder ovan måste utföras av prenumerations administratören eller resurs grupps administratören. 
 
 :::image type="content" source="media/access-control.png" alt-text="Meny sidan åtkomst kontroll (IAM) med Lägg till en roll tilldelning markerad, följt av en ruta med tilldela åtkomst till vald användare som visas med en åtkomst roll för Cognitive Services Metrics Advisor-administratör, följt av knappen Spara för det användar gränssnitt som valts för att illustrera stegen för att söka efter en användare och lägga till en viss nivå av åtkomst behörighet." lightbox="media/access-control.png":::

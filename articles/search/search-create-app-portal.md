@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 01/23/2021
 ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745758"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Snabb start: skapa en demo-app i portalen (Azure Kognitiv sökning)
@@ -21,7 +21,7 @@ Använd guiden **skapa demonstrations program** för Azure Portal för att gener
 
 Demo-appen kan hjälpa dig att visualisera hur ett index fungerar i en klient app, men det är inte avsett för produktions scenarier. Klient program bör omfatta säkerhet, fel hantering och värd logik som den genererade HTML-sidan inte tillhandahåller. När du är redo att skapa en klient app, se [skapa din första Sökapp med .NET SDK](tutorial-csharp-create-first-app.md) för nästa steg.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar måste du ha följande:
 

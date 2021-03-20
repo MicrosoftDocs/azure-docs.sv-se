@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336793"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Kom igång med dubbla enheter (Node.js)
@@ -22,9 +22,9 @@ ms.locfileid: "91336793"
 
 I slutet av den här självstudien har du två Node.js-konsol program:
 
-* **AddTagsAndQuery.js**en Node.js backend-app, som lägger till taggar och frågor enhets dubbla.
+* **AddTagsAndQuery.js** en Node.js backend-app, som lägger till taggar och frågor enhets dubbla.
 
-* **TwinSimulatedDevice.js**en Node.js-app, som simulerar en enhet som ansluter till din IoT Hub med enhets identiteten som skapades tidigare och rapporterar dess anslutnings tillstånd.
+* **TwinSimulatedDevice.js** en Node.js-app, som simulerar en enhet som ansluter till din IoT Hub med enhets identiteten som skapades tidigare och rapporterar dess anslutnings tillstånd.
 
 > [!NOTE]
 > Artikeln [Azure IoT SDK](iot-hub-devguide-sdks.md) : er innehåller information om Azure IoT SDK: er som du kan använda för att bygga både enhets-och backend-appar.
@@ -40,7 +40,7 @@ För att slutföra den här kursen behöver du:
 
 * Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här artikeln använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -151,7 +151,7 @@ I nästa avsnitt skapar du en enhets app som rapporterar anslutnings information
 
 ## <a name="create-the-device-app"></a>Skapa enhetsappen
 
-I det här avsnittet skapar du en Node.js-konsolsession som ansluts till hubben som **myDeviceId**och uppdaterar sedan dess enhets dubbla rapporter så att de innehåller den information som den är ansluten till med ett mobilt nätverk.
+I det här avsnittet skapar du en Node.js-konsolsession som ansluts till hubben som **myDeviceId** och uppdaterar sedan dess enhets dubbla rapporter så att de innehåller den information som den är ansluten till med ett mobilt nätverk.
 
 1. Skapa en ny tom mapp med namnet **reportconnectivity**. I mappen **reportconnectivity** skapar du en ny package.jspå en fil med hjälp av följande kommando i kommando tolken. `--yes`Parametern accepterar alla standardvärden.
 
@@ -159,7 +159,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som ansluts till hubben 
     npm init --yes
     ```
 
-2. I kommando tolken i mappen **reportconnectivity** kör du följande kommando för att installera paketen **Azure-IoT-Device**och **Azure-IoT-Device-MQTT** :
+2. I kommando tolken i mappen **reportconnectivity** kör du följande kommando för att installera paketen **Azure-IoT-Device** och **Azure-IoT-Device-MQTT** :
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save

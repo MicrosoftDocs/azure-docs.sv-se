@@ -4,10 +4,10 @@ description: Lär dig hur du ställer in miljövariabler i de behållare som du 
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169773"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Ange miljövariabler i behållar instanser
@@ -144,12 +144,12 @@ Azure:\
 Om du vill ställa in miljövariabler när du startar en behållare i Azure Portal anger du dem på sidan **Avancerat** när du skapar behållaren.
 
 1. På sidan **Avancerat** ställer du in principen för att **starta om** *på att Miss lyckas*
-2. Under **miljövariabler**anger `NumWords` du ett värde för `5` den första variabeln och anger `MinLength` värdet `8` för den andra variabeln. 
+2. Under **miljövariabler** anger `NumWords` du ett värde för `5` den första variabeln och anger `MinLength` värdet `8` för den andra variabeln. 
 1. Välj **Granska + skapa** för att verifiera och distribuera behållaren.
 
 ![Portal sidan visar hur du aktiverar knappar och text rutor i miljö variabeln][portal-env-vars-01]
 
-Om du vill visa behållarens loggar går du till **Inställningar** och väljer **behållare**och **loggar**sedan. På liknande sätt som visas i föregående CLI-och PowerShell-avsnitt kan du se hur skriptets beteende har ändrats av miljövariablerna. Endast fem ord visas, vart och ett får bestå av minst åtta tecken.
+Om du vill visa behållarens loggar går du till **Inställningar** och väljer **behållare** och **loggar** sedan. På liknande sätt som visas i föregående CLI-och PowerShell-avsnitt kan du se hur skriptets beteende har ändrats av miljövariablerna. Endast fem ord visas, vart och ett får bestå av minst åtta tecken.
 
 ![Portal som visar behållar logg utdata][portal-env-vars-02]
 

@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: 2bbf75ba5de4ad20e11261bdcfd1204b1a0b0766
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420639"
 ---
 # <a name="tune-model-hyperparameters"></a>Finjustera hyperparametrar för modell
 
 I den här artikeln beskrivs hur du använder modulen för att finjustera modells parametrar i Azure Machine Learning designer. Målet är att fastställa de optimala egenskaperna för en maskin inlärnings modell. Modulen bygger och testar flera modeller genom att använda olika kombinationer av inställningar. Den jämför mått över alla modeller för att hämta kombinationer av inställningar. 
 
-Villkors *parametern* och den andra *parametern* kan vara förvirrande. Modellens *parametrar* är det du anger i den högra rutan i modulen. I princip utför den här modulen en *parameter rensning* över de angivna parameter inställningarna. Den lär sig en optimal uppsättning av _grundparametrar_ , som kan vara olika för varje särskilt besluts träd, data uppsättning eller Regressions metod. Processen för att hitta den optimala konfigurationen kallas ibland *justering*. 
+Villkors *parametern* och den andra *parametern* kan vara förvirrande. Modellens *parametrar* är det du anger i den högra rutan i modulen. I princip utför den här modulen en *parameter rensning* över de angivna parameter inställningarna. Den lär sig en optimal uppsättning av _grundparametrar_, som kan vara olika för varje särskilt besluts träd, data uppsättning eller Regressions metod. Processen för att hitta den optimala konfigurationen kallas ibland *justering*. 
 
 Modulen stöder följande metod för att hitta de optimala inställningarna för en modell: *integrerat tåg och finjustera.* I den här metoden konfigurerar du en uppsättning parametrar som ska användas. Sedan kan du låta modulen iterera över flera kombinationer. Modulen mäter precision tills den hittar en "bästa" modell. Med de flesta lärare-moduler kan du välja vilka parametrar som ska ändras under inlärnings processen och vilka som ska förbli fasta.
 
@@ -49,19 +49,19 @@ I det här avsnittet beskrivs hur du utför en grundläggande parameter rensning
 
 3.  Lägg till den data uppsättning som du vill använda för utbildning och Anslut den till den mittersta indatan för justerings modellens parametrar.  
 
-    Om du har en taggad data uppsättning kan du ansluta den till porten längst till höger ( **valfri verifierings data uppsättning** ). På så sätt kan du mäta noggrannhet medan du tränar och justerar.
+    Om du har en taggad data uppsättning kan du ansluta den till porten längst till höger (**valfri verifierings data uppsättning**). På så sätt kan du mäta noggrannhet medan du tränar och justerar.
 
 4.  Välj ett värde för **parameter rensnings läge** i den högra panelen om du vill justera modellens egenskaper. Det här alternativet styr hur parametrarna väljs.
 
-    - **Hela rutnätet** : när du väljer det här alternativet upprepas modulen över ett rutnät som är fördefinierat i systemet, för att testa olika kombinationer och identifiera den bästa bättre eleven. Det här alternativet är användbart när du inte vet vad de bästa parameter inställningarna kan vara och vill testa alla möjliga kombinationer av värden.
+    - **Hela rutnätet**: när du väljer det här alternativet upprepas modulen över ett rutnät som är fördefinierat i systemet, för att testa olika kombinationer och identifiera den bästa bättre eleven. Det här alternativet är användbart när du inte vet vad de bästa parameter inställningarna kan vara och vill testa alla möjliga kombinationer av värden.
 
-    - **Slumpmässig svep** : när du väljer det här alternativet kommer modulen slumpmässigt att välja parameter värden över ett Systemdefinierat intervall. Du måste ange det maximala antalet körningar som du vill att modulen ska köra. Det här alternativet är användbart när du vill öka modell prestandan genom att använda de mått som du väljer, men ändå spara dator resurser.    
+    - **Slumpmässig svep**: när du väljer det här alternativet kommer modulen slumpmässigt att välja parameter värden över ett Systemdefinierat intervall. Du måste ange det maximala antalet körningar som du vill att modulen ska köra. Det här alternativet är användbart när du vill öka modell prestandan genom att använda de mått som du väljer, men ändå spara dator resurser.    
 
 5.  För **kolumnen etikett** öppnar du kolumn väljaren för att välja en enskild etikett kolumn.
 
 6.  Välj antal körningar:
 
-    - **Maximalt antal körningar vid slumpmässig svep** : om du väljer en slumpmässig svep kan du ange hur många gånger modellen ska tränas genom att använda en slumpmässig kombination av parameter värden.
+    - **Maximalt antal körningar vid slumpmässig svep**: om du väljer en slumpmässig svep kan du ange hur många gånger modellen ska tränas genom att använda en slumpmässig kombination av parameter värden.
 
 7.  I **rangordning** väljer du ett mått som ska användas för att rangordna modellerna.
 
@@ -77,7 +77,7 @@ I det här avsnittet beskrivs hur du utför en grundläggande parameter rensning
 
 När inlärningen är klar:
 
-+ Om du vill visa resultaten för rensningen kan du antingen högerklicka på modulen och sedan välja **visualisera** , eller högerklicka på den vänstra utdataporten för modulen för att visualisera.
++ Om du vill visa resultaten för rensningen kan du antingen högerklicka på modulen och sedan välja **visualisera**, eller högerklicka på den vänstra utdataporten för modulen för att visualisera.
 
     **Rensnings resultatet** innehåller alla parameter rensnings-och precisions mått som gäller för modell typen, och det mått som du har valt för rangordning avgör vilken modell som betraktas som "bästa".
 
@@ -92,11 +92,11 @@ Det här avsnittet innehåller implementerings information och tips.
 
 När du ställer in en parameter rensning definierar du omfattningen för din sökning. Sökningen kan använda ett begränsat antal parametrar som marker ATS slumpmässigt. Eller så kan det vara en fullständig sökning över ett parameter utrymme som du definierar.
 
-+ **Slumpmässig svep** : det här alternativet tränar en modell genom att använda ett angivet antal iterationer. 
++ **Slumpmässig svep**: det här alternativet tränar en modell genom att använda ett angivet antal iterationer. 
 
   Du anger ett intervall med värden att iterera över och modulen använder en slumpmässigt vald delmängd av dessa värden. Värdena väljs med ersättning, vilket innebär att de siffror som tidigare valdes slumpmässigt inte tas bort från poolen med tillgängliga nummer. Det innebär att risken för alla värden som väljs förblir samma för alla pass.  
 
-+ **Hela rutnätet** : alternativet att använda hela rutnätet innebär att varje kombination testas. Det här alternativet är det mest grundliga, men det kräver den mest aktuella tiden. 
++ **Hela rutnätet**: alternativet att använda hela rutnätet innebär att varje kombination testas. Det här alternativet är det mest grundliga, men det kräver den mest aktuella tiden. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>Kontrol lera längden och komplexiteten för utbildningen
 
@@ -142,7 +142,7 @@ Under utbildningen måste du dock välja ett *enda* mått som ska användas för
 
 -   **Ett relativt kvadratvärde** normaliserar det totala antalet fel i kvadratvärdet genom att dividera med det totala antalet fel i det förväntade värdet.  
 
--   **Koefficienten för bestämning** är ett enda tal som anger hur bra data passar en modell. Värdet ett innebär att modellen exakt matchar data. Värdet noll innebär att data är slumpmässiga eller på annat sätt inte får plats i modellen. Det kallas ofta *r <sup>2</sup>* , *r <sup>2</sup>* eller *r-kvadratvärdet*.  
+-   **Koefficienten för bestämning** är ett enda tal som anger hur bra data passar en modell. Värdet ett innebär att modellen exakt matchar data. Värdet noll innebär att data är slumpmässiga eller på annat sätt inte får plats i modellen. Det kallas ofta *r <sup>2</sup>*, *r <sup>2</sup>* eller *r-kvadratvärdet*.  
 
 ### <a name="modules-that-dont-support-a-parameter-sweep"></a>Moduler som inte stöder en parameter-Svep
 

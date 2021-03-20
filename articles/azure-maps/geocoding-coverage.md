@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92897219"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps för att avkoda täckning
@@ -72,11 +72,11 @@ Möjligheten att koda i ett land/en region är beroende av vägtrafikens data t�
 | Paraguay                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Puerto Rico                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Sankt Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts och Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Saint Pierre och Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint-Pierre och Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent och Grenadinerna                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Sydgeorgien och Sydsandwichöarna        |                 |                |              |      ✓     |          ✓         |
@@ -107,7 +107,7 @@ Möjligheten att koda i ett land/en region är beroende av vägtrafikens data t�
 | Cooköarna                                        |                 |                |              |      ✓     |          ✓         |
 | Fiji                                                |                  |                |              |      ✓     |          ✓        |
 | Franska Polynesien                                    |                 |                |              |      ✓     |          ✓         |
-| Heard-och McDonaldöarna                   |                 |                |              |      ✓     |          ✓         |
+| Heard- och McDonaldöarna                   |                 |                |              |      ✓     |          ✓         |
 | Folkrepubliken Kinas särskilda administrativa region Hongkong                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonesien                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indien                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
@@ -148,7 +148,7 @@ Möjligheten att koda i ett land/en region är beroende av vägtrafikens data t�
 | Vietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wallis och Futuna                                   |                 |                |              |      ✓     |          ✓         |
 
-## <a name="europe"></a>Europe
+## <a name="europe"></a>Europa
 
 | Land/region                                      | Adress punkter |Hus nummer | Gatu nivå | Stads nivå | Intressanta punkter |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|

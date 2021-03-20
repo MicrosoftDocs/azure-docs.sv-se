@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610797"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Felsöka kombinerad säkerhets informations registrering
@@ -30,7 +30,7 @@ Händelserna som loggas för kombinerad registrering finns i tjänsten autentise
 
 I följande tabell visas alla gransknings händelser som har genererats vid kombinerad registrering:
 
-| Aktivitet | Status | Orsak | Description |
+| Aktivitet | Status | Anledning | Beskrivning |
 | --- | --- | --- | --- |
 | Användaren registrerade all nödvändig säkerhets information | Klart | Användaren registrerade all nödvändig säkerhets information. | Den här händelsen inträffar när en användare har slutfört registreringen.|
 | Användaren registrerade all nödvändig säkerhets information | Fel | Användaren avbröt registreringen av säkerhets information. | Den här händelsen inträffar när en användare avbryter registreringen från avbrotts läge.|

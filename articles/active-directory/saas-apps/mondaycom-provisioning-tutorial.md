@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0479e470f5d2f3880062c45a5e14981f8a4c1e56
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743550"
 ---
 # <a name="tutorial-configure-mondaycom-for-automatic-user-provisioning"></a>Självstudie: Konfigurera monday.com för automatisk användar etablering
@@ -35,7 +35,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både monday.com
 > * Etablera grupper och grupp medlemskap i monday.com
 > * [Enkel inloggning](mondaycom-tutorial.md) till Monday.com (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

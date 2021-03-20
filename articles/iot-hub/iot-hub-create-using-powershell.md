@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142381"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Skapa en IoT-hubb med hjälp av New-AzIotHub cmdlet
@@ -22,7 +22,7 @@ ms.locfileid: "92142381"
 
 Du kan använda Azure PowerShell-cmdletar för att skapa och hantera Azure IoT-hubbar. Den här självstudien visar hur du skapar en IoT Hub med PowerShell.
 
-För att slutföra den här instruktionen behöver du en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+För att slutföra den här instruktionen behöver du en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Du behöver en resurs grupp för att distribuera en IoT-hubb. Du kan använda en befintlig resurs grupp eller skapa en ny.
+Du behöver en resurs grupp för att distribuera en IoT-hubb. Du kan välja en befintlig resursgrupp eller skapa en ny.
 
 Om du vill skapa en resurs grupp för din IoT-hubb använder du kommandot [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) . I det här exemplet skapas en resurs grupp med namnet **MyIoTRG1** i regionen **USA, östra** :
 
