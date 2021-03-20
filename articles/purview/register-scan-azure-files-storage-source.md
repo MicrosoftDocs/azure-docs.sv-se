@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96554886"
 ---
 # <a name="register-and-scan-azure-files"></a>Registrera och skanna Azure Files
@@ -20,7 +20,7 @@ ms.locfileid: "96554886"
 
 Azure Files stöder fullständiga och stegvisa genomsökningar för att avbilda metadata och tillämpa klassificeringar på metadata, baserat på system-och kund klassificeringar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure avdelningens kontroll-konto innan du registrerar data källor. Mer information om hur du skapar ett avdelningens kontroll-konto finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 - Du måste vara administratör av data källan för att kunna konfigurera och schemalägga genomsökningar. mer information finns i [katalog behörigheter](catalog-permissions.md) .

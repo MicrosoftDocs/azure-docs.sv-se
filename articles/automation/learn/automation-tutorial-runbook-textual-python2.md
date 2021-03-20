@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87847932"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Självstudie: skapa en python-Runbook
@@ -26,9 +26,9 @@ Den här självstudien vägleder dig genom skapandet av en [python-Runbook](../a
 > [!NOTE]
 > Det finns inte stöd för att använda en webhook för att starta en python-Runbook.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-För att kunna genomföra den här kursen behöver du följande:
+För att göra den här självstudien behöver du följande:
 
 - En Azure-prenumeration. Om du inte redan har ett konto kan du [aktivera dina MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett [Automation-konto för Azure](../index.yml) som runbooken ska ligga under och som ska användas för autentisering mot Azure-resurser. Det här kontot måste ha behörighet att starta och stoppa den virtuella datorn.

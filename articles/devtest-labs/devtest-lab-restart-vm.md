@@ -4,10 +4,10 @@ description: Den här artikeln innehåller steg för att snabbt och enkelt start
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d2bcbcbea613aa84da91789fb9f118afd7023fab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481999"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Starta om en virtuell dator i ett labb i Azure DevTest Labs
@@ -27,7 +27,7 @@ Du kan snabbt och enkelt starta om en virtuell dator i DevTest Labs genom att f�
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Steg för att starta om en virtuell dator i ett labb i Azure DevTest Labs
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du labbet som innehåller den virtuella dator som du vill starta om.
 1. I den vänstra panelen väljer du **mina Virtual Machines**.
 1. I listan över virtuella datorer väljer du en virtuell dator som körs.

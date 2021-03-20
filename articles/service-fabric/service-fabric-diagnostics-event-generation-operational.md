@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85846646"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista över Service Fabric händelser 
@@ -64,7 +64,7 @@ Mer information om kluster uppgraderingar hittar du [här](service-fabric-cluste
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | – | Ett nytt program har skapats | CM | Information | 
 | 29625 | ApplicationDeleted | – | Ett befintligt program har tagits bort | CM | Information | 
-| 23083 | ApplicationProcessExited | – | En process i ett program har avslut ATS | Hosting | Information | 
+| 23083 | ApplicationProcessExited | – | En process i ett program har avslut ATS | Värd | Information | 
 
 **Program uppgraderings händelser**
 
@@ -135,9 +135,9 @@ Mer information om program uppgraderingar hittar du [här](service-fabric-applic
 
 | EventId | Name | Beskrivning |Källa (aktivitet) | Nivå | Version |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerActivated | En behållare har startat | Hosting | Information | 1 |
-| 23075 | ContainerDeactivated | En behållare har stoppats | Hosting | Information | 1 |
-| 23082 | ContainerExited | En behållare har avslut ATS-kontrol lera flaggan UnexpectedTermination | Hosting | Information | 1 |
+| 23074 | ContainerActivated | En behållare har startat | Värd | Information | 1 |
+| 23075 | ContainerDeactivated | En behållare har stoppats | Värd | Information | 1 |
+| 23082 | ContainerExited | En behållare har avslut ATS-kontrol lera flaggan UnexpectedTermination | Värd | Information | 1 |
 
 ## <a name="health-reports"></a>Hälso rapporter
 
@@ -260,8 +260,8 @@ Här är en omfattande lista över händelser som tillhandahålls av Service Fab
 | 29629 | ClusterUpgradeRollback | CM | Information |
 | 29630 | ClusterUpgradeRollbackComplete | CM | Information |
 | 29631 | ClusterUpgradeDomainComplete | CM | Information |
-| 23074 | ContainerActivated | Hosting | Information |
-| 23075 | ContainerDeactivated | Hosting | Information |
+| 23074 | ContainerActivated | Värd | Information |
+| 23075 | ContainerDeactivated | Värd | Information |
 | 29620 | ApplicationCreated | CM | Information |
 | 29621 | ApplicationUpgradeStart | CM | Information |
 | 29622 | ApplicationUpgradeComplete | CM | Information |

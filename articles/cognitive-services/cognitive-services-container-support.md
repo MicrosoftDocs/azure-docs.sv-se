@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.author: aahi
 keywords: lokal, Docker, behållare, Kubernetes
 ms.openlocfilehash: f5caac0a0da3595075dddd5a273a6883a0cca468
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861816"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containrar

@@ -4,10 +4,10 @@ description: Beskriver de arbetsbelastningar som kan skyddas med haveriberedskap
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80062841"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Om haveriberedskap för lokala appar
@@ -50,7 +50,7 @@ Site Recovery kan replikera alla appar som körs på en dator som stöds. Vi sam
 | Linux (operativsystem och appar) |Ja (testat av Microsoft) |Ja (testat av Microsoft) |Ja (testat av Microsoft) |Ja (testat av Microsoft) |Ja (testat av Microsoft)|
 | Dynamics AX |Ja |Ja |Ja |Ja |Ja|
 | Windows-filserver |Ja |Ja |Ja |Ja |Ja|
-| Citrix XenApp och XenDesktop |Ja|E.t. |Ja |E.t. |Ja |
+| Citrix XenApp och XenDesktop |Ja|Saknas |Ja |Saknas |Ja |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikera Active Directory och DNS
 
@@ -106,7 +106,7 @@ Med Azure Site Recovery kan du replikera följande tjänster:
 
 Följande tabell visar alternativen för replikering:
 
-| **SERVRAR** |**Replikera virtuella Azure-datorer till Azure** | **Replikera virtuella Hyper-V-datorer till en sekundär plats** | **Replikera Hyper-V-VM:ar till Azure** | **Replikera VMware-VM:ar till en sekundär plats** | **Replikera virtuella VMware-datorer till Azure** | **Replikera fysiska servrar till en sekundär plats** | **Replikera fysiska servrar till Azure** |
+| **Fjärrskrivbordstjänster** |**Replikera virtuella Azure-datorer till Azure** | **Replikera virtuella Hyper-V-datorer till en sekundär plats** | **Replikera Hyper-V-VM:ar till Azure** | **Replikera VMware-VM:ar till en sekundär plats** | **Replikera virtuella VMware-datorer till Azure** | **Replikera fysiska servrar till en sekundär plats** | **Replikera fysiska servrar till Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **Poolat virtuellt skrivbord (ohanterat)** |Inga|Ja |Inga |Ja |Inga |Ja |Inga |
 | **Poolat virtuellt skrivbord (hanterat och utan UPD)** |Inga|Ja |Inga |Ja |Inga |Ja |Inga |

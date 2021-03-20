@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89320264"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurera "hållet inloggat?" prompt för Azure AD-konton
@@ -33,22 +33,27 @@ Följande diagram visar användar inloggnings flödet för en hanterad klient or
 ## <a name="configure-kmsi"></a>Konfigurera KMSI avgör
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/) med ett Globalt administratörskonto för katalogen.
-1. Välj **Azure Active Directory**, Välj **företags anpassning**och välj sedan **Konfigurera**.
+1. Välj **Azure Active Directory**, Välj **företags anpassning** och välj sedan **Konfigurera**.
 1. I avsnittet **Avancerade inställningar** letar du reda på **alternativet för att förbli inloggad** .
 
    Med den här inställningen kan du välja om användarna ska förbli inloggade i Azure AD tills de uttryckligen loggar ut.
-   * Om du väljer **Nej**är alternativet **förbli inloggad?** dolt när användaren har loggat in och användaren måste logga in varje gång webbläsaren stängs och öppnas igen.
-   * Om du väljer **Ja**visas alternativet **förbli inloggad?** alternativet visas för användaren.
+   * Om du väljer **Nej** är alternativet **förbli inloggad?** dolt när användaren har loggat in och användaren måste logga in varje gång webbläsaren stängs och öppnas igen.
+   * Om du väljer **Ja** visas alternativet **förbli inloggad?** alternativet visas för användaren.
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Diagram som visar användar inloggnings flödet för en hanterad eller federerad klient":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Skärm bild som visar alternativet Visa är inloggat":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Felsöka inloggnings problem
 
 Om en användare inte agerar på den person som är **inloggad?** uppmanas du, som du ser i följande diagram, men avbryter inloggnings försöket, så visas en inloggnings logg post som anger avbrottet.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Diagram som visar användar inloggnings flödet för en hanterad eller federerad klient" Avbryt när användaren loggade in.
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Visar du förbli inloggad? visas":::
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Diagram som visar användar inloggnings flödet för en hanterad eller federerad klient":::
+Information om inloggnings felet är följande och markerat i exemplet.
+
+* **Inloggnings fel kod**: 50140
+* **Fel orsak**: det här felet inträffade på grund av "Håll mig inloggad" Avbryt när användaren loggade in.
+
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Exempel på inloggnings loggen med alternativet Håll mig inloggad i avbrott":::
 
 Du kan hindra användare från att se avbrottet genom att ställa in **alternativet för att förbli inloggade** på **Nej** i inställningarna för avancerad anpassning. Detta inaktiverar KMSI avgör-prompten för alla användare i Azure AD-katalogen.
 

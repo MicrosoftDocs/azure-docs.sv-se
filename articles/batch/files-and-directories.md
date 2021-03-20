@@ -4,10 +4,10 @@ description: Lär dig mer om filer och kataloger och hur de används i ett Azure
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87552652"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Filer och kataloger i Azure Batch

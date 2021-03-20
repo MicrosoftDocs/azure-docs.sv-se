@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89280153"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory djupgående säkerhets djup
@@ -72,7 +72,7 @@ I följande avsnitt beskrivs de här faserna i detalj.
 
 ### <a name="authentication-agent-installation"></a>Installation av autentiseringstjänst
 
-Endast globala administratörer kan installera en autentiseringstjänst (med Azure AD Connect eller fristående) på en lokal server. Vid installationen läggs två nya poster till **Control Panel**i program-  >  **Programs**  >  **och funktions** listan i kontroll panelen:
+Endast globala administratörer kan installera en autentiseringstjänst (med Azure AD Connect eller fristående) på en lokal server. Vid installationen läggs två nya poster till i program-  >    >  **och funktions** listan i kontroll panelen:
 - Själva appen för autentisering av agent. Det här programmet körs med [NetworkService](/windows/win32/services/networkservice-account) -behörigheter.
 - Uppdaterings programmet som används för att automatiskt uppdatera Autentiseringstjänsten. Det här programmet körs med [LocalSystem](/windows/win32/services/localsystem-account) -behörighet.
 

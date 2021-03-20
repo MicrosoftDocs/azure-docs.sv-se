@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 3339516193af6e1ff832ac586f4a81f8799c5b83
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98727700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-count-me-in---operations-dashboard"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med räkna mig i drift instrument panel
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar ett antal åtgärde
 * Gör det möjligt för användarna att vara inloggade automatiskt så att du kan räkna med sina Azure AD-konton i drifts instrument panelen.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -112,7 +112,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

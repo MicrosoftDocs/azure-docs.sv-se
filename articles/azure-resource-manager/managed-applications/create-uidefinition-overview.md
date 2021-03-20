@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89319583"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json för Azure-upplevelsen för att skapa hanterade program
@@ -105,7 +105,7 @@ Du kan använda en JSON-redigerare för att skapa din createUiDefinition och sed
 
 ### <a name="wizard"></a>Konfigurationsguide
 
-`isWizard`Egenskapen gör det möjligt att verifiera varje steg innan du fortsätter till nästa steg. När `isWizard` egenskapen inte anges är standardvärdet **false**och stegvis verifiering krävs inte.
+`isWizard`Egenskapen gör det möjligt att verifiera varje steg innan du fortsätter till nästa steg. När `isWizard` egenskapen inte anges är standardvärdet **false** och stegvis verifiering krävs inte.
 
 När `isWizard` är aktiverat, är inställt på **Sant**, är fliken **grundläggande** tillgängligt och alla andra flikar är inaktiverade. När knappen **Nästa** är markerad anger flikens ikon om en fliks verifiering lyckades eller misslyckades. När en fliks obligatoriska fält har slutförts och verifierats **Nästa** knapp kan du navigera till nästa flik. När alla flikar klarar valideringen kan du gå till sidan **Granska och skapa** och välja knappen **skapa** för att starta distributionen.
 
@@ -129,7 +129,7 @@ För `location` anger du egenskaperna för den plats kontroll som du vill åsido
 
 **Grundläggande** steg är det första steget som genereras när Azure Portal tolkar filen. Som standard kan du med hjälp av grundläggande steg välja prenumeration, resurs grupp och plats för distribution.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Fliken guide":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Standard för grundläggande":::
 
 Du kan lägga till fler element i det här avsnittet. När det är möjligt kan du lägga till element som frågar om globala parametrar, t. ex. namnet på ett kluster eller administratörsautentiseringsuppgifter.
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89289179"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Anslut ett kunskaps lager med Power BI
@@ -43,19 +43,19 @@ Klicka på **hämta Power BI mall** på sidan **Lägg till kognitiva kunskaper**
 
 1. Starta Power BI Desktop och klicka på **Hämta data**.
 
-1. I fönstret **Hämta data** väljer du **Azure**och väljer sedan **Azure Table Storage**.
+1. I fönstret **Hämta data** väljer du **Azure** och väljer sedan **Azure Table Storage**.
 
 1. Klicka på **Anslut**.
 
-1. För **konto namn eller URL**anger du i Azure Storage konto namn (den fullständiga URL: en skapas åt dig).
+1. För **konto namn eller URL** anger du i Azure Storage konto namn (den fullständiga URL: en skapas åt dig).
 
 1. Ange lagrings konto nyckeln om du uppmanas att göra det.
 
 1. Välj de tabeller som innehåller hotell gransknings data som skapats i föregående genom gång. 
 
-   + För portalen genom gång är tabell namnen *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*och *hotelReviewsSsPages*. 
+   + För portalen genom gång är tabell namnen *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases* och *hotelReviewsSsPages*. 
    
-   + För resten av genom gången är tabell namnen *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*och *hotelReviewsSentiment*.
+   + För resten av genom gången är tabell namnen *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases* och *hotelReviewsSentiment*.
 
 1. Klicka på **Läs in**.
 
@@ -63,7 +63,7 @@ Klicka på **hämta Power BI mall** på sidan **Lägg till kognitiva kunskaper**
 
    ![Öppna Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Öppna Power Query")
 
-1. Välj *hotelReviewsSsDocument*och ta sedan bort kolumnerna *PartitionKey*, *RowKey*och *timestamp* . 
+1. Välj *hotelReviewsSsDocument* och ta sedan bort kolumnerna *PartitionKey*, *RowKey* och *timestamp* . 
    ![Redigera tabeller](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Redigera tabeller")
 
 1. Klicka på ikonen med motsatta pilar längst upp till höger i tabellen för att expandera *innehållet*. När listan med kolumner visas väljer du alla kolumner och avmarkerar kolumner som börjar med ' metadata '. Klicka på **OK** för att visa de markerade kolumnerna.
@@ -72,12 +72,12 @@ Klicka på **hämta Power BI mall** på sidan **Lägg till kognitiva kunskaper**
 
 1. Ändra data typen för följande kolumner genom att klicka på ABC-123-ikonen längst upp till vänster i kolumnen.
 
-   + För *innehållet. latitud* och *Contents. longitud*väljer du **decimal tal**.
-   + För *Content.reviews_date* och *Content.reviews_dateAdded*väljer du **datum/tid**.
+   + För *innehållet. latitud* och *Contents. longitud* väljer du **decimal tal**.
+   + För *Content.reviews_date* och *Content.reviews_dateAdded* väljer du **datum/tid**.
 
    ![Ändra data typer](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Ändra data typer")
 
-1. Välj *hotelReviewsSsPages*och upprepa sedan steg 9 och 10 för att ta bort kolumnerna och expandera *innehållet*.
+1. Välj *hotelReviewsSsPages* och upprepa sedan steg 9 och 10 för att ta bort kolumnerna och expandera *innehållet*.
 1. Ändra data typen för *Content. SentimentScore* till **decimal tal**.
 1. Välj *hotelReviewsSsKeyPhrases* och upprepa steg 9 och 10 om du vill ta bort kolumnerna och expandera *innehållet*. Det finns inga ändringar av data typen för den här tabellen.
 

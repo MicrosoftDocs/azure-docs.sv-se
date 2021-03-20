@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89291559"
 ---
 # <a name="filters"></a>Filter
@@ -43,13 +43,13 @@ Det finns två typer av filter:
 * [Konto filter](/rest/api/media/accountfilters) (global) – kan användas för alla till gångar i Azure Media Services kontot, ha en livstid för kontot.
 * [Till gångs filter](/rest/api/media/assetfilters) (lokal) – kan bara användas för en till gång som filtret var associerat med när det skapades, har en livs längd för till gången. 
 
-**Konto filter** och typer av **till gångs filter** har exakt samma egenskaper för att definiera/beskriva filtret. Förutom när du skapar **till gångs filtret**måste du ange namnet på den till gång som du vill koppla filtret till.
+**Konto filter** och typer av **till gångs filter** har exakt samma egenskaper för att definiera/beskriva filtret. Förutom när du skapar **till gångs filtret** måste du ange namnet på den till gång som du vill koppla filtret till.
 
 Beroende på ditt scenario bestämmer du vilken typ av filter som är lämpligare (till gångs filter eller konto filter). Konto filter är lämpliga för enhets profiler (åter givnings filtrering) där till gångs filter kan användas för att trimma en speciell till gång.
 
 Du kan använda följande egenskaper för att beskriva filtren. 
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |firstQuality|Den första kvalitets bit hastigheten för filtret.|
 |presentationTimeRange|Tids området för presentationen. Den här egenskapen används för att filtrera manifest start-/slut punkter, presentations fönster längd och start position. <br/>Mer information finns i [PresentationTimeRange](#presentationtimerange).|
@@ -59,7 +59,7 @@ Du kan använda följande egenskaper för att beskriva filtren.
 
 Använd den här egenskapen med **till gångs filter**. Vi rekommenderar inte att du anger egenskapen med **konto filter**.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |**endTimestamp**|Gäller för video på begäran (VoD).<br/>För direkt uppspelnings presentationen ignoreras den tyst och tillämpas när presentationen slutar och strömmen blir VoD.<br/>Detta är ett långt värde som representerar en absolut slut punkt i presentationen, avrundat till närmaste nästa GOP-start. Enheten är tids skala, så en endTimestamp på 1800000000 skulle vara i 3 minuter.<br/>Använd startTimestamp och endTimestamp för att trimma de fragment som ska finnas i spelnings listan (manifest).<br/>Exempel: startTimestamp = 40000000 och endTimestamp = 100000000 med standard tids skalan genererar en spelnings lista som innehåller fragment från mellan 4 och 10 sekunder i VoD-presentationen. Om ett fragment följer gränserna tas hela fragmentet med i manifestet.|
 |**forceEndTimestamp**|Gäller endast för direktsänd strömning.<br/>Anger om egenskapen endTimestamp måste finnas. Om värdet är true måste endTimestamp anges eller så returneras en felaktig kod för begäran.<br/>Tillåtna värden: falskt, sant.|
@@ -70,11 +70,11 @@ Använd den här egenskapen med **till gångs filter**. Vi rekommenderar inte at
 
 ### <a name="tracks"></a>Spårar
 
-Du anger en lista med villkor för filtrerings spårning (FilterTrackPropertyConditions) baserat på vilka spår från data strömmen (direkt uppspelning eller video på begäran) som ska ingå i dynamiskt skapade manifest. Filtren kombineras med hjälp av en **AND** logisk och **en åtgärd.**
+Du anger en lista med villkor för filtrerings spårning (FilterTrackPropertyConditions) baserat på vilka spår från data strömmen (direkt uppspelning eller video på begäran) som ska ingå i dynamiskt skapade manifest. Filtren kombineras med hjälp av en  logisk och **en åtgärd.**
 
 Filtrera egenskaper för spåra egenskaper Beskriv spår typer, värden (beskrivs i följande tabell) och åtgärder (lika med, NotEqual). 
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |**Hastigheten**|Använd bit hastigheten för spårningen för filtrering.<br/><br/>Det rekommenderade värdet är ett intervall med bit hastigheter, i bitar per sekund. Till exempel "0-2427000".<br/><br/>Obs! även om du kan använda ett visst bit hastighets värde, t. ex. 250000 (bitar per sekund), rekommenderas inte den här metoden eftersom de exakta bit hastigheterna kan variera från en till gång till en annan.|
 |**FourCC**|Använd FourCC-värdet för spårningen för filtrering.<br/><br/>Värdet är det första elementet i codec-formatet, enligt vad som anges i [RFC 6381](https://tools.ietf.org/html/rfc6381). För närvarande stöds följande codecenheter: <br/>För video: "avc1", "hev1", "hvc1"<br/>För ljud: "MP4A", "EC-3"<br/><br/>Hämta och granska manifest filen för att fastställa FourCC-värden för spår i en till gång.|

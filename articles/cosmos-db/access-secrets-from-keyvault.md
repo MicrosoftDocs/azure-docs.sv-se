@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359336"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Skydda Azure Cosmos-nycklar med Azure Key Vault 
@@ -61,7 +61,7 @@ Följande steg krävs för att lagra och läsa Azure Cosmos DB åtkomst nycklar 
 
 1. Skapa ett Azure-webbprogram eller så kan du ladda ned appen från [GitHub-lagringsplatsen](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo). Det är ett enkelt MVC-program.  
 
-2. Zippa upp det hämtade programmet och öppna filen **HomeController.cs** . Uppdatera det hemliga ID: t på följande rad:
+2. Zippa upp det hämtade programmet och öppna filen **HomeController. cs** . Uppdatera det hemliga ID: t på följande rad:
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778652"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analysera gränsnodsprestanda i Microsoft Azure CDN
@@ -55,7 +55,7 @@ Den här instrument panelen består av:
     ![Knappen Hantera för CDN-profil bladet](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Hanterings portalen för CDN öppnas.
-2. Hovra över fliken **analys** och hovra över den utfällbara **prestanda analysen** .  Klicka på **instrument panelen** .
+2. Hovra över fliken **analys** och hovra över den utfällbara **prestanda analysen** .  Klicka på **instrument panelen**.
    
     Instrument panelen Edge Node Analytics visas.
 
@@ -143,7 +143,7 @@ Varje rapport i den här modulen innehåller ett diagram och statistik över ban
     ![Knappen Hantera för CDN-profil bladet](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Hanterings portalen för CDN öppnas.
-2. Hovra över fliken **analys** och hovra över den utfällbara **prestanda analysen** .  Klicka på ett **stort http-objekt** .
+2. Hovra över fliken **analys** och hovra över den utfällbara **prestanda analysen** .  Klicka på ett **stort http-objekt**.
    
     Skärmen Edge nod analys rapporter visas.
 

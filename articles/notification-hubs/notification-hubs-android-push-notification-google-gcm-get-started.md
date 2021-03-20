@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87832662"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Självstudie: skicka push-meddelanden till Android-enheter med hjälp av Azure Notification Hubs och Google Cloud Messaging (inaktuellt)
@@ -51,7 +51,7 @@ I den här självstudien gör du följande:
 > * Anslut appen till meddelandehubben
 > * Testa appen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **Azure-prenumeration**. Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -464,7 +464,7 @@ Din meddelandehubb har nu konfigurerats för att fungera med GCM och du har ansl
     }
     ```
 
-14. I Android Studio på Meny raden klickar du på **skapa**återskapa  >  **projekt** för att kontrol lera att det inte finns några fel i koden.
+14. I Android Studio på Meny raden klickar du på **skapa** återskapa  >  **projekt** för att kontrol lera att det inte finns några fel i koden.
 
 ## <a name="testing-your-app"></a>Testa din app
 
@@ -504,7 +504,7 @@ Se dessutom till att du har lagt till ditt Google-konto till din aktiva emulator
 
 Normalt sett skickar du meddelanden med hjälp av en backend-server. I vissa fall kanske du vill kunna skicka push-meddelanden direkt från klientprogrammet. I det här avsnittet beskrivs hur du skickar meddelanden från klienten med hjälp av [Azure Notification Hub REST API](/previous-versions/azure/reference/dn223264(v=azure.100)).
 
-1. Expandera **app**  >  **src**  >  **main**  >  **res**  >  **layout**i Android Studio projektvyn. Öppna layoutfilen för `activity_main.xml` och klicka på fliken **Text** för att uppdatera filens textinnehåll. Uppdatera den med koden nedan. Detta lägger till nya `Button`- och `EditText`-kontroller för att skicka push-meddelanden till meddelandehubben. Lägg till den här koden längst ned, precis före `</RelativeLayout>`.
+1. Expandera **app**  >  **src**  >  **main**  >  **res**  >  **layout** i Android Studio projektvyn. Öppna layoutfilen för `activity_main.xml` och klicka på fliken **Text** för att uppdatera filens textinnehåll. Uppdatera den med koden nedan. Detta lägger till nya `Button`- och `EditText`-kontroller för att skicka push-meddelanden till meddelandehubben. Lägg till den här koden längst ned, precis före `</RelativeLayout>`.
 
     ```xml
     <Button
@@ -526,7 +526,7 @@ Normalt sett skickar du meddelanden med hjälp av en backend-server. I vissa fal
     android:hint="@string/notification_message_hint" />
     ```
 
-2. Expandera **app**  >  **src**  >  **main**  >  **res**  >  **värden**i Android Studio projektvyn. Öppna filen `strings.xml` och lägg till strängvärden som refererar till de nya `Button`- och `EditText`-kontrollerna. Lägg till följande rader längst ned i filen, precis före `</resources>`.
+2. Expandera **app**  >  **src**  >  **main**  >  **res**  >  **värden** i Android Studio projektvyn. Öppna filen `strings.xml` och lägg till strängvärden som refererar till de nya `Button`- och `EditText`-kontrollerna. Lägg till följande rader längst ned i filen, precis före `</resources>`.
 
     ```xml
     <string name="send_button">Send Notification</string>
@@ -768,4 +768,4 @@ I de här självstudierna har du skickat meddelanden till alla Android-enheter s
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portal]: https://portal.azure.com
+[Azure-portalen]: https://portal.azure.com

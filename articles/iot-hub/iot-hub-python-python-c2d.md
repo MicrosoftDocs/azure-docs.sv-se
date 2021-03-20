@@ -10,10 +10,10 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: ad6399a4713520ca0550d143cf3f19f87d55337c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876809"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Skicka meddelanden från moln till enhet med IoT Hub (python)
@@ -50,13 +50,13 @@ I slutet av den här självstudien kör du två python-konsol program:
 
 I det här avsnittet skapar du en python-konsol-app för att simulera enheten och ta emot meddelanden från molnet till enheten från IoT Hub.
 
-1. Installera **Azure IoT Hub Device SDK för python**från en kommando tolk i arbets katalogen:
+1. Installera **Azure IoT Hub Device SDK för python** från en kommando tolk i arbets katalogen:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Skapa en fil med namnet **SimulatedDevice.py**med hjälp av en text redigerare.
+1. Skapa en fil med namnet **SimulatedDevice.py** med hjälp av en text redigerare.
 
 1. Lägg till följande- `import` instruktioner och variabler i början av **SimulatedDevice.py** -filen:
 
@@ -138,7 +138,7 @@ I det här avsnittet skapar du en python-konsol-app som skickar meddelanden frå
    pip install azure-iot-hub
    ```
 
-1. Skapa en fil med namnet **SendCloudToDeviceMessage.py**med hjälp av en text redigerare.
+1. Skapa en fil med namnet **SendCloudToDeviceMessage.py** med hjälp av en text redigerare.
 
 1. Lägg till följande- `import` instruktioner och variabler i början av **SendCloudToDeviceMessage.py** -filen:
 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86027451"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisera Spark – inbyggda Machine Learning-modeller
@@ -32,7 +32,7 @@ Installations stegen och koden för att operationalisera en ML-modell finns i de
 Om du vill ändra den Jupyter Notebook för Spark 1,6 att använda med ett HDInsight Spark 2,0-kluster ersätter du python-kodfragmentet med [den här filen](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Den här koden visar hur du använder de modeller som skapats i Spark 2,0.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. Du behöver ett Azure-konto och ett Spark 1,6-kluster (eller Spark 2,0) för att slutföra den här genom gången. Mer information om hur du uppfyller dessa krav finns i [Översikt över data vetenskap med Spark på Azure HDInsight](spark-overview.md) . Avsnittet innehåller också en beskrivning av NYC 2013 taxi-data som används här och instruktioner om hur man kör kod från en Jupyter-anteckningsbok i Spark-klustret. 
 2. Skapa maskin inlärnings modeller som ska poängas här genom att gå igenom [data utforskningen och modelleringen med Spark](spark-data-exploration-modeling.md) -avsnittet för Spark 1,6-klustret eller Spark 2,0-anteckningsboken. 
@@ -545,7 +545,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
 Spark tillhandahåller en mekanism för att fjärrskicka batchjobb eller interaktiva frågor via ett REST-gränssnitt med en komponent som heter livy. Livy är aktiverat som standard i ditt HDInsight Spark-kluster. Mer information om livy finns i: [Skicka Spark-jobb via fjärr anslutning med livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Du kan använda livy för att skicka ett jobb som batchen skickar en fil som lagras i en Azure-blob och sedan skriver resultatet till en annan blob. Det gör du genom att överföra python-skriptet från  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) till bloben för Spark-klustret. Du kan använda ett verktyg som **Microsoft Azure Storage Explorer** eller **AzCopy** för att kopiera skriptet till kluster-bloben. I vårt fall överförde vi skriptet till ***wasb:///example/python/ConsumeGBNYCReg.py***.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) till bloben för Spark-klustret. Du kan använda ett verktyg som **Microsoft Azure Storage Explorer** eller **AzCopy** för att kopiera skriptet till kluster-bloben. I vårt fall överförde vi skriptet till **_wasb:///example/python/ConsumeGBNYCReg.py_**.   
 
 > [!NOTE]
 > De åtkomst nycklar som du behöver finns på portalen för det lagrings konto som är kopplat till Spark-klustret. 

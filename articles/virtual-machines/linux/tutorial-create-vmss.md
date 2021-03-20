@@ -10,10 +10,10 @@ ms.date: 06/01/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-js, devx-track-azurecli
 ms.openlocfilehash: c38fb976ca597647493f3dc3d32be79040ded6eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91320191"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Självstudie: Skapa en VM-skalningsuppsättning och distribuera en app med hög tillgänglighet i Linux med Azure CLI
@@ -130,7 +130,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 Om du vill se Node.js-appen hämtar du den offentliga IP-adressen för lastbalanseraren med [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). I följande exempel hämtas IP-adressen för *myScaleSetLBPublicIP* som skapas som en del av skalningsuppsättningen:
 
 ```azurecli-interactive

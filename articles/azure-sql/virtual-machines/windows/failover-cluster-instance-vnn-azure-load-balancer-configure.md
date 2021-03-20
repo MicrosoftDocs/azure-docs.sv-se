@@ -16,10 +16,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357984"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Konfigurera Azure Load Balancer för kluster instans för växling vid fel VNN
@@ -138,8 +138,8 @@ I följande tabell beskrivs de värden som du behöver uppdatera:
 
 |**Värde**|**Beskrivning**|
 |---------|---------|
-|`Cluster Network Name`| Kluster namnet för Windows Server-redundansklustret för nätverket. I **Klusterhanteraren för växling vid fel**  >  **nätverk** högerklickar du på nätverket och väljer **Egenskaper**. Det korrekta värdet finns under **namn** på fliken **Allmänt** .|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Resurs namnet för den SQL Server FCI eller AG-lyssnarens IP-adress. I **Klusterhanteraren för växling vid fel**  >  **roller**, under rollen SQL Server FCI, under **Server namn** högerklickar du på IP-adressresursen och väljer **Egenskaper**. Det korrekta värdet finns under **namn** på fliken **Allmänt** .|
+|`Cluster Network Name`| Kluster namnet för Windows Server-redundansklustret för nätverket. I **Klusterhanteraren för växling vid fel**  >  **nätverk** högerklickar du på nätverket och väljer **Egenskaper**. Rätt värde står under **Namn** på fliken **Allmänt**.|
+|`SQL Server FCI/AG listener IP Address Resource Name`|Resurs namnet för den SQL Server FCI eller AG-lyssnarens IP-adress. I **Klusterhanteraren för växling vid fel**  >  **roller**, under rollen SQL Server FCI, under **Server namn** högerklickar du på IP-adressresursen och väljer **Egenskaper**. Rätt värde står under **Namn** på fliken **Allmänt**.|
 |`ILBIP`|IP-adressen för den interna belastningsutjämnaren (ILB). Den här adressen är konfigurerad i Azure Portal som ILB-frontend-adress. Detta är också den SQL Server FCI IP-adress. Du hittar den i **Klusterhanteraren för växling vid fel** på samma egenskaps sida där du placerade `<SQL Server FCI/AG listener IP Address Resource Name>` .|
 |`nnnnn`|Avsöknings porten som du konfigurerade i belastningsutjämnarens hälso avsökning. Alla oanvända TCP-portar är giltiga.|
 |Nätmask| Nät masken för kluster parametern. Det måste vara TCP IP-broadcast-adressen: `255.255.255.255` .| 

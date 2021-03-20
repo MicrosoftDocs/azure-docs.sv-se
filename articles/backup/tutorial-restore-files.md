@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d977919b806be32b84001a9b91dc9e396fbd63ce
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96557917"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Återställa filer till en virtuell dator i Azure
@@ -21,7 +21,7 @@ Med Azure Backup skapas återställningspunkter som lagras i geo-redundanta åte
 > * ansluta en återställningspunkt till en virtuell dator
 > * återställa filer från en återställningspunkt.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För den här självstudiekursen måste du ha en virtuell Linux-dator som har skyddats med Azure Backup. Du simulerar en oavsiktlig filborttagning och återställning genom att ta bort en sida från en webbserver. Om du behöver en virtuell Linux-dator som kör en webbserver som skyddas med Azure Backup kan du läsa mer i [Säkerhetskopiera en virtuell dator i Azure med CLI](quick-backup-vm-cli.md).
 

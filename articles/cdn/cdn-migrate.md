@@ -16,10 +16,10 @@ ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778395"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrera en Azure CDN profil från standard Verizon till Premium Verizon
@@ -46,7 +46,7 @@ Kontakta [Microsoft Support](https://azure.microsoft.com/support/options/)om du 
 - Avancerade analys verktyg:
    - [Detaljerad HTTP-analys](cdn-advanced-http-reports.md)
    - [Kant prestanda analys](cdn-edge-performance.md)
-   - [Analys i real tid](cdn-real-time-alerts.md)
+   - [Realtidsanalys](cdn-real-time-alerts.md)
 
 
 ## <a name="next-steps"></a>Nästa steg

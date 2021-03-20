@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798519"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Skapa en åtkomst granskning av ett Access-paket i hantering av Azure AD-rättigheter
@@ -53,11 +53,11 @@ Den här inställningen anger hur ofta åtkomst granskningar ska ske.
 
 1. Ange **varaktigheten** för att definiera hur många dagar varje granskning av den återkommande serien ska vara öppen för ininformation från granskare. Du kan till exempel schemalägga en årlig granskning som börjar den 1 januari och är öppen för granskning i 30 dagar, så att granskarna har till slutet av månaden att svara.
 
-1. Bredvid **granskare**väljer du **själv granskning** om du vill att användarna ska kunna utföra sin egen åtkomst granskning eller välja **specifika** granskare om du vill utse en granskare.
+1. Bredvid **granskare** väljer du **själv granskning** om du vill att användarna ska kunna utföra sin egen åtkomst granskning eller välja **specifika** granskare om du vill utse en granskare.
 
     ![Välj Lägg till granskare](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. Om du har valt en **eller flera granskare**anger du vilka användare som ska få åtkomst granskningen:
+1. Om du har valt en **eller flera granskare** anger du vilka användare som ska få åtkomst granskningen:
     1. Välj **Lägg till granskare**.
     1. I fönstret **Välj granskare** söker du efter och väljer de användare som du vill ska vara en granskare.
     1. När du har valt en eller flera granskare klickar du på knappen **Välj** .
@@ -70,7 +70,7 @@ Den här inställningen anger hur ofta åtkomst granskningar ska ske.
 
 Efter start datumet visas en åtkomst granskning i avsnittet **åtkomst granskningar** . Följ dessa steg om du vill visa status för en åtkomst granskning:
 
-1. I **identitets styrning**klickar du på **åtkomst paket** och väljer sedan åtkomst paketet med status för åtkomst granskning som du vill kontrol lera.   
+1. I **identitets styrning** klickar du på **åtkomst paket** och väljer sedan åtkomst paketet med status för åtkomst granskning som du vill kontrol lera.   
 
 1. När du är i Översikt över åtkomst paketet klickar du på **åtkomst granskningar** på den vänstra menyn.
     

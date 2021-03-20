@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89087201"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Flytta Azure Event Grid system ämnen till en annan region
@@ -20,7 +20,7 @@ Här följer de övergripande steg som beskrivs i den här artikeln:
 - **Ändra mallen** för att lägga till `endpointUrl` egenskapen för att peka på en webhook som prenumererar på system-avsnittet. När system avsnittet exporteras, exporteras även dess prenumeration (i det här fallet en webhook) till mallen, men `endpointUrl` egenskapen ingår inte. Så du måste uppdatera den så att den pekar på den slut punkt som prenumererar på ämnet. Uppdatera också `location` egenskapens värde till den nya platsen eller regionen. För andra typer av händelse hanterare behöver du bara uppdatera platsen. 
 - **Använd mallen för att distribuera resurser** till mål regionen. Du anger namn för lagrings kontot och system avsnittet som ska skapas i mål regionen. 
 - **Verifiera distributionen**. Kontrol lera att webhooken anropas när du laddar upp en fil till blob-lagringen i mål regionen. 
-- **Slutför flyttningen**genom att ta bort resurser (avsnittet händelse källa och system) från käll regionen. 
+- **Slutför flyttningen** genom att ta bort resurser (avsnittet händelse källa och system) från käll regionen. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 - Slutför [snabb starten: dirigera Blob Storage-händelser till webb slut punkten med Azure Portal](blob-event-quickstart-portal.md) i käll regionen. Det här steget är **valfritt**. Testa stegen i den här artikeln. Behåll lagrings kontot i en separat resurs grupp från App Service och App Service plan. 
@@ -33,9 +33,24 @@ Kom igång genom att exportera en Resource Manager-mall för resurs gruppen som 
 1. Välj **resurs grupper** på den vänstra menyn. Välj sedan den resurs grupp som innehåller den händelse källa som systemet ska skapas för. I följande exempel är det **Azure Storage** kontot. Resurs gruppen innehåller avsnittet lagrings konto och det associerade systemet. 
 
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="Sidan resurs grupp":::        
-3. På den vänstra menyn väljer du **Exportera mall** under **Inställningar**och väljer sedan **Hämta** i verktygsfältet. 
+3. På den vänstra menyn väljer du **Exportera mall** under **Inställningar** och väljer sedan **Hämta** i verktygsfältet. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Sidan resurs grupp"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Storage konto – exportera mall":::        
+5. Leta upp **zip** -filen som du laddade ned från portalen och zippa upp filen till en valfri mapp. Den här zip-filen innehåller mallar och parametrar JSON-filer. 
+1. Öppna **template.js** i valfritt redigerings program. 
+1. URL: en för webhooken har inte exporter ATS till mallen. Gör så här:
+    1. I mallfilen söker du efter **webhook**. 
+    1. I avsnittet **Egenskaper** lägger du till ett kommatecken ( `,` )-tangent i slutet av den sista raden. I det här exemplet är det `"preferredBatchSizeInKilobytes": 64` . 
+    1. Lägg till `endpointUrl` egenskapen med värdet som angetts till webhook-URL: en som visas i följande exempel. 
+
+        ```json
+        "destination": {
+            "properties": {
+                "maxEventsPerBatch": 1,
+                "preferredBatchSizeInKilobytes": 64,
+                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
+            },
+            "endpointType": "WebHook"
         }
         ```
 
@@ -63,20 +78,20 @@ Kom igång genom att exportera en Resource Manager-mall för resurs gruppen som 
 Distribuera mallen för att skapa ett lagrings konto och ett system ämne för lagrings kontot i mål regionen. 
 
 1. I Azure Portal väljer du **skapa en resurs**.
-2. I **Sök på Marketplace**skriver du **mall distribution**och trycker sedan på **RETUR**.
+2. I **Sök på Marketplace** skriver du **mall distribution** och trycker sedan på **RETUR**.
 3. Välj **malldistribution**.
 4. Välj **Skapa**.
 5. Välj **Bygg en egen mall i redigeraren**.
-6. Välj **Läs in fil**och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
+6. Välj **Läs in fil** och följ sedan anvisningarna för att läsa in **template.jspå** filen som du laddade ned i det sista avsnittet.
 7. Spara mallen genom att välja **Spara** . 
 8. Följ de här stegen på sidan **Anpassad distribution** . 
     1. Välj en Azure- **prenumeration**. 
     1. Välj en befintlig **resurs grupp** i mål regionen eller skapa en. 
-    1. För **region**väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad.
-    1. I **ämnes namnet för systemet**anger du ett namn för det system ämne som ska associeras med lagrings kontot.  
-    1. För **lagrings konto namnet**anger du ett namn för lagrings kontot som ska skapas i mål regionen. 
+    1. För **region** väljer du mål regionen. Om du har valt en befintlig resurs grupp är den här inställningen skrivskyddad.
+    1. I **ämnes namnet för systemet** anger du ett namn för det system ämne som ska associeras med lagrings kontot.  
+    1. För **lagrings konto namnet** anger du ett namn för lagrings kontot som ska skapas i mål regionen. 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Sidan resurs grupp":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Distribuera Resource Manager-mall":::
     5. Välj **Granska + skapa** längst ned på sidan. 
     1. På sidan **Granska + skapa** granskar du inställningarna och väljer **skapa**. 
 
@@ -92,10 +107,10 @@ Om du vill börja om tar du bort resurs gruppen i mål regionen och upprepar ste
 
 Så här tar du bort en resurs grupp (källa eller mål) med hjälp av Azure Portal:
 
-1. I fönstret Sök högst upp i Azure Portal, Skriv **resurs grupper**och välj **resurs grupper** från Sök resultat. 
+1. I fönstret Sök högst upp i Azure Portal, Skriv **resurs grupper** och välj **resurs grupper** från Sök resultat. 
 2. Välj den resurs grupp som ska tas bort och välj **ta bort** från verktygsfältet. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Sidan resurs grupp":::
+    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Ta bort resursgrupp":::
 3. På sidan bekräftelse anger du namnet på resurs gruppen och väljer **ta bort**.  
 
 ## <a name="next-steps"></a>Nästa steg

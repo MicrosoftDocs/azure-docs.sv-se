@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728245"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostisera och åtgärda synkroniseringsfel med duplicerade attribut
@@ -141,8 +141,8 @@ Molnbaserad användare i Azure AD ska inte ha käll ankare. Uppdatering av käll
 **Det gick inte att uppdatera värdena i korrigerings processen.**
 De angivna inställningarna som [UserWriteback i Azure AD Connect](./how-to-connect-preview.md#user-writeback) stöds inte. Inaktivera i inställningarna. 
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
-**C.** Vad händer om det inte går att **använda Fix** -åtgärden?  
+## <a name="faq"></a>Vanliga frågor
+**F.** Vad händer om det inte går att **använda Fix** -åtgärden?  
 **En.** Om körningen Miss lyckas är det möjligt att Azure AD Connect kör ett export fel. Uppdatera portal sidan och försök igen efter nästa synkronisering. Standard cykeln för synkronisering är 30 minuter. 
 
 

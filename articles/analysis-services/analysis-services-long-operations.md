@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92014842"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Metodtips för långvariga åtgärder
@@ -49,5 +49,5 @@ Genom att använda skrivskyddade repliker, medan uppdatering utförs i batchar, 
 
 [Asynkron uppdatering med REST API:et](analysis-services-async-refresh.md)  
 [Utskalning för Azure Analysis Services](analysis-services-scale-out.md)  
-[Analysis Services hög tillgänglighet](analysis-services-bcdr.md)  
+[Hög tillgänglighet för Analysis Services](analysis-services-bcdr.md)  
 [Vägledning för nytt försök för Azure-tjänster](/azure/architecture/best-practices/retry-service-specific)

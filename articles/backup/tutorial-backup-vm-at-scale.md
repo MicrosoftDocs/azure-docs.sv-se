@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180583"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Använda Azure Portal till att säkerhetskopiera flera virtuella datorer
@@ -75,13 +75,13 @@ När du har skapat Recovery Services-valvet är nästa steg att konfigurera valv
 
 1. På instrument panelen för valv väljer du **säkerhets kopiering** för att öppna säkerhets kopierings menyn.
 
-1. På menyn Säkerhetskopieringsmål väljer du *Azure* i listrutan **Var körs din arbetsbelastning**. I list rutan **vad vill du säkerhetskopiera? väljer du** *virtuell dator*och sedan **säkerhets kopiering**.
+1. På menyn Säkerhetskopieringsmål väljer du *Azure* i listrutan **Var körs din arbetsbelastning**. I list rutan **vad vill du säkerhetskopiera? väljer du** *virtuell dator* och sedan **säkerhets kopiering**.
 
     Dessa åtgärder förbereder Recovery Services-valvet för att interagera med en virtuell dator. Recovery Services-valv har en standardprincip som skapar en återställningspunkt varje dag och behåller återställningspunkterna under 30 dagar.
 
     ![Säkerhets kopierings mål](./media/tutorial-backup-vm-at-scale/backup-goal.png)
 
-1. Om du vill skapa en ny princip går du till menyn säkerhets kopierings policy och väljer *skapa en ny princip*på den nedrullningsbara menyn **Välj säkerhets kopierings policy** .
+1. Om du vill skapa en ny princip går du till menyn säkerhets kopierings policy och väljer *skapa en ny princip* på den nedrullningsbara menyn **Välj säkerhets kopierings policy** .
 
     ![Skapa ny princip](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
@@ -98,7 +98,7 @@ När du har skapat Recovery Services-valvet är nästa steg att konfigurera valv
 
      När du har skapat principen för säkerhetskopiering associerar du principen med de virtuella datorerna.
 
-1. Under **Virtual Machines**väljer du **Lägg till**.
+1. Under **Virtual Machines** väljer du **Lägg till**.
 
      ![Lägg till virtuella datorer](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 
@@ -118,7 +118,7 @@ Du har aktiverat säkerhets kopiering för Recovery Services valv, men en inleda
 
 Så här kör du en säkerhetskopiering på begäran:
 
-1. På instrument panelen för valv väljer du **3** under **säkerhets kopierings objekt**för att öppna menyn säkerhets kopierings objekt.
+1. På instrument panelen för valv väljer du **3** under **säkerhets kopierings objekt** för att öppna menyn säkerhets kopierings objekt.
 
     ![Säkerhetskopiera objekt](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 

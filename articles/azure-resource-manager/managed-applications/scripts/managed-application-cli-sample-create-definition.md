@@ -8,10 +8,10 @@ ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7feb00b581732cdc1956c4ac23af571180ff09e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87497842"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Skapa en definition för ett hanterat program med Azure CLI
@@ -32,7 +32,7 @@ Det här skriptet publicerar en definition för hanterade program i en tjänstka
 
 Det här skriptet använder följande kommando för att skapa definitionen för det hanterade programmet. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [az managedapp definition create](/cli/azure/managedapp/definition#az-managedapp-definition-create) | Skapa en definition för det hanterade programmet. Ange det paket som innehåller filerna som krävs. |
 

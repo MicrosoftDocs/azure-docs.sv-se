@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800048"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Måttlig med anpassade term listor i API-konsolen
@@ -44,11 +44,11 @@ Innan du kan testa API: et i online-konsolen behöver du din prenumerations nyck
 
 När du har gjort ändringar i en term lista måste du uppdatera dess index för att ändringarna ska ingå i framtida genomsökningar. Det här steget påminner om hur en sökmotor på Skriv bordet (om den är aktive rad) eller en Webbs öknings motor kontinuerligt uppdaterar sitt index för att inkludera nya filer eller sidor.
 
-1. Välj **term listor**på den vänstra menyn i [term List HANTERINGs-API-referensen](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)och välj sedan **Uppdatera Sök index**. 
+1. Välj **term listor** på den vänstra menyn i [term List HANTERINGs-API-referensen](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)och välj sedan **Uppdatera Sök index**. 
 
    Sidan **giltighets listor – uppdatera Sök index** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
 
    ![Term listor – uppdatera Sök index sidan Val av område](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ När du har gjort ändringar i en term lista måste du uppdatera dess index för
 
    Sidan **villkors listor – skapa** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
 
    ![Term listor – skapa val av sid region](images/test-drive-region.png)
 
@@ -95,11 +95,11 @@ När du har gjort ändringar i en term lista måste du uppdatera dess index för
 
    ![Term listor – innehålls rutan skapa konsol svar visar List-ID](images/try-terms-list-create-2.png)
  
-7. Lägg till termer till min-lista. På den vänstra menyn väljer du **Lägg till term**under **term**. 
+7. Lägg till termer till min-lista. På den vänstra menyn väljer du **Lägg till term** under **term**. 
 
    Sidan **term – Lägg till term** öppnas. 
 
-8. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+8. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
 
    ![Term – Lägg till term för sidans regions val](images/test-drive-region.png)
 
@@ -109,7 +109,7 @@ När du har gjort ändringar i en term lista måste du uppdatera dess index för
 
    ![Term – Lägg till terms-konsolens frågeparametrar](images/try-terms-list-create-3.png)
  
-10. Om du vill kontrol lera att villkoret har lagts till i listan väljer du **term**i den vänstra menyn och väljer sedan **Hämta alla villkor**. 
+10. Om du vill kontrol lera att villkoret har lagts till i listan väljer du **term** i den vänstra menyn och väljer sedan **Hämta alla villkor**. 
 
     **Termen-hämta alla villkor-** API-konsolen öppnas.
 
@@ -131,11 +131,11 @@ Det är enkelt att ta bort en term eller en lista. Du använder API: et för att
 
 I det här exemplet tas en enstaka term bort.
 
-1. I [term List hanterings-API-referensen](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)väljer du **term**i den vänstra menyn och väljer sedan **ta bort**. 
+1. I [term List hanterings-API-referensen](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)väljer du **term** i den vänstra menyn och väljer sedan **ta bort**. 
 
    **Termen-Delete** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
 
    ![Term – ta bort val av sid område](images/test-drive-region.png)
 
@@ -155,11 +155,11 @@ I det här exemplet tas en enstaka term bort.
 
 Du kan redigera en listas namn och beskrivning och lägga till objekt i metadata.
 
-1. I [term List hanterings-API-referensen](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)går du till den vänstra menyn och väljer **term listor**och väljer sedan **uppdaterings information**. 
+1. I [term List hanterings-API-referensen](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)går du till den vänstra menyn och väljer **term listor** och väljer sedan **uppdaterings information**. 
 
    Sidan **villkors listor – uppdaterings information** öppnas.
 
-2. För **öppna API test-konsolen**väljer du den region som bäst beskriver din plats. 
+2. För **öppna API test-konsolen** väljer du den region som bäst beskriver din plats. 
 
    ![Term listor-val av sid region för uppdaterings information](images/test-drive-region.png)
 

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317267"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Skapa din första tåliga funktion i PowerShell
@@ -196,15 +196,15 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
 1. Välj Azure-ikonen i aktivitets fältet och välj sedan knappen **distribuera till Function-appen** i avsnittet **Azure:** functions.
 
-    ![Publicera ditt projekt till Azure](../../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![Publicera projektet till Azure](../../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. Ange följande information i prompten:
+1. Ange följande information i meddelanderutorna:
 
     + **Välj mapp**: Välj en mapp från din arbets yta eller bläddra till en mapp som innehåller din Function-app. Du ser inte det här om du redan har en giltig Function-app öppen.
 
     + **Välj prenumeration**: Välj den prenumeration som ska användas. Du ser inte det här om du bara har en prenumeration.
 
-    + **Välj Funktionsapp i Azure**: Välj `+ Create new Function App` . (Välj inte `Advanced` alternativet, som inte beskrivs i den här artikeln.)
+    + **Välj Funktionsapp i Azure**: Välj `+ Create new Function App`. (Välj inte `Advanced` alternativet, som inte beskrivs i den här artikeln.)
       
     + **Ange ett globalt unikt namn för Function-appen**: Ange ett namn som är giltigt i en URL-sökväg. Namnet du skriver verifieras för att säkerställa att det är unikt i Azure Functions. 
 

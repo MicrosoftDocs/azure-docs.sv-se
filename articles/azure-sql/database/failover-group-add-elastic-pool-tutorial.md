@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/27/2019
 ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593985"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Självstudie: lägga till en Azure SQL Database elastisk pool i en failover-grupp
@@ -55,14 +55,14 @@ Skapa den elastiska poolen med hjälp av Azure Portal.
     ![Välj elastisk pool](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Konfigurera den elastiska poolen med följande värden:
-   - **Namn** : Ange ett unikt namn för den elastiska poolen, till exempel `myElasticPool` .
-   - **Prenumeration** : Välj din prenumeration från List rutan.
-   - **ResourceGroup** : Välj `myResourceGroup` i list rutan, resurs gruppen du skapade i avsnitt 1.
-   - **Server** : Välj den server som du skapade i avsnitt 1 i list rutan.  
+   - **Namn**: Ange ett unikt namn för den elastiska poolen, till exempel `myElasticPool` .
+   - **Prenumeration**: Välj din prenumeration från List rutan.
+   - **ResourceGroup**: Välj `myResourceGroup` i list rutan, resurs gruppen du skapade i avsnitt 1.
+   - **Server**: Välj den server som du skapade i avsnitt 1 i list rutan.  
 
        ![Skapa en ny server för elastisk pool](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **Compute + Storage** : Välj **Konfigurera elastisk pool** för att konfigurera din beräkning, lagring och lägga till din enda databas i den elastiska poolen. På fliken **Inställningar för pool** lämnar du standardvärdet Gen5, med 2 virtuella kärnor och 32 GB.
+   - **Compute + Storage**: Välj **Konfigurera elastisk pool** för att konfigurera din beräkning, lagring och lägga till din enda databas i den elastiska poolen. På fliken **Inställningar för pool** lämnar du standardvärdet Gen5, med 2 virtuella kärnor och 32 GB.
 
 1. Välj fliken **databaser** på sidan **Konfigurera** och välj sedan att **lägga till databas**. Välj den databas som du skapade i avsnitt 1 och välj sedan **tillämpa** för att lägga till den i den elastiska poolen. Välj **tillämpa** igen för att tillämpa inställningarna för elastisk pool och Stäng sidan **Konfigurera** .
 
@@ -143,13 +143,13 @@ Skapa din failover-grupp med hjälp av Azure Portal.
 
     ![Lägg till ny redundans grupp](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
-1. På sidan **redundans** anger eller väljer du följande värden och väljer sedan **skapa** :
-    - **Namn på redundans grupp** : Ange ett unikt namn på redundans grupp, till exempel `failovergrouptutorial` .
-    - **Sekundär server** : Välj alternativet för att *Konfigurera nödvändiga inställningar* och välj sedan att **skapa en ny server**. Alternativt kan du välja en redan befintlig server som den sekundära servern. När du har angett följande värden för den nya sekundära servern väljer du **Välj**.
-        - **Server namn** : Ange ett unikt namn på den sekundära servern, till exempel `mysqlsecondary` .
-        - **Inloggning för Server administratör** : typ `azureuser`
-        - **Lösen ord** : Ange ett komplext lösen ord som uppfyller lösen ords kraven.
-        - **Plats** : Välj en plats i list rutan, till exempel `East US` . Den här platsen kan inte vara samma plats som den primära servern.
+1. På sidan **redundans** anger eller väljer du följande värden och väljer sedan **skapa**:
+    - **Namn på redundans grupp**: Ange ett unikt namn på redundans grupp, till exempel `failovergrouptutorial` .
+    - **Sekundär server**: Välj alternativet för att *Konfigurera nödvändiga inställningar* och välj sedan att **skapa en ny server**. Alternativt kan du välja en redan befintlig server som den sekundära servern. När du har angett följande värden för den nya sekundära servern väljer du **Välj**.
+        - **Server namn**: Ange ett unikt namn på den sekundära servern, till exempel `mysqlsecondary` .
+        - **Inloggning för Server administratör**: typ `azureuser`
+        - **Lösen ord**: Ange ett komplext lösen ord som uppfyller lösen ords kraven.
+        - **Plats**: Välj en plats i list rutan, till exempel `East US` . Den här platsen kan inte vara samma plats som den primära servern.
 
        > [!NOTE]
        > Inställningarna för Server inloggning och brand vägg måste matcha den primära servern.

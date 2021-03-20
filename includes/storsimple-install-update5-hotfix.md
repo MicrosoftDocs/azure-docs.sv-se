@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cbc7c82803115f71db233be94d62a857ba050b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050204"
 ---
 #### <a name="to-download-hotfixes"></a>Ladda ned snabbkorrigerar
@@ -180,7 +180,7 @@ Följ anvisningarna nedan om du vill installera uppdateringarna för den inbyggd
     ```
 
 3. Övervaka installationsförloppet med `Get-HcsUpdateStatus`-kommandot. Uppdateringen är slutförd när `RunInProgress` ändras till `False`.
-4. När installationen är färdig startas styrenheten som snabbkorrigeringen i underhållsläge installerades på om. Logga in som alternativ 1, **Logga in med fullständig åtkomst**och kontrol lera den inbyggda diskens version. Ange:
+4. När installationen är färdig startas styrenheten som snabbkorrigeringen i underhållsläge installerades på om. Logga in som alternativ 1, **Logga in med fullständig åtkomst** och kontrol lera den inbyggda diskens version. Ange:
    
    `Get-HcsFirmwareVersion`
    

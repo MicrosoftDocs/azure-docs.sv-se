@@ -10,10 +10,10 @@ ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87875480"
 ---
 # <a name="get-started-with-device-twins-python"></a>Kom igång med enhets garn (python)
@@ -34,7 +34,7 @@ I slutet av den här självstudien kommer du att ha två python-konsol program:
 
 * Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här artikeln använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -114,7 +114,7 @@ I det här avsnittet skapar du en python-konsol-app som lägger till platsens me
             print("IoT Hub Device Twin service sample stopped")
     ```
 
-    **IoTHubRegistryManager** -objektet exponerar alla de metoder som krävs för att interagera med enheten tillsammans från tjänsten. Koden initierar först **IoTHubRegistryManager** -objektet, uppdaterar sedan enheten med **DEVICE_ID**och kör slutligen två frågor. Först väljer den bara enheten med enheter som finns i **Redmond43** -anläggningen och den andra refinar frågan så att endast de enheter som också är anslutna via ett mobil nät.
+    **IoTHubRegistryManager** -objektet exponerar alla de metoder som krävs för att interagera med enheten tillsammans från tjänsten. Koden initierar först **IoTHubRegistryManager** -objektet, uppdaterar sedan enheten med **DEVICE_ID** och kör slutligen två frågor. Först väljer den bara enheten med enheter som finns i **Redmond43** -anläggningen och den andra refinar frågan så att endast de enheter som också är anslutna via ett mobil nät.
 
 6. Lägg till följande kod i slutet av  **AddTagsAndQuery.py** för att implementera funktionen **iothub_service_sample_run** :
 
@@ -142,7 +142,7 @@ I nästa avsnitt skapar du en enhets app som rapporterar anslutnings information
 
 I det här avsnittet ska du skapa en python-konsol-app som ansluter till din hubb som **{Device ID}** och sedan uppdaterar dess enhets dubbla rapporter som innehåller den information som den är ansluten till med ett mobilt nätverk.
 
-1. Installera **Azure IoT Hub Device SDK för python**från en kommando tolk i arbets katalogen:
+1. Installera **Azure IoT Hub Device SDK för python** från en kommando tolk i arbets katalogen:
 
     ```cmd/sh
     pip install azure-iot-device

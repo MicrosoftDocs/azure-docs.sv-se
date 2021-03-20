@@ -8,10 +8,10 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 8c3fca6cf7782c3aaac91388a8f8395e288f5ea5
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558750"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Självstudie: Autentisera och auktorisera användare från slutpunkt till slutpunkt i Azure App Service
@@ -51,7 +51,7 @@ Du kan följa stegen i den här självstudien i macOS, Linux och Windows.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -301,7 +301,7 @@ Navigera till [Azure Resource Explorer](https://resources.azure.com) och Använd
 
 :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Skärm bild av knapparna skriv skydd och Läs/skriv överst på sidan Azure Resource Explorer med knappen Läs/skriv markerad.":::
 
-Gå nedåt till **config** authsettings i den vänstra webbläsaren  >  **authsettings**.
+Gå nedåt till **config** authsettings i den vänstra webbläsaren  >  .
 
 I vyn **authsettings** (autentiseringsinställningar) klickar du på **Edit** (Redigera). Ange `additionalLoginParams` till följande JSON-sträng med det klient-ID som du kopierade. 
 

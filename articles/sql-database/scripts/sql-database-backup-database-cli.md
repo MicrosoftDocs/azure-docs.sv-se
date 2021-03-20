@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
 ms.openlocfilehash: 33ac44f4910c858dd4d5cfc9d4288ce4970f7f4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87501992"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>Använd CLI för att säkerhetskopiera en enkel Azure SQL-databas till en Azure Storage-behållare
@@ -51,7 +51,7 @@ az group delete --name $resource
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Server kommandon. |
 | [AZ SQL DB](/cli/azure/sql/db) | Databas kommandon. |

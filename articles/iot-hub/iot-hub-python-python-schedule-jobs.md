@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
 ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876690"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Schema-och sändnings jobb (python)
@@ -58,7 +58,7 @@ I slutet av den här självstudien har du två python-appar:
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -155,21 +155,21 @@ I det här avsnittet skapar du en python-konsol-app som svarar på en direkt met
 
 I den här artikeln skapar du en backend-tjänst som anropar en direkt metod på en enhet och uppdaterar enheten med dubbla. Tjänsten behöver **service Connect-** behörighet för att anropa en direkt metod på en enhet. Tjänsten behöver också **Läs** -och Skriv behörighet för registret för att läsa **och skriva identitets** registret. Det finns ingen standard princip för delad åtkomst som bara innehåller de här behörigheterna, så du måste skapa en.
 
-Följ dessa steg om du vill skapa en princip för delad åtkomst som beviljar **tjänsten Connect**, **Registry Read**och **Registry Skriv** behörigheter och för att få en anslutnings sträng för den här principen:
+Följ dessa steg om du vill skapa en princip för delad åtkomst som beviljar **tjänsten Connect**, **Registry Read** och **Registry Skriv** behörigheter och för att få en anslutnings sträng för den här principen:
 
 1. Öppna din IoT Hub i [Azure Portal](https://portal.azure.com). Det enklaste sättet att komma till din IoT-hubb är att välja **resurs grupper**, välja resurs gruppen där IoT Hub finns och sedan välja din IoT Hub i listan över resurser.
 
 2. I den vänstra rutan i IoT Hub väljer du **principer för delad åtkomst**.
 
-3. Välj **Lägg till**på den översta menyn ovanför listan över principer.
+3. Välj **Lägg till** på den översta menyn ovanför listan över principer.
 
-4. I fönstret **Lägg till en princip för delad åtkomst** anger du ett beskrivande namn för principen. till exempel: *serviceAndRegistryReadWrite*. Under **behörigheter**väljer du **tjänst anslutning** och **Skriv register** (**register läsning** väljs automatiskt när du väljer **register skrivning**). Välj sedan **Skapa**.
+4. I fönstret **Lägg till en princip för delad åtkomst** anger du ett beskrivande namn för principen. till exempel: *serviceAndRegistryReadWrite*. Under **behörigheter** väljer du **tjänst anslutning** och **Skriv register** (**register läsning** väljs automatiskt när du väljer **register skrivning**). Välj sedan **Skapa**.
 
     ![Visa hur du lägger till en ny princip för delad åtkomst](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
 5. Gå tillbaka till fönstret **principer för delad åtkomst** och välj den nya principen i listan över principer.
 
-6. Under **delade åtkomst nycklar**väljer du kopierings ikonen för **anslutnings strängen – primär nyckel** och spara värdet.
+6. Under **delade åtkomst nycklar** väljer du kopierings ikonen för **anslutnings strängen – primär nyckel** och spara värdet.
 
     ![Visa hur anslutningssträngen hämtas](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 

@@ -4,10 +4,10 @@ description: Lär dig hur du uppgraderar Microsoft Azure Recovery Services-agent
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89181484"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Uppgradera Microsoft Azure Recovery Services-agenten (MARS)
@@ -73,7 +73,7 @@ När du har identifierat de servrar som behöver en Azure Backup Agent uppdateri
 
 1. Välj **Nästa**.
 
-1. Välj **uppgradering**.
+1. Välj **Uppgradera**.
 
     ![Installation av Microsoft Azure Recovery Services agent](./media/upgrade-mars-agent/upgrade-installation.png)
 

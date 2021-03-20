@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77588152"
 ---
 # <a name="connect-one-identity-safeguard"></a>Anslut en identitets skydds åtgärd
 Den enda identiteten för identitets skydd förbättrar den vanliga CEF-anslutaren (common Event format) med skydd för behöriga sessioner. Använd den här anslutningen för att enkelt börja använda de händelser som genereras av enheten för visualisering, aviseringar, undersökningar och mycket annat.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Läs-och skriv behörigheter till Azure Sentinel-arbetsytan.
 

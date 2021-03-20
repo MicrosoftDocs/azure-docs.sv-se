@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798605"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Granska åtkomst till ett Access-paket i hantering av Azure AD-rättigheter
@@ -93,7 +93,7 @@ Om det finns flera granskare registreras det senast skickade svaret. Överväg e
 
 Om du vill granska åtkomsten för flera användare snabbare kan du använda de rekommendationer som genereras av systemet och godkänna rekommendationerna med ett enda klick. Rekommendationerna genereras baserat på användarens inloggnings aktivitet.
 
-1.  Klicka på **Godkänn rekommendationer**i fältet högst upp på sidan.
+1.  Klicka på **Godkänn rekommendationer** i fältet högst upp på sidan.
     
     ![Välj Godkänn rekommendationer](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
     

@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/14/2019
 ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94594291"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurera en failover-grupp för Azure SQL Database
@@ -52,7 +52,7 @@ Skapa din grupp för redundans och Lägg till din enda databas i den med hjälp 
 
 1. På sidan **redundans** anger eller väljer du de värden som krävs och väljer sedan **skapa**.
 
-   - **Databaser i gruppen** : Välj den databas som du vill lägga till i gruppen för redundans. Om du lägger till databasen i gruppen för växling vid fel startas automatiskt processen för geo-replikering.
+   - **Databaser i gruppen**: Välj den databas som du vill lägga till i gruppen för redundans. Om du lägger till databasen i gruppen för växling vid fel startas automatiskt processen för geo-replikering.
 
    ![Lägg till SQL Database i gruppen redundans](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -514,9 +514,9 @@ Skapa anslutningar mellan de två gatewayerna med hjälp av Azure Portal.
     1. Välj din prenumeration från listrutan.
     1. Välj resurs grupp för din hanterade instans i list rutan.
     1. Välj platsen för din primära hanterade instans i list rutan.
-1. På fliken **Inställningar** väljer eller anger du följande värden och väljer sedan **OK** :
-    1. Välj den primära Nätverksgatewayen för den **första virtuella Nätverksgatewayen** , till exempel `Primary-Gateway` .  
-    1. Välj den sekundära Nätverksgatewayen för den **andra virtuella Nätverksgatewayen** , till exempel `Secondary-Gateway` .
+1. På fliken **Inställningar** väljer eller anger du följande värden och väljer sedan **OK**:
+    1. Välj den primära Nätverksgatewayen för den **första virtuella Nätverksgatewayen**, till exempel `Primary-Gateway` .  
+    1. Välj den sekundära Nätverksgatewayen för den **andra virtuella Nätverksgatewayen**, till exempel `Secondary-Gateway` .
     1. Markera kryss rutan bredvid **upprätta dubbelriktad anslutning**.
     1. Lämna antingen standard namnet för primär anslutning eller Byt namn på det till önskat värde.
     1. Ange en **delad nyckel (PSK)** för anslutningen, till exempel `mi1m2psk` .

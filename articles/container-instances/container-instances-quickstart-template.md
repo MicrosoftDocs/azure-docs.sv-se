@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
 ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91309089"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Snabb start: Distribuera en behållar instans i Azure med en ARM-mall
@@ -75,7 +75,7 @@ Använd Azure Portal eller ett verktyg som [Azure CLI](container-instances-quick
 
     ![Instansöversikt](media/container-instances-quickstart-template/aci-overview.png)
 
-2. När statusen är *igång*navigerar du till IP-adressen i webbläsaren. 
+2. När statusen är *igång* navigerar du till IP-adressen i webbläsaren. 
 
     ![App som distribuerats via Azure Container Instances visas i webbläsare](media/container-instances-quickstart-template/view-application-running-in-an-azure-container-instance.png)
 
@@ -83,13 +83,13 @@ Använd Azure Portal eller ett verktyg som [Azure CLI](container-instances-quick
 
 Att visa loggar för en containerinstans är användbart när du felsöker problem med din container eller det program som den kör.
 
-Om du vill visa behållarens loggar går du till **Inställningar**och väljer **behållare**  >  **loggar**. Du bör se HTTP GET-begäran som genereras när du har granskat programmet i webbläsaren.
+Om du vill visa behållarens loggar går du till **Inställningar** och väljer **behållare**  >  **loggar**. Du bör se HTTP GET-begäran som genereras när du har granskat programmet i webbläsaren.
 
 ![Containerloggar i Azure-portalen](media/container-instances-quickstart-template/aci-logs.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar med behållaren väljer du **ta bort**på sidan **Översikt** för behållar instansen. Bekräfta borttagningen när du uppmanas att göra det.
+När du är klar med behållaren väljer du **ta bort** på sidan **Översikt** för behållar instansen. Bekräfta borttagningen när du uppmanas att göra det.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881641"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Använda Azure.Search.Documents i ett C# .NET-program
@@ -288,8 +288,8 @@ Exakt ett fält i indexet måste fungera som dokument nyckel ( `IsKey = true` ).
 | Fälttyp | Beskrivning och användning |
 |------------|-----------------------|
 | [`SearchField`](/dotnet/api/azure.search.documents.indexes.models.searchfield) | Basklass, med de flesta egenskaper inställt på null, förutom `Name` vad som krävs, och `AnalyzerName` som är standardvärdet för standard Lucene. |
-| [`SimpleField`](/dotnet/api/azure.search.documents.indexes.models.simplefield) | Hjälp modell. Kan vara vilken datatyp som helst, är alltid icke-sökbar (ignoreras för fullständiga texts öknings frågor) och kan hämtas (den är inte dold). Andra attribut är inaktiverade som standard, men kan aktive ras. Du kan använda en `SimpleField` för dokument-ID: n eller fält som endast används i filter, ansikts eller bedömnings profiler. I så fall, se till att använda alla attribut som krävs för scenariot, till exempel `IsKey = true` för ett dokument-ID. Mer information finns i [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) i käll koden. |
-| [`SearchableField`](/dotnet/api/azure.search.documents.indexes.models.searchablefield) | Hjälp modell. Måste vara en sträng och är alltid sökbar och hämtnings bar. Andra attribut är inaktiverade som standard, men kan aktive ras. Eftersom den här fält typen är sökbar, stöder den synonymer och hela komplementet till analys egenskaperna. Mer information finns i [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) i käll koden. |
+| [`SimpleField`](/dotnet/api/azure.search.documents.indexes.models.simplefield) | Hjälp modell. Kan vara vilken datatyp som helst, är alltid icke-sökbar (ignoreras för fullständiga texts öknings frågor) och kan hämtas (den är inte dold). Andra attribut är inaktiverade som standard, men kan aktive ras. Du kan använda en `SimpleField` för dokument-ID: n eller fält som endast används i filter, ansikts eller bedömnings profiler. I så fall, se till att använda alla attribut som krävs för scenariot, till exempel `IsKey = true` för ett dokument-ID. Mer information finns i [SimpleFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) i käll koden. |
+| [`SearchableField`](/dotnet/api/azure.search.documents.indexes.models.searchablefield) | Hjälp modell. Måste vara en sträng och är alltid sökbar och hämtnings bar. Andra attribut är inaktiverade som standard, men kan aktive ras. Eftersom den här fält typen är sökbar, stöder den synonymer och hela komplementet till analys egenskaperna. Mer information finns i [SearchableFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) i käll koden. |
 
 Oavsett om du använder Basic `SearchField` -API: et eller någon av hjälp modeller måste du uttryckligen aktivera attributen filter, aspekt och sortering. Till exempel måste [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)och [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) uttryckligen vara attribut som visas i exemplet ovan.
 

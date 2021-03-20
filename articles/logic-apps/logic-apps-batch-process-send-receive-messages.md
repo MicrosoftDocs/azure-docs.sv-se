@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87458355"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Skicka, ta emot och gruppera process meddelanden i Azure Logic Apps
@@ -153,7 +153,7 @@ Skapa nu en eller flera Logic-appar för batch-avsändare som skickar meddelande
       > [!IMPORTANT]
       > Om du använder Visual Studio och du inte ser några batch-mottagare att välja, kontrollerar du att du tidigare har skapat och distribuerat batch-mottagaren till Azure. Om du inte har det kan du lära dig [hur du distribuerar din Logic app för batch-mottagare till Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure).
 
-   1. Välj den här åtgärden i listan åtgärder: **Batch_messages-<*ditt-Logic-App-Name* > **
+   1. Välj den här åtgärden i listan åtgärder: **Batch_messages-<*ditt-Logic-App-Name* >**
 
       ![Välj den här åtgärden: "Batch_messages-<din Logic-app>"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.author: makromer
 ms.date: 01/03/2021
 ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100383389"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Data flödes aktivitet i Azure Data Factory
@@ -175,7 +175,7 @@ Om du vill hämta antalet rader från en källa med namnet "source1" som använd
 Se kontroll flödes aktiviteter som stöds av Data Factory: 
 
 - [If-villkorsaktivitet](control-flow-if-condition-activity.md)
-- [Köra pipelineaktivitet](control-flow-execute-pipeline-activity.md)
+- [Kör pipeline-aktivitet](control-flow-execute-pipeline-activity.md)
 - [För varje aktivitet](control-flow-for-each-activity.md)
 - [Hämta metadataaktivitet](control-flow-get-metadata-activity.md)
 - [Sökningsaktivitet](control-flow-lookup-activity.md)

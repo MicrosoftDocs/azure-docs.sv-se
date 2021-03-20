@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778162"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Övervaka hälsotillståndet för dina Azure CDN-resurser
@@ -38,7 +38,7 @@ Azure CDN Resource Health är en del av [Azures resurs hälsa](../service-health
 
     ![Knappen Inställningar](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. Klicka på **resurs hälsa** under *support + fel sökning* .
+3. Klicka på **resurs hälsa** under *support + fel sökning*.
 
     ![CDN-resurs hälsa](./media/cdn-resource-health/cdn-resource-health3.png)
 

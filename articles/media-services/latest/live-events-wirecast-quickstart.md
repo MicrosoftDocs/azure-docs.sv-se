@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
 ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89265277"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Skapa en Azure Media Services Live Stream
@@ -59,7 +59,7 @@ För att det ska vara enkelt, använder vi en kodning för att Azure Media Servi
 
    ![Alternativ för moln kodning](media/live-events-wirecast-quickstart/cloud-encoding.png)
 1. Välj alternativet **RTMP** .
-1. Se till att alternativet **Nej** är markerat för att **starta direkt sändningen**för att undvika att faktureras för direkt sändningen innan det är klart. (Faktureringen påbörjas när Live-händelsen startas.)
+1. Se till att alternativet **Nej** är markerat för att **starta direkt sändningen** för att undvika att faktureras för direkt sändningen innan det är klart. (Faktureringen påbörjas när Live-händelsen startas.)
 
    ![Alternativet Starta Live-händelse](media/live-events-wirecast-quickstart/start-live-event-no.png)
 1. Granska inställningarna genom att klicka på knappen **Granska + skapa** .

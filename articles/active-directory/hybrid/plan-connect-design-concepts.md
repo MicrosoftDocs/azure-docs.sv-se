@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279660"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: utforma begrepp
@@ -62,7 +62,7 @@ Om du har flera skogar och inte flyttar användare mellan skogar och domäner, �
 
 Om du flyttar användare mellan skogar och domäner måste du hitta ett attribut som inte ändras eller som kan flyttas till användarna under flytten. En rekommenderad metod är att införa ett syntetiskt attribut. Ett attribut som kan innehålla något som liknar ett GUID är lämpligt. När ett objekt skapas skapas och stämplas ett nytt GUID för användaren. En anpassad Synkroniseringsregel kan skapas i Synkroniseringsmotorn för att skapa det här värdet baserat på **objectGUID** och uppdatera det valda attributet i lägger till. När du flyttar objektet ser du till att även kopiera innehållet för det här värdet.
 
-En annan lösning är att välja ett befintligt attribut som du vet inte ändras. Ofta använda attribut är **Anställningsnr**. Om du funderar på ett attribut som innehåller bokstäver ser du till att det inte går att ändra i skift läget (versaler eller gemener). Felaktiga attribut som inte ska användas inkluderar attributen med namnet på användaren. I en äktenskaps-eller äktenskaps skillnad förväntas namnet ändras, vilket inte är tillåtet för det här attributet. Detta är också en orsak till varför attribut som **userPrincipalName**, **mail**och **targetAddress** inte är lika möjliga att välja i installations guiden för Azure AD Connect. Dessa attribut innehåller också " \@ "-symbolen, som inte tillåts i sourceAnchor.
+En annan lösning är att välja ett befintligt attribut som du vet inte ändras. Ofta använda attribut är **Anställningsnr**. Om du funderar på ett attribut som innehåller bokstäver ser du till att det inte går att ändra i skift läget (versaler eller gemener). Felaktiga attribut som inte ska användas inkluderar attributen med namnet på användaren. I en äktenskaps-eller äktenskaps skillnad förväntas namnet ändras, vilket inte är tillåtet för det här attributet. Detta är också en orsak till varför attribut som **userPrincipalName**, **mail** och **targetAddress** inte är lika möjliga att välja i installations guiden för Azure AD Connect. Dessa attribut innehåller också " \@ "-symbolen, som inte tillåts i sourceAnchor.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Ändra attributet sourceAnchor
 Attributvärdet sourceAnchor kan inte ändras efter att objektet har skapats i Azure AD och identiteten har synkroniserats.
@@ -140,7 +140,7 @@ Växla från objectGUID till ConsistencyGuid som käll-Anchor-attribut:
 
 3. Ange dina autentiseringsuppgifter för Azure AD-administratören och klicka på **Nästa**.
 
-4. Azure AD Connects guiden analyserar statusen för attributet ms-DS-ConsistencyGuid i din lokala Active Directory. Om attributet inte har kon figurer ATS för något objekt i katalogen, Azure AD Connect att det inte finns något annat program som för närvarande använder attributet och är säkert att använda det som käll-Anchor-attribut. Fortsätt genom att klicka på **Next** .
+4. Azure AD Connects guiden analyserar statusen för attributet ms-DS-ConsistencyGuid i din lokala Active Directory. Om attributet inte har kon figurer ATS för något objekt i katalogen, Azure AD Connect att det inte finns något annat program som för närvarande använder attributet och är säkert att använda det som käll-Anchor-attribut. Klicka på **Nästa** för att fortsätta.
 
    ![Aktivera ConsistencyGuid för befintlig distribution – steg 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 

@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85833561"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Skapa en ILB ASE med hjälp av Azure Resource Manager-mallar
@@ -57,7 +57,7 @@ När ILB-ASE har skapats ska ett TLS/SSL-certifikat associeras med ASE som "stan
 Det finns flera olika sätt att skaffa ett giltigt TLS/SSL-certifikat, inklusive interna certifikat utfärdare, köpa ett certifikat från en extern utfärdare och använda ett självsignerat certifikat.  Oberoende av källan till TLS/SSL-certifikatet måste följande attribut för certifikaten konfigureras korrekt:
 
 * *Subject*: det här attributet måste anges till **. your-Root-Domain-here.com*
-* *Alternativt namn för certifikat mottagare*: det här attributet måste innehålla både **. your-Root-Domain-here.com*och **. scm.your-Root-Domain-here.com*.  Orsaken till den andra posten är att TLS-anslutningar till den SCM/kudu-webbplats som är kopplad till varje app kommer att göras med hjälp av en adress i formatet *Your-App-Name.scm.your-Root-Domain-here.com*.
+* *Alternativt namn för certifikat mottagare*: det här attributet måste innehålla både **. your-Root-Domain-here.com* och **. scm.your-Root-Domain-here.com*.  Orsaken till den andra posten är att TLS-anslutningar till den SCM/kudu-webbplats som är kopplad till varje app kommer att göras med hjälp av en adress i formatet *Your-App-Name.scm.your-Root-Domain-here.com*.
 
 Med ett giltigt TLS/SSL-certifikat i handen krävs ytterligare två förberedande steg.  TLS/SSL-certifikatet måste konverteras/sparas som en PFX-fil.  Kom ihåg att. pfx-filen måste innehålla alla mellanliggande och rot certifikat och måste också skyddas med ett lösen ord.
 

@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019094"
 ---
 # <a name="refresh-with-logic-apps"></a>Uppdatera med Logic Apps
@@ -70,7 +70,7 @@ Konfigurera HTTP-aktiviteten enligt följande:
 |**Sidhuvuden**     |   Innehålls typ, Application/JSON <br /> <br />  ![Sidhuvuden](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Brödtext**     |   Mer information om hur du skapar begär ande texten finns i [asynkron uppdatering med REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Autentisering**     |Active Directory OAuth         |
-|**Klientorganisation**     |Fyll i din Azure Active Directory TenantId         |
+|**Innehav**     |Fyll i din Azure Active Directory TenantId         |
 |**Målgrupp**     |https://*., Azure. Windows. net         |
 |**Klient-ID**     |Ange tjänstens huvud namn ClientID         |
 |**Autentiseringstyp**     |Hemlighet         |
