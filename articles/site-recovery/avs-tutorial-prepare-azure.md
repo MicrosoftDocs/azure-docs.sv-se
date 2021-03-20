@@ -10,10 +10,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 2bd305e3760a8c3d743037e7d90b71f5e9579eda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395486"
 ---
 # <a name="prepare-azure-site-recovery-resources-for-disaster-recovery-of-azure-vmware-solution-vms"></a>Förbereda Azure Site Recovery-resurser för haveri beredskap för virtuella Azure VMware-lösningar
@@ -42,7 +42,7 @@ I den här guiden får du lära dig att:
 - Granska arkitekturen för katastrof återställning i [VMware](vmware-azure-architecture.md)
 - Läs vanliga frågor för [VMware](vmware-azure-common-questions.md)
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="verify-account-permissions"></a>Verifiera kontobehörighet

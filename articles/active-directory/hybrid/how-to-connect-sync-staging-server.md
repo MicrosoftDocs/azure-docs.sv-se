@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090133"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: mellanlagrings Server och haveri beredskap
@@ -56,18 +56,18 @@ Följ dessa steg om du vill använda den här metoden:
 5. [Växla aktiv server](#switch-active-server)
 
 #### <a name="prepare"></a>Förbereda
-1. Installera Azure AD Connect, Välj **mellanlagrings läge**och avmarkera **Starta synkronisering** på den sista sidan i installations guiden. Med det här läget kan du köra Synkroniseringsmotorn manuellt.
+1. Installera Azure AD Connect, Välj **mellanlagrings läge** och avmarkera **Starta synkronisering** på den sista sidan i installations guiden. Med det här läget kan du köra Synkroniseringsmotorn manuellt.
    ![Skärm bild som visar sidan klar att konfigurera i dialog rutan Azure AD Connect.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. Logga ut/logga in och välj **synkroniseringstjänst**i Start-menyn.
+2. Logga ut/logga in och välj **synkroniseringstjänst** i Start-menyn.
 
 #### <a name="configuration"></a>Konfiguration
 Om du har gjort anpassade ändringar på den primära servern och vill jämföra konfigurationen med mellanlagringsdatabasen använder du [Azure AD Connect konfigurations dokument](https://github.com/Microsoft/AADConnectConfigDocumenter).
 
 #### <a name="import-and-synchronize"></a>Importera och synkronisera
-1. Välj **kopplingar**och välj den första anslutningen med typen **Active Directory Domain Services**. Klicka på **Kör**, Välj **fullständig import**och **OK**. Utför de här stegen för alla anslutningar av den här typen.
-2. Välj kopplingen med typen **Azure Active Directory (Microsoft)**. Klicka på **Kör**, Välj **fullständig import**och **OK**.
-3. Se till att fliken kopplingar fortfarande är markerade. För varje koppling med typ **Active Directory Domain Services**klickar du på **Kör**, väljer **delta-synkronisering**och **OK**.
-4. Välj kopplingen med typen **Azure Active Directory (Microsoft)**. Klicka på **Kör**, Välj **delta-synkronisering**och **OK**.
+1. Välj **kopplingar** och välj den första anslutningen med typen **Active Directory Domain Services**. Klicka på **Kör**, Välj **fullständig import** och **OK**. Utför de här stegen för alla anslutningar av den här typen.
+2. Välj kopplingen med typen **Azure Active Directory (Microsoft)**. Klicka på **Kör**, Välj **fullständig import** och **OK**.
+3. Se till att fliken kopplingar fortfarande är markerade. För varje koppling med typ **Active Directory Domain Services** klickar du på **Kör**, väljer **delta-synkronisering** och **OK**.
+4. Välj kopplingen med typen **Azure Active Directory (Microsoft)**. Klicka på **Kör**, Välj **delta-synkronisering** och **OK**.
 
 Nu har du mellanlagrat export ändringar till Azure AD och lokala AD (om du använder Exchange hybrid-distribution). I nästa steg kan du kontrol lera vad som ska ändras innan du börjar exportera till katalogerna.
 
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>Nästa steg
 **Översikts avsnitt**  
 
-* [Azure AD Connect synkronisering: förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect-synkronisering: Förstå och anpassa synkronisering](how-to-connect-sync-whatis.md)  
 * [Integrera dina lokala identiteter med Azure Active Directory](whatis-hybrid-identity.md)  

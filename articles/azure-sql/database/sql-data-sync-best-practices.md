@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
 ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180249"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Metodtips för Azure SQL Data Sync 
@@ -56,7 +56,7 @@ Azure SQL Database stöder endast en uppsättning autentiseringsuppgifter. Över
 
 Vi rekommenderar att du aktiverar granskning på nivån för databaserna i Sync-grupperna. 
 
-## <a name="setup"></a>Installation
+## <a name="setup"></a>Konfiguration
 
 ### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> Överväganden och begränsningar för databasen
 

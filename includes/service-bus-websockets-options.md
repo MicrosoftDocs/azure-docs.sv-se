@@ -9,10 +9,10 @@ ms.date: 11/24/2020
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ca483d0b71bde945a7e46da785dd6a76b3a8f177
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98693414"
 ---
 Protokoll alternativet AMQP-över-WebSockets körs via port TCP 443 precis som HTTP/REST API, men är i övrigt identiskt med enkel AMQP. Det här alternativet har en högre första anslutnings fördröjning på grund av extra hand skakning och något mer som kompromisser för att dela HTTPS-porten. Om det här läget är valt räcker TCP-port 443 för kommunikation. Med följande alternativ kan du välja läget för enkel AMQP eller AMQP WebSockets:

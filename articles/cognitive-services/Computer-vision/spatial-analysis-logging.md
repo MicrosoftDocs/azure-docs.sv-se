@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98186030"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri och fel sökning
@@ -103,7 +103,7 @@ När modulen teleympkvistar har distribuerats kan de rapporterade måtten nås v
 
 ### <a name="system-health-events"></a>System hälso händelser
 
-| Händelsenamn | Description|
+| Händelsenamn | Beskrivning|
 |------|---------|
 |archon_exit    |Skickas när en användare ändrar status för spatial Analysis-modulen från att *köras* till *stoppad*.  |
 |archon_error   |Skickas när någon av processerna i behållarens krasch. Detta är ett kritiskt fel.  |
@@ -216,9 +216,9 @@ Loggar överförs på begäran med `getRTCVLogs` metoden IoT Edge, i `diagnostic
 
 
 1. Gå till sidan IoT Hub Portal, Välj **gräns enheter** och välj sedan din enhet och diagnostik-modulen. 
-2. Gå till sidan information i modulen och klicka på fliken **_Direct metoden_* _.
+2. Gå till sidan information i modulen och klicka på fliken Direct- ***metod*** .
 3. Ange `getRTCVLogs` metod namn och en JSON-format sträng i nytto lasten. Du kan ange `{}` , vilket är en tom nytto Last. 
-4. Ange timeout för anslutning och metod och klicka på _ * Invoke metod * *.
+4. Ange timeout för anslutning och metod och klicka på **anropa metod**.
 5. Välj mål behållare och bygg en nytto Last-JSON-sträng med parametrarna som beskrivs i avsnittet **loggnings syntax** . Klicka på **anropa metod** för att utföra begäran.
 
 >[!NOTE]
@@ -243,9 +243,9 @@ I tabellen nedan visas de parametrar som du kan använda när du frågar efter l
 
 I följande tabell visas attributen i svaret på frågan.
 
-| Följt | Description|
+| Följt | Beskrivning|
 |--|--|
-|DoPost| Antingen *Sant* eller *falskt*. Anger om loggarna har överförts eller inte. Om du väljer att inte överföra loggar returnerar API: n informationen ***synkront** _. När du väljer att ladda upp loggar returnerar API 200, om begäran är giltig och börjar ladda upp loggar _*_asynkront_*_.|
+|DoPost| Antingen *Sant* eller *falskt*. Anger om loggarna har överförts eller inte. Om du väljer att inte överföra loggar returnerar API: n informationen ***synkront** _. När du väljer att överföra loggar returnerar API: n 200 om begäran är giltig och börjar ladda upp loggar _ *_asynkront_* *.|
 |TimeFilter| Tids filtret som används för loggarna.|
 |ValueFilters| Nyckelords filter som tillämpas på loggarna. |
 |TimeStamp| Start tid för metod körning. |
@@ -298,7 +298,7 @@ I följande tabell visas attributen i svaret på frågan.
 }
 ```
 
-Kontrol lera hämtnings loggens rader, tider och storlekar, om dessa inställningar ser till att ersätta _*_DoPost_*_ till `true` och som ska skicka loggarna med samma filter till mål. 
+Kontrol lera hämtnings loggens rader, tider och storlekar, om dessa inställningar ser till att ersätta ***DoPost*** till `true` och som ska skicka loggarna med samma filter till mål. 
 
 Du kan exportera loggar från Azure-Blob Storage när du felsöker problem. 
 
@@ -316,7 +316,7 @@ I följande avsnitt finns information om hur du felsöker och verifierar status 
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Få åtkomst till Kubernetes API-slutpunkten. 
 
-1. I enhetens lokala användar gränssnitt går du till sidan _ *enheter**. 
+1. I enhetens lokala användar gränssnitt går du till sidan **enheter** . 
 2. Under **enhets slut punkter** kopierar du Kubernetes API-tjänstens slut punkt. Den här slut punkten är en sträng i följande format: `https://compute..[device-IP-address]` .
 3. Spara slut punkts strängen. Du kommer att använda detta senare när du konfigurerar `kubectl` för att få åtkomst till Kubernetes-klustret.
 
@@ -331,7 +331,7 @@ Anslut via fjärr anslutning från en Windows-klient. När Kubernetes-klustret h
 1. Kör en Windows PowerShell-session som administratör. 
     1. Kontrol lera att tjänsten Windows Remote Management körs på klienten. Skriv i kommando tolken `winrm quickconfig` .
 
-2. Tilldela en variabel för enhetens IP-adress. Ett exempel är `$ip = "<device-ip-address>"`.
+2. Tilldela en variabel för enhetens IP-adress. Till exempel `$ip = "<device-ip-address>"`.
 
 3. Använd följande kommando för att lägga till IP-adressen för enheten i klientens lista över betrodda värdar. 
 

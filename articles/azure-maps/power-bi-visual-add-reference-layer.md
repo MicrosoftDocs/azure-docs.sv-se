@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: eb6c9fed42f263ca6cfaa1ea975d31cb8f4a75cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86262161"
 ---
 # <a name="add-a-reference-layer"></a>Lägg till ett referenslager
@@ -31,7 +31,7 @@ Följande karta visar [2016 räknings spårningar för Colorado](https://github.
 
 Följande är alla inställningar i rutan **format** som är tillgängliga i avsnittet **referens skikt** .
 
-| Inställningen              | Beskrivning   |
+| Inställning              | Beskrivning   |
 |----------------------|---------------|
 | Referens skikts data | Data-och JSON-filen som ska överföras till det visuella objektet som ett extra lager i kartan. Knappen **+ Lägg till lokal fil** öppnar en fil dialog ruta som användaren kan använda för att välja en interjson-fil som har `.json` `.geojson` fil namns tillägget eller. |
 

@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109144"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>Självstudie: Konfigurera väg filter för Microsoft-peering med hjälp av Azure Portal
@@ -33,7 +33,7 @@ Anslutning till alla Azure-och Microsoft 365-tjänster gör att ett stort antal 
 
 * Definiera väg filter och Använd dem i ExpressRoute-kretsen. Ett flödes filter är en ny resurs där du kan välja listan över tjänster som du planerar att använda via Microsoft-peering. ExpressRoute-routrar skickar bara listan över prefix som hör till de tjänster som identifieras i flödes filtret.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Hämta värden för BGP-communityn.
 > - Skapa flödes filter och filter regel.
@@ -51,7 +51,7 @@ Om du vill bifoga väg filter med Microsoft 365 tjänster måste du ha behörigh
 > Microsoft-peering av ExpressRoute-kretsar som har kon figurer ATS före den 1 augusti 2017 kommer att ha alla tjänste prefix som annonseras via Microsoft-peering, även om det inte finns några väg filter definierade. Microsoft-peering av ExpressRoute-kretsar som är konfigurerade på eller efter den 1 augusti 2017 har inga prefix som annonseras förrän ett flödes filter är kopplat till kretsen.
 > 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Granska [nödvändiga komponenter](expressroute-prerequisites.md) och [arbets flöden](expressroute-workflows.md) innan du påbörjar konfigurationen.
 
@@ -79,27 +79,27 @@ Ett flödes filter kan bara ha en regel och regeln måste vara av typen Allow. D
 
 1. Placera flödes filtret i en resurs grupp. Se till att platsen är samma som ExpressRoute-kretsen. Välj **Granska + skapa** och sedan **skapa**.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Skärm bild som visar väg filter Sidan":::
+    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Skärm bild som visar sidan Skapa väg filter med exempel värden som anges":::
 
 ### <a name="create-a-filter-rule"></a>Skapa en filter regel
 
 1. Om du vill lägga till och uppdatera regler väljer du fliken Hantera regel för ditt flödes filter.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Skärm bild som visar väg filter Sidan":::
+    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Skärm bild som visar översikts sidan med åtgärden hantera regel markerad":::
 
 1. Välj de tjänster som du vill ansluta till i list rutan och spara regeln när du är färdig.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Skärm bild som visar väg filter Sidan":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Skärm bild som visar fönstret Hantera regel med tjänster som marker ATS i list rutan tillåtna tjänste grupper":::
 
 ## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Koppla väg filtret till en ExpressRoute-krets
 
 Koppla väg filtret till en krets genom att välja knappen **+ Lägg till krets** och välja ExpressRoute-kretsen i list rutan.
 
-:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Skärm bild som visar väg filter Sidan":::
+:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Skärm bild som visar översikts sidan med åtgärden Lägg till krets valt":::
 
 Om anslutnings leverantören konfigurerar peering för ExpressRoute-kretsen uppdaterar du kretsen från ExpressRoute-krets-sidan innan du väljer knappen **+ Lägg till krets** .
 
-:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Skärm bild som visar väg filter Sidan":::
+:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Skärm bild som visar översikts sidan med åtgärden Uppdatera markerad.":::
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Vanliga åtgärder
 
@@ -107,32 +107,32 @@ Om anslutnings leverantören konfigurerar peering för ExpressRoute-kretsen uppd
 
 Du kan visa egenskaperna för ett flödes filter när du öppnar resursen i portalen.
 
-:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Skärm bild som visar väg filter Sidan":::
+:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Skärmbild som visar sidan Översikt":::
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Så här uppdaterar du egenskaperna för ett flödes filter
 
 1. Du kan uppdatera listan med BGP community-värden som är kopplade till en krets genom att välja knappen **Hantera regel** .
 
-    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Skärm bild som visar väg filter Sidan":::
+    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Uppdatera väg filter med åtgärden hantera regel":::
 
 1. Välj de tjänst webb grupper som du vill använda och välj sedan **Spara**.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Skärm bild som visar väg filter Sidan":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Skärm bild som visar fönstret Hantera regel med tjänster valt":::
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Koppla bort ett flödes filter från en ExpressRoute-krets
 
 Om du vill koppla bort en krets från flödes filtret högerklickar du på kretsen och väljer Ta **bort koppling**.
 
-:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Skärm bild som visar väg filter Sidan":::
+:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Skärm bild som visar översikts sidan med åtgärden koppla bort markerad":::
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 Du kan ta bort ett flödes filter genom att klicka på knappen **ta bort** . Se till att flödes filtret inte är kopplat till några kretsar innan du gör det.
 
-:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Skärm bild som visar väg filter Sidan":::
+:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Ta bort ett flödes filter":::
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Information om konfigurations exempel för routern finns i:
 

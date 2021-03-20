@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92428374"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Självstudie: skicka push-meddelanden till Android-enheter med Firebase SDK version 0,6
@@ -40,7 +40,7 @@ I den här självstudien gör du följande:
 > * Anslut din app till hubben.
 > * Testa appen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du måste ha ett aktivt Azure-konto för att slutföra den här kursen. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/free/). 
 
@@ -56,8 +56,8 @@ Du måste slutföra den här själv studie kursen för att göra alla andra Noti
 ## <a name="create-an-android-studio-project"></a>Skapa ett Android Studio-projekt
 
 1. Starta Android Studio.
-2. Välj **fil**, peka på **nytt**och välj sedan **nytt projekt**. 
-2. På sidan **Välj ditt projekt väljer du** **Tom aktivitet**och väljer sedan **Nästa**. 
+2. Välj **fil**, peka på **nytt** och välj sedan **nytt projekt**. 
+2. På sidan **Välj ditt projekt väljer du** **Tom aktivitet** och väljer sedan **Nästa**. 
 3. Utför följande steg på sidan **Konfigurera ditt projekt** : 
     1. Ange ett namn på programmet.
     2. Ange en plats där du vill spara projektfilerna. 
@@ -77,7 +77,7 @@ Du måste slutföra den här själv studie kursen för att göra alla andra Noti
 
 1. Välj **Google (GCM/FCM)** i den vänstra rutan under **Inställningar** . 
 2. Ange **Server nyckeln** för det FCM-projekt som du sparade tidigare. 
-3. Välj **Spara**i verktygsfältet. 
+3. Välj **Spara** i verktygsfältet. 
 
     ![Azure Notification Hub – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 4. Azure Portal visar ett meddelande i aviseringar om att navet har uppdaterats. Knappen **Spara** är inaktiverad. 
@@ -92,7 +92,7 @@ Navet har nu kon figurer ATS för att fungera med Firebase Cloud Messaging. Du h
 2. Välj mål versionen av Android SDK som används i projektet. Välj sedan **Visa paket information**. 
 
     ![Android SDK Manager – välj målversion](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Välj **Google API: er**om det inte redan är installerat.
+3. Välj **Google API: er** om det inte redan är installerat.
 
     ![Android SDK Manager – Google APIs valt](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
 4. Växla till fliken **SDK-verktyg** . Om du inte redan har installerat Google Play-tjänster väljer du **Google Play Services** som visas i följande bild. Välj sedan **Använd** för att installera. Anteckna SDK-sökvägen för användning i ett senare steg.
@@ -171,7 +171,7 @@ Navet har nu kon figurer ATS för att fungera med Firebase Cloud Messaging. Du h
 
 ### <a name="add-code"></a>Lägg till kod
 
-1. I projektvyn expanderar du **app**  >  **src**  >  **main**  >  **Java**. Högerklicka på mappen paket under **Java**, Välj **ny**och välj sedan **Java-klass**. Ange **NotificationSettings** som namn och välj sedan **OK**.
+1. I projektvyn expanderar du **app**  >  **src**  >  **main**  >  **Java**. Högerklicka på mappen paket under **Java**, Välj **ny** och välj sedan **Java-klass**. Ange **NotificationSettings** som namn och välj sedan **OK**.
 
     Se till att uppdatera dessa tre platshållare i följande kod för klassen `NotificationSettings`:
 
@@ -520,7 +520,7 @@ Navet har nu kon figurer ATS för att fungera med Firebase Cloud Messaging. Du h
     }
     ```
 
-13. I Android Studio väljer du **skapa**återskapa projekt på Meny raden  >  **Rebuild Project** för att kontrol lera att det inte finns några fel i koden. Om du får ett fel meddelande om `ic_launcher` ikonen tar du bort följande-instruktion från AndroidManifest.xml-filen: 
+13. I Android Studio väljer du **skapa** återskapa projekt på Meny raden  >   för att kontrol lera att det inte finns några fel i koden. Om du får ett fel meddelande om `ic_launcher` ikonen tar du bort följande-instruktion från AndroidManifest.xml-filen: 
 
     ```
         android:icon="@mipmap/ic_launcher"

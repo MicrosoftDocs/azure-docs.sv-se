@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92426555"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Snabb start: skapa en Azure Notification Hub i Azure Portal
@@ -34,7 +34,7 @@ I det här avsnittet skapar du en namnrymd och en hubb i namnrymden.
 
 I det här avsnittet skapar du en meddelandehubb i en befintlig namnrymd.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **Alla tjänster** på den vänstra menyn, sök efter **Notification Hub** (Meddelandehubb), välj **stjärnan** (`*`) intill **Notification Hub Namespaces** (Namnrymder för meddelandehubb) för att lägga till den i avsnittet **FAVORITES** (Favoriter) på den vänstra menyn. Välj **Notification Hub Namespaces** (Namnrymder för meddelandehubb).
 
       ![Azure-portalen – välj Namnrymder för meddelandehubb](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)

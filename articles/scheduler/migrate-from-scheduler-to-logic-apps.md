@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368272"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrera Azure Scheduler-jobb till Azure Logic Apps
@@ -114,9 +114,9 @@ Om du vill köra eller utlösa ett engångs jobb manuellt skickar du ett anrop t
 
 Med Postman-appen kan du till exempel skapa en POST-begäran med inställningarna som liknar det här exemplet och sedan välja **Skicka** för att göra begäran.
 
-| Metod för begäran | URL | Brödtext | Rubriker |
+| Metod för begäran | URL | Brödtext | Sidhuvuden |
 |----------------|-----|------|---------|
-| **POST** | <*slut punkt-URL*> | **outspädd** <p>**JSON (Application/JSON)** <p>I rutan **RAW** anger du den nytto last som du vill skicka i begäran. <p>**Obs!** den här inställningen konfigurerar automatiskt **headers** -värden. | **Nyckel**: innehålls typ <br>**Värde**: Application/JSON |
+| **EFTER** | <*slut punkt-URL*> | **outspädd** <p>**JSON (Application/JSON)** <p>I rutan **RAW** anger du den nytto last som du vill skicka i begäran. <p>**Obs!** den här inställningen konfigurerar automatiskt **headers** -värden. | **Nyckel**: innehålls typ <br>**Värde**: Application/JSON |
 |||||
 
 ![Skicka begäran om att utlösa din Logic app manuellt](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -193,7 +193,7 @@ Om standard åtgärden inte kan köras i Azure Scheduler kan du köra en alterat
 
    ![Konfigurera kör efter](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
-1. Avmarkera kryss rutan för egenskapen **har slutförts** . Välj följande egenskaper: **har misslyckats**, **hoppas över**och **har nått tids gränsen**
+1. Avmarkera kryss rutan för egenskapen **har slutförts** . Välj följande egenskaper: **har misslyckats**, **hoppas över** och **har nått tids gränsen**
 
    ![Konfigurera egenskaper för kör efter](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
@@ -201,7 +201,7 @@ Om standard åtgärden inte kan köras i Azure Scheduler kan du köra en alterat
 
 Mer information om undantags hantering finns i avsnittet [hantera fel och undantag-RunAfter](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 <a name="retire-date"></a>
 
@@ -232,7 +232,7 @@ Om din Azure-prenumeration har en avgiftsbelagd Support plan kan du skapa en tek
    |---------|-------|
    | **Typ av problem** | **Teknik** |
    | **Prenumeration** | <*din-Azure-prenumeration*> |
-   | **Tjänst** | Välj **Scheduler**Under **övervakning & hantering**. Om du inte hittar **Scheduler**väljer du **alla tjänster** först. |
+   | **Tjänst** | Välj **Scheduler** Under **övervakning & hantering**. Om du inte hittar **Scheduler** väljer du **alla tjänster** först. |
    ||| 
 
 1. Välj det support alternativ som du vill använda. Om du har en avgiftsbelagd Support plan väljer du **Nästa**.

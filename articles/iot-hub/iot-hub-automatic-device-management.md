@@ -11,17 +11,17 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545403"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatisk hantering av IoT-enheter och -moduler med Azure-portalen
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Automatisk enhets hantering i Azure IoT Hub automatiserar många av de repetitiva och komplexa uppgifterna i hanteringen av stora enhets flottor. Med automatisk enhets hantering kan du rikta en uppsättning enheter baserat på deras egenskaper, definiera en önskad konfiguration och sedan låta IoT Hub uppdatera enheterna när de kommer i omfång. Den här uppdateringen görs med hjälp av en _Automatisk enhets konfiguration_ eller _automatisk konfiguration av modulen_ , som gör att du kan sammanfatta, hantera sammanslagning och konflikter och distribuera konfigurationer i en stegvis metod.
+Automatisk enhets hantering i Azure IoT Hub automatiserar många av de repetitiva och komplexa uppgifterna i hanteringen av stora enhets flottor. Med automatisk enhets hantering kan du rikta en uppsättning enheter baserat på deras egenskaper, definiera en önskad konfiguration och sedan låta IoT Hub uppdatera enheterna när de kommer i omfång. Den här uppdateringen görs med hjälp av en _Automatisk enhets konfiguration_ eller _automatisk konfiguration av modulen_, som gör att du kan sammanfatta, hantera sammanslagning och konflikter och distribuera konfigurationer i en stegvis metod.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -31,7 +31,7 @@ Automatisk enhets hantering fungerar genom att uppdatera en uppsättning enheter
 
 * **Målets innehåll** definierar önskade egenskaper som ska läggas till eller uppdateras i den riktade enheten, med dubbla eller moduler. Innehållet innehåller en sökväg till avsnittet av önskade egenskaper som ska ändras.
 
-* **Måtten** definierar antalet olika konfigurations tillstånd, till exempel **lyckad** , **pågående** och **fel** . Anpassade mått anges som frågor på dubbla rapporterade egenskaper.  System mått är standard mått som mäter dubbel uppdaterings status, t. ex. antalet värden som är riktade till varandra och antalet dubbla objekt som har uppdaterats.
+* **Måtten** definierar antalet olika konfigurations tillstånd, till exempel **lyckad**, **pågående** och **fel**. Anpassade mått anges som frågor på dubbla rapporterade egenskaper.  System mått är standard mått som mäter dubbel uppdaterings status, t. ex. antalet värden som är riktade till varandra och antalet dubbla objekt som har uppdaterats.
 
 Automatiska konfigurationer körs för första gången strax efter att konfigurationen har skapats och sedan var femte minut. Mått frågor körs varje gången den automatiska konfigurationen körs.
 
@@ -58,9 +58,9 @@ Innan du skapar en konfiguration måste du ange vilka enheter eller moduler som 
 
 1. I [Azure Portal](https://portal.azure.com)går du till din IoT-hubb. 
 
-2. Välj **IoT-enhetens konfiguration** .
+2. Välj **IoT-enhetens konfiguration**.
 
-3. Välj **Lägg till enhets konfiguration** eller **Lägg till modul konfiguration** .
+3. Välj **Lägg till enhets konfiguration** eller **Lägg till modul konfiguration**.
 
    ![Lägg till enhets konfiguration eller konfiguration av modul](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -70,7 +70,7 @@ Det finns fem steg för att skapa en konfiguration. Följande avsnitt beskriver 
 
 1. Ge konfigurationen ett unikt namn som är upp till 128 gemener. Undvik blank steg och följande ogiltiga tecken: `& ^ [ ] { } \ | " < > /` .
 
-2. Lägg till etiketter som hjälper dig att spåra dina konfigurationer. Etiketter är **namn** , **värdepar** som beskriver konfigurationen. Exempel: `HostPlatform, Linux` eller `Version, 3.0.1`.
+2. Lägg till etiketter som hjälper dig att spåra dina konfigurationer. Etiketter är **namn**, **värdepar** som beskriver konfigurationen. Exempel: `HostPlatform, Linux` eller `Version, 3.0.1`.
 
 3. Välj **Nästa** för att gå vidare till nästa steg. 
 
@@ -96,7 +96,7 @@ Om två eller flera konfigurationer riktar sig till samma dubbla sökväg gälle
 
 Om du vill ta bort en befintlig egenskap anger du egenskap svärdet till `null` .
 
-Du kan lägga till ytterligare inställningar genom att välja **Lägg till enhet, konfigurera** eller **lägga till en modul med dubbla inställningar** .
+Du kan lägga till ytterligare inställningar genom att välja **Lägg till enhet, konfigurera** eller **lägga till en modul med dubbla inställningar**.
 
 ### <a name="specify-metrics-optional"></a>Ange mått (valfritt)
 
@@ -104,9 +104,9 @@ Mått tillhandahåller sammanfattande antal av de olika tillstånd som en enhet 
 
 Varje konfiguration kan ha upp till fem anpassade mått. 
 
-1. Ange ett namn för **måttets namn** .
+1. Ange ett namn för **måttets namn**.
 
-2. Ange en fråga för **mått villkor** .  Frågan baseras på enhetens dubbla rapporterade egenskaper.  Måttet representerar antalet rader som returneras av frågan.
+2. Ange en fråga för **mått villkor**.  Frågan baseras på enhetens dubbla rapporterade egenskaper.  Måttet representerar antalet rader som returneras av frågan.
 
 Exempel:
 
@@ -138,7 +138,7 @@ Automatisk enhets konfiguration kan bara användas för att rikta in enhets dubb
 
 Eftersom flera konfigurationer kan vara riktade till samma enhet eller modul, behöver varje konfiguration ett prioritets nummer. Om det skulle finnas en konflikt, är konfigurationen med högst prioritet WINS. 
 
-1. Ange ett positivt heltal för konfigurations **prioriteten** . Det högsta numeriska värdet anses vara högsta prioritet. Om två konfigurationer har samma prioritets nummer, den som skapades senast. 
+1. Ange ett positivt heltal för konfigurations **prioriteten**. Det högsta numeriska värdet anses vara högsta prioritet. Om två konfigurationer har samma prioritets nummer, den som skapades senast. 
 
 2. Ange ett **mål villkor** för att avgöra vilka enheter eller moduler som ska användas med den här konfigurationen. Villkoret baseras på dubbla taggar eller dubbla rapporterade egenskaper och ska matcha uttrycks formatet. 
 
@@ -150,7 +150,7 @@ Eftersom flera konfigurationer kan vara riktade till samma enhet eller modul, be
 
 ### <a name="review-configuration"></a>Granska konfigurationen
 
-Granska konfigurations informationen och välj sedan **Skicka** .
+Granska konfigurations informationen och välj sedan **Skicka**.
 
 ## <a name="monitor-a-configuration"></a>Övervaka en konfiguration
 
@@ -158,7 +158,7 @@ Använd följande steg för att visa information om en konfiguration och överva
 
 1. I [Azure Portal](https://portal.azure.com)går du till din IoT-hubb. 
 
-2. Välj **IoT-enhetens konfiguration** .
+2. Välj **IoT-enhetens konfiguration**.
 
 3. Granska konfigurations listan. Du kan visa följande information för varje konfiguration:
 
@@ -180,7 +180,7 @@ Använd följande steg för att visa information om en konfiguration och överva
 
    * **Mål villkor** – de enheter eller moduler som matchar mål villkoret. 
 
-   * **Mått** – en lista över system mått och anpassade mått.  Du kan visa en lista över enheter eller moduler som räknas för varje mått genom att välja måttet i list rutan och sedan välja **Visa enheter** eller **Visa moduler** .
+   * **Mått** – en lista över system mått och anpassade mått.  Du kan visa en lista över enheter eller moduler som räknas för varje mått genom att välja måttet i list rutan och sedan välja **Visa enheter** eller **Visa moduler**.
 
    * **Enhetens dubbla inställningar** eller **modul, dubbla** inställningar – de dubbla inställningar som anges av konfigurationen. 
 
@@ -202,7 +202,7 @@ Använd följande steg för att ändra en konfiguration:
 
 1. I [Azure Portal](https://portal.azure.com)går du till din IoT-hubb. 
 
-2. Välj **IoT-enhetens konfiguration** . 
+2. Välj **IoT-enhetens konfiguration**. 
 
 3. Välj den konfiguration som du vill ändra. 
 
@@ -213,7 +213,7 @@ Använd följande steg för att ändra en konfiguration:
    * Prioritet 
    * Mått
 
-4. Välj **Spara** .
+4. Välj **Spara**.
 
 5. Följ stegen i [övervaka en konfiguration](#monitor-a-configuration) för att se att ändringarna distribueras. 
 
@@ -223,11 +223,11 @@ När du tar bort en konfiguration tar alla enheter med den näst högsta priorit
 
 1. I [Azure Portal](https://portal.azure.com)går du till din IoT-hubb. 
 
-2. Välj **IoT-enhetens konfiguration** . 
+2. Välj **IoT-enhetens konfiguration**. 
 
 3. Använd kryss rutan för att välja den konfiguration som du vill ta bort. 
 
-4. Välj **Ta bort** .
+4. Välj **Ta bort**.
 
 5. Du uppmanas att bekräfta genom att bekräfta.
 

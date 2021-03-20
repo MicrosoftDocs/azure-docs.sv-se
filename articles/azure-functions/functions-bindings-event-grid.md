@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104554"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid bindningar för Azure Functions
@@ -23,7 +23,7 @@ Händelse *hanterare* tar emot och bearbetar händelser. Azure Functions är en 
 
 Om du vill kan du använda en HTTP-utlösare för att hantera Event Grid händelser. Se [ta emot händelser till en HTTP-slutpunkt](../event-grid/receive-events.md). För närvarande kan du inte använda en Event Grid-utlösare för en Azure Functions-app när händelsen levereras i [CloudEvents-schemat](../event-grid/cloudevents-schema.md#azure-functions). Använd i stället en HTTP-utlösare.
 
-| Åtgärd | Typ |
+| Action | Typ |
 |---------|---------|
 | Köra en funktion när en Event Grid händelse skickas | [Utlösare](./functions-bindings-event-grid-trigger.md) |
 | Skickar en Event Grid-händelse |[Utgående bindning](./functions-bindings-event-grid-output.md) |

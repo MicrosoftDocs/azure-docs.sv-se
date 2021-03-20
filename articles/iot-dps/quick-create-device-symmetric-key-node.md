@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 78005ba46952bcf05b19c7627feecb1ec30ac651
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429377"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-nodejs"></a>Snabb start: etablera en symmetrisk nyckel enhet med hjälp av Node.js
@@ -32,7 +32,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Bekant med [etablerings](about-iot-dps.md#provisioning-process) koncept.
 - Slut för ande av [konfigurations IoT Hub Device Provisioning service med Azure Portal](./quick-setup-auto-provision.md).
@@ -49,7 +49,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 
 3. Ange följande information på panelen **Lägg till registrering** och tryck på knappen **Spara** .
 
-   - **Mekanism:** välj **Symmetrisk nyckel** som identitetsattesterings*mekanism*.
+   - **Mekanism:** välj **Symmetrisk nyckel** som identitetsattesterings *mekanism*.
 
    - **Generera nycklar automatiskt**: Markera den här kryss rutan.
 

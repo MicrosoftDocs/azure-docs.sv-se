@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140640"
 ---
 # <a name="vpn-gateways-overview"></a>Översikt över VPN-gatewayer
@@ -52,7 +52,7 @@ En plats-till-plats-VPN-anslutning använder följande kryptografiska standard p
 | Hash-algoritm| SHA 256 | SHA 256 | SHA 1 |
 | Diffie Hellman-grupp (DH-grupp) | 2 | 2 | 2 |
 | Livs längd | 28 800 sekunder | 28 800 sekunder | 28 800 sekunder |
-| Data storlek | 4 GB | 4 GB | 4 GB |
+| Datavolym | 4 GB | 4 GB | 4 GB |
 
 #### <a name="phase-2-proposals"></a>Fas 2-förslag
 
@@ -60,9 +60,9 @@ En plats-till-plats-VPN-anslutning använder följande kryptografiska standard p
 |-----------|------------|------------|------------|
 | Kryptering | AES 128 | AES 256 | AES 256 |
 | Hash-algoritm| SHA 256 | SHA 256 | SHA 1 |
-| PFS-grupp (Perfect Forward Secrecy) | Inget | Inget | Inget |
+| PFS-grupp (Perfect Forward Secrecy) | Inga | Inga | Inga |
 | Livs längd | 1 800 sekunder | 1 800 sekunder | 1 800 sekunder |
-| Data storlek | 4 GB | 4 GB | 4 GB |
+| Datavolym | 4 GB | 4 GB | 4 GB |
 
 
 > [!IMPORTANT]

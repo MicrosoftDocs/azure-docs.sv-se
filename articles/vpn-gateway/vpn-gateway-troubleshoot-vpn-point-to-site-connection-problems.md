@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994867"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Fel sökning: problem med Azure punkt-till-plats-anslutning
@@ -39,7 +39,7 @@ Följ dessa steg för att lösa problemet:
 
 2. Kontrol lera att följande certifikat finns på rätt plats:
 
-    | Certifikat | Plats |
+    | Certifikat | Location |
     | ------------- | ------------- |
     | AzureClient. pfx  | Aktuell User\Personal\Certificates |
     | AzureRoot. cer    | Lokala Computer\Trusted rot certifikat utfärdare|
@@ -115,7 +115,7 @@ När du försöker ansluta till ett virtuellt Azure-nätverk med hjälp av VPN-k
 
 1. Kontrol lera att följande certifikat finns på rätt plats:
 
-    | Certifikat | Plats |
+    | Certifikat | Location |
     | ------------- | ------------- |
     | AzureClient. pfx  | Aktuell User\Personal\Certificates |
     | Azuregateway-*GUID*. cloudapp.net  | Aktuella User\Trusted rot certifikat utfärdare|
@@ -168,7 +168,7 @@ Extrahera konfigurations paketet för VPN-klienten och leta upp CER-filen. Följ
 1. Öppna mmc.exe.
 2. Lägg till snapin-modulen **certifikat** .
 3. Välj **dator** kontot för den lokala datorn.
-4. Högerklicka på noden **betrodda rot certifikat utfärdare** . Klicka på Importera **alla aktiviteter**  >  **Import** och bläddra till. CER-filen som du extraherade från konfigurations paketet för VPN-klienten.
+4. Högerklicka på noden **betrodda rot certifikat utfärdare** . Klicka på Importera **alla aktiviteter**  >  och bläddra till. CER-filen som du extraherade från konfigurations paketet för VPN-klienten.
 5. Starta om datorn. 
 6. Försök att installera VPN-klienten.
 
@@ -178,7 +178,7 @@ Extrahera konfigurations paketet för VPN-klienten och leta upp CER-filen. Följ
 
 När du försöker spara ändringarna för VPN-gatewayen i Azure Portal visas följande fel meddelande:
 
-**Det gick inte att spara Gateway-namnet för den virtuella Nätverksgatewayen &lt; *gateway name* &gt; . Data för certifikat &lt; *certifikatets ID* &gt; är ogiltigt.**
+**Det gick inte att spara Gateway-namnet för den virtuella Nätverksgatewayen &lt;  &gt; . Data för certifikat &lt; *certifikatets ID* &gt; är ogiltigt.**
 
 ### <a name="cause"></a>Orsak 
 
@@ -215,7 +215,7 @@ e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
 
 När du försöker spara ändringarna för VPN-gatewayen i Azure Portal visas följande fel meddelande: 
 
-**Det gick inte att spara Gateway-namnet för den virtuella Nätverksgatewayen &lt; *gateway name* &gt; . &lt; *Namnet på resurs namn certifikatet du försöker överföra* &gt; är ogiltigt**.
+**Det gick inte att spara Gateway-namnet för den virtuella Nätverksgatewayen &lt;  &gt; . &lt; *Namnet på resurs namn certifikatet du försöker överföra* &gt; är ogiltigt**.
 
 ### <a name="cause"></a>Orsak
 

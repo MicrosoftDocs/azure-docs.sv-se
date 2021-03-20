@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371519"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Hanterings funktioner för Azure AD-roller i Privileged Identity Management
@@ -42,8 +42,8 @@ I många fall, även om du inte vill att användarna ska ha en berättigad tilld
 
 Vi lägger också till nya inställningar för Azure AD-roller.
 
-- **Tidigare**kunde du bara konfigurera aktiverings inställningar per roll. Det innebär att aktiverings inställningar, till exempel Multi-Factor Authentication-krav och incident-/begäran biljett krav har tillämpats på alla användare som är berättigade till en viss roll.
-- **Nu**kan du konfigurera om en enskild användare behöver utföra Multi-Factor Authentication innan de kan aktivera en roll. Du kan också ha avancerad kontroll över dina Privileged Identity Management e-postmeddelanden relaterade till vissa roller.
+- **Tidigare** kunde du bara konfigurera aktiverings inställningar per roll. Det innebär att aktiverings inställningar, till exempel Multi-Factor Authentication-krav och incident-/begäran biljett krav har tillämpats på alla användare som är berättigade till en viss roll.
+- **Nu** kan du konfigurera om en enskild användare behöver utföra Multi-Factor Authentication innan de kan aktivera en roll. Du kan också ha avancerad kontroll över dina Privileged Identity Management e-postmeddelanden relaterade till vissa roller.
 
 ## <a name="extend-and-renew-assignments"></a>Utöka och förnya tilldelningar
 

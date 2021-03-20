@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106628"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrera data från Azure Data Lake Storage Gen1 i Azure Data Catalog
 I den här artikeln får du lära dig hur du integrerar Azure Data Lake Storage Gen1 med Azure Data Catalog för att göra dina data synliga i en organisation genom att integrera den med Data Catalog. Mer information om att katalogisera data finns i [Azure Data Catalog](../data-catalog/overview.md). För att förstå scenarier där du kan använda Data Catalog, se [Azure Data Catalog vanliga scenarier](../data-catalog/data-catalog-common-scenarios.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Innan du påbörjar de här självstudierna måste du ha:
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -34,11 +34,11 @@ Innan du påbörjar de här självstudierna måste du ha:
 1. Logga in på Azure Data Catalog Portal och klicka på **publicera data**.
 
     ![Registrera en datakälla](./media/data-lake-store-with-data-catalog/register-data-source.png "Registrera en datakälla")
-1. Klicka på **starta program**på nästa sida. Program manifest filen laddas ned på datorn. Starta programmet genom att dubbelklicka på manifest filen.
-1. På Välkomst sidan klickar du på **Logga**in och anger dina autentiseringsuppgifter.
+1. Klicka på **starta program** på nästa sida. Program manifest filen laddas ned på datorn. Starta programmet genom att dubbelklicka på manifest filen.
+1. På Välkomst sidan klickar du på **Logga** in och anger dina autentiseringsuppgifter.
 
     ![Välkomstskärmen](./media/data-lake-store-with-data-catalog/welcome.screen.png "Välkomstskärmen")
-1. På sidan Välj en data källa väljer du **Azure Data Lake Store**och klickar sedan på **Nästa**.
+1. På sidan Välj en data källa väljer du **Azure Data Lake Store** och klickar sedan på **Nästa**.
 
     ![Välj datakälla](./media/data-lake-store-with-data-catalog/select-source.png "Välj datakälla")
 1. På nästa sida anger du det Data Lake Storage Gen1 konto namn som du vill registrera i Data Catalog. Lämna de andra alternativen som standard och klicka sedan på **Anslut**.

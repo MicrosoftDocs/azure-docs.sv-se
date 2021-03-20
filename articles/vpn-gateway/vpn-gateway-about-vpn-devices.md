@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 4c6bd62e96d85305036626a8672c39ff1b9f6b26
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98201101"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Om VPN-enheter och IPSec-/IKE-parametrar för anslutningar för VPN Gateway från plats till plats
@@ -59,7 +59,7 @@ Information om hur du konfigurerar VPN-enheten finns i länkarna som motsvarar l
 | Juniper |SSG |ScreenOS 6.2 |Stöds |[Konfigurations skript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Stöds |[Konfigurations skript](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Routning och fjärråtkomst |Windows Server 2012 |Inte kompatibel |Stöds |
-| Open Systems AG |Mission Control Security Gateway |Saknas |[Konfigurations guide](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Inte kompatibel |
+| Open Systems AG |Mission Control Security Gateway |Ej tillämpligt |[Konfigurations guide](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Inte kompatibel |
 | Palo Alto Networks |Alla enheter som kör PAN-OS |PAN-OS<br>Principbaserad: 6.1.5 eller senare<br>Routningsbaserad: 7.1.4 |Stöds |[Konfigurations guide](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (utvecklare) | VyOS | VyOS 1.2.2 | (inte testat) | [Konfigurations guide ](https://docs.vyos.io/en/latest/configexamples/azure-vpn-bgp.html)|
 | ShareTech | Nästa datagenerations UTM (Nu-serien) | 9.0.1.3 | Inte kompatibel | [Konfigurations guide](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -142,7 +142,7 @@ I följande tabeller:
 | Krypterings- och hash-algoritmer |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[RouteBased QM SA-erbjudanden](#RouteBasedOffers) |
 | SA-livstid (tid)            |3 600 sekunder  |27 000 sekunder                               |
 | SA-livstid (byte)           |102 400 000 kB |102 400 000 kB                               |
-| PFS (Perfect Forward Secrecy) |No             |[RouteBased QM SA-erbjudanden](#RouteBasedOffers) |
+| PFS (Perfect Forward Secrecy) |Inga             |[RouteBased QM SA-erbjudanden](#RouteBasedOffers) |
 | Utebliven peer-identifiering (DPD)     |Stöds inte  |Stöds                                    |
 
 
@@ -154,24 +154,24 @@ Följande tabell visar erbjudanden för IPsec SA (IKE-snabbläge). Erbjudandena 
 
 |-  |**Kryptering**|**Autentisering**|**PFS-grupp**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Ingen         |
-| 2 |AES256        |SHA1              |Ingen         |
-| 3 |3DES          |SHA1              |Ingen         |
-| 4 |AES256        |SHA256            |Ingen         |
-| 5 |AES128        |SHA1              |Ingen         |
-| 6 |3DES          |SHA256            |Ingen         |
+| 1 |GCM AES256    |GCM (AES256)      |Inget         |
+| 2 |AES256        |SHA1              |Inget         |
+| 3 |3DES          |SHA1              |Inget         |
+| 4 |AES256        |SHA256            |Inget         |
+| 5 |AES128        |SHA1              |Inget         |
+| 6 |3DES          |SHA256            |Inget         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure Gateway som svarare
 
 |-  |**Kryptering**|**Autentisering**|**PFS-grupp**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Ingen         |
-| 2 |AES256        |SHA1              |Ingen         |
-| 3 |3DES          |SHA1              |Ingen         |
-| 4 |AES256        |SHA256            |Ingen         |
-| 5 |AES128        |SHA1              |Ingen         |
-| 6 |3DES          |SHA256            |Ingen         |
-| 7 |DES           |SHA1              |Ingen         |
+| 1 |GCM AES256    |GCM (AES256)      |Inget         |
+| 2 |AES256        |SHA1              |Inget         |
+| 3 |3DES          |SHA1              |Inget         |
+| 4 |AES256        |SHA256            |Inget         |
+| 5 |AES128        |SHA1              |Inget         |
+| 6 |3DES          |SHA256            |Inget         |
+| 7 |DES           |SHA1              |Inget         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -186,7 +186,7 @@ Följande tabell visar erbjudanden för IPsec SA (IKE-snabbläge). Erbjudandena 
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Ingen         |
+| 22|AES128        |SHA256            |Inget         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

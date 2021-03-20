@@ -7,10 +7,10 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: 597b69c1180ea1fb2a6812d648f8b8ad37707d66
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101092613"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-azure-signalr-service"></a>Autentisera ett program med Azure Active Directory för att få åtkomst till Azure SignalR-tjänsten

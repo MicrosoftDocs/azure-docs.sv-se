@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
 ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492394"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Snabb start: skapa en Azure Database for PostgreSQL-server med hjälp av Azure Portal
@@ -47,7 +47,7 @@ Gå till [Azure Portal](https://portal.azure.com/) för att skapa en Azure Datab
    |Datakälla | Inget | Välj **Ingen** om du vill skapa en ny server från grunden. Välj endast **säkerhets kopiering** om du har återställt från en geo-säkerhetskopia av en befintlig server.|
    |Användarnamn för administratör |*myadmin*| Ange ditt användar namn för Server administratör. Den kan inte börja med **PG_** och dessa värden är inte tillåtna: **azure_superuser**, **azure_pg_admin**, **admin**, **administratör**, **rot**, **gäst** eller **offentlig**.|
    |Lösenord |ditt lösenord| Ett nytt lösen ord för Server administratörs användaren. Det måste innehålla 8 till 128 tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror (0 till 9) och icke-alfanumeriska tecken (till exempel!, $, #,%).|
-   |Plats|önskad plats| Välj en plats i list rutan.|
+   |Location|önskad plats| Välj en plats i list rutan.|
    |Version|Senaste huvudversion| Den senaste PostgreSQL-huvudversionen, om du inte har andra särskilda krav.|
    |Beräkning och lagring | *Använd standardinställningarna*| Standard pris nivån är **generell användning**  med **4 virtuella kärnor** och **100 GB** lagring. Kvarhållning av säkerhets kopior har angetts till **7 dagar** med **geografiskt redundant** säkerhets kopierings alternativ.<br/>Läs om [prissättningen](https://azure.microsoft.com/pricing/details/postgresql/server/) och uppdatera standardinställningarna om det behövs.|
 

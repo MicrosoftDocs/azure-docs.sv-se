@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92427202"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Självstudie: innehålls skydd från slut punkt till slut punkt med hjälp av Azure AD
@@ -26,7 +26,7 @@ ms.locfileid: "92427202"
 
 Med den här självstudien och det tillhandahållna Player-exemplet kan du konfigurera ett Azure Active Directory AMS-undersystem Azure Media Services från slut punkt till slut punkt till slut punkt till slut punkt för att strömma medie innehåll med alla AMS som stöder DRM/AES-128, strömmande protokoll, codec och behållar format. Exemplet är allmänt nog för säker åtkomst till alla REST API som skyddas av OAuth 2 via auktoriseringskod-flöde med bevis nyckel för Code Exchange (PKCE). (Azure Media Services licens leverans tjänst är bara en av dem.) Det fungerar också med Microsoft Graph-API eller anpassade utvecklade REST API som skyddas med OAuth 2 Authorization Code Flow. Detta är det medföljande dokumentet till [exempel koden](https://github.com/Azure-Samples/media-services-content-protection-azure-ad).
 
-I den här självstudien kommer vi att:
+I de här självstudierna får du:
 
 > [!div class="checklist"]
 >
@@ -42,7 +42,7 @@ Om du inte har en Azure Media Services-prenumeration skapar du ett [kostnads fri
 ### <a name="duration"></a>Varaktighet
 Kursen bör ta ungefär två timmar att slutföra efter att du har den nödvändiga tekniken redo att gå vidare.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande nya teknik versioner och koncept används. Vi rekommenderar att du bekanta dig med dem innan du påbörjar den här självstudien.
 
@@ -210,7 +210,7 @@ Välj en Azure AD-klient som ska användas för vårt exempel från slut punkt t
     > Nu har du inte webb adressen för din Player-app än.  Om du kör appen från din localhost-webbserver kan du bara använda värde paret localhost. När du har distribuerat din Player-app kan du lägga till posten här med den distribuerade URL: en.  Om du glömmer att göra det visas ett fel meddelande i Azure AD-inloggningen.
 
 1. Klicka på **Spara**.
-1. Klicka slutligen på **autentisering**om du vill kontrol lera att konfigurationen är korrekt.  Vyn autentisering visas. Ditt klient program visas som en enda sida (SPA), omdirigerings-URI visas och tilldelnings typen kommer att vara auktoriseringskod med PKCE.
+1. Klicka slutligen på **autentisering** om du vill kontrol lera att konfigurationen är korrekt.  Vyn autentisering visas. Ditt klient program visas som en enda sida (SPA), omdirigerings-URI visas och tilldelnings typen kommer att vara auktoriseringskod med PKCE.
 
 ### <a name="set-up-the-media-services-account-content-key-policy-and-streaming-policies"></a>Konfigurera princip för Media Services-kontots innehålls nyckel och strömmande principer
 
@@ -307,7 +307,7 @@ Om du planerar att använda en annan IDE/webb plattform och/eller en webb server
 1. Kopiera *mapparna* som finns i den *offentliga* mappen till roten i den nya katalogen.
 1. Ändra fil namns tilläggen `.ejs` till `.html` . (Ingen variabel på Server sidan används så att du kan ändra den på ett säkert sätt.)
 1. Öppna *index.html* i VSC (eller annan kod redigerare) och ändra `<script>` `<link>` Sök vägarna så att de återspeglar var filerna finns.  Om du har följt de föregående stegen behöver du bara ta bort `\` i sökvägen.  Till exempel `<script type="text/javascript" src="/javascript/constants.js"></script>` blir `<script type="text/javascript" src="javascript/constants.js"></script>` .
-1. Anpassa konstanterna i *Java Script/constants.js- * filen som i alternativ 1.
+1. Anpassa konstanterna i *Java Script/constants.js-* filen som i alternativ 1.
 
 ## <a name="common-customer-scenarios"></a>Vanliga kund scenarier
 
@@ -344,7 +344,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 *Grupp* anspråk är medlem i ett [begränsat anspråk som angetts](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) i Azure AD.
 
-#### <a name="test"></a>Testa
+#### <a name="test"></a>Test
 
 1. Logga in med det *premium_user* kontot. Du bör kunna spela det skyddade innehållet.
 1. Logga in med det *basic_user* kontot. Du får ett fel meddelande som anger att videon är krypterad, men det finns ingen nyckel för att dekryptera den. Om du visar händelserna, felen och nedladdningarna med list rutan längst ned i spelarens diagnostiska överlägg, bör fel meddelandet indikera licens hämtnings fel på grund av det saknade anspråks värdet för grupp anspråk i det JWT som utfärdats av Azure AD-token slut punkt.

@@ -4,10 +4,10 @@ description: 'Snabb start: den här artikeln innehåller information om hur du s
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 2020534a3984453bcd6eff7ad0f5c02d9e7a29ff
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368357"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Snabb start: data strömning med Event Hubs med Kafka-protokollet
@@ -16,7 +16,7 @@ Den här snabb starten visar hur du strömmar till Event Hubs utan att ändra pr
 > [!NOTE]
 > Det här exemplet finns på [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna slutföra den här snabbstarten behöver du följande:
 

@@ -9,27 +9,27 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 1333a135f3e123757e268513f73e8329537e630b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538212"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Interna fel
 
-I den här artikeln beskrivs orsaker och lösningar för **500Xxx internt fel** .
+I den här artikeln beskrivs orsaker och lösningar för **500Xxx internt fel**.
 
 ## <a name="symptoms"></a>Symtom
 
 Din begäran om IoT Hub Miss lyckas med ett fel som börjar med 500 och/eller en viss typ av "Server fel". Några möjligheter är:
 
-* **500001 ServerError** : IoT Hub stötte på ett problem på Server sidan.
+* **500001 ServerError**: IoT Hub stötte på ett problem på Server sidan.
 
-* **500008 GenericTimeout** : det gick inte att slutföra anslutningsbegäran innan tids gränsen nåddes för IoT Hub.
+* **500008 GenericTimeout**: det gick inte att slutföra anslutningsbegäran innan tids gränsen nåddes för IoT Hub.
 
-* **ServiceUnavailable (ingen felkod)** : IoT Hub påträffade ett internt fel.
+* **ServiceUnavailable (ingen felkod)**: IoT Hub påträffade ett internt fel.
 
-* **InternalServerError (ingen felkod)** : IoT Hub påträffade ett internt fel.
+* **InternalServerError (ingen felkod)**: IoT Hub påträffade ett internt fel.
 
 ## <a name="cause"></a>Orsak
 

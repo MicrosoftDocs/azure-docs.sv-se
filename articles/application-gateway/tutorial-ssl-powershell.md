@@ -10,13 +10,13 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396574"
 ---
-# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Skapa en Application Gateway med TLS-avslutning med Azure PowerShell
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Skapa en programgateway med TLS-avslutning med hjälp av Azure PowerShell
 
 Du kan använda Azure PowerShell för att skapa en [Programgateway](overview.md) med ett certifikat för [TLS/SSL-avslutning](ssl-overview.md) som använder en [skalnings uppsättning för virtuella datorer](../virtual-machine-scale-sets/overview.md) för backend-servrar. I det här exemplet innehåller skalningsuppsättningen två virtuella datorinstanser i serverdelens standardpool i programgatewayen. 
 
@@ -27,7 +27,7 @@ I den här artikeln kan du se hur du:
 * Skapa en programgateway med certifikatet
 * Skapa en VM-skalningsuppsättning med serverdelens standardpool
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

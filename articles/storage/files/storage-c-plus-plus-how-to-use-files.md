@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629707"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Utveckla för Azure Files med C++
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Räkna upp filer och kataloger i en Azure-filresurs
 
-Att hämta en lista över filer och kataloger i en resurs görs enkelt genom att anropa **list_files_and_directories** på en **cloud_file_directory** referens. För att få åtkomst till den omfattande uppsättningen med egenskaper och metoder för en returnerad **list_file_and_directory_item** , måste du anropa metoden **list_file_and_directory_item. as _file** för att hämta ett **cloud_file** -objekt, eller **list_file_and_directory_item. as _directory** -metoden för att hämta ett **cloud_file_directory** -objekt.
+Att hämta en lista över filer och kataloger i en resurs görs enkelt genom att anropa **list_files_and_directories** på en **cloud_file_directory** referens. För att få åtkomst till den omfattande uppsättningen med egenskaper och metoder för en returnerad **list_file_and_directory_item**, måste du anropa metoden **list_file_and_directory_item. as _file** för att hämta ett **cloud_file** -objekt, eller **list_file_and_directory_item. as _directory** -metoden för att hämta ett **cloud_file_directory** -objekt.
 
 Följande kod visar hur du hämtar och matar ut URI för varje objekt i resursens rot Katalog.
 
@@ -369,5 +369,5 @@ Utforska gärna dessa resurser om du vill veta mer om Azure Storage:
 
 * [Storage-klientbibliotek för C++](https://github.com/Azure/azure-storage-cpp)
 * [Azure Storage fil tjänst exempel i C++](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure Lagringsutforskaren](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure Storage dokumentation](https://azure.microsoft.com/documentation/services/storage/)

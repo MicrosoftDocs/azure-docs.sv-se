@@ -14,10 +14,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8cb426239fe9f3dea207df06b6f2bafbdb54058a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88117676"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Översikt över Azure Active Directory för utvecklare (v 1.0)
@@ -48,7 +48,7 @@ Följande artiklar innehåller detaljerad information om API:er, protokollmeddel
 - [Kod exempel](sample-v1-code.md) En lista över alla kod exempel för Azure AD.
 - [Ord lista](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Terminologi och definitioner av ord som används i den här dokumentationen.
 
-## <a name="videos"></a>Videoklipp
+## <a name="videos"></a>Video
 
 Se [Azure Active Directory Developer Platform-videor](videos.md) för att hjälpa till att migrera till den nya Microsoft Identity Platform.
 

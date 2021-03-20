@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
 ms.openlocfilehash: d6b23213d9d986c62a227b3e182a22896d128222
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442549"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med HRworks Single Sign-On
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera HRworks Single Sign-On 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -48,7 +48,7 @@ Om du vill konfigurera integrationen av HRworks Single Sign-On i Azure AD måste
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **HRworks enkel inloggning** i sökrutan.
 1. Välj **HRworks enkel inloggning** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -94,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -106,13 +106,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till HRworks enkel inloggning.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **HRworks enkel inloggning**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -132,7 +132,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Om du vill konfigurera HRworks enstaka Sign-On manuellt öppnar du ett nytt webbläsarfönster och loggar in på din Sign-On HRworks-företags webbplats som administratör och utför följande steg:
 
-1. Klicka på grunderna för **Administratörs**  >  **Basics**  >  **säkerhet**  >  **enkel inloggning på** den vänstra sidan av meny raden och utför följande steg:
+1. Klicka på grunderna för **Administratörs**  >    >  **säkerhet**  >  **enkel inloggning på** den vänstra sidan av meny raden och utför följande steg:
 
     ![Konfigurera enkel inloggning](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
@@ -158,7 +158,7 @@ Om du vill aktivera Azure AD-användare loggar du in på HRworks enkel inloggnin
 
      ![Skärm bild som visar skärm bild visar H R Works-sidan med personer och ny person har valts.](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
-1. Klicka på **Nästa**på popup-fönstret.
+1. Klicka på **Nästa** på popup-fönstret.
 
     ![Skärm bild som visar en lista över länder som du kan välja bland för personen.](./media/hrworks-single-sign-on-tutorial/configure03.png)
 

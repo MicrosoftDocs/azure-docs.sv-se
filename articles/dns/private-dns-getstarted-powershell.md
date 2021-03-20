@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424384"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Snabb start: skapa en privat Azure-DNS-zon med hjälp av Azure PowerShell
@@ -22,7 +22,7 @@ Den här artikeln visar hur du skapar din första privata DNS-zon och DNS-post m
 
 En DNS-zon används som värd åt DNS-posterna för en viss domän. Om du vill låta Azure DNS vara värd för din domän så måste du skapa en DNS-zon för det domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Om du vill publicera en privat DNS-zon i ett virtuellt nätverk anger du listan med virtuella nätverk som får matcha poster i zonen.  Dessa kallas *länkade* virtuella nätverk. När autoregistrering har Aktiver ATS uppdaterar Azure DNS även zon posterna när en virtuell dator skapas, ändrar dess IP-adress eller raderas.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -108,7 +108,7 @@ Det här kan ta några minuter.
 
 ## <a name="create-an-additional-dns-record"></a>Skapa en ytterligare DNS-post
 
-Du skapar postuppsättningar med hjälp av cmdleten `New-AzPrivateDnsRecordSet`. I följande exempel skapas en post med det relativa namnet **db** i DNS-zonen **Private.contoso.com**i resurs gruppen **MyAzureResourceGroup**. Det fullständigt kvalificerade namnet på post uppsättningen är **db.Private.contoso.com**. Posttypen är ”A” med IP-adressen ”10.2.0.4”, och TTL är 3600 sekunder.
+Du skapar postuppsättningar med hjälp av cmdleten `New-AzPrivateDnsRecordSet`. I följande exempel skapas en post med det relativa namnet **db** i DNS-zonen **Private.contoso.com** i resurs gruppen **MyAzureResourceGroup**. Det fullständigt kvalificerade namnet på post uppsättningen är **db.Private.contoso.com**. Posttypen är ”A” med IP-adressen ”10.2.0.4”, och TTL är 3600 sekunder.
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
@@ -202,4 +202,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Azure DNS Private Zones scenarier](private-dns-scenarios.md)
+> [Scenarier för Azure DNS Private Zones](private-dns-scenarios.md)

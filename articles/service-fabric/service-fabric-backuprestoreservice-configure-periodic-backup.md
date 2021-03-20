@@ -4,10 +4,10 @@ description: Använd Service Fabric periodiska säkerhets kopierings-och återst
 ms.topic: article
 ms.date: 2/01/2019
 ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018893"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Förstå regelbunden konfiguration av säkerhets kopiering i Azure Service Fabric
@@ -168,7 +168,7 @@ Anta att dessa programs krav för säkerhets kopiering av data är följande
 
 För att åtgärda dessa krav för säkerhets kopiering, skapas säkerhets kopierings principer BP_1 BP_5 skapas och säkerhets kopiering aktive ras enligt följande.
 1. MyApp_A
-    1. Skapa säkerhets kopierings princip, _BP_1_, med frekvens-baserat säkerhets kopierings schema där frekvensen är inställd på 24 timmar. och lagring av säkerhets kopior som kon figurer ATS för att använda lagrings platsen _BackupStore1_. Aktivera den här principen för _MyApp_A_ program MyApp_A [att använda Aktivera API för program säkerhets kopiering](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) . Den här åtgärden möjliggör säkerhets kopiering av data med hjälp av säkerhets kopierings princip _BP_1_ för alla partitioner med _pålitliga tillstånds känsliga tjänster_ och _Reliable Actors_ som hör till program _MyApp_A_.
+    1. Skapa säkerhets kopierings princip, _BP_1_, med frekvens-baserat säkerhets kopierings schema där frekvensen är inställd på 24 timmar. och lagring av säkerhets kopior som kon figurer ATS för att använda lagrings platsen _BackupStore1_. Aktivera den här principen för  program MyApp_A [att använda Aktivera API för program säkerhets kopiering](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) . Den här åtgärden möjliggör säkerhets kopiering av data med hjälp av säkerhets kopierings princip _BP_1_ för alla partitioner med _pålitliga tillstånds känsliga tjänster_ och _Reliable Actors_ som hör till program _MyApp_A_.
 
     2. Skapa säkerhets kopierings princip, _BP_2_, med frekvens-baserat säkerhets kopierings schema där frekvensen anges till 1 timme. och lagring av säkerhets kopior som kon figurer ATS för att använda lagrings platsen _BackupStore1_. Aktivera den här principen för tjänst- _SvcA3_ med hjälp av Aktivera API för [säkerhets kopiering av tjänst](/rest/api/servicefabric/sfclient-api-enableservicebackup) . Den här åtgärden åsidosätter den spridda princip _BP_1_ genom uttryckligen aktiverade säkerhets kopierings principer _BP_2_ för alla _SvcA3_ som leder till data säkerhets kopiering med säkerhets kopierings princip _BP_2_ för dessa partitioner.
 
@@ -183,7 +183,7 @@ Följande diagram illustrerar uttryckligen aktiverade säkerhets kopierings prin
 
 ![Service Fabric programhierarki][0]
 
-## <a name="disable-backup"></a>Inaktivera säkerhets kopiering
+## <a name="disable-backup"></a>Inaktivera säkerhetskopiering
 Säkerhets kopierings principer kan inaktive ras när det inte finns några behov av att säkerhetskopiera data. Säkerhets kopierings principen som är aktive rad i ett _program_ kan bara inaktive ras i samma _program_ med hjälp av inaktivera API för [program säkerhets](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) kopiering. säkerhets kopierings principen som är aktive rad på en _tjänst_ kan inaktive ras _på samma_ _tjänst_ som använder inaktivera [API för](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) [tjänst säkerhets kopiering](/rest/api/servicefabric/sfclient-api-disableservicebackup) och säkerhets kopierings principen som är aktive rad på en _partition_ kan
 
 * Om du inaktiverar säkerhets kopierings principen för ett _program_ stoppas alla periodiska data säkerhets kopieringar på grund av spridningen av säkerhets kopierings principen till pålitliga tillstånds känsliga diskpartitioner eller tillförlitliga aktörs partitioner.

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572250"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Resurs loggar för Azure SignalR service
@@ -162,7 +162,7 @@ Skillnaden mellan `ConnectionAborted` och `ConnectionEnded` är `ConnectionEnded
 
 Avbrotts orsakerna visas i följande tabell:
 
-Anledning | Description
+Anledning | Beskrivning
 ------- | ------- 
 Antalet anslutningar når gränsen | Antalet anslutningar når gränsen för den aktuella pris nivån. Överväg att skala upp tjänst enhet
 Program servern stängde anslutningen | App Server utlöser avbrottet. Det kan betraktas som ett förväntat avbrott

@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370941"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Tilldela roller som administratör och icke-administratör till användare med Azure Active Directory
@@ -65,9 +65,9 @@ Om du behöver ta bort roll tilldelningen från en användare kan du också gör
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>Ta bort en roll tilldelning från en användare
 
-1. Välj **Azure Active Directory**, Välj **användare**och Sök sedan efter och välj den användare som ska få roll tilldelningen borttagen. Till exempel _Alain Charon_.
+1. Välj **Azure Active Directory**, Välj **användare** och Sök sedan efter och välj den användare som ska få roll tilldelningen borttagen. Till exempel _Alain Charon_.
 
-2. Välj **tilldelade roller**, Välj **program administratör**och välj sedan **ta bort tilldelning**.
+2. Välj **tilldelade roller**, Välj **program administratör** och välj sedan **ta bort tilldelning**.
 
     ![Sidan tilldelade roller, som visar den valda rollen och alternativet ta bort](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 

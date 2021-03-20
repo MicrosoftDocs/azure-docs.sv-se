@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 4c87887f77d5f227fe4d4cdee220397289878d7f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99574473"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Felsöka fil resurser i Azure NFS
@@ -99,7 +99,7 @@ Följande diagram visar anslutningar med hjälp av offentliga slut punkter.
 
 :::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg" alt-text="Diagram över anslutning till offentliga slut punkter." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg":::
 
-- [Privat slutpunkt](storage-files-networking-endpoints.md#create-a-private-endpoint)
+- [Privat slut punkt](storage-files-networking-endpoints.md#create-a-private-endpoint)
     - Åtkomst är säkrare än tjänstens slut punkt.
     - Åtkomst till NFS-resurs via privat länk är tillgänglig i och utanför lagrings kontots Azure-region (över flera regioner lokalt)
     - Virtuell nätverks-peering med virtuella nätverk som finns i den privata slut punkten ger NFS-resurs åtkomst till klienter i peer-kopplade virtuella nätverk.

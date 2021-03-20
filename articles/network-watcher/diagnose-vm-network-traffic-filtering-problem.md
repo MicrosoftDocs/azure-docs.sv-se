@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: e78c4a2f30cac1d6c503da6d1d2fdbc1105065e0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492513"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Snabbstart: Diagnostisera problem med filtreringen av nätverkstrafik på virtuella datorer med hjälp av Azure Portal
 
 I den här snabbstarten ska du distribuera en virtuell dator (VM) och kontrollera kommunikationen till en IP-adress och URL och från en IP-adress. Du lär dig också hur du fastställer orsaken till ett kommunikationsfel och hur du löser problemet.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="log-in-to-azure"></a>Logga in på Azure
 
@@ -47,7 +47,7 @@ Logga in på Azure Portal på https://portal.azure.com.
     |Lösenord| Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de definierade komplexitets kraven.|
     |Prenumeration| Välj din prenumeration.|
     |Resursgrupp| Välj **Skapa ny** och skriv **myResourceGroup**.|
-    |Plats| Välj **USA, östra**|
+    |Location| Välj **USA, östra**|
 
 4. Välj en storlek för den virtuella datorn och sedan **Välj**.
 5. Acceptera standardinställningarna under **Inställningar** och välj **OK**.

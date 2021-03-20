@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 5f9410cc91174420662bb5efc67c8904b5d5e647
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018995"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>Kör U-SQL-skript på din lokala dator
@@ -93,7 +93,7 @@ Mer skillnader mellan **lokala datorer** och konton med **lokalt projekt** visas
 |----------------|---------------|---------------|
 |Lokal åtkomst|Kan nås av alla projekt.|Endast motsvarande projekt har åtkomst till det här kontot.|
 |Lokal rotmapp|En permanent lokal mapp. Konfigureras med hjälp av **verktyg**  >  **data Lake**  >  **alternativ och inställningar**.|En tillfällig mapp som skapats för varje lokal körning under arbets katalogen U-SQL-projekt. Mappen rensas när en återuppbyggnad eller omkörning sker.|
-|Indata för ett U-SQL-skript|Den relativa sökvägen under den permanenta lokala data rot katalogen.|Ange till test data källa för **U-SQL-projektets projekt egenskap**  >  **Test Data Source**. Alla filer och undermappar kopieras till den tillfälliga datarotmappen innan en lokal körning.|
+|Indata för ett U-SQL-skript|Den relativa sökvägen under den permanenta lokala data rot katalogen.|Ange till test data källa för **U-SQL-projektets projekt egenskap**  >  . Alla filer och undermappar kopieras till den tillfälliga datarotmappen innan en lokal körning.|
 |Utdata för ett U-SQL-skript|Relativ sökväg under den permanenta lokala data rot katalogen.|Utdata till den tillfälliga datarotmappen. Resultaten rensas när en återuppbyggnad eller omkörning sker.|
 |Refererad databas distribution|Refererade databaser distribueras inte automatiskt när de körs mot ett **lokalt dator** konto. Det är detsamma för att skicka till ett Azure Data Lake Analytics-konto.|Refererade databaser distribueras till det **lokala projekt** kontot automatiskt före en lokal körning. Alla databas miljöer rensas och omdistribueras när en återuppbyggnad eller omkörning sker.|
 

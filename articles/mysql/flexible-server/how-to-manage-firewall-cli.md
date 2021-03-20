@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545080"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Skapa och hantera Azure Database for MySQL flexibla Server brand Väggs regler med hjälp av Azure CLI
@@ -89,11 +89,11 @@ I [referens dokumentationen](/cli/azure/mysql/flexible-server) för Azure CLI hi
 Kommandot **AZ MySQL Flexible-Server Firewall-Rule** används från Azure CLI för att skapa, ta bort, Visa och uppdatera brand Väggs regler.
 
 Kommandon:
-- **skapa** : skapa en flexibel Server brand Väggs regel.
-- **lista** : visar en lista över de flexibla reglerna för Server brand väggen.
-- **Uppdatera** : uppdatera en regel för en flexibel Server brand vägg.
-- **Visa** : Visa information om en flexibel Server brand Väggs regel.
-- **ta bort** : ta bort en flexibel Server brand Väggs regel.
+- **skapa**: skapa en flexibel Server brand Väggs regel.
+- **lista**: visar en lista över de flexibla reglerna för Server brand väggen.
+- **Uppdatera**: uppdatera en regel för en flexibel Server brand vägg.
+- **Visa**: Visa information om en flexibel Server brand Väggs regel.
+- **ta bort**: ta bort en flexibel Server brand Väggs regel.
 
 I [referens dokumentationen](/cli/azure/mysql/flexible-server) för Azure CLI hittar du en fullständig lista över KONFIGURERBARa CLI-parametrar. I nedanstående kommandon kan du till exempel välja resurs gruppen.
 

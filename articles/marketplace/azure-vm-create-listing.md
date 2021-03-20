@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629605"
 ---
 # <a name="how-to-configure-virtual-machine-offer-listing-details"></a>Så här konfigurerar du List information om erbjudanden för virtuella datorer
@@ -23,7 +23,7 @@ På sidan **erbjudande lista** (Välj från vänster-navigerings-menyn i Partner
 
 ## <a name="marketplace-details"></a>Information om Marketplace
 
-### <a name="name"></a>Namn
+### <a name="name"></a>Name
 
 Namnet som du anger här visas för kunder som titel på din erbjudande lista. Det här fältet fylls i automatiskt med det namn som du angav i rutan för **erbjudet alias** när du skapade erbjudandet. Namnet:
 
@@ -55,8 +55,8 @@ Ange webb adressen (URL) för din organisations sekretess policy. Se till att di
 
 Ge kompletterande online-dokument om ditt erbjudande. Om du vill lägga till en länk väljer du **Lägg till en länk** och fyller i följande fält:
 
-- **Namn** : kunder kommer att se namnet på informations sidan.
-- **Länk** : Ange en webb adress som kunder kan använda för att visa ditt online-dokument.
+- **Namn**: kunder kommer att se namnet på informations sidan.
+- **Länk**: Ange en webb adress som kunder kan använda för att visa ditt online-dokument.
 
 ## <a name="customer-support-links"></a>Kund support länkar
 
@@ -67,15 +67,15 @@ Ange support webbplatsen där kunderna kan kontakta support teamet.
 
 ## <a name="partner-support-contact"></a>Support kontakt för partner
 
-Ange **namn** , **e-postadress** och **telefonnummer** för Microsoft-partner som ska användas när kunderna öppnar ett support ärende. Den här informationen visas inte på Azure Marketplace.
+Ange **namn**, **e-postadress** och **telefonnummer** för Microsoft-partner som ska användas när kunderna öppnar ett support ärende. Den här informationen visas inte på Azure Marketplace.
 
 ## <a name="engineering-contact"></a>Teknisk kontakt
 
-Ange **namn** , **e-postadress** och **telefonnummer** för Microsoft som ska användas när det finns problem med erbjudandet, inklusive problem med certifieringen. Den här informationen visas inte på Azure Marketplace.
+Ange **namn**, **e-postadress** och **telefonnummer** för Microsoft som ska användas när det finns problem med erbjudandet, inklusive problem med certifieringen. Den här informationen visas inte på Azure Marketplace.
 
 ## <a name="cloud-solution-provider-program-contact"></a>Program kontakt för Cloud Solution Provider
 
-Ange **namn** , **e-postadress** och **telefon** för den person som hanterar ditt CSP-program (om tillämpligt). Den här informationen visas inte på Azure Marketplace. För **CSP-programmet marknadsförings material** anger du webb adressen där partner i det här programmet kan visa ditt marknadsförings material.
+Ange **namn**, **e-postadress** och **telefon** för den person som hanterar ditt CSP-program (om tillämpligt). Den här informationen visas inte på Azure Marketplace. För **CSP-programmet marknadsförings material** anger du webb adressen där partner i det här programmet kan visa ditt marknadsförings material.
 
 ## <a name="marketplace-media"></a>Marketplace-Media
 

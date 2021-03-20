@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92426373"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Snabb start: etablera en python-enhet med symmetriska nycklar
@@ -32,7 +32,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Se till att du har [Python 3,7](https://www.python.org/downloads/) eller senare installerat på din Windows-baserade dator. Du kan kontrol lera din version av python genom att köra `python --version` .
 
@@ -49,7 +49,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
-3. Navigera till den `azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios` katalog där exempel filen _provision_symmetric_key. py_finns.
+3. Navigera till den `azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios` katalog där exempel filen _provision_symmetric_key. py_ finns.
    
    ```console
    cd azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios
@@ -69,7 +69,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 
 3. Ange följande information på panelen **Lägg till registrering** och tryck på knappen **Spara** .
 
-   - **Mekanism:** välj **Symmetrisk nyckel** som identitetsattesterings*mekanism*.
+   - **Mekanism:** välj **Symmetrisk nyckel** som identitetsattesterings *mekanism*.
 
    - **Generera nycklar automatiskt**: Markera den här kryss rutan.
 

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 15cdcefe628a392704e650b560243e2f6a134ec2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629996"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>Felsöka vanliga problem med Routning
@@ -113,7 +113,7 @@ Det finns flera möjliga orsaker till det här problemet:
 
 Du har skapat en Azure frontend-instans och konfigurerat en klient dels värd, en backend-pool med minst en server del i den och en routningsprincip som ansluter klient dels värden till backend-poolen. Ditt innehåll verkar inte vara tillgängligt när en begäran går till den konfigurerade klient dels värden eftersom en status kod för HTTP 411 returneras.
 
-Svar på dessa förfrågningar kan också innehålla en HTML-felsida i svars texten som innehåller en för klar ande instruktion. Till exempel: `HTTP Error 411. The request must be chunked or have a content length`.
+Svar på dessa förfrågningar kan också innehålla en HTML-felsida i svars texten som innehåller en för klar ande instruktion. Exempel: `HTTP Error 411. The request must be chunked or have a content length`.
 
 ### <a name="cause"></a>Orsak
 

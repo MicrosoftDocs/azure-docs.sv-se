@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
 ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575661"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Skriv om HTTP-huvuden med Application Gateway
@@ -60,7 +60,7 @@ Application Gateway använder servervariabler för att lagra användbar informat
 
 Application Gateway stöder följande servervariabler:
 
-| Variabelnamn | Description                                                  |
+| Variabelnamn | Beskrivning                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | Det X-vidarebefordrade – för fältet för klient begär ande huvud med `client_ip` variabeln (se förklaringen senare i den här tabellen) som läggs till i formatet IP1, IP2, IP3 och så vidare. Om fältet X-forwarded inte finns i klient begär ande huvudet `add_x_forwarded_for_proxy` är variabeln lika med `$client_ip` variabeln. Den här variabeln är särskilt användbar när du vill skriva om den X-vidarebefordrade-för-rubrik som angetts av Application Gateway så att sidhuvudet endast innehåller IP-adressen utan portinformation. |
 | ciphers_supported          | En lista över de chiffer som stöds av klienten.          |

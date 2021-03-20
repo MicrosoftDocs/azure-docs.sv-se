@@ -10,10 +10,10 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371995"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Felsöka fel vid redundansväxling av virtuell VMware-dator eller fysisk dator till Azure
@@ -46,7 +46,7 @@ Site Recovery kunde inte skapa en misslyckad virtuell dator i Azure. Det kan ber
 
 För att kunna ta upp en dator i Azure kräver Azure-miljön att några av driv rutinerna är i Start tillstånd och tjänster som DHCP ska vara i Autostart-tillstånd. Hydrering-aktivitet, vid tidpunkten för redundansväxlingen, konverterar start typen för **ATAPI-, intelide-, storflt-, VMBus-och storvsc-drivrutiner** till Start. Den konverterar också start typen för några tjänster som DHCP till Autostart. Den här aktiviteten kan inte utföras på grund av specifika problem i miljön. 
 
-Om du vill ändra start typen för driv rutiner manuellt för **Windows gäst operativ system**följer du stegen nedan:
+Om du vill ändra start typen för driv rutiner manuellt för **Windows gäst operativ system** följer du stegen nedan:
 
 1. [Hämta](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) skriptet No-hydrering och kör det på följande sätt. Det här skriptet kontrollerar om den virtuella datorn kräver hydrering.
 
@@ -85,10 +85,10 @@ Detaljerad information om hur du felsöker SSH-problem finns i vår dokumentatio
 Om knappen **Anslut** på den misslyckade virtuella datorn i Azure är nedtonad och du inte är ansluten till Azure via en Express Route eller plats-till-plats-VPN-anslutning, sedan
 
 1. Gå till **virtuella dator**  >  **nätverk**, klicka på namnet på det nödvändiga nätverks gränssnittet.  ![Skärm bild som visar sidan nätverk för en virtuell dator med det angivna nätverks gränssnitts namnet.](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigera till **IP-konfigurationer**och klicka sedan på fältet namn för obligatorisk IP-konfiguration. ![Skärm bild som visar sidan I P-konfigurationer för nätverks gränssnittet med namnet I P-konfigurationen valt.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+2. Navigera till **IP-konfigurationer** och klicka sedan på fältet namn för obligatorisk IP-konfiguration. ![Skärm bild som visar sidan I P-konfigurationer för nätverks gränssnittet med namnet I P-konfigurationen valt.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Om du vill aktivera offentlig IP-adress klickar du på **Aktivera**. ![Aktivera IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Klicka på **Konfigurera nödvändiga inställningar**  >  **Skapa ny**. ![Skapa ny](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Ange namnet på den offentliga adressen, Välj standard alternativen för **SKU** och **tilldelning**och klicka sedan på **OK**.
+5. Ange namnet på den offentliga adressen, Välj standard alternativen för **SKU** och **tilldelning** och klicka sedan på **OK**.
 6. Spara ändringarna genom att klicka på **Spara**.
 7. Stäng panelerna och navigera till **översikts** avsnittet på den virtuella datorn för att ansluta/RDP.
 

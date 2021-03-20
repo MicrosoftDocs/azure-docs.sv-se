@@ -8,10 +8,10 @@ ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
 ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88010131"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Konfigurera Microsoft Endpoint Configuration Manager
@@ -37,7 +37,7 @@ Ta emot uppdateringar:
 4. Välj fliken **Produkter**.
 5. Markera kryss rutan med texten **Windows Server, version 1903 och senare**.
 6. Gå till program **bibliotek**  >  **Översikt**  >  **program uppdateringar**  >  **alla program uppdateringar** och välj **Synkronisera program uppdateringar**.
-7. Kontrol lera att ändringarna har sparats i filen wsyncmgr. log i **program**filen  >  **Microsoft Configuration Manager**  >  **logs** . Det kan ta några minuter att synkronisera uppdateringarna.
+7. Kontrol lera att ändringarna har sparats i filen wsyncmgr. log i **program** filen  >  **Microsoft Configuration Manager**  >  **logs** . Det kan ta några minuter att synkronisera uppdateringarna.
 
 ## <a name="create-a-query-based-collection"></a>Skapa en fråge baserad samling
 
@@ -47,9 +47,9 @@ Så här skapar du en samling:
 
 1. Välj **till gångar och efterlevnad**.
 2. Gå till **Översikt över**  >  **enhets samlingar** och högerklicka på **enhets samlingar** och välj **skapa enhets samling** på den nedrullningsbara menyn.
-3. På fliken **Allmänt** i menyn som öppnas anger du ett namn som beskriver din samling i fältet **namn** . I fältet **kommentar** kan du ge ytterligare information som beskriver vad samlingen är. I **begränsa insamling**definierar du vilka datorer som du vill inkludera i samlings frågan.
-4. På fliken **medlemskaps regler** lägger du till en regel för din fråga genom att välja **Lägg till regel**och sedan **fråga regel**.
-5. I **Egenskaper för frågeregel**anger du ett namn för regeln och definierar sedan regelns parametrar genom att välja **Redigera frågeuttryck**.
+3. På fliken **Allmänt** i menyn som öppnas anger du ett namn som beskriver din samling i fältet **namn** . I fältet **kommentar** kan du ge ytterligare information som beskriver vad samlingen är. I **begränsa insamling** definierar du vilka datorer som du vill inkludera i samlings frågan.
+4. På fliken **medlemskaps regler** lägger du till en regel för din fråga genom att välja **Lägg till regel** och sedan **fråga regel**.
+5. I **Egenskaper för frågeregel** anger du ett namn för regeln och definierar sedan regelns parametrar genom att välja **Redigera frågeuttryck**.
 6. Välj **Visa frågeuttryck**.
 7. Ange följande sträng i instruktionen:
 

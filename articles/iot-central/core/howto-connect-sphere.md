@@ -9,10 +9,10 @@ author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
 ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123431"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Ansluta en Azure Sphere-enhet till Azure IoT Central-programmet
@@ -47,13 +47,13 @@ För att slutföra stegen i den här artikeln behöver du följande resurser:
 
 Så här skapar du en Azure Sphere enhet i IoT Central:
 
-1. I ditt Azure IoT Central-program väljer du fliken **enhets mallar** och sedan **+ ny**. I avsnittet **Använd en aktuell enhets mall**väljer du **Azure Sphere exempel enhet**.
+1. I ditt Azure IoT Central-program väljer du fliken **enhets mallar** och sedan **+ ny**. I avsnittet **Använd en aktuell enhets mall** väljer du **Azure Sphere exempel enhet**.
 
     :::image type="content" source="media/howto-connect-sphere/sphere-create-template.png" alt-text="Enhets mal len för Azure Sphere DevKit":::
 
 1. I enhets mal len redigerar du vyn **Översikt** för att visa **temperatur** och **knapp tryckning**.
 
-1. Välj visnings typ för **redigerings enhet och moln data** för att lägga till en annan vy som visar **status lampan**för Läs/skriv-egenskapen. Dra egenskapen **status lampa** till den tomma, prickade rektangeln på höger sida av formuläret. Välj **Spara**.
+1. Välj visnings typ för **redigerings enhet och moln data** för att lägga till en annan vy som visar **status lampan** för Läs/skriv-egenskapen. Dra egenskapen **status lampa** till den tomma, prickade rektangeln på höger sida av formuläret. Välj **Spara**.
 
 ## <a name="prepare-the-device"></a>Förbered enheten
 
@@ -67,7 +67,7 @@ Om du vill aktivera exemplet för att ansluta till IoT Central måste du [Konfig
 
 När enheten är ansluten till IoT Central kan du se Telemetrin på instrument panelen.
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Enhets mal len för Azure Sphere DevKit":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Instrument panel för Azure Sphere DevKit":::
 
 ## <a name="create-a-simulated-device"></a>Skapa en simulerad enhet
 

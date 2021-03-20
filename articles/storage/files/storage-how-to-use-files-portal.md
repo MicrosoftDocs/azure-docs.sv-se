@@ -8,18 +8,18 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629826"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Snabbstart: Skapa och hantera Azure-filresurser med Azure-portalen 
 [Azure Files](storage-files-introduction.md) är Microsofts lättanvända filsystem i molnet. Azure-filresurser kan monteras i Windows, Linux och macOS. Den här guiden vägleder dig igenom grunderna i att arbeta med Azure-filresurser med [Azure Portal](https://portal.azure.com/).
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
 ## <a name="create-an-azure-file-share"></a>Skapa en Azure-filresurs
@@ -72,7 +72,7 @@ För att ladda upp en fil, måste du först skapa eller välja en fil som ska la
 
 3. Klicka på mappikonen för att öppna ett fönster för att bläddra bland dina lokala filer. 
 4. Välj en fil och klicka sedan på **Öppna**. 
-5. På sidan **Ladda upp filer** , kontrollera filnamnet och klicka sedan på **Ladda upp**.
+5. På sidan **Ladda upp filer**, kontrollera filnamnet och klicka sedan på **Ladda upp**.
 6. När du är klar ska filen visas i listan på sidan **myDirectory**.
 
 #### <a name="download-a-file"></a>Ladda ned en fil

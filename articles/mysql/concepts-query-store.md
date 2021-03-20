@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98201033"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Övervaka Azure Database for MySQL prestanda med Query Store
@@ -161,7 +161,7 @@ Den här vyn returnerar information om väntande händelser i Frågearkivet. Det
 | `count_star` | bigint (20) | NO| Antal väntande händelser som samplats under intervallet för frågan |
 | `sum_timer_wait_ms` | double | NO| Total vänte tid (i millisekunder) för den här frågan under intervallet |
 
-### <a name="functions"></a>Funktioner
+### <a name="functions"></a>Functions
 
 | **Namn**| **Beskrivning** |
 |---|---|

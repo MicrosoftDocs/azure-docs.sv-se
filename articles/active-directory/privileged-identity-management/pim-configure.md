@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370193"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Vad är Azure AD Privileged Identity Management?
@@ -47,7 +47,7 @@ Privileged Identity Management tillhandahåller tidsbaserad och godkännande-bas
 
 ## <a name="what-can-i-do-with-it"></a>Vad kan jag göra med det?
 
-När du har konfigurerat Privileged Identity Management visas alternativ för **aktiviteter**, **hantering**och **aktivitet** på den vänstra navigerings menyn. Som administratör väljer du mellan alternativ, till exempel hantering av **Azure AD-roller**, hantering av resurs roller i **Azure** eller privilegierade åtkomst grupper. När du väljer vad du vill hantera visas lämplig uppsättning alternativ för det alternativet.
+När du har konfigurerat Privileged Identity Management visas alternativ för **aktiviteter**, **hantering** och **aktivitet** på den vänstra navigerings menyn. Som administratör väljer du mellan alternativ, till exempel hantering av **Azure AD-roller**, hantering av resurs roller i **Azure** eller privilegierade åtkomst grupper. När du väljer vad du vill hantera visas lämplig uppsättning alternativ för det alternativet.
 
 ![Skärm bild av Privileged Identity Management i Azure Portal](./media/pim-configure/pim-quickstart.png)
 

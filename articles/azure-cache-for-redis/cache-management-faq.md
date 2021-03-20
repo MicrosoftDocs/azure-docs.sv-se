@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537668"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Vanliga frågor och svar om Azure cache för Redis Management
@@ -142,7 +142,7 @@ Så här konfigurerar du den här inställningen:
     ```
 
     > [!NOTE]
-    > Värdet som anges av den här metoden är en global inställning som påverkar hela AppDomain. Om du till exempel har en dator med 4 kärnor och vill ställa in *minWorkerThreads* och *minIoThreads* på 50 per processor under körningen använder du **trådpool. SetMinThreads (200, 200)** .
+    > Värdet som anges av den här metoden är en global inställning som påverkar hela AppDomain. Om du till exempel har en dator med 4 kärnor och vill ställa in *minWorkerThreads* och *minIoThreads* på 50 per processor under körningen använder du **trådpool. SetMinThreads (200, 200)**.
 
 * Du kan också ange minsta antal trådar genom att använda [konfigurations inställningen *MinIoThreads* eller *minWorkerThreads*](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)) under `<processModel>` konfigurations elementet i, som `Machine.config` vanligt vis finns på `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Att ställa in antalet minsta trådar på det här sättet rekommenderas vanligt vis inte, eftersom det är en systemtäckande inställning.**
 

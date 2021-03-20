@@ -12,10 +12,10 @@ ms.author: dfurman
 ms.reviewer: sstein
 ms.date: 09/16/2020
 ms.openlocfilehash: 40b6c5a86184860cf3e7a9840f980706485ae977
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572244"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Resurshantering i kompakta elastiska pooler
@@ -52,7 +52,7 @@ För att undvika prestanda försämring på grund av en resurs konkurrens bör k
 
 Azure SQL Database tillhandahåller flera mått som är relevanta för den här typen av övervakning. Att överskrida det rekommenderade medelvärdet för varje mått indikerar resurs konkurrens i poolen och bör åtgärdas med hjälp av en av de åtgärder som nämns ovan.
 
-|Måttnamn|Description|Rekommenderat genomsnitts värde|
+|Måttnamn|Beskrivning|Rekommenderat genomsnitts värde|
 |----------|--------------------------------|------------|
 |`avg_instance_cpu_percent`|PROCESSOR användning för SQL-processen som är kopplad till en elastisk pool, mätt av det underliggande operativ systemet. Tillgängligt i vyn [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i varje databas och i vyn [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) i- `master` databasen. Det här måttet har också spridits till Azure Monitor, där det [heter](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `sqlserver_process_core_percent` , och kan visas i Azure Portal. Det här värdet är detsamma för alla databaser i samma elastiska pool.|Under 70%. Tillfälliga kort toppar upp till 90% kan vara acceptabla.|
 |`max_worker_percent`|Användning av [arbets tråd]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide) . Anges för varje databas i poolen, samt för själva poolen. Det finns olika gränser för antalet arbets trådar på databas nivå, och på Poolnivå rekommenderas att du övervakar detta mått på båda nivåerna. Tillgängligt i vyn [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i varje databas och i vyn [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) i- `master` databasen. Det här måttet har också spridits till Azure Monitor, där det [heter](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `workers_percent` , och kan visas i Azure Portal.|Under 80%. Toppar upp till 100% innebär att anslutnings försöken och frågorna Miss lyckas.|
@@ -66,7 +66,7 @@ Azure SQL Database tillhandahåller flera mått som är relevanta för den här 
 
 Förutom dessa mått ger Azure SQL Database en vy som returnerar faktiska resurs styrnings gränser, samt ytterligare vyer som returnerar statistik för resursutnyttjande på resurspoolen och på arbets belastnings grupps nivå.
 
-|Namn på vy|Description|  
+|Namn på vy|Beskrivning|  
 |-----------------|--------------------------------|  
 |[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|Returnerar de inställningar för konfiguration och kapacitet som används av resurs styrnings mekanismer i den aktuella databasen eller den elastiska poolen.|
 |[sys.dm_resource_governor_resource_pools](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|Returnerar information om aktuell resurspool, aktuell konfiguration av resurspooler och ackumulerad resurspool.|

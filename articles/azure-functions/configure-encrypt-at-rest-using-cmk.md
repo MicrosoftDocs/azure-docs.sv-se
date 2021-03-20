@@ -4,10 +4,10 @@ description: Kryptera dina program data i Azure Storage och distribuera den som 
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92108039"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Kryptera dina program data i vila med Kundhanterade nycklar
@@ -71,7 +71,7 @@ Om du uppdaterar den här program inställningen så startar din Function-app om
 
 Vi rekommenderar att du regelbundet roterar SAS-nyckeln för ditt lagrings konto. För att säkerställa att funktions programmet inte kan lösa åtkomsten, måste du också uppdatera SAS-URL: en i Key Vault.
 
-1. Rotera SAS-nyckeln genom att gå till ditt lagrings konto i Azure Portal. Under **Inställningar**  >  **åtkomst nycklar**klickar du på ikonen för att rotera SAS-nyckeln.
+1. Rotera SAS-nyckeln genom att gå till ditt lagrings konto i Azure Portal. Under **Inställningar**  >  **åtkomst nycklar** klickar du på ikonen för att rotera SAS-nyckeln.
 
 1. Kopiera den nya SAS-webbadressen och Använd följande kommando för att ange den uppdaterade SAS-URL: en i ditt nyckel valv:
 

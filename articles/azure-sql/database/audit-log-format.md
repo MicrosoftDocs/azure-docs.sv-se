@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572227"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database Gransknings logg format
@@ -38,15 +38,15 @@ Till exempel för databas `Database1` på `Server1` följande är en möjlig gil
 
 ### <a name="event-hub"></a>Händelsehubb
 
-Gransknings händelser skrivs till namn området och händelsehubben som definierades vid gransknings konfigurationen och samlas in i bröd texten i [Apache Avro](https://avro.apache.org/) -händelser och lagras med JSON-FORMATERING med UTF-8-kodning. Om du vill läsa gransknings loggarna kan du använda [Avro-verktyg](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) eller liknande verktyg som bearbetar det här formatet.
+Granskningshändelser skrivs till den namnrymd och den händelsehubb som definierades under granskningskonfigurationen och registreras i texten för [Apache Avro](https://avro.apache.org/)-händelser och lagras i JSON-format med UTF-8-kodning. Om du vill läsa granskningsloggarna kan du använda [Avro-verktyg](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) eller liknande verktyg som kan hantera det här formatet.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Gransknings händelser skrivs till Log Analytics arbets yta som definierats under gransknings konfigurationen till `AzureDiagnostics` tabellen med kategorin `SQLSecurityAuditEvents` . Mer värdefull information om Log Analytics sökspråk och-kommandon finns i [Log Analytics Sök referens](../../azure-monitor/logs/log-query-overview.md).
+Granskningshändelser skrivs till den Log Analytics-arbetsyta som definieras under granskningskonfigurationen, till tabellen `AzureDiagnostics` med kategorin `SQLSecurityAuditEvents`. Mer användbar information om sökspråk och kommandon i Log Analytics finns i [Log Analytics-sökreferens](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Gransknings logg fält
 
-| Namn (BLOB) | Namn (Event Hubs/Log Analytics) | Description | Blobtyp | Event Hubs/Log Analytics typ |
+| Namn (BLOB) | Namn (Event Hubs/Log Analytics) | Beskrivning | Blobtyp | Event Hubs/Log Analytics typ |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID för åtgärden | varchar (4) | sträng |
 | action_name | action_name_s | Åtgärdens namn | Ej tillämpligt | sträng |

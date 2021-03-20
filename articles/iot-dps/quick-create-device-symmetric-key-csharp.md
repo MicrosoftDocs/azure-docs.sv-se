@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429395"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>Snabb start: etablera en symmetrisk nyckel enhet med hjälp av C #
@@ -32,7 +32,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Kontrol lera att du har [.net Core 2,1 SDK](https://www.microsoft.com/net/download/windows) eller senare installerad på en Windows-baserad dator.
 
@@ -49,7 +49,7 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 
 3. Ange följande information på panelen **Lägg till registrering** och tryck på knappen **Spara** .
 
-   - **Mekanism:** välj **Symmetrisk nyckel** som identitetsattesterings*mekanism*.
+   - **Mekanism:** välj **Symmetrisk nyckel** som identitetsattesterings *mekanism*.
 
    - **Generera nycklar automatiskt**: Markera den här kryss rutan.
 
@@ -98,7 +98,7 @@ Etablerings koden kommer att kontakta DPS-instansen baserat på dessa variabler 
     cd provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. I mappen *SymmetricKeySample* öppnar du *program.cs* i en text redigerare och söker efter de kodrader som har angett- `individualEnrollmentPrimaryKey` och- `individualEnrollmentSecondaryKey` strängarna. Uppdatera de här kod raderna enligt följande så att miljövariablerna används i stället för hård kodning av nycklarna.
+3. I mappen *SymmetricKeySample* öppnar du *program. cs* i en text redigerare och söker efter de kodrader som har angett- `individualEnrollmentPrimaryKey` och- `individualEnrollmentSecondaryKey` strängarna. Uppdatera de här kod raderna enligt följande så att miljövariablerna används i stället för hård kodning av nycklarna.
  
     ```csharp
         //These are the two keys that belong to your individual enrollment. 
@@ -119,7 +119,7 @@ Etablerings koden kommer att kontakta DPS-instansen baserat på dessa variabler 
         private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
     ```
 
-    Spara ändringarna i *program.cs*.
+    Spara ändringarna i *program. cs*.
 
 3. I kommando tolken lägger du till miljövariablerna för ID-omfånget, registrerings-ID, primär och sekundära symmetriska nycklar som du kopierade från den enskilda registreringen i föregående avsnitt.  
 

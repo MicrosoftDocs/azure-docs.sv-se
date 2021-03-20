@@ -8,10 +8,10 @@ ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629367"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync nätverks överväganden
@@ -84,7 +84,7 @@ Azure Files och File Sync stödja följande mekanismer för tunnel trafik mellan
 
 - [ExpressRoute](../../expressroute/expressroute-introduction.md), som gör att du kan skapa en definierad väg mellan Azure och ditt lokala nätverk som inte passerar Internet. Eftersom ExpressRoute tillhandahåller en dedikerad sökväg mellan ditt lokala data Center och Azure, kan ExpressRoute vara användbart när nätverks prestanda är ett övervägande. ExpressRoute är också ett användbart alternativ när din organisations policy eller myndighets krav kräver en deterministisk sökväg till dina resurser i molnet.
 
-### <a name="private-endpoints"></a>Privata slut punkter
+### <a name="private-endpoints"></a>Privata slutpunkter
 Förutom standard-offentliga slut punkter Azure Files och File Sync tillhandahålla lagrings kontot och tjänsten för synkronisering av lagring, Azure Files och File Sync ger möjlighet att ha en eller flera privata slut punkter per resurs. När du skapar en privat slut punkt för en Azure-resurs får den en privat IP-adress från det virtuella nätverkets adress utrymme, ungefär som hur din lokala Windows-filserver har en IP-adress inom det dedikerade adress utrymmet i ditt lokala nätverk. 
 
 > [!Important]  
