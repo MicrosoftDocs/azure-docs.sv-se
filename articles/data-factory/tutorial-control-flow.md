@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386024"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Branchning och kedjesammansättning av aktiviteter i en Data Factory-pipeline
@@ -87,7 +87,7 @@ Skapa ett C# .NET-konsol program:
 
 ### <a name="create-a-data-factory-client"></a>Skapa en datafabriksklient
 
-1. Öppna *program.cs* och Lägg till följande-uttryck:
+1. Öppna *program. cs* och Lägg till följande-uttryck:
 
    ```csharp
    using System;
@@ -145,7 +145,7 @@ Skapa ett C# .NET-konsol program:
 
 ### <a name="create-a-data-factory"></a>Skapa en datafabrik
 
-1. Lägg till en `CreateOrUpdateDataFactory` metod i din *program.cs* -fil:
+1. Lägg till en `CreateOrUpdateDataFactory` metod i filen *program. cs* :
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -178,7 +178,7 @@ Skapa ett C# .NET-konsol program:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Skapa en länkad Azure Storage-tjänst
 
-1. Lägg till en `StorageLinkedServiceDefinition` metod i din *program.cs* -fil:
+1. Lägg till en `StorageLinkedServiceDefinition` metod i filen *program. cs* :
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -210,7 +210,7 @@ I det här avsnittet skapar du två data uppsättningar, en för källan och en 
 
 Lägg till en metod som skapar en *Azure Blob-datauppsättning*. Mer information om vilka egenskaper och information som stöds finns i [Egenskaper för Azure Blob-datauppsättningar](connector-azure-blob-storage.md#dataset-properties).
 
-Lägg till en `SourceBlobDatasetDefinition` metod i din *program.cs* -fil:
+Lägg till en `SourceBlobDatasetDefinition` metod i filen *program. cs* :
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -237,7 +237,7 @@ Observera att parametrarna för *FolderPath* används. `sourceBlobContainer` är
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Skapa en data uppsättning för en mottagar Azure-Blob
 
-1. Lägg till en `SourceBlobDatasetDefinition` metod i din *program.cs* -fil:
+1. Lägg till en `SourceBlobDatasetDefinition` metod i filen *program. cs* :
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)

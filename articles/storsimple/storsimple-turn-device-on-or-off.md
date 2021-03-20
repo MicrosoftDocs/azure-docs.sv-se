@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515277"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Aktivera eller inaktivera din enhet med StorSimple 8000-serien
@@ -146,7 +146,7 @@ Om du vill stänga av enheten på ett besorterat och kontrollerat sätt kan du g
 > [!IMPORTANT]
 > Stäng inte av en enhet som körs genom att använda strömbrytaren på bak sidan av enheten.
 > 
-> Kontrol lera att alla enhets komponenter är felfria innan du stänger av enheten. I Azure Portal går du till **enheter**  >  **övervaka**  >  **maskin varu hälsa**och kontrollerar att status för alla komponenter är grön. Detta gäller endast för felfria system. Om systemet stängs av för att ersätta en komponent som inte fungerar visas en misslyckad (röd) eller degraderad (gul) status för respektive komponent i **maskin varu statusen**.
+> Kontrol lera att alla enhets komponenter är felfria innan du stänger av enheten. I Azure Portal går du till **enheter**  >  **övervaka**  >  **maskin varu hälsa** och kontrollerar att status för alla komponenter är grön. Detta gäller endast för felfria system. Om systemet stängs av för att ersätta en komponent som inte fungerar visas en misslyckad (röd) eller degraderad (gul) status för respektive komponent i **maskin varu statusen**.
 > 
 > 
 
@@ -154,7 +154,7 @@ När du har åtkomst till Windows PowerShell för StorSimple eller Azure Portal 
 
 ### <a name="device-with-ebod-enclosure"></a>Enhet med EBOD-kabinett <a name="8600a"></a>
 > [!IMPORTANT]
-> Innan du stänger av den primära inne slutningen och EBOD-höljet kontrollerar du att alla enhets komponenter är felfria. I Azure Portal går du till **enheter**  >  **övervaka**  >  **maskin varu hälsa**och kontrollerar att alla komponenter är felfria.
+> Innan du stänger av den primära inne slutningen och EBOD-höljet kontrollerar du att alla enhets komponenter är felfria. I Azure Portal går du till **enheter**  >  **övervaka**  >  **maskin varu hälsa** och kontrollerar att alla komponenter är felfria.
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Stänga en enhet som körs med EBOD-kabinettet

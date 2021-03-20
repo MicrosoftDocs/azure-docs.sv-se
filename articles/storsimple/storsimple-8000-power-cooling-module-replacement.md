@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514597"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Ersätta en energi- och kylningsmodul på StorSimple-enheten
@@ -134,7 +134,7 @@ Följ de här anvisningarna för att installera en PCM på din StorSimple-enhet.
 5. Anslut ström sladdarna till ström källan och till PCM.
 6. Skydda Bales för begränsning av stammar.
 7. Aktivera PCM.
-8. Kontrol lera att ersättningen lyckades: i Azure Portal av din StorSimple Enhetshanteraren-tjänst navigerar du till enheten och sedan till **inställningar > övervaka > maskin varu hälsa**. Under **delade komponenter**måste status för PCM vara grönt.
+8. Kontrol lera att ersättningen lyckades: i Azure Portal av din StorSimple Enhetshanteraren-tjänst navigerar du till enheten och sedan till **inställningar > övervaka > maskin varu hälsa**. Under **delade komponenter** måste status för PCM vara grönt.
    
    > [!NOTE]
    > Det kan ta några minuter innan den nya PCM är helt initierad.

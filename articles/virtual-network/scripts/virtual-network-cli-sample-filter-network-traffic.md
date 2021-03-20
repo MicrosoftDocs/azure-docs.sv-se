@@ -14,10 +14,10 @@ ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 86d33ba411c4a0294454a8e1421c35b694feb65d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87492997"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-using-an-azure-cli-script-sample"></a>Filtrera inkommande och utgående VM-nätverkstrafik med hjälp av ett skript exempel för Azure CLI
@@ -44,7 +44,7 @@ az group delete --name MyResourceGroup --yes
 
 I det här skriptet används följande kommandon för att skapa en resursgrupp, ett virtuellt nätverk och nätverkssäkerhetsgrupper. Varje kommando i följande tabell länkar till kommandospecifik dokumentation:
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [az group create](/cli/azure/group) | Skapar en resursgrupp där alla resurser lagras. |
 | [az network vnet create](/cli/azure/network/vnet) | Skapar ett virtuellt Azure-nätverk och klientdelsundernät. |

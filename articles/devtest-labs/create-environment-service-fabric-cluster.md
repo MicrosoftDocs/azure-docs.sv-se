@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 530cf3b20820e34913612419d0ffa731a70f6a58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85484017"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Skapa en miljö med fristående Service Fabric kluster i Azure DevTest Labs
@@ -37,7 +37,7 @@ Service Fabric kluster skapas med hjälp av miljöer i DevTest Labs. Varje milj�
     2. Välj **operativ system (OS)** för de virtuella kluster datorerna. Standardvärdet är: **Windows**.
     3. Ange ett namn för klustrets **administratör** . 
     4. Ange ett **lösen ord** för administratören. 
-    5. För **certifikatet**anger du certifikat informationen som en Base64-kodad sträng. Gör så här för att skapa ett certifikat:
+    5. För **certifikatet** anger du certifikat informationen som en Base64-kodad sträng. Gör så här för att skapa ett certifikat:
         1. Ladda ned **Create-ClusterCertificate.ps1** -filen från [git-lagringsplatsen](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster). Du kan också klona lagrings platsen på din dator. 
         2. Starta **PowerShell**. 
         3. Kör **ps1** -filen med hjälp av kommandot `.\Create-ClusterCertificate.ps1` . Du ser en textfil som öppnats i anteckningar med den information som du behöver för att fylla i de certifikat-relaterade fälten på den här sidan. . 
@@ -46,7 +46,7 @@ Service Fabric kluster skapas med hjälp av miljöer i DevTest Labs. Varje milj�
     8. Välj **Lägg till** på sidan **Konfigurera inställningar** . 
 
         ![Konfigurera kluster inställningar](./media/create-environment-service-fabric-cluster/configure-settings.png)
-5. När klustret har skapats visas en resurs grupp med namnet på den miljö som du angav i föregående steg. När du expanderar visas Service Fabric klustret i det. Om statusen för resurs gruppen fastnar vid **skapande**väljer du **Uppdatera** i verktygsfältet. **Service Fabric kluster** miljö skapar ett 5-nod 1-NodeType-kluster på antingen Linux eller Windows.
+5. När klustret har skapats visas en resurs grupp med namnet på den miljö som du angav i föregående steg. När du expanderar visas Service Fabric klustret i det. Om statusen för resurs gruppen fastnar vid **skapande** väljer du **Uppdatera** i verktygsfältet. **Service Fabric kluster** miljö skapar ett 5-nod 1-NodeType-kluster på antingen Linux eller Windows.
 
     I följande exempel är **mysfabricclusterrg** namnet på resurs gruppen som har skapats specifikt för Service Fabric klustret. Det är viktigt att notera att Lab-miljöer är fristående i resurs gruppen där de skapas. Det innebär att mallen som definierar miljön, som endast kan komma åt resurser i den nyligen skapade resurs gruppen eller [virtuella nätverk som har kon figurer ATS för användning av labbet](devtest-lab-configure-vnet.md). Exemplet ovan skapar alla nödvändiga resurser i samma resurs grupp.
 

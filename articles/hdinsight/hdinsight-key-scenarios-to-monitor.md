@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945345"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Övervaka kluster prestanda i Azure HDInsight
@@ -24,7 +24,7 @@ Hadoop-kluster kan ge optimala prestanda när belastningen på klustret är jäm
 
 För att få en överblick på noderna i klustret och deras inläsningar loggar du in på [Ambari-WEBBgränssnittet](hdinsight-hadoop-manage-ambari.md)och väljer sedan fliken **värdar** . Dina värdar visas i listan med sina fullständigt kvalificerade domän namn. Varje värds drift status visas med en färgad hälso indikator:
 
-| Färg | Description |
+| Färg | Beskrivning |
 | --- | --- |
 | Red | Minst en huvud komponent på värden är inte tillgänglig. Hovra för att se en knapp beskrivning som visar påverkade komponenter. |
 | Orange | Minst en sekundär komponent på värden är avstängd. Hovra för att se en knapp beskrivning som visar påverkade komponenter. |

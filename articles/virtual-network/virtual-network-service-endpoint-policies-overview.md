@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98216656"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Principer för tjänstslutpunkt för virtuellt nätverk för Azure Storage
@@ -122,7 +122,7 @@ Virtuella nätverk och Azure Storage konton kan vara i samma eller olika prenume
 - Virtuella nätverk måste finnas i samma region som tjänstslutpunktsprincipen.
 - Du kan bara använda tjänstslutpunktsprincipen i ett undernät om tjänstslutpunkterna har konfigurerats för de Azure-tjänster som anges i principen.
 - Du kan inte använda tjänstslutpunktsprinciper för trafik från ditt lokala nätverk till Azure-tjänster.
-- Azure Managed Services stöder för närvarande inte slut punkts principer. Detta inkluderar hanterade tjänster som distribuerats till delade undernät (t. ex. *Azure Batch, Azure lägger till Azure Application Gateway, Azure-VPN gateway, Azure-brandvägg*) eller till dedikerade undernät (t. ex. *Azure App Service-miljön, Azure Redis Cache, Azure API Management, Azure SQL mi, klassiska hanterade tjänster*).
+- Azure Managed Services stöder för närvarande inte slut punkts principer. Detta inkluderar hanterade tjänster som distribuerats till delade undernät (t. ex. *Azure Batch, Azure lägger till Azure Application Gateway, Azure-VPN gateway, Azure-brandvägg*) eller till dedikerade undernät (t. ex. *Azure App Service Environment, Azure Redis Cache, Azure API Management, Azure SQL mi, klassiska hanterade tjänster*).
 
  > [!WARNING]
  > Azure-tjänster som distribueras till ditt virtuella nätverk, till exempel Azure HDInsight, kommer åt andra Azure-tjänster såsom Azure Storage för infrastrukturkrav. Om slutpunktsprincipen begränsas till specifika resurser kan det stoppa åtkomsten till dessa infrastrukturresurser för de Azure-tjänster som distribueras i ditt virtuella nätverk.

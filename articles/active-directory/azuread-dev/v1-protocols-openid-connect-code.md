@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551556"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Ge åtkomst till webbprogram med hjälp av OpenID Connect och Azure Active Directory
@@ -39,18 +39,18 @@ Registrera först ditt program med din Azure Active Directory (Azure AD)-klient.
    
 1. I Azure Portal söker du efter och väljer **Azure Active Directory**.
    
-1. På den **Azure Active Directory** vänstra menyn väljer du **registrerade appar**och väljer sedan **ny registrering**.
+1. På den **Azure Active Directory** vänstra menyn väljer du **registrerade appar** och väljer sedan **ny registrering**.
    
 1. Följ anvisningarna och skapa ett nytt program. Det spelar ingen roll om det är ett webb program eller ett offentligt klient program (mobilt & Desktop) för den här självstudien, men om du vill ha specifika exempel för webb program eller offentliga klient program kan du läsa våra [snabb starter](v1-overview.md).
    
    - **Namn** är appens namn och beskriver appen för användarna.
    - Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
-   - Ange **omdirigerings-URI**. För webb program är detta den grundläggande URL: en för din app där användarna kan logga in.  Exempelvis `http://localhost:12345`. För en offentlig klient (mobil & Desktop) använder Azure AD den för att returnera svar från token. Ange ett specifikt värde för ditt program.  Exempelvis `http://MyFirstAADApp`.
+   - Ange **omdirigerings-URI**. För webb program är detta den grundläggande URL: en för din app där användarna kan logga in.  Till exempel `http://localhost:12345`. För en offentlig klient (mobil & Desktop) använder Azure AD den för att returnera svar från token. Ange ett specifikt värde för ditt program.  Till exempel `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. När du har slutfört registreringen tilldelar Azure AD programmet ett unikt klient-ID ( **program-ID**). Du behöver det här värdet i nästa avsnitt, så kopiera det från program sidan.
    
-1. Om du vill hitta ditt program i Azure Portal väljer du **Appregistreringar**och väljer sedan **Visa alla program**.
+1. Om du vill hitta ditt program i Azure Portal väljer du **Appregistreringar** och väljer sedan **Visa alla program**.
 
 ## <a name="authentication-flow-using-openid-connect"></a>Autentiseringsflöde med OpenID Connect
 
@@ -207,7 +207,7 @@ När du omdirigerar användaren till `end_session_endpoint` , rensar Azure AD an
 
 1. Navigera till [Azure Portal](https://portal.azure.com).
 2. Välj din Active Directory genom att klicka på ditt konto i det övre högra hörnet på sidan.
-3. I den vänstra navigerings panelen väljer du **Azure Active Directory**och väljer sedan **Appregistreringar** och väljer ditt program.
+3. I den vänstra navigerings panelen väljer du **Azure Active Directory** och väljer sedan **Appregistreringar** och väljer ditt program.
 4. Klicka på **Inställningar**, sedan på **Egenskaper** och leta upp text rutan **utloggnings-URL** . 
 
 ## <a name="token-acquisition"></a>Hämtning av token

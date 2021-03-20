@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/21/2019
 ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593934"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Självstudie: Konfigurera Transaktionsreplikering mellan Azure SQL-hanterad instans och SQL Server
@@ -24,7 +24,7 @@ Med Transaktionsreplikering kan du replikera data från en databas till en annan
 
 Transaktionell replikering är för närvarande en offentlig för hands version för SQL-hanterad instans. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -146,7 +146,7 @@ En privat DNS-zon tillåter DNS-routning mellan de hanterade instanserna och SQL
 
 ### <a name="create-a-private-dns-zone"></a>Skapa en privat DNS-zon
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj **skapa en resurs** för att skapa en ny Azure-resurs.
 1. Sök `private dns zone` på Azure Marketplace.
 1. Välj den **privat DNS zon** resurs som publicerats av Microsoft och välj sedan **skapa** för att skapa DNS-zonen.
@@ -412,7 +412,7 @@ Se artikeln [Vad är en Azure SQL-hanterad instans?](sql-managed-instance-paas-o
 - [SQL-hanterad instans granskning](auditing-configure.md)
 - [Alltid krypterad](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Hotidentifiering](threat-detection-configure.md)
-- [Dynamisk datamaskning](/sql/relational-databases/security/dynamic-data-masking)
+- [Dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking)
 - [Säkerhet på radnivå](/sql/relational-databases/security/row-level-security)
 - [Transparent data kryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 

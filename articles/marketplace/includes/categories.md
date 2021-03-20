@@ -1,5 +1,5 @@
 ---
-title: inkludera fil
+title: ta med fil
 description: inkludera fil för listan över kategorier och under Kategorier
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
@@ -10,10 +10,10 @@ ms.custom: include file
 author: anbene
 ms.author: mingshen
 ms.openlocfilehash: 763ee108e1e2899bb2268ae5e6236f74a73e4b44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87498062"
 ---
 | [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) |
@@ -58,14 +58,14 @@ ms.locfileid: "87498062"
 | &nbsp;&nbsp;Alfabet | **Hanterings verktyg för IT-&** |
 | &nbsp;&nbsp;Developer Service | &nbsp;&nbsp;Hanterings lösningar |
 | **DevOps**  | &nbsp;&nbsp;Business Applications |
-| **Integrering**  | **Internet of Things** |
+| **Integrering**  | **Sakernas Internet** |
 | &nbsp;&nbsp;Hantera | &nbsp;&nbsp;& åtgärder för till gångs hantering |
 | **Hanterings verktyg för IT-&**  | &nbsp;&nbsp;Anslutna produkter |
 | &nbsp;&nbsp;Hanterings lösningar | &nbsp;&nbsp;Intelligent leverans kedja |
 | &nbsp;&nbsp;Business Applications | &nbsp;&nbsp;Förutsägande underhåll |
 | **Identitet**  | &nbsp;&nbsp;Fjärrövervakning |
 | &nbsp;&nbsp;Åtkomst hantering | &nbsp;&nbsp;Säkerhet & säkerhet |
-| **Internet of Things**  | &nbsp;&nbsp;& resurser för smart infrastruktur |
+| **Sakernas Internet**  | &nbsp;&nbsp;& resurser för smart infrastruktur |
 | &nbsp;&nbsp;IoT-anslutning | &nbsp;&nbsp;Fordon & Mobility |
 | &nbsp;&nbsp;IoT Core-tjänster | **Marknadsföring** |
 | &nbsp;&nbsp;IoT Edge moduler | &nbsp;&nbsp;Annons |
@@ -78,7 +78,7 @@ ms.locfileid: "87498062"
 | **Övervaka & diagnostik**  | **Åtgärder & leverans kedja** |
 | **Migrering**  | &nbsp;&nbsp;Produktions hantering för till gång & |
 | &nbsp;&nbsp;Datamigrering | &nbsp;&nbsp;Prognoser för efter frågan |
-| **Mixad verklighet**  | &nbsp;&nbsp;Informations hantering & anslutning |
+| **Mixed Reality**  | &nbsp;&nbsp;Informations hantering & anslutning |
 | **Nätverk**  | &nbsp;&nbsp;Planering, köpa & rapportering |
 | &nbsp;&nbsp;Utrustnings hanterare | &nbsp;&nbsp;Hantering av Quality &-tjänster |
 | &nbsp;&nbsp;Koppling | &nbsp;&nbsp;Försäljning & order hantering |

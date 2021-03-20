@@ -4,10 +4,10 @@ description: I den här artikeln förklaras hur en labb användare eller lärare
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443510"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Visa supportinformation (labb användare i Azure Lab Services)
@@ -24,7 +24,7 @@ Du kan använda den här informationen för att få hjälp när du stöter på t
 ## <a name="view-support-information"></a>Visa supportinformation
 1. Logga in på [Azure Lab Services Portal](https://labs.azure.com).
 2. Välj **labb eller virtuell dator** för vilken du behöver hjälp och välj **?** i det övre högra hörnet på sidan. 
-3. Bekräfta att du ser länkar till webbplatsen för att **Visa support**, **e-postsupport**och **Support telefonnummer**.
+3. Bekräfta att du ser länkar till webbplatsen för att **Visa support**, **e-postsupport** och **Support telefonnummer**.
 
     ![Visa supportinformation](./media/lab-user-support-information/support-information.png)
 4. Du kan visa support kontakt information för ett annat labb genom att växla till det labbet i den nedrullningsbara listan. 

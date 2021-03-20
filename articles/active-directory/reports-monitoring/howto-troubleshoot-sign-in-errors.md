@@ -15,13 +15,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85608134"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gör så här: Felsöka inloggnings fel med hjälp av Azure Active Directory rapporter
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Anvisningar: Felsöka inloggningsfel med hjälp av Azure Active Directory-rapporter
 
 I [inloggnings rapporten](concept-sign-ins.md) i Azure Active Directory (Azure AD) kan du få svar på frågor om hur du hanterar åtkomst till program i din organisation, inklusive:
 
@@ -32,12 +32,12 @@ I [inloggnings rapporten](concept-sign-ins.md) i Azure Active Directory (Azure A
 
 Dessutom kan inloggnings rapporten också hjälpa dig att felsöka inloggnings fel för användare i din organisation. I den här guiden får du lära dig hur du isolerar ett inloggnings fel i inloggnings rapporten och använder den för att förstå rotor saken till felet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver:
 
 * En Azure AD-klient med en Premium-licens (P1/P2). Se [Kom igång med Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) för att uppgradera din Azure Active Directory-version.
-* En användare, som finns i rollen **Global administratör**, **säkerhets administratör**, **säkerhets läsare**eller **rapport läsare** för klienten. Dessutom kan alla användare komma åt sina egna inloggningar. 
+* En användare, som finns i rollen **Global administratör**, **säkerhets administratör**, **säkerhets läsare** eller **rapport läsare** för klienten. Dessutom kan alla användare komma åt sina egna inloggningar. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Felsöka inloggnings fel med hjälp av inloggnings rapporten
 

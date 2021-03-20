@@ -4,10 +4,10 @@ description: Lär dig hur du lägger till en GitHub-eller Azure DevOps-tjänst g
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483150"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Lägg till en git-lagringsplats för att lagra anpassade artefakter och Resource Manager-mallar
@@ -36,7 +36,7 @@ Om du vill lägga till en lagrings plats i labbet hämtar du först viktig infor
 4. I det övre högra hörnet av GitHub väljer du profil avbildningen och väljer sedan **Inställningar**.
 5. I menyn **personliga inställningar** till vänster väljer du **personliga åtkomsttoken**.
 6. Välj **generera ny token**.
-7. På sidan **ny personlig åtkomst-token** under **token-Beskrivning**anger du en beskrivning. Godkänn standard objekt under **Välj omfång**och välj sedan **skapa token**.
+7. På sidan **ny personlig åtkomst-token** under **token-Beskrivning** anger du en beskrivning. Godkänn standard objekt under **Välj omfång** och välj sedan **skapa token**.
 8. Spara den genererade token. Du använder token senare.
 9. Stäng GitHub.   
 10. Fortsätt till avsnittet [Anslut ditt labb till databasen](#connect-your-lab-to-the-repository) .
@@ -56,12 +56,12 @@ Om du vill lägga till en lagrings plats i labbet hämtar du först viktig infor
    3. I listan **konton** väljer du **alla tillgängliga konton**.
    4. Välj alternativet **Skriv skydd** .
    5. Välj **skapa token**.
-9. Den nya token visas i listan med **personliga åtkomst-token** . Välj **Kopiera token**och spara sedan token-värdet för senare användning.
+9. Den nya token visas i listan med **personliga åtkomst-token** . Välj **Kopiera token** och spara sedan token-värdet för senare användning.
 10. Fortsätt till avsnittet [Anslut ditt labb till databasen](#connect-your-lab-to-the-repository) .
 
 ## <a name="connect-your-lab-to-the-repository"></a>Anslut ditt labb till lagrings platsen
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **fler tjänster**och välj sedan **DevTest Labs** i listan över tjänster.
+2. Välj **fler tjänster** och välj sedan **DevTest Labs** i listan över tjänster.
 3. I listan med labb väljer du ditt labb. 
 4. Välj **konfiguration och principer**  >  **databaser**  >  **+ Lägg till**.
 

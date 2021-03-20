@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89003634"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Push-arkitekturvägledning för företag
@@ -231,7 +231,7 @@ Den fullständiga exempel koden är tillgänglig i [Notification Hub-exempel]. D
 
     ![Skärm bild av de alternativ för högerklickning som visas med publicera som Azure-webbjobb som beskrivs i rött.][2]
 
-    f. Välj din publicerings profil och skapa en ny Azure-webbplats om den inte redan finns, som är värd för det här webb jobbet och när du har **publicerat**webbplatsen.
+    f. Välj din publicerings profil och skapa en ny Azure-webbplats om den inte redan finns, som är värd för det här webb jobbet och när du har **publicerat** webbplatsen.
 
     :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Skärm bild som visar arbets flödet för att skapa en webbplats i Azure.":::
     Skärm bild av dialog rutan Publicera webbplats med alternativet Microsoft Azure Websites markerat, en grön pil som pekar på dialog rutan Välj befintlig webbplats med det nya alternativet som beskrivs i rött och en grön pil som pekar på dialog rutan skapa webbplats i Microsoft Azure med plats namnet och skapar alternativ som anges i rött.
@@ -294,4 +294,4 @@ Den fullständiga exempel koden är tillgänglig i [Notification Hub-exempel]. D
 [Service Bus pub/sub-programmering]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure-webbjobb]: ../app-service/webjobs-create.md
 [Notification Hubs Windows Universal-självstudie]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Azure Portal]: https://portal.azure.com/
+[Azure-portalen]: https://portal.azure.com/

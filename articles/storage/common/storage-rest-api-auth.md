@@ -12,10 +12,10 @@ ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89010910"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Anropa REST API åtgärder med autentisering med delad nyckel
@@ -66,7 +66,7 @@ Granska referensen för [ListContainers](/rest/api/storageservices/List-Containe
 
 **Metod för begäran**: Hämta. Det här verbet är den HTTP-metod som du anger som egenskap för objektet Request. Andra värden för det här verbet omfattar HEAD, placering och DELETE, beroende på vilket API som du anropar.
 
-**URI för begäran**: `https://myaccount.blob.core.windows.net/?comp=list` .Begärd URI skapas från slut punkten för Blob Storage-kontot `https://myaccount.blob.core.windows.net` och resurs strängen `/?comp=list` .
+**URI för begäran**: `https://myaccount.blob.core.windows.net/?comp=list` .  Begärd URI skapas från slut punkten för Blob Storage-kontot `https://myaccount.blob.core.windows.net` och resurs strängen `/?comp=list` .
 
 [URI-parametrar](/rest/api/storageservices/List-Containers2#uri-parameters): det finns ytterligare frågeparametrar som du kan använda när du anropar ListContainers. Ett par av dessa parametrar är *timeout* för anropet (i sekunder) och *prefix*, som används för filtrering.
 
@@ -94,7 +94,7 @@ För säkerhet vid körning i produktion ska du alltid använda HTTPS i stället
 
 I vårt exempel projekt finns koden för att skapa ett Authorization-huvud i en separat klass. Idén är att du kan ta hela klassen och lägga till den i din egen lösning och använda den "i befintligt skick". Huvud koden för auktorisering fungerar för de flesta REST API anrop till Azure Storage.
 
-Om du vill bygga begäran, som är ett HttpRequestMessage-objekt, går du till ListContainersAsyncREST i Program.cs. Stegen för att skapa begäran är:
+Om du vill bygga begäran, som är ett HttpRequestMessage-objekt, går du till ListContainersAsyncREST i program. cs. Stegen för att skapa begäran är:
 
 - Skapa den URI som ska användas för att anropa tjänsten.
 - Skapa HttpRequestMessage-objektet och ange nytto lasten. Nytto lasten är null för ListContainersAsyncREST eftersom vi inte skickar något i.
@@ -286,19 +286,19 @@ Det här kodfragmentet visar formatet för den delade nyckelns signatur sträng:
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 De flesta av dessa fält används sällan. För Blob Storage anger du VERB, MD5, innehålls längd, kanoniska huvuden och kanoniskt resurs. Du kan lämna det andra tomt (men låta det `\n` vara tomt).

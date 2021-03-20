@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91278336"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Lagringshierarkin för Azure NetApp Files
@@ -74,7 +74,7 @@ QoS-typen är ett attribut för en pool för kapacitet. Azure NetApp Files inneh
     Till exempel har en 4-TiB kapacitets pool med Ultra Service Level en total data flödes kapacitet på 512 MiB/s (4 TiB x 128 MiB/s/TiB) tillgängliga för volymerna.
 
 
-## <a name="volumes"></a><a name="volumes"></a>Enheter
+## <a name="volumes"></a><a name="volumes"></a>Volymer
 
 - En volym mäts efter logisk kapacitetsförbrukning och är skalbar. 
 - En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet.

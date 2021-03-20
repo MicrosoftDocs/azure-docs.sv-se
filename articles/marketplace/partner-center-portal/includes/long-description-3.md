@@ -1,5 +1,5 @@
 ---
-title: inkludera fil
+title: ta med fil
 description: file
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,17 +8,17 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
 ms.openlocfilehash: 5197b71db4f46d9908d5539c114d636b9474a870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87317685"
 ---
 Använd HTML-taggar för att formatera beskrivningen så att den blir mer intressant. De flesta Taggar kräver både en ingående och avslutande komponent, som du ser i den här tabellen.
 
 |   Gör så här:  |  Användning  |  Gillar det här  |  Så här hämtar du   |
 | --- | --- | --- | --- |
-|   Fet stil  |  `<b> & </b>`  |  `<b>`Exempel `</b>` : kostnads fri utvärdering  |  **Exempel**: kostnads fri utvärdering   |
+|   Fetstil  |  `<b> & </b>`  |  `<b>`Exempel `</b>` : kostnads fri utvärdering  |  **Exempel**: kostnads fri utvärdering   |
 |   Kursiv stil  |  `<i> & </i>`  |  Markera den `<i>` första `</i>` raden.  |  Markera den *första* raden.   |
 |   Ny rad  |  `<br>`  |  Det här är min första rad. `<br>` Det här är min andra rad.  |  Det här är min första rad.<br>Det här är min andra rad.  |
 |  Formatera  |  `<p> & </p>`  |  `<p>`Detta är mitt första stycke.`</p>`<br>`<p>`Det här är mitt andra stycke.`</p>`   |   <p>Detta är mitt första stycke.</p><p>Det här är mitt andra stycke.</p>   |

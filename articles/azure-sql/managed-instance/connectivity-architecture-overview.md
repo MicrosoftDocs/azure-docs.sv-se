@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
 ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98725844"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Anslutningsarkitektur för Azure SQL Managed Instance
@@ -111,7 +111,7 @@ Distribuera SQL-hanterad instans i ett dedikerat undernät i det virtuella nätv
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Obligatoriska inkommande säkerhets regler med konfiguration för tjänstens under näts undernät
 
-| Name       |Port                        |Protokoll|Källa           |Mål|Action|
+| Namn       |Port                        |Protokoll|Källa           |Mål|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-UNDERNÄT  |Tillåt |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-UNDERNÄT  |Tillåt |
@@ -121,7 +121,7 @@ Distribuera SQL-hanterad instans i ett dedikerat undernät i det virtuella nätv
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Obligatoriska utgående säkerhets regler med konfiguration för tjänstens under näts undernät
 
-| Name       |Port          |Protokoll|Källa           |Mål|Action|
+| Namn       |Port          |Protokoll|Källa           |Mål|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443, 12000    |TCP     |MI-UNDERNÄT        |AzureCloud |Tillåt |
 |mi_subnet   |Valfri           |Valfri     |MI-UNDERNÄT        |MI-UNDERNÄT  |Tillåt |

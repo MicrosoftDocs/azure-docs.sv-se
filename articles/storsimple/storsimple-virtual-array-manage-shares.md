@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994952"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Använda StorSimple Device Manager-tjänsten för att hantera resurser i StorSimple Virtual Array
@@ -40,7 +40,7 @@ StorSimple-resurser kan vara:
 
 Se följande tabell för den högsta etablerade kapaciteten för varje resurs typ.
 
-| **Gräns för identifierare** | **Gräns** |
+| **Gräns för identifierare** | **Gränserna** |
 | --- | --- |
 | Minsta storlek på en nivå resurs |500 GB |
 | Maximal storlek för en nivå resurs |20 TB |

@@ -10,10 +10,10 @@ ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98217676"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>Snabb start: skapa en mall för virtuellt nätverk – Resource Manager
@@ -72,4 +72,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 I den här snabb starten har du distribuerat ett virtuellt Azure-nätverk med två undernät. Om du vill veta mer om virtuella Azure-nätverk kan du fortsätta till självstudien för virtuella nätverk.
 
 > [!div class="nextstepaction"]
-> [Filtrering av nätverkstrafik](tutorial-filter-network-traffic.md)
+> [Filtrera nätverkstrafik](tutorial-filter-network-traffic.md)

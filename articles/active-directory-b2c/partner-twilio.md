@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994051"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrera Twilio verifiera appen med Azure Active Directory B2C
@@ -102,7 +102,7 @@ Lägg till principfiler till Azure AD B2C:
 
 3. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
 
-4. Navigera till **Azure AD B2C**  >  princip nycklar för Azure AD B2C **Identity Experience Framework**  >  **Policy Keys**.
+4. Navigera till   >  princip nycklar för Azure AD B2C **Identity Experience Framework**  >  .
 
 5. Lägg till en ny nyckel med namnet **B2cRestTwilioClientId**. Välj **manuell** och ange värdet för Twilio-AccountSID.
 

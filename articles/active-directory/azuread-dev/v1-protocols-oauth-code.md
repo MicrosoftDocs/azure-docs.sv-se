@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551639"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Auktorisera åtkomst till Azure Active Directory-webbprogram med beviljandeflödet för OAuth 2.0-kod
@@ -43,18 +43,18 @@ Registrera först ditt program med din Azure Active Directory (Azure AD)-klient.
    
 1. I Azure Portal söker du efter och väljer **Azure Active Directory**.
    
-1. På den **Azure Active Directory** vänstra menyn väljer du **registrerade appar**och väljer sedan **ny registrering**.
+1. På den **Azure Active Directory** vänstra menyn väljer du **registrerade appar** och väljer sedan **ny registrering**.
    
 1. Följ anvisningarna och skapa ett nytt program. Det spelar ingen roll om det är ett webb program eller ett offentligt klient program (mobilt & Desktop) för den här självstudien, men om du vill ha specifika exempel för webb program eller offentliga klient program kan du läsa våra [snabb starter](v1-overview.md).
    
    - **Namn** är appens namn och beskriver appen för användarna.
    - Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
-   - Ange **omdirigerings-URI**. För webb program är detta den grundläggande URL: en för din app där användarna kan logga in.  Exempelvis `http://localhost:12345`. För en offentlig klient (mobil & Desktop) använder Azure AD den för att returnera svar från token. Ange ett specifikt värde för ditt program.  Exempelvis `http://MyFirstAADApp`.
+   - Ange **omdirigerings-URI**. För webb program är detta den grundläggande URL: en för din app där användarna kan logga in.  Till exempel `http://localhost:12345`. För en offentlig klient (mobil & Desktop) använder Azure AD den för att returnera svar från token. Ange ett specifikt värde för ditt program.  Till exempel `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. När du har slutfört registreringen tilldelar Azure AD programmet ett unikt klient-ID ( **program-ID**). Du behöver det här värdet i nästa avsnitt, så kopiera det från program sidan.
    
-1. Om du vill hitta ditt program i Azure Portal väljer du **Appregistreringar**och väljer sedan **Visa alla program**.
+1. Om du vill hitta ditt program i Azure Portal väljer du **Appregistreringar** och väljer sedan **Visa alla program**.
 
 ## <a name="oauth-20-authorization-flow"></a>OAuth 2,0-auktoriseringsarkiv
 
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter | Typ | Beskrivning |
 | --- | --- | --- |
 | tenant |krävs |`{tenant}`Värdet i sökvägen till begäran kan användas för att styra vem som kan logga in på programmet. De tillåtna värdena är klient identifierare, till exempel `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` eller `contoso.onmicrosoft.com` eller `common` för klient oberoende token |
-| client_id |krävs |Det program-ID som tilldelats din app när du registrerade den med Azure AD. Du hittar det här i Azure Portal. Klicka på **Azure Active Directory** på sid panelen tjänster, klicka på **Appregistreringar**och välj programmet. |
+| client_id |krävs |Det program-ID som tilldelats din app när du registrerade den med Azure AD. Du hittar det här i Azure Portal. Klicka på **Azure Active Directory** på sid panelen tjänster, klicka på **Appregistreringar** och välj programmet. |
 | response_type |krävs |Måste innehålla `code` för flödet av auktoriseringskod. |
 | redirect_uri |rekommenderas |Appens redirect_uri, där autentiserings svar kan skickas och tas emot av din app. Det måste exakt matcha ett av de redirect_uris som du registrerade i portalen, förutom att det måste vara URL-kodat. Använd standardvärdet för interna & mobila appar `https://login.microsoftonline.com/common/oauth2/nativeclient` . |
 | response_mode |valfri |Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Kan vara `query` , `fragment` eller `form_post` . `query` innehåller koden som en frågesträngparametern i omdirigerings-URI: n. Om du begär en ID-token med det implicita flödet kan du inte använda `query` enligt vad som anges i [OpenID-specifikationen](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Om du bara begär koden kan du använda `query` , `fragment` , eller `form_post` . `form_post` kör ett inlägg som innehåller koden för omdirigerings-URI: n. Standardvärdet är `query` för ett kod flöde.  |

@@ -4,10 +4,10 @@ description: Lär dig hur du använder Azure Portal för att lägga till en virt
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91297631"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Lägga till en virtuell dator i ett labb i Azure DevTest Labs
@@ -17,7 +17,7 @@ Den här artikeln visar också hur du hanterar artefakter för en virtuell dator
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Steg för att lägga till en virtuell dator i ett labb i Azure DevTest Labs
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i avsnittet **DEVOPS** . Om du väljer * (Star) bredvid **DevTest Labs** i avsnittet **DEVOPS** . Den här åtgärden lägger till **DevTest Labs** i den vänstra navigerings menyn så att du enkelt kan komma åt dem nästa gång. Sedan kan du välja **DevTest Labs** i den vänstra navigerings menyn.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i avsnittet **DEVOPS** . Om du väljer * (Star) bredvid **DevTest Labs** i avsnittet **DEVOPS** . Den här åtgärden lägger till **DevTest Labs** i den vänstra navigerings menyn så att du enkelt kan komma åt dem nästa gång. Sedan kan du välja **DevTest Labs** i den vänstra navigerings menyn.
 
     ![Alla tjänster – Välj DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
 1. I listan med labb väljer du det labb som du vill skapa den virtuella datorn i.
@@ -32,7 +32,7 @@ Den här artikeln visar också hur du hanterar artefakter för en virtuell dator
 
         ![Skärm bild som visar sidan "Skapa labb resurs" med "grundläggande inställningar" markerat och värdena för användar inställningar har angetts.](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
-        Du kan också spara hemligheter i nyckel valvet först och sedan använda det när du skapar en virtuell dator i labbet. Mer information finns i [lagra hemligheter i ett nyckel valv](devtest-lab-store-secrets-in-key-vault.md). Om du vill använda det lösen ord som lagras i nyckel valvet väljer du **Använd en sparad hemlighet**och anger ett nyckel värde som motsvarar ditt hemliga värde (lösen ord).
+        Du kan också spara hemligheter i nyckel valvet först och sedan använda det när du skapar en virtuell dator i labbet. Mer information finns i [lagra hemligheter i ett nyckel valv](devtest-lab-store-secrets-in-key-vault.md). Om du vill använda det lösen ord som lagras i nyckel valvet väljer du **Använd en sparad hemlighet** och anger ett nyckel värde som motsvarar ditt hemliga värde (lösen ord).
     4. I avsnittet **fler alternativ** väljer du **ändra storlek**. Välj ett av de fördefinierade objekten som anger processor kärnor, RAM-storlek och hård disk storlek för den virtuella dator som ska skapas.
     5. Välj **Lägg till eller ta bort artefakter**. Välj och konfigurera de artefakter som du vill lägga till i bas avbildningen.
     **Obs:** Om du inte har använt DevTest Labs eller konfigurerat artefakter går du till avsnittet [Lägg till en befintlig artefakt till en virtuell dator](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) och återgår hit när du är klar.
@@ -60,7 +60,7 @@ När du skapar en virtuell dator kan du lägga till befintliga artefakter. Varje
 Information om hur du skapar artefakter finns i artikeln [Lär dig hur du skapar dina egna artefakter för användning med DevTest Labs](devtest-lab-artifact-author.md).
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du det labb som innehåller den virtuella dator som du vill arbeta med.
 1. Välj **mina virtuella datorer**.
 1. Välj önskad virtuell dator.

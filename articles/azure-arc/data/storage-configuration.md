@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97107268"
 ---
 # <a name="storage-configuration"></a>Storage-konfiguration
@@ -210,7 +210,7 @@ Varje Pod som innehåller tillstånds känsliga data använder två permanenta v
 |Resurstyp|Antal tillstånds känsliga poddar|Antal beständiga volymer som krävs|
 |---|---|---|
 |Data Controller|4 ( `control` , `controldb` , `logsdb` , `metricsdb` )|4 * 2 = 8|
-|Hanterad Azure SQL-instans|1|2|
+|Azure SQL Managed Instance|1|2|
 |Azure Database for PostgreSQL instans|1| 2|
 |Azure PostgreSQL-storskalig|1 + w (W = antal arbetare)|2 * (1 + W)|
 
@@ -219,10 +219,10 @@ Tabellen nedan visar det totala antalet permanenta volymer som krävs för en ex
 |Resurstyp|Antal instanser|Antal beständiga volymer som krävs|
 |---|---|---|
 |Data Controller|1|4 * 2 = 8|
-|Hanterad Azure SQL-instans|5|5 * 2 = 10|
+|Azure SQL Managed Instance|5|5 * 2 = 10|
 |Azure Database for PostgreSQL instans|5| 5 * 2 = 10|
 |Azure PostgreSQL-storskalig|2 (antal arbetare = 4 per instans)|2 * 2 * (1 + 4) = 20|
-|***Totalt antal beständiga volymer** _||8 + 10 + 10 + 20 = 48|
+|***Totalt antal beständiga volymer***||8 + 10 + 10 + 20 = 48|
 
 Den här beräkningen kan användas för att planera lagringen för ditt Kubernetes-kluster baserat på lagrings etableringen eller miljön. Om den lokala lagrings platsen till exempel används för ett Kubernetes-kluster med fem (5) noder för exempel distributionen ovan varje nod kräver minst lagrings utrymme för 10 permanenta volymer. När du konfigurerar ett Azure Kubernetes service-kluster (AKS) med fem (5) noder, plockar du en lämplig VM-storlek för Node-poolen så att 10 data diskar kan anslutas är kritiskt. Mer information om hur du kan ändra storlek på noderna för lagrings behov för AKS-noder finns [här](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs).
 
@@ -238,6 +238,6 @@ Vi kan göra följande rekommendationer för offentliga molnbaserade, hanterade 
 
 |Offentlig moln tjänst|Rekommendation|
 |---|---|
-|_ *Azure Kubernetes service (AKS)**|Azure Kubernetes service (AKS) har två typer av lagrings Azure Files och Azure Managed Disks. Varje typ av lagring har två pris-/prestanda nivåer – standard (HDD) och Premium (SSD). Därför är de fyra lagrings klasserna i AKS `azurefile` (Azure Files standard nivå), `azurefile-premium` (Azure Files Premium nivå), `default` (Azure disks standard nivå) och `managed-premium` (Azure disks Premium-nivå). Standard lagrings klassen är `default` (standard nivån för Azure-diskar). Det finns betydande **[pris skillnader](https://azure.microsoft.com/en-us/pricing/details/storage/)** mellan de typer och nivåer som bör delas in i ditt beslut. För produktions arbets belastningar med höga prestanda krav rekommenderar vi att du använder `managed-premium` för alla lagrings klasser. För arbets belastningar för utveckling/testning, bevis på koncept osv. där kostnad är ett övervägande `azurefile` är det minst dyra alternativet. Alla fyra av alternativen kan användas för situationer som kräver fjärran sluten, delad lagring som alla nätverksanslutna lagrings enheter i Azure. Läs mer om [AKS-lagring](../../aks/concepts-storage.md).|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes service (AKS) har två typer av lagrings Azure Files och Azure Managed Disks. Varje typ av lagring har två pris-/prestanda nivåer – standard (HDD) och Premium (SSD). Därför är de fyra lagrings klasserna i AKS `azurefile` (Azure Files standard nivå), `azurefile-premium` (Azure Files Premium nivå), `default` (Azure disks standard nivå) och `managed-premium` (Azure disks Premium-nivå). Standard lagrings klassen är `default` (standard nivån för Azure-diskar). Det finns betydande **[pris skillnader](https://azure.microsoft.com/en-us/pricing/details/storage/)** mellan de typer och nivåer som bör delas in i ditt beslut. För produktions arbets belastningar med höga prestanda krav rekommenderar vi att du använder `managed-premium` för alla lagrings klasser. För arbets belastningar för utveckling/testning, bevis på koncept osv. där kostnad är ett övervägande `azurefile` är det minst dyra alternativet. Alla fyra av alternativen kan användas för situationer som kräver fjärran sluten, delad lagring som alla nätverksanslutna lagrings enheter i Azure. Läs mer om [AKS-lagring](../../aks/concepts-storage.md).|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon: s elastiska Kubernetes-tjänst har en primär lagrings klass baserad på [EBS CSI-lagringsenheten](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html). Detta rekommenderas för produktions arbets belastningar. Det finns en ny lagrings driv rutin – [EFS CSI-lagringsenhet](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) – som kan läggas till i ett EKS-kluster, men den är för närvarande i ett beta steg och kan komma att ändras. Även om AWS säger att den här lagrings driv rutinen stöds för produktion rekommenderar vi inte att du använder den eftersom den fortfarande är i beta syfte och kan komma att ändras. Lagrings klassen EBS är standard och kallas `gp2` . Läs mer om [EKS-lagring](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html).|
 |**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) har bara en lagrings klass `standard` som kallas, som används för [GCE-beständiga diskar](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk). Det är bara det enda, det är också standardvärdet. Även om det finns en [lokal, statisk volym](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) för GKE som du kan använda med direktansluten SSD rekommenderar vi inte att du använder den eftersom den inte hanteras eller stöds av Google. Läs mer om [GKE-lagring](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes).

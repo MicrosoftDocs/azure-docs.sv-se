@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949912"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Använd StorSimple Manager-tjänsten för att hantera åtkomst kontroll poster
@@ -50,7 +50,7 @@ Utför följande steg för att lägga till en ACR.
 
 #### <a name="to-add-an-acr"></a>Lägga till en ACR
 
-1. Gå till StorSimple Enhetshanteraren-tjänsten, dubbelklicka på tjänstens namn och klicka sedan på **åtkomst kontroll poster**i avsnittet **konfiguration** .
+1. Gå till StorSimple Enhetshanteraren-tjänsten, dubbelklicka på tjänstens namn och klicka sedan på **åtkomst kontroll poster** i avsnittet **konfiguration** .
 2. I bladet **åtkomst kontroll poster** klickar du på **+ Lägg till ACR**.
 
     ![Klicka på Lägg till ACR](./media/storsimple-8000-manage-acrs/createacr1.png)
@@ -79,7 +79,7 @@ Du använder **konfigurations** avsnittet i bladet StorSimple Enhetshanteraren t
 Utför följande steg för att redigera en ACR.
 
 #### <a name="to-edit-an-access-control-record"></a>Redigera en åtkomst kontroll post
-1.  Gå till StorSimple Enhetshanteraren-tjänsten, dubbelklicka på tjänstens namn och klicka sedan på **åtkomst kontroll poster**i avsnittet **konfiguration** .
+1.  Gå till StorSimple Enhetshanteraren-tjänsten, dubbelklicka på tjänstens namn och klicka sedan på **åtkomst kontroll poster** i avsnittet **konfiguration** .
 
     ![Gå till åtkomst kontroll poster](./media/storsimple-8000-manage-acrs/createacr1.png)
 
@@ -107,7 +107,7 @@ Du använder **konfigurations** avsnittet i bladet StorSimple Enhetshanteraren t
 Utför följande steg för att ta bort en åtkomst kontroll post.
 
 #### <a name="to-delete-an-access-control-record"></a>Ta bort en åtkomst kontroll post
-1.  Gå till StorSimple Enhetshanteraren-tjänsten, dubbelklicka på tjänstens namn och klicka sedan på **åtkomst kontroll poster**i avsnittet **konfiguration** .
+1.  Gå till StorSimple Enhetshanteraren-tjänsten, dubbelklicka på tjänstens namn och klicka sedan på **åtkomst kontroll poster** i avsnittet **konfiguration** .
 
     ![Gå till åtkomst kontroll poster 1b](./media/storsimple-8000-manage-acrs/createacr1.png)
 

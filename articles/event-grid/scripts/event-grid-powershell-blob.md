@@ -5,10 +5,10 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
 ms.openlocfilehash: 15daa9843eb721ebf9caa2ae49e75fadbd0a4be8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460804"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Prenumerera på händelser för ett Blob Storage-konto med PowerShell
@@ -27,7 +27,7 @@ Det här skriptet skapar en Event Grid-prenumeration på händelser för ett Blo
 
 Det här skriptet använder följande kommandon för att skapa händelseprenumerationen. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | Skapa en Event Grid-prenumeration. |
 

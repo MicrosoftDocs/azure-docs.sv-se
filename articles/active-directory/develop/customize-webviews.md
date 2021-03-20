@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478135"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Gör så här: anpassa webbläsare och webbvy för iOS/macOS
@@ -75,9 +75,9 @@ Den webbläsare du använder påverkar SSO-upplevelsen på grund av hur de delar
 | Teknik    | Typ av webbläsare  | tillgänglighet för iOS | macOS-tillgänglighet | Delar cookies och andra data  | MSAL tillgänglighet | Enkel inloggning |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | System | iOS12 och upp | macOS 10,15 och uppåt | Ja | iOS-och macOS-10.15 + | b/Safari-instanser
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | System | iOS11 och upp | E.t. | Ja | enbart iOS |  b/Safari-instanser
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | System | iOS11 och upp | E.t. | Inga | enbart iOS | Nej * *
-| **SFSafariViewController** | System | iOS10 | E.t. | Ja | enbart iOS |  b/Safari-instanser
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | System | iOS11 och upp | Saknas | Ja | enbart iOS |  b/Safari-instanser
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | System | iOS11 och upp | Ej tillämpligt | Inga | enbart iOS | Nej * *
+| **SFSafariViewController** | System | iOS10 | Saknas | Ja | enbart iOS |  b/Safari-instanser
 | **WKWebView**  | In-app | iOS8 och upp | macOS 10,10 och uppåt | Inga | iOS och macOS | Nej * *
 
 * * För att SSO ska fungera måste tokens delas mellan appar. Detta kräver ett token-cache-eller Broker-program, till exempel Microsoft Authenticator för iOS.

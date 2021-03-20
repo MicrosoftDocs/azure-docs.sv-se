@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91295744"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Skapa användare i Azure Database for PostgreSQL-storskalig (citus)
@@ -52,7 +52,7 @@ Som nämnts `citus` saknar administratörs kontot behörighet att skapa ytterlig
 
 2. Ange roll namn och lösen ord. Klicka på **Spara**.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Sidan roller":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Lägg till roll":::
 
 Användaren kommer att skapas på noden koordinator i Server gruppen och spridas till alla arbetsnoder. Roller som skapas via Azure Portal har `LOGIN` attributet, vilket innebär att de är sanna användare som kan logga in på databasen.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Om du vill uppdatera en användare går du till sidan **roller** för Server gruppen för citus-servern och klickar på ellipserna **...** bredvid användaren. Ellipserna öppnar en meny för att ta bort användaren eller återställa lösen ordet.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Sidan roller":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Redigera en roll":::
 
 `citus`Rollen är privilegie rad och kan inte tas bort.
 

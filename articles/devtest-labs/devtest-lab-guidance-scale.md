@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478798"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Skala upp din Azure DevTest Labs-infrastruktur
@@ -16,7 +16,7 @@ Innan du implementerar DevTest Labs i företags skala finns det flera viktiga be
 
 - Nätverk och säkerhet
 - Prenumerations sto pol Ogin
-- Roller och ansvars områden
+- Roller och ansvarsområden
 
 ## <a name="networking-and-security"></a>Nätverk och säkerhet
 Nätverk och säkerhet är hörn för alla organisationer. En företagsomfattande distribution kräver en mycket djupare analys, men det finns ett minskat antal krav för att kunna utföra ett koncept bevis. Några viktiga områden i fokus är:
@@ -50,7 +50,7 @@ En separat prenumeration per användare ger lika möjligheter till det alternati
 
 I företaget kan det finnas tillräckligt med begränsningar för extrem i spektrumet. Därför kan du behöva konfigurera prenumerationer på ett sätt som hamnar i mitten av dessa extrema. Som bästa praxis bör målet för en organisation vara att använda det minimala antalet prenumerationer som det är möjligt att tänka på när det gäller tvingande funktioner som ökar det totala antalet prenumerationer. För att kunna upprepas, är prenumerations miljön kritisk för en företags distribution av DevTest Labs, men bör inte fördröja ett koncept bevis. Det finns ytterligare information i [styrnings](devtest-lab-guidance-governance-policy-compliance.md) artikeln om hur du bestämmer prenumerations-och labb precision i organisationen.
 
-## <a name="roles-and-responsibilities"></a>Roller och ansvars områden
+## <a name="roles-and-responsibilities"></a>Roller och ansvarsområden
 Ett koncept bevis för DevTest Labs har tre primära roller med definierade ansvar – prenumerations ägare, DevTest Labs-ägare, DevTest Labs-användare och eventuellt en deltagare.
 
 - **Prenumerations ägare** – prenumerations ägaren har behörighet att administrera en Azure-prenumeration, inklusive att tilldela användare, hantera principer, skapa & hantera nätverkstopologi, begära kvot ökningar osv. Mer information finns i [den här artikeln](../role-based-access-control/rbac-and-directory-admin-roles.md).

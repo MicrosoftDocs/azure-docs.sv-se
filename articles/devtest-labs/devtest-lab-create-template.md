@@ -4,10 +4,10 @@ description: Lär dig hur du skapar en anpassad avbildning i Azure DevTest Labs 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87289407"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Skapa en anpassad avbildning från en VHD-fil
@@ -24,11 +24,11 @@ Följande steg beskriver hur du skapar en anpassad avbildning från en VHD-fil m
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 
 1. I listan med labb väljer du önskat labb.  
 
-1. Välj **konfiguration och principer**i Labbets huvud fönster. 
+1. Välj **konfiguration och principer** i Labbets huvud fönster. 
 
 1. I fönstret **konfiguration och principer** väljer du **anpassade avbildningar**.
 
@@ -40,10 +40,10 @@ Följande steg beskriver hur du skapar en anpassad avbildning från en VHD-fil m
 
 1. Ange beskrivningen av den anpassade avbildningen. Den här beskrivningen visas i listan med bas avbildningar när du skapar en virtuell dator.
 
-1. För **OS-typ**väljer du antingen **Windows** eller **Linux**.
+1. För **OS-typ** väljer du antingen **Windows** eller **Linux**.
 
-    - Om du väljer **Windows**anger du via kryss rutan om *Sysprep* har körts på datorn. 
-    - Om du väljer **Linux**anger du via kryss rutan om *avetablering* har körts på datorn. 
+    - Om du väljer **Windows** anger du via kryss rutan om *Sysprep* har körts på datorn. 
+    - Om du väljer **Linux** anger du via kryss rutan om *avetablering* har körts på datorn. 
 
 1. Välj en **virtuell hård disk** på den nedrullningsbara menyn. Detta är den virtuella hård disk som ska användas för att skapa den nya anpassade avbildningen. Om det behövs väljer du att **Ladda upp en virtuell hård disk med PowerShell**.
 

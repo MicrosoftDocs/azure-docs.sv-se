@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87424059"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT-mått
@@ -36,13 +36,13 @@ Azure Virtual Network NAT-gateway-resurser innehåller flerdimensionella mått. 
 
 NAT-gateway-resurser ger följande flerdimensionella mått i Azure Monitor:
 
-| Mått | Beskrivning | Rekommenderad agg regering | Dimensioner |
+| Metric | Beskrivning | Rekommenderad agg regering | Dimensioner |
 |---|---|---|---|
-| Byte | Antal byte som bearbetats inkommande och utgående | Summa | Riktning (i; Ut), protokoll (6 TCP; 17 UDP) |
-| Skickas | Paket som har bearbetats inkommande och utgående | Summa | Riktning (i; Ut), protokoll (6 TCP; 17 UDP) |
-| Ignorerade paket | Paket som släppts av NAT-gatewayen | Summa | / |
-| Antal SNAT-anslutningar | Tillstånds över gångar per intervall | Summa | Anslutnings tillstånd, protokoll (6 TCP; 17 UDP) |
-| Totalt antal SNAT-anslutningar | Aktuella aktiva SNAT-anslutningar (~ SNAT-portar som används) | Summa | Protokoll (6 TCP; 17-tums UDP) |
+| Byte | Antal byte som bearbetats inkommande och utgående | Sum | Riktning (i; Ut), protokoll (6 TCP; 17 UDP) |
+| Skickas | Paket som har bearbetats inkommande och utgående | Sum | Riktning (i; Ut), protokoll (6 TCP; 17 UDP) |
+| Ignorerade paket | Paket som släppts av NAT-gatewayen | Sum | / |
+| Antal SNAT-anslutningar | Tillstånds över gångar per intervall | Sum | Anslutnings tillstånd, protokoll (6 TCP; 17 UDP) |
+| Totalt antal SNAT-anslutningar | Aktuella aktiva SNAT-anslutningar (~ SNAT-portar som används) | Sum | Protokoll (6 TCP; 17-tums UDP) |
 
 
 ## <a name="alerts"></a>Aviseringar

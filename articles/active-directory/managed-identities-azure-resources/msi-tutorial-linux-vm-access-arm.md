@@ -17,10 +17,10 @@ ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 247b3c1b4341eff11069a6af324fff5cf1fba62c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546598"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Självstudier: Använda en användartilldelad hanterad identitet på en virtuell Linux-dator för att få åtkomst till Azure Resource Manager
@@ -35,7 +35,7 @@ I den här guiden får du lära dig att:
 > * Ge den användartilldelade hanterade identiteten åtkomst till en resursgrupp i Azure Resource Manager 
 > * Hämta en åtkomsttoken med hjälp av den användartilldelade hanterade identiteten och använd den för att anropa Azure Resource Manager 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Förståelse för hanterade identiteter. Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
 - Ett Azure-konto kan du [Registrera dig för ett kostnads fritt konto](https://azure.microsoft.com/free/).

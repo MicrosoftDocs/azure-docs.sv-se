@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91296373"
 ---
 # <a name="feature-list"></a>Funktionslista #
@@ -56,7 +56,7 @@ Här är en lista över funktioner som har testats och funktioner som inte stöd
 | Lokalisering av användar gränssnitt                         |        | X                |          |             |                                                                                                                      |
 | Uppspelning med flera instanser                 |        |                  |          | X           | Det här scenariot kan fungera för vissa tekniker, men det finns för närvarande inte stöd för och är inte testat. Du kan också få detta att fungera med iframes |
 | Stöd för Ads                             |        | X                |          |             | AMP har stöd för infogning av linjära annonseringar före mitten och efter valsning från enorma kompatibla AD-servrar för VOD i AzureHtml5JS-Tech |
-| Analytics                               |        | X                |          |             | Med AMP kan du lyssna på analyser och diagnostiska händelser så att du kan skicka till en analys Server del som du väljer.  Alla händelser och egenskaper är inte tillgängliga i Tech på grund av plattforms begränsningar.                                                                            |
+| Analys                               |        | X                |          |             | Med AMP kan du lyssna på analyser och diagnostiska händelser så att du kan skicka till en analys Server del som du väljer.  Alla händelser och egenskaper är inte tillgängliga i Tech på grund av plattforms begränsningar.                                                                            |
 | Anpassade skal                            |        |                  | X        |             | Det här scenariot kan uppnås genom att ställa in kontroller på falskt i AMP och använda din egen HTML och CSS.           |
 | Rensning av SeekBar-fält                      |        |                  |          | X           |                                                                                                                      |
 | Trick-Play                              |        |                  |          | X           |                                                                                                                      |

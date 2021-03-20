@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
 ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460787"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Skapa anpassat Event Grid-ämne med PowerShell
@@ -34,7 +34,7 @@ Det här skriptet skapar ett anpassat Event Grid-ämne.
 
 Det här skriptet använder följande kommandon för att skapa det anpassade ämnet. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzEventGridTopic](/powershell/module/az.eventgrid/new-azeventgridtopic) | Skapa ett Event Grid-anpassat ämne. |
 

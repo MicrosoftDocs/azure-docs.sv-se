@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341815"
 ---
 # <a name="how-to-author-an-attestation-policy"></a>Så här skapar du en policy för attestering
@@ -36,7 +36,7 @@ issuancerules
  
 En princip fil har tre segment, som du ser ovan:
 
-- **version** : versionen är versions numret för den grammatik som följs. 
+- **version**: versionen är versions numret för den grammatik som följs. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ En princip fil har tre segment, som du ser ovan:
 
     För närvarande är den enda version som stöds version 1,0.
 
-- **authorizationrules** : en samling anspråks regler som ska kontrol leras först, för att avgöra om Azure-attesteringen bör fortsätta till **issuancerules**. Anspråks reglerna gäller i den ordning som de definieras.
+- **authorizationrules**: en samling anspråks regler som ska kontrol leras först, för att avgöra om Azure-attesteringen bör fortsätta till **issuancerules**. Anspråks reglerna gäller i den ordning som de definieras.
 
-- **issuancerules** : en samling anspråks regler som kommer att utvärderas för att lägga till ytterligare information till attesterings resultatet enligt vad som definieras i principen. Anspråks reglerna gäller i den ordning som de är definierade och är också valfria.
+- **issuancerules**: en samling anspråks regler som kommer att utvärderas för att lägga till ytterligare information till attesterings resultatet enligt vad som definieras i principen. Anspråks reglerna gäller i den ordning som de är definierade och är också valfria.
 
 Mer information finns i [anspråk och anspråks regler](claim-rule-grammar.md) .
    
@@ -128,8 +128,8 @@ När du har skapat en princip fil, för att överföra en princip i JWS-format, 
      ```
 
 2. Valfritt Signera principen. Azure-attestering stöder följande algoritmer:
-     - **Ingen** : Signera inte princip nytto lasten.
-     - **RS256** : algoritm som stöds för att signera principens nytto Last
+     - **Ingen**: Signera inte princip nytto lasten.
+     - **RS256**: algoritm som stöds för att signera principens nytto Last
 
 3. Ladda upp JWS och validera principen.
      - Om princip filen är fri från syntaxfel godkänns princip filen av tjänsten.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 34a63ce51870e32ec6e0d8398eda7114b5fcd42b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Självstudie: Azure Active Directory integrering med FileCloud
@@ -30,7 +30,7 @@ Integreringen av FileCloud med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med FileCloud behöver du följande:
 

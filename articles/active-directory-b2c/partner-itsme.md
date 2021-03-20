@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87489523"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurera itsme OpenID Connect (OIDC) med Azure Active Directory B2C
@@ -74,9 +74,9 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Kontrol lera att du använder den katalog som innehåller Azure AD B2C klient. Välj **katalog + prenumerations** filter på den översta menyn och välj den katalog som innehåller Azure AD B2C klienten.
 
-2. Under **Azure-tjänster**väljer du **Azure AD B2C** (eller Välj **fler tjänster** och använder sökrutan **alla tjänster** för att söka efter *Azure AD B2C*).
+2. Under **Azure-tjänster** väljer du **Azure AD B2C** (eller Välj **fler tjänster** och använder sökrutan **alla tjänster** för att söka efter *Azure AD B2C*).
 
-3. Välj **identitets leverantörer**och välj sedan **ny OpenID Connect-Provider**.
+3. Välj **identitets leverantörer** och välj sedan **ny OpenID Connect-Provider**.
 
 4. Fyll i formuläret med följande information:
 
@@ -100,11 +100,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 ### <a name="configure-a-user-flow"></a>Konfigurera ett användar flöde
 
-1. I Azure AD B2C klient väljer du **användar flöden**under **principer**.
+1. I Azure AD B2C klient väljer du **användar flöden** under **principer**.
 
 2. Välj **nytt användar flöde**.
 
-3. Välj **Registrera dig och logga**in, Välj en version och välj sedan **skapa**.
+3. Välj **Registrera dig och logga** in, Välj en version och välj sedan **skapa**.
 
 4. Ange ett **namn**.
 
@@ -117,11 +117,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 8. Välj **Egenskaper** och justera följande värden:
 
    * Ändra **åtkomst & livstid för ID-token (minuter)** till **5**.
-   * Ändra tids **perioden för glidande uppdateringstoken** till **ingen förfallo**tid.
+   * Ändra tids **perioden för glidande uppdateringstoken** till **ingen förfallo** tid.
 
 ### <a name="register-an-application"></a>Registrera ett program
 
-1. I B2C-klienten under **Hantera**väljer du **Appregistreringar**  >  **ny registrering**.
+1. I B2C-klienten under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 
 2. Ange ett **namn** för programmet och ange **omdirigerings-URI**. I test syfte anger du `https://jwt.ms` .
 
@@ -129,7 +129,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 4. Välj **Register** (Registrera).
 
-   a. I test syfte väljer du **autentisering**och under **implicit tilldelning**markerar du kryss rutorna **åtkomsttoken** och **ID-token** .  
+   a. I test syfte väljer du **autentisering** och under **implicit tilldelning** markerar du kryss rutorna **åtkomsttoken** och **ID-token** .  
 
    b. Välj **Spara**.
 

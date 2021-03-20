@@ -5,10 +5,10 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
 ms.openlocfilehash: f37a90b84e5e55298efc0b3cd53812db95e4d86d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460736"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>Prenumerera på händelser för ett anpassat ämne med PowerShell
@@ -35,7 +35,7 @@ Förhandsversionen av exempelskriptet kräver Event Grid-modulen. Installera gen
 
 Det här skriptet använder följande kommandon för att skapa händelseprenumerationen. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | Skapa en Event Grid-prenumeration. |
 

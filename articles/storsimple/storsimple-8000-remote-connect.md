@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514566"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Fjärrans luta till din StorSimple 8000-serie enhet
@@ -59,7 +59,7 @@ Utför följande steg i Azure Portal för att aktivera fjärrhantering över HTT
    > [!NOTE]
    > Det är bara acceptabelt att ansluta över HTTP på betrodda nätverk.
    
-5. Klicka på **Spara** och välj **Ja**när du uppmanas att bekräfta.
+5. Klicka på **Spara** och välj **Ja** när du uppmanas att bekräfta.
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>Använd serie konsolen för att aktivera fjärrhantering över HTTP
 Utför följande steg i enhetens serie konsol för att aktivera fjärrhantering.
@@ -67,7 +67,7 @@ Utför följande steg i enhetens serie konsol för att aktivera fjärrhantering.
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Så här aktiverar du fjärrhantering via enhetens serie konsol
 1. I menyn serie konsol väljer du alternativ 1. Mer information om hur du använder serie konsolen på enheten finns i [ansluta till Windows PowerShell för StorSimple via enhetens serie konsol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
 2. Skriv följande i prompten: `Enable-HcsRemoteManagement –AllowHttp`
-3. Du får ett meddelande om säkerhets sårbarheter i att använda HTTP för att ansluta till enheten. Bekräfta genom att skriva **Y**när du uppmanas till detta.
+3. Du får ett meddelande om säkerhets sårbarheter i att använda HTTP för att ansluta till enheten. Bekräfta genom att skriva **Y** när du uppmanas till detta.
 4. Verifiera att HTTP är aktiverat genom att skriva: `Get-HcsSystem`
 5. Kontrol lera att fältet **RemoteManagementMode** visar **HttpsAndHttpEnabled**. Följande bild visar dessa inställningar i SparaTillFil.
    
@@ -195,7 +195,7 @@ Var och en av de föregående procedurerna beskrivs nedan.
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Så här lägger du till enhets serie nummer till fjärrvärden
 1. Starta anteckningar som administratör och öppna sedan hosts-filen som finns på \Windows\System32\Drivers\etc.
-2. Lägg till följande tre poster i hosts-filen: **data 0 IP-adress**, **kontrollant 0 fast IP-adress**och **domänkontrollant 1 fast IP-adress**.
+2. Lägg till följande tre poster i hosts-filen: **data 0 IP-adress**, **kontrollant 0 fast IP-adress** och **domänkontrollant 1 fast IP-adress**.
 3. Ange enhetens serie nummer som du sparade tidigare. Mappa detta till IP-adressen som det visas i följande bild. För Controller 0 och styrenhet 1 lägger du till **Controller0** och **Controller1** i slutet av serie numret (CN-namn).
    
     ![Lägger till CN-namn till värd filen](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)

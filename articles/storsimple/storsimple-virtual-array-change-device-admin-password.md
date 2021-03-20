@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85513616"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Ändra StorSimple för den virtuella matris enheten via StorSimple Enhetshanteraren
@@ -38,7 +38,7 @@ Utför följande steg för att ändra enhetens administratörs lösen ord via Az
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Ändra enhetens administratörs lösen ord via Azure Portal
 
-1. På sidan landning av tjänst väljer du din tjänst, dubbelklickar på tjänstens namn och klickar sedan på **enheter**i avsnittet **hantering** . Då öppnas bladet **enheter** som visar en lista över alla dina StorSimple virtuella mat ris enheter.
+1. På sidan landning av tjänst väljer du din tjänst, dubbelklickar på tjänstens namn och klickar sedan på **enheter** i avsnittet **hantering** . Då öppnas bladet **enheter** som visar en lista över alla dina StorSimple virtuella mat ris enheter.
 
 2. I bladet **enheter** dubbelklickar du på den enhet som kräver en ändring av lösen ordet.
 
@@ -70,7 +70,7 @@ Utför följande steg för att ändra enhetens administratörs lösen ord via de
 4. Ange lösenordet igen för att bekräfta det.
    
     ![ändra password2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. Klicka på **Använd**längst ned på sidan. Det nya lösen ordet används nu. Om lösen ords ändringen inte lyckas visas följande fel meddelande:
+5. Klicka på **Använd** längst ned på sidan. Det nya lösen ordet används nu. Om lösen ords ändringen inte lyckas visas följande fel meddelande:
    
     ![lösen ords fel](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
